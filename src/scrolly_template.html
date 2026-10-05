@@ -438,8 +438,8 @@ function routeViews(i) {
 }
 const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 function size() { const el = $('#deck'); return { width: el.clientWidth || innerWidth, height: el.clientHeight || innerHeight }; }
-// vuelo suave (curva de van Wijk de deck.gl): se aleja para ver origen y destino, más cuanto más lejos están
-const flyI = typeof deck !== 'undefined' ? new deck.FlyToInterpolator({ curve: 1.9 }) : null;
+// vuelo suave (curva de van Wijk de deck.gl) con poco alejamiento entre lugares
+const flyI = typeof deck !== 'undefined' ? new deck.FlyToInterpolator({ curve: 1.1 }) : null;
 function interp(a, b, t) {
   if (t <= 0) return { ...a }; if (t >= 1) return { ...b };
   const s = size();
