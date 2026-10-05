@@ -107,6 +107,10 @@ footer{margin-top:40px}
 .card p{margin:.5rem 0 0}
 .card .kicker{margin-bottom:2px}
 .step[data-step="explore"] .card{max-width:340px}
+.placelabel{position:absolute;left:0;top:0;z-index:2;pointer-events:none;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-100%);will-change:transform}
+.placelabel span{background:var(--card);color:var(--fg);font-family:var(--display);font-weight:700;font-size:15px;line-height:1.2;padding:5px 10px;border-radius:5px;border:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.18);white-space:nowrap}
+.placelabel::after{content:"";width:2px;height:34px;background:var(--fg);opacity:.75}
+.placelabel::before{content:"";position:absolute;bottom:-4px;width:8px;height:8px;border-radius:50%;background:var(--fg)}
 .maplegend{position:absolute;right:16px;bottom:16px;z-index:3;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font-family:var(--mono);font-size:.72rem;color:var(--muted);display:grid;gap:4px;max-width:calc(100% - 32px)}
 .maplegend .lgname{color:var(--fg);font-weight:500}
 .maplegend .ramp{margin-top:0}
@@ -148,6 +152,7 @@ footer{margin-top:40px}
 <section class="scrolly" id="scrolly">
   <div class="sticky" id="sticky">
     <div id="deck" aria-label="Mapa 3D de las secciones censales de Cataluña" role="img"></div>
+    <div class="placelabel" id="placelabel" hidden aria-hidden="true"><span></span></div>
     <div class="maplegend" id="maplegend"></div>
     <div class="fallback" id="fallback" hidden>Tu navegador no puede mostrar el mapa 3D (WebGL desactivado). El texto y los gráficos de abajo recogen los mismos datos.</div>
     <div class="explore" id="explore" hidden>
@@ -413,12 +418,6 @@ function townLayers() {
 function layers() {
   const ls = [layer()];
   if (curScene === 'explore') ls.push(...townLayers());
-  if (label) ls.push(new deck.TextLayer({
-    id: 'label', parameters: { depthCompare: 'always', depthWriteEnabled: false }, data: [label], getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
-    characterSet: 'auto', fontFamily: 'Bricolage Grotesque, Arial, sans-serif', fontWeight: 700, getSize: 20,
-    getColor: [22,26,43,255], background: true, getBackgroundColor: [255,255,255,235], backgroundPadding: [8,4],
-    getPixelOffset: [0,-28], billboard: true, getTextAnchor: 'middle', getAlignmentBaseline: 'bottom'
-  }));
   return ls;
 }
 function tooltip({ object }) {
@@ -508,6 +507,16 @@ let camView = null, exploreTouched = false, userView = null;
 function applyView(v) {
   camView = v; state.es = esOf(v.zoom);
   deckgl.setProps({ viewState: { ...v }, layers: layers() });
+  placeLabel(v);
+}
+// el rótulo del lugar es HTML sobre el mapa: ningún polígono alto puede taparlo
+function placeLabel(v) {
+  const el = $('#placelabel');
+  if (!label) { el.hidden = true; return; }
+  const [x, y] = new deck.WebMercatorViewport({ ...v, ...size() }).project(label.pos);
+  el.querySelector('span').textContent = label.name;
+  el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -100%)`;
+  el.hidden = false;
 }
 function markPlace(card, n) { card.querySelectorAll('.place').forEach(el => el.classList.toggle('now', el.dataset.place === n)); }
 function stepProgress(el) {
