@@ -41,6 +41,8 @@ header{padding-block:48px 8px;display:grid;gap:18px}
 .bar100 span{display:block;height:100%}
 .hundred{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;max-width:420px}
 .hundred i{aspect-ratio:1;border-radius:50%;display:block}
+.ppl{display:grid;gap:2px;font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-top:6px}
+.ppl b{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 .legend3{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
 .legend3 b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 /* map */
@@ -224,6 +226,7 @@ $('#reset').addEventListener('click',()=>{tsel.value=''; gS.querySelectorAll('pa
 
 // ---- panel
 function bar3(v,n,a){return `<div class="bar100" role="img" aria-label="votó ${pct(v)}, sin derecho ${pct(n)}, no votó ${pct(a)}"><span style="width:${v*100}%;background:var(--vote)"></span><span style="width:${n*100}%;background:var(--noright)"></span><span style="width:${a*100}%;background:var(--abst)"></span></div>`;}
+function ppl(vo,el,ad){vo=vo||0;el=el||0;const ab=Math.max(0,el-vo),si=Math.max(0,Math.round((ad||0)-el)),t=vo+ab+si;if(!t)return '';const n=x=>Math.round(x).toLocaleString('es-ES');return `${bar3(vo/t,si/t,ab/t)}<div class="ppl"><span><b style="background:var(--vote)"></b>${n(vo)} votaron</span><span><b style="background:var(--noright)"></b>unos ${n(si)} sin derecho a voto</span><span><b style="background:var(--abst)"></b>${n(ab)} podían votar y no lo hicieron</span></div>`;}
 function spark(h,w=260,hh=64){ const ys=h.map(v=>v==null?null:v); const lo=.4,hi=.9; const X=i=>18+i*(w-36)/4, Y=v=>hh-14-(v-lo)/(hi-lo)*(hh-22);
   const lab=['2015','2016','A19','N19','2023']; let pts=ys.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
   return `<svg viewBox="0 0 ${w} ${hh}" width="100%" style="max-width:${w}px" role="img" aria-label="Participación por elección">
@@ -237,8 +240,7 @@ function showSec(p){
   cur=p; const v=p.pct_ad_vota??0, n=p.pct_ad_sinderecho??0, a=Math.max(0,1-v-n);
   const V=VARS[+sel.value];
   panel.innerHTML=`<div class="kicker">Sección ${p.tract_code.slice(5,7)}-${p.tract_code.slice(7)} · ${p.tract_code}</div><h3>${p.mun_name}</h3>
-  <div><div class="note" style="margin-bottom:6px">De cada 100 adultos residentes</div>${bar3(v,n,a)}
-  <div class="legend3" style="margin-top:6px"><span><b style="background:var(--vote)"></b>${Math.round(v*100)} votó</span><span><b style="background:var(--noright)"></b>${Math.round(n*100)} sin derecho</span><span><b style="background:var(--abst)"></b>${Math.round(a*100)} no votó</span></div></div>
+  <div><div class="note" style="margin-bottom:6px">Adultos que viven en la sección, en personas</div>${ppl(p.voters,p.electorate,p.adults)}</div>
   <div><div class="note">Participación sobre censo, generales</div>${spark([p.t2015_12,p.t2016_06,p.t2019_04,p.t2019_11,p.t2023_07])}</div>
   <dl class="kv">
    <dt>${V.name.replace(/ \(oscuro.*\)/,'')}</dt><dd><b>${V.fmt(V.f(p))}</b></dd>
@@ -260,8 +262,7 @@ function aggPanel(title,kick,list,hist){
   const hk=['t2015_12','t2016_06','t2019_04','t2019_11','t2023_07'];
   const h=hk.map(k=>{let e=0,w=0; list.forEach(p=>{if(p[k]!=null){e+=p[k]*p.electorate; w+=p.electorate;}}); return w?e/w:null;});
   panel.innerHTML=`<div class="kicker">${kick}</div><h3>${title}</h3>
-  <div><div class="note" style="margin-bottom:6px">De cada 100 adultos residentes</div>${bar3(v,n,a)}
-  <div class="legend3" style="margin-top:6px"><span><b style="background:var(--vote)"></b>${Math.round(v*100)} votó</span><span><b style="background:var(--noright)"></b>${Math.round(n*100)} sin derecho</span><span><b style="background:var(--abst)"></b>${Math.round(a*100)} no votó</span></div></div>
+  <div><div class="note" style="margin-bottom:6px">Adultos que viven aquí, en personas</div>${ppl(vo,el,ad)}</div>
   <div><div class="note">Participación sobre censo, generales</div>${spark(h)}</div>
   <dl class="kv"><dt>Secciones</dt><dd>${list.length}</dd><dt>Adultos residentes</dt><dd>${Math.round(ad).toLocaleString('es-ES')}</dd><dt>Censo electoral</dt><dd>${el.toLocaleString('es-ES')}</dd><dt>Votantes 23J</dt><dd>${vo.toLocaleString('es-ES')}</dd></dl>
   <p class="note">Pasa el cursor o toca una sección para ver su ficha.</p>`; cur=null;
