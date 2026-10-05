@@ -346,8 +346,37 @@ function layer() {
     transitions: { getElevation: { duration: 600 }, getFillColor: { duration: 700 } }
   });
 }
+// los 10 municipios más poblados, más Salt, Lloret y Figueres, para el mapa final
+const BIG = (() => { const pop = {}; SEC.forEach(p => { if (p.mun_name) pop[p.mun_name] = (pop[p.mun_name] || 0) + (p.population || 0); });
+  const top = Object.keys(pop).filter(n => C[n]).sort((a, b) => pop[b] - pop[a]).slice(0, 10);
+  const hl = ['Salt', 'Lloret de Mar', 'Figueres'].filter(n => C[n] && !top.includes(n));
+  return [...top, ...hl].map(n => ({ n, name: n.replace(/^(.*), (L')$/, '$2$1').replace(/^(.*), (La|El|Els|Les)$/, '$2 $1'), pos: C[n], pop: pop[n], hl: hl.includes(n) })); })();
+function townLayers() {
+  const dark = matchMedia && matchMedia('(prefers-color-scheme: dark)').matches && document.documentElement.dataset.theme !== 'light' || document.documentElement.dataset.theme === 'dark';
+  const fg = dark ? [235,237,245,255] : [22,26,43,255], halo = dark ? [16,18,28,230] : [255,255,255,235];
+  // reparto sin solapes: por población, a la derecha del punto o, si choca, a la izquierda
+  const vp = new deck.WebMercatorViewport({ ...camView, ...size() }), boxes = [], data = [];
+  const hit = b => boxes.some(o => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
+  [...BIG].sort((a, b) => b.pop - a.pop).forEach(d => {
+    const [x, y] = vp.project(d.pos), fs = d.pop > 500000 ? 15 : 13, w = d.name.length * fs * 0.58 + 10;
+    const dot = [x - 4, y - 4, x + 4, y + 4], r = [x + 4, y - fs * .7, x + 4 + w, y + fs * .7], l = [x - 4 - w, y - fs * .7, x - 4, y + fs * .7];
+    if (hit(dot)) return;
+    const side = !hit(r) ? 'start' : !hit(l) ? 'end' : null; if (!side) return;
+    boxes.push(dot, side === 'start' ? r : l); data.push({ ...d, side, fs });
+  });
+  return [
+    new deck.ScatterplotLayer({ id: 'towndots', data, getPosition: d => [d.pos[0], d.pos[1], 0], getRadius: 3, radiusUnits: 'pixels',
+      getFillColor: d => d.hl ? [214,40,40,255] : fg, stroked: true, getLineColor: halo, lineWidthUnits: 'pixels', getLineWidth: 1.5 }),
+    new deck.TextLayer({ id: 'townnames', data, getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
+      characterSet: 'auto', fontFamily: 'Bricolage Grotesque, Arial, sans-serif', fontWeight: 600, getSize: d => d.fs,
+      getColor: d => d.hl ? [176,30,30,255] : fg, fontSettings: { sdf: true }, outlineWidth: 4, outlineColor: halo,
+      getPixelOffset: d => [d.side === 'start' ? 7 : -7, 0], getTextAnchor: d => d.side, getAlignmentBaseline: 'center',
+      updateTriggers: { getPixelOffset: [data.map(d => d.side).join()], getTextAnchor: [data.map(d => d.side).join()] } })
+  ];
+}
 function layers() {
   const ls = [layer()];
+  if (curScene === 'explore') ls.push(...townLayers());
   if (label) ls.push(new deck.TextLayer({
     id: 'label', data: [label], getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
     characterSet: 'auto', fontFamily: 'Bricolage Grotesque, Arial, sans-serif', fontWeight: 700, getSize: 20,
@@ -408,13 +437,30 @@ function routeViews(i) {
   return [prev, ...r.places.map(placeView), SCENES[r.name].view].map(fit);
 }
 const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-const flyI = () => new deck.FlyToInterpolator();
 function size() { const el = $('#deck'); return { width: el.clientWidth || innerWidth, height: el.clientHeight || innerHeight }; }
+// vuelo en salto: la cámara se aleja hasta ver origen y destino, viaja y vuelve a bajar
+const MX = lon => (lon + 180) / 360 * 512;
+const MY = lat => (180 - 180 / Math.PI * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360))) * 512 / 360;
+const LON = x => x / 512 * 360 - 180;
+const LAT = y => 360 / Math.PI * Math.atan(Math.exp((180 - y * 360 / 512) * Math.PI / 180)) - 90;
+const smooth = u => { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u); };
 function interp(a, b, t) {
   if (t <= 0) return { ...a }; if (t >= 1) return { ...b };
-  const s = size();
-  const v = flyI().interpolateProps({ ...a, ...s }, { ...b, ...s }, t);
-  return { longitude: v.longitude, latitude: v.latitude, zoom: v.zoom, pitch: v.pitch, bearing: v.bearing };
+  const s = size(), x0 = MX(a.longitude), y0 = MY(a.latitude), x1 = MX(b.longitude), y1 = MY(b.latitude);
+  const d = Math.hypot(x1 - x0, y1 - y0), zmin = Math.min(a.zoom, b.zoom);
+  // zoom al que caben origen y destino; si ya caben desde el extremo más alejado, no hace falta salto
+  const zFit = Math.log2(0.55 * Math.min(s.width, s.height) / Math.max(d, 1e-9));
+  const hop = zFit < zmin - 0.2;
+  let zoom, u;
+  if (hop) {
+    const zp = Math.max(5.8, zFit);
+    zoom = t < .5 ? a.zoom + (zp - a.zoom) * smooth(2 * t) : zp + (b.zoom - zp) * smooth(2 * t - 1);
+    u = smooth((t - 0.15) / 0.7);
+  } else { zoom = a.zoom + (b.zoom - a.zoom) * t; u = t; }
+  let db = b.bearing - a.bearing; if (db > 180) db -= 360; if (db < -180) db += 360;
+  const dip = hop ? 18 * Math.sin(Math.PI * t) : 0;
+  return { longitude: LON(x0 + (x1 - x0) * u), latitude: LAT(y0 + (y1 - y0) * u), zoom,
+    pitch: Math.max(0, a.pitch + (b.pitch - a.pitch) * t - dip), bearing: a.bearing + db * t };
 }
 // posición en el trayecto: en cada tramo, 65% de vuelo y 35% de parada
 function cameraAt(i, p) {

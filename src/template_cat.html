@@ -201,16 +201,16 @@ const paths=MAP.secs.map(p=>{const e=document.createElementNS(NS,'path'); e.setA
 MAP.muns.forEach(m=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',m.d); e.setAttribute('class','m'); gM.appendChild(e);});
 let labelScale=1;
 const TOWNS=(()=>{const a={};MAP.secs.forEach(p=>{const n=p.mun_name;if(!n||p.cx==null)return;const w=p.population||1;const o=a[n]||(a[n]={n,pop:0,x:0,y:0});o.pop+=w;o.x+=p.cx*w;o.y+=p.cy*w;});
-  const CAP=['Barcelona','Girona','Lleida','Tarragona'],HLT=['Salt','Lloret de Mar','Figueres'],EXTRA=['Vielha e Mijaran','Puigcerdà',"Seu d'Urgell, La",'Tremp','Tortosa','Olot','Vic','Manresa','Igualada','Guissona','Salou','Reus','Balaguer','Berga','Solsona','Amposta','Ripoll','Sort','Cervera','Valls','Mollerussa','Banyoles','Palafrugell','Blanes','Vendrell, El','Vilafranca del Penedès','Falset','Gandesa',"Móra d'Ebre",'Granollers','Vilanova i la Geltrú'];
-  return Object.values(a).map(o=>({n:o.n,pop:o.pop,x:o.x/o.pop,y:o.y/o.pop,tier:CAP.includes(o.n)?0:HLT.includes(o.n)?1:o.pop>=60000?2:EXTRA.includes(o.n)?3:4}))
-    .sort((p,q)=>p.tier-q.tier||q.pop-p.pop);})();
+  const HLT=['Salt','Lloret de Mar','Figueres'], all=Object.values(a).sort((p,q)=>q.pop-p.pop), top=all.slice(0,10).map(o=>o.n);
+  return all.map(o=>({n:o.n,pop:o.pop,x:o.x/o.pop,y:o.y/o.pop,tier:top.includes(o.n)?(o.pop>500000?0:2):HLT.includes(o.n)?1:4}))
+    .sort((p,q)=>(p.tier===4)-(q.tier===4)||q.pop-p.pop);})();
 const shown=n=>n.replace(/^(.*), (L')$/,'$2$1').replace(/^(.*), (La|El|Els|Les|Lo)$/,'$2 $1');
 function drawLabels(){ gL.innerHTML='';
   const vb=svg.viewBox.baseVal, px=svg.getBoundingClientRect().width||MAP.W, s=vb.width/px, k=MAP.W/vb.width;
   const boxes=[], hit=b=>b[0]<vb.x||b[1]<vb.y||b[2]>vb.x+vb.width||b[3]>vb.y+vb.height||boxes.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]);
-  let n=0; const max=px<500?18:45;
-  for(const t of TOWNS){ if(n>=max) break;
-    if(t.tier===4 && t.pop<25000/(k*k)) continue;
+  let n=0; const max=k>2?10:13, focus=(document.getElementById('town')||{}).value;
+  for(const t of (focus?[...TOWNS.filter(t=>t.n===focus),...TOWNS.filter(t=>t.n!==focus)]:TOWNS)){ if(n>=max) break;
+    if(t.tier===4 && k<=2) continue;
     if(t.x<vb.x||t.y<vb.y||t.x>vb.x+vb.width||t.y>vb.y+vb.height) continue;
     const fs=(t.tier===0?13:12)*s, r=(t.tier===0?3:2.3)*s, name=shown(t.n), w=name.length*fs*.62, g=5*s;
     const dot=[t.x-r,t.y-r,t.x+r,t.y+r]; if(hit(dot)) continue;
@@ -220,7 +220,7 @@ function drawLabels(){ gL.innerHTML='';
     boxes.push(dot,o[3]); n++;
     const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',t.x); c.setAttribute('cy',t.y); c.setAttribute('r',r); c.setAttribute('class','town'+(t.tier===1?' hl':'')); c.style.strokeWidth=(1.2*s)+'px'; gL.appendChild(c);
     const e=document.createElementNS(NS,'text'); e.setAttribute('x',o[0]); e.setAttribute('y',o[1]); e.setAttribute('text-anchor',o[2]); e.style.fontSize=fs+'px'; e.style.strokeWidth=(3*s)+'px'; e.textContent=name;
-    if(t.tier<=1) e.style.fontWeight='600'; if(t.tier===1) e.classList.add('hl'); gL.appendChild(e); }
+    if(t.tier<=1||t.n===focus) e.style.fontWeight='600'; if(t.tier===1) e.classList.add('hl'); gL.appendChild(e); }
 }
 addEventListener('resize',()=>{clearTimeout(drawLabels.t); drawLabels.t=setTimeout(drawLabels,150);});
 drawLabels();
