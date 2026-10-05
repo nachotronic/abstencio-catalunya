@@ -47,6 +47,8 @@ header{padding-block:48px 8px;display:grid;gap:18px}
 .bar100 span{display:block;height:100%}
 .hundred{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;max-width:420px}
 .hundred i{aspect-ratio:1;border-radius:50%;display:block}
+.ppl{display:grid;gap:2px;font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-top:6px}
+.ppl b{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 .legend3{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
 .legend3 b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 /* map */
@@ -259,6 +261,7 @@ const pct = (v,d=0) => v==null||isNaN(v) ? '–' : (v*100).toFixed(d).replace('.
 const eur = v => v==null ? '–' : Math.round(v).toLocaleString('es-ES')+' €';
 const pp = v => (v*100).toFixed(1).replace('.',',');
 function bar3(v,n,a){return `<div class="bar100" role="img" aria-label="votó ${pct(v)}, sin derecho ${pct(n)}, no votó ${pct(a)}"><span style="width:${v*100}%;background:var(--vote)"></span><span style="width:${n*100}%;background:var(--noright)"></span><span style="width:${a*100}%;background:var(--abst)"></span></div>`;}
+function ppl(vo,el,ad){vo=vo||0;el=el||0;const ab=Math.max(0,el-vo),si=Math.max(0,Math.round((ad||0)-el)),t=vo+ab+si;if(!t)return '';const n=x=>Math.round(x).toLocaleString('es-ES');return `${bar3(vo/t,si/t,ab/t)}<div class="ppl"><span><b style="background:var(--vote)"></b>${n(vo)} votaron</span><span><b style="background:var(--noright)"></b>unos ${n(si)} sin derecho a voto</span><span><b style="background:var(--abst)"></b>${n(ab)} podían votar y no lo hicieron</span></div>`;}
 function spark(h,w=260,hh=64){ const ys=h.map(v=>v==null?null:v); const lo=.4,hi=.9; const X=i=>18+i*(w-36)/4, Y=v=>hh-14-(v-lo)/(hi-lo)*(hh-22);
   const lab=['2015','2016','A19','N19','2023']; let pts=ys.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
   return `<svg viewBox="0 0 ${w} ${hh}" width="100%" style="max-width:${w}px" role="img" aria-label="Participación por elección">
@@ -366,7 +369,7 @@ function tooltip({ object }) {
   const p = SEC[object.i];
   const v = p.pct_ad_vota ?? 0, n = p.pct_ad_sinderecho ?? 0, a = Math.max(0, 1 - v - n);
   return { html: `<div class="tt"><b>${p.mun_name}</b> <span class="muted">sección ${p.tract_code.slice(5,7)}-${p.tract_code.slice(7)}</span>
-    ${bar3(v,n,a)}<div class="muted">${Math.round(v*100)} votó · ${Math.round(n*100)} sin derecho · ${Math.round(a*100)} no votó</div>
+    <div class="muted">Adultos que viven aquí, en personas</div>${ppl(p.voters,p.electorate,p.adults)}
     <div>Participación 23J: <b>${pct(p.turnout)}</b></div>
     <div>${CV[state.c].name}: <b>${CV[state.c].fmt(CV[state.c].f(p))}</b></div></div>`,
     style: { background: 'transparent', padding: '0' } };
