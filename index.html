@@ -522,8 +522,8 @@ function flyTo(target, key, place, card) {
   const my = ++flyId, from = { ...camView };
   ROUTES.forEach(r => markPlace(r.card, null)); label = null;
   const done = () => { if (place) { markPlace(card, place); label = labelFor(place); } applyView(target); };
-  if (reduceMotion) { done(); return; }
-  const ms = flyDuration(from, target), t0 = performance.now();
+  // con «reducir movimiento» activado en el sistema el vuelo se mantiene, pero más corto
+  const ms = flyDuration(from, target) * (reduceMotion ? 0.6 : 1), t0 = performance.now();
   const tick = now => {
     if (my !== flyId) return;
     const t = Math.min(1, (now - t0) / ms);
