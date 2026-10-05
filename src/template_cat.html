@@ -1,0 +1,328 @@
+<title>¿Quién no vota en Cataluña?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: long-read column (≈68ch) that breaks out to a wide map band with a side panel; charts sit in the column. */
+:root{
+  --bg:#f4f5f8; --surface:#ffffff; --fg:#161a2b; --muted:#5b6178; --rule:#d9dce6;
+  --accent:#3846a0;           /* tinta de papeleta */
+  --vote:#3846a0; --noright:#d08a1c; --abst:#9a4d74; --empty:#e3e5ec;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Newsreader", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --mapstroke:rgba(255,255,255,.55); --munstroke:rgba(22,26,43,.55); --hl:#161a2b;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12141d; --surface:#1a1d29; --fg:#e8eaf2; --muted:#9aa0b8; --rule:#2c3042;
+  --accent:#8f9cf0; --vote:#7d8ce8; --noright:#e0a440; --abst:#c77da3; --empty:#2a2e3e;
+  --mapstroke:rgba(18,20,29,.6); --munstroke:rgba(232,234,242,.5); --hl:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12141d; --surface:#1a1d29; --fg:#e8eaf2; --muted:#9aa0b8; --rule:#2c3042;
+  --accent:#8f9cf0; --vote:#7d8ce8; --noright:#e0a440; --abst:#c77da3; --empty:#2a2e3e;
+  --mapstroke:rgba(18,20,29,.6); --munstroke:rgba(232,234,242,.5); --hl:#ffffff; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.12rem;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.col{max-width:68ch;margin-inline:auto}
+.wide{max-width:1180px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.08;margin:0}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:700;letter-spacing:-.01em;margin-top:3.2rem;margin-bottom:.8rem}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0 0 1rem}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{padding-block:48px 8px;display:grid;gap:18px}
+.lede{font-size:1.3rem;line-height:1.5}
+.lede em{font-style:italic}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.c-vote{color:var(--vote);font-weight:600}.c-no{color:var(--noright);font-weight:600}.c-abst{color:var(--abst);font-weight:600}
+/* 100 adults bar */
+.bar100{display:flex;height:14px;border-radius:2px;overflow:hidden;background:var(--empty)}
+.bar100 span{display:block;height:100%}
+.hundred{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;max-width:420px}
+.hundred i{aspect-ratio:1;border-radius:50%;display:block}
+.legend3{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.legend3 b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+/* map */
+.mapband{margin-top:36px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
+@media (max-width:860px){.mapband{grid-template-columns:minmax(0,1fr)}}
+.controls{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:end;margin-bottom:10px;font-family:var(--mono);font-size:.8rem}
+.controls label{display:grid;gap:4px;color:var(--muted);min-width:0;max-width:100%}
+select{max-width:100%;width:100%}
+.controls label{flex:1 1 220px}
+.tbl.out{margin-inline:calc((min(980px, 100vw - 32px) - 100%) / -2)}
+select,button{font:inherit;font-family:var(--mono);font-size:.82rem;color:var(--fg);background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:6px 8px}
+button{cursor:pointer}
+select:focus-visible,button:focus-visible,path:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mapwrap{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:8px;position:relative}
+#map{width:100%;height:auto;display:block;touch-action:manipulation}
+#map path.s{stroke:var(--mapstroke);stroke-width:.15;cursor:pointer;transition:opacity .15s}
+#map path.m{fill:none;stroke:var(--munstroke);stroke-width:.6;pointer-events:none}
+#map path.sel{stroke:var(--hl);stroke-width:1.6}
+#map text{font-family:var(--mono);font-size:11px;fill:var(--fg);paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none}
+.ramp{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-top:8px;flex-wrap:wrap}
+.ramp .sw{display:flex;height:10px;width:220px;max-width:60vw}
+.ramp .sw span{flex:1}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:16px;display:grid;gap:12px;font-size:.95rem}
+.panel h3{font-size:1.25rem}
+.kv{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-family:var(--mono);font-size:.78rem}
+.kv dt{color:var(--muted)}.kv dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.note{font-family:var(--mono);font-size:.74rem;color:var(--muted);line-height:1.45}
+/* compare table */
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:.8rem;font-variant-numeric:tabular-nums}
+th,td{padding:8px 8px;border-bottom:1px solid var(--rule);text-align:right;vertical-align:middle;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:500;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+td.barcell{min-width:180px;width:30%}
+.small-multiples{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px 26px;margin-block:18px 8px}
+.sm h3{font-size:.95rem;margin-bottom:6px}
+svg text{font-family:var(--mono);fill:var(--muted);font-size:10px}
+svg .lab{fill:var(--fg)}
+.callout{border-left:3px solid var(--accent);padding-left:14px;margin-block:20px;font-size:1.15rem}
+.method{font-size:.98rem;color:var(--fg)}
+.method li{margin-bottom:.5rem}
+a{color:var(--accent)}
+footer{margin-top:40px}
+</style>
+
+<div class="wide">
+<header class="col">
+  <div class="kicker">Cataluña · elecciones generales 2015–2023 · 5.115 secciones censales</div>
+  <h1>¿Quién no vota en Cataluña?</h1>
+  <p class="lede">El 23 de julio de 2023, de cada 100 adultos que vivían en Cataluña, <span class="c-vote num" id="l-vote"></span> votaron. Otros <span class="c-no num" id="l-no"></span> no podían hacerlo porque no tienen la nacionalidad española. Y <span class="c-abst num" id="l-abst"></span> podían votar y no lo hicieron. Las notas de participación solo cuentan el último grupo. Este mapa separa los tres, sección a sección, y los cruza con la renta, la edad, los estudios y la población extranjera.</p>
+  <div class="hundred" id="hundred" aria-label="100 adultos residentes en Cataluña"></div>
+  <div class="legend3"><span><b style="background:var(--vote)"></b>votó</span><span><b style="background:var(--noright)"></b>sin derecho a voto</span><span><b style="background:var(--abst)"></b>pudo votar y no votó</span></div>
+</header>
+
+<section class="mapband" aria-label="Mapa por sección censal">
+  <div style="min-width:0">
+    <div class="controls">
+      <label for="var">Qué se pinta
+        <select id="var"></select></label>
+      <label for="town">Acercar a
+        <select id="town"><option value="">Toda Cataluña</option></select></label>
+      <button id="reset" type="button">Ver Cataluña</button>
+    </div>
+    <div class="mapwrap">
+      <svg id="map" role="img" aria-label="Mapa de secciones censales de Cataluña"></svg>
+    </div>
+    <div class="ramp" id="ramp"></div>
+  </div>
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+</section>
+
+<article class="col">
+  <h2>Dos maneras de no votar</h2>
+  <p>Salt, Lloret de Mar, Salou y Figueres son los municipios catalanes de más de 20.000 habitantes donde menos adultos votan: entre 34 y 39 de cada 100 empadronados. El primer motivo no es el desinterés: entre el 29% y el 39% de sus adultos son extranjeros sin derecho a voto en unas generales. Pero los que sí pueden votar también votan menos: un 55% en Salt y Figueres y un 58% en Lloret, entre siete y diez puntos por debajo de la media catalana (65%). Son dos fenómenos que se suman y que la cifra oficial de participación mezcla, porque solo divide por el censo.</p>
+  <p>Guissona es el caso extremo del primer fenómeno: la industria cárnica ha atraído tanta población extranjera que más de la mitad de sus adultos no puede votar, y solo 29 de cada 100 lo hicieron, aunque la participación sobre el censo (61%) es casi normal. En el otro extremo, Sant Cugat del Vallès combina renta alta, universitarios y pocos extranjeros: vota el 72% de su censo y 63 de cada 100 adultos.</p>
+  <div class="tbl out"><table id="compare"></table></div>
+  <p class="note" style="margin-top:8px">Participación = votos emitidos / censo electoral residente (CER). Adultos = población de 18 años o más (Atlas de Renta del INE, 1 de enero de 2023). Sin derecho a voto ≈ adultos residentes − censo electoral. Las líneas recorren las generales de 2015, 2016, abril de 2019, noviembre de 2019 y 2023.</p>
+
+  <h2>Qué separa una sección que vota de una que no</h2>
+  <p>Ordenando las 5.115 secciones de Cataluña en cinco grupos iguales según cada variable, la pauta es la misma: donde hay menos renta, menos estudios superiores, más paro, más extranjeros o población más joven, se vota menos. La barra completa (con el número encima) es la participación entre quienes pueden votar; su parte oscura, qué parte de todos los adultos residentes votó. La franja clara entre ambas crece donde hay más vecinos sin derecho a voto.</p>
+  <div class="small-multiples" id="sm"></div>
+
+  <h2>Lo que pesa cuando se mira todo a la vez</h2>
+  <p>Estas variables van juntas: las secciones pobres también tienen menos universitarios, más paro y más extranjeros. Un modelo que las considera a la vez (regresión ponderada por censo, 5.041 secciones) explica <span class="num" id="r2"></span> de las diferencias de participación entre secciones. Cada barra indica cuántos puntos cambia la participación cuando la variable sube una desviación típica y las demás se mantienen fijas.</p>
+  <div id="coef"></div>
+  <p class="callout">Lo que más pesa es la educación, a mucha distancia de todo lo demás, seguida del paro. La renta, que por sí sola es lo que más se parece al mapa de la abstención, deja de sumar cuando se tienen en cuenta los estudios y el empleo: la pobreza se asocia a votar menos a través de esas dos cosas.</p>
+  <p>Hay efectos que no son económicos. El porcentaje de extranjeros sigue restando participación incluso entre quienes sí tienen derecho a voto, y las secciones con más españoles nacidos en el extranjero también votan menos. Es plausible que influyan los hogares mixtos y unas campañas que apenas se dirigen a estos vecinos, aunque los datos agregados no lo pueden demostrar. Parte del efecto puede ser inflación del padrón: personas empadronadas que ya se han ido y que cuentan como abstención. Las segundas residencias y el alquiler también restan: en la costa hay empadronados que pasan buena parte del año en otro lugar, y en una elección celebrada el 23 de julio eso se nota. La edad suma: los barrios más envejecidos votan más.</p>
+  <p>Una advertencia necesaria: son datos por sección, no por persona. Dicen dónde se vota menos, no que cada extranjero nacionalizado o cada parado vote menos. Para afirmar eso hacen falta encuestas individuales.</p>
+
+  <h2>2023: la otra abstención</h2>
+  <p>Hay una segunda abstención, coyuntural, que no sigue la renta sino el voto. Entre noviembre de 2019 y julio de 2023 la participación cayó 6,7 puntos en Cataluña, pero mucho más donde el independentismo era más fuerte. En el cuarto de secciones con más voto a ERC, Junts y la CUP en 2019, la participación bajó <span class="num" id="d-hi"></span> puntos; en el cuarto con menos, <span class="num" id="d-lo"></span>. El voto independentista pasó del 42% al 28% de los votos emitidos.</p>
+  <div id="indep"></div>
+  <p>Por eso los pueblos pequeños del interior, que siguen votando más que la media, perdieron más participación que las ciudades del área metropolitana. Pero en el conjunto de Cataluña la diferencia entre campo y ciudad es pequeña: Barcelona vota más que la media (67%) porque sus barrios ricos compensan a los pobres. La gran división no es territorial, es social, y pasa por dentro de cada ciudad. En Salt, Lloret o Figueres la abstención alta no es nueva: se repite elección tras elección desde 2015.</p>
+  <div id="sizehist"></div>
+
+  <h2>Las secciones que menos votan</h2>
+  <p>Las participaciones más bajas de Cataluña no están donde hay más extranjeros. Están en secciones de Figueres, El Prat, Badalona, Lleida, Sant Adrià de Besòs, Reus o Girona con paros por encima del 40%, rentas de 10.000 a 13.000 euros por unidad de consumo y menos de un 10% de adultos con estudios superiores. Salvo en una del Raval, la mayoría de los vecinos tiene la nacionalidad española, y aun así vota entre uno de cada cuatro y uno de cada tres inscritos. Es la abstención de la exclusión social, y es la que menos aparece en las notas de participación.</p>
+  <div class="tbl out"><table id="low"></table></div>
+  <p class="note" style="margin-top:8px">Secciones con más de 300 electores. En alguna sección, como la del Raval que aparece en la lista, el censo electoral supera a los adultos estimados (habitual donde hay muchas inscripciones en domicilios de servicios sociales) y el grupo "sin derecho a voto" se pone a cero.</p>
+
+  <h2>Método y fuentes</h2>
+  <ul class="method">
+    <li><b>Resultados:</b> elecciones al Congreso de 2015, 2016, abril y noviembre de 2019 y julio de 2023, por mesa, agregadas a sección censal. Microdatos del Ministerio del Interior, en la versión procesada del paquete <a href="https://github.com/dadosdelaplace/pollspain" target="_blank" rel="noopener">pollspain</a>. Se excluye el voto de residentes en el extranjero (CERA).</li>
+    <li><b>Renta, edad y nacionalidad:</b> Atlas de Distribución de Renta de los Hogares del INE, datos de 2023 por sección (renta por unidad de consumo, edad media, % de población española), vía <a href="https://github.com/pablogguz/ineAtlas.data" target="_blank" rel="noopener">ineAtlas.data</a>.</li>
+    <li><b>Estudios, paro, vivienda y nacidos en el extranjero:</b> Censo de Población y Viviendas 2021 del INE por sección. Españoles nacidos fuera ≈ % nacidos en el extranjero − % extranjeros.</li>
+    <li><b>Por qué generales y no municipales o Parlament:</b> son las únicas con serie por mesa disponible desde este entorno, y tienen una ventaja: en el Congreso solo votan españoles, de modo que la frontera entre "sin derecho" y "abstención" es limpia. En las municipales votan además los ciudadanos de la UE y de algunos países con convenio, lo que reduciría el grupo "sin derecho a voto" en la costa.</li>
+    <li><b>Idescat:</b> no se ha podido consultar desde este entorno; las cifras demográficas son del INE.</li>
+    <li><b>Limitaciones:</b> la población adulta se estima con el % de menores de 18 del Atlas; el censo electoral de julio y la población de enero no son exactamente la misma foto; el Censo 2021 no cubre 74 secciones creadas después y el Atlas no da renta en 20.</li>
+  </ul>
+  <p class="note">Datos limpios: catalunya_secciones_2023.csv y .geojson, el histórico por sección y las tablas de Girona, en la carpeta abstencion del proyecto.</p>
+  <footer class="note">Análisis por sección censal. Elaboración propia con datos del Ministerio del Interior y del INE.</footer>
+</article>
+
+</div>
+
+<script>
+const MAP = __MAP__;
+MAP.secs = MAP.paths.map((d,i)=>{ const o={d}; for(const k in MAP.cols) o[k]=MAP.cols[k][i]; o.mun_name=MAP.names[o.mun_name]||''; return o; });
+const S = __SUM__;
+const $ = s => document.querySelector(s);
+const pct = (v,d=0) => v==null||isNaN(v) ? '–' : (v*100).toFixed(d).replace('.',',')+'%';
+const eur = v => v==null ? '–' : Math.round(v).toLocaleString('es-ES')+' €';
+const pp = v => (v*100).toFixed(1).replace('.',',');
+
+// ---- lede & 100 dots
+const T=S.totals, vote=T.voters/T.adults, nor=T.sin/T.adults, ab=1-vote-nor;
+let nv=Math.round(vote*100), nn=Math.round(nor*100), na=100-nv-nn;
+$('#l-vote').textContent=nv; $('#l-no').textContent=nn; $('#l-abst').textContent=na;
+$('#hundred').innerHTML = Array.from({length:100},(_,i)=>`<i style="background:var(${i<nv?'--vote':i<nv+nn?'--noright':'--abst'})"></i>`).join('');
+
+// ---- map vars
+const RAMP=['#eef1fb','#d3daf3','#b0bde8','#8797d8','#5f70c2','#3d4ba3','#252f78','#151b4d'];
+const VARS=[
+ {k:'abst',  name:'Abstención entre quienes pueden votar (23J)', f:p=>p.turnout==null?null:1-p.turnout, dom:[.2,.5], fmt:pct, hi:'más abstención'},
+ {k:'novota',name:'Adultos residentes que no votaron', f:p=>p.pct_ad_vota==null?null:1-p.pct_ad_vota, dom:[.25,.75], fmt:pct, hi:'más adultos sin votar'},
+ {k:'sin',   name:'Adultos sin derecho a voto', f:p=>p.pct_ad_sinderecho, dom:[0,.5], fmt:pct, hi:'más adultos sin derecho'},
+ {k:'drop',  name:'Caída de participación nov. 2019 → 2023', f:p=>p.drop_19_23, dom:[.02,.15], fmt:v=>v==null?'–':pp(v)+' p.', hi:'más caída'},
+ {k:'inc',   name:'Renta por unidad de consumo (oscuro = más baja)', f:p=>p.net_income_equiv, dom:[32000,14000], fmt:eur, hi:'menos renta'},
+ {k:'for',   name:'Población extranjera (Censo 2021)', f:p=>p.pct_foreign, dom:[.04,.45], fmt:pct, hi:'más extranjeros'},
+ {k:'edu',   name:'Adultos sin estudios superiores', f:p=>p.pct_higher_ed_completed==null?null:1-p.pct_higher_ed_completed, dom:[.5,.92], fmt:pct, hi:'menos estudios'},
+ {k:'unemp', name:'Tasa de paro (Censo 2021)', f:p=>p.unemployment_rate, dom:[.05,.28], fmt:pct, hi:'más paro'},
+ {k:'age',   name:'Edad media (oscuro = más joven)', f:p=>p.mean_age, dom:[48,36], fmt:v=>v==null?'–':v.toFixed(1).replace('.',',')+' años', hi:'más joven'},
+ {k:'ind',   name:'Voto independentista nov. 2019', f:p=>p.indep_share19, dom:[.3,.85], fmt:pct, hi:'más independentista'},
+];
+const sel=$('#var'); VARS.forEach((v,i)=>sel.add(new Option(v.name,i)));
+function color(v,dom){ if(v==null||isNaN(v)) return 'var(--empty)'; let t=(v-dom[0])/(dom[1]-dom[0]); t=Math.max(0,Math.min(.9999,t)); return RAMP[Math.floor(t*RAMP.length)]; }
+
+const svg=$('#map'); const NS='http://www.w3.org/2000/svg';
+const full=[0,0,MAP.W,MAP.H]; svg.setAttribute('viewBox',full.join(' '));
+const gS=document.createElementNS(NS,'g'), gM=document.createElementNS(NS,'g'), gL=document.createElementNS(NS,'g');
+svg.append(gS,gM,gL);
+const paths=MAP.secs.map(p=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',p.d); e.setAttribute('class','s'); e.setAttribute('tabindex','-1'); e.__p=p; gS.appendChild(e); return e;});
+MAP.muns.forEach(m=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',m.d); e.setAttribute('class','m'); gM.appendChild(e);});
+let labelScale=1;
+function drawLabels(){ gL.innerHTML=''; for(const [n,[x,y]] of Object.entries(MAP.labels)){ const t=document.createElementNS(NS,'text'); t.setAttribute('x',x); t.setAttribute('y',y); t.setAttribute('text-anchor','middle'); t.style.fontSize=(11*labelScale)+'px'; t.style.strokeWidth=(3*labelScale)+'px'; t.textContent=n; if(['Salt','Lloret de Mar','Figueres'].includes(n)){t.style.fontWeight='600'; t.style.fill='var(--accent)';} gL.appendChild(t);} }
+drawLabels();
+
+function paint(){ const v=VARS[+sel.value]; paths.forEach(e=>e.setAttribute('fill',color(v.f(e.__p),v.dom)));
+  const lo=v.fmt(v.dom[0]), hi=v.fmt(v.dom[1]);
+  $('#ramp').innerHTML=`<span>${lo}</span><span class="sw">${RAMP.map(c=>`<span style="background:${c}"></span>`).join('')}</span><span>${hi}</span><span>· oscuro = ${v.hi}</span>`; }
+sel.addEventListener('change',()=>{paint(); if(cur) showSec(cur);});
+
+// towns
+const towns=[...new Set(MAP.secs.map(p=>p.mun_name))].sort((a,b)=>a.localeCompare(b,'es'));
+const tsel=$('#town'); const HL=['Salt','Lloret de Mar','Figueres','Guissona','Salou','Barcelona'];
+const og1=document.createElement('optgroup'); og1.label='Destacados'; HL.forEach(t=>og1.appendChild(new Option(t,t))); tsel.appendChild(og1);
+const og2=document.createElement('optgroup'); og2.label='Todos los municipios'; towns.forEach(t=>og2.appendChild(new Option(t,t))); tsel.appendChild(og2);
+function zoomTo(name){
+  paths.forEach(e=>e.classList.remove('sel'));
+  if(!name){ svg.setAttribute('viewBox',full.join(' ')); labelScale=1; drawLabels(); showProv(); return; }
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9; const mine=paths.filter(e=>e.__p.mun_name===name);
+  mine.forEach(e=>{const b=e.getBBox(); x0=Math.min(x0,b.x); y0=Math.min(y0,b.y); x1=Math.max(x1,b.x+b.width); y1=Math.max(y1,b.y+b.height);});
+  let w=x1-x0,h=y1-y0, pad=Math.max(w,h)*.9+25; w+=2*pad; h+=2*pad;
+  const ar=MAP.W/MAP.H; if(w/h<ar) w=h*ar; else h=w/ar;
+  const cx=(x0+x1)/2, cy=(y0+y1)/2; svg.setAttribute('viewBox',[cx-w/2,cy-h/2,w,h].join(' '));
+  labelScale=w/MAP.W; drawLabels(); gS.querySelectorAll('path').forEach(e=>e.style.strokeWidth=(.6*labelScale)+'px');
+  showMun(name);
+}
+tsel.addEventListener('change',()=>zoomTo(tsel.value));
+$('#reset').addEventListener('click',()=>{tsel.value=''; gS.querySelectorAll('path').forEach(e=>e.style.strokeWidth=''); zoomTo('');});
+
+// ---- panel
+function bar3(v,n,a){return `<div class="bar100" role="img" aria-label="votó ${pct(v)}, sin derecho ${pct(n)}, no votó ${pct(a)}"><span style="width:${v*100}%;background:var(--vote)"></span><span style="width:${n*100}%;background:var(--noright)"></span><span style="width:${a*100}%;background:var(--abst)"></span></div>`;}
+function spark(h,w=260,hh=64){ const ys=h.map(v=>v==null?null:v); const lo=.4,hi=.9; const X=i=>18+i*(w-36)/4, Y=v=>hh-14-(v-lo)/(hi-lo)*(hh-22);
+  const lab=['2015','2016','A19','N19','2023']; let pts=ys.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
+  return `<svg viewBox="0 0 ${w} ${hh}" width="100%" style="max-width:${w}px" role="img" aria-label="Participación por elección">
+   <line x1="8" x2="${w-8}" y1="${Y(.6)}" y2="${Y(.6)}" stroke="var(--rule)"/>
+   <polyline fill="none" stroke="var(--accent)" stroke-width="2" points="${pts.map(p=>p.join(',')).join(' ')}"/>
+   ${ys.map((v,i)=>v==null?'':`<circle cx="${X(i)}" cy="${Y(v)}" r="${i==4?3.5:2.2}" fill="var(--accent)"/>`).join('')}
+   ${lab.map((l,i)=>`<text x="${X(i)}" y="${hh-2}" text-anchor="middle">${l}</text>`).join('')}
+   ${ys[4]!=null?`<text class="lab" x="${X(4)}" y="${Y(ys[4])+14}" text-anchor="middle">${pct(ys[4])}</text>`:''}</svg>`; }
+const panel=$('#panel'); let cur=null;
+function showSec(p){
+  cur=p; const v=p.pct_ad_vota??0, n=p.pct_ad_sinderecho??0, a=Math.max(0,1-v-n);
+  const V=VARS[+sel.value];
+  panel.innerHTML=`<div class="kicker">Sección ${p.tract_code.slice(5,7)}-${p.tract_code.slice(7)} · ${p.tract_code}</div><h3>${p.mun_name}</h3>
+  <div><div class="note" style="margin-bottom:6px">De cada 100 adultos residentes</div>${bar3(v,n,a)}
+  <div class="legend3" style="margin-top:6px"><span><b style="background:var(--vote)"></b>${Math.round(v*100)} votó</span><span><b style="background:var(--noright)"></b>${Math.round(n*100)} sin derecho</span><span><b style="background:var(--abst)"></b>${Math.round(a*100)} no votó</span></div></div>
+  <div><div class="note">Participación sobre censo, generales</div>${spark([p.t2015_12,p.t2016_06,p.t2019_04,p.t2019_11,p.t2023_07])}</div>
+  <dl class="kv">
+   <dt>${V.name.replace(/ \(oscuro.*\)/,'')}</dt><dd><b>${V.fmt(V.f(p))}</b></dd>
+   <dt>Censo electoral / votantes</dt><dd>${(p.electorate||0).toLocaleString('es-ES')} / ${(p.voters||0).toLocaleString('es-ES')}</dd>
+   <dt>Renta por unidad de consumo</dt><dd>${eur(p.net_income_equiv)}</dd>
+   <dt>Edad media</dt><dd>${p.mean_age?.toFixed(1).replace('.',',')} años</dd>
+   <dt>Extranjeros</dt><dd>${pct(p.pct_foreign)}</dd>
+   <dt>Españoles nacidos fuera</dt><dd>${pct(p.pct_naturalized)}</dd>
+   <dt>Con estudios superiores</dt><dd>${pct(p.pct_higher_ed_completed)}</dd>
+   <dt>Paro</dt><dd>${pct(p.unemployment_rate)}</dd>
+   <dt>Viviendas secundarias</dt><dd>${pct(p.pct_secondary)}</dd>
+   <dt>Voto independentista N19</dt><dd>${pct(p.indep_share19)}</dd>
+  </dl>`;
+}
+function aggPanel(title,kick,list,hist){
+  const ad=list.reduce((s,p)=>s+(p.adults||0),0), vo=list.reduce((s,p)=>s+(p.voters||0),0), el=list.reduce((s,p)=>s+(p.electorate||0),0);
+  const sin=list.reduce((s,p)=>s+Math.max(0,(p.adults||0)-(p.electorate||0)),0);
+  const v=vo/ad,n=sin/ad,a=Math.max(0,1-v-n);
+  const hk=['t2015_12','t2016_06','t2019_04','t2019_11','t2023_07'];
+  const h=hk.map(k=>{let e=0,w=0; list.forEach(p=>{if(p[k]!=null){e+=p[k]*p.electorate; w+=p.electorate;}}); return w?e/w:null;});
+  panel.innerHTML=`<div class="kicker">${kick}</div><h3>${title}</h3>
+  <div><div class="note" style="margin-bottom:6px">De cada 100 adultos residentes</div>${bar3(v,n,a)}
+  <div class="legend3" style="margin-top:6px"><span><b style="background:var(--vote)"></b>${Math.round(v*100)} votó</span><span><b style="background:var(--noright)"></b>${Math.round(n*100)} sin derecho</span><span><b style="background:var(--abst)"></b>${Math.round(a*100)} no votó</span></div></div>
+  <div><div class="note">Participación sobre censo, generales</div>${spark(h)}</div>
+  <dl class="kv"><dt>Secciones</dt><dd>${list.length}</dd><dt>Adultos residentes</dt><dd>${Math.round(ad).toLocaleString('es-ES')}</dd><dt>Censo electoral</dt><dd>${el.toLocaleString('es-ES')}</dd><dt>Votantes 23J</dt><dd>${vo.toLocaleString('es-ES')}</dd></dl>
+  <p class="note">Pasa el cursor o toca una sección para ver su ficha.</p>`; cur=null;
+}
+function showProv(){ aggPanel('Cataluña','947 municipios',MAP.secs); }
+function showMun(n){ aggPanel(n,'Municipio',MAP.secs.filter(p=>p.mun_name===n)); paths.forEach(e=>{ if(e.__p.mun_name===n) e.classList.add('sel');}); }
+let pinned=null;
+gS.addEventListener('mouseover',e=>{ if(e.target.__p && !pinned) showSec(e.target.__p);});
+gS.addEventListener('click',e=>{ if(!e.target.__p) return; pinned=pinned===e.target?null:e.target; paths.forEach(x=>{ if(x.__p.mun_name!==tsel.value) x.classList.remove('sel');}); if(pinned){pinned.classList.add('sel'); pinned.parentNode.appendChild(pinned);} showSec(e.target.__p);});
+gS.addEventListener('mouseleave',()=>{ if(!pinned){ tsel.value?showMun(tsel.value):showProv(); }});
+sel.value=0; paint(); showProv();
+
+// ---- compare table
+$('#compare').innerHTML=`<thead><tr><th>Dónde</th><th>Población</th><th>De cada 100 adultos</th><th>Partic. 23J</th><th>Renta u.c.</th><th>Extranj.</th><th>Univ.</th><th>2015 → 2023</th></tr></thead><tbody>${
+ S.compare.map(c=>`<tr><td>${c.name}${c.n?` <span style="color:var(--muted)">(${c.n})</span>`:''}</td><td>${Math.round(c.pop).toLocaleString('es-ES')}</td><td class="barcell">${bar3(c.vota,c.sin,Math.max(0,1-c.vota-c.sin))}<div style="font-size:.7rem;color:var(--muted);margin-top:3px"><span class="c-vote">${Math.round(c.vota*100)}</span> · <span class="c-no">${Math.round(c.sin*100)}</span> · <span class="c-abst">${100-Math.round(c.vota*100)-Math.round(c.sin*100)}</span></div></td><td>${pct(c.turnout,1)}</td><td>${eur(c.income)}</td><td>${pct(c.foreign)}</td><td>${pct(c.univ)}</td><td>${spark(c.hist,150,40).replace(/<text[^>]*>[^<]*<\/text>/g,'')}</td></tr>`).join('')}</tbody>`;
+
+// ---- small multiples
+const SM=[['net_income_equiv','Renta por unidad de consumo',v=>Math.round(v/1000)+'k €'],['pct_higher_ed_completed','Con estudios superiores',v=>pct(v)],['unemployment_rate','Tasa de paro',v=>pct(v)],['pct_foreign','Población extranjera',v=>pct(v)],['mean_age','Edad media',v=>v.toFixed(0)+' años']];
+$('#sm').innerHTML=SM.map(([k,t,f])=>{ const q=S.quint[k]; const W=240,H=170,x0=30,bw=(W-36)/5, Y=v=>H-34-v*(H-50)/.8;
+  return `<div class="sm"><h3>${t}</h3><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Participación por quintil de ${t}">
+   ${[.2,.4,.6].map(g=>`<line x1="${x0}" x2="${W}" y1="${Y(g)}" y2="${Y(g)}" stroke="var(--rule)"/><text x="${x0-4}" y="${Y(g)+3}" text-anchor="end">${Math.round(g*100)}%</text>`).join('')}
+   ${q.map((d,i)=>`<rect x="${x0+i*bw+4}" width="${bw-8}" y="${Y(d.turnout)}" height="${Y(0)-Y(d.turnout)}" fill="var(--accent)" opacity=".3"/><rect x="${x0+i*bw+4}" width="${bw-8}" y="${Y(d.vota)}" height="${Y(0)-Y(d.vota)}" fill="var(--accent)"/><text class="lab" x="${x0+i*bw+bw/2}" y="${Y(d.turnout)-4}" text-anchor="middle">${Math.round(d.turnout*100)}</text><text x="${x0+i*bw+bw/2}" y="${H-20}" text-anchor="middle">${f(d.lo)}</text>`).join('')}
+   <text x="${x0}" y="${H-4}">← menos</text><text x="${W-8}" y="${H-4}" text-anchor="end">más →</text></svg></div>`;}).join('')
+ + `<div class="note" style="align-self:center">Cada columna es un quintil de secciones (unas 107), con su valor mínimo debajo. Altura total y número: participación sobre el censo. <b style="color:var(--accent)">Parte oscura</b>: votantes sobre adultos residentes.</div>`;
+
+// ---- coefficients
+$('#r2').textContent=Math.round(S.reg.r2*100)+'%';
+const NAMES={pct_higher_ed_completed:'Estudios superiores',unemployment_rate:'Paro',mean_age:'Edad media',pct_foreign:'Extranjeros',pct_secondary:'Viviendas secundarias',pct_naturalized:'Españoles nacidos fuera',pct_rented:'Viviendas de alquiler',net_income_equiv:'Renta (u.c.)'};
+(function(){ const c=S.reg.coef, W=620, rh=30, H=c.length*rh+34, mid=330, sc=80; const X=v=>mid+v*sc/2;
+  $('#coef').innerHTML=`<div class="tbl"><svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:460px" role="img" aria-label="Efecto de cada variable en puntos de participación">
+  ${[-2,-1,0,1,2,3,4].map(t=>`<line x1="${X(t)}" x2="${X(t)}" y1="0" y2="${H-24}" stroke="var(--rule)" ${t==0?'stroke-width="1.5"':''}/><text x="${X(t)}" y="${H-8}" text-anchor="middle">${t>0?'+':''}${t} p.</text>`).join('')}
+  ${c.map((d,i)=>{const y=i*rh+8; const col=d.b>=0?'var(--vote)':'var(--abst)'; return `<text class="lab" x="150" y="${y+14}" text-anchor="end">${NAMES[d.var]}</text>
+   <rect x="${Math.min(X(0),X(d.b))}" y="${y+3}" width="${Math.abs(X(d.b)-X(0))}" height="16" fill="${col}"/>
+   <line x1="${X(d.b-1.96*d.se)}" x2="${X(d.b+1.96*d.se)}" y1="${y+11}" y2="${y+11}" stroke="var(--fg)" stroke-width="1"/>
+   <text x="${d.b>=0?X(Math.max(d.b+1.96*d.se,0))+6:X(Math.min(d.b-1.96*d.se,0))-6}" y="${y+15}" text-anchor="${d.b>=0?'start':'end'}">${d.b>0?'+':''}${d.b.toFixed(1).replace('.',',')}</text>`;}).join('')}
+  </svg></div><p class="note">Puntos de participación por cada desviación típica de la variable (p. ej., +${(c[0].sd*100).toFixed(0)} puntos de universitarios o +${(c[2].sd).toFixed(0)} años de edad media). La línea fina es el intervalo de confianza del 95% (bootstrap, 500 réplicas). Si cruza el cero, el efecto no se distingue de nada.</p>`; })();
+
+// ---- indep
+(function(){ const q=S.indep; $('#d-hi').textContent=pp(q[3].t19-q[3].t23).replace(/,\d$/,m=>m); $('#d-lo').textContent=pp(q[0].t19-q[0].t23);
+  const W=620,H=210, x0=150, X=v=>x0+(v-.5)*(W-x0-30)/.35;
+  $('#indep').innerHTML=`<div class="tbl"><svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:460px" role="img" aria-label="Participación 2019 y 2023 por cuartil de voto independentista">
+  ${[.5,.6,.7,.8].map(t=>`<line x1="${X(t)}" x2="${X(t)}" y1="0" y2="${H-26}" stroke="var(--rule)"/><text x="${X(t)}" y="${H-10}" text-anchor="middle">${t*100}%</text>`).join('')}
+  ${q.map((d,i)=>{const y=14+i*42; return `<text class="lab" x="${x0-12}" y="${y+4}" text-anchor="end">${Math.round(d.lo*100)}–${Math.round(d.hi*100)}% indep.</text>
+   <line x1="${X(d.t23)}" x2="${X(d.t19)}" y1="${y}" y2="${y}" stroke="var(--abst)" stroke-width="3"/>
+   <circle cx="${X(d.t19)}" cy="${y}" r="6" fill="var(--vote)"/><circle cx="${X(d.t23)}" cy="${y}" r="6" fill="var(--abst)"/>
+   <text x="${X(d.t19)+10}" y="${y+4}">${pct(d.t19)}</text><text x="${X(d.t23)-10}" y="${y+4}" text-anchor="end">${pct(d.t23)}</text>`;}).join('')}
+  </svg></div><div class="legend3"><span><b style="background:var(--vote)"></b>noviembre 2019</span><span><b style="background:var(--abst)"></b>julio 2023</span><span>Secciones agrupadas en cuartos según el voto a ERC, Junts y CUP en noviembre de 2019</span></div>`;})();
+
+// ---- size history
+(function(){ const h=S.size_hist, keys=Object.keys(h), W=660,H=230, X=i=>60+i*(W-200)/4, Y=v=>H-30-(v-.55)*(H-50)/.3;
+  const lab=['2015','2016','abr. 2019','nov. 2019','2023']; const op=[1,.75,.5,.3];
+  const LY=keys.map(k=>Y(h[k][4])+4); for(let j=1;j<LY.length;j++) if(LY[j]-LY[j-1]<12) LY[j]=LY[j-1]+12;
+  $('#sizehist').innerHTML=`<h3 style="margin-top:24px">Participación por tamaño de municipio, generales 2015–2023</h3><div class="tbl"><svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:460px" role="img" aria-label="Participación por tamaño de municipio">
+  ${[.6,.7,.8].map(t=>`<line x1="50" x2="${W-110}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--rule)"/><text x="44" y="${Y(t)+4}" text-anchor="end">${t*100}%</text>`).join('')}
+  ${lab.map((l,i)=>`<text x="${X(i)}" y="${H-8}" text-anchor="middle">${l}</text>`).join('')}
+  ${keys.map((k,j)=>`<polyline fill="none" stroke="var(--accent)" stroke-opacity="${op[j]}" stroke-width="2.4" points="${h[k].map((v,i)=>X(i)+','+Y(v)).join(' ')}"/>
+   ${h[k].map((v,i)=>`<circle cx="${X(i)}" cy="${Y(v)}" r="3" fill="var(--accent)" fill-opacity="${op[j]}"/>`).join('')}
+   <text class="lab" x="${X(4)+10}" y="${LY[j]}">${k} hab.</text>`).join('')}
+  </svg></div>`;})();
+
+// ---- low table
+$('#low').innerHTML=`<thead><tr><th>Sección</th><th>Partic.</th><th>Adultos que votan</th><th>Sin derecho</th><th>Renta u.c.</th><th>Extranj.</th><th>Univ.</th><th>Paro</th></tr></thead><tbody>${
+ S.low.map(r=>`<tr><td>${r.mun_name} <span style="color:var(--muted)">${r.tract_code.slice(5,7)}-${r.tract_code.slice(7)}</span></td><td>${pct(r.turnout)}</td><td>${pct(r.pct_ad_vota)}</td><td>${pct(r.pct_ad_sinderecho)}</td><td>${eur(r.net_income_equiv)}</td><td>${pct(r.pct_foreign)}</td><td>${pct(r.pct_higher_ed_completed)}</td><td>${pct(r.unemployment_rate)}</td></tr>`).join('')}</tbody>`;
+</script>

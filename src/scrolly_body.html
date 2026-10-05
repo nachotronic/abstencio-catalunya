@@ -1,0 +1,62 @@
+<section class="scrolly" id="scrolly">
+  <div class="sticky" id="sticky">
+    <div id="deck" aria-label="Mapa 3D de las secciones censales de Cataluña" role="img"></div>
+    <div class="maplegend" id="maplegend"></div>
+    <div class="fallback" id="fallback" hidden>Tu navegador no puede mostrar el mapa 3D (WebGL desactivado). El texto y los gráficos de abajo recogen los mismos datos.</div>
+    <div class="explore" id="explore" hidden>
+      <label for="v3">Color
+        <select id="v3"></select></label>
+      <label for="h3">Altura
+        <select id="h3"></select></label>
+      <label for="town3">Ir a
+        <select id="town3"><option value="">Cataluña</option></select></label>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-step="cat"><div class="card">
+      <div class="kicker">5.115 secciones censales</div>
+      <p>Esto es Cataluña dividida en sus secciones censales, la unidad más pequeña con resultados electorales. Cuanto más oscuro, más abstención el 23 de julio de 2023 entre quienes podían votar.</p>
+      <p>Visto así, el mapa parece decir que la abstención es un problema de la costa y de algunos barrios. Pero solo cuenta a una parte de los vecinos.</p>
+    </div></div>
+    <div class="step" data-step="cat3d"><div class="card">
+      <div class="kicker">La altura cuenta personas</div>
+      <p>Ahora la altura de cada sección indica cuántos de cada 100 adultos que viven en ella no votaron, por el motivo que sea. En toda Cataluña son <b class="c-no">46</b>: <b class="c-abst">29</b> pudieron votar y no lo hicieron, y <b class="c-no">17</b> no tenían derecho porque no son españoles.</p>
+    </div></div>
+    <div class="step" data-step="sin"><div class="card">
+      <div class="kicker">Sin derecho a voto</div>
+      <p>Si pintamos solo a los adultos sin nacionalidad española, aparece otro mapa: la Costa Brava, Salou, Guissona, Vic, Salt y buena parte del área de Barcelona. Ninguna nota de participación los cuenta, porque no están en el censo.</p>
+    </div></div>
+    <div class="step" data-step="salt"><div class="card">
+      <div class="kicker">Salt · 33.232 habitantes</div>
+      <p>En Salt votaron <b class="c-vote">34</b> de cada 100 adultos residentes, el valor más bajo de los municipios catalanes de más de 20.000 habitantes. <b class="c-no">39</b> no podían votar.</p>
+      <p>Pero entre los que sí podían, la participación fue del 55%, diez puntos menos que la media catalana. Y no es algo de 2023: Salt ha votado por debajo de la media en todas las generales desde 2015.</p>
+    </div></div>
+    <div class="step" data-step="lloret"><div class="card">
+      <div class="kicker">Lloret de Mar · 40.514 habitantes</div>
+      <p>Lloret repite el patrón: <b class="c-vote">36</b> votaron, <b class="c-no">38</b> no tenían derecho y <b class="c-abst">26</b> se abstuvieron. Aquí se añade un tercer factor: más de un tercio de las viviendas son segundas residencias, y en una elección en pleno julio hay empadronados que no estaban.</p>
+    </div></div>
+    <div class="step" data-step="figueres"><div class="card">
+      <div class="kicker">Figueres · 48.374 habitantes</div>
+      <p>En Figueres está la sección con menos participación de Cataluña: un 22%. No es la que tiene más extranjeros (solo un 17%). Es la que tiene un 58% de paro, 9.638 euros de renta por unidad de consumo y un 3% de adultos con estudios superiores.</p>
+      <p>Esa es la abstención que más pesa y la que menos se ve.</p>
+    </div></div>
+    <div class="step" data-step="bcn"><div class="card">
+      <div class="kicker">Área de Barcelona · la renta</div>
+      <p>En la ciudad de Barcelona, el 20% de secciones más ricas votó al 72%; el 20% más pobre, al 58%. Catorce puntos dentro de un mismo municipio.</p>
+      <p>Aquí el color es la renta (oscuro, más baja) y la altura, la abstención. Las torres más altas están en Ciutat Vella (54% de participación), Nou Barris, Sant Adrià de Besòs, Badalona y Santa Coloma.</p>
+    </div></div>
+    <div class="step" data-step="edu"><div class="card">
+      <div class="kicker">Lo que más pesa: los estudios</div>
+      <p>Con el color cambiado a adultos sin estudios superiores, el mapa encaja todavía mejor. Al poner todas las variables a la vez en un modelo, la educación es la que más explica la participación, seguida del paro. La renta deja de sumar cuando se tienen en cuenta esas dos.</p>
+    </div></div>
+    <div class="step" data-step="drop"><div class="card">
+      <div class="kicker">2023: la otra abstención</div>
+      <p>Hay una segunda abstención, que no sigue la renta sino el voto. El color es ahora el voto independentista de noviembre de 2019 y la altura, cuánta participación se perdió hasta julio de 2023.</p>
+      <p>En el cuarto de secciones más independentistas la participación cayó 9 puntos; en el menos independentista, 6. Por eso el interior, que sigue votando más, fue lo que más bajó.</p>
+    </div></div>
+    <div class="step" data-step="explore"><div class="card">
+      <div class="kicker">Tu turno</div>
+      <p>Arrastra para mover el mapa, usa los controles para cambiar el color y la altura y pasa el cursor (o toca) una sección para ver su ficha.</p>
+    </div></div>
+  </div>
+</section>

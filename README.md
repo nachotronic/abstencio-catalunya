@@ -1,0 +1,45 @@
+# ¿Quién no vota en Cataluña?
+
+Abstención en las elecciones generales (2015–2023) por sección censal en Cataluña, cruzada con renta, edad, estudios, paro y población extranjera.
+
+- `index.html`: pieza de scroll con mapa 3D (deck.gl + scrollama). La cámara vuela entre los lugares que nombra el texto y termina en un mapa plano para explorar.
+- `mapa.html`: mapa interactivo en 2D con los gráficos y la metodología.
+- `data/`: datos limpios por sección y municipio (CSV y GeoJSON).
+- `src/`: scripts en Python y plantillas con los que se han generado los datos y las páginas.
+
+## Publicar con GitHub Pages
+
+Settings → Pages → *Deploy from a branch* → `main` / `(root)`. Las dos páginas son autónomas: los datos van incrustados y las librerías se cargan desde unpkg.
+
+## Qué mide
+
+Para cada sección, de cada 100 adultos residentes:
+
+- **Votó**: votos emitidos el 23J de 2023.
+- **Sin derecho a voto**: adultos residentes menos censo electoral (en unas generales solo votan españoles).
+- **No votó**: el resto, es decir, la abstención entre quienes sí podían votar.
+
+La participación oficial (votos / censo) solo mide el último grupo.
+
+## Fuentes
+
+- Resultados por mesa del Congreso 2015, 2016, abril y noviembre de 2019 y julio de 2023 (Ministerio del Interior), vía [pollspaindata](https://github.com/dadosdelaplace/pollspaindata). Sin voto CERA.
+- Atlas de Distribución de Renta de los Hogares 2023 y Censo de Población y Viviendas 2021 del INE, por sección, vía [ineAtlas.data](https://github.com/pablogguz/ineAtlas.data), incluidos los contornos de las secciones de 2023.
+
+## Columnas principales (`data/catalunya_secciones_2023.csv`)
+
+| columna | significado |
+|---|---|
+| `tract_code` | código INE de sección (10 dígitos) |
+| `electorate`, `voters`, `turnout` | censo, votantes y participación del 23J de 2023 |
+| `t2015_12` … `t2023_07` | participación en cada general (solo si el código de sección no cambió) |
+| `adults`, `sin_derecho` | adultos residentes estimados y adultos sin derecho a voto |
+| `pct_ad_vota`, `pct_ad_sinderecho`, `pct_ad_abst` | reparto de cada 100 adultos residentes |
+| `net_income_equiv` | renta neta por unidad de consumo (2023) |
+| `mean_age`, `pct_over65`, `pct_spanish` | edad y nacionalidad (Atlas 2023) |
+| `pct_foreign`, `pct_naturalized`, `pct_higher_ed_completed`, `unemployment_rate`, `pct_rented`, `pct_secondary` | Censo 2021 |
+| `indep_share19`, `indep_share23`, `drop_19_23` | voto a ERC, Junts y CUP, y caída de participación entre 2019 y 2023 |
+
+## Limitaciones
+
+Son datos por sección, no por persona: indican dónde se vota menos, no quién. La población adulta se estima con el porcentaje de menores de 18 años del Atlas. El censo electoral de julio y la población de enero no son exactamente la misma foto. Los scripts de `src/` usan rutas locales de trabajo y sirven como documentación del proceso.
