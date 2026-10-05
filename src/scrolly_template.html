@@ -393,9 +393,9 @@ function townLayers() {
     boxes.push(dot, side === 'start' ? r : l); data.push({ ...d, side, fs });
   });
   return [
-    new deck.ScatterplotLayer({ id: 'towndots', data, getPosition: d => [d.pos[0], d.pos[1], 0], getRadius: 3, radiusUnits: 'pixels',
+    new deck.ScatterplotLayer({ id: 'towndots', parameters: { depthCompare: 'always', depthWriteEnabled: false }, data, getPosition: d => [d.pos[0], d.pos[1], 0], getRadius: 3, radiusUnits: 'pixels',
       getFillColor: d => d.hl ? [214,40,40,255] : fg, stroked: true, getLineColor: halo, lineWidthUnits: 'pixels', getLineWidth: 1.5 }),
-    new deck.TextLayer({ id: 'townnames', data, getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
+    new deck.TextLayer({ id: 'townnames', parameters: { depthCompare: 'always', depthWriteEnabled: false }, data, getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
       characterSet: 'auto', fontFamily: 'Bricolage Grotesque, Arial, sans-serif', fontWeight: 600, getSize: d => d.fs,
       getColor: d => d.hl ? [176,30,30,255] : fg, fontSettings: { sdf: true }, outlineWidth: 4, outlineColor: halo,
       getPixelOffset: d => [d.side === 'start' ? 7 : -7, 0], getTextAnchor: d => d.side, getAlignmentBaseline: 'center',
@@ -406,7 +406,7 @@ function layers() {
   const ls = [layer()];
   if (curScene === 'explore') ls.push(...townLayers());
   if (label) ls.push(new deck.TextLayer({
-    id: 'label', data: [label], getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
+    id: 'label', parameters: { depthCompare: 'always', depthWriteEnabled: false }, data: [label], getPosition: d => [d.pos[0], d.pos[1], 0], getText: d => d.name,
     characterSet: 'auto', fontFamily: 'Bricolage Grotesque, Arial, sans-serif', fontWeight: 700, getSize: 20,
     getColor: [22,26,43,255], background: true, getBackgroundColor: [255,255,255,235], backgroundPadding: [8,4],
     getPixelOffset: [0,-28], billboard: true, getTextAnchor: 'middle', getAlignmentBaseline: 'bottom'
