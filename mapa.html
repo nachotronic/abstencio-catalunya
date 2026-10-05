@@ -67,6 +67,9 @@ select:focus-visible,button:focus-visible,path:focus-visible{outline:2px solid v
 #map path.s{stroke:var(--mapstroke);stroke-width:.15;cursor:pointer;transition:opacity .15s}
 #map path.m{fill:none;stroke:var(--munstroke);stroke-width:.6;pointer-events:none}
 #map path.sel{stroke:var(--hl);stroke-width:1.6}
+#map circle.town{fill:var(--fg);stroke:var(--surface);pointer-events:none}
+#map circle.hl{fill:var(--accent)}
+#map text.hl{fill:var(--accent)}
 #map text{font-family:var(--mono);font-size:11px;fill:var(--fg);paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none}
 .ramp{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-top:8px;flex-wrap:wrap}
 .ramp .sw{display:flex;height:10px;width:220px;max-width:60vw}
@@ -205,7 +208,29 @@ svg.append(gS,gM,gL);
 const paths=MAP.secs.map(p=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',p.d); e.setAttribute('class','s'); e.setAttribute('tabindex','-1'); e.__p=p; gS.appendChild(e); return e;});
 MAP.muns.forEach(m=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',m.d); e.setAttribute('class','m'); gM.appendChild(e);});
 let labelScale=1;
-function drawLabels(){ gL.innerHTML=''; for(const [n,[x,y]] of Object.entries(MAP.labels)){ const t=document.createElementNS(NS,'text'); t.setAttribute('x',x); t.setAttribute('y',y); t.setAttribute('text-anchor','middle'); t.style.fontSize=(11*labelScale)+'px'; t.style.strokeWidth=(3*labelScale)+'px'; t.textContent=n; if(['Salt','Lloret de Mar','Figueres'].includes(n)){t.style.fontWeight='600'; t.style.fill='var(--accent)';} gL.appendChild(t);} }
+const TOWNS=(()=>{const a={};MAP.secs.forEach(p=>{const n=p.mun_name;if(!n||p.cx==null)return;const w=p.population||1;const o=a[n]||(a[n]={n,pop:0,x:0,y:0});o.pop+=w;o.x+=p.cx*w;o.y+=p.cy*w;});
+  const CAP=['Barcelona','Girona','Lleida','Tarragona'],HLT=['Salt','Lloret de Mar','Figueres'],EXTRA=['Vielha e Mijaran','Puigcerdà',"Seu d'Urgell, La",'Tremp','Tortosa','Olot','Vic','Manresa','Igualada','Guissona','Salou','Reus','Balaguer','Berga','Solsona','Amposta','Ripoll','Sort','Cervera','Valls','Mollerussa','Banyoles','Palafrugell','Blanes','Vendrell, El','Vilafranca del Penedès','Falset','Gandesa',"Móra d'Ebre",'Granollers','Vilanova i la Geltrú'];
+  return Object.values(a).map(o=>({n:o.n,pop:o.pop,x:o.x/o.pop,y:o.y/o.pop,tier:CAP.includes(o.n)?0:HLT.includes(o.n)?1:o.pop>=60000?2:EXTRA.includes(o.n)?3:4}))
+    .sort((p,q)=>p.tier-q.tier||q.pop-p.pop);})();
+const shown=n=>n.replace(/^(.*), (L')$/,'$2$1').replace(/^(.*), (La|El|Els|Les|Lo)$/,'$2 $1');
+function drawLabels(){ gL.innerHTML='';
+  const vb=svg.viewBox.baseVal, px=svg.getBoundingClientRect().width||MAP.W, s=vb.width/px, k=MAP.W/vb.width;
+  const boxes=[], hit=b=>b[0]<vb.x||b[1]<vb.y||b[2]>vb.x+vb.width||b[3]>vb.y+vb.height||boxes.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]);
+  let n=0; const max=px<500?18:45;
+  for(const t of TOWNS){ if(n>=max) break;
+    if(t.tier===4 && t.pop<25000/(k*k)) continue;
+    if(t.x<vb.x||t.y<vb.y||t.x>vb.x+vb.width||t.y>vb.y+vb.height) continue;
+    const fs=(t.tier===0?13:12)*s, r=(t.tier===0?3:2.3)*s, name=shown(t.n), w=name.length*fs*.62, g=5*s;
+    const dot=[t.x-r,t.y-r,t.x+r,t.y+r]; if(hit(dot)) continue;
+    const opts=[[t.x+g,t.y+fs*.35,'start',[t.x+g,t.y-fs*.6,t.x+g+w,t.y+fs*.45]],[t.x-g,t.y+fs*.35,'end',[t.x-g-w,t.y-fs*.6,t.x-g,t.y+fs*.45]],
+      [t.x,t.y-g-fs*.2,'middle',[t.x-w/2,t.y-g-fs*1.1,t.x+w/2,t.y-g]],[t.x,t.y+g+fs*.8,'middle',[t.x-w/2,t.y+g,t.x+w/2,t.y+g+fs*1.05]]];
+    const o=opts.find(o=>!hit(o[3])); if(!o) continue;
+    boxes.push(dot,o[3]); n++;
+    const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',t.x); c.setAttribute('cy',t.y); c.setAttribute('r',r); c.setAttribute('class','town'+(t.tier===1?' hl':'')); c.style.strokeWidth=(1.2*s)+'px'; gL.appendChild(c);
+    const e=document.createElementNS(NS,'text'); e.setAttribute('x',o[0]); e.setAttribute('y',o[1]); e.setAttribute('text-anchor',o[2]); e.style.fontSize=fs+'px'; e.style.strokeWidth=(3*s)+'px'; e.textContent=name;
+    if(t.tier<=1) e.style.fontWeight='600'; if(t.tier===1) e.classList.add('hl'); gL.appendChild(e); }
+}
+addEventListener('resize',()=>{clearTimeout(drawLabels.t); drawLabels.t=setTimeout(drawLabels,150);});
 drawLabels();
 
 function paint(){ const v=VARS[+sel.value]; paths.forEach(e=>e.setAttribute('fill',color(v.f(e.__p),v.dom)));
