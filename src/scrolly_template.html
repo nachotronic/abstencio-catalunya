@@ -90,8 +90,10 @@ footer{margin-top:40px}
 .sticky{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;height:100svh;width:100%;background:var(--mapbg);overflow:hidden}
 #deck{position:absolute;inset:0}
 .steps{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;padding-bottom:30vh;pointer-events:none}
-.step{min-height:95vh;display:flex;align-items:center;padding-inline:max(16px,4vw)}
+.step{min-height:125vh;display:flex;align-items:center;padding-inline:max(16px,4vw)}
 .step:first-child{padding-top:10vh}
+.step.tall{align-items:flex-start}
+.step.tall .card{position:sticky;top:22vh;margin-top:22vh}
 .card{pointer-events:auto;max-width:390px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--rule);border-radius:6px;padding:18px 20px;font-size:1.05rem;line-height:1.55;box-shadow:0 8px 30px rgba(0,0,0,.12);opacity:.55;transition:opacity .4s}
 .step.on .card{opacity:1}
 .card p{margin:.5rem 0 0}
@@ -115,6 +117,7 @@ footer{margin-top:40px}
 .scrollhint{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
 @media (max-width:760px){
   .step{align-items:flex-end;padding-bottom:12vh}
+  .step.tall .card{top:50vh;top:50svh;margin-top:50vh;max-height:46vh;max-height:46svh;overflow:auto}
   .card{max-width:none;font-size:1rem}
   .maplegend{top:12px;bottom:auto;right:12px}
   .maplegend .ramp .sw{width:110px}
@@ -325,7 +328,7 @@ function elevOf(p) {
   const v = HV[state.h], x = v.f(p);
   if (x == null || isNaN(x)) return 0;
   const t = Math.max(0, Math.min(1, (x - v.dom[0]) / (v.dom[1] - v.dom[0])));
-  return t * HMAX * state.es;
+  return t * HMAX;
 }
 function layer() {
   return new deck.PolygonLayer({
@@ -335,7 +338,8 @@ function layer() {
     getFillColor: d => colorOf(SEC[d.i]), getElevation: d => elevOf(SEC[d.i]),
     pickable: true, autoHighlight: true, highlightColor: [255,255,255,110],
     material: { ambient: .55, diffuse: .55, shininess: 20, specularColor: [40,40,40] },
-    updateTriggers: { getFillColor: [state.c, state.focus, state.mark], getElevation: [state.h, state.es] },
+    elevationScale: state.es,
+    updateTriggers: { getFillColor: [state.c, state.focus, state.mark], getElevation: [state.h] },
     transitions: { getElevation: { duration: 600 }, getFillColor: { duration: 700 } }
   });
 }
@@ -383,73 +387,128 @@ function placeView(n) {
   if (!v) return null;
   return { pitch: 50, bearing: -20 + (n.length % 5) * 8, ...v };
 }
+let label = null;
 const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-let tourToken = 0, label = null;
-function esFor(z) { return z >= 11 ? .025 : z >= 9.5 ? .12 : z >= 8.5 ? .3 : 1; }
-// las alturas se ajustan antes de acercarse y después de alejarse, para que no tapen la cámara en pleno vuelo
-function flyTo(view, ms, es) {
-  if (!deckgl) return;
-  const target = es ?? esFor(view.zoom), my = ++flyToken;
-  const cam = () => deckgl.setProps({ initialViewState: { ...fit(view), transitionDuration: reduceMotion ? 0 : ms, transitionInterpolator: new deck.FlyToInterpolator({ speed: 1.1 }) } });
-  const heights = () => { if (my !== flyToken) return; state.es = target; deckgl.setProps({ layers: layers() }); };
-  if (target < state.es) { heights(); setTimeout(() => { if (my === flyToken) cam(); }, reduceMotion ? 0 : 650); }
-  else { deckgl.setProps({ layers: layers() }); cam(); setTimeout(heights, reduceMotion ? 0 : ms); }
+
+// ---- cámara guiada por el scroll: cada paso es un trayecto entre vistas y el scroll decide en qué punto está
+const STEPS = [...document.querySelectorAll('.step')];
+const ROUTES = [];
+STEPS.forEach((el, i) => {
+  const name = el.dataset.step, card = el.querySelector('.card');
+  const places = [...card.querySelectorAll('.place')].map(p => p.dataset.place).filter(n => placeView(n));
+  if (places.length) { el.classList.add('tall'); el.style.minHeight = (100 + places.length * 75) + 'vh'; }
+  ROUTES.push({ name, card, places });
+});
+function routeViews(i) {
+  const r = ROUTES[i];
+  const prev = i > 0 ? SCENES[ROUTES[i - 1].name].view : SCENES[r.name].view;
+  return [prev, ...r.places.map(placeView), SCENES[r.name].view].map(fit);
 }
-let flyToken = 0;
+const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+const flyI = () => new deck.FlyToInterpolator();
+function size() { const el = $('#deck'); return { width: el.clientWidth || innerWidth, height: el.clientHeight || innerHeight }; }
+function interp(a, b, t) {
+  if (t <= 0) return { ...a }; if (t >= 1) return { ...b };
+  const s = size();
+  const v = flyI().interpolateProps({ ...a, ...s }, { ...b, ...s }, t);
+  return { longitude: v.longitude, latitude: v.latitude, zoom: v.zoom, pitch: v.pitch, bearing: v.bearing };
+}
+// posición en el trayecto: en cada tramo, 65% de vuelo y 35% de parada
+function cameraAt(i, p) {
+  const views = routeViews(i), segs = views.length - 1, r = ROUTES[i];
+  if (segs === 0) return { view: views[0], place: null };
+  const span = r.places.length ? 0.94 : 0.6;
+  const x = Math.min(1, Math.max(0, p / span)) * segs;
+  const k = Math.min(segs - 1, Math.floor(x)), f = x - k;
+  const t = ease(Math.min(1, f / 0.65));
+  const view = interp(views[k], views[k + 1], t);
+  const atPlace = k < r.places.length && f > 0.45 ? r.places[k] : null;
+  return { view, place: atPlace };
+}
+let baseZoom = 7.15;
+function esOf(zoom) { return Math.min(1, Math.pow(2, baseZoom - zoom)); }
+let camView = null, exploreTouched = false, userView = null;
+function applyView(v) {
+  camView = v; state.es = esOf(v.zoom);
+  deckgl.setProps({ viewState: { ...v }, layers: layers() });
+}
 function markPlace(card, n) { card.querySelectorAll('.place').forEach(el => el.classList.toggle('now', el.dataset.place === n)); }
-function goPlace(n, card) {
-  const v = placeView(n); if (!v) return;
-  label = C[n] ? { name: n.replace(/, (El|La|L')$/,''), pos: C[n] } : { name: n, pos: [v.longitude, v.latitude] };
-  if (card) markPlace(card, n);
-  flyTo(v, 2600);
+function stepProgress(el) {
+  const r = el.getBoundingClientRect(), trigger = innerHeight * 0.62;
+  return (trigger - r.top) / r.height;
 }
-async function runTour(name, card) {
-  const my = ++tourToken;
-  const names = [...card.querySelectorAll('.place')].map(el => el.dataset.place);
-  if (!names.length || reduceMotion) return;
-  const wait = ms => new Promise(r => setTimeout(r, ms));
-  await wait(2000);
-  for (const n of names) {
-    if (my !== tourToken) return;
-    goPlace(n, card);
-    await wait(4200);
-  }
-  if (my !== tourToken) return;
-  markPlace(card, null); label = null;
-  const s = SCENES[name];
-  flyTo(s.view, 2600, s.es);
+function onScroll() {
+  if (!deckgl) return;
+  let i = 0;
+  STEPS.forEach((el, k) => { if (el.getBoundingClientRect().top <= innerHeight * 0.62) i = k; });
+  const p = Math.max(0, Math.min(1, stepProgress(STEPS[i])));
+  setScene(ROUTES[i].name);
+  if (ROUTES[i].name === 'explore' && exploreTouched && userView) return;
+  const { view, place } = cameraAt(i, p);
+  ROUTES.forEach(r => { if (r !== ROUTES[i]) markPlace(r.card, null); });
+  markPlace(ROUTES[i].card, place);
+  label = place ? { name: place.replace(/, (El|La|L')$/, ''), pos: C[place] || [placeView(place).longitude, placeView(place).latitude] } : null;
+  applyView(view);
 }
+let ticking = false;
+function requestTick() { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; onScroll(); }); } }
+// los nombres del texto llevan el scroll al punto del trayecto donde la cámara se detiene en ese lugar
 document.querySelectorAll('.place').forEach(el => {
   el.tabIndex = 0; el.setAttribute('role', 'button');
-  const go = () => { tourToken++; const step = el.closest('.step'); if (step) setScene(step.dataset.step, true); goPlace(el.dataset.place, el.closest('.card')); };
+  const go = () => {
+    const stepEl = el.closest('.step'), i = STEPS.indexOf(stepEl), r = ROUTES[i];
+    const k = r.places.indexOf(el.dataset.place); if (k < 0) return;
+    const span = 0.94, segs = r.places.length + 1;
+    const p = ((k + 0.82) / segs) * span;
+    const top = stepEl.getBoundingClientRect().top + scrollY + p * stepEl.offsetHeight - innerHeight * 0.62;
+    scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
   el.addEventListener('click', go);
   el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
 });
-function setScene(name, noTour) {
+// colores y alturas cambian al entrar en cada paso; la cámara la mueve el scroll
+function setScene(name) {
   if (!deckgl || name === curScene) return; curScene = name;
-  tourToken++; label = null; document.querySelectorAll('.place.now').forEach(el => el.classList.remove('now'));
-  const s = SCENES[name], prevEs = state.es;
-  state = { c: s.c, h: s.h, es: s.es, focus: s.focus || null, mark: s.mark || null };
+  const s = SCENES[name];
+  state = { ...state, c: s.c, h: s.h, focus: s.focus || null, mark: s.mark || null };
   const explore = name === 'explore';
   $('#explore').hidden = !explore;
-  if (explore) { $('#v3').value = state.c; }
-  const newEs = state.es; state.es = prevEs;
-  // el controlador debe existir siempre: sin él deck.gl no anima las transiciones de cámara
-  deckgl.setProps({ controller: explore ? { scrollZoom: false, dragPan: !narrow(), dragRotate: false, doubleClickZoom: true, touchZoom: false, touchRotate: false, keyboard: true } : { scrollZoom: false, dragPan: false, dragRotate: false, doubleClickZoom: false, touchZoom: false, touchRotate: false, keyboard: false, inertia: false } });
-  if (s.view) flyTo(s.view, 2600, newEs); else { state.es = newEs; deckgl.setProps({ layers: layers() }); }
+  if (explore) { $('#v3').value = state.c; } else { exploreTouched = false; userView = null; $('#town3').value = ''; }
+  deckgl.setProps({ controller: explore ? { scrollZoom: false, dragPan: !narrow(), dragRotate: false, doubleClickZoom: true, touchZoom: false, touchRotate: false, keyboard: true } : false, layers: layers() });
   legend();
-  const card = document.querySelector(`.step[data-step="${name}"] .card`);
-  if (!noTour && card && card.querySelector('.place')) runTour(name, card);
+}
+// animación para los controles del mapa final (Ir a, + y −)
+let anim = 0;
+function animateTo(target, ms) {
+  const from = { ...camView }, my = ++anim, t0 = performance.now();
+  exploreTouched = true;
+  const tick = now => {
+    if (my !== anim) return;
+    const t = Math.min(1, (now - t0) / ms);
+    userView = interp(from, target, reduceMotion ? 1 : ease(t)); applyView(userView);
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 }
 function supportsGL() { try { const c = document.createElement('canvas'); return !!c.getContext('webgl2'); } catch (e) { return false; } }
 function initDeck() {
   if (typeof deck === 'undefined' || !supportsGL()) { $('#fallback').hidden = false; return; }
   try {
+    baseZoom = fit(SCENES.cat.view).zoom;
+    camView = fit(SCENES.cat.view);
     deckgl = new deck.Deck({
-      parent: $('#deck'), initialViewState: fit(SCENES.cat.view), controller: { scrollZoom: false, dragPan: false, dragRotate: false, doubleClickZoom: false, touchZoom: false, touchRotate: false, keyboard: false, inertia: false },
+      parent: $('#deck'), viewState: camView, controller: false,
+      onViewStateChange: ({ viewState, interactionState }) => {
+        if (curScene !== 'explore') return;
+        anim++; exploreTouched = true; userView = { longitude: viewState.longitude, latitude: viewState.latitude, zoom: viewState.zoom, pitch: 0, bearing: 0 };
+        applyView(userView);
+      },
       layers: layers(), getTooltip: tooltip, useDevicePixels: Math.min(window.devicePixelRatio || 1, 2)
     });
     curScene = 'cat'; legend();
+    addEventListener('scroll', requestTick, { passive: true });
+    addEventListener('resize', () => { baseZoom = fit(SCENES.cat.view).zoom; requestTick(); });
+    requestTick();
   } catch (e) { $('#fallback').hidden = false; }
 }
 // explore controls
@@ -459,16 +518,16 @@ $('#v3').addEventListener('change', e => { state.c = e.target.value; deckgl && d
 $('#town3').addEventListener('change', e => {
   const n = e.target.value; state.focus = n || null;
   const view = n ? at(n, 11.5, 0, 0) : { longitude:1.72, latitude:41.72, zoom:7.15, pitch:0, bearing:0 };
-  deckgl && deckgl.setProps({ layers: layers(), initialViewState: { ...fit(view), transitionDuration: 1600, transitionInterpolator: new deck.FlyToInterpolator() } });
+  if (deckgl) animateTo(fit(view), 1600);
 });
-function zoomBy(d) { if (!deckgl) return; const v = { ...deckgl.getViewports()[0] }; const vs = { longitude: v.longitude, latitude: v.latitude, zoom: Math.max(6, Math.min(15, v.zoom + d)), pitch: 0, bearing: 0 }; deckgl.setProps({ initialViewState: { ...vs, transitionDuration: 400 } }); }
+function zoomBy(d) { if (!deckgl || !camView) return; animateTo({ ...camView, zoom: Math.max(6, Math.min(15, camView.zoom + d)), pitch: 0, bearing: 0 }, 400); }
 $('#zin').addEventListener('click', () => zoomBy(1));
 $('#zout').addEventListener('click', () => zoomBy(-1));
 initDeck();
 if (typeof scrollama !== 'undefined') {
   const sc = scrollama();
-  sc.setup({ step: '.step', offset: 0.62 }).onStepEnter(r => { document.querySelectorAll('.step').forEach(s => s.classList.toggle('on', s === r.element)); setScene(r.element.dataset.step); });
-  window.addEventListener('resize', () => sc.resize());
+  sc.setup({ step: '.step', offset: 0.62 }).onStepEnter(r => { document.querySelectorAll('.step').forEach(s => s.classList.toggle('on', s === r.element)); requestTick(); });
+  addEventListener('resize', () => sc.resize());
 }
 
 // ---- compare table
