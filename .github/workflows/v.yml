@@ -1,0 +1,23 @@
+name: verificar-fuentes
+on:
+  push:
+    branches: [claude/verificar-fuentes]
+    paths: [urls.txt, .github/workflows/v.yml]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p out
+          while read k u; do
+            code=$(curl -sSL -m 60 -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36" -o "out/$k" -w "%{http_code}" "$u" || echo ERR)
+            echo "$k $code $(stat -c %s out/$k 2>/dev/null) $u" >> out/status.txt
+          done < urls.txt
+          cat out/status.txt
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add out && git commit -m "Fuentes descargadas" && git push
