@@ -15,7 +15,7 @@ CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='ht
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = 'https://nachotronic.github.io/abstencio-catalunya/'
 PUBLISHED = '2026-10-05'
-MODIFIED = datetime.date.today().isoformat()
+MODIFIED = '2026-10-06'   # cámbiala a mano cuando se actualice el contenido
 # ---- Autor: página «Sobre mí» (sobre-mi.html / sobre-mi-ca.html) ----
 # PENDIENTE (Nacho): enlaces (redes, web, otros trabajos).
 # Mientras la biografía esté vacía, la página no la muestra. Si cambia el nombre, cámbialo también
@@ -243,9 +243,12 @@ M = {
   lim=['Son datos por sección, no por persona: indican dónde se vota menos, no quién.',
        'El censo electoral de julio y la población de enero no son exactamente la misma foto. Donde el censo supera a los adultos estimados, el grupo «sin derecho a voto» se pone a cero.',
        'Las secciones de otros años solo se comparan con las de 2023 si tienen el mismo código y un censo parecido (entre dos tercios y vez y media).',
-       'El Censo 2021 no cubre 74 secciones creadas después y el Atlas no da renta en 20.',
+       'El Censo 2021 no cubre 73 secciones creadas después y el Atlas no da renta por unidad de consumo en 30.',
        'En las municipales votan además los ciudadanos de la UE y de algunos países con convenio inscritos en el censo, lo que reduce el grupo «sin derecho a voto».'],
   h_cols='Columnas de catalunya_secciones_2023.csv', cols_note='Los mismos nombres se usan en el resto de archivos. En evolucion_secciones.csv cada columna es una elección: M = municipales, A = Parlament, G = Congreso, seguida del año y la vuelta del año (G20192 = Congreso de noviembre de 2019).',
+  dates='Publicada el 5 de octubre de 2026 · Actualizada el 6 de octubre de 2026',
+  h_auth='Autoría y revisión', auth='Datos, texto y gráficos de <a href="sobre-mi.html">Nacho G. del Álamo</a>, que también revisa los datos y el texto antes de publicar. Cada cifra del texto se recalcula con un script a partir de los datos publicados, y los totales se contrastan con los resultados oficiales de la Generalitat.',
+  h_fix='Correcciones', fix=['<b>6 de octubre de 2026:</b> en la sección de Figueres con menos participación el paro es del 59% (58,5%), no del 58%; el voto independentista de 2023 era el 28% contando al PDeCAT, pero ERC, Junts y la CUP suman el 27%; en el Parlament de 2015 la distancia entre el 20% de secciones más ricas y el 20% más pobre era de 13 puntos, no de 14; el Censo 2021 no cubre 73 secciones (no 74) y el Atlas no da renta por unidad de consumo en 30 (no 20). Ninguna cambia las conclusiones.'],
   h_code='Código', code='Los scripts en Python con los que se han generado los datos y las páginas están en <a href="' + REPO + '">el repositorio de GitHub</a>, carpeta <code>src/</code>.',
   th=('Columna', 'Qué es')),
  'ca': dict(
@@ -274,9 +277,12 @@ M = {
   lim=['Són dades per secció, no per persona: indiquen on es vota menys, no qui.',
        'El cens electoral de juliol i la població de gener no són exactament la mateixa foto. On el cens supera els adults estimats, el grup «sense dret a vot» es posa a zero.',
        'Les seccions d\'altres anys només es comparen amb les del 2023 si tenen el mateix codi i un cens semblant (entre dos terços i una vegada i mitja).',
-       'El Cens 2021 no cobreix 74 seccions creades després i l\'Atlas no dona renda en 20.',
+       'El Cens 2021 no cobreix 73 seccions creades després i l\'Atlas no dona renda per unitat de consum en 30.',
        'A les municipals també voten els ciutadans de la UE i d\'alguns països amb conveni inscrits al cens, cosa que redueix el grup «sense dret a vot».'],
   h_cols='Columnes de catalunya_secciones_2023.csv', cols_note='Els mateixos noms es fan servir a la resta de fitxers. A evolucion_secciones.csv cada columna és una elecció: M = municipals, A = Parlament, G = Congrés, seguida de l\'any i la volta de l\'any (G20192 = Congrés de novembre del 2019).',
+  dates='Publicada el 5 d\'octubre de 2026 · Actualitzada el 6 d\'octubre de 2026',
+  h_auth='Autoria i revisió', auth='Dades, text i gràfics de <a href="sobre-mi-ca.html">Nacho G. del Álamo</a>, que també en revisa les dades i el text abans de publicar. Cada xifra del text es recalcula amb un script a partir de les dades publicades, i els totals es contrasten amb els resultats oficials de la Generalitat.',
+  h_fix='Correccions', fix=['<b>6 d\'octubre de 2026:</b> a la secció de Figueres amb menys participació l\'atur és del 59% (58,5%), no del 58%; el vot independentista del 2023 era el 28% comptant-hi el PDeCAT, però ERC, Junts i la CUP sumen el 27%; al Parlament del 2015 la distància entre el 20% de seccions més riques i el 20% més pobre era de 13 punts, no de 14; el Cens 2021 no cobreix 73 seccions (no 74) i l\'Atlas no dona renda per unitat de consum en 30 (no 20). Cap no canvia les conclusions.'],
   h_code='Codi', code='Els scripts en Python amb què s\'han generat les dades i les pàgines són al <a href="' + REPO + '">repositori de GitHub</a>, carpeta <code>src/</code>.',
   th=('Columna', 'Què és')),
 }
@@ -333,6 +339,7 @@ def methodology(L):
 <nav><a href="{t['page']}">{m['back']}</a><a href="{T[other_L]['meth']}" hreflang="{other_L}" lang="{other_L}">{m['other']}</a></nav>
 <div class="kicker">{m['kicker']}</div>
 <h1>{m['h1']}</h1>
+<p class="kicker">{m['dates']}</p>
 <p>{m['intro']}</p>
 <h2>{m['h_dl']}</h2>
 <ul>
@@ -366,6 +373,12 @@ def methodology(L):
 {cols}
 </tbody></table></div>
 <p>{m['cols_note']}</p>
+<h2>{m['h_auth']}</h2>
+<p>{m['auth']}</p>
+<h2>{m['h_fix']}</h2>
+<ul>
+{li(m['fix'])}
+</ul>
 <h2>{m['h_code']}</h2>
 <p>{m['code']}</p>
 </main>
