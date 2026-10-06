@@ -1,0 +1,13 @@
+critic 200 82302 https://www.elcritic.cat/entrevistes/ismael-blanco-ricard-goma-i-oriol-nel-lo-els-perques-duna-catalunya-desigual-168976
+ed19 200 440015 https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html
+ed23 200 205492 https://www.eldiario.es/politica/pobres-votan-municipales-excepto-elegir-alcalde-pueblo-participacion-elecciones-abstencion_1_10177968.html
+ara 200 189338 https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html
+maldita 200 558974 https://maldita.es/malditodato/20240510/abstencion-diferencial-elecciones-cataluna/
+brady 200 8246810 https://mgaleg.maryland.gov/cmte_testimony/2024/eee/14gdYS74eC6PW99_YGEeEa4ck6vCZPh-k.pdf
+brady_pq 302ERR  https://www.proquest.com/scholarly-journals/beyond-ses-resource-model-political-participation/docview/214422263/se-2
+lijphart 200 32095 https://ideas.repec.org/a/cup/apsrev/v91y1997i01p1-14_23.html
+lijphart_cup 200 1219502 https://cambridge.org/core/journals/american-political-science-review/article/abs/unequal-participation-democracys-unresolved-dilemma-presidential-address-american-political-science-association-1996/FB743AB4AEBB70C9363A9F8B898A17BC
+reis 200 42111 https://reis.cis.es/index.php/reis/article/view/268
+foessa 200 1333266 https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf
+ciemen 200 1670406 https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf
+cpress 200 151533 https://www.catalunyapress.cat/article/politica-catalunya/2026-07-21/5959720-508412-immigrants-catalunya-tenen-dret-vot-per-no-majoria-no-vota-eleccions

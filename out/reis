@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es-ES" xml:lang="es-ES">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Abstención diferencial en Cataluña y en la Comunidad de Madrid: explicación sociopolítica de un fenómeno urbano
+							| Revista Española de Investigaciones Sociológicas
+			</title>
+
+	
+<meta name="generator" content="Open Journal Systems 3.3.0.22" />
+<meta name="title" content="REIS. Revista Española de Investigaciones Sociológicas">
+<meta name="keywords" content="Ciencias Sociales, Sociología, Ciencias Políticas ">
+<meta name="DC.Publisher" content="Centro de Investigaciones Sociológicas">
+<meta name="gs_meta_revision" content="1.1"/>
+<meta name="citation_journal_title" content="Revista Española de Investigaciones Sociológicas"/>
+<meta name="citation_journal_abbrev" content="REIS"/>
+<meta name="citation_issn" content="1988-5903"/> 
+<meta name="citation_author" content="Josep Maria Vallés"/>
+<meta name="citation_author_institution" content="Universitat Autònoma de Barcelona"/>
+<meta name="citation_author" content="Robert Liñeira"/>
+<meta name="citation_author_institution" content="Facultad de Ciencias Políticas y Sociales de la Universidad de Glasgow"/>
+<meta name="citation_title" content="Abstención diferencial en Cataluña y en la Comunidad de Madrid: explicación sociopolítica de un fenómeno urbano"/>
+<meta name="citation_language" content="es"/>
+<meta name="citation_date" content="2014"/>
+<meta name="citation_issue" content="146"/>
+<meta name="citation_firstpage" content="69"/>
+<meta name="citation_lastpage" content="92"/>
+<meta name="citation_doi" content="10.5477/cis/reis.146.69"/>
+<meta name="citation_abstract_html_url" content="https://reis.cis.es/index.php/reis/article/view/268"/>
+<meta name="citation_keywords" xml:lang="es" content="Abstención diferencial"/>
+<meta name="citation_keywords" xml:lang="es" content="Análisis ecológico"/>
+<meta name="citation_keywords" xml:lang="es" content="Cataluña"/>
+<meta name="citation_keywords" xml:lang="es" content="Madrid"/>
+<meta name="citation_keywords" xml:lang="es" content="Elecciones Generales"/>
+<meta name="citation_keywords" xml:lang="es" content="Elecciones autonómicas"/>
+<meta name="citation_pdf_url" content="https://reis.cis.es/index.php/reis/article/download/268/342"/>
+<meta name="citation_pdf_url" content="https://reis.cis.es/index.php/reis/article/download/268/343"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Date.created" scheme="ISO8601" content="2024-02-07"/>
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2024-02-06"/>
+<meta name="DC.Date.issued" scheme="ISO8601" content="2024-02-07"/>
+<meta name="DC.Date.modified" scheme="ISO8601" content="2024-02-07"/>
+<meta name="DC.Description" xml:lang="en" content="Differences in turnout between general and regional elections in Spain revealtwo recurrent characteristics: they are highest in the regions of Catalonia andMadrid and tend to be concentrated in the metropolitan areas of the cities ofBarcelona and Madrid. What explains these two regional patterns? To explainthis phenomenon, this article contributes new elements, using census data atthe tract level. The main conclusion is that the demobilization observed inregional elections is related to certain characteristics of the socio-demographicstructure of the metropolitan areas in these two regions: a higher presence ofyoung voters, higher unemployment and a higher percentage of the electorateborn outside their region of residence. In addition, a political factor, support forthe socialist party, also appears to be an important element in explaining thisdifferential abstention. The combination of all these factors provides a clearerpicture of those who abstain in regional elections as well as new clues tounderstand the phenomenon of differential abstention."/>
+<meta name="DC.Description" xml:lang="es" content="La abstención diferencial entre elecciones generales y autonómicas enEspaña presenta dos características recurrentes: es más elevada en lascomunidades autónomas de Cataluña y de Madrid, y tiende a concentrarseen las áreas metropolitanas de las ciudades de Barcelona y Madrid. ¿Quépuede explicar estas dos pautas territoriales? A los intentos de explicacióndel fenómeno, aportamos en este artículo nuevos elementos utilizando datoscensales a nivel de sección. La principal conclusión es que la desmovilizaciónregistrada en estas elecciones se relaciona con algunos rasgos de laestructura sociodemográfica de las áreas metropolitanas de ambascomunidades: mayor presencia de electorado joven, mayor desempleo ymayor porcentaje de electores no nacidos en la comunidad autónoma. Porotro lado, un factor político como es la implantación electoral socialistaaparece también como elemento significativo para explicar los diferencialesde abstención. La combinación de los elementos citados permite dar unaimagen más clara de quién deja de votar en estas elecciones autonómicas yproporciona nuevas pistas para construir una explicación más general delfenómeno de la llamada abstención diferencial."/>
+<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+<meta name="DC.Identifier" content="268"/>
+<meta name="DC.Identifier.pageNumber" content="69-92"/>
+<meta name="DC.Identifier.DOI" content="10.5477/cis/reis.146.69"/>
+<meta name="DC.Identifier.URI" content="https://reis.cis.es/index.php/reis/article/view/268"/>
+<meta name="DC.Language" scheme="ISO639-1" content="es"/>
+<meta name="DC.Rights" content="Derechos de autor 2024 Revista Española de Investigaciones Sociológicas"/>
+<meta name="DC.Rights" content="https://creativecommons.org/licenses/by-sa/4.0"/>
+<meta name="DC.Source" content="Revista Española de Investigaciones Sociológicas"/>
+<meta name="DC.Source.ISSN" content="1988-5903"/>
+<meta name="DC.Source.Issue" content="146"/>
+<meta name="DC.Source.URI" content="https://reis.cis.es/index.php/reis"/>
+<meta name="DC.Subject" xml:lang="es" content="Abstención diferencial"/>
+<meta name="DC.Subject" xml:lang="es" content="Análisis ecológico"/>
+<meta name="DC.Subject" xml:lang="es" content="Cataluña"/>
+<meta name="DC.Subject" xml:lang="es" content="Madrid"/>
+<meta name="DC.Subject" xml:lang="es" content="Elecciones Generales"/>
+<meta name="DC.Subject" xml:lang="es" content="Elecciones autonómicas"/>
+<meta name="DC.Title" content="Abstención diferencial en Cataluña y en la Comunidad de Madrid: explicación sociopolítica de un fenómeno urbano"/>
+<meta name="DC.Title.Alternative" xml:lang="en" content="Differential Abstention in Catalonia and the Community of Madrid: A Socio-political Explanation of an Urban Phenomenon"/>
+<meta name="DC.Type" content="Text.Serial.Journal"/>
+<meta name="DC.Type.articleType" content="Artículos"/>
+	<link rel="stylesheet" href="https://reis.cis.es/index.php/reis/$$$call$$$/page/page/css?name=stylesheet" type="text/css" /><link rel="stylesheet" href="https://reis.cis.es/lib/pkp/styles/fontawesome/fontawesome.css?v=3.3.0.22" type="text/css" />
+</head>
+<body class="pkp_page_article pkp_op_view has_site_logo" dir="ltr">
+
+	<div class="pkp_structure_page">
+
+				<header class="pkp_structure_head" id="headerNavigationContainer" role="banner">
+						
+ <nav class="cmp_skip_to_content" aria-label="Salta a los enlaces de contenido">
+	<a href="#pkp_content_main">Ir al contenido principal</a>
+	<a href="#siteNav">Ir al menú de navegación principal</a>
+		<a href="#pkp_content_footer">Ir al pie de página del sitio</a>
+</nav>
+
+			<div class="pkp_head_wrapper">
+
+				<div class="pkp_site_name_wrapper">
+					<button class="pkp_site_nav_toggle">
+						<span>Open Menu</span>
+					</button>
+										<div class="pkp_site_name">
+																<a href="						https://reis.cis.es/index.php/reis/index
+					" class="is_img">
+							<img src="https://reis.cis.es/public/journals/1/pageHeaderLogoImage_es_ES.png" width="1515" height="215"  />
+						</a>
+										</div>
+				</div>
+
+				
+				<nav class="pkp_site_nav_menu" aria-label="Navegación del sitio">
+					<a id="siteNav"></a>
+					<div class="pkp_navigation_primary_row">
+						<div class="pkp_navigation_primary_wrapper">
+																				<ul id="navigationPrimary" class="pkp_navigation_primary pkp_nav_list">
+								<li class="">
+				<a href="https://reis.cis.es/index.php/reis/about">
+					ACERCA DE
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://reis.cis.es/index.php/reis/about">
+										Presentación
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/ficha">
+										Ficha técnica
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/normas">
+										Normas de la revista
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/cetico">
+										Código ético
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/suscripciones">
+										Venta y suscripciones
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/estadisticas">
+										Estadísticas
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/about/contact">
+										Contacto
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/about/privacy">
+										Declaración de privacidad
+									</a>
+								</li>
+																		</ul>
+							</li>
+								<li class="">
+				<a href="https://reis.cis.es/index.php/reis/about/editorialTeam">
+					EQUIPO EDITORIAL
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://reis.cis.es/index.php/reis/ceditorial">
+										Consejo editorial
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/cconsultivo">
+										Comité consultivo
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/evaluadores/as">
+										Evaluadores/as
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/lautores">
+										Autores/as
+									</a>
+								</li>
+																		</ul>
+							</li>
+								<li class="">
+				<a href="https://reis.cis.es/index.php/reis/indexacion">
+					INDEXACIÓN
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://reis.cis.es/index.php/reis/fimpacto">
+										Factor de impacto
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/bdatos">
+										Bases de datos
+									</a>
+								</li>
+																		</ul>
+							</li>
+								<li class="">
+				<a href="https://reis.cis.es/index.php/reis/about/submissions">
+					ENVÍOS
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://reis.cis.es/index.php/reis/about/submissions">
+										Lista de comprobación
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/REIS/about/submissions#directrices">
+										Directrices para autores
+									</a>
+								</li>
+																		</ul>
+							</li>
+								<li class="">
+				<a href="https://reis.cis.es/index.php/reis/announcement">
+					ANUNCIOS
+				</a>
+							</li>
+								<li class="">
+				<a href="https://reis.cis.es/index.php/reis/issues">
+					Números
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://reis.cis.es/index.php/REIS/forthcoming">
+										Avance
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/issue/current">
+										Actual
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://reis.cis.es/index.php/reis/issue/archive">
+										Archivos
+									</a>
+								</li>
+																		</ul>
+							</li>
+			</ul>
+
+				
+
+																						<div class="pkp_navigation_search_wrapper">
+									<a href="https://reis.cis.es/index.php/reis/search" class="pkp_search pkp_search_desktop">
+										<span class="fa fa-search" aria-hidden="true"></span>
+										Buscar
+									</a>
+								</div>
+													</div>
+					</div>
+					<div class="pkp_navigation_user_wrapper" id="navigationUserWrapper">
+							<ul id="navigationUser" class="pkp_navigation_user pkp_nav_list">
+								<li class="profile">
+				<a href="https://reis.cis.es/index.php/reis/user/register">
+					Registrarse
+				</a>
+							</li>
+								<li class="profile">
+				<a href="https://reis.cis.es/index.php/reis/login">
+					Entrar
+				</a>
+							</li>
+										</ul>
+
+					</div>
+				</nav>
+			</div><!-- .pkp_head_wrapper -->
+		</header><!-- .pkp_structure_head -->
+
+						<div class="pkp_structure_content has_sidebar">
+			<div class="pkp_structure_main" role="main">
+				<a id="pkp_content_main"></a>
+
+<div class="page page_article">
+			<nav class="cmp_breadcrumbs" role="navigation" aria-label="Usted está aquí:">
+	<ol>
+		<li>
+			<a href="https://reis.cis.es/index.php/reis/index">
+				Inicio
+			</a>
+			<span class="separator">/</span>
+		</li>
+		<li>
+			<a href="https://reis.cis.es/index.php/reis/issue/archive">
+				Archivos
+			</a>
+			<span class="separator">/</span>
+		</li>
+					<li>
+				<a href="https://reis.cis.es/index.php/reis/issue/view/21">
+					Núm. 146 (2014)
+				</a>
+				<span class="separator">/</span>
+			</li>
+				<li class="current" aria-current="page">
+			<span aria-current="page">
+									Artículos
+							</span>
+		</li>
+	</ol>
+</nav>
+	
+		  	 <article class="obj_article_details">
+
+		
+	<h1 class="page_title">
+		Abstención diferencial en Cataluña y en la Comunidad de Madrid: explicación sociopolítica de un fenómeno urbano
+	</h1>
+
+	
+	<div class="row">
+		<div class="main_entry">
+
+							<section class="item authors">
+					<h2 class="pkp_screen_reader">Autores/as</h2>
+					<ul class="authors">
+											<li>
+							<span class="name">
+								Josep Maria Vallés
+							</span>
+															<span class="affiliation">
+									Universitat Autònoma de Barcelona
+																	</span>
+																				</li>
+											<li>
+							<span class="name">
+								Robert Liñeira
+							</span>
+															<span class="affiliation">
+									Facultad de Ciencias Políticas y Sociales de la Universidad de Glasgow
+																	</span>
+																						<span class="orcid">
+									
+									<a href="https://orcid.org/0000-0003-4823-946X" target="_blank">
+										https://orcid.org/0000-0003-4823-946X
+									</a>
+								</span>
+													</li>
+										</ul>
+				</section>
+			
+																												<section class="item doi">
+						<h2 class="label">
+														DOI:
+						</h2>
+						<span class="value">
+							<a href="https://doi.org/10.5477/cis/reis.146.69">
+								https://doi.org/10.5477/cis/reis.146.69
+							</a>
+						</span>
+					</section>
+							
+									<section class="item keywords">
+				<h2 class="label">
+										Palabras clave:
+				</h2>
+				<span class="value">
+											Abstención diferencial, 											Análisis ecológico, 											Cataluña, 											Madrid, 											Elecciones Generales, 											Elecciones autonómicas									</span>
+			</section>
+			
+										<section class="item abstract">
+					<h2 class="label">Resumen</h2>
+					<p>La abstención diferencial entre elecciones generales y autonómicas en<br>España presenta dos características recurrentes: es más elevada en las<br>comunidades autónomas de Cataluña y de Madrid, y tiende a concentrarse<br>en las áreas metropolitanas de las ciudades de Barcelona y Madrid. ¿Qué<br>puede explicar estas dos pautas territoriales? A los intentos de explicación<br>del fenómeno, aportamos en este artículo nuevos elementos utilizando datos<br>censales a nivel de sección. La principal conclusión es que la desmovilización<br>registrada en estas elecciones se relaciona con algunos rasgos de la<br>estructura sociodemográfica de las áreas metropolitanas de ambas<br>comunidades: mayor presencia de electorado joven, mayor desempleo y<br>mayor porcentaje de electores no nacidos en la comunidad autónoma. Por<br>otro lado, un factor político como es la implantación electoral socialista<br>aparece también como elemento significativo para explicar los diferenciales<br>de abstención. La combinación de los elementos citados permite dar una<br>imagen más clara de quién deja de votar en estas elecciones autonómicas y<br>proporciona nuevas pistas para construir una explicación más general del<br>fenómeno de la llamada abstención diferencial.</p>
+				</section>
+			
+			<div class="item downloads_chart">
+	<h3 class="label">
+		Descargas
+	</h3>
+	<div class="value">
+		<canvas class="usageStatsGraph" data-object-type="Submission" data-object-id="268"></canvas>
+		<div class="usageStatsUnavailable" data-object-type="Submission" data-object-id="268">
+			Los datos de descargas todavía no están disponibles.
+		</div>
+	</div>
+</div>
+
+
+																										
+						
+		</div><!-- .main_entry -->
+
+		<div class="entry_details">
+
+										<div class="item cover_image">
+					<div class="sub_item">
+													<a href="https://reis.cis.es/index.php/reis/issue/view/21">
+								<img src="https://reis.cis.es/public/journals/1/cover_issue_21_es_ES.jpg" alt="">
+							</a>
+											</div>
+				</div>
+			
+										<div class="item galleys">
+					<h2 class="pkp_screen_reader">
+						Descargas
+					</h2>
+					<ul class="value galleys_links">
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link pdf" href="https://reis.cis.es/index.php/reis/article/view/268/342">
+
+		
+	PDF
+
+	</a>
+							</li>
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link pdf" href="https://reis.cis.es/index.php/reis/article/view/268/343">
+
+		
+	PDF (English)
+
+	</a>
+							</li>
+											</ul>
+				</div>
+						
+						<div class="item published">
+				<section class="sub_item">
+					<h2 class="label">
+						Publicado
+					</h2>
+					<div class="value">
+																			<span>2024-02-07</span>
+																	</div>
+				</section>
+							</div>
+			
+										<div class="item citation">
+					<section class="sub_item citation_display">
+						<h2 class="label">
+							Cómo citar
+						</h2>
+						<div class="value">
+							<div id="citationOutput" role="region" aria-live="polite">
+								<div class="csl-bib-body">
+  <div class="csl-entry">Vallés, J. M., &#38; Liñeira, R. (2024). Abstención diferencial en Cataluña y en la Comunidad de Madrid: explicación sociopolítica de un fenómeno urbano. <i>Revista Española De Investigaciones Sociológicas</i>, (146), 69–92. https://doi.org/10.5477/cis/reis.146.69</div>
+</div>
+							</div>
+							<div class="citation_formats">
+								<button class="cmp_button citation_formats_button" aria-controls="cslCitationFormats" aria-expanded="false" data-csl-dropdown="true">
+									Más formatos de cita
+								</button>
+								<div id="cslCitationFormats" class="citation_formats_list" aria-hidden="true">
+									<ul class="citation_formats_styles">
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/acm-sig-proceedings?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/acm-sig-proceedings?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													ACM
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/acs-nano?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/acs-nano?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													ACS
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/apa?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/apa?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													APA
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													ABNT
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/chicago-author-date?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/chicago-author-date?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													Chicago
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/harvard-cite-them-right?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/harvard-cite-them-right?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													Harvard
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/ieee?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/ieee?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													IEEE
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/modern-language-association?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/modern-language-association?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													MLA
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													Turabian
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/vancouver?submissionId=268&amp;publicationId=269"
+													data-load-citation
+													data-json-href="https://reis.cis.es/index.php/reis/citationstylelanguage/get/vancouver?submissionId=268&amp;publicationId=269&amp;return=json"
+												>
+													Vancouver
+												</a>
+											</li>
+																			</ul>
+																			<div class="label">
+											Descargar cita
+										</div>
+										<ul class="citation_formats_styles">
+																							<li>
+													<a href="https://reis.cis.es/index.php/reis/citationstylelanguage/download/ris?submissionId=268&amp;publicationId=269">
+														<span class="fa fa-download"></span>
+														Endnote/Zotero/Mendeley (RIS)
+													</a>
+												</li>
+																							<li>
+													<a href="https://reis.cis.es/index.php/reis/citationstylelanguage/download/bibtex?submissionId=268&amp;publicationId=269">
+														<span class="fa fa-download"></span>
+														BibTeX
+													</a>
+												</li>
+																					</ul>
+																	</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			
+										<div class="item issue">
+
+											<section class="sub_item">
+							<h2 class="label">
+								Número
+							</h2>
+							<div class="value">
+								<a class="title" href="https://reis.cis.es/index.php/reis/issue/view/21">
+									Núm. 146 (2014)
+								</a>
+							</div>
+						</section>
+					
+											<section class="sub_item">
+							<h2 class="label">
+								Sección
+							</h2>
+							<div class="value">
+								Artículos
+							</div>
+						</section>
+					
+									</div>
+			
+															
+										<div class="item copyright">
+					<h2 class="label">
+						Licencia
+					</h2>
+																										<p>Derechos de autor 2024 Revista Española de Investigaciones Sociológicas</p>
+														<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><p>Esta obra está bajo una licencia internacional <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Atribución-CompartirIgual 4.0</a>.</p>
+																<p>Permite Compartir — copiar y redistribuir el material en cualquier medio o formato, Adaptar — remezclar, transformar y construir a partir del material para cualquier propósito, incluso comercialmente.</p>
+				</div>
+			
+			
+
+		</div><!-- .entry_details -->
+	</div><!-- .row -->
+
+</article>
+
+	
+
+</div><!-- .page -->
+
+	</div><!-- pkp_structure_main -->
+
+									<div class="pkp_structure_sidebar left" role="complementary" aria-label="Barra lateral">
+				<div class="pkp_block block_custom" id="customblock-logo-cis">
+	<h2 class="title pkp_screen_reader">Ficha_revista</h2>
+	<div class="content">
+		<p><a title="https://www.cis.es/es/" href="https://www.cis.es/es/" target="_blank" rel="noopener"><strong><img src="/public/site/images/administrador/logo-cis-or-200.png" alt="" width="200" height="63"></strong></a></p>
+<p><strong>eISSN:</strong> 1988-5903<br><strong>ISSN: </strong>0210-5233<br><strong>DOI: </strong>10.5477/cis/reis</p>
+	</div>
+</div>
+<div class="pkp_block block_make_submission">
+	<h2 class="pkp_screen_reader">
+		Enviar un artículo
+	</h2>
+
+	<div class="content">
+		<a class="block_make_submission_link" href="https://reis.cis.es/index.php/reis/about/submissions">
+			Enviar un artículo
+		</a>
+	</div>
+</div>
+<div class="pkp_block block_language">
+	<h2 class="title">
+		Idioma
+	</h2>
+
+	<div class="content">
+		<ul>
+							<li class="locale_es_ES current" lang="es-ES">
+					<a href="https://reis.cis.es/index.php/reis/user/setLocale/es_ES?source=%2Findex.php%2Freis%2Farticle%2Fview%2F268">
+						Español (España)
+					</a>
+				</li>
+							<li class="locale_en_US" lang="en-US">
+					<a href="https://reis.cis.es/index.php/reis/user/setLocale/en_US?source=%2Findex.php%2Freis%2Farticle%2Fview%2F268">
+						English
+					</a>
+				</li>
+					</ul>
+	</div>
+</div><!-- .block_language -->
+<div class="pkp_block block_custom" id="customblock-indexacin-y-calidad">
+	<h2 class="title">Indexación y calidad</h2>
+	<div class="content">
+		<p><img src="https://reis.cis.es/public/site/images/etouceda1/uno.png" alt="" width="150" height="159"></p>
+<p><img src="https://reis.cis.es/public/site/images/etouceda1/dos.png" alt="" width="150" height="140"></p>
+<p><img src="/public/site/images/administrador/clarivate-web-of-science-logo-reis-200.png" alt="" width="200" height="61"></p>
+<p><a title="SCImago Journal &amp; Country Rank" href="https://www.scimagojr.com/journalsearch.php?q=5600153110&amp;tip=sid&amp;exact=no"><img src="https://www.scimagojr.com/journal_img.php?id=5600153110" alt="SCImago Journal &amp; Country Rank" border="0"></a></p>
+	</div>
+</div>
+<div class="pkp_block block_custom" id="customblock-certificada-por-fecyt">
+	<h2 class="title">Certificada por FECYT</h2>
+	<div class="content">
+		<p><a title="FECYT" href="http://www.fecyt.es/" target="_blank" rel="noopener"><img src="https://reis.cis.es/public/site/images/etouceda1/doc-2plantilla-sello-con-mencion-conjunto-de-datos-124.jpg" alt="" width="150" height="150"></a></p>
+	</div>
+</div>
+<div class="pkp_block block_custom" id="customblock-herramienta-antiplagio">
+	<h2 class="title">Herramienta antiplagio</h2>
+	<div class="content">
+		<p><a title="Similarity ChecK" href="https://www.crossref.org/services/similarity-check/" target="_blank" rel="noopener"><img src="/public/site/images/administrador/reis-similarity-logo.png" alt="" width="120" height="59"></a></p>
+	</div>
+</div>
+<div class="pkp_block block_custom" id="customblock-twitter">
+	<h2 class="title">Redes sociales</h2>
+	<div class="content">
+		<p><a title="https://twitter.com/CIS_Institucion" href="https://twitter.com/CIS_Institucion" target="_blank" rel="noopener"><img src="https://reis.cis.es/public/site/images/administrador/x-reis-2f4408b90de43bb092c506f3a613f45e.png" alt="" width="100" height="97"></a></p>
+	</div>
+</div>
+<div class="pkp_block block_Keywordcloud">
+	<h2 class="title">Palabras clave</h2>
+	<div class="content" id='wordcloud'></div>
+
+	<script>
+		function randomColor() {
+			var colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
+			return colors[Math.floor(Math.random()*colors.length)];
+		}
+
+					document.addEventListener("DOMContentLoaded", function() {
+				var keywords = [{"text":"autonom\u00eda","size":1},{"text":"descentralizaci\u00f3n","size":1},{"text":"\u2022 gobiernos regionales","size":1},{"text":"relaciones intergubernamentales","size":1},{"text":"an\u00e1lisis de marcos de pol\u00edticas p\u00fablicas","size":1},{"text":"an\u00e1lisis de pol\u00edticas p\u00fablicas","size":1},{"text":"pol\u00edtica medioambiental","size":1},{"text":"impacto medioambiental","size":1},{"text":"prestige","size":1},{"text":"antiterrorismo","size":1},{"text":"estado de excepci\u00f3n","size":1},{"text":"excepcionalidad","size":1},{"text":"normalizaci\u00f3n","size":1},{"text":"preventivismo","size":1},{"text":"terrorismo","size":1},{"text":"anclajes sociales","size":1},{"text":"asentamiento","size":1},{"text":"brexit","size":1},{"text":"identidad","size":1},{"text":"migraci\u00f3n laboral","size":1},{"text":"an\u00e1lisis de sentimientos","size":1},{"text":"big data","size":1},{"text":"discurso de odio","size":1},{"text":"inmigraci\u00f3n","size":1},{"text":"\u2022 refugiados","size":1},{"text":"twitter","size":1},{"text":"actitudes populistas","size":1},{"text":"demanda","size":1},{"text":"momento populista","size":1},{"text":"podemos","size":1},{"text":"efervescencia","size":1},{"text":"representaciones colectivas","size":1},{"text":"comunicaci\u00f3n","size":1},{"text":"conceptos","size":1},{"text":"vie s\u00e9rieuse","size":1},{"text":"medios de comunicaci\u00f3n","size":1},{"text":"nuevos medios","size":1},{"text":"redes sociales digitales","size":1},{"text":"teor\u00edas de la conspiraci\u00f3n","size":1},{"text":"reinserci\u00f3n social","size":1},{"text":"centros penitenciarios","size":1},{"text":"presos","size":1},{"text":"trabajo asalariado","size":1},{"text":"catalu\u00f1a","size":1},{"text":"encuestas de opini\u00f3n","size":1},{"text":"campo","size":1},{"text":"capital","size":1},{"text":"habitus","size":1},{"text":"nomos","size":1},{"text":"epistemolog\u00eda","size":1}];
+				var totalWeight = 0;
+				var width = 300;
+				var height = 200;
+				var transitionDuration = 200;
+				var length_keywords = keywords.length;
+				var layout = d3.layout.cloud();
+
+				layout.size([width, height])
+					.words(keywords)
+					.fontSize(function(d)
+					{
+						return fontSize(+d.size);
+					})
+					.on('end', draw);
+
+				var svg = d3.select("#wordcloud").append("svg")
+					.attr("viewBox", "0 0 " + width + " " + height)
+					.attr("width", '100%');
+
+				function update() {
+					var words = layout.words();
+					fontSize = d3.scaleLinear().range([16, 34]);
+					if (words.length) {
+						fontSize.domain([+words[words.length - 1].size || 1, +words[0].size]);
+					}
+				}
+
+				keywords.forEach(function(item,index){totalWeight += item.size;});
+
+				update();
+
+				function draw(words, bounds) {
+					var w = layout.size()[0],
+						h = layout.size()[1];
+
+					scaling = bounds
+						? Math.min(
+							w / Math.abs(bounds[1].x - w / 2),
+							w / Math.abs(bounds[0].x - w / 2),
+							h / Math.abs(bounds[1].y - h / 2),
+							h / Math.abs(bounds[0].y - h / 2),
+						) / 2
+						: 1;
+
+					svg
+					.append("g")
+					.attr(
+						"transform",
+						"translate(" + [w >> 1, h >> 1] + ")scale(" + scaling + ")",
+					)
+					.selectAll("text")
+						.data(words)
+					.enter().append("text")
+						.style("font-size", function(d) { return d.size + "px"; })
+						.style("font-family", 'serif')
+						.style("fill", randomColor)
+						.style('cursor', 'pointer')
+						.style('opacity', 0.7)
+						.attr('class', 'keyword')
+						.attr("text-anchor", "middle")
+						.attr("transform", function(d) {
+							return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+						})
+						.text(function(d) { return d.text; })
+						.on("click", function(d, i){
+							window.location = "https://reis.cis.es/index.php/reis/search?query=QUERY_SLUG".replace(/QUERY_SLUG/, encodeURIComponent(''+d.text+''));
+						})
+						.on("mouseover", function(d, i) {
+							d3.select(this).transition()
+								.duration(transitionDuration)
+								.style('font-size',function(d) { return (d.size + 3) + "px"; })
+								.style('opacity', 1);
+						})
+						.on("mouseout", function(d, i) {
+							d3.select(this).transition()
+								.duration(transitionDuration)
+								.style('font-size',function(d) { return d.size + "px"; })
+								.style('opacity', 0.7);
+						})
+						.on('resize', function() { update() });
+				}
+
+				layout.start();
+
+			});
+			</script>
+</div>
+<div class="pkp_block block_developed_by">
+	<div class="content">
+		<span class="title">Más leídos ultima semana</span>
+			<ul class="most_read">
+							<li class="most_read_article">
+					<div class="most_read_article_title"><a href="https://reis.cis.es/index.php/reis/article/view/2529">Análisis de los niveles de delincuencia de la población adulta en España según nacionalidad (2007-2023)</a></div>
+					<div class="most_read_article_journal"><span class="fa fa-eye"></span> 350</div>
+				</li>
+							<li class="most_read_article">
+					<div class="most_read_article_title"><a href="https://reis.cis.es/index.php/reis/article/view/2463">Modelos socioeconómicos en Europa y América Latina: una tipología de la desigualdad e inestabilidad</a></div>
+					<div class="most_read_article_journal"><span class="fa fa-eye"></span> 217</div>
+				</li>
+							<li class="most_read_article">
+					<div class="most_read_article_title"><a href="https://reis.cis.es/index.php/reis/article/view/2560">La brecha de rentas entre nativos e inmigrantes en España según su nivel educativo</a></div>
+					<div class="most_read_article_journal"><span class="fa fa-eye"></span> 186</div>
+				</li>
+							<li class="most_read_article">
+					<div class="most_read_article_title"><a href="https://reis.cis.es/index.php/reis/article/view/2518">Desigualdades de clase en la emancipación juvenil española: cambios entre generaciones y nuevas tendencias</a></div>
+					<div class="most_read_article_journal"><span class="fa fa-eye"></span> 134</div>
+				</li>
+							<li class="most_read_article">
+					<div class="most_read_article_title"><a href="https://reis.cis.es/index.php/reis/article/view/2578">¿Vale la pena estudiar? Educación y mercado laboral en España, 2011-2024</a></div>
+					<div class="most_read_article_journal"><span class="fa fa-eye"></span> 131</div>
+				</li>
+						</ul>
+	</div>
+</div>
+<div class="pkp_block block_information">
+	<h2 class="title">Información</h2>
+	<div class="content">
+		<ul>
+							<li>
+					<a href="https://reis.cis.es/index.php/reis/information/readers">
+						Para lectores/as
+					</a>
+				</li>
+										<li>
+					<a href="https://reis.cis.es/index.php/reis/information/authors">
+						Para autores/as
+					</a>
+				</li>
+										<li>
+					<a href="https://reis.cis.es/index.php/reis/information/librarians">
+						Para bibliotecarios/as
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+			</div><!-- pkp_sidebar.left -->
+			</div><!-- pkp_structure_content -->
+
+<div class="pkp_structure_footer_wrapper" role="contentinfo">
+	<a id="pkp_content_footer"></a>
+
+	<div class="pkp_structure_footer">
+
+					<div class="pkp_footer_content">
+				<div class="imgFooter"><img src="https://reis.cis.es/public/site/images/administrador/reis-cc-by-sa-120-3274d316e383e7673b486d4c446b00ae.png" alt="" width="120" height="42" /><img src="https://reis.cis.es/public/site/images/administrador/logo-ministerio-reis-c-56eebfff31912d8b982a2a827d1f1d07.jpg" alt="" width="226" height="42" /><img src="https://reis.cis.es/public/site/images/administrador/logo-cis-blanco.png" alt="" width="134" height="42" /></div>
+<div class="txtFooter2">Área de conocimiento: Sociología y Ciencias Políticas<br />Dirección postal: Centro de Investigaciones Sociológicas (CIS)<br />Calle Montalbán, 8 - 28014 Madrid (España)<br />Organismo Autónomo Ministerio de la Presidencia, <br />Justicia y Relaciones con Las Cortes<br />Correo electrónico: <a title="publicaciones@cis.es" href="mailto:publicaciones@cis.es">publicaciones@cis.es</a><br />Soporte técnico: <a title="consejo.editorial@cis.es" href="mailto:consejo.editorial@cis.es">consejo.editorial@cis.es</a><br /><a title="http://www.cis.es/" href="http://www.cis.es/" target="_blank" rel="noopener">www.cis.es</a> <br />www.cis.es/reis</div>
+<div class="txtFooter1"><a title="CC-BY-SA" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Esta obra está bajo una licencia de Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional</a><br />© Revista editada por el Centro de Investigaciones Sociológicas (CIS) <br />ISSN 0210-5233 ISSN-e 1988-5903/ Año comienzo 1978<br />NIPO 146-24-001-4 NIPO-e 146-24-002-X<br />Depósito Legal M-14885-1978<br />Journal DOI: http://dx.doi.org/10.5477/cis/reis</div>
+<div class="txtFooter1"> </div>
+			</div>
+		
+		<div class="pkp_brand_footer" role="complementary">
+			<a href="https://reis.cis.es/index.php/reis/about/aboutThisPublishingSystem">
+				<img alt="Más información acerca del sistema de publicación, de la plataforma y del flujo de trabajo de OJS/PKP." src="https://reis.cis.es/templates/images/ojs_brand.png">
+			</a>
+		</div>
+	</div>
+</div><!-- pkp_structure_footer_wrapper -->
+
+</div><!-- pkp_structure_page -->
+
+<script src="https://reis.cis.es/lib/pkp/lib/vendor/components/jquery/jquery.min.js?v=3.3.0.22" type="text/javascript"></script><script src="https://reis.cis.es/lib/pkp/lib/vendor/components/jqueryui/jquery-ui.min.js?v=3.3.0.22" type="text/javascript"></script><script src="https://reis.cis.es/plugins/themes/default/js/lib/popper/popper.js?v=3.3.0.22" type="text/javascript"></script><script src="https://reis.cis.es/plugins/themes/default/js/lib/bootstrap/util.js?v=3.3.0.22" type="text/javascript"></script><script src="https://reis.cis.es/plugins/themes/default/js/lib/bootstrap/dropdown.js?v=3.3.0.22" type="text/javascript"></script><script src="https://reis.cis.es/plugins/themes/default/js/main.js?v=3.3.0.22" type="text/javascript"></script><script src="https://reis.cis.es/plugins/generic/citationStyleLanguage/js/articleCitation.js?v=3.3.0.22" type="text/javascript"></script><script src="https://d3js.org/d3.v4.js?v=3.3.0.22" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js?v=3.3.0.22" type="text/javascript"></script><script type="text/javascript">var pkpUsageStats = pkpUsageStats || {};pkpUsageStats.data = pkpUsageStats.data || {};pkpUsageStats.data.Submission = pkpUsageStats.data.Submission || {};pkpUsageStats.data.Submission[268] = {"data":{"2024":{"1":0,"2":1,"3":1,"4":2,"5":12,"6":9,"7":7,"8":8,"9":3,"10":2,"11":3,"12":2},"2025":{"1":1,"2":5,"3":2,"4":12,"5":4,"6":2,"7":20,"8":4,"9":11,"10":22,"11":13,"12":16},"2026":{"1":8,"2":16,"3":10,"4":8,"5":16,"6":15,"7":11,"8":17,"9":29,"10":2,"11":0,"12":0}},"label":"Todas las descargas","color":"79,181,217","total":294};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.js?v=3.3.0.22" type="text/javascript"></script><script type="text/javascript">var pkpUsageStats = pkpUsageStats || {};pkpUsageStats.locale = pkpUsageStats.locale || {};pkpUsageStats.locale.months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];pkpUsageStats.config = pkpUsageStats.config || {};pkpUsageStats.config.chartType = "bar";</script><script src="https://reis.cis.es/plugins/generic/usageStats/js/UsageStatsFrontendHandler.js?v=3.3.0.22" type="text/javascript"></script>
+
+
+</body>
+</html>
