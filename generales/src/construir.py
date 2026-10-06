@@ -228,7 +228,7 @@ def main():
         print(y, 'secciones 2023 con resultado:', sec[f'{y}_part'].notna().mean().round(3))
     sec['sin_derecho'] = ((sec.adultos - sec['2023_07_censo']).clip(lower=0) / sec.adultos).where(sec.adultos > 0)
     sec = sec.merge(nombres, left_on='mun_code', right_index=True, how='left')
-    sec.round(4).to_csv(os.path.join(DATOS, 'secciones.csv'), index=False)
+    sec.round(6).to_csv(os.path.join(DATOS, 'secciones.csv'), index=False)
 
     # --- municipios: suma de secciones (fronteras municipales estables), así no se pierde nada
     cm = covariables(unz, 'municipality')
@@ -241,7 +241,7 @@ def main():
         t = tasas(ry, f'{y}_').join(ry[['censo', 'votantes'] + CODIGOS].rename(columns={k: 'v' + k for k in CODIGOS}).add_prefix(f'{y}_'))
         mun = mun.merge(t, left_on='mun_code', right_index=True, how='left')
     mun['sin_derecho'] = ((mun.adultos - mun['2023_07_censo']).clip(lower=0) / mun.adultos).where(mun.adultos > 0)
-    mun.round(4).to_csv(os.path.join(DATOS, 'municipios.csv'), index=False)
+    mun.round(6).to_csv(os.path.join(DATOS, 'municipios.csv'), index=False)
 
     resumen(sec, r)
     web(geo, sec, mun)
@@ -266,15 +266,15 @@ def resumen(sec, r):
                                  lo=(v, 'min'), hi=(v, 'max'), n=(v, 'size'))
         val = g.candidaturas + g.blancos
         out['variables'][v] = {'nombre': nom, 'deciles': [
-            {'d': int(i), 'lo': round(float(row.lo), 4), 'hi': round(float(row.hi), 4), 'n': int(row.n),
-             'part': round(row.votantes / row.censo, 4),
-             **{k: round(row[k] / val[i], 4) for k in CODIGOS}} for i, row in g.iterrows()]}
+            {'d': int(i), 'lo': float(row.lo), 'hi': float(row.hi), 'n': int(row.n),
+             'part': float(row.votantes / row.censo),
+             **{k: float(row[k] / val[i]) for k in CODIGOS}} for i, row in g.iterrows()]}
     # totales nacionales por elección
     tot = r.groupby('eleccion')[['censo', 'votantes', 'candidaturas', 'blancos'] + CODIGOS].sum()
     for e in SOLO_MUN:
         tot.loc[e] = resultados_mun(e)[['censo', 'votantes', 'candidaturas', 'blancos'] + CODIGOS].sum()
-    out['nacional'] = {etiq(e): {'part': round(t.votantes / t.censo, 4),
-                                 **{k: round(t[k] / (t.candidaturas + t.blancos), 4) for k in CODIGOS}}
+    out['nacional'] = {etiq(e): {'part': float(t.votantes / t.censo),
+                                 **{k: float(t[k] / (t.candidaturas + t.blancos)) for k in CODIGOS}}
                        for e, t in tot.iterrows()}
     json.dump(out, open(os.path.join(DATOS, 'resumen.json'), 'w'), ensure_ascii=False, indent=1)
     json.dump(out, open(os.path.join(WEB, 'resumen.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
