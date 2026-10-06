@@ -1,0 +1,14 @@
+name = "generales-directo"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[triggers]
+crons = ["* * * * *"]
+
+[[kv_namespaces]]
+binding = "RESULTADOS"
+id = "PON_AQUI_EL_ID_DEL_KV"
+
+[vars]
+FUENTE = "https://PON_AQUI_LA_URL_OFICIAL"
+# CLAVE se define como secreto: npx wrangler secret put CLAVE

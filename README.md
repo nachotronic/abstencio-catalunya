@@ -15,6 +15,10 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 - `data/`: datos limpios por sección y municipio (CSV y GeoJSON).
 - `src/`: scripts en Python y plantillas con los que se han generado los datos y las páginas.
 
+## Generales del 29N
+
+`generales/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2015–2023) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales/README.md`.
+
 ## Publicar con GitHub Pages
 
 Settings → Pages → *Deploy from a branch* → `main` / `(root)`. Las dos páginas son autónomas: los datos van incrustados y las librerías se cargan desde unpkg.

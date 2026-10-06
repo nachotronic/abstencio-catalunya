@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El mapa de las generales</title>
+<meta name="description" content="Cómo votó cada barrio de España en las generales de 2015 a 2023, sección censal a sección censal, y su relación con la renta, la pobreza, la edad y la población extranjera. Preparado para el 29N.">
+<link rel="canonical" href="https://nachotronic.github.io/abstencio-catalunya/generales/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="El mapa de las generales: cómo vota cada barrio de España">
+<meta property="og:description" content="Resultados por sección censal de 2015 a 2023 cruzados con renta, pobreza, edad e inmigración.">
+<meta property="og:url" content="https://nachotronic.github.io/abstencio-catalunya/generales/">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/plain" href="llms.txt" title="Resumen para modelos de lenguaje">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera", "description": "Resultados del Congreso de 2015 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "es", "url": "https://nachotronic.github.io/abstencio-catalunya/generales/", "author": {"@type": "Person", "name": "Nacho"}, "isAccessibleForFree": true, "about": [{"@type": "Event", "name": "Elecciones generales de España de 2026", "startDate": "2026-11-29"}], "citation": ["https://infoelectoral.interior.gob.es/", "https://www.ine.es/experimental/atlas/experimental_atlas.htm", "https://www.ine.es/censos2021/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Elecciones generales 2015-2023 por sección censal con renta, edad y población extranjera", "description": "Votos al Congreso por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).", "url": "https://nachotronic.github.io/abstencio-catalunya/generales/metodologia.html", "license": "https://creativecommons.org/licenses/by/4.0/", "inLanguage": "es", "creator": {"@type": "Person", "name": "Nacho"}, "dateModified": "2026-10-06", "temporalCoverage": "2015-12-20/2023-07-23", "spatialCoverage": {"@type": "Place", "name": "España"}, "isBasedOn": ["https://infoelectoral.interior.gob.es/", "https://www.ine.es/experimental/atlas/experimental_atlas.htm", "https://github.com/dadosdelaplace/pollspaindata", "https://github.com/pablogguz/ineAtlas.data"], "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/generales/descargas/secciones.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/generales/descargas/municipios.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/generales/descargas/resultados_secciones_largo.csv"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#faf8f3; --surface:#ffffff; --ink:#1a1a1a; --ink2:#444; --muted:#767676; --line:#e3dfd6;
+  --map-bg:#f4f1ea; --map-line:#ffffff; --nodata:#d9d6cf; --accent:#b3261e;
+  --serif:'Newsreader',Georgia,serif; --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15161a; --surface:#1e2025; --ink:#ecebe7; --ink2:#c4c2bc; --muted:#9a988f; --line:#33363d;
+    --map-bg:#25272d; --map-line:#15161a; --nodata:#3a3c42; --accent:#ff8a80;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15161a; --surface:#1e2025; --ink:#ecebe7; --ink2:#c4c2bc; --muted:#9a988f; --line:#33363d;
+  --map-bg:#25272d; --map-line:#15161a; --nodata:#3a3c42; --accent:#ff8a80;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.6}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+.col{max-width:680px;margin:0 auto;padding:0 16px}
+.wide{max-width:1240px;margin:0 auto;padding:0 16px}
+header{padding:48px 0 8px}
+.kicker{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--sans);font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.08;letter-spacing:-.015em;margin:10px 0 16px}
+.lede{font-size:21px;color:var(--ink2)}
+.byline{font-family:var(--sans);font-size:14px;color:var(--muted);margin-top:14px}
+h2{font-family:var(--sans);font-size:26px;line-height:1.2;margin:56px 0 12px}
+.num{font-family:var(--mono);font-size:.9em}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:28px 0;font-family:var(--sans)}
+.stat{border-top:3px solid var(--c,var(--ink));padding-top:8px}
+.stat b{display:block;font-size:30px;font-weight:700;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+/* mapa */
+#mapa{margin-top:28px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;font-family:var(--sans);font-size:13px;padding:12px 0}
+.controls label{display:flex;flex-direction:column;gap:4px;color:var(--muted);font-weight:500}
+.controls select,.controls input{font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:7px 9px;min-width:150px;max-width:100%}
+.controls input{min-width:220px}
+.controls button{font:inherit;font-size:14px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+.mapwrap{position:relative;height:min(78vh,760px);min-height:440px;background:var(--map-bg);border-radius:8px;overflow:hidden}
+#map{position:absolute;inset:0}
+#legend{position:absolute;right:12px;bottom:12px;background:color-mix(in srgb,var(--surface) 92%,transparent);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:var(--sans);font-size:12px;max-width:min(330px,calc(100% - 24px));z-index:2}
+.lg-t{font-weight:600;margin-bottom:6px}
+.lg-sw{display:flex;flex-wrap:wrap;gap:4px 10px}
+.lg-sw b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.lg-n{color:var(--muted);margin-top:4px}
+.lg-n .nd{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.lg-g{height:10px;border-radius:2px;width:240px;max-width:100%}
+.lg-x{display:flex;justify-content:space-between;color:var(--muted);margin-top:3px;gap:12px}
+#tip{position:absolute;z-index:3;width:290px;max-width:calc(100% - 16px);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-family:var(--sans);font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.14);pointer-events:none}
+.t-h{font-weight:700;font-size:15px}
+.t-s{color:var(--muted);font-size:12px;margin-bottom:6px}
+.t-bars{width:100%;border-collapse:collapse}
+.t-bars th{text-align:left;font-weight:500;white-space:nowrap;padding:1px 6px 1px 0;width:1%}
+.t-bars td{padding:1px 0}
+.t-bars .bar{display:block;height:9px;border-radius:0 3px 3px 0}
+.t-bars .n{text-align:right;font-family:var(--mono);font-size:12px;width:52px}
+.t-kv{display:grid;grid-template-columns:auto auto;gap:1px 10px;margin:8px 0 0;border-top:1px solid var(--line);padding-top:6px}
+.t-kv dt{color:var(--muted)} .t-kv dd{margin:0;text-align:right;font-family:var(--mono);font-size:12px}
+.t-na{color:var(--muted);margin:4px 0}
+.hint{font-family:var(--sans);font-size:13px;color:var(--muted);margin:8px 0 0}
+.fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--sans);color:var(--muted)}
+/* directo */
+.directo{font-family:var(--sans);font-size:14px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:12px 14px;margin:6px 0 4px}
+.d-top{color:var(--muted)} .d-top b{color:var(--ink);font-family:var(--mono)}
+.d-live{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;padding:2px 6px;margin-right:4px}
+.d-seats{position:relative;display:flex;gap:2px;height:22px;margin:26px 0 4px}
+.d-seats span{display:block;height:100%}
+.d-seats span:first-child{border-radius:4px 0 0 4px} .d-seats span:last-child{border-radius:0 4px 4px 0}
+.d-seats i{position:absolute;left:50%;top:-4px;bottom:-4px;border-left:2px solid var(--ink)}
+.d-seats em{position:absolute;left:50%;top:-20px;transform:translateX(-50%);font-style:normal;font-size:11px;color:var(--muted)}
+.d-leg{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:10px}
+.d-leg b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.d-leg .n{font-family:var(--mono);font-weight:600}
+/* gráficos */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px 32px;margin:24px 0}
+.chartcard h3{font-family:var(--sans);font-size:16px;margin:0 0 2px}
+.chartcard p.sub{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0 0 8px;line-height:1.4}
+.chart{position:relative}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .ax{font-family:var(--sans);font-size:10px;fill:var(--muted)}
+.chart .lbl{font-family:var(--sans);font-size:11px;fill:var(--ink2);font-weight:500}
+.chart .xh{stroke:var(--muted);stroke-dasharray:2 3}
+.chart .hit{fill:transparent;cursor:crosshair}
+.ctip{position:absolute;top:0;width:170px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-family:var(--sans);font-size:12px;line-height:1.45;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.mut{color:var(--muted)}
+details.tabla{font-family:var(--sans);font-size:13px;margin:6px 0}
+details.tabla summary{cursor:pointer;color:var(--muted)}
+details.tabla table{border-collapse:collapse;width:100%;margin-top:6px;font-variant-numeric:tabular-nums}
+details.tabla caption{text-align:left;color:var(--muted);padding-bottom:4px}
+details.tabla th,details.tabla td{border-bottom:1px solid var(--line);padding:3px 6px;text-align:right}
+details.tabla th:nth-child(2),details.tabla td:nth-child(2){text-align:left}
+.go{font-family:var(--sans);font-size:.85em;font-weight:600;color:var(--accent);cursor:pointer;text-decoration:underline;text-decoration-style:dotted}
+footer{border-top:1px solid var(--line);margin-top:64px;padding:24px 0 48px;font-family:var(--sans);font-size:14px;color:var(--muted)}
+footer a{color:var(--ink2)}
+@media (max-width:760px){
+  body{font-size:18px}
+  .lede{font-size:19px}
+  .controls select,.controls input{min-width:0;width:100%}
+  .controls label{flex:1 1 45%}
+  .controls label.q{flex-basis:100%}
+  .mapwrap{height:70vh}
+  #tip{width:auto;left:8px!important;right:8px}
+}
+</style>
+</head>
+<body>
+<header class="col">
+  <div class="kicker">Elecciones generales del 29 de noviembre</div>
+  <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
+  <p class="lede">Los resultados del Congreso de 2015 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Quien vive en un barrio rico vota más y vota distinto que quien vive en uno pobre.</p>
+  <p class="byline">Por Nacho · Actualizado el <time datetime="2026-10-06">2026-10-06</time> · <a href="metodologia.html">Metodología y datos</a></p>
+</header>
+
+<main>
+<section class="col">
+  <div class="stats" aria-label="Resultados del 23J de 2023">
+    <div class="stat" style="--c:#1d84ce"><b>33,1%</b><span>PP · 23J 2023</span></div>
+    <div class="stat" style="--c:#e30613"><b>31,7%</b><span>PSOE</span></div>
+    <div class="stat" style="--c:#5ac035"><b>12,4%</b><span>Vox</span></div>
+    <div class="stat" style="--c:#a2275f"><b>12,3%</b><span>Sumar</span></div>
+    <div class="stat"><b>70,4%</b><span>participación</span></div>
+  </div>
+  <p>El 23 de julio de 2023 el PP fue la fuerza más votada en 18.221 secciones censales y el PSOE en 16.229. Por municipios, el PP ganó en 4.540 y el PSOE en 2.701 de los 8.131. Vox, que había ganado en 1.887 secciones en noviembre de 2019, perdió casi todas: 1.735 pasaron al PP.</p>
+</section>
+
+<section class="wide" id="mapa" aria-labelledby="h-mapa">
+  <h2 class="col" id="h-mapa" style="padding:0">Explora el mapa</h2>
+  <div class="directo" id="directo" hidden aria-live="polite">
+    <div class="d-top"><span class="d-live">En directo</span> <span id="d-nombre"></span> · Escrutado <b id="d-esc">–</b> · <span id="d-estado"></span></div>
+    <div class="d-seats" id="d-seats"></div>
+    <div class="d-leg" id="d-leg"></div>
+  </div>
+  <div class="controls">
+    <label>Qué ver <select id="sel-var"></select></label>
+    <label hidden>Partido <select id="sel-party"></select></label>
+    <label>Elección <select id="sel-elec"></select></label>
+    <label class="q">Buscar municipio <input id="q" list="munlist" placeholder="Escribe un municipio" autocomplete="off"><datalist id="munlist"></datalist></label>
+    <button type="button" id="home">Ver toda España</button>
+  </div>
+  <div class="mapwrap">
+    <div id="map" role="img" aria-label="Mapa de España por municipios y secciones censales con el resultado de las elecciones generales"></div>
+    <div id="legend"></div>
+    <div id="tip" hidden></div>
+    <div class="fallback" id="fallback" hidden>No se ha podido cargar el mapa. Las cifras y tablas de esta página recogen los mismos datos.</div>
+  </div>
+  <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado.</p>
+</section>
+
+<section class="col" aria-labelledby="h-renta">
+  <h2 id="h-renta">La renta: los barrios ricos votan más y votan PP</h2>
+  <p>Si se ordenan las secciones por renta y se agrupan en diez partes con el mismo censo, la participación sube de forma casi continua con el dinero. En el 10% más pobre, con menos de 15.724 euros netos por unidad de consumo al año, votó el <b>63%</b>. En el 10% más rico, con más de 30.726 euros, el <b>78%</b>. <a class="go" data-go="renta_uc">Ver la renta en el mapa</a></p>
+  <p>El voto también cambia. El PSOE sacó el 41% en las secciones más pobres y el 20% en las más ricas. El PP hace el camino contrario: 29% y 43%. Vox obtiene su mejor resultado en el extremo pobre (15%), baja en las rentas medias (12%) y repunta algo en las más altas (12%).</p>
+  <p>La pobreza dibuja lo mismo desde el otro lado: donde más de un 34% de los vecinos vive por debajo del umbral de riesgo de pobreza, la participación fue del 62%, frente al 77% donde menos. <a class="go" data-go="pobreza">Ver la pobreza en el mapa</a></p>
+</section>
+
+<section class="wide" aria-label="Gráficos de voto por decil">
+  <div class="charts">
+    <div class="chartcard"><h3>Por renta</h3><p class="sub">Voto en el 23J por decil de renta por unidad de consumo</p><div class="chart" data-var="renta_uc" data-lo="← más pobres" data-hi="más ricas →"></div><details class="tabla"><summary>Datos: Renta por unidad de consumo (2023) por decil</summary><table><caption>Elecciones generales 23J 2023. Cada decil agrupa secciones censales con el 10% del censo electoral, ordenadas por renta por unidad de consumo (2023).</caption><thead><tr><th>Decil</th><th>Rango</th><th>Participación</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar / Podemos</th></tr></thead><tbody><tr><td>1</td><td>8.797 € – 15.724 €</td><td>62,6%</td><td>29,4%</td><td>41,2%</td><td>15,4%</td><td>10,5%</td></tr><tr><td>2</td><td>15.725 € – 17.160 €</td><td>67,7%</td><td>32,8%</td><td>37,0%</td><td>14,8%</td><td>11,1%</td></tr><tr><td>3</td><td>17.160 € – 18.398 €</td><td>68,8%</td><td>34,0%</td><td>34,8%</td><td>13,9%</td><td>11,7%</td></tr><tr><td>4</td><td>18.398 € – 19.580 €</td><td>69,6%</td><td>34,3%</td><td>33,5%</td><td>12,8%</td><td>12,0%</td></tr><tr><td>5</td><td>19.581 € – 20.785 €</td><td>70,2%</td><td>33,6%</td><td>33,1%</td><td>12,2%</td><td>12,5%</td></tr><tr><td>6</td><td>20.785 € – 22.202 €</td><td>70,6%</td><td>31,8%</td><td>32,9%</td><td>11,6%</td><td>13,1%</td></tr><tr><td>7</td><td>22.204 € – 23.994 €</td><td>70,9%</td><td>30,4%</td><td>31,4%</td><td>11,4%</td><td>13,5%</td></tr><tr><td>8</td><td>23.994 € – 26.445 €</td><td>71,8%</td><td>28,9%</td><td>29,6%</td><td>10,4%</td><td>14,1%</td></tr><tr><td>9</td><td>26.446 € – 30.724 €</td><td>73,8%</td><td>30,7%</td><td>26,4%</td><td>10,0%</td><td>13,9%</td></tr><tr><td>10</td><td>30.726 € – 58.752 €</td><td>77,8%</td><td>43,2%</td><td>20,3%</td><td>12,0%</td><td>10,7%</td></tr></tbody></table></details></div>
+    <div class="chartcard"><h3>Por pobreza</h3><p class="sub">Por decil de población en riesgo de pobreza</p><div class="chart" data-var="pobreza" data-lo="← menos pobreza" data-hi="más →"></div><details class="tabla"><summary>Datos: Población en riesgo de pobreza (2023) por decil</summary><table><caption>Elecciones generales 23J 2023. Cada decil agrupa secciones censales con el 10% del censo electoral, ordenadas por población en riesgo de pobreza (2023).</caption><thead><tr><th>Decil</th><th>Rango</th><th>Participación</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar / Podemos</th></tr></thead><tbody><tr><td>1</td><td>2,5% – 8,6%</td><td>77,2%</td><td>36,8%</td><td>23,4%</td><td>11,5%</td><td>11,9%</td></tr><tr><td>2</td><td>8,6% – 11,7%</td><td>73,7%</td><td>31,4%</td><td>27,5%</td><td>10,8%</td><td>12,9%</td></tr><tr><td>3</td><td>11,7% – 14,3%</td><td>72,3%</td><td>31,0%</td><td>29,8%</td><td>10,7%</td><td>13,5%</td></tr><tr><td>4</td><td>14,3% – 16,9%</td><td>71,6%</td><td>32,3%</td><td>31,0%</td><td>11,2%</td><td>13,4%</td></tr><tr><td>5</td><td>16,9% – 19,4%</td><td>70,9%</td><td>32,9%</td><td>31,8%</td><td>11,4%</td><td>13,1%</td></tr><tr><td>6</td><td>19,4% – 22,3%</td><td>70,1%</td><td>33,2%</td><td>32,8%</td><td>12,2%</td><td>12,7%</td></tr><tr><td>7</td><td>22,3% – 25,3%</td><td>69,4%</td><td>33,3%</td><td>33,8%</td><td>12,8%</td><td>12,4%</td></tr><tr><td>8</td><td>25,3% – 29,0%</td><td>68,6%</td><td>33,6%</td><td>34,7%</td><td>13,8%</td><td>11,9%</td></tr><tr><td>9</td><td>29,0% – 34,3%</td><td>67,3%</td><td>33,1%</td><td>36,2%</td><td>14,5%</td><td>11,3%</td></tr><tr><td>10</td><td>34,3% – 60,5%</td><td>61,6%</td><td>30,4%</td><td>39,2%</td><td>15,8%</td><td>10,6%</td></tr></tbody></table></details></div>
+    <div class="chartcard"><h3>Por edad</h3><p class="sub">Por decil de edad media de la sección</p><div class="chart" data-var="edad_media" data-lo="← más jóvenes" data-hi="más mayores →"></div><details class="tabla"><summary>Datos: Edad media (2023) por decil</summary><table><caption>Elecciones generales 23J 2023. Cada decil agrupa secciones censales con el 10% del censo electoral, ordenadas por edad media (2023).</caption><thead><tr><th>Decil</th><th>Rango</th><th>Participación</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar / Podemos</th></tr></thead><tbody><tr><td>1</td><td>27,9 – 38,9</td><td>69,5%</td><td>35,0%</td><td>28,8%</td><td>17,2%</td><td>12,7%</td></tr><tr><td>2</td><td>38,9 – 40,8</td><td>67,3%</td><td>31,4%</td><td>31,4%</td><td>15,6%</td><td>12,5%</td></tr><tr><td>3</td><td>40,8 – 42,1</td><td>67,8%</td><td>29,7%</td><td>32,5%</td><td>13,8%</td><td>13,2%</td></tr><tr><td>4</td><td>42,1 – 43,2</td><td>68,7%</td><td>29,6%</td><td>32,3%</td><td>12,7%</td><td>13,3%</td></tr><tr><td>5</td><td>43,2 – 44,1</td><td>69,7%</td><td>30,1%</td><td>32,1%</td><td>12,0%</td><td>13,2%</td></tr><tr><td>6</td><td>44,1 – 45,1</td><td>70,2%</td><td>30,6%</td><td>32,5%</td><td>11,3%</td><td>13,2%</td></tr><tr><td>7</td><td>45,1 – 46,2</td><td>71,2%</td><td>32,5%</td><td>32,1%</td><td>11,0%</td><td>12,6%</td></tr><tr><td>8</td><td>46,2 – 47,6</td><td>72,1%</td><td>33,9%</td><td>32,2%</td><td>10,4%</td><td>12,1%</td></tr><tr><td>9</td><td>47,6 – 49,7</td><td>73,2%</td><td>36,1%</td><td>31,6%</td><td>10,3%</td><td>11,4%</td></tr><tr><td>10</td><td>49,7 – 74,8</td><td>74,5%</td><td>40,8%</td><td>31,6%</td><td>10,0%</td><td>9,1%</td></tr></tbody></table></details></div>
+    <div class="chartcard"><h3>Por población extranjera</h3><p class="sub">Por decil de vecinos sin nacionalidad española</p><div class="chart" data-var="extranjeros" data-lo="← menos" data-hi="más →"></div><details class="tabla"><summary>Datos: Población extranjera (2023) por decil</summary><table><caption>Elecciones generales 23J 2023. Cada decil agrupa secciones censales con el 10% del censo electoral, ordenadas por población extranjera (2023).</caption><thead><tr><th>Decil</th><th>Rango</th><th>Participación</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar / Podemos</th></tr></thead><tbody><tr><td>1</td><td>0,0% – 2,6%</td><td>72,6%</td><td>37,0%</td><td>34,0%</td><td>12,1%</td><td>10,8%</td></tr><tr><td>2</td><td>2,6% – 4,0%</td><td>73,0%</td><td>36,0%</td><td>31,9%</td><td>12,1%</td><td>11,3%</td></tr><tr><td>3</td><td>4,0% – 5,5%</td><td>73,0%</td><td>35,3%</td><td>30,7%</td><td>12,1%</td><td>11,5%</td></tr><tr><td>4</td><td>5,5% – 7,2%</td><td>72,6%</td><td>34,3%</td><td>30,2%</td><td>12,0%</td><td>11,9%</td></tr><tr><td>5</td><td>7,2% – 9,1%</td><td>72,1%</td><td>33,1%</td><td>30,2%</td><td>12,2%</td><td>12,3%</td></tr><tr><td>6</td><td>9,1% – 11,3%</td><td>71,4%</td><td>32,1%</td><td>30,8%</td><td>12,3%</td><td>12,5%</td></tr><tr><td>7</td><td>11,3% – 14,2%</td><td>70,5%</td><td>31,2%</td><td>31,6%</td><td>12,3%</td><td>12,8%</td></tr><tr><td>8</td><td>14,2% – 18,0%</td><td>69,1%</td><td>31,1%</td><td>31,8%</td><td>12,9%</td><td>13,0%</td></tr><tr><td>9</td><td>18,0% – 24,2%</td><td>67,4%</td><td>30,1%</td><td>32,5%</td><td>12,8%</td><td>13,7%</td></tr><tr><td>10</td><td>24,2% – 88,0%</td><td>62,6%</td><td>29,4%</td><td>33,6%</td><td>13,3%</td><td>13,9%</td></tr></tbody></table></details></div>
+    <div class="chartcard"><h3>Por estudios</h3><p class="sub">Por decil de adultos con estudios superiores (2021)</p><div class="chart" data-var="estudios_sup_2021" data-lo="← menos" data-hi="más →"></div><details class="tabla"><summary>Datos: Adultos con estudios superiores (2021) por decil</summary><table><caption>Elecciones generales 23J 2023. Cada decil agrupa secciones censales con el 10% del censo electoral, ordenadas por adultos con estudios superiores (2021).</caption><thead><tr><th>Decil</th><th>Rango</th><th>Participación</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar / Podemos</th></tr></thead><tbody><tr><td>1</td><td>0,9% – 15,6%</td><td>63,6%</td><td>31,3%</td><td>40,0%</td><td>15,2%</td><td>9,2%</td></tr><tr><td>2</td><td>15,6% – 19,3%</td><td>67,9%</td><td>33,0%</td><td>37,2%</td><td>13,8%</td><td>10,5%</td></tr><tr><td>3</td><td>19,3% – 22,5%</td><td>68,5%</td><td>32,6%</td><td>35,4%</td><td>13,6%</td><td>11,5%</td></tr><tr><td>4</td><td>22,5% – 25,6%</td><td>68,9%</td><td>31,7%</td><td>34,5%</td><td>12,9%</td><td>12,4%</td></tr><tr><td>5</td><td>25,6% – 28,9%</td><td>69,1%</td><td>30,6%</td><td>33,6%</td><td>12,3%</td><td>13,0%</td></tr><tr><td>6</td><td>28,9% – 32,8%</td><td>70,0%</td><td>30,6%</td><td>32,5%</td><td>11,8%</td><td>13,3%</td></tr><tr><td>7</td><td>32,8% – 37,6%</td><td>70,8%</td><td>30,3%</td><td>31,2%</td><td>11,1%</td><td>13,5%</td></tr><tr><td>8</td><td>37,6% – 44,3%</td><td>72,2%</td><td>30,6%</td><td>29,2%</td><td>10,7%</td><td>13,8%</td></tr><tr><td>9</td><td>44,3% – 54,5%</td><td>74,4%</td><td>33,3%</td><td>26,5%</td><td>10,6%</td><td>13,9%</td></tr><tr><td>10</td><td>54,5% – 82,7%</td><td>78,3%</td><td>44,2%</td><td>20,6%</td><td>12,2%</td><td>11,6%</td></tr></tbody></table></details></div>
+    <div class="chartcard"><h3>Por paro</h3><p class="sub">Por decil de tasa de paro (2021)</p><div class="chart" data-var="paro_2021" data-lo="← menos paro" data-hi="más →"></div><details class="tabla"><summary>Datos: Tasa de paro (2021) por decil</summary><table><caption>Elecciones generales 23J 2023. Cada decil agrupa secciones censales con el 10% del censo electoral, ordenadas por tasa de paro (2021).</caption><thead><tr><th>Decil</th><th>Rango</th><th>Participación</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar / Podemos</th></tr></thead><tbody><tr><td>1</td><td>0,0% – 8,8%</td><td>76,4%</td><td>36,8%</td><td>23,0%</td><td>11,4%</td><td>11,1%</td></tr><tr><td>2</td><td>8,8% – 10,7%</td><td>73,9%</td><td>32,2%</td><td>27,2%</td><td>10,7%</td><td>12,7%</td></tr><tr><td>3</td><td>10,7% – 12,3%</td><td>72,8%</td><td>32,1%</td><td>29,4%</td><td>11,4%</td><td>13,0%</td></tr><tr><td>4</td><td>12,3% – 13,9%</td><td>72,1%</td><td>32,7%</td><td>31,1%</td><td>11,6%</td><td>13,0%</td></tr><tr><td>5</td><td>13,9% – 15,6%</td><td>71,4%</td><td>33,5%</td><td>32,0%</td><td>12,1%</td><td>13,0%</td></tr><tr><td>6</td><td>15,6% – 17,4%</td><td>70,5%</td><td>33,6%</td><td>32,7%</td><td>12,6%</td><td>12,7%</td></tr><tr><td>7</td><td>17,4% – 19,6%</td><td>69,7%</td><td>33,6%</td><td>33,8%</td><td>13,0%</td><td>12,4%</td></tr><tr><td>8</td><td>19,6% – 22,7%</td><td>68,6%</td><td>33,1%</td><td>34,9%</td><td>13,4%</td><td>12,0%</td></tr><tr><td>9</td><td>22,7% – 27,4%</td><td>67,0%</td><td>32,6%</td><td>36,1%</td><td>14,0%</td><td>11,5%</td></tr><tr><td>10</td><td>27,4% – 81,9%</td><td>61,1%</td><td>28,7%</td><td>40,3%</td><td>13,9%</td><td>11,5%</td></tr></tbody></table></details></div>
+  </div>
+</section>
+
+<section class="col" aria-labelledby="h-edad">
+  <h2 id="h-edad">La edad: Vox crece donde vive gente joven</h2>
+  <p>En el 10% de secciones más jóvenes, con una edad media por debajo de 39 años, Vox obtuvo el <b>17%</b>. En las más envejecidas, por encima de 50 años, el <b>10%</b>. Allí el PP llega al 41%. Las zonas mayores también votan más: 75%, frente al 69% de las más jóvenes. <a class="go" data-go="edad_media">Ver la edad en el mapa</a></p>
+</section>
+
+<section class="col" aria-labelledby="h-ext">
+  <h2 id="h-ext">La inmigración: menos participación, no más Vox</h2>
+  <p>Donde más de un 24% de los vecinos son extranjeros, la participación fue del <b>63%</b>, frente al 73% donde casi no hay. El voto a Vox apenas cambia entre unas y otras (12% y 13%). Entre los municipios de más de 50.000 habitantes, Vox tuvo sus mejores resultados en El Ejido (28%), Roquetas de Mar (24%) y Cartagena (23%).</p>
+  <p>Además, unos <b>5.200.000</b> adultos que viven en España, el 13%, no pueden votar en unas generales porque no tienen la nacionalidad española. No están en el censo y la participación oficial no los cuenta. <a class="go" data-go="sin_derecho">Ver en el mapa</a></p>
+  <p>Entre los municipios de más de 50.000 habitantes, la participación más baja fue la de Melilla (50%), La Línea de la Concepción (50%) y Arona (51%). La más alta, Boadilla del Monte (82%), Pozuelo de Alarcón (82%) y Tres Cantos (81%). <a class="go" data-go="part::2023_07">Ver la participación en el mapa</a></p>
+</section>
+
+<section class="col" aria-labelledby="h-29n">
+  <h2 id="h-29n">El 29N</h2>
+  <p>Este mapa se actualizará con los resultados del 29 de noviembre por municipio en cuanto el Ministerio del Interior publique el escrutinio. Los datos por sección censal llegan semanas después, cuando Interior publica los resultados por mesa.</p>
+</section>
+</main>
+
+<footer class="col">
+  <p><b>Fuentes</b>: Ministerio del Interior (resultados por mesa, sin voto CERA), vía <a href="https://github.com/dadosdelaplace/pollspaindata">pollspaindata</a>. INE, Atlas de Distribución de Renta de los Hogares 2023 y Censo 2021, vía <a href="https://github.com/pablogguz/ineAtlas.data">ineAtlas.data</a>. Datos por sección: dicen dónde se vota de una manera, no quién. <a href="metodologia.html">Metodología completa</a>.</p>
+  <p><b>Descargas</b> (CSV, licencia CC BY 4.0): <a href="descargas/secciones.csv">secciones</a> · <a href="descargas/municipios.csv">municipios</a> · <a href="descargas/resultados_secciones_largo.csv">votos por sección y partido</a></p>
+</footer>
+<script src="https://unpkg.com/deck.gl@9.4.0/dist.min.js"></script>
+<script src="app.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
