@@ -294,17 +294,17 @@
   --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
   --body:"Newsreader", Georgia, "Times New Roman", serif;
   --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --mapstroke:rgba(255,255,255,.55); --mapbg:#e7eaf1; --card:rgba(255,255,255,.92); --munstroke:rgba(22,26,43,.55); --hl:#161a2b;
+  --methbg:#e8ebf3; --mapstroke:rgba(255,255,255,.55); --mapbg:#e7eaf1; --card:rgba(255,255,255,.92); --munstroke:rgba(22,26,43,.55); --hl:#161a2b;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#12141d; --surface:#1a1d29; --fg:#e8eaf2; --muted:#9aa0b8; --rule:#2c3042;
   --accent:#8f9cf0; --vote:#7d8ce8; --noright:#e0a440; --abst:#c77da3; --empty:#2a2e3e;
-  --mapstroke:rgba(18,20,29,.6); --mapbg:#0d0f16; --card:rgba(26,29,41,.92); --munstroke:rgba(232,234,242,.5); --hl:#ffffff; color-scheme:dark}}
+  --methbg:#1b1e2b; --mapstroke:rgba(18,20,29,.6); --mapbg:#0d0f16; --card:rgba(26,29,41,.92); --munstroke:rgba(232,234,242,.5); --hl:#ffffff; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12141d; --surface:#1a1d29; --fg:#e8eaf2; --muted:#9aa0b8; --rule:#2c3042;
   --accent:#8f9cf0; --vote:#7d8ce8; --noright:#e0a440; --abst:#c77da3; --empty:#2a2e3e;
-  --mapstroke:rgba(18,20,29,.6); --mapbg:#0d0f16; --card:rgba(26,29,41,.92); --munstroke:rgba(232,234,242,.5); --hl:#ffffff; color-scheme:dark}
+  --methbg:#1b1e2b; --mapstroke:rgba(18,20,29,.6); --mapbg:#0d0f16; --card:rgba(26,29,41,.92); --munstroke:rgba(232,234,242,.5); --hl:#ffffff; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.12rem;line-height:1.6;padding-inline:16px;padding-block:0 64px}
 .col{max-width:68ch;margin-inline:auto}
@@ -375,7 +375,7 @@ svg .lab{fill:var(--fg)}
 article .q{margin-block:28px;padding-left:16px}
 article .q .qt{font-size:1.32rem}
 article .q cite{font-size:.76rem}
-.method{font-size:.98rem;color:var(--fg)}
+.method{font-size:.92rem;color:var(--fg);background:var(--methbg);border-radius:6px;padding:16px 18px 16px 34px}
 .method li{margin-bottom:.5rem}
 a{color:var(--accent)}
 footer{margin-top:40px}
