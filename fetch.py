@@ -11,21 +11,13 @@ def api(base, **p):
     p.update(format='json', formatversion=2)
     return json.loads(get(base + '?' + urllib.parse.urlencode(p)))
 PLACES = {
- 'costa-brava': ['Costa Brava beach people', 'Platja Tossa de Mar people', "Platja d'Aro beach summer"],
- 'salou': ['Salou beach people', 'Salou passeig people', 'Salou platja Llevant'],
- 'guissona': ['Guissona', 'Guissona fira', 'Guissona festa'],
- 'vic': ['Vic mercat plaça Major', 'Vic market people', 'Mercat de Vic'],
- 'salt': ['Salt Gironès carrer', 'Salt Girona mercat', 'Salt festa major', 'Salt Gironès people'],
- 'area-barcelona': ['Barcelona street people', 'Barcelona metro passengers', 'Rambla Barcelona people crowd'],
- 'lloret': ['Lloret de Mar beach people', 'Lloret de Mar street', 'Lloret de Mar platja estiu'],
- 'figueres': ['Figueres Rambla people', 'Figueres mercat', 'Figueres fira'],
- 'roses': ['Roses platja people', 'Roses beach Catalonia people', 'Roses passeig marítim'],
- 'castello': ["Castelló d'Empúries fira", "Empuriabrava people", "Castelló d'Empúries festa"],
- 'ciutat-vella': ['Raval Barcelona street people', 'Rambla del Raval people', 'Barceloneta people', 'Mercat Sant Antoni people'],
- 'nou-barris': ['Nou Barris people', 'Nou Barris festa', 'Via Júlia Barcelona'],
- 'sant-adria': ['Sant Adrià de Besòs La Mina', 'Sant Adrià de Besòs festa', 'Sant Adrià de Besòs platja'],
- 'badalona': ['Badalona platja people', 'Badalona Rambla people', 'Badalona Sant Roc', 'Badalona festa'],
- 'santa-coloma': ['Santa Coloma de Gramenet people', 'Santa Coloma de Gramenet festa', 'Santa Coloma de Gramenet Rambla', 'Santa Coloma de Gramenet mercat'],
+ 'salt': ['Salt Girona', 'Salt (Gironès)', 'Salt Gironès festa major', 'Salt Gironès carnaval', 'Salt Girona Sant Jordi', 'Salt Gironès castellers', 'Salt Gironès rambla'],
+ 'figueres': ['Figueres carnaval', 'Figueres Sant Jordi', 'Figueres fires de la Santa Creu', 'Figueres castellers', 'Figueres sardanes', 'Figueres people street'],
+ 'santa-coloma': ['Santa Coloma de Gramenet carnaval', 'Santa Coloma de Gramenet castellers', 'Santa Coloma de Gramenet Sant Jordi', 'Santa Coloma de Gramenet festa major', 'Santa Coloma de Gramenet manifestació'],
+ 'badalona': ['Badalona carnaval', 'Badalona castellers', 'Badalona Sant Jordi', 'Badalona mercat', 'Badalona Nit del Dimoni people'],
+ 'nou-barris': ['Nou Barris carnaval', 'Nou Barris castellers', 'Nou Barris festa major', 'Nou Barris manifestació', 'Prosperitat Barcelona festa'],
+ 'sant-adria': ['La Mina Sant Adrià festa', 'Sant Adrià de Besòs castellers', 'Sant Adrià de Besòs carnaval', 'Sant Adrià de Besòs mercat'],
+ 'figueres2': ['Figueres Rambla', 'Figueres plaça'],
 }
 out = {}
 for slug, qs in PLACES.items():
@@ -50,13 +42,13 @@ for slug, qs in PLACES.items():
             v = lambda k: re.sub('<[^>]+>', '', m.get(k, {}).get('value', '')).strip()
             cands.append(dict(file=pg['title'], page=ii['descriptionurl'], thumb=ii['thumburl'], w=ii['width'], h=ii['height'],
                               artist=v('Artist'), license=v('LicenseShortName'), license_url=v('LicenseUrl'), desc=v('ImageDescription')[:200]))
-    os.makedirs(f'cand2/{slug}', exist_ok=True)
+    os.makedirs(f'cand3/{slug}', exist_ok=True)
     keep = []
     for k, c in enumerate(cands[:16]):
         b = get(c['thumb'])
         if b:
-            c['local'] = f'cand2/{slug}/{k:02d}.jpg'; open(c['local'], 'wb').write(b); keep.append(c)
+            c['local'] = f'cand3/{slug}/{k:02d}.jpg'; open(c['local'], 'wb').write(b); keep.append(c)
         time.sleep(0.3)
     out[slug] = keep
     print(slug, len(keep))
-json.dump(out, open('cand2/candidates.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(out, open('cand3/candidates.json', 'w'), ensure_ascii=False, indent=1)

@@ -14,4 +14,4 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
-          git add cand2 && git commit -m "Candidatas de Commons" && git push
+          git add cand3 && git commit -m "Candidatas de Commons" && git push
