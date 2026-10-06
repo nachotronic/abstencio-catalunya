@@ -6,7 +6,7 @@
 <title>Metodología y datos · ¿Quién no vota en Cataluña?</title>
 <!-- seo -->
 <meta name="description" content="Datos abiertos (CSV y GeoJSON, CC BY 4.0), columnas, fuentes y método del análisis de la abstención por sección censal en Cataluña, 2015-2024.">
-<meta name="author" content="Nacho">
+<meta name="author" content="Nacho G. del Álamo">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html">
 <meta name="google-site-verification" content="M5PxiUNlQY0Orkav-c2U9AuvCfD-w7gZCWH70gfYrIQ">
@@ -38,9 +38,12 @@
    "creator": {
     "@type": "Person",
     "@id": "https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html#person",
-    "name": "Nacho",
+    "name": "Nacho G. del Álamo",
     "url": "https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html",
     "sameAs": [
+     "https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES",
+     "https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/",
+     "https://x.com/nachotronic",
      "https://github.com/nachotronic"
     ]
    },
@@ -176,6 +179,7 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <nav><a href="index.html">← Volver a la pieza</a><a href="metodologia-ca.html" hreflang="ca" lang="ca">Català</a></nav>
 <div class="kicker">¿Quién no vota en Cataluña?</div>
 <h1>Metodología y datos</h1>
+<p class="kicker">Publicada el 5 de octubre de 2026 · Actualizada el 6 de octubre de 2026</p>
 <p>Esta página acompaña a <a href="index.html">«¿Quién no vota en Cataluña?»</a>. Aquí están los datos que usa, con licencia libre, lo que mide cada columna y cómo se ha calculado.</p>
 <h2>Descargar los datos</h2>
 <ul>
@@ -189,7 +193,7 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 </ul>
 <h2>Licencia y cómo citar</h2>
 <p>Los datos elaborados se publican con licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">Creative Commons Atribución 4.0 (CC BY 4.0)</a>: se pueden reutilizar, también con fines comerciales, citando la fuente. Los datos de origen mantienen las condiciones de sus organismos (Ministerio del Interior, INE, Generalitat de Catalunya). Las fotos de la pieza tienen su propia licencia, indicada al pie de cada una.</p>
-<p class="cite">Cita sugerida: Nacho, «¿Quién no vota en Cataluña? Abstención por sección censal», 2026, https://nachotronic.github.io/abstencio-catalunya/index.html. Datos: https://github.com/nachotronic/abstencio-catalunya.</p>
+<p class="cite">Cita sugerida: Nacho G. del Álamo, «¿Quién no vota en Cataluña? Abstención por sección censal», 2026, https://nachotronic.github.io/abstencio-catalunya/index.html. Datos: https://github.com/nachotronic/abstencio-catalunya.</p>
 <h2>Cifras clave</h2>
 <ul>
 <li>Cataluña, 23 de julio de 2023: de cada 100 adultos residentes, 54 votaron, 17 no tenían derecho a voto y 29 podían votar y no lo hicieron.</li>
@@ -222,7 +226,7 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <li>Son datos por sección, no por persona: indican dónde se vota menos, no quién.</li>
 <li>El censo electoral de julio y la población de enero no son exactamente la misma foto. Donde el censo supera a los adultos estimados, el grupo «sin derecho a voto» se pone a cero.</li>
 <li>Las secciones de otros años solo se comparan con las de 2023 si tienen el mismo código y un censo parecido (entre dos tercios y vez y media).</li>
-<li>El Censo 2021 no cubre 74 secciones creadas después y el Atlas no da renta en 20.</li>
+<li>El Censo 2021 no cubre 73 secciones creadas después y el Atlas no da renta por unidad de consumo en 30.</li>
 <li>En las municipales votan además los ciudadanos de la UE y de algunos países con convenio inscritos en el censo, lo que reduce el grupo «sin derecho a voto».</li>
 </ul>
 <h2>Columnas de catalunya_secciones_2023.csv</h2>
@@ -245,6 +249,12 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <tr><td>indep_share19, indep_share23, drop_19_23</td><td>Voto independentista sobre votos emitidos en 2019 y 2023, y caída de participación entre noviembre de 2019 y julio de 2023 (0 a 1).</td></tr>
 </tbody></table></div>
 <p>Los mismos nombres se usan en el resto de archivos. En evolucion_secciones.csv cada columna es una elección: M = municipales, A = Parlament, G = Congreso, seguida del año y la vuelta del año (G20192 = Congreso de noviembre de 2019).</p>
+<h2>Autoría y revisión</h2>
+<p>Datos, texto y gráficos de <a href="sobre-mi.html">Nacho G. del Álamo</a>, que también revisa los datos y el texto antes de publicar. Cada cifra del texto se recalcula con un script a partir de los datos publicados, y los totales se contrastan con los resultados oficiales de la Generalitat.</p>
+<h2>Correcciones</h2>
+<ul>
+<li><b>6 de octubre de 2026:</b> en la sección de Figueres con menos participación el paro es del 59% (58,5%), no del 58%; el voto independentista de 2023 era el 28% contando al PDeCAT, pero ERC, Junts y la CUP suman el 27%; en el Parlament de 2015 la distancia entre el 20% de secciones más ricas y el 20% más pobre era de 13 puntos, no de 14; el Censo 2021 no cubre 73 secciones (no 74) y el Atlas no da renta por unidad de consumo en 30 (no 20). Ninguna cambia las conclusiones.</li>
+</ul>
 <h2>Código</h2>
 <p>Los scripts en Python con los que se han generado los datos y las páginas están en <a href="https://github.com/nachotronic/abstencio-catalunya">el repositorio de GitHub</a>, carpeta <code>src/</code>.</p>
 </main>

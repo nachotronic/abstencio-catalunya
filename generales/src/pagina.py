@@ -198,7 +198,7 @@ def jsonld(F):
         'headline': 'El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera',
         'description': f"Resultados del Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.",
         'datePublished': F['hoy'], 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
-        'author': {'@type': 'Person', 'name': AUTOR}, 'isAccessibleForFree': True,
+        'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html'}, 'isAccessibleForFree': True,
         'about': [{'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29'}],
         'citation': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://www.ine.es/censos2021/'],
     }
@@ -207,7 +207,7 @@ def jsonld(F):
         'name': 'Elecciones generales 2004-2023 por sección censal con renta, edad y población extranjera',
         'description': 'Votos al Congreso (2004-2023), municipales (2011-2023; 2007 por municipio) y europeas (2019 y 2024) por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).',
         'url': F['url'] + 'metodologia.html', 'license': 'https://creativecommons.org/licenses/by/4.0/', 'inLanguage': 'es',
-        'creator': {'@type': 'Person', 'name': AUTOR}, 'dateModified': F['hoy'],
+        'creator': {'@type': 'Person', 'name': AUTOR, 'url': 'https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html'}, 'dateModified': F['hoy'],
         'temporalCoverage': '2004-03-14/2024-06-09', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
         'isBasedOn': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://github.com/dadosdelaplace/pollspaindata', 'https://github.com/pablogguz/ineAtlas.data'],
         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'text/csv', 'contentUrl': F['url'] + 'descargas/' + f}
