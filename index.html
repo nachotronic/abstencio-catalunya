@@ -436,6 +436,12 @@ footer{margin-top:40px}
 .place:hover,.place:focus-visible{color:var(--accent)}
 .place.now{background:var(--accent);color:var(--bg);border-bottom-color:transparent;box-shadow:0 0 0 3px var(--accent)}
 .scrollhint{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.site{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--mono);font-size:.78rem}
+.site a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.site a:hover{color:var(--fg)}
+.site a[aria-current]{color:var(--fg);border-bottom-color:var(--accent)}
+.topbar .lang{margin-bottom:0}
 .lang{display:flex;justify-content:flex-end;gap:6px;margin-bottom:14px;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
 .lang a{padding:4px 10px;border:1px solid var(--rule);border-radius:4px;color:var(--muted);text-decoration:none}
 .lang a:hover{color:var(--fg);border-color:var(--muted)}
@@ -490,7 +496,7 @@ footer{margin-top:40px}
 <body>
 <div class="wide">
 <header class="col">
-  <nav class="lang" aria-label="Idioma"><a href="index.html" hreflang="es" lang="es" aria-current="page">ES</a><a href="ca.html" hreflang="ca" lang="ca">CA</a></nav>
+  <div class="topbar"><nav class="site" aria-label="Secciones del sitio"><a href="index.html" aria-current="page">Cataluña</a><a href="generales-2026/">Generales en España</a><a href="atlas/">Atlas</a><a href="mapa.html">Mapa 2D</a></nav><nav class="lang" aria-label="Idioma"><a href="index.html" hreflang="es" lang="es" aria-current="page">ES</a><a href="ca.html" hreflang="ca" lang="ca">CA</a></nav></div>
   <div class="kicker">Cataluña · elecciones generales 2015–2023 · 5.115 secciones censales</div>
   <h1>¿Quién no vota en Cataluña?</h1>
   <p class="byline">Por <a href="sobre-mi.html" rel="author">Nacho G. del Álamo</a> · <time datetime="2026-10-05">5 de octubre de 2026</time></p>

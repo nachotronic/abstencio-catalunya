@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>[hidden]{display:none!important}body{margin:0}</style>
+<style>[hidden]{display:none!important}body{margin:0}.topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.site{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--mono);font-size:.78rem}
+.site a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.site a:hover{color:var(--fg)}
+.site a[aria-current]{color:var(--fg);border-bottom-color:var(--accent)}
+.topbar .lang{margin-bottom:0}
+</style>
 <title>¿Quién no vota en Cataluña?</title>
 <!-- seo -->
 <meta name="description" content="Mapa interactivo en 2D de la abstención en las 5.115 secciones censales de Cataluña, con gráficos por renta, estudios, paro y población extranjera.">
@@ -242,6 +248,7 @@ footer{margin-top:40px}
 
 <div class="wide">
 <header class="col">
+  <div class="topbar"><nav class="site" aria-label="Secciones del sitio"><a href="index.html">Cataluña</a><a href="generales-2026/">Generales en España</a><a href="atlas/">Atlas</a><a href="mapa.html" aria-current="page">Mapa 2D</a></nav></div>
   <div class="kicker">Cataluña · elecciones generales 2015–2023 · 5.115 secciones censales</div>
   <h1>¿Quién no vota en Cataluña?</h1>
   <p class="lede">El 23 de julio de 2023, de cada 100 adultos que vivían en Cataluña, <span class="c-vote num" id="l-vote"></span> votaron. Otros <span class="c-no num" id="l-no"></span> no podían hacerlo porque no tienen la nacionalidad española. Y <span class="c-abst num" id="l-abst"></span> podían votar y no lo hicieron. Las notas de participación solo cuentan el último grupo. Este mapa separa los tres, sección a sección, y los cruza con la renta, la edad, los estudios y la población extranjera.</p>
