@@ -1,6 +1,6 @@
 # El mapa de las generales
 
-Pieza para las elecciones generales del 29 de noviembre de 2026: resultados del Congreso de 2015 a 2023 por municipio y sección censal (36.462 secciones), cruzados con renta, pobreza, edad y población extranjera (INE), con modo en directo para la noche electoral.
+Pieza para las elecciones generales del 29 de noviembre de 2026: resultados del Congreso de 2004 a 2023 por municipio y sección censal (36.462 secciones), cruzados con renta, pobreza, edad y población extranjera (INE), con modo en directo para la noche electoral.
 
 ## Ficheros
 

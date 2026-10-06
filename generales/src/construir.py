@@ -1,4 +1,4 @@
-"""Construye la base de datos de la pieza de generales (España, Congreso 2015-2023).
+"""Construye la base de datos de la pieza de generales (España, Congreso 2004-2023).
 
 Uso:  python3 construir.py            (descarga las fuentes en ~/.cache/generales si faltan)
 
@@ -23,10 +23,10 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.environ.get('GENERALES_CACHE', os.path.expanduser('~/.cache/generales'))
 DATOS, WEB = os.path.join(AQUI, 'datos'), os.path.join(AQUI, 'web', 'data')
 EXTRA = os.path.join(DATOS, 'extra')   # resultados nuevos que deja actualizar_29n.py
-ETIQ = {'2015_12': '20D 2015', '2016_06': '26J 2016', '2019_04': '28A 2019', '2019_11': '10N 2019', '2023_07': '23J 2023',
+ETIQ = {'2004_03': '14M 2004', '2008_03': '9M 2008', '2011_11': '20N 2011', '2015_12': '20D 2015', '2016_06': '26J 2016', '2019_04': '28A 2019', '2019_11': '10N 2019', '2023_07': '23J 2023',
         '2026_11': '29N 2026'}
 # elecciones con resultados por mesa (y por tanto por sección)
-ELECCIONES = ['2015_12', '2016_06', '2019_04', '2019_11', '2023_07'] + sorted(
+ELECCIONES = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07'] + sorted(
     f.split('_congress_')[1][:7] for f in glob.glob(os.path.join(EXTRA, 'raw_poll_stations_congress_*.parquet')))
 # elecciones con resultados solo por municipio (escrutinio provisional de la noche electoral)
 SOLO_MUN = sorted(os.path.basename(f)[:7] for f in glob.glob(os.path.join(EXTRA, '*_municipios.csv'))
