@@ -15,7 +15,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = 'https://nachotronic.github.io/abstencio-catalunya/'
 PUBLISHED = '2026-10-05'
 MODIFIED = datetime.date.today().isoformat()
-AUTHOR = {'@type': 'Person', 'name': 'Nacho', 'url': 'https://github.com/nachotronic'}
+# ---- Autor: página «Sobre mí» (sobre-mi.html / sobre-mi-ca.html) ----
+# PENDIENTE (Nacho): nombre tal como debe firmar, biografía breve en las dos lenguas y enlaces.
+# Mientras la biografía esté vacía, la página no la muestra. Si cambia el nombre, cámbialo también
+# en la firma de src/i18n/es_body.html y ca_body.html.
+AUTHOR_NAME = 'Nacho'
+AUTHOR_BIO = {'es': '', 'ca': ''}
+AUTHOR_JOB = {'es': '', 'ca': ''}          # p. ej. «Periodista de datos»; vacío = no se muestra
+AUTHOR_LINKS = [('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
+ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
+AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',
+          'sameAs': [u for _, u in AUTHOR_LINKS]}
 LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
 IMAGE = BASE + 'img/portada.png'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
@@ -138,7 +148,7 @@ def ld(*items):
 def meta(title, desc, url, lang, locale, alternates, ldjson, typ='article'):
     e = html.escape
     out = [f'<meta name="description" content="{e(desc)}">',
-           '<meta name="author" content="Nacho">',
+           f'<meta name="author" content="{AUTHOR_NAME}">',
            '<meta name="robots" content="index, follow, max-image-preview:large">',
            f'<link rel="canonical" href="{url}">']
     if GOOGLE_VERIFICATION: out.append(f'<meta name="google-site-verification" content="{GOOGLE_VERIFICATION}">')
@@ -208,7 +218,7 @@ M = {
   intro='Esta página acompaña a <a href="index.html">«¿Quién no vota en Cataluña?»</a>. Aquí están los datos que usa, con licencia libre, lo que mide cada columna y cómo se ha calculado.',
   h_dl='Descargar los datos', h_lic='Licencia y cómo citar',
   lic='Los datos elaborados se publican con licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">Creative Commons Atribución 4.0 (CC BY 4.0)</a>: se pueden reutilizar, también con fines comerciales, citando la fuente. Los datos de origen mantienen las condiciones de sus organismos (Ministerio del Interior, INE, Generalitat de Catalunya). Las fotos de la pieza tienen su propia licencia, indicada al pie de cada una.',
-  cite='Cita sugerida: Nacho, «¿Quién no vota en Cataluña? Abstención por sección censal», 2026, ' + BASE + 'index.html. Datos: ' + REPO + '.',
+  cite='Cita sugerida: ' + AUTHOR_NAME + ', «¿Quién no vota en Cataluña? Abstención por sección censal», 2026, ' + BASE + 'index.html. Datos: ' + REPO + '.',
   h_what='Qué mide', what=[
    'Para cada sección censal se reparten los adultos residentes en tres grupos: los que votaron, los que no tenían derecho a voto y los que podían votar y no lo hicieron.',
    '<b>Votó</b>: votos emitidos en el Congreso del 23 de julio de 2023, sin voto de residentes en el extranjero (CERA).',
@@ -239,7 +249,7 @@ M = {
   intro='Aquesta pàgina acompanya <a href="ca.html">«Qui no vota a Catalunya?»</a>. Aquí hi ha les dades que fa servir, amb llicència lliure, què mesura cada columna i com s\'ha calculat.',
   h_dl='Descarregar les dades', h_lic='Llicència i com citar',
   lic='Les dades elaborades es publiquen amb llicència <a href="https://creativecommons.org/licenses/by/4.0/deed.ca" rel="license">Creative Commons Reconeixement 4.0 (CC BY 4.0)</a>: es poden reutilitzar, també amb finalitats comercials, citant-ne la font. Les dades d\'origen mantenen les condicions dels seus organismes (Ministeri de l\'Interior, INE, Generalitat de Catalunya). Les fotos de la peça tenen la seva pròpia llicència, indicada al peu de cadascuna.',
-  cite='Cita suggerida: Nacho, «Qui no vota a Catalunya? Abstenció per secció censal», 2026, ' + BASE + 'ca.html. Dades: ' + REPO + '.',
+  cite='Cita suggerida: ' + AUTHOR_NAME + ', «Qui no vota a Catalunya? Abstenció per secció censal», 2026, ' + BASE + 'ca.html. Dades: ' + REPO + '.',
   h_what='Què mesura', what=[
    'Per a cada secció censal es reparteixen els adults residents en tres grups: els que van votar, els que no tenien dret a vot i els que podien votar i no ho van fer.',
    '<b>Va votar</b>: vots emesos al Congrés del 23 de juliol de 2023, sense el vot dels residents a l\'estranger (CERA).',
@@ -357,6 +367,58 @@ def methodology(L):
 '''
 
 
+AB = {
+ 'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces',
+            works=[('index.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
+                   ('metodologia.html', 'Metodología y datos abiertos de la pieza', 'Octubre de 2026')]),
+ 'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços',
+            works=[('ca.html', 'Qui no vota a Catalunya? Abstenció per secció censal', 'Octubre del 2026'),
+                   ('metodologia-ca.html', 'Metodologia i dades obertes de la peça', 'Octubre del 2026')]),
+}
+ALT_A = [('es', BASE + 'sobre-mi.html'), ('ca', BASE + 'sobre-mi-ca.html'), ('x-default', BASE + 'sobre-mi.html')]
+
+
+def about(L):
+    a, t, e = AB[L], T[L], html.escape
+    other_L = 'ca' if L == 'es' else 'es'
+    person = dict(AUTHOR)
+    if AUTHOR_JOB[L]: person['jobTitle'] = AUTHOR_JOB[L]
+    if AUTHOR_BIO[L]: person['description'] = AUTHOR_BIO[L]
+    page = {'@type': 'ProfilePage', '@id': BASE + ABOUT[L], 'url': BASE + ABOUT[L], 'inLanguage': L,
+            'name': f"{a['title']} · {AUTHOR_NAME}", 'dateModified': MODIFIED, 'mainEntity': person}
+    desc = AUTHOR_BIO[L] or f"{AUTHOR_NAME}: {a['works'][0][1]}."
+    head = meta(f"{a['title']} · {AUTHOR_NAME}", desc, BASE + ABOUT[L], L, t['locale'], ALT_A, ld(page), typ='profile')
+    job = f'<p class="kicker">{e(AUTHOR_JOB[L])}</p>\n' if AUTHOR_JOB[L] else ''
+    bio = f'<p>{e(AUTHOR_BIO[L])}</p>\n' if AUTHOR_BIO[L] else ''
+    works = '\n'.join(f'<li><a href="{u}">{e(n)}</a> · {d}</li>' for u, n, d in a['works'])
+    links = '\n'.join(f'<li><a href="{u}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS)
+    return f'''<!doctype html>
+<html lang="{L}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{e(a['title'])} · {e(AUTHOR_NAME)}</title>
+{head}
+{CSS}
+</head>
+<body>
+<main>
+<nav><a href="{t['page']}">{a['back']}</a><a href="{ABOUT[other_L]}" hreflang="{other_L}" lang="{other_L}">{a['other']}</a></nav>
+{job}<h1>{e(AUTHOR_NAME)}</h1>
+{bio}<h2>{a['h_work']}</h2>
+<ul>
+{works}
+</ul>
+<h2>{a['h_links']}</h2>
+<ul>
+{links}
+</ul>
+</main>
+</body>
+</html>
+'''
+
+
 def llms():
     es, ca = M['es'], M['ca']
     files = '\n'.join(f'- [{f}]({BASE}data/{f}): {d}' for f, d in T['es']['files'].items())
@@ -367,7 +429,7 @@ def llms():
 
 > {T['es']['desc']}
 
-Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: Nacho ({AUTHOR['url']}). Publicada el {PUBLISHED}; actualizada el {MODIFIED}. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
+Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [{AUTHOR_NAME}]({AUTHOR['url']}). Publicada el {PUBLISHED}; actualizada el {MODIFIED}. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
 
 ## Cifras clave
 
@@ -384,6 +446,7 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 - [Metodología y datos]({BASE}metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
 - [Metodologia i dades]({BASE}metodologia-ca.html): la misma página en catalán.
 - [Mapa interactivo 2D]({BASE}mapa.html)
+- [Sobre el autor]({BASE}sobre-mi.html)
 
 ## Datos (CSV y GeoJSON)
 
@@ -400,8 +463,8 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 
 
 def sitemap():
-    pages = [('index.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5')]
-    pairs = {'index.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M}
+    pages = [('index.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3')]
+    pairs = {'index.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for p, pr in pages:
@@ -457,11 +520,12 @@ def main():
         t = T[L]
         inject(ROOT / t['page'], meta(t['title'], t['desc'], BASE + t['page'], L, t['locale'], ALT, ld(article(L), faqpage(L), dataset(L))))
         (ROOT / t['meth']).write_text(methodology(L), encoding='utf-8')
+        (ROOT / ABOUT[L]).write_text(about(L), encoding='utf-8')
     inject(ROOT / 'mapa.html', meta(MAPA['title'], MAPA['desc'], BASE + 'mapa.html', 'es', 'es_ES', [], ld(dataset('es')), typ='website'))
     (ROOT / 'llms.txt').write_text(llms(), encoding='utf-8')
     (ROOT / 'sitemap.xml').write_text(sitemap(), encoding='utf-8')
     (ROOT / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
-    print('seo: index.html, ca.html, mapa.html, metodologia(-ca).html, llms.txt, sitemap.xml, robots.txt')
+    print('seo: index.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
 
 
 main()
