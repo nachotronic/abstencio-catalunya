@@ -1,0 +1,51 @@
+capital,provincia,pp_capital,pp_resto,psoe_capital,psoe_resto,dif_pp,dif_psoe
+Ourense,Ourense,42.8,53.4,35.4,28.0,-10.6,7.4
+Soria,Soria,31.0,41.6,33.4,26.7,-10.6,6.7
+Ávila,Ávila,38.9,45.7,26.0,27.9,-6.8,-1.9
+Lugo,Lugo,46.8,51.7,32.8,29.3,-4.9,3.5
+Palencia,Palencia,39.8,44.0,37.3,32.4,-4.2,4.9
+Zamora,Zamora,42.0,46.2,33.6,31.9,-4.2,1.7
+A Coruña,A Coruña,39.9,44.0,31.0,27.4,-4.1,3.6
+Palma,Illes Balears,34.5,36.3,30.2,30.1,-1.8,0.1
+Huesca,Huesca,37.1,38.7,34.5,33.3,-1.6,1.2
+Logroño,La Rioja,44.9,46.4,36.6,35.0,-1.5,1.6
+Segovia,Segovia,44.2,45.5,33.0,29.4,-1.3,3.6
+Valladolid,Valladolid,40.4,41.6,34.6,30.3,-1.2,4.3
+Salamanca,Salamanca,46.4,47.4,32.2,29.1,-1.0,3.1
+Málaga,Málaga,37.7,38.7,30.9,30.0,-1.0,0.9
+Cádiz,Cádiz,34.4,34.9,36.5,32.8,-0.5,3.7
+Almería,Almería,40.8,41.2,29.9,28.6,-0.4,1.3
+Huelva,Huelva,36.3,36.5,34.0,36.7,-0.2,-2.7
+Zaragoza,Zaragoza,36.1,36.0,30.2,32.2,0.1,-2.0
+Castelló de la Plana,Castellón,35.3,35.2,31.9,32.9,0.1,-1.0
+Pontevedra,Pontevedra,39.8,39.6,31.9,31.4,0.2,0.5
+Cuenca,Cuenca,40.2,39.7,37.1,37.4,0.5,-0.3
+Burgos,Burgos,41.0,40.4,35.4,33.5,0.6,1.9
+Girona,Girona,10.8,9.5,29.3,28.8,1.3,0.5
+Alacant/Alicante,Alicante,38.0,36.5,31.1,32.2,1.5,-1.1
+León,León,38.1,36.6,30.8,34.6,1.5,-3.8
+Santa Cruz de Tenerife,Santa Cruz de Tenerife,37.1,34.9,33.8,33.5,2.2,0.3
+Murcia,Murcia,42.9,40.5,22.8,26.4,2.4,-3.6
+Madrid,Madrid,41.8,39.3,27.3,28.4,2.5,-1.1
+Albacete,Albacete,41.4,38.8,30.8,37.4,2.6,-6.6
+Toledo,Toledo,40.4,37.6,29.9,32.9,2.8,-3.0
+Barcelona,Barcelona,15.9,12.9,33.2,36.7,3.0,-3.5
+Teruel,Teruel,37.6,34.2,22.4,31.6,3.4,-9.2
+Pamplona/Iruña,Navarra,34.5,30.8,24.7,28.6,3.7,-3.9
+València,Valencia,36.5,32.4,29.5,33.3,4.1,-3.8
+Santander,Cantabria,45.1,40.9,31.6,34.0,4.2,-2.4
+Ciudad Real,Ciudad Real,44.1,39.9,30.7,36.2,4.2,-5.5
+Las Palmas de Gran Canaria,Las Palmas,28.7,24.3,35.5,31.9,4.4,3.6
+Guadalajara,Guadalajara,39.6,34.8,33.8,32.6,4.8,1.2
+Jaén,Jaén,41.6,36.4,29.9,37.7,5.2,-7.8
+Tarragona,Tarragona,18.3,13.0,34.2,32.6,5.3,1.6
+Córdoba,Córdoba,41.1,35.7,26.2,36.3,5.4,-10.1
+Bilbao,Bizkaia,15.5,9.9,26.5,25.6,5.6,0.9
+Cáceres,Cáceres,42.4,36.7,33.1,40.7,5.7,-7.6
+Sevilla,Sevilla,37.3,31.3,33.6,38.3,6.0,-4.7
+Badajoz,Badajoz,43.4,36.4,30.0,41.7,7.0,-11.7
+Oviedo,Asturias,41.5,34.0,29.3,35.8,7.5,-6.5
+Lleida,Lleida,18.1,10.5,34.7,27.1,7.6,7.6
+Vitoria-Gasteiz,Álava,19.9,11.9,29.8,21.5,8.0,8.3
+Donostia/San Sebastián,Gipuzkoa,15.3,6.1,25.0,22.6,9.2,2.4
+Granada,Granada,44.0,34.6,27.2,35.0,9.4,-7.8
