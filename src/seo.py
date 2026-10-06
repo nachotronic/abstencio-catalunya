@@ -11,6 +11,7 @@ Si cambia una cifra o un texto de aquí, hay que cambiarlo en castellano y en ca
 """
 import json, pathlib, re, html, datetime
 
+CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->'''
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = 'https://nachotronic.github.io/abstencio-catalunya/'
 PUBLISHED = '2026-10-05'
@@ -160,7 +161,7 @@ def meta(title, desc, url, lang, locale, alternates, ldjson, typ='article'):
             '<meta name="twitter:card" content="summary_large_image">',
             f'<link rel="license" href="{LICENSE}">',
             '<link rel="alternate" type="text/plain" title="llms.txt" href="llms.txt">',
-            ldjson]
+            ldjson, CF_ANALYTICS]
     return '<!-- seo -->\n' + '\n'.join(out) + '\n<!-- /seo -->'
 
 
