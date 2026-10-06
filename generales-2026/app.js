@@ -152,6 +152,7 @@
 
   const dk = new deck.Deck({
     parent: $('#map'), initialViewState: view, controller: { dragRotate: false, touchRotate: false, scrollZoom: { smooth: true } },
+    touchAction: 'pan-y',   // en el móvil, deslizar en vertical mueve la página; en horizontal y con dos dedos, el mapa
     views: new deck.MapView({ repeat: false }), layers: [], getCursor: ({ isHovering }) => isHovering ? 'pointer' : 'grab',
     onViewStateChange: ({ viewState }) => { view = viewState; loadVisible(); redraw(); return viewState; },
     onHover: info => { setHover(info); },
