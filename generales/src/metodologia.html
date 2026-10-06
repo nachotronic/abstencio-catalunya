@@ -26,7 +26,7 @@ code{font-size:.85em}
 </head>
 <body>
 <main>
-<p class="muted"><a href="./">← Volver al mapa</a> · Actualizado el {{hoy}}</p>
+<p class="muted"><a href="./">← Volver al mapa</a> · Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el {{hoy_txt}} · <a href="./#correcciones">Correcciones</a></p>
 <h1>Metodología y datos</h1>
 
 <h2>Qué se mide</h2>
@@ -48,6 +48,7 @@ code{font-size:.85em}
 <tr><td>Riesgo de pobreza</td><td>Población con renta por unidad de consumo inferior al 60% de la mediana estatal, 2023.</td></tr>
 <tr><td>Población extranjera</td><td>Residentes sin nacionalidad española según el padrón, 2023.</td></tr>
 <tr><td>Adultos sin derecho a voto</td><td>Adultos residentes (población por el porcentaje de mayores de 18) menos el censo electoral del 23J. En unas generales solo votan los españoles.</td></tr>
+<tr><td>Partido más votado</td><td>La familia con más votos en la sección o el municipio, sin contar «Otros». En el mapa, un empate se resuelve por el orden de la leyenda; en los recuentos del texto, las secciones y municipios empatados no cuentan para ningún partido.</td></tr>
 <tr><td>Deciles</td><td>Las secciones se ordenan por la variable y se agrupan en diez partes con el mismo censo electoral. Los resultados de cada decil suman los votos de todas sus secciones.</td></tr>
 </table>
 
@@ -61,6 +62,8 @@ code{font-size:.85em}
 <li>Las secciones cambian de límites. Los resultados de elecciones anteriores a 2023 solo se muestran en las secciones que conservan el código de 2023 (el 88% en 2004, el 96% en 2011 y el 98% en 2015). Algunas pueden haber cambiado de forma sin cambiar de código.</li>
 <li>La evolución de la brecha por renta (2004-2023) ordena las secciones por su renta de 2023 y solo cuenta, en cada elección, las secciones que conservan el código de 2023. Mide cómo votaron los barrios que hoy son ricos o pobres, no los que lo eran en cada momento.</li>
 <li>En municipales no todos los partidos se presentan en todos los municipios, así que su porcentaje por decil depende también de dónde hubo candidatura.</li>
+<li>Entre 0 y 16 mesas por elección figuran en los ficheros de Interior con censo y ningún voto, aunque el avance de participación de las 18.00 sí contaba votantes: es un resultado que falta en el origen. Esas mesas se excluyen, y si eran las únicas de su sección, la sección queda «sin dato» en lugar de con un 0% de participación.</li>
+<li>Los municipios creados por segregación (Balanegra, Guadiana, El Palmar de Troya, San Martín del Tesorillo…) o por fusión (Oza-Cesuras, Cerdedo-Cotobade) no tienen datos antes de existir; hasta entonces su territorio cuenta en el municipio de origen.</li>
 <li>El censo del 23J (julio) y el padrón (enero) no son la misma foto, y la estimación de adultos usa el porcentaje de menores del Atlas.</li>
 <li>Estudios y paro son del censo de 2021.</li>
 </ul>

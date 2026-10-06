@@ -104,6 +104,11 @@ def resultados(E):
         for d in (m, v):
             d['tract_code'] = d.cod_INE_prov + d.cod_INE_mun + d.cod_mun_district + d.cod_sec
         m = m[m.cod_INE_mun != '999']          # CERA (residentes ausentes) fuera
+        # mesas con censo pero sin ningún voto: sin resultado en el origen (no es una abstención del 100%), fuera
+        vacia = (m.blank_ballots + m.invalid_ballots + m.party_ballots == 0) & (m.census_INE > 0)
+        if vacia.any():
+            print(y, 'mesas sin resultado en el origen:', ', '.join(m[vacia].tract_code + '-' + m[vacia].cod_poll_station))
+        m = m[~vacia]
         v = v[v.cod_INE_mun != '999']
         c['fam'] = [familia(a, n) for a, n in zip(c.abbrev_candidacies, c.name_candidacies)]
         v = v.merge(c[['id_candidacies', 'fam']], on='id_candidacies', how='left')

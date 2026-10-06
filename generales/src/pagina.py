@@ -11,9 +11,23 @@ from partidos import FAMILIAS
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DATOS, WEB = os.path.join(AQUI, 'datos'), os.path.join(AQUI, 'web')
 URL = os.environ.get('GENERALES_URL', 'https://nachotronic.github.io/abstencio-catalunya/generales/')
-AUTOR = os.environ.get('GENERALES_AUTOR', 'Nacho')
+AUTOR = os.environ.get('GENERALES_AUTOR', 'Nacho G. del Álamo')
+REVISOR = os.environ.get('GENERALES_REVISOR', 'Nacho G. del Álamo')
+MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+fecha = lambda d: f"{d.day} de {MESES[d.month - 1]} de {d.year}"
+# Fe de errores visible en la página: (fecha ISO, texto). Añadir una línea cada vez que cambie un dato o una conclusión publicada.
+CORRECCIONES = [
+    ('2026-10-06', 'Agrupación de partidos revisada: UPN cuenta con el PP también cuando se presenta sola, y Compromís, Más País y Más Madrid con '
+                   'Sumar / Podemos / IU también cuando van por separado. Se corrigen además una lista de Unidos Podemos de 2016 y la de C,S de 2008, '
+                   'que estaban en Otros, y Esquerra Republicana del País Valencià, que pasa a ERC. El PP del 23J pasa del 33,1% al 33,3% '
+                   '(con UPN) y cambian algunos recuentos de secciones y municipios.'),
+    ('2026-10-06', 'Las mesas que figuran con censo y ningún voto en los ficheros de Interior (de 0 a 8 por elección, como una de La Línea de la '
+                   'Concepción en 2023) se tratan como «sin dato» en lugar de como un 0% de participación.'),
+    ('2026-10-06', 'Los recuentos de secciones y municipios donde gana cada partido ya no cuentan los empates.'),
+]
 HOY = dt.date.today().isoformat()
 NOM = {c: n for c, n, _ in FAMILIAS}
+FAM12 = [c for c, _, _ in FAMILIAS if c != 'OTROS']
 COL = {c: col for c, _, col in FAMILIAS}
 
 
@@ -26,7 +40,7 @@ def n(v):
 
 
 def lista(df, col):
-    nombres = [f"{html.escape(m)} ({p(v)})" for m, v in zip(df.municipio, df[col])]
+    nombres = [f"{html.escape(m)} ({p(v, 1)})" for m, v in zip(df.municipio, df[col])]
     return ', '.join(nombres[:-1]) + ' y ' + nombres[-1]
 
 
@@ -38,11 +52,17 @@ def main():
     ren, pob, eda, ext, est, par = (V[k]['deciles'] for k in ('renta_uc', 'pobreza', 'edad_media', 'extranjeros', 'estudios_sup_2021', 'paro_2021'))
     nac = R['nacional']['23J 2023']
     y = '2023_07'
-    gs = sec[f'{y}_gana'].value_counts()
-    gm = mun[f'{y}_gana'].value_counts()
-    both = sec[sec['2019_11_gana'].notna() & sec[f'{y}_gana'].notna()]
-    vox_pp = int(((both['2019_11_gana'] == 'VOX') & (both[f'{y}_gana'] == 'PP')).sum())
-    vox19 = int((both['2019_11_gana'] == 'VOX').sum())
+    # ganador estricto desde los votos (los empates no cuentan para ningún partido)
+    lar = pd.read_csv(os.path.join(DATOS, 'resultados_secciones_largo.csv'), dtype={'tract_code': str})
+    def ganador(df):
+        x = df[FAM12]; mx = x.max(axis=1)
+        return x.idxmax(axis=1).where((x.eq(mx, axis=0).sum(axis=1) == 1) & (mx > 0))
+    g23 = ganador(lar[lar.eleccion == y].set_index('tract_code')).reindex(sec.tract_code)
+    g19 = ganador(lar[lar.eleccion == '2019_11'].set_index('tract_code')).reindex(sec.tract_code)
+    gmun = ganador(lar[lar.eleccion == y].groupby(lar.tract_code.str[:5])[FAM12].sum())
+    gs, gm = g23.value_counts(), gmun.value_counts()
+    vox19 = int((g19 == 'VOX').sum())
+    vox_pp = int(((g19 == 'VOX') & (g23 == 'PP')).sum())
     adultos = sec.adultos.sum(); sin = (sec.adultos - sec[f'{y}_censo']).clip(lower=0).sum()
     big = mun[mun.poblacion > 50000]
     low = big.nsmallest(3, f'{y}_part'); high = big.nlargest(3, f'{y}_part')
@@ -52,18 +72,20 @@ def main():
         nsec=n(len(sec)), nmun=n(len(mun)),
         sec_pp=n(gs.get('PP', 0)), sec_psoe=n(gs.get('PSOE', 0)), mun_pp=n(gm.get('PP', 0)), mun_psoe=n(gm.get('PSOE', 0)),
         vox19=n(vox19), vox_pp=n(vox_pp),
-        r_part1=p(ren[0]['part']), r_part10=p(ren[9]['part']), r_lo=n(ren[0]['hi']), r_hi=n(ren[9]['lo']),
-        r_psoe1=p(ren[0]['PSOE']), r_psoe10=p(ren[9]['PSOE']), r_pp1=p(ren[0]['PP']), r_pp10=p(ren[9]['PP']),
-        r_vox1=p(ren[0]['VOX']), r_vox5=p(ren[4]['VOX']), r_vox10=p(ren[9]['VOX']),
-        pob_part1=p(pob[0]['part']), pob_part10=p(pob[9]['part']), pob10=p(pob[9]['lo']),
-        e_vox1=p(eda[0]['VOX']), e_vox10=p(eda[9]['VOX']), e_pp10=p(eda[9]['PP']), e_hi1=f"{eda[0]['hi']:.0f}", e_lo10=f"{eda[9]['lo']:.0f}",
-        e_part1=p(eda[0]['part']), e_part10=p(eda[9]['part']),
-        x_part1=p(ext[0]['part']), x_part10=p(ext[9]['part']), x_lo10=p(ext[9]['lo']), x_vox1=p(ext[0]['VOX']), x_vox10=p(ext[9]['VOX']),
-        x_psoe10=p(ext[9]['PSOE']), x_pp1=p(ext[0]['PP']), x_pp10=p(ext[9]['PP']),
-        s_pp10=p(est[9]['PP']), s_psoe1=p(est[0]['PSOE']), s_psoe10=p(est[9]['PSOE']),
+        r_part1=p(ren[0]['part'], 1), r_part10=p(ren[9]['part'], 1), r_lo=n(ren[0]['hi']), r_hi=n(ren[9]['lo']),
+        r_psoe1=p(ren[0]['PSOE'], 1), r_psoe10=p(ren[9]['PSOE'], 1), r_pp1=p(ren[0]['PP'], 1), r_pp10=p(ren[9]['PP'], 1),
+        r_vox1=p(ren[0]['VOX'], 1), r_vox5=p(ren[4]['VOX'], 1), r_vox10=p(ren[9]['VOX'], 1),
+        pob_part1=p(pob[0]['part'], 1), pob_part10=p(pob[9]['part'], 1), pob10=p(pob[9]['lo']),
+        e_vox1=p(eda[0]['VOX'], 1), e_vox10=p(eda[9]['VOX'], 1), e_pp10=p(eda[9]['PP'], 1), e_hi1=f"{eda[0]['hi']:.0f}", e_lo10=f"{eda[9]['lo']:.0f}",
+        e_part1=p(eda[0]['part'], 1), e_part10=p(eda[9]['part'], 1),
+        x_part1=p(ext[0]['part'], 1), x_part10=p(ext[9]['part'], 1), x_lo10=p(ext[9]['lo']), x_vox1=p(ext[0]['VOX'], 1), x_vox10=p(ext[9]['VOX'], 1),
+        x_psoe10=p(ext[9]['PSOE'], 1), x_pp1=p(ext[0]['PP'], 1), x_pp10=p(ext[9]['PP'], 1),
+        s_pp10=p(est[9]['PP'], 1), s_psoe1=p(est[0]['PSOE'], 1), s_psoe10=p(est[9]['PSOE'], 1),
         sin=n(round(sin / 1e5) * 1e5), sin_pct=p(sin / adultos),
         low=lista(low, f'{y}_part'), high=lista(high, f'{y}_part'), vox_top=lista(vox, f'{y}_VOX'),
-        hoy=HOY, url=URL, autor=html.escape(AUTOR),
+        hoy=HOY, hoy_txt=fecha(dt.date.fromisoformat(HOY)), url=URL, autor=html.escape(AUTOR), revisor=html.escape(REVISOR),
+        correcciones=''.join(f'<li><time datetime="{d}">{fecha(dt.date.fromisoformat(d))}</time>. {html.escape(t)}</li>' for d, t in CORRECCIONES),
+        nmun_dato=n(int(gmun.notna().sum())),
     )
     F.update({'tablas_' + k: v for k, v in tablas(V).items()})
     F.update(historia(sec))
@@ -74,7 +96,7 @@ def main():
         out = out.replace('{{' + k + '}}', str(v))
     assert '{{' not in out, out[out.index('{{'):out.index('{{') + 40]
     open(os.path.join(WEB, 'index.html'), 'w', encoding='utf-8').write(out)
-    met = open(os.path.join(AQUI, 'metodologia.html'), encoding='utf-8').read().replace('{{hoy}}', HOY).replace('{{url}}', URL)
+    met = open(os.path.join(AQUI, 'metodologia.html'), encoding='utf-8').read().replace('{{hoy}}', HOY).replace('{{hoy_txt}}', fecha(dt.date.fromisoformat(HOY))).replace('{{url}}', URL)
     open(os.path.join(WEB, 'metodologia.html'), 'w', encoding='utf-8').write(met)
     descargas()
     llms(F)
