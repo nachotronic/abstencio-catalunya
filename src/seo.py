@@ -17,12 +17,17 @@ BASE = 'https://nachotronic.github.io/abstencio-catalunya/'
 PUBLISHED = '2026-10-05'
 MODIFIED = datetime.date.today().isoformat()
 # ---- Autor: página «Sobre mí» (sobre-mi.html / sobre-mi-ca.html) ----
-# PENDIENTE (Nacho): nombre tal como debe firmar, biografía breve en las dos lenguas y enlaces.
+# PENDIENTE (Nacho): enlaces (redes, web, otros trabajos).
 # Mientras la biografía esté vacía, la página no la muestra. Si cambia el nombre, cámbialo también
 # en la firma de src/i18n/es_body.html y ca_body.html.
-AUTHOR_NAME = 'Nacho'
-AUTHOR_BIO = {'es': '', 'ca': ''}
-AUTHOR_JOB = {'es': '', 'ca': ''}          # p. ej. «Periodista de datos»; vacío = no se muestra
+AUTHOR_NAME = 'Nacho G. del Álamo'
+AUTHOR_BIO = {
+    'es': 'Nacho G. del Álamo es periodista de datos con amplia experiencia en diversos medios y profesor de Datos y visualizaciones en la Universitat de Girona (UdG). '
+          'Ha recibido los premios Carles Rahola, Tiflos, Injuve y el Premio Nacional de Periodismo Placeat por el reportaje «Sólo el drag les hace libres».',
+    'ca': 'Nacho G. del Álamo és periodista de dades amb àmplia experiència en diversos mitjans i professor de Dades i visualitzacions a la Universitat de Girona (UdG). '
+          'Ha rebut els premis Carles Rahola, Tiflos, Injuve i el Premi Nacional de Periodisme Placeat pel reportatge «Sólo el drag les hace libres».',
+}
+AUTHOR_JOB = {'es': 'Periodista de datos', 'ca': 'Periodista de dades'}          # p. ej. «Periodista de datos»; vacío = no se muestra
 AUTHOR_LINKS = [('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
 AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',

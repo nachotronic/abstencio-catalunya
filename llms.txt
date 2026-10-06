@@ -2,7 +2,7 @@
 
 > De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. Mapa de las 5.115 secciones censales cruzado con renta, estudios, paro, edad y población extranjera, de 2015 a 2024.
 
-Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [Nacho](https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html). Publicada el 2026-10-05; actualizada el 2026-10-06. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
+Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [Nacho G. del Álamo](https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html). Publicada el 2026-10-05; actualizada el 2026-10-06. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
 
 ## Cifras clave
 
