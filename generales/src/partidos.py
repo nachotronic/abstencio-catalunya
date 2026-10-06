@@ -1,4 +1,4 @@
-"""Agrupación de candidaturas del Congreso en familias comparables 2015-2026.
+"""Agrupación de candidaturas en familias comparables (Congreso 2004-2026, municipales 2007-2023, europeas 2019-2024).
 
 Criterios (documentados en LEEME.md):
 - PP incluye sus coaliciones regionales (PP-FORO, PP-PAR, UPN-PP) y Navarra Suma (NA+, 2019).
@@ -8,7 +8,11 @@ Criterios (documentados en LEEME.md):
   y Sumar (2023). Más País y Más Compromís (2019N) quedan en "Otros".
 - BNG incluye NÓS-Candidatura Galega (2015).
 - Junts agrupa CiU (2004-2011), DL (2015), CDC (2016) y JxCat-Junts (2019-2023).
-- EH Bildu incluye Amaiur (2011). UPyD va aparte (2008-2016).
+- EH Bildu incluye Amaiur (2011) y Bildu (municipales 2011). UPyD va aparte (2008-2016).
+- Municipales: las listas locales de cada partido (PSC, PSOE-A, ERC-AM, Junts-Compromís Municipal…) van con su
+  partido, y las confluencias con Podemos o IU (Ahora Madrid, Barcelona en Comú, Zaragoza en Común, Marea
+  Atlántica…) con "Sumar/Podemos/IU". Más Madrid y Compromís quedan en "Otros", como Más País en el Congreso.
+  UPN sin el PP, también en "Otros".
 """
 import re
 
@@ -33,24 +37,40 @@ _REGLAS = [
     ('PP', r"^(PP\b|PP-|P\.P\.|UPN-PP|NA\+)"),
     ('PSOE', r"PSOE|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN"),
     ('VOX', r"^VOX$"),
-    ('CS', r"^(C'S|C´S|CS)$"),
+    ('CS', r"^(C'S|C´S|CS)$|-CS$"),
     ('UPYD', r"^UPYD$"),
     ('SUMAR', r"^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^IU\b|^IULV|^UNIDA|^IU-|^EUPV-UPEC"),
     ('ERC', r"^ERC|^ESQUERRA$"),
-    ('JUNTS', r"^(DL|CDC|CIU)$|^JXCAT|^JUNTS"),
+    ('JUNTS', r"^(DL|CDC|CIU)$|^JXCAT|^JUNTS|[- ]JUNTS$|^CM$|-CM$"),
     ('PNV', r"^EAJ-PNV|^E\.A\.J\.-P\.N\.V\."),
-    ('BILDU', r"^EH BILDU|^AMAIUR$"),
+    ('BILDU', r"^EH ?BILDU|^BILDU|^AMAIUR$"),
     ('BNG', r"^B\.?N\.?G\.?$|^BNG|^NÓS$"),
     ('CC', r"^CCA|^CC-|^NC-CCA|^CC$"),
 ]
 
 
+# Por el nombre completo, cuando las siglas no bastan (sobre todo en municipales)
+_NOMBRES = [
+    ('ERC', r"ESQUERRA REPUBLICANA"),
+    ('JUNTS', r"CONVERG[EÈ]NCIA I UNI[OÓ]|^JUNTS\b|JUNTS PER CATALUNYA|TRIAS PER BARCELONA"),
+    ('PNV', r"PARTIDO NACIONALISTA VASCO|EUZKO ALDERDI JELTZALEA"),
+    ('BILDU', r"^BILDU|EUSKAL HERRIA BILDU"),
+    ('PSOE', r"PSOE"),
+    ('CS', r"CIUDADANOS-PARTIDO DE LA CIUDADAN"),
+    ('SUMAR', r"PODEM|EN COM[UÚ]N?\b|AHORA MADRID|MAREA ATL[AÁ]NTICA|M[AÁ]LAGA AHORA"),
+]
+
+
 def familia(abrev: str, nombre: str = '') -> str:
     a = (abrev or '').strip().upper()
-    for cod, pat in _REGLAS:
-        if re.search(pat, a):
-            return cod
+    for x in (a, a.replace('.', '')):
+        for cod, pat in _REGLAS:
+            if re.search(pat, x):
+                return cod
     n = (nombre or '').upper()
+    for cod, pat in _NOMBRES:
+        if re.search(pat, n):
+            return cod
     # IU y sus federaciones (2004-2011) se reconocen mejor por el nombre que por las siglas
     if re.search(r"IZQUIERDA UNIDA|ESQUERRA UNIDA|ESQUERDA UNIDA|EZKER BATUA|IZQUIERDA PLURAL|ESQUERRA PLURAL|ESQUERDA PLURAL|IZQUIERDA-EZKERRA", n):
         return 'SUMAR'

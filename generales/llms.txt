@@ -1,6 +1,6 @@
 # El mapa de las generales: cómo vota cada barrio de España
 
-> Resultados de las elecciones al Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Preparado para las elecciones generales del 29 de noviembre de 2026.
+> Resultados de las elecciones al Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Incluye también las municipales de 2011 a 2023 y las europeas de 2019 y 2024 por sección, y las municipales de 2007 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
 
 Autor: Nacho. Actualizado: 2026-10-06. Licencia de los datos: CC BY 4.0.
 

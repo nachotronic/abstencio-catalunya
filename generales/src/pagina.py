@@ -4,7 +4,7 @@ basta con volver a ejecutarlo tras actualizar resultados.
 
 Uso:  python3 pagina.py
 """
-import datetime as dt, html, json, os, shutil
+import datetime as dt, html, json, os, re, shutil
 import pandas as pd
 from partidos import FAMILIAS
 
@@ -111,24 +111,32 @@ def jsonld(F):
     ds = {
         '@context': 'https://schema.org', '@type': 'Dataset',
         'name': 'Elecciones generales 2004-2023 por sección censal con renta, edad y población extranjera',
-        'description': 'Votos al Congreso por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).',
+        'description': 'Votos al Congreso (2004-2023), municipales (2011-2023; 2007 por municipio) y europeas (2019 y 2024) por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).',
         'url': F['url'] + 'metodologia.html', 'license': 'https://creativecommons.org/licenses/by/4.0/', 'inLanguage': 'es',
         'creator': {'@type': 'Person', 'name': AUTOR}, 'dateModified': F['hoy'],
-        'temporalCoverage': '2004-03-14/2023-07-23', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
+        'temporalCoverage': '2004-03-14/2024-06-09', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
         'isBasedOn': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://github.com/dadosdelaplace/pollspaindata', 'https://github.com/pablogguz/ineAtlas.data'],
         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'text/csv', 'contentUrl': F['url'] + 'descargas/' + f}
-                         for f in ('secciones.csv', 'municipios.csv', 'resultados_secciones_largo.csv')],
+                         for f in ('secciones.csv', 'municipios.csv', 'resultados_secciones_largo.csv',
+                                   'secciones_municipales_europeas.csv', 'resultados_secciones_largo_municipales_europeas.csv')],
     }
     return '\n'.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (art, ds))
 
 
 def descargas():
     d = os.path.join(WEB, 'descargas'); os.makedirs(d, exist_ok=True)
-    for f in ('secciones.csv', 'municipios.csv', 'resultados_secciones_largo.csv'):
-        shutil.copy(os.path.join(DATOS, f), os.path.join(d, f))
+    shutil.copy(os.path.join(DATOS, 'municipios.csv'), os.path.join(d, 'municipios.csv'))
+    # secciones: generales en los ficheros de siempre; municipales y europeas (M2023, E2024...) aparte, para no pasar de 50 MB
+    otra = lambda c: bool(re.match(r'^[ME]\d{4}', c))
+    s = pd.read_csv(os.path.join(DATOS, 'secciones.csv'), dtype={'tract_code': str, 'mun_code': str})
+    s[[c for c in s if not otra(c)]].to_csv(os.path.join(d, 'secciones.csv'), index=False)
+    s[['tract_code'] + [c for c in s if otra(c)]].to_csv(os.path.join(d, 'secciones_municipales_europeas.csv'), index=False)
+    r = pd.read_csv(os.path.join(DATOS, 'resultados_secciones_largo.csv'), dtype={'tract_code': str, 'mun_code': str, 'eleccion': str})
+    r[~r.eleccion.map(otra)].to_csv(os.path.join(d, 'resultados_secciones_largo.csv'), index=False)
+    r[r.eleccion.map(otra)].to_csv(os.path.join(d, 'resultados_secciones_largo_municipales_europeas.csv'), index=False)
     open(os.path.join(d, 'LICENCIA.txt'), 'w').write(
         'Datos derivados publicados con licencia CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).\n'
-        'Cita: "Elecciones generales 2004-2023 por sección censal", ' + AUTOR + ', ' + HOY + ', ' + URL + '\n'
+        'Cita: "Elecciones generales 2004-2023 por sección censal (con municipales y europeas)", ' + AUTOR + ', ' + HOY + ', ' + URL + '\n'
         'Fuentes originales: Ministerio del Interior (resultados electorales) e INE (Atlas de Distribución de Renta de los Hogares 2023; Censo 2021), '
         'reutilizables citando la fuente.\n')
 
@@ -136,7 +144,7 @@ def descargas():
 def llms(F):
     t = f"""# El mapa de las generales: cómo vota cada barrio de España
 
-> Resultados de las elecciones al Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Preparado para las elecciones generales del 29 de noviembre de 2026.
+> Resultados de las elecciones al Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Incluye también las municipales de 2011 a 2023 y las europeas de 2019 y 2024 por sección, y las municipales de 2007 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
 
 Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0.
 

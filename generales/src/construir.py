@@ -1,4 +1,4 @@
-"""Construye la base de datos de la pieza de generales (España, Congreso 2004-2023).
+"""Construye la base de datos de la pieza de generales (España, Congreso 2004-2023, más municipales y europeas).
 
 Uso:  python3 construir.py            (descarga las fuentes en ~/.cache/generales si faltan)
 
@@ -10,6 +10,8 @@ Fuentes
   Hogares (ADRH) 2023, vía pablogguz/ineAtlas.data.
 - Estudios y paro por sección: INE, Censo 2021, vía pablogguz/ineAtlas.data.
 - Geometría: secciones censales INE 2023 (ineAtlas.data).
+- Municipales 2007-2023 y europeas 2019-2024: ficheros de Infoelectoral importados con otras_elecciones.py
+  (datos/extra/raw_*_M2023.parquet, M2007_municipios.csv...).
 
 Salidas en ./datos (tablas) y ./web/data (lo que carga la pieza).
 """
@@ -25,13 +27,21 @@ DATOS, WEB = os.path.join(AQUI, 'datos'), os.path.join(AQUI, 'web', 'data')
 EXTRA = os.path.join(DATOS, 'extra')   # resultados nuevos que deja actualizar_29n.py
 ETIQ = {'2004_03': '14M 2004', '2008_03': '9M 2008', '2011_11': '20N 2011', '2015_12': '20D 2015', '2016_06': '26J 2016', '2019_04': '28A 2019', '2019_11': '10N 2019', '2023_07': '23J 2023',
         '2026_11': '29N 2026'}
+TIPO = {'M': 'municipales', 'E': 'europeas'}
+etiq = lambda y: ETIQ.get(y) or (TIPO[y[0]].capitalize() + ' ' + y[1:] if y[0] in TIPO else y)
+tipo = lambda y: TIPO.get(y[0], 'generales')
 # elecciones con resultados por mesa (y por tanto por sección)
-ELECCIONES = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07'] + sorted(
+GENERALES = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07'] + sorted(
     f.split('_congress_')[1][:7] for f in glob.glob(os.path.join(EXTRA, 'raw_poll_stations_congress_*.parquet')))
-# elecciones con resultados solo por municipio (escrutinio provisional de la noche electoral)
-SOLO_MUN = sorted(os.path.basename(f)[:7] for f in glob.glob(os.path.join(EXTRA, '*_municipios.csv'))
-                  if os.path.basename(f)[:7] not in ELECCIONES)
+# municipales (M2023) y europeas (E2024) por mesa, de otras_elecciones.py
+OTRAS = sorted(os.path.basename(f)[18:-8] for f in glob.glob(os.path.join(EXTRA, 'raw_poll_stations_[ME]*.parquet')))
+ELECCIONES = GENERALES + OTRAS
+# elecciones con resultados solo por municipio (escrutinio provisional de la noche electoral, municipales 2007)
+SOLO_MUN = sorted(os.path.basename(f).split('_municipios')[0] for f in glob.glob(os.path.join(EXTRA, '*_municipios.csv'))
+                  if os.path.basename(f).split('_municipios')[0] not in ELECCIONES)
 TODAS = ELECCIONES + SOLO_MUN
+# las que van en municipios.json y sec/<prov>.json; el resto, en ficheros aparte que se cargan al elegirlas
+BASE = [y for y in TODAS if tipo(y) == 'generales']
 CANARIAS = ('35', '38')
 # Escaños por provincia. 2023: los de la convocatoria de 2023. 2026: Madrid gana uno y Cádiz lo pierde (decreto de convocatoria del 6-10-2026).
 ESCANOS_2023 = {'01': 4, '02': 4, '03': 12, '04': 6, '05': 3, '06': 5, '07': 8, '08': 32, '09': 4, '10': 4, '11': 9, '12': 5,
@@ -86,10 +96,11 @@ def resultados(E):
     """Votos por sección censal (código INE de 10 dígitos) y familia política, por elección."""
     filas = []
     for y in ELECCIONES:
-        src = EXTRA if os.path.exists(f'{EXTRA}/raw_poll_stations_congress_{y}.parquet') else E
-        m = pd.read_parquet(f'{src}/raw_poll_stations_congress_{y}.parquet')
-        c = pd.read_parquet(f'{src}/raw_candidacies_congress_{y}.parquet')
-        v = pd.read_parquet(f'{src}/raw_candidacies_poll_congress_{y}.parquet')
+        k = y if y in OTRAS else 'congress_' + y
+        src = EXTRA if os.path.exists(f'{EXTRA}/raw_poll_stations_{k}.parquet') else E
+        m = pd.read_parquet(f'{src}/raw_poll_stations_{k}.parquet')
+        c = pd.read_parquet(f'{src}/raw_candidacies_{k}.parquet')
+        v = pd.read_parquet(f'{src}/raw_candidacies_poll_{k}.parquet')
         for d in (m, v):
             d['tract_code'] = d.cod_INE_prov + d.cod_INE_mun + d.cod_mun_district + d.cod_sec
         m = m[m.cod_INE_mun != '999']          # CERA (residentes ausentes) fuera
@@ -115,8 +126,9 @@ def resultados(E):
 
 def resultados_mun(y):
     """Escrutinio por municipio (formato largo de actualizar_29n.py): mun_code, siglas, votos + totales."""
-    d = pd.read_csv(os.path.join(EXTRA, f'{y}_municipios.csv'), dtype={'mun_code': str})
-    d['fam'] = [familia(a) for a in d.siglas]
+    d = pd.read_csv(os.path.join(EXTRA, f'{y}_municipios.csv'), dtype={'mun_code': str, 'siglas': str, 'nombre': str},
+                    keep_default_na=False)          # hay siglas como "NA"
+    d['fam'] = [familia(a, n) for a, n in zip(d.siglas, d.nombre if 'nombre' in d else [''] * len(d))]
     pv = d.pivot_table(index='mun_code', columns='fam', values='votos', aggfunc='sum', fill_value=0).reindex(columns=CODIGOS, fill_value=0)
     t = d.groupby('mun_code')[['censo', 'votantes', 'blancos', 'nulos']].first()
     t = t.join(pv)
@@ -236,7 +248,7 @@ def resumen(sec, r):
     y = '2023_07'
     rv = r[r.eleccion == y].set_index('tract_code')
     d = sec.set_index('tract_code').join(rv[['censo', 'votantes', 'candidaturas', 'blancos'] + CODIGOS], how='inner')
-    out = {'eleccion': ETIQ[y], 'variables': {}}
+    out = {'eleccion': etiq(y), 'variables': {}}
     VARS = {'renta_uc': 'Renta por unidad de consumo (2023)', 'pobreza': 'Población en riesgo de pobreza (2023)',
             'edad_media': 'Edad media (2023)', 'extranjeros': 'Población extranjera (2023)',
             'estudios_sup_2021': 'Adultos con estudios superiores (2021)', 'paro_2021': 'Tasa de paro (2021)'}
@@ -256,7 +268,7 @@ def resumen(sec, r):
     tot = r.groupby('eleccion')[['censo', 'votantes', 'candidaturas', 'blancos'] + CODIGOS].sum()
     for e in SOLO_MUN:
         tot.loc[e] = resultados_mun(e)[['censo', 'votantes', 'candidaturas', 'blancos'] + CODIGOS].sum()
-    out['nacional'] = {ETIQ[e]: {'part': round(t.votantes / t.censo, 4),
+    out['nacional'] = {etiq(e): {'part': round(t.votantes / t.censo, 4),
                                  **{k: round(t[k] / (t.candidaturas + t.blancos), 4) for k in CODIGOS}}
                        for e, t in tot.iterrows()}
     json.dump(out, open(os.path.join(DATOS, 'resumen.json'), 'w'), ensure_ascii=False, indent=1)
@@ -268,9 +280,9 @@ COLS = ['part', 'gana'] + CODIGOS
 COV = ['renta_uc', 'pobreza', 'edad_media', 'mayores65', 'extranjeros', 'sin_derecho', 'estudios_sup_2021', 'paro_2021', 'poblacion']
 
 
-def columnas(df, codigo):
-    out = {'cod': df[codigo].tolist()}
-    for y in TODAS:
+def columnas(df, codigo, elecs=None):
+    out = {'cod': df[codigo].tolist()} if elecs is None else {}
+    for y in (BASE if elecs is None else elecs):
         if f'{y}_part' not in df:
             continue
         for c in COLS:
@@ -280,6 +292,8 @@ def columnas(df, codigo):
             else:
                 out[k] = [None if pd.isna(v) else round(float(v), 3) for v in df[k]]
         out[f'{y}_censo'] = [None if pd.isna(v) else int(v) for v in df[f'{y}_censo']]
+    if elecs is not None:
+        return out
     for c in COV:
         dig = 0 if c in ('renta_uc', 'poblacion') else (1 if c == 'edad_media' else 3)
         out[c] = [None if pd.isna(v) else (int(round(v)) if dig == 0 else round(float(v), dig)) for v in df[c]]
@@ -288,7 +302,8 @@ def columnas(df, codigo):
 
 def web(geo, sec, mun):
     meta = {'familias': [{'cod': c, 'nombre': n, 'color': col} for c, n, col in FAMILIAS],
-            'elecciones': [{'cod': y, 'nombre': ETIQ.get(y, y), 'secciones': y in ELECCIONES} for y in TODAS], 'canarias': [DX, DY], 'S': 10000,
+            'elecciones': [{'cod': y, 'nombre': etiq(y), 'tipo': tipo(y), 'secciones': y in ELECCIONES, 'aparte': y not in BASE}
+                           for y in TODAS], 'canarias': [DX, DY], 'S': 10000,
             'reglas': _REGLAS, 'escanos': {'2023_07': ESCANOS_2023, '2026_11': ESCANOS_2026},
             # URL del Worker de resultados en directo (directo/worker.js). Vacío = sin directo.
             'directo': {'url': os.environ.get('GENERALES_DIRECTO', ''), 'eleccion': '2026_11', 'nombre': '29N 2026'}}
@@ -316,6 +331,10 @@ def web(geo, sec, mun):
     cc = cc.loc[gm.cod]
     d['c'] = [[round(x / w, 3), round(y / w, 3)] for x, y, w in zip(cc.x, cc.y, cc.w)]
     json.dump(d, open(os.path.join(WEB, 'municipios.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
+    os.makedirs(os.path.join(WEB, 'e'), exist_ok=True)
+    for y in TODAS:
+        if y not in BASE:
+            json.dump(columnas(m, 'mun_code', [y]), open(os.path.join(WEB, 'e', f'{y}.json'), 'w'), separators=(',', ':'))
     # provincias (contorno) para el mapa
     gp = geo.assign(p=geo.tract_code.str[:2]).dissolve('p').reset_index()[['p', 'geometry']]
     gp['geometry'] = gp.geometry.simplify(400, preserve_topology=True)
@@ -337,6 +356,11 @@ def web(geo, sec, mun):
         f = os.path.join(WEB, 'sec', f'{p}.json')
         json.dump(d, open(f, 'w'), separators=(',', ':'))
         tam += os.path.getsize(f)
+        for y in ELECCIONES:
+            if y not in BASE:
+                f = os.path.join(WEB, 'sec', f'{p}_{y}.json')
+                json.dump(columnas(x, 'tract_code', [y]), open(f, 'w'), separators=(',', ':'))
+                tam += os.path.getsize(f)
     json.dump(meta, open(os.path.join(WEB, 'meta.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
     print('web: municipios', os.path.getsize(os.path.join(WEB, 'municipios.json')) // 1024, 'KB; secciones', tam // 1024, 'KB')
 
