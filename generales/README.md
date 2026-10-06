@@ -12,10 +12,15 @@ En este repositorio, la web está en esta carpeta (`index.html`, `app.js`, `data
 | `partidos.py` | Agrupación de candidaturas en familias comparables entre elecciones. |
 | `pagina.py` | Genera `web/index.html` (con las cifras escritas en el HTML), `metodologia.html`, CSV, `llms.txt` y `sitemap.xml`. |
 | `plantilla.html`, `metodologia.html` | Plantillas de las páginas. |
+| `otras_elecciones.py` | Importa municipales y europeas desde los zips de Infoelectoral (`04202305_MESA.zip`, `07202406_MESA.zip`, `04200705_MUNI.zip`…). |
 | `actualizar_29n.py` | Carga resultados nuevos: simulacro, JSON del directo, CSV por municipio o ficheros por mesa de Interior. |
 | `directo/` | Cloudflare Worker que sirve los resultados en directo a la pieza. |
 | `web/` | La web lista para publicar (GitHub Pages). |
 | `datos/` | Tablas limpias (`secciones.csv`, `municipios.csv`, `resultados_secciones_largo.csv`, `resumen.json`). |
+
+## Municipales y europeas
+
+El selector de elección incluye municipales (2011-2023 por sección, 2007 por municipio) y europeas (2019 y 2024). Se cargan con `python3 otras_elecciones.py <zips de Infoelectoral>` y después `construir.py` y `pagina.py`. En la web van en ficheros aparte (`data/e/M2023.json`, `data/sec/28_M2023.json`…) que solo se descargan al elegir esa elección, para que la carga inicial no crezca. Para añadir otra, basta con subir su zip (por mesa si existe) y repetir.
 
 Requisitos: Python 3 con pandas, geopandas, pyarrow. `python3 construir.py && python3 pagina.py` reconstruye todo.
 

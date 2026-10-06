@@ -1,5 +1,6 @@
 // Mapa de las generales: municipios para toda España y secciones censales al acercarse.
-// Datos en data/: meta.json, municipios.json, provincias.json, resumen.json y sec/<prov>.json.
+// Datos en data/: meta.json, municipios.json, provincias.json, resumen.json y sec/<prov>.json (generales).
+// Municipales y europeas, aparte: e/<elección>.json y sec/<prov>_<elección>.json, que se cargan al elegirlas.
 (async function () {
   const $ = s => document.querySelector(s);
   const get = f => fetch('data/' + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
@@ -34,7 +35,10 @@
 
   // ---------- estado
   const ELEC = META.elecciones;
-  const st = { y: ELEC[ELEC.length - 1].cod, v: 'gana', party: 'PP' };
+  const tipoDe = y => (ELEC.find(e => e.cod === y) || {}).tipo || 'generales';
+  const st = { y: ELEC.filter(e => tipoDe(e.cod) === 'generales').pop().cod, v: 'gana', party: 'PP' };
+  // participación: la escala depende del tipo de elección (en europeas vota mucha menos gente)
+  const PARTDOM = { generales: [.55, .85], municipales: [.45, .85], europeas: [.30, .75] };
   const VARS = {
     gana: { name: 'Partido más votado' },
     party: { name: 'Voto a un partido' },
@@ -89,7 +93,7 @@
       const f = FAM[FCOD.indexOf(st.party)];
       return mix(BG(), f.rgb, Math.min(1, .06 + .94 * v / (partyMax[st.y + '_' + st.party] || domParty())));
     }
-    const V = VARS[st.v], t = (v - V.dom[0]) / (V.dom[1] - V.dom[0]);
+    const V = VARS[st.v], dom = st.v === 'part' ? PARTDOM[tipoDe(st.y)] : V.dom, t = (v - dom[0]) / (dom[1] - dom[0]);
     return ramp(V.ramp, t);
   }
 
@@ -155,14 +159,28 @@
   });
   function redraw() { dk.setProps({ layers: layers() }); }
 
+  // elecciones que viven en ficheros aparte: columnas que se añaden a MUN y a cada provincia al elegirlas
+  const aparte = y => (ELEC.find(e => e.cod === y) || {}).aparte;
+  const pedido = {};
+  function asegura(y) {
+    if (!aparte(y) || MUN[y + '_part']) return Promise.resolve();
+    return pedido[y] || (pedido[y] = get('e/' + y + '.json').then(d => { Object.assign(MUN, d); }));
+  }
+  function aseguraSec(p, y) {
+    const e = ELEC.find(e => e.cod === y);
+    if (!e || !e.aparte || !e.secciones || !SEC[p] || SEC[p].d[y + '_part']) return;
+    const k = p + '_' + y; if (pedido[k]) return;
+    pedido[k] = get('sec/' + k + '.json').then(d => { Object.assign(SEC[p].d, d); redraw(); }).catch(() => delete pedido[k]);
+  }
   async function loadVisible() {
     if (!secVisible()) return;
     const vp = dk.getViewports()[0]; if (!vp) return;
     const [w, s] = vp.unproject([0, vp.height]), [e, n] = vp.unproject([vp.width, 0]);
     for (const [p, b] of Object.entries(PROVBOX)) {
-      if (b[0] > e || b[2] < w || b[1] > n || b[3] < s || SEC[p] || loading.has(p)) continue;
+      if (b[0] > e || b[2] < w || b[1] > n || b[3] < s || loading.has(p)) continue;
+      if (SEC[p]) { aseguraSec(p, st.y); continue; }
       loading.add(p);
-      get('sec/' + p + '.json').then(d => { SEC[p] = { d, polys: decode(d) }; loading.delete(p); redraw(); }).catch(() => loading.delete(p));
+      get('sec/' + p + '.json').then(d => { SEC[p] = { d, polys: decode(d) }; loading.delete(p); aseguraSec(p, st.y); redraw(); }).catch(() => loading.delete(p));
     }
   }
 
@@ -218,7 +236,7 @@
       const f = FAM[FCOD.indexOf(st.party)], mx = domParty(), bg = BG();
       cols = [0, .25, .5, .75, 1].map(t => `rgb(${mix(bg, f.rgb, .06 + .94 * t)})`); lo = 0; hi = mx; fmt = pct; name = 'Voto a ' + f.nombre + ' · ' + ELEC.find(e => e.cod === st.y).nombre;
     } else {
-      const V = VARS[st.v]; cols = rampa(V.ramp).map(c => `rgb(${c})`); [lo, hi] = V.dom; fmt = V.fmt;
+      const V = VARS[st.v]; cols = rampa(V.ramp).map(c => `rgb(${c})`); [lo, hi] = st.v === 'part' ? PARTDOM[tipoDe(st.y)] : V.dom; fmt = V.fmt;
       name = V.name + (st.v === 'part' ? ' · ' + ELEC.find(e => e.cod === st.y).nombre : '');
     }
     el.innerHTML = `<div class="lg-t">${name}</div><div class="lg-g" style="background:linear-gradient(90deg,${cols.join(',')})"></div><div class="lg-x"><span>${fmt(lo)} o menos</span><span>${fmt(hi)} o más</span></div><div class="lg-n"><b class="nd" style="background:rgb(${NODATA()})"></b>sin dato</div>`;
@@ -226,17 +244,32 @@
 
   // ---------- controles
   const selE = $('#sel-elec'), selV = $('#sel-var'), selP = $('#sel-party');
-  selE.innerHTML = ELEC.slice().reverse().map(e => `<option value="${e.cod}">${e.nombre}</option>`).join('') +
-    (ELEC.some(e => e.cod.startsWith('2026')) ? '' : '<option disabled>29N 2026 (la noche electoral)</option>');
+  const GRUPOS = [['generales', 'Generales'], ['municipales', 'Municipales'], ['europeas', 'Europeas']];
+  const opciones = () => {
+    selE.innerHTML = GRUPOS.map(([t, nom]) => {
+      const es = ELEC.filter(e => (e.tipo || 'generales') === t).sort((a, b) => b.cod.replace(/^\D/, '') < a.cod.replace(/^\D/, '') ? -1 : 1);
+      if (!es.length) return '';
+      const extra = t === 'generales' && !ELEC.some(e => e.cod.startsWith('2026')) ? '<option disabled>29N 2026 (la noche electoral)</option>' : '';
+      return `<optgroup label="${nom}">${extra}${es.map(e => `<option value="${e.cod}">${e.nombre}</option>`).join('')}</optgroup>`;
+    }).join('');
+    selE.value = st.y;
+  };
+  opciones();
   selV.innerHTML = Object.entries(VARS).map(([k, v]) => `<option value="${k}">${v.name}</option>`).join('');
   selP.innerHTML = FAM.filter(f => f.cod !== 'OTROS').map(f => `<option value="${f.cod}">${f.nombre}</option>`).join('');
   const sync = () => { selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
-  selE.onchange = () => { st.y = selE.value; sync(); };
+  const elige = async y => {
+    st.y = y; selE.disabled = true;
+    try { await asegura(y); } finally { selE.disabled = false; }
+    Object.keys(SEC).forEach(p => aseguraSec(p, y)); sync();
+  };
+  selE.onchange = () => elige(selE.value);
   selV.onchange = () => { st.v = selV.value; sync(); };
   selP.onchange = () => { st.party = selP.value; sync(); };
   document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault(); const [v, p, y] = b.dataset.go.split(':');
-    st.v = v; if (p) st.party = p; if (y) st.y = y; selV.value = st.v; selP.value = st.party; selE.value = st.y; sync();
+    st.v = v; if (p) st.party = p; selV.value = st.v; selP.value = st.party;
+    if (y) { selE.value = y; elige(y); } else sync();
     $('#mapa').scrollIntoView({ behavior: 'smooth' });
   }));
 
@@ -313,8 +346,8 @@
       s.forEach((x, k) => seats[fk[k]] += x);
     }
     if (!ELEC.some(e => e.cod === y)) {
-      ELEC.push({ cod: y, nombre: META.directo.nombre || y, secciones: false });
-      selE.innerHTML = ELEC.slice().reverse().map(e => `<option value="${e.cod}">${e.nombre}</option>`).join('');
+      ELEC.push({ cod: y, nombre: META.directo.nombre || y, tipo: 'generales', secciones: false });
+      opciones();
     }
     if (first) { st.y = y; if (!['gana', 'party', 'part'].includes(st.v)) st.v = 'gana'; selV.value = st.v; }
     selE.value = st.y;

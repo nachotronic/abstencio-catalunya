@@ -111,6 +111,20 @@ details.tabla table{border-collapse:collapse;width:100%;margin-top:6px;font-vari
 details.tabla caption{text-align:left;color:var(--muted);padding-bottom:4px}
 details.tabla th,details.tabla td{border-bottom:1px solid var(--line);padding:3px 6px;text-align:right}
 details.tabla th:nth-child(2),details.tabla td:nth-child(2){text-align:left}
+figure.fig{margin:28px 0}
+figure.fig figcaption{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
+figure.fig h3{font-family:var(--sans);font-size:16px;margin:0 0 8px}
+svg.brecha{width:100%;max-width:560px;height:auto;display:block}
+svg.brecha .ax,svg.brecha .val{font-family:var(--sans);font-size:13px;fill:var(--ink2)}
+svg.brecha .val{font-family:var(--mono);font-size:12px}
+svg.brecha .gh{font-family:var(--sans);font-size:12px;font-weight:600;fill:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+svg.brecha .bar{fill:var(--ink2)} svg.brecha .bar.e{fill:var(--muted)}
+blockquote.cita{margin:22px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent)}
+blockquote.cita p{margin:0 0 6px;font-style:italic}
+blockquote.cita footer,blockquote.cita cite{font-family:var(--sans);font-size:13px;font-style:normal;color:var(--muted);border:0;margin:0;padding:0}
+.compara{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink2);margin-top:14px}
+.limites ul,.corr{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink2);padding-left:20px}
+.limites li,.corr li{margin:4px 0}
 .go{font-family:var(--sans);font-size:.85em;font-weight:600;color:var(--accent);cursor:pointer;text-decoration:underline;text-decoration-style:dotted}
 footer{border-top:1px solid var(--line);margin-top:64px;padding:24px 0 48px;font-family:var(--sans);font-size:14px;color:var(--muted)}
 footer a{color:var(--ink2)}
@@ -130,19 +144,20 @@ footer a{color:var(--ink2)}
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
   <p class="lede">Los resultados del Congreso de 2004 a 2023 en las {{nsec}} secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Quien vive en un barrio rico vota más y vota distinto que quien vive en uno pobre.</p>
-  <p class="byline">Por {{autor}} · Actualizado el <time datetime="{{hoy}}">{{hoy}}</time> · <a href="metodologia.html">Metodología y datos</a></p>
+  <p class="byline">Por {{autor}} · Revisión de datos: {{revisor}} · Actualizado el <time datetime="{{hoy}}">{{hoy_txt}}</time> · <a href="metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
+  <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
 </header>
 
 <main>
 <section class="col">
   <div class="stats" aria-label="Resultados del 23J de 2023">
-    <div class="stat" style="--c:#1d84ce"><b>{{pp}}</b><span>PP · 23J 2023</span></div>
+    <div class="stat" style="--c:#1d84ce"><b>{{pp}}</b><span>PP y UPN · 23J 2023</span></div>
     <div class="stat" style="--c:#e30613"><b>{{psoe}}</b><span>PSOE</span></div>
     <div class="stat" style="--c:#5ac035"><b>{{vox}}</b><span>Vox</span></div>
     <div class="stat" style="--c:#a2275f"><b>{{sumar}}</b><span>Sumar</span></div>
     <div class="stat"><b>{{part}}</b><span>participación</span></div>
   </div>
-  <p>El 23 de julio de 2023 el PP fue la fuerza más votada en {{sec_pp}} secciones censales y el PSOE en {{sec_psoe}}. Por municipios, el PP ganó en {{mun_pp}} y el PSOE en {{mun_psoe}} de los {{nmun}}. Vox, que había ganado en {{vox19}} secciones en noviembre de 2019, perdió casi todas: {{vox_pp}} pasaron al PP.</p>
+  <p>El 23 de julio de 2023 el PP (con UPN, que en Navarra se presentó por separado) fue la fuerza más votada en {{sec_pp}} secciones censales y el PSOE en {{sec_psoe}}. Por municipios, el PP ganó en {{mun_pp}} y el PSOE en {{mun_psoe}} de los {{nmun}}. Vox, que había ganado en {{vox19}} secciones en noviembre de 2019, perdió casi todas: {{vox_pp}} pasaron al PP. Los recuentos no incluyen las secciones o municipios donde hubo empate.</p>
 </section>
 
 <section class="wide" id="mapa" aria-labelledby="h-mapa">
@@ -165,7 +180,7 @@ footer a{color:var(--ink2)}
     <div id="tip" hidden></div>
     <div class="fallback" id="fallback" hidden>No se ha podido cargar el mapa. Las cifras y tablas de esta página recogen los mismos datos.</div>
   </div>
-  <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado.</p>
+  <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado. En el selector de elección están también las municipales de 2007 a 2023 (las de 2007, solo por municipio) y las europeas de 2019 y 2024.</p>
 </section>
 
 <section class="col" aria-labelledby="h-renta">
@@ -173,6 +188,18 @@ footer a{color:var(--ink2)}
   <p>Si se ordenan las secciones por renta y se agrupan en diez partes con el mismo censo, la participación sube de forma casi continua con el dinero. En el 10% más pobre, con menos de {{r_lo}} euros netos por unidad de consumo al año, votó el <b>{{r_part1}}</b>. En el 10% más rico, con más de {{r_hi}} euros, el <b>{{r_part10}}</b>. <a class="go" data-go="renta_uc">Ver la renta en el mapa</a></p>
   <p>El voto también cambia. El PSOE sacó el {{r_psoe1}} en las secciones más pobres y el {{r_psoe10}} en las más ricas. El PP hace el camino contrario: {{r_pp1}} y {{r_pp10}}. Vox obtiene su mejor resultado en el extremo pobre ({{r_vox1}}), baja en las rentas medias ({{r_vox5}}) y repunta algo en las más altas ({{r_vox10}}).</p>
   <p>La pobreza dibuja lo mismo desde el otro lado: donde más de un {{pob10}} de los vecinos vive por debajo del umbral de riesgo de pobreza, la participación fue del {{pob_part10}}, frente al {{pob_part1}} donde menos. <a class="go" data-go="pobreza">Ver la pobreza en el mapa</a></p>
+</section>
+
+<section class="col" aria-labelledby="h-brecha">
+  <h2 id="h-brecha">Una brecha que se ha duplicado en veinte años</h2>
+  <p>La diferencia de participación entre los barrios más ricos y los más pobres no es nueva, pero ha crecido. En las generales de 2004, las secciones del 10% de menor renta votaron un {{h_p04_1}} y las del 10% de mayor renta, un {{h_p04_10}}: <b>{{h_gap04}}</b> de diferencia. En 2023 fueron <b>{{h_gap23}}</b>. El máximo de la serie llegó en la repetición electoral de noviembre de 2019, con {{h_gap19}}.</p>
+  <p>La comparación usa los mismos barrios en todas las elecciones: las secciones se ordenan por su renta de 2023 y los resultados antiguos solo se cuentan en las que conservan el mismo código desde entonces. Mide, por tanto, cómo ha cambiado la participación en los barrios que hoy son ricos o pobres, no en los que lo eran en cada momento.</p>
+  <figure class="fig">
+    <h3>Diferencia de participación entre el 10% más rico y el 10% más pobre</h3>
+    {{chart_brecha}}
+    <figcaption>Puntos porcentuales de participación entre los deciles extremos de renta por unidad de consumo (INE, 2023), ponderados por censo electoral. Fuente: Ministerio del Interior e INE.</figcaption>
+  </figure>
+  <p>El voto también se ha desplazado. En 2004 el PSOE sacó el {{h_psoe04_1}} en las secciones más pobres y el {{h_psoe04_10}} en las más ricas, y el PP, el {{h_pp04_1}} y el {{h_pp04_10}}. El reparto por renta se mantiene en 2023, con niveles más bajos para los dos por la llegada de otros partidos.</p>
 </section>
 
 <section class="wide" aria-label="Gráficos de voto por decil">
@@ -184,6 +211,11 @@ footer a{color:var(--ink2)}
     <div class="chartcard"><h3>Por estudios</h3><p class="sub">Por decil de adultos con estudios superiores (2021)</p><div class="chart" data-var="estudios_sup_2021" data-lo="← menos" data-hi="más →"></div>{{tablas_estudios_sup_2021}}</div>
     <div class="chartcard"><h3>Por paro</h3><p class="sub">Por decil de tasa de paro (2021)</p><div class="chart" data-var="paro_2021" data-lo="← menos paro" data-hi="más →"></div>{{tablas_paro_2021}}</div>
   </div>
+</section>
+
+<section class="col" aria-labelledby="h-est">
+  <h2 id="h-est">Estudios y paro: el mismo dibujo</h2>
+  <p>Los datos del censo de 2021 repiten el patrón de la renta. En el 10% de secciones con menos adultos con estudios superiores votó el {{est_part1}} en 2023; en el 10% con más, el {{est_part10}}. Con el paro ocurre al revés: {{paro_part1}} donde menos paro había y {{paro_part10}} donde más. Renta, estudios y paro van muy unidos en los mismos barrios, así que estos datos no permiten separar el peso de cada uno. <a class="go" data-go="paro_2021">Ver el paro en el mapa</a></p>
 </section>
 
 <section class="col" aria-labelledby="h-edad">
@@ -198,12 +230,35 @@ footer a{color:var(--ink2)}
   <p>Entre los municipios de más de 50.000 habitantes, la participación más baja fue la de {{low}}. La más alta, {{high}}. <a class="go" data-go="part::2023_07">Ver la participación en el mapa</a></p>
 </section>
 
+<section class="col" aria-labelledby="h-otras">
+  <h2 id="h-otras">Municipales y europeas: la brecha depende de la elección</h2>
+  <p>En las europeas de 2024, con una participación del 49%, la diferencia entre barrios fue la mayor de todas las elecciones analizadas: votó el {{e24_1}} en las secciones más pobres y el {{e24_10}} en las más ricas, <b>{{e24_gap}}</b>. En las europeas de 2019, celebradas el mismo día que las municipales, fue de {{e19_gap}}.</p>
+  <p>En las municipales la distancia ha sido menor, aunque también es mayor que hace una década: {{m11_gap}} en 2011 y {{m23_gap}} en 2023 ({{m23_1}} frente a {{m23_10}}), por debajo del máximo de 2019. En las municipales de 2023, Vox sacó más en las secciones más ricas ({{m23_vox10}}) que en las más pobres ({{m23_vox1}}), al contrario que en las generales de ese mismo año. Hay que tener en cuenta que en municipales Vox no se presentó en todos los municipios. Son datos descriptivos: no dicen por qué ocurre. <a class="go" data-go="part::E2024">Ver la participación de las europeas</a></p>
+</section>
+
 <section class="col" aria-labelledby="h-29n">
   <h2 id="h-29n">El 29N</h2>
   <p>Este mapa se actualizará con los resultados del 29 de noviembre por municipio en cuanto el Ministerio del Interior publique el escrutinio. Los datos por sección censal llegan semanas después, cuando Interior publica los resultados por mesa.</p>
 </section>
-</main>
 
+<section class="col limites" aria-labelledby="h-limites">
+  <h2 id="h-limites">Límites de estos datos</h2>
+  <ul>
+    <li>Son datos por sección, no por persona. Que en las secciones más pobres se vote más a un partido no significa que cada persona pobre lo vote.</li>
+    <li>Los deciles mezclan territorios: el 10% más pobre tiene mucho peso de Andalucía, Canarias y Extremadura. Las relaciones son descriptivas, no causas.</li>
+    <li>El voto de los españoles residentes en el extranjero (CERA) no se asigna a ninguna sección y queda fuera.</li>
+    <li>Los adultos sin derecho a voto son una estimación: adultos del padrón menos censo electoral de cada sección.</li>
+    <li>Las elecciones antiguas solo aparecen en las secciones que conservan su código de 2023. Los municipios creados por segregación o fusión no tienen datos antes de existir.</li>
+    <li>Las mesas que figuran sin ningún voto en los ficheros de Interior se tratan como «sin dato».</li>
+  </ul>
+  <p><a href="metodologia.html">Metodología completa</a></p>
+</section>
+
+<section class="col" id="correcciones" aria-labelledby="h-corr">
+  <h2 id="h-corr">Correcciones</h2>
+  <ul class="corr">{{correcciones}}</ul>
+</section>
+</main>
 <footer class="col">
   <p><b>Fuentes</b>: Ministerio del Interior (resultados por mesa, sin voto CERA), vía <a href="https://github.com/dadosdelaplace/pollspaindata">pollspaindata</a>. INE, Atlas de Distribución de Renta de los Hogares 2023 y Censo 2021, vía <a href="https://github.com/pablogguz/ineAtlas.data">ineAtlas.data</a>. Datos por sección: dicen dónde se vota de una manera, no quién. <a href="metodologia.html">Metodología completa</a>.</p>
   <p><b>Descargas</b> (CSV, licencia CC BY 4.0): <a href="descargas/secciones.csv">secciones</a> · <a href="descargas/municipios.csv">municipios</a> · <a href="descargas/resultados_secciones_largo.csv">votos por sección y partido</a></p>
