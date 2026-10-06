@@ -22,7 +22,7 @@ OUT_CSV = ATLAS / 'datos'
 
 CONGRESO = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07']
 FAM = ['PP', 'PSOE', 'VOX', 'SUMAR', 'CS', 'UPYD', 'ERC', 'JUNTS', 'PNV', 'BILDU', 'BNG', 'CC', 'OTROS']
-# Escaños por provincia: convocatoria de 2023 y de 2026 (Madrid 38, Cádiz 8). Mismos valores que generales/construir.py.
+# Escaños por provincia: convocatoria de 2023 y de 2026 (Madrid 38, Cádiz 8). Mismos valores que generales-2026/construir.py.
 ESCANOS_2023 = {'01': 4, '02': 4, '03': 12, '04': 6, '05': 3, '06': 5, '07': 8, '08': 32, '09': 4, '10': 4, '11': 9, '12': 5,
                 '13': 5, '14': 6, '15': 8, '16': 3, '17': 6, '18': 7, '19': 3, '20': 6, '21': 5, '22': 3, '23': 5, '24': 4,
                 '25': 4, '26': 4, '27': 4, '28': 37, '29': 11, '30': 10, '31': 5, '32': 4, '33': 7, '34': 3, '35': 8, '36': 7,

@@ -22,7 +22,7 @@ CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://stat
 HOY = datetime.date.today().isoformat()
 PUBLICADO = '2026-10-06'
 # página de resultados de España (la pieza de las generales); se mueve a /generales-2026/
-GENERALES = 'generales-2026/' if (ROOT / 'generales-2026').exists() else 'generales/'
+GENERALES = 'generales-2026/'   # la pieza de resultados de España se mueve aquí (PR #26); /generales/ redirige
 
 FUENTES = {
     'interior': ('Ministerio del Interior, resultados electorales por mesa (Infoelectoral). Congreso 2004-2023 vía pollspaindata, commit ee5ecda; municipales 2007-2023 de los ficheros de Infoelectoral',
@@ -237,7 +237,7 @@ def metodologia(C):
 <h2>Porcentajes de voto</h2>
 <p>Votos de la candidatura entre voto válido (votos a candidaturas más votos en blanco), como en el escrutinio oficial. La participación es votantes entre censo de residentes en España; no incluye el voto desde el extranjero (CERA) salvo donde se dice, como en el reparto de escaños. Cuando se agrupan varios municipios, el porcentaje es la suma de votos entre la suma de voto válido, no la media de porcentajes.</p>
 <h2>Familias de partidos</h2>
-<p>Para comparar elecciones, las candidaturas se agrupan en familias: el PP incluye sus coaliciones regionales y UPN; el PSOE, al PSC y sus federaciones; «Sumar» reúne el espacio a la izquierda del PSOE en cada momento (IU, Podemos y sus confluencias, Compromís, Más País, Más Madrid y Sumar). «Derecha» en una pieza significa PP + Vox + Cs, y «izquierda estatal», PSOE + Sumar. PRC, Més per Mallorca y los partidos regionalistas o locales quedan en «Otros». La tabla completa está en <code>generales/partidos.py</code> del repositorio.</p>
+<p>Para comparar elecciones, las candidaturas se agrupan en familias: el PP incluye sus coaliciones regionales y UPN; el PSOE, al PSC y sus federaciones; «Sumar» reúne el espacio a la izquierda del PSOE en cada momento (IU, Podemos y sus confluencias, Compromís, Más País, Más Madrid y Sumar). «Derecha» en una pieza significa PP + Vox + Cs, y «izquierda estatal», PSOE + Sumar. PRC, Més per Mallorca y los partidos regionalistas o locales quedan en «Otros». La tabla completa está en <code>generales-2026/partidos.py</code> del repositorio.</p>
 <h2>Lo que predicen los datos (serie «Las excepciones»)</h2>
 <p>Un modelo de regresión lineal, ponderado por censo, estima el voto a PP + Vox + Cs del 23J en cada municipio a partir de seis indicadores (renta por unidad de consumo en logaritmo, edad media, porcentaje de extranjeros, estudios superiores, paro y tamaño en logaritmo) y de su provincia. Se estima con los {C['modelo_municipal']['n']:,} municipios con todos los datos y explica el {C['modelo_municipal']['r2_derecha'] * 100:.0f} % de las diferencias entre ellos. La diferencia entre el voto real y el previsto señala dónde mirar; no es una explicación.</p>
 <h2>Gemelos</h2>

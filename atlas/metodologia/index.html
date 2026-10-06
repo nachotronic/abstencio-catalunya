@@ -76,13 +76,13 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 </head>
 <body>
 <main>
-<nav class="top"><a href="../index.html">Atlas de las anomalías electorales</a><span><a href="../metodologia/index.html">Metodología</a> · <a href="../datos/index.html">Datos</a> · <a href="../../generales/index.html">Resultados de España</a></span></nav>
+<nav class="top"><a href="../index.html">Atlas de las anomalías electorales</a><span><a href="../metodologia/index.html">Metodología</a> · <a href="../datos/index.html">Datos</a> · <a href="../../generales-2026/index.html">Resultados de España</a></span></nav>
 <p class="kicker">Metodología</p><h1>Cómo se hace el Atlas</h1>
 <p class="resumen">Todas las cifras salen de los resultados oficiales por mesa del Ministerio del Interior y de los indicadores del INE por municipio y sección censal. Ninguna se escribe a mano: un script las calcula y otro las comprueba antes de generar las páginas.</p>
 <h2>Porcentajes de voto</h2>
 <p>Votos de la candidatura entre voto válido (votos a candidaturas más votos en blanco), como en el escrutinio oficial. La participación es votantes entre censo de residentes en España; no incluye el voto desde el extranjero (CERA) salvo donde se dice, como en el reparto de escaños. Cuando se agrupan varios municipios, el porcentaje es la suma de votos entre la suma de voto válido, no la media de porcentajes.</p>
 <h2>Familias de partidos</h2>
-<p>Para comparar elecciones, las candidaturas se agrupan en familias: el PP incluye sus coaliciones regionales y UPN; el PSOE, al PSC y sus federaciones; «Sumar» reúne el espacio a la izquierda del PSOE en cada momento (IU, Podemos y sus confluencias, Compromís, Más País, Más Madrid y Sumar). «Derecha» en una pieza significa PP + Vox + Cs, y «izquierda estatal», PSOE + Sumar. PRC, Més per Mallorca y los partidos regionalistas o locales quedan en «Otros». La tabla completa está en <code>generales/partidos.py</code> del repositorio.</p>
+<p>Para comparar elecciones, las candidaturas se agrupan en familias: el PP incluye sus coaliciones regionales y UPN; el PSOE, al PSC y sus federaciones; «Sumar» reúne el espacio a la izquierda del PSOE en cada momento (IU, Podemos y sus confluencias, Compromís, Más País, Más Madrid y Sumar). «Derecha» en una pieza significa PP + Vox + Cs, y «izquierda estatal», PSOE + Sumar. PRC, Més per Mallorca y los partidos regionalistas o locales quedan en «Otros». La tabla completa está en <code>generales-2026/partidos.py</code> del repositorio.</p>
 <h2>Lo que predicen los datos (serie «Las excepciones»)</h2>
 <p>Un modelo de regresión lineal, ponderado por censo, estima el voto a PP + Vox + Cs del 23J en cada municipio a partir de seis indicadores (renta por unidad de consumo en logaritmo, edad media, porcentaje de extranjeros, estudios superiores, paro y tamaño en logaritmo) y de su provincia. Se estima con los 6,700 municipios con todos los datos y explica el 86 % de las diferencias entre ellos. La diferencia entre el voto real y el previsto señala dónde mirar; no es una explicación.</p>
 <h2>Gemelos</h2>
