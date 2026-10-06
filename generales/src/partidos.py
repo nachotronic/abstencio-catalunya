@@ -1,18 +1,19 @@
 """Agrupación de candidaturas en familias comparables (Congreso 2004-2026, municipales 2007-2023, europeas 2019-2024).
 
 Criterios (documentados en LEEME.md):
-- PP incluye sus coaliciones regionales (PP-FORO, PP-PAR, UPN-PP) y Navarra Suma (NA+, 2019).
+- PP incluye sus coaliciones regionales (PP-FORO, PP-PAR, UPN-PP), Navarra Suma (NA+, 2019) y UPN cuando va sola
+  (2023 y municipales), para que Navarra no cambie de familia según haya o no coalición.
 - PSOE incluye PSC, PSE-EE, PSdeG, PSIB, PSN.
 - "Sumar/Podemos/IU" es el espacio a la izquierda del PSOE: IU y sus federaciones (2004-2011), Podemos y sus confluencias
   (En Comú, Compromís-Podemos, En Marea), IU-Unidad Popular (2015), Unidas Podemos (2016-2019)
-  y Sumar (2023). Más País y Más Compromís (2019N) quedan en "Otros".
+  y Sumar (2023). Compromís y Más País / Más Madrid también, vayan solos o en coalición, porque se integraron en
+  coaliciones de este espacio (2015, 2016, 2023) y si no, el cambio de coalición parecería un cambio de voto.
 - BNG incluye NÓS-Candidatura Galega (2015).
 - Junts agrupa CiU (2004-2011), DL (2015), CDC (2016) y JxCat-Junts (2019-2023).
 - EH Bildu incluye Amaiur (2011) y Bildu (municipales 2011). UPyD va aparte (2008-2016).
 - Municipales: las listas locales de cada partido (PSC, PSOE-A, ERC-AM, Junts-Compromís Municipal…) van con su
   partido, y las confluencias con Podemos o IU (Ahora Madrid, Barcelona en Comú, Zaragoza en Común, Marea
-  Atlántica…) con "Sumar/Podemos/IU". Más Madrid y Compromís quedan en "Otros", como Más País en el Congreso.
-  UPN sin el PP, también en "Otros".
+  Atlántica…), Compromís y Más Madrid con "Sumar/Podemos/IU". El PRC y el resto de regionalistas, en "Otros".
 """
 import re
 
@@ -34,7 +35,7 @@ FAMILIAS = [  # código, etiqueta, color
 CODIGOS = [f[0] for f in FAMILIAS]
 
 _REGLAS = [
-    ('PP', r"^(PP\b|PP-|P\.P\.|UPN-PP|NA\+)"),
+    ('PP', r"^(PP\b|PP-|P\.P\.|UPN-PP|UPN$|NA\+)"),
     ('PSOE', r"PSOE|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN"),
     ('VOX', r"^VOX$"),
     ('CS', r"^(C'S|C´S|CS)$|-CS$"),
@@ -57,7 +58,9 @@ _NOMBRES = [
     ('BILDU', r"^BILDU|EUSKAL HERRIA BILDU"),
     ('PSOE', r"PSOE"),
     ('CS', r"CIUDADANOS-PARTIDO DE LA CIUDADAN"),
-    ('SUMAR', r"PODEM|EN COM[UÚ]N?\b|AHORA MADRID|MAREA ATL[AÁ]NTICA|M[AÁ]LAGA AHORA"),
+    ('OTROS', r"^M[EÉ]S PER MALLORCA"),     # en las europeas de 2019 iba bajo "Compromís per Europa"
+    ('SUMAR', r"PODEM|EN COM[UÚ]N?\b|AHORA MADRID|MAREA ATL[AÁ]NTICA|M[AÁ]LAGA AHORA|COMPROM[IÍÌ]S\b(?! MUNICIPAL)|M[AÁ]S MADRID|M[AÁ]S PA[IÍ]S"),
+    ('PP', r"UNI[OÓ]N DEL PUEBLO NAVARRO"),
 ]
 
 
