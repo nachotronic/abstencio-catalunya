@@ -7,6 +7,6 @@
 
 ## Referencia
 
-- [Metodología](https://mapaelectoral.es/atlas/metodologia/)
-- [Datos en CSV](https://mapaelectoral.es/atlas/datos/)
-- [Correcciones](https://mapaelectoral.es/atlas/correcciones/)
+- [Metodología](https://nachotronic.github.io/abstencio-catalunya/atlas/metodologia/)
+- [Datos en CSV](https://nachotronic.github.io/abstencio-catalunya/atlas/datos/)
+- [Correcciones](https://nachotronic.github.io/abstencio-catalunya/atlas/correcciones/)
