@@ -1,0 +1,183 @@
+<div class="wide">
+<header class="col">
+  <nav class="lang" aria-label="Idioma"><a href="index.html" hreflang="es" lang="es">ES</a><a href="ca.html" hreflang="ca" lang="ca" aria-current="page">CA</a></nav>
+  <div class="kicker">Catalunya · eleccions generals 2015–2023 · 5.115 seccions censals</div>
+  <h1>Qui no vota a Catalunya?</h1>
+  <p class="lede">El 23 de juliol de 2023, de cada 100 adults que vivien a Catalunya, <span class="c-vote num" id="l-vote"></span> van votar. Uns altres <span class="c-no num" id="l-no"></span> no podien fer-ho perquè no tenen la nacionalitat espanyola. I <span class="c-abst num" id="l-abst"></span> podien votar i no ho van fer. Les dades de participació només compten l'últim grup. Aquest mapa separa els tres, secció a secció, i els creua amb la renda, l'edat, els estudis i la població estrangera.</p>
+  <div class="hundred" id="hundred" aria-label="100 adults residents a Catalunya"></div>
+  <div class="legend3"><span><b style="background:var(--vote)"></b>va votar</span><span><b style="background:var(--noright)"></b>sense dret a vot</span><span><b style="background:var(--abst)"></b>podia votar i no va votar</span></div>
+  <p class="scrollhint">Baixa per recórrer el mapa ↓ · <a href="#tu-calle">o busca el teu carrer</a></p>
+</header>
+</div>
+<section class="scrolly" id="scrolly">
+  <div class="sticky" id="sticky">
+    <div id="deck" aria-label="Mapa 3D de les seccions censals de Catalunya" role="img"></div>
+    <div class="placelabel" id="placelabel" hidden aria-hidden="true"><span></span></div>
+    <div class="maplegend" id="maplegend"></div>
+    <div class="fallback" id="fallback" hidden>El teu navegador no pot mostrar el mapa 3D (WebGL desactivat). El text i els gràfics de sota recullen les mateixes dades.</div>
+    <div class="explore" id="explore" hidden>
+      <label for="v3">Color
+        <select id="v3"></select></label>
+      <div class="zoombtns"><button type="button" id="zin" aria-label="Apropar">+</button><button type="button" id="zout" aria-label="Allunyar">−</button></div>
+      <label for="town3">Anar a
+        <select id="town3"><option value="">Catalunya</option></select></label>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-step="cat"><div class="card">
+      <div class="kicker">5.115 seccions censals</div>
+      <p>Això és Catalunya dividida en les seves seccions censals, la unitat més petita amb resultats electorals. Com més fosc, més abstenció el 23 de juliol de 2023 entre els qui podien votar.</p>
+      <p>Vist així, el mapa sembla dir que l'abstenció és un problema de la costa i d'alguns barris. Però només compta una part dels veïns.</p>
+    </div></div>
+    <div class="step" data-step="cat3d"><div class="card">
+      <div class="kicker">L'altura compta persones</div>
+      <p>Ara l'altura de cada secció indica quants de cada 100 adults que hi viuen no van votar, pel motiu que sigui. A tot Catalunya són <b class="c-no">46</b>: <b class="c-abst">29</b> van poder votar i no ho van fer, i <b class="c-no">17</b> no hi tenien dret perquè no són espanyols.</p>
+    </div></div>
+    <div class="step" data-step="sin"><div class="card">
+      <div class="kicker">Sense dret a vot</div>
+      <p>Si pintem només els adults sense nacionalitat espanyola, apareix un altre mapa: <span class="place" data-place="Costa Brava">la Costa Brava</span>, <span class="place" data-place="Salou">Salou</span>, <span class="place" data-place="Guissona">Guissona</span>, <span class="place" data-place="Vic">Vic</span>, <span class="place" data-place="Salt">Salt</span> i bona part de l'<span class="place" data-place="Àrea de Barcelona">àrea de Barcelona</span>. Cap dada de participació no els compta, perquè no són al cens. I pesen més entre els joves.</p>
+      <blockquote class="q"><div class="qt">«Un de cada tres joves dels barris vulnerables ni tan sols pot votar en les eleccions per raó de nacionalitat»</div><cite><b>Oriol Nel·lo</b>, geògraf (UAB). A <a href="https://www.elcritic.cat/entrevistes/ismael-blanco-ricard-goma-i-oriol-nel-lo-els-perques-duna-catalunya-desigual-168976" target="_blank" rel="noopener">Crític</a>, juny de 2023</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="salt"><div class="card">
+      <div class="kicker">Salt · 33.232 habitants</div>
+      <p>A Salt van votar <b class="c-vote">34</b> de cada 100 adults residents, el valor més baix dels municipis catalans de més de 20.000 habitants. <b class="c-no">39</b> no podien votar en unes generals.</p>
+      <p>Però entre els qui sí que podien, la participació va ser del 55%, deu punts menys que la mitjana catalana. I no és cosa del 2023: Salt ha votat per sota de la mitjana en totes les generals des del 2015.</p>
+    </div></div>
+    <div class="step" data-step="lloret"><div class="card">
+      <div class="kicker">Lloret de Mar · 40.514 habitants</div>
+      <p>Lloret repeteix el patró: <b class="c-vote">36</b> van votar, <b class="c-no">38</b> no hi tenien dret i <b class="c-abst">26</b> es van abstenir en les generals. Aquí s'hi afegeix un tercer factor: més d'un terç dels habitatges són segones residències, i en unes eleccions en ple juliol hi ha empadronats que no hi eren.</p>
+    </div></div>
+    <div class="step" data-step="figueres"><div class="card">
+      <div class="kicker">Figueres · 48.374 habitants</div>
+      <p>A Figueres hi ha la secció amb menys participació de Catalunya: un 22%. No és la que té més estrangers (només un 17%). És la que té un 58% d'atur, 9.638 euros de renda per unitat de consum i un 3% d'adults amb estudis superiors.</p>
+      <p>Aquesta és l'abstenció que pesa més i la que menys es veu. Votar demana temps per informar-se, i on falta feina aquest temps se'n va en altres coses.</p>
+      <blockquote class="q"><div class="qt">«Si a casa teva no tens la nevera en condicions per mantenir la teva vida quotidiana, és més difícil que tinguis aquest temps per buscar informació política»</div><cite><b>Braulio Gómez</b>, politòleg (Universitat de Deusto). A <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a>, abril de 2019 · traduït del castellà</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="eu"><div class="card">
+      <div class="kicker">Municipals · el vot europeu</div>
+      <p>A les municipals també voten els ciutadans de la Unió Europea que s'inscriuen al cens, uns 68.000 a Catalunya. Tot i així, els adults sense dret a vot només baixen del 17% al 16%. El color i l'altura mostren ara qui no podia votar a les municipals de maig de 2023.</p>
+      <p>A <span class="place" data-place="Salt">Salt</span> passen del 39% al 36%, perquè la majoria dels seus estrangers no són europeus. A <span class="place" data-place="Lloret de Mar">Lloret</span> baixen del 38% al 33%. On més pesa el vot europeu és a la costa turística: a <span class="place" data-place="Roses">Roses</span> els europeus són el 8% del cens municipal i a <span class="place" data-place="Castelló d'Empúries">Castelló d'Empúries</span>, el 9%.</p>
+    </div></div>
+    <div class="step" data-step="rural"><div class="card">
+      <div class="kicker">Votar l'ajuntament</div>
+      <p>Les eleccions més properes són les que atreuen menys vots: un 56% a les municipals del 2023 i un 58% al Parlament del 2024, davant del 65% del Congrés. El color indica quant canvia la participació de les generals a les municipals, i l'altura, quanta se'n perd.</p>
+      <p>Només hi ha un lloc on es vota més l'ajuntament: els 589 pobles de menys de 2.000 habitants (69% davant de 67%). A Salt, Lloret i Figueres passa el contrari: a les municipals va votar entre el 47% i el 48% del cens, entre 7 i 10 punts menys que al Congrés. A Salt només va triar alcalde el 30% dels adults que hi viuen. En un poble petit es vota algú a qui es coneix.</p>
+      <blockquote class="q"><div class="qt">«A les municipals té molt més pes el vot personalista, el vot al candidat, ja que és una administració molt més propera al ciutadà»</div><cite><b>Guadalupe Talavera</b>, politòloga. A <a href="https://www.eldiario.es/politica/pobres-votan-municipales-excepto-elegir-alcalde-pueblo-participacion-elecciones-abstencion_1_10177968.html" target="_blank" rel="noopener">elDiario.es</a>, maig de 2023 · traduït del castellà</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="bcn"><div class="card">
+      <div class="kicker">Àrea de Barcelona · la renda</div>
+      <p>A la ciutat de Barcelona, el 20% de seccions més riques va votar al 72%; el 20% més pobre, al 58%. Catorze punts dins d'un mateix municipi.</p>
+      <p>Aquí el color és la renda (fosc, més baixa) i l'altura, l'abstenció. Les torres més altes són a <span class="place" data-place="Ciutat Vella">Ciutat Vella</span> (54% de participació), <span class="place" data-place="Nou Barris">Nou Barris</span>, <span class="place" data-place="Sant Adrià de Besòs">Sant Adrià de Besòs</span>, <span class="place" data-place="Badalona">Badalona</span> i <span class="place" data-place="Santa Coloma de Gramenet">Santa Coloma</span>.</p>
+      <blockquote class="q"><div class="qt">«En totes les eleccions hi ha una enorme abstenció diferencial entre barris i municipis rics i barris i municipis pobres»</div><cite><b>Ricard Gomà</b>, politòleg (UAB). A <a href="https://www.elcritic.cat/entrevistes/ismael-blanco-ricard-goma-i-oriol-nel-lo-els-perques-duna-catalunya-desigual-168976" target="_blank" rel="noopener">Crític</a>, juny de 2023</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="edu"><div class="card">
+      <div class="kicker">El que pesa més: els estudis</div>
+      <p>Amb el color canviat a adults sense estudis superiors, el mapa encaixa encara millor. Quan es posen totes les variables alhora en un model, l'educació és la que explica més la participació, seguida de l'atur. La renda deixa de sumar quan es tenen en compte aquestes dues.</p>
+    </div></div>
+    <div class="step" data-step="drop"><div class="card">
+      <div class="kicker">2023: l'altra abstenció</div>
+      <p>Hi ha una segona abstenció, que no segueix la renda sinó el vot. El color és ara el vot independentista de novembre de 2019 i l'altura, quanta participació es va perdre fins al juliol de 2023.</p>
+      <p>En el quart de seccions més independentistes la participació va caure 9 punts; en el menys independentista, 6. Per això l'interior, que continua votant més, va ser el que més va baixar. Aquí no hi pesa la pobresa, sinó el desgast d'un electorat que venia molt mobilitzat.</p>
+      <blockquote class="q"><div class="qt">«Després del fracàs del Procés la reubicació dels partits independentistes ha provocat un desgast en el seu electorat»</div><cite><b>Ivan Serrano</b>, professor de Ciència Política (UOC). A l'<a href="https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html" target="_blank" rel="noopener">Ara</a>, maig de 2024</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="evol"><div class="card">
+      <div class="kicker">2015–2024 · dotze eleccions</div>
+      <p>Així ha canviat l'abstenció a cada secció en les dotze eleccions dels últims deu anys: municipals, Parlament i Congrés. El color i l'altura són l'abstenció entre els qui podien votar.</p>
+      <div class="evo"><button type="button" id="evoplay" aria-label="Pausa">❚❚</button><div class="evotrack" id="evotrack"></div></div>
+      <div class="evolab"><b id="evoname"></b> · <span id="evocat"></span></div>
+      <p>Puja i baixa a cada convocatòria: el Parlament del 2017 va portar a votar el 82% del cens i el del 2021, en plena pandèmia, només el 54%. Però l'ordre gairebé no canvia. Les seccions que voten menys són gairebé sempre les mateixes, i la distància amb les que voten més s'ha eixamplat.</p>
+    </div></div>
+    <div class="step" data-step="explore"><div class="card">
+      <div class="kicker">Et toca a tu</div>
+      <p>El mapa torna a ser pla. Arrossega'l per moure'l, fes servir els botons o el doble clic per apropar-t'hi, canvia la variable del color o ves a un municipi, i passa el cursor (o toca) una secció per veure'n la fitxa.</p>
+    </div></div>
+  </div>
+</section>
+
+<div class="wide">
+<article class="col">
+  <section class="finder" id="tu-calle">
+  <h2>I al teu carrer?</h2>
+  <p>Escriu el teu carrer i el número del portal, i el municipi si cal, per veure quant es vota a la teva secció censal i com ha canviat des del 2015.</p>
+  <div class="fbox"><input id="fq" type="search" autocomplete="off" spellcheck="false" placeholder="P. ex.: Llebrencs 12 Barcelona" aria-label="Carrer, número i municipi" role="combobox" aria-expanded="false" aria-controls="fl" aria-autocomplete="list"><ul id="fl" role="listbox" hidden></ul></div>
+  <div id="fres" aria-live="polite"></div>
+  <p class="note">Carrerer del cens electoral de l'INE, amb els carrers a 31 de desembre de 2022. La cerca es fa al teu navegador i no s'envia enlloc.</p>
+  </section>
+  <h2>Les dades, amb calma</h2>
+  <p>El recorregut en 3D en resumeix l'essencial. Aquí hi ha els números complets: els municipis de referència, com canvia la participació amb cada variable, què pesa quan es miren totes alhora i les seccions que voten menys.</p>
+  <h2>Dues maneres de no votar</h2>
+  <p>Salt, Lloret de Mar, Salou i Figueres són els municipis catalans de més de 20.000 habitants on voten menys adults: entre 34 i 39 de cada 100 empadronats. El primer motiu no és el desinterès: entre el 29% i el 39% dels seus adults són estrangers sense dret a vot en unes generals. Però els qui sí que poden votar també voten menys: un 55% a Salt i Figueres i un 58% a Lloret, entre set i deu punts per sota de la mitjana catalana (65%). Són dos fenòmens que se sumen i que la xifra oficial de participació barreja, perquè només divideix pel cens.</p>
+  <p>Guissona és el cas extrem del primer fenomen: la indústria càrnia hi ha atret tanta població estrangera que més de la meitat dels seus adults no pot votar, i només 29 de cada 100 ho van fer, tot i que la participació sobre el cens (61%) és gairebé normal. A l'altre extrem, Sant Cugat del Vallès combina renda alta, universitaris i pocs estrangers: hi vota el 72% del cens i 63 de cada 100 adults.</p>
+  <div class="tbl out"><table id="compare"></table></div>
+  <p class="note" style="margin-top:8px">Participació = vots emesos / cens electoral resident (CER). Adults = població de 18 anys o més (Atlas de Renda de l'INE, 1 de gener de 2023). Sense dret a vot ≈ adults residents − cens electoral. Les línies recorren les generals del 2015, el 2016, l'abril del 2019, el novembre del 2019 i el 2023.</p>
+
+  <h2>Què separa una secció que vota d'una que no</h2>
+  <p>Si s'ordenen les 5.115 seccions de Catalunya en cinc grups iguals segons cada variable, la pauta és la mateixa: on hi ha menys renda, menys estudis superiors, més atur, més estrangers o població més jove, es vota menys. La barra completa (amb el número a sobre) és la participació entre els qui poden votar; la part fosca, quina part de tots els adults residents va votar. La franja clara entre totes dues creix on hi ha més veïns sense dret a vot.</p>
+  <div class="small-multiples" id="sm"></div>
+
+  <h2>El que pesa quan es mira tot alhora</h2>
+  <p>Aquestes variables van juntes: les seccions pobres també tenen menys universitaris, més atur i més estrangers. Un model que les considera alhora (regressió ponderada pel cens, 5.041 seccions) explica <span class="num" id="r2"></span> de les diferències de participació entre seccions. Cada barra indica quants punts canvia la participació quan la variable puja una desviació típica i les altres es mantenen fixes.</p>
+  <div id="coef"></div>
+  <p class="callout">El que pesa més és l'educació, a molta distància de tota la resta, seguida de l'atur. La renda, que per si sola és el que s'assembla més al mapa de l'abstenció, deixa de sumar quan es tenen en compte els estudis i la feina: la pobresa s'associa a votar menys a través d'aquestes dues coses.</p>
+  <p>És el que la ciència política fa dècades que descriu. En un article de 1995 que continua sent la referència, Henry Brady, Sidney Verba i Kay Lehman Schlozman van explicar la participació amb tres recursos: temps, diners i habilitats cíviques, és a dir, saber informar-se, expressar-se i organitzar-se. S'aprenen a casa i a l'escola i s'exerciten a la feina i a les associacions. Així resumien per què hi ha qui no participa:</p>
+  <blockquote class="q"><div class="qt">«Perquè no poden, perquè no volen o perquè ningú no els ho ha demanat»</div><cite><b>Henry E. Brady, Sidney Verba i Kay L. Schlozman</b>, politòlegs (Berkeley, Harvard i Boston College). A <a href="https://www.jstor.org/stable/2082425" target="_blank" rel="noopener">«Beyond SES: A Resource Model of Political Participation»</a>, American Political Science Review, 1995 · traduït de l'anglès</cite></blockquote>
+  <p>Estudis i feina són justament el que pesa més en aquest mapa. Informar-se, entendre què es vota i sentir que l'opinió pròpia compta exigeix temps i una certa seguretat. Sense això, és més fàcil pensar que la política és cosa d'altres.</p>
+  <blockquote class="q"><div class="qt">«És un efecte de la mateixa desigualtat: si per tenir veu i vot has de tenir capital cultural, al final calles»</div><cite><b>Miguel Alhambra</b>, sociòleg (Universitat Complutense). A <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a>, abril de 2019 · traduït del castellà</cite></blockquote>
+  <p>Hi ha efectes que no són econòmics. El percentatge d'estrangers continua restant participació fins i tot entre els qui sí que tenen dret a vot, i les seccions amb més espanyols nascuts a l'estranger també voten menys. És plausible que hi influeixin les llars mixtes i unes campanyes que gairebé no s'adrecen a aquests veïns, tot i que les dades agregades no ho poden demostrar. Part de l'efecte pot ser inflació del padró: persones empadronades que ja han marxat i que compten com a abstenció. Les segones residències i el lloguer també resten: a la costa hi ha empadronats que passen bona part de l'any en un altre lloc, i en unes eleccions celebrades el 23 de juliol això es nota. L'edat suma: els barris més envellits voten més.</p>
+  <p>Un advertiment necessari: són dades per secció, no per persona. Diuen on es vota menys, no que cada estranger nacionalitzat o cada aturat voti menys. Per afirmar-ho calen enquestes individuals.</p>
+
+  <h2>2023: l'altra abstenció</h2>
+  <p>Hi ha una segona abstenció, conjuntural, que no segueix la renda sinó el vot. Entre el novembre de 2019 i el juliol de 2023 la participació va caure 6,7 punts a Catalunya, però molt més on l'independentisme era més fort. En el quart de seccions amb més vot a ERC, Junts i la CUP el 2019, la participació va baixar <span class="num" id="d-hi"></span> punts; en el quart amb menys, <span class="num" id="d-lo"></span>. El vot independentista va passar del 42% al 28% dels vots emesos. Les anàlisis del Parlament de maig de 2024 apunten en la mateixa direcció.</p>
+  <blockquote class="q"><div class="qt">«Els independentistes s'han abstingut més i han fragmentat més el seu vot»</div><cite><b>Pau Torres</b>, politòleg i investigador (UPF). A l'<a href="https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html" target="_blank" rel="noopener">Ara</a>, maig de 2024, sobre el Parlament del 12 de maig</cite></blockquote>
+  <div id="indep"></div>
+  <p>Per això els pobles petits de l'interior, que continuen votant més que la mitjana, van perdre més participació que les ciutats de l'àrea metropolitana. Però en el conjunt de Catalunya la diferència entre camp i ciutat és petita: Barcelona vota més que la mitjana (67%) perquè els seus barris rics compensen els pobres. La gran divisió no és territorial, és social, i passa per dins de cada ciutat. A Salt, Lloret o Figueres l'abstenció alta no és nova: es repeteix elecció rere elecció des del 2015.</p>
+  <div id="sizehist"></div>
+
+  <h2>Deu anys, dotze eleccions</h2>
+  <p>Entre el 2015 i el 2024 els catalans van votar dotze vegades en eleccions municipals, al Parlament i al Congrés. La participació va ser del 82% al Parlament del 2017, el de l'1 d'octubre i el 155, i del 54% al del 2021, en plena pandèmia. En totes dotze, les seccions més pobres van votar menys que les més riques, i la distància ha crescut: al Parlament va passar de 14 punts el 2015 a 22 el 2021 i 19 el 2024; al Congrés, d'11 a 14; a les municipals, d'11 a 14.</p>
+  <div id="evoq"></div>
+  <p class="note" style="margin-top:8px">Seccions agrupades en cinc grups iguals per renda. Les línies gruixudes són el 20% més pobre i el 20% més ric; les fines, els tres grups intermedis. A sota, la distància en punts entre els dos extrems.</p>
+  <p>On més s'ha perdut és als barris pobres. Del Parlament del 2015 al del 2024 la participació va baixar a totes les seccions menys tres: una caiguda mediana de 22 punts en la cinquena part més pobra i de 16 en la més rica. Entre els municipis grans, Lloret, Sabadell, Sant Vicenç dels Horts, Ripollet i Figueres van perdre més de 22 punts; Barcelona i Sant Cugat, uns 16.</p>
+  <p>També hi ha recuperació. Del Parlament del 2021, el de la pandèmia, al del 2024 la participació va pujar a 85 de cada 100 seccions, i més a les pobres (una pujada mediana de 5,6 punts) que a les riques (1,9). El Prat, Reus, Sant Boi i Viladecans van recuperar 8 punts o més. No els va bastar per tornar al 2015: la distància entre rics i pobres del 2024 continua sent més gran que la d'aleshores.</p>
+  <h2>Com més a prop, menys es vota</h2>
+  <p>Les eleccions municipals i les del Parlament, les més properes, són les que tenen menys participació: un 56% i un 58% del cens davant del 65% del Congrés. I la distància entre seccions riques i pobres no es redueix, creix. Al Congrés, el decil de seccions més riques va votar 18 punts més que el més pobre; a les municipals, 19; al Parlament, 24.</p>
+  <p>Els politòlegs en diuen eleccions de segon ordre: l'elector percep que s'hi decideix menys i es queda a casa amb més facilitat. I qui es queda a casa primer és qui ja votava menys.</p>
+  <blockquote class="q"><div class="qt">«Les eleccions locals presenten un índex de vot encara més baix perquè els ciutadans no perceben que aquestes eleccions tinguin importància»</div><cite><b>Adrián Caballero</b>, professor de Comportament Polític (UAB). A <a href="https://maldita.es/malditodato/20240510/abstencion-diferencial-elecciones-cataluna/" target="_blank" rel="noopener">Maldita.es</a>, maig de 2024 · traduït del castellà</cite></blockquote>
+  <p>El Parlament va ser l'excepció durant el procés, quan les autonòmiques van mobilitzar com unes generals: el 2017 va votar el 79% del cens. El 2024 ha tornat a quedar per sota del Congrés.</p>
+  <p>No és un fenomen nou ni repartit per igual. Josep Maria Vallès i Robert Liñeira (<a href="https://reis.cis.es/index.php/reis/article/view/268" target="_blank" rel="noopener">Revista Española de Investigaciones Sociológicas, 2014</a>) van mostrar que la diferència entre votar en generals i en autonòmiques és més alta a Catalunya i Madrid que a la resta d'Espanya, i que es concentra a les àrees metropolitanes de Barcelona i Madrid. La van relacionar amb la presència de joves, l'atur i els votants nascuts fora de la comunitat, els mateixos trets que surten en aquest mapa.</p>
+  <blockquote class="q"><div class="qt">«Sempre s'havia votat molt menys a les autonòmiques que a les generals, però això es va trencar amb el procés»</div><cite><b>Javier Lorente</b>, professor de Ciència Política (URJC). A <a href="https://maldita.es/malditodato/20240510/abstencion-diferencial-elecciones-cataluna/" target="_blank" rel="noopener">Maldita.es</a>, maig de 2024 · traduït del castellà</cite></blockquote>
+  <div id="deciles"></div>
+  <p>En el decil més pobre, a més, el 31% dels adults no té dret a vot ni tan sols a les municipals, davant del 12% en el més ric. A les municipals també hi voten els ciutadans de la UE inscrits al cens, uns 68.000 a tot Catalunya, però això només fa baixar un punt el total d'adults sense dret a vot. On més es nota és a la costa turística de l'Empordà i la Selva: Castelló d'Empúries (9% del cens municipal), Roses (8%), Platja d'Aro (7,8%) i Lloret (7,2%).</p>
+  <p>Podrien ser molts més. Un informe del CIEMEN coordinat per Gemma Pinyol-Jiménez (<a href="https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf" target="_blank" rel="noopener">«El dret de vot de les persones immigrades a Catalunya», 2026</a>) compta 508.412 estrangers amb dret a votar a les municipals: 275.249 europeus i 233.163 dels tretze països amb conveni de reciprocitat. Per fer-ho s'han d'inscriure abans al cens, i l'informe assenyala que una part important no ho fa per desconeixement o per la dificultat dels tràmits. Amb les xifres d'aquest mapa, del 2023, s'hi inscriu al voltant d'un de cada quatre europeus que podrien fer-ho.</p>
+  <p>Només hi ha un lloc on es vota més l'ajuntament que el Congrés: els 589 municipis de menys de 2.000 habitants (69% davant de 67%), on a més només el 9% dels adults no pot votar. A Salt, Lloret i Figueres passa al revés, amb un 47-48% a les municipals. I el que explica la participació canvia amb l'elecció: a les generals pesen més els estudis; a les municipals i al Parlament, l'atur.</p>
+
+  <h2>Les seccions que voten menys</h2>
+  <p>Les participacions més baixes de Catalunya no són on hi ha més estrangers. Són en seccions de Figueres, el Prat, Badalona, Lleida, Sant Adrià de Besòs, Reus o Girona amb un atur per sobre del 40%, rendes de 10.000 a 13.000 euros per unitat de consum i menys d'un 10% d'adults amb estudis superiors. Llevat d'una del Raval, la majoria dels veïns té la nacionalitat espanyola, i tot i així hi vota entre un de cada quatre i un de cada tres inscrits. És l'abstenció de l'exclusió social, i és la que menys surt a les dades de participació.</p>
+  <div class="tbl out"><table id="low"></table></div>
+  <p class="note" style="margin-top:8px">Seccions amb més de 300 electors. En alguna secció, com la del Raval que surt a la llista, el cens electoral supera els adults estimats (habitual on hi ha moltes inscripcions en domicilis de serveis socials) i el grup "sense dret a vot" es posa a zero.</p>
+  <p>Aquesta abstenció tendeix a perpetuar-se. Els partits fan campanya on hi ha els vots, i on es vota poc es fa menys campanya, cosa que dona encara menys motius per anar a votar.</p>
+  <blockquote class="q"><div class="qt">«És un peix que es mossega la cua: com que no voten, els polítics no s'interessen per ells, ells no se senten escoltats i es tornen a abstenir a les eleccions següents»</div><cite><b>Manuel Trujillo</b>, investigador de l'IESA-CSIC. A <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a>, abril de 2019 · traduït del castellà</cite></blockquote>
+  <p>Trujillo i Braulio Gómez van mesurar aquesta segregació electoral a tot Espanya per al VIII Informe FOESSA. Van trobar barris on el 75% dels habitants no vota, i a Madrid van veure créixer la distància entre el decil més pobre i el més ric de 15 a 19 punts entre el 2011 i el 2016. A Catalunya, com es veu més amunt, és de 18 punts al Congrés i de 24 al Parlament.</p>
+  <blockquote class="q"><div class="qt">«Els ciutadans que més necessiten l'Estat per tirar endavant la seva vida no voten. Les seves preferències deixen d'entrar en el sistema»</div><cite><b>Manuel Trujillo i Braulio Gómez</b>, IESA-CSIC i Universitat de Deusto. A <a href="https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf" target="_blank" rel="noopener">«La segregación electoral interurbana en España»</a>, VIII Informe FOESSA, 2018 · traduït del castellà</cite></blockquote>
+  <p>I no és només un problema d'aquests barris. Si unes seccions voten al 75% i d'altres al 30%, les primeres pesen més del doble a l'hora d'escollir govern. Arend Lijphart ho va resumir el 1997, en el seu discurs com a president de l'Associació Americana de Ciència Política:</p>
+  <blockquote class="q"><div class="qt">«Una participació desigual significa una influència política desigual»</div><cite><b>Arend Lijphart</b>, politòleg (Universitat de Califòrnia a San Diego). A <a href="https://cambridge.org/core/journals/american-political-science-review/article/abs/unequal-participation-democracys-unresolved-dilemma-presidential-address-american-political-science-association-1996/FB743AB4AEBB70C9363A9F8B898A17BC" target="_blank" rel="noopener">«Unequal Participation: Democracy’s Unresolved Dilemma»</a>, American Political Science Review, 1997 · traduït de l'anglès</cite></blockquote>
+
+  <h2>Mètode i fonts</h2>
+  <ul class="method">
+    <li><b>Resultats:</b> eleccions al Congrés del 2015, el 2016, l'abril i el novembre del 2019 i el juliol del 2023, per mesa, agregades a secció censal. Microdades del Ministeri de l'Interior, en la versió processada del paquet <a href="https://github.com/dadosdelaplace/pollspain" target="_blank" rel="noopener">pollspain</a>. S'exclou el vot dels residents a l'estranger (CERA).</li>
+    <li><b>Renda, edat i nacionalitat:</b> Atlas de Distribució de Renda de les Llars de l'INE, dades del 2023 per secció (renda per unitat de consum, edat mitjana, % de població espanyola), via <a href="https://github.com/pablogguz/ineAtlas.data" target="_blank" rel="noopener">ineAtlas.data</a>.</li>
+    <li><b>Estudis, atur, habitatge i nascuts a l'estranger:</b> Cens de Població i Habitatges 2021 de l'INE per secció. Espanyols nascuts fora ≈ % nascuts a l'estranger − % estrangers.</li>
+    <li><b>Per què la sèrie llarga és de generals:</b> són les úniques amb resultats per mesa des del 2015, i tenen un avantatge: al Congrés només hi voten espanyols, de manera que la frontera entre "sense dret" i "abstenció" és neta. A les municipals hi voten a més els ciutadans de la UE i d'alguns països amb conveni, cosa que redueix el grup "sense dret a vot" a la costa.</li>
+    <li><b>Municipals 2023 i Parlament 2024:</b> participació per secció censal del Departament de Polítiques Digitals, via <a href="https://analisi.transparenciacatalunya.cat" target="_blank" rel="noopener">Transparència Catalunya</a> (conjunt de dades irrv-2mfc). Les seves xifres del Congrés 2023 coincideixen secció a secció amb les del Ministeri de l'Interior.</li>
+    <li><b>Cites:</b> declaracions publicades a <a href="https://www.elcritic.cat/entrevistes/ismael-blanco-ricard-goma-i-oriol-nel-lo-els-perques-duna-catalunya-desigual-168976" target="_blank" rel="noopener">Crític</a> (Sergi Picazo, 15 de juny de 2023), <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a> (Raúl Sánchez, 7 d'abril de 2019), <a href="https://www.eldiario.es/politica/pobres-votan-municipales-excepto-elegir-alcalde-pueblo-participacion-elecciones-abstencion_1_10177968.html" target="_blank" rel="noopener">elDiario.es</a> (Victòria Oliveres, 16 de maig de 2023), l'<a href="https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html" target="_blank" rel="noopener">Ara</a> (Roger Palós i Xavi Tedó, 21 de maig de 2024) i <a href="https://maldita.es/malditodato/20240510/abstencion-diferencial-elecciones-cataluna/" target="_blank" rel="noopener">Maldita.es</a> (10 de maig de 2024). Les d'elDiario.es i Maldita.es estan traduïdes del castellà. Els experts parlen de l'abstenció en general, no d'aquestes dades.</li>
+    <li><b>Estudis:</b> H. E. Brady, S. Verba i K. L. Schlozman, <a href="https://www.jstor.org/stable/2082425" target="_blank" rel="noopener">«Beyond SES: A Resource Model of Political Participation»</a>, <i>American Political Science Review</i> 89(2), 1995. A. Lijphart, <a href="https://cambridge.org/core/journals/american-political-science-review/article/abs/unequal-participation-democracys-unresolved-dilemma-presidential-address-american-political-science-association-1996/FB743AB4AEBB70C9363A9F8B898A17BC" target="_blank" rel="noopener">«Unequal Participation: Democracy’s Unresolved Dilemma»</a>, <i>American Political Science Review</i> 91(1), 1997. J. M. Vallès i R. Liñeira, <a href="https://reis.cis.es/index.php/reis/article/view/268" target="_blank" rel="noopener">«Abstención diferencial en Cataluña y en la Comunidad de Madrid»</a>, <i>REIS</i> 146, 2014. M. Trujillo i B. Gómez, <a href="https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf" target="_blank" rel="noopener">«La segregación electoral interurbana en España»</a>, VIII Informe FOESSA, 2018. G. Pinyol-Jiménez (coord.), <a href="https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf" target="_blank" rel="noopener">«El dret de vot de les persones immigrades a Catalunya»</a>, CIEMEN, 2026. Les cites en anglès i en castellà estan traduïdes.</li>
+    <li><b>Dotze eleccions (2015–2024):</b> participació per secció de les municipals del 2015, el 2019 i el 2023, el Parlament del 2015, el 2017, el 2021 i el 2024 i el Congrés del 2015, el 2016, l'abril i el novembre del 2019 i el 2023, de <a href="https://analisi.transparenciacatalunya.cat" target="_blank" rel="noopener">Transparència Catalunya</a> (irrv-2mfc), sense residents a l'estranger; per això el Parlament del 2017 surt al 82% i no al 79% oficial. Una secció d'un altre any només es compara amb la del 2023 si té el mateix codi i un cens semblant (entre dos terços i una vegada i mitja): 4.866 de les 5.115 seccions tenen les dotze eleccions, i les altres surten en gris els anys que falten.</li>
+    <li><b>Cercador:</b> <a href="https://www.ine.es/ss/Satellite?L=es_ES&amp;c=Page&amp;cid=1259952026632&amp;p=1259952026632&amp;pagename=ProductosYServicios%2FPYSLayout" target="_blank" rel="noopener">carrerer del cens electoral de l'INE</a> de gener del 2023 (carrers a 31 de desembre de 2022), amb les mateixes seccions que el mapa. Cada tram de carrer i numeració porta la seva secció. Els noms són els del carrerer, de vegades sense accents.</li>
+    <li><b>Fotos:</b> <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>, amb llicències lliures. L'autor i la llicència de cadascuna apareixen al peu de la imatge i enllacen a la seva fitxa.</li>
+    <li><b>Contrast amb l'Idescat:</b> la renda i la població estrangera de l'INE s'han comparat amb les de l'Idescat (<a href="https://www.idescat.cat/emex/" target="_blank" rel="noopener">EMEX</a>, renda familiar disponible per habitant i població estrangera del 2025). Per municipi correlacionen 0,94 en tots dos casos, i la relació amb la participació surt pràcticament igual amb una font o l'altra, de manera que les conclusions no depenen de fer servir l'INE o l'Idescat. El mapa fa servir l'INE perquè és l'única font amb aquestes dades per secció censal.</li>
+    <li><b>Limitacions:</b> la població adulta s'estima amb el % de menors de 18 anys de l'Atlas; el cens electoral de juliol i la població de gener no són exactament la mateixa foto; el Cens 2021 no cobreix 74 seccions creades després i l'Atlas no dona renda en 20.</li>
+  </ul>
+  <p class="note">Dades netes: catalunya_secciones_2023.csv i .geojson, l'històric per secció i les taules de Girona, a la carpeta abstencion del projecte.</p>
+  <footer class="note">Anàlisi per secció censal. Elaboració pròpia amb dades del Ministeri de l'Interior i de l'INE.</footer>
+</article>
+</div>
