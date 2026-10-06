@@ -11,13 +11,8 @@ def api(base, **p):
     p.update(format='json', formatversion=2)
     return json.loads(get(base + '?' + urllib.parse.urlencode(p)))
 PLACES = {
- 'salt': ['Salt Girona', 'Salt (Gironès)', 'Salt Gironès festa major', 'Salt Gironès carnaval', 'Salt Girona Sant Jordi', 'Salt Gironès castellers', 'Salt Gironès rambla'],
- 'figueres': ['Figueres carnaval', 'Figueres Sant Jordi', 'Figueres fires de la Santa Creu', 'Figueres castellers', 'Figueres sardanes', 'Figueres people street'],
- 'santa-coloma': ['Santa Coloma de Gramenet carnaval', 'Santa Coloma de Gramenet castellers', 'Santa Coloma de Gramenet Sant Jordi', 'Santa Coloma de Gramenet festa major', 'Santa Coloma de Gramenet manifestació'],
- 'badalona': ['Badalona carnaval', 'Badalona castellers', 'Badalona Sant Jordi', 'Badalona mercat', 'Badalona Nit del Dimoni people'],
- 'nou-barris': ['Nou Barris carnaval', 'Nou Barris castellers', 'Nou Barris festa major', 'Nou Barris manifestació', 'Prosperitat Barcelona festa'],
- 'sant-adria': ['La Mina Sant Adrià festa', 'Sant Adrià de Besòs castellers', 'Sant Adrià de Besòs carnaval', 'Sant Adrià de Besòs mercat'],
- 'figueres2': ['Figueres Rambla', 'Figueres plaça'],
+ 'salt': ['Salt, Catalonia', 'Salt Catalunya', 'Coma Cros Salt', 'Devesa de Salt', 'Salt Girona carrer Major', 'Salt Girona plaça', 'Salt Gironès mercat setmanal', 'Salt Girona Ter', 'Hostalets Salt', 'Salt Girona festa', 'Marrecs de Salt'],
+ 'lloret': ['Lloret de Mar carrer', 'Lloret de Mar Sant Romà', 'Lloret de Mar festa major', 'Lloret de Mar centre', 'Lloret de Mar people street'],
 }
 out = {}
 for slug, qs in PLACES.items():
@@ -31,7 +26,7 @@ for slug, qs in PLACES.items():
     for f in files:
         if f not in seen and re.search(r'\.(jpe?g)$', f, re.I) and not re.search(r'escut|escudo|bandera|flag|coat|logo|mapa|map|locator|situaci|plano|signature|firma', f, re.I):
             seen.append(f)
-    seen = seen[:24]
+    seen = seen[:40]
     cands = []
     for i in range(0, len(seen), 10):
         r = api('https://commons.wikimedia.org/w/api.php', action='query', titles='|'.join(seen[i:i+10]), prop='imageinfo', iiprop='url|size|extmetadata', iiurlwidth=960)
@@ -42,13 +37,13 @@ for slug, qs in PLACES.items():
             v = lambda k: re.sub('<[^>]+>', '', m.get(k, {}).get('value', '')).strip()
             cands.append(dict(file=pg['title'], page=ii['descriptionurl'], thumb=ii['thumburl'], w=ii['width'], h=ii['height'],
                               artist=v('Artist'), license=v('LicenseShortName'), license_url=v('LicenseUrl'), desc=v('ImageDescription')[:200]))
-    os.makedirs(f'cand3/{slug}', exist_ok=True)
+    os.makedirs(f'cand4/{slug}', exist_ok=True)
     keep = []
-    for k, c in enumerate(cands[:16]):
+    for k, c in enumerate(cands[:24]):
         b = get(c['thumb'])
         if b:
-            c['local'] = f'cand3/{slug}/{k:02d}.jpg'; open(c['local'], 'wb').write(b); keep.append(c)
+            c['local'] = f'cand4/{slug}/{k:02d}.jpg'; open(c['local'], 'wb').write(b); keep.append(c)
         time.sleep(0.3)
     out[slug] = keep
     print(slug, len(keep))
-json.dump(out, open('cand3/candidates.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(out, open('cand4/candidates.json', 'w'), ensure_ascii=False, indent=1)
