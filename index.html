@@ -1097,6 +1097,8 @@ function initDeck() {
     camView = fit(SCENES.cat.view);
     deckgl = new deck.Deck({
       parent: $('#deck'), viewState: camView, controller: false,
+      // el mapa ocupa toda la pantalla: en móvil, deslizar en vertical sobre él tiene que seguir moviendo la página
+      touchAction: 'pan-y',
       onViewStateChange: ({ viewState, interactionState }) => {
         if (curScene !== 'explore') return;
         anim++; flyId++; exploreTouched = true; userView = { longitude: viewState.longitude, latitude: viewState.latitude, zoom: viewState.zoom, pitch: 0, bearing: 0 };
