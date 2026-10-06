@@ -483,7 +483,7 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 
 
 def sitemap():
-    pages = [('index.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3')]
+    pages = [('index.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('generales-2026/', '0.9'), ('generales-2026/metodologia.html', '0.5')]
     pairs = {'index.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']

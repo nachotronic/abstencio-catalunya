@@ -32,4 +32,8 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi-ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html"/>
   </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/generales-2026/</loc><lastmod>2026-10-06</lastmod><priority>0.9</priority>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/generales-2026/metodologia.html</loc><lastmod>2026-10-06</lastmod><priority>0.5</priority>
+  </url>
 </urlset>

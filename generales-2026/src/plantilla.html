@@ -143,7 +143,7 @@ footer a{color:var(--ink2)}
 <header class="col">
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
-  <p class="lede">Los resultados del Congreso de 2004 a 2023 en las {{nsec}} secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Quien vive en un barrio rico vota más y vota distinto que quien vive en uno pobre.</p>
+  <p class="lede">Los resultados del Congreso de 2004 a 2023 en las {{nsec}} secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
   <p class="byline">Por {{autor}} · Revisión de datos: {{revisor}} · Actualizado el <time datetime="{{hoy}}">{{hoy_txt}}</time> · <a href="metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
   <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
 </header>
@@ -184,7 +184,7 @@ footer a{color:var(--ink2)}
 </section>
 
 <section class="col" aria-labelledby="h-renta">
-  <h2 id="h-renta">La renta: los barrios ricos votan más y votan PP</h2>
+  <h2 id="h-renta">La renta: los barrios ricos votan más y el PP gana en ellos</h2>
   <p>Si se ordenan las secciones por renta y se agrupan en diez partes con el mismo censo, la participación sube de forma casi continua con el dinero. En el 10% más pobre, con menos de {{r_lo}} euros netos por unidad de consumo al año, votó el <b>{{r_part1}}</b>. En el 10% más rico, con más de {{r_hi}} euros, el <b>{{r_part10}}</b>. <a class="go" data-go="renta_uc">Ver la renta en el mapa</a></p>
   <p>El voto también cambia. El PSOE sacó el {{r_psoe1}} en las secciones más pobres y el {{r_psoe10}} en las más ricas. El PP hace el camino contrario: {{r_pp1}} y {{r_pp10}}. Vox obtiene su mejor resultado en el extremo pobre ({{r_vox1}}), baja en las rentas medias ({{r_vox5}}) y repunta algo en las más altas ({{r_vox10}}).</p>
   <p>La pobreza dibuja lo mismo desde el otro lado: donde más de un {{pob10}} de los vecinos vive por debajo del umbral de riesgo de pobreza, la participación fue del {{pob_part10}}, frente al {{pob_part1}} donde menos. <a class="go" data-go="pobreza">Ver la pobreza en el mapa</a></p>
@@ -219,7 +219,7 @@ footer a{color:var(--ink2)}
 </section>
 
 <section class="col" aria-labelledby="h-edad">
-  <h2 id="h-edad">La edad: Vox crece donde vive gente joven</h2>
+  <h2 id="h-edad">La edad: Vox saca más donde vive gente joven</h2>
   <p>En el 10% de secciones más jóvenes, con una edad media por debajo de {{e_hi1}} años, Vox obtuvo el <b>{{e_vox1}}</b>. En las más envejecidas, por encima de {{e_lo10}} años, el <b>{{e_vox10}}</b>. Allí el PP llega al {{e_pp10}}. Las zonas mayores también votan más: {{e_part10}}, frente al {{e_part1}} de las más jóvenes. <a class="go" data-go="edad_media">Ver la edad en el mapa</a></p>
 </section>
 

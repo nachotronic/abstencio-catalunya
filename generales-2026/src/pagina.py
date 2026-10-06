@@ -10,7 +10,7 @@ from partidos import FAMILIAS
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DATOS, WEB = os.path.join(AQUI, 'datos'), os.path.join(AQUI, 'web')
-URL = os.environ.get('GENERALES_URL', 'https://nachotronic.github.io/abstencio-catalunya/generales/')
+URL = os.environ.get('GENERALES_URL', 'https://nachotronic.github.io/abstencio-catalunya/generales-2026/')
 AUTOR = os.environ.get('GENERALES_AUTOR', 'Nacho G. del Álamo')
 REVISOR = os.environ.get('GENERALES_REVISOR', 'Nacho G. del Álamo')
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
@@ -24,6 +24,9 @@ CORRECCIONES = [
     ('2026-10-06', 'Las mesas que figuran con censo y ningún voto en los ficheros de Interior (de 0 a 8 por elección, como una de La Línea de la '
                    'Concepción en 2023) se tratan como «sin dato» en lugar de como un 0% de participación.'),
     ('2026-10-06', 'Los recuentos de secciones y municipios donde gana cada partido ya no cuentan los empates.'),
+    ('2026-10-06', 'Se reformulan tres frases que decían más que los datos: la entradilla hablaba de personas («quien vive en un barrio rico») '
+                   'con datos por sección; «los barrios ricos votan PP» pasa a «el PP gana en ellos», y «Vox crece» pasa a «Vox saca más», porque '
+                   'el dato es de una sola elección. Las cifras no cambian.'),
 ]
 HOY = dt.date.today().isoformat()
 NOM = {c: n for c, n, _ in FAMILIAS}

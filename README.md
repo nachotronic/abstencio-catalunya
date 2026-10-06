@@ -17,7 +17,7 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 
 ## Generales del 29N
 
-`generales/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2015–2023) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales/README.md`.
+`generales-2026/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2004–2023, con municipales y europeas) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales-2026/README.md`.
 
 ## Publicar con GitHub Pages
 
