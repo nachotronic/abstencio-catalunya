@@ -150,12 +150,12 @@ def historia(sec):
             F.update({f'{k}_1': p(part[e].loc[1], 1), f'{k}_10': p(part[e].loc[10], 1), f'{k}_gap': p(gap[e], 1).replace('%', ' puntos')})
     if 'M2023' in part:
         F.update(m23_vox1=p(sh.loc[('M2023', 1), 'VOX'], 1), m23_vox10=p(sh.loc[('M2023', 10), 'VOX'], 1))
-    F['chart_brecha'] = svg_brecha(gap)
+    F['chart_brecha'] = svg_brecha(gap, part)
     return F
 
 
-def svg_brecha(gap):
-    """Barras: diferencia de participación entre el 10% más rico y el 10% más pobre, por elección (HTML estático)."""
+def svg_brecha(gap, part):
+    """Pesas: participación del 10% más pobre y del 10% más rico por renta en cada elección, y la diferencia (HTML estático)."""
     grupos = [('Generales', [e for e in ETQ if e in gap]), ('Municipales', sorted(e for e in gap if e[0] == 'M')),
               ('Europeas', sorted(e for e in gap if e[0] == 'E'))]
     filas = []
@@ -163,19 +163,35 @@ def svg_brecha(gap):
         if es:
             filas.append(('h', nom))
             filas += [('b', e) for e in es]
-    W, hb, x0, mx = 420, 24, 74, max(gap.values())
-    H = len(filas) * hb + 8
-    out = [f'<svg class="brecha" viewBox="0 0 {W} {H}" role="img" aria-label="Diferencia de participación entre las secciones más ricas y las más pobres, por elección">']
-    yy = 4
+    lo = min(part[e].loc[1] for e in gap); hi = max(part[e].loc[10] for e in gap)
+    lo, hi = 5 * int(lo * 100 // 5), 5 * -int(-hi * 100 // 5)          # eje en múltiplos de 5 puntos
+    W, hb, x0, xa, xb, top = 420, 26, 62, 100, 330, 46
+    X = lambda v: xa + (v * 100 - lo) / (hi - lo) * (xb - xa)
+    H = top + len(filas) * hb + 6
+    f1 = lambda v: f"{v * 100:.1f}".replace('.', ',')
+    out = [f'<svg class="brecha" viewBox="0 0 {W} {H}" role="img" aria-label="Participación de las secciones más pobres y más ricas por renta en cada elección, y diferencia en puntos">',
+           '<circle class="d1" cx="6" cy="10" r="5"/><text class="lg" x="16" y="14">10% más pobre</text>',
+           '<circle class="d10" cx="128" cy="10" r="5"/><text class="lg" x="138" y="14">10% más rico</text>',
+           f'<text class="gh" x="{W}" y="14" text-anchor="end">Diferencia</text>']
+    for t in range(lo, hi + 1, 10 if hi - lo > 40 else 5):
+        x = X(t / 100)
+        out.append(f'<line class="grid" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 4}" y2="{H - 4}"/><text class="tk" x="{x:.1f}" y="{top - 8}" text-anchor="middle">{t}%</text>')
+    yy = top
     for t, v in filas:
         if t == 'h':
-            out.append(f'<text class="gh" x="0" y="{yy + 15}">{v}</text>')
+            out.append(f'<text class="gh" x="0" y="{yy + 17}">{v}</text>')
         else:
-            w = (W - x0 - 62) * gap[v] / mx
+            a1, a10 = part[v].loc[1], part[v].loc[10]
+            x1, x10, cy = X(a1), X(a10), yy + 13
             lab = ETQ.get(v, v[1:])
-            out.append(f'<text class="ax" x="{x0 - 8}" y="{yy + 15}" text-anchor="end">{lab}</text>'
-                       f'<rect class="bar{" e" if v[0] in "ME" else ""}" x="{x0}" y="{yy + 4}" width="{w:.1f}" height="{hb - 8}" rx="2"/>'
-                       f'<text class="val" x="{x0 + w + 6:.1f}" y="{yy + 15}">{p(gap[v], 1).replace("%", "")} pts</text>')
+            out.append(f'<g><title>{lab}: {f1(a1)}% en el 10% más pobre, {f1(a10)}% en el 10% más rico, {f1(gap[v])} puntos de diferencia</title>'
+                       f'<rect class="hit" x="0" y="{yy}" width="{W}" height="{hb}"/>'
+                       f'<text class="ax" x="{x0}" y="{cy + 4}" text-anchor="end">{lab}</text>'
+                       f'<line class="cn" x1="{x1:.1f}" x2="{x10:.1f}" y1="{cy}" y2="{cy}"/>'
+                       f'<circle class="d1" cx="{x1:.1f}" cy="{cy}" r="5"/><circle class="d10" cx="{x10:.1f}" cy="{cy}" r="5"/>'
+                       f'<text class="val" x="{x1 - 9:.1f}" y="{cy + 4}" text-anchor="end">{f1(a1)}</text>'
+                       f'<text class="val" x="{x10 + 9:.1f}" y="{cy + 4}">{f1(a10)}</text>'
+                       f'<text class="gap" x="{W}" y="{cy + 4}" text-anchor="end">+{f1(gap[v])}</text></g>')
         yy += hb
     out.append('</svg>')
     return ''.join(out)

@@ -115,13 +115,27 @@ figure.fig{margin:28px 0}
 figure.fig figcaption{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
 figure.fig h3{font-family:var(--sans);font-size:16px;margin:0 0 8px}
 svg.brecha{width:100%;max-width:560px;height:auto;display:block}
-svg.brecha .ax,svg.brecha .val{font-family:var(--sans);font-size:13px;fill:var(--ink2)}
-svg.brecha .val{font-family:var(--mono);font-size:12px}
+svg.brecha{--pobre:#d98a2b;--rico:#5b3f99}
+:root[data-theme="dark"] svg.brecha{--pobre:#c27a26;--rico:#8f74d4}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) svg.brecha{--pobre:#c27a26;--rico:#8f74d4}}
+svg.brecha .ax,svg.brecha .lg{font-family:var(--sans);font-size:13px;fill:var(--ink2)}
+svg.brecha .val,svg.brecha .tk{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+svg.brecha .gap{font-family:var(--mono);font-size:12px;font-weight:600;fill:var(--ink)}
 svg.brecha .gh{font-family:var(--sans);font-size:12px;font-weight:600;fill:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-svg.brecha .bar{fill:var(--ink2)} svg.brecha .bar.e{fill:var(--muted)}
+svg.brecha .grid{stroke:var(--line);stroke-width:1}
+svg.brecha .cn{stroke:var(--muted);stroke-width:2;stroke-opacity:.45}
+svg.brecha .d1{fill:var(--pobre);stroke:var(--surface);stroke-width:2}
+svg.brecha .d10{fill:var(--rico);stroke:var(--surface);stroke-width:2}
+svg.brecha .hit{fill:transparent}
+svg.brecha g:hover .hit{fill:var(--line);fill-opacity:.5}
 blockquote.cita{margin:22px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent)}
 blockquote.cita p{margin:0 0 6px;font-style:italic}
 blockquote.cita footer,blockquote.cita cite{font-family:var(--sans);font-size:13px;font-style:normal;color:var(--muted);border:0;margin:0;padding:0}
+.atlas{display:grid;gap:4px;margin:22px 0 4px;padding:14px 16px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface);font-family:var(--sans);font-size:15px;line-height:1.45;color:var(--ink2);text-decoration:none}
+.atlas b{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink)}
+.atlas-k{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.atlas-go{font-weight:600;color:var(--accent);margin-top:2px}
+.atlas:hover{border-color:var(--accent)} .atlas:hover .atlas-go{text-decoration:underline}
 .compara{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink2);margin-top:14px}
 .limites ul,.corr{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink2);padding-left:20px}
 .limites li,.corr li{margin:4px 0}
@@ -146,6 +160,7 @@ footer a{color:var(--ink2)}
   <p class="lede">Los resultados del Congreso de 2004 a 2023 en las {{nsec}} secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
   <p class="byline">Por {{autor}} · Revisión de datos: {{revisor}} · Actualizado el <time datetime="{{hoy}}">{{hoy_txt}}</time> · <a href="metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
   <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
+  <a class="atlas" href="../atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a>
 </header>
 
 <main>
@@ -195,9 +210,9 @@ footer a{color:var(--ink2)}
   <p>La diferencia de participación entre los barrios más ricos y los más pobres no es nueva, pero ha crecido. En las generales de 2004, las secciones del 10% de menor renta votaron un {{h_p04_1}} y las del 10% de mayor renta, un {{h_p04_10}}: <b>{{h_gap04}}</b> de diferencia. En 2023 fueron <b>{{h_gap23}}</b>. El máximo de la serie llegó en la repetición electoral de noviembre de 2019, con {{h_gap19}}.</p>
   <p>La comparación usa los mismos barrios en todas las elecciones: las secciones se ordenan por su renta de 2023 y los resultados antiguos solo se cuentan en las que conservan el mismo código desde entonces. Mide, por tanto, cómo ha cambiado la participación en los barrios que hoy son ricos o pobres, no en los que lo eran en cada momento.</p>
   <figure class="fig">
-    <h3>Diferencia de participación entre el 10% más rico y el 10% más pobre</h3>
+    <h3>Participación en los barrios más pobres y más ricos</h3>
     {{chart_brecha}}
-    <figcaption>Puntos porcentuales de participación entre los deciles extremos de renta por unidad de consumo (INE, 2023), ponderados por censo electoral. Fuente: Ministerio del Interior e INE.</figcaption>
+    <figcaption>Participación sobre el censo en el 10% de secciones con menos renta y en el 10% con más; a la derecha, la diferencia en puntos. Deciles de renta por unidad de consumo (INE, 2023), ponderados por censo electoral. Fuente: Ministerio del Interior e INE.</figcaption>
   </figure>
   <p>El voto también se ha desplazado. En 2004 el PSOE sacó el {{h_psoe04_1}} en las secciones más pobres y el {{h_psoe04_10}} en las más ricas, y el PP, el {{h_pp04_1}} y el {{h_pp04_10}}. El reparto por renta se mantiene en 2023, con niveles más bajos para los dos por la llegada de otros partidos.</p>
 </section>
@@ -252,6 +267,10 @@ footer a{color:var(--ink2)}
     <li>Las mesas que figuran sin ningún voto en los ficheros de Interior se tratan como «sin dato».</li>
   </ul>
   <p><a href="metodologia.html">Metodología completa</a></p>
+</section>
+
+<section class="col">
+  <a class="atlas" href="../atlas/"><span class="atlas-k">Sigue leyendo</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a>
 </section>
 
 <section class="col" id="correcciones" aria-labelledby="h-corr">
