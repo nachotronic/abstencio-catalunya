@@ -31,7 +31,7 @@ LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
 IMAGE = BASE + 'img/portada.png'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
 # Códigos de verificación de Google Search Console y Bing Webmaster Tools (solo el valor de content="...").
-GOOGLE_VERIFICATION = ''
+GOOGLE_VERIFICATION = 'M5PxiUNlQY0Orkav-c2U9AuvCfD-w7gZCWH70gfYrIQ'
 BING_VERIFICATION = ''
 
 SOURCES = [
