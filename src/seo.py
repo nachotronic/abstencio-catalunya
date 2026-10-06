@@ -32,7 +32,7 @@ IMAGE = BASE + 'img/portada.png'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
 # Códigos de verificación de Google Search Console y Bing Webmaster Tools (solo el valor de content="...").
 GOOGLE_VERIFICATION = 'M5PxiUNlQY0Orkav-c2U9AuvCfD-w7gZCWH70gfYrIQ'
-BING_VERIFICATION = ''
+BING_VERIFICATION = 'F607F994F5AE6311370EE88405916BC0'
 
 SOURCES = [
     ('Ministerio del Interior: resultados por mesa del Congreso 2015-2023 (vía pollspain)', 'https://github.com/dadosdelaplace/pollspain'),
