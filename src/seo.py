@@ -19,6 +19,9 @@ AUTHOR = {'@type': 'Person', 'name': 'Nacho', 'url': 'https://github.com/nachotr
 LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
 IMAGE = BASE + 'img/portada.png'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
+# Códigos de verificación de Google Search Console y Bing Webmaster Tools (solo el valor de content="...").
+GOOGLE_VERIFICATION = ''
+BING_VERIFICATION = ''
 
 SOURCES = [
     ('Ministerio del Interior: resultados por mesa del Congreso 2015-2023 (vía pollspain)', 'https://github.com/dadosdelaplace/pollspain'),
@@ -112,6 +115,21 @@ def article(L):
     }
 
 
+def faq_items(page):
+    """Preguntas y respuestas del <section id="faq"> de la página (h3 + p), para no duplicar el texto."""
+    s = (ROOT / page).read_text(encoding='utf-8')
+    sec = s[s.index('<section id="faq">'):]
+    sec = sec[:sec.index('</section>')]
+    strip = lambda x: html.unescape(re.sub(r'<[^>]+>', '', x)).strip()
+    return [(strip(q), strip(a)) for q, a in re.findall(r'<h3>(.*?)</h3>\s*<p>(.*?)</p>', sec, re.S)]
+
+
+def faqpage(L):
+    t = T[L]
+    return {'@type': 'FAQPage', '@id': BASE + t['page'] + '#faq', 'inLanguage': L, 'isPartOf': {'@id': BASE + t['page'] + '#article'},
+            'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq_items(t['page'])]}
+
+
 def ld(*items):
     s = json.dumps({'@context': 'https://schema.org', '@graph': list(items)}, ensure_ascii=False, indent=1)
     return '<script type="application/ld+json">\n' + s.replace('</', '<\\/') + '\n</script>'
@@ -123,6 +141,8 @@ def meta(title, desc, url, lang, locale, alternates, ldjson, typ='article'):
            '<meta name="author" content="Nacho">',
            '<meta name="robots" content="index, follow, max-image-preview:large">',
            f'<link rel="canonical" href="{url}">']
+    if GOOGLE_VERIFICATION: out.append(f'<meta name="google-site-verification" content="{GOOGLE_VERIFICATION}">')
+    if BING_VERIFICATION: out.append(f'<meta name="msvalidate.01" content="{BING_VERIFICATION}">')
     out += [f'<link rel="alternate" hreflang="{h}" href="{u}">' for h, u in alternates]
     out += [f'<meta property="og:type" content="{typ}">', f'<meta property="og:title" content="{e(title)}">',
             f'<meta property="og:description" content="{e(desc)}">', f'<meta property="og:url" content="{url}">',
@@ -342,6 +362,7 @@ def llms():
     files = '\n'.join(f'- [{f}]({BASE}data/{f}): {d}' for f, d in T['es']['files'].items())
     src = '\n'.join(f'- [{n}]({u})' for n, u in SOURCES)
     key = '\n'.join(f'- {x}' for x in es['key'])
+    faq = '\n\n'.join(f'### {q}\n\n{a}' for q, a in faq_items('index.html'))
     return f'''# ¿Quién no vota en Cataluña? / Qui no vota a Catalunya?
 
 > {T['es']['desc']}
@@ -351,6 +372,10 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 ## Cifras clave
 
 {key}
+
+## Preguntas frecuentes
+
+{faq}
 
 ## Páginas
 
@@ -430,7 +455,7 @@ Sitemap: {BASE}sitemap.xml
 def main():
     for L in ('es', 'ca'):
         t = T[L]
-        inject(ROOT / t['page'], meta(t['title'], t['desc'], BASE + t['page'], L, t['locale'], ALT, ld(article(L), dataset(L))))
+        inject(ROOT / t['page'], meta(t['title'], t['desc'], BASE + t['page'], L, t['locale'], ALT, ld(article(L), faqpage(L), dataset(L))))
         (ROOT / t['meth']).write_text(methodology(L), encoding='utf-8')
     inject(ROOT / 'mapa.html', meta(MAPA['title'], MAPA['desc'], BASE + 'mapa.html', 'es', 'es_ES', [], ld(dataset('es')), typ='website'))
     (ROOT / 'llms.txt').write_text(llms(), encoding='utf-8')

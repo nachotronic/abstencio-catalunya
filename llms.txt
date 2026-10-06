@@ -13,6 +13,40 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 - Diferencia de participación entre el decil de secciones más rico y el más pobre: 18 puntos en el Congreso 2023, 19 en las municipales 2023 y 24 en el Parlament 2024.
 - Un modelo con renta, edad, estudios, paro, población extranjera y vivienda explica el 72% de las diferencias de participación entre secciones. Los estudios son la variable que más pesa, seguida del paro.
 
+## Preguntas frecuentes
+
+### ¿Cuántos adultos no votaron en Cataluña en las generales de 2023?
+
+De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 29 podían votar y no lo hicieron y otros 17 no tenían derecho a voto por no tener la nacionalidad española; votaron 54.
+
+### ¿Dónde se vota menos en Cataluña?
+
+La sección censal con menos participación de Cataluña está en Figueres, con un 22% en el Congreso de 2023, y entre los municipios de más de 20.000 habitantes Salt es donde menos adultos votan: 34 de cada 100.
+
+### ¿Por qué votan tan poco Salt y Lloret de Mar?
+
+Porque se suman dos cosas: muchos adultos sin derecho a voto (39 de cada 100 en Salt y 38 en Lloret) y una abstención alta entre quienes sí pueden votar, que en Salt deja la participación en el 55%, diez puntos por debajo de la media catalana.
+
+### ¿Votan menos los barrios pobres?
+
+Sí: el 10% de secciones más ricas votó 18 puntos más que el 10% más pobre en el Congreso de 2023, 19 puntos más en las municipales de 2023 y 24 más en el Parlament de 2024.
+
+### ¿Qué explica más la abstención: la renta, la inmigración o los estudios?
+
+Los estudios, seguidos del paro: un modelo con todas las variables explica el 72% de las diferencias entre secciones, y con esas dos dentro la renta deja de sumar.
+
+### ¿En qué elecciones se vota menos en Cataluña?
+
+En las municipales (56% en 2023) y en el Parlament (58% en 2024), frente al 65% del Congreso de 2023; solo los 589 municipios de menos de 2.000 habitantes votan más al ayuntamiento (69% frente a 67%).
+
+### ¿Por qué bajó la participación en las generales de 2023?
+
+Cayó 6,7 puntos respecto a noviembre de 2019, y más donde el independentismo era fuerte: 9 puntos en el cuarto de secciones más independentista frente a 6 en el menos.
+
+### ¿Pueden votar los extranjeros en Cataluña?
+
+Solo en las municipales, y solo los ciudadanos de la UE y de países con convenio inscritos en el censo; en 2023 eran unos 68.000 europeos, lo que reduce los adultos sin derecho a voto únicamente del 17% al 16%.
+
 ## Páginas
 
 - [Pieza en castellano](https://nachotronic.github.io/abstencio-catalunya/index.html): texto completo con mapa 3D y gráficos.
