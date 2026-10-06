@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologia i dades · Qui no vota a Catalunya?</title>
+<!-- seo -->
+<meta name="description" content="Dades obertes (CSV i GeoJSON, CC BY 4.0), columnes, fonts i mètode de l&#x27;anàlisi de l&#x27;abstenció per secció censal a Catalunya, 2015-2024.">
+<meta name="author" content="Nacho">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html">
+<link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html">
+<link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html">
+<link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Metodologia i dades · Qui no vota a Catalunya?">
+<meta property="og:description" content="Dades obertes (CSV i GeoJSON, CC BY 4.0), columnes, fonts i mètode de l&#x27;anàlisi de l&#x27;abstenció per secció censal a Catalunya, 2015-2024.">
+<meta property="og:url" content="https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html">
+<meta property="og:image" content="https://nachotronic.github.io/abstencio-catalunya/img/portada.png">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<link rel="alternate" type="text/plain" title="llms.txt" href="llms.txt">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Dataset",
+   "@id": "https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html#dataset",
+   "name": "Participació i abstenció per secció censal a Catalunya, 2015-2024",
+   "description": "Participació electoral de les 5.115 seccions censals de Catalunya en dotze eleccions (Congrés, Parlament i municipals, 2015-2024), amb adults residents, adults sense dret a vot, renda per unitat de consum, edat, estudis, atur i població estrangera.",
+   "inLanguage": "ca",
+   "url": "https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html",
+   "sameAs": "https://github.com/nachotronic/abstencio-catalunya",
+   "creator": {
+    "@type": "Person",
+    "name": "Nacho",
+    "url": "https://github.com/nachotronic"
+   },
+   "license": "https://creativecommons.org/licenses/by/4.0/",
+   "isAccessibleForFree": true,
+   "datePublished": "2026-10-05",
+   "dateModified": "2026-10-06",
+   "temporalCoverage": "2015-05-24/2024-05-12",
+   "spatialCoverage": {
+    "@type": "Place",
+    "name": "Catalunya",
+    "geo": {
+     "@type": "GeoShape",
+     "box": "40.52 0.15 42.86 3.33"
+    }
+   },
+   "keywords": [
+    "abstenció",
+    "participació electoral",
+    "Catalunya",
+    "secció censal",
+    "renda",
+    "població estrangera",
+    "Salt",
+    "Lloret de Mar",
+    "Figueres"
+   ],
+   "variableMeasured": [
+    "turnout",
+    "pct_ad_vota",
+    "pct_ad_sinderecho",
+    "pct_ad_abst",
+    "net_income_equiv",
+    "mean_age",
+    "pct_foreign",
+    "pct_higher_ed_completed",
+    "unemployment_rate",
+    "indep_share19",
+    "drop_19_23"
+   ],
+   "isBasedOn": [
+    "https://github.com/dadosdelaplace/pollspain",
+    "https://github.com/pablogguz/ineAtlas.data",
+    "https://www.ine.es/censos2021/",
+    "https://analisi.transparenciacatalunya.cat/d/irrv-2mfc",
+    "https://www.idescat.cat/emex/"
+   ],
+   "distribution": [
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_secciones_2023.csv",
+     "description": "Seccions censals 2023: participació, repartiment de cada 100 adults i variables sociodemogràfiques",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_municipios.csv",
+     "description": "Municipis: participació i repartiment de cada 100 adults",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_municipios.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "evolucion_secciones.csv",
+     "description": "Participació per secció en dotze eleccions, 2015-2024",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/evolucion_secciones.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_secciones_historico_congreso.csv",
+     "description": "Històric del Congrés per secció (format llarg), 2015-2023",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_historico_congreso.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_secciones_2023.geojson",
+     "description": "Contorns de les seccions censals del 2023 amb totes les variables",
+     "encodingFormat": "application/geo+json",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.geojson"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "girona_secciones_2023.csv",
+     "description": "Seccions de la província de Girona",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/girona_secciones_2023.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "girona_municipios.csv",
+     "description": "Municipis de la província de Girona",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/girona_municipios.csv"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- /seo -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#f4f5f8;--surface:#fff;--fg:#161a2b;--muted:#5b6178;--rule:#d9dce6;--accent:#3846a0;
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;--body:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141d;--surface:#1a1d29;--fg:#e8eaf2;--muted:#9aa0b8;--rule:#2c3042;--accent:#8f9cf0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12141d;--surface:#1a1d29;--fg:#e8eaf2;--muted:#9aa0b8;--rule:#2c3042;--accent:#8f9cf0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.08rem;line-height:1.6;padding:0 16px 64px}
+main{max-width:72ch;margin:0 auto}
+nav{display:flex;justify-content:space-between;gap:12px;padding:20px 0;font-family:var(--mono);font-size:.82rem}
+a{color:var(--accent)}
+h1,h2{font-family:var(--display);line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:800;margin:.4rem 0 1rem}
+h2{font-size:1.4rem;margin:2.4rem 0 .6rem}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+ul{padding-left:1.2rem}li{margin:.35rem 0}
+code,td:first-child{font-family:var(--mono);font-size:.84rem}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
+.cite{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 14px}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="ca.html">← Tornar a la peça</a><a href="metodologia.html" hreflang="es" lang="es">Español</a></nav>
+<div class="kicker">Qui no vota a Catalunya?</div>
+<h1>Metodologia i dades</h1>
+<p>Aquesta pàgina acompanya <a href="ca.html">«Qui no vota a Catalunya?»</a>. Aquí hi ha les dades que fa servir, amb llicència lliure, què mesura cada columna i com s'ha calculat.</p>
+<h2>Descarregar les dades</h2>
+<ul>
+<li><a href="data/catalunya_secciones_2023.csv" download>catalunya_secciones_2023.csv</a> · Seccions censals 2023: participació, repartiment de cada 100 adults i variables sociodemogràfiques · 1,4 MB</li>
+<li><a href="data/catalunya_municipios.csv" download>catalunya_municipios.csv</a> · Municipis: participació i repartiment de cada 100 adults · 119 kB</li>
+<li><a href="data/evolucion_secciones.csv" download>evolucion_secciones.csv</a> · Participació per secció en dotze eleccions, 2015-2024 · 470 kB</li>
+<li><a href="data/catalunya_secciones_historico_congreso.csv" download>catalunya_secciones_historico_congreso.csv</a> · Històric del Congrés per secció (format llarg), 2015-2023 · 1,0 MB</li>
+<li><a href="data/catalunya_secciones_2023.geojson" download>catalunya_secciones_2023.geojson</a> · Contorns de les seccions censals del 2023 amb totes les variables · 18,8 MB</li>
+<li><a href="data/girona_secciones_2023.csv" download>girona_secciones_2023.csv</a> · Seccions de la província de Girona · 130 kB</li>
+<li><a href="data/girona_municipios.csv" download>girona_municipios.csv</a> · Municipis de la província de Girona · 46 kB</li>
+</ul>
+<h2>Llicència i com citar</h2>
+<p>Les dades elaborades es publiquen amb llicència <a href="https://creativecommons.org/licenses/by/4.0/deed.ca" rel="license">Creative Commons Reconeixement 4.0 (CC BY 4.0)</a>: es poden reutilitzar, també amb finalitats comercials, citant-ne la font. Les dades d'origen mantenen les condicions dels seus organismes (Ministeri de l'Interior, INE, Generalitat de Catalunya). Les fotos de la peça tenen la seva pròpia llicència, indicada al peu de cadascuna.</p>
+<p class="cite">Cita suggerida: Nacho, «Qui no vota a Catalunya? Abstenció per secció censal», 2026, https://nachotronic.github.io/abstencio-catalunya/ca.html. Dades: https://github.com/nachotronic/abstencio-catalunya.</p>
+<h2>Xifres clau</h2>
+<ul>
+<li>Catalunya, 23 de juliol de 2023: de cada 100 adults residents, 54 van votar, 17 no tenien dret a vot i 29 podien votar i no ho van fer.</li>
+<li>Participació oficial: 65% al Congrés 2023, 56% a les municipals 2023 i 58% al Parlament 2024.</li>
+<li>Salt: 34 de cada 100 adults van votar i 39 no podien votar, el valor més baix entre els municipis catalans de més de 20.000 habitants.</li>
+<li>La secció amb menys participació de Catalunya és a Figueres: un 22%.</li>
+<li>Diferència de participació entre el decil de seccions més ric i el més pobre: 18 punts al Congrés 2023, 19 a les municipals 2023 i 24 al Parlament 2024.</li>
+<li>Un model amb renda, edat, estudis, atur, població estrangera i habitatge explica el 72% de les diferències de participació entre seccions. Els estudis són la variable que més pesa, seguida de l'atur.</li>
+</ul>
+<h2>Què mesura</h2>
+<ul>
+<li>Per a cada secció censal es reparteixen els adults residents en tres grups: els que van votar, els que no tenien dret a vot i els que podien votar i no ho van fer.</li>
+<li><b>Va votar</b>: vots emesos al Congrés del 23 de juliol de 2023, sense el vot dels residents a l'estranger (CERA).</li>
+<li><b>Sense dret a vot</b>: adults residents menys cens electoral. En unes generals només voten els espanyols.</li>
+<li><b>No va votar</b>: la resta, és a dir, l'abstenció entre els qui sí que podien votar. La participació oficial (vots / cens) només mesura aquest grup.</li>
+<li>Els adults s'estimen amb la població i el percentatge de menors de 18 anys de l'Atlas de Distribució de Renda de les Llars de l'INE del 2023.</li>
+</ul>
+<h2>Model</h2>
+<p>Regressió lineal de la participació del 2023 sobre les variables sociodemogràfiques de cada secció, ponderada pel cens (5.041 seccions amb totes les dades). Els coeficients s'expressen en punts de participació per cada desviació típica de la variable, amb intervals de confiança del 95% per bootstrap (500 rèpliques).</p>
+<h2>Fonts</h2>
+<ul>
+<li><a href="https://github.com/dadosdelaplace/pollspain">Ministerio del Interior: resultados por mesa del Congreso 2015-2023 (vía pollspain)</a></li>
+<li><a href="https://github.com/pablogguz/ineAtlas.data">INE: Atlas de Distribución de Renta de los Hogares 2023 (vía ineAtlas.data)</a></li>
+<li><a href="https://www.ine.es/censos2021/">INE: Censo de Población y Viviendas 2021</a></li>
+<li><a href="https://analisi.transparenciacatalunya.cat/d/irrv-2mfc">Generalitat de Catalunya: participación por sección censal 2015-2024 (Transparència Catalunya, irrv-2mfc)</a></li>
+<li><a href="https://www.idescat.cat/emex/">Idescat: EMEX</a></li>
+</ul>
+<h2>Limitacions</h2>
+<ul>
+<li>Són dades per secció, no per persona: indiquen on es vota menys, no qui.</li>
+<li>El cens electoral de juliol i la població de gener no són exactament la mateixa foto. On el cens supera els adults estimats, el grup «sense dret a vot» es posa a zero.</li>
+<li>Les seccions d'altres anys només es comparen amb les del 2023 si tenen el mateix codi i un cens semblant (entre dos terços i una vegada i mitja).</li>
+<li>El Cens 2021 no cobreix 74 seccions creades després i l'Atlas no dona renda en 20.</li>
+<li>A les municipals també voten els ciutadans de la UE i d'alguns països amb conveni inscrits al cens, cosa que redueix el grup «sense dret a vot».</li>
+</ul>
+<h2>Columnes de catalunya_secciones_2023.csv</h2>
+<div class="tbl"><table>
+<thead><tr><th>Columna</th><th>Què és</th></tr></thead>
+<tbody>
+<tr><td>tract_code</td><td>Codi INE de la secció censal (10 xifres: província, municipi, districte i secció).</td></tr>
+<tr><td>mun_code, mun_name</td><td>Codi INE (5 xifres) i nom del municipi.</td></tr>
+<tr><td>electorate, voters, mesas</td><td>Cens electoral, votants i nombre de meses al Congrés de juliol del 2023.</td></tr>
+<tr><td>turnout</td><td>Participació oficial al Congrés 2023: votants / cens (de 0 a 1).</td></tr>
+<tr><td>t2015_12, t2016_06, t2019_04, t2019_11, t2023_07</td><td>Participació a cada elecció al Congrés (de 0 a 1). Buida si el codi de secció va canviar.</td></tr>
+<tr><td>population, adults</td><td>Població resident (Atlas 2023) i adults estimats amb el % de menors de 18 anys.</td></tr>
+<tr><td>sin_derecho, abst</td><td>Adults sense dret a vot (adults − cens, mínim 0) i censats que no van votar.</td></tr>
+<tr><td>pct_ad_vota, pct_ad_sinderecho, pct_ad_abst</td><td>De cada adult resident: va votar, no tenia dret, podia votar i no va votar (de 0 a 1; sumen 1).</td></tr>
+<tr><td>net_income_pc, net_income_equiv, median_income_equiv</td><td>Renda neta mitjana per persona, per unitat de consum i mediana per unitat de consum, en euros (Atlas INE, 2023).</td></tr>
+<tr><td>mean_age, pct_under18, pct_over65, pct_single_hh, pct_spanish</td><td>Edat mitjana i percentatges de menors, majors de 65 anys, llars unipersonals i població espanyola (Atlas INE, de 0 a 100).</td></tr>
+<tr><td>pct_foreign, pct_foreign_born, pct_naturalized</td><td>Estrangers, nascuts a l'estranger i espanyols nascuts fora (Cens 2021, de 0 a 1).</td></tr>
+<tr><td>pct_higher_ed_completed, unemployment_rate, pct_rented, pct_secondary</td><td>Adults amb estudis superiors, taxa d'atur, habitatges de lloguer i habitatges secundaris (Cens 2021, de 0 a 1).</td></tr>
+<tr><td>ind19, voters19, ind23</td><td>Vots a ERC, Junts i la CUP el novembre del 2019, votants del novembre del 2019 i vots a aquests partits el 2023.</td></tr>
+<tr><td>indep_share19, indep_share23, drop_19_23</td><td>Vot independentista sobre vots emesos el 2019 i el 2023, i caiguda de participació entre el novembre del 2019 i el juliol del 2023 (de 0 a 1).</td></tr>
+</tbody></table></div>
+<p>Els mateixos noms es fan servir a la resta de fitxers. A evolucion_secciones.csv cada columna és una elecció: M = municipals, A = Parlament, G = Congrés, seguida de l'any i la volta de l'any (G20192 = Congrés de novembre del 2019).</p>
+<h2>Codi</h2>
+<p>Els scripts en Python amb què s'han generat les dades i les pàgines són al <a href="https://github.com/nachotronic/abstencio-catalunya">repositori de GitHub</a>, carpeta <code>src/</code>.</p>
+</main>
+</body>
+</html>
