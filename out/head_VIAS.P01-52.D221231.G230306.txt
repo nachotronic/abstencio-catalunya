@@ -1,0 +1,6 @@
+0100101001   20221231 01001KALE 0TORRONDOA                                         TORRONDOA                
+0100101002   20221231 01002KALE 0AÑUA BIDEA                                        AÑUA BIDEA               
+0100101003   20221231 01003KALE 0GOIKOLANDA                                        GOIKOLANDA               
+0100101004   20221231 01004KALE 0TORREALDEA                                        TORREALDEA               
+0100101005   20221231 01005CALLE0NUESTRA SEÑORA DE AIALA                           NUESTRA SEÑORA DE AIALA  
+0100101006   20221231 01006KALE 0JUAN AGUSTIN ETXE

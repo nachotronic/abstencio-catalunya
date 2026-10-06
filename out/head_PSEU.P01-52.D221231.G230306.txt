@@ -1,0 +1,8 @@
+0101000001   20221231 00000CASERIO MALTERCIO                                 
+0105900001   20221231 00000CALL      10A                                     
+0200300210   20221231 00000HUERTA MONROY                                     
+0200300510   20221231 00000HUERTA DE DOMINGO FLORES                          
+0200300802   20221231 00000LOS GABRIELES                                     
+0201400001   20221231 00000V                                                 
+0202000001   20221231 00000POLIGONO 16 PARCELA 209                           
+0202000003   20221231 00000POLIGONO 13 PARCELA 
