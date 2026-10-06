@@ -7,6 +7,11 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 - `calles.json`: índice de calles del buscador «¿Y en tu calle?» (callejero del censo electoral del INE, enero de 2023), generado con `src/calles.py`. Las dos páginas lo cargan cuando alguien empieza a escribir.
 - `data/evolucion_secciones.csv`: participación por sección en las doce elecciones de 2015 a 2024 (municipales, Parlament y Congreso), generada con `src/evolucion.py` desde Transparència Catalunya.
 - `mapa.html`: mapa interactivo en 2D con los gráficos y la metodología.
+- `metodologia.html` y `metodologia-ca.html`: descarga de los datos, licencia, columnas, fuentes y limitaciones.
+- `llms.txt`, `sitemap.xml`, `robots.txt` y el bloque `<!-- seo -->` del `<head>` de cada página (descripción, idiomas alternativos y datos estructurados schema.org `NewsArticle` y `Dataset`): se generan con `python3 src/seo.py`, que hay que ejecutar siempre después de `src/build_ca.py`. Los textos de esas páginas están en castellano y catalán dentro del script.
+- Preguntas frecuentes: el apartado `<section id="faq">` de `src/i18n/es_body.html` y `ca_body.html`. `src/seo.py` lo lee para el esquema `FAQPage` y para `llms.txt`, así que basta con cambiarlo en esos dos archivos.
+- Página «Sobre mí» (`sobre-mi.html`, `sobre-mi-ca.html`): nombre, biografía, cargo y enlaces en `AUTHOR_*` de `src/seo.py`; la firma de la pieza está en los dos `*_body.html`.
+- Verificación en Google Search Console y Bing Webmaster Tools: pega el código en `GOOGLE_VERIFICATION` y `BING_VERIFICATION` de `src/seo.py` y vuelve a ejecutarlo.
 - `data/`: datos limpios por sección y municipio (CSV y GeoJSON).
 - `src/`: scripts en Python y plantillas con los que se han generado los datos y las páginas.
 
@@ -44,6 +49,10 @@ La participación oficial (votos / censo) solo mide el último grupo.
 | `mean_age`, `pct_over65`, `pct_spanish` | edad y nacionalidad (Atlas 2023) |
 | `pct_foreign`, `pct_naturalized`, `pct_higher_ed_completed`, `unemployment_rate`, `pct_rented`, `pct_secondary` | Censo 2021 |
 | `indep_share19`, `indep_share23`, `drop_19_23` | voto a ERC, Junts y CUP, y caída de participación entre 2019 y 2023 |
+
+## Licencia
+
+Los datos elaborados de `data/` se publican con licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). Las fotos de la pieza tienen su propia licencia, indicada al pie de cada una.
 
 ## Limitaciones
 

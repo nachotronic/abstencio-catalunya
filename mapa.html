@@ -5,6 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>[hidden]{display:none!important}body{margin:0}</style>
 <title>¿Quién no vota en Cataluña?</title>
+<!-- seo -->
+<meta name="description" content="Mapa interactivo en 2D de la abstención en las 5.115 secciones censales de Cataluña, con gráficos por renta, estudios, paro y población extranjera.">
+<meta name="author" content="Nacho">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://nachotronic.github.io/abstencio-catalunya/mapa.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="¿Quién no vota en Cataluña? Mapa interactivo">
+<meta property="og:description" content="Mapa interactivo en 2D de la abstención en las 5.115 secciones censales de Cataluña, con gráficos por renta, estudios, paro y población extranjera.">
+<meta property="og:url" content="https://nachotronic.github.io/abstencio-catalunya/mapa.html">
+<meta property="og:image" content="https://nachotronic.github.io/abstencio-catalunya/img/portada.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<link rel="alternate" type="text/plain" title="llms.txt" href="llms.txt">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Dataset",
+   "@id": "https://nachotronic.github.io/abstencio-catalunya/metodologia.html#dataset",
+   "name": "Participación y abstención por sección censal en Cataluña, 2015-2024",
+   "description": "Participación electoral de las 5.115 secciones censales de Cataluña en doce elecciones (Congreso, Parlament y municipales, 2015-2024), con adultos residentes, adultos sin derecho a voto, renta por unidad de consumo, edad, estudios, paro y población extranjera.",
+   "inLanguage": "es",
+   "url": "https://nachotronic.github.io/abstencio-catalunya/metodologia.html",
+   "sameAs": "https://github.com/nachotronic/abstencio-catalunya",
+   "creator": {
+    "@type": "Person",
+    "@id": "https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html#person",
+    "name": "Nacho",
+    "url": "https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html",
+    "sameAs": [
+     "https://github.com/nachotronic"
+    ]
+   },
+   "license": "https://creativecommons.org/licenses/by/4.0/",
+   "isAccessibleForFree": true,
+   "datePublished": "2026-10-05",
+   "dateModified": "2026-10-06",
+   "temporalCoverage": "2015-05-24/2024-05-12",
+   "spatialCoverage": {
+    "@type": "Place",
+    "name": "Catalunya",
+    "geo": {
+     "@type": "GeoShape",
+     "box": "40.52 0.15 42.86 3.33"
+    }
+   },
+   "keywords": [
+    "abstención",
+    "participación electoral",
+    "Cataluña",
+    "sección censal",
+    "renta",
+    "población extranjera",
+    "Salt",
+    "Lloret de Mar",
+    "Figueres"
+   ],
+   "variableMeasured": [
+    "turnout",
+    "pct_ad_vota",
+    "pct_ad_sinderecho",
+    "pct_ad_abst",
+    "net_income_equiv",
+    "mean_age",
+    "pct_foreign",
+    "pct_higher_ed_completed",
+    "unemployment_rate",
+    "indep_share19",
+    "drop_19_23"
+   ],
+   "isBasedOn": [
+    "https://github.com/dadosdelaplace/pollspain",
+    "https://github.com/pablogguz/ineAtlas.data",
+    "https://www.ine.es/censos2021/",
+    "https://analisi.transparenciacatalunya.cat/d/irrv-2mfc",
+    "https://www.idescat.cat/emex/"
+   ],
+   "distribution": [
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_secciones_2023.csv",
+     "description": "Secciones censales 2023: participación, reparto de cada 100 adultos y variables sociodemográficas",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_municipios.csv",
+     "description": "Municipios: participación y reparto de cada 100 adultos",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_municipios.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "evolucion_secciones.csv",
+     "description": "Participación por sección en doce elecciones, 2015-2024",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/evolucion_secciones.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_secciones_historico_congreso.csv",
+     "description": "Histórico del Congreso por sección (formato largo), 2015-2023",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_historico_congreso.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "catalunya_secciones_2023.geojson",
+     "description": "Contornos de las secciones censales de 2023 con todas las variables",
+     "encodingFormat": "application/geo+json",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.geojson"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "girona_secciones_2023.csv",
+     "description": "Secciones de la provincia de Girona",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/girona_secciones_2023.csv"
+    },
+    {
+     "@type": "DataDownload",
+     "name": "girona_municipios.csv",
+     "description": "Municipios de la provincia de Girona",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://nachotronic.github.io/abstencio-catalunya/data/girona_municipios.csv"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- /seo -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>

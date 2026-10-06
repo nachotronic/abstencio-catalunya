@@ -1,0 +1,79 @@
+# ¿Quién no vota en Cataluña? / Qui no vota a Catalunya?
+
+> De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. Mapa de las 5.115 secciones censales cruzado con renta, estudios, paro, edad y población extranjera, de 2015 a 2024.
+
+Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [Nacho](https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html). Publicada el 2026-10-05; actualizada el 2026-10-06. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
+
+## Cifras clave
+
+- Cataluña, 23 de julio de 2023: de cada 100 adultos residentes, 54 votaron, 17 no tenían derecho a voto y 29 podían votar y no lo hicieron.
+- Participación oficial: 65% en el Congreso 2023, 56% en las municipales 2023 y 58% en el Parlament 2024.
+- Salt: 34 de cada 100 adultos votaron y 39 no podían votar, el valor más bajo entre los municipios catalanes de más de 20.000 habitantes.
+- La sección con menos participación de Cataluña está en Figueres: un 22%.
+- Diferencia de participación entre el decil de secciones más rico y el más pobre: 18 puntos en el Congreso 2023, 19 en las municipales 2023 y 24 en el Parlament 2024.
+- Un modelo con renta, edad, estudios, paro, población extranjera y vivienda explica el 72% de las diferencias de participación entre secciones. Los estudios son la variable que más pesa, seguida del paro.
+
+## Preguntas frecuentes
+
+### ¿Cuántos adultos no votaron en Cataluña en las generales de 2023?
+
+De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 29 podían votar y no lo hicieron y otros 17 no tenían derecho a voto por no tener la nacionalidad española; votaron 54.
+
+### ¿Dónde se vota menos en Cataluña?
+
+La sección censal con menos participación de Cataluña está en Figueres, con un 22% en el Congreso de 2023, y entre los municipios de más de 20.000 habitantes Salt es donde menos adultos votan: 34 de cada 100.
+
+### ¿Por qué votan tan poco Salt y Lloret de Mar?
+
+Porque se suman dos cosas: muchos adultos sin derecho a voto (39 de cada 100 en Salt y 38 en Lloret) y una abstención alta entre quienes sí pueden votar, que en Salt deja la participación en el 55%, diez puntos por debajo de la media catalana.
+
+### ¿Votan menos los barrios pobres?
+
+Sí: el 10% de secciones más ricas votó 18 puntos más que el 10% más pobre en el Congreso de 2023, 19 puntos más en las municipales de 2023 y 24 más en el Parlament de 2024.
+
+### ¿Qué explica más la abstención: la renta, la inmigración o los estudios?
+
+Los estudios, seguidos del paro: un modelo con todas las variables explica el 72% de las diferencias entre secciones, y con esas dos dentro la renta deja de sumar.
+
+### ¿En qué elecciones se vota menos en Cataluña?
+
+En las municipales (56% en 2023) y en el Parlament (58% en 2024), frente al 65% del Congreso de 2023; solo los 589 municipios de menos de 2.000 habitantes votan más al ayuntamiento (69% frente a 67%).
+
+### ¿Por qué bajó la participación en las generales de 2023?
+
+Cayó 6,7 puntos respecto a noviembre de 2019, y más donde el independentismo era fuerte: 9 puntos en el cuarto de secciones más independentista frente a 6 en el menos.
+
+### ¿Pueden votar los extranjeros en Cataluña?
+
+Solo en las municipales, y solo los ciudadanos de la UE y de países con convenio inscritos en el censo; en 2023 eran unos 68.000 europeos, lo que reduce los adultos sin derecho a voto únicamente del 17% al 16%.
+
+## Páginas
+
+- [Pieza en castellano](https://nachotronic.github.io/abstencio-catalunya/index.html): texto completo con mapa 3D y gráficos.
+- [Peça en català](https://nachotronic.github.io/abstencio-catalunya/ca.html): el mismo texto en catalán.
+- [Metodología y datos](https://nachotronic.github.io/abstencio-catalunya/metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
+- [Metodologia i dades](https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html): la misma página en catalán.
+- [Mapa interactivo 2D](https://nachotronic.github.io/abstencio-catalunya/mapa.html)
+- [Sobre el autor](https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html)
+
+## Datos (CSV y GeoJSON)
+
+- [catalunya_secciones_2023.csv](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.csv): Secciones censales 2023: participación, reparto de cada 100 adultos y variables sociodemográficas
+- [catalunya_municipios.csv](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_municipios.csv): Municipios: participación y reparto de cada 100 adultos
+- [evolucion_secciones.csv](https://nachotronic.github.io/abstencio-catalunya/data/evolucion_secciones.csv): Participación por sección en doce elecciones, 2015-2024
+- [catalunya_secciones_historico_congreso.csv](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_historico_congreso.csv): Histórico del Congreso por sección (formato largo), 2015-2023
+- [catalunya_secciones_2023.geojson](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.geojson): Contornos de las secciones censales de 2023 con todas las variables
+- [girona_secciones_2023.csv](https://nachotronic.github.io/abstencio-catalunya/data/girona_secciones_2023.csv): Secciones de la provincia de Girona
+- [girona_municipios.csv](https://nachotronic.github.io/abstencio-catalunya/data/girona_municipios.csv): Municipios de la provincia de Girona
+
+## Fuentes
+
+- [Ministerio del Interior: resultados por mesa del Congreso 2015-2023 (vía pollspain)](https://github.com/dadosdelaplace/pollspain)
+- [INE: Atlas de Distribución de Renta de los Hogares 2023 (vía ineAtlas.data)](https://github.com/pablogguz/ineAtlas.data)
+- [INE: Censo de Población y Viviendas 2021](https://www.ine.es/censos2021/)
+- [Generalitat de Catalunya: participación por sección censal 2015-2024 (Transparència Catalunya, irrv-2mfc)](https://analisi.transparenciacatalunya.cat/d/irrv-2mfc)
+- [Idescat: EMEX](https://www.idescat.cat/emex/)
+
+## Optional
+
+- [Código fuente](https://github.com/nachotronic/abstencio-catalunya)

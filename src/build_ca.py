@@ -16,7 +16,7 @@ START, END = '<div class="wide">\n<header class="col">', '<script src="https://u
 # (castellano, catalán, cuántas veces aparece). En cadenas JS entre comillas simples el apóstrofo va escapado.
 JS = [
     ('<html lang="es">', '<html lang="ca">', 1),
-    ('<title>Abstención en 3D</title>', '<title>Abstenció en 3D</title>', 1),
+    ('<title>¿Quién no vota en Cataluña? Abstención por sección censal</title>', '<title>Qui no vota a Catalunya? Abstenció per secció censal</title>', 1),
     ("toLocaleString('es-ES')", "toLocaleString('ca-ES')", 3),
     ("localeCompare(b,'es')", "localeCompare(b,'ca')", 1),
     ('aria-label="votó ${pct(v)}, sin derecho ${pct(n)}, no votó ${pct(a)}"', 'aria-label="va votar ${pct(v)}, sense dret ${pct(n)}, no va votar ${pct(a)}"', 1),

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/index.html</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/index.html"/>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/ca.html</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/index.html"/>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/metodologia.html</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html"/>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/metodologia.html"/>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/mapa.html</loc><lastmod>2026-10-06</lastmod><priority>0.5</priority>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi-ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html"/>
+  </url>
+  <url><loc>https://nachotronic.github.io/abstencio-catalunya/sobre-mi-ca.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi-ca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html"/>
+  </url>
+</urlset>
