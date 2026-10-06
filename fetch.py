@@ -11,42 +11,35 @@ def api(base, **p):
     p.update(format='json', formatversion=2)
     return json.loads(get(base + '?' + urllib.parse.urlencode(p)))
 PLACES = {
- 'costa-brava': ('Costa Brava', 'Costa Brava cala'),
- 'salou': ('Salou', 'Salou platja'),
- 'guissona': ('Guissona', 'Guissona'),
- 'vic': ('Vic', 'Vic plaça Major'),
- 'salt': ('Salt', 'Salt Gironès'),
- 'area-barcelona': ('Àrea metropolitana de Barcelona', 'Barcelona skyline'),
- 'lloret': ('Lloret de Mar', 'Lloret de Mar'),
- 'figueres': ('Figueres', 'Figueres'),
- 'roses': ('Roses', 'Roses Alt Empordà'),
- 'castello': ("Castelló d'Empúries", "Castelló d'Empúries"),
- 'ciutat-vella': ('Ciutat Vella (Barcelona)', 'Raval Barcelona'),
- 'nou-barris': ('Nou Barris', 'Nou Barris'),
- 'sant-adria': ('Sant Adrià de Besòs', 'Sant Adrià de Besòs'),
- 'badalona': ('Badalona', 'Badalona'),
- 'santa-coloma': ('Santa Coloma de Gramenet', 'Santa Coloma de Gramenet'),
+ 'costa-brava': ['Costa Brava beach people', 'Platja Tossa de Mar people', "Platja d'Aro beach summer"],
+ 'salou': ['Salou beach people', 'Salou passeig people', 'Salou platja Llevant'],
+ 'guissona': ['Guissona', 'Guissona fira', 'Guissona festa'],
+ 'vic': ['Vic mercat plaça Major', 'Vic market people', 'Mercat de Vic'],
+ 'salt': ['Salt Gironès carrer', 'Salt Girona mercat', 'Salt festa major', 'Salt Gironès people'],
+ 'area-barcelona': ['Barcelona street people', 'Barcelona metro passengers', 'Rambla Barcelona people crowd'],
+ 'lloret': ['Lloret de Mar beach people', 'Lloret de Mar street', 'Lloret de Mar platja estiu'],
+ 'figueres': ['Figueres Rambla people', 'Figueres mercat', 'Figueres fira'],
+ 'roses': ['Roses platja people', 'Roses beach Catalonia people', 'Roses passeig marítim'],
+ 'castello': ["Castelló d'Empúries fira", "Empuriabrava people", "Castelló d'Empúries festa"],
+ 'ciutat-vella': ['Raval Barcelona street people', 'Rambla del Raval people', 'Barceloneta people', 'Mercat Sant Antoni people'],
+ 'nou-barris': ['Nou Barris people', 'Nou Barris festa', 'Via Júlia Barcelona'],
+ 'sant-adria': ['Sant Adrià de Besòs La Mina', 'Sant Adrià de Besòs festa', 'Sant Adrià de Besòs platja'],
+ 'badalona': ['Badalona platja people', 'Badalona Rambla people', 'Badalona Sant Roc', 'Badalona festa'],
+ 'santa-coloma': ['Santa Coloma de Gramenet people', 'Santa Coloma de Gramenet festa', 'Santa Coloma de Gramenet Rambla', 'Santa Coloma de Gramenet mercat'],
 }
 out = {}
-for slug, (title, q) in PLACES.items():
+for slug, qs in PLACES.items():
     files = []
-    for wiki in ('ca', 'es'):
+    for q in qs:
         try:
-            r = api(f'https://{wiki}.wikipedia.org/w/api.php', action='query', prop='pageimages|images', piprop='name', titles=title, redirects=1, imlimit=40)
-            pg = r['query']['pages'][0]
-            if pg.get('pageimage'): files.append('File:' + pg['pageimage'])
-            files += [i['title'] for i in pg.get('images', [])]
-        except Exception as e: print('wiki', slug, e)
-    try:
-        r = api('https://commons.wikimedia.org/w/api.php', action='query', list='search', srsearch=q + ' filetype:bitmap', srnamespace=6, srlimit=12)
-        files += [s['title'] for s in r['query']['search']]
-    except Exception as e: print('search', slug, e)
+            r = api('https://commons.wikimedia.org/w/api.php', action='query', list='search', srsearch=q + ' filetype:bitmap', srnamespace=6, srlimit=10)
+            files += [s['title'] for s in r['query']['search']]
+        except Exception as e: print('search', slug, e)
     seen = []
     for f in files:
-        f = re.sub(r'^(Fitxer|Archivo|Imatge|Imagen):', 'File:', f)
-        if f not in seen and re.search(r'\.(jpe?g|png)$', f, re.I) and not re.search(r'escut|escudo|bandera|flag|coat|logo|mapa|map|locator|situaci|plano|signature|firma|\.svg', f, re.I):
+        if f not in seen and re.search(r'\.(jpe?g)$', f, re.I) and not re.search(r'escut|escudo|bandera|flag|coat|logo|mapa|map|locator|situaci|plano|signature|firma', f, re.I):
             seen.append(f)
-    seen = seen[:14]
+    seen = seen[:24]
     cands = []
     for i in range(0, len(seen), 10):
         r = api('https://commons.wikimedia.org/w/api.php', action='query', titles='|'.join(seen[i:i+10]), prop='imageinfo', iiprop='url|size|extmetadata', iiurlwidth=960)
@@ -57,13 +50,13 @@ for slug, (title, q) in PLACES.items():
             v = lambda k: re.sub('<[^>]+>', '', m.get(k, {}).get('value', '')).strip()
             cands.append(dict(file=pg['title'], page=ii['descriptionurl'], thumb=ii['thumburl'], w=ii['width'], h=ii['height'],
                               artist=v('Artist'), license=v('LicenseShortName'), license_url=v('LicenseUrl'), desc=v('ImageDescription')[:200]))
-    os.makedirs(f'cand/{slug}', exist_ok=True)
+    os.makedirs(f'cand2/{slug}', exist_ok=True)
     keep = []
-    for k, c in enumerate(cands[:10]):
+    for k, c in enumerate(cands[:16]):
         b = get(c['thumb'])
         if b:
-            c['local'] = f'cand/{slug}/{k:02d}.jpg'; open(c['local'], 'wb').write(b); keep.append(c)
+            c['local'] = f'cand2/{slug}/{k:02d}.jpg'; open(c['local'], 'wb').write(b); keep.append(c)
         time.sleep(0.3)
     out[slug] = keep
     print(slug, len(keep))
-json.dump(out, open('cand/candidates.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(out, open('cand2/candidates.json', 'w'), ensure_ascii=False, indent=1)
