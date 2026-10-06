@@ -28,7 +28,7 @@ AUTHOR_BIO = {
           'Ha rebut els premis Carles Rahola, Tiflos, Injuve i el Premi Nacional de Periodisme Placeat pel reportatge «Sólo el drag les hace libres».',
 }
 AUTHOR_JOB = {'es': 'Periodista de datos', 'ca': 'Periodista de dades'}          # p. ej. «Periodista de datos»; vacío = no se muestra
-AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES'), ('LinkedIn', 'https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/'), ('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
+AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES'), ('LinkedIn', 'https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/'), ('X', 'https://x.com/nachotronic'), ('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
 AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',
           'sameAs': [u for _, u in AUTHOR_LINKS]}
