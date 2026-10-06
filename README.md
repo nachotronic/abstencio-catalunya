@@ -25,6 +25,8 @@ La participación oficial (votos / censo) solo mide el último grupo.
 
 - Resultados por mesa del Congreso 2015, 2016, abril y noviembre de 2019 y julio de 2023 (Ministerio del Interior), vía [pollspaindata](https://github.com/dadosdelaplace/pollspaindata). Sin voto CERA.
 - Atlas de Distribución de Renta de los Hogares 2023 y Censo de Población y Viviendas 2021 del INE, por sección, vía [ineAtlas.data](https://github.com/pablogguz/ineAtlas.data), incluidos los contornos de las secciones de 2023.
+- Participación por sección en las municipales de 2023 y el Parlament de 2024 (Departament de Polítiques Digitals), vía [Transparència Catalunya](https://analisi.transparenciacatalunya.cat) (dataset `irrv-2mfc`).
+- Contraste con [Idescat](https://www.idescat.cat/emex/) (EMEX): la renta y la población extranjera del INE correlacionan 0,94 por municipio con las de Idescat, y las conclusiones no cambian con una fuente u otra. Se usa el INE porque Idescat no las da por sección.
 
 ## Columnas principales (`data/catalunya_secciones_2023.csv`)
 
