@@ -38,7 +38,7 @@ def piezas(C):
     e23 = C['escanos_2023_con_cera']
     cad, mad = z['11'], z['28']
     out.append(dict(
-        slug='cadiz-madrid-29n', serie='bisagras', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='cadiz-madrid-29n', serie='bisagras', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo='Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE',
         pregunta='¿Qué habría cambiado en 2023 con el reparto de escaños que se aplica el 29 de noviembre de 2026?',
         resumen=(f'Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). '
@@ -85,7 +85,7 @@ def piezas(C):
     mg = C['margenes']
     pos_madrid = next(i for i, f in enumerate(mg) if f['provincia'] == 'Madrid') + 1
     out.append(dict(
-        slug='madrid-voto-exterior', serie='bisagras', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='madrid-voto-exterior', serie='bisagras', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo='El último escaño de Madrid en 2023 lo decidió el voto desde el extranjero',
         pregunta='¿Cuántos votos separaron el último escaño de Madrid el 23J?',
         resumen=(f'Con los votos emitidos en España, el último escaño de Madrid era del PSOE: al PP le faltaban {N(md["faltaban_pp_sin_cera"])} votos. '
@@ -127,7 +127,7 @@ def piezas(C):
     seis = mg[:C['margenes_menos_1500']]
     junts = [f for f in seis if f['ultimo_escano'] == 'Junts']
     out.append(dict(
-        slug='escanos-ajustados-2023', serie='bisagras', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='escanos-ajustados-2023', serie='bisagras', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo=f'{C["margenes_menos_1500"]} escaños del 23J se decidieron por menos de 1.500 votos; en Girona bastaban {N(mg[0]["votos_que_faltaban"])}',
         pregunta='¿En qué provincias el último escaño estuvo a punto de cambiar de manos?',
         resumen=(f'En {C["margenes_menos_1500"]} de las 52 circunscripciones, a la lista que se quedó sin el último escaño le faltaron menos de 1.500 votos para lograrlo. '
@@ -171,7 +171,7 @@ def piezas(C):
     norte = ['Ourense', 'Soria', 'Ávila', 'Lugo', 'Palencia', 'Zamora', 'A Coruña']
     lista = lambda ns, k: ', '.join(f'{n} ({S(cc[n][k])})' for n in ns)
     out.append(dict(
-        slug='capitales-frente-a-su-provincia', serie='ciudad-y-entorno', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='capitales-frente-a-su-provincia', serie='ciudad-y-entorno', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo=f'La capital no es la isla progresista de su provincia: en {C["capitales_resumen"]["mas_pp"]} de 50 vota más al PP que el resto',
         pregunta='¿Votan las capitales de provincia más a la izquierda que su entorno?',
         resumen=(f'No en la mayoría de España. El 23J, la capital dio al PP un porcentaje mayor que el resto de su provincia en {C["capitales_resumen"]["mas_pp"]} de 50 casos, '
@@ -223,7 +223,7 @@ def piezas(C):
     caida = {r['municipio']: r['izq_2004'] - r['izq_2023'] for r in sur6}
     rng = lambda xs, d=1: (num(min(xs), d), num(max(xs), d))
     out.append(dict(
-        slug='sur-de-madrid', serie='contra-su-provincia', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='sur-de-madrid', serie='contra-su-provincia', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo=f'El PSOE ganó en cuatro grandes ciudades del sur de Madrid mientras el PP ganaba la provincia por {N(ms["prov_pp"] - ms["prov_psoe"])} puntos',
         pregunta='¿Dónde resiste el PSOE en la provincia donde más gana el PP, y por cuánto?',
         resumen=(f'El PP ganó la provincia de Madrid el 23J con el {P(ms["prov_pp"])} frente al {P(ms["prov_psoe"])} del PSOE. '
@@ -270,7 +270,7 @@ def piezas(C):
     il, vi, br = ar['illa'], ar['vilanova'], ar['brechas']
     e_min, e_max = min(br, key=br.get), max(br, key=br.get)
     out.append(dict(
-        slug='a-illa-vilanova-de-arousa', serie='fronteras', fecha_datos='2004-2023', revisado=None,
+        slug='a-illa-vilanova-de-arousa', serie='fronteras', fecha_datos='2004-2023', revisado='2026-10-06',
         titulo=f'A Illa de Arousa vota {N(br["2023_07"])} puntos menos al PP que Vilanova, al otro lado del puente, y así desde hace veinte años',
         pregunta='¿Por qué dos municipios vecinos con la misma renta y la misma edad votan tan distinto?',
         resumen=(f'El 23J de 2023, el PP sacó el {P(il["pp"]["2023_07"])} en A Illa de Arousa y el {P(vi["pp"]["2023_07"])} en Vilanova de Arousa, '
@@ -313,7 +313,7 @@ def piezas(C):
     # ------------------------------------------------------------------ gemelos: Cabra y Montilla
     cb, mo = C['cabra_montilla']['cabra'], C['cabra_montilla']['montilla']
     out.append(dict(
-        slug='cabra-montilla', serie='gemelos', fecha_datos='2004-2023', revisado=None,
+        slug='cabra-montilla', serie='gemelos', fecha_datos='2004-2023', revisado='2026-10-06',
         titulo=f'En 2004 Cabra y Montilla votaban igual; en 2023 las separaban {N(cb["der"]["2023_07"] - mo["der"]["2023_07"])} puntos de voto a la derecha',
         pregunta='¿Cuándo y cómo empezaron a votar distinto dos ciudades cordobesas con el mismo perfil?',
         resumen=(f'Cabra y Montilla, en el sur de Córdoba, tienen casi la misma renta ({N(cb["renta"])} y {N(mo["renta"])} euros), la misma edad media y el mismo paro. '
@@ -359,7 +359,7 @@ def piezas(C):
     rk = C['ranking_residuo_derecha_10k']
     dist = {e: pr['izq_serie'][e] - pr['izq_prov_serie'][e] for e in CONG}
     out.append(dict(
-        slug='puerto-real', serie='excepciones', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='puerto-real', serie='excepciones', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo=f'Puerto Real vota {N(abs(pr["diferencia"]))} puntos menos a la derecha de lo que predicen sus datos: la mayor excepción de España',
         pregunta='¿Qué municipio se aparta más de lo que su perfil social haría esperar?',
         resumen=(f'Por su renta, edad, paro, estudios, extranjeros y tamaño, a Puerto Real (Cádiz) le correspondería dar a PP, Vox y Cs alrededor del {P(pr["previsto"])} del voto. '
@@ -403,7 +403,7 @@ def piezas(C):
     bd = C['badalona']
     gap = {a: bd[m]['PP'] - bd[g]['PP'] for a, m, g in (('2015', 'M2015', '2015_12'), ('2019', 'M2019', '2019_11'), ('2023', 'M2023', '2023_07'))}
     out.append(dict(
-        slug='badalona', serie='voto-doble', fecha_datos='mayo y julio de 2023', revisado=None,
+        slug='badalona', serie='voto-doble', fecha_datos='mayo y julio de 2023', revisado='2026-10-06',
         titulo=f'Badalona dio al PP el {N(bd["M2023"]["PP"])} % en mayo y el {N(bd["2023_07"]["PP"])} % en julio: la mayor distancia de España entre voto local y estatal',
         pregunta='¿Dónde se separa más el voto a un mismo partido entre las municipales y las generales?',
         resumen=(f'En las municipales del 28 de mayo de 2023, el PP sacó en Badalona el {P(bd["M2023"]["PP"])} del voto válido. '
@@ -449,7 +449,7 @@ def piezas(C):
     dr, dp = pa['deciles_renta_uc'], pa['deciles_paro_2021']
     ct = pa.get('cataluna')
     out.append(dict(
-        slug='paro-renta-participacion', serie='quien-no-vota', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='paro-renta-participacion', serie='quien-no-vota', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo='A igual renta, los barrios con más paro votan menos: el desempleo pesa más que el dinero en la abstención',
         pregunta='¿Es la pobreza o el desempleo lo que más se asocia a no votar?',
         resumen=(f'En las {N(pa["n_secciones"])} secciones censales de España, la participación del 23J sube con la renta: del {P(dr[0]["part"])} en el 10 % de secciones más pobres al {P(dr[-1]["part"])} en el 10 % más rico. '
