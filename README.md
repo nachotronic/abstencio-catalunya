@@ -3,6 +3,7 @@
 Abstención en las elecciones generales (2015–2023) por sección censal en Cataluña, cruzada con renta, edad, estudios, paro y población extranjera.
 
 - `index.html`: pieza de scroll con mapa 3D (deck.gl + scrollama). La cámara avanza con el scroll y recorre los lugares que nombra el texto; termina en un mapa plano para explorar.
+- `ca.html`: la misma pieza en catalán, con selector ES/CA arriba. Se genera desde `index.html` con `python3 src/build_ca.py` (el texto catalán está en `src/i18n/ca_body.html`; si cambia el texto castellano, el script avisa hasta que se actualice la traducción y se ejecute con `--accept`).
 - `mapa.html`: mapa interactivo en 2D con los gráficos y la metodología.
 - `data/`: datos limpios por sección y municipio (CSV y GeoJSON).
 - `src/`: scripts en Python y plantillas con los que se han generado los datos y las páginas.

@@ -135,6 +135,10 @@ footer{margin-top:40px}
 .place:hover,.place:focus-visible{color:var(--accent)}
 .place.now{background:var(--accent);color:var(--bg);border-bottom-color:transparent;box-shadow:0 0 0 3px var(--accent)}
 .scrollhint{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.lang{display:flex;justify-content:flex-end;gap:6px;margin-bottom:14px;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.lang a{padding:4px 10px;border:1px solid var(--rule);border-radius:4px;color:var(--muted);text-decoration:none}
+.lang a:hover{color:var(--fg);border-color:var(--muted)}
+.lang a[aria-current]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 @media (max-width:760px){
   .step{align-items:flex-end;padding-bottom:12vh}
   .step.tall .card{top:50vh;top:50svh;margin-top:50vh;max-height:46vh;max-height:46svh;overflow:auto}
@@ -147,6 +151,7 @@ footer{margin-top:40px}
 </style>
 <div class="wide">
 <header class="col">
+  <nav class="lang" aria-label="Idioma"><a href="index.html" hreflang="es" lang="es" aria-current="page">ES</a><a href="ca.html" hreflang="ca" lang="ca">CA</a></nav>
   <div class="kicker">Cataluña · elecciones generales 2015–2023 · 5.115 secciones censales</div>
   <h1>¿Quién no vota en Cataluña?</h1>
   <p class="lede">El 23 de julio de 2023, de cada 100 adultos que vivían en Cataluña, <span class="c-vote num" id="l-vote"></span> votaron. Otros <span class="c-no num" id="l-no"></span> no podían hacerlo porque no tienen la nacionalidad española. Y <span class="c-abst num" id="l-abst"></span> podían votar y no lo hicieron. Las notas de participación solo cuentan el último grupo. Este mapa separa los tres, sección a sección, y los cruza con la renta, la edad, los estudios y la población extranjera.</p>
