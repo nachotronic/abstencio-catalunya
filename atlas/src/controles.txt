@@ -1,4 +1,4 @@
-Controles del Atlas: 96 de 96 superados
+Controles del Atlas: 142 de 142 superados
 
 OK   8.131 municipios en la base
 OK   D'Hondt con CERA reproduce los 350 escaños oficiales de 2023
@@ -30,6 +30,42 @@ OK   Sur de Madrid: Getafe lo gana el PSOE
 OK   Sur de Madrid: Móstoles lo gana el PP
 OK   Sur de Madrid: Alcorcón lo gana el PP
 OK   Madrid provincia: PP por delante del PSOE
+OK   Escaños ajustados: los seis primeros son Girona, Cantabria, Tarragona, Madrid, Albacete y Salamanca
+OK   Escaños ajustados: Junts tiene el último escaño en Girona y Tarragona
+OK   Escaños ajustados: en Girona y Cantabria aspira el PP; en Madrid y Salamanca, el PSOE frente al PP
+OK   Madrid es el cuarto margen más estrecho
+OK   Cádiz 2026: empate PP-PSOE
+OK   Madrid: el CERA del PP es casi el doble que el del PSOE (entre 1,7 y 2)
+OK   Sur de Madrid: la izquierda superaba el 60 % en 2004 en las cuatro
+OK   Sur de Madrid: en 2023 la izquierda estaba entre el 52 y el 54 % en las cuatro
+OK   Móstoles y Alcorcón: derecha por encima de la izquierda
+OK   Parla: mayor caída de la izquierda y la más alta en 2004
+OK   Noroeste de Madrid: derecha por encima del 70 %
+OK   Arousa illa: mejor año del PP 2011 y peor abril de 2019
+OK   Arousa vilanova: mejor año del PP 2011 y peor abril de 2019
+OK   A Illa: menos paro y menos extranjeros que Vilanova
+OK   A Illa: el PSOE fue primero en 2023 y el BNG duplica al de Vilanova
+OK   Cabra: Vox en noviembre de 2019 en torno a uno de cada cuatro votos (23-27 %)
+OK   Cabra gana el PP y Montilla el PSOE en 2023
+OK   Ourense: la capital vota menos al PP
+OK   Soria: la capital vota menos al PP
+OK   Ávila: la capital vota menos al PP
+OK   Lugo: la capital vota menos al PP
+OK   Palencia: la capital vota menos al PP
+OK   Zamora: la capital vota menos al PP
+OK   A Coruña: la capital vota menos al PP
+OK   Ávila: menos PP y menos PSOE en la capital
+OK   Vitoria y Lleida: más PP y más PSOE en la capital
+OK   Málaga, Cádiz, Almería y Huelva: menos de 1,5 puntos de diferencia
+OK   Madrid, Barcelona y València: algo más de PP que su provincia (0-5 puntos)
+OK   Sevilla: más PP y menos PSOE que su provincia
+OK   Cáceres: más PP y menos PSOE que su provincia
+OK   Jaén: más PP y menos PSOE que su provincia
+OK   Badalona julio: PP por delante de Sumar
+OK   Badalona: la brecha PP municipales-generales crece en cada ciclo
+OK   Paro: la diferencia por paro se encoge del quintil 1 al 4
+OK   Cataluña: el paro pesa casi el doble en municipales y Parlament que en generales (1,7-2,1 veces)
+OK   Cataluña: la renta, una vez controlado lo demás, por debajo de 1 punto en las tres
 OK   Puerto Real es la mayor excepción a la baja (≥10.000 hab.)
 OK   Puerto Real: diferencia = real − previsto
 OK   Puerto Real: el PSOE ganó allí y el PP en la provincia
@@ -47,42 +83,52 @@ OK   cadiz-madrid-29n: campos completos
 OK   cadiz-madrid-29n: serie existe
 OK   cadiz-madrid-29n: CSV existe
 OK   cadiz-madrid-29n: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cadiz-madrid-29n: sin revisar → noindex
 OK   madrid-voto-exterior: campos completos
 OK   madrid-voto-exterior: serie existe
 OK   madrid-voto-exterior: CSV existe
 OK   madrid-voto-exterior: sin lenguaje causal en titular, resumen, datos y patrones
+OK   madrid-voto-exterior: sin revisar → noindex
 OK   escanos-ajustados-2023: campos completos
 OK   escanos-ajustados-2023: serie existe
 OK   escanos-ajustados-2023: CSV existe
 OK   escanos-ajustados-2023: sin lenguaje causal en titular, resumen, datos y patrones
+OK   escanos-ajustados-2023: sin revisar → noindex
 OK   capitales-frente-a-su-provincia: campos completos
 OK   capitales-frente-a-su-provincia: serie existe
 OK   capitales-frente-a-su-provincia: CSV existe
 OK   capitales-frente-a-su-provincia: sin lenguaje causal en titular, resumen, datos y patrones
+OK   capitales-frente-a-su-provincia: sin revisar → noindex
 OK   sur-de-madrid: campos completos
 OK   sur-de-madrid: serie existe
 OK   sur-de-madrid: CSV existe
 OK   sur-de-madrid: sin lenguaje causal en titular, resumen, datos y patrones
+OK   sur-de-madrid: sin revisar → noindex
 OK   a-illa-vilanova-de-arousa: campos completos
 OK   a-illa-vilanova-de-arousa: serie existe
 OK   a-illa-vilanova-de-arousa: CSV existe
 OK   a-illa-vilanova-de-arousa: sin lenguaje causal en titular, resumen, datos y patrones
+OK   a-illa-vilanova-de-arousa: sin revisar → noindex
 OK   cabra-montilla: campos completos
 OK   cabra-montilla: serie existe
 OK   cabra-montilla: CSV existe
 OK   cabra-montilla: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cabra-montilla: sin revisar → noindex
 OK   puerto-real: campos completos
 OK   puerto-real: serie existe
 OK   puerto-real: CSV existe
 OK   puerto-real: sin lenguaje causal en titular, resumen, datos y patrones
+OK   puerto-real: sin revisar → noindex
 OK   badalona: campos completos
 OK   badalona: serie existe
 OK   badalona: CSV existe
 OK   badalona: sin lenguaje causal en titular, resumen, datos y patrones
+OK   badalona: sin revisar → noindex
 OK   paro-renta-participacion: campos completos
 OK   paro-renta-participacion: serie existe
 OK   paro-renta-participacion: CSV existe
 OK   paro-renta-participacion: sin lenguaje causal en titular, resumen, datos y patrones
+OK   paro-renta-participacion: sin revisar → noindex
 OK   a-illa-vilanova.csv: 8 filas sin valores vacíos
 OK   badalona.csv: 6 filas sin valores vacíos
 OK   cabra-montilla.csv: 8 filas sin valores vacíos

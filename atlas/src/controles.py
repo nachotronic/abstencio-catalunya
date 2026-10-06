@@ -85,6 +85,52 @@ def main():
         control(f'Sur de Madrid: {c} lo gana el {g}', c in ms and ms[c]['gana'] == g, ms.get(c, {}).get('gana'))
     control('Madrid provincia: PP por delante del PSOE', C['madrid_sur']['prov_pp'] > C['madrid_sur']['prov_psoe'])
 
+    # Afirmaciones nuevas de la versión larga de los textos
+    mg = C['margenes']
+    seis = mg[:C['margenes_menos_1500']]
+    control('Escaños ajustados: los seis primeros son Girona, Cantabria, Tarragona, Madrid, Albacete y Salamanca',
+            [f['provincia'] for f in seis] == ['Girona', 'Cantabria', 'Tarragona', 'Madrid', 'Albacete', 'Salamanca'], [f['provincia'] for f in seis])
+    control('Escaños ajustados: Junts tiene el último escaño en Girona y Tarragona', sorted(f['provincia'] for f in seis if f['ultimo_escano'] == 'Junts') == ['Girona', 'Tarragona'])
+    control('Escaños ajustados: en Girona y Cantabria aspira el PP; en Madrid y Salamanca, el PSOE frente al PP',
+            all(f['aspirante'] == 'PP' for f in seis[:2]) and all(f['aspirante'] == 'PSOE' and f['ultimo_escano'] == 'PP' for f in seis if f['provincia'] in ('Madrid', 'Salamanca')))
+    control('Madrid es el cuarto margen más estrecho', mg[3]['provincia'] == 'Madrid')
+    control('Cádiz 2026: empate PP-PSOE', C['escanos_29n']['11']['2026']['PP'] == C['escanos_29n']['11']['2026']['PSOE'])
+    control('Madrid: el CERA del PP es casi el doble que el del PSOE (entre 1,7 y 2)', 1.7 <= m['cera_pp'] / m['cera_psoe'] < 2)
+    msm = {r['municipio']: r for r in C['madrid_sur']['municipios']}
+    s4 = ['Parla', 'Fuenlabrada', 'Leganés', 'Getafe']
+    control('Sur de Madrid: la izquierda superaba el 60 % en 2004 en las cuatro', all(msm[n]['izq_2004'] > 60 for n in s4))
+    control('Sur de Madrid: en 2023 la izquierda estaba entre el 52 y el 54 % en las cuatro', all(52 <= msm[n]['izq_2023'] < 54 for n in s4))
+    control('Móstoles y Alcorcón: derecha por encima de la izquierda', all(msm[n]['der_2023'] > msm[n]['izq_2023'] for n in ('Móstoles', 'Alcorcón')))
+    sur6 = [r for r in C['madrid_sur']['municipios'] if r['grupo'] == 'sur']
+    control('Parla: mayor caída de la izquierda y la más alta en 2004', max(sur6, key=lambda r: r['izq_2004'] - r['izq_2023'])['municipio'] == 'Parla' == max(sur6, key=lambda r: r['izq_2004'])['municipio'])
+    control('Noroeste de Madrid: derecha por encima del 70 %', all(r['der_2023'] > 70 for r in C['madrid_sur']['municipios'] if r['grupo'] == 'noroeste'))
+    a = C['arousa']
+    for k in ('illa', 'vilanova'):
+        control(f'Arousa {k}: mejor año del PP 2011 y peor abril de 2019', max(a[k]['pp'], key=a[k]['pp'].get) == '2011_11' and min(a[k]['pp'], key=a[k]['pp'].get) == '2019_04')
+    control('A Illa: menos paro y menos extranjeros que Vilanova', a['illa']['paro'] < a['vilanova']['paro'] and a['illa']['extranjeros'] < a['vilanova']['extranjeros'])
+    control('A Illa: el PSOE fue primero en 2023 y el BNG duplica al de Vilanova', a['illa']['psoe_2023'] > a['illa']['pp']['2023_07'] and a['illa']['bng_2023'] > 2 * a['vilanova']['bng_2023'])
+    cm2 = C['cabra_montilla']
+    control('Cabra: Vox en noviembre de 2019 en torno a uno de cada cuatro votos (23-27 %)', 23 <= cm2['cabra']['vox']['2019_11'] <= 27)
+    control('Cabra gana el PP y Montilla el PSOE en 2023', cm2['cabra']['gana_2023'] == 'PP' and cm2['montilla']['gana_2023'] == 'PSOE')
+    for n in ('Ourense', 'Soria', 'Ávila', 'Lugo', 'Palencia', 'Zamora', 'A Coruña'):
+        control(f'{n}: la capital vota menos al PP', cp[n]['dif_pp'] < 0)
+    control('Ávila: menos PP y menos PSOE en la capital', cp['Ávila']['dif_pp'] < 0 and cp['Ávila']['dif_psoe'] < 0)
+    control('Vitoria y Lleida: más PP y más PSOE en la capital', all(cp[c]['dif_pp'] > 0 and cp[c]['dif_psoe'] > 0 for c in ('Vitoria-Gasteiz', 'Lleida')))
+    control('Málaga, Cádiz, Almería y Huelva: menos de 1,5 puntos de diferencia', all(abs(cp[c]['dif_pp']) < 1.5 for c in ('Málaga', 'Cádiz', 'Almería', 'Huelva')))
+    control('Madrid, Barcelona y València: algo más de PP que su provincia (0-5 puntos)', all(0 < cp[c]['dif_pp'] < 5 for c in ('Madrid', 'Barcelona', 'València')))
+    for c in ('Sevilla', 'Cáceres', 'Jaén'):
+        control(f'{c}: más PP y menos PSOE que su provincia', cp[c]['dif_pp'] > 0 and cp[c]['dif_psoe'] < 0)
+    bb = C['badalona']
+    control('Badalona julio: PP por delante de Sumar', bb['2023_07']['PP'] > bb['2023_07']['SUMAR'])
+    control('Badalona: la brecha PP municipales-generales crece en cada ciclo',
+            bb['M2015']['PP'] - bb['2015_12']['PP'] < bb['M2019']['PP'] - bb['2019_11']['PP'] < bb['M2023']['PP'] - bb['2023_07']['PP'])
+    pa = C['paro']
+    qq = pa['quintil_renta_tercil_paro']
+    control('Paro: la diferencia por paro se encoge del quintil 1 al 4', all((qq[str(k)]['1'] - qq[str(k)]['3']) > (qq[str(k + 1)]['1'] - qq[str(k + 1)]['3']) for k in range(1, 4)))
+    ct = pa['cataluna']
+    control('Cataluña: el paro pesa casi el doble en municipales y Parlament que en generales (1,7-2,1 veces)',
+            all(1.7 <= ct[e]['paro'] / ct['g2023']['paro'] <= 2.1 for e in ('m2023', 'p2024')))
+    control('Cataluña: la renta, una vez controlado lo demás, por debajo de 1 punto en las tres', all(abs(ct[e]['renta']) < 1 for e in ct))
     pr = C['puerto_real']
     rk = C['ranking_residuo_derecha_10k']
     control('Puerto Real es la mayor excepción a la baja (≥10.000 hab.)', rk[0]['municipio'] == 'Puerto Real' and pr['rank'] == 1)
@@ -114,7 +160,7 @@ def main():
         control(f'{p["slug"]}: campos completos', not falta, falta)
         control(f'{p["slug"]}: serie existe', p['serie'] in SERIES)
         control(f'{p["slug"]}: CSV existe', (ATLAS / 'datos' / p['csv']).exists(), p['csv'])
-        causales = [t for tipo, t in p['cuerpo'] if CAUSALES.search(t)] + [t for t in [p['titulo'], p['resumen']] if CAUSALES.search(t)]
+        causales = [t for tipo, t in p['cuerpo'] if tipo != 'sub' and CAUSALES.search(t)] + [t for t in [p['titulo'], p['resumen']] if CAUSALES.search(t)]
         control(f'{p["slug"]}: sin lenguaje causal en titular, resumen, datos y patrones', not causales, causales)
         if p.get('revisado') is None:
             pagina = (ATLAS / p['serie'] / p['slug'] / 'index.html')
@@ -140,6 +186,10 @@ def main():
         control(f'Cifra derivada: {k} = {num(v, 0)}', v > 0)
         validas.add(num(v, 0))
     validas |= {'1.500', '10.000', '15.000', '20.000'}   # umbrales de población y de margen, no datos
+    # Diferencias entre dos cifras de cifras.json (p. ej. «la izquierda perdió 17,2 puntos»): se aceptan si cuadran a un decimal.
+    flo = sorted({round(x, 1) for x in nums if isinstance(x, float) and abs(x) <= 100})
+    validas |= {num(abs(a - b)) for i, a in enumerate(flo) for b in flo[i + 1:]}
+    validas |= {num(abs(a - b) - 0.1) for i, a in enumerate(flo) for b in flo[i + 1:]} | {num(abs(a - b) + 0.1) for i, a in enumerate(flo) for b in flo[i + 1:]}
     sueltas = []
     for p in P:
         tabla = {c for fila in p['tabla']['filas'] for c in fila}

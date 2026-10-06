@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Con los votos de 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE</title>
+<title>Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE</title>
 <meta name="description" content="Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). Si se aplica ese reparto a los votos del 23 de julio de 2023, el PP pierde un escaño en Cádiz (de 4 a 3) y el PSOE gana uno en Madrid (de 10 a 11). Es un ejercicio aritmético, no una previsión: los votos de 2026 serán otros.">
 <meta name="author" content="Nacho">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/index.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Con los votos de 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE">
+<meta property="og:title" content="Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE">
 <meta property="og:description" content="Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). Si se aplica ese reparto a los votos del 23 de julio de 2023, el PP pierde un escaño en Cádiz (de 4 a 3) y el PSOE gana uno en Madrid (de 10 a 11). Es un ejercicio aritmético, no una previsión: los votos de 2026 serán otros.">
 <meta property="og:url" content="https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/index.html">
 <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
   {
    "@type": "NewsArticle",
    "@id": "https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/index.html#articulo",
-   "headline": "Con los votos de 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE",
+   "headline": "Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE",
    "description": "Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). Si se aplica ese reparto a los votos del 23 de julio de 2023, el PP pierde un escaño en Cádiz (de 4 a 3) y el PSOE gana uno en Madrid (de 10 a 11). Es un ejercicio aritmético, no una previsión: los votos de 2026 serán otros.",
    "url": "https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/index.html",
    "inLanguage": "es",
@@ -65,16 +65,12 @@
     "Real Decreto de disolución de las Cortes y convocatoria de elecciones para el 29 de noviembre de 2026 (BOE, 6 de octubre de 2026): escaños por provincia"
    ],
    "license": "https://creativecommons.org/licenses/by/4.0/",
-   "isAccessibleForFree": true,
-   "editor": {
-    "@type": "Person",
-    "name": "Nacho"
-   }
+   "isAccessibleForFree": true
   },
   {
    "@type": "Dataset",
    "@id": "https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/index.html#datos",
-   "name": "Datos de «Con los votos de 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE»",
+   "name": "Datos de «Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE»",
    "description": "Los votos del 23 de julio de 2023 por provincia, repartidos con la ley D'Hondt y la barrera del 3 % con 37 y 38 escaños en Madrid y con 9 y 8 en Cádiz.",
    "url": "https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/index.html",
    "license": "https://creativecommons.org/licenses/by/4.0/",
@@ -153,26 +149,32 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 .ficha dt{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
 .ficha dd{margin:2px 0 0}
 ul{padding-left:1.2rem}li{margin:.35rem 0}
-.tarjetas{list-style:none;padding:0}
-.tarjetas li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;margin:10px 0}
-.tarjetas a{font-family:var(--display);font-weight:700;font-size:1.08rem;text-decoration:none}
+.tarjetas{list-style:none;padding:0;display:grid;gap:12px}
+.tarjetas li{margin:0}
+a.tarjeta{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta:hover,a.tarjeta:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
+a.tarjeta .tt{font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--fg)}
+a.tarjeta .ent{font-size:1rem;color:var(--muted)}
+a.tarjeta .leer{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:600}
+.cuerpo h2{font-size:1.25rem;margin:2.2rem 0 .5rem}
+.cuerpo p{margin:0 0 1rem}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <main>
 <nav class="top"><a href="../../index.html">Atlas de las anomalías electorales</a><span><a href="../../metodologia/index.html">Metodología</a> · <a href="../../datos/index.html">Datos</a> · <a href="../../../generales-2026/index.html">Resultados de España</a></span></nav>
-<p class="kicker"><a href="../index.html">Bisagras</a> · Elecciones: 23 de julio de 2023</p><h1>Con los votos de 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE</h1><p class="resumen">Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). Si se aplica ese reparto a los votos del 23 de julio de 2023, el PP pierde un escaño en Cádiz (de 4 a 3) y el PSOE gana uno en Madrid (de 10 a 11). Es un ejercicio aritmético, no una previsión: los votos de 2026 serán otros.</p><p><span class="estado">Dato: verificable y reproducible</span></p><p><strong>La pregunta:</strong> ¿Qué habría cambiado en 2023 con el reparto de escaños que se aplica el 29 de noviembre de 2026?</p><h2>Lo que dicen los datos</h2><p><span class="tipo">Dato</span>El cambio de escaños entre provincias lo fija el decreto de convocatoria según la población de cada una. Para el 29N, Madrid pasa de 37 a 38 diputados y Cádiz de 9 a 8; el resto de provincias no cambia.</p><p><span class="tipo">Dato</span>Con los votos de 2023 (incluido el voto de los residentes en el extranjero, CERA), Cádiz repartió sus 9 escaños así: PP 4, PSOE 3, Vox 1 y Sumar 1. Con 8 escaños, el que desaparece es el último que obtuvo el PP.</p><p><span class="tipo">Dato</span>En Madrid, con 37 escaños: PP 16, PSOE 10, Sumar 6 y Vox 5. Con 38, el escaño nuevo es para el PSOE.</p><p><span class="tipo">Dato</span>El saldo, con los votos de 2023, sería de un diputado menos para el PP y uno más para el PSOE. En 2023 el PSOE se quedó a 1.340 votos del último escaño de Madrid, así que cualquier cambio de voto en 2026 puede alterar este resultado.</p><h2>Lo que no sabemos</h2><ul><li><span class="tipo">Hipótesis</span>Cómo votarán Cádiz y Madrid el 29N. Esta pieza solo aplica el nuevo reparto a votos pasados.</li></ul><h2>Los datos</h2><div class="tbl"><table><caption>Escaños con los votos del 23J de 2023: reparto real y reparto con los escaños de 2026</caption><thead><tr><th scope="col">Provincia</th><th scope="col" class="n">Partido</th><th scope="col" class="n">Escaños 2023</th><th scope="col" class="n">Con el reparto de 2026</th></tr></thead><tbody><tr><th scope="row">Cádiz</th><td>PP</td><td class="n">4</td><td class="n">3</td></tr><tr><th scope="row">Cádiz</th><td>PSOE</td><td class="n">3</td><td class="n">3</td></tr><tr><th scope="row">Cádiz</th><td>Vox</td><td class="n">1</td><td class="n">1</td></tr><tr><th scope="row">Cádiz</th><td>Sumar</td><td class="n">1</td><td class="n">1</td></tr><tr><th scope="row">Madrid</th><td>PP</td><td class="n">16</td><td class="n">16</td></tr><tr><th scope="row">Madrid</th><td>PSOE</td><td class="n">10</td><td class="n">11</td></tr><tr><th scope="row">Madrid</th><td>Vox</td><td class="n">5</td><td class="n">5</td></tr><tr><th scope="row">Madrid</th><td>Sumar</td><td class="n">6</td><td class="n">6</td></tr></tbody></table></div><p><a href="../../datos/cadiz-madrid-29n.csv">Descargar los datos en CSV</a></p><h2>Preguntas</h2><h3>¿Por qué Madrid gana un escaño y Cádiz lo pierde?</h3><p>El número de diputados de cada provincia se recalcula en cada convocatoria según su población; el decreto del 29N asigna 38 a Madrid y 8 a Cádiz.</p><h2>Método y fuentes</h2>
+<p class="kicker"><a href="../index.html">Bisagras</a> · Elecciones: 23 de julio de 2023</p><h1>Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE</h1><p class="resumen">Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). Si se aplica ese reparto a los votos del 23 de julio de 2023, el PP pierde un escaño en Cádiz (de 4 a 3) y el PSOE gana uno en Madrid (de 10 a 11). Es un ejercicio aritmético, no una previsión: los votos de 2026 serán otros.</p><p><span class="estado">Dato: verificable y reproducible</span></p><p class="aviso">Revisión pendiente: los datos y el texto de esta página aún no han pasado la comprobación manual. No se publica en buscadores hasta que se complete.</p><p><strong>La pregunta:</strong> ¿Qué habría cambiado en 2023 con el reparto de escaños que se aplica el 29 de noviembre de 2026?</p><div class="cuerpo"><p><span class="tipo">Dato</span>El Congreso seguirá teniendo 350 diputados el 29 de noviembre, pero uno de ellos cambia de provincia. El decreto de convocatoria reparte los escaños según la población de cada circunscripción, y esta vez Madrid sube de 37 a 38 y Cádiz baja de 9 a 8. Las otras 50 circunscripciones eligen los mismos diputados que en 2023.</p><p><span class="tipo">Dato</span>Un escaño que se mueve parece poca cosa, pero no es neutro: el que sale de una provincia y el que entra en otra no tienen por qué ser del mismo partido. Para saber de quién serían, basta con repetir el reparto de 2023 con los escaños nuevos y los mismos votos.</p><h2>Cádiz: de una victoria del PP a un empate</h2><p><span class="tipo">Dato</span>Con 9 escaños, Cádiz eligió en 2023 a 4 diputados del PP, 3 del PSOE, 1 de Vox y 1 de Sumar. Si esos mismos votos se reparten entre 8, el escaño que desaparece es el último que obtuvo el PP. La provincia pasaría de un 4 a 3 a favor del PP a un empate a 3 con el PSOE.</p><h2>Madrid: el escaño que el PSOE rozó</h2><p><span class="tipo">Dato</span>En Madrid ocurre lo contrario. Con 37 escaños, el reparto de 2023 fue PP 16, PSOE 10, Sumar 6 y Vox 5. El escaño número 38 va a la candidatura con el siguiente cociente más alto, que es el PSOE: pasaría a 11.</p><p><span class="tipo">Dato</span>No es casualidad aritmética. En 2023, el último escaño de Madrid se lo llevó el PP y al PSOE le faltaron 1.340 votos para quitárselo. Con un escaño más en juego, ese cociente que se quedó fuera entra.</p><h2>El saldo</h2><p><span class="tipo">Dato</span>Con los votos de 2023 y el reparto de 2026, el PP habría tenido 136 diputados en lugar de 137, y el PSOE 122 en lugar de 121. La distancia entre los dos grandes partidos se reduciría de 16 a 14 escaños, y PP y Vox juntos sumarían 169 en vez de 170.</p><p><span class="tipo">Dato</span>Todo esto es una cuenta hecha con votos del pasado. El 29N los votos serán otros, y un cambio pequeño en Madrid o en Cádiz basta para que el escaño que se mueve caiga de otro lado.</p></div><h2>Lo que no sabemos</h2><ul><li><span class="tipo">Hipótesis</span>Cómo votarán Cádiz y Madrid el 29N. Esta pieza solo aplica el nuevo reparto a votos pasados.</li></ul><h2>Los datos</h2><div class="tbl"><table><caption>Escaños con los votos del 23J de 2023: reparto real y reparto con los escaños de 2026</caption><thead><tr><th scope="col">Provincia</th><th scope="col" class="n">Partido</th><th scope="col" class="n">Escaños 2023</th><th scope="col" class="n">Con el reparto de 2026</th></tr></thead><tbody><tr><th scope="row">Cádiz</th><td>PP</td><td class="n">4</td><td class="n">3</td></tr><tr><th scope="row">Cádiz</th><td>PSOE</td><td class="n">3</td><td class="n">3</td></tr><tr><th scope="row">Cádiz</th><td>Vox</td><td class="n">1</td><td class="n">1</td></tr><tr><th scope="row">Cádiz</th><td>Sumar</td><td class="n">1</td><td class="n">1</td></tr><tr><th scope="row">Madrid</th><td>PP</td><td class="n">16</td><td class="n">16</td></tr><tr><th scope="row">Madrid</th><td>PSOE</td><td class="n">10</td><td class="n">11</td></tr><tr><th scope="row">Madrid</th><td>Vox</td><td class="n">5</td><td class="n">5</td></tr><tr><th scope="row">Madrid</th><td>Sumar</td><td class="n">6</td><td class="n">6</td></tr></tbody></table></div><p><a href="../../datos/cadiz-madrid-29n.csv">Descargar los datos en CSV</a></p><h2>Preguntas</h2><h3>¿Por qué Madrid gana un escaño y Cádiz lo pierde?</h3><p>El número de diputados de cada provincia se recalcula en cada convocatoria según su población; el decreto del 29N asigna 38 a Madrid y 8 a Cádiz.</p><h2>Método y fuentes</h2>
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>Los votos del 23 de julio de 2023 por provincia, repartidos con la ley D&#x27;Hondt y la barrera del 3 % con 37 y 38 escaños en Madrid y con 9 y 8 en Cádiz.</dd>
 <dt>Límites</dt><dd>Usa los votos de 2023, incluido el CERA. El reparto recalculado con estos datos reproduce los 350 escaños oficiales de 2023. No anticipa el resultado de 2026.</dd>
 <dt>Metodología completa</dt><dd><a href="../../metodologia/index.html">Cómo se calculan los porcentajes, el modelo, los gemelos y los escaños</a></dd>
 <dt>Fuentes</dt><dd><ul><li><a href="https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/">Ministerio del Interior, resultados electorales por mesa (Infoelectoral). Congreso 2004-2023 vía pollspaindata, commit ee5ecda; municipales 2007-2023 de los ficheros de Infoelectoral</a></li><li>Real Decreto de disolución de las Cortes y convocatoria de elecciones para el 29 de noviembre de 2026 (BOE, 6 de octubre de 2026): escaños por provincia</li></ul></dd>
 <dt>Autoría</dt><dd>Nacho</dd>
-<dt>Revisión de datos y texto</dt><dd>Nacho, 2026-10-06</dd>
+<dt>Revisión de datos y texto</dt><dd>Pendiente</dd>
 <dt>Publicado · actualizado</dt><dd>2026-10-06 · 2026-10-06</dd>
 <dt>Correcciones</dt><dd>Ninguna. <a href="../../correcciones/index.html">Historial del Atlas</a></dd>
-</dl><h2>En esta serie</h2><ul><li><a href="../madrid-voto-exterior/index.html">El último escaño de Madrid en 2023 lo decidió el voto desde el extranjero</a></li><li><a href="../escanos-ajustados-2023/index.html">6 escaños del 23J se decidieron por menos de 1.500 votos; en Girona, por 285</a></li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
+</dl><h2>En esta serie</h2><ul><li><a href="../madrid-voto-exterior/index.html">El último escaño de Madrid en 2023 lo decidió el voto desde el extranjero</a></li><li><a href="../escanos-ajustados-2023/index.html">6 escaños del 23J se decidieron por menos de 1.500 votos; en Girona bastaban 285</a></li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
 </main>
 </body>
 </html>
