@@ -7,11 +7,11 @@
 <meta name="description" content="Municipios vecinos, separados por pocos kilómetros y muchos puntos de voto.">
 <meta name="author" content="Nacho">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://mapaelectoral.es/atlas/fronteras/index.html">
+<link rel="canonical" href="https://nachotronic.github.io/abstencio-catalunya/atlas/fronteras/index.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fronteras que votan distinto · Atlas de las anomalías electorales">
 <meta property="og:description" content="Municipios vecinos, separados por pocos kilómetros y muchos puntos de voto.">
-<meta property="og:url" content="https://mapaelectoral.es/atlas/fronteras/index.html">
+<meta property="og:url" content="https://nachotronic.github.io/abstencio-catalunya/atlas/fronteras/index.html">
 <meta property="og:locale" content="es_ES">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
 <link rel="alternate" type="text/plain" title="llms.txt" href="../llms.txt">
@@ -21,17 +21,17 @@
  "@type": "CollectionPage",
  "name": "Fronteras que votan distinto",
  "description": "Municipios vecinos, separados por pocos kilómetros y muchos puntos de voto.",
- "url": "https://mapaelectoral.es/atlas/fronteras/index.html",
+ "url": "https://nachotronic.github.io/abstencio-catalunya/atlas/fronteras/index.html",
  "isPartOf": {
   "@type": "CollectionPage",
   "name": "Atlas de las anomalías electorales",
-  "url": "https://mapaelectoral.es/atlas/"
+  "url": "https://nachotronic.github.io/abstencio-catalunya/atlas/"
  },
  "hasPart": [
   {
    "@type": "NewsArticle",
-   "headline": "A Illa de Arousa vota 23 puntos menos al PP que Vilanova, a seis kilómetros, y así desde hace veinte años",
-   "url": "https://mapaelectoral.es/atlas/fronteras/a-illa-vilanova-de-arousa/index.html"
+   "headline": "A Illa de Arousa vota 23 puntos menos al PP que Vilanova, al otro lado del puente, y así desde hace veinte años",
+   "url": "https://nachotronic.github.io/abstencio-catalunya/atlas/fronteras/a-illa-vilanova-de-arousa/index.html"
   }
  ]
 }
@@ -71,16 +71,22 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 .ficha dt{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
 .ficha dd{margin:2px 0 0}
 ul{padding-left:1.2rem}li{margin:.35rem 0}
-.tarjetas{list-style:none;padding:0}
-.tarjetas li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;margin:10px 0}
-.tarjetas a{font-family:var(--display);font-weight:700;font-size:1.08rem;text-decoration:none}
+.tarjetas{list-style:none;padding:0;display:grid;gap:12px}
+.tarjetas li{margin:0}
+a.tarjeta{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta:hover,a.tarjeta:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
+a.tarjeta .tt{font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--fg)}
+a.tarjeta .ent{font-size:1rem;color:var(--muted)}
+a.tarjeta .leer{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:600}
+.cuerpo h2{font-size:1.25rem;margin:2.2rem 0 .5rem}
+.cuerpo p{margin:0 0 1rem}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <main>
 <nav class="top"><a href="../index.html">Atlas de las anomalías electorales</a><span><a href="../metodologia/index.html">Metodología</a> · <a href="../datos/index.html">Datos</a> · <a href="../../generales-2026/index.html">Resultados de España</a></span></nav>
-<p class="kicker">Serie</p><h1>Fronteras que votan distinto</h1><p class="resumen">Municipios vecinos, separados por pocos kilómetros y muchos puntos de voto.</p><ul class="tarjetas"><li><a href="../fronteras/a-illa-vilanova-de-arousa/index.html">A Illa de Arousa vota 23 puntos menos al PP que Vilanova, a seis kilómetros, y así desde hace veinte años</a><br>El 23J de 2023, el PP sacó el 33,1 % en A Illa de Arousa y el 55,9 % en Vilanova de Arousa, el municipio vecino al otro lado del puente.</li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
+<p class="kicker">Serie</p><h1>Fronteras que votan distinto</h1><p class="resumen">Municipios vecinos, separados por pocos kilómetros y muchos puntos de voto.</p><ul class="tarjetas"><li><a class="tarjeta" href="../fronteras/a-illa-vilanova-de-arousa/index.html"><span class="tt">A Illa de Arousa vota 23 puntos menos al PP que Vilanova, al otro lado del puente, y así desde hace veinte años</span><span class="ent">El 23J de 2023, el PP sacó el 33,1 % en A Illa de Arousa y el 55,9 % en Vilanova de Arousa, el municipio vecino al otro lado del puente.</span><span class="leer">Leer la pieza →</span></a></li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
 </main>
 </body>
 </html>

@@ -12,7 +12,7 @@ from piezas import piezas, SERIES  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ATLAS = ROOT / 'atlas'
-BASE = 'https://mapaelectoral.es/'
+BASE = 'https://nachotronic.github.io/abstencio-catalunya/'   # pasará a https://mapaelectoral.es/ cuando el dominio esté activo
 ATLAS_URL = BASE + 'atlas/'
 NOMBRE = 'Atlas de las anomalías electorales'
 AUTOR = {'@type': 'Person', 'name': 'Nacho', 'url': BASE + 'sobre-mi.html', 'sameAs': ['https://github.com/nachotronic']}
@@ -66,9 +66,15 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 .ficha dt{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
 .ficha dd{margin:2px 0 0}
 ul{padding-left:1.2rem}li{margin:.35rem 0}
-.tarjetas{list-style:none;padding:0}
-.tarjetas li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;margin:10px 0}
-.tarjetas a{font-family:var(--display);font-weight:700;font-size:1.08rem;text-decoration:none}
+.tarjetas{list-style:none;padding:0;display:grid;gap:12px}
+.tarjetas li{margin:0}
+a.tarjeta{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta:hover,a.tarjeta:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
+a.tarjeta .tt{font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--fg)}
+a.tarjeta .ent{font-size:1rem;color:var(--muted)}
+a.tarjeta .leer{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:600}
+.cuerpo h2{font-size:1.25rem;margin:2.2rem 0 .5rem}
+.cuerpo p{margin:0 0 1rem}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
 """
 
@@ -165,9 +171,10 @@ def pagina_pieza(p):
     if p.get('grafico'):
         svg, cap = p['grafico']
         h.append(f'<figure>{svg}<figcaption>{escape(cap)} Datos en la tabla de abajo y en <a href="../../datos/{p["csv"]}">CSV</a>.</figcaption></figure>')
-    h.append('<h2>Lo que dicen los datos</h2>')
+    h.append('<div class="cuerpo">')
     for tipo, texto in p['cuerpo']:
-        h.append(f'<p><span class="tipo">{ETIQ[tipo]}</span>{escape(texto)}</p>')
+        h.append(f'<h2>{escape(texto)}</h2>' if tipo == 'sub' else f'<p><span class="tipo">{ETIQ[tipo]}</span>{escape(texto)}</p>')
+    h.append('</div>')
     h.append('<h2>Lo que no sabemos</h2><ul>' + ''.join(f'<li><span class="tipo">Hipótesis</span>{escape(x)}</li>' for x in p['no_sabemos']) + '</ul>')
     h.append('<h2>Los datos</h2>' + tabla(p['tabla']) + f'<p><a href="../../datos/{p["csv"]}">Descargar los datos en CSV</a></p>')
     if p.get('faq'):
@@ -191,10 +198,20 @@ def pagina_pieza(p):
     return ruta, ''.join(h)
 
 
-def tarjetas(lista, pref=''):
+def entradilla(resumen):
+    """Primera frase del resumen; si es muy corta, las dos primeras."""
+    fr = resumen.split('. ')
+    return '. '.join(fr[:2 if len(fr[0]) < 60 and len(fr) > 1 else 1]).rstrip('.') + '.'
+
+
+def tarjetas(lista, pref='', serie=False):
+    """Cada pieza es una tarjeta entera enlazada: serie, titular, entradilla y «Leer la pieza»."""
     return '<ul class="tarjetas">' + ''.join(
-        f'<li><a href="{pref}{q["serie"]}/{q["slug"]}/index.html">{escape(q["titulo"])}</a><br>{escape(q["resumen"].split(". ")[0])}.'
-        f'{"" if q["revisado"] else " <span class=\"tipo\">Revisión pendiente</span>"}</li>' for q in lista) + '</ul>'
+        f'<li><a class="tarjeta" href="{pref}{q["serie"]}/{q["slug"]}/index.html">'
+        + (f'<span class="kicker">{escape(SERIES[q["serie"]][0])}</span>' if serie else '') +
+        f'<span class="tt">{escape(q["titulo"])}</span>'
+        f'<span class="ent">{escape(entradilla(q["resumen"]))}</span>'
+        f'<span class="leer">Leer la pieza →{"" if q["revisado"] else " · revisión pendiente"}</span></a></li>' for q in lista) + '</ul>'
 
 
 def portada():
@@ -205,10 +222,10 @@ def portada():
     h.append(f'<p class="kicker">Periodismo de datos electorales</p><h1>{NOMBRE}</h1>')
     h.append('<p class="resumen">Los resultados generales esconden lugares que votan distinto de lo que cabría esperar por sus vecinos, por los municipios que más se les parecen o por su propia historia. Cada pieza parte de una de esas comparaciones, enseña los datos y separa lo que se sabe de lo que todavía es hipótesis.</p>')
     h.append(f'<p>Los resultados de todos los municipios se consultan en el <a href="../{GENERALES}index.html">mapa de resultados de España</a>. El Atlas no tiene fichas municipales: solo piezas con una pregunta y una respuesta.</p>')
-    for s, (nombre, desc) in SERIES.items():
-        ps = [q for q in TODAS if q['serie'] == s]
-        if ps:
-            h.append(f'<h2><a href="{s}/index.html">{escape(nombre)}</a></h2><p>{escape(desc)}</p>' + tarjetas(ps))
+    h.append('<h2>Las piezas</h2>' + tarjetas(TODAS, serie=True))
+    h.append('<h2>Las series</h2><ul class="series">' + ''.join(
+        f'<li><a href="{s}/index.html">{escape(nombre)}</a>: {escape(desc)}</li>'
+        for s, (nombre, desc) in SERIES.items() if any(q['serie'] == s for q in TODAS)) + '</ul>')
     h.append('<h2>Cómo trabajamos</h2><p>Cada afirmación se marca como <strong>dato</strong> (verificable y reproducible), <strong>patrón</strong> (relación descriptiva, sin causa) o <strong>hipótesis</strong> (explicación posible que aún no tiene dos fuentes independientes). Ninguna pieza se publica sin revisión humana. <a href="metodologia/index.html">Metodología</a> · <a href="correcciones/index.html">Correcciones</a></p>')
     h.append(PIE)
     return 'index.html', ''.join(h)

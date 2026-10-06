@@ -532,6 +532,7 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: {BASE}sitemap.xml
+Sitemap: {BASE}atlas/sitemap.xml
 '''
 
 

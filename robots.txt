@@ -36,3 +36,4 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://nachotronic.github.io/abstencio-catalunya/sitemap.xml
+Sitemap: https://nachotronic.github.io/abstencio-catalunya/atlas/sitemap.xml
