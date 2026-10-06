@@ -405,6 +405,10 @@ footer{margin-top:40px}
 .card p{margin:.5rem 0 0}
 .card .kicker{margin-bottom:2px}
 .step[data-step="explore"] .card{max-width:340px}
+.stops{display:flex;gap:7px;align-items:center;position:sticky;top:-18px;z-index:1;margin:-6px -20px 2px;padding:8px 20px 6px;background:var(--surface)}
+.stops i{width:8px;height:8px;border-radius:50%;background:var(--rule);transition:background .3s,transform .3s}
+.stops i.past{background:color-mix(in srgb,var(--accent) 45%,transparent)}
+.stops i.now{background:var(--accent);transform:scale(1.35)}
 .placelabel{position:absolute;left:0;top:0;z-index:2;pointer-events:none;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-100%);will-change:transform}
 .placelabel span{background:var(--card);color:var(--fg);font-family:var(--display);font-weight:700;font-size:15px;line-height:1.2;padding:5px 10px;border-radius:5px;border:1px solid var(--rule);box-shadow:0 2px 10px rgba(0,0,0,.18);white-space:nowrap}
 .placelabel::after{content:"";width:2px;height:34px;background:var(--fg);opacity:.75}
@@ -466,7 +470,8 @@ footer{margin-top:40px}
 .fmap{justify-self:start}
 @media (max-width:760px){
   .step{align-items:flex-end;padding-bottom:12vh}
-  .step.tall .card{top:50vh;top:50svh;margin-top:50vh;max-height:46vh;max-height:46svh;overflow:auto}
+  .step.tall .card{top:50vh;top:50svh;margin-top:50vh;max-height:46vh;max-height:46svh;overflow:hidden}
+  .step.tall .card.more{-webkit-mask-image:linear-gradient(#000 calc(100% - 56px),transparent);mask-image:linear-gradient(#000 calc(100% - 56px),transparent)}
   .card{max-width:none;font-size:1rem}
   .maplegend{top:12px;bottom:auto;right:12px}
   .maplegend .ramp .sw{width:110px}
@@ -947,6 +952,29 @@ ROUTES.forEach(r => {
   f.innerHTML = '<img alt="" decoding="async"><figcaption></figcaption>';
   r.card.prepend(f); r.photo = f; setPhoto(r, r.home, true);
 });
+// una tarjeta con varios lugares lleva un punto por parada: se ve cuántas hay y en cuál está la cámara
+ROUTES.forEach(r => {
+  if (r.places.length < 2) return;
+  const d = document.createElement('div'); d.className = 'stops'; d.setAttribute('aria-hidden', 'true');
+  d.innerHTML = '<i></i>'.repeat(r.places.length);
+  if (r.photo) r.photo.after(d); else r.card.prepend(d);
+  r.dots = [...d.children];
+});
+function markStop(r, st) { if (r.dots) r.dots.forEach((el, k) => { el.classList.toggle('past', k < st - 1); el.classList.toggle('now', k === st - 1); }); }
+// en móvil la tarjeta alta no tiene scroll propio: el scroll de la página va descubriendo su texto
+function cardScroll() {
+  ROUTES.forEach((r, i) => {
+    if (!r.places.length) return;
+    const c = r.card, max = c.scrollHeight - c.clientHeight;
+    if (max <= 1) { c.classList.remove('more'); return; }
+    const t = Math.max(0, Math.min(1, stepProgress(STEPS[i]) / 0.7));
+    c.scrollTop = t * max; c.classList.toggle('more', t < 0.99);
+  });
+}
+// va aparte del mapa: sin WebGL el texto también tiene que poder leerse entero
+let cardTick = false;
+const cardReq = () => { if (!cardTick) { cardTick = true; requestAnimationFrame(() => { cardTick = false; cardScroll(); }); } };
+addEventListener('scroll', cardReq, { passive: true }); addEventListener('resize', cardReq); cardReq();
 function setPhoto(r, n, now) {
   const p = PHOTOS[r.name + ':' + n] || PHOTOS[n]; if (!r.photo || !p || r.photoOf === n) return; r.photoOf = n;
   const f = r.photo, img = f.querySelector('img'), cap = f.querySelector('figcaption');
@@ -1046,6 +1074,7 @@ function onScroll() {
   if (ROUTES[i].name === 'explore' && exploreTouched && userView) { flyId++; return; }
   const r = ROUTES[i], st = stationAt(i, p), views = routeViews(i);
   const place = st >= 1 && st <= r.places.length ? r.places[st - 1] : null;
+  ROUTES.forEach((q, k) => markStop(q, k < i ? q.places.length + 1 : k > i ? 0 : st));
   flyTo(views[st], i + ':' + st, place, r.card);
 }
 let ticking = false;
@@ -1097,6 +1126,8 @@ function initDeck() {
     camView = fit(SCENES.cat.view);
     deckgl = new deck.Deck({
       parent: $('#deck'), viewState: camView, controller: false,
+      // el mapa ocupa toda la pantalla: en móvil, deslizar en vertical sobre él tiene que seguir moviendo la página
+      touchAction: 'pan-y',
       onViewStateChange: ({ viewState, interactionState }) => {
         if (curScene !== 'explore') return;
         anim++; flyId++; exploreTouched = true; userView = { longitude: viewState.longitude, latitude: viewState.latitude, zoom: viewState.zoom, pitch: 0, bearing: 0 };
