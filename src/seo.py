@@ -28,7 +28,7 @@ AUTHOR_BIO = {
           'Ha rebut els premis Carles Rahola, Tiflos, Injuve i el Premi Nacional de Periodisme Placeat pel reportatge «Sólo el drag les hace libres».',
 }
 AUTHOR_JOB = {'es': 'Periodista de datos', 'ca': 'Periodista de dades'}          # p. ej. «Periodista de datos»; vacío = no se muestra
-AUTHOR_LINKS = [('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
+AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES'), ('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
 AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',
           'sameAs': [u for _, u in AUTHOR_LINKS]}
@@ -398,7 +398,7 @@ def about(L):
     job = f'<p class="kicker">{e(AUTHOR_JOB[L])}</p>\n' if AUTHOR_JOB[L] else ''
     bio = f'<p>{e(AUTHOR_BIO[L])}</p>\n' if AUTHOR_BIO[L] else ''
     works = '\n'.join(f'<li><a href="{u}">{e(n)}</a> · {d}</li>' for u, n, d in a['works'])
-    links = '\n'.join(f'<li><a href="{u}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS)
+    links = '\n'.join(f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS)
     return f'''<!doctype html>
 <html lang="{L}">
 <head>
