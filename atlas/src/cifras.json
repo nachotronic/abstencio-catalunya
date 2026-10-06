@@ -1,0 +1,1485 @@
+{
+ "fuente_datos": {
+  "municipios": "/mnt/project-files/generales/datos/municipios.csv",
+  "n_municipios": 8131
+ },
+ "escanos_2023_con_cera": {
+  "PP": 137,
+  "PSOE": 121,
+  "Vox": 33,
+  "Sumar": 31,
+  "ERC": 7,
+  "Junts": 7,
+  "EH Bildu": 6,
+  "PNV": 5,
+  "BNG": 1,
+  "UPN": 1,
+  "CC": 1
+ },
+ "margenes": [
+  {
+   "cod_prov": "17",
+   "provincia": "Girona",
+   "escanos": 6,
+   "ultimo_escano": "Junts",
+   "aspirante": "PP",
+   "votos_que_faltaban": 285
+  },
+  {
+   "cod_prov": "39",
+   "provincia": "Cantabria",
+   "escanos": 5,
+   "ultimo_escano": "Vox",
+   "aspirante": "PP",
+   "votos_que_faltaban": 404
+  },
+  {
+   "cod_prov": "43",
+   "provincia": "Tarragona",
+   "escanos": 6,
+   "ultimo_escano": "Junts",
+   "aspirante": "PSOE",
+   "votos_que_faltaban": 1248
+  },
+  {
+   "cod_prov": "28",
+   "provincia": "Madrid",
+   "escanos": 37,
+   "ultimo_escano": "PP",
+   "aspirante": "PSOE",
+   "votos_que_faltaban": 1340
+  },
+  {
+   "cod_prov": "02",
+   "provincia": "Albacete",
+   "escanos": 4,
+   "ultimo_escano": "PSOE",
+   "aspirante": "Vox",
+   "votos_que_faltaban": 1412
+  },
+  {
+   "cod_prov": "37",
+   "provincia": "Salamanca",
+   "escanos": 4,
+   "ultimo_escano": "PP",
+   "aspirante": "PSOE",
+   "votos_que_faltaban": 1495
+  },
+  {
+   "cod_prov": "38",
+   "provincia": "Santa Cruz de Tenerife",
+   "escanos": 7,
+   "ultimo_escano": "PSOE",
+   "aspirante": "Sumar",
+   "votos_que_faltaban": 1565
+  },
+  {
+   "cod_prov": "51",
+   "provincia": "Ceuta",
+   "escanos": 1,
+   "ultimo_escano": "PP",
+   "aspirante": "PSOE",
+   "votos_que_faltaban": 1587
+  },
+  {
+   "cod_prov": "44",
+   "provincia": "Teruel",
+   "escanos": 3,
+   "ultimo_escano": "PP",
+   "aspirante": "Teruel Existe",
+   "votos_que_faltaban": 1946
+  },
+  {
+   "cod_prov": "29",
+   "provincia": "Málaga",
+   "escanos": 11,
+   "ultimo_escano": "PP",
+   "aspirante": "PSOE",
+   "votos_que_faltaban": 2429
+  }
+ ],
+ "margenes_menos_1500": 6,
+ "margenes_menos_500": 2,
+ "madrid": {
+  "con_cera": {
+   "PP": 16,
+   "PSOE": 10,
+   "Sumar": 6,
+   "Vox": 5
+  },
+  "sin_cera": {
+   "PP": 15,
+   "PSOE": 11,
+   "Sumar": 6,
+   "Vox": 5
+  },
+  "cera_pp": 19006,
+  "cera_psoe": 10411,
+  "cera_total_candidaturas": 43964,
+  "votos_pp": 1463183,
+  "votos_psoe": 1004599,
+  "faltaban_psoe_con_cera": 1340,
+  "faltaban_pp_sin_cera": 1915
+ },
+ "escanos_29n": {
+  "11": {
+   "2023": {
+    "PP": 4,
+    "PSOE": 3,
+    "Vox": 1,
+    "Sumar": 1
+   },
+   "2026": {
+    "PP": 3,
+    "PSOE": 3,
+    "Vox": 1,
+    "Sumar": 1
+   },
+   "pierde": [
+    "PP"
+   ],
+   "gana": []
+  },
+  "28": {
+   "2023": {
+    "PP": 16,
+    "PSOE": 10,
+    "Sumar": 6,
+    "Vox": 5
+   },
+   "2026": {
+    "PP": 16,
+    "PSOE": 11,
+    "Sumar": 6,
+    "Vox": 5
+   },
+   "pierde": [],
+   "gana": [
+    "PSOE"
+   ]
+  }
+ },
+ "modelo_municipal": {
+  "r2_derecha": 0.861,
+  "n": 6700
+ },
+ "ranking_residuo_derecha_10k": [
+  {
+   "municipio": "Puerto Real",
+   "provincia": "Cádiz",
+   "real": 26.9,
+   "previsto": 50.1,
+   "diferencia": -23.2
+  },
+  {
+   "municipio": "Castro-Urdiales",
+   "provincia": "Cantabria",
+   "real": 37.7,
+   "previsto": 57.1,
+   "diferencia": -19.4
+  },
+  {
+   "municipio": "Jódar",
+   "provincia": "Jaén",
+   "real": 30.0,
+   "previsto": 48.9,
+   "diferencia": -19.0
+  },
+  {
+   "municipio": "Ansoáin/Antsoain",
+   "provincia": "Navarra",
+   "real": 18.4,
+   "previsto": 36.2,
+   "diferencia": -17.8
+  },
+  {
+   "municipio": "San Martín del Rey Aurelio",
+   "provincia": "Asturias",
+   "real": 31.7,
+   "previsto": 47.9,
+   "diferencia": -16.2
+  },
+  {
+   "municipio": "Mieres",
+   "provincia": "Asturias",
+   "real": 32.8,
+   "previsto": 47.6,
+   "diferencia": -14.8
+  },
+  {
+   "municipio": "Miranda de Ebro",
+   "provincia": "Burgos",
+   "real": 39.4,
+   "previsto": 54.1,
+   "diferencia": -14.7
+  },
+  {
+   "municipio": "Brenes",
+   "provincia": "Sevilla",
+   "real": 31.7,
+   "previsto": 45.8,
+   "diferencia": -14.0
+  }
+ ],
+ "n_municipios_10k": 770,
+ "puerto_real": {
+  "der": 26.9,
+  "previsto": 50.1,
+  "diferencia": -23.2,
+  "rank": 1,
+  "psoe": 43.3,
+  "pp": 18.7,
+  "vox": 8.2,
+  "sumar": 24.6,
+  "prov_pp": 34.8,
+  "prov_psoe": 33.2,
+  "prov_der": 50.0,
+  "renta": 19216,
+  "edad": 42.8,
+  "paro": 30.7,
+  "poblacion": 41846,
+  "izq_serie": {
+   "2004_03": 70.8,
+   "2008_03": 70.2,
+   "2011_11": 54.8,
+   "2015_12": 71.4,
+   "2016_06": 66.8,
+   "2019_04": 68.2,
+   "2019_11": 68.7,
+   "2023_07": 67.9
+  },
+  "izq_prov_serie": {
+   "2004_03": 58.2,
+   "2008_03": 55.9,
+   "2011_11": 41.5,
+   "2015_12": 54.3,
+   "2016_06": 49.7,
+   "2019_04": 48.1,
+   "2019_11": 47.6,
+   "2023_07": 46.0
+  },
+  "m2023_lista": "Confluencia de Izquierdas para la Gente (Izquierda Unida- Verdes Equo-Independientes)",
+  "m2023_lista_pct": 33.4,
+  "bahia": [
+   {
+    "municipio": "Puerto Real",
+    "real": 26.9,
+    "previsto": 50.1,
+    "diferencia": -23.2,
+    "renta": 19216
+   },
+   {
+    "municipio": "Cádiz",
+    "real": 42.2,
+    "previsto": 50.6,
+    "diferencia": -8.4,
+    "renta": 22414
+   },
+   {
+    "municipio": "San Roque",
+    "real": 53.4,
+    "previsto": 57.7,
+    "diferencia": -4.4,
+    "renta": 20881
+   },
+   {
+    "municipio": "Conil de la Frontera",
+    "real": 48.9,
+    "previsto": 50.3,
+    "diferencia": -1.4,
+    "renta": 17583
+   },
+   {
+    "municipio": "Barbate",
+    "real": 48.2,
+    "previsto": 48.5,
+    "diferencia": -0.3,
+    "renta": 15596
+   },
+   {
+    "municipio": "Los Barrios",
+    "real": 54.2,
+    "previsto": 53.4,
+    "diferencia": 0.8,
+    "renta": 20209
+   },
+   {
+    "municipio": "San Fernando",
+    "real": 50.7,
+    "previsto": 49.5,
+    "diferencia": 1.2,
+    "renta": 19319
+   },
+   {
+    "municipio": "La Línea de la Concepción",
+    "real": 54.5,
+    "previsto": 52.3,
+    "diferencia": 2.2,
+    "renta": 17213
+   },
+   {
+    "municipio": "Jerez de la Frontera",
+    "real": 52.0,
+    "previsto": 49.7,
+    "diferencia": 2.2,
+    "renta": 18377
+   },
+   {
+    "municipio": "El Puerto de Santa María",
+    "real": 53.5,
+    "previsto": 51.0,
+    "diferencia": 2.6,
+    "renta": 20018
+   },
+   {
+    "municipio": "Sanlúcar de Barrameda",
+    "real": 49.7,
+    "previsto": 47.0,
+    "diferencia": 2.7,
+    "renta": 15402
+   },
+   {
+    "municipio": "Arcos de la Frontera",
+    "real": 51.0,
+    "previsto": 48.3,
+    "diferencia": 2.8,
+    "renta": 15844
+   },
+   {
+    "municipio": "Chiclana de la Frontera",
+    "real": 53.8,
+    "previsto": 49.9,
+    "diferencia": 3.9,
+    "renta": 17693
+   },
+   {
+    "municipio": "Rota",
+    "real": 56.5,
+    "previsto": 51.2,
+    "diferencia": 5.3,
+    "renta": 19203
+   },
+   {
+    "municipio": "Algeciras",
+    "real": 58.0,
+    "previsto": 52.4,
+    "diferencia": 5.5,
+    "renta": 18915
+   }
+  ]
+ },
+ "arousa": {
+  "illa": {
+   "pp": {
+    "2004_03": 34.9,
+    "2008_03": 32.5,
+    "2011_11": 42.7,
+    "2015_12": 25.5,
+    "2016_06": 27.6,
+    "2019_04": 19.1,
+    "2019_11": 21.7,
+    "2023_07": 33.1
+   },
+   "bng_m2023": 27.6,
+   "pp_m2023": 43.3,
+   "psoe_2023": 36.2,
+   "bng_2023": 14.2,
+   "renta": 17438,
+   "edad": 46.2,
+   "paro": 11.9,
+   "poblacion": 4853,
+   "extranjeros": 1.3
+  },
+  "vilanova": {
+   "pp": {
+    "2004_03": 57.6,
+    "2008_03": 60.3,
+    "2011_11": 67.0,
+    "2015_12": 51.0,
+    "2016_06": 54.8,
+    "2019_04": 41.2,
+    "2019_11": 45.6,
+    "2023_07": 55.9
+   },
+   "bng_m2023": 9.7,
+   "pp_m2023": 61.1,
+   "psoe_2023": 22.4,
+   "bng_2023": 6.7,
+   "renta": 17897,
+   "edad": 47.5,
+   "paro": 17.3,
+   "poblacion": 10216,
+   "extranjeros": 3.1
+  },
+  "brechas": {
+   "2004_03": 22.7,
+   "2008_03": 27.8,
+   "2011_11": 24.3,
+   "2015_12": 25.5,
+   "2016_06": 27.2,
+   "2019_04": 22.1,
+   "2019_11": 23.9,
+   "2023_07": 22.8
+  }
+ },
+ "cabra_montilla": {
+  "cabra": {
+   "der": {
+    "2004_03": 29.0,
+    "2008_03": 36.7,
+    "2011_11": 44.5,
+    "2015_12": 48.0,
+    "2016_06": 52.9,
+    "2019_04": 51.4,
+    "2019_11": 54.7,
+    "2023_07": 55.1
+   },
+   "pp": {
+    "2004_03": 29.0,
+    "2008_03": 36.7,
+    "2011_11": 44.5,
+    "2015_12": 36.1,
+    "2016_06": 39.3,
+    "2019_04": 22.8,
+    "2019_11": 23.9,
+    "2023_07": 39.2
+   },
+   "psoe": {
+    "2004_03": 49.4,
+    "2008_03": 51.1,
+    "2011_11": 35.6,
+    "2015_12": 31.9,
+    "2016_06": 30.5,
+    "2019_04": 34.3,
+    "2019_11": 31.0,
+    "2023_07": 30.9
+   },
+   "cs": {
+    "2004_03": 0.0,
+    "2008_03": 0.1,
+    "2011_11": 0.0,
+    "2015_12": 11.9,
+    "2016_06": 13.4,
+    "2019_04": 16.2,
+    "2019_11": 6.5,
+    "2023_07": 0.0
+   },
+   "vox": {
+    "2004_03": 0.0,
+    "2008_03": 0.0,
+    "2011_11": 0.0,
+    "2015_12": 0.0,
+    "2016_06": 0.2,
+    "2019_04": 12.4,
+    "2019_11": 24.3,
+    "2023_07": 15.9
+   },
+   "gana_2023": "PP",
+   "renta": 17575,
+   "edad": 44.8,
+   "paro": 18.6,
+   "extranjeros": 4.3,
+   "estudios": 26.7,
+   "poblacion": 19869
+  },
+  "montilla": {
+   "der": {
+    "2004_03": 27.8,
+    "2008_03": 29.7,
+    "2011_11": 38.3,
+    "2015_12": 36.9,
+    "2016_06": 40.9,
+    "2019_04": 39.3,
+    "2019_11": 39.5,
+    "2023_07": 42.8
+   },
+   "pp": {
+    "2004_03": 27.8,
+    "2008_03": 29.6,
+    "2011_11": 38.3,
+    "2015_12": 24.8,
+    "2016_06": 27.5,
+    "2019_04": 15.0,
+    "2019_11": 19.5,
+    "2023_07": 34.1
+   },
+   "psoe": {
+    "2004_03": 49.2,
+    "2008_03": 54.6,
+    "2011_11": 35.5,
+    "2015_12": 31.8,
+    "2016_06": 31.4,
+    "2019_04": 37.9,
+    "2019_11": 39.0,
+    "2023_07": 37.5
+   },
+   "cs": {
+    "2004_03": 0.0,
+    "2008_03": 0.1,
+    "2011_11": 0.0,
+    "2015_12": 12.2,
+    "2016_06": 13.3,
+    "2019_04": 17.0,
+    "2019_11": 8.6,
+    "2023_07": 0.0
+   },
+   "vox": {
+    "2004_03": 0.0,
+    "2008_03": 0.0,
+    "2011_11": 0.0,
+    "2015_12": 0.0,
+    "2016_06": 0.1,
+    "2019_04": 7.3,
+    "2019_11": 11.4,
+    "2023_07": 8.8
+   },
+   "gana_2023": "PSOE",
+   "renta": 17813,
+   "edad": 45.1,
+   "paro": 19.4,
+   "extranjeros": 3.5,
+   "estudios": 26.8,
+   "poblacion": 22100
+  }
+ },
+ "capitales": [
+  {
+   "capital": "Ourense",
+   "provincia": "Ourense",
+   "pp_capital": 42.8,
+   "pp_resto": 53.4,
+   "psoe_capital": 35.4,
+   "psoe_resto": 28.0,
+   "dif_pp": -10.6,
+   "dif_psoe": 7.4
+  },
+  {
+   "capital": "Soria",
+   "provincia": "Soria",
+   "pp_capital": 31.0,
+   "pp_resto": 41.6,
+   "psoe_capital": 33.4,
+   "psoe_resto": 26.7,
+   "dif_pp": -10.6,
+   "dif_psoe": 6.7
+  },
+  {
+   "capital": "Ávila",
+   "provincia": "Ávila",
+   "pp_capital": 38.9,
+   "pp_resto": 45.7,
+   "psoe_capital": 26.0,
+   "psoe_resto": 27.9,
+   "dif_pp": -6.8,
+   "dif_psoe": -1.9
+  },
+  {
+   "capital": "Lugo",
+   "provincia": "Lugo",
+   "pp_capital": 46.8,
+   "pp_resto": 51.7,
+   "psoe_capital": 32.8,
+   "psoe_resto": 29.3,
+   "dif_pp": -4.9,
+   "dif_psoe": 3.5
+  },
+  {
+   "capital": "Palencia",
+   "provincia": "Palencia",
+   "pp_capital": 39.8,
+   "pp_resto": 44.0,
+   "psoe_capital": 37.3,
+   "psoe_resto": 32.4,
+   "dif_pp": -4.2,
+   "dif_psoe": 4.9
+  },
+  {
+   "capital": "Zamora",
+   "provincia": "Zamora",
+   "pp_capital": 42.0,
+   "pp_resto": 46.2,
+   "psoe_capital": 33.6,
+   "psoe_resto": 31.9,
+   "dif_pp": -4.2,
+   "dif_psoe": 1.7
+  },
+  {
+   "capital": "A Coruña",
+   "provincia": "A Coruña",
+   "pp_capital": 39.9,
+   "pp_resto": 44.0,
+   "psoe_capital": 31.0,
+   "psoe_resto": 27.4,
+   "dif_pp": -4.1,
+   "dif_psoe": 3.6
+  },
+  {
+   "capital": "Palma",
+   "provincia": "Illes Balears",
+   "pp_capital": 34.5,
+   "pp_resto": 36.3,
+   "psoe_capital": 30.2,
+   "psoe_resto": 30.1,
+   "dif_pp": -1.8,
+   "dif_psoe": 0.1
+  },
+  {
+   "capital": "Huesca",
+   "provincia": "Huesca",
+   "pp_capital": 37.1,
+   "pp_resto": 38.7,
+   "psoe_capital": 34.5,
+   "psoe_resto": 33.3,
+   "dif_pp": -1.6,
+   "dif_psoe": 1.2
+  },
+  {
+   "capital": "Logroño",
+   "provincia": "La Rioja",
+   "pp_capital": 44.9,
+   "pp_resto": 46.4,
+   "psoe_capital": 36.6,
+   "psoe_resto": 35.0,
+   "dif_pp": -1.5,
+   "dif_psoe": 1.6
+  },
+  {
+   "capital": "Segovia",
+   "provincia": "Segovia",
+   "pp_capital": 44.2,
+   "pp_resto": 45.5,
+   "psoe_capital": 33.0,
+   "psoe_resto": 29.4,
+   "dif_pp": -1.3,
+   "dif_psoe": 3.6
+  },
+  {
+   "capital": "Valladolid",
+   "provincia": "Valladolid",
+   "pp_capital": 40.4,
+   "pp_resto": 41.6,
+   "psoe_capital": 34.6,
+   "psoe_resto": 30.3,
+   "dif_pp": -1.2,
+   "dif_psoe": 4.3
+  },
+  {
+   "capital": "Salamanca",
+   "provincia": "Salamanca",
+   "pp_capital": 46.4,
+   "pp_resto": 47.4,
+   "psoe_capital": 32.2,
+   "psoe_resto": 29.1,
+   "dif_pp": -1.0,
+   "dif_psoe": 3.1
+  },
+  {
+   "capital": "Málaga",
+   "provincia": "Málaga",
+   "pp_capital": 37.7,
+   "pp_resto": 38.7,
+   "psoe_capital": 30.9,
+   "psoe_resto": 30.0,
+   "dif_pp": -1.0,
+   "dif_psoe": 0.9
+  },
+  {
+   "capital": "Cádiz",
+   "provincia": "Cádiz",
+   "pp_capital": 34.4,
+   "pp_resto": 34.9,
+   "psoe_capital": 36.5,
+   "psoe_resto": 32.8,
+   "dif_pp": -0.5,
+   "dif_psoe": 3.7
+  },
+  {
+   "capital": "Almería",
+   "provincia": "Almería",
+   "pp_capital": 40.8,
+   "pp_resto": 41.2,
+   "psoe_capital": 29.9,
+   "psoe_resto": 28.6,
+   "dif_pp": -0.4,
+   "dif_psoe": 1.3
+  },
+  {
+   "capital": "Huelva",
+   "provincia": "Huelva",
+   "pp_capital": 36.3,
+   "pp_resto": 36.5,
+   "psoe_capital": 34.0,
+   "psoe_resto": 36.7,
+   "dif_pp": -0.2,
+   "dif_psoe": -2.7
+  },
+  {
+   "capital": "Zaragoza",
+   "provincia": "Zaragoza",
+   "pp_capital": 36.1,
+   "pp_resto": 36.0,
+   "psoe_capital": 30.2,
+   "psoe_resto": 32.2,
+   "dif_pp": 0.1,
+   "dif_psoe": -2.0
+  },
+  {
+   "capital": "Castelló de la Plana",
+   "provincia": "Castellón",
+   "pp_capital": 35.3,
+   "pp_resto": 35.2,
+   "psoe_capital": 31.9,
+   "psoe_resto": 32.9,
+   "dif_pp": 0.1,
+   "dif_psoe": -1.0
+  },
+  {
+   "capital": "Pontevedra",
+   "provincia": "Pontevedra",
+   "pp_capital": 39.8,
+   "pp_resto": 39.6,
+   "psoe_capital": 31.9,
+   "psoe_resto": 31.4,
+   "dif_pp": 0.2,
+   "dif_psoe": 0.5
+  },
+  {
+   "capital": "Cuenca",
+   "provincia": "Cuenca",
+   "pp_capital": 40.2,
+   "pp_resto": 39.7,
+   "psoe_capital": 37.1,
+   "psoe_resto": 37.4,
+   "dif_pp": 0.5,
+   "dif_psoe": -0.3
+  },
+  {
+   "capital": "Burgos",
+   "provincia": "Burgos",
+   "pp_capital": 41.0,
+   "pp_resto": 40.4,
+   "psoe_capital": 35.4,
+   "psoe_resto": 33.5,
+   "dif_pp": 0.6,
+   "dif_psoe": 1.9
+  },
+  {
+   "capital": "Girona",
+   "provincia": "Girona",
+   "pp_capital": 10.8,
+   "pp_resto": 9.5,
+   "psoe_capital": 29.3,
+   "psoe_resto": 28.8,
+   "dif_pp": 1.3,
+   "dif_psoe": 0.5
+  },
+  {
+   "capital": "Alacant/Alicante",
+   "provincia": "Alicante",
+   "pp_capital": 38.0,
+   "pp_resto": 36.5,
+   "psoe_capital": 31.1,
+   "psoe_resto": 32.2,
+   "dif_pp": 1.5,
+   "dif_psoe": -1.1
+  },
+  {
+   "capital": "León",
+   "provincia": "León",
+   "pp_capital": 38.1,
+   "pp_resto": 36.6,
+   "psoe_capital": 30.8,
+   "psoe_resto": 34.6,
+   "dif_pp": 1.5,
+   "dif_psoe": -3.8
+  },
+  {
+   "capital": "Santa Cruz de Tenerife",
+   "provincia": "Santa Cruz de Tenerife",
+   "pp_capital": 37.1,
+   "pp_resto": 34.9,
+   "psoe_capital": 33.8,
+   "psoe_resto": 33.5,
+   "dif_pp": 2.2,
+   "dif_psoe": 0.3
+  },
+  {
+   "capital": "Murcia",
+   "provincia": "Murcia",
+   "pp_capital": 42.9,
+   "pp_resto": 40.5,
+   "psoe_capital": 22.8,
+   "psoe_resto": 26.4,
+   "dif_pp": 2.4,
+   "dif_psoe": -3.6
+  },
+  {
+   "capital": "Madrid",
+   "provincia": "Madrid",
+   "pp_capital": 41.8,
+   "pp_resto": 39.3,
+   "psoe_capital": 27.3,
+   "psoe_resto": 28.4,
+   "dif_pp": 2.5,
+   "dif_psoe": -1.1
+  },
+  {
+   "capital": "Albacete",
+   "provincia": "Albacete",
+   "pp_capital": 41.4,
+   "pp_resto": 38.8,
+   "psoe_capital": 30.8,
+   "psoe_resto": 37.4,
+   "dif_pp": 2.6,
+   "dif_psoe": -6.6
+  },
+  {
+   "capital": "Toledo",
+   "provincia": "Toledo",
+   "pp_capital": 40.4,
+   "pp_resto": 37.6,
+   "psoe_capital": 29.9,
+   "psoe_resto": 32.9,
+   "dif_pp": 2.8,
+   "dif_psoe": -3.0
+  },
+  {
+   "capital": "Barcelona",
+   "provincia": "Barcelona",
+   "pp_capital": 15.9,
+   "pp_resto": 12.9,
+   "psoe_capital": 33.2,
+   "psoe_resto": 36.7,
+   "dif_pp": 3.0,
+   "dif_psoe": -3.5
+  },
+  {
+   "capital": "Teruel",
+   "provincia": "Teruel",
+   "pp_capital": 37.6,
+   "pp_resto": 34.2,
+   "psoe_capital": 22.4,
+   "psoe_resto": 31.6,
+   "dif_pp": 3.4,
+   "dif_psoe": -9.2
+  },
+  {
+   "capital": "Pamplona/Iruña",
+   "provincia": "Navarra",
+   "pp_capital": 34.5,
+   "pp_resto": 30.8,
+   "psoe_capital": 24.7,
+   "psoe_resto": 28.6,
+   "dif_pp": 3.7,
+   "dif_psoe": -3.9
+  },
+  {
+   "capital": "València",
+   "provincia": "Valencia",
+   "pp_capital": 36.5,
+   "pp_resto": 32.4,
+   "psoe_capital": 29.5,
+   "psoe_resto": 33.3,
+   "dif_pp": 4.1,
+   "dif_psoe": -3.8
+  },
+  {
+   "capital": "Santander",
+   "provincia": "Cantabria",
+   "pp_capital": 45.1,
+   "pp_resto": 40.9,
+   "psoe_capital": 31.6,
+   "psoe_resto": 34.0,
+   "dif_pp": 4.2,
+   "dif_psoe": -2.4
+  },
+  {
+   "capital": "Ciudad Real",
+   "provincia": "Ciudad Real",
+   "pp_capital": 44.1,
+   "pp_resto": 39.9,
+   "psoe_capital": 30.7,
+   "psoe_resto": 36.2,
+   "dif_pp": 4.2,
+   "dif_psoe": -5.5
+  },
+  {
+   "capital": "Las Palmas de Gran Canaria",
+   "provincia": "Las Palmas",
+   "pp_capital": 28.7,
+   "pp_resto": 24.3,
+   "psoe_capital": 35.5,
+   "psoe_resto": 31.9,
+   "dif_pp": 4.4,
+   "dif_psoe": 3.6
+  },
+  {
+   "capital": "Guadalajara",
+   "provincia": "Guadalajara",
+   "pp_capital": 39.6,
+   "pp_resto": 34.8,
+   "psoe_capital": 33.8,
+   "psoe_resto": 32.6,
+   "dif_pp": 4.8,
+   "dif_psoe": 1.2
+  },
+  {
+   "capital": "Jaén",
+   "provincia": "Jaén",
+   "pp_capital": 41.6,
+   "pp_resto": 36.4,
+   "psoe_capital": 29.9,
+   "psoe_resto": 37.7,
+   "dif_pp": 5.2,
+   "dif_psoe": -7.8
+  },
+  {
+   "capital": "Tarragona",
+   "provincia": "Tarragona",
+   "pp_capital": 18.3,
+   "pp_resto": 13.0,
+   "psoe_capital": 34.2,
+   "psoe_resto": 32.6,
+   "dif_pp": 5.3,
+   "dif_psoe": 1.6
+  },
+  {
+   "capital": "Córdoba",
+   "provincia": "Córdoba",
+   "pp_capital": 41.1,
+   "pp_resto": 35.7,
+   "psoe_capital": 26.2,
+   "psoe_resto": 36.3,
+   "dif_pp": 5.4,
+   "dif_psoe": -10.1
+  },
+  {
+   "capital": "Bilbao",
+   "provincia": "Bizkaia",
+   "pp_capital": 15.5,
+   "pp_resto": 9.9,
+   "psoe_capital": 26.5,
+   "psoe_resto": 25.6,
+   "dif_pp": 5.6,
+   "dif_psoe": 0.9
+  },
+  {
+   "capital": "Cáceres",
+   "provincia": "Cáceres",
+   "pp_capital": 42.4,
+   "pp_resto": 36.7,
+   "psoe_capital": 33.1,
+   "psoe_resto": 40.7,
+   "dif_pp": 5.7,
+   "dif_psoe": -7.6
+  },
+  {
+   "capital": "Sevilla",
+   "provincia": "Sevilla",
+   "pp_capital": 37.3,
+   "pp_resto": 31.3,
+   "psoe_capital": 33.6,
+   "psoe_resto": 38.3,
+   "dif_pp": 6.0,
+   "dif_psoe": -4.7
+  },
+  {
+   "capital": "Badajoz",
+   "provincia": "Badajoz",
+   "pp_capital": 43.4,
+   "pp_resto": 36.4,
+   "psoe_capital": 30.0,
+   "psoe_resto": 41.7,
+   "dif_pp": 7.0,
+   "dif_psoe": -11.7
+  },
+  {
+   "capital": "Oviedo",
+   "provincia": "Asturias",
+   "pp_capital": 41.5,
+   "pp_resto": 34.0,
+   "psoe_capital": 29.3,
+   "psoe_resto": 35.8,
+   "dif_pp": 7.5,
+   "dif_psoe": -6.5
+  },
+  {
+   "capital": "Lleida",
+   "provincia": "Lleida",
+   "pp_capital": 18.1,
+   "pp_resto": 10.5,
+   "psoe_capital": 34.7,
+   "psoe_resto": 27.1,
+   "dif_pp": 7.6,
+   "dif_psoe": 7.6
+  },
+  {
+   "capital": "Vitoria-Gasteiz",
+   "provincia": "Álava",
+   "pp_capital": 19.9,
+   "pp_resto": 11.9,
+   "psoe_capital": 29.8,
+   "psoe_resto": 21.5,
+   "dif_pp": 8.0,
+   "dif_psoe": 8.3
+  },
+  {
+   "capital": "Donostia/San Sebastián",
+   "provincia": "Gipuzkoa",
+   "pp_capital": 15.3,
+   "pp_resto": 6.1,
+   "psoe_capital": 25.0,
+   "psoe_resto": 22.6,
+   "dif_pp": 9.2,
+   "dif_psoe": 2.4
+  },
+  {
+   "capital": "Granada",
+   "provincia": "Granada",
+   "pp_capital": 44.0,
+   "pp_resto": 34.6,
+   "psoe_capital": 27.2,
+   "psoe_resto": 35.0,
+   "dif_pp": 9.4,
+   "dif_psoe": -7.8
+  }
+ ],
+ "capitales_resumen": {
+  "mas_pp": 33,
+  "menos_pp": 17
+ },
+ "madrid_sur": {
+  "prov_pp": 40.5,
+  "prov_psoe": 27.9,
+  "municipios": [
+   {
+    "municipio": "Parla",
+    "grupo": "sur",
+    "pp": 28.3,
+    "psoe": 36.4,
+    "izq_2004": 69.4,
+    "izq_2023": 52.2,
+    "der_2023": 45.1,
+    "renta": 17942,
+    "gana": "PSOE",
+    "poblacion": 132621
+   },
+   {
+    "municipio": "Fuenlabrada",
+    "grupo": "sur",
+    "pp": 30.4,
+    "psoe": 37.5,
+    "izq_2004": 64.1,
+    "izq_2023": 52.4,
+    "der_2023": 45.0,
+    "renta": 20457,
+    "gana": "PSOE",
+    "poblacion": 188862
+   },
+   {
+    "municipio": "Leganés",
+    "grupo": "sur",
+    "pp": 32.4,
+    "psoe": 36.6,
+    "izq_2004": 62.0,
+    "izq_2023": 53.7,
+    "der_2023": 43.9,
+    "renta": 21756,
+    "gana": "PSOE",
+    "poblacion": 191539
+   },
+   {
+    "municipio": "Getafe",
+    "grupo": "sur",
+    "pp": 32.2,
+    "psoe": 34.4,
+    "izq_2004": 62.4,
+    "izq_2023": 53.1,
+    "der_2023": 44.6,
+    "renta": 23896,
+    "gana": "PSOE",
+    "poblacion": 189908
+   },
+   {
+    "municipio": "Alcorcón",
+    "grupo": "sur",
+    "pp": 37.8,
+    "psoe": 31.9,
+    "izq_2004": 54.7,
+    "izq_2023": 48.0,
+    "der_2023": 49.8,
+    "renta": 23503,
+    "gana": "PP",
+    "poblacion": 172536
+   },
+   {
+    "municipio": "Móstoles",
+    "grupo": "sur",
+    "pp": 35.9,
+    "psoe": 32.9,
+    "izq_2004": 56.9,
+    "izq_2023": 48.3,
+    "der_2023": 49.5,
+    "renta": 21168,
+    "gana": "PP",
+    "poblacion": 209802
+   },
+   {
+    "municipio": "Boadilla del Monte",
+    "grupo": "noroeste",
+    "pp": 58.0,
+    "psoe": 14.5,
+    "izq_2004": 32.7,
+    "izq_2023": 22.0,
+    "der_2023": 76.2,
+    "renta": 43769,
+    "gana": "PP",
+    "poblacion": 64659
+   },
+   {
+    "municipio": "Pozuelo de Alarcón",
+    "grupo": "noroeste",
+    "pp": 58.9,
+    "psoe": 15.3,
+    "izq_2004": 32.4,
+    "izq_2023": 22.1,
+    "der_2023": 76.4,
+    "renta": 49811,
+    "gana": "PP",
+    "poblacion": 87407
+   },
+   {
+    "municipio": "Majadahonda",
+    "grupo": "noroeste",
+    "pp": 56.5,
+    "psoe": 17.3,
+    "izq_2004": 34.7,
+    "izq_2023": 25.5,
+    "der_2023": 72.6,
+    "renta": 38270,
+    "gana": "PP",
+    "poblacion": 72227
+   },
+   {
+    "municipio": "Las Rozas de Madrid",
+    "grupo": "noroeste",
+    "pp": 54.9,
+    "psoe": 17.4,
+    "izq_2004": 36.0,
+    "izq_2023": 26.3,
+    "der_2023": 71.9,
+    "renta": 38462,
+    "gana": "PP",
+    "poblacion": 97748
+   },
+   {
+    "municipio": "Villanueva de la Cañada",
+    "grupo": "noroeste",
+    "pp": 53.9,
+    "psoe": 16.2,
+    "izq_2004": 29.9,
+    "izq_2023": 24.1,
+    "der_2023": 74.0,
+    "renta": 34220,
+    "gana": "PP",
+    "poblacion": 23057
+   }
+  ],
+  "boadilla_previsto": 61.7
+ },
+ "badalona": {
+  "M2023": {
+   "PP": 55.7,
+   "PSOE": 14.6,
+   "SUMAR": 13.1,
+   "CS": 0.3,
+   "ERC": 7.6,
+   "JUNTS": 4.8,
+   "VOX": 1.3,
+   "OTROS": 1.3,
+   "part": 57.9
+  },
+  "2023_07": {
+   "PP": 16.6,
+   "PSOE": 40.7,
+   "SUMAR": 15.5,
+   "CS": 0.0,
+   "ERC": 9.7,
+   "JUNTS": 5.2,
+   "VOX": 8.0,
+   "OTROS": 3.5,
+   "part": 63.7
+  },
+  "M2019": {
+   "PP": 37.6,
+   "PSOE": 19.9,
+   "SUMAR": 8.5,
+   "CS": 1.8,
+   "ERC": 24.5,
+   "JUNTS": 5.1,
+   "VOX": 0.4,
+   "OTROS": 1.6,
+   "part": 63.6
+  },
+  "2019_11": {
+   "PP": 9.4,
+   "PSOE": 25.6,
+   "SUMAR": 19.4,
+   "CS": 6.4,
+   "ERC": 17.1,
+   "JUNTS": 6.8,
+   "VOX": 8.4,
+   "OTROS": 6.1,
+   "part": 69.7
+  },
+  "M2015": {
+   "PP": 34.2,
+   "PSOE": 14.1,
+   "SUMAR": 24.2,
+   "CS": 5.6,
+   "ERC": 11.0,
+   "JUNTS": 7.9,
+   "VOX": 0.0,
+   "OTROS": 1.3,
+   "part": 57.4
+  },
+  "2015_12": {
+   "PP": 14.7,
+   "PSOE": 19.9,
+   "SUMAR": 30.1,
+   "CS": 14.5,
+   "ERC": 9.9,
+   "JUNTS": 6.9,
+   "VOX": 0.0,
+   "OTROS": 3.0,
+   "part": 70.0
+  },
+  "rank_pp_20k": 1,
+  "n_20k": 420,
+  "top": [
+   {
+    "municipio": "Badalona",
+    "provincia": "Barcelona",
+    "pp_m2023": 55.7,
+    "pp_g2023": 16.6,
+    "dif": 39.1
+   },
+   {
+    "municipio": "Carmona",
+    "provincia": "Sevilla",
+    "pp_m2023": 66.4,
+    "pp_g2023": 33.9,
+    "dif": 32.6
+   },
+   {
+    "municipio": "Onda",
+    "provincia": "Castellón",
+    "pp_m2023": 65.4,
+    "pp_g2023": 38.0,
+    "dif": 27.5
+   },
+   {
+    "municipio": "Torrejón de Ardoz",
+    "provincia": "Madrid",
+    "pp_m2023": 66.3,
+    "pp_g2023": 38.9,
+    "dif": 27.5
+   },
+   {
+    "municipio": "O Porriño",
+    "provincia": "Pontevedra",
+    "pp_m2023": 65.7,
+    "pp_g2023": 40.7,
+    "dif": 25.0
+   },
+   {
+    "municipio": "Archena",
+    "provincia": "Murcia",
+    "pp_m2023": 60.6,
+    "pp_g2023": 39.5,
+    "dif": 21.1
+   }
+  ]
+ },
+ "paro": {
+  "n_secciones": 34590,
+  "r2": 0.755,
+  "coef": {
+   "lrenta": 1.0,
+   "paro_2021": -4.0,
+   "estudios_sup_2021": 1.1,
+   "edad_media": 1.6,
+   "extranjeros": -1.9
+  },
+  "solo_renta": 5.3,
+  "r2_solo_renta": 0.619,
+  "deciles_renta_uc": [
+   {
+    "decil": 1,
+    "part": 62.1,
+    "min": 8797.0,
+    "max": 15551.0
+   },
+   {
+    "decil": 2,
+    "part": 67.5,
+    "min": 15552.0,
+    "max": 16934.0
+   },
+   {
+    "decil": 3,
+    "part": 68.6,
+    "min": 16935.0,
+    "max": 18130.0
+   },
+   {
+    "decil": 4,
+    "part": 69.5,
+    "min": 18131.0,
+    "max": 19251.0
+   },
+   {
+    "decil": 5,
+    "part": 70.1,
+    "min": 19252.0,
+    "max": 20403.0
+   },
+   {
+    "decil": 6,
+    "part": 70.4,
+    "min": 20404.0,
+    "max": 21723.0
+   },
+   {
+    "decil": 7,
+    "part": 70.8,
+    "min": 21724.0,
+    "max": 23451.0
+   },
+   {
+    "decil": 8,
+    "part": 71.5,
+    "min": 23454.0,
+    "max": 25839.0
+   },
+   {
+    "decil": 9,
+    "part": 73.4,
+    "min": 25840.0,
+    "max": 30065.0
+   },
+   {
+    "decil": 10,
+    "part": 77.4,
+    "min": 30066.0,
+    "max": 58752.0
+   }
+  ],
+  "deciles_paro_2021": [
+   {
+    "decil": 1,
+    "part": 76.5,
+    "min": 0.0,
+    "max": 0.0871
+   },
+   {
+    "decil": 2,
+    "part": 73.9,
+    "min": 0.0872,
+    "max": 0.107
+   },
+   {
+    "decil": 3,
+    "part": 72.8,
+    "min": 0.1071,
+    "max": 0.1235
+   },
+   {
+    "decil": 4,
+    "part": 72.0,
+    "min": 0.1236,
+    "max": 0.1399
+   },
+   {
+    "decil": 5,
+    "part": 71.4,
+    "min": 0.14,
+    "max": 0.157
+   },
+   {
+    "decil": 6,
+    "part": 70.5,
+    "min": 0.1571,
+    "max": 0.1749
+   },
+   {
+    "decil": 7,
+    "part": 69.6,
+    "min": 0.175,
+    "max": 0.1969
+   },
+   {
+    "decil": 8,
+    "part": 68.6,
+    "min": 0.197,
+    "max": 0.2283
+   },
+   {
+    "decil": 9,
+    "part": 67.0,
+    "min": 0.2284,
+    "max": 0.2757
+   },
+   {
+    "decil": 10,
+    "part": 61.0,
+    "min": 0.2759,
+    "max": 0.819
+   }
+  ],
+  "quintil_renta_tercil_paro": {
+   "1": {
+    "1": 69.2,
+    "2": 66.6,
+    "3": 59.1
+   },
+   "2": {
+    "1": 71.5,
+    "2": 69.7,
+    "3": 66.6
+   },
+   "3": {
+    "1": 72.0,
+    "2": 70.6,
+    "3": 68.4
+   },
+   "4": {
+    "1": 71.9,
+    "2": 71.4,
+    "3": 70.2
+   },
+   "5": {
+    "1": 77.2,
+    "2": 75.0,
+    "3": 74.0
+   }
+  },
+  "cataluna": {
+   "g2023": {
+    "paro": -1.74,
+    "renta": -0.42,
+    "r2": 0.719
+   },
+   "m2023": {
+    "paro": -3.33,
+    "renta": 0.63,
+    "r2": 0.476
+   },
+   "p2024": {
+    "paro": -3.15,
+    "renta": 0.46,
+    "r2": 0.756
+   }
+  }
+ }
+}

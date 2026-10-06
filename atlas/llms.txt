@@ -1,0 +1,12 @@
+# Atlas de las anomalías electorales
+
+> Piezas de periodismo de datos sobre lugares de España que votan distinto de lo esperado. Cada cifra sale de los resultados por mesa del Ministerio del Interior y de indicadores del INE; cada afirmación se etiqueta como dato, patrón o hipótesis.
+
+## Piezas
+
+
+## Referencia
+
+- [Metodología](https://mapaelectoral.es/atlas/metodologia/)
+- [Datos en CSV](https://mapaelectoral.es/atlas/datos/)
+- [Correcciones](https://mapaelectoral.es/atlas/correcciones/)

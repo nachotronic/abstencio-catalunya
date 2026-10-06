@@ -1,0 +1,53 @@
+cod_prov,provincia,escanos,ultimo_escano,aspirante,votos_que_faltaban
+17,Girona,6,Junts,PP,285
+39,Cantabria,5,Vox,PP,404
+43,Tarragona,6,Junts,PSOE,1248
+28,Madrid,37,PP,PSOE,1340
+02,Albacete,4,PSOE,Vox,1412
+37,Salamanca,4,PP,PSOE,1495
+38,Santa Cruz de Tenerife,7,PSOE,Sumar,1565
+51,Ceuta,1,PP,PSOE,1587
+44,Teruel,3,PP,Teruel Existe,1946
+29,Málaga,11,PP,PSOE,2429
+20,Gipuzkoa,6,PNV,Sumar,2433
+16,Cuenca,3,PP,PSOE,2728
+31,Navarra,5,PSOE,Sumar,2855
+19,Guadalajara,3,Vox,PP,3058
+35,Las Palmas,8,PP,NC-BC,3190
+25,Lleida,4,PSOE,PP,3509
+12,Castellón,5,Vox,Sumar,4727
+42,Soria,2,PSOE,SY,5270
+22,Huesca,3,PP,PSOE,5477
+36,Pontevedra,7,PSOE,BNG,6085
+32,Ourense,4,PP,PSOE,6087
+05,Ávila,3,PP,Vox,6117
+27,Lugo,4,PP,PSOE,6350
+52,Melilla,1,PP,PSOE,6504
+01,Álava,4,PNV,Sumar,6515
+06,Badajoz,5,Vox,PSOE,7004
+34,Palencia,3,PP,PSOE,7097
+30,Murcia,10,PSOE,PP,7379
+40,Segovia,3,PP,Vox,7438
+41,Sevilla,12,Sumar,Vox,7659
+33,Asturias,7,PP,PSOE,7768
+09,Burgos,4,PSOE,Vox,9030
+49,Zamora,3,PP,Vox,9447
+18,Granada,7,Sumar,PSOE,9840
+11,Cádiz,9,PP,PSOE,10504
+21,Huelva,5,Vox,Sumar,10821
+24,León,4,PSOE,Vox,10839
+15,A Coruña,8,BNG,PSOE,12063
+10,Cáceres,4,PP,Vox,12741
+26,La Rioja,4,PSOE,PP,13769
+47,Valladolid,5,Vox,PP,14675
+14,Córdoba,6,Sumar,PP,14807
+03,Alicante,12,PP,Sumar,16331
+45,Toledo,6,PP,Sumar,17075
+07,Illes Balears,8,PSOE,Sumar,17704
+08,Barcelona,32,PSOE,Vox,17998
+04,Almería,6,PP,Vox,19319
+46,Valencia,16,PP,PSOE,22117
+13,Ciudad Real,5,Vox,PP,23430
+48,Bizkaia,8,EH Bildu,PNV,24613
+23,Jaén,5,Vox,Sumar,24940
+50,Zaragoza,7,PP,PSOE,26919

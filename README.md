@@ -19,6 +19,20 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 
 `generales/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2015–2023) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales/README.md`.
 
+## Atlas de las anomalías electorales
+
+`atlas/`: piezas editoriales en series (excepciones, fronteras, gemelos, contra su provincia, ciudad y entorno, voto doble, bisagras, quién no vota). Cada pieza es HTML estático con titular, resumen, cifras en el texto, tabla accesible, gráfico SVG sin JavaScript, CSV descargable, método, fuentes, autoría, revisión y JSON-LD (NewsArticle, Dataset, FAQPage).
+
+Construir:
+
+```
+python3 atlas/src/construir.py && python3 atlas/src/controles.py && python3 atlas/src/paginas.py
+```
+
+`construir.py` calcula todas las cifras (`atlas/src/cifras.json`) y los CSV de `atlas/datos/`; `controles.py` comprueba escaños oficiales, universo, afirmaciones con nombre propio y que cada cifra del texto salga de los datos (informe en `atlas/src/controles.txt`); `paginas.py` escribe las páginas, el sitemap y `llms.txt`. `expediente.py` genera el expediente interno y la muestra para la comprobación manual (no se publica).
+
+Ninguna pieza se publica sola: mientras su campo `revisado` en `atlas/src/piezas.py` esté vacío, la página dice «Revisión pendiente», lleva `noindex` y queda fuera del sitemap. Se rellena con la fecha cuando el revisor ha comprobado la muestra manual y el texto.
+
 ## Publicar con GitHub Pages
 
 Settings → Pages → *Deploy from a branch* → `main` / `(root)`. Las dos páginas son autónomas: los datos van incrustados y las librerías se cargan desde unpkg.
