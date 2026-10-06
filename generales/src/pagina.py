@@ -66,6 +66,7 @@ def main():
         hoy=HOY, url=URL, autor=html.escape(AUTOR),
     )
     F.update({'tablas_' + k: v for k, v in tablas(V).items()})
+    F.update(historia(sec))
     F['jsonld'] = jsonld(F)
     tpl = open(os.path.join(AQUI, 'plantilla.html'), encoding='utf-8').read()
     out = tpl
@@ -82,6 +83,77 @@ def main():
         + ''.join(f'  <url><loc>{URL}{u}</loc><lastmod>{HOY}</lastmod></url>\n' for u in ('', 'metodologia.html', 'llms.txt'))
         + '</urlset>\n')
     print('ok', os.path.join(WEB, 'index.html'))
+
+
+ETQ = {'2004_03': '2004', '2008_03': '2008', '2011_11': '2011', '2015_12': '2015', '2016_06': '2016', '2019_04': 'abr. 2019',
+       '2019_11': 'nov. 2019', '2023_07': '2023'}
+
+
+def historia(sec):
+    """Brecha de participación por renta en todas las elecciones (deciles de renta 2023 fijos, ponderados por el censo
+    del 23J; las elecciones antiguas, solo en las secciones que conservan el código) y voto por renta en 2004 y 2023."""
+    x = sec[sec.renta_uc.notna() & (sec['2023_07_censo'] > 0)].sort_values('renta_uc')
+    cum = x['2023_07_censo'].cumsum() / x['2023_07_censo'].sum()
+    dec = pd.Series((cum * 10).apply(lambda v: min(10, int(-(-v // 1)))).values, index=x.tract_code)
+    y = sec.assign(dec=sec.tract_code.map(dec)).dropna(subset=['dec'])
+    elecs = [c[:-5] for c in sec.columns if c.endswith('_part') and f'{c[:-5]}_votantes' in sec]
+    part = {e: y[y[f'{e}_part'].notna()].groupby('dec').apply(lambda g: g[f'{e}_votantes'].sum() / g[f'{e}_censo'].sum())
+            for e in elecs}
+    # otras variables (23J): paro y estudios
+    def part_por(v):
+        z = sec[sec[v].notna() & (sec['2023_07_censo'] > 0)].sort_values(v)
+        c = z['2023_07_censo'].cumsum() / z['2023_07_censo'].sum()
+        z = z.assign(dec=(c * 10).apply(lambda t: min(10, int(-(-t // 1)))).values)
+        g = z.groupby('dec')[['2023_07_votantes', '2023_07_censo']].sum()
+        return g['2023_07_votantes'] / g['2023_07_censo']
+    r = pd.read_csv(os.path.join(DATOS, 'resultados_secciones_largo.csv'), dtype={'tract_code': str})
+    r = r.assign(dec=r.tract_code.map(dec)).dropna(subset=['dec'])
+    g = r.groupby(['eleccion', 'dec'])[['candidaturas', 'blancos', 'PP', 'PSOE', 'VOX']].sum()
+    sh = g[['PP', 'PSOE', 'VOX']].div(g.candidaturas + g.blancos, axis=0)
+    gap = {e: v.loc[10] - v.loc[1] for e, v in part.items()}
+    pp, pa = part_por('paro_2021'), part_por('estudios_sup_2021')
+    F = dict(
+        h_gap04=p(gap['2004_03'], 1).replace('%', ' puntos'), h_gap23=p(gap['2023_07'], 1).replace('%', ' puntos'),
+        h_gap19=p(gap['2019_11'], 1).replace('%', ' puntos'),
+        h_p04_1=p(part['2004_03'].loc[1], 1), h_p04_10=p(part['2004_03'].loc[10], 1),
+        h_psoe04_1=p(sh.loc[('2004_03', 1), 'PSOE'], 1), h_psoe04_10=p(sh.loc[('2004_03', 10), 'PSOE'], 1),
+        h_pp04_1=p(sh.loc[('2004_03', 1), 'PP'], 1), h_pp04_10=p(sh.loc[('2004_03', 10), 'PP'], 1),
+        paro_part1=p(pp.loc[1], 1), paro_part10=p(pp.loc[10], 1), est_part1=p(pa.loc[1], 1), est_part10=p(pa.loc[10], 1),
+    )
+    for e, k in (('E2024', 'e24'), ('E2019', 'e19'), ('M2023', 'm23'), ('M2011', 'm11')):
+        if e in part:
+            F.update({f'{k}_1': p(part[e].loc[1], 1), f'{k}_10': p(part[e].loc[10], 1), f'{k}_gap': p(gap[e], 1).replace('%', ' puntos')})
+    if 'M2023' in part:
+        F.update(m23_vox1=p(sh.loc[('M2023', 1), 'VOX'], 1), m23_vox10=p(sh.loc[('M2023', 10), 'VOX'], 1))
+    F['chart_brecha'] = svg_brecha(gap)
+    return F
+
+
+def svg_brecha(gap):
+    """Barras: diferencia de participación entre el 10% más rico y el 10% más pobre, por elección (HTML estático)."""
+    grupos = [('Generales', [e for e in ETQ if e in gap]), ('Municipales', sorted(e for e in gap if e[0] == 'M')),
+              ('Europeas', sorted(e for e in gap if e[0] == 'E'))]
+    filas = []
+    for nom, es in grupos:
+        if es:
+            filas.append(('h', nom))
+            filas += [('b', e) for e in es]
+    W, hb, x0, mx = 420, 24, 74, max(gap.values())
+    H = len(filas) * hb + 8
+    out = [f'<svg class="brecha" viewBox="0 0 {W} {H}" role="img" aria-label="Diferencia de participación entre las secciones más ricas y las más pobres, por elección">']
+    yy = 4
+    for t, v in filas:
+        if t == 'h':
+            out.append(f'<text class="gh" x="0" y="{yy + 15}">{v}</text>')
+        else:
+            w = (W - x0 - 62) * gap[v] / mx
+            lab = ETQ.get(v, v[1:])
+            out.append(f'<text class="ax" x="{x0 - 8}" y="{yy + 15}" text-anchor="end">{lab}</text>'
+                       f'<rect class="bar{" e" if v[0] in "ME" else ""}" x="{x0}" y="{yy + 4}" width="{w:.1f}" height="{hb - 8}" rx="2"/>'
+                       f'<text class="val" x="{x0 + w + 6:.1f}" y="{yy + 15}">{p(gap[v], 1).replace("%", "")} pts</text>')
+        yy += hb
+    out.append('</svg>')
+    return ''.join(out)
 
 
 def tablas(V):
@@ -155,6 +227,7 @@ Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0.
 - Vox sacó el {F['e_vox1']} en las secciones más jóvenes (edad media inferior a {F['e_hi1']} años) y el {F['e_vox10']} en las más envejecidas.
 - En las secciones con más población extranjera (más del {F['x_lo10']}) la participación fue del {F['x_part10']}, frente al {F['x_part1']} en las que menos.
 - Unos {F['sin']} adultos residentes ({F['sin_pct']}) no pueden votar en unas generales por no tener la nacionalidad española.
+- La diferencia de participación entre el 10% de secciones más ricas y el 10% más pobres pasó de {F['h_gap04']} en 2004 a {F['h_gap23']} en 2023 (mismas secciones, ordenadas por su renta de 2023). En las europeas de 2024 fue de {F['e24_gap']}.
 
 ## Páginas
 - [Pieza interactiva]({F['url']}): mapa por municipio y sección censal y gráficos por decil.

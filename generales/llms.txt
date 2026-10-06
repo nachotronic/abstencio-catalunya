@@ -11,6 +11,7 @@ Autor: Nacho. Actualizado: 2026-10-06. Licencia de los datos: CC BY 4.0.
 - Vox sacó el 17% en las secciones más jóvenes (edad media inferior a 39 años) y el 10% en las más envejecidas.
 - En las secciones con más población extranjera (más del 24%) la participación fue del 63%, frente al 73% en las que menos.
 - Unos 5.200.000 adultos residentes (13%) no pueden votar en unas generales por no tener la nacionalidad española.
+- La diferencia de participación entre el 10% de secciones más ricas y el 10% más pobres pasó de 7,9 puntos en 2004 a 15,2 puntos en 2023 (mismas secciones, ordenadas por su renta de 2023). En las europeas de 2024 fue de 22,2 puntos.
 
 ## Páginas
 - [Pieza interactiva](https://nachotronic.github.io/abstencio-catalunya/generales/): mapa por municipio y sección censal y gráficos por decil.

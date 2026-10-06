@@ -111,6 +111,17 @@ details.tabla table{border-collapse:collapse;width:100%;margin-top:6px;font-vari
 details.tabla caption{text-align:left;color:var(--muted);padding-bottom:4px}
 details.tabla th,details.tabla td{border-bottom:1px solid var(--line);padding:3px 6px;text-align:right}
 details.tabla th:nth-child(2),details.tabla td:nth-child(2){text-align:left}
+figure.fig{margin:28px 0}
+figure.fig figcaption{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
+figure.fig h3{font-family:var(--sans);font-size:16px;margin:0 0 8px}
+svg.brecha{width:100%;max-width:560px;height:auto;display:block}
+svg.brecha .ax,svg.brecha .val{font-family:var(--sans);font-size:13px;fill:var(--ink2)}
+svg.brecha .val{font-family:var(--mono);font-size:12px}
+svg.brecha .gh{font-family:var(--sans);font-size:12px;font-weight:600;fill:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+svg.brecha .bar{fill:var(--ink2)} svg.brecha .bar.e{fill:var(--muted)}
+blockquote.cita{margin:22px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent)}
+blockquote.cita p{margin:0 0 6px;font-style:italic}
+blockquote.cita footer,blockquote.cita cite{font-family:var(--sans);font-size:13px;font-style:normal;color:var(--muted);border:0;margin:0;padding:0}
 .go{font-family:var(--sans);font-size:.85em;font-weight:600;color:var(--accent);cursor:pointer;text-decoration:underline;text-decoration-style:dotted}
 footer{border-top:1px solid var(--line);margin-top:64px;padding:24px 0 48px;font-family:var(--sans);font-size:14px;color:var(--muted)}
 footer a{color:var(--ink2)}
@@ -175,6 +186,18 @@ footer a{color:var(--ink2)}
   <p>La pobreza dibuja lo mismo desde el otro lado: donde más de un {{pob10}} de los vecinos vive por debajo del umbral de riesgo de pobreza, la participación fue del {{pob_part10}}, frente al {{pob_part1}} donde menos. <a class="go" data-go="pobreza">Ver la pobreza en el mapa</a></p>
 </section>
 
+<section class="col" aria-labelledby="h-brecha">
+  <h2 id="h-brecha">Una brecha que se ha duplicado en veinte años</h2>
+  <p>La diferencia de participación entre los barrios más ricos y los más pobres no es nueva, pero ha crecido. En las generales de 2004, las secciones del 10% de menor renta votaron un {{h_p04_1}} y las del 10% de mayor renta, un {{h_p04_10}}: <b>{{h_gap04}}</b> de diferencia. En 2023 fueron <b>{{h_gap23}}</b>. El máximo de la serie llegó en la repetición electoral de noviembre de 2019, con {{h_gap19}}.</p>
+  <p>La comparación usa los mismos barrios en todas las elecciones: las secciones se ordenan por su renta de 2023 y los resultados antiguos solo se cuentan en las que conservan el mismo código desde entonces. Mide, por tanto, cómo ha cambiado la participación en los barrios que hoy son ricos o pobres, no en los que lo eran en cada momento.</p>
+  <figure class="fig">
+    <h3>Diferencia de participación entre el 10% más rico y el 10% más pobre</h3>
+    {{chart_brecha}}
+    <figcaption>Puntos porcentuales de participación entre los deciles extremos de renta por unidad de consumo (INE, 2023), ponderados por censo electoral. Fuente: Ministerio del Interior e INE.</figcaption>
+  </figure>
+  <p>El voto también se ha desplazado. En 2004 el PSOE sacó el {{h_psoe04_1}} en las secciones más pobres y el {{h_psoe04_10}} en las más ricas, y el PP, el {{h_pp04_1}} y el {{h_pp04_10}}. El reparto por renta se mantiene en 2023, con niveles más bajos para los dos por la llegada de otros partidos.</p>
+</section>
+
 <section class="wide" aria-label="Gráficos de voto por decil">
   <div class="charts">
     <div class="chartcard"><h3>Por renta</h3><p class="sub">Voto en el 23J por decil de renta por unidad de consumo</p><div class="chart" data-var="renta_uc" data-lo="← más pobres" data-hi="más ricas →"></div>{{tablas_renta_uc}}</div>
@@ -184,6 +207,11 @@ footer a{color:var(--ink2)}
     <div class="chartcard"><h3>Por estudios</h3><p class="sub">Por decil de adultos con estudios superiores (2021)</p><div class="chart" data-var="estudios_sup_2021" data-lo="← menos" data-hi="más →"></div>{{tablas_estudios_sup_2021}}</div>
     <div class="chartcard"><h3>Por paro</h3><p class="sub">Por decil de tasa de paro (2021)</p><div class="chart" data-var="paro_2021" data-lo="← menos paro" data-hi="más →"></div>{{tablas_paro_2021}}</div>
   </div>
+</section>
+
+<section class="col" aria-labelledby="h-est">
+  <h2 id="h-est">Estudios y paro: el mismo dibujo</h2>
+  <p>Los datos del censo de 2021 repiten el patrón de la renta. En el 10% de secciones con menos adultos con estudios superiores votó el {{est_part1}} en 2023; en el 10% con más, el {{est_part10}}. Con el paro ocurre al revés: {{paro_part1}} donde menos paro había y {{paro_part10}} donde más. Renta, estudios y paro van muy unidos en los mismos barrios, así que estos datos no permiten separar el peso de cada uno. <a class="go" data-go="paro_2021">Ver el paro en el mapa</a></p>
 </section>
 
 <section class="col" aria-labelledby="h-edad">
@@ -196,6 +224,12 @@ footer a{color:var(--ink2)}
   <p>Donde más de un {{x_lo10}} de los vecinos son extranjeros, la participación fue del <b>{{x_part10}}</b>, frente al {{x_part1}} donde casi no hay. El voto a Vox apenas cambia entre unas y otras ({{x_vox1}} y {{x_vox10}}). Entre los municipios de más de 50.000 habitantes, Vox tuvo sus mejores resultados en {{vox_top}}.</p>
   <p>Además, unos <b>{{sin}}</b> adultos que viven en España, el {{sin_pct}}, no pueden votar en unas generales porque no tienen la nacionalidad española. No están en el censo y la participación oficial no los cuenta. <a class="go" data-go="sin_derecho">Ver en el mapa</a></p>
   <p>Entre los municipios de más de 50.000 habitantes, la participación más baja fue la de {{low}}. La más alta, {{high}}. <a class="go" data-go="part::2023_07">Ver la participación en el mapa</a></p>
+</section>
+
+<section class="col" aria-labelledby="h-otras">
+  <h2 id="h-otras">Municipales y europeas: la brecha depende de la elección</h2>
+  <p>En las europeas de 2024, con una participación del 49%, la diferencia entre barrios fue la mayor de todas las elecciones analizadas: votó el {{e24_1}} en las secciones más pobres y el {{e24_10}} en las más ricas, <b>{{e24_gap}}</b>. En las europeas de 2019, celebradas el mismo día que las municipales, fue de {{e19_gap}}.</p>
+  <p>En las municipales la distancia ha sido menor, aunque también es mayor que hace una década: {{m11_gap}} en 2011 y {{m23_gap}} en 2023 ({{m23_1}} frente a {{m23_10}}), por debajo del máximo de 2019. En las municipales de 2023, Vox sacó más en las secciones más ricas ({{m23_vox10}}) que en las más pobres ({{m23_vox1}}), al contrario que en las generales de ese mismo año. Hay que tener en cuenta que en municipales Vox no se presentó en todos los municipios. Son datos descriptivos: no dicen por qué ocurre. <a class="go" data-go="part::E2024">Ver la participación de las europeas</a></p>
 </section>
 
 <section class="col" aria-labelledby="h-29n">
