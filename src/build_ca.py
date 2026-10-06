@@ -106,6 +106,8 @@ JS = [
     # secciones que menos votan
     ('<th>Sección</th><th>Partic.</th><th>Adultos que votan</th><th>Sin derecho</th><th>Renta u.c.</th><th>Extranj.</th><th>Univ.</th><th>Paro</th>',
      '<th>Secció</th><th>Partic.</th><th>Adults que voten</th><th>Sense dret</th><th>Renda u.c.</th><th>Estrang.</th><th>Univ.</th><th>Atur</th>', 1),
+    # evolución 2015-2024 y buscador: todos sus textos están en el objeto TXT
+    (open(I18N / 'txt_es.js', encoding='utf-8').read().strip(), open(I18N / 'txt_ca.js', encoding='utf-8').read().strip(), 1),
     # textos alternativos de las fotos
     ('"Concierto de habaneras con el público junto al mar, en Calella de Palafrugell"', '"Concert d\'havaneres amb el públic vora el mar, a Calella de Palafrugell"', 1),
     ('"Fuente y paseo con palmeras en el centro de Salou"', '"Font i passeig amb palmeres al centre de Salou"', 1),
