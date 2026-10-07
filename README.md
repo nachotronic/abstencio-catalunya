@@ -2,8 +2,9 @@
 
 Abstención en las elecciones generales (2015–2023) por sección censal en Cataluña, cruzada con renta, edad, estudios, paro y población extranjera.
 
-- `index.html`: pieza de scroll con mapa 3D (deck.gl + scrollama). La cámara avanza con el scroll y recorre los lugares que nombra el texto; termina en un mapa plano para explorar.
-- `ca.html`: la misma pieza en catalán, con selector ES/CA arriba. Se genera desde `index.html` con `python3 src/build_ca.py` (el texto catalán está en `src/i18n/ca_body.html`; si cambia el texto castellano, el script avisa hasta que se actualice la traducción y se ejecute con `--accept`).
+- `index.html`: portada del sitio, el mapa de resultados de España. Es una copia de `generales-2026/index.html` con las rutas ajustadas, generada con `python3 src/portada.py`, que hay que ejecutar cada vez que se actualice la pieza de `generales-2026/` (deja en `generales-2026/index.html` una redirección a la portada).
+- `abstencion.html`: pieza de scroll con mapa 3D (deck.gl + scrollama). La cámara avanza con el scroll y recorre los lugares que nombra el texto; termina en un mapa plano para explorar.
+- `ca.html`: la misma pieza en catalán, con selector ES/CA arriba. Se genera desde `abstencion.html` con `python3 src/build_ca.py` (el texto catalán está en `src/i18n/ca_body.html`; si cambia el texto castellano, el script avisa hasta que se actualice la traducción y se ejecute con `--accept`).
 - `calles.json`: índice de calles del buscador «¿Y en tu calle?» (callejero del censo electoral del INE, enero de 2023), generado con `src/calles.py`. Las dos páginas lo cargan cuando alguien empieza a escribir.
 - `data/evolucion_secciones.csv`: participación por sección en las doce elecciones de 2015 a 2024 (municipales, Parlament y Congreso), generada con `src/evolucion.py` desde Transparència Catalunya.
 - `mapa.html`: mapa interactivo en 2D con los gráficos y la metodología.

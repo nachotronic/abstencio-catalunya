@@ -38,3 +38,5 @@ Requisitos: Python 3 con pandas, geopandas, pyarrow. `python3 construir.py && py
 - Totales nacionales por elección coherentes con los oficiales (diferencias de décimas por excluir el CERA).
 - El reparto de escaños de 2023 recalculado con D'Hondt reproduce el oficial (PP 137, PSOE 121, Vox 33, Sumar 31…) al incluir el CERA, y da PP 136 y PSOE 122 sin él, que fue el resultado de la noche electoral.
 - El lector de ficheros de Interior se ha probado con ficheros sintéticos en el formato de registro de `pollspaindata`, no con un fichero real de Interior (infoelectoral corta las conexiones desde este entorno).
+
+Esta pieza es la portada del sitio: después de copiar aquí `index.html` regenerado, ejecuta `python3 src/portada.py` desde la raíz del repositorio. Copia la página a `/index.html` con las rutas corregidas y deja aquí una redirección a la portada.

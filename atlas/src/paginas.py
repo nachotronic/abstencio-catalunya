@@ -22,7 +22,7 @@ CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://stat
 HOY = datetime.date.today().isoformat()
 PUBLICADO = '2026-10-06'
 # página de resultados de España (la pieza de las generales); se mueve a /generales-2026/
-GENERALES = 'generales-2026/'   # la pieza de resultados de España se mueve aquí (PR #26); /generales/ redirige
+GENERALES = ''   # el mapa de resultados de España es la portada del sitio (index.html en la raíz)
 
 FUENTES = {
     'interior': ('Ministerio del Interior, resultados electorales por mesa (Infoelectoral). Congreso 2004-2023 vía pollspaindata, commit ee5ecda; municipales 2007-2023 de los ficheros de Infoelectoral',
