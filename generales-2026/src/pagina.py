@@ -218,7 +218,7 @@ def jsonld(F):
         'description': f"Resultados del Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.",
         'datePublished': F['hoy'], 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
         'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'isAccessibleForFree': True,
-        'about': [{'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29'}],
+        'about': [{'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29', 'endDate': '2026-11-29', 'location': {'@type': 'Place', 'name': 'España', 'address': {'@type': 'PostalAddress', 'addressCountry': 'ES'}}}],
         'citation': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://www.ine.es/censos2021/'],
     }
     ds = {
