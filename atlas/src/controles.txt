@@ -1,4 +1,4 @@
-Controles del Atlas: 305 de 305 superados
+Controles del Atlas: 328 de 328 superados
 
 OK   8.131 municipios en la base
 OK   D'Hondt con CERA reproduce los 350 escaños oficiales de 2023
@@ -178,26 +178,32 @@ OK   capitales-frente-a-su-provincia: campos completos
 OK   capitales-frente-a-su-provincia: serie existe
 OK   capitales-frente-a-su-provincia: CSV existe
 OK   capitales-frente-a-su-provincia: sin lenguaje causal en titular, resumen, datos y patrones
+OK   capitales-frente-a-su-provincia: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   sur-de-madrid: campos completos
 OK   sur-de-madrid: serie existe
 OK   sur-de-madrid: CSV existe
 OK   sur-de-madrid: sin lenguaje causal en titular, resumen, datos y patrones
+OK   sur-de-madrid: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   a-illa-vilanova-de-arousa: campos completos
 OK   a-illa-vilanova-de-arousa: serie existe
 OK   a-illa-vilanova-de-arousa: CSV existe
 OK   a-illa-vilanova-de-arousa: sin lenguaje causal en titular, resumen, datos y patrones
+OK   a-illa-vilanova-de-arousa: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   cabra-montilla: campos completos
 OK   cabra-montilla: serie existe
 OK   cabra-montilla: CSV existe
 OK   cabra-montilla: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cabra-montilla: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   puerto-real: campos completos
 OK   puerto-real: serie existe
 OK   puerto-real: CSV existe
 OK   puerto-real: sin lenguaje causal en titular, resumen, datos y patrones
+OK   puerto-real: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   badalona: campos completos
 OK   badalona: serie existe
 OK   badalona: CSV existe
 OK   badalona: sin lenguaje causal en titular, resumen, datos y patrones
+OK   badalona: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   paro-renta-participacion: campos completos
 OK   paro-renta-participacion: serie existe
 OK   paro-renta-participacion: CSV existe
@@ -206,34 +212,42 @@ OK   cuencas-mineras-asturianas: campos completos
 OK   cuencas-mineras-asturianas: serie existe
 OK   cuencas-mineras-asturianas: CSV existe
 OK   cuencas-mineras-asturianas: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cuencas-mineras-asturianas: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   lalin-vilanova-de-arousa: campos completos
 OK   lalin-vilanova-de-arousa: serie existe
 OK   lalin-vilanova-de-arousa: CSV existe
 OK   lalin-vilanova-de-arousa: sin lenguaje causal en titular, resumen, datos y patrones
+OK   lalin-vilanova-de-arousa: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   cuenca-de-pamplona: campos completos
 OK   cuenca-de-pamplona: serie existe
 OK   cuenca-de-pamplona: CSV existe
 OK   cuenca-de-pamplona: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cuenca-de-pamplona: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   getxo-portugalete: campos completos
 OK   getxo-portugalete: serie existe
 OK   getxo-portugalete: CSV existe
 OK   getxo-portugalete: sin lenguaje causal en titular, resumen, datos y patrones
+OK   getxo-portugalete: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   aranda-miranda: campos completos
 OK   aranda-miranda: serie existe
 OK   aranda-miranda: CSV existe
 OK   aranda-miranda: sin lenguaje causal en titular, resumen, datos y patrones
+OK   aranda-miranda: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   los-palacios-y-villafranca: campos completos
 OK   los-palacios-y-villafranca: serie existe
 OK   los-palacios-y-villafranca: CSV existe
 OK   los-palacios-y-villafranca: sin lenguaje causal en titular, resumen, datos y patrones
+OK   los-palacios-y-villafranca: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   castro-urdiales: campos completos
 OK   castro-urdiales: serie existe
 OK   castro-urdiales: CSV existe
 OK   castro-urdiales: sin lenguaje causal en titular, resumen, datos y patrones
+OK   castro-urdiales: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   vigo: campos completos
 OK   vigo: serie existe
 OK   vigo: CSV existe
 OK   vigo: sin lenguaje causal en titular, resumen, datos y patrones
+OK   vigo: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   pueblos-pequenos: campos completos
 OK   pueblos-pequenos: serie existe
 OK   pueblos-pequenos: CSV existe
@@ -242,38 +256,47 @@ OK   jodar: campos completos
 OK   jodar: serie existe
 OK   jodar: CSV existe
 OK   jodar: sin lenguaje causal en titular, resumen, datos y patrones
+OK   jodar: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   sant-cugat-badia: campos completos
 OK   sant-cugat-badia: serie existe
 OK   sant-cugat-badia: CSV existe
 OK   sant-cugat-badia: sin lenguaje causal en titular, resumen, datos y patrones
+OK   sant-cugat-badia: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   ontigola-aranjuez: campos completos
 OK   ontigola-aranjuez: serie existe
 OK   ontigola-aranjuez: CSV existe
 OK   ontigola-aranjuez: sin lenguaje causal en titular, resumen, datos y patrones
+OK   ontigola-aranjuez: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   morrazo-sanxenxo: campos completos
 OK   morrazo-sanxenxo: serie existe
 OK   morrazo-sanxenxo: CSV existe
 OK   morrazo-sanxenxo: sin lenguaje causal en titular, resumen, datos y patrones
+OK   morrazo-sanxenxo: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   arahal-marchena: campos completos
 OK   arahal-marchena: serie existe
 OK   arahal-marchena: CSV existe
 OK   arahal-marchena: sin lenguaje causal en titular, resumen, datos y patrones
+OK   arahal-marchena: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   manilva: campos completos
 OK   manilva: serie existe
 OK   manilva: CSV existe
 OK   manilva: sin lenguaje causal en titular, resumen, datos y patrones
+OK   manilva: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   alcoi: campos completos
 OK   alcoi: serie existe
 OK   alcoi: CSV existe
 OK   alcoi: sin lenguaje causal en titular, resumen, datos y patrones
+OK   alcoi: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   capitales-municipales: campos completos
 OK   capitales-municipales: serie existe
 OK   capitales-municipales: CSV existe
 OK   capitales-municipales: sin lenguaje causal en titular, resumen, datos y patrones
+OK   capitales-municipales: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   europeas-2024: campos completos
 OK   europeas-2024: serie existe
 OK   europeas-2024: CSV existe
 OK   europeas-2024: sin lenguaje causal en titular, resumen, datos y patrones
+OK   europeas-2024: cada lugar enlaza a un solo municipio del mapa de resultados
 OK   a-illa-vilanova.csv: 8 filas sin valores vacíos
 OK   alcoi.csv: 8 filas sin valores vacíos
 OK   arahal-marchena.csv: 9 filas sin valores vacíos

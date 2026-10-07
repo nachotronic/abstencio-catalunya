@@ -283,11 +283,13 @@
   $('#q').addEventListener('change', e => {
     const v = e.target.value.trim().toLowerCase(); if (!v) return;
     const i = ORD.find(i => `${MUN.nombre[i]} (${MUN.provs[MUN.prov[i]] || ''})`.toLowerCase() === v) ?? ORD.find(i => MUN.nombre[i].toLowerCase().startsWith(v));
-    if (i == null) return;
+    if (i != null) abre(i);
+  });
+  function abre(i) {
     const big = (MUN.poblacion[i] || 0) > 200000;
     fly({ longitude: MUN.c[i][0], latitude: MUN.c[i][1], zoom: big ? 10.2 : 11 });
     const all = MUNP.filter(p => p.i === i); hover = { key: 'mun' + i, polys: all }; redraw();
-  });
+  }
   $('#home').onclick = () => fly(HOME());
   function fly(to) {
     view = { ...view, ...to, transitionDuration: 'auto', transitionInterpolator: new deck.FlyToInterpolator({ speed: 1.6 }) };
@@ -296,6 +298,17 @@
   window.addEventListener('resize', () => redraw());
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { legend(); redraw(); });
   sync();
+
+  // ---------- enlace a un municipio (?m=<código INE>&e=<elección>), el que usan las piezas del Atlas
+  const Q = new URLSearchParams(location.search), qm = MUN.cod.indexOf(Q.get('m'));
+  if (qm >= 0) {
+    const qe = Q.get('e');
+    if (qe && qe !== st.y && ELEC.some(e => e.cod === qe)) { selE.value = qe; await elige(qe); }
+    $('#q').value = `${MUN.nombre[qm]} (${MUN.provs[MUN.prov[qm]] || ''})`;
+    abre(qm);
+    tip.innerHTML = ficha(MUN, qm, false); tip.hidden = false;
+    tip.style.left = '8px'; tip.style.top = narrow() ? 'auto' : '8px'; tip.style.bottom = narrow() ? '8px' : 'auto';
+  }
 
 
   // ---------- directo (noche electoral): JSON normalizado (ver actualizar_29n.py) cada minuto

@@ -168,6 +168,25 @@ def ld_pieza(p, ruta):
 ETIQ = {'dato': 'Dato', 'patrón': 'Patrón'}
 
 
+# enlaces al mapa de resultados (?m=<código INE>&e=<elección>): un municipio por cada lugar de la pieza
+MUN_MAPA = json.loads((ROOT / 'generales-2026' / 'data' / 'municipios.json').read_text(encoding='utf-8'))
+MAPA_HOMONIMOS = {'Mieres': '33037'}   # hay otro Mieres en Girona; las piezas hablan del asturiano
+MAPA_ELECCION = {'capitales-municipales': 'M2023', 'europeas-2024': 'E2024'}   # el resto abre las generales de 2023
+
+
+def enlaces_mapa(p):
+    if p['serie'] == 'bisagras':   # sus lugares son provincias, no municipios
+        return []
+    out = []
+    for lugar in p['lugares']:
+        cods = [MAPA_HOMONIMOS[lugar]] if lugar in MAPA_HOMONIMOS else \
+               [c for c, n in zip(MUN_MAPA['cod'], MUN_MAPA['nombre']) if lugar == n or lugar in n.split('/')]
+        if len(cods) == 1:
+            e = MAPA_ELECCION.get(p['slug'])
+            out.append((lugar, f'{cods[0]}' + (f'&amp;e={e}' if e else '')))
+    return out
+
+
 def pagina_pieza(p):
     ruta = f'{p["serie"]}/{p["slug"]}/index.html'
     rev = p['revisado']
@@ -194,6 +213,9 @@ def pagina_pieza(p):
         h.append('<h2>Sobre el terreno</h2>' + ''.join(f'<p><span class="tipo">Dato</span>{escape(t)} <span class="fuentes-nota">Fuentes: ' + ', '.join(f'<a href="{escape(u)}">{i}</a>' for i, u in enumerate(us, 1)) + '</span></p>' for t, us in p['color']))
     h.append('<h2>Lo que no sabemos</h2><ul>' + ''.join(f'<li><span class="tipo">Hipótesis</span>{escape(x)}</li>' for x in p['no_sabemos']) + '</ul>')
     h.append('<h2>Los datos</h2>' + tabla(p['tabla']) + f'<p><a href="../../datos/{p["csv"]}">Descargar los datos en CSV</a></p>')
+    if enlaces_mapa(p):
+        h.append('<p class="mapa-enlaces">Ver en el mapa de resultados: ' +
+                 ' · '.join(f'<a href="../../../{GENERALES}index.html?m={q}">{escape(l)}</a>' for l, q in enlaces_mapa(p)) + '</p>')
     if p.get('faq'):
         h.append('<h2>Preguntas</h2>' + ''.join(f'<h3>{escape(q)}</h3><p>{escape(a)}</p>' for q, a in p['faq']))
     fuentes = ''.join(f'<li>{f"<a href=\"{FUENTES[k][1]}\">" if FUENTES[k][1] else ""}{escape(FUENTES[k][0])}{"</a>" if FUENTES[k][1] else ""}</li>' for k in p['fuentes'])

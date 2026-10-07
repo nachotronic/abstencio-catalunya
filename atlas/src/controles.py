@@ -319,6 +319,10 @@ def main():
         control(f'{p["slug"]}: CSV existe', (ATLAS / 'datos' / p['csv']).exists(), p['csv'])
         causales = [t for tipo, t in p['cuerpo'] if tipo != 'sub' and CAUSALES.search(t)] + [t for t in [p['titulo'], p['resumen']] if CAUSALES.search(t)]
         control(f'{p["slug"]}: sin lenguaje causal en titular, resumen, datos y patrones', not causales, causales)
+        if p['serie'] != 'bisagras' and p['lugares']:
+            from paginas import enlaces_mapa
+            sin = set(p['lugares']) - {l for l, _ in enlaces_mapa(p)}
+            control(f'{p["slug"]}: cada lugar enlaza a un solo municipio del mapa de resultados', not sin, sin)
         if p.get('revisado') is None:
             pagina = (ATLAS / p['serie'] / p['slug'] / 'index.html')
             if pagina.exists():
