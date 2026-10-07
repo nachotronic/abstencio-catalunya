@@ -56,6 +56,8 @@ h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
 .tipo{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px}
 figure{margin:1.6rem 0;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px}
 figcaption{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:8px}
+.foto{padding:0;overflow:hidden}.foto img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}.foto figcaption{padding:0 14px 12px}
+.fuentes-nota{font-family:var(--mono);font-size:.76rem;color:var(--muted);white-space:nowrap}
 svg.graf{width:100%;height:auto;display:block}
 .tbl{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:.92rem}
@@ -182,7 +184,7 @@ def pagina_pieza(p):
         h.append(f'<h2>{escape(texto)}</h2>' if tipo == 'sub' else f'<p><span class="tipo">{ETIQ[tipo]}</span>{escape(texto)}</p>')
     h.append('</div>')
     if p.get('color'):
-        h.append('<h2>Sobre el terreno</h2>' + ''.join(f'<p>{escape(t)} <span class="fuentes-nota">Fuentes: ' + ', '.join(f'<a href="{escape(u)}">{i}</a>' for i, u in enumerate(us, 1)) + '</span></p>' for t, us in p['color']))
+        h.append('<h2>Sobre el terreno</h2>' + ''.join(f'<p><span class="tipo">Dato</span>{escape(t)} <span class="fuentes-nota">Fuentes: ' + ', '.join(f'<a href="{escape(u)}">{i}</a>' for i, u in enumerate(us, 1)) + '</span></p>' for t, us in p['color']))
     h.append('<h2>Lo que no sabemos</h2><ul>' + ''.join(f'<li><span class="tipo">Hipótesis</span>{escape(x)}</li>' for x in p['no_sabemos']) + '</ul>')
     h.append('<h2>Los datos</h2>' + tabla(p['tabla']) + f'<p><a href="../../datos/{p["csv"]}">Descargar los datos en CSV</a></p>')
     if p.get('faq'):
