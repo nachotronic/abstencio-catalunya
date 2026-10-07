@@ -35,4 +35,19 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
 Sitemap: https://mapaelectoral.es/sitemap_index.xml
