@@ -2,7 +2,7 @@
 
 > De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. Mapa de las 5.115 secciones censales cruzado con renta, estudios, paro, edad y población extranjera, de 2015 a 2024.
 
-Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [Nacho G. del Álamo](https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html). Publicada el 2026-10-05; actualizada el 2026-10-06. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
+Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [Nacho G. del Álamo](https://mapaelectoral.es/sobre-mi.html). Publicada el 2026-10-05; actualizada el 2026-10-06. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
 
 ## Cifras clave
 
@@ -49,22 +49,22 @@ Solo en las municipales, y solo los ciudadanos de la UE y de países con conveni
 
 ## Páginas
 
-- [Pieza en castellano](https://nachotronic.github.io/abstencio-catalunya/index.html): texto completo con mapa 3D y gráficos.
-- [Peça en català](https://nachotronic.github.io/abstencio-catalunya/ca.html): el mismo texto en catalán.
-- [Metodología y datos](https://nachotronic.github.io/abstencio-catalunya/metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
-- [Metodologia i dades](https://nachotronic.github.io/abstencio-catalunya/metodologia-ca.html): la misma página en catalán.
-- [Mapa interactivo 2D](https://nachotronic.github.io/abstencio-catalunya/mapa.html)
-- [Sobre el autor](https://nachotronic.github.io/abstencio-catalunya/sobre-mi.html)
+- [Pieza en castellano](https://mapaelectoral.es/index.html): texto completo con mapa 3D y gráficos.
+- [Peça en català](https://mapaelectoral.es/ca.html): el mismo texto en catalán.
+- [Metodología y datos](https://mapaelectoral.es/metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
+- [Metodologia i dades](https://mapaelectoral.es/metodologia-ca.html): la misma página en catalán.
+- [Mapa interactivo 2D](https://mapaelectoral.es/mapa.html)
+- [Sobre el autor](https://mapaelectoral.es/sobre-mi.html)
 
 ## Datos (CSV y GeoJSON)
 
-- [catalunya_secciones_2023.csv](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.csv): Secciones censales 2023: participación, reparto de cada 100 adultos y variables sociodemográficas
-- [catalunya_municipios.csv](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_municipios.csv): Municipios: participación y reparto de cada 100 adultos
-- [evolucion_secciones.csv](https://nachotronic.github.io/abstencio-catalunya/data/evolucion_secciones.csv): Participación por sección en doce elecciones, 2015-2024
-- [catalunya_secciones_historico_congreso.csv](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_historico_congreso.csv): Histórico del Congreso por sección (formato largo), 2015-2023
-- [catalunya_secciones_2023.geojson](https://nachotronic.github.io/abstencio-catalunya/data/catalunya_secciones_2023.geojson): Contornos de las secciones censales de 2023 con todas las variables
-- [girona_secciones_2023.csv](https://nachotronic.github.io/abstencio-catalunya/data/girona_secciones_2023.csv): Secciones de la provincia de Girona
-- [girona_municipios.csv](https://nachotronic.github.io/abstencio-catalunya/data/girona_municipios.csv): Municipios de la provincia de Girona
+- [catalunya_secciones_2023.csv](https://mapaelectoral.es/data/catalunya_secciones_2023.csv): Secciones censales 2023: participación, reparto de cada 100 adultos y variables sociodemográficas
+- [catalunya_municipios.csv](https://mapaelectoral.es/data/catalunya_municipios.csv): Municipios: participación y reparto de cada 100 adultos
+- [evolucion_secciones.csv](https://mapaelectoral.es/data/evolucion_secciones.csv): Participación por sección en doce elecciones, 2015-2024
+- [catalunya_secciones_historico_congreso.csv](https://mapaelectoral.es/data/catalunya_secciones_historico_congreso.csv): Histórico del Congreso por sección (formato largo), 2015-2023
+- [catalunya_secciones_2023.geojson](https://mapaelectoral.es/data/catalunya_secciones_2023.geojson): Contornos de las secciones censales de 2023 con todas las variables
+- [girona_secciones_2023.csv](https://mapaelectoral.es/data/girona_secciones_2023.csv): Secciones de la provincia de Girona
+- [girona_municipios.csv](https://mapaelectoral.es/data/girona_municipios.csv): Municipios de la provincia de Girona
 
 ## Fuentes
 

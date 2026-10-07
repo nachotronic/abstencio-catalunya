@@ -4,7 +4,7 @@ Escribe, en las dos lenguas:
   - el bloque <!-- seo --> del <head> de index.html, ca.html y mapa.html (descripción, enlaces
     canónicos y de idioma, Open Graph y datos estructurados schema.org NewsArticle + Dataset);
   - metodologia.html y metodologia-ca.html (descarga de datos, licencia, columnas y método);
-  - llms.txt, sitemap.xml y robots.txt.
+  - llms.txt, sitemap.xml, sitemap_index.xml (índice con los sitemap.xml de cada carpeta) y robots.txt.
 
 Uso, siempre después de build_ca.py:  python3 src/build_ca.py && python3 src/seo.py
 Si cambia una cifra o un texto de aquí, hay que cambiarlo en castellano y en catalán.
@@ -13,7 +13,7 @@ import json, pathlib, re, html, datetime
 
 CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->'''
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-BASE = 'https://nachotronic.github.io/abstencio-catalunya/'
+BASE = 'https://mapaelectoral.es/'
 PUBLISHED = '2026-10-05'
 MODIFIED = '2026-10-06'   # cámbiala a mano cuando se actualice el contenido
 # ---- Autor: página «Sobre mí» (sobre-mi.html / sobre-mi-ca.html) ----
@@ -482,6 +482,14 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 '''
 
 
+def sitemap_index():
+    # Índice de sitemaps: el de la raíz y el de cada sección con su propio sitemap.xml
+    # (generales-2026/, atlas/...). Se recoge solo, basta con que la carpeta tenga sitemap.xml.
+    maps = ['sitemap.xml'] + sorted(p.relative_to(ROOT).as_posix() for p in ROOT.glob('*/sitemap.xml'))
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + ''.join(f'  <sitemap><loc>{BASE}{m}</loc></sitemap>\n' for m in maps) + '</sitemapindex>\n')
+
+
 def sitemap():
     pages = [('index.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('generales-2026/', '0.9'), ('generales-2026/metodologia.html', '0.5')]
     pairs = {'index.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
@@ -531,8 +539,7 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: {BASE}sitemap.xml
-Sitemap: {BASE}atlas/sitemap.xml
+Sitemap: {BASE}sitemap_index.xml
 '''
 
 
@@ -545,6 +552,7 @@ def main():
     inject(ROOT / 'mapa.html', meta(MAPA['title'], MAPA['desc'], BASE + 'mapa.html', 'es', 'es_ES', [], ld(dataset('es')), typ='website'))
     (ROOT / 'llms.txt').write_text(llms(), encoding='utf-8')
     (ROOT / 'sitemap.xml').write_text(sitemap(), encoding='utf-8')
+    (ROOT / 'sitemap_index.xml').write_text(sitemap_index(), encoding='utf-8')
     (ROOT / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
     print('seo: index.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
 

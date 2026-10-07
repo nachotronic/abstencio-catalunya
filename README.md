@@ -8,7 +8,7 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 - `data/evolucion_secciones.csv`: participación por sección en las doce elecciones de 2015 a 2024 (municipales, Parlament y Congreso), generada con `src/evolucion.py` desde Transparència Catalunya.
 - `mapa.html`: mapa interactivo en 2D con los gráficos y la metodología.
 - `metodologia.html` y `metodologia-ca.html`: descarga de los datos, licencia, columnas, fuentes y limitaciones.
-- `llms.txt`, `sitemap.xml`, `robots.txt` y el bloque `<!-- seo -->` del `<head>` de cada página (descripción, idiomas alternativos y datos estructurados schema.org `NewsArticle` y `Dataset`): se generan con `python3 src/seo.py`, que hay que ejecutar siempre después de `src/build_ca.py`. Los textos de esas páginas están en castellano y catalán dentro del script.
+- `llms.txt`, `sitemap.xml`, `sitemap_index.xml` (índice que recoge solo el `sitemap.xml` de cada carpeta, como `generales-2026/` o `atlas/`), `robots.txt` y el bloque `<!-- seo -->` del `<head>` de cada página (descripción, idiomas alternativos y datos estructurados schema.org `NewsArticle` y `Dataset`): se generan con `python3 src/seo.py`, que hay que ejecutar siempre después de `src/build_ca.py`. Los textos de esas páginas están en castellano y catalán dentro del script.
 - Preguntas frecuentes: el apartado `<section id="faq">` de `src/i18n/es_body.html` y `ca_body.html`. `src/seo.py` lo lee para el esquema `FAQPage` y para `llms.txt`, así que basta con cambiarlo en esos dos archivos.
 - Página «Sobre mí» (`sobre-mi.html`, `sobre-mi-ca.html`): nombre, biografía, cargo y enlaces en `AUTHOR_*` de `src/seo.py`; la firma de la pieza está en los dos `*_body.html`.
 - Verificación en Google Search Console y Bing Webmaster Tools: pega el código en `GOOGLE_VERIFICATION` y `BING_VERIFICATION` de `src/seo.py` y vuelve a ejecutarlo.
@@ -35,7 +35,7 @@ Ninguna pieza se publica sola: mientras su campo `revisado` en `atlas/src/piezas
 
 ## Publicar con GitHub Pages
 
-Settings → Pages → *Deploy from a branch* → `main` / `(root)`. Las dos páginas son autónomas: los datos van incrustados y las librerías se cargan desde unpkg.
+Settings → Pages → *Deploy from a branch* → `main` / `(root)`. Dominio propio: `mapaelectoral.es` (archivo `CNAME`; las URL absolutas salen de `BASE` en `src/seo.py` y `atlas/src/paginas.py`, y de `URL` en `generales-2026/src/pagina.py`). Las dos páginas son autónomas: los datos van incrustados y las librerías se cargan desde unpkg.
 
 ## Qué mide
 

@@ -12,7 +12,7 @@ from piezas import piezas, SERIES  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ATLAS = ROOT / 'atlas'
-BASE = 'https://nachotronic.github.io/abstencio-catalunya/'   # pasará a https://mapaelectoral.es/ cuando el dominio esté activo
+BASE = 'https://mapaelectoral.es/'
 ATLAS_URL = BASE + 'atlas/'
 NOMBRE = 'Atlas de las anomalías electorales'
 AUTOR = {'@type': 'Person', 'name': 'Nacho', 'url': BASE + 'sobre-mi.html', 'sameAs': ['https://github.com/nachotronic']}
