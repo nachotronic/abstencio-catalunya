@@ -16,6 +16,8 @@ FOTOS = {
     'capitales-frente-a-su-provincia': ('La calle Elvira de Granada, al anochecer, en 2012', 'Curimedia', 'CC BY 2.0', 'Elvira_Street_(8169708505).jpg'),
     'sur-de-madrid': ('La calle Madrid, en Getafe, en 2005', 'Miguel303xm', 'CC BY-SA 2.5', 'Calle-madrid.getafe.jpg'),
     'cabra-montilla': ('La calle Santa Rosalía, en Cabra, en 2010', 'Hugh Llewelyn', 'CC BY-SA 2.0', 'Calle_Santa_Rosalía,_Cabra.jpg'),
+    'lalin-vilanova-de-arousa': ('Vecinos en la romería del santuario do Corpiño, en Lalín, en 2007', 'Luis Miguel Bugallo Sánchez (Lmbuga)', 'CC BY-SA 3.0', 'Lalin._Corpino._Galiza_02.jpg'),
+    'cuenca-de-pamplona': ('Terraza en una plaza de Zizur Mayor, en 2012', 'Zarateman', 'CC0', 'Zizur_Mayor_08.jpg'),
     'puerto-real': ('Puestos de pescado en el mercado de abastos de Puerto Real, en 2025', 'Zarateman', 'CC0', 'Puerto_Real_-_Mercado_1.jpg'),
     'badalona': ('La calle del Mar, en Badalona, en 2014', 'Zarateman', 'CC BY-SA 4.0', 'Badalona_-_10.JPG'),
     'paro-renta-participacion': ('Gente esperando en la puerta de una oficina del INEM, en 2009', 'Ekinez Sortu', 'CC BY-SA 2.0', 'En_la_puerta_de_una_oficina_del_INEM.jpg'),
