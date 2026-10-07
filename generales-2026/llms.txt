@@ -14,7 +14,7 @@ Autor: Nacho G. del Álamo. Actualizado: 2026-10-06. Licencia de los datos: CC B
 - La diferencia de participación entre el 10% de secciones más ricas y el 10% más pobres pasó de 7,9 puntos en 2004 a 15,2 puntos en 2023 (mismas secciones, ordenadas por su renta de 2023). En las europeas de 2024 fue de 22,1 puntos.
 
 ## Páginas
-- [Pieza interactiva](https://mapaelectoral.es/generales-2026/): mapa por municipio y sección censal y gráficos por decil.
+- [Pieza interactiva](https://mapaelectoral.es/): mapa por municipio y sección censal y gráficos por decil.
 - [Metodología y fuentes](https://mapaelectoral.es/generales-2026/metodologia.html)
 
 ## Datos descargables (CSV, UTF-8)

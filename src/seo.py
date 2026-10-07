@@ -1,7 +1,7 @@
 """Metadatos para buscadores y asistentes de IA, y página de metodología.
 
 Escribe, en las dos lenguas:
-  - el bloque <!-- seo --> del <head> de index.html, ca.html y mapa.html (descripción, enlaces
+  - el bloque <!-- seo --> del <head> de abstencion.html, ca.html y mapa.html (descripción, enlaces
     canónicos y de idioma, Open Graph y datos estructurados schema.org NewsArticle + Dataset);
   - metodologia.html y metodologia-ca.html (descarga de datos, licencia, columnas y método);
   - llms.txt, sitemap.xml, sitemap_index.xml (índice con los sitemap.xml de cada carpeta) y robots.txt.
@@ -49,7 +49,7 @@ SOURCES = [
 
 T = {
     'es': {
-        'page': 'index.html', 'meth': 'metodologia.html', 'lang': 'es', 'locale': 'es_ES',
+        'page': 'abstencion.html', 'meth': 'metodologia.html', 'lang': 'es', 'locale': 'es_ES',
         'title': '¿Quién no vota en Cataluña? Abstención por sección censal',
         'desc': 'De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. '
                 'Mapa de las 5.115 secciones censales cruzado con renta, estudios, paro, edad y población extranjera, de 2015 a 2024.',
@@ -177,7 +177,7 @@ def inject(path, block):
     path.write_text(s[:i] + '\n' + block + s[i:], encoding='utf-8')
 
 
-ALT = [('es', BASE + 'index.html'), ('ca', BASE + 'ca.html'), ('x-default', BASE + 'index.html')]
+ALT = [('es', BASE + 'abstencion.html'), ('ca', BASE + 'ca.html'), ('x-default', BASE + 'abstencion.html')]
 ALT_M = [('es', BASE + 'metodologia.html'), ('ca', BASE + 'metodologia-ca.html'), ('x-default', BASE + 'metodologia.html')]
 
 # ---------- página de metodología ----------
@@ -221,10 +221,10 @@ M = {
   title='Metodología y datos · ¿Quién no vota en Cataluña?',
   desc='Datos abiertos (CSV y GeoJSON, CC BY 4.0), columnas, fuentes y método del análisis de la abstención por sección censal en Cataluña, 2015-2024.',
   h1='Metodología y datos', back='← Volver a la pieza', other='Català', kicker='¿Quién no vota en Cataluña?',
-  intro='Esta página acompaña a <a href="index.html">«¿Quién no vota en Cataluña?»</a>. Aquí están los datos que usa, con licencia libre, lo que mide cada columna y cómo se ha calculado.',
+  intro='Esta página acompaña a <a href="abstencion.html">«¿Quién no vota en Cataluña?»</a>. Aquí están los datos que usa, con licencia libre, lo que mide cada columna y cómo se ha calculado.',
   h_dl='Descargar los datos', h_lic='Licencia y cómo citar',
   lic='Los datos elaborados se publican con licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">Creative Commons Atribución 4.0 (CC BY 4.0)</a>: se pueden reutilizar, también con fines comerciales, citando la fuente. Los datos de origen mantienen las condiciones de sus organismos (Ministerio del Interior, INE, Generalitat de Catalunya). Las fotos de la pieza tienen su propia licencia, indicada al pie de cada una.',
-  cite='Cita sugerida: ' + AUTHOR_NAME + ', «¿Quién no vota en Cataluña? Abstención por sección censal», 2026, ' + BASE + 'index.html. Datos: ' + REPO + '.',
+  cite='Cita sugerida: ' + AUTHOR_NAME + ', «¿Quién no vota en Cataluña? Abstención por sección censal», 2026, ' + BASE + 'abstencion.html. Datos: ' + REPO + '.',
   h_what='Qué mide', what=[
    'Para cada sección censal se reparten los adultos residentes en tres grupos: los que votaron, los que no tenían derecho a voto y los que podían votar y no lo hicieron.',
    '<b>Votó</b>: votos emitidos en el Congreso del 23 de julio de 2023, sin voto de residentes en el extranjero (CERA).',
@@ -389,7 +389,7 @@ def methodology(L):
 
 AB = {
  'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces',
-            works=[('index.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
+            works=[('abstencion.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
                    ('metodologia.html', 'Metodología y datos abiertos de la pieza', 'Octubre de 2026')]),
  'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços',
             works=[('ca.html', 'Qui no vota a Catalunya? Abstenció per secció censal', 'Octubre del 2026'),
@@ -444,7 +444,7 @@ def llms():
     files = '\n'.join(f'- [{f}]({BASE}data/{f}): {d}' for f, d in T['es']['files'].items())
     src = '\n'.join(f'- [{n}]({u})' for n, u in SOURCES)
     key = '\n'.join(f'- {x}' for x in es['key'])
-    faq = '\n\n'.join(f'### {q}\n\n{a}' for q, a in faq_items('index.html'))
+    faq = '\n\n'.join(f'### {q}\n\n{a}' for q, a in faq_items('abstencion.html'))
     return f'''# ¿Quién no vota en Cataluña? / Qui no vota a Catalunya?
 
 > {T['es']['desc']}
@@ -461,7 +461,7 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 
 ## Páginas
 
-- [Pieza en castellano]({BASE}index.html): texto completo con mapa 3D y gráficos.
+- [Pieza en castellano]({BASE}abstencion.html): texto completo con mapa 3D y gráficos.
 - [Peça en català]({BASE}ca.html): el mismo texto en catalán.
 - [Metodología y datos]({BASE}metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
 - [Metodologia i dades]({BASE}metodologia-ca.html): la misma página en catalán.
@@ -491,8 +491,8 @@ def sitemap_index():
 
 
 def sitemap():
-    pages = [('index.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('generales-2026/', '0.9'), ('generales-2026/metodologia.html', '0.5')]
-    pairs = {'index.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
+    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5')]
+    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for p, pr in pages:
@@ -554,7 +554,7 @@ def main():
     (ROOT / 'sitemap.xml').write_text(sitemap(), encoding='utf-8')
     (ROOT / 'sitemap_index.xml').write_text(sitemap_index(), encoding='utf-8')
     (ROOT / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
-    print('seo: index.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
+    print('seo: abstencion.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
 
 
 main()

@@ -152,16 +152,18 @@ footer a{color:var(--ink2)}
   .mapwrap{height:70vh}
   #tip{width:auto;left:8px!important;right:8px}
 }
+nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font:500 14px/1.4 var(--sans)}nav.site a{color:var(--ink2);text-decoration:none}nav.site a:hover{color:var(--accent)}nav.site a[aria-current]{color:var(--ink);font-weight:700}
 </style>
 </head>
 <body>
+<nav class="site col" aria-label="Secciones del sitio"><a href="../" aria-current="page">Mapa de resultados</a><a href="../atlas/">Atlas de las anomalías</a><a href="../abstencion.html">¿Quién no vota en Cataluña?</a><a href="metodologia.html">Metodología y datos</a><a href="../sobre-mi.html">Sobre mí</a></nav>
 <header class="col">
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
   <p class="lede">Los resultados del Congreso de 2004 a 2023 en las {{nsec}} secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
   <p class="byline">Por {{autor}} · Revisión de datos: {{revisor}} · Actualizado el <time datetime="{{hoy}}">{{hoy_txt}}</time> · <a href="metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
   <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
-  <div class="rel"><a class="atlas" href="../atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="../index.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
+  <div class="rel"><a class="atlas" href="../atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="../abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </header>
 
 <main>
@@ -271,7 +273,7 @@ footer a{color:var(--ink2)}
 </section>
 
 <section class="col">
-  <div class="rel"><a class="atlas" href="../atlas/"><span class="atlas-k">Sigue leyendo</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="../index.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
+  <div class="rel"><a class="atlas" href="../atlas/"><span class="atlas-k">Sigue leyendo</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="../abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </section>
 
 <section class="col" id="correcciones" aria-labelledby="h-corr">

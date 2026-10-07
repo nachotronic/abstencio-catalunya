@@ -3,7 +3,9 @@
 // Municipales y europeas, aparte: e/<elección>.json y sec/<prov>_<elección>.json, que se cargan al elegirlas.
 (async function () {
   const $ = s => document.querySelector(s);
-  const get = f => fetch('data/' + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
+  // Ruta de los datos relativa a este script, para que la página funcione también como portada en la raíz.
+  const RAIZ = ((document.currentScript && document.currentScript.src) || '').replace(/[^/]*$/, '');
+  const get = f => fetch(RAIZ + 'data/' + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
   const [META, MUN, PROV, RES] = await Promise.all([get('meta.json'), get('municipios.json'), get('provincias.json'), get('resumen.json')]);
   const FAM = META.familias, FCOD = FAM.map(f => f.cod);
   const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];

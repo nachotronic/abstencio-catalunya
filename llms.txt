@@ -49,7 +49,7 @@ Solo en las municipales, y solo los ciudadanos de la UE y de países con conveni
 
 ## Páginas
 
-- [Pieza en castellano](https://mapaelectoral.es/index.html): texto completo con mapa 3D y gráficos.
+- [Pieza en castellano](https://mapaelectoral.es/abstencion.html): texto completo con mapa 3D y gráficos.
 - [Peça en català](https://mapaelectoral.es/ca.html): el mismo texto en catalán.
 - [Metodología y datos](https://mapaelectoral.es/metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
 - [Metodologia i dades](https://mapaelectoral.es/metodologia-ca.html): la misma página en catalán.

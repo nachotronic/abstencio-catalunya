@@ -1,4 +1,4 @@
-"""Genera ca.html (versión en catalán) a partir de index.html.
+"""Genera ca.html (versión en catalán) a partir de abstencion.html.
 
 El texto visible de la página está en src/i18n/ca_body.html; src/i18n/es_body.html guarda el bloque
 castellano del que se tradujo. Si el castellano cambia, el script se para hasta que se actualicen los dos.
@@ -136,7 +136,7 @@ def block(s):
 
 
 def main():
-    es = (ROOT / 'index.html').read_text(encoding='utf-8')
+    es = (ROOT / 'abstencion.html').read_text(encoding='utf-8')
     i, j = block(es)
     if '--accept' in sys.argv:
         (I18N / 'es_body.html').write_text(es[i:j], encoding='utf-8'); print('es_body.html actualizado'); return
