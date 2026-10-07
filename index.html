@@ -11,6 +11,11 @@
 <meta property="og:description" content="Resultados por sección censal de 2004 a 2023 cruzados con renta, pobreza, edad e inmigración.">
 <meta property="og:url" content="https://mapaelectoral.es/">
 <meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Mapa Electoral">
+<meta property="og:image" content="https://mapaelectoral.es/img/compartir/portada.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:site" content="@nachotronic">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="text/plain" href="generales-2026/llms.txt" title="Resumen para modelos de lenguaje">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera", "description": "Resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "es", "url": "https://mapaelectoral.es/", "author": {"@type": "Person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "isAccessibleForFree": true, "about": [{"@type": "Event", "name": "Elecciones generales de España de 2026", "startDate": "2026-11-29", "endDate": "2026-11-29", "location": {"@type": "Place", "name": "España", "address": {"@type": "PostalAddress", "addressCountry": "ES"}}}], "citation": ["https://infoelectoral.interior.gob.es/", "https://www.ine.es/experimental/atlas/experimental_atlas.htm", "https://www.ine.es/censos2021/"]}</script>
@@ -153,6 +158,16 @@ footer a{color:var(--ink2)}
   .mapwrap{height:70vh}
   #tip{width:auto;left:8px!important;right:8px}
 }
+.del-atlas{margin-top:18px;margin-bottom:8px}
+.del-atlas h2{font:700 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px;padding-top:10px;border-top:2px solid var(--ink)}
+.del-atlas h2 a{color:var(--ink);text-decoration:none}
+.del-atlas ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.del-atlas li a{display:grid;align-content:start;gap:4px;height:100%;padding:12px 14px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none;font-family:var(--sans);font-size:14px;line-height:1.35}
+.del-atlas li a b{font-size:17px;line-height:1.2}.del-atlas li a span:last-child{color:var(--ink2)}
+.del-atlas li a:hover{border-color:var(--accent)}
+.del-atlas p{margin:10px 0 0;font-family:var(--sans);font-size:14px}
+@media (max-width:760px){nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none}nav.site::-webkit-scrollbar{display:none}}
+nav.site a.marca{color:var(--ink);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;margin-right:4px}
 nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font:500 14px/1.4 var(--sans)}nav.site a{color:var(--ink2);text-decoration:none}nav.site a:hover{color:var(--accent)}nav.site a[aria-current]{color:var(--ink);font-weight:700}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://mapaelectoral.es/#website", "name": "Mapa electoral", "url": "https://mapaelectoral.es/", "inLanguage": "es", "description": "Periodismo de datos sobre elecciones en España por sección censal.", "publisher": {"@type": "Person", "@id": "https://mapaelectoral.es/sobre-mi.html#person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "hasPart": [{"@type": "CollectionPage", "name": "Atlas de las anomalías electorales", "url": "https://mapaelectoral.es/atlas/"}, {"@type": "NewsArticle", "name": "¿Quién no vota en Cataluña?", "url": "https://mapaelectoral.es/abstencion.html"}]}</script>
@@ -176,7 +191,7 @@ header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
 </style>
 </head>
 <body>
-<nav class="site col" aria-label="Secciones del sitio"><a href="./" aria-current="page">Mapa de resultados</a><a href="atlas/">Atlas de las anomalías</a><a href="abstencion.html">¿Quién no vota en Cataluña?</a><a href="generales-2026/metodologia.html">Metodología y datos</a><a href="sobre-mi.html">Sobre mí</a></nav>
+<nav class="site col" aria-label="Secciones del sitio"><a class="marca" href="./">Mapa Electoral</a><a href="./" aria-current="page">Mapa de resultados</a><a href="atlas/">Atlas de las anomalías</a><a href="abstencion.html">¿Quién no vota en Cataluña?</a><a href="generales-2026/metodologia.html">Metodología y datos</a><a href="sobre-mi.html">Sobre mí</a></nav>
 <header class="col">
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
@@ -205,11 +220,12 @@ header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
   </div>
   <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado. En el selector de elección están también las municipales de 2007 a 2023 (las de 2007, solo por municipio) y las europeas de 2019 y 2024.</p>
 </section>
+<!--atlas:ultimas--><section class="col del-atlas" aria-labelledby="h-del-atlas"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2><ul><li><a href="atlas/voto-doble/europeas-2024/"><span class="atlas-k">Voto doble</span><b>En las europeas, la brecha entre ricos y pobres se dispara</b><span>En las europeas de 2024 la brecha de participación entre las zonas más ricas y las más pobres pasó de 15 a 22 puntos</span></a></li><li><a href="atlas/ciudad-y-entorno/capitales-municipales/"><span class="atlas-k">Ciudad, corona e interior</span><b>Las capitales votan menos para elegir alcalde</b><span>45 de las 50 capitales votan menos que el resto de su provincia para elegir alcalde; Zamora y Soria, más de 14 puntos menos</span></a></li><li><a href="atlas/contra-su-provincia/alcoi/"><span class="atlas-k">Contra su provincia</span><b>Alcoi, a contracorriente en Alicante</b><span>Alcoi, la ciudad que vota a la izquierda en la provincia de Alicante: el PSOE le sacó 10,7 puntos al PP</span></a></li></ul><p><a class="atlas-go" href="atlas/">Las 28 piezas del Atlas →</a></p></section><!--/atlas:ultimas-->
 <div class="col intro">
   <p class="lede">Los resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
   <p class="byline">Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time> · <a href="generales-2026/metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
   <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
-  <div class="rel"><a class="atlas" href="atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
+  <div class="rel"><a class="atlas" href="abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </div>
 
 <section class="col">

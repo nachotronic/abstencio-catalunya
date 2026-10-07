@@ -81,6 +81,11 @@ def primera_pantalla(s):
     """Reordena la portada: título, mapa y, debajo, la entradilla y el resto del texto."""
     if 'id="portada"' in s:
         return s
+    # la franja con las últimas piezas del Atlas (la rellena atlas/src/paginas.py) va pegada al mapa
+    fm = re.search(r'\s*<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', s, re.S)
+    franja = fm.group(0).strip() if fm else ''
+    if fm:
+        s = s[:fm.start()] + s[fm.end():]
     i, j = s.index('<header class="col">'), s.index('</header>')
     cab = s[i:j]
     k = cab.index('</h1>') + len('</h1>')
@@ -89,7 +94,7 @@ def primera_pantalla(s):
     m1 = s.index('</section>', m0) + len('</section>')
     mapa = s[m0:m1].replace('<h2 class="col" id="h-mapa" style="padding:0">', '<h2 class="sr" id="h-mapa">', 1)
     resto = s[j + len('</header>'):m0] + s[m1:]
-    resto = resto.replace('<main>', '<main>\n' + mapa + '\n<div class="col intro">' + intro + '</div>\n', 1)
+    resto = resto.replace('<main>', '<main>\n' + mapa + '\n' + franja + '\n<div class="col intro">' + intro + '</div>\n', 1)
     s = s[:i] + titulo + '\n</header>' + resto
     return s.replace('</head>', CSS_PORTADA + '</head>', 1)
 

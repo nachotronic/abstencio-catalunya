@@ -18,6 +18,7 @@ from graficos import num  # noqa: E402
 from piezas import piezas, SERIES  # noqa: E402
 from piezas2 import piezas2  # noqa: E402
 from piezas3 import piezas3  # noqa: E402
+from titulares import TITULARES, titular  # noqa: E402
 
 # Resultado oficial del 23J de 2023 (Congreso, 350 escaños), para comprobar el reparto D'Hondt recalculado.
 OFICIAL_2023 = {'PP': 137, 'PSOE': 121, 'Vox': 33, 'Sumar': 31, 'ERC': 7, 'Junts': 7, 'EH Bildu': 6, 'PNV': 5,
@@ -317,7 +318,8 @@ def main():
         control(f'{p["slug"]}: campos completos', not falta, falta)
         control(f'{p["slug"]}: serie existe', p['serie'] in SERIES)
         control(f'{p["slug"]}: CSV existe', (ATLAS / 'datos' / p['csv']).exists(), p['csv'])
-        causales = [t for tipo, t in p['cuerpo'] if tipo != 'sub' and CAUSALES.search(t)] + [t for t in [p['titulo'], p['resumen']] if CAUSALES.search(t)]
+        causales = [t for tipo, t in p['cuerpo'] if tipo != 'sub' and CAUSALES.search(t)] + [t for t in [titular(p), p['titulo'], p['resumen']] if CAUSALES.search(t)]
+        control(f'{p["slug"]}: titular corto (60 caracteres como máximo)', p['slug'] in TITULARES and len(titular(p)) <= 60, titular(p))
         control(f'{p["slug"]}: sin lenguaje causal en titular, resumen, datos y patrones', not causales, causales)
         if p['serie'] != 'bisagras' and p['lugares']:
             from paginas import enlaces_mapa
@@ -354,7 +356,7 @@ def main():
     sueltas = []
     for p in P:
         tabla = {c for fila in p['tabla']['filas'] for c in fila}
-        textos = [p['titulo'], p['resumen']] + [t for _, t in p['cuerpo']] + [r for _, r in (p['faq'] or [])]
+        textos = [titular(p), p['titulo'], p['resumen']] + [t for _, t in p['cuerpo']] + [r for _, r in (p['faq'] or [])]
         for t in textos:
             for n in re.findall(r'\d{1,3}(?:\.\d{3})+|\d+,\d', t):
                 if n not in validas and n not in tabla and not any(n in str(c) for c in tabla):

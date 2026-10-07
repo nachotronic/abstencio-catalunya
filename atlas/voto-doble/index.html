@@ -5,15 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Voto doble · Atlas de las anomalías electorales</title>
 <meta name="description" content="El mismo electorado vota distinto según qué se elige.">
-<meta name="author" content="Nacho">
+<meta name="author" content="Nacho G. del Álamo">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mapaelectoral.es/atlas/voto-doble/">
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="Mapa Electoral">
 <meta property="og:title" content="Voto doble · Atlas de las anomalías electorales">
 <meta property="og:description" content="El mismo electorado vota distinto según qué se elige.">
 <meta property="og:url" content="https://mapaelectoral.es/atlas/voto-doble/">
+<meta property="og:image" content="https://mapaelectoral.es/img/compartir/atlas.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nachotronic">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<link rel="alternate" type="application/rss+xml" title="Atlas de las anomalías electorales" href="https://mapaelectoral.es/atlas/feed.xml">
 <link rel="alternate" type="text/plain" title="llms.txt" href="../llms.txt">
 <script type="application/ld+json">
 {
@@ -30,32 +37,31 @@
  "hasPart": [
   {
    "@type": "NewsArticle",
-   "headline": "Badalona dio al PP el 56 % en mayo y el 17 % en julio: la mayor distancia de España entre voto local y estatal",
-   "url": "https://mapaelectoral.es/atlas/voto-doble/badalona/"
+   "headline": "En las europeas, la brecha entre ricos y pobres se dispara",
+   "url": "https://mapaelectoral.es/atlas/voto-doble/europeas-2024/"
   },
   {
    "@type": "NewsArticle",
-   "headline": "En las europeas de 2024 la brecha de participación entre las zonas más ricas y las más pobres pasó de 15 a 22 puntos",
-   "url": "https://mapaelectoral.es/atlas/voto-doble/europeas-2024/"
+   "headline": "Badalona, la ciudad del voto doble",
+   "url": "https://mapaelectoral.es/atlas/voto-doble/badalona/"
   }
  ]
 }
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-:root{--bg:#f4f5f8;--surface:#fff;--fg:#161a2b;--muted:#5b6178;--rule:#d9dce6;--accent:#3846a0;--accent2:#b0452c;--pp:#1d6fb8;--psoe:#d1262d;--warn:#fff4d6;--warnfg:#6b4e00;
-  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;--body:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141d;--surface:#1a1d29;--fg:#e8eaf2;--muted:#9aa0b8;--rule:#2c3042;--accent:#8f9cf0;--accent2:#ef8a6a;--pp:#5aa7ee;--psoe:#f06a6f;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#12141d;--surface:#1a1d29;--fg:#e8eaf2;--muted:#9aa0b8;--rule:#2c3042;--accent:#8f9cf0;--accent2:#ef8a6a;--pp:#5aa7ee;--psoe:#f06a6f;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}
+:root{--bg:#faf8f3;--surface:#fff;--fg:#1a1a1a;--muted:#5f5d58;--rule:#e3dfd6;--accent:#b3261e;--accent2:#b0452c;--pp:#1d6fb8;--psoe:#d1262d;--warn:#fff4d6;--warnfg:#6b4e00;
+  --display:"IBM Plex Sans",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--body:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15161a;--surface:#1e2025;--fg:#ecebe7;--muted:#a5a39b;--rule:#33363d;--accent:#ff8a80;--accent2:#ef8a6a;--pp:#5aa7ee;--psoe:#f06a6f;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15161a;--surface:#1e2025;--fg:#ecebe7;--muted:#a5a39b;--rule:#33363d;--accent:#ff8a80;--accent2:#ef8a6a;--pp:#5aa7ee;--psoe:#f06a6f;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.1rem;line-height:1.6;padding:0 16px 64px}
 main{max-width:72ch;margin:0 auto}
-nav.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0;font-family:var(--mono);font-size:.8rem}
 a{color:var(--accent)}
 h1,h2,h3{font-family:var(--display);line-height:1.12;text-wrap:balance}
-h1{font-size:clamp(1.9rem,5.5vw,2.9rem);font-weight:800;margin:.3rem 0 1rem}
+h1{font-size:clamp(1.9rem,5.5vw,2.9rem);font-weight:700;letter-spacing:-.015em;margin:.3rem 0 .6rem}
 h2{font-size:1.35rem;margin:2.4rem 0 .6rem}
 h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
 .kicker{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -92,12 +98,41 @@ a.tarjeta .leer{font-family:var(--mono);font-size:.8rem;color:var(--accent);font
 .cuerpo h2{font-size:1.25rem;margin:2.2rem 0 .5rem}
 .cuerpo p{margin:0 0 1rem}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+nav.site{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;max-width:72ch;margin:0 auto 1.4rem;padding:12px 0 10px;border-bottom:1px solid var(--rule);font:500 14px/1.4 var(--sans)}
+nav.site a{color:var(--muted);text-decoration:none}nav.site a:hover{color:var(--accent)}nav.site a[aria-current]{color:var(--fg);font-weight:700}
+@media (max-width:760px){nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none}nav.site::-webkit-scrollbar{display:none}}
+nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;margin-right:6px}
+.subtitulo{font-family:var(--sans);font-size:1.12rem;line-height:1.4;color:var(--muted);margin:0 0 1rem;text-wrap:pretty}
+.firma{font-family:var(--sans);font-size:.86rem;color:var(--muted);margin:0 0 1.2rem}.firma a{color:inherit}
+a.vermapa{display:inline-block;font-family:var(--sans);font-weight:600;font-size:.92rem;border:1px solid var(--accent);border-radius:999px;padding:5px 14px;margin:0 6px 6px 0;text-decoration:none}
+a.vermapa:hover{background:var(--accent);color:var(--bg)}
+.tipo{font-family:var(--sans);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.8}
+.tipo.t-hipotesis,.tipo.t-patron{color:var(--accent)}
+@media (min-width:1100px){.cuerpo p,.terreno p,.hipotesis li{position:relative}.cuerpo .tipo,.terreno .tipo,.hipotesis .tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}.hipotesis{list-style:none;padding-left:0}}
+.leyenda{font-family:var(--sans);font-size:.82rem;color:var(--muted)}
+.sigue{list-style:none;padding:0;display:grid;gap:12px}
+.sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg)}
+.sigue a:hover{border-color:var(--accent)}.sigue .kicker{display:block;margin-bottom:2px}.sigue b{font-family:var(--sans);font-size:1.05rem}
+.siguelo{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 18px;margin-top:2.4rem;font-family:var(--sans);font-size:.95rem}
+.siguelo form{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.siguelo input{flex:1 1 220px;font:inherit;padding:7px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg)}
+.siguelo button{font:inherit;font-weight:600;padding:7px 14px;border:0;border-radius:6px;background:var(--accent);color:var(--bg);cursor:pointer}
+a.destacada{display:grid;gap:0;background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden;color:var(--fg);text-decoration:none;margin:1.2rem 0 2rem}
+a.destacada img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+a.destacada .txt{padding:16px 20px 18px;border-top:4px solid var(--accent);display:flex;flex-direction:column;gap:6px}
+a.destacada .tt{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.12}
+a.destacada .ent{color:var(--muted);font-family:var(--sans);font-size:1.05rem}
+a.destacada:hover{border-color:var(--accent)}
+h2.serie{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:2px solid var(--fg);padding-top:10px}
+h2.serie a{color:var(--fg);text-decoration:none}h2.serie small{font-family:var(--sans);font-weight:400;font-size:.85rem;color:var(--muted)}
+p.serie-desc{color:var(--muted);margin:-.2rem 0 1rem}
+a.tarjeta .ent{font-family:var(--sans);font-size:.95rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
 <body>
+<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="../../">Mapa Electoral</a><a href="../../">Mapa de resultados</a><a href="../index.html" aria-current="page">Atlas de las anomalías</a><a href="../../abstencion.html">¿Quién no vota en Cataluña?</a><a href="../metodologia/index.html">Metodología</a><a href="../../sobre-mi.html">Sobre mí</a></nav>
 <main>
-<nav class="top"><a href="../index.html">Atlas de las anomalías electorales</a><span><a href="../metodologia/index.html">Metodología</a> · <a href="../datos/index.html">Datos</a> · <a href="../../index.html">Resultados de España</a></span></nav>
-<p class="kicker">Serie</p><h1>Voto doble</h1><p class="resumen">El mismo electorado vota distinto según qué se elige.</p><ul class="tarjetas"><li><a class="tarjeta" href="../voto-doble/badalona/index.html"><img src="../img/m/badalona.jpg" alt="La calle del Mar, en Badalona, en 2014" loading="lazy"><span class="txt"><span class="tt">Badalona dio al PP el 56 % en mayo y el 17 % en julio: la mayor distancia de España entre voto local y estatal</span><span class="ent">En las municipales del 28 de mayo de 2023, el PP sacó en Badalona el 55,7 % del voto válido.</span><span class="leer">Leer la pieza →</span></span></a></li><li><a class="tarjeta" href="../voto-doble/europeas-2024/index.html"><img src="../img/m/europeas-2024.jpg" alt="Vecinos acompañan un paso por una calle de Arcos de la Frontera en la Semana Santa de 2015" loading="lazy"><span class="txt"><span class="tt">En las europeas de 2024 la brecha de participación entre las zonas más ricas y las más pobres pasó de 15 a 22 puntos</span><span class="ent">En las europeas del 9 de junio de 2024 votó el 49,2 % del censo de residentes, frente al 70,4 % de las generales de 2023.</span><span class="leer">Leer la pieza →</span></span></a></li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
+<p class="kicker"><a href="../index.html">Atlas de las anomalías electorales</a> · Serie</p><h1>Voto doble</h1><p class="resumen">El mismo electorado vota distinto según qué se elige.</p><ul class="tarjetas"><li><a class="tarjeta" href="../voto-doble/europeas-2024/index.html"><img src="../img/m/europeas-2024.jpg" alt="Vecinos acompañan un paso por una calle de Arcos de la Frontera en la Semana Santa de 2015" loading="lazy"><span class="txt"><span class="tt">En las europeas, la brecha entre ricos y pobres se dispara</span><span class="ent">En las europeas de 2024 la brecha de participación entre las zonas más ricas y las más pobres pasó de 15 a 22 puntos</span><span class="leer">Leer la pieza →</span></span></a></li><li><a class="tarjeta" href="../voto-doble/badalona/index.html"><img src="../img/m/badalona.jpg" alt="La calle del Mar, en Badalona, en 2014" loading="lazy"><span class="txt"><span class="tt">Badalona, la ciudad del voto doble</span><span class="ent">Badalona dio al PP el 56 % en mayo y el 17 % en julio: la mayor distancia de España entre voto local y estatal</span><span class="leer">Leer la pieza →</span></span></a></li></ul><h2>Otras series</h2><p><a href="../excepciones/index.html">Las excepciones</a> · <a href="../fronteras/index.html">Fronteras que votan distinto</a> · <a href="../gemelos/index.html">Gemelos electorales</a> · <a href="../contra-su-provincia/index.html">Contra su provincia</a> · <a href="../ciudad-y-entorno/index.html">Ciudad, corona e interior</a> · <a href="../bisagras/index.html">Bisagras</a> · <a href="../el-municipio-que-cambio/index.html">El municipio que cambió</a> · <a href="../quien-no-vota/index.html">Quién no vota</a></p><aside class="siguelo"><b>Las piezas nuevas del Atlas</b>: síguelas por <a href="https://mapaelectoral.es/atlas/feed.xml">RSS</a> o en <a href="https://x.com/nachotronic">X</a>.</aside><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
 </main>
 </body>
 </html>
