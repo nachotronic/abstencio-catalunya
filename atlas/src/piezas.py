@@ -10,6 +10,7 @@ Los elementos ('sub', texto) del cuerpo son ladillos: no contienen afirmaciones.
 `revisado` es la fecha (AAAA-MM-DD) en que Nacho comprueba la muestra manual y firma la revisión de datos y texto.
 Mientras esté vacío, la página se genera con «Revisión pendiente», con noindex y fuera del sitemap.
 """
+from terreno import terreno
 from graficos import num, lineas, barras_previsto, divergente, barras_agrupadas, margenes, ANYO
 
 SERIES = {
@@ -20,6 +21,7 @@ SERIES = {
     'ciudad-y-entorno': ('Ciudad, corona e interior', 'La distancia entre la ciudad y el territorio que la rodea.'),
     'voto-doble': ('Voto doble', 'El mismo electorado vota distinto según qué se elige.'),
     'bisagras': ('Bisagras', 'Votos y lugares que deciden algo mucho mayor que su peso.'),
+    'el-municipio-que-cambio': ('El municipio que cambió', 'Lugares que han dado la vuelta a su voto en veinte años.'),
     'quien-no-vota': ('Quién no vota', 'Quién se queda fuera de las urnas, y por qué grupos de razones.'),
 }
 
@@ -491,4 +493,4 @@ def piezas(C):
     ))
     for p in out:
         p['cuerpo'] = [c for c in p['cuerpo'] if c]
-    return out
+    return [terreno(p) for p in out]

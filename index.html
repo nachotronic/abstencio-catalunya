@@ -13,7 +13,7 @@
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="text/plain" href="generales-2026/llms.txt" title="Resumen para modelos de lenguaje">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera", "description": "Resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "es", "url": "https://mapaelectoral.es/", "author": {"@type": "Person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "isAccessibleForFree": true, "about": [{"@type": "Event", "name": "Elecciones generales de España de 2026", "startDate": "2026-11-29"}], "citation": ["https://infoelectoral.interior.gob.es/", "https://www.ine.es/experimental/atlas/experimental_atlas.htm", "https://www.ine.es/censos2021/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera", "description": "Resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "inLanguage": "es", "url": "https://mapaelectoral.es/", "author": {"@type": "Person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "isAccessibleForFree": true, "about": [{"@type": "Event", "name": "Elecciones generales de España de 2026", "startDate": "2026-11-29", "endDate": "2026-11-29", "location": {"@type": "Place", "name": "España", "address": {"@type": "PostalAddress", "addressCountry": "ES"}}}], "citation": ["https://infoelectoral.interior.gob.es/", "https://www.ine.es/experimental/atlas/experimental_atlas.htm", "https://www.ine.es/censos2021/"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Elecciones generales 2004-2023 por sección censal con renta, edad y población extranjera", "description": "Votos al Congreso (2004-2023), municipales (2011-2023; 2007 por municipio) y europeas (2019 y 2024) por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).", "url": "https://mapaelectoral.es/generales-2026/metodologia.html", "license": "https://creativecommons.org/licenses/by/4.0/", "inLanguage": "es", "creator": {"@type": "Person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "dateModified": "2026-10-06", "temporalCoverage": "2004-03-14/2024-06-09", "spatialCoverage": {"@type": "Place", "name": "España"}, "isBasedOn": ["https://infoelectoral.interior.gob.es/", "https://www.ine.es/experimental/atlas/experimental_atlas.htm", "https://github.com/dadosdelaplace/pollspaindata", "https://github.com/pablogguz/ineAtlas.data"], "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://mapaelectoral.es/generales-2026/descargas/secciones.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://mapaelectoral.es/generales-2026/descargas/municipios.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://mapaelectoral.es/generales-2026/descargas/resultados_secciones_largo.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://mapaelectoral.es/generales-2026/descargas/secciones_municipales_europeas.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://mapaelectoral.es/generales-2026/descargas/resultados_secciones_largo_municipales_europeas.csv"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -156,32 +156,35 @@ footer a{color:var(--ink2)}
 nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font:500 14px/1.4 var(--sans)}nav.site a{color:var(--ink2);text-decoration:none}nav.site a:hover{color:var(--accent)}nav.site a[aria-current]{color:var(--ink);font-weight:700}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://mapaelectoral.es/#website", "name": "Mapa electoral", "url": "https://mapaelectoral.es/", "inLanguage": "es", "description": "Periodismo de datos sobre elecciones en España por sección censal.", "publisher": {"@type": "Person", "@id": "https://mapaelectoral.es/sobre-mi.html#person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "hasPart": [{"@type": "CollectionPage", "name": "Atlas de las anomalías electorales", "url": "https://mapaelectoral.es/atlas/"}, {"@type": "NewsArticle", "name": "¿Quién no vota en Cataluña?", "url": "https://mapaelectoral.es/abstencion.html"}]}</script>
+<style id="portada">
+header{padding:14px 0 0}
+header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#mapa .controls{padding:8px 0}
+#mapa .mapwrap{height:calc(100svh - 300px);min-height:320px;max-height:760px}
+.intro{margin-top:20px}
+@media (max-width:760px){
+  nav.site{gap:2px 12px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  .kicker{font-size:11px}
+  #mapa .controls{gap:6px 8px;font-size:12px}
+  #mapa .controls label{flex:1 1 30%}
+  #mapa .controls label.q{flex:1 1 60%}
+  #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
+  #mapa .controls button{font-size:13px;padding:6px 8px}
+  #mapa .mapwrap{height:calc(100svh - 315px);min-height:260px}
+}
+</style>
 </head>
 <body>
 <nav class="site col" aria-label="Secciones del sitio"><a href="./" aria-current="page">Mapa de resultados</a><a href="atlas/">Atlas de las anomalías</a><a href="abstencion.html">¿Quién no vota en Cataluña?</a><a href="generales-2026/metodologia.html">Metodología y datos</a><a href="sobre-mi.html">Sobre mí</a></nav>
 <header class="col">
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
-  <p class="lede">Los resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
-  <p class="byline">Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time> · <a href="generales-2026/metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
-  <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
-  <div class="rel"><a class="atlas" href="atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </header>
 
 <main>
-<section class="col">
-  <div class="stats" aria-label="Resultados del 23J de 2023">
-    <div class="stat" style="--c:#1d84ce"><b>33,3%</b><span>PP y UPN · 23J 2023</span></div>
-    <div class="stat" style="--c:#e30613"><b>31,7%</b><span>PSOE</span></div>
-    <div class="stat" style="--c:#5ac035"><b>12,4%</b><span>Vox</span></div>
-    <div class="stat" style="--c:#a2275f"><b>12,3%</b><span>Sumar</span></div>
-    <div class="stat"><b>70,4%</b><span>participación</span></div>
-  </div>
-  <p>El 23 de julio de 2023 el PP (con UPN, que en Navarra se presentó por separado) fue la fuerza más votada en 18.243 secciones censales y el PSOE en 16.044. Por municipios, el PP ganó en 4.553 y el PSOE en 2.624 de los 8.131. Vox, que había ganado en 1.868 secciones en noviembre de 2019, perdió casi todas: 1.711 pasaron al PP. Los recuentos no incluyen las secciones o municipios donde hubo empate.</p>
-</section>
-
 <section class="wide" id="mapa" aria-labelledby="h-mapa">
-  <h2 class="col" id="h-mapa" style="padding:0">Explora el mapa</h2>
+  <h2 class="sr" id="h-mapa">Explora el mapa</h2>
   <div class="directo" id="directo" hidden aria-live="polite">
     <div class="d-top"><span class="d-live">En directo</span> <span id="d-nombre"></span> · Escrutado <b id="d-esc">–</b> · <span id="d-estado"></span></div>
     <div class="d-seats" id="d-seats"></div>
@@ -202,12 +205,32 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
   </div>
   <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado. En el selector de elección están también las municipales de 2007 a 2023 (las de 2007, solo por municipio) y las europeas de 2019 y 2024.</p>
 </section>
+<div class="col intro">
+  <p class="lede">Los resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
+  <p class="byline">Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time> · <a href="generales-2026/metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
+  <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
+  <div class="rel"><a class="atlas" href="atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
+</div>
+
+<section class="col">
+  <div class="stats" aria-label="Resultados del 23J de 2023">
+    <div class="stat" style="--c:#1d84ce"><b>33,3%</b><span>PP y UPN · 23J 2023</span></div>
+    <div class="stat" style="--c:#e30613"><b>31,7%</b><span>PSOE</span></div>
+    <div class="stat" style="--c:#5ac035"><b>12,4%</b><span>Vox</span></div>
+    <div class="stat" style="--c:#a2275f"><b>12,3%</b><span>Sumar</span></div>
+    <div class="stat"><b>70,4%</b><span>participación</span></div>
+  </div>
+  <p>El 23 de julio de 2023 el PP (con UPN, que en Navarra se presentó por separado) fue la fuerza más votada en 18.243 secciones censales y el PSOE en 16.044. Por municipios, el PP ganó en 4.553 y el PSOE en 2.624 de los 8.131. Vox, que había ganado en 1.868 secciones en noviembre de 2019, perdió casi todas: 1.711 pasaron al PP. Los recuentos no incluyen las secciones o municipios donde hubo empate.</p>
+</section>
+
+
 
 <section class="col" aria-labelledby="h-renta">
   <h2 id="h-renta">La renta: los barrios ricos votan más y el PP gana en ellos</h2>
   <p>Si se ordenan las secciones por renta y se agrupan en diez partes con el mismo censo, la participación sube de forma casi continua con el dinero. En el 10% más pobre, con menos de 15.723 euros netos por unidad de consumo al año, votó el <b>62,6%</b>. En el 10% más rico, con más de 30.726 euros, el <b>77,8%</b>. <a class="go" data-go="renta_uc">Ver la renta en el mapa</a></p>
   <p>El voto también cambia. El PSOE sacó el 41,2% en las secciones más pobres y el 20,3% en las más ricas. El PP hace el camino contrario: 29,4% y 43,5%. Vox obtiene su mejor resultado en el extremo pobre (15,4%), baja en las rentas medias (12,1%) y repunta algo en las más altas (12,0%).</p>
   <p>La pobreza dibuja lo mismo desde el otro lado: donde más de un 34% de los vecinos vive por debajo del umbral de riesgo de pobreza, la participación fue del 61,6%, frente al 77,2% donde menos. <a class="go" data-go="pobreza">Ver la pobreza en el mapa</a></p>
+  <blockquote class="cita"><p>«Esto genera una concentración de poder político: si los ricos siempre votan, tendrán más poder en sus manos para que se tengan en cuenta sus intereses»</p><footer>Braulio Gómez, politólogo de la Universidad de Deusto. <cite><a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html">elDiario.es, 7 de abril de 2019</a></cite></footer></blockquote>
 </section>
 
 <section class="col" aria-labelledby="h-brecha">
@@ -221,6 +244,7 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
   </figure>
   <p>El voto también se ha desplazado. En 2004 el PSOE sacó el 56,8% en las secciones más pobres y el 28,2% en las más ricas, y el PP, el 31,4% y el 48,7%. El reparto por renta se mantiene en 2023, con niveles más bajos para los dos por la llegada de otros partidos.</p>
 </section>
+  <blockquote class="cita"><p>«Los barrios que se van empobreciendo, ven cómo va descendiendo su participación electoral.»</p><footer>Manuel Trujillo Carmona (IESA-CSIC) y Braulio Gómez Fortes (Universidad de Deusto), conclusiones de su estudio por sección censal para la Fundación FOESSA. <cite><a href="https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf">VIII Informe FOESSA, documento de trabajo 3.4, 2019</a></cite></footer></blockquote>
 
 <section class="wide" aria-label="Gráficos de voto por decil">
   <div class="charts">
@@ -241,12 +265,14 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
 <section class="col" aria-labelledby="h-edad">
   <h2 id="h-edad">La edad: Vox saca más donde vive gente joven</h2>
   <p>En el 10% de secciones más jóvenes, con una edad media por debajo de 39 años, Vox obtuvo el <b>17,2%</b>. En las más envejecidas, por encima de 50 años, el <b>10,0%</b>. Allí el PP llega al 41,1%. Las zonas mayores también votan más: 74,5%, frente al 69,5% de las más jóvenes. <a class="go" data-go="edad_media">Ver la edad en el mapa</a></p>
+  <blockquote class="cita"><p>«Somos un país muy envejecido y, además de tener pocos jóvenes, participan poco en política. La demografía es la que es y las personas mayores participan más en las elecciones»</p><footer>Manuel Mostaza, politólogo, a la agencia EFE. <cite><a href="https://www.elobservador.com.uy/nota/por-que-sera-decisivo-el-voto-joven-el-23j-202371961447">teletipo de EFE publicado en El Observador, 19 de julio de 2023</a></cite></footer></blockquote>
 </section>
 
 <section class="col" aria-labelledby="h-ext">
   <h2 id="h-ext">La inmigración: menos participación, no más Vox</h2>
   <p>Donde más de un 24% de los vecinos son extranjeros, la participación fue del <b>62,6%</b>, frente al 72,6% donde casi no hay. El voto a Vox apenas cambia entre unas y otras (12,1% y 13,3%). Entre los municipios de más de 50.000 habitantes, Vox tuvo sus mejores resultados en El Ejido (27,9%), Roquetas de Mar (23,5%) y Cartagena (23,3%).</p>
   <p>Además, unos <b>5.200.000</b> adultos que viven en España, el 13%, no pueden votar en unas generales porque no tienen la nacionalidad española. No están en el censo y la participación oficial no los cuenta. <a class="go" data-go="sin_derecho">Ver en el mapa</a></p>
+  <blockquote class="cita"><p>«Desde el punto de vista democrático, lo ideal sería que tengan derecho al voto aquellas personas que de manera estable quedan sujetas a las normas que dictan los poderes públicos del país en el que viven, que elijan a quien las elabora. Es uno de nuestros principales déficit democráticos, que además está muy asumido y normalizado»</p><footer>Rafael Naranjo, profesor titular de Derecho Constitucional de la Universidad de Málaga. <cite><a href="https://www.eldiario.es/desalambre/voto-inmigrante-extranjeros-legalmente-espana_1_1636823.html">elDiario.es, 15 de mayo de 2019</a></cite></footer></blockquote>
   <p>Entre los municipios de más de 50.000 habitantes, la participación más baja fue la de Melilla (49,8%), Arona (50,8%) y La Línea de la Concepción (50,9%). La más alta, Boadilla del Monte (82,5%), Pozuelo de Alarcón (81,9%) y Tres Cantos (81,0%). <a class="go" data-go="part::2023_07">Ver la participación en el mapa</a></p>
 </section>
 
@@ -254,6 +280,7 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
   <h2 id="h-otras">Municipales y europeas: la brecha depende de la elección</h2>
   <p>En las europeas de 2024, con una participación del 49%, la diferencia entre barrios fue la mayor de todas las elecciones analizadas: votó el 39,2% en las secciones más pobres y el 61,4% en las más ricas, <b>22,1 puntos</b>. En las europeas de 2019, celebradas el mismo día que las municipales, fue de 14,4 puntos.</p>
   <p>En las municipales la distancia ha sido menor, aunque también es mayor que hace una década: 3,8 puntos en 2011 y 11,9 puntos en 2023 (58,1% frente a 70,1%), por debajo del máximo de 2019. En las municipales de 2023, Vox sacó más en las secciones más ricas (9,2%) que en las más pobres (6,8%), al contrario que en las generales de ese mismo año. Hay que tener en cuenta que en municipales Vox no se presentó en todos los municipios. Son datos descriptivos: no dicen por qué ocurre. <a class="go" data-go="part::E2024">Ver la participación de las europeas</a></p>
+  <blockquote class="cita"><p>«la participación electoral en elecciones de segundo orden es menor en comparación con las elecciones de primer orden. Los ciudadanos consideran que “lo que está en juego” es menos importante que lo propio en elecciones de primer orden.»</p><footer>Irene Delgado Sotillos, politóloga de la UNED. <cite><a href="https://doi.org/10.21308/recp.62.01">Revista Española de Ciencia Política, n.º 62, 2023</a></cite></footer></blockquote>
 </section>
 
 <section class="col" aria-labelledby="h-29n">
@@ -271,6 +298,7 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
     <li>Las elecciones antiguas solo aparecen en las secciones que conservan su código de 2023. Los municipios creados por segregación o fusión no tienen datos antes de existir.</li>
     <li>Las mesas que figuran sin ningún voto en los ficheros de Interior se tratan como «sin dato».</li>
   </ul>
+  <blockquote class="cita"><p>«Las secciones censales son unidades territoriales que albergan entre 700 y 2.000 votantes, el nivel de mayor desagregación posible para reducir al mínimo los riesgos de la llamada falacia ecológica.»</p><footer>Héctor Meleiro, en el blog de politólogos Piedras de Papel. <cite><a href="https://www.eldiario.es/piedrasdepapel/Vox-derecha-populista-escision-PP_6_850474947.html">elDiario.es, 26 de diciembre de 2018</a></cite></footer></blockquote>
   <p><a href="generales-2026/metodologia.html">Metodología completa</a></p>
 </section>
 
