@@ -9,12 +9,19 @@ En la portada el mapa sube a la primera pantalla: debajo del título, antes de l
 
 Uso, cada vez que se actualice la pieza de generales-2026/:  python3 src/portada.py
 """
-import pathlib, re
+import json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 G = ROOT / 'generales-2026'
 BASE = 'https://mapaelectoral.es/'
 VIEJA = BASE + 'generales-2026/'
+CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->'''
+# Datos estructurados del sitio, solo en la portada
+SITIO = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': BASE + '#website', 'name': 'Mapa electoral', 'url': BASE,
+         'inLanguage': 'es', 'description': 'Periodismo de datos sobre elecciones en España por sección censal.',
+         'publisher': {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': 'Nacho G. del Álamo', 'url': BASE + 'sobre-mi.html'},
+         'hasPart': [{'@type': 'CollectionPage', 'name': 'Atlas de las anomalías electorales', 'url': BASE + 'atlas/'},
+                     {'@type': 'NewsArticle', 'name': '¿Quién no vota en Cataluña?', 'url': BASE + 'abstencion.html'}]}
 STUB = '''<!doctype html>
 <html lang="es">
 <head>
@@ -25,12 +32,13 @@ STUB = '''<!doctype html>
 <link rel="canonical" href="{base}">
 <meta http-equiv="refresh" content="0; url=../">
 <script>location.replace('../' + location.search + location.hash)</script>
+{cf}
 </head>
 <body style="font-family:system-ui,sans-serif;padding:16px">
 <p>El mapa de resultados está en la <a href="../">portada</a>.</p>
 </body>
 </html>
-'''.format(base=BASE)
+'''.format(base=BASE, cf=CF_ANALYTICS)
 
 
 def a_raiz(url):
@@ -93,6 +101,7 @@ def main():
         return
     s = re.sub(r'(\s(?:href|src)=")([^"]*)(")', lambda m: m.group(1) + a_raiz(m.group(2)) + m.group(3), pieza)
     s = canonica(s)
+    s = s.replace('</head>', '<script type="application/ld+json">' + json.dumps(SITIO, ensure_ascii=False) + '</script>\n</head>', 1)
     s = primera_pantalla(s)
     (ROOT / 'index.html').write_text(s, encoding='utf-8')
     (G / 'index.html').write_text(STUB, encoding='utf-8')

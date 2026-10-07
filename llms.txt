@@ -1,10 +1,79 @@
-# ¿Quién no vota en Cataluña? / Qui no vota a Catalunya?
+# Mapa electoral
+
+> Periodismo de datos sobre elecciones en España por sección censal: resultados del Congreso de 2004 a 2023 barrio a barrio, el Atlas de las anomalías electorales y la abstención en Cataluña. Por Nacho G. del Álamo.
+
+Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat y Generalitat) y se pueden descargar con licencia CC BY 4.0. Cada pieza enlaza su metodología, sus fuentes y su historial de correcciones.
+
+## Secciones del sitio
+
+- [Mapa de resultados de España (portada)](https://mapaelectoral.es/): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt](https://mapaelectoral.es/generales-2026/llms.txt)
+- [Atlas de las anomalías electorales](https://mapaelectoral.es/atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt](https://mapaelectoral.es/atlas/llms.txt)
+- [¿Quién no vota en Cataluña?](https://mapaelectoral.es/abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán](https://mapaelectoral.es/ca.html).
+- [Sobre el autor](https://mapaelectoral.es/sobre-mi.html)
+
+## El mapa de las generales: cómo vota cada barrio de España
+
+> Resultados de las elecciones al Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Incluye también las municipales de 2011 a 2023 y las europeas de 2019 y 2024 por sección, y las municipales de 2007 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
+
+Autor: Nacho G. del Álamo. Actualizado: 2026-10-06. Licencia de los datos: CC BY 4.0.
+
+### Cifras clave (23J 2023, sin voto CERA)
+- Participación: 70,4%. PP 33,3%, PSOE 31,7%, Vox 12,4%, Sumar 12,3% (sobre voto válido).
+- En el 10% del censo que vive en las secciones más pobres (renta por unidad de consumo por debajo de 15.723 €) votó el 62,6%; en el 10% más rico (más de 30.726 €), el 77,8%.
+- El PSOE obtuvo el 41,2% en las secciones más pobres y el 20,3% en las más ricas; el PP, el 29,4% y el 43,5%.
+- Vox sacó el 17,2% en las secciones más jóvenes (edad media inferior a 39 años) y el 10,0% en las más envejecidas.
+- En las secciones con más población extranjera (más del 24%) la participación fue del 62,6%, frente al 72,6% en las que menos.
+- Unos 5.200.000 adultos residentes (13%) no pueden votar en unas generales por no tener la nacionalidad española.
+- La diferencia de participación entre el 10% de secciones más ricas y el 10% más pobres pasó de 7,9 puntos en 2004 a 15,2 puntos en 2023 (mismas secciones, ordenadas por su renta de 2023). En las europeas de 2024 fue de 22,1 puntos.
+
+### Páginas
+- [Pieza interactiva](https://mapaelectoral.es/): mapa por municipio y sección censal y gráficos por decil.
+- [Metodología y fuentes](https://mapaelectoral.es/generales-2026/metodologia.html)
+
+### Datos descargables (CSV, UTF-8)
+- [secciones.csv](https://mapaelectoral.es/generales-2026/descargas/secciones.csv): una fila por sección censal INE 2023, resultados por elección y variables sociodemográficas.
+- [municipios.csv](https://mapaelectoral.es/generales-2026/descargas/municipios.csv): lo mismo por municipio.
+- [resultados_secciones_largo.csv](https://mapaelectoral.es/generales-2026/descargas/resultados_secciones_largo.csv): votos por sección, elección y familia política.
+
+## Atlas de las anomalías electorales
+
+> Piezas de periodismo de datos sobre lugares de España que votan distinto de lo esperado. Cada cifra sale de los resultados por mesa del Ministerio del Interior y de indicadores del INE; cada afirmación se etiqueta como dato, patrón o hipótesis.
+
+### Piezas
+
+- [Si el 29N se votara como en 2023, el escaño que pierde Cádiz sería del PP y el que gana Madrid, del PSOE](https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/): Para las generales del 29 de noviembre de 2026, Madrid elige 38 diputados (uno más) y Cádiz 8 (uno menos). Si se aplica ese reparto a los votos del 23 de julio de 2023, el PP pierde un escaño en Cádiz (de 4 a 3) y el PSOE gana uno en Madrid (de 10 a 11). Es un ejercicio aritmético, no una previsión: los votos de 2026 serán otros.
+- [El último escaño de Madrid en 2023 lo decidió el voto desde el extranjero](https://mapaelectoral.es/atlas/bisagras/madrid-voto-exterior/): Con los votos emitidos en España, el último escaño de Madrid era del PSOE: al PP le faltaban 1.915 votos. El voto de los residentes en el extranjero (CERA) dio al PP 19.006 votos y al PSOE 10.411, y el escaño pasó al PP: 16 para el PP y 10 para el PSOE. Con todos los votos contados, al PSOE le faltaron 1.340.
+- [6 escaños del 23J se decidieron por menos de 1.500 votos; en Girona bastaban 285](https://mapaelectoral.es/atlas/bisagras/escanos-ajustados-2023/): En 6 de las 52 circunscripciones, a la lista que se quedó sin el último escaño le faltaron menos de 1.500 votos para lograrlo. Los dos casos más ajustados fueron Girona, donde al PP le faltaron 285 votos para quitar el escaño a Junts, y Cantabria, donde le faltaron 404 para quitárselo a Vox.
+- [La capital no es la isla progresista de su provincia: en 33 de 50 vota más al PP que el resto](https://mapaelectoral.es/atlas/ciudad-y-entorno/capitales-frente-a-su-provincia/): No en la mayoría de España. El 23J, la capital dio al PP un porcentaje mayor que el resto de su provincia en 33 de 50 casos, con Granada (+9,4 puntos), Donostia y Vitoria a la cabeza. La imagen de la ciudad progresista frente al campo conservador solo se cumple en 17 provincias, sobre todo en Galicia y Castilla y León: Ourense y Soria votaron 10,6 puntos menos al PP que su entorno.
+- [El PSOE ganó en cuatro grandes ciudades del sur de Madrid mientras el PP ganaba la provincia por 13 puntos](https://mapaelectoral.es/atlas/contra-su-provincia/sur-de-madrid/): El PP ganó la provincia de Madrid el 23J con el 40,5 % frente al 27,9 % del PSOE. Pero el PSOE fue primero en Parla, Fuenlabrada, Leganés y Getafe, cuatro ciudades que suman 702.930 habitantes. La ventaja se estrecha: en 2004 la izquierda (PSOE más Sumar, Podemos o IU) sacó entre el 62,0 % y el 69,4 % en las cuatro; en 2023, entre el 52,2 % y el 53,7 %, y en Móstoles y Alcorcón ya ganó el PP.
+- [A Illa de Arousa vota 23 puntos menos al PP que Vilanova, al otro lado del puente, y así desde hace veinte años](https://mapaelectoral.es/atlas/fronteras/a-illa-vilanova-de-arousa/): El 23J de 2023, el PP sacó el 33,1 % en A Illa de Arousa y el 55,9 % en Vilanova de Arousa, el municipio vecino al otro lado del puente. Tienen casi la misma renta (17.438 y 17.897 euros por unidad de consumo) y una edad media parecida. La distancia no es nueva: en las ocho generales desde 2004 ha estado entre 22 y 28 puntos.
+- [En 2004 Cabra y Montilla votaban igual; en 2023 las separaban 12 puntos de voto a la derecha](https://mapaelectoral.es/atlas/gemelos/cabra-montilla/): Cabra y Montilla, en el sur de Córdoba, tienen casi la misma renta (17.575 y 17.813 euros), la misma edad media y el mismo paro. En 2004 el PP sacó en las dos casi lo mismo (29,0 % y 27,8 %). Desde entonces se han ido separando: en 2023 la derecha sacó el 55,1 % en Cabra, donde ganó el PP, y el 42,8 % en Montilla, donde ganó el PSOE.
+- [Puerto Real vota 23 puntos menos a la derecha de lo que predicen sus datos: la mayor excepción de España](https://mapaelectoral.es/atlas/excepciones/puerto-real/): Por su renta, edad, paro, estudios, extranjeros y tamaño, a Puerto Real (Cádiz) le correspondería dar a PP, Vox y Cs alrededor del 50,1 % del voto. El 23J les dio el 26,9 %. Es la mayor diferencia entre los 770 municipios de más de 10.000 habitantes. El PSOE ganó allí con el 43,3 % en una provincia que ganó el PP.
+- [Badalona dio al PP el 56 % en mayo y el 17 % en julio: la mayor distancia de España entre voto local y estatal](https://mapaelectoral.es/atlas/voto-doble/badalona/): En las municipales del 28 de mayo de 2023, el PP sacó en Badalona el 55,7 % del voto válido. En las generales del 23 de julio, dos meses después, el 16,6 %, y el PSC ganó con el 40,7 %. Son 39 puntos de diferencia, la mayor entre los 420 municipios de más de 20.000 habitantes.
+- [A igual renta, los barrios con más paro votan menos: el desempleo pesa más que el dinero en la abstención](https://mapaelectoral.es/atlas/quien-no-vota/paro-renta-participacion/): En las 34.590 secciones censales de España, la participación del 23J sube con la renta: del 62,1 % en el 10 % de secciones más pobres al 77,4 % en el 10 % más rico. Pero cuando se comparan secciones con la misma renta, la que tiene más paro vota menos: en el quintil más pobre, del 69,2 % con poco paro al 59,1 % con mucho. Teniendo en cuenta a la vez renta, paro, estudios, edad y extranjeros, el paro es la variable que más resta.
+- [Las cuencas mineras de Asturias votan a la derecha hasta 16 puntos menos de lo que predice su perfil, y a la izquierda como hace veinte años](https://mapaelectoral.es/atlas/excepciones/cuencas-mineras-asturianas/): En San Martín del Rey Aurelio, Mieres, Langreo y Laviana, PP, Vox y Cs sacaron el 23J entre el 31,7 % y el 36,8 %, entre 11,2 y 16,2 puntos menos de lo que predicen su renta, su edad, su paro y su tamaño. La izquierda estatal sigue donde estaba en 2004: entre el 56,5 % y el 65,2 % del voto, frente al 49,3 % del conjunto de Asturias.
+- [Lalín y Vilanova de Arousa, los dos municipios donde el PP saca más voto por encima de lo que predicen sus datos](https://mapaelectoral.es/atlas/excepciones/lalin-vilanova-de-arousa/): Por su renta, su edad, su paro y su tamaño, a Lalín le correspondería dar a PP, Vox y Cs el 43,8 % del voto. El 23J les dio el 64,4 %. En Vilanova de Arousa, el 61,6 % frente a un 42,1 % previsto. Son las dos mayores diferencias al alza entre los municipios de más de 10.000 habitantes de España, y las dos están en Pontevedra.
+- [Cizur y Zizur Mayor, a 1,4 kilómetros: 31 puntos de diferencia en el voto a la derecha](https://mapaelectoral.es/atlas/fronteras/cuenca-de-pamplona/): En Cizur, PP (con UPN), Vox y Cs sacaron el 23J el 66,3 % del voto. En Zizur Mayor, su vecino, el 35,5 %. Los centros de sus términos municipales están a 1,4 kilómetros. En la misma corona de Pamplona, Ansoáin y Villava votan a la derecha 17,8 y 14,2 puntos menos de lo que predice su perfil, y en Villava ganó EH Bildu.
+- [Getxo y Portugalete, a los dos lados de la ría: el PSOE saca 21 puntos más en una orilla que en la otra](https://mapaelectoral.es/atlas/fronteras/getxo-portugalete/): El 23J, el PSOE sacó el 39,1 % en Portugalete y el 17,7 % en Getxo, al otro lado de la ría. En Getxo ganó el PNV y el PP sacó el 25,1 %, más del doble que en Portugalete (10,8 %). La renta de Getxo (36.480 euros por unidad de consumo) es la más alta de la ría; la de Portugalete, 24.638.
+- [Aranda y Miranda, las dos Burgos: misma renta y mismo paro, y 11 puntos de distancia en el voto a la derecha](https://mapaelectoral.es/atlas/gemelos/aranda-miranda/): Aranda de Duero y Miranda de Ebro tienen casi la misma población (33.360 y 35.745 habitantes), la misma renta (21.275 y 21.874 euros) y el mismo paro (14,8 % y 14,9 %). El 23J, Aranda dio a PP, Vox y Cs el 50,7 % y la ganó el PP; Miranda, el 39,4 %, y la ganó el PSOE con el 43,5 %.
+- [Los Palacios y Villafranca: el PSOE pasó del 66 % al 26 % en veinte años, y en mayo ganó una lista de IU](https://mapaelectoral.es/atlas/el-municipio-que-cambio/los-palacios-y-villafranca/): En las generales de 2004, el PSOE sacó en Los Palacios y Villafranca (Sevilla) el 65,5 % del voto. En 2023, el 26,1 %, y ganó el PP con el 36,3 %. PP, Vox y Cs pasaron del 20,0 % al 56,1 %. Dos meses antes, en las municipales, la lista más votada fue la de IU, con el 49,2 %.
+- [Castro-Urdiales, el municipio cántabro donde el PSOE ganó por 19 puntos mientras el PP ganaba Cantabria](https://mapaelectoral.es/atlas/contra-su-provincia/castro-urdiales/): El 23J, el PP ganó en Cantabria con el 42,1 %, frente al 33,3 % del PSOE. En Castro-Urdiales el resultado fue el contrario: PSOE 45,5 %, PP 26,8 %. Por su perfil, a Castro le correspondería dar a PP, Vox y Cs un 57,1 %; les dio el 37,7 %. Es la 2.ª mayor diferencia a la baja de los municipios españoles de más de 10.000 habitantes.
+- [Vigo, la única gran ciudad gallega donde ganó el PSOE el 23J, y donde en mayo le dio el 61 %](https://mapaelectoral.es/atlas/contra-su-provincia/vigo/): El 23J el PP ganó en Galicia con el 43,6 %, frente al 29,9 % del PSOE. De los 22 municipios gallegos de más de 20.000 habitantes, el PSOE solo fue primero en dos: Redondela y Vigo. En Vigo sacó el 37,3 % en las generales y el 60,9 % en las municipales de mayo.
+- [Los pueblos pequeños son los únicos que votan más para elegir alcalde que para elegir al Gobierno](https://mapaelectoral.es/atlas/quien-no-vota/pueblos-pequenos/): En las ciudades se vota mucho menos en las municipales que en las generales: en las de más de 100.000 habitantes, un 61,6 % en mayo de 2023 frente a un 70,3 % en julio. En los pueblos de menos de 2.000 habitantes ocurre al revés. De los 5.821 municipios de ese tamaño, en 3.498 se votó más para elegir el ayuntamiento que para el Congreso; de los 420 de más de 20.000, solo en 4.
+
+### Referencia
+
+- [Metodología](https://mapaelectoral.es/atlas/metodologia/)
+- [Datos en CSV](https://mapaelectoral.es/atlas/datos/)
+- [Correcciones](https://mapaelectoral.es/atlas/correcciones/)
+
+## ¿Quién no vota en Cataluña? / Qui no vota a Catalunya?
 
 > De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. Mapa de las 5.115 secciones censales cruzado con renta, estudios, paro, edad y población extranjera, de 2015 a 2024.
 
 Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral en Cataluña por sección censal, 2015-2024. Autor: [Nacho G. del Álamo](https://mapaelectoral.es/sobre-mi.html). Publicada el 2026-10-05; actualizada el 2026-10-06. Datos con licencia CC BY 4.0: se pueden citar y reutilizar indicando la fuente.
 
-## Cifras clave
+### Cifras clave
 
 - Cataluña, 23 de julio de 2023: de cada 100 adultos residentes, 54 votaron, 17 no tenían derecho a voto y 29 podían votar y no lo hicieron.
 - Participación oficial: 65% en el Congreso 2023, 56% en las municipales 2023 y 58% en el Parlament 2024.
@@ -13,44 +82,42 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 - Diferencia de participación entre el decil de secciones más rico y el más pobre: 18 puntos en el Congreso 2023, 19 en las municipales 2023 y 24 en el Parlament 2024.
 - Un modelo con renta, edad, estudios, paro, población extranjera y vivienda explica el 72% de las diferencias de participación entre secciones. Los estudios son la variable que más pesa, seguida del paro.
 
-## Preguntas frecuentes
+### Preguntas frecuentes
 
-### ¿Cuántos adultos no votaron en Cataluña en las generales de 2023?
+#### ¿Cuántos adultos no votaron en Cataluña en las generales de 2023?
 
 De cada 100 adultos que vivían en Cataluña el 23 de julio de 2023, 29 podían votar y no lo hicieron y otros 17 no tenían derecho a voto por no tener la nacionalidad española; votaron 54.
 
-### ¿Dónde se vota menos en Cataluña?
+#### ¿Dónde se vota menos en Cataluña?
 
 La sección censal con menos participación de Cataluña está en Figueres, con un 22% en el Congreso de 2023, y entre los municipios de más de 20.000 habitantes Salt es donde menos adultos votan: 34 de cada 100.
 
-### ¿Por qué votan tan poco Salt y Lloret de Mar?
+#### ¿Por qué votan tan poco Salt y Lloret de Mar?
 
 Porque se suman dos cosas: muchos adultos sin derecho a voto (39 de cada 100 en Salt y 38 en Lloret) y una abstención alta entre quienes sí pueden votar, que en Salt deja la participación en el 55%, diez puntos por debajo de la media catalana.
 
-### ¿Votan menos los barrios pobres?
+#### ¿Votan menos los barrios pobres?
 
 Sí: el 10% de secciones más ricas votó 18 puntos más que el 10% más pobre en el Congreso de 2023, 19 puntos más en las municipales de 2023 y 24 más en el Parlament de 2024.
 
-### ¿Qué explica más la abstención: la renta, la inmigración o los estudios?
+#### ¿Qué explica más la abstención: la renta, la inmigración o los estudios?
 
 Los estudios, seguidos del paro: un modelo con todas las variables explica el 72% de las diferencias entre secciones, y con esas dos dentro la renta deja de sumar.
 
-### ¿En qué elecciones se vota menos en Cataluña?
+#### ¿En qué elecciones se vota menos en Cataluña?
 
 En las municipales (56% en 2023) y en el Parlament (58% en 2024), frente al 65% del Congreso de 2023; solo los 589 municipios de menos de 2.000 habitantes votan más al ayuntamiento (69% frente a 67%).
 
-### ¿Por qué bajó la participación en las generales de 2023?
+#### ¿Por qué bajó la participación en las generales de 2023?
 
 Cayó 6,7 puntos respecto a noviembre de 2019, y más donde el independentismo era fuerte: 9 puntos en el cuarto de secciones más independentista frente a 6 en el menos.
 
-### ¿Pueden votar los extranjeros en Cataluña?
+#### ¿Pueden votar los extranjeros en Cataluña?
 
 Solo en las municipales, y solo los ciudadanos de la UE y de países con convenio inscritos en el censo; en 2023 había unos 68.000 inscritos, entre europeos y ciudadanos de esos países, lo que reduce los adultos sin derecho a voto únicamente del 17% al 16%.
 
-## Páginas
+### Páginas
 
-- [Portada: mapa de resultados de España](https://mapaelectoral.es/): elecciones generales al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, edad y población extranjera, con resultados en directo la noche del 29N. Resumen: https://mapaelectoral.es/generales-2026/llms.txt
-- [Atlas de las anomalías electorales](https://mapaelectoral.es/atlas/): piezas sobre los lugares que votan distinto de lo esperable. Resumen: https://mapaelectoral.es/atlas/llms.txt
 - [Pieza en castellano](https://mapaelectoral.es/abstencion.html): texto completo con mapa 3D y gráficos.
 - [Peça en català](https://mapaelectoral.es/ca.html): el mismo texto en catalán.
 - [Metodología y datos](https://mapaelectoral.es/metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
@@ -58,7 +125,7 @@ Solo en las municipales, y solo los ciudadanos de la UE y de países con conveni
 - [Mapa interactivo 2D](https://mapaelectoral.es/mapa.html)
 - [Sobre el autor](https://mapaelectoral.es/sobre-mi.html)
 
-## Datos (CSV y GeoJSON)
+### Datos (CSV y GeoJSON)
 
 - [catalunya_secciones_2023.csv](https://mapaelectoral.es/data/catalunya_secciones_2023.csv): Secciones censales 2023: participación, reparto de cada 100 adultos y variables sociodemográficas
 - [catalunya_municipios.csv](https://mapaelectoral.es/data/catalunya_municipios.csv): Municipios: participación y reparto de cada 100 adultos
@@ -68,7 +135,7 @@ Solo en las municipales, y solo los ciudadanos de la UE y de países con conveni
 - [girona_secciones_2023.csv](https://mapaelectoral.es/data/girona_secciones_2023.csv): Secciones de la provincia de Girona
 - [girona_municipios.csv](https://mapaelectoral.es/data/girona_municipios.csv): Municipios de la provincia de Girona
 
-## Fuentes
+### Fuentes
 
 - [Ministerio del Interior: resultados por mesa del Congreso 2015-2023 (vía pollspain)](https://github.com/dadosdelaplace/pollspain)
 - [INE: Atlas de Distribución de Renta de los Hogares 2023 (vía ineAtlas.data)](https://github.com/pablogguz/ineAtlas.data)
