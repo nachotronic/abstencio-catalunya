@@ -1,4 +1,4 @@
-Controles del Atlas: 132 de 132 superados
+Controles del Atlas: 216 de 216 superados
 
 OK   8.131 municipios en la base
 OK   D'Hondt con CERA reproduce los 350 escaños oficiales de 2023
@@ -79,6 +79,36 @@ OK   Badalona 2015_12: las candidaturas suman entre 97 y 100 % del voto válido 
 OK   Badalona: primera en diferencia PP municipales − generales
 OK   Modelo municipal: R² entre 0 y 1
 OK   Participación: R² del modelo por secciones mayor que el de la renta sola
+OK   Asturias: los seis municipios más por debajo del modelo son de las cuencas
+OK   Cuencas: el PSOE fue primero en los cinco municipios el 23J
+OK   Asturias: el PP ganó la comunidad
+OK   Cuencas: Mieres y Langreo las ganó IU en mayo; San Martín, Laviana y Aller, el PSOE
+OK   Lalín y Vilanova: primera y segunda mayores diferencias al alza, ambas en Pontevedra
+OK   Lalín: mejor año del PP 2011 y peor abril de 2019
+OK   A Illa vota al PP más de 20 puntos menos que Vilanova en todas las generales
+OK   Cuenca de Pamplona: Cizur tiene la renta más alta
+OK   Cuenca de Pamplona: Villava la gana EH Bildu y Ansoáin el PSOE
+OK   Cuenca de Pamplona: Ansoáin, Villava y Burlada por debajo de lo previsto; Egüés y Cizur por encima
+OK   Ría: el PSOE gana en las cuatro de la margen izquierda y el PNV en Getxo y Leioa
+OK   Ría: Getxo, más renta y menos paro de la tabla
+OK   Ría: PP de Getxo más del doble que en Portugalete y que en Bizkaia
+OK   Burgos: Miranda y Aranda, las más pobladas después de la capital
+OK   Aranda y Miranda: mismo previsto redondeado
+OK   Aranda la gana el PP y Miranda el PSOE (23J); en mayo, PP por poco en Aranda y PSOE en Miranda
+OK   Aranda y Miranda: la distancia en el voto a la derecha creció de 2004 a 2023
+OK   Los Palacios: en 2004 el PSOE por encima de su provincia y la derecha por debajo; en 2023 la derecha por encima
+OK   Los Palacios: el PSOE no sube desde 2015 y gana el PP el 23J
+OK   Los Palacios: en mayo ganó una lista de IU con casi la mitad; en julio la derecha pasó de la mitad
+OK   Castro: 2.ª mayor diferencia a la baja, detrás de Puerto Real
+OK   Castro: la derecha, al menos 10 puntos por debajo de Cantabria en las ocho generales
+OK   Castro: PSOE por delante del PP en 2004, 2008, 2019 y 2023; PP en 2011, 2015 y 2016
+OK   Castro: el PSOE fue primero en las municipales
+OK   Galicia: el PP gana en las seis grandes ciudades salvo Vigo
+OK   Galicia: de los municipios de más de 20.000, el PSOE solo gana en dos
+OK   Vigo: PSOE por delante del PP desde abril de 2019 y PP por delante en 2011
+OK   Participación: en el conjunto se votó más en julio
+OK   Participación: por debajo de 2.000 habitantes, más en municipales en todos los tramos; por encima, más en generales
+OK   Participación: en 250-1.000 hab., en torno a dos de cada tres (60-70 %); en +100.000, ninguna
 OK   cadiz-madrid-29n: campos completos
 OK   cadiz-madrid-29n: serie existe
 OK   cadiz-madrid-29n: CSV existe
@@ -119,16 +149,70 @@ OK   paro-renta-participacion: campos completos
 OK   paro-renta-participacion: serie existe
 OK   paro-renta-participacion: CSV existe
 OK   paro-renta-participacion: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cuencas-mineras-asturianas: campos completos
+OK   cuencas-mineras-asturianas: serie existe
+OK   cuencas-mineras-asturianas: CSV existe
+OK   cuencas-mineras-asturianas: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cuencas-mineras-asturianas: sin revisar → noindex
+OK   lalin-vilanova-de-arousa: campos completos
+OK   lalin-vilanova-de-arousa: serie existe
+OK   lalin-vilanova-de-arousa: CSV existe
+OK   lalin-vilanova-de-arousa: sin lenguaje causal en titular, resumen, datos y patrones
+OK   lalin-vilanova-de-arousa: sin revisar → noindex
+OK   cuenca-de-pamplona: campos completos
+OK   cuenca-de-pamplona: serie existe
+OK   cuenca-de-pamplona: CSV existe
+OK   cuenca-de-pamplona: sin lenguaje causal en titular, resumen, datos y patrones
+OK   cuenca-de-pamplona: sin revisar → noindex
+OK   getxo-portugalete: campos completos
+OK   getxo-portugalete: serie existe
+OK   getxo-portugalete: CSV existe
+OK   getxo-portugalete: sin lenguaje causal en titular, resumen, datos y patrones
+OK   getxo-portugalete: sin revisar → noindex
+OK   aranda-miranda: campos completos
+OK   aranda-miranda: serie existe
+OK   aranda-miranda: CSV existe
+OK   aranda-miranda: sin lenguaje causal en titular, resumen, datos y patrones
+OK   aranda-miranda: sin revisar → noindex
+OK   los-palacios-y-villafranca: campos completos
+OK   los-palacios-y-villafranca: serie existe
+OK   los-palacios-y-villafranca: CSV existe
+OK   los-palacios-y-villafranca: sin lenguaje causal en titular, resumen, datos y patrones
+OK   los-palacios-y-villafranca: sin revisar → noindex
+OK   castro-urdiales: campos completos
+OK   castro-urdiales: serie existe
+OK   castro-urdiales: CSV existe
+OK   castro-urdiales: sin lenguaje causal en titular, resumen, datos y patrones
+OK   castro-urdiales: sin revisar → noindex
+OK   vigo: campos completos
+OK   vigo: serie existe
+OK   vigo: CSV existe
+OK   vigo: sin lenguaje causal en titular, resumen, datos y patrones
+OK   vigo: sin revisar → noindex
+OK   pueblos-pequenos: campos completos
+OK   pueblos-pequenos: serie existe
+OK   pueblos-pequenos: CSV existe
+OK   pueblos-pequenos: sin lenguaje causal en titular, resumen, datos y patrones
+OK   pueblos-pequenos: sin revisar → noindex
 OK   a-illa-vilanova.csv: 8 filas sin valores vacíos
+OK   aranda-miranda.csv: 8 filas sin valores vacíos
 OK   badalona.csv: 6 filas sin valores vacíos
 OK   cabra-montilla.csv: 8 filas sin valores vacíos
 OK   cadiz-madrid-29n.csv: 8 filas sin valores vacíos
 OK   capitales-2023.csv: 50 filas sin valores vacíos
+OK   castro-urdiales.csv: 8 filas sin valores vacíos
+OK   cuenca-de-pamplona.csv: 9 filas sin valores vacíos
+OK   cuencas-mineras.csv: 20 filas sin valores vacíos
 OK   escanos-ajustados-2023.csv: 52 filas sin valores vacíos
+OK   getxo-portugalete.csv: 6 filas sin valores vacíos
+OK   lalin-vilanova.csv: 10 filas sin valores vacíos
+OK   los-palacios.csv: 8 filas sin valores vacíos
 OK   madrid-sur-noroeste.csv: 11 filas sin valores vacíos
 OK   modelo-municipal-2023.csv: 770 filas sin valores vacíos
+OK   participacion-por-tamano.csv: 11 filas sin valores vacíos
 OK   participacion-renta-paro.csv: 5 filas sin valores vacíos
 OK   puerto-real.csv: 15 filas sin valores vacíos
+OK   vigo-galicia.csv: 7 filas sin valores vacíos
 OK   Cifra derivada: suma de habitantes de las ciudades del sur que gana el PSOE = 702.930
 OK   Cifra derivada: ventaja del PP sobre el PSOE en el voto CERA de Madrid = 8.595
 OK   Todas las cifras decimales y de miles del texto salen de cifras.json o de la tabla

@@ -9,6 +9,7 @@ from html import escape
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from piezas import piezas, SERIES  # noqa: E402
+from piezas2 import piezas2  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ATLAS = ROOT / 'atlas'
@@ -168,6 +169,10 @@ def pagina_pieza(p):
     h.append(f'<p><span class="estado">{escape(p["estado"])}: {"verificable y reproducible" if p["estado"] == "Dato" else "relación descriptiva, no causa"}</span></p>')
     if not rev:
         h.append('<p class="aviso">Revisión pendiente: los datos y el texto de esta página aún no han pasado la comprobación manual. No se publica en buscadores hasta que se complete.</p>')
+    if p.get('foto'):
+        f = p['foto']
+        h.append(f'<figure class="foto"><img src="{escape(f["src"])}" alt="{escape(f["alt"])}" loading="lazy">'
+                 f'<figcaption>{escape(f["alt"])}. Foto: <a href="{escape(f["url"])}">{escape(f["autor"])}</a>, {escape(f["licencia"])}, Wikimedia Commons.</figcaption></figure>')
     h.append(f'<p><strong>La pregunta:</strong> {escape(p["pregunta"])}</p>')
     if p.get('grafico'):
         svg, cap = p['grafico']
@@ -176,6 +181,8 @@ def pagina_pieza(p):
     for tipo, texto in p['cuerpo']:
         h.append(f'<h2>{escape(texto)}</h2>' if tipo == 'sub' else f'<p><span class="tipo">{ETIQ[tipo]}</span>{escape(texto)}</p>')
     h.append('</div>')
+    if p.get('color'):
+        h.append('<h2>Sobre el terreno</h2>' + ''.join(f'<p>{escape(t)} <span class="fuentes-nota">Fuentes: ' + ', '.join(f'<a href="{escape(u)}">{i}</a>' for i, u in enumerate(us, 1)) + '</span></p>' for t, us in p['color']))
     h.append('<h2>Lo que no sabemos</h2><ul>' + ''.join(f'<li><span class="tipo">Hipótesis</span>{escape(x)}</li>' for x in p['no_sabemos']) + '</ul>')
     h.append('<h2>Los datos</h2>' + tabla(p['tabla']) + f'<p><a href="../../datos/{p["csv"]}">Descargar los datos en CSV</a></p>')
     if p.get('faq'):
@@ -312,7 +319,7 @@ def llms():
 def main():
     global TODAS
     C = json.loads((ATLAS / 'src' / 'cifras.json').read_text())
-    TODAS = piezas(C)
+    TODAS = piezas(C) + piezas2(C)
     paginas = [pagina_pieza(p) for p in TODAS] + [portada(), metodologia(C), datos(), correcciones()]
     paginas += [pagina_serie(s) for s in SERIES if any(q['serie'] == s for q in TODAS)]
     for ruta, html in paginas:

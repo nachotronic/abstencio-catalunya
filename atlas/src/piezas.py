@@ -20,6 +20,7 @@ SERIES = {
     'ciudad-y-entorno': ('Ciudad, corona e interior', 'La distancia entre la ciudad y el territorio que la rodea.'),
     'voto-doble': ('Voto doble', 'El mismo electorado vota distinto según qué se elige.'),
     'bisagras': ('Bisagras', 'Votos y lugares que deciden algo mucho mayor que su peso.'),
+    'el-municipio-que-cambio': ('El municipio que cambió', 'Lugares que han dado la vuelta a su voto en veinte años.'),
     'quien-no-vota': ('Quién no vota', 'Quién se queda fuera de las urnas, y por qué grupos de razones.'),
 }
 

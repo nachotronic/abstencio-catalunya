@@ -19,7 +19,7 @@ def _svg(h, titulo, cuerpo):
             f'xmlns="http://www.w3.org/2000/svg" font-family="var(--mono)" font-size="12">{cuerpo}</svg>')
 
 
-def lineas(series, elecciones, titulo, ymin=0, ymax=70, unidad='%'):
+def lineas(series, elecciones, titulo, ymin=0, ymax=70, unidad='%', etiquetas=None):
     """series: [(nombre, {eleccion: valor}, color_var, destacado)]. Etiqueta el último punto de cada serie."""
     x0, x1, y0, y1 = 48, W - 150, 20, 250
     X = lambda i: x0 + i * (x1 - x0) / (len(elecciones) - 1)
@@ -29,7 +29,9 @@ def lineas(series, elecciones, titulo, ymin=0, ymax=70, unidad='%'):
         out.append(f'<line x1="{x0}" x2="{x1}" y1="{Y(t):.1f}" y2="{Y(t):.1f}" stroke="var(--rule)"/>'
                    f'<text x="{x0 - 8}" y="{Y(t) + 4:.1f}" text-anchor="end" fill="var(--muted)">{t}{unidad if t == ymax else ""}</text>')
     for i, e in enumerate(elecciones):
-        out.append(f'<text x="{X(i):.1f}" y="{y1 + 20}" text-anchor="middle" fill="var(--muted)">{ANYO.get(e, e)}</text>')
+        et = (etiquetas or {}).get(e, ANYO.get(e, e))
+        if et:
+            out.append(f'<text x="{X(i):.1f}" y="{y1 + 20}" text-anchor="middle" fill="var(--muted)">{et}</text>')
     usados = []
     for nombre, vals, color, fuerte in series:
         pts = [(X(i), Y(vals[e])) for i, e in enumerate(elecciones) if vals.get(e) is not None]

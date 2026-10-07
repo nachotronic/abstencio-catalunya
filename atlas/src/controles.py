@@ -16,6 +16,7 @@ ATLAS = SRC.parent
 sys.path.insert(0, str(SRC))
 from graficos import num  # noqa: E402
 from piezas import piezas, SERIES  # noqa: E402
+from piezas2 import piezas2  # noqa: E402
 
 # Resultado oficial del 23J de 2023 (Congreso, 350 escaños), para comprobar el reparto D'Hondt recalculado.
 OFICIAL_2023 = {'PP': 137, 'PSOE': 121, 'Vox': 33, 'Sumar': 31, 'ERC': 7, 'Junts': 7, 'EH Bildu': 6, 'PNV': 5,
@@ -44,7 +45,7 @@ def planos(x, out):
 
 def main():
     C = json.load(open(SRC / 'cifras.json'))
-    P = piezas(C)
+    P = piezas(C) + piezas2(C)
 
     # 1. Universo y reparto de escaños
     control('8.131 municipios en la base', C['fuente_datos']['n_municipios'] == 8131, C['fuente_datos']['n_municipios'])
@@ -153,6 +154,68 @@ def main():
     control('Modelo municipal: R² entre 0 y 1', 0 < C['modelo_municipal']['r2_derecha'] < 1)
     control('Participación: R² del modelo por secciones mayor que el de la renta sola', C['paro']['r2'] > C['paro']['r2_solo_renta'])
 
+    # Segunda tanda (2026-10-07)
+    cu = C['cuencas']
+    cmm = {x['municipio']: x for x in cu['municipios']}
+    seis = [r['municipio'] for r in cu['asturias_modelo'][:6]]
+    control('Asturias: los seis municipios más por debajo del modelo son de las cuencas',
+            set(seis) == {'San Martín del Rey Aurelio', 'Mieres', 'Langreo', 'Laviana', 'Lena', 'Aller'}, seis)
+    control('Cuencas: el PSOE fue primero en los cinco municipios el 23J', all(x['gana'] == 'PSOE' for x in cu['municipios']))
+    control('Asturias: el PP ganó la comunidad', cu['asturias_pp'] > cu['asturias_psoe'])
+    control('Cuencas: Mieres y Langreo las ganó IU en mayo; San Martín, Laviana y Aller, el PSOE',
+            all('IU' in cmm[n]['m2023_lista'] for n in ('Mieres', 'Langreo')) and all('SOCIALISTA' in cmm[n]['m2023_lista'] for n in ('San Martín del Rey Aurelio', 'Laviana', 'Aller')))
+    la = C['lalin']
+    control('Lalín y Vilanova: primera y segunda mayores diferencias al alza, ambas en Pontevedra',
+            la['rango_lalin'] == 1 and la['rango_vilanova'] == 2 and all(r['provincia'] == 'Pontevedra' for r in la['top'][:2]))
+    control('Lalín: mejor año del PP 2011 y peor abril de 2019', max(la['lalin']['pp'], key=la['lalin']['pp'].get) == '2011_11' and min(la['lalin']['pp'], key=la['lalin']['pp'].get) == '2019_04')
+    control('A Illa vota al PP más de 20 puntos menos que Vilanova en todas las generales', all(C['arousa']['vilanova']['pp'][e] - C['arousa']['illa']['pp'][e] > 20 for e in C['arousa']['illa']['pp']))
+    pmm = {x['municipio']: x for x in C['pamplona']['municipios']}
+    control('Cuenca de Pamplona: Cizur tiene la renta más alta', max(C['pamplona']['municipios'], key=lambda x: x['renta'])['municipio'] == 'Cizur')
+    control('Cuenca de Pamplona: Villava la gana EH Bildu y Ansoáin el PSOE', pmm['Villava/Atarrabia']['gana'] == 'BILDU' and pmm['Ansoáin/Antsoain']['gana'] == 'PSOE')
+    control('Cuenca de Pamplona: Ansoáin, Villava y Burlada por debajo de lo previsto; Egüés y Cizur por encima',
+            all(pmm[n]['diferencia'] < 0 for n in ('Ansoáin/Antsoain', 'Villava/Atarrabia', 'Burlada/Burlata')) and all(pmm[n]['diferencia'] > 0 for n in ('Cizur', 'Valle de Egüés/Eguesibar')))
+    gmm = {x['municipio']: x for x in C['getxo']['municipios']}
+    ge, po = gmm['Getxo'], gmm['Portugalete']
+    control('Ría: el PSOE gana en las cuatro de la margen izquierda y el PNV en Getxo y Leioa',
+            all(gmm[n]['gana'] == 'PSOE' for n in ('Portugalete', 'Santurtzi', 'Sestao', 'Barakaldo')) and all(gmm[n]['gana'] == 'PNV' for n in ('Getxo', 'Leioa')))
+    control('Ría: Getxo, más renta y menos paro de la tabla', ge['renta'] == max(x['renta'] for x in gmm.values()) and ge['paro'] == min(x['paro'] for x in gmm.values()))
+    control('Ría: PP de Getxo más del doble que en Portugalete y que en Bizkaia', ge['pp']['2023_07'] > 2 * po['pp']['2023_07'] and ge['pp']['2023_07'] > 2 * C['getxo']['bizkaia']['pp'])
+    am = C['aranda_miranda']
+    ar, mi = am['aranda'], am['miranda']
+    control('Burgos: Miranda y Aranda, las más pobladas después de la capital', am['burgos_mayores'] == ['Burgos', 'Miranda de Ebro', 'Aranda de Duero'], am['burgos_mayores'])
+    control('Aranda y Miranda: mismo previsto redondeado', num(ar['previsto']) == num(mi['previsto']), (ar['previsto'], mi['previsto']))
+    control('Aranda la gana el PP y Miranda el PSOE (23J); en mayo, PP por poco en Aranda y PSOE en Miranda',
+            ar['gana'] == 'PP' and mi['gana'] == 'PSOE' and ar['m2023']['gana'] == 'PP' and 0 < ar['m2023']['pp'] - ar['m2023']['psoe'] < 1 and mi['m2023']['gana'] == 'PSOE')
+    control('Aranda y Miranda: la distancia en el voto a la derecha creció de 2004 a 2023', ar['der']['2023_07'] - mi['der']['2023_07'] > ar['der']['2004_03'] - mi['der']['2004_03'])
+    lpz = C['los_palacios']
+    lp = lpz['lp']
+    control('Los Palacios: en 2004 el PSOE por encima de su provincia y la derecha por debajo; en 2023 la derecha por encima',
+            lp['psoe']['2004_03'] > lpz['sevilla_psoe']['2004_03'] and lp['der']['2004_03'] < lpz['sevilla_der']['2004_03'] and lp['der']['2023_07'] > lpz['sevilla_der']['2023_07'])
+    control('Los Palacios: el PSOE no sube desde 2015 y gana el PP el 23J',
+            all(lp['psoe'][a] >= lp['psoe'][b] for a, b in zip(['2015_12', '2016_06', '2019_04', '2019_11'], ['2016_06', '2019_04', '2019_11', '2023_07'])) and lp['gana'] == 'PP')
+    control('Los Palacios: en mayo ganó una lista de IU con casi la mitad; en julio la derecha pasó de la mitad',
+            'IZQUIERDA UNIDA' in lp['m2023_lista'] and 45 <= lp['m2023_lista_pct'] < 50 and lp['der']['2023_07'] > 50)
+    ca = C['castro']
+    cs = ca['castro']
+    control('Castro: 2.ª mayor diferencia a la baja, detrás de Puerto Real', ca['rango'] == 2 and C['ranking_residuo_derecha_10k'][0]['municipio'] == 'Puerto Real')
+    control('Castro: la derecha, al menos 10 puntos por debajo de Cantabria en las ocho generales', all(ca['cantabria_der'][e] - cs['der'][e] >= 10 for e in cs['der']))
+    control('Castro: PSOE por delante del PP en 2004, 2008, 2019 y 2023; PP en 2011, 2015 y 2016',
+            all(cs['psoe'][e] > cs['pp'][e] for e in ('2004_03', '2008_03', '2019_04', '2019_11', '2023_07')) and all(cs['pp'][e] > cs['psoe'][e] for e in ('2011_11', '2015_12', '2016_06')))
+    control('Castro: el PSOE fue primero en las municipales', cs['m2023']['gana'] == 'PSOE')
+    vg = C['vigo']
+    v = vg['vigo']
+    control('Galicia: el PP gana en las seis grandes ciudades salvo Vigo', vg['ciudades'][0]['municipio'] == 'Vigo' and vg['ciudades'][0]['gana'] == 'PSOE' and all(c['gana'] == 'PP' for c in vg['ciudades'][1:]))
+    control('Galicia: de los municipios de más de 20.000, el PSOE solo gana en dos', len(vg['psoe_gana_20k']) == 2)
+    control('Vigo: PSOE por delante del PP desde abril de 2019 y PP por delante en 2011', all(v['psoe'][e] > v['pp'][e] for e in ('2019_04', '2019_11', '2023_07')) and v['pp']['2011_11'] > v['psoe']['2011_11'])
+    t = {x['tamano']: x for x in C['pequenos']['tamanos']}
+    pq = C['pequenos']
+    control('Participación: en el conjunto se votó más en julio', pq['total_generales'] > pq['total_municipales'])
+    control('Participación: por debajo de 2.000 habitantes, más en municipales en todos los tramos; por encima, más en generales',
+            all(t[k]['part_municipales'] > t[k]['part_generales'] for k in ('<100', '100-249', '250-499', '500-999', '1.000-1.999'))
+            and all(t[k]['part_municipales'] < t[k]['part_generales'] for k in list(t)[5:]))
+    control('Participación: en 250-1.000 hab., en torno a dos de cada tres (60-70 %); en +100.000, ninguna',
+            all(60 <= t[k]['pct_mas_municipales'] <= 70 for k in ('250-499', '500-999')) and t['100.000+']['pct_mas_municipales'] == 0)
+
     # 3. Cada pieza tiene los campos que exige el estándar
     for p in P:
         falta = [k for k in ('titulo', 'pregunta', 'resumen', 'cuerpo', 'no_sabemos', 'tabla', 'compara', 'limites', 'csv', 'fuentes')
@@ -185,7 +248,7 @@ def main():
     for k, v in derivadas.items():
         control(f'Cifra derivada: {k} = {num(v, 0)}', v > 0)
         validas.add(num(v, 0))
-    validas |= {'1.500', '10.000', '15.000', '20.000'}   # umbrales de población y de margen, no datos
+    validas |= {'1.500', '2.000', '5.000', '9.000', '10.000', '15.000', '20.000', '50.000', '60.000', '100.000'}   # umbrales de población y de margen, no datos
     # Diferencias entre dos cifras de cifras.json (p. ej. «la izquierda perdió 17,2 puntos»): se aceptan si cuadran a un decimal.
     flo = sorted({round(x, 1) for x in nums if isinstance(x, float) and abs(x) <= 100})
     validas |= {num(abs(a - b)) for i, a in enumerate(flo) for b in flo[i + 1:]}
