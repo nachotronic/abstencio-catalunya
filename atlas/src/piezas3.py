@@ -40,7 +40,7 @@ def piezas3(C):
     rh = jj['res_hist']
     j10 = {x['municipio']: x for x in jj['jaen_10k']}
     out.append(dict(
-        slug='jodar', serie='excepciones', fecha_datos='2004-2024', revisado=None,
+        slug='jodar', serie='excepciones', fecha_datos='2004-2024', revisado='2026-10-07',
         titulo=f'Jódar, el municipio de España que menos vota en relación con su perfil: {N(abs(jo["diferencia_part"]))} puntos por debajo en las generales',
         pregunta='¿Dónde se vota mucho menos de lo que predicen la renta, la edad, el paro y el tamaño de un municipio?',
         resumen=(f'Con su perfil, a Jódar (Jaén) le correspondería una participación del {P(jo["previsto_part"])} en las generales de julio de 2023. Votó el {P(ps["2023_07"])}, '
@@ -91,7 +91,7 @@ def piezas3(C):
     mt, te = va['Matadepera'], va['Terrassa']
     vb = C['valles']['barcelona']
     out.append(dict(
-        slug='sant-cugat-badia', serie='fronteras', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='sant-cugat-badia', serie='fronteras', fecha_datos='23 de julio de 2023', revisado='2026-10-07',
         titulo=f'Sant Cugat y Badia del Vallès, a {num(C["valles"]["km_santcugat_badia"])} kilómetros: el PSC saca {N(ba["psoe"]["2023_07"] - sc["psoe"]["2023_07"])} puntos más en uno que en otro',
         pregunta='¿Qué separa en las urnas al municipio más rico del Vallès de uno de sus vecinos más pobres?',
         resumen=(f'El 23J, el PSC sacó el {P(ba["psoe"]["2023_07"])} en Badia del Vallès y el {P(sc["psoe"]["2023_07"])} en Sant Cugat, a {num(C["valles"]["km_santcugat_badia"])} kilómetros. '
@@ -139,7 +139,7 @@ def piezas3(C):
     om = {x['municipio']: x for x in oo['municipios']}
     on, ar = om['Ontígola'], om['Aranjuez']
     out.append(dict(
-        slug='ontigola-aranjuez', serie='fronteras', fecha_datos='2019-2023', revisado=None,
+        slug='ontigola-aranjuez', serie='fronteras', fecha_datos='2019-2023', revisado='2026-10-07',
         titulo=f'Ontígola, a {num(oo["km_ontigola_aranjuez"])} kilómetros de Aranjuez, es uno de los {oo["vox_gana_n"]} municipios de España donde Vox ganó el 23J',
         pregunta='¿Por qué Vox gana a un lado del límite entre Madrid y Castilla-La Mancha y no al otro?',
         resumen=(f'El 23 de julio de 2023, Vox fue la lista más votada en Ontígola (Toledo), con el {P(on["vox"]["2023_07"])}. En Aranjuez, al otro lado del límite con la Comunidad de Madrid, sacó el {P(ar["vox"]["2023_07"])} y ganó el PP. '
@@ -181,7 +181,7 @@ def piezas3(C):
     rr = {x['municipio']: x for x in C['ria']['municipios']}
     mo, cg, bu, sx, ma, po = rr['Moaña'], rr['Cangas'], rr['Bueu'], rr['Sanxenxo'], rr['Marín'], rr['Poio']
     out.append(dict(
-        slug='morrazo-sanxenxo', serie='gemelos', fecha_datos='2004-2023', revisado=None,
+        slug='morrazo-sanxenxo', serie='gemelos', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Moaña y Sanxenxo, la misma renta y la misma edad: {N(sx["der"]["2023_07"] - mo["der"]["2023_07"])} puntos de distancia en el voto a la derecha',
         pregunta='¿Por qué municipios gallegos con el mismo perfil, a pocos kilómetros, votan tan distinto?',
         resumen=(f'Moaña y Sanxenxo tienen casi la misma renta ({N(mo["renta"])} y {N(sx["renta"])} euros por unidad de consumo), la misma edad media ({num(mo["edad"])} y {num(sx["edad"])} años) y el mismo paro. '
@@ -226,7 +226,7 @@ def piezas3(C):
     ah, mc, os_ = cc['Arahal'], cc['Marchena'], cc['Osuna']
     sv = C['campina']['sevilla_der']
     out.append(dict(
-        slug='arahal-marchena', serie='gemelos', fecha_datos='2004-2023', revisado=None,
+        slug='arahal-marchena', serie='gemelos', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Arahal y Marchena, a {num(C["campina"]["km_arahal_marchena"])} kilómetros y con la misma renta: {N(mc["der"]["2023_07"] - ah["der"]["2023_07"])} puntos de distancia en el voto a la derecha',
         pregunta='¿Por qué dos pueblos casi idénticos de la campiña sevillana votan tan distinto?',
         resumen=(f'Arahal y Marchena tienen casi la misma población ({N(ah["poblacion"])} y {N(mc["poblacion"])} habitantes), la misma renta ({N(ah["renta"])} y {N(mc["renta"])} euros) y un paro parecido. '
@@ -269,7 +269,7 @@ def piezas3(C):
     mv, cs_, es_ = mn['municipios']
     mz, md = mn['malaga_izq'], mn['malaga_der']
     out.append(dict(
-        slug='manilva', serie='el-municipio-que-cambio', fecha_datos='2004-2023', revisado=None,
+        slug='manilva', serie='el-municipio-que-cambio', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Manilva, el municipio de España donde más ha caído la izquierda en veinte años respecto a su provincia: del {P(mv["izq"]["2004_03"])} al {P(mv["izq"]["2023_07"])}',
         pregunta='¿Qué municipios de la Costa del Sol han cambiado su voto mucho más que su provincia?',
         resumen=(f'En 2004, el PSOE y el espacio de IU sacaban el {P(mv["izq"]["2004_03"])} del voto en Manilva (Málaga). En 2023, el {P(mv["izq"]["2023_07"])}: '
@@ -311,7 +311,7 @@ def piezas3(C):
     al = ac['alcoi']
     a20 = {x['municipio']: x for x in ac['alicante_20k']}
     out.append(dict(
-        slug='alcoi', serie='contra-su-provincia', fecha_datos='2004-2023', revisado=None,
+        slug='alcoi', serie='contra-su-provincia', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Alcoi, la ciudad que vota a la izquierda en la provincia de Alicante: el PSOE le sacó {num(al["psoe"]["2023_07"] - al["pp"]["2023_07"])} puntos al PP',
         pregunta='¿Cuánto se aparta Alcoi del voto de su provincia, y desde cuándo?',
         resumen=(f'El 23J, el PSOE ganó en Alcoi con el {P(al["psoe"]["2023_07"])}, frente al {P(al["pp"]["2023_07"])} del PP. En el conjunto de la provincia de Alicante ganó el PP, con {D(ac["margen_provincia"])} puntos de ventaja. '
@@ -352,7 +352,7 @@ def piezas3(C):
     kc = {x['capital']: x for x in km_['capitales']}
     gm = max(km_['capitales'], key=lambda f: f['g23_capital'] - f['m23_capital'])
     out.append(dict(
-        slug='capitales-municipales', serie='ciudad-y-entorno', fecha_datos='2015-2023', revisado=None,
+        slug='capitales-municipales', serie='ciudad-y-entorno', fecha_datos='2015-2023', revisado='2026-10-07',
         titulo=f'{km_["n_menos_m23"]} de las 50 capitales votan menos que el resto de su provincia para elegir alcalde; Zamora y Soria, más de 14 puntos menos',
         pregunta='¿Dónde se queda la ciudad en casa en las elecciones municipales mientras su provincia vota?',
         resumen=(f'En las municipales de mayo de 2023, Zamora votó el {P(kc["Zamora"]["m23_capital"])} y el resto de su provincia, el {P(kc["Zamora"]["m23_resto"])}. Soria, el {P(kc["Soria"]["m23_capital"])} frente al {P(kc["Soria"]["m23_resto"])}. '
@@ -394,7 +394,7 @@ def piezas3(C):
     mc_ = eu['mayores_caidas']
     ac_ = next(r for r in mc_ if r['municipio'] == 'Arcos de la Frontera')
     out.append(dict(
-        slug='europeas-2024', serie='voto-doble', fecha_datos='julio de 2023 y junio de 2024', revisado=None,
+        slug='europeas-2024', serie='voto-doble', fecha_datos='julio de 2023 y junio de 2024', revisado='2026-10-07',
         titulo=f'En las europeas de 2024 la brecha de participación entre las zonas más ricas y las más pobres pasó de {N(eu["brecha_g2023"])} a {N(eu["brecha_e2024"])} puntos',
         pregunta='¿Quién deja de votar cuando la elección parece lejana?',
         resumen=(f'En las europeas del 9 de junio de 2024 votó el {P(eu["total_e2024"])} del censo de residentes, frente al {P(eu["total_g2023"])} de las generales de 2023. La caída no fue igual en todas partes. '

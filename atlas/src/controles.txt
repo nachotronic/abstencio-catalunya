@@ -1,4 +1,4 @@
-Controles del Atlas: 314 de 314 superados
+Controles del Atlas: 305 de 305 superados
 
 OK   8.131 municipios en la base
 OK   D'Hondt con CERA reproduce los 350 escaños oficiales de 2023
@@ -242,47 +242,38 @@ OK   jodar: campos completos
 OK   jodar: serie existe
 OK   jodar: CSV existe
 OK   jodar: sin lenguaje causal en titular, resumen, datos y patrones
-OK   jodar: sin revisar → noindex
 OK   sant-cugat-badia: campos completos
 OK   sant-cugat-badia: serie existe
 OK   sant-cugat-badia: CSV existe
 OK   sant-cugat-badia: sin lenguaje causal en titular, resumen, datos y patrones
-OK   sant-cugat-badia: sin revisar → noindex
 OK   ontigola-aranjuez: campos completos
 OK   ontigola-aranjuez: serie existe
 OK   ontigola-aranjuez: CSV existe
 OK   ontigola-aranjuez: sin lenguaje causal en titular, resumen, datos y patrones
-OK   ontigola-aranjuez: sin revisar → noindex
 OK   morrazo-sanxenxo: campos completos
 OK   morrazo-sanxenxo: serie existe
 OK   morrazo-sanxenxo: CSV existe
 OK   morrazo-sanxenxo: sin lenguaje causal en titular, resumen, datos y patrones
-OK   morrazo-sanxenxo: sin revisar → noindex
 OK   arahal-marchena: campos completos
 OK   arahal-marchena: serie existe
 OK   arahal-marchena: CSV existe
 OK   arahal-marchena: sin lenguaje causal en titular, resumen, datos y patrones
-OK   arahal-marchena: sin revisar → noindex
 OK   manilva: campos completos
 OK   manilva: serie existe
 OK   manilva: CSV existe
 OK   manilva: sin lenguaje causal en titular, resumen, datos y patrones
-OK   manilva: sin revisar → noindex
 OK   alcoi: campos completos
 OK   alcoi: serie existe
 OK   alcoi: CSV existe
 OK   alcoi: sin lenguaje causal en titular, resumen, datos y patrones
-OK   alcoi: sin revisar → noindex
 OK   capitales-municipales: campos completos
 OK   capitales-municipales: serie existe
 OK   capitales-municipales: CSV existe
 OK   capitales-municipales: sin lenguaje causal en titular, resumen, datos y patrones
-OK   capitales-municipales: sin revisar → noindex
 OK   europeas-2024: campos completos
 OK   europeas-2024: serie existe
 OK   europeas-2024: CSV existe
 OK   europeas-2024: sin lenguaje causal en titular, resumen, datos y patrones
-OK   europeas-2024: sin revisar → noindex
 OK   a-illa-vilanova.csv: 8 filas sin valores vacíos
 OK   alcoi.csv: 8 filas sin valores vacíos
 OK   arahal-marchena.csv: 9 filas sin valores vacíos
