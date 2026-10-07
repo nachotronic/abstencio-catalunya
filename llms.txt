@@ -49,6 +49,8 @@ Solo en las municipales, y solo los ciudadanos de la UE y de países con conveni
 
 ## Páginas
 
+- [Portada: mapa de resultados de España](https://mapaelectoral.es/): elecciones generales al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, edad y población extranjera, con resultados en directo la noche del 29N. Resumen: https://mapaelectoral.es/generales-2026/llms.txt
+- [Atlas de las anomalías electorales](https://mapaelectoral.es/atlas/): piezas sobre los lugares que votan distinto de lo esperable. Resumen: https://mapaelectoral.es/atlas/llms.txt
 - [Pieza en castellano](https://mapaelectoral.es/abstencion.html): texto completo con mapa 3D y gráficos.
 - [Peça en català](https://mapaelectoral.es/ca.html): el mismo texto en catalán.
 - [Metodología y datos](https://mapaelectoral.es/metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
