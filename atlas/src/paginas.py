@@ -4,7 +4,7 @@ Todo el contenido está en el HTML (sin depender de JavaScript): titular, resume
 fuentes, autoría, revisión e historial de correcciones, más los datos estructurados schema.org.
 Uso (después de construir.py y controles.py):  python3 atlas/src/paginas.py
 """
-import datetime, json, pathlib, sys
+import datetime, json, pathlib, re, sys
 from html import escape
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -80,7 +80,8 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 
 
 def url(p):
-    return ATLAS_URL + p
+    # URL canónica: la carpeta, sin «index.html», igual que en el sitemap
+    return ATLAS_URL + re.sub(r'(^|/)index\.html$', r'\1', p)
 
 
 def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0):

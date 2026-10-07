@@ -461,6 +461,8 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 
 ## Páginas
 
+- [Portada: mapa de resultados de España]({BASE}): elecciones generales al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, edad y población extranjera, con resultados en directo la noche del 29N. Resumen: {BASE}generales-2026/llms.txt
+- [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo esperable. Resumen: {BASE}atlas/llms.txt
 - [Pieza en castellano]({BASE}abstencion.html): texto completo con mapa 3D y gráficos.
 - [Peça en català]({BASE}ca.html): el mismo texto en catalán.
 - [Metodología y datos]({BASE}metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
