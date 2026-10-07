@@ -439,7 +439,7 @@ def about(L):
 '''
 
 
-def llms():
+def llms_cataluna():
     es, ca = M['es'], M['ca']
     files = '\n'.join(f'- [{f}]({BASE}data/{f}): {d}' for f, d in T['es']['files'].items())
     src = '\n'.join(f'- [{n}]({u})' for n, u in SOURCES)
@@ -461,8 +461,6 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 
 ## Páginas
 
-- [Portada: mapa de resultados de España]({BASE}): elecciones generales al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, edad y población extranjera, con resultados en directo la noche del 29N. Resumen: {BASE}generales-2026/llms.txt
-- [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo esperable. Resumen: {BASE}atlas/llms.txt
 - [Pieza en castellano]({BASE}abstencion.html): texto completo con mapa 3D y gráficos.
 - [Peça en català]({BASE}ca.html): el mismo texto en catalán.
 - [Metodología y datos]({BASE}metodologia.html): descarga, licencia, columnas, fuentes y limitaciones.
@@ -477,6 +475,39 @@ Pieza de datos bilingüe (castellano y catalán) sobre la abstención electoral 
 ## Fuentes
 
 {src}
+
+'''
+
+
+def baja(texto):
+    """Baja un nivel los títulos Markdown (# → ##) para meter un llms.txt dentro de otro."""
+    return '\n'.join('#' + l if l.startswith('#') else l for l in texto.strip().splitlines())
+
+
+def llms():
+    # llms.txt del sitio: qué hay en mapaelectoral.es y, debajo, el resumen de cada sección
+    # (portada y Atlas leídos de sus propios llms.txt, que generan sus scripts).
+    partes = []
+    for carpeta in ('generales-2026', 'atlas'):
+        f = ROOT / carpeta / 'llms.txt'
+        if f.exists():
+            partes.append(baja(f.read_text(encoding='utf-8')))
+    partes.append(baja(llms_cataluna()))
+    secciones = '\n\n'.join(partes)
+    return f'''# Mapa electoral
+
+> Periodismo de datos sobre elecciones en España por sección censal: resultados del Congreso de 2004 a 2023 barrio a barrio, el Atlas de las anomalías electorales y la abstención en Cataluña. Por {AUTHOR_NAME}.
+
+Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat y Generalitat) y se pueden descargar con licencia CC BY 4.0. Cada pieza enlaza su metodología, sus fuentes y su historial de correcciones.
+
+## Secciones del sitio
+
+- [Mapa de resultados de España (portada)]({BASE}): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt]({BASE}generales-2026/llms.txt)
+- [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt]({BASE}atlas/llms.txt)
+- [¿Quién no vota en Cataluña?]({BASE}abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán]({BASE}ca.html).
+- [Sobre el autor]({BASE}sobre-mi.html)
+
+{secciones}
 
 ## Optional
 
@@ -539,6 +570,21 @@ User-agent: Applebot-Extended
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: MistralAI-User
 Allow: /
 
 Sitemap: {BASE}sitemap_index.xml
