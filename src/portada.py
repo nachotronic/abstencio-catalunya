@@ -5,6 +5,8 @@ index.html a la raíz con las rutas relativas corregidas, la marca como página 
 (https://mapaelectoral.es/) y deja en generales-2026/index.html una redirección a la portada.
 También apunta a la portada los enlaces a generales-2026/ de su llms.txt, su sitemap y su metodología.
 
+En la portada el mapa sube a la primera pantalla: debajo del título, antes de la entradilla.
+
 Uso, cada vez que se actualice la pieza de generales-2026/:  python3 src/portada.py
 """
 import pathlib, re
@@ -45,6 +47,45 @@ def canonica(s):
     return re.sub(re.escape(VIEJA) + r'(?=["\'<)\s])', BASE, s)
 
 
+# Estilos solo de la portada: cabecera compacta y mapa a la altura de la pantalla.
+CSS_PORTADA = """<style id="portada">
+header{padding:14px 0 0}
+header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#mapa .controls{padding:8px 0}
+#mapa .mapwrap{height:calc(100svh - 300px);min-height:320px;max-height:760px}
+.intro{margin-top:20px}
+@media (max-width:760px){
+  nav.site{gap:2px 12px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  .kicker{font-size:11px}
+  #mapa .controls{gap:6px 8px;font-size:12px}
+  #mapa .controls label{flex:1 1 30%}
+  #mapa .controls label.q{flex:1 1 60%}
+  #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
+  #mapa .controls button{font-size:13px;padding:6px 8px}
+  #mapa .mapwrap{height:calc(100svh - 315px);min-height:260px}
+}
+</style>
+"""
+
+
+def primera_pantalla(s):
+    """Reordena la portada: título, mapa y, debajo, la entradilla y el resto del texto."""
+    if 'id="portada"' in s:
+        return s
+    i, j = s.index('<header class="col">'), s.index('</header>')
+    cab = s[i:j]
+    k = cab.index('</h1>') + len('</h1>')
+    titulo, intro = cab[:k], cab[k:]
+    m0 = s.index('<section class="wide" id="mapa"')
+    m1 = s.index('</section>', m0) + len('</section>')
+    mapa = s[m0:m1].replace('<h2 class="col" id="h-mapa" style="padding:0">', '<h2 class="sr" id="h-mapa">', 1)
+    resto = s[j + len('</header>'):m0] + s[m1:]
+    resto = resto.replace('<main>', '<main>\n' + mapa + '\n<div class="col intro">' + intro + '</div>\n', 1)
+    s = s[:i] + titulo + '\n</header>' + resto
+    return s.replace('</head>', CSS_PORTADA + '</head>', 1)
+
+
 def main():
     pieza = (G / 'index.html').read_text(encoding='utf-8')
     if 'http-equiv="refresh"' in pieza:
@@ -52,6 +93,7 @@ def main():
         return
     s = re.sub(r'(\s(?:href|src)=")([^"]*)(")', lambda m: m.group(1) + a_raiz(m.group(2)) + m.group(3), pieza)
     s = canonica(s)
+    s = primera_pantalla(s)
     (ROOT / 'index.html').write_text(s, encoding='utf-8')
     (G / 'index.html').write_text(STUB, encoding='utf-8')
     for f in ('llms.txt', 'sitemap.xml', 'metodologia.html'):

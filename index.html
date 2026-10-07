@@ -155,32 +155,35 @@ footer a{color:var(--ink2)}
 }
 nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font:500 14px/1.4 var(--sans)}nav.site a{color:var(--ink2);text-decoration:none}nav.site a:hover{color:var(--accent)}nav.site a[aria-current]{color:var(--ink);font-weight:700}
 </style>
+<style id="portada">
+header{padding:14px 0 0}
+header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#mapa .controls{padding:8px 0}
+#mapa .mapwrap{height:calc(100svh - 300px);min-height:320px;max-height:760px}
+.intro{margin-top:20px}
+@media (max-width:760px){
+  nav.site{gap:2px 12px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  .kicker{font-size:11px}
+  #mapa .controls{gap:6px 8px;font-size:12px}
+  #mapa .controls label{flex:1 1 30%}
+  #mapa .controls label.q{flex:1 1 60%}
+  #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
+  #mapa .controls button{font-size:13px;padding:6px 8px}
+  #mapa .mapwrap{height:calc(100svh - 315px);min-height:260px}
+}
+</style>
 </head>
 <body>
 <nav class="site col" aria-label="Secciones del sitio"><a href="./" aria-current="page">Mapa de resultados</a><a href="atlas/">Atlas de las anomalías</a><a href="abstencion.html">¿Quién no vota en Cataluña?</a><a href="generales-2026/metodologia.html">Metodología y datos</a><a href="sobre-mi.html">Sobre mí</a></nav>
 <header class="col">
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
-  <p class="lede">Los resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
-  <p class="byline">Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time> · <a href="generales-2026/metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
-  <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
-  <div class="rel"><a class="atlas" href="atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </header>
 
 <main>
-<section class="col">
-  <div class="stats" aria-label="Resultados del 23J de 2023">
-    <div class="stat" style="--c:#1d84ce"><b>33,3%</b><span>PP y UPN · 23J 2023</span></div>
-    <div class="stat" style="--c:#e30613"><b>31,7%</b><span>PSOE</span></div>
-    <div class="stat" style="--c:#5ac035"><b>12,4%</b><span>Vox</span></div>
-    <div class="stat" style="--c:#a2275f"><b>12,3%</b><span>Sumar</span></div>
-    <div class="stat"><b>70,4%</b><span>participación</span></div>
-  </div>
-  <p>El 23 de julio de 2023 el PP (con UPN, que en Navarra se presentó por separado) fue la fuerza más votada en 18.243 secciones censales y el PSOE en 16.044. Por municipios, el PP ganó en 4.553 y el PSOE en 2.624 de los 8.131. Vox, que había ganado en 1.868 secciones en noviembre de 2019, perdió casi todas: 1.711 pasaron al PP. Los recuentos no incluyen las secciones o municipios donde hubo empate.</p>
-</section>
-
 <section class="wide" id="mapa" aria-labelledby="h-mapa">
-  <h2 class="col" id="h-mapa" style="padding:0">Explora el mapa</h2>
+  <h2 class="sr" id="h-mapa">Explora el mapa</h2>
   <div class="directo" id="directo" hidden aria-live="polite">
     <div class="d-top"><span class="d-live">En directo</span> <span id="d-nombre"></span> · Escrutado <b id="d-esc">–</b> · <span id="d-estado"></span></div>
     <div class="d-seats" id="d-seats"></div>
@@ -201,6 +204,25 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
   </div>
   <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado. En el selector de elección están también las municipales de 2007 a 2023 (las de 2007, solo por municipio) y las europeas de 2019 y 2024.</p>
 </section>
+<div class="col intro">
+  <p class="lede">Los resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
+  <p class="byline">Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time> · <a href="generales-2026/metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
+  <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
+  <div class="rel"><a class="atlas" href="atlas/"><span class="atlas-k">Más en esta web</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
+</div>
+
+<section class="col">
+  <div class="stats" aria-label="Resultados del 23J de 2023">
+    <div class="stat" style="--c:#1d84ce"><b>33,3%</b><span>PP y UPN · 23J 2023</span></div>
+    <div class="stat" style="--c:#e30613"><b>31,7%</b><span>PSOE</span></div>
+    <div class="stat" style="--c:#5ac035"><b>12,4%</b><span>Vox</span></div>
+    <div class="stat" style="--c:#a2275f"><b>12,3%</b><span>Sumar</span></div>
+    <div class="stat"><b>70,4%</b><span>participación</span></div>
+  </div>
+  <p>El 23 de julio de 2023 el PP (con UPN, que en Navarra se presentó por separado) fue la fuerza más votada en 18.243 secciones censales y el PSOE en 16.044. Por municipios, el PP ganó en 4.553 y el PSOE en 2.624 de los 8.131. Vox, que había ganado en 1.868 secciones en noviembre de 2019, perdió casi todas: 1.711 pasaron al PP. Los recuentos no incluyen las secciones o municipios donde hubo empate.</p>
+</section>
+
+
 
 <section class="col" aria-labelledby="h-renta">
   <h2 id="h-renta">La renta: los barrios ricos votan más y el PP gana en ellos</h2>
