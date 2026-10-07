@@ -1,4 +1,4 @@
-Controles del Atlas: 216 de 216 superados
+Controles del Atlas: 207 de 207 superados
 
 OK   8.131 municipios en la base
 OK   D'Hondt con CERA reproduce los 350 escaños oficiales de 2023
@@ -153,47 +153,38 @@ OK   cuencas-mineras-asturianas: campos completos
 OK   cuencas-mineras-asturianas: serie existe
 OK   cuencas-mineras-asturianas: CSV existe
 OK   cuencas-mineras-asturianas: sin lenguaje causal en titular, resumen, datos y patrones
-OK   cuencas-mineras-asturianas: sin revisar → noindex
 OK   lalin-vilanova-de-arousa: campos completos
 OK   lalin-vilanova-de-arousa: serie existe
 OK   lalin-vilanova-de-arousa: CSV existe
 OK   lalin-vilanova-de-arousa: sin lenguaje causal en titular, resumen, datos y patrones
-OK   lalin-vilanova-de-arousa: sin revisar → noindex
 OK   cuenca-de-pamplona: campos completos
 OK   cuenca-de-pamplona: serie existe
 OK   cuenca-de-pamplona: CSV existe
 OK   cuenca-de-pamplona: sin lenguaje causal en titular, resumen, datos y patrones
-OK   cuenca-de-pamplona: sin revisar → noindex
 OK   getxo-portugalete: campos completos
 OK   getxo-portugalete: serie existe
 OK   getxo-portugalete: CSV existe
 OK   getxo-portugalete: sin lenguaje causal en titular, resumen, datos y patrones
-OK   getxo-portugalete: sin revisar → noindex
 OK   aranda-miranda: campos completos
 OK   aranda-miranda: serie existe
 OK   aranda-miranda: CSV existe
 OK   aranda-miranda: sin lenguaje causal en titular, resumen, datos y patrones
-OK   aranda-miranda: sin revisar → noindex
 OK   los-palacios-y-villafranca: campos completos
 OK   los-palacios-y-villafranca: serie existe
 OK   los-palacios-y-villafranca: CSV existe
 OK   los-palacios-y-villafranca: sin lenguaje causal en titular, resumen, datos y patrones
-OK   los-palacios-y-villafranca: sin revisar → noindex
 OK   castro-urdiales: campos completos
 OK   castro-urdiales: serie existe
 OK   castro-urdiales: CSV existe
 OK   castro-urdiales: sin lenguaje causal en titular, resumen, datos y patrones
-OK   castro-urdiales: sin revisar → noindex
 OK   vigo: campos completos
 OK   vigo: serie existe
 OK   vigo: CSV existe
 OK   vigo: sin lenguaje causal en titular, resumen, datos y patrones
-OK   vigo: sin revisar → noindex
 OK   pueblos-pequenos: campos completos
 OK   pueblos-pequenos: serie existe
 OK   pueblos-pequenos: CSV existe
 OK   pueblos-pequenos: sin lenguaje causal en titular, resumen, datos y patrones
-OK   pueblos-pequenos: sin revisar → noindex
 OK   a-illa-vilanova.csv: 8 filas sin valores vacíos
 OK   aranda-miranda.csv: 8 filas sin valores vacíos
 OK   badalona.csv: 6 filas sin valores vacíos

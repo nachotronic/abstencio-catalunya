@@ -42,7 +42,7 @@ def piezas2(C):
     izq23 = [mm[n]['izq']['2023_07'] for n in cinco]
     am = {r['municipio']: r for r in cu['asturias_modelo']}
     out.append(dict(
-        slug='cuencas-mineras-asturianas', serie='excepciones', fecha_datos='2004-2023', revisado=None,
+        slug='cuencas-mineras-asturianas', serie='excepciones', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Las cuencas mineras de Asturias votan a la derecha hasta {N(abs(mm["San Martín del Rey Aurelio"]["diferencia"]))} puntos menos de lo que predice su perfil, y a la izquierda como hace veinte años',
         pregunta='¿Qué queda del voto de las cuencas mineras asturianas, y cuánto se aparta de lo que su perfil haría esperar?',
         resumen=(f'En San Martín del Rey Aurelio, Mieres, Langreo y Laviana, PP, Vox y Cs sacaron el 23J entre el {P(min(mm[n]["der"]["2023_07"] for n in cinco[:4]))} y el {P(max(mm[n]["der"]["2023_07"] for n in cinco[:4]))}, '
@@ -84,7 +84,7 @@ def piezas2(C):
     la = C['lalin']
     li, vi = la['lalin'], la['vilanova']
     out.append(dict(
-        slug='lalin-vilanova-de-arousa', serie='excepciones', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='lalin-vilanova-de-arousa', serie='excepciones', fecha_datos='23 de julio de 2023', revisado='2026-10-07',
         titulo=f'Lalín y Vilanova de Arousa, los dos municipios donde el PP saca más voto por encima de lo que predicen sus datos',
         pregunta='¿Dónde vota la derecha mucho más de lo que su perfil social haría esperar?',
         resumen=(f'Por su renta, su edad, su paro y su tamaño, a Lalín le correspondería dar a PP, Vox y Cs el {P(li["previsto"])} del voto. El 23J les dio el {P(li["der"]["2023_07"])}. '
@@ -126,7 +126,7 @@ def piezas2(C):
     ci, zi = pm['Cizur'], pm['Zizur Mayor/Zizur Nagusia']
     fil = sorted(pa['municipios'], key=lambda x: x['diferencia'])
     out.append(dict(
-        slug='cuenca-de-pamplona', serie='fronteras', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='cuenca-de-pamplona', serie='fronteras', fecha_datos='23 de julio de 2023', revisado='2026-10-07',
         titulo=f'Cizur y Zizur Mayor, a {num(pa["km_cizur_zizur"])} kilómetros: {N(ci["der"]["2023_07"] - zi["der"]["2023_07"])} puntos de diferencia en el voto a la derecha',
         pregunta='¿Cuánto cambia el voto de un municipio a otro dentro de la Cuenca de Pamplona?',
         resumen=(f'En Cizur, PP (con UPN), Vox y Cs sacaron el 23J el {P(ci["der"]["2023_07"])} del voto. En Zizur Mayor, su vecino, el {P(zi["der"]["2023_07"])}. '
@@ -168,7 +168,7 @@ def piezas2(C):
     gm = {x['municipio']: x for x in gx['municipios']}
     ge, po = gm['Getxo'], gm['Portugalete']
     out.append(dict(
-        slug='getxo-portugalete', serie='fronteras', fecha_datos='23 de julio de 2023', revisado=None,
+        slug='getxo-portugalete', serie='fronteras', fecha_datos='23 de julio de 2023', revisado='2026-10-07',
         titulo=f'Getxo y Portugalete, a los dos lados de la ría: el PSOE saca {N(po["psoe"]["2023_07"] - ge["psoe"]["2023_07"])} puntos más en una orilla que en la otra',
         pregunta='¿Cuánto cambia el voto de una orilla a otra de la desembocadura de la ría de Bilbao?',
         resumen=(f'El 23J, el PSOE sacó el {P(po["psoe"]["2023_07"])} en Portugalete y el {P(ge["psoe"]["2023_07"])} en Getxo, al otro lado de la ría. '
@@ -208,7 +208,7 @@ def piezas2(C):
     am2 = C['aranda_miranda']
     ar, mi = am2['aranda'], am2['miranda']
     out.append(dict(
-        slug='aranda-miranda', serie='gemelos', fecha_datos='2004-2023', revisado=None,
+        slug='aranda-miranda', serie='gemelos', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Aranda y Miranda, las dos Burgos: misma renta y mismo paro, y {N(ar["der"]["2023_07"] - mi["der"]["2023_07"])} puntos de distancia en el voto a la derecha',
         pregunta='¿Votan igual las dos grandes ciudades de la provincia de Burgos después de la capital?',
         resumen=(f'Aranda de Duero y Miranda de Ebro tienen casi la misma población ({N(ar["poblacion"])} y {N(mi["poblacion"])} habitantes), la misma renta ({N(ar["renta"])} y {N(mi["renta"])} euros) y el mismo paro ({P(ar["paro"])} y {P(mi["paro"])}). '
@@ -248,7 +248,7 @@ def piezas2(C):
     lpz = C['los_palacios']
     lp = lpz['lp']
     out.append(dict(
-        slug='los-palacios-y-villafranca', serie='el-municipio-que-cambio', fecha_datos='2004-2023', revisado=None,
+        slug='los-palacios-y-villafranca', serie='el-municipio-que-cambio', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Los Palacios y Villafranca: el PSOE pasó del {N(lp["psoe"]["2004_03"])} % al {N(lp["psoe"]["2023_07"])} % en veinte años, y en mayo ganó una lista de IU',
         pregunta='¿Cómo cambia de voto un antiguo feudo socialista andaluz?',
         resumen=(f'En las generales de 2004, el PSOE sacó en Los Palacios y Villafranca (Sevilla) el {P(lp["psoe"]["2004_03"])} del voto. En 2023, el {P(lp["psoe"]["2023_07"])}, y ganó el PP con el {P(lp["pp"]["2023_07"])}. '
@@ -289,7 +289,7 @@ def piezas2(C):
     ca = C['castro']
     cs = ca['castro']
     out.append(dict(
-        slug='castro-urdiales', serie='contra-su-provincia', fecha_datos='2004-2023', revisado=None,
+        slug='castro-urdiales', serie='contra-su-provincia', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Castro-Urdiales, el municipio cántabro donde el PSOE ganó por {N(cs["psoe"]["2023_07"] - cs["pp"]["2023_07"])} puntos mientras el PP ganaba Cantabria',
         pregunta='¿Por qué vota tan distinto de su comunidad el municipio cántabro más cercano a Bizkaia?',
         resumen=(f'El 23J, el PP ganó en Cantabria con el {P(ca["cantabria_pp"])}, frente al {P(ca["cantabria_psoe"])} del PSOE. En Castro-Urdiales el resultado fue el contrario: PSOE {P(cs["psoe"]["2023_07"])}, PP {P(cs["pp"]["2023_07"])}. '
@@ -327,7 +327,7 @@ def piezas2(C):
     vg = C['vigo']
     v = vg['vigo']
     out.append(dict(
-        slug='vigo', serie='contra-su-provincia', fecha_datos='2004-2023', revisado=None,
+        slug='vigo', serie='contra-su-provincia', fecha_datos='2004-2023', revisado='2026-10-07',
         titulo=f'Vigo, la única gran ciudad gallega donde ganó el PSOE el 23J, y donde en mayo le dio el {N(v["m2023"]["psoe"])} %',
         pregunta='¿Dónde gana el PSOE en la Galicia del PP?',
         resumen=(f'El 23J el PP ganó en Galicia con el {P(vg["galicia"]["pp"])}, frente al {P(vg["galicia"]["psoe"])} del PSOE. '
@@ -364,7 +364,7 @@ def piezas2(C):
     pq = C['pequenos']
     t = {x['tamano']: x for x in pq['tamanos']}
     out.append(dict(
-        slug='pueblos-pequenos', serie='quien-no-vota', fecha_datos='mayo y julio de 2023', revisado=None,
+        slug='pueblos-pequenos', serie='quien-no-vota', fecha_datos='mayo y julio de 2023', revisado='2026-10-07',
         titulo='Los pueblos pequeños son los únicos que votan más para elegir alcalde que para elegir al Gobierno',
         pregunta='¿Dónde se vota más en las municipales que en las generales?',
         resumen=(f'En las ciudades se vota mucho menos en las municipales que en las generales: en las de más de 100.000 habitantes, un {P(t["100.000+"]["part_municipales"])} en mayo de 2023 frente a un {P(t["100.000+"]["part_generales"])} en julio. '
