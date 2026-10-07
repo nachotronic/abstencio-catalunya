@@ -303,6 +303,7 @@ def main():
                                  for e in ('g2023', 'm2023', 'p2024')}
 
     tanda2(m, d, C)
+    tanda3(m, d, C)
     (ATLAS / 'src' / 'cifras.json').write_text(json.dumps(C, ensure_ascii=False, indent=1, default=str))
     print('cifras.json escrito;', len(list(OUT_CSV.glob('*.csv'))), 'CSV')
 
@@ -333,13 +334,13 @@ def lista_ganadora(prov, mun, eleccion='M2023'):
     return nombre, r1(lv.iloc[0] / valido)
 
 
-def perfil(m, d, code, familias=('PP', 'PSOE', 'SUMAR', 'VOX', 'DER', 'IZQ')):
+def perfil(m, d, code, familias=('PP', 'PSOE', 'SUMAR', 'VOX', 'DER', 'IZQ'), extra=()):
     x = m[m.mun_code == code].iloc[0]
     y = d[d.mun_code == code]
     out = {'municipio': x.municipio, 'provincia': PROVINCIAS[x.prov], 'poblacion': int(x.poblacion), 'renta': int(x.renta_uc),
            'edad': float(x.edad_media), 'paro': r1(x.paro_2021), 'extranjeros': r1(x.extranjeros), 'estudios': r1(x.estudios_sup_2021),
            'gana': x['2023_07_gana'], 'part': r1(x['2023_07_part'])}
-    for f in familias:
+    for f in tuple(familias) + tuple(extra):
         out[f.lower()] = {e: r1(x[f'{e}_{f}']) for e in CONGRESO}
     for f in ('PNV', 'BILDU', 'BNG', 'OTROS'):
         out[f.lower() + '_2023'] = r1(x[f'2023_07_{f}'])
@@ -439,6 +440,193 @@ def tanda2(m, d, C):
                      'n_mas_20000': int((x.poblacion >= 20000).sum()),
                      'n_mas_20000_mas_mun': int(((x.poblacion >= 20000) & (x.M2023_part > x['2023_07_part'])).sum())}
     pd.DataFrame(tam).to_csv(OUT_CSV / 'participacion-por-tamano.csv', index=False)
+
+
+# ---------------------------------------------------------------- tercera tanda (2026-10-07)
+TODAS_ELEC = CONGRESO + ['M2007', 'M2011', 'M2015', 'M2019', 'M2023', 'E2019', 'E2024']
+
+
+def part(g, e):
+    """Participación de un grupo de municipios: Σ votantes / Σ censo (sin CERA)."""
+    g = g.dropna(subset=[f'{e}_censo'])
+    return r1(g[f'{e}_votantes'].sum() / g[f'{e}_censo'].sum())
+
+
+def tanda3(m, d, C):
+    big = d[d.poblacion >= 10000]
+    X = ['lrenta', 'edad_media', 'extranjeros', 'estudios_sup_2021', 'paro_2021', 'lpob']
+
+    # ---- Jódar (excepciones de participación)
+    d['pred_part'], r2p, _ = modelo(d, '2023_07_part', X, '2023_07_censo')
+    d['res_part'] = d['2023_07_part'] - d.pred_part
+    b = d[d.poblacion >= 10000].sort_values('res_part')
+    jo = perfil(m, d, '23053')
+    jr = d[d.mun_code == '23053'].iloc[0]
+    jaen = m[m.prov == '23']
+    jo |= {'part_serie': {e: part(m[m.mun_code == '23053'], e) for e in TODAS_ELEC},
+           'previsto_part': r1(jr.pred_part), 'diferencia_part': r1(jr.res_part),
+           'rango_part': int((b.res_part < jr.res_part).sum()) + 1}
+    # residuo de participación en cada general (mismo modelo, reestimado por elección)
+    res_hist = {}
+    for e in CONGRESO:
+        dd = d.dropna(subset=[f'{e}_part']).copy()
+        dd = dd[dd[f'{e}_censo'] > 0]
+        pr, _, _ = modelo(dd, f'{e}_part', X, f'{e}_censo')
+        dd['r'] = dd[f'{e}_part'] - pr
+        bb = dd[dd.poblacion >= 10000]
+        rj = dd.loc[dd.mun_code == '23053', 'r'].iloc[0]
+        res_hist[e] = {'diferencia': r1(rj), 'rango': int((bb.r < rj).sum()) + 1, 'n': int(len(bb))}
+    C['jodar'] = {'jodar': jo, 'jaen_part': {e: part(jaen, e) for e in TODAS_ELEC}, 'r2_part': round(r2p, 3), 'n_10k': int(len(b)),
+                  'res_hist': res_hist,
+                  'top': [{'municipio': r.municipio, 'provincia': PROVINCIAS[r.prov], 'real': r1(r['2023_07_part']), 'previsto': r1(r.pred_part),
+                           'diferencia': r1(r.res_part)} for _, r in b.head(10).iterrows()],
+                  'jaen_10k': [{'municipio': r.municipio, 'g2023': r1(r['2023_07_part']), 'm2023': r1(r.M2023_part), 'e2024': r1(r.E2024_part),
+                                'previsto': r1(r.pred_part), 'diferencia': r1(r.res_part), 'renta': int(r.renta_uc), 'poblacion': int(r.poblacion)}
+                               for _, r in d[(d.prov == '23') & (d.poblacion >= 10000)].sort_values('res_part').iterrows()]}
+    pd.DataFrame([{'eleccion': e, 'participacion_jodar': jo['part_serie'][e], 'participacion_provincia_jaen': C['jodar']['jaen_part'][e]} for e in TODAS_ELEC]).to_csv(OUT_CSV / 'jodar.csv', index=False)
+
+    # ---- Sant Cugat y Badia (fronteras)
+    valles = ['08205', '08904', '08120', '08279', '08238', '08252', '08266', '08187', '08184']
+    vl = [perfil(m, d, c, extra=('JUNTS', 'ERC')) for c in valles]
+    for p, c in zip(vl, valles):
+        p['m2023_lista'], p['m2023_lista_pct'] = lista_ganadora(c[:2], c[2:])
+    C['valles'] = {'municipios': vl, 'km_santcugat_badia': km('08205', '08904'), 'km_matadepera_terrassa': km('08120', '08279'),
+                   'barcelona': {f.lower(): r1(agregado(m[m.prov == '08'], '2023_07', f)) for f in ('PSOE', 'PP', 'SUMAR', 'JUNTS', 'ERC', 'VOX')}}
+    pd.DataFrame([{'municipio': p['municipio'], 'poblacion': p['poblacion'], 'renta': p['renta'], 'paro': p['paro'], 'estudios_superiores': p['estudios'],
+                   'psc_psoe': p['psoe']['2023_07'], 'pp': p['pp']['2023_07'], 'sumar': p['sumar']['2023_07'], 'junts': p['junts']['2023_07'],
+                   'erc': p['erc']['2023_07'], 'vox': p['vox']['2023_07'], 'participacion': p['part'], 'gana': p['gana']} for p in vl]).to_csv(OUT_CSV / 'sant-cugat-badia.csv', index=False)
+
+    # ---- Ontígola y Aranjuez (fronteras)
+    d['pred_vox'], r2v, _ = modelo(d, '2023_07_VOX', X, '2023_07_censo')
+    d['res_vox'] = d['2023_07_VOX'] - d.pred_vox
+    sagra = ['45123', '28013', '45201', '45064', '45161', '45081', '45021', '28040', '28161']
+    og = []
+    for c in sagra:
+        p = perfil(m, d, c)
+        r = d[d.mun_code == c].iloc[0]
+        p |= {'previsto_vox': r1(r.pred_vox), 'diferencia_vox': r1(r.res_vox)}
+        og.append(p)
+    vg = m[m['2023_07_gana'] == 'VOX'].sort_values('poblacion', ascending=False)
+    on = og[0]
+    on['m2023_lista'], on['m2023_lista_pct'] = lista_ganadora('45', '123')
+    C['ontigola'] = {'municipios': og, 'km_ontigola_aranjuez': km('45123', '28013'), 'r2_vox': round(r2v, 3),
+                     'vox_gana_n': int(len(vg)), 'vox_gana_mayores': vg.municipio.head(3).tolist(),
+                     'vox_gana_mas_1000': int((vg.poblacion >= 1000).sum()),
+                     'toledo_vox': r1(agregado(m[m.prov == '45'], '2023_07', 'VOX')), 'madrid_vox': r1(agregado(m[m.prov == '28'], '2023_07', 'VOX')),
+                     'espana_vox': r1(agregado(m, '2023_07', 'VOX'))}
+    pd.DataFrame([{'municipio': p['municipio'], 'provincia': p['provincia'], 'poblacion': p['poblacion'], 'renta': p['renta'], 'edad_media': p['edad'],
+                   'vox': p['vox']['2023_07'], 'vox_previsto': p['previsto_vox'], 'pp': p['pp']['2023_07'], 'psoe': p['psoe']['2023_07'],
+                   'vox_municipales_2023': p['m2023']['vox'], 'gana': p['gana']} for p in og]).to_csv(OUT_CSV / 'ontigola-aranjuez.csv', index=False)
+
+    # ---- ría de Pontevedra (gemelos)
+    ria = ['36029', '36008', '36004', '36051', '36026', '36041']
+    rp = [perfil(m, d, c, extra=('BNG',)) for c in ria]
+    for p, c in zip(rp, ria):
+        p['m2023_lista'], p['m2023_lista_pct'] = lista_ganadora(c[:2], c[2:])
+    C['ria'] = {'municipios': rp, 'km_moana_sanxenxo': km('36029', '36051'), 'km_cangas_marin': km('36008', '36026'),
+                'pontevedra_der': r1(agregado(m[m.prov == '36'], '2023_07', 'DER')), 'pontevedra_bng': r1(agregado(m[m.prov == '36'], '2023_07', 'BNG'))}
+    pd.DataFrame([{'municipio': p['municipio'], 'poblacion': p['poblacion'], 'renta': p['renta'], 'edad_media': p['edad'], 'paro': p['paro'],
+                   'derecha': p['der']['2023_07'], 'previsto': p.get('previsto'), 'pp': p['pp']['2023_07'], 'psoe': p['psoe']['2023_07'],
+                   'bng': p['bng']['2023_07'], 'bng_municipales_2023': p['m2023']['bng'], 'gana': p['gana']} for p in rp]).to_csv(OUT_CSV / 'morrazo-sanxenxo.csv', index=False)
+
+    # ---- Arahal y Marchena (gemelos)
+    camp = ['41011', '41060', '41068', '41071', '41077', '41065', '41039', '41024', '41095']
+    ca = [perfil(m, d, c) for c in camp]
+    for p, c in zip(ca[:3], camp[:3]):
+        p['m2023_lista'], p['m2023_lista_pct'] = lista_ganadora(c[:2], c[2:])
+    C['campina'] = {'municipios': ca, 'km_arahal_marchena': km('41011', '41060'), 'sevilla_der': prov_serie_(m, '41', 'DER'),
+                    'sevilla_sumar': prov_serie_(m, '41', 'SUMAR')}
+    pd.DataFrame([{'municipio': p['municipio'], 'poblacion': p['poblacion'], 'renta': p['renta'], 'paro': p['paro'], 'edad_media': p['edad'],
+                   'derecha': p['der']['2023_07'], 'previsto': p['previsto'], 'diferencia': p['diferencia'], 'psoe': p['psoe']['2023_07'],
+                   'sumar_iu_podemos': p['sumar']['2023_07'], 'gana': p['gana']} for p in ca]).to_csv(OUT_CSV / 'arahal-marchena.csv', index=False)
+
+    # ---- Manilva (el municipio que cambió)
+    cambio = []
+    for pv, g in m.groupby('prov'):
+        dp = agregado(g, '2023_07', 'IZQ') - agregado(g, '2004_03', 'IZQ')
+        for _, x in g[g.poblacion >= 10000].iterrows():
+            cambio.append({'municipio': x.municipio, 'provincia': PROVINCIAS[pv], 'izq_2004': r1(x['2004_03_IZQ']), 'izq_2023': r1(x['2023_07_IZQ']),
+                           'cambio': r1(x['2023_07_IZQ'] - x['2004_03_IZQ']), 'cambio_provincia': r1(dp),
+                           'cambio_relativo': r1((x['2023_07_IZQ'] - x['2004_03_IZQ']) - dp)})
+    cambio = sorted(cambio, key=lambda r: r['cambio_relativo'])
+    mv = [perfil(m, d, c) for c in ('29068', '29041', '29051')]
+    mv[0]['m2023_lista'], mv[0]['m2023_lista_pct'] = lista_ganadora('29', '068')
+    mv[0]['gana_serie'] = {e: m[m.mun_code == '29068'][f'{e}_gana'].iloc[0] for e in CONGRESO}
+    v19 = m[(m['2019_11_gana'] == 'VOX')]
+    C['manilva'] = {'municipios': mv, 'malaga_izq': prov_serie_(m, '29', 'IZQ'), 'malaga_der': prov_serie_(m, '29', 'DER'),
+                    'malaga_vox': prov_serie_(m, '29', 'VOX'), 'top': cambio[:10], 'n_10k': len(cambio),
+                    'vox_gana_2019_11_n': int(len(v19)), 'vox_gana_2019_11_malaga': int((v19.prov == '29').sum()),
+                    'extranjeros': r1(m[m.mun_code == '29068'].extranjeros.iloc[0]),
+                    'rango_extranjeros_malaga_10k': int((m[(m.prov == '29') & (m.poblacion >= 10000)].extranjeros > m[m.mun_code == '29068'].extranjeros.iloc[0]).sum()) + 1}
+    pd.DataFrame(cambio[:10]).to_csv(OUT_CSV / 'manilva.csv', index=False)
+
+    # ---- Alcoi (contra su provincia)
+    al = perfil(m, d, '03009')
+    al['m2023_lista'], al['m2023_lista_pct'] = lista_ganadora('03', '009')
+    ali = m[m.prov == '03']
+    margen_prov = agregado(ali, '2023_07', 'PSOE') - agregado(ali, '2023_07', 'PP')
+    a20 = ali[ali.poblacion >= 20000].copy()
+    a20['margen'] = a20['2023_07_PSOE'] - a20['2023_07_PP']
+    a20 = a20.sort_values('margen', ascending=False)
+    rs = big.sort_values('res_der')
+    C['alcoi'] = {'alcoi': al, 'alicante_pp': prov_serie_(m, '03', 'PP'), 'alicante_psoe': prov_serie_(m, '03', 'PSOE'),
+                  'alicante_izq': prov_serie_(m, '03', 'IZQ'), 'alicante_der': prov_serie_(m, '03', 'DER'),
+                  'margen_provincia': r1(margen_prov), 'rango_residuo': int((rs.res_der < rs.loc[rs.mun_code == '03009', 'res_der'].iloc[0]).sum()) + 1,
+                  'alicante_20k': [{'municipio': x.municipio, 'psoe': r1(x['2023_07_PSOE']), 'pp': r1(x['2023_07_PP']), 'margen': r1(x.margen),
+                                    'izq': r1(x['2023_07_IZQ']), 'gana': x['2023_07_gana'], 'poblacion': int(x.poblacion)} for _, x in a20.iterrows()],
+                  'n_20k': int(len(a20)), 'n_20k_psoe': int((a20['2023_07_gana'] == 'PSOE').sum())}
+    pd.DataFrame([{'eleccion': e, 'pp_alcoi': al['pp'][e], 'psoe_alcoi': al['psoe'][e], 'sumar_alcoi': al['sumar'][e], 'izquierda_alcoi': al['izq'][e],
+                   'izquierda_provincia': C['alcoi']['alicante_izq'][e], 'derecha_alcoi': al['der'][e], 'derecha_provincia': C['alcoi']['alicante_der'][e]}
+                  for e in CONGRESO]).to_csv(OUT_CSV / 'alcoi.csv', index=False)
+
+    # ---- capitales que no votan en sus municipales (ciudad y entorno)
+    filas = []
+    for cod in CAPITALES:
+        cap, resto = m[m.mun_code == cod], m[(m.prov == cod[:2]) & (m.mun_code != cod)]
+        f = {'capital': cap.municipio.iloc[0], 'provincia': PROVINCIAS[cod[:2]]}
+        for e, k in (('M2023', 'm23'), ('2023_07', 'g23'), ('M2019', 'm19'), ('M2015', 'm15')):
+            f[f'{k}_capital'], f[f'{k}_resto'] = part(cap, e), part(resto, e)
+            f[f'{k}_dif'] = round(f[f'{k}_capital'] - f[f'{k}_resto'], 1)
+        filas.append(f)
+    cm = sorted(filas, key=lambda f: f['m23_dif'])
+    C['capitales_mun'] = {'capitales': cm, 'n_menos_m23': sum(f['m23_dif'] < 0 for f in cm), 'n_menos_g23': sum(f['g23_dif'] < 0 for f in cm),
+                          'n_mun_menor_gen': sum(f['m23_capital'] < f['g23_capital'] for f in cm),
+                          'n_menos_10_m23': sum(f['m23_dif'] <= -10 for f in cm), 'n_menos_10_g23': sum(f['g23_dif'] <= -10 for f in cm),
+                          'n_menos_m19': sum(f['m19_dif'] < 0 for f in cm), 'n_menos_m15': sum(f['m15_dif'] < 0 for f in cm)}
+    pd.DataFrame(cm).to_csv(OUT_CSV / 'capitales-municipales.csv', index=False)
+
+    # ---- europeas 2024: dónde se dejó de votar (voto doble)
+    x = m[m.poblacion >= 20000].dropna(subset=['E2024_part', '2023_07_part']).copy()
+    x['caida'] = x.E2024_part - x['2023_07_part']
+    x = x.sort_values('caida')
+    fila_c = lambda r: {'municipio': r.municipio, 'provincia': PROVINCIAS[r.prov], 'g2023': r1(r['2023_07_part']), 'e2024': r1(r.E2024_part),
+                        'caida': r1(r.caida), 'renta': int(r.renta_uc), 'extranjeros': r1(r.extranjeros)}
+    s = pd.read_csv(DATOS / 'secciones.csv', dtype={'tract_code': str},
+                    usecols=['tract_code', 'renta_uc', 'paro_2021', 'extranjeros', '2023_07_part', '2023_07_censo', 'E2024_part', 'E2024_censo'])
+    s = s.dropna()
+    s = s[(s['2023_07_censo'] > 0) & (s.E2024_censo > 0)].copy()
+    wp = lambda g, e: r1((g[f'{e}_part'] * g[f'{e}_censo']).sum() / g[f'{e}_censo'].sum())
+
+    def deciles(t, var):
+        t = t.copy()
+        t['dec'] = pd.qcut(t[var], 10, labels=False) + 1
+        return [{'decil': int(k), 'g2023': wp(g, '2023_07'), 'e2024': wp(g, 'E2024'), 'min': float(g[var].min()), 'max': float(g[var].max())}
+                for k, g in t.groupby('dec')]
+    dr = deciles(s, 'renta_uc')
+    dr_lo = deciles(s[s.extranjeros < 0.05], 'renta_uc')
+    C['europeas'] = {'total_e2024': part(m, 'E2024'), 'total_g2023': part(m, '2023_07'), 'total_m2023': part(m, 'M2023'), 'total_e2019': part(m, 'E2019'),
+                     'n_20k': int(len(x)), 'mayores_caidas': [fila_c(r) for _, r in x.head(10).iterrows()],
+                     'menores_caidas': [fila_c(r) for _, r in x.tail(5).iloc[::-1].iterrows()],
+                     'n_secciones': int(len(s)), 'deciles_renta': dr, 'deciles_renta_pocos_extranjeros': dr_lo,
+                     'n_secciones_pocos_extranjeros': int((s.extranjeros < 0.05).sum()),
+                     'brecha_g2023': round(dr[-1]['g2023'] - dr[0]['g2023'], 1), 'brecha_e2024': round(dr[-1]['e2024'] - dr[0]['e2024'], 1),
+                     'brecha_g2023_pe': round(dr_lo[-1]['g2023'] - dr_lo[0]['g2023'], 1), 'brecha_e2024_pe': round(dr_lo[-1]['e2024'] - dr_lo[0]['e2024'], 1),
+                     'andalucia_top10': int(x.head(10).prov.isin(['04', '11', '14', '18', '21', '23', '29', '41']).sum())}
+    pd.DataFrame(dr).to_csv(OUT_CSV / 'europeas-2024.csv', index=False)
+
+
+def prov_serie_(m, p, f):
+    return {e: r1(agregado(m[m.prov == p], e, f)) for e in CONGRESO}
 
 
 if __name__ == '__main__':

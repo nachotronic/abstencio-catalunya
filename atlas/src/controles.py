@@ -17,6 +17,7 @@ sys.path.insert(0, str(SRC))
 from graficos import num  # noqa: E402
 from piezas import piezas, SERIES  # noqa: E402
 from piezas2 import piezas2  # noqa: E402
+from piezas3 import piezas3  # noqa: E402
 
 # Resultado oficial del 23J de 2023 (Congreso, 350 escaños), para comprobar el reparto D'Hondt recalculado.
 OFICIAL_2023 = {'PP': 137, 'PSOE': 121, 'Vox': 33, 'Sumar': 31, 'ERC': 7, 'Junts': 7, 'EH Bildu': 6, 'PNV': 5,
@@ -24,6 +25,7 @@ OFICIAL_2023 = {'PP': 137, 'PSOE': 121, 'Vox': 33, 'Sumar': 31, 'ERC': 7, 'Junts
 CAUSALES = re.compile(r'\b(porque|debido a|a causa de|causa|provoca|se debe a|gracias a)\b', re.I)
 
 resultados = []
+CONG3 = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07']
 
 
 def control(nombre, ok, detalle=''):
@@ -45,7 +47,7 @@ def planos(x, out):
 
 def main():
     C = json.load(open(SRC / 'cifras.json'))
-    P = piezas(C) + piezas2(C)
+    P = piezas(C) + piezas2(C) + piezas3(C)
 
     # 1. Universo y reparto de escaños
     control('8.131 municipios en la base', C['fuente_datos']['n_municipios'] == 8131, C['fuente_datos']['n_municipios'])
@@ -216,6 +218,98 @@ def main():
     control('Participación: en 250-1.000 hab., en torno a dos de cada tres (60-70 %); en +100.000, ninguna',
             all(60 <= t[k]['pct_mas_municipales'] <= 70 for k in ('250-499', '500-999')) and t['100.000+']['pct_mas_municipales'] == 0)
 
+    # Tercera tanda (2026-10-07)
+    jj = C['jodar']
+    jo, jp = jj['jodar'], jj['jaen_part']
+    control('Jódar: mayor diferencia a la baja en participación (≥10.000 hab.)', jo['rango_part'] == 1 and jj['top'][0]['municipio'] == 'Jódar')
+    control('Jódar: diferencia de participación = real − previsto', abs(jo['part_serie']['2023_07'] - jo['previsto_part'] - jo['diferencia_part']) <= 0.11)
+    control('Jódar: votó más que su provincia en 2004 y menos en todas las generales desde 2008',
+            jo['part_serie']['2004_03'] > jp['2004_03'] and all(jo['part_serie'][e] < jp[e] for e in CONG3[1:]))
+    control('Jódar: la participación en las generales baja en cada elección desde 2004 salvo empates',
+            all(jo['part_serie'][a] >= jo['part_serie'][b] for a, b in zip(CONG3, CONG3[1:])))
+    rh = jj['res_hist']
+    control('Jódar: segunda mayor diferencia en abril y noviembre de 2019 y primera en 2023',
+            rh['2019_04']['rango'] == 2 and rh['2019_11']['rango'] == 2 and rh['2023_07']['rango'] == 1)
+    control('Jódar: en las municipales de 2023 votó más que en las generales de julio y menos que su provincia',
+            jo['part_serie']['M2023'] > jo['part_serie']['2023_07'] and jo['part_serie']['M2023'] < jp['M2023'])
+    j10 = {x['municipio']: x for x in jj['jaen_10k']}
+    control('Jódar: Úbeda vota lo previsto (±0,5) y Baeza algo más', abs(j10['Úbeda']['diferencia']) <= 0.5 and j10['Baeza']['diferencia'] > 0)
+    control('Jódar: Mancha Real tiene una población parecida (±5 %)', abs(j10['Mancha Real']['poblacion'] / jo['poblacion'] - 1) <= 0.05)
+    va = {x['municipio']: x for x in C['valles']['municipios']}
+    sc, ba, mt, te = va['Sant Cugat del Vallès'], va['Badia del Vallès'], va['Matadepera'], va['Terrassa']
+    control('Vallès: el PSC gana en Sant Cugat y Badia; Junts en Matadepera; PSC en Terrassa',
+            sc['gana'] == 'PSOE' and ba['gana'] == 'PSOE' and mt['gana'] == 'JUNTS' and te['gana'] == 'PSOE')
+    control('Vallès: en Sant Cugat el PSC por delante del PP y el PP por delante de Junts', sc['psoe']['2023_07'] > sc['pp']['2023_07'] > sc['junts']['2023_07'])
+    control('Vallès: renta de Sant Cugat al menos el doble que la de Badia', sc['renta'] >= 2 * ba['renta'])
+    control('Vallès: derecha casi igual en Sant Cugat y Badia (menos de 2 puntos)', abs(sc['der']['2023_07'] - ba['der']['2023_07']) < 2)
+    control('Vallès: PP más alto en Sant Cugat y Vox más alto en Badia', sc['pp']['2023_07'] > ba['pp']['2023_07'] and ba['vox']['2023_07'] > sc['vox']['2023_07'])
+    control('Vallès: el modelo acierta en Sant Cugat (±3) y se queda corto en Badia', abs(sc['diferencia']) <= 3 and ba['diferencia'] > 5)
+    control('Vallès: en mayo ganó el PSC en Badia y Junts en Sant Cugat', 'SOCIALISTES' in ba['m2023_lista'] and 'JUNTS' in sc['m2023_lista'])
+    oo = C['ontigola']
+    om = {x['municipio']: x for x in oo['municipios']}
+    on, arj = om['Ontígola'], om['Aranjuez']
+    control('Ontígola: Vox gana el 23J y es el segundo municipio más poblado de los que ganó', on['gana'] == 'VOX' and oo['vox_gana_mayores'][1] == 'Ontígola')
+    control('Ontígola: en Aranjuez gana el PP', arj['gana'] == 'PP')
+    control('Ontígola: renta casi igual a la de Aranjuez (menos de 1.000 euros)', abs(on['renta'] - arj['renta']) < 1000)
+    control('Ontígola: Vox por encima del PP; derecha total por debajo de lo previsto', on['vox']['2023_07'] > on['pp']['2023_07'] and on['diferencia'] < 0)
+    control('Ontígola: en mayo ganó el PSOE', 'SOCIALISTA' in on['m2023_lista'] and on['m2023']['gana'] == 'PSOE')
+    control('Ontígola: la Sagra toledana da a Vox más que la media de España', all(p['vox']['2023_07'] > oo['espana_vox'] for p in oo['municipios'] if p['provincia'] == 'Toledo'))
+    control('Ontígola: vecinos de Aranjuez algo mayores', arj['edad'] > on['edad'])
+    rr = {x['municipio']: x for x in C['ria']['municipios']}
+    control('Morrazo: el PP gana las generales en los seis', all(p['gana'] == 'PP' for p in rr.values()))
+    control('Morrazo: Moaña y Cangas por debajo de lo previsto (entre −5 y −7); Sanxenxo, Marín y Poio por encima; Bueu en medio',
+            all(-7 <= rr[n]['diferencia'] <= -5 for n in ('Moaña', 'Cangas')) and all(rr[n]['diferencia'] > 5 for n in ('Sanxenxo', 'Marín', 'Poio'))
+            and rr['Moaña']['diferencia'] < rr['Bueu']['diferencia'] < rr['Poio']['diferencia'])
+    control('Morrazo: Cangas el menor voto a la derecha y Sanxenxo el mayor', min(rr.values(), key=lambda p: p['der']['2023_07'])['municipio'] == 'Cangas'
+            and max(rr.values(), key=lambda p: p['der']['2023_07'])['municipio'] == 'Sanxenxo')
+    control('Morrazo: el BNG gana en mayo en Moaña y Bueu; el PP en Cangas, Sanxenxo y Marín (más del 55 % en estos dos)',
+            'BLOQUE' in rr['Moaña']['m2023_lista'] and 'BLOQUE' in rr['Bueu']['m2023_lista'] and all('POPULAR' in rr[n]['m2023_lista'] for n in ('Cangas', 'Sanxenxo', 'Marín'))
+            and all(rr[n]['m2023']['pp'] > 55 for n in ('Sanxenxo', 'Marín')))
+    control('Morrazo: el BNG de Moaña cae hasta 2016 y vuelve a subir', min(rr['Moaña']['bng'], key=rr['Moaña']['bng'].get) == '2016_06')
+    cc = {x['municipio']: x for x in C['campina']['municipios']}
+    ah, mc = cc['Arahal'], cc['Marchena']
+    control('Campiña: renta de Arahal y Marchena a menos de 200 euros', abs(ah['renta'] - mc['renta']) < 200)
+    control('Campiña: el PSOE gana el 23J en Arahal y Marchena; Écija la gana el PP', ah['gana'] == mc['gana'] == 'PSOE' and cc['Écija']['gana'] == 'PP')
+    control('Campiña: en mayo IU gana en Arahal y el PSOE en Marchena', 'IZQUIERDA UNIDA' in ah['m2023_lista'] and 'SOCIALISTA' in mc['m2023_lista'])
+    control('Campiña: la distancia de la derecha entre Marchena y Arahal crece de 2004 a 2023', mc['der']['2023_07'] - ah['der']['2023_07'] > mc['der']['2004_03'] - ah['der']['2004_03'])
+    control('Campiña: Osuna más cerca de Arahal que de Marchena', abs(cc['Osuna']['der']['2023_07'] - ah['der']['2023_07']) < abs(cc['Osuna']['der']['2023_07'] - mc['der']['2023_07']))
+    mn = C['manilva']
+    mv = mn['municipios'][0]
+    control('Manilva: mayor caída relativa de la izquierda (≥10.000 hab.) y Los Palacios segunda', mn['top'][0]['municipio'] == 'Manilva' and mn['top'][1]['municipio'] == 'Los Palacios y Villafranca')
+    control('Manilva: ganadores PSOE 2004, 2015, abr. 2019; PP 2008, 2011, 2016, 2023; Vox nov. 2019',
+            list(mv['gana_serie'].values()) == ['PSOE', 'PP', 'PP', 'PSOE', 'PP', 'PSOE', 'VOX', 'PP'], mv['gana_serie'])
+    control('Manilva: Estepona entre los municipios de Málaga que ganó Vox en noviembre de 2019', mn['vox_gana_2019_11_malaga'] >= 2)
+    control('Manilva: el municipio con más extranjeros de Málaga entre los de más de 10.000', mn['rango_extranjeros_malaga_10k'] == 1)
+    control('Manilva: en mayo ganó una candidatura local', 'MANILVA' in mv['m2023_lista'])
+    ac = C['alcoi']
+    al = ac['alcoi']
+    control('Alcoi: el PSOE gana y el PP gana la provincia', al['gana'] == 'PSOE' and ac['margen_provincia'] < 0)
+    control('Alcoi: mayor ventaja del PSOE entre los municipios alicantinos de más de 20.000; Elda y Dénia detrás',
+            [x['municipio'] for x in ac['alicante_20k'][:3]] == ['Alcoi/Alcoy', 'Elda', 'Dénia'])
+    control('Alcoi: izquierda sube de 2004 a 2023 y en la provincia baja', al['izq']['2023_07'] > al['izq']['2004_03'] and ac['alicante_izq']['2023_07'] < ac['alicante_izq']['2004_03'])
+    control('Alcoi: Sumar y afines ganan en 2015 y 2016; el PP solo en 2011', al['sumar']['2015_12'] > max(al['pp']['2015_12'], al['psoe']['2015_12'])
+            and al['sumar']['2016_06'] > max(al['pp']['2016_06'], al['psoe']['2016_06']) and al['pp']['2011_11'] > al['psoe']['2011_11'])
+    control('Alcoi: en mayo el PSOE por delante del PP por menos de 1 punto', 'SOCIALISTA' in al['m2023_lista'] and 0 < al['m2023']['psoe'] - al['m2023']['pp'] < 1)
+    km_ = C['capitales_mun']
+    kc = {x['capital']: x for x in km_['capitales']}
+    control('Capitales: 50 capitales', len(km_['capitales']) == 50)
+    control('Capitales: las seis con más distancia a la baja son Zamora, Soria, Cuenca, Badajoz y, empatadas, Ávila y Salamanca',
+            [x['capital'] for x in km_['capitales'][:4]] == ['Zamora', 'Soria', 'Cuenca', 'Badajoz'] and {x['capital'] for x in km_['capitales'][4:6]} == {'Ávila', 'Salamanca'}
+            and kc['Ávila']['m23_dif'] == kc['Salamanca']['m23_dif'])
+    control('Capitales: Zamora y Soria más de 14 puntos por debajo en las municipales', kc['Zamora']['m23_dif'] < -14 and kc['Soria']['m23_dif'] < -14)
+    control('Capitales: ninguna a más de 10 puntos de su provincia en las generales', km_['n_menos_10_g23'] == 0)
+    control('Capitales: las 50 votaron menos en mayo que en julio', km_['n_mun_menor_gen'] == 50)
+    control('Capitales: cinco votaron más que su provincia (Barcelona, Cádiz, València, Murcia, Toledo)',
+            sorted(x['capital'] for x in km_['capitales'] if x['m23_dif'] >= 0) == sorted(['Barcelona', 'Cádiz', 'València', 'Murcia', 'Toledo']))
+    eu = C['europeas']
+    dr, dl = eu['deciles_renta'], eu['deciles_renta_pocos_extranjeros']
+    control('Europeas: la participación sube tramo a tramo con la renta en las dos elecciones',
+            all(a['g2023'] < b['g2023'] and a['e2024'] < b['e2024'] for a, b in zip(dr, dr[1:])))
+    control('Europeas: la brecha crece también en las secciones con pocos extranjeros', eu['brecha_e2024_pe'] > eu['brecha_g2023_pe'] + 5)
+    control('Europeas: la caída es mayor en el tramo más pobre que en el más rico', dr[0]['e2024'] - dr[0]['g2023'] < dr[-1]['e2024'] - dr[-1]['g2023'])
+    control('Europeas: al menos ocho de las diez mayores caídas en Andalucía', eu['andalucia_top10'] >= 8)
+    control('Europeas: Arcos con menos del 5 % de extranjeros', any(r['municipio'] == 'Arcos de la Frontera' and r['extranjeros'] < 5 for r in eu['mayores_caidas']))
+
     # 3. Cada pieza tiene los campos que exige el estándar
     for p in P:
         falta = [k for k in ('titulo', 'pregunta', 'resumen', 'cuerpo', 'no_sabemos', 'tabla', 'compara', 'limites', 'csv', 'fuentes')
@@ -248,7 +342,7 @@ def main():
     for k, v in derivadas.items():
         control(f'Cifra derivada: {k} = {num(v, 0)}', v > 0)
         validas.add(num(v, 0))
-    validas |= {'1.500', '2.000', '5.000', '9.000', '10.000', '15.000', '20.000', '50.000', '60.000', '100.000'}   # umbrales de población y de margen, no datos
+    validas |= {'1.000', '1.500', '2.000', '5.000', '9.000', '10.000', '15.000', '20.000', '50.000', '60.000', '100.000'}   # umbrales de población y de margen, no datos
     # Diferencias entre dos cifras de cifras.json (p. ej. «la izquierda perdió 17,2 puntos»): se aceptan si cuadran a un decimal.
     flo = sorted({round(x, 1) for x in nums if isinstance(x, float) and abs(x) <= 100})
     validas |= {num(abs(a - b)) for i, a in enumerate(flo) for b in flo[i + 1:]}

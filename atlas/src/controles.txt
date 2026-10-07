@@ -1,4 +1,4 @@
-Controles del Atlas: 207 de 207 superados
+Controles del Atlas: 314 de 314 superados
 
 OK   8.131 municipios en la base
 OK   D'Hondt con CERA reproduce los 350 escaños oficiales de 2023
@@ -109,6 +109,59 @@ OK   Vigo: PSOE por delante del PP desde abril de 2019 y PP por delante en 2011
 OK   Participación: en el conjunto se votó más en julio
 OK   Participación: por debajo de 2.000 habitantes, más en municipales en todos los tramos; por encima, más en generales
 OK   Participación: en 250-1.000 hab., en torno a dos de cada tres (60-70 %); en +100.000, ninguna
+OK   Jódar: mayor diferencia a la baja en participación (≥10.000 hab.)
+OK   Jódar: diferencia de participación = real − previsto
+OK   Jódar: votó más que su provincia en 2004 y menos en todas las generales desde 2008
+OK   Jódar: la participación en las generales baja en cada elección desde 2004 salvo empates
+OK   Jódar: segunda mayor diferencia en abril y noviembre de 2019 y primera en 2023
+OK   Jódar: en las municipales de 2023 votó más que en las generales de julio y menos que su provincia
+OK   Jódar: Úbeda vota lo previsto (±0,5) y Baeza algo más
+OK   Jódar: Mancha Real tiene una población parecida (±5 %)
+OK   Vallès: el PSC gana en Sant Cugat y Badia; Junts en Matadepera; PSC en Terrassa
+OK   Vallès: en Sant Cugat el PSC por delante del PP y el PP por delante de Junts
+OK   Vallès: renta de Sant Cugat al menos el doble que la de Badia
+OK   Vallès: derecha casi igual en Sant Cugat y Badia (menos de 2 puntos)
+OK   Vallès: PP más alto en Sant Cugat y Vox más alto en Badia
+OK   Vallès: el modelo acierta en Sant Cugat (±3) y se queda corto en Badia
+OK   Vallès: en mayo ganó el PSC en Badia y Junts en Sant Cugat
+OK   Ontígola: Vox gana el 23J y es el segundo municipio más poblado de los que ganó
+OK   Ontígola: en Aranjuez gana el PP
+OK   Ontígola: renta casi igual a la de Aranjuez (menos de 1.000 euros)
+OK   Ontígola: Vox por encima del PP; derecha total por debajo de lo previsto
+OK   Ontígola: en mayo ganó el PSOE
+OK   Ontígola: la Sagra toledana da a Vox más que la media de España
+OK   Ontígola: vecinos de Aranjuez algo mayores
+OK   Morrazo: el PP gana las generales en los seis
+OK   Morrazo: Moaña y Cangas por debajo de lo previsto (entre −5 y −7); Sanxenxo, Marín y Poio por encima; Bueu en medio
+OK   Morrazo: Cangas el menor voto a la derecha y Sanxenxo el mayor
+OK   Morrazo: el BNG gana en mayo en Moaña y Bueu; el PP en Cangas, Sanxenxo y Marín (más del 55 % en estos dos)
+OK   Morrazo: el BNG de Moaña cae hasta 2016 y vuelve a subir
+OK   Campiña: renta de Arahal y Marchena a menos de 200 euros
+OK   Campiña: el PSOE gana el 23J en Arahal y Marchena; Écija la gana el PP
+OK   Campiña: en mayo IU gana en Arahal y el PSOE en Marchena
+OK   Campiña: la distancia de la derecha entre Marchena y Arahal crece de 2004 a 2023
+OK   Campiña: Osuna más cerca de Arahal que de Marchena
+OK   Manilva: mayor caída relativa de la izquierda (≥10.000 hab.) y Los Palacios segunda
+OK   Manilva: ganadores PSOE 2004, 2015, abr. 2019; PP 2008, 2011, 2016, 2023; Vox nov. 2019
+OK   Manilva: Estepona entre los municipios de Málaga que ganó Vox en noviembre de 2019
+OK   Manilva: el municipio con más extranjeros de Málaga entre los de más de 10.000
+OK   Manilva: en mayo ganó una candidatura local
+OK   Alcoi: el PSOE gana y el PP gana la provincia
+OK   Alcoi: mayor ventaja del PSOE entre los municipios alicantinos de más de 20.000; Elda y Dénia detrás
+OK   Alcoi: izquierda sube de 2004 a 2023 y en la provincia baja
+OK   Alcoi: Sumar y afines ganan en 2015 y 2016; el PP solo en 2011
+OK   Alcoi: en mayo el PSOE por delante del PP por menos de 1 punto
+OK   Capitales: 50 capitales
+OK   Capitales: las seis con más distancia a la baja son Zamora, Soria, Cuenca, Badajoz y, empatadas, Ávila y Salamanca
+OK   Capitales: Zamora y Soria más de 14 puntos por debajo en las municipales
+OK   Capitales: ninguna a más de 10 puntos de su provincia en las generales
+OK   Capitales: las 50 votaron menos en mayo que en julio
+OK   Capitales: cinco votaron más que su provincia (Barcelona, Cádiz, València, Murcia, Toledo)
+OK   Europeas: la participación sube tramo a tramo con la renta en las dos elecciones
+OK   Europeas: la brecha crece también en las secciones con pocos extranjeros
+OK   Europeas: la caída es mayor en el tramo más pobre que en el más rico
+OK   Europeas: al menos ocho de las diez mayores caídas en Andalucía
+OK   Europeas: Arcos con menos del 5 % de extranjeros
 OK   cadiz-madrid-29n: campos completos
 OK   cadiz-madrid-29n: serie existe
 OK   cadiz-madrid-29n: CSV existe
@@ -185,24 +238,78 @@ OK   pueblos-pequenos: campos completos
 OK   pueblos-pequenos: serie existe
 OK   pueblos-pequenos: CSV existe
 OK   pueblos-pequenos: sin lenguaje causal en titular, resumen, datos y patrones
+OK   jodar: campos completos
+OK   jodar: serie existe
+OK   jodar: CSV existe
+OK   jodar: sin lenguaje causal en titular, resumen, datos y patrones
+OK   jodar: sin revisar → noindex
+OK   sant-cugat-badia: campos completos
+OK   sant-cugat-badia: serie existe
+OK   sant-cugat-badia: CSV existe
+OK   sant-cugat-badia: sin lenguaje causal en titular, resumen, datos y patrones
+OK   sant-cugat-badia: sin revisar → noindex
+OK   ontigola-aranjuez: campos completos
+OK   ontigola-aranjuez: serie existe
+OK   ontigola-aranjuez: CSV existe
+OK   ontigola-aranjuez: sin lenguaje causal en titular, resumen, datos y patrones
+OK   ontigola-aranjuez: sin revisar → noindex
+OK   morrazo-sanxenxo: campos completos
+OK   morrazo-sanxenxo: serie existe
+OK   morrazo-sanxenxo: CSV existe
+OK   morrazo-sanxenxo: sin lenguaje causal en titular, resumen, datos y patrones
+OK   morrazo-sanxenxo: sin revisar → noindex
+OK   arahal-marchena: campos completos
+OK   arahal-marchena: serie existe
+OK   arahal-marchena: CSV existe
+OK   arahal-marchena: sin lenguaje causal en titular, resumen, datos y patrones
+OK   arahal-marchena: sin revisar → noindex
+OK   manilva: campos completos
+OK   manilva: serie existe
+OK   manilva: CSV existe
+OK   manilva: sin lenguaje causal en titular, resumen, datos y patrones
+OK   manilva: sin revisar → noindex
+OK   alcoi: campos completos
+OK   alcoi: serie existe
+OK   alcoi: CSV existe
+OK   alcoi: sin lenguaje causal en titular, resumen, datos y patrones
+OK   alcoi: sin revisar → noindex
+OK   capitales-municipales: campos completos
+OK   capitales-municipales: serie existe
+OK   capitales-municipales: CSV existe
+OK   capitales-municipales: sin lenguaje causal en titular, resumen, datos y patrones
+OK   capitales-municipales: sin revisar → noindex
+OK   europeas-2024: campos completos
+OK   europeas-2024: serie existe
+OK   europeas-2024: CSV existe
+OK   europeas-2024: sin lenguaje causal en titular, resumen, datos y patrones
+OK   europeas-2024: sin revisar → noindex
 OK   a-illa-vilanova.csv: 8 filas sin valores vacíos
+OK   alcoi.csv: 8 filas sin valores vacíos
+OK   arahal-marchena.csv: 9 filas sin valores vacíos
 OK   aranda-miranda.csv: 8 filas sin valores vacíos
 OK   badalona.csv: 6 filas sin valores vacíos
 OK   cabra-montilla.csv: 8 filas sin valores vacíos
 OK   cadiz-madrid-29n.csv: 8 filas sin valores vacíos
 OK   capitales-2023.csv: 50 filas sin valores vacíos
+OK   capitales-municipales.csv: 50 filas sin valores vacíos
 OK   castro-urdiales.csv: 8 filas sin valores vacíos
 OK   cuenca-de-pamplona.csv: 9 filas sin valores vacíos
 OK   cuencas-mineras.csv: 20 filas sin valores vacíos
 OK   escanos-ajustados-2023.csv: 52 filas sin valores vacíos
+OK   europeas-2024.csv: 10 filas sin valores vacíos
 OK   getxo-portugalete.csv: 6 filas sin valores vacíos
+OK   jodar.csv: 15 filas sin valores vacíos
 OK   lalin-vilanova.csv: 10 filas sin valores vacíos
 OK   los-palacios.csv: 8 filas sin valores vacíos
 OK   madrid-sur-noroeste.csv: 11 filas sin valores vacíos
+OK   manilva.csv: 10 filas sin valores vacíos
 OK   modelo-municipal-2023.csv: 770 filas sin valores vacíos
+OK   morrazo-sanxenxo.csv: 6 filas sin valores vacíos
+OK   ontigola-aranjuez.csv: 9 filas sin valores vacíos
 OK   participacion-por-tamano.csv: 11 filas sin valores vacíos
 OK   participacion-renta-paro.csv: 5 filas sin valores vacíos
 OK   puerto-real.csv: 15 filas sin valores vacíos
+OK   sant-cugat-badia.csv: 9 filas sin valores vacíos
 OK   vigo-galicia.csv: 7 filas sin valores vacíos
 OK   Cifra derivada: suma de habitantes de las ciudades del sur que gana el PSOE = 702.930
 OK   Cifra derivada: ventaja del PP sobre el PSOE en el voto CERA de Madrid = 8.595

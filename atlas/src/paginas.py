@@ -10,6 +10,7 @@ from html import escape
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from piezas import piezas, SERIES  # noqa: E402
 from piezas2 import piezas2  # noqa: E402
+from piezas3 import piezas3  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ATLAS = ROOT / 'atlas'
@@ -31,6 +32,8 @@ FUENTES = {
     'pollspain': ('pollspaindata: copia procesada de los ficheros por mesa de Interior', 'https://github.com/dadosdelaplace/pollspaindata'),
     'ine_adrh': ('INE, Atlas de Distribución de Renta de los Hogares 2023 (renta, edad, población), vía ineAtlas.data', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm'),
     'ine_censo': ('INE, Censo de Población y Viviendas 2021 (estudios, paro, extranjeros)', 'https://www.ine.es/censos2021/'),
+    'europeas': ('Ministerio del Interior, resultados por mesa de las elecciones al Parlamento Europeo de 2019 y 2024 (Infoelectoral)',
+                 'https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/'),
     'transparencia': ('Generalitat de Catalunya, participación por sección censal (Transparència Catalunya, irrv-2mfc)', 'https://analisi.transparenciacatalunya.cat/d/irrv-2mfc'),
     'decreto29n': ('Real Decreto de disolución de las Cortes y convocatoria de elecciones para el 29 de noviembre de 2026 (BOE, 6 de octubre de 2026): escaños por provincia', None),
 }
@@ -133,7 +136,7 @@ PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0<
 
 def tabla(t):
     def celda(v, tag='td'):
-        es_num = isinstance(v, (int, float)) or (isinstance(v, str) and v[:1] in '+-0123456789' and any(c.isdigit() for c in v[:3]))
+        es_num = isinstance(v, (int, float)) or (isinstance(v, str) and v[:1] in '+-−0123456789' and any(c.isdigit() for c in v[:3]))
         return f'<{tag}{" class=\"n\"" if es_num else ""}>{escape(str(v))}</{tag}>'
     cab = ''.join(f'<th scope="col"{" class=\"n\"" if i else ""}>{escape(h)}</th>' for i, h in enumerate(t['cabecera']))
     filas = ''.join('<tr>' + f'<th scope="row">{escape(str(f[0]))}</th>' + ''.join(celda(v) for v in f[1:]) + '</tr>' for f in t['filas'])
@@ -330,7 +333,7 @@ def llms():
 def main():
     global TODAS
     C = json.loads((ATLAS / 'src' / 'cifras.json').read_text())
-    TODAS = piezas(C) + piezas2(C)
+    TODAS = piezas(C) + piezas2(C) + piezas3(C)
     paginas = [pagina_pieza(p) for p in TODAS] + [portada(), metodologia(C), datos(), correcciones()]
     paginas += [pagina_serie(s) for s in SERIES if any(q['serie'] == s for q in TODAS)]
     for ruta, html in paginas:

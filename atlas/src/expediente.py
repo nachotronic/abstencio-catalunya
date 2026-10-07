@@ -11,12 +11,14 @@ sys.path.insert(0, str(SRC))
 from graficos import num, ANYO  # noqa: E402
 from piezas import piezas  # noqa: E402
 from piezas2 import piezas2  # noqa: E402
+from piezas3 import piezas3  # noqa: E402
 from paginas import FUENTES  # noqa: E402
 
 OUT = Path(os.environ.get('ATLAS_EXPEDIENTE', '/mnt/project-files/atlas/expedientes'))
 INFO = 'https://infoelectoral.interior.gob.es/es/elecciones-celebradas/resultados-electorales/'
 DESCARGA = {'interior': '2026-10-06 (municipales); pollspaindata commit ee5ecda', 'pollspain': 'commit ee5ecda',
             'ine_adrh': '2026-10-06 (ineAtlas.data)', 'ine_censo': '2026-10-06', 'transparencia': '2026-10-06',
+            'europeas': '2026-10-06 (zips de Infoelectoral subidos por Nacho: 07201905 y 07202406)',
             'decreto29n': 'pendiente: BOE no accesible desde el entorno, enlace por añadir'}
 FORMULAS = {
     'cadiz-madrid-29n': "D'Hondt sobre los votos del 23J (con CERA) con 8 escaños en Cádiz y 38 en Madrid; barrera del 3 % sobre voto válido (candidaturas + blanco).",
@@ -38,6 +40,15 @@ FORMULAS = {
     'vigo': "% sobre voto válido; ciudades gallegas ≥ 60.000 hab. y municipios ≥ 20.000 hab. según el padrón del INE.",
     'pueblos-pequenos': "Participación por tramo = Σ votantes / Σ censo; «más en municipales» = participación de mayo > participación de julio en cada municipio.",
     'paro-renta-participacion': "Participación por sección censal; MCO con log renta, paro, estudios, edad y extranjeros; correlación ecológica.",
+    'jodar': "Modelo municipal de participación (MCO ponderado por √censo, efectos fijos de provincia, mismas variables que el de voto), reestimado en cada general; participación = votantes / censo sin CERA.",
+    'sant-cugat-badia': "% sobre voto válido; modelo municipal de voto a la derecha; distancia entre centroides; lista ganadora de mayo desde los ficheros por mesa.",
+    'ontigola-aranjuez': "Modelo municipal para el voto a Vox (mismas variables y ponderación); municipios donde Vox fue primera fuerza el 23J según el campo gana; distancia entre centroides.",
+    'morrazo-sanxenxo': "Modelo municipal de voto a la derecha; % sobre voto válido; BNG en generales y municipales; lista ganadora de mayo.",
+    'arahal-marchena': "Modelo municipal; % sobre voto válido en las ocho generales; lista ganadora de mayo; distancia entre centroides.",
+    'manilva': "Cambio relativo = (izquierda 2023 − izquierda 2004 del municipio) − (lo mismo en su provincia, Σ votos / Σ voto válido); municipios ≥ 10.000 hab.",
+    'alcoi': "Margen PSOE − PP en el municipio y en la provincia; municipios alicantinos ≥ 20.000 hab.; modelo municipal.",
+    'capitales-municipales': "Participación = Σ votantes / Σ censo de la capital y del resto de municipios de su provincia; municipales 2015, 2019, 2023 y generales 2023.",
+    'europeas-2024': "Deciles de renta por unidad de consumo de las secciones censales; participación de cada decil ponderada por censo; repetido con secciones con menos del 5 % de extranjeros.",
 }
 
 
@@ -98,6 +109,34 @@ def muestra(C):
     v = C['vigo']['vigo']
     add('vigo', 'Vigo', 'Municipales 2023', '% PSOE', num(v['m2023']['psoe']))
     add('vigo', 'Vigo', 'Congreso 23J 2023', '% PSOE', num(v['psoe']['2023_07']))
+    j = C['jodar']['jodar']
+    add('jodar', 'Jódar', 'Congreso 23J 2023', 'Participación (% del censo sin CERA)', num(j['part_serie']['2023_07']))
+    add('jodar', 'Jódar', 'Congreso 2004', 'Participación', num(j['part_serie']['2004_03']))
+    add('jodar', 'Jódar', 'Municipales 2023', 'Participación', num(j['part_serie']['M2023']))
+    va = {x['municipio']: x for x in C['valles']['municipios']}
+    add('sant-cugat-badia', 'Badia del Vallès', 'Congreso 23J 2023', '% PSC', num(va['Badia del Vallès']['psoe']['2023_07']))
+    add('sant-cugat-badia', 'Sant Cugat del Vallès', 'Congreso 23J 2023', '% PSC / % Junts', f"{num(va['Sant Cugat del Vallès']['psoe']['2023_07'])} / {num(va['Sant Cugat del Vallès']['junts']['2023_07'])}")
+    om = {x['municipio']: x for x in C['ontigola']['municipios']}
+    add('ontigola-aranjuez', 'Ontígola', 'Congreso 23J 2023', '% Vox / % PSOE / % PP', f"{num(om['Ontígola']['vox']['2023_07'])} / {num(om['Ontígola']['psoe']['2023_07'])} / {num(om['Ontígola']['pp']['2023_07'])}")
+    add('ontigola-aranjuez', 'Aranjuez', 'Congreso 23J 2023', '% Vox', num(om['Aranjuez']['vox']['2023_07']))
+    rr = {x['municipio']: x for x in C['ria']['municipios']}
+    add('morrazo-sanxenxo', 'Moaña', 'Municipales 2023', '% BNG', num(rr['Moaña']['m2023']['bng']))
+    add('morrazo-sanxenxo', 'Sanxenxo', 'Congreso 23J 2023', '% PP + Vox + Cs', num(rr['Sanxenxo']['der']['2023_07']))
+    cc = {x['municipio']: x for x in C['campina']['municipios']}
+    add('arahal-marchena', 'Arahal', 'Municipales 2023', f'% {cc["Arahal"]["m2023_lista"]}', num(cc['Arahal']['m2023_lista_pct']))
+    add('arahal-marchena', 'Marchena', 'Congreso 23J 2023', '% PP + Vox + Cs', num(cc['Marchena']['der']['2023_07']))
+    mv = C['manilva']['municipios'][0]
+    add('manilva', 'Manilva', 'Congreso 2004', '% PSOE + IU', num(mv['izq']['2004_03']))
+    add('manilva', 'Manilva', 'Congreso nov. 2019', '% Vox', num(mv['vox']['2019_11']))
+    al = C['alcoi']['alcoi']
+    add('alcoi', 'Alcoi', 'Congreso 23J 2023', '% PSOE / % PP', f"{num(al['psoe']['2023_07'])} / {num(al['pp']['2023_07'])}")
+    kc = {x['capital']: x for x in C['capitales_mun']['capitales']}
+    add('capitales-municipales', 'Zamora', 'Municipales 2023', 'Participación capital', num(kc['Zamora']['m23_capital']))
+    add('capitales-municipales', 'Soria', 'Municipales 2023', 'Participación capital', num(kc['Soria']['m23_capital']))
+    eu = C['europeas']
+    ar = next(r for r in eu['mayores_caidas'] if r['municipio'] == 'Arcos de la Frontera')
+    add('europeas-2024', 'España', 'Europeas 2024', 'Participación (% del censo sin CERA)', num(eu['total_e2024']))
+    add('europeas-2024', 'Arcos de la Frontera', 'Europeas 2024', 'Participación', num(ar['e2024']))
     return f
 
 
@@ -119,7 +158,7 @@ def main():
     for k, (t, u) in FUENTES.items():
         L.append(f'- **{k}**: {t}. URL: {u or "sin enlace"}. Descarga: {DESCARGA.get(k, "")}')
     L += ['', '## Piezas', '']
-    for p in piezas(C) + piezas2(C):
+    for p in piezas(C) + piezas2(C) + piezas3(C):
         L += [f'### {p["titulo"]}', '', f'- Ruta: /atlas/{p["serie"]}/{p["slug"]}/', f'- Estado: {p["estado"]}; revisado: {p["revisado"] or "pendiente"}',
               f'- Fórmula: {FORMULAS.get(p["slug"], "")}', f'- CSV: atlas/datos/{p["csv"]}', f'- Fuentes: {", ".join(p["fuentes"])}',
               f'- Hipótesis sin dos fuentes: {len(p["no_sabemos"])}', '- Coherencia titular / texto / tabla / gráfico: las cifras salen de cifras.json (control 5 en controles.txt); revisión humana pendiente.', '']

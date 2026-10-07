@@ -27,6 +27,16 @@ FOTOS = {
     'castro-urdiales': ('Una calle comercial de Castro-Urdiales, en 2023', 'Zarateman', 'CC0', 'Castro_Urdiales_15.jpg'),
     'vigo': ('La rúa do Príncipe, en Vigo, en 2010', 'Certo Xornal', 'CC BY 2.0', 'Vigo_rua_Principe.jpg'),
     'pueblos-pequenos': ('Danzadores de zancos en la plaza de la Obra de Anguiano (La Rioja), en 2007', 'BigSus', 'CC BY-SA 3.0', 'Danzadores_de_zancos_en_la_plaza_de_la_Obra_de_Anguiano.JPG'),
+    # tercera tanda (2026-10-07)
+    'jodar': ('Vecinos ante la salida de la Virgen de la Esperanza en la Semana Santa de Jódar, en 2014', 'Hye88', 'CC BY-SA 3.0', 'Salida.Esperanza.jpg'),
+    'sant-cugat-badia': ('Vecinos en un concierto de la fiesta mayor de Badia del Vallès, en 2024', 'Pitxiquin', 'CC BY-SA 4.0', 'Sabor_de_Gràcia_a_la_festa_major_de_Badia_del_Vallès_2024.jpg'),
+    'ontigola-aranjuez': ('Bailes populares en las fiestas de San Fernando de Aranjuez, en 2022', 'Rodelar', 'CC BY-SA 4.0', 'Fiestas_de_San_Fernando,_Aranjuez_2022_01.jpg'),
+    'morrazo-sanxenxo': ('Vecinos paseando por una calle del centro de Cangas, en el Morrazo, en 2013', 'Luis Miguel Bugallo Sánchez (Lmbuga)', 'CC BY-SA 3.0', 'Cangas._Galiza-7.jpg'),
+    'arahal-marchena': ('Vecinos acompañan el simpecado por una calle de Arahal en la romería de Montemayor, en 2012', 'ManuelGarciaDes', 'CC BY-SA 3.0', 'Romeria_de_Montemayor_arahal.jpg'),
+    'manilva': ('Paseantes en el mercadillo del puerto deportivo de Estepona, vecina de Manilva, en 2014', 'Turista Inglesa', 'CC BY-SA 4.0', 'Mercadillo_puerto_de_Estepona.jpg'),
+    'alcoi': ('Desfile de una filà ante el público en una calle de Alcoi durante los Moros i Cristians, en 2011', 'ARAMULTIMÈDIA', 'CC BY-SA 2.0', "Moros_i_Cristians_d'Alcoi_2011-15.jpg"),
+    'capitales-municipales': ('Público en una calle de Zamora al paso de la procesión de La Borriquita, el Domingo de Ramos de 2010', 'Antramir', 'CC BY-SA 3.0', 'Procesion_La_Borriquita_2010_246.jpg'),
+    'europeas-2024': ('Vecinos acompañan un paso por una calle de Arcos de la Frontera en la Semana Santa de 2015', 'Quim Gil', 'CC0', 'María_Santísima_de_la_Amargura_carried_through_the_streets_of_Arcos_de_la_Frontera.JPG'),
 }
 
 COLOR = {
@@ -106,6 +116,63 @@ COLOR = {
         ('Unos seis de cada diez municipios de España tienen menos de 1.000 habitantes, y en ellos vive en torno al 3 % de la población.',
          ['https://ine.es/infografias/infografia_padron.pdf',
           'https://api.infogen.uvigo.es/uploads/REDLOCALIS/originals/29b65ca0-ae44-4aff-b9fa-3bb4f2aa16f0.pdf'])],
+    # tercera tanda (2026-10-07)
+    'jodar': [
+        ('Cada primavera, vecinos de Jódar, a veces con sus hijos, se desplazan a Navarra como temporeros para la campaña del espárrago.',
+         ['https://www.noticiasdenavarra.com/economia/2021/04/17/agricultores-temporeros-barco-2146872.html',
+          'https://agroinformacion.com/la-recogida-del-esparrago-de-navarra-arranca-con-pruebas-pcr-a-los-temporeros-y-jornadas-de-muchas-horas-agachados/']),
+        ('El esparto fue durante generaciones el gran oficio de Jódar; entró en declive en los años sesenta, con la llegada de los materiales sintéticos, aunque el pueblo conserva talleres que lo trabajan.',
+         ['https://www.eldebate.com/espana/andalucia/20260924/pueblo-jaen-fabrica-mano-sombrillas-esparto-llegan-playas-toda-espana_461973.html',
+          'https://iesjuanlopezmorillas.es/index.php/informacion/localidad-y-entorno'])],
+    'sant-cugat-badia': [
+        ('Badia del Vallès nació como un polígono de vivienda protegida: sus bloques se levantaron en los años setenta y, hasta 1994, la entonces llamada Ciutat Badia la gestionó una mancomunidad de Barberà del Vallès y Cerdanyola del Vallès, de cuyos términos se segregó para ser municipio.',
+         ['https://www.boe.es/boe/dias/2015/09/09/pdfs/BOE-A-2015-9724.pdf',
+          'https://www.3cat.cat/3catinfo/de-2200-euros-fa-50-anys-a-180000-ara-adeu-als-pisos-protegits-de-badia-del-valles/noticia/3327188/']),
+        ('Badia del Vallès ocupa 0,93 kilómetros cuadrados, y en ellos viven unas 13.000 personas.',
+         ['https://api.idescat.cat/emex/v1/dades.json?id=089045&i=f271,f171&lang=es',
+          'https://www.3cat.cat/3catinfo/de-2200-euros-fa-50-anys-a-180000-ara-adeu-als-pisos-protegits-de-badia-del-valles/noticia/3327188/'])],
+    'ontigola-aranjuez': [
+        ('Ontígola ha multiplicado su población en lo que va de siglo: el padrón del INE le contaba 1.250 vecinos en 2000 y 5.101 en 2025, y su ayuntamiento recordaba en 2022 que una década antes apenas llegaba a 3.000.',
+         ['https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/DPOP20797?nult=30',
+          'https://www.ontigola.es/ontigola-la-realidad-del-pueblo-en-el-que-vivimos/']),
+        ('El Mar de Ontígola, el humedal que da nombre al pueblo, está en término de Aranjuez: Felipe II mandó crearlo en 1552 para atraer aves de cetrería, acabó abasteciendo de agua los jardines del Real Sitio y hoy es reserva natural.',
+         ['https://www.eldiario.es/viajes/humedal-madrid-nacio-orden-felipe-ii-hoy-alberga-mayores-reservas-mariposas-europa-pm_1_13395962.html',
+          'https://www.telemadrid.es/programas/madrid-desde-el-aire/mar-Madrid-Aranjuez-2-2333786607--20210420103200.html'])],
+    'morrazo-sanxenxo': [
+        ('En 1617 un millar de corsarios berberiscos asaltaron Cangas; en 1622 la Inquisición condenó por brujería a la vecina María Soliña, a quien la villa recuerda cada año.',
+         ['https://cangas.gal/es/areas/turismo/nuestra-historia/invasion-de-piratas-berberiscos-en-1617',
+          'https://atlantico.net/articulo/morrazo/maria-solina-enfrenta-hoy-paseillo-antes-juicio-final-cangas/202409291124161052685.html'])],
+    'arahal-marchena': [
+        ('Arahal celebra a principios de septiembre la Fiesta del Verdeo, dedicada a la campaña de recogida de la aceituna de mesa.',
+         ['https://www.elpespunte.es/articulo/provincia/lvi-fiesta-del-verdeo-de-arahal-la-unica-de-la-provincia-dedicada-a-la-campana-de-recogida-de-aceitunas/20240829110546067981.html',
+          'https://www.andalucia.org/blog/post/la-cosecha-de-la-aceituna-del-verdeo-al-botifuera/']),
+        ('La iglesia de San Juan Bautista de Marchena guarda en su sacristía una serie de lienzos de Francisco de Zurbarán encargados en la década de 1630.',
+         ['https://www.juntadeandalucia.es/cultura/agendaculturaldeandalucia/evento/museo-zurbaran-en-la-iglesia-de-san-juan-bautista-de-marchena',
+          'https://www.archisevilla.org/el-cristo-crucificado-de-zurbaran-de-san-juan-bautista-marchena/'])],
+    'manilva': [
+        ('Manilva casi triplicó su población en veinte años: pasó de 6.270 habitantes empadronados en 2002 a 17.157 en 2022.',
+         ['https://www.elespanol.com/malaga/20221227/boom-poblacion-malaga-municipios-duplicado-triplicado-residentes/728677160_0.html',
+          'https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/DPOP13666?nult=30']),
+        ('Antes del turismo, la caña de azúcar y la viña fueron durante siglos los motores de la economía de Manilva.',
+         ['https://manilva.es/manilva-el-municipio/',
+          'https://ws089.juntadeandalucia.es/institutodeestadisticaycartografia/blog/2016/03/sabinillas-manilva/'])],
+    'alcoi': [
+        ('En julio de 1873 los obreros del textil y del papel de Alcoi fueron a la huelga general y protagonizaron la llamada Revolución del Petróleo, en la que se hicieron con el ayuntamiento durante unos días.',
+         ['https://www.elsaltodiario.com/memoria-historica/revolucion-del-petroleo-alcoi',
+          'https://www.elespanol.com/alacant/alcoi/20220713/alcoy-prepara-aniversario-revolucion-petroleo-revuelta-espana/687181426_0.html']),
+        ('Los Moros i Cristians de Alcoi, en honor de Sant Jordi, conmemoran la batalla de 1276 contra el caudillo Al-Azraq y son fiesta de Interés Turístico Internacional desde 1980.',
+         ['https://cvcultura.es/wp-content/uploads/634-2.pdf', 'https://www.upv.es/entidades/epsa/?p=19359'])],
+    'capitales-municipales': [
+        ('Soria es la provincia menos poblada de España: a 1 de enero de 2025 tenía 90.234 habitantes empadronados, 41.025 de ellos en la capital.',
+         ['https://elmirondesoria.es/soria/capital/el-ine-certifica-poblacion-oficial-de-soria-en-2025-90-234-habiantes',
+          'https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/DPOP18616?nult=30']),
+        ('La ciudad de Zamora alcanzó en 2008 su máximo de población del siglo XXI, 66.672 empadronados; en 2025 tenía 59.815.',
+         ['https://www.elespanol.com/castilla-y-leon/region/zamora/20241213/capital-zamorana-gana-poblacion-primera-vez-ano/908409343_0.html',
+          'https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/DPOP23602?nult=30'])],
+    'europeas-2024': [
+        ('Contando el voto de los españoles residentes en el extranjero, la participación oficial de las europeas del 9 de junio de 2024 fue del 46,39 % (17.652.007 votantes de 38.050.286 electores), frente al 60,73 % de 2019. Esta pieza usa la participación de los residentes en España.',
+         ['https://www.boe.es/boe/dias/2024/06/28/pdfs/BOE-A-2024-13092.pdf',
+          'https://results.elections.europa.eu/es/resultados-nacionales/espana/2024-2029/'])],
 }
 
 
