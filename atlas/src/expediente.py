@@ -10,6 +10,7 @@ SRC = Path(__file__).resolve().parent
 sys.path.insert(0, str(SRC))
 from graficos import num, ANYO  # noqa: E402
 from piezas import piezas  # noqa: E402
+from piezas2 import piezas2  # noqa: E402
 from paginas import FUENTES  # noqa: E402
 
 OUT = Path(os.environ.get('ATLAS_EXPEDIENTE', '/mnt/project-files/atlas/expedientes'))
@@ -27,6 +28,15 @@ FORMULAS = {
     'cabra-montilla': "Distancia euclídea entre seis indicadores estandarizados; % sobre voto válido.",
     'puerto-real': "MCO ponderado por √censo con efectos fijos de provincia; residuo = real − previsto (PP + Vox + Cs).",
     'badalona': "% sobre voto válido en municipales y generales; diferencia PP municipales − generales en municipios ≥ 20.000 hab.",
+    'cuencas-mineras-asturianas': "Modelo municipal (MCO ponderado por √censo con efectos fijos de provincia); izquierda = PSOE + familia Sumar/Podemos/IU; lista ganadora de mayo desde los ficheros por mesa de Interior.",
+    'lalin-vilanova-de-arousa': "Modelo municipal; ranking de residuos al alza entre los municipios ≥ 10.000 hab.",
+    'cuenca-de-pamplona': "Modelo municipal; PP incluye UPN; distancia entre centroides de los términos (fórmula equirrectangular).",
+    'getxo-portugalete': "% sobre voto válido; agregados de Bizkaia = Σ votos / Σ voto válido; distancia entre centroides.",
+    'aranda-miranda': "% sobre voto válido en las ocho generales; modelo municipal; mayores municipios de Burgos por población del INE.",
+    'los-palacios-y-villafranca': "% sobre voto válido; lista ganadora de mayo = máximo de votos por candidatura / voto válido (candidaturas + blanco).",
+    'castro-urdiales': "Modelo municipal; derecha Cantabria = Σ votos PP + Vox + Cs / Σ voto válido.",
+    'vigo': "% sobre voto válido; ciudades gallegas ≥ 60.000 hab. y municipios ≥ 20.000 hab. según el padrón del INE.",
+    'pueblos-pequenos': "Participación por tramo = Σ votantes / Σ censo; «más en municipales» = participación de mayo > participación de julio en cada municipio.",
     'paro-renta-participacion': "Participación por sección censal; MCO con log renta, paro, estudios, edad y extranjeros; correlación ecológica.",
 }
 
@@ -66,6 +76,28 @@ def muestra(C):
     b = C['badalona']
     add('badalona', 'Badalona', 'Municipales 2023', '% PP', num(b['M2023']['PP']))
     add('badalona', 'Badalona', 'Congreso 23J 2023', '% PP', num(b['2023_07']['PP']))
+    cu = {x['municipio']: x for x in C['cuencas']['municipios']}
+    add('cuencas-mineras-asturianas', 'Mieres', 'Congreso 23J 2023', '% PSOE', num(cu['Mieres']['psoe']['2023_07']))
+    add('cuencas-mineras-asturianas', 'Mieres', 'Municipales 2023', f'% {cu["Mieres"]["m2023_lista"]}', num(cu['Mieres']['m2023_lista_pct']))
+    li = C['lalin']['lalin']
+    add('lalin-vilanova-de-arousa', 'Lalín', 'Congreso 23J 2023', '% PP', num(li['pp']['2023_07']))
+    pm = {x['municipio']: x for x in C['pamplona']['municipios']}
+    add('cuenca-de-pamplona', 'Cizur', 'Congreso 23J 2023', '% PP (UPN en la lista del PP)', num(pm['Cizur']['pp']['2023_07']))
+    add('cuenca-de-pamplona', 'Villava/Atarrabia', 'Congreso 23J 2023', '% EH Bildu', num(pm['Villava/Atarrabia']['bildu_2023']))
+    gm = {x['municipio']: x for x in C['getxo']['municipios']}
+    add('getxo-portugalete', 'Portugalete', 'Congreso 23J 2023', '% PSOE', num(gm['Portugalete']['psoe']['2023_07']))
+    add('getxo-portugalete', 'Getxo', 'Congreso 23J 2023', '% PP', num(gm['Getxo']['pp']['2023_07']))
+    am = C['aranda_miranda']
+    add('aranda-miranda', 'Miranda de Ebro', 'Congreso 23J 2023', '% PSOE', num(am['miranda']['psoe']['2023_07']))
+    add('aranda-miranda', 'Aranda de Duero', 'Municipales 2023', '% PP / % PSOE', f"{num(am['aranda']['m2023']['pp'])} / {num(am['aranda']['m2023']['psoe'])}")
+    lp = C['los_palacios']['lp']
+    add('los-palacios-y-villafranca', 'Los Palacios y Villafranca', 'Congreso 2004', '% PSOE', num(lp['psoe']['2004_03']))
+    add('los-palacios-y-villafranca', 'Los Palacios y Villafranca', 'Municipales 2023', f'% {lp["m2023_lista"]}', num(lp['m2023_lista_pct']))
+    cs = C['castro']['castro']
+    add('castro-urdiales', 'Castro-Urdiales', 'Congreso 23J 2023', '% PSOE / % PP', f"{num(cs['psoe']['2023_07'])} / {num(cs['pp']['2023_07'])}")
+    v = C['vigo']['vigo']
+    add('vigo', 'Vigo', 'Municipales 2023', '% PSOE', num(v['m2023']['psoe']))
+    add('vigo', 'Vigo', 'Congreso 23J 2023', '% PSOE', num(v['psoe']['2023_07']))
     return f
 
 
@@ -87,7 +119,7 @@ def main():
     for k, (t, u) in FUENTES.items():
         L.append(f'- **{k}**: {t}. URL: {u or "sin enlace"}. Descarga: {DESCARGA.get(k, "")}')
     L += ['', '## Piezas', '']
-    for p in piezas(C):
+    for p in piezas(C) + piezas2(C):
         L += [f'### {p["titulo"]}', '', f'- Ruta: /atlas/{p["serie"]}/{p["slug"]}/', f'- Estado: {p["estado"]}; revisado: {p["revisado"] or "pendiente"}',
               f'- Fórmula: {FORMULAS.get(p["slug"], "")}', f'- CSV: atlas/datos/{p["csv"]}', f'- Fuentes: {", ".join(p["fuentes"])}',
               f'- Hipótesis sin dos fuentes: {len(p["no_sabemos"])}', '- Coherencia titular / texto / tabla / gráfico: las cifras salen de cifras.json (control 5 en controles.txt); revisión humana pendiente.', '']
