@@ -12,6 +12,7 @@ from graficos import num, ANYO  # noqa: E402
 from piezas import piezas  # noqa: E402
 from piezas2 import piezas2  # noqa: E402
 from paginas import FUENTES  # noqa: E402
+from lugares import COLOR  # noqa: E402
 
 OUT = Path(os.environ.get('ATLAS_EXPEDIENTE', '/mnt/project-files/atlas/expedientes'))
 INFO = 'https://infoelectoral.interior.gob.es/es/elecciones-celebradas/resultados-electorales/'
@@ -122,10 +123,16 @@ def main():
     for p in piezas(C) + piezas2(C):
         L += [f'### {p["titulo"]}', '', f'- Ruta: /atlas/{p["serie"]}/{p["slug"]}/', f'- Estado: {p["estado"]}; revisado: {p["revisado"] or "pendiente"}',
               f'- Fórmula: {FORMULAS.get(p["slug"], "")}', f'- CSV: atlas/datos/{p["csv"]}', f'- Fuentes: {", ".join(p["fuentes"])}',
-              f'- Hipótesis sin dos fuentes: {len(p["no_sabemos"])}', '- Coherencia titular / texto / tabla / gráfico: las cifras salen de cifras.json (control 5 en controles.txt); revisión humana pendiente.', '']
+              f'- Hipótesis sin dos fuentes: {len(p["no_sabemos"])}',
+              f'- Foto: {p["foto"]["url"]} ({p["foto"]["autor"]}, {p["foto"]["licencia"]})' if p.get('foto') else '- Foto: ninguna', '- Coherencia titular / texto / tabla / gráfico: las cifras salen de cifras.json (control 5 en controles.txt); revisión humana pendiente.', '']
+    L += ['## Notas de color («Sobre el terreno»)', '', 'Cada nota, con sus dos fuentes, el extracto literal que la respalda y la fecha de consulta.', '']
+    for slug, notas in COLOR.items():
+        L.append(f'### {slug}')
+        for n in notas:
+            L += ['', f'- {n["texto"]}'] + [f'  - {s["url"]} (consultado {s["consultado"]}): «{s["extracto"]}»' for s in n['fuentes']]
+        L.append('')
     L += ['## Pendientes conocidos', '',
           '- Enlace al Real Decreto del 29N (BOE no accesible desde el entorno de trabajo).',
-          '- Fecha de segregación de A Illa de Arousa: sin fuente documental todavía; la pieza no la cita.',
           '- Las explicaciones locales siguen como hipótesis hasta tener dos fuentes independientes.', '',
           '## Resultado de los controles automáticos', '', '```', controles.strip(), '```', '']
     (OUT / 'expediente.md').write_text('\n'.join(L))

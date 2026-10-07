@@ -17,6 +17,7 @@ sys.path.insert(0, str(SRC))
 from graficos import num  # noqa: E402
 from piezas import piezas, SERIES  # noqa: E402
 from piezas2 import piezas2  # noqa: E402
+from lugares import COLOR, sitio  # noqa: E402
 
 # Resultado oficial del 23J de 2023 (Congreso, 350 escaños), para comprobar el reparto D'Hondt recalculado.
 OFICIAL_2023 = {'PP': 137, 'PSOE': 121, 'Vox': 33, 'Sumar': 31, 'ERC': 7, 'Junts': 7, 'EH Bildu': 6, 'PNV': 5,
@@ -262,6 +263,23 @@ def main():
                 if n not in validas and n not in tabla and not any(n in str(c) for c in tabla):
                     sueltas.append((p['slug'], n))
     control('Todas las cifras decimales y de miles del texto salen de cifras.json o de la tabla', not sueltas, sueltas)
+
+    # Fotos y notas de color (lugares.py)
+    fotos = [p['foto'] for p in P if p.get('foto')]
+    control('Cada foto existe en atlas/img/', all((SRC.parent / 'img' / f['src'].split('/')[-1]).exists() for f in fotos),
+            [f['src'] for f in fotos if not (SRC.parent / 'img' / f['src'].split('/')[-1]).exists()])
+    control('Ninguna foto se repite', len({f['url'] for f in fotos}) == len(fotos))
+    control('Cada foto tiene autor, licencia libre y enlace a Commons',
+            all(f['autor'] and re.match(r'(CC BY|CC0|Public domain)', f['licencia']) and 'commons.wikimedia.org' in f['url'] for f in fotos),
+            [f['url'] for f in fotos if not (f['autor'] and re.match(r'(CC BY|CC0|Public domain)', f['licencia']))])
+    malas = []
+    for slug, notas in COLOR.items():
+        for n in notas:
+            fu = n['fuentes']
+            if len(fu) < 2 or len({sitio(s['url']) for s in fu}) < 2 or not all(s.get('extracto') and s.get('consultado') for s in fu):
+                malas.append((slug, n['texto'][:40]))
+    control('Cada nota de color tiene dos fuentes de sitios distintos, con extracto y fecha de consulta', not malas, malas)
+    control('Las notas de color son de piezas que existen', set(COLOR) <= {p['slug'] for p in P}, set(COLOR) - {p['slug'] for p in P})
 
     ok = sum(r[0] for r in resultados)
     lineas = [f'Controles del Atlas: {ok} de {len(resultados)} superados', '']

@@ -54,6 +54,7 @@ h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
 .estado{display:inline-block;font-family:var(--mono);font-size:.76rem;border:1px solid var(--rule);border-radius:4px;padding:2px 8px;margin-right:6px;background:var(--surface)}
 .aviso{background:var(--warn);color:var(--warnfg);border-radius:6px;padding:10px 14px;font-family:var(--mono);font-size:.82rem;margin:1rem 0}
 .tipo{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px}
+figure.foto{padding:0;overflow:hidden}figure.foto img{display:block;width:100%;height:auto}figure.foto figcaption{padding:0 14px 12px}.fuentes-nota{font-family:var(--mono);font-size:.74rem;color:var(--muted);white-space:nowrap}
 figure{margin:1.6rem 0;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px}
 figcaption{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:8px}
 svg.graf{width:100%;height:auto;display:block}
@@ -171,7 +172,7 @@ def pagina_pieza(p):
         h.append('<p class="aviso">Revisión pendiente: los datos y el texto de esta página aún no han pasado la comprobación manual. No se publica en buscadores hasta que se complete.</p>')
     if p.get('foto'):
         f = p['foto']
-        h.append(f'<figure class="foto"><img src="{escape(f["src"])}" alt="{escape(f["alt"])}" loading="lazy">'
+        h.append(f'<figure class="foto"><img src="{escape(f["src"])}" alt="{escape(f["alt"])}" width="{f.get('w', '')}" height="{f.get('h', '')}" loading="lazy">'
                  f'<figcaption>{escape(f["alt"])}. Foto: <a href="{escape(f["url"])}">{escape(f["autor"])}</a>, {escape(f["licencia"])}, Wikimedia Commons.</figcaption></figure>')
     h.append(f'<p><strong>La pregunta:</strong> {escape(p["pregunta"])}</p>')
     if p.get('grafico'):

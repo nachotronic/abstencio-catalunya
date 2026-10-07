@@ -10,6 +10,7 @@ Los elementos ('sub', texto) del cuerpo son ladillos: no contienen afirmaciones.
 `revisado` es la fecha (AAAA-MM-DD) en que Nacho comprueba la muestra manual y firma la revisión de datos y texto.
 Mientras esté vacío, la página se genera con «Revisión pendiente», con noindex y fuera del sitemap.
 """
+from lugares import anadir
 from graficos import num, lineas, barras_previsto, divergente, barras_agrupadas, margenes, ANYO
 
 SERIES = {
@@ -492,4 +493,4 @@ def piezas(C):
     ))
     for p in out:
         p['cuerpo'] = [c for c in p['cuerpo'] if c]
-    return out
+    return anadir(out)

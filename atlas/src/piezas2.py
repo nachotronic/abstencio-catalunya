@@ -5,6 +5,7 @@ Campos opcionales para cuando haya fuentes accesibles (se rellenan a mano, con s
   foto   dict(src, alt, autor, licencia, url)   foto de Wikimedia Commons con su crédito
   color  [(texto, [url1, url2])]                notas de color local, cada una con dos fuentes independientes
 """
+from lugares import anadir
 from graficos import num, lineas, barras_previsto, barras_agrupadas, ANYO
 
 CONG = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07']
@@ -402,4 +403,4 @@ def piezas2(C):
 
     for p in out:
         p['cuerpo'] = [c for c in p['cuerpo'] if c]
-    return out
+    return anadir(out)
