@@ -56,7 +56,7 @@ h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
 .tipo{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px}
 figure{margin:1.6rem 0;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px}
 figcaption{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:8px}
-.foto{padding:0;overflow:hidden}.foto img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}.foto figcaption{padding:0 14px 12px}
+.foto{padding:0;overflow:hidden}.foto.apertura{margin:0 0 1.4rem}.foto img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}.foto figcaption{padding:0 14px 12px}
 .fuentes-nota{font-family:var(--mono);font-size:.76rem;color:var(--muted);white-space:nowrap}
 svg.graf{width:100%;height:auto;display:block}
 .tbl{overflow-x:auto}
@@ -69,9 +69,13 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 .ficha dt{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
 .ficha dd{margin:2px 0 0}
 ul{padding-left:1.2rem}li{margin:.35rem 0}
-.tarjetas{list-style:none;padding:0;display:grid;gap:12px}
+.tarjetas{list-style:none;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
 .tarjetas li{margin:0}
-a.tarjeta{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta{display:flex;flex-direction:column;height:100%;background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta img,a.tarjeta .sinfoto{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--rule)}
+a.tarjeta .sinfoto{display:flex;align-items:flex-end;padding:12px 18px;box-sizing:border-box;font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:linear-gradient(135deg,var(--surface),var(--rule))}
+a.tarjeta .txt{display:flex;flex-direction:column;gap:6px;padding:14px 18px 16px;border-top:4px solid var(--accent);flex:1}
+a.tarjeta .leer{margin-top:auto}
 a.tarjeta:hover,a.tarjeta:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
 a.tarjeta .tt{font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--fg)}
 a.tarjeta .ent{font-size:1rem;color:var(--muted)}
@@ -165,16 +169,16 @@ def pagina_pieza(p):
     ruta = f'{p["serie"]}/{p["slug"]}/index.html'
     rev = p['revisado']
     h = [cabeza(p['titulo'], p['resumen'], ruta, ld_pieza(p, ruta), indexar=bool(rev), nivel=2)]
+    if p.get('foto'):
+        f = p['foto']
+        h.append(f'<figure class="foto apertura"><img src="{escape(f["src"])}" alt="{escape(f["alt"])}" fetchpriority="high">'
+                 f'<figcaption>{escape(f["alt"])}. Foto: <a href="{escape(f["url"])}">{escape(f["autor"])}</a>, {escape(f["licencia"])}, Wikimedia Commons.</figcaption></figure>')
     h.append(f'<p class="kicker"><a href="../index.html">{escape(SERIES[p["serie"]][0])}</a> · Elecciones: {escape(p["fecha_datos"])}</p>')
     h.append(f'<h1>{escape(p["titulo"])}</h1>')
     h.append(f'<p class="resumen">{escape(p["resumen"])}</p>')
     h.append(f'<p><span class="estado">{escape(p["estado"])}: {"verificable y reproducible" if p["estado"] == "Dato" else "relación descriptiva, no causa"}</span></p>')
     if not rev:
         h.append('<p class="aviso">Revisión pendiente: los datos y el texto de esta página aún no han pasado la comprobación manual. No se publica en buscadores hasta que se complete.</p>')
-    if p.get('foto'):
-        f = p['foto']
-        h.append(f'<figure class="foto"><img src="{escape(f["src"])}" alt="{escape(f["alt"])}" loading="lazy">'
-                 f'<figcaption>{escape(f["alt"])}. Foto: <a href="{escape(f["url"])}">{escape(f["autor"])}</a>, {escape(f["licencia"])}, Wikimedia Commons.</figcaption></figure>')
     h.append(f'<p><strong>La pregunta:</strong> {escape(p["pregunta"])}</p>')
     if p.get('grafico'):
         svg, cap = p['grafico']
@@ -215,13 +219,18 @@ def entradilla(resumen):
 
 
 def tarjetas(lista, pref='', serie=False):
-    """Cada pieza es una tarjeta entera enlazada: serie, titular, entradilla y «Leer la pieza»."""
+    """Cada pieza es una tarjeta entera enlazada: foto (si la tiene), serie, titular, entradilla y «Leer la pieza».
+    En pantallas anchas van en dos columnas."""
+    def img(q):
+        if not q.get('foto'):
+            return f'<span class="sinfoto">{escape(SERIES[q["serie"]][0])}</span>'
+        return f'<img src="{pref}img/m/{q["slug"]}.jpg" alt="{escape(q["foto"]["alt"])}" loading="lazy">'
     return '<ul class="tarjetas">' + ''.join(
-        f'<li><a class="tarjeta" href="{pref}{q["serie"]}/{q["slug"]}/index.html">'
+        f'<li><a class="tarjeta" href="{pref}{q["serie"]}/{q["slug"]}/index.html">{img(q)}<span class="txt">'
         + (f'<span class="kicker">{escape(SERIES[q["serie"]][0])}</span>' if serie else '') +
         f'<span class="tt">{escape(q["titulo"])}</span>'
         f'<span class="ent">{escape(entradilla(q["resumen"]))}</span>'
-        f'<span class="leer">Leer la pieza →{"" if q["revisado"] else " · revisión pendiente"}</span></a></li>' for q in lista) + '</ul>'
+        f'<span class="leer">Leer la pieza →{"" if q["revisado"] else " · revisión pendiente"}</span></span></a></li>' for q in lista) + '</ul>'
 
 
 def portada():

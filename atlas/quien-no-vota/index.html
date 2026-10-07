@@ -65,7 +65,7 @@ h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
 .tipo{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px}
 figure{margin:1.6rem 0;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px}
 figcaption{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:8px}
-.foto{padding:0;overflow:hidden}.foto img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}.foto figcaption{padding:0 14px 12px}
+.foto{padding:0;overflow:hidden}.foto.apertura{margin:0 0 1.4rem}.foto img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}.foto figcaption{padding:0 14px 12px}
 .fuentes-nota{font-family:var(--mono);font-size:.76rem;color:var(--muted);white-space:nowrap}
 svg.graf{width:100%;height:auto;display:block}
 .tbl{overflow-x:auto}
@@ -78,9 +78,13 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 .ficha dt{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
 .ficha dd{margin:2px 0 0}
 ul{padding-left:1.2rem}li{margin:.35rem 0}
-.tarjetas{list-style:none;padding:0;display:grid;gap:12px}
+.tarjetas{list-style:none;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
 .tarjetas li{margin:0}
-a.tarjeta{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta{display:flex;flex-direction:column;height:100%;background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden;color:var(--fg);text-decoration:none;transition:border-color .15s,transform .15s}
+a.tarjeta img,a.tarjeta .sinfoto{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--rule)}
+a.tarjeta .sinfoto{display:flex;align-items:flex-end;padding:12px 18px;box-sizing:border-box;font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:linear-gradient(135deg,var(--surface),var(--rule))}
+a.tarjeta .txt{display:flex;flex-direction:column;gap:6px;padding:14px 18px 16px;border-top:4px solid var(--accent);flex:1}
+a.tarjeta .leer{margin-top:auto}
 a.tarjeta:hover,a.tarjeta:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
 a.tarjeta .tt{font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--fg)}
 a.tarjeta .ent{font-size:1rem;color:var(--muted)}
@@ -93,7 +97,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <body>
 <main>
 <nav class="top"><a href="../index.html">Atlas de las anomalías electorales</a><span><a href="../metodologia/index.html">Metodología</a> · <a href="../datos/index.html">Datos</a> · <a href="../../index.html">Resultados de España</a></span></nav>
-<p class="kicker">Serie</p><h1>Quién no vota</h1><p class="resumen">Quién se queda fuera de las urnas, y por qué grupos de razones.</p><ul class="tarjetas"><li><a class="tarjeta" href="../quien-no-vota/paro-renta-participacion/index.html"><span class="tt">A igual renta, los barrios con más paro votan menos: el desempleo pesa más que el dinero en la abstención</span><span class="ent">En las 34.590 secciones censales de España, la participación del 23J sube con la renta: del 62,1 % en el 10 % de secciones más pobres al 77,4 % en el 10 % más rico.</span><span class="leer">Leer la pieza →</span></a></li><li><a class="tarjeta" href="../quien-no-vota/pueblos-pequenos/index.html"><span class="tt">Los pueblos pequeños son los únicos que votan más para elegir alcalde que para elegir al Gobierno</span><span class="ent">En las ciudades se vota mucho menos en las municipales que en las generales: en las de más de 100.000 habitantes, un 61,6 % en mayo de 2023 frente a un 70,3 % en julio.</span><span class="leer">Leer la pieza →</span></a></li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
+<p class="kicker">Serie</p><h1>Quién no vota</h1><p class="resumen">Quién se queda fuera de las urnas, y por qué grupos de razones.</p><ul class="tarjetas"><li><a class="tarjeta" href="../quien-no-vota/paro-renta-participacion/index.html"><img src="../img/m/paro-renta-participacion.jpg" alt="Gente esperando en la puerta de una oficina del INEM, en 2009" loading="lazy"><span class="txt"><span class="tt">A igual renta, los barrios con más paro votan menos: el desempleo pesa más que el dinero en la abstención</span><span class="ent">En las 34.590 secciones censales de España, la participación del 23J sube con la renta: del 62,1 % en el 10 % de secciones más pobres al 77,4 % en el 10 % más rico.</span><span class="leer">Leer la pieza →</span></span></a></li><li><a class="tarjeta" href="../quien-no-vota/pueblos-pequenos/index.html"><img src="../img/m/pueblos-pequenos.jpg" alt="Danzadores de zancos en la plaza de la Obra de Anguiano (La Rioja), en 2007" loading="lazy"><span class="txt"><span class="tt">Los pueblos pequeños son los únicos que votan más para elegir alcalde que para elegir al Gobierno</span><span class="ent">En las ciudades se vota mucho menos en las municipales que en las generales: en las de más de 100.000 habitantes, un 61,6 % en mayo de 2023 frente a un 70,3 % en julio.</span><span class="leer">Leer la pieza →</span></span></a></li></ul><footer>Atlas de las anomalías electorales · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a></footer>
 </main>
 </body>
 </html>
