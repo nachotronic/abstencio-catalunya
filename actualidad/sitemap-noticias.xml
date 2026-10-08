@@ -24,4 +24,28 @@
       <news:title>Votar en noviembre: el 10N de 2019 tuvo la participación más baja de la democracia</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/maricarmen-alquiler-y-voto/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Después de Maricarmen: en los barrios donde más se alquila se vota diez puntos menos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/alquiler-ciudad-a-ciudad/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Tu ciudad, barrio a barrio: en las 25 más grandes, donde más se alquila se vota menos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/pisos-turisticos-y-votantes/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Los barrios de pisos turísticos se quedan sin votantes</news:title>
+    </news:news>
+  </url>
 </urlset>
