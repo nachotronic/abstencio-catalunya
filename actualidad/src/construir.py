@@ -8,7 +8,7 @@ del estándar de verificación y el pie, y escribe además el índice y el sitem
 Uso, desde la raíz del repositorio: python3 actualidad/src/construir.py && node actualidad/src/miniaturas.mjs
 También rellena la franja «Actualidad» de la portada (index.html y la plantilla de generales-2026).
 """
-import datetime, html, json, os, re
+import datetime, html, json, os, re, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC = os.path.join(RAIZ, 'actualidad', 'src')
@@ -278,6 +278,25 @@ ENLACES_INTERNOS = {
         ('el PSOE ha recuperado terreno desde 2015', 'psoe-barrios-de-alquiler'),
     ],
 }
+
+# Serie «Historia electoral»: textos, datos y gráficos en historia/ (paginas.py escribe los <slug>.html de trabajo).
+# Van delante en la lista para que la franja de portada siga mostrando las piezas del día.
+sys.path.insert(0, os.path.join(SRC, 'historia'))
+from textos import PIEZAS_HISTORIA  # noqa: E402
+SERIES['historia'] = 'Historia electoral'
+HISTORIA = []
+for h in PIEZAS_HISTORIA:
+    q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
+    q.update(fecha=h.get('fecha', '2026-10-08'), serie='historia', enlaces=[])
+    if h.get('foto'):
+        q['foto'] = {k: v for k, v in h['foto'].items() if k != 'origen'}
+    HISTORIA.append(q)
+    for texto, destino in h.get('enlaces', []):
+        if destino.startswith('http'):
+            ENLACES_TEXTO.setdefault(h['slug'], []).append((texto, destino))
+        else:
+            ENLACES_INTERNOS.setdefault(h['slug'], []).append((texto, destino))
+PIEZAS = HISTORIA + PIEZAS
 
 FUENTES_WEB = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700'
