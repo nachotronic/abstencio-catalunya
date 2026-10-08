@@ -14,4 +14,7 @@ CORRECCIONES = [
     ('2026-10-06', 'Se reformulan tres frases que decían más que los datos: la entradilla hablaba de personas («quien vive en un barrio rico») '
                    'con datos por sección; «los barrios ricos votan PP» pasa a «el PP gana en ellos», y «Vox crece» pasa a «Vox saca más», porque '
                    'el dato es de una sola elección. Las cifras no cambian.'),
+    ('2026-10-08', 'Al añadir todas las elecciones desde 1977, se revisa la agrupación de partidos: el Partido Socialista de Andalucía (PSA) y otros '
+                   'partidos con «socialista» en el nombre que no son el PSOE pasan a Otros, Iniciativa per Catalunya pasa a Sumar / Podemos / IU '
+                   'en las municipales y el CDS tiene familia propia. En 2004, el PSOE en las secciones más pobres pasa del 56,8% al 56,5%.'),
 ]

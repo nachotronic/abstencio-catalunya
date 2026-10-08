@@ -82,6 +82,7 @@ def main():
         hoy=HOY, hoy_txt=fecha(dt.date.fromisoformat(HOY)), url=URL, autor=html.escape(AUTOR), revisor=html.escape(REVISOR),
         nmun_dato=n(int(gmun.notna().sum())),
     )
+    F['cobertura'], F['g_desde'] = cobertura()
     F.update({'tablas_' + k: v for k, v in tablas(V).items()})
     F.update(historia(sec))
     F['jsonld'] = jsonld(F)
@@ -91,7 +92,7 @@ def main():
         out = out.replace('{{' + k + '}}', str(v))
     assert '{{' not in out, out[out.index('{{'):out.index('{{') + 40]
     open(os.path.join(WEB, 'index.html'), 'w', encoding='utf-8').write(out)
-    met = open(os.path.join(AQUI, 'metodologia.html'), encoding='utf-8').read().replace('{{hoy}}', HOY).replace('{{hoy_txt}}', fecha(dt.date.fromisoformat(HOY))).replace('{{url}}', URL)
+    met = open(os.path.join(AQUI, 'metodologia.html'), encoding='utf-8').read().replace('{{hoy}}', HOY).replace('{{hoy_txt}}', fecha(dt.date.fromisoformat(HOY))).replace('{{url}}', URL).replace('{{cobertura}}', F['cobertura'])
     open(os.path.join(WEB, 'metodologia.html'), 'w', encoding='utf-8').write(met)
     descargas()
     llms(F)
@@ -217,21 +218,37 @@ def jsonld(F):
     ds = {
         '@context': 'https://schema.org', '@type': 'Dataset',
         'name': 'Elecciones generales 2004-2023 por sección censal con renta, edad y población extranjera',
-        'description': 'Votos al Congreso (2004-2023), municipales (2011-2023; 2007 por municipio) y europeas (2019 y 2024) por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).',
+        'description': 'Votos al Congreso (2004-2023 por sección; desde ' + str(F['g_desde']) + ' por municipio), municipales (2011-2023; de 1979 a 2007 por municipio) y europeas (2004-2024; de 1987 a 1999 por municipio) por familia política, participación y censo por sección censal (códigos INE 2023), con renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE ADRH 2023) y estudios y paro (Censo 2021).',
         'url': F['url'] + 'metodologia.html', 'license': 'https://creativecommons.org/licenses/by/4.0/', 'inLanguage': 'es',
         'creator': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'dateModified': F['hoy'],
-        'temporalCoverage': '2004-03-14/2024-06-09', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
+        'temporalCoverage': f"{F['g_desde']}/2024-06-09", 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
         'isBasedOn': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://github.com/dadosdelaplace/pollspaindata', 'https://github.com/pablogguz/ineAtlas.data'],
         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'text/csv', 'contentUrl': F['url'] + 'descargas/' + f}
-                         for f in ('secciones.csv', 'municipios.csv', 'resultados_secciones_largo.csv',
+                         for f in ('secciones.csv', 'municipios.csv', 'municipios_historico.csv', 'resultados_secciones_largo.csv',
                                    'secciones_municipales_europeas.csv', 'resultados_secciones_largo_municipales_europeas.csv')],
     }
     return '\n'.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (art, ds))
 
 
+def cobertura():
+    """Frase con las elecciones del selector, sacada de meta.json (cambia sola al añadir elecciones)."""
+    E = json.load(open(os.path.join(WEB, 'data', 'meta.json'), encoding='utf-8'))['elecciones']
+    anyo = lambda e: int(e['cod'].lstrip('ME')[:4])
+    desde = {t: min(anyo(e) for e in E if e['tipo'] == t) for t in ('generales', 'municipales', 'europeas')}
+    txt = (f"En el selector de elección están las generales desde {desde['generales']}, las municipales desde "
+           f"{desde['municipales']} y las europeas desde {desde['europeas']}. Las anteriores a 2004 y las municipales "
+           f"de 2007 se ven solo por municipio.")
+    return txt, desde['generales']
+
+
+HIST = lambda c: bool(re.match(r'^([ME](19\d\d|200[0-3])|(19\d\d|200[0-3])_\d\d)_', c))   # columnas de elecciones anteriores a 2004
+
+
 def descargas():
     d = os.path.join(WEB, 'descargas'); os.makedirs(d, exist_ok=True)
-    shutil.copy(os.path.join(DATOS, 'municipios.csv'), os.path.join(d, 'municipios.csv'))
+    m = pd.read_csv(os.path.join(DATOS, 'municipios.csv'), dtype={'mun_code': str})
+    m[[c for c in m if not HIST(c)]].to_csv(os.path.join(d, 'municipios.csv'), index=False)
+    m[['mun_code', 'municipio', 'provincia'] + [c for c in m if HIST(c)]].to_csv(os.path.join(d, 'municipios_historico.csv'), index=False)
     # secciones: generales en los ficheros de siempre; municipales y europeas (M2023, E2024...) aparte, para no pasar de 50 MB
     otra = lambda c: bool(re.match(r'^[ME]\d{4}', c))
     s = pd.read_csv(os.path.join(DATOS, 'secciones.csv'), dtype={'tract_code': str, 'mun_code': str})
@@ -250,7 +267,7 @@ def descargas():
 def llms(F):
     t = f"""# El mapa de las generales: cómo vota cada barrio de España
 
-> Resultados de las elecciones al Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Incluye también las municipales de 2011 a 2023 y las europeas de 2019 y 2024 por sección, y las municipales de 2007 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
+> Resultados de las elecciones al Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Por municipio, el Congreso desde {F['g_desde']} (municipios_historico.csv). Incluye también las municipales de 2011 a 2023 y las europeas de 2004 a 2024 por sección, y las municipales de 1979 a 2007 y las europeas de 1987 a 1999 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
 
 Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0.
 
@@ -270,6 +287,7 @@ Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0.
 ## Datos descargables (CSV, UTF-8)
 - [secciones.csv]({F['url']}descargas/secciones.csv): una fila por sección censal INE 2023, resultados por elección y variables sociodemográficas.
 - [municipios.csv]({F['url']}descargas/municipios.csv): lo mismo por municipio.
+- [municipios_historico.csv]({F['url']}descargas/municipios_historico.csv): elecciones anteriores a 2004 por municipio (código INE actual).
 - [resultados_secciones_largo.csv]({F['url']}descargas/resultados_secciones_largo.csv): votos por sección, elección y familia política.
 """
     open(os.path.join(WEB, 'llms.txt'), 'w', encoding='utf-8').write(t)
