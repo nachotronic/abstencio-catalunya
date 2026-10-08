@@ -180,6 +180,8 @@ PIEZAS = [
                  (DEMOCRATA_ERC, 'Demócrata, ERC fijará el 17 de octubre su candidatura (octubre de 2026)')],
         enlaces=[],
         lugar='Cataluña',
+        foto=dict(src='img/actualidad/fotos/rufian-erc-comuns.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Gabriel Rufián, con el Congreso de los Diputados y una urna.'),
     ),
     dict(
         slug='psoe-andalucia-generales-autonomicas', fecha='2026-10-08',
@@ -195,6 +197,8 @@ PIEZAS = [
                  (WIKI_ANDALUZAS_2022, 'Wikipedia, elecciones al Parlamento de Andalucía de 2022 (resultados oficiales)')],
         enlaces=[],
         lugar='Andalucía',
+        foto=dict(src='img/actualidad/fotos/psoe-andalucia-generales-autonomicas.jpg', ancho=1280, alto=720, ia=True,
+                  pie='María Jesús Montero, con el Congreso de los Diputados, una urna y papeles de Hacienda.'),
     ),
 ]
 
