@@ -199,7 +199,7 @@
     const max = rows.length ? rows[0].v : 1;
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
-    h += '<table class="t-bars">' + rows.map(r => `<tr><th>${r.f.nombre}</th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
+    h += '<table class="t-bars">' + rows.map(r => `<tr><th>${nomF(r.f, y)}</th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
     const part = d[y + '_part'] ? d[y + '_part'][i] : null;
     const esc = d[y + '_esc'] ? d[y + '_esc'][i] : null;
     h += `<dl class="t-kv">${esc != null ? `<dt>Escrutado</dt><dd>${pct(esc)}</dd>` : ''}<dt>Participación</dt><dd>${pct(part)}</dd>
@@ -225,22 +225,26 @@
   }
 
   // ---------- leyenda
+  // elecciones sin resultados por sección (anteriores a 2004, municipales de 2007, directo): se avisa en la leyenda
+  // nombre de una familia en una elección: antes de 1989 el PP era AP; antes de 2011, la izquierda abertzale era HB / EH
+  const nomF = (f, y) => { const a = (META.alias || {})[f.cod] || [], yr = y.replace(/^\D/, '').slice(0, 4), m = a.find(([hasta]) => yr < hasta); return m ? m[1] : f.nombre; };
+  const nomE = y => { const e = ELEC.find(e => e.cod === y); return e.nombre + (e.secciones === false ? ' (solo por municipio)' : ''); };
   function legend() {
     const el = $('#legend');
     if (st.v === 'gana') {
       const y = st.y, used = new Set(MUN[y + '_gana']);
-      el.innerHTML = `<div class="lg-t">Partido más votado · ${ELEC.find(e => e.cod === y).nombre}</div><div class="lg-sw">` +
-        FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${f.nombre}</span>`).join('') +
+      el.innerHTML = `<div class="lg-t">Partido más votado · ${nomE(y)}</div><div class="lg-sw">` +
+        FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${nomF(f, y)}</span>`).join('') +
         `</div><div class="lg-n">Más intenso cuanto mayor es su porcentaje de voto</div>`;
       return;
     }
     let lo, hi, cols, fmt, name;
     if (st.v === 'party') {
       const f = FAM[FCOD.indexOf(st.party)], mx = domParty(), bg = BG();
-      cols = [0, .25, .5, .75, 1].map(t => `rgb(${mix(bg, f.rgb, .06 + .94 * t)})`); lo = 0; hi = mx; fmt = pct; name = 'Voto a ' + f.nombre + ' · ' + ELEC.find(e => e.cod === st.y).nombre;
+      cols = [0, .25, .5, .75, 1].map(t => `rgb(${mix(bg, f.rgb, .06 + .94 * t)})`); lo = 0; hi = mx; fmt = pct; name = 'Voto a ' + nomF(f, st.y) + ' · ' + nomE(st.y);
     } else {
       const V = VARS[st.v]; cols = rampa(V.ramp).map(c => `rgb(${c})`); [lo, hi] = st.v === 'part' ? PARTDOM[tipoDe(st.y)] : V.dom; fmt = V.fmt;
-      name = V.name + (st.v === 'part' ? ' · ' + ELEC.find(e => e.cod === st.y).nombre : '');
+      name = V.name + (st.v === 'part' ? ' · ' + nomE(st.y) : '');
     }
     el.innerHTML = `<div class="lg-t">${name}</div><div class="lg-g" style="background:linear-gradient(90deg,${cols.join(',')})"></div><div class="lg-x"><span>${fmt(lo)} o menos</span><span>${fmt(hi)} o más</span></div><div class="lg-n"><b class="nd" style="background:rgb(${NODATA()})"></b>sin dato</div>`;
   }

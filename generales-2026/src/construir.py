@@ -1,4 +1,4 @@
-"""Construye la base de datos de la pieza de generales (España, Congreso 2004-2023, más municipales y europeas).
+"""Construye la base de datos de la pieza de generales (España, Congreso 1977-2023, más municipales y europeas).
 
 Uso:  python3 construir.py            (descarga las fuentes en ~/.cache/generales si faltan)
 
@@ -10,8 +10,10 @@ Fuentes
   Hogares (ADRH) 2023, vía pablogguz/ineAtlas.data.
 - Estudios y paro por sección: INE, Censo 2021, vía pablogguz/ineAtlas.data.
 - Geometría: secciones censales INE 2023 (ineAtlas.data).
-- Municipales 2007-2023 y europeas 2019-2024: ficheros de Infoelectoral importados con otras_elecciones.py
-  (datos/extra/raw_*_M2023.parquet, M2007_municipios.csv...).
+- Municipales 1979-2023, europeas 1987-2024 y Congreso 1977 y 1979: ficheros de Infoelectoral importados con
+  otras_elecciones.py (datos/extra/raw_*_M2023.parquet, M2007_municipios.csv...). Congreso 1982-2000: pollspaindata,
+  importado con otras_elecciones.py --pollspaindata. Las anteriores a 2004 van solo por municipio
+  (datos/extra/<cod>_municipios.csv); sus secciones, con el código de la época, en datos/historico/.
 
 Salidas en ./datos (tablas) y ./web/data (lo que carga la pieza).
 """
@@ -19,13 +21,14 @@ import glob, json, os, re, subprocess, zipfile
 import numpy as np, pandas as pd, geopandas as gpd
 from shapely.geometry import Polygon
 from shapely.affinity import translate
-from partidos import familia, FAMILIAS, CODIGOS, _REGLAS
+from partidos import familia, FAMILIAS, CODIGOS, _REGLAS, ALIAS
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.environ.get('GENERALES_CACHE', os.path.expanduser('~/.cache/generales'))
 DATOS, WEB = os.path.join(AQUI, 'datos'), os.path.join(AQUI, 'web', 'data')
 EXTRA = os.path.join(DATOS, 'extra')   # resultados nuevos que deja actualizar_29n.py
-ETIQ = {'2004_03': '14M 2004', '2008_03': '9M 2008', '2011_11': '20N 2011', '2015_12': '20D 2015', '2016_06': '26J 2016', '2019_04': '28A 2019', '2019_11': '10N 2019', '2023_07': '23J 2023',
+ETIQ = {'1977_06': '15J 1977', '1979_03': '1M 1979', '1982_10': '28O 1982', '1986_06': '22J 1986', '1989_10': '29O 1989',
+        '1993_06': '6J 1993', '1996_03': '3M 1996', '2000_03': '12M 2000', '2004_03': '14M 2004', '2008_03': '9M 2008', '2011_11': '20N 2011', '2015_12': '20D 2015', '2016_06': '26J 2016', '2019_04': '28A 2019', '2019_11': '10N 2019', '2023_07': '23J 2023',
         '2026_11': '29N 2026'}
 TIPO = {'M': 'municipales', 'E': 'europeas'}
 etiq = lambda y: ETIQ.get(y) or (TIPO[y[0]].capitalize() + ' ' + y[1:] if y[0] in TIPO else y)
@@ -41,7 +44,12 @@ SOLO_MUN = sorted(os.path.basename(f).split('_municipios')[0] for f in glob.glob
                   if os.path.basename(f).split('_municipios')[0] not in ELECCIONES)
 TODAS = ELECCIONES + SOLO_MUN
 # las que van en municipios.json y sec/<prov>.json; el resto, en ficheros aparte que se cargan al elegirlas
-BASE = [y for y in TODAS if tipo(y) == 'generales']
+# (las generales anteriores a 2004, solo por municipio, también van aparte para no engordar la carga inicial)
+BASE = [y for y in TODAS if tipo(y) == 'generales' and y[:4] >= '2004']
+# Municipios fusionados después de la elección: sus votos se suman al municipio actual. Los que se segregaron
+# después no tienen dato en esa elección (el resultado está en el municipio del que salieron).
+FUSIONES = {'15026': '15902', '15063': '15902',     # Cesuras y Oza dos Ríos -> Oza-Cesuras (2013)
+            '36011': '36902', '36012': '36902'}     # Cerdedo y Cotobade -> Cerdedo-Cotobade (2016)
 CANARIAS = ('35', '38')
 # Escaños por provincia. 2023: los de la convocatoria de 2023. 2026: Madrid gana uno y Cádiz lo pierde (decreto de convocatoria del 6-10-2026).
 ESCANOS_2023 = {'01': 4, '02': 4, '03': 12, '04': 6, '05': 3, '06': 5, '07': 8, '08': 32, '09': 4, '10': 4, '11': 9, '12': 5,
@@ -134,21 +142,27 @@ def resultados_mun(y):
     d = pd.read_csv(os.path.join(EXTRA, f'{y}_municipios.csv'), dtype={'mun_code': str, 'siglas': str, 'nombre': str},
                     keep_default_na=False)          # hay siglas como "NA"
     d['fam'] = [familia(a, n) for a, n in zip(d.siglas, d.nombre if 'nombre' in d else [''] * len(d))]
-    pv = d.pivot_table(index='mun_code', columns='fam', values='votos', aggfunc='sum', fill_value=0).reindex(columns=CODIGOS, fill_value=0)
     t = d.groupby('mun_code')[['censo', 'votantes', 'blancos', 'nulos']].first()
+    d['mun_code'] = d.mun_code.replace(FUSIONES)
+    t = t.groupby(t.index.to_series().replace(FUSIONES)).sum()
+    pv = d.pivot_table(index='mun_code', columns='fam', values='votos', aggfunc='sum', fill_value=0).reindex(columns=CODIGOS, fill_value=0)
     t = t.join(pv)
     t['candidaturas'] = t[CODIGOS].sum(axis=1)
+    if 'incompleto' in d:      # votos por candidatura incompletos en el origen: sin reparto de voto
+        inc = d[d.incompleto == 1].mun_code.unique()
+        t.loc[t.index.isin(inc), CODIGOS] = np.nan
     return t
 
 
 def tasas(df, pref=''):
     out = pd.DataFrame(index=df.index)
-    out[pref + 'part'] = df.votantes / df.censo.where(df.censo > 0)
+    # más votantes que censo es un error del origen (pasa en unos pocos municipios en 1986-1993): sin dato
+    out[pref + 'part'] = (df.votantes / df.censo.where(df.censo > 0)).where(lambda p: p <= 1)
     val = (df.candidaturas + df.blancos).where(lambda x: x > 0)
     for k in CODIGOS:
         out[pref + k] = df[k] / val
     sub = df[[k for k in CODIGOS if k != 'OTROS']]
-    out[pref + 'gana'] = np.where(df.candidaturas > 0, sub.idxmax(axis=1), None)
+    out[pref + 'gana'] = np.where((df.candidaturas > 0) & sub.notna().all(axis=1), sub.fillna(-1).idxmax(axis=1), None)
     return out
 
 
@@ -292,6 +306,8 @@ def columnas(df, codigo, elecs=None):
             continue
         for c in COLS:
             k = f'{y}_{c}'
+            if c in VACIAS.get(y, ()):
+                continue      # familia sin votos en toda España en esa elección (UCD en 2023, Vox en 1982...)
             if c == 'gana':
                 out[k] = [CODIGOS.index(v) if isinstance(v, str) else -1 for v in df[k]]
             else:
@@ -305,11 +321,17 @@ def columnas(df, codigo, elecs=None):
     return out
 
 
+VACIAS = {}
+
+
 def web(geo, sec, mun):
+    for y in TODAS:
+        VACIAS[y] = {k for k in CODIGOS if k != 'OTROS' and not (mun[f'{y}_v{k}'].fillna(0) > 0).any()}
     meta = {'familias': [{'cod': c, 'nombre': n, 'color': col} for c, n, col in FAMILIAS],
             'elecciones': [{'cod': y, 'nombre': etiq(y), 'tipo': tipo(y), 'secciones': y in ELECCIONES, 'aparte': y not in BASE}
-                           for y in TODAS], 'canarias': [DX, DY], 'S': 10000,
-            'reglas': _REGLAS, 'escanos': {'2023_07': ESCANOS_2023, '2026_11': ESCANOS_2026},
+                           # generales primero y en orden: la pieza abre con la última de la lista
+                           for y in sorted(TODAS, key=lambda y: (tipo(y) != 'generales', y.lstrip('ME')))], 'canarias': [DX, DY], 'S': 10000,
+            'reglas': _REGLAS, 'alias': ALIAS, 'escanos': {'2023_07': ESCANOS_2023, '2026_11': ESCANOS_2026},
             # URL del Worker de resultados en directo (directo/worker.js). Vacío = sin directo.
             'directo': {'url': os.environ.get('GENERALES_DIRECTO', ''), 'eleccion': '2026_11', 'nombre': '29N 2026'}}
     # municipios: disolver secciones, simplificar más

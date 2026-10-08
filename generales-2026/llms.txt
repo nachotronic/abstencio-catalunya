@@ -1,8 +1,8 @@
 # El mapa de las generales: cómo vota cada barrio de España
 
-> Resultados de las elecciones al Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Incluye también las municipales de 2011 a 2023 y las europeas de 2019 y 2024 por sección, y las municipales de 2007 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
+> Resultados de las elecciones al Congreso de 2004 a 2023 en las 36.462 secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Por municipio, el Congreso desde 1977 (municipios_historico.csv). Incluye también las municipales de 2011 a 2023 y las europeas de 2004 a 2024 por sección, y las municipales de 1979 a 2007 y las europeas de 1987 a 1999 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
 
-Autor: Nacho G. del Álamo. Actualizado: 2026-10-06. Licencia de los datos: CC BY 4.0.
+Autor: Nacho G. del Álamo. Actualizado: 2026-10-08. Licencia de los datos: CC BY 4.0.
 
 ## Cifras clave (23J 2023, sin voto CERA)
 - Participación: 70,4%. PP 33,3%, PSOE 31,7%, Vox 12,4%, Sumar 12,3% (sobre voto válido).
@@ -20,4 +20,5 @@ Autor: Nacho G. del Álamo. Actualizado: 2026-10-06. Licencia de los datos: CC B
 ## Datos descargables (CSV, UTF-8)
 - [secciones.csv](https://mapaelectoral.es/generales-2026/descargas/secciones.csv): una fila por sección censal INE 2023, resultados por elección y variables sociodemográficas.
 - [municipios.csv](https://mapaelectoral.es/generales-2026/descargas/municipios.csv): lo mismo por municipio.
+- [municipios_historico.csv](https://mapaelectoral.es/generales-2026/descargas/municipios_historico.csv): elecciones anteriores a 2004 por municipio (código INE actual).
 - [resultados_secciones_largo.csv](https://mapaelectoral.es/generales-2026/descargas/resultados_secciones_largo.csv): votos por sección, elección y familia política.
