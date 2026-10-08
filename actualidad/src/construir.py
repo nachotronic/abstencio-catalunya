@@ -25,6 +25,11 @@ INTERIOR = ('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area
             'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)')
 INE = ('https://www.ine.es/experimental/atlas/experimental_atlas.htm',
        'INE, Atlas de Distribución de Renta de los Hogares (renta y edad por sección), vía ineAtlas.data')
+INE_CENSO = ('https://www.ine.es/censos2021/C2021_Indicadores.csv',
+             'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (régimen de tenencia de las viviendas principales)')
+EL_ESPANOL = 'https://www.elespanol.com/sociedad/20261007/muere-maricarmen-directo-fallece-anos-dias-despues-desahuciada-madrid/1003744412550_10.html'
+EURONEWS = 'https://es.euronews.com/video/2026/09/23/el-desahucio-de-maricarmen-se-consuma-tras-70-anos-en-su-casa-de-retiro'
+EXCELSIOR = 'https://www.excelsior.com.mx/internacional/miles-marchan-madrid-contra-desahucio-mujer-87-anos'
 
 PIEZAS = [
     dict(
@@ -64,6 +69,41 @@ PIEZAS = [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='maricarmen-alquiler-y-voto', fecha='2026-10-08',
+        titulo='Después de Maricarmen: en los barrios donde más se alquila se vota diez puntos menos',
+        descripcion='En el 10 % de secciones con más hogares de alquiler votó el 64,6 % en 2023; en el 10 % con menos, el 74,1 %. Entre los barrios más pobres, la distancia llega a 16 puntos.',
+        compara='El porcentaje de hogares de alquiler de cada sección censal (censo de 2021) y su participación y voto en las generales de julio de 2023, en toda España y dentro de cada quintil de renta; la ciudad de Madrid por distritos; la distancia en las generales desde 2004.',
+        limites='Son datos agregados por sección: que un barrio con mucho alquiler vote menos no prueba que los inquilinos voten menos que sus vecinos propietarios. El alquiler es el del censo de 2021, también para elecciones anteriores. La regresión describe una asociación, no una causa. Las explicaciones (movilidad, empadronamiento) son hipótesis. Sin voto exterior.',
+        fuentes=[INE_CENSO, INTERIOR, INE,
+                 (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)'),
+                 (EURONEWS, 'Euronews, «El desahucio de Maricarmen se consuma tras 70 años en su casa de Retiro» (23-9-2026)'),
+                 (EXCELSIOR, 'Excélsior, «Miles marchan en Madrid contra desahucio de mujer de 87 años» (26-9-2026)'),
+                 ('https://doi.org/10.2307/1960778', 'Squire, Wolfinger y Glass, «Residential Mobility and Voter Turnout», American Political Science Review, 1987')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='alquiler-ciudad-a-ciudad', fecha='2026-10-08',
+        titulo='Tu ciudad, barrio a barrio: en las 25 más grandes, donde más se alquila se vota menos',
+        descripcion='En las 25 ciudades con más electores, el 20 % de secciones con más alquiler votó menos en 2023 que el 20 % con menos. En Alicante, 15 puntos menos; en Vigo, 1,9.',
+        compara='En cada una de las 25 ciudades con más electores, la participación en las generales de julio de 2023 del 20 % de secciones con menos hogares de alquiler y del 20 % con más (censo de 2021), y la renta de cada grupo.',
+        limites='Son datos agregados por sección, no de personas. El alquiler es el del censo de 2021. En muchas ciudades los barrios de alquiler son también más pobres, y parte de la diferencia puede deberse a la renta. Los quintiles de las ciudades menores tienen unas 30 secciones. Sin voto exterior.',
+        fuentes=[INE_CENSO, INTERIOR, INE, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
+        enlaces=[],
+        lugar='25 ciudades',
+    ),
+    dict(
+        slug='pisos-turisticos-y-votantes', fecha='2026-10-08',
+        titulo='Los barrios de pisos turísticos se quedan sin votantes',
+        descripcion='En las 25 mayores ciudades, las secciones con un 5 % o más de pisos turísticos perdieron el 2,9 % de sus electores entre 2015 y 2023, frente al 1,0 % de las que apenas tienen. En Barcelona, el 10,6 %.',
+        compara='El peso de los pisos turísticos en cada sección censal (INE, agosto de 2023) y la variación de su censo electoral entre las generales de 2015 y 2023 en las 25 mayores ciudades; en toda España, la participación de 2004 y 2023 según ese peso.',
+        limites='La estadística de viviendas turísticas del INE es experimental y cuenta anuncios en plataformas. El censo electoral solo incluye a españoles y cambia también por envejecimiento, defunciones y mudanzas: los datos muestran que ambas cosas van juntas, no que una cause la otra. Se usa el peso de agosto de 2023 para toda la serie. Sin voto exterior.',
+        fuentes=[('https://www.ine.es/experimental/viv_turistica/exp_viv_turistica_tablas.htm', 'INE, Medición del número de viviendas turísticas en España y su capacidad (estadística experimental), tabla por secciones censales, agosto de 2023'),
+                 INTERIOR, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
+        enlaces=[],
+        lugar='Grandes ciudades',
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -78,6 +118,18 @@ ENLACES_TEXTO = {
     'votar-en-noviembre': [
         ('según el calendario que ha desgranado Civio', PIEZAS[2]['fuentes'][3][0]),
         ('la convocatoria ya está obligando a cancelar eventos', PIEZAS[2]['fuentes'][4][0]),
+    ],
+    'maricarmen-alquiler-y-voto': [
+        ('según ha contado El Español', EL_ESPANOL),
+        ('al cuarto intento', EURONEWS),
+        ('miles de personas marcharon por Madrid', EXCELSIOR),
+        ('El Gobierno defiende que sus dos decretos', EL_ESPANOL),
+    ],
+    'alquiler-ciudad-a-ciudad': [
+        ('La muerte de Maricarmen Abascal', EL_ESPANOL),
+    ],
+    'pisos-turisticos-y-votantes': [
+        ('El desahucio y la muerte de Maricarmen Abascal', EL_ESPANOL),
     ],
 }
 
