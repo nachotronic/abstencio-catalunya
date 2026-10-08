@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/beiras-nacionalismo-gallego/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>El mapa que deja Beiras: el nacionalismo gallego en las generales</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/colau-barcelona-comuns/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>La Barcelona que espera a Colau: de 837 secciones a 23</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/votar-en-noviembre/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Votar en noviembre: el 10N de 2019 tuvo la participación más baja de la democracia</news:title>
+    </news:news>
+  </url>
+</urlset>

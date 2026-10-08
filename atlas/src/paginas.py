@@ -21,11 +21,20 @@ NOMBRE = 'Atlas de las anomalías electorales'
 FIRMA = 'Nacho G. del Álamo'
 SITIO = 'Mapa Electoral'
 AUTOR = {'@type': 'Person', 'name': FIRMA, 'url': BASE + 'sobre-mi.html', 'sameAs': ['https://github.com/nachotronic']}
+# Editor de todo el sitio (el mismo objeto en src/seo.py, src/portada.py y generales-2026/src/pagina.py)
+MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': SITIO, 'url': BASE,
+         'founder': {'@type': 'Person', 'name': FIRMA, 'url': BASE + 'sobre-mi.html'},
+         'publishingPrinciples': BASE + 'atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + 'atlas/politica-editorial/#verificacion',
+         'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
 CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->'''
 HOY = datetime.date.today().isoformat()
 PUBLICADO = '2026-10-06'   # fecha de publicación de las piezas que aún no tienen `revisado`
+# Última vez que cambió el contenido de las piezas ya publicadas (texto, cifras o fotos). Se cambia a mano:
+# si se pusiera la fecha de cada compilación, Google vería todas las piezas «actualizadas» cada semana sin serlo.
+# Una pieza puede llevar su propia fecha en el campo `actualizado`.
+ACTUALIZADO = '2026-10-07'
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 # Boletín: URL del formulario de alta (por ejemplo https://buttondown.com/api/emails/embed-subscribe/<usuario>).
 # Mientras esté vacío, el bloque «Síguelo» solo ofrece RSS y X.
@@ -41,6 +50,10 @@ def fecha_txt(iso):
 def publicado(p):
     # una pieza se publica el día en que se revisa
     return p['revisado'] or PUBLICADO
+
+
+def actualizado(p):
+    return max(p.get('actualizado') or ACTUALIZADO, publicado(p))
 
 
 def recientes():
@@ -157,8 +170,8 @@ def url(p):
 def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atlas'):
     rel = '../' * nivel
     raiz = rel + '../'
-    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('atlas', f'{rel}index.html', 'Atlas de las anomalías'),
-            ('cataluna', f'{raiz}abstencion.html', '¿Quién no vota en Cataluña?'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
+    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('atlas', f'{rel}index.html', 'Atlas'),
+            ('cataluna', f'{raiz}abstencion.html', 'Cataluña'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
             ('sobre', f'{raiz}sobre-mi.html', 'Sobre mí')]
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz}">{SITIO}</a>' +
            ''.join(f'<a href="{h}"{" aria-current=\"page\"" if k == actual else ""}>{t}</a>' for k, h, t in menu) + '</nav>')
@@ -210,7 +223,7 @@ def siguelo():
             + f' por <a href="{ATLAS_URL}feed.xml">RSS</a> o en <a href="{X_URL}">X</a>.{form}</aside>')
 
 
-PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</a> · <a href="{REPO}">Código y datos</a></footer>
+PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</a> · <a href="{REPO}">Código y datos</a> · <a href="{ATLAS_URL}politica-editorial/">Política editorial</a> · <a href="{ATLAS_URL}politica-editorial/#ia">Uso de IA</a>: con apoyo de IA, revisado por {FIRMA}</footer>
 </main>
 </body>
 </html>
@@ -229,8 +242,8 @@ def tabla(t):
 def ld_pieza(p, ruta):
     revisado = bool(p['revisado'])
     art = {'@type': 'NewsArticle', '@id': url(ruta) + '#articulo', 'headline': titular(p), 'alternativeHeadline': p['titulo'], 'description': p['resumen'],
-           'url': url(ruta), 'inLanguage': 'es', 'datePublished': publicado(p), 'image': imagen(p), 'dateModified': HOY,
-           'author': AUTOR, 'publisher': {'@type': 'Organization', 'name': NOMBRE, 'url': ATLAS_URL},
+           'url': url(ruta), 'inLanguage': 'es', 'datePublished': publicado(p), 'image': imagen(p), 'dateModified': actualizado(p),
+           'author': AUTOR, 'publisher': MEDIO,
            'isPartOf': {'@type': 'CollectionPage', 'name': SERIES[p['serie']][0], 'url': url(p['serie'] + '/index.html')},
            'about': [{'@type': 'Place', 'name': l} for l in p['lugares']] + [{'@type': 'Thing', 'name': 'Elecciones en España'}],
            'citation': [n for k in p['fuentes'] for n in [FUENTES[k][0]]],
@@ -330,7 +343,7 @@ def pagina_pieza(p):
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{FIRMA}</dd>
 <dt>Revisión de datos y texto</dt><dd>{f'{FIRMA}, {fecha_txt(rev)}' if rev else 'Pendiente'}</dd>
-<dt>Publicado · actualizado</dt><dd>{fecha_txt(publicado(p))} · {fecha_txt(HOY)}</dd>
+<dt>Publicado · actualizado</dt><dd>{fecha_txt(publicado(p))} · {fecha_txt(actualizado(p))}</dd>
 <dt>Correcciones</dt><dd>{escape(p.get('correcciones') or 'Ninguna.')} <a href="../../correcciones/index.html">Historial del Atlas</a></dd>
 </dl>""")
     h.append('<h2>Sigue leyendo</h2><ul class="sigue">' + ''.join(
@@ -386,7 +399,7 @@ def portada():
         if ps:
             h.append(f'<h2 class="serie" id="{s}"><a href="{s}/index.html">{escape(nombre)}</a><small>{len(ps)} {"pieza" if len(ps) == 1 else "piezas"}</small></h2>'
                      f'<p class="serie-desc">{escape(desc)}</p>' + tarjetas(ps))
-    h.append('<h2>Cómo trabajamos</h2><p>Cada afirmación se marca como <strong>dato</strong> (verificable y reproducible), <strong>patrón</strong> (relación descriptiva, sin causa) o <strong>hipótesis</strong> (explicación posible que aún no tiene dos fuentes independientes). Ninguna pieza se publica sin revisión humana. <a href="metodologia/index.html">Metodología</a> · <a href="correcciones/index.html">Correcciones</a></p>')
+    h.append('<h2>Cómo trabajamos</h2><p>Cada afirmación se marca como <strong>dato</strong> (verificable y reproducible), <strong>patrón</strong> (relación descriptiva, sin causa) o <strong>hipótesis</strong> (explicación posible que aún no tiene dos fuentes independientes). Ninguna pieza se publica sin revisión humana. <a href="politica-editorial/index.html">Política editorial</a> · <a href="metodologia/index.html">Metodología</a> · <a href="correcciones/index.html">Correcciones</a></p>')
     h.append(siguelo())
     h.append(PIE)
     return 'index.html', ''.join(h)
@@ -452,11 +465,66 @@ def datos():
 
 
 def correcciones():
-    ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Correcciones · ' + NOMBRE, 'url': url('correcciones/index.html')}
-    h = [cabeza('Correcciones · ' + NOMBRE, 'Historial de correcciones de datos y conclusiones del Atlas.', 'correcciones/index.html', ld, nivel=1)]
-    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión de una pieza ya publicada, se anota aquí y en la propia pieza, con la fecha y qué cambió. La dirección de la página no cambia.</p><p>Todavía no hay correcciones.</p>')
+    # Las del mapa de resultados (la portada) viven en generales-2026/src/correcciones.py y se publican solo aquí
+    sys.path.insert(0, str(ROOT / 'generales-2026' / 'src'))
+    from correcciones import CORRECCIONES as MAPA
+    li = lambda d, t: f'<li><time datetime="{d}">{fecha_txt(d)}</time>. {escape(t)}</li>'
+    ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Correcciones · ' + SITIO, 'url': url('correcciones/index.html')}
+    h = [cabeza('Correcciones · ' + SITIO, 'Historial de correcciones de datos y conclusiones de Mapa Electoral: el mapa de resultados y el Atlas.', 'correcciones/index.html', ld, nivel=1)]
+    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>')
+    h.append('<h2 id="mapa">Mapa de resultados</h2><p><a href="../../">El mapa de las generales: cómo vota cada barrio de España</a></p><ul class="corr">' + ''.join(li(d, t) for d, t in MAPA) + '</ul>')
+    h.append('<h2 id="atlas">Atlas de las anomalías electorales</h2><p>Todavía no hay correcciones. Cuando las haya, se anotarán también en la propia pieza.</p><p><a href="../politica-editorial/index.html">Política editorial</a></p>')
     h.append(PIE)
     return 'correcciones/index.html', ''.join(h)
+
+
+def politica():
+    ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Política editorial · ' + SITIO, 'url': url('politica-editorial/index.html'),
+          'publisher': MEDIO, 'author': AUTOR}
+    h = [cabeza('Política editorial · ' + SITIO, 'Quién hace Mapa Electoral, cómo se verifica cada cifra y cada afirmación, cómo se corrigen los errores y cómo contactar.',
+                'politica-editorial/index.html', ld, nivel=1)]
+    h.append(f"""<p class="kicker">Transparencia</p><h1>Política editorial</h1>
+<p class="resumen">{SITIO} es un proyecto de periodismo de datos sobre elecciones en España, mirado municipio a municipio y sección censal a sección censal. Lo escribe y lo edita <a href="../../sobre-mi.html">{FIRMA}</a>, periodista de datos y profesor de Datos y visualizaciones en la Universitat de Girona.</p>
+<h2 id="verificacion">Cómo se verifica</h2>
+<ul>
+<li>Cada afirmación se marca como <strong>dato</strong> (verificable y reproducible), <strong>patrón</strong> (relación descriptiva, sin causa) o <strong>hipótesis</strong> (explicación posible).</li>
+<li>Una explicación sobre un lugar concreto solo se da como tal si la sostienen dos fuentes independientes. Si no, se publica como hipótesis.</li>
+<li>Ninguna conclusión causal sale de un cálculo automático.</li>
+<li>Las cifras no se escriben a mano: un script las calcula a partir de los datos oficiales y otro las comprueba antes de generar las páginas.</li>
+<li>Ninguna pieza se publica sin revisión humana. Cada una indica autor, revisor, fecha de publicación y de actualización, fuentes, método y límites.</li>
+</ul>
+<h2 id="fuentes">Fuentes y datos abiertos</h2>
+<p>Los resultados salen del Ministerio del Interior y de los organismos electorales autonómicos; los indicadores sociales, del INE y del Idescat. Las tablas de cada pieza se publican en CSV con licencia <a href="{LICENCIA}">CC BY 4.0</a> y el código está en <a href="{REPO}">GitHub</a>. Las citas de expertos y estudios son literales y llevan enlace a su origen. Más detalle en la <a href="../metodologia/index.html">metodología</a>.</p>
+<h2 id="ia">Uso de inteligencia artificial</h2>
+<p>{SITIO} usa herramientas de inteligencia artificial (modelos de lenguaje) como apoyo: para escribir y revisar el código que procesa los datos, para buscar y contrastar fuentes y para preparar borradores de texto.</p>
+<ul>
+<li>Las cifras no las escribe la IA: las calculan scripts a partir de los datos oficiales y las comprueban controles automáticos antes de publicar.</li>
+<li>Todos los textos los revisa y edita {FIRMA} antes de publicarlos, y él asume la responsabilidad editorial de lo publicado.</li>
+<li>Las fotografías proceden de Wikimedia Commons, con su autoría y licencia; no se publican imágenes generadas por IA. Los mapas y gráficos se dibujan directamente a partir de los datos.</li>
+</ul>
+<h2 id="correcciones">Correcciones</h2>
+<p>Si cambia un dato o una conclusión de una pieza publicada, se corrige en la propia pieza con la fecha y lo que cambió, y se anota en el <a href="../correcciones/index.html">historial de correcciones</a>. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>
+<h2 id="contacto">Contacto</h2>
+<p>Para avisar de un error o proponer un tema: <a href="{X_URL}">@nachotronic en X</a>.</p>""")
+    h.append(PIE)
+    return 'politica-editorial/index.html', ''.join(h)
+
+
+def noticias(dias=2):
+    """Sitemap de Google News: solo las piezas publicadas en los últimos `dias` días (Google ignora las demás).
+    Se regenera con cada compilación del Atlas; si no hay piezas recientes queda vacío, y es correcto."""
+    desde = (datetime.date.today() - datetime.timedelta(days=dias)).isoformat()
+    items = ''.join(f"""  <url>
+    <loc>{url(ruta_pieza(q)).replace('index.html', '')}</loc>
+    <news:news>
+      <news:publication><news:name>{SITIO}</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>{publicado(q)}</news:publication_date>
+      <news:title>{escape(titular(q))}</news:title>
+    </news:news>
+  </url>
+""" for q in recientes() if q['revisado'] and publicado(q) >= desde)
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + items + '</urlset>\n')
 
 
 def sitemap(rutas):
@@ -468,7 +536,7 @@ def llms():
     l = [f'# {NOMBRE}', '', '> Piezas de periodismo de datos sobre lugares de España que votan distinto de lo esperado. Cada cifra sale de los resultados por mesa del Ministerio del Interior y de indicadores del INE; cada afirmación se etiqueta como dato, patrón o hipótesis.', '',
          '## Piezas', '']
     l += [f'- [{titular(q)}]({url(q["serie"] + "/" + q["slug"] + "/")}): {q["titulo"]}. {q["resumen"]}' for q in recientes() if q['revisado']]
-    l += ['', '## Referencia', '', f'- [Metodología]({url("metodologia/")})', f'- [Datos en CSV]({url("datos/")})', f'- [Correcciones]({url("correcciones/")})', '']
+    l += ['', '## Referencia', '', f'- [Metodología]({url("metodologia/")})', f'- [Datos en CSV]({url("datos/")})', f'- [Correcciones]({url("correcciones/")})', f'- [Política editorial]({url("politica-editorial/")})', '']
     return '\n'.join(l)
 
 
@@ -502,13 +570,23 @@ def feed():
 
 
 def franja_portada():
-    """Las tres últimas piezas del Atlas en la portada del sitio, entre las marcas <!--atlas:ultimas-->.
-    La plantilla de generales-2026 lleva las marcas vacías; este script las rellena cada vez que se regenera el Atlas."""
-    ult = [q for q in recientes() if q['revisado']][:3]
-    return ('<section class="col del-atlas" aria-labelledby="h-del-atlas"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2><ul>' +
-            ''.join(f'<li><a href="atlas/{ruta_pieza(q).replace("index.html", "")}"><span class="atlas-k">{escape(SERIES[q["serie"]][0])}</span>'
-                    f'<b>{escape(titular(q))}</b><span>{escape(q["titulo"])}</span></a></li>' for q in ult) +
-            f'</ul><p><a class="atlas-go" href="atlas/">Las {sum(1 for q in TODAS if q["revisado"])} piezas del Atlas →</a></p></section>')
+    """Carrusel con las últimas piezas del Atlas (foto, serie y titular) en la portada del sitio, entre las marcas
+    <!--atlas:ultimas-->. La plantilla de generales-2026 lleva las marcas; este script las rellena cada vez que se regenera el Atlas.
+    Funciona sin JavaScript (desplazamiento lateral); las flechas solo lo mueven una tarjeta."""
+    ult = [q for q in recientes() if q['revisado']][:10]
+    def img(q):
+        if q.get('foto'):
+            return f'<img src="atlas/img/m/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+        return f'<span class="sinfoto">{escape(SERIES[q["serie"]][0])}</span>'
+    total = sum(1 for q in TODAS if q['revisado'])
+    return ('<section class="wide del-atlas" aria-labelledby="h-del-atlas"><div class="da-cab"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2>'
+            '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
+            '<ul class="carrusel">' +
+            ''.join(f'<li><a href="atlas/{ruta_pieza(q).replace("index.html", "")}">{img(q)}<span class="atlas-k">{escape(SERIES[q["serie"]][0])}</span>'
+                    f'<b>{escape(titular(q))}</b></a></li>' for q in ult) +
+            f'<li class="todas"><a href="atlas/"><b>Las {total} piezas del Atlas →</b><span>Excepciones, fronteras, gemelos, bisagras y más</span></a></li></ul>'
+            '<script>document.querySelectorAll(".del-atlas").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
+            's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 
 
 def compartir():
@@ -525,16 +603,17 @@ def main():
     global TODAS
     C = json.loads((ATLAS / 'src' / 'cifras.json').read_text())
     TODAS = piezas(C) + piezas2(C) + piezas3(C)
-    paginas = [pagina_pieza(p) for p in TODAS] + [portada(), metodologia(C), datos(), correcciones()]
+    paginas = [pagina_pieza(p) for p in TODAS] + [portada(), metodologia(C), datos(), correcciones(), politica()]
     paginas += [pagina_serie(s) for s in SERIES if any(q['serie'] == s for q in TODAS)]
     for ruta, html in paginas:
         f = ATLAS / ruta
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(html)
-    publicables = ['index.html', 'metodologia/index.html', 'datos/index.html', 'correcciones/index.html']
+    publicables = ['index.html', 'metodologia/index.html', 'datos/index.html', 'correcciones/index.html', 'politica-editorial/index.html']
     publicables += [f'{q["serie"]}/{q["slug"]}/index.html' for q in TODAS if q['revisado']]
     publicables += [f'{s}/index.html' for s in SERIES if any(q['serie'] == s and q['revisado'] for q in TODAS)]
     (ATLAS / 'sitemap.xml').write_text(sitemap(publicables))
+    (ATLAS / 'sitemap-noticias.xml').write_text(noticias())
     (ATLAS / 'llms.txt').write_text(llms())
     (ATLAS / 'feed.xml').write_text(feed())
     (ATLAS / 'src' / 'compartir.json').write_text(json.dumps(compartir(), ensure_ascii=False, indent=1))
@@ -543,7 +622,7 @@ def main():
         t = f.read_text(encoding='utf-8')
         if '<!--atlas:ultimas-->' in t:
             pre = '' if f.name == 'index.html' else '../'
-            franja = franja_portada().replace('href="atlas/', f'href="{pre}atlas/')
+            franja = franja_portada().replace('href="atlas/', f'href="{pre}atlas/').replace('src="atlas/', f'src="{pre}atlas/')
             t = re.sub(r'<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', lambda m: '<!--atlas:ultimas-->' + franja + '<!--/atlas:ultimas-->', t, flags=re.S)
             f.write_text(t, encoding='utf-8')
     print(len(paginas), 'páginas;', sum(1 for q in TODAS if q['revisado']), 'de', len(TODAS), 'piezas revisadas')

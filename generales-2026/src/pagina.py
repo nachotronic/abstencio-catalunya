@@ -15,23 +15,13 @@ AUTOR = os.environ.get('GENERALES_AUTOR', 'Nacho G. del Álamo')
 REVISOR = os.environ.get('GENERALES_REVISOR', 'Nacho G. del Álamo')
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 fecha = lambda d: f"{d.day} de {MESES[d.month - 1]} de {d.year}"
-# Fe de errores visible en la página: (fecha ISO, texto). Añadir una línea cada vez que cambie un dato o una conclusión publicada.
-CORRECCIONES = [
-    ('2026-10-06', 'Agrupación de partidos revisada: UPN cuenta con el PP también cuando se presenta sola, y Compromís, Más País y Más Madrid con '
-                   'Sumar / Podemos / IU también cuando van por separado. Se corrigen además una lista de Unidos Podemos de 2016 y la de C,S de 2008, '
-                   'que estaban en Otros, y Esquerra Republicana del País Valencià, que pasa a ERC. El PP del 23J pasa del 33,1% al 33,3% '
-                   '(con UPN) y cambian algunos recuentos de secciones y municipios.'),
-    ('2026-10-06', 'Las mesas que figuran con censo y ningún voto en los ficheros de Interior (de 0 a 8 por elección, como una de La Línea de la '
-                   'Concepción en 2023) se tratan como «sin dato» en lugar de como un 0% de participación.'),
-    ('2026-10-06', 'Los recuentos de secciones y municipios donde gana cada partido ya no cuentan los empates.'),
-    ('2026-10-06', 'Se reformulan tres frases que decían más que los datos: la entradilla hablaba de personas («quien vive en un barrio rico») '
-                   'con datos por sección; «los barrios ricos votan PP» pasa a «el PP gana en ellos», y «Vox crece» pasa a «Vox saca más», porque '
-                   'el dato es de una sola elección. Las cifras no cambian.'),
-    ('2026-10-08', 'Al añadir las elecciones desde 1986, se revisa la agrupación de partidos: el Partido Socialista de Andalucía (PSA) y otros '
-                   'partidos con «socialista» en el nombre que no son el PSOE pasan a Otros, Iniciativa per Catalunya pasa a Sumar / Podemos / IU '
-                   'en las municipales y el CDS tiene familia propia. En 2004, el PSOE en las secciones más pobres pasa del 56,8% al 56,5%.'),
-]
 HOY = dt.date.today().isoformat()
+PUBLICADO = '2026-10-06'   # fecha de publicación de la pieza; no cambia al regenerarla
+# Editor de todo el sitio (el mismo objeto en src/seo.py, src/portada.py y atlas/src/paginas.py)
+MEDIO = {'@type': 'NewsMediaOrganization', '@id': 'https://mapaelectoral.es/#medio', 'name': 'Mapa Electoral', 'url': 'https://mapaelectoral.es/',
+         'founder': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'},
+         'publishingPrinciples': 'https://mapaelectoral.es/atlas/politica-editorial/', 'verificationFactCheckingPolicy': 'https://mapaelectoral.es/atlas/politica-editorial/#verificacion',
+         'correctionsPolicy': 'https://mapaelectoral.es/atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
 NOM = {c: n for c, n, _ in FAMILIAS}
 FAM12 = [c for c, _, _ in FAMILIAS if c != 'OTROS']
 COL = {c: col for c, _, col in FAMILIAS}
@@ -90,7 +80,6 @@ def main():
         sin=n(round(sin / 1e5) * 1e5), sin_pct=p(sin / adultos),
         low=lista(low, f'{y}_part'), high=lista(high, f'{y}_part'), vox_top=lista(vox, f'{y}_VOX'),
         hoy=HOY, hoy_txt=fecha(dt.date.fromisoformat(HOY)), url=URL, autor=html.escape(AUTOR), revisor=html.escape(REVISOR),
-        correcciones=''.join(f'<li><time datetime="{d}">{fecha(dt.date.fromisoformat(d))}</time>. {html.escape(t)}</li>' for d, t in CORRECCIONES),
         nmun_dato=n(int(gmun.notna().sum())),
     )
     F['cobertura'], F['g_desde'] = cobertura()
@@ -220,9 +209,10 @@ def jsonld(F):
         '@context': 'https://schema.org', '@type': 'NewsArticle',
         'headline': 'El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera',
         'description': f"Resultados del Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.",
-        'datePublished': F['hoy'], 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
-        'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'isAccessibleForFree': True,
-        'about': [{'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29', 'endDate': '2026-11-29', 'location': {'@type': 'Place', 'name': 'España', 'address': {'@type': 'PostalAddress', 'addressCountry': 'ES'}}}],
+        'datePublished': PUBLICADO, 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
+        'image': 'https://mapaelectoral.es/img/compartir/portada.jpg',
+        'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'publisher': MEDIO, 'isAccessibleForFree': True,
+        'about': [{'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'}],
         'citation': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://www.ine.es/censos2021/'],
     }
     ds = {

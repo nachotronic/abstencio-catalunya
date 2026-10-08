@@ -38,3 +38,4 @@
 - [Metodología](https://mapaelectoral.es/atlas/metodologia/)
 - [Datos en CSV](https://mapaelectoral.es/atlas/datos/)
 - [Correcciones](https://mapaelectoral.es/atlas/correcciones/)
+- [Política editorial](https://mapaelectoral.es/atlas/politica-editorial/)

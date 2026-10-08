@@ -7,7 +7,8 @@ También apunta a la portada los enlaces a generales-2026/ de su llms.txt, su si
 
 En la portada el mapa sube a la primera pantalla: debajo del título, antes de la entradilla.
 
-Uso, cada vez que se actualice la pieza de generales-2026/:  python3 src/portada.py
+Uso, cada vez que se actualice la pieza de generales-2026/:  python3 src/portada.py && python3 src/insertable.py
+(insertable.py regenera insertar/, la versión del mapa para insertar en otras webs)
 """
 import json, pathlib, re
 
@@ -19,7 +20,7 @@ CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='ht
 # Datos estructurados del sitio, solo en la portada
 SITIO = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': BASE + '#website', 'name': 'Mapa electoral', 'url': BASE,
          'inLanguage': 'es', 'description': 'Periodismo de datos sobre elecciones en España por sección censal.',
-         'publisher': {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': 'Nacho G. del Álamo', 'url': BASE + 'sobre-mi.html'},
+         'publisher': {'@id': BASE + '#medio'},
          'hasPart': [{'@type': 'CollectionPage', 'name': 'Atlas de las anomalías electorales', 'url': BASE + 'atlas/'},
                      {'@type': 'NewsArticle', 'name': '¿Quién no vota en Cataluña?', 'url': BASE + 'abstencion.html'}]}
 STUB = '''<!doctype html>
@@ -57,21 +58,30 @@ def canonica(s):
 
 # Estilos solo de la portada: cabecera compacta y mapa a la altura de la pantalla.
 CSS_PORTADA = """<style id="portada">
-header{padding:14px 0 0}
-header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
+header{padding:10px 0 0}
+nav.site.col,header.col{max-width:1240px}
+header h1{font-size:clamp(22px,2.4vw,32px);margin:2px 0 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#mapa{margin-top:6px}
 #mapa .controls{padding:8px 0}
-#mapa .mapwrap{height:calc(100svh - 300px);min-height:320px;max-height:760px}
+#mapa .mapwrap{height:calc(100svh - 185px);min-height:360px;max-height:900px}
+#mapa #legend{top:12px;bottom:auto}
 .intro{margin-top:20px}
 @media (max-width:760px){
-  nav.site{gap:2px 12px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;gap:2px 14px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  nav.site::-webkit-scrollbar{display:none}
   .kicker{font-size:11px}
-  #mapa .controls{gap:6px 8px;font-size:12px}
-  #mapa .controls label{flex:1 1 30%}
-  #mapa .controls label.q{flex:1 1 60%}
+  header h1{font-size:21px;line-height:1.15}
+  /* controles compactos: sin rótulos visibles (los selectores ya dicen qué muestran), dos por fila */
+  #mapa .controls{gap:6px 8px;font-size:0;padding:6px 0}
+  #mapa .controls label{flex:1 1 40%;gap:0}
+  #mapa .controls label.q{flex:1 1 50%}
   #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
   #mapa .controls button{font-size:13px;padding:6px 8px}
-  #mapa .mapwrap{height:calc(100svh - 315px);min-height:260px}
+  /* el mapa a todo el ancho de la pantalla y la leyenda debajo, para que España ocupe todo el ancho */
+  #mapa .mapwrap{height:auto;min-height:0;max-height:none;overflow:visible;background:none;border-radius:0;margin:0 -16px}
+  #mapa #map{position:relative;height:100vw;max-height:calc(100svh - 190px);min-height:300px;background:var(--map-bg)}
+  #mapa #legend{position:static;margin:8px 16px 0;max-width:none}
 }
 </style>
 """
