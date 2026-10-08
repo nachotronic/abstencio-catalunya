@@ -429,9 +429,15 @@ def indice(todas):
         fo = SERIES_FOTO.get(serie)
         img = (f'<figure class="foto"><img src="../{fo["src"]}" alt="{html.escape(fo["pie"])}" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
                f'<figcaption>Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>') if fo else ''
-        return (f'<h2 id="{serie}">{SERIES[serie]}</h2>{img}<ul class="sigue">' +
-                ''.join(f'<li><a href="{q["slug"]}/index.html"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></a></li>'
+        return (f'<h2 id="{serie}">{SERIES[serie]}</h2>{img}<ul class="sigue tarjetas">' +
+                ''.join(f'<li><a href="{q["slug"]}/index.html">{imagen_tarjeta(q)}<span class="txt"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>'
                         for q in sorted(qs, key=lambda q: q['fecha'], reverse=True)) + '</ul>')
+
+    def imagen_tarjeta(q):
+        # la ilustración propia de la pieza o, si no tiene, la miniatura de su primer gráfico
+        if q.get('foto'):
+            return f'<img class="ilu" src="../{q["foto"]["src"]}" alt="" width="{q["foto"]["ancho"]}" height="{q["foto"]["alto"]}" loading="lazy">'
+        return f'<img class="graf" src="../img/actualidad/{q["slug"]}.jpg" alt="" width="600" height="400" loading="lazy">'
     # primero la serie con la pieza más reciente
     orden = sorted(SERIES, key=lambda k: max((i for i, q in enumerate(todas) if q['serie'] == k), default=-1), reverse=True)
     items = ''.join(bloque(k) for k in orden if any(q['serie'] == k for q in todas))
@@ -446,6 +452,11 @@ h2{font-size:1.3rem;margin:2.2rem 0 .8rem}
 .sigue .d{display:block;color:var(--muted);font-family:var(--serif);font-size:1rem;margin-top:4px}
 .sigue b{display:block;font-size:1.1rem;line-height:1.3}
 a{color:var(--fg)}
+.sigue.tarjetas a{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;padding:12px}
+.tarjetas img{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:5px;border:1px solid var(--rule)}
+.tarjetas img.ilu{object-fit:cover}
+.tarjetas img.graf{object-fit:contain;background:#fff}
+@media (max-width:560px){.sigue.tarjetas a{grid-template-columns:1fr;gap:10px}.tarjetas img{aspect-ratio:16/9}}
 </style>"""
     out = (cabecera('Actualidad', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Actualidad')
