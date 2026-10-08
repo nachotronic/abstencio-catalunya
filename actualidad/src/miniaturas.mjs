@@ -28,7 +28,7 @@ for (const { slug, figura } of lista) {
   await p.evaluate(() => document.querySelectorAll('figure details, figure .src').forEach((d) => d.remove()));
   // el recuadro del gráfico entero: algunos elementos se salen de la caja de <figure>
   const clip = await p.evaluate((i) => {
-    const fs = document.querySelectorAll('main figure'), f = fs[Math.min(i, fs.length - 1)];
+    const fs = document.querySelectorAll('main figure:not(.foto)'), f = fs[Math.min(i, fs.length - 1)];
     const r = [f, ...f.querySelectorAll('*')].map((e) => e.getBoundingClientRect()).filter((r) => r.width && r.height);
     const x = Math.max(0, Math.min(...r.map((r) => r.left)) - 8), y = Math.min(...r.map((r) => r.top)) - 8 + scrollY;
     return { x, y, width: Math.max(...r.map((r) => r.right)) + 8 - x, height: Math.max(...r.map((r) => r.bottom)) + 8 - y + scrollY };

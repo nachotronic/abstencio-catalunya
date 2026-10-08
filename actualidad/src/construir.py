@@ -108,6 +108,8 @@ PIEZAS = [
                  ('https://doi.org/10.2307/1960778', 'Squire, Wolfinger y Glass, «Residential Mobility and Voter Turnout», American Political Science Review, 1987')],
         enlaces=[],
         lugar='España',
+        foto=dict(src='img/actualidad/fotos/maricarmen-alquiler-y-voto.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Unas llaves, un contrato de alquiler y una urna.'),
     ),
     dict(
         slug='alquiler-ciudad-a-ciudad', fecha='2026-10-08',
@@ -118,6 +120,8 @@ PIEZAS = [
         fuentes=[INE_CENSO, INTERIOR, INE, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='25 ciudades',
+        foto=dict(src='img/actualidad/fotos/alquiler-ciudad-a-ciudad.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna llena de edificios de viviendas.'),
     ),
     dict(
         slug='pisos-turisticos-y-votantes', fecha='2026-10-08',
@@ -129,6 +133,8 @@ PIEZAS = [
                  INTERIOR, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='Grandes ciudades',
+        foto=dict(src='img/actualidad/fotos/pisos-turisticos-y-votantes.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una maleta de viaje, edificios de viviendas y una urna.'),
     ),
     dict(
         slug='psoe-barrios-de-alquiler', fecha='2026-10-08',
@@ -139,6 +145,8 @@ PIEZAS = [
         fuentes=[INE_CENSO, INTERIOR, INE, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='España sin Cataluña',
+        foto=dict(src='img/actualidad/fotos/psoe-barrios-de-alquiler.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Pedro Sánchez, con el Congreso de los Diputados y una urna.'),
     ),
     dict(
         slug='precio-del-alquiler-y-voto', fecha='2026-10-08',
@@ -435,8 +443,9 @@ def indice(todas):
 
     def imagen_tarjeta(q):
         # la ilustración propia de la pieza o, si no tiene, la miniatura de su primer gráfico
-        if q.get('foto'):
-            return f'<img class="ilu" src="../{q["foto"]["src"]}" alt="" width="{q["foto"]["ancho"]}" height="{q["foto"]["alto"]}" loading="lazy">'
+        fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
+        if fo:
+            return f'<img class="ilu" src="../{fo["src"]}" alt="" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
         return f'<img class="graf" src="../img/actualidad/{q["slug"]}.jpg" alt="" width="600" height="400" loading="lazy">'
     # primero la serie con la pieza más reciente
     orden = sorted(SERIES, key=lambda k: max((i for i, q in enumerate(todas) if q['serie'] == k), default=-1), reverse=True)
@@ -453,10 +462,10 @@ h2{font-size:1.3rem;margin:2.2rem 0 .8rem}
 .sigue b{display:block;font-size:1.1rem;line-height:1.3}
 a{color:var(--fg)}
 .sigue.tarjetas a{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;padding:12px}
-.tarjetas img{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:5px;border:1px solid var(--rule)}
+.tarjetas img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:5px;border:1px solid var(--rule)}
 .tarjetas img.ilu{object-fit:cover}
 .tarjetas img.graf{object-fit:contain;background:#fff}
-@media (max-width:560px){.sigue.tarjetas a{grid-template-columns:1fr;gap:10px}.tarjetas img{aspect-ratio:16/9}}
+@media (max-width:560px){.sigue.tarjetas a{grid-template-columns:1fr;gap:10px}}
 </style>"""
     out = (cabecera('Actualidad', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Actualidad')
@@ -477,6 +486,14 @@ a{color:var(--fg)}
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + noticias + '</urlset>\n')
 
 
+def imagen_carrusel(q, pre):
+    # la ilustración de la pieza (o la de su serie) entera, sin recortar; si no hay, la miniatura del gráfico
+    fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
+    if fo:
+        return f'<img class="ilu" src="{pre}{fo["src"]}" alt="" loading="lazy" width="300" height="200">'
+    return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+
+
 def franja_portada(todas, pre=''):
     """Carrusel «Actualidad» de la portada del sitio, entre las marcas <!--actualidad:ultimas-->, encima del del Atlas.
     Mismo formato que la franja del Atlas (atlas/src/paginas.py): miniatura, serie y titular. Las miniaturas las hace miniaturas.mjs."""
@@ -484,10 +501,10 @@ def franja_portada(todas, pre=''):
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
-            ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/"><img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+            ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{SERIES[q["serie"]]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="{pre}actualidad/"><b>Las {len(todas)} piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES)}</span></a></li></ul>'
-            '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}</style>'
+            '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 
