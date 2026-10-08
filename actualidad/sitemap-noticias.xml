@@ -72,4 +72,20 @@
       <news:title>Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/rufian-erc-comuns/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Sumados, ERC y los comuns habrían sido la lista más votada en 1.431 secciones de Cataluña en 2023; por separado, en 232</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/psoe-andalucia-generales-autonomicas/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Andalucía vota casi diez puntos más al PSOE cuando elige al Gobierno que cuando elige a la Junta</news:title>
+    </news:news>
+  </url>
 </urlset>
