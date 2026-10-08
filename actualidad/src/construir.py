@@ -54,6 +54,10 @@ PIEZAS = [
                  ('https://es.wikipedia.org/wiki/Xos%C3%A9_Manuel_Beiras', 'Wikipedia, «Xosé Manuel Beiras» (consultada el 8-10-2026)')],
         enlaces=[('El País', 'https://elpais.com/espana/2026-10-08/muere-a-los-90-anos-xose-manuel-beiras-historico-dirigente-del-nacionalismo-gallego.html')],
         lugar='Galicia',
+        foto=dict(src='img/actualidad/fotos/beiras-nacionalismo-gallego.jpg', ancho=1280, alto=672,
+                  pie='Xosé Manuel Beiras en la manifestación del Día da Patria, en Santiago de Compostela, el 25 de julio de 2009.',
+                  credito='Albert galiza, Wikimedia Commons, CC BY-SA 3.0',
+                  url='https://commons.wikimedia.org/wiki/File:Beiras_25_xullo_2009.JPG'),
     ),
     dict(
         slug='colau-barcelona-comuns', fecha='2026-10-08',
@@ -66,6 +70,10 @@ PIEZAS = [
                  ('https://civio.es/el-boe-nuestro-de-cada-dia/2026/10/06/llega-al-boe-la-convocatoria-de-elecciones-para-el-29-de-noviembre-todas-las-fechas-y-pasos-hasta-ese-dia/', 'Civio, calendario y escaños del decreto de convocatoria (6-10-2026)')],
         enlaces=[],
         lugar='Barcelona',
+        foto=dict(src='img/actualidad/fotos/colau-barcelona-comuns.jpg', ancho=1280, alto=672,
+                  pie='Ada Colau en el festival Encuentro de Castiglione del Lago (Italia), el 1 de junio de 2024.',
+                  credito='Robo71, Wikimedia Commons, CC0',
+                  url='https://commons.wikimedia.org/wiki/File:Ada-Colau-Encuentro-2024.jpg'),
     ),
     dict(
         slug='votar-en-noviembre', fecha='2026-10-08',
