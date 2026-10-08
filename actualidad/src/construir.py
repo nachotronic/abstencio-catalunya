@@ -140,7 +140,7 @@ PIEZAS = [
     dict(
         slug='puigdemont-junts-congreso-parlament', fecha='2026-10-08',
         titulo='Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament', serie='29n',
-        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 444 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
+        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 465 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
         compara='El voto a Junts (y antes a CiU) en Cataluña en las generales de 2004 a 2023 y en las autonómicas de 2024, por sección censal, por tamaño de municipio y por provincia.',
         limites='Generales y autonómicas tienen distinto electorado votante, distintos candidatos y eligen cosas distintas: la comparación no dice quién cambió su voto ni por qué. CiU incluía a Unió hasta 2015. Porcentajes sobre voto válido. Sin voto exterior.',
         fuentes=[INTERIOR, PARLAMENT,
@@ -148,6 +148,12 @@ PIEZAS = [
                  (DEMOCRATA, 'Demócrata, el regreso de Puigdemont, sin fecha (octubre de 2026)')],
         enlaces=[],
         lugar='Cataluña',
+        actualizado='2026-10-08',
+        correcciones='8-10-2026: Junts ganó en 465 secciones en las generales de 2023, no en 444 (se habían contado solo las secciones con datos del Parlament de 2024). En Lleida, del 18,1%, no del 18,0%. Las conclusiones no cambian.',
+        foto=dict(src='img/actualidad/fotos/puigdemont-junts-congreso-parlament.jpg', ancho=1280, alto=672,
+                  pie='Carles Puigdemont en un mitin de la campaña de las elecciones al Parlament, en Elna (Francia), el 4 de mayo de 2024.',
+                  credito='DrGiRu, Wikimedia Commons, CC0',
+                  url='https://commons.wikimedia.org/wiki/File:Carles_Puigdemont_a_Elna_en_2024.jpg'),
     ),
 ]
 
@@ -236,6 +242,8 @@ nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-trans
 .sigue{list-style:none;padding:0;display:grid;gap:12px}
 .sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
 .sigue .kicker{display:block;margin-bottom:2px}
+figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
+figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
 ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
 ol.serie li::marker{font-family:var(--mono);color:var(--muted)}
 ol.serie a{color:var(--fg)}
@@ -306,6 +314,10 @@ def pieza(p, todas):
     main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {SERIES[p["serie"]]} · {p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
+    if p.get('foto'):
+        fo = p['foto']
+        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="" width="{fo["ancho"]}" height="{fo["alto"]}">'
+                            f'<figcaption>{html.escape(fo["pie"])} Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>.</figcaption></figure>', 1)
     for texto, href in ENLACES_TEXTO.get(p['slug'], []):
         assert texto in main, (p['slug'], texto)
         main = main.replace(texto, f'<a href="{href}">{texto}</a>', 1)
@@ -327,8 +339,8 @@ def pieza(p, todas):
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
-<dt>Publicado · actualizado</dt><dd>{f} · {f}</dd>
-<dt>Correcciones</dt><dd>Ninguna.</dd>
+<dt>Publicado · actualizado</dt><dd>{f} · {fecha_larga(p.get('actualizado', p['fecha']))}</dd>
+<dt>Correcciones</dt><dd>{html.escape(p.get('correcciones', 'Ninguna.'))}</dd>
 </dl>
 <h2>Serie «{SERIES[p['serie']]}»: {len(serie)} piezas</h2><ol class="serie">{lista}</ol>
 <h2>Sigue leyendo</h2><ul class="sigue">{sigue}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
@@ -337,7 +349,7 @@ def pieza(p, todas):
 
     jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
-              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p['fecha'],
+              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
               'image': [imagen],
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
