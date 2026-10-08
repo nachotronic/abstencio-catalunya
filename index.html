@@ -158,40 +158,55 @@ footer a{color:var(--ink2)}
   .mapwrap{height:70vh}
   #tip{width:auto;left:8px!important;right:8px}
 }
-.del-atlas{margin-top:18px;margin-bottom:8px}
-.del-atlas h2{font:700 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px;padding-top:10px;border-top:2px solid var(--ink)}
+.del-atlas{margin-top:22px;margin-bottom:8px}
+.del-atlas .da-cab{display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--ink);padding-top:10px;margin-bottom:10px}
+.del-atlas h2{font:700 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:0}
 .del-atlas h2 a{color:var(--ink);text-decoration:none}
-.del-atlas ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.del-atlas li a{display:grid;align-content:start;gap:4px;height:100%;padding:12px 14px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none;font-family:var(--sans);font-size:14px;line-height:1.35}
-.del-atlas li a b{font-size:17px;line-height:1.2}.del-atlas li a span:last-child{color:var(--ink2)}
-.del-atlas li a:hover{border-color:var(--accent)}
-.del-atlas p{margin:10px 0 0;font-family:var(--sans);font-size:14px}
-@media (max-width:760px){nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none}nav.site::-webkit-scrollbar{display:none}}
+.da-nav button{font:600 16px/1 var(--sans);width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;margin-left:6px}
+.da-nav button:hover{border-color:var(--accent);color:var(--accent)}
+.carrusel{list-style:none;margin:0;padding:0 0 8px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,calc((100% - 48px)/4.3));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.carrusel li{scroll-snap-align:start}
+.carrusel a{display:flex;flex-direction:column;gap:4px;height:100%;color:var(--ink);text-decoration:none;font-family:var(--sans)}
+.carrusel img,.carrusel .sinfoto{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px;background:var(--line);margin-bottom:6px}
+.carrusel .sinfoto{display:flex;align-items:flex-end;padding:10px 12px;box-sizing:border-box;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.carrusel .atlas-k{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.carrusel b{font-size:17px;line-height:1.22}
+.carrusel a:hover b{text-decoration:underline}
+.carrusel li.todas a{justify-content:center;padding:16px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface)}
+.carrusel li.todas span{color:var(--ink2);font-size:14px}
+@media (max-width:760px){.carrusel{grid-auto-columns:72%}.da-nav{display:none}}
 nav.site a.marca{color:var(--ink);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;margin-right:4px}
 nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font:500 14px/1.4 var(--sans)}nav.site a{color:var(--ink2);text-decoration:none}nav.site a:hover{color:var(--accent)}nav.site a[aria-current]{color:var(--ink);font-weight:700}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://mapaelectoral.es/#website", "name": "Mapa electoral", "url": "https://mapaelectoral.es/", "inLanguage": "es", "description": "Periodismo de datos sobre elecciones en España por sección censal.", "publisher": {"@type": "Person", "@id": "https://mapaelectoral.es/sobre-mi.html#person", "name": "Nacho G. del Álamo", "url": "https://mapaelectoral.es/sobre-mi.html"}, "hasPart": [{"@type": "CollectionPage", "name": "Atlas de las anomalías electorales", "url": "https://mapaelectoral.es/atlas/"}, {"@type": "NewsArticle", "name": "¿Quién no vota en Cataluña?", "url": "https://mapaelectoral.es/abstencion.html"}]}</script>
 <style id="portada">
-header{padding:14px 0 0}
-header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
+header{padding:10px 0 0}
+nav.site.col,header.col{max-width:1240px}
+header h1{font-size:clamp(22px,2.4vw,32px);margin:2px 0 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#mapa{margin-top:6px}
 #mapa .controls{padding:8px 0}
-#mapa .mapwrap{height:calc(100svh - 300px);min-height:320px;max-height:760px}
+#mapa .mapwrap{height:calc(100svh - 185px);min-height:360px;max-height:900px}
 .intro{margin-top:20px}
 @media (max-width:760px){
-  nav.site{gap:2px 12px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;gap:2px 14px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  nav.site::-webkit-scrollbar{display:none}
   .kicker{font-size:11px}
+  header h1{font-size:21px;line-height:1.15}
   #mapa .controls{gap:6px 8px;font-size:12px}
   #mapa .controls label{flex:1 1 30%}
   #mapa .controls label.q{flex:1 1 60%}
   #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
   #mapa .controls button{font-size:13px;padding:6px 8px}
-  #mapa .mapwrap{height:calc(100svh - 315px);min-height:260px}
+  /* el mapa a todo el ancho de la pantalla y la leyenda debajo, para que España ocupe todo el ancho */
+  #mapa .mapwrap{height:auto;min-height:0;max-height:none;overflow:visible;background:none;border-radius:0;margin:0 -16px}
+  #mapa #map{position:relative;height:78vw;max-height:calc(100svh - 230px);background:var(--map-bg)}
+  #mapa #legend{position:static;margin:8px 16px 0;max-width:none}
 }
 </style>
 </head>
 <body>
-<nav class="site col" aria-label="Secciones del sitio"><a class="marca" href="./">Mapa Electoral</a><a href="./" aria-current="page">Mapa de resultados</a><a href="atlas/">Atlas de las anomalías</a><a href="abstencion.html">¿Quién no vota en Cataluña?</a><a href="generales-2026/metodologia.html">Metodología y datos</a><a href="sobre-mi.html">Sobre mí</a></nav>
+<nav class="site col" aria-label="Secciones del sitio"><a class="marca" href="./">Mapa Electoral</a><a href="./" aria-current="page">Mapa de resultados</a><a href="atlas/">Atlas</a><a href="abstencion.html">Cataluña</a><a href="generales-2026/metodologia.html">Metodología</a><a href="sobre-mi.html">Sobre mí</a></nav>
 <header class="col">
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
@@ -220,7 +235,7 @@ header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
   </div>
   <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado. En el selector de elección están también las municipales de 2007 a 2023 (las de 2007, solo por municipio) y las europeas de 2019 y 2024.</p>
 </section>
-<!--atlas:ultimas--><section class="col del-atlas" aria-labelledby="h-del-atlas"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2><ul><li><a href="atlas/voto-doble/europeas-2024/"><span class="atlas-k">Voto doble</span><b>En las europeas, la brecha entre ricos y pobres se dispara</b><span>En las europeas de 2024 la brecha de participación entre las zonas más ricas y las más pobres pasó de 15 a 22 puntos</span></a></li><li><a href="atlas/ciudad-y-entorno/capitales-municipales/"><span class="atlas-k">Ciudad, corona e interior</span><b>Las capitales votan menos para elegir alcalde</b><span>45 de las 50 capitales votan menos que el resto de su provincia para elegir alcalde; Zamora y Soria, más de 14 puntos menos</span></a></li><li><a href="atlas/contra-su-provincia/alcoi/"><span class="atlas-k">Contra su provincia</span><b>Alcoi, a contracorriente en Alicante</b><span>Alcoi, la ciudad que vota a la izquierda en la provincia de Alicante: el PSOE le sacó 10,7 puntos al PP</span></a></li></ul><p><a class="atlas-go" href="atlas/">Las 28 piezas del Atlas →</a></p></section><!--/atlas:ultimas-->
+<!--atlas:ultimas--><section class="wide del-atlas" aria-labelledby="h-del-atlas"><div class="da-cab"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2><span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div><ul class="carrusel"><li><a href="atlas/voto-doble/europeas-2024/"><img src="atlas/img/m/europeas-2024.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Voto doble</span><b>En las europeas, la brecha entre ricos y pobres se dispara</b></a></li><li><a href="atlas/ciudad-y-entorno/capitales-municipales/"><img src="atlas/img/m/capitales-municipales.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Ciudad, corona e interior</span><b>Las capitales votan menos para elegir alcalde</b></a></li><li><a href="atlas/contra-su-provincia/alcoi/"><img src="atlas/img/m/alcoi.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Contra su provincia</span><b>Alcoi, a contracorriente en Alicante</b></a></li><li><a href="atlas/el-municipio-que-cambio/manilva/"><img src="atlas/img/m/manilva.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">El municipio que cambió</span><b>Manilva, donde más ha caído la izquierda</b></a></li><li><a href="atlas/gemelos/arahal-marchena/"><img src="atlas/img/m/arahal-marchena.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Gemelos electorales</span><b>Arahal y Marchena, vecinos con la misma renta y otro voto</b></a></li><li><a href="atlas/gemelos/morrazo-sanxenxo/"><img src="atlas/img/m/morrazo-sanxenxo.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Gemelos electorales</span><b>Moaña y Sanxenxo, gemelos que votan distinto</b></a></li><li><a href="atlas/fronteras/ontigola-aranjuez/"><img src="atlas/img/m/ontigola-aranjuez.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Fronteras que votan distinto</span><b>Ontígola, uno de los 36 municipios donde ganó Vox</b></a></li><li><a href="atlas/fronteras/sant-cugat-badia/"><img src="atlas/img/m/sant-cugat-badia.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Fronteras que votan distinto</span><b>Sant Cugat y Badia: 5,4 kilómetros, 23 puntos</b></a></li><li><a href="atlas/excepciones/jodar/"><img src="atlas/img/m/jodar.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Las excepciones</span><b>Jódar, el municipio que menos vota para su perfil</b></a></li><li><a href="atlas/quien-no-vota/pueblos-pequenos/"><img src="atlas/img/m/pueblos-pequenos.jpg" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">Quién no vota</span><b>Los pueblos votan más al alcalde que al Gobierno</b></a></li><li class="todas"><a href="atlas/"><b>Las 28 piezas del Atlas →</b><span>Excepciones, fronteras, gemelos, bisagras y más</span></a></li></ul><script>document.querySelectorAll(".del-atlas").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});s.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section><!--/atlas:ultimas-->
 <div class="col intro">
   <p class="lede">Los resultados del Congreso de 2004 a 2023 en las 36.462 secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
   <p class="byline">Por Nacho G. del Álamo · Revisión de datos: Nacho G. del Álamo · Actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time> · <a href="generales-2026/metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>

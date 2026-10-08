@@ -101,10 +101,12 @@
 
   // ---------- mapa
   const narrow = () => window.innerWidth < 760;
+  // Vista inicial: encaja la península, Baleares y el recuadro de Canarias (lon −13,4 a 4,5; lat 33,9 a 43,9)
+  // con un 3 % de margen. El alto se mide en grados Mercator (12,9 entre esas latitudes), no en grados de latitud.
   const HOME = () => {
     const el = $('#map'), W = el.clientWidth || 800, H = el.clientHeight || 600;
-    const z = Math.min(Math.log2(W / (512 * 18.5 / 360)), Math.log2(H / (512 * 13.5 / 360)));
-    return { longitude: -4.3, latitude: 38.6, zoom: Math.round(z * 100) / 100, pitch: 0, bearing: 0 };
+    const z = Math.min(Math.log2(W / (512 * 17.9 * 1.03 / 360)), Math.log2(H / (512 * 12.9 * 1.03 / 360)));
+    return { longitude: -4.45, latitude: 39.08, zoom: Math.round(z * 100) / 100, pitch: 0, bearing: 0 };
   };
   let view = HOME();
   const LABELS = ['28079', '08019', '46250', '41091', '50297', '29067', '48020', '07040', '35016', '15030'];

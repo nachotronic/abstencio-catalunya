@@ -57,21 +57,28 @@ def canonica(s):
 
 # Estilos solo de la portada: cabecera compacta y mapa a la altura de la pantalla.
 CSS_PORTADA = """<style id="portada">
-header{padding:14px 0 0}
-header h1{font-size:clamp(22px,3.4vw,36px);margin:4px 0 0}
+header{padding:10px 0 0}
+nav.site.col,header.col{max-width:1240px}
+header h1{font-size:clamp(22px,2.4vw,32px);margin:2px 0 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#mapa{margin-top:6px}
 #mapa .controls{padding:8px 0}
-#mapa .mapwrap{height:calc(100svh - 300px);min-height:320px;max-height:760px}
+#mapa .mapwrap{height:calc(100svh - 185px);min-height:360px;max-height:900px}
 .intro{margin-top:20px}
 @media (max-width:760px){
-  nav.site{gap:2px 12px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;gap:2px 14px;font-size:13px;padding-top:8px;padding-bottom:6px}
+  nav.site::-webkit-scrollbar{display:none}
   .kicker{font-size:11px}
+  header h1{font-size:21px;line-height:1.15}
   #mapa .controls{gap:6px 8px;font-size:12px}
   #mapa .controls label{flex:1 1 30%}
   #mapa .controls label.q{flex:1 1 60%}
   #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
   #mapa .controls button{font-size:13px;padding:6px 8px}
-  #mapa .mapwrap{height:calc(100svh - 315px);min-height:260px}
+  /* el mapa a todo el ancho de la pantalla y la leyenda debajo, para que España ocupe todo el ancho */
+  #mapa .mapwrap{height:auto;min-height:0;max-height:none;overflow:visible;background:none;border-radius:0;margin:0 -16px}
+  #mapa #map{position:relative;height:78vw;max-height:calc(100svh - 230px);background:var(--map-bg)}
+  #mapa #legend{position:static;margin:8px 16px 0;max-width:none}
 }
 </style>
 """

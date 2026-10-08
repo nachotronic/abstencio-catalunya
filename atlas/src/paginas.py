@@ -157,8 +157,8 @@ def url(p):
 def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atlas'):
     rel = '../' * nivel
     raiz = rel + '../'
-    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('atlas', f'{rel}index.html', 'Atlas de las anomalías'),
-            ('cataluna', f'{raiz}abstencion.html', '¿Quién no vota en Cataluña?'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
+    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('atlas', f'{rel}index.html', 'Atlas'),
+            ('cataluna', f'{raiz}abstencion.html', 'Cataluña'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
             ('sobre', f'{raiz}sobre-mi.html', 'Sobre mí')]
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz}">{SITIO}</a>' +
            ''.join(f'<a href="{h}"{" aria-current=\"page\"" if k == actual else ""}>{t}</a>' for k, h, t in menu) + '</nav>')
@@ -502,13 +502,23 @@ def feed():
 
 
 def franja_portada():
-    """Las tres últimas piezas del Atlas en la portada del sitio, entre las marcas <!--atlas:ultimas-->.
-    La plantilla de generales-2026 lleva las marcas vacías; este script las rellena cada vez que se regenera el Atlas."""
-    ult = [q for q in recientes() if q['revisado']][:3]
-    return ('<section class="col del-atlas" aria-labelledby="h-del-atlas"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2><ul>' +
-            ''.join(f'<li><a href="atlas/{ruta_pieza(q).replace("index.html", "")}"><span class="atlas-k">{escape(SERIES[q["serie"]][0])}</span>'
-                    f'<b>{escape(titular(q))}</b><span>{escape(q["titulo"])}</span></a></li>' for q in ult) +
-            f'</ul><p><a class="atlas-go" href="atlas/">Las {sum(1 for q in TODAS if q["revisado"])} piezas del Atlas →</a></p></section>')
+    """Carrusel con las últimas piezas del Atlas (foto, serie y titular) en la portada del sitio, entre las marcas
+    <!--atlas:ultimas-->. La plantilla de generales-2026 lleva las marcas; este script las rellena cada vez que se regenera el Atlas.
+    Funciona sin JavaScript (desplazamiento lateral); las flechas solo lo mueven una tarjeta."""
+    ult = [q for q in recientes() if q['revisado']][:10]
+    def img(q):
+        if q.get('foto'):
+            return f'<img src="atlas/img/m/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+        return f'<span class="sinfoto">{escape(SERIES[q["serie"]][0])}</span>'
+    total = sum(1 for q in TODAS if q['revisado'])
+    return ('<section class="wide del-atlas" aria-labelledby="h-del-atlas"><div class="da-cab"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2>'
+            '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
+            '<ul class="carrusel">' +
+            ''.join(f'<li><a href="atlas/{ruta_pieza(q).replace("index.html", "")}">{img(q)}<span class="atlas-k">{escape(SERIES[q["serie"]][0])}</span>'
+                    f'<b>{escape(titular(q))}</b></a></li>' for q in ult) +
+            f'<li class="todas"><a href="atlas/"><b>Las {total} piezas del Atlas →</b><span>Excepciones, fronteras, gemelos, bisagras y más</span></a></li></ul>'
+            '<script>document.querySelectorAll(".del-atlas").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
+            's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 
 
 def compartir():
@@ -543,7 +553,7 @@ def main():
         t = f.read_text(encoding='utf-8')
         if '<!--atlas:ultimas-->' in t:
             pre = '' if f.name == 'index.html' else '../'
-            franja = franja_portada().replace('href="atlas/', f'href="{pre}atlas/')
+            franja = franja_portada().replace('href="atlas/', f'href="{pre}atlas/').replace('src="atlas/', f'src="{pre}atlas/')
             t = re.sub(r'<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', lambda m: '<!--atlas:ultimas-->' + franja + '<!--/atlas:ultimas-->', t, flags=re.S)
             f.write_text(t, encoding='utf-8')
     print(len(paginas), 'páginas;', sum(1 for q in TODAS if q['revisado']), 'de', len(TODAS), 'piezas revisadas')
