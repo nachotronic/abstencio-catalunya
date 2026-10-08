@@ -32,6 +32,11 @@ AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagi
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
 AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',
           'sameAs': [u for _, u in AUTHOR_LINKS]}
+# Editor de todo el sitio (el mismo objeto en atlas/src/paginas.py, src/portada.py y generales-2026/src/pagina.py)
+PUBLISHER = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': 'Mapa Electoral', 'url': BASE,
+             'founder': {'@type': 'Person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html'},
+             'publishingPrinciples': BASE + 'atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + 'atlas/politica-editorial/#verificacion',
+             'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
 LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
 IMAGE = BASE + 'img/portada.png'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
@@ -122,7 +127,7 @@ def article(L):
         'headline': t['title'], 'description': t['desc'], 'inLanguage': L,
         'url': BASE + t['page'], 'mainEntityOfPage': BASE + t['page'], 'image': IMAGE,
         'datePublished': PUBLISHED, 'dateModified': MODIFIED,
-        'author': AUTHOR, 'publisher': AUTHOR, 'license': LICENSE,
+        'author': AUTHOR, 'publisher': PUBLISHER, 'license': LICENSE,
         'isAccessibleForFree': True, 'keywords': t['keywords'], 'about': t['about'],
         'contentLocation': {'@type': 'Place', 'name': 'Catalunya'},
         'citation': [u for _, u in SOURCES],
@@ -518,7 +523,8 @@ Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat
 def sitemap_index():
     # Índice de sitemaps: el de la raíz y el de cada sección con su propio sitemap.xml
     # (generales-2026/, atlas/...). Se recoge solo, basta con que la carpeta tenga sitemap.xml.
-    maps = ['sitemap.xml'] + sorted(p.relative_to(ROOT).as_posix() for p in ROOT.glob('*/sitemap.xml'))
+    # Incluye también los sitemaps de Google News (sitemap-noticias.xml) que generen las secciones.
+    maps = ['sitemap.xml'] + sorted(p.relative_to(ROOT).as_posix() for n in ('sitemap.xml', 'sitemap-noticias.xml') for p in ROOT.glob('*/' + n))
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + ''.join(f'  <sitemap><loc>{BASE}{m}</loc></sitemap>\n' for m in maps) + '</sitemapindex>\n')
 

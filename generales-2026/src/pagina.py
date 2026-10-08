@@ -29,6 +29,12 @@ CORRECCIONES = [
                    'el dato es de una sola elección. Las cifras no cambian.'),
 ]
 HOY = dt.date.today().isoformat()
+PUBLICADO = '2026-10-06'   # fecha de publicación de la pieza; no cambia al regenerarla
+# Editor de todo el sitio (el mismo objeto en src/seo.py, src/portada.py y atlas/src/paginas.py)
+MEDIO = {'@type': 'NewsMediaOrganization', '@id': 'https://mapaelectoral.es/#medio', 'name': 'Mapa Electoral', 'url': 'https://mapaelectoral.es/',
+         'founder': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'},
+         'publishingPrinciples': 'https://mapaelectoral.es/atlas/politica-editorial/', 'verificationFactCheckingPolicy': 'https://mapaelectoral.es/atlas/politica-editorial/#verificacion',
+         'correctionsPolicy': 'https://mapaelectoral.es/atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
 NOM = {c: n for c, n, _ in FAMILIAS}
 FAM12 = [c for c, _, _ in FAMILIAS if c != 'OTROS']
 COL = {c: col for c, _, col in FAMILIAS}
@@ -216,8 +222,9 @@ def jsonld(F):
         '@context': 'https://schema.org', '@type': 'NewsArticle',
         'headline': 'El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera',
         'description': f"Resultados del Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.",
-        'datePublished': F['hoy'], 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
-        'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'isAccessibleForFree': True,
+        'datePublished': PUBLICADO, 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
+        'image': 'https://mapaelectoral.es/img/compartir/portada.jpg',
+        'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'publisher': MEDIO, 'isAccessibleForFree': True,
         'about': [{'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29', 'endDate': '2026-11-29', 'location': {'@type': 'Place', 'name': 'España', 'address': {'@type': 'PostalAddress', 'addressCountry': 'ES'}}}],
         'citation': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://www.ine.es/censos2021/'],
     }

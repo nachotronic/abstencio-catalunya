@@ -19,7 +19,7 @@ CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='ht
 # Datos estructurados del sitio, solo en la portada
 SITIO = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': BASE + '#website', 'name': 'Mapa electoral', 'url': BASE,
          'inLanguage': 'es', 'description': 'Periodismo de datos sobre elecciones en España por sección censal.',
-         'publisher': {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': 'Nacho G. del Álamo', 'url': BASE + 'sobre-mi.html'},
+         'publisher': {'@id': BASE + '#medio'},
          'hasPart': [{'@type': 'CollectionPage', 'name': 'Atlas de las anomalías electorales', 'url': BASE + 'atlas/'},
                      {'@type': 'NewsArticle', 'name': '¿Quién no vota en Cataluña?', 'url': BASE + 'abstencion.html'}]}
 STUB = '''<!doctype html>
