@@ -1,0 +1,35 @@
+name: descarga-historico
+on:
+  push:
+    branches: [claude/descarga-historico]
+    paths: ['.github/workflows/descarga-historico.yml']
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar zips de Infoelectoral
+        run: |
+          mkdir -p descargas
+          B=https://infoelectoral.interior.gob.es/estaticos/docxl/apliextr
+          # 02 Congreso, 03 Senado no; 04 municipales, 07 europeas
+          for c in 02197706 02197903 02198210 02198606 02198910 02199306 02199603 02200003 \
+                   04197904 04198305 04198706 04199105 04199505 04199906 04200305 04200705 \
+                   07198706 07198906 07199406 07199906 07200406 07200906 07201405; do
+            for n in MESA MUNI; do
+              f=${c}_${n}.zip
+              for i in 1 2 3; do
+                if curl -fsSL --retry 3 -m 900 -A "Mozilla/5.0" -o descargas/$f $B/$f; then break; fi
+                rm -f descargas/$f; sleep 5
+              done
+              [ -f descargas/$f ] && echo "OK $f $(stat -c%s descargas/$f)" || echo "NO $f"
+            done
+          done | tee descargas/LISTA.txt
+          cd descargas && for f in *.zip; do s=$(stat -c%s $f); if [ $s -gt 90000000 ]; then split -b 90m $f $f.part_ && rm $f; fi; done
+      - name: Guardar en la rama
+        run: |
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add descargas && git commit -m "Zips de Infoelectoral" && git push
