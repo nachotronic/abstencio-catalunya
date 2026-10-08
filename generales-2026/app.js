@@ -25,8 +25,17 @@
     }));
     return out;
   }
+  // Canarias llega en los datos ya desplazada al suroeste de la península (META.canarias). Aquí se mueve otra vez para que
+  // el recuadro no ensanche el mapa y España se vea más grande: en pantallas anchas, al mar entre Alicante y Argelia;
+  // en el móvil, debajo de Almería y Murcia. Se decide al cargar la página.
+  const ESTRECHO = window.innerWidth < 760;
+  const CAN = ESTRECHO ? [11.16, -0.74] : [13.16, 1.46], esCan = c => /^3[58]/.test(String(c));
+  const aCan = rings => rings.forEach(o => { o.polygon.forEach(q => { q[0] += CAN[0]; q[1] += CAN[1]; }); });
+  MUN.c.forEach((q, i) => { if (q && esCan(MUN.cod[i])) MUN.c[i] = [q[0] + CAN[0], q[1] + CAN[1]]; });
   const MUNP = decode(MUN);
+  aCan(MUNP.filter(o => esCan(MUN.cod[o.i])));
   const PROVP = decode(PROV);
+  aCan(PROVP.filter(o => esCan(PROV.cod[o.i])));
   const PROVBOX = {};
   PROVP.forEach(p => {
     const c = PROV.cod[p.i], b = PROVBOX[c] || (PROVBOX[c] = [180, 90, -180, -90]);
@@ -101,18 +110,20 @@
 
   // ---------- mapa
   const narrow = () => window.innerWidth < 760;
-  // Vista inicial: encaja la península, Baleares y el recuadro de Canarias (lon −13,4 a 4,5; lat 33,9 a 43,9)
-  // con un 3 % de margen. El alto se mide en grados Mercator (12,9 entre esas latitudes), no en grados de latitud.
+  // Vista inicial: encaja la península, Baleares y el recuadro de Canarias con un 3 % de margen. Pantalla ancha:
+  // lon −9,3 a 5,6 y lat 35,3 a 43,8; móvil: lon −9,3 a 4,4 y lat 33,2 a 43,8. El alto va en grados Mercator, no de latitud.
   const HOME = () => {
     const el = $('#map'), W = el.clientWidth || 800, H = el.clientHeight || 600;
-    const z = Math.min(Math.log2(W / (512 * 17.9 * 1.03 / 360)), Math.log2(H / (512 * 12.9 * 1.03 / 360)));
-    return { longitude: -4.45, latitude: 39.08, zoom: Math.round(z * 100) / 100, pitch: 0, bearing: 0 };
+    const [ancho, alto, longitude, latitude] = ESTRECHO ? [13.7, 13.6, -2.49, 38.7] : [15, 11.1, -1.87, 39.68];
+    const z = Math.min(Math.log2(W / (512 * ancho * 1.03 / 360)), Math.log2(H / (512 * alto * 1.03 / 360)));
+    return { longitude, latitude, zoom: Math.round(z * 100) / 100, pitch: 0, bearing: 0 };
   };
   let view = HOME();
   const LABELS = ['28079', '08019', '46250', '41091', '50297', '29067', '48020', '07040', '35016', '15030'];
   const lab = LABELS.map(c => { const i = MUN.cod.indexOf(c); return i < 0 ? null : { t: MUN.nombre[i], p: MUN.c[i] }; }).filter(Boolean);
   const [dx, dy] = META.canarias;
-  const CANFRAME = [{ path: [[-18.5 + dx, 29.6 + dy], [-13.1 + dx, 29.6 + dy], [-13.1 + dx, 27.4 + dy]] }];
+  const [x0, x1, y0, y1] = [-18.4 + dx + CAN[0], -13.2 + dx + CAN[0], 27.4 + dy + CAN[1], 29.6 + dy + CAN[1]];
+  const CANFRAME = [{ path: [[x0, y0], [x0, y1], [x1, y1], [x1, y0], [x0, y0]] }];
   let hover = null;
 
   function secVisible() { return view.zoom >= 7.3; }
@@ -185,7 +196,7 @@
       if (b[0] > e || b[2] < w || b[1] > n || b[3] < s || loading.has(p)) continue;
       if (SEC[p]) { aseguraSec(p, st.y); continue; }
       loading.add(p);
-      get('sec/' + p + '.json').then(d => { SEC[p] = { d, polys: decode(d) }; loading.delete(p); aseguraSec(p, st.y); redraw(); }).catch(() => loading.delete(p));
+      get('sec/' + p + '.json').then(d => { const polys = decode(d); if (esCan(p)) aCan(polys); SEC[p] = { d, polys }; loading.delete(p); aseguraSec(p, st.y); redraw(); }).catch(() => loading.delete(p));
     }
   }
 
@@ -302,6 +313,8 @@
   window.addEventListener('resize', () => redraw());
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { legend(); redraw(); });
   sync();
+  // Con la leyenda ya pintada, el mapa puede haber cambiado de alto (en el insertable estrecho va debajo): se reencaja.
+  const h0 = HOME(); if (h0.zoom !== view.zoom) { view = { ...view, ...h0 }; dk.setProps({ initialViewState: view }); }
 
   // ---------- «Insertar en tu web»: código <iframe> de insertar/ con la elección y el municipio elegidos
   const bIns = $('#insertar');

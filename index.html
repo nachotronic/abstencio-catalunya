@@ -193,20 +193,22 @@ header h1{font-size:clamp(22px,2.4vw,32px);margin:2px 0 0}
 #mapa{margin-top:6px}
 #mapa .controls{padding:8px 0}
 #mapa .mapwrap{height:calc(100svh - 185px);min-height:360px;max-height:900px}
+#mapa #legend{top:12px;bottom:auto}
 .intro{margin-top:20px}
 @media (max-width:760px){
   nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;gap:2px 14px;font-size:13px;padding-top:8px;padding-bottom:6px}
   nav.site::-webkit-scrollbar{display:none}
   .kicker{font-size:11px}
   header h1{font-size:21px;line-height:1.15}
-  #mapa .controls{gap:6px 8px;font-size:12px}
-  #mapa .controls label{flex:1 1 30%}
-  #mapa .controls label.q{flex:1 1 60%}
+  /* controles compactos: sin rótulos visibles (los selectores ya dicen qué muestran), dos por fila */
+  #mapa .controls{gap:6px 8px;font-size:0;padding:6px 0}
+  #mapa .controls label{flex:1 1 40%;gap:0}
+  #mapa .controls label.q{flex:1 1 50%}
   #mapa .controls select,#mapa .controls input{font-size:14px;padding:5px 6px}
   #mapa .controls button{font-size:13px;padding:6px 8px}
   /* el mapa a todo el ancho de la pantalla y la leyenda debajo, para que España ocupe todo el ancho */
   #mapa .mapwrap{height:auto;min-height:0;max-height:none;overflow:visible;background:none;border-radius:0;margin:0 -16px}
-  #mapa #map{position:relative;height:78vw;max-height:calc(100svh - 230px);background:var(--map-bg)}
+  #mapa #map{position:relative;height:100vw;max-height:calc(100svh - 190px);min-height:300px;background:var(--map-bg)}
   #mapa #legend{position:static;margin:8px 16px 0;max-width:none}
 }
 </style>
