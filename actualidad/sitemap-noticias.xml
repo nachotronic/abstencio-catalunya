@@ -5,7 +5,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
-      <news:title>El mapa que deja Beiras: el nacionalismo gallego en las generales</news:title>
+      <news:title>Del 12% al 2,9% y de vuelta al 9,5%: el nacionalismo gallego que deja Beiras</news:title>
     </news:news>
   </url>
   <url>
@@ -13,7 +13,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
-      <news:title>La Barcelona que espera a Colau: de 837 secciones a 23</news:title>
+      <news:title>La Barcelona que tendría que reconquistar Colau: los comuns ganaban en 837 secciones y ahora en 23</news:title>
     </news:news>
   </url>
   <url>
@@ -21,7 +21,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
-      <news:title>Votar en noviembre: el 10N de 2019 tuvo la participación más baja de la democracia</news:title>
+      <news:title>El 29N repite mes con mal recuerdo: el último noviembre dejó la participación más baja de la democracia</news:title>
     </news:news>
   </url>
   <url>
@@ -29,7 +29,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
-      <news:title>Después de Maricarmen: en los barrios donde más se alquila se vota diez puntos menos</news:title>
+      <news:title>Después de Maricarmen: los barrios de inquilinos votan diez puntos menos</news:title>
     </news:news>
   </url>
   <url>
@@ -37,7 +37,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
-      <news:title>Tu ciudad, barrio a barrio: en las 25 más grandes, donde más se alquila se vota menos</news:title>
+      <news:title>Sin excepción: en las 25 mayores ciudades de España, los barrios de alquiler votan menos</news:title>
     </news:news>
   </url>
   <url>
@@ -45,7 +45,31 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
-      <news:title>Los barrios de pisos turísticos se quedan sin votantes</news:title>
+      <news:title>Los barrios de pisos turísticos de Barcelona han perdido uno de cada diez electores desde 2015</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/psoe-barrios-de-alquiler/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>El PSOE sube en los barrios de alquiler casi el triple que en los de propietarios desde 2015</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/precio-del-alquiler-y-voto/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>El alquiler sube un 29% en València desde 2015, pero el voto apenas lo refleja</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/puigdemont-junts-congreso-parlament/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament</news:title>
     </news:news>
   </url>
 </urlset>
