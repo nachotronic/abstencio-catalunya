@@ -70,7 +70,7 @@ def main():
         vox19=n(vox19), vox_pp=n(vox_pp),
         r_part1=p(ren[0]['part'], 1), r_part10=p(ren[9]['part'], 1), r_lo=n(ren[0]['hi']), r_hi=n(ren[9]['lo']),
         r_psoe1=p(ren[0]['PSOE'], 1), r_psoe10=p(ren[9]['PSOE'], 1), r_pp1=p(ren[0]['PP'], 1), r_pp10=p(ren[9]['PP'], 1),
-        r_vox1=p(ren[0]['VOX'], 1), r_vox5=p(ren[4]['VOX'], 1), r_vox10=p(ren[9]['VOX'], 1),
+        r_vox1=p(ren[0]['VOX'], 1), r_vox5=p(ren[4]['VOX'], 1), r_vox9=p(ren[8]['VOX'], 1), r_vox10=p(ren[9]['VOX'], 1),
         pob_part1=p(pob[0]['part'], 1), pob_part10=p(pob[9]['part'], 1), pob10=p(pob[9]['lo']),
         e_vox1=p(eda[0]['VOX'], 1), e_vox10=p(eda[9]['VOX'], 1), e_pp10=p(eda[9]['PP'], 1), e_hi1=f"{eda[0]['hi']:.0f}", e_lo10=f"{eda[9]['lo']:.0f}",
         e_part1=p(eda[0]['part'], 1), e_part10=p(eda[9]['part'], 1),

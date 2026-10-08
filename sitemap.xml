@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://mapaelectoral.es/abstencion.html</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+  <url><loc>https://mapaelectoral.es/abstencion.html</loc><lastmod>2026-10-08</lastmod><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://mapaelectoral.es/abstencion.html"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://mapaelectoral.es/ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mapaelectoral.es/abstencion.html"/>
   </url>
-  <url><loc>https://mapaelectoral.es/ca.html</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+  <url><loc>https://mapaelectoral.es/ca.html</loc><lastmod>2026-10-08</lastmod><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://mapaelectoral.es/abstencion.html"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://mapaelectoral.es/ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mapaelectoral.es/abstencion.html"/>
   </url>
-  <url><loc>https://mapaelectoral.es/metodologia.html</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority>
+  <url><loc>https://mapaelectoral.es/metodologia.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://mapaelectoral.es/metodologia.html"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://mapaelectoral.es/metodologia-ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mapaelectoral.es/metodologia.html"/>
   </url>
-  <url><loc>https://mapaelectoral.es/metodologia-ca.html</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority>
+  <url><loc>https://mapaelectoral.es/metodologia-ca.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://mapaelectoral.es/metodologia.html"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://mapaelectoral.es/metodologia-ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mapaelectoral.es/metodologia.html"/>
   </url>
-  <url><loc>https://mapaelectoral.es/mapa.html</loc><lastmod>2026-10-06</lastmod><priority>0.5</priority>
+  <url><loc>https://mapaelectoral.es/mapa.html</loc><lastmod>2026-10-08</lastmod><priority>0.5</priority>
   </url>
-  <url><loc>https://mapaelectoral.es/sobre-mi.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+  <url><loc>https://mapaelectoral.es/sobre-mi.html</loc><lastmod>2026-10-08</lastmod><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://mapaelectoral.es/sobre-mi.html"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://mapaelectoral.es/sobre-mi-ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mapaelectoral.es/sobre-mi.html"/>
   </url>
-  <url><loc>https://mapaelectoral.es/sobre-mi-ca.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+  <url><loc>https://mapaelectoral.es/sobre-mi-ca.html</loc><lastmod>2026-10-08</lastmod><priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://mapaelectoral.es/sobre-mi.html"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://mapaelectoral.es/sobre-mi-ca.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mapaelectoral.es/sobre-mi.html"/>
   </url>
-  <url><loc>https://mapaelectoral.es/</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+  <url><loc>https://mapaelectoral.es/</loc><lastmod>2026-10-08</lastmod><priority>1.0</priority>
   </url>
-  <url><loc>https://mapaelectoral.es/generales-2026/metodologia.html</loc><lastmod>2026-10-06</lastmod><priority>0.5</priority>
+  <url><loc>https://mapaelectoral.es/generales-2026/metodologia.html</loc><lastmod>2026-10-08</lastmod><priority>0.5</priority>
   </url>
 </urlset>

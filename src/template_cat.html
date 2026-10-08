@@ -218,7 +218,7 @@ const full=[0,0,MAP.W,MAP.H]; svg.setAttribute('viewBox',full.join(' '));
 const gS=document.createElementNS(NS,'g'), gM=document.createElementNS(NS,'g'), gL=document.createElementNS(NS,'g');
 svg.append(gS,gM,gL);
 const paths=MAP.secs.map(p=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',p.d); e.setAttribute('class','s'); e.setAttribute('tabindex','-1'); e.__p=p; gS.appendChild(e); return e;});
-MAP.muns.forEach(m=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',m.d); e.setAttribute('class','m'); gM.appendChild(e);});
+MAP.muns.forEach(m=>{const e=document.createElementNS(NS,'path'); e.setAttribute('d',typeof m==='string'?m:m.d); e.setAttribute('class','m'); gM.appendChild(e);});
 let labelScale=1;
 const TOWNS=(()=>{const a={};MAP.secs.forEach(p=>{const n=p.mun_name;if(!n||p.cx==null)return;const w=p.population||1;const o=a[n]||(a[n]={n,pop:0,x:0,y:0});o.pop+=w;o.x+=p.cx*w;o.y+=p.cy*w;});
   const HLT=['Salt','Lloret de Mar','Figueres'], all=Object.values(a).sort((p,q)=>q.pop-p.pop), top=all.slice(0,10).map(o=>o.n);

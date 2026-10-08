@@ -15,7 +15,7 @@ CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='ht
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = 'https://mapaelectoral.es/'
 PUBLISHED = '2026-10-05'
-MODIFIED = '2026-10-06'   # cámbiala a mano cuando se actualice el contenido
+MODIFIED = '2026-10-08'   # cámbiala a mano cuando se actualice el contenido
 # ---- Autor: página «Sobre mí» (sobre-mi.html / sobre-mi-ca.html) ----
 # PENDIENTE (Nacho): enlaces (redes, web, otros trabajos).
 # Mientras la biografía esté vacía, la página no la muestra. Si cambia el nombre, cámbialo también
@@ -49,6 +49,13 @@ SOURCES = [
     ('INE: Atlas de Distribución de Renta de los Hogares 2023 (vía ineAtlas.data)', 'https://github.com/pablogguz/ineAtlas.data'),
     ('INE: Censo de Población y Viviendas 2021', 'https://www.ine.es/censos2021/'),
     ('Generalitat de Catalunya: participación por sección censal 2015-2024 (Transparència Catalunya, irrv-2mfc)', 'https://analisi.transparenciacatalunya.cat/d/irrv-2mfc'),
+    ('Idescat: EMEX', 'https://www.idescat.cat/emex/'),
+]
+SOURCES_CA = [
+    ('Ministeri de l\'Interior: resultats per mesa del Congrés 2015-2023 (via pollspain)', 'https://github.com/dadosdelaplace/pollspain'),
+    ('INE: Atlas de Distribució de la Renda de les Llars 2023 (via ineAtlas.data)', 'https://github.com/pablogguz/ineAtlas.data'),
+    ('INE: Cens de Població i Habitatges 2021', 'https://www.ine.es/censos2021/'),
+    ('Generalitat de Catalunya: participació per secció censal 2015-2024 (Transparència Catalunya, irrv-2mfc)', 'https://analisi.transparenciacatalunya.cat/d/irrv-2mfc'),
     ('Idescat: EMEX', 'https://www.idescat.cat/emex/'),
 ]
 
@@ -200,7 +207,7 @@ COLS = {
   ('mean_age, pct_under18, pct_over65, pct_single_hh, pct_spanish', 'Edad media y porcentajes de menores, mayores de 65, hogares unipersonales y población española (Atlas INE, de 0 a 100).'),
   ('pct_foreign, pct_foreign_born, pct_naturalized', 'Extranjeros, nacidos en el extranjero y españoles nacidos fuera (Censo 2021, de 0 a 1).'),
   ('pct_higher_ed_completed, unemployment_rate, pct_rented, pct_secondary', 'Adultos con estudios superiores, tasa de paro, viviendas de alquiler y viviendas secundarias (Censo 2021, de 0 a 1).'),
-  ('ind19, voters19, ind23', 'Votos a ERC, Junts y CUP en noviembre de 2019, votantes de noviembre de 2019 y votos a esos partidos en 2023.'),
+  ('ind19, voters19, ind23', 'Votos a ERC, Junts y CUP en noviembre de 2019, votantes de noviembre de 2019 y votos a ERC, Junts, CUP y PDeCAT en 2023.'),
   ('indep_share19, indep_share23, drop_19_23', 'Voto independentista sobre votos emitidos en 2019 y 2023, y caída de participación entre noviembre de 2019 y julio de 2023 (0 a 1).'),
  ],
  'ca': [
@@ -216,7 +223,7 @@ COLS = {
   ('mean_age, pct_under18, pct_over65, pct_single_hh, pct_spanish', 'Edat mitjana i percentatges de menors, majors de 65 anys, llars unipersonals i població espanyola (Atlas INE, de 0 a 100).'),
   ('pct_foreign, pct_foreign_born, pct_naturalized', 'Estrangers, nascuts a l\'estranger i espanyols nascuts fora (Cens 2021, de 0 a 1).'),
   ('pct_higher_ed_completed, unemployment_rate, pct_rented, pct_secondary', 'Adults amb estudis superiors, taxa d\'atur, habitatges de lloguer i habitatges secundaris (Cens 2021, de 0 a 1).'),
-  ('ind19, voters19, ind23', 'Vots a ERC, Junts i la CUP el novembre del 2019, votants del novembre del 2019 i vots a aquests partits el 2023.'),
+  ('ind19, voters19, ind23', 'Vots a ERC, Junts i la CUP el novembre del 2019, votants del novembre del 2019 i vots a ERC, Junts, la CUP i el PDeCAT el 2023.'),
   ('indep_share19, indep_share23, drop_19_23', 'Vot independentista sobre vots emesos el 2019 i el 2023, i caiguda de participació entre el novembre del 2019 i el juliol del 2023 (de 0 a 1).'),
  ],
 }
@@ -253,7 +260,8 @@ M = {
   h_cols='Columnas de catalunya_secciones_2023.csv', cols_note='Los mismos nombres se usan en el resto de archivos. En evolucion_secciones.csv cada columna es una elección: M = municipales, A = Parlament, G = Congreso, seguida del año y la vuelta del año (G20192 = Congreso de noviembre de 2019).',
   dates='Publicada el 5 de octubre de 2026 · Actualizada el 6 de octubre de 2026',
   h_auth='Autoría y revisión', auth='Datos, texto y gráficos de <a href="sobre-mi.html">Nacho G. del Álamo</a>, que también revisa los datos y el texto antes de publicar. Cada cifra del texto se recalcula con un script a partir de los datos publicados, y los totales se contrastan con los resultados oficiales de la Generalitat.',
-  h_fix='Correcciones', fix=['<b>6 de octubre de 2026:</b> en la sección de Figueres con menos participación el paro es del 59% (58,5%), no del 58%; el voto independentista de 2023 era el 28% contando al PDeCAT, pero ERC, Junts y la CUP suman el 27%; en el Parlament de 2015 la distancia entre el 20% de secciones más ricas y el 20% más pobre era de 13 puntos, no de 14; el Censo 2021 no cubre 73 secciones (no 74) y el Atlas no da renta por unidad de consumo en 30 (no 20). Ninguna cambia las conclusiones.'],
+  h_fix='Correcciones', fix=['<b>6 de octubre de 2026:</b> en la sección de Figueres con menos participación el paro es del 59% (58,5%), no del 58%; el voto independentista de 2023 era el 28% contando al PDeCAT, pero ERC, Junts y la CUP suman el 27%; en el Parlament de 2015 la distancia entre el 20% de secciones más ricas y el 20% más pobre era de 13 puntos, no de 14; el Censo 2021 no cubre 73 secciones (no 74) y el Atlas no da renta por unidad de consumo en 30 (no 20). Ninguna cambia las conclusiones. Además, tras revisar el texto con el estándar de verificación: los 68.000 inscritos en el censo municipal incluyen a los ciudadanos de países con convenio, no solo a europeos, y son alrededor del 13% de los extranjeros que podrían votar (no uno de cada cuatro europeos); y varias explicaciones que se daban como hechos se presentan ahora como hipótesis o atribuidas a los investigadores.',
+                             '<b>8 de octubre de 2026:</b> las diez secciones que menos votan tienen rentas de entre 9.600 y 13.100 euros (no «de 10.000 a 13.000») y votan entre uno de cada cinco y uno de cada tres inscritos (no «entre uno de cada cuatro»); la del Raval se separa de las otras nueve. En el Parlament, el paro y los estudios pesan lo mismo en el modelo; el texto decía que pesaba más el paro. La columna ind23 incluye al PDeCAT, como ya decía la pieza. Ninguna cambia las conclusiones.'],
   h_code='Código', code='Los scripts en Python con los que se han generado los datos y las páginas están en <a href="' + REPO + '">el repositorio de GitHub</a>, carpeta <code>src/</code>.',
   th=('Columna', 'Qué es')),
  'ca': dict(
@@ -287,7 +295,8 @@ M = {
   h_cols='Columnes de catalunya_secciones_2023.csv', cols_note='Els mateixos noms es fan servir a la resta de fitxers. A evolucion_secciones.csv cada columna és una elecció: M = municipals, A = Parlament, G = Congrés, seguida de l\'any i la volta de l\'any (G20192 = Congrés de novembre del 2019).',
   dates='Publicada el 5 d\'octubre de 2026 · Actualitzada el 6 d\'octubre de 2026',
   h_auth='Autoria i revisió', auth='Dades, text i gràfics de <a href="sobre-mi-ca.html">Nacho G. del Álamo</a>, que també en revisa les dades i el text abans de publicar. Cada xifra del text es recalcula amb un script a partir de les dades publicades, i els totals es contrasten amb els resultats oficials de la Generalitat.',
-  h_fix='Correccions', fix=['<b>6 d\'octubre de 2026:</b> a la secció de Figueres amb menys participació l\'atur és del 59% (58,5%), no del 58%; el vot independentista del 2023 era el 28% comptant-hi el PDeCAT, però ERC, Junts i la CUP sumen el 27%; al Parlament del 2015 la distància entre el 20% de seccions més riques i el 20% més pobre era de 13 punts, no de 14; el Cens 2021 no cobreix 73 seccions (no 74) i l\'Atlas no dona renda per unitat de consum en 30 (no 20). Cap no canvia les conclusions.'],
+  h_fix='Correccions', fix=['<b>6 d\'octubre de 2026:</b> a la secció de Figueres amb menys participació l\'atur és del 59% (58,5%), no del 58%; el vot independentista del 2023 era el 28% comptant-hi el PDeCAT, però ERC, Junts i la CUP sumen el 27%; al Parlament del 2015 la distància entre el 20% de seccions més riques i el 20% més pobre era de 13 punts, no de 14; el Cens 2021 no cobreix 73 seccions (no 74) i l\'Atlas no dona renda per unitat de consum en 30 (no 20). Cap no canvia les conclusions. A més, després de revisar el text amb l\'estàndard de verificació: els 68.000 inscrits al cens municipal inclouen els ciutadans de països amb conveni, no només europeus, i són al voltant del 13% dels estrangers que podrien votar (no un de cada quatre europeus); i diverses explicacions que es donaven com a fets es presenten ara com a hipòtesis o atribuïdes als investigadors.',
+                             '<b>8 d\'octubre de 2026:</b> les deu seccions que menys voten tenen rendes d\'entre 9.600 i 13.100 euros (no «de 10.000 a 13.000») i hi vota entre un de cada cinc i un de cada tres inscrits (no «entre un de cada quatre»); la del Raval se separa de les altres nou. Al Parlament, l\'atur i els estudis pesen igual en el model; el text deia que pesava més l\'atur. La columna ind23 inclou el PDeCAT, com ja deia la peça. Cap no canvia les conclusions.'],
   h_code='Codi', code='Els scripts en Python amb què s\'han generat les dades i les pàgines són al <a href="' + REPO + '">repositori de GitHub</a>, carpeta <code>src/</code>.',
   th=('Columna', 'Què és')),
 }
@@ -327,7 +336,7 @@ def methodology(L):
     def sz(n): return f'{n/1e6:.1f} MB'.replace('.', ',') if n >= 1e6 else f'{round(n/1e3)} kB'
     dl = '\n'.join(f'<li><a href="data/{f}" download>{f}</a> · {d} · {sz(sizes[f])}</li>' for f, d in t['files'].items())
     cols = '\n'.join(f'<tr><td>{c}</td><td>{d}</td></tr>' for c, d in COLS[L])
-    src = '\n'.join(f'<li><a href="{u}">{n}</a></li>' for n, u in SOURCES)
+    src = '\n'.join(f'<li><a href="{u}">{n}</a></li>' for n, u in (SOURCES_CA if L == 'ca' else SOURCES))
     li = lambda xs: '\n'.join(f'<li>{x}</li>' for x in xs)
     head = meta(m['title'], m['desc'], BASE + t['meth'], L, t['locale'], ALT_M, ld(dataset(L)), typ='website')
     return f'''<!doctype html>

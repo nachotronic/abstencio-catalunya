@@ -50,7 +50,7 @@
    "license": "https://creativecommons.org/licenses/by/4.0/",
    "isAccessibleForFree": true,
    "datePublished": "2026-10-05",
-   "dateModified": "2026-10-06",
+   "dateModified": "2026-10-08",
    "temporalCoverage": "2015-05-24/2024-05-12",
    "spatialCoverage": {
     "@type": "Place",
@@ -215,10 +215,10 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <p>Regressió lineal de la participació del 2023 sobre les variables sociodemogràfiques de cada secció, ponderada pel cens (5.041 seccions amb totes les dades). Els coeficients s'expressen en punts de participació per cada desviació típica de la variable, amb intervals de confiança del 95% per bootstrap (500 rèpliques).</p>
 <h2>Fonts</h2>
 <ul>
-<li><a href="https://github.com/dadosdelaplace/pollspain">Ministerio del Interior: resultados por mesa del Congreso 2015-2023 (vía pollspain)</a></li>
-<li><a href="https://github.com/pablogguz/ineAtlas.data">INE: Atlas de Distribución de Renta de los Hogares 2023 (vía ineAtlas.data)</a></li>
-<li><a href="https://www.ine.es/censos2021/">INE: Censo de Población y Viviendas 2021</a></li>
-<li><a href="https://analisi.transparenciacatalunya.cat/d/irrv-2mfc">Generalitat de Catalunya: participación por sección censal 2015-2024 (Transparència Catalunya, irrv-2mfc)</a></li>
+<li><a href="https://github.com/dadosdelaplace/pollspain">Ministeri de l'Interior: resultats per mesa del Congrés 2015-2023 (via pollspain)</a></li>
+<li><a href="https://github.com/pablogguz/ineAtlas.data">INE: Atlas de Distribució de la Renda de les Llars 2023 (via ineAtlas.data)</a></li>
+<li><a href="https://www.ine.es/censos2021/">INE: Cens de Població i Habitatges 2021</a></li>
+<li><a href="https://analisi.transparenciacatalunya.cat/d/irrv-2mfc">Generalitat de Catalunya: participació per secció censal 2015-2024 (Transparència Catalunya, irrv-2mfc)</a></li>
 <li><a href="https://www.idescat.cat/emex/">Idescat: EMEX</a></li>
 </ul>
 <h2>Limitacions</h2>
@@ -245,7 +245,7 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <tr><td>mean_age, pct_under18, pct_over65, pct_single_hh, pct_spanish</td><td>Edat mitjana i percentatges de menors, majors de 65 anys, llars unipersonals i població espanyola (Atlas INE, de 0 a 100).</td></tr>
 <tr><td>pct_foreign, pct_foreign_born, pct_naturalized</td><td>Estrangers, nascuts a l'estranger i espanyols nascuts fora (Cens 2021, de 0 a 1).</td></tr>
 <tr><td>pct_higher_ed_completed, unemployment_rate, pct_rented, pct_secondary</td><td>Adults amb estudis superiors, taxa d'atur, habitatges de lloguer i habitatges secundaris (Cens 2021, de 0 a 1).</td></tr>
-<tr><td>ind19, voters19, ind23</td><td>Vots a ERC, Junts i la CUP el novembre del 2019, votants del novembre del 2019 i vots a aquests partits el 2023.</td></tr>
+<tr><td>ind19, voters19, ind23</td><td>Vots a ERC, Junts i la CUP el novembre del 2019, votants del novembre del 2019 i vots a ERC, Junts, la CUP i el PDeCAT el 2023.</td></tr>
 <tr><td>indep_share19, indep_share23, drop_19_23</td><td>Vot independentista sobre vots emesos el 2019 i el 2023, i caiguda de participació entre el novembre del 2019 i el juliol del 2023 (de 0 a 1).</td></tr>
 </tbody></table></div>
 <p>Els mateixos noms es fan servir a la resta de fitxers. A evolucion_secciones.csv cada columna és una elecció: M = municipals, A = Parlament, G = Congrés, seguida de l'any i la volta de l'any (G20192 = Congrés de novembre del 2019).</p>
@@ -253,7 +253,8 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <p>Dades, text i gràfics de <a href="sobre-mi-ca.html">Nacho G. del Álamo</a>, que també en revisa les dades i el text abans de publicar. Cada xifra del text es recalcula amb un script a partir de les dades publicades, i els totals es contrasten amb els resultats oficials de la Generalitat.</p>
 <h2>Correccions</h2>
 <ul>
-<li><b>6 d'octubre de 2026:</b> a la secció de Figueres amb menys participació l'atur és del 59% (58,5%), no del 58%; el vot independentista del 2023 era el 28% comptant-hi el PDeCAT, però ERC, Junts i la CUP sumen el 27%; al Parlament del 2015 la distància entre el 20% de seccions més riques i el 20% més pobre era de 13 punts, no de 14; el Cens 2021 no cobreix 73 seccions (no 74) i l'Atlas no dona renda per unitat de consum en 30 (no 20). Cap no canvia les conclusions.</li>
+<li><b>6 d'octubre de 2026:</b> a la secció de Figueres amb menys participació l'atur és del 59% (58,5%), no del 58%; el vot independentista del 2023 era el 28% comptant-hi el PDeCAT, però ERC, Junts i la CUP sumen el 27%; al Parlament del 2015 la distància entre el 20% de seccions més riques i el 20% més pobre era de 13 punts, no de 14; el Cens 2021 no cobreix 73 seccions (no 74) i l'Atlas no dona renda per unitat de consum en 30 (no 20). Cap no canvia les conclusions. A més, després de revisar el text amb l'estàndard de verificació: els 68.000 inscrits al cens municipal inclouen els ciutadans de països amb conveni, no només europeus, i són al voltant del 13% dels estrangers que podrien votar (no un de cada quatre europeus); i diverses explicacions que es donaven com a fets es presenten ara com a hipòtesis o atribuïdes als investigadors.</li>
+<li><b>8 d'octubre de 2026:</b> les deu seccions que menys voten tenen rendes d'entre 9.600 i 13.100 euros (no «de 10.000 a 13.000») i hi vota entre un de cada cinc i un de cada tres inscrits (no «entre un de cada quatre»); la del Raval se separa de les altres nou. Al Parlament, l'atur i els estudis pesen igual en el model; el text deia que pesava més l'atur. La columna ind23 inclou el PDeCAT, com ja deia la peça. Cap no canvia les conclusions.</li>
 </ul>
 <h2>Codi</h2>
 <p>Els scripts en Python amb què s'han generat les dades i les pàgines són al <a href="https://github.com/nachotronic/abstencio-catalunya">repositori de GitHub</a>, carpeta <code>src/</code>.</p>
