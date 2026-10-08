@@ -15,7 +15,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 G = ROOT / 'generales-2026'
 BASE = 'https://mapaelectoral.es/'
 VIEJA = BASE + 'generales-2026/'
-CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->'''
+CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->'''
 # Datos estructurados del sitio, solo en la portada
 SITIO = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': BASE + '#website', 'name': 'Mapa electoral', 'url': BASE,
          'inLanguage': 'es', 'description': 'Periodismo de datos sobre elecciones en España por sección censal.',

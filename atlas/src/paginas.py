@@ -23,7 +23,7 @@ SITIO = 'Mapa Electoral'
 AUTOR = {'@type': 'Person', 'name': FIRMA, 'url': BASE + 'sobre-mi.html', 'sameAs': ['https://github.com/nachotronic']}
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
-CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->'''
+CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->'''
 HOY = datetime.date.today().isoformat()
 PUBLICADO = '2026-10-06'   # fecha de publicación de las piezas que aún no tienen `revisado`
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
