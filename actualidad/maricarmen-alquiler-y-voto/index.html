@@ -122,7 +122,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 :root{--comuns:#1d7f95;--bar:#cfcacc}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--comuns:#3aa6bf;--bar:#4a454b}}
 :root[data-theme="dark"]{--comuns:#3aa6bf;--bar:#4a454b}
-</style><style>
+</style><style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--sumar:#a2275f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a}</style><style>
 :root{--serif:"Newsreader",Georgia,serif;--ui:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--surface:#fff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--surface:#1e2025}}
 :root[data-theme="dark"]{--surface:#1e2025}
@@ -193,7 +193,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <figure>
 <figcaption><span class="t">El PP pierde diez puntos donde más se alquila; el PSOE, casi nada</span><span class="s">Voto en las generales de julio de 2023 en el 10% de secciones con menos y con más alquiler, sobre voto válido</span></figcaption>
 <div class="chart" id="par"></div>
-<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--comuns)"></i>Menos alquiler</span><span><i class="sw" style="background:var(--comuns)"></i>Más alquiler</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--muted)"></i>Menos alquiler (círculo vacío)</span><span><i class="sw" style="background:var(--muted)"></i>Más alquiler (círculo lleno), en el color de cada partido</span></div>
 <div class="src">Fuente: Ministerio del Interior; INE. Media ponderada por censo.</div>
 </figure>
 <h2>Madrid, y el barrio de Maricarmen</h2>
@@ -229,7 +229,7 @@ function tipFor(box){let t=document.createElement('div');t.className='tip';t.hid
 function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
 const DEC=[[1,0,6,74.1],[2,6,8,73.5],[3,8,10,73.0],[4,10,12,72.2],[5,12,14,71.3],[6,14,16,70.5],[7,16,18,69.6],[8,18,22,68.3],[9,22,27,66.6],[10,27,65,64.6]];
 const RQ=[[1,71.4,55.1],[2,73.4,62.1],[3,74.0,64.4],[4,74.6,67.2],[5,77.0,73.3]];
-const PAR=[['PP',37.2,27.0],['PSOE',33.5,32.2],['Vox',12.4,9.9],['Sumar',10.6,15.0]];
+const PAR=[['PP',37.2,27.0,'var(--pp)'],['PSOE',33.5,32.2,'var(--psoe)'],['Vox',12.4,9.9,'var(--vox)'],['Sumar',10.6,15.0,'var(--sumar)']];
 const c1=v=>v.toFixed(1).replace('.',',');
 function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
 (function(){const box=document.getElementById('dec');const tip=tipFor(box);
@@ -249,11 +249,11 @@ function dumb(id,rows,lab,lo,hi,step,fmtv,label){const box=document.getElementBy
  const W=Math.max(320,box.clientWidth||640),rh=34,m={l:W<500?92:120,r:20,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-lo)/(hi-lo)*(W-m.l-m.r);
  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':label},box);
  for(let v=lo;v<=hi;v+=step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
- rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||'var(--comuns)';
   el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:'lab'},svg).textContent=lab(d,i);
-  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
-  el('circle',{cx:x(d[1]),cy,r:7,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
-  el('circle',{cx:x(d[2]),cy,r:7,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:7,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:7,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
   const l=d[2]<d[1];
   el('text',{x:x(d[2])+(l?-12:12),y:cy+4,'text-anchor':l?'end':'start',class:'lab'},svg).textContent=c1(d[2]);
   el('text',{x:x(d[1])+(l?12:-12),y:cy+4,'text-anchor':l?'start':'end'},svg).textContent=c1(d[1]);
