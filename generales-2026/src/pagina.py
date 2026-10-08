@@ -211,7 +211,7 @@ def jsonld(F):
         'datePublished': PUBLICADO, 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
         'image': 'https://mapaelectoral.es/img/compartir/portada.jpg',
         'author': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'}, 'publisher': MEDIO, 'isAccessibleForFree': True,
-        'about': [{'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29', 'endDate': '2026-11-29', 'location': {'@type': 'Place', 'name': 'España', 'address': {'@type': 'PostalAddress', 'addressCountry': 'ES'}}}],
+        'about': [{'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'}],
         'citation': ['https://infoelectoral.interior.gob.es/', 'https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'https://www.ine.es/censos2021/'],
     }
     ds = {
