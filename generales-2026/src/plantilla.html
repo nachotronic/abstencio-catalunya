@@ -191,7 +191,7 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
   <div class="kicker">Elecciones generales del 29 de noviembre</div>
   <h1>El mapa de las generales: cómo vota cada barrio de España</h1>
   <p class="lede">Los resultados del Congreso de 2004 a 2023 en las {{nsec}} secciones censales de España, la unidad más pequeña con datos electorales, cruzados con la renta, la pobreza, la edad y la población extranjera de cada una. Los barrios ricos votan más y votan distinto que los pobres.</p>
-  <p class="byline">Por {{autor}} · Revisión de datos: {{revisor}} · Actualizado el <time datetime="{{hoy}}">{{hoy_txt}}</time> · <a href="metodologia.html">Metodología y datos</a> · <a href="#correcciones">Correcciones</a></p>
+  <p class="byline">Por {{autor}} · Revisión de datos: {{revisor}} · Actualizado el <time datetime="{{hoy}}">{{hoy_txt}}</time> · <a href="metodologia.html">Metodología y datos</a> · <a href="../atlas/correcciones/">Correcciones</a></p>
   <p class="compara"><b>Qué se compara.</b> Los votos de cada sección censal (un barrio o un pueblo de unos pocos cientos a unos miles de electores) en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, frente a la renta, la pobreza, la edad y la población extranjera que el INE mide en esa misma sección. Son datos de lugares, no de personas: dicen dónde se vota de una manera, no quién.</p>
   <div class="rel"><a class="atlas" href="../abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </header>
@@ -320,14 +320,11 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
   <div class="rel"><a class="atlas" href="../atlas/"><span class="atlas-k">Sigue leyendo</span><b>Atlas de las anomalías electorales</b><span>Los lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.</span><span class="atlas-go">Leer las piezas →</span></a><a class="atlas" href="../abstencion.html"><span class="atlas-k">Cataluña, barrio a barrio</span><b>¿Quién no vota en Cataluña?</b><span>De cada 100 adultos que vivían en Cataluña el 23J, 54 votaron, 17 no tenían derecho a voto y 29 se abstuvieron. El mapa de sus 5.115 secciones censales.</span><span class="atlas-go">Leer la pieza →</span></a></div>
 </section>
 
-<section class="col" id="correcciones" aria-labelledby="h-corr">
-  <h2 id="h-corr">Correcciones</h2>
-  <ul class="corr">{{correcciones}}</ul>
-</section>
 </main>
 <footer class="col">
   <p><b>Fuentes</b>: Ministerio del Interior (resultados por mesa, sin voto CERA), vía <a href="https://github.com/dadosdelaplace/pollspaindata">pollspaindata</a>. INE, Atlas de Distribución de Renta de los Hogares 2023 y Censo 2021, vía <a href="https://github.com/pablogguz/ineAtlas.data">ineAtlas.data</a>. Datos por sección: dicen dónde se vota de una manera, no quién. <a href="metodologia.html">Metodología completa</a>.</p>
   <p><b>Descargas</b> (CSV, licencia CC BY 4.0): <a href="descargas/secciones.csv">secciones</a> · <a href="descargas/municipios.csv">municipios</a> · <a href="descargas/resultados_secciones_largo.csv">votos por sección y partido</a></p>
+  <p><a href="../atlas/correcciones/">Correcciones</a> · <a href="../atlas/politica-editorial/">Política editorial</a></p>
 </footer>
 <script src="https://unpkg.com/deck.gl@9.4.0/dist.min.js"></script>
 <script src="app.js"></script>
