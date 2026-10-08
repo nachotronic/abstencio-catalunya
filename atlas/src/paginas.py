@@ -223,7 +223,7 @@ def siguelo():
             + f' por <a href="{ATLAS_URL}feed.xml">RSS</a> o en <a href="{X_URL}">X</a>.{form}</aside>')
 
 
-PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</a> · <a href="{REPO}">Código y datos</a> · <a href="{ATLAS_URL}politica-editorial/">Política editorial</a></footer>
+PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</a> · <a href="{REPO}">Código y datos</a> · <a href="{ATLAS_URL}politica-editorial/">Política editorial</a> · <a href="{ATLAS_URL}politica-editorial/#ia">Uso de IA</a>: con apoyo de IA, revisado por {FIRMA}</footer>
 </main>
 </body>
 </html>
@@ -489,6 +489,13 @@ def politica():
 </ul>
 <h2 id="fuentes">Fuentes y datos abiertos</h2>
 <p>Los resultados salen del Ministerio del Interior y de los organismos electorales autonómicos; los indicadores sociales, del INE y del Idescat. Las tablas de cada pieza se publican en CSV con licencia <a href="{LICENCIA}">CC BY 4.0</a> y el código está en <a href="{REPO}">GitHub</a>. Las citas de expertos y estudios son literales y llevan enlace a su origen. Más detalle en la <a href="../metodologia/index.html">metodología</a>.</p>
+<h2 id="ia">Uso de inteligencia artificial</h2>
+<p>{SITIO} usa herramientas de inteligencia artificial (modelos de lenguaje) como apoyo: para escribir y revisar el código que procesa los datos, para buscar y contrastar fuentes y para preparar borradores de texto.</p>
+<ul>
+<li>Las cifras no las escribe la IA: las calculan scripts a partir de los datos oficiales y las comprueban controles automáticos antes de publicar.</li>
+<li>Todos los textos los revisa y edita {FIRMA} antes de publicarlos, y él asume la responsabilidad editorial de lo publicado.</li>
+<li>Las fotografías proceden de Wikimedia Commons, con su autoría y licencia; no se publican imágenes generadas por IA. Los mapas y gráficos se dibujan directamente a partir de los datos.</li>
+</ul>
 <h2 id="correcciones">Correcciones</h2>
 <p>Si cambia un dato o una conclusión de una pieza publicada, se corrige en la propia pieza con la fecha y lo que cambió, y se anota en el <a href="../correcciones/index.html">historial de correcciones</a>. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>
 <h2 id="contacto">Contacto</h2>
