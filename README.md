@@ -32,6 +32,10 @@ python3 atlas/src/construir.py && python3 atlas/src/controles.py && python3 atla
 
 `construir.py` calcula todas las cifras (`atlas/src/cifras.json`) y los CSV de `atlas/datos/`; `controles.py` comprueba escaños oficiales, universo, afirmaciones con nombre propio y que cada cifra del texto salga de los datos (informe en `atlas/src/controles.txt`); `paginas.py` escribe las páginas, el sitemap y `llms.txt`. `expediente.py` genera el expediente interno y la muestra para la comprobación manual (no se publica).
 
+Después, `node atlas/src/compartir.mjs` dibuja con Playwright la imagen para redes (1200 × 630) de cada pieza y del índice en `img/compartir/` (titular, subtítulo y foto). La de la portada, `img/compartir/portada.jpg`, se hizo una vez con una captura del mapa.
+
+Cada pieza tiene un titular corto (`atlas/src/titulares.py`, 60 caracteres como máximo) que se usa en el `<h1>`, las tarjetas, el `<title>` y las redes; el titular largo (`titulo`) pasa a ser el subtítulo. `paginas.py` escribe también `atlas/feed.xml` (RSS) y rellena en la portada del sitio (`index.html` y la plantilla de `generales-2026/`) la franja «Del Atlas» con las tres últimas piezas, entre las marcas `<!--atlas:ultimas-->`. El boletín se activa poniendo la URL del formulario de alta en `NEWSLETTER` de `paginas.py`; mientras esté vacío, el bloque «Síguelo» ofrece RSS y X.
+
 Ninguna pieza se publica sola: mientras su campo `revisado` en `atlas/src/piezas.py` esté vacío, la página dice «Revisión pendiente», lleva `noindex` y queda fuera del sitemap. Se rellena con la fecha cuando el revisor ha comprobado la muestra manual y el texto.
 
 ## Publicar con GitHub Pages
