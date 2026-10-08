@@ -54,10 +54,8 @@ PIEZAS = [
                  ('https://es.wikipedia.org/wiki/Xos%C3%A9_Manuel_Beiras', 'Wikipedia, «Xosé Manuel Beiras» (consultada el 8-10-2026)')],
         enlaces=[('El País', 'https://elpais.com/espana/2026-10-08/muere-a-los-90-anos-xose-manuel-beiras-historico-dirigente-del-nacionalismo-gallego.html')],
         lugar='Galicia',
-        foto=dict(src='img/actualidad/fotos/beiras-nacionalismo-gallego.jpg', ancho=1280, alto=672,
-                  pie='Xosé Manuel Beiras en la manifestación del Día da Patria, en Santiago de Compostela, el 25 de julio de 2009.',
-                  credito='Albert galiza, Wikimedia Commons, CC BY-SA 3.0',
-                  url='https://commons.wikimedia.org/wiki/File:Beiras_25_xullo_2009.JPG'),
+        foto=dict(src='img/actualidad/fotos/beiras-nacionalismo-gallego.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Xosé Manuel Beiras, con la bandera gallega y una urna.'),
     ),
     dict(
         slug='colau-barcelona-comuns', fecha='2026-10-08',
@@ -70,10 +68,8 @@ PIEZAS = [
                  ('https://civio.es/el-boe-nuestro-de-cada-dia/2026/10/06/llega-al-boe-la-convocatoria-de-elecciones-para-el-29-de-noviembre-todas-las-fechas-y-pasos-hasta-ese-dia/', 'Civio, calendario y escaños del decreto de convocatoria (6-10-2026)')],
         enlaces=[],
         lugar='Barcelona',
-        foto=dict(src='img/actualidad/fotos/colau-barcelona-comuns.jpg', ancho=1280, alto=672,
-                  pie='Ada Colau en el festival Encuentro de Castiglione del Lago (Italia), el 1 de junio de 2024.',
-                  credito='Robo71, Wikimedia Commons, CC0',
-                  url='https://commons.wikimedia.org/wiki/File:Ada-Colau-Encuentro-2024.jpg'),
+        foto=dict(src='img/actualidad/fotos/colau-barcelona-comuns.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Ada Colau, con Barcelona al fondo.'),
     ),
     dict(
         slug='votar-en-noviembre', fecha='2026-10-08',
@@ -158,10 +154,8 @@ PIEZAS = [
         lugar='Cataluña',
         actualizado='2026-10-08',
         correcciones='8-10-2026: Junts ganó en 465 secciones en las generales de 2023, no en 444 (se habían contado solo las secciones con datos del Parlament de 2024). En Lleida, del 18,1%, no del 18,0%. Las conclusiones no cambian.',
-        foto=dict(src='img/actualidad/fotos/puigdemont-junts-congreso-parlament.jpg', ancho=1280, alto=672,
-                  pie='Carles Puigdemont en un mitin de la campaña de las elecciones al Parlament, en Elna (Francia), el 4 de mayo de 2024.',
-                  credito='DrGiRu, Wikimedia Commons, CC0',
-                  url='https://commons.wikimedia.org/wiki/File:Carles_Puigdemont_a_Elna_en_2024.jpg'),
+        foto=dict(src='img/actualidad/fotos/puigdemont-junts-congreso-parlament.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Carles Puigdemont, con la senyera, una urna y gráficos.'),
     ),
 ]
 
@@ -324,8 +318,11 @@ def pieza(p, todas):
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
     if p.get('foto'):
         fo = p['foto']
-        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="" width="{fo["ancho"]}" height="{fo["alto"]}">'
-                            f'<figcaption>{html.escape(fo["pie"])} Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>.</figcaption></figure>', 1)
+        # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
+        cred = (f'Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>' if fo.get('ia')
+                else f'Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>')
+        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="{html.escape(fo["pie"]) if fo.get("ia") else ""}" width="{fo["ancho"]}" height="{fo["alto"]}">'
+                            f'<figcaption>{html.escape(fo["pie"])} {cred}.</figcaption></figure>', 1)
     for texto, href in ENLACES_TEXTO.get(p['slug'], []):
         assert texto in main, (p['slug'], texto)
         main = main.replace(texto, f'<a href="{href}">{texto}</a>', 1)
