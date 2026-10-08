@@ -41,6 +41,9 @@ PARLAMENT = ('https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr',
 
 # Series: agrupan las piezas en el índice, en la portada y en «Sigue leyendo»
 SERIES = {'29n': 'Camino al 29N', 'vivienda': 'Vivienda y voto'}
+# Ilustración de cada serie: cabecera de las piezas que no tienen una propia y del bloque de la serie en el índice
+SERIES_FOTO = {'vivienda': dict(src='img/actualidad/fotos/serie-vivienda.jpg', ancho=1280, alto=720, ia=True,
+                                pie='Una urna llena de edificios y unas llaves: la serie «Vivienda y voto».')}
 
 PIEZAS = [
     dict(
@@ -316,8 +319,8 @@ def pieza(p, todas):
     main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {SERIES[p["serie"]]} · {p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
-    if p.get('foto'):
-        fo = p['foto']
+    fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
+    if fo:
         # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
         cred = (f'Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>' if fo.get('ia')
                 else f'Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>')
@@ -374,7 +377,10 @@ def indice(todas):
               'hasPart': [{'@type': 'NewsArticle', 'headline': p['titulo'], 'url': f"{url}{p['slug']}/", 'datePublished': p['fecha']} for p in todas]}
     def bloque(serie):
         qs = [q for q in todas if q['serie'] == serie]
-        return (f'<h2 id="{serie}">{SERIES[serie]}</h2><ul class="sigue">' +
+        fo = SERIES_FOTO.get(serie)
+        img = (f'<figure class="foto"><img src="../{fo["src"]}" alt="{html.escape(fo["pie"])}" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
+               f'<figcaption>Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>') if fo else ''
+        return (f'<h2 id="{serie}">{SERIES[serie]}</h2>{img}<ul class="sigue">' +
                 ''.join(f'<li><a href="{q["slug"]}/index.html"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></a></li>'
                         for q in sorted(qs, key=lambda q: q['fecha'], reverse=True)) + '</ul>')
     # primero la serie con la pieza más reciente
