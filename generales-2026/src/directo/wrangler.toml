@@ -7,8 +7,11 @@ crons = ["* * * * *"]
 
 [[kv_namespaces]]
 binding = "RESULTADOS"
-id = "PON_AQUI_EL_ID_DEL_KV"
+id = "PON_AQUI_EL_ID_DEL_KV"   # npx wrangler kv namespace create RESULTADOS
 
 [vars]
-FUENTE = "https://PON_AQUI_LA_URL_OFICIAL"
+# Raíz de la API de la web de resultados de Interior, acabada en /backend-difu (en el 23J,
+# https://resultados.generales23j.es/backend-difu). También vale la URL de un JSON ya normalizado.
+FUENTE = "https://PON_AQUI_LA_WEB_DE_RESULTADOS/backend-difu"
+# MODO = "municipios"   # plan B si la provincia no trae dentro sus municipios (ver worker.js)
 # CLAVE se define como secreto: npx wrangler secret put CLAVE

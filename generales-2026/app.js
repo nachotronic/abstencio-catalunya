@@ -346,9 +346,13 @@
 
 
   // ---------- directo (noche electoral): JSON normalizado (ver actualizar_29n.py) cada minuto
-  const DIRURL = new URLSearchParams(location.search).get('directo') || (META.directo && META.directo.url);
+  // Una ruta relativa (?directo=data/simulacro.json) se busca junto a los datos, como el resto: así el ensayo funciona igual
+  // en la portada, en generales-2026/ y en el mapa insertado (insertar/).
+  const DIR0 = new URLSearchParams(location.search).get('directo') || (META.directo && META.directo.url);
+  const DIRURL = DIR0 && (/^(https?:)?\/\//.test(DIR0) ? DIR0 : new URL(DIR0.replace(/^\.?\//, ''), RAIZ || location.href).href);
   const REG = (META.reglas || []).map(([c, p]) => [c, new RegExp(p)]);
-  const famDe = s => { const a = (s || '').toUpperCase().trim(); for (const [c, r] of REG) if (r.test(a)) return c; return 'OTROS'; };
+  // Como familia() de partidos.py: se prueba con las siglas tal cual y sin puntos (U.P.N. es UPN, con el PP).
+  const famDe = s => { const a = (s || '').toUpperCase().trim(); for (const x of [a, a.replace(/\./g, '')]) for (const [c, r] of REG) if (r.test(x)) return c; return 'OTROS'; };
   if (DIRURL) directo(DIRURL);
   async function directo(url) {
     let first = true;
@@ -401,7 +405,10 @@
     }
     if (first) { st.y = y; if (!['gana', 'party', 'part'].includes(st.v)) st.v = 'gana'; selV.value = st.v; }
     selE.value = st.y;
+    // Si el mapa sigue en la vista inicial, se reencaja después de mostrar el recuadro, que le quita alto
+    const h0 = HOME(), enCasa = Math.abs(view.zoom - h0.zoom) < .01 && Math.abs(view.longitude - h0.longitude) < 1e-6;
     const box = $('#directo'); box.hidden = false;
+    const h1 = HOME(); if (enCasa && h1.zoom !== view.zoom) { view = { ...view, ...h1 }; dk.setProps({ initialViewState: view }); }
     $('#d-nombre').textContent = (F.simulacro ? 'Simulacro con datos del 23J · ' : '') + (META.directo.nombre || y);
     $('#d-esc').textContent = pct(F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
     const t = F.actualizado ? new Date(F.actualizado) : new Date();

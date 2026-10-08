@@ -26,9 +26,9 @@ Requisitos: Python 3 con pandas, geopandas, pyarrow. `python3 construir.py && py
 
 ## Noche electoral
 
-1. **Antes**: cuando Interior publique la web de resultados (suele ser en el simulacro, unos días antes), escribir el adaptador `transformar()` de `directo/worker.js` y desplegar el Worker (`npx wrangler deploy`, con un KV y la URL de la fuente en `wrangler.toml`).
-2. Poner la URL del Worker en `GENERALES_DIRECTO` y regenerar (`GENERALES_DIRECTO=https://…/resultados.json python3 construir.py`), o pasarla por la URL: `index.html?directo=https://…/resultados.json`.
-3. Ensayo sin datos reales: `python3 actualizar_29n.py --simulacro 0.6` y abrir `index.html?directo=data/simulacro.json`.
+1. **Antes**: cuando Interior abra la web de resultados del 29N (suele ser con el simulacro, unos días antes), mirar en el navegador (herramientas de desarrollo, pestaña Red) que la API sigue siendo la del 23J: rutas `…/backend-difu/web/getConfig` y `…/backend-difu/scope/data/getScopeData/…`. El adaptador de `src/directo/worker.js` ya lee ese formato (comprobado con respuestas reales del 23J). Poner esa raíz en `FUENTE` de `wrangler.toml`, crear el KV y desplegar con `npx wrangler deploy` (plan de pago de Workers, 5 $/mes). Si la provincia no trae dentro sus municipios, `MODO = "municipios"`.
+2. Poner la URL del Worker en `GENERALES_DIRECTO` y regenerar (`GENERALES_DIRECTO=https://…/resultados.json python3 construir.py`), o pasarla por la URL: `index.html?directo=https://…/resultados.json`. Con la URL en `data/meta.json`, el directo sale también en el mapa insertado en otros medios (`insertar/`), sin que tengan que cambiar nada.
+3. Ensayo sin datos reales: `python3 actualizar_29n.py --simulacro 0.6` y abrir `?directo=data/simulacro.json` (vale en la portada y en `insertar/`). Ensayo completo con una Interior simulada: `src/directo/ensayo/LEEME.md`.
 4. En directo la pieza muestra % escrutado, reparto de escaños (D'Hondt por provincia con barrera del 3%, Madrid 38 y Cádiz 8) y el mapa por municipio, y se refresca cada minuto.
 5. **Al terminar**: `python3 actualizar_29n.py --json resultados.json && python3 construir.py && python3 pagina.py` congela el provisional en la pieza. El texto sigue hablando del 23J: hay que reescribir la entradilla y los apartados a mano.
 6. **Semanas después**: con `02202611_MESA.zip` de Infoelectoral, `python3 actualizar_29n.py --mir 02202611_MESA.zip` y reconstruir: el 29N pasa a estar también por sección.
