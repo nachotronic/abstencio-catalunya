@@ -465,9 +465,15 @@ def datos():
 
 
 def correcciones():
-    ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Correcciones · ' + NOMBRE, 'url': url('correcciones/index.html')}
-    h = [cabeza('Correcciones · ' + NOMBRE, 'Historial de correcciones de datos y conclusiones del Atlas.', 'correcciones/index.html', ld, nivel=1)]
-    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión de una pieza ya publicada, se anota aquí y en la propia pieza, con la fecha y qué cambió. La dirección de la página no cambia.</p><p>Todavía no hay correcciones.</p><p><a href="../politica-editorial/index.html">Política editorial</a></p>')
+    # Las del mapa de resultados (la portada) viven en generales-2026/src/correcciones.py y se publican solo aquí
+    sys.path.insert(0, str(ROOT / 'generales-2026' / 'src'))
+    from correcciones import CORRECCIONES as MAPA
+    li = lambda d, t: f'<li><time datetime="{d}">{fecha_txt(d)}</time>. {escape(t)}</li>'
+    ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Correcciones · ' + SITIO, 'url': url('correcciones/index.html')}
+    h = [cabeza('Correcciones · ' + SITIO, 'Historial de correcciones de datos y conclusiones de Mapa Electoral: el mapa de resultados y el Atlas.', 'correcciones/index.html', ld, nivel=1)]
+    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>')
+    h.append('<h2 id="mapa">Mapa de resultados</h2><p><a href="../../">El mapa de las generales: cómo vota cada barrio de España</a></p><ul class="corr">' + ''.join(li(d, t) for d, t in MAPA) + '</ul>')
+    h.append('<h2 id="atlas">Atlas de las anomalías electorales</h2><p>Todavía no hay correcciones. Cuando las haya, se anotarán también en la propia pieza.</p><p><a href="../politica-editorial/index.html">Política editorial</a></p>')
     h.append(PIE)
     return 'correcciones/index.html', ''.join(h)
 

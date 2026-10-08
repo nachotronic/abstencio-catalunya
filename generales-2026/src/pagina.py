@@ -15,19 +15,6 @@ AUTOR = os.environ.get('GENERALES_AUTOR', 'Nacho G. del Álamo')
 REVISOR = os.environ.get('GENERALES_REVISOR', 'Nacho G. del Álamo')
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 fecha = lambda d: f"{d.day} de {MESES[d.month - 1]} de {d.year}"
-# Fe de errores visible en la página: (fecha ISO, texto). Añadir una línea cada vez que cambie un dato o una conclusión publicada.
-CORRECCIONES = [
-    ('2026-10-06', 'Agrupación de partidos revisada: UPN cuenta con el PP también cuando se presenta sola, y Compromís, Más País y Más Madrid con '
-                   'Sumar / Podemos / IU también cuando van por separado. Se corrigen además una lista de Unidos Podemos de 2016 y la de C,S de 2008, '
-                   'que estaban en Otros, y Esquerra Republicana del País Valencià, que pasa a ERC. El PP del 23J pasa del 33,1% al 33,3% '
-                   '(con UPN) y cambian algunos recuentos de secciones y municipios.'),
-    ('2026-10-06', 'Las mesas que figuran con censo y ningún voto en los ficheros de Interior (de 0 a 8 por elección, como una de La Línea de la '
-                   'Concepción en 2023) se tratan como «sin dato» en lugar de como un 0% de participación.'),
-    ('2026-10-06', 'Los recuentos de secciones y municipios donde gana cada partido ya no cuentan los empates.'),
-    ('2026-10-06', 'Se reformulan tres frases que decían más que los datos: la entradilla hablaba de personas («quien vive en un barrio rico») '
-                   'con datos por sección; «los barrios ricos votan PP» pasa a «el PP gana en ellos», y «Vox crece» pasa a «Vox saca más», porque '
-                   'el dato es de una sola elección. Las cifras no cambian.'),
-]
 HOY = dt.date.today().isoformat()
 PUBLICADO = '2026-10-06'   # fecha de publicación de la pieza; no cambia al regenerarla
 # Editor de todo el sitio (el mismo objeto en src/seo.py, src/portada.py y atlas/src/paginas.py)
@@ -93,7 +80,6 @@ def main():
         sin=n(round(sin / 1e5) * 1e5), sin_pct=p(sin / adultos),
         low=lista(low, f'{y}_part'), high=lista(high, f'{y}_part'), vox_top=lista(vox, f'{y}_VOX'),
         hoy=HOY, hoy_txt=fecha(dt.date.fromisoformat(HOY)), url=URL, autor=html.escape(AUTOR), revisor=html.escape(REVISOR),
-        correcciones=''.join(f'<li><time datetime="{d}">{fecha(dt.date.fromisoformat(d))}</time>. {html.escape(t)}</li>' for d, t in CORRECCIONES),
         nmun_dato=n(int(gmun.notna().sum())),
     )
     F.update({'tablas_' + k: v for k, v in tablas(V).items()})
