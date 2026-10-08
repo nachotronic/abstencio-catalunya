@@ -7,7 +7,8 @@ También apunta a la portada los enlaces a generales-2026/ de su llms.txt, su si
 
 En la portada el mapa sube a la primera pantalla: debajo del título, antes de la entradilla.
 
-Uso, cada vez que se actualice la pieza de generales-2026/:  python3 src/portada.py
+Uso, cada vez que se actualice la pieza de generales-2026/:  python3 src/portada.py && python3 src/insertable.py
+(insertable.py regenera insertar/, la versión del mapa para insertar en otras webs)
 """
 import json, pathlib, re
 
