@@ -1,0 +1,1177 @@
+{
+ "scope": {
+  "codigo": "26173",
+  "nombre": "Villarroya",
+  "nivel": 90,
+  "numMesas": 1,
+  "censoINE": 7,
+  "censoNoche": 7,
+  "padres": [
+   {
+    "nivel": 85,
+    "nombre": "Calahorra",
+    "codigo": "2601",
+    "isCircuns": 0,
+    "scopeId": "00000000000000000003f859"
+   },
+   {
+    "nivel": 80,
+    "nombre": "Calahorra",
+    "codigo": "26036",
+    "isCircuns": 0,
+    "scopeId": "00000000000000000027baa0"
+   },
+   {
+    "nivel": 30,
+    "nombre": "La Rioja",
+    "codigo": "26",
+    "isCircuns": 1,
+    "scopeId": "000000000000000000000a46"
+   },
+   {
+    "nivel": 20,
+    "nombre": "La Rioja",
+    "codigo": "16",
+    "isCircuns": 2,
+    "scopeId": "000000000000000000000654"
+   },
+   {
+    "nivel": 10,
+    "nombre": "Menos de 251",
+    "codigo": "01",
+    "isCircuns": 2,
+    "scopeId": "00000000000000000000006e"
+   },
+   {
+    "nivel": 1,
+    "nombre": "España",
+    "codigo": "1",
+    "isCircuns": 2,
+    "scopeId": "00000000000000000000000b"
+   }
+  ],
+  "apertura": {
+   "envio": 4,
+   "fecha": "2023-07-23T06:09:55.004+00:00",
+   "censoAbierto": {
+    "pro": 7,
+    "def": 7
+   },
+   "porcCensoAbierto": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "mesasAbiertas": {
+    "pro": 1,
+    "def": 1
+   },
+   "porcMesasAbiertas": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "censoSuspendido": {
+    "pro": 0,
+    "def": 0
+   },
+   "porcCensoSuspendido": {
+    "pro": 0.0,
+    "def": 0.0
+   },
+   "mesasSuspendidas": {
+    "pro": 0,
+    "def": 0
+   },
+   "porcMesasSuspendidas": {
+    "pro": 0.0,
+    "def": 0.0
+   }
+  },
+  "avances": null,
+  "escrutinio": {
+   "envio": 11,
+   "fecha": "2023-07-23T18:27:12.003+00:00",
+   "censoNocheEscrutado": {
+    "pro": 7,
+    "def": 7
+   },
+   "mesasEscrutadas": {
+    "pro": 1,
+    "def": 1
+   },
+   "votosValidos": {
+    "pro": 7,
+    "def": 7
+   },
+   "votosBlancos": {
+    "pro": 3,
+    "def": 3
+   },
+   "votosNulos": {
+    "pro": 0,
+    "def": 0
+   },
+   "votosPartidos": {
+    "pro": 4,
+    "def": 4
+   },
+   "votosTotales": {
+    "pro": 7,
+    "def": 7
+   },
+   "abstencion": {
+    "pro": 0,
+    "def": 0
+   },
+   "porcMesasEscrutadas": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "porcCensoEscrutado": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "porcCensoNocheEscrutado": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "porcVotosBlancos": {
+    "pro": 42.85,
+    "def": 42.85
+   },
+   "porcVotosPartidos": {
+    "pro": 57.14,
+    "def": 57.14
+   },
+   "porcVotosNulos": {
+    "pro": 0.0,
+    "def": 0.0
+   },
+   "porcVotosValidos": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "porcAbstencion": {
+    "pro": 0.0,
+    "def": 0.0
+   },
+   "participacion": {
+    "pro": 100.0,
+    "def": 100.0
+   },
+   "partidos": [
+    {
+     "siglas": "PP",
+     "codigo": "5",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "PARTIDO POPULAR",
+     "votos": {
+      "pro": 4,
+      "def": 4
+     },
+     "porcentaje": {
+      "pro": 57.14,
+      "def": 57.14
+     },
+     "enfrentamiento": null,
+     "orden": 3,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "PARTIDO POPULAR",
+       "siglas": "PP",
+       "codigo": "5"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "PP",
+       "codigo": "83",
+       "cargos": null,
+       "nombre": "PARTIDO POPULAR",
+       "votos": {
+        "pro": 0,
+        "def": 5
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 62.5
+       },
+       "orden": 2,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "PARTIDO POPULAR",
+         "siglas": "PP",
+         "codigo": "83"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 5,
+       "delta": {
+        "votos": -1,
+        "votosPorc": -5.36,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "PSOE",
+     "codigo": "2",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "PARTIDO SOCIALISTA OBRERO ESPAÑOL",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 4,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "PARTIDO SOCIALISTA OBRERO ESPAÑOL",
+       "siglas": "PSOE",
+       "codigo": "2"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "PSOE",
+       "codigo": "94",
+       "cargos": {
+        "pro": 0,
+        "def": 0
+       },
+       "nombre": "PARTIDO SOCIALISTA OBRERO ESPAÑOL",
+       "votos": {
+        "pro": 0,
+        "def": 2
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 25.0
+       },
+       "orden": 1,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "PARTIDO SOCIALISTA OBRERO ESPAÑOL",
+         "siglas": "PSOE",
+         "codigo": "94"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 2,
+       "delta": {
+        "votos": -2,
+        "votosPorc": -25.0,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "PCTE",
+     "codigo": "15",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "PARTIDO COMUNISTA DE LOS TRABAJADORES DE ESPAÑA",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 5,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "PARTIDO COMUNISTA DE LOS TRABAJADORES DE ESPAÑA",
+       "siglas": "PCTE",
+       "codigo": "15"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "PCTE",
+       "codigo": "64",
+       "cargos": {
+        "pro": 0,
+        "def": 0
+       },
+       "nombre": "PARTIDO COMUNISTA DE LOS TRABAJADORES DE ESPAÑA",
+       "votos": {
+        "pro": 0,
+        "def": 0
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 0.0
+       },
+       "orden": 5,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "PARTIDO COMUNISTA DE LOS TRABAJADORES DE ESPAÑA",
+         "siglas": "PCTE",
+         "codigo": "64"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 15,
+       "delta": {
+        "votos": 0,
+        "votosPorc": 0.0,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "PACMA",
+     "codigo": "7",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "PARTIDO ANIMALISTA CON EL MEDIO AMBIENTE",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 8,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "PARTIDO ANIMALISTA CON EL MEDIO AMBIENTE",
+       "siglas": "PACMA",
+       "codigo": "7"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "PACMA",
+       "codigo": "55",
+       "cargos": {
+        "pro": 0,
+        "def": 0
+       },
+       "nombre": "PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL",
+       "votos": {
+        "pro": 0,
+        "def": 0
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 0.0
+       },
+       "orden": 3,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL",
+         "siglas": "PACMA",
+         "codigo": "55"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 7,
+       "delta": {
+        "votos": 0,
+        "votosPorc": 0.0,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "ESCAÑOS EN BLANCO",
+     "codigo": "14",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "ESCAÑOS EN BLANCO PARA DEJAR ESCAÑOS VACÍOS",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 9,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "ESCAÑOS EN BLANCO PARA DEJAR ESCAÑOS VACÍOS",
+       "siglas": "ESCAÑOS EN BLANCO",
+       "codigo": "14"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "EB",
+       "codigo": "23",
+       "cargos": {
+        "pro": 0,
+        "def": 0
+       },
+       "nombre": "ESCAÑOS EN BLANCO",
+       "votos": {
+        "pro": 0,
+        "def": 0
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 0.0
+       },
+       "orden": 9,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "ESCAÑOS EN BLANCO",
+         "siglas": "EB",
+         "codigo": "23"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 14,
+       "delta": {
+        "votos": 0,
+        "votosPorc": 0.0,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "VOX",
+     "codigo": "6",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "VOX",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 10,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "VOX",
+       "siglas": "VOX",
+       "codigo": "6"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "VOX",
+       "codigo": "116",
+       "cargos": {
+        "pro": 0,
+        "def": 0
+       },
+       "nombre": "VOX",
+       "votos": {
+        "pro": 0,
+        "def": 0
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 0.0
+       },
+       "orden": 4,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "VOX",
+         "siglas": "VOX",
+         "codigo": "116"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 6,
+       "delta": {
+        "votos": 0,
+        "votosPorc": 0.0,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "PUM+J",
+     "codigo": "3",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "POR UN MUNDO MÁS JUSTO",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 11,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "POR UN MUNDO MÁS JUSTO",
+       "siglas": "PUM+J",
+       "codigo": "3"
+      }
+     ],
+     "partidosEnfrentamiento": [
+      {
+       "siglas": "PUM+J",
+       "codigo": "98",
+       "cargos": {
+        "pro": 0,
+        "def": 0
+       },
+       "nombre": "POR UN MUNDO MÁS JUSTO",
+       "votos": {
+        "pro": 0,
+        "def": 0
+       },
+       "porcentaje": {
+        "pro": 0.0,
+        "def": 0.0
+       },
+       "orden": 7,
+       "agrupaciones": [
+        {
+         "nivel": 1,
+         "nombre": "POR UN MUNDO MÁS JUSTO",
+         "siglas": "PUM+J",
+         "codigo": "98"
+        }
+       ],
+       "convocatoria": "11-19",
+       "enfrentamiento": 3,
+       "delta": {
+        "votos": 0,
+        "votosPorc": 0.0,
+        "cargos": null
+       }
+      }
+     ]
+    },
+    {
+     "siglas": "3e",
+     "codigo": "42",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "TERCERA EDAD EN ACCIÓN",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 2,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "TERCERA EDAD EN ACCIÓN",
+       "siglas": "3e",
+       "codigo": "42"
+      }
+     ],
+     "partidosEnfrentamiento": []
+    },
+    {
+     "siglas": "FO",
+     "codigo": "1",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "FRENTE OBRERO",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 1,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "FRENTE OBRERO",
+       "siglas": "FO",
+       "codigo": "1"
+      }
+     ],
+     "partidosEnfrentamiento": []
+    },
+    {
+     "siglas": "RECORTES CERO",
+     "codigo": "9",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "RECORTES CERO",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 7,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "RECORTES CERO",
+       "siglas": "RECORTES CERO",
+       "codigo": "9"
+      }
+     ],
+     "partidosEnfrentamiento": []
+    },
+    {
+     "siglas": "SUMAR",
+     "codigo": "10",
+     "cargos": {
+      "pro": 0,
+      "def": 0
+     },
+     "nombre": "SUMAR",
+     "votos": {
+      "pro": 0,
+      "def": 0
+     },
+     "porcentaje": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "enfrentamiento": null,
+     "orden": 6,
+     "candidatos": [],
+     "agrupaciones": [
+      {
+       "nivel": 1,
+       "nombre": "SUMAR",
+       "siglas": "SUMAR",
+       "codigo": "10"
+      }
+     ],
+     "partidosEnfrentamiento": []
+    }
+   ],
+   "hayEmpate": null,
+   "candidaturas": [],
+   "cargos": 0,
+   "cargosEleccion": null,
+   "convocatoria": null,
+   "escrutinioAnt": [
+    {
+     "convocatoria": "11-19",
+     "votosBlancos": {
+      "pro": 0,
+      "def": 1
+     },
+     "votosNulos": {
+      "pro": 0,
+      "def": 0
+     },
+     "votosTotales": {
+      "pro": 0,
+      "def": 8
+     },
+     "votosPartidos": {
+      "pro": 0,
+      "def": 7
+     },
+     "votosValidos": {
+      "pro": 0,
+      "def": 8
+     },
+     "abstencion": {
+      "pro": 0,
+      "def": 0
+     },
+     "mesasEscrutadas": {
+      "pro": 0,
+      "def": 0
+     },
+     "censoEscrutado": {
+      "pro": 0,
+      "def": 8
+     },
+     "porcVotosBlancos": {
+      "pro": 0.0,
+      "def": 12.5
+     },
+     "porcVotosNulos": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "porcVotosValidos": {
+      "pro": 0.0,
+      "def": 100.0
+     },
+     "porcAbstencion": {
+      "pro": 0.0,
+      "def": 0.0
+     },
+     "porcVotosPartidos": {
+      "pro": 0.0,
+      "def": 87.5
+     },
+     "porcCensoEscrutado": null,
+     "porcMesasEscrutadas": null,
+     "participacion": {
+      "pro": 0.0,
+      "def": 100.0
+     },
+     "delta": {
+      "abstencion": 0,
+      "votosBlancos": 2,
+      "votosValidos": -1,
+      "votosPartidos": -3,
+      "votosNulos": 0,
+      "votosTotales": -1,
+      "porcVotosBlancos": 30.35,
+      "porcVotosValidos": 0.0,
+      "porcVotosNulos": 0.0,
+      "porcVotosPartidos": -30.36,
+      "porcAbstencion": 0.0,
+      "participacion": 0.0
+     },
+     "partidoResto": null,
+     "partidos": null
+    }
+   ],
+   "partidoGanador": {
+    "siglas": "PP",
+    "codigo": "5",
+    "cargos": {
+     "pro": 0,
+     "def": 0
+    },
+    "nombre": "PARTIDO POPULAR",
+    "votos": {
+     "pro": 4,
+     "def": 4
+    },
+    "porcentaje": {
+     "pro": 57.14,
+     "def": 57.14
+    },
+    "enfrentamiento": null,
+    "orden": 3,
+    "candidatos": [],
+    "agrupaciones": [
+     {
+      "nivel": 1,
+      "nombre": "PARTIDO POPULAR",
+      "siglas": "PP",
+      "codigo": "5"
+     }
+    ],
+    "partidosEnfrentamiento": null
+   },
+   "partidoUltimoEscano": null,
+   "partidoCercano": null
+  },
+  "escrutinioAnt": [
+   {
+    "convocatoria": "11-19",
+    "votosBlancos": {
+     "pro": 0,
+     "def": 1
+    },
+    "votosNulos": {
+     "pro": 0,
+     "def": 0
+    },
+    "votosTotales": {
+     "pro": 0,
+     "def": 8
+    },
+    "votosPartidos": {
+     "pro": 0,
+     "def": 7
+    },
+    "votosValidos": {
+     "pro": 0,
+     "def": 8
+    },
+    "abstencion": {
+     "pro": 0,
+     "def": 0
+    },
+    "mesasEscrutadas": {
+     "pro": 0,
+     "def": 0
+    },
+    "censoEscrutado": {
+     "pro": 0,
+     "def": 8
+    },
+    "porcVotosBlancos": {
+     "pro": 0.0,
+     "def": 12.5
+    },
+    "porcVotosNulos": {
+     "pro": 0.0,
+     "def": 0.0
+    },
+    "porcVotosValidos": {
+     "pro": 0.0,
+     "def": 100.0
+    },
+    "porcAbstencion": {
+     "pro": 0.0,
+     "def": 0.0
+    },
+    "porcVotosPartidos": {
+     "pro": 0.0,
+     "def": 87.5
+    },
+    "porcCensoEscrutado": {
+     "pro": 0.0,
+     "def": 100.0
+    },
+    "porcMesasEscrutadas": {
+     "pro": 0.0,
+     "def": 100.0
+    },
+    "participacion": {
+     "pro": 0.0,
+     "def": 100.0
+    },
+    "delta": null,
+    "partidoResto": null,
+    "partidos": [
+     {
+      "siglas": "PP",
+      "codigo": "83",
+      "cargos": null,
+      "nombre": "PARTIDO POPULAR",
+      "votos": {
+       "pro": 0,
+       "def": 5
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 62.5
+      },
+      "enfrentamiento": "5",
+      "orden": 2,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "PARTIDO POPULAR",
+        "siglas": "PP",
+        "codigo": "83"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "PSOE",
+      "codigo": "94",
+      "cargos": null,
+      "nombre": "PARTIDO SOCIALISTA OBRERO ESPAÑOL",
+      "votos": {
+       "pro": 0,
+       "def": 2
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 25.0
+      },
+      "enfrentamiento": "2",
+      "orden": 1,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "PARTIDO SOCIALISTA OBRERO ESPAÑOL",
+        "siglas": "PSOE",
+        "codigo": "94"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "RECORTES CERO-GV",
+      "codigo": "101",
+      "cargos": null,
+      "nombre": "RECORTES CERO-GRUPO VERDE",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "",
+      "orden": 8,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "RECORTES CERO-GRUPO VERDE",
+        "siglas": "RECORTES CERO-GV",
+        "codigo": "101"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "VOX",
+      "codigo": "116",
+      "cargos": null,
+      "nombre": "VOX",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "6",
+      "orden": 4,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "VOX",
+        "siglas": "VOX",
+        "codigo": "116"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "Cs",
+      "codigo": "18",
+      "cargos": null,
+      "nombre": "CIUDADANOS-PARTIDO DE LA CIUDADANÍA",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "",
+      "orden": 0,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "CIUDADANOS-PARTIDO DE LA CIUDADANÍA",
+        "siglas": "Cs",
+        "codigo": "18"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "EB",
+      "codigo": "23",
+      "cargos": null,
+      "nombre": "ESCAÑOS EN BLANCO",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "14",
+      "orden": 9,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "ESCAÑOS EN BLANCO",
+        "siglas": "EB",
+        "codigo": "23"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "PACMA",
+      "codigo": "55",
+      "cargos": null,
+      "nombre": "PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "7",
+      "orden": 3,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "PARTIDO ANIMALISTA CONTRA EL MALTRATO ANIMAL",
+        "siglas": "PACMA",
+        "codigo": "55"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "PCTE",
+      "codigo": "64",
+      "cargos": null,
+      "nombre": "PARTIDO COMUNISTA DE LOS TRABAJADORES DE ESPAÑA",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "15",
+      "orden": 5,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "PARTIDO COMUNISTA DE LOS TRABAJADORES DE ESPAÑA",
+        "siglas": "PCTE",
+        "codigo": "64"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "PODEMOS-IU",
+      "codigo": "78",
+      "cargos": null,
+      "nombre": "UNIDAS PODEMOS",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "",
+      "orden": 6,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "UNIDAS PODEMOS",
+        "siglas": "PODEMOS-IU",
+        "codigo": "78"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     },
+     {
+      "siglas": "PUM+J",
+      "codigo": "98",
+      "cargos": null,
+      "nombre": "POR UN MUNDO MÁS JUSTO",
+      "votos": {
+       "pro": 0,
+       "def": 0
+      },
+      "porcentaje": {
+       "pro": 0.0,
+       "def": 0.0
+      },
+      "enfrentamiento": "3",
+      "orden": 7,
+      "candidatos": null,
+      "agrupaciones": [
+       {
+        "nivel": 1,
+        "nombre": "POR UN MUNDO MÁS JUSTO",
+        "siglas": "PUM+J",
+        "codigo": "98"
+       }
+      ],
+      "partidosEnfrentamiento": null
+     }
+    ]
+   }
+  ],
+  "envio": 247,
+  "isCircuns": 0,
+  "mapa": null,
+  "flagVotaCandidato": false,
+  "id": {
+   "scopeId": "00000000000000000027f02e",
+   "eleccion": 2
+  },
+  "showEscrutinio": true
+ },
+ "mapa": []
+}
