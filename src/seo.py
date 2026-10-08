@@ -11,7 +11,7 @@ Si cambia una cifra o un texto de aquí, hay que cambiarlo en castellano y en ca
 """
 import json, pathlib, re, html, datetime
 
-CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d27e4ef550c94f82912044da926a3b0f"}'></script><!-- End Cloudflare Web Analytics -->'''
+CF_ANALYTICS = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->'''
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE = 'https://mapaelectoral.es/'
 PUBLISHED = '2026-10-05'
