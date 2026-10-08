@@ -75,6 +75,7 @@ Autor: Nacho G. del Álamo. Actualizado: 2026-10-06. Licencia de los datos: CC B
 - [Metodología](https://mapaelectoral.es/atlas/metodologia/)
 - [Datos en CSV](https://mapaelectoral.es/atlas/datos/)
 - [Correcciones](https://mapaelectoral.es/atlas/correcciones/)
+- [Política editorial](https://mapaelectoral.es/atlas/politica-editorial/)
 
 ## ¿Quién no vota en Cataluña? / Qui no vota a Catalunya?
 
