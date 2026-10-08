@@ -84,6 +84,11 @@ h2{font-family:var(--sans);font-size:26px;line-height:1.2;margin:56px 0 12px}
 .t-kv{display:grid;grid-template-columns:auto auto;gap:1px 10px;margin:8px 0 0;border-top:1px solid var(--line);padding-top:6px}
 .t-kv dt{color:var(--muted)} .t-kv dd{margin:0;text-align:right;font-family:var(--mono);font-size:12px}
 .t-na{color:var(--muted);margin:4px 0}
+@media (max-width:760px){#insertar{display:none}}   /* en el móvil, el mapa manda: insertar es cosa del escritorio */
+.insertar{font-family:var(--sans);font-size:14px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:12px 14px;margin:8px 0}
+.insertar p{margin:0 0 8px;color:var(--ink2)}
+.insertar textarea{width:100%;font:12px/1.45 var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px;resize:vertical}
+.insertar button{font:inherit;font-size:14px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 12px;cursor:pointer;margin-top:6px}
 .hint{font-family:var(--sans);font-size:13px;color:var(--muted);margin:8px 0 0}
 .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:var(--sans);color:var(--muted)}
 /* directo */
@@ -216,12 +221,18 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 16px;padding-top:12px;padding-botto
     <label>Elección <select id="sel-elec"></select></label>
     <label class="q">Buscar municipio <input id="q" list="munlist" placeholder="Escribe un municipio" autocomplete="off"><datalist id="munlist"></datalist></label>
     <button type="button" id="home">Ver toda España</button>
+    <button type="button" id="insertar" aria-controls="insertar-caja">Insertar en tu web</button>
   </div>
   <div class="mapwrap">
     <div id="map" role="img" aria-label="Mapa de España por municipios y secciones censales con el resultado de las elecciones generales"></div>
     <div id="legend"></div>
     <div id="tip" hidden></div>
     <div class="fallback" id="fallback" hidden>No se ha podido cargar el mapa. Las cifras y tablas de esta página recogen los mismos datos.</div>
+  </div>
+  <div class="insertar" id="insertar-caja" hidden>
+    <p>Copia este código y pégalo en tu web: se verá el mapa con la elección y el municipio que tienes elegidos, con la firma de Mapa Electoral y un enlace a esta página. Los datos tienen licencia CC BY 4.0.</p>
+    <textarea id="insertar-codigo" rows="3" readonly aria-label="Código para insertar el mapa"></textarea>
+    <div><button type="button" id="insertar-copiar">Copiar</button> <button type="button" id="insertar-cerrar">Cerrar</button></div>
   </div>
   <p class="hint">Vista de municipios. Al acercarte aparecen las secciones censales. Canarias, en el recuadro. Pasa el cursor o toca una zona para ver su resultado. En el selector de elección están también las municipales de 2007 a 2023 (las de 2007, solo por municipio) y las europeas de 2019 y 2024.</p>
 </section>

@@ -287,7 +287,9 @@
     const i = ORD.find(i => `${MUN.nombre[i]} (${MUN.provs[MUN.prov[i]] || ''})`.toLowerCase() === v) ?? ORD.find(i => MUN.nombre[i].toLowerCase().startsWith(v));
     if (i != null) abre(i);
   });
+  let actual = null;        // último municipio abierto (para el código de «Insertar»)
   function abre(i) {
+    actual = i;
     const big = (MUN.poblacion[i] || 0) > 200000;
     fly({ longitude: MUN.c[i][0], latitude: MUN.c[i][1], zoom: big ? 10.2 : 11 });
     const all = MUNP.filter(p => p.i === i); hover = { key: 'mun' + i, polys: all }; redraw();
@@ -300,6 +302,23 @@
   window.addEventListener('resize', () => redraw());
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { legend(); redraw(); });
   sync();
+
+  // ---------- «Insertar en tu web»: código <iframe> de insertar/ con la elección y el municipio elegidos
+  const bIns = $('#insertar');
+  if (bIns) {
+    const caja = $('#insertar-caja'), code = $('#insertar-codigo'), bCop = $('#insertar-copiar');
+    bIns.onclick = () => {
+      const p = new URLSearchParams({ e: st.y }); if (actual != null) p.set('m', MUN.cod[actual]);
+      code.value = `<iframe src="https://mapaelectoral.es/insertar/?${p}" width="100%" height="620" style="border:0;max-width:100%" loading="lazy" title="Mapa electoral de España por municipio y sección censal"></iframe>`;
+      bCop.textContent = 'Copiar'; caja.hidden = false; code.focus(); code.select();
+    };
+    bCop.onclick = async () => {
+      code.select();
+      try { await navigator.clipboard.writeText(code.value); } catch (e) { document.execCommand('copy'); }
+      bCop.textContent = 'Copiado';
+    };
+    $('#insertar-cerrar').onclick = () => { caja.hidden = true; bIns.focus(); };
+  }
 
   // ---------- enlace a un municipio (?m=<código INE>&e=<elección>), el que usan las piezas del Atlas
   const Q = new URLSearchParams(location.search), qm = MUN.cod.indexOf(Q.get('m'));
