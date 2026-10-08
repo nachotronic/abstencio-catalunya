@@ -92,7 +92,8 @@ def primera_pantalla(s):
     if 'id="portada"' in s:
         return s
     # la franja con las últimas piezas del Atlas (la rellena atlas/src/paginas.py) va pegada al mapa
-    fm = re.search(r'\s*<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', s, re.S)
+    # (y encima, la de Actualidad, que rellena actualidad/src/construir.py)
+    fm = re.search(r'\s*(?:<!--actualidad:ultimas-->.*?<!--/actualidad:ultimas-->\s*)?<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', s, re.S)
     franja = fm.group(0).strip() if fm else ''
     if fm:
         s = s[:fm.start()] + s[fm.end():]
