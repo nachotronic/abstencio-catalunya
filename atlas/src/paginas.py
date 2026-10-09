@@ -84,10 +84,10 @@ FUENTES = {
 }
 
 CSS = """
-:root{--bg:#faf8f3;--surface:#fff;--fg:#1a1a1a;--muted:#5f5d58;--rule:#e3dfd6;--accent:#b3261e;--accent2:#b0452c;--pp:#1d6fb8;--psoe:#d1262d;--warn:#fff4d6;--warnfg:#6b4e00;
+:root{--bg:#faf8f3;--surface:#fff;--fg:#1a1a1a;--muted:#5f5d58;--rule:#e3dfd6;--accent:#b3261e;--accent2:#b0452c;--pp:#1d84ce;--psoe:#e30613;--ppl:#9cc8eb;--psoel:#f4a3a6;--vox:#5ac035;--sumar:#a2275f;--erc:#f0a81c;--junts:#16a99c;--pnv:#2b8a3e;--bildu:#a5c400;--bng:#4a9fdc;--warn:#fff4d6;--warnfg:#6b4e00;
   --display:"IBM Plex Sans",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--body:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15161a;--surface:#1e2025;--fg:#ecebe7;--muted:#a5a39b;--rule:#33363d;--accent:#ff8a80;--accent2:#ef8a6a;--pp:#5aa7ee;--psoe:#f06a6f;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#15161a;--surface:#1e2025;--fg:#ecebe7;--muted:#a5a39b;--rule:#33363d;--accent:#ff8a80;--accent2:#ef8a6a;--pp:#5aa7ee;--psoe:#f06a6f;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15161a;--surface:#1e2025;--fg:#ecebe7;--muted:#a5a39b;--rule:#33363d;--accent:#ff8a80;--accent2:#ef8a6a;--pp:#4fa8ea;--psoe:#ff5a5f;--ppl:#2c5677;--psoel:#7a2f33;--vox:#74d651;--sumar:#d0679a;--erc:#f5b324;--junts:#2fd0c2;--pnv:#4caf63;--bildu:#b9d630;--bng:#7ab8e6;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15161a;--surface:#1e2025;--fg:#ecebe7;--muted:#a5a39b;--rule:#33363d;--accent:#ff8a80;--accent2:#ef8a6a;--pp:#4fa8ea;--psoe:#ff5a5f;--ppl:#2c5677;--psoel:#7a2f33;--vox:#74d651;--sumar:#d0679a;--erc:#f5b324;--junts:#2fd0c2;--pnv:#4caf63;--bildu:#b9d630;--bng:#7ab8e6;--warn:#3a3218;--warnfg:#f2d98a;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.1rem;line-height:1.6;padding:0 16px 64px}
 main{max-width:72ch;margin:0 auto}
@@ -505,7 +505,7 @@ def politica():
 <ul>
 <li>Las cifras no las escribe la IA: las calculan scripts a partir de los datos oficiales y las comprueban controles automáticos antes de publicar.</li>
 <li>Todos los textos los revisa y edita {FIRMA} antes de publicarlos, y él asume la responsabilidad editorial de lo publicado.</li>
-<li>Las fotografías proceden de Wikimedia Commons, con su autoría y licencia; no se publican imágenes generadas por IA. Los mapas y gráficos se dibujan directamente a partir de los datos.</li>
+<li>Las fotografías proceden de Wikimedia Commons, con su autoría y licencia. Algunas piezas de actualidad llevan una ilustración de cabecera hecha con IA; siempre se indica en el pie como «Ilustración generada con IA» y nunca se presenta como fotografía. Los mapas y gráficos no usan IA: se dibujan directamente a partir de los datos.</li>
 </ul>
 <h2 id="correcciones">Correcciones</h2>
 <p>Si cambia un dato o una conclusión de una pieza publicada, se corrige en la propia pieza con la fecha y lo que cambió, y se anota en el <a href="../correcciones/index.html">historial de correcciones</a>. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>

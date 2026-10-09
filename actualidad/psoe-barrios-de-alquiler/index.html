@@ -122,7 +122,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 :root{--comuns:#1d7f95;--bar:#cfcacc}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--comuns:#3aa6bf;--bar:#4a454b}}
 :root[data-theme="dark"]{--comuns:#3aa6bf;--bar:#4a454b}
-</style><style>:root{--alt:#b4582a}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--alt:#e08a5c}}:root[data-theme="dark"]{--alt:#e08a5c}</style><style>
+</style><style>:root{--alt:#b4582a}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--alt:#e08a5c}}:root[data-theme="dark"]{--alt:#e08a5c}</style><style>:root{--psoe:#e30613;--sumar:#a2275f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--sumar:#d0679a}}:root[data-theme="dark"]{--psoe:#ff5a5f;--sumar:#d0679a}</style><style>
 :root{--serif:"Newsreader",Georgia,serif;--ui:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--surface:#fff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--surface:#1e2025}}
 :root[data-theme="dark"]{--surface:#1e2025}
@@ -144,6 +144,8 @@ nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-trans
 .sigue{list-style:none;padding:0;display:grid;gap:12px}
 .sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
 .sigue .kicker{display:block;margin-bottom:2px}
+figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
+figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
 ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
 ol.serie li::marker{font-family:var(--mono);color:var(--muted)}
 ol.serie a{color:var(--fg)}
@@ -159,6 +161,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>El PSOE sube en los barrios de alquiler casi el triple que en los de propietarios desde 2015</h1>
 <p class="dek">Fuera de Cataluña, las secciones censales con más hogares de alquiler fueron el gran terreno de Podemos en 2015. Ocho años después, el espacio a la izquierda del PSOE ha perdido allí casi la mitad de su voto y el PSOE ha subido 11 puntos, casi el triple que en los barrios de propietarios.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<figure class="foto"><img src="../../img/actualidad/fotos/psoe-barrios-de-alquiler.jpg" alt="Pedro Sánchez, con el Congreso de los Diputados y una urna." width="1280" height="720"><figcaption>Pedro Sánchez, con el Congreso de los Diputados y una urna. Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>
 <p style="margin-top:1.4rem"><a href="https://www.elespanol.com/sociedad/20261007/muere-maricarmen-directo-fallece-anos-dias-despues-desahuciada-madrid/1003744412550_10.html">La muerte de Maricarmen Abascal</a>, desalojada a los 87 años de su piso de Retiro, ha llevado la vivienda al centro de la campaña del 29N. Los barrios donde más gente vive de alquiler son los que menos votan, <a href="../maricarmen-alquiler-y-voto/index.html">como ya se ha contado en esta sección</a>. Pero entre quienes sí votan, ¿a quién votan? Y, sobre todo, ¿cómo ha cambiado eso?</p>
 <p>Para verlo se han ordenado las secciones censales de España, sin Cataluña, en diez grupos según el porcentaje de hogares de alquiler del censo de 2021, y se ha seguido su voto en las ocho generales desde 2004. Cataluña se analiza aparte porque allí el sistema de partidos es distinto y pesa mucho en los barrios de más alquiler: reúne el 41% de los electores del 10% de secciones con más alquiler de toda España.</p>
 <h2>De la brecha de 2015 a la casi igualdad de 2023</h2>
@@ -167,7 +170,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <figure>
 <figcaption><span class="t">El PSOE cierra la brecha en los barrios de alquiler</span><span class="s">Voto al PSOE en el 10% de secciones con menos y con más hogares de alquiler, sin Cataluña. Porcentaje sobre voto válido</span></figcaption>
 <div class="chart" id="psoe"></div>
-<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--comuns)"></i>Menos alquiler</span><span><i class="sw" style="background:var(--comuns)"></i>Más alquiler</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--psoe)"></i>Menos alquiler</span><span><i class="sw" style="background:var(--psoe)"></i>Más alquiler</span></div>
 <div class="src">Fuente: Ministerio del Interior, resultados por mesa; INE, Censo 2021 (régimen de tenencia). Media ponderada por censo, sin voto exterior. Alquiler de 2021 para toda la serie.</div>
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="psoe-tbl"></div></details>
 </figure>
@@ -177,7 +180,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <figure>
 <figcaption><span class="t">Dos curvas que se cruzan en los barrios de alquiler</span><span class="s">Voto al PSOE y al espacio a su izquierda en el 10% de secciones con más alquiler, sin Cataluña</span></figcaption>
 <div class="chart" id="cruce"></div>
-<div class="legend"><span><i class="sw" style="background:var(--comuns)"></i>PSOE</span><span><i class="sw" style="background:var(--alt)"></i>IU, Podemos, Más País y Sumar</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--sumar)"></i>IU, Podemos, Más País y Sumar</span></div>
 <div class="src">Fuente: Ministerio del Interior; INE. Las candidaturas del espacio cambian de nombre y de socios en cada elección; se suman todas las de la familia (IU, Podemos y sus confluencias, Compromís, Más País, Sumar).</div>
 </figure>
 <p>Los datos no dicen que esos votos pasaran de una papeleta a otra. Puede haber votantes que se fueron a la abstención y otros nuevos que llegaron al PSOE; la participación en estos barrios también cayó, del 68,6% en 2015 al 65,9% en 2023. Para saber quién se movió adónde haría falta una encuesta.</p>
@@ -199,7 +202,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <dt>Correcciones</dt><dd>Ninguna.</dd>
 </dl>
 <h2>Serie «Vivienda y voto»: 5 piezas</h2><ol class="serie"><li><a href="../maricarmen-alquiler-y-voto/index.html"><b>Después de Maricarmen: los barrios de inquilinos votan diez puntos menos</b></a></li><li><a href="../alquiler-ciudad-a-ciudad/index.html"><b>Sin excepción: en las 25 mayores ciudades de España, los barrios de alquiler votan menos</b></a></li><li><a href="../pisos-turisticos-y-votantes/index.html"><b>Los barrios de pisos turísticos de Barcelona han perdido uno de cada diez electores desde 2015</b></a></li><li aria-current="page"><span class="kicker">Estás aquí</span><b>El PSOE sube en los barrios de alquiler casi el triple que en los de propietarios desde 2015</b></li><li><a href="../precio-del-alquiler-y-voto/index.html"><b>El alquiler sube un 29% en València desde 2015, pero el voto apenas lo refleja</b></a></li></ol>
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../puigdemont-junts-congreso-parlament/index.html"><span class="kicker">Camino al 29N · Cataluña</span><b>Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament</b></a></li><li><a href="../votar-en-noviembre/index.html"><span class="kicker">Camino al 29N · España</span><b>El 29N repite mes con mal recuerdo: el último noviembre dejó la participación más baja de la democracia</b></a></li><li><a href="../colau-barcelona-comuns/index.html"><span class="kicker">Camino al 29N · Barcelona</span><b>La Barcelona que tendría que reconquistar Colau: los comuns ganaban en 837 secciones y ahora en 23</b></a></li><li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../vox-poblacion-nacida-fuera/index.html"><span class="kicker">Camino al 29N · España</span><b>Vox saca casi lo mismo donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo</b></a></li><li><a href="../izquierda-del-psoe-secciones/index.html"><span class="kicker">Camino al 29N · España</span><b>El espacio a la izquierda del PSOE fue el más votado en 9.810 secciones en 2015; en 2023, en 182</b></a></li><li><a href="../psoe-madrid-municipales-generales/index.html"><span class="kicker">Camino al 29N · Madrid</span><b>En Madrid, el PSOE saca diez puntos más cuando se vota al Gobierno que cuando se vota al alcalde</b></a></li><li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a></footer>
 </main>
 <script>
@@ -217,9 +220,9 @@ function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(
  for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
  rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
   el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
-  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
-  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
-  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--psoe)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--psoe)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--psoe)',stroke:'var(--bg)','stroke-width':2},svg);
   if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
@@ -238,10 +241,10 @@ function lines(id,series,o){const box=document.getElementById(id);const tip=tipF
  const cw=(W-m.l-m.r)/(n-1);
  for(let i=0;i<n;i++)hov(box,tip,el('rect',{x:x(i)-cw/2,y:m.t,width:cw,height:H-m.t-m.b,fill:'transparent'},svg),o.labels[i]+'<br>'+series.map(s=>`${s.name}: <b>${c1(s.pts[i])}%</b>`).join('<br>'));}
 const LB=PS.map(d=>d[0]);
-lines('psoe',[{name:'Menos alquiler',pts:PS.map(d=>d[1]),color:'var(--comuns)',fill:'var(--other)'},{name:'Más alquiler',pts:PS.map(d=>d[2]),color:'var(--comuns)',below:true}],{lo:10,hi:50,labels:LB,label:'Voto al PSOE en las secciones con menos y más alquiler, 2004-2023'});
+lines('psoe',[{name:'Menos alquiler',pts:PS.map(d=>d[1]),color:'var(--psoe)',fill:'var(--other)'},{name:'Más alquiler',pts:PS.map(d=>d[2]),color:'var(--psoe)',below:true}],{lo:10,hi:50,labels:LB,label:'Voto al PSOE en las secciones con menos y más alquiler, 2004-2023'});
 document.querySelector('#psoe path').setAttribute('stroke-dasharray','5 4');
 table('psoe-tbl',['Elección','Menos alquiler','Más alquiler','Diferencia'],PS.map(d=>[d[0],c1(d[1])+'%',c1(d[2])+'%',c1(d[1]-d[2])]));
-lines('cruce',[{name:'PSOE',pts:PS.map(d=>d[2]),color:'var(--comuns)',below:true},{name:'Espacio a su izquierda',pts:SU.map(d=>d[1]),color:'var(--alt)'}],{lo:0,hi:50,labels:LB,label:'PSOE y espacio a su izquierda en las secciones con más alquiler'});
+lines('cruce',[{name:'PSOE',pts:PS.map(d=>d[2]),color:'var(--psoe)',below:true},{name:'Espacio a su izquierda',pts:SU.map(d=>d[1]),color:'var(--sumar)'}],{lo:0,hi:50,labels:LB,label:'PSOE y espacio a su izquierda en las secciones con más alquiler'});
 </script>
 </body>
 </html>

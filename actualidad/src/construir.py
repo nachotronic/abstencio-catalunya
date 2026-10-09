@@ -8,7 +8,7 @@ del estándar de verificación y el pie, y escribe además el índice y el sitem
 Uso, desde la raíz del repositorio: python3 actualidad/src/construir.py && node actualidad/src/miniaturas.mjs
 También rellena la franja «Actualidad» de la portada (index.html y la plantilla de generales-2026).
 """
-import datetime, html, json, os, re
+import datetime, html, json, os, re, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC = os.path.join(RAIZ, 'actualidad', 'src')
@@ -34,6 +34,14 @@ EXCELSIOR = 'https://www.excelsior.com.mx/internacional/miles-marchan-madrid-con
 VANGUARDIA = 'https://www.vanguardia.com/mundo/2026/09/29/maricarmen-la-anciana-de-87-anos-desalojada-en-madrid-podra-volver-a-la-casa/'
 ARA = 'https://es.ara.cat/politica/tc-avala-amnistia-malversacion-no-aplica-todavia-puigdemont_1_5522452.html'
 DEMOCRATA = 'https://www.democrata.es/politica/puigdemont-29n-regreso-sin-fecha-sin-cita-con-sanchez/'
+PUBLICO_RUFIAN = 'https://www.publico.es/politica/rufian-asegura-quiere-candidato-erc-ojala-erc-quiera.html'
+INFOBAE_RUFIAN = 'https://www.infobae.com/espana/agencias/2026/10/08/rufian-asegura-que-quiere-ser-el-candidato-de-erc-pero-acompanado-de-otras-izquierdas/'
+DEMOCRATA_ERC = 'https://www.democrata.es/politica/ampliacion-erc-se-decanta-por-rufian-y-fijara-el-17-de-octubre-su-candidatura-tras-unas-primarias/'
+INFOBAE_MONTERO = 'https://www.infobae.com/espana/agencias/2026/10/06/maria-jesus-montero-descarta-ir-en-las-listas-del-psoe-el-29n/'
+ELMIRA_MONTERO = 'https://www.elmira.es/articulo/andalucia/montero-ira-listas-psoe-congreso-sevilla-pone-vivienda-centro-29n/20261006140351619717.html'
+CORDOBABN_MONTERO = 'https://www.cordobabn.com/andalucia/29n-montero-descarta-como-candidata-desea-que-sanchez-acuda-muchas-veces-andalucia-pieza-clave-29n/20261006193152270616.html'
+INDEPENDIENTE_ANDALUZAS = 'https://www.elindependiente.com/espana/2026/05/17/elecciones-andalucia-resultados-psoe-montero-sanchez-gobierno/'
+WIKI_ANDALUZAS_2022 = 'https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Andaluc%C3%ADa_de_2022'
 INE_IPVA = ('https://www.ine.es/jaxiT3/Tabla.htm?t=59060',
             'INE, Índice de Precios de Vivienda en Alquiler (estadística experimental, base 2015), por municipio (tabla 59060) y por distrito de las capitales (tabla 59061)')
 PARLAMENT = ('https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr',
@@ -41,6 +49,9 @@ PARLAMENT = ('https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr',
 
 # Series: agrupan las piezas en el índice, en la portada y en «Sigue leyendo»
 SERIES = {'29n': 'Camino al 29N', 'vivienda': 'Vivienda y voto'}
+# Ilustración de cada serie: cabecera de las piezas que no tienen una propia y del bloque de la serie en el índice
+SERIES_FOTO = {'vivienda': dict(src='img/actualidad/fotos/serie-vivienda.jpg', ancho=1280, alto=720, ia=True,
+                                pie='Una urna llena de edificios y unas llaves: la serie «Vivienda y voto».')}
 
 PIEZAS = [
     dict(
@@ -54,6 +65,10 @@ PIEZAS = [
                  ('https://es.wikipedia.org/wiki/Xos%C3%A9_Manuel_Beiras', 'Wikipedia, «Xosé Manuel Beiras» (consultada el 8-10-2026)')],
         enlaces=[('El País', 'https://elpais.com/espana/2026-10-08/muere-a-los-90-anos-xose-manuel-beiras-historico-dirigente-del-nacionalismo-gallego.html')],
         lugar='Galicia',
+        actualizado='2026-10-09',
+        correcciones='9-10-2026: el récord de 18 escaños del BNG en 1997 se superó en 2020 (19), no en 2024 (25). Se retira una cita sin fuente. Dos municipios creados después de 2004 (Oza-Cesuras y Cerdedo-Cotobade) aparecían en el mapa de 2004 con «NaN %»; ahora figuran sin dato.',
+        foto=dict(src='img/actualidad/fotos/beiras-nacionalismo-gallego.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Xosé Manuel Beiras, con la bandera gallega y una urna.'),
     ),
     dict(
         slug='colau-barcelona-comuns', fecha='2026-10-08',
@@ -66,6 +81,8 @@ PIEZAS = [
                  ('https://civio.es/el-boe-nuestro-de-cada-dia/2026/10/06/llega-al-boe-la-convocatoria-de-elecciones-para-el-29-de-noviembre-todas-las-fechas-y-pasos-hasta-ese-dia/', 'Civio, calendario y escaños del decreto de convocatoria (6-10-2026)')],
         enlaces=[],
         lugar='Barcelona',
+        foto=dict(src='img/actualidad/fotos/colau-barcelona-comuns.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Ada Colau, con Barcelona al fondo.'),
     ),
     dict(
         slug='votar-en-noviembre', fecha='2026-10-08',
@@ -79,6 +96,8 @@ PIEZAS = [
                  ('https://www.canarias7.es/elecciones/generales/convocatoria-elecciones-generales-obliga-cancelar-eventos-programados-20261007131300-nt.html', 'Canarias7, eventos cancelados por el 29N (7-10-2026)')],
         enlaces=[],
         lugar='España',
+        actualizado='2026-10-09',
+        correcciones='9-10-2026: el BOE publicó el decreto el martes 6 de octubre, no el lunes.',
     ),
     dict(
         slug='maricarmen-alquiler-y-voto', fecha='2026-10-08',
@@ -93,6 +112,10 @@ PIEZAS = [
                  ('https://doi.org/10.2307/1960778', 'Squire, Wolfinger y Glass, «Residential Mobility and Voter Turnout», American Political Science Review, 1987')],
         enlaces=[],
         lugar='España',
+        actualizado='2026-10-09',
+        correcciones='9-10-2026: en participación, Retiro va solo por detrás de Chamartín, no de Salamanca.',
+        foto=dict(src='img/actualidad/fotos/maricarmen-alquiler-y-voto.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Unas llaves, un contrato de alquiler y una urna.'),
     ),
     dict(
         slug='alquiler-ciudad-a-ciudad', fecha='2026-10-08',
@@ -103,6 +126,10 @@ PIEZAS = [
         fuentes=[INE_CENSO, INTERIOR, INE, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='25 ciudades',
+        actualizado='2026-10-09',
+        correcciones='9-10-2026: Terrassa, una de las 25 ciudades con más electores, faltaba en la comparación y en su lugar aparecía Sabadell. Ya está incluida (4,3 puntos de diferencia). Las conclusiones no cambian.',
+        foto=dict(src='img/actualidad/fotos/alquiler-ciudad-a-ciudad.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna llena de edificios de viviendas.'),
     ),
     dict(
         slug='pisos-turisticos-y-votantes', fecha='2026-10-08',
@@ -114,6 +141,10 @@ PIEZAS = [
                  INTERIOR, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='Grandes ciudades',
+        actualizado='2026-10-09',
+        correcciones='9-10-2026: se reescribe una frase que podía leerse como una afirmación causal sobre la abstención.',
+        foto=dict(src='img/actualidad/fotos/pisos-turisticos-y-votantes.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una maleta de viaje, edificios de viviendas y una urna.'),
     ),
     dict(
         slug='psoe-barrios-de-alquiler', fecha='2026-10-08',
@@ -124,6 +155,8 @@ PIEZAS = [
         fuentes=[INE_CENSO, INTERIOR, INE, (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='España sin Cataluña',
+        foto=dict(src='img/actualidad/fotos/psoe-barrios-de-alquiler.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Pedro Sánchez, con el Congreso de los Diputados y una urna.'),
     ),
     dict(
         slug='precio-del-alquiler-y-voto', fecha='2026-10-08',
@@ -136,11 +169,13 @@ PIEZAS = [
                  (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='703 municipios',
+        actualizado='2026-10-09',
+        correcciones='9-10-2026: la correlación dentro de cada ciudad va de 0,08 a 0,14, no «no llega a 0,1». La conclusión, que la relación es muy débil, no cambia.',
     ),
     dict(
         slug='puigdemont-junts-congreso-parlament', fecha='2026-10-08',
         titulo='Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament', serie='29n',
-        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 444 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
+        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 465 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
         compara='El voto a Junts (y antes a CiU) en Cataluña en las generales de 2004 a 2023 y en las autonómicas de 2024, por sección censal, por tamaño de municipio y por provincia.',
         limites='Generales y autonómicas tienen distinto electorado votante, distintos candidatos y eligen cosas distintas: la comparación no dice quién cambió su voto ni por qué. CiU incluía a Unió hasta 2015. Porcentajes sobre voto válido. Sin voto exterior.',
         fuentes=[INTERIOR, PARLAMENT,
@@ -148,6 +183,92 @@ PIEZAS = [
                  (DEMOCRATA, 'Demócrata, el regreso de Puigdemont, sin fecha (octubre de 2026)')],
         enlaces=[],
         lugar='Cataluña',
+        actualizado='2026-10-09',
+        correcciones='8-10-2026: Junts ganó en 465 secciones en las generales de 2023, no en 444 (se habían contado solo las secciones con datos del Parlament de 2024). En Lleida, del 18,1%, no del 18,0%. Las conclusiones no cambian. 9-10-2026: CiU no tuvo su máximo en 2011 (29,5%): en 1989 superó el 32%.',
+        foto=dict(src='img/actualidad/fotos/puigdemont-junts-congreso-parlament.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Carles Puigdemont, con la senyera, una urna y gráficos.'),
+    ),
+    dict(
+        slug='rufian-erc-comuns', fecha='2026-10-08',
+        titulo='Sumados, ERC y los comuns habrían sido la lista más votada en 1.431 secciones de Cataluña en 2023; por separado, en 232', serie='29n',
+        descripcion='Rufián quiere ser el candidato de ERC «acompañado de otras fuerzas de izquierdas». En 2023 ERC sacó en Cataluña el 13,2 %, casi la mitad que en 2019. Con los votos de los comuns sumados sección a sección, el mapa cambia, aunque el PSC sigue por delante.',
+        compara='El voto a ERC en Cataluña en las generales de 2004 a 2023, las secciones censales donde cada lista fue la más votada en 2023 y la suma aritmética de ERC y los comuns (Sumar-En Comú Podem) sección a sección, en Cataluña y en la ciudad de Barcelona.',
+        limites='La suma es aritmética: no estima lo que sacaría una lista conjunta, porque no todos los votantes de una y otra votarían la misma papeleta. La lista de los comuns cambia de nombre en cada elección. Porcentajes sobre voto a candidaturas. Sin voto exterior.',
+        fuentes=[INTERIOR,
+                 (PUBLICO_RUFIAN, 'Público, «Rufián asegura que quiere ser candidato de ERC» (8-10-2026)'),
+                 (INFOBAE_RUFIAN, 'Infobae / EFE, Rufián quiere ser el candidato de ERC, pero acompañado de otras izquierdas (8-10-2026)'),
+                 (DEMOCRATA_ERC, 'Demócrata, ERC fijará el 17 de octubre su candidatura (octubre de 2026)')],
+        enlaces=[],
+        lugar='Cataluña',
+        foto=dict(src='img/actualidad/fotos/rufian-erc-comuns.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Gabriel Rufián, con el Congreso de los Diputados y una urna.'),
+    ),
+    dict(
+        slug='psoe-andalucia-generales-autonomicas', fecha='2026-10-08',
+        titulo='Andalucía vota casi diez puntos más al PSOE cuando elige al Gobierno que cuando elige a la Junta', serie='29n',
+        descripcion='Montero no irá en las listas del 29N tras el peor resultado del PSOE en unas andaluzas, el 22,7 % de mayo. En las generales de 2023 el PSOE andaluz sacó el 33,5 %. Lo que sí ha perdido es el mapa: en 2004 ganaba en tres de cada cuatro secciones; en 2023, en menos de la mitad.',
+        compara='El voto al PSOE y al PP en Andalucía en las generales de 2004 a 2023, por sección censal, por provincia y por renta, frente a los resultados de las autonómicas de 2022 y 2026.',
+        limites='Las generales vienen de Interior, por mesa y sin voto exterior; las autonómicas son los totales publicados con su propio escrutinio, así que la diferencia de 9,4 puntos compara fuentes distintas. Los datos no dicen quién vota distinto en cada elección. Las secciones cambian de límites entre elecciones.',
+        fuentes=[INTERIOR, INE,
+                 (INFOBAE_MONTERO, 'Infobae / Europa Press, Montero descarta ir en las listas del PSOE el 29N (6-10-2026)'),
+                 (ELMIRA_MONTERO, 'elmira.es, Montero y las listas del PSOE por Sevilla (6-10-2026)'),
+                 (CORDOBABN_MONTERO, 'Córdoba BN, Montero pide que Sánchez acuda a Andalucía, «pieza clave» del 29N (6-10-2026)'),
+                 (INDEPENDIENTE_ANDALUZAS, 'El Independiente, resultados de las elecciones andaluzas del 17 de mayo de 2026'),
+                 (WIKI_ANDALUZAS_2022, 'Wikipedia, elecciones al Parlamento de Andalucía de 2022 (resultados oficiales)')],
+        enlaces=[],
+        lugar='Andalucía',
+        foto=dict(src='img/actualidad/fotos/psoe-andalucia-generales-autonomicas.jpg', ancho=1280, alto=720, ia=True,
+                  pie='María Jesús Montero, con el Congreso de los Diputados, una urna y papeles de Hacienda.'),
+    ),
+    dict(
+        slug='huelga-11n-paro-participacion', fecha='2026-10-09',
+        titulo='La huelga del 11N apela a los barrios que menos votan: donde más paro hay, la participación cae al 61%', serie='29n',
+        descripcion='CCOO, UGT y el Sindicato de Inquilinas convocan la primera huelga general conjunta desde 2012 a 18 días de las generales. En julio de 2023, el 10% de secciones con más paro votó quince puntos menos que el 10% con menos paro. A igual renta, la distancia se mantiene.',
+        compara='La participación en las generales de julio de 2023 de las 34.737 secciones censales de España, agrupadas por la tasa de paro del censo de 2021 (deciles) y, dentro de cada quintil de renta, el 20% con menos y con más paro.',
+        limites='El paro es el del censo de 2021, no el de 2023. Es una asociación entre secciones: no dice que los parados voten menos ni explica por qué. Nada dice sobre quién secundará la huelga. Medias ponderadas por censo, sin voto exterior.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.ccoo.es/noticia:769574--Convocamos_huelga_general_para_el_11_de_noviembre&opc_id=8c53f4de8f8f09d2e54f19daf8d8ed95', 'CCOO, «Convocamos huelga general para el 11 de noviembre» (octubre de 2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/huelga-11n-paro-participacion.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una nómina, monedas y herramientas de trabajo junto a una urna.'),
+    ),
+    dict(
+        slug='psoe-madrid-municipales-generales', fecha='2026-10-09',
+        titulo='En Madrid, el PSOE saca diez puntos más cuando se vota al Gobierno que cuando se vota al alcalde', serie='29n',
+        descripcion='La bronca entre Ayuso y Más Madrid en la Asamblea vuelve a enfrentar a las dos fuerzas que dominan la política madrileña. En la ciudad de Madrid, el PSOE sacó el 16,8% en las municipales de mayo de 2023 y el 27,4% en las generales de julio. Fue más alto en las generales en todas las secciones menos una.',
+        compara='El voto a PP, PSOE, Vox y la izquierda del PSOE en la ciudad de Madrid en las municipales del 28 de mayo de 2023 y en las generales del 23 de julio, en total, por distrito y en las 2.450 secciones censales.',
+        limites='Son dos elecciones con electorados distintos: la participación fue 5 puntos más alta en julio y en las municipales votan también residentes de la UE. Los datos no dicen cuántos votantes cambiaron de papeleta. En las municipales Más Madrid y Podemos-IU fueron por separado y en las generales los dos iban en Sumar. Porcentajes sobre voto válido, sin voto exterior.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.infobae.com/espana/agencias/2026/10/08/tenso-enfrentamiento-entre-ayuso-y-mas-madrid-en-la-asamblea-tras-la-muerte-de-maricarmen/', 'Infobae / EFE, tenso enfrentamiento entre Ayuso y Más Madrid en la Asamblea (8-10-2026)')],
+        enlaces=[],
+        lugar='Madrid',
+        foto=dict(src='img/actualidad/fotos/psoe-madrid-municipales-generales.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Isabel Díaz Ayuso, con la Puerta del Sol y una urna.'),
+    ),
+    dict(
+        slug='izquierda-del-psoe-secciones', fecha='2026-10-09',
+        titulo='El espacio a la izquierda del PSOE fue el más votado en 9.810 secciones en 2015; en 2023, en 182', serie='29n',
+        descripcion='Podemos antepone sus primarias y se aleja del Frente Amplio. Antes de saber cuántas papeletas habrá a la izquierda del PSOE, los datos por sección muestran de dónde parte ese espacio: del 24,4% de 2015 al 12,3% de 2023, con caídas en todo tipo de municipios.',
+        compara='El voto a las listas a la izquierda del PSOE en las generales de 2015, 2016, abril y noviembre de 2019 y 2023, las secciones censales donde fueron primeras, y su voto por tamaño de municipio y por provincia.',
+        limites='La composición del espacio cambia en cada elección (Podemos y confluencias, IU, Compromís, Más País, Sumar). En 2023 no se puede separar a Podemos de Sumar. Las secciones cambian de límites entre elecciones. Sin voto exterior.',
+        fuentes=[INTERIOR,
+                 ('https://www.lavanguardia.com/politica/20261008/11654274/antepone-primarias-aleja-entrada-frente-amplio-pesar-colau.html', 'La Vanguardia, Podemos antepone sus primarias y se aleja del Frente Amplio (8-10-2026)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='vox-poblacion-nacida-fuera', fecha='2026-10-09',
+        titulo='Vox saca casi lo mismo donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo', serie='29n',
+        descripcion='La inmigración en Euskadi bajó en 2025, según los datos que publica esta semana la prensa vasca. Euskadi es también donde menos vota a Vox: el 2,6% en 2023. En el resto de España, el voto a Vox apenas cambia entre las secciones con menos del 5% y con más del 30% de población nacida en el extranjero.',
+        compara='El voto a Vox en las generales de julio de 2023 por sección censal, agrupado por el porcentaje de residentes nacidos en el extranjero del censo de 2021, en Cataluña, Euskadi, Navarra y el resto de España.',
+        limites='Es un dato por sección, no por persona: no dice si quienes votan a Vox viven cerca de población inmigrante ni si la votan por eso. «Nacidos fuera» incluye a españoles nacidos en el extranjero, y los extranjeros sin nacionalidad no votan en generales. Censo de 2021 frente a voto de 2023. Sin voto exterior.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.naiz.eus/info/noticia/20261007/la-foto-real-de-la-inmigracion-en-la-cav-en-2025-bajo-y-los-magrebies-solo-fueron-el-12', 'Naiz, la inmigración en la CAV en 2025 (7-10-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/vox-poblacion-nacida-fuera.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Vecinos de distintos orígenes en una calle, junto a una urna.'),
     ),
 ]
 
@@ -186,6 +307,15 @@ ENLACES_TEXTO = {
         ('avaló el martes que la amnistía alcance la malversación', ARA),
         ('Su regreso a Cataluña sigue sin fecha', DEMOCRATA),
     ],
+    'rufian-erc-comuns': [
+        ('escribió en X', PUBLICO_RUFIAN),
+        ('cerrar su candidatura el 17 de octubre', DEMOCRATA_ERC),
+    ],
+    'psoe-andalucia-generales-autonomicas': [
+        ('Lo confirmó el martes', INFOBAE_MONTERO),
+        ('«pieza clave»', CORDOBABN_MONTERO),
+        ('su peor resultado en Andalucía', INDEPENDIENTE_ANDALUZAS),
+    ],
 }
 
 # Enlaces entre piezas dentro del texto: (texto exacto, slug de la pieza enlazada)
@@ -210,6 +340,25 @@ ENLACES_INTERNOS = {
         ('el PSOE ha recuperado terreno desde 2015', 'psoe-barrios-de-alquiler'),
     ],
 }
+
+# Serie «Historia electoral»: textos, datos y gráficos en historia/ (paginas.py escribe los <slug>.html de trabajo).
+# Van delante en la lista para que la franja de portada siga mostrando las piezas del día.
+sys.path.insert(0, os.path.join(SRC, 'historia'))
+from textos import PIEZAS_HISTORIA  # noqa: E402
+SERIES['historia'] = 'Historia electoral'
+HISTORIA = []
+for h in PIEZAS_HISTORIA:
+    q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
+    q.update(fecha=h.get('fecha', '2026-10-08'), serie='historia', enlaces=[])
+    if h.get('foto'):
+        q['foto'] = {k: v for k, v in h['foto'].items() if k != 'origen'}
+    HISTORIA.append(q)
+    for texto, destino in h.get('enlaces', []):
+        if destino.startswith('http'):
+            ENLACES_TEXTO.setdefault(h['slug'], []).append((texto, destino))
+        else:
+            ENLACES_INTERNOS.setdefault(h['slug'], []).append((texto, destino))
+PIEZAS = HISTORIA + PIEZAS
 
 FUENTES_WEB = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700'
@@ -236,6 +385,8 @@ nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-trans
 .sigue{list-style:none;padding:0;display:grid;gap:12px}
 .sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
 .sigue .kicker{display:block;margin-bottom:2px}
+figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
+figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
 ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
 ol.serie li::marker{font-family:var(--mono);color:var(--muted)}
 ol.serie a{color:var(--fg)}
@@ -306,6 +457,13 @@ def pieza(p, todas):
     main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {SERIES[p["serie"]]} · {p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
+    fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
+    if fo:
+        # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
+        cred = (f'Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>' if fo.get('ia')
+                else f'Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>')
+        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="{html.escape(fo["pie"]) if fo.get("ia") else ""}" width="{fo["ancho"]}" height="{fo["alto"]}">'
+                            f'<figcaption>{html.escape(fo["pie"])} {cred}.</figcaption></figure>', 1)
     for texto, href in ENLACES_TEXTO.get(p['slug'], []):
         assert texto in main, (p['slug'], texto)
         main = main.replace(texto, f'<a href="{href}">{texto}</a>', 1)
@@ -327,8 +485,8 @@ def pieza(p, todas):
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
-<dt>Publicado · actualizado</dt><dd>{f} · {f}</dd>
-<dt>Correcciones</dt><dd>Ninguna.</dd>
+<dt>Publicado · actualizado</dt><dd>{f} · {fecha_larga(p.get('actualizado', p['fecha']))}</dd>
+<dt>Correcciones</dt><dd>{html.escape(p.get('correcciones', 'Ninguna.'))}</dd>
 </dl>
 <h2>Serie «{SERIES[p['serie']]}»: {len(serie)} piezas</h2><ol class="serie">{lista}</ol>
 <h2>Sigue leyendo</h2><ul class="sigue">{sigue}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
@@ -337,7 +495,7 @@ def pieza(p, todas):
 
     jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
-              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p['fecha'],
+              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
               'image': [imagen],
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
@@ -357,9 +515,19 @@ def indice(todas):
               'hasPart': [{'@type': 'NewsArticle', 'headline': p['titulo'], 'url': f"{url}{p['slug']}/", 'datePublished': p['fecha']} for p in todas]}
     def bloque(serie):
         qs = [q for q in todas if q['serie'] == serie]
-        return (f'<h2 id="{serie}">{SERIES[serie]}</h2><ul class="sigue">' +
-                ''.join(f'<li><a href="{q["slug"]}/index.html"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></a></li>'
+        fo = SERIES_FOTO.get(serie)
+        img = (f'<figure class="foto"><img src="../{fo["src"]}" alt="{html.escape(fo["pie"])}" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
+               f'<figcaption>Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>') if fo else ''
+        return (f'<h2 id="{serie}">{SERIES[serie]}</h2>{img}<ul class="sigue tarjetas">' +
+                ''.join(f'<li><a href="{q["slug"]}/index.html">{imagen_tarjeta(q)}<span class="txt"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>'
                         for q in sorted(qs, key=lambda q: q['fecha'], reverse=True)) + '</ul>')
+
+    def imagen_tarjeta(q):
+        # la ilustración propia de la pieza o, si no tiene, la miniatura de su primer gráfico
+        fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
+        if fo:
+            return f'<img class="ilu" src="../{fo["src"]}" alt="" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
+        return f'<img class="graf" src="../img/actualidad/{q["slug"]}.jpg" alt="" width="600" height="400" loading="lazy">'
     # primero la serie con la pieza más reciente
     orden = sorted(SERIES, key=lambda k: max((i for i, q in enumerate(todas) if q['serie'] == k), default=-1), reverse=True)
     items = ''.join(bloque(k) for k in orden if any(q['serie'] == k for q in todas))
@@ -374,6 +542,11 @@ h2{font-size:1.3rem;margin:2.2rem 0 .8rem}
 .sigue .d{display:block;color:var(--muted);font-family:var(--serif);font-size:1rem;margin-top:4px}
 .sigue b{display:block;font-size:1.1rem;line-height:1.3}
 a{color:var(--fg)}
+.sigue.tarjetas a{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;padding:12px}
+.tarjetas img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:5px;border:1px solid var(--rule)}
+.tarjetas img.ilu{object-fit:cover}
+.tarjetas img.graf{object-fit:contain;background:#fff}
+@media (max-width:560px){.sigue.tarjetas a{grid-template-columns:1fr;gap:10px}}
 </style>"""
     out = (cabecera('Actualidad', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Actualidad')
@@ -394,6 +567,14 @@ a{color:var(--fg)}
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + noticias + '</urlset>\n')
 
 
+def imagen_carrusel(q, pre):
+    # la ilustración de la pieza (o la de su serie) entera, sin recortar; si no hay, la miniatura del gráfico
+    fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
+    if fo:
+        return f'<img class="ilu" src="{pre}{fo["src"]}" alt="" loading="lazy" width="300" height="200">'
+    return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+
+
 def franja_portada(todas, pre=''):
     """Carrusel «Actualidad» de la portada del sitio, entre las marcas <!--actualidad:ultimas-->, encima del del Atlas.
     Mismo formato que la franja del Atlas (atlas/src/paginas.py): miniatura, serie y titular. Las miniaturas las hace miniaturas.mjs."""
@@ -401,10 +582,10 @@ def franja_portada(todas, pre=''):
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
-            ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/"><img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+            ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{SERIES[q["serie"]]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="{pre}actualidad/"><b>Las {len(todas)} piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES)}</span></a></li></ul>'
-            '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}</style>'
+            '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 

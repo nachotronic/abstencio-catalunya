@@ -55,7 +55,7 @@ def lineas(series, elecciones, titulo, ymin=0, ymax=70, unidad='%', etiquetas=No
     return _svg(y1 + 32, titulo, ''.join(out))
 
 
-def barras_previsto(filas, titulo, destacado):
+def barras_previsto(filas, titulo, destacado, color='var(--pp)'):
     """filas: [{'municipio', 'real', 'previsto'}]. Punto = real, marca = previsto, línea entre ambos."""
     x0, x1 = 210, W - 60
     lo = min(min(f['real'], f['previsto']) for f in filas) // 10 * 10
@@ -68,15 +68,15 @@ def barras_previsto(filas, titulo, destacado):
                    f'<text x="{X(t):.1f}" y="{h - 4}" text-anchor="middle" fill="var(--muted)">{t}%</text>')
     for i, f in enumerate(filas):
         y = 38 + i * paso
-        c = 'var(--accent)' if f['municipio'] == destacado else 'var(--fg)'
-        out.append(f'<text x="{x0 - 10}" y="{y + 4}" text-anchor="end" fill="{c}"{" font-weight=\"600\"" if c != "var(--fg)" else ""}>{escape(f["municipio"])}</text>'
+        c = color if f['municipio'] == destacado else 'var(--fg)'
+        out.append(f'<text x="{x0 - 10}" y="{y + 4}" text-anchor="end" fill="var(--fg)"{" font-weight=\"600\"" if c != "var(--fg)" else ""}>{escape(f["municipio"])}</text>'
                    f'<line x1="{X(f["previsto"]):.1f}" x2="{X(f["real"]):.1f}" y1="{y}" y2="{y}" stroke="{c}" stroke-width="2"/>'
                    f'<circle cx="{X(f["previsto"]):.1f}" cy="{y}" r="5" fill="var(--surface)" stroke="{c}" stroke-width="1.5"/>'
                    f'<circle cx="{X(f["real"]):.1f}" cy="{y}" r="5" fill="{c}"/>')
     return _svg(h, titulo, ''.join(out))
 
 
-def divergente(filas, clave, etiqueta, titulo, sufijo=' p.'):
+def divergente(filas, clave, etiqueta, titulo, sufijo=' p.', mas='var(--pp)', menos='var(--ppl)'):
     """Barras a izquierda y derecha de cero. filas: [{etiqueta: str, clave: float}]."""
     xm, ancho = 340, 260
     m = max(abs(f[clave]) for f in filas)
@@ -90,7 +90,7 @@ def divergente(filas, clave, etiqueta, titulo, sufijo=' p.'):
         v = f[clave]
         w = abs(v) / m * ancho
         x = xm if v >= 0 else xm - w
-        col = 'var(--pp)' if v >= 0 else 'var(--accent2)'
+        col = mas if v >= 0 else menos
         tx = xm - 8 if v >= 0 else xm + 8
         anc = 'end' if v >= 0 else 'start'
         out.append(f'<rect x="{x:.1f}" y="{y - 6}" width="{w:.1f}" height="12" fill="{col}"/>'
@@ -122,6 +122,11 @@ def barras_agrupadas(grupos, series, titulo, ymax=60):
     return _svg(y1 + 28, titulo, ''.join(out))
 
 
+# color de cada partido (paleta de generales-2026/src/partidos.py); el resto, gris
+COLOR_PARTIDO = {'PP': 'var(--pp)', 'PSOE': 'var(--psoe)', 'Vox': 'var(--vox)', 'Sumar': 'var(--sumar)', 'ERC': 'var(--erc)',
+                 'Junts': 'var(--junts)', 'PNV': 'var(--pnv)', 'EH Bildu': 'var(--bildu)', 'BNG': 'var(--bng)'}
+
+
 def margenes(filas, titulo):
     """Barras horizontales con los votos que faltaron para el último escaño."""
     x0, x1 = 230, W - 70
@@ -132,7 +137,7 @@ def margenes(filas, titulo):
     for i, f in enumerate(filas):
         y = 18 + i * paso
         w = f['votos_que_faltaban'] / m * (x1 - x0)
-        out.append(f'<text x="{x0 - 10}" y="{y + 4}" text-anchor="end" fill="var(--fg)">{escape(f["provincia"])}</text>'
-                   f'<rect x="{x0}" y="{y - 7}" width="{w:.1f}" height="14" fill="var(--accent)"/>'
+        out.append(f'<text x="{x0 - 10}" y="{y + 4}" text-anchor="end" fill="var(--fg)">{escape(f["provincia"])} <tspan fill="var(--muted)">· {escape(f.get("aspirante", ""))}</tspan></text>'
+                   f'<rect x="{x0}" y="{y - 7}" width="{w:.1f}" height="14" fill="{COLOR_PARTIDO.get(f.get("aspirante"), "var(--muted)")}"/>'
                    f'<text x="{x0 + w + 6:.1f}" y="{y + 4}" fill="var(--muted)">{num(f["votos_que_faltaban"], 0)}</text>')
     return _svg(h, titulo, ''.join(out))

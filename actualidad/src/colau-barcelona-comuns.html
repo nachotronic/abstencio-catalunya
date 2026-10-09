@@ -47,6 +47,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 @media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
 </style>
 
+<style>:root{--sumar:#a2275f;--sumarl:#d98fb3}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sumar:#d0679a;--sumarl:#9c4f76}}:root[data-theme="dark"]{--sumar:#d0679a;--sumarl:#9c4f76}</style>
 <main>
 <span class="draft">Borrador para revisión · no publicado</span>
 <h1>La Barcelona que tendría que reconquistar Colau: los comuns ganaban en 837 secciones y ahora en 23</h1>
@@ -75,14 +76,14 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <figure id="fig-mapa">
 <figcaption><span class="t">De 837 secciones a 23</span><span class="s">Secciones censales de Barcelona donde la candidatura de los comuns fue la más votada en las generales</span></figcaption>
 <div class="chart maps" id="maps"></div>
-<div class="legend"><span><i class="sw" style="background:var(--comuns)"></i>Primera fuerza: comuns</span><span><i class="sw" style="background:var(--other)"></i>Ganó otra candidatura</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--sumar)"></i>Primera fuerza: comuns</span><span><i class="sw" style="background:var(--other)"></i>Ganó otra candidatura</span></div>
 <div class="src">Fuente: Ministerio del Interior (resultados por mesa), secciones de 2023. Toca o pasa por encima de una sección para ver el porcentaje.</div>
 </figure>
 
 <figure id="fig-serie">
 <figcaption><span class="t">El voto a los comuns en Barcelona, en generales y en municipales</span><span class="s">% sobre votos a candidaturas en la ciudad de Barcelona</span></figcaption>
 <div class="chart" id="serie"></div>
-<div class="legend"><span><i class="sw" style="background:var(--comuns)"></i>Generales (En Comú Podem y sucesoras; 2011: ICV-EUiA)</span><span><i class="sw" style="background:var(--muni)"></i>Municipales (Barcelona en Comú; 2011: ICV-EUiA)</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--sumar)"></i>Generales (En Comú Podem y sucesoras; 2011: ICV-EUiA)</span><span><i class="sw" style="background:var(--sumarl)"></i>Municipales (Barcelona en Comú; 2011: ICV-EUiA)</span></div>
 <div class="src">Fuente: Ministerio del Interior. Candidatura por candidatura, sin sumar listas de otros espacios.</div>
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="serie-tbl"></div></details>
 </figure>
@@ -95,7 +96,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <figure id="fig-dist">
 <figcaption><span class="t">Nou Barris pierde 15 puntos; Sarrià, menos de 4</span><span class="s">Voto a los comuns por distrito en las generales de 2015 y 2023, ordenado por la caída</span></figcaption>
 <div class="chart" id="dist"></div>
-<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--comuns)"></i>2015</span><span><i class="sw" style="background:var(--comuns)"></i>2023</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--sumar)"></i>2015</span><span><i class="sw" style="background:var(--sumar)"></i>2023</span></div>
 <div class="src">Fuente: Ministerio del Interior. Distrito según el código de sección censal.</div>
 </figure>
 
@@ -104,7 +105,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <figure id="fig-renta">
 <figcaption><span class="t">La ventaja en los barrios de renta baja ha desaparecido</span><span class="s">Voto medio a los comuns en las secciones de Barcelona agrupadas por renta (quintiles), generales de 2015 y 2023</span></figcaption>
 <div class="chart" id="renta"></div>
-<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--comuns)"></i>2015</span><span><i class="sw" style="background:var(--comuns)"></i>2023</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--sumar)"></i>2015</span><span><i class="sw" style="background:var(--sumar)"></i>2023</span></div>
 <div class="src">Fuente: Ministerio del Interior; renta neta por unidad de consumo del INE (Atlas de distribución de renta). Media simple de secciones.</div>
 </figure>
 
@@ -139,7 +140,7 @@ function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.t
  [['2015','w15','s15',837],['2023','w23','s23',23]].forEach(([y,w,s,n])=>{
   const d=document.createElement('div');d.innerHTML=`<h3>${y}: <b>${n}</b> secciones</h3>`;box.appendChild(d);
   const svg=el('svg',{viewBox:`0 0 ${MAP.W} ${MAP.H}`,role:'img','aria-label':`Mapa de Barcelona ${y}: comuns primera fuerza en ${n} de 1.068 secciones`},d);
-  MAP.P.forEach(p=>{const path=el('path',{d:p.d,fill:p[w]?'var(--comuns)':'var(--other)',stroke:'var(--bg)','stroke-width':0.6},svg);
+  MAP.P.forEach(p=>{const path=el('path',{d:p.d,fill:p[w]?'var(--sumar)':'var(--other)',stroke:'var(--bg)','stroke-width':0.6},svg);
     const h=ev=>{const [x,yy]=pos(box,ev);tip.show(`Sección ${p.t.slice(5,7)}-${p.t.slice(7)}<br>Comuns ${y}: <b>${isNaN(p[s])?'s/d':fmt(p[s])}</b>`,x,yy)};
     path.addEventListener('mousemove',h);path.addEventListener('touchstart',h,{passive:true});path.addEventListener('mouseleave',()=>tip.hide());});
  });})();
@@ -151,12 +152,12 @@ function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.t
  [0,10,20,30].forEach(v=>{el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)','stroke-width':1},svg);el('text',{x:m.l-8,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'});
  [2011,2015,2019,2023].forEach(v=>{el('text',{x:x(v),y:H-8,'text-anchor':'middle'},svg).textContent=v});
  const line=(pts,col,dash)=>el('path',{d:'M'+pts.map(p=>x(p[0])+','+y(p[1])).join('L'),fill:'none',stroke:col,'stroke-width':2,'stroke-dasharray':dash||'none','stroke-linejoin':'round'},svg);
- line(SERIE.m,'var(--muni)','5 4');line(SERIE.g,'var(--comuns)');
+ line(SERIE.m,'var(--sumarl)','5 4');line(SERIE.g,'var(--sumar)');
  const dots=(pts,col,labs,kind)=>pts.forEach((p,i)=>{el('circle',{cx:x(p[0]),cy:y(p[1]),r:4.5,fill:col,stroke:'var(--bg)','stroke-width':2},svg);
    const hit=el('circle',{cx:x(p[0]),cy:y(p[1]),r:14,fill:'transparent'},svg);
    const h=ev=>{const [xx,yy]=pos(box,ev);tip.show(`${kind} ${labs[i]}<br><b>${fmt(p[1])}</b>`,xx,yy)};
    hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide());});
- dots(SERIE.m,'var(--muni)',SERIE.ml,'Municipales');dots(SERIE.g,'var(--comuns)',SERIE.gl,'Generales');
+ dots(SERIE.m,'var(--sumarl)',SERIE.ml,'Municipales');dots(SERIE.g,'var(--sumar)',SERIE.gl,'Generales');
  el('text',{x:x(2015.95),y:y(26.7)-12,'text-anchor':'middle',class:'lab'},svg).textContent='26,7%';
  el('text',{x:x(2023.55),y:y(17.0)+22,'text-anchor':'middle',class:'lab'},svg).textContent='17,0%';
  el('text',{x:x(2023.4),y:y(20.0)-12,'text-anchor':'middle',class:'lab'},svg).textContent='20,0%';
@@ -171,9 +172,9 @@ function dumbbell(id,data,label){const box=document.getElementById(id);const tip
  [0,10,20,30,40].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)','stroke-width':1},svg);el('text',{x:x(v),y:H-6,'text-anchor':'middle'},svg).textContent=v+'%'});
  data.forEach((d,i)=>{const cy=m.t+rh*i+rh/2;
   el('text',{x:m.l-10,y:cy+4,'text-anchor':'end',class:'lab'},svg).textContent=d[0];
-  el('line',{x1:x(d[2]),x2:x(d[1]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
-  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
-  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  el('line',{x1:x(d[2]),x2:x(d[1]),y1:cy,y2:cy,stroke:'var(--sumar)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--sumar)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--sumar)',stroke:'var(--bg)','stroke-width':2},svg);
   el('text',{x:x(d[1])+12,y:cy+4},svg).textContent=(d[2]-d[1]).toFixed(1).replace('.',',');
   const hit=el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg);
   const h=ev=>{const [xx,yy]=pos(box,ev);tip.show(`${d[0]}<br>2015: <b>${fmt(d[1])}</b> · 2023: <b>${fmt(d[2])}</b>`,xx,yy)};
