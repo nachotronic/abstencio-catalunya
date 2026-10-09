@@ -1,0 +1,136 @@
+<title>Rufián y la suma de las izquierdas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style><style>
+:root{--comuns:#1d7f95;--bar:#cfcacc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--comuns:#3aa6bf;--bar:#4a454b}}
+:root[data-theme="dark"]{--comuns:#3aa6bf;--bar:#4a454b}
+</style>
+
+<style>:root{--erc:#f0a81c;--ercl:#f9dc9e;--psoe:#e30613;--junts:#16a99c;--pp:#1d84ce;--sumar:#a2275f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--erc:#f5b324;--ercl:#6b5320;--psoe:#ff5a5f;--junts:#2fd0c2;--pp:#4fa8ea;--sumar:#d0679a}}:root[data-theme="dark"]{--erc:#f5b324;--ercl:#6b5320;--psoe:#ff5a5f;--junts:#2fd0c2;--pp:#4fa8ea;--sumar:#d0679a}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Sumados, ERC y los comuns habrían sido la lista más votada en 1.431 secciones de Cataluña en 2023; por separado lo fueron en 232</h1>
+<p class="dek">Rufián dice que quiere ser el candidato de ERC el 29N, pero «acompañado de otras fuerzas de izquierdas». En las generales de 2023, ERC sacó en Cataluña el 13,2%, casi la mitad que en 2019 en todas partes. Con los votos de los comuns sumados, el mapa cambia, aunque el PSC seguiría por delante en la ciudad de Barcelona.</p>
+<div class="byline">Nacho G. del Álamo · 8 de octubre de 2026</div>
+<p style="margin-top:1.4rem">Gabriel Rufián ha despejado a medias la incógnita esta tarde. «Yo quiero representar a Esquerra Republicana», escribió en X, pero «acompañado de otras fuerzas de izquierdas y antifascistas. Porque esto solos no se gana». La dirección de ERC, con Oriol Junqueras al frente, lo quiere como cabeza de lista, y el partido tiene previsto cerrar su candidatura el 17 de octubre.</p>
+<p>Los resultados por sección censal permiten medir de dónde parte ERC y qué cambiaría, solo en términos de suma aritmética, si sus votos y los de los comuns fueran en la misma papeleta.</p>
+<h2>De 15 diputados a 7</h2>
+<p>ERC vivió su mejor momento en unas generales en abril de 2019: el <strong>24,6%</strong> de los votos en Cataluña y 15 diputados. Fue la lista más votada en 2.691 de las algo más de 5.000 secciones censales. En noviembre de ese año bajó al 22,6% y 13 escaños.</p>
+<p>En julio de 2023 se quedó en el <strong>13,2%</strong> y 7 diputados, y solo fue primera fuerza en <strong>197 secciones</strong>. El PSC ganó en 4.281.</p>
+<figure>
+<figcaption><span class="t">ERC en las generales, en Cataluña</span><span class="s">Porcentaje de voto en Cataluña en cada elección general desde 2004</span></figcaption>
+<div class="chart" id="serie"></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa sin voto exterior, agregados por sección censal. Porcentaje sobre voto a candidaturas.</div>
+<details><summary>Ver los datos en tabla, con los escaños</summary><div class="tbl" id="serie-tbl"></div></details>
+</figure>
+<p>La caída de 2019 a 2023 fue casi igual en todo el territorio: ERC perdió entre el 44% y el 48% de su porcentaje de voto en pueblos y ciudades de todos los tamaños. En los municipios de menos de 2.000 electores pasó del 37,4% al 20,9%; en los de más de 200.000, del 23,1% al 12,2%. Por provincias, la mayor caída en puntos fue en Girona, del 29,8% al 14,7%.</p>
+<h2>La suma que propone Rufián</h2>
+<p>Los comuns (Sumar-En Comú Podem en 2023) sacaron en Cataluña el 14,0%, algo más que ERC. Por separado, entre los dos fueron la lista más votada en 232 secciones. Si se suman sus porcentajes sección a sección, el resultado es el <strong>27,2%</strong> y la suma supera a cualquier otra lista en <strong>1.431 secciones</strong>, más de una de cada cuatro.</p>
+<figure>
+<figcaption><span class="t">Por separado, 232 secciones; sumados, 1.431</span><span class="s">Secciones censales de Cataluña donde cada lista fue la más votada en las generales de julio de 2023, y donde lo habría sido la suma de los votos de ERC y los comuns</span></figcaption>
+<div class="chart" id="secs"></div>
+<div class="src">Fuente: Ministerio del Interior. La suma es aritmética: no supone que todos sus votantes votaran a una lista conjunta.</div>
+</figure>
+<p>La suma no alcanza al PSC en el conjunto de Cataluña, donde sacó el 34,5%. Tampoco en la ciudad de Barcelona, dentro de la circunscripción donde Rufián encabezó la lista: allí ERC y los comuns sumaron el 29,1% y el PSC, el 33,2%. En abril de 2019 la misma suma llegó al 39,4% en la ciudad.</p>
+<p>Hay que leer la suma con mucha cautela. Las listas conjuntas no suman siempre los votos de sus partes: algunos votantes de ERC no votarían una papeleta con los comuns, y al revés, y otros podrían sumarse. La aritmética muestra el tamaño del espacio, no lo que haría una candidatura que todavía no existe.</p>
+<h2>Qué mirar el 29N</h2>
+<p>Si ERC va sola, la pregunta es si recupera algo de lo que perdió entre 2019 y 2023, que fue casi la mitad en todas partes. Si hay algún tipo de acuerdo con otras izquierdas, el mapa por sección permitirá ver la noche electoral si la suma se parece a la de 2023 o se queda por debajo.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · <a href="https://mapaelectoral.es/actualidad/colau-barcelona-comuns/">La Barcelona que tendría que reconquistar Colau</a> · <a href="https://mapaelectoral.es/actualidad/puigdemont-junts-congreso-parlament/">Con Puigdemont de candidato, Junts duplica su voto</a></p>
+<div class="foot">Datos: Ministerio del Interior (generales por mesa, sin voto exterior). Borrador: pendiente de revisión antes de publicar.</div>
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+const SER=[["2004",16.3,8],["2008",8.0,3],["2011",7.1,3],["2015",16.0,9],["2016",18.2,9],["abr. 2019",24.6,15],["nov. 2019",22.6,13],["2023",13.2,7]];
+const SECS=[["PSC",4281,0,"var(--psoe)"],["Junts",465,0,"var(--junts)"],["ERC",197,0,"var(--erc)"],["PP",128,0,"var(--pp)"],["Comuns",35,0,"var(--sumar)"],["ERC + comuns",1431,1,"url(#ercsum)"]];
+(function(){const box=document.getElementById('serie');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=W<500?250:280,m={l:34,r:6,t:22,b:W<500?52:34};
+ const n=SER.length,bw=(W-m.l-m.r)/n,y=v=>H-m.b-v/30*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a ERC en Cataluña en las generales, 2004-2023'},box);
+ [0,10,20,30].forEach(v=>{el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'});
+ SER.forEach((d,i)=>{const x=m.l+i*bw,hi=i==5||i==7;
+  el('rect',{x:x+3,y:y(d[1]),width:bw-6,height:y(0)-y(d[1]),rx:3,fill:hi?'var(--erc)':'var(--ercl)'},svg);
+  if(hi)el('text',{x:x+bw/2,y:y(d[1])-6,'text-anchor':'middle',class:'lab'},svg).textContent=c1(d[1]);
+  el('text',{x:x+bw/2,y:H-m.b+16,'text-anchor':W<500?'end':'middle',transform:W<500?`rotate(-45 ${x+bw/2} ${H-m.b+12})`:''},svg).textContent=d[0];
+  hov(box,tip,el('rect',{x,y:m.t,width:bw,height:H-m.t-m.b,fill:'transparent'},svg),`Generales ${d[0]}<br><b>${c1(d[1])}%</b> · ${d[2]} escaños`);});})();
+table('serie-tbl',['Elección','Voto en Cataluña','Escaños'],SER.map(d=>['Generales '+d[0],c1(d[1])+'%',d[2]]));
+(function(){const box=document.getElementById('secs');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=34,m={l:W<500?120:170,r:56,t:6,b:8},H=m.t+m.b+rh*SECS.length;
+ const x=v=>m.l+v/4500*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Secciones donde cada lista fue la más votada en 2023 en Cataluña'},box);
+ const g=el('linearGradient',{id:'ercsum',x1:0,x2:1,y1:0,y2:0},el('defs',{},svg));el('stop',{offset:'50%','stop-color':'var(--erc)'},g);el('stop',{offset:'50%','stop-color':'var(--sumar)'},g);
+ SECS.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  if(d[2])el('line',{x1:8,x2:W-8,y1:cy-rh/2,y2:cy-rh/2,stroke:'var(--rule)'},svg);
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:d[2]?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('rect',{x:m.l,y:cy-9,width:Math.max(2,x(d[1])-m.l),height:18,rx:3,fill:d[3]},svg);
+  el('text',{x:x(d[1])+6,y:cy+4,class:d[2]?'lab':'','font-size':12},svg).textContent=String(d[1]).replace(/\B(?=(\d{3})+$)/g,".");
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br><b>${String(d[1]).replace(/\B(?=(\d{3})+$)/g,".")}</b> secciones`);});})();
+
+</script>

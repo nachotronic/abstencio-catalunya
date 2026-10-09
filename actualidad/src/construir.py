@@ -34,6 +34,14 @@ EXCELSIOR = 'https://www.excelsior.com.mx/internacional/miles-marchan-madrid-con
 VANGUARDIA = 'https://www.vanguardia.com/mundo/2026/09/29/maricarmen-la-anciana-de-87-anos-desalojada-en-madrid-podra-volver-a-la-casa/'
 ARA = 'https://es.ara.cat/politica/tc-avala-amnistia-malversacion-no-aplica-todavia-puigdemont_1_5522452.html'
 DEMOCRATA = 'https://www.democrata.es/politica/puigdemont-29n-regreso-sin-fecha-sin-cita-con-sanchez/'
+PUBLICO_RUFIAN = 'https://www.publico.es/politica/rufian-asegura-quiere-candidato-erc-ojala-erc-quiera.html'
+INFOBAE_RUFIAN = 'https://www.infobae.com/espana/agencias/2026/10/08/rufian-asegura-que-quiere-ser-el-candidato-de-erc-pero-acompanado-de-otras-izquierdas/'
+DEMOCRATA_ERC = 'https://www.democrata.es/politica/ampliacion-erc-se-decanta-por-rufian-y-fijara-el-17-de-octubre-su-candidatura-tras-unas-primarias/'
+INFOBAE_MONTERO = 'https://www.infobae.com/espana/agencias/2026/10/06/maria-jesus-montero-descarta-ir-en-las-listas-del-psoe-el-29n/'
+ELMIRA_MONTERO = 'https://www.elmira.es/articulo/andalucia/montero-ira-listas-psoe-congreso-sevilla-pone-vivienda-centro-29n/20261006140351619717.html'
+CORDOBABN_MONTERO = 'https://www.cordobabn.com/andalucia/29n-montero-descarta-como-candidata-desea-que-sanchez-acuda-muchas-veces-andalucia-pieza-clave-29n/20261006193152270616.html'
+INDEPENDIENTE_ANDALUZAS = 'https://www.elindependiente.com/espana/2026/05/17/elecciones-andalucia-resultados-psoe-montero-sanchez-gobierno/'
+WIKI_ANDALUZAS_2022 = 'https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Andaluc%C3%ADa_de_2022'
 INE_IPVA = ('https://www.ine.es/jaxiT3/Tabla.htm?t=59060',
             'INE, Índice de Precios de Vivienda en Alquiler (estadística experimental, base 2015), por municipio (tabla 59060) y por distrito de las capitales (tabla 59061)')
 PARLAMENT = ('https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr',
@@ -41,6 +49,9 @@ PARLAMENT = ('https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr',
 
 # Series: agrupan las piezas en el índice, en la portada y en «Sigue leyendo»
 SERIES = {'29n': 'Camino al 29N', 'vivienda': 'Vivienda y voto'}
+# Ilustración de cada serie: cabecera de las piezas que no tienen una propia y del bloque de la serie en el índice
+SERIES_FOTO = {'vivienda': dict(src='img/actualidad/fotos/serie-vivienda.jpg', ancho=1280, alto=720, ia=True,
+                                pie='Una urna llena de edificios y unas llaves: la serie «Vivienda y voto».')}
 
 PIEZAS = [
     dict(
@@ -54,6 +65,8 @@ PIEZAS = [
                  ('https://es.wikipedia.org/wiki/Xos%C3%A9_Manuel_Beiras', 'Wikipedia, «Xosé Manuel Beiras» (consultada el 8-10-2026)')],
         enlaces=[('El País', 'https://elpais.com/espana/2026-10-08/muere-a-los-90-anos-xose-manuel-beiras-historico-dirigente-del-nacionalismo-gallego.html')],
         lugar='Galicia',
+        foto=dict(src='img/actualidad/fotos/beiras-nacionalismo-gallego.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Xosé Manuel Beiras, con la bandera gallega y una urna.'),
     ),
     dict(
         slug='colau-barcelona-comuns', fecha='2026-10-08',
@@ -66,6 +79,8 @@ PIEZAS = [
                  ('https://civio.es/el-boe-nuestro-de-cada-dia/2026/10/06/llega-al-boe-la-convocatoria-de-elecciones-para-el-29-de-noviembre-todas-las-fechas-y-pasos-hasta-ese-dia/', 'Civio, calendario y escaños del decreto de convocatoria (6-10-2026)')],
         enlaces=[],
         lugar='Barcelona',
+        foto=dict(src='img/actualidad/fotos/colau-barcelona-comuns.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Ada Colau, con Barcelona al fondo.'),
     ),
     dict(
         slug='votar-en-noviembre', fecha='2026-10-08',
@@ -140,7 +155,7 @@ PIEZAS = [
     dict(
         slug='puigdemont-junts-congreso-parlament', fecha='2026-10-08',
         titulo='Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament', serie='29n',
-        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 444 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
+        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 465 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
         compara='El voto a Junts (y antes a CiU) en Cataluña en las generales de 2004 a 2023 y en las autonómicas de 2024, por sección censal, por tamaño de municipio y por provincia.',
         limites='Generales y autonómicas tienen distinto electorado votante, distintos candidatos y eligen cosas distintas: la comparación no dice quién cambió su voto ni por qué. CiU incluía a Unió hasta 2015. Porcentajes sobre voto válido. Sin voto exterior.',
         fuentes=[INTERIOR, PARLAMENT,
@@ -148,6 +163,42 @@ PIEZAS = [
                  (DEMOCRATA, 'Demócrata, el regreso de Puigdemont, sin fecha (octubre de 2026)')],
         enlaces=[],
         lugar='Cataluña',
+        actualizado='2026-10-08',
+        correcciones='8-10-2026: Junts ganó en 465 secciones en las generales de 2023, no en 444 (se habían contado solo las secciones con datos del Parlament de 2024). En Lleida, del 18,1%, no del 18,0%. Las conclusiones no cambian.',
+        foto=dict(src='img/actualidad/fotos/puigdemont-junts-congreso-parlament.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Carles Puigdemont, con la senyera, una urna y gráficos.'),
+    ),
+    dict(
+        slug='rufian-erc-comuns', fecha='2026-10-08',
+        titulo='Sumados, ERC y los comuns habrían sido la lista más votada en 1.431 secciones de Cataluña en 2023; por separado, en 232', serie='29n',
+        descripcion='Rufián quiere ser el candidato de ERC «acompañado de otras fuerzas de izquierdas». En 2023 ERC sacó en Cataluña el 13,2 %, casi la mitad que en 2019. Con los votos de los comuns sumados sección a sección, el mapa cambia, aunque el PSC sigue por delante.',
+        compara='El voto a ERC en Cataluña en las generales de 2004 a 2023, las secciones censales donde cada lista fue la más votada en 2023 y la suma aritmética de ERC y los comuns (Sumar-En Comú Podem) sección a sección, en Cataluña y en la ciudad de Barcelona.',
+        limites='La suma es aritmética: no estima lo que sacaría una lista conjunta, porque no todos los votantes de una y otra votarían la misma papeleta. La lista de los comuns cambia de nombre en cada elección. Porcentajes sobre voto a candidaturas. Sin voto exterior.',
+        fuentes=[INTERIOR,
+                 (PUBLICO_RUFIAN, 'Público, «Rufián asegura que quiere ser candidato de ERC» (8-10-2026)'),
+                 (INFOBAE_RUFIAN, 'Infobae / EFE, Rufián quiere ser el candidato de ERC, pero acompañado de otras izquierdas (8-10-2026)'),
+                 (DEMOCRATA_ERC, 'Demócrata, ERC fijará el 17 de octubre su candidatura (octubre de 2026)')],
+        enlaces=[],
+        lugar='Cataluña',
+        foto=dict(src='img/actualidad/fotos/rufian-erc-comuns.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Gabriel Rufián, con el Congreso de los Diputados y una urna.'),
+    ),
+    dict(
+        slug='psoe-andalucia-generales-autonomicas', fecha='2026-10-08',
+        titulo='Andalucía vota casi diez puntos más al PSOE cuando elige al Gobierno que cuando elige a la Junta', serie='29n',
+        descripcion='Montero no irá en las listas del 29N tras el peor resultado del PSOE en unas andaluzas, el 22,7 % de mayo. En las generales de 2023 el PSOE andaluz sacó el 33,5 %. Lo que sí ha perdido es el mapa: en 2004 ganaba en tres de cada cuatro secciones; en 2023, en menos de la mitad.',
+        compara='El voto al PSOE y al PP en Andalucía en las generales de 2004 a 2023, por sección censal, por provincia y por renta, frente a los resultados de las autonómicas de 2022 y 2026.',
+        limites='Las generales vienen de Interior, por mesa y sin voto exterior; las autonómicas son los totales publicados con su propio escrutinio, así que la diferencia de 9,4 puntos compara fuentes distintas. Los datos no dicen quién vota distinto en cada elección. Las secciones cambian de límites entre elecciones.',
+        fuentes=[INTERIOR, INE,
+                 (INFOBAE_MONTERO, 'Infobae / Europa Press, Montero descarta ir en las listas del PSOE el 29N (6-10-2026)'),
+                 (ELMIRA_MONTERO, 'elmira.es, Montero y las listas del PSOE por Sevilla (6-10-2026)'),
+                 (CORDOBABN_MONTERO, 'Córdoba BN, Montero pide que Sánchez acuda a Andalucía, «pieza clave» del 29N (6-10-2026)'),
+                 (INDEPENDIENTE_ANDALUZAS, 'El Independiente, resultados de las elecciones andaluzas del 17 de mayo de 2026'),
+                 (WIKI_ANDALUZAS_2022, 'Wikipedia, elecciones al Parlamento de Andalucía de 2022 (resultados oficiales)')],
+        enlaces=[],
+        lugar='Andalucía',
+        foto=dict(src='img/actualidad/fotos/psoe-andalucia-generales-autonomicas.jpg', ancho=1280, alto=720, ia=True,
+                  pie='María Jesús Montero, con el Congreso de los Diputados, una urna y papeles de Hacienda.'),
     ),
 ]
 
@@ -185,6 +236,15 @@ ENLACES_TEXTO = {
     'puigdemont-junts-congreso-parlament': [
         ('avaló el martes que la amnistía alcance la malversación', ARA),
         ('Su regreso a Cataluña sigue sin fecha', DEMOCRATA),
+    ],
+    'rufian-erc-comuns': [
+        ('escribió en X', PUBLICO_RUFIAN),
+        ('cerrar su candidatura el 17 de octubre', DEMOCRATA_ERC),
+    ],
+    'psoe-andalucia-generales-autonomicas': [
+        ('Lo confirmó el martes', INFOBAE_MONTERO),
+        ('«pieza clave»', CORDOBABN_MONTERO),
+        ('su peor resultado en Andalucía', INDEPENDIENTE_ANDALUZAS),
     ],
 }
 
@@ -236,6 +296,8 @@ nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-trans
 .sigue{list-style:none;padding:0;display:grid;gap:12px}
 .sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
 .sigue .kicker{display:block;margin-bottom:2px}
+figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
+figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
 ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
 ol.serie li::marker{font-family:var(--mono);color:var(--muted)}
 ol.serie a{color:var(--fg)}
@@ -306,6 +368,13 @@ def pieza(p, todas):
     main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {SERIES[p["serie"]]} · {p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
+    fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
+    if fo:
+        # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
+        cred = (f'Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>' if fo.get('ia')
+                else f'Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>')
+        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="{html.escape(fo["pie"]) if fo.get("ia") else ""}" width="{fo["ancho"]}" height="{fo["alto"]}">'
+                            f'<figcaption>{html.escape(fo["pie"])} {cred}.</figcaption></figure>', 1)
     for texto, href in ENLACES_TEXTO.get(p['slug'], []):
         assert texto in main, (p['slug'], texto)
         main = main.replace(texto, f'<a href="{href}">{texto}</a>', 1)
@@ -327,8 +396,8 @@ def pieza(p, todas):
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
-<dt>Publicado · actualizado</dt><dd>{f} · {f}</dd>
-<dt>Correcciones</dt><dd>Ninguna.</dd>
+<dt>Publicado · actualizado</dt><dd>{f} · {fecha_larga(p.get('actualizado', p['fecha']))}</dd>
+<dt>Correcciones</dt><dd>{html.escape(p.get('correcciones', 'Ninguna.'))}</dd>
 </dl>
 <h2>Serie «{SERIES[p['serie']]}»: {len(serie)} piezas</h2><ol class="serie">{lista}</ol>
 <h2>Sigue leyendo</h2><ul class="sigue">{sigue}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
@@ -337,7 +406,7 @@ def pieza(p, todas):
 
     jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
-              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p['fecha'],
+              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
               'image': [imagen],
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
@@ -357,7 +426,10 @@ def indice(todas):
               'hasPart': [{'@type': 'NewsArticle', 'headline': p['titulo'], 'url': f"{url}{p['slug']}/", 'datePublished': p['fecha']} for p in todas]}
     def bloque(serie):
         qs = [q for q in todas if q['serie'] == serie]
-        return (f'<h2 id="{serie}">{SERIES[serie]}</h2><ul class="sigue">' +
+        fo = SERIES_FOTO.get(serie)
+        img = (f'<figure class="foto"><img src="../{fo["src"]}" alt="{html.escape(fo["pie"])}" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
+               f'<figcaption>Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>') if fo else ''
+        return (f'<h2 id="{serie}">{SERIES[serie]}</h2>{img}<ul class="sigue">' +
                 ''.join(f'<li><a href="{q["slug"]}/index.html"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></a></li>'
                         for q in sorted(qs, key=lambda q: q['fecha'], reverse=True)) + '</ul>')
     # primero la serie con la pieza más reciente

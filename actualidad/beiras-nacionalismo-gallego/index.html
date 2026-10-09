@@ -124,7 +124,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 :root[data-theme="dark"]{--comuns:#3987e5;--conf:#d0679a;--q1:#243245;--q2:#2d4f7c;--q3:#3d74b8;--q4:#6fa2de;--q5:#b3d2f4;--qline:#18161a}
 .ramp{display:flex;gap:2px;align-items:center;flex-wrap:wrap}.ramp i{width:34px;height:12px;display:inline-block;border-radius:2px}
 .ramp span{font-size:.9rem;color:var(--muted)}
-</style><style>
+</style><style>:root{--bng:#4a9fdc;--sumar:#a2275f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bng:#7ab8e6;--sumar:#d0679a}}:root[data-theme="dark"]{--bng:#7ab8e6;--sumar:#d0679a}</style><style>
 :root{--serif:"Newsreader",Georgia,serif;--ui:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--surface:#fff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--surface:#1e2025}}
 :root[data-theme="dark"]{--surface:#1e2025}
@@ -146,6 +146,8 @@ nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-trans
 .sigue{list-style:none;padding:0;display:grid;gap:12px}
 .sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
 .sigue .kicker{display:block;margin-bottom:2px}
+figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
+figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
 ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
 ol.serie li::marker{font-family:var(--mono);color:var(--muted)}
 ol.serie a{color:var(--fg)}
@@ -161,6 +163,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>Del 12% al 2,9% y de vuelta al 9,5%: el nacionalismo gallego que deja Beiras</h1>
 <p class="dek">Muere a los 90 años el hombre que llevó al BNG de un diputado a 18 en el Parlamento gallego. En las generales, el voto de su espacio ha vivido una montaña rusa: se hundió cuando él rompió con el Bloque y ha vuelto, sección a sección, a cifras de hace dos décadas.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<figure class="foto"><img src="../../img/actualidad/fotos/beiras-nacionalismo-gallego.jpg" alt="Xosé Manuel Beiras, con la bandera gallega y una urna." width="1280" height="720"><figcaption>Xosé Manuel Beiras, con la bandera gallega y una urna. Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>
 
 <p style="margin-top:1.4rem">Xosé Manuel Beiras ha muerto esta madrugada en Galicia a los 90 años. Nació en Santiago de Compostela en abril de 1936 ("con el Frente Popular", le gustaba decir) y fue, <a href="https://www.eldiario.es/galicia/muere-90-anos-xose-manuel-beiras-intelectual-dirigente-nacionalismo-gallego-importante-castelao_1_13565454.html">según el obituario de elDiario.es</a>, el intelectual y dirigente más importante del nacionalismo gallego desde Castelao. Su biografía política cabe en una cifra: en 1985 era el único diputado del BNG en el Parlamento de Galicia; en 1997, el Bloque tenía 18 escaños y había adelantado al PSOE como primera fuerza de la oposición a Fraga. Esa marca no se batió hasta 2024, cuando Ana Pontón llegó a 25.</p>
 <p>Pero hay otro mapa, menos citado, que cuenta su trayectoria de otra manera: el de las elecciones generales. Y ahí la historia no es una línea ascendente, sino una montaña rusa.</p>
@@ -172,7 +175,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <figure>
 <figcaption><span class="t">El Bloque se hunde mientras sube En Marea</span><span class="s">% sobre votos a candidaturas en Galicia en las generales. Cada punto es una candidatura concreta</span></figcaption>
 <div class="chart" id="serie"></div>
-<div class="legend"><span><i class="sw" style="background:var(--comuns)"></i>BNG (2015: NÓS; 2016: BNG-NÓS)</span><span><i class="sw" style="background:var(--conf)"></i>Gran lista a su izquierda: EU, En Marea, En Común-Unidas Podemos, Sumar Galicia</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--bng)"></i>BNG (2015: NÓS; 2016: BNG-NÓS)</span><span><i class="sw" style="background:var(--sumar)"></i>Gran lista a su izquierda: EU, En Marea, En Común-Unidas Podemos, Sumar Galicia</span></div>
 <div class="src">Fuente: Ministerio del Interior, sin voto exterior. En abril de 2019 En Marea se presentó sola (1,1%) y en noviembre Más País sacó un 1,5%: ninguna se suma.</div>
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="serie-tbl"></div></details>
 </figure>
@@ -227,7 +230,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <dt>Publicado · actualizado</dt><dd>8 de octubre de 2026 · 8 de octubre de 2026</dd>
 <dt>Correcciones</dt><dd>Ninguna.</dd>
 </dl>
-<h2>Serie «Camino al 29N»: 4 piezas</h2><ol class="serie"><li aria-current="page"><span class="kicker">Estás aquí</span><b>Del 12% al 2,9% y de vuelta al 9,5%: el nacionalismo gallego que deja Beiras</b></li><li><a href="../colau-barcelona-comuns/index.html"><b>La Barcelona que tendría que reconquistar Colau: los comuns ganaban en 837 secciones y ahora en 23</b></a></li><li><a href="../votar-en-noviembre/index.html"><b>El 29N repite mes con mal recuerdo: el último noviembre dejó la participación más baja de la democracia</b></a></li><li><a href="../puigdemont-junts-congreso-parlament/index.html"><b>Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament</b></a></li></ol>
+<h2>Serie «Camino al 29N»: 6 piezas</h2><ol class="serie"><li aria-current="page"><span class="kicker">Estás aquí</span><b>Del 12% al 2,9% y de vuelta al 9,5%: el nacionalismo gallego que deja Beiras</b></li><li><a href="../colau-barcelona-comuns/index.html"><b>La Barcelona que tendría que reconquistar Colau: los comuns ganaban en 837 secciones y ahora en 23</b></a></li><li><a href="../votar-en-noviembre/index.html"><b>El 29N repite mes con mal recuerdo: el último noviembre dejó la participación más baja de la democracia</b></a></li><li><a href="../puigdemont-junts-congreso-parlament/index.html"><b>Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament</b></a></li><li><a href="../rufian-erc-comuns/index.html"><b>Sumados, ERC y los comuns habrían sido la lista más votada en 1.431 secciones de Cataluña en 2023; por separado, en 232</b></a></li><li><a href="../psoe-andalucia-generales-autonomicas/index.html"><b>Andalucía vota casi diez puntos más al PSOE cuando elige al Gobierno que cuando elige a la Junta</b></a></li></ol>
 <h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../precio-del-alquiler-y-voto/index.html"><span class="kicker">Vivienda y voto · 703 municipios</span><b>El alquiler sube un 29% en València desde 2015, pero el voto apenas lo refleja</b></a></li><li><a href="../psoe-barrios-de-alquiler/index.html"><span class="kicker">Vivienda y voto · España sin Cataluña</span><b>El PSOE sube en los barrios de alquiler casi el triple que en los de propietarios desde 2015</b></a></li><li><a href="../pisos-turisticos-y-votantes/index.html"><span class="kicker">Vivienda y voto · Grandes ciudades</span><b>Los barrios de pisos turísticos de Barcelona han perdido uno de cada diez electores desde 2015</b></a></li><li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a></footer>
 </main>
@@ -253,7 +256,7 @@ function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.t
  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'BNG y gran lista a su izquierda en Galicia, generales 2004-2023'},box);
  [0,10,20,30].forEach(v=>{el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-8,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'});
  [2004,2008,2011,2015,2019,2023].forEach(v=>{el('text',{x:x(v+.2),y:H-8,'text-anchor':'middle'},svg).textContent=v});
- [['conf','var(--conf)','cn'],['bng','var(--comuns)','bn']].forEach(([k,c,n])=>{
+ [['conf','var(--sumar)','cn'],['bng','var(--bng)','bn']].forEach(([k,c,n])=>{
   el('path',{d:'M'+S.y.map((v,i)=>x(v)+','+y(S[k][i])).join('L'),fill:'none',stroke:c,'stroke-width':2,'stroke-linejoin':'round'},svg);
   S.y.forEach((v,i)=>{el('circle',{cx:x(v),cy:y(S[k][i]),r:4.5,fill:c,stroke:'var(--bg)','stroke-width':2},svg);
    const hit=el('circle',{cx:x(v),cy:y(S[k][i]),r:13,fill:'transparent'},svg);
@@ -283,7 +286,7 @@ function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.t
  [0,5,10,15].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'});
  CIU.forEach((c,i)=>{const yy=m.t+i*rh;
   el('text',{x:m.l-8,y:yy+rh/2+4,'text-anchor':'end',class:i<2?'lab':''},svg).textContent=c[0];
-  el('rect',{x:m.l,y:yy+4,width:x(c[1])-m.l,height:rh-8,rx:3,fill:'var(--comuns)',opacity:i<2?1:.7},svg);
+  el('rect',{x:m.l,y:yy+4,width:x(c[1])-m.l,height:rh-8,rx:3,fill:'var(--bng)',opacity:i<2?1:.7},svg);
   el('text',{x:x(c[1])+6,y:yy+rh/2+4},svg).textContent=fmt(c[1]);
   const hit=el('rect',{x:0,y:yy,width:W,height:rh,fill:'transparent'},svg);
   const h=ev=>{const [a,b]=pos(box,ev);tip.show(`${c[0]}<br>BNG 2023: <b>${fmt(c[1])}</b>`,a,b)};
@@ -298,7 +301,7 @@ function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.t
   const x0=j*(cw+gap);el('text',{x:x0,y:14,class:'lab'},svg).textContent=t;
   [0,5,10].forEach(v=>el('line',{x1:x0,x2:x0+cw,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg));
   const bw=(cw-8)/5;
-  Q[k].forEach((v,i)=>{const bx=x0+i*bw+2;el('rect',{x:bx,y:y(v),width:bw-4,height:y(0)-y(v),rx:3,fill:'var(--comuns)',opacity:.85},svg);
+  Q[k].forEach((v,i)=>{const bx=x0+i*bw+2;el('rect',{x:bx,y:y(v),width:bw-4,height:y(0)-y(v),rx:3,fill:'var(--bng)',opacity:.85},svg);
    const hit=el('rect',{x:bx,y:m.t,width:bw,height:H-m.t-m.b,fill:'transparent'},svg);
    const h=ev=>{const [a,b]=pos(box,ev);tip.show(`${t}, quintil ${i+1}<br>BNG: <b>${fmt(v)}</b>`,a,b)};
    hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide());});
