@@ -222,7 +222,7 @@ PIEZAS = [
     ),
     dict(
         slug='huelga-11n-paro-participacion', fecha='2026-10-09',
-        titulo='La huelga del 11N apela a los barrios que menos votan: donde más paro hay, la participación cae al 61%', serie='29n',
+        titulo='Huelga general del 11N: en los barrios con más paro, solo vota el 61%, quince puntos menos que en los de menos paro', serie='29n',
         descripcion='CCOO, UGT y el Sindicato de Inquilinas convocan la primera huelga general conjunta desde 2012 a 18 días de las generales. En julio de 2023, el 10% de secciones con más paro votó quince puntos menos que el 10% con menos paro. A igual renta, la distancia se mantiene.',
         compara='La participación en las generales de julio de 2023 de las 34.737 secciones censales de España, agrupadas por la tasa de paro del censo de 2021 (deciles) y, dentro de cada quintil de renta, el 20% con menos y con más paro.',
         limites='El paro es el del censo de 2021, no el de 2023. Es una asociación entre secciones: no dice que los parados voten menos ni explica por qué. Nada dice sobre quién secundará la huelga. Medias ponderadas por censo, sin voto exterior.',
@@ -245,7 +245,7 @@ PIEZAS = [
     ),
     dict(
         slug='psoe-madrid-municipales-generales', fecha='2026-10-09',
-        titulo='En Madrid, el PSOE saca diez puntos más cuando se vota al Gobierno que cuando se vota al alcalde', serie='29n',
+        titulo='Tras la bronca entre Ayuso y Más Madrid: en la capital, el PSOE saca diez puntos más en las generales que en las municipales', serie='29n',
         descripcion='La bronca entre Ayuso y Más Madrid en la Asamblea vuelve a enfrentar a las dos fuerzas que dominan la política madrileña. En la ciudad de Madrid, el PSOE sacó el 16,8% en las municipales de mayo de 2023 y el 27,4% en las generales de julio. Fue más alto en las generales en todas las secciones menos una.',
         compara='El voto a PP, PSOE, Vox y la izquierda del PSOE en la ciudad de Madrid en las municipales del 28 de mayo de 2023 y en las generales del 23 de julio, en total, por distrito y en las 2.450 secciones censales.',
         limites='Son dos elecciones con electorados distintos: la participación fue 5 puntos más alta en julio y en las municipales votan también residentes de la UE. Los datos no dicen cuántos votantes cambiaron de papeleta. En las municipales Más Madrid y Podemos-IU fueron por separado y en las generales los dos iban en Sumar. Porcentajes sobre voto válido, sin voto exterior.',
@@ -273,7 +273,7 @@ PIEZAS = [
     ),
     dict(
         slug='izquierda-del-psoe-secciones', fecha='2026-10-09',
-        titulo='El espacio a la izquierda del PSOE fue el más votado en 9.810 secciones en 2015; en 2023, en 182', serie='29n',
+        titulo='Podemos y el Frente Amplio se disputan un espacio que ganaba en 9.810 secciones en 2015 y en 2023 solo en 182', serie='29n',
         descripcion='Podemos antepone sus primarias y se aleja del Frente Amplio. Antes de saber cuántas papeletas habrá a la izquierda del PSOE, los datos por sección muestran de dónde parte ese espacio: del 24,4% de 2015 al 12,3% de 2023, con caídas en todo tipo de municipios.',
         compara='El voto a las listas a la izquierda del PSOE en las generales de 2015, 2016, abril y noviembre de 2019 y 2023, las secciones censales donde fueron primeras, y su voto por tamaño de municipio y por provincia.',
         limites='La composición del espacio cambia en cada elección (Podemos y confluencias, IU, Compromís, Más País, Sumar). En 2023 no se puede separar a Podemos de Sumar. Las secciones cambian de límites entre elecciones. Sin voto exterior.',
@@ -295,7 +295,7 @@ PIEZAS = [
     ),
     dict(
         slug='vox-poblacion-nacida-fuera', fecha='2026-10-09',
-        titulo='Vox saca casi lo mismo donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo', serie='29n',
+        titulo='La inmigración baja ligeramente en Euskadi, donde Vox saca el 2,6%; en el resto de España, su voto apenas cambia con la población nacida fuera', serie='29n',
         descripcion='La inmigración a Euskadi bajó ligeramente en 2025, según los datos que publica esta semana la prensa vasca. Euskadi es también donde menos vota a Vox: el 2,6% en 2023. En el resto de España, el voto a Vox apenas cambia entre las secciones con menos del 5% y con más del 30% de población nacida en el extranjero.',
         compara='El voto a Vox en las generales de julio de 2023 por sección censal, agrupado por el porcentaje de residentes nacidos en el extranjero del censo de 2021, en Cataluña, Euskadi, Navarra y el resto de España.',
         limites='Es un dato por sección, no por persona: no dice si quienes votan a Vox viven cerca de población inmigrante ni si la votan por eso. «Nacidos fuera» incluye a españoles nacidos en el extranjero, y los extranjeros sin nacionalidad no votan en generales. Censo de 2021 frente a voto de 2023. Sin voto exterior.',
