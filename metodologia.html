@@ -50,7 +50,7 @@
    "license": "https://creativecommons.org/licenses/by/4.0/",
    "isAccessibleForFree": true,
    "datePublished": "2026-10-05",
-   "dateModified": "2026-10-06",
+   "dateModified": "2026-10-08",
    "temporalCoverage": "2015-05-24/2024-05-12",
    "spatialCoverage": {
     "@type": "Place",
@@ -245,7 +245,7 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <tr><td>mean_age, pct_under18, pct_over65, pct_single_hh, pct_spanish</td><td>Edad media y porcentajes de menores, mayores de 65, hogares unipersonales y población española (Atlas INE, de 0 a 100).</td></tr>
 <tr><td>pct_foreign, pct_foreign_born, pct_naturalized</td><td>Extranjeros, nacidos en el extranjero y españoles nacidos fuera (Censo 2021, de 0 a 1).</td></tr>
 <tr><td>pct_higher_ed_completed, unemployment_rate, pct_rented, pct_secondary</td><td>Adultos con estudios superiores, tasa de paro, viviendas de alquiler y viviendas secundarias (Censo 2021, de 0 a 1).</td></tr>
-<tr><td>ind19, voters19, ind23</td><td>Votos a ERC, Junts y CUP en noviembre de 2019, votantes de noviembre de 2019 y votos a esos partidos en 2023.</td></tr>
+<tr><td>ind19, voters19, ind23</td><td>Votos a ERC, Junts y CUP en noviembre de 2019, votantes de noviembre de 2019 y votos a ERC, Junts, CUP y PDeCAT en 2023.</td></tr>
 <tr><td>indep_share19, indep_share23, drop_19_23</td><td>Voto independentista sobre votos emitidos en 2019 y 2023, y caída de participación entre noviembre de 2019 y julio de 2023 (0 a 1).</td></tr>
 </tbody></table></div>
 <p>Los mismos nombres se usan en el resto de archivos. En evolucion_secciones.csv cada columna es una elección: M = municipales, A = Parlament, G = Congreso, seguida del año y la vuelta del año (G20192 = Congreso de noviembre de 2019).</p>
@@ -253,7 +253,8 @@ th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
 <p>Datos, texto y gráficos de <a href="sobre-mi.html">Nacho G. del Álamo</a>, que también revisa los datos y el texto antes de publicar. Cada cifra del texto se recalcula con un script a partir de los datos publicados, y los totales se contrastan con los resultados oficiales de la Generalitat.</p>
 <h2>Correcciones</h2>
 <ul>
-<li><b>6 de octubre de 2026:</b> en la sección de Figueres con menos participación el paro es del 59% (58,5%), no del 58%; el voto independentista de 2023 era el 28% contando al PDeCAT, pero ERC, Junts y la CUP suman el 27%; en el Parlament de 2015 la distancia entre el 20% de secciones más ricas y el 20% más pobre era de 13 puntos, no de 14; el Censo 2021 no cubre 73 secciones (no 74) y el Atlas no da renta por unidad de consumo en 30 (no 20). Ninguna cambia las conclusiones.</li>
+<li><b>6 de octubre de 2026:</b> en la sección de Figueres con menos participación el paro es del 59% (58,5%), no del 58%; el voto independentista de 2023 era el 28% contando al PDeCAT, pero ERC, Junts y la CUP suman el 27%; en el Parlament de 2015 la distancia entre el 20% de secciones más ricas y el 20% más pobre era de 13 puntos, no de 14; el Censo 2021 no cubre 73 secciones (no 74) y el Atlas no da renta por unidad de consumo en 30 (no 20). Ninguna cambia las conclusiones. Además, tras revisar el texto con el estándar de verificación: los 68.000 inscritos en el censo municipal incluyen a los ciudadanos de países con convenio, no solo a europeos, y son alrededor del 13% de los extranjeros que podrían votar (no uno de cada cuatro europeos); y varias explicaciones que se daban como hechos se presentan ahora como hipótesis o atribuidas a los investigadores.</li>
+<li><b>8 de octubre de 2026:</b> las diez secciones que menos votan tienen rentas de entre 9.600 y 13.100 euros (no «de 10.000 a 13.000») y votan entre uno de cada cinco y uno de cada tres inscritos (no «entre uno de cada cuatro»); la del Raval se separa de las otras nueve. En el Parlament, el paro y los estudios pesan lo mismo en el modelo; el texto decía que pesaba más el paro. La columna ind23 incluye al PDeCAT, como ya decía la pieza. Ninguna cambia las conclusiones.</li>
 </ul>
 <h2>Código</h2>
 <p>Los scripts en Python con los que se han generado los datos y las páginas están en <a href="https://github.com/nachotronic/abstencio-catalunya">el repositorio de GitHub</a>, carpeta <code>src/</code>.</p>

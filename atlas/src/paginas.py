@@ -433,7 +433,7 @@ def metodologia(C):
 <h2>Familias de partidos</h2>
 <p>Para comparar elecciones, las candidaturas se agrupan en familias: el PP incluye sus coaliciones regionales y UPN; el PSOE, al PSC y sus federaciones; «Sumar» reúne el espacio a la izquierda del PSOE en cada momento (IU, Podemos y sus confluencias, Compromís, Más País, Más Madrid y Sumar). «Derecha» en una pieza significa PP + Vox + Cs, y «izquierda estatal», PSOE + Sumar. PRC, Més per Mallorca y los partidos regionalistas o locales quedan en «Otros». La tabla completa está en <code>generales-2026/partidos.py</code> del repositorio.</p>
 <h2>Lo que predicen los datos (serie «Las excepciones»)</h2>
-<p>Un modelo de regresión lineal, ponderado por censo, estima el voto a PP + Vox + Cs del 23J en cada municipio a partir de seis indicadores (renta por unidad de consumo en logaritmo, edad media, porcentaje de extranjeros, estudios superiores, paro y tamaño en logaritmo) y de su provincia. Se estima con los {C['modelo_municipal']['n']:,} municipios con todos los datos y explica el {C['modelo_municipal']['r2_derecha'] * 100:.0f} % de las diferencias entre ellos. La diferencia entre el voto real y el previsto señala dónde mirar; no es una explicación.</p>
+<p>Un modelo de regresión lineal, ponderado por censo, estima el voto a PP + Vox + Cs del 23J en cada municipio a partir de seis indicadores (renta por unidad de consumo en logaritmo, edad media, porcentaje de extranjeros, estudios superiores, paro y tamaño en logaritmo) y de su provincia. Se estima con los {str(format(C['modelo_municipal']['n'], ',')).replace(',', '.')} municipios con todos los datos y explica el {C['modelo_municipal']['r2_derecha'] * 100:.0f} % de las diferencias entre ellos. La diferencia entre el voto real y el previsto señala dónde mirar; no es una explicación.</p>
 <h2>Gemelos</h2>
 <p>Se estandarizan los seis indicadores anteriores y se buscan pares de municipios de más de 15.000 habitantes, de la misma comunidad autónoma, con una distancia euclídea menor de 0,6 desviaciones típicas. Entre ellos se eligen los pares con mayor diferencia de voto.</p>
 <h2>Fronteras</h2>
@@ -473,7 +473,12 @@ def correcciones():
     h = [cabeza('Correcciones · ' + SITIO, 'Historial de correcciones de datos y conclusiones de Mapa Electoral: el mapa de resultados y el Atlas.', 'correcciones/index.html', ld, nivel=1)]
     h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>')
     h.append('<h2 id="mapa">Mapa de resultados</h2><p><a href="../../">El mapa de las generales: cómo vota cada barrio de España</a></p><ul class="corr">' + ''.join(li(d, t) for d, t in MAPA) + '</ul>')
-    h.append('<h2 id="atlas">Atlas de las anomalías electorales</h2><p>Todavía no hay correcciones. Cuando las haya, se anotarán también en la propia pieza.</p><p><a href="../politica-editorial/index.html">Política editorial</a></p>')
+    from correcciones_atlas import CORRECCIONES as CORR
+    filas = sorted(((d, q, t) for q in TODAS if q['slug'] in CORR for d, t in CORR[q['slug']]), key=lambda x: x[0], reverse=True)
+    h.append('<h2 id="atlas">Atlas de las anomalías electorales</h2>'
+             + ('<ul class="corr">' + ''.join(f'<li><time datetime="{d}">{fecha_txt(d)}</time>. <a href="../{ruta_pieza(q)}">{escape(titular(q))}</a>. {escape(t)}</li>' for d, q, t in filas) + '</ul>'
+                if filas else '<p>Todavía no hay correcciones.</p>')
+             + '<p>Cada corrección se anota también en la propia pieza. <a href="../politica-editorial/index.html">Política editorial</a></p>')
     h.append(PIE)
     return 'correcciones/index.html', ''.join(h)
 
@@ -603,6 +608,12 @@ def main():
     global TODAS
     C = json.loads((ATLAS / 'src' / 'cifras.json').read_text())
     TODAS = piezas(C) + piezas2(C) + piezas3(C)
+    from correcciones_atlas import CORRECCIONES as CORR
+    assert set(CORR) <= {q['slug'] for q in TODAS}, set(CORR) - {q['slug'] for q in TODAS}
+    for q in TODAS:
+        if q['slug'] in CORR:
+            q['correcciones'] = ' '.join(f'{fecha_txt(d)}: {t}' for d, t in CORR[q['slug']])
+            q['actualizado'] = max([q.get('actualizado') or ''] + [d for d, _ in CORR[q['slug']]])
     paginas = [pagina_pieza(p) for p in TODAS] + [portada(), metodologia(C), datos(), correcciones(), politica()]
     paginas += [pagina_serie(s) for s in SERIES if any(q['serie'] == s for q in TODAS)]
     for ruta, html in paginas:

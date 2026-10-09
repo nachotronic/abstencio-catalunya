@@ -17,7 +17,7 @@ TITULARES = {
     'badalona': 'Badalona, la ciudad del voto doble',
     'paro-renta-participacion': 'A igual renta, donde hay más paro se vota menos',
     'cuencas-mineras-asturianas': 'Las cuencas mineras siguen votando como hace veinte años',
-    'lalin-vilanova-de-arousa': 'Lalín y Vilanova, el PP por encima de lo previsto',
+    'lalin-vilanova-de-arousa': 'Lalín y Vilanova, la derecha por encima de lo previsto',
     'cuenca-de-pamplona': 'Cizur y Zizur: 1,4 kilómetros, 31 puntos',
     'getxo-portugalete': 'Dos orillas de la ría, dos votos',
     'aranda-miranda': 'Aranda y Miranda, las dos Burgos',

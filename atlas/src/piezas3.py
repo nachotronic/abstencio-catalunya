@@ -93,7 +93,7 @@ def piezas3(C):
     out.append(dict(
         slug='sant-cugat-badia', serie='fronteras', fecha_datos='23 de julio de 2023', revisado='2026-10-07',
         titulo=f'Sant Cugat y Badia del Vallès, a {num(C["valles"]["km_santcugat_badia"])} kilómetros: el PSC saca {N(ba["psoe"]["2023_07"] - sc["psoe"]["2023_07"])} puntos más en uno que en otro',
-        pregunta='¿Qué separa en las urnas al municipio más rico del Vallès de uno de sus vecinos más pobres?',
+        pregunta='¿Qué separa en las urnas a uno de los municipios más ricos del Vallès de uno de sus vecinos más pobres?',
         resumen=(f'El 23J, el PSC sacó el {P(ba["psoe"]["2023_07"])} en Badia del Vallès y el {P(sc["psoe"]["2023_07"])} en Sant Cugat, a {num(C["valles"]["km_santcugat_badia"])} kilómetros. '
                  f'Junts, el {P(ba["junts"]["2023_07"])} y el {P(sc["junts"]["2023_07"])}. En cambio, PP, Vox y Cs juntos sacaron casi lo mismo en los dos ({P(ba["der"]["2023_07"])} y {P(sc["der"]["2023_07"])}). '
                  f'La renta por unidad de consumo de Sant Cugat ({N(sc["renta"])} euros) duplica la de Badia ({N(ba["renta"])}).'),
@@ -195,7 +195,7 @@ def piezas3(C):
                      f'su edad media, de {num(min(p["edad"] for p in rr.values()))} a {num(max(p["edad"] for p in rr.values()))} años; el paro de 2021, del {P(min(p["paro"] for p in rr.values()))} al {P(max(p["paro"] for p in rr.values()))}.'),
             ('dato', f'Con ese perfil, el modelo de esta serie les asigna a todos un voto a la derecha parecido, entre el {P(min(p["previsto"] for p in rr.values()))} y el {P(max(p["previsto"] for p in rr.values()))}. '
                      f'El resultado real va del {P(cg["der"]["2023_07"])} de Cangas al {P(sx["der"]["2023_07"])} de Sanxenxo.'),
-            ('sub', 'El Morrazo frente a la otra orilla'),
+            ('sub', 'El Morrazo frente a sus vecinos'),
             ('dato', f'Moaña y Cangas, en la comarca do Morrazo, votan a la derecha unos 6 puntos menos de lo previsto ({S(mo["diferencia"])} y {S(cg["diferencia"])}). '
                      f'Sanxenxo, Marín y Poio votan por encima ({S(sx["diferencia"])}, {S(ma["diferencia"])} y {S(po["diferencia"])}). Bueu, también en el Morrazo, queda en medio ({S(bu["diferencia"])}).'),
             ('dato', f'El PP ganó las generales en los seis. La diferencia está en cuánto: {P(mo["pp"]["2023_07"])} en Moaña y {P(cg["pp"]["2023_07"])} en Cangas, frente al {P(sx["pp"]["2023_07"])} en Sanxenxo y el {P(po["pp"]["2023_07"])} en Poio.'),
@@ -266,6 +266,7 @@ def piezas3(C):
 
     # ------------------------------------------------------------------ el municipio que cambió: Manilva
     mn = C['manilva']
+    assert mn['top'][0]['municipio'] == 'Manilva'
     mv, cs_, es_ = mn['municipios']
     mz, md = mn['malaga_izq'], mn['malaga_der']
     out.append(dict(
@@ -273,13 +274,13 @@ def piezas3(C):
         titulo=f'Manilva, el municipio de España donde más ha caído la izquierda en veinte años respecto a su provincia: del {P(mv["izq"]["2004_03"])} al {P(mv["izq"]["2023_07"])}',
         pregunta='¿Qué municipios de la Costa del Sol han cambiado su voto mucho más que su provincia?',
         resumen=(f'En 2004, el PSOE y el espacio de IU sacaban el {P(mv["izq"]["2004_03"])} del voto en Manilva (Málaga). En 2023, el {P(mv["izq"]["2023_07"])}: '
-                 f'{D(mv["izq"]["2023_07"] - mv["izq"]["2004_03"])} puntos menos, cuando en el conjunto de la provincia la caída fue de {D(mz["2023_07"] - mz["2004_03"])}. '
+                 f'{D(mn["top"][0]["cambio"])} puntos menos, cuando en el conjunto de la provincia la caída fue de {D(mn["top"][0]["cambio_provincia"])}. '
                  f'Es la mayor diferencia de España entre los municipios de más de 10.000 habitantes. En noviembre de 2019, Vox fue allí la lista más votada.'),
         estado='Dato',
         cuerpo=[
             ('sub', 'La medida'),
             ('dato', 'Esta serie no mide cuánto cambia un municipio, sino cuánto cambia más que su provincia. Así se separa la ola general, que afecta a todos, de lo que es propio de cada lugar.'),
-            ('dato', f'Entre 2004 y 2023, la izquierda estatal (el PSOE más el espacio de IU, Podemos y Sumar) perdió {D(mv["izq"]["2023_07"] - mv["izq"]["2004_03"])} puntos en Manilva y {D(mz["2023_07"] - mz["2004_03"])} en el conjunto de la provincia de Málaga. '
+            ('dato', f'Entre 2004 y 2023, la izquierda estatal (el PSOE más el espacio de IU, Podemos y Sumar) perdió {D(mn["top"][0]["cambio"])} puntos en Manilva y {D(mn["top"][0]["cambio_provincia"])} en el conjunto de la provincia de Málaga. '
                      f'La diferencia, {D(mn["top"][0]["cambio_relativo"])} puntos, es la mayor de los {N(mn["n_10k"])} municipios españoles de más de 10.000 habitantes. '
                      f'Le sigue Los Palacios y Villafranca ({S(mn["top"][1]["cambio_relativo"])}), que el Atlas ya contó en esta serie.'),
             ('sub', 'Tres ganadores en ocho elecciones'),
@@ -357,7 +358,7 @@ def piezas3(C):
         pregunta='¿Dónde se queda la ciudad en casa en las elecciones municipales mientras su provincia vota?',
         resumen=(f'En las municipales de mayo de 2023, Zamora votó el {P(kc["Zamora"]["m23_capital"])} y el resto de su provincia, el {P(kc["Zamora"]["m23_resto"])}. Soria, el {P(kc["Soria"]["m23_capital"])} frente al {P(kc["Soria"]["m23_resto"])}. '
                  f'En {km_["n_menos_m23"]} de las 50 capitales de provincia la participación municipal fue menor que en el resto de la provincia, y en {km_["n_menos_10_m23"]} la diferencia pasó de 10 puntos. '
-                 f'En las generales de julio, ninguna capital se quedó a 10 puntos de su provincia.'),
+                 f'En las generales de julio, ninguna capital se quedó a más de 10 puntos de su provincia.'),
         estado='Dato',
         cuerpo=[
             ('sub', 'La ciudad que no va a votar'),

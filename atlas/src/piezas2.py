@@ -6,7 +6,7 @@ Campos opcionales para cuando haya fuentes accesibles (se rellenan a mano, con s
   color  [(texto, [url1, url2])]                notas de color local, cada una con dos fuentes independientes
 """
 from terreno import terreno
-from graficos import num, lineas, barras_previsto, barras_agrupadas, ANYO
+from graficos import yl, num, lineas, barras_previsto, barras_agrupadas, ANYO
 
 CONG = ['2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07']
 P = lambda x: num(x) + ' %'
@@ -63,7 +63,7 @@ def piezas2(C):
             ('dato', f'Langreo ({S(mm["Langreo"]["diferencia"])}), Laviana ({S(mm["Laviana"]["diferencia"])}), Lena ({S(am["Lena"]["diferencia"])}) y Aller ({S(mm["Aller"]["diferencia"])}) completan la lista: '
                      f'los seis municipios asturianos que más se apartan del modelo a la baja son de las cuencas.'),
             ('dato', f'Las ciudades de la costa votan casi lo que predice su perfil: Gijón ({S(am["Gijón"]["diferencia"])}) y Avilés ({S(am["Avilés"]["diferencia"])}). Oviedo se aparta en sentido contrario ({S(am["Oviedo"]["diferencia"])}).'),
-            ('sub', 'El voto local: IU, por delante del PSOE'),
+            ('sub', 'El voto local: IU gana en Mieres y Langreo'),
             ('dato', f'En las municipales de mayo de 2023, la lista más votada en Mieres fue «{lista(mm["Mieres"]["m2023_lista"])}», con el {P(mm["Mieres"]["m2023_lista_pct"])}. '
                      f'En Langreo ganó «{lista(mm["Langreo"]["m2023_lista"])}», con el {P(mm["Langreo"]["m2023_lista_pct"])}. En Aller, el PSOE sacó el {P(mm["Aller"]["m2023_lista_pct"])}.'),
             ('patrón', f'En las cuencas, el espacio a la izquierda del PSOE es más fuerte que en el resto de España. En 2015, Podemos e IU sumaron el {P(mm["Mieres"]["sumar"]["2015_12"])} en Mieres y el {P(mm["Langreo"]["sumar"]["2015_12"])} en Langreo.'),
@@ -86,7 +86,7 @@ def piezas2(C):
     li, vi = la['lalin'], la['vilanova']
     out.append(dict(
         slug='lalin-vilanova-de-arousa', serie='excepciones', fecha_datos='23 de julio de 2023', revisado='2026-10-07',
-        titulo=f'Lalín y Vilanova de Arousa, los dos municipios donde el PP saca más voto por encima de lo que predicen sus datos',
+        titulo=f'Lalín y Vilanova de Arousa, los dos municipios donde la derecha saca más voto por encima de lo que predicen sus datos',
         pregunta='¿Dónde vota la derecha mucho más de lo que su perfil social haría esperar?',
         resumen=(f'Por su renta, su edad, su paro y su tamaño, a Lalín le correspondería dar a PP, Vox y Cs el {P(li["previsto"])} del voto. El 23J les dio el {P(li["der"]["2023_07"])}. '
                  f'En Vilanova de Arousa, el {P(vi["der"]["2023_07"])} frente a un {P(vi["previsto"])} previsto. '
@@ -105,7 +105,7 @@ def piezas2(C):
                      f'Su peor resultado fue el de abril de 2019, con el {P(li["pp"]["2019_04"])}.'),
             ('dato', f'En las municipales también gana con holgura: {P(li["m2023"]["pp"])} en Lalín y {P(vi["m2023"]["pp"])} en Vilanova en mayo de 2023.'),
             ('sub', 'El resto de la lista'),
-            ('dato', 'Detrás vienen ' + ', '.join(f'{r["municipio"]} ({r["provincia"]}, {S(r["diferencia"])})' for r in la['top'][2:7]) + '. '
+            ('dato', 'Detrás vienen ' + yl(f'{r["municipio"]} ({r["provincia"]}, {S(r["diferencia"])})' for r in la['top'][2:7]) + '. '
                      'Son municipios muy distintos entre sí, sin un patrón geográfico claro.'),
             ('dato', 'Vilanova de Arousa ya aparece en el Atlas: es el vecino de A Illa de Arousa, que vota más de 20 puntos menos al PP. La frontera entre los dos es, a la vez, la frontera entre una de las mayores excepciones al alza de España y un municipio que vota mucho más a la izquierda.'),
         ],
@@ -147,7 +147,7 @@ def piezas2(C):
             ('sub', 'El otro lado: Ansoáin y Villava'),
             ('dato', f'En Ansoáin, PP y UPN sacaron el {P(pm["Ansoáin/Antsoain"]["pp"]["2023_07"])} y la derecha sumó un {P(pm["Ansoáin/Antsoain"]["der"]["2023_07"])}, frente a un {P(pm["Ansoáin/Antsoain"]["previsto"])} previsto. Ganó el PSOE con el {P(pm["Ansoáin/Antsoain"]["psoe"]["2023_07"])}.'),
             ('dato', f'En Villava, EH Bildu fue el partido más votado, con el {P(pm["Villava/Atarrabia"]["bildu_2023"])}. La derecha se quedó en el {P(pm["Villava/Atarrabia"]["der"]["2023_07"])}.'),
-            ('dato', f'Burlada ({S(pm["Burlada/Burlata"]["diferencia"])}) también vota menos a la derecha de lo previsto; Barañáin ({S(pm["Barañáin/Barañain"]["diferencia"])}), Zizur Mayor y Berrioplano ({S(pm["Berrioplano/Berriobeiti"]["diferencia"])}), casi lo previsto; '
+            ('dato', f'Burlada ({S(pm["Burlada/Burlata"]["diferencia"])}) también vota menos a la derecha de lo previsto; Barañáin ({S(pm["Barañáin/Barañain"]["diferencia"])}), Zizur Mayor ({S(zi["diferencia"])}) y Berrioplano ({S(pm["Berrioplano/Berriobeiti"]["diferencia"])}), casi lo previsto; '
                      f'el Valle de Egüés ({S(pm["Valle de Egüés/Eguesibar"]["diferencia"])}) y Cizur, más.'),
         ],
         no_sabemos=['Qué separa a estos municipios además de la renta: la composición por origen de sus vecinos, la historia de su crecimiento urbano o la presencia del euskera. Ninguna de esas hipótesis está contrastada aquí con dos fuentes.'],
@@ -227,7 +227,7 @@ def piezas2(C):
             ('dato', f'Desde entonces, la derecha creció en Aranda hasta el {P(ar["der"]["2023_07"])} y en Miranda apenas se movió ({P(mi["der"]["2023_07"])}). '
                      f'En el conjunto de la provincia pasó del {P(am2["burgos_der"]["2004_03"])} al {P(am2["burgos_der"]["2023_07"])}.'),
             ('patrón', f'La distancia entre las dos ciudades pasó de {num(ar["der"]["2004_03"] - mi["der"]["2004_03"])} puntos en 2004 a {num(ar["der"]["2023_07"] - mi["der"]["2023_07"])} en 2023. '
-                       'Miranda se ha quedado donde estaba; Aranda se ha movido con su provincia.'),
+                       f'La derecha subió {num(ar["der"]["2023_07"] - ar["der"]["2004_03"])} puntos en Aranda, {num(mi["der"]["2023_07"] - mi["der"]["2004_03"])} en Miranda y {num(am2["burgos_der"]["2023_07"] - am2["burgos_der"]["2004_03"])} en el conjunto de la provincia.'),
             ('dato', f'Vox muestra la misma brecha: en noviembre de 2019 sacó el {P(ar["vox"]["2019_11"])} en Aranda y el {P(mi["vox"]["2019_11"])} en Miranda; en 2023, el {P(ar["vox"]["2023_07"])} y el {P(mi["vox"]["2023_07"])}.'),
             ('sub', 'En las municipales'),
             ('dato', f'En mayo de 2023 el PSOE fue la lista más votada en Miranda ({P(mi["m2023"]["psoe"])}). En Aranda, el PP ({P(ar["m2023"]["pp"])}) superó por poco al PSOE ({P(ar["m2023"]["psoe"])}), y las listas locales y otras sumaron el {P(ar["m2023"]["otros"])}.'),
@@ -338,7 +338,7 @@ def piezas2(C):
         cuerpo=[
             ('sub', 'Una excepción en el mapa gallego'),
             ('dato', f'Galicia es territorio del PP: en las generales de 2023 sacó el {P(vg["galicia"]["pp"])} del voto, {num(vg["galicia"]["pp"] - vg["galicia"]["psoe"])} puntos por encima del PSOE. '
-                     f'Ganó en las otras seis grandes ciudades: ' + ', '.join(f'{c["municipio"]} ({P(c["pp"])})' for c in vg['ciudades'][1:]) + '.'),
+                     f'Ganó en las otras seis grandes ciudades: ' + yl(f'{c["municipio"]} ({P(c["pp"])})' for c in vg['ciudades'][1:]) + '.'),
             ('dato', f'Vigo, la ciudad más poblada de Galicia, con {N(v["poblacion"])} habitantes, votó al revés: PSOE {P(v["psoe"]["2023_07"])}, PP {P(v["pp"]["2023_07"])}, Sumar {P(v["sumar"]["2023_07"])} y BNG {P(v["bng_2023"])}.'),
             ('sub', 'Mayo: un voto local aún más socialista'),
             ('dato', f'En las municipales del 28 de mayo de 2023, el PSOE sacó en Vigo el {P(v["m2023"]["psoe"])} del voto válido. El PP se quedó en el {P(v["m2023"]["pp"])} y el BNG en el {P(v["m2023"]["bng"])}.'),

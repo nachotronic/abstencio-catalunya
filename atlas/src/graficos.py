@@ -1,5 +1,6 @@
 """Gráficos SVG estáticos del Atlas: se dibujan al generar la página, sin JavaScript, para que se lean en cualquier
 navegador, en buscadores y en asistentes. Colores con variables CSS de la página (modo claro y oscuro)."""
+from decimal import Decimal, ROUND_HALF_UP
 from html import escape
 
 W = 680
@@ -10,8 +11,15 @@ ANYO = {'2004_03': '2004', '2008_03': '2008', '2011_11': '2011', '2015_12': '201
 def num(x, d=1):
     """43.2 -> '43,2'; 1340 -> '1.340'."""
     if isinstance(x, int) or d == 0:
-        return f'{int(round(x)):,}'.replace(',', '.')
+        # redondeo «hacia arriba» en el 5, como en las tablas (round() de Python redondea 36,5 a 36)
+        return f'{int(Decimal(str(x)).quantize(Decimal(1), ROUND_HALF_UP)):,}'.replace(',', '.')
     return f'{x:.{d}f}'.replace('.', ',')
+
+
+def yl(xs):
+    """['a', 'b', 'c'] -> 'a, b y c'."""
+    xs = list(xs)
+    return xs[0] if len(xs) == 1 else ', '.join(xs[:-1]) + ' y ' + xs[-1]
 
 
 def _svg(h, titulo, cuerpo):
