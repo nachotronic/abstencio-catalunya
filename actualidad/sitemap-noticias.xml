@@ -232,4 +232,36 @@
       <news:title>Andalucía vota casi diez puntos más al PSOE cuando elige al Gobierno que cuando elige a la Junta</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/huelga-11n-paro-participacion/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>La huelga del 11N apela a los barrios que menos votan: donde más paro hay, la participación cae al 61%</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/psoe-madrid-municipales-generales/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>En Madrid, el PSOE saca diez puntos más cuando se vota al Gobierno que cuando se vota al alcalde</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/izquierda-del-psoe-secciones/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El espacio a la izquierda del PSOE fue el más votado en 9.810 secciones en 2015; en 2023, en 182</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/vox-poblacion-nacida-fuera/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Vox saca casi lo mismo donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo</news:title>
+    </news:news>
+  </url>
 </urlset>
