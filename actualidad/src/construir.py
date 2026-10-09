@@ -590,11 +590,28 @@ def franja_portada(todas, pre=''):
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 
 
+def franja_historia(todas, pre=''):
+    """Carrusel «Historia electoral» de la portada, debajo del de Actualidad: la serie entera, en su orden."""
+    serie = [q for q in todas if q['serie'] == 'historia']
+    return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-historia"><div class="da-cab"><h2 id="h-del-historia"><a href="{pre}actualidad/#historia">Historia electoral · desde 1977</a></h2>'
+            '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
+            '<ul class="carrusel">' +
+            ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
+                    f'<span class="atlas-k">{q["lugar"]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie) +
+            f'<li class="todas"><a href="{pre}actualidad/#historia"><b>Las {len(serie)} piezas de la serie →</b><span>Todas las elecciones generales desde 1977</span></a></li></ul>'
+            '<script>(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
+            's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})(document.currentScript.parentNode)</script></section>')
+
+
 def portada(todas):
     for f, pre in ((os.path.join(RAIZ, 'index.html'), ''), (os.path.join(RAIZ, 'generales-2026', 'src', 'plantilla.html'), '../')):
         t = open(f, encoding='utf-8').read()
         if '<!--actualidad:ultimas-->' not in t:   # la franja va justo encima de la del Atlas
             t = t.replace('<!--atlas:ultimas-->', '<!--actualidad:ultimas--><!--/actualidad:ultimas-->\n<!--atlas:ultimas-->', 1)
+        if '<!--actualidad:historia-->' not in t:   # la serie «Historia electoral», justo debajo de Actualidad
+            t = t.replace('<!--/actualidad:ultimas-->', '<!--/actualidad:ultimas-->\n<!--actualidad:historia--><!--/actualidad:historia-->', 1)
+        t = re.sub(r'<!--actualidad:historia-->.*?<!--/actualidad:historia-->',
+                   lambda m: '<!--actualidad:historia-->' + franja_historia(todas, pre) + '<!--/actualidad:historia-->', t, flags=re.S)
         t = re.sub(r'<!--actualidad:ultimas-->.*?<!--/actualidad:ultimas-->',
                    lambda m: '<!--actualidad:ultimas-->' + franja_portada(todas, pre) + '<!--/actualidad:ultimas-->', t, flags=re.S)
         open(f, 'w', encoding='utf-8').write(t)
