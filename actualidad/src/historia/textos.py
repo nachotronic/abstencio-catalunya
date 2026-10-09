@@ -170,6 +170,7 @@ dispersion('apvox',PT.map(p=>[p[2],p[3],p[4],p[5]]),{max:40,ticks:[0,10,20,30,40
 # ---------------------------------------------------------------------------------------------------------------
 P.append(dict(
     slug='pueblos-menos-votantes-que-en-1977', lugar='España', datos=['censo_pueblos'],
+    foto=dict(src='img/actualidad/fotos/pueblos-menos-votantes-que-en-1977.jpg', ancho=1280, alto=720, ia=True, pie='Un pueblo de la meseta y un camino vacío.', origen='pueblo-vacio.jpg'),
     corto='Menos votantes que en 1977',
     titulo='6 de cada 10 municipios tienen menos electores que en 1977; Las Rozas tiene 14 veces más',
     dek='De 6.457 municipios comparables, 4.157 votarán el 29N con menos electores que en las primeras elecciones de la democracia. Juntos han perdido 1,3 millones. '
