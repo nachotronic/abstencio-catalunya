@@ -1,6 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://mapaelectoral.es/actualidad/andalucia-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PSOE gobernó Andalucía 36 años seguidos; desde 2019 la Junta es del PP, que ahora gobierna con Vox dentro</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/aragon-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Huesca y Zaragoza han votado al ganador de España en las 16 generales; en sus Cortes nadie ha tenido nunca mayoría absoluta</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/asturias-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PSOE ha gobernado Asturias en diez de sus doce legislaturas; en las generales, el PP ganó allí en 2004 aunque España votó a Zapatero</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/baleares-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PP ha ganado diez de las once autonómicas en Baleares, pero entre 1999 y 2015 el Govern cambió de manos en cada elección</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/canarias-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PSOE ha ganado siete de las once autonómicas canarias, pero solo ha gobernado tres legislaturas</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/cantabria-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PP ha ganado nueve de las once autonómicas en Cantabria, pero Revilla, del PRC, la presidió dieciséis años</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/castilla-la-mancha-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PSOE ha gobernado Castilla-La Mancha en diez de sus once legislaturas; en las generales, el PP ganó allí incluso en 2004 y 2008, con Zapatero</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/castilla-y-leon-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PP gobierna Castilla y León desde 1987 y ha ganado allí 11 de las 16 generales; el PSOE ganó las autonómicas de 2019 y no gobernó</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/cataluna-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PSC ha sido el más votado en Cataluña en 11 de las 16 generales; la Generalitat la presidió CiU 23 años seguidos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/comunidad-valenciana-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>La Comunitat Valenciana votó al PP en las generales de 1993, 2004 y 2008, cuando España eligió al PSOE; en la Generalitat, el PP gobernó 20 años seguidos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/extremadura-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PSOE ha ganado 11 de las 16 generales en Extremadura y gobernó la Junta nueve legislaturas; en 2025 cayó al 25,8%</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/galicia-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PP ha ganado las doce elecciones gallegas y solo perdió la Xunta dos veces; en las generales, el PSOE ganó allí una sola vez, en 2019</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/madrid-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PP gobierna Madrid desde 1995, también tras perder en 2019; Ayuso pasó de 30 a 70 escaños en cuatro años</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/murcia-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Murcia es la única provincia donde Vox ha ganado unas generales; el PP la gobierna desde 1995 y ahora depende de Vox</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/navarra-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>UPN ha sido la lista más votada en las nueve últimas elecciones navarras, pero desde 2015 gobiernan otros</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/pais-vasco-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El PNV ha sido el más votado en las trece elecciones vascas; en las generales perdió el primer puesto cinco veces, ante el PSE y Podemos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/la-rioja-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>La Rioja ha votado más que la media de España en las 16 generales, y el PP la gobernó 24 años seguidos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/ceuta-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Ceuta es uno de los dos sitios donde Vox ha ganado unas generales; en su Asamblea, Vivas gobierna desde 2001 tras dos mociones de censura</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/melilla-historia-electoral/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Melilla tuvo cuatro años un presidente con un solo escaño de 25; en las generales vota al PP desde 1996 y en 2019 rozó el cambio</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/plasencia-acierta-siempre/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

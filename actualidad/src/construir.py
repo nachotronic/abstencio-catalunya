@@ -408,7 +408,20 @@ for h in PIEZAS_HISTORIA:
             ENLACES_TEXTO.setdefault(h['slug'], []).append((texto, destino))
         else:
             ENLACES_INTERNOS.setdefault(h['slug'], []).append((texto, destino))
-PIEZAS = HISTORIA + PIEZAS
+# Serie «Las comunidades en las urnas»: un reportaje largo por comunidad (comunidades/, reportajes.py escribe los <slug>.html).
+sys.path.insert(0, os.path.join(SRC, 'comunidades'))
+from reportajes import piezas as piezas_comunidades  # noqa: E402
+SERIES['comunidades'] = 'Las comunidades en las urnas'
+COMUNIDADES = []
+for h in piezas_comunidades():
+    q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
+    q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
+    if os.path.exists(os.path.join(SRC, '..', '..', 'img', 'actualidad', 'fotos', h['slug'] + '.jpg')):
+        q['foto'] = dict(src=f"img/actualidad/fotos/{h['slug']}.jpg", ancho=1280, alto=720, ia=True,
+                         pie=f"Collage sobre las elecciones en {h['lugar']}: la bandera, el mapa y vecinos votando.")
+    COMUNIDADES.append(q)
+
+PIEZAS = COMUNIDADES + HISTORIA + PIEZAS
 
 FUENTES_WEB = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700'

@@ -1,0 +1,234 @@
+<title>Ceuta en las urnas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --acc:#1d7f95; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --acc:#3aa6bf; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --acc:#3aa6bf; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--acc)} a:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}}
+</style>
+<style>
+blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--acc)}
+blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}
+blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}
+.presis{font-family:var(--ui);font-size:.98rem}
+.mapa-el{display:flex;flex-wrap:wrap;gap:4px;margin:.2rem 0 .6rem}
+.mapa-el button{font:500 .85rem var(--ui);padding:.2rem .45rem;border:1px solid var(--rule);background:var(--bg);color:var(--fg);border-radius:3px;cursor:pointer}
+.mapa-el button[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.mapa-res{font-family:var(--ui);font-size:.95rem;color:var(--fg);margin-top:.5rem;line-height:1.7}
+.mapa-res .sw{width:11px;height:11px;vertical-align:-1px}
+</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Ceuta es uno de los dos sitios donde Vox ha ganado unas generales; en su Asamblea, Vivas gobierna desde 2001 tras dos mociones de censura</h1>
+<p class="dek">Cuatro presidentes en seis años, un gobierno del GIL de Jesús Gil y, desde 2001, Juan Jesús Vivas. En las generales, Ceuta pasó del PSOE en abril de 2019 a Vox en noviembre y al PP en 2023.</p>
+<div class="byline">Nacho G. del Álamo · 9 de octubre de 2026</div>
+
+<p style="margin-top:1.4rem">En noviembre de 2019, Vox fue la lista más votada en unas elecciones generales en dos circunscripciones de toda España: la Región de Murcia y Ceuta. En Ceuta sacó el 35,6% de los votos, cuatro puntos más que el PSOE, que solo seis meses antes había ganado allí por primera vez desde 1989. En 2023 volvió a ganar el PP, como había hecho en todas las generales de 1993 a 2016.</p>
+<p>En su propia Asamblea, Ceuta ha tenido una historia más agitada que casi ninguna comunidad: cuatro presidentes en sus primeros seis años como ciudad autónoma, dos mociones de censura y un gobierno del partido de Jesús Gil. Desde febrero de 2001 preside la ciudad el mismo hombre, el popular Juan Jesús Vivas.</p>
+<p>Este reportaje recorre esa historia con los resultados de las elecciones locales desde 1979 y de las dieciséis generales desde 1977. Ceuta es un único municipio, así que aquí no hay mapa por municipios.</p>
+
+<h2>De ayuntamiento a ciudad autónoma</h2>
+<p>Hasta 1995, Ceuta elegía un ayuntamiento como cualquier otro municipio. Ese año aprobó su Estatuto de Autonomía, y desde entonces sus 25 concejales forman también la Asamblea de la ciudad autónoma, que elige al presidente (alcalde-presidente). El gráfico junta las dos etapas: las municipales de 1979 a 1991 y las de la Asamblea desde 1995.</p>
+<figure>
+<figcaption><span class="t">Concejales y diputados de Ceuta, 1979-2023</span><span class="s">Escaños de cada partido en el pleno de 25: ayuntamiento hasta 1991 y Asamblea desde 1995. La raya marca la mayoría absoluta.</span></figcaption>
+<div class="chart" id="aut"></div>
+<div class="legend"><span><i class="sw" style="background:#1d84ce"></i>PP</span><span><i class="sw" style="background:#e30613"></i>PSOE</span><span><i class="sw" style="background:#2d5757"></i>PFC</span><span><i class="sw" style="background:#2c6e2c"></i>GIL</span><span><i class="sw" style="background:#8d6e63"></i>AECAD</span><span><i class="sw" style="background:#c9a227"></i>Ceuta Unida</span><span><i class="sw" style="background:#5ac035"></i>Vox</span><span><i class="sw" style="background:#2ba34a"></i>Caballas</span><span><i class="sw" style="background:#e07b22"></i>UCD</span><span><i class="sw" style="background:#2f9d77"></i>MDyC</span><span><i class="sw" style="background:#d4554e"></i>PSPC</span><span><i class="sw" style="background:#66bb6a"></i>UDCe</span><span><i class="sw" style="background:#7e57c2"></i>CDS</span><span><i class="sw" style="background:#7cb342"></i>PDSC</span><span><i class="sw" style="background:#8fb3e0"></i>PDL</span><span><i class="sw" style="background:#5d7fa3"></i>PNC</span><span><i class="sw" style="background:#eb6109"></i>Cs</span></div>
+<div class="src">Fuente: <a href="http://www.historiaelectoral.com/aceuta.html">Historia Electoral (historiaelectoral.com)</a>, a partir de los resultados oficiales.</div>
+<details><summary>Ver los datos en tabla</summary><div class="tbl" id="aut-tbl"></div></details>
+</figure>
+<p>En las primeras municipales, en 1979, ganó una agrupación local, la Agrupación Electoral Ceutí por un Ayuntamiento Democrático, con 12 de los 25 concejales. En 1983 llegó el PSOE, con 12. En 1991 la lista más votada fue otro partido local, Progreso y Futuro de Ceuta (PFC), con 11.</p>
+<p>La investigadora Alicia Fernández, de la Universidad de París 8, que ha estudiado la política ceutí entre 1975 y 2023, describe una constante en esas décadas:</p>
+<blockquote class="cita"><p>«la volatilidad electoral de sus votantes y la vitalidad de la oferta política local han fragmentado el sistema de partidos»</p><footer>Alicia Fernández, Universidad de París 8, en la Revista de Estudios en Seguridad Internacional. <a href="https://seguridadinternacional.es/resi/html/representacion-politica-e-identidad-local-en-ceuta-1975-2023/">RESI, vol. 11, n.º 1</a>, 2025.</footer></blockquote>
+
+<h2>Cuatro presidentes en seis años</h2>
+<p>En las primeras elecciones a la Asamblea, en mayo de 1995, el PP fue el más votado, con 9 escaños, pero el primer presidente fue Basilio Fernández, del PFC, con el apoyo de Ceuta Unida y el PSOE. En julio de 1996 el PFC cambió de socio y la presidencia pasó al popular Jesús Fortes, según la <a href="https://es.wikipedia.org/wiki/Elecciones_a_la_Asamblea_de_Ceuta_de_1995">crónica de aquellas elecciones</a>.</p>
+<p>En 1999 ganó el Grupo Independiente Liberal (GIL), el partido del entonces alcalde de Marbella, Jesús Gil, con el 38% de los votos y 12 de los 25 escaños. Un pacto de PP, PSOE y PDSC mantuvo primero a Fortes, pero en agosto prosperó una moción de censura con el voto de una diputada que había salido del PSOE, y el candidato del GIL, Antonio Sampietro, llegó a la presidencia. En febrero de 2001 otra moción, esta vez con una tránsfuga del propio GIL, le sacó del cargo y lo dio al popular Juan Jesús Vivas, según recoge <a href="https://es.wikipedia.org/wiki/Antonio_Sampietro">Wikipedia</a>. Para Alicia Fernández, fue la única vez que un partido local mandó en la ciudad:</p>
+<blockquote class="cita"><p>«solo llegaron al poder en 1999 cuando el GIL, un partido regionalista y populista, gobernó Ceuta entre 1999 y 2001»</p><footer>Alicia Fernández, Universidad de París 8. <a href="https://seguridadinternacional.es/resi/html/representacion-politica-e-identidad-local-en-ceuta-1975-2023/">RESI, vol. 11, n.º 1</a>, 2025.</footer></blockquote>
+<div class="tbl"><table class="presis"><thead><tr><th>Presidente</th><th>Partido</th><th class="n">Mandato</th></tr></thead><tbody><tr><td>Basilio Fernández</td><td>PFC</td><td class="n">1995–1996</td></tr><tr><td>Jesús Fortes</td><td>PP</td><td class="n">1996–1999</td></tr><tr><td>Antonio Sampietro</td><td>GIL</td><td class="n">1999–2001</td></tr><tr><td>Juan Jesús Vivas</td><td>PP</td><td class="n">2001–hoy</td></tr></tbody></table></div>
+<p style="font-family:var(--ui);font-size:.9rem;color:var(--muted)">Presidentes de la Ciudad Autónoma de Ceuta desde el Estatuto de 1995. Fuente: <a href="https://es.wikipedia.org/wiki/Presidente_de_Ceuta">Wikipedia</a>.</p>
+
+<h2>Vivas, 25 años</h2>
+<p>Con Vivas llegaron las mayorías absolutas: 19 escaños en 2003 y en 2007, 18 en 2011 y 13 en 2015, con más del 62% de los votos en las tres primeras. Fernández apunta como una de las causas el conflicto de la isla de Perejil con Marruecos, en 2002, y la respuesta del Gobierno de Aznar, que según ella dio origen a un «efecto Perejil» que «explica, en cierto modo, la hegemonía de la que aún disfruta el PP en Ceuta». Es su interpretación; los datos solo muestran el salto del PP del 28% en 1999 al 63% en 2003.</p>
+<p>Al mismo tiempo crecían los partidos encabezados por ceutíes musulmanes, que se convirtieron en la oposición: la UDCe en 2003 y 2007, Caballas desde 2011, el Movimiento por la Dignidad y la Ciudadanía (MDyC) desde 2015 y Ceuta Ya!, heredero de Caballas, en 2023. En el gráfico, Ceuta Ya! va en la misma fila que Caballas.</p>
+<p>En 2019 el PP bajó a 9 escaños, y Vox entró con 6. Vivas se negó a pactar con Vox. En la campaña había anunciado que solo optaría a la presidencia si su lista era la más votada:</p>
+<blockquote class="cita"><p>«El PP solo optará a la Presidencia de la Ciudad si es la lista más votada»</p><footer>Juan Jesús Vivas, presidente de Ceuta y candidato del PP. <a href="https://www.moncloa.com/2019/05/24/pp-ceuta-vox-convivencia-26737/">Europa Press, en Moncloa.com</a>, 24 de mayo de 2019.</footer></blockquote>
+<p>Rechazó cualquier pacto con Vox «no por razones ideológicas», sino porque, a su juicio, sus discursos «atentan contra la convivencia» entre las culturas de la ciudad. En 2023 repitió con 9 escaños, frente a 6 del PSOE, 5 de Vox, 3 del MDyC y 2 de Ceuta Ya!, y sigue presidiendo la ciudad con 9 de los 25 escaños. En febrero de 2026 cumplió 25 años en el cargo.</p>
+
+<h2>En las generales: casi siempre con el que gana en España</h2>
+<p>Ceuta elige un solo diputado al Congreso. En las generales ganó UCD en 1977 y 1979, el PSOE de 1982 a 1989 y el PP de 1993 a 2016, incluido 1993, cuando en España todavía ganaba Felipe González. En 2000, el GIL quedó segundo con el 29,4% de los votos, por delante del PSOE.</p>
+<figure>
+<figcaption><span class="t">UCD, PSOE, PP, Vox y los demás en Ceuta</span><span class="s">Porcentaje de voto en las 16 elecciones generales, sobre votos a candidaturas.</span></figcaption>
+<div class="chart" id="gen"></div>
+<div class="legend"><span><i class="sw" style="background:#1d84ce"></i>AP / PP</span><span><i class="sw" style="background:#e30613"></i>PSOE</span><span><i class="sw" style="background:#5ac035"></i>Vox</span><span><i class="sw" style="background:#a2275f"></i>PCE / IU / Podemos / Sumar</span><span><i class="sw" style="background:#eb6109"></i>Ciudadanos</span><span><i class="sw" style="background:#e07b22"></i>UCD</span><span><i class="sw" style="background:#7e57c2"></i>CDS</span></div>
+<div class="src">Fuente: Ministerio del Interior; cálculo de Mapa Electoral con los votos a candidaturas, sin el voto exterior (CERA).</div>
+<details><summary>Ver los datos en tabla</summary><div class="tbl" id="gen-tbl"></div></details>
+</figure>
+<figure>
+<figcaption><span class="t">PSOE y PP en Ceuta y en España</span><span class="s">PSOE y AP/PP en Ceuta y en el conjunto de España, en las generales. Línea continua: aquí; discontinua: el conjunto de España.</span></figcaption>
+<div class="chart" id="esp"></div>
+<div class="legend"><span><i class="sw" style="background:#e30613"></i>PSOE</span><span><i class="sw" style="background:#1d84ce"></i>AP / PP</span></div>
+<div class="src">Fuente: Ministerio del Interior; cálculo de Mapa Electoral, sin CERA.</div>
+<details><summary>Ver los datos en tabla</summary><div class="tbl" id="esp-tbl"></div></details>
+</figure>
+<p>El PP llegó al 67% en 2011. En abril de 2019 el PSOE ganó con el 36,6%, y en noviembre fue el turno de Vox. En 2023 el PP recuperó el primer puesto con el 39,2%, por delante del PSOE (34,3%) y de Vox (23,5%).</p>
+<figure>
+<figcaption><span class="t">Quién ganó en Ceuta</span><span class="s">Lista más votada en las generales de 1977 a 2023.</span></figcaption>
+<div class="chart" id="prov"></div>
+<div class="legend"><span><i class="sw" style="background:#1d84ce"></i>AP / PP</span><span><i class="sw" style="background:#e30613"></i>PSOE</span><span><i class="sw" style="background:#5ac035"></i>Vox</span><span><i class="sw" style="background:#e07b22"></i>UCD</span></div>
+<div class="src">Fuente: Ministerio del Interior; cálculo de Mapa Electoral. Hasta 2000, la candidatura más votada de todas; desde 2004, por familias de partidos.</div>
+<details><summary>Ver los datos en tabla</summary><div class="tbl" id="prov-tbl"></div></details>
+</figure>
+
+<h2>Votar mucho menos que la media</h2>
+<p>Ceuta es uno de los territorios que menos vota. Sin contar el voto exterior, su participación quedó por debajo de la de España en las 16 generales, y desde 1986 la diferencia ha sido siempre de más de diez puntos. En 2023 votó el 55,7% del censo, frente al 70,4% del país.</p>
+<figure>
+<figcaption><span class="t">Participación en las generales: Ceuta y España</span><span class="s">Porcentaje de votantes sobre el censo de residentes en España.</span></figcaption>
+<div class="chart" id="part"></div>
+<div class="legend"><span><i class="sw" style="background:var(--acc)"></i>Ceuta</span><span><i class="sw" style="background:#9a9a9a"></i>España (discontinua)</span></div>
+<div class="src">Fuente: Ministerio del Interior; cálculo de Mapa Electoral sobre el censo de residentes en España (sin CERA).</div>
+<details><summary>Ver los datos en tabla</summary><div class="tbl" id="part-tbl"></div></details>
+</figure>
+
+<h2>Qué mirar el 29N</h2>
+<p>El 29 de noviembre Ceuta vuelve a elegir un diputado, y se lo lleva la lista más votada. El PP lo ganó en 2023 con casi cinco puntos de ventaja sobre el PSOE. Habrá que ver si Vox repite su resultado de 2019 o el de 2023, y si sube una participación que lleva décadas muy por debajo de la media.</p>
+
+<div class="foot">Datos: autonómicas, Historia Electoral (historiaelectoral.com), con los resultados oficiales de cada parlamento; generales, Ministerio del Interior (Infoelectoral), por municipio y por mesa desde 1977, sin voto exterior. Borrador: pendiente de revisión antes de publicar.</div>
+</main>
+<script>
+// Gráficos de la serie «Historia electoral»: barras, barras horizontales, líneas, rejilla de ganadores y dispersión.
+// Cada partido en su color (paleta del mapa: generales-2026/src/partidos.py).
+const COL={PP:'#1d84ce',PSOE:'#e30613',VOX:'#5ac035',SUMAR:'#a2275f',CS:'#eb6109',UPYD:'#e5007d',ERC:'#f5b324',JUNTS:'#20c0b2',PNV:'#2b8a3e',BILDU:'#a5c400',BNG:'#7ab8e6',CC:'#f7d417',UCD:'#e07b22',CDS:'#7e57c2',OTROS:'#9a9a9a'};
+const NOM={PP:'AP / PP',PSOE:'PSOE',VOX:'Vox',SUMAR:'PCE / IU / Podemos / Sumar',CS:'Ciudadanos',UPYD:'UPyD',ERC:'ERC',JUNTS:'CiU / Junts',PNV:'PNV',BILDU:'HB / EH Bildu',BNG:'BNG',CC:'Coalición Canaria',UCD:'UCD',CDS:'CDS',OTROS:'Otras listas'};
+const NS='http://www.w3.org/2000/svg';
+const num=(v,d=1)=>v==null?'—':v.toFixed(d).replace('.',',');
+const pct=(v,d=1)=>v==null?'sin dato':num(v,d)+'%';
+const miles=v=>v==null?'—':Math.round(v).toLocaleString('es-ES');
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function txt(p,a,t){const e=el('text',a,p);e.textContent=t;return e}
+function tipFor(box){const t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+ return {show(h,x,y){t.innerHTML=h;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;t.style.left=Math.min(Math.max(x,tw/2),bw-tw/2)+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+function hover(node,box,tip,h){const f=ev=>{const [a,b]=pos(box,ev);tip.show(h,a,b)};node.addEventListener('mousemove',f);node.addEventListener('touchstart',f,{passive:true});node.addEventListener('mouseleave',()=>tip.hide())}
+function tabla(id,cab,filas){const d=document.getElementById(id+'-tbl');if(!d)return;
+ d.innerHTML='<table><thead><tr>'+cab.map((c,i)=>`<th${i?' class="n"':''}>${c}</th>`).join('')+'</tr></thead><tbody>'+filas.map(f=>'<tr>'+f.map((c,i)=>`<td${i?' class="n"':''}>${c}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+function caja(id){const box=document.getElementById(id);return [box,Math.max(320,box.clientWidth||640),tipFor(box)]}
+function ejeY(svg,W,m,y,ticks,f){ticks.forEach(v=>{el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);txt(svg,{x:m.l-6,y:y(v)+4,'text-anchor':'end'},f(v))})}
+function corta(l){return l.replace(/^(19|20)(\d\d)-?(.*)$/,"'$2$3")}
+function etiquetasX(svg,labs,xc,H,m,W){const rot=W<560&&labs.length>8,paso=labs.length>20?(W<560?3:2):1;
+ labs.forEach((l,i)=>{if(i%paso)return;const x=xc(i);txt(svg,{x,y:H-m.b+16,'text-anchor':rot?'end':'middle',transform:rot?`rotate(-55 ${x} ${H-m.b+12})`:''},rot?l:(labs.length>8?corta(l):l))})}
+function recorta(l,W){const max=W<500?15:24;return l.length>max?l.slice(0,max-1)+'…':l}
+// Barras verticales: d=[{l:etiqueta,v:valor,c:color,t:tooltip,lab:bool}]
+function barras(id,d,o={}){const [box,W,tip]=caja(id);const rot=W<560&&d.length>8;const H=o.h||(W<500?250:290),m={l:o.ml||40,r:6,t:22,b:rot?52:28};
+ const max=o.max||Math.max(...d.map(x=>x.v||0))*1.1,n=d.length,bw=(W-m.l-m.r)/n,y=v=>H-m.b-v/max*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.aria||''},box);ejeY(svg,W,m,y,o.ticks,o.fy||(v=>v+'%'));
+ d.forEach((x,i)=>{const X=m.l+i*bw;if(x.v!=null)el('rect',{x:X+Math.min(3,bw*.15),y:y(x.v),width:bw-2*Math.min(3,bw*.15),height:y(0)-y(x.v),rx:2,fill:x.c},svg);
+  if(x.lab&&x.v!=null)txt(svg,{x:X+bw/2,y:y(x.v)-6,'text-anchor':'middle',class:'lab'},(o.fl||(v=>num(v)))(x.v));
+  const h=el('rect',{x:X,y:m.t,width:bw,height:H-m.t-m.b,fill:'transparent'},svg);hover(h,box,tip,x.t)});
+ etiquetasX(svg,d.map(x=>x.l),i=>m.l+i*bw+bw/2,H,m,W)}
+// Barras horizontales: d=[{l,v,c,t,lab}]
+function hbarras(id,d,o={}){const [box,W,tip]=caja(id);const rh=o.rh||22,m={l:o.ml||(W<500?130:170),r:46,t:4,b:22},H=m.t+m.b+rh*d.length;
+ const max=o.max||Math.max(...d.map(x=>x.v))*1.05,x=v=>m.l+v/max*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.aria||''},box);
+ o.ticks.forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);txt(svg,{x:x(v),y:H-5,'text-anchor':'middle'},(o.fy||(v=>v+'%'))(v))});
+ d.forEach((r,i)=>{const yy=m.t+i*rh;txt(svg,{x:m.l-6,y:yy+rh/2+4,'text-anchor':'end',class:r.b?'lab':'','font-size':12.5},recorta(r.l,W));
+  el('rect',{x:m.l,y:yy+3,width:Math.max(0,x(r.v)-m.l),height:rh-6,rx:2,fill:r.c},svg);
+  txt(svg,{x:x(r.v)+5,y:yy+rh/2+4,'font-size':12},(o.fl||(v=>num(v)))(r.v));
+  const h=el('rect',{x:0,y:yy,width:W,height:rh,fill:'transparent'},svg);hover(h,box,tip,r.t)})}
+// Líneas: labs=[...], s=[{n,c,v:[...],w,dash}]
+function lineas(id,labs,s,o={}){const [box,W,tip]=caja(id);const rot=W<560&&labs.length>8;const H=o.h||(W<500?260:300),m={l:o.ml||40,r:o.mr||(W<500?8:90),t:14,b:rot?52:28};
+ const max=o.max,min=o.min||0,n=labs.length,xs=i=>m.l+i*(W-m.l-m.r)/(n-1),y=v=>H-m.b-(v-min)/(max-min)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.aria||''},box);ejeY(svg,W,m,y,o.ticks,o.fy||(v=>v+'%'));
+ s.forEach(se=>{let dd='',pen=false;se.v.forEach((v,i)=>{if(v==null){pen=false;return}dd+=(pen?'L':'M')+xs(i)+','+y(v);pen=true});
+  el('path',{d:dd,fill:'none',stroke:se.c,'stroke-width':se.w||2.5,'stroke-dasharray':se.dash||'','stroke-linejoin':'round'},svg);
+  se.v.forEach((v,i)=>{if(v!=null&&(se.pts!==false))el('circle',{cx:xs(i),cy:y(v),r:se.w>3?3.5:2.8,fill:se.c},svg)});
+  const last=se.v.length-1-[...se.v].reverse().findIndex(v=>v!=null);
+  if(W>=500&&o.fin!==false)txt(svg,{x:xs(last)+7,y:y(se.v[last])+4+(se.dy||0),fill:se.c,'font-weight':600,'font-size':12.5},se.n)});
+ etiquetasX(svg,labs,xs,H,m,W);
+ labs.forEach((l,i)=>{const w=(W-m.l-m.r)/(n-1);const h=el('rect',{x:xs(i)-w/2,y:m.t,width:w,height:H-m.t-m.b,fill:'transparent'},svg);
+  hover(h,box,tip,`<b>${l}</b><br>`+s.map(se=>`${se.n}: <b>${(o.fl||pct)(se.v[i])}</b>`).join('<br>'))})}
+// Rejilla de ganadores: cols=etiquetas, filas=[{l,s:subtítulo,g:[familias]}]
+function rejilla(id,cols,filas,o={}){const [box,W,tip]=caja(id);const m={l:W<500?112:170,r:12,t:W<560?44:24,b:6},cw=(W-m.l-m.r)/cols.length,rh=o.rh||(W<500?24:26),H=m.t+m.b+rh*filas.length;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.aria||''},box);
+ cols.forEach((c,j)=>{const x=m.l+j*cw+cw/2;txt(svg,{x,y:m.t-8,'text-anchor':W<560?'start':'middle',transform:W<560?`rotate(-60 ${x} ${m.t-8})`:'','font-size':11.5},W<560?c:c.replace(/^19|^20/,"'"))});
+ filas.forEach((f,i)=>{const yy=m.t+i*rh;txt(svg,{x:m.l-6,y:yy+rh/2+4,'text-anchor':'end',class:f.b?'lab':'','font-size':12.5},recorta(f.l,W));
+  f.g.forEach((g,j)=>{const r=el('rect',{x:m.l+j*cw+1,y:yy+2,width:cw-2,height:rh-4,rx:2,fill:g?COL[g]:'var(--other)',stroke:f.ok&&f.ok[j]===false?'var(--fg)':'none','stroke-width':2},svg);
+   hover(r,box,tip,`<b>${f.l}</b> · ${cols[j]}<br>${g?'Gana '+NOM[g]:'Sin dato'}${f.t?'<br>'+f.t:''}`)})})}
+// Dispersión: p=[[x,y,etiqueta,tamaño]]
+function dispersion(id,p,o={}){const [box,W,tip]=caja(id);const H=o.h||Math.min(W,440),m={l:44,r:10,t:10,b:40};const x=v=>m.l+v/o.max*(W-m.l-m.r),y=v=>H-m.b-v/o.max*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.aria||''},box);
+ o.ticks.forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);
+  txt(svg,{x:x(v),y:H-m.b+15,'text-anchor':'middle'},v+'%');txt(svg,{x:m.l-6,y:y(v)+4,'text-anchor':'end'},v+'%')});
+ txt(svg,{x:(m.l+W-m.r)/2,y:H-4,'text-anchor':'middle',class:'lab'},o.xl);txt(svg,{x:12,y:(m.t+H-m.b)/2,'text-anchor':'middle',class:'lab',transform:`rotate(-90 12 ${(m.t+H-m.b)/2})`},o.yl);
+ p.forEach(d=>{const c=el('circle',{cx:x(d[0]),cy:y(d[1]),r:Math.max(2.2,Math.min(9,Math.sqrt(d[3])/45)),fill:o.c,'fill-opacity':.45,stroke:o.c,'stroke-width':.6},svg);
+  hover(c,box,tip,`<b>${d[2]}</b><br>${o.xn}: ${pct(d[0])}<br>${o.yn}: ${pct(d[1])}`)})}
+// Añadidos para «Las comunidades en las urnas» (se carga detrás de historia/graficos.js).
+// Escaños apilados por elección: labs=[años], filas=[{n,c,v:[escaños],lab:[siglas de ese año]}], tot=[escaños de la cámara]
+function apiladas(id,labs,filas,tot,o={}){const [box,W,tip]=caja(id);const rot=W<560&&labs.length>8;const H=o.h||(W<500?280:330),m={l:34,r:8,t:18,b:rot?40:28};
+ const max=Math.max(...tot),n=labs.length,bw=(W-m.l-m.r)/n,y=v=>H-m.b-v/max*(H-m.t-m.b),pad=Math.min(5,bw*.18);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.aria||''},box);
+ const tk=[0,Math.round(max/4),Math.round(max/2),Math.round(3*max/4),max];ejeY(svg,W,m,y,tk,v=>v);
+ labs.forEach((l,i)=>{const X=m.l+i*bw;let acc=0;
+  filas.forEach(f=>{const v=f.v[i];if(!v)return;el('rect',{x:X+pad,y:y(acc+v),width:bw-2*pad,height:y(acc)-y(acc+v),fill:f.c,stroke:'var(--bg)','stroke-width':.6},svg);acc+=v});
+  const may=Math.floor(tot[i]/2)+1;el('line',{x1:X+pad-2,x2:X+bw-pad+2,y1:y(may),y2:y(may),stroke:'var(--fg)','stroke-width':1.4,'stroke-dasharray':'3 2'},svg);
+  const ord=filas.filter(f=>f.v[i]).sort((a,b)=>b.v[i]-a.v[i]);
+  const h=el('rect',{x:X,y:m.t,width:bw,height:H-m.t-m.b,fill:'transparent'},svg);
+  hover(h,box,tip,`<b>${l}</b> · ${tot[i]} escaños, mayoría ${may}<br>`+ord.map(f=>`<span style="color:${f.c}">■</span> ${f.lab&&f.lab[i]?f.lab[i]:f.n}: <b>${f.v[i]}</b>`).join('<br>'))});
+ labs.forEach((l,i)=>{const x=m.l+i*bw+bw/2;txt(svg,{x,y:H-m.b+16,'text-anchor':rot?'end':'middle',transform:rot?`rotate(-55 ${x} ${H-m.b+12})`:''},rot?String(l):("'"+String(l).slice(2)))});
+ tabla(id,['Elección'].concat(filas.map(f=>f.n),['Total']),labs.map((l,i)=>[l].concat(filas.map(f=>f.v[i]||''),[tot[i]])))}
+// Mapa municipal: M={w,h,m:[[cod,nombre,trazado,[ganador por elección]]]}, labs=etiquetas de elección; botones para cambiar de elección
+function mapa(id,M,labs,o={}){const box=document.getElementById(id);const tip=tipFor(box);
+ const bar=document.createElement('div');bar.className='mapa-el';box.appendChild(bar);
+ const svg=el('svg',{viewBox:`0 0 ${M.w} ${M.h}`,role:'img','aria-label':o.aria||''},box);svg.style.maxHeight='80vh';
+ const res=document.createElement('div');res.className='mapa-res';box.appendChild(res);
+ const ps=M.m.map(r=>{const p=el('path',{d:r[2],stroke:'var(--bg)','stroke-width':Math.max(.25,M.w/2500),'stroke-linejoin':'round'},svg);p._r=r;
+  const f=ev=>{const [a,b]=pos(box,ev);const g=r[3][cur];tip.show(`<b>${r[1]}</b><br>${labs[cur]}: ${g?'gana '+NOM[g]:'sin dato'}`,a,b)};
+  p.addEventListener('mousemove',f);p.addEventListener('touchstart',f,{passive:true});p.addEventListener('mouseleave',()=>tip.hide());return p});
+ let cur=labs.length-1;
+ const pinta=i=>{cur=i;const n={};ps.forEach(p=>{const g=p._r[3][i];p.setAttribute('fill',g?COL[g]:'var(--other)');if(g)n[g]=(n[g]||0)+1});
+  [...bar.children].forEach((b,j)=>b.setAttribute('aria-pressed',j==i));
+  res.innerHTML=`<b>${labs[i]}</b>: `+Object.entries(n).sort((a,b)=>b[1]-a[1]).map(([g,v])=>`<span class="sw" style="background:${COL[g]}"></span> ${NOM[g]} ${v}`).join(' · ')+' municipios'};
+ labs.forEach((l,i)=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.onclick=()=>pinta(i);bar.appendChild(b)});
+ pinta(cur)}
+
+const D={"gen": {"labs": ["1977", "1979", "1982", "1986", "1989", "1993", "1996", "2000", "2004", "2008", "2011", "2015", "2016", "2019A", "2019N", "2023"], "fams": ["PP", "PSOE", "VOX", "SUMAR", "CS", "UCD", "CDS"], "pct": {"PP": [null, 7.87, 29.98, 36.62, 34.77, 51.53, 54.11, 48.51, 60.32, 55.97, 67.03, 45.47, 52.45, 21.63, 22.48, 39.16], "PSOE": [32.56, 35.53, 45.72, 45.45, 37.97, 40.72, 36.0, 18.06, 36.21, 40.58, 20.54, 23.37, 22.84, 36.65, 31.59, 34.34], "VOX": [null, null, null, null, null, null, null, null, null, null, null, null, null, 24.17, 35.62, 23.53], "SUMAR": [null, null, 0.73, 1.46, null, null, 2.21, 0.73, 0.61, 0.67, 1.84, 15.56, 10.92, 4.85, 3.91, 2.47], "CS": [null, null, null, null, null, null, null, null, null, null, null, 13.46, 11.64, 12.06, 3.43, null], "UCD": [36.35, 52.09, 7.31, null, null, null, null, null, null, null, null, null, null, null, null, null], "CDS": [null, null, 7.88, 8.02, 8.33, 1.63, null, null, null, null, null, null, null, null, null, null], "OTROS": [31.08, 4.51, 8.37, 8.45, 18.92, 6.11, 7.69, 32.6, 2.87, 1.34, 7.2, 1.54, 1.46, 0.64, 2.97, 0.5]}, "esp": {"PSOE": [29.48, 30.41, 48.24, 44.3, 39.82, 39.0, 37.87, 34.66, 43.33, 44.16, 29.13, 22.18, 22.83, 28.9, 28.26, 31.96], "PP": [8.07, 5.92, 26.59, 26.14, 26.02, 35.1, 39.24, 45.27, 38.25, 40.57, 45.27, 28.94, 33.28, 17.24, 21.43, 33.54]}, "part": [77.59, 60.64, 71.47, 57.23, 56.1, 62.55, 64.21, 56.2, 65.14, 64.76, 55.05, 56.09, 52.59, 63.97, 56.19, 55.66], "part_esp": [79.12, 67.56, 80.17, 70.81, 69.91, 77.02, 78.06, 70.0, 77.23, 75.35, 71.71, 73.08, 69.84, 75.76, 69.87, 70.42], "censo": [31672, 34779, 36551, 42643, 40946, 47818, 50466, 54311, 54656, 55802, 58533, 59213, 59125, 59934, 59820, 60335]}, "prov": [{"l": "Ceuta", "g": ["UCD", "UCD", "PSOE", "PSOE", "PSOE", "PP", "PP", "PP", "PP", "PP", "PP", "PP", "PP", "PSOE", "VOX", "PP"], "pct": [36.35, 52.09, 45.72, 45.45, 37.97, 51.53, 54.11, 48.51, 60.32, 55.97, 67.03, 45.47, 52.45, 36.65, 35.62, 39.16], "sig": ["UCD", "UCD", "PSOE", "PSOE", "PSOE", "PP", "PP", "PP", null, null, null, null, null, null, null, null]}], "aut": {"labs": [1979, 1983, 1987, 1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023], "filas": [{"n": "Vox", "largo": "Vox", "c": "#5ac035", "v": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 5], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "GIL", "largo": "Grupo Independiente Liberal", "c": "#2c6e2c", "v": [0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "PP", "largo": "Alianza Popular / Partido Popular", "c": "#1d84ce", "v": [0, 7, 6, 6, 9, 8, 19, 19, 18, 13, 9, 9], "lab": [null, "CP", "AP", null, null, null, null, null, null, null, null, null]}, {"n": "PDL", "largo": "P. Demócrata Liberal", "c": "#8fb3e0", "v": [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "UCD", "largo": "Unión de Centro Democrático", "c": "#e07b22", "v": [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "CDS", "largo": "Centro Democrático y Social", "c": "#7e57c2", "v": [0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "AECAD", "largo": "Agrupación Electoral Ceutí por un Ayuntamiento Democrático (AECAD)", "c": "#8d6e63", "v": [12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "Cs", "largo": "Ciudadanos", "c": "#eb6109", "v": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "PNC", "largo": "P. Nacionalista Ceutí (PNC)", "c": "#5d7fa3", "v": [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "Ceuta Unida", "largo": "P. Ceuta Unida (CEU)", "c": "#c9a227", "v": [0, 0, 6, 2, 4, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "PFC", "largo": "Progreso y Futuro de Ceuta (PFC)", "c": "#2d5757", "v": [0, 0, 0, 11, 6, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "PSOE", "largo": "P. Socialista Obrero Español", "c": "#e30613", "v": [5, 12, 8, 3, 3, 2, 2, 2, 3, 4, 7, 6], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "PSPC", "largo": "P. Socialista del Pueblo de Ceuta", "c": "#d4554e", "v": [0, 0, 3, 2, 2, 0, 0, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "PDSC", "largo": "P. Democrático y Social de C. (PDSC)", "c": "#7cb342", "v": [0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}, {"n": "Caballas", "largo": "Coalición Caballas", "c": "#2ba34a", "v": [0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 1, 2], "lab": [null, null, null, null, null, null, null, null, null, null, null, "C.Ya!"]}, {"n": "UDCe", "largo": "Unión Democrática Ceutí (UDCe)", "c": "#66bb6a", "v": [0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0], "lab": [null, null, null, null, null, null, null, "UDCe-IU", null, null, null, null]}, {"n": "MDyC", "largo": "Mov. por la Dignidad y la Ciudadanía", "c": "#2f9d77", "v": [0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 3], "lab": [null, null, null, null, null, null, null, null, null, null, null, null]}], "total": [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25], "part": null, "fuente": "http://www.historiaelectoral.com/aceuta.html"}, "ciu": [{"mun": "Ceuta", "censo": 60335, "g": ["UCD", "UCD", "PSOE", "PSOE", "PSOE", "PP", "PP", "PP", "PP", "PP", "PP", "PP", "PP", "PSOE", "VOX", "PP"]}]};
+apiladas('aut',D.aut.labs,D.aut.filas.filter(f=>f.v.some(v=>v)),D.aut.total,{aria:"Concejales y diputados de Ceuta, 1979-2023"});
+lineas('gen',D.gen.labs,[{n:NOM.PP,c:COL.PP,v:D.gen.pct.PP},{n:NOM.PSOE,c:COL.PSOE,v:D.gen.pct.PSOE},{n:NOM.VOX,c:COL.VOX,v:D.gen.pct.VOX},{n:NOM.SUMAR,c:COL.SUMAR,v:D.gen.pct.SUMAR},{n:NOM.CS,c:COL.CS,v:D.gen.pct.CS},{n:NOM.UCD,c:COL.UCD,v:D.gen.pct.UCD},{n:NOM.CDS,c:COL.CDS,v:D.gen.pct.CDS}],{max:70,ticks:[0,10,20,30,40,50,60,70],fin:false,mr:12});tabla('gen',['Elección'].concat(["AP / PP", "PSOE", "Vox", "PCE / IU / Podemos / Sumar", "Ciudadanos", "UCD", "CDS"]),D.gen.labs.map((l,i)=>[l].concat(["PP", "PSOE", "VOX", "SUMAR", "CS", "UCD", "CDS"].map(f=>pct(D.gen.pct[f][i])))));
+lineas('esp',D.gen.labs,[{n:'PSOE · Ceuta',c:COL.PSOE,v:D.gen.pct.PSOE||D.gen.esp.PSOE.map(_=>null)},{n:'PSOE · España',c:COL.PSOE,v:D.gen.esp.PSOE,dash:'5 4',w:1.6},{n:'PP · Ceuta',c:COL.PP,v:D.gen.pct.PP||D.gen.esp.PP.map(_=>null)},{n:'PP · España',c:COL.PP,v:D.gen.esp.PP,dash:'5 4',w:1.6}],{max:70,ticks:[0,10,20,30,40,50,60,70],fin:false,mr:12});tabla('esp',['Elección','PSOE aquí','PSOE España','PP aquí','PP España'],D.gen.labs.map((l,i)=>[l,pct((D.gen.pct.PSOE||[])[i]),pct(D.gen.esp.PSOE[i]),pct((D.gen.pct.PP||[])[i]),pct(D.gen.esp.PP[i])]));
+rejilla('prov',D.gen.labs,D.prov.map(p=>({l:p.l,g:p.g,t:null})));tabla('prov',['Provincia'].concat(D.gen.labs),D.prov.map(p=>[p.l].concat(p.g.map((g,i)=>(NOM[g]||g)+' ('+num(p.pct[i])+'%)'))));
+lineas('part',D.gen.labs,[{n:'Ceuta',c:'var(--acc)',v:D.gen.part,w:3},{n:'España',c:'var(--muted)',v:D.gen.part_esp,dash:'5 4',w:1.6}],{min:40,max:90,ticks:[40,50,60,70,80,90],fin:false,mr:12});tabla('part',['Elección','Aquí','España'],D.gen.labs.map((l,i)=>[l,pct(D.gen.part[i]),pct(D.gen.part_esp[i])]));
+</script>
