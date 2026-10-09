@@ -40,6 +40,7 @@ MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto
 # Mientras esté vacío, el bloque «Síguelo» solo ofrece RSS y X.
 NEWSLETTER = ''
 X_URL = 'https://x.com/nachotronic'
+CONTACTO = 'mailto:nachotronic@gmail.com'   # solo enlazado: la dirección no se muestra como texto
 
 
 def fecha_txt(iso):
@@ -471,7 +472,7 @@ def correcciones():
     li = lambda d, t: f'<li><time datetime="{d}">{fecha_txt(d)}</time>. {escape(t)}</li>'
     ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Correcciones · ' + SITIO, 'url': url('correcciones/index.html')}
     h = [cabeza('Correcciones · ' + SITIO, 'Historial de correcciones de datos y conclusiones de Mapa Electoral: el mapa de resultados y el Atlas.', 'correcciones/index.html', ld, nivel=1)]
-    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>')
+    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio. ¿Has visto un error? <a href="' + CONTACTO + '">Escríbeme</a>.</p>')
     h.append('<h2 id="mapa">Mapa de resultados</h2><p><a href="../../">El mapa de las generales: cómo vota cada barrio de España</a></p><ul class="corr">' + ''.join(li(d, t) for d, t in MAPA) + '</ul>')
     from correcciones_atlas import CORRECCIONES as CORR
     filas = sorted(((d, q, t) for q in TODAS if q['slug'] in CORR for d, t in CORR[q['slug']]), key=lambda x: x[0], reverse=True)
@@ -510,7 +511,7 @@ def politica():
 <h2 id="correcciones">Correcciones</h2>
 <p>Si cambia un dato o una conclusión de una pieza publicada, se corrige en la propia pieza con la fecha y lo que cambió, y se anota en el <a href="../correcciones/index.html">historial de correcciones</a>. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>
 <h2 id="contacto">Contacto</h2>
-<p>Para avisar de un error o proponer un tema: <a href="{X_URL}">@nachotronic en X</a>.</p>""")
+<p>Para avisar de un error o proponer un tema, <a href="{CONTACTO}">escríbeme</a>.</p>""")
     h.append(PIE)
     return 'politica-editorial/index.html', ''.join(h)
 
