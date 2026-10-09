@@ -30,6 +30,7 @@ AUTHOR_BIO = {
 AUTHOR_JOB = {'es': 'Periodista de datos', 'ca': 'Periodista de dades'}          # p. ej. «Periodista de datos»; vacío = no se muestra
 AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES'), ('LinkedIn', 'https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/'), ('X', 'https://x.com/nachotronic'), ('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
+CONTACT = 'mailto:nachotronic@gmail.com'   # solo enlazado: la dirección no se muestra como texto en la página
 AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',
           'sameAs': [u for _, u in AUTHOR_LINKS]}
 # Editor de todo el sitio (el mismo objeto en atlas/src/paginas.py, src/portada.py y generales-2026/src/pagina.py)
@@ -393,10 +394,10 @@ def methodology(L):
 
 
 AB = {
- 'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces',
+ 'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces', contact='Escríbeme',
             works=[('abstencion.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
                    ('metodologia.html', 'Metodología y datos abiertos de la pieza', 'Octubre de 2026')]),
- 'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços',
+ 'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços', contact='Escriu-me',
             works=[('ca.html', 'Qui no vota a Catalunya? Abstenció per secció censal', 'Octubre del 2026'),
                    ('metodologia-ca.html', 'Metodologia i dades obertes de la peça', 'Octubre del 2026')]),
 }
@@ -416,7 +417,7 @@ def about(L):
     job = f'<p class="kicker">{e(AUTHOR_JOB[L])}</p>\n' if AUTHOR_JOB[L] else ''
     bio = f'<p>{e(AUTHOR_BIO[L])}</p>\n' if AUTHOR_BIO[L] else ''
     works = '\n'.join(f'<li><a href="{u}">{e(n)}</a> · {d}</li>' for u, n, d in a['works'])
-    links = '\n'.join(f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS)
+    links = '\n'.join([f'<li><a href="{CONTACT}">{a["contact"]}</a></li>'] + [f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS])
     return f'''<!doctype html>
 <html lang="{L}">
 <head>
