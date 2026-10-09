@@ -11,7 +11,7 @@ Los elementos ('sub', texto) del cuerpo son ladillos: no contienen afirmaciones.
 Mientras esté vacío, la página se genera con «Revisión pendiente», con noindex y fuera del sitemap.
 """
 from terreno import terreno
-from graficos import num, lineas, barras_previsto, divergente, barras_agrupadas, margenes, ANYO
+from graficos import yl, num, lineas, barras_previsto, divergente, barras_agrupadas, margenes, ANYO
 
 SERIES = {
     'excepciones': ('Las excepciones', 'Lugares que votan muy distinto de lo que predicen su renta, su edad, su paro y su tamaño.'),
@@ -30,6 +30,15 @@ P = lambda x: num(x) + ' %'          # 43.2 -> '43,2 %'
 N = lambda x: num(x, 0)              # 1340 -> '1.340'
 D = lambda x: num(abs(x))            # diferencia en puntos, sin signo
 S = lambda x: ('+' if x > 0 else '−' if x < 0 else '') + num(abs(x))   # con signo
+
+
+def art(partido, prep=''):
+    """Artículo delante de un partido: 'el PP', 'a la lista de Teruel Existe'; con prep='a ', 'al PSOE'."""
+    if partido in ('PP', 'PSOE', 'PSC', 'PNV', 'BNG'):
+        return ('al ' if prep == 'a ' else 'el ') + partido
+    if partido in ('Vox', 'Sumar', 'Junts', 'ERC', 'EH Bildu', 'CC', 'UPN'):
+        return prep + partido
+    return prep + 'la lista de ' + partido
 
 
 def piezas(C):
@@ -98,7 +107,7 @@ def piezas(C):
         cuerpo=[
             ('sub', 'El recuento de la noche y el definitivo'),
             ('dato', 'La noche electoral no se cuentan todos los votos. Los de los españoles que viven en el extranjero y están inscritos en el Censo Electoral de Residentes Ausentes (CERA) se suman días después, en el escrutinio general. '
-                     'Casi siempre no cambian nada. En Madrid, en 2023, cambiaron un diputado.'),
+                     'Casi nunca cambian nada. En Madrid, en 2023, cambiaron un diputado.'),
             ('dato', f'Con los votos emitidos en España, Madrid repartía sus 37 escaños así: PP {md["sin_cera"]["PP"]}, PSOE {md["sin_cera"]["PSOE"]}, Sumar {md["sin_cera"]["Sumar"]} y Vox {md["sin_cera"]["Vox"]}. '
                      f'El último escaño era del PSOE, y al PP le faltaban {N(md["faltaban_pp_sin_cera"])} votos para arrebatárselo.'),
             ('sub', 'Lo que llegó desde fuera'),
@@ -144,7 +153,7 @@ def piezas(C):
             ('sub', 'Seis provincias en el filo'),
             ('dato', f'El escaño más barato de 2023 estuvo en Girona. El sexto diputado de la provincia fue para Junts, y al PP le faltaron {N(mg[0]["votos_que_faltaban"])} votos para llevárselo. '
                      f'En Cantabria, el quinto fue para Vox; al PP le faltaron {N(mg[1]["votos_que_faltaban"])}.'),
-            ('dato', '; '.join(f'En {f["provincia"]}, el último escaño fue para {f["ultimo_escano"]} y a {"la lista de " if f["aspirante"] not in ("PP", "PSOE", "Vox", "Sumar") else "el " if f["aspirante"] in ("PP", "PSOE") else ""}{f["aspirante"]} le faltaron {N(f["votos_que_faltaban"])} votos' for f in seis[2:]) + '.'),
+            ('dato', '; '.join(f'{"En" if i == 0 else "en"} {f["provincia"]}, el último escaño fue para {art(f["ultimo_escano"])} y {art(f["aspirante"], "a ")} le faltaron {N(f["votos_que_faltaban"])} votos' for i, f in enumerate(seis[2:])) + '.'),
             ('dato', f'Los márgenes van en las dos direcciones. En Girona y Cantabria el PP fue el que se quedó a las puertas; en Madrid y Salamanca, fue el PSOE el que se quedó a menos de 1.500 votos del PP.'),
             ('sub', 'Lo que habría cambiado'),
             ('dato', f'{len(junts)} de los {C["escanos_2023_con_cera"]["Junts"]} diputados de Junts salieron de estos márgenes: el de Girona y el de Tarragona. '
@@ -171,7 +180,7 @@ def piezas(C):
     top = sorted(cp, key=lambda f: -f['dif_pp'])[:6]
     sur = ['Granada', 'Badajoz', 'Sevilla', 'Cáceres', 'Córdoba', 'Jaén']
     norte = ['Ourense', 'Soria', 'Ávila', 'Lugo', 'Palencia', 'Zamora', 'A Coruña']
-    lista = lambda ns, k: ', '.join(f'{n} ({S(cc[n][k])})' for n in ns)
+    lista = lambda ns, k: yl(f'{n} ({S(cc[n][k])})' for n in ns)
     out.append(dict(
         slug='capitales-frente-a-su-provincia', serie='ciudad-y-entorno', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo=f'La capital no es la isla progresista de su provincia: en {C["capitales_resumen"]["mas_pp"]} de 50 vota más al PP que el resto',
@@ -227,7 +236,7 @@ def piezas(C):
     out.append(dict(
         slug='sur-de-madrid', serie='contra-su-provincia', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
         titulo=f'El PSOE ganó en cuatro grandes ciudades del sur de Madrid mientras el PP ganaba la provincia por {N(ms["prov_pp"] - ms["prov_psoe"])} puntos',
-        pregunta='¿Dónde resiste el PSOE en la provincia donde más gana el PP, y por cuánto?',
+        pregunta='¿Dónde resiste el PSOE en la provincia que más diputados da al PP, y por cuánto?',
         resumen=(f'El PP ganó la provincia de Madrid el 23J con el {P(ms["prov_pp"])} frente al {P(ms["prov_psoe"])} del PSOE. '
                  f'Pero el PSOE fue primero en Parla, Fuenlabrada, Leganés y Getafe, cuatro ciudades que suman {N(sum(mm[n]["poblacion"] for n in sur4))} habitantes. '
                  f'La ventaja se estrecha: en 2004 la izquierda (PSOE más Sumar, Podemos o IU) sacó entre el {P(min(mm[n]["izq_2004"] for n in sur4))} y el {P(max(mm[n]["izq_2004"] for n in sur4))} en las cuatro; en 2023, entre el {P(min(mm[n]["izq_2023"] for n in sur4))} y el {P(max(mm[n]["izq_2023"] for n in sur4))}, '
@@ -237,7 +246,7 @@ def piezas(C):
             ('sub', 'Cuatro ciudades a contracorriente'),
             ('dato', f'En la provincia de Madrid el PP ganó el 23J con holgura: {P(ms["prov_pp"])} de los votos frente al {P(ms["prov_psoe"])} del PSOE. '
                      f'Pero en el cinturón sur, el mapa cambia de color. El PSOE fue el partido más votado en cuatro de sus grandes ciudades.'),
-            ('dato', '; '.join(f'En {n}, PSOE {P(mm[n]["psoe"])} y PP {P(mm[n]["pp"])}' for n in sur4) + '. '
+            ('dato', '; '.join(f'{"En" if i == 0 else "en"} {n}, PSOE {P(mm[n]["psoe"])} y PP {P(mm[n]["pp"])}' for i, n in enumerate(sur4)) + '. '
                      f'Entre las cuatro suman {N(sum(mm[n]["poblacion"] for n in sur4))} habitantes.'),
             ('sub', 'Una ventaja que se estrecha'),
             ('dato', f'Hace veinte años, la izquierda estatal (el PSOE más el espacio de IU, Podemos y Sumar) superaba el 60 % en esas cuatro ciudades: Parla {P(mm["Parla"]["izq_2004"])}, Fuenlabrada {P(mm["Fuenlabrada"]["izq_2004"])}, Getafe {P(mm["Getafe"]["izq_2004"])}, Leganés {P(mm["Leganés"]["izq_2004"])}. '
@@ -250,7 +259,7 @@ def piezas(C):
                      f'PP, Vox y Cs juntos pasan del 70 %.'),
             ('patrón', f'La renta separa los dos Madrid. En las cuatro ciudades del sur donde gana el PSOE, la renta por unidad de consumo está entre {N(min(mm[n]["renta"] for n in sur4))} y {N(max(mm[n]["renta"] for n in sur4))} euros; '
                        f'en los cinco municipios del noroeste, entre {N(min(r["renta"] for r in no))} y {N(max(r["renta"] for r in no))}.'),
-            ('dato', f'Pero la renta no lo explica todo. Boadilla del Monte votó a la derecha {num(mm["Boadilla del Monte"]["der_2023"] - ms["boadilla_previsto"])} puntos más de lo que predice su perfil de renta, edad, estudios, paro, extranjeros y tamaño.'),
+            ('patrón', f'La renta no lo resume todo. Boadilla del Monte votó a la derecha {num(next(x["diferencia"] for x in C["lalin"]["top"] if x["municipio"] == "Boadilla del Monte"))} puntos más de lo que predice su perfil de renta, edad, estudios, paro, extranjeros y tamaño.'),
             ('dato', f'Y el retroceso de la izquierda tampoco es solo cosa del sur: en Boadilla bajó del {P(mm["Boadilla del Monte"]["izq_2004"])} en 2004 al {P(mm["Boadilla del Monte"]["izq_2023"])} en 2023, y en Pozuelo del {P(mm["Pozuelo de Alarcón"]["izq_2004"])} al {P(mm["Pozuelo de Alarcón"]["izq_2023"])}.'),
         ],
         no_sabemos=['Si el estrechamiento en el sur se debe a cambios de voto de los mismos vecinos o a la llegada de población nueva a barrios recientes. Los datos agregados por municipio no lo distinguen; el análisis por sección censal es el paso siguiente.'],
@@ -299,7 +308,7 @@ def piezas(C):
             ('dato', f'A Illa es un municipio pequeño, de {N(il["poblacion"])} habitantes, frente a los {N(vi["poblacion"])} de Vilanova. Unos pocos cientos de votos mueven su porcentaje, pero una distancia que se repite en ocho elecciones seguidas no es ruido.'),
         ],
         no_sabemos=['Qué explica la diferencia. Hay hipótesis por comprobar: la historia de la separación entre los dos municipios, la economía del marisqueo y las cofradías en A Illa, o la implantación local del BNG. Ninguna está respaldada todavía por dos fuentes independientes.',
-                    'La fecha y el proceso de la segregación municipal, que esta pieza no ha podido documentar con la fuente oficial.'],
+                    'Si la segregación de 1997 tuvo que ver con la distancia en el voto: esta pieza no tiene datos para saberlo.'],
         tabla=dict(caption='Voto al PP en A Illa de Arousa y Vilanova de Arousa en las elecciones generales, 2004-2023 (% del voto válido)',
                    cabecera=['Elección', 'A Illa de Arousa', 'Vilanova de Arousa', 'Diferencia'],
                    filas=[[ANYO[e], num(il['pp'][e]), num(vi['pp'][e]), num(br[e])] for e in CONG]),
@@ -380,7 +389,7 @@ def piezas(C):
             ('dato', f'Lo que pasa en Puerto Real no pasa en sus vecinos. San Fernando ({S(bh["San Fernando"]["diferencia"])} puntos), El Puerto de Santa María ({S(bh["El Puerto de Santa María"]["diferencia"])}), '
                      f'Jerez ({S(bh["Jerez de la Frontera"]["diferencia"])}) y Chiclana ({S(bh["Chiclana de la Frontera"]["diferencia"])}) votan prácticamente lo que predice su perfil. '
                      f'Solo Cádiz capital se queda claramente por debajo, a {D(bh["Cádiz"]["diferencia"])} puntos, menos de la mitad que Puerto Real.'),
-            ('dato', 'En el resto de España, las siguientes excepciones son ' + ', '.join(f'{r["municipio"]} ({r["provincia"]}, {S(r["diferencia"])})' for r in rk[1:6]) + '. '
+            ('dato', 'En el resto de España, las siguientes excepciones son ' + yl(f'{r["municipio"]} ({r["provincia"]}, {S(r["diferencia"])})' for r in rk[1:6]) + '. '
                      'Ninguna se aparta tanto como Puerto Real.'),
             ('sub', 'No es de ahora'),
             ('dato', f'La izquierda estatal (PSOE más el espacio de IU, Podemos y Sumar) sacó en Puerto Real el {P(pr["izq_serie"]["2004_03"])} en 2004 y el {P(pr["izq_serie"]["2023_07"])} en 2023. '
@@ -421,7 +430,7 @@ def piezas(C):
             ('dato', f'Entre las dos citas, la participación subió del {P(bd["M2023"]["part"])} al {P(bd["2023_07"]["part"])}: las dos fotos no las hicieron exactamente los mismos votantes.'),
             ('sub', 'La mayor distancia de España'),
             ('dato', f'Ningún municipio de más de 20.000 habitantes separa tanto su voto local y su voto estatal al PP. En Badalona fueron {num(gap["2023"])} puntos. '
-                     'Le siguen ' + ', '.join(f'{t["municipio"]} ({t["provincia"]}, {num(t["dif"])})' for t in bd['top'][1:5]) + '.'),
+                     'Le siguen ' + yl(f'{t["municipio"]} ({t["provincia"]}, {num(t["dif"])})' for t in bd['top'][1:5]) + '.'),
             ('sub', 'Una distancia que viene de lejos y crece'),
             ('dato', f'No es una rareza de 2023. En 2015 el PP sacó en Badalona el {P(bd["M2015"]["PP"])} en las municipales y el {P(bd["2015_12"]["PP"])} en las generales; '
                      f'en 2019, el {P(bd["M2019"]["PP"])} y el {P(bd["2019_11"]["PP"])}.'),
@@ -452,7 +461,7 @@ def piezas(C):
     ct = pa.get('cataluna')
     out.append(dict(
         slug='paro-renta-participacion', serie='quien-no-vota', fecha_datos='23 de julio de 2023', revisado='2026-10-06',
-        titulo='A igual renta, los barrios con más paro votan menos: el desempleo pesa más que el dinero en la abstención',
+        titulo='A igual renta, los barrios con más paro votan menos: el paro marca más diferencias en la participación que el dinero',
         pregunta='¿Es la pobreza o el desempleo lo que más se asocia a no votar?',
         resumen=(f'En las {N(pa["n_secciones"])} secciones censales de España, la participación del 23J sube con la renta: del {P(dr[0]["part"])} en el 10 % de secciones más pobres al {P(dr[-1]["part"])} en el 10 % más rico. '
                  f'Pero cuando se comparan secciones con la misma renta, la que tiene más paro vota menos: en el quintil más pobre, del {P(q["1"]["1"])} con poco paro al {P(q["1"]["3"])} con mucho. '
@@ -467,9 +476,9 @@ def piezas(C):
             ('sub', '…pero el paro importa más'),
             ('dato', f'Si se ordenan las mismas secciones por paro, la pendiente es igual de clara en sentido contrario: del {P(dp[0]["part"])} en el 10 % con menos paro al {P(dp[-1]["part"])} en el 10 % con más. '
                      f'El último escalón es el más brusco: del {P(dp[8]["part"])} al {P(dp[9]["part"])}.'),
-            ('dato', f'La prueba decisiva es comparar barrios con la misma renta. Entre las secciones más pobres, las que tienen poco paro votaron un {P(q["1"]["1"])}; las que tienen mucho, un {P(q["1"]["3"])}. '
+            ('dato', f'La comparación más clara es la de barrios con la misma renta. Entre las secciones más pobres, las que tienen poco paro votaron un {P(q["1"]["1"])}; las que tienen mucho, un {P(q["1"]["3"])}. '
                      f'Son {num(q["1"]["1"] - q["1"]["3"])} puntos de diferencia sin que cambie el dinero.'),
-            ('patrón', f'Esa distancia se encoge a medida que sube la renta: {num(q["2"]["1"] - q["2"]["3"])} puntos en el segundo quintil, {num(q["3"]["1"] - q["3"]["3"])} en el tercero, {num(q["4"]["1"] - q["4"]["3"])} en el cuarto. '
+            ('patrón', f'Esa distancia es menor en los barrios con más renta: {num(q["2"]["1"] - q["2"]["3"])} puntos en el segundo quintil, {num(q["3"]["1"] - q["3"]["3"])} en el tercero, {num(q["4"]["1"] - q["4"]["3"])} en el cuarto y {num(q["5"]["1"] - q["5"]["3"])} en el quinto. '
                        f'El paro se asocia a mucha más abstención en los barrios pobres que en los acomodados.'),
             ('patrón', f'Un modelo que tiene en cuenta a la vez renta, paro, estudios, edad, extranjeros y provincia lo confirma. Una sección con una desviación típica más de paro vota {D(pa["coef"]["paro_2021"])} puntos menos. '
                        f'La renta, sola, se asocia a {num(pa["solo_renta"])} puntos por desviación típica; con las demás variables en el modelo, su peso cae a {num(pa["coef"]["lrenta"])}.'),
