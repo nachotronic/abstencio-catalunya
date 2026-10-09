@@ -58,7 +58,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <p class="dek">Muere a los 90 años el hombre que llevó al BNG de un diputado a 18 en el Parlamento gallego. En las generales, el voto de su espacio ha vivido una montaña rusa: se hundió cuando él rompió con el Bloque y ha vuelto, sección a sección, a cifras de hace dos décadas.</p>
 <div class="byline">Nacho G. del Álamo · 8 de octubre de 2026</div>
 
-<p style="margin-top:1.4rem">Xosé Manuel Beiras ha muerto esta madrugada en Galicia a los 90 años. Nació en Santiago de Compostela en abril de 1936 ("con el Frente Popular", le gustaba decir) y fue, según el obituario de elDiario.es, el intelectual y dirigente más importante del nacionalismo gallego desde Castelao. Su biografía política cabe en una cifra: en 1985 era el único diputado del BNG en el Parlamento de Galicia; en 1997, el Bloque tenía 18 escaños y había adelantado al PSOE como primera fuerza de la oposición a Fraga. Esa marca no se batió hasta 2024, cuando Ana Pontón llegó a 25.</p>
+<p style="margin-top:1.4rem">Xosé Manuel Beiras ha muerto esta madrugada en Galicia a los 90 años. Nació en Santiago de Compostela en abril de 1936 y fue, según el obituario de elDiario.es, el intelectual y dirigente más importante del nacionalismo gallego desde Castelao. Su biografía política cabe en una cifra: en 1985 era el único diputado del BNG en el Parlamento de Galicia; en 1997, el Bloque tenía 18 escaños y había adelantado al PSOE como primera fuerza de la oposición a Fraga. Esa marca no se superó hasta 2020, cuando Ana Pontón llegó a 19 escaños; en 2024 subió a 25.</p>
 <p>Pero hay otro mapa, menos citado, que cuenta su trayectoria de otra manera: el de las elecciones generales. Y ahí la historia no es una línea ascendente, sino una montaña rusa.</p>
 
 <h2>Del 12% al 2,9%: el desplome</h2>
@@ -154,8 +154,8 @@ function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.t
  const col=v=>cols[br.filter(b=>v>=b).length];
  [['2004','b4'],['2023','b']].forEach(([yr,k])=>{const d=document.createElement('div');d.innerHTML=`<h3>${yr}</h3>`;box.appendChild(d);
   const svg=el('svg',{viewBox:`0 0 ${GAL.W} ${GAL.H}`,role:'img','aria-label':`Voto al BNG por municipio en ${yr}`},d);
-  GAL.P.forEach(p=>{const pa=el('path',{d:p.d,fill:col(p[k]),stroke:'var(--qline)','stroke-width':0.5},svg);
-   const h=ev=>{const [a,b]=pos(box,ev);tip.show(`${p.n}<br>BNG ${yr}: <b>${fmt(p[k])}</b>`,a,b)};
+  GAL.P.forEach(p=>{const nd=p[k]==null||isNaN(p[k]),pa=el('path',{d:p.d,fill:nd?'var(--other)':col(p[k]),stroke:'var(--qline)','stroke-width':0.5},svg);
+   const h=ev=>{const [a,b]=pos(box,ev);tip.show(`${p.n}<br>BNG ${yr}: <b>${nd?'sin dato (el municipio aún no existía)':fmt(p[k])}</b>`,a,b)};
    pa.addEventListener('mousemove',h);pa.addEventListener('touchstart',h,{passive:true});pa.addEventListener('mouseleave',()=>tip.hide());});});
  document.getElementById('ramp').innerHTML=cols.map((c,i)=>`<span style="display:inline-flex;flex-direction:column;gap:2px"><i style="background:${c}"></i><span>${labs[i]}</span></span>`).join('');
 })();

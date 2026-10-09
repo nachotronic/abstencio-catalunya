@@ -1,0 +1,135 @@
+<title>Vox y la población nacida fuera</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style><style>
+:root{--comuns:#1d7f95;--bar:#cfcacc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--comuns:#3aa6bf;--bar:#4a454b}}
+:root[data-theme="dark"]{--comuns:#3aa6bf;--bar:#4a454b}
+</style>
+
+<style>:root{--vox:#5ac035;--voxl:#a9dc93;--voxd:#2f7a1a}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--vox:#74d651;--voxl:#3d6e2a;--voxd:#9be07c}}:root[data-theme="dark"]{--vox:#74d651;--voxl:#3d6e2a;--voxd:#9be07c}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Vox saca casi lo mismo donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo</h1>
+<p class="dek">La inmigración en Euskadi bajó en 2025, según los datos que publica esta semana la prensa vasca. Euskadi es también donde menos vota a Vox: el 2,6% en 2023. En el resto de España, el voto a Vox apenas cambia entre las secciones con menos del 5% y con más del 30% de población nacida en el extranjero.</p>
+<div class="byline">Nacho G. del Álamo · 9 de octubre de 2026</div>
+<p style="margin-top:1.4rem">La inmigración vuelve a estar en la conversación. La llegada de población extranjera a la comunidad autónoma vasca bajó en 2025 y, según Naiz, solo el 12% de los llegados era de origen magrebí. La inmigración es uno de los temas centrales del discurso de Vox, y la pregunta habitual es si el partido vota más donde más población inmigrante hay.</p>
+<p>Los datos por sección censal permiten mirarlo a ras de calle: el porcentaje de residentes nacidos en el extranjero según el censo de 2021 y el voto a Vox en las generales de julio de 2023, en cerca de 34.000 secciones.</p>
+<h2>Una línea casi plana</h2>
+<p>Fuera de Euskadi, Navarra y Cataluña, las secciones donde menos del 5% de los vecinos nació fuera votaron a Vox al <strong>12,9%</strong>. Las secciones donde lo hizo más del 30%, al <strong>14,3%</strong>. Entre medias, el voto se mueve entre el 13,7% y el 14,5%. La correlación entre las dos variables es de 0,06: prácticamente nula.</p>
+<figure>
+<figcaption><span class="t">Vox, casi igual en todas las secciones</span><span class="s">Voto a Vox en las generales de julio de 2023 según el porcentaje de residentes nacidos en el extranjero de la sección (censo de 2021)</span></figcaption>
+<div class="chart" id="nf"></div>
+<div class="legend"><span><i class="sw" style="background:var(--vox)"></i>Resto de España</span><span><i class="sw" style="background:var(--voxl)"></i>Cataluña</span><span><i class="sw" style="background:var(--voxd)"></i>Euskadi</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa sin voto exterior; INE, Censo de Población y Viviendas 2021. Media de las secciones ponderada por votantes. Navarra, en la tabla.</div>
+<details><summary>Ver los datos en tabla, con el número de secciones</summary><div class="tbl" id="nf-tbl"></div></details>
+</figure>
+<h2>Euskadi, el suelo más bajo</h2>
+<p>En Euskadi, Vox sacó el <strong>2,6%</strong> en las generales de 2023, frente al 13,9% del conjunto de las provincias fuera de Euskadi, Navarra y Cataluña. Allí el porcentaje de nacidos fuera es algo menor (10,8%, frente al 13,3%), pero dentro de Euskadi la relación va en la misma dirección suave: del 2,3% en las secciones con menos del 5% al 3,2-3,4% en las que superan el 20%. En Cataluña, Vox se queda en torno al 8% en todos los tramos.</p>
+<p>Hay que leer estas cifras con cuidado. «Nacidos en el extranjero» incluye a españoles nacidos fuera, y buena parte de los extranjeros no puede votar en unas generales: el voto lo emiten sus vecinos. Además, es una comparación entre secciones, no entre personas. Los datos no dicen quién vota a Vox ni por qué; solo que, a escala de barrio, la presencia de población nacida fuera apenas se asocia con su voto.</p>
+<h2>Qué mirar el 29N</h2>
+<p>En Euskadi, Vox ha subido poco a poco: del 2,2% en abril de 2019 al 2,7% en las europeas de 2024. El 29N, el mapa por sección permitirá ver si la inmigración, tan presente en la campaña, cambia el patrón de 2023 o si el voto a Vox sigue sin seguir el mapa de la población nacida fuera.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Del Atlas: <a href="https://mapaelectoral.es/atlas/fronteras/ontigola-aranjuez/">Ontígola, el voto a Vox por encima de lo previsto</a></p>
+<div class="foot">Datos: Ministerio del Interior (generales por mesa, sin voto exterior); INE (censo de 2021). Borrador: pendiente de revisión antes de publicar.</div>
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const NF=[["<5%",12.9,7.4,2.3,2.7,6004,155,162,59],["5-10%",13.7,7.8,2.4,5.2,7441,870,692,115],["10-15%",14.2,7.8,2.7,5.8,5308,1095,526,130],["15-20%",14.5,7.9,3.0,5.8,3272,939,227,102],["20-30%",14.5,7.4,3.4,6.4,3337,1204,85,99],["30% o más",14.3,8.2,3.2,6.0,2096,779,16,24]];
+bars('nf',NF.map(d=>d[0]),[{name:'Resto de España',vals:NF.map(d=>d[1]),color:'var(--vox)'},{name:'Cataluña',vals:NF.map(d=>d[2]),color:'var(--voxl)'},{name:'Euskadi',vals:NF.map(d=>d[3]),color:'var(--voxd)'}],{hi:20,step:5,label:'Voto a Vox por tramo de población nacida en el extranjero',show:(i,j)=>(i==0||i==5)&&j==0,tip:i=>`Nacidos fuera: ${NF[i][0]}`});
+table('nf-tbl',['Nacidos fuera','Resto de España','Cataluña','Euskadi','Navarra','Secciones (resto / Cat. / Eusk. / Nav.)'],NF.map(d=>[d[0],c1(d[1])+'%',c1(d[2])+'%',c1(d[3])+'%',c1(d[4])+'%',`${d[5]} / ${d[6]} / ${d[7]} / ${d[8]}`]));
+
+</script>

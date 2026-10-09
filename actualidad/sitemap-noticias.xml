@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://mapaelectoral.es/actualidad/plasencia-acierta-siempre/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>16 de 16: Plasencia ha votado al ganador en todas las elecciones generales desde 1977</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/municipios-fieles/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Dos Hermanas ha votado al PSOE en las 16 generales; solo 11 pueblos, ninguno grande, lo han hecho con el PP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/ucd-ciudadanos-hundimiento/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>De 5.990 municipios a 762 en tres años: así se hundió UCD, y así cayó Ciudadanos en solo seis meses</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-derecha-1977-2023/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Donde se votaba a UCD y AP en 1977 se vota a PP y Vox en 2023; el mapa de Vox no se parece al de AP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/pueblos-menos-votantes-que-en-1977/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>6 de cada 10 municipios tienen menos electores que en 1977; Las Rozas tiene 14 veces más</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/avila-suarez-cds/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Ávila dio a Suárez el 46 % en 1986, cuando su partido sacaba el 9 % en España</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/trebujena-pce-sumar/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Trebujena dio al PCE dos de cada tres votos en 1977 y aún da a Sumar uno de cada dos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/psoe-1982-mas-del-60/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>En 1982 el PSOE pasaba del 60 % en al menos 748 municipios; en 2023, en 67</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/nunca-gano-la-derecha/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Barcelona, Terrassa o Dos Hermanas: 864 municipios donde la derecha estatal nunca ha ganado unas generales</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/nunca-gano-el-psoe/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Pozuelo, Getxo o Ávila: 1.932 municipios donde el PSOE nunca ha ganado unas generales</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mont-roig-municipio-cambiante/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Siete partidos distintos han ganado en Mont-roig del Camp: ha cambiado 11 veces de ganador en 16 generales</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/baltar-censo-y-participacion/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>En Baltar votó el 16 % en 1979; hoy vota el 79 %. La participación imposible del interior gallego</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/europeas-arona/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>En Arona votó uno de cada cinco electores en las europeas de 2014</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/euskadi-empate-a-tres/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Tres partidos en 1,3 puntos: el empate a tres de Euskadi en 2023 no tiene precedentes</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/voto-en-blanco/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>El voto en blanco se multiplicó por seis entre 1977 y 2000, y desde entonces se ha reducido a la mitad</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/psa-andalucistas-1979/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Antes de Teruel Existe: los cinco diputados andalucistas de 1979 y el 19,7 % de Cádiz</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/censo-electoral-desde-1977/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>De 23,6 a 35,1 millones: el censo electoral ha crecido un 49 % desde 1977</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/europeas-solo-con-municipales/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-08</news:publication_date>
+      <news:title>Las europeas solo superan el 60 % de participación cuando coinciden con las municipales</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/beiras-nacionalismo-gallego/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -86,6 +230,38 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-08</news:publication_date>
       <news:title>Andalucía vota casi diez puntos más al PSOE cuando elige al Gobierno que cuando elige a la Junta</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/huelga-11n-paro-participacion/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>La huelga del 11N apela a los barrios que menos votan: donde más paro hay, la participación cae al 61%</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/psoe-madrid-municipales-generales/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>En Madrid, el PSOE saca diez puntos más cuando se vota al Gobierno que cuando se vota al alcalde</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/izquierda-del-psoe-secciones/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>El espacio a la izquierda del PSOE fue el más votado en 9.810 secciones en 2015; en 2023, en 182</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/vox-poblacion-nacida-fuera/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Vox saca casi lo mismo donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo</news:title>
     </news:news>
   </url>
 </urlset>
