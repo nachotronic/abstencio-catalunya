@@ -10,6 +10,7 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 - `mapa.html`: mapa interactivo en 2D con los gráficos y la metodología.
 - `metodologia.html` y `metodologia-ca.html`: descarga de los datos, licencia, columnas, fuentes y limitaciones.
 - `llms.txt`, `sitemap.xml`, `sitemap_index.xml` (índice que recoge solo el `sitemap.xml` de cada carpeta, como `generales-2026/` o `atlas/`), `robots.txt` y el bloque `<!-- seo -->` del `<head>` de cada página (descripción, idiomas alternativos y datos estructurados schema.org `NewsArticle` y `Dataset`): se generan con `python3 src/seo.py`, que hay que ejecutar siempre después de `src/build_ca.py`. El `llms.txt` de la raíz resume todo el sitio e incluye los `llms.txt` de `generales-2026/` y `atlas/`, así que `src/seo.py` se ejecuta también después de `src/portada.py` y de regenerar el Atlas. Los textos de esas páginas están en castellano y catalán dentro del script.
+- Datos estructurados comunes (`src/esquema.py`): el autor como una sola `Person` (con `@id`, cargo, universidad y perfiles) en todas las páginas, el `Dataset` del mapa enlazado desde la metodología y las piezas de Actualidad, y las migas de pan (`BreadcrumbList`) de cada página. Repasa todas las páginas ya generadas y es idempotente; lo llaman al terminar `src/seo.py` y `atlas/src/paginas.py`, y se puede ejecutar solo con `python3 src/esquema.py`.
 - Preguntas frecuentes: el apartado `<section id="faq">` de `src/i18n/es_body.html` y `ca_body.html`. `src/seo.py` lo lee para el esquema `FAQPage` y para `llms.txt`, así que basta con cambiarlo en esos dos archivos.
 - Página «Sobre mí» (`sobre-mi.html`, `sobre-mi-ca.html`): nombre, biografía, cargo y enlaces en `AUTHOR_*` de `src/seo.py`; la firma de la pieza está en los dos `*_body.html`.
 - Verificación en Google Search Console y Bing Webmaster Tools: pega el código en `GOOGLE_VERIFICATION` y `BING_VERIFICATION` de `src/seo.py` y vuelve a ejecutarlo.
@@ -27,6 +28,10 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 ## Generales del 29N
 
 `generales-2026/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2004–2023, con municipales y europeas) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales-2026/README.md`.
+
+## Elecciones por comunidad y provincia
+
+`elecciones/`: páginas de entrada por territorio y por tema, generadas con `python3 src/territorios.py` (después de regenerar el mapa y el Atlas; luego `src/seo.py`). Una por comunidad autónoma y otra por provincia (las comunidades uniprovinciales no tienen página de provincia): resultado de las generales de 2023 con el color de cada partido, la serie de las 16 generales desde 1977, voto y participación por grupos de renta de sus secciones censales, municipios principales con enlace al mapa (`?m=<código INE>`) y las piezas del Atlas y de Actualidad sobre ese territorio. Más dos páginas temáticas: `mapa-electoral-seccion-censal/` y `voto-y-renta-por-barrios/`. Las cifras salen de las descargas de `generales-2026/descargas/` (`src/territorios_datos.py`); las rutas, en `src/territorios_rutas.py` (también las usa el Atlas para enlazar cada pieza con su provincia). Las piezas de Actualidad sobre un territorio concreto se apuntan a mano en `ACTUALIDAD_LUGAR` de `src/territorios.py`. El script también rellena en la portada la franja «Elecciones por comunidad y provincia» entre las marcas `<!--territorios-->`. No hay fichas por municipio.
 
 ## Atlas de las anomalías electorales
 
