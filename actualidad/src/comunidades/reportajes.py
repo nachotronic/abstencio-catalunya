@@ -18,8 +18,13 @@ ORDEN = ['andalucia', 'aragon', 'asturias', 'baleares', 'canarias', 'cantabria',
 NOMF = {'PP': 'AP / PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'PCE / IU / Podemos / Sumar', 'CS': 'Ciudadanos', 'UPYD': 'UPyD',
         'ERC': 'ERC', 'JUNTS': 'CiU / Junts', 'PNV': 'PNV', 'BILDU': 'HB / EH Bildu', 'BNG': 'BNG', 'CC': 'Coalición Canaria',
         'UCD': 'UCD', 'CDS': 'CDS', 'OTROS': 'Otras listas'}
-# En Navarra, UPN (con el PP o en Navarra Suma) va en la familia del PP
-NOM_CC = {'navarra': {'PP': 'UPN / PP'}}
+# Nombre con el que se presenta cada familia en la comunidad (PSC en Cataluña, PSdeG en Galicia...), en leyendas, tooltips
+# y tablas. En Navarra, UPN (con el PP o en Navarra Suma) va en la familia del PP.
+NOM_CC = {'cataluna': {'PSOE': 'PSC', 'SUMAR': 'PSUC / IC / En Comú / Sumar'},
+          'galicia': {'PSOE': 'PSdeG', 'SUMAR': 'PCE / EU / En Marea / Sumar'},
+          'pais-vasco': {'PSOE': 'PSE', 'SUMAR': 'PCE / EB / Podemos / Sumar'},
+          'navarra': {'PP': 'UPN / PP', 'PSOE': 'PSN'},
+          'baleares': {'PSOE': 'PSIB'}}
 CSS_EXTRA = """<style>
 blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--acc)}
 blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}
@@ -71,12 +76,12 @@ class Fig:
                       [(f, self.nom[f]) for f in fams])
 
     def esp(self, titulo, sub):
-        n = self.d['nombre']
-        self.js.append(f"lineas('esp',D.gen.labs,[{{n:'PSOE · {n}',c:COL.PSOE,v:D.gen.pct.PSOE||D.gen.esp.PSOE.map(_=>null)}},{{n:'PSOE · España',c:COL.PSOE,v:D.gen.esp.PSOE,dash:'5 4',w:1.6}},"
+        n, ps = self.d['nombre'], self.nom['PSOE']
+        self.js.append(f"lineas('esp',D.gen.labs,[{{n:'{ps} · {n}',c:COL.PSOE,v:D.gen.pct.PSOE||D.gen.esp.PSOE.map(_=>null)}},{{n:'PSOE · España',c:COL.PSOE,v:D.gen.esp.PSOE,dash:'5 4',w:1.6}},"
                        f"{{n:'PP · {n}',c:COL.PP,v:D.gen.pct.PP||D.gen.esp.PP.map(_=>null)}},{{n:'PP · España',c:COL.PP,v:D.gen.esp.PP,dash:'5 4',w:1.6}}],{{max:70,ticks:[0,10,20,30,40,50,60,70],fin:false,mr:12}});"
-                       f"tabla('esp',['Elección','PSOE aquí','PSOE España','PP aquí','PP España'],D.gen.labs.map((l,i)=>[l,pct((D.gen.pct.PSOE||[])[i]),pct(D.gen.esp.PSOE[i]),pct((D.gen.pct.PP||[])[i]),pct(D.gen.esp.PP[i])]));")
+                       f"tabla('esp',['Elección','{ps} aquí','PSOE España','PP aquí','PP España'],D.gen.labs.map((l,i)=>[l,pct((D.gen.pct.PSOE||[])[i]),pct(D.gen.esp.PSOE[i]),pct((D.gen.pct.PP||[])[i]),pct(D.gen.esp.PP[i])]));")
         return figura('esp', titulo, sub + ' Línea continua: aquí; discontinua: el conjunto de España.',
-                      'Fuente: Ministerio del Interior; cálculo de Mapa Electoral, sin CERA.', [('PSOE', 'PSOE'), ('PP', self.nom['PP'])])
+                      'Fuente: Ministerio del Interior; cálculo de Mapa Electoral, sin CERA.', [('PSOE', ps if ps == 'PSOE' else ps + ' / PSOE'), ('PP', self.nom['PP'])])
 
     def prov(self, titulo, sub):
         self.js.append("rejilla('prov',D.gen.labs,D.prov.map(p=>({l:p.l,g:p.g,t:null})));"
