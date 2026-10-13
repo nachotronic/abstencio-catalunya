@@ -43,8 +43,43 @@ PROV_NOMBRE = {'01': 'Araba/Álava', '02': 'Albacete', '03': 'Alicante', '04': '
                '42': 'Soria', '43': 'Tarragona', '44': 'Teruel', '45': 'Toledo', '46': 'Valencia/Valéncia', '47': 'Valladolid', '48': 'Bizkaia', '49': 'Zamora',
                '50': 'Zaragoza', '51': 'Ceuta', '52': 'Melilla'}
 
+# Piezas de Actualidad sobre un territorio concreto (provincias INE). Las de la serie «Historia electoral»
+# se enlazan solas desde su comunidad.
+ACTUALIDAD_LUGAR = {
+    'avila-suarez-cds': ['05'], 'baltar-censo-y-participacion': ['32'], 'beiras-nacionalismo-gallego': ['15', '27', '32', '36'],
+    'colau-barcelona-comuns': ['08'], 'europeas-arona': ['38'], 'euskadi-empate-a-tres': ['01', '20', '48'],
+    'mont-roig-municipio-cambiante': ['43'], 'municipios-fieles': ['41'], 'pisos-turisticos-y-votantes': ['08'],
+    'plasencia-acierta-siempre': ['10'], 'precio-del-alquiler-y-voto': ['46'], 'psa-andalucistas-1979': ['04', '11', '14', '18', '21', '23', '29', '41'],
+    'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
+    'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
+}
+# Piezas de cada página temática
+TEMA_RENTA = ['maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'psoe-barrios-de-alquiler', 'precio-del-alquiler-y-voto',
+              'huelga-11n-paro-participacion', 'vox-poblacion-nacida-fuera', 'pisos-turisticos-y-votantes']
+TEMA_SECCION = ['izquierda-del-psoe-secciones', 'colau-barcelona-comuns', 'rufian-erc-comuns', 'mapa-derecha-1977-2023']
+
 
 def ruta_provincia(p):
     """Ruta desde la raíz del sitio de la página de una provincia (o de su comunidad, si es uniprovincial)."""
     c = PROV_CCAA[p]
     return f'elecciones/{c}/{PROV_SLUG[p]}/' if len(CCAA[c][2]) > 1 else f'elecciones/{c}/'
+
+
+def enlaces_actualidad(slug, raiz):
+    """Enlaces de una pieza de Actualidad a las páginas de su territorio y de su tema: [(href, texto)]."""
+    out = []
+    if slug.endswith('-historia-electoral') and slug[:-len('-historia-electoral')] in CCAA:
+        c = slug[:-len('-historia-electoral')]
+        out.append((f'{raiz}elecciones/{c}/', f'elecciones en {CCAA[c][0]} por provincia y por barrios'))
+    ps = ACTUALIDAD_LUGAR.get(slug, [])
+    ccaa = {PROV_CCAA[p] for p in ps}
+    if len(ps) > 2 and len(ccaa) == 1:   # toda una comunidad: su página, no la de cada provincia
+        c = ccaa.pop()
+        out.append((f'{raiz}elecciones/{c}/', f'elecciones en {CCAA[c][0]}'))
+    else:
+        out += [(f'{raiz}{ruta_provincia(p)}', f'elecciones en {PROV_NOMBRE[p]}') for p in ps]
+    if slug in TEMA_RENTA:
+        out.append((f'{raiz}elecciones/voto-y-renta-por-barrios/', 'voto y renta por barrios en toda España'))
+    if slug in TEMA_SECCION:
+        out.append((f'{raiz}elecciones/mapa-electoral-seccion-censal/', 'mapa electoral de España por sección censal'))
+    return out
