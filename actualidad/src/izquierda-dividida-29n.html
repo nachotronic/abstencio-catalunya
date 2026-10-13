@@ -1,0 +1,153 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--sumar:#a2275f;--sumarl:#d98fb3;--pp:#1d84ce;--psoe:#e30613}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sumar:#d0679a;--sumarl:#9c4f76;--pp:#4fa8ea;--psoe:#ff5a5f}}:root[data-theme="dark"]{--sumar:#d0679a;--sumarl:#9c4f76;--pp:#4fa8ea;--psoe:#ff5a5f}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Dónde puede costar más la división a la izquierda: en ocho provincias, Sumar ganó o perdió un escaño en 2023 por menos de 5.000 votos</h1>
+<p class="dek">El Frente Amplio, Podemos, ERC y Compromís negocian sus papeletas antes del cierre de coaliciones del viernes. En Tarragona, Sumar habría perdido su escaño con 1.343 votos menos; en Santa Cruz de Tenerife se quedó a 1.565 de ganarlo. Datos de 2023 y de 2019, separando lo medido de lo hipotético.</p>
+<div class="byline">Nacho G. del Álamo · 14 de octubre de 2026</div>
+<p style="margin-top:1.4rem">La izquierda a la izquierda del PSOE tiene hasta el viernes 16 de octubre para registrar coaliciones ante la Junta Electoral, el plazo de diez días que fija el <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acuarentaycuatro">artículo 44 de la ley electoral</a>. A tres días, el mapa apunta a varias papeletas. El Frente Amplio, que reúne a Sumar, IU, Más Madrid y los Comuns, <a href="https://cadenaser.com/nacional/2026/10/12/la-nueva-coalicion-de-izquierdas-frente-amplio-acuerda-proponer-a-ada-colau-como-candidata-para-las-elecciones-del-29-n-cadena-ser/">propone a Ada Colau como candidata</a>. Podemos rechaza entrar y <a href="https://cadenaser.com/nacional/2026/10/12/erc-y-podemos-confirman-su-acuerdo-de-colaboracion-para-las-elecciones-del-29-n-cadena-ser/">ha cerrado un acuerdo de colaboración con ERC</a>, sin coalición: según la Cadena SER, no se presentará en Cataluña y pedirá el voto para Gabriel Rufián.</p>
+<p>«Quiero insistir en que todavía hay tiempo. Sentémonos y sigamos hablando. Tendemos la mano desde Frente Amplio para llegar a acuerdos con ERC y con Podemos», dijo Colau el martes, según la <a href="https://cadenaser.com/nacional/2026/10/13/colau-insiste-en-la-candidatura-unica-de-las-izquierdas-para-el-29-n-hay-tiempo-para-llegar-a-un-acuerdo-cadena-ser/">SER</a>. Irene Montero, en el mismo medio, <a href="https://cadenaser.com/nacional/2026/10/13/irene-montero-evita-polemizar-sobre-la-candidatura-de-ada-colau-con-el-frente-amplio-y-confirma-que-siguen-las-conversaciones-cadena-ser/">dejó la puerta entreabierta</a>: «Sí, conversaciones hay siempre y lo más importante es que cuidemos las cosas y tratemos de que finalmente lleguemos a buen puerto».</p>
+<p>ERC, por su parte, descarta el Frente Amplio en Cataluña porque, según su portavoz adjunto Isaac Albert, «diluiría las siglas». Rufián le respondió en X: «No tiene ningún sentido reclamar Frentes Amplios para Madrid y no quererlos para Catalunya», según la <a href="https://cadenaser.com/cataluna/2026/10/13/erc-vuelve-a-cerrar-la-puerta-a-un-acuerdo-para-el-frente-amplio-que-reclama-rufian-porque-diluiria-las-siglas-del-partido-sercat/">SER</a>. En la Comunitat Valenciana, Compromís, Podemos y EUPV <a href="https://www.eldiario.es/comunitat-valenciana/politica/izquierda-valenciana-negocia-candidatura-unica-liderada-compromis-e-evitar-espectaculo-madrid-barcelona_1_13581226.html">negocian una lista única</a>. «ERC es ERC, Compromís es Compromís», resumió Joan Baldoví.</p>
+<h2>Dónde el escaño colgó de pocos votos</h2>
+<p>Esta pieza no calcula cuántos diputados sacaría cada lista por separado. Mira un dato real: en qué provincias el escaño de Sumar, que en 2023 iba unido con Podemos, IU, Compromís y los Comuns, se decidió por pocos votos. Ahí es donde cualquier reparto de su voto entre dos papeletas tiene más riesgo.</p>
+<p>En cuatro provincias, Sumar ganó su escaño por menos de 5.000 votos: <strong>Tarragona</strong> (habría bastado que perdiera 1.343 votos para que el escaño fuera al PSC), <strong>Granada</strong> (3.279, frente al PSOE), <strong>Girona</strong> (4.003, frente al PP) y <strong>Córdoba</strong> (4.935, frente al PP). En otras cuatro se quedó a menos de 5.000 votos de ganarlo: <strong>Santa Cruz de Tenerife</strong> (1.565), <strong>Gipuzkoa</strong> (2.433), <strong>Navarra</strong> (2.855) y <strong>Castellón</strong> (4.727).</p>
+<figure>
+<figcaption><span class="t">Los escaños de Sumar que se decidieron por menos de 10.000 votos</span><span class="s">Generales de 2023. Tono oscuro: votos que Sumar podía perder antes de perder su último escaño. Tono claro: votos que le faltaron para ganar uno</span></figcaption>
+<div class="chart" id="marg"></div>
+<div class="legend"><span><i class="sw" style="background:var(--sumar)"></i>Ganó el escaño: margen que tenía</span><span><i class="sw" style="background:var(--sumarl)"></i>No lo ganó: votos que le faltaron</span></div>
+<div class="src">Fuente: Ministerio del Interior, con voto CERA; cálculo propio con la regla D'Hondt y la barrera del 3%.</div>
+<details><summary>Ver la tabla por provincia</summary><div class="tbl" id="marg-tbl"></div></details>
+</figure>
+
+<p>Son márgenes calculados manteniendo fijos los votos de los demás partidos. Si una parte del voto de Sumar en 2023 va ahora a otra lista de izquierdas, el escaño depende de cuántos votos se queden en cada papeleta y de si alguna supera el 3% y el último cociente de su provincia.</p>
+<h2>Dos listas sin escaño: lo que pasó en 2023 y en 2019</h2>
+<p>En 2023 solo hubo tres provincias donde dos listas a la izquierda del PSOE se quedaron sin escaño a la vez: Lugo y Ourense (BNG y Sumar) y Lleida (Sumar y la CUP). En ninguna sumaban los votos del último escaño. En Lugo, por ejemplo, BNG y Sumar reunían 27.484 votos; el último escaño se adjudicó con un cociente de 33.256.</p>
+<p>En noviembre de 2019, cuando Unidas Podemos y Más País se presentaron por separado, hubo dos casos en que la suma sí superaba ese cociente: Lugo (BNG y Unidas Podemos, 29.488 votos frente a 28.768) y Lleida (la CUP y Unidas Podemos, 30.435 frente a 29.983). Eran partidos distintos, que no negociaban ir juntos, y la suma es solo aritmética.</p>
+<div class="caja"><p><strong>Simulación cerrada: 2019 con Unidas Podemos y Más País juntos.</strong> Si se suman sin pérdidas los votos de Unidas Podemos y de Más País (incluido Més Compromís) de noviembre de 2019 y se repite el reparto D'Hondt, la lista conjunta habría ganado cuatro escaños más: en Barcelona (a costa del PSC), Málaga (del PP), Alicante (de Vox) y Valencia (del PP). Sin contar a Compromís, serían dos, la cifra que calculó <a href="https://maldita.es/malditodato/20191116/si-todos-los-votantes-de-mas-pais-hubieran-votado-a-unidas-podemos-el-bloque-de-izquierdas-habria-obtenido-dos-diputados-mas-en-las-elecciones-generales-2/">Maldita.es</a>: «Si todos los votantes de Más País hubieran votado a Unidas Podemos el bloque de izquierdas habría obtenido dos diputados más». Es un límite superior: supone que ningún votante se pierde al unirse las listas.</p></div>
+<p>Esa suposición rara vez se cumple. En 2016, Podemos e IU se presentaron juntos y, según un estudio de Víctor Gago Rivas (Universidad de Salamanca) recogido por <a href="https://cordopolis.eldiario.es/cordoba-hoy/sociedad/politologo-demuestra-coalicion-e-iu-provoco-perdida-votos_1_12725560.html">Cordópolis</a>, «cerca de un 10 % de los votantes de la fuerza minoritaria en las elecciones de 2015 desertaron de seguir a su partido un año después».</p>
+<h2>Por qué las provincias pequeñas castigan la división</h2>
+<p>En una provincia que reparte pocos escaños, la barrera real para entrar es mucho más alta que el 3% legal. Con la fórmula de Lijphart que recoge Jorge Urdánoz en la <a href="https://www.redalyc.org/pdf/997/99715164005.pdf">REIS</a>, el umbral efectivo es del 18,75% con tres escaños, del 15% con cuatro y del 12,5% con cinco. Según Montero y Fernández, citados por Miguel Ángel Sevilla Duro en un <a href="https://dialnet.unirioja.es/descarga/articulo/8166654.pdf">análisis de las elecciones de 2019</a>, «el umbral efectivo (real) de los distritos −salvo en Madrid y Barcelona− alcanza el 10,2 por ciento».</p>
+<p>Pablo Simón lo resumió en <a href="https://ara.cat/es/articulo-pablo-simon-manipulacion-electoral_0_1481252043.html">Ara</a>: «lo que es más relevante para el reparto de escaños no es sólo el porcentaje de apoyos de cada partido, sino sobre todo dónde los obtiene». Y Ferran Martínez i Coma e Ignacio Lago recuerdan en <a href="https://www.eldiario.es/piedrasdepapel/efecto-par-impar-sistema-electoral_132_11298372.html">Piedras de Papel</a> que «de las 52 provincias, 29 se juegan entre uno y cinco escaños».</p>
+<h2>Qué mirar el 29N</h2>
+<p>Hay otro factor además del reparto entre listas: según un análisis de la <a href="https://cadenaser.com/nacional/2026/10/11/el-problema-electoral-de-la-izquierda-alternativa-uno-de-cada-cuatro-votantes-de-ese-espacio-votaria-ahora-al-psoe-cadena-ser/">Cadena SER</a> con datos de 40dB y del CIS, una parte de quienes se sitúan más a la izquierda dice que votará al PSOE. Las provincias de la tabla son las que conviene mirar la noche electoral: en ellas, unos pocos miles de votos decidieron en 2023 si la izquierda alternativa tenía escaño.</p>
+<p><a href="https://mapaelectoral.es/actualidad/izquierda-del-psoe-secciones/">Las secciones donde ganaba la izquierda del PSOE</a> · <a href="https://mapaelectoral.es/actualidad/ultimo-escano-29n/">El último escaño de cada provincia</a> · <a href="https://mapaelectoral.es/actualidad/rufian-erc-comuns/">ERC y los comuns, juntos y por separado</a></p>
+<div class="foot">Datos: Ministerio del Interior (generales de noviembre de 2019 y julio de 2023 por mesa, con voto CERA, vía pollspaindata). Cálculo propio: regla D'Hondt con barrera del 3% sobre voto válido; escaños de 2019 según el reparto de ese año. Borrador: pendiente de revisión antes de publicar.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+
+const N=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const R=[["Tarragona", 6, 41719, 11.3, 1, 1343, "tiene", "PSOE"], ["Santa Cruz de Tenerife", 7, 53632, 10.8, 0, 1565, "falta", "PSOE"], ["Gipuzkoa", 6, 40081, 10.6, 0, 2433, "falta", "PNV"], ["Navarra", 5, 43922, 12.8, 0, 2855, "falta", "PSOE"], ["Granada", 7, 58567, 11.6, 1, 3279, "tiene", "PSOE"], ["Girona", 6, 35344, 10.9, 1, 4003, "tiene", "PP"], ["Castellón", 5, 44187, 14.3, 0, 4727, "falta", "Vox"], ["Córdoba", 6, 61594, 13.7, 1, 4935, "tiene", "PP"], ["Álava", 4, 21561, 12.7, 0, 6515, "falta", "PNV"], ["Sevilla", 12, 148745, 14.0, 2, 7279, "tiene", "PP"], ["Huesca", 3, 13774, 11.5, 0, 9118, "falta", "PP"], ["Teruel", 3, 4126, 5.4, 0, 9168, "falta", "PP"], ["Madrid", 37, 557780, 15.5, 6, 9816, "tiene", "PSOE"], ["Murcia", 10, 71578, 9.6, 1, 9983, "tiene", "PP"]];
+(function(){const box=document.getElementById('marg');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=26,m={l:W<500?132:170,r:58,t:6,b:24},H=m.t+m.b+rh*R.length,hi=10000;const x=v=>m.l+v/hi*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Márgenes de los escaños de Sumar en 2023'},box);
+ for(let v=0;v<=hi;v+=2500){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-6,'text-anchor':'middle'},svg).textContent=N(v)}
+ R.forEach((r,i)=>{const y=m.t+i*rh;el('text',{x:m.l-8,y:y+rh/2+4,'text-anchor':'end','font-size':W<500?11:12},svg).textContent=r[0];
+  el('rect',{x:x(0),y:y+4,width:x(r[5])-x(0),height:rh-8,rx:3,fill:r[6]=='tiene'?'var(--sumar)':'var(--sumarl)'},svg);
+  el('text',{x:x(r[5])+5,y:y+rh/2+4,'font-size':11,class:'lab'},svg).textContent=N(r[5]);
+  const t=r[6]=='tiene'?`Sumar ganó ${r[4]} escaño${r[4]>1?'s':''}<br>Podía perder <b>${N(r[5])}</b> votos antes de cederlo (al ${r[7]})`:`Sumar no ganó escaño<br>Le faltaron <b>${N(r[5])}</b> votos (el último escaño fue del ${r[7]})`;
+  hov(box,tip,el('rect',{x:0,y,width:W,height:rh,fill:'transparent'},svg),`<b>${r[0]}</b> (${r[1]} escaños)<br>Sumar: ${N(r[2])} votos (${c1(r[3])}%)<br>${t}`);});
+})();
+table('marg-tbl',['Provincia','Escaños','Votos de Sumar','% Sumar','Escaños de Sumar','Margen','Rival en el último escaño'],R.map(r=>[r[0],r[1],N(r[2]),c1(r[3])+'%',r[4],(r[6]=='tiene'?'podía perder ':'le faltaron ')+N(r[5]),r[7]]));
+
+</script>
