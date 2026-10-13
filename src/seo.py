@@ -518,6 +518,7 @@ Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat
 ## Secciones del sitio
 
 - [Mapa de resultados de España (portada)]({BASE}): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt]({BASE}generales-2026/llms.txt)
+- [Elecciones por comunidad y provincia]({BASE}elecciones/): una página por comunidad autónoma y provincia con las generales desde 1977 y el voto por renta de los barrios; y dos temas, [mapa electoral por sección censal]({BASE}elecciones/mapa-electoral-seccion-censal/) y [voto y renta por barrios]({BASE}elecciones/voto-y-renta-por-barrios/). Resumen: [elecciones/llms.txt]({BASE}elecciones/llms.txt)
 - [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt]({BASE}atlas/llms.txt)
 - [¿Quién no vota en Cataluña?]({BASE}abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán]({BASE}ca.html).
 - [Sobre el autor]({BASE}sobre-mi.html)
@@ -619,6 +620,9 @@ def main():
     (ROOT / 'sitemap_index.xml').write_text(sitemap_index(), encoding='utf-8')
     (ROOT / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
     print('seo: abstencion.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
+    # autor común, Dataset y migas de pan en todas las páginas del sitio
+    import esquema
+    esquema.main()
 
 
 main()
