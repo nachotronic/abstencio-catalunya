@@ -131,6 +131,7 @@
   const [[x0, y0], [x1, y1]] = [canT([-18.4 + CDX, 27.4 + CDY]), canT([-13.2 + CDX, 29.6 + CDY])];
   const CANFRAME = [{ path: [[x0, y0], [x0, y1], [x1, y1], [x1, y0], [x0, y0]] }];
   let hover = null;
+  let marca = null;       // dirección buscada: punto (y la calle entera si no hay número)
 
   function secVisible() { return view.zoom >= 7.3; }
   function secHas(p) { return SEC[p] && SEC[p].d[st.y + '_part']; }
@@ -263,6 +264,11 @@
     if (hover) {
       L.push(new deck.PathLayer({ id: 'hl', data: hover.polys, getPath: o => o.ring, getColor: hex(css('--ink') || '#111'), widthUnits: 'pixels', getWidth: 2 }));
     }
+    if (marca) {
+      if (marca.via) L.push(new deck.PathLayer({ id: 'via', data: [marca.via], getPath: o => o, getColor: [...hex(css('--ink') || '#111'), 200], widthUnits: 'pixels', getWidth: 4 }));
+      L.push(new deck.ScatterplotLayer({ id: 'marca', data: [marca.p], getPosition: o => o, getRadius: 7, radiusUnits: 'pixels', stroked: true,
+        getFillColor: hex(css('--ink') || '#111'), getLineColor: hex(css('--surface') || '#fff'), lineWidthUnits: 'pixels', getLineWidth: 2 }));
+    }
     if (conRot) L.push(capaRotulos());
     if (view.zoom < 8) {
       L.push(new deck.TextLayer({
@@ -284,12 +290,14 @@
   });
   const attr = document.createElement('div');
   attr.className = 'calles-attr';
-  attr.innerHTML = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> · © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+  attr.innerHTML = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> · © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' +
+    '<span class="cc" hidden> · Direcciones: <a href="https://www.cartociudad.es/" target="_blank" rel="noopener">CartoCiudad (IGN)</a></span>';
   attr.style.cssText = 'position:absolute;right:0;bottom:0;z-index:2;font:11px/1.4 var(--sans,system-ui);padding:2px 6px;background:var(--surface);color:var(--muted);opacity:.85;border-top-left-radius:4px';
   $('#map').appendChild(attr);
   let bCal = null;        // botón «Ver calles / Quitar calles» (se crea con los controles)
   function redraw() {
-    attr.hidden = !conCalles();
+    attr.hidden = !conCalles() && !marca;
+    attr.querySelector('.cc').hidden = !marca;
     if (bCal) bCal.hidden = view.zoom < CALLE_Z - .5;
     dk.setProps({ layers: layers() });
   }
@@ -430,11 +438,83 @@
   const dl = $('#munlist');
   const ORD = MUN.nombre.map((n, i) => i).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
   dl.innerHTML = ORD.map(i => `<option value="${MUN.nombre[i]} (${MUN.provs[MUN.prov[i]] || ''})">`).join('');
+  const opMun = dl.innerHTML;
   $('#q').addEventListener('change', e => {
     const v = e.target.value.trim().toLowerCase(); if (!v) return;
-    const i = ORD.find(i => `${MUN.nombre[i]} (${MUN.provs[MUN.prov[i]] || ''})`.toLowerCase() === v) ?? ORD.find(i => MUN.nombre[i].toLowerCase().startsWith(v));
-    if (i != null) abre(i);
+    const dir = DIRS.get(v);
+    if (dir) return buscaDir(dir);
+    const i = ORD.find(i => `${MUN.nombre[i]} (${MUN.provs[MUN.prov[i]] || ''})`.toLowerCase() === v) ?? (/\d|,/.test(v) ? null : ORD.find(i => MUN.nombre[i].toLowerCase().startsWith(v)));
+    if (i != null) { marca = null; return abre(i); }
+    buscaDir({ q: e.target.value.trim() });       // texto libre («calle mayor 3, soria»): la primera dirección que encuentre
   });
+
+  // ---------- búsqueda de calles y portales: geocodificador de CartoCiudad (IGN), público y sin clave. Lleva a la
+  // sección censal donde está la dirección (o el centro de la calle, si no se pone número).
+  const CC = 'https://www.cartociudad.es/geocoder/api/geocoder/';
+  const DIRS = new Map();       // texto de la opción -> candidato de CartoCiudad
+  let tq = null, nq = 0;
+  const PEQ = new Set(['de', 'del', 'la', 'las', 'el', 'los', 'i', 'y', 'e', 'a', 'en', 'dels', 'les', 'els', 'do', 'da', 'dos', 'das']);
+  const tit = t => t.toLowerCase().replace(/[^\s/-]+/g, (w, k) => k && PEQ.has(w.replace(/[()]/g, '')) ? w : w.replace(/^(\(?)(d'|l')?(.)/, (m, p, a, b) => p + (a || '') + b.toUpperCase()));
+  const etiDir = c => { const [v, m] = c.address.split(/,\s*/); return tit(v) + ', ' + (m || c.muni); };
+  $('#q').addEventListener('input', e => {
+    const v = e.target.value.trim(); clearTimeout(tq);
+    if (v.length < 4 || DIRS.has(v.toLowerCase()) || MUN.nombre.some(n => n.toLowerCase() === v.toLowerCase())) return;
+    tq = setTimeout(async () => {
+      const k = ++nq;
+      try {
+        const r = await fetch(CC + 'candidates?limit=8&no_process=municipio,poblacion,provincia,comunidad autonoma,toponimo,expendeduria,ngbe,codpost,refcatastral&q=' + encodeURIComponent(v));
+        const cs = (await r.json()).filter(c => (c.type === 'portal' || c.type === 'callejero') && c.muniCode);
+        if (k !== nq) return;
+        DIRS.clear();
+        const ops = cs.map(c => { const t = etiDir(c); DIRS.set(t.toLowerCase(), c); return `<option value="${escH(t)}">`; });
+        dl.innerHTML = ops.join('') + opMun;
+      } catch (err) { /* sin conexión con CartoCiudad: queda la búsqueda de municipios */ }
+    }, 350);
+  });
+  async function buscaDir(c) {
+    let lon = c.lng, lat = c.lat, via = null;
+    try {
+      if (!c.id || !lat) {     // calle sin número (o texto libre): «find» devuelve el punto o la línea de la calle
+        const u = c.id ? `find?id=${encodeURIComponent(c.id)}&type=${c.type}` : 'find?q=' + encodeURIComponent(c.q);
+        c = { ...c, ...await (await fetch(CC + u)).json() };
+        lon = c.lng; lat = c.lat;
+        const m = /LINESTRING\s*\(([^)]+)\)/.exec(c.geom || '');
+        if (m) {
+          via = m[1].split(',').map(t => t.trim().split(/\s+/).map(Number));
+          if (!lat) [lon, lat] = via[via.length >> 1];
+        }
+      }
+    } catch (err) { /* sin respuesta */ }
+    const i = c.muniCode ? MUN.cod.indexOf(c.muniCode) : -1;
+    if (!lat || i < 0) { $('#q').setCustomValidity('No encuentro esa dirección'); $('#q').reportValidity(); setTimeout(() => $('#q').setCustomValidity(''), 2500); return; }
+    const p = c.muniCode.slice(0, 2), lleva = q => esCan(p) ? canT([q[0] + CDX, q[1] + CDY]) : q;
+    const pt = lleva([lon, lat]);
+    marca = { p: pt, via: via && via.map(q => lleva([...q])) };
+    actual = i;
+    fly({ longitude: pt[0], latitude: pt[1], zoom: Math.max(view.zoom, 14.5) });
+    // la sección que contiene el punto (las secciones de la provincia se piden si aún no están)
+    if (!SEC[p]) {
+      loading.add(p);
+      try { const d = await get('sec/' + p + '.json'); const polys = decode(d); if (esCan(p)) aCan(polys); SEC[p] = { d, polys }; } catch (err) { /* sin secciones */ }
+      loading.delete(p);
+    }
+    aseguraSec(p, st.y);
+    const S = SEC[p], o = S && S.polys.find(o => dentro(pt, o.polygon));
+    const conSec = o && secHas(p);
+    const [d, k, isSec] = conSec ? [S.d, o.i, true] : [MUN, i, false];
+    hover = { key: (isSec ? 'sec' + p : 'mun') + k, polys: (isSec ? S.polys : MUNP).filter(q => q.i === k) };
+    tipAbierta = [d, k, isSec]; tip.innerHTML = ficha(d, k, isSec); tip.hidden = false;
+    tip.style.left = '8px'; tip.style.top = narrow() ? 'auto' : '8px'; tip.style.bottom = narrow() ? '8px' : 'auto';
+    redraw();
+  }
+  function dentro([x, y], r) {      // punto en polígono (par-impar)
+    let si = false;
+    for (let a = 0, b = r.length - 1; a < r.length; b = a++) {
+      const [xa, ya] = r[a], [xb, yb] = r[b];
+      if ((ya > y) !== (yb > y) && x < (xb - xa) * (y - ya) / (yb - ya) + xa) si = !si;
+    }
+    return si;
+  }
   let actual = null;        // último municipio abierto (para el código de «Insertar»)
   function abre(i) {
     actual = i;
