@@ -284,6 +284,33 @@ def enlaces_mapa(p):
     return out
 
 
+sys.path.insert(0, str(ROOT / 'src'))
+from territorios_rutas import PROV_NOMBRE, ruta_provincia  # noqa: E402
+
+
+def provincias(p):
+    """Códigos INE de las provincias de los lugares de la pieza (las de la serie «bisagras» ya son provincias)."""
+    out = set()
+    for lugar in p['lugares']:
+        if p['serie'] == 'bisagras':
+            out |= {c for c, n in PROV_NOMBRE.items() if lugar == n or lugar in n.split('/')}
+            continue
+        cods = [MAPA_HOMONIMOS[lugar]] if lugar in MAPA_HOMONIMOS else \
+            [c for c, n in zip(MUN_MAPA['cod'], MUN_MAPA['nombre']) if lugar == n or lugar in n.split('/')]
+        if len(cods) == 1:
+            out.add(cods[0][:2])
+    return sorted(out)
+
+
+def enlaces_territorio(p):
+    """Enlaces a la página de cada provincia de la pieza, con el nombre de la provincia como ancla."""
+    ps = provincias(p)
+    if not ps:
+        return ''
+    li = ' · '.join(f'<a href="../../../{ruta_provincia(c)}">elecciones en {escape(PROV_NOMBRE[c])}</a>' for c in ps)
+    return f'<p>Resultados desde 1977, voto por renta de los barrios y municipios principales: {li}.</p>'
+
+
 TIPO_CLASE = {'Dato': 't-dato', 'Patrón': 't-patron', 'Hipótesis': 't-hipotesis'}
 
 
@@ -349,6 +376,7 @@ def pagina_pieza(p):
 </dl>""")
     h.append('<h2>Sigue leyendo</h2><ul class="sigue">' + ''.join(
         f'<li><a href="../../{ruta_pieza(q)}"><span class="kicker">{escape(SERIES[q["serie"]][0])}</span><b>{escape(titular(q))}</b></a></li>' for q in sigue_leyendo(p)) + '</ul>')
+    h.append(enlaces_territorio(p))
     h.append(f'<p><a href="../index.html">Todas las piezas de «{escape(SERIES[p["serie"]][0])}»</a> · <a href="../../index.html">Todo el Atlas</a></p>')
     h.append(siguelo())
     h.append(PIE)

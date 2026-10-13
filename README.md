@@ -21,6 +21,10 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 
 `generales-2026/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2004–2023, con municipales y europeas) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales-2026/README.md`.
 
+## Elecciones por comunidad y provincia
+
+`elecciones/`: páginas de entrada por territorio y por tema, generadas con `python3 src/territorios.py` (después de regenerar el mapa y el Atlas; luego `src/seo.py`). Una por comunidad autónoma y otra por provincia (las comunidades uniprovinciales no tienen página de provincia): resultado de las generales de 2023 con el color de cada partido, la serie de las 16 generales desde 1977, voto y participación por grupos de renta de sus secciones censales, municipios principales con enlace al mapa (`?m=<código INE>`) y las piezas del Atlas y de Actualidad sobre ese territorio. Más dos páginas temáticas: `mapa-electoral-seccion-censal/` y `voto-y-renta-por-barrios/`. Las cifras salen de las descargas de `generales-2026/descargas/` (`src/territorios_datos.py`); las rutas, en `src/territorios_rutas.py` (también las usa el Atlas para enlazar cada pieza con su provincia). Las piezas de Actualidad sobre un territorio concreto se apuntan a mano en `ACTUALIDAD_LUGAR` de `src/territorios.py`. El script también rellena en la portada la franja «Elecciones por comunidad y provincia» entre las marcas `<!--territorios-->`. No hay fichas por municipio.
+
 ## Atlas de las anomalías electorales
 
 `atlas/`: piezas editoriales en series (excepciones, fronteras, gemelos, contra su provincia, ciudad y entorno, voto doble, bisagras, quién no vota). Cada pieza es HTML estático con titular, resumen, cifras en el texto, tabla accesible, gráfico SVG sin JavaScript, CSV descargable, método, fuentes, autoría, revisión y JSON-LD (NewsArticle, Dataset, FAQPage).

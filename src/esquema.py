@@ -65,7 +65,11 @@ def h1(ruta):
     f = ROOT / (ruta + 'index.html' if ruta.endswith('/') or ruta == '' else ruta)
     if not f.exists():
         return None
-    m = re.search(r'<h1[^>]*>(.*?)</h1>', f.read_text(encoding='utf-8'), re.S)
+    t = f.read_text(encoding='utf-8')
+    corto = re.search(r'<h1[^>]*data-miga="([^"]+)"', t)   # nombre corto para las migas, si la página lo da
+    if corto:
+        return html.unescape(corto.group(1))
+    m = re.search(r'<h1[^>]*>(.*?)</h1>', t, re.S)
     return ' '.join(html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).split()) if m else None
 
 
