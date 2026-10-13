@@ -62,11 +62,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='extremadura', slug='extremadura-historia-electoral', lugar='Extremadura', corto='Extremadura en las urnas',
-    titulo='El PSOE ha ganado 11 de las 16 generales en Extremadura y gobernó la Junta nueve legislaturas; en 2025 cayó al 25,8%',
+    titulo='El PSOE ganó 11 de las 16 generales en Extremadura; en las autonómicas de 2025 cayó al 25,8%',
     dek='Rodríguez Ibarra presidió la Junta 24 años. Desde 2023 gobierna el PP de María Guardiola, investida en abril de 2026 con los votos de Vox. '
         'En las generales, el PSOE siempre ha sacado en Extremadura más que en el conjunto de España.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PSOE gobernó Extremadura en nueve de doce legislaturas y ha ganado allí 11 de las 16 generales. En diciembre de 2025 cayó al 25,8%, su peor resultado, y Guardiola gobierna con Vox.',
+    descripcion='El PSOE gobernó la Junta en nueve de doce legislaturas. El 25,8% de diciembre de 2025 es su peor resultado, y Guardiola gobierna con Vox.',
     compara='Las 12 elecciones a la Asamblea de Extremadura (1983-2025) y las 16 generales (1977-2023) en Extremadura, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('aextremadura', 'Extremadura'),

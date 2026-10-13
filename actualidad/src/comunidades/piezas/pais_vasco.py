@@ -56,11 +56,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='pais-vasco', slug='pais-vasco-historia-electoral', lugar='País Vasco', corto='El País Vasco en las urnas',
-    titulo='El PNV ha sido el más votado en las trece elecciones vascas; en las generales perdió el primer puesto cinco veces, ante el PSE y Podemos',
+    titulo='El PNV ha sido el más votado en las trece elecciones vascas',
     dek='Todos los lehendakaris han sido del PNV salvo Patxi López, investido en 2009 con el PP. En 2024 EH Bildu lo igualó a 27 escaños. '
         'En las generales, el PNV fue primero en once de dieciséis; en 2023, PSE, PNV y EH Bildu sacaron cinco diputados cada uno.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PNV ha sido la lista más votada en las trece elecciones al Parlamento Vasco y solo dejó de gobernar con Patxi López (2009-2012). En las generales fue primero en once de dieciséis; el PSE ganó en 1993, 2008 y 2023, y Podemos en 2015 y 2016.',
+    descripcion='El PNV solo dejó de gobernar con Patxi López (2009-2012). En las generales fue primero en once de dieciséis; el PSE ganó tres veces y Podemos dos.',
     compara='Las 13 elecciones al Parlamento Vasco (1980-2024) y las 16 generales (1977-2023) en el País Vasco, por territorio y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('aeuzkadi', 'el País Vasco'),

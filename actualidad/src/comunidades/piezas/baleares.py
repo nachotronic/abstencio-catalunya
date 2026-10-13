@@ -93,11 +93,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='baleares', slug='baleares-historia-electoral', lugar='Illes Balears', corto='Baleares en las urnas',
-    titulo='El PP ha ganado diez de las once autonómicas en Baleares, pero entre 1999 y 2015 el Govern cambió de manos en cada elección',
+    titulo='El PP ha ganado diez de las once autonómicas en Baleares',
     dek='Cuando el PP no tiene mayoría absoluta, la izquierda y los partidos de las islas suman más que él. En las generales, Baleares vota más a la derecha que España: '
         'el PP ganó allí en 1989, 1993 y 2004, cuando el país votaba al PSOE. Y es una de las comunidades donde menos se vota.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PP ha sido el más votado en diez de las once autonómicas de Baleares, pero entre 1999 y 2015 el Govern cambió de manos en cada elección. En las generales, las islas votan más a la derecha y participan menos que España.',
+    descripcion='Entre 1999 y 2015 el Govern balear cambió de manos en cada elección. En las generales, las islas votan más a la derecha y participan menos que España.',
     compara='Las 11 elecciones al Parlamento de las Illes Balears (1983-2023) y las 16 generales (1977-2023) en Baleares, por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('abalears', 'las Illes Balears'),

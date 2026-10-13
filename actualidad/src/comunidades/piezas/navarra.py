@@ -61,11 +61,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='navarra', slug='navarra-historia-electoral', lugar='Navarra', corto='Navarra en las urnas',
-    titulo='UPN ha sido la lista más votada en las nueve últimas elecciones navarras, pero desde 2015 gobiernan otros',
+    titulo='UPN ha sido la más votada en las nueve últimas elecciones navarras, pero desde 2015 gobiernan otros',
     dek='Nadie ha tenido nunca mayoría absoluta en el Parlamento de Navarra. UPN ganó todas las forales desde 1991 y gobernó hasta 2015; '
         'desde entonces presiden Barkos y Chivite. En las generales, UPN y el PP fueron primeros de 1989 a 2019, y en 2023 ganó el PSN.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='UPN ha sido la lista más votada en las nueve últimas elecciones al Parlamento de Navarra, pero desde 2015 gobiernan Geroa Bai y el PSN. En las generales, UPN y el PP ganaron de 1989 a 2019; en 2023, separados, quedaron por detrás del PSN y de EH Bildu.',
+    descripcion='Desde 2015 gobiernan Geroa Bai y el PSN. En las generales de 2023, UPN y el PP, por separado, quedaron por detrás del PSN y de EH Bildu.',
     compara='Las 12 elecciones al Parlamento de Navarra (1979-2023) y las 16 generales (1977-2023) en Navarra, por municipio.',
     limites=LIMITES + ' En Navarra, UPN va con el color del PP en todas las generales; en 2023, cuando se presentaron por separado, el ganador de la provincia, de cada ciudad y de cada municipio se ha calculado lista a lista con los datos por mesa de pollspaindata.',
     fuentes=FUENTES_COMUNES + [he_fuente('anavarra', 'Navarra'),

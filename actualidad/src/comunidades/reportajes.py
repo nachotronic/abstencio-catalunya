@@ -142,6 +142,11 @@ def escribir():
                 f'<script>\n{lib}\nconst D={json.dumps(D, ensure_ascii=False)};\n' + '\n'.join(F.js) + '\n</script>\n')
         open(os.path.join(SRC, p['slug'] + '.html'), 'w', encoding='utf-8').write(page)
         print('escrita', p['slug'])
+    # imágenes para redes (las hace historia/compartir.mjs): titular, serie, descripción y la ilustración o la miniatura
+    json.dump([{'archivo': f'actualidad-{p["slug"]}.jpg', 'serie': 'Las comunidades en las urnas', 'titular': p['titulo'], 'subtitulo': p['descripcion'],
+                'foto': f'img/actualidad/fotos/{p["slug"]}.jpg' if os.path.exists(os.path.join(SRC, '..', '..', 'img', 'actualidad', 'fotos', p['slug'] + '.jpg'))
+                else f'img/actualidad/{p["slug"]}.jpg'} for p in ps],
+              open(os.path.join(AQUI, 'compartir.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     return ps
 
 

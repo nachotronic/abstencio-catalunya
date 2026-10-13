@@ -66,11 +66,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='comunidad-valenciana', slug='comunidad-valenciana-historia-electoral', lugar='Comunitat Valenciana', corto='La Comunitat Valenciana en las urnas',
-    titulo='La Comunitat Valenciana votó al PP en las generales de 1993, 2004 y 2008, cuando España eligió al PSOE; en la Generalitat, el PP gobernó 20 años seguidos',
+    titulo='La Comunitat Valenciana votó al PP en 1993, 2004 y 2008, cuando España eligió al PSOE',
     dek='El PSOE gobernó los doce primeros años; el PP, de 1995 a 2015, y el Botànic de socialistas y Compromís, hasta 2023. '
         'Desde entonces gobierna el PP con Vox, con un presidente nuevo tras la dimisión de Mazón por la dana. En las generales, la comunidad vota siempre más que la media.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='La Comunitat Valenciana votó al PP en las generales de 1993, 2004 y 2008, mientras España elegía al PSOE. En las Corts, el PSOE gobernó doce años, el PP veinte y el Botànic ocho. Desde 2023 gobierna el PP con Vox.',
+    descripcion='En la Generalitat, el PSOE gobernó doce años, el PP veinte y el Botànic ocho. Desde 2023 gobierna el PP con Vox.',
     compara='Las 11 elecciones a las Corts Valencianes (1983-2023) y las 16 generales (1977-2023) en la Comunitat Valenciana, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('avalencia', 'la Comunitat Valenciana'),
