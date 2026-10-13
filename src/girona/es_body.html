@@ -1,0 +1,204 @@
+<div class="wide">
+<header class="col">
+  <div class="topbar"><nav class="site" aria-label="Secciones del sitio"><a href="abstencion.html">Cataluña</a><a href="girona.html" aria-current="page">Girona</a><a href="./">Mapa de resultados</a><a href="atlas/">Atlas</a><a href="mapa.html">Mapa 2D</a></nav><nav class="lang" aria-label="Idioma"><a href="girona.html" hreflang="es" lang="es" aria-current="page">ES</a><a href="girona-ca.html" hreflang="ca" lang="ca">CA</a></nav></div>
+  <div class="kicker">Provincia de Girona · elecciones generales 2015–2023 · 536 secciones censales</div>
+  <h1>Girona, la provincia catalana donde menos adultos votan</h1>
+  <p class="byline">Por <a href="sobre-mi.html" rel="author">Nacho G. del Álamo</a> · <time datetime="2026-10-13">13 de octubre de 2026</time></p>
+  <p class="lede">El 23 de julio de 2023, de cada 100 adultos que vivían en la provincia de Girona, <span class="c-vote num" id="l-vote">49</span> votaron, cinco menos que en el conjunto de Cataluña. Otros <span class="c-no num" id="l-no">21</span> no podían hacerlo porque no tienen la nacionalidad española, la proporción más alta de las cuatro provincias. Y <span class="c-abst num" id="l-abst">30</span> podían votar y no lo hicieron. Este mapa separa los tres grupos en cada una de las 536 secciones censales de la provincia y los cruza con la renta, la edad, los estudios y la población extranjera.</p>
+  <div class="hundred" id="hundred" aria-label="100 adultos residentes en la provincia de Girona"></div>
+  <div class="legend3"><span><b style="background:var(--vote)"></b>votó</span><span><b style="background:var(--noright)"></b>sin derecho a voto</span><span><b style="background:var(--abst)"></b>pudo votar y no votó</span></div>
+  <p class="scrollhint">Baja para recorrer el mapa ↓ · <a href="#tu-calle">o busca tu calle</a> · <a href="abstencion.html">la pieza de toda Cataluña</a></p>
+</header>
+</div>
+<section class="scrolly" id="scrolly">
+  <div class="sticky" id="sticky">
+    <div id="deck" aria-label="Mapa 3D de las secciones censales de la provincia de Girona" role="img"></div>
+    <div class="placelabel" id="placelabel" hidden aria-hidden="true"><span></span></div>
+    <div class="maplegend" id="maplegend"></div>
+    <div class="fallback" id="fallback" hidden>Tu navegador no puede mostrar el mapa 3D (WebGL desactivado). El texto y los gráficos de abajo recogen los mismos datos.</div>
+    <div class="explore" id="explore" hidden>
+      <label for="v3">Color
+        <select id="v3"></select></label>
+      <div class="zoombtns"><button type="button" id="zin" aria-label="Acercar">+</button><button type="button" id="zout" aria-label="Alejar">−</button></div>
+      <label for="town3">Ir a
+        <select id="town3"><option value="">Provincia de Girona</option></select></label>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-step="cat"><div class="card">
+      <div class="kicker">536 secciones censales</div>
+      <p>Esta es la provincia de Girona dividida en sus secciones censales, la unidad más pequeña con resultados electorales. Cuanto más oscuro, más abstención el 23 de julio de 2023 entre quienes podían votar.</p>
+      <p>La participación fue del 62,2%, tres puntos menos que en Cataluña (65,4%). Pero esa cifra solo cuenta a los que están en el censo.</p>
+    </div></div>
+    <div class="step" data-step="cat3d"><div class="card">
+      <div class="kicker">La altura cuenta personas</div>
+      <p>Ahora la altura de cada sección indica cuántos de cada 100 adultos que viven en ella no votaron, por el motivo que sea. En la provincia son <b class="c-no">51</b>: <b class="c-abst">30</b> pudieron votar y no lo hicieron, y <b class="c-no">21</b> no tenían derecho porque no son españoles.</p>
+      <p>Es la provincia catalana donde menos adultos votan: 49 de cada 100, frente a 50 en Lleida, 53 en Tarragona y 56 en Barcelona.</p>
+    </div></div>
+    <div class="step" data-step="sin"><div class="card">
+      <div class="kicker">Sin derecho a voto</div>
+      <p>Si pintamos solo a los adultos sin nacionalidad española, el mapa se va a la costa. En <span class="place" data-place="Castelló d'Empúries">Castelló d'Empúries</span>, con Empuriabrava, 47 de cada 100 adultos no podían votar en unas generales, y solo votaron 29: es el municipio de más de 10.000 habitantes de la provincia donde menos adultos votan. Le siguen <span class="place" data-place="Castell d'Aro, Platja d'Aro i s'Agaró">Platja d'Aro</span> (35 sin derecho) y <span class="place" data-place="Roses">Roses</span> (31).</p>
+      <p>Siete secciones de la provincia tienen a más de la mitad de sus adultos sin derecho a voto: dos en Castelló, dos en Salt y una en Figueres, Lloret y Roses. Según el CIEMEN, cinco de los diez municipios catalanes con más inmigrantes adultos sin derecho a voto son gironinos: Salt, Ullà, Lloret, Castelló y Castell-Platja d'Aro.</p>
+      <blockquote class="q"><div class="qt">«Municipios como Salt, Lloret de Mar o Manlleu presentan altos niveles de población extranjera excluida del sistema electoral»</div><cite><b>Informe del CIEMEN</b> coordinado por Gemma Pinyol-Jiménez. En <a href="https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf" target="_blank" rel="noopener">«El dret de vot de les persones immigrades a Catalunya»</a>, julio de 2026 · traducido del catalán</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="salt"><div class="card">
+      <div class="kicker">Salt · 33.232 habitantes</div>
+      <p>Salt tiene la participación más baja de los 221 municipios de la provincia: un 54,9%. Votaron <b class="c-vote">34</b> de cada 100 adultos residentes y <b class="c-no">39</b> no podían votar en unas generales.</p>
+      <p>No es solo una cuestión de censo. Entre los que sí podían votar, Salt ha quedado por debajo de la media provincial en las cinco generales desde 2015, y en el Ayuntamiento lo atribuyen en parte a la falta de arraigo.</p>
+      <blockquote class="q"><div class="qt">«Tampoco hay sentimiento de pertenencia a este pueblo, pero ni de la comunidad inmigrante ni de los autóctonos»</div><cite><b>Andreu Bover</b>, responsable de Ciudadanía e Inmigración del Ayuntamiento de Salt. En <a href="https://es.ara.cat/sociedad/salt-ano-elecciones-amenaza-auge-extrema-derecha_130_4445601.html" target="_blank" rel="noopener">Ara</a>, julio de 2022</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="lloret"><div class="card">
+      <div class="kicker">Lloret de Mar · 40.514 habitantes</div>
+      <p>Lloret repite el patrón: <b class="c-vote">36</b> votaron, <b class="c-no">38</b> no tenían derecho y <b class="c-abst">26</b> se abstuvieron. Entre quienes podían votar, la participación fue del 57,6%, casi cinco puntos por debajo de la media provincial.</p>
+    </div></div>
+    <div class="step" data-step="figueres"><div class="card">
+      <div class="kicker">Figueres · 48.374 habitantes</div>
+      <p>En Figueres está la sección con menos participación de toda Cataluña: un 22%. No es de las que tienen más extranjeros (un 17%). Es la que tiene un 59% de paro, 9.638 euros de renta por unidad de consumo y un 3% de adultos con estudios superiores.</p>
+      <p>En el conjunto del municipio votaron <b class="c-vote">39</b> de cada 100 adultos: <b class="c-no">29</b> no podían y <b class="c-abst">32</b> podían votar y no lo hicieron.</p>
+      <blockquote class="q"><div class="qt">«Si en tu casa no tienes la nevera en condiciones para mantener tu vida cotidiana, es más difícil que tengas ese tiempo para buscar información política»</div><cite><b>Braulio Gómez</b>, politólogo (Universidad de Deusto). En <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a>, abril de 2019</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="girona"><div class="card">
+      <div class="kicker">Girona · la renta</div>
+      <p>La capital vota en la media de la provincia (62,5%), pero esa media esconde una ciudad partida. Aquí el color es la renta (oscuro, más baja) y la altura, la abstención.</p>
+      <p>Entre sus 62 secciones, la participación va del 33% al 75%. La más baja, con un 65% de paro y 9.753 euros de renta por unidad de consumo, es la segunda que menos vota de la provincia. El 20% de secciones más pobres de Girona votó al 52%; el 20% más rico, al 69%.</p>
+    </div></div>
+    <div class="step" data-step="eu"><div class="card">
+      <div class="kicker">Municipales · el voto extranjero</div>
+      <p>En las municipales también votan los ciudadanos de la Unión Europea y de los países con convenio que se inscriben en el censo, unos 12.700 en la provincia. Con ellos, los adultos sin derecho a voto bajan del 21% al 19%. El color y la altura muestran ahora quién no podía votar en las municipales de mayo de 2023.</p>
+      <p>Donde más se nota es en la costa: los extranjeros inscritos son el 8% del censo municipal en <span class="place" data-place="Roses">Roses</span> y en <span class="place" data-place="Castell d'Aro, Platja d'Aro i s'Agaró">Platja d'Aro</span>, el 7% en <span class="place" data-place="Torroella de Montgrí">Torroella de Montgrí</span> y el 9% en Castelló d'Empúries. Podrían ser muchos más: el CIEMEN contaba en 2025 unos 1.900 europeos con derecho a voto municipal en Castelló, y en el censo de 2023 había unos 520 extranjeros inscritos, contando también a los de países con convenio.</p>
+    </div></div>
+    <div class="step" data-step="rural"><div class="card">
+      <div class="kicker">Votar al ayuntamiento</div>
+      <p>Las elecciones más cercanas son las que menos votos atraen: un 54% en las municipales de 2023 y un 57% en el Parlament de 2024, frente al 62% del Congreso. El color indica cuánto cambia la participación de las generales a las municipales, y la altura, cuánta se pierde.</p>
+      <p>En los 158 pueblos de menos de 2.000 habitantes casi no cambia (66% frente a 67%). En las seis ciudades de más de 30.000 se desploma, del 60% al 49%. En <span class="place" data-place="Olot">Olot</span>, el 58% que votó en el Congreso y en el Parlament se quedó en un 47% para elegir alcalde. En Salt solo lo eligieron 30 de cada 100 adultos que viven allí.</p>
+      <blockquote class="q"><div class="qt">«En las municipales tiene mucho más peso el voto personalista, el voto al candidato, ya que es una administración mucho más cercana al ciudadano»</div><cite><b>Guadalupe Talavera</b>, politóloga. En <a href="https://www.eldiario.es/politica/pobres-votan-municipales-excepto-elegir-alcalde-pueblo-participacion-elecciones-abstencion_1_10177968.html" target="_blank" rel="noopener">elDiario.es</a>, mayo de 2023</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="edu"><div class="card">
+      <div class="kicker">Lo que más pesa: los estudios</div>
+      <p>Con el color cambiado a adultos sin estudios superiores, el mapa encaja todavía mejor. Al poner todas las variables a la vez en un modelo, la educación es la que más explica la participación, seguida del paro. La renta deja de sumar cuando se tienen en cuenta esas dos, igual que en el conjunto de Cataluña.</p>
+    </div></div>
+    <div class="step" data-step="drop"><div class="card">
+      <div class="kicker">2023: la otra abstención</div>
+      <p>Hay una segunda abstención, que no sigue la renta sino el voto. El color es ahora el voto independentista de noviembre de 2019 y la altura, cuánta participación se perdió hasta julio de 2023.</p>
+      <p>Girona es la provincia catalana donde más cayó la participación: 8,3 puntos. En el cuarto de secciones más independentistas bajó 11 puntos; en el menos, 6. El interior, que sigue votando más, fue lo que más perdió: 12,5 puntos en la Garrotxa, casi 11 en el Ripollès y el Pla de l'Estany, frente a 6 en el Alt y el Baix Empordà.</p>
+      <blockquote class="q"><div class="qt">«Después del fracaso del Procés, la reubicación de los partidos independentistas ha provocado un desgaste en su electorado»</div><cite><b>Ivan Serrano</b>, profesor de Ciencia Política (UOC). En <a href="https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html" target="_blank" rel="noopener">Ara</a>, mayo de 2024 · traducido del catalán</cite></blockquote>
+    </div></div>
+    <div class="step" data-step="evol"><div class="card">
+      <div class="kicker">2015–2024 · doce elecciones</div>
+      <p>Así ha cambiado la abstención en cada sección en las doce elecciones de los últimos diez años: municipales, Parlament y Congreso. El color y la altura son la abstención entre quienes podían votar.</p>
+      <div class="evo"><button type="button" id="evoplay" aria-label="Pausar">❚❚</button><div class="evotrack" id="evotrack"></div></div>
+      <div class="evolab"><b id="evoname"></b> · <span id="evocat"></span></div>
+      <p>Sube y baja con cada convocatoria: el Parlament de 2017 llevó a votar al 82% del censo de la provincia y el de 2021, en plena pandemia, solo al 55%. Pero el orden casi no cambia: las secciones que menos votan son casi siempre las mismas.</p>
+    </div></div>
+    <div class="step" data-step="explore"><div class="card">
+      <div class="kicker">Tu turno</div>
+      <p>El mapa vuelve a ser plano. Arrástralo para moverlo, usa los botones o el doble clic para acercarte, cambia la variable del color o ve a un municipio, y pasa el cursor (o toca) una sección para ver su ficha.</p>
+    </div></div>
+  </div>
+</section>
+
+<div class="wide">
+<article class="col">
+  <section class="finder" id="tu-calle">
+  <h2>¿Y en tu calle?</h2>
+  <p>Escribe tu calle y el número del portal, y el municipio si hace falta, para ver cuánto se vota en tu sección censal y cómo ha cambiado desde 2015.</p>
+  <div class="fbox"><input id="fq" type="search" autocomplete="off" spellcheck="false" placeholder="Ej.: Migdia 20 Girona" aria-label="Calle, número y municipio" role="combobox" aria-expanded="false" aria-controls="fl" aria-autocomplete="list"><ul id="fl" role="listbox" hidden></ul></div>
+  <div id="fres" aria-live="polite"></div>
+  <p class="note">Callejero del censo electoral del INE, con las calles a 31 de diciembre de 2022. La búsqueda se hace en tu navegador y no se envía a ningún sitio.</p>
+  </section>
+  <h2>Los datos, con calma</h2>
+  <p>El recorrido en 3D resume lo esencial. Aquí están los números completos: los municipios de referencia, cómo cambia la participación con cada variable, qué pesa cuando se miran todas a la vez y las secciones que menos votan.</p>
+  <h2>Dos maneras de no votar</h2>
+  <p>Castelló d'Empúries, Salt, Lloret de Mar y Figueres son los municipios gironinos de más de 10.000 habitantes donde menos adultos votan: entre 29 y 39 de cada 100 empadronados. El primer motivo no es el desinterés: entre el 29% y el 47% de sus adultos son extranjeros sin derecho a voto en unas generales. Pero los que sí pueden votar también votan menos: un 55% en Salt, Castelló y Figueres y un 58% en Lloret, frente al 62% de la provincia. Son dos fenómenos que se suman y que la cifra oficial de participación mezcla, porque solo divide por el censo.</p>
+  <p>En el otro extremo están los 158 pueblos de menos de 2.000 habitantes: solo el 12% de sus adultos no puede votar, y vota el 67% del censo y 60 de cada 100 adultos. La capital y Banyoles quedan en medio, con unos 50 adultos de cada 100 votando.</p>
+  <div class="tbl out"><table id="compare"></table></div>
+  <p class="note" style="margin-top:8px">Participación = votos emitidos / censo electoral residente (CER). Adultos = población de 18 años o más (Atlas de Renta del INE, 1 de enero de 2023). Sin derecho a voto ≈ adultos residentes − censo electoral. Las líneas recorren las generales de 2015, 2016, abril de 2019, noviembre de 2019 y 2023.</p>
+  <p>Hay quien en Salt lo plantea también como un problema de representación: si una parte tan grande de los vecinos no vota ni es votada, los partidos tienen menos motivos para dirigirse a ella.</p>
+  <blockquote class="q"><div class="qt">«Yo veo principalmente que hay un vacío político que se tiene que llenar con personas inmigrantes»</div><cite><b>Salima Abdessamie</b>, vecina de Salt y coordinadora técnica de la Asociación Azahara. En <a href="https://es.ara.cat/sociedad/salt-ano-elecciones-amenaza-auge-extrema-derecha_130_4445601.html" target="_blank" rel="noopener">Ara</a>, julio de 2022</cite></blockquote>
+
+  <h2>Costa e interior</h2>
+  <p>La provincia vota menos cuanto más grande es el municipio. En las generales de 2023, los pueblos de menos de 2.000 habitantes votaron al 67%; las seis ciudades de más de 30.000 (Girona, Figueres, Blanes, Lloret, Olot y Salt), al 60%. Por comarcas, las que más adultos llevan a votar son el Ripollès y el Pla de l'Estany (56 o 57 de cada 100) y la que menos, el Alt Empordà (45), donde el 26% de los adultos no tiene derecho a voto.</p>
+  <p>Es una frontera que la ciencia política ya había señalado en la provincia, con el voto a los partidos más que con la abstención:</p>
+  <blockquote class="q"><div class="qt">«Los municipios grandes de la costa tienen un comportamiento político similar al del área metropolitana de Barcelona»</div><cite><b>Macià Serra</b>, profesor de Ciencia Política (Universitat de Girona). En <a href="https://intranet.colpis.cat/files/revista/101_articulo.pdf" target="_blank" rel="noopener">«El resultats electorals a Girona: diferents, però no tant»</a>, revista del Col·legi de Politòlegs i Sociòlegs de Catalunya, con datos hasta 2018 · traducido del catalán</cite></blockquote>
+  <div id="sizehist"></div>
+
+  <h2>Qué separa una sección que vota de una que no</h2>
+  <p>Ordenando las 536 secciones de la provincia en cinco grupos iguales según cada variable, la pauta es la misma que en toda Cataluña: donde hay menos renta, menos estudios superiores, más paro, más extranjeros o población más joven, se vota menos. El 20% de secciones con menos renta votó al 56%; el 20% con más, al 68%. La barra completa (con el número encima) es la participación entre quienes pueden votar; su parte oscura, qué parte de todos los adultos residentes votó.</p>
+  <div class="small-multiples" id="sm"></div>
+
+  <h2>Lo que pesa cuando se mira todo a la vez</h2>
+  <p>Estas variables van juntas: las secciones pobres también tienen menos universitarios, más paro y más extranjeros. Un modelo que las considera a la vez (regresión ponderada por censo, 530 secciones) explica <span class="num" id="r2">67%</span> de las diferencias de participación entre secciones. Cada barra indica cuántos puntos cambia la participación cuando la variable sube una desviación típica y las demás no cambian.</p>
+  <div id="coef"></div>
+  <p class="callout">Lo que más pesa es la educación, seguida del paro y de la edad. La renta, que por sí sola es lo que más se parece al mapa de la abstención, deja de añadir información cuando se tienen en cuenta los estudios y el empleo. El modelo describe asociaciones entre secciones, no causas.</p>
+  <p>Es lo que la ciencia política lleva décadas describiendo. En un artículo de 1995 que sigue siendo la referencia, Henry Brady, Sidney Verba y Kay Lehman Schlozman explicaron la participación con tres recursos: tiempo, dinero y habilidades cívicas, es decir, saber informarse, expresarse y organizarse. Así resumían por qué hay quien no participa:</p>
+  <blockquote class="q"><div class="qt">«Porque no pueden, porque no quieren o porque nadie se lo ha pedido»</div><cite><b>Henry E. Brady, Sidney Verba y Kay L. Schlozman</b>, politólogos (Berkeley, Harvard y Boston College). En <a href="https://www.jstor.org/stable/2082425" target="_blank" rel="noopener">«Beyond SES: A Resource Model of Political Participation»</a>, American Political Science Review, 1995 · traducido del inglés</cite></blockquote>
+  <p>Una advertencia necesaria: son datos por sección, no por persona. Dicen dónde se vota menos, no que cada extranjero nacionalizado o cada parado vote menos. Para afirmar eso hacen falta encuestas individuales.</p>
+
+  <h2>2023: la otra abstención</h2>
+  <p>Hay una segunda abstención, coyuntural, que no sigue la renta sino el voto. Entre noviembre de 2019 y julio de 2023 la participación cayó 8,3 puntos en la provincia de Girona, más que en Barcelona (6,7), Lleida (7,7) o Tarragona (4,9). Y cayó mucho más donde el independentismo era más fuerte. En el cuarto de secciones con más voto a ERC, Junts y la CUP en 2019, la participación bajó <span class="num" id="d-hi">11,2</span> puntos; en el cuarto con menos, <span class="num" id="d-lo">6,1</span>.</p>
+  <blockquote class="q"><div class="qt">«Los independentistas se han abstenido más y han fragmentado más su voto»</div><cite><b>Pau Torres</b>, politólogo e investigador (UPF). En <a href="https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html" target="_blank" rel="noopener">Ara</a>, mayo de 2024, sobre el Parlament del 12 de mayo · traducido del catalán</cite></blockquote>
+  <div id="indep"></div>
+  <p>Así, las comarcas del interior, que siguen votando más que la costa, perdieron más participación: la Garrotxa pasó del 74% al 61% y quedó prácticamente igual que el Alt Empordà (61%), cuando en 2019 les separaban siete puntos.</p>
+
+  <h2>Diez años, doce elecciones</h2>
+  <p>Entre 2015 y 2024 los gironinos votaron doce veces en elecciones municipales, al Parlament y al Congreso. La participación fue del 82% en el Parlament de 2017, el del 1 de octubre y el 155, y del 55% en el de 2021, en plena pandemia. En las doce, las secciones más pobres votaron menos que las más ricas, y la distancia ha crecido: en el Parlament pasó de 15 puntos en 2015 a 22 en 2021 y 20 en 2024.</p>
+  <div id="evoq"></div>
+  <p class="note" style="margin-top:8px">Secciones agrupadas en cinco grupos iguales por renta. Las líneas gruesas son el 20% más pobre y el 20% más rico; las finas, los tres grupos intermedios. Abajo, la distancia en puntos entre los dos extremos.</p>
+  <p>Del Parlament de 2015 al de 2024 la participación bajó en todas las secciones de la provincia: una caída mediana de 23 puntos en el quinto más pobre y de 18 en el más rico. Del Parlament de 2021 al de 2024 subió en siete de cada diez secciones, y más en las pobres (una subida mediana de 3 puntos) que en las ricas, que se quedaron igual. No les bastó para volver a 2015.</p>
+
+  <h2>Cuanto más cerca, menos se vota</h2>
+  <p>Las elecciones municipales y las del Parlament, las más cercanas, son las que menos participación tienen: un 54% y un 57% del censo frente al 62% del Congreso. Y la distancia entre secciones ricas y pobres no se reduce, crece. En el Congreso, el decil de secciones más ricas votó 16 puntos más que el más pobre; en las municipales, 18; en el Parlament, 24.</p>
+  <div id="deciles"></div>
+  <p>En las municipales también votan los ciudadanos de la UE y de los países con convenio inscritos en el censo, unos 12.700 en la provincia, el 2,4% del censo municipal. Eso baja los adultos sin derecho a voto del 21% al 19%. En Salt, donde la mayoría de los extranjeros no son europeos, solo bajan del 39% al 36%.</p>
+  <p>Podrían ser muchos más. El informe del CIEMEN (<a href="https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf" target="_blank" rel="noopener">«El dret de vot de les persones immigrades a Catalunya», 2026</a>) calcula, con el censo de población de 2025, que en Castelló d'Empúries los europeos son el 24,6% de quienes podrían votar en sus municipales, y que en Lloret los extranjeros con ese derecho son el 16,9%. Para votar tienen que inscribirse antes en el censo electoral, y el informe señala que muchos no lo hacen.</p>
+
+  <h2>Las secciones que menos votan</h2>
+  <p>Las dos secciones con menos participación de la provincia, una en Figueres (22%) y otra en Girona (33%), no son las que tienen más extranjeros: tienen un 18% y un 12%, y paros del 59% y el 65%, rentas por debajo de 10.000 euros por unidad de consumo y un 2-3% de adultos con estudios superiores. Varias de las que vienen detrás, en Salt, Figueres, Roses y Castelló d'Empúries, son otra cosa: allí cerca de la mitad de los adultos, o más, no pueden votar.</p>
+  <div class="tbl out"><table id="low"></table></div>
+  <p class="note" style="margin-top:8px">Secciones con más de 300 electores.</p>
+  <p>Los investigadores describen un círculo que tiende a perpetuar la abstención: los partidos hacen campaña donde están los votos, y donde se vota poco se hace menos campaña.</p>
+  <blockquote class="q"><div class="qt">«Es un pez que se muerde la cola: como no votan, los políticos no se interesan por ellos, ellos no se sienten escuchados y vuelven a abstenerse en las siguientes elecciones»</div><cite><b>Manuel Trujillo</b>, investigador del IESA-CSIC. En <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a>, abril de 2019</cite></blockquote>
+  <p>Y no es solo un problema de esos barrios. Si unas secciones votan al 75% y otras al 33%, como pasa dentro de la ciudad de Girona, las primeras pesan más del doble a la hora de elegir a quien gobierna.</p>
+  <blockquote class="q"><div class="qt">«Una participación desigual significa una influencia política desigual»</div><cite><b>Arend Lijphart</b>, politólogo (Universidad de California en San Diego). En <a href="https://cambridge.org/core/journals/american-political-science-review/article/abs/unequal-participation-democracys-unresolved-dilemma-presidential-address-american-political-science-association-1996/FB743AB4AEBB70C9363A9F8B898A17BC" target="_blank" rel="noopener">«Unequal Participation: Democracy’s Unresolved Dilemma»</a>, American Political Science Review, 1997 · traducido del inglés</cite></blockquote>
+
+  <section id="faq">
+  <h2>Preguntas frecuentes</h2>
+  <h3>¿Cuántos adultos no votaron en la provincia de Girona en las generales de 2023?</h3>
+  <p>De cada 100 adultos que vivían en la provincia el 23 de julio de 2023, 30 podían votar y no lo hicieron y otros 21 no tenían derecho a voto por no tener la nacionalidad española; votaron 49, la cifra más baja de las cuatro provincias catalanas.</p>
+  <h3>¿Dónde se vota menos en la provincia de Girona?</h3>
+  <p>Salt tiene la participación más baja de los 221 municipios (54,9% en el Congreso de 2023), y Castelló d'Empúries, la menor proporción de adultos que votan entre los de más de 10.000 habitantes: 29 de cada 100. La sección que menos vota está en Figueres, con un 22%.</p>
+  <h3>¿Por qué votan tan pocos adultos en Castelló d'Empúries, Salt y Lloret?</h3>
+  <p>Porque se suman dos cosas: muchos adultos sin derecho a voto (47 de cada 100 en Castelló, 39 en Salt y 38 en Lloret) y una participación baja entre quienes sí pueden votar, de entre el 55% y el 58%.</p>
+  <h3>¿Votan menos los barrios pobres de Girona?</h3>
+  <p>Sí: el 10% de secciones más ricas de la provincia votó 16 puntos más que el 10% más pobre en el Congreso de 2023, 18 puntos más en las municipales de 2023 y 24 más en el Parlament de 2024. Dentro de la ciudad de Girona, la participación va del 33% al 75% según la sección.</p>
+  <h3>¿Por qué bajó tanto la participación en Girona en las generales de 2023?</h3>
+  <p>Cayó 8,3 puntos respecto a noviembre de 2019, más que en las otras tres provincias, y sobre todo donde el independentismo era fuerte: 11 puntos en el cuarto de secciones más independentista frente a 6 en el menos.</p>
+  <h3>¿Pueden votar los extranjeros en Girona?</h3>
+  <p>Solo en las municipales, y solo los ciudadanos de la UE y de países con convenio inscritos en el censo; en 2023 había unos 12.700 en la provincia, lo que reduce los adultos sin derecho a voto del 21% al 19%.</p>
+  </section>
+
+  <h2>Método y fuentes</h2>
+  <ul class="method">
+    <li><b>Resultados:</b> elecciones al Congreso de 2015, 2016, abril y noviembre de 2019 y julio de 2023, por mesa, agregadas a sección censal. Microdatos del Ministerio del Interior, en la versión procesada del paquete <a href="https://github.com/dadosdelaplace/pollspain" target="_blank" rel="noopener">pollspain</a>. Se excluye el voto de residentes en el extranjero (CERA). Son los mismos datos que la <a href="abstencion.html">pieza de toda Cataluña</a>, limitados a las 536 secciones con código de provincia 17.</li>
+    <li><b>Renta, edad y nacionalidad:</b> Atlas de Distribución de Renta de los Hogares del INE, datos de 2023 por sección, vía <a href="https://github.com/pablogguz/ineAtlas.data" target="_blank" rel="noopener">ineAtlas.data</a>.</li>
+    <li><b>Estudios, paro, vivienda y nacidos en el extranjero:</b> Censo de Población y Viviendas 2021 del INE por sección.</li>
+    <li><b>Municipales, Parlament y doce elecciones (2015–2024):</b> participación por sección censal del Departament de Polítiques Digitals, vía <a href="https://analisi.transparenciacatalunya.cat" target="_blank" rel="noopener">Transparència Catalunya</a> (dataset irrv-2mfc), sin residentes en el extranjero. Los extranjeros inscritos en el censo municipal se estiman como censo de las municipales de mayo de 2023 menos censo del Congreso de julio.</li>
+    <li><b>Comarcas:</b> municipios de cada comarca según <a href="https://www.idescat.cat/emex/" target="_blank" rel="noopener">Idescat</a>. Osona, con tres municipios gironinos y 1.600 habitantes, no se comenta.</li>
+    <li><b>Citas:</b> declaraciones publicadas en <a href="https://es.ara.cat/sociedad/salt-ano-elecciones-amenaza-auge-extrema-derecha_130_4445601.html" target="_blank" rel="noopener">Ara</a> (Aliou Diallo, 26 de julio de 2022), <a href="https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html" target="_blank" rel="noopener">elDiario.es</a> (Raúl Sánchez, 7 de abril de 2019), <a href="https://www.eldiario.es/politica/pobres-votan-municipales-excepto-elegir-alcalde-pueblo-participacion-elecciones-abstencion_1_10177968.html" target="_blank" rel="noopener">elDiario.es</a> (Victòria Oliveres, 16 de mayo de 2023) y <a href="https://www.ara.cat/politica/independentistes-no-voler-votar-12-m_1_5031393.html" target="_blank" rel="noopener">Ara</a> (Roger Palós y Xavi Tedó, 21 de mayo de 2024). Las de Ara de 2024, el CIEMEN y Macià Serra están traducidas del catalán. Los expertos hablan de la abstención en general, no de estos datos.</li>
+    <li><b>Estudios:</b> H. E. Brady, S. Verba y K. L. Schlozman, <a href="https://www.jstor.org/stable/2082425" target="_blank" rel="noopener">«Beyond SES: A Resource Model of Political Participation»</a>, <i>American Political Science Review</i> 89(2), 1995. A. Lijphart, <a href="https://cambridge.org/core/journals/american-political-science-review/article/abs/unequal-participation-democracys-unresolved-dilemma-presidential-address-american-political-science-association-1996/FB743AB4AEBB70C9363A9F8B898A17BC" target="_blank" rel="noopener">«Unequal Participation: Democracy’s Unresolved Dilemma»</a>, <i>American Political Science Review</i> 91(1), 1997. M. Serra, <a href="https://intranet.colpis.cat/files/revista/101_articulo.pdf" target="_blank" rel="noopener">«El resultats electorals a Girona: diferents, però no tant»</a>, revista del Colpis. G. Pinyol-Jiménez (coord.), <a href="https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf" target="_blank" rel="noopener">«El dret de vot de les persones immigrades a Catalunya»</a>, CIEMEN, 2026. Las citas en inglés están traducidas.</li>
+    <li><b>Buscador:</b> callejero del censo electoral del INE de enero de 2023 (calles a 31 de diciembre de 2022), con las mismas secciones que el mapa.</li>
+    <li><b>Fotos:</b> <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>, con licencias libres. El autor y la licencia de cada una aparecen al pie de la imagen y enlazan a su ficha.</li>
+    <li><b>Limitaciones:</b> la población adulta se estima con el % de menores de 18 del Atlas; el censo electoral de julio y la población de enero no son exactamente la misma foto; los extranjeros inscritos en el censo municipal son una diferencia entre dos censos y son aproximados en los municipios pequeños; las cifras del CIEMEN son de 2025 y cuentan a los mayores de 16 años, así que no se pueden restar directamente de las del censo de 2023.</li>
+  </ul>
+  <h2 id="sobre-la-pieza">Sobre esta pieza</h2>
+  <ul class="method">
+    <li><b>Publicada:</b> 13 de octubre de 2026.</li>
+    <li><b>Qué se compara:</b> en cada una de las 536 secciones censales de la provincia de Girona de 2023, cuántos adultos residentes votaron, cuántos no tenían derecho a voto y cuántos pudieron votar y no lo hicieron en el Congreso del 23 de julio de 2023, junto con la renta, la edad y la nacionalidad (Atlas de Renta del INE, 2023) y los estudios, el paro y la vivienda (Censo 2021). La evolución compara doce elecciones, de 2015 a 2024, sobre esas mismas secciones.</li>
+    <li><b>Límites:</b> son datos agregados por sección, no por persona. Las relaciones que se describen son asociaciones: el modelo estadístico dice qué va junto, no qué causa qué. «Sin derecho a voto» es una estimación (adultos residentes menos censo electoral), no un recuento de extranjeros. Las explicaciones de la falta de arraigo en Salt y del desgaste independentista son de las personas citadas, no conclusiones de estos datos. Detalle en la <a href="metodologia.html">metodología completa</a>.</li>
+    <li><b>Autoría y revisión:</b> datos, texto y gráficos de Nacho G. del Álamo, que también revisa los datos y el texto antes de publicar. Cada cifra del texto sale de <code>src/girona/datos.py</code>, que la recalcula a partir de los datos publicados.</li>
+    <li><b>Correcciones:</b> ninguna por ahora.</li>
+  </ul>
+  <p class="note">Datos: <a href="data/girona_secciones_2023.csv" download>secciones de la provincia (CSV)</a>, <a href="data/girona_municipios.csv" download>municipios (CSV)</a>, <a href="data/girona_secciones_2023.geojson" download>contornos (GeoJSON)</a> y <a href="data/evolucion_secciones.csv" download>participación 2015–2024 por sección, toda Cataluña (CSV)</a>. Licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener license">CC BY 4.0</a>. Columnas, fuentes y cálculos en la <a href="metodologia.html">página de metodología</a>.</p>
+  <footer class="note">Análisis por sección censal. Elaboración propia con datos del Ministerio del Interior, la Generalitat y el INE.</footer>
+</article>
+</div>
