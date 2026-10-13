@@ -638,6 +638,10 @@ def main():
             t = re.sub(r'<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', lambda m: '<!--atlas:ultimas-->' + franja + '<!--/atlas:ultimas-->', t, flags=re.S)
             f.write_text(t, encoding='utf-8')
     print(len(paginas), 'páginas;', sum(1 for q in TODAS if q['revisado']), 'de', len(TODAS), 'piezas revisadas')
+    # autor común, Dataset y migas de pan en todas las páginas del sitio (src/esquema.py)
+    sys.path.insert(0, str(ROOT / 'src'))
+    import esquema
+    esquema.main()
 
 
 TODAS = []

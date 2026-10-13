@@ -619,6 +619,9 @@ def main():
     (ROOT / 'sitemap_index.xml').write_text(sitemap_index(), encoding='utf-8')
     (ROOT / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
     print('seo: abstencion.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
+    # autor común, Dataset y migas de pan en todas las páginas del sitio
+    import esquema
+    esquema.main()
 
 
 main()
