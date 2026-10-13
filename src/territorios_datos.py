@@ -76,10 +76,11 @@ def serie(df):
     return {y: resultado(df, y) for y in GENERALES}
 
 
-def por_renta(sec, partes=5):
-    """Secciones ordenadas por renta y agrupadas en `partes` grupos con el mismo censo (quintiles por defecto)."""
+def por_renta(sec, partes=5, minimo=8):
+    """Secciones ordenadas por renta y agrupadas en `partes` grupos con el mismo censo (quintiles por defecto).
+    Sin resultado si no hay al menos `minimo` secciones por grupo."""
     s = sec[sec.renta_uc.notna() & (sec.censo > 0)].sort_values('renta_uc').copy()
-    if len(s) < partes * 8:
+    if len(s) < partes * minimo:
         return None
     acum = s.censo.cumsum() / s.censo.sum()
     s['q'] = (acum * partes).clip(upper=partes - 1e-9).astype(int)
