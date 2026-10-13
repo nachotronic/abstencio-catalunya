@@ -411,6 +411,7 @@ AB = {
                    ('metodologia-ca.html', 'Metodologia i dades obertes de la peça', 'Octubre del 2026')]),
 }
 ALT_A = [('es', BASE + 'sobre-mi.html'), ('ca', BASE + 'sobre-mi-ca.html'), ('x-default', BASE + 'sobre-mi.html')]
+ALT_G = [('es', BASE + 'girona.html'), ('ca', BASE + 'girona-ca.html'), ('x-default', BASE + 'girona.html')]
 
 
 def about(L):
@@ -520,6 +521,7 @@ Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat
 - [Mapa de resultados de España (portada)]({BASE}): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt]({BASE}generales-2026/llms.txt)
 - [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt]({BASE}atlas/llms.txt)
 - [¿Quién no vota en Cataluña?]({BASE}abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán]({BASE}ca.html).
+- [Girona, la provincia catalana donde menos adultos votan]({BASE}girona.html): las 536 secciones censales de la provincia de Girona, con quién no puede votar (sin nacionalidad española) y quién, pudiendo, no votó; en castellano y [catalán]({BASE}girona-ca.html).
 - [Sobre el autor]({BASE}sobre-mi.html)
 
 {secciones}
@@ -540,8 +542,8 @@ def sitemap_index():
 
 
 def sitemap():
-    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5')]
-    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
+    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5'), ('girona.html', '0.9'), ('girona-ca.html', '0.9')]
+    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A, 'girona.html': ALT_G, 'girona-ca.html': ALT_G}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for p, pr in pages:

@@ -16,6 +16,14 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 - `data/`: datos limpios por sección y municipio (CSV y GeoJSON).
 - `src/`: scripts en Python y plantillas con los que se han generado los datos y las páginas.
 
+## Girona, sección a sección
+
+`girona.html` y `girona-ca.html`: la misma pieza que la de Cataluña (recorrido 3D, mapa final en 2D, buscador de calle) para las 536 secciones de la provincia de Girona. Se generan a partir de `abstencion.html`, así que hay que volver a ejecutarlos si cambia la plantilla de la pieza de Cataluña:
+
+1. `python3 src/girona/datos.py` calcula las cifras del texto y las guarda en `src/girona/resumen.json` (lee los ficheros de transparencia y de secciones 2019-2024 de la carpeta del proyecto).
+2. `python3 src/girona/construir.py es` y `python3 src/girona/construir.py ca` escriben las dos páginas. El texto está en `src/girona/es_body.html` y `ca_body.html` (cualquier cambio, en los dos); las fotos de Commons, con autor y licencia, en `src/girona/fotos.json`; la comarca de cada municipio, en `src/girona/comarcas.json`.
+3. `python3 src/seo.py` para el sitemap y `llms.txt`.
+
 ## Generales del 29N
 
 `generales-2026/`: mapa de las elecciones generales por municipio y sección censal en toda España (Congreso 2004–2023, con municipales y europeas) cruzado con renta, pobreza, edad y población extranjera, con modo en directo para la noche electoral. Ver `generales-2026/README.md`.

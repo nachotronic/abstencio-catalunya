@@ -9,6 +9,7 @@ Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat
 - [Mapa de resultados de España (portada)](https://mapaelectoral.es/): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt](https://mapaelectoral.es/generales-2026/llms.txt)
 - [Atlas de las anomalías electorales](https://mapaelectoral.es/atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt](https://mapaelectoral.es/atlas/llms.txt)
 - [¿Quién no vota en Cataluña?](https://mapaelectoral.es/abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán](https://mapaelectoral.es/ca.html).
+- [Girona, la provincia catalana donde menos adultos votan](https://mapaelectoral.es/girona.html): las 536 secciones censales de la provincia de Girona, con quién no puede votar (sin nacionalidad española) y quién, pudiendo, no votó; en castellano y [catalán](https://mapaelectoral.es/girona-ca.html).
 - [Sobre el autor](https://mapaelectoral.es/sobre-mi.html)
 
 ## El mapa de las generales: cómo vota cada barrio de España
