@@ -55,13 +55,27 @@ _REGLAS = [
     ('VOX', r"^VOX$"),
     ('CS', r"^(C'S|C´S|CS)$|-CS$"),
     ('UPYD', r"^UPYD$"),
-    ('SUMAR', r"^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^IU\b|^IULV|^UNIDA|^IU-|^EUPV-UPEC|^PCE$|^PCE-|^PCA-PCE|^PSUC|^IC-EV$|^IC-?V\b|^ICV\b|^EUIA$|^EU-PV$|^EUPV$"),
+    ('SUMAR', r"^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^UNIDAS\b|^IU\b|^IULV|^IU-|^EUPV-UPEC|^PCE$|^PCE-|^PCA-PCE|^PSUC|^IC-EV$|^IC-?V\b|^ICV\b|^EUIA$|^EU-PV$|^EUPV$"),
     ('ERC', r"^ERC|^ESQUERRA$"),
-    ('JUNTS', r"^(DL|CDC|CIU)$|^JXCAT|^JUNTS|[- ]JUNTS$|^CM$|-CM$"),
+    ('JUNTS', r"^JXCAT|^JUNTS|[- ]JUNTS$"),
     ('PNV', r"EAJ-PNV|^E\.A\.J\.-P\.N\.V\.|^PNV"),
     ('BILDU', r"^EH ?BILDU|^BILDU|^AMAIUR$|^HB$|^H\.B\.$|^EH$"),
     ('BNG', r"^B\.?N\.?G\.?$|^BNG|^NÓS$|^BN-?PG$"),
-    ('CC', r"^CCA|^CC-(?!UCD|AP)|^NC-CCA|^CC$"),
+]
+
+# Siglas que muchas listas locales comparten con un partido grande (CC: Candidatura Comunista, Colectivo
+# Ciudadano...; CM: Cambiemos Murcia, Los Verdes-Comunidad de Madrid...; C.D.C.: Ciudadanos del Condado...).
+# Solo cuentan para la familia si el nombre lo confirma (o si no hay nombre).
+_AMBIGUAS = [
+    ('JUNTS', r"^CDC$", r"CONVERG|^CDC$"),
+    ('JUNTS', r"^(DL|CIU)$|^CM$|-CM$",
+     r"CONV[EÈÉ]RG[EÈÉ]NCIA [IY] UNI|DEMOCR[AÀ]CIA I LLIBERTAT|JUNTS|COMPROM[IÍ]S MUNICIPAL|PARTIT DEM[OÒ]CRATA|PDECAT"),
+    ('CC', r"^CCA|^CC-(?!UCD|AP)|^NC-CCA|^CC$",
+     r"COALICI[OÓ]N CANARIA|NACIONALISTA CANARI|INDEPENDIENTES DE CANARIAS"),
+    ('PP', r"^PP\b|^PP-|^P\.P\.",
+     r"PARTIDO POPULAR|PARTIT POPULAR|PUPULAR|\bPP\b"),
+    ('SUMAR', r"^IU$",
+     r"IZQUIERDA|ESQUERRA|ESQUERDA|EZKER|IU\b|I\.U\.|UNIDA"),
 ]
 
 
@@ -77,7 +91,7 @@ _NOMBRES = [
     ('SUMAR', r"PODEM|EN COM[UÚ]N?\b|AHORA MADRID|MAREA ATL[AÁ]NTICA|M[AÁ]LAGA AHORA|COMPROM[IÍÌ]S\b(?! MUNICIPAL)|M[AÁ]S MADRID|M[AÁ]S PA[IÍ]S"),
     ('PP', r"UNI[OÓ]N DEL PUEBLO NAVARRO|ALIANZA POPULAR|^COALICI[OÓ]N POPULAR|^COALICI[OÓ]N DEMOCR[AÁ]TICA$|CONVIVENCIA CATALANA"),
     ('UCD', r"UNI[OÓ]N DE CENTRO DEMOCR[AÁ]TICO|UNI[OÓ] DE CENTRE DEMOCR|CENTRISTES DE CATALUNYA"),
-    ('CDS', r"CENTRO DEMOCR[AÁ]TICO Y SOCIAL|^COALICION FORO Y CDS"),
+    ('CDS', r"CENTRO DEMOCR[AÁ]TICO Y SOCIAL|CENTRO DEMOCRAT\. Y SOCIAL|^COALICION FORO Y CDS"),
     ('CC', r"^COALICI[OÓ]N CANARIA"),
     ('JUNTS', r"PACTE DEMOCR[AÀ]TIC PER CATALUNYA"),
     ('ERC', r"ESQUERRA DE CATALU(NY|Ñ)A"),
@@ -90,15 +104,28 @@ _NOMBRES = [
 _NO_ES = re.compile(r"CONSERVADORS DE CATALUNYA|INDEPENDENTISTAK ETA EZKERTIARRAK|CIUDADANA VASCA|CONVERGENCIA CANARIA|HIST[OÓ]RICO|MARXISTA-LENINISTA|\(M-L\)|\(I\)$")
 
 
+def _por_siglas(x: str, n: str):
+    no = set()
+    for cod, pat, conf in _AMBIGUAS:
+        if re.search(pat, x):
+            if not n or re.search(conf, n):
+                return cod
+            no.add(cod)
+    for cod, pat in _REGLAS:
+        if cod not in no and re.search(pat, x):
+            return cod
+    return None
+
+
 def familia(abrev: str, nombre: str = '') -> str:
     a = (abrev if isinstance(abrev, str) else '').strip().upper()
     n = (nombre if isinstance(nombre, str) else '').upper()
     if _NO_ES.search(n):
         return 'OTROS'
     for x in (a, a.replace('.', '')):
-        for cod, pat in _REGLAS:
-            if re.search(pat, x):
-                return cod
+        cod = _por_siglas(x, n)
+        if cod:
+            return cod
     for cod, pat in _NOMBRES:
         if re.search(pat, n):
             return cod
