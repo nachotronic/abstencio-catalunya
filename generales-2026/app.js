@@ -30,8 +30,15 @@
   // en el móvil, debajo de Almería y Murcia. Se decide al cargar la página.
   const ESTRECHO = window.innerWidth < 760;
   const CAN = ESTRECHO ? [11.16, -0.74] : [13.16, 1.46], esCan = c => /^3[58]/.test(String(c));
-  const aCan = rings => rings.forEach(o => { o.polygon.forEach(q => { q[0] += CAN[0]; q[1] += CAN[1]; }); });
-  MUN.c.forEach((q, i) => { if (q && esCan(MUN.cod[i])) MUN.c[i] = [q[0] + CAN[0], q[1] + CAN[1]]; });
+  // El traslado se hace en Mercator y en teselas enteras de zoom 10 (no en grados), para que el callejero de las islas
+  // se pueda poner encima del recuadro desplazando las teselas: la forma de las islas es la real.
+  const [CDX, CDY] = META.canarias, T10 = 1024;
+  const mY = lat => (1 - Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)) / Math.PI) / 2;
+  const mLat = t => Math.atan(Math.sinh(Math.PI * (1 - 2 * t))) * 180 / Math.PI;
+  const CANT = [Math.round((CDX + CAN[0]) / 360 * T10), Math.round((mY(28.3 + CDY + CAN[1]) - mY(28.3)) * T10)];
+  const canT = q => { const t = mY(q[1] - CDY) + CANT[1] / T10; q[0] = q[0] - CDX + CANT[0] * 360 / T10; q[1] = mLat(t); return q; };
+  const aCan = rings => rings.forEach(o => { o.polygon.forEach(canT); });
+  MUN.c.forEach((q, i) => { if (q && esCan(MUN.cod[i])) MUN.c[i] = canT([q[0], q[1]]); });
   const MUNP = decode(MUN);
   aCan(MUNP.filter(o => esCan(MUN.cod[o.i])));
   const PROVP = decode(PROV);
@@ -121,13 +128,112 @@
   let view = HOME();
   const LABELS = ['28079', '08019', '46250', '41091', '50297', '29067', '48020', '07040', '35016', '15030'];
   const lab = LABELS.map(c => { const i = MUN.cod.indexOf(c); return i < 0 ? null : { t: MUN.nombre[i], p: MUN.c[i] }; }).filter(Boolean);
-  const [dx, dy] = META.canarias;
-  const [x0, x1, y0, y1] = [-18.4 + dx + CAN[0], -13.2 + dx + CAN[0], 27.4 + dy + CAN[1], 29.6 + dy + CAN[1]];
+  const [[x0, y0], [x1, y1]] = [canT([-18.4 + CDX, 27.4 + CDY]), canT([-13.2 + CDX, 29.6 + CDY])];
   const CANFRAME = [{ path: [[x0, y0], [x0, y1], [x1, y1], [x1, y0], [x0, y0]] }];
   let hover = null;
 
   function secVisible() { return view.zoom >= 7.3; }
   function secHas(p) { return SEC[p] && SEC[p].d[st.y + '_part']; }
+
+  // ---------- callejero: calles, nombres de calles y de barrios encima de las secciones al acercarse (OpenFreeMap,
+  // teselas vectoriales con datos de OpenStreetMap, sin clave). Se puede quitar con el botón «Quitar calles».
+  const CALLE_Z = 12;
+  let calles = true;
+  try { calles = localStorage.getItem('mapa-calles') !== 'no'; } catch (e) { /* sin almacenamiento: activado */ }
+  const conCalles = () => calles && view.zoom >= CALLE_Z;
+  // plantilla de las teselas: la da el TileJSON de OpenFreeMap, que cambia de versión cada semana. Si falla, sin calles.
+  let OFM;
+  const pideOFM = () => {
+    if (OFM === undefined) OFM = fetch('https://tiles.openfreemap.org/planet').then(r => r.json()).then(j => j.tiles[0])
+      .catch(() => false).then(u => { OFM = u; redraw(); });
+    return OFM;
+  };
+  const enRecuadro = ([[w, s], [e, n]]) => !(e < x0 || w > x1 || n < y0 || s > y1);
+  // [grosor en px, zoom de tesela desde el que se dibuja, zoom del mapa desde el que se rotula, prioridad del rótulo]
+  const VIA = { motorway: [2.6, 12, 13, 40], trunk: [2.6, 12, 13, 40], primary: [2.4, 12, 13, 30], secondary: [1.8, 12, 13.5, 20],
+    tertiary: [1.5, 13, 14, 15], minor: [1, 14, 15, 5], pedestrian: [.8, 14, 15.5, 2] };
+  // nombres de lugar: prioridad (los barrios por encima de las calles)
+  const BARRIO = { suburb: 120, quarter: 110, neighbourhood: 100, town: 130, village: 125, hamlet: 90 };
+  // De cada tesela se queda lo que se pinta: las vías, y como puntos los nombres de barrios y calles (en el centro de
+  // la calle y girados como ella). Coordenadas locales de la tesela, con la y hacia abajo.
+  function prepara(F, z) {
+    const out = [];
+    for (const f of F || []) {
+      const P = f.properties, g = f.geometry, ln = P.layerName;
+      if (ln === 'transportation') {
+        const v = VIA[P.class]; if (v && z >= v[1] && P.brunnel !== 'tunnel') { P.w = v[0]; out.push(f); }
+      } else if (ln === 'place') {
+        if (P.name && P.class in BARRIO && g.type === 'Point') out.push({ type: 'Feature', geometry: g, properties: { t: P.name, s: 13, p: BARRIO[P.class], z: 0 } });
+      } else if (ln === 'transportation_name' && z >= 13 && P.name && VIA[P.class]) {
+        const c = g.type === 'MultiLineString' ? g.coordinates.reduce((a, b) => b.length > a.length ? b : a, []) : g.coordinates;
+        if (!c || c.length < 2) continue;
+        const k = Math.max(0, Math.floor(c.length / 2) - 1), [ax, ay] = c[k], [bx, by] = c[k + 1];
+        let a = -Math.atan2(by - ay, bx - ax) * 180 / Math.PI; if (a > 90) a -= 180; if (a < -90) a += 180;
+        out.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [(ax + bx) / 2, (ay + by) / 2] }, properties: { t: P.name, s: 11, a, p: VIA[P.class][3], z: VIA[P.class][2] } });
+      }
+    }
+    return out;
+  }
+  class Calles extends deck.MVTLayer {
+    getTileData(t) {
+      // en Canarias se piden las teselas de las islas y se pintan en el recuadro, desplazadas como él
+      const k = this.props.canarias ? 2 ** (t.index.z - 10) : 0;
+      const index = { ...t.index, x: t.index.x - CANT[0] * k, y: t.index.y - CANT[1] * k };
+      return super.getTileData({ ...t, index }).then(F => {
+        const out = prepara(F, t.index.z), { x, y, z } = t.index, n = 2 ** z;
+        // los rótulos van aparte, en grados y en la posición en la que se pinta la tesela (ver rotulos())
+        // (los de la península no entran en el recuadro de Canarias, y los de Canarias solo van dentro de él)
+        const dentro = ([lo, la]) => lo >= x0 && lo <= x1 && la >= y0 && la <= y1;
+        ROT.set(this.id + z + '/' + x + '/' + y, { z, r: out.filter(f => f.geometry.type === 'Point').map(f => {
+          const [lx, ly] = f.geometry.coordinates;
+          return { ...f.properties, pos: [(x + lx) / n * 360 - 180, mLat((y + ly) / n)] };
+        }).filter(r => dentro(r.pos) === !!this.props.canarias) });
+        if (ROT.size > 400) ROT.delete(ROT.keys().next().value);
+        pideRedraw();
+        return out.filter(f => f.geometry.type !== 'Point');
+      });
+    }
+  }
+  Calles.layerName = 'Calles';
+  Calles.defaultProps = { canarias: false };
+  // Rótulos de las teselas cargadas (clave: capa + tesela). Se colocan todos juntos en cada fotograma, de más a menos
+  // importante y sin que se pisen (los barrios primero, luego avenidas y calles), en una sola capa de texto.
+  const ROT = new Map();
+  let pendiente = false;
+  const pideRedraw = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(() => { pendiente = false; redraw(); }); } };
+  function rotulos() {
+    const vp = dk.getViewports()[0]; if (!vp) return [];
+    const zt = Math.max(12, Math.min(14, Math.round(view.zoom))), W = vp.width, H = vp.height;
+    let cand = [];
+    for (const { z, r } of ROT.values()) if (z === zt) cand = cand.concat(r);
+    cand = cand.filter(r => view.zoom >= r.z).sort((a, b) => b.p - a.p);
+    const cajas = [], vistos = new Set(), out = [];
+    for (const r of cand) {
+      const [sx, sy] = vp.project(r.pos);
+      if (sx < 0 || sy < 0 || sx > W || sy > H) continue;
+      const k = r.t + Math.round(sx / 40) + ',' + Math.round(sy / 40); if (vistos.has(k)) continue;
+      const w = r.t.length * r.s * .56 + 8, h = r.s + 6, a = (r.a || 0) * Math.PI / 180;
+      const bw = (Math.abs(w * Math.cos(a)) + Math.abs(h * Math.sin(a))) / 2, bh = (Math.abs(w * Math.sin(a)) + Math.abs(h * Math.cos(a))) / 2;
+      const c = [sx - bw, sy - bh, sx + bw, sy + bh];
+      if (cajas.some(o => c[0] < o[2] && c[2] > o[0] && c[1] < o[3] && c[3] > o[1])) continue;
+      cajas.push(c); vistos.add(k); out.push(r);
+    }
+    return out;
+  }
+  function callejero(url) {
+    const linea = isDark() ? [20, 20, 20, 150] : [255, 255, 255, 190];
+    const sub = p => p.data && enRecuadro(p.tile.boundingBox) === !!p.canarias ? new deck.GeoJsonLayer({ ...p, pickable: false,
+      filled: false, stroked: true, getLineColor: linea, getLineWidth: f => f.properties.w, lineWidthUnits: 'pixels', lineCapRounded: true, lineJointRounded: true }) : null;
+    const base = { data: url, minZoom: 12, maxZoom: 14, binary: false, maxRequests: 6, renderSubLayers: sub, pickable: false,
+      loadOptions: { mvt: { layers: ['transportation', 'transportation_name', 'place'] } }, updateTriggers: { renderSubLayers: [isDark()] } };
+    return [new Calles({ ...base, id: 'calles' }), new Calles({ ...base, id: 'calles-can', canarias: true, extent: [x0, y0, x1, y1] })];
+  }
+  function capaRotulos() {
+    const tinta = hex(css('--ink') || '#111'), fondo = hex(css('--surface') || '#fff');
+    return new deck.TextLayer({ id: 'rotulos', data: rotulos(), pickable: false, getPosition: r => r.pos, getText: r => r.t, getSize: r => r.s,
+      getAngle: r => r.a || 0, getColor: r => r.s > 11 ? tinta : [...tinta, 210], fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600,
+      characterSet: 'auto', fontSettings: { sdf: true }, outlineWidth: 3, outlineColor: [...fondo, 230], parameters: { depthCompare: 'always' } });
+  }
 
   function layers() {
     const L = [];
@@ -152,9 +258,12 @@
     }
     L.push(new deck.PathLayer({ id: 'prov', data: PROVP, getPath: o => o.ring, getColor: [...line, 255], widthUnits: 'pixels', getWidth: 1.2, widthMinPixels: 1 }));
     L.push(new deck.PathLayer({ id: 'canframe', data: CANFRAME, getPath: o => o.path, getColor: hex(css('--muted') || '#888'), widthUnits: 'pixels', getWidth: 1 }));
+    const conRot = conCalles() && typeof pideOFM() === 'string';
+    if (conRot) L.push(...callejero(OFM));
     if (hover) {
       L.push(new deck.PathLayer({ id: 'hl', data: hover.polys, getPath: o => o.ring, getColor: hex(css('--ink') || '#111'), widthUnits: 'pixels', getWidth: 2 }));
     }
+    if (conRot) L.push(capaRotulos());
     if (view.zoom < 8) {
       L.push(new deck.TextLayer({
         id: 'lab', data: lab, getPosition: o => o.p, getText: o => o.t, getSize: 12, fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600,
@@ -173,7 +282,17 @@
     onHover: info => { setHover(info); },
     onClick: info => { setHover(info, true); },
   });
-  function redraw() { dk.setProps({ layers: layers() }); }
+  const attr = document.createElement('div');
+  attr.className = 'calles-attr';
+  attr.innerHTML = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> · © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+  attr.style.cssText = 'position:absolute;right:0;bottom:0;z-index:2;font:11px/1.4 var(--sans,system-ui);padding:2px 6px;background:var(--surface);color:var(--muted);opacity:.85;border-top-left-radius:4px';
+  $('#map').appendChild(attr);
+  let bCal = null;        // botón «Ver calles / Quitar calles» (se crea con los controles)
+  function redraw() {
+    attr.hidden = !conCalles();
+    if (bCal) bCal.hidden = view.zoom < CALLE_Z - .5;
+    dk.setProps({ layers: layers() });
+  }
 
   // elecciones que viven en ficheros aparte: columnas que se añaden a MUN y a cada provincia al elegirlas
   const aparte = y => (ELEC.find(e => e.cod === y) || {}).aparte;
@@ -200,6 +319,20 @@
     }
   }
 
+  // ---------- nombre real de cada candidatura (PSC, PSdeG, UPN, En Comú Podem...) en cada elección y municipio:
+  // data/nombres/<elección>.json, de src/nombres.py. Sin fichero (el directo), el de la familia.
+  const NOMB = {};
+  let tipAbierta = null;   // la ficha a la vista, para rehacerla cuando lleguen los nombres
+  const pideNombres = y => NOMB[y] !== undefined ? Promise.resolve() :
+    (NOMB[y] = null, get('nombres/' + y + '.json').then(d => { NOMB[y] = d; }).catch(() => {}));
+  const nomL = (f, y, mi) => {
+    const N = NOMB[y], c = MUN.cod[mi];
+    if (N) { const m = N.m[f.cod], p = N.p[f.cod], k = m && c in m ? m[c] : p && p[c.slice(0, 2)]; if (k) return N.n[k]; }
+    return nomF(f, y);
+  };
+  pideNombres(st.y).then(() => { if (!tip.hidden && tipAbierta) tip.innerHTML = ficha(...tipAbierta); });
+  const escH = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+
   // ---------- ficha (tooltip)
   const tip = $('#tip');
   function ficha(d, i, isSec) {
@@ -212,7 +345,7 @@
     const max = rows.length ? rows[0].v : 1;
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
-    h += '<table class="t-bars">' + rows.map(r => `<tr><th>${nomF(r.f, y)}</th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
+    h += '<table class="t-bars">' + rows.map(r => `<tr><th${nomL(r.f, y, mi) !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${nomL(r.f, y, mi).length > 16 ? 'normal' : 'nowrap'}">${escH(nomL(r.f, y, mi))}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
     const part = d[y + '_part'] ? d[y + '_part'][i] : null;
     const esc = d[y + '_esc'] ? d[y + '_esc'][i] : null;
     h += `<dl class="t-kv">${esc != null ? `<dt>Escrutado</dt><dd>${pct(esc)}</dd>` : ''}<dt>Participación</dt><dd>${pct(part)}</dd>
@@ -228,7 +361,7 @@
     if (!o) { if (!pin) { tip.hidden = true; hover = null; redraw(); } return; }
     const id = info.layer.id, isSec = id.startsWith('sec');
     const d = isSec ? SEC[id.slice(3)].d : MUN, all = isSec ? SEC[id.slice(3)].polys : MUNP;
-    tip.innerHTML = ficha(d, o.i, isSec); tip.hidden = false;
+    tipAbierta = [d, o.i, isSec]; tip.innerHTML = ficha(d, o.i, isSec); tip.hidden = false;
     const W = $('#map').clientWidth, H = $('#map').clientHeight, tw = tip.offsetWidth, th = tip.offsetHeight;
     let x = info.x + 14, y = info.y + 14;
     if (x + tw > W - 8) x = info.x - tw - 14; if (y + th > H - 8) y = Math.max(8, H - th - 8);
@@ -280,7 +413,7 @@
   const sync = () => { selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
   const elige = async y => {
     st.y = y; selE.disabled = true;
-    try { await asegura(y); } finally { selE.disabled = false; }
+    try { await Promise.all([asegura(y), pideNombres(y)]); } finally { selE.disabled = false; }
     Object.keys(SEC).forEach(p => aseguraSec(p, y)); sync();
   };
   selE.onchange = () => elige(selE.value);
@@ -310,6 +443,17 @@
     const all = MUNP.filter(p => p.i === i); hover = { key: 'mun' + i, polys: all }; redraw();
   }
   $('#home').onclick = () => fly(HOME());
+  bCal = document.createElement('button');
+  bCal.type = 'button'; bCal.id = 'calles'; bCal.textContent = 'Calles';
+  bCal.title = 'Muestra las calles y los nombres de los barrios al acercarte';
+  // dentro del mapa, arriba a la izquierda, y solo cuando ya se está cerca (no quita sitio a los controles en el móvil)
+  bCal.style.cssText = 'position:absolute;left:8px;top:8px;z-index:2;font:600 12px/1 var(--sans,system-ui);padding:6px 9px;border-radius:6px;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.12)';
+  const marcaCal = () => { bCal.setAttribute('aria-pressed', calles); bCal.textContent = calles ? 'Quitar calles' : 'Ver calles'; };
+  bCal.onclick = () => {
+    calles = !calles; marcaCal(); redraw();
+    try { localStorage.setItem('mapa-calles', calles ? 'si' : 'no'); } catch (e) { /* sin almacenamiento */ }
+  };
+  marcaCal(); $('#map').appendChild(bCal);
   function fly(to) {
     view = { ...view, ...to, transitionDuration: 'auto', transitionInterpolator: new deck.FlyToInterpolator({ speed: 1.6 }) };
     dk.setProps({ initialViewState: view });
@@ -344,7 +488,7 @@
     if (qe && qe !== st.y && ELEC.some(e => e.cod === qe)) { selE.value = qe; await elige(qe); }
     $('#q').value = `${MUN.nombre[qm]} (${MUN.provs[MUN.prov[qm]] || ''})`;
     abre(qm);
-    tip.innerHTML = ficha(MUN, qm, false); tip.hidden = false;
+    tipAbierta = [MUN, qm, false]; tip.innerHTML = ficha(MUN, qm, false); tip.hidden = false;
     tip.style.left = '8px'; tip.style.top = narrow() ? 'auto' : '8px'; tip.style.bottom = narrow() ? '8px' : 'auto';
   }
 

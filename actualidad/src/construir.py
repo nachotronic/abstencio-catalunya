@@ -11,6 +11,8 @@ También rellena la franja «Actualidad» de la portada (index.html y la plantil
 import datetime, html, json, os, re, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, 'src'))
+from territorios_rutas import enlaces_actualidad  # noqa: E402  páginas por territorio y tema de /elecciones/
 SRC = os.path.join(RAIZ, 'actualidad', 'src')
 BASE = 'https://mapaelectoral.es'
 # Editor de todo el sitio: el mismo objeto que atlas/src/paginas.py y src/seo.py
@@ -408,7 +410,20 @@ for h in PIEZAS_HISTORIA:
             ENLACES_TEXTO.setdefault(h['slug'], []).append((texto, destino))
         else:
             ENLACES_INTERNOS.setdefault(h['slug'], []).append((texto, destino))
-PIEZAS = HISTORIA + PIEZAS
+# Serie «Las comunidades en las urnas»: un reportaje largo por comunidad (comunidades/, reportajes.py escribe los <slug>.html).
+sys.path.insert(0, os.path.join(SRC, 'comunidades'))
+from reportajes import piezas as piezas_comunidades  # noqa: E402
+SERIES['comunidades'] = 'Las comunidades en las urnas'
+COMUNIDADES = []
+for h in piezas_comunidades():
+    q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
+    q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
+    if os.path.exists(os.path.join(SRC, '..', '..', 'img', 'actualidad', 'fotos', h['slug'] + '.jpg')):
+        q['foto'] = dict(src=f"img/actualidad/fotos/{h['slug']}.jpg", ancho=1280, alto=720, ia=True,
+                         pie=f"Collage sobre las elecciones en {h['lugar']}: la bandera, el mapa y vecinos votando.")
+    COMUNIDADES.append(q)
+
+PIEZAS = COMUNIDADES + HISTORIA + PIEZAS
 
 FUENTES_WEB = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700'
@@ -527,6 +542,8 @@ def pieza(p, todas):
                     f'<li><a href="../{q["slug"]}/index.html"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
     sigue = ''.join(f'<li><a href="../{q["slug"]}/index.html"><span class="kicker">{SERIES[q["serie"]]} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
+    terr = enlaces_actualidad(p['slug'], '../../')
+    mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
     ficha = f"""<h2>Método y fuentes</h2>
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>{p['compara']}</dd>
@@ -539,6 +556,7 @@ def pieza(p, todas):
 <dt>Correcciones</dt><dd>{html.escape(p.get('correcciones', 'Ninguna.'))}</dd>
 </dl>
 <h2>Serie «{SERIES[p['serie']]}»: {len(serie)} piezas</h2><ol class="serie">{lista}</ol>
+{mas}
 <h2>Sigue leyendo</h2><ul class="sigue">{sigue}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>{POLITICA}</footer>"""
     main = re.sub(r'<div class="foot">.*?</div>', ficha, main, flags=re.S)
@@ -674,4 +692,6 @@ if __name__ == '__main__':
         pieza(p, PIEZAS)
     indice(PIEZAS)
     portada(PIEZAS)
+    import esquema   # autor común, Dataset y migas de pan en todas las páginas (src/esquema.py)
+    esquema.main()
     print('Actualidad:', len(PIEZAS), 'piezas')

@@ -13,6 +13,7 @@ En este repositorio, la web está en esta carpeta (`index.html`, `app.js`, `data
 | `pagina.py` | Genera `web/index.html` (con las cifras escritas en el HTML), `metodologia.html`, CSV, `llms.txt` y `sitemap.xml`. |
 | `plantilla.html`, `metodologia.html` | Plantillas de las páginas. |
 | `otras_elecciones.py` | Importa municipales y europeas desde los zips de Infoelectoral (`04202305_MESA.zip`, `07202406_MESA.zip`, `04200705_MUNI.zip`…). |
+| `nombres.py` | Saca el nombre real de cada candidatura por elección y municipio (PSC, PSdeG, UPN, En Comú Podem, Trias per Barcelona…) para la ficha del mapa: `data/nombres/<elección>.json`. |
 | `actualizar_29n.py` | Carga resultados nuevos: simulacro, JSON del directo, CSV por municipio o ficheros por mesa de Interior. |
 | `directo/` | Cloudflare Worker que sirve los resultados en directo a la pieza. |
 | `web/` | La web lista para publicar (GitHub Pages). |
@@ -23,6 +24,11 @@ En este repositorio, la web está en esta carpeta (`index.html`, `app.js`, `data
 El selector de elección incluye municipales (2011-2023 por sección, 2007 por municipio) y europeas (2019 y 2024). Se cargan con `python3 otras_elecciones.py <zips de Infoelectoral>` y después `construir.py` y `pagina.py`. En la web van en ficheros aparte (`data/e/M2023.json`, `data/sec/28_M2023.json`…) que solo se descargan al elegir esa elección, para que la carga inicial no crezca. Para añadir otra, basta con subir su zip (por mesa si existe) y repetir.
 
 Requisitos: Python 3 con pandas, geopandas, pyarrow. `python3 construir.py && python3 pagina.py` reconstruye todo.
+
+## Nombres de candidatura y callejero
+
+- **Nombres**: el mapa pinta familias (partidos.py) con su color, pero la ficha dice cómo se llamaba la candidatura en ese municipio y esa elección: «PSC» en Cataluña, «UPN + PP» en Pamplona en 2023, «Podemos + Unidad Popular» en Madrid en 2015 (si una familia junta dos listas con al menos el 10 % de su voto, salen las dos). Se regenera con `GENERALES_EXTRA=<carpeta datos/extra> python3 nombres.py --out <web>/data/nombres` (lee los mismos ficheros que construir.py y otras_elecciones.py). Los nombres cortos de las marcas conocidas están en la tabla `_ETIQ`; las listas locales sin regla salen con su nombre completo. Sin fichero (la noche electoral), la ficha usa el nombre de la familia.
+- **Callejero**: al acercarse a un barrio (zoom 12) se pintan encima de las secciones las calles y los nombres de calles y barrios, con teselas vectoriales de [OpenFreeMap](https://openfreemap.org) (datos de OpenStreetMap, sin clave ni límite de uso; atribución en la esquina del mapa). El botón «Quitar calles» del mapa lo apaga y se recuerda en el navegador. En Canarias se piden las teselas de las islas y se dibujan desplazadas como el recuadro: por eso el recuadro se traslada en Mercator y en teselas enteras de zoom 10 (en app.js, `canT`), no en grados.
 
 ## Noche electoral
 

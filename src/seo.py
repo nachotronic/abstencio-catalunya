@@ -30,6 +30,7 @@ AUTHOR_BIO = {
 AUTHOR_JOB = {'es': 'Periodista de datos', 'ca': 'Periodista de dades'}          # p. ej. «Periodista de datos»; vacío = no se muestra
 AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES'), ('LinkedIn', 'https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/'), ('X', 'https://x.com/nachotronic'), ('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
+CONTACT = 'mailto:nachotronic@gmail.com'   # solo enlazado: la dirección no se muestra como texto en la página
 AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html',
           'sameAs': [u for _, u in AUTHOR_LINKS]}
 # Editor de todo el sitio (el mismo objeto en atlas/src/paginas.py, src/portada.py y generales-2026/src/pagina.py)
@@ -402,14 +403,15 @@ def methodology(L):
 
 
 AB = {
- 'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces',
+ 'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces', contact='Escríbeme',
             works=[('abstencion.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
                    ('metodologia.html', 'Metodología y datos abiertos de la pieza', 'Octubre de 2026')]),
- 'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços',
+ 'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços', contact='Escriu-me',
             works=[('ca.html', 'Qui no vota a Catalunya? Abstenció per secció censal', 'Octubre del 2026'),
                    ('metodologia-ca.html', 'Metodologia i dades obertes de la peça', 'Octubre del 2026')]),
 }
 ALT_A = [('es', BASE + 'sobre-mi.html'), ('ca', BASE + 'sobre-mi-ca.html'), ('x-default', BASE + 'sobre-mi.html')]
+ALT_G = [('es', BASE + 'girona.html'), ('ca', BASE + 'girona-ca.html'), ('x-default', BASE + 'girona.html')]
 
 
 def about(L):
@@ -425,7 +427,7 @@ def about(L):
     job = f'<p class="kicker">{e(AUTHOR_JOB[L])}</p>\n' if AUTHOR_JOB[L] else ''
     bio = f'<p>{e(AUTHOR_BIO[L])}</p>\n' if AUTHOR_BIO[L] else ''
     works = '\n'.join(f'<li><a href="{u}">{e(n)}</a> · {d}</li>' for u, n, d in a['works'])
-    links = '\n'.join(f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS)
+    links = '\n'.join([f'<li><a href="{CONTACT}">{a["contact"]}</a></li>'] + [f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS])
     return f'''<!doctype html>
 <html lang="{L}">
 <head>
@@ -517,8 +519,10 @@ Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat
 ## Secciones del sitio
 
 - [Mapa de resultados de España (portada)]({BASE}): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt]({BASE}generales-2026/llms.txt)
+- [Elecciones por comunidad y provincia]({BASE}elecciones/): una página por comunidad autónoma y provincia con las generales desde 1977 y el voto por renta de los barrios; y dos temas, [mapa electoral por sección censal]({BASE}elecciones/mapa-electoral-seccion-censal/) y [voto y renta por barrios]({BASE}elecciones/voto-y-renta-por-barrios/). Resumen: [elecciones/llms.txt]({BASE}elecciones/llms.txt)
 - [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt]({BASE}atlas/llms.txt)
 - [¿Quién no vota en Cataluña?]({BASE}abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán]({BASE}ca.html).
+- [Girona, la provincia catalana donde menos adultos votan]({BASE}girona.html): las 536 secciones censales de la provincia de Girona, con quién no puede votar (sin nacionalidad española) y quién, pudiendo, no votó; en castellano y [catalán]({BASE}girona-ca.html).
 - [Sobre el autor]({BASE}sobre-mi.html)
 
 {secciones}
@@ -539,8 +543,8 @@ def sitemap_index():
 
 
 def sitemap():
-    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5')]
-    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A}
+    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5'), ('girona.html', '0.9'), ('girona-ca.html', '0.9')]
+    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A, 'girona.html': ALT_G, 'girona-ca.html': ALT_G}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for p, pr in pages:
@@ -618,6 +622,9 @@ def main():
     (ROOT / 'sitemap_index.xml').write_text(sitemap_index(), encoding='utf-8')
     (ROOT / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
     print('seo: abstencion.html, ca.html, mapa.html, metodologia(-ca).html, sobre-mi(-ca).html, llms.txt, sitemap.xml, robots.txt')
+    # autor común, Dataset y migas de pan en todas las páginas del sitio
+    import esquema
+    esquema.main()
 
 
 main()

@@ -1,0 +1,50 @@
+{
+ "Salt": {
+  "img": "src/girona/fotos/salt.webp",
+  "alt": "Un vecino pasa ante un mural en una calle de Salt",
+  "a": "Ajuntament de Salt",
+  "l": "CC BY-SA 4.0",
+  "u": "https://commons.wikimedia.org/wiki/File:Grafiti-Salt-1.jpg",
+  "alt_ca": "Un veí passa davant d'un mural en un carrer de Salt"
+ },
+ "Lloret de Mar": {
+  "img": "src/girona/fotos/lloret.webp",
+  "alt": "Dos jóvenes caminan por una calle del centro de Lloret de Mar",
+  "a": "Demeester",
+  "l": "CC BY-SA 3.0",
+  "u": "https://commons.wikimedia.org/wiki/File:Catalunya_2013_Lloret_001.JPG",
+  "alt_ca": "Dos joves caminen per un carrer del centre de Lloret de Mar"
+ },
+ "Castelló d'Empúries": {
+  "img": "src/girona/fotos/castello.webp",
+  "alt": "Gente de compras en los soportales comerciales de Empuriabrava, en Castelló d'Empúries",
+  "a": "Cliché Online",
+  "l": "CC BY-SA 3.0",
+  "u": "https://commons.wikimedia.org/wiki/File:Ampuriabrava_arcadewalkway_2009_08_YAN2.JPG",
+  "alt_ca": "Gent de compres als porxos comercials d'Empuriabrava, a Castelló d'Empúries"
+ },
+ "Figueres": {
+  "img": "src/girona/fotos/figueres.webp",
+  "alt": "Vecinos en la Rambla de Figueres",
+  "a": "Tony Grist",
+  "l": "Public domain",
+  "u": "https://commons.wikimedia.org/wiki/File:Figueres,_town_centre.jpg",
+  "alt_ca": "Veïns a la Rambla de Figueres"
+ },
+ "Girona": {
+  "img": "src/girona/fotos/girona.webp",
+  "alt": "Vecinos paseando bajo los arcos del casco antiguo de Girona",
+  "a": "Smiley.toerist",
+  "l": "CC BY-SA 4.0",
+  "u": "https://commons.wikimedia.org/wiki/File:Girona_2017_05.jpg",
+  "alt_ca": "Veïns passejant sota els arcs del barri vell de Girona"
+ },
+ "Olot": {
+  "img": "src/girona/fotos/olot.webp",
+  "alt": "Terrazas con gente en la plaça del Mercat de Olot",
+  "a": "Soniettte",
+  "l": "CC BY-SA 4.0",
+  "u": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_del_Mercat-Olot.jpg",
+  "alt_ca": "Terrasses amb gent a la plaça del Mercat d'Olot"
+ }
+}

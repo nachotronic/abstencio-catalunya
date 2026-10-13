@@ -40,6 +40,7 @@ MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto
 # Mientras esté vacío, el bloque «Síguelo» solo ofrece RSS y X.
 NEWSLETTER = ''
 X_URL = 'https://x.com/nachotronic'
+CONTACTO = 'mailto:nachotronic@gmail.com'   # solo enlazado: la dirección no se muestra como texto
 
 
 def fecha_txt(iso):
@@ -283,6 +284,33 @@ def enlaces_mapa(p):
     return out
 
 
+sys.path.insert(0, str(ROOT / 'src'))
+from territorios_rutas import PROV_NOMBRE, ruta_provincia  # noqa: E402
+
+
+def provincias(p):
+    """Códigos INE de las provincias de los lugares de la pieza (las de la serie «bisagras» ya son provincias)."""
+    out = set()
+    for lugar in p['lugares']:
+        if p['serie'] == 'bisagras':
+            out |= {c for c, n in PROV_NOMBRE.items() if lugar == n or lugar in n.split('/')}
+            continue
+        cods = [MAPA_HOMONIMOS[lugar]] if lugar in MAPA_HOMONIMOS else \
+            [c for c, n in zip(MUN_MAPA['cod'], MUN_MAPA['nombre']) if lugar == n or lugar in n.split('/')]
+        if len(cods) == 1:
+            out.add(cods[0][:2])
+    return sorted(out)
+
+
+def enlaces_territorio(p):
+    """Enlaces a la página de cada provincia de la pieza, con el nombre de la provincia como ancla."""
+    ps = provincias(p)
+    if not ps:
+        return ''
+    li = ' · '.join(f'<a href="../../../{ruta_provincia(c)}">elecciones en {escape(PROV_NOMBRE[c])}</a>' for c in ps)
+    return f'<p>Resultados desde 1977, voto por renta de los barrios y municipios principales: {li}.</p>'
+
+
 TIPO_CLASE = {'Dato': 't-dato', 'Patrón': 't-patron', 'Hipótesis': 't-hipotesis'}
 
 
@@ -348,6 +376,7 @@ def pagina_pieza(p):
 </dl>""")
     h.append('<h2>Sigue leyendo</h2><ul class="sigue">' + ''.join(
         f'<li><a href="../../{ruta_pieza(q)}"><span class="kicker">{escape(SERIES[q["serie"]][0])}</span><b>{escape(titular(q))}</b></a></li>' for q in sigue_leyendo(p)) + '</ul>')
+    h.append(enlaces_territorio(p))
     h.append(f'<p><a href="../index.html">Todas las piezas de «{escape(SERIES[p["serie"]][0])}»</a> · <a href="../../index.html">Todo el Atlas</a></p>')
     h.append(siguelo())
     h.append(PIE)
@@ -471,7 +500,7 @@ def correcciones():
     li = lambda d, t: f'<li><time datetime="{d}">{fecha_txt(d)}</time>. {escape(t)}</li>'
     ld = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Correcciones · ' + SITIO, 'url': url('correcciones/index.html')}
     h = [cabeza('Correcciones · ' + SITIO, 'Historial de correcciones de datos y conclusiones de Mapa Electoral: el mapa de resultados y el Atlas.', 'correcciones/index.html', ld, nivel=1)]
-    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>')
+    h.append('<p class="kicker">Transparencia</p><h1>Correcciones</h1><p class="resumen">Si cambia un dato o una conclusión ya publicados, se anota aquí con la fecha y qué cambió. La dirección de la página no cambia y el texto anterior no se borra en silencio. ¿Has visto un error? <a href="' + CONTACTO + '">Escríbeme</a>.</p>')
     h.append('<h2 id="mapa">Mapa de resultados</h2><p><a href="../../">El mapa de las generales: cómo vota cada barrio de España</a></p><ul class="corr">' + ''.join(li(d, t) for d, t in MAPA) + '</ul>')
     from correcciones_atlas import CORRECCIONES as CORR
     filas = sorted(((d, q, t) for q in TODAS if q['slug'] in CORR for d, t in CORR[q['slug']]), key=lambda x: x[0], reverse=True)
@@ -510,7 +539,7 @@ def politica():
 <h2 id="correcciones">Correcciones</h2>
 <p>Si cambia un dato o una conclusión de una pieza publicada, se corrige en la propia pieza con la fecha y lo que cambió, y se anota en el <a href="../correcciones/index.html">historial de correcciones</a>. La dirección de la página no cambia y el texto anterior no se borra en silencio.</p>
 <h2 id="contacto">Contacto</h2>
-<p>Para avisar de un error o proponer un tema: <a href="{X_URL}">@nachotronic en X</a>.</p>""")
+<p>Para avisar de un error o proponer un tema, <a href="{CONTACTO}">escríbeme</a>.</p>""")
     h.append(PIE)
     return 'politica-editorial/index.html', ''.join(h)
 
@@ -637,6 +666,10 @@ def main():
             t = re.sub(r'<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->', lambda m: '<!--atlas:ultimas-->' + franja + '<!--/atlas:ultimas-->', t, flags=re.S)
             f.write_text(t, encoding='utf-8')
     print(len(paginas), 'páginas;', sum(1 for q in TODAS if q['revisado']), 'de', len(TODAS), 'piezas revisadas')
+    # autor común, Dataset y migas de pan en todas las páginas del sitio (src/esquema.py)
+    sys.path.insert(0, str(ROOT / 'src'))
+    import esquema
+    esquema.main()
 
 
 TODAS = []
