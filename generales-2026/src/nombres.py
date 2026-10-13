@@ -105,7 +105,7 @@ _ETIQ = [
     ('BILDU', r"^EH$|EUSKAL HERRITARROK", 'EH'),
     ('BILDU', r"^AMAIUR", 'Amaiur'),
     ('BILDU', r"^BILDU\b", 'Bildu'),
-    ('BILDU', r"BILDU", None),
+    ('BILDU', r"BILDU", 'EH Bildu'),
     ('BILDU', r".", '*'),
     ('BNG', r"^BN-?PG|BLOQUE NACIONAL.?POPULAR GAL", 'BN-PG'),
     ('BNG', r"^N[OÓ]S$|N[OÓ]S-CANDIDATURA", 'Nós'),

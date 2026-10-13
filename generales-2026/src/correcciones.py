@@ -17,4 +17,11 @@ CORRECCIONES = [
     ('2026-10-08', 'Al añadir todas las elecciones desde 1977, se revisa la agrupación de partidos: el Partido Socialista de Andalucía (PSA) y otros '
                    'partidos con «socialista» en el nombre que no son el PSOE pasan a Otros, Iniciativa per Catalunya pasa a Sumar / Podemos / IU '
                    'en las municipales y el CDS tiene familia propia. En 2004, el PSOE en las secciones más pobres pasa del 56,8% al 56,5%.'),
+    ('2026-10-13', 'Revisión de siglas que comparten muchas listas locales con un partido grande: «CC», «CM», «CDC», «CiU», «PP» o «IU» '
+                   'solo cuentan para Coalición Canaria, Junts, PP o Sumar / Podemos / IU si el nombre de la candidatura lo confirma. '
+                   'Unas 90 listas locales cambian de familia, casi todas a Otros (Candidatura Comunista, Ciudadanos del Condado, '
+                   'Plataforma del Pueblo Soriano, Unidad del Pueblo…); Cambiemos Murcia y Contigo Zurekin pasan a Sumar / Podemos / IU, '
+                   'y Converxencia Centrista/CDS (municipales de 1991 en Ourense) al CDS. Junts / CiU en el Congreso de 2000 pasa del 4,3% '
+                   'al 4,2% (Los Verdes-Comunidad de Madrid contaba como Junts) y el CDS en las municipales de 1991 del 3,5% al 3,9%. '
+                   'Cambia el ganador en 82 municipios (casi todos pequeños y de municipales anteriores a 2011) y en 32 secciones. El texto de la pieza no cambia.'),
 ]
