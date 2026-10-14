@@ -13,8 +13,9 @@ _spec = importlib.util.spec_from_file_location('historia_paginas', os.path.join(
 _hp = importlib.util.module_from_spec(_spec); sys.path.insert(0, os.path.join(SRC, 'historia')); _spec.loader.exec_module(_hp)
 CSS, FUENTES_TIPO, figura, leyenda = _hp.CSS, _hp.FUENTES_TIPO, _hp.figura, _hp.leyenda
 
-ORDEN = ['andalucia', 'aragon', 'asturias', 'baleares', 'canarias', 'cantabria', 'castilla-la-mancha', 'castilla-y-leon', 'cataluna',
-         'comunidad-valenciana', 'extremadura', 'galicia', 'madrid', 'murcia', 'navarra', 'pais-vasco', 'la-rioja', 'ceuta', 'melilla']
+# Ceuta y Melilla van primero: son las que más se leen de la serie (Search Console, octubre de 2026) y al final quedaban escondidas.
+ORDEN = ['ceuta', 'melilla', 'andalucia', 'aragon', 'asturias', 'baleares', 'canarias', 'cantabria', 'castilla-la-mancha', 'castilla-y-leon', 'cataluna',
+         'comunidad-valenciana', 'extremadura', 'galicia', 'madrid', 'murcia', 'navarra', 'pais-vasco', 'la-rioja']
 NOMF = {'PP': 'AP / PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'PCE / IU / Podemos / Sumar', 'CS': 'Ciudadanos', 'UPYD': 'UPyD',
         'ERC': 'ERC', 'JUNTS': 'CiU / Junts', 'PNV': 'PNV', 'BILDU': 'HB / EH Bildu', 'BNG': 'BNG', 'CC': 'Coalición Canaria',
         'UCD': 'UCD', 'CDS': 'CDS', 'OTROS': 'Otras listas'}
