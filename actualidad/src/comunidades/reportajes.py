@@ -7,6 +7,9 @@ Uso, desde la raíz del repositorio:
 """
 import html, importlib, importlib.util, json, os, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import faq  # noqa: E402
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.dirname(AQUI)
 _spec = importlib.util.spec_from_file_location('historia_paginas', os.path.join(SRC, 'historia', 'paginas.py'))
@@ -136,7 +139,9 @@ def escribir():
     for p in ps:
         d = datos[p['cc']]
         F = Fig(p['cc'], d)
-        cuerpo = p['cuerpo'](F, presidentes)
+        tablas = []
+        cuerpo = p['cuerpo'](F, lambda filas: tablas.append(filas) or presidentes(filas))
+        cuerpo += '\n' + faq.bloque(faq.preguntas(p['cc'], p['lugar'], tablas[-1]))
         D = {'gen': d['gen'], 'prov': d['prov'], 'aut': d['aut'], 'ciu': d['mayores_hist']}
         if 'F.mapa(' in open(os.path.join(AQUI, 'piezas', p['cc'].replace('-', '_') + '.py'), encoding='utf-8').read():
             D['mapa'] = d['mapa']
