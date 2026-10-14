@@ -55,10 +55,10 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='ceuta', slug='ceuta-historia-electoral', lugar='Ceuta', corto='Ceuta en las urnas',
-    titulo='Ceuta es uno de los dos sitios donde Vox ha ganado unas generales; en su Asamblea, Vivas gobierna desde 2001 tras dos mociones de censura',
+    titulo='Ceuta es uno de los dos sitios donde Vox ha ganado unas generales',
     dek='Cuatro presidentes en seis años, un gobierno del GIL de Jesús Gil y, desde 2001, Juan Jesús Vivas. En las generales, Ceuta pasó del PSOE en abril de 2019 a Vox en noviembre y al PP en 2023.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='Vox ganó las generales de noviembre de 2019 en Ceuta y en Murcia. En la Asamblea de Ceuta hubo cuatro presidentes en seis años y dos mociones de censura; Juan Jesús Vivas (PP) gobierna desde 2001.',
+    descripcion='Vox ganó en Ceuta en noviembre de 2019, como en Murcia. En la Asamblea hubo cuatro presidentes en seis años; Juan Jesús Vivas (PP) gobierna desde 2001.',
     compara='Las 12 elecciones locales y a la Asamblea de Ceuta (1979-2023) y las 16 generales (1977-2023) en Ceuta.',
     limites=LIMITES + ' Ceuta es un solo municipio: no hay mapa. Las elecciones de 1979 a 1991 fueron municipales; desde 1995, a la Asamblea de la ciudad autónoma.',
     fuentes=FUENTES_COMUNES + [he_fuente('aceuta', 'Ceuta'),
