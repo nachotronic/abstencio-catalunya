@@ -15,7 +15,7 @@ LUCAS = wiki('Juan José Lucas')
 
 def cuerpo(F, presidentes):
     return f"""
-<p style="margin-top:1.4rem">El PP gobierna Castilla y León desde 1987. Son casi cuarenta años seguidos y cinco presidentes, de José María Aznar a Alfonso Fernández Mañueco, que en junio de 2026 fue investido por tercera vez, de nuevo con Vox. En ese tiempo el PSOE ganó en escaños unas autonómicas, las de 2019, y aun así no llegó a gobernar.</p>
+<p style="margin-top:1.4rem">El PP gobierna Castilla y León desde 1987. Son 39 años seguidos y cinco presidentes, de José María Aznar a Alfonso Fernández Mañueco, que en junio de 2026 fue investido por tercera vez, de nuevo con Vox. En ese tiempo el PSOE ganó en escaños unas autonómicas, las de 2019, y aun así no llegó a gobernar.</p>
 <p>En las generales, la comunidad es todavía más del PP. Fue la lista más votada en 11 de las 16 elecciones desde 1977, incluidas cinco que en el conjunto de España ganó el PSOE. Y en todas ha sacado aquí más porcentaje de voto que en el conjunto del país.</p>
 <p>Este reportaje recorre esa historia con los resultados de las doce elecciones a las Cortes de Castilla y León, de 1983 a 2026, y de las dieciséis generales, en los más de 2.200 municipios de la comunidad.</p>
 
@@ -69,7 +69,7 @@ PIEZA = dict(
     dek='Seis mayorías absolutas seguidas, de 1991 a 2011, y desde 2022 gobiernos con Vox: Mañueco fue investido por tercera vez en junio de 2026. '
         'En las generales, el PP saca aquí más que en el conjunto de España en todas las elecciones.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='Mañueco ha gobernado con Ciudadanos y después con Vox. En las generales, el PP ganó en Castilla y León 11 de 16.',
+    descripcion='El PP gobierna Castilla y León desde 1987, 39 años seguidos. Mañueco ha gobernado con Ciudadanos y después con Vox. En las generales, el PP ganó en Castilla y León 11 de 16.',
     compara='Las 12 elecciones a las Cortes de Castilla y León (1983-2026) y las 16 generales (1977-2023) en Castilla y León, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('acleon', 'Castilla y León'),

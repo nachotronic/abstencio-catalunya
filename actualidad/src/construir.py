@@ -177,7 +177,7 @@ PIEZAS = [
     dict(
         slug='puigdemont-junts-congreso-parlament', fecha='2026-10-08',
         titulo='Con Puigdemont de candidato, Junts duplica su voto: del 11% en el Congreso al 22% en el Parlament', serie='29n',
-        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % y ganó en 465 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
+        descripcion='En las generales de 2023 Junts sacó en Cataluña el 11,2 % (392.609 votos) y ganó en 465 secciones. En las autonómicas de 2024, con Puigdemont como candidato, el 21,6 % y 681.470 votos, y ganó en 1.936, aunque votó menos gente.',
         compara='El voto a Junts (y antes a CiU) en Cataluña en las generales de 2004 a 2023 y en las autonómicas de 2024, por sección censal, por tamaño de municipio y por provincia.',
         limites='Generales y autonómicas tienen distinto electorado votante, distintos candidatos y eligen cosas distintas: la comparación no dice quién cambió su voto ni por qué. CiU incluía a Unió hasta 2015. Porcentajes sobre voto válido. Sin voto exterior.',
         fuentes=[INTERIOR, PARLAMENT,
@@ -735,14 +735,14 @@ def pieza(p, todas):
         main = main.replace(texto, f'<a href="{href}">{texto}</a>', 1)
     for texto, slug in ENLACES_INTERNOS.get(p['slug'], []):
         assert texto in main and any(q['slug'] == slug for q in todas), (p['slug'], texto)
-        main = main.replace(texto, f'<a href="../{slug}/index.html">{texto}</a>', 1)
+        main = main.replace(texto, f'<a href="../{slug}/">{texto}</a>', 1)
     fuentes = ''.join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for u, t in p['fuentes'])
     # la serie entera, en orden, con la pieza actual marcada; después, las últimas de otras series
     serie = [q for q in todas if q['serie'] == p['serie']]
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
-                    f'<li><a href="../{q["slug"]}/index.html"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
+                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
-    sigue = ''.join(f'<li><a href="../{q["slug"]}/index.html"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
+    sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
     terr = enlaces_actualidad(p['slug'], '../../')
     mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
     ficha = f"""<h2>Método y fuentes</h2>
@@ -788,7 +788,7 @@ def indice(todas):
         img = (f'<figure class="foto"><img src="../{fo["src"]}" alt="{html.escape(fo["pie"])}" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
                f'<figcaption>Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>') if fo else ''
         return (f'<h2 id="{serie}">{SERIES[serie]}</h2>{img}<ul class="sigue tarjetas">' +
-                ''.join(f'<li><a href="{q["slug"]}/index.html">{imagen_tarjeta(q)}<span class="txt"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>'
+                ''.join(f'<li><a href="{q["slug"]}/">{imagen_tarjeta(q)}<span class="txt"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>'
                         for q in sorted(qs, key=lambda q: q['fecha'], reverse=True)) + '</ul>')
 
     def imagen_tarjeta(q):
