@@ -36,6 +36,13 @@ MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': 'Mapa
          'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
 # Conjunto de datos del mapa de resultados: está descrito en la portada y en su metodología
 DATASET_ID = BASE + 'generales-2026/metodologia.html#datos'
+# Referencia completa a ese Dataset: Google exige name y description (50 caracteres o más) en cada
+# Dataset que encuentra, también cuando solo se cita desde otra página (isBasedOn)
+DATASET_REF = {'@type': 'Dataset', '@id': DATASET_ID,
+               'name': 'Elecciones generales 2004-2023 por sección censal con renta, edad y población extranjera',
+               'description': 'Votos al Congreso, municipales y europeas por familia política, participación y censo por sección censal '
+                              '(desde 1977 por municipio), con renta, pobreza, edad y población extranjera del INE. Datos del Ministerio del Interior y del INE.',
+               'url': BASE + 'generales-2026/metodologia.html'}
 
 # Nombre corto de cada página en las migas (si no está aquí, se usa su <h1>)
 NOMBRES = {
@@ -117,8 +124,9 @@ def normaliza(o, ruta):
     if o.get('@type') == 'Dataset' and ruta in ('', 'generales-2026/metodologia.html') and 'generales-2026/descargas/' in json.dumps(o):
         o = {'@id': DATASET_ID, **{k: v for k, v in o.items() if k != '@id'}}
     if o.get('@type') == 'NewsArticle' and ruta.startswith('actualidad/') and ruta != 'actualidad/' and 'isBasedOn' not in o:
-        o['isBasedOn'] = {'@type': 'Dataset', '@id': DATASET_ID, 'name': 'Elecciones generales, municipales y europeas por sección censal con renta, edad y población extranjera',
-                          'url': BASE + 'generales-2026/metodologia.html'}
+        o['isBasedOn'] = dict(DATASET_REF)
+    if isinstance(o.get('isBasedOn'), dict) and o['isBasedOn'].get('@id') == DATASET_ID:
+        o['isBasedOn'] = dict(DATASET_REF)   # las citas incompletas de páginas anteriores también
     return o
 
 

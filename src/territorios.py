@@ -375,7 +375,7 @@ def ld_pagina(titulo, desc, ruta, about=None, partes=None):
     o = {'@context': 'https://schema.org', '@type': 'WebPage', '@id': BASE + ruta + '#pagina', 'name': titulo, 'description': desc, 'url': BASE + ruta,
          'inLanguage': 'es', 'datePublished': PUBLICADO, 'dateModified': ACTUALIZADO, 'author': esquema.AUTOR, 'publisher': {'@id': BASE + '#medio'},
          'isPartOf': {'@id': BASE + '#website'}, 'license': LICENCIA, 'isAccessibleForFree': True,
-         'isBasedOn': {'@type': 'Dataset', '@id': esquema.DATASET_ID, 'url': BASE + 'generales-2026/metodologia.html'},
+         'isBasedOn': dict(esquema.DATASET_REF),
          'primaryImageOfPage': BASE + 'img/compartir/portada.jpg'}
     if about:
         o['about'] = about
