@@ -87,6 +87,6 @@ def enlaces_actualidad(slug, raiz):
     return out
 
 
-# Municipios con página propia (capitales y más de 5.000 habitantes): código INE → ruta. Lo escribe src/territorios.py.
+# Municipios con página propia (capitales y más de 1.000 habitantes): código INE → ruta. Lo escribe src/territorios.py.
 _F = pathlib.Path(__file__).with_name('ciudades.json')
 CIUDADES = json.loads(_F.read_text(encoding='utf-8')) if _F.exists() else {}

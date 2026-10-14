@@ -268,7 +268,7 @@ def bloque_municipios(nombre, df, nivel, n=15):
         filas.append([nom, num(m.poblacion), pct(m[f"{y}_part"]),
                       f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—'])
     out = ('<h2>Municipios</h2>'
-           + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Los municipios de más de 5.000 habitantes y las capitales tienen página propia; '
+           + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Los municipios de más de 1.000 habitantes y las capitales tienen página propia; '
                 f'«mapa» abre el municipio en el <a href="{raiz}">mapa de resultados por sección censal</a>, donde se ve barrio a barrio y en cualquier elección desde 1977.')
            + tabla(f'Municipios más poblados de {escape(nombre)}, generales de 2023', ['Municipio', 'Habitantes', 'Participación', 'Más votado'], filas))
     grandes = df[df[f'{y}_censo'] >= 1000].dropna(subset=[f'{y}_part'])
@@ -428,9 +428,9 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     cs = sorted((c for c in CIUDADES if c[:2] in provs), key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
     if len(provs) > 1:   # en las comunidades, solo las ciudades; el resto de municipios, en su provincia
         cs = [c for c in cs if c in CAPITALES or pob[c] >= GRANDE]
-        intro = 'Capitales y municipios de más de 50.000 habitantes; los de más de 5.000 están en la página de cada provincia'
+        intro = 'Capitales y municipios de más de 50.000 habitantes; los de más de 1.000 están en la página de cada provincia'
     else:
-        intro = f'Los {num(len(cs))} municipios de más de 5.000 habitantes{" y la capital" if any(c in CAPITALES and pob[c] < UMBRAL for c in cs) else ""}'
+        intro = f'Los {num(len(cs))} municipios de más de 1.000 habitantes{" y la capital" if any(c in CAPITALES and pob[c] < UMBRAL for c in cs) else ""}'
     if cs:
         h.append(f'<h2>Municipios con página propia</h2><p>{intro}, con el voto por sección censal y desde 1977: '
                  + ' · '.join(f'<a href="{raiz}{CIUDADES[c]}">elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a>' for c in cs) + '.</p>')
@@ -475,12 +475,12 @@ def territorios():
     return paginas, resumen
 
 
-# ---------- ciudades: capitales de provincia y municipios de más de 5.000 habitantes ----------
+# ---------- ciudades: capitales de provincia y municipios de más de 1.000 habitantes ----------
 CAPITALES = {'01059', '02003', '03014', '04013', '05019', '06015', '07040', '08019', '09059', '10037', '11012', '12040', '13034', '14021',
              '15030', '16078', '17079', '18087', '19130', '20069', '21041', '22125', '23050', '24089', '25120', '26089', '27028', '28079',
              '29067', '30030', '31201', '32054', '33044', '34120', '35016', '36038', '37274', '38038', '39075', '40194', '41091', '42173',
              '43148', '44216', '45168', '46250', '47186', '48020', '49275', '50297'}   # Ceuta y Melilla ya tienen su página de comunidad
-UMBRAL = 5000
+UMBRAL = 1000
 GRANDE = 50000   # el índice general solo lista capitales y municipios de más de 50.000; el resto, en su provincia
 
 
@@ -534,7 +534,8 @@ def pagina_ciudad(cod):
     titulo = f'Elecciones generales 29N en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
-               f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.'))
+               (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
+                'Resultados de la serie completa y municipales frente a generales.')))
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
@@ -551,7 +552,7 @@ def pagina_ciudad(cod):
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {nprov}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
-                f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec))} secciones censales.'))
+                f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
     h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"barrio a barrio " if b_sec else ""}en el mapa por sección censal</a></p>')
     h.append(bloque_resultado(nombre, r))
     h.append(b_sec)
@@ -628,7 +629,7 @@ def indice(resumen):
     pob = T.MUN.set_index('mun_code').poblacion
     cs = sorted((c for c in CIUDADES if c in CAPITALES or pob[c] >= GRANDE), key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
     h.append(f'<h2>Ciudades</h2><p>Las {len(cs)} capitales de provincia y municipios de más de 50.000 habitantes, con el voto barrio a barrio. '
-             f'Los {num(len(CIUDADES) - len(cs))} municipios de entre 5.000 y 50.000 habitantes con página propia están en la página de su provincia.</p><ul class="cols">'
+             f'Los {num(len(CIUDADES) - len(cs))} municipios de entre 1.000 y 50.000 habitantes con página propia están en la página de su provincia.</p><ul class="cols">'
              + ''.join(f'<li><a href="{CIUDADES[c][len("elecciones/"):]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
     h.append('<h2>Por tema</h2><ul>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
