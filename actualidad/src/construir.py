@@ -479,6 +479,32 @@ for h in piezas_comunidades():
 
 PIEZAS = COMUNIDADES + HISTORIA + PIEZAS
 
+# Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
+# no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
+ANTETITULOS = {
+    'beiras-nacionalismo-gallego': 'Adiós a Beiras',
+    'colau-barcelona-comuns': 'Colau y Barcelona',
+    'votar-en-noviembre': 'Elecciones en noviembre',
+    'maricarmen-alquiler-y-voto': 'Inquilinos y voto',
+    'alquiler-ciudad-a-ciudad': 'El alquiler, ciudad a ciudad',
+    'pisos-turisticos-y-votantes': 'Pisos turísticos',
+    'psoe-barrios-de-alquiler': 'El PSOE y el alquiler',
+    'precio-del-alquiler-y-voto': 'El precio del alquiler',
+    'puigdemont-junts-congreso-parlament': 'Puigdemont y Junts',
+    'rufian-erc-comuns': 'Rufián y ERC',
+    'psoe-andalucia-generales-autonomicas': 'El PSOE en Andalucía',
+    'huelga-11n-paro-participacion': 'Huelga del 11N',
+    'psoe-madrid-municipales-generales': 'El PSOE en Madrid',
+    'izquierda-del-psoe-secciones': 'La izquierda del PSOE',
+    'vox-poblacion-nacida-fuera': 'Vox e inmigración',
+    'almeida-feijoo-madrid': 'Almeida y Feijóo',
+    'aceituna-de-mesa-pueblos': 'La aceituna de mesa',
+}
+
+
+def antetitulo(q):
+    return ANTETITULOS.get(q['slug']) or (q['lugar'] if q['serie'] == 'comunidades' else SERIES[q['serie']])
+
 FUENTES_WEB = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700'
                '&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">')
@@ -573,7 +599,7 @@ def pieza(p, todas):
     imagen = f"{BASE}/img/compartir/actualidad-{p['slug']}.jpg"
     f = fecha_larga(p['fecha'])
 
-    main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {SERIES[p["serie"]]} · {p["lugar"]}</p>\n', main)
+    main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {antetitulo(p)}{"" if antetitulo(p) == p["lugar"] else " · " + p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
     fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
@@ -595,7 +621,7 @@ def pieza(p, todas):
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
                     f'<li><a href="../{q["slug"]}/index.html"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
-    sigue = ''.join(f'<li><a href="../{q["slug"]}/index.html"><span class="kicker">{SERIES[q["serie"]]} · {q["lugar"]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
+    sigue = ''.join(f'<li><a href="../{q["slug"]}/index.html"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
     terr = enlaces_actualidad(p['slug'], '../../')
     mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
     ficha = f"""<h2>Método y fuentes</h2>
@@ -705,7 +731,7 @@ def franja_portada(todas, pre=''):
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
-                    f'<span class="atlas-k">{SERIES[q["serie"]]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
+                    f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="{pre}actualidad/"><b>Las {len(todas)} piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES)}</span></a></li></ul>'
             '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
