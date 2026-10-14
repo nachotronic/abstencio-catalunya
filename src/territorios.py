@@ -401,8 +401,8 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     serie = T.serie(df)
     r = serie[T.ULTIMA]
     g = T.ganador(r)
-    titulo = f'Elecciones en {nombre}: resultados por municipio y sección censal desde 1977'
-    desc = (f'Resultados de las elecciones generales {en} de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
+    titulo = f'Elecciones generales 29N en {nombre}: así votó cada municipio desde 1977'
+    desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             'Voto por renta de los barrios y municipios principales.')
     about = lugar(nombre, contenido or ESPANA)
     h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
@@ -506,8 +506,8 @@ def pagina_ciudad(cod):
     rp = T.resultado(prov_df, T.ULTIMA)
     uni = len(CCAA[ccaa][2]) == 1
     nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
-    titulo = f'Elecciones en {nombre}: resultados por barrio y sección censal desde 1977'
-    desc = (f'Resultados de las elecciones generales en {nombre} de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
+    titulo = f'Elecciones generales 29N en {nombre}: así votó cada barrio desde 1977'
+    desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.')
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
