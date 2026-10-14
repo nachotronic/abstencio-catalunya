@@ -40,4 +40,20 @@
       <news:title>Vivienda, inmigración y economía: la vivienda es la única preocupación que comparten los cuatro grandes electorados, del 59% en Sumar al 17% en Vox</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/pensiones-barrios-envejecidos/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-14</news:publication_date>
+      <news:title>Abascal promete pagar las pensiones «como sea», pero Vox saca su peor resultado en los barrios más envejecidos: 9,8%, frente al 16,2% en los más jóvenes</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/acampada-sol-distrito-centro/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-14</news:publication_date>
+      <news:title>Almeida pone a los acampados de Sol «en el mismo plano» que los ultras: Centro, el distrito con más inquilinos de Madrid, es donde Más Madrid y Podemos-IU sacaron su mejor resultado, el 41%</news:title>
+    </news:news>
+  </url>
 </urlset>
