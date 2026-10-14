@@ -12,7 +12,7 @@ WG23 = wiki('Elecciones generales de España de 2023')
 
 def cuerpo(F, presidentes):
     return f"""
-<p style="margin-top:1.4rem">El PP gobierna la Comunidad de Madrid desde 1995, treinta y un años seguidos. Lo ha hecho con mayorías absolutas, en minoría con el apoyo de Ciudadanos y Vox, y también después de perder unas elecciones: en 2019 el PSOE fue la lista más votada, pero Isabel Díaz Ayuso llegó a la presidencia con 30 escaños, el peor resultado de su partido en Madrid. Cuatro años después tenía 70 y mayoría absoluta.</p>
+<p style="margin-top:1.4rem">El PP gobierna la Comunidad de Madrid desde 1995, 31 años seguidos. Lo ha hecho con mayorías absolutas, en minoría con el apoyo de Ciudadanos y Vox, y también después de perder unas elecciones: en 2019 el PSOE fue la lista más votada, pero Isabel Díaz Ayuso llegó a la presidencia con 30 escaños, el peor resultado de su partido en Madrid. Cuatro años después tenía 70 y mayoría absoluta.</p>
 <p>Antes, los socialistas habían gobernado los doce primeros años de la autonomía con Joaquín Leguina. En las generales, Madrid votó a UCD en 1977, al PSOE de 1979 a 1986, y desde 1989 vota casi siempre al PP. Su participación ha superado la media española en las dieciséis generales.</p>
 <p>Este reportaje recorre esa historia con los resultados de las elecciones a la Asamblea de Madrid, de 1983 a 2023, y de las dieciséis generales desde 1977, municipio a municipio.</p>
 
@@ -65,7 +65,7 @@ PIEZA = dict(
     dek='Leguina gobernó los doce primeros años de la autonomía. Después llegaron Gallardón, el «tamayazo» de 2003, Aguirre y Ayuso. '
         'En las generales, Madrid vota al PP desde 1989 casi sin excepción, mientras el cinturón del sur sigue con el PSOE. Y siempre vota por encima de la media española.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='En 2019 el PSOE fue el más votado, pero Ayuso fue investida. En 2023 sacó mayoría absoluta. En las generales, Madrid vota al PP desde 1989, salvo en 2019.',
+    descripcion='El PP gobierna la Comunidad de Madrid desde 1995, 31 años seguidos, y la preside Isabel Díaz Ayuso desde 2019. En 2019 el PSOE fue el más votado, pero Ayuso fue investida; en 2023 sacó mayoría absoluta.',
     compara='Las elecciones a la Asamblea de Madrid (1983-2023) y las 16 generales (1977-2023) en la Comunidad de Madrid, por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('amadrid', 'la Comunidad de Madrid'),
