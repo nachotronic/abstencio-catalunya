@@ -88,4 +88,20 @@
       <news:title>El CEO da a Aliança Catalana hasta 25 escaños: en el Parlament de 2024 sacó el 3,8%, pero el 24,9% en el Ripollès y el 7,8% en los pueblos de menos de 1.000 electores</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/como-voto-tu-calle/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>Cómo votó tu calle: una de cada cuatro secciones censales eligió en 2023 un ganador distinto al de su municipio</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/calle-que-parte-el-voto/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>La calle que parte el voto: el PP sacó el 55,9% a un lado de la avenida de Francia, en València, y el 16,4% al otro</news:title>
+    </news:news>
+  </url>
 </urlset>
