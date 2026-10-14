@@ -12,7 +12,7 @@ Cada frase con cifras va marcada como dato o patrón, como en el resto del sitio
 
 Uso (después de regenerar el mapa y el Atlas):  python3 src/territorios.py && python3 src/seo.py
 """
-import datetime, json, pathlib, re, sys
+import datetime, json, pathlib, re, sys, unicodedata
 from html import escape
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -186,7 +186,16 @@ def entradilla(nombre, en, r, serie, ccaa=None):
                 f'Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}).')
     return (f'En las elecciones generales del 23 de julio de 2023, {art(g)} fue la fuerza más votada {en}, con el {pct(r["pct"][g])} del voto válido, '
             f'seguido {"del " + art(seg)[3:] if art(seg).startswith("el ") else "de " + art(seg)} ({pct(r["pct"][seg])}). Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}). '
-            f'Desde 1977, {nom_top} ha sido el partido más votado en {veces[top]} de las {len(T.GENERALES)} elecciones generales.')
+            + desde_1977(veces, nom_top, art))
+
+
+def desde_1977(veces, nom_top, art):
+    n = max(veces.values())
+    empate = [c for c, v in veces.items() if v == n]
+    if len(empate) > 1:
+        nombres = ' y '.join(art(c) for c in empate)
+        return f'Desde 1977, {nombres} han sido los más votados en {n} de las {len(T.GENERALES)} elecciones generales cada uno.'
+    return f'Desde 1977, {nom_top} ha sido el partido más votado en {n} de las {len(T.GENERALES)} elecciones generales.'
 
 
 def bloque_resultado(nombre, r):
@@ -217,10 +226,15 @@ def bloque_serie(nombre, serie):
             + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}', ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas, num_desde=1))
 
 
-def bloque_renta(nombre, en, sec):
+def bloque_renta(nombre, en, sec, ciudad=False):
     q = T.por_renta(sec)
+    if not q and ciudad:   # ciudades con pocas secciones: tres grupos en vez de cinco
+        q = T.por_renta(sec, 3, 6)
     if not q:
         return ''
+    partes = len(q)
+    cuota = {5: '20 %', 3: 'tercio'}[partes]
+    grupo = lambda extremo: f'el {cuota} del censo'
     r1, r5 = q[0], q[-1]
     fams = [c for c in T.FAM if c != 'OTROS' and max(x['pct'][c] for x in q) >= 0.05]
     fams.sort(key=lambda c: -sum(x['pct'][c] for x in q))
@@ -229,12 +243,12 @@ def bloque_renta(nombre, en, sec):
     filas = [[f'{x["q"]}.º' + (' (menos renta)' if x['q'] == 1 else ' (más renta)' if x['q'] == len(q) else ''),
               f'{euros(x["desde"])} – {euros(x["hasta"])}', num(x['secciones']), pct(x['part'])] + [pct(x['pct'][c]) for c in fams] for x in q]
     return ('<h2 id="renta">Voto y renta por barrios</h2>'
-            + p_('Patrón', f'En el 20 % del censo que vive en las secciones censales con más renta {en} (más de {euros(r5["desde"])} por unidad de consumo) votó el {pct(r5["part"])}; '
-                 f'en el 20 % con menos renta (menos de {euros(r1["hasta"])}), el {pct(r1["part"])}.')
+            + p_('Patrón', f'En {grupo(1)} que vive en las secciones censales con más renta {en} (más de {euros(r5["desde"])} por unidad de consumo) votó el {pct(r5["part"])}; '
+                 f'en {grupo(0)} con menos renta (menos de {euros(r1["hasta"])}), el {pct(r1["part"])}.')
             + p_('Patrón', f'Voto en las secciones con más renta frente a las de menos: {frases}.')
             + '<p class="leyenda">Es una relación entre barrios, no entre personas: no dice cómo vota cada vecino. '
               f'Más sobre cómo se cruza el voto con la renta en <a href="{RAIZ_REL}elecciones/voto-y-renta-por-barrios/">voto y renta por barrios en toda España</a>.</p>'
-            + tabla(f'Generales de 2023 {en}: secciones censales ordenadas por renta neta por unidad de consumo (INE, 2023) y agrupadas en cinco grupos con el mismo censo',
+            + tabla(f'Generales de 2023 {en}: secciones censales ordenadas por renta neta por unidad de consumo (INE, 2023) y agrupadas en {"cinco" if partes == 5 else "tres"} grupos con el mismo censo',
                     ['Grupo', 'Renta', 'Secciones', 'Participación'] + [escape(T.NOMBRE[c]) for c in fams], filas))
 
 
@@ -246,11 +260,13 @@ def bloque_municipios(nombre, df, nivel, n=15):
     for _, m in d.iterrows():
         r = T.resultado(m.to_frame().T, y)
         g = T.ganador(r)
-        filas.append([f'<a href="{raiz}?m={m.mun_code}">{escape(m.municipio)}</a>', num(m.poblacion), pct(m[f"{y}_part"]),
+        nom = (f'<a href="{raiz}{CIUDADES[m.mun_code]}">{escape(m.municipio)}</a> · <a href="{raiz}?m={m.mun_code}">mapa</a>' if m.mun_code in CIUDADES
+               else f'<a href="{raiz}?m={m.mun_code}">{escape(m.municipio)}</a>')
+        filas.append([nom, num(m.poblacion), pct(m[f"{y}_part"]),
                       f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—'])
     out = ('<h2>Municipios</h2>'
-           + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Cada nombre abre el municipio en el '
-                f'<a href="{raiz}">mapa de resultados por sección censal</a>, donde se ve barrio a barrio y en cualquier elección desde 1977.')
+           + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Las ciudades de más de 50.000 habitantes y las capitales tienen página propia; '
+                f'«mapa» abre el municipio en el <a href="{raiz}">mapa de resultados por sección censal</a>, donde se ve barrio a barrio y en cualquier elección desde 1977.')
            + tabla(f'Municipios más poblados de {escape(nombre)}, generales de 2023', ['Municipio', 'Habitantes', 'Participación', 'Más votado'], filas))
     grandes = df[df[f'{y}_censo'] >= 1000].dropna(subset=[f'{y}_part'])
     if len(grandes) >= 10:
@@ -405,6 +421,10 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     h.append(bloque_serie(nombre, serie))
     h.append(bloque_renta(nombre, en, sec))
     h.append(bloque_municipios(nombre, df, nivel))
+    cs = sorted((c for c in CIUDADES if c[:2] in provs), key=lambda c: T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0])
+    if cs:
+        h.append('<h2>Ciudades</h2><p>Páginas con el voto barrio a barrio, por renta y desde 1977: '
+                 + ' · '.join(f'<a href="{raiz}{CIUDADES[c]}">elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a>' for c in cs) + '.</p>')
     h.append(bloque_relacionadas(provs, nivel, extra))
     h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}elecciones/">Elecciones por comunidad autónoma y provincia</a></li>'
              f'<li><a href="{raiz}elecciones/mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li>'
@@ -446,6 +466,118 @@ def territorios():
     return paginas, resumen
 
 
+# ---------- ciudades: capitales de provincia y municipios de más de 50.000 habitantes ----------
+CAPITALES = {'01059', '02003', '03014', '04013', '05019', '06015', '07040', '08019', '09059', '10037', '11012', '12040', '13034', '14021',
+             '15030', '16078', '17079', '18087', '19130', '20069', '21041', '22125', '23050', '24089', '25120', '26089', '27028', '28079',
+             '29067', '30030', '31201', '32054', '33044', '34120', '35016', '36038', '37274', '38038', '39075', '40194', '41091', '42173',
+             '43148', '44216', '45168', '46250', '47186', '48020', '49275', '50297'}   # Ceuta y Melilla ya tienen su página de comunidad
+UMBRAL = 50000
+
+
+def slug(t):
+    t = unicodedata.normalize('NFKD', t.lower()).encode('ascii', 'ignore').decode()
+    return re.sub(r'[^a-z0-9]+', '-', t).strip('-')
+
+
+def _ciudades():
+    m = T.MUN[((T.MUN.poblacion >= UMBRAL) | T.MUN.mun_code.isin(CAPITALES)) & ~T.MUN.prov.isin(['51', '52'])]
+    return {r.mun_code: f'{ruta_provincia(r.prov)}{slug(r.municipio)}/' for r in m.itertuples()}
+
+
+CIUDADES = _ciudades()
+
+
+def distrito_seccion(tc):
+    return f'distrito {int(tc[5:7])}, sección {int(tc[7:10])}'
+
+
+def pagina_ciudad(cod):
+    m = T.MUN[T.MUN.mun_code == cod]
+    fila = m.iloc[0]
+    nombre, p = fila.municipio, fila.prov
+    ccaa = PROV_CCAA[p]
+    ruta = CIUDADES[cod]
+    nivel = ruta.count('/')
+    sec = T.SEC[T.SEC.mun_code == cod]
+    serie = T.serie(m)
+    r = serie[T.ULTIMA]
+    g = T.ganador(r)
+    prov_df = T.MUN[T.MUN.prov == p]
+    rp = T.resultado(prov_df, T.ULTIMA)
+    uni = len(CCAA[ccaa][2]) == 1
+    nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
+    titulo = f'Elecciones en {nombre}: resultados por barrio y sección censal desde 1977'
+    desc = (f'Resultados de las elecciones generales en {nombre} de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
+            f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.')
+    about = lugar(nombre, lugar(nprov, ESPANA))
+    about['@type'] = 'City'
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
+    raiz = RAIZ_REL
+    pasos = [(raiz, 'Inicio'), (raiz + 'elecciones/', 'Elecciones'), (raiz + f'elecciones/{ccaa}/', CCAA[ccaa][0])]
+    if not uni:
+        pasos.append((raiz + ruta_provincia(p), PROV_NOMBRE[p]))
+    h.append(migas_html(pasos))
+    h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales 1977-2023</p>'
+             f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
+    h.append(f'<p class="subtitulo">Resultados por barrio y sección censal, voto por renta, municipales frente a generales y las 16 generales desde 1977</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
+    comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
+    conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {nprov}'
+    h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
+                f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec))} secciones censales.'))
+    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} barrio a barrio en el mapa por sección censal</a></p>')
+    h.append(bloque_resultado(nombre, r))
+    h.append(bloque_secciones(nombre, sec))
+    h.append(bloque_renta(nombre, f'en {nombre}', sec, ciudad=True))
+    h.append(bloque_municipales(nombre, m, r))
+    h.append(bloque_serie(nombre, serie))
+    rel = [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in atlas.municipios(q)]
+    h.append(bloque_relacionadas([], nivel, rel) if rel else '')
+    otras = sorted((c for c in CIUDADES if c[:2] == p and c != cod), key=lambda c: T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0])
+    li = [f'<li><a href="{raiz}{ruta_provincia(p)}">Elecciones en {"la provincia de " if not uni else ""}{escape(nprov)}</a></li>']
+    li += [f'<li><a href="{raiz}{CIUDADES[c]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in otras]
+    li += [f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li>',
+           f'<li><a href="{raiz}elecciones/mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li>']
+    h.append('<h2>Más datos</h2><ul>' + ''.join(li) + '</ul>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def bloque_secciones(nombre, sec):
+    s = sec[sec.censo >= 200].copy()
+    if len(s) < 6:
+        return ''
+    s['part'] = s.votantes / s.censo
+    gana = s[[c for c in T.FAM if c != 'OTROS']].idxmax(axis=1).value_counts()
+    alto, bajo = s.nlargest(3, 'part'), s.nsmallest(3, 'part')
+    lista = lambda g: ', '.join(f'{distrito_seccion(x.tract_code)} ({pct(x.part)})' for x in g.itertuples())
+    reparto = '; '.join(f'{T.NOMBRE[c].split(" /")[0]}, en {num(n)}' for c, n in gana.items())
+    return ('<h2>Barrio a barrio</h2>'
+            + p_('Dato', f'En las generales de 2023, partido más votado en cada una de las {num(len(s))} secciones censales de {escape(nombre)}: {reparto}.')
+            + p_('Dato', f'La participación fue más alta en {lista(alto)} y más baja en {lista(bajo)}. '
+                 f'Entre la sección que más votó y la que menos hay {(alto.part.iloc[0] - bajo.part.iloc[0]) * 100:.0f} puntos.')
+            + f'<p class="leyenda">Las secciones se identifican por su distrito y número del INE; en el <a href="{RAIZ_REL}?m={s.mun_code.iloc[0]}">mapa</a> se ven sobre las calles.</p>')
+
+
+def bloque_municipales(nombre, m, rg):
+    y = 'M2023'
+    if m[f'{y}_part'].isna().all():
+        return ''
+    rm = T.resultado(m, y)
+    gm = max(rm['pct'], key=lambda c: rm['pct'][c] or 0)
+    quien = ('las listas locales y otros partidos' if gm == 'OTROS' else
+             ('el ' if gm in ('PP', 'PSOE', 'PNV', 'BNG') else '') + T.NOMBRE[gm].split(' /')[0])
+    dif = (rg['part'] - rm['part']) * 100
+    puntos = f'{abs(dif):.1f}'.replace('.', ',')
+    return ('<h2>Municipales frente a generales</h2>'
+            + p_('Dato', f'En las municipales del 28 de mayo de 2023 votó el {pct(rm["part"])} del censo de {escape(nombre)}, y en las generales de dos meses después, el {pct(rg["part"])}: '
+                 f'{puntos} puntos {"más" if dif > 0 else "menos"} para elegir al Gobierno que para elegir el ayuntamiento. '
+                 f'En las municipales, el voto más alto fue para {quien} ({pct(rm["pct"][gm])}).')
+            + '<p class="leyenda">En las municipales también votan los residentes de la Unión Europea, así que el censo no es idéntico. Las listas locales cuentan en «Otros».</p>')
+
+
 # ---------- índice y páginas temáticas ----------
 def indice(resumen):
     titulo = 'Elecciones en España por comunidad autónoma, provincia y sección censal'
@@ -465,6 +597,9 @@ def indice(resumen):
         u = ruta_provincia(p)[len('elecciones/'):]
         li.append(f'<li><a href="{u}">Elecciones en {escape(PROV_NOMBRE[p])}</a></li>')
     h.append('<h2>Provincias</h2><ul class="cols">' + ''.join(li) + '</ul>')
+    cs = sorted(CIUDADES, key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
+    h.append(f'<h2>Ciudades</h2><p>Las {len(cs)} capitales de provincia y municipios de más de 50.000 habitantes, con el voto barrio a barrio:</p><ul class="cols">'
+             + ''.join(f'<li><a href="{CIUDADES[c][len("elecciones/"):]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
     h.append('<h2>Por tema</h2><ul>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
@@ -644,6 +779,8 @@ def portada():
 
 def main():
     pags, resumen = territorios()
+    pags += [pagina_ciudad(c) for c in CIUDADES]
+    (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen)]
     for ruta, html in pags:
         f = ROOT / ruta / 'index.html'

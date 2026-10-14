@@ -285,21 +285,27 @@ def enlaces_mapa(p):
 
 
 sys.path.insert(0, str(ROOT / 'src'))
-from territorios_rutas import PROV_NOMBRE, ruta_provincia  # noqa: E402
+from territorios_rutas import PROV_NOMBRE, ruta_provincia, CIUDADES  # noqa: E402
+
+
+def municipios(p):
+    """Códigos INE de los municipios de la pieza que se identifican sin ambigüedad."""
+    if p['serie'] == 'bisagras':   # sus lugares son provincias
+        return set()
+    out = set()
+    for lugar in p['lugares']:
+        cods = [MAPA_HOMONIMOS[lugar]] if lugar in MAPA_HOMONIMOS else \
+            [c for c, n in zip(MUN_MAPA['cod'], MUN_MAPA['nombre']) if lugar == n or lugar in n.split('/')]
+        if len(cods) == 1:
+            out.add(cods[0])
+    return out
 
 
 def provincias(p):
     """Códigos INE de las provincias de los lugares de la pieza (las de la serie «bisagras» ya son provincias)."""
-    out = set()
-    for lugar in p['lugares']:
-        if p['serie'] == 'bisagras':
-            out |= {c for c, n in PROV_NOMBRE.items() if lugar == n or lugar in n.split('/')}
-            continue
-        cods = [MAPA_HOMONIMOS[lugar]] if lugar in MAPA_HOMONIMOS else \
-            [c for c, n in zip(MUN_MAPA['cod'], MUN_MAPA['nombre']) if lugar == n or lugar in n.split('/')]
-        if len(cods) == 1:
-            out.add(cods[0][:2])
-    return sorted(out)
+    if p['serie'] == 'bisagras':
+        return sorted({c for lugar in p['lugares'] for c, n in PROV_NOMBRE.items() if lugar == n or lugar in n.split('/')})
+    return sorted({c[:2] for c in municipios(p)})
 
 
 def enlaces_territorio(p):
@@ -307,7 +313,9 @@ def enlaces_territorio(p):
     ps = provincias(p)
     if not ps:
         return ''
-    li = ' · '.join(f'<a href="../../../{ruta_provincia(c)}">elecciones en {escape(PROV_NOMBRE[c])}</a>' for c in ps)
+    ciudades = [(CIUDADES[c], MUN_MAPA['nombre'][MUN_MAPA['cod'].index(c)]) for c in sorted(municipios(p)) if c in CIUDADES]
+    li = ' · '.join([f'<a href="../../../{r}">elecciones en {escape(n)}</a>' for r, n in ciudades]
+                    + [f'<a href="../../../{ruta_provincia(c)}">elecciones en {escape(PROV_NOMBRE[c])}</a>' for c in ps])
     return f'<p>Resultados desde 1977, voto por renta de los barrios y municipios principales: {li}.</p>'
 
 

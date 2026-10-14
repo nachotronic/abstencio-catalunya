@@ -1,6 +1,6 @@
 // Imágenes para redes sociales (1200 × 630) de la serie «Historia electoral» de Actualidad, con el diseño de atlas/src/compartir.mjs.
 // Lee actualidad/src/historia/compartir.json (lo escribe paginas.py) y guarda los JPG en img/compartir/actualidad-<slug>.jpg.
-// Uso, después de construir.py y miniaturas.mjs:  node actualidad/src/historia/compartir.mjs
+// Uso, después de construir.py y miniaturas.mjs:  node actualidad/src/historia/compartir.mjs [otra lista .json, p. ej. actualidad/src/comunidades/compartir.json]
 // Necesita Playwright con Chromium (en el entorno de Claude ya está instalado).
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
@@ -15,7 +15,7 @@ catch { ({ chromium } = createRequire(execSync('npm root -g').toString().trim() 
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const OUT = path.join(ROOT, 'img', 'compartir');
-const lista = JSON.parse(fs.readFileSync(path.join(ROOT, 'actualidad', 'src', 'historia', 'compartir.json'), 'utf8'));
+const lista = JSON.parse(fs.readFileSync(process.argv[2] ? path.resolve(process.argv[2]) : path.join(ROOT, 'actualidad', 'src', 'historia', 'compartir.json'), 'utf8'));
 fs.mkdirSync(OUT, { recursive: true });
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

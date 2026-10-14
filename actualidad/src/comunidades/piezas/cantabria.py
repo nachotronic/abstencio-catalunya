@@ -66,11 +66,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='cantabria', slug='cantabria-historia-electoral', lugar='Cantabria', corto='Cantabria en las urnas',
-    titulo='El PP ha ganado nueve de las once autonómicas en Cantabria, pero Revilla, del PRC, la presidió dieciséis años',
+    titulo='El PP ha ganado nueve de las once autonómicas en Cantabria, pero Revilla la presidió 16 años',
     dek='Revilla llegó al Gobierno en 2003 desde el tercer puesto, con el apoyo del PSOE, y solo ganó unas elecciones, las de 2019. '
         'En las generales, el PP ha sido el más votado diez veces, también en 2004 y 2008. Y Cantabria vota más que la media española.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PP ha sido el más votado en nueve de las once autonómicas cántabras, pero Revilla, del PRC, presidió Cantabria de 2003 a 2011 y de 2015 a 2023. En las generales, el PP ganó diez de dieciséis, y la participación supera siempre la media.',
+    descripcion='Miguel Ángel Revilla, del PRC, presidió Cantabria de 2003 a 2011 y de 2015 a 2023. En las generales, el PP ganó diez de dieciséis.',
     compara='Las 11 elecciones al Parlamento de Cantabria (1983-2023) y las 16 generales (1977-2023) en Cantabria, por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('acantabria', 'Cantabria'),

@@ -67,11 +67,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='murcia', slug='murcia-historia-electoral', lugar='Región de Murcia', corto='Murcia en las urnas',
-    titulo='Murcia es la única provincia donde Vox ha ganado unas generales; el PP la gobierna desde 1995 y ahora depende de Vox',
+    titulo='Murcia es la única provincia donde Vox ha ganado unas generales',
     dek='El PSOE gobernó los doce primeros años con mayoría absoluta. Valcárcel encadenó cinco mayorías del PP, y de 2000 a 2016 Murcia fue la comunidad donde el PP sacaba más votos. '
         'Desde 2019, López Miras ha perdido unas elecciones, sobrevivido a una moción de censura y gobernado con Vox.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='En noviembre de 2019, Murcia fue la única provincia de España donde Vox fue la lista más votada. El PP gobierna la región desde 1995; López Miras perdió en 2019, superó una moción de censura en 2021 y gobernó con Vox desde 2023.',
+    descripcion='Vox fue la lista más votada en Murcia en noviembre de 2019. El PP gobierna la región desde 1995; López Miras superó una moción de censura en 2021.',
     compara='Las 11 elecciones a la Asamblea Regional de Murcia (1983-2023) y las 16 generales (1977-2023) en la Región de Murcia, por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('amurcia', 'la Región de Murcia'),

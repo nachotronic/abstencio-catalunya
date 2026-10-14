@@ -63,11 +63,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='castilla-la-mancha', slug='castilla-la-mancha-historia-electoral', lugar='Castilla-La Mancha', corto='Castilla-La Mancha en las urnas',
-    titulo='El PSOE ha gobernado Castilla-La Mancha en diez de sus once legislaturas; en las generales, el PP ganó allí incluso en 2004 y 2008, con Zapatero',
+    titulo='El PSOE ha gobernado Castilla-La Mancha en diez de sus once legislaturas',
     dek='Bono encadenó seis mayorías absolutas y Page retuvo la suya en 2023 por un escaño. Pero en las generales la comunidad se inclina al PP: '
         'fue la lista más votada en ocho de las dieciséis desde 1977, también en 2023.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PSOE ha gobernado Castilla-La Mancha en diez de sus once legislaturas, con la única excepción de Cospedal (2011-2015). En las generales, el PP ganó allí ocho veces, también en 2004 y 2008.',
+    descripcion='La única legislatura del PP fue la de Cospedal (2011-2015). En las generales, el PP ganó allí ocho veces, también en 2004 y 2008, cuando ganó Zapatero.',
     compara='Las 11 elecciones a las Cortes de Castilla-La Mancha (1983-2023) y las 16 generales (1977-2023) en Castilla-La Mancha, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('acmancha', 'Castilla-La Mancha'),

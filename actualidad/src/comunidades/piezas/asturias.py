@@ -61,11 +61,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='asturias', slug='asturias-historia-electoral', lugar='Asturias', corto='Asturias en las urnas',
-    titulo='El PSOE ha gobernado Asturias en diez de sus doce legislaturas; en las generales, el PP ganó allí en 2004 aunque España votó a Zapatero',
+    titulo='El PSOE ha gobernado Asturias en diez de sus doce legislaturas',
     dek='Las dos excepciones al gobierno socialista, Sergio Marqués en 1995 y Álvarez-Cascos en 2011, acabaron en crisis. '
         'En las generales Asturias es más disputada: el PP ganó en siete de las dieciséis y Podemos sacó el 21,5% en 2015.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PSOE ha gobernado Asturias en diez de las doce legislaturas autonómicas. Las dos excepciones, Marqués y Álvarez-Cascos, acabaron en crisis. En las generales, el PP ganó allí siete veces, también en 2004.',
+    descripcion='Las dos legislaturas sin el PSOE, con Marqués y Álvarez-Cascos, acabaron en crisis. En las generales, el PP ganó en Asturias siete veces, también en 2004.',
     compara='Las 12 elecciones a la Junta General del Principado (1983-2023) y las 16 generales (1977-2023) en Asturias, por concejo.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('aasturias', 'Asturias'),
