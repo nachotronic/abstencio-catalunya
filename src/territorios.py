@@ -404,7 +404,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     serie = T.serie(df)
     r = serie[T.ULTIMA]
     g = T.ganador(r)
-    titulo = f'Elecciones generales 29N en {nombre}: así votó cada municipio desde 1977'
+    titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó cada municipio desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             'Voto por renta de los barrios y municipios principales.')
     about = lugar(nombre, contenido or ESPANA)
@@ -531,7 +531,7 @@ def pagina_ciudad(cod):
     nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
     b_sec = bloque_secciones(nombre, sec)
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
-    titulo = f'Elecciones generales 29N en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
+    titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
                (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
