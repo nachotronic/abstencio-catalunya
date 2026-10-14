@@ -1,0 +1,196 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--sumar:#a2275f;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--neu:#3aa6bf}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>EAPN presenta su informe sobre pobreza y territorio: en los barrios más pobres se vota 15 puntos menos que en los más ricos, el doble de distancia que en 2004</h1>
+<p class="dek">En el 10% de secciones censales con menos renta votó el 62,1% en las generales de 2023; en el 10% más rico, el 77,4%. En las grandes ciudades la brecha llega a 22,5 puntos. El PSOE gana en los barrios pobres y el PP, en los ricos.</p>
+<div class="byline">Nacho G. del Álamo · 15 de octubre de 2026</div>
+<p style="margin-top:1.4rem">La organización EAPN España presenta este jueves 15 de octubre «Pobreza y territorio», su informe sobre la pobreza en cada comunidad autónoma, con la crisis de la vivienda en el centro, según la <a href="https://www.infobae.com/espana/agencias/2026/10/14/temas-del-dia-de-efe-espana-del-jueves-15-de-octubre-de-2026/">agenda de EFE</a>. Llega a mes y medio de las elecciones del 29N y después de semanas en las que el desahucio y la muerte de Maricarmen, una vecina de Madrid de 87 años, han llevado la vivienda a la campaña.</p>
+<p>Las cifras de partida son las de la Encuesta de Condiciones de Vida del <a href="https://www.ine.es/dyngs/Prensa/es/ECV2025.htm">INE</a>: el 19,5% de la población está en riesgo de pobreza, y el 25,7% en riesgo de pobreza o exclusión social (la tasa AROPE). Por comunidades, el riesgo de pobreza va del 9,3% del País Vasco al 27,7% de Andalucía, y en Ceuta y Melilla pasa del 37%. En su <a href="https://www.plataformaong.org/ARCHIVO/documentos/noticias/4924/1780480085_informe-xvi-el-estado-de-la-pobreza-2026.pdf">informe de junio</a>, EAPN escribió que «en términos absolutos 12,6 millones de personas están en AROPE», y que «la tasa AROPE de quienes residen de alquiler a precio de mercado (43,6 %) [...] es más del doble que la de quienes tienen una vivienda en propiedad (19,5 %)».</p>
+<p>El informe territorial del año pasado ya apuntaba en esa dirección: la crisis de la vivienda «se ha convertido en uno de los principales factores generadores de pobreza», según el <a href="https://www.eapn.es/ARCHIVO/documentos/noticias/1760593879_xv_informe_pobreza-y-territorio-ccaa-ue_eapn2025.pdf">XV informe de EAPN</a>. Tras el rechazo de los decretos de vivienda en el Congreso, la organización <a href="https://www.eapn.es/actualidad/1979/eapn-es-lamenta-la-incapacidad-de-los-grupos-parlamentarios-para-adoptar-medidas-de-proteccion-del-derecho-a-la-vivienda">lamentó</a> el 2 de octubre que «el derecho a la vivienda no puede quedar bloqueado por la confrontación política».</p>
+<p>¿Cómo votan los barrios donde vive menos dinero? Hemos ordenado las 34.590 secciones censales de España según su renta media por unidad de consumo (INE, Atlas de distribución de renta de los hogares, datos de 2023) y las hemos agrupado en diez tramos con el mismo número de secciones. En el 10% más pobre, la renta media está por debajo de 15.551 euros por unidad de consumo; en el 10% más rico, por encima de 30.066.</p>
+<h2>Quince puntos menos de participación</h2>
+<figure>
+<figcaption><span class="t">La participación en los barrios más pobres y en los más ricos</span><span class="s">Participación en las elecciones generales en el 10% de secciones con menos renta y en el 10% con más. 2004-2023</span></figcaption>
+<div class="chart" id="gap"></div>
+<div class="legend"><span><i class="sw" style="background:var(--neu)"></i>10% más rico</span><span><i class="sw" style="background:var(--psoe)"></i>10% más pobre</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa (vía pollspaindata), sin voto exterior; INE, Atlas de distribución de renta de los hogares (2023). Cálculo propio.</div>
+<details><summary>Ver la tabla por elección</summary><div class="tbl" id="gap-tbl"></div></details>
+</figure>
+
+<p>En las generales de 2023 votó el 62,1% del censo en las secciones más pobres y el 77,4% en las más ricas: 15,3 puntos de diferencia. En esas secciones más pobres se quedaron sin votar 1.182.587 personas, la cifra más alta de los diez tramos.</p>
+<p>La distancia no ha dejado de crecer. En 2004 era de 8,0 puntos (73,6% frente a 81,6%); en 2011, de 10,0; en noviembre de 2019 llegó a 16,9. En los barrios ricos, la participación se ha movido poco en veinte años. En los pobres ha caído 11,5 puntos.</p>
+<p>Hay una advertencia: la renta es la de 2023, y la usamos también para elecciones anteriores. Un barrio que hoy está en el tramo más pobre pudo no estarlo en 2004. Las secciones son las actuales.</p>
+<h2>En las ciudades, la brecha es mayor</h2>
+<figure>
+<figcaption><span class="t">Participación según la renta del barrio, en las grandes ciudades</span><span class="s">Participación en las generales de 2023 en las 64 ciudades con más de 75.000 electores. Cada tramo reúne el 10% de las secciones de cada ciudad, de la más pobre a la más rica</span></figcaption>
+<div class="chart" id="city"></div>
+<div class="src">Fuente: Ministerio del Interior; INE, Atlas de distribución de renta de los hogares (2023). Cálculo propio.</div>
+<details><summary>Ver la tabla por tramo</summary><div class="tbl" id="city-tbl"></div></details>
+</figure>
+
+<p>La comparación nacional mezcla territorios: muchas de las secciones más pobres están en Andalucía, Extremadura, Murcia o el sur de la Comunidad Valenciana, y muchas de las más ricas, en las grandes ciudades. Si se compara cada ciudad consigo misma, la distancia crece. En las 64 ciudades de más de 75.000 electores, el 10% de secciones más pobre de cada una votó al 56,5% en 2023, y el 10% más rico, al 79,0%: 22,5 puntos.</p>
+<p>No es un dato nuevo, pero sí persistente. En el VIII informe FOESSA, los sociólogos Manuel Trujillo (IESA-CSIC) y Braulio Gómez Fortes (Deusto) escribían en 2019: «En España, existen barrios donde el 75% de sus habitantes no vota. Estos barrios, verdaderos agujeros negros de la democracia, se caracterizan por estar habitados por los más pobres de la sociedad». Y añadían: «Los ciudadanos que más necesitan del Estado para sacar su vida adelante no votan. Sus preferencias dejan de entrar en el sistema» (<a href="https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf">FOESSA</a>).</p>
+<p>María Ramos y Pablo Simón lo describían así en un <a href="https://www.oxfamintermon.org/hubfs/Oxfam-Website/oi-informes/dominio6_participacion_politica.pdf">documento para Oxfam Intermón</a> ese mismo año: «cuando cae la participación electoral en una elección, los primeros que se alejan de las urnas son los sectores de menos ingresos y los parados». Pero también recordaban que el voto es «el mecanismo político más igualador y donde menos diferencias sociales se registran».</p>
+<h2>Cómo votan los barrios según su renta</h2>
+<figure>
+<figcaption><span class="t">El voto de 2023 según la renta del barrio</span><span class="s">Voto en las generales de 2023 en las secciones censales de España, agrupadas en diez tramos de igual tamaño según la renta media por unidad de consumo</span></figcaption>
+<div class="chart" id="dec"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: Ministerio del Interior; INE, Atlas de distribución de renta de los hogares (2023). Porcentaje sobre votos válidos a candidaturas, sin voto exterior.</div>
+<details><summary>Ver la tabla por tramo</summary><div class="tbl" id="dec-tbl"></div></details>
+</figure>
+
+<p>El PSOE sacó el 41,6% en las secciones más pobres y el 20,8% en las más ricas. El PP, al revés: 29,0% y 42,3%. Sumar se mueve poco, entre el 10,4% y el 14,0%.</p>
+<p>Vox sacó su mejor resultado en el tramo más pobre (15,5%, frente al 11,7% del más rico). Pero esa diferencia depende sobre todo de dónde están esas secciones. Si se ordena cada provincia por separado, Vox saca lo mismo en el 10% más pobre que en el 10% más rico (12,9% y 12,9%). En las grandes ciudades, algo más en los barrios ricos (13,3%) que en los pobres (12,3%). Otros análisis encuentran un patrón parecido en otras elecciones: en las andaluzas de 2026, según <a href="https://www.eldebate.com/espana/andalucia/20260519/vox-supera-toda-izquierda-psoe-zonas-rentas-bajas_418557.html">El Debate</a>, «Vox consigue un 18,1% en los barrios más humildes», frente al 11,5% en los de renta más alta.</p>
+<p>El PSOE y el PP, en cambio, mantienen su patrón dentro de cada provincia: el PSOE pasa del 41,2% al 21,6%, y el PP, del 26,6% al 45,9%.</p>
+<h2>La pobreza en la precampaña</h2>
+<p>El debate de estas semanas no ha sido sobre la pobreza en general, sino sobre los desahucios. Santiago Abascal dijo el 2 de octubre que «en España hay desahucios desde hace mucho tiempo y de repente se ha puesto en la palestra», según la crónica de Europa Press que publicó <a href="https://www.diariodeleon.es/nacional/261002/2099067/abascal-cree-gobierno-vivienda-tapar-ceuta.html">Diario de León</a>. Tras la muerte de Maricarmen, Yolanda Díaz escribió en redes: «Que nunca olvidemos que detrás de cada desahucio hay una vida», según recogió <a href="https://www.elsaltodiario.com/desahucios/reacciones-muerte-maricarmen-abascal">El Salto</a>.</p>
+<p>Todos estos datos son de secciones, no de personas. Dicen cómo votan los barrios donde vive menos o más dinero, no cómo votan los pobres o los ricos. Un barrio pobre puede tener vecinos con rentas muy distintas, y la participación de una sección no dice quién de sus vecinos votó.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más: <a href="https://mapaelectoral.es/actualidad/pensiones-barrios-envejecidos/">Las pensiones y los barrios envejecidos</a> · <a href="https://mapaelectoral.es/actualidad/maricarmen-alquiler-y-voto/">Los barrios de inquilinos votan menos</a> · <a href="https://mapaelectoral.es/actualidad/psoe-barrios-de-alquiler/">El PSOE en los barrios de alquiler</a></p>
+<div class="foot">Datos: Ministerio del Interior, generales de 2004 a 2023 por mesa (vía pollspaindata), sin voto exterior; INE, Atlas de distribución de renta de los hogares (2023) y Encuesta de Condiciones de Vida 2025. Cálculo propio: 34.590 secciones agrupadas en diez tramos de igual número según la renta media por unidad de consumo.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+
+const GAP=[["2004", 73.6, 81.6], ["2008", 71.8, 79.7], ["2011", 67.1, 77.1], ["2015", 65.8, 79.5], ["2016", 62.5, 76.7], ["abr. 2019", 67.1, 82.7], ["nov. 2019", 61.2, 78.1], ["2023", 62.1, 77.4]], D=[[1, 8797, 15551, 62.1, 29.0, 41.6, 15.5, 10.4], [2, 15552, 16934, 67.5, 32.7, 37.4, 14.9, 10.9], [3, 16935, 18130, 68.6, 33.9, 35.1, 14.1, 11.6], [4, 18131, 19251, 69.5, 34.4, 33.9, 13.0, 12.0], [5, 19252, 20403, 70.1, 34.0, 33.2, 12.2, 12.2], [6, 20404, 21723, 70.4, 32.8, 32.9, 11.7, 12.9], [7, 21724, 23451, 70.8, 31.1, 32.0, 11.5, 13.4], [8, 23454, 25839, 71.5, 29.4, 30.2, 10.6, 14.0], [9, 25840, 30065, 73.4, 30.5, 27.0, 9.9, 13.9], [10, 30066, 58752, 77.4, 42.3, 20.8, 11.7, 11.0]], CI=[[1, 56.5], [2, 63.1], [3, 65.7], [4, 67.9], [5, 69.9], [6, 71.8], [7, 73.3], [8, 74.8], [9, 76.8], [10, 79.0]];
+const N=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+(function(){const box=document.getElementById('gap');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=W<500?260:300,m={l:34,r:W<500?62:70,t:14,b:30},lo=50,hi=90;
+ const x=i=>m.l+i/(GAP.length-1)*(W-m.l-m.r),y=v=>H-m.b-(v-lo)/(hi-lo)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Participación en el 10% de secciones más pobres y más ricas, 2004-2023'},box);
+ for(let v=lo;v<=hi;v+=10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'}
+ GAP.forEach((r,i)=>{if(W>=500||(i%2==0&&i<GAP.length-2)||i==GAP.length-1)el('text',{x:x(i),y:H-10,'text-anchor':'middle','font-size':11},svg).textContent=r[0]});
+ [[2,'var(--neu)','Más ricas'],[1,'var(--psoe)','Más pobres']].forEach(([k,c,n])=>{el('path',{d:GAP.map((r,i)=>(i?'L':'M')+x(i)+' '+y(r[k])).join(''),fill:'none',stroke:c,'stroke-width':2},svg);
+  GAP.forEach((r,i)=>el('circle',{cx:x(i),cy:y(r[k]),r:3.5,fill:c,stroke:'var(--bg)','stroke-width':1.5},svg));
+  const v=GAP[GAP.length-1][k];el('text',{x:x(GAP.length-1)+8,y:y(v)+4,class:'lab','font-size':12},svg).textContent=c1(v)+'%'});
+ GAP.forEach((r,i)=>hov(box,tip,el('rect',{x:x(i)-(W-m.l-m.r)/(2*(GAP.length-1)),y:m.t,width:(W-m.l-m.r)/(GAP.length-1),height:H-m.t-m.b,fill:'transparent'},svg),`<b>Generales de ${r[0]}</b><br>10% más pobre: ${c1(r[1])}%<br>10% más rico: ${c1(r[2])}%<br>Diferencia: ${c1(r[2]-r[1])} puntos`));
+})();
+table('gap-tbl',['Elección','10% más pobre','10% más rico','Diferencia'],GAP.map(r=>[r[0],c1(r[1])+'%',c1(r[2])+'%',c1(r[2]-r[1])+' puntos']));
+(function(){const box=document.getElementById('city');const tip=tipFor(box);
+ const W=Math.max(300,box.clientWidth||640),H=W<500?240:260,m={l:34,r:8,t:18,b:30},lo=0,hi=100;const bw=(W-m.l-m.r)/CI.length;
+ const y=v=>H-m.b-(v-lo)/(hi-lo)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Participación por tramo de renta en las grandes ciudades'},box);
+ for(let v=lo;v<=hi;v+=25){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'}
+ CI.forEach((r,i)=>{const X=m.l+i*bw;el('rect',{x:X+2,y:y(r[1]),width:bw-4,height:y(0)-y(r[1]),rx:3,fill:'var(--neu)'},svg);
+  if(W>=500||i==0||i==9)el('text',{x:X+bw/2,y:y(r[1])-5,'text-anchor':'middle',class:'lab','font-size':11},svg).textContent=c1(r[1]);
+  el('text',{x:X+bw/2,y:H-10,'text-anchor':'middle','font-size':11},svg).textContent=i==0?'Más pobre':i==9?'Más rico':(W>=500?String(i+1):'');
+  hov(box,tip,el('rect',{x:X,y:m.t,width:bw,height:H-m.t-m.b,fill:'transparent'},svg),`<b>Tramo ${r[0]}</b><br>Participación: ${c1(r[1])}%`);});
+})();
+table('city-tbl',['Tramo de renta (dentro de cada ciudad)','Participación'],CI.map(r=>[r[0]==1?'1 (más pobre)':r[0]==10?'10 (más rico)':r[0],c1(r[1])+'%']));
+const PS=[['PP','var(--pp)',4],['PSOE','var(--psoe)',5],['Vox','var(--vox)',6],['Sumar','var(--sumar)',7]];
+(function(){const box=document.getElementById('dec');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=W<500?280:320,m={l:34,r:W<500?80:90,t:14,b:40},lo=0,hi=50;
+ const x=i=>m.l+i/(D.length-1)*(W-m.l-m.r),y=v=>H-m.b-(v-lo)/(hi-lo)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto por tramo de renta'},box);
+ for(let v=lo;v<=hi;v+=10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'}
+ D.forEach((r,i)=>{if(i==0||i==9||W>=500)el('text',{x:x(i),y:H-m.b+16,'text-anchor':'middle','font-size':11},svg).textContent=i==0?'Más pobres':i==9?'Más ricos':String(i+1)});
+ el('text',{x:(m.l+W-m.r)/2,y:H-6,'text-anchor':'middle','font-size':11},svg).textContent='Tramos de secciones según la renta por unidad de consumo';
+ PS.forEach(([n,c,k])=>{el('path',{d:D.map((r,i)=>(i?'L':'M')+x(i)+' '+y(r[k])).join(''),fill:'none',stroke:c,'stroke-width':2},svg);
+  D.forEach((r,i)=>el('circle',{cx:x(i),cy:y(r[k]),r:3.5,fill:c,stroke:'var(--bg)','stroke-width':1.5},svg));
+  const v=D[9][k];el('text',{x:x(9)+8,y:y(v)+(n=='Sumar'?14:n=='Vox'?-4:4),class:'lab','font-size':12},svg).textContent=n+' '+c1(v)});
+ D.forEach((r,i)=>hov(box,tip,el('rect',{x:x(i)-(W-m.l-m.r)/18,y:m.t,width:(W-m.l-m.r)/9,height:H-m.t-m.b,fill:'transparent'},svg),`<b>Tramo ${i+1}</b>: ${N(r[1])}–${N(r[2])} €<br>Participación: ${c1(r[3])}%<br>`+PS.map(([n,c,k])=>`${n}: <b>${c1(r[k])}%</b>`).join('<br>')));
+})();
+table('dec-tbl',['Tramo','Renta por unidad de consumo','Participación','PP','PSOE','Vox','Sumar'],D.map(r=>[r[0]==1?'1 (más pobres)':r[0]==10?'10 (más ricos)':r[0],N(r[1])+'–'+N(r[2])+' €',c1(r[3])+'%',c1(r[4])+'%',c1(r[5])+'%',c1(r[6])+'%',c1(r[7])+'%']));
+
+</script>
