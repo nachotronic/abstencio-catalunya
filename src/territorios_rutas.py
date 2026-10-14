@@ -2,6 +2,8 @@
 
 Módulo aparte, sin datos, para que otras secciones (el Atlas) puedan enlazar a esas páginas sin cargar nada.
 """
+import json, pathlib
+
 # INE: provincia → nombre corto para la URL
 PROV_SLUG = {
     '01': 'alava', '02': 'albacete', '03': 'alicante', '04': 'almeria', '05': 'avila', '06': 'badajoz', '07': 'illes-balears',
@@ -83,3 +85,8 @@ def enlaces_actualidad(slug, raiz):
     if slug in TEMA_SECCION:
         out.append((f'{raiz}elecciones/mapa-electoral-seccion-censal/', 'mapa electoral de España por sección censal'))
     return out
+
+
+# Ciudades con página propia (capitales y más de 50.000 habitantes): código INE → ruta. Lo escribe src/territorios.py.
+_F = pathlib.Path(__file__).with_name('ciudades.json')
+CIUDADES = json.loads(_F.read_text(encoding='utf-8')) if _F.exists() else {}
