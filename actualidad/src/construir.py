@@ -867,6 +867,13 @@ def pieza(p, todas):
               'publisher': MEDIO,
               'isPartOf': {'@type': 'CollectionPage', 'name': 'Actualidad', 'url': BASE + '/actualidad/'},
               'isAccessibleForFree': True, 'license': 'https://creativecommons.org/licenses/by/4.0/'}
+    # «Preguntas rápidas» (comunidades/faq.py): además de NewsArticle, FAQPage con las mismas preguntas y respuestas
+    qs = re.findall(r'<h3>(.*?)</h3><p>(.*?)</p>', re.search(r'<div class="faq">(.*?)</div>', main, re.S).group(1)) if '<div class="faq">' in main else []
+    if qs:
+        jsonld = [jsonld, {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': url + '#preguntas', 'inLanguage': 'es',
+                           'isPartOf': {'@id': url + '#articulo'},
+                           'mainEntity': [{'@type': 'Question', 'name': html.unescape(q), 'acceptedAnswer': {'@type': 'Answer', 'text': html.unescape(r)}}
+                                          for q, r in qs]}]
     out = (cabecera(p['titulo'], p['descripcion'], url, imagen, jsonld) + estilos + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../../', 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
     d = os.path.join(RAIZ, 'actualidad', p['slug'])
