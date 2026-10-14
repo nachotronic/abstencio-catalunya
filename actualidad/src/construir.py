@@ -466,6 +466,8 @@ PIEZAS = [
                  ('https://www.eldiario.es/piedrasdepapel/edad-voto-european-edition_132_4867767.html', 'Piedras de Papel, Dime tu edad y te diré qué votas (20-5-2014)')],
         enlaces=[],
         lugar='España',
+        foto=dict(src='img/actualidad/fotos/pensiones-barrios-envejecidos.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Unas gafas, una carta de la pensión y un jubilado en el balcón.'),
     ),
     dict(
         slug='acampada-sol-distrito-centro', fecha='2026-10-14',
