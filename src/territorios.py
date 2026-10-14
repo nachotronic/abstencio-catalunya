@@ -174,7 +174,8 @@ def entradilla(nombre, en, r, serie, ccaa=None):
     veces = {}
     for y in T.GENERALES:
         gg = T.ganador(serie[y])
-        veces[gg] = veces.get(gg, 0) + 1
+        if gg:   # municipios sin datos en alguna elección (creados después o huecos de 1982)
+            veces[gg] = veces.get(gg, 0) + 1
     top = max(veces, key=veces.get)
     reg = REGIONAL.get(ccaa, {})
     art = lambda c: reg[c] if c in reg and ' ' in reg[c] else ('el ' if c in ('PP', 'PSOE', 'PNV', 'BNG', 'CDS', 'PSC') or reg.get(c) == 'PSC' else '') + reg.get(c, T.NOMBRE[c].split(' /')[0])
@@ -191,11 +192,13 @@ def entradilla(nombre, en, r, serie, ccaa=None):
 
 def desde_1977(veces, nom_top, art):
     n = max(veces.values())
+    total = sum(veces.values())
+    de = f'de las {len(T.GENERALES)} elecciones generales' if total == len(T.GENERALES) else f'de las {total} elecciones generales con datos del municipio'
     empate = [c for c, v in veces.items() if v == n]
     if len(empate) > 1:
         nombres = ' y '.join(art(c) for c in empate)
-        return f'Desde 1977, {nombres} han sido los más votados en {n} de las {len(T.GENERALES)} elecciones generales cada uno.'
-    return f'Desde 1977, {nom_top} ha sido el partido más votado en {n} de las {len(T.GENERALES)} elecciones generales.'
+        return f'Desde 1977, {nombres} han sido los más votados en {n} {de} cada uno.'
+    return f'Desde 1977, {nom_top} ha sido el partido más votado en {n} {de}.'
 
 
 def bloque_resultado(nombre, r):
@@ -265,13 +268,13 @@ def bloque_municipios(nombre, df, nivel, n=15):
         filas.append([nom, num(m.poblacion), pct(m[f"{y}_part"]),
                       f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—'])
     out = ('<h2>Municipios</h2>'
-           + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Las ciudades de más de 50.000 habitantes y las capitales tienen página propia; '
+           + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Los municipios de más de 5.000 habitantes y las capitales tienen página propia; '
                 f'«mapa» abre el municipio en el <a href="{raiz}">mapa de resultados por sección censal</a>, donde se ve barrio a barrio y en cualquier elección desde 1977.')
            + tabla(f'Municipios más poblados de {escape(nombre)}, generales de 2023', ['Municipio', 'Habitantes', 'Participación', 'Más votado'], filas))
     grandes = df[df[f'{y}_censo'] >= 1000].dropna(subset=[f'{y}_part'])
     if len(grandes) >= 10:
         alto, bajo = grandes.nlargest(3, f'{y}_part'), grandes.nsmallest(3, f'{y}_part')
-        lista = lambda g: ', '.join(f'<a href="{raiz}?m={m.mun_code}">{escape(m.municipio)}</a> ({pct(m[f"{y}_part"])})' for _, m in g.iterrows())
+        lista = lambda g: ', '.join(f'<a href="{raiz}{CIUDADES[m.mun_code] if m.mun_code in CIUDADES else "?m=" + m.mun_code}">{escape(m.municipio)}</a> ({pct(m[f"{y}_part"])})' for _, m in g.iterrows())
         out += p_('Dato', f'Entre los municipios con al menos 1.000 electores, donde más se votó fue en {lista(alto)}, y donde menos, en {lista(bajo)}.')
     return out
 
@@ -421,9 +424,15 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     h.append(bloque_serie(nombre, serie))
     h.append(bloque_renta(nombre, en, sec))
     h.append(bloque_municipios(nombre, df, nivel))
-    cs = sorted((c for c in CIUDADES if c[:2] in provs), key=lambda c: T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0])
+    pob = T.MUN.set_index('mun_code').poblacion
+    cs = sorted((c for c in CIUDADES if c[:2] in provs), key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
+    if len(provs) > 1:   # en las comunidades, solo las ciudades; el resto de municipios, en su provincia
+        cs = [c for c in cs if c in CAPITALES or pob[c] >= GRANDE]
+        intro = 'Capitales y municipios de más de 50.000 habitantes; los de más de 5.000 están en la página de cada provincia'
+    else:
+        intro = f'Los {num(len(cs))} municipios de más de 5.000 habitantes{" y la capital" if any(c in CAPITALES and pob[c] < UMBRAL for c in cs) else ""}'
     if cs:
-        h.append('<h2>Ciudades</h2><p>Páginas con el voto barrio a barrio, por renta y desde 1977: '
+        h.append(f'<h2>Municipios con página propia</h2><p>{intro}, con el voto por sección censal y desde 1977: '
                  + ' · '.join(f'<a href="{raiz}{CIUDADES[c]}">elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a>' for c in cs) + '.</p>')
     h.append(bloque_relacionadas(provs, nivel, extra))
     h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}elecciones/">Elecciones por comunidad autónoma y provincia</a></li>'
@@ -466,12 +475,26 @@ def territorios():
     return paginas, resumen
 
 
-# ---------- ciudades: capitales de provincia y municipios de más de 50.000 habitantes ----------
+# ---------- ciudades: capitales de provincia y municipios de más de 5.000 habitantes ----------
 CAPITALES = {'01059', '02003', '03014', '04013', '05019', '06015', '07040', '08019', '09059', '10037', '11012', '12040', '13034', '14021',
              '15030', '16078', '17079', '18087', '19130', '20069', '21041', '22125', '23050', '24089', '25120', '26089', '27028', '28079',
              '29067', '30030', '31201', '32054', '33044', '34120', '35016', '36038', '37274', '38038', '39075', '40194', '41091', '42173',
              '43148', '44216', '45168', '46250', '47186', '48020', '49275', '50297'}   # Ceuta y Melilla ya tienen su página de comunidad
-UMBRAL = 50000
+UMBRAL = 5000
+GRANDE = 50000   # el índice general solo lista capitales y municipios de más de 50.000; el resto, en su provincia
+
+
+def nombre_visible(t):
+    """'Alfàs del Pi, l'' -> 'L'Alfàs del Pi'; 'Pinós, el/Pinoso' -> 'El Pinós/Pinoso'."""
+    m = re.fullmatch(r"(.+?), (l'|el|la|els|les|es|sa|ses|los|las|o|a|os|as)(/.*)?", t, re.I)
+    if not m:
+        return t
+    art = m.group(2)[0].upper() + m.group(2)[1:]
+    sep = '' if art.endswith("'") else ' '
+    return f'{art}{sep}{m.group(1)}{m.group(3) or ""}'
+
+
+T.MUN['municipio'] = T.MUN.municipio.map(nombre_visible)
 
 
 def slug(t):
@@ -506,9 +529,12 @@ def pagina_ciudad(cod):
     rp = T.resultado(prov_df, T.ULTIMA)
     uni = len(CCAA[ccaa][2]) == 1
     nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
-    titulo = f'Elecciones generales 29N en {nombre}: así votó cada barrio desde 1977'
+    b_sec = bloque_secciones(nombre, sec)
+    b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
+    titulo = f'Elecciones generales 29N en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
-            f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.')
+            + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
+               f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.'))
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
@@ -519,22 +545,24 @@ def pagina_ciudad(cod):
     h.append(migas_html(pasos))
     h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales 1977-2023</p>'
              f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
-    h.append(f'<p class="subtitulo">Resultados por barrio y sección censal, voto por renta, municipales frente a generales y las 16 generales desde 1977</p>')
+    h.append(f'<p class="subtitulo">Resultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {nprov}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
                 f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec))} secciones censales.'))
-    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} barrio a barrio en el mapa por sección censal</a></p>')
+    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"barrio a barrio " if b_sec else ""}en el mapa por sección censal</a></p>')
     h.append(bloque_resultado(nombre, r))
-    h.append(bloque_secciones(nombre, sec))
-    h.append(bloque_renta(nombre, f'en {nombre}', sec, ciudad=True))
+    h.append(b_sec)
+    h.append(b_renta)
     h.append(bloque_municipales(nombre, m, r))
     h.append(bloque_serie(nombre, serie))
     rel = [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in atlas.municipios(q)]
     h.append(bloque_relacionadas([], nivel, rel) if rel else '')
-    otras = sorted((c for c in CIUDADES if c[:2] == p and c != cod), key=lambda c: T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0])
+    pob = T.MUN.set_index('mun_code').poblacion
+    otras = sorted((c for c in CIUDADES if c[:2] == p and c != cod), key=lambda c: -pob[c])[:10]   # los diez más poblados; el resto, en la provincia
+    otras.sort(key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
     li = [f'<li><a href="{raiz}{ruta_provincia(p)}">Elecciones en {"la provincia de " if not uni else ""}{escape(nprov)}</a></li>']
     li += [f'<li><a href="{raiz}{CIUDADES[c]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in otras]
     li += [f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li>',
@@ -597,8 +625,10 @@ def indice(resumen):
         u = ruta_provincia(p)[len('elecciones/'):]
         li.append(f'<li><a href="{u}">Elecciones en {escape(PROV_NOMBRE[p])}</a></li>')
     h.append('<h2>Provincias</h2><ul class="cols">' + ''.join(li) + '</ul>')
-    cs = sorted(CIUDADES, key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
-    h.append(f'<h2>Ciudades</h2><p>Las {len(cs)} capitales de provincia y municipios de más de 50.000 habitantes, con el voto barrio a barrio:</p><ul class="cols">'
+    pob = T.MUN.set_index('mun_code').poblacion
+    cs = sorted((c for c in CIUDADES if c in CAPITALES or pob[c] >= GRANDE), key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
+    h.append(f'<h2>Ciudades</h2><p>Las {len(cs)} capitales de provincia y municipios de más de 50.000 habitantes, con el voto barrio a barrio. '
+             f'Los {num(len(CIUDADES) - len(cs))} municipios de entre 5.000 y 50.000 habitantes con página propia están en la página de su provincia.</p><ul class="cols">'
              + ''.join(f'<li><a href="{CIUDADES[c][len("elecciones/"):]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
     h.append('<h2>Por tema</h2><ul>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
