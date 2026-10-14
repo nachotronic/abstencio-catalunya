@@ -56,10 +56,10 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='melilla', slug='melilla-historia-electoral', lugar='Melilla', corto='Melilla en las urnas',
-    titulo='Melilla tuvo cuatro años un presidente con un solo escaño de 25; en las generales vota al PP desde 1996 y en 2019 rozó el cambio',
+    titulo='Melilla tuvo cuatro años un presidente con un solo escaño de 25',
     dek='Eduardo de Castro, de Ciudadanos, desalojó a Imbroda en 2019 con los votos de Coalición por Melilla y del PSOE. En 2023 Imbroda volvió con mayoría absoluta. En las generales, el PP ha ganado las diez últimas.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='En 2019 Melilla eligió presidente a un diputado de Ciudadanos con un solo escaño; Imbroda (PP) volvió en 2023 con mayoría absoluta. En las generales, el PP gana desde 1996 y en noviembre de 2019 Coalición por Melilla se quedó a una décima.',
+    descripcion='Eduardo de Castro (Cs) presidió Melilla de 2019 a 2023 y Imbroda (PP) volvió con mayoría absoluta. En las generales, el PP gana allí desde 1996.',
     compara='Las 12 elecciones locales y a la Asamblea de Melilla (1979-2023) y las 16 generales (1977-2023) en Melilla.',
     limites=LIMITES + ' Melilla es un solo municipio: no hay mapa. Las elecciones de 1979 a 1991 fueron municipales; desde 1995, a la Asamblea de la ciudad autónoma.',
     fuentes=FUENTES_COMUNES + [he_fuente('amelilla', 'Melilla'),

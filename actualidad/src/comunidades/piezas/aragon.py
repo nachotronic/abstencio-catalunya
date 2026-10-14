@@ -55,11 +55,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='aragon', slug='aragon-historia-electoral', lugar='Aragón', corto='Aragón en las urnas',
-    titulo='Huesca y Zaragoza han votado al ganador de España en las 16 generales; en sus Cortes nadie ha tenido nunca mayoría absoluta',
+    titulo='Huesca y Zaragoza han votado al ganador de España en las 16 generales',
     dek='Aragón es el espejo electoral de España en las generales. En las autonómicas, el PAR fue durante 30 años la llave de casi todos los gobiernos, '
         'con la derecha y con la izquierda, y en 2026 se quedó fuera. El PP de Azcón gobierna con Vox por segunda vez.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='Huesca y Zaragoza han votado al ganador de España en las 16 generales desde 1977. En las Cortes de Aragón nadie ha tenido mayoría absoluta; el PAR fue la llave de casi todos los gobiernos y en 2026 se quedó fuera. Azcón gobierna con Vox.',
+    descripcion='Huesca y Zaragoza han acertado las 16 generales. En las Cortes de Aragón nadie ha tenido nunca mayoría absoluta; Azcón gobierna con Vox.',
     compara='Las 12 elecciones a las Cortes de Aragón (1983-2026) y las 16 generales (1977-2023) en Aragón, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('aaragon', 'Aragón'),

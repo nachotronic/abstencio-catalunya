@@ -13,7 +13,7 @@ WG23 = wiki('Elecciones generales de España de 2023')
 def cuerpo(F, presidentes):
     return f"""
 <p style="margin-top:1.4rem">El PP gobierna la Comunidad de Madrid desde 1995, treinta y un años seguidos. Lo ha hecho con mayorías absolutas, en minoría con el apoyo de Ciudadanos y Vox, y también después de perder unas elecciones: en 2019 el PSOE fue la lista más votada, pero Isabel Díaz Ayuso llegó a la presidencia con 30 escaños, el peor resultado de su partido en Madrid. Cuatro años después tenía 70 y mayoría absoluta.</p>
-<p>Antes, los socialistas habían gobernado los doce primeros años de la autonomía con Joaquín Leguina. En las generales, Madrid fue del PSOE hasta 1986, y desde 1989 vota casi siempre al PP. Es la comunidad que más vota: su participación ha superado la media española en las dieciséis generales.</p>
+<p>Antes, los socialistas habían gobernado los doce primeros años de la autonomía con Joaquín Leguina. En las generales, Madrid votó a UCD en 1977, al PSOE de 1979 a 1986, y desde 1989 vota casi siempre al PP. Su participación ha superado la media española en las dieciséis generales.</p>
 <p>Este reportaje recorre esa historia con los resultados de las elecciones a la Asamblea de Madrid, de 1983 a 2023, y de las dieciséis generales desde 1977, municipio a municipio.</p>
 
 <h2>Doce años de Leguina, treinta y uno del PP</h2>
@@ -50,7 +50,7 @@ def cuerpo(F, presidentes):
 {F.mapa('Madrid, municipio a municipio', 'Lista más votada en cada municipio en las generales.')}
 <p>Solo uno de los 172 municipios con datos en las 16 elecciones ha votado siempre a la misma lista: Fuentidueña de Tajo, al PSOE.</p>
 
-<h2>La comunidad que más vota</h2>
+<h2>Siempre por encima de la media</h2>
 <p>Madrid ha votado más que el conjunto de España en las dieciséis generales, sin contar el voto exterior. En 1977 participó el 85,5% del censo, frente al 79,1% del país; en 2023, el 74,2%, frente al 70,4%.</p>
 {F.part('Participación en las generales: Madrid y España', 'Porcentaje de votantes sobre el censo de residentes en España.')}
 
@@ -61,11 +61,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='madrid', slug='madrid-historia-electoral', lugar='Comunidad de Madrid', corto='Madrid en las urnas',
-    titulo='El PP gobierna Madrid desde 1995, también tras perder en 2019; Ayuso pasó de 30 a 70 escaños en cuatro años',
+    titulo='El PP gobierna Madrid desde 1995; Ayuso pasó de 30 a 70 escaños en cuatro años',
     dek='Leguina gobernó los doce primeros años de la autonomía. Después llegaron Gallardón, el «tamayazo» de 2003, Aguirre y Ayuso. '
-        'En las generales, Madrid vota al PP desde 1989 casi sin excepción, mientras el cinturón del sur sigue con el PSOE. Y es la comunidad que más vota.',
+        'En las generales, Madrid vota al PP desde 1989 casi sin excepción, mientras el cinturón del sur sigue con el PSOE. Y siempre vota por encima de la media española.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PP gobierna la Comunidad de Madrid desde 1995. En 2019 el PSOE fue el más votado, pero Ayuso fue investida con 30 escaños; en 2023 tenía 70 y mayoría absoluta. En las generales, Madrid vota al PP desde 1989, salvo en 2019.',
+    descripcion='En 2019 el PSOE fue el más votado, pero Ayuso fue investida. En 2023 sacó mayoría absoluta. En las generales, Madrid vota al PP desde 1989, salvo en 2019.',
     compara='Las elecciones a la Asamblea de Madrid (1983-2023) y las 16 generales (1977-2023) en la Comunidad de Madrid, por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('amadrid', 'la Comunidad de Madrid'),

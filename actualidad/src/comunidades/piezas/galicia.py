@@ -61,11 +61,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='galicia', slug='galicia-historia-electoral', lugar='Galicia', corto='Galicia en las urnas',
-    titulo='El PP ha ganado las doce elecciones gallegas y solo perdió la Xunta dos veces; en las generales, el PSOE ganó allí una sola vez, en 2019',
+    titulo='El PP ha ganado las doce elecciones gallegas y solo perdió la Xunta dos veces',
     dek='AP y el PP han sido la lista más votada en todas las autonómicas desde 1981, con nueve mayorías absolutas. '
         'En las generales, Galicia votó a AP incluso cuando España votaba a Felipe González. El BNG es hoy la segunda fuerza en el Parlamento, con su récord de 25 escaños.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PP ha ganado las doce elecciones al Parlamento de Galicia y solo perdió la Xunta en 1987 y en 2005. En las generales, el PSOE fue el más votado en Galicia una sola vez, en abril de 2019. El BNG logró su récord en 2024.',
+    descripcion='El PP solo perdió la Xunta en 1987 y en 2005. En las generales, el PSOE fue el más votado en Galicia una sola vez, en abril de 2019.',
     compara='Las 12 elecciones al Parlamento de Galicia (1981-2024) y las 16 generales (1977-2023) en Galicia, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('agalicia', 'Galicia'),

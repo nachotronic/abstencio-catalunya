@@ -60,11 +60,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='andalucia', slug='andalucia-historia-electoral', lugar='Andalucía', corto='Andalucía en las urnas',
-    titulo='El PSOE gobernó Andalucía 36 años seguidos; desde 2019 la Junta es del PP, que ahora gobierna con Vox dentro',
+    titulo='El PSOE gobernó Andalucía 36 años seguidos; desde 2019 la Junta es del PP',
     dek='Los socialistas ganaron las once primeras autonómicas y 13 de las 16 generales. Sevilla es la única provincia que nunca les ha fallado. '
         'El PP ganó con mayoría absoluta en 2022, la perdió en 2026 y Moreno fue investido con los votos de Vox, que por primera vez entra en el Gobierno andaluz.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PSOE ganó las once primeras elecciones andaluzas y gobernó de 1982 a 2019. El PP ganó con mayoría absoluta en 2022 y en 2026 se quedó en 53 escaños; Moreno gobierna con Vox. En las generales, solo Sevilla ha votado siempre al PSOE.',
+    descripcion='El PSOE ganó las once primeras elecciones andaluzas y gobernó de 1982 a 2019. Desde entonces gobierna el PP de Moreno, ahora con Vox.',
     compara='Las 13 elecciones al Parlamento de Andalucía (1982-2026) y las 16 generales (1977-2023) en Andalucía, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('aandalucia', 'Andalucía'),

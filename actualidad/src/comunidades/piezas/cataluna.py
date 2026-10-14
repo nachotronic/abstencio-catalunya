@@ -67,11 +67,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='cataluna', slug='cataluna-historia-electoral', lugar='Cataluña', corto='Cataluña en las urnas',
-    titulo='El PSC ha sido el más votado en Cataluña en 11 de las 16 generales; la Generalitat la presidió CiU 23 años seguidos',
+    titulo='El PSC ha sido el más votado en Cataluña en 11 de las 16 generales, pero CiU gobernó 23 años',
     dek='En el Congreso, Cataluña vota sobre todo a los socialistas; en el Parlament, CiU fue la más votada en ocho de las diez elecciones hasta 2012, y en cuatro elecciones el partido con más votos no llegó a gobernar. '
         'En el mapa municipal, CiU, Junts y ERC han ganado casi siempre en más pueblos que el PSC.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PSC fue la lista más votada en Cataluña en 11 de las 16 generales, pero CiU gobernó la Generalitat de 1980 a 2003. En cuatro elecciones al Parlament, el partido con más votos no gobernó. Illa preside desde 2024.',
+    descripcion='En cuatro elecciones al Parlament, el partido con más votos no gobernó. Salvador Illa preside la Generalitat desde 2024.',
     compara='Las 14 elecciones al Parlament de Catalunya (1980-2024) y las 16 generales (1977-2023) en Cataluña, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('acatalunya', 'Cataluña'),

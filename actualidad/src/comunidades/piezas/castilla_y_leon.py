@@ -65,11 +65,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='castilla-y-leon', slug='castilla-y-leon-historia-electoral', lugar='Castilla y León', corto='Castilla y León en las urnas',
-    titulo='El PP gobierna Castilla y León desde 1987 y ha ganado allí 11 de las 16 generales; el PSOE ganó las autonómicas de 2019 y no gobernó',
+    titulo='El PP gobierna Castilla y León desde 1987, aunque el PSOE ganó las autonómicas de 2019',
     dek='Seis mayorías absolutas seguidas, de 1991 a 2011, y desde 2022 gobiernos con Vox: Mañueco fue investido por tercera vez en junio de 2026. '
         'En las generales, el PP saca aquí más que en el conjunto de España en todas las elecciones.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='El PP gobierna Castilla y León desde 1987. El PSOE ganó las autonómicas de 2019 y no gobernó; Mañueco ha gobernado con Ciudadanos y después con Vox. En las generales, el PP ganó allí 11 de 16.',
+    descripcion='Mañueco ha gobernado con Ciudadanos y después con Vox. En las generales, el PP ganó en Castilla y León 11 de 16.',
     compara='Las 12 elecciones a las Cortes de Castilla y León (1983-2026) y las 16 generales (1977-2023) en Castilla y León, por provincia y por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('acleon', 'Castilla y León'),

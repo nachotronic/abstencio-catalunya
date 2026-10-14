@@ -54,11 +54,11 @@ def cuerpo(F, presidentes):
 
 PIEZA = dict(
     cc='la-rioja', slug='la-rioja-historia-electoral', lugar='La Rioja', corto='La Rioja en las urnas',
-    titulo='La Rioja ha votado más que la media de España en las 16 generales, y el PP la gobernó 24 años seguidos',
+    titulo='La Rioja ha votado más que la media de España en las 16 generales',
     dek='Siete de las once elecciones riojanas dieron mayoría absoluta a un partido. Pedro Sanz encadenó cinco y Capellán la recuperó en 2023. '
         'En las generales, el PP es el más votado desde 1989 salvo en 2019.',
     cuerpo=cuerpo, pie=PIE,
-    descripcion='La Rioja ha dado mayoría absoluta a un partido en siete de sus once elecciones autonómicas, y el PP la gobernó de 1995 a 2019. En las generales vota más que la media y el PP es el más votado desde 1989, salvo en 2019.',
+    descripcion='El PP gobernó La Rioja de 1995 a 2019. En las generales, el PP es el más votado allí desde 1989, salvo en 2019.',
     compara='Las 11 elecciones al Parlamento de La Rioja (1983-2023) y las 16 generales (1977-2023) en La Rioja, por municipio.',
     limites=LIMITES,
     fuentes=FUENTES_COMUNES + [he_fuente('arioja', 'La Rioja'),
