@@ -1,0 +1,29 @@
+# Avisa a los buscadores de IndexNow (Bing, Yandex...) de las páginas que cambian en cada push a main.
+# Espera a que GitHub Pages publique el push antes de enviar.
+name: IndexNow
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Esperar a que la web publique el push
+        run: |
+          for i in $(seq 1 20); do
+            if curl -fsS https://mapaelectoral.es/7076dc68fb935de114542a0876378fae.txt >/dev/null; then break; fi
+            sleep 30
+          done
+          sleep 90
+      - name: Avisar de las páginas cambiadas
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then BEFORE="HEAD~1"; fi
+          git diff --name-only --diff-filter=AM "$BEFORE" "${{ github.sha }}" -- '*.html' > cambiadas.txt
+          wc -l < cambiadas.txt
+          xargs -a cambiadas.txt -r python3 src/indexnow.py
