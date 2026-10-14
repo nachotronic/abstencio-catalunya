@@ -500,6 +500,30 @@ def baja(texto):
     return '\n'.join('#' + l if l.startswith('#') else l for l in texto.strip().splitlines())
 
 
+def llms_actualidad():
+    """Piezas de Actualidad (título y entradilla de cada una), en el orden de su sitemap."""
+    import html as _html
+    mapa = ROOT / 'actualidad' / 'sitemap.xml'
+    if not mapa.exists():
+        return ''
+    filas = []
+    for url in re.findall(r'<loc>([^<]+)</loc>', mapa.read_text(encoding='utf-8')):
+        ruta = url[len(BASE):]
+        if ruta in ('actualidad/', ''):
+            continue
+        f = ROOT / (ruta + 'index.html' if ruta.endswith('/') else ruta)
+        if not f.exists():
+            continue
+        t = f.read_text(encoding='utf-8')
+        tit = re.search(r'<title>(.*?)</title>', t, re.S)
+        des = re.search(r'<meta name="description" content="([^"]*)"', t)
+        if tit:
+            nombre = _html.unescape(tit.group(1)).split(' · Mapa Electoral')[0].strip()
+            filas.append(f'- [{nombre}]({url})' + (f': {_html.unescape(des.group(1)).strip()}' if des else ''))
+    return ('## Actualidad\n\nPiezas al hilo de la actualidad y series de historia electoral por comunidad, con datos verificados y enlazados.\n\n'
+            + '\n'.join(filas)) if filas else ''
+
+
 def llms():
     # llms.txt del sitio: qué hay en mapaelectoral.es y, debajo, el resumen de cada sección
     # (portada y Atlas leídos de sus propios llms.txt, que generan sus scripts).
@@ -509,6 +533,9 @@ def llms():
         if f.exists():
             partes.append(baja(f.read_text(encoding='utf-8')))
     partes.append(baja(llms_cataluna()))
+    act = llms_actualidad()
+    if act:
+        partes.append(act)
     secciones = '\n\n'.join(partes)
     return f'''# Mapa electoral
 
@@ -521,6 +548,7 @@ Todas las cifras salen de datos oficiales (Ministerio del Interior, INE, Idescat
 - [Mapa de resultados de España (portada)]({BASE}): elecciones al Congreso de 2004 a 2023 por municipio y sección censal, cruzadas con renta, pobreza, edad y población extranjera; resultados en directo la noche del 29 de noviembre de 2026. Resumen: [generales-2026/llms.txt]({BASE}generales-2026/llms.txt)
 - [Elecciones por comunidad y provincia]({BASE}elecciones/): una página por comunidad autónoma y provincia con las generales desde 1977 y el voto por renta de los barrios; y dos temas, [mapa electoral por sección censal]({BASE}elecciones/mapa-electoral-seccion-censal/) y [voto y renta por barrios]({BASE}elecciones/voto-y-renta-por-barrios/). Resumen: [elecciones/llms.txt]({BASE}elecciones/llms.txt)
 - [Atlas de las anomalías electorales]({BASE}atlas/): piezas sobre los lugares que votan distinto de lo que cabría esperar. Resumen: [atlas/llms.txt]({BASE}atlas/llms.txt)
+- [Actualidad]({BASE}actualidad/): piezas al hilo de la actualidad y la historia electoral de cada comunidad desde 1977 (lista completa más abajo).
 - [¿Quién no vota en Cataluña?]({BASE}abstencion.html): abstención por sección censal en Cataluña, en castellano y [catalán]({BASE}ca.html).
 - [Girona, la provincia catalana donde menos adultos votan]({BASE}girona.html): las 536 secciones censales de la provincia de Girona, con quién no puede votar (sin nacionalidad española) y quién, pudiendo, no votó; en castellano y [catalán]({BASE}girona-ca.html).
 - [Sobre el autor]({BASE}sobre-mi.html)
