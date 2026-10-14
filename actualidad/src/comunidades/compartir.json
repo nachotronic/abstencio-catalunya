@@ -1,5 +1,19 @@
 [
  {
+  "archivo": "actualidad-ceuta-historia-electoral.jpg",
+  "serie": "Las comunidades en las urnas",
+  "titular": "Ceuta es uno de los dos sitios donde Vox ha ganado unas generales",
+  "subtitulo": "Vox ganó en Ceuta en noviembre de 2019, como en Murcia. En la Asamblea hubo cuatro presidentes en seis años; Juan Jesús Vivas (PP) gobierna desde 2001.",
+  "foto": "img/actualidad/ceuta-historia-electoral.jpg"
+ },
+ {
+  "archivo": "actualidad-melilla-historia-electoral.jpg",
+  "serie": "Las comunidades en las urnas",
+  "titular": "Melilla tuvo cuatro años un presidente con un solo escaño de 25",
+  "subtitulo": "Eduardo de Castro (Cs) presidió Melilla de 2019 a 2023 y Imbroda (PP) volvió con mayoría absoluta. En las generales, el PP gana allí desde 1996.",
+  "foto": "img/actualidad/melilla-historia-electoral.jpg"
+ },
+ {
   "archivo": "actualidad-andalucia-historia-electoral.jpg",
   "serie": "Las comunidades en las urnas",
   "titular": "El PSOE gobernó Andalucía 36 años seguidos; desde 2019 la Junta es del PP",
@@ -117,19 +131,5 @@
   "titular": "La Rioja ha votado más que la media de España en las 16 generales",
   "subtitulo": "El PP gobernó La Rioja de 1995 a 2019. En las generales, el PP es el más votado allí desde 1989, salvo en 2019.",
   "foto": "img/actualidad/fotos/la-rioja-historia-electoral.jpg"
- },
- {
-  "archivo": "actualidad-ceuta-historia-electoral.jpg",
-  "serie": "Las comunidades en las urnas",
-  "titular": "Ceuta es uno de los dos sitios donde Vox ha ganado unas generales",
-  "subtitulo": "Vox ganó en Ceuta en noviembre de 2019, como en Murcia. En la Asamblea hubo cuatro presidentes en seis años; Juan Jesús Vivas (PP) gobierna desde 2001.",
-  "foto": "img/actualidad/ceuta-historia-electoral.jpg"
- },
- {
-  "archivo": "actualidad-melilla-historia-electoral.jpg",
-  "serie": "Las comunidades en las urnas",
-  "titular": "Melilla tuvo cuatro años un presidente con un solo escaño de 25",
-  "subtitulo": "Eduardo de Castro (Cs) presidió Melilla de 2019 a 2023 y Imbroda (PP) volvió con mayoría absoluta. En las generales, el PP gana allí desde 1996.",
-  "foto": "img/actualidad/melilla-historia-electoral.jpg"
  }
 ]
