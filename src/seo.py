@@ -120,6 +120,11 @@ MAPA = {
     'title': '¿Quién no vota en Cataluña? Mapa interactivo',
     'desc': 'Mapa interactivo en 2D de la abstención en las 5.115 secciones censales de Cataluña, con gráficos por renta, estudios, paro y población extranjera.',
 }
+MAPA_CA = {
+    'title': 'Qui no vota a Catalunya? Mapa interactiu',
+    'desc': "Mapa interactiu en 2D de l'abstenció a les 5.115 seccions censals de Catalunya, amb gràfics per renda, estudis, atur i població estrangera.",
+}
+ALT_MAPA = [('es', BASE + 'mapa.html'), ('ca', BASE + 'mapa-ca.html'), ('x-default', BASE + 'mapa.html')]
 
 
 def dataset(L):
@@ -586,8 +591,8 @@ def sitemap_index():
 
 
 def sitemap():
-    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5'), ('girona.html', '0.9'), ('girona-ca.html', '0.9')]
-    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A, 'girona.html': ALT_G, 'girona-ca.html': ALT_G}
+    pages = [('abstencion.html', '1.0'), ('ca.html', '1.0'), ('metodologia.html', '0.6'), ('metodologia-ca.html', '0.6'), ('mapa.html', '0.5'), ('mapa-ca.html', '0.5'), ('sobre-mi.html', '0.3'), ('sobre-mi-ca.html', '0.3'), ('', '1.0'), ('generales-2026/metodologia.html', '0.5'), ('girona.html', '0.9'), ('girona-ca.html', '0.9')]
+    pairs = {'abstencion.html': ALT, 'ca.html': ALT, 'metodologia.html': ALT_M, 'metodologia-ca.html': ALT_M, 'sobre-mi.html': ALT_A, 'sobre-mi-ca.html': ALT_A, 'mapa.html': ALT_MAPA, 'mapa-ca.html': ALT_MAPA, 'girona.html': ALT_G, 'girona-ca.html': ALT_G}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for p, pr in pages:
@@ -659,7 +664,8 @@ def main():
         inject(ROOT / t['page'], meta(t['title'], t['desc'], BASE + t['page'], L, t['locale'], ALT, ld(article(L), faqpage(L), dataset(L))))
         (ROOT / t['meth']).write_text(methodology(L), encoding='utf-8')
         (ROOT / ABOUT[L]).write_text(about(L), encoding='utf-8')
-    inject(ROOT / 'mapa.html', meta(MAPA['title'], MAPA['desc'], BASE + 'mapa.html', 'es', 'es_ES', [], ld(dataset('es')), typ='website'))
+    inject(ROOT / 'mapa.html', meta(MAPA['title'], MAPA['desc'], BASE + 'mapa.html', 'es', 'es_ES', ALT_MAPA, ld(dataset('es')), typ='website'))
+    inject(ROOT / 'mapa-ca.html', meta(MAPA_CA['title'], MAPA_CA['desc'], BASE + 'mapa-ca.html', 'ca', 'ca_ES', ALT_MAPA, ld(dataset('ca')), typ='website'))
     (ROOT / 'llms.txt').write_text(llms(), encoding='utf-8')
     (ROOT / 'sitemap.xml').write_text(sitemap(), encoding='utf-8')
     (ROOT / 'sitemap_index.xml').write_text(sitemap_index(), encoding='utf-8')

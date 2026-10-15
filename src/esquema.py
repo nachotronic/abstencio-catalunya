@@ -50,6 +50,7 @@ NOMBRES = {
     'abstencion.html': '¿Quién no vota en Cataluña?',
     'ca.html': 'Qui no vota a Catalunya?',
     'mapa.html': 'Mapa interactivo',
+    'mapa-ca.html': 'Mapa interactiu',
     'metodologia.html': 'Metodología',
     'metodologia-ca.html': 'Metodologia',
     'sobre-mi.html': 'Sobre mí',
@@ -60,10 +61,10 @@ NOMBRES = {
 }
 # Página de la que cuelga cada página suelta (las de carpeta cuelgan de la carpeta superior)
 PADRE = {
-    'ca.html': '', 'mapa.html': 'abstencion.html', 'metodologia.html': 'abstencion.html', 'metodologia-ca.html': 'ca.html',
+    'ca.html': '', 'mapa.html': 'abstencion.html', 'mapa-ca.html': 'ca.html', 'metodologia.html': 'abstencion.html', 'metodologia-ca.html': 'ca.html',
     'generales-2026/metodologia.html': '',
 }
-INICIO_CA = {'ca.html', 'metodologia-ca.html', 'sobre-mi-ca.html'}
+INICIO_CA = {'ca.html', 'mapa-ca.html', 'metodologia-ca.html', 'sobre-mi-ca.html'}
 NO_TOCAR = ('insertar/', 'generales-2026/index.html', '29n/', 'generales/')
 
 
