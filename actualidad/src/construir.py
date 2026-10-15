@@ -803,7 +803,7 @@ PIEZAS = [
         enlaces=[],
         lugar='Lleida',
         foto=dict(src='img/actualidad/fotos/minguez-lleida-29n.jpg', ancho=1280, alto=720, ia=True,
-                  pie='Unas llaves que cambian de mano, un bloque de pisos y una urna: un collage.'),
+                  pie='Montse Mínguez, unas llaves, un bloque de pisos y la Seu Vella de Lleida sobre el Segre: un collage.'),
     ),
     dict(
         slug='ceuta-melilla-participacion-29n', fecha='2026-10-15',
