@@ -208,4 +208,20 @@
       <news:title>Girona, barri a barri: el 2019 Junts guanyava en 36 seccions i el PSC en 13; el 2023, el PSC en 43 i Junts en 19</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/girona-esco-285-vots-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>L&#x27;escó més ajustat d&#x27;Espanya és a Girona: el PP se&#x27;n va quedar fora per 285 vots, menys gent de la que vota en una mesa</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/junts-girona-puigdemont-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>A Girona, Junts gairebé duplica el vot del Congrés al Parlament: el 19,1% el 2023 i el 36,3% el 2024, amb Puigdemont de candidat</news:title>
+    </news:news>
+  </url>
 </urlset>
