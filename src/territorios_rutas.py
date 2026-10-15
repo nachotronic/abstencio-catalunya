@@ -54,17 +54,62 @@ ACTUALIDAD_LUGAR = {
     'plasencia-acierta-siempre': ['10'], 'precio-del-alquiler-y-voto': ['46'], 'psa-andalucistas-1979': ['04', '11', '14', '18', '21', '23', '29', '41'],
     'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
     'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
+    'acampada-sol-distrito-centro': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
+    'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'ceuta-melilla-participacion-29n': ['51', '52'],
+    'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'malaga-barrio-a-barrio-29n': ['29'],
+    'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
+    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'zaragoza-barrio-a-barrio-29n': ['50'],
+}
+# Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
+ACTUALIDAD_MUNICIPIO = {
+    'acampada-sol-distrito-centro': ('28079', 'Madrid'), 'almeida-feijoo-madrid': ('28079', 'Madrid'),
+    'barcelona-barrio-a-barrio-29n': ('08019', 'Barcelona'), 'madrid-barrio-a-barrio-29n': ('28079', 'Madrid'),
+    'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
+    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'),
+    'valencia-barrio-a-barrio-29n': ('46250', 'València'), 'zaragoza-barrio-a-barrio-29n': ('50297', 'Zaragoza'),
+    'calle-que-parte-el-voto': ('46250', 'València'),
 }
 # Piezas de cada página temática
 TEMA_RENTA = ['maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'psoe-barrios-de-alquiler', 'precio-del-alquiler-y-voto',
-              'huelga-11n-paro-participacion', 'vox-poblacion-nacida-fuera', 'pisos-turisticos-y-votantes']
-TEMA_SECCION = ['izquierda-del-psoe-secciones', 'colau-barcelona-comuns', 'rufian-erc-comuns', 'mapa-derecha-1977-2023']
+              'huelga-11n-paro-participacion', 'vox-poblacion-nacida-fuera', 'pisos-turisticos-y-votantes',
+              'pobreza-participacion-barrios', 'pensiones-barrios-envejecidos', 'malaga-barrio-a-barrio-29n']
+TEMA_SECCION = ['como-voto-tu-calle', 'calle-que-parte-el-voto', 'madrid-barrio-a-barrio-29n', 'barcelona-barrio-a-barrio-29n',
+                'valencia-barrio-a-barrio-29n', 'sevilla-barrio-a-barrio-29n', 'zaragoza-barrio-a-barrio-29n', 'malaga-barrio-a-barrio-29n',
+                'murcia-barrio-a-barrio-29n', 'palma-barrio-a-barrio-29n',
+                'izquierda-del-psoe-secciones', 'colau-barcelona-comuns', 'rufian-erc-comuns', 'mapa-derecha-1977-2023']
+
+TEMA_PARTICIPACION = ['pobreza-participacion-barrios', 'maricarmen-alquiler-y-voto', 'huelga-11n-paro-participacion', 'votar-en-noviembre',
+                      'ceuta-melilla-participacion-29n', 'palma-barrio-a-barrio-29n', 'malaga-barrio-a-barrio-29n', 'europeas-solo-con-municipales',
+                      'baltar-censo-y-participacion', 'censo-electoral-desde-1977']
+TEMA_MUNICIPIOS = ['nunca-gano-el-psoe', 'nunca-gano-la-derecha', 'psoe-1982-mas-del-60', 'pueblos-menos-votantes-que-en-1977',
+                   'ucd-ciudadanos-hundimiento', 'municipios-fieles', 'plasencia-acierta-siempre', 'mont-roig-municipio-cambiante',
+                   'trebujena-pce-sumar', 'aceituna-de-mesa-pueblos', 'mapa-derecha-1977-2023']
+# Piezas sobre las generales del 29N que no llevan «29n» en la ruta
+TEMA_29N = ['votar-en-noviembre', 'vivienda-inmigracion-economia-cis', 'alianca-catalana-ceo-mapa', 'almeida-feijoo-madrid']
+# Diputados por provincia: 2023 y 2026 (Real Decreto 806/2026, BOE del 6 de octubre: Madrid gana uno y Cádiz lo pierde)
+ESCANOS_2023 = {'01': 4, '02': 4, '03': 12, '04': 6, '05': 3, '06': 5, '07': 8, '08': 32, '09': 4, '10': 4, '11': 9, '12': 5,
+                '13': 5, '14': 6, '15': 8, '16': 3, '17': 6, '18': 7, '19': 3, '20': 6, '21': 5, '22': 3, '23': 5, '24': 4,
+                '25': 4, '26': 4, '27': 4, '28': 37, '29': 11, '30': 10, '31': 5, '32': 4, '33': 7, '34': 3, '35': 8, '36': 7,
+                '37': 4, '38': 7, '39': 5, '40': 3, '41': 12, '42': 2, '43': 6, '44': 3, '45': 6, '46': 16, '47': 5, '48': 8,
+                '49': 3, '50': 7, '51': 1, '52': 1}
+ESCANOS_2026 = {**ESCANOS_2023, '28': 38, '11': 8}
+assert sum(ESCANOS_2023.values()) == 350 and sum(ESCANOS_2026.values()) == 350
+
+
+def es_29n(slug):
+    return '29n' in slug.split('-') or slug in TEMA_29N
 
 
 def ruta_provincia(p):
     """Ruta desde la raíz del sitio de la página de una provincia (o de su comunidad, si es uniprovincial)."""
     c = PROV_CCAA[p]
     return f'elecciones/{c}/{PROV_SLUG[p]}/' if len(CCAA[c][2]) > 1 else f'elecciones/{c}/'
+
+
+def en_provincia(p):
+    """«en …» de la página de una provincia: el de su comunidad si es uniprovincial («en la Comunidad de Madrid», no «en Madrid», que es la ciudad)."""
+    c = PROV_CCAA[p]
+    return CCAA[c][1] if len(CCAA[c][2]) == 1 else f'en {PROV_NOMBRE[p]}'
 
 
 def enlaces_actualidad(slug, raiz):
@@ -79,7 +124,18 @@ def enlaces_actualidad(slug, raiz):
         c = ccaa.pop()
         out.append((f'{raiz}elecciones/{c}/', f'elecciones en {CCAA[c][0]}'))
     else:
-        out += [(f'{raiz}{ruta_provincia(p)}', f'elecciones en {PROV_NOMBRE[p]}') for p in ps]
+        out += [(f'{raiz}{ruta_provincia(p)}', f'elecciones {en_provincia(p)}') for p in ps]
+    if slug in ACTUALIDAD_MUNICIPIO:   # pieza de una ciudad: su página y el mapa centrado en ella
+        cod, nombre = ACTUALIDAD_MUNICIPIO[slug]
+        if cod in CIUDADES:
+            out.append((f'{raiz}{CIUDADES[cod]}', f'elecciones en {nombre} barrio a barrio desde 1977'))
+        out.append((f'{raiz}?m={cod}', f'{nombre} calle a calle en el mapa electoral'))
+    if es_29n(slug):
+        out.append((f'{raiz}elecciones/elecciones-29n-2026/', 'elecciones generales del 29N de 2026: fecha y escaños por provincia'))
+    if slug in TEMA_PARTICIPACION:
+        out.append((f'{raiz}elecciones/participacion-electoral-por-barrio/', 'participación electoral por barrio en toda España'))
+    if slug in TEMA_MUNICIPIOS:
+        out.append((f'{raiz}elecciones/resultados-elecciones-por-municipio/', 'resultados de las elecciones por municipio desde 1977'))
     if slug in TEMA_RENTA:
         out.append((f'{raiz}elecciones/voto-y-renta-por-barrios/', 'voto y renta por barrios en toda España'))
     if slug in TEMA_SECCION:
