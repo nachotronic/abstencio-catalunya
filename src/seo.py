@@ -35,6 +35,12 @@ AUTHOR_BIO_PAGE = {
     'ca': 'Soc periodista de dades, amb àmplia experiència en diversos mitjans, i professor de Dades i visualitzacions a la Universitat de Girona (UdG). '
           'He rebut els premis Carles Rahola, Tiflos, Injuve i el Premi Nacional de Periodisme Placeat pel reportatge «Sólo el drag les hace libres».',
 }
+# Párrafo extra de la página (HTML, primera persona). Fuente: datos.gob.es, 14/01/2021.
+ESCOVID_URL = 'https://datos.gob.es/es/noticias/descubre-los-proyectos-ganadores-de-los-concursos-de-datos-abiertos-de-castilla-y-leon-y'
+AUTHOR_EXTRA_PAGE = {
+    'es': f'Formé parte de EsCOVID19data, una recopilación colaborativa de datos y visualizaciones de la COVID-19 por provincias en España, que <a href="{ESCOVID_URL}">ganó el primer premio en la categoría de Productos y servicios</a> del IV Concurso de Datos Abiertos de la Junta de Castilla y León.',
+    'ca': f'Vaig formar part d\'EsCOVID19data, un recull col·laboratiu de dades i visualitzacions de la COVID-19 per províncies a Espanya, que <a href="{ESCOVID_URL}" hreflang="es">va guanyar el primer premi en la categoria de Productes i serveis</a> del IV Concurs de Dades Obertes de la Junta de Castella i Lleó.',
+}
 AUTHOR_JOB = {'es': 'Periodista de datos', 'ca': 'Periodista de dades'}          # p. ej. «Periodista de datos»; vacío = no se muestra
 AUTHOR_LINKS = [('Universitat de Girona', 'https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES'), ('LinkedIn', 'https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/'), ('X', 'https://x.com/nachotronic'), ('GitHub', 'https://github.com/nachotronic')]   # redes sociales, web, otros trabajos
 ABOUT = {'es': 'sobre-mi.html', 'ca': 'sobre-mi-ca.html'}
@@ -434,6 +440,7 @@ def about(L):
     head = meta(f"{a['title']} · {AUTHOR_NAME}", desc, BASE + ABOUT[L], L, t['locale'], ALT_A, ld(page), typ='profile')
     job = f'<p class="kicker">{e(AUTHOR_JOB[L])}</p>\n' if AUTHOR_JOB[L] else ''
     bio = f'<p>{e(AUTHOR_BIO_PAGE[L])}</p>\n' if AUTHOR_BIO_PAGE[L] else ''
+    if AUTHOR_EXTRA_PAGE[L]: bio += f'<p>{AUTHOR_EXTRA_PAGE[L]}</p>\n'
     works = '\n'.join(f'<li><a href="{u}">{e(n)}</a> · {d}</li>' for u, n, d in a['works'])
     links = '\n'.join([f'<li><a href="{CONTACT}">{a["contact"]}</a></li>'] + [f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS])
     return f'''<!doctype html>
