@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookies y analítica · Mapa Electoral</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mapaelectoral.es/cookies.html">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics --><script src="/analitica.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#f4f5f8;--methbg:#e8ebf3;--surface:#fff;--fg:#161a2b;--muted:#5b6178;--rule:#d9dce6;--accent:#3846a0;
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;--body:"Newsreader",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141d;--methbg:#1b1e2b;--surface:#1a1d29;--fg:#e8eaf2;--muted:#9aa0b8;--rule:#2c3042;--accent:#8f9cf0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12141d;--methbg:#1b1e2b;--surface:#1a1d29;--fg:#e8eaf2;--muted:#9aa0b8;--rule:#2c3042;--accent:#8f9cf0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.08rem;line-height:1.6;padding:0 16px 64px}
+body.meth{background:var(--methbg);font-size:1rem}
+main{max-width:72ch;margin:0 auto}
+nav{display:flex;justify-content:space-between;gap:12px;padding:20px 0;font-family:var(--mono);font-size:.82rem}
+a{color:var(--accent)}
+h1,h2{font-family:var(--display);line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:800;margin:.4rem 0 1rem}
+h2{font-size:1.4rem;margin:2.4rem 0 .6rem}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+ul{padding-left:1.2rem}li{margin:.35rem 0}
+code,td:first-child{font-family:var(--mono);font-size:.84rem}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500}
+.cite{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 14px}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="/">← Mapa Electoral</a><a href="#ca" hreflang="ca" lang="ca">Català</a></nav>
+<p class="kicker">Privacidad</p>
+<h1>Cookies y analítica</h1>
+<p>Mapa Electoral mide sus visitas de dos maneras:</p>
+<ul>
+<li><strong>Cloudflare Web Analytics</strong>, siempre activa. No usa cookies, no guarda tu IP ni te sigue entre webs: solo cuenta visitas a cada página.</li>
+<li><strong>Google Analytics 4</strong>, solo si lo aceptas en el aviso. Instala las cookies <code>_ga</code> y <code>_ga_*</code> (duran hasta 2 años) para distinguir visitas nuevas de repetidas y saber qué piezas se leen y desde dónde se llega. Google trata esos datos como encargado; más información en <a href="https://policies.google.com/technologies/partner-sites">cómo usa Google los datos de los sitios que usan sus servicios</a>.</li>
+</ul>
+<p>No hay publicidad, ni cookies de redes sociales, ni se venden datos. Tu elección se guarda en tu navegador (<code>localStorage</code>, sin cookie).</p>
+<p><button type="button" onclick="window.mapaCookies&&window.mapaCookies()">Cambiar mi elección</button></p>
+<p>Responsable: Nacho G. del Álamo (<a href="sobre-mi.html">sobre mí</a>).</p>
+
+<h2 id="ca" lang="ca">Galetes i analítica</h2>
+<div lang="ca">
+<p>Mapa Electoral mesura les visites amb <strong>Cloudflare Web Analytics</strong> (sempre activa, sense galetes ni seguiment) i amb <strong>Google Analytics 4</strong>, només si ho acceptes a l'avís. Google Analytics instal·la les galetes <code>_ga</code> i <code>_ga_*</code> (fins a 2 anys) per saber quines peces es llegeixen i d'on arriben les visites. No hi ha publicitat ni galetes de xarxes socials.</p>
+<p><button type="button" onclick="window.mapaCookies&&window.mapaCookies()">Canviar la meva elecció</button></p>
+</div>
+</main>
+</body>
+</html>

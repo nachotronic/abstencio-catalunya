@@ -28,7 +28,7 @@ MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': SITIO
          'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
-CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->'''
+CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics --><script src="/analitica.js" defer></script>'''
 HOY = datetime.date.today().isoformat()
 PUBLICADO = '2026-10-06'   # fecha de publicación de las piezas que aún no tienen `revisado`
 # Última vez que cambió el contenido de las piezas ya publicadas (texto, cifras o fotos). Se cambia a mano:
