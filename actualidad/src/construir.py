@@ -1045,6 +1045,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>"""
 
 
@@ -1096,6 +1100,9 @@ def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, ma
 """
 
 
+TIPOS = {'dato': 'Dato', 'patron': 'Patrón', 'hipotesis': 'Hipótesis', 'contexto': 'Contexto'}
+
+
 def pieza(p, todas):
     src = open(os.path.join(SRC, p['slug'] + '.html'), encoding='utf-8').read()
     estilos = ''.join(re.findall(r'<style>.*?</style>', src, re.S))
@@ -1122,6 +1129,16 @@ def pieza(p, todas):
     for texto, slug in ENLACES_INTERNOS.get(p['slug'], []):
         assert texto in main and any(q['slug'] == slug for q in todas), (p['slug'], texto)
         main = main.replace(texto, f'<a href="../{slug}/">{texto}</a>', 1)
+    # etiquetas dato / patrón / hipótesis / contexto por párrafo, como en el Atlas (estándar de verificación)
+    if 'data-tipo="' in main:
+        main = re.sub(r'<p data-tipo="(dato|patron|hipotesis|contexto)"([^>]*)>',
+                      lambda m: f'<p data-tipo="{m.group(1)}"{m.group(2)}><span class="tipo t-{m.group(1)}">{TIPOS[m.group(1)]}</span>', main)
+        nota = ('<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), '
+                '<b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) '
+                'o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). '
+                '<a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>')
+        ancla = r'(<figure class="foto">.*?</figure>)' if '<figure class="foto">' in main else r'(<p class="firma">.*?</p>)'
+        main = re.sub(ancla, lambda m: m.group(1) + '\n' + nota, main, count=1, flags=re.S)
     fuentes = ''.join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for u, t in p['fuentes'])
     # la serie entera, en orden, con la pieza actual marcada; después, las últimas de otras series
     serie = [q for q in todas if q['serie'] == p['serie']]
