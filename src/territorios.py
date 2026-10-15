@@ -444,6 +444,8 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
                                                 [hijo for hijo in hijos]))
     h.append(bloque_resultado(nombre, r))
     h.append(bloque_serie(nombre, serie))
+    if len(provs) == 1 and provs[0] in MAPA_EVOLUCION:
+        h.append(bloque_evolucion(nombre, provs))
     h.append(bloque_renta(nombre, en, sec))
     h.append(bloque_municipios(nombre, df, nivel))
     pob = T.MUN.set_index('mun_code').poblacion
@@ -466,6 +468,71 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     h.append(bloque_metodo())
     h.append(PIE)
     return ruta, ''.join(h), {'nombre': nombre, 'ganador': g, 'r': r}
+
+
+# ---------- mapa que cambia de elección con botones (provincias de MAPA_EVOLUCION) ----------
+MAPA_EVOLUCION = {'17'}   # provincias con el mapa animado; para extenderlo, añade su código
+
+EVOL_CSS = ('.evol-bot{display:flex;flex-wrap:wrap;gap:.3rem;margin:.2rem 0 .6rem}.evol-bot button{font-family:var(--sans);font-size:.8rem;padding:.3rem .55rem;'
+            'border:1px solid #bbb;border-radius:3px;background:var(--bg,#fff);color:inherit;cursor:pointer}'
+            '.evol-bot button[aria-pressed=true]{background:#111;color:#fff;border-color:#111}'
+            '.evol-tit{font-family:var(--sans);font-weight:600;margin:.2rem 0}.evol-info{font-family:var(--sans);font-size:.85rem;min-height:1.3em;margin:.3rem 0 0}'
+            '.evol-svg path{transition:fill .5s;cursor:pointer}.evol-svg path:hover{opacity:.75}')
+
+EVOL_JS = """
+var fig=document.currentScript.parentNode,ps=fig.querySelectorAll('.evol-svg path'),bs=fig.querySelectorAll('.evol-bot button[data-i]'),
+play=fig.querySelector('.evol-play'),tit=fig.querySelector('.evol-tit'),info=fig.querySelector('.evol-info'),ley=fig.querySelector('.evol-ley'),
+cur=D.y.length-1,sel=-1,t=null;
+function pc(x){return (x/10).toFixed(1).replace('.',',')+' %'}
+function txt(k){var v=D.d[cur][k];info.textContent=D.mun[k]+' · '+D.et[cur]+': '+(v?D.nom[cur][v[0]]+', '+pc(v[1]):'sin datos')}
+function pinta(i){cur=i;var n={},d=D.d[i],k;for(k=0;k<ps.length;k++){var v=d[k];ps[k].setAttribute('fill',v?D.col[v[0]]:'#e4e4e4');if(v)n[v[0]]=(n[v[0]]||0)+1}
+for(k=0;k<bs.length;k++)bs[k].setAttribute('aria-pressed',k==i?'true':'false');
+tit.textContent='Generales del '+D.f[i];
+ley.innerHTML=Object.keys(n).sort(function(a,b){return n[b]-n[a]}).map(function(c){return '<span><i style="background:'+D.col[c]+'"></i>'+D.nom[i][c]+' ('+n[c]+')</span>'}).join(' ');
+if(sel>=0)txt(sel)}
+function para(){clearInterval(t);t=null;play.textContent='\\u25B6';play.setAttribute('aria-label','Reproducir')}
+for(var k=0;k<bs.length;k++)bs[k].addEventListener('click',function(){para();pinta(+this.dataset.i)});
+play.addEventListener('click',function(){if(t){para();return}play.textContent='\\u275A\\u275A';play.setAttribute('aria-label','Pausa');if(cur==D.y.length-1)pinta(0);
+t=setInterval(function(){if(cur>=D.y.length-1){para();return}pinta(cur+1)},1400)});
+for(k=0;k<ps.length;k++)(function(k){ps[k].addEventListener('click',function(){sel=k;txt(k)});ps[k].addEventListener('mouseenter',function(){txt(k)})})(k);
+pinta(cur)})();"""
+
+
+def bloque_evolucion(nombre, provs):
+    """Mapa de municipios con un botón por elección general (1977-2023): cada municipio, del color del más votado."""
+    trazos, alto = MS.municipios_zona(provs)
+    df = T.MUN.set_index('mun_code')
+    trazos = [(c, d) for c, d in trazos if c in df.index]
+    cods = [c for c, _ in trazos]
+    fams = sorted({g for y in T.GENERALES for g in df.loc[cods, f'{y}_gana'].dropna()}, key=T.FAM.index)
+    datos = []
+    for y in T.GENERALES:
+        datos.append([[fams.index(v), round(float(df.at[c, f'{y}_{v}']) * 1000)] if isinstance(v, str) else None
+                      for c, v in df.loc[cods, f'{y}_gana'].items()])
+
+    def frase(y):
+        n = df.loc[cods, f'{y}_gana'].value_counts()
+        return f'{escape(T.nombre_familia(n.index[0], y))} fue el más votado en {num(n.iloc[0])} de los {num(len(cods))} municipios'
+    primera, ultima = T.GENERALES[0], T.ULTIMA
+    js = {'y': T.GENERALES, 'et': [T.etiqueta(y) for y in T.GENERALES], 'f': [T.FECHA[y] for y in T.GENERALES], 'col': [T.COLOR[c] for c in fams],
+          'nom': [[T.nombre_familia(c, y) for c in fams] for y in T.GENERALES], 'mun': [df.at[c, 'municipio'] for c in cods], 'd': datos}
+    paths = ''.join(f'<path d="{d}"/>' for _, d in trazos)
+    botones = ''.join(f'<button type="button" data-i="{i}" aria-pressed="{"true" if y == ultima else "false"}">{T.etiqueta(y)}</button>'
+                      for i, y in enumerate(T.GENERALES))
+    return ('<h2>El mapa, elección a elección</h2>'
+            + p_('Dato', f'Cada municipio de {escape(nombre)}, del color del partido más votado en cada elección general desde 1977. '
+                 f'En {T.etiqueta(primera)}, {frase(primera)}; en {T.etiqueta(ultima)}, {frase(ultima)}. '
+                 'Pulsa un año, o el botón de reproducir para verlo cambiar; toca un municipio para ver su resultado.')
+            + '<figure class="evol"><div class="evol-bot" role="group" aria-label="Elección">'
+            + '<button type="button" class="evol-play" aria-label="Reproducir">&#9654;</button>' + botones + '</div>'
+            + '<p class="evol-tit" aria-live="polite"></p>'
+            + f'<svg viewBox="0 0 {MS.W} {alto}" class="graf mapa evol-svg" role="img" aria-label="Partido más votado en cada municipio de {escape(nombre)}, por elección general">'
+            + f'<g stroke="var(--bg, #fff)" stroke-width="0.5" stroke-linejoin="round">{paths}</g></svg>'
+            + '<p class="evol-info">Toca un municipio.</p><p class="leyenda-mapa evol-ley"></p>'
+            + '<figcaption>Partido más votado en cada municipio en las elecciones al Congreso de 1977 a 2023, con las familias de partidos del resto de la página. '
+              'En gris, municipios sin datos en los ficheros de Interior. Fuente: Ministerio del Interior.</figcaption>'
+            + f'<style>{EVOL_CSS}</style>'
+            + '<script>(function(){var D=' + json.dumps(js, ensure_ascii=False, separators=(',', ':')) + ';' + EVOL_JS + '</script></figure>')
 
 
 def fila_resumen(enlace, r):
