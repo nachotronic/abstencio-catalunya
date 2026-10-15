@@ -7,14 +7,18 @@ Uso, desde la raíz del repositorio:
 """
 import html, importlib, importlib.util, json, os, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import faq  # noqa: E402
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.dirname(AQUI)
 _spec = importlib.util.spec_from_file_location('historia_paginas', os.path.join(SRC, 'historia', 'paginas.py'))
 _hp = importlib.util.module_from_spec(_spec); sys.path.insert(0, os.path.join(SRC, 'historia')); _spec.loader.exec_module(_hp)
 CSS, FUENTES_TIPO, figura, leyenda = _hp.CSS, _hp.FUENTES_TIPO, _hp.figura, _hp.leyenda
 
-ORDEN = ['andalucia', 'aragon', 'asturias', 'baleares', 'canarias', 'cantabria', 'castilla-la-mancha', 'castilla-y-leon', 'cataluna',
-         'comunidad-valenciana', 'extremadura', 'galicia', 'madrid', 'murcia', 'navarra', 'pais-vasco', 'la-rioja', 'ceuta', 'melilla']
+# Ceuta y Melilla van primero: son las que más se leen de la serie (Search Console, octubre de 2026) y al final quedaban escondidas.
+ORDEN = ['ceuta', 'melilla', 'andalucia', 'aragon', 'asturias', 'baleares', 'canarias', 'cantabria', 'castilla-la-mancha', 'castilla-y-leon', 'cataluna',
+         'comunidad-valenciana', 'extremadura', 'galicia', 'madrid', 'murcia', 'navarra', 'pais-vasco', 'la-rioja']
 NOMF = {'PP': 'AP / PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'PCE / IU / Podemos / Sumar', 'CS': 'Ciudadanos', 'UPYD': 'UPyD',
         'ERC': 'ERC', 'JUNTS': 'CiU / Junts', 'PNV': 'PNV', 'BILDU': 'HB / EH Bildu', 'BNG': 'BNG', 'CC': 'Coalición Canaria',
         'UCD': 'UCD', 'CDS': 'CDS', 'OTROS': 'Otras listas'}
@@ -135,7 +139,9 @@ def escribir():
     for p in ps:
         d = datos[p['cc']]
         F = Fig(p['cc'], d)
-        cuerpo = p['cuerpo'](F, presidentes)
+        tablas = []
+        cuerpo = p['cuerpo'](F, lambda filas: tablas.append(filas) or presidentes(filas))
+        cuerpo += '\n' + faq.bloque(faq.preguntas(p['cc'], p['lugar'], tablas[-1]))
         D = {'gen': d['gen'], 'prov': d['prov'], 'aut': d['aut'], 'ciu': d['mayores_hist']}
         if 'F.mapa(' in open(os.path.join(AQUI, 'piezas', p['cc'].replace('-', '_') + '.py'), encoding='utf-8').read():
             D['mapa'] = d['mapa']

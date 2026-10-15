@@ -404,7 +404,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     serie = T.serie(df)
     r = serie[T.ULTIMA]
     g = T.ganador(r)
-    titulo = f'Elecciones generales 29N en {nombre}: así votó cada municipio desde 1977'
+    titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó cada municipio desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             'Voto por renta de los barrios y municipios principales.')
     about = lugar(nombre, contenido or ESPANA)
@@ -531,7 +531,7 @@ def pagina_ciudad(cod):
     nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
     b_sec = bloque_secciones(nombre, sec)
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
-    titulo = f'Elecciones generales 29N en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
+    titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
                (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
@@ -553,7 +553,7 @@ def pagina_ciudad(cod):
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {nprov}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
                 f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
-    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"barrio a barrio " if b_sec else ""}en el mapa por sección censal</a></p>')
+    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"calle a calle " if b_sec else ""}en el mapa por sección censal</a></p>')
     h.append(bloque_resultado(nombre, r))
     h.append(b_sec)
     h.append(b_renta)
@@ -618,7 +618,7 @@ def indice(resumen):
     h.append(f'<p class="resumen">{tipo("Dato")}Una página por comunidad autónoma y por provincia con el resultado de las generales de 2023, la serie de las 16 elecciones '
              f'al Congreso desde 1977, cómo vota cada grupo de barrios según su renta y los municipios principales. En el conjunto de España, en 2023 votó el '
              f'{pct(T.ESPANA["part"])} del censo residente y el PP fue el más votado con el {pct(T.ESPANA["pct"]["PP"])}.</p>')
-    h.append(f'<p><a class="vermapa" href="../">Abrir el mapa de resultados por sección censal</a></p>')
+    h.append(f'<p><a class="vermapa" href="../">Abrir el mapa electoral calle a calle, por sección censal</a></p>')
     filas = [fila_resumen(f'<a href="{s}/">{escape(i["nombre"])}</a>', i['r']) for s, i in resumen.items()]
     h.append('<h2>Comunidades autónomas</h2>' + tabla('Generales de 2023 por comunidad autónoma', ['Comunidad', 'Participación', 'Más votado', 'Segundo'], filas))
     li = []
@@ -716,7 +716,7 @@ def svg_deciles(q, fams):
 
 def tema_seccion(resumen):
     ruta = 'elecciones/mapa-electoral-seccion-censal/'
-    titulo = 'Mapa electoral de España por sección censal: resultados barrio a barrio desde 2004'
+    titulo = 'Mapa electoral de España por sección censal: resultados calle a calle y barrio a barrio desde 2004'
     desc = ('Qué es una sección censal y cómo consultar los resultados de las generales, municipales y europeas en las 36.462 secciones de España, '
             'con renta, edad y población extranjera. Datos abiertos.')
     y = T.ULTIMA
@@ -732,7 +732,7 @@ def tema_seccion(resumen):
     top = cuenta.index[:4]
     h.append(f'<p class="resumen">{tipo("Dato")}En las generales de 2023 el PP fue la lista más votada en {num(cuenta.get("PP", 0))} de las {num(len(sec))} secciones censales de España; '
              f'el PSOE, en {num(cuenta.get("PSOE", 0))}. ' + ', '.join(f'{T.NOMBRE[c]}, en {num(cuenta[c])}' for c in top if c not in ('PP', 'PSOE')) + '.</p>')
-    h.append(f'<p><a class="vermapa" href="{raiz}">Abrir el mapa por sección censal</a> <a class="vermapa" href="{raiz}generales-2026/metodologia.html#descargas">Descargar los datos</a></p>')
+    h.append(f'<p><a class="vermapa" href="{raiz}">Abrir el mapa electoral calle a calle</a> <a class="vermapa" href="{raiz}generales-2026/metodologia.html#descargas">Descargar los datos</a></p>')
     h.append('<h2>Qué es una sección censal</h2>'
              '<p>Es la unidad más pequeña en la que se organiza el censo electoral: cada municipio se divide en distritos y cada distrito en secciones, de entre unas 500 y 2.500 personas con derecho a voto. '
              'Cada sección vota en sus propias mesas, así que su resultado se conoce, y el INE publica para cada una la renta, la edad media, la población extranjera y, con el censo de 2021, los estudios y el paro. '
@@ -744,7 +744,7 @@ def tema_seccion(resumen):
              '<li>Para cada sección: participación, voto de cada partido y partido más votado; renta neta por unidad de consumo, población en riesgo de pobreza, edad media y población extranjera (INE, 2023), estudios y paro (Censo 2021).</li>'
              '<li>Gráficos por decil de renta, edad, pobreza y población extranjera, y el modo en directo para la noche electoral del 29 de noviembre de 2026.</li></ul>')
     h.append('<h2>Cómo usarlo</h2><ol>'
-             '<li>Busca tu municipio en el buscador del mapa o haz clic en él; al acercarte aparecen las secciones y las calles.</li>'
+             '<li>Escribe tu calle y número, o tu municipio, en el buscador del mapa; al acercarte aparecen las secciones sobre el callejero, calle a calle.</li>'
              '<li>Cambia de elección con el selector para ver cómo ha cambiado el voto del barrio.</li>'
              '<li>Pulsa en una sección para ver su ficha: voto por partido con el nombre real de la candidatura (PSC, UPN, En Comú Podem…), renta, edad y población extranjera.</li>'
              f'<li>Para usarlo en otra web, el mapa se puede <a href="{raiz}insertar/">insertar</a> con un iframe.</li></ol>')
