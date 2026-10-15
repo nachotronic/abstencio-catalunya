@@ -583,7 +583,7 @@ PIEZAS = [
         enlaces=[],
         lugar='Cataluña',
         foto=dict(src='img/actualidad/fotos/alianca-catalana-ceo-mapa.jpg', ancho=1280, alto=720, ia=True,
-                  pie='Una persiana bajada en una calle de pueblo y un vecino sentado frente a las montañas.'),
+                  pie='Sílvia Orriols, un ayuntamiento, unas barras y un mapa de Cataluña: un collage.'),
     ),
     dict(
         slug='como-voto-tu-calle', fecha='2026-10-15',
