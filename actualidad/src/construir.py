@@ -1131,7 +1131,8 @@ def fecha_larga(f):
 
 def nav(prefijo, actual):
     items = [('', 'Mapa de resultados'), ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
-             ('abstencion.html', 'Cataluña'), ('sobre-mi.html', 'Sobre mí')]
+             ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
+             ('sobre-mi.html', 'Sobre mí')]
     out = f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{prefijo}">Mapa Electoral</a>'
     for href, txt in items:
         cur = ' aria-current="page"' if txt == actual else ''
@@ -1183,7 +1184,7 @@ CA = [
     ('aria-label="Secciones del sitio"', 'aria-label="Seccions del lloc"'), ('>Mapa de resultados<', '>Mapa de resultats<'),
     ('>Actualidad</a> · ', '>Actualitat</a> · '), ('<p class="firma">Por <a href="../../sobre-mi.html">', '<p class="firma">Per <a href="../../sobre-mi-ca.html">'),
     ('aria-current="page">Actualidad</a>', 'aria-current="page">Actualitat</a>'), ('href="../../abstencion.html">Cataluña<', 'href="../../ca.html">Catalunya<'),
-    ('>Cataluña<', '>Catalunya<'), ('href="../../sobre-mi.html">Sobre mí<', 'href="../../sobre-mi-ca.html">Sobre mi<'),
+    ('>Cataluña<', '>Catalunya<'), ('actualidad/#comunidades">Comunidades<', 'actualidad/#comunidades">Comunitats<'), ('actualidad/#historia">Historia electoral<', 'actualidad/#historia">Història electoral<'), ('href="../../sobre-mi.html">Sobre mí<', 'href="../../sobre-mi-ca.html">Sobre mi<'),
     ('Ilustración generada con IA para Mapa Electoral.', 'Il·lustració generada amb IA per a Mapa Electoral.'), ('>Uso de IA<', ">Ús d'IA<"),
     ('<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>',
      "<p class=\"etiquetas\">Cada paràgraf porta una etiqueta: <b>dada</b> (xifra comprovable amb les fonts), <b>patró</b> (relació que es repeteix, sense afirmar-ne la causa), <b>hipòtesi</b> (explicació possible, sense dues fonts independents) o <b>context</b> (fets i declaracions publicats per altres, enllaçats). <a href=\"../../atlas/politica-editorial/#verificacion\">Com verifiquem</a> (en castellà)</p>"),
