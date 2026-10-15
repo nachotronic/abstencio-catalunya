@@ -50,7 +50,7 @@ def main():
     mapa = s[m0:s.index('</section>', m0) + len('</section>')]
     mapa = re.sub(r'\s*<button type="button" id="insertar"[^>]*>.*?</button>', '', mapa)
     mapa = re.sub(r'\s*<div class="insertar" id="insertar-caja".*?\n  </div>', '', mapa, flags=re.S)
-    mapa = re.sub(r'\s*<p class="hint">.*?</p>', '', mapa, flags=re.S)
+    mapa = re.sub(r'\s*<(p|details) class="hint">.*?</\1>', '', mapa, flags=re.S)
     mapa = re.sub(r'\s*<h2[^>]*id="h-mapa"[^>]*>.*?</h2>', '', mapa)
     mapa = mapa.replace('class="wide" ', '', 1).replace('aria-labelledby="h-mapa"', 'aria-label="Mapa electoral"')
     deck = re.search(r'<script src="https://unpkg.com/deck.gl[^"]*"></script>', s).group(0)

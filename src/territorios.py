@@ -319,7 +319,7 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga):
     RAIZ_REL = '../' * nivel
     raiz = RAIZ_REL
     menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('atlas/', 'Atlas'), ('actualidad/', 'Actualidad'),
-            ('abstencion.html', 'Cataluña'), ('sobre-mi.html', 'Sobre mí')]
+            ('sobre-mi.html', 'Sobre mí')]
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz or "./"}">{SITIO}</a>'
            + ''.join(f'<a href="{raiz}{h}"{" aria-current=\"page\"" if h == "elecciones/" else ""}>{t}</a>' for h, t in menu) + '</nav>')
     url = BASE + ruta

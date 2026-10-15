@@ -1056,7 +1056,7 @@ def fecha_larga(f):
 
 def nav(prefijo, actual):
     items = [('', 'Mapa de resultados'), ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
-             ('abstencion.html', 'Cataluña'), ('sobre-mi.html', 'Sobre mí')]
+             ('sobre-mi.html', 'Sobre mí')]
     out = f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{prefijo}">Mapa Electoral</a>'
     for href, txt in items:
         cur = ' aria-current="page"' if txt == actual else ''
