@@ -171,7 +171,8 @@ def url(p):
 def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atlas'):
     rel = '../' * nivel
     raiz = rel + '../'
-    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('atlas', f'{rel}index.html', 'Atlas'),
+    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('territorio', f'{raiz}elecciones/', 'Por territorio'),
+            ('atlas', f'{rel}index.html', 'Atlas'),
             ('actualidad', f'{raiz}actualidad/', 'Actualidad'),
             ('comunidades', f'{raiz}actualidad/#comunidades', 'Comunidades'), ('historia', f'{raiz}actualidad/#historia', 'Historia electoral'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
             ('sobre', f'{raiz}sobre-mi.html', 'Sobre mí')]
