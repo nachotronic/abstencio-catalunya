@@ -963,6 +963,35 @@ for h in piezas_comunidades():
 
 PIEZAS = COMUNIDADES + HISTORIA + PIEZAS
 
+# Serie «Girona, de prop»: peces escrites directament en català (idioma='ca'); textos i gràfics a
+# /mnt/project-files/girona/peces/eines/ (p_*.py escriuen els <slug>.html de treball). Nacho, 15-10-2026.
+SERIES['girona'] = 'Girona, de prop'
+SERIES_CA = {'girona': 'Girona, de prop', '29n': 'Camí al 29N'}
+INTERIOR_CA = (INTERIOR[0], "Ministeri de l'Interior, resultats electorals per mesa (Infoelectoral), via pollspaindata. Sense vot exterior (CERA)")
+INE_CA = (INE[0], "INE, Atles de Distribució de Renda de les Llars (renda i edat per secció), via ineAtlas.data")
+PIEZAS += [
+    dict(
+        slug='girona-barri-a-barri-29n', fecha='2026-10-15', idioma='ca',
+        titulo='Girona, barri a barri: el 2019 Junts guanyava en 36 seccions i el PSC en 13; el 2023, el PSC en 43 i Junts en 19', serie='girona',
+        descripcion='A la Font de la Pólvora va votar el 33,4% dels electors; a Montjuïc, el 74,9%. Les 62 seccions de Girona, de les generals de 2019 a les de 2023, abans del 29N.',
+        compara='Les 62 seccions censals de la ciutat de Girona a les generals de novembre de 2019 i juliol de 2023, agrupades per districte censal de l\'INE i per trams de renda per unitat de consum de 2023.',
+        limites='Són dades de seccions, no de persones, i no expliquen per què cada barri vota com vota. Sense vot exterior, de manera que la participació surt més alta que l\'oficial. La comparació amb novembre de 2019 només inclou les 61 seccions que conserven el codi. Els districtes censals de l\'INE no coincideixen amb els barris municipals; els noms que els donem surten dels carrers de cada secció i són descriptius. Els límits de secció estan simplificats.',
+        fuentes=[INTERIOR_CA, INE_CA,
+                 ('https://www.girona.cat/opendata/dataset/sectors', 'Ajuntament de Girona, dades obertes: barris i sectors'),
+                 ('https://intranet.colpis.cat/files/revista/101_articulo.pdf', 'Macià Serra, COLPIS, sobre el vot a Girona'),
+                 ('https://www.3cat.cat/3catinfo/aixi-van-votar-els-barris-mes-pobres-i-els-mes-rics-a-catalunyael-14f/noticia/3078187/', '3Cat, el vot dels barris més pobres i més rics (2021)'),
+                 ('https://www.ara.cat/comarquesgironines/l-xarxa-electrica-font-polvora-correcte-potencia-50-anys_1_4266052.html', 'Ara, la xarxa elèctrica de la Font de la Pólvora (2022)'),
+                 ('https://seu.girona.cat/portal/dades/transparencia/docs/Auditoria-BaixaTensio-FontdelaPolvora.pdf', 'Ajuntament de Girona, auditoria de baixa tensió de la Font de la Pólvora'),
+                 ('https://naciodigital.cat/girona/politica-girona/salellas-reclama-iniciativa-politica-mentre-la-militancia-de-la-cup-ratifica-el-no-al-29-n.html', 'Nació Digital, Salellas i el no de la CUP al 29N (11-10-2026)'),
+                 ('https://naciodigital.cat/girona/politica-girona/lluc-salellas-alcalde-girona-junts-psc-mes-pendents-barcelona-madrid.html', 'Nació Digital, entrevista a Lluc Salellas (2-8-2026)'),
+                 ('https://3cat.cat/3catinfo/junts-anunciara-aquest-mati-que-trenca-el-pacte-a-lajuntament-de-girona-amb-guanyem-i-erc/noticia/3420236/', '3Cat, Junts trenca el pacte de govern (14-7-2026)'),
+                 ('https://naciodigital.cat/politica/junts-repetira-equip-a-madrid-sota-el-lideratge-de-miriam-nogueras.html', 'Nació Digital, les llistes de Junts (8-10-2026)'),
+                 ('https://cdn.girona.cat/sgdap/carrers/19870322-06.pdf', 'Punt Diari, els carrers de Can Gibert (22-3-1987)')],
+        enlaces=[],
+        lugar='Girona',
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
@@ -974,6 +1003,7 @@ ANTETITULOS = {
     'sevilla-barrio-a-barrio-29n': 'Ganar calles, perder votos',
     'zaragoza-barrio-a-barrio-29n': 'Una ciudad a cara o cruz',
     'malaga-barrio-a-barrio-29n': 'Dos Málagas en las urnas',
+    'girona-barri-a-barri-29n': 'Dues Girones a les urnes',
     'murcia-barrio-a-barrio-29n': 'Vox se queda en la huerta',
     'palma-barrio-a-barrio-29n': 'La abstención manda',
     'como-voto-tu-calle': 'Tu sección, en el mapa',
@@ -1103,6 +1133,41 @@ def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, ma
 TIPOS = {'dato': 'Dato', 'patron': 'Patrón', 'hipotesis': 'Hipótesis', 'contexto': 'Contexto'}
 
 
+# Peces escrites directament en català (idioma='ca'): el text ja ve en català del fitxer de treball;
+# aquí es tradueix el que hi posa aquest script (capçalera, signatura, fitxa de mètode, «Segueix llegint»...).
+MESOS_CA = ['de gener', 'de febrer', 'de març', "d'abril", 'de maig', 'de juny', 'de juliol', "d'agost", 'de setembre', "d'octubre", 'de novembre', 'de desembre']
+CA = [
+    ('<html lang="es">', '<html lang="ca">'), ('<meta property="og:locale" content="es_ES">', '<meta property="og:locale" content="ca_ES">'),
+    ('"inLanguage": "es"', '"inLanguage": "ca"'),
+    ('aria-label="Secciones del sitio"', 'aria-label="Seccions del lloc"'), ('>Mapa de resultados<', '>Mapa de resultats<'),
+    ('>Actualidad</a> · ', '>Actualitat</a> · '), ('<p class="firma">Por <a href="../../sobre-mi.html">', '<p class="firma">Per <a href="../../sobre-mi-ca.html">'),
+    ('aria-current="page">Actualidad</a>', 'aria-current="page">Actualitat</a>'), ('href="../../abstencion.html">Cataluña<', 'href="../../ca.html">Catalunya<'),
+    ('>Cataluña<', '>Catalunya<'), ('href="../../sobre-mi.html">Sobre mí<', 'href="../../sobre-mi-ca.html">Sobre mi<'),
+    ('Ilustración generada con IA para Mapa Electoral.', 'Il·lustració generada amb IA per a Mapa Electoral.'), ('>Uso de IA<', ">Ús d'IA<"),
+    ('<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>',
+     "<p class=\"etiquetas\">Cada paràgraf porta una etiqueta: <b>dada</b> (xifra comprovable amb les fonts), <b>patró</b> (relació que es repeteix, sense afirmar-ne la causa), <b>hipòtesi</b> (explicació possible, sense dues fonts independents) o <b>context</b> (fets i declaracions publicats per altres, enllaçats). <a href=\"../../atlas/politica-editorial/#verificacion\">Com verifiquem</a> (en castellà)</p>"),
+    ('t-dato">Dato<', 't-dato">Dada<'), ('t-patron">Patrón<', 't-patron">Patró<'), ('t-hipotesis">Hipótesis<', 't-hipotesis">Hipòtesi<'), ('t-contexto">Contexto<', 't-contexto">Context<'),
+    ('<h2>Método y fuentes</h2>', '<h2>Mètode i fonts</h2>'), ('<dt>Qué se compara</dt>', '<dt>Què es compara</dt>'), ('<dt>Límites</dt>', '<dt>Límits</dt>'),
+    ('<dt>Cómo se calcula</dt><dd>Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>',
+     '<dt>Com es calcula</dt><dd>Percentatges sobre vots a candidatures, excepte la participació, que és sobre el cens. Xifres reproduïbles amb els scripts de l\'expedient de la peça. <a href="../../atlas/metodologia/index.html">Metodologia de l\'Atles</a> (en castellà)</dd>'),
+    ('<dt>Fuentes</dt>', '<dt>Fonts</dt>'), ('<dt>Autoría</dt>', '<dt>Autoria</dt>'), ('<dt>Revisión de datos y texto</dt>', '<dt>Revisió de dades i text</dt>'),
+    ('<dt>Publicado · actualizado</dt>', '<dt>Publicat · actualitzat</dt>'), ('<dt>Correcciones</dt><dd>Ninguna.</dd>', '<dt>Correccions</dt><dd>Cap.</dd>'), ('<dt>Correcciones</dt>', '<dt>Correccions</dt>'),
+    ('<span class="kicker">Estás aquí</span>', '<span class="kicker">Ets aquí</span>'), ('<p class="mas-datos">Más datos: ', '<p class="mas-datos">Més dades (en castellà): '),
+    ('<h2>Sigue leyendo</h2>', '<h2>Segueix llegint</h2>'), ('<b>Todas las piezas de actualidad</b>', "<b>Totes les peces d'actualitat</b>"),
+    ('Datos con licencia', 'Dades amb llicència'), ('>Código y datos<', '>Codi i dades<'), ('>Política editorial<', '>Política editorial<'),
+]
+
+
+def en_catala(out, p):
+    for es, ca in CA:
+        out = out.replace(es, ca)
+    out = re.sub(r'<h2>Serie «(.*?)»: (\d+) piezas</h2>', lambda m: f'<h2>Sèrie «{SERIES_CA.get(p["serie"], m.group(1))}»: {m.group(2)} peces</h2>', out)
+    for f in {p['fecha'], p.get('actualizado', p['fecha'])}:
+        a, m, d = f.split('-')
+        out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}')
+    return out
+
+
 def pieza(p, todas):
     src = open(os.path.join(SRC, p['slug'] + '.html'), encoding='utf-8').read()
     estilos = ''.join(re.findall(r'<style>.*?</style>', src, re.S))
@@ -1182,6 +1247,8 @@ def pieza(p, todas):
                                           for q, r in qs]}]
     out = (cabecera(p['titulo'], p['descripcion'], url, imagen, jsonld) + estilos + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../../', 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
+    if p.get('idioma') == 'ca':
+        out = en_catala(out, p)
     d = os.path.join(RAIZ, 'actualidad', p['slug'])
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out)
@@ -1258,7 +1325,7 @@ def franja_portada(todas, pre=''):
     """Carrusel «Actualidad» de la portada del sitio, entre las marcas <!--actualidad:ultimas-->, encima del del Atlas.
     Mismo formato que la franja del Atlas (atlas/src/paginas.py): miniatura, serie y titular. Las miniaturas las hace miniaturas.mjs."""
     # Las piezas de ciudad «barrio a barrio» no van en el carrusel (Nacho, 15-10-2026)
-    ult = [q for q in todas[::-1] if not q['slug'].endswith('-barrio-a-barrio-29n')][:10]
+    ult = [q for q in todas[::-1] if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n'))][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
