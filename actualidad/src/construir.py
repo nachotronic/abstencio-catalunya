@@ -1296,7 +1296,7 @@ def pieza(p, todas):
     open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out)
 
 
-def indice(todas):
+def indice(todas, sitemap=None):
     url = BASE + '/actualidad/'
     desc = 'Piezas cortas que cruzan la actualidad del día con los datos electorales por sección censal. Cada cifra, con su fuente.'
     jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Actualidad', 'url': url, 'description': desc,
@@ -1343,7 +1343,7 @@ a{color:var(--fg)}
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
     open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(out)
     urls = [f'  <url><loc>{url}</loc><lastmod>{max(p["fecha"] for p in todas)}</lastmod></url>']
-    urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p["fecha"]}</lastmod></url>' for p in todas]
+    urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p["fecha"]}</lastmod></url>' for p in (sitemap or todas)]
     open(os.path.join(RAIZ, 'actualidad', 'sitemap.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n')
     # Google News: solo piezas de los dos últimos días (norma de Google), como atlas/sitemap-noticias.xml
@@ -1373,7 +1373,7 @@ def franja_portada(todas, pre=''):
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
-            f'<li class="todas"><a href="{pre}actualidad/"><b>Las {len(todas)} piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES)}</span></a></li></ul>'
+            f'<li class="todas"><a href="{pre}actualidad/"><b>Las {len(todas)} piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES)}</span></a></li></ul>'
             '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
@@ -1415,11 +1415,16 @@ def portada(todas):
               open(os.path.join(SRC, 'miniaturas.json'), 'w'), ensure_ascii=False, indent=1)
 
 
+# Series que només s'enllacen des de la seva peça (Girona, en català): fora de l'índex d'Actualidad, el carrusel,
+# «Sigue leyendo» i les fitxes de territori (Nacho, 15-10-2026). Les pàgines es fan igual i van al sitemap.
+NOMES_ENLLACADES = {'girona'}
+PUBLICAS = [p for p in PIEZAS if p['serie'] not in NOMES_ENLLACADES]
+
 if __name__ == '__main__':
     for p in PIEZAS:
-        pieza(p, PIEZAS)
-    indice(PIEZAS)
-    portada(PIEZAS)
+        pieza(p, PIEZAS if p['serie'] in NOMES_ENLLACADES else PUBLICAS)
+    indice(PUBLICAS, PIEZAS)
+    portada(PUBLICAS)
     import esquema   # autor común, Dataset y migas de pan en todas las páginas (src/esquema.py)
     esquema.main()
     print('Actualidad:', len(PIEZAS), 'piezas')
