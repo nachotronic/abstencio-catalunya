@@ -1180,15 +1180,38 @@ def franja_portada():
             '<a href="atlas/">anomalías electorales municipio a municipio</a></p></section>')
 
 
+# Guías temáticas de elecciones/, en tarjetas en la portada, debajo de Actualidad
+GUIAS = [('elecciones-29n-2026/', 'img/elecciones/congreso-urna-calendario-29n.jpg', '29N', 'Elecciones del 29N: fecha, campaña y escaños por provincia'),
+         ('resultados-elecciones-por-municipio/', 'img/elecciones/libros-plazas-y-arquitectura-de-espana.jpg', 'Municipios', 'Cómo votó cada pueblo y ciudad de España desde 1977'),
+         ('participacion-electoral-por-barrio/', 'img/elecciones/colegio-electoral-cola-y-bloques.jpg', 'Participación', 'Dónde se vota más y dónde menos, barrio a barrio'),
+         ('voto-y-renta-por-barrios/', 'img/actualidad/pobreza-participacion-barrios.jpg', 'Renta', 'Cómo vota cada barrio según su renta'),
+         ('mapa-electoral-seccion-censal/', 'img/actualidad/madrid-barrio-a-barrio-29n.jpg', 'Sección censal', 'El mapa electoral calle a calle: qué es una sección censal')]
+
+
+def guias_portada():
+    li = ''.join(f'<li><a href="elecciones/{r}"><img src="{img}" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">{k}</span><b>{titulo}</b></a></li>'
+                 for r, img, k, titulo in GUIAS)
+    li += '<li class="todas"><a href="elecciones/"><b>Por comunidad y provincia</b><span>Resultados, renta y participación de cada territorio</span></a></li>'
+    return ('<section class="wide del-atlas del-guias" aria-labelledby="h-del-guias"><div class="da-cab"><h2 id="h-del-guias"><a href="elecciones/">Guías de las elecciones</a></h2>'
+            '<span class="da-nav"><button type="button" class="da-prev" aria-label="Guías anteriores">←</button><button type="button" class="da-next" aria-label="Más guías">→</button></span></div>'
+            f'<ul class="carrusel">{li}</ul></section>')
+
+
 def portada():
-    """Rellena la franja entre <!--territorios--> en la portada y en la plantilla del mapa (rutas desde generales-2026/)."""
+    """Rellena la franja entre <!--territorios--> y las guías entre <!--elecciones:guias--> (debajo de Actualidad)
+    en la portada y en la plantilla del mapa (rutas desde generales-2026/)."""
     for f in (ROOT / 'index.html', ROOT / 'generales-2026' / 'src' / 'plantilla.html'):
         t = f.read_text(encoding='utf-8')
         if '<!--territorios-->' not in t:
             t = t.replace('<!--/atlas:ultimas-->', '<!--/atlas:ultimas-->\n<!--territorios--><!--/territorios-->', 1)
+        if '<!--elecciones:guias-->' not in t:
+            t = t.replace('<!--/actualidad:ultimas-->', '<!--/actualidad:ultimas-->\n<!--elecciones:guias--><!--/elecciones:guias-->', 1)
         pre = '' if f.name == 'index.html' else '../'
+        rel = lambda s: re.sub(r'(href|src)="(?!https?:)', lambda m: f'{m.group(1)}="{pre}', s)
         franja = re.sub(r'href="(?!https?:)', 'href="' + pre, franja_portada())
+        guias = rel(guias_portada())
         t = re.sub(r'<!--territorios-->.*?<!--/territorios-->', lambda m: '<!--territorios-->' + franja + '<!--/territorios-->', t, flags=re.S)
+        t = re.sub(r'<!--elecciones:guias-->.*?<!--/elecciones:guias-->', lambda m: '<!--elecciones:guias-->' + guias + '<!--/elecciones:guias-->', t, flags=re.S)
         f.write_text(t, encoding='utf-8')
 
 
