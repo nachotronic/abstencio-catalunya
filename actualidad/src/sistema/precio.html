@@ -1,0 +1,121 @@
+<title>El precio del escaño</title>
+<style>/*BASE*/</style>
+<style>
+.ctrl{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--ui);margin:.6rem 0 .2rem}
+.ctrl .g{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem}
+.ctrl .g>span{color:var(--muted);font-size:.9rem;margin-right:.2rem}
+.ctrl button{font:inherit;font-size:.95rem;border:1px solid var(--rule);background:transparent;color:var(--fg);border-radius:4px;padding:.15rem .55rem;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.sim-res{font-family:var(--ui);font-size:1rem;margin:.4rem 0 0}
+.dif-mas{color:var(--fg);font-weight:600}.dif-menos{color:var(--muted)}
+</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Un diputado cuesta 25.300 votos en Teruel y 97.500 en Madrid: el precio del escaño, provincia a provincia</h1>
+<p class="dek">En las generales de 2023, un escaño en Madrid costó casi cuatro veces más votos que en Teruel o en Soria, y Sumar pagó cada diputado a 98.225 votos frente a los 59.570 del PP. Un simulador vuelve a repartir los votos de 2023 y de 2019 por comunidades o en una sola circunscripción para toda España.</p>
+<div class="byline">Nacho G. del Álamo · 15 de octubre de 2026</div>
+<p style="margin-top:1.4rem">El 29 de noviembre se votará en 52 elecciones a la vez, una por provincia y otra en Ceuta y en Melilla, y en cada una se reparte un número distinto de diputados. Por eso no todos los votos compran lo mismo. En julio de 2023, Teruel eligió tres diputados con 75.913 votos válidos: <strong>25.304 votos por escaño</strong>. Madrid eligió 37 con 3,6 millones: <strong>97.532 por escaño</strong>. Con la misma papeleta, un votante de Teruel pesó en el reparto casi cuatro veces más que uno de Madrid.</p>
+<p>Soria, el ejemplo de manual, quedó prácticamente empatada con Teruel: 25.384 votos por cada uno de sus dos diputados. Si en lugar de votos se cuentan electores residentes, el resultado es el mismo: 33.750 por escaño en Teruel, 34.232 en Soria y 131.029 en Madrid.</p>
+<p>No es un error del sistema ni un efecto de la participación, sino su diseño. La <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68">Constitución</a> establece en su artículo 68 que «la circunscripción electoral es la provincia» y que la ley asignará «una representación mínima inicial a cada circunscripción», distribuyendo los demás diputados «en proporción a la población». La <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosesentaydos">ley electoral</a> fija ese mínimo en dos diputados por provincia y uno para Ceuta y otro para Melilla. Son 102 escaños que están asignados antes de contar a un solo habitante. Solo los 248 restantes se reparten según la población.</p>
+<p>El Consejo de Estado lo midió en su <a href="https://www.gutierrez-rubi.es/wp-content/uploads/2010/03/regimen-electoral.pdf">informe de 2009 sobre la reforma electoral</a>, el último gran examen oficial del sistema. Con los datos de entonces, «la provincia más infrarrepresentada es Madrid, con un coeficiente de representación de 0,74 y una relación de 173.762 habitantes por diputado, y la más sobrerrepresentada es Soria, con un coeficiente de representación de 2,71 y una relación de 46.796 habitantes por diputado». Y añadía una regla general: «las circunscripciones menos pobladas están sobrerrepresentadas y las más pobladas están infrarrepresentadas».</p>
+
+<h2>El mapa del precio: de 25.304 a 97.532 votos</h2>
+<p>El gráfico ordena las 52 circunscripciones por los votos válidos que costó cada diputado en 2023. La longitud de la barra es ese precio; los colores, los partidos que se llevaron los escaños. Las provincias más baratas son todas pequeñas y de interior: Teruel, Soria, Segovia, Palencia, Ávila. Las más caras, las grandes: Madrid, Valencia, Sevilla, Asturias y Barcelona.</p>
+<figure>
+<figcaption><span class="t">Cuántos votos costó un diputado en cada circunscripción</span><span class="s">Votos válidos por escaño en las generales de julio de 2023. Cada segmento es un diputado, en el color del partido que lo ganó</span></figcaption>
+<div class="chart" id="prov"></div>
+<div class="legend" id="prov-ley"></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa con voto exterior (CERA), vía pollspaindata. Cálculo propio: votos válidos (a candidaturas y en blanco) divididos por los escaños de la provincia.</div>
+</figure>
+<p>Las ciudades autónomas son un caso aparte: Melilla eligió a su único diputado con 27.349 votos válidos y Ceuta con 33.321. En ellas, el sistema es en la práctica mayoritario: gana el escaño quien queda primero.</p>
+<p>El reparto de 2026 casi no cambia el mapa. El <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742">Real Decreto 806/2026</a> da a Madrid 38 diputados, uno más, y quita uno a Cádiz, que se queda en ocho. Con los votos de 2023, el escaño de Madrid habría costado 94.965 votos: seguiría siendo el más caro de España.</p>
+
+<h2>Quién paga más por cada diputado</h2>
+<p>El precio también cambia según el partido. En 2023, el PP necesitó <strong>59.570 votos</strong> por cada uno de sus 137 diputados y el PSOE, <strong>64.643</strong> por cada uno de sus 121. Vox pagó <strong>92.638</strong> y Sumar, <strong>98.225</strong>. Los partidos que se presentan solo en su territorio y concentran allí el voto pagan poco: el PNV, 55.458; EH Bildu, 55.855; Junts, 56.490. El BNG, que se quedó sin escaño en tres de las cuatro provincias gallegas, pagó 153.995 votos por su único diputado.</p>
+<figure>
+<figcaption><span class="t">Votos por escaño de cada partido</span><span class="s">Votos de cada candidatura en toda España divididos por los diputados que obtuvo. Solo partidos con escaño</span></figcaption>
+<div class="ctrl"><div class="g" id="part-b"></div></div>
+<div class="chart" id="part"></div>
+<div class="src">Fuente: Ministerio del Interior, con voto CERA; cálculo propio. Sumar incluye Compromís-Sumar, Sumar Més y Sumar-En Comú Podem; en 2019, Más País incluye Més Compromís.</div>
+</figure>
+<p>La diferencia se traduce en un reparto de escaños que no coincide con el de votos. El PP sacó el 33,1 % de los votos y el 39,1 % de los escaños; el PSOE, el 31,7 % de los votos y el 34,6 % de los escaños. Vox y Sumar, con algo más del 12 % cada uno, se quedaron con el 9,4 % y el 8,9 % de la cámara.</p>
+<p>En noviembre de 2019 el desequilibrio fue mayor para los terceros. Ciudadanos obtuvo 1,65 millones de votos y diez diputados: 165.032 votos por escaño. Más País pagó 194.102. El caso más citado es anterior: en 2015, Unidad Popular-Izquierda Unida sumó 923.377 votos y dos escaños, unos 461.700 por diputado, mientras el PP pagaba unos 58.700. «Con apenas 40.000 votos más hubiéramos obtenido siete escaños. Esto es fruto de la ley electoral y las llamadas al voto útil», dijo entonces Alberto Garzón, según <a href="https://www.lamarea.com/2015/12/21/garzon-se-desploma-pero-mantiene-con-vida-a-iu/">La Marea</a>. Años después lo resumía así en <a href="https://www.eldiario.es/politica/alberto-garzon-pedro-sanchez-manifesto_1_2804718.html">elDiario.es</a>: «En 2015 cada escaño nos costó medio millón y al PP, 60.000». Las cifras oficiales le dan la razón.</p>
+
+<h2>Las provincias pequeñas premian al primero</h2>
+<p>La clave está en las circunscripciones pequeñas. De las 52, 29 eligen cinco diputados o menos. Juntas reparten 108 escaños, el 30,9 % del Congreso, aunque solo viven en ellas el 22,1 % de los electores residentes. Y en ellas el reparto favorece al partido que gana: en 2023, el PP sacó allí el 37,4 % de los votos y se llevó 53 de los 108 escaños, casi la mitad. El PSOE, con el 33,3 %, ganó 41. Vox, con el 12,7 %, ocho. Sumar, con el 8,2 %, ninguno.</p>
+<p>En las ocho provincias que eligen tres diputados, el último escaño de 2023 se adjudicó con un cociente de entre el 17,5 % y el 22,5 % del voto válido: por debajo de esa cifra, un partido se queda fuera. En Soria, el último escaño de 2023 se adjudicó con un cociente equivalente al 29,5 % del voto válido; en Madrid, con el 2,5 %. Por eso un mismo porcentaje en toda España rinde de forma muy distinta según dónde se obtenga.</p>
+<p>Alberto Penadés y Salvador Santiuste lo explican en la <a href="https://recyt.fecyt.es/index.php/recp/article/download/37589/21106">Revista Española de Ciencia Política</a>: «la desigualdad en el tamaño de las circunscripciones induce premios de mayoría diferenciados, mientras que la desigualdad en el prorrateo de escaños induce premios de sobrerrepresentación también diferenciados». La profesora de la UPV/EHU Annick Laruelle lo dice de forma más directa en un <a href="https://www.ehu.eus/es/web/campusa/-/el-reparto-de-los-escanos-en-el-congreso">artículo de divulgación</a>: «Esta distribución premia a los partidos que consiguen más votos en circunscripciones pequeñas».</p>
+<p>El Consejo de Estado describía el mismo efecto en 2009: «con el modelo vigente, los partidos más votados se ven beneficiados, por cuanto obtienen un número de escaños superior al que les correspondería en proporción a los sufragios recibidos, y los menos votados pueden verse penalizados en función del grado de dispersión de los sufragios logrados».</p>
+
+<h2>Simulador: ¿y si se votara por comunidades o en toda España?</h2>
+<p>Las propuestas de reforma se repiten desde hace décadas. El informe del Consejo de Estado repasa las principales: cambiar la regla D'Hondt por otra más proporcional, suprimir la barrera del 3 %, usar la comunidad autónoma como circunscripción o elegir parte de los diputados en una circunscripción nacional. Algunas, advertía, «podrían exigir la reforma de la Constitución». El simulador aplica esas reglas a los votos reales de 2023 y de noviembre de 2019, con los mismos 350 escaños.</p>
+<figure>
+<figcaption><span class="t">Reparto de los 350 escaños con otras reglas</span><span class="s">Arriba, el resultado real; abajo, el que habrían dado los mismos votos con las reglas elegidas. La línea marca la mayoría absoluta (176)</span></figcaption>
+<div class="ctrl">
+<div class="g" id="s-ele"><span>Elección</span></div>
+<div class="g" id="s-cir"><span>Circunscripción</span></div>
+<div class="g" id="s-bar"><span>Barrera</span></div>
+<div class="g" id="s-met"><span>Fórmula</span></div>
+</div>
+<div class="chart" id="sim"></div>
+<p class="sim-res" id="sim-txt"></p>
+<details open><summary>Escaños por partido</summary><div class="tbl" id="sim-tbl"></div></details>
+<div class="src">Cálculo propio con los votos oficiales por provincia, voto exterior (CERA) incluido. «Por comunidad» suma los escaños actuales de las provincias de cada comunidad; «España» reparte los 350 en una sola circunscripción. La barrera del 3 % se aplica sobre el voto válido de cada circunscripción, como en la ley actual. No es una previsión.</div>
+</figure>
+<p>Con los votos de 2023 y una sola circunscripción para toda España con la barrera del 3 %, solo cuatro partidos habrían entrado en el Congreso: PP (130 escaños), PSOE (124), Vox (48) y Sumar (48). ERC, Junts, EH Bildu y PNV, que no llegan al 3 % en el conjunto de España, se habrían quedado fuera, y PP y Vox habrían sumado 178 diputados, dos por encima de la mayoría absoluta. Sin barrera, la misma circunscripción única habría dado escaño a 12 partidos, entre ellos PACMA (2) y la CUP (1), y PP y Vox se habrían quedado en 165.</p>
+<p>Con circunscripciones autonómicas y D'Hondt, el PP habría bajado de 137 a 125 escaños; Vox habría subido de 33 a 42 y Sumar, de 31 a 37. En noviembre de 2019, una circunscripción única con barrera del 3 % habría multiplicado por casi tres los escaños de Ciudadanos, de 10 a 27.</p>
+<p>Son ejercicios mecánicos y hay que leerlos así. Con otras reglas, los votantes no habrían votado igual: el voto útil existe precisamente porque los electores conocen el reparto provincial, y los partidos habrían hecho otras listas y otras coaliciones. Lo que el simulador mide es cuánto pesa la regla, no lo que habría pasado.</p>
+
+<h2>Qué se juega el 29N</h2>
+<p>El sistema será el mismo el 29 de noviembre. Con los votos de 2023 y el nuevo reparto, el PSOE habría ganado el escaño 38 de Madrid y el PP habría perdido el cuarto de Cádiz: 122 diputados para el PSOE y 136 para el PP. No es una previsión; solo indica cuánto mueve, por sí solo, el cambio de un escaño entre dos provincias.</p>
+<p>Donde se decide la elección es en los últimos escaños de cada provincia, y muchos se resuelven por pocos miles de votos. Lo contamos en <a href="https://mapaelectoral.es/actualidad/ultimo-escano-29n/">Qué provincias pueden decidir el 29N</a>. Y el otro lado del precio del escaño son los votos que no eligen a nadie: casi dos millones en 2023, en <a href="https://mapaelectoral.es/actualidad/votos-sin-escano-29n/">1,9 millones de votos no eligieron a nadie</a>.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Del Atlas: <a href="https://mapaelectoral.es/atlas/bisagras/escanos-ajustados-2023/">Los escaños más ajustados de 2023</a> · <a href="https://mapaelectoral.es/atlas/bisagras/cadiz-madrid-29n/">Cádiz pierde un escaño y Madrid lo gana</a></p>
+<div class="foot">Datos: Ministerio del Interior (generales por mesa, con voto CERA, vía pollspaindata). Cálculo propio. Borrador: pendiente de revisión antes de publicar.</div>
+</main>
+
+<script>
+/*DATOS*/
+/*COMUN*/
+const ORDEN=['PP','PSOE','Vox','Sumar','Unidas Podemos','Cs','Más País','ERC','Junts','EH Bildu','PNV','BNG','CC','UPN','NA+','CUP','PRC','Teruel Existe'];
+function dibujaProv(){const rows=D.prov.map(r=>{const segs=[];Object.entries(r.esc).sort((a,b)=>b[1]-a[1]).forEach(([p,k])=>{for(let i=0;i<k;i++)segs.push({p,v:r.vpe/r.n,h:`<b>${r.nom}</b><br>${p}: ${k} de ${r.n} escaños<br>${n0(r.vpe)} votos por escaño`})});
+  return {lab:r.nom,total:r.vpe,segs,txt:n0(r.vpe),bold:['Teruel','Soria','Madrid'].includes(r.nom)}});
+  filas('prov',rows,{sep:true,rh:15,gap:4,aria:'Votos por escaño en las 52 circunscripciones'});
+  leyenda('prov-ley',['PP','PSOE','Vox','Sumar','ERC','Junts','EH Bildu','PNV','BNG','CC','UPN'])}
+let PE='2023_07';
+function dibujaPart(){const rows=D.part[PE].map(q=>({lab:q.partido,total:q.vpe,segs:[{p:q.partido,v:q.vpe,h:`<b>${q.partido}</b><br>${n0(q.votos)} votos · ${q.esc} escaños<br>${n0(q.vpe)} votos por escaño`}],txt:n0(q.vpe)}));
+  filas('part',rows,{aria:'Votos por escaño de cada partido'})}
+botones('part-b',[['2023_07','2023'],['2019_11','Noviembre de 2019']],k=>{PE=k;dibujaPart()});
+// Simulador
+const S={ele:'2023_07',cir:'ccaa',bar:'0.03',met:'dh'};
+function reparto(v,n,val,bar,met){const ok=Object.entries(v).filter(([p,b])=>p!=='Otros'&&b>=bar*val);const c=[];
+  ok.forEach(([p,b])=>{for(let d=1;d<=n;d++)c.push([b/(met==='dh'?d:2*d-1),p])});c.sort((a,b)=>b[0]-a[0]);const e={};c.slice(0,n).forEach(([,p])=>e[p]=(e[p]||0)+1);return e}
+function simula(ele,cir,bar,met){const E=D.sim.elecciones[ele],ES=D.sim.escanos[ele];let grupos;
+  if(cir==='prov')grupos=Object.keys(E).map(p=>[p]);else if(cir==='ccaa')grupos=Object.values(D.sim.ccaa).map(s=>s.split(' '));else grupos=[Object.keys(E)];
+  const tot={};grupos.forEach(ps=>{const v={};let val=0,n=0;ps.forEach(p=>{for(const k in E[p].v)v[k]=(v[k]||0)+E[p].v[k];val+=E[p].validos;n+=ES[p]});
+    const r=reparto(v,n,val,+bar,met);for(const k in r)tot[k]=(tot[k]||0)+r[k]});return tot}
+function barra(s,y,h,res,W,lw){let x=lw;const sc=(W-lw-4)/350;Object.entries(res).sort((a,b)=>b[1]-a[1]).forEach(([p,k])=>{const w=k*sc;const r=el('rect',{x,y,width:Math.max(w-1,.5),height:h,fill:col(p)},s);
+  const t=el('title',{},r);t.textContent=`${p}: ${k}`;if(w>26){const tx=el('text',{x:x+w/2,y:y+h*.66,'text-anchor':'middle',style:'fill:#fff;font-weight:600'},s);tx.textContent=k}x+=w})}
+function dibujaSim(){const box=document.getElementById('sim');box.innerHTML='';const W=Math.max(box.clientWidth,300),lw=W<480?70:96,h=30;
+  const s=el('svg',{viewBox:`0 0 ${W} ${2*h+40}`,role:'img','aria-label':'Reparto real y simulado de los 350 escaños'},box);
+  const real=simula(S.ele,'prov','0.03','dh'),sim=simula(S.ele,S.cir,S.bar,S.met);
+  el('text',{x:lw-6,y:h*.68,'text-anchor':'end',class:'lab'},s).textContent='Real';
+  el('text',{x:lw-6,y:h+12+h*.68,'text-anchor':'end',class:'lab'},s).textContent='Simulado';
+  barra(s,0,h,real,W,lw);barra(s,h+12,h,sim,W,lw);
+  const xm=lw+176*(W-lw-4)/350;el('line',{x1:xm,x2:xm,y1:-4,y2:2*h+16,stroke:'var(--fg)','stroke-width':1.5,'stroke-dasharray':'3 2'},s);
+  el('text',{x:xm,y:2*h+32,'text-anchor':'middle'},s).textContent='176';
+  const ps=[...new Set([...Object.keys(real),...Object.keys(sim)])].sort((a,b)=>(sim[b]||0)-(sim[a]||0)||(real[b]||0)-(real[a]||0));
+  document.getElementById('sim-tbl').innerHTML='<table><thead><tr><th>Partido</th><th class="n">Real</th><th class="n">Simulado</th><th class="n">Diferencia</th></tr></thead><tbody>'+
+   ps.map(p=>{const d=(sim[p]||0)-(real[p]||0);return `<tr><td><i class="sw" style="background:${col(p)}"></i> ${p}</td><td class="n">${real[p]||0}</td><td class="n">${sim[p]||0}</td><td class="n ${d>0?'dif-mas':'dif-menos'}">${d>0?'+':''}${d||'='}</td></tr>`}).join('')+'</tbody></table>';
+  const np=Object.keys(sim).length,top=Object.entries(sim).sort((a,b)=>b[1]-a[1])[0];
+  document.getElementById('sim-txt').textContent=`Con estas reglas entran ${np} partidos. El más votado, ${top[0]}, obtiene ${top[1]} escaños (${real[top[0]]||0} en el reparto real).`}
+botones('s-ele',[['2023_07','2023'],['2019_11','Nov. 2019']],k=>{S.ele=k;dibujaSim()});
+botones('s-cir',[['prov','Provincia (actual)'],['ccaa','Comunidad'],['unica','España']],k=>{S.cir=k;dibujaSim()},1);
+botones('s-bar',[['0.03','3 %'],['0','Sin barrera']],k=>{S.bar=k;dibujaSim()});
+botones('s-met',[['dh',"D'Hondt"],['sl','Sainte-Laguë']],k=>{S.met=k;dibujaSim()});
+// los grupos de botones llevan una etiqueta delante: se vuelve a poner tras rellenarlos
+[['s-ele','Elección'],['s-cir','Circunscripción'],['s-bar','Barrera'],['s-met','Fórmula']].forEach(([id,t])=>document.getElementById(id).insertAdjacentHTML('afterbegin',`<span>${t}</span>`));
+function todo(){dibujaProv();dibujaPart();dibujaSim()}
+todo();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(todo,150)});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',todo);
+</script>

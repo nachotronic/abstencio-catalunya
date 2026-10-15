@@ -1,0 +1,78 @@
+<title>Votos sin escaño</title>
+<style>/*BASE*/</style>
+<style>
+.ctrl{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--ui);margin:.6rem 0 .2rem}
+.ctrl .g{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem}
+.ctrl button{font:inherit;font-size:.95rem;border:1px solid var(--rule);background:transparent;color:var(--fg);border-radius:4px;padding:.15rem .55rem;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>1,9 millones de votos no eligieron a nadie en 2023: en Teruel, Lleida y Soria, uno de cada tres</h1>
+<p class="dek">Fueron el 7,8 % del voto válido, frente al 10,6 % de noviembre de 2019. Sumar dejó sin escaño el 19,9 % de sus votos y Vox, el 16,1 %; el PSOE, el 0,2 %. El mapa del voto que se queda sin representación, por partido y por provincia, y los escaños que se decidieron por menos de mil votos.</p>
+<div class="byline">Nacho G. del Álamo · 15 de octubre de 2026</div>
+<p style="margin-top:1.4rem">En las generales de julio de 2023, <strong>1.930.192 votos</strong> fueron a candidaturas que no consiguieron ningún escaño en su provincia. Son el 7,8 % de los 24,7 millones de votos válidos. A ellos se suman 200.682 votos en blanco, que cuentan para calcular la barrera del 3 % pero no son de ninguna candidatura. En noviembre de 2019, con un voto más repartido, los votos sin escaño fueron 2.576.302, el 10,6 %.</p>
+<p>Un voto «sin escaño», en esta pieza, es el que recibe una lista que no saca ningún diputado en esa circunscripción. No se cuentan como perdidos los votos de más que recibe un partido que sí obtiene escaño: con la regla D'Hondt no hay «restos» que pasen a otra provincia o al conjunto de España, y cada circunscripción es una elección cerrada.</p>
+<p>Ese voto es el que los partidos grandes piden concentrar. En una entrevista en RNE esta semana, la portavoz del PSOE, Montse Mínguez, pidió el voto útil en las provincias pequeñas porque, dijo, muchos sufragios de la izquierda «se van a la basura» por la regla D'Hondt: «Ojalá no fuera así, ojalá no fuera así, pero las matemáticas son lo que son y los números son lo que son», según recogió <a href="https://www.democrata.es/politica/el-psoe-reclama-el-voto-util-en-provincias-pequenas-para-que-apoyos-a-la-izquierda-no-vayan-a-la-basura/">Europa Press en Demócrata</a>. Puso como ejemplo su provincia, Lleida, que elige cuatro diputados: «En otras provincias, evidentemente, con más diputados, pues la disyuntiva no es tan exacta».</p>
+
+<h2>Quién pierde los votos: Sumar y Vox, no PP y PSOE</h2>
+<p>Los dos grandes partidos casi no pierden votos. En 2023, el PSOE se quedó sin escaño solo en Ceuta y en Melilla, donde se elige un único diputado: 18.275 votos, el 0,2 % de los suyos. El PP perdió 87.761, el 1,1 %, en tres provincias: Gipuzkoa, Girona y Lleida. Para los terceros partidos la cuenta es otra: Sumar dejó sin escaño <strong>605.034 votos</strong>, uno de cada cinco de los que recibió, y Vox, <strong>492.991</strong>, uno de cada seis.</p>
+<figure>
+<figcaption><span class="t">Votos que no obtuvieron escaño, por partido</span><span class="s">Votos de cada partido en las provincias donde no sacó ningún diputado. Entre paréntesis, la parte de su voto total</span></figcaption>
+<div class="ctrl"><div class="g" id="part-b"></div></div>
+<div class="chart" id="part"></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa con voto exterior (CERA), vía pollspaindata; cálculo propio. Partidos con al menos 20.000 votos sin escaño.</div>
+</figure>
+<p>Los partidos que no consiguieron ningún escaño pierden, por definición, todos sus votos. En 2023, PACMA sumó 169.240 en toda España y la CUP, 99.644. El BNG, que solo eligió a su diputado en A Coruña, dejó sin representación el 56,1 % de sus votos, y Coalición Canaria, que solo ganó en Santa Cruz de Tenerife, el 28,8 %.</p>
+<p>Noviembre de 2019 enseña qué pasa cuando un tercer partido se hunde o el voto se divide. Ciudadanos se quedó sin escaño en la mayoría de provincias y perdió <strong>771.095 votos</strong>, el 46,7 % de los suyos. Más País, que se presentaba por primera vez y por separado de Unidas Podemos, dejó sin escaño el 44,4 % de sus votos; Unidas Podemos, el 15,6 %. En 2023, con las dos listas dentro de Sumar, la parte perdida de ese espacio fue del 19,9 %. Qué podría pasar si vuelven a ir separadas lo contamos en <a href="https://mapaelectoral.es/actualidad/izquierda-dividida-29n/">Dónde puede costar más la división a la izquierda</a>.</p>
+
+<h2>El mapa: de Madrid, 1,3 %, a Teruel, 35,2 %</h2>
+<p>Dónde se pierde el voto depende del tamaño de la circunscripción. En Madrid, con 37 diputados, solo el 1,3 % de los votos válidos fue a listas sin escaño. En Teruel, con tres, el 35,2 %; en Lleida, con cuatro, el 32,8 %; en Soria, con dos, el 32,7 %. Es decir, uno de cada tres votantes de esas provincias eligió una papeleta que no se tradujo en ningún diputado.</p>
+<figure>
+<figcaption><span class="t">Parte del voto válido que fue a listas sin escaño, por circunscripción</span><span class="s">Generales de julio de 2023. Cada segmento es un partido que no sacó diputado en esa provincia, en su color</span></figcaption>
+<div class="ctrl"><div class="g" id="prov-b"></div></div>
+<div class="chart" id="prov"></div>
+<div class="legend" id="prov-ley"></div>
+<div class="src">Fuente: Ministerio del Interior, con voto CERA; cálculo propio. En gris, listas locales y pequeñas sin color propio en el gráfico.</div>
+</figure>
+<p>Detrás de cada porcentaje hay una historia local. En Teruel, Teruel Existe perdió el escaño que había ganado en 2019 y sus 11.348 votos se quedaron sin representación, igual que los 9.932 de Vox. En Soria, Soria ¡Ya! sacó 9.697 votos y ningún diputado. En León, la Unión del Pueblo Leonés sumó 22.675 y Vox, 35.451, sin escaño ninguno de los dos. En Lleida, los votos que no eligieron a nadie fueron sobre todo del PP (23.699), Sumar (14.561) y Vox (12.560): es el caso del que hablaba Mínguez, y lo contamos en <a href="https://mapaelectoral.es/actualidad/minguez-lleida-29n/">la pieza sobre Lleida</a>.</p>
+<p>Ceuta y Melilla quedan aparte: con un solo diputado, todo el que no vota al ganador pierde su voto. En 2023 fueron el 60,2 % de los votos válidos en Ceuta y el 49,9 % en Melilla.</p>
+<p>La barrera legal del 3 % apenas tiene que ver. Con los votos de 2023, quitarla no habría cambiado ningún escaño. El Consejo de Estado ya lo advertía en su <a href="https://www.gutierrez-rubi.es/wp-content/uploads/2010/03/regimen-electoral.pdf">informe de 2009</a>: «Salvo en las provincias de Madrid y Barcelona (y quizá en alguna otra circunscripción de elevada población en función del grado de dispersión del voto), el porcentaje de sufragios necesario para la atribución de escaños se sitúa por encima de esa cifra». La barrera real la pone el número de escaños de cada provincia, y en las de tres diputados ronda el 20 % del voto válido.</p>
+
+<h2>Los escaños que se decidieron por menos de mil votos</h2>
+<p>El voto que se pierde y el escaño que se gana por poco son dos caras de la misma regla. En 2023 solo dos escaños se decidieron por menos de mil votos: en <strong>Girona</strong>, al PP le faltaron 285 para quitarle el último diputado a Junts, y en <strong>Cantabria</strong>, 404 para quitárselo a Vox. En noviembre de 2019 fueron siete, el más ajustado en Huelva, donde a Unidas Podemos le faltaron 164 votos para ganar el último escaño al PSOE.</p>
+<figure>
+<figcaption><span class="t">Últimos escaños decididos por menos de 1.000 votos</span><span class="s">Votos que le faltaban al aspirante más cercano para quitar el último escaño de la provincia, sin que cambie nadie más</span></figcaption>
+<div class="tbl" id="filo"></div>
+<div class="src">Fuente: Ministerio del Interior, con voto CERA; cálculo propio con la regla D'Hondt y la barrera del 3 %.</div>
+</figure>
+<p>En 17 circunscripciones, tanto en 2023 como en noviembre de 2019, el último escaño se decidió por menos de 5.000 votos. El mapa completo de esos escaños ajustados, provincia a provincia, está en <a href="https://mapaelectoral.es/actualidad/ultimo-escano-29n/">Qué provincias pueden decidir el 29N</a>.</p>
+
+<h2>Qué cambia si cambian los votantes</h2>
+<p>Los votos sin escaño de 2023 no dicen nada de cómo se votará el 29 de noviembre: dependen de cuántas listas se presenten en cada provincia y de dónde se concentre el voto. Sí indican dónde es más caro presentarse por separado y dónde un partido pequeño puede quedarse fuera aunque sume decenas de miles de votos.</p>
+<p>También explican por qué cualquier cambio de reglas movería el voto. El Consejo de Estado lo anticipaba en el mismo informe: con un sistema más proporcional, «no es improbable que una modificación de la legislación electoral pueda originar, en función de las expectativas creadas, ciertos cambios en la intención de voto de los electores, por el previsible trasvase del denominado voto útil desde los partidos mayoritarios a otros más pequeños». Cómo habrían quedado los votos de 2023 con otras reglas se puede probar en el simulador de <a href="https://mapaelectoral.es/actualidad/precio-del-escano-29n/">Un diputado cuesta 25.300 votos en Teruel y 97.500 en Madrid</a>.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Del Atlas: <a href="https://mapaelectoral.es/atlas/bisagras/escanos-ajustados-2023/">Los escaños más ajustados de 2023</a></p>
+<div class="foot">Datos: Ministerio del Interior (generales por mesa, con voto CERA, vía pollspaindata). Cálculo propio. Borrador: pendiente de revisión antes de publicar.</div>
+</main>
+
+<script>
+/*DATOS*/
+/*COMUN*/
+const PRINC=['PP','PSOE','Vox','Sumar','Unidas Podemos','Cs','Más País','ERC','Junts','EH Bildu','PNV','BNG','CC','UPN','NA+','CUP','PACMA','Teruel Existe','Soria ¡Ya!','UPL','Por Ávila','Coalición por Melilla','PRC','Nueva Canarias'];
+let PE='2023_07',VE='2023_07';
+function dibujaPart(){const rows=D.part[PE].sort((a,b)=>b.sin-a.sin).map(q=>({lab:q.partido,total:q.sin,
+  segs:[{p:q.partido,v:q.sin,h:`<b>${q.partido}</b><br>${n0(q.sin)} votos sin escaño<br>${p1(q.pct_sin)} de sus ${n0(q.votos)} votos`}],txt:`${n0(q.sin)} (${p1(q.pct_sin)})`}));
+  filas('part',rows,{rw:150,aria:'Votos sin escaño por partido'})}
+function dibujaProv(){const rows=D.prov[VE].map(r=>{const segs=Object.entries(r.per).map(([p,v])=>({p:COL[p]?p:'Otros',v:100*v/r.val,h:`<b>${r.nom}</b> (${r.n} esc.)<br>${p}: ${n0(v)} votos sin escaño`}));
+  return {lab:r.nom,total:r.pct,segs,txt:p1(r.pct),bold:['Teruel','Lleida','Soria','Madrid'].includes(r.nom)}});
+  filas('prov',rows,{sep:true,rh:15,gap:4,aria:'Parte del voto válido sin escaño en cada circunscripción'});
+  const vis=new Set();D.prov[VE].forEach(r=>Object.keys(r.per).forEach(p=>{if(COL[p])vis.add(p)}));leyenda('prov-ley',PRINC.filter(p=>vis.has(p)).concat(['Otros']))}
+function dibujaFilo(){document.getElementById('filo').innerHTML='<table><thead><tr><th>Elección</th><th>Circunscripción</th><th>Último escaño</th><th>Aspirante</th><th class="n">Votos que faltaban</th></tr></thead><tbody>'+
+  [['2023_07','2023'],['2019_11','Nov. 2019']].map(([e,t])=>D.filo[e].map(r=>`<tr><td>${t}</td><td>${r.nom} (${r.n})</td><td><i class="sw" style="background:${col(r.ult)}"></i> ${r.ult}</td><td><i class="sw" style="background:${col(r.asp)}"></i> ${r.asp}</td><td class="n">${n0(r.falta)}</td></tr>`).join('')).join('')+'</tbody></table>'}
+botones('part-b',[['2023_07','2023'],['2019_11','Noviembre de 2019']],k=>{PE=k;dibujaPart()});
+botones('prov-b',[['2023_07','2023'],['2019_11','Noviembre de 2019']],k=>{VE=k;dibujaProv()});
+function todo(){dibujaPart();dibujaProv();dibujaFilo()}
+todo();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(todo,150)});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',todo);
+</script>

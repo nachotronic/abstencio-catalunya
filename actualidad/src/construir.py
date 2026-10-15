@@ -829,6 +829,37 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/ceuta-melilla-participacion-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un radar, un buque, un mapa y un hemiciclo: un collage.'),
     ),
+    dict(
+        slug='precio-del-escano-29n', fecha='2026-10-15',
+        titulo='Un diputado cuesta 25.300 votos en Teruel y 97.500 en Madrid: el precio del escaño, provincia a provincia', serie='29n',
+        descripcion='En 2023, un escaño en Madrid costó casi cuatro veces más votos que en Teruel o Soria, y Sumar pagó cada diputado a 98.225 votos frente a los 59.570 del PP. Con un simulador que reparte los votos de 2023 y 2019 por comunidades o en una circunscripción única.',
+        compara='Los votos válidos por escaño en las 52 circunscripciones y los votos por escaño de cada partido en las generales de julio de 2023 (y de noviembre de 2019 y 2015 como contraste), y el reparto de los mismos votos con circunscripción autonómica o única, con y sin barrera del 3 % y con D\'Hondt o Sainte-Laguë.',
+        limites='El simulador es un cálculo mecánico, no una previsión: con otras reglas los electores y los partidos se habrían comportado de otra manera (voto útil, listas, coaliciones). La circunscripción autonómica o única exigiría reformar la Constitución (artículo 68.2). «Por comunidad» conserva los escaños actuales de cada provincia; las listas con menos del 0,1 % en España van juntas como «Otros» y no reciben escaños. Votos con voto exterior (CERA); los electores residentes excluyen el censo CERA.',
+        fuentes=[(INTERIOR[0], 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata, con voto exterior (CERA)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a68', 'Constitución Española, artículo 68'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosesentaydos', 'BOE, Ley Orgánica del Régimen Electoral General, artículos 162 y 163'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742', 'BOE, Real Decreto 806/2026, de convocatoria de elecciones (6-10-2026)'),
+                 ('https://www.gutierrez-rubi.es/wp-content/uploads/2010/03/regimen-electoral.pdf', 'Consejo de Estado, Informe sobre las propuestas de modificación del régimen electoral general (24-2-2009), copia en PDF'),
+                 ('https://recyt.fecyt.es/index.php/recp/article/download/37589/21106', 'Penadés y Santiuste, La desigualdad en el sistema electoral español y el premio a la localización del voto, Revista Española de Ciencia Política 32 (2013)'),
+                 ('https://www.ehu.eus/es/web/campusa/-/el-reparto-de-los-escanos-en-el-congreso', 'Annick Laruelle, El reparto de los escaños en el Congreso, Campusa UPV/EHU (24-5-2019)'),
+                 ('https://www.lamarea.com/2015/12/21/garzon-se-desploma-pero-mantiene-con-vida-a-iu/', 'La Marea, Garzón se desploma pero mantiene con vida a IU (21-12-2015)'),
+                 ('https://www.eldiario.es/politica/alberto-garzon-pedro-sanchez-manifesto_1_2804718.html', 'elDiario.es, entrevista a Alberto Garzón (Aitor Riveiro, 8-2-2018)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='votos-sin-escano-29n', fecha='2026-10-15',
+        titulo='1,9 millones de votos no eligieron a nadie en 2023: en Teruel, Lleida y Soria, uno de cada tres', serie='29n',
+        descripcion='Fueron el 7,8 % del voto válido, frente al 10,6 % de noviembre de 2019. Sumar dejó sin escaño el 19,9 % de sus votos y Vox, el 16,1 %; el PSOE, el 0,2 %. Por partido y provincia, con los escaños que se decidieron por menos de mil votos.',
+        compara='Los votos de las candidaturas que no obtuvieron ningún escaño en su circunscripción, por partido y por provincia, en las generales de julio de 2023 y de noviembre de 2019, y los últimos escaños que se decidieron por menos de 1.000 votos.',
+        limites='No es una proyección de 2026. Solo cuenta como voto sin escaño el de las listas que no sacaron ningún diputado en la provincia; los votos en blanco van aparte. Los márgenes son los votos adicionales que necesitaba el aspirante sin que nadie más cambie. Cálculo propio con D\'Hondt, barrera del 3 % sobre voto válido y voto exterior (CERA) incluido, por eso puede diferir de las cifras de la noche electoral.',
+        fuentes=[(INTERIOR[0], 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata, con voto exterior (CERA)'),
+                 ('https://www.democrata.es/politica/el-psoe-reclama-el-voto-util-en-provincias-pequenas-para-que-apoyos-a-la-izquierda-no-vayan-a-la-basura/', 'Europa Press vía Demócrata, el PSOE reclama el voto útil en provincias pequeñas (13-10-2026)'),
+                 ('https://www.gutierrez-rubi.es/wp-content/uploads/2010/03/regimen-electoral.pdf', 'Consejo de Estado, Informe sobre las propuestas de modificación del régimen electoral general (24-2-2009), copia en PDF'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosesentaytres', 'BOE, Ley Orgánica del Régimen Electoral General, artículo 163 (barrera del 3 % y regla D\'Hondt)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -973,6 +1004,8 @@ ANTETITULOS = {
     'vox-poblacion-nacida-fuera': 'Vox e inmigración',
     'almeida-feijoo-madrid': 'Almeida y Feijóo',
     'aceituna-de-mesa-pueblos': 'La aceituna de mesa',
+    'precio-del-escano-29n': 'No todos los votos valen igual',
+    'votos-sin-escano-29n': 'Papeletas que no eligen a nadie',
 }
 
 
