@@ -1,8 +1,11 @@
 # Elecciones en España por comunidad, provincia y sección censal
 
-> Páginas de entrada de Mapa Electoral: una por comunidad autónoma y por provincia con el resultado de las generales de 2023, la serie de las 16 elecciones al Congreso desde 1977, el voto por renta de las secciones censales y los municipios principales. Más dos páginas temáticas. Autor: Nacho G. del Álamo. Datos: Ministerio del Interior e INE, licencia CC BY 4.0.
+> Páginas de entrada de Mapa Electoral: una por comunidad autónoma y por provincia con el resultado de las generales de 2023, la serie de las 16 elecciones al Congreso desde 1977, el voto por renta de las secciones censales y los municipios principales. Más páginas temáticas: el 29N, resultados por municipio, participación por barrio, sección censal y renta. Autor: Nacho G. del Álamo. Datos: Ministerio del Interior e INE, licencia CC BY 4.0.
 
 ## Temas
+- [Elecciones generales del 29N de 2026: fecha, campaña y diputados por provincia](https://mapaelectoral.es/elecciones/elecciones-29n-2026/)
+- [Resultados de las elecciones generales por municipio desde 1977](https://mapaelectoral.es/elecciones/resultados-elecciones-por-municipio/)
+- [Participación electoral por barrio](https://mapaelectoral.es/elecciones/participacion-electoral-por-barrio/)
 - [Mapa electoral de España por sección censal](https://mapaelectoral.es/elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios](https://mapaelectoral.es/elecciones/voto-y-renta-por-barrios/)
 
