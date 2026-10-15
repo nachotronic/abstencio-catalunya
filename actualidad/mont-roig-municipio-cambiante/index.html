@@ -185,6 +185,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "Siete partidos distintos han ganado en Mont-roig del Camp: ha cambiado 11 veces de ganador en 16 generales", "item": "https://mapaelectoral.es/actualidad/mont-roig-municipio-cambiante/"}]}</script>
 </head>
@@ -195,9 +199,10 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>Siete partidos distintos han ganado en Mont-roig del Camp: ha cambiado 11 veces de ganador en 16 generales</h1>
 <p class="dek">UCD, PSOE, CiU, PP, Ciudadanos, En Comú y ERC han sido la lista más votada en este municipio de Tarragona. Ningún otro de más de 5.000 electores ha cambiado tantas veces. El municipio medio de ese tamaño ha cambiado 4,4 veces.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>
 
-<p style="margin-top:1.4rem">Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. Hay municipios que nunca cambian de ganador y otros que cambian casi cada vez. El que más lo ha hecho entre los que tienen más de 5.000 electores está en la costa de Tarragona: <strong>Mont-roig del Camp</strong>, con 8.171 electores en 2023.</p>
-<p>En las 16 elecciones generales desde 1977, Mont-roig ha cambiado de partido más votado <strong>11 veces</strong> y ha tenido <strong>siete ganadores distintos</strong>: UCD (1977 y 1979), el PSC (1982, 1986, 1996, 2004, 2008, abril de 2019 y 2023), CiU (1989 y 1993), el PP (2000 y 2011), Ciudadanos (2015), En Comú Podem (2016) y ERC (noviembre de 2019).</p>
+<p data-tipo="dato" style="margin-top:1.4rem"><span class="tipo t-dato">Dato</span>Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. Hay municipios que nunca cambian de ganador y otros que cambian casi cada vez. El que más lo ha hecho entre los que tienen más de 5.000 electores está en la costa de Tarragona: <strong>Mont-roig del Camp</strong>, con 8.171 electores en 2023.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>En las 16 elecciones generales desde 1977, Mont-roig ha cambiado de partido más votado <strong>11 veces</strong> y ha tenido <strong>siete ganadores distintos</strong>: UCD (1977 y 1979), el PSC (1982, 1986, 1996, 2004, 2008, abril de 2019 y 2023), CiU (1989 y 1993), el PP (2000 y 2011), Ciudadanos (2015), En Comú Podem (2016) y ERC (noviembre de 2019).</p>
 <figure>
 <figcaption><span class="t">Once cambios de ganador</span><span class="s">Partido más votado en cada elección general en los municipios de más de 5.000 electores que más veces han cambiado</span></figcaption>
 <div class="chart" id="rej"></div>
@@ -206,11 +211,11 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="rej-tbl"></div></details>
 </figure>
 <h2>Los otros: Canarias y Gipuzkoa</h2>
-<p>Detrás de Mont-roig, con diez cambios, están dos municipios canarios: Yaiza (Lanzarote) y Tegueste (Tenerife). Con nueve, Teguise y Agüimes, también en Canarias, Legazpi (Gipuzkoa), El Paso (La Palma) y Eivissa. Teguise y Santa Lucía de Tirajana (Gran Canaria) igualan a Mont-roig en número de ganadores distintos, siete, aunque con menos cambios.</p>
-<p>En los municipios canarios de la lista, a los partidos estatales se suman los propios: Coalición Canaria ha sido la más votada alguna vez en todos ellos menos en Eivissa, que es balear, y el CDS ganó en Teguise y Agüimes en 1989. En Legazpi se han alternado el PNV, el PSOE, EH Bildu y la izquierda estatal.</p>
-<p>El municipio medio de más de 5.000 electores ha cambiado de ganador 4,4 veces en estas 16 elecciones.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Detrás de Mont-roig, con diez cambios, están dos municipios canarios: Yaiza (Lanzarote) y Tegueste (Tenerife). Con nueve, Teguise y Agüimes, también en Canarias, Legazpi (Gipuzkoa), El Paso (La Palma) y Eivissa. Teguise y Santa Lucía de Tirajana (Gran Canaria) igualan a Mont-roig en número de ganadores distintos, siete, aunque con menos cambios.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>En los municipios canarios de la lista, a los partidos estatales se suman los propios: Coalición Canaria ha sido la más votada alguna vez en todos ellos menos en Eivissa, que es balear, y el CDS ganó en Teguise y Agüimes en 1989. En Legazpi se han alternado el PNV, el PSOE, EH Bildu y la izquierda estatal.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>El municipio medio de más de 5.000 electores ha cambiado de ganador 4,4 veces en estas 16 elecciones.</p>
 <h2>Qué no dicen estos datos</h2>
-<p>Cambiar de ganador no exige grandes movimientos de voto: basta con que el primero y el segundo se crucen. Contar cambios dice cuántas veces se ha alterado el primer puesto, no cuánto ha cambiado el voto.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Cambiar de ganador no exige grandes movimientos de voto: basta con que el primero y el segundo se crucen. Contar cambios dice cuántas veces se ha alterado el primer puesto, no cuánto ha cambiado el voto.</p>
 
 <h2>Método y fuentes</h2>
 <dl class="ficha">

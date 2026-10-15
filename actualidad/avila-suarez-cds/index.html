@@ -185,6 +185,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "Ávila dio a Suárez el 46 % en 1986, cuando su partido sacaba el 9 % en España", "item": "https://mapaelectoral.es/actualidad/avila-suarez-cds/"}]}</script>
 </head>
@@ -195,11 +199,12 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>Ávila dio a Suárez el 46 % en 1986, cuando su partido sacaba el 9 % en España</h1>
 <p class="dek">El CDS, el partido que Adolfo Suárez fundó tras dejar UCD, tuvo en Ávila un resultado que no se repitió en ninguna otra provincia: el 41,6 % en 1986 y el 46,0 % en la capital. La segunda provincia, Segovia, se quedó en el 23,8 %.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>
 
-<p style="margin-top:1.4rem">Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. Una de las preguntas de cada campaña es cuánto pesa un candidato concreto en el voto de su tierra. La historia electoral tiene un caso extremo: Adolfo Suárez y su provincia, Ávila.</p>
-<p>Suárez, nacido en Cebreros (Ávila), dejó UCD y fundó el Centro Democrático y Social (CDS) el 29 de julio de 1982, pocos meses antes de las generales de octubre. Aquel año el CDS sacó el <strong>2,9 %</strong> en España y dos diputados. En 1986 llegó a su mejor resultado: el <strong>9,3 %</strong> y 19 diputados. En 1989 bajó al 8,0 % y en 1993, al 1,8 %, sin escaños.</p>
+<p data-tipo="contexto" style="margin-top:1.4rem"><span class="tipo t-contexto">Contexto</span>Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. Una de las preguntas de cada campaña es cuánto pesa un candidato concreto en el voto de su tierra. La historia electoral tiene un caso extremo: Adolfo Suárez y su provincia, Ávila.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Suárez, nacido en Cebreros (Ávila), dejó UCD y fundó el Centro Democrático y Social (CDS) el 29 de julio de 1982, pocos meses antes de las generales de octubre. Aquel año el CDS sacó el <strong>2,9 %</strong> en España y dos diputados. En 1986 llegó a su mejor resultado: el <strong>9,3 %</strong> y 19 diputados. En 1989 bajó al 8,0 % y en 1993, al 1,8 %, sin escaños.</p>
 <h2>Ávila, muy por encima de todas</h2>
-<p>En la provincia de Ávila, el CDS sacó el <strong>22,4 %</strong> en 1982, casi ocho veces su media española. En 1986 llegó al <strong>41,6 %</strong>, y en la ciudad de Ávila al <strong>46,0 %</strong>, cinco veces su resultado en el conjunto de España.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>En la provincia de Ávila, el CDS sacó el <strong>22,4 %</strong> en 1982, casi ocho veces su media española. En 1986 llegó al <strong>41,6 %</strong>, y en la ciudad de Ávila al <strong>46,0 %</strong>, cinco veces su resultado en el conjunto de España.</p>
 <figure>
 <figcaption><span class="t">Ningún otro sitio se acercó a Ávila</span><span class="s">Voto al CDS en las generales de 1986 por provincia, las 12 primeras</span></figcaption>
 <div class="chart" id="prov"></div>
@@ -207,7 +212,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <div class="src">Fuente: Ministerio del Interior. Porcentajes sobre votos a candidaturas, sin voto exterior.</div>
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="prov-tbl"></div></details>
 </figure>
-<p>Detrás de Ávila, el CDS superó el 20 % solo en Segovia (23,8 %) y en Las Palmas (21,1 %). En Salamanca, Valladolid y Zamora, también en Castilla y León, sacó entre el 15 % y el 19 %. En Madrid, el 14,1 %.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Detrás de Ávila, el CDS superó el 20 % solo en Segovia (23,8 %) y en Las Palmas (21,1 %). En Salamanca, Valladolid y Zamora, también en Castilla y León, sacó entre el 15 % y el 19 %. En Madrid, el 14,1 %.</p>
 <figure>
 <figcaption><span class="t">El CDS en Ávila y en España</span><span class="s">Voto al CDS en las generales de 1982 a 1993</span></figcaption>
 <div class="chart" id="serie"></div>
@@ -216,9 +221,9 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="serie-tbl"></div></details>
 </figure>
 <h2>Una sola victoria</h2>
-<p>Pese a ese 46,0 %, el CDS solo fue la lista más votada en la ciudad de Ávila una vez, en 1986. En 1977 y 1979 ganó UCD, en 1982 AP y desde 1989 el PP, sin interrupción. Ávila es uno de los 1.932 municipios donde el PSOE nunca ha sido la lista más votada en unas generales.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Pese a ese 46,0 %, el CDS solo fue la lista más votada en la ciudad de Ávila una vez, en 1986. En 1977 y 1979 ganó UCD, en 1982 AP y desde 1989 el PP, sin interrupción. Ávila es uno de los 1.932 municipios donde el PSOE nunca ha sido la lista más votada en unas generales.</p>
 <h2>Qué no dicen estos datos</h2>
-<p>Que el CDS sacara en Ávila cinco veces su media es un dato. Atribuirlo solo a que Suárez era de la provincia sería una explicación que los resultados por sí solos no prueban: también pueden influir la implantación del partido, sus candidatos locales o la herencia de UCD, que en 1979 había sacado en la provincia de Ávila el 66,1 %, su mejor resultado de España.</p>
+<p data-tipo="hipotesis"><span class="tipo t-hipotesis">Hipótesis</span>Que el CDS sacara en Ávila cinco veces su media es un dato. Atribuirlo solo a que Suárez era de la provincia sería una explicación que los resultados por sí solos no prueban: también pueden influir la implantación del partido, sus candidatos locales o la herencia de UCD, que en 1979 había sacado en la provincia de Ávila el 66,1 %, su mejor resultado de España.</p>
 
 <h2>Método y fuentes</h2>
 <dl class="ficha">

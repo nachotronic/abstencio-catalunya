@@ -185,6 +185,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "16 de 16: Plasencia ha votado al ganador en todas las elecciones generales desde 1977", "item": "https://mapaelectoral.es/actualidad/plasencia-acierta-siempre/"}]}</script>
 </head>
@@ -195,10 +199,11 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>16 de 16: Plasencia ha votado al ganador en todas las elecciones generales desde 1977</h1>
 <p class="dek">De unos 8.000 municipios, solo 27 han dado su victoria al mismo partido que ganó en España en las 16 generales de la democracia. Plasencia, con 32.589 electores, es el más grande. Más de la mitad son pueblos de Aragón.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>
 
-<p style="margin-top:1.4rem">Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. Y hay una pregunta que se repite en cada campaña: ¿existe en España un pueblo que siempre acierta, como el condado de Estados Unidos que vota siempre al presidente que gana?</p>
-<p>Con los resultados de Interior desde 1977, la respuesta es sí, pero son muy pocos. De los <strong>7.870 municipios</strong> con datos en las 16 elecciones generales, solo <strong>27</strong> han votado siempre como primera fuerza al mismo partido que ganó en el conjunto de España: UCD en 1977 y 1979, el PSOE de 1982 a 1993, el PP en 1996 y 2000, el PSOE en 2004 y 2008, el PP de 2011 a 2016, el PSOE en las dos de 2019 y el PP en 2023.</p>
-<p>El mayor de ellos es <strong>Plasencia</strong> (Cáceres), con 32.589 electores en 2023. Le siguen Villaquilambre (León), Gines (Sevilla), Jaca (Huesca), Valencina de la Concepción (Sevilla) y Zuera (Zaragoza). El resto son pueblos pequeños; el más pequeño, Sigüés (Zaragoza), tiene 66 electores.</p>
+<p data-tipo="contexto" style="margin-top:1.4rem"><span class="tipo t-contexto">Contexto</span>Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. Y hay una pregunta que se repite en cada campaña: ¿existe en España un pueblo que siempre acierta, como el condado de Estados Unidos que vota siempre al presidente que gana?</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Con los resultados de Interior desde 1977, la respuesta es sí, pero son muy pocos. De los <strong>7.870 municipios</strong> con datos en las 16 elecciones generales, solo <strong>27</strong> han votado siempre como primera fuerza al mismo partido que ganó en el conjunto de España: UCD en 1977 y 1979, el PSOE de 1982 a 1993, el PP en 1996 y 2000, el PSOE en 2004 y 2008, el PP de 2011 a 2016, el PSOE en las dos de 2019 y el PP en 2023.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>El mayor de ellos es <strong>Plasencia</strong> (Cáceres), con 32.589 electores en 2023. Le siguen Villaquilambre (León), Gines (Sevilla), Jaca (Huesca), Valencina de la Concepción (Sevilla) y Zuera (Zaragoza). El resto son pueblos pequeños; el más pequeño, Sigüés (Zaragoza), tiene 66 electores.</p>
 <figure>
 <figcaption><span class="t">Plasencia y los demás: el mismo ganador que España, elección tras elección</span><span class="s">Partido más votado en cada elección general. Primera fila: el ganador en España. Los 12 municipios más grandes de los 27 que nunca han fallado</span></figcaption>
 <div class="chart" id="ohio"></div>
@@ -207,8 +212,8 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="ohio-tbl"></div></details>
 </figure>
 <h2>Cada elección deja a muchos por el camino</h2>
-<p>Acertar una vez es fácil: en 1977, 5.792 municipios votaron como primera fuerza a UCD, igual que España. Lo difícil es seguir acertando. En 1982, cuando el PSOE ganó por primera vez, ya solo quedaban 2.357 municipios con el pleno. El cambio de 1996 al PP dejó la lista en 334. El de 2004, en 104.</p>
-<p>Antes del 23J quedaban 46. En julio de 2023 el PP fue el partido más votado en España, pero en 19 de ellos ganó el PSOE, y se cayeron de la lista. Entre ellos están Ponferrada (León), Coca (Segovia) o Mendavia (Navarra), que ya fueron noticia como «pueblos que siempre aciertan» hasta 2019, <a href="https://www.publico.es/politica/29-50-ohios-espanoles-sobreviven-23j.html">como contó Público tras aquellas elecciones</a>.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Acertar una vez es fácil: en 1977, 5.792 municipios votaron como primera fuerza a UCD, igual que España. Lo difícil es seguir acertando. En 1982, cuando el PSOE ganó por primera vez, ya solo quedaban 2.357 municipios con el pleno. El cambio de 1996 al PP dejó la lista en 334. El de 2004, en 104.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Antes del 23J quedaban 46. En julio de 2023 el PP fue el partido más votado en España, pero en 19 de ellos ganó el PSOE, y se cayeron de la lista. Entre ellos están Ponferrada (León), Coca (Segovia) o Mendavia (Navarra), que ya fueron noticia como «pueblos que siempre aciertan» hasta 2019, <a href="https://www.publico.es/politica/29-50-ohios-espanoles-sobreviven-23j.html">como contó Público tras aquellas elecciones</a>.</p>
 <figure>
 <figcaption><span class="t">De 5.792 municipios a 27</span><span class="s">Municipios que han votado al ganador nacional en todas las elecciones generales hasta cada fecha, desde 1977</span></figcaption>
 <div class="chart" id="superv"></div>
@@ -217,11 +222,11 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="superv-tbl"></div></details>
 </figure>
 <h2>Más de la mitad, en Aragón</h2>
-<p>Los 27 no se reparten al azar. <strong>Catorce están en Aragón</strong>: seis en Huesca (entre ellos Jaca, Biescas y Ayerbe), seis en Zaragoza (Zuera, Fuentes de Ebro, Gelsa…) y dos en Teruel. Tres están en León, dos en Zamora, dos en La Rioja y dos en Sevilla. Ninguno está en Cataluña, el País Vasco, Galicia o Canarias, donde los partidos nacionalistas y regionales ganan a menudo en los municipios.</p>
-<p>Que un municipio acierte siempre no quiere decir que vote como la media de España. En Plasencia el ganador coincide, pero los porcentajes pueden estar lejos de los nacionales. Lo que muestran estos datos es que el partido más votado ha cambiado allí en los mismos momentos que en el conjunto del país.</p>
+<p data-tipo="patron"><span class="tipo t-patron">Patrón</span>Los 27 no se reparten al azar. <strong>Catorce están en Aragón</strong>: seis en Huesca (entre ellos Jaca, Biescas y Ayerbe), seis en Zaragoza (Zuera, Fuentes de Ebro, Gelsa…) y dos en Teruel. Tres están en León, dos en Zamora, dos en La Rioja y dos en Sevilla. Ninguno está en Cataluña, el País Vasco, Galicia o Canarias, donde los partidos nacionalistas y regionales ganan a menudo en los municipios.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Que un municipio acierte siempre no quiere decir que vote como la media de España. En Plasencia el ganador coincide, pero los porcentajes pueden estar lejos de los nacionales. Lo que muestran estos datos es que el partido más votado ha cambiado allí en los mismos momentos que en el conjunto del país.</p>
 <h2>Qué no dicen estos datos</h2>
-<p>Que Plasencia haya acertado 16 veces no permite saber quién ganará el 29N. Con 7.870 municipios y 16 elecciones, es normal que unos pocos coincidan siempre por pura acumulación de casualidades: cada vez que hay un cambio de Gobierno, la lista se reduce. Esta pieza no es una predicción. Es una forma de mirar cuántas veces ha cambiado España de partido ganador y cuántos pueblos han cambiado exactamente a la vez.</p>
-<p>La noche del 29N, el <a href="https://mapaelectoral.es/">mapa de resultados</a> permitirá ver si Plasencia y los otros 26 siguen en la lista.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Que Plasencia haya acertado 16 veces no permite saber quién ganará el 29N. Con 7.870 municipios y 16 elecciones, es normal que unos pocos coincidan siempre por pura acumulación de casualidades: cada vez que hay un cambio de Gobierno, la lista se reduce. Esta pieza no es una predicción. Es una forma de mirar cuántas veces ha cambiado España de partido ganador y cuántos pueblos han cambiado exactamente a la vez.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>La noche del 29N, el <a href="https://mapaelectoral.es/">mapa de resultados</a> permitirá ver si Plasencia y los otros 26 siguen en la lista.</p>
 
 <h2>Método y fuentes</h2>
 <dl class="ficha">
