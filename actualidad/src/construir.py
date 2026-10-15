@@ -805,6 +805,30 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/minguez-lleida-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Unas llaves que cambian de mano, un bloque de pisos y una urna: un collage.'),
     ),
+    dict(
+        slug='ceuta-melilla-participacion-29n', fecha='2026-10-15',
+        titulo='El Rey visita las dos ciudades que menos votan: en Melilla votó el 49,8% en 2023, y en una sección de la periferia, el 19%', serie='29n',
+        descripcion='Ceuta y Melilla reciben a Felipe VI a mes y medio del 29N. Son las dos circunscripciones con menos participación de España, y dentro de cada una la brecha entre barrios supera los 20 puntos: en el tercio de secciones con menos renta de Melilla votó el 32%; en el de más renta, el 60%.',
+        compara='La participación de las 19 comunidades y ciudades autónomas en las generales de 2023, las 56 secciones censales de Ceuta y las 44 de Melilla agrupadas por distrito y en tres tramos de renta por unidad de consumo, y el partido más votado en cada una de las 16 generales desde 1977.',
+        limites='Son datos de secciones, no de personas, y no explican por qué cada barrio vota como vota. No hay datos de religión ni de origen por sección: la pieza no los usa. Sin voto exterior. Los nombres de barrio de cada distrito salen de la prensa local, no de una relación oficial. Los límites de sección están simplificados.',
+        fuentes=[INTERIOR, INE,
+                 ('https://es.euronews.com/2026/10/13/los-reyes-visitan-una-ceuta-que-los-recibe-con-los-brazos-abiertos', 'Euronews, los Reyes visitan Ceuta (13-10-2026)'),
+                 ('https://www.elespanol.com/espana/politica/20261014/discurso-integro-rey-felipe-vi-historica-visita-ciudad-autonoma-melilla/1003744420505_0.html', 'El Español, discurso íntegro del Rey en Melilla (14-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/14/imbroda-entrega-al-rey-la-llave-de-oro-de-melilla-y-reclama-al-gobierno-respuestas-mas-contundentes-nadie-puede-violar-la-soberania-nacional-y-no-esperar-consecuencias/', 'Infobae, Imbroda entrega al Rey la llave de oro de Melilla (14-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/14/marruecos-reyes-melilla-3447827', 'Moncloa.com, Marruecos ante la visita (14-10-2026)'),
+                 ('https://www.elcorreogallego.es/mundo/2026/10/13/marruecos-silencio-prensa-visita-reyes-ceuta-melilla-135298696.html', 'El Correo Gallego, Rabat guarda silencio (13-10-2026)'),
+                 ('https://teleceuta.com/ceuta-decidira-un-diputado-y-dos-senadores-en-las-elecciones-generales-de-noviembre-de-2026/', 'Teleceuta, Ceuta elige un diputado y dos senadores (6-10-2026)'),
+                 ('https://www.ceutaldia.com/articulo/politica/votos-generales-mesa-mesa-dibujan-mapa-desigualdad-2-ceutas-claridad/20230725004623266945.html', 'Ceuta al Día, el voto mesa a mesa (25-7-2023)'),
+                 ('https://elfarodeceuta.es/el-pp-gano-en-todos-los-distritos-salvo-principe-benzu-y-en-73-de-las-93-mesas/', 'El Faro de Ceuta, el voto por distritos (28-6-2016)'),
+                 ('https://elfarodemelilla.es/radiografia-elecciones-generales-voto-melilla-distritos/', 'El Faro de Melilla, radiografía del voto por distritos (6-5-2019)'),
+                 ('https://elfarodemelilla.es/melilla-donde-el-pp-pierde-mas-votos-respecto-a-las-generales/', 'El Faro de Melilla, las europeas por colegios (11-6-2024)'),
+                 ('https://www.cepc.gob.es/sites/default/files/2021-12/27094carmengonzalezenriquezrep140.pdf', 'Carmen González Enríquez, Los frenos al pluralismo cultural en territorios de soberanía discutida: los casos de Ceuta y Melilla, Revista de Estudios Políticos 140 (2008)'),
+                 ('https://seguridadinternacional.es/resi/html/representacion-politica-e-identidad-local-en-ceuta-1975-2023/', 'Alicia Fernández, Representación política e identidad local en Ceuta (1975-2023), Revista de Estudios en Seguridad Internacional 11-1 (2025)')],
+        enlaces=[],
+        lugar='Ceuta y Melilla',
+        foto=dict(src='img/actualidad/fotos/ceuta-melilla-participacion-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un radar, un buque, un mapa y un hemiciclo: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -911,6 +935,7 @@ PIEZAS = COMUNIDADES + HISTORIA + PIEZAS
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'ceuta-melilla-participacion-29n': 'Dos ciudades en cada ciudad',
     'minguez-lleida-29n': 'Un escaño por 3.500 votos',
     'madrid-barrio-a-barrio-29n': 'El sur aguanta, el resto cambia',
     'barcelona-barrio-a-barrio-29n': 'Adiós al amarillo',
