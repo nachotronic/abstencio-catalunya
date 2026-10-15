@@ -172,7 +172,8 @@ def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atla
     rel = '../' * nivel
     raiz = rel + '../'
     menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('atlas', f'{rel}index.html', 'Atlas'),
-            ('actualidad', f'{raiz}actualidad/', 'Actualidad'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
+            ('actualidad', f'{raiz}actualidad/', 'Actualidad'),
+            ('comunidades', f'{raiz}actualidad/#comunidades', 'Comunidades'), ('historia', f'{raiz}actualidad/#historia', 'Historia electoral'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
             ('sobre', f'{raiz}sobre-mi.html', 'Sobre mí')]
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz}">{SITIO}</a>' +
            ''.join(f'<a href="{h}"{" aria-current=\"page\"" if k == actual else ""}>{t}</a>' for k, h, t in menu) + '</nav>')
