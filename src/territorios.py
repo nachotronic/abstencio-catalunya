@@ -521,6 +521,8 @@ def pagina_ciudad(cod):
     ccaa = PROV_CCAA[p]
     ruta = CIUDADES[cod]
     nivel = ruta.count('/')
+    global RAIZ_REL
+    RAIZ_REL = '../' * nivel   # los bloques de abajo se escriben antes que la cabecera
     sec = T.SEC[T.SEC.mun_code == cod]
     serie = T.serie(m)
     r = serie[T.ULTIMA]
