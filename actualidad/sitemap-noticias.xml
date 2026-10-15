@@ -168,4 +168,20 @@
       <news:title>Palma, la gran ciudad que menos vota: el 62,5% en 2023, y menos del 35% en algunas secciones del este</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/minguez-lleida-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>Montse Mínguez, entre los pisos de su pareja y un escaño en el aire: el PSC duplicó su voto en Lleida y le ganó el cuarto diputado al PP por unos 3.500 votos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/ceuta-melilla-participacion-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>El Rey visita las dos ciudades que menos votan: en Melilla votó el 49,8% en 2023, y en una sección de la periferia, el 19%</news:title>
+    </news:news>
+  </url>
 </urlset>
