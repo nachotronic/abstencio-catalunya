@@ -778,6 +778,33 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/palma-barrio-a-barrio-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una maleta, mapas y una calle con balcones: un collage.'),
     ),
+    dict(
+        slug='minguez-lleida-29n', fecha='2026-10-15',
+        titulo='Montse Mínguez, entre los pisos de su pareja y un escaño en el aire: el PSC duplicó su voto en Lleida y le ganó el cuarto diputado al PP por unos 3.500 votos', serie='29n',
+        descripcion='La portavoz del PSOE repite como número uno del PSC por Lleida en plena polémica por los negocios inmobiliarios de su pareja. En 2023, el PSC pasó del 14,6% al 29,8% en la provincia y ganó en 79 municipios, frente a 8 en 2019.',
+        compara='El voto en la provincia de Lleida en las 16 generales desde 1977, los 231 municipios en noviembre de 2019 y julio de 2023, el reparto D\'Hondt de los cuatro escaños de 2023 y las 81 secciones censales de la ciudad de Lleida agrupadas en tres tramos de renta.',
+        limites='No analiza los negocios de la pareja de Mínguez: las citas sobre la polémica son de la prensa que se enlaza. Son datos de territorios, no de personas, y no dicen por qué votó así cada municipio o barrio ni cómo afectará la polémica. Los porcentajes de la serie y de la ciudad son sin voto exterior y sobre votos a candidaturas; el reparto de escaños usa los resultados oficiales, con voto exterior. La comparación de la ciudad solo incluye las secciones que conservan el código entre 2019 y 2023.',
+        fuentes=[INTERIOR, INE, INE_IPVA,
+                 ('https://en.wikipedia.org/wiki/Lleida_(Congress_of_Deputies_constituency)', 'Wikipedia, circunscripción de Lleida: resultados oficiales de 2023'),
+                 ('https://es.wikipedia.org/wiki/Montse_M%C3%ADnguez', 'Wikipedia, Montse Mínguez'),
+                 ('https://www.eldebate.com/espana/20261013/portavoz-psoe-reconoce-pareja-gran-tenedor-alquila-casas-desahuciado-inquilinos_469056.html', 'El Debate, Mínguez reconoce que su pareja es gran tenedor (13-10-2026)'),
+                 ('https://www.elespanol.com/espana/20261014/pareja-montse-minguez-portavoz-psoe-sociedades-panama-ademas-pisos-espana/1003744419108_0.html', 'El Español, la pareja de Mínguez tiene dos sociedades en Panamá (14-10-2026)'),
+                 ('https://www.esdiario.com/nacional/261014/200198/30-pisos-sociedades-panama-pareja-montse-minguez-amplia-problema-ferraz.html', 'ESdiario, 30 pisos y sociedades en Panamá (14-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-14/oscar-lopez-pareja-montse-minguez-licita/', 'The Objective, Óscar López defiende a la pareja de Mínguez (14-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/14/pp-ve-incoherencia-e-hipocresia-en-el-psoe-tras-el-caso-de-la-pareja-de-montse-minguez/', 'EFE en Infobae, el PP ve incoherencia e hipocresía (14-10-2026)'),
+                 ('https://naciodigital.cat/lleida/politica/el-psc-de-lleida-ratifica-montse-minguez-com-a-cap-de-llista-al-congres-per-al-29-n.html', 'NacióDigital, el PSC ratifica a Mínguez (14-10-2026)'),
+                 ('https://naciodigital.cat/lleida/politica/lenigma-de-lleida-lultim-esco-no-te-amo.html', 'NacióDigital, l\'enigma de Lleida (8-10-2026)'),
+                 ('https://lamanyana.cat/montse-minguez-cap-de-llista-del-psc-per-lleida-al-congres/', 'La Mañana, la lista del PSC por Lleida (15-10-2026)'),
+                 ('https://lamanyana.cat/quatre-escons-en-joc-a-lleida/', 'La Mañana, cuatro escaños en juego en Lleida (7-10-2026)'),
+                 ('https://laciutat.cat/laciutatdelleida/ines-granollers-proclamada-cap-llista-esquerra-republicana-catalunya-congres-demarcacio-lleida-eleccions-generals_902682_102.html', 'La Ciutat, Inés Granollers, candidata de ERC (12-10-2026)'),
+                 ('https://ebredigital.cat/2026/10/08/josep-maria-cruset-tornara-a-ncapcalar-la-llista-de-junts-al-congres-el-29n/', 'EbreDigital, las listas de Junts (8-10-2026)'),
+                 ('https://lamanyana.cat/vuit-pobles-lleidatans-entren-a-la-regulacio-del-lloguer-del-govern/', 'La Mañana, Lleida sale de las zonas tensionadas (29-7-2026)'),
+                 ('https://www.eldiario.es/madrid/somos/estudio-descubre-influye-voto-madrid-efecto-alquiler-barrio-vivas_1_12961596.html', 'elDiario.es, Álvaro Sánchez García sobre alquiler y voto en Madrid (9-2-2026)')],
+        enlaces=[],
+        lugar='Lleida',
+        foto=dict(src='img/actualidad/fotos/minguez-lleida-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Unas llaves que cambian de mano, un bloque de pisos y una urna: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -884,6 +911,7 @@ PIEZAS = COMUNIDADES + HISTORIA + PIEZAS
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'minguez-lleida-29n': 'Un escaño por 3.500 votos',
     'madrid-barrio-a-barrio-29n': 'El sur aguanta, el resto cambia',
     'barcelona-barrio-a-barrio-29n': 'Adiós al amarillo',
     'valencia-barrio-a-barrio-29n': 'La izquierda que se encogió',
