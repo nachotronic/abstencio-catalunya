@@ -119,3 +119,17 @@ def leyenda(items):
 CSS = ('.mapa{width:100%;height:auto;display:block}.leyenda-mapa{font-family:var(--sans);font-size:.85rem;display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin:.4rem 0 0}'
        '.leyenda-mapa i{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;margin-right:.35rem;vertical-align:-1px}'
        'figure img.mapa{border:0}')
+
+
+def municipios_zona(provs, ancho=W, tol=0.6):
+    """Trazados de los municipios de unas provincias, encuadrados en su propio marco: [(código, d)], alto.
+    Para mapas que el JavaScript de la página recolorea (cada municipio, un <path> con su código)."""
+    geo = {c: rs for c, rs in geometria('mun').items() if c[:2] in provs}
+    pts = [p for rs in geo.values() for r in rs for p in r]
+    x0, x1 = min(p[0] for p in pts), max(p[0] for p in pts)
+    y0, y1 = min(p[1] for p in pts), max(p[1] for p in pts)
+    k = math.cos(math.radians((y0 + y1) / 2))
+    M = 4
+    esc = (ancho - 2 * M) / ((x1 - x0) * k)
+    P = lambda p: ((p[0] - x0) * k * esc + M, (y1 - p[1]) * esc + M)
+    return [(c, _ruta(rs, P, tol)) for c, rs in sorted(geo.items())], round((y1 - y0) * esc + 2 * M)
