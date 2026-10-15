@@ -185,6 +185,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "Dos Hermanas ha votado al PSOE en las 16 generales; solo 11 pueblos, ninguno grande, lo han hecho con el PP", "item": "https://mapaelectoral.es/actualidad/municipios-fieles/"}]}</script>
 </head>
@@ -195,9 +199,10 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>Dos Hermanas ha votado al PSOE en las 16 generales; solo 11 pueblos, ninguno grande, lo han hecho con el PP</h1>
 <p class="dek">239 municipios han dado la victoria al mismo partido en todas las elecciones generales desde 1977: 190 al PSOE, 28 al PNV, 11 a AP/PP y 10 a CiU/Junts. Los del PSOE son sobre todo andaluces y extremeños. Los del PP suman menos de 14.000 electores.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>
 
-<p style="margin-top:1.4rem">Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. En una campaña se habla mucho de los votos que se mueven. Esta pieza mira lo contrario: los municipios donde, pase lo que pase en España, siempre gana el mismo.</p>
-<p>De los 7.870 municipios con datos en las 16 generales, <strong>239 han tenido siempre el mismo ganador</strong>. Han atravesado la Transición, las mayorías absolutas de Felipe González y de Aznar, la crisis de 2008, la llegada de Podemos, Ciudadanos y Vox, y nunca han cambiado de partido más votado.</p>
+<p data-tipo="contexto" style="margin-top:1.4rem"><span class="tipo t-contexto">Contexto</span>Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. En una campaña se habla mucho de los votos que se mueven. Esta pieza mira lo contrario: los municipios donde, pase lo que pase en España, siempre gana el mismo.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>De los 7.870 municipios con datos en las 16 generales, <strong>239 han tenido siempre el mismo ganador</strong>. Han atravesado la Transición, las mayorías absolutas de Felipe González y de Aznar, la crisis de 2008, la llegada de Podemos, Ciudadanos y Vox, y nunca han cambiado de partido más votado.</p>
 <figure>
 <figcaption><span class="t">190 del PSOE, 28 del PNV, 11 del PP y 10 de CiU/Junts</span><span class="s">Municipios con el mismo partido más votado en las 16 elecciones generales de 1977 a 2023</span></figcaption>
 <div class="chart" id="fam"></div>
@@ -206,8 +211,8 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="fam-tbl"></div></details>
 </figure>
 <h2>Los fieles del PSOE: Sevilla, Jaén y Badajoz</h2>
-<p>El PSOE se lleva casi ocho de cada diez. Y entre ellos están los únicos municipios grandes de la lista. <strong>Dos Hermanas</strong> (Sevilla), con 107.888 electores, ha votado al PSOE como primera fuerza en las 16 elecciones. También Alcalá de Guadaíra, Utrera, La Rinconada, Coria del Río, Carmona o Camas, en Sevilla; Arcos de la Frontera, en Cádiz, y Martos, en Jaén.</p>
-<p>Por provincias, Sevilla tiene 30 municipios fieles al PSOE; Jaén, 24; Badajoz, 21; Granada, 17; Málaga, 15; Córdoba, 13, y Huelva y Cáceres, 10 cada una.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>El PSOE se lleva casi ocho de cada diez. Y entre ellos están los únicos municipios grandes de la lista. <strong>Dos Hermanas</strong> (Sevilla), con 107.888 electores, ha votado al PSOE como primera fuerza en las 16 elecciones. También Alcalá de Guadaíra, Utrera, La Rinconada, Coria del Río, Carmona o Camas, en Sevilla; Arcos de la Frontera, en Cádiz, y Martos, en Jaén.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Por provincias, Sevilla tiene 30 municipios fieles al PSOE; Jaén, 24; Badajoz, 21; Granada, 17; Málaga, 15; Córdoba, 13, y Huelva y Cáceres, 10 cada una.</p>
 <figure>
 <figcaption><span class="t">Los 15 municipios fieles más grandes</span><span class="s">Electores en 2023 de los municipios que siempre han votado al mismo partido en las generales</span></figcaption>
 <div class="chart" id="top"></div>
@@ -216,12 +221,12 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="top-tbl"></div></details>
 </figure>
 <h2>Los del PNV y CiU</h2>
-<p>El PNV ha ganado en las 16 generales en 28 municipios vascos, sobre todo de Bizkaia: los mayores son Mungia, Bermeo y Gernika-Lumo. CiU y luego Junts lo han hecho en 10 municipios catalanes.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>El PNV ha ganado en las 16 generales en 28 municipios vascos, sobre todo de Bizkaia: los mayores son Mungia, Bermeo y Gernika-Lumo. CiU y luego Junts lo han hecho en 10 municipios catalanes.</p>
 <h2>Los del PP: once pueblos, uno grande</h2>
-<p>En el otro lado, solo <strong>11 municipios</strong> han votado siempre a AP y después al PP. Y son casi todos diminutos: el mayor es <strong>Vilalba</strong> (Lugo), con 11.676 electores. Le siguen Riotorto (Lugo), con 1.066, e Igea (La Rioja), con 424. Entre los demás hay pueblos de La Rioja, Ourense, Zamora, Guadalajara, Zaragoza, Teruel y Palencia, y uno, Villarroya (La Rioja), tiene siete electores. Juntos, los 11 suman menos de 14.000.</p>
-<p>Parte de la diferencia es de método. En 1977 y 1979, cuando AP era un partido pequeño, la derecha ganaba con UCD en la mayor parte de la España rural. Un municipio que votó a UCD en 1977 y al PP después no cuenta como fiel, porque UCD y el PP son partidos distintos. Para estar en la lista del PP, un pueblo tenía que preferir AP a UCD ya en 1977, y eso pasó en muy pocos.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>En el otro lado, solo <strong>11 municipios</strong> han votado siempre a AP y después al PP. Y son casi todos diminutos: el mayor es <strong>Vilalba</strong> (Lugo), con 11.676 electores. Le siguen Riotorto (Lugo), con 1.066, e Igea (La Rioja), con 424. Entre los demás hay pueblos de La Rioja, Ourense, Zamora, Guadalajara, Zaragoza, Teruel y Palencia, y uno, Villarroya (La Rioja), tiene siete electores. Juntos, los 11 suman menos de 14.000.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Parte de la diferencia es de método. En 1977 y 1979, cuando AP era un partido pequeño, la derecha ganaba con UCD en la mayor parte de la España rural. Un municipio que votó a UCD en 1977 y al PP después no cuenta como fiel, porque UCD y el PP son partidos distintos. Para estar en la lista del PP, un pueblo tenía que preferir AP a UCD ya en 1977, y eso pasó en muy pocos.</p>
 <h2>Qué no dicen estos datos</h2>
-<p>Ganar siempre no quiere decir ganar por lo mismo. En Dos Hermanas el PSOE ha pasado por mayorías muy amplias y por victorias ajustadas. Esta pieza solo mira quién ha quedado primero; los porcentajes de cada elección se pueden consultar en el <a href="https://mapaelectoral.es/">mapa de resultados</a>.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Ganar siempre no quiere decir ganar por lo mismo. En Dos Hermanas el PSOE ha pasado por mayorías muy amplias y por victorias ajustadas. Esta pieza solo mira quién ha quedado primero; los porcentajes de cada elección se pueden consultar en el <a href="https://mapaelectoral.es/">mapa de resultados</a>.</p>
 
 <h2>Método y fuentes</h2>
 <dl class="ficha">

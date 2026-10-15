@@ -185,6 +185,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "De 5.990 municipios a 762 en tres años: así se hundió UCD, y así cayó Ciudadanos en solo seis meses", "item": "https://mapaelectoral.es/actualidad/ucd-ciudadanos-hundimiento/"}]}</script>
 </head>
@@ -195,11 +199,12 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>De 5.990 municipios a 762 en tres años: así se hundió UCD, y así cayó Ciudadanos en solo seis meses</h1>
 <p class="dek">UCD ganó las generales de 1979 con el 35 % y fue la primera fuerza en 5.990 municipios. En 1982 se quedó en el 6,7 % y en 762. Ciudadanos pasó del 16 % y 115 municipios en abril de 2019 al 6,9 % y 5 en noviembre. Son los dos mayores hundimientos de la democracia.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>
 
-<p style="margin-top:1.4rem">Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. En 46 años, dos partidos que llegaron a ser decisivos se hundieron en una sola elección: la Unión de Centro Democrático de Adolfo Suárez, en 1982, y Ciudadanos, en noviembre de 2019.</p>
+<p data-tipo="contexto" style="margin-top:1.4rem"><span class="tipo t-contexto">Contexto</span>Las generales del 29 de noviembre serán las decimoséptimas desde 1977. Con todas las elecciones de la democracia ya en el mapa, municipio a municipio, se puede mirar hacia atrás antes de votar. En 46 años, dos partidos que llegaron a ser decisivos se hundieron en una sola elección: la Unión de Centro Democrático de Adolfo Suárez, en 1982, y Ciudadanos, en noviembre de 2019.</p>
 <h2>UCD: del Gobierno al 6,7 %</h2>
-<p>UCD ganó las dos primeras generales. En 1977 sacó el 34,4 % de los votos (sin contar el voto exterior) y fue la lista más votada en <strong>5.792 municipios</strong>. En 1979 subió al 35,0 % y a <strong>5.990 municipios</strong>, tres de cada cuatro de España.</p>
-<p>Tres años después, en octubre de 1982, se quedó en el <strong>6,7 %</strong> y 11 diputados, y solo ganó en <strong>762 municipios</strong>. El PSOE pasó a ser la primera fuerza en 4.055 y AP, en 2.206. Los dirigentes de UCD acordaron disolver el partido el 18 de febrero de 1983.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>UCD ganó las dos primeras generales. En 1977 sacó el 34,4 % de los votos (sin contar el voto exterior) y fue la lista más votada en <strong>5.792 municipios</strong>. En 1979 subió al 35,0 % y a <strong>5.990 municipios</strong>, tres de cada cuatro de España.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Tres años después, en octubre de 1982, se quedó en el <strong>6,7 %</strong> y 11 diputados, y solo ganó en <strong>762 municipios</strong>. El PSOE pasó a ser la primera fuerza en 4.055 y AP, en 2.206. Los dirigentes de UCD acordaron disolver el partido el 18 de febrero de 1983.</p>
 <figure>
 <figcaption><span class="t">Las dos caídas, en la misma escala</span><span class="s">Porcentaje de voto en las elecciones generales, sin voto exterior</span></figcaption>
 <div class="chart" id="serie"></div>
@@ -207,9 +212,9 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <div class="src">Fuente: Ministerio del Interior. Familias de partidos del mapa: AP/CD/CP y PP; PCE, PSUC, IU, Podemos y confluencias, Sumar; CiU y Junts; HB, EH y EH Bildu; UCD y CDS aparte. El ganador de cada municipio se calcula con todas las listas, también las locales y regionales.</div>
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="serie-tbl"></div></details>
 </figure>
-<p>Parte de la UCD acabó en el CDS, el partido que Suárez fundó en julio de 1982: sacó el 2,9 % aquel año y el 9,3 % en 1986, antes de desaparecer del Congreso en 1993.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Parte de la UCD acabó en el CDS, el partido que Suárez fundó en julio de 1982: sacó el 2,9 % aquel año y el 9,3 % en 1986, antes de desaparecer del Congreso en 1993.</p>
 <h2>Ciudadanos: de 57 diputados a 10</h2>
-<p>Ciudadanos llegó al Congreso en 2015 con el 14,0 % y fue la primera fuerza en 21 municipios. En abril de 2019 alcanzó su máximo: el <strong>16,0 %</strong>, 57 diputados y <strong>115 municipios</strong> ganados. Siete meses después, en la repetición electoral de noviembre, bajó al <strong>6,9 %</strong>, 10 diputados y <strong>5 municipios</strong>. En 2023 no se presentó a las generales.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Ciudadanos llegó al Congreso en 2015 con el 14,0 % y fue la primera fuerza en 21 municipios. En abril de 2019 alcanzó su máximo: el <strong>16,0 %</strong>, 57 diputados y <strong>115 municipios</strong> ganados. Siete meses después, en la repetición electoral de noviembre, bajó al <strong>6,9 %</strong>, 10 diputados y <strong>5 municipios</strong>. En 2023 no se presentó a las generales.</p>
 <figure>
 <figcaption><span class="t">Municipios donde fue la lista más votada</span><span class="s">UCD (1977-1986) y Ciudadanos (2015-2023), en las elecciones generales</span></figcaption>
 <div class="chart" id="mun"></div>
@@ -218,8 +223,8 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="mun-tbl"></div></details>
 </figure>
 <h2>Dos caídas distintas</h2>
-<p>Las dos caídas se parecen en el resultado, pero no en el punto de partida. UCD era el partido del Gobierno y el más votado de España; su derrumbe dio la mayoría absoluta al PSOE. Ciudadanos nunca ganó unas generales: su caída coincidió con el crecimiento de Vox, que pasó del 10,3 % al 15,2 % en esos mismos siete meses, y con la subida del PP del 17,2 % al 21,4 %.</p>
-<p>Con datos de resultados no se puede saber a dónde fueron los votantes de UCD o de Ciudadanos: un municipio donde un partido cae y otro sube no demuestra que sean las mismas personas. Para eso hacen falta encuestas postelectorales, como las del CIS.</p>
+<p data-tipo="patron"><span class="tipo t-patron">Patrón</span>Las dos caídas se parecen en el resultado, pero no en el punto de partida. UCD era el partido del Gobierno y el más votado de España; su derrumbe dio la mayoría absoluta al PSOE. Ciudadanos nunca ganó unas generales: su caída coincidió con el crecimiento de Vox, que pasó del 10,3 % al 15,2 % en esos mismos siete meses, y con la subida del PP del 17,2 % al 21,4 %.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Con datos de resultados no se puede saber a dónde fueron los votantes de UCD o de Ciudadanos: un municipio donde un partido cae y otro sube no demuestra que sean las mismas personas. Para eso hacen falta encuestas postelectorales, como las del CIS.</p>
 
 <h2>Método y fuentes</h2>
 <dl class="ficha">

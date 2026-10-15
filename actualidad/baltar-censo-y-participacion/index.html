@@ -185,6 +185,10 @@ ol.serie a{color:var(--fg)}
 ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
 ol.serie .kicker{display:block}
 footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "En Baltar votó el 16 % en 1979; hoy vota el 79 %. La participación imposible del interior gallego", "item": "https://mapaelectoral.es/actualidad/baltar-censo-y-participacion/"}]}</script>
 </head>
@@ -195,10 +199,11 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <h1>En Baltar votó el 16 % en 1979; hoy vota el 79 %. La participación imposible del interior gallego</h1>
 <p class="dek">En las primeras generales, en decenas de pueblos de Ourense y Lugo votaba menos de uno de cada cuatro electores. En Baltar, el 16 % en 1979. A principios de los noventa su censo se redujo a la mitad y la participación saltó al 65 %. Hoy está en la media de España.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">Nacho G. del Álamo</a> · <time datetime="2026-10-08">8 de octubre de 2026</time></p>
+<p class="etiquetas">Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados). <a href="../../atlas/politica-editorial/#verificacion">Cómo verificamos</a></p>
 
-<p style="margin-top:1.4rem">El censo de los españoles que viven en el extranjero está en el centro de la campaña del 29N. El Tribunal Supremo ha ordenado detener las nuevas altas en el censo exterior de quienes obtuvieron la nacionalidad por la llamada ley de nietos, y Ourense destaca entre las capitales de provincia con el 31 % de su censo en el exterior, <a href="https://www.eldebate.com/espana/20260912/cuanto-adulterado-ley-nietos-censo-electoral-municipio_457471.html">según El Debate</a>. Los resultados de las primeras elecciones muestran que la relación entre censo y emigración en Galicia viene de lejos.</p>
+<p data-tipo="contexto" style="margin-top:1.4rem"><span class="tipo t-contexto">Contexto</span>El censo de los españoles que viven en el extranjero está en el centro de la campaña del 29N. El Tribunal Supremo ha ordenado detener las nuevas altas en el censo exterior de quienes obtuvieron la nacionalidad por la llamada ley de nietos, y Ourense destaca entre las capitales de provincia con el 31 % de su censo en el exterior, <a href="https://www.eldebate.com/espana/20260912/cuanto-adulterado-ley-nietos-censo-electoral-municipio_457471.html">según El Debate</a>. Los resultados de las primeras elecciones muestran que la relación entre censo y emigración en Galicia viene de lejos.</p>
 <h2>Uno de cada seis</h2>
-<p>En las generales de marzo de 1979 votó el 67,6 % de los electores de España (sin voto exterior). En la provincia de Ourense, el <strong>41,6 %</strong>; en Lugo, el 46,2 %. Y en algunos municipios, muchísimo menos. En <strong>Baltar</strong> (Ourense), con 3.229 electores en el censo, votaron 522: el <strong>16,2 %</strong>. Trasmiras, San Xoán de Río, O Irixo, Vilardevós o Cualedro, todos en Ourense, se quedaron por debajo del 21 %. Los diez municipios con menos participación de España aquel año, entre los de más de 1.000 electores, estaban en Ourense.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>En las generales de marzo de 1979 votó el 67,6 % de los electores de España (sin voto exterior). En la provincia de Ourense, el <strong>41,6 %</strong>; en Lugo, el 46,2 %. Y en algunos municipios, muchísimo menos. En <strong>Baltar</strong> (Ourense), con 3.229 electores en el censo, votaron 522: el <strong>16,2 %</strong>. Trasmiras, San Xoán de Río, O Irixo, Vilardevós o Cualedro, todos en Ourense, se quedaron por debajo del 21 %. Los diez municipios con menos participación de España aquel año, entre los de más de 1.000 electores, estaban en Ourense.</p>
 <figure>
 <figcaption><span class="t">Baltar: el censo baja a la mitad y la participación se dispara</span><span class="s">Electores en el censo (barras) y participación (línea) en cada elección general</span></figcaption>
 <div class="chart" id="baltar"></div>
@@ -207,8 +212,8 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="baltar-tbl"></div></details>
 </figure>
 <h2>El salto de los noventa</h2>
-<p>Hasta 1986, Baltar tenía unos 3.150 electores y votaba uno de cada cuatro. En 1989 el censo bajó a 2.501 y en 1993 a <strong>1.477</strong>, la mitad que siete años antes. La participación pasó del 25 % al <strong>65 %</strong> y en 2000 llegó al 79 %, por encima de la media de España. Hoy Baltar tiene 751 electores y en 2023 votó el 79,5 %.</p>
-<p>El mismo patrón, menos extremo, se ve en toda la provincia. Ourense tenía 349.045 electores en 1986 y 306.085 en 1993; su participación subió del 51,3 % al 68,8 %. En Paradela (Lugo) votó el 18,2 % en 1977 y el 76,2 % en 2023.</p>
+<p data-tipo="dato"><span class="tipo t-dato">Dato</span>Hasta 1986, Baltar tenía unos 3.150 electores y votaba uno de cada cuatro. En 1989 el censo bajó a 2.501 y en 1993 a <strong>1.477</strong>, la mitad que siete años antes. La participación pasó del 25 % al <strong>65 %</strong> y en 2000 llegó al 79 %, por encima de la media de España. Hoy Baltar tiene 751 electores y en 2023 votó el 79,5 %.</p>
+<p data-tipo="patron"><span class="tipo t-patron">Patrón</span>El mismo patrón, menos extremo, se ve en toda la provincia. Ourense tenía 349.045 electores en 1986 y 306.085 en 1993; su participación subió del 51,3 % al 68,8 %. En Paradela (Lugo) votó el 18,2 % en 1977 y el 76,2 % en 2023.</p>
 <figure>
 <figcaption><span class="t">Ourense y Lugo alcanzan a España en los noventa</span><span class="s">Participación en las elecciones generales</span></figcaption>
 <div class="chart" id="prov"></div>
@@ -217,8 +222,8 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <details><summary>Ver los datos en tabla</summary><div class="tbl" id="prov-tbl"></div></details>
 </figure>
 <h2>Una hipótesis: los emigrantes en el censo</h2>
-<p>Los datos no explican por sí solos el cambio, pero encajan con una hipótesis: que en los primeros censos figuraran como residentes muchos vecinos que vivían fuera, en otras provincias o en el extranjero, y que no votaban. La Ley Orgánica del Régimen Electoral General de 1985 separó en dos el censo: los residentes en España y los residentes ausentes que viven en el extranjero (CERA), que no se cuentan en estos datos. La caída del censo de Baltar y de Ourense coincide con los años siguientes a esa ley.</p>
-<p>Para confirmarlo harían falta los datos de altas y bajas del censo de esos años, que esta pieza no tiene. Es una hipótesis, no una conclusión.</p>
+<p data-tipo="hipotesis"><span class="tipo t-hipotesis">Hipótesis</span>Los datos no explican por sí solos el cambio, pero encajan con una hipótesis: que en los primeros censos figuraran como residentes muchos vecinos que vivían fuera, en otras provincias o en el extranjero, y que no votaban. La Ley Orgánica del Régimen Electoral General de 1985 separó en dos el censo: los residentes en España y los residentes ausentes que viven en el extranjero (CERA), que no se cuentan en estos datos. La caída del censo de Baltar y de Ourense coincide con los años siguientes a esa ley.</p>
+<p data-tipo="contexto"><span class="tipo t-contexto">Contexto</span>Para confirmarlo harían falta los datos de altas y bajas del censo de esos años, que esta pieza no tiene. Es una hipótesis, no una conclusión.</p>
 
 <h2>Método y fuentes</h2>
 <dl class="ficha">
