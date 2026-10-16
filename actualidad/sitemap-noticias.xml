@@ -200,4 +200,12 @@
       <news:title>El CIS de Tezanos da al PSOE 11,8 puntos de ventaja: en las tres generales desde 2019 sobrestimó su margen sobre el PP entre 1 y 6,9 puntos</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/desahucios-ocupaciones-cgpj-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-16</news:publication_date>
+      <news:title>Desahuciar o desalojar: los juzgados ejecutaron 4.474 lanzamientos entre abril y junio y recibieron 443 demandas por ocupación, diez por cada una</news:title>
+    </news:news>
+  </url>
 </urlset>

@@ -1,0 +1,206 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--pnv:#2b8a3e;--bildu:#a5c400;--vox:#5ac035;--neu:#1d7f95;--ocu:#6f686c}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--pnv:#4fb563;--bildu:#b8d82e;--vox:#74d651;--neu:#3aa6bf;--ocu:#aaa3a7}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--pnv:#4fb563;--bildu:#b8d82e;--vox:#74d651;--neu:#3aa6bf;--ocu:#aaa3a7}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Desahuciar o desalojar: los juzgados ejecutaron 4.474 lanzamientos entre abril y junio y recibieron 443 demandas por ocupación, diez por cada una</h1>
+<p class="dek">Los datos del CGPJ publicados hoy: los desahucios por alquiler caen un 57,7% y las demandas por ocupación, un 9%. Por habitante, Ávila, Baleares y Girona encabezan las demandas; el cruce con el voto de 2023 apenas dibuja un patrón.</p>
+<div class="byline">Nacho G. del Álamo · 16 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div><p data-tipo="contexto">En octubre de 2022, en Barcelona, Alberto Núñez Feijóo resolvió el problema de la vivienda con una lección de gramática: «a un ocupa ilegal, no hay que desahuciarlo, sino desalojarlo», dijo según <a href="https://www.eldebate.com/espana/cataluna/20221021/feijoo-propone-el-desalojo-en-24-horas-de-las-viviendas-okupadas_67662.html">El Debate</a>. Desahuciar y desalojar. Dos verbos que acaban igual, delante de una puerta, con alguien saliendo por ella con una caja en los brazos, y que la política española usa como si fueran los dos extremos del mundo.</p>
+<p data-tipo="dato">Los dos verbos tienen contador, y el Consejo General del Poder Judicial los publica cada trimestre en la misma hoja de cálculo. El de hoy dice esto: entre abril y junio de 2026, los juzgados practicaron <a href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Notas-de-prensa/Los-organos-judiciales-practicaron-4-474-lanzamientos-en-el-segundo-trimestre--un-35-7---menos-que-en-el-mismo-periodo-del-ano-pasado">4.474 lanzamientos</a>, que es como la estadística llama al momento en que la comisión judicial llega a la vivienda y la deja vacía, un 35,7% menos que un año antes. En el mismo trimestre ingresaron 443 demandas por ocupación ilegal de vivienda, un 9% menos. Diez a uno.</p>
+<p data-tipo="contexto">Conviene decir enseguida que no son la misma cosa medida dos veces. El lanzamiento es el final de un procedimiento: la cerradura que se cambia. La demanda por ocupación es el principio de otro: el papel que un propietario lleva al juzgado, que puede acabar en desalojo o no. Comparo, por tanto, finales con principios, y lo hago a sabiendas. Pero son las dos únicas cifras oficiales que hay para cada verbo, y los dos verbos son los que se van a escuchar en campaña.</p>
+<p data-tipo="dato">La mitad de los lanzamientos del trimestre, 2.244, vienen de la Ley de Arrendamientos Urbanos, casi siempre por impago del alquiler, y son un 57,7% menos que hace un año. Otros 1.109 derivan de ejecuciones hipotecarias (−8,9%). Y 1.121 obedecen a otras causas, que el CGPJ ejemplifica con laudos arbitrales o procedimientos de familia, y que se han multiplicado por 2,5. La nota no explica a qué se deben ni la caída ni la subida. La Comunidad de Madrid fue la única donde los lanzamientos aumentaron: 778, un 10% más.</p>
+<figure>
+<figcaption><span class="t">Lanzamientos practicados y demandas por ocupación ingresadas, por trimestre</span><span class="s">España. Los lanzamientos son desalojos ejecutados por cualquier causa; las demandas por ocupación son juicios verbales posesorios que inician los propietarios</span></figcaption>
+<div class="chart" id="trim"></div>
+<div class="legend"><span><i class="sw" style="background:var(--neu)"></i>Lanzamientos practicados</span><span><i class="sw" style="background:var(--ocu)"></i>Demandas por ocupación</span></div>
+<div class="src">Fuente: CGPJ, Datos sobre el efecto de la crisis en los órganos judiciales, 2.º trimestre de 2026. Los lanzamientos por alquiler se calculan como el total menos los hipotecarios y los de otras causas.</div>
+<details><summary>Ver la tabla por trimestre</summary><div class="tbl" id="trim-tbl"></div></details>
+</figure>
+<p data-tipo="dato">En todo 2025 hubo 24.540 lanzamientos y 1.845 demandas por ocupación: trece por cada una. Dicho a la escala de un día cualquiera, de lunes a domingo, en España se vaciaron 67 viviendas por orden judicial y 5 propietarios llevaron al juzgado a alguien que se había metido en la suya.</p>
+<p data-tipo="contexto">La segunda cifra, además, es una ventana pequeña. Ese procedimiento, creado por la Ley 5/2018, solo pueden usarlo las personas físicas, las entidades sin ánimo de lucro y las administraciones con vivienda social, según explica el propio CGPJ. Un banco o un fondo dueño de un piso ocupado va por otra puerta, y la vía penal tiene su propia estadística: la catedrática Matilde Cuena Casas recoge que en 2022 hubo 16.726 denuncias por ocupación ante la policía, frente a los 2.785 juicios verbales de aquel año, y que según el Ministerio del Interior las denuncias crecieron un 62,67% en cinco años.</p>
+<p data-tipo="contexto">Ella, que no cree que la cifra pequeña quite gravedad al asunto, lo dice así en el Tratado de Derecho de la vivienda que publicó el BOE en 2025:</p>
+<blockquote class="cita"><p>«No creo que se deba valorar la entidad del problema de la ocupación ilegal comparando el número de ocupaciones respecto del número total de viviendas para concluir que no es un problema importante»</p><footer>Matilde Cuena Casas, catedrática de Derecho civil de la Universidad Complutense. «El problema de la ocupación ilegal en España», en el <a href="https://www.boe.es/biblioteca_juridica/anuarios_derecho/abrir_pdf.php?id=ANU-V-2025-13000000060">Tratado de Derecho de la vivienda</a> (BOE), 2025.</footer></blockquote>
+<p data-tipo="contexto">Desde el Gobierno, la lectura es la contraria. La ministra de Vivienda, Isabel Rodríguez, respondió en febrero de 2024 a la ley antiokupación del PP con una frase que ya era un programa: «Yo creo que el problema de España hoy no es ese, sino el problema de acceso a una vivienda», según <a href="https://forbes.es/ultima-hora/408900/rodriguez-sobre-ley-antiokupa-pide-a-pp-que-se-centre-en-el-problema-de-acceso-a-la-vivienda/">Forbes</a>. Meses después, en el Congreso, cifró el riesgo de que te ocupen la casa en menos del 0,06% y habló de quien quiere «inyectar miedo a la sociedad para intentar rebañar cuatro votos», según <a href="https://www.ultimahora.es/noticias/nacional/2024/09/11/2239237/ministra-cifra-riesgo-ocupacion-vivienda-espana.html">Última Hora</a>.</p>
+<h2>El mapa de la ocupación, por habitante</h2>
+<p data-tipo="dato">Si se reparten las 1.845 demandas de 2025 entre los habitantes de cada provincia, la media española es de 3,9 por cada 100.000. Encabeza la lista Ávila, con 9,5, seguida de las Islas Baleares (9,1), Girona (8,4) y Ciudad Real (8,1). En el otro extremo, Navarra, Salamanca y Teruel registraron una demanda cada una en todo el año.</p>
+<figure>
+<figcaption><span class="t">Demandas por ocupación de vivienda por cada 100.000 habitantes en 2025, por provincia</span><span class="s">El color indica el partido más votado en la provincia en las generales de 2023. La línea discontinua marca la media de España. Ceuta y Melilla no figuran en la tabla provincial del CGPJ</span></figcaption>
+<div class="chart" id="prov"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--pnv)"></i>PNV</span><span><i class="sw" style="background:var(--bildu)"></i>EH Bildu</span></div>
+<div class="src">Fuente: CGPJ, datos anuales de 2025 por provincia; INE, cifras oficiales de población (padrón a 1 de enero de 2021); Ministerio del Interior, generales de 2023 por municipio, sin voto exterior. Cálculo propio.</div>
+<details><summary>Ver la tabla de las 50 provincias</summary><div class="tbl" id="prov-tbl"></div></details>
+</figure>
+<p data-tipo="dato">Ávila es un caso que obliga a mirar dos veces. Sus 15 demandas de 2025 bastan para ponerla primera en una provincia de 158.000 habitantes, y en el segundo trimestre de 2026 tuvo una. Con números tan pequeños, una sola familia mueve la clasificación. Las Baleares son otra cosa: 107 demandas, las mismas que Alicante con algo más de la mitad de población.</p>
+<p data-tipo="dato">Y hay una ausencia que llama la atención. Madrid, donde la palabra okupa suena en la tertulia de cada mañana, registró 190 demandas, la segunda provincia en números absolutos pero por debajo de la media por habitante: 2,8 por cada 100.000. Barcelona tuvo 288, el 15,6% de todas las de España, y una tasa de 5,0. Entre abril y junio de este año, la provincia con más demandas fue Alicante, con 44, por delante de Barcelona y Madrid, con 37 cada una, y de Girona, con 35.</p>
+<h2>¿Vota distinto donde hay más demandas?</h2>
+<p data-tipo="contexto">Es la pregunta que este mapa electoral está obligado a hacerse, porque la ocupación es una bandera de campaña y se supone que las banderas se plantan donde hay viento. He cruzado la tasa de demandas de cada provincia con el voto de 2023.</p>
+<figure>
+<figcaption><span class="t">Voto a Vox en 2023 y demandas por ocupación por cada 100.000 habitantes en 2025</span><span class="s">Cada punto es una provincia. No aparece Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023</span></figcaption>
+<div class="chart" id="disp"></div>
+<div class="legend"><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: CGPJ, datos anuales de 2025 por provincia; INE, cifras oficiales de población (padrón a 1 de enero de 2021); Ministerio del Interior, generales de 2023 por municipio, sin voto exterior. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">El dibujo es una nube con una inclinación leve. En las diez provincias con más demandas por habitante, Vox sacó de media el 15,9% en 2023; en las diez con menos, el 11,5%. La correlación entre las dos variables es de 0,32 en 49 provincias, que en estadística quiere decir que algo hay, pero poco. Si se suman PP y Vox, la relación desaparece: 0,06. Las provincias del PP, donde ganó en 38 de 50, tienen casi la misma tasa de demandas (3,9 por 100.000) que aquellas donde ganaron otros partidos (4,0).</p>
+<p data-tipo="patron">Con los desahucios pasa algo distinto. En las provincias donde el PP fue el más votado en 2023 hubo 45,4 lanzamientos por cada 100.000 habitantes en 2025; en las que ganaron el PSOE, el PNV o EH Bildu, 66,3. Las tasas más altas son las de Álava y Girona, con 133 cada una, seguidas de Barcelona y Tarragona (84), Las Palmas (76) y las Baleares (72).</p>
+<p data-tipo="hipotesis">Es tentador leer ahí una geografía del alquiler: Cataluña, las islas y algunas costas tienen mercados de alquiler grandes y caros, y la mayoría de los lanzamientos vienen de impagos de renta. Pero estos datos no permiten afirmarlo. Son provincias enteras, no personas: no dicen quién pierde la casa ni a quién vota, y las provincias catalanas y vascas votan distinto por muchas razones que no tienen nada que ver con un juzgado.</p>
+<p data-tipo="contexto">Lo que sí se sabe es lo que proponen. El PP llevó al Senado en febrero de 2024 su ley antiokupación, la primera de las que llama «leyes Feijóo», con el desalojo en 24 horas, más penas y la prohibición de empadronarse en una vivienda ocupada, según el <a href="https://www.pp.es/storage/2024/02/240207_ley_antiokupacion_la_primera_de_las_leyes_feijoo_-_titulares.pdf">Grupo Popular</a>. Su portavoz de Vivienda, José Ramón Díez de Revenga, repitió la gramática de su jefe: «al okupa se le desaloja, y al vulnerable se le protege».</p>
+<p data-tipo="contexto">Vuelvo a la puerta del principio. Desde el rellano, una puerta no sabe qué verbo la cierra. Sabe que alguien sale con una caja y que la llave ya no sirve. Lo que dicen los datos del CGPJ es cuántas veces ocurre cada cosa: el trimestre pasado, la puerta se cerró diez veces por un alquiler, una hipoteca o un pleito de familia por cada vez que un propietario fue al juzgado a pedir que se abriera la suya.</p>
+<p data-tipo="dato">Para el 29N, la cuenta queda así: 4.474 lanzamientos y 443 demandas por ocupación en el último trimestre; una tasa de demandas que va de 9,5 por 100.000 habitantes en Ávila a 0,2 en Navarra; y un cruce con el voto que, en el caso de la ocupación, apenas dibuja nada.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/maricarmen-alquiler-y-voto/">El alquiler y el voto</a> · <a href="https://mapaelectoral.es/actualidad/psoe-barrios-de-alquiler/">El PSOE en los barrios de alquiler</a></p>
+<div class="foot">Datos: CGPJ, Datos sobre el efecto de la crisis en los órganos judiciales (2.º trimestre de 2026 y anual de 2025); INE, cifras oficiales de población (padrón a 1 de enero de 2021); Ministerio del Interior (generales de 2023 por municipio, sin voto exterior). Borrador: pendiente de revisión antes de publicar.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const PR=[{"n": "Ávila", "o": 15, "r": 9.47, "l": 46, "lr": 29.0, "lau": 28, "v": 15.5, "pp": 43.6, "g": "PP", "o26": 1, "l26": 11, "pob": 158421}, {"n": "Illes Balears", "o": 107, "r": 9.12, "l": 851, "lr": 72.5, "lau": 731, "v": 15.4, "pp": 36.0, "g": "PP", "o26": 31, "l26": 119, "pob": 1173008}, {"n": "Girona", "o": 66, "r": 8.39, "l": 1048, "lr": 133.2, "lau": 767, "v": 7.1, "pp": 9.8, "g": "PSOE", "o26": 35, "l26": 221, "pob": 786596}, {"n": "Ciudad Real", "o": 40, "r": 8.12, "l": 135, "lr": 27.4, "lau": 67, "v": 16.4, "pp": 40.9, "g": "PP", "o26": 10, "l26": 25, "pob": 492591}, {"n": "Huelva", "o": 31, "r": 5.9, "l": 247, "lr": 47.0, "lau": 151, "v": 14.8, "pp": 36.8, "g": "PP", "o26": 8, "l26": 31, "pob": 525835}, {"n": "Santa Cruz de Tenerife", "o": 61, "r": 5.84, "l": 570, "lr": 54.6, "lau": 439, "v": 0.0, "pp": 35.7, "g": "PP", "o26": 14, "l26": 103, "pob": 1044405}, {"n": "Toledo", "o": 41, "r": 5.78, "l": 364, "lr": 51.3, "lau": 254, "v": 19.8, "pp": 38.2, "g": "PP", "o26": 9, "l26": 21, "pob": 709403}, {"n": "Alicante", "o": 107, "r": 5.69, "l": 1259, "lr": 66.9, "lau": 927, "v": 16.4, "pp": 37.0, "g": "PP", "o26": 44, "l26": 198, "pob": 1881762}, {"n": "Cuenca", "o": 11, "r": 5.63, "l": 42, "lr": 21.5, "lau": 39, "v": 15.7, "pp": 40.2, "g": "PP", "o26": 5, "l26": 3, "pob": 195516}, {"n": "Málaga", "o": 92, "r": 5.43, "l": 1136, "lr": 67.0, "lau": 866, "v": 16.6, "pp": 38.7, "g": "PP", "o26": 4, "l26": 102, "pob": 1695651}, {"n": "Almería", "o": 39, "r": 5.33, "l": 511, "lr": 69.8, "lau": 292, "v": 21.5, "pp": 41.4, "g": "PP", "o26": 11, "l26": 76, "pob": 731792}, {"n": "Barcelona", "o": 288, "r": 5.04, "l": 4812, "lr": 84.2, "lau": 3577, "v": 7.6, "pp": 13.9, "g": "PSOE", "o26": 37, "l26": 608, "pob": 5714730}, {"n": "Murcia", "o": 75, "r": 4.94, "l": 780, "lr": 51.4, "lau": 458, "v": 22.0, "pp": 41.5, "g": "PP", "o26": 14, "l26": 178, "pob": 1518486}, {"n": "Guadalajara", "o": 13, "r": 4.89, "l": 94, "lr": 35.4, "lau": 74, "v": 19.4, "pp": 36.7, "g": "PP", "o26": 2, "l26": 21, "pob": 265588}, {"n": "Las Palmas", "o": 53, "r": 4.7, "l": 856, "lr": 75.9, "lau": 690, "v": 14.7, "pp": 26.0, "g": "PSOE", "o26": 14, "l26": 64, "pob": 1128539}, {"n": "Asturias", "o": 46, "r": 4.55, "l": 603, "lr": 59.6, "lau": 467, "v": 12.6, "pp": 36.0, "g": "PP", "o26": 12, "l26": 103, "pob": 1011792}, {"n": "Castellón/Castelló", "o": 26, "r": 4.43, "l": 302, "lr": 51.4, "lau": 222, "v": 16.0, "pp": 35.5, "g": "PP", "o26": 3, "l26": 19, "pob": 587064}, {"n": "Palencia", "o": 7, "r": 4.4, "l": 54, "lr": 33.9, "lau": 28, "v": 13.0, "pp": 42.4, "g": "PP", "o26": 2, "l26": 5, "pob": 159123}, {"n": "Araba/Álava", "o": 14, "r": 4.2, "l": 445, "lr": 133.4, "lau": 286, "v": 3.9, "pp": 17.9, "g": "PSOE", "o26": 1, "l26": 66, "pob": 333626}, {"n": "Pontevedra", "o": 39, "r": 4.13, "l": 392, "lr": 41.5, "lau": 330, "v": 4.8, "pp": 39.9, "g": "PP", "o26": 11, "l26": 38, "pob": 944275}, {"n": "Granada", "o": 38, "r": 4.12, "l": 331, "lr": 35.9, "lau": 218, "v": 16.3, "pp": 37.3, "g": "PP", "o26": 5, "l26": 123, "pob": 921338}, {"n": "Cáceres", "o": 16, "r": 4.11, "l": 72, "lr": 18.5, "lau": 55, "v": 13.7, "pp": 38.4, "g": "PSOE", "o26": 2, "l26": 6, "pob": 389558}, {"n": "La Rioja", "o": 13, "r": 4.07, "l": 140, "lr": 43.8, "lau": 105, "v": 9.8, "pp": 46.1, "g": "PP", "o26": 1, "l26": 13, "pob": 319796}, {"n": "Albacete", "o": 15, "r": 3.88, "l": 105, "lr": 27.2, "lau": 84, "v": 16.8, "pp": 40.3, "g": "PP", "o26": 2, "l26": 23, "pob": 386464}, {"n": "Cádiz", "o": 43, "r": 3.45, "l": 495, "lr": 39.7, "lau": 359, "v": 15.4, "pp": 35.2, "g": "PP", "o26": 22, "l26": 173, "pob": 1245960}, {"n": "Burgos", "o": 12, "r": 3.37, "l": 151, "lr": 42.4, "lau": 102, "v": 12.9, "pp": 41.1, "g": "PP", "o26": 6, "l26": 15, "pob": 356055}, {"n": "Sevilla", "o": 64, "r": 3.29, "l": 724, "lr": 37.2, "lau": 511, "v": 13.5, "pp": 33.8, "g": "PSOE", "o26": 16, "l26": 150, "pob": 1947852}, {"n": "Segovia", "o": 5, "r": 3.25, "l": 54, "lr": 35.1, "lau": 41, "v": 14.3, "pp": 45.5, "g": "PP", "o26": 1, "l26": 3, "pob": 153663}, {"n": "Bizkaia", "o": 36, "r": 3.12, "l": 384, "lr": 33.3, "lau": 316, "v": 2.6, "pp": 11.6, "g": "PNV", "o26": 1, "l26": 127, "pob": 1154334}, {"n": "Valencia/Valéncia", "o": 79, "r": 3.05, "l": 1431, "lr": 55.3, "lau": 1009, "v": 15.3, "pp": 33.9, "g": "PP", "o26": 10, "l26": 412, "pob": 2589312}, {"n": "León", "o": 13, "r": 2.88, "l": 243, "lr": 53.8, "lau": 196, "v": 13.0, "pp": 37.2, "g": "PP", "o26": 3, "l26": 12, "pob": 451706}, {"n": "Madrid", "o": 190, "r": 2.81, "l": 2267, "lr": 33.6, "lau": 1931, "v": 14.1, "pp": 40.8, "g": "PP", "o26": 37, "l26": 778, "pob": 6751251}, {"n": "Jaén", "o": 17, "r": 2.71, "l": 139, "lr": 22.2, "lau": 84, "v": 14.9, "pp": 37.6, "g": "PP", "o26": 5, "l26": 48, "pob": 627190}, {"n": "Badajoz", "o": 18, "r": 2.69, "l": 189, "lr": 28.2, "lau": 112, "v": 13.8, "pp": 38.2, "g": "PSOE", "o26": 7, "l26": 33, "pob": 669943}, {"n": "Soria", "o": 2, "r": 2.25, "l": 23, "lr": 25.9, "lau": 19, "v": 9.8, "pp": 37.4, "g": "PP", "o26": 0, "l26": 4, "pob": 88747}, {"n": "Gipuzkoa", "o": 15, "r": 2.07, "l": 145, "lr": 20.0, "lau": 114, "v": 2.1, "pp": 8.6, "g": "BILDU", "o26": 5, "l26": 26, "pob": 726033}, {"n": "Córdoba", "o": 15, "r": 1.93, "l": 199, "lr": 25.6, "lau": 119, "v": 14.1, "pp": 38.3, "g": "PP", "o26": 3, "l26": 34, "pob": 776789}, {"n": "Lugo", "o": 6, "r": 1.84, "l": 106, "lr": 32.5, "lau": 81, "v": 4.3, "pp": 50.6, "g": "PP", "o26": 1, "l26": 46, "pob": 326013}, {"n": "Tarragona", "o": 15, "r": 1.82, "l": 692, "lr": 84.2, "lau": 502, "v": 10.4, "pp": 14.0, "g": "PSOE", "o26": 10, "l26": 104, "pob": 822309}, {"n": "Lleida", "o": 8, "r": 1.82, "l": 262, "lr": 59.6, "lau": 179, "v": 6.9, "pp": 13.0, "g": "PSOE", "o26": 7, "l26": 50, "pob": 439727}, {"n": "Zamora", "o": 3, "r": 1.78, "l": 60, "lr": 35.6, "lau": 33, "v": 13.3, "pp": 45.2, "g": "PP", "o26": 4, "l26": 59, "pob": 168725}, {"n": "Cantabria", "o": 10, "r": 1.71, "l": 191, "lr": 32.7, "lau": 150, "v": 14.2, "pp": 42.5, "g": "PP", "o26": 5, "l26": 42, "pob": 584507}, {"n": "Ourense", "o": 5, "r": 1.64, "l": 152, "lr": 49.8, "lau": 128, "v": 4.7, "pp": 50.2, "g": "PP", "o26": 1, "l26": 7, "pob": 305223}, {"n": "A Coruña", "o": 16, "r": 1.43, "l": 396, "lr": 35.4, "lau": 337, "v": 5.1, "pp": 43.5, "g": "PP", "o26": 9, "l26": 54, "pob": 1120134}, {"n": "Zaragoza", "o": 12, "r": 1.24, "l": 468, "lr": 48.4, "lau": 382, "v": 15.5, "pp": 36.4, "g": "PP", "o26": 2, "l26": 23, "pob": 967452}, {"n": "Huesca", "o": 2, "r": 0.89, "l": 130, "lr": 58.0, "lau": 98, "v": 12.8, "pp": 38.7, "g": "PP", "o26": 4, "l26": 32, "pob": 224264}, {"n": "Teruel", "o": 1, "r": 0.74, "l": 33, "lr": 24.5, "lau": 25, "v": 13.2, "pp": 35.3, "g": "PP", "o26": 2, "l26": 6, "pob": 134545}, {"n": "Valladolid", "o": 3, "r": 0.58, "l": 185, "lr": 35.6, "lau": 145, "v": 15.3, "pp": 41.2, "g": "PP", "o26": 3, "l26": 20, "pob": 519361}, {"n": "Salamanca", "o": 1, "r": 0.31, "l": 59, "lr": 18.0, "lau": 54, "v": 14.8, "pp": 47.4, "g": "PP", "o26": 1, "l26": 15, "pob": 327338}, {"n": "Navarra", "o": 1, "r": 0.15, "l": 167, "lr": 25.2, "lau": 135, "v": 5.7, "pp": 32.2, "g": "PSOE", "o26": 0, "l26": 24, "pob": 661537}];const QQ=[{"q": "25-T1", "t": 7334, "eh": 1189, "ot": 501, "lau": 5644, "oc": 592}, {"q": "25-T2", "t": 6960, "eh": 1217, "ot": 444, "lau": 5299, "oc": 487}, {"q": "25-T3", "t": 4839, "eh": 847, "ot": 411, "lau": 3581, "oc": 322}, {"q": "25-T4", "t": 5407, "eh": 1093, "ot": 521, "lau": 3793, "oc": 444}, {"q": "26-T1", "t": 4011, "eh": 971, "ot": 785, "lau": 2255, "oc": 460}, {"q": "26-T2", "t": 4474, "eh": 1109, "ot": 1121, "lau": 2244, "oc": 443}];
+const GCOL={PP:'var(--pp)',PSOE:'var(--psoe)',PNV:'var(--pnv)',BILDU:'var(--bildu)'};
+const GN={PP:'PP',PSOE:'PSOE',PNV:'PNV',BILDU:'EH Bildu'};
+const nf=v=>v.toLocaleString('es-ES');const MADY=0;
+const r1=v=>(Math.round(v*10+1e-9)/10).toFixed(1).replace('.',',');
+const QN=q=>{const [a,t]=q.split('-');return t.replace('T','')+'.º trim. 20'+a};
+const short=n=>n.replace('Santa Cruz de Tenerife','S. C. de Tenerife').replace('Castellón/Castelló','Castellón').replace('Valencia/València','Valencia').replace('Alicante/Alacant','Alicante').replace('Araba/Álava','Álava');
+function trim(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,m={l:sm?38:46,r:8,t:16,b:40},H=sm?250:300;
+ const hi=8000,y=v=>m.t+(1-v/hi)*(H-m.t-m.b),gw=(W-m.l-m.r)/QQ.length,bw=Math.min(sm?18:30,gw*0.32);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Lanzamientos practicados y demandas por ocupación ingresadas por trimestre'},box);
+ for(let v=0;v<=hi;v+=2000){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end','font-size':11},svg).textContent=v?v/1000+' mil':'0'}
+ QQ.forEach((d,i)=>{const cx=m.l+gw*i+gw/2;
+  el('rect',{x:cx-bw-1,y:y(d.t),width:bw,height:y(0)-y(d.t),rx:3,fill:'var(--neu)'},svg);
+  el('rect',{x:cx+1,y:y(d.oc),width:bw,height:Math.max(1,y(0)-y(d.oc)),rx:3,fill:'var(--ocu)'},svg);
+  el('text',{x:cx-bw/2-1,y:y(d.t)-5,'text-anchor':'middle','font-size':sm?10:11.5,class:i==5?'lab':''},svg).textContent=sm?r1(d.t/1000).replace(',0','')+' mil':nf(d.t);
+  el('text',{x:cx+bw/2+1,y:y(d.oc)-5,'text-anchor':'middle','font-size':sm?10:11.5,class:i==5?'lab':''},svg).textContent=d.oc;
+  const [a,t]=d.q.split('-');el('text',{x:cx,y:H-m.b+16,'text-anchor':'middle','font-size':sm?10.5:12},svg).textContent=t.replace('T','')+'.º trim.';
+  if(t=='T1')el('text',{x:cx,y:H-m.b+31,'text-anchor':'middle','font-size':sm?10.5:12,class:'lab'},svg).textContent='20'+a;
+  hov(box,tip,el('rect',{x:m.l+gw*i,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),`<b>${QN(d.q)}</b><br>Lanzamientos practicados: <b>${nf(d.t)}</b><br>· por alquiler (LAU): ${nf(d.lau)}<br>· por hipoteca: ${nf(d.eh)}<br>· otras causas: ${nf(d.ot)}<br>Demandas por ocupación: <b>${d.oc}</b><br>Lanzamientos por demanda: ${r1(d.t/d.oc)}`)});}
+function hbars(id,rows){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,rh=sm?17:19,m={l:sm?112:150,r:40,t:24,b:8},H=m.t+rows.length*rh+m.b;
+ const hi=10,x=v=>m.l+v/hi*(W-m.l-m.r),nat=3.91;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Demandas por ocupación por cada 100.000 habitantes en 2025, por provincia'},box);
+ for(let v=0;v<=hi;v+=2){el('line',{x1:x(v),x2:x(v),y1:m.t-4,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:m.t-9,'text-anchor':'middle','font-size':12},svg).textContent=v}
+ el('line',{x1:x(nat),x2:x(nat),y1:m.t-4,y2:H-m.b,stroke:'var(--muted)','stroke-dasharray':'3 3'},svg);
+ rows.forEach((d,i)=>{const y=m.t+i*rh;
+  el('text',{x:m.l-7,y:y+rh/2+4,'text-anchor':'end','font-size':sm?11:12.5,class:i<4?'lab':''},svg).textContent=sm?short(d.n):d.n;
+  el('rect',{x:x(0),y:y+2,width:Math.max(1,x(d.r)-x(0)),height:rh-4,rx:3,fill:GCOL[d.g]},svg);
+  el('text',{x:x(d.r)+5,y:y+rh/2+4,'font-size':sm?11:12,class:i<4?'lab':''},svg).textContent=r1(d.r);
+  hov(box,tip,el('rect',{x:0,y,width:W,height:rh,fill:'transparent'},svg),`<b>${d.n}</b><br>Demandas por ocupación en 2025: <b>${nf(d.o)}</b><br>Por 100.000 habitantes: <b>${r1(d.r)}</b><br>Lanzamientos practicados en 2025: ${nf(d.l)}<br>Más votado en 2023: ${GN[d.g]}`)});
+ el('text',{x:x(nat)+4,y:H-m.b-4,'font-size':11,fill:'var(--muted)'},svg).textContent='media: 3,9';}
+function disp(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,m={l:36,r:12,t:14,b:42},H=sm?300:380;
+ const P=PR.filter(d=>d.v>0),x=v=>m.l+v/24*(W-m.l-m.r),y=v=>m.t+(1-v/10)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a Vox en 2023 y demandas por ocupación por habitante, por provincia'},box);
+ for(let v=0;v<=10;v+=2){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end','font-size':11},svg).textContent=v}
+ for(let v=0;v<=24;v+=4){el('text',{x:x(v),y:H-m.b+16,'text-anchor':'middle','font-size':11},svg).textContent=v+'%'}
+ el('text',{x:(m.l+W-m.r)/2,y:H-6,'text-anchor':'middle','font-size':12},svg).textContent='Voto a Vox en las generales de 2023';
+ const LB=[];const lab=['Ávila','Illes Balears','Girona','Ciudad Real','Barcelona','Madrid','Murcia','Almería','Navarra','Teruel','Salamanca','Zaragoza','Toledo'];
+ P.forEach(d=>{const c=el('circle',{cx:x(d.v),cy:y(d.r),r:sm?5:6,fill:'var(--vox)',stroke:'var(--bg)','stroke-width':2,'fill-opacity':.85},svg);
+  hov(box,tip,el('circle',{cx:x(d.v),cy:y(d.r),r:12,fill:'transparent'},svg),`<b>${d.n}</b><br>Vox en 2023: <b>${r1(d.v)}%</b><br>Demandas por ocupación por 100.000 hab.: <b>${r1(d.r)}</b> (${d.o} en 2025)`);
+  if(lab.includes(d.n)&&(!sm||['Ávila','Girona','Barcelona','Navarra','Madrid'].includes(d.n))){const rt=d.v>19||d.n=='Madrid';LB.push([x(d.v)+(rt?-9:9),y(d.r)+(d.n=='Madrid'?14:4),rt?'end':'start',short(d.n)])}});
+ LB.forEach(([a,b,c,t])=>{el('text',{x:a,y:b,'text-anchor':c,'font-size':sm?10.5:11.5,class:'lab',stroke:'var(--bg)','stroke-width':3,'paint-order':'stroke','stroke-linejoin':'round'},svg).textContent=t});}
+trim('trim');
+table('trim-tbl',['Trimestre','Lanzamientos','Por alquiler','Por hipoteca','Otras causas','Demandas por ocupación'],QQ.map(d=>[QN(d.q),nf(d.t),nf(d.lau),nf(d.eh),nf(d.ot),d.oc]));
+const S=[...PR].sort((a,b)=>b.r-a.r);
+hbars('prov',S);
+table('prov-tbl',['Provincia','Demandas por ocupación 2025','Por 100.000 hab.','Lanzamientos 2025','Por 100.000 hab.','Demandas 2.º trim. 2026','Vox 2023 (%)','Más votado 2023'],S.map(d=>[d.n,nf(d.o),r1(d.r),nf(d.l),r1(d.lr),d.o26,d.v>0?r1(d.v):'no concurrió',GN[d.g]]));
+disp('disp');
+
+</script>
