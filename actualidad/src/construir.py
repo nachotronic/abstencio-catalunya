@@ -884,7 +884,7 @@ PIEZAS = [
     ),
     dict(
         slug='cis-tezanos-estimacion-29n', fecha='2026-10-16',
-        titulo='El CIS de Tezanos da al PSOE 11,8 puntos de ventaja: en las tres generales desde 2019 sobrestimó su margen sobre el PP, entre 1 y 6,9 puntos', serie='29n',
+        titulo='El CIS de Tezanos da al PSOE 11,8 puntos de ventaja: en las tres generales desde 2019 sobrestimó su margen sobre el PP entre 1 y 6,9 puntos', serie='29n',
         descripcion='En noviembre de 2019, el CIS de octubre daba al PSOE 14,1 puntos sobre el PP y fueron 7,2. En 2023, la última encuesta ponía al PSOE 1,4 puntos por delante y ganó el PP por 1,4.',
         compara='La estimación de voto de PSOE y PP en el último gran estudio del CIS antes de cada una de las cinco generales desde 2015 (seis estimaciones, dos de ellas de 2023) frente al resultado oficial, y la estimación del barómetro de octubre de 2026.',
         limites='No es una previsión del 29N ni una estimación propia: compara estimaciones publicadas por el CIS con resultados oficiales. Solo mide la ventaja entre PSOE y PP, no el resto de partidos. Se toma el último gran estudio con estimación de cada elección; en noviembre de 2019 es el macrobarómetro de octubre. Cinco elecciones son una muestra pequeña y los datos no dicen por qué se desvió la estimación.',
