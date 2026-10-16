@@ -916,9 +916,8 @@ PIEZAS = [
                  ('https://ara.cat/es/articulo-pablo-simon-manipulacion-electoral_0_1481252043.html', 'Ara, entrevista a Pablo Simón')],
         enlaces=[],
         lugar='Cataluña',
-        foto=dict(src='img/actualidad/fotos/rufian-fracaso-lista-unitaria-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  fuente='Ministerio del Interior, generales de 2023. Simulación D\'Hondt de mapaelectoral.es',
-                  pie='Los 48 diputados de Cataluña en 2023 y con los votos de ERC y Sumar sumados en una sola lista.'),
+        foto=dict(src='img/actualidad/fotos/rufian-fracaso-lista-unitaria-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Gabriel Rufián e Irene Montero, con el hemiciclo del Congreso y dos papeles en blanco entre ambos: un collage.'),
     ),
 ]
 
