@@ -860,6 +860,50 @@ PIEZAS = [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='pensiones-censo-mayores-29n', fecha='2026-10-16',
+        titulo='Feijóo y Sánchez chocan por las pensiones en un censo con 10,2 millones de electores de 65 años o más: superan a los de 18 a 34 en 49 de las 52 provincias', serie='29n',
+        descripcion='En Zamora, Ourense y Lugo hay casi tres electores mayores por cada joven. Las nueve provincias donde los mayores doblan a los jóvenes eligen 34 diputados, y en todas ganó el PP en 2023.',
+        compara='Los electores residentes en España de 65 años o más y de 18 a 34 en cada una de las 52 provincias, según el censo de consulta de las generales del 29N y el de 2023, junto al partido más votado en cada provincia en 2023 y los escaños que elige el 29N.',
+        limites='El censo cuenta electores, no votantes ni preferencias: no dice a quién vota cada generación ni cuánto pesan las pensiones en el voto. No incluye a los electores residentes en el extranjero. El partido más votado en 2023 se calcula sin voto exterior; en Navarra, UPN y PP, que concurrieron por separado, aparecen sumados en nuestros datos, y se usa el resultado oficial (PSOE). Las citas de los protagonistas son de la prensa que se enlaza.',
+        fuentes=[('https://www.ine.es/oficina_censo/elecgen2026/Elecgral_2026_cc_tab11.xlsx', 'INE, Oficina del Censo Electoral: electores por edad y provincia, generales de 2026'),
+                 ('https://www.ine.es/oficina_censo/elecgen2023/Elecgral_2023_cc_tab11.xlsx', 'INE, Oficina del Censo Electoral: electores por edad y provincia, generales de 2023'),
+                 INTERIOR,
+                 ('https://www.lavanguardia.com/politica/20261016/11660046/feijoo-garantiza-revalorizara-pensiones-sanchez-le-acusa-mentir.html', 'La Vanguardia, Feijóo garantiza que revalorizará las pensiones y Sánchez le acusa de mentir (16-10-2026)'),
+                 ('https://www.eldiario.es/economia/vox-defiende-reforma-privatizacion-pensiones-da-muerto-sistema-publico-actual_1_13565422.html', 'elDiario.es, Vox y la reforma de las pensiones (6-10-2026)'),
+                 ('https://www.democrata.es/elecciones-generales-espana/abascal-promete-pagar-pensiones-y-garantizar-vivienda-como-sea-y-refuerza-su-llamamiento-al-voto-presencial/', 'Demócrata, Abascal en Estepona (11-10-2026)'),
+                 ('https://www.infobae.com/economia/2026/10/13/feijoo-despeja-la-duda-sobre-que-hara-con-las-pensiones-si-llega-a-la-moncloa-las-subira-con-el-ipc/', 'Infobae, Feijóo en esRadio (13-10-2026)'),
+                 ('https://www.inclusion.gob.es/en/w/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.374-6-euros-en-septiembre-un-4-6-mas-alta-que-hace-un-ano', 'Ministerio de Inclusión, Seguridad Social y Migraciones, pensiones de septiembre de 2026'),
+                 ('https://www.articulo14.es/economia/el-voto-del-miedo-los-ingresos-de-casi-la-mitad-del-censo-depende-del-gobierno-20261013.html', 'Artículo 14, el calendario de la revalorización (13-10-2026)'),
+                 ('https://fedea.net/instituciones-envejecimiento-y-equidad-intergeneracional/', 'Fedea, José Ignacio Conde-Ruiz, Instituciones, envejecimiento y equidad intergeneracional (julio de 2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/pensiones-censo-mayores-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Electores de 65 años o más por cada elector de 18 a 34 en las 20 provincias más envejecidas, coloreadas por el partido más votado en 2023.',
+                  fuente='INE, censo electoral del 29N; Ministerio del Interior'),
+    ),
+    dict(
+        slug='cis-tezanos-estimacion-29n', fecha='2026-10-16',
+        titulo='El CIS de Tezanos da al PSOE 11,8 puntos de ventaja: en las tres generales desde 2019 sobrestimó su margen sobre el PP, entre 1 y 6,9 puntos', serie='29n',
+        descripcion='En noviembre de 2019, el CIS de octubre daba al PSOE 14,1 puntos sobre el PP y fueron 7,2. En 2023, la última encuesta ponía al PSOE 1,4 puntos por delante y ganó el PP por 1,4.',
+        compara='La estimación de voto de PSOE y PP en el último gran estudio del CIS antes de cada una de las cinco generales desde 2015 (seis estimaciones, dos de ellas de 2023) frente al resultado oficial, y la estimación del barómetro de octubre de 2026.',
+        limites='No es una previsión del 29N ni una estimación propia: compara estimaciones publicadas por el CIS con resultados oficiales. Solo mide la ventaja entre PSOE y PP, no el resto de partidos. Se toma el último gran estudio con estimación de cada elección; en noviembre de 2019 es el macrobarómetro de octubre. Cinco elecciones son una muestra pequeña y los datos no dicen por qué se desvió la estimación.',
+        fuentes=[('https://www.cis.es/documents/d/guest/3582_estimacion-pdf', 'CIS, estudio 3582, barómetro de octubre de 2026: estimación de voto'),
+                 ('https://www.cis.es/documents/d/cis/3411_estimacion', 'CIS, estudio 3411, preelectoral de las generales de 2023'),
+                 ('https://www.cis.es/documents/d/cis/es3415marmt_a', 'CIS, estudio 3415, encuesta flash de las generales de 2023'),
+                 ('https://www.cis.es/documents/d/cis/3263_estimacion', 'CIS, estudio 3263, macrobarómetro de octubre de 2019'),
+                 ('https://www.cis.es/documents/d/cis/es3242mar_a', 'CIS, estudio 3242, preelectoral de las generales de abril de 2019'),
+                 ('https://www.cis.es/documents/d/cis/es3141mar_a', 'CIS, estudio 3141, preelectoral de las generales de 2016'),
+                 ('https://www.cis.es/documents/d/cis/es3117mar_a', 'CIS, estudio 3117, preelectoral de las generales de 2015'),
+                 INTERIOR,
+                 ('https://www.elindependiente.com/espana/2023/07/25/tezanos-saca-pecho-por-haberse-desviado-solo-unas-decimas-con-las-encuestas-del-cis/', 'El Independiente, Tezanos tras el 23J (25-7-2023)'),
+                 ('https://www.eldebate.com/espana/20260217/datos-cis-analizados-sociologo-independiente-pp-sacaria-24-puntos-psoe-vox-superaria-20_385845.html', 'El Debate, la reestimación de Target Point (17-2-2026)'),
+                 ('https://es.wikipedia.org/wiki/Jos%C3%A9_F%C3%A9lix_Tezanos', 'Wikipedia, José Félix Tezanos')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/cis-tezanos-estimacion-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='José Félix Tezanos entre un cuestionario, unas barras y una oficina: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1055,6 +1099,8 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'cis-tezanos-estimacion-29n': 'La hemeroteca del CIS',
+    'pensiones-censo-mayores-29n': 'El censo envejece',
     'ceuta-melilla-participacion-29n': 'Dos ciudades en cada ciudad',
     'minguez-lleida-29n': 'Un escaño por 3.500 votos',
     'madrid-barrio-a-barrio-29n': 'El sur aguanta, el resto cambia',
@@ -1248,9 +1294,11 @@ def pieza(p, todas):
     fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
     if fo:
         # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
+        # gráficos de datos como imagen principal: nunca IA, con su fuente
         cred = (f'Ilustración generada con IA para Mapa Electoral. <a href="../../atlas/politica-editorial/#ia">Uso de IA</a>' if fo.get('ia')
+                else f'Gráfico: Mapa Electoral con datos de {html.escape(fo["fuente"])}' if fo.get('grafico')
                 else f'Foto: <a href="{fo["url"]}">{html.escape(fo["credito"])}</a>')
-        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="{html.escape(fo["pie"]) if fo.get("ia") else ""}" width="{fo["ancho"]}" height="{fo["alto"]}">'
+        main = main.replace('</time></p>', f'</time></p>\n<figure class="foto"><img src="../../{fo["src"]}" alt="{html.escape(fo["pie"]) if fo.get("ia") or fo.get("grafico") else ""}" width="{fo["ancho"]}" height="{fo["alto"]}">'
                             f'<figcaption>{html.escape(fo["pie"])} {cred}.</figcaption></figure>', 1)
     for texto, href in ENLACES_TEXTO.get(p['slug'], []):
         assert texto in main, (p['slug'], texto)

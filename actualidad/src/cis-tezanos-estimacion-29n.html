@@ -1,0 +1,164 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--psoe:#e30613;--pp:#1d84ce}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--pp:#4fa8ea}}:root[data-theme="dark"]{--psoe:#ff5a5f;--pp:#4fa8ea}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>El CIS de Tezanos da al PSOE 11,8 puntos de ventaja: en las tres generales desde 2019 sobrestimó su margen sobre el PP, entre 1 y 6,9 puntos</h1>
+<p class="dek">En noviembre de 2019, el CIS de octubre daba al PSOE 14,1 puntos sobre el PP y fueron 7,2. En 2023, la última encuesta ponía al PSOE 1,4 puntos por delante y ganó el PP por 1,4.</p>
+<div class="byline">Nacho G. del Álamo · 16 de octubre de 2026</div>
+<div style="margin-top:1.4rem"></div><p data-tipo="dato">El primer barómetro del CIS tras la convocatoria del 29N da al PSOE el 34,0% de los votos y al PP el 22,2%: 11,8 puntos de ventaja. Vox queda en el 17,1% y Sumar con el Frente Amplio, en el 6,1%, según la <a href="https://www.cis.es/documents/d/guest/3582_estimacion-pdf">estimación de voto</a> del estudio 3582, publicado el miércoles 14. Es la estimación del CIS; en voto directo, la respuesta de los entrevistados sin cocinar y medida sobre todo el censo, el PSOE tiene el 25,3% y el PP, el 14,7%.</p>
+<p data-tipo="contexto">El propio CIS advierte en la nota metodológica que su estimación es «una medición por escenarios que no posee intención prospectiva y se encuentra referida al periodo de recolección de los datos». Es decir, no pretende anticipar el resultado del 29 de noviembre, sino describir el momento de la encuesta. El organismo, presidido desde 2018 por el sociólogo <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_F%C3%A9lix_Tezanos">José Félix Tezanos</a>, añade que publica los microdatos para que «cualquiera» aplique sus propios modelos, que «pueden dar lugar a estimaciones diferentes a las del CIS».</p>
+<p data-tipo="dato">Lo que sí se puede comprobar es cómo le ha ido al CIS cuando ha habido urnas. Hemos comparado el último gran estudio con estimación de voto que publicó antes de cada una de las cinco generales desde 2015 con el resultado oficial. No es una previsión del 29N: es la hemeroteca puesta frente a los votos.</p>
+<h2>Lo que estimó el CIS y lo que se votó</h2>
+<figure>
+<figcaption><span class="t">Estimación del CIS y resultado de PSOE y PP en las generales desde 2015</span><span class="s">Círculo vacío: estimación de voto del CIS en su último gran estudio antes de cada elección. Círculo lleno: resultado oficial. Porcentaje sobre voto válido</span></figcaption>
+<div class="chart" id="est"></div>
+<div class="legend"><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="border:2px solid var(--muted);background:transparent"></i>Estimación del CIS</span><span><i class="sw" style="background:var(--muted)"></i>Resultado</span></div>
+<div class="src">Fuentes: CIS, estudios 3117, 3141, 3242, 3263, 3411, 3415 y 3582 (estimación de voto); Ministerio del Interior, resultados oficiales.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="est-tbl"></div></details>
+</figure>
+<p data-tipo="dato">En las tres generales celebradas desde que Tezanos preside el CIS, el organismo dio al PSOE más ventaja sobre el PP de la que salió de las urnas. En abril de 2019, el <a href="https://www.cis.es/documents/d/cis/es3242mar_a">preelectoral</a> estimó una ventaja socialista de 13,0 puntos y fue de 12,0. En noviembre de 2019, el <a href="https://www.cis.es/documents/d/cis/3263_estimacion">macrobarómetro de octubre</a>, con trabajo de campo entre septiembre y octubre, le dio 14,1 puntos de ventaja: el PSOE sacó el 28,0% y el PP el 20,8%, una distancia de 7,2.</p>
+<p data-tipo="dato">En julio de 2023, el <a href="https://www.cis.es/documents/d/cis/3411_estimacion">preelectoral</a> daba al PP una ventaja de dos décimas (31,4% frente a 31,2%), y la <a href="https://www.cis.es/documents/d/cis/es3415marmt_a">encuesta flash</a> del 17 de julio, la última que se podía publicar, ponía por delante al PSOE por 1,4 puntos: 32,2% frente a 30,8%. Ganó el PP con el 33,1%, frente al 31,7% del PSOE.</p>
+<figure>
+<figcaption><span class="t">Cuánto se desvió el CIS en la ventaja del PSOE sobre el PP</span><span class="s">Diferencia entre la ventaja estimada y la real, en puntos. En rojo, cuando el CIS dio al PSOE más ventaja de la que tuvo; en azul, cuando le dio menos</span></figcaption>
+<div class="chart" id="err"></div>
+<div class="src">Fuentes: CIS (estimación de voto) y Ministerio del Interior. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">Antes de Tezanos el desvío no iba siempre en la misma dirección. En diciembre de 2015, el <a href="https://www.cis.es/documents/d/cis/es3117mar_a">preelectoral</a> se quedó corto con el PSOE y le dio al PP 1,1 puntos más de ventaja de la que tuvo; en junio de 2016, el <a href="https://www.cis.es/documents/d/cis/es3141mar_a">preelectoral</a> subestimó al PP en 3,8 puntos. Desde 2019, en las cuatro estimaciones comparadas (dos de ellas de 2023), el error ha favorecido al PSOE frente al PP, con un tamaño que va de 1,0 a 6,9 puntos.</p>
+<p data-tipo="hipotesis">Tres elecciones son pocas para hablar de un sesgo fijo, y el CIS sostiene que su método mide escenarios, no resultados. Lo que muestran los datos es una dirección repetida del error, no su causa.</p>
+<h2>Tezanos y sus críticos</h2>
+<p data-tipo="contexto">Tezanos defendió su trabajo después del 23J. «Si dicen todas las encuestas fallaron, pongan ustedes también excepto el CIS de Tezanos, que fue la que estuvo más cerca de los datos de la realidad», dijo en RNE, según recogió <a href="https://www.elindependiente.com/espana/2023/07/25/tezanos-saca-pecho-por-haberse-desviado-solo-unas-decimas-con-las-encuestas-del-cis/">El Independiente</a> con información de Europa Press. En la misma entrevista advirtió que las encuestas no son un «instrumento de precisión relojera suiza», que «marcan tendencias» y que «no hay que creérselas mucho».</p>
+<p data-tipo="contexto">Los críticos apuntan al método. José Miguel Silva, socio y analista de la consultora Target Point, reestimó en febrero el barómetro del CIS para <a href="https://www.eldebate.com/espana/20260217/datos-cis-analizados-sociologo-independiente-pp-sacaria-24-puntos-psoe-vox-superaria-20_385845.html">El Debate</a>: «Lo que falla es que no ponderan por recuerdo de voto», dijo, y añadió: «Luego, cuando hay elecciones, siempre le dan a la izquierda más de lo que sacan». En la comparación PSOE-PP de este artículo, esa afirmación se cumple desde 2019, pero no en 2015.</p>
+<p data-tipo="dato">La ventaja de 11,8 puntos que da ahora el CIS es mayor que el mayor de los errores medidos en estas cinco elecciones, los 6,9 puntos de noviembre de 2019. Lo que pasará el 29N lo dirán las urnas, no esta tabla.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/vivienda-inmigracion-economia-cis/">Vivienda, inmigración y economía en el CIS de octubre</a> · <a href="https://mapaelectoral.es/actualidad/ultimo-escano-29n/">El último escaño de cada provincia</a></p>
+<div class="foot">Datos: CIS, estimación de voto de los estudios 3117 (2015), 3141 (2016), 3242 (abril de 2019), 3263 (octubre de 2019), 3411 y 3415 (2023) y 3582 (octubre de 2026); Ministerio del Interior, resultados oficiales de las generales. Borrador: pendiente de revisión antes de publicar.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const R=[["Diciembre de 2015", "3117 (preelectoral)", 20.8, 28.6, 22.0, 28.7], ["Junio de 2016", "3141 (preelectoral)", 21.2, 29.2, 22.6, 33.0], ["Abril de 2019", "3242 (preelectoral)", 30.2, 17.2, 28.7, 16.7], ["Noviembre de 2019", "3263 (macrobarómetro de octubre)", 32.2, 18.1, 28.0, 20.8], ["Julio de 2023", "3411 (preelectoral)", 31.2, 31.4, 31.7, 33.1], ["Julio de 2023", "3415 (encuesta flash)", 32.2, 30.8, 31.7, 33.1], ["Noviembre de 2026", "3582 (barómetro de octubre)", 34.0, 22.2, null, null]];
+const sg=v=>(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(1).replace('.',',');
+function est(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,rh=sm?46:40,m={l:sm?96:170,r:16,t:26,b:8},H=m.t+R.length*rh+m.b,lo=10,hi=40,x=v=>m.l+(v-lo)/(hi-lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Estimación del CIS y resultado real de PSOE y PP'},box);
+ for(let v=lo;v<=hi;v+=5){el('line',{x1:x(v),x2:x(v),y1:m.t-4,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:m.t-10,'text-anchor':'middle','font-size':12},svg).textContent=v+'%'}
+ R.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  const t=el('text',{x:m.l-8,y:cy-(sm?4:2),'text-anchor':'end','font-size':sm?11.5:13,class:'lab'},svg);t.textContent=sm?d[0].replace('Diciembre','Dic.').replace('Noviembre','Nov.').replace(' de ',' '):d[0];
+  el('text',{x:m.l-8,y:cy+(sm?10:13),'text-anchor':'end','font-size':sm?10:11.5},svg).textContent=sm?d[1].split(' ')[0]:'CIS '+d[1].split(' (')[0];
+  [['psoe',2,4],['pp',3,5]].forEach(([p,e,r],k)=>{const y=cy+(k?5:-5);
+   if(d[r]!=null){el('line',{x1:x(d[e]),x2:x(d[r]),y1:y,y2:y,stroke:`var(--${p})`,'stroke-width':2,opacity:.5},svg);
+    el('circle',{cx:x(d[r]),cy:y,r:5.5,fill:`var(--${p})`,stroke:'var(--bg)','stroke-width':1.5},svg)}
+   el('circle',{cx:x(d[e]),cy:y,r:5.5,fill:'var(--bg)',stroke:`var(--${p})`,'stroke-width':2},svg);});
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`<b>${d[0]}</b> · CIS ${d[1]}<br>Estimación: PSOE ${c1(d[2])}% · PP ${c1(d[3])}%`+(d[4]!=null?`<br>Resultado: PSOE ${c1(d[4])}% · PP ${c1(d[5])}%`:'<br>Elecciones el 29 de noviembre'));});}
+est('est');
+table('est-tbl',['Elección','Estudio del CIS','PSOE estimado','PP estimado','PSOE real','PP real','Ventaja PSOE estimada','Ventaja PSOE real'],R.map(d=>[d[0],d[1],c1(d[2]),c1(d[3]),d[4]==null?'—':c1(d[4]),d[5]==null?'—':c1(d[5]),sg(d[2]-d[3]),d[4]==null?'—':sg(d[4]-d[5])]));
+const E=R.filter(d=>d[4]!=null).map(d=>[d[0]+(d[1].includes('flash')?' (flash)':''),+((d[2]-d[3])-(d[4]-d[5])).toFixed(1)]);
+(function(){const box=document.getElementById('err');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,rh=30,m={l:sm?100:180,r:40,t:26,b:8},H=m.t+E.length*rh+m.b,lo=sm?-4:-2,hi=8,x=v=>m.l+(v-lo)/(hi-lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Error del CIS en la ventaja del PSOE sobre el PP'},box);
+ for(let v=lo;v<=hi;v+=2){el('line',{x1:x(v),x2:x(v),y1:m.t-4,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:m.t-10,'text-anchor':'middle','font-size':12},svg).textContent=sg(v)}
+ E.forEach((d,i)=>{const y=m.t+i*rh,v=d[1],col=v>=0?'var(--psoe)':'var(--pp)';
+  el('text',{x:m.l-8,y:y+rh/2+4,'text-anchor':'end','font-size':sm?11.5:13},svg).textContent=sm?d[0].replace('Diciembre de ','Dic. ').replace('Junio de ','Jun. ').replace('Abril de ','Abr. ').replace('Noviembre de ','Nov. ').replace('Julio de ','Jul. '):d[0];
+  el('rect',{x:Math.min(x(0),x(v)),y:y+4,width:Math.abs(x(v)-x(0)),height:rh-8,rx:3,fill:col},svg);
+  el('text',{x:v>=0?x(v)+6:x(v)-6,y:y+rh/2+4,'text-anchor':v>=0?'start':'end','font-size':12,class:'lab'},svg).textContent=sg(v);
+  hov(box,tip,el('rect',{x:0,y,width:W,height:rh,fill:'transparent'},svg),`<b>${d[0]}</b><br>${v>=0?'Sobrestimó':'Subestimó'} la ventaja del PSOE en <b>${c1(Math.abs(v))}</b> puntos`)});})();
+
+</script>
