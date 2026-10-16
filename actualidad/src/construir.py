@@ -918,6 +918,25 @@ PIEZAS = [
         lugar='Cataluña',
         foto=dict(src='img/actualidad/fotos/rufian-fracaso-lista-unitaria-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Gabriel Rufián e Irene Montero, con el hemiciclo del Congreso y dos papeles en blanco entre ambos: un collage.'),
+        slug='desahucios-ocupaciones-cgpj-29n', fecha='2026-10-16',
+        titulo='Ocupación: en las provincias con más demandas ante los juzgados, Vox sacó el 15,9% en 2023, frente al 11,5% en las que menos', serie='29n',
+        descripcion='Los datos del CGPJ publicados hoy: los desahucios por alquiler caen un 57,7% y las demandas por ocupación, un 9%. Por habitante, Ávila, Baleares y Girona encabezan las demandas; el cruce con el voto de 2023 apenas dibuja un patrón.',
+        compara='Los lanzamientos practicados y las demandas por ocupación ilegal de vivienda ingresadas en los juzgados por trimestre desde 2025, y por provincia en 2025 por cada 100.000 habitantes, junto al voto de 2023 en cada provincia.',
+        limites='Lanzamientos y demandas no son la misma cosa: los primeros son desalojos ya ejecutados por cualquier causa y las segundas, procedimientos que empiezan y pueden no acabar en desalojo. La estadística de ocupación del CGPJ solo recoge los juicios verbales que pueden iniciar personas físicas, entidades sin ánimo de lucro y administraciones con vivienda social (Ley 5/2018); no incluye las ocupaciones que denuncian bancos o fondos ni la vía penal. Las tasas usan la población oficial del padrón a 1 de enero de 2021 (INE), la última serie provincial que hemos podido descargar; desde entonces la población ha crecido y las tasas actuales serían algo más bajas; Ceuta y Melilla no figuran en la tabla provincial del CGPJ. En provincias pequeñas, unas pocas demandas mueven mucho la tasa. El cruce con el voto es entre provincias, no entre personas, y no permite conclusiones causales. Vox no tuvo lista al Congreso en Santa Cruz de Tenerife en 2023, por lo que esa provincia no aparece en el gráfico de Vox. El partido más votado se calcula sin voto exterior; en Navarra se usa el resultado oficial (PSOE).',
+        fuentes=[('https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Notas-de-prensa/Los-organos-judiciales-practicaron-4-474-lanzamientos-en-el-segundo-trimestre--un-35-7---menos-que-en-el-mismo-periodo-del-ano-pasado', 'CGPJ, nota de prensa del 2.º trimestre de 2026 (16-10-2026)'),
+                 ('https://www.poderjudicial.es/cgpj/es/Temas/Estadistica-Judicial/Estudios-e-Informes/Efecto-de-la-Crisis-en-los-organos-judiciales/', 'CGPJ, Datos sobre el efecto de la crisis en los órganos judiciales (2.º trimestre de 2026 y anual de 2025)'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=2852', 'INE, cifras oficiales de población por provincia (padrón a 1 de enero de 2021)'),
+                 INTERIOR,
+                 ('https://www.eldebate.com/espana/cataluna/20221021/feijoo-propone-el-desalojo-en-24-horas-de-las-viviendas-okupadas_67662.html', 'El Debate, Feijóo propone el desalojo en 24 horas (21-10-2022)'),
+                 ('https://forbes.es/ultima-hora/408900/rodriguez-sobre-ley-antiokupa-pide-a-pp-que-se-centre-en-el-problema-de-acceso-a-la-vivienda/', 'Forbes, Isabel Rodríguez sobre la ley antiokupa (8-2-2024)'),
+                 ('https://www.ultimahora.es/noticias/nacional/2024/09/11/2239237/ministra-cifra-riesgo-ocupacion-vivienda-espana.html', 'Última Hora, la ministra cifra el riesgo de ocupación en el 0,06% (11-9-2024)'),
+                 ('https://www.boe.es/biblioteca_juridica/anuarios_derecho/abrir_pdf.php?id=ANU-V-2025-13000000060', 'Matilde Cuena Casas, El problema de la ocupación ilegal en España, Tratado de Derecho de la vivienda (BOE, 2025)'),
+                 ('https://www.pp.es/storage/2024/02/240207_ley_antiokupacion_la_primera_de_las_leyes_feijoo_-_titulares.pdf', 'PP, el Senado toma en consideración la ley antiokupación (7-2-2024)'),
+                 ('https://rtvc.es/rechazan-recursos-vox-por-candidatura-santa-cruz-de-tenerife/', 'RTVC, Vox sin candidatura al Congreso en Santa Cruz de Tenerife en 2023')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/desahucios-ocupaciones-cgpj-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Dos policías acompañan a una mujer con una caja hasta un portal; en el suelo, un juego de llaves: un collage.'),
     ),
 ]
 
@@ -1115,6 +1134,7 @@ PIEZAS += [
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
+    'desahucios-ocupaciones-cgpj-29n': 'Dos verbos para una puerta',
     'cis-tezanos-estimacion-29n': 'La hemeroteca del CIS',
     'pensiones-censo-mayores-29n': 'El censo envejece',
     'ceuta-melilla-participacion-29n': 'Dos ciudades en cada ciudad',
