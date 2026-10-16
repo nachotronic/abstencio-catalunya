@@ -918,6 +918,8 @@ PIEZAS = [
         lugar='Cataluña',
         foto=dict(src='img/actualidad/fotos/rufian-fracaso-lista-unitaria-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Gabriel Rufián e Irene Montero, con el hemiciclo del Congreso y dos papeles en blanco entre ambos: un collage.'),
+    ),
+    dict(
         slug='desahucios-ocupaciones-cgpj-29n', fecha='2026-10-16',
         titulo='Ocupación: en las provincias con más demandas ante los juzgados, Vox sacó el 15,9% en 2023, frente al 11,5% en las que menos', serie='29n',
         descripcion='Los datos del CGPJ publicados hoy: los desahucios por alquiler caen un 57,7% y las demandas por ocupación, un 9%. Por habitante, Ávila, Baleares y Girona encabezan las demandas; el cruce con el voto de 2023 apenas dibuja un patrón.',
