@@ -904,6 +904,22 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/cis-tezanos-estimacion-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='José Félix Tezanos entre un cuestionario, unas barras y una oficina: un collage.'),
     ),
+    dict(
+        slug='rufian-fracaso-lista-unitaria-29n', fecha='2026-10-16',
+        titulo='Rufián admite «He fracasado»: con los votos de 2023, ERC y Sumar juntos habrían sacado un solo diputado más en Cataluña, y por 126 votos', serie='29n',
+        descripcion='El escaño habría salido de Barcelona y se lo habrían quitado al PSC. En Girona, Lleida y Tarragona, la suma no habría cambiado nada.',
+        compara='El reparto de escaños de 2023 en las cuatro provincias catalanas tal como fue y el que habría salido si los votos de ERC y Sumar se hubieran sumado en una sola lista, con la regla D\'Hondt.',
+        limites='Es una simulación aritmética, no una previsión: supone que todos los votantes de ERC y de Sumar en 2023 habrían votado la lista conjunta, y en la realidad una coalición gana y pierde votos. Se usan los votos sin el voto exterior (CERA), por lo que pueden diferir en unas decenas de los oficiales; con un margen de 126 votos, el resultado de Barcelona es frágil. Sumar concurrió en 2023 con Podemos y los Comuns en su lista; en 2026 el espacio va dividido de otra forma.',
+        fuentes=[INTERIOR,
+                 ('https://www.que.es/2026/10/16/unidad-izquierda-29n-sin-pacto/', 'Qué!, Rufián en RAC1: «He fracasado y hemos fracasado» (16-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/16/elecciones-generales-espana-29-n-en-directo-ultima-hora-del-frente-amplio-y-del-viernes-clave-para-la-izquierda/', 'Infobae, directo del 16-10-2026: Colau y Bustinduy'),
+                 ('https://ara.cat/es/articulo-pablo-simon-manipulacion-electoral_0_1481252043.html', 'Ara, entrevista a Pablo Simón')],
+        enlaces=[],
+        lugar='Cataluña',
+        foto=dict(src='img/actualidad/fotos/rufian-fracaso-lista-unitaria-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  fuente='Ministerio del Interior, generales de 2023. Simulación D\'Hondt de mapaelectoral.es',
+                  pie='Los 48 diputados de Cataluña en 2023 y con los votos de ERC y Sumar sumados en una sola lista.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1099,6 +1115,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
     'cis-tezanos-estimacion-29n': 'La hemeroteca del CIS',
     'pensiones-censo-mayores-29n': 'El censo envejece',
     'ceuta-melilla-participacion-29n': 'Dos ciudades en cada ciudad',
