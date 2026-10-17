@@ -959,6 +959,25 @@ PIEZAS = [
                   pie='Las coaliciones de la izquierda a la izquierda del PSOE para el 29N, provincia a provincia.',
                   fuente='Público, elDiario.es, Europa Press y Efe; elaboración propia'),
     ),
+    dict(
+        slug='canarias-unidad-pueblo-canario-29n', fecha='2026-10-17',
+        titulo='Nueva Canarias, Podemos, IU y Sumar se unen en Canarias: con los votos de 2023, la suma habría pasado de uno a tres diputados', serie='29n',
+        descripcion='Juntos le habrían quitado un escaño al PP en Las Palmas y otro al PSOE en Santa Cruz de Tenerife, este por unos 1.600 votos. Canarias es una de las dos comunidades donde el Frente Amplio y Podemos irán juntos el 29N.',
+        compara='El reparto de escaños de 2023 en Las Palmas y Santa Cruz de Tenerife tal como fue y el que habría salido si los votos de Sumar y de Nueva Canarias-Bloque Canarista se hubieran sumado en una sola lista, con la regla D\'Hondt.',
+        limites='Es una simulación aritmética, no una previsión: supone que todos los votantes de Sumar y de NC-BC en 2023 votarían la lista conjunta. En 2023 Sumar ya incluía a Podemos e IU. Drago Canarias se presenta por separado y no se puede separar qué parte del voto de Sumar en 2023 podría irse con ella. Se usan los votos por mesa de Interior con el voto exterior, que pueden diferir en unos pocos votos del escrutinio oficial.',
+        fuentes=[INTERIOR,
+                 ('https://rtvc.es/podemos-nueva-canarias-iu-sumar-juntos-29n-bajo-nombre-unidad-pueblo-canario-15-octubre-2026/', 'RTVC, Podemos, Nueva Canarias, IU y Sumar irán juntos al 29N (15-10-2026)'),
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)'),
+                 ('https://diariodeavisos.elespanol.com/2026/02/nueva-canarias-plan-rufian-dos-diputados-congreso-izquierdas/', 'Diario de Avisos (Efe), Nueva Canarias aspira a dos diputados (19-2-2026)'),
+                 ('https://www.moncloa.com/2026/10/16/unidad-pueblo-canario-confluencia-canarias-3449401', 'Moncloa.com, Unidad del Pueblo Canario (16-10-2026)'),
+                 ('https://www.canarias7.es/opinion/firmas/roman-rodriguez-sola-papeleta-20261004060000-nt.html', 'Román Rodríguez, Una sola papeleta, Canarias7 (4-10-2026)'),
+                 ('https://ara.cat/es/articulo-pablo-simon-manipulacion-electoral_0_1481252043.html', 'Ara, entrevista a Pablo Simón')],
+        enlaces=[],
+        lugar='Canarias',
+        foto=dict(src='img/actualidad/fotos/canarias-unidad-pueblo-canario-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Los 15 diputados de Canarias en 2023 y con los votos de Sumar y Nueva Canarias sumados en una sola lista.',
+                  fuente='Ministerio del Interior, generales de 2023. Simulación D\'Hondt de mapaelectoral.es'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1154,6 +1173,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'canarias-unidad-pueblo-canario-29n': 'Una papeleta en las islas',
     'pactos-izquierda-mapa-final-29n': 'El mapa que dejó el plazo',
     'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
     'desahucios-ocupaciones-cgpj-29n': 'Dos verbos para una puerta',
