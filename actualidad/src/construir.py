@@ -940,6 +940,25 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/desahucios-ocupaciones-cgpj-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Dos policías acompañan a una mujer con una caja hasta un portal; en el suelo, un juego de llaves: un collage.'),
     ),
+    dict(
+        slug='pactos-izquierda-mapa-final-29n', fecha='2026-10-17',
+        titulo='Frente Amplio y Podemos solo irán juntos en cinco provincias: en las otras 47, Sumar sacó 26 de sus 31 diputados en 2023', serie='29n',
+        descripcion='Se cerró el plazo de coaliciones. Habrá papeleta común en Canarias y la Comunitat Valenciana; en Baleares y Aragón, el Frente Amplio va con partidos territoriales y sin Podemos, y en Cataluña Podemos entra en las listas de ERC.',
+        compara='Las coaliciones registradas por el Frente Amplio y Podemos para el 29N en cada provincia, junto a los votos y escaños que Sumar, que en 2023 los reunía a todos, sacó en esas provincias en las generales de 2023.',
+        limites='Las coaliciones salen de la prensa del 16 y 17 de octubre (Público, elDiario.es, Europa Press y Efe), no de la publicación oficial de la Junta Electoral, que puede matizar algún caso; en Extremadura, la información es menos clara. Que no haya coalición no significa que Podemos vaya a presentar lista en todas las provincias: las candidaturas se registran más tarde. Sumar se presentó en 2023 con Podemos, IU, Compromís, Más Madrid, los comuns y otros partidos; sus votos de 2023 describen dónde estaba ese voto, no cómo se repartirá ahora. No calculamos escaños para el 29N. Los votos de 2023 incluyen el voto exterior.',
+        fuentes=[INTERIOR,
+                 ('https://www.publico.es/politica/frente-amplio-podemos-concurriran-separado-29-noviembre-salvo-canarias-pais-valencia.html', 'Público, Frente Amplio y Podemos concurrirán por separado salvo en Canarias y País Valencià (16-10-2026)'),
+                 ('https://www.eldiario.es/politica/son-acuerdos-izquierda-alternativa-territorio-territorio_1_13589702.html', 'elDiario.es, así han quedado las candidaturas de la izquierda alternativa, territorio a territorio (17-10-2026)'),
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/16/frente-amplio-y-podemos-consuman-su-choque-y-naufragan-en-el-intento-de-lograr-una-candidatura-unitaria/', 'Infobae (Europa Press), Frente Amplio y Podemos consuman su choque (16-10-2026)'),
+                 ('https://www.mundiario.com/articulo/politica/izquierda-divide-29-n-une-disputar-senado-pp/20261017002549447277.html', 'Mundiario, la izquierda se divide para el 29-N pero se une en el Senado (17-10-2026)'),
+                 ('https://www.nuevatribuna.es/articulo/actualidad/union-division-frente-amplio-elecciones-podemos-sumar-politica/20221227165009206442.html', 'Antonio Antón, La unión y la división del frente amplio, Nueva Tribuna (27-12-2022)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/pactos-izquierda-mapa-final-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las coaliciones de la izquierda a la izquierda del PSOE para el 29N, provincia a provincia.',
+                  fuente='Público, elDiario.es, Europa Press y Efe; elaboración propia'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1135,6 +1154,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'pactos-izquierda-mapa-final-29n': 'El mapa que dejó el plazo',
     'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
     'desahucios-ocupaciones-cgpj-29n': 'Dos verbos para una puerta',
     'cis-tezanos-estimacion-29n': 'La hemeroteca del CIS',
