@@ -959,6 +959,28 @@ PIEZAS = [
                   pie='Las coaliciones de la izquierda a la izquierda del PSOE para el 29N, provincia a provincia.',
                   fuente='Público, elDiario.es, Europa Press y Efe; elaboración propia'),
     ),
+    dict(
+        slug='frente-amplio-podemos-madrid-escanos-29n', fecha='2026-10-20',
+        titulo='Delgado contra Montero en Madrid: con los votos de 2023, Podemos necesitaría uno de cada cinco votos de Sumar para sacar escaño', serie='29n',
+        descripcion='Separados, el Frente Amplio y Podemos habrían sacado entre cinco y seis de los seis diputados que Sumar logró en Madrid en 2023. El escaño que se pierde iría al PSOE; el PP se queda en 16 en todos los casos.',
+        compara='El reparto de los 37 escaños de Madrid en 2023 tal como fue y el que habría salido si los votos de Sumar se hubieran partido en dos listas, el Frente Amplio y Podemos, en todas las proporciones del 0% al 50%, con la regla D\'Hondt y la barrera del 3%. Se añade el precedente de noviembre de 2019, con Unidas Podemos y Más País por separado.',
+        limites='Es una simulación aritmética, no una previsión: supone que los votantes de Sumar en 2023 votan a una de las dos listas y que el resto de partidos saca lo mismo. No hay un dato oficial de qué parte del voto de Sumar en 2023 era de Podemos, por eso se muestran todos los repartos. No recoge votantes que se vayan al PSOE o a la abstención. Se usan los votos por mesa de Interior con el voto exterior, que pueden diferir en unos pocos votos del escrutinio oficial.',
+        fuentes=[INTERIOR,
+                 ('https://www.telemadrid.es/noticias/madrid/Frente-Amplio-elige-a-Emilio-Delgado-como-cabeza-de-lista-por-Madrid-0-2934306575--20261013081543.html', 'Telemadrid (Europa Press), Frente Amplio elige a Emilio Delgado como cabeza de lista por Madrid (13-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/16/24136-personas-respaldan-en-primarias-que-irene-montero-sea-candidata-y-vaya-en-el-primer-puesto-por-madrid/', 'Infobae (Europa Press), 24.136 personas respaldan a Irene Montero en primarias (16-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/16/29n-delgado-reitera-la-generosidad-de-frente-amplio-con-montero-en-madrid-se-le-ofrece-el-puesto-2-y-3-en-la-lista/', 'Infobae (Europa Press), Delgado reitera la generosidad de Frente Amplio con Montero (16-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/15/emilio-delgado-ve-dificil-el-acuerdo-con-podemos-pero-mantiene-la-mano-tendida-para-integrarles-en-el-frente-amplio/', 'Infobae (Europa Press), Emilio Delgado ve difícil el acuerdo con Podemos (15-10-2026)'),
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/13/2727755/irene-montero-asegura-podemos-integrara-frente-amplio-sigue-moviendo-baza-primarias.html', 'Última Hora (Efe), Irene Montero asegura que Podemos no se integrará en Frente Amplio (13-10-2026)'),
+                 ('https://x.com/EFEnoticias/status/2111229781916197346', 'Efe en X, cabezas de lista de Podemos y Frente Amplio en Madrid'),
+                 ('https://www.laregion.es/espana/presentara-pais-choque-frente_1_20261019-4457477.html', 'La Región, Podemos se presentará en todo el país (19-10-2026)'),
+                 ('https://dialnet.unirioja.es/descarga/articulo/8166654.pdf', 'Miguel Ángel Sevilla Duro, El sistema electoral del Congreso en las elecciones de 2019, Revista de Derecho Electoral (2021)'),
+                 ('https://cordopolis.eldiario.es/cordoba-hoy/sociedad/politologo-demuestra-coalicion-e-iu-provoco-perdida-votos_1_12725560.html', 'Cordópolis, estudio de Víctor Gago Rivas sobre la coalición de Podemos e IU')],
+        enlaces=[],
+        lugar='Madrid',
+        foto=dict(src='img/actualidad/fotos/frente-amplio-podemos-madrid-escanos-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Escaños del Frente Amplio y de Podemos en Madrid según cómo se repartan los votos que Sumar sacó en 2023.',
+                  fuente='Ministerio del Interior, generales de 2023. Simulación D\'Hondt de mapaelectoral.es'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1154,6 +1176,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'frente-amplio-podemos-madrid-escanos-29n': 'Dos papeletas en Madrid',
     'pactos-izquierda-mapa-final-29n': 'El mapa que dejó el plazo',
     'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
     'desahucios-ocupaciones-cgpj-29n': 'Dos verbos para una puerta',
