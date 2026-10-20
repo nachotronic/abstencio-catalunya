@@ -1017,6 +1017,23 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/albiol-badalona-pp-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Xavier García Albiol, con el paseo marítimo y el plano de Badalona: un collage.'),
     ),
+    dict(
+        slug='palencia-psoe-lista-29n', fecha='2026-10-20',
+        titulo='Dimite la lista del PSOE en Palencia tras imponer Ferraz a Martínez Seijo: en 2023 al partido le faltaron 7.097 votos para un segundo diputado', serie='29n',
+        descripcion='El PSOE solo ha sacado dos de los tres diputados de Palencia en 1982 y 1986. En abril de 2019 fue el más votado y se quedó a 478 votos del segundo escaño.',
+        compara='El voto al PSOE y al PP en la circunscripción de Palencia en las generales de 2004 a 2023, los escaños de cada uno y los votos que le faltaron al PSOE para un segundo diputado.',
+        limites='En 2011, 2015 y 2016 los votos que faltaron son una aproximación hecha con los cuatro primeros partidos. Los porcentajes de 2004 a 2016 no incluyen el voto en blanco en el voto válido porque no hay datos por mesa de esos años. No es una previsión: no dice si el cambio de candidata moverá votos.',
+        fuentes=[INTERIOR,
+                 ('https://www.elespanol.com/castilla-y-leon/region/palencia/20261019/rebelion-psoe-palencia-ferraz-toda-lista-renuncia-imposicion-martinez-seijo/1003744426904_0.html', 'El Español, Rebelión en el PSOE de Palencia contra Ferraz (19-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-19/psoe-palencia-guerra-ferraz-candidato/', 'The Objective, El PSOE de Palencia, en guerra con Ferraz por el candidato (19-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/19/elecciones-generales-29-n-en-directo-ultima-hora-de-los-sondeos-la-ley-de-nietos-o-los-anuncios-sobre-pensiones/', 'Infobae, directo de las elecciones del 29N (19-10-2026)'),
+                 ('https://www.vozpopuli.com/espana/elecciones-generales-2023/renuncia-lista-psoe-avila-no-ir-junto-no1-impuesto-ferraz-vinculado-tito-berni.html', 'Vozpópuli, Renuncia la lista del PSOE de Ávila (2023)'),
+                 ('https://reis.cis.es/index.php/reis/article/view/94', 'C. Pamies, Selección diferencial de candidatos en estados multinivel, REIS 182 (2024)')],
+        enlaces=[],
+        lugar='Palencia',
+        foto=dict(src='img/actualidad/fotos/palencia-psoe-lista-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='La catedral y el puente de Palencia, con una urna: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1212,6 +1229,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'palencia-psoe-lista-29n': 'Una lista vacía',
     'albiol-badalona-pp-29n': 'El alcalde y la marca',
     'senado-psoe-frente-amplio-29n': 'Tres de cuatro',
     'ley-nietos-voto-exterior-29n': 'Las papeletas que llegan de fuera',
