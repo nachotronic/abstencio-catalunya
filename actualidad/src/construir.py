@@ -1112,6 +1112,26 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/mapa-coaliciones-izquierda-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='El hemiciclo del Congreso partido en dos bloques morados, Podemos y Frente Amplio, con una papeleta rota en medio: un collage.'),
     ),
+    dict(
+        slug='vox-pp-senado-pacto-29n', fecha='2026-10-21',
+        titulo='PP y Vox negocian el Senado: con los votos de 2023, sumar a Vox le devolvería a la derecha 19 provincias frente a la lista de PSOE y Frente Amplio', serie='29n',
+        descripcion='Por separado, el PP bajaría de 120 a 82 senadores elegidos; con los votos de Vox, la derecha volvería a 120. Sevilla, Valencia y Asturias seguirían siendo de la izquierda incluso juntos.',
+        compara='Los votos por candidato del PP, del PP más Vox y de PSOE más Sumar en las elecciones al Senado de 2023, en las 39 provincias de cuatro senadores con lista conjunta de la izquierda (sin Navarra), y los senadores elegidos que saldrían en cada caso.',
+        limites='Es una simulación aritmética, no una previsión. Usa los votos por candidato (suma de votos de los candidatos de cada partido dividida entre los que presentó) y hace una suma mecánica con transferencia perfecta: todos los votantes de Vox votarían al PP y todos los de PSOE y Sumar a la lista conjunta, sin cambios de participación. No dice cuántos senadores serían de Vox con la fórmula 2+1. No incluye las islas, Ceuta, Melilla, Cataluña, el País Vasco ni Navarra (que se dejan como en 2023), ni los senadores autonómicos. Las fórmulas de pacto proceden de la prensa y no están cerradas.',
+        calculo='Votos por candidato: suma de los votos de los candidatos de cada partido en la provincia dividida entre el número de candidatos que presentó. Gana tres senadores la opción con más votos por candidato y uno la segunda.',
+        fuentes=[('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907', 'Junta Electoral Central, resumen de los resultados de las elecciones al Congreso y al Senado de 23 de julio de 2023, BOE de 1-9-2023'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-19537', 'Junta Electoral Central, corrección de errores, BOE de 16-9-2023'),
+                 ('https://www.elespanol.com/espana/politica/20261020/formulas-acuerdo-pp-vox-senado-retirada-listas-via-cesion-senadores-autonomicos/1003744427480_0.html', 'El Español, Las fórmulas para un acuerdo de PP y Vox en el Senado (20-10-2026)'),
+                 ('https://www.elespanol.com/espana/politica/20261019/derecha-conservaria-quintos-senado-vox-no-presenta-provincias-va-listas-pp/1003744425410_0.html', 'El Español, La derecha conservaría tres quintos del Senado si Vox no se presenta en 19 provincias (19-10-2026)'),
+                 ('https://www.elespanol.com/espana/politica/20261018/vox-dispuesto-demostrar-altura-miras-frente-popular-senado-lunes-decidira-pacta-pp/1003744424775_0.html', 'El Español, Vox, dispuesto a demostrar «altura de miras» en el Senado (18-10-2026)'),
+                 ('https://www.elplural.com/politica/espana/vox-debate-si-retirarse-batalla-senado-algunas-provincias-facilitar-camino-pp_801756102', 'El Plural, Vox debate si retirarse de la batalla por el Senado en algunas provincias (19-10-2026)'),
+                 ('https://revista.cortesgenerales.es/rcg/article/download/98/91', 'Fabio Pascua Mateo, Cuarenta años de elecciones a las Cortes Generales, Revista de las Cortes Generales 103 (2018)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/vox-pp-senado-pacto-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Senadores elegidos en 2023 y en dos simulaciones con los mismos votos: con PP y Vox por separado y con sus votos sumados, frente a la lista de PSOE y Frente Amplio.',
+                  fuente='Junta Electoral Central, Senado de 2023 por candidato. Simulación de mapaelectoral.es'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1527,6 +1547,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'vox-pp-senado-pacto-29n': 'Las 19 del pacto',
     'psoe-cinco-barrios-ceuta': 'Un partido, dos extremos',
     'pp-cinco-pueblos-galicia': 'Del 81% al cero',
     'vox-cinco-barrios-el-ejido-ceuta': 'El techo de Vox',
