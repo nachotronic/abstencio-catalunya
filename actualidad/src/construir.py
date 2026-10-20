@@ -26,6 +26,8 @@ CF = ("<!-- Cloudflare Web Analytics --><script type='module' src='https://stati
       "data-cf-beacon='{\"token\": \"cf0453d1d8f247d4a5dd55aff7b685ae\"}'></script><!-- End Cloudflare Web Analytics -->")
 INTERIOR = ('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/',
             'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)')
+INTERIOR_CERA = ('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/',
+                 'Ministerio del Interior, resultados electorales por mesa y voto CERA (municipio 999), vía pollspaindata')
 INE = ('https://www.ine.es/experimental/atlas/experimental_atlas.htm',
        'INE, Atlas de Distribución de Renta de los Hogares (renta y edad por sección), vía ineAtlas.data')
 INE_CENSO = ('https://www.ine.es/censos2021/C2021_Indicadores.csv',
@@ -54,6 +56,10 @@ SERIES = {'29n': 'Camino al 29N', 'vivienda': 'Vivienda y voto'}
 # Ilustración de cada serie: cabecera de las piezas que no tienen una propia y del bloque de la serie en el índice
 SERIES_FOTO = {'vivienda': dict(src='img/actualidad/fotos/serie-vivienda.jpg', ancho=1280, alto=720, ia=True,
                                 pie='Una urna llena de edificios y unas llaves: la serie «Vivienda y voto».')}
+# Piezas sin ilustración ni foto: su primer gráfico como imagen principal (1280x720) en NewsArticle y en el RSS, para Google Discover.
+# Las hace actualidad/src/graficos_principales.py desde la pieza publicada; pie y fuente, en graficos_principales.json
+GRAFICO_PRINCIPAL = {s: dict(src=f'img/actualidad/fotos/{s}-grafico.jpg', ancho=1280, alto=720, grafico=True, **v)
+                     for s, v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'graficos_principales.json'), encoding='utf-8')).items()}
 
 PIEZAS = [
     dict(
@@ -526,7 +532,9 @@ PIEZAS = [
         descripcion='Robles irá de número dos por Madrid y Albares encabezará Cádiz. Hemos calculado cuánto voto podría perder el PSOE en cada provincia sin que el ministro se quedara fuera: en diez de los once casos, más del 60%.',
         compara='Para cada ministro en las listas del PSOE, los votos que el partido podría perder en su provincia, con los resultados de las generales de 2023 (voto exterior incluido) y los escaños del 29N, antes de que el puesto del ministro dejara de dar escaño.',
         limites='Es aritmética con los votos de 2023, no una previsión: supone que el resto de partidos saca los mismos votos y que solo cambia el voto del PSOE. Los puestos son las propuestas conocidas el 14 de octubre, pendientes de ratificación por el Comité Federal el 17 de octubre. Los puestos que ocuparon en 2023 Ana Redondo y Arcadi España no se han podido verificar. Ningún estudio citado mide el efecto de un ministro como cabeza de lista.',
-        fuentes=[INTERIOR,
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian.',
+        fuentes=[INTERIOR_CERA,
                  ('https://www.infobae.com/espana/agencias/2026/10/14/sanchez-situa-a-robles-numero-2-del-psoe-por-madrid-y-a-sus-ministros-en-puestos-de-salida/', 'EFE vía Infobae, Sánchez sitúa a Robles número 2 por Madrid (14-10-2026)'),
                  ('https://www.elconstitucional.es/es/nacional/sanchez-refuerza-listas-psoe-elecciones-29n-con-once-ministros-situa-margarita-robles-como-numero-dos-por-madrid_8924_102.html', 'El Constitucional, once ministros en las listas del PSOE (14-10-2026)'),
                  ('https://www.eldiario.es/castilla-y-leon/politica/psoe-castilla-leon-mantiene-puente-redondo-frente-valladolid-propone-burgos-tudanca-senado_1_13586478.html', 'elDiario.es, Puente y Redondo en Valladolid (14-10-2026)'),
@@ -780,8 +788,10 @@ PIEZAS = [
     ),
     dict(
         slug='minguez-lleida-29n', fecha='2026-10-15',
-        titulo='Montse Mínguez, entre los pisos de su pareja y un escaño en el aire: el PSC duplicó su voto en Lleida y le ganó el cuarto diputado al PP por unos 3.500 votos', serie='29n',
-        descripcion='La portavoz del PSOE repite como número uno del PSC por Lleida en plena polémica por los negocios inmobiliarios de su pareja. En 2023, el PSC pasó del 14,6% al 29,8% en la provincia y ganó en 79 municipios, frente a 8 en 2019.',
+        actualizado='2026-10-20',
+        correcciones='17-10-2026: actualizada tras la dimisión de Mínguez como portavoz del PSOE; Cristina Morón la sustituye como cabeza de lista del PSC por Lleida. Titular y entradilla cambiados en consecuencia. 20-10-2026: el primer párrafo aún decía que Mínguez «encabezará otra vez la lista»; ahora dice que fue ratificada y dimitió el 16 de octubre. «Lo que se juega Mínguez» pasa a «lo que se juega el PSC».',
+        titulo='Montse Mínguez dimite y deja la lista de Lleida: el PSC duplicó allí su voto en 2023 y le ganó el cuarto diputado al PP por unos 3.500 votos', serie='29n',
+        descripcion='La portavoz del PSOE dimitió el 16 de octubre por la polémica de los negocios inmobiliarios de su pareja, y Cristina Morón la sustituye como número uno del PSC por Lleida. En 2023, el PSC pasó del 14,6% al 29,8% en la provincia y ganó en 79 municipios, frente a 8 en 2019.',
         compara='El voto en la provincia de Lleida en las 16 generales desde 1977, los 231 municipios en noviembre de 2019 y julio de 2023, el reparto D\'Hondt de los cuatro escaños de 2023 y las 81 secciones censales de la ciudad de Lleida agrupadas en tres tramos de renta.',
         limites='No analiza los negocios de la pareja de Mínguez: las citas sobre la polémica son de la prensa que se enlaza. Son datos de territorios, no de personas, y no dicen por qué votó así cada municipio o barrio ni cómo afectará la polémica. Los porcentajes de la serie y de la ciudad son sin voto exterior y sobre votos a candidaturas; el reparto de escaños usa los resultados oficiales, con voto exterior. La comparación de la ciudad solo incluye las secciones que conservan el código entre 2019 y 2023.',
         fuentes=[INTERIOR, INE, INE_IPVA,
@@ -794,6 +804,7 @@ PIEZAS = [
                  ('https://www.infobae.com/espana/agencias/2026/10/14/pp-ve-incoherencia-e-hipocresia-en-el-psoe-tras-el-caso-de-la-pareja-de-montse-minguez/', 'EFE en Infobae, el PP ve incoherencia e hipocresía (14-10-2026)'),
                  ('https://naciodigital.cat/lleida/politica/el-psc-de-lleida-ratifica-montse-minguez-com-a-cap-de-llista-al-congres-per-al-29-n.html', 'NacióDigital, el PSC ratifica a Mínguez (14-10-2026)'),
                  ('https://naciodigital.cat/lleida/politica/lenigma-de-lleida-lultim-esco-no-te-amo.html', 'NacióDigital, l\'enigma de Lleida (8-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/16/la-dimision-de-la-portavoz-socialista-trastoca-el-comite-federal-del-psoe/', 'Efe en Infobae, la dimisión de la portavoz socialista trastoca el Comité Federal del PSOE (16-10-2026)'),
                  ('https://lamanyana.cat/montse-minguez-cap-de-llista-del-psc-per-lleida-al-congres/', 'La Mañana, la lista del PSC por Lleida (15-10-2026)'),
                  ('https://lamanyana.cat/quatre-escons-en-joc-a-lleida/', 'La Mañana, cuatro escaños en juego en Lleida (7-10-2026)'),
                  ('https://laciutat.cat/laciutatdelleida/ines-granollers-proclamada-cap-llista-esquerra-republicana-catalunya-congres-demarcacio-lleida-eleccions-generals_902682_102.html', 'La Ciutat, Inés Granollers, candidata de ERC (12-10-2026)'),
@@ -946,7 +957,9 @@ PIEZAS = [
         descripcion='Se cerró el plazo de coaliciones. Habrá papeleta común en Canarias y la Comunitat Valenciana; en Baleares y Aragón, el Frente Amplio va con partidos territoriales y sin Podemos, y en Cataluña Podemos entra en las listas de ERC.',
         compara='Las coaliciones registradas por el Frente Amplio y Podemos para el 29N en cada provincia, junto a los votos y escaños que Sumar, que en 2023 los reunía a todos, sacó en esas provincias en las generales de 2023.',
         limites='Las coaliciones salen de la prensa del 16 y 17 de octubre (Público, elDiario.es, Europa Press y Efe), no de la publicación oficial de la Junta Electoral, que puede matizar algún caso; en Extremadura, la información es menos clara. Que no haya coalición no significa que Podemos vaya a presentar lista en todas las provincias: las candidaturas se registran más tarde. Sumar se presentó en 2023 con Podemos, IU, Compromís, Más Madrid, los comuns y otros partidos; sus votos de 2023 describen dónde estaba ese voto, no cómo se repartirá ahora. No calculamos escaños para el 29N. Los votos de 2023 incluyen el voto exterior.',
-        fuentes=[INTERIOR,
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian.',
+        fuentes=[INTERIOR_CERA,
                  ('https://www.publico.es/politica/frente-amplio-podemos-concurriran-separado-29-noviembre-salvo-canarias-pais-valencia.html', 'Público, Frente Amplio y Podemos concurrirán por separado salvo en Canarias y País Valencià (16-10-2026)'),
                  ('https://www.eldiario.es/politica/son-acuerdos-izquierda-alternativa-territorio-territorio_1_13589702.html', 'elDiario.es, así han quedado las candidaturas de la izquierda alternativa, territorio a territorio (17-10-2026)'),
                  ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)'),
@@ -960,12 +973,137 @@ PIEZAS = [
                   fuente='Público, elDiario.es, Europa Press y Efe; elaboración propia'),
     ),
     dict(
+        slug='ley-nietos-voto-exterior-29n', fecha='2026-10-20',
+        titulo='El Supremo deja sin voto a 163.020 nacionalizados por la ley de nietos: en 2023, el voto exterior ya le dio al PP un escaño del PSOE en Madrid', serie='29n',
+        descripcion='El voto de fuera cambió el último diputado de Madrid por menos de 200 votos de cociente. Para el 29N, el censo de residentes en el extranjero ha crecido un 19%, y más de una cuarta parte del aumento está en Madrid.',
+        compara='El voto de los residentes en el extranjero (CERA) en las generales de 2023 por provincia frente al voto emitido en España, el reparto del último escaño de Madrid con y sin ese voto, y el censo de residentes en el extranjero de 2023 frente al del 29N.',
+        limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. El censo de 2023 es el que figura en los ficheros de Interior y el de 2026 el que publica el INE, que pueden no medir exactamente lo mismo. No hay datos públicos de cuántos de los 163.020 suspendidos hay en cada provincia ni de cómo votarían, así que no se puede calcular a quién afecta la suspensión. Los porcentajes de PSOE incluyen al PSC y a sus federaciones, y los de Sumar todas sus marcas; el PP no incluye a UPN.',
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: el aumento del censo exterior en Madrid (122.370) es el 27,7% del total (441.385), más de una cuarta parte, no «casi un tercio». Además, la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian. También se corrige la nota de método, que decía «votos a candidaturas»: los porcentajes son sobre voto válido, como indica el gráfico, y la fuente del gráfico de Madrid, que ahora cita el voto CERA.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.ine.es/dyngs/Prensa/EG2026.htm', 'INE, Elecciones a Cortes Generales de 29 de noviembre de 2026, nota de prensa (9-10-2026)'),
+                 ('https://www.elindependiente.com/espana/2026/10/12/el-tribunal-supremo-suspende-el-voto-de-los-nacionalizados-por-la-ley-de-nietos-para-las-elecciones-del-29n/', 'El Independiente, El Supremo suspende el voto de los nacionalizados por la ley de nietos (12-10-2026)'),
+                 ('https://www.que.es/2026/10/13/ley-nietos-voto-supremo-29n-2/', 'Que.es, El Supremo deja sin voto el 29N a 163.020 nacionalizados (13-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-18/vox-constitucional-recurso-gabilondo-ley-de-nietos/', 'The Objective (Efe), Vox pide al Constitucional que inadmita el recurso de Gabilondo (18-10-2026)'),
+                 ('https://www.infobae.com/america/agencias/2026/10/11/sanchez-pide-frenar-el-intento-de-atropello-que-impediria-votar-a-nietos-de-exiliados/', 'Infobae (Efe), Sánchez pide frenar el «intento de atropello» (11-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/12/vox-celebra-que-el-supremo-le-de-la-razon-con-la-ley-de-nietos-y-que-las-elecciones-se-celebren-sin-fraude/', 'Infobae (Europa Press), Vox celebra que el Supremo le dé la razón (12-10-2026)'),
+                 ('https://www.publico.es/politica/1-26-millones-electores-incorporan-censo-29-n.html', 'Público (agencias), Más de 1,26 millones de electores se incorporan al censo (9-10-2026)'),
+                 ('https://doi.org/10.5944/rdp.120.2024.41766', 'Álvarez Vélez y Corres-Illera, La relevancia del voto CERA, Revista de Derecho Político 120 (2024)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/ley-nietos-voto-exterior-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un pasaporte, un sobre que cruza el mapa de España y una urna ante el Congreso: un collage.'),
+    ),
+    dict(
+        slug='senado-psoe-frente-amplio-29n', fecha='2026-10-20',
+        titulo='PSOE y Frente Amplio, juntos al Senado: con los votos de 2023, su lista habría ganado al PP en 17 provincias donde este sacó tres senadores', serie='29n',
+        descripcion='El PP habría bajado de 120 a 82 senadores elegidos, y el PSOE con la lista conjunta habría pasado de la mitad. Albacete queda empatada; Murcia, tres provincias gallegas y casi toda Castilla y León siguen siendo del PP.',
+        compara='Los votos por candidato del PP frente a la suma de los del PSOE y Sumar en las elecciones al Senado de 2023, en las 40 provincias de cuatro senadores que entran en la lista conjunta.',
+        limites='Es una simulación aritmética, no una previsión. Usa los votos por candidato (suma de votos de los candidatos de cada partido dividida entre los que presentó) y hace una suma mecánica con transferencia perfecta: supone que todos los votantes de PSOE y Sumar votarían a los tres candidatos de la lista conjunta, lo que en el voto limitado del Senado no está garantizado, y que no cambian la participación ni la estrategia de los demás partidos. Los votos son los oficiales de la Junta Electoral Central publicados en el BOE, con la corrección de un candidato del PSOE en Madrid. Los 72 senadores del PSOE de 2023 incluyen los del PSC y el PSE, que no entran en el pacto. No se modelan las islas, Ceuta y Melilla ni los senadores de designación autonómica.',
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la simulación usaba los votos por candidato de Wikipedia; ahora usa los oficiales de la Junta Electoral Central (BOE-A-2023-18907, con la corrección BOE-A-2023-19537). Con ellos entra Zaragoza, que antes quedaba fuera por falta de datos de Sumar, y donde la lista conjunta también habría ganado: son 17 provincias, no 16, y el PP bajaría a 82 senadores, no a 84. Se aclara que los 110 senadores (antes 108) suman los del PSOE de 2023, incluidos PSC y PSE, y los que ganaría la lista conjunta. Cambian ligeramente las cifras de Valencia, Málaga, Pontevedra y Toledo.',
+        fuentes=[('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907', 'Junta Electoral Central, resumen de los resultados de las elecciones al Congreso y al Senado de 23 de julio de 2023, BOE de 1-9-2023'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-19537', 'Junta Electoral Central, corrección de errores, BOE de 16-9-2023'),
+                 ('https://www.infobae.com/espana/2026/10/19/elecciones-generales-29-n-en-directo-ultima-hora-de-los-sondeos-la-ley-de-nietos-o-los-anuncios-sobre-pensiones/', 'Infobae (Efe), directo del 19-10-2026: orden de las listas conjuntas'),
+                 ('https://www.publico.es/politica/partidos/psoe-frente-amplio-e-izquierdas-territoriales-unen-listas-conjuntas-senado.html', 'Público, El PSOE, el Frente Amplio e izquierdas territoriales se unen para el Senado (16-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/19/pacto-senado-psoe-frente-amplio-3451456/', 'Moncloa.com, PSOE y Frente Amplio sellan su pacto en 43 provincias (19-10-2026)'),
+                 ('https://www.laregion.es/espana/presentara-pais-choque-frente_1_20261019-4457477.html', 'La Región, Podemos se presentará en todo el país (19-10-2026)'),
+                 ('https://revista.cortesgenerales.es/rcg/article/download/98/91', 'Fabio Pascua Mateo, Cuarenta años de elecciones a las Cortes Generales, Revista de las Cortes Generales 103 (2018)'),
+                 ('https://agendapublica.es/noticia/21546/45-senadores-plan-cambiar-mayoria-senado', 'Emilia Sánchez Pantoja, 45 senadores, Agenda Pública (8-10-2026)'),
+                 ('https://www.vozpopuli.com/espana/politica/elecciones-generales-del-29-n-en-directo-ultima-hora-de-las-listas-electorales-sanchez-y-feijoo.html', 'Vozpópuli, directo del 17-10-2026'),
+                 ('https://elespanol.com/espana/politica/20261019/derecha-conservaria-quintos-senado-vox-no-presenta-provincias-va-listas-pp/1003744425410_0.html', 'El Español, simulación del Senado (19-10-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/senado-psoe-frente-amplio-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Papeletas del Senado, un mapa de provincias y la fachada del Senado: un collage.'),
+    ),
+    dict(
+        slug='albiol-badalona-pp-29n', fecha='2026-10-20',
+        titulo='Albiol, cabeza de lista del PP por Barcelona: en Badalona sacó el 55,7% en las municipales de 2023 y dos meses después el PP se quedó en el 16,6%', serie='29n',
+        descripcion='Su lista fue la más votada en 145 de las 149 secciones de la ciudad en mayo; en las generales de julio, el PP no ganó en ninguna. En 2019 pasó lo mismo: 37,6% en municipales y 9,4% en generales.',
+        compara='El voto al PP en Badalona en las municipales de 2011, 2015, 2019 y 2023, con Xavier García Albiol de cabeza de lista, frente al voto al PP en las generales de abril y noviembre de 2019 y julio de 2023, en total y por sección censal.',
+        limites='Los datos agregados por sección no permiten saber qué votantes cambiaron su voto ni cuántos se abstuvieron en una de las dos elecciones. El censo de las municipales incluye a residentes de la UE, que no votan en generales. No es una previsión: en 2026 Albiol se presenta al Congreso, no a la alcaldía.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
+        fuentes=[INTERIOR,
+                 ('https://cronicaglobal.elespanol.com/politica/20261017/pp-confirma-albiol-cabeza-lista-barcelona-congreso/1003742803654_0.html', 'Crónica Global, El PP confirma a Albiol como cabeza de lista por Barcelona (17-10-2026)'),
+                 ('https://www.democrata.es/politica/garcia-albiol-encabezara-la-lista-del-pp-por-barcelona-al-congreso/', 'Demócrata, García Albiol, número uno del PP por Barcelona (17-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/17/albiol-candidato-pp-barcelona-29n-3450251', 'Moncloa.com, Feijóo confirma a Albiol como candidato por Barcelona (17-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/19/albiol-reclama-controlar-la-inmigracion-irregular-si-no-acabaremos-como-francia/', 'Infobae (Europa Press), Albiol reclama controlar la inmigración irregular (19-10-2026)'),
+                 ('https://econ-papers.upf.edu/papers/465.pdf', 'Clara Riba, Voto dual y abstención diferencial, Universitat Pompeu Fabra'),
+                 ('https://www.3cat.cat/3catinfo/per-que-ripoll-badalona-berga-manresa-o-solsona-han-votat-tan-diferent-el-28m-i-el-23j/noticia/3242688/', '3Cat, Per què Ripoll, Badalona, Berga, Manresa o Solsona han votat tan diferent el 28M i el 23J (24-7-2023)')],
+        enlaces=[],
+        lugar='Badalona',
+        foto=dict(src='img/actualidad/fotos/albiol-badalona-pp-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Xavier García Albiol, con el paseo marítimo y el plano de Badalona: un collage.'),
+    ),
+    dict(
+        slug='palencia-psoe-lista-29n', fecha='2026-10-20',
+        titulo='Dimite la lista del PSOE en Palencia tras imponer Ferraz a Martínez Seijo: en 2023 al partido le faltaron 7.097 votos para un segundo diputado', serie='29n',
+        descripcion='El PSOE solo ha sacado dos de los tres diputados de Palencia en 1982 y 1986. En abril de 2019 fue el más votado y se quedó a 478 votos del segundo escaño.',
+        compara='El voto al PSOE y al PP en la circunscripción de Palencia en las generales de 2004 a 2023, los escaños de cada uno y los votos que le faltaron al PSOE para un segundo diputado.',
+        limites='En 2011, 2015 y 2016 los votos que faltaron son una aproximación hecha con los cuatro primeros partidos. Los porcentajes de 2004 a 2016 no incluyen el voto en blanco en el voto válido porque no hay datos por mesa de esos años. No es una previsión: no dice si el cambio de candidata moverá votos.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
+        fuentes=[INTERIOR,
+                 ('https://www.elespanol.com/castilla-y-leon/region/palencia/20261019/rebelion-psoe-palencia-ferraz-toda-lista-renuncia-imposicion-martinez-seijo/1003744426904_0.html', 'El Español, Rebelión en el PSOE de Palencia contra Ferraz (19-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-19/psoe-palencia-guerra-ferraz-candidato/', 'The Objective, El PSOE de Palencia, en guerra con Ferraz por el candidato (19-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/19/elecciones-generales-29-n-en-directo-ultima-hora-de-los-sondeos-la-ley-de-nietos-o-los-anuncios-sobre-pensiones/', 'Infobae, directo de las elecciones del 29N (19-10-2026)'),
+                 ('https://www.vozpopuli.com/espana/elecciones-generales-2023/renuncia-lista-psoe-avila-no-ir-junto-no1-impuesto-ferraz-vinculado-tito-berni.html', 'Vozpópuli, Renuncia la lista del PSOE de Ávila (2023)'),
+                 ('https://reis.cis.es/index.php/reis/article/view/94', 'C. Pamies, Selección diferencial de candidatos en estados multinivel, REIS 182 (2024)')],
+        enlaces=[],
+        lugar='Palencia',
+        foto=dict(src='img/actualidad/fotos/palencia-psoe-lista-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='La catedral y el puente de Palencia, con una urna: un collage.'),
+    ),
+    dict(
+        slug='canarias-unidad-pueblo-canario-29n', fecha='2026-10-17',
+        titulo='Nueva Canarias, Podemos, IU y Sumar se unen en Canarias: con los votos de 2023, la suma habría pasado de uno a tres diputados', serie='29n',
+        descripcion='Juntos le habrían quitado un escaño al PP en Las Palmas y otro al PSOE en Santa Cruz de Tenerife, este por unos 1.600 votos. Canarias es una de las dos comunidades donde el Frente Amplio y Podemos irán juntos el 29N.',
+        compara='El reparto de escaños de 2023 en Las Palmas y Santa Cruz de Tenerife tal como fue y el que habría salido si los votos de Sumar y de Nueva Canarias-Bloque Canarista se hubieran sumado en una sola lista, con la regla D\'Hondt.',
+        limites='Es una simulación aritmética, no una previsión: supone que todos los votantes de Sumar y de NC-BC en 2023 votarían la lista conjunta. En 2023 Sumar ya incluía a Podemos e IU. Drago Canarias se presenta por separado y no se puede separar qué parte del voto de Sumar en 2023 podría irse con ella. Se usan los votos por mesa de Interior con el voto exterior, que pueden diferir en unos pocos votos del escrutinio oficial.',
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://rtvc.es/podemos-nueva-canarias-iu-sumar-juntos-29n-bajo-nombre-unidad-pueblo-canario-15-octubre-2026/', 'RTVC, Podemos, Nueva Canarias, IU y Sumar irán juntos al 29N (15-10-2026)'),
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)'),
+                 ('https://diariodeavisos.elespanol.com/2026/02/nueva-canarias-plan-rufian-dos-diputados-congreso-izquierdas/', 'Diario de Avisos (Efe), Nueva Canarias aspira a dos diputados (19-2-2026)'),
+                 ('https://www.moncloa.com/2026/10/16/unidad-pueblo-canario-confluencia-canarias-3449401', 'Moncloa.com, Unidad del Pueblo Canario (16-10-2026)'),
+                 ('https://www.canarias7.es/opinion/firmas/roman-rodriguez-sola-papeleta-20261004060000-nt.html', 'Román Rodríguez, Una sola papeleta, Canarias7 (4-10-2026)'),
+                 ('https://ara.cat/es/articulo-pablo-simon-manipulacion-electoral_0_1481252043.html', 'Ara, entrevista a Pablo Simón')],
+        enlaces=[],
+        lugar='Canarias',
+        foto=dict(src='img/actualidad/fotos/canarias-unidad-pueblo-canario-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Los 15 diputados de Canarias en 2023 y con los votos de Sumar y Nueva Canarias sumados en una sola lista.',
+                  fuente='Ministerio del Interior, generales de 2023. Simulación D\'Hondt de mapaelectoral.es'),
+    ),
+    dict(
+        slug='mapa-coaliciones-izquierda-29n', fecha='2026-10-20',
+        titulo='Separados el 29N, como en 2015: con los votos de aquel año, una sola papeleta de Podemos e IU habría sacado 86 diputados, no 71', serie='29n',
+        descripcion='El mapa de las coaliciones de la izquierda a la izquierda del PSOE en cada elección general desde 2015, con su hemiciclo. Cuando fueron juntos, en 2016, perdieron un millón de votos y se quedaron en los mismos 71 escaños.',
+        compara='Las listas de la izquierda a la izquierda del PSOE (Podemos y sus confluencias, IU-Unidad Popular, Unidos y Unidas Podemos, Compromís, En Marea, Más País y Sumar) en cada provincia en las generales de 2015, 2016, abril y noviembre de 2019 y 2023, con sus votos y escaños, y el reparto D\'Hondt que habría salido sumando en cada provincia los votos de las listas que fueron por separado. Para el 29N, las coaliciones registradas por el Frente Amplio y Podemos.',
+        limites='El reparto «sumando sus votos» es un cálculo, no una previsión ni lo que habría pasado: supone que todos los votantes de las listas separadas habrían votado la lista conjunta y que el resto de votos no cambia. 2016 muestra que no es así. Se cuentan dentro del espacio las confluencias con partidos territoriales (En Comú Podem, Compromís, En Marea) y, en noviembre de 2019, Més Compromís con Más País; no el BNG, la CUP ni EH Bildu. Para el 29N, las coaliciones salen de la prensa del 16 y 17 de octubre; las candidaturas se registran más tarde. No calculamos escaños para el 29N.',
+        calculo='Votos por provincia de las cinco generales, con voto exterior, y reparto D\'Hondt con la barrera del 3% y los escaños de cada convocatoria (2015 y 2016: Madrid 36, Barcelona 31, Valencia 16; 2019: 37, 32 y 15; 2023: 37, 32 y 16). El cálculo con los votos reales reproduce los escaños oficiales de las cinco elecciones. Porcentajes sobre votos válidos; la participación, sobre el censo con residentes en el extranjero. Scripts: actualidad/src/coaliciones/.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.lamarea.com/2015/12/21/garzon-se-desploma-pero-mantiene-con-vida-a-iu/', 'La Marea, Garzón se desploma pero mantiene con vida a IU (21-12-2015)'),
+                 ('https://orain.eus/es/politica/2016/05/12/iglesias-garzon-logran-aval-su-militancia-coalicion/', 'Orain, Iglesias y Garzón logran el aval de su militancia para la coalición (12-5-2016)'),
+                 ('https://www.publico.es/politica/suma-unidos-pierde-mas-millon.html', 'Público, la suma de Unidos Podemos pierde más de un millón de votos (26-6-2016)'),
+                 ('https://theobjective.com/errejon-se-presenta-a-las-generales-para-que-no-haya-un-solo-voto-progresista-que-se-quede-en-casa/', 'The Objective, Errejón se presenta a las generales (25-9-2019)'),
+                 ('https://www.periodicodeibiza.es/noticias/elecciones-23j/2023/06/10/1954315/sumar-yolanda-diaz-vamos-ganar-elecciones-generales.html', 'Periódico de Ibiza (agencias, vídeo de Europa Press), Yolanda Díaz: «Vamos a ganar las elecciones generales» (10-6-2023)'),
+                 ('https://www.nuevatribuna.es/articulo/actualidad/union-division-frente-amplio-elecciones-podemos-sumar-politica/20221227165009206442.html', 'Antonio Antón, La unión y la división del frente amplio, Nueva Tribuna (27-12-2022)'),
+                 ('https://www.publico.es/politica/frente-amplio-podemos-concurriran-separado-29-noviembre-salvo-canarias-pais-valencia.html', 'Público, Frente Amplio y Podemos concurrirán por separado salvo en Canarias y País Valencià (16-10-2026)'),
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/mapa-coaliciones-izquierda-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='El hemiciclo del Congreso partido en dos bloques morados, Podemos y Frente Amplio, con una papeleta rota en medio: un collage.'),
+    ),
+    dict(
         slug='frente-amplio-podemos-madrid-escanos-29n', fecha='2026-10-20',
         titulo='Delgado contra Montero en Madrid: con los votos de 2023, Podemos necesitaría uno de cada cinco votos de Sumar para sacar escaño', serie='29n',
         descripcion='Separados, el Frente Amplio y Podemos habrían sacado entre cinco y seis de los seis diputados que Sumar logró en Madrid en 2023. El escaño que se pierde iría al PSOE; el PP se queda en 16 en todos los casos.',
         compara='El reparto de los 37 escaños de Madrid en 2023 tal como fue y el que habría salido si los votos de Sumar se hubieran partido en dos listas, el Frente Amplio y Podemos, en todas las proporciones del 0% al 50%, con la regla D\'Hondt y la barrera del 3%. Se añade el precedente de noviembre de 2019, con Unidas Podemos y Más País por separado.',
         limites='Es una simulación aritmética, no una previsión: supone que los votantes de Sumar en 2023 votan a una de las dos listas y que el resto de partidos saca lo mismo. No hay un dato oficial de qué parte del voto de Sumar en 2023 era de Podemos, por eso se muestran todos los repartos. No recoge votantes que se vayan al PSOE o a la abstención. Se usan los votos por mesa de Interior con el voto exterior, que pueden diferir en unos pocos votos del escrutinio oficial.',
-        fuentes=[INTERIOR,
+        fuentes=[INTERIOR_CERA,
                  ('https://www.telemadrid.es/noticias/madrid/Frente-Amplio-elige-a-Emilio-Delgado-como-cabeza-de-lista-por-Madrid-0-2934306575--20261013081543.html', 'Telemadrid (Europa Press), Frente Amplio elige a Emilio Delgado como cabeza de lista por Madrid (13-10-2026)'),
                  ('https://www.infobae.com/espana/agencias/2026/10/16/24136-personas-respaldan-en-primarias-que-irene-montero-sea-candidata-y-vaya-en-el-primer-puesto-por-madrid/', 'Infobae (Europa Press), 24.136 personas respaldan a Irene Montero en primarias (16-10-2026)'),
                  ('https://www.infobae.com/espana/agencias/2026/10/16/29n-delgado-reitera-la-generosidad-de-frente-amplio-con-montero-en-madrid-se-le-ofrece-el-puesto-2-y-3-en-la-lista/', 'Infobae (Europa Press), Delgado reitera la generosidad de Frente Amplio con Montero (16-10-2026)'),
@@ -1173,11 +1311,247 @@ PIEZAS += [
     ),
 ]
 
+# Serie «Bastiones y desiertos»: las cinco secciones de España con más y con menos voto de cada partido (generales 2023)
+SERIES['bastiones'] = 'Bastiones y desiertos'
+PIEZAS += [
+    dict(
+        slug='psoe-cinco-barrios-ceuta', fecha='2026-10-20',
+        titulo='Los 5 barrios de España donde el PSOE saca más del 86% de los votos: todos están en Ceuta (y dónde no llega al 2,5%)', serie='bastiones',
+        descripcion='En el Príncipe Alfonso, el PSOE sacó el 93,2% el 23J, con una participación del 44%. Seis de las ocho secciones de España donde pasó del 80% están en Ceuta. Y en Errezil, Amoroto o Kortezubi no llegó al 2%.',
+        compara='Las secciones censales de España con al menos 300 electores en las generales de julio de 2023 (32.976), ordenadas por el porcentaje del PSOE, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los nombres de barrio salen de las calles de cada sección (CartoCiudad) y de la prensa local, no de una relación oficial. No hay datos de religión ni de origen por sección. La renta por unidad de consumo es la del INE para 2023; el paro, el del censo de 2021. Los ceros que parecen un error de clasificación (el voto de un partido contado como «otros») se descartan como mínimos. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta y edad por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles de cada sección)'),
+                 ('https://www.diariosigloxxi.com/texto-ep/mostrar/20261017143131/ceuta-niega-vaya-concurrir-coalicion-psoe-otras-formaciones-izquierda-senado', 'Europa Press, Ceuta Ya! niega que vaya a concurrir en coalición con el PSOE al Senado (17-10-2026)'),
+                 ('https://www.diariodeleon.es/nacional/261005/2099383/feijoo-elige-ceuta-primer-viaje-precampana-miercoles-junta-directiva-pp.html', 'Europa Press, Feijóo elige Ceuta para su primer viaje de precampaña (5-10-2026)'),
+                 ('https://elfarodeceuta.es/ceuta-ya-elecciones-23j-ventaja-ultraderecha/', 'El Faro de Ceuta, Ceuta Ya! no concurrirá a las generales del 23J (8-6-2023)'),
+                 ('https://elfarodeceuta.es/psoe-valora-localistas-busca-union/', 'El Faro de Ceuta, el PSOE valora la decisión de los localistas (12-6-2023)'),
+                 ('https://elfarodeceuta.es/el-pp-gano-en-todos-los-distritos-salvo-principe-benzu-y-en-73-de-las-93-mesas/', 'El Faro de Ceuta, el voto por distritos en las generales de 2016 (28-6-2016)'),
+                 ('https://www.ceutaldia.com/articulo/politica/votos-generales-mesa-mesa-dibujan-mapa-desigualdad-2-ceutas-claridad/20230725004623266945.html', 'Ceuta al Día, el voto mesa a mesa en las generales de 2023 (25-7-2023)'),
+                 ('https://www.cepc.gob.es/sites/default/files/2021-12/27094carmengonzalezenriquezrep140.pdf', 'Carmen González Enríquez, Los frenos al pluralismo cultural en territorios de soberanía discutida: los casos de Ceuta y Melilla, Revista de Estudios Políticos 140 (2008)'),
+                 ('https://seguridadinternacional.es/resi/html/representacion-politica-e-identidad-local-en-ceuta-1975-2023/', 'Alicia Fernández, Representación política e identidad local en Ceuta (1975-2023), Revista de Estudios en Seguridad Internacional 11-1 (2025)'),
+                 ('https://silvanmiracle.com/informe/informe-postelectoral-elecciones-al-parlamento-vasco-2024/', 'Silván & Miracle, informe postelectoral de las elecciones al Parlamento Vasco de 2024')],
+        enlaces=[],
+        lugar='Ceuta y País Vasco',
+        foto=dict(src='img/actualidad/fotos/psoe-cinco-barrios-ceuta.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones de España con más voto al PSOE en 2023, todas en Ceuta, y las cinco con menos, en el País Vasco.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='pp-cinco-pueblos-galicia', fecha='2026-10-20',
+        titulo='Los 5 pueblos de España donde el PP saca hasta el 81,5% de los votos: todos en Galicia (y los dos rincones vascos donde no tuvo ni un voto)', serie='bastiones',
+        descripcion='Avión (81,5%), Quintela de Leirado (81,3%) y Beariz (81,1%), en Ourense, son las únicas secciones de España donde el PP pasó del 80% el 23J. En Hernani y Amoroto, en cambio, no tuvo ni un voto.',
+        compara='Las secciones censales de España con al menos 300 electores en las generales de julio de 2023 (32.976), ordenadas por el porcentaje del PP, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior (CERA), que no se puede asignar a una sección; por eso la participación sale más alta que la oficial y los porcentajes de Avión o Beariz no incluyen el voto de sus emigrantes. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La renta por unidad de consumo es la del INE para 2023. El estudio sobre clientelismo citado trata de las autonómicas gallegas de 2024, no de las generales. Los ceros que parecen un error de clasificación (el voto de un partido contado como «otros») se descartan como mínimos. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta y edad por sección), vía ineAtlas.data'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://www.elespanol.com/reportajes/20230722/avion-ourense-vota-mexico-pueblo-sufragios-espana-residentes/780672062_0.html', 'El Español, En Avión (Ourense) se vota desde México (22-7-2023)'),
+                 ('https://ruralager.org/wp-content/uploads/04-Ager-42-GONZALEZ-02.pdf', 'Juan Jesús González Rodríguez y Luis Barreiro-Castro, El ecosistema electoral de Galicia: el papel de los territorios rurales en las elecciones autonómicas de 2024, Ager 42 (2025)'),
+                 ('https://www.eldiario.es/galicia/politica/peares-pueblo-alcaldes-feijoo-estanquera_1_2727539.html', 'elDiario.es, Os Peares, el pueblo que elige cuatro alcaldes (24-5-2019)'),
+                 ('https://www.diariodeleon.es/nacional/261005/2099383/feijoo-elige-ceuta-primer-viaje-precampana-miercoles-junta-directiva-pp.html', 'Europa Press, Feijóo, candidato del PP a la Presidencia del Gobierno, elige Ceuta para su primer viaje de precampaña (5-10-2026)'),
+                 ('https://www.ultimahora.es/elecciones/23j/congreso/amoroto.html', 'Última Hora, resultados del 23J en Amoroto'),
+                 ('https://silvanmiracle.com/informe/informe-postelectoral-elecciones-al-parlamento-vasco-2024/', 'Silván & Miracle, informe postelectoral de las elecciones al Parlamento Vasco de 2024')],
+        enlaces=[],
+        lugar='Galicia y País Vasco',
+        foto=dict(src='img/actualidad/fotos/pp-cinco-pueblos-galicia.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones de España con más voto al PP en 2023, todas en Galicia, y las cinco con menos, en el País Vasco.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='vox-cinco-barrios-el-ejido-ceuta', fecha='2026-10-20',
+        titulo='Los 5 barrios de España donde Vox saca más del 39% de los votos: El Ejido, Ceuta y el campo de Murcia (y los pueblos vascos donde no tuvo ni un voto)', serie='bastiones',
+        descripcion='En el campo de El Ejido, Vox sacó el 43,7% el 23J, su máximo en España. Ninguna sección pasó del 45%. Las cinco primeras están en El Ejido, Ceuta y Fuente Álamo; en 18 secciones vascas y navarras no tuvo ni un voto.',
+        compara='Las secciones censales de España con al menos 300 electores en las generales de julio de 2023 (32.976), ordenadas por el porcentaje de Vox, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los nombres de barrio salen de las calles de cada sección (CartoCiudad) y de la prensa local, no de una relación oficial. El porcentaje de extranjeros es del padrón e incluye a quienes no pueden votar en unas generales. La renta por unidad de consumo es la del INE para 2023. Santa Cruz de Tenerife se excluye de los mínimos porque Vox no tuvo lista al Congreso. Los ceros que parecen un error de clasificación (el voto de un partido contado como «otros») se descartan como mínimos. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles de cada sección)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/18/la-carrera-hacia-el-29n-avanza-tras-despejarse-las-incognitas-de-las-coaliciones/', 'EFE, la carrera hacia el 29N avanza tras despejarse las incógnitas de las coaliciones (18-10-2026)'),
+                 ('https://www.democrata.es/encuestas/elecciones-generales/abascal-elecciones-29-n-ultima-oportunidad-vox-remigracion/', 'Demócrata, Abascal y la «remigración» en los ejes de Vox para el 29N'),
+                 ('https://theobjective.com/espana/politica/2026-05-18/alvise-cuarta-fuerza-el-ejido-andalucia/', 'The Objective, resultados de las autonómicas andaluzas en El Ejido (18-5-2026)'),
+                 ('https://www.ceutaldia.com/articulo/politica/votos-generales-mesa-mesa-dibujan-mapa-desigualdad-2-ceutas-claridad/20230725004623266945.html', 'Ceuta al Día, el voto mesa a mesa en las generales de 2023 (25-7-2023)'),
+                 ('https://www.publico.es/politica/ejido-saint-denis-ultraderecha-busca-andalucia.html', 'Público, De El Ejido a Saint-Denis (16-6-2022)'),
+                 ('https://www.elindependiente.com/espana/2025/07/17/realidad-electoral-comarca-torre-pacheco-vox-duplica-voto-municipales-generales/', 'El Independiente, la realidad electoral de la comarca de Torre-Pacheco (17-7-2025)'),
+                 ('https://upo.es/upotec/contenidos/noticias/2021/feb/26/un-estudio-liderado-por-la-upo-analiza-las-causas-/', 'Universidad Pablo de Olavide, estudio sobre las causas del voto a Vox en las andaluzas de 2018 (26-2-2021)'),
+                 ('https://doi.org/10.1177/2053168019851680', 'Stuart J. Turnbull-Dugarte, Explaining the end of Spanish exceptionalism and electoral support for Vox, Research & Politics (2019)'),
+                 ('https://www.elsaltodiario.com/almeria/mar-de-plastico-desierto-institucional', 'El Salto, Un mar de plástico en un desierto institucional (análisis de Carlos Balaguer)'),
+                 ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)'),
+                 ('https://rtvc.es/rechazan-recursos-vox-por-candidatura-santa-cruz-de-tenerife/', 'RTVC, la Junta Electoral Central rechaza los recursos de Vox (2023)')],
+        enlaces=[],
+        lugar='El Ejido, Ceuta y País Vasco',
+        foto=dict(src='img/actualidad/fotos/vox-cinco-barrios-el-ejido-ceuta.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones de España con más voto a Vox en 2023, en El Ejido, Ceuta y Fuente Álamo, y las cinco mayores sin ningún voto, en el País Vasco.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='sumar-cinco-pueblos-marinaleda', fecha='2026-10-20',
+        titulo='Los 5 pueblos de España donde Sumar saca más del 52% de los votos: Marinaleda, Trebujena y una pedanía de Córdoba (y dónde no llega al 0,5%)', serie='bastiones',
+        descripcion='En Marinaleda, Sumar sacó el 68,6% el 23J, su máximo en España. Las cinco secciones donde pasó del 50% están en Marinaleda, Trebujena y Santa Cruz (Córdoba). En el Príncipe de Ceuta o en Los Navalucillos no llegó al 0,5%.',
+        compara='Las secciones censales de España con al menos 300 electores en las generales de julio de 2023 (32.976), ordenadas por el porcentaje de Sumar, y la evolución de las cinco primeras en las generales desde 2004, con IU, Podemos y Unidas Podemos como antecedentes.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los nombres de barrio salen de las calles de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une a Sumar con IU, Podemos y Unidas Podemos, que no son el mismo partido. La renta por unidad de consumo es la del INE para 2023. Los ceros que parecen un error de clasificación (el voto de un partido contado como «otros») se descartan como mínimos. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles de cada sección)'),
+                 ('https://rtvc.es/frente-amplio-acuerda-designar-a-ada-colau-como-cabeza-de-lista-12-octubre-2026/', 'EFE (vía RTVC), Frente Amplio acuerda designar a Ada Colau como cabeza de lista (12-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/18/la-carrera-hacia-el-29n-avanza-tras-despejarse-las-incognitas-de-las-coaliciones/', 'EFE, la carrera hacia el 29N avanza tras despejarse las incógnitas de las coaliciones (18-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/17/asi-quedan-los-acuerdos-de-la-izquierda-para-las-elecciones-generales-del-29-n-estas-son-las-listas-a-la-izquierda-del-psoe-en-cada-comunidad-autonoma/', 'Infobae, así quedan los acuerdos de la izquierda para el 29N (17-10-2026)'),
+                 ('https://www.publico.es/politica/gomez-reyes-recoge-antorcha-sanchez-gordillo-marinaleda.html', 'Público, Gómez Reyes recoge la antorcha de Sánchez Gordillo en Marinaleda (29-5-2023)')],
+        enlaces=[],
+        lugar='Marinaleda, Trebujena y Córdoba',
+        foto=dict(src='img/actualidad/fotos/sumar-cinco-pueblos-marinaleda.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones de España con más voto a Sumar en 2023, todas en Andalucía, y las cinco con menos.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='bildu-cinco-pueblos-lizartza', fecha='2026-10-20',
+        titulo='Los 5 pueblos donde EH Bildu saca más del 68% de los votos: de Lizartza a Goizueta (y los barrios de Getxo donde no llega al 1%)', serie='bastiones',
+        descripcion='En Lizartza, EH Bildu sacó el 78,2% el 23J, y en Goizueta, el 77,7%. Pasó del 60% en 25 secciones, el doble que en 2019. En Neguri y Algorta, en Getxo, se quedó en el 0,3%.',
+        compara='Las secciones censales con al menos 300 electores de el País Vasco y Navarra (2.112) en las generales de julio de 2023, ordenadas por el porcentaje de EH Bildu, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los mínimos se buscan solo en el País Vasco y Navarra, donde se presenta el partido. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une al partido con sus antecesores, que no siempre llevaban la misma sigla. La renta por unidad de consumo es la del INE para 2023. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios y paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://www.moncloa.com/2026/10/16/eh-bildu-candidatos-generales-29n-3449751/', 'Moncloa.com, EH Bildu sitúa a Oskar Matute como referencia al Congreso y renueva su grupo para el 29N (16-10-2026)'),
+                 ('https://www.ondavasca.com/el-pnv-afronta-las-generales-con-sagastizabal-lopez-vaquero-goia-y-urtaran/', 'Onda Vasca, el PNV afronta las generales con Sagastizabal, López, Vaquero, Goia y Urtaran (octubre de 2026)'),
+                 ('https://silvanmiracle.com/informe/informe-postelectoral-elecciones-al-parlamento-vasco-2024/', 'Silván & Miracle, informe postelectoral de las elecciones al Parlamento Vasco de 2024')],
+        enlaces=[],
+        lugar='País Vasco y Navarra',
+        foto=dict(src='img/actualidad/fotos/bildu-cinco-pueblos-lizartza.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones con más voto a EH Bildu en 2023, en Gipuzkoa, Navarra y Bizkaia, y las cinco con menos, en Getxo y la Ribera.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='pnv-cinco-pueblos-bermeo', fecha='2026-10-20',
+        titulo='Los 5 pueblos donde el PNV saca más del 52% de los votos: Bermeo y la costa de Bizkaia (y los barrios de Errenteria donde no llega al 8%)', serie='bastiones',
+        descripcion='En un barrio de Bermeo, el PNV sacó el 55,7% el 23J, su máximo; en 2019 tenía allí el 65%. Pasó del 40% en 75 secciones, frente a 315 en 2019. Sus mínimos, en Errenteria y Vitoria, rondan el 6%.',
+        compara='Las secciones censales con al menos 300 electores de el País Vasco (1.671) en las generales de julio de 2023, ordenadas por el porcentaje de el PNV, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los mínimos se buscan solo en el País Vasco, donde se presenta el partido. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une al partido con sus antecesores, que no siempre llevaban la misma sigla. La renta por unidad de consumo es la del INE para 2023. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios y paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://www.ondavasca.com/el-pnv-afronta-las-generales-con-sagastizabal-lopez-vaquero-goia-y-urtaran/', 'Onda Vasca, el PNV afronta las generales con Sagastizabal, López, Vaquero, Goia y Urtaran (octubre de 2026)'),
+                 ('https://www.ondavasca.com/el-pnv-lidera-bizkaia-con-las-mayores-alcaldias-pero-bildu-pacta-para-arrebatarle-plazas/', 'Onda Vasca, el PNV lidera Bizkaia con las mayores alcaldías pero Bildu pacta para arrebatarle plazas (junio de 2023)'),
+                 ('https://silvanmiracle.com/informe/informe-postelectoral-elecciones-al-parlamento-vasco-2024/', 'Silván & Miracle, informe postelectoral de las elecciones al Parlamento Vasco de 2024')],
+        enlaces=[],
+        lugar='País Vasco',
+        foto=dict(src='img/actualidad/fotos/pnv-cinco-pueblos-bermeo.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones con más voto al PNV en 2023, en Bizkaia, y las cinco con menos, en Errenteria y Vitoria.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='cc-cinco-barrios-la-orotava', fecha='2026-10-20',
+        titulo='Los 5 barrios de Canarias donde Coalición Canaria saca más del 42%: El Paso y La Orotava (y el Gáldar de su nuevo socio, donde no llega al 2%)', serie='bastiones',
+        descripcion='En El Paso, CC sacó el 46,6% el 23J, su máximo; le siguen tres secciones de La Orotava. En Gáldar, el pueblo de Teodoro Sosa, que ahora encabeza la lista conjunta en Las Palmas, se quedó en el 1,5%.',
+        compara='Las secciones censales con al menos 300 electores de Canarias (1.396) en las generales de julio de 2023, ordenadas por el porcentaje de Coalición Canaria, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los mínimos se buscan solo en Canarias, donde se presenta el partido. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une al partido con sus antecesores, que no siempre llevaban la misma sigla. La renta por unidad de consumo es la del INE para 2023. Los datos agrupan en «otros» a Nueva Canarias y a los demás partidos sin sigla propia en el mapa. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios y paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://rtvc.es/primero-canarias-coalicion-canaria-cierran-acuerdo-candidatura-unidad-canaria-29-n-14-octubre-2026/', 'RTVC, Primero Canarias y Coalición Canaria cierran el acuerdo para la candidatura de unidad canaria el 29-N (14-10-2026)'),
+                 ('https://rtvc.es/teodoro-sosa-seguiremos-siendo-nacionalistas-y-progresistas/', 'RTVC, Teodoro Sosa dice que la ruptura con NC es consecuencia del «hartazgo» de los personalismos (29-1-2025)')],
+        enlaces=[],
+        lugar='Canarias',
+        foto=dict(src='img/actualidad/fotos/cc-cinco-barrios-la-orotava.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones con más voto a Coalición Canaria en 2023, en La Palma y Tenerife, y las cinco con menos, en Gran Canaria.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='erc-cinco-pueblos-blancafort-flix', fecha='2026-10-20',
+        titulo='Los 5 pueblos donde ERC saca más del 35% de los votos: Blancafort, Flix y Tortosa (y el barrio de Tarragona donde no tuvo ni un voto)', serie='bastiones',
+        descripcion='En Blancafort, ERC sacó el 44,7% el 23J, su máximo en Cataluña, y en Flix, el 41,9%. Pasó del 30% en 42 secciones, frente a 734 en 2019. En una sección de Campclar, en Tarragona, no tuvo ni un voto.',
+        compara='Las secciones censales con al menos 300 electores de Cataluña (4.832) en las generales de julio de 2023, ordenadas por el porcentaje de ERC, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los mínimos se buscan solo en Cataluña, donde se presenta el partido. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une al partido con sus antecesores, que no siempre llevaban la misma sigla. La renta por unidad de consumo es la del INE para 2023. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios y paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://rtvc.es/podemos-erc-pactan-colaborar-generales-ufian-montero-juntos-campana-12-octubre-2026/', 'EFE (vía RTVC), Podemos y ERC pactan colaborar en las generales con Rufián y Montero juntos en campaña (12-10-2026)'),
+                 ('https://www.canal21ebre.com/esquerra-lamenta-que-el-congres-dels-diputats-es-quedi-sense-representants-ebrencs', 'Canal 21 Ebre, Esquerra lamenta que el Congrés es quedi sense representants ebrencs (24-7-2023)'),
+                 ('https://ebredigital.cat/2024/05/13/12m-albert-salvado-a-terres-de-lebre-tampoc-hem-pogut-resistir-la-polaritzacio-entre-psc-i-puigdemont', 'EbreDigital, Albert Salvadó tras las autonómicas del 12 de mayo (13-5-2024)'),
+                 ('https://www.3cat.cat/3catinfo/eleccions-generals-23j-2023/blancafort/municipi/09431602900/', '3Cat, resultados del 23J en Blancafort')],
+        enlaces=[],
+        lugar='Cataluña',
+        foto=dict(src='img/actualidad/fotos/erc-cinco-pueblos-blancafort-flix.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones con más voto a ERC en 2023, en Tarragona y Lleida, y las cinco con menos, en Tarragona, Barcelona y Sabadell.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='junts-cinco-pueblos-amer', fecha='2026-10-20',
+        titulo='Los 5 pueblos donde Junts saca más del 40% de los votos: encabeza Amer, el de Puigdemont (y los barrios del área de Barcelona donde no tuvo ni un voto)', serie='bastiones',
+        descripcion='En Amer, el pueblo de Puigdemont, Junts sacó el 44,8% el 23J, su máximo en Cataluña. Pasó del 30% en 128 secciones, frente a 310 en 2019. En 14 secciones, casi todas del cinturón de Barcelona, no tuvo ni un voto.',
+        compara='Las secciones censales con al menos 300 electores de Cataluña (4.832) en las generales de julio de 2023, ordenadas por el porcentaje de Junts, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los mínimos se buscan solo en Cataluña, donde se presenta el partido. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une al partido con sus antecesores, que no siempre llevaban la misma sigla. La renta por unidad de consumo es la del INE para 2023. Los ceros de Junts no muestran el salto de «otros» que delata un error de clasificación, así que se cuentan como reales. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios y paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://www.diariodeleon.es/nacional/261008/2099696/junts-confirma-miriam-nogueras-candidata-29n.html', 'EFE, Junts confirma a Míriam Nogueras como candidata para el 29N (8-10-2026)'),
+                 ('https://www.ultimahora.es/noticias/comunidades/2023/07/16/1977289/puigdemont-situa-junts-trinchera-defendiendo-catalunya-pide-unir-fuerzas.html', 'Europa Press, Puigdemont sitúa a Junts en la «trinchera» defendiendo a Catalunya (16-7-2023)'),
+                 ('https://www.articulo14.es/politica/puede-puigdemont-presentarse-a-las-elecciones-generales-del-29n-20261007.html', 'Artículo 14, ¿Puede Puigdemont presentarse a las elecciones generales del 29N? (7-10-2026)'),
+                 ('https://www.articulo14.es/politica/puigdemont-planea-su-regreso-tras-el-29-n-con-sanchez-ya-exprimido-y-los-poderes-espanoles-derrotados-20261007.html', 'Artículo 14, Puigdemont planea su regreso tras el 29N (7-10-2026)')],
+        enlaces=[],
+        lugar='Cataluña',
+        foto=dict(src='img/actualidad/fotos/junts-cinco-pueblos-amer.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones con más voto a Junts en 2023, encabezadas por Amer, y las cinco mayores sin ningún voto, en el área de Barcelona.',
+                  fuente='Ministerio del Interior'),
+    ),
+    dict(
+        slug='bng-cinco-pueblos-allariz', fecha='2026-10-20',
+        titulo='El BNG solo ganó en una sección de España: los 5 pueblos donde más le votan, de Vilar de Santos a Allariz (y los de Ourense donde no llega al 2%)', serie='bastiones',
+        descripcion='El BNG solo fue el más votado en una sección de España, en Allariz, por 0,2 puntos. Su máximo es el 35,1% de Vilar de Santos, donde ganó el PP. En A Lama, Boborás, Padrenda o Avión no llegó al 2%.',
+        compara='Las secciones censales con al menos 300 electores de Galicia (2.135) en las generales de julio de 2023, ordenadas por el porcentaje de el BNG, y la evolución de las cinco primeras en las generales desde 2004.',
+        limites='Son datos de secciones, no de personas: no dicen quién votó a quién ni por qué. Sin voto exterior, de modo que la participación sale más alta que la oficial. Las secciones de menos de 300 electores quedan fuera porque unos pocos votos mueven mucho el porcentaje. Los mínimos se buscan solo en Galicia, donde se presenta el partido. Los nombres de barrio salen de las calles y lugares de cada sección (CartoCiudad), no de una relación oficial. La serie histórica une al partido con sus antecesores, que no siempre llevaban la misma sigla. La renta por unidad de consumo es la del INE para 2023. El voto exterior (CERA), muy alto en el interior de Ourense, no se puede asignar a una sección y no está incluido. Límites de sección simplificados.',
+        calculo='Porcentajes sobre votos válidos (candidaturas y blancos), como los oficiales de Interior; la participación, sobre el censo de residentes.',
+        fuentes=[('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/', 'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta, edad y extranjeros por sección), vía ineAtlas.data'),
+                 ('https://www.ine.es/censos2021/C2021_Indicadores.csv', 'INE, Censo de Población y Viviendas 2021, indicadores por sección censal (estudios y paro)'),
+                 ('https://www.cartociudad.es/', 'IGN, CartoCiudad (calles y lugares de cada sección)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/18/ponton-bng-confia-en-ganar-capacidad-de-negociacion-en-madrid-y-llama-a-rueda-a-convocar-autonomicas/', 'Europa Press (vía Infobae), Pontón (BNG) confía en ganar «capacidad de negociación» en Madrid (18-10-2026)')],
+        enlaces=[],
+        lugar='Galicia',
+        foto=dict(src='img/actualidad/fotos/bng-cinco-pueblos-allariz.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las cinco secciones con más voto al BNG en 2023, en Ourense y A Coruña, y las cinco con menos, en el interior de Ourense y Pontevedra.',
+                  fuente='Ministerio del Interior'),
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'frente-amplio-podemos-madrid-escanos-29n': 'Dos papeletas en Madrid',
+    'psoe-cinco-barrios-ceuta': 'Un partido, dos extremos',
+    'pp-cinco-pueblos-galicia': 'Del 81% al cero',
+    'vox-cinco-barrios-el-ejido-ceuta': 'El techo de Vox',
+    'sumar-cinco-pueblos-marinaleda': 'Del 68,6% al 0,3%',
+    'bildu-cinco-pueblos-lizartza': 'Del 78% al 0,3%',
+    'pnv-cinco-pueblos-bermeo': 'Un techo que baja',
+    'cc-cinco-barrios-la-orotava': 'Dos islas, dos partidos',
+    'erc-cinco-pueblos-blancafort-flix': 'De 734 a 42',
+    'junts-cinco-pueblos-amer': 'El pueblo de Puigdemont',
+    'bng-cinco-pueblos-allariz': 'Ganar en una sola',
+    'palencia-psoe-lista-29n': 'Una lista vacía',
+    'albiol-badalona-pp-29n': 'El alcalde y la marca',
+    'senado-psoe-frente-amplio-29n': 'Tres de cuatro',
+    'ley-nietos-voto-exterior-29n': 'Las papeletas que llegan de fuera',
+    'canarias-unidad-pueblo-canario-29n': 'Una papeleta en las islas',
     'pactos-izquierda-mapa-final-29n': 'El mapa que dejó el plazo',
+    'mapa-coaliciones-izquierda-29n': 'Juntos o separados, desde 2015',
     'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
     'desahucios-ocupaciones-cgpj-29n': 'Dos verbos para una puerta',
     'cis-tezanos-estimacion-29n': 'La hemeroteca del CIS',
@@ -1301,6 +1675,7 @@ def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, ma
 <meta name="author" content="{AUTOR}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{url}">
+<link rel="alternate" type="application/rss+xml" title="Mapa Electoral · Actualidad" href="{BASE}/actualidad/feed.xml">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Mapa Electoral">
 <meta property="og:title" content="{e(titulo)}">
@@ -1373,6 +1748,7 @@ def pieza(p, todas):
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
     fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
+    principal = fo or GRAFICO_PRINCIPAL.get(p['slug'])   # el gráfico principal ya está en la pieza: solo va en NewsArticle y en el RSS
     if fo:
         # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
         # gráficos de datos como imagen principal: nunca IA, con su fuente
@@ -1410,7 +1786,7 @@ def pieza(p, todas):
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>{p['compara']}</dd>
 <dt>Límites</dt><dd>{p['limites']}</dd>
-<dt>Cómo se calcula</dt><dd>Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
+<dt>Cómo se calcula</dt><dd>{p.get('calculo', 'Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo.')} Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
@@ -1426,7 +1802,7 @@ def pieza(p, todas):
     jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
               'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
-              'image': [imagen],
+              'image': ([f"{BASE}/{principal['src']}"] if principal else []) + [imagen],   # la imagen principal (1280x720) primero, para Discover
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
               'isPartOf': {'@type': 'CollectionPage', 'name': 'Actualidad', 'url': BASE + '/actualidad/'},
@@ -1504,6 +1880,29 @@ a{color:var(--fg)}
                        for p in todas if p['fecha'] >= lim)
     open(os.path.join(RAIZ, 'actualidad', 'sitemap-noticias.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + noticias + '</urlset>\n')
+    feed(todas)
+
+
+def feed(todas, n=40):
+    """RSS de Actualidad (Discover lo usa para «Seguir»): las últimas n piezas, con su imagen principal."""
+    e = html.escape
+    def fecha_rss(iso):
+        return datetime.datetime.strptime(iso, '%Y-%m-%d').replace(hour=8, tzinfo=datetime.timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')
+    items = []
+    for p in sorted(todas, key=lambda q: q['fecha'], reverse=True)[:n]:
+        u = f"{BASE}/actualidad/{p['slug']}/"
+        fo = p.get('foto') or SERIES_FOTO.get(p['serie']) or GRAFICO_PRINCIPAL.get(p['slug'])
+        img = f"{BASE}/{fo['src']}" if fo else f"{BASE}/img/compartir/actualidad-{p['slug']}.jpg"
+        items.append(f'<item><title>{e(p["titulo"])}</title><link>{u}</link><guid isPermaLink="true">{u}</guid><pubDate>{fecha_rss(p["fecha"])}</pubDate>'
+                     f'<dc:creator>{e(AUTOR)}</dc:creator><description>{e(p["descripcion"])}</description>'
+                     f'<media:content url="{img}" medium="image" type="image/jpeg" width="{fo["ancho"] if fo else 1200}" height="{fo["alto"] if fo else 630}"/></item>')
+    ult = max(p['fecha'] for p in todas)
+    open(os.path.join(RAIZ, 'actualidad', 'feed.xml'), 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">\n'
+        f'<channel><title>Mapa Electoral · Actualidad</title><link>{BASE}/actualidad/</link>'
+        f'<atom:link href="{BASE}/actualidad/feed.xml" rel="self" type="application/rss+xml"/>'
+        '<description>Piezas con datos al hilo de la actualidad electoral, por Nacho G. del Álamo.</description><language>es</language>'
+        f'<lastBuildDate>{fecha_rss(ult)}</lastBuildDate>\n' + '\n'.join(items) + '\n</channel></rss>\n')
 
 
 def imagen_carrusel(q, pre):
