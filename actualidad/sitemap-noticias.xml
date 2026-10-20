@@ -16,4 +16,12 @@
       <news:title>PSOE y Frente Amplio, juntos al Senado: con los votos de 2023, su lista habría ganado al PP en 16 provincias donde este sacó tres senadores</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/albiol-badalona-pp-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-20</news:publication_date>
+      <news:title>Albiol, cabeza de lista del PP por Barcelona: en Badalona sacó el 55,7% en las municipales de 2023 y dos meses después el PP se quedó en el 16,6%</news:title>
+    </news:news>
+  </url>
 </urlset>

@@ -999,6 +999,24 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/senado-psoe-frente-amplio-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Papeletas del Senado, un mapa de provincias y la fachada del Senado: un collage.'),
     ),
+    dict(
+        slug='albiol-badalona-pp-29n', fecha='2026-10-20',
+        titulo='Albiol, cabeza de lista del PP por Barcelona: en Badalona sacó el 55,7% en las municipales de 2023 y dos meses después el PP se quedó en el 16,6%', serie='29n',
+        descripcion='Su lista fue la más votada en 145 de las 149 secciones de la ciudad en mayo; en las generales de julio, el PP no ganó en ninguna. En 2019 pasó lo mismo: 37,6% en municipales y 9,4% en generales.',
+        compara='El voto al PP en Badalona en las municipales de 2011, 2015, 2019 y 2023, con Xavier García Albiol de cabeza de lista, frente al voto al PP en las generales de abril y noviembre de 2019 y julio de 2023, en total y por sección censal.',
+        limites='Los datos agregados por sección no permiten saber qué votantes cambiaron su voto ni cuántos se abstuvieron en una de las dos elecciones. El censo de las municipales incluye a residentes de la UE, que no votan en generales. No es una previsión: en 2026 Albiol se presenta al Congreso, no a la alcaldía.',
+        fuentes=[INTERIOR,
+                 ('https://cronicaglobal.elespanol.com/politica/20261017/pp-confirma-albiol-cabeza-lista-barcelona-congreso/1003742803654_0.html', 'Crónica Global, El PP confirma a Albiol como cabeza de lista por Barcelona (17-10-2026)'),
+                 ('https://www.democrata.es/politica/garcia-albiol-encabezara-la-lista-del-pp-por-barcelona-al-congreso/', 'Demócrata, García Albiol, número uno del PP por Barcelona (17-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/17/albiol-candidato-pp-barcelona-29n-3450251', 'Moncloa.com, Feijóo confirma a Albiol como candidato por Barcelona (17-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/19/albiol-reclama-controlar-la-inmigracion-irregular-si-no-acabaremos-como-francia/', 'Infobae (Europa Press), Albiol reclama controlar la inmigración irregular (19-10-2026)'),
+                 ('https://econ-papers.upf.edu/papers/465.pdf', 'Clara Riba, Voto dual y abstención diferencial, Universitat Pompeu Fabra'),
+                 ('https://www.3cat.cat/3catinfo/per-que-ripoll-badalona-berga-manresa-o-solsona-han-votat-tan-diferent-el-28m-i-el-23j/noticia/3242688/', '3Cat, Per què Ripoll, Badalona, Berga, Manresa o Solsona han votat tan diferent el 28M i el 23J (24-7-2023)')],
+        enlaces=[],
+        lugar='Badalona',
+        foto=dict(src='img/actualidad/fotos/albiol-badalona-pp-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Xavier García Albiol, con el paseo marítimo y el plano de Badalona: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1194,6 +1212,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'albiol-badalona-pp-29n': 'El alcalde y la marca',
     'senado-psoe-frente-amplio-29n': 'Tres de cuatro',
     'ley-nietos-voto-exterior-29n': 'Las papeletas que llegan de fuera',
     'pactos-izquierda-mapa-final-29n': 'El mapa que dejó el plazo',
