@@ -355,8 +355,8 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga, imagen=None):
 <meta property="og:description" content="{escape(desc)}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{BASE}{imagen or "img/compartir/portada.jpg"}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="{1280 if imagen else 1200}">
+<meta property="og:image:height" content="{720 if imagen else 630}">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@nachotronic">
