@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El Senado de 2023: 120 senadores para el PP con un tercio de los votos</title>
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style><style>
+.ctrl{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--ui);margin:.6rem 0 .2rem}
+.ctrl .g{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem}
+.ctrl .g>span{color:var(--muted);font-size:.9rem;margin-right:.2rem}
+.ctrl button{font:inherit;font-size:.95rem;border:1px solid var(--rule);background:transparent;color:var(--fg);border-radius:4px;padding:.15rem .55rem;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.sim-res{font-family:var(--ui);font-size:1rem;margin:.4rem 0 0}
+.dif-mas{color:var(--fg);font-weight:600}.dif-menos{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<span class="draft">Borrador</span>
+<div class="byline"></div>
+<h1>El Senado de 2023: 120 senadores para el PP con un tercio de los votos</h1>
+<p class="dek">Con el voto limitado, el PP ganó 57,7 % de los 208 escaños con un 33,1 % del voto al Congreso. Vox y Sumar, con más del 12 % cada uno, no ganaron ninguno.</p>
+<p>En julio de 2023 se eligieron 208 senadores. Cada provincia elige cuatro, salvo las insulares, Ceuta y Melilla. El artículo 69.2 de la Constitución dice que «en cada provincia se elegirán cuatro Senadores por sufragio universal, libre, igual, directo y secreto».</p>
+<p>El voto no es completo. El artículo 166 de la Ley Orgánica del Régimen Electoral General dice que «los electores pueden dar su voto a un máximo de tres candidatos en las circunscripciones provinciales». Eso permite votar a candidatos de distintos partidos. En las 47 circunscripciones de cuatro escaños, la media fue de 2,9 marcas por papeleta.</p>
+<figure>
+<img src="img/actualidad/fotos/senado-2023-infografia.png" alt="Barras por partido: porcentaje de votos al Congreso y porcentaje de senadores en 2023. PP 33,1 % de los votos y 57,7 % de senadores; PSOE 31,7 % y 34,6 %; Vox 12,4 % y ningún senador; Sumar 12,3 % y ningún senador." width="900" height="900">
+<figcaption>Gráfico: Mapa Electoral con datos del Ministerio del Interior, senado y congreso de julio de 2023.</figcaption>
+</figure>
+<p>En 43 de las 47 circunscripciones de cuatro escaños, un partido se llevó tres escaños y otro, uno. Solo en Badajoz, Cáceres, Huelva y València el reparto fue 2 a 2 entre PP y PSOE.</p>
+<p>Dentro de cada lista, los votos bajan siempre del primer candidato al último. Los candidatos del mismo partido no reciben el mismo apoyo, y el orden de la papeleta no es el alfabético en la mayoría de las listas.</p>
+<script>/* Pieza sin gráficos interactivos */</script>
+</main>
+</body>
+</html>

@@ -841,6 +841,21 @@ PIEZAS = [
                   pie='Un radar, un buque, un mapa y un hemiciclo: un collage.'),
     ),
     dict(
+        slug='senado-29n', fecha='2026-10-20',
+        titulo='El Senado de 2023: 120 senadores para el PP con un tercio de los votos', serie='29n',
+        descripcion='Con el voto limitado, el PP ganó el 57,7 % de los 208 senadores de 2023 con el 33,1 % del voto al Congreso. Vox y Sumar, con más del 12 % cada uno, no ganaron ninguno.',
+        compara='El porcentaje de voto al Congreso y el de senadores por partido en las elecciones de julio de 2023, y el reparto por circunscripción (provincias de cuatro escaños, insulares, Ceuta y Melilla).',
+        limites='El Senado no es proporcional por diseño: cada provincia elige cuatro senadores con voto limitado, de modo que el peso del voto en el Congreso y en el Senado no es el mismo. Los datos son los de la elección de julio de 2023; la del 29N no cambia esas reglas.',
+        fuentes=[(INTERIOR[0], 'Ministerio del Interior, resultados del Senado de julio de 2023 (Infoelectoral), ficheros de candidaturas, candidatos y votos'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a69', 'Constitución Española, artículo 69'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientosesentayseis', 'BOE, Ley Orgánica del Régimen Electoral General, artículo 166')],
+        enlaces=[],
+        lugar='España',
+        figura=0,
+        foto=dict(src='img/actualidad/fotos/senado-2023-infografia.png', ancho=900, alto=900, grafico=True,
+                  pie='Barras por partido: voto al Congreso frente a senadores, julio de 2023.', fuente='Ministerio del Interior'),
+    ),
+    dict(
         slug='precio-del-escano-29n', fecha='2026-10-15',
         titulo='Un diputado cuesta 25.300 votos en Teruel y 97.500 en Madrid: el precio del escaño, provincia a provincia', serie='29n',
         descripcion='En 2023, un escaño en Madrid costó casi cuatro veces más votos que en Teruel o Soria, y Sumar pagó cada diputado a 98.225 votos frente a los 59.570 del PP. Con un simulador que reparte los votos de 2023 y 2019 por comunidades o en una circunscripción única.',
@@ -1576,6 +1591,7 @@ ANTETITULOS = {
     'almeida-feijoo-madrid': 'Almeida y Feijóo',
     'aceituna-de-mesa-pueblos': 'La aceituna de mesa',
     'precio-del-escano-29n': 'No todos los votos valen igual',
+    'senado-29n': 'Tres votos, un escaño',
     'votos-sin-escano-29n': 'Papeletas que no eligen a nadie',
 }
 
