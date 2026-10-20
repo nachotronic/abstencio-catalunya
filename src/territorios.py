@@ -428,10 +428,17 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     r = serie[T.ULTIMA]
     g = T.ganador(r)
     titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó cada municipio desde 1977'
+    ambito = 'la ciudad' if provs[0] in ('51', '52') else ('la comunidad' if tipo_txt == 'Comunidad' else 'la provincia')
+    cods = CENSO.index[CENSO.index.str[:2].isin(provs)]   # del INE, con los municipios nuevos que aún no tienen resultados
+    b_censo, q_censo = bloque_censo(nombre, cods, ambito,
+                                    [(p, f'<a href="{"../" * nivel}{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>') for p in provs] if len(provs) > 1 else (), en)
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
-            'Voto por renta de los barrios y municipios principales.')
+            + (f'Censo para el 29N: {num(censo_29n(cods)[2])} electores. ' if q_censo else '')
+            + 'Voto por renta de los barrios y municipios principales.')
     about = lugar(nombre, contenido or ESPANA)
-    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
+    faq_html, faq_ld = faq([q_censo]) if q_censo else ('', None)
+    ld = ld_pagina(titulo, desc, ruta, about)
+    h = [cabeza(titulo, desc, ruta, [ld, faq_ld] if faq_ld else ld, nivel, nombre)]
     raiz = RAIZ_REL
     h.append(migas_html(pasos))
     h.append(f'<p class="kicker">{tipo_txt} · Elecciones generales 1977-2023</p><h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
@@ -444,6 +451,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
         h.append('<h2>Provincias</h2>' + tabla(f'Generales de 2023 {en}, por provincia', ['Provincia', 'Participación', 'Más votado', 'Segundo'],
                                                 [hijo for hijo in hijos]))
     h.append(bloque_resultado(nombre, r))
+    h.append(b_censo)
     h.append(bloque_serie(nombre, serie))
     if len(provs) == 1 and provs[0] in MAPA_EVOLUCION:
         h.append(bloque_evolucion(nombre, provs))
@@ -459,6 +467,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     if cs:
         h.append(f'<h2>Municipios con página propia</h2><p>{intro}, con el voto por sección censal y desde 1977: '
                  + ' · '.join(f'<a href="{raiz}{CIUDADES[c]}">elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a>' for c in cs) + '.</p>')
+    h.append(faq_html)
     h.append(bloque_relacionadas(provs, nivel, extra))
     h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}elecciones/elecciones-29n-2026/">Elecciones generales del 29N de 2026: diputados por provincia</a></li>'
              f'<li><a href="{raiz}elecciones/">Elecciones por comunidad autónoma y provincia</a></li>'
@@ -678,33 +687,47 @@ CENSO = pd.read_csv(ROOT / 'data' / 'censo' / 'censo_municipios_2023_2026.csv', 
 CENSO_INE = 'https://www.ine.es/oficina_censo/elecgen2026/Elecgral_2026_cc_tab4.xlsx'
 
 
-def censo_29n(cod):
-    """Electores para el 29N (residentes, CERA, total) y total de 2023, del censo de consulta del INE."""
-    if cod not in CENSO.index:
+def censo_29n(cods):
+    """Electores para el 29N (residentes, CERA, total) y total de 2023 de uno o varios municipios, del censo de consulta del INE."""
+    c = CENSO.loc[CENSO.index.intersection([cods] if isinstance(cods, str) else list(cods))]
+    if c.empty:
         return None
-    c = CENSO.loc[cod]
-    t23 = None if pd.isna(c.cer_2023) else int(c.cer_2023 + c.cera_2023)
-    return int(c.cer_2026), int(c.cera_2026), int(c.cer_2026 + c.cera_2026), t23
+    t23 = None if c.cer_2023.isna().all() else int(c.cer_2023.sum() + c.cera_2023.sum())
+    return int(c.cer_2026.sum()), int(c.cera_2026.sum()), int(c.cer_2026.sum() + c.cera_2026.sum()), t23
 
 
-def bloque_censo(nombre, cod):
-    c = censo_29n(cod)
+def variacion(total, t23):
+    return f'{f"{(total - t23) / t23 * 100:+.1f}".replace(".", ",").replace("-", "−")} %'
+
+
+def bloque_censo(nombre, cods, ambito='el municipio', provincias=(), en=None):
+    """Bloque «Censo electoral para el 29N» y su pregunta frecuente. provincias: [(código, enlace)] para la tabla de una comunidad."""
+    c = censo_29n(cods)
     if not c:
         return '', None
     cer, cera, total, t23 = c
-    n = escape(nombre)
-    txt = (f'Para las generales del 29 de noviembre de 2026, el censo electoral de {n} es de {num(total)} electores: '
-           f'{num(cer)} viven en el municipio y {num(cera)} están inscritos en él pero viven en el extranjero (CERA).')
+    en = en or f'en {nombre}'
+    de = re.sub(r'^de el ', 'del ', 'de ' + en[3:])
+    en_el = 'en él' if ambito.startswith('el ') else 'en ella'
+    txt = (f'Para las generales del 29 de noviembre de 2026, el censo electoral {escape(de)} es de {num(total)} electores: '
+           f'{num(cer)} viven en {ambito} y {num(cera)} están inscritos {en_el} pero viven en el extranjero (CERA).')
     if t23:
         d = total - t23
-        txt += (f' En las generales de 2023 eran {num(t23)}, así que el censo tiene {num(abs(d))} electores {"más" if d >= 0 else "menos"} '
-                f'({f"{d / t23 * 100:+.1f}".replace(".", ",").replace("-", "−")} %).' if d else f' En las generales de 2023 eran los mismos, {num(t23)}.')
-    html_ = ('<h2 id="censo">Censo electoral para el 29N</h2>' + p_('Dato', txt)
+        txt += (f' En las generales de 2023 eran {num(t23)}, así que el censo tiene {num(abs(d))} electores {"más" if d >= 0 else "menos"} ({variacion(total, t23)}).'
+                if d else f' En las generales de 2023 eran los mismos, {num(t23)}.')
+    tab = ''
+    if provincias:
+        filas = []
+        for pc, enlace in provincias:
+            cp = censo_29n(CENSO.index[CENSO.index.str[:2] == pc])
+            filas.append([enlace, num(cp[0]), num(cp[1]), num(cp[2]), variacion(cp[2], cp[3]) if cp[3] else '—'])
+        tab = tabla(f'Censo electoral de las generales de 2026 {escape(en)}, por provincia', ['Provincia', 'Residentes en España', 'En el extranjero', 'Total', 'Cambio desde 2023'], filas)
+    html_ = ('<h2 id="censo">Censo electoral para el 29N</h2>' + p_('Dato', txt) + tab
              + f'<p class="leyenda">Fuente: INE, Oficina del Censo Electoral, <a href="{CENSO_INE}">censo de consulta de las generales de 2026</a> y el de 2023, por municipio. '
                'Es el censo que se expone para consultas y reclamaciones antes de la votación; el definitivo puede variar ligeramente. '
                'Los electores que viven en el extranjero votan desde allí y su voto se suma al de la provincia, no al resultado de cada municipio.</p>')
-    q = (f'¿Cuántos electores tiene {nombre} para las elecciones del 29N?',
-         f'{num(total)}, según el censo de consulta del INE: {num(cer)} residentes en el municipio y {num(cera)} residentes en el extranjero.')
+    q = (f'¿Cuántos electores hay {en} para las elecciones del 29N?',
+         f'{num(total)}, según el censo de consulta del INE: {num(cer)} residentes en {ambito} y {num(cera)} residentes en el extranjero.')
     return html_, q
 
 
