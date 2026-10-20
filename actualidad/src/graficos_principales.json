@@ -1,0 +1,98 @@
+{
+ "aceituna-de-mesa-pueblos": {
+  "pie": "Los pueblos del verdeo frente a Andalucía y España.",
+  "fuente": "Ministerio del Interior, resultados por mesa sin voto exterior"
+ },
+ "avila-suarez-cds": {
+  "pie": "Ningún otro sitio se acercó a Ávila.",
+  "fuente": "Ministerio del Interior"
+ },
+ "baltar-censo-y-participacion": {
+  "pie": "Baltar: el censo baja a la mitad y la participación se dispara.",
+  "fuente": "Ministerio del Interior"
+ },
+ "censo-electoral-desde-1977": {
+  "pie": "11,5 millones de electores más.",
+  "fuente": "Ministerio del Interior"
+ },
+ "ceuta-historia-electoral": {
+  "pie": "Concejales y diputados de Ceuta, 1979-2023.",
+  "fuente": "Historia Electoral (historiaelectoral.com), a partir de los resultados oficiales"
+ },
+ "europeas-arona": {
+  "pie": "Los que menos votaron en las europeas de 2014.",
+  "fuente": "Ministerio del Interior"
+ },
+ "europeas-solo-con-municipales": {
+  "pie": "Las 37 elecciones de la democracia.",
+  "fuente": "Ministerio del Interior"
+ },
+ "euskadi-empate-a-tres": {
+  "pie": "Cuatro décadas de voto en Euskadi.",
+  "fuente": "Ministerio del Interior"
+ },
+ "izquierda-del-psoe-secciones": {
+  "pie": "De 9.810 secciones a 182.",
+  "fuente": "Ministerio del Interior, resultados por mesa sin voto exterior"
+ },
+ "izquierda-dividida-29n": {
+  "pie": "Los escaños de Sumar que se decidieron por menos de 10.000 votos.",
+  "fuente": "Ministerio del Interior, con voto CERA"
+ },
+ "melilla-historia-electoral": {
+  "pie": "Concejales y diputados de Melilla, 1979-2023.",
+  "fuente": "Historia Electoral (historiaelectoral.com), a partir de los resultados oficiales"
+ },
+ "mont-roig-municipio-cambiante": {
+  "pie": "Once cambios de ganador.",
+  "fuente": "Ministerio del Interior"
+ },
+ "municipios-fieles": {
+  "pie": "Los 15 municipios fieles más grandes.",
+  "fuente": "Ministerio del Interior"
+ },
+ "nunca-gano-la-derecha": {
+  "pie": "Las 15 mayores ciudades donde nunca ha ganado la derecha estatal.",
+  "fuente": "Ministerio del Interior"
+ },
+ "plasencia-acierta-siempre": {
+  "pie": "Plasencia y los demás: el mismo ganador que España, elección tras elección.",
+  "fuente": "Ministerio del Interior"
+ },
+ "precio-del-escano-29n": {
+  "pie": "Votos por escaño de cada partido.",
+  "fuente": "Ministerio del Interior, con voto CERA"
+ },
+ "psa-andalucistas-1979": {
+  "pie": "Un voto concentrado en el oeste.",
+  "fuente": "Ministerio del Interior, resultados por municipio"
+ },
+ "psoe-1982-mas-del-60": {
+  "pie": "Municipios donde el PSOE superó el 60 %.",
+  "fuente": "Ministerio del Interior"
+ },
+ "trebujena-pce-sumar": {
+  "pie": "Trebujena, a la izquierda del PSOE desde 1977.",
+  "fuente": "Ministerio del Interior"
+ },
+ "ucd-ciudadanos-hundimiento": {
+  "pie": "Las dos caídas, en la misma escala.",
+  "fuente": "Ministerio del Interior"
+ },
+ "ultimo-escano-29n": {
+  "pie": "Las 20 circunscripciones con el último escaño más ajustado.",
+  "fuente": "Ministerio del Interior, con voto CERA"
+ },
+ "votar-en-noviembre": {
+  "pie": "Del máximo de octubre de 1982 al mínimo de noviembre de 2019.",
+  "fuente": "Junta Electoral Central (vía Wikipedia)"
+ },
+ "voto-en-blanco": {
+  "pie": "Blancos y nulos desde 1977.",
+  "fuente": "Ministerio del Interior, resultados por municipio (1977-2000) y por mesa (2004-2023)"
+ },
+ "votos-sin-escano-29n": {
+  "pie": "Votos que no obtuvieron escaño, por partido.",
+  "fuente": "Ministerio del Interior, resultados por mesa con voto exterior (CERA), vía pollspaindata"
+ }
+}

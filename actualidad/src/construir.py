@@ -56,6 +56,10 @@ SERIES = {'29n': 'Camino al 29N', 'vivienda': 'Vivienda y voto'}
 # Ilustración de cada serie: cabecera de las piezas que no tienen una propia y del bloque de la serie en el índice
 SERIES_FOTO = {'vivienda': dict(src='img/actualidad/fotos/serie-vivienda.jpg', ancho=1280, alto=720, ia=True,
                                 pie='Una urna llena de edificios y unas llaves: la serie «Vivienda y voto».')}
+# Piezas sin ilustración ni foto: su primer gráfico como imagen principal (1280x720) en NewsArticle y en el RSS, para Google Discover.
+# Las hace actualidad/src/graficos_principales.py desde la pieza publicada; pie y fuente, en graficos_principales.json
+GRAFICO_PRINCIPAL = {s: dict(src=f'img/actualidad/fotos/{s}-grafico.jpg', ancho=1280, alto=720, grafico=True, **v)
+                     for s, v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'graficos_principales.json'), encoding='utf-8')).items()}
 
 PIEZAS = [
     dict(
@@ -1473,6 +1477,7 @@ def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, ma
 <meta name="author" content="{AUTOR}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{url}">
+<link rel="alternate" type="application/rss+xml" title="Mapa Electoral · Actualidad" href="{BASE}/actualidad/feed.xml">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Mapa Electoral">
 <meta property="og:title" content="{e(titulo)}">
@@ -1545,6 +1550,7 @@ def pieza(p, todas):
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
     fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
+    principal = fo or GRAFICO_PRINCIPAL.get(p['slug'])   # el gráfico principal ya está en la pieza: solo va en NewsArticle y en el RSS
     if fo:
         # fotos de Commons con autor y licencia; ilustraciones hechas con IA, siempre señaladas (política editorial, #ia)
         # gráficos de datos como imagen principal: nunca IA, con su fuente
@@ -1598,7 +1604,7 @@ def pieza(p, todas):
     jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
               'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
-              'image': [imagen],
+              'image': ([f"{BASE}/{principal['src']}"] if principal else []) + [imagen],   # la imagen principal (1280x720) primero, para Discover
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
               'isPartOf': {'@type': 'CollectionPage', 'name': 'Actualidad', 'url': BASE + '/actualidad/'},
@@ -1676,6 +1682,29 @@ a{color:var(--fg)}
                        for p in todas if p['fecha'] >= lim)
     open(os.path.join(RAIZ, 'actualidad', 'sitemap-noticias.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + noticias + '</urlset>\n')
+    feed(todas)
+
+
+def feed(todas, n=40):
+    """RSS de Actualidad (Discover lo usa para «Seguir»): las últimas n piezas, con su imagen principal."""
+    e = html.escape
+    def fecha_rss(iso):
+        return datetime.datetime.strptime(iso, '%Y-%m-%d').replace(hour=8, tzinfo=datetime.timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')
+    items = []
+    for p in sorted(todas, key=lambda q: q['fecha'], reverse=True)[:n]:
+        u = f"{BASE}/actualidad/{p['slug']}/"
+        fo = p.get('foto') or SERIES_FOTO.get(p['serie']) or GRAFICO_PRINCIPAL.get(p['slug'])
+        img = f"{BASE}/{fo['src']}" if fo else f"{BASE}/img/compartir/actualidad-{p['slug']}.jpg"
+        items.append(f'<item><title>{e(p["titulo"])}</title><link>{u}</link><guid isPermaLink="true">{u}</guid><pubDate>{fecha_rss(p["fecha"])}</pubDate>'
+                     f'<dc:creator>{e(AUTOR)}</dc:creator><description>{e(p["descripcion"])}</description>'
+                     f'<media:content url="{img}" medium="image" type="image/jpeg" width="{fo["ancho"] if fo else 1200}" height="{fo["alto"] if fo else 630}"/></item>')
+    ult = max(p['fecha'] for p in todas)
+    open(os.path.join(RAIZ, 'actualidad', 'feed.xml'), 'w', encoding='utf-8').write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">\n'
+        f'<channel><title>Mapa Electoral · Actualidad</title><link>{BASE}/actualidad/</link>'
+        f'<atom:link href="{BASE}/actualidad/feed.xml" rel="self" type="application/rss+xml"/>'
+        '<description>Piezas con datos al hilo de la actualidad electoral, por Nacho G. del Álamo.</description><language>es</language>'
+        f'<lastBuildDate>{fecha_rss(ult)}</lastBuildDate>\n' + '\n'.join(items) + '\n</channel></rss>\n')
 
 
 def imagen_carrusel(q, pre):
