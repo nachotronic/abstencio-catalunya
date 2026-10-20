@@ -13,6 +13,7 @@ Cada frase con cifras va marcada como dato o patrón, como en el resto del sitio
 Uso (después de regenerar el mapa y el Atlas):  python3 src/territorios.py && python3 src/seo.py
 """
 import datetime, json, pathlib, re, sys, unicodedata
+import pandas as pd
 from html import escape
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -29,7 +30,7 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-10-15'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-10-20'   # cámbiala a mano cuando cambien los datos o el texto
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 
@@ -624,14 +625,17 @@ def pagina_ciudad(cod):
     nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
     b_sec = bloque_secciones(nombre, sec)
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
+    b_censo, q_censo = bloque_censo(nombre, cod)
     titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
     desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
+            + (f'Censo para el 29N: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
             + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
                (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
                 'Resultados de la serie completa y municipales frente a generales.')))
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
-    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
+    faq_html, faq_ld = faq([q_censo]) if q_censo else ('', None)
+    h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about), faq_ld] if faq_ld else ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
     raiz = RAIZ_REL
     pasos = [(raiz, 'Inicio'), (raiz + 'elecciones/', 'Elecciones'), (raiz + f'elecciones/{ccaa}/', CCAA[ccaa][0])]
     if not uni:
@@ -639,7 +643,7 @@ def pagina_ciudad(cod):
     h.append(migas_html(pasos))
     h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales 1977-2023</p>'
              f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
-    h.append(f'<p class="subtitulo">Resultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
+    h.append(f'<p class="subtitulo">{"Censo para el 29N, r" if b_censo else "R"}esultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
@@ -648,10 +652,12 @@ def pagina_ciudad(cod):
                 f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
     h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"calle a calle " if b_sec else ""}en el mapa por sección censal</a></p>')
     h.append(bloque_resultado(nombre, r))
+    h.append(b_censo)
     h.append(b_sec)
     h.append(b_renta)
     h.append(bloque_municipales(nombre, m, r))
     h.append(bloque_serie(nombre, serie))
+    h.append(faq_html)
     rel = actualidad_de([s for s, (c, _) in ACTUALIDAD_MUNICIPIO.items() if c == cod], raiz)
     rel += [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in atlas.municipios(q)]
     h.append(bloque_relacionadas([], nivel, rel) if rel else '')
@@ -666,6 +672,40 @@ def pagina_ciudad(cod):
     h.append(bloque_metodo())
     h.append(PIE)
     return ruta, ''.join(h)
+
+
+CENSO = pd.read_csv(ROOT / 'data' / 'censo' / 'censo_municipios_2023_2026.csv', dtype={'mun_code': str}).set_index('mun_code')
+CENSO_INE = 'https://www.ine.es/oficina_censo/elecgen2026/Elecgral_2026_cc_tab4.xlsx'
+
+
+def censo_29n(cod):
+    """Electores para el 29N (residentes, CERA, total) y total de 2023, del censo de consulta del INE."""
+    if cod not in CENSO.index:
+        return None
+    c = CENSO.loc[cod]
+    t23 = None if pd.isna(c.cer_2023) else int(c.cer_2023 + c.cera_2023)
+    return int(c.cer_2026), int(c.cera_2026), int(c.cer_2026 + c.cera_2026), t23
+
+
+def bloque_censo(nombre, cod):
+    c = censo_29n(cod)
+    if not c:
+        return '', None
+    cer, cera, total, t23 = c
+    n = escape(nombre)
+    txt = (f'Para las generales del 29 de noviembre de 2026, el censo electoral de {n} es de {num(total)} electores: '
+           f'{num(cer)} viven en el municipio y {num(cera)} están inscritos en él pero viven en el extranjero (CERA).')
+    if t23:
+        d = total - t23
+        txt += (f' En las generales de 2023 eran {num(t23)}, así que el censo tiene {num(abs(d))} electores {"más" if d >= 0 else "menos"} '
+                f'({f"{d / t23 * 100:+.1f}".replace(".", ",").replace("-", "−")} %).' if d else f' En las generales de 2023 eran los mismos, {num(t23)}.')
+    html_ = ('<h2 id="censo">Censo electoral para el 29N</h2>' + p_('Dato', txt)
+             + f'<p class="leyenda">Fuente: INE, Oficina del Censo Electoral, <a href="{CENSO_INE}">censo de consulta de las generales de 2026</a> y el de 2023, por municipio. '
+               'Es el censo que se expone para consultas y reclamaciones antes de la votación; el definitivo puede variar ligeramente. '
+               'Los electores que viven en el extranjero votan desde allí y su voto se suma al de la provincia, no al resultado de cada municipio.</p>')
+    q = (f'¿Cuántos electores tiene {nombre} para las elecciones del 29N?',
+         f'{num(total)}, según el censo de consulta del INE: {num(cer)} residentes en el municipio y {num(cera)} residentes en el extranjero.')
+    return html_, q
 
 
 def bloque_secciones(nombre, sec):
@@ -924,9 +964,21 @@ def leyenda_partidos(cods):
     return [(T.COLOR[c], T.NOMBRE[c]) for c in orden]
 
 
+SIS = json.loads((ROOT / 'actualidad' / 'src' / 'sistema' / 'cifras.json').read_text(encoding='utf-8'))['2023_07']   # escaños de 2023 (actualidad/src/sistema/calcular.py)
+R26 = json.loads((ROOT / 'actualidad' / 'src' / 'sistema' / 'cifras.json').read_text(encoding='utf-8'))['votos_2023_reparto_2026']
+
+
+def diputados_por_provincia():
+    grupos = {}
+    for p, n in ESCANOS_2026.items():
+        grupos.setdefault(n, []).append(PROV_NOMBRE[p])
+    y = lambda v: v[0] if len(v) == 1 else ', '.join(v[:-1]) + ' y ' + v[-1]
+    return '; '.join(f'{y(sorted(v, key=slug))}, {n}' for n, v in sorted(grupos.items(), reverse=True)) + '.'
+
+
 def tema_29n(resumen):
     ruta = 'elecciones/elecciones-29n-2026/'
-    titulo = 'Elecciones generales del 29N de 2026: fecha, campaña, escaños por provincia y cómo se votó en 2023'
+    titulo = 'Elecciones generales 29N 2026: escaños por provincia, fecha, campaña y resultados de 2023'
     desc = ('Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Fechas de la campaña, los 350 diputados provincia a provincia '
             '(Madrid gana uno y Cádiz lo pierde), mapas del resultado de 2023 y lo que puede decidirse en cada territorio.')
     qs = [('¿Cuándo son las elecciones generales de 2026?',
@@ -935,6 +987,11 @@ def tema_29n(resumen):
            'La campaña dura quince días: empieza a las cero horas del viernes 13 de noviembre y termina a las doce de la noche del viernes 27 de noviembre.'),
           ('¿Cuántos diputados se eligen y qué cambia respecto a 2023?',
            'Se eligen 350 diputados en 52 circunscripciones. Respecto a 2023, Madrid pasa de 37 a 38 y Cádiz de 9 a 8; el resto de provincias reparte los mismos escaños.'),
+          ('¿Cuántos diputados elige cada provincia en 2026?',
+           'De mayor a menor: ' + diputados_por_provincia()),
+          ('¿Cuántos diputados tiene cada partido?',
+           'En el Congreso elegido en 2023: ' + '; '.join(f'{x["partido"]}, {x["escanos"]}' for x in SIS['partidos'] if x['escanos']) + '. '
+           'Son los escaños de cada candidatura el día de las elecciones; algunos diputados cambiaron después de grupo parlamentario.'),
           ('¿Cuántos senadores elige cada provincia?',
            'Cuatro en cada provincia; tres en Gran Canaria, Mallorca y Tenerife; uno en Ibiza-Formentera, Menorca, Fuerteventura, La Gomera, El Hierro, Lanzarote y La Palma, y dos en Ceuta y en Melilla.'),
           ('¿Cuándo se constituyen las nuevas Cortes?',
@@ -968,6 +1025,27 @@ def tema_29n(resumen):
     # mapa de provincias: más votado en 2023 y diputados en 2026
     rp = {p: r_prov(p) for p in ESCANOS_2026}
     gp = {p: T.ganador(r) for p, r in rp.items()}
+    epd = {p: rp[p]['censo'] / ESCANOS_2026[p] for p in ESCANOS_2026}   # electores por diputado
+    filas = []
+    for p in sorted(ESCANOS_2026, key=lambda p: (-ESCANOS_2026[p], PROV_NOMBRE[p])):
+        r, g = rp[p], gp[p]
+        d = ESCANOS_2026[p] - ESCANOS_2023[p]
+        esc = SIS['provincias'][p]['esc']
+        filas.append([f'<a href="../../{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>', str(ESCANOS_2026[p]), str(ESCANOS_2023[p]),
+                      (f'{d:+d}'.replace('-', '−') if d else '='), ' · '.join(f'{escape(k)} {v}' for k, v in sorted(esc.items(), key=lambda kv: -kv[1])),
+                      num(round(epd[p], -2)), pct(r['part'])])
+    h.append('<h2 id="escanos">Escaños por provincia en 2026</h2>'
+             + p_('Dato', 'Diputados que elige cada circunscripción el 29N y en 2023, cómo se repartieron en 2023, electores residentes por diputado y participación del censo residente. '
+                  'Cada provincia enlaza a su página, con el voto por municipio y por barrio desde 1977.')
+             + tabla('Escaños por circunscripción en las generales de 2026 y de 2023', ['Provincia', '2026', '2023', 'Cambio', 'Reparto en 2023', 'Electores por diputado', 'Participación 2023'], filas))
+    pt = SIS['partidos']
+    h.append('<h2 id="partidos">Escaños de cada partido</h2>'
+             + p_('Dato', 'En las generales de 2023 el PP obtuvo ' + num(pt[0]['escanos']) + ' diputados; '
+                  + '; '.join(f'{escape(x["partido"])}, {num(x["escanos"])}' for x in pt[1:] if x['escanos']) + '. '
+                  f'Con los mismos votos y el reparto de 2026, en el que Madrid gana un diputado y Cádiz lo pierde, el PP tendría {num(R26["PP"])} y el PSOE {num(R26["PSOE"])}; el resto, igual.')
+             + tabla('Votos y escaños de cada partido en las generales de 2023', ['Partido', 'Votos', '% del voto válido', 'Escaños', 'Con el reparto de 2026'],
+                     [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
+             + f'<p class="leyenda">Fuente: Ministerio del Interior. Votos y escaños por candidatura. Cálculo del reparto con la regla D\'Hondt en <a href="{raiz}actualidad/precio-del-escano-29n/">el precio del escaño</a>.</p>')
     cuenta = {}
     for g in gp.values():
         cuenta[g] = cuenta.get(g, 0) + 1
@@ -985,8 +1063,6 @@ def tema_29n(resumen):
     if cambian:
         h.append(p_('Dato', f'Entre noviembre de 2019 y julio de 2023 cambió el partido más votado en {num(len(cambian))} provincias: '
                     + ', '.join(f'<a href="../../{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a> ({T.NOMBRE[r19[p]]} → {T.NOMBRE[gp[p]]})' for p in sorted(cambian, key=lambda p: PROV_NOMBRE[p])) + '.'))
-    # electores por diputado
-    epd = {p: rp[p]['censo'] / ESCANOS_2026[p] for p in ESCANOS_2026}
     mn, mx = min(epd, key=epd.get), max(epd, key=epd.get)
     h.append('<h2>Cuánto vale cada voto</h2>'
              + p_('Dato', f'Con el censo residente de 2023, en {escape(PROV_NOMBRE[mn])} hay un diputado por cada {num(round(epd[mn], -2))} electores, y en {escape(PROV_NOMBRE[mx])}, '
@@ -995,16 +1071,6 @@ def tema_29n(resumen):
              + f'<p>Cuántos votos costó cada escaño en 2023, provincia a provincia y partido a partido, está en <a href="{raiz}actualidad/precio-del-escano-29n/">el precio del escaño</a>; '
                f'dónde se decidió el último diputado por pocos votos, en <a href="{raiz}actualidad/ultimo-escano-29n/">qué provincias pueden decidir el 29N</a>, '
                f'y cuántos votos se quedaron sin representación, en <a href="{raiz}actualidad/votos-sin-escano-29n/">votos sin escaño</a>.</p>')
-    filas = []
-    for p in sorted(ESCANOS_2026, key=lambda p: (-ESCANOS_2026[p], PROV_NOMBRE[p])):
-        r, g = rp[p], gp[p]
-        d = ESCANOS_2026[p] - ESCANOS_2023[p]
-        filas.append([f'<a href="../../{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>', str(ESCANOS_2026[p]), str(ESCANOS_2023[p]),
-                      (f'{d:+d}'.replace('-', '−') if d else '='), num(round(epd[p], -2)), f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})', pct(r['part'])])
-    h.append('<h2>Diputados por provincia</h2>'
-             + p_('Dato', 'Diputados que elige cada circunscripción el 29N y en 2023, electores residentes por diputado, partido más votado en 2023 y participación del censo residente. '
-                  'Cada provincia enlaza a su página, con el voto por municipio y por barrio desde 1977.')
-             + tabla('Diputados por circunscripción en las generales de 2026 y de 2023', ['Provincia', '2026', '2023', 'Cambio', 'Electores por diputado', 'Más votado en 2023', 'Participación 2023'], filas))
     h.append(bloque_resultado('España', e))
     gm = T.MUN.set_index('mun_code')['2023_07_gana'].dropna()
     img = svg_fichero('ganador-municipios-2023.svg', MS.mapa({c: T.COLOR[v] for c, v in gm.items() if v in T.COLOR},
