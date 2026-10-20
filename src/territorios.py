@@ -394,7 +394,7 @@ PIE = f"""<footer>{SITIO} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</
 
 # Páginas publicadas después que el resto
 PUBLICADA = {'elecciones/elecciones-29n-2026/': '2026-10-15', 'elecciones/participacion-electoral-por-barrio/': '2026-10-15',
-             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20'}
+             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20'}
 
 
 def ld_pagina(titulo, desc, ruta, about=None, partes=None):
@@ -767,6 +767,29 @@ def bloque_municipales(nombre, m, rg):
 
 
 # ---------- índice y páginas temáticas ----------
+def tema_como_se_vota():
+    """Guía «Cómo se vota»: las reglas que convierten votos en escaños, con las dos piezas de Actualidad."""
+    ruta = 'elecciones/como-se-vota/'
+    titulo = 'Cómo se vota: el precio de un escaño y los votos que no eligen a nadie'
+    desc = ('Cuántos votos cuesta un escaño en cada provincia en las generales de 2023 y 2019, con el simulador de reparto, '
+            'y cuántos votos se pierden en la barrera del 3 % y en el reparto por provincia. Datos de Interior.')
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Cómo se vota')]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Tema · Sistema electoral</p><h1 data-miga="Cómo se vota">Cómo se vota: el precio de un escaño</h1>')
+    h.append('<p class="subtitulo">Por qué el mismo número de votos da más o menos diputados según la provincia, y qué pasa con los votos que no eligen a nadie</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append('<p class="resumen">Las elecciones al Congreso no reparten escaños por voto directo: se reparten por provincia, y cada provincia tiene un número fijo de diputados. '
+             'Esta guía reúne las dos piezas que explican cómo ese reparto convierte votos en escaños.</p>')
+    h.append('<h2>Las piezas</h2><ul>'
+             f'<li><a href="{raiz}actualidad/precio-del-escano-29n/">El precio de un escaño por provincia</a>: cuántos votos cuesta un diputado en cada provincia, con el simulador de reparto (provincia, comunidad o España entera, con o sin barrera del 3 %).</li>'
+             f'<li><a href="{raiz}actualidad/votos-sin-escano-29n/">Los votos que no eligen a nadie</a>: los votos perdidos en la barrera y en el reparto por provincia, y en qué provincias se decide el último escaño.</li>'
+             '</ul>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
 def indice(resumen):
     titulo = 'Elecciones en España por comunidad autónoma, provincia y sección censal'
     desc = 'Resultados de las elecciones generales de 1977 a 2023 en cada comunidad autónoma y provincia, con el voto por renta de los barrios y enlaces al mapa por sección censal.'
@@ -797,6 +820,7 @@ def indice(resumen):
              '<li><a href="participacion-electoral-por-barrio/">Participación electoral por barrio</a>: dónde se vota más y dónde menos</li>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
+             '<li><a href="como-se-vota/">Cómo se vota</a>: el precio de un escaño por provincia y los votos que no eligen a nadie</li>'
              '<li><a href="../abstencion.html">Participación por sección censal en Cataluña</a>: quién no vota y dónde</li>'
              '<li><a href="../atlas/">Atlas de las anomalías electorales</a>: los lugares que votan distinto de lo que cabría esperar</li></ul>')
     h.append(bloque_metodo())
@@ -1478,7 +1502,7 @@ def main():
     pags, resumen = territorios()
     pags += [pagina_ciudad(c) for c in CIUDADES]
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota()]
     for ruta, html in pags:
         f = ROOT / ruta / 'index.html'
         f.parent.mkdir(parents=True, exist_ok=True)
