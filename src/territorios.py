@@ -394,7 +394,7 @@ PIE = f"""<footer>{SITIO} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</
 
 # Páginas publicadas después que el resto
 PUBLICADA = {'elecciones/elecciones-29n-2026/': '2026-10-15', 'elecciones/participacion-electoral-por-barrio/': '2026-10-15',
-             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15'}
+             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20'}
 
 
 def ld_pagina(titulo, desc, ruta, about=None, partes=None):
@@ -470,6 +470,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     h.append(faq_html)
     h.append(bloque_relacionadas(provs, nivel, extra))
     h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}elecciones/elecciones-29n-2026/">Elecciones generales del 29N de 2026: diputados por provincia</a></li>'
+             f'<li><a href="{raiz}elecciones/censo-electoral-2026/">Censo electoral de 2026 en toda España</a></li>'
              f'<li><a href="{raiz}elecciones/">Elecciones por comunidad autónoma y provincia</a></li>'
              f'<li><a href="{raiz}elecciones/participacion-electoral-por-barrio/">Participación electoral por barrio</a></li>'
              f'<li><a href="{raiz}elecciones/mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li>'
@@ -697,7 +698,8 @@ def censo_29n(cods):
 
 
 def variacion(total, t23):
-    return f'{f"{(total - t23) / t23 * 100:+.1f}".replace(".", ",").replace("-", "−")} %'
+    v = (total - t23) / t23 * 100
+    return f'{f"{v:+.{2 if abs(v) < 0.1 else 1}f}".replace(".", ",").replace("-", "−")} %'
 
 
 def bloque_censo(nombre, cods, ambito='el municipio', provincias=(), en=None):
@@ -791,6 +793,7 @@ def indice(resumen):
     h.append('<h2>Por tema</h2><ul>'
              '<li><a href="elecciones-29n-2026/">Elecciones generales del 29N de 2026</a>: fecha, campaña y diputados por provincia</li>'
              '<li><a href="resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio</a>: quién ganó en cada pueblo y ciudad desde 1977</li>'
+             '<li><a href="censo-electoral-2026/">Censo electoral de 2026</a>: cuántos electores votan el 29N en cada provincia y municipio</li>'
              '<li><a href="participacion-electoral-por-barrio/">Participación electoral por barrio</a>: dónde se vota más y dónde menos</li>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
@@ -1108,7 +1111,8 @@ def tema_29n(resumen):
     h.append('<h2>Por comunidad autónoma</h2>' + tabla('Generales de 2023 por comunidad autónoma', ['Comunidad', 'Participación', 'Más votado', 'Segundo'], filas))
     h.append(faq_html)
     h.append('<h2>Piezas sobre el 29N</h2>' + lista_piezas([s for s in slugs_actualidad() if es_29n(s)], 2))
-    h.append('<h2>Más datos</h2><ul><li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li>'
+    h.append('<h2>Más datos</h2><ul><li><a href="../censo-electoral-2026/">Censo electoral de 2026 por provincia y municipio</a></li>'
+             '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li>'
              '<li><a href="../resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio desde 1977</a></li>'
              '<li><a href="../mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li>'
              '<li><a href="../voto-y-renta-por-barrios/">Voto y renta por barrios</a></li></ul>')
@@ -1216,6 +1220,94 @@ def tema_participacion(resumen):
     return ruta, ''.join(h)
 
 
+RAMPA_CENSO = [(0.0, '#f2e6dc', 'pierde electores'), (0.02, '#e9eef2', '0-2 %'), (0.04, '#93aec0', '2-4 %'), (9, '#3f6c8c', 'más del 4 %')]
+SEGREGADOS = {'48916': '48036'}   # Usansolo se separó de Galdakao después de 2023: se comparan juntos
+
+
+def tema_censo(resumen):
+    ruta = 'elecciones/censo-electoral-2026/'
+    c = CENSO.copy()
+    c['prov'] = c.index.str[:2]
+    c['t23'], c['t26'] = c.cer_2023 + c.cera_2023, c.cer_2026 + c.cera_2026
+    cer, cera, total, t23 = censo_29n(c.index)
+    d = total - t23
+    titulo = f'Censo electoral 2026: {str(round(total / 1e6, 1)).replace(".", ",")} millones de electores para el 29N, provincia a provincia'
+    desc = (f'El censo de las elecciones generales del 29 de noviembre de 2026 tiene {num(total)} electores, {num(d)} más que en 2023: '
+            f'{num(cer)} viven en España y {num(cera)} en el extranjero. Por provincia, comunidad y municipio, con datos del INE.')
+    qs = [('¿Cuántos electores hay en España para las elecciones del 29N?',
+           f'{num(total)}, según el censo de consulta del INE: {num(cer)} residentes en España y {num(cera)} residentes en el extranjero.'),
+          ('¿Cuántos españoles que viven en el extranjero pueden votar?',
+           f'{num(cera)}, inscritos en el Censo de Españoles Residentes Ausentes (CERA): {num(c.cera_2026.sum() - c.cera_2023.sum())} más que en 2023. '
+           'Votan desde su país de residencia y su voto se suma al de la provincia en la que están inscritos.'),
+          ('¿Dónde puedo comprobar si estoy en el censo?',
+           'En la <a href="https://www.ine.es/oficina_censo/">Oficina del Censo Electoral del INE</a>, que expone el censo antes de cada elección para consultas y reclamaciones.')]
+    faq_html, faq_ld = faq(qs)
+    h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, ESPANA), faq_ld], 2, 'Censo electoral 2026', imagen_og(ruta))]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Tema · Elecciones generales del 29N</p><h1 data-miga="Censo electoral 2026">Censo electoral de las generales de 2026</h1>')
+    h.append('<p class="subtitulo">Cuántos electores pueden votar el 29N en cada provincia, comunidad y municipio, y cuánto ha cambiado el censo desde 2023</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(foto_html(ruta, raiz))
+    h.append(f'<p class="resumen">{tipo("Dato")}Para las elecciones generales del 29 de noviembre de 2026 hay {num(total)} electores, {num(d)} más que en las de julio de 2023 '
+             f'({variacion(total, t23)}). {num(cer)} viven en España y {num(cera)} en el extranjero, el {pct(cera / total)} del censo; '
+             f'los del extranjero han crecido un {variacion(c.cera_2026.sum(), c.cera_2023.sum())[1:]}, y los residentes, un {variacion(cer, c.cer_2023.sum())[1:]}.</p>')
+    h.append(f'<p><a class="vermapa" href="{raiz}">Abrir el mapa electoral calle a calle</a> <a class="vermapa" href="{CENSO_INE}">Datos del INE</a></p>')
+    # provincias
+    P = c.groupby('prov')[['cer_2023', 'cera_2023', 'cer_2026', 'cera_2026', 't23', 't26']].sum()
+    P['v'] = P.t26 / P.t23 - 1
+    P['ce'] = P.cera_2026 / P.t26
+    sube, baja = P.v.nlargest(4), P[P.v < 0].v.sort_values()
+    lista = lambda ser: ', '.join(f'{escape(PROV_NOMBRE[p])} ({variacion(P.t26[p], P.t23[p])})' for p in ser.index)
+    color = lambda v: next(col for tope, col, _ in RAMPA_CENSO if v < tope)
+    h.append('<h2>Provincia a provincia</h2>'
+             + p_('Dato', f'El censo crece más en {lista(sube)}. '
+                  + (f'Solo pierde electores en {num(len(baja))} provincias: {lista(baja)}.' if len(baja) else 'No baja en ninguna provincia.'))
+             + figura(MS.mapa({p: color(v) for p, v in P.v.items()}, 'Cambio del censo electoral entre las generales de 2023 y las de 2026, por provincia'),
+                      'Variación del número de electores, residentes en España y en el extranjero, entre el censo de 2023 y el de 2026. Canarias, en el recuadro. Fuente: INE.',
+                      [(col, et) for _, col, et in RAMPA_CENSO])
+             + p_('Dato', 'Donde más pesan los electores que viven en el extranjero es en ' + ', '.join(f'{escape(PROV_NOMBRE[p])} ({pct(P.ce[p])})' for p in P.ce.nlargest(5).index)
+                  + '.'))
+    filas = [[f'<a href="../../{ruta_provincia(p)}#censo">{escape(PROV_NOMBRE[p])}</a>', num(r.cer_2026), num(r.cera_2026), num(r.t26), variacion(r.t26, r.t23),
+              num(round(r.t26 / ESCANOS_2026[p], -2))] for p, r in sorted(P.iterrows(), key=lambda x: -x[1].t26)]
+    h.append(tabla('Censo electoral de las generales de 2026 por provincia', ['Provincia', 'Residentes en España', 'En el extranjero', 'Total', 'Cambio desde 2023', 'Electores por diputado'], filas))
+    # comunidades
+    filas = []
+    for slug_c, (nombre, _, provs) in CCAA.items():
+        q = P.loc[[p for p in provs if p in P.index]].sum()
+        filas.append([f'<a href="../{slug_c}/#censo">{escape(nombre)}</a>', num(q.t26), variacion(q.t26, q.t23)])
+    h.append('<h2>Por comunidad autónoma</h2>' + tabla('Censo electoral de las generales de 2026 por comunidad autónoma', ['Comunidad', 'Electores', 'Cambio desde 2023'], filas))
+    # municipios
+    m = c.rename(index=lambda x: SEGREGADOS.get(x, x)).groupby(level=0)[['t23', 't26']].sum()
+    m = m[m.t23 >= 10000]
+    m['v'] = m.t26 / m.t23 - 1
+    nom = T.MUN.set_index('mun_code').municipio
+    enl = lambda x: f'<a href="../../{CIUDADES[x]}#censo">{escape(nom[x])}</a>' if x in CIUDADES else escape(nom.get(x, x))
+    fila = lambda x: [enl(x), num(m.t23[x]), num(m.t26[x]), variacion(m.t26[x], m.t23[x])]
+    cab = ['Municipio', 'Electores 2023', 'Electores 2026', 'Cambio']
+    baja = c[c.t26 < c.t23]
+    h.append('<h2>Municipio a municipio</h2>'
+             + p_('Dato', f'De los {num(len(c))} municipios, el censo baja en {num(len(baja))}; el {pct((baja.t23 < 1000).mean(), 0)} de ellos tenía menos de 1.000 electores en 2023. '
+                  f'Entre los de más de 10.000 electores, el que más crece es {escape(nom[m.v.idxmax()])} ({variacion(m.t26[m.v.idxmax()], m.t23[m.v.idxmax()])}). '
+                  'Cada municipio de más de 1.000 habitantes tiene su censo en su propia página.')
+             + tabla('Municipios de más de 10.000 electores donde más crece el censo entre 2023 y 2026', cab, [fila(x) for x in m.v.nlargest(10).index])
+             + tabla('Municipios de más de 10.000 electores donde más baja el censo entre 2023 y 2026', cab, [fila(x) for x in m.v.nsmallest(10).index])
+             + '<p class="leyenda">Galdakao y Usansolo, que se separó de él después de 2023, se comparan juntos.</p>')
+    h.append('<p class="leyenda">Fuente: INE, Oficina del Censo Electoral, censo de consulta de las '
+             f'<a href="{CENSO_INE}">generales de 2026</a> y de 2023, por municipio. Es el censo que se expone para consultas y reclamaciones antes de la votación; '
+             'el definitivo puede variar ligeramente. Electores por diputado: censo total entre los diputados que elige cada provincia el 29N.</p>')
+    h.append(faq_html)
+    h.append('<h2>Más datos</h2><ul>'
+             f'<li><a href="{raiz}actualidad/censo-electoral-desde-1977/">El censo electoral desde 1977</a></li>'
+             f'<li><a href="{raiz}actualidad/pensiones-censo-mayores-29n/">Electores de 65 años o más frente a los de 18 a 34, provincia a provincia</a></li>'
+             '<li><a href="../elecciones-29n-2026/">Elecciones generales del 29N de 2026: escaños por provincia</a></li>'
+             '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li>'
+             '<li><a href="../resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio desde 1977</a></li></ul>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
 def tema_municipios(resumen):
     ruta = 'elecciones/resultados-elecciones-por-municipio/'
     titulo = 'Resultados de las elecciones generales por municipio: cómo votó cada pueblo y ciudad de España desde 1977'
@@ -1312,6 +1404,7 @@ def llms(resumen):
 ## Temas
 - [Elecciones generales del 29N de 2026: fecha, campaña y diputados por provincia]({BASE}elecciones/elecciones-29n-2026/)
 - [Resultados de las elecciones generales por municipio desde 1977]({BASE}elecciones/resultados-elecciones-por-municipio/)
+- [Censo electoral de las generales de 2026 por provincia y municipio]({BASE}elecciones/censo-electoral-2026/)
 - [Participación electoral por barrio]({BASE}elecciones/participacion-electoral-por-barrio/)
 - [Mapa electoral de España por sección censal]({BASE}elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios]({BASE}elecciones/voto-y-renta-por-barrios/)
@@ -1329,6 +1422,7 @@ def franja_portada():
             '<a href="elecciones/">Todas las provincias</a>.</p>'
             '<p>Por tema: <a href="elecciones/elecciones-29n-2026/">elecciones generales del 29N de 2026</a> · '
             '<a href="elecciones/resultados-elecciones-por-municipio/">resultados de las elecciones por municipio</a> · '
+            '<a href="elecciones/censo-electoral-2026/">censo electoral de 2026</a> · '
             '<a href="elecciones/participacion-electoral-por-barrio/">participación electoral por barrio</a> · '
             '<a href="elecciones/voto-y-renta-por-barrios/">voto y renta por barrios</a> · '
             '<a href="elecciones/mapa-electoral-seccion-censal/">mapa electoral por sección censal</a> · '
@@ -1375,7 +1469,7 @@ def main():
     pags, resumen = territorios()
     pags += [pagina_ciudad(c) for c in CIUDADES]
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen)]
     for ruta, html in pags:
         f = ROOT / ruta / 'index.html'
         f.parent.mkdir(parents=True, exist_ok=True)
