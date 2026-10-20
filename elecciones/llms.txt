@@ -5,6 +5,7 @@
 ## Temas
 - [Elecciones generales del 29N de 2026: fecha, campaña y diputados por provincia](https://mapaelectoral.es/elecciones/elecciones-29n-2026/)
 - [Resultados de las elecciones generales por municipio desde 1977](https://mapaelectoral.es/elecciones/resultados-elecciones-por-municipio/)
+- [Censo electoral de las generales de 2026 por provincia y municipio](https://mapaelectoral.es/elecciones/censo-electoral-2026/)
 - [Participación electoral por barrio](https://mapaelectoral.es/elecciones/participacion-electoral-por-barrio/)
 - [Mapa electoral de España por sección censal](https://mapaelectoral.es/elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios](https://mapaelectoral.es/elecciones/voto-y-renta-por-barrios/)
