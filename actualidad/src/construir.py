@@ -26,6 +26,8 @@ CF = ("<!-- Cloudflare Web Analytics --><script type='module' src='https://stati
       "data-cf-beacon='{\"token\": \"cf0453d1d8f247d4a5dd55aff7b685ae\"}'></script><!-- End Cloudflare Web Analytics -->")
 INTERIOR = ('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/',
             'Ministerio del Interior, resultados electorales por mesa (Infoelectoral), vía pollspaindata. Sin voto exterior (CERA)')
+INTERIOR_CERA = ('https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/',
+                 'Ministerio del Interior, resultados electorales por mesa y voto CERA (municipio 999), vía pollspaindata')
 INE = ('https://www.ine.es/experimental/atlas/experimental_atlas.htm',
        'INE, Atlas de Distribución de Renta de los Hogares (renta y edad por sección), vía ineAtlas.data')
 INE_CENSO = ('https://www.ine.es/censos2021/C2021_Indicadores.csv',
@@ -526,7 +528,9 @@ PIEZAS = [
         descripcion='Robles irá de número dos por Madrid y Albares encabezará Cádiz. Hemos calculado cuánto voto podría perder el PSOE en cada provincia sin que el ministro se quedara fuera: en diez de los once casos, más del 60%.',
         compara='Para cada ministro en las listas del PSOE, los votos que el partido podría perder en su provincia, con los resultados de las generales de 2023 (voto exterior incluido) y los escaños del 29N, antes de que el puesto del ministro dejara de dar escaño.',
         limites='Es aritmética con los votos de 2023, no una previsión: supone que el resto de partidos saca los mismos votos y que solo cambia el voto del PSOE. Los puestos son las propuestas conocidas el 14 de octubre, pendientes de ratificación por el Comité Federal el 17 de octubre. Los puestos que ocuparon en 2023 Ana Redondo y Arcadi España no se han podido verificar. Ningún estudio citado mide el efecto de un ministro como cabeza de lista.',
-        fuentes=[INTERIOR,
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian.',
+        fuentes=[INTERIOR_CERA,
                  ('https://www.infobae.com/espana/agencias/2026/10/14/sanchez-situa-a-robles-numero-2-del-psoe-por-madrid-y-a-sus-ministros-en-puestos-de-salida/', 'EFE vía Infobae, Sánchez sitúa a Robles número 2 por Madrid (14-10-2026)'),
                  ('https://www.elconstitucional.es/es/nacional/sanchez-refuerza-listas-psoe-elecciones-29n-con-once-ministros-situa-margarita-robles-como-numero-dos-por-madrid_8924_102.html', 'El Constitucional, once ministros en las listas del PSOE (14-10-2026)'),
                  ('https://www.eldiario.es/castilla-y-leon/politica/psoe-castilla-leon-mantiene-puente-redondo-frente-valladolid-propone-burgos-tudanca-senado_1_13586478.html', 'elDiario.es, Puente y Redondo en Valladolid (14-10-2026)'),
@@ -781,7 +785,7 @@ PIEZAS = [
     dict(
         slug='minguez-lleida-29n', fecha='2026-10-15',
         actualizado='2026-10-20',
-        correcciones='17-10-2026: actualizada tras la dimisión de Mínguez como portavoz del PSOE; Cristina Morón la sustituye como cabeza de lista del PSC por Lleida. Titular y entradilla cambiados en consecuencia.',
+        correcciones='17-10-2026: actualizada tras la dimisión de Mínguez como portavoz del PSOE; Cristina Morón la sustituye como cabeza de lista del PSC por Lleida. Titular y entradilla cambiados en consecuencia. 20-10-2026: el primer párrafo aún decía que Mínguez «encabezará otra vez la lista»; ahora dice que fue ratificada y dimitió el 16 de octubre. «Lo que se juega Mínguez» pasa a «lo que se juega el PSC».',
         titulo='Montse Mínguez dimite y deja la lista de Lleida: el PSC duplicó allí su voto en 2023 y le ganó el cuarto diputado al PP por unos 3.500 votos', serie='29n',
         descripcion='La portavoz del PSOE dimitió el 16 de octubre por la polémica de los negocios inmobiliarios de su pareja, y Cristina Morón la sustituye como número uno del PSC por Lleida. En 2023, el PSC pasó del 14,6% al 29,8% en la provincia y ganó en 79 municipios, frente a 8 en 2019.',
         compara='El voto en la provincia de Lleida en las 16 generales desde 1977, los 231 municipios en noviembre de 2019 y julio de 2023, el reparto D\'Hondt de los cuatro escaños de 2023 y las 81 secciones censales de la ciudad de Lleida agrupadas en tres tramos de renta.',
@@ -949,7 +953,9 @@ PIEZAS = [
         descripcion='Se cerró el plazo de coaliciones. Habrá papeleta común en Canarias y la Comunitat Valenciana; en Baleares y Aragón, el Frente Amplio va con partidos territoriales y sin Podemos, y en Cataluña Podemos entra en las listas de ERC.',
         compara='Las coaliciones registradas por el Frente Amplio y Podemos para el 29N en cada provincia, junto a los votos y escaños que Sumar, que en 2023 los reunía a todos, sacó en esas provincias en las generales de 2023.',
         limites='Las coaliciones salen de la prensa del 16 y 17 de octubre (Público, elDiario.es, Europa Press y Efe), no de la publicación oficial de la Junta Electoral, que puede matizar algún caso; en Extremadura, la información es menos clara. Que no haya coalición no significa que Podemos vaya a presentar lista en todas las provincias: las candidaturas se registran más tarde. Sumar se presentó en 2023 con Podemos, IU, Compromís, Más Madrid, los comuns y otros partidos; sus votos de 2023 describen dónde estaba ese voto, no cómo se repartirá ahora. No calculamos escaños para el 29N. Los votos de 2023 incluyen el voto exterior.',
-        fuentes=[INTERIOR,
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian.',
+        fuentes=[INTERIOR_CERA,
                  ('https://www.publico.es/politica/frente-amplio-podemos-concurriran-separado-29-noviembre-salvo-canarias-pais-valencia.html', 'Público, Frente Amplio y Podemos concurrirán por separado salvo en Canarias y País Valencià (16-10-2026)'),
                  ('https://www.eldiario.es/politica/son-acuerdos-izquierda-alternativa-territorio-territorio_1_13589702.html', 'elDiario.es, así han quedado las candidaturas de la izquierda alternativa, territorio a territorio (17-10-2026)'),
                  ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)'),
@@ -965,10 +971,13 @@ PIEZAS = [
     dict(
         slug='ley-nietos-voto-exterior-29n', fecha='2026-10-20',
         titulo='El Supremo deja sin voto a 163.020 nacionalizados por la ley de nietos: en 2023, el voto exterior ya le dio al PP un escaño del PSOE en Madrid', serie='29n',
-        descripcion='El voto de fuera cambió el último diputado de Madrid por menos de 200 votos de cociente. Para el 29N, el censo de residentes en el extranjero ha crecido un 19%, y casi un tercio del aumento está en Madrid.',
+        descripcion='El voto de fuera cambió el último diputado de Madrid por menos de 200 votos de cociente. Para el 29N, el censo de residentes en el extranjero ha crecido un 19%, y más de una cuarta parte del aumento está en Madrid.',
         compara='El voto de los residentes en el extranjero (CERA) en las generales de 2023 por provincia frente al voto emitido en España, el reparto del último escaño de Madrid con y sin ese voto, y el censo de residentes en el extranjero de 2023 frente al del 29N.',
         limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. El censo de 2023 es el que figura en los ficheros de Interior y el de 2026 el que publica el INE, que pueden no medir exactamente lo mismo. No hay datos públicos de cuántos de los 163.020 suspendidos hay en cada provincia ni de cómo votarían, así que no se puede calcular a quién afecta la suspensión. Los porcentajes de PSOE incluyen al PSC y a sus federaciones, y los de Sumar todas sus marcas; el PP no incluye a UPN.',
-        fuentes=[INTERIOR,
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: el aumento del censo exterior en Madrid (122.370) es el 27,7% del total (441.385), más de una cuarta parte, no «casi un tercio». Además, la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian. También se corrige la nota de método, que decía «votos a candidaturas»: los porcentajes son sobre voto válido, como indica el gráfico, y la fuente del gráfico de Madrid, que ahora cita el voto CERA.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
+        fuentes=[INTERIOR_CERA,
                  ('https://www.ine.es/dyngs/Prensa/EG2026.htm', 'INE, Elecciones a Cortes Generales de 29 de noviembre de 2026, nota de prensa (9-10-2026)'),
                  ('https://www.elindependiente.com/espana/2026/10/12/el-tribunal-supremo-suspende-el-voto-de-los-nacionalizados-por-la-ley-de-nietos-para-las-elecciones-del-29n/', 'El Independiente, El Supremo suspende el voto de los nacionalizados por la ley de nietos (12-10-2026)'),
                  ('https://www.que.es/2026/10/13/ley-nietos-voto-supremo-29n-2/', 'Que.es, El Supremo deja sin voto el 29N a 163.020 nacionalizados (13-10-2026)'),
@@ -984,11 +993,14 @@ PIEZAS = [
     ),
     dict(
         slug='senado-psoe-frente-amplio-29n', fecha='2026-10-20',
-        titulo='PSOE y Frente Amplio, juntos al Senado: con los votos de 2023, su lista habría ganado al PP en 16 provincias donde este sacó tres senadores', serie='29n',
-        descripcion='El PP habría bajado de 120 a 84 senadores elegidos y la lista conjunta habría pasado de la mitad. Albacete queda empatada; Murcia, tres provincias gallegas y casi toda Castilla y León siguen siendo del PP.',
-        compara='Los votos por candidato del PP frente a la suma de los del PSOE y Sumar en las elecciones al Senado de 2023, en las 39 provincias de cuatro senadores que entran en la lista conjunta y tienen datos completos.',
-        limites='Es una simulación aritmética, no una previsión. Usa los votos por candidato (suma de votos de los candidatos de cada partido dividida entre los que presentó) y supone que todos los votantes de PSOE y Sumar votarían a los tres candidatos de la lista conjunta, lo que en el voto limitado del Senado no está garantizado. Los resultados por candidato proceden de Wikipedia, que recoge los datos de Interior; no se pudo descargar el fichero oficial. Zaragoza queda fuera porque la fuente no tiene completos los datos de Sumar. No se modelan las islas, Ceuta y Melilla ni los senadores de designación autonómica.',
-        fuentes=[('https://en.wikipedia.org/wiki/Albacete_(Senate_constituency)', 'Wikipedia, páginas de cada circunscripción del Senado (resultados de 2023 por candidato, de Interior)'),
+        titulo='PSOE y Frente Amplio, juntos al Senado: con los votos de 2023, su lista habría ganado al PP en 17 provincias donde este sacó tres senadores', serie='29n',
+        descripcion='El PP habría bajado de 120 a 82 senadores elegidos, y el PSOE con la lista conjunta habría pasado de la mitad. Albacete queda empatada; Murcia, tres provincias gallegas y casi toda Castilla y León siguen siendo del PP.',
+        compara='Los votos por candidato del PP frente a la suma de los del PSOE y Sumar en las elecciones al Senado de 2023, en las 40 provincias de cuatro senadores que entran en la lista conjunta.',
+        limites='Es una simulación aritmética, no una previsión. Usa los votos por candidato (suma de votos de los candidatos de cada partido dividida entre los que presentó) y hace una suma mecánica con transferencia perfecta: supone que todos los votantes de PSOE y Sumar votarían a los tres candidatos de la lista conjunta, lo que en el voto limitado del Senado no está garantizado, y que no cambian la participación ni la estrategia de los demás partidos. Los votos son los oficiales de la Junta Electoral Central publicados en el BOE, con la corrección de un candidato del PSOE en Madrid. Los 72 senadores del PSOE de 2023 incluyen los del PSC y el PSE, que no entran en el pacto. No se modelan las islas, Ceuta y Melilla ni los senadores de designación autonómica.',
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la simulación usaba los votos por candidato de Wikipedia; ahora usa los oficiales de la Junta Electoral Central (BOE-A-2023-18907, con la corrección BOE-A-2023-19537). Con ellos entra Zaragoza, que antes quedaba fuera por falta de datos de Sumar, y donde la lista conjunta también habría ganado: son 17 provincias, no 16, y el PP bajaría a 82 senadores, no a 84. Se aclara que los 110 senadores (antes 108) suman los del PSOE de 2023, incluidos PSC y PSE, y los que ganaría la lista conjunta. Cambian ligeramente las cifras de Valencia, Málaga, Pontevedra y Toledo.',
+        fuentes=[('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907', 'Junta Electoral Central, resumen de los resultados de las elecciones al Congreso y al Senado de 23 de julio de 2023, BOE de 1-9-2023'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-19537', 'Junta Electoral Central, corrección de errores, BOE de 16-9-2023'),
                  ('https://www.infobae.com/espana/2026/10/19/elecciones-generales-29-n-en-directo-ultima-hora-de-los-sondeos-la-ley-de-nietos-o-los-anuncios-sobre-pensiones/', 'Infobae (Efe), directo del 19-10-2026: orden de las listas conjuntas'),
                  ('https://www.publico.es/politica/partidos/psoe-frente-amplio-e-izquierdas-territoriales-unen-listas-conjuntas-senado.html', 'Público, El PSOE, el Frente Amplio e izquierdas territoriales se unen para el Senado (16-10-2026)'),
                  ('https://www.moncloa.com/2026/10/19/pacto-senado-psoe-frente-amplio-3451456/', 'Moncloa.com, PSOE y Frente Amplio sellan su pacto en 43 provincias (19-10-2026)'),
@@ -1008,6 +1020,7 @@ PIEZAS = [
         descripcion='Su lista fue la más votada en 145 de las 149 secciones de la ciudad en mayo; en las generales de julio, el PP no ganó en ninguna. En 2019 pasó lo mismo: 37,6% en municipales y 9,4% en generales.',
         compara='El voto al PP en Badalona en las municipales de 2011, 2015, 2019 y 2023, con Xavier García Albiol de cabeza de lista, frente al voto al PP en las generales de abril y noviembre de 2019 y julio de 2023, en total y por sección censal.',
         limites='Los datos agregados por sección no permiten saber qué votantes cambiaron su voto ni cuántos se abstuvieron en una de las dos elecciones. El censo de las municipales incluye a residentes de la UE, que no votan en generales. No es una previsión: en 2026 Albiol se presenta al Congreso, no a la alcaldía.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
         fuentes=[INTERIOR,
                  ('https://cronicaglobal.elespanol.com/politica/20261017/pp-confirma-albiol-cabeza-lista-barcelona-congreso/1003742803654_0.html', 'Crónica Global, El PP confirma a Albiol como cabeza de lista por Barcelona (17-10-2026)'),
                  ('https://www.democrata.es/politica/garcia-albiol-encabezara-la-lista-del-pp-por-barcelona-al-congreso/', 'Demócrata, García Albiol, número uno del PP por Barcelona (17-10-2026)'),
@@ -1026,6 +1039,7 @@ PIEZAS = [
         descripcion='El PSOE solo ha sacado dos de los tres diputados de Palencia en 1982 y 1986. En abril de 2019 fue el más votado y se quedó a 478 votos del segundo escaño.',
         compara='El voto al PSOE y al PP en la circunscripción de Palencia en las generales de 2004 a 2023, los escaños de cada uno y los votos que le faltaron al PSOE para un segundo diputado.',
         limites='En 2011, 2015 y 2016 los votos que faltaron son una aproximación hecha con los cuatro primeros partidos. Los porcentajes de 2004 a 2016 no incluyen el voto en blanco en el voto válido porque no hay datos por mesa de esos años. No es una previsión: no dice si el cambio de candidata moverá votos.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
         fuentes=[INTERIOR,
                  ('https://www.elespanol.com/castilla-y-leon/region/palencia/20261019/rebelion-psoe-palencia-ferraz-toda-lista-renuncia-imposicion-martinez-seijo/1003744426904_0.html', 'El Español, Rebelión en el PSOE de Palencia contra Ferraz (19-10-2026)'),
                  ('https://theobjective.com/espana/politica/2026-10-19/psoe-palencia-guerra-ferraz-candidato/', 'The Objective, El PSOE de Palencia, en guerra con Ferraz por el candidato (19-10-2026)'),
@@ -1043,7 +1057,9 @@ PIEZAS = [
         descripcion='Juntos le habrían quitado un escaño al PP en Las Palmas y otro al PSOE en Santa Cruz de Tenerife, este por unos 1.600 votos. Canarias es una de las dos comunidades donde el Frente Amplio y Podemos irán juntos el 29N.',
         compara='El reparto de escaños de 2023 en Las Palmas y Santa Cruz de Tenerife tal como fue y el que habría salido si los votos de Sumar y de Nueva Canarias-Bloque Canarista se hubieran sumado en una sola lista, con la regla D\'Hondt.',
         limites='Es una simulación aritmética, no una previsión: supone que todos los votantes de Sumar y de NC-BC en 2023 votarían la lista conjunta. En 2023 Sumar ya incluía a Podemos e IU. Drago Canarias se presenta por separado y no se puede separar qué parte del voto de Sumar en 2023 podría irse con ella. Se usan los votos por mesa de Interior con el voto exterior, que pueden diferir en unos pocos votos del escrutinio oficial.',
-        fuentes=[INTERIOR,
+        actualizado='2026-10-20',
+        correcciones='20-10-2026: la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian.',
+        fuentes=[INTERIOR_CERA,
                  ('https://rtvc.es/podemos-nueva-canarias-iu-sumar-juntos-29n-bajo-nombre-unidad-pueblo-canario-15-octubre-2026/', 'RTVC, Podemos, Nueva Canarias, IU y Sumar irán juntos al 29N (15-10-2026)'),
                  ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/17/2730679/frente-amplio-podemos-consuman-fractura-llegar-acuerdo-global-para-coaliciones-29n.html', 'Última Hora (Europa Press y Efe), Frente Amplio y Podemos consuman su fractura (17-10-2026)'),
                  ('https://diariodeavisos.elespanol.com/2026/02/nueva-canarias-plan-rufian-dos-diputados-congreso-izquierdas/', 'Diario de Avisos (Efe), Nueva Canarias aspira a dos diputados (19-2-2026)'),
@@ -1489,7 +1505,7 @@ def pieza(p, todas):
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>{p['compara']}</dd>
 <dt>Límites</dt><dd>{p['limites']}</dd>
-<dt>Cómo se calcula</dt><dd>Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
+<dt>Cómo se calcula</dt><dd>{p.get('calculo', 'Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo.')} Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
