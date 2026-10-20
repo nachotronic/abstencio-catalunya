@@ -959,6 +959,27 @@ PIEZAS = [
                   pie='Las coaliciones de la izquierda a la izquierda del PSOE para el 29N, provincia a provincia.',
                   fuente='Público, elDiario.es, Europa Press y Efe; elaboración propia'),
     ),
+    dict(
+        slug='ley-nietos-voto-exterior-29n', fecha='2026-10-20',
+        titulo='El Supremo deja sin voto a 163.020 nacionalizados por la ley de nietos: en 2023, el voto exterior ya le dio al PP un escaño del PSOE en Madrid', serie='29n',
+        descripcion='El voto de fuera cambió el último diputado de Madrid por menos de 200 votos de cociente. Para el 29N, el censo de residentes en el extranjero ha crecido un 19%, y casi un tercio del aumento está en Madrid.',
+        compara='El voto de los residentes en el extranjero (CERA) en las generales de 2023 por provincia frente al voto emitido en España, el reparto del último escaño de Madrid con y sin ese voto, y el censo de residentes en el extranjero de 2023 frente al del 29N.',
+        limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. El censo de 2023 es el que figura en los ficheros de Interior y el de 2026 el que publica el INE, que pueden no medir exactamente lo mismo. No hay datos públicos de cuántos de los 163.020 suspendidos hay en cada provincia ni de cómo votarían, así que no se puede calcular a quién afecta la suspensión. Los porcentajes de PSOE incluyen al PSC y a sus federaciones, y los de Sumar todas sus marcas; el PP no incluye a UPN.',
+        fuentes=[INTERIOR,
+                 ('https://www.ine.es/dyngs/Prensa/EG2026.htm', 'INE, Elecciones a Cortes Generales de 29 de noviembre de 2026, nota de prensa (9-10-2026)'),
+                 ('https://www.elindependiente.com/espana/2026/10/12/el-tribunal-supremo-suspende-el-voto-de-los-nacionalizados-por-la-ley-de-nietos-para-las-elecciones-del-29n/', 'El Independiente, El Supremo suspende el voto de los nacionalizados por la ley de nietos (12-10-2026)'),
+                 ('https://www.que.es/2026/10/13/ley-nietos-voto-supremo-29n-2/', 'Que.es, El Supremo deja sin voto el 29N a 163.020 nacionalizados (13-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-18/vox-constitucional-recurso-gabilondo-ley-de-nietos/', 'The Objective (Efe), Vox pide al Constitucional que inadmita el recurso de Gabilondo (18-10-2026)'),
+                 ('https://www.infobae.com/america/agencias/2026/10/11/sanchez-pide-frenar-el-intento-de-atropello-que-impediria-votar-a-nietos-de-exiliados/', 'Infobae (Efe), Sánchez pide frenar el «intento de atropello» (11-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/12/vox-celebra-que-el-supremo-le-de-la-razon-con-la-ley-de-nietos-y-que-las-elecciones-se-celebren-sin-fraude/', 'Infobae (Europa Press), Vox celebra que el Supremo le dé la razón (12-10-2026)'),
+                 ('https://www.publico.es/politica/1-26-millones-electores-incorporan-censo-29-n.html', 'Público (agencias), Más de 1,26 millones de electores se incorporan al censo (9-10-2026)'),
+                 ('https://doi.org/10.5944/rdp.120.2024.41766', 'Álvarez Vélez y Corres-Illera, La relevancia del voto CERA, Revista de Derecho Político 120 (2024)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/ley-nietos-voto-exterior-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Electores en el extranjero en 2023 y en 2026 en las provincias donde más han crecido.',
+                  fuente='Ministerio del Interior e INE. Cálculo de mapaelectoral.es'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1154,6 +1175,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'ley-nietos-voto-exterior-29n': 'Las papeletas que llegan de fuera',
     'pactos-izquierda-mapa-final-29n': 'El mapa que dejó el plazo',
     'rufian-fracaso-lista-unitaria-29n': 'Lo que valía la suma',
     'desahucios-ocupaciones-cgpj-29n': 'Dos verbos para una puerta',
