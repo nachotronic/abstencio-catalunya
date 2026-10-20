@@ -1,0 +1,5749 @@
+{
+ "2015_12": {
+  "participacion": 69.56,
+  "provincias": {
+   "01": {
+    "prov": "Álava",
+    "ccaa": "País Vasco",
+    "escanos": 4,
+    "validos": 179064,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS-AHAL DUGU",
+      "votos": 48266,
+      "pct": 26.95,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR- ORAIN BATERA:EZKER ANITZA-IZQUIERD",
+      "votos": 6794,
+      "pct": 3.79,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 30.75,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "PSOE": -1
+    }
+   },
+   "02": {
+    "prov": "Albacete",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 4,
+    "validos": 230930,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 32155,
+      "pct": 13.92,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 9277,
+      "pct": 4.02,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.94,
+    "esc_real": 0,
+    "esc_juntos": 1,
+    "cambio": {
+     "Cs": -1
+    }
+   },
+   "03": {
+    "prov": "Alicante",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 12,
+    "validos": 903202,
+    "listas": [
+     {
+      "marca": "Compromís-Podemos",
+      "nombre": "COMPROMÍS-PODEMOS-ÉS EL MOMENT",
+      "votos": 200885,
+      "pct": 22.24,
+      "esc": 3
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNITAT POPULAR:ESQUERRA UNIDA DEL PAÍS VALENCIÀ, U",
+      "votos": 33293,
+      "pct": 3.69,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 25.93,
+    "esc_real": 3,
+    "esc_juntos": 3,
+    "cambio": {}
+   },
+   "04": {
+    "prov": "Almería",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 308633,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 39482,
+      "pct": 12.79,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 10776,
+      "pct": 3.49,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.28,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "05": {
+    "prov": "Ávila",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 101916,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 11861,
+      "pct": 11.64,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 3881,
+      "pct": 3.81,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.45,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "06": {
+    "prov": "Badajoz",
+    "ccaa": "Extremadura",
+    "escanos": 6,
+    "validos": 397852,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 47203,
+      "pct": 11.86,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 12281,
+      "pct": 3.09,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.95,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "07": {
+    "prov": "Illes Balears",
+    "ccaa": "Illes Balears",
+    "escanos": 8,
+    "validos": 483914,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 111451,
+      "pct": 23.03,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNITAT POPULAR BALEARS: IZQUIERDA UNIDA, UNIDAD PO",
+      "votos": 11439,
+      "pct": 2.36,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 25.4,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "08": {
+    "prov": "Barcelona",
+    "ccaa": "Cataluña",
+    "escanos": 31,
+    "validos": 2857651,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM",
+      "votos": 765969,
+      "pct": 26.8,
+      "esc": 9
+     }
+    ],
+    "suma_pct": 26.8,
+    "esc_real": 9,
+    "esc_juntos": 9,
+    "cambio": {}
+   },
+   "09": {
+    "prov": "Burgos",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 215746,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 36602,
+      "pct": 16.97,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 10117,
+      "pct": 4.69,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 21.65,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "10": {
+    "prov": "Cáceres",
+    "ccaa": "Extremadura",
+    "escanos": 4,
+    "validos": 248447,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 34552,
+      "pct": 13.91,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA-UNIDAD POPULAR EN",
+      "votos": 7216,
+      "pct": 2.9,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.81,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "11": {
+    "prov": "Cádiz",
+    "ccaa": "Andalucía",
+    "escanos": 9,
+    "validos": 645152,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 130215,
+      "pct": 20.18,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 38798,
+      "pct": 6.01,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 26.2,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "12": {
+    "prov": "Castellón",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 5,
+    "validos": 308512,
+    "listas": [
+     {
+      "marca": "Compromís-Podemos",
+      "nombre": "COMPROMÍS-PODEMOS-ÉS EL MOMENT",
+      "votos": 74457,
+      "pct": 24.13,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNITAT POPULAR: ESQUERRA UNIDA DEL PAÍS VALENCIÀ,",
+      "votos": 9565,
+      "pct": 3.1,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 27.23,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "13": {
+    "prov": "Ciudad Real",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 5,
+    "validos": 294200,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 36724,
+      "pct": 12.48,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 9801,
+      "pct": 3.33,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.81,
+    "esc_real": 0,
+    "esc_juntos": 1,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "14": {
+    "prov": "Córdoba",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 466655,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 68451,
+      "pct": 14.67,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 37564,
+      "pct": 8.05,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 22.72,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "15": {
+    "prov": "A Coruña",
+    "ccaa": "Galicia",
+    "escanos": 8,
+    "validos": 673396,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 176631,
+      "pct": 26.23,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 26.23,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "16": {
+    "prov": "Cuenca",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 120756,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 14047,
+      "pct": 11.63,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 3615,
+      "pct": 2.99,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.63,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "17": {
+    "prov": "Girona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 332623,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM",
+      "votos": 53894,
+      "pct": 16.2,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.2,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "18": {
+    "prov": "Granada",
+    "ccaa": "Andalucía",
+    "escanos": 7,
+    "validos": 508442,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 83082,
+      "pct": 16.34,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES - CONVO",
+      "votos": 25905,
+      "pct": 5.09,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 21.44,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "19": {
+    "prov": "Guadalajara",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 135955,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 23736,
+      "pct": 17.46,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 5605,
+      "pct": 4.12,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 21.58,
+    "esc_real": 0,
+    "esc_juntos": 1,
+    "cambio": {
+     "Cs": -1
+    }
+   },
+   "20": {
+    "prov": "Gipuzkoa",
+    "ccaa": "País Vasco",
+    "escanos": 6,
+    "validos": 389159,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS-AHAL DUGU",
+      "votos": 97859,
+      "pct": 25.15,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR-ORAIN BATERA:EZKER ANITZA-IZQUIERDA",
+      "votos": 10630,
+      "pct": 2.73,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 27.88,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "21": {
+    "prov": "Huelva",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 257942,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 39319,
+      "pct": 15.24,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 11764,
+      "pct": 4.56,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 19.8,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "22": {
+    "prov": "Huesca",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 121982,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "PODEMOS-AHORA ALTO ARAGÓN EN COMÚN",
+      "votos": 21779,
+      "pct": 17.85,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR EN ARAGÓN: IZQUIERDA UNIDA, CHUNTA",
+      "votos": 6400,
+      "pct": 5.25,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 23.1,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "23": {
+    "prov": "Jaén",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 386150,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 48431,
+      "pct": 12.54,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 16719,
+      "pct": 4.33,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.87,
+    "esc_real": 0,
+    "esc_juntos": 1,
+    "cambio": {
+     "PSOE": -1
+    }
+   },
+   "24": {
+    "prov": "León",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 292070,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 50968,
+      "pct": 17.45,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 13929,
+      "pct": 4.77,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 22.22,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "25": {
+    "prov": "Lleida",
+    "ccaa": "Cataluña",
+    "escanos": 4,
+    "validos": 198626,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM",
+      "votos": 30362,
+      "pct": 15.29,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 15.29,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "26": {
+    "prov": "La Rioja",
+    "ccaa": "La Rioja",
+    "escanos": 4,
+    "validos": 176792,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 27942,
+      "pct": 15.81,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 7400,
+      "pct": 4.19,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 19.99,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "27": {
+    "prov": "Lugo",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 202891,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 38873,
+      "pct": 19.16,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 19.16,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "28": {
+    "prov": "Madrid",
+    "ccaa": "Madrid",
+    "escanos": 36,
+    "validos": 3615453,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 750901,
+      "pct": 20.77,
+      "esc": 8
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 189204,
+      "pct": 5.23,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 26.0,
+    "esc_real": 10,
+    "esc_juntos": 10,
+    "cambio": {}
+   },
+   "29": {
+    "prov": "Málaga",
+    "ccaa": "Andalucía",
+    "escanos": 11,
+    "validos": 773943,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 132345,
+      "pct": 17.1,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 52647,
+      "pct": 6.8,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 23.9,
+    "esc_real": 2,
+    "esc_juntos": 3,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "30": {
+    "prov": "Murcia",
+    "ccaa": "Murcia",
+    "escanos": 10,
+    "validos": 724995,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 110134,
+      "pct": 15.19,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: UNIDAD POPULAR EN COMÚN, IZQUIERDA",
+      "votos": 22710,
+      "pct": 3.13,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 18.32,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "31": {
+    "prov": "Navarra",
+    "ccaa": "Navarra",
+    "escanos": 5,
+    "validos": 353344,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 80961,
+      "pct": 22.91,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR-ORAIN BATERA:IZQUIERDA UNIDA, BATZA",
+      "votos": 14489,
+      "pct": 4.1,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 27.01,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "32": {
+    "prov": "Ourense",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 192408,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 34089,
+      "pct": 17.72,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.72,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "33": {
+    "prov": "Asturias",
+    "ccaa": "Asturias",
+    "escanos": 8,
+    "validos": 621230,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 132008,
+      "pct": 21.25,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 52316,
+      "pct": 8.42,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 29.67,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "34": {
+    "prov": "Palencia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 104585,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 13981,
+      "pct": 13.37,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 4682,
+      "pct": 4.48,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.84,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "35": {
+    "prov": "Las Palmas",
+    "ccaa": "Canarias",
+    "escanos": 8,
+    "validos": 515221,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 136278,
+      "pct": 26.45,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA. UNIDAD POPULAR EN",
+      "votos": 15235,
+      "pct": 2.96,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 29.41,
+    "esc_real": 2,
+    "esc_juntos": 3,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "36": {
+    "prov": "Pontevedra",
+    "ccaa": "Galicia",
+    "escanos": 7,
+    "validos": 571144,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 158824,
+      "pct": 27.81,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 27.81,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "37": {
+    "prov": "Salamanca",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 209215,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 25448,
+      "pct": 12.16,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 6957,
+      "pct": 3.33,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.49,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "38": {
+    "prov": "Santa Cruz de Tenerife",
+    "ccaa": "Canarias",
+    "escanos": 7,
+    "validos": 477178,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 94785,
+      "pct": 19.86,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA CANARIA, UNIDAD PO",
+      "votos": 15698,
+      "pct": 3.29,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 23.15,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "Cs": -1
+    }
+   },
+   "39": {
+    "prov": "Cantabria",
+    "ccaa": "Cantabria",
+    "escanos": 5,
+    "validos": 349258,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 62219,
+      "pct": 17.81,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 15428,
+      "pct": 4.42,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 22.23,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "40": {
+    "prov": "Segovia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 91807,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 13066,
+      "pct": 14.23,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 3734,
+      "pct": 4.07,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 18.3,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "41": {
+    "prov": "Sevilla",
+    "ccaa": "Andalucía",
+    "escanos": 12,
+    "validos": 1091590,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 207614,
+      "pct": 19.02,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA LOS VERDES-CONVOCA",
+      "votos": 62167,
+      "pct": 5.7,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 24.71,
+    "esc_real": 2,
+    "esc_juntos": 3,
+    "cambio": {
+     "Cs": -1
+    }
+   },
+   "42": {
+    "prov": "Soria",
+    "ccaa": "Castilla y León",
+    "escanos": 2,
+    "validos": 51796,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 8267,
+      "pct": 15.96,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 1833,
+      "pct": 3.54,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 19.5,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "43": {
+    "prov": "Tarragona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 372879,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM",
+      "votos": 76828,
+      "pct": 20.6,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 20.6,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "44": {
+    "prov": "Teruel",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 77570,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 11806,
+      "pct": 15.22,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR EN ARAGÓN: IZQUIERDA UNIDA, CHUNTA",
+      "votos": 3883,
+      "pct": 5.01,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 20.23,
+    "esc_real": 0,
+    "esc_juntos": 1,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "45": {
+    "prov": "Toledo",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 6,
+    "validos": 384141,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 52407,
+      "pct": 13.64,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 13555,
+      "pct": 3.53,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.17,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "46": {
+    "prov": "Valencia",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 16,
+    "validos": 1462958,
+    "listas": [
+     {
+      "marca": "Compromís-Podemos",
+      "nombre": "COMPROMÍS-PODEMOS-ÉS EL MOMENT",
+      "votos": 395735,
+      "pct": 27.05,
+      "esc": 5
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNITAT POPULAR: ESQUERRA UNIDA DEL PAÍS VALENCIÀ,",
+      "votos": 68759,
+      "pct": 4.7,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 31.75,
+    "esc_real": 5,
+    "esc_juntos": 6,
+    "cambio": {
+     "Cs": -1
+    }
+   },
+   "47": {
+    "prov": "Valladolid",
+    "ccaa": "Castilla y León",
+    "escanos": 5,
+    "validos": 328495,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 49880,
+      "pct": 15.18,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 17849,
+      "pct": 5.43,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 20.62,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "48": {
+    "prov": "Bizkaia",
+    "ccaa": "País Vasco",
+    "escanos": 8,
+    "validos": 652785,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS/AHAL DUGU",
+      "votos": 170256,
+      "pct": 26.08,
+      "esc": 2
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR-ORAIN BATERA:EZKER ANITZA-IZQUIERDA",
+      "votos": 18408,
+      "pct": 2.82,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 28.9,
+    "esc_real": 2,
+    "esc_juntos": 3,
+    "cambio": {
+     "PNV": -1
+    }
+   },
+   "49": {
+    "prov": "Zamora",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 113027,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 15721,
+      "pct": 13.91,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 5490,
+      "pct": 4.86,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 18.77,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "50": {
+    "prov": "Zaragoza",
+    "ccaa": "Aragón",
+    "escanos": 7,
+    "validos": 533646,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 102218,
+      "pct": 19.15,
+      "esc": 1
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR EN ARAGÓN: IZQUIERDA UNIDA, CHUNTA",
+      "votos": 34773,
+      "pct": 6.52,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 25.67,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "51": {
+    "prov": "Ceuta",
+    "ccaa": "Ceuta",
+    "escanos": 1,
+    "validos": 32815,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 4630,
+      "pct": 14.11,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR: IZQUIERDA UNIDA, UNIDAD POPULAR EN",
+      "votos": 428,
+      "pct": 1.3,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.41,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "52": {
+    "prov": "Melilla",
+    "ccaa": "Melilla",
+    "escanos": 1,
+    "validos": 27881,
+    "listas": [
+     {
+      "marca": "Podemos",
+      "nombre": "PODEMOS",
+      "votos": 3206,
+      "pct": 11.5,
+      "esc": 0
+     },
+     {
+      "marca": "IU-Unidad Popular",
+      "nombre": "UNIDAD POPULAR-IZQUIERDA UNIDA",
+      "votos": 363,
+      "pct": 1.3,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.8,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   }
+  },
+  "esc_real": {
+   "Podemos": 41,
+   "PP": 123,
+   "PNV": 6,
+   "PSOE": 90,
+   "Cs": 40,
+   "Compromís-Podemos": 9,
+   "En Comú Podem": 13,
+   "ERC": 9,
+   "Junts": 8,
+   "En Marea": 6,
+   "EH Bildu": 2,
+   "IU-Unidad Popular": 2,
+   "CC": 1
+  },
+  "esc_juntos": {
+   "Juntos": 86,
+   "PP": 116,
+   "PNV": 5,
+   "PSOE": 88,
+   "Cs": 35,
+   "ERC": 9,
+   "Junts": 8,
+   "EH Bildu": 2,
+   "CC": 1
+  },
+  "votos": {
+   "BNG": 70465,
+   "CC": 81750,
+   "Compromís-Podemos": 671077,
+   "Cs": 3500063,
+   "EH Bildu": 218453,
+   "ERC": 599375,
+   "En Comú Podem": 948832,
+   "En Marea": 408417,
+   "GBAI": 30554,
+   "IU-Unidad Popular": 923377,
+   "Junts": 565742,
+   "MÉS": 33839,
+   "PACMA": 219004,
+   "PCPE": 22183,
+   "PNV": 301590,
+   "PP": 7216024,
+   "PSOE": 5530428,
+   "Podemos": 3160477,
+   "RECORTES CE": 48242,
+   "UNIO.CAT": 65063,
+   "UPyD": 154132,
+   "Vox": 57691
+  },
+  "validos": 25168022
+ },
+ "2016_06": {
+  "participacion": 66.48,
+  "provincias": {
+   "01": {
+    "prov": "Álava",
+    "ccaa": "País Vasco",
+    "escanos": 4,
+    "validos": 167640,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS/ELKARREKIN AHAL DUGU",
+      "votos": 51827,
+      "pct": 30.92,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 30.92,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "02": {
+    "prov": "Albacete",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 4,
+    "validos": 219473,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 33509,
+      "pct": 15.27,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 15.27,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "03": {
+    "prov": "Alicante",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 12,
+    "validos": 875169,
+    "listas": [
+     {
+      "marca": "A la valenciana",
+      "nombre": "COMPROMÍS-PODEMOS-EUPV: A LA VALENCIANA",
+      "votos": 193263,
+      "pct": 22.08,
+      "esc": 3
+     }
+    ],
+    "suma_pct": 22.08,
+    "esc_real": 3,
+    "esc_juntos": 3,
+    "cambio": {}
+   },
+   "04": {
+    "prov": "Almería",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 306674,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 40578,
+      "pct": 13.23,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 13.23,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "05": {
+    "prov": "Ávila",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 98917,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 12527,
+      "pct": 12.66,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.66,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "06": {
+    "prov": "Badajoz",
+    "ccaa": "Extremadura",
+    "escanos": 6,
+    "validos": 377949,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 47182,
+      "pct": 12.48,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.48,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "07": {
+    "prov": "Illes Balears",
+    "ccaa": "Illes Balears",
+    "escanos": 8,
+    "validos": 464787,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNITS PODEM MÉS",
+      "votos": 118082,
+      "pct": 25.41,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 25.41,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "08": {
+    "prov": "Barcelona",
+    "ccaa": "Cataluña",
+    "escanos": 31,
+    "validos": 2643933,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 694315,
+      "pct": 26.26,
+      "esc": 9
+     }
+    ],
+    "suma_pct": 26.26,
+    "esc_real": 9,
+    "esc_juntos": 9,
+    "cambio": {}
+   },
+   "09": {
+    "prov": "Burgos",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 206981,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 35705,
+      "pct": 17.25,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.25,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "10": {
+    "prov": "Cáceres",
+    "ccaa": "Extremadura",
+    "escanos": 4,
+    "validos": 236205,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 33164,
+      "pct": 14.04,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.04,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "11": {
+    "prov": "Cádiz",
+    "ccaa": "Andalucía",
+    "escanos": 9,
+    "validos": 615755,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 130643,
+      "pct": 21.22,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 21.22,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "12": {
+    "prov": "Castellón",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 5,
+    "validos": 299204,
+    "listas": [
+     {
+      "marca": "A la valenciana",
+      "nombre": "COMPROMÍS-PODEMOS-EUPV: A LA VALENCIANA",
+      "votos": 72281,
+      "pct": 24.16,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 24.16,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "13": {
+    "prov": "Ciudad Real",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 5,
+    "validos": 279396,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 37510,
+      "pct": 13.43,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 13.43,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "14": {
+    "prov": "Córdoba",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 446818,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 85058,
+      "pct": 19.04,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 19.04,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "15": {
+    "prov": "A Coruña",
+    "ccaa": "Galicia",
+    "escanos": 8,
+    "validos": 643389,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 148566,
+      "pct": 23.09,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 23.09,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "16": {
+    "prov": "Cuenca",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 115849,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 15263,
+      "pct": 13.17,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 13.17,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "17": {
+    "prov": "Girona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 307853,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 53277,
+      "pct": 17.31,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.31,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "18": {
+    "prov": "Granada",
+    "ccaa": "Andalucía",
+    "escanos": 7,
+    "validos": 489540,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 86975,
+      "pct": 17.77,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.77,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "19": {
+    "prov": "Guadalajara",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 131538,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 23884,
+      "pct": 18.16,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 18.16,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "20": {
+    "prov": "Gipuzkoa",
+    "ccaa": "País Vasco",
+    "escanos": 6,
+    "validos": 365493,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS/ELKARREKIN AHAL DUGU",
+      "votos": 104566,
+      "pct": 28.61,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 28.61,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "21": {
+    "prov": "Huelva",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 245819,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 40023,
+      "pct": 16.28,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.28,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "22": {
+    "prov": "Huesca",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 116884,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS EN ALTO ARAGÓN",
+      "votos": 22430,
+      "pct": 19.19,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 19.19,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "23": {
+    "prov": "Jaén",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 370762,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 53239,
+      "pct": 14.36,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.36,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "24": {
+    "prov": "León",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 280858,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 49484,
+      "pct": 17.62,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.62,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "25": {
+    "prov": "Lleida",
+    "ccaa": "Cataluña",
+    "escanos": 4,
+    "validos": 181159,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 30182,
+      "pct": 16.66,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.66,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "26": {
+    "prov": "La Rioja",
+    "ccaa": "La Rioja",
+    "escanos": 4,
+    "validos": 172982,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 28772,
+      "pct": 16.63,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.63,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "27": {
+    "prov": "Lugo",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 192957,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 32752,
+      "pct": 16.97,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.97,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "28": {
+    "prov": "Madrid",
+    "ccaa": "Madrid",
+    "escanos": 36,
+    "validos": 3465795,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 737885,
+      "pct": 21.29,
+      "esc": 8
+     }
+    ],
+    "suma_pct": 21.29,
+    "esc_real": 8,
+    "esc_juntos": 8,
+    "cambio": {}
+   },
+   "29": {
+    "prov": "Málaga",
+    "ccaa": "Andalucía",
+    "escanos": 11,
+    "validos": 744858,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 140829,
+      "pct": 18.91,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 18.91,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "30": {
+    "prov": "Murcia",
+    "ccaa": "Murcia",
+    "escanos": 10,
+    "validos": 713592,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 103522,
+      "pct": 14.51,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.51,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "31": {
+    "prov": "Navarra",
+    "ccaa": "Navarra",
+    "escanos": 5,
+    "validos": 335335,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS-ELKARREKIN AHAL DUGU",
+      "votos": 94972,
+      "pct": 28.32,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 28.32,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "32": {
+    "prov": "Ourense",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 186177,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 29136,
+      "pct": 15.65,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.65,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "33": {
+    "prov": "Asturias",
+    "ccaa": "Asturias",
+    "escanos": 8,
+    "validos": 594699,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS/XUNÍOS PODEMOS",
+      "votos": 141845,
+      "pct": 23.85,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 23.85,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "34": {
+    "prov": "Palencia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 100626,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 15077,
+      "pct": 14.98,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.98,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "35": {
+    "prov": "Las Palmas",
+    "ccaa": "Canarias",
+    "escanos": 8,
+    "validos": 502506,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 113256,
+      "pct": 22.54,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 22.54,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "36": {
+    "prov": "Pontevedra",
+    "ccaa": "Galicia",
+    "escanos": 7,
+    "validos": 544673,
+    "listas": [
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 137088,
+      "pct": 25.17,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 25.17,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "37": {
+    "prov": "Salamanca",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 202483,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 25441,
+      "pct": 12.56,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.56,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "38": {
+    "prov": "Santa Cruz de Tenerife",
+    "ccaa": "Canarias",
+    "escanos": 7,
+    "validos": 476666,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 85178,
+      "pct": 17.87,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.87,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "39": {
+    "prov": "Cantabria",
+    "ccaa": "Cantabria",
+    "escanos": 5,
+    "validos": 337567,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 59845,
+      "pct": 17.73,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.73,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "40": {
+    "prov": "Segovia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 88525,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 13440,
+      "pct": 15.18,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.18,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "41": {
+    "prov": "Sevilla",
+    "ccaa": "Andalucía",
+    "escanos": 12,
+    "validos": 1033112,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS POR ANDALUCÍA",
+      "votos": 214663,
+      "pct": 20.78,
+      "esc": 3
+     }
+    ],
+    "suma_pct": 20.78,
+    "esc_real": 3,
+    "esc_juntos": 3,
+    "cambio": {}
+   },
+   "42": {
+    "prov": "Soria",
+    "ccaa": "Castilla y León",
+    "escanos": 2,
+    "validos": 49618,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 7599,
+      "pct": 15.32,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.32,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "43": {
+    "prov": "Tarragona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 344620,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 75328,
+      "pct": 21.86,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 21.86,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "44": {
+    "prov": "Teruel",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 74922,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS EN ARAGÓN",
+      "votos": 12558,
+      "pct": 16.76,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.76,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "45": {
+    "prov": "Toledo",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 6,
+    "validos": 367503,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 53994,
+      "pct": 14.69,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.69,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "46": {
+    "prov": "Valencia",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 16,
+    "validos": 1419521,
+    "listas": [
+     {
+      "marca": "A la valenciana",
+      "nombre": "COMPROMÍS-PODEMOS-EUPV: A LA VALENCIANA",
+      "votos": 394227,
+      "pct": 27.77,
+      "esc": 5
+     }
+    ],
+    "suma_pct": 27.77,
+    "esc_real": 5,
+    "esc_juntos": 5,
+    "cambio": {}
+   },
+   "47": {
+    "prov": "Valladolid",
+    "ccaa": "Castilla y León",
+    "escanos": 5,
+    "validos": 315768,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 51637,
+      "pct": 16.35,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.35,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "48": {
+    "prov": "Bizkaia",
+    "ccaa": "País Vasco",
+    "escanos": 8,
+    "validos": 621219,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS/ELKARREKIN AHAL DUGU",
+      "votos": 179347,
+      "pct": 28.87,
+      "esc": 3
+     }
+    ],
+    "suma_pct": 28.87,
+    "esc_real": 3,
+    "esc_juntos": 3,
+    "cambio": {}
+   },
+   "49": {
+    "prov": "Zamora",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 108893,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 15403,
+      "pct": 14.15,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.15,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "50": {
+    "prov": "Zaragoza",
+    "ccaa": "Aragón",
+    "escanos": 7,
+    "validos": 513135,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS EN ARAGÓN",
+      "votos": 104199,
+      "pct": 20.31,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 20.31,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "51": {
+    "prov": "Ceuta",
+    "ccaa": "Ceuta",
+    "escanos": 1,
+    "validos": 30837,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 3345,
+      "pct": 10.85,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.85,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "52": {
+    "prov": "Melilla",
+    "ccaa": "Melilla",
+    "escanos": 1,
+    "validos": 27121,
+    "listas": [
+     {
+      "marca": "Unidos Podemos",
+      "nombre": "UNIDOS PODEMOS",
+      "votos": 2667,
+      "pct": 9.83,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.83,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   }
+  },
+  "esc_real": {
+   "Unidos Podemos": 45,
+   "PP": 137,
+   "PNV": 5,
+   "PSOE": 85,
+   "A la valenciana": 9,
+   "Cs": 32,
+   "En Comú Podem": 12,
+   "ERC": 9,
+   "Junts": 8,
+   "En Marea": 5,
+   "EH Bildu": 2,
+   "CC": 1
+  },
+  "esc_juntos": {
+   "Juntos": 71,
+   "PP": 137,
+   "PNV": 5,
+   "PSOE": 85,
+   "Cs": 32,
+   "ERC": 9,
+   "Junts": 8,
+   "EH Bildu": 2,
+   "CC": 1
+  },
+  "votos": {
+   "A la valenciana": 659771,
+   "BNG": 45252,
+   "CC": 78253,
+   "Cs": 3141570,
+   "EH Bildu": 184713,
+   "ERC": 632234,
+   "En Comú Podem": 853102,
+   "En Marea": 347542,
+   "Junts": 483488,
+   "PACMA": 286702,
+   "PCPE": 20730,
+   "PNV": 287014,
+   "PP": 7941236,
+   "PSOE": 5443846,
+   "RECORTES CERO-GRUPO VERDE": 51907,
+   "UPyD": 50247,
+   "Unidos Podemos": 3227123,
+   "Vox": 47182
+  },
+  "validos": 24053755
+ },
+ "2019_04": {
+  "participacion": 71.76,
+  "provincias": {
+   "01": {
+    "prov": "Álava",
+    "ccaa": "País Vasco",
+    "escanos": 4,
+    "validos": 177366,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "ELKARREKIN PODEMOS-UNIDAS PODEMOS",
+      "votos": 31469,
+      "pct": 17.74,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.74,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "02": {
+    "prov": "Albacete",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 4,
+    "validos": 234404,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 24855,
+      "pct": 10.6,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.6,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "03": {
+    "prov": "Alicante",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 12,
+    "validos": 917498,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 127615,
+      "pct": 13.91,
+      "esc": 2
+     },
+     {
+      "marca": "Compromís",
+      "nombre": "COMPROMÍS: BLOC-INICIATIVA-VERDSEQUO",
+      "votos": 31030,
+      "pct": 3.38,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.29,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "04": {
+    "prov": "Almería",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 328097,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 28934,
+      "pct": 8.82,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.82,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "05": {
+    "prov": "Ávila",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 102079,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 7730,
+      "pct": 7.57,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.57,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "06": {
+    "prov": "Badajoz",
+    "ccaa": "Extremadura",
+    "escanos": 6,
+    "validos": 408393,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 38252,
+      "pct": 9.37,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.37,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "07": {
+    "prov": "Illes Balears",
+    "ccaa": "Illes Balears",
+    "escanos": 8,
+    "validos": 518507,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-UNIDES PODEM",
+      "votos": 92477,
+      "pct": 17.84,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 17.84,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "08": {
+    "prov": "Barcelona",
+    "ccaa": "Cataluña",
+    "escanos": 32,
+    "validos": 3120441,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM - GUANYEM EL CANVI",
+      "votos": 509016,
+      "pct": 16.31,
+      "esc": 6
+     }
+    ],
+    "suma_pct": 16.31,
+    "esc_real": 6,
+    "esc_juntos": 6,
+    "cambio": {}
+   },
+   "09": {
+    "prov": "Burgos",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 219553,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 27436,
+      "pct": 12.5,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.5,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "10": {
+    "prov": "Cáceres",
+    "ccaa": "Extremadura",
+    "escanos": 4,
+    "validos": 248732,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 24292,
+      "pct": 9.77,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.77,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "11": {
+    "prov": "Cádiz",
+    "ccaa": "Andalucía",
+    "escanos": 9,
+    "validos": 667562,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 110807,
+      "pct": 16.6,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 16.6,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "12": {
+    "prov": "Castellón",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 5,
+    "validos": 313393,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 43656,
+      "pct": 13.93,
+      "esc": 1
+     },
+     {
+      "marca": "Compromís",
+      "nombre": "COMPROMÍS: BLOC-INICIATIVA-VERDSEQUO",
+      "votos": 16713,
+      "pct": 5.33,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 19.26,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "13": {
+    "prov": "Ciudad Real",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 5,
+    "validos": 293907,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 26952,
+      "pct": 9.17,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.17,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "14": {
+    "prov": "Córdoba",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 473716,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 70427,
+      "pct": 14.87,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.87,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "15": {
+    "prov": "A Coruña",
+    "ccaa": "Galicia",
+    "escanos": 8,
+    "validos": 677342,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 100019,
+      "pct": 14.77,
+      "esc": 1
+     },
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 6806,
+      "pct": 1.0,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.77,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "16": {
+    "prov": "Cuenca",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 119530,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 9482,
+      "pct": 7.93,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.93,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "17": {
+    "prov": "Girona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 382275,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM - GUANYEM EL CANVI",
+      "votos": 36947,
+      "pct": 9.67,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.67,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "18": {
+    "prov": "Granada",
+    "ccaa": "Andalucía",
+    "escanos": 7,
+    "validos": 523843,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 71466,
+      "pct": 13.64,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 13.64,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "19": {
+    "prov": "Guadalajara",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 142707,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 17524,
+      "pct": 12.28,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.28,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "20": {
+    "prov": "Gipuzkoa",
+    "ccaa": "País Vasco",
+    "escanos": 6,
+    "validos": 412126,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "ELKARREKIN PODEMOS-UNIDAS PODEMOS",
+      "votos": 71296,
+      "pct": 17.3,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.3,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "21": {
+    "prov": "Huelva",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 264569,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 34396,
+      "pct": 13.0,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 13.0,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "22": {
+    "prov": "Huesca",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 125314,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-ALTOARAGÓN EN COMÚN",
+      "votos": 17151,
+      "pct": 13.69,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 13.69,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "23": {
+    "prov": "Jaén",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 386916,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 40880,
+      "pct": 10.57,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.57,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "24": {
+    "prov": "León",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 291600,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 35103,
+      "pct": 12.04,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.04,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "25": {
+    "prov": "Lleida",
+    "ccaa": "Cataluña",
+    "escanos": 4,
+    "validos": 225655,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM - GUANYEM EL CANVI",
+      "votos": 18723,
+      "pct": 8.3,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.3,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "26": {
+    "prov": "La Rioja",
+    "ccaa": "La Rioja",
+    "escanos": 4,
+    "validos": 180832,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 21331,
+      "pct": 11.8,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.8,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "27": {
+    "prov": "Lugo",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 199998,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 20282,
+      "pct": 10.14,
+      "esc": 0
+     },
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 2168,
+      "pct": 1.08,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.23,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "28": {
+    "prov": "Madrid",
+    "ccaa": "Madrid",
+    "escanos": 37,
+    "validos": 3782247,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 613911,
+      "pct": 16.23,
+      "esc": 6
+     }
+    ],
+    "suma_pct": 16.23,
+    "esc_real": 6,
+    "esc_juntos": 6,
+    "cambio": {}
+   },
+   "29": {
+    "prov": "Málaga",
+    "ccaa": "Andalucía",
+    "escanos": 11,
+    "validos": 816868,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 118537,
+      "pct": 14.51,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 14.51,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "30": {
+    "prov": "Murcia",
+    "ccaa": "Murcia",
+    "escanos": 10,
+    "validos": 769084,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 80053,
+      "pct": 10.41,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 10.41,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "31": {
+    "prov": "Navarra",
+    "ccaa": "Navarra",
+    "escanos": 5,
+    "validos": 366998,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 68393,
+      "pct": 18.64,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 18.64,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "32": {
+    "prov": "Ourense",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 192523,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 17213,
+      "pct": 8.94,
+      "esc": 0
+     },
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 2220,
+      "pct": 1.15,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.09,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "33": {
+    "prov": "Asturias",
+    "ccaa": "Asturias",
+    "escanos": 7,
+    "validos": 626661,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-XUNIES PODEMOS",
+      "votos": 107426,
+      "pct": 17.14,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 17.14,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "34": {
+    "prov": "Palencia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 106043,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 9787,
+      "pct": 9.23,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.23,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "35": {
+    "prov": "Las Palmas",
+    "ccaa": "Canarias",
+    "escanos": 8,
+    "validos": 545052,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 91216,
+      "pct": 16.74,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 16.74,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "36": {
+    "prov": "Pontevedra",
+    "ccaa": "Galicia",
+    "escanos": 7,
+    "validos": 576187,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 100547,
+      "pct": 17.45,
+      "esc": 1
+     },
+     {
+      "marca": "En Marea",
+      "nombre": "EN MAREA",
+      "votos": 6705,
+      "pct": 1.16,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 18.61,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "37": {
+    "prov": "Salamanca",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 210646,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 16575,
+      "pct": 7.87,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.87,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "38": {
+    "prov": "Santa Cruz de Tenerife",
+    "ccaa": "Canarias",
+    "escanos": 7,
+    "validos": 516484,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 75695,
+      "pct": 14.66,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.66,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "39": {
+    "prov": "Cantabria",
+    "ccaa": "Cantabria",
+    "escanos": 5,
+    "validos": 359104,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 36784,
+      "pct": 10.24,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.24,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "40": {
+    "prov": "Segovia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 92508,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 8931,
+      "pct": 9.65,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.65,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "41": {
+    "prov": "Sevilla",
+    "ccaa": "Andalucía",
+    "escanos": 12,
+    "validos": 1122507,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 179497,
+      "pct": 15.99,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 15.99,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "42": {
+    "prov": "Soria",
+    "ccaa": "Castilla y León",
+    "escanos": 2,
+    "validos": 52077,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 4481,
+      "pct": 8.6,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.6,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "43": {
+    "prov": "Tarragona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 418192,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM - GUANYEM EL CANVI",
+      "votos": 50979,
+      "pct": 12.19,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.19,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "44": {
+    "prov": "Teruel",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 78083,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 8224,
+      "pct": 10.53,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.53,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "45": {
+    "prov": "Toledo",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 6,
+    "validos": 396910,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 41934,
+      "pct": 10.57,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.57,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "46": {
+    "prov": "Valencia",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 15,
+    "validos": 1456527,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 211527,
+      "pct": 14.52,
+      "esc": 2
+     },
+     {
+      "marca": "Compromís",
+      "nombre": "COMPROMÍS: BLOC-INICIATIVA-VERDSEQUO",
+      "votos": 126078,
+      "pct": 8.66,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 23.18,
+    "esc_real": 3,
+    "esc_juntos": 3,
+    "cambio": {}
+   },
+   "47": {
+    "prov": "Valladolid",
+    "ccaa": "Castilla y León",
+    "escanos": 5,
+    "validos": 336554,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 39305,
+      "pct": 11.68,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.68,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "48": {
+    "prov": "Bizkaia",
+    "ccaa": "País Vasco",
+    "escanos": 8,
+    "validos": 686960,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "ELKARREKIN PODEMOS-UNIDAS PODEMOS",
+      "votos": 121740,
+      "pct": 17.72,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 17.72,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "49": {
+    "prov": "Zamora",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 110645,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 9187,
+      "pct": 8.3,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.3,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "50": {
+    "prov": "Zaragoza",
+    "ccaa": "Aragón",
+    "escanos": 7,
+    "validos": 554407,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 77555,
+      "pct": 13.99,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 13.99,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "51": {
+    "prov": "Ceuta",
+    "ccaa": "Ceuta",
+    "escanos": 1,
+    "validos": 37991,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 1838,
+      "pct": 4.84,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 4.84,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "52": {
+    "prov": "Melilla",
+    "ccaa": "Melilla",
+    "escanos": 1,
+    "validos": 33758,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 1292,
+      "pct": 3.83,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 3.83,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   }
+  },
+  "esc_real": {
+   "PNV": 6,
+   "PSOE": 123,
+   "Unidas Podemos": 35,
+   "EH Bildu": 4,
+   "PP": 66,
+   "Cs": 57,
+   "Vox": 24,
+   "ERC": 15,
+   "En Comú Podem": 7,
+   "Junts": 7,
+   "Navarra Suma": 2,
+   "CC": 2,
+   "PRC": 1,
+   "Compromís": 1
+  },
+  "esc_juntos": {
+   "PNV": 6,
+   "PSOE": 123,
+   "Juntos": 43,
+   "EH Bildu": 4,
+   "PP": 66,
+   "Cs": 57,
+   "Vox": 24,
+   "ERC": 15,
+   "Junts": 7,
+   "Navarra Suma": 2,
+   "CC": 2,
+   "PRC": 1
+  },
+  "votos": {
+   "ARA-MES-ESQ": 25191,
+   "BNG": 94433,
+   "CC": 137664,
+   "Compromís": 173821,
+   "Cs": 4155665,
+   "EH Bildu": 259647,
+   "ERC": 1024628,
+   "En Comú Podem": 615665,
+   "FRONT REPUB": 113807,
+   "GBAI": 22309,
+   "Junts": 500787,
+   "NCA": 36225,
+   "Navarra Suma": 107619,
+   "PACMA": 328299,
+   "PACT": 30236,
+   "PNV": 395884,
+   "PP": 4373653,
+   "PRC": 52266,
+   "PSOE": 7513142,
+   "PUM+J": 21863,
+   "RECORTES CE": 47363,
+   "Unidas Podemos": 3135480,
+   "Vox": 2688092
+  },
+  "validos": 26201371
+ },
+ "2019_11": {
+  "participacion": 66.23,
+  "provincias": {
+   "01": {
+    "prov": "Álava",
+    "ccaa": "País Vasco",
+    "escanos": 4,
+    "validos": 170855,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "ELKARREKIN PODEMOS-UNIDAS PODEMOS",
+      "votos": 28186,
+      "pct": 16.5,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.5,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "02": {
+    "prov": "Albacete",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 4,
+    "validos": 214304,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 20771,
+      "pct": 9.69,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.69,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "03": {
+    "prov": "Alicante",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 12,
+    "validos": 851716,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-UNIDES PODEM",
+      "votos": 108533,
+      "pct": 12.74,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÉS COMPROMÍS",
+      "votos": 35612,
+      "pct": 4.18,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.92,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "Vox": -1
+    }
+   },
+   "04": {
+    "prov": "Almería",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 302424,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 24400,
+      "pct": 8.07,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.07,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "05": {
+    "prov": "Ávila",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 93496,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 6059,
+      "pct": 6.48,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.48,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "06": {
+    "prov": "Badajoz",
+    "ccaa": "Extremadura",
+    "escanos": 6,
+    "validos": 370159,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 33971,
+      "pct": 9.18,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.18,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "07": {
+    "prov": "Illes Balears",
+    "ccaa": "Illes Balears",
+    "escanos": 8,
+    "validos": 454199,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-UNIDES PODEM",
+      "votos": 82225,
+      "pct": 18.1,
+      "esc": 2
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS",
+      "votos": 10652,
+      "pct": 2.35,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 20.45,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "08": {
+    "prov": "Barcelona",
+    "ccaa": "Cataluña",
+    "escanos": 32,
+    "validos": 2927755,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 452482,
+      "pct": 15.45,
+      "esc": 5
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS",
+      "votos": 41826,
+      "pct": 1.43,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.88,
+    "esc_real": 5,
+    "esc_juntos": 6,
+    "cambio": {
+     "PSOE": -1
+    }
+   },
+   "09": {
+    "prov": "Burgos",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 198971,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 22058,
+      "pct": 11.09,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.09,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "10": {
+    "prov": "Cáceres",
+    "ccaa": "Extremadura",
+    "escanos": 4,
+    "validos": 223257,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 20101,
+      "pct": 9.0,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.0,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "11": {
+    "prov": "Cádiz",
+    "ccaa": "Andalucía",
+    "escanos": 9,
+    "validos": 616079,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 93541,
+      "pct": 15.18,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-ANDALUCÍA",
+      "votos": 11316,
+      "pct": 1.84,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.02,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "12": {
+    "prov": "Castellón",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 5,
+    "validos": 294469,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-UNIDES PODEM",
+      "votos": 39251,
+      "pct": 13.33,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÉS COMPROMÍS",
+      "votos": 18140,
+      "pct": 6.16,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 19.49,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "13": {
+    "prov": "Ciudad Real",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 5,
+    "validos": 268594,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 22250,
+      "pct": 8.28,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.28,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "14": {
+    "prov": "Córdoba",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 444376,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 64769,
+      "pct": 14.58,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.58,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "15": {
+    "prov": "A Coruña",
+    "ccaa": "Galicia",
+    "escanos": 8,
+    "validos": 613494,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 77069,
+      "pct": 12.56,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 12619,
+      "pct": 2.06,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.62,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "16": {
+    "prov": "Cuenca",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 109119,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 7529,
+      "pct": 6.9,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.9,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "17": {
+    "prov": "Girona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 355702,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 33710,
+      "pct": 9.48,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 9.48,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "18": {
+    "prov": "Granada",
+    "ccaa": "Andalucía",
+    "escanos": 7,
+    "validos": 482779,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 59331,
+      "pct": 12.29,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-ANDALUCÍA",
+      "votos": 8629,
+      "pct": 1.79,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.08,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "19": {
+    "prov": "Guadalajara",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 132154,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 14897,
+      "pct": 11.27,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.27,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "20": {
+    "prov": "Gipuzkoa",
+    "ccaa": "País Vasco",
+    "escanos": 6,
+    "validos": 382868,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "ELKARREKIN PODEMOS-UNIDAS PODEMOS",
+      "votos": 57363,
+      "pct": 14.98,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.98,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "21": {
+    "prov": "Huelva",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 250681,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 30389,
+      "pct": 12.12,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.12,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "22": {
+    "prov": "Huesca",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 113597,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-ALTOARAGÓN EN COMÚN",
+      "votos": 14035,
+      "pct": 12.36,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.36,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "23": {
+    "prov": "Jaén",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 365106,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 35962,
+      "pct": 9.85,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.85,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "24": {
+    "prov": "León",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 262679,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 27478,
+      "pct": 10.46,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.46,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "25": {
+    "prov": "Lleida",
+    "ccaa": "Cataluña",
+    "escanos": 4,
+    "validos": 207356,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 16337,
+      "pct": 7.88,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.88,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "26": {
+    "prov": "La Rioja",
+    "ccaa": "La Rioja",
+    "escanos": 4,
+    "validos": 164934,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 16273,
+      "pct": 9.87,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.87,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "27": {
+    "prov": "Lugo",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 180145,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 16548,
+      "pct": 9.19,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.19,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "28": {
+    "prov": "Madrid",
+    "ccaa": "Madrid",
+    "escanos": 37,
+    "validos": 3563147,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 463629,
+      "pct": 13.01,
+      "esc": 5
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 201389,
+      "pct": 5.65,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 18.66,
+    "esc_real": 7,
+    "esc_juntos": 7,
+    "cambio": {}
+   },
+   "29": {
+    "prov": "Málaga",
+    "ccaa": "Andalucía",
+    "escanos": 11,
+    "validos": 756721,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 97801,
+      "pct": 12.92,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-ANDALUCÍA",
+      "votos": 14112,
+      "pct": 1.86,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.79,
+    "esc_real": 1,
+    "esc_juntos": 2,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "30": {
+    "prov": "Murcia",
+    "ccaa": "Murcia",
+    "escanos": 10,
+    "validos": 714927,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 63461,
+      "pct": 8.88,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 13439,
+      "pct": 1.88,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.76,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "31": {
+    "prov": "Navarra",
+    "ccaa": "Navarra",
+    "escanos": 5,
+    "validos": 334982,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 55498,
+      "pct": 16.57,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.57,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "32": {
+    "prov": "Ourense",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 171471,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 13573,
+      "pct": 7.92,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.92,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "33": {
+    "prov": "Asturias",
+    "ccaa": "Asturias",
+    "escanos": 7,
+    "validos": 559745,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-XUNÍES PODEMOS",
+      "votos": 89301,
+      "pct": 15.95,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 12732,
+      "pct": 2.27,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 18.23,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "34": {
+    "prov": "Palencia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 95788,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 7746,
+      "pct": 8.09,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.09,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "35": {
+    "prov": "Las Palmas",
+    "ccaa": "Canarias",
+    "escanos": 8,
+    "validos": 483928,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 74648,
+      "pct": 15.43,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 8389,
+      "pct": 1.73,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.16,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "36": {
+    "prov": "Pontevedra",
+    "ccaa": "Galicia",
+    "escanos": 7,
+    "validos": 522997,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "EN COMÚN-UNIDAS PODEMOS",
+      "votos": 81041,
+      "pct": 15.5,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 10207,
+      "pct": 1.95,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 17.45,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "37": {
+    "prov": "Salamanca",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 195170,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 13608,
+      "pct": 6.97,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.97,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "38": {
+    "prov": "Santa Cruz de Tenerife",
+    "ccaa": "Canarias",
+    "escanos": 7,
+    "validos": 463579,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 64613,
+      "pct": 13.94,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-EQUO",
+      "votos": 6583,
+      "pct": 1.42,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.36,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "39": {
+    "prov": "Cantabria",
+    "ccaa": "Cantabria",
+    "escanos": 5,
+    "validos": 327089,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 28376,
+      "pct": 8.68,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.68,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "40": {
+    "prov": "Segovia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 85039,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 7901,
+      "pct": 9.29,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.29,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "41": {
+    "prov": "Sevilla",
+    "ccaa": "Andalucía",
+    "escanos": 12,
+    "validos": 1053518,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 153435,
+      "pct": 14.56,
+      "esc": 2
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-ANDALUCÍA",
+      "votos": 22388,
+      "pct": 2.13,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.69,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "42": {
+    "prov": "Soria",
+    "ccaa": "Castilla y León",
+    "escanos": 2,
+    "validos": 46410,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 3517,
+      "pct": 7.58,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.58,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "43": {
+    "prov": "Tarragona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 385419,
+    "listas": [
+     {
+      "marca": "En Comú Podem",
+      "nombre": "EN COMÚ PODEM-GUANYEM EL CANVI",
+      "votos": 46644,
+      "pct": 12.1,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.1,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "44": {
+    "prov": "Teruel",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 74130,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 3982,
+      "pct": 5.37,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.37,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "45": {
+    "prov": "Toledo",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 6,
+    "validos": 363474,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 34837,
+      "pct": 9.58,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.58,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "46": {
+    "prov": "Valencia",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 15,
+    "validos": 1390258,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS-UNIDES PODEM",
+      "votos": 191812,
+      "pct": 13.8,
+      "esc": 2
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÉS COMPROMÍS",
+      "votos": 122535,
+      "pct": 8.81,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 22.61,
+    "esc_real": 3,
+    "esc_juntos": 4,
+    "cambio": {
+     "PP": -1
+    }
+   },
+   "47": {
+    "prov": "Valladolid",
+    "ccaa": "Castilla y León",
+    "escanos": 5,
+    "validos": 311454,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 34313,
+      "pct": 11.02,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.02,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "48": {
+    "prov": "Bizkaia",
+    "ccaa": "País Vasco",
+    "escanos": 8,
+    "validos": 630312,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "ELKARREKIN PODEMOS-UNIDAS PODEMOS",
+      "votos": 97125,
+      "pct": 15.41,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-CANDIDATURA ECOLOGISTA",
+      "votos": 8542,
+      "pct": 1.36,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 16.76,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "49": {
+    "prov": "Zamora",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 99791,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 7001,
+      "pct": 7.02,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.02,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "50": {
+    "prov": "Zaragoza",
+    "ccaa": "Aragón",
+    "escanos": 7,
+    "validos": 513284,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 57875,
+      "pct": 11.28,
+      "esc": 1
+     },
+     {
+      "marca": "Más País",
+      "nombre": "MÁS PAÍS-CHUNTA ARAGONESISTA-EQUO",
+      "votos": 23196,
+      "pct": 4.52,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 15.79,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "51": {
+    "prov": "Ceuta",
+    "ccaa": "Ceuta",
+    "escanos": 1,
+    "validos": 33395,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 1300,
+      "pct": 3.89,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 3.89,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "52": {
+    "prov": "Melilla",
+    "ccaa": "Melilla",
+    "escanos": 1,
+    "validos": 30932,
+    "listas": [
+     {
+      "marca": "Unidas Podemos",
+      "nombre": "UNIDAS PODEMOS",
+      "votos": 809,
+      "pct": 2.62,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 2.62,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   }
+  },
+  "esc_real": {
+   "PNV": 6,
+   "PSOE": 120,
+   "Unidas Podemos": 28,
+   "EH Bildu": 5,
+   "PP": 89,
+   "Vox": 52,
+   "Cs": 10,
+   "ERC": 13,
+   "En Comú Podem": 7,
+   "Junts": 8,
+   "CUP": 2,
+   "BNG": 1,
+   "Más País": 3,
+   "Navarra Suma": 2,
+   "CC": 2,
+   "PRC": 1,
+   "Teruel Existe": 1
+  },
+  "esc_juntos": {
+   "PNV": 6,
+   "PSOE": 119,
+   "Juntos": 42,
+   "EH Bildu": 5,
+   "PP": 87,
+   "Vox": 51,
+   "Cs": 10,
+   "ERC": 13,
+   "Junts": 8,
+   "CUP": 2,
+   "BNG": 1,
+   "Navarra Suma": 2,
+   "CC": 2,
+   "PRC": 1,
+   "Teruel Existe": 1
+  },
+  "votos": {
+   "BNG": 120456,
+   "CC": 124289,
+   "CUP": 246971,
+   "Cs": 1650318,
+   "EH Bildu": 277621,
+   "ERC": 880734,
+   "En Comú Podem": 549173,
+   "Junts": 530225,
+   "Más País": 582306,
+   "Navarra Suma": 99078,
+   "PACMA": 228856,
+   "PNV": 379002,
+   "PP": 5047040,
+   "PRC": 68830,
+   "PSOE": 6792199,
+   "PUM+J": 27272,
+   "RECORTES CERO-GV": 25777,
+   "Teruel Existe": 19761,
+   "Unidas Podemos": 2570191,
+   "Vox": 3656979
+  },
+  "validos": 24258228
+ },
+ "2023_07": {
+  "participacion": 66.59,
+  "provincias": {
+   "01": {
+    "prov": "Álava",
+    "ccaa": "País Vasco",
+    "escanos": 4,
+    "validos": 169107,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 21561,
+      "pct": 12.75,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.75,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "02": {
+    "prov": "Albacete",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 4,
+    "validos": 221191,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 15834,
+      "pct": 7.16,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.16,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "03": {
+    "prov": "Alicante",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 12,
+    "validos": 899192,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "COMPROMÍS - SUMAR: SUMEM PER GUANYAR",
+      "votos": 115787,
+      "pct": 12.88,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.88,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "04": {
+    "prov": "Almería",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 321242,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 21485,
+      "pct": 6.69,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.69,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "05": {
+    "prov": "Ávila",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 97956,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 5027,
+      "pct": 5.13,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.13,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "06": {
+    "prov": "Badajoz",
+    "ccaa": "Extremadura",
+    "escanos": 5,
+    "validos": 391461,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 26778,
+      "pct": 6.84,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.84,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "07": {
+    "prov": "Illes Balears",
+    "ccaa": "Illes Balears",
+    "escanos": 8,
+    "validos": 503280,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR MÉS",
+      "votos": 83487,
+      "pct": 16.59,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 16.59,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "08": {
+    "prov": "Barcelona",
+    "ccaa": "Cataluña",
+    "escanos": 32,
+    "validos": 2667478,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR - EN COMÚ PODEM",
+      "votos": 405993,
+      "pct": 15.22,
+      "esc": 5
+     }
+    ],
+    "suma_pct": 15.22,
+    "esc_real": 5,
+    "esc_juntos": 5,
+    "cambio": {}
+   },
+   "09": {
+    "prov": "Burgos",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 202569,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 17508,
+      "pct": 8.64,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.64,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "10": {
+    "prov": "Cáceres",
+    "ccaa": "Extremadura",
+    "escanos": 4,
+    "validos": 235851,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 16354,
+      "pct": 6.93,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.93,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "11": {
+    "prov": "Cádiz",
+    "ccaa": "Andalucía",
+    "escanos": 9,
+    "validos": 637098,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 82115,
+      "pct": 12.89,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.89,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "12": {
+    "prov": "Castellón",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 5,
+    "validos": 307930,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "COMPROMÍS - SUMAR: SUMEM PER GUANYAR",
+      "votos": 44187,
+      "pct": 14.35,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 14.35,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "13": {
+    "prov": "Ciudad Real",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 5,
+    "validos": 282979,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 17405,
+      "pct": 6.15,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.15,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "14": {
+    "prov": "Córdoba",
+    "ccaa": "Andalucía",
+    "escanos": 6,
+    "validos": 448602,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 61594,
+      "pct": 13.73,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 13.73,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "15": {
+    "prov": "A Coruña",
+    "ccaa": "Galicia",
+    "escanos": 8,
+    "validos": 677702,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR GALICIA",
+      "votos": 82618,
+      "pct": 12.19,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.19,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "16": {
+    "prov": "Cuenca",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 113808,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 6325,
+      "pct": 5.56,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.56,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "17": {
+    "prov": "Girona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 322988,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR - EN COMÚ PODEM",
+      "votos": 35344,
+      "pct": 10.94,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 10.94,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "18": {
+    "prov": "Granada",
+    "ccaa": "Andalucía",
+    "escanos": 7,
+    "validos": 502845,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 58567,
+      "pct": 11.65,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 11.65,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "19": {
+    "prov": "Guadalajara",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 3,
+    "validos": 140913,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 12907,
+      "pct": 9.16,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 9.16,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "20": {
+    "prov": "Gipuzkoa",
+    "ccaa": "País Vasco",
+    "escanos": 6,
+    "validos": 376621,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 40081,
+      "pct": 10.64,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.64,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "21": {
+    "prov": "Huelva",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 256804,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 26752,
+      "pct": 10.42,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.42,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "22": {
+    "prov": "Huesca",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 119895,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ARAGÓN",
+      "votos": 13774,
+      "pct": 11.49,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 11.49,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "23": {
+    "prov": "Jaén",
+    "ccaa": "Andalucía",
+    "escanos": 5,
+    "validos": 368731,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 29461,
+      "pct": 7.99,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.99,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "24": {
+    "prov": "León",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 275240,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 18577,
+      "pct": 6.75,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.75,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "25": {
+    "prov": "Lleida",
+    "ccaa": "Cataluña",
+    "escanos": 4,
+    "validos": 184539,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR - EN COMÚ PODEM",
+      "votos": 14561,
+      "pct": 7.89,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 7.89,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "26": {
+    "prov": "La Rioja",
+    "ccaa": "La Rioja",
+    "escanos": 4,
+    "validos": 174663,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 11470,
+      "pct": 6.57,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.57,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "27": {
+    "prov": "Lugo",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 198566,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR GALICIA",
+      "votos": 10287,
+      "pct": 5.18,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.18,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "28": {
+    "prov": "Madrid",
+    "ccaa": "Madrid",
+    "escanos": 37,
+    "validos": 3608673,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 557780,
+      "pct": 15.46,
+      "esc": 6
+     }
+    ],
+    "suma_pct": 15.46,
+    "esc_real": 6,
+    "esc_juntos": 6,
+    "cambio": {}
+   },
+   "29": {
+    "prov": "Málaga",
+    "ccaa": "Andalucía",
+    "escanos": 11,
+    "validos": 788338,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 96652,
+      "pct": 12.26,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 12.26,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "30": {
+    "prov": "Murcia",
+    "ccaa": "Murcia",
+    "escanos": 10,
+    "validos": 747797,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 71578,
+      "pct": 9.57,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 9.57,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "31": {
+    "prov": "Navarra",
+    "ccaa": "Navarra",
+    "escanos": 5,
+    "validos": 341844,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 43922,
+      "pct": 12.85,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 12.85,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "32": {
+    "prov": "Ourense",
+    "ccaa": "Galicia",
+    "escanos": 4,
+    "validos": 186271,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR GALICIA",
+      "votos": 10171,
+      "pct": 5.46,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.46,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "33": {
+    "prov": "Asturias",
+    "ccaa": "Asturias",
+    "escanos": 7,
+    "validos": 597032,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 88630,
+      "pct": 14.85,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 14.85,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "34": {
+    "prov": "Palencia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 96962,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 5877,
+      "pct": 6.06,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 6.06,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "35": {
+    "prov": "Las Palmas",
+    "ccaa": "Canarias",
+    "escanos": 8,
+    "validos": 529337,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR CANARIAS",
+      "votos": 54369,
+      "pct": 10.27,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 10.27,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "36": {
+    "prov": "Pontevedra",
+    "ccaa": "Galicia",
+    "escanos": 7,
+    "validos": 573124,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR GALICIA",
+      "votos": 75615,
+      "pct": 13.19,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 13.19,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "37": {
+    "prov": "Salamanca",
+    "ccaa": "Castilla y León",
+    "escanos": 4,
+    "validos": 199110,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 11012,
+      "pct": 5.53,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.53,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "38": {
+    "prov": "Santa Cruz de Tenerife",
+    "ccaa": "Canarias",
+    "escanos": 7,
+    "validos": 494373,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR CANARIAS",
+      "votos": 53632,
+      "pct": 10.85,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 10.85,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "39": {
+    "prov": "Cantabria",
+    "ccaa": "Cantabria",
+    "escanos": 5,
+    "validos": 350154,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 29713,
+      "pct": 8.49,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.49,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "40": {
+    "prov": "Segovia",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 88613,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 7137,
+      "pct": 8.05,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.05,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "41": {
+    "prov": "Sevilla",
+    "ccaa": "Andalucía",
+    "escanos": 12,
+    "validos": 1059358,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ANDALUCÍA",
+      "votos": 148745,
+      "pct": 14.04,
+      "esc": 2
+     }
+    ],
+    "suma_pct": 14.04,
+    "esc_real": 2,
+    "esc_juntos": 2,
+    "cambio": {}
+   },
+   "42": {
+    "prov": "Soria",
+    "ccaa": "Castilla y León",
+    "escanos": 2,
+    "validos": 50769,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 1711,
+      "pct": 3.37,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 3.37,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "43": {
+    "prov": "Tarragona",
+    "ccaa": "Cataluña",
+    "escanos": 6,
+    "validos": 368024,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR - EN COMÚ PODEM",
+      "votos": 41719,
+      "pct": 11.34,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 11.34,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "44": {
+    "prov": "Teruel",
+    "ccaa": "Aragón",
+    "escanos": 3,
+    "validos": 75913,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 4126,
+      "pct": 5.44,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.44,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "45": {
+    "prov": "Toledo",
+    "ccaa": "Castilla-La Mancha",
+    "escanos": 6,
+    "validos": 387380,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 31863,
+      "pct": 8.23,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.23,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "46": {
+    "prov": "Valencia",
+    "ccaa": "Comunitat Valenciana",
+    "escanos": 16,
+    "validos": 1437161,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "COMPROMÍS - SUMAR: SUMEM PER GUANYAR",
+      "votos": 242839,
+      "pct": 16.9,
+      "esc": 3
+     }
+    ],
+    "suma_pct": 16.9,
+    "esc_real": 3,
+    "esc_juntos": 3,
+    "cambio": {}
+   },
+   "47": {
+    "prov": "Valladolid",
+    "ccaa": "Castilla y León",
+    "escanos": 5,
+    "validos": 316309,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 28049,
+      "pct": 8.87,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 8.87,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "48": {
+    "prov": "Bizkaia",
+    "ccaa": "País Vasco",
+    "escanos": 8,
+    "validos": 609693,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 66592,
+      "pct": 10.92,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 10.92,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "49": {
+    "prov": "Zamora",
+    "ccaa": "Castilla y León",
+    "escanos": 3,
+    "validos": 103410,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 5839,
+      "pct": 5.65,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 5.65,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "50": {
+    "prov": "Zaragoza",
+    "ccaa": "Aragón",
+    "escanos": 7,
+    "validos": 518705,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR ARAGÓN",
+      "votos": 69925,
+      "pct": 13.48,
+      "esc": 1
+     }
+    ],
+    "suma_pct": 13.48,
+    "esc_real": 1,
+    "esc_juntos": 1,
+    "cambio": {}
+   },
+   "51": {
+    "prov": "Ceuta",
+    "ccaa": "Ceuta",
+    "escanos": 1,
+    "validos": 33321,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 821,
+      "pct": 2.46,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 2.46,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   },
+   "52": {
+    "prov": "Melilla",
+    "ccaa": "Melilla",
+    "escanos": 1,
+    "validos": 27349,
+    "listas": [
+     {
+      "marca": "Sumar",
+      "nombre": "SUMAR",
+      "votos": 827,
+      "pct": 3.02,
+      "esc": 0
+     }
+    ],
+    "suma_pct": 3.02,
+    "esc_real": 0,
+    "esc_juntos": 0,
+    "cambio": {}
+   }
+  },
+  "esc_real": {
+   "PSOE": 121,
+   "EH Bildu": 6,
+   "PP": 137,
+   "PNV": 5,
+   "Vox": 33,
+   "Sumar": 31,
+   "ERC": 7,
+   "Junts": 7,
+   "BNG": 1,
+   "UPN": 1,
+   "CC": 1
+  },
+  "esc_juntos": {
+   "PSOE": 121,
+   "EH Bildu": 6,
+   "PP": 137,
+   "PNV": 5,
+   "Vox": 33,
+   "Juntos": 31,
+   "ERC": 7,
+   "Junts": 7,
+   "BNG": 1,
+   "UPN": 1,
+   "CC": 1
+  },
+  "votos": {
+   "BNG": 153995,
+   "CC": 116363,
+   "CUP": 99644,
+   "EH Bildu": 335129,
+   "ERC": 466020,
+   "EXISTE": 20440,
+   "FO": 46053,
+   "Junts": 395429,
+   "NC-BC": 45595,
+   "PACMA": 169240,
+   "PDECAT-E-CIU": 32016,
+   "PNV": 277289,
+   "PP": 8161117,
+   "PSOE": 7821777,
+   "PUM+J": 23289,
+   "RECORTES CERO": 23421,
+   "Sumar": 3044983,
+   "U.P.L.": 23201,
+   "UPN": 52188,
+   "Vox": 3057068
+  },
+  "validos": 24688271
+ }
+}
