@@ -816,12 +816,13 @@ def tema_renta(resumen):
     desc = ('Participación y voto a cada partido en las 36.000 secciones censales de España ordenadas por renta, en las generales de 2023 y desde 2004. '
             'Datos del Ministerio del Interior y del INE.')
     q10 = T.por_renta(T.SEC, 10)
-    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Voto y renta')]
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Voto y renta', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
     h.append('<p class="kicker">Tema · Generales 2023</p><h1 data-miga="Voto y renta por barrios">Voto y renta por barrios</h1>')
     h.append('<p class="subtitulo">Cómo votan las secciones censales de España según su renta: participación y voto a cada partido, del 10 % más pobre al 10 % más rico</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(foto_html(ruta, raiz))
     a, b = q10[0], q10[-1]
     h.append(f'<p class="resumen">{tipo("Patrón")}En el 10 % del censo que vive en las secciones censales con menos renta de España (menos de {euros(a["hasta"])} por unidad de consumo) '
              f'votó el {pct(a["part"])} en las generales de 2023; en el 10 % con más renta (más de {euros(b["desde"])}), el {pct(b["part"])}. '
@@ -886,12 +887,13 @@ def tema_seccion(resumen):
     sec = T.SEC
     gana = sec[[c for c in T.FAM if c != 'OTROS']].idxmax(axis=1)
     cuenta = gana.value_counts()
-    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Mapa por sección censal')]
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Mapa por sección censal', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
     h.append('<p class="kicker">Tema · Datos abiertos</p><h1 data-miga="Mapa por sección censal">Mapa electoral de España por sección censal</h1>')
     h.append('<p class="subtitulo">Resultados de las elecciones barrio a barrio en las 36.462 secciones censales de España, cruzados con renta, edad y población extranjera</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(foto_html(ruta, raiz))
     top = cuenta.index[:4]
     h.append(f'<p class="resumen">{tipo("Dato")}En las generales de 2023 el PP fue la lista más votada en {num(cuenta.get("PP", 0))} de las {num(len(sec))} secciones censales de España; '
              f'el PSOE, en {num(cuenta.get("PSOE", 0))}. ' + ', '.join(f'{T.NOMBRE[c]}, en {num(cuenta[c])}' for c in top if c not in ('PP', 'PSOE')) + '.</p>')
@@ -951,6 +953,12 @@ FOTOS = {
                                                        'Una cola a la puerta de un colegio electoral y, enfrente, bloques de pisos de un barrio: un collage.'),
     'elecciones/resultados-elecciones-por-municipio/': ('libros-plazas-y-arquitectura-de-espana.jpg',
                                                         'Libros, plazas y arquitectura de pueblos y ciudades de España: un collage.'),
+    'elecciones/censo-electoral-2026/': ('listas-censo-sobre-pasaporte.jpg',
+                                         'Listas del censo con los nombres tapados, un sobre, un pasaporte, el mapa de España y el Congreso: un collage.'),
+    'elecciones/voto-y-renta-por-barrios/': ('urna-entre-bloques-y-chalets.jpg',
+                                             'Una urna entre bloques de pisos humildes y chalés con jardín, y monedas y billetes al pie: un collage.'),
+    'elecciones/mapa-electoral-seccion-censal/': ('plano-secciones-lupa.jpg',
+                                                  'Un plano de calles dividido en teselas de colores y una lupa sobre una de ellas: un collage.'),
 }
 # Escala neutra para la participación (no es de ningún partido)
 RAMPA_PART = [(0.60, '#e9eef2', 'menos del 60 %'), (0.65, '#c3d2dc', '60-65 %'), (0.70, '#93aec0', '65-70 %'),
@@ -1434,8 +1442,9 @@ def franja_portada():
 GUIAS = [('elecciones-29n-2026/', 'img/elecciones/congreso-urna-calendario-29n.jpg', '29N', 'Elecciones del 29N: fecha, campaña y escaños por provincia'),
          ('resultados-elecciones-por-municipio/', 'img/elecciones/libros-plazas-y-arquitectura-de-espana.jpg', 'Municipios', 'Cómo votó cada pueblo y ciudad de España desde 1977'),
          ('participacion-electoral-por-barrio/', 'img/elecciones/colegio-electoral-cola-y-bloques.jpg', 'Participación', 'Dónde se vota más y dónde menos, barrio a barrio'),
-         ('voto-y-renta-por-barrios/', 'img/actualidad/pobreza-participacion-barrios.jpg', 'Renta', 'Cómo vota cada barrio según su renta'),
-         ('mapa-electoral-seccion-censal/', 'img/actualidad/madrid-barrio-a-barrio-29n.jpg', 'Sección censal', 'El mapa electoral calle a calle: qué es una sección censal')]
+         ('censo-electoral-2026/', 'img/elecciones/listas-censo-sobre-pasaporte.jpg', 'Censo', 'Cuántos electores votan el 29N en cada provincia y municipio'),
+         ('voto-y-renta-por-barrios/', 'img/elecciones/urna-entre-bloques-y-chalets.jpg', 'Renta', 'Cómo vota cada barrio según su renta'),
+         ('mapa-electoral-seccion-censal/', 'img/elecciones/plano-secciones-lupa.jpg', 'Sección censal', 'El mapa electoral calle a calle: qué es una sección censal')]
 
 
 def guias_portada():
