@@ -1154,6 +1154,30 @@ PIEZAS = [
                   pie='Senadores elegidos en 2023 y en dos simulaciones con los mismos votos: con PP y Vox por separado y con sus votos sumados, frente a la lista de PSOE y Frente Amplio.',
                   fuente='Junta Electoral Central, Senado de 2023 por candidato. Simulación de mapaelectoral.es'),
     ),
+    dict(
+        slug='trump-espana-invadida-inmigracion-29n', fecha='2026-10-21',
+        titulo='Trump dice que España fue «invadida»: los vecinos nacidos fuera pasaron de 6,5 a 10 millones en siete años, y donde más crecieron Vox no sacó más votos', serie='29n',
+        descripcion='La «invasión» de la que habla son las 72.000 personas que entraron en Ceuta en dos días de julio, casi todas de vuelta en Marruecos poco después, según Interior. El cambio de fondo está en el padrón: 572.678 residentes nacidos fuera más solo en 2025. En los municipios donde más subió su peso, Vox sacó el 12,3% en 2023; donde menos, el 13%.',
+        compara='La población residente nacida en el extranjero en España de 2002 a 2026; las entradas en Ceuta de julio y las llegadas irregulares de 2026; y el voto al Congreso en noviembre de 2019 y julio de 2023 en los 8.131 municipios, agrupados en cinco quintos de población según cuánto subió el peso de los nacidos fuera entre 2021 y 2025. Y el voto en Ceuta.',
+        limites='Son datos por municipio, no por persona: no dicen quién vota a quién ni por qué. «Nacidos fuera» incluye a españoles nacidos en el extranjero, y los extranjeros sin nacionalidad no votan en generales. La población es de 2021 y 2025 y el voto, de 2019 y 2023, así que los periodos no coinciden. Sin la provincia de Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023. Las entradas de Ceuta y el aumento de residentes no son la misma medida: unas son entradas, casi todas con vuelta, y el otro es un saldo neto. Ningún dato de población recoge aún lo ocurrido en Ceuta en julio. Sin voto exterior.',
+        fuentes=[INTERIOR,
+                 ('https://www.infobae.com/america/agencias/2026/10/20/trump-afirma-que-espana-fue-invadida-por-migrantes-y-no-esta-haciendo-nada-al-respecto/', 'EFE vía Infobae, Trump afirma que España fue «invadida» por migrantes y «no está haciendo nada al respecto» (20-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/16/se-reducen-las-llegadas-irregulares-de-migrantes-a-espana-sin-contar-la-entrada-a-ceuta/', 'EFE vía Infobae, Se reducen las llegadas irregulares de migrantes a España, sin contar la entrada a Ceuta (16-10-2026)'),
+                 ('https://elfarodeceuta.es/marlaska-niega-cni-avisara-entrada-masiva-ceuta-confirma-72-000-personas-cruzaron-marruecos/', 'El Faro de Ceuta, Marlaska niega que el CNI avisara de la entrada masiva y confirma que 72.000 personas cruzaron desde Marruecos (4-8-2026)'),
+                 ('https://www.eldebate.com/espana/20260917/cuales-son-verdaderas-cifras-invasion-ceuta-numero-entradas-salidas-alojados-calle_459327.html', 'El Debate, ¿Cuáles son las verdaderas cifras de la invasión de Ceuta? (17-9-2026)'),
+                 ('https://www.ine.es/dyngs/Prensa/ECP2T26.htm', 'INE, Estadística Continua de Población. 1 de julio de 2026. Datos provisionales (6-8-2026)'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=56943', 'INE, Estadística Continua de Población: población residente por lugar de nacimiento, 2002-2026'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=69131', 'INE, Censo anual de población: población por municipio y país de nacimiento, 2021-2025 (una tabla por provincia)'),
+                 ('https://www.realinstitutoelcano.org/comentarios/la-opinion-publica-espanyola-sobre-la-inmigracion-en-contexto/', 'Rut Bermejo Casado y Carmen González Enríquez, La opinión pública española sobre la inmigración en contexto, Real Instituto Elcano (3-10-2024)'),
+                 ('https://www.deia.eus/actualidad/sociedad/2026/10/14/vivienda-principal-problema-55-7-cis-11647698.html', 'Deia, La vivienda es el principal problema para más de la mitad de la ciudadanía (barómetro del CIS de octubre, 14-10-2026)'),
+                 ('https://www.leon24horas.net/politica/abascal-lanza-advertencia-ponferrada-que-pasa-francia-puede-pasar-espana/20261020221218212080.html', 'León 24 Horas, Abascal en Ponferrada (20-10-2026)'),
+                 ('https://www.eldiario.es/piedrasdepapel/Vox-derecha-populista-escision-PP_6_850474947.html', 'Héctor Meleiro, Vox: nueva derecha populista o escisión radical del PP, Piedras de Papel, elDiario.es (26-12-2018)'),
+                 ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/trump-espana-invadida-inmigracion-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Donald Trump, una maleta y una cabina de votación.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1657,6 +1681,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'trump-espana-invadida-inmigracion-29n': 'Lo que se ve y lo que no',
     'vox-pp-senado-pacto-29n': 'Las 19 del pacto',
     'frente-amplio-podemos-madrid-escanos-29n': 'Dos papeletas en Madrid',
     'barrios-donde-vota-menos-de-la-mitad': 'Ni la mitad a las urnas',
