@@ -1949,7 +1949,12 @@ def pieza(p, todas):
         out = en_catala(out, p)
     d = os.path.join(RAIZ, 'actualidad', p['slug'])
     os.makedirs(d, exist_ok=True)
-    open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out)
+    open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
+
+
+def sin_index(html):
+    """Enlaces internos a carpetas sin «index.html» (…/actualidad/ y no …/actualidad/index.html), para que Google no indexe dos direcciones por página."""
+    return re.sub(r'href="((?:\.\./|[\w-]+/)*)index\.html', lambda m: f'href="{m.group(1) or "./"}', html)
 
 
 def indice(todas, sitemap=None):
@@ -1997,7 +2002,7 @@ a{color:var(--fg)}
            + f'\n<main><p class="kicker">Mapa Electoral</p><h1>Actualidad</h1><p>{desc} Para las piezas de fondo, el <a href="../atlas/index.html">Atlas de las anomalías electorales</a>.</p>'
            + f'{items}<footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
-    open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(out)
+    open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
     urls = [f'  <url><loc>{url}</loc><lastmod>{max(p["fecha"] for p in todas)}</lastmod></url>']
     urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p["fecha"]}</lastmod></url>' for p in (sitemap or todas)]
     open(os.path.join(RAIZ, 'actualidad', 'sitemap.xml'), 'w', encoding='utf-8').write(

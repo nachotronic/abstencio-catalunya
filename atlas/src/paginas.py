@@ -643,6 +643,11 @@ def compartir():
     return lista
 
 
+def sin_index(html):
+    """Enlaces internos a carpetas sin «index.html» (…/gemelos/ y no …/gemelos/index.html), para que Google no indexe dos direcciones por página."""
+    return re.sub(r'href="((?:\.\./|[\w-]+/)*)index\.html', lambda m: f'href="{m.group(1) or "./"}', html)
+
+
 def main():
     global TODAS
     C = json.loads((ATLAS / 'src' / 'cifras.json').read_text())
@@ -658,7 +663,7 @@ def main():
     for ruta, html in paginas:
         f = ATLAS / ruta
         f.parent.mkdir(parents=True, exist_ok=True)
-        f.write_text(html)
+        f.write_text(sin_index(html))
     publicables = ['index.html', 'metodologia/index.html', 'datos/index.html', 'correcciones/index.html', 'politica-editorial/index.html']
     publicables += [f'{q["serie"]}/{q["slug"]}/index.html' for q in TODAS if q['revisado']]
     publicables += [f'{s}/index.html' for s in SERIES if any(q['serie'] == s and q['revisado'] for q in TODAS)]
