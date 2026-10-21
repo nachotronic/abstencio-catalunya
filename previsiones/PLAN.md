@@ -59,3 +59,10 @@ fuentes ──ETL──► datos/limpios (versionados, con pruebas)
 3. **Probabilidades**: ¿mostrar «X % de simulaciones con mayoría» o solo intervalos de escaños?
 4. **Senadores designados**: tomar la composición vigente de cada parlamento autonómico (dato) o dejarlos fuera.
 5. **Calendario**: a cinco semanas del 29N, un modelo validado (fases 2-5) llega muy justo. Propuesta: baseline transparente (fase 3) como mucho para el 29N y el modelo completo para las siguientes.
+
+## 7. Avances (21/10/2026)
+
+- **Encuestas** (Electográfica, a propuesta de Nacho): 1.047 nacionales de 2018 a 2026 y 137 por comunidad o provincia. Carpeta de trabajo `previsiones/encuestas/` del proyecto. Se citan la encuestadora y el medio original.
+- **Europeas de 2024 por sección** (`src/europeas2024.py`): Sumar, Podemos y SALF por separado desde los votos por mesa; los totales cuadran con el resultado oficial sin CERA.
+- **Base 2026 por sección** (`src/base2026.py`): voto de 2023 con el de Sumar repartido entre Sumar (FA) y Podemos según su peso en cada sección en 2024 (41,8 % para Podemos en el conjunto de España), y un índice de dónde vota SALF. Supuesto: ese reparto se mantiene.
+- **Cambio por perfil con el CIS** (`src/perfiles.py`): modelo log-lineal de intención frente a recuerdo por edad (65+), estudios superiores y tamaño de municipio. Validación 2019 → 2023 con el preelectoral del CIS (estudio 3411, 29.201 entrevistas): el error medio por sección baja solo de 2,89 a 2,88 puntos frente a la subida proporcional uniforme; con la comunidad autónoma empeora (3,02). Conclusión: el perfil del CIS apenas mejora el reparto por sección; el error que queda es local. Se usará como ajuste pequeño o no se usará, y se probarán como señal local las autonómicas y municipales recientes.
