@@ -17,7 +17,7 @@ Lo que mejor encaja contigo son las **ilustraciones de cabecera** (collages edit
 
 - Formato: JPG horizontal de **1280 × 720**, sin texto incrustado, estilo collage editorial. Una ilustración por pieza, sin repetir.
 - Dónde va: `img/actualidad/fotos/<slug-de-la-pieza>.jpg`, y en `actualidad/src/construir.py` la pieza lleva `foto=dict(src='img/actualidad/fotos/<slug>.jpg', ancho=1280, alto=720, ia=True, pie='…')`. Con `ia=True` el pie añade solo «Ilustración generada con IA para Mapa Electoral» y el enlace a la política de uso de IA.
-- **Encargos**: las ilustraciones pendientes están en `ENCARGOS.md` (pieza, tema, ruta, fecha límite). Empieza por ahí: entrega cada una en un PR y, en ese mismo PR, mueve su fila de «Pendientes» a «Hechos» con el número del PR. Si una idea no te encaja, propón otra en el PR.
+- **Encargos**: cada ilustración pendiente es un issue con la etiqueta `ilustracion` y tiene su fila en `ENCARGOS.md` (pieza, tema, ruta, fecha límite). Si te mencionan en uno de esos issues o te piden revisar los encargos, hazlos sin esperar más instrucciones: entrega cada una en su propio PR con «Closes #<issue>» y, en ese mismo PR, mueve su fila de «Pendientes» a «Hechos». Si una idea no te encaja, propón otra en el issue. Si no puedes generar la imagen, dilo en el issue en vez de dejarlo a medias.
 - Si la ilustración aún no tiene pieza, súbela a `img/actualidad/reserva/<tema>.jpg` y di en el PR qué representa.
 - **Nunca** uses IA para mapas, gráficos ni nada que muestre datos: eso se dibuja a partir de los datos. Tampoco hagas pasar una ilustración por fotografía ni imites el logotipo o la imagen de un medio o un partido.
 
