@@ -51,13 +51,13 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <main>
 <span class="draft">Esborrany per revisar · no publicat</span>
 <h1>Als barris de blocs dels anys seixanta i setanta de Girona vota un de cada tres adults; a les zones de cases, gairebé sis de cada deu</h1>
-<p class="dek">El Cadastre situa els 511.090 habitatges de la província secció a secció. Als blocs, el PSC va treure el 41,2% el 2023; a les cases, el 23,2%, i Junts hi va pujar del 10,3% al 22,0%.</p>
+<p class="dek">La participació sobre el cens va ser del 50,9% als blocs i del 64,5% a les cases, segons els 511.090 habitatges del Cadastre situats secció a secció. Als blocs, el PSC va treure el 41,2% el 2023; a les cases, el 23,2%.</p>
 <div class="byline">Nacho G. del Álamo · 21 d'octubre de 2026</div>
 
 <style>:root{--vota:#1d7f95;--abst:#b9b2b5;--sense:#c9822b}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--vota:#3aa6bf;--abst:#5a5459;--sense:#e09a45}}:root[data-theme="dark"]{--vota:#3aa6bf;--abst:#5a5459;--sense:#e09a45}</style>
 <p data-tipo="contexto" style="margin-top:1.4rem">El Cadastre, que depèn del Ministeri d'Hisenda, té una fitxa per a cada edifici d'Espanya: quan es va construir, per a què serveix i quants habitatges té. A la província de Girona hi ha 205.879 edificis residencials amb 511.090 habitatges. Els he situat un per un dins de les 536 seccions censals, els trossos de barri d'entre 500 i 2.000 electors que tenen resultats electorals propis, i els he creuat amb el que s'hi va votar a les generals del 23 de juliol del 2023. Les dades són <a href="https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml">obertes</a> i es poden descarregar municipi a municipi.</p>
 
-<p data-tipo="dato">Hi ha 20 seccions on més del 60% dels habitatges es van construir entre 1960 i 1979. Hi viuen 38.477 persones, a Girona, Salt, Figueres, Blanes, Lloret de Mar, la Bisbal d'Empordà, Palamós i Ripoll. El 23 de juliol, de cada 100 adults que hi vivien, en van votar 33. Uns altres 35 no podien votar perquè no tenen la nacionalitat espanyola, i 32 podien i no ho van fer. A tota la província, en van votar 49 de cada 100.</p>
+<p data-tipo="dato">Hi ha 20 seccions on més del 60% dels habitatges es van construir entre 1960 i 1979. Hi viuen 38.477 persones, a Girona, Salt, Figueres, Blanes, Lloret de Mar, la Bisbal d'Empordà, Palamós i Ripoll. El 23 de juliol, de cada 100 adults que hi vivien, en van votar 33. Uns altres 35 no eren al cens electoral, sobretot perquè no tenen la nacionalitat espanyola, i 32 hi eren i no van votar. A tota la província, en van votar 49 de cada 100. Aquests «de cada 100 adults» no són la participació oficial, que es calcula sobre el cens: en parlo més avall. Els que no eren al cens són una estimació, la diferència entre els adults residents segons l'INE (gener del 2023) i el cens electoral de juliol.</p>
 
 <p data-tipo="dato">A l'altra punta hi ha les zones de cases: 125 seccions on més del 80% dels habitatges són en edificis d'un sol habitatge. Hi viuen 97.824 persones, sobretot a Vidreres, Caldes de Malavella, Maçanet de la Selva, Riells i Viabrea i Sils. De cada 100 adults, en van votar 57; només 12 no tenien dret a vot.</p>
 
@@ -86,7 +86,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 
 <h2>El PSC als blocs, Junts a les cases</h2>
 
-<p data-tipo="dato">El vot també canvia amb el tipus d'edifici. Als 20 barris de blocs dels anys seixanta i setanta, el PSC va treure el 41,2% el juliol del 2023, el PP el 11,9% i Vox el 9,7%; Junts es va quedar en el 10,3% i ERC en el 10,6%. A les zones de cases, el PSC va baixar al 23,2%, i Junts i ERC van pujar al 22,0% i al 17,0%. A tota la província, el PSC va treure el 28,9% i Junts el 19,6%.</p>
+<p data-tipo="dato">El vot també canvia amb el tipus d'edifici. Als 20 barris de blocs dels anys seixanta i setanta, el PSC va treure el 41,2% el juliol del 2023, el PP el 11,9% i Vox el 9,7%; Junts es va quedar en el 10,3% i ERC en el 10,6%. A les zones de cases, el PSC va baixar al 23,2%, i Junts i ERC van pujar al 22,0% i al 17,0%. A tota la província, el PSC va treure el 28,9% i Junts el 19,6%. Són resultats de seccions, no de persones: no diuen com vota qui viu en un bloc o en una casa, sinó com voten els barris on predominen.</p>
 
 <figure>
 <figcaption><span class="t">Com vota cada barri segons el pes de les cases</span><span class="s">Vot a cada partit a les generals del 2023 a les seccions de la província, agrupades segons el percentatge d'habitatges que són en cases</span></figcaption>
@@ -105,13 +105,15 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 
 <p data-tipo="patron">Per al vot, en canvi, sí. El model del vot al PSC passa d'explicar el 64,1% de la variació a explicar-ne el 74,8%. Amb la mateixa renda, edat, estudis i població estrangera, una secció amb 32 punts més d'habitatges en cases dona al PSC 3,5 punts menys i a Junts 1,8 punts més. A ERC, 1,2 punts més.</p>
 
+<p data-tipo="patron">He fet dues proves perquè no sigui un miratge del model. La primera, predir cada municipi amb un model ajustat sense ell: el vot al PSC que s'encerta passa del 51,2% al 67,9% en afegir el Cadastre, i la participació no millora (del 61,2% al 59,8%). La segona, comparar només seccions del mateix municipi, als 56 que en tenen més d'una: el PSC encara hi perd 1,6 punts per cada 32 punts més de cases i ERC n'hi guanya 0,9, però en el cas de Junts la diferència desapareix (0,3 punts, dins del marge d'error). Junts és més fort a les zones de cases sobretot perquè són en municipis diferents dels de blocs, no tant dins de cada municipi.</p>
+
 <p data-tipo="hipotesis">Per què, aquestes dades no ho diuen. El tipus d'habitatge pot estar recollint coses que el cens no mesura bé: d'on venen les famílies que van omplir cada barri, quants anys fa que hi viuen, si la casa és seva o la llengua que parlen a casa. Són hipòtesis, no conclusions.</p>
 
 <p data-tipo="dato">I la bombolla? A les 45 seccions on més del 40% dels habitatges es van construir entre 1998 i 2008, la participació va ser del 63,6%, a tocar de la mitjana de la província (62,2%). El PP hi va treure el 10,8% i Vox el 8,1%, un punt més que a la província. Els barris de la bombolla voten gairebé com la resta.</p>
 
 <h2>El que aquestes dades no diuen</h2>
 
-<p data-tipo="contexto">Són dades de seccions, no de persones: no diuen si els que no voten viuen en un bloc o en una casa, només que on hi ha més blocs es vota menys. L'any del Cadastre és el de construcció de l'edifici, no el de l'última reforma. Els habitatges inclouen segones residències i pisos buits, que a la costa són molts. Cada edifici es col·loca a la secció on cau el centre del seu contorn; per diferències de límits, un 0,12% dels edificis queden en una secció d'un municipi veí.</p>
+<p data-tipo="contexto">Són dades de seccions, no de persones: no diuen si els que no voten viuen en un bloc o en una casa, només que on hi ha més blocs es vota menys. L'any del Cadastre és el de construcció de l'edifici, no el de l'última reforma. Els habitatges inclouen segones residències i pisos buits, que a la costa són molts. El Cadastre és d'agost del 2026 i les eleccions, de juliol del 2023: els habitatges acabats des del 2023 són el 0,9% del total. Els resultats aguanten si es canvien els llindars (més del 50% o del 70% d'habitatges de 1960-1979; més del 70% o del 90% de cases). Cada edifici es col·loca a la secció on cau el centre del seu contorn; per diferències de límits, un 0,12% dels edificis queden en una secció d'un municipi veí.</p>
 
 <p class="mas-datos"><a href="https://mapaelectoral.es/girona-ca.html">Girona, la demarcació catalana on menys adults voten</a> · <a href="https://mapaelectoral.es/actualidad/girona-barri-a-barri-29n/">Girona, barri a barri</a> · <a href="https://mapaelectoral.es/actualidad/junts-girona-puigdemont-29n/">Junts a la Girona de Puigdemont</a></p>
 
