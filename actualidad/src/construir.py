@@ -1386,6 +1386,21 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/blocs-i-cases-girona.jpg', ancho=1280, alto=720, ia=True,
                   pie="Blocs dels anys setanta, l'Onyar i la Catedral, cases amb jardí i una urna: un collage."),
     ),
+    dict(
+        slug='salaris-pensions-ajudes-girona', fecha='2026-10-21', idioma='ca',
+        titulo="Als barris de Girona on més pesa l'atur en la renda es vota 12 punts menys; on més pesen les pensions, igual que a la resta", serie='girona',
+        descripcion="Dades d'Hisenda via l'INE, secció a secció. A la Font de la Pólvora, el 31,8% de la renda són prestacions i hi va votar el 33,4%. On més pesa l'atur, el PSC va treure el 37,5% i Junts l'11,0%.",
+        compara="La composició de la renda bruta del 2023 (salaris, pensions, prestacions d'atur, altres prestacions i altres ingressos) de 534 de les 536 seccions censals de la província de Girona, creuada amb la participació i el vot a les generals de juliol del 2023, les municipals del 2023 i el Parlament del 2024.",
+        limites="Són dades de seccions, no de persones. La renda per font surt de dades tributàries i de registres de prestacions agregats per l'INE i no inclou les rendes que no hi consten. Percentatges sobre la renda bruta. «Sense dret a vot» és una estimació: adults residents menys cens electoral. Els grups de seccions no tenen exactament la mateixa mida perquè l'INE dona els percentatges amb un decimal. El model estadístic descriu associacions, no causes; el pes de l'atur en la renda i l'atur del cens es mesuren gairebé igual. La Vajol i Susqueda no tenen dades. Sense vot exterior.",
+        calculo="Participació sobre el cens; vot per partit sobre vot vàlid, ponderat per votants. Grups: cinquens de seccions segons el pes de cada font. Model: regressió ponderada amb variables estandarditzades (532 seccions), amb validació fora de mostra per grups de municipis i una versió només dins de cada municipi.",
+        fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=30825', "INE, Atles de Distribució de Renda de les Llars: distribució per font d'ingressos, per secció censal (taula 30825), any 2023"),
+                 ('https://ine.es/metodologia/metodologia_adrh.pdf', "INE, metodologia de l'Atles de Distribució de Renda de les Llars (definició de cada font)"),
+                 INTERIOR_CA, INE_CA,
+                 ('https://analisi.transparenciacatalunya.cat/', "Generalitat de Catalunya, participació per secció a les municipals del 2023 i al Parlament del 2024"),
+                 ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', "Manuel Trujillo i Braulio Gómez Fortes, «La segregación electoral interurbana en España», VIII Informe FOESSA (2019)")],
+        enlaces=[],
+        lugar='Girona',
+    ),
 ]
 
 # Serie «Bastiones y desiertos»: las cinco secciones de España con más y con menos voto de cada partido (generales 2023)
@@ -1740,6 +1755,7 @@ ANTETITULOS = {
     'junts-girona-puigdemont-29n': 'El vot amb dues cares',
     'alianca-catalana-ceo-mapa-ca': 'El CEO i Aliança',
     'blocs-i-cases-girona': 'El Cadastre i les urnes',
+    'salaris-pensions-ajudes-girona': 'De què viu cada barri',
     'murcia-barrio-a-barrio-29n': 'Vox se queda en la huerta',
     'palma-barrio-a-barrio-29n': 'La abstención manda',
     'como-voto-tu-calle': 'Tu sección, en el mapa',

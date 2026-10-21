@@ -94,5 +94,9 @@
  "votos-sin-escano-29n": {
   "pie": "Votos que no obtuvieron escaño, por partido.",
   "fuente": "Ministerio del Interior, resultados por mesa con voto exterior (CERA), vía pollspaindata"
+ },
+ "salaris-pensions-ajudes-girona": {
+  "pie": "Quant es vota segons de què viu el barri.",
+  "fuente": "INE, Atles de Distribució de Renda de les Llars (renda del 2023 per font d'ingressos, taula 30825); Ministeri de l'Interior, Congrés 2023 per mesa (via pollspaindata), agregat per secció, sense vot exterior"
  }
 }
