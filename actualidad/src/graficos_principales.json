@@ -98,5 +98,9 @@
  "salaris-pensions-ajudes-girona": {
   "pie": "Quant es vota segons de què viu el barri.",
   "fuente": "INE, Atles de Distribució de Renda de les Llars (renda del 2023 per font d'ingressos, taula 30825); Ministeri de l'Interior, Congrés 2023 per mesa (via pollspaindata), agregat per secció, sense vot exterior"
+ },
+ "salarios-pensiones-ayudas-espana": {
+  "pie": "Cuánto se vota según de qué vive el barrio.",
+  "fuente": "INE, Atlas de Distribución de Renta de los Hogares (renta de 2023 por fuente de ingresos, tabla 30825); Ministerio del Interior, generales de 2023 por mesa, agregadas por sección, sin voto exterior"
  }
 }
