@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mapaelectoral.es/actualidad/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://mapaelectoral.es/actualidad/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/ceuta-historia-electoral/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/melilla-historia-electoral/</loc><lastmod>2026-10-09</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/andalucia-historia-electoral/</loc><lastmod>2026-10-09</lastmod></url>
@@ -76,6 +76,7 @@
   <url><loc>https://mapaelectoral.es/actualidad/palma-barrio-a-barrio-29n/</loc><lastmod>2026-10-15</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/minguez-lleida-29n/</loc><lastmod>2026-10-15</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/ceuta-melilla-participacion-29n/</loc><lastmod>2026-10-15</lastmod></url>
+  <url><loc>https://mapaelectoral.es/actualidad/senado-29n/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/precio-del-escano-29n/</loc><lastmod>2026-10-15</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/votos-sin-escano-29n/</loc><lastmod>2026-10-15</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/pensiones-censo-mayores-29n/</loc><lastmod>2026-10-16</lastmod></url>
@@ -104,4 +105,8 @@
   <url><loc>https://mapaelectoral.es/actualidad/erc-cinco-pueblos-blancafort-flix/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/junts-cinco-pueblos-amer/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://mapaelectoral.es/actualidad/bng-cinco-pueblos-allariz/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://mapaelectoral.es/actualidad/barrios-donde-vota-menos-de-la-mitad/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://mapaelectoral.es/actualidad/municipios-izquierda-1977-derecha-2023/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://mapaelectoral.es/actualidad/calle-que-parte-madrid/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://mapaelectoral.es/actualidad/barrios-pobres-derecha-ricos-izquierda/</loc><lastmod>2026-10-22</lastmod></url>
 </urlset>
