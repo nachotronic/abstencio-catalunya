@@ -1052,7 +1052,7 @@ const RANK = SEC.map(p => p.turnout).filter(v => v != null).sort((a, b) => a - b
 const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[·'’]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
 let CJ = null, CJload = null, fhits = [], fsel = 0, fcur = null;
 function loadCJ() {
-  if (!CJload) CJload = fetch('calles.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
+  if (!CJload) CJload = fetch('calles-girona.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
     CJ = [];
     for (const m in d.m) { const mu = MUNI[m]; if (!mu) continue; const mw = fold(mu.name).split(' ');
       for (const [n, t, tr] of d.m[m]) { const ty = d.t[t]; CJ.push({ n, ty, m, tr, w: fold(ty + ' ' + n).split(' '), mw, pop: mu.pop }); } }

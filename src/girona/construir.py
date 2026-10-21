@@ -197,6 +197,7 @@ def build(lang, base, geo):
     s = replace_once(s, 'const HMAX = 14000;', 'const HMAX = 6000;')
     s = replace_once(s, 'let baseZoom = 7.15;', 'let baseZoom = 8.7;')
     s = replace_once(s, '{ longitude:1.72, latitude:41.72, zoom:7.15, pitch:0, bearing:0 }', '{ ' + PROV + ', pitch:0, bearing:0 }')
+    s = replace_once(s, "fetch('calles.json')", "fetch('calles-girona.json')")
     s = sub_once(s, r'const D = \[.*?\];', 'const D = ' + json.dumps([{k: d[k] for k in ['d', 'lo', 'hi', 'g', 'm', 'p']} for d in R['deciles']]) + ';')
     if lang == 'ca':
         src = (ROOT / 'src' / 'build_ca.py').read_text(encoding='utf-8')
@@ -212,9 +213,21 @@ def build(lang, base, geo):
     print(out.name, len(s), 'bytes,', n, 'secciones')
 
 
+def calles(base):
+    """calles-girona.json: el índice del buscador (calles.json, de toda Cataluña) solo con los municipios de la
+    provincia y con los índices de sección renumerados a las 536 secciones de la pieza."""
+    tc = get_const(base, 'G')['cols']['tract_code']
+    newi = {o: n for n, o in enumerate(i for i, c in enumerate(tc) if c.startswith('17'))}
+    d = json.load(open(ROOT / 'calles.json', encoding='utf-8'))
+    tr = lambda t: newi[t] if isinstance(t, int) else [[newi[x[0]]] + x[1:] for x in t]
+    m = {k: [[n, t, tr(x)] for n, t, x in v] for k, v in d['m'].items() if k.startswith('17')}
+    (ROOT / 'calles-girona.json').write_text(json.dumps({'t': d['t'], 'm': m}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+
+
 def main():
     base = (ROOT / 'abstencion.html').read_text(encoding='utf-8')
     geo = filter_geo(base)
+    calles(base)
     for lang in sys.argv[1:] or ('es', 'ca'):
         build(lang, base, geo)
 
