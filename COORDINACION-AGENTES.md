@@ -1,6 +1,6 @@
 # Coordinación Claude ↔ ChatGPT — Mapa Electoral
 
-**Fuente única de tareas: GitHub Issues.** Este documento establece el protocolo; no es otra lista de pendientes. `ENCARGOS.md` queda como índice histórico/creativo hasta migrar sus entradas a Issues. No mantener estados manuales duplicados.
+**Fuente única de tareas: GitHub Issues.** Este documento establece el protocolo; no es otra lista de pendientes. `ENCARGOS.md` se mantiene como índice de ilustraciones: una fila por encargo con el enlace a su Issue, sin estados propios (decisión de Nacho, 21-10-2026). No mantener estados manuales duplicados.
 
 ## Responsabilidades
 
@@ -38,6 +38,6 @@
 
 - Previsiones: [#157](https://github.com/nachotronic/abstencio-catalunya/issues/157); auditoría [PR #166](https://github.com/nachotronic/abstencio-catalunya/pull/166); equivalencias [PR #167](https://github.com/nachotronic/abstencio-catalunya/pull/167) (borrador).
 - Ilustración prestaciones/participación: [#165](https://github.com/nachotronic/abstencio-catalunya/issues/165) — pendiente de subir JPG al repositorio.
-- Encargos creativos nuevos que aún aparezcan en `ENCARGOS.md`: migrar a Issues y enlazar, sin borrar el histórico.
+- Ilustraciones que estaban en `ENCARGOS.md`: migradas a [#171](https://github.com/nachotronic/abstencio-catalunya/issues/171) y [#172](https://github.com/nachotronic/abstencio-catalunya/issues/172), enlazadas desde el índice.
 
 **Regla clave:** GitHub es el buzón compartido, no un canal de conversación instantánea. Los agentes consultan las Issues al ser activados; ninguno puede asumir que el otro recibe mensajes automáticamente.
