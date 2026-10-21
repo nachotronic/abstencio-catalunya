@@ -651,7 +651,7 @@ PIEZAS = [
         enlaces=[],
         lugar='Madrid',
         foto=dict(src='img/actualidad/fotos/madrid-barrio-a-barrio-29n.jpg', ancho=1280, alto=720, ia=True,
-                  pie='Un andén, un autobús y un billete: el viaje diario de la ciudad, en collage.'),
+                  pie='La Gran Vía y el edificio Metrópolis junto a un mapa de Madrid y un plano de calles, en collage.'),
     ),
     dict(
         slug='barcelona-barrio-a-barrio-29n', fecha='2026-10-15',
