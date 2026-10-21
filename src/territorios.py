@@ -1360,6 +1360,26 @@ def tema_resultados(resumen):
           ('¿Quién ganó las elecciones generales de 2023?',
            f'El PP fue el partido más votado el 23 de julio de 2023, con {num(pt[0]["escanos"])} diputados; el PSOE obtuvo {num(pt[1]["escanos"])}. '
            'Pedro Sánchez (PSOE) fue investido presidente en noviembre de 2023 con el apoyo de Sumar, ERC, Junts, EH Bildu, PNV, BNG y Coalición Canaria.'),
+          ('¿A qué hora se sabe quién ha ganado?',
+           'Depende de lo ajustado que sea. Los primeros datos del escrutinio llegan poco después del cierre de los colegios y, en las últimas generales, el reparto de escaños '
+           'estaba claro antes de medianoche. Durante el día, el Ministerio del Interior publica avances de participación, habitualmente a las 14.00 y a las 18.00.'),
+          ('¿Cuántos electores pueden votar el 29N?',
+           f'{num(38728356)}, según el censo de consulta del INE: los residentes en España y los españoles que viven en el extranjero. '
+           'Por provincia y municipio, en el <a href="../censo-electoral-2026/">censo electoral de 2026</a>.'),
+          ('¿Cómo se reparten los escaños?',
+           'En cada provincia, con la regla D\'Hondt entre las candidaturas que superan el 3 % de los votos válidos de esa provincia. Ceuta y Melilla eligen un diputado cada una, '
+           'que gana la lista más votada. Cada provincia tiene un mínimo de dos diputados; el resto se reparte por población. '
+           'Cuántos diputados elige cada una, en <a href="../elecciones-29n-2026/#escanos">escaños por provincia</a>.'),
+          ('¿Qué pasa si ningún partido tiene mayoría absoluta?',
+           'El Rey propone un candidato tras consultar a los grupos, y el Congreso vota su investidura: en la primera votación necesita mayoría absoluta (176) y, '
+           'en la segunda, más síes que noes. Si en dos meses desde la primera votación ningún candidato es investido, las Cortes se disuelven y se repiten las elecciones '
+           '(artículo 99 de la Constitución).'),
+          ('¿Cuándo son definitivos los resultados?',
+           'Los de la noche electoral son provisionales. El escrutinio general lo hacen las juntas electorales provinciales desde el tercer día después de la votación, '
+           'y en él se suma el voto de los españoles que viven en el extranjero, que puede cambiar algún escaño ajustado. Después se proclaman los electos.'),
+          ('¿Hasta cuándo se pueden publicar encuestas?',
+           'La ley electoral prohíbe publicar o difundir sondeos electorales en los cinco días anteriores a la votación, del martes 24 al sábado 28 de noviembre. '
+           'Mapa Electoral no publica encuestas ni estimaciones: solo resultados oficiales.'),
           ('¿Dónde veo los resultados de mi municipio o de mi barrio?',
            'En el mapa de Mapa Electoral: escribe tu calle y número en el buscador. Cada provincia y cada municipio de más de 1.000 habitantes tiene además su página, '
            'con los resultados desde 1977, enlazada en la tabla de esta página.')]
