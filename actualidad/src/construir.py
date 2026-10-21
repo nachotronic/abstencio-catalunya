@@ -1663,6 +1663,8 @@ PIEZAS += [
                  ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', 'Manuel Trujillo y Braulio Gómez Fortes, La segregación electoral interurbana en España, VIII Informe FOESSA (2019)')],
         enlaces=[],
         lugar='España',
+        foto=dict(src='img/actualidad/fotos/salarios-pensiones-ayudas-espana.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un bloque de pisos, una declaración de la renta, monedas, una madre con su hijo, un pensionista, el mapa de España y una urna: un collage.'),
     ),
     dict(
         slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-23',
