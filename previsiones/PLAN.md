@@ -50,7 +50,7 @@ fuentes ──ETL──► datos/limpios (versionados, con pruebas)
 ## 5. Ya comprobado en el prototipo
 
 - El reparto D'Hondt con umbral del 3 % reproduce el Congreso oficial de 2023 (PP 137, PSOE 121, Vox 33, Sumar 31...). Es una prueba automática: `python3 -m unittest discover previsiones/src`.
-- El Senado tiene 208 elegidos en 59 circunscripciones (provincias, islas, Ceuta y Melilla) con voto limitado, no con D'Hondt.
+- El Senado tiene 209 elegidos en 60 circunscripciones (provincias, islas, Ceuta y Melilla; Ibiza y Formentera por separado desde la LO 2/2026) con voto limitado, no con D'Hondt. El reparto actual es una aproximación con voto de lista; falta el modelo por candidato (revisión de ChatGPT, R3).
 
 ## 6. Decisiones pendientes para Nacho
 
@@ -65,4 +65,4 @@ fuentes ──ETL──► datos/limpios (versionados, con pruebas)
 - **Encuestas** (Electográfica, a propuesta de Nacho): 1.047 nacionales de 2018 a 2026 y 137 por comunidad o provincia. Carpeta de trabajo `previsiones/encuestas/` del proyecto. Se citan la encuestadora y el medio original.
 - **Europeas de 2024 por sección** (`src/europeas2024.py`): Sumar, Podemos y SALF por separado desde los votos por mesa; los totales cuadran con el resultado oficial sin CERA.
 - **Base 2026 por sección** (`src/base2026.py`): voto de 2023 con el de Sumar repartido entre Sumar (FA) y Podemos según su peso en cada sección en 2024 (41,8 % para Podemos en el conjunto de España), y un índice de dónde vota SALF. Supuesto: ese reparto se mantiene.
-- **Cambio por perfil con el CIS** (`src/perfiles.py`): modelo log-lineal de intención frente a recuerdo por edad (65+), estudios superiores y tamaño de municipio. Validación 2019 → 2023 con el preelectoral del CIS (estudio 3411, 29.201 entrevistas): el error medio por sección baja solo de 2,89 a 2,88 puntos frente a la subida proporcional uniforme; con la comunidad autónoma empeora (3,02). Conclusión: el perfil del CIS apenas mejora el reparto por sección; el error que queda es local. Se usará como ajuste pequeño o no se usará, y se probarán como señal local las autonómicas y municipales recientes.
+- **Cambio por perfil con el CIS** (`src/perfiles.py`): modelo log-lineal de intención frente a recuerdo por edad (65+), estudios superiores y tamaño de municipio. Prueba 2019 → 2023 con el preelectoral del CIS (estudio 3411, 29.201 entrevistas), como desagregación condicionada (con los votos reales de 2023 de cada sección y de cada partido en España fijados; no es una predicción ex ante): el error medio por sección baja solo de 2,89 a 2,88 puntos frente a la subida proporcional uniforme; con la comunidad autónoma empeora (3,02). Conclusión: el perfil del CIS apenas mejora el reparto por sección; el error que queda es local. Se usará como ajuste pequeño o no se usará, y se probarán como señal local las autonómicas y municipales recientes.

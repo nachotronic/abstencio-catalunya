@@ -3,8 +3,9 @@
 - Congreso (arts. 162-163 LOREG): 52 circunscripciones, umbral del 3 % de los votos válidos (incluido el voto en
   blanco) en cada una y reparto D'Hondt. Ceuta y Melilla eligen un diputado cada una: gana la lista más votada.
 - Senado (arts. 165-166): voto limitado a candidatos. Cuatro senadores por provincia peninsular y el elector marca
-  hasta tres; tres en Gran Canaria, Mallorca y Tenerife (marca hasta dos); uno en cada una de las demás islas o
-  agrupaciones de islas (uno); dos en Ceuta y dos en Melilla (uno). Los senadores de designación autonómica
+  hasta tres; tres en Gran Canaria, Mallorca y Tenerife (marca hasta dos); uno en cada una de las demás islas (uno);
+  dos en Ceuta y dos en Melilla (marca hasta dos, art. 166.1.a). Desde la LO 2/2026, Ibiza y Formentera son
+  circunscripciones distintas (art. 165.2; RD 806/2026, art. 3.2): 209 senadores elegidos en 60 circunscripciones. Los senadores de designación autonómica
   (art. 69.5 de la Constitución) no dependen de las generales y van aparte.
 """
 
@@ -20,7 +21,8 @@ ESCANOS_2023 = {**ESCANOS_2026, '28': 37, '11': 9}
 
 # Circunscripciones del Senado: (código, nombre, provincia, senadores, votos por elector)
 _ISLAS = [
-    ('07M', 'Mallorca', '07', 3, 2), ('07N', 'Menorca', '07', 1, 1), ('07E', 'Eivissa-Formentera', '07', 1, 1),
+    ('07M', 'Mallorca', '07', 3, 2), ('07N', 'Menorca', '07', 1, 1), ('07I', 'Eivissa', '07', 1, 1),
+    ('07F', 'Formentera', '07', 1, 1),
     ('35G', 'Gran Canaria', '35', 3, 2), ('35L', 'Lanzarote', '35', 1, 1), ('35F', 'Fuerteventura', '35', 1, 1),
     ('38T', 'Tenerife', '38', 3, 2), ('38P', 'La Palma', '38', 1, 1), ('38G', 'La Gomera', '38', 1, 1),
     ('38H', 'El Hierro', '38', 1, 1),
@@ -34,7 +36,7 @@ def circunscripciones_senado(nombres):
         if p in ('07', '35', '38'):
             out += [i for i in _ISLAS if i[2] == p]
         elif p in ('51', '52'):
-            out.append((p, nom, p, 2, 1))
+            out.append((p, nom, p, 2, 2))
         else:
             out.append((p, nom, p, 4, 3))
     return out
@@ -52,25 +54,18 @@ def dhondt(votos, escanos, validos, umbral=3):
 
 
 def senado_limitado(votos, senadores, votos_elector):
-    """Senadores por lista con voto limitado, suponiendo voto de lista (cada elector marca a los candidatos de un
-    solo partido) y que cada partido presenta tantos candidatos como votos tiene el elector.
-
-    Con 4 senadores y 3 votos, el primero se lleva 3 y el segundo 1. Con 3 y 2 votos, 2 y 1. Con 1 senador, el
-    más votado. Con 2 senadores y 1 voto (Ceuta, Melilla), cada partido reparte su voto entre sus dos candidatos:
-    el primero se lleva los dos solo si dobla al segundo."""
-    orden = sorted((v, k) for k, v in votos.items() if v > 0)[::-1]
+    """APROXIMACIÓN, no el reparto oficial: la ley proclama a los candidatos más votados (art. 166.1.b), no a
+    listas. Aquí se supone voto de lista (cada elector marca solo a candidatos de un partido, sin voto cruzado) y
+    que cada partido presenta tantos candidatos como votos tiene el elector. Así, el primero se lleva tantos
+    senadores como votos por elector (3 de 4 en una provincia, 2 de 3 en Mallorca, los 2 de Ceuta o Melilla) y
+    el resto va a los siguientes. Si no hay más partidos con votos, los escaños sobrantes van al primero.
+    El modelo por candidato, con voto cruzado, queda pendiente (revisión R3 de previsiones/revisiones/)."""
+    orden = [k for v, k in sorted(((v, k) for k, v in votos.items() if v > 0), reverse=True)]
     out = {k: 0 for k in votos}
     if not orden:
         return out
-    if senadores == 2 and votos_elector == 1:
-        (v1, k1), (v2, k2) = orden[0], orden[1] if len(orden) > 1 else (0, None)
-        if v1 / 2 > v2 or k2 is None:
-            out[k1] = 2
-        else:
-            out[k1] = out[k2] = 1
-        return out
-    out[orden[0][1]] += votos_elector if senadores > 1 else 1
-    resto = senadores - out[orden[0][1]]
-    for v, k in orden[1:1 + resto]:
+    out[orden[0]] = min(votos_elector, senadores)
+    for k in orden[1:1 + senadores - out[orden[0]]]:
         out[k] += 1
+    out[orden[0]] += senadores - sum(out.values())
     return out

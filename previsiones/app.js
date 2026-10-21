@@ -144,7 +144,8 @@
     const h = E.hemiciclo.senado, des = Object.fromEntries(E.listas.map(l => [l.lista, l.designados]));
     const ks = [...new Set([...Object.keys(h), ...Object.keys(des).filter(k => des[k])])].sort(ord);
     const partes = ks.flatMap(k => [{ lista: k, n: h[k] || 0 }, { lista: k, n: des[k] || 0, hueco: true }]);
-    hemiciclo('hemi-s', 'ley-s', partes, META.senado.elegidos + META.senado.designados, 133);
+    hemiciclo('hemi-s', 'ley-s', partes, META.senado.elegidos + META.senado.designados,
+      Math.floor((META.senado.elegidos + META.senado.designados) / 2) + 1);
     $('tabla-s').tBodies[0].innerHTML = E.listas.filter(l => l.senado[4] > 0 || l.designados)
       .sort((a, b) => b.senado[2] - a.senado[2])
       .map(l => `<tr><td><i class="sw" style="background:${col(l.lista)}"></i> ${l.lista}</td><td class="n">${Math.round(l.senado[2])}</td><td class="n"><span class="rg">${l.senado[1]}–${l.senado[3]}</span></td><td class="n">${l.designados}</td></tr>`).join('');
