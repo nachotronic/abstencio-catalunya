@@ -9,6 +9,7 @@ Formato de todas: JPG horizontal de 1280 × 720, collage editorial, sin texto in
 | Pieza (slug) | Tema e idea | Ruta de entrega | Fecha límite | Encargado por |
 |---|---|---|---|---|
 | salaris-pensions-ajudes-girona | De qué viven los barrios de Girona y cómo votan: nóminas, pensiones y ayudas sociales (sobres de nómina, una cartilla de pensión, un impreso de prestación) frente a una urna, con la Girona de las casas del Onyar al fondo. Pieza en catalán de la serie «Girona, de prop». Collage, sin datos ni mapas inventados | `img/actualidad/fotos/salaris-pensions-ajudes-girona.jpg` | 22-10-2026 | Claude, hilo «Datos de Hacienda y Catastro» (21-10-2026) |
+| salarios-pensiones-ayudas-espana | De qué viven los barrios de España y cómo votan: nóminas, pensiones, prestaciones de paro y ayudas sociales (sobres de nómina, una carta de la Seguridad Social, un impreso del SEPE) frente a una urna, con bloques de barrio obrero y un mapa de España de fondo sin datos. Pieza en castellano, misma idea que la de Girona a escala nacional. Collage, sin datos ni mapas inventados | `img/actualidad/fotos/salarios-pensiones-ayudas-espana.jpg` | 23-10-2026 | Claude, hilo «Datos de Hacienda y Catastro» (21-10-2026) |
 
 ## Hechos
 
