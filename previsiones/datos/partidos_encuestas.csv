@@ -1,0 +1,32 @@
+nombre_encuesta,partido_modelo,desde,hasta,nota
+ADELANTE ANDALUCÍA,OTROS,,,"Partido andaluz, no equiparar con Sumar"
+ALIANÇA.CAT,ALIANCA,,,Aliança Catalana
+BNG,BNG,,,
+CCa,CC,,,Coalición Canaria
+COMPROMÍS,SUMAR,,,Agrupación regional al espacio Sumar; revisar coalición y elección
+COMPROMÍS-FV,SUMAR,,,Compromís-FV; revisar coalición
+CS,CS,,,Ciudadanos
+Cs,CS,,,Ciudadanos
+CUP-PR,OTROS,,,CUP-Per la Ruptura; categoría propia no disponible
+DEM,OTROS,,,Sigla sin identificación confirmada; revisar encuesta original
+EAJ-PNV,PNV,,,
+EH BILDU,BILDU,,,
+ERC,ERC,,,
+EV,OTROS,,,Sigla sin identificación confirmada; revisar encuesta original
+FA,SUMAR,,,Frente Amplio; comprobar fecha y contexto
+IE,OTROS,,,Sigla sin identificación confirmada; revisar encuesta original
+JUNTS,JUNTS,,,
+MÁS PAÍS,SUMAR,,,Agregado histórico de espacio político; no identidad organizativa
+MÁS PAÍS-EQUO,SUMAR,,,Agregado histórico de espacio político
+PODEMOS,PODEMOS,,,Separado cuando aparece solo
+PP,PP,,,
+PSOE,PSOE,,,
+SALF,SALF,,,Se Acabó La Fiesta
+SMR,SUMAR,,,Probable abreviatura Sumar; confirmar en fuente
+SUMAR,SUMAR,,,
+SUMAR+PODEMOS,SUMAR,,,Agregado conjunto; no sumar Podemos por separado
+UNIDAS PODEMOS,SUMAR,,,Agregado histórico para series; no identidad organizativa
+UNIDOS PODEMOS,SUMAR,,,Agregado histórico para series
+UP-ECP-EC,SUMAR,,,Unidas Podemos En Comú Podem y confluencias; agregado histórico
+UPN,UPN,,,
+VOX,VOX,,,
