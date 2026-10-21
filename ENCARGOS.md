@@ -8,6 +8,7 @@ Formato de todas: JPG horizontal de 1280 × 720, collage editorial, sin texto in
 
 | Pieza (slug) | Tema e idea | Ruta de entrega | Fecha límite | Encargado por |
 |---|---|---|---|---|
+| pensiones-revalorizacion-29n | Pensiones en campaña: el PSOE promete subirlas con el IPC aunque esté en funciones y el PP dice que el sistema «va a petar». Idea: un banco de parque o una mano mayor con una cartilla o un recibo de la pensión, junto a una urna y la fachada del Ministerio de Inclusión y Seguridad Social; tono de papel recortado como los collages de Nacho. Sin caras reconocibles de políticos. | img/actualidad/fotos/pensiones-revalorizacion-29n.jpg | 22-10-2026, 10:00 | Hilo «Piezas al hilo de la actualidad», 21-10-2026 |
 
 ## Otros encargos: previsiones (issue #157)
 
