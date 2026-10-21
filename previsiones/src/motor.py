@@ -28,7 +28,7 @@ BASE = SIM['elecciones']['2023_07']
 # Listas que entran en el reparto. «Otros» agrupa listas distintas y no puede ganar escaños como una sola.
 LISTAS = ['PP', 'PSOE', 'Vox', 'Sumar', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC', 'UPN', 'CUP', 'Nueva Canarias', 'PACMA']
 # Peso (ficticio) de cada isla en el voto de su provincia, solo para repartir los senadores insulares
-PESO_ISLA = {'07M': .80, '07N': .08, '07E': .12, '35G': .78, '35L': .13, '35F': .09,
+PESO_ISLA = {'07M': .80, '07N': .08, '07I': .11, '07F': .01, '35G': .78, '35L': .13, '35F': .09,
              '38T': .87, '38P': .08, '38G': .02, '38H': .03}
 # Senadores de designación autonómica: FICTICIOS. En el modelo real, la composición vigente de cada parlamento.
 DESIGNADOS = {'PP': 27, 'PSOE': 20, 'Vox': 3, 'Sumar': 1, 'ERC': 2, 'Junts': 1, 'EH Bildu': 1, 'PNV': 2}

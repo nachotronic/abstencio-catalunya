@@ -106,7 +106,11 @@ def ipf(v, filas, cols, n=30):
 
 
 def valida():
-    """2019 -> 2023: ¿reparte mejor el voto por sección el cambio por perfil que la subida proporcional uniforme?"""
+    """2019 -> 2023: ¿reparte mejor el voto por sección el cambio por perfil que la subida proporcional uniforme?
+
+    No es una predicción ex ante: se fijan los votos reales de 2023 de cada sección (participación) y de cada
+    partido en España, y solo se mide cómo se reparte el voto entre secciones (desagregación condicionada a esos
+    márgenes). La especificación de 2026 (sin comunidad autónoma) se fija de antemano, no por este resultado."""
     g = pd.read_csv(RAIZ / 'generales-2026/descargas/resultados_secciones_largo.csv', dtype={'tract_code': str})
     fam = ['PP', 'PSOE', 'VOX', 'SUMAR', 'CS']
     resto = ['ERC', 'JUNTS', 'PNV', 'BILDU', 'BNG', 'CC', 'OTROS', 'UPYD', 'UCD', 'CDS']
@@ -137,15 +141,14 @@ def valida():
 
 
 def main():
-    global CON_CCAA
     coef19, res = valida()
-    CON_CCAA = res['perfil+ccaa']['media'] < res['perfil']['media']
-    print('Validación 2019 -> 2023, error medio por sección (puntos, ponderado por votos):')
+    print('Desagregación 2019 -> 2023 con los totales reales de sección y de España (no es predicción ex ante);')
+    print('error medio por sección en puntos, ponderado por votos:')
     for k, v in res.items():
         print(' ', k, v)
     estudios = ['3570', '3573', '3577', '3578', '3579']   # barómetros más recientes con muestra grande
     df = pd.concat([lee(e) for e in estudios])
-    coef26 = ajusta(df, REC23, INT26, ['PP', 'PSOE', 'VOX', 'SUMAR'], ccaa=CON_CCAA)
+    coef26 = ajusta(df, REC23, INT26, ['PP', 'PSOE', 'VOX', 'SUMAR'], ccaa=False)   # fijado a priori
     f26 = factores(coef26, covariables())
     BASE.mkdir(parents=True, exist_ok=True)
     f26.round(4).reset_index().to_csv(BASE / 'factores_perfil_2026.csv', index=False)
