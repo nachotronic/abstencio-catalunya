@@ -94,9 +94,5 @@
  "votos-sin-escano-29n": {
   "pie": "Votos que no obtuvieron escaño, por partido.",
   "fuente": "Ministerio del Interior, resultados por mesa con voto exterior (CERA), vía pollspaindata"
- },
- "blocs-i-cases-girona": {
-  "pie": "De cada 100 adults, quants van votar.",
-  "fuente": "Direcció General del Cadastre (Ministeri d'Hisenda), edificis INSPIRE, agost del 2026; Ministeri de l'Interior, Congrés 2023 per secció (via pollspaindata), sense vot exterior; INE, Atles de Renda i Cens 2021. Càlcul propi"
  }
 }

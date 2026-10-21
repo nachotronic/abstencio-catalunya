@@ -1383,6 +1383,8 @@ PIEZAS += [
                  ('https://seu.girona.cat/portal/dades/transparencia/docs/Auditoria-BaixaTensio-FontdelaPolvora.pdf', "Ajuntament de Girona, auditoria de baixa tensió de la Font de la Pólvora")],
         enlaces=[],
         lugar='Girona',
+        foto=dict(src='img/actualidad/fotos/blocs-i-cases-girona.jpg', ancho=1280, alto=720, ia=True,
+                  pie="Blocs dels anys setanta, l'Onyar i la Catedral, cases amb jardí i una urna: un collage."),
     ),
 ]
 
