@@ -1,0 +1,214 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--psoe:#e30613;--pp:#1d84ce;--vox:#5ac035;--bar:#cfcacc;--neu:#1d7f95;--ppl:#9cc8eb;--psoel:#f4a3a6;--voxl:#b9e3a6}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--bar:#4a454b;--neu:#3aa6bf;--ppl:#2a5f86;--psoel:#8a2a2e;--voxl:#3f7a2a}}:root[data-theme="dark"]{--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--bar:#4a454b;--neu:#3aa6bf;--ppl:#2a5f86;--psoel:#8a2a2e;--voxl:#3f7a2a}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Trump dice que España fue «invadida»: los vecinos nacidos fuera pasaron de 6,5 a 10 millones en siete años, y donde más crecieron Vox no sacó más votos</h1>
+<p class="dek">La «invasión» de la que habla son las 72.000 personas que entraron en Ceuta en dos días de julio, casi todas de vuelta en Marruecos poco después, según Interior. El cambio de fondo está en el padrón: 572.678 residentes nacidos fuera más solo en 2025. En los municipios donde más subió su peso, Vox sacó el 12,3% en 2023; donde menos, el 13%.</p>
+<div class="byline">Nacho G. del Álamo · 21 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div><p data-tipo="contexto">Ayer, martes 20 de octubre, en el Despacho Oval, en un acto convocado para hablar de fraudes en Minnesota, Donald Trump se acordó de España. Hablaba de Francia, de Europa, de lo que según él les espera, y de pronto señaló hacia el sur, según la crónica de <a href="https://www.infobae.com/america/agencias/2026/10/20/trump-afirma-que-espana-fue-invadida-por-migrantes-y-no-esta-haciendo-nada-al-respecto/">EFE</a>:</p>
+<blockquote class="cita"><p>«En el caso de Francia y de toda Europa, fíjense en lo que ocurrió en España: el país fue invadido de forma repentina y masiva. Llegaron por decenas de miles, entraron a raudales en España, y el país no está haciendo nada al respecto»</p><footer>Donald Trump, presidente de Estados Unidos, el 20 de octubre, según la traducción de <a href="https://www.infobae.com/america/agencias/2026/10/20/trump-afirma-que-espana-fue-invadida-por-migrantes-y-no-esta-haciendo-nada-al-respecto/">EFE</a>.</footer></blockquote>
+<p data-tipo="contexto">Añadió una cifra y un plazo: «Hace apenas un par de semanas, más de cien mil personas irrumpieron en el país en cuestión de minutos». Y una conclusión: «Europa tiene que cambiar su rumbo. De lo contrario, no quedará nada de Europa». El mismo día, en la plaza del Ayuntamiento de Ponferrada, Santiago Abascal hacía en campaña un viaje parecido, de Francia a España: «Lo que está ocurriendo en Francia o en algunos lugares de Italia es lo que puede pasar en España si no ponemos remedio», según <a href="https://www.leon24horas.net/politica/abascal-lanza-advertencia-ponferrada-que-pasa-francia-puede-pasar-espana/20261020221218212080.html">León 24 Horas</a>.</p>
+<p data-tipo="dato">Lo que Trump tenía en la cabeza es Ceuta. No hace un par de semanas, sino el 30 y el 31 de julio, y no en minutos, sino en dos días: miles de personas llegaron desde Marruecos por el espigón de El Tarajal y a nado. El ministro del Interior, Fernando Grande-Marlaska, fijó la cifra el 4 de agosto en unas 72.000 entradas y dijo que unas 70.000 ya habían salido de la ciudad, según <a href="https://elfarodeceuta.es/marlaska-niega-cni-avisara-entrada-masiva-ceuta-confirma-72-000-personas-cruzaron-marruecos/">El Faro de Ceuta</a>. Cuántas se quedaron es todavía materia de discusión: el Gobierno habló de unas 5.000 a finales de agosto y el presidente de Ceuta, Juan Jesús Vivas, de 13.000 en septiembre, según el recuento de cifras de <a href="https://www.eldebate.com/espana/20260917/cuales-son-verdaderas-cifras-invasion-ceuta-numero-entradas-salidas-alojados-calle_459327.html">El Debate</a>. Al menos 75 personas murieron en la frontera, según el balance que dio entonces el ministro.</p>
+<p data-tipo="dato">Esos dos días no figuran en la estadística. El balance quincenal de Interior cuenta 27.230 llegadas irregulares a España entre el 1 de enero y el 15 de octubre, un 5,9% menos que un año antes, «siempre sin contar las decenas de miles de personas que accedieron los días 30 y 31 de julio», según <a href="https://www.infobae.com/espana/agencias/2026/10/16/se-reducen-las-llegadas-irregulares-de-migrantes-a-espana-sin-contar-la-entrada-a-ceuta/">EFE</a>. A Canarias llegaron un tercio menos de personas que en 2025; a Ceuta y Melilla por tierra, un 51,7% más.</p>
+<h2>La otra entrada</h2>
+<p data-tipo="dato">Hay otra entrada, más lenta, que no sale en los telediarios porque no tiene espigón. La lleva el Instituto Nacional de Estadística en su <a href="https://www.ine.es/dyngs/Prensa/ECP2T26.htm">Estadística Continua de Población</a>. El 1 de enero de 2019 vivían en España 6.549.309 personas nacidas en el extranjero, el 14% de la población. El 1 de enero de 2026 eran 10.036.888, el 20,2%. Son casi tres millones y medio más en siete años. El 1 de julio pasado, el último dato, ya eran 10.291.807.</p>
+<figure>
+<figcaption><span class="t">Población residente en España nacida en el extranjero, a 1 de enero de cada año</span><span class="s">Incluye a los españoles nacidos fuera. En color, desde 2019</span></figcaption>
+<div class="chart" id="serie"></div>
+<div class="src">Fuente: INE, Estadística Continua de Población.</div>
+<details><summary>Ver los datos</summary><div class="tbl" id="serie-tbl"></div></details>
+</figure>
+<p data-tipo="dato">Solo durante 2025, los residentes nacidos fuera aumentaron en 572.678. Dicho a la escala de un día cualquiera, 1.569 vecinos más cada día, sin vallas ni cámaras: una entrada como la de Ceuta cada mes y medio. Comparo, a sabiendas, cosas distintas. Lo de Ceuta fueron entradas y casi todas dieron la vuelta; lo del INE es un saldo de residentes, lo que queda después de restar a quienes se van y a quienes mueren, y cuenta también a los españoles que nacieron fuera. Pero es la que mide cuánto ha cambiado de verdad la población.</p>
+<figure>
+<figcaption><span class="t">Tres cifras de la inmigración en España, en personas</span><span class="s">Las dos primeras son entradas; la tercera, el aumento neto de residentes nacidos en el extranjero entre el 1 de enero de 2025 y el 1 de enero de 2026</span></figcaption>
+<div class="chart" id="mag"></div>
+<div class="src">Fuentes: Ministerio del Interior, vía <a href="https://elfarodeceuta.es/marlaska-niega-cni-avisara-entrada-masiva-ceuta-confirma-72-000-personas-cruzaron-marruecos/">El Faro de Ceuta</a> y <a href="https://www.infobae.com/espana/agencias/2026/10/16/se-reducen-las-llegadas-irregulares-de-migrantes-a-espana-sin-contar-la-entrada-a-ceuta/">EFE</a>; INE, Estadística Continua de Población.</div>
+</figure>
+<p data-tipo="dato">Y no llegan sobre todo por el Estrecho. Entre 2019 y 2025, los residentes nacidos en Sudamérica pasaron de 2,15 a 3,74 millones, casi 1,6 millones más; los nacidos en África, de 1,16 a 1,65 millones, medio millón más. En el segundo trimestre de 2026, las nacionalidades que más inmigraron a España fueron la colombiana, la venezolana y la marroquí, por ese orden, según el INE.</p>
+<p data-tipo="contexto">La diferencia entre las dos entradas, la que se ve y la que no, es justo lo que estudiaron en 2024 Rut Bermejo Casado y Carmen González Enríquez, del Real Instituto Elcano. En 2023, recuerdan, la población inmigrante creció en 664.000 personas, y las entradas irregulares por mar o por tierra fueron 56.000, el 8% del total. Su conclusión sobre la preocupación que mide el CIS:</p>
+<blockquote class="cita"><p>«No parece estar motivada de modo directo por la inmigración que ya habita en el país, y que en más de un 90% ha llegado de modo regular, aunque a menudo su estancia se haya convertido después en irregular, sino por la gran visibilidad de las entradas de cayucos»</p><footer>Rut Bermejo Casado y Carmen González Enríquez, <a href="https://www.realinstitutoelcano.org/comentarios/la-opinion-publica-espanyola-sobre-la-inmigracion-en-contexto/">«La opinión pública española sobre la inmigración en contexto»</a>, Real Instituto Elcano (3 de octubre de 2024).</footer></blockquote>
+<p data-tipo="dato">En el barómetro del CIS de octubre, hecho del 1 al 6 de octubre, dos meses después de Ceuta, el 20,9% de los entrevistados citó la inmigración entre los principales problemas de España. Es el segundo más citado, muy por detrás de la vivienda, con el 55,7%, según <a href="https://www.deia.eus/actualidad/sociedad/2026/10/14/vivienda-principal-problema-55-7-cis-11647698.html">Deia</a>.</p>
+<h2>Y en las urnas</h2>
+<p data-tipo="contexto">Si la inmigración que no se ve tuviera un reflejo directo en el voto, debería notarse en los pueblos y ciudades donde más ha crecido. He ordenado los 8.131 municipios de España según cuánto subió el peso de los vecinos nacidos fuera entre el 1 de enero de 2021 y el de 2025, con el censo anual del INE, y los he partido en cinco grupos de unos 9,6 millones de habitantes cada uno. Luego he sumado sus votos al Congreso en noviembre de 2019 y en julio de 2023. Dejo fuera la provincia de Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023, según <a href="https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/">RTVC</a>.</p>
+<p data-tipo="dato">En el quinto que más cambió, los nacidos fuera pasaron del 23,1% al 29,8% de la población. En el que menos, del 7,9% al 9,1%. Vox sacó en 2023 el 12,3% en el de más cambio y el 13% en el de menos. Entre medias, el 13,5%, el 12,5% y el 12,4%. Y bajó en los cinco respecto a 2019: 3,5 puntos donde menos creció la población nacida fuera y 2 puntos donde más.</p>
+<figure>
+<figcaption><span class="t">Voto en noviembre de 2019 y julio de 2023, según cuánto creció el peso de los nacidos fuera en cada municipio</span><span class="s">Municipios agrupados en cinco quintos de población, del que menos creció (1) al que más (5). Color claro: 2019; color pleno: 2023. En % de votos a candidaturas</span></figcaption>
+<div class="chart" id="quint"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: INE, Censo anual de población (1 de enero de 2021 y de 2025); Ministerio del Interior, resultados del Congreso por mesa (noviembre de 2019 y julio de 2023), sin voto exterior. Sin la provincia de Santa Cruz de Tenerife, donde Vox no se presentó en 2023. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="quint-tbl"></div></details>
+</figure>
+<p data-tipo="patron">El PP subió en los cinco grupos, algo más donde menos cambió la población (13,2 puntos) que donde más (12 puntos). El PSOE subió más donde más cambió: 5 puntos, frente a 1,4. Ninguna de las tres líneas dibuja una escalera.</p>
+<p data-tipo="patron">El quinto de más crecimiento incluye Barcelona, L'Hospitalet, València y Alicante, y Cataluña vota a Vox menos que el resto. Así que repito la cuenta sin Cataluña, el País Vasco ni Navarra: Vox queda entre el 13,8% y el 15,5% en los cinco grupos, sin orden. Y municipio a municipio, en los 3.103 de más de mil habitantes, la subida de los nacidos fuera y el cambio del voto a Vox entre 2019 y 2023 no tienen relación estadística: la correlación es de 0,01.</p>
+<p data-tipo="dato">Las ciudades grandes donde más cambió la población cuentan las dos historias a la vez. En Torrevieja, los nacidos fuera pasaron del 46% al 55,7%, y Vox sacó el 19,1% en 2023, siete puntos más que en España. En L'Hospitalet de Llobregat, del 32,4% al 40,6%, y Vox se quedó en el 8,5%. En Benidorm, del 33,2% al 41%, y Vox bajó del 18,6% al 14,5%.</p>
+<details><summary>Las 15 ciudades de más de 50.000 habitantes donde más subió el peso de los nacidos fuera</summary><div class="tbl" id="top-tbl"></div></details>
+<p data-tipo="contexto">La relación entre inmigración y voto a Vox ya era escurridiza en 2018. Tras las andaluzas de aquel diciembre, el politólogo Héctor Meleiro encontró en <a href="https://www.eldiario.es/piedrasdepapel/Vox-derecha-populista-escision-PP_6_850474947.html">Piedras de Papel</a> que Vox sacaba más en los municipios con más extranjeros, pero que, bajando a la sección censal, rendía mejor en las de pocos inmigrantes pegadas a otras con muchos. Concluyó que su votante «no convive directamente con la inmigración, sino que la ve “desde la otra acera”». En una <a href="https://mapaelectoral.es/actualidad/vox-poblacion-nacida-fuera/">pieza anterior</a> vimos lo mismo con el voto de 2023 por sección: Vox saca casi igual donde uno de cada tres vecinos nació fuera que donde casi nadie lo hizo.</p>
+<h2>Ceuta, en las urnas</h2>
+<p data-tipo="dato">Ceuta es el lugar del que hablaba Trump, y elige un diputado propio. En noviembre de 2019 lo ganó Vox, con el 35,6% de los votos: 11.734. En julio de 2023 lo recuperó el PP, con el 39,2%, y Vox bajó al 23,5%, casi 4.000 votos menos. Mientras, los residentes nacidos fuera apenas cambiaron: 10.705 el 1 de enero de 2021 y 11.891 el 1 de enero de 2026, el 14,1% de la ciudad.</p>
+<figure>
+<figcaption><span class="t">Voto en Ceuta en las generales</span><span class="s">En % de votos a candidaturas. Color claro: noviembre de 2019; color pleno: julio de 2023</span></figcaption>
+<div class="chart" id="ceuta"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados del Congreso por mesa. Sin voto exterior.</div>
+</figure>
+<p data-tipo="hipotesis">Ninguna de esas cifras de población recoge lo que pasó en julio, porque son anteriores. El 29N será la primera vez que Ceuta vote después de aquellos dos días, y nada de lo anterior permite saber cómo lo hará. Tampoco dice por qué vota cada uno lo que vota: son datos por municipio, no por persona, y los nacidos fuera que no tienen la nacionalidad española no votan en las generales.</p>
+<p data-tipo="dato">Lo que sí dicen los datos es la escala. Trump habló de cien mil personas en minutos. Interior contó 72.000 en dos días, y casi todas volvieron. El INE contó en 2025 una media de 1.569 vecinos nacidos fuera más al día, todos los días. Y en los municipios donde más se ha notado ese cambio, Vox bajó entre 2019 y 2023 como en el resto, y en 2023 no sacó más que donde menos se notó.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/vox-poblacion-nacida-fuera/">Vox y la población nacida fuera</a> · <a href="https://mapaelectoral.es/actualidad/vivienda-inmigracion-economia-cis/">Vivienda, inmigración y economía en el CIS</a></p>
+<div class="foot">Datos: INE, Estadística Continua de Población y Censo anual de población; Ministerio del Interior, resultados electorales por mesa y balances de inmigración irregular. Cálculo propio.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const S=[[2002, 2334098, 5.69], [2003, 2984094, 7.13], [2004, 3547669, 8.34], [2005, 4107226, 9.49], [2006, 4637971, 10.54], [2007, 5200061, 11.61], [2008, 5878919, 12.87], [2009, 6225513, 13.46], [2010, 6280064, 13.51], [2011, 6282208, 13.46], [2012, 6294952, 13.45], [2013, 6165635, 13.2], [2014, 5952770, 12.8], [2015, 5883891, 12.67], [2016, 5913165, 12.74], [2017, 6014708, 12.94], [2018, 6207509, 13.31], [2019, 6549309, 13.96], [2020, 7014753, 14.82], [2021, 7254797, 15.31], [2022, 7468116, 15.73], [2023, 8204206, 17.06], [2024, 8838234, 18.18], [2025, 9464210, 19.26], [2026, 10036888, 20.24]];const Q=[[1, -21.6, 2.0, 7.9, 9.1, 4052, 9599687, {"PP": [22.1, 35.3], "PSOE": [31.7, 33.1], "VOX": [16.5, 13.0], "SUMAR": [13.4, 11.0]}], [2, 2.0, 3.2, 13.0, 15.8, 1425, 9609179, {"PP": [22.2, 34.3], "PSOE": [27.6, 30.5], "VOX": [16.3, 13.5], "SUMAR": [14.3, 11.3]}], [3, 3.2, 4.1, 13.8, 17.5, 850, 9483121, {"PP": [21.0, 32.5], "PSOE": [28.3, 32.1], "VOX": [15.0, 12.5], "SUMAR": [15.3, 12.5]}], [4, 4.1, 5.8, 18.5, 23.3, 926, 9734128, {"PP": [20.0, 31.3], "PSOE": [27.2, 32.7], "VOX": [14.3, 12.4], "SUMAR": [15.7, 12.4]}], [5, 5.8, 37.1, 23.1, 29.8, 824, 9610300, {"PP": [21.8, 33.8], "PSOE": [26.1, 31.1], "VOX": [14.3, 12.3], "SUMAR": [18.4, 15.3]}]];const CE={"2019_11": {"PP": [7407, 22.5], "PSOE": [10405, 31.6], "VOX": [11734, 35.6], "SUMAR": [1287, 3.9], "cand": 32942, "censo": 59820}, "2023_07": {"PP": [12887, 39.2], "PSOE": [11299, 34.3], "VOX": [7742, 23.5], "SUMAR": [812, 2.5], "cand": 32905, "censo": 60335}};const TOP=[["Torrevieja", 100470, 46.0, 55.7, 9.7, 21.9, 19.1, 38.3, 31.5], ["Hospitalet de Llobregat, L'", 292161, 32.4, 40.6, 8.2, 7.3, 8.5, 15.6, 46.7], ["Benidorm", 77211, 33.2, 41.0, 7.8, 18.6, 14.5, 40.6, 33.8], ["Gandia", 82909, 24.8, 32.5, 7.7, 17.6, 14.7, 35.3, 35.3], ["Sagunt/Sagunto", 73416, 16.1, 23.7, 7.6, 15.4, 13.6, 27.2, 37.6], ["València", 841558, 19.0, 26.5, 7.5, 16.9, 14.2, 36.8, 29.7], ["Alacant/Alicante", 365586, 21.4, 28.9, 7.5, 18.6, 16.1, 38.3, 31.3], ["Barcelona", 1713247, 27.5, 34.6, 7.1, 5.3, 5.8, 16.0, 33.4], ["Torrent", 91353, 14.5, 21.3, 6.8, 21.0, 19.5, 34.4, 31.9], ["Elda", 55554, 9.2, 15.4, 6.1, 18.2, 15.2, 34.4, 37.7], ["Guadalajara", 92798, 18.3, 24.4, 6.1, 22.5, 17.1, 40.0, 34.1], ["Arrecife", 70265, 31.4, 37.5, 6.1, 13.6, 13.7, 21.6, 41.0], ["Benalmádena", 78787, 31.7, 37.7, 6.0, 23.1, 16.6, 41.6, 27.4], ["Alcoi/Alcoy", 61613, 9.0, 15.0, 6.0, 15.0, 12.9, 28.4, 39.2], ["Castelló de la Plana/Castellón de la Plana", 183709, 18.7, 24.7, 6.0, 18.5, 15.5, 35.6, 32.2]];const MAG=[["Entradas en Ceuta el 30 y el 31 de julio (Interior)", 72000, "var(--bar)", "Entradas en Ceuta, 30 y 31 de julio"], ["Llegadas irregulares en 2026 hasta el 15 de octubre, sin esos dos días (Interior)", 27230, "var(--bar)", "Llegadas irregulares 2026, hasta el 15-10"], ["Aumento de los residentes nacidos fuera durante 2025 (INE)", 572678, "var(--neu)", "Más residentes nacidos fuera en 2025"]];
+const nf=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'),pc=v=>String(v.toFixed(1)).replace('.',',')+'%',dc=v=>String(v.toFixed(1)).replace('.',',');
+function serie(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,H=sm?230:270,ml=sm?34:40,mr=sm?14:20,mt=14,mb=26,iw=W-ml-mr,ih=H-mt-mb,n=S.length;
+ const bw=Math.max(4,iw/n-3),x=i=>ml+4+bw/2+i/(n-1)*(iw-bw-4),y=v=>mt+ih-v/12e6*ih;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Población residente en España nacida en el extranjero, 2002-2026'},box);
+ [0,2e6,4e6,6e6,8e6,10e6,12e6].forEach(v=>{el('line',{x1:ml,x2:W-mr,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.6},svg);
+  el('text',{x:ml-5,y:y(v)+4,'text-anchor':'end','font-size':10.5,fill:'var(--muted)'},svg).textContent=v?nf(v/1e6)+' M':'0'});
+ S.forEach(([a,v,s],i)=>{const r=el('rect',{x:x(i)-bw/2,y:y(v),width:bw,height:y(0)-y(v),rx:2,fill:a>=2019?'var(--neu)':'var(--bar)'},svg);
+  hov(box,tip,r,`<b>1 de enero de ${a}</b><br>Nacidos en el extranjero: <b>${nf(v)}</b><br>${pc(s)} de la población`);
+  if((a-2002)%(sm?6:4)==0)el('text',{x:x(i),y:H-8,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=a});
+ const i19=S.findIndex(d=>d[0]==2019);
+ el('text',{x:x(i19)-bw/2-4,y:y(S[i19][1])-8,'text-anchor':'end','font-size':sm?10.5:11.5,class:'lab'},svg).textContent='6,5 M en 2019';
+ el('text',{x:x(n-1)+bw/2,y:y(S[n-1][1])-8,'text-anchor':'end','font-size':sm?10.5:11.5,class:'lab'},svg).textContent='10 M en 2026';}
+function mag(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,bh=sm?22:26,gap=sm?34:30,H=MAG.length*(bh+gap),iw=W-(sm?64:76),x=v=>v/572678*iw;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Entradas en Ceuta, llegadas irregulares y aumento de residentes nacidos fuera'},box);
+ MAG.forEach(([t,v,c,ts],k)=>{const y0=k*(bh+gap);
+  el('text',{x:0,y:y0+14,'font-size':sm?11:12.5,class:'lab'},svg).textContent=sm?ts:t;
+  const r=el('rect',{x:1,y:y0+20,width:Math.max(3,x(v)),height:bh,rx:3,fill:c},svg);
+  el('text',{x:x(v)+7,y:y0+20+bh/2+5,'font-size':sm?12:13,style:'font-weight:600',fill:'var(--fg)'},svg).textContent=nf(v);
+  hov(box,tip,r,`<b>${t}</b><br>${nf(v)} personas`)});}
+const PS=[['PP','PP','var(--pp)','var(--ppl)'],['PSOE','PSOE','var(--psoe)','var(--psoel)'],['VOX','Vox','var(--vox)','var(--voxl)']];
+function quint(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,pw=sm?W:(W-24)/3,ph=sm?150:190,H=sm?3*(ph+34)+14:ph+44,mx=40;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a PP, PSOE y Vox en 2019 y 2023 según cuánto creció la población nacida fuera de cada municipio'},box);
+ PS.forEach(([k,lab,c,cl],j)=>{const ox=sm?0:j*(pw+12),oy=sm?j*(ph+34):0,ih=ph-22,y=v=>oy+24+ih-v/mx*ih,gw=(pw-30)/5;
+  el('text',{x:ox,y:oy+13,'font-size':sm?12.5:13.5,class:'lab'},svg).textContent=lab;
+  [0,10,20,30,40].forEach(v=>{el('line',{x1:ox+24,x2:ox+pw,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.5},svg);
+   el('text',{x:ox+20,y:y(v)+4,'text-anchor':'end','font-size':10,fill:'var(--muted)'},svg).textContent=v});
+  Q.forEach((q,i)=>{const [a,b]=q[7][k],gx=ox+28+i*gw,bw=(gw-6)/2;
+   const r1=el('rect',{x:gx,y:y(a),width:bw,height:y(0)-y(a),rx:2,fill:cl},svg);
+   const r2=el('rect',{x:gx+bw+2,y:y(b),width:bw,height:y(0)-y(b),rx:2,fill:c},svg);
+   el('text',{x:gx+bw+1,y:y(0)+13,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=i+1;
+   const h=`<b>${lab}</b>, quinto ${i+1}: municipios donde los nacidos fuera subieron entre ${dc(q[1])} y ${dc(q[2])} puntos (de ${pc(q[3])} a ${pc(q[4])})<br>Noviembre de 2019: <b>${pc(a)}</b><br>Julio de 2023: <b>${pc(b)}</b>`;
+   hov(box,tip,r1,h);hov(box,tip,r2,h)});
+});
+ el('text',{x:0,y:H-4,'font-size':10.5,fill:'var(--muted)'},svg).textContent=sm?'1 = menos crecimiento · 5 = más':'Quintos: 1 = donde menos creció el peso de los nacidos fuera · 5 = donde más';}
+function ceuta(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?54:64,rh=sm?22:24,P=[['PP','PP','var(--pp)','var(--ppl)'],['PSOE','PSOE','var(--psoe)','var(--psoel)'],['VOX','Vox','var(--vox)','var(--voxl)']],H=P.length*(2*rh+14)+8,x=v=>lw+v/45*(W-lw-46);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto en Ceuta en las generales de noviembre de 2019 y de julio de 2023'},box);
+ P.forEach(([k,lab,c,cl],j)=>{const y0=j*(2*rh+14);
+  el('text',{x:lw-8,y:y0+rh+4,'text-anchor':'end','font-size':sm?12:13,class:'lab'},svg).textContent=lab;
+  [['2019_11',cl,'Nov. 2019'],['2023_07',c,'Jul. 2023']].forEach(([e,col,el2],m)=>{const [v,s]=CE[e][k],y=y0+m*rh;
+   const r=el('rect',{x:lw,y:y+2,width:x(s)-lw,height:rh-4,rx:3,fill:col},svg);
+   el('text',{x:x(s)+6,y:y+rh/2+4,'font-size':sm?11:12,fill:'var(--fg)'},svg).textContent=pc(s)+(sm?'':' · '+el2);
+   hov(box,tip,r,`<b>${lab} en Ceuta, ${el2}</b><br>${nf(v)} votos, ${pc(s)}`)})});}
+serie('serie');mag('mag');quint('quint');ceuta('ceuta');
+table('serie-tbl',['1 de enero','Nacidos en el extranjero','% de la población'],S.map(([a,v,s])=>[a,nf(v),pc(s)]));
+table('quint-tbl',['Quinto','Subida de los nacidos fuera, 2021-2025 (puntos)','% nacidos fuera 2021','% 2025','Municipios','Habitantes 2025','PP 2019','PP 2023','PSOE 2019','PSOE 2023','Vox 2019','Vox 2023'],Q.map(q=>[q[0],dc(q[1])+' a '+dc(q[2]),pc(q[3]),pc(q[4]),nf(q[5]),nf(q[6]),pc(q[7].PP[0]),pc(q[7].PP[1]),pc(q[7].PSOE[0]),pc(q[7].PSOE[1]),pc(q[7].VOX[0]),pc(q[7].VOX[1])]));
+table('top-tbl',['Municipio','Habitantes 2025','% nacidos fuera 2021','% 2025','Subida (puntos)','Vox 2019','Vox 2023','PP 2023','PSOE 2023'],TOP.map(r=>[r[0],nf(r[1]),pc(r[2]),pc(r[3]),dc(r[4]),pc(r[5]),pc(r[6]),pc(r[7]),pc(r[8])]));
+
+</script>
