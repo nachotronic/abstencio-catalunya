@@ -530,7 +530,7 @@ def bloque_evolucion(nombre, provs):
     paths = ''.join(f'<path d="{d}"/>' for _, d in trazos)
     botones = ''.join(f'<button type="button" data-i="{i}" aria-pressed="{"true" if y == ultima else "false"}">{T.etiqueta(y)}</button>'
                       for i, y in enumerate(T.GENERALES))
-    return ('<h2>El mapa, elección a elección</h2>'
+    return ('<h2 id="mapa-eleccion">El mapa, elección a elección</h2>'
             + p_('Dato', f'Cada municipio de {escape(nombre)}, del color del partido más votado en cada elección general desde 1977. '
                  f'En {T.etiqueta(primera)}, {frase(primera)}; en {T.etiqueta(ultima)}, {frase(ultima)}. '
                  'Pulsa un año, o el botón de reproducir para verlo cambiar; toca un municipio para ver su resultado.')
