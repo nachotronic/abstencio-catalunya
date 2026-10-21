@@ -1368,6 +1368,22 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/alianca-catalana-ceo-mapa.jpg', ancho=1280, alto=720, ia=True,
                   pie="Sílvia Orriols, un ajuntament, unes barres i un mapa de Catalunya: un collage."),
     ),
+    dict(
+        slug='blocs-i-cases-girona', fecha='2026-10-21', idioma='ca',
+        titulo="Als barris de blocs dels anys seixanta i setanta de Girona vota un de cada tres adults; a les zones de cases, gairebé sis de cada deu", serie='girona',
+        descripcion="El Cadastre situa els 511.090 habitatges de la província secció a secció. Als blocs, el PSC va treure el 41,2% el 2023; a les cases, el 23,2%, i Junts hi va pujar del 10,3% al 22,0%.",
+        compara="Els 205.879 edificis residencials del Cadastre a la província de Girona (any de construcció i nombre d'habitatges), agregats a les 536 seccions censals del 2023 i creuats amb la participació i el vot a les generals de juliol del 2023, la renda de l'INE i el cens del 2021.",
+        limites="Són dades de seccions, no de persones. L'any del Cadastre és el de construcció, no el de l'última reforma, i els habitatges inclouen segones residències i pisos buits. Cada edifici es col·loca a la secció on cau el centre del seu contorn (un 0,12% cau en una secció d'un municipi veí). «Sense dret a vot» és una estimació: adults residents menys cens electoral. El model estadístic descriu associacions, no causes. Sense vot exterior. Límits de secció simplificats.",
+        calculo="Participació sobre el cens; vot per partit sobre vot vàlid, ponderat per votants. «Blocs de 1960-1979»: seccions amb més del 60% dels habitatges construïts aquells anys; «zones de cases»: més del 80% dels habitatges en edificis d'un sol habitatge. Model: regressió ponderada amb variables estandarditzades, com a la peça de Girona.",
+        fuentes=[('https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml', "Direcció General del Cadastre (Ministeri d'Hisenda), edificis INSPIRE per municipi, agost del 2026"),
+                 INTERIOR_CA, INE_CA,
+                 ('https://github.com/pablogguz/ineAtlas.data', "INE, Cens de Població i Habitatges 2021 i límits de secció del 2023, via ineAtlas.data"),
+                 ('https://analisi.transparenciacatalunya.cat/', "Generalitat de Catalunya, participació per secció a les municipals del 2023 i al Parlament del 2024"),
+                 ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', "Manuel Trujillo i Braulio Gómez Fortes, «La segregación electoral interurbana en España», VIII Informe FOESSA (2019)"),
+                 ('https://seu.girona.cat/portal/dades/transparencia/docs/Auditoria-BaixaTensio-FontdelaPolvora.pdf', "Ajuntament de Girona, auditoria de baixa tensió de la Font de la Pólvora")],
+        enlaces=[],
+        lugar='Girona',
+    ),
 ]
 
 # Serie «Bastiones y desiertos»: las cinco secciones de España con más y con menos voto de cada partido (generales 2023)
@@ -1721,6 +1737,7 @@ ANTETITULOS = {
     'girona-esco-285-vots-29n': 'Per una mesa de vots',
     'junts-girona-puigdemont-29n': 'El vot amb dues cares',
     'alianca-catalana-ceo-mapa-ca': 'El CEO i Aliança',
+    'blocs-i-cases-girona': 'El Cadastre i les urnes',
     'murcia-barrio-a-barrio-29n': 'Vox se queda en la huerta',
     'palma-barrio-a-barrio-29n': 'La abstención manda',
     'como-voto-tu-calle': 'Tu sección, en el mapa',
