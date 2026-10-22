@@ -1,0 +1,211 @@
+<title>En 4.441 municipios hay más casas sin vecinos que con ellos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--ppl:#9cc8eb;--psoe:#e30613;--psoel:#f4a3a6;--vox:#5ac035;--voxl:#b9e3a6;--sumar:#a2275f;--sumarl:#d98fb3;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--ppl:#2a5f86;--psoe:#ff5a5f;--psoel:#8a2a2e;--vox:#74d651;--voxl:#3f7a2a;--sumar:#d0679a;--sumarl:#9c4f76;--neu:#3aa6bf}}:root[data-theme="dark"]{--pp:#4fa8ea;--ppl:#2a5f86;--psoe:#ff5a5f;--psoel:#8a2a2e;--vox:#74d651;--voxl:#3f7a2a;--sumar:#d0679a;--sumarl:#9c4f76;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}.grad{display:inline-block;width:120px;height:10px;border-radius:2px;vertical-align:middle;background:linear-gradient(90deg,color-mix(in srgb,var(--neu) 12%,var(--bg)),var(--neu))}</style>
+<style>.mapa-img{width:100%;height:auto;display:block}.grad.g3{background:linear-gradient(90deg,color-mix(in srgb,var(--vox) 18%,var(--bg)),var(--vox))}.grad.g2{background:linear-gradient(90deg,color-mix(in srgb,#283d73 18%,var(--bg)),#283d73)}.faq h3{font-size:1.05rem;margin:1.2rem 0 .3rem}.leyenda-mapa{font-family:var(--ui);font-size:.9rem;color:var(--muted);margin:.4rem 0 0}</style>
+
+<style>.grad.gv{background:linear-gradient(90deg,color-mix(in srgb,#b0563b 18%,var(--bg)),#b0563b)}.grad.gva{width:70px;background:linear-gradient(90deg,color-mix(in srgb,#7a4b8c 18%,var(--bg)),#7a4b8c)}.grad.gve{width:70px;background:linear-gradient(90deg,color-mix(in srgb,#1b8fa8 18%,var(--bg)),#1b8fa8)}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>En 4.441 municipios hay más casas sin vecinos que con ellos</h1>
+<p class="dek">En más de la mitad de los municipios de España, la mayoría de las viviendas no son la casa de nadie: están cerradas, son segundas residencias o se abren unas semanas al año. Hay dos mapas de la casa vacía, el del pueblo del interior y el del apartamento de la costa. A primera vista se parecen al del PP, pero esa coincidencia la explican la edad y la provincia. Lo que sí deja huella es otra cosa: donde hay segundas residencias se vota menos.</p>
+<div class="byline">Nacho G. del Álamo · 22 de octubre de 2026</div>
+<div style="margin-top:1.4rem"></div>
+<p data-tipo="dato">En Valdeprado, en la provincia de Soria, hay 103 viviendas y ocho vecinos. Noventa y seis de cada cien casas del pueblo no son la residencia habitual de ningún hogar. Ningún municipio de España tiene una proporción más alta.</p>
+<p data-tipo="dato">Casi trescientos kilómetros al sureste, junto al mar, Oropesa del Mar tiene 11.578 habitantes y 29.113 viviendas: dos y media por vecino. El 85% no son la casa principal de nadie. Una de cada tres gastó en 2020 la luz de uno a tres meses de uso. En Peníscola, un poco más al norte, son 81 de cada cien. En Torrevieja, una ciudad de 95.037 habitantes, hay 122.736 viviendas.</p>
+<p data-tipo="contexto">Son las dos caras de la casa vacía. La del pueblo que se quedó con las puertas cerradas cuando sus hijos se fueron a Madrid, a Bilbao o a Barcelona. Y la del apartamento que se abre en agosto. En el mapa se confunden. En las urnas, no.</p>
+
+<h2>Ocho millones de casas sin hogar</h2>
+<p data-tipo="dato">El Censo de Población y Viviendas de 2021 contó 26.623.708 viviendas en España. En 18,5 millones vivía un hogar. Las otras 8.087.092, el 30,4%, estaban vacías, eran segundas residencias o se usaban de vez en cuando.</p>
+<p data-tipo="dato">Ávila es la provincia donde más pesan: el 59,4% de sus viviendas no son principales. Le siguen Teruel (56,5%), Soria (54,9%), Cuenca y Zamora (51,1%) y Ourense (51%). En la otra punta están las provincias de las grandes ciudades: Madrid, con el 13,9%, Bizkaia (13,6%) y Barcelona (15,4%).</p>
+<p data-tipo="dato">Hay 4.441 municipios, de un total de 8.131, donde las casas sin hogar son mayoría. Casi todos son pequeños: 3.839 tienen menos de mil habitantes. Por eso, aunque son más de la mitad de los municipios del país, en ellos vota solo el 7,6% del censo electoral, unos 2,7 millones de personas.</p>
+<figure>
+<figcaption><span class="t">Viviendas que no son residencia habitual, por municipio</span><span class="s">Porcentaje de viviendas no principales (vacías, secundarias o de uso esporádico) sobre el total, 1 de enero de 2021</span></figcaption>
+<div class="chart"><img class="mapa-img" src="../../img/actualidad/vivienda-vacia/no-principales.svg" width="800" height="593" alt="Mapa de España por municipios con el porcentaje de viviendas no principales: muy alto en el interior de Castilla y León, Aragón, Castilla-La Mancha y Galicia y en la costa de Castellón, Alicante y Girona; bajo en Madrid, Barcelona, el País Vasco y las grandes ciudades."></div>
+<p class="leyenda-mapa">menos del 20% <span class="grad gv"></span> 80% o más · gris: sin datos</p>
+<div class="src">Fuente: INE, Censo de Población y Viviendas 2021, viviendas principales y no principales por municipio (tabla 59525). Cálculo propio.</div>
+<details><summary>Las provincias, de más a menos</summary><div class="tbl" id="tp"></div></details>
+</figure>
+<p data-tipo="patron">El mapa se lee de un vistazo. Una mancha oscura cubre la meseta norte, el Sistema Ibérico, el interior de Galicia y el Pirineo. Otra recorre el Mediterráneo, de la Costa Brava a la Vega Baja del Segura. Las ciudades y sus coronas metropolitanas son islas claras: Madrid, Barcelona, Bilbao, Sevilla, Valencia, Zaragoza.</p>
+
+<h2>El contador de la luz</h2>
+<p data-tipo="contexto">Para saber qué casas están vacías, el INE no llamó a ninguna puerta. Miró el contador de la luz. Lo explicaba así en su nota de prensa del 30 de junio de 2023:</p>
+<blockquote class="cita"><p>«A los efectos del Censo 2021 se ha optado por considerar como vivienda vacía a aquella que no dispone de contrato de suministro eléctrico o cuyo consumo total registrado en el año precedente ha sido menor al que una vivienda media de ese mismo municipio tendría si se ocupara durante 15 días en todo el año»</p><footer>INE, <a href="https://ine.es/prensa/censo_2021_jun.pdf">Censos de Población y Viviendas 2021. Resultados sobre hogares y viviendas</a>, nota de prensa (30-6-2023).</footer></blockquote>
+<p data-tipo="dato">Con ese criterio, 3.828.307 viviendas, el 14,4%, estaban vacías. Otras 2.517.628, el 9,5%, eran de uso esporádico: consumieron entre 251 y 750 kilovatios hora al año, lo que equivale, según el INE, a vivir en ellas de uno a tres meses. Europa Press lo resumió aquel día con la cifra que acabó en todos los periódicos: <a href="https://valenciaplaza.com/ine-cifra-numero-viviendas-vacias-mas-de-3-8-millones">más de 3,8 millones de viviendas vacías</a>.</p>
+<p data-tipo="contexto">El INE solo da esta separación para los municipios de más de unos mil habitantes, 3.139 en total. Con ella, el mapa de la casa vacía se parte en dos.</p>
+<figure>
+<figcaption><span class="t">Las casas cerradas y las de temporada</span><span class="s">Porcentaje de viviendas vacías (izquierda) y de uso esporádico (derecha) según su consumo eléctrico, 2020. Solo municipios con datos, en general de más de 1.000 habitantes</span></figcaption>
+<div class="maps">
+<div><h3>Vacías</h3><img class="mapa-img" src="../../img/actualidad/vivienda-vacia/vacias.svg" width="800" height="593" loading="lazy" alt="Mapa de España por municipios con el porcentaje de viviendas vacías: muy alto en Galicia, sobre todo en Ourense y Lugo, y en Ciudad Real, Canarias y el interior andaluz."><p class="leyenda-mapa">menos del 10% <span class="grad gva"></span> 40% o más</p></div>
+<div><h3>De uso esporádico</h3><img class="mapa-img" src="../../img/actualidad/vivienda-vacia/esporadicas.svg" width="800" height="593" loading="lazy" alt="Mapa de España por municipios con el porcentaje de viviendas de uso esporádico: alto en la costa mediterránea, en Huelva, en Cantabria y en las sierras de Ávila, Burgos y el Pirineo."><p class="leyenda-mapa">menos del 6% <span class="grad gve"></span> 20% o más</p></div>
+</div>
+<div class="src">Fuente: INE, Censo de Población y Viviendas 2021, viviendas según consumo eléctrico por municipio (tabla 59531). Gris: municipios sin datos. Cálculo propio.</div>
+</figure>
+<p data-tipo="dato">Las casas vacías, sin apenas consumo, pesan más en Galicia que en ningún otro sitio. En los municipios de Ourense con datos, el 41,2% de las viviendas no gastaron ni la luz de quince días. En los de Lugo, el 36,5%. Después vienen Ciudad Real (27,6%) y las otras dos provincias gallegas. Entre los municipios de más de 20.000 habitantes, el récord es de Tías, en Lanzarote, con el 48,1%, seguido de O Porriño (34,9%) y Mogán (34%).</p>
+<p data-tipo="dato">Las de uso esporádico dibujan otra España: la del veraneo y el fin de semana. Ávila (15,9%) y Cantabria (15,4%) encabezan las provincias, seguidas de Huesca, Castellón y Soria. Es el mapa de la sierra de Gredos, de la costa cántabra, de los valles del Pirineo y del litoral de Castellón. En Oropesa del Mar son el 32,3%; en Peníscola, el 31,7%.</p>
+<p data-tipo="hipotesis">El dato de Canarias pide cautela. En los municipios turísticos, algunos apartamentos que se alquilan a visitantes o que comparten contador pueden aparecer como vacíos. Es un límite del método, no un hallazgo.</p>
+<p data-tipo="contexto">Julián López Colás y Juan Antonio Módenes, del Centre d'Estudis Demogràfics, llevan veinte años estudiando la segunda residencia. En 2004 escribieron que este tipo de casa obliga a repensar qué quiere decir vivir en un sitio:</p>
+<blockquote class="cita"><p>«La relación habitante-lugar se rompe en estos casos. Así como también se rompe la definición clásica de la "población de un lugar" y se expande una nueva visión a partir de las "poblaciones temporales"»</p><footer>Julián López Colás y Juan Antonio Módenes, <a href="https://ddd.uab.cat/record/175915">«Vivienda secundaria y residencia múltiple en España: una aproximación sociodemográfica»</a>, Scripta Nova, 2004.</footer></blockquote>
+<p data-tipo="contexto">Esa ruptura llega hasta la urna. El dueño de un apartamento en Peníscola vota en Zaragoza o en Madrid, donde está empadronado. En agosto llena el pueblo. En noviembre no vota allí.</p>
+
+<h2>A primera vista, más PP</h2>
+<p data-tipo="dato">Si se ordenan los municipios de menos a más casas no principales y se parten en cinco grupos con el mismo número de votantes, el PP sube de un extremo a otro. En el grupo con menos, donde solo el 9,6% de las viviendas no son principales, sacó el 25,4% de los votos en las generales de julio de 2023. En el grupo con más, donde son el 52,9%, el 37,8%. Sumar baja del 14,3% al 9,7%. El PSOE apenas se mueve: del 33% al 32,5%.</p>
+<figure>
+<figcaption><span class="t">Voto según el peso de las viviendas no principales</span><span class="s">Generales de julio de 2023. Municipios en cinco grupos con el mismo número de votantes, de menos a más viviendas no principales. Bajo cada grupo, el porcentaje de viviendas no principales</span></figcaption>
+<div class="chart" id="qc"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Censo 2021 (tabla 59525), y Ministerio del Interior, generales de julio de 2023, por municipio, sin voto exterior. Porcentaje sobre el voto a candidaturas. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">Pero ese gráfico compara sobre todo dos Españas: la de las grandes ciudades, con pocas casas vacías y más voto a la izquierda, y la de los pueblos del interior, envejecidos y con más voto al PP. Las casas vacías van de la mano de la edad: entre municipios, la correlación entre el porcentaje de viviendas no principales y la edad media es de 0,70.</p>
+
+<h2>Lo que queda cuando se quita lo demás</h2>
+<p data-tipo="dato">Si se repite la comparación dentro de cada provincia, ordenando cada municipio frente a los de la suya, la escalera desaparece. El PP saca el 35% en el grupo con menos casas no principales y el 34,8% en el grupo con más. El PSOE, el 33,2% y el 31,8%. Vox, el 13,8% y el 13%.</p>
+<figure>
+<figcaption><span class="t">El mismo voto, comparando dentro de cada provincia</span><span class="s">Generales de julio de 2023. Municipios en cinco grupos con el mismo número de votantes, de menos a más viviendas no principales frente a la media de su provincia</span></figcaption>
+<div class="chart" id="qp"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Censo 2021 (tabla 59525), y Ministerio del Interior, generales de julio de 2023, por municipio, sin voto exterior. Cálculo propio.</div>
+</figure>
+<p data-tipo="dato">Con una regresión que tiene en cuenta a la vez la provincia, la edad media, la renta y el tamaño del municipio, diez puntos más de viviendas no principales se asocian a 0,9 puntos más de PP, 1,2 puntos menos de PSOE, 0,4 más de Vox y 0,2 menos de Sumar. Son diferencias de menos de un punto y medio.</p>
+<p data-tipo="dato">Dentro de las ciudades pasa lo mismo. En Madrid, las secciones censales con más pisos no principales votan más al PP: la correlación es de 0,45. En Sevilla, de 0,50. Pero son las secciones más ricas, las del centro y los barrios caros, donde abundan el piso de inversión y la segunda vivienda en la ciudad. Al comparar secciones del mismo municipio con la misma renta, edad y población extranjera, la relación con el PP desaparece.</p>
+<p data-tipo="patron">Las casas vacías no tienen un partido. Su mapa se parece al del PP porque se parece al de la España envejecida del interior, que vota al PP por otras razones.</p>
+
+<h2>La segunda residencia vota menos</h2>
+<p data-tipo="dato">Lo que sí separa a los municipios es la participación, y depende de qué tipo de casa vacía tengan. Entre los 611 municipios con mayoría de viviendas no principales para los que el INE da el consumo eléctrico, los 238 donde abunda el uso esporádico (el 15% de las viviendas o más) votaron un 68,1% en julio de 2023. Son pueblos de veraneo y de fin de semana: la Costa Brava, la costa de Valencia, Castellón y Cantabria, pero también la sierra de Ávila o de Burgos. Los 373 donde lo que hay son sobre todo casas cerradas, con Ourense, Lugo y Toledo a la cabeza, votaron un 72%. La media de España fue del 70,4%.</p>
+<figure>
+<figcaption><span class="t">Participación en los municipios con mayoría de viviendas no principales</span><span class="s">Generales de julio de 2023. Municipios con más del 50% de viviendas no principales y datos de consumo eléctrico (en general, de más de 1.000 habitantes), según el peso de las de uso esporádico</span></figcaption>
+<div class="chart" id="pc"></div>
+<div class="src">Fuente: INE, Censo 2021 (tablas 59525 y 59531), y Ministerio del Interior, generales de julio de 2023. Participación sobre el censo residente en España. Cálculo propio.</div>
+<details><summary>Los municipios de más de 20.000 habitantes con más viviendas no principales</summary><div class="tbl" id="tb"></div></details>
+</figure>
+<p data-tipo="dato">En los extremos, la distancia es mayor. En Roses votó el 58,5% del censo. En Salou, el 59,3%. En Torrevieja, el 60,3%. En Castelló d'Empúries, en el Alt Empordà, el 55,3%. Todos están entre los municipios de su tamaño con más viviendas no principales de España.</p>
+<p data-tipo="dato">La Costa Brava y la Costa Daurada concentran los casos catalanes. Entre los municipios catalanes de más de 5.000 habitantes, los que tienen más casas no principales son Llançà (73,3%), Castelló d'Empúries (71,5%), L'Escala (71,2%), Castell-Platja d'Aro (68,8%) y Roses (68,2%). En todos ganó el PSC el 23J, y en cuatro de los cinco la participación quedó por debajo de la media catalana, que fue del 65,4%.</p>
+<details><summary>Los municipios catalanes de más de 5.000 habitantes con más viviendas no principales</summary><div class="tbl" id="tcat"></div></details>
+<p data-tipo="hipotesis">Hay dos explicaciones posibles, y ninguna está comprobada aquí. Una, que en los municipios turísticos vive más población móvil, con menos arraigo y más cambios de domicilio, un rasgo que la investigación asocia desde hace décadas con votar menos, como mostraron <a href="https://doi.org/10.2307/1960778">Squire, Wolfinger y Glass en 1987</a>. Otra, que algunos empadronados no viven allí todo el año y no están el día de la votación. Los datos por municipio no permiten separar una de la otra.</p>
+
+<h2>Las casas que no van a salir al mercado</h2>
+<p data-tipo="contexto">Las casas vacías vuelven a la campaña cada vez que se habla de vivienda. En octubre de 2025, Enrique Santiago, de IU, defendía que había más de un millón de casas vacías que podrían aliviar la falta de vivienda: «No podemos estar enfrentando un problema de esta magnitud cuando hay suficiente oferta», dijo, según <a href="https://www.bolsamania.com/noticias_print/empresas/economia--iu-asegura-que-hay-un-millon-de-casas-vacias-que-pueden-resolver-la-falta-de-vivienda-en-espana--21031678.html">Europa Press</a>.</p>
+<p data-tipo="contexto">El Banco de España había matizado esa idea un año antes, precisamente por el mapa que se ve aquí:</p>
+<blockquote class="cita"><p>«La capacidad para aumentar la oferta de vivienda mediante la movilización de viviendas vacías sería relativamente limitada, ya que buena parte de las mismas se concentran en las zonas con menor dinamismo demográfico»</p><footer>Banco de España, <a href="https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesAnuales/InformesAnuales/23/Fich/InfAnual_2023_Cap4.pdf">Informe Anual 2023, capítulo 4</a> (abril de 2024).</footer></blockquote>
+<p data-tipo="patron">Los datos del censo le dan la razón en lo geográfico: la mayoría de las casas vacías están en pueblos donde no hace falta vivienda, y en la ciudad de Madrid solo el 6,3% de los pisos no tienen consumo eléctrico. En la de Barcelona, el 9,3%.</p>
+<p data-tipo="dato">En Valdeprado, el 23 de julio de 2023, votaron seis de sus ocho electores. En el resto de las casas del pueblo no vivía nadie que pudiera hacerlo.</p>
+
+<h2>Lo que no dicen los datos</h2>
+<p data-tipo="hipotesis">Este artículo compara lugares, no personas. No sabe cómo votan los dueños de las segundas residencias, que lo hacen donde están empadronados, ni los que viven junto a una casa cerrada. Que un municipio con muchas casas vacías vote al PP no significa que las casas vacías hagan votar al PP: con la edad, la renta y la provincia en la cuenta, la relación casi desaparece.</p>
+<p data-tipo="contexto">Hay otros límites. El censo es de enero de 2021 y el voto, de julio de 2023. La clasificación entre vacía y de uso esporádico se basa en el consumo eléctrico, y una casa con placas solares o con un contador compartido puede quedar mal clasificada. Esa separación solo existe para los municipios de más de 1.000 habitantes; por sección censal, el INE solo distingue entre vivienda principal y no principal. Los resultados no incluyen el voto de los residentes en el extranjero.</p>
+
+<h2>Preguntas rápidas</h2>
+<div class="faq"><h3>¿Dónde hay más viviendas vacías o segundas residencias en España?</h3><p>Por provincias, en Ávila (59,4% de viviendas no principales), Teruel (56,5%) y Soria (54,9%). Entre los municipios de más de 20.000 habitantes, en San Javier y Torrevieja (70%), Roses (68,2%) y Cullera (67,9%).</p><h3>¿Cuántas viviendas vacías hay en España?</h3><p>3.828.307 según el Censo de 2021 del INE, el 14,4% del total, medidas por su consumo eléctrico. Otras 2.517.628 eran de uso esporádico.</p><h3>¿Se vota más al PP donde hay más casas vacías?</h3><p>A primera vista sí (37,8% frente a 25,4%), pero la diferencia se debe a la edad, la renta y la provincia. Comparando dentro de cada provincia, el PP saca lo mismo.</p><h3>¿Se vota menos donde hay segundas residencias?</h3><p>Sí. Los municipios con mayoría de viviendas no principales y mucho uso esporádico votaron un 68,1% en 2023, frente al 72% de los que tienen sobre todo casas cerradas.</p></div>
+</main>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+
+const Q={"C": {"np": [9.6, 15.8, 21.6, 29.9, 52.9], "PP": [25.4, 31.8, 34.7, 36.6, 37.8], "PSOE": [33.0, 30.4, 32.4, 31.9, 32.5], "VOX": [10.5, 11.7, 12.8, 13.6, 13.6], "SUMAR": [14.3, 14.7, 12.7, 10.9, 9.7]}, "P": {"PP": [35.0, 34.2, 30.2, 33.5, 34.8], "PSOE": [33.2, 32.4, 32.2, 30.4, 31.8], "VOX": [13.8, 13.1, 11.3, 11.4, 13.0], "SUMAR": [11.6, 13.3, 12.5, 14.1, 10.4]}};
+const T={"big": [["San Javier", "Murcia", 35347, 70.1, 16.1, 23.4, 69.7, "PP"], ["Torrevieja", "Alicante", 95037, 70.0, 24.9, 19.2, 60.3, "PP"], ["Roses", "Girona", 20035, 68.2, 29.1, 17.4, 58.5, "PSOE"], ["Cullera", "Valencia/Valéncia", 23619, 67.9, 13.7, 25.2, 70.1, "PSOE"], ["Santa Pola", "Alicante", 38177, 67.4, 16.9, 21.0, 67.5, "PP"], ["Orihuela", "Alicante", 82981, 64.1, 27.4, 14.0, 72.7, "PP"], ["Pilar de la Horadada", "Alicante", 23579, 63.7, 14.1, 20.2, 69.1, "PP"], ["Almuñécar", "Granada", 27550, 63.2, 15.1, 21.3, 66.0, "PP"], ["Salou", "Tarragona", 30258, 63.1, 22.9, 20.8, 59.3, "PSOE"], ["Benicàssim/Benicassim", "Castellón/Castelló", 20119, 63.0, 8.7, 22.5, 78.1, "PP"], ["Calp", "Alicante", 26166, 62.4, 18.3, 16.8, 64.5, "PSOE"], ["Dénia", "Alicante", 46631, 61.0, 12.1, 15.9, 70.0, "PSOE"], ["Torrox", "Málaga", 21311, 58.5, 19.7, 20.8, 67.3, "PP"], ["Almonte", "Huelva", 24704, 58.5, 8.9, 24.0, 58.8, "PP"], ["Rota", "Cádiz", 29156, 58.1, 6.4, 22.5, 67.3, "PP"]], "cat": [["Llançà", "Girona", 5048, 73.3, 24.6, 22.3, 65.5, "PSC"], ["Castelló d'Empúries", "Girona", 11972, 71.5, 31.8, 15.3, 55.3, "PSC"], ["L'Escala", "Girona", 10580, 71.2, 19.2, 21.5, 58.4, "PSC"], ["Castell-Platja d'Aro", "Girona", 12690, 68.8, 20.1, 22.4, 61.0, "PSC"], ["Roses", "Girona", 20035, 68.2, 29.1, 17.4, 58.5, "PSC"], ["Mont-roig del Camp", "Tarragona", 14104, 66.8, 22.4, 18.9, 61.5, "PSC"], ["Calonge i Sant Antoni", "Girona", 12156, 66.2, 20.0, 19.6, 62.0, "PSC"], ["Roda de Berà", "Tarragona", 7905, 64.7, 12.8, 20.4, 62.5, "PSC"], ["Tossa de Mar", "Girona", 6241, 64.5, 21.5, 20.7, 63.0, "PSC"], ["L'Ametlla de Mar", "Tarragona", 7228, 63.2, 19.0, 12.4, 62.9, "PSC"]], "vac": [["Tías", "Las Palmas", 20792, 54.3, 48.1, 5.8, 58.8, "PSOE"], ["O Porriño", "Pontevedra", 20675, 36.8, 34.9, 5.6, 73.9, "PP"], ["Mogán", "Las Palmas", 20965, 51.9, 34.0, 11.5, 54.7, "PP"], ["San Miguel de Abona", "Santa Cruz de Tenerife", 23061, 20.4, 33.1, 7.3, 57.5, "PP"], ["La Oliva", "Las Palmas", 29098, 34.4, 32.1, 7.3, 55.0, "PP"], ["A Estrada", "Pontevedra", 20033, 37.6, 31.8, 7.4, 74.3, "PP"], ["Puerto de la Cruz", "Santa Cruz de Tenerife", 31494, 36.8, 31.2, 10.7, 66.7, "PSOE"], ["Pájara", "Las Palmas", 20966, 23.4, 30.2, 7.0, 52.7, "PSOE"], ["Roses", "Girona", 20035, 68.2, 29.1, 17.4, 58.5, "PSOE"], ["Tomelloso", "Ciudad Real", 36358, 29.2, 27.6, 6.8, 69.9, "PP"]], "prov": [["Ávila", 59.4], ["Teruel", 56.5], ["Soria", 54.9], ["Cuenca", 51.1], ["Zamora", 51.1], ["Ourense", 51.0], ["Segovia", 50.6], ["Lugo", 48.9], ["Huesca", 47.5], ["Castellón/Castelló", 46.7], ["Burgos", 44.7], ["Guadalajara", 44.5], ["Alicante", 44.1], ["León", 44.0], ["Cáceres", 44.0], ["Salamanca", 41.8], ["Tarragona", 41.8], ["Palencia", 41.3], ["Girona", 41.1], ["Toledo", 38.7], ["Ciudad Real", 38.1], ["Cantabria", 37.9], ["La Rioja", 37.4], ["Huelva", 37.4], ["Albacete", 37.3], ["Almería", 36.6], ["Murcia", 36.0], ["Granada", 35.9], ["Jaén", 34.1], ["A Coruña", 34.0], ["Asturias", 33.8], ["Málaga", 33.7], ["Lleida", 33.7], ["Badajoz", 33.2], ["Illes Balears", 32.3], ["Valencia/Valéncia", 30.8], ["Pontevedra", 30.7], ["Cádiz", 27.7], ["Córdoba", 27.7], ["Zaragoza", 27.3], ["Valladolid", 27.2], ["Santa Cruz de Tenerife", 26.1], ["Las Palmas", 23.3], ["Navarra", 22.6], ["Sevilla", 20.8], ["Araba/Álava", 16.6], ["Barcelona", 15.4], ["Gipuzkoa", 14.8], ["Madrid", 13.9], ["Bizkaia", 13.6], ["Melilla", 13.0], ["Ceuta", 10.4]]};
+const n1=v=>v==null?'—':c1(v)+'%';const miles=v=>v.toLocaleString('es-ES');
+const S=[{k:'PP',name:'PP',color:'var(--pp)'},{k:'PSOE',name:'PSOE',color:'var(--psoe)'},{k:'VOX',name:'Vox',color:'var(--vox)'},{k:'SUMAR',name:'Sumar',color:'var(--sumar)'}];
+const G=['1.º','2.º','3.º','4.º','5.º'];
+bars('qc',Q.C.np.map((v,i)=>G[i]+' · '+c1(v)+'%'),S.map(s=>({name:s.name,vals:Q.C[s.k],color:s.color})),{hi:40,step:10,label:'Voto a PP, PSOE, Vox y Sumar en julio de 2023 en cinco grupos de municipios, de menos a más viviendas no principales',show:(i,j)=>i==0||i==4,rot:true,mb:50,tip:i=>`Grupo ${i+1} de 5: ${c1(Q.C.np[i])}% de viviendas no principales`});
+bars('qp',G.map((g,i)=>g+(i==0?' (menos)':i==4?' (más)':'')),S.map(s=>({name:s.name,vals:Q.P[s.k],color:s.color})),{hi:40,step:10,label:'Voto a PP, PSOE, Vox y Sumar en julio de 2023 en cinco grupos de municipios ordenados dentro de su provincia',show:(i,j)=>i==0||i==4,tip:i=>`Grupo ${i+1} de 5 dentro de cada provincia`});
+bars('pc',['Mucho uso esporádico','Sobre todo casas cerradas','Media de España'],[{name:'Participación',vals:[68.1,72.0,70.4],color:'var(--neu)'}],{lo:50,hi:75,step:5,label:'Participación en julio de 2023: 68,1% en los municipios con mucho uso esporádico, 72% en los de casas cerradas y 70,4% de media en España',show:()=>true});
+table('tp',['Provincia','No principales'],T.prov.map(r=>[r[0],n1(r[1])]));
+table('tb',['Municipio','Habitantes','No principales','Vacías','Uso esporádico','Participación','Ganó'],T.big.map(r=>[r[0]+' ('+r[1]+')',miles(r[2]),n1(r[3]),n1(r[4]),n1(r[5]),n1(r[6]),r[7]]));
+table('tcat',['Municipio','Habitantes','No principales','Vacías','Uso esporádico','Participación','Ganó'],T.cat.map(r=>[r[0],miles(r[2]),n1(r[3]),n1(r[4]),n1(r[5]),n1(r[6]),r[7]]));
+</script>
