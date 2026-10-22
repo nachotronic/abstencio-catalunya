@@ -22,7 +22,7 @@ SITIO = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': BASE + '#w
          'inLanguage': 'es', 'description': 'Periodismo de datos sobre elecciones en España por sección censal.',
          'publisher': {'@id': BASE + '#medio'},
          'hasPart': [{'@type': 'CollectionPage', 'name': 'Atlas de las anomalías electorales', 'url': BASE + 'atlas/'},
-                     {'@type': 'NewsArticle', 'name': '¿Quién no vota en Cataluña?', 'url': BASE + 'abstencion.html'}]}
+                     {'@type': 'AnalysisNewsArticle', 'name': '¿Quién no vota en Cataluña?', 'url': BASE + 'abstencion.html'}]}
 STUB = '''<!doctype html>
 <html lang="es">
 <head>

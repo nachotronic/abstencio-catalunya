@@ -443,7 +443,7 @@ def main():
     faq_html = '<div class="faq">' + ''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq) + '</div>'
     actual = fecha_larga(hoy.isoformat())
     descripcion = re.sub(r'\s+', ' ', entradilla)[:300]
-    jsonld = [{'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': URL + '#articulo', 'headline': titular,
+    jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': URL + '#articulo', 'headline': titular,
                'description': descripcion, 'url': URL, 'mainEntityOfPage': URL, 'inLanguage': 'es',
                'datePublished': '2026-10-22', 'dateModified': hoy.isoformat(), 'image': [f'{BASE}/img/compartir/encuestas.jpg'],
                'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO,
@@ -502,6 +502,12 @@ def main():
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
+    # autor común y migas de pan (BreadcrumbList), como en el resto del sitio: la página se regenera sola dos veces al día
+    sys.path.insert(0, str(RAIZ / 'src'))
+    import esquema
+    for f in (SALIDA / 'index.html', SALIDA / 'metodo-modelo.html'):
+        if f.exists():
+            esquema.procesa(f)
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
 
 
