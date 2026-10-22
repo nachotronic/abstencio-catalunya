@@ -1400,6 +1400,8 @@ PIEZAS += [
                  ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', "Manuel Trujillo i Braulio Gómez Fortes, «La segregación electoral interurbana en España», VIII Informe FOESSA (2019)")],
         enlaces=[],
         lugar='Girona',
+        foto=dict(src='img/actualidad/fotos/salaris-pensions-ajudes-girona.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mare amb el seu fill, d’esquena, davant les cases de l’Onyar i la catedral de Girona.'),
     ),
 ]
 
