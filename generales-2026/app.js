@@ -6,6 +6,9 @@
   // Ruta de los datos relativa a este script, para que la página funcione también como portada en la raíz.
   const RAIZ = ((document.currentScript && document.currentScript.src) || '').replace(/[^/]*$/, '');
   const get = f => fetch(RAIZ + 'data/' + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
+  // Barrio de cada sección de las grandes ciudades (src/territorios.py): se pide al acercarse a las secciones
+  let BAR = null, BARP = null;
+  const pideBar = () => BARP || (BARP = get('barrios.json').then(j => { BAR = j; }).catch(() => { BAR = { r: [], s: {} }; }));
   const [META, MUN, PROV, RES] = await Promise.all([get('meta.json'), get('municipios.json'), get('provincias.json'), get('resumen.json')]);
   const FAM = META.familias, FCOD = FAM.map(f => f.cod);
   const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
@@ -133,7 +136,7 @@
   let hover = null;
   let marca = null;       // dirección buscada: punto (y la calle entera si no hay número)
 
-  function secVisible() { return view.zoom >= 7.3; }
+  function secVisible() { const v = view.zoom >= 7.3; if (v && !BARP) pideBar(); return v; }
   function secHas(p) { return SEC[p] && SEC[p].d[st.y + '_part']; }
 
   // ---------- callejero: calles, nombres de calles y de barrios encima de las secciones al acercarse (OpenFreeMap,
@@ -236,6 +239,32 @@
       characterSet: 'auto', fontSettings: { sdf: true }, outlineWidth: 3, outlineColor: [...fondo, 230], parameters: { depthCompare: 'always' } });
   }
 
+  // Nombres de municipio al acercarse: de más a menos habitantes, con un mínimo que baja con el zoom, sin que se pisen
+  const ORDM = MUN.nombre.map((n, i) => i).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
+  const MINPOB = z => z < 9 ? 40000 : z < 10 ? 8000 : z < 11 ? 1500 : 0;
+  function capaMunicipios() {
+    let vp = null; const out = [];
+    try { vp = dk.getViewports()[0]; } catch (e) { pideRedraw(); }   // la primera vez, antes de que deck.gl tenga el mapa montado
+    if (vp) {
+      const W = vp.width, H = vp.height, min = MINPOB(view.zoom), cajas = [];
+      for (const i of ORDM) {
+        if ((MUN.poblacion[i] || 0) < min) break;
+        const q = MUN.c[i]; if (!q) continue;
+        const [sx, sy] = vp.project(q);
+        if (sx < 0 || sy < 0 || sx > W || sy > H) continue;
+        const grande = (MUN.poblacion[i] || 0) >= 100000, s = grande ? 13 : 11.5;
+        const w = MUN.nombre[i].length * s * .56 + 10, h = s + 8, c = [sx - w / 2, sy - h / 2, sx + w / 2, sy + h / 2];
+        if (cajas.some(o => c[0] < o[2] && c[2] > o[0] && c[1] < o[3] && c[3] > o[1])) continue;
+        cajas.push(c); out.push({ t: MUN.nombre[i], p: q, s, g: grande });
+        if (out.length > 160) break;
+      }
+    }
+    const tinta = hex(css('--ink') || '#111'), fondo = hex(css('--surface') || '#fff');
+    return new deck.TextLayer({ id: 'munlab', data: out, pickable: false, getPosition: o => o.p, getText: o => o.t, getSize: o => o.s,
+      getColor: o => o.g ? tinta : [...tinta, 220], fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600, characterSet: 'auto',
+      fontSettings: { sdf: true }, outlineWidth: 3, outlineColor: [...fondo, 230], parameters: { depthCompare: 'always' } });
+  }
+
   function layers() {
     const L = [];
     const trig = [st.y, st.v, st.party, document.documentElement.dataset.theme || ''];
@@ -254,7 +283,10 @@
       });
     }
     const line = hex(css('--map-line') || '#ffffff');
-    if (view.zoom >= 6.6) {
+    if (secVisible()) {   // con las secciones a la vista, el límite de cada municipio en oscuro para que se distinga de ellas
+      L.push(new deck.PathLayer({ id: 'munline', data: MUNP, getPath: o => o.ring, getColor: [...hex(css('--ink') || '#111'), view.zoom >= 10 ? 170 : 110],
+        widthUnits: 'pixels', getWidth: view.zoom >= 10 ? 1.6 : 1, updateTriggers: { getColor: [document.documentElement.dataset.theme || '', view.zoom >= 10] } }));
+    } else if (view.zoom >= 6.6) {
       L.push(new deck.PathLayer({ id: 'munline', data: MUNP, getPath: o => o.ring, getColor: [...line, 150], widthUnits: 'pixels', getWidth: view.zoom >= 8.5 ? .9 : .4 }));
     }
     L.push(new deck.PathLayer({ id: 'prov', data: PROVP, getPath: o => o.ring, getColor: [...line, 255], widthUnits: 'pixels', getWidth: 1.2, widthMinPixels: 1 }));
@@ -270,6 +302,7 @@
         getFillColor: hex(css('--ink') || '#111'), getLineColor: hex(css('--surface') || '#fff'), lineWidthUnits: 'pixels', getLineWidth: 2 }));
     }
     if (conRot) L.push(capaRotulos());
+    if (view.zoom >= 8 && !(conRot && view.zoom >= 12)) L.push(capaMunicipios());
     if (view.zoom < 8) {
       L.push(new deck.TextLayer({
         id: 'lab', data: lab, getPosition: o => o.p, getText: o => o.t, getSize: 12, fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600,
@@ -366,6 +399,8 @@
       <dt>Edad media</dt><dd>${VARS.edad_media.fmt(d.edad_media[i])}</dd>
       <dt>Población extranjera</dt><dd>${pct(d.extranjeros[i])}</dd>
       <dt>Habitantes</dt><dd>${num(d.poblacion[i])}</dd></dl>`;
+    const b = isSec && BAR ? BAR.r[BAR.s[d.cod[i]]] : null;
+    if (b) h += `<p class="t-bar"><a href="${new URL('../' + b[1], RAIZ || location.href).href}">Ver el barrio: ${escH(b[0])} →</a></p>`;
     return h;
   }
   function setHover(info, pin) {

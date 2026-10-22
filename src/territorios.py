@@ -2139,6 +2139,11 @@ def main():
     pags, resumen = territorios()
     pags += [pagina_ciudad(c) for c in CIUDADES]
     pags += [pagina_barrio(c, b, bs) for c, bs in BARRIOS.items() for b in bs if b['ficha']]
+    rutas_b = [(b['nombre'], ruta_barrio(c, b)) for c, bs in BARRIOS.items() for b in bs if b['ficha']]
+    idx = {r: k for k, (_, r) in enumerate(rutas_b)}
+    (ROOT / 'generales-2026' / 'data' / 'barrios.json').write_text(json.dumps(   # para el enlace «Ver el barrio» de la ficha del mapa
+        {'r': rutas_b, 's': {t: idx[ruta_barrio(c, b)] for c, bs in BARRIOS.items() for b in bs if b['ficha'] for t in b['secciones']}},
+        ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_resultados(resumen)]
