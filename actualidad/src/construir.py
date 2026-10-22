@@ -1192,9 +1192,8 @@ PIEZAS = [
                  ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
         enlaces=[],
         lugar='Galicia',
-        foto=dict(src='img/actualidad/fotos/vox-galicia-coruna-abascal-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Reparto de las secciones censales según el voto a Vox en julio de 2023, en Galicia y en el resto de España.',
-                  fuente='Ministerio del Interior'),
+        foto=dict(src='img/actualidad/fotos/vox-galicia-coruna-abascal-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Santiago Abascal, cabizbajo, ante la Torre de Hércules de A Coruña.'),
     ),
 ]
 
