@@ -420,7 +420,7 @@ def main():
 </main>"""
     pagina = (cabecera(titulo, descripcion, URL, f'{BASE}/img/compartir/encuestas.jpg', jsonld)
               .replace('<meta property="og:title" content="' + titulo + '">', '<meta property="og:title" content="' + html.escape(titular) + '">')
-              + ESTILOS + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', '') + '\n' + main_html + '\n'
+              + ESTILOS + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
               + SCRIPT.replace('__DATOS__', json.dumps(datos, ensure_ascii=False, separators=(',', ':'))) + '\n</body>\n</html>\n')
     SALIDA.mkdir(exist_ok=True)
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
