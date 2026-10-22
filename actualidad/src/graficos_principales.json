@@ -98,5 +98,13 @@
  "salaris-pensions-ajudes-girona": {
   "pie": "Quant es vota segons de què viu el barri.",
   "fuente": "INE, Atles de Distribució de Renda de les Llars (renda del 2023 per font d'ingressos, taula 30825); Ministeri de l'Interior, Congrés 2023 per mesa (via pollspaindata), agregat per secció, sense vot exterior"
+ },
+ "capitales-partidas-por-barrios": {
+  "pie": "Cuanto más distinta es la renta de un barrio a otro, más agrupado está el voto.",
+  "fuente": "Ministerio del Interior; INE, Atlas de Distribución de Renta de los Hogares (2023)"
+ },
+ "polaritzacio-girona": {
+  "pie": "Com s'agrupa el vot independentista per barris.",
+  "fuente": "Generalitat de Catalunya, Transparència Catalunya (ntc4-rnwr); INE, seccionat del 2023. Municipis amb 15 seccions urbanes o més"
  }
 }
