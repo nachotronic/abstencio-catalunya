@@ -11,8 +11,8 @@ Qué se fija antes de la elección para poder evaluarla después sin trampas. Na
 - Reparto por provincia: generales de 2023 con la señal de las europeas de 2024 (α = 0,5).
 
 ## Calendario
-- Última actualización con encuestas cuyo trabajo de campo acabe hasta el lunes 23 de noviembre de 2026 (último día
-  en que se pueden publicar encuestas: art. 69.7 LOREG, cinco días antes de la votación).
+- Última actualización con las encuestas publicadas hasta el lunes 23 de noviembre de 2026: el art. 69.7 de la LOREG
+  prohíbe publicarlas en los cinco días anteriores a la votación (y la previsión, que se basa en ellas, se congela igual).
 - La previsión que se evalúa es la última publicada antes de la jornada de reflexión.
 
 ## Qué se mide después del 29N (con el resultado oficial)
