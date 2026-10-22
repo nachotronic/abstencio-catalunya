@@ -1344,7 +1344,7 @@ PIEZAS = [
         fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=70004', 'INE, Censo anual de población, ocupados por grupo de ocupación y sección censal'),
                  ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de distribución de renta de los hogares'),
                  ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de noviembre de 2019 y julio de 2023 por sección'),
-                 ('https://www.publico.es/politica/abascal-anuncia-formacion-sindicato-vinculado-vox.html', 'Europa Press en Público, Abascal anuncia la formación de un sindicato vinculado a Vox (5-7-2020)'),
+                 ('https://www.publico.es/politica/abascal-anuncia-formacion-sindicato-vinculado-vox.html', 'Europa Press, Abascal anuncia la formación de un sindicato vinculado a Vox (5-7-2020)'),
                  ('https://theobjective.com/espana/politica/2025-08-24/vox-obreros-parados-jovenes/', 'The Objective, Vox se erige en partido de los «desesperados»: Abascal atrae a obreros, parados y jóvenes (24-8-2025)'),
                  ('https://doi.org/10.3389/fpos.2025.1717586', 'Rosa Roig, Priscila Espinosa y José M. Pavía, Who votes for Vox? Socioeconomic profiles and electoral shifts in the region of Madrid, Frontiers in Political Science (2025)'),
                  ('https://www.eldiario.es/opinion/tribuna-abierta/vota-clase-trabajadora-espana_129_1401496.html', 'Alberto Garzón, ¿A quién vota la clase trabajadora en España?, eldiario.es (9-8-2019)')],
