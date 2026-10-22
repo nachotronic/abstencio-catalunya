@@ -106,5 +106,9 @@
  "polaritzacio-girona": {
   "pie": "Com s'agrupa el vot independentista per barris.",
   "fuente": "Generalitat de Catalunya, Transparència Catalunya (ntc4-rnwr); INE, seccionat del 2023. Municipis amb 15 seccions urbanes o més"
+ },
+ "vox-barrios-obreros-clase-29n": {
+  "pie": "Voto en julio de 2023 según el peso de los empleos elementales en la sección.",
+  "fuente": "INE, Censo anual de población 2023 (ocupados por grupo de ocupación y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife"
  }
 }
