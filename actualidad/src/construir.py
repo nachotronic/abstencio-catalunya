@@ -1398,6 +1398,24 @@ PIEZAS = [
                   fuente='CIS. Cálculo propio'),
     ),
     dict(
+        slug='inmigracion-preocupa-voto-vox-29n', fecha='2026-10-22',
+        titulo='Donde más preocupa la inmigración, más votó Vox, salvo en Cataluña', serie='29n',
+        descripcion='Fuera de Cataluña, el País Vasco, Navarra y Galicia, en las provincias donde Vox pasó del 15% en 2023 el 20% de los entrevistados por el CIS cita la inmigración como problema; donde no llegó al 14%, el 15%. Hasta los votantes del PP la citan más allí: el 29%, frente al 21,5%. Tarragona y Girona, con poco voto a Vox, son las que más la citan.',
+        compara='El porcentaje de entrevistados que cita la inmigración entre los tres principales problemas de España en los nueve barómetros del CIS de diciembre de 2025 a octubre de 2026 (37.191 entrevistas, ponderadas), por provincia, frente al voto real a Vox en las generales de 2023 y al porcentaje de extranjeros empadronados (INE, enero de 2025); por recuerdo de voto del entrevistado; y un modelo con efectos fijos de comunidad autónoma y errores agrupados por provincia.',
+        limites='Es una encuesta repartida por provincias: las muestras de las provincias pequeñas son reducidas (68 entrevistas en Soria). El voto a Vox es el de 2023 y la preocupación, la de este año. Es una correlación: no prueba que la preocupación lleve al voto ni al revés. Santa Cruz de Tenerife queda fuera del cruce con el voto porque Vox no presentó lista allí en 2023. Al tener en cuenta el porcentaje de extranjeros, la relación se debilita.',
+        fuentes=[('https://www.cis.es/estudios/catalogo-estudios', 'CIS, barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582), microdatos'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=56949', 'INE, Estadística Continua de Población, población por provincia y nacionalidad, 1 de enero de 2025'),
+                 ('https://www.realinstitutoelcano.org/comentarios/la-opinion-publica-espanyola-sobre-la-inmigracion-en-contexto/', 'Rut Bermejo Casado y Carmen González Enríquez, La opinión pública española sobre la inmigración en contexto, Real Instituto Elcano (3-10-2024)'),
+                 ('https://democrata.es/elecciones-generales-espana/visita-abascal-aviles-desata-protestas-obliga-establecer-cordon-policial', 'Demócrata, Abascal defiende en Avilés la «remigración» y la prioridad nacional (21-10-2026)'),
+                 ('https://www.elindependiente.com/sociedad/2025/07/14/detenidos-autor-agresion-torre-pacheco/amp/', 'El Independiente, Torre Pacheco (14-7-2025)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/inmigracion-preocupa-voto-vox-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Porcentaje que cita la inmigración entre los tres principales problemas de España, según el voto en 2023 del entrevistado y el voto a Vox en su provincia.',
+                  fuente='CIS e Interior. Cálculo propio'),
+    ),
+    dict(
         slug='barrios-rentistas-pp-psoe-29n', fecha='2026-10-22',
         titulo='En los barrios de rentistas, el PP saca el 51% y el PSOE, el 21%', serie='29n',
         descripcion='En los códigos postales donde dividendos, intereses y alquileres son más del 10% de la renta declarada a Hacienda, el PP dobló al PSOE en 2023. Donde no llegan al 4%, ganó el PSOE. Vox sacó lo mismo en unos y otros. Del barrio de Salamanca a Entrevías, de Pedralbes a Torreblanca.',
@@ -1975,6 +1993,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'inmigracion-preocupa-voto-vox-29n': 'La inquietud y la papeleta',
     'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
     'barrios-rentistas-pp-psoe-29n': 'Dividendos y alquileres',
