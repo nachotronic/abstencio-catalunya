@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodología de Actualidad: fuentes, cruces, controles y límites · Mapa Electoral</title>
+<meta name="description" content="Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.">
+<meta name="author" content="Nacho G. del Álamo">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://mapaelectoral.es/actualidad/metodologia.html">
+<link rel="alternate" type="application/rss+xml" title="Mapa Electoral · Actualidad" href="https://mapaelectoral.es/actualidad/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mapa Electoral">
+<meta property="og:title" content="Metodología de Actualidad: fuentes, cruces, controles y límites">
+<meta property="og:description" content="Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.">
+<meta property="og:url" content="https://mapaelectoral.es/actualidad/metodologia.html">
+<meta property="og:image" content="https://mapaelectoral.es/img/compartir/atlas.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nachotronic">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "@id": "https://mapaelectoral.es/actualidad/metodologia.html",
+ "name": "Metodología de Actualidad: fuentes, cruces, controles y límites",
+ "url": "https://mapaelectoral.es/actualidad/metodologia.html",
+ "description": "Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.",
+ "inLanguage": "es",
+ "dateModified": "2026-10-22",
+ "publisher": {
+  "@type": "NewsMediaOrganization",
+  "@id": "https://mapaelectoral.es/#medio",
+  "name": "Mapa Electoral",
+  "url": "https://mapaelectoral.es/",
+  "founder": {
+   "@type": "Person",
+   "@id": "https://mapaelectoral.es/sobre-mi.html#person",
+   "name": "Nacho G. del Álamo",
+   "url": "https://mapaelectoral.es/sobre-mi.html",
+   "jobTitle": "Periodista de datos",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universitat de Girona",
+    "url": "https://www.udg.edu/"
+   },
+   "knowsAbout": [
+    "Periodismo de datos",
+    "Elecciones en España",
+    "Geografía electoral",
+    "Visualización de datos"
+   ],
+   "sameAs": [
+    "https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES",
+    "https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/",
+    "https://x.com/nachotronic",
+    "https://github.com/nachotronic"
+   ]
+  },
+  "publishingPrinciples": "https://mapaelectoral.es/atlas/politica-editorial/",
+  "verificationFactCheckingPolicy": "https://mapaelectoral.es/atlas/politica-editorial/#verificacion",
+  "correctionsPolicy": "https://mapaelectoral.es/atlas/correcciones/",
+  "sameAs": [
+   "https://x.com/nachotronic"
+  ]
+ },
+ "author": {
+  "@type": "Person",
+  "@id": "https://mapaelectoral.es/sobre-mi.html#person",
+  "name": "Nacho G. del Álamo",
+  "url": "https://mapaelectoral.es/sobre-mi.html",
+  "jobTitle": "Periodista de datos",
+  "affiliation": {
+   "@type": "CollegeOrUniversity",
+   "name": "Universitat de Girona",
+   "url": "https://www.udg.edu/"
+  },
+  "knowsAbout": [
+   "Periodismo de datos",
+   "Elecciones en España",
+   "Geografía electoral",
+   "Visualización de datos"
+  ],
+  "sameAs": [
+   "https://www.udg.edu/ca/directori/pagina-personal?ID=240543&language=es-ES",
+   "https://www.linkedin.com/in/ignacio-garc%C3%ADa-del-%C3%A1lamo-a289418/",
+   "https://x.com/nachotronic",
+   "https://github.com/nachotronic"
+  ]
+ },
+ "isPartOf": {
+  "@type": "CollectionPage",
+  "name": "Actualidad",
+  "url": "https://mapaelectoral.es/actualidad/"
+ }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1a1c;--muted:#5d585b;--rule:#e2dddf}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#18161a;--fg:#f1edef;--muted:#b5aeb2;--rule:#343036;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#18161a;--fg:#f1edef;--muted:#b5aeb2;--rule:#343036;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.6}
+main{max-width:46rem;margin:0 auto;padding-block:2rem 4rem;padding-inline:16px}
+h1{font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.15;margin:.6rem 0}
+h2{font-size:1.3rem;margin:2.2rem 0 .6rem;scroll-margin-top:1rem}
+h3{font-family:var(--ui);font-size:1.05rem;margin:1.6rem 0 .4rem}
+a{color:var(--fg)}
+.entradilla{font-size:1.1rem}
+nav.indice{font-family:var(--ui);font-size:.9rem;color:var(--muted);border-block:1px solid var(--rule);padding:.6rem 0}
+nav.indice a{color:var(--muted)}
+main li{margin-bottom:.5rem}
+</style><style>
+:root{--serif:"Newsreader",Georgia,serif;--ui:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--surface:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--surface:#1e2025}}
+:root[data-theme="dark"]{--surface:#1e2025}
+body{margin:0}
+h1,h2{font-family:var(--ui);letter-spacing:-.01em}
+h1{font-weight:700}
+.kicker{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.kicker a{color:var(--muted);text-decoration:none}
+.firma{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+.firma a{color:var(--muted)}
+.ficha{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:6px 16px 12px;font-size:.98rem;margin:0}
+.ficha dt{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
+.ficha dd{margin:2px 0 0}
+.ficha ul{margin:.2rem 0 0;padding-left:1.1rem}
+nav.site{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;max-width:46rem;margin:0 auto;padding:12px 16px 10px;border-bottom:1px solid var(--rule);font:500 14px/1.4 var(--ui)}
+nav.site a{color:var(--muted);text-decoration:none}nav.site a:hover{color:var(--fg)}nav.site a[aria-current]{color:var(--fg);font-weight:700}
+nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;margin-right:6px}
+@media (max-width:760px){nav.site{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none}nav.site::-webkit-scrollbar{display:none}}
+.sigue{list-style:none;padding:0;display:grid;gap:12px}
+.sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
+.sigue .kicker{display:block;margin-bottom:2px}
+figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
+figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
+ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
+ol.serie li::marker{font-family:var(--mono);color:var(--muted)}
+ol.serie a{color:var(--fg)}
+ol.serie li[aria-current] b{font-weight:500;color:var(--muted)}
+ol.serie .kicker{display:block}
+footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
+.tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
+.etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+@media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
+</style>
+<script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "Cómo se hacen las piezas de Actualidad", "item": "https://mapaelectoral.es/actualidad/metodologia.html"}]}</script>
+</head>
+<body>
+<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="../">Mapa Electoral</a><a href="../">Mapa de resultados</a><a href="../elecciones/">Por territorio</a><a href="../encuestas/">Encuestas</a><a href="../atlas/">Atlas</a><a href="../actualidad/" aria-current="page">Actualidad</a><a href="../actualidad/#comunidades">Comunidades</a><a href="../actualidad/#historia">Historia electoral</a><a href="../sobre-mi.html">Sobre mí</a></nav>
+<main><p class="kicker"><a href="./">Actualidad</a> · Metodología</p>
+<h1>Cómo se hacen las piezas de Actualidad</h1>
+<p class="entradilla">Las piezas de esta sección cruzan resultados electorales con datos de renta, edad, empleo o vivienda, casi siempre por sección censal. Esta página explica de dónde salen los datos, cómo se comparan, qué controles se aplican y qué no se puede concluir de ellos. Lo particular de cada pieza está en su bloque «Método y fuentes».</p>
+<nav class="indice" aria-label="En esta página"><a href="#fuentes">Fuentes</a> · <a href="#cruces">Cruces</a> · <a href="#controles">Controles</a> · <a href="#ponderacion">Ponderación</a> · <a href="#limites">Límites</a> · <a href="#excepciones">Dónde se rompe el patrón</a> · <a href="#verificacion">Verificación</a></nav>
+
+<h2 id="fuentes">Fuentes</h2>
+<p>Todas son públicas y cada pieza enlaza las que usa.</p>
+<ul>
+<li><b>Resultados electorales.</b> Ministerio del Interior (<a href="https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/">Infoelectoral</a>), por mesa, que se suman por sección censal. La base de casi todos los cruces son las generales del 23 de julio de 2023. El voto de los residentes en el extranjero (CERA) no se puede asignar a una sección: cada pieza dice si lo incluye. Para el Parlament de Catalunya, los datos abiertos de la Generalitat.</li>
+<li><b>Renta y edad.</b> INE, <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a>: renta por unidad de consumo, fuentes de ingresos (salarios, pensiones, prestaciones) y edad media por sección. Empieza en 2015: no se usa para explicar elecciones anteriores.</li>
+<li><b>Población, empleo y vivienda.</b> INE, <a href="https://www.ine.es/censos2021/C2021_Indicadores.csv">Censo de Población y Viviendas 2021</a> (estudios, paro, nacidos fuera, régimen de tenencia) y Censo anual de población (ocupados por rama y situación profesional). Estadísticas experimentales del INE: viviendas turísticas por sección e índice de precios del alquiler.</li>
+<li><b>Fiscalidad.</b> Agencia Tributaria, <a href="https://sede.agenciatributaria.gob.es/Sede/datosabiertos/catalogo/hacienda/Estadistica_de_los_declarantes_del_IRPF_por_municipios.shtml">estadística de los declarantes del IRPF por municipio</a>.</li>
+<li><b>Edificios.</b> Dirección General del Catastro, edificios en formato <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html">INSPIRE</a> (año de construcción, viviendas por edificio).</li>
+<li><b>Alquiler.</b> Ministerio de Vivienda, Sistema Estatal de Referencia del Precio del Alquiler (SERPAVI).</li>
+<li><b>Opinión.</b> CIS, microdatos de los barómetros, siempre con los pesos del propio CIS. Son encuestas a personas, con su margen de error, y se dice cuando una submuestra es pequeña.</li>
+</ul>
+
+<h2 id="cruces">Cómo se cruzan los datos</h2>
+<p>La mayoría de las piezas hacen comparaciones de dos variables, explicadas sin jerga:</p>
+<ul>
+<li><b>Grupos de igual tamaño.</b> Se ordenan las secciones (o los municipios) por una variable, por ejemplo la renta, y se parten en cinco grupos (quintiles) o diez (deciles) con el mismo número de secciones o de votantes. Después se compara el voto de cada grupo. Es la forma más habitual en los gráficos.</li>
+<li><b>Comparación de medias.</b> El voto o la participación de un grupo frente a otro: las secciones con más alquiler frente a las de menos, la quinta parte con más pensionistas frente al resto.</li>
+<li><b>Correlación.</b> Cuando se da un coeficiente, es el de Pearson entre secciones o municipios: va de −1 a 1 y mide si dos cifras suben y bajan juntas, no cuánto cambia una con la otra.</li>
+</ul>
+
+<h2 id="controles">Controles</h2>
+<p>Una relación entre dos cifras puede deberse a una tercera. Antes de publicar un patrón, se comprueba que aguanta al menos alguno de estos controles, y la pieza dice cuál:</p>
+<ul>
+<li><b>A igual renta.</b> La comparación se repite dentro de cada tramo de renta (tercios, quintiles) o entre secciones de renta parecida. Es el control más frecuente, porque la renta va unida a casi todo: edad, estudios, vivienda, empleo.</li>
+<li><b>A igual tamaño de municipio.</b> Las capitales, los pueblos pequeños y las ciudades medianas votan distinto. Cuando la variable cambia con el tamaño, la comparación se hace dentro de cada tramo de población.</li>
+<li><b>Dentro de cada provincia.</b> Comparar Sevilla con Ourense mezcla historias políticas distintas, y una tendencia del conjunto puede desaparecer o invertirse dentro de cada territorio (la llamada paradoja de Simpson). Por eso se repite la cuenta en cada provincia y se dice en cuántas se cumple: «en 50 de las 51 provincias», «en las 49 con datos».</li>
+<li><b>Sin el caso que más pesa.</b> Si una provincia o una ciudad aporta buena parte del efecto, se repite sin ella (por ejemplo, «sin Almería»).</li>
+<li><b>Regresión con controles.</b> En las piezas que descuentan varios rasgos a la vez (renta, paro, estudios, edad, población nacida fuera, tamaño), se usa una regresión lineal por mínimos cuadrados (MCO), ponderada por votantes o por censo, y se da el resultado en puntos de voto entre un caso típico con poco y uno con mucho de la variable. El texto lo cuenta como «a igualdad de lo demás», nunca como causa.</li>
+</ul>
+<h3>Dos reglas para las regresiones</h3>
+<p><b>Efectos fijos de provincia.</b> Una regresión con secciones de toda España supondría que las reglas son las mismas en Sevilla, en Ourense y en Barcelona. No lo son: cada provincia tiene su historia, su arraigo de partidos y su oferta electoral. Por eso los modelos llevan efectos fijos de provincia: estiman la relación solo con las diferencias entre secciones o municipios de la misma provincia. Así se hacen ya los modelos del <a href="../atlas/metodologia/">Atlas de las anomalías electorales</a> y la regresión de <a href="oficios-y-voto-municipios-29n/">los oficios y el voto</a>, y es la norma para cualquier regresión nueva que mezcle provincias.</p>
+<p><b>Errores agrupados y dependencia espacial.</b> Las secciones vecinas no son observaciones independientes: comparten renta, tipo de barrio y costumbres de voto. Una regresión que las trate como independientes da márgenes de error demasiado estrechos y puede hacer pasar por firme un efecto que no lo es. Desde octubre de 2026, las regresiones nuevas calculan los errores agrupados por municipio (por provincia cuando la unidad es el municipio), y un efecto que no se distingue de cero con esos errores no se publica como patrón. Cuando el patrón tiene una geografía muy marcada, se comprueba además si los residuos del modelo siguen agrupados en el mapa (índice de Moran) y, si es así, se contrasta con un modelo espacial (de retardo o de error) antes de publicar. Las piezas anteriores a esta regla no daban márgenes de error; sus cifras de regresión se revisarán con este criterio si se actualizan.</p>
+
+<h2 id="ponderacion">Cuánto pesa cada sección</h2>
+<ul>
+<li><b>Porcentajes de un grupo</b> (el voto del quintil más pobre, la participación de un distrito): se suman los votos y el censo de todas sus secciones. Equivale a una media ponderada por votantes o por censo, y así lo dice la nota del gráfico.</li>
+<li><b>Grupos.</b> Pueden tener el mismo número de secciones o el mismo número de votantes; la nota del gráfico dice cuál.</li>
+<li><b>Correlaciones y recuentos</b> («en 1.089 de las 3.289 secciones más pobres»): cada sección cuenta lo mismo, tenga 300 electores o 2.000, salvo que se diga lo contrario. Algunas piezas dejan fuera las secciones muy pequeñas, y lo dicen.</li>
+<li><b>Regresiones:</b> ponderadas por votantes o por censo, para que un pueblo de 200 habitantes no pese lo mismo que un barrio de 3.000.</li>
+</ul>
+
+<h2 id="limites">Lo que estos datos no dicen</h2>
+<ul>
+<li><b>No dicen quién vota a quién.</b> Son datos de secciones y municipios, no de personas. Que las secciones con más pensionistas voten más al PP no significa que los pensionistas voten al PP: pueden ser sus vecinos. Sacar conclusiones sobre individuos a partir de datos de grupos es la falacia ecológica, descrita por el sociólogo William S. Robinson en 1950 («<a href="https://doi.org/10.2307/2087176">Ecological Correlations and the Behavior of Individuals</a>», <i>American Sociological Review</i>). Para hablar de personas hacen falta encuestas, como las del CIS, y las piezas que las usan lo dicen.</li>
+<li><b>No dicen por qué.</b> «Donde más X, más Y» no es «X causa Y». Los controles descartan algunas explicaciones alternativas, no todas. Una explicación solo se da como tal con dos fuentes independientes; si no, se marca como hipótesis.</li>
+<li><b>Las fronteras importan.</b> El resultado de un cruce puede cambiar según se agrupe por sección, por distrito o por municipio, y las secciones cambian de límites entre elecciones.</li>
+<li><b>Las fechas no siempre coinciden.</b> Las elecciones son de 2023, el censo de 2021, la renta de 2023 o del último año publicado. Cada pieza dice qué año usa cada dato.</li>
+<li><b>Los extranjeros no votan en las generales.</b> En las secciones con mucha población extranjera, el voto es el de sus vecinos con nacionalidad española.</li>
+</ul>
+
+<h2 id="excepciones">Dónde se rompe el patrón</h2>
+<p>Comparar dentro de cada provincia sirve también para encontrar los lugares donde la regla general no se cumple, que a menudo son la noticia. Algunos ejemplos publicados:</p>
+<ul>
+<li>En el conjunto de España, las secciones pobres votan más a PSOE y Sumar. En la provincia de Murcia, 172 de sus 191 secciones del tramo más pobre votaron más a PP y Vox; en Almería, 117 de 141. En Sevilla, ninguna. <a href="barrios-pobres-derecha-ricos-izquierda/">La pieza</a>.</li>
+<li>Al revés, la mayoría de las secciones ricas que votan más a PSOE y Sumar que a PP y Vox están en Cataluña y el País Vasco, donde buena parte del voto conservador va a Junts o al PNV, que no entran en ninguno de los dos bloques.</li>
+<li>En Madrid, el oficio del barrio parece decir menos del voto que en provincias donde se vive y se trabaja en el mismo sitio. Es una hipótesis. <a href="oficios-y-voto-municipios-29n/">La pieza</a>.</li>
+</ul>
+
+<h2 id="verificacion">Verificación</h2>
+<ul>
+<li>Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados).</li>
+<li>Cada pieza tiene un expediente interno con los scripts que reproducen sus cifras y una tabla de afirmaciones (afirmaciones.csv) que liga cada frase con su número y su fuente. Un script de verificación vuelve a calcularlas antes de publicar; si una no cuadra, la pieza no sale.</li>
+<li>Ninguna conclusión se publica de forma automática: cada pieza la revisa una persona antes de publicarse.</li>
+<li>Los errores se corrigen en la propia pieza, con fecha, en su apartado «Correcciones», y en el <a href="../atlas/correcciones/">registro de correcciones</a>.</li>
+</ul>
+<p>Más detalle en la <a href="../atlas/politica-editorial/#verificacion">política editorial</a> y en la <a href="../atlas/metodologia/">metodología del Atlas</a>. El código y los datos derivados están en <a href="https://github.com/nachotronic/abstencio-catalunya">GitHub</a>.</p>
+<p class="firma">Nacho G. del Álamo · Actualizada el <time datetime="2026-10-22">22 de octubre de 2026</time></p><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a></footer></main>
+</body>
+</html>
