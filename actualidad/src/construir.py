@@ -1315,8 +1315,8 @@ PIEZAS = [
     ),
     dict(
         slug='oficios-y-voto-municipios-29n', fecha='2026-10-22',
-        titulo='Vox saca un tercio más donde más gente vive del comercio', serie='29n',
-        descripcion='En los municipios con más ocupados en el comercio de cada provincia, Vox sacó en 2023 el 14,6%; en los que menos, el 11%. Donde abundan las finanzas y los despachos profesionales, el PP sube del 28,3% al 35,8%. Donde se vive de la hostelería, se vota menos. El mapa de los oficios de 4.090 municipios.',
+        titulo='Donde abundan los despachos, el PP saca siete puntos más y el PSOE, cinco menos', serie='29n',
+        descripcion='En los municipios con más ocupados en finanzas y despachos profesionales de cada provincia, el PP sacó en 2023 el 35,8% y el PSOE el 29%; donde menos, el 28,3% y el 34,2%. Donde más gente vive del comercio, Vox saca un tercio más. Donde se vive de la hostelería, se vota menos. El mapa de los oficios de 4.090 municipios.',
         compara='El porcentaje de ocupados de cada rama de actividad (21 secciones de la CNAE-2009) en los municipios de 500 habitantes o más (Censo anual 2023, por lugar de residencia) con el voto de cada municipio en las generales de julio de 2023: en cinco grupos con el mismo número de votantes, de menos a más peso de la rama frente a la media de su provincia; dentro de cada tercio de renta; por comunidad; y con una regresión dentro de cada provincia que descuenta renta, tamaño, edad media, nacidos fuera de España, estudios superiores y paro.',
         limites='Son datos por municipio, no por persona: no dicen cómo vota quien trabaja en cada rama. El censo cuenta a los ocupados donde viven, no donde trabajan, y solo da las ramas en los 4.144 municipios de 500 habitantes o más. Se excluye Santa Cruz de Tenerife, donde Vox no presentó lista en 2023. Las ramas de la CNAE mezclan empleo público y privado, y el comercio incluye el mayorista. Con todos los controles, las diferencias son de uno a dos puntos y medio. La renta es de 2022 y los estudios, el paro y el origen, del censo de 2021.',
         fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=69992', 'INE, Censo anual de población, ocupados por sexo y actividad, municipios de 500 habitantes o más'),
@@ -1894,7 +1894,7 @@ PIEZAS += [
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
-    'oficios-y-voto-municipios-29n': 'El mostrador y la urna',
+    'oficios-y-voto-municipios-29n': 'El despacho y la urna',
     'voto-jubilados-secciones-29n': 'El voto que no se mueve',
     'voto-autonomos-secciones-29n': 'La persiana y la urna',
     'ley-nietos-donde-estan-29n': 'Nietos sin papeleta',
