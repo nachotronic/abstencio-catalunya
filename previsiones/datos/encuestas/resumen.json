@@ -1,0 +1,25 @@
+{
+ "descargado": "2026-10-22T14:55Z",
+ "fuente": "https://www.electografica.com",
+ "encuestas_espana": 1047,
+ "encuestas_infraestatales": 137,
+ "desde": "2018-08-10",
+ "ultima": {
+  "publicado": "2026-10-19",
+  "encuestadora": "Sigma Dos",
+  "cliente": "El Mundo"
+ },
+ "siglas_sin_equivalencia": {
+  "Autonómicas - CUP": 2,
+  "JxSí": 1,
+  "CSQP": 1,
+  "CeC": 1,
+  "MÉS ESQUERRA": 1,
+  "PSOE (115/117) · VOX": 1
+ },
+ "wikipedia": {
+  "encuestas": 573,
+  "ultima_fin_campo": "2026-10-17",
+  "faltan_en_electografica_120_dias": 20
+ }
+}

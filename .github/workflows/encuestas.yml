@@ -1,0 +1,31 @@
+# Descarga las encuestas de generales (Electográfica) y las coteja con Wikipedia dos veces al día.
+# Solo hace commit en main si cambia algún CSV de previsiones/datos/encuestas/. No toca ninguna página de la web.
+name: Encuestas
+on:
+  schedule:
+    - cron: '20 6 * * *'
+    - cron: '20 19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: encuestas
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Electográfica
+        run: python3 previsiones/src/actualizar_encuestas.py
+      - name: Cotejo con Wikipedia
+        # si Wikipedia falla o cambia de formato, se guardan igualmente las encuestas de Electográfica
+        continue-on-error: true
+        run: python3 previsiones/src/cotejar_wikipedia.py
+      - name: Commit si hay cambios
+        run: |
+          git add previsiones/datos/encuestas
+          if git diff --cached --quiet -- '*.csv'; then echo "Sin encuestas nuevas"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Encuestas: actualización automática $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && break; sleep 10; done
