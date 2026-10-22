@@ -14,7 +14,7 @@ Método (deliberadamente simple y explicable):
 
 Uso:  python3 previsiones/src/encuestas.py [csv]
 """
-import json, math, pathlib, re, sys, unicodedata
+import json, math, os, pathlib, re, sys, unicodedata
 from datetime import date, timedelta
 
 import pandas as pd
@@ -132,7 +132,7 @@ def main():
     print('\nMedia a', hoy, {k: v for k, v in sorted(m.items(), key=lambda t: -t[1])})
     print('Sin CIS     ', {k: v for k, v in sorted(sin_cis.items(), key=lambda t: -t[1])})
     print(usadas.to_string(index=False))
-    sal = pathlib.Path('/mnt/project-files/previsiones/salidas')
+    sal = pathlib.Path(os.environ.get('SALIDAS', '/mnt/project-files/previsiones/salidas'))
     sal.mkdir(parents=True, exist_ok=True)
     json.dump({'fecha': hoy.isoformat(), 'media': m, 'media_sin_cis': sin_cis, 'c_error': c,
                'error_historico': e.to_dict('records'), 'metodo': __doc__.split('Uso:')[0].strip(),
