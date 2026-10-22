@@ -1251,6 +1251,24 @@ PIEZAS = [
                   pie='Aumento de los españoles de 16 años o más que viven en América Latina, por provincia de inscripción, entre el 1 de enero de 2023 y el de 2026.',
                   fuente='INE, Padrón de Españoles Residentes en el Extranjero'),
     ),
+    dict(
+        slug='voto-autonomos-secciones-29n', fecha='2026-10-22',
+        titulo='Donde más autónomos viven, el PP saca 13 puntos al PSOE', serie='29n',
+        descripcion='En los barrios con más trabajadores por cuenta propia, el PP sacó en 2023 un 41% y el PSOE un 28%; donde menos, al revés. Pasa con la misma renta, en Sevilla y en los pueblos. En Cataluña ese voto va a Junts. Vox, en cambio, no se mueve.',
+        compara='El porcentaje de ocupados por cuenta propia de cada una de las 34.257 secciones censales (Censo anual 2023, por lugar de residencia) con el voto de cada sección en las generales de julio de 2023, en cinco grupos con el mismo número de votantes; dentro de cada nivel de renta; en siete ciudades, en los municipios de menos de 10.000 habitantes, en Galicia, Cataluña y el País Vasco. Y el recuerdo de voto de asalariados y trabajadores por cuenta propia en la encuesta postelectoral del CIS.',
+        limites='Son datos por sección, no por persona: no dicen cómo vota cada autónomo. El censo cuenta a los ocupados donde viven, no donde trabajan. Cuenta propia incluye empresarios con asalariados, cooperativistas y ayudas familiares, y no equivale al alta en el RETA. Solo se ha separado la renta; la edad, el tamaño del municipio o los estudios pueden explicar parte de la diferencia. Se excluye Santa Cruz de Tenerife, donde Vox no presentó lista en 2023. La encuesta del CIS tiene 828 trabajadores por cuenta propia que recuerdan su voto.',
+        fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=70006', 'INE, Censo anual de población, ocupados por situación profesional y sección censal'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de distribución de renta de los hogares'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales del 23 de julio de 2023 por sección'),
+                 ('https://www.cis.es/en/surveys/barometro-de-septiembre-2023.-postelectoral-elecciones-generales-2023', 'CIS, estudio 3420, Barómetro de septiembre de 2023, postelectoral de las generales'),
+                 ('https://www.bolsamania.com/noticias/economia/economia--amor-ata-sobre-las-cuentas-del-estado-de-2026-si-no-hay-presupuestos-hay-que-convocar-elecciones--20608152.html', 'Europa Press en Bolsamanía, entrevista a Lorenzo Amor (10-8-2025)'),
+                 ('https://www.infobae.com/espana/2025/10/13/el-gobierno-propone-nuevas-cuotas-de-autonomos-para-2026-desde-217-hasta-796-euros-al-mes/', 'Infobae, El Gobierno propone nuevas cuotas de autónomos para 2026 (13-10-2025)'),
+                 ('https://www.eldiario.es/opinion/tribuna-abierta/vota-clase-trabajadora-espana_129_1401496.html', 'Alberto Garzón, ¿A quién vota la clase trabajadora en España?, eldiario.es (9-8-2019)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/voto-autonomos-secciones-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mujer con delantal hace cuentas con una calculadora y un libro junto a una urna, ante una persiana de comercio.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1809,6 +1827,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'voto-autonomos-secciones-29n': 'La persiana y la urna',
     'ley-nietos-donde-estan-29n': 'Nietos sin papeleta',
     'pensiones-revalorizacion-29n': 'Dos Españas jubiladas',
     'vox-galicia-coruna-abascal-29n': 'La espina de Abascal',
