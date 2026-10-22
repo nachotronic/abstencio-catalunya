@@ -1331,9 +1331,8 @@ PIEZAS = [
                  ('https://elbierzo.eldiario.es/ponferrada/vox-confirma-pablo-calvo-cabeza-lista-vox-congreso-leon-mitin-abascal-ponferrada_1_13601490.html', 'elDiario.es El Bierzo, mitin de Abascal en Ponferrada (20-10-2026)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/oficios-y-voto-municipios-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='El oficio que más destaca en cada municipio de 500 habitantes o más frente a la media de España, 2023.',
-                  fuente='INE, Censo anual de población 2023. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/oficios-y-voto-municipios-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un obrero con casco y planos, una sanitaria que vota en una urna transparente y una tendera tras el mostrador.'),
     ),
 ]
 
