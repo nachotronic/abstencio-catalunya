@@ -1372,9 +1372,8 @@ PIEZAS = [
                  ('https://www.funcas.es/wp-content/uploads/2024/09/Estudios104_Torres_3.pdf', 'Raymond Torres, Funcas, estudio sobre jóvenes y vivienda (2024)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/vivienda-preocupa-voto-sumar-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Porcentaje que cita la vivienda entre los tres principales problemas de España por comunidad, barómetros del CIS de diciembre de 2025 a octubre de 2026.',
-                  fuente='CIS. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/vivienda-preocupa-voto-sumar-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un edificio de viviendas con una maleta en el portal y una urna con una papeleta.'),
     ),
     dict(
         slug='termometro-temas-inmigracion-29n', fecha='2026-10-22',
@@ -2303,7 +2302,7 @@ def pieza(p, todas):
     if '<dl class="ficha">' not in main:   # piezas sin bloque «Método y fuentes»: al menos, el enlace a la metodología general
         main = main.replace('</main>', '<p class="etiquetas">Cómo se hacen estas piezas: <a href="../metodologia.html">Metodología de Actualidad</a></p>\n</main>', 1)
 
-    jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
+    jsonld = {'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
               'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
               'image': ([f"{BASE}/{principal['src']}"] if principal else []) + [imagen],   # la imagen principal (1280x720) primero, para Discover
@@ -2336,7 +2335,7 @@ def indice(todas, sitemap=None):
     url = BASE + '/actualidad/'
     desc = 'Piezas cortas que cruzan la actualidad del día con los datos electorales por sección censal. Cada cifra, con su fuente.'
     jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Actualidad', 'url': url, 'description': desc,
-              'hasPart': [{'@type': 'NewsArticle', 'headline': p['titulo'], 'url': f"{url}{p['slug']}/", 'datePublished': p['fecha']} for p in todas]}
+              'hasPart': [{'@type': 'AnalysisNewsArticle', 'headline': p['titulo'], 'url': f"{url}{p['slug']}/", 'datePublished': p['fecha']} for p in todas]}
     def bloque(serie):
         qs = [q for q in todas if q['serie'] == serie]
         fo = SERIES_FOTO.get(serie)

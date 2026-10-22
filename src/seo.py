@@ -150,7 +150,7 @@ def dataset(L):
 def article(L):
     t = T[L]
     return {
-        '@type': 'NewsArticle', '@id': BASE + t['page'] + '#article',
+        '@type': 'AnalysisNewsArticle', '@id': BASE + t['page'] + '#article',
         'headline': t['title'], 'description': t['desc'], 'inLanguage': L,
         'url': BASE + t['page'], 'mainEntityOfPage': BASE + t['page'], 'image': IMAGE,
         'datePublished': PUBLISHED, 'dateModified': MODIFIED,
@@ -674,6 +674,9 @@ def main():
     # autor común, Dataset y migas de pan en todas las páginas del sitio
     import esquema
     esquema.main()
+    # el mapa interactivo se carga después del texto (portada y piezas de Cataluña y Girona)
+    import diferido
+    diferido.main()
 
 
 main()

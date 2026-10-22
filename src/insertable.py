@@ -53,7 +53,8 @@ def main():
     mapa = re.sub(r'\s*<(p|details) class="hint">.*?</\1>', '', mapa, flags=re.S)
     mapa = re.sub(r'\s*<h2[^>]*id="h-mapa"[^>]*>.*?</h2>', '', mapa)
     mapa = mapa.replace('class="wide" ', '', 1).replace('aria-labelledby="h-mapa"', 'aria-label="Mapa electoral"')
-    deck = re.search(r'<script src="https://unpkg.com/deck.gl[^"]*"></script>', s).group(0)
+    # en la portada deck.gl va en carga diferida (src/diferido.py); en el mapa insertado se carga sin esperar
+    deck = re.search(r'<script src="https://unpkg.com/deck.gl[^"]*"[^>]*></script>', s).group(0).replace(' type="text/x-mapa"', '')
     assert 'id="insertar"' not in mapa and 'id="map"' in mapa
     out = f"""<!doctype html>
 <html lang="es">
