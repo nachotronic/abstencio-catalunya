@@ -1434,6 +1434,25 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/barrios-rentistas-pp-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una mano recoge unas llaves junto a un fajo de contratos, un edificio de viviendas y una urna transparente.'),
     ),
+    dict(
+        slug='frontera-renta-pp-junts-pnv-29n', fecha='2026-10-22',
+        titulo='El PP ya gana a Junts en seis de cada diez barrios catalanes', serie='29n',
+        descripcion='En 2011, CiU sacaba más votos que el PP en el 65% de las secciones de Cataluña; en 2023, Junts, en el 40%. La frontera de renta entre la derecha catalana y la estatal ha subido: el PP gana ahora en los barrios de renta baja y media y en los más ricos. En el País Vasco, el PNV solo pierde terreno arriba del todo, y en Canarias el PP gana en toda la escala.',
+        compara='El voto a CiU o Junts, al PNV y a Coalición Canaria frente al PP en las generales de 2011 a 2023, por sección censal, en Cataluña, el País Vasco y Canarias, con las secciones ordenadas en diez grupos por renta neta media por unidad de consumo (INE, 2023); por municipio; y un modelo con efectos fijos de provincia (o de municipio), el porcentaje de vecinos nacidos en otra comunidad o en el extranjero y la edad media, con errores agrupados por municipio.',
+        limites='Son datos agregados por sección: no siguen a los votantes ni dicen que los de CiU se pasaran al PP. La renta es la de 2023 para todas las elecciones, porque el INE solo la publica desde 2015 (en Álava, desde 2022). Junts no es el mismo partido que CiU, y en 2023 no se presentó Ciudadanos. Navarra queda fuera porque UPN fue con el PP en 2011 y 2019. Es una correlación, no una relación de causa.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=65033', 'INE, población por sección censal según lugar de nacimiento y residencia, 2023 (tabla 65033)'),
+                 ('https://reis.cis.es/index.php/reis/article/view/1002', 'Clara Riba, Voto dual y abstención diferencial. Un estudio sobre el comportamiento electoral en Cataluña, REIS 91 (2000)'),
+                 ('https://www.democrata.es/politica/nogueras-ensalza-el-papel-de-junts-para-plantar-cara-a-los-dos-bloques-espanoles/', 'Demócrata, Nogueras reivindica a Junts frente a los dos bloques (17-10-2026)'),
+                 ('https://www.democrata.es/euskadi/garrido-pp-afirma-que-los-votantes-del-pnv-estan-preocupados-por-las-decisiones-y-la-trayectoria-del-partido/', 'Demócrata, con Europa Press, Garrido (PP) afirma que los votantes del PNV están preocupados (21-10-2026)'),
+                 ('https://www.canarias7.es/politica/clavijo-psoe-pp-estrategia-madrid-sacrificar-canarias-20260927070937-nt.html', 'Canarias7, entrevista a Fernando Clavijo (27-9-2026)'),
+                 ('https://es.ara.cat/politica/estrategia-feijoo-pescar-votos-psc-junts-vox-vez_1_5803420.html', 'Ara, La estrategia de Feijóo para pescar votos al PSC, Junts y Vox a la vez (20-7-2026)')],
+        enlaces=[],
+        lugar='Cataluña, País Vasco y Canarias',
+        foto=dict(src='img/actualidad/fotos/frontera-renta-pp-junts-pnv-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Peso de CiU o Junts en el voto que suman con el PP, de las secciones más pobres a las más ricas de Cataluña, en 2011, 2019 y 2023.',
+                  fuente='Interior e INE. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1992,6 +2011,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'frontera-renta-pp-junts-pnv-29n': 'La frontera del dinero',
     'inmigracion-preocupa-voto-vox-29n': 'La inquietud y la papeleta',
     'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
