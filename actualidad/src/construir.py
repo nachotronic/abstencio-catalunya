@@ -1178,6 +1178,25 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/trump-espana-invadida-inmigracion-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Donald Trump, una maleta y una cabina de votación.'),
     ),
+    dict(
+        slug='funcionarios-pagas-extra-29n', fecha='2026-10-22',
+        titulo='El 29N deja en el aire la subida de tres millones de empleados públicos: en Teruel o Soria hay el doble por habitante que en Barcelona, y donde más pesan, Sumar sacó un tercio menos', serie='29n',
+        descripcion='El Gobierno promete el 4,5% en enero, pero no dice si lo aprobará antes de las elecciones. En las provincias con más empleo público, sobre todo del interior, Sumar sacó el 9,7% en 2023; donde menos, el 14,3%. Del PP, la diferencia casi desaparece sin Cataluña.',
+        compara='Los empleados públicos por cada 100 habitantes en cada provincia, según el registro de enero de 2026, y el voto al Congreso en julio de 2023, con las provincias agrupadas en tres grupos con la misma población. También sin Cataluña, el País Vasco ni Navarra.',
+        limites='Son datos por provincia, no por persona: no dicen a quién votan los empleados públicos. Los empleados se cuentan en la provincia donde trabajan, no donde viven ni donde votan, y la estadística de la administración local puede ser incompleta. La población es la del padrón. Sin Ceuta y Melilla en los grupos, por el peso de la Administración del Estado, ni la provincia de Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023. Sin voto exterior.',
+        fuentes=[INTERIOR,
+                 ('https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/rcp/boletin/2026_01/revision-agosto-2026/EPSAP_Enero_2026%20.pdf', 'Ministerio para la Transformación Digital y de la Función Pública, Estadística del Personal al Servicio de las Administraciones Públicas, enero de 2026 (tabla 1.6)'),
+                 ('https://www.infobae.com/espana/2026/10/21/el-29-n-reabre-la-incertidumbre-sobre-la-subida-salarial-de-los-funcionarios-y-la-recuperacion-de-las-pagas-extra-que-cambia-con-el-adelanto-electoral/', 'Infobae, El 29-N reabre la incertidumbre sobre la subida salarial de los funcionarios y la recuperación de las pagas extra (21-10-2026)'),
+                 ('https://www.csif.es/es/articulo/galicia/general/98521', 'CSIF, valoración de las subidas salariales previstas en los presupuestos de la Xunta para 2027 (16-10-2026)'),
+                 ('https://forbes.es/economia/813125/dos-de-cada-tres-espanoles-cree-que-el-empleo-publico-permite-mas-conciliacion-pero-dudan-de-las-oposiciones/', 'Forbes, barómetro del CIS de octubre de 2025 sobre empleo público (13-10-2025)'),
+                 ('https://ws168.juntadeandalucia.es/revistaselectronicas/raap/article/download/1442/1390/2748', 'Reseña de Carles Ramió, El colapso de la Administración en España (Catarata, 2024), Revista Andaluza de Administración Pública'),
+                 ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/funcionarios-pagas-extra-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Empleados públicos por cada 100 habitantes en las provincias donde más y donde menos pesan, coloreadas por el partido más votado en 2023.',
+                  fuente='Ministerio para la Transformación Digital y de la Función Pública; INE; Ministerio del Interior'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1734,6 +1753,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'funcionarios-pagas-extra-29n': 'La nómina de enero',
     'trump-espana-invadida-inmigracion-29n': 'Lo que se ve y lo que no',
     'vox-pp-senado-pacto-29n': 'Las 19 del pacto',
     'frente-amplio-podemos-madrid-escanos-29n': 'Dos papeletas en Madrid',
