@@ -1178,6 +1178,23 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/trump-espana-invadida-inmigracion-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Donald Trump, una maleta y una cabina de votación.'),
     ),
+    dict(
+        slug='pensiones-revalorizacion-29n', fecha='2026-10-22',
+        titulo='Feijóo y Saiz se pelean por la hucha de las pensiones: donde más pesan en la renta, PP y PSOE se llevaron el 72,8% del voto, casi diez puntos más que donde menos', serie='29n',
+        descripcion='En las secciones donde las pensiones son un tercio de la renta, el bipartidismo resiste y Vox saca su peor dato. Pero no votan en bloque: en las más pobres gana el PSOE por 6,6 puntos y en las más ricas, el PP por 10,2.',
+        compara='El peso de las pensiones en la renta bruta de cada sección censal en 2023, según el atlas de renta del INE, y el voto al Congreso en julio de 2023, con las secciones agrupadas en cinco grupos con el mismo número de votantes. El grupo donde más pesan, partido en tres según su renta. Y el voto de esos mismos grupos en 2011, 2015 y noviembre de 2019.',
+        limites='Son datos por sección, no por persona: no dicen quién vota a quién ni por qué. El peso de las pensiones en la renta no es el porcentaje de pensionistas. Sin el País Vasco, donde el atlas no desglosa las fuentes de renta, ni la provincia de Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023. Las comparaciones con elecciones anteriores usan los grupos de 2023, y las secciones cambian de vecinos con el tiempo. Sin voto exterior.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.ondavasca.com/feijoo-garantiza-que-las-pensiones-subiran-con-el-ipc-si-gobierna-son-innegociables/', 'Europa Press vía Ondavasca, Feijóo garantiza que las pensiones subirán con el IPC si gobierna: «Son innegociables» (15-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/20/elma-saiz-contraataca-a-feijoo-con-la-hucha-de-las-pensiones-de-vaciarse-hasta-5000-millones-con-el-pp-a-cerrar-2026-con-20000/', 'Infobae, Elma Saiz contraataca a Feijóo con la hucha de las pensiones (20-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/14/feijoo-pensiones-ipc-pp-psoe-3448623/', 'Moncloa.com, Feijóo, las pensiones y el IPC (14-10-2026)'),
+                 ('https://documentos.fedea.net/pubs/fpp/2023/06/FPP2023-03.pdf', 'José Ignacio Conde-Ruiz y Vincenzo Galasso, Efectos económicos de la demografía política, Fedea Policy Paper 2023/03 (junio de 2023)'),
+                 ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/pensiones-revalorizacion-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Dos jubilados en un banco, de espaldas, ante un edificio oficial con la bandera de España y dos pilas de monedas.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1736,6 +1753,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'pensiones-revalorizacion-29n': 'Dos Españas jubiladas',
     'trump-espana-invadida-inmigracion-29n': 'Lo que se ve y lo que no',
     'vox-pp-senado-pacto-29n': 'Las 19 del pacto',
     'frente-amplio-podemos-madrid-escanos-29n': 'Dos papeletas en Madrid',
