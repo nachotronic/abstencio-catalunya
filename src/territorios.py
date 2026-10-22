@@ -663,6 +663,7 @@ def pagina_ciudad(cod):
     h.append(b_censo)
     h.append(b_sec)
     h.append(b_renta)
+    h.append(bloque_ocupacion(nombre, cod, p, PROV_NOMBRE[p], RANKING_OCUP))
     h.append(bloque_municipales(nombre, m, r))
     h.append(bloque_serie(nombre, serie))
     h.append(faq_html)
@@ -732,6 +733,60 @@ def bloque_censo(nombre, cods, ambito='el municipio', provincias=(), en=None):
     q = (f'¿Cuántos electores hay {en} para las elecciones del 29N?',
          f'{num(total)}, según el censo de consulta del INE: {num(cer)} residentes en {ambito} y {num(cera)} residentes en el extranjero.')
     return html_, q
+
+
+OCUP = pd.read_csv(ROOT / 'data' / 'censo' / 'censo_municipios.csv', dtype={'mun_code': str}).query('anyo == 2023').set_index('mun_code')
+OCUP_INE = 'https://www.ine.es/jaxiT3/Tabla.htm?t=70004'
+GRUPOS = [('ocup_alta', 'Alta cualificación', 'directivos, profesionales y técnicos'),
+          ('ocup_media', 'Cualificación media', 'administrativos, comercio, hostelería, agricultura, oficios y operadores'),
+          ('ocup_elemental', 'Elementales', 'peones, limpieza, reparto y otras tareas sin cualificación')]
+
+
+def reparto_ocup(df):
+    """Reparto de los ocupados con ocupación conocida entre los tres grandes grupos del INE (fracciones)."""
+    t = df[[g for g, _, _ in GRUPOS]].sum()
+    return t / t.sum()
+
+
+OCUP_ESP = reparto_ocup(OCUP)
+
+
+def disimilitud(a, b):
+    """Índice de disimilitud: parte de los ocupados que tendría que cambiar de grupo para igualar los dos repartos."""
+    return float((a - b).abs().sum() / 2)
+
+
+_d = {c: disimilitud(reparto_ocup(OCUP.loc[[c]]), OCUP_ESP) for c in CIUDADES if c in OCUP.index and pd.notna(OCUP.loc[c, 'ocup_alta'])}
+RANKING_OCUP = {c: i + 1 for i, c in enumerate(sorted(_d, key=_d.get))}   # 1 = mezcla de ocupaciones más parecida a la de España
+
+
+def bloque_ocupacion(nombre, cod, p, nprov, ranking):
+    if cod not in OCUP.index or pd.isna(OCUP.loc[cod, 'ocup_alta']):
+        return ''
+    r = reparto_ocup(OCUP.loc[[cod]])
+    rp = reparto_ocup(OCUP[OCUP.index.str[:2] == p])
+    d = disimilitud(r, OCUP_ESP)
+    puesto, total = ranking[cod], len(ranking)
+    lejos = max(GRUPOS, key=lambda g: abs(r[g[0]] - OCUP_ESP[g[0]]))
+    dif = (r[lejos[0]] - OCUP_ESP[lejos[0]]) * 100
+    if puesto <= total // 10:
+        frase = f'está entre el 10 % de los {num(total)} municipios con página propia cuya mezcla se parece más a la de España (puesto {num(puesto)})'
+    elif puesto > total - total // 10:
+        frase = f'está entre el 10 % de los {num(total)} municipios con página propia cuya mezcla se aleja más de la de España (puesto {num(puesto)})'
+    else:
+        frase = f'ocupa el puesto {num(puesto)} de {num(total)} municipios con página propia, ordenados de más a menos parecidos a España'
+    filas = [[f'{n} <span class="leyenda">({ej})</span>', pct(r[g]), pct(rp[g]), pct(OCUP_ESP[g])] for g, n, ej in GRUPOS]
+    return ('<h2 id="ocupacion">En qué trabajan sus vecinos, frente a España</h2>'
+            + p_('Dato', f'De los {num(OCUP.loc[cod, "ocupados"])} vecinos de {escape(nombre)} con empleo, el {pct(r["ocup_alta"])} tiene una ocupación de alta cualificación, '
+                 f'el {pct(r["ocup_media"])} una de cualificación media y el {pct(r["ocup_elemental"])} una ocupación elemental. '
+                 f'En el conjunto de España son el {pct(OCUP_ESP["ocup_alta"])}, el {pct(OCUP_ESP["ocup_media"])} y el {pct(OCUP_ESP["ocup_elemental"])}.')
+            + p_('Dato', f'Para tener el mismo reparto que España, el {pct(d)} de sus ocupados tendría que cambiar de grupo; {escape(nombre)} {frase}. '
+                 f'La mayor diferencia está en las ocupaciones {"de " if lejos[0] != "ocup_elemental" else ""}{lejos[1].lower()}: '
+                 f'{f"{abs(dif):.1f}".replace(".", ",")} puntos {"más" if dif > 0 else "menos"} que en España.')
+            + tabla(f'Ocupados residentes en {escape(nombre)}, la provincia de {escape(nprov)} y España por grupo de ocupación (Censo anual del INE, 2023)',
+                    ['Grupo de ocupación', escape(nombre), f'Provincia de {escape(nprov)}', 'España'], filas)
+            + f'<p class="leyenda">Fuente: INE, Censo anual de población 2023, <a href="{OCUP_INE}">ocupados por grupo de ocupación</a>, por lugar de residencia '
+              '(no de trabajo). Porcentajes sobre los ocupados cuya ocupación consta. Los grupos agregan la Clasificación Nacional de Ocupaciones: 1 a 3 (alta), 4 a 8 (media) y 9 (elemental).</p>')
 
 
 def bloque_secciones(nombre, sec):
