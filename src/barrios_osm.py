@@ -108,6 +108,13 @@ def main(cods):
                   + ', '.join(f'nivel {nv}: {len(x) / len(sec):.0%}' for nv, x in opciones.items()) + ')')
             continue
         a = opciones[nivel].rename(columns={'nombre': 'barrio'})
+        a['barrio'] = a.barrio.str.replace(r'^(Distrito|Districte) (de |del )?', '', regex=True)   # «Distrito Centro» -> «Centro»
+        if a.osm_id.value_counts(normalize=True).iloc[0] > 0.4:   # parroquias gallegas: la del casco urbano se lleva casi toda la ciudad
+            print(f'{cod}: una sola unidad reúne más del 40 % de las secciones')
+            continue
+        if a.barrio.nunique() < 4:
+            print(f'{cod}: solo {a.barrio.nunique()} barrios con secciones')
+            continue
         if a.barrio.fillna('').str.fullmatch(r'(?i)(distrito|districte|barrutia)?\s*\d+').mean() > 0.5:
             print(f'{cod}: los distritos de OSM solo tienen número, sin nombre de barrio')
             continue
