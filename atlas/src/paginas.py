@@ -620,7 +620,7 @@ def franja_portada():
     ult = [q for q in recientes() if q['revisado']][:10]
     def img(q):
         if q.get('foto'):
-            return f'<img src="atlas/img/m/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+            return f'<img src="atlas/img/m/{q["slug"]}.jpg" alt="{escape(q["foto"]["alt"])}" loading="lazy" width="300" height="200">'
         return f'<span class="sinfoto">{escape(SERIES[q["serie"]][0])}</span>'
     total = sum(1 for q in TODAS if q['revisado'])
     return ('<section class="wide del-atlas" aria-labelledby="h-del-atlas"><div class="da-cab"><h2 id="h-del-atlas"><a href="atlas/">Del Atlas de las anomalías</a></h2>'

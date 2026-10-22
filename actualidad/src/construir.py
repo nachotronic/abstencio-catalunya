@@ -2404,8 +2404,8 @@ def indice(todas, sitemap=None):
         # la ilustración propia de la pieza o, si no tiene, la miniatura de su primer gráfico
         fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
         if fo:
-            return f'<img class="ilu" src="../{fo["src"]}" alt="" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
-        return f'<img class="graf" src="../img/actualidad/{q["slug"]}.jpg" alt="" width="600" height="400" loading="lazy">'
+            return f'<img class="ilu" src="../{fo["src"]}" alt="{alt_tarjeta(q, fo)}" width="{fo["ancho"]}" height="{fo["alto"]}" loading="lazy">'
+        return f'<img class="graf" src="../img/actualidad/{q["slug"]}.jpg" alt="{alt_tarjeta(q, None)}" width="600" height="400" loading="lazy">'
     # primero la serie con la pieza más reciente
     orden = sorted(SERIES, key=lambda k: max((i for i, q in enumerate(todas) if q['serie'] == k), default=-1), reverse=True)
     items = ''.join(bloque(k) for k in orden if any(q['serie'] == k for q in todas))
@@ -2469,12 +2469,19 @@ def feed(todas, n=40):
         f'<lastBuildDate>{fecha_rss(ult)}</lastBuildDate>\n' + '\n'.join(items) + '\n</channel></rss>\n')
 
 
+def alt_tarjeta(q, fo):
+    # texto alternativo de las miniaturas: el pie de la ilustración o, si no hay, de qué pieza es el gráfico
+    if fo and fo.get('pie'):
+        return html.escape(fo['pie'])
+    return html.escape(f'Gráfico de la pieza «{q["titulo"]}»')
+
+
 def imagen_carrusel(q, pre):
     # la ilustración de la pieza (o la de su serie) entera, sin recortar; si no hay, la miniatura del gráfico
     fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
     if fo:
-        return f'<img class="ilu" src="{pre}{fo["src"]}" alt="" loading="lazy" width="300" height="200">'
-    return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="" loading="lazy" width="300" height="200">'
+        return f'<img class="ilu" src="{pre}{fo["src"]}" alt="{alt_tarjeta(q, fo)}" loading="lazy" width="300" height="200">'
+    return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="{alt_tarjeta(q, None)}" loading="lazy" width="300" height="200">'
 
 
 def franja_portada(todas, pre=''):
