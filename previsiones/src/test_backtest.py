@@ -30,7 +30,7 @@ class TestCentral(unittest.TestCase):
         self.assertTrue((c.sum(1) <= 1).all())
 
     def test_lista_que_no_se_presenta_queda_a_cero(self):
-        for metodo in B.METODOS:
+        for metodo in ('metas', 'tope', 'aditivo'):   # «repetir» copia las generales anteriores tal cual
             c = B.central(self.R, 'A', None, self.obj, metodo)
             self.assertEqual(c[:, B.LISTAS.index('CS')].sum(), 0)
 

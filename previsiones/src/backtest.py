@@ -44,7 +44,9 @@ PRUEBAS = [
     ('2023_07', '2019_11', None, date(2023, 7, 23), ESCANOS_2023, '2019-11-10'),
 ]
 HORIZONTES = [5, 38]
-METODOS = ['metas', 'tope']   # el nuevo y el del motor v1, para comparar
+# «metas» es el motor; «tope», el motor v1; «aditivo» y «repetir», los modelos de referencia que hay que batir:
+# subida uniforme en puntos (la misma suma o resta en todas las provincias) y repetir las generales anteriores.
+METODOS = ['metas', 'tope', 'aditivo', 'repetir']
 ALFA, SIGMA_PROV, SIGMA_MAX, N_SIM, SEMILLA = 0.5, 0.08, 0.30, 2000, 20261129
 
 
@@ -64,6 +66,15 @@ def central(R, ant, euro, objetivo, metodo):
     provs = R[ant].index
     c = cuotas(R[ant]).values.copy()
     validos = R[ant].validos.values.astype(float)
+    peso = validos / validos.sum()
+    if metodo == 'repetir':
+        return c
+    if metodo == 'aditivo':   # sin señal de las europeas: la referencia más sencilla con encuestas
+        for k, t in objetivo.items():
+            j = LISTAS.index(k)
+            c[:, j] = np.maximum(c[:, j] + t - (c[:, j] * peso).sum(), 0) if t > 0 else 0
+        fila = c.sum(1, keepdims=True)
+        return np.where(fila > 0.985, c / fila * 0.985, c)
     if euro:
         for k in CON_SENAL:
             rel = []
@@ -72,7 +83,6 @@ def central(R, ant, euro, objetivo, metodo):
                 rel.append((x[k] / x.validos) / (x[k].sum() / x.validos.sum()))
             ok = (rel[0] > 0) & (rel[1] > 0)
             c[:, LISTAS.index(k)] *= np.where(ok, (rel[0] / rel[1].where(ok, 1)) ** ALFA, 1)
-    peso = validos / validos.sum()
     if metodo == 'tope':   # motor v1: subida proporcional con tope de 98,5 % por provincia
         for _ in range(50):
             for k, t in objetivo.items():
@@ -151,7 +161,17 @@ def evalua(nombre, c, sims, esc, R, obj, escanos, objetivo):
         'cobertura80_provincia': round(float(((pq10 <= esc_real) & (esc_real <= pq90))[(esc_real > 0) | (pq90 > 0)].mean()), 3),
         'primera_fuerza_acierto': round(acierto_1a, 3),
         'primera_fuerza_brier': round(float(((gana - gano) ** 2).sum(1).mean()), 3),
+        # CRPS de los escaños de cada lista en España (en escaños; menor es mejor), sumado sobre las listas: premia
+        # acertar la mediana y castiga tanto el intervalo demasiado estrecho como el demasiado ancho
+        'crps_escanos': round(float(sum(crps(tot[:, j], tot_real[j]) for j in presentes)), 1),
     }
+
+
+def crps(muestra, y):
+    x = np.sort(muestra.astype(float))
+    n = len(x)
+    # E|X − y| − ½ E|X − X'|, con la fórmula de la muestra ordenada para E|X − X'|
+    return np.abs(x - y).mean() - (2 * np.arange(1, n + 1) - n - 1).dot(x) / n ** 2
 
 
 def main():
@@ -189,6 +209,9 @@ def main():
             print(obj, nombre, metodo, {k: v for k, v in r.items() if k not in ('voto_nacional', 'escanos')})
             print('   ', {k: (v['mediana'], v['intervalo80'], v['real']) for k, v in r['escanos'].items()})
     (SALIDA / 'backtest.json').write_text(json.dumps(out, ensure_ascii=False, indent=1))
+    t = pd.DataFrame(out)
+    print('\nEscaños mal puestos en España y CRPS (menor es mejor):')
+    print(t.pivot_table(index=['prueba', 'metodo'], columns='objetivo', values=['error_escanos_total', 'crps_escanos']).to_string())
     print('Escrito en', SALIDA)
 
 

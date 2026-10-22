@@ -98,3 +98,7 @@ La señal que funciona es la fuerza relativa de cada territorio en las europeas 
 ## 12. Sesgo de las encuestadoras y errores entre partidos (22/10/2026)
 
 `src/sesgo_encuestas.py`: el efecto de cada casa (sus encuestas del último año frente a la media de las demás, encogido) es grande en el CIS (PP −6,6 y PSOE +4,8 puntos), pero corregirlo no baja el error fuera de muestra (c a 38 días 0,845 → 0,841) y apenas cambia la media de hoy (PP 31,2 → 31,0). Restar el sesgo medio del sector en elecciones anteriores tampoco (0,838). No se corrige nada. Los errores entre partidos en 25 elecciones (PP-Vox −0,39, PSOE-Vox −0,30, PP-PSOE −0,23) ya los reproduce el motor por cómo reparte el error (−0,40, −0,35, −0,49); error del bloque PP + Vox 3,9 puntos frente a 4,1 observado. Sin cambios en el motor.
+
+## 13. Modelos de referencia y preregistro (22/10/2026)
+
+El backtest compara el motor con «repetir» (generales anteriores) y «aditivo» (misma subida en puntos en todas las provincias). A 38 días, escaños mal puestos: repetir 49 y 52, aditivo 36 y 28, motor 34 y 27 (10N-2019 y 23J-2023); CRPS de escaños 54,7 y 40,3 frente a 55,9 y 40,8 del aditivo. El motor gana a las dos, a la aditiva por poco. `PREREGISTRO.md` (borrador) fija modelo, calendario, métricas y referencias para evaluar el 29N; queda pendiente del visto bueno de Nacho.
