@@ -113,6 +113,22 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/escanos-en-el-filo-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>Seis escaños que se decidieron por menos de mil votantes</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/voto-jubilados-secciones-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>Vox nunca ha llegado al 12% en los barrios de jubilados</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/psoe-cinco-barrios-ceuta/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -212,7 +228,7 @@
     <loc>https://mapaelectoral.es/actualidad/municipios-izquierda-1977-derecha-2023/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
+      <news:publication_date>2026-10-20</news:publication_date>
       <news:title>Con el PSOE andaluz en mínimos: Sevilla, Jerez y otros 170 municipios que votaron a la izquierda en todas las generales de 1977 a 2008 dieron en 2023 más votos a PP y Vox</news:title>
     </news:news>
   </url>
@@ -220,7 +236,7 @@
     <loc>https://mapaelectoral.es/actualidad/calle-que-parte-madrid/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-24</news:publication_date>
+      <news:publication_date>2026-10-21</news:publication_date>
       <news:title>A cinco semanas del 29N: en la calle de los Hermanos García Noblejas, en Madrid, PP y PSOE se cambian de acera 12 veces, y el PP siempre gana en el lado con más renta</news:title>
     </news:news>
   </url>
@@ -228,7 +244,7 @@
     <loc>https://mapaelectoral.es/actualidad/barrios-pobres-derecha-ricos-izquierda/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-22</news:publication_date>
+      <news:publication_date>2026-10-20</news:publication_date>
       <news:title>Vox busca el voto de los barrios obreros: en la Región de Murcia, nueve de cada diez secciones pobres ya votan más a PP y Vox que a PSOE y Sumar</news:title>
     </news:news>
   </url>

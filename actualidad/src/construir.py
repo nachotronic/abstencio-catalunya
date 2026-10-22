@@ -1269,6 +1269,51 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/voto-autonomos-secciones-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una mujer con delantal hace cuentas con una calculadora y un libro junto a una urna, ante una persiana de comercio.'),
     ),
+    dict(
+        slug='escanos-en-el-filo-29n', fecha='2026-10-22',
+        titulo='Seis escaños que se decidieron por menos de mil votantes', serie='29n',
+        descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de Cantabria, Girona, Tarragona, Ceuta, Salamanca y Albacete habría cambiado de partido si menos de mil personas hubieran cambiado su voto. En Cantabria bastaban 101. Con menos de 5.000, hay 32 escaños en el filo.',
+        compara='Para cada una de las 52 circunscripciones, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de las generales de julio de 2023 (voto exterior incluido) y los escaños por provincia de 2026; y cuántos votantes tendrían que pasar de una a otra, cuántos votos nuevos necesitaría la aspirante y cuántos podría perder la ganadora para que el escaño cambiara de partido.',
+        limites='Es aritmética sobre el resultado de 2023, no una previsión del 29 de noviembre. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. Reparto D\'Hondt con barrera del 3% y desempate por más votos; las candidaturas agrupadas como «otros» no compiten.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados definitivos de las generales de julio de 2023 por provincia'),
+                 ('https://www.articulo14.es/politica/el-boe-lo-hace-oficial-asi-es-el-decreto-que-convoca-las-elecciones-generales-del-29n-20261006.html', 'Artículo 14, El BOE lo hace oficial: así es el decreto que convoca las generales del 29N (6-10-2026)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985, del Régimen Electoral General, artículo 163'),
+                 ('https://theobjective.com/espana/politica/2023-07-28/vox-diputado-cantabria-voto-cera/', 'Europa Press en The Objective, Vox mantiene su escaño en Cantabria tras el voto CERA (28-7-2023)'),
+                 ('https://theobjective.com/espana/politica/2023-07-28/pp-escano-madrid-sanchez-puigdemont/', 'The Objective, El voto CERA da al PP un escaño más en Madrid (28-7-2023)'),
+                 ('https://www.menorca.info/actualidad/elecciones-23j/2023/07/28/1985413/resultados-elecciones-generales-punto-quitar-psoe-escano-por-madrid.html', 'EFE en Menorca.info, El PP quita al PSOE un escaño por Madrid (28-7-2023)'),
+                 ('https://maldita.es/malditobulo/20230927/directo-investidura-feijoo-datos-contexto', 'Maldita, investidura de Feijóo (27-9-2023)'),
+                 ('https://www.ehu.eus/es/web/campusa/-/el-reparto-de-los-escanos-en-el-congreso', 'Annick Laruelle, El reparto de los escaños en el Congreso, Campusa, UPV/EHU (24-5-2019)'),
+                 ('https://www.elindependiente.com/espana/2026/10/14/abascal-15-provincias-clave-crecimiento-vox-desgaste-psoe-division-izquierda/', 'El Independiente, Las provincias clave de Abascal (14-10-2026)'),
+                 ('https://www.eldebate.com/espana/20261020/mapa-provincias-donde-ley-nietos-puede-dar-escanos-psoe-elecciones-generales-cns_471397.html', 'El Debate, El mapa de las provincias donde la ley de nietos puede dar más escaños al PSOE (20-10-2026)'),
+                 ('https://www.democrata.es/elecciones-generales-espana/auge-vox-costa-pp-pone-en-juego-ultimos-escanos-en-provincias-pequenas/', 'Demócrata, El auge de Vox a costa del PP pone en juego últimos escaños en provincias pequeñas (8-10-2026)'),
+                 ('https://orain.eus/es/politica/elecciones/elecciones-generales/2019/05/01/el-voto-alaveses-residentes-extranjero-confirma-escano-eh-bildu-/', 'EITB, El voto de los alaveses en el extranjero confirma el escaño de EH Bildu (1-5-2019)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/escanos-en-el-filo-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Votantes que tendrían que cambiar de papeleta para que el último escaño de cada provincia cambiara de partido, en las ocho provincias más ajustadas de las generales de 2023.',
+                  fuente='Ministerio del Interior y Real Decreto 806/2026. Cálculo propio'),
+    ),
+    dict(
+        slug='voto-jubilados-secciones-29n', fecha='2026-10-22',
+        titulo='Vox nunca ha llegado al 12% en los barrios de jubilados', serie='29n',
+        descripcion='En la quinta parte de las secciones con más pensionistas, Vox sacó el 9,5% en 2023 y no pasó del 11,6% ni en su mejor año; donde menos hay, llegó al 20,5%. El PP gana esos barrios en 40 de 51 provincias. El PSOE, en Sevilla, Huelva, Cáceres y Cataluña.',
+        compara='El porcentaje de residentes de 16 años o más que cobran una pensión de incapacidad, jubilación o prejubilación en cada una de las 34.257 secciones censales (Censo anual 2023) con el voto de cada sección en las generales de 2015 a 2023, en cinco grupos con el mismo número de votantes; con la misma proporción de mayores de 65 años; por provincia; y el recuerdo de voto de jubilados y trabajadores en la encuesta postelectoral del CIS.',
+        limites='Son datos por sección, no por persona: no dicen cómo vota cada pensionista. El censo cuenta a la gente donde vive. La categoría del INE es la de perceptores de pensión de incapacidad, jubilación o prejubilación y no menciona las de viudedad. Al separar la edad y la provincia, la diferencia del PP entre secciones con más y menos pensionistas se queda en torno a un punto. Las elecciones de 2015 a 2019 solo se comparan en secciones con el mismo código. Se excluye Santa Cruz de Tenerife, donde Vox no presentó lista en 2023. En la encuesta del CIS, el recuerdo de voto favorece al PSOE frente al resultado real.',
+        fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=66594', 'INE, Censo anual de población, población de 16 y más años por relación con la actividad y sección censal'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2015 a 2023 por sección'),
+                 ('https://www.cis.es/en/surveys/barometro-de-septiembre-2023.-postelectoral-elecciones-generales-2023', 'CIS, estudio 3420, Barómetro de septiembre de 2023, postelectoral de las generales'),
+                 ('https://www.que.es/2026/10/19/recortes-pensiones-pp-vox-29n/', 'Qué!, Los recortes de pensiones que PP y Vox abren en campaña (19-10-2026)'),
+                 ('https://www.eldiario.es/politica/pp-patina-pensiones-precampana-29n_1_13586089.html', 'elDiario.es, El PP patina con las pensiones en la precampaña del 29N (14-10-2026)'),
+                 ('https://www.democrata.es/elecciones-generales-espana/abascal-promete-pagar-pensiones-y-garantizar-vivienda-como-sea-y-refuerza-su-llamamiento-al-voto-presencial/', 'Demócrata, Abascal promete pagar pensiones y garantizar vivienda «como sea» (11-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-07/saiz-revalorizacion-pensiones-pp-vox/', 'Europa Press en The Objective, Saiz y la revalorización de las pensiones (7-10-2026)'),
+                 ('https://www.articulo14.es/economia/el-voto-del-miedo-los-ingresos-de-casi-la-mitad-del-censo-depende-del-gobierno-20261013.html', 'Artículo 14, El voto del miedo (13-10-2026)'),
+                 ('https://documentos.fedea.net/pubs/fpp/2023/06/FPP2023-03.pdf', 'José Ignacio Conde-Ruiz y Vincenzo Galasso, Efectos económicos de la demografía política, Fedea Policy Paper 2023/03 (junio de 2023)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/voto-jubilados-secciones-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Voto a Vox en el quinto de secciones con más pensionistas y en el quinto con menos, generales de 2015 a 2023.',
+                  fuente='INE, Censo anual 2023, y Ministerio del Interior'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1760,7 +1805,7 @@ PIEZAS += [
                   pie='Un bloque de pisos, una declaración de la renta, monedas, una madre con su hijo, un pensionista, el mapa de España y una urna: un collage.'),
     ),
     dict(
-        slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-23',
+        slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-20',
         titulo='Con el PSOE andaluz en mínimos: Sevilla, Jerez y otros 170 municipios que votaron a la izquierda en todas las generales de 1977 a 2008 dieron en 2023 más votos a PP y Vox', serie='29n',
         descripcion='En 172 municipios con 2,23 millones de electores, la izquierda estatal sumó más que la derecha en las diez generales de 1977 a 2008 y en 2023 fue al revés: Sevilla, Jerez, Móstoles, Algeciras, Chiclana. 115 cambiaron en 2011. El camino contrario lo han hecho 147, casi todos pequeños.',
         compara='Los 7.845 municipios con datos de las 16 elecciones generales de 1977 a 2023, con el voto sumado en dos bloques: izquierda estatal (PSOE y PCE, IU, Podemos o Sumar) y derecha estatal (UCD, CDS, AP y PP, Ciudadanos, UPyD y Vox). Feudo: un bloque suma más en las diez generales de 1977 a 2008. Vuelco: el otro bloque suma más en 2023.',
@@ -1779,7 +1824,7 @@ PIEZAS += [
                   fuente='Ministerio del Interior'),
     ),
     dict(
-        slug='calle-que-parte-madrid', fecha='2026-10-24',
+        slug='calle-que-parte-madrid', fecha='2026-10-21',
         titulo='A cinco semanas del 29N: en la calle de los Hermanos García Noblejas, en Madrid, PP y PSOE se cambian de acera 12 veces, y el PP siempre gana en el lado con más renta', serie='29n',
         descripcion='En Madrid, una de cada cinco parejas de secciones censales vecinas eligió un ganador distinto en 2023. Las calles donde más se repite son Hermanos García Noblejas, General Ricardos, la avenida de las Águilas y Hacienda de Pavones. En Sinesio Delgado, entre Tetuán y Fuencarral, el salto llega a 27 puntos.',
         compara='Las 6.112 parejas de secciones censales contiguas de la ciudad de Madrid (al menos 80 metros de límite común y 400 electores cada una) en las generales de 2023, con la calle que las separa y su renta por unidad de consumo de 2023.',
@@ -1801,7 +1846,7 @@ PIEZAS += [
                   fuente='Ministerio del Interior; callejero © OpenStreetMap'),
     ),
     dict(
-        slug='barrios-pobres-derecha-ricos-izquierda', fecha='2026-10-22',
+        slug='barrios-pobres-derecha-ricos-izquierda', fecha='2026-10-20',
         titulo='Vox busca el voto de los barrios obreros: en la Región de Murcia, nueve de cada diez secciones pobres ya votan más a PP y Vox que a PSOE y Sumar', serie='29n',
         descripcion='De las 3.289 secciones más pobres de España, 1.089 votaron más a PP y Vox en 2023, sobre todo en Murcia, Almería y Alicante. De las 3.290 más ricas, 924 votaron más a PSOE y Sumar: casi todas en Cataluña y el País Vasco, y un centenar en el centro de Madrid.',
         compara='Las 32.900 secciones censales con al menos 300 electores y dato de renta en las generales de 2023, agrupadas en diez tramos de igual tamaño según la renta media por unidad de consumo. Se comparan dos bloques: PP y Vox frente a PSOE y Sumar. Excepciones: secciones del tramo más pobre donde PP y Vox suman más, y del más rico donde PSOE y Sumar suman más; por provincias y, dentro de las 65 ciudades de al menos 75.000 electores, con los tramos de cada ciudad.',
@@ -1827,6 +1872,8 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'escanos-en-el-filo-29n': 'La aritmética del último escaño',
+    'voto-jubilados-secciones-29n': 'El voto que no se mueve',
     'voto-autonomos-secciones-29n': 'La persiana y la urna',
     'ley-nietos-donde-estan-29n': 'Nietos sin papeleta',
     'pensiones-revalorizacion-29n': 'Dos Españas jubiladas',
@@ -2286,6 +2333,10 @@ NOMES_ENLLACADES = {'girona'}
 PUBLICAS = [p for p in PIEZAS if p['serie'] not in NOMES_ENLLACADES]
 
 if __name__ == '__main__':
+    # Una fecha futura deja la pieza fija arriba del carrusel durante días (Nacho, 22-10-2026): la fecha es la de publicación
+    futuras = [p['slug'] for p in PIEZAS if p['fecha'] > datetime.date.today().isoformat()]
+    if futuras:
+        sys.exit('Piezas con fecha futura (pon la fecha real de publicación): ' + ', '.join(futuras))
     for p in PIEZAS:
         pieza(p, PIEZAS if p['serie'] in NOMES_ENLLACADES else PUBLICAS)
     indice(PUBLICAS, PIEZAS)
