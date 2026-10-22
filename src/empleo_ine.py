@@ -10,6 +10,7 @@ SALIDA = Path(__file__).resolve().parent.parent / 'data' / 'empleo'
 URL = 'https://www.ine.es/jaxiT3/files/t/csv_bdsc/{}.csv'
 TABLAS = {'secciones': 70005,      # todas las secciones y municipios, 4 sectores
           'mun_500': 69992,        # municipios de 500 hab. o más, secciones A-U de la CNAE-2009
+          'situacion': 70006,      # todas las secciones y municipios, cuenta propia / ajena
           'lugar_trabajo': 69987}  # capitales y principales ciudades, por lugar de trabajo
 
 SECTORES = {'Total CNAE': 'ocupados', 'Agricultura, ganadería y pesca': 'agricultura',
@@ -39,6 +40,14 @@ def ancho(d, clave, col, nombres):
     d = d.assign(v=d[col].map(nombres))
     t = d.pivot_table(index=[clave, 'anyo'], columns='v', values='Total', aggfunc='first')
     return t[[c for c in nombres.values() if c in t]].reset_index()
+
+
+def cuenta_propia(d, clave):
+    """Ocupados por cuenta propia (autónomos, empleadores, miembros de cooperativas…), por sección o municipio."""
+    d = d[d['Situación profesional'] == 'Trabajador por cuenta propia']
+    d = d[d['Secciones'].notna()] if clave == 'seccion' else d[d['Municipios'].notna() & d['Secciones'].isna()]
+    d = d.assign(**{clave: (d['Secciones'].str[:10] if clave == 'seccion' else d['Municipios'].str[:5])})
+    return d[[clave, 'anyo', 'Total']].rename(columns={'Total': 'cuenta_propia'})
 
 
 def secciones(d):
@@ -74,9 +83,12 @@ if __name__ == '__main__':
     carpeta.mkdir(parents=True, exist_ok=True)
     SALIDA.mkdir(parents=True, exist_ok=True)
     base = leer(carpeta, TABLAS['secciones'])
-    s = secciones(base)
+    sit = leer(carpeta, TABLAS['situacion'])
+    s = secciones(base).merge(cuenta_propia(sit, 'seccion'), on=['seccion', 'anyo'], how='left')
     s.to_csv(SALIDA / 'empleo_sector_secciones.csv.gz', index=False, float_format='%.0f')
     m = municipios(base, leer(carpeta, TABLAS['mun_500']))
+    m = m.merge(cuenta_propia(sit, 'mun_code'), on=['mun_code', 'anyo'], how='left')
+    m = m[[*m.columns[:9], 'cuenta_propia', *[c for c in m.columns[9:] if c != 'cuenta_propia']]]
     m.to_csv(SALIDA / 'empleo_sector_municipios.csv', index=False, float_format='%.0f')
     lt = lugar_trabajo(leer(carpeta, TABLAS['lugar_trabajo']))
     lt.to_csv(SALIDA / 'lugar_trabajo_ciudades.csv', index=False, float_format='%.0f')
