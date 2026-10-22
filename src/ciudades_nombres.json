@@ -1,0 +1,12534 @@
+{
+"01001": [
+"Alegría-Dulantzi",
+"01"
+],
+"01002": [
+"Amurrio",
+"01"
+],
+"01003": [
+"Aramaio",
+"01"
+],
+"01004": [
+"Artziniega",
+"01"
+],
+"01008": [
+"Arratzua-Ubarrundia",
+"01"
+],
+"01009": [
+"Asparrena",
+"01"
+],
+"01010": [
+"Ayala/Aiara",
+"01"
+],
+"01017": [
+"Campezo/Kanpezu",
+"01"
+],
+"01018": [
+"Zigoitia",
+"01"
+],
+"01028": [
+"Labastida/Bastida",
+"01"
+],
+"01031": [
+"Laguardia",
+"01"
+],
+"01036": [
+"Laudio/Llodio",
+"01"
+],
+"01042": [
+"Okondo",
+"01"
+],
+"01043": [
+"Oyón-Oion",
+"01"
+],
+"01047": [
+"Erriberabeitia",
+"01"
+],
+"01051": [
+"Agurain/Salvatierra",
+"01"
+],
+"01054": [
+"Urkabustaiz",
+"01"
+],
+"01055": [
+"Valdegovía/Gaubea",
+"01"
+],
+"01058": [
+"Legutio",
+"01"
+],
+"01059": [
+"Vitoria-Gasteiz",
+"01"
+],
+"01063": [
+"Zuia",
+"01"
+],
+"01901": [
+"Iruña Oka/Iruña de Oca",
+"01"
+],
+"02003": [
+"Albacete",
+"02"
+],
+"02007": [
+"Alcalá del Júcar",
+"02"
+],
+"02008": [
+"Alcaraz",
+"02"
+],
+"02009": [
+"Almansa",
+"02"
+],
+"02010": [
+"Alpera",
+"02"
+],
+"02012": [
+"Balazote",
+"02"
+],
+"02015": [
+"Barrax",
+"02"
+],
+"02019": [
+"El Bonillo",
+"02"
+],
+"02021": [
+"Casas de Juan Núñez",
+"02"
+],
+"02024": [
+"Casas-Ibáñez",
+"02"
+],
+"02025": [
+"Caudete",
+"02"
+],
+"02026": [
+"Cenizate",
+"02"
+],
+"02029": [
+"Chinchilla de Monte-Aragón",
+"02"
+],
+"02030": [
+"Elche de la Sierra",
+"02"
+],
+"02033": [
+"Fuente-Álamo",
+"02"
+],
+"02034": [
+"Fuentealbilla",
+"02"
+],
+"02035": [
+"La Gineta",
+"02"
+],
+"02037": [
+"Hellín",
+"02"
+],
+"02039": [
+"Higueruela",
+"02"
+],
+"02043": [
+"Lezuza",
+"02"
+],
+"02044": [
+"Liétor",
+"02"
+],
+"02045": [
+"Madrigueras",
+"02"
+],
+"02046": [
+"Mahora",
+"02"
+],
+"02048": [
+"Minaya",
+"02"
+],
+"02051": [
+"Montealegre del Castillo",
+"02"
+],
+"02053": [
+"Munera",
+"02"
+],
+"02055": [
+"Nerpio",
+"02"
+],
+"02056": [
+"Ontur",
+"02"
+],
+"02057": [
+"Ossa de Montiel",
+"02"
+],
+"02060": [
+"Peñas de San Pedro",
+"02"
+],
+"02063": [
+"Pozohondo",
+"02"
+],
+"02067": [
+"Riópar",
+"02"
+],
+"02069": [
+"La Roda",
+"02"
+],
+"02071": [
+"San Pedro",
+"02"
+],
+"02072": [
+"Socovos",
+"02"
+],
+"02073": [
+"Tarazona de la Mancha",
+"02"
+],
+"02074": [
+"Tobarra",
+"02"
+],
+"02075": [
+"Valdeganga",
+"02"
+],
+"02078": [
+"Villalgordo del Júcar",
+"02"
+],
+"02079": [
+"Villamalea",
+"02"
+],
+"02081": [
+"Villarrobledo",
+"02"
+],
+"02086": [
+"Yeste",
+"02"
+],
+"02901": [
+"Pozo Cañada",
+"02"
+],
+"03002": [
+"Agost",
+"03"
+],
+"03004": [
+"Aigües",
+"03"
+],
+"03005": [
+"Albatera",
+"03"
+],
+"03006": [
+"Alcalalí",
+"03"
+],
+"03009": [
+"Alcoi/Alcoy",
+"03"
+],
+"03011": [
+"L'Alfàs del Pi",
+"03"
+],
+"03012": [
+"Algorfa",
+"03"
+],
+"03013": [
+"Algueña",
+"03"
+],
+"03014": [
+"Alacant/Alicante",
+"03"
+],
+"03015": [
+"Almoradí",
+"03"
+],
+"03018": [
+"Altea",
+"03"
+],
+"03019": [
+"Aspe",
+"03"
+],
+"03021": [
+"Banyeres de Mariola",
+"03"
+],
+"03023": [
+"Beneixama",
+"03"
+],
+"03024": [
+"Benejúzar",
+"03"
+],
+"03025": [
+"Benferri",
+"03"
+],
+"03026": [
+"Beniarbeig",
+"03"
+],
+"03028": [
+"Beniarrés",
+"03"
+],
+"03030": [
+"Benidoleig",
+"03"
+],
+"03031": [
+"Benidorm",
+"03"
+],
+"03034": [
+"Benijófar",
+"03"
+],
+"03041": [
+"Benissa",
+"03"
+],
+"03042": [
+"El Poble Nou de Benitatxell/Benitachell",
+"03"
+],
+"03043": [
+"Biar",
+"03"
+],
+"03044": [
+"Bigastro",
+"03"
+],
+"03046": [
+"Busot",
+"03"
+],
+"03047": [
+"Calp",
+"03"
+],
+"03048": [
+"Callosa d'en Sarrià",
+"03"
+],
+"03049": [
+"Callosa de Segura",
+"03"
+],
+"03050": [
+"El Campello",
+"03"
+],
+"03052": [
+"Cañada",
+"03"
+],
+"03053": [
+"Castalla",
+"03"
+],
+"03055": [
+"Catral",
+"03"
+],
+"03056": [
+"Cocentaina",
+"03"
+],
+"03058": [
+"Cox",
+"03"
+],
+"03059": [
+"Crevillent",
+"03"
+],
+"03061": [
+"Daya Nueva",
+"03"
+],
+"03063": [
+"Dénia",
+"03"
+],
+"03064": [
+"Dolores",
+"03"
+],
+"03065": [
+"Elx/Elche",
+"03"
+],
+"03066": [
+"Elda",
+"03"
+],
+"03069": [
+"Finestrat",
+"03"
+],
+"03070": [
+"Formentera del Segura",
+"03"
+],
+"03071": [
+"Gata de Gorgos",
+"03"
+],
+"03074": [
+"Granja de Rocamora",
+"03"
+],
+"03076": [
+"Guardamar del Segura",
+"03"
+],
+"03077": [
+"El Fondó de les Neus/Hondón de las Nieves",
+"03"
+],
+"03078": [
+"Hondón de los Frailes",
+"03"
+],
+"03079": [
+"Ibi",
+"03"
+],
+"03080": [
+"Jacarilla",
+"03"
+],
+"03081": [
+"Xaló",
+"03"
+],
+"03082": [
+"Xàbia/Jávea",
+"03"
+],
+"03083": [
+"Xixona/Jijona",
+"03"
+],
+"03088": [
+"Monforte del Cid",
+"03"
+],
+"03089": [
+"Monòver/Monóvar",
+"03"
+],
+"03090": [
+"Mutxamel",
+"03"
+],
+"03092": [
+"Muro de Alcoy",
+"03"
+],
+"03093": [
+"Novelda",
+"03"
+],
+"03094": [
+"La Nucia",
+"03"
+],
+"03095": [
+"Ondara",
+"03"
+],
+"03096": [
+"Onil",
+"03"
+],
+"03097": [
+"Orba",
+"03"
+],
+"03099": [
+"Orihuela",
+"03"
+],
+"03100": [
+"Parcent",
+"03"
+],
+"03101": [
+"Pedreguer",
+"03"
+],
+"03102": [
+"Pego",
+"03"
+],
+"03104": [
+"Petrer",
+"03"
+],
+"03105": [
+"El Pinós/Pinoso",
+"03"
+],
+"03107": [
+"Polop",
+"03"
+],
+"03109": [
+"Rafal",
+"03"
+],
+"03111": [
+"Redován",
+"03"
+],
+"03112": [
+"Relleu",
+"03"
+],
+"03113": [
+"Rojales",
+"03"
+],
+"03114": [
+"La Romana",
+"03"
+],
+"03116": [
+"Salinas",
+"03"
+],
+"03118": [
+"San Fulgencio",
+"03"
+],
+"03119": [
+"Sant Joan d'Alacant",
+"03"
+],
+"03120": [
+"San Miguel de Salinas",
+"03"
+],
+"03121": [
+"Santa Pola",
+"03"
+],
+"03122": [
+"Sant Vicent del Raspeig/San Vicente del Raspeig",
+"03"
+],
+"03123": [
+"Sax",
+"03"
+],
+"03128": [
+"Teulada",
+"03"
+],
+"03129": [
+"Tibi",
+"03"
+],
+"03133": [
+"Torrevieja",
+"03"
+],
+"03138": [
+"El Verger",
+"03"
+],
+"03139": [
+"La Vila Joiosa/Villajoyosa",
+"03"
+],
+"03140": [
+"Villena",
+"03"
+],
+"03901": [
+"Els Poblets",
+"03"
+],
+"03902": [
+"Pilar de la Horadada",
+"03"
+],
+"03903": [
+"Los Montesinos",
+"03"
+],
+"03904": [
+"San Isidro",
+"03"
+],
+"04001": [
+"Abla",
+"04"
+],
+"04002": [
+"Abrucena",
+"04"
+],
+"04003": [
+"Adra",
+"04"
+],
+"04006": [
+"Albox",
+"04"
+],
+"04011": [
+"Alhama de Almería",
+"04"
+],
+"04013": [
+"Almería",
+"04"
+],
+"04016": [
+"Antas",
+"04"
+],
+"04017": [
+"Arboleas",
+"04"
+],
+"04024": [
+"Benahadux",
+"04"
+],
+"04029": [
+"Berja",
+"04"
+],
+"04030": [
+"Canjáyar",
+"04"
+],
+"04031": [
+"Cantoria",
+"04"
+],
+"04032": [
+"Carboneras",
+"04"
+],
+"04035": [
+"Cuevas del Almanzora",
+"04"
+],
+"04037": [
+"Chirivel",
+"04"
+],
+"04038": [
+"Dalías",
+"04"
+],
+"04044": [
+"Fines",
+"04"
+],
+"04045": [
+"Fiñana",
+"04"
+],
+"04046": [
+"Fondón",
+"04"
+],
+"04047": [
+"Gádor",
+"04"
+],
+"04048": [
+"Los Gallardos",
+"04"
+],
+"04049": [
+"Garrucha",
+"04"
+],
+"04050": [
+"Gérgal",
+"04"
+],
+"04052": [
+"Huércal de Almería",
+"04"
+],
+"04053": [
+"Huércal-Overa",
+"04"
+],
+"04057": [
+"Láujar de Andarax",
+"04"
+],
+"04059": [
+"Lubrín",
+"04"
+],
+"04062": [
+"Macael",
+"04"
+],
+"04063": [
+"María",
+"04"
+],
+"04064": [
+"Mojácar",
+"04"
+],
+"04066": [
+"Níjar",
+"04"
+],
+"04069": [
+"Olula del Río",
+"04"
+],
+"04070": [
+"Oria",
+"04"
+],
+"04074": [
+"Pechina",
+"04"
+],
+"04075": [
+"Pulpí",
+"04"
+],
+"04076": [
+"Purchena",
+"04"
+],
+"04078": [
+"Rioja",
+"04"
+],
+"04079": [
+"Roquetas de Mar",
+"04"
+],
+"04083": [
+"Serón",
+"04"
+],
+"04086": [
+"Sorbas",
+"04"
+],
+"04088": [
+"Tabernas",
+"04"
+],
+"04092": [
+"Tíjola",
+"04"
+],
+"04093": [
+"Turre",
+"04"
+],
+"04098": [
+"Vélez-Blanco",
+"04"
+],
+"04099": [
+"Vélez-Rubio",
+"04"
+],
+"04100": [
+"Vera",
+"04"
+],
+"04101": [
+"Viator",
+"04"
+],
+"04102": [
+"Vícar",
+"04"
+],
+"04103": [
+"Zurgena",
+"04"
+],
+"04902": [
+"El Ejido",
+"04"
+],
+"04903": [
+"La Mojonera",
+"04"
+],
+"04904": [
+"Balanegra",
+"04"
+],
+"05002": [
+"La Adrada",
+"05"
+],
+"05014": [
+"Arenas de San Pedro",
+"05"
+],
+"05016": [
+"Arévalo",
+"05"
+],
+"05019": [
+"Ávila",
+"05"
+],
+"05021": [
+"El Barco de Ávila",
+"05"
+],
+"05022": [
+"El Barraco",
+"05"
+],
+"05041": [
+"Burgohondo",
+"05"
+],
+"05047": [
+"Candeleda",
+"05"
+],
+"05054": [
+"Casavieja",
+"05"
+],
+"05057": [
+"Cebreros",
+"05"
+],
+"05102": [
+"El Hoyo de Pinares",
+"05"
+],
+"05114": [
+"Madrigal de las Altas Torres",
+"05"
+],
+"05163": [
+"Navaluenga",
+"05"
+],
+"05168": [
+"Las Navas del Marqués",
+"05"
+],
+"05186": [
+"Piedrahíta",
+"05"
+],
+"05187": [
+"Piedralaves",
+"05"
+],
+"05240": [
+"Sotillo de la Adrada",
+"05"
+],
+"05241": [
+"El Tiemblo",
+"05"
+],
+"06002": [
+"Aceuchal",
+"06"
+],
+"06004": [
+"Alange",
+"06"
+],
+"06005": [
+"La Albuera",
+"06"
+],
+"06006": [
+"Alburquerque",
+"06"
+],
+"06007": [
+"Alconchel",
+"06"
+],
+"06010": [
+"Almendral",
+"06"
+],
+"06011": [
+"Almendralejo",
+"06"
+],
+"06012": [
+"Arroyo de San Serván",
+"06"
+],
+"06014": [
+"Azuaga",
+"06"
+],
+"06015": [
+"Badajoz",
+"06"
+],
+"06016": [
+"Barcarrota",
+"06"
+],
+"06019": [
+"Berlanga",
+"06"
+],
+"06020": [
+"Bienvenida",
+"06"
+],
+"06022": [
+"Burguillos del Cerro",
+"06"
+],
+"06023": [
+"Cabeza del Buey",
+"06"
+],
+"06024": [
+"Cabeza la Vaca",
+"06"
+],
+"06025": [
+"Calamonte",
+"06"
+],
+"06028": [
+"Campanario",
+"06"
+],
+"06029": [
+"Campillo de Llerena",
+"06"
+],
+"06033": [
+"Casas de Don Pedro",
+"06"
+],
+"06036": [
+"Castuera",
+"06"
+],
+"06037": [
+"La Codosera",
+"06"
+],
+"06039": [
+"La Coronada",
+"06"
+],
+"06040": [
+"Corte de Peleas",
+"06"
+],
+"06042": [
+"Cheles",
+"06"
+],
+"06044": [
+"Don Benito",
+"06"
+],
+"06046": [
+"Esparragalejo",
+"06"
+],
+"06049": [
+"Feria",
+"06"
+],
+"06050": [
+"Fregenal de la Sierra",
+"06"
+],
+"06051": [
+"Fuenlabrada de los Montes",
+"06"
+],
+"06052": [
+"Fuente de Cantos",
+"06"
+],
+"06054": [
+"Fuente del Maestre",
+"06"
+],
+"06055": [
+"Fuentes de León",
+"06"
+],
+"06058": [
+"La Garrovilla",
+"06"
+],
+"06059": [
+"Granja de Torrehermosa",
+"06"
+],
+"06060": [
+"Guareña",
+"06"
+],
+"06061": [
+"La Haba",
+"06"
+],
+"06063": [
+"Herrera del Duque",
+"06"
+],
+"06066": [
+"Higuera de Vargas",
+"06"
+],
+"06067": [
+"Higuera la Real",
+"06"
+],
+"06069": [
+"Hornachos",
+"06"
+],
+"06070": [
+"Jerez de los Caballeros",
+"06"
+],
+"06072": [
+"Lobón",
+"06"
+],
+"06074": [
+"Llerena",
+"06"
+],
+"06080": [
+"Medellín",
+"06"
+],
+"06081": [
+"Medina de las Torres",
+"06"
+],
+"06083": [
+"Mérida",
+"06"
+],
+"06084": [
+"Mirandilla",
+"06"
+],
+"06085": [
+"Monesterio",
+"06"
+],
+"06086": [
+"Montemolín",
+"06"
+],
+"06087": [
+"Monterrubio de la Serena",
+"06"
+],
+"06088": [
+"Montijo",
+"06"
+],
+"06091": [
+"Navalvillar de Pela",
+"06"
+],
+"06093": [
+"Oliva de la Frontera",
+"06"
+],
+"06094": [
+"Oliva de Mérida",
+"06"
+],
+"06095": [
+"Olivenza",
+"06"
+],
+"06097": [
+"Orellana la Vieja",
+"06"
+],
+"06099": [
+"La Parra",
+"06"
+],
+"06102": [
+"Puebla de Alcocer",
+"06"
+],
+"06103": [
+"Puebla de la Calzada",
+"06"
+],
+"06107": [
+"Puebla de Obando",
+"06"
+],
+"06108": [
+"Puebla de Sancho Pérez",
+"06"
+],
+"06109": [
+"Quintana de la Serena",
+"06"
+],
+"06113": [
+"Ribera del Fresno",
+"06"
+],
+"06115": [
+"La Roca de la Sierra",
+"06"
+],
+"06116": [
+"Salvaleón",
+"06"
+],
+"06117": [
+"Salvatierra de los Barros",
+"06"
+],
+"06120": [
+"Santa Amalia",
+"06"
+],
+"06121": [
+"Santa Marta",
+"06"
+],
+"06122": [
+"Los Santos de Maimona",
+"06"
+],
+"06123": [
+"San Vicente de Alcántara",
+"06"
+],
+"06124": [
+"Segura de León",
+"06"
+],
+"06125": [
+"Siruela",
+"06"
+],
+"06126": [
+"Solana de los Barros",
+"06"
+],
+"06127": [
+"Talarrubias",
+"06"
+],
+"06128": [
+"Talavera la Real",
+"06"
+],
+"06131": [
+"Torre de Miguel Sesmero",
+"06"
+],
+"06133": [
+"Torremejía",
+"06"
+],
+"06135": [
+"Trujillanos",
+"06"
+],
+"06136": [
+"Usagre",
+"06"
+],
+"06137": [
+"Valdecaballeros",
+"06"
+],
+"06138": [
+"Valdetorres",
+"06"
+],
+"06141": [
+"Valencia del Ventoso",
+"06"
+],
+"06143": [
+"Valverde de Leganés",
+"06"
+],
+"06145": [
+"Valverde de Mérida",
+"06"
+],
+"06146": [
+"Valle de la Serena",
+"06"
+],
+"06148": [
+"Valle de Santa Ana",
+"06"
+],
+"06149": [
+"Villafranca de los Barros",
+"06"
+],
+"06151": [
+"Villagonzalo",
+"06"
+],
+"06152": [
+"Villalba de los Barros",
+"06"
+],
+"06153": [
+"Villanueva de la Serena",
+"06"
+],
+"06154": [
+"Villanueva del Fresno",
+"06"
+],
+"06155": [
+"Villar del Rey",
+"06"
+],
+"06156": [
+"Villar de Rena",
+"06"
+],
+"06158": [
+"Zafra",
+"06"
+],
+"06159": [
+"Zahínos",
+"06"
+],
+"06160": [
+"Zalamea de la Serena",
+"06"
+],
+"06162": [
+"La Zarza",
+"06"
+],
+"06901": [
+"Valdelacalzada",
+"06"
+],
+"06902": [
+"Pueblonuevo del Guadiana",
+"06"
+],
+"06903": [
+"Guadiana",
+"06"
+],
+"07001": [
+"Alaró",
+"07"
+],
+"07002": [
+"Alaior",
+"07"
+],
+"07003": [
+"Alcúdia",
+"07"
+],
+"07004": [
+"Algaida",
+"07"
+],
+"07005": [
+"Andratx",
+"07"
+],
+"07006": [
+"Artà",
+"07"
+],
+"07008": [
+"Binissalem",
+"07"
+],
+"07009": [
+"Búger",
+"07"
+],
+"07010": [
+"Bunyola",
+"07"
+],
+"07011": [
+"Calvià",
+"07"
+],
+"07012": [
+"Campanet",
+"07"
+],
+"07013": [
+"Campos",
+"07"
+],
+"07014": [
+"Capdepera",
+"07"
+],
+"07015": [
+"Ciutadella de Menorca",
+"07"
+],
+"07016": [
+"Consell",
+"07"
+],
+"07017": [
+"Costitx",
+"07"
+],
+"07020": [
+"Esporles",
+"07"
+],
+"07022": [
+"Felanitx",
+"07"
+],
+"07023": [
+"Ferreries",
+"07"
+],
+"07024": [
+"Formentera",
+"07"
+],
+"07026": [
+"Eivissa",
+"07"
+],
+"07027": [
+"Inca",
+"07"
+],
+"07028": [
+"Lloret de Vistalegre",
+"07"
+],
+"07029": [
+"Lloseta",
+"07"
+],
+"07030": [
+"Llubí",
+"07"
+],
+"07031": [
+"Llucmajor",
+"07"
+],
+"07032": [
+"Maó",
+"07"
+],
+"07033": [
+"Manacor",
+"07"
+],
+"07034": [
+"Mancor de la Vall",
+"07"
+],
+"07035": [
+"Maria de la Salut",
+"07"
+],
+"07036": [
+"Marratxí",
+"07"
+],
+"07037": [
+"Es Mercadal",
+"07"
+],
+"07038": [
+"Montuïri",
+"07"
+],
+"07039": [
+"Muro",
+"07"
+],
+"07040": [
+"Palma",
+"07"
+],
+"07041": [
+"Petra",
+"07"
+],
+"07042": [
+"Pollença",
+"07"
+],
+"07043": [
+"Porreres",
+"07"
+],
+"07044": [
+"Sa Pobla",
+"07"
+],
+"07045": [
+"Puigpunyent",
+"07"
+],
+"07046": [
+"Sant Antoni de Portmany",
+"07"
+],
+"07047": [
+"Sencelles",
+"07"
+],
+"07048": [
+"Sant Josep de sa Talaia",
+"07"
+],
+"07049": [
+"Sant Joan",
+"07"
+],
+"07050": [
+"Sant Joan de Labritja",
+"07"
+],
+"07051": [
+"Sant Llorenç des Cardassar",
+"07"
+],
+"07052": [
+"Sant Lluís",
+"07"
+],
+"07053": [
+"Santa Eugènia",
+"07"
+],
+"07054": [
+"Santa Eulària des Riu",
+"07"
+],
+"07055": [
+"Santa Margalida",
+"07"
+],
+"07056": [
+"Santa María del Camí",
+"07"
+],
+"07057": [
+"Santanyí",
+"07"
+],
+"07058": [
+"Selva",
+"07"
+],
+"07059": [
+"Ses Salines",
+"07"
+],
+"07060": [
+"Sineu",
+"07"
+],
+"07061": [
+"Sóller",
+"07"
+],
+"07062": [
+"Son Servera",
+"07"
+],
+"07063": [
+"Valldemossa",
+"07"
+],
+"07064": [
+"Es Castell",
+"07"
+],
+"07065": [
+"Vilafranca de Bonany",
+"07"
+],
+"07902": [
+"Es Migjorn Gran",
+"07"
+],
+"08001": [
+"Abrera",
+"08"
+],
+"08003": [
+"Alella",
+"08"
+],
+"08005": [
+"L'Ametlla del Vallès",
+"08"
+],
+"08006": [
+"Arenys de Mar",
+"08"
+],
+"08007": [
+"Arenys de Munt",
+"08"
+],
+"08009": [
+"Argentona",
+"08"
+],
+"08010": [
+"Artés",
+"08"
+],
+"08011": [
+"Avià",
+"08"
+],
+"08012": [
+"Avinyó",
+"08"
+],
+"08013": [
+"Avinyonet del Penedès",
+"08"
+],
+"08014": [
+"Aiguafreda",
+"08"
+],
+"08015": [
+"Badalona",
+"08"
+],
+"08016": [
+"Bagà",
+"08"
+],
+"08017": [
+"Balenyà",
+"08"
+],
+"08018": [
+"Balsareny",
+"08"
+],
+"08019": [
+"Barcelona",
+"08"
+],
+"08020": [
+"Begues",
+"08"
+],
+"08022": [
+"Berga",
+"08"
+],
+"08023": [
+"Bigues i Riells del Fai",
+"08"
+],
+"08025": [
+"El Bruc",
+"08"
+],
+"08028": [
+"Cabrera d'Anoia",
+"08"
+],
+"08029": [
+"Cabrera de Mar",
+"08"
+],
+"08030": [
+"Cabrils",
+"08"
+],
+"08031": [
+"Calaf",
+"08"
+],
+"08032": [
+"Caldes d'Estrac",
+"08"
+],
+"08033": [
+"Caldes de Montbui",
+"08"
+],
+"08034": [
+"Calders",
+"08"
+],
+"08035": [
+"Calella",
+"08"
+],
+"08037": [
+"Calldetenes",
+"08"
+],
+"08038": [
+"Callús",
+"08"
+],
+"08040": [
+"Canet de Mar",
+"08"
+],
+"08041": [
+"Canovelles",
+"08"
+],
+"08042": [
+"Cànoves i Samalús",
+"08"
+],
+"08043": [
+"Canyelles",
+"08"
+],
+"08044": [
+"Capellades",
+"08"
+],
+"08046": [
+"Cardedeu",
+"08"
+],
+"08047": [
+"Cardona",
+"08"
+],
+"08049": [
+"Casserres",
+"08"
+],
+"08051": [
+"Castellar del Vallès",
+"08"
+],
+"08053": [
+"Castellbell i el Vilar",
+"08"
+],
+"08054": [
+"Castellbisbal",
+"08"
+],
+"08056": [
+"Castelldefels",
+"08"
+],
+"08058": [
+"Castellet i la Gornal",
+"08"
+],
+"08061": [
+"Castellgalí",
+"08"
+],
+"08062": [
+"Castellnou de Bages",
+"08"
+],
+"08064": [
+"Castellterçol",
+"08"
+],
+"08065": [
+"Castellví de la Marca",
+"08"
+],
+"08066": [
+"Castellví de Rosanes",
+"08"
+],
+"08067": [
+"Centelles",
+"08"
+],
+"08068": [
+"Cervelló",
+"08"
+],
+"08069": [
+"Collbató",
+"08"
+],
+"08072": [
+"Corbera de Llobregat",
+"08"
+],
+"08073": [
+"Cornellà de Llobregat",
+"08"
+],
+"08074": [
+"Cubelles",
+"08"
+],
+"08075": [
+"Dosrius",
+"08"
+],
+"08076": [
+"Esparreguera",
+"08"
+],
+"08077": [
+"Esplugues de Llobregat",
+"08"
+],
+"08082": [
+"Fogars de la Selva",
+"08"
+],
+"08083": [
+"Folgueroles",
+"08"
+],
+"08084": [
+"Fonollosa",
+"08"
+],
+"08085": [
+"Font-rubí",
+"08"
+],
+"08086": [
+"Les Franqueses del Vallès",
+"08"
+],
+"08088": [
+"La Garriga",
+"08"
+],
+"08089": [
+"Gavà",
+"08"
+],
+"08091": [
+"Gelida",
+"08"
+],
+"08092": [
+"Gironella",
+"08"
+],
+"08094": [
+"La Granada",
+"08"
+],
+"08096": [
+"Granollers",
+"08"
+],
+"08097": [
+"Gualba",
+"08"
+],
+"08098": [
+"Sant Salvador de Guardiola",
+"08"
+],
+"08100": [
+"Gurb",
+"08"
+],
+"08101": [
+"L'Hospitalet de Llobregat",
+"08"
+],
+"08102": [
+"Igualada",
+"08"
+],
+"08105": [
+"La Llagosta",
+"08"
+],
+"08106": [
+"Llinars del Vallès",
+"08"
+],
+"08107": [
+"Lliçà d'Amunt",
+"08"
+],
+"08108": [
+"Lliçà de Vall",
+"08"
+],
+"08110": [
+"Malgrat de Mar",
+"08"
+],
+"08112": [
+"Manlleu",
+"08"
+],
+"08113": [
+"Manresa",
+"08"
+],
+"08114": [
+"Martorell",
+"08"
+],
+"08115": [
+"Martorelles",
+"08"
+],
+"08117": [
+"Les Masies de Voltregà",
+"08"
+],
+"08118": [
+"El Masnou",
+"08"
+],
+"08119": [
+"Masquefa",
+"08"
+],
+"08120": [
+"Matadepera",
+"08"
+],
+"08121": [
+"Mataró",
+"08"
+],
+"08122": [
+"Mediona",
+"08"
+],
+"08123": [
+"Molins de Rei",
+"08"
+],
+"08124": [
+"Mollet del Vallès",
+"08"
+],
+"08125": [
+"Montcada i Reixac",
+"08"
+],
+"08126": [
+"Montgat",
+"08"
+],
+"08127": [
+"Monistrol de Montserrat",
+"08"
+],
+"08131": [
+"Montesquiu",
+"08"
+],
+"08134": [
+"Figaró-Montmany",
+"08"
+],
+"08135": [
+"Montmeló",
+"08"
+],
+"08136": [
+"Montornès del Vallès",
+"08"
+],
+"08138": [
+"Moià",
+"08"
+],
+"08140": [
+"Navarcles",
+"08"
+],
+"08141": [
+"Navàs",
+"08"
+],
+"08143": [
+"Òdena",
+"08"
+],
+"08145": [
+"Olèrdola",
+"08"
+],
+"08146": [
+"Olesa de Bonesvalls",
+"08"
+],
+"08147": [
+"Olesa de Montserrat",
+"08"
+],
+"08148": [
+"Olivella",
+"08"
+],
+"08149": [
+"Olost",
+"08"
+],
+"08155": [
+"Palafolls",
+"08"
+],
+"08156": [
+"Palau-solità i Plegamans",
+"08"
+],
+"08157": [
+"Pallejà",
+"08"
+],
+"08158": [
+"El Papiol",
+"08"
+],
+"08159": [
+"Parets del Vallès",
+"08"
+],
+"08161": [
+"Piera",
+"08"
+],
+"08162": [
+"Els Hostalets de Pierola",
+"08"
+],
+"08163": [
+"Pineda de Mar",
+"08"
+],
+"08164": [
+"El Pla del Penedès",
+"08"
+],
+"08165": [
+"La Pobla de Claramunt",
+"08"
+],
+"08166": [
+"La Pobla de Lillet",
+"08"
+],
+"08167": [
+"Polinyà",
+"08"
+],
+"08169": [
+"El Prat de Llobregat",
+"08"
+],
+"08171": [
+"Prats de Lluçanès",
+"08"
+],
+"08172": [
+"Premià de Mar",
+"08"
+],
+"08175": [
+"Puig-reig",
+"08"
+],
+"08180": [
+"Ripollet",
+"08"
+],
+"08181": [
+"La Roca del Vallès",
+"08"
+],
+"08182": [
+"El Pont de Vilomara i Rocafort",
+"08"
+],
+"08183": [
+"Roda de Ter",
+"08"
+],
+"08184": [
+"Rubí",
+"08"
+],
+"08187": [
+"Sabadell",
+"08"
+],
+"08191": [
+"Sallent",
+"08"
+],
+"08192": [
+"Santpedor",
+"08"
+],
+"08193": [
+"Sant Iscle de Vallalta",
+"08"
+],
+"08194": [
+"Sant Adrià de Besòs",
+"08"
+],
+"08196": [
+"Sant Andreu de la Barca",
+"08"
+],
+"08197": [
+"Sant Andreu de Llavaneres",
+"08"
+],
+"08198": [
+"Sant Antoni de Vilamajor",
+"08"
+],
+"08200": [
+"Sant Boi de Llobregat",
+"08"
+],
+"08202": [
+"Sant Celoni",
+"08"
+],
+"08203": [
+"Sant Cebrià de Vallalta",
+"08"
+],
+"08204": [
+"Sant Climent de Llobregat",
+"08"
+],
+"08205": [
+"Sant Cugat del Vallès",
+"08"
+],
+"08206": [
+"Sant Cugat Sesgarrigues",
+"08"
+],
+"08207": [
+"Sant Esteve de Palautordera",
+"08"
+],
+"08208": [
+"Sant Esteve Sesrovires",
+"08"
+],
+"08209": [
+"Sant Fost de Campsentelles",
+"08"
+],
+"08210": [
+"Sant Feliu de Codines",
+"08"
+],
+"08211": [
+"Sant Feliu de Llobregat",
+"08"
+],
+"08213": [
+"Sant Fruitós de Bages",
+"08"
+],
+"08214": [
+"Vilassar de Dalt",
+"08"
+],
+"08215": [
+"Sant Hipòlit de Voltregà",
+"08"
+],
+"08217": [
+"Sant Joan Despí",
+"08"
+],
+"08218": [
+"Sant Joan de Vilatorrada",
+"08"
+],
+"08219": [
+"Vilassar de Mar",
+"08"
+],
+"08220": [
+"Sant Julià de Vilatorta",
+"08"
+],
+"08221": [
+"Sant Just Desvern",
+"08"
+],
+"08222": [
+"Sant Llorenç d'Hortons",
+"08"
+],
+"08223": [
+"Sant Llorenç Savall",
+"08"
+],
+"08224": [
+"Sant Martí de Centelles",
+"08"
+],
+"08226": [
+"Sant Martí de Tous",
+"08"
+],
+"08227": [
+"Sant Martí Sarroca",
+"08"
+],
+"08230": [
+"Premià de Dalt",
+"08"
+],
+"08231": [
+"Sant Pere de Ribes",
+"08"
+],
+"08232": [
+"Sant Pere de Riudebitlles",
+"08"
+],
+"08233": [
+"Sant Pere de Torelló",
+"08"
+],
+"08234": [
+"Sant Pere de Vilamajor",
+"08"
+],
+"08235": [
+"Sant Pol de Mar",
+"08"
+],
+"08236": [
+"Sant Quintí de Mediona",
+"08"
+],
+"08237": [
+"Sant Quirze de Besora",
+"08"
+],
+"08238": [
+"Sant Quirze del Vallès",
+"08"
+],
+"08240": [
+"Sant Sadurní d'Anoia",
+"08"
+],
+"08244": [
+"Santa Coloma de Cervelló",
+"08"
+],
+"08245": [
+"Santa Coloma de Gramenet",
+"08"
+],
+"08246": [
+"Santa Eugènia de Berga",
+"08"
+],
+"08247": [
+"Santa Eulàlia de Riuprimer",
+"08"
+],
+"08248": [
+"Santa Eulàlia de Ronçana",
+"08"
+],
+"08250": [
+"Santa Margarida de Montbui",
+"08"
+],
+"08251": [
+"Santa Margarida i els Monjos",
+"08"
+],
+"08252": [
+"Barberà del Vallès",
+"08"
+],
+"08254": [
+"L'Esquirol",
+"08"
+],
+"08258": [
+"Santa Maria d'Oló",
+"08"
+],
+"08259": [
+"Santa Maria de Palautordera",
+"08"
+],
+"08260": [
+"Santa Perpètua de Mogoda",
+"08"
+],
+"08261": [
+"Santa Susanna",
+"08"
+],
+"08262": [
+"Sant Vicenç de Castellet",
+"08"
+],
+"08263": [
+"Sant Vicenç dels Horts",
+"08"
+],
+"08264": [
+"Sant Vicenç de Montalt",
+"08"
+],
+"08265": [
+"Sant Vicenç de Torelló",
+"08"
+],
+"08266": [
+"Cerdanyola del Vallès",
+"08"
+],
+"08267": [
+"Sentmenat",
+"08"
+],
+"08268": [
+"Cercs",
+"08"
+],
+"08269": [
+"Seva",
+"08"
+],
+"08270": [
+"Sitges",
+"08"
+],
+"08273": [
+"Subirats",
+"08"
+],
+"08274": [
+"Súria",
+"08"
+],
+"08278": [
+"Taradell",
+"08"
+],
+"08279": [
+"Terrassa",
+"08"
+],
+"08281": [
+"Teià",
+"08"
+],
+"08282": [
+"Tiana",
+"08"
+],
+"08283": [
+"Tona",
+"08"
+],
+"08284": [
+"Tordera",
+"08"
+],
+"08285": [
+"Torelló",
+"08"
+],
+"08286": [
+"La Torre de Claramunt",
+"08"
+],
+"08287": [
+"Torrelavit",
+"08"
+],
+"08288": [
+"Torrelles de Foix",
+"08"
+],
+"08289": [
+"Torrelles de Llobregat",
+"08"
+],
+"08290": [
+"Ullastrell",
+"08"
+],
+"08291": [
+"Vacarisses",
+"08"
+],
+"08292": [
+"Vallbona d'Anoia",
+"08"
+],
+"08294": [
+"Vallgorguina",
+"08"
+],
+"08295": [
+"Vallirana",
+"08"
+],
+"08296": [
+"Vallromanes",
+"08"
+],
+"08298": [
+"Vic",
+"08"
+],
+"08300": [
+"Viladecavalls",
+"08"
+],
+"08301": [
+"Viladecans",
+"08"
+],
+"08302": [
+"Vilanova del Camí",
+"08"
+],
+"08304": [
+"Vilobí del Penedès",
+"08"
+],
+"08305": [
+"Vilafranca del Penedès",
+"08"
+],
+"08307": [
+"Vilanova i la Geltrú",
+"08"
+],
+"08902": [
+"Vilanova del Vallès",
+"08"
+],
+"08904": [
+"Badia del Vallès",
+"08"
+],
+"08905": [
+"La Palma de Cervelló",
+"08"
+],
+"09018": [
+"Aranda de Duero",
+"09"
+],
+"09023": [
+"Arcos",
+"09"
+],
+"09048": [
+"Belorado",
+"09"
+],
+"09056": [
+"Briviesca",
+"09"
+],
+"09059": [
+"Burgos",
+"09"
+],
+"09073": [
+"Cardeñadijo",
+"09"
+],
+"09074": [
+"Cardeñajimeno",
+"09"
+],
+"09109": [
+"Condado de Treviño",
+"09"
+],
+"09124": [
+"Espinosa de los Monteros",
+"09"
+],
+"09177": [
+"Ibeas de Juarros",
+"09"
+],
+"09194": [
+"Lerma",
+"09"
+],
+"09209": [
+"Medina de Pomar",
+"09"
+],
+"09211": [
+"Melgar de Fernamental",
+"09"
+],
+"09219": [
+"Miranda de Ebro",
+"09"
+],
+"09274": [
+"Pradoluengo",
+"09"
+],
+"09289": [
+"Quintanar de la Sierra",
+"09"
+],
+"09321": [
+"Roa",
+"09"
+],
+"09330": [
+"Salas de los Infantes",
+"09"
+],
+"09410": [
+"Valle de Mena",
+"09"
+],
+"09427": [
+"Villadiego",
+"09"
+],
+"09434": [
+"Villagonzalo Pedernales",
+"09"
+],
+"09439": [
+"Villalbilla de Burgos",
+"09"
+],
+"09903": [
+"Villarcayo de Merindad de Castilla la Vieja",
+"09"
+],
+"09906": [
+"Merindad de Río Ubierna",
+"09"
+],
+"09907": [
+"Alfoz de Quintanadueñas",
+"09"
+],
+"10006": [
+"Ahigal",
+"10"
+],
+"10008": [
+"Alcántara",
+"10"
+],
+"10010": [
+"Alcuéscar",
+"10"
+],
+"10014": [
+"Aldeanueva de la Vera",
+"10"
+],
+"10018": [
+"Aliseda",
+"10"
+],
+"10019": [
+"Almaraz",
+"10"
+],
+"10020": [
+"Almoharín",
+"10"
+],
+"10021": [
+"Arroyo de la Luz",
+"10"
+],
+"10032": [
+"Brozas",
+"10"
+],
+"10035": [
+"Cabezuela del Valle",
+"10"
+],
+"10037": [
+"Cáceres",
+"10"
+],
+"10041": [
+"Caminomorisco",
+"10"
+],
+"10044": [
+"Cañamero",
+"10"
+],
+"10045": [
+"Cañaveral",
+"10"
+],
+"10047": [
+"Carcaboso",
+"10"
+],
+"10049": [
+"Casar de Cáceres",
+"10"
+],
+"10058": [
+"Casatejada",
+"10"
+],
+"10060": [
+"Castañar de Ibor",
+"10"
+],
+"10061": [
+"Ceclavín",
+"10"
+],
+"10064": [
+"Cilleros",
+"10"
+],
+"10067": [
+"Coria",
+"10"
+],
+"10082": [
+"Garrovillas de Alconétar",
+"10"
+],
+"10084": [
+"Gata",
+"10"
+],
+"10087": [
+"Guadalupe",
+"10"
+],
+"10089": [
+"Guijo de Galisteo",
+"10"
+],
+"10096": [
+"Hervás",
+"10"
+],
+"10104": [
+"Jaraíz de la Vera",
+"10"
+],
+"10105": [
+"Jarandilla de la Vera",
+"10"
+],
+"10107": [
+"Jerte",
+"10"
+],
+"10109": [
+"Logrosán",
+"10"
+],
+"10110": [
+"Losar de la Vera",
+"10"
+],
+"10111": [
+"Madrigal de la Vera",
+"10"
+],
+"10112": [
+"Madrigalejo",
+"10"
+],
+"10113": [
+"Madroñera",
+"10"
+],
+"10114": [
+"Majadas",
+"10"
+],
+"10115": [
+"Malpartida de Cáceres",
+"10"
+],
+"10116": [
+"Malpartida de Plasencia",
+"10"
+],
+"10121": [
+"Miajadas",
+"10"
+],
+"10126": [
+"Montánchez",
+"10"
+],
+"10127": [
+"Montehermoso",
+"10"
+],
+"10128": [
+"Moraleja",
+"10"
+],
+"10130": [
+"Navaconcejo",
+"10"
+],
+"10131": [
+"Navalmoral de la Mata",
+"10"
+],
+"10133": [
+"Navas del Madroño",
+"10"
+],
+"10135": [
+"Nuñomoral",
+"10"
+],
+"10140": [
+"Peraleda de la Mata",
+"10"
+],
+"10146": [
+"Pinofranqueado",
+"10"
+],
+"10147": [
+"Piornal",
+"10"
+],
+"10148": [
+"Plasencia",
+"10"
+],
+"10155": [
+"Riolobos",
+"10"
+],
+"10175": [
+"Serradilla",
+"10"
+],
+"10177": [
+"Sierra de Fuentes",
+"10"
+],
+"10180": [
+"Talayuela",
+"10"
+],
+"10183": [
+"Tornavacas",
+"10"
+],
+"10186": [
+"Torrecillas de la Tiesa",
+"10"
+],
+"10189": [
+"Torrejoncillo",
+"10"
+],
+"10193": [
+"Torreorgaz",
+"10"
+],
+"10195": [
+"Trujillo",
+"10"
+],
+"10198": [
+"Valdefuentes",
+"10"
+],
+"10203": [
+"Valencia de Alcántara",
+"10"
+],
+"10205": [
+"Valverde del Fresno",
+"10"
+],
+"10212": [
+"Villanueva de la Vera",
+"10"
+],
+"10216": [
+"Zarza de Granadilla",
+"10"
+],
+"10218": [
+"Zarza la Mayor",
+"10"
+],
+"10219": [
+"Zorita",
+"10"
+],
+"10901": [
+"Rosalejo",
+"10"
+],
+"11001": [
+"Alcalá de los Gazules",
+"11"
+],
+"11002": [
+"Alcalá del Valle",
+"11"
+],
+"11003": [
+"Algar",
+"11"
+],
+"11004": [
+"Algeciras",
+"11"
+],
+"11005": [
+"Algodonales",
+"11"
+],
+"11006": [
+"Arcos de la Frontera",
+"11"
+],
+"11007": [
+"Barbate",
+"11"
+],
+"11008": [
+"Los Barrios",
+"11"
+],
+"11010": [
+"Bornos",
+"11"
+],
+"11011": [
+"El Bosque",
+"11"
+],
+"11012": [
+"Cádiz",
+"11"
+],
+"11013": [
+"Castellar de la Frontera",
+"11"
+],
+"11014": [
+"Conil de la Frontera",
+"11"
+],
+"11015": [
+"Chiclana de la Frontera",
+"11"
+],
+"11016": [
+"Chipiona",
+"11"
+],
+"11017": [
+"Espera",
+"11"
+],
+"11018": [
+"El Gastor",
+"11"
+],
+"11019": [
+"Grazalema",
+"11"
+],
+"11020": [
+"Jerez de la Frontera",
+"11"
+],
+"11021": [
+"Jimena de la Frontera",
+"11"
+],
+"11022": [
+"La Línea de la Concepción",
+"11"
+],
+"11023": [
+"Medina Sidonia",
+"11"
+],
+"11024": [
+"Olvera",
+"11"
+],
+"11025": [
+"Paterna de Rivera",
+"11"
+],
+"11026": [
+"Prado del Rey",
+"11"
+],
+"11027": [
+"El Puerto de Santa María",
+"11"
+],
+"11028": [
+"Puerto Real",
+"11"
+],
+"11029": [
+"Puerto Serrano",
+"11"
+],
+"11030": [
+"Rota",
+"11"
+],
+"11031": [
+"San Fernando",
+"11"
+],
+"11032": [
+"Sanlúcar de Barrameda",
+"11"
+],
+"11033": [
+"San Roque",
+"11"
+],
+"11034": [
+"Setenil de las Bodegas",
+"11"
+],
+"11035": [
+"Tarifa",
+"11"
+],
+"11037": [
+"Trebujena",
+"11"
+],
+"11038": [
+"Ubrique",
+"11"
+],
+"11039": [
+"Vejer de la Frontera",
+"11"
+],
+"11041": [
+"Villamartín",
+"11"
+],
+"11042": [
+"Zahara",
+"11"
+],
+"11901": [
+"Benalup-Casas Viejas",
+"11"
+],
+"11902": [
+"San José del Valle",
+"11"
+],
+"11903": [
+"San Martín del Tesorillo",
+"11"
+],
+"12001": [
+"Atzeneta del Maestrat",
+"12"
+],
+"12003": [
+"Albocàsser",
+"12"
+],
+"12004": [
+"Alcalà de Xivert",
+"12"
+],
+"12005": [
+"L'Alcora",
+"12"
+],
+"12009": [
+"Almassora",
+"12"
+],
+"12011": [
+"Almenara",
+"12"
+],
+"12012": [
+"Altura",
+"12"
+],
+"12016": [
+"Artana",
+"12"
+],
+"12021": [
+"Betxí",
+"12"
+],
+"12026": [
+"Benassal",
+"12"
+],
+"12027": [
+"Benicarló",
+"12"
+],
+"12028": [
+"Benicàssim/Benicassim",
+"12"
+],
+"12029": [
+"Benlloc",
+"12"
+],
+"12031": [
+"Borriol",
+"12"
+],
+"12032": [
+"Borriana/Burriana",
+"12"
+],
+"12033": [
+"Cabanes",
+"12"
+],
+"12034": [
+"Càlig",
+"12"
+],
+"12040": [
+"Castelló de la Plana",
+"12"
+],
+"12050": [
+"Les Coves de Vinromà",
+"12"
+],
+"12053": [
+"Chilches/Xilxes",
+"12"
+],
+"12071": [
+"Jérica",
+"12"
+],
+"12072": [
+"Llucena/Lucena del Cid",
+"12"
+],
+"12074": [
+"La Llosa",
+"12"
+],
+"12077": [
+"Moncofa",
+"12"
+],
+"12080": [
+"Morella",
+"12"
+],
+"12082": [
+"Nules",
+"12"
+],
+"12084": [
+"Onda",
+"12"
+],
+"12085": [
+"Orpesa/Oropesa del Mar",
+"12"
+],
+"12089": [
+"Peníscola/Peñíscola",
+"12"
+],
+"12094": [
+"La Pobla Tornesa",
+"12"
+],
+"12095": [
+"Ribesalbes",
+"12"
+],
+"12099": [
+"Sant Jordi/San Jorge",
+"12"
+],
+"12100": [
+"Sant Mateu",
+"12"
+],
+"12104": [
+"Segorbe",
+"12"
+],
+"12105": [
+"Sierra Engarcerán",
+"12"
+],
+"12106": [
+"Soneja",
+"12"
+],
+"12117": [
+"Torreblanca",
+"12"
+],
+"12121": [
+"Traiguera",
+"12"
+],
+"12124": [
+"Vall d'Alba",
+"12"
+],
+"12126": [
+"La Vall d'Uixó",
+"12"
+],
+"12128": [
+"Vilafamés",
+"12"
+],
+"12129": [
+"Vilafranca/Villafranca del Cid",
+"12"
+],
+"12135": [
+"Vila-real",
+"12"
+],
+"12136": [
+"La Vilavella",
+"12"
+],
+"12138": [
+"Vinaròs",
+"12"
+],
+"12140": [
+"Viver",
+"12"
+],
+"12901": [
+"Les Alqueries/Alquerías del Niño Perdido",
+"12"
+],
+"12902": [
+"Sant Joan de Moró",
+"12"
+],
+"13001": [
+"Abenójar",
+"13"
+],
+"13002": [
+"Agudo",
+"13"
+],
+"13004": [
+"Albaladejo",
+"13"
+],
+"13005": [
+"Alcázar de San Juan",
+"13"
+],
+"13007": [
+"Alcolea de Calatrava",
+"13"
+],
+"13009": [
+"Aldea del Rey",
+"13"
+],
+"13011": [
+"Almadén",
+"13"
+],
+"13013": [
+"Almagro",
+"13"
+],
+"13015": [
+"Almodóvar del Campo",
+"13"
+],
+"13018": [
+"Arenas de San Juan",
+"13"
+],
+"13019": [
+"Argamasilla de Alba",
+"13"
+],
+"13020": [
+"Argamasilla de Calatrava",
+"13"
+],
+"13023": [
+"Bolaños de Calatrava",
+"13"
+],
+"13027": [
+"Calzada de Calatrava",
+"13"
+],
+"13028": [
+"Campo de Criptana",
+"13"
+],
+"13031": [
+"Carrión de Calatrava",
+"13"
+],
+"13032": [
+"Carrizosa",
+"13"
+],
+"13033": [
+"Castellar de Santiago",
+"13"
+],
+"13034": [
+"Ciudad Real",
+"13"
+],
+"13035": [
+"Corral de Calatrava",
+"13"
+],
+"13038": [
+"Chillón",
+"13"
+],
+"13039": [
+"Daimiel",
+"13"
+],
+"13042": [
+"Fuencaliente",
+"13"
+],
+"13044": [
+"Fuente el Fresno",
+"13"
+],
+"13047": [
+"Herencia",
+"13"
+],
+"13052": [
+"Malagón",
+"13"
+],
+"13053": [
+"Manzanares",
+"13"
+],
+"13054": [
+"Membrilla",
+"13"
+],
+"13056": [
+"Miguelturra",
+"13"
+],
+"13057": [
+"Montiel",
+"13"
+],
+"13058": [
+"Moral de Calatrava",
+"13"
+],
+"13061": [
+"Pedro Muñoz",
+"13"
+],
+"13063": [
+"Piedrabuena",
+"13"
+],
+"13064": [
+"Poblete",
+"13"
+],
+"13065": [
+"Porzuna",
+"13"
+],
+"13066": [
+"Pozuelo de Calatrava",
+"13"
+],
+"13068": [
+"Puebla de Don Rodrigo",
+"13"
+],
+"13071": [
+"Puertollano",
+"13"
+],
+"13074": [
+"San Carlos del Valle",
+"13"
+],
+"13077": [
+"Santa Cruz de Mudela",
+"13"
+],
+"13078": [
+"Socuéllamos",
+"13"
+],
+"13079": [
+"La Solana",
+"13"
+],
+"13082": [
+"Tomelloso",
+"13"
+],
+"13083": [
+"Torralba de Calatrava",
+"13"
+],
+"13085": [
+"Torrenueva",
+"13"
+],
+"13087": [
+"Valdepeñas",
+"13"
+],
+"13089": [
+"Villahermosa",
+"13"
+],
+"13090": [
+"Villamanrique",
+"13"
+],
+"13092": [
+"Villanueva de la Fuente",
+"13"
+],
+"13093": [
+"Villanueva de los Infantes",
+"13"
+],
+"13096": [
+"Villarrubia de los Ojos",
+"13"
+],
+"13097": [
+"Villarta de San Juan",
+"13"
+],
+"13098": [
+"Viso del Marqués",
+"13"
+],
+"13901": [
+"El Robledo",
+"13"
+],
+"14001": [
+"Adamuz",
+"14"
+],
+"14002": [
+"Aguilar de la Frontera",
+"14"
+],
+"14003": [
+"Alcaracejos",
+"14"
+],
+"14004": [
+"Almedinilla",
+"14"
+],
+"14005": [
+"Almodóvar del Río",
+"14"
+],
+"14006": [
+"Añora",
+"14"
+],
+"14007": [
+"Baena",
+"14"
+],
+"14008": [
+"Belalcázar",
+"14"
+],
+"14009": [
+"Belmez",
+"14"
+],
+"14010": [
+"Benamejí",
+"14"
+],
+"14012": [
+"Bujalance",
+"14"
+],
+"14013": [
+"Cabra",
+"14"
+],
+"14014": [
+"Cañete de las Torres",
+"14"
+],
+"14015": [
+"Carcabuey",
+"14"
+],
+"14016": [
+"Cardeña",
+"14"
+],
+"14017": [
+"La Carlota",
+"14"
+],
+"14018": [
+"El Carpio",
+"14"
+],
+"14019": [
+"Castro del Río",
+"14"
+],
+"14021": [
+"Córdoba",
+"14"
+],
+"14022": [
+"Doña Mencía",
+"14"
+],
+"14023": [
+"Dos Torres",
+"14"
+],
+"14024": [
+"Encinas Reales",
+"14"
+],
+"14025": [
+"Espejo",
+"14"
+],
+"14026": [
+"Espiel",
+"14"
+],
+"14027": [
+"Fernán-Núñez",
+"14"
+],
+"14029": [
+"Fuente Obejuna",
+"14"
+],
+"14030": [
+"Fuente Palmera",
+"14"
+],
+"14033": [
+"Guadalcázar",
+"14"
+],
+"14035": [
+"Hinojosa del Duque",
+"14"
+],
+"14036": [
+"Hornachuelos",
+"14"
+],
+"14037": [
+"Iznájar",
+"14"
+],
+"14038": [
+"Lucena",
+"14"
+],
+"14039": [
+"Luque",
+"14"
+],
+"14040": [
+"Montalbán de Córdoba",
+"14"
+],
+"14041": [
+"Montemayor",
+"14"
+],
+"14042": [
+"Montilla",
+"14"
+],
+"14043": [
+"Montoro",
+"14"
+],
+"14044": [
+"Monturque",
+"14"
+],
+"14045": [
+"Moriles",
+"14"
+],
+"14046": [
+"Nueva Carteya",
+"14"
+],
+"14047": [
+"Obejo",
+"14"
+],
+"14048": [
+"Palenciana",
+"14"
+],
+"14049": [
+"Palma del Río",
+"14"
+],
+"14050": [
+"Pedro Abad",
+"14"
+],
+"14051": [
+"Pedroche",
+"14"
+],
+"14052": [
+"Peñarroya-Pueblonuevo",
+"14"
+],
+"14053": [
+"Posadas",
+"14"
+],
+"14054": [
+"Pozoblanco",
+"14"
+],
+"14055": [
+"Priego de Córdoba",
+"14"
+],
+"14056": [
+"Puente Genil",
+"14"
+],
+"14057": [
+"La Rambla",
+"14"
+],
+"14058": [
+"Rute",
+"14"
+],
+"14060": [
+"Santaella",
+"14"
+],
+"14063": [
+"Valenzuela",
+"14"
+],
+"14065": [
+"La Victoria",
+"14"
+],
+"14066": [
+"Villa del Río",
+"14"
+],
+"14067": [
+"Villafranca de Córdoba",
+"14"
+],
+"14069": [
+"Villanueva de Córdoba",
+"14"
+],
+"14070": [
+"Villanueva del Duque",
+"14"
+],
+"14072": [
+"Villaralto",
+"14"
+],
+"14073": [
+"Villaviciosa de Córdoba",
+"14"
+],
+"14074": [
+"El Viso",
+"14"
+],
+"14901": [
+"Fuente Carreteros",
+"14"
+],
+"14902": [
+"La Guijarrosa",
+"14"
+],
+"15001": [
+"Abegondo",
+"15"
+],
+"15002": [
+"Ames",
+"15"
+],
+"15003": [
+"Aranga",
+"15"
+],
+"15004": [
+"Ares",
+"15"
+],
+"15005": [
+"Arteixo",
+"15"
+],
+"15006": [
+"Arzúa",
+"15"
+],
+"15007": [
+"A Baña",
+"15"
+],
+"15008": [
+"Bergondo",
+"15"
+],
+"15009": [
+"Betanzos",
+"15"
+],
+"15010": [
+"Boimorto",
+"15"
+],
+"15011": [
+"Boiro",
+"15"
+],
+"15012": [
+"Boqueixón",
+"15"
+],
+"15013": [
+"Brión",
+"15"
+],
+"15014": [
+"Cabana de Bergantiños",
+"15"
+],
+"15015": [
+"Cabanas",
+"15"
+],
+"15016": [
+"Camariñas",
+"15"
+],
+"15017": [
+"Cambre",
+"15"
+],
+"15018": [
+"A Capela",
+"15"
+],
+"15019": [
+"Carballo",
+"15"
+],
+"15020": [
+"Carnota",
+"15"
+],
+"15021": [
+"Carral",
+"15"
+],
+"15022": [
+"Cedeira",
+"15"
+],
+"15023": [
+"Cee",
+"15"
+],
+"15024": [
+"Cerceda",
+"15"
+],
+"15025": [
+"Cerdido",
+"15"
+],
+"15027": [
+"Coirós",
+"15"
+],
+"15028": [
+"Corcubión",
+"15"
+],
+"15029": [
+"Coristanco",
+"15"
+],
+"15030": [
+"A Coruña",
+"15"
+],
+"15031": [
+"Culleredo",
+"15"
+],
+"15032": [
+"Curtis",
+"15"
+],
+"15033": [
+"Dodro",
+"15"
+],
+"15034": [
+"Dumbría",
+"15"
+],
+"15035": [
+"Fene",
+"15"
+],
+"15036": [
+"Ferrol",
+"15"
+],
+"15037": [
+"Fisterra",
+"15"
+],
+"15038": [
+"Frades",
+"15"
+],
+"15039": [
+"Irixoa",
+"15"
+],
+"15040": [
+"Laxe",
+"15"
+],
+"15041": [
+"A Laracha",
+"15"
+],
+"15042": [
+"Lousame",
+"15"
+],
+"15043": [
+"Malpica de Bergantiños",
+"15"
+],
+"15044": [
+"Mañón",
+"15"
+],
+"15045": [
+"Mazaricos",
+"15"
+],
+"15046": [
+"Melide",
+"15"
+],
+"15047": [
+"Mesía",
+"15"
+],
+"15048": [
+"Miño",
+"15"
+],
+"15049": [
+"Moeche",
+"15"
+],
+"15050": [
+"Monfero",
+"15"
+],
+"15051": [
+"Mugardos",
+"15"
+],
+"15052": [
+"Muxía",
+"15"
+],
+"15053": [
+"Muros",
+"15"
+],
+"15054": [
+"Narón",
+"15"
+],
+"15055": [
+"Neda",
+"15"
+],
+"15056": [
+"Negreira",
+"15"
+],
+"15057": [
+"Noia",
+"15"
+],
+"15058": [
+"Oleiros",
+"15"
+],
+"15059": [
+"Ordes",
+"15"
+],
+"15060": [
+"Oroso",
+"15"
+],
+"15061": [
+"Ortigueira",
+"15"
+],
+"15062": [
+"Outes",
+"15"
+],
+"15064": [
+"Paderne",
+"15"
+],
+"15065": [
+"Padrón",
+"15"
+],
+"15066": [
+"O Pino",
+"15"
+],
+"15067": [
+"A Pobra do Caramiñal",
+"15"
+],
+"15068": [
+"Ponteceso",
+"15"
+],
+"15069": [
+"Pontedeume",
+"15"
+],
+"15070": [
+"As Pontes de García Rodríguez",
+"15"
+],
+"15071": [
+"Porto do Son",
+"15"
+],
+"15072": [
+"Rianxo",
+"15"
+],
+"15073": [
+"Ribeira",
+"15"
+],
+"15074": [
+"Rois",
+"15"
+],
+"15075": [
+"Sada",
+"15"
+],
+"15076": [
+"San Sadurniño",
+"15"
+],
+"15077": [
+"Santa Comba",
+"15"
+],
+"15078": [
+"Santiago de Compostela",
+"15"
+],
+"15079": [
+"Santiso",
+"15"
+],
+"15080": [
+"Sobrado",
+"15"
+],
+"15081": [
+"As Somozas",
+"15"
+],
+"15082": [
+"Teo",
+"15"
+],
+"15083": [
+"Toques",
+"15"
+],
+"15084": [
+"Tordoia",
+"15"
+],
+"15085": [
+"Touro",
+"15"
+],
+"15086": [
+"Trazo",
+"15"
+],
+"15087": [
+"Valdoviño",
+"15"
+],
+"15088": [
+"Val do Dubra",
+"15"
+],
+"15089": [
+"Vedra",
+"15"
+],
+"15090": [
+"Vilasantar",
+"15"
+],
+"15091": [
+"Vilarmaior",
+"15"
+],
+"15092": [
+"Vimianzo",
+"15"
+],
+"15093": [
+"Zas",
+"15"
+],
+"15901": [
+"Cariño",
+"15"
+],
+"15902": [
+"Oza-Cesuras",
+"15"
+],
+"16007": [
+"La Alberca de Záncara",
+"16"
+],
+"16033": [
+"Belmonte",
+"16"
+],
+"16042": [
+"Campillo de Altobuey",
+"16"
+],
+"16061": [
+"Casas de Fernando Alonso",
+"16"
+],
+"16066": [
+"Casasimarro",
+"16"
+],
+"16078": [
+"Cuenca",
+"16"
+],
+"16086": [
+"Fuente de Pedro Naharro",
+"16"
+],
+"16102": [
+"Honrubia",
+"16"
+],
+"16106": [
+"Horcajo de Santiago",
+"16"
+],
+"16112": [
+"Huete",
+"16"
+],
+"16113": [
+"Iniesta",
+"16"
+],
+"16117": [
+"Landete",
+"16"
+],
+"16118": [
+"Ledaña",
+"16"
+],
+"16124": [
+"Las Mesas",
+"16"
+],
+"16125": [
+"Minglanilla",
+"16"
+],
+"16133": [
+"Mota del Cuervo",
+"16"
+],
+"16134": [
+"Motilla del Palancar",
+"16"
+],
+"16153": [
+"El Pedernoso",
+"16"
+],
+"16154": [
+"Las Pedroñeras",
+"16"
+],
+"16171": [
+"El Provencio",
+"16"
+],
+"16175": [
+"Quintanar del Rey",
+"16"
+],
+"16190": [
+"San Clemente",
+"16"
+],
+"16191": [
+"San Lorenzo de la Parrilla",
+"16"
+],
+"16198": [
+"Sisante",
+"16"
+],
+"16203": [
+"Tarancón",
+"16"
+],
+"16236": [
+"Valverde de Júcar",
+"16"
+],
+"16249": [
+"Villamayor de Santiago",
+"16"
+],
+"16251": [
+"Villanueva de la Jara",
+"16"
+],
+"16263": [
+"Villar de Olalla",
+"16"
+],
+"16903": [
+"Las Valeras",
+"16"
+],
+"16905": [
+"Arcas",
+"16"
+],
+"17006": [
+"Alp",
+"17"
+],
+"17007": [
+"Amer",
+"17"
+],
+"17008": [
+"Anglès",
+"17"
+],
+"17009": [
+"Arbúcies",
+"17"
+],
+"17011": [
+"L'Armentera",
+"17"
+],
+"17012": [
+"Avinyonet de Puigventós",
+"17"
+],
+"17013": [
+"Begur",
+"17"
+],
+"17015": [
+"Banyoles",
+"17"
+],
+"17016": [
+"Bàscara",
+"17"
+],
+"17019": [
+"Besalú",
+"17"
+],
+"17020": [
+"Bescanó",
+"17"
+],
+"17022": [
+"La Bisbal d'Empordà",
+"17"
+],
+"17023": [
+"Blanes",
+"17"
+],
+"17025": [
+"Bordils",
+"17"
+],
+"17027": [
+"Breda",
+"17"
+],
+"17032": [
+"Cadaqués",
+"17"
+],
+"17033": [
+"Caldes de Malavella",
+"17"
+],
+"17034": [
+"Calonge i Sant Antoni",
+"17"
+],
+"17036": [
+"Campdevànol",
+"17"
+],
+"17039": [
+"Camprodon",
+"17"
+],
+"17044": [
+"Cassà de la Selva",
+"17"
+],
+"17047": [
+"Castelló d'Empúries",
+"17"
+],
+"17048": [
+"Castell-Platja d'Aro",
+"17"
+],
+"17049": [
+"Celrà",
+"17"
+],
+"17056": [
+"Cornellà del Terri",
+"17"
+],
+"17057": [
+"Corçà",
+"17"
+],
+"17062": [
+"L'Escala",
+"17"
+],
+"17066": [
+"Figueres",
+"17"
+],
+"17067": [
+"Flaçà",
+"17"
+],
+"17071": [
+"Fontcoberta",
+"17"
+],
+"17073": [
+"Fornells de la Selva",
+"17"
+],
+"17079": [
+"Girona",
+"17"
+],
+"17083": [
+"Hostalric",
+"17"
+],
+"17086": [
+"La Jonquera",
+"17"
+],
+"17089": [
+"Llagostera",
+"17"
+],
+"17092": [
+"Llançà",
+"17"
+],
+"17093": [
+"Llers",
+"17"
+],
+"17094": [
+"Llívia",
+"17"
+],
+"17095": [
+"Lloret de Mar",
+"17"
+],
+"17103": [
+"Maçanet de la Selva",
+"17"
+],
+"17110": [
+"Mont-ras",
+"17"
+],
+"17111": [
+"Navata",
+"17"
+],
+"17114": [
+"Olot",
+"17"
+],
+"17117": [
+"Palafrugell",
+"17"
+],
+"17118": [
+"Palamós",
+"17"
+],
+"17120": [
+"Palau-saverdera",
+"17"
+],
+"17124": [
+"Pals",
+"17"
+],
+"17132": [
+"Peralada",
+"17"
+],
+"17133": [
+"Les Planes d'Hostoles",
+"17"
+],
+"17137": [
+"Porqueres",
+"17"
+],
+"17138": [
+"Portbou",
+"17"
+],
+"17139": [
+"Les Preses",
+"17"
+],
+"17140": [
+"El Port de la Selva",
+"17"
+],
+"17141": [
+"Puigcerdà",
+"17"
+],
+"17142": [
+"Quart",
+"17"
+],
+"17145": [
+"Ribes de Freser",
+"17"
+],
+"17146": [
+"Riells i Viabrea",
+"17"
+],
+"17147": [
+"Ripoll",
+"17"
+],
+"17148": [
+"Riudarenes",
+"17"
+],
+"17150": [
+"Riudellots de la Selva",
+"17"
+],
+"17152": [
+"Roses",
+"17"
+],
+"17155": [
+"Salt",
+"17"
+],
+"17160": [
+"Sant Feliu de Guíxols",
+"17"
+],
+"17161": [
+"Sant Feliu de Pallerols",
+"17"
+],
+"17163": [
+"Sant Gregori",
+"17"
+],
+"17164": [
+"Sant Hilari Sacalm",
+"17"
+],
+"17167": [
+"Sant Joan de les Abadesses",
+"17"
+],
+"17169": [
+"Sant Julià de Ramis",
+"17"
+],
+"17178": [
+"Sant Pere Pescador",
+"17"
+],
+"17180": [
+"Santa Coloma de Farners",
+"17"
+],
+"17181": [
+"Santa Cristina d'Aro",
+"17"
+],
+"17184": [
+"Santa Pau",
+"17"
+],
+"17185": [
+"Sant Joan les Fonts",
+"17"
+],
+"17186": [
+"Sarrià de Ter",
+"17"
+],
+"17189": [
+"La Cellera de Ter",
+"17"
+],
+"17190": [
+"Serinyà",
+"17"
+],
+"17193": [
+"Sils",
+"17"
+],
+"17199": [
+"Torroella de Montgrí",
+"17"
+],
+"17202": [
+"Tossa de Mar",
+"17"
+],
+"17204": [
+"Ullà",
+"17"
+],
+"17207": [
+"La Vall d'en Bas",
+"17"
+],
+"17208": [
+"La Vall de Bianya",
+"17"
+],
+"17211": [
+"Verges",
+"17"
+],
+"17213": [
+"Vidreres",
+"17"
+],
+"17215": [
+"Vilablareix",
+"17"
+],
+"17220": [
+"Viladrau",
+"17"
+],
+"17221": [
+"Vilafant",
+"17"
+],
+"17223": [
+"Vilajuïga",
+"17"
+],
+"17226": [
+"Vilamalla",
+"17"
+],
+"17233": [
+"Vilobí d'Onyar",
+"17"
+],
+"17901": [
+"Cruïlles, Monells i Sant Sadurní de l'Heura",
+"17"
+],
+"17902": [
+"Forallac",
+"17"
+],
+"17903": [
+"Sant Julià del Llor i Bonmatí",
+"17"
+],
+"18003": [
+"Albolote",
+"18"
+],
+"18006": [
+"Albuñol",
+"18"
+],
+"18011": [
+"Alfacar",
+"18"
+],
+"18012": [
+"Algarinejo",
+"18"
+],
+"18013": [
+"Alhama de Granada",
+"18"
+],
+"18014": [
+"Alhendín",
+"18"
+],
+"18017": [
+"Almuñécar",
+"18"
+],
+"18021": [
+"Armilla",
+"18"
+],
+"18022": [
+"Atarfe",
+"18"
+],
+"18023": [
+"Baza",
+"18"
+],
+"18024": [
+"Beas de Granada",
+"18"
+],
+"18027": [
+"Benalúa",
+"18"
+],
+"18028": [
+"Benalúa de las Villas",
+"18"
+],
+"18029": [
+"Benamaurel",
+"18"
+],
+"18035": [
+"Cádiar",
+"18"
+],
+"18036": [
+"Cájar",
+"18"
+],
+"18038": [
+"Campotéjar",
+"18"
+],
+"18039": [
+"Caniles",
+"18"
+],
+"18045": [
+"Castilléjar",
+"18"
+],
+"18046": [
+"Castril",
+"18"
+],
+"18047": [
+"Cenes de la Vega",
+"18"
+],
+"18048": [
+"Cijuela",
+"18"
+],
+"18050": [
+"Cogollos de la Vega",
+"18"
+],
+"18051": [
+"Colomera",
+"18"
+],
+"18053": [
+"Cortes de Baza",
+"18"
+],
+"18056": [
+"Cúllar",
+"18"
+],
+"18057": [
+"Cúllar Vega",
+"18"
+],
+"18059": [
+"Chauchina",
+"18"
+],
+"18061": [
+"Chimeneas",
+"18"
+],
+"18062": [
+"Churriana de la Vega",
+"18"
+],
+"18063": [
+"Darro",
+"18"
+],
+"18066": [
+"Deifontes",
+"18"
+],
+"18068": [
+"Dílar",
+"18"
+],
+"18071": [
+"Dúrcal",
+"18"
+],
+"18079": [
+"Fuente Vaqueros",
+"18"
+],
+"18082": [
+"Galera",
+"18"
+],
+"18084": [
+"Gójar",
+"18"
+],
+"18087": [
+"Granada",
+"18"
+],
+"18088": [
+"Guadahortuna",
+"18"
+],
+"18089": [
+"Guadix",
+"18"
+],
+"18093": [
+"Gualchos",
+"18"
+],
+"18094": [
+"Güéjar Sierra",
+"18"
+],
+"18095": [
+"Güevéjar",
+"18"
+],
+"18097": [
+"Huéneja",
+"18"
+],
+"18098": [
+"Huéscar",
+"18"
+],
+"18099": [
+"Huétor de Santillán",
+"18"
+],
+"18100": [
+"Huétor Tájar",
+"18"
+],
+"18101": [
+"Huétor Vega",
+"18"
+],
+"18102": [
+"Íllora",
+"18"
+],
+"18105": [
+"Iznalloz",
+"18"
+],
+"18111": [
+"Jun",
+"18"
+],
+"18115": [
+"Láchar",
+"18"
+],
+"18116": [
+"Lanjarón",
+"18"
+],
+"18119": [
+"Lecrín",
+"18"
+],
+"18122": [
+"Loja",
+"18"
+],
+"18126": [
+"La Malahá",
+"18"
+],
+"18127": [
+"Maracena",
+"18"
+],
+"18132": [
+"Moclín",
+"18"
+],
+"18133": [
+"Molvízar",
+"18"
+],
+"18134": [
+"Monachil",
+"18"
+],
+"18135": [
+"Montefrío",
+"18"
+],
+"18136": [
+"Montejícar",
+"18"
+],
+"18137": [
+"Montillana",
+"18"
+],
+"18138": [
+"Moraleda de Zafayona",
+"18"
+],
+"18140": [
+"Motril",
+"18"
+],
+"18143": [
+"Nigüelas",
+"18"
+],
+"18144": [
+"Nívar",
+"18"
+],
+"18145": [
+"Ogíjares",
+"18"
+],
+"18146": [
+"Orce",
+"18"
+],
+"18147": [
+"Órgiva",
+"18"
+],
+"18148": [
+"Otívar",
+"18"
+],
+"18149": [
+"Villa de Otura",
+"18"
+],
+"18150": [
+"Padul",
+"18"
+],
+"18152": [
+"Pedro Martínez",
+"18"
+],
+"18153": [
+"Peligros",
+"18"
+],
+"18154": [
+"La Peza",
+"18"
+],
+"18157": [
+"Pinos Genil",
+"18"
+],
+"18158": [
+"Pinos Puente",
+"18"
+],
+"18159": [
+"Píñar",
+"18"
+],
+"18162": [
+"Polopos",
+"18"
+],
+"18164": [
+"Puebla de Don Fadrique",
+"18"
+],
+"18165": [
+"Pulianas",
+"18"
+],
+"18167": [
+"Purullena",
+"18"
+],
+"18171": [
+"Salar",
+"18"
+],
+"18173": [
+"Salobreña",
+"18"
+],
+"18175": [
+"Santa Fe",
+"18"
+],
+"18182": [
+"Ugíjar",
+"18"
+],
+"18184": [
+"Vélez de Benaudalla",
+"18"
+],
+"18188": [
+"Villanueva Mesía",
+"18"
+],
+"18192": [
+"Zafarraya",
+"18"
+],
+"18193": [
+"La Zubia",
+"18"
+],
+"18194": [
+"Zújar",
+"18"
+],
+"18903": [
+"Nevada",
+"18"
+],
+"18905": [
+"Las Gabias",
+"18"
+],
+"18906": [
+"Los Guájares",
+"18"
+],
+"18907": [
+"Valle del Zalabí",
+"18"
+],
+"18908": [
+"Villamena",
+"18"
+],
+"18911": [
+"Vegas del Genil",
+"18"
+],
+"18912": [
+"Cuevas del Campo",
+"18"
+],
+"18914": [
+"Valderrubio",
+"18"
+],
+"18916": [
+"Torrenueva Costa",
+"18"
+],
+"19006": [
+"Albalate de Zorita",
+"19"
+],
+"19021": [
+"Almoguera",
+"19"
+],
+"19024": [
+"Alovera",
+"19"
+],
+"19046": [
+"Azuqueca de Henares",
+"19"
+],
+"19053": [
+"Brihuega",
+"19"
+],
+"19058": [
+"Cabanillas del Campo",
+"19"
+],
+"19071": [
+"El Casar",
+"19"
+],
+"19086": [
+"Cifuentes",
+"19"
+],
+"19105": [
+"Chiloeches",
+"19"
+],
+"19117": [
+"Fontanar",
+"19"
+],
+"19126": [
+"Galápagos",
+"19"
+],
+"19130": [
+"Guadalajara",
+"19"
+],
+"19143": [
+"Horche",
+"19"
+],
+"19151": [
+"Humanes",
+"19"
+],
+"19156": [
+"Jadraque",
+"19"
+],
+"19160": [
+"Loranca de Tajuña",
+"19"
+],
+"19171": [
+"Marchamalo",
+"19"
+],
+"19190": [
+"Molina de Aragón",
+"19"
+],
+"19192": [
+"Mondéjar",
+"19"
+],
+"19220": [
+"Pioz",
+"19"
+],
+"19225": [
+"Pozo de Guadalajara",
+"19"
+],
+"19230": [
+"Quer",
+"19"
+],
+"19245": [
+"Sacedón",
+"19"
+],
+"19257": [
+"Sigüenza",
+"19"
+],
+"19274": [
+"Torija",
+"19"
+],
+"19280": [
+"Torrejón del Rey",
+"19"
+],
+"19286": [
+"Tórtola de Henares",
+"19"
+],
+"19290": [
+"Trijueque",
+"19"
+],
+"19291": [
+"Trillo",
+"19"
+],
+"19293": [
+"Uceda",
+"19"
+],
+"19300": [
+"Valdeaveruelo",
+"19"
+],
+"19319": [
+"Villanueva de la Torre",
+"19"
+],
+"19326": [
+"Yebes",
+"19"
+],
+"19331": [
+"Yunquera de Henares",
+"19"
+],
+"20005": [
+"Alegia",
+"20"
+],
+"20009": [
+"Andoain",
+"20"
+],
+"20010": [
+"Anoeta",
+"20"
+],
+"20011": [
+"Antzuola",
+"20"
+],
+"20013": [
+"Aretxabaleta",
+"20"
+],
+"20014": [
+"Asteasu",
+"20"
+],
+"20015": [
+"Ataun",
+"20"
+],
+"20016": [
+"Aia",
+"20"
+],
+"20017": [
+"Azkoitia",
+"20"
+],
+"20018": [
+"Azpeitia",
+"20"
+],
+"20019": [
+"Beasain",
+"20"
+],
+"20022": [
+"Berastegi",
+"20"
+],
+"20025": [
+"Zegama",
+"20"
+],
+"20027": [
+"Zestoa",
+"20"
+],
+"20028": [
+"Zizurkil",
+"20"
+],
+"20029": [
+"Deba",
+"20"
+],
+"20030": [
+"Eibar",
+"20"
+],
+"20032": [
+"Elgoibar",
+"20"
+],
+"20033": [
+"Elgeta",
+"20"
+],
+"20034": [
+"Eskoriatza",
+"20"
+],
+"20036": [
+"Hondarribia",
+"20"
+],
+"20039": [
+"Getaria",
+"20"
+],
+"20040": [
+"Hernani",
+"20"
+],
+"20042": [
+"Ibarra",
+"20"
+],
+"20043": [
+"Idiazabal",
+"20"
+],
+"20045": [
+"Irun",
+"20"
+],
+"20046": [
+"Irura",
+"20"
+],
+"20049": [
+"Lazkao",
+"20"
+],
+"20051": [
+"Legazpi",
+"20"
+],
+"20052": [
+"Legorreta",
+"20"
+],
+"20053": [
+"Lezo",
+"20"
+],
+"20055": [
+"Arrasate/Mondragón",
+"20"
+],
+"20056": [
+"Mutriku",
+"20"
+],
+"20059": [
+"Oñati",
+"20"
+],
+"20061": [
+"Orio",
+"20"
+],
+"20062": [
+"Ormaiztegi",
+"20"
+],
+"20063": [
+"Oiartzun",
+"20"
+],
+"20064": [
+"Pasaia",
+"20"
+],
+"20065": [
+"Soraluze-Placencia de las Armas",
+"20"
+],
+"20067": [
+"Errenteria",
+"20"
+],
+"20069": [
+"Donostia/San Sebastián",
+"20"
+],
+"20070": [
+"Segura",
+"20"
+],
+"20071": [
+"Tolosa",
+"20"
+],
+"20072": [
+"Urnieta",
+"20"
+],
+"20073": [
+"Usurbil",
+"20"
+],
+"20074": [
+"Bergara",
+"20"
+],
+"20075": [
+"Villabona",
+"20"
+],
+"20076": [
+"Ordizia",
+"20"
+],
+"20077": [
+"Urretxu",
+"20"
+],
+"20078": [
+"Zaldibia",
+"20"
+],
+"20079": [
+"Zarautz",
+"20"
+],
+"20080": [
+"Zumarraga",
+"20"
+],
+"20081": [
+"Zumaia",
+"20"
+],
+"20901": [
+"Mendaro",
+"20"
+],
+"20902": [
+"Lasarte-Oria",
+"20"
+],
+"20903": [
+"Astigarraga",
+"20"
+],
+"21002": [
+"Aljaraque",
+"21"
+],
+"21004": [
+"Almonaster la Real",
+"21"
+],
+"21005": [
+"Almonte",
+"21"
+],
+"21006": [
+"Alosno",
+"21"
+],
+"21007": [
+"Aracena",
+"21"
+],
+"21008": [
+"Aroche",
+"21"
+],
+"21010": [
+"Ayamonte",
+"21"
+],
+"21011": [
+"Beas",
+"21"
+],
+"21013": [
+"Bollullos Par del Condado",
+"21"
+],
+"21014": [
+"Bonares",
+"21"
+],
+"21016": [
+"Cala",
+"21"
+],
+"21017": [
+"Calañas",
+"21"
+],
+"21018": [
+"El Campillo",
+"21"
+],
+"21021": [
+"Cartaya",
+"21"
+],
+"21023": [
+"El Cerro de Andévalo",
+"21"
+],
+"21025": [
+"Cortegana",
+"21"
+],
+"21029": [
+"Cumbres Mayores",
+"21"
+],
+"21030": [
+"Chucena",
+"21"
+],
+"21031": [
+"Encinasola",
+"21"
+],
+"21032": [
+"Escacena del Campo",
+"21"
+],
+"21034": [
+"Galaroza",
+"21"
+],
+"21035": [
+"Gibraleón",
+"21"
+],
+"21038": [
+"Higuera de la Sierra",
+"21"
+],
+"21040": [
+"Hinojos",
+"21"
+],
+"21041": [
+"Huelva",
+"21"
+],
+"21042": [
+"Isla Cristina",
+"21"
+],
+"21043": [
+"Jabugo",
+"21"
+],
+"21044": [
+"Lepe",
+"21"
+],
+"21046": [
+"Lucena del Puerto",
+"21"
+],
+"21047": [
+"Manzanilla",
+"21"
+],
+"21049": [
+"Minas de Riotinto",
+"21"
+],
+"21050": [
+"Moguer",
+"21"
+],
+"21052": [
+"Nerva",
+"21"
+],
+"21053": [
+"Niebla",
+"21"
+],
+"21054": [
+"La Palma del Condado",
+"21"
+],
+"21055": [
+"Palos de la Frontera",
+"21"
+],
+"21056": [
+"Paterna del Campo",
+"21"
+],
+"21057": [
+"Paymogo",
+"21"
+],
+"21058": [
+"Puebla de Guzmán",
+"21"
+],
+"21060": [
+"Punta Umbría",
+"21"
+],
+"21061": [
+"Rociana del Condado",
+"21"
+],
+"21062": [
+"Rosal de la Frontera",
+"21"
+],
+"21063": [
+"San Bartolomé de la Torre",
+"21"
+],
+"21064": [
+"San Juan del Puerto",
+"21"
+],
+"21068": [
+"Santa Bárbara de Casa",
+"21"
+],
+"21069": [
+"Santa Olalla del Cala",
+"21"
+],
+"21070": [
+"Trigueros",
+"21"
+],
+"21072": [
+"Valverde del Camino",
+"21"
+],
+"21073": [
+"Villablanca",
+"21"
+],
+"21074": [
+"Villalba del Alcor",
+"21"
+],
+"21076": [
+"Villanueva de los Castillejos",
+"21"
+],
+"21077": [
+"Villarrasa",
+"21"
+],
+"21078": [
+"Zalamea la Real",
+"21"
+],
+"21902": [
+"La Zarza-Perrunal",
+"21"
+],
+"22007": [
+"Albalate de Cinca",
+"22"
+],
+"22017": [
+"Alcolea de Cinca",
+"22"
+],
+"22021": [
+"Almudévar",
+"22"
+],
+"22025": [
+"Altorricón",
+"22"
+],
+"22039": [
+"Ayerbe",
+"22"
+],
+"22048": [
+"Barbastro",
+"22"
+],
+"22052": [
+"Belver de Cinca",
+"22"
+],
+"22053": [
+"Benabarre",
+"22"
+],
+"22054": [
+"Benasque",
+"22"
+],
+"22059": [
+"Biescas",
+"22"
+],
+"22060": [
+"Binaced",
+"22"
+],
+"22061": [
+"Binéfar",
+"22"
+],
+"22066": [
+"Boltaña",
+"22"
+],
+"22112": [
+"Fraga",
+"22"
+],
+"22116": [
+"Grañén",
+"22"
+],
+"22117": [
+"Graus",
+"22"
+],
+"22119": [
+"Gurrea de Gállego",
+"22"
+],
+"22125": [
+"Huesca",
+"22"
+],
+"22130": [
+"Jaca",
+"22"
+],
+"22137": [
+"Lanaja",
+"22"
+],
+"22158": [
+"Monzón",
+"22"
+],
+"22199": [
+"Sabiñánigo",
+"22"
+],
+"22204": [
+"Sallent de Gállego",
+"22"
+],
+"22213": [
+"Sariñena",
+"22"
+],
+"22225": [
+"Tamarite de Litera",
+"22"
+],
+"22234": [
+"Torrente de Cinca",
+"22"
+],
+"22254": [
+"Zaidín",
+"22"
+],
+"22907": [
+"Aínsa-Sobrarbe",
+"22"
+],
+"23002": [
+"Alcalá la Real",
+"23"
+],
+"23003": [
+"Alcaudete",
+"23"
+],
+"23005": [
+"Andújar",
+"23"
+],
+"23006": [
+"Arjona",
+"23"
+],
+"23007": [
+"Arjonilla",
+"23"
+],
+"23008": [
+"Arquillos",
+"23"
+],
+"23009": [
+"Baeza",
+"23"
+],
+"23010": [
+"Bailén",
+"23"
+],
+"23011": [
+"Baños de la Encina",
+"23"
+],
+"23012": [
+"Beas de Segura",
+"23"
+],
+"23014": [
+"Begíjar",
+"23"
+],
+"23015": [
+"Bélmez de la Moraleda",
+"23"
+],
+"23017": [
+"Cabra del Santo Cristo",
+"23"
+],
+"23018": [
+"Cambil",
+"23"
+],
+"23019": [
+"Campillo de Arenas",
+"23"
+],
+"23020": [
+"Canena",
+"23"
+],
+"23024": [
+"La Carolina",
+"23"
+],
+"23025": [
+"Castellar",
+"23"
+],
+"23026": [
+"Castillo de Locubín",
+"23"
+],
+"23028": [
+"Cazorla",
+"23"
+],
+"23030": [
+"Chilluévar",
+"23"
+],
+"23033": [
+"Frailes",
+"23"
+],
+"23034": [
+"Fuensanta de Martos",
+"23"
+],
+"23035": [
+"Fuerte del Rey",
+"23"
+],
+"23038": [
+"La Guardia de Jaén",
+"23"
+],
+"23039": [
+"Guarromán",
+"23"
+],
+"23040": [
+"Lahiguera",
+"23"
+],
+"23044": [
+"Huelma",
+"23"
+],
+"23045": [
+"Huesa",
+"23"
+],
+"23046": [
+"Ibros",
+"23"
+],
+"23047": [
+"La Iruela",
+"23"
+],
+"23049": [
+"Jabalquinto",
+"23"
+],
+"23050": [
+"Jaén",
+"23"
+],
+"23051": [
+"Jamilena",
+"23"
+],
+"23052": [
+"Jimena",
+"23"
+],
+"23053": [
+"Jódar",
+"23"
+],
+"23055": [
+"Linares",
+"23"
+],
+"23056": [
+"Lopera",
+"23"
+],
+"23058": [
+"Mancha Real",
+"23"
+],
+"23059": [
+"Marmolejo",
+"23"
+],
+"23060": [
+"Martos",
+"23"
+],
+"23061": [
+"Mengíbar",
+"23"
+],
+"23062": [
+"Montizón",
+"23"
+],
+"23063": [
+"Navas de San Juan",
+"23"
+],
+"23064": [
+"Noalejo",
+"23"
+],
+"23065": [
+"Orcera",
+"23"
+],
+"23066": [
+"Peal de Becerro",
+"23"
+],
+"23067": [
+"Pegalajar",
+"23"
+],
+"23069": [
+"Porcuna",
+"23"
+],
+"23070": [
+"Pozo Alcón",
+"23"
+],
+"23071": [
+"Puente de Génave",
+"23"
+],
+"23072": [
+"La Puerta de Segura",
+"23"
+],
+"23073": [
+"Quesada",
+"23"
+],
+"23074": [
+"Rus",
+"23"
+],
+"23075": [
+"Sabiote",
+"23"
+],
+"23079": [
+"Santisteban del Puerto",
+"23"
+],
+"23080": [
+"Santo Tomé",
+"23"
+],
+"23081": [
+"Segura de la Sierra",
+"23"
+],
+"23082": [
+"Siles",
+"23"
+],
+"23084": [
+"Sorihuela del Guadalimar",
+"23"
+],
+"23085": [
+"Torreblascopedro",
+"23"
+],
+"23086": [
+"Torredelcampo",
+"23"
+],
+"23087": [
+"Torredonjimeno",
+"23"
+],
+"23088": [
+"Torreperogil",
+"23"
+],
+"23090": [
+"Torres",
+"23"
+],
+"23092": [
+"Úbeda",
+"23"
+],
+"23093": [
+"Valdepeñas de Jaén",
+"23"
+],
+"23094": [
+"Vilches",
+"23"
+],
+"23095": [
+"Villacarrillo",
+"23"
+],
+"23096": [
+"Villanueva de la Reina",
+"23"
+],
+"23097": [
+"Villanueva del Arzobispo",
+"23"
+],
+"23099": [
+"Los Villares",
+"23"
+],
+"23901": [
+"Cárcheles",
+"23"
+],
+"23902": [
+"Bedmar y Garcíez",
+"23"
+],
+"23903": [
+"Villatorres",
+"23"
+],
+"23904": [
+"Santiago-Pontones",
+"23"
+],
+"23905": [
+"Arroyo del Ojanco",
+"23"
+],
+"24008": [
+"Astorga",
+"24"
+],
+"24010": [
+"La Bañeza",
+"24"
+],
+"24014": [
+"Bembibre",
+"24"
+],
+"24015": [
+"Benavides",
+"24"
+],
+"24021": [
+"Boñar",
+"24"
+],
+"24026": [
+"Bustillo del Páramo",
+"24"
+],
+"24027": [
+"Cabañas Raras",
+"24"
+],
+"24030": [
+"Cacabelos",
+"24"
+],
+"24034": [
+"Camponaraya",
+"24"
+],
+"24038": [
+"Carracedelo",
+"24"
+],
+"24039": [
+"Carrizo",
+"24"
+],
+"24049": [
+"Castropodame",
+"24"
+],
+"24056": [
+"Cistierna",
+"24"
+],
+"24057": [
+"Congosto",
+"24"
+],
+"24061": [
+"Cuadros",
+"24"
+],
+"24064": [
+"Cubillos del Sil",
+"24"
+],
+"24065": [
+"Chozas de Abajo",
+"24"
+],
+"24070": [
+"Fabero",
+"24"
+],
+"24076": [
+"Garrafe de Torío",
+"24"
+],
+"24083": [
+"Igüeña",
+"24"
+],
+"24088": [
+"Laguna de Negrillos",
+"24"
+],
+"24089": [
+"León",
+"24"
+],
+"24094": [
+"Mansilla de las Mulas",
+"24"
+],
+"24098": [
+"Matallana de Torío",
+"24"
+],
+"24105": [
+"Onzonilla",
+"24"
+],
+"24110": [
+"Páramo del Sil",
+"24"
+],
+"24114": [
+"La Pola de Gordón",
+"24"
+],
+"24115": [
+"Ponferrada",
+"24"
+],
+"24122": [
+"Puente de Domingo Flórez",
+"24"
+],
+"24134": [
+"La Robla",
+"24"
+],
+"24137": [
+"Sabero",
+"24"
+],
+"24139": [
+"Sahagún",
+"24"
+],
+"24142": [
+"San Andrés del Rabanedo",
+"24"
+],
+"24148": [
+"San Justo de la Vega",
+"24"
+],
+"24154": [
+"Santa Elena de Jamuz",
+"24"
+],
+"24157": [
+"Santa María del Páramo",
+"24"
+],
+"24159": [
+"Santa Marina del Rey",
+"24"
+],
+"24162": [
+"Santovenia de la Valdoncina",
+"24"
+],
+"24163": [
+"Sariegos",
+"24"
+],
+"24166": [
+"Soto de la Vega",
+"24"
+],
+"24169": [
+"Toreno",
+"24"
+],
+"24170": [
+"Torre del Bierzo",
+"24"
+],
+"24175": [
+"Valdefresno",
+"24"
+],
+"24180": [
+"Valdepolo",
+"24"
+],
+"24181": [
+"Valderas",
+"24"
+],
+"24188": [
+"Valencia de Don Juan",
+"24"
+],
+"24189": [
+"Valverde de la Virgen",
+"24"
+],
+"24196": [
+"Vega de Espinareda",
+"24"
+],
+"24201": [
+"Vegas del Condado",
+"24"
+],
+"24202": [
+"Villablino",
+"24"
+],
+"24205": [
+"Villadangos del Páramo",
+"24"
+],
+"24206": [
+"Toral de los Vados",
+"24"
+],
+"24209": [
+"Villafranca del Bierzo",
+"24"
+],
+"24212": [
+"Villamañán",
+"24"
+],
+"24222": [
+"Villaquilambre",
+"24"
+],
+"24223": [
+"Villarejo de Órbigo",
+"24"
+],
+"24225": [
+"Villasabariego",
+"24"
+],
+"24227": [
+"Villaturiel",
+"24"
+],
+"25003": [
+"Agramunt",
+"25"
+],
+"25007": [
+"Albatàrrec",
+"25"
+],
+"25008": [
+"Albesa",
+"25"
+],
+"25011": [
+"Alcarràs",
+"25"
+],
+"25012": [
+"Alcoletge",
+"25"
+],
+"25013": [
+"Alfarràs",
+"25"
+],
+"25016": [
+"Alguaire",
+"25"
+],
+"25019": [
+"Almacelles",
+"25"
+],
+"25021": [
+"Almenar",
+"25"
+],
+"25023": [
+"Alpicat",
+"25"
+],
+"25025": [
+"Naut Aran",
+"25"
+],
+"25027": [
+"Anglesola",
+"25"
+],
+"25029": [
+"Arbeca",
+"25"
+],
+"25033": [
+"Artesa de Lleida",
+"25"
+],
+"25034": [
+"Artesa de Segre",
+"25"
+],
+"25038": [
+"Aitona",
+"25"
+],
+"25040": [
+"Balaguer",
+"25"
+],
+"25043": [
+"La Vall de Boí",
+"25"
+],
+"25047": [
+"Bellcaire d'Urgell",
+"25"
+],
+"25048": [
+"Bell-lloc d'Urgell",
+"25"
+],
+"25050": [
+"Bellpuig",
+"25"
+],
+"25051": [
+"Bellver de Cerdanya",
+"25"
+],
+"25052": [
+"Bellvís",
+"25"
+],
+"25053": [
+"Benavent de Segrià",
+"25"
+],
+"25058": [
+"Les Borges Blanques",
+"25"
+],
+"25059": [
+"Bossòst",
+"25"
+],
+"25072": [
+"Cervera",
+"25"
+],
+"25078": [
+"Corbins",
+"25"
+],
+"25096": [
+"La Fuliola",
+"25"
+],
+"25099": [
+"Golmés",
+"25"
+],
+"25110": [
+"Guissona",
+"25"
+],
+"25113": [
+"Ivars d'Urgell",
+"25"
+],
+"25115": [
+"Isona i Conca Dellà",
+"25"
+],
+"25119": [
+"Juneda",
+"25"
+],
+"25120": [
+"Lleida",
+"25"
+],
+"25121": [
+"Les",
+"25"
+],
+"25122": [
+"Linyola",
+"25"
+],
+"25135": [
+"Miralcamp",
+"25"
+],
+"25137": [
+"Mollerussa",
+"25"
+],
+"25140": [
+"Montferrer i Castellbò",
+"25"
+],
+"25149": [
+"Oliana",
+"25"
+],
+"25151": [
+"Olius",
+"25"
+],
+"25156": [
+"Os de Balaguer",
+"25"
+],
+"25158": [
+"El Palau d'Anglesola",
+"25"
+],
+"25171": [
+"La Pobla de Segur",
+"25"
+],
+"25172": [
+"Ponts",
+"25"
+],
+"25173": [
+"El Pont de Suert",
+"25"
+],
+"25182": [
+"Puigverd de Lleida",
+"25"
+],
+"25189": [
+"Rosselló",
+"25"
+],
+"25192": [
+"Sant Guim de Freixenet",
+"25"
+],
+"25203": [
+"La Seu d'Urgell",
+"25"
+],
+"25204": [
+"Seròs",
+"25"
+],
+"25207": [
+"Solsona",
+"25"
+],
+"25209": [
+"Sort",
+"25"
+],
+"25210": [
+"Soses",
+"25"
+],
+"25217": [
+"Tàrrega",
+"25"
+],
+"25220": [
+"Térmens",
+"25"
+],
+"25223": [
+"Torà",
+"25"
+],
+"25228": [
+"Torrefarrera",
+"25"
+],
+"25230": [
+"Torregrossa",
+"25"
+],
+"25232": [
+"Torres de Segre",
+"25"
+],
+"25234": [
+"Tremp",
+"25"
+],
+"25240": [
+"Vallfogona de Balaguer",
+"25"
+],
+"25243": [
+"Vielha e Mijaran",
+"25"
+],
+"25248": [
+"Vilanova de Bellpuig",
+"25"
+],
+"25251": [
+"Vilanova de Segrià",
+"25"
+],
+"25254": [
+"Vilanova de la Barca",
+"25"
+],
+"25912": [
+"Gimenells i el Pla de la Font",
+"25"
+],
+"26002": [
+"Agoncillo",
+"26"
+],
+"26005": [
+"Albelda de Iregua",
+"26"
+],
+"26006": [
+"Alberite",
+"26"
+],
+"26008": [
+"Aldeanueva de Ebro",
+"26"
+],
+"26011": [
+"Alfaro",
+"26"
+],
+"26018": [
+"Arnedo",
+"26"
+],
+"26021": [
+"Autol",
+"26"
+],
+"26026": [
+"Baños de Río Tobía",
+"26"
+],
+"26036": [
+"Calahorra",
+"26"
+],
+"26042": [
+"Casalarreina",
+"26"
+],
+"26046": [
+"Cenicero",
+"26"
+],
+"26047": [
+"Cervera del Río Alhama",
+"26"
+],
+"26059": [
+"Entrena",
+"26"
+],
+"26061": [
+"Ezcaray",
+"26"
+],
+"26064": [
+"Fuenmayor",
+"26"
+],
+"26071": [
+"Haro",
+"26"
+],
+"26084": [
+"Lardero",
+"26"
+],
+"26089": [
+"Logroño",
+"26"
+],
+"26099": [
+"Murillo de Río Leza",
+"26"
+],
+"26102": [
+"Nájera",
+"26"
+],
+"26103": [
+"Nalda",
+"26"
+],
+"26105": [
+"Navarrete",
+"26"
+],
+"26117": [
+"Pradejón",
+"26"
+],
+"26120": [
+"Quel",
+"26"
+],
+"26124": [
+"Ribafrecha",
+"26"
+],
+"26125": [
+"Rincón de Soto",
+"26"
+],
+"26129": [
+"San Asensio",
+"26"
+],
+"26138": [
+"Santo Domingo de la Calzada",
+"26"
+],
+"26168": [
+"Villamediana de Iregua",
+"26"
+],
+"27001": [
+"Abadín",
+"27"
+],
+"27002": [
+"Alfoz",
+"27"
+],
+"27003": [
+"Antas de Ulla",
+"27"
+],
+"27004": [
+"Baleira",
+"27"
+],
+"27005": [
+"Barreiros",
+"27"
+],
+"27006": [
+"Becerreá",
+"27"
+],
+"27007": [
+"Begonte",
+"27"
+],
+"27008": [
+"Bóveda",
+"27"
+],
+"27009": [
+"Carballedo",
+"27"
+],
+"27010": [
+"Castro de Rei",
+"27"
+],
+"27011": [
+"Castroverde",
+"27"
+],
+"27012": [
+"Cervantes",
+"27"
+],
+"27013": [
+"Cervo",
+"27"
+],
+"27014": [
+"O Corgo",
+"27"
+],
+"27015": [
+"Cospeito",
+"27"
+],
+"27016": [
+"Chantada",
+"27"
+],
+"27018": [
+"A Fonsagrada",
+"27"
+],
+"27019": [
+"Foz",
+"27"
+],
+"27020": [
+"Friol",
+"27"
+],
+"27021": [
+"Xermade",
+"27"
+],
+"27022": [
+"Guitiriz",
+"27"
+],
+"27023": [
+"Guntín",
+"27"
+],
+"27024": [
+"O Incio",
+"27"
+],
+"27025": [
+"Xove",
+"27"
+],
+"27026": [
+"Láncara",
+"27"
+],
+"27027": [
+"Lourenzá",
+"27"
+],
+"27028": [
+"Lugo",
+"27"
+],
+"27029": [
+"Meira",
+"27"
+],
+"27030": [
+"Mondoñedo",
+"27"
+],
+"27031": [
+"Monforte de Lemos",
+"27"
+],
+"27032": [
+"Monterroso",
+"27"
+],
+"27039": [
+"Outeiro de Rei",
+"27"
+],
+"27040": [
+"Palas de Rei",
+"27"
+],
+"27041": [
+"Pantón",
+"27"
+],
+"27042": [
+"Paradela",
+"27"
+],
+"27043": [
+"O Páramo",
+"27"
+],
+"27044": [
+"A Pastoriza",
+"27"
+],
+"27046": [
+"Pol",
+"27"
+],
+"27047": [
+"A Pobra do Brollón",
+"27"
+],
+"27048": [
+"A Pontenova",
+"27"
+],
+"27049": [
+"Portomarín",
+"27"
+],
+"27050": [
+"Quiroga",
+"27"
+],
+"27051": [
+"Ribadeo",
+"27"
+],
+"27054": [
+"Riotorto",
+"27"
+],
+"27055": [
+"Samos",
+"27"
+],
+"27056": [
+"Rábade",
+"27"
+],
+"27057": [
+"Sarria",
+"27"
+],
+"27058": [
+"O Saviñao",
+"27"
+],
+"27059": [
+"Sober",
+"27"
+],
+"27060": [
+"Taboada",
+"27"
+],
+"27061": [
+"Trabada",
+"27"
+],
+"27063": [
+"O Valadouro",
+"27"
+],
+"27064": [
+"O Vicedo",
+"27"
+],
+"27065": [
+"Vilalba",
+"27"
+],
+"27066": [
+"Viveiro",
+"27"
+],
+"27901": [
+"Baralla",
+"27"
+],
+"27902": [
+"Burela",
+"27"
+],
+"28002": [
+"Ajalvir",
+"28"
+],
+"28004": [
+"El Álamo",
+"28"
+],
+"28005": [
+"Alcalá de Henares",
+"28"
+],
+"28006": [
+"Alcobendas",
+"28"
+],
+"28007": [
+"Alcorcón",
+"28"
+],
+"28008": [
+"Aldea del Fresno",
+"28"
+],
+"28009": [
+"Algete",
+"28"
+],
+"28010": [
+"Alpedrete",
+"28"
+],
+"28012": [
+"Anchuelo",
+"28"
+],
+"28013": [
+"Aranjuez",
+"28"
+],
+"28014": [
+"Arganda del Rey",
+"28"
+],
+"28015": [
+"Arroyomolinos",
+"28"
+],
+"28017": [
+"Batres",
+"28"
+],
+"28018": [
+"Becerril de la Sierra",
+"28"
+],
+"28019": [
+"Belmonte de Tajo",
+"28"
+],
+"28022": [
+"Boadilla del Monte",
+"28"
+],
+"28023": [
+"El Boalo",
+"28"
+],
+"28026": [
+"Brunete",
+"28"
+],
+"28027": [
+"Buitrago del Lozoya",
+"28"
+],
+"28028": [
+"Bustarviejo",
+"28"
+],
+"28030": [
+"La Cabrera",
+"28"
+],
+"28031": [
+"Cadalso de los Vidrios",
+"28"
+],
+"28032": [
+"Camarma de Esteruelas",
+"28"
+],
+"28033": [
+"Campo Real",
+"28"
+],
+"28035": [
+"Carabaña",
+"28"
+],
+"28036": [
+"Casarrubuelos",
+"28"
+],
+"28037": [
+"Cenicientos",
+"28"
+],
+"28038": [
+"Cercedilla",
+"28"
+],
+"28040": [
+"Ciempozuelos",
+"28"
+],
+"28041": [
+"Cobeña",
+"28"
+],
+"28042": [
+"Colmenar del Arroyo",
+"28"
+],
+"28043": [
+"Colmenar de Oreja",
+"28"
+],
+"28044": [
+"Colmenarejo",
+"28"
+],
+"28045": [
+"Colmenar Viejo",
+"28"
+],
+"28046": [
+"Collado Mediano",
+"28"
+],
+"28047": [
+"Collado Villalba",
+"28"
+],
+"28049": [
+"Coslada",
+"28"
+],
+"28050": [
+"Cubas de la Sagra",
+"28"
+],
+"28051": [
+"Chapinería",
+"28"
+],
+"28052": [
+"Chinchón",
+"28"
+],
+"28053": [
+"Daganzo de Arriba",
+"28"
+],
+"28054": [
+"El Escorial",
+"28"
+],
+"28055": [
+"Estremera",
+"28"
+],
+"28056": [
+"Fresnedillas de la Oliva",
+"28"
+],
+"28057": [
+"Fresno de Torote",
+"28"
+],
+"28058": [
+"Fuenlabrada",
+"28"
+],
+"28059": [
+"Fuente el Saz de Jarama",
+"28"
+],
+"28060": [
+"Fuentidueña de Tajo",
+"28"
+],
+"28061": [
+"Galapagar",
+"28"
+],
+"28065": [
+"Getafe",
+"28"
+],
+"28066": [
+"Griñón",
+"28"
+],
+"28067": [
+"Guadalix de la Sierra",
+"28"
+],
+"28068": [
+"Guadarrama",
+"28"
+],
+"28072": [
+"Hoyo de Manzanares",
+"28"
+],
+"28073": [
+"Humanes de Madrid",
+"28"
+],
+"28074": [
+"Leganés",
+"28"
+],
+"28075": [
+"Loeches",
+"28"
+],
+"28079": [
+"Madrid",
+"28"
+],
+"28080": [
+"Majadahonda",
+"28"
+],
+"28082": [
+"Manzanares el Real",
+"28"
+],
+"28083": [
+"Meco",
+"28"
+],
+"28084": [
+"Mejorada del Campo",
+"28"
+],
+"28085": [
+"Miraflores de la Sierra",
+"28"
+],
+"28086": [
+"El Molar",
+"28"
+],
+"28087": [
+"Los Molinos",
+"28"
+],
+"28089": [
+"Moraleja de Enmedio",
+"28"
+],
+"28090": [
+"Moralzarzal",
+"28"
+],
+"28091": [
+"Morata de Tajuña",
+"28"
+],
+"28092": [
+"Móstoles",
+"28"
+],
+"28093": [
+"Navacerrada",
+"28"
+],
+"28094": [
+"Navalafuente",
+"28"
+],
+"28095": [
+"Navalagamella",
+"28"
+],
+"28096": [
+"Navalcarnero",
+"28"
+],
+"28099": [
+"Navas del Rey",
+"28"
+],
+"28100": [
+"Nuevo Baztán",
+"28"
+],
+"28102": [
+"Orusco de Tajuña",
+"28"
+],
+"28104": [
+"Paracuellos de Jarama",
+"28"
+],
+"28106": [
+"Parla",
+"28"
+],
+"28108": [
+"Pedrezuela",
+"28"
+],
+"28109": [
+"Pelayos de la Presa",
+"28"
+],
+"28110": [
+"Perales de Tajuña",
+"28"
+],
+"28113": [
+"Pinto",
+"28"
+],
+"28115": [
+"Pozuelo de Alarcón",
+"28"
+],
+"28116": [
+"Pozuelo del Rey",
+"28"
+],
+"28119": [
+"Quijorna",
+"28"
+],
+"28120": [
+"Rascafría",
+"28"
+],
+"28123": [
+"Rivas-Vaciamadrid",
+"28"
+],
+"28125": [
+"Robledo de Chavela",
+"28"
+],
+"28127": [
+"Las Rozas de Madrid",
+"28"
+],
+"28129": [
+"San Agustín del Guadalix",
+"28"
+],
+"28130": [
+"San Fernando de Henares",
+"28"
+],
+"28131": [
+"San Lorenzo de El Escorial",
+"28"
+],
+"28132": [
+"San Martín de la Vega",
+"28"
+],
+"28133": [
+"San Martín de Valdeiglesias",
+"28"
+],
+"28134": [
+"San Sebastián de los Reyes",
+"28"
+],
+"28135": [
+"Santa María de la Alameda",
+"28"
+],
+"28137": [
+"Los Santos de la Humosa",
+"28"
+],
+"28140": [
+"Serranillos del Valle",
+"28"
+],
+"28141": [
+"Sevilla la Nueva",
+"28"
+],
+"28144": [
+"Soto del Real",
+"28"
+],
+"28145": [
+"Talamanca de Jarama",
+"28"
+],
+"28146": [
+"Tielmes",
+"28"
+],
+"28147": [
+"Titulcia",
+"28"
+],
+"28148": [
+"Torrejón de Ardoz",
+"28"
+],
+"28149": [
+"Torrejón de la Calzada",
+"28"
+],
+"28150": [
+"Torrejón de Velasco",
+"28"
+],
+"28151": [
+"Torrelaguna",
+"28"
+],
+"28152": [
+"Torrelodones",
+"28"
+],
+"28153": [
+"Torremocha de Jarama",
+"28"
+],
+"28154": [
+"Torres de la Alameda",
+"28"
+],
+"28156": [
+"Valdeavero",
+"28"
+],
+"28157": [
+"Valdelaguna",
+"28"
+],
+"28158": [
+"Valdemanco",
+"28"
+],
+"28160": [
+"Valdemorillo",
+"28"
+],
+"28161": [
+"Valdemoro",
+"28"
+],
+"28162": [
+"Valdeolmos-Alalpardo",
+"28"
+],
+"28164": [
+"Valdetorres de Jarama",
+"28"
+],
+"28165": [
+"Valdilecha",
+"28"
+],
+"28167": [
+"Velilla de San Antonio",
+"28"
+],
+"28168": [
+"El Vellón",
+"28"
+],
+"28169": [
+"Venturada",
+"28"
+],
+"28170": [
+"Villaconejos",
+"28"
+],
+"28171": [
+"Villa del Prado",
+"28"
+],
+"28172": [
+"Villalbilla",
+"28"
+],
+"28174": [
+"Villamanta",
+"28"
+],
+"28175": [
+"Villamantilla",
+"28"
+],
+"28176": [
+"Villanueva de la Cañada",
+"28"
+],
+"28177": [
+"Villanueva del Pardillo",
+"28"
+],
+"28178": [
+"Villanueva de Perales",
+"28"
+],
+"28179": [
+"Villar del Olmo",
+"28"
+],
+"28180": [
+"Villarejo de Salvanés",
+"28"
+],
+"28181": [
+"Villaviciosa de Odón",
+"28"
+],
+"28183": [
+"Zarzalejo",
+"28"
+],
+"28901": [
+"Lozoyuela-Navas-Sieteiglesias",
+"28"
+],
+"28903": [
+"Tres Cantos",
+"28"
+],
+"29001": [
+"Alameda",
+"29"
+],
+"29002": [
+"Alcaucín",
+"29"
+],
+"29003": [
+"Alfarnate",
+"29"
+],
+"29005": [
+"Algarrobo",
+"29"
+],
+"29007": [
+"Alhaurín de la Torre",
+"29"
+],
+"29008": [
+"Alhaurín el Grande",
+"29"
+],
+"29009": [
+"Almáchar",
+"29"
+],
+"29010": [
+"Almargen",
+"29"
+],
+"29011": [
+"Almogía",
+"29"
+],
+"29012": [
+"Álora",
+"29"
+],
+"29013": [
+"Alozaina",
+"29"
+],
+"29015": [
+"Antequera",
+"29"
+],
+"29017": [
+"Archidona",
+"29"
+],
+"29018": [
+"Ardales",
+"29"
+],
+"29019": [
+"Arenas",
+"29"
+],
+"29020": [
+"Arriate",
+"29"
+],
+"29023": [
+"Benahavís",
+"29"
+],
+"29025": [
+"Benalmádena",
+"29"
+],
+"29026": [
+"Benamargosa",
+"29"
+],
+"29027": [
+"Benamocarra",
+"29"
+],
+"29028": [
+"Benaoján",
+"29"
+],
+"29031": [
+"El Burgo",
+"29"
+],
+"29032": [
+"Campillos",
+"29"
+],
+"29033": [
+"Canillas de Aceituno",
+"29"
+],
+"29035": [
+"Cañete la Real",
+"29"
+],
+"29038": [
+"Cártama",
+"29"
+],
+"29039": [
+"Casabermeja",
+"29"
+],
+"29040": [
+"Casarabonela",
+"29"
+],
+"29041": [
+"Casares",
+"29"
+],
+"29042": [
+"Coín",
+"29"
+],
+"29043": [
+"Colmenar",
+"29"
+],
+"29044": [
+"Comares",
+"29"
+],
+"29045": [
+"Cómpeta",
+"29"
+],
+"29046": [
+"Cortes de la Frontera",
+"29"
+],
+"29047": [
+"Cuevas Bajas",
+"29"
+],
+"29048": [
+"Cuevas del Becerro",
+"29"
+],
+"29049": [
+"Cuevas de San Marcos",
+"29"
+],
+"29051": [
+"Estepona",
+"29"
+],
+"29053": [
+"Frigiliana",
+"29"
+],
+"29054": [
+"Fuengirola",
+"29"
+],
+"29055": [
+"Fuente de Piedra",
+"29"
+],
+"29056": [
+"Gaucín",
+"29"
+],
+"29058": [
+"Guaro",
+"29"
+],
+"29059": [
+"Humilladero",
+"29"
+],
+"29061": [
+"Istán",
+"29"
+],
+"29067": [
+"Málaga",
+"29"
+],
+"29068": [
+"Manilva",
+"29"
+],
+"29069": [
+"Marbella",
+"29"
+],
+"29070": [
+"Mijas",
+"29"
+],
+"29071": [
+"Moclinejo",
+"29"
+],
+"29072": [
+"Mollina",
+"29"
+],
+"29073": [
+"Monda",
+"29"
+],
+"29075": [
+"Nerja",
+"29"
+],
+"29076": [
+"Ojén",
+"29"
+],
+"29079": [
+"Periana",
+"29"
+],
+"29080": [
+"Pizarra",
+"29"
+],
+"29082": [
+"Rincón de la Victoria",
+"29"
+],
+"29083": [
+"Riogordo",
+"29"
+],
+"29084": [
+"Ronda",
+"29"
+],
+"29086": [
+"Sayalonga",
+"29"
+],
+"29088": [
+"Sierra de Yeguas",
+"29"
+],
+"29089": [
+"Teba",
+"29"
+],
+"29090": [
+"Tolox",
+"29"
+],
+"29091": [
+"Torrox",
+"29"
+],
+"29093": [
+"Valle de Abdalajís",
+"29"
+],
+"29094": [
+"Vélez-Málaga",
+"29"
+],
+"29095": [
+"Villanueva de Algaidas",
+"29"
+],
+"29096": [
+"Villanueva del Rosario",
+"29"
+],
+"29097": [
+"Villanueva del Trabuco",
+"29"
+],
+"29098": [
+"Villanueva de Tapia",
+"29"
+],
+"29099": [
+"Viñuela",
+"29"
+],
+"29100": [
+"Yunquera",
+"29"
+],
+"29901": [
+"Torremolinos",
+"29"
+],
+"29902": [
+"Villanueva de la Concepción",
+"29"
+],
+"30001": [
+"Abanilla",
+"30"
+],
+"30002": [
+"Abarán",
+"30"
+],
+"30003": [
+"Águilas",
+"30"
+],
+"30004": [
+"Albudeite",
+"30"
+],
+"30005": [
+"Alcantarilla",
+"30"
+],
+"30006": [
+"Aledo",
+"30"
+],
+"30007": [
+"Alguazas",
+"30"
+],
+"30008": [
+"Alhama de Murcia",
+"30"
+],
+"30009": [
+"Archena",
+"30"
+],
+"30010": [
+"Beniel",
+"30"
+],
+"30011": [
+"Blanca",
+"30"
+],
+"30012": [
+"Bullas",
+"30"
+],
+"30013": [
+"Calasparra",
+"30"
+],
+"30014": [
+"Campos del Río",
+"30"
+],
+"30015": [
+"Caravaca de la Cruz",
+"30"
+],
+"30016": [
+"Cartagena",
+"30"
+],
+"30017": [
+"Cehegín",
+"30"
+],
+"30018": [
+"Ceutí",
+"30"
+],
+"30019": [
+"Cieza",
+"30"
+],
+"30020": [
+"Fortuna",
+"30"
+],
+"30021": [
+"Fuente Álamo de Murcia",
+"30"
+],
+"30022": [
+"Jumilla",
+"30"
+],
+"30023": [
+"Librilla",
+"30"
+],
+"30024": [
+"Lorca",
+"30"
+],
+"30025": [
+"Lorquí",
+"30"
+],
+"30026": [
+"Mazarrón",
+"30"
+],
+"30027": [
+"Molina de Segura",
+"30"
+],
+"30028": [
+"Moratalla",
+"30"
+],
+"30029": [
+"Mula",
+"30"
+],
+"30030": [
+"Murcia",
+"30"
+],
+"30032": [
+"Pliego",
+"30"
+],
+"30033": [
+"Puerto Lumbreras",
+"30"
+],
+"30034": [
+"Ricote",
+"30"
+],
+"30035": [
+"San Javier",
+"30"
+],
+"30036": [
+"San Pedro del Pinatar",
+"30"
+],
+"30037": [
+"Torre-Pacheco",
+"30"
+],
+"30038": [
+"Las Torres de Cotillas",
+"30"
+],
+"30039": [
+"Totana",
+"30"
+],
+"30041": [
+"La Unión",
+"30"
+],
+"30042": [
+"Villanueva del Río Segura",
+"30"
+],
+"30043": [
+"Yecla",
+"30"
+],
+"30901": [
+"Santomera",
+"30"
+],
+"30902": [
+"Los Alcázares",
+"30"
+],
+"31006": [
+"Ablitas",
+"31"
+],
+"31010": [
+"Altsasu/Alsasua",
+"31"
+],
+"31012": [
+"Allo",
+"31"
+],
+"31015": [
+"Andosilla",
+"31"
+],
+"31016": [
+"Ansoáin/Antsoain",
+"31"
+],
+"31019": [
+"Aoiz/Agoitz",
+"31"
+],
+"31023": [
+"Aranguren",
+"31"
+],
+"31025": [
+"Arakil",
+"31"
+],
+"31027": [
+"Arbizu",
+"31"
+],
+"31029": [
+"Los Arcos",
+"31"
+],
+"31032": [
+"Arguedas",
+"31"
+],
+"31036": [
+"Arróniz",
+"31"
+],
+"31038": [
+"Artajona",
+"31"
+],
+"31041": [
+"Ayegui/Aiegi",
+"31"
+],
+"31042": [
+"Azagra",
+"31"
+],
+"31050": [
+"Baztan",
+"31"
+],
+"31057": [
+"Buñuel",
+"31"
+],
+"31060": [
+"Burlada/Burlata",
+"31"
+],
+"31062": [
+"Cabanillas",
+"31"
+],
+"31064": [
+"Cadreita",
+"31"
+],
+"31065": [
+"Caparroso",
+"31"
+],
+"31066": [
+"Cárcar",
+"31"
+],
+"31067": [
+"Carcastillo",
+"31"
+],
+"31068": [
+"Cascante",
+"31"
+],
+"31070": [
+"Castejón",
+"31"
+],
+"31072": [
+"Cintruénigo",
+"31"
+],
+"31076": [
+"Cizur",
+"31"
+],
+"31077": [
+"Corella",
+"31"
+],
+"31078": [
+"Cortes",
+"31"
+],
+"31084": [
+"Etxarri Aranatz",
+"31"
+],
+"31086": [
+"Valle de Egüés/Eguesibar",
+"31"
+],
+"31088": [
+"Noáin (Valle de Elorz)/Noain (Elortzibar)",
+"31"
+],
+"31097": [
+"Estella-Lizarra",
+"31"
+],
+"31098": [
+"Esteribar",
+"31"
+],
+"31101": [
+"Ezcabarte",
+"31"
+],
+"31104": [
+"Falces",
+"31"
+],
+"31105": [
+"Fitero",
+"31"
+],
+"31106": [
+"Fontellas",
+"31"
+],
+"31107": [
+"Funes",
+"31"
+],
+"31108": [
+"Fustiñana",
+"31"
+],
+"31109": [
+"Galar",
+"31"
+],
+"31122": [
+"Huarte/Uharte",
+"31"
+],
+"31131": [
+"Iza/Itza",
+"31"
+],
+"31138": [
+"Lakuntza",
+"31"
+],
+"31142": [
+"Larraga",
+"31"
+],
+"31149": [
+"Leitza",
+"31"
+],
+"31152": [
+"Lerín",
+"31"
+],
+"31153": [
+"Lesaka",
+"31"
+],
+"31157": [
+"Lodosa",
+"31"
+],
+"31159": [
+"Lumbier",
+"31"
+],
+"31163": [
+"Marcilla",
+"31"
+],
+"31165": [
+"Mendavia",
+"31"
+],
+"31167": [
+"Mendigorria",
+"31"
+],
+"31169": [
+"Milagro",
+"31"
+],
+"31173": [
+"Monteagudo",
+"31"
+],
+"31176": [
+"Murchante",
+"31"
+],
+"31189": [
+"Olazti/Olazagutía",
+"31"
+],
+"31191": [
+"Olite/Erriberri",
+"31"
+],
+"31193": [
+"Cendea de Olza/Oltza Zendea",
+"31"
+],
+"31201": [
+"Pamplona/Iruña",
+"31"
+],
+"31202": [
+"Peralta/Azkoien",
+"31"
+],
+"31206": [
+"Puente la Reina/Gares",
+"31"
+],
+"31208": [
+"Ribaforada",
+"31"
+],
+"31215": [
+"San Adrián",
+"31"
+],
+"31216": [
+"Sangüesa/Zangoza",
+"31"
+],
+"31221": [
+"Doneztebe/Santesteban",
+"31"
+],
+"31223": [
+"Sartaguda",
+"31"
+],
+"31224": [
+"Sesma",
+"31"
+],
+"31227": [
+"Tafalla",
+"31"
+],
+"31232": [
+"Tudela",
+"31"
+],
+"31236": [
+"Ultzama",
+"31"
+],
+"31249": [
+"Valtierra",
+"31"
+],
+"31250": [
+"Bera",
+"31"
+],
+"31251": [
+"Viana",
+"31"
+],
+"31254": [
+"Villafranca",
+"31"
+],
+"31257": [
+"Villatuerta",
+"31"
+],
+"31258": [
+"Villava/Atarrabia",
+"31"
+],
+"31260": [
+"Valle de Yerri/Deierri",
+"31"
+],
+"31901": [
+"Barañáin/Barañain",
+"31"
+],
+"31902": [
+"Berrioplano/Berriobeiti",
+"31"
+],
+"31903": [
+"Berriozar",
+"31"
+],
+"31904": [
+"Irurtzun",
+"31"
+],
+"31905": [
+"Beriáin",
+"31"
+],
+"31906": [
+"Orkoien",
+"31"
+],
+"31907": [
+"Zizur Mayor/Zizur Nagusia",
+"31"
+],
+"31908": [
+"Lekunberri",
+"31"
+],
+"32001": [
+"Allariz",
+"32"
+],
+"32002": [
+"Amoeiro",
+"32"
+],
+"32004": [
+"Avión",
+"32"
+],
+"32006": [
+"Bande",
+"32"
+],
+"32007": [
+"Baños de Molgas",
+"32"
+],
+"32008": [
+"Barbadás",
+"32"
+],
+"32009": [
+"O Barco de Valdeorras",
+"32"
+],
+"32013": [
+"Boborás",
+"32"
+],
+"32014": [
+"A Bola",
+"32"
+],
+"32017": [
+"Carballeda de Valdeorras",
+"32"
+],
+"32018": [
+"Carballeda de Avia",
+"32"
+],
+"32019": [
+"O Carballiño",
+"32"
+],
+"32020": [
+"Cartelle",
+"32"
+],
+"32022": [
+"Castrelo de Miño",
+"32"
+],
+"32023": [
+"Castro Caldelas",
+"32"
+],
+"32024": [
+"Celanova",
+"32"
+],
+"32025": [
+"Cenlle",
+"32"
+],
+"32026": [
+"Coles",
+"32"
+],
+"32027": [
+"Cortegada",
+"32"
+],
+"32028": [
+"Cualedro",
+"32"
+],
+"32030": [
+"Entrimo",
+"32"
+],
+"32031": [
+"Esgos",
+"32"
+],
+"32032": [
+"Xinzo de Limia",
+"32"
+],
+"32034": [
+"A Gudiña",
+"32"
+],
+"32035": [
+"O Irixo",
+"32"
+],
+"32036": [
+"Xunqueira de Ambía",
+"32"
+],
+"32039": [
+"Laza",
+"32"
+],
+"32040": [
+"Leiro",
+"32"
+],
+"32042": [
+"Lobios",
+"32"
+],
+"32043": [
+"Maceda",
+"32"
+],
+"32045": [
+"Maside",
+"32"
+],
+"32046": [
+"Melón",
+"32"
+],
+"32047": [
+"A Merca",
+"32"
+],
+"32050": [
+"Monterrei",
+"32"
+],
+"32051": [
+"Muíños",
+"32"
+],
+"32052": [
+"Nogueira de Ramuín",
+"32"
+],
+"32053": [
+"Oímbra",
+"32"
+],
+"32054": [
+"Ourense",
+"32"
+],
+"32055": [
+"Paderne de Allariz",
+"32"
+],
+"32056": [
+"Padrenda",
+"32"
+],
+"32058": [
+"O Pereiro de Aguiar",
+"32"
+],
+"32059": [
+"A Peroxa",
+"32"
+],
+"32061": [
+"Piñor",
+"32"
+],
+"32063": [
+"A Pobra de Trives",
+"32"
+],
+"32067": [
+"Rairiz de Veiga",
+"32"
+],
+"32068": [
+"Ramirás",
+"32"
+],
+"32069": [
+"Ribadavia",
+"32"
+],
+"32071": [
+"Riós",
+"32"
+],
+"32072": [
+"A Rúa",
+"32"
+],
+"32073": [
+"Rubiá",
+"32"
+],
+"32075": [
+"San Cibrao das Viñas",
+"32"
+],
+"32076": [
+"San Cristovo de Cea",
+"32"
+],
+"32077": [
+"Sandiás",
+"32"
+],
+"32078": [
+"Sarreaus",
+"32"
+],
+"32079": [
+"Taboadela",
+"32"
+],
+"32081": [
+"Toén",
+"32"
+],
+"32082": [
+"Trasmiras",
+"32"
+],
+"32085": [
+"Verín",
+"32"
+],
+"32086": [
+"Viana do Bolo",
+"32"
+],
+"32087": [
+"Vilamarín",
+"32"
+],
+"32088": [
+"Vilamartín de Valdeorras",
+"32"
+],
+"32089": [
+"Vilar de Barrio",
+"32"
+],
+"32091": [
+"Vilardevós",
+"32"
+],
+"33001": [
+"Allande",
+"33"
+],
+"33002": [
+"Aller",
+"33"
+],
+"33004": [
+"Avilés",
+"33"
+],
+"33005": [
+"Belmonte de Miranda",
+"33"
+],
+"33006": [
+"Bimenes",
+"33"
+],
+"33007": [
+"Boal",
+"33"
+],
+"33008": [
+"Cabrales",
+"33"
+],
+"33009": [
+"Cabranes",
+"33"
+],
+"33010": [
+"Candamo",
+"33"
+],
+"33011": [
+"Cangas del Narcea",
+"33"
+],
+"33012": [
+"Cangas de Onís",
+"33"
+],
+"33014": [
+"Carreño",
+"33"
+],
+"33015": [
+"Caso",
+"33"
+],
+"33016": [
+"Castrillón",
+"33"
+],
+"33017": [
+"Castropol",
+"33"
+],
+"33018": [
+"Coaña",
+"33"
+],
+"33019": [
+"Colunga",
+"33"
+],
+"33020": [
+"Corvera de Asturias",
+"33"
+],
+"33021": [
+"Cudillero",
+"33"
+],
+"33023": [
+"El Franco",
+"33"
+],
+"33024": [
+"Gijón",
+"33"
+],
+"33025": [
+"Gozón",
+"33"
+],
+"33026": [
+"Grado",
+"33"
+],
+"33028": [
+"Ibias",
+"33"
+],
+"33030": [
+"Illas",
+"33"
+],
+"33031": [
+"Langreo",
+"33"
+],
+"33032": [
+"Laviana",
+"33"
+],
+"33033": [
+"Lena",
+"33"
+],
+"33034": [
+"Valdés",
+"33"
+],
+"33035": [
+"Llanera",
+"33"
+],
+"33036": [
+"Llanes",
+"33"
+],
+"33037": [
+"Mieres",
+"33"
+],
+"33038": [
+"Morcín",
+"33"
+],
+"33039": [
+"Muros de Nalón",
+"33"
+],
+"33040": [
+"Nava",
+"33"
+],
+"33041": [
+"Navia",
+"33"
+],
+"33042": [
+"Noreña",
+"33"
+],
+"33044": [
+"Oviedo",
+"33"
+],
+"33045": [
+"Parres",
+"33"
+],
+"33047": [
+"Peñamellera Baja",
+"33"
+],
+"33049": [
+"Piloña",
+"33"
+],
+"33051": [
+"Pravia",
+"33"
+],
+"33053": [
+"Quirós",
+"33"
+],
+"33054": [
+"Las Regueras",
+"33"
+],
+"33055": [
+"Ribadedeva",
+"33"
+],
+"33056": [
+"Ribadesella",
+"33"
+],
+"33057": [
+"Ribera de Arriba",
+"33"
+],
+"33058": [
+"Riosa",
+"33"
+],
+"33059": [
+"Salas",
+"33"
+],
+"33060": [
+"San Martín del Rey Aurelio",
+"33"
+],
+"33065": [
+"Sariego",
+"33"
+],
+"33066": [
+"Siero",
+"33"
+],
+"33068": [
+"Somiedo",
+"33"
+],
+"33069": [
+"Soto del Barco",
+"33"
+],
+"33070": [
+"Tapia de Casariego",
+"33"
+],
+"33072": [
+"Teverga",
+"33"
+],
+"33073": [
+"Tineo",
+"33"
+],
+"33074": [
+"Vegadeo",
+"33"
+],
+"33076": [
+"Villaviciosa",
+"33"
+],
+"33077": [
+"Villayón",
+"33"
+],
+"34004": [
+"Aguilar de Campoo",
+"34"
+],
+"34022": [
+"Baltanás",
+"34"
+],
+"34023": [
+"Venta de Baños",
+"34"
+],
+"34027": [
+"Barruelo de Santullán",
+"34"
+],
+"34047": [
+"Carrión de los Condes",
+"34"
+],
+"34056": [
+"Cervera de Pisuerga",
+"34"
+],
+"34069": [
+"Dueñas",
+"34"
+],
+"34079": [
+"Grijota",
+"34"
+],
+"34080": [
+"Guardo",
+"34"
+],
+"34083": [
+"Herrera de Pisuerga",
+"34"
+],
+"34098": [
+"Magaz de Pisuerga",
+"34"
+],
+"34120": [
+"Palencia",
+"34"
+],
+"34123": [
+"Paredes de Nava",
+"34"
+],
+"34157": [
+"Saldaña",
+"34"
+],
+"34199": [
+"Velilla del Río Carrión",
+"34"
+],
+"34217": [
+"Villalobón",
+"34"
+],
+"34225": [
+"Villamuriel de Cerrato",
+"34"
+],
+"34901": [
+"Osorno la Mayor",
+"34"
+],
+"35001": [
+"Agaete",
+"35"
+],
+"35002": [
+"Agüimes",
+"35"
+],
+"35003": [
+"Antigua",
+"35"
+],
+"35004": [
+"Arrecife",
+"35"
+],
+"35005": [
+"Artenara",
+"35"
+],
+"35006": [
+"Arucas",
+"35"
+],
+"35008": [
+"Firgas",
+"35"
+],
+"35009": [
+"Gáldar",
+"35"
+],
+"35010": [
+"Haría",
+"35"
+],
+"35011": [
+"Ingenio",
+"35"
+],
+"35012": [
+"Mogán",
+"35"
+],
+"35013": [
+"Moya",
+"35"
+],
+"35014": [
+"La Oliva",
+"35"
+],
+"35015": [
+"Pájara",
+"35"
+],
+"35016": [
+"Las Palmas de Gran Canaria",
+"35"
+],
+"35017": [
+"Puerto del Rosario",
+"35"
+],
+"35018": [
+"San Bartolomé",
+"35"
+],
+"35019": [
+"San Bartolomé de Tirajana",
+"35"
+],
+"35020": [
+"La Aldea de San Nicolás",
+"35"
+],
+"35021": [
+"Santa Brígida",
+"35"
+],
+"35022": [
+"Santa Lucía de Tirajana",
+"35"
+],
+"35023": [
+"Santa María de Guía de Gran Canaria",
+"35"
+],
+"35024": [
+"Teguise",
+"35"
+],
+"35025": [
+"Tejeda",
+"35"
+],
+"35026": [
+"Telde",
+"35"
+],
+"35027": [
+"Teror",
+"35"
+],
+"35028": [
+"Tías",
+"35"
+],
+"35029": [
+"Tinajo",
+"35"
+],
+"35030": [
+"Tuineje",
+"35"
+],
+"35031": [
+"Valsequillo de Gran Canaria",
+"35"
+],
+"35032": [
+"Valleseco",
+"35"
+],
+"35033": [
+"Vega de San Mateo",
+"35"
+],
+"35034": [
+"Yaiza",
+"35"
+],
+"36001": [
+"Arbo",
+"36"
+],
+"36002": [
+"Barro",
+"36"
+],
+"36003": [
+"Baiona",
+"36"
+],
+"36004": [
+"Bueu",
+"36"
+],
+"36005": [
+"Caldas de Reis",
+"36"
+],
+"36006": [
+"Cambados",
+"36"
+],
+"36007": [
+"Campo Lameiro",
+"36"
+],
+"36008": [
+"Cangas",
+"36"
+],
+"36009": [
+"A Cañiza",
+"36"
+],
+"36010": [
+"Catoira",
+"36"
+],
+"36013": [
+"Covelo",
+"36"
+],
+"36014": [
+"Crecente",
+"36"
+],
+"36015": [
+"Cuntis",
+"36"
+],
+"36017": [
+"A Estrada",
+"36"
+],
+"36018": [
+"Forcarei",
+"36"
+],
+"36019": [
+"Fornelos de Montes",
+"36"
+],
+"36020": [
+"Agolada",
+"36"
+],
+"36021": [
+"Gondomar",
+"36"
+],
+"36022": [
+"O Grove",
+"36"
+],
+"36023": [
+"A Guarda",
+"36"
+],
+"36024": [
+"Lalín",
+"36"
+],
+"36025": [
+"A Lama",
+"36"
+],
+"36026": [
+"Marín",
+"36"
+],
+"36027": [
+"Meaño",
+"36"
+],
+"36028": [
+"Meis",
+"36"
+],
+"36029": [
+"Moaña",
+"36"
+],
+"36030": [
+"Mondariz",
+"36"
+],
+"36032": [
+"Moraña",
+"36"
+],
+"36033": [
+"Mos",
+"36"
+],
+"36034": [
+"As Neves",
+"36"
+],
+"36035": [
+"Nigrán",
+"36"
+],
+"36036": [
+"Oia",
+"36"
+],
+"36037": [
+"Pazos de Borbén",
+"36"
+],
+"36038": [
+"Pontevedra",
+"36"
+],
+"36039": [
+"O Porriño",
+"36"
+],
+"36040": [
+"Portas",
+"36"
+],
+"36041": [
+"Poio",
+"36"
+],
+"36042": [
+"Ponteareas",
+"36"
+],
+"36043": [
+"Ponte Caldelas",
+"36"
+],
+"36044": [
+"Pontecesures",
+"36"
+],
+"36045": [
+"Redondela",
+"36"
+],
+"36046": [
+"Ribadumia",
+"36"
+],
+"36047": [
+"Rodeiro",
+"36"
+],
+"36048": [
+"O Rosal",
+"36"
+],
+"36049": [
+"Salceda de Caselas",
+"36"
+],
+"36050": [
+"Salvaterra de Miño",
+"36"
+],
+"36051": [
+"Sanxenxo",
+"36"
+],
+"36052": [
+"Silleda",
+"36"
+],
+"36053": [
+"Soutomaior",
+"36"
+],
+"36054": [
+"Tomiño",
+"36"
+],
+"36055": [
+"Tui",
+"36"
+],
+"36056": [
+"Valga",
+"36"
+],
+"36057": [
+"Vigo",
+"36"
+],
+"36058": [
+"Vilaboa",
+"36"
+],
+"36059": [
+"Vila de Cruces",
+"36"
+],
+"36060": [
+"Vilagarcía de Arousa",
+"36"
+],
+"36061": [
+"Vilanova de Arousa",
+"36"
+],
+"36901": [
+"A Illa de Arousa",
+"36"
+],
+"36902": [
+"Cerdedo-Cotobade",
+"36"
+],
+"37008": [
+"Alba de Tormes",
+"37"
+],
+"37010": [
+"La Alberca",
+"37"
+],
+"37014": [
+"Aldeadávila de la Ribera",
+"37"
+],
+"37023": [
+"Aldeatejada",
+"37"
+],
+"37046": [
+"Béjar",
+"37"
+],
+"37067": [
+"Cabrerizos",
+"37"
+],
+"37069": [
+"Calvarrasa de Abajo",
+"37"
+],
+"37085": [
+"Carbajosa de la Sagrada",
+"37"
+],
+"37087": [
+"Carrascal de Barregas",
+"37"
+],
+"37092": [
+"Castellanos de Moriscos",
+"37"
+],
+"37107": [
+"Ciudad Rodrigo",
+"37"
+],
+"37117": [
+"Doñinos de Salamanca",
+"37"
+],
+"37135": [
+"La Fuente de San Esteban",
+"37"
+],
+"37156": [
+"Guijuelo",
+"37"
+],
+"37170": [
+"Ledesma",
+"37"
+],
+"37173": [
+"Lumbrales",
+"37"
+],
+"37202": [
+"Monterrubio de Armuña",
+"37"
+],
+"37240": [
+"Pelabravo",
+"37"
+],
+"37246": [
+"Peñaranda de Bracamonte",
+"37"
+],
+"37274": [
+"Salamanca",
+"37"
+],
+"37278": [
+"San Cristóbal de la Cuesta",
+"37"
+],
+"37294": [
+"Santa Marta de Tormes",
+"37"
+],
+"37322": [
+"Terradillos",
+"37"
+],
+"37354": [
+"Villamayor",
+"37"
+],
+"37362": [
+"Villares de la Reina",
+"37"
+],
+"37374": [
+"Villoria",
+"37"
+],
+"37376": [
+"Vitigudino",
+"37"
+],
+"38001": [
+"Adeje",
+"38"
+],
+"38002": [
+"Agulo",
+"38"
+],
+"38003": [
+"Alajeró",
+"38"
+],
+"38004": [
+"Arafo",
+"38"
+],
+"38005": [
+"Arico",
+"38"
+],
+"38006": [
+"Arona",
+"38"
+],
+"38007": [
+"Barlovento",
+"38"
+],
+"38008": [
+"Breña Alta",
+"38"
+],
+"38009": [
+"Breña Baja",
+"38"
+],
+"38010": [
+"Buenavista del Norte",
+"38"
+],
+"38011": [
+"Candelaria",
+"38"
+],
+"38012": [
+"Fasnia",
+"38"
+],
+"38013": [
+"Frontera",
+"38"
+],
+"38014": [
+"Fuencaliente de la Palma",
+"38"
+],
+"38015": [
+"Garachico",
+"38"
+],
+"38016": [
+"Garafía",
+"38"
+],
+"38017": [
+"Granadilla de Abona",
+"38"
+],
+"38018": [
+"La Guancha",
+"38"
+],
+"38019": [
+"Guía de Isora",
+"38"
+],
+"38020": [
+"Güímar",
+"38"
+],
+"38021": [
+"Hermigua",
+"38"
+],
+"38022": [
+"Icod de los Vinos",
+"38"
+],
+"38023": [
+"San Cristóbal de La Laguna",
+"38"
+],
+"38024": [
+"Los Llanos de Aridane",
+"38"
+],
+"38025": [
+"La Matanza de Acentejo",
+"38"
+],
+"38026": [
+"La Orotava",
+"38"
+],
+"38027": [
+"El Paso",
+"38"
+],
+"38028": [
+"Puerto de la Cruz",
+"38"
+],
+"38029": [
+"Puntagorda",
+"38"
+],
+"38030": [
+"Puntallana",
+"38"
+],
+"38031": [
+"Los Realejos",
+"38"
+],
+"38032": [
+"El Rosario",
+"38"
+],
+"38033": [
+"San Andrés y Sauces",
+"38"
+],
+"38034": [
+"San Juan de la Rambla",
+"38"
+],
+"38035": [
+"San Miguel de Abona",
+"38"
+],
+"38036": [
+"San Sebastián de la Gomera",
+"38"
+],
+"38037": [
+"Santa Cruz de la Palma",
+"38"
+],
+"38038": [
+"Santa Cruz de Tenerife",
+"38"
+],
+"38039": [
+"Santa Úrsula",
+"38"
+],
+"38040": [
+"Santiago del Teide",
+"38"
+],
+"38041": [
+"El Sauzal",
+"38"
+],
+"38042": [
+"Los Silos",
+"38"
+],
+"38043": [
+"Tacoronte",
+"38"
+],
+"38044": [
+"El Tanque",
+"38"
+],
+"38045": [
+"Tazacorte",
+"38"
+],
+"38046": [
+"Tegueste",
+"38"
+],
+"38047": [
+"Tijarafe",
+"38"
+],
+"38048": [
+"Valverde",
+"38"
+],
+"38049": [
+"Valle Gran Rey",
+"38"
+],
+"38050": [
+"Vallehermoso",
+"38"
+],
+"38051": [
+"La Victoria de Acentejo",
+"38"
+],
+"38052": [
+"Vilaflor de Chasna",
+"38"
+],
+"38053": [
+"Villa de Mazo",
+"38"
+],
+"38901": [
+"El Pinar de El Hierro",
+"38"
+],
+"39001": [
+"Alfoz de Lloredo",
+"39"
+],
+"39002": [
+"Ampuero",
+"39"
+],
+"39004": [
+"Arenas de Iguña",
+"39"
+],
+"39005": [
+"Argoños",
+"39"
+],
+"39006": [
+"Arnuero",
+"39"
+],
+"39008": [
+"El Astillero",
+"39"
+],
+"39009": [
+"Bárcena de Cicero",
+"39"
+],
+"39011": [
+"Bareyo",
+"39"
+],
+"39012": [
+"Cabezón de la Sal",
+"39"
+],
+"39016": [
+"Camargo",
+"39"
+],
+"39018": [
+"Cartes",
+"39"
+],
+"39019": [
+"Castañeda",
+"39"
+],
+"39020": [
+"Castro-Urdiales",
+"39"
+],
+"39022": [
+"Cillorigo de Liébana",
+"39"
+],
+"39023": [
+"Colindres",
+"39"
+],
+"39024": [
+"Comillas",
+"39"
+],
+"39025": [
+"Los Corrales de Buelna",
+"39"
+],
+"39026": [
+"Corvera de Toranzo",
+"39"
+],
+"39027": [
+"Campoo de Enmedio",
+"39"
+],
+"39028": [
+"Entrambasaguas",
+"39"
+],
+"39030": [
+"Guriezo",
+"39"
+],
+"39031": [
+"Hazas de Cesto",
+"39"
+],
+"39032": [
+"Hermandad de Campoo de Suso",
+"39"
+],
+"39035": [
+"Laredo",
+"39"
+],
+"39036": [
+"Liendo",
+"39"
+],
+"39037": [
+"Liérganes",
+"39"
+],
+"39038": [
+"Limpias",
+"39"
+],
+"39040": [
+"Marina de Cudeyo",
+"39"
+],
+"39041": [
+"Mazcuerras",
+"39"
+],
+"39042": [
+"Medio Cudeyo",
+"39"
+],
+"39043": [
+"Meruelo",
+"39"
+],
+"39044": [
+"Miengo",
+"39"
+],
+"39046": [
+"Molledo",
+"39"
+],
+"39047": [
+"Noja",
+"39"
+],
+"39048": [
+"Penagos",
+"39"
+],
+"39052": [
+"Piélagos",
+"39"
+],
+"39054": [
+"Polanco",
+"39"
+],
+"39055": [
+"Potes",
+"39"
+],
+"39056": [
+"Puente Viesgo",
+"39"
+],
+"39057": [
+"Ramales de la Victoria",
+"39"
+],
+"39059": [
+"Reinosa",
+"39"
+],
+"39060": [
+"Reocín",
+"39"
+],
+"39061": [
+"Ribamontán al Mar",
+"39"
+],
+"39062": [
+"Ribamontán al Monte",
+"39"
+],
+"39064": [
+"Riotuerto",
+"39"
+],
+"39066": [
+"Ruente",
+"39"
+],
+"39069": [
+"San Felices de Buelna",
+"39"
+],
+"39073": [
+"Santa Cruz de Bezana",
+"39"
+],
+"39074": [
+"Santa María de Cayón",
+"39"
+],
+"39075": [
+"Santander",
+"39"
+],
+"39076": [
+"Santillana del Mar",
+"39"
+],
+"39078": [
+"Santiurde de Toranzo",
+"39"
+],
+"39079": [
+"Santoña",
+"39"
+],
+"39080": [
+"San Vicente de la Barquera",
+"39"
+],
+"39082": [
+"Selaya",
+"39"
+],
+"39083": [
+"Soba",
+"39"
+],
+"39084": [
+"Solórzano",
+"39"
+],
+"39085": [
+"Suances",
+"39"
+],
+"39087": [
+"Torrelavega",
+"39"
+],
+"39091": [
+"Valdáliga",
+"39"
+],
+"39095": [
+"Val de San Vicente",
+"39"
+],
+"39098": [
+"Villacarriedo",
+"39"
+],
+"39099": [
+"Villaescusa",
+"39"
+],
+"39100": [
+"Villafufre",
+"39"
+],
+"39102": [
+"Voto",
+"39"
+],
+"40024": [
+"Ayllón",
+"40"
+],
+"40031": [
+"Bernuy de Porreros",
+"40"
+],
+"40040": [
+"Cantalejo",
+"40"
+],
+"40041": [
+"Cantimpalos",
+"40"
+],
+"40043": [
+"Carbonero el Mayor",
+"40"
+],
+"40057": [
+"Coca",
+"40"
+],
+"40063": [
+"Cuéllar",
+"40"
+],
+"40076": [
+"El Espinar",
+"40"
+],
+"40077": [
+"Espirdo",
+"40"
+],
+"40101": [
+"Hontanares de Eresma",
+"40"
+],
+"40112": [
+"La Lastrilla",
+"40"
+],
+"40138": [
+"Nava de la Asunción",
+"40"
+],
+"40141": [
+"Navalmanzano",
+"40"
+],
+"40145": [
+"Navas de Oro",
+"40"
+],
+"40155": [
+"Palazuelos de Eresma",
+"40"
+],
+"40170": [
+"Riaza",
+"40"
+],
+"40181": [
+"Real Sitio de San Ildefonso",
+"40"
+],
+"40194": [
+"Segovia",
+"40"
+],
+"40203": [
+"Torrecaballeros",
+"40"
+],
+"40207": [
+"Trescasas",
+"40"
+],
+"40208": [
+"Turégano",
+"40"
+],
+"40216": [
+"Valverde del Majano",
+"40"
+],
+"40225": [
+"Villacastín",
+"40"
+],
+"40906": [
+"San Cristóbal de Segovia",
+"40"
+],
+"41001": [
+"Aguadulce",
+"41"
+],
+"41002": [
+"Alanís",
+"41"
+],
+"41003": [
+"Albaida del Aljarafe",
+"41"
+],
+"41004": [
+"Alcalá de Guadaíra",
+"41"
+],
+"41005": [
+"Alcalá del Río",
+"41"
+],
+"41006": [
+"Alcolea del Río",
+"41"
+],
+"41007": [
+"La Algaba",
+"41"
+],
+"41008": [
+"Algámitas",
+"41"
+],
+"41009": [
+"Almadén de la Plata",
+"41"
+],
+"41010": [
+"Almensilla",
+"41"
+],
+"41011": [
+"Arahal",
+"41"
+],
+"41012": [
+"Aznalcázar",
+"41"
+],
+"41013": [
+"Aznalcóllar",
+"41"
+],
+"41014": [
+"Badolatosa",
+"41"
+],
+"41015": [
+"Benacazón",
+"41"
+],
+"41016": [
+"Bollullos de la Mitación",
+"41"
+],
+"41017": [
+"Bormujos",
+"41"
+],
+"41018": [
+"Brenes",
+"41"
+],
+"41019": [
+"Burguillos",
+"41"
+],
+"41020": [
+"Las Cabezas de San Juan",
+"41"
+],
+"41021": [
+"Camas",
+"41"
+],
+"41022": [
+"La Campana",
+"41"
+],
+"41023": [
+"Cantillana",
+"41"
+],
+"41024": [
+"Carmona",
+"41"
+],
+"41025": [
+"Carrión de los Céspedes",
+"41"
+],
+"41026": [
+"Casariche",
+"41"
+],
+"41027": [
+"Castilblanco de los Arroyos",
+"41"
+],
+"41028": [
+"Castilleja de Guzmán",
+"41"
+],
+"41029": [
+"Castilleja de la Cuesta",
+"41"
+],
+"41031": [
+"El Castillo de las Guardas",
+"41"
+],
+"41032": [
+"Cazalla de la Sierra",
+"41"
+],
+"41033": [
+"Constantina",
+"41"
+],
+"41034": [
+"Coria del Río",
+"41"
+],
+"41035": [
+"Coripe",
+"41"
+],
+"41036": [
+"El Coronil",
+"41"
+],
+"41037": [
+"Los Corrales",
+"41"
+],
+"41038": [
+"Dos Hermanas",
+"41"
+],
+"41039": [
+"Écija",
+"41"
+],
+"41040": [
+"Espartinas",
+"41"
+],
+"41041": [
+"Estepa",
+"41"
+],
+"41042": [
+"Fuentes de Andalucía",
+"41"
+],
+"41044": [
+"Gelves",
+"41"
+],
+"41045": [
+"Gerena",
+"41"
+],
+"41046": [
+"Gilena",
+"41"
+],
+"41047": [
+"Gines",
+"41"
+],
+"41048": [
+"Guadalcanal",
+"41"
+],
+"41049": [
+"Guillena",
+"41"
+],
+"41050": [
+"Herrera",
+"41"
+],
+"41051": [
+"Huévar del Aljarafe",
+"41"
+],
+"41052": [
+"Lantejuela",
+"41"
+],
+"41053": [
+"Lebrija",
+"41"
+],
+"41055": [
+"Lora del Río",
+"41"
+],
+"41056": [
+"La Luisiana",
+"41"
+],
+"41058": [
+"Mairena del Alcor",
+"41"
+],
+"41059": [
+"Mairena del Aljarafe",
+"41"
+],
+"41060": [
+"Marchena",
+"41"
+],
+"41061": [
+"Marinaleda",
+"41"
+],
+"41062": [
+"Martín de la Jara",
+"41"
+],
+"41063": [
+"Los Molares",
+"41"
+],
+"41064": [
+"Montellano",
+"41"
+],
+"41065": [
+"Morón de la Frontera",
+"41"
+],
+"41066": [
+"Las Navas de la Concepción",
+"41"
+],
+"41067": [
+"Olivares",
+"41"
+],
+"41068": [
+"Osuna",
+"41"
+],
+"41069": [
+"Los Palacios y Villafranca",
+"41"
+],
+"41070": [
+"Palomares del Río",
+"41"
+],
+"41071": [
+"Paradas",
+"41"
+],
+"41072": [
+"Pedrera",
+"41"
+],
+"41073": [
+"El Pedroso",
+"41"
+],
+"41074": [
+"Peñaflor",
+"41"
+],
+"41075": [
+"Pilas",
+"41"
+],
+"41076": [
+"Pruna",
+"41"
+],
+"41077": [
+"La Puebla de Cazalla",
+"41"
+],
+"41078": [
+"La Puebla de los Infantes",
+"41"
+],
+"41079": [
+"La Puebla del Río",
+"41"
+],
+"41080": [
+"El Real de la Jara",
+"41"
+],
+"41081": [
+"La Rinconada",
+"41"
+],
+"41082": [
+"La Roda de Andalucía",
+"41"
+],
+"41083": [
+"El Ronquillo",
+"41"
+],
+"41084": [
+"El Rubio",
+"41"
+],
+"41085": [
+"Salteras",
+"41"
+],
+"41086": [
+"San Juan de Aznalfarache",
+"41"
+],
+"41087": [
+"Sanlúcar la Mayor",
+"41"
+],
+"41089": [
+"Santiponce",
+"41"
+],
+"41090": [
+"El Saucejo",
+"41"
+],
+"41091": [
+"Sevilla",
+"41"
+],
+"41092": [
+"Tocina",
+"41"
+],
+"41093": [
+"Tomares",
+"41"
+],
+"41094": [
+"Umbrete",
+"41"
+],
+"41095": [
+"Utrera",
+"41"
+],
+"41096": [
+"Valencina de la Concepción",
+"41"
+],
+"41097": [
+"Villamanrique de la Condesa",
+"41"
+],
+"41098": [
+"Villanueva del Ariscal",
+"41"
+],
+"41099": [
+"Villanueva del Río y Minas",
+"41"
+],
+"41100": [
+"Villanueva de San Juan",
+"41"
+],
+"41101": [
+"Villaverde del Río",
+"41"
+],
+"41102": [
+"El Viso del Alcor",
+"41"
+],
+"41901": [
+"Cañada Rosal",
+"41"
+],
+"41902": [
+"Isla Mayor",
+"41"
+],
+"41903": [
+"El Cuervo de Sevilla",
+"41"
+],
+"41904": [
+"El Palmar de Troya",
+"41"
+],
+"42004": [
+"Ágreda",
+"42"
+],
+"42020": [
+"Almazán",
+"42"
+],
+"42025": [
+"Arcos de Jalón",
+"42"
+],
+"42043": [
+"Burgo de Osma-Ciudad de Osma",
+"42"
+],
+"42069": [
+"Covaleda",
+"42"
+],
+"42078": [
+"Duruelo de la Sierra",
+"42"
+],
+"42095": [
+"Golmayo",
+"42"
+],
+"42134": [
+"Ólvega",
+"42"
+],
+"42162": [
+"San Esteban de Gormaz",
+"42"
+],
+"42164": [
+"San Leonardo de Yagüe",
+"42"
+],
+"42173": [
+"Soria",
+"42"
+],
+"43002": [
+"Albinyana",
+"43"
+],
+"43004": [
+"Alcanar",
+"43"
+],
+"43005": [
+"Alcover",
+"43"
+],
+"43009": [
+"Alforja",
+"43"
+],
+"43011": [
+"Almoster",
+"43"
+],
+"43012": [
+"Altafulla",
+"43"
+],
+"43013": [
+"L'Ametlla de Mar",
+"43"
+],
+"43014": [
+"Amposta",
+"43"
+],
+"43016": [
+"L'Arboç",
+"43"
+],
+"43019": [
+"Ascó",
+"43"
+],
+"43020": [
+"Banyeres del Penedès",
+"43"
+],
+"43022": [
+"Batea",
+"43"
+],
+"43024": [
+"Bellvei",
+"43"
+],
+"43026": [
+"Benissanet",
+"43"
+],
+"43028": [
+"La Bisbal del Penedès",
+"43"
+],
+"43031": [
+"Les Borges del Camp",
+"43"
+],
+"43033": [
+"Botarell",
+"43"
+],
+"43036": [
+"Cabra del Camp",
+"43"
+],
+"43037": [
+"Calafell",
+"43"
+],
+"43038": [
+"Cambrils",
+"43"
+],
+"43042": [
+"Castellvell del Camp",
+"43"
+],
+"43043": [
+"El Catllar",
+"43"
+],
+"43044": [
+"La Sénia",
+"43"
+],
+"43047": [
+"Constantí",
+"43"
+],
+"43049": [
+"Cornudella de Montsant",
+"43"
+],
+"43050": [
+"Creixell",
+"43"
+],
+"43051": [
+"Cunit",
+"43"
+],
+"43052": [
+"Xerta",
+"43"
+],
+"43054": [
+"L'Espluga de Francolí",
+"43"
+],
+"43055": [
+"Falset",
+"43"
+],
+"43060": [
+"Flix",
+"43"
+],
+"43064": [
+"Gandesa",
+"43"
+],
+"43071": [
+"Horta de Sant Joan",
+"43"
+],
+"43074": [
+"Llorenç del Penedès",
+"43"
+],
+"43078": [
+"Masdenverge",
+"43"
+],
+"43086": [
+"Montblanc",
+"43"
+],
+"43088": [
+"Montbrió del Camp",
+"43"
+],
+"43090": [
+"El Montmell",
+"43"
+],
+"43092": [
+"Mont-roig del Camp",
+"43"
+],
+"43093": [
+"Móra d'Ebre",
+"43"
+],
+"43094": [
+"Móra la Nova",
+"43"
+],
+"43095": [
+"El Morell",
+"43"
+],
+"43100": [
+"Els Pallaresos",
+"43"
+],
+"43103": [
+"Perafort",
+"43"
+],
+"43104": [
+"El Perelló",
+"43"
+],
+"43108": [
+"El Pla de Santa Maria",
+"43"
+],
+"43109": [
+"La Pobla de Mafumet",
+"43"
+],
+"43111": [
+"La Pobla de Montornès",
+"43"
+],
+"43119": [
+"Puigpelat",
+"43"
+],
+"43123": [
+"Reus",
+"43"
+],
+"43125": [
+"Riba-roja d'Ebre",
+"43"
+],
+"43126": [
+"La Riera de Gaià",
+"43"
+],
+"43127": [
+"Riudecanyes",
+"43"
+],
+"43128": [
+"Riudecols",
+"43"
+],
+"43129": [
+"Riudoms",
+"43"
+],
+"43131": [
+"Roda de Berà",
+"43"
+],
+"43133": [
+"Roquetes",
+"43"
+],
+"43136": [
+"La Ràpita",
+"43"
+],
+"43137": [
+"Sant Jaume dels Domenys",
+"43"
+],
+"43138": [
+"Santa Bàrbara",
+"43"
+],
+"43139": [
+"Santa Coloma de Queralt",
+"43"
+],
+"43140": [
+"Santa Oliva",
+"43"
+],
+"43142": [
+"Sarral",
+"43"
+],
+"43144": [
+"La Secuita",
+"43"
+],
+"43145": [
+"La Selva del Camp",
+"43"
+],
+"43148": [
+"Tarragona",
+"43"
+],
+"43150": [
+"Tivissa",
+"43"
+],
+"43153": [
+"Torredembarra",
+"43"
+],
+"43155": [
+"Tortosa",
+"43"
+],
+"43156": [
+"Ulldecona",
+"43"
+],
+"43160": [
+"Vallmoll",
+"43"
+],
+"43161": [
+"Valls",
+"43"
+],
+"43162": [
+"Vandellòs i l'Hospitalet de l'Infant",
+"43"
+],
+"43163": [
+"El Vendrell",
+"43"
+],
+"43166": [
+"Vilallonga del Camp",
+"43"
+],
+"43170": [
+"Vila-rodona",
+"43"
+],
+"43171": [
+"Vila-seca",
+"43"
+],
+"43178": [
+"Vinyols i els Arcs",
+"43"
+],
+"43901": [
+"Deltebre",
+"43"
+],
+"43902": [
+"Sant Jaume d'Enveja",
+"43"
+],
+"43903": [
+"Camarles",
+"43"
+],
+"43904": [
+"L'Aldea",
+"43"
+],
+"43905": [
+"Salou",
+"43"
+],
+"43906": [
+"L'Ampolla",
+"43"
+],
+"43907": [
+"La Canonja",
+"43"
+],
+"44008": [
+"Albalate del Arzobispo",
+"44"
+],
+"44013": [
+"Alcañiz",
+"44"
+],
+"44014": [
+"Alcorisa",
+"44"
+],
+"44025": [
+"Andorra",
+"44"
+],
+"44050": [
+"Calamocha",
+"44"
+],
+"44051": [
+"Calanda",
+"44"
+],
+"44076": [
+"Cella",
+"44"
+],
+"44122": [
+"Híjar",
+"44"
+],
+"44145": [
+"Mas de las Matas",
+"44"
+],
+"44153": [
+"Monreal del Campo",
+"44"
+],
+"44155": [
+"Montalbán",
+"44"
+],
+"44158": [
+"Mora de Rubielos",
+"44"
+],
+"44209": [
+"Santa Eulalia",
+"44"
+],
+"44210": [
+"Sarrión",
+"44"
+],
+"44216": [
+"Teruel",
+"44"
+],
+"44238": [
+"Utrillas",
+"44"
+],
+"44246": [
+"Valderrobres",
+"44"
+],
+"45001": [
+"Ajofrín",
+"45"
+],
+"45002": [
+"Alameda de la Sagra",
+"45"
+],
+"45006": [
+"Alcaudete de la Jara",
+"45"
+],
+"45013": [
+"Almorox",
+"45"
+],
+"45014": [
+"Añover de Tajo",
+"45"
+],
+"45015": [
+"Arcicóllar",
+"45"
+],
+"45016": [
+"Argés",
+"45"
+],
+"45018": [
+"Barcience",
+"45"
+],
+"45019": [
+"Bargas",
+"45"
+],
+"45020": [
+"Belvís de la Jara",
+"45"
+],
+"45021": [
+"Borox",
+"45"
+],
+"45023": [
+"Burguillos de Toledo",
+"45"
+],
+"45024": [
+"Burujón",
+"45"
+],
+"45025": [
+"Cabañas de la Sagra",
+"45"
+],
+"45028": [
+"Calera y Chozas",
+"45"
+],
+"45031": [
+"Camarena",
+"45"
+],
+"45034": [
+"Camuñas",
+"45"
+],
+"45037": [
+"El Carpio de Tajo",
+"45"
+],
+"45038": [
+"Carranque",
+"45"
+],
+"45040": [
+"El Casar de Escalona",
+"45"
+],
+"45041": [
+"Casarrubios del Monte",
+"45"
+],
+"45045": [
+"Cazalegas",
+"45"
+],
+"45046": [
+"Cebolla",
+"45"
+],
+"45047": [
+"Cedillo del Condado",
+"45"
+],
+"45051": [
+"Cobeja",
+"45"
+],
+"45052": [
+"Cobisa",
+"45"
+],
+"45053": [
+"Consuegra",
+"45"
+],
+"45054": [
+"Corral de Almaguer",
+"45"
+],
+"45055": [
+"Cuerva",
+"45"
+],
+"45056": [
+"Chozas de Canales",
+"45"
+],
+"45059": [
+"Dosbarrios",
+"45"
+],
+"45061": [
+"Escalona",
+"45"
+],
+"45062": [
+"Escalonilla",
+"45"
+],
+"45064": [
+"Esquivias",
+"45"
+],
+"45066": [
+"Fuensalida",
+"45"
+],
+"45067": [
+"Gálvez",
+"45"
+],
+"45069": [
+"Gerindote",
+"45"
+],
+"45070": [
+"Guadamur",
+"45"
+],
+"45071": [
+"La Guardia",
+"45"
+],
+"45078": [
+"Huerta de Valdecarábanos",
+"45"
+],
+"45081": [
+"Illescas",
+"45"
+],
+"45082": [
+"Lagartera",
+"45"
+],
+"45084": [
+"Lillo",
+"45"
+],
+"45085": [
+"Lominchar",
+"45"
+],
+"45087": [
+"Madridejos",
+"45"
+],
+"45088": [
+"Magán",
+"45"
+],
+"45089": [
+"Malpica de Tajo",
+"45"
+],
+"45096": [
+"Mazarambroz",
+"45"
+],
+"45097": [
+"Mejorada",
+"45"
+],
+"45098": [
+"Menasalbas",
+"45"
+],
+"45099": [
+"Méntrida",
+"45"
+],
+"45101": [
+"Miguel Esteban",
+"45"
+],
+"45102": [
+"Mocejón",
+"45"
+],
+"45106": [
+"Mora",
+"45"
+],
+"45107": [
+"Nambroca",
+"45"
+],
+"45109": [
+"Navahermosa",
+"45"
+],
+"45110": [
+"Navalcán",
+"45"
+],
+"45112": [
+"Los Navalmorales",
+"45"
+],
+"45113": [
+"Los Navalucillos",
+"45"
+],
+"45115": [
+"Noblejas",
+"45"
+],
+"45116": [
+"Noez",
+"45"
+],
+"45118": [
+"Novés",
+"45"
+],
+"45119": [
+"Numancia de la Sagra",
+"45"
+],
+"45121": [
+"Ocaña",
+"45"
+],
+"45122": [
+"Olías del Rey",
+"45"
+],
+"45123": [
+"Ontígola",
+"45"
+],
+"45124": [
+"Orgaz",
+"45"
+],
+"45125": [
+"Oropesa",
+"45"
+],
+"45127": [
+"Palomeque",
+"45"
+],
+"45128": [
+"Pantoja",
+"45"
+],
+"45132": [
+"Pepino",
+"45"
+],
+"45133": [
+"Polán",
+"45"
+],
+"45134": [
+"Portillo de Toledo",
+"45"
+],
+"45135": [
+"La Puebla de Almoradiel",
+"45"
+],
+"45136": [
+"La Puebla de Montalbán",
+"45"
+],
+"45137": [
+"La Pueblanueva",
+"45"
+],
+"45138": [
+"El Puente del Arzobispo",
+"45"
+],
+"45140": [
+"Pulgar",
+"45"
+],
+"45141": [
+"Quero",
+"45"
+],
+"45142": [
+"Quintanar de la Orden",
+"45"
+],
+"45143": [
+"Quismondo",
+"45"
+],
+"45145": [
+"Recas",
+"45"
+],
+"45153": [
+"San Pablo de los Montes",
+"45"
+],
+"45154": [
+"San Román de los Montes",
+"45"
+],
+"45156": [
+"Santa Cruz de la Zarza",
+"45"
+],
+"45157": [
+"Santa Cruz del Retamar",
+"45"
+],
+"45158": [
+"Santa Olalla",
+"45"
+],
+"45160": [
+"Segurilla",
+"45"
+],
+"45161": [
+"Seseña",
+"45"
+],
+"45163": [
+"Sonseca",
+"45"
+],
+"45165": [
+"Talavera de la Reina",
+"45"
+],
+"45166": [
+"Tembleque",
+"45"
+],
+"45167": [
+"El Toboso",
+"45"
+],
+"45168": [
+"Toledo",
+"45"
+],
+"45171": [
+"La Torre de Esteban Hambrán",
+"45"
+],
+"45173": [
+"Torrijos",
+"45"
+],
+"45176": [
+"Ugena",
+"45"
+],
+"45177": [
+"Urda",
+"45"
+],
+"45180": [
+"Valmojado",
+"45"
+],
+"45181": [
+"Velada",
+"45"
+],
+"45182": [
+"Las Ventas con Peña Aguilera",
+"45"
+],
+"45183": [
+"Las Ventas de Retamosa",
+"45"
+],
+"45185": [
+"Villacañas",
+"45"
+],
+"45186": [
+"La Villa de Don Fadrique",
+"45"
+],
+"45187": [
+"Villafranca de los Caballeros",
+"45"
+],
+"45188": [
+"Villaluenga de la Sagra",
+"45"
+],
+"45189": [
+"Villamiel de Toledo",
+"45"
+],
+"45192": [
+"Villanueva de Alcardete",
+"45"
+],
+"45195": [
+"Villarrubia de Santiago",
+"45"
+],
+"45196": [
+"Villaseca de la Sagra",
+"45"
+],
+"45197": [
+"Villasequilla",
+"45"
+],
+"45198": [
+"Villatobas",
+"45"
+],
+"45199": [
+"El Viso de San Juan",
+"45"
+],
+"45200": [
+"Los Yébenes",
+"45"
+],
+"45201": [
+"Yeles",
+"45"
+],
+"45202": [
+"Yepes",
+"45"
+],
+"45203": [
+"Yuncler",
+"45"
+],
+"45205": [
+"Yuncos",
+"45"
+],
+"45901": [
+"Santo Domingo-Caudilla",
+"45"
+],
+"46001": [
+"Ademuz",
+"46"
+],
+"46002": [
+"Ador",
+"46"
+],
+"46003": [
+"Atzeneta d'Albaida",
+"46"
+],
+"46004": [
+"Agullent",
+"46"
+],
+"46005": [
+"Alaquàs",
+"46"
+],
+"46006": [
+"Albaida",
+"46"
+],
+"46007": [
+"Albal",
+"46"
+],
+"46008": [
+"Albalat de la Ribera",
+"46"
+],
+"46009": [
+"Albalat dels Sorells",
+"46"
+],
+"46010": [
+"Albalat dels Tarongers",
+"46"
+],
+"46011": [
+"Alberic",
+"46"
+],
+"46012": [
+"Alborache",
+"46"
+],
+"46013": [
+"Alboraia/Alboraya",
+"46"
+],
+"46014": [
+"Albuixech",
+"46"
+],
+"46015": [
+"Alcàsser",
+"46"
+],
+"46016": [
+"Alcàntera de Xúquer",
+"46"
+],
+"46017": [
+"Alzira",
+"46"
+],
+"46019": [
+"L'Alcúdia",
+"46"
+],
+"46020": [
+"L'Alcúdia de Crespins",
+"46"
+],
+"46021": [
+"Aldaia",
+"46"
+],
+"46022": [
+"Alfafar",
+"46"
+],
+"46025": [
+"Alfara del Patriarca",
+"46"
+],
+"46026": [
+"Alfarp",
+"46"
+],
+"46027": [
+"Alfarrasí",
+"46"
+],
+"46029": [
+"Algemesí",
+"46"
+],
+"46030": [
+"Algímia d'Alfara",
+"46"
+],
+"46031": [
+"Alginet",
+"46"
+],
+"46032": [
+"Almàssera",
+"46"
+],
+"46034": [
+"Almoines",
+"46"
+],
+"46035": [
+"Almussafes",
+"46"
+],
+"46037": [
+"L'Alqueria de la Comtessa",
+"46"
+],
+"46039": [
+"Anna",
+"46"
+],
+"46040": [
+"Antella",
+"46"
+],
+"46042": [
+"Aielo de Malferit",
+"46"
+],
+"46044": [
+"Ayora",
+"46"
+],
+"46045": [
+"Barxeta",
+"46"
+],
+"46046": [
+"Barx",
+"46"
+],
+"46048": [
+"Bellreguard",
+"46"
+],
+"46051": [
+"Benaguasil",
+"46"
+],
+"46054": [
+"Benetússer",
+"46"
+],
+"46055": [
+"Beniarjó",
+"46"
+],
+"46058": [
+"Benifairó de les Valls",
+"46"
+],
+"46059": [
+"Benifairó de la Valldigna",
+"46"
+],
+"46060": [
+"Benifaió",
+"46"
+],
+"46062": [
+"Benigànim",
+"46"
+],
+"46063": [
+"Benimodo",
+"46"
+],
+"46065": [
+"Beniparrell",
+"46"
+],
+"46066": [
+"Benirredrà",
+"46"
+],
+"46067": [
+"Benissanó",
+"46"
+],
+"46070": [
+"Bétera",
+"46"
+],
+"46072": [
+"Bocairent",
+"46"
+],
+"46073": [
+"Bolbaite",
+"46"
+],
+"46074": [
+"Bonrepòs i Mirambell",
+"46"
+],
+"46077": [
+"Buñol",
+"46"
+],
+"46078": [
+"Burjassot",
+"46"
+],
+"46080": [
+"Camporrobles",
+"46"
+],
+"46081": [
+"Canals",
+"46"
+],
+"46082": [
+"Canet d'En Berenguer",
+"46"
+],
+"46083": [
+"Carcaixent",
+"46"
+],
+"46084": [
+"Càrcer",
+"46"
+],
+"46085": [
+"Carlet",
+"46"
+],
+"46089": [
+"Casinos",
+"46"
+],
+"46090": [
+"Castelló de Rugat",
+"46"
+],
+"46093": [
+"Catadau",
+"46"
+],
+"46094": [
+"Catarroja",
+"46"
+],
+"46097": [
+"Cofrentes",
+"46"
+],
+"46098": [
+"Corbera",
+"46"
+],
+"46101": [
+"Quart de les Valls",
+"46"
+],
+"46102": [
+"Quart de Poblet",
+"46"
+],
+"46103": [
+"Quartell",
+"46"
+],
+"46104": [
+"Quatretonda",
+"46"
+],
+"46105": [
+"Cullera",
+"46"
+],
+"46106": [
+"Chelva",
+"46"
+],
+"46107": [
+"Chella",
+"46"
+],
+"46109": [
+"Cheste",
+"46"
+],
+"46110": [
+"Xirivella",
+"46"
+],
+"46111": [
+"Chiva",
+"46"
+],
+"46113": [
+"Daimús",
+"46"
+],
+"46116": [
+"L'Eliana",
+"46"
+],
+"46118": [
+"Enguera",
+"46"
+],
+"46120": [
+"Estivella",
+"46"
+],
+"46122": [
+"Faura",
+"46"
+],
+"46123": [
+"Favara",
+"46"
+],
+"46125": [
+"Fortaleny",
+"46"
+],
+"46126": [
+"Foios",
+"46"
+],
+"46127": [
+"La Font d'en Carròs",
+"46"
+],
+"46128": [
+"La Font de la Figuera",
+"46"
+],
+"46130": [
+"Gavarda",
+"46"
+],
+"46131": [
+"Gandia",
+"46"
+],
+"46132": [
+"El Genovés",
+"46"
+],
+"46134": [
+"Gilet",
+"46"
+],
+"46135": [
+"Godella",
+"46"
+],
+"46136": [
+"Godelleta",
+"46"
+],
+"46139": [
+"Guadassuar",
+"46"
+],
+"46143": [
+"Xeraco",
+"46"
+],
+"46145": [
+"Xàtiva",
+"46"
+],
+"46146": [
+"Xeresa",
+"46"
+],
+"46147": [
+"Llíria",
+"46"
+],
+"46148": [
+"Loriguilla",
+"46"
+],
+"46150": [
+"Llutxent",
+"46"
+],
+"46154": [
+"Llanera de Ranes",
+"46"
+],
+"46155": [
+"Llaurí",
+"46"
+],
+"46156": [
+"Llombai",
+"46"
+],
+"46157": [
+"La Llosa de Ranes",
+"46"
+],
+"46158": [
+"Macastre",
+"46"
+],
+"46159": [
+"Manises",
+"46"
+],
+"46160": [
+"Manuel",
+"46"
+],
+"46161": [
+"Marines",
+"46"
+],
+"46162": [
+"Massalavés",
+"46"
+],
+"46163": [
+"Massalfassar",
+"46"
+],
+"46164": [
+"Massamagrell",
+"46"
+],
+"46165": [
+"Massanassa",
+"46"
+],
+"46166": [
+"Meliana",
+"46"
+],
+"46168": [
+"Miramar",
+"46"
+],
+"46169": [
+"Mislata",
+"46"
+],
+"46170": [
+"Moixent/Mogente",
+"46"
+],
+"46171": [
+"Moncada",
+"46"
+],
+"46172": [
+"Montserrat",
+"46"
+],
+"46173": [
+"Montaverner",
+"46"
+],
+"46174": [
+"Montesa",
+"46"
+],
+"46176": [
+"Montroi/Montroy",
+"46"
+],
+"46177": [
+"Museros",
+"46"
+],
+"46178": [
+"Nàquera/Náquera",
+"46"
+],
+"46179": [
+"Navarrés",
+"46"
+],
+"46181": [
+"Oliva",
+"46"
+],
+"46182": [
+"Olocau",
+"46"
+],
+"46183": [
+"L'Olleria",
+"46"
+],
+"46184": [
+"Ontinyent",
+"46"
+],
+"46186": [
+"Paiporta",
+"46"
+],
+"46187": [
+"Palma de Gandía",
+"46"
+],
+"46188": [
+"Palmera",
+"46"
+],
+"46190": [
+"Paterna",
+"46"
+],
+"46191": [
+"Pedralba",
+"46"
+],
+"46192": [
+"Petrés",
+"46"
+],
+"46193": [
+"Picanya",
+"46"
+],
+"46194": [
+"Picassent",
+"46"
+],
+"46195": [
+"Piles",
+"46"
+],
+"46197": [
+"Polinyà de Xúquer",
+"46"
+],
+"46198": [
+"Potries",
+"46"
+],
+"46199": [
+"La Pobla de Farnals",
+"46"
+],
+"46200": [
+"La Pobla del Duc",
+"46"
+],
+"46202": [
+"La Pobla de Vallbona",
+"46"
+],
+"46203": [
+"La Pobla Llarga",
+"46"
+],
+"46204": [
+"El Puig de Santa Maria",
+"46"
+],
+"46205": [
+"Puçol",
+"46"
+],
+"46207": [
+"Rafelbunyol",
+"46"
+],
+"46208": [
+"Rafelcofer",
+"46"
+],
+"46209": [
+"Rafelguaraf",
+"46"
+],
+"46211": [
+"El Real de Gandia",
+"46"
+],
+"46212": [
+"Real",
+"46"
+],
+"46213": [
+"Requena",
+"46"
+],
+"46214": [
+"Riba-roja de Túria",
+"46"
+],
+"46215": [
+"Riola",
+"46"
+],
+"46216": [
+"Rocafort",
+"46"
+],
+"46217": [
+"Rotglà i Corberà",
+"46"
+],
+"46218": [
+"Ròtova",
+"46"
+],
+"46220": [
+"Sagunt/Sagunto",
+"46"
+],
+"46223": [
+"Sedaví",
+"46"
+],
+"46227": [
+"Senyera",
+"46"
+],
+"46228": [
+"Serra",
+"46"
+],
+"46229": [
+"Siete Aguas",
+"46"
+],
+"46230": [
+"Silla",
+"46"
+],
+"46231": [
+"Simat de la Valldigna",
+"46"
+],
+"46232": [
+"Sinarcas",
+"46"
+],
+"46233": [
+"Sollana",
+"46"
+],
+"46235": [
+"Sueca",
+"46"
+],
+"46236": [
+"Sumacàrcer",
+"46"
+],
+"46237": [
+"Tavernes Blanques",
+"46"
+],
+"46238": [
+"Tavernes de la Valldigna",
+"46"
+],
+"46244": [
+"Torrent",
+"46"
+],
+"46246": [
+"Tous",
+"46"
+],
+"46247": [
+"Tuéjar",
+"46"
+],
+"46248": [
+"Turís",
+"46"
+],
+"46249": [
+"Utiel",
+"46"
+],
+"46250": [
+"València",
+"46"
+],
+"46251": [
+"Vallada",
+"46"
+],
+"46254": [
+"Venta del Moro",
+"46"
+],
+"46255": [
+"Vilallonga/Villalonga",
+"46"
+],
+"46256": [
+"Vilamarxant",
+"46"
+],
+"46257": [
+"Castelló",
+"46"
+],
+"46258": [
+"Villar del Arzobispo",
+"46"
+],
+"46260": [
+"Vinalesa",
+"46"
+],
+"46261": [
+"Yátova",
+"46"
+],
+"46903": [
+"San Antonio de Benagéber",
+"46"
+],
+"46904": [
+"Benicull de Xúquer",
+"46"
+],
+"47004": [
+"Alaejos",
+"47"
+],
+"47007": [
+"Aldeamayor de San Martín",
+"47"
+],
+"47010": [
+"Arroyo de la Encomienda",
+"47"
+],
+"47023": [
+"Boecillo",
+"47"
+],
+"47027": [
+"Cabezón de Pisuerga",
+"47"
+],
+"47030": [
+"Campaspero",
+"47"
+],
+"47050": [
+"Cigales",
+"47"
+],
+"47052": [
+"Cistérniga",
+"47"
+],
+"47066": [
+"Fuensaldaña",
+"47"
+],
+"47075": [
+"Íscar",
+"47"
+],
+"47076": [
+"Laguna de Duero",
+"47"
+],
+"47082": [
+"Matapozuelos",
+"47"
+],
+"47084": [
+"Mayorga",
+"47"
+],
+"47085": [
+"Medina del Campo",
+"47"
+],
+"47086": [
+"Medina de Rioseco",
+"47"
+],
+"47090": [
+"Mojados",
+"47"
+],
+"47101": [
+"Nava del Rey",
+"47"
+],
+"47104": [
+"Olmedo",
+"47"
+],
+"47111": [
+"La Pedraja de Portillo",
+"47"
+],
+"47112": [
+"Pedrajas de San Esteban",
+"47"
+],
+"47114": [
+"Peñafiel",
+"47"
+],
+"47122": [
+"Portillo",
+"47"
+],
+"47133": [
+"Renedo de Esgueva",
+"47"
+],
+"47139": [
+"Rueda",
+"47"
+],
+"47155": [
+"Santovenia de Pisuerga",
+"47"
+],
+"47158": [
+"La Seca",
+"47"
+],
+"47159": [
+"Serrada",
+"47"
+],
+"47161": [
+"Simancas",
+"47"
+],
+"47165": [
+"Tordesillas",
+"47"
+],
+"47173": [
+"Traspinedo",
+"47"
+],
+"47175": [
+"Tudela de Duero",
+"47"
+],
+"47182": [
+"Valdestillas",
+"47"
+],
+"47186": [
+"Valladolid",
+"47"
+],
+"47193": [
+"Viana de Cega",
+"47"
+],
+"47197": [
+"Villabrágima",
+"47"
+],
+"47214": [
+"Villalón de Campos",
+"47"
+],
+"47217": [
+"Villanubla",
+"47"
+],
+"47218": [
+"Villanueva de Duero",
+"47"
+],
+"47231": [
+"Zaratán",
+"47"
+],
+"48001": [
+"Abadiño",
+"48"
+],
+"48002": [
+"Abanto y Ciérvana-Abanto Zierbena",
+"48"
+],
+"48003": [
+"Amorebieta-Etxano",
+"48"
+],
+"48009": [
+"Arrankudiaga-Zollo",
+"48"
+],
+"48011": [
+"Arrigorriaga",
+"48"
+],
+"48012": [
+"Bakio",
+"48"
+],
+"48013": [
+"Barakaldo",
+"48"
+],
+"48014": [
+"Barrika",
+"48"
+],
+"48015": [
+"Basauri",
+"48"
+],
+"48016": [
+"Berango",
+"48"
+],
+"48017": [
+"Bermeo",
+"48"
+],
+"48018": [
+"Berriatua",
+"48"
+],
+"48019": [
+"Berriz",
+"48"
+],
+"48020": [
+"Bilbao",
+"48"
+],
+"48021": [
+"Busturia",
+"48"
+],
+"48022": [
+"Karrantza Harana/Valle de Carranza",
+"48"
+],
+"48024": [
+"Zeanuri",
+"48"
+],
+"48025": [
+"Zeberio",
+"48"
+],
+"48026": [
+"Dima",
+"48"
+],
+"48027": [
+"Durango",
+"48"
+],
+"48029": [
+"Etxebarri",
+"48"
+],
+"48032": [
+"Elorrio",
+"48"
+],
+"48034": [
+"Ermua",
+"48"
+],
+"48036": [
+"Galdakao",
+"48"
+],
+"48038": [
+"Gamiz-Fika",
+"48"
+],
+"48040": [
+"Gatika",
+"48"
+],
+"48042": [
+"Gordexola",
+"48"
+],
+"48043": [
+"Gorliz",
+"48"
+],
+"48044": [
+"Getxo",
+"48"
+],
+"48045": [
+"Güeñes",
+"48"
+],
+"48046": [
+"Gernika-Lumo",
+"48"
+],
+"48052": [
+"Larrabetzu",
+"48"
+],
+"48053": [
+"Laukiz",
+"48"
+],
+"48054": [
+"Leioa",
+"48"
+],
+"48055": [
+"Lemoa",
+"48"
+],
+"48056": [
+"Lemoiz",
+"48"
+],
+"48057": [
+"Lekeitio",
+"48"
+],
+"48058": [
+"Mallabia",
+"48"
+],
+"48060": [
+"Markina-Xemein",
+"48"
+],
+"48061": [
+"Maruri-Jatabe",
+"48"
+],
+"48065": [
+"Ugao-Miraballes",
+"48"
+],
+"48067": [
+"Muxika",
+"48"
+],
+"48068": [
+"Mundaka",
+"48"
+],
+"48069": [
+"Mungia",
+"48"
+],
+"48071": [
+"Muskiz",
+"48"
+],
+"48072": [
+"Otxandio",
+"48"
+],
+"48073": [
+"Ondarroa",
+"48"
+],
+"48074": [
+"Urduña/Orduña",
+"48"
+],
+"48075": [
+"Orozko",
+"48"
+],
+"48077": [
+"Plentzia",
+"48"
+],
+"48078": [
+"Portugalete",
+"48"
+],
+"48080": [
+"Valle de Trápaga-Trapagaran",
+"48"
+],
+"48081": [
+"Lezama",
+"48"
+],
+"48082": [
+"Santurtzi",
+"48"
+],
+"48083": [
+"Ortuella",
+"48"
+],
+"48084": [
+"Sestao",
+"48"
+],
+"48085": [
+"Sopela",
+"48"
+],
+"48086": [
+"Sopuerta",
+"48"
+],
+"48089": [
+"Urduliz",
+"48"
+],
+"48090": [
+"Balmaseda",
+"48"
+],
+"48091": [
+"Atxondo",
+"48"
+],
+"48092": [
+"Bedia",
+"48"
+],
+"48093": [
+"Areatza",
+"48"
+],
+"48094": [
+"Igorre",
+"48"
+],
+"48095": [
+"Zaldibar",
+"48"
+],
+"48096": [
+"Zalla",
+"48"
+],
+"48097": [
+"Zaratamo",
+"48"
+],
+"48901": [
+"Derio",
+"48"
+],
+"48902": [
+"Erandio",
+"48"
+],
+"48903": [
+"Loiu",
+"48"
+],
+"48904": [
+"Sondika",
+"48"
+],
+"48905": [
+"Zamudio",
+"48"
+],
+"48910": [
+"Iurreta",
+"48"
+],
+"48912": [
+"Alonsotegi",
+"48"
+],
+"48913": [
+"Zierbena",
+"48"
+],
+"49003": [
+"Alcañices",
+"49"
+],
+"49021": [
+"Benavente",
+"49"
+],
+"49023": [
+"Bermillo de Sayago",
+"49"
+],
+"49053": [
+"Coreses",
+"49"
+],
+"49065": [
+"Fermoselle",
+"49"
+],
+"49081": [
+"Fuentesaúco",
+"49"
+],
+"49085": [
+"Galende",
+"49"
+],
+"49125": [
+"Moraleja del Vino",
+"49"
+],
+"49127": [
+"Morales del Vino",
+"49"
+],
+"49166": [
+"Puebla de Sanabria",
+"49"
+],
+"49178": [
+"Roales",
+"49"
+],
+"49187": [
+"San Cristóbal de Entreviñas",
+"49"
+],
+"49200": [
+"Santa Cristina de la Polvorosa",
+"49"
+],
+"49219": [
+"Toro",
+"49"
+],
+"49250": [
+"Villalpando",
+"49"
+],
+"49261": [
+"Villaralbo",
+"49"
+],
+"49275": [
+"Zamora",
+"49"
+],
+"50006": [
+"Ainzón",
+"50"
+],
+"50008": [
+"Alagón",
+"50"
+],
+"50017": [
+"Alfajarín",
+"50"
+],
+"50018": [
+"Alfamén",
+"50"
+],
+"50025": [
+"La Almunia de Doña Godina",
+"50"
+],
+"50034": [
+"Ariza",
+"50"
+],
+"50038": [
+"Ateca",
+"50"
+],
+"50045": [
+"Belchite",
+"50"
+],
+"50055": [
+"Borja",
+"50"
+],
+"50057": [
+"Brea de Aragón",
+"50"
+],
+"50062": [
+"El Burgo de Ebro",
+"50"
+],
+"50066": [
+"Cadrete",
+"50"
+],
+"50067": [
+"Calatayud",
+"50"
+],
+"50068": [
+"Calatorao",
+"50"
+],
+"50073": [
+"Cariñena",
+"50"
+],
+"50074": [
+"Caspe",
+"50"
+],
+"50089": [
+"Cuarte de Huerva",
+"50"
+],
+"50094": [
+"Daroca",
+"50"
+],
+"50095": [
+"Ejea de los Caballeros",
+"50"
+],
+"50099": [
+"Épila",
+"50"
+],
+"50101": [
+"Escatrón",
+"50"
+],
+"50102": [
+"Fabara",
+"50"
+],
+"50107": [
+"Figueruelas",
+"50"
+],
+"50115": [
+"Fuentes de Ebro",
+"50"
+],
+"50118": [
+"Gallur",
+"50"
+],
+"50126": [
+"Illueca",
+"50"
+],
+"50132": [
+"La Joyosa",
+"50"
+],
+"50137": [
+"Leciñena",
+"50"
+],
+"50147": [
+"Luceni",
+"50"
+],
+"50152": [
+"Maella",
+"50"
+],
+"50153": [
+"Magallón",
+"50"
+],
+"50160": [
+"Mallén",
+"50"
+],
+"50163": [
+"María de Huerva",
+"50"
+],
+"50165": [
+"Mequinenza",
+"50"
+],
+"50175": [
+"Morata de Jalón",
+"50"
+],
+"50181": [
+"Muel",
+"50"
+],
+"50182": [
+"La Muela",
+"50"
+],
+"50203": [
+"Pastriz",
+"50"
+],
+"50204": [
+"Pedrola",
+"50"
+],
+"50208": [
+"Pina de Ebro",
+"50"
+],
+"50209": [
+"Pinseque",
+"50"
+],
+"50219": [
+"La Puebla de Alfindén",
+"50"
+],
+"50222": [
+"Quinto",
+"50"
+],
+"50223": [
+"Remolinos",
+"50"
+],
+"50225": [
+"Ricla",
+"50"
+],
+"50230": [
+"Sádaba",
+"50"
+],
+"50235": [
+"San Mateo de Gállego",
+"50"
+],
+"50240": [
+"Sástago",
+"50"
+],
+"50247": [
+"Sobradiel",
+"50"
+],
+"50251": [
+"Tarazona",
+"50"
+],
+"50252": [
+"Tauste",
+"50"
+],
+"50262": [
+"Torres de Berrellén",
+"50"
+],
+"50272": [
+"Utebo",
+"50"
+],
+"50288": [
+"Villanueva de Gállego",
+"50"
+],
+"50297": [
+"Zaragoza",
+"50"
+],
+"50298": [
+"Zuera",
+"50"
+],
+"50903": [
+"Villamayor de Gállego",
+"50"
+]
+}

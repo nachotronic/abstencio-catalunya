@@ -51,6 +51,8 @@ def _carga():
 
 
 MUN, SEC = _carga()
+# las familias que solo existen en 1933-1936 (Segunda República) no están en las descargas desde 1977
+FAM = [c for c in FAM if f'{ULTIMA}_v{c}' in MUN.columns]
 
 
 def resultado(df, y):
