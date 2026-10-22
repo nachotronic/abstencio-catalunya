@@ -1,6 +1,6 @@
 """Genera /encuestas/: todas las encuestas publicadas de las generales del 29N, con su fuente original.
 
-Lee los CSV que actualiza dos veces al día el workflow «Encuestas» (previsiones/datos/encuestas/) y escribe
+Lee los CSV que actualiza cada día el workflow «Encuestas» (previsiones/datos/encuestas/) y escribe
 encuestas/index.html y encuestas/sitemap.xml. El workflow lo vuelve a ejecutar cuando llega una encuesta nueva, así
 que la página se refresca sola. Solo usa la biblioteca estándar.
 
@@ -196,7 +196,7 @@ def textos(encs, hoy):
     n = len(ultimas)
     tercero_vox = sum(1 for e in ultimas if sorted(e['voto'], key=e['voto'].get, reverse=True)[2:3] == ['VOX'])
     art = '' if primero in ('VOX', 'SUMAR', 'PODEMOS', 'SALF') else 'El '
-    gana = f'{art}{NOMBRE[primero]} gana según las {n} encuestadoras del último mes' if n1 == n else f'{art}{NOMBRE[primero]} gana según {n1} de las {n} encuestadoras del último mes'
+    gana = f'{art}{NOMBRE[primero]} gana en las {n} encuestas' if n1 == n else f'{art}{NOMBRE[primero]} gana en {n1} de {n} encuestas'
     rangos = {k: (min(e['voto'][k] for e in ultimas if k in e['voto']), max(e['voto'][k] for e in ultimas if k in e['voto']))
               for k in ('PP', 'PSOE', 'VOX')}
     entradilla = (f'Cada encuestadora con su última encuesta de los últimos 30 días: el PP va del {pc(rangos["PP"][0])} al {pc(rangos["PP"][1])}, '
@@ -209,10 +209,11 @@ def textos(encs, hoy):
           + ('Vox queda tercero en todas.' if tercero_vox == n else f'Vox queda tercero en {tercero_vox}.' if tercero_vox else ''))
     con_esc = [e for e in ultimas if 'PP' in e['esc'] and 'VOX' in e['esc']]
     mayoria = sum(1 for e in con_esc if rango_esc(e['esc']['PP'])[0] + rango_esc(e['esc']['VOX'])[0] >= 176)
-    if con_esc and mayoria == len(con_esc):
-        titular = f'{gana}, y las {mayoria} que publican escaños dan mayoría absoluta a PP y Vox'
-    elif con_esc:
-        titular = f'{gana}; {mayoria} de las {len(con_esc)} que publican escaños dan mayoría absoluta a PP y Vox'
+    # titular breve: última encuesta de cada encuestadora en 30 días; la mayoría, solo en las que dan escaños
+    if con_esc:
+        con_vox = 'con Vox' if primero == 'PP' else 'PP y Vox'
+        en = f'las {mayoria} con escaños' if mayoria == len(con_esc) else f'{mayoria} de {len(con_esc)} con escaños'
+        titular = f'{gana}; {con_vox}, mayoría absoluta en {en}'
     else:
         titular = gana
     p2 = ((f'Las {mayoria} que publican escaños dan' if mayoria == len(con_esc) else f'De las {len(con_esc)} que publican escaños, {mayoria} dan')
@@ -437,7 +438,7 @@ def main():
            ('¿Cuántas encuestas se han publicado desde las últimas generales?',
             f'Esta página recoge {n_desde23:,} encuestas de ámbito estatal publicadas desde las generales de julio de 2023, sin contar las reestimaciones del CIS hechas por otras empresas.'.replace(',', '.')),
            ('¿Cada cuánto se actualiza esta página?',
-            'Dos veces al día. Cuando aparece una encuesta nueva, la tabla, el gráfico y las cifras de esta página se recalculan solos.')]
+            'Una vez al día, por la mañana. Cuando aparece una encuesta nueva, la tabla, el gráfico y las cifras de esta página se recalculan solos.')]
     faq = [x for x in faq if x]
     faq_html = '<div class="faq">' + ''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq) + '</div>'
     actual = fecha_larga(hoy.isoformat())
@@ -485,7 +486,7 @@ def main():
 <dt>Qué se recoge</dt><dd>Todas las encuestas de ámbito estatal con estimación de voto para el Congreso publicadas desde las generales de julio de 2023, tal como las publicó cada encuestadora. No se recogen medias de otros medios ni sondeos internos de los partidos.</dd>
 <dt>Límites</dt><dd>Las encuestas no son resultados. Cada encuestadora usa su método (teléfono, internet, panel), su muestra y su forma de estimar, y en las generales de 2019 y 2023 la media de las encuestas se equivocó hasta en 3,4 puntos en un partido. La estimación del CIS se aparta del resto (<a href="../actualidad/cis-tezanos-estimacion-29n/">así le fue en elecciones anteriores</a>). La mediana del gráfico es un resumen, no una previsión.</dd>
 <dt>Fuentes</dt><dd><ul><li>Cada encuesta enlaza a su publicación original (medio o encuestadora).</li><li><a href="https://www.electografica.com/">Electográfica</a>, para localizar las encuestas y su ficha técnica.</li><li><a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election">Wikipedia, «Opinion polling for the 2026 Spanish general election»</a> (CC BY-SA 4.0), para los escaños y los sondeos que no recoge Electográfica.</li></ul></dd>
-<dt>Actualización</dt><dd>Automática, dos veces al día (código en <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones/src">previsiones/src</a>). Última: {actual}.</dd>
+<dt>Actualización</dt><dd>Automática, una vez al día (código en <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones/src">previsiones/src</a>). Última: {actual}.</dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 </dl>
 <p class="descargas">Descargar los datos: <a href="../previsiones/datos/encuestas/encuestas_limpias.csv">todas las encuestas (CSV)</a> · <a href="../previsiones/datos/encuestas/wikipedia_generales_espana.csv">con escaños, según Wikipedia (CSV)</a></p>

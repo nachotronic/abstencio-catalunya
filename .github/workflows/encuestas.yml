@@ -1,11 +1,10 @@
-# Descarga las encuestas de generales (Electográfica) y las coteja con Wikipedia dos veces al día.
+# Descarga las encuestas de generales (Electográfica) y las coteja con Wikipedia una vez al día (07:00 UTC).
 # Solo si cambia algún CSV de previsiones/datos/encuestas/: rehace la página /encuestas/, hace commit en main
 # y avisa a IndexNow (un push hecho por este workflow no lanza el de IndexNow).
 name: Encuestas
 on:
   schedule:
-    - cron: '20 6 * * *'
-    - cron: '20 19 * * *'
+    - cron: '0 7 * * *'
   workflow_dispatch:
 permissions:
   contents: write
