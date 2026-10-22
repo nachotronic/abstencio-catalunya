@@ -115,7 +115,7 @@ def main(cods):
         if a.barrio.nunique() < 4:
             print(f'{cod}: solo {a.barrio.nunique()} barrios con secciones')
             continue
-        if a.barrio.fillna('').str.fullmatch(r'(?i)(distrito|districte|barrutia)?\s*\d+').mean() > 0.5:
+        if a.barrio.fillna('').str.fullmatch(r'(?i)(distrito|districte|barrutia)?\s*(\d+|[IVXL]+)').mean() > 0.5:
             print(f'{cod}: los distritos de OSM solo tienen número, sin nombre de barrio')
             continue
         if nivel == 10 and niveles.get(9, 0) >= 2:
