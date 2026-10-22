@@ -41,6 +41,28 @@ Descargadas el 22-10-2026. Solo se guardan los totales de ambos sexos; las tabla
 - Es **por residencia**, como el censo: no dice cuántos empleos hay en el municipio. Cuadra con el censo anual del INE (diciembre de 2023: 390.584 afiliados frente a 410.214 ocupados en el censo de 2023, correlación entre municipios 0,999). Lo que añade es la serie mensual hasta 2026 y el régimen (autónomos, agrario, hogar).
 - Ejemplo: Plasencia tiene 15.084 afiliados residentes en septiembre de 2026 (14.267 en diciembre de 2021): 12.132 en servicios (80%), 1.243 en industria, 1.153 en construcción y 505 en agricultura; 2.816 son autónomos.
 
+## Afiliación por municipio en las comunidades que la publican
+
+- `afiliacion_ccaa_municipios.csv`: un formato común para las comunidades cuyo instituto de estadística da afiliación (o empleo) por municipio. Se genera con `python3 src/afiliacion_ccaa.py <carpeta>`, que descarga las tablas y lee también los dos ficheros anteriores de Cataluña y Extremadura. Una fila por municipio (`mun_code` INE), `ccaa`, `fecha` (AAAA-MM: diciembre de cada año desde 2021 y el último mes o trimestre publicado) y `enfoque`. Columnas: `afiliados`, `agricultura`, `industria`, `construccion`, `servicios`, `sector_no_consta` y `autonomos` (régimen especial de trabajadores autónomos).
+- `enfoque`: `residencia` cuenta a los vecinos afiliados, como el censo; `trabajo` cuenta los empleos situados en el municipio (cuenta de cotización o centro de trabajo). `medida`: `afiliaciones` (una persona con dos empleos cuenta dos veces), `personas` o `empleados` (País Vasco).
+
+| Comunidad | Fuente | Enfoque | Qué trae | Fechas |
+|---|---|---|---|---|
+| Cataluña | Idescat (ver arriba) | residencia y trabajo | sectores (trabajo: solo régimen general) | 2021-2025 |
+| Comunidad de Madrid | [Datos abiertos](https://datos.comunidad.madrid/) (`afiliados_por_residencia_y_rama`, `afiliados_por_ubicacion_y_rama`, `afiliados_por_ubicacion_y_regimen`) | residencia (a 1 de enero, fechada en diciembre del año anterior) y trabajo (centro de trabajo, 31 de diciembre) | sectores; autónomos solo en trabajo | 2021-2025 |
+| Canarias | ISTAC, [API de indicadores](https://datos.canarias.es/api/estadisticas/indicators/v1.0/) (`AFILIACIONES`, `AFILIACIONES_AUTONOMOS`, sectores) | trabajo (domicilio de la cuenta de cotización o del autónomo) | total y autónomos; sectores solo desde enero de 2026 | 2021-sep. 2026 |
+| Galicia | IGE, [API](https://www.ige.gal/igebdt/igeapi/) (tablas 10175 y 4556) | residencia | sectores (hasta dic. 2025) y autónomos | 2021-ago. 2026 |
+| Illes Balears | Ibestat, PC-Axis ([catálogo](https://intranet.caib.es/opendatacataleg/)) | residencia | secciones A–U agrupadas en sectores (hasta 2025), autónomos | 2021-3.er trim. 2026 |
+| Región de Murcia | CREM, [Estadística de personas afiliadas, datos municipales](https://econet.carm.es/web/crem/inicio/-/crem/sicrem/PM_Afiliados/12m2024/sec0.html) (tablas HTML) | residencia | sectores y autónomos | 2021-2024 |
+| Comunitat Valenciana | IVE, [banco de datos](https://bdo.gva.es/) (consultas C2D0243 y C2D0242) | residencia | sectores (hasta 2025; «más de un sector» va a `sector_no_consta`) y autónomos | 2021-3.er trim. 2026 |
+| País Vasco | Eustat, [DirAE](https://www.eustat.eus/bankupx/pxweb/es/DB/-/PX_200163_cdirae_est07.px) | trabajo | solo total: personas empleadas en establecimientos (no es afiliación), a 1 de enero | 2021-2024 |
+| Extremadura | Junta de Extremadura (ver arriba) | residencia | sectores y autónomos | 2021-2024, sep. 2026 |
+
+- Cuadra con el censo del INE: en diciembre de 2023, los totales por residencia de cada comunidad quedan entre un 6% por debajo y un 5% por encima de los ocupados del censo de 2023, con correlación entre municipios de 0,999 o más. Por lugar de trabajo, Madrid suma un 16% más que sus ocupados residentes (atrae trabajadores de fuera).
+- Madrid y Cataluña redondean a múltiplos de 5 (secreto estadístico), así que en municipios pequeños las partes no suman el total. Las celdas vacías son datos ocultos o que la fuente no da. El último periodo de cada comunidad no es diciembre y puede tener estacionalidad (en Baleares, septiembre tiene un tercio más de afiliados que diciembre).
+- El CREM (Murcia) bloquea las descargas automáticas con un captcha: los periodos desde 2025 hay que bajarlos a mano y añadirlos a `PERIODOS_CREM`.
+- **No incluidas.** Andalucía (el IECA tiene la afiliación por municipio en BADEA, pero no responde desde el entorno de trabajo), Aragón (el IAEST la publica, pero su web no fue accesible), La Rioja (conexión rechazada), Asturias (SADEI, base PX-Web sin tabla municipal localizable), Cantabria, Navarra, Castilla y León y Castilla-La Mancha (sin tabla municipal descargable encontrada; Castilla-La Mancha solo tiene fichas en PDF). Para esas comunidades queda el censo del INE (`empleo_sector_municipios.csv`), que sí cubre toda España.
+
 ## Empleo público por provincia
 
 - `empleo_publico_provincias.csv`: efectivos de las Administraciones públicas por semestre, de enero de 2023 a enero de 2026 (7 cortes, `fecha` AAAA-MM). Una fila por fecha, provincia (`prov_code` INE; `99` = extranjero), administración (`estado`, `ccaa`, `local`), sector y sexo. Sectores: administración general, justicia, fuerzas armadas y seguridad (Estado), policía autonómica, docencia no universitaria, sanidad, universidades, ayuntamientos, diputaciones y cabildos. Columnas de personal: `funcionario_carrera` (incluye el estatutario de la sanidad), `funcionario_interino`, `en_practicas`, `laboral_fijo` (con fijos discontinuos), `laboral_temporal` y `otro` (eventuales, indefinidos no fijos, varios); `efectivos` es su suma. Se genera con `python3 src/empleo_publico.py <carpeta>`.
