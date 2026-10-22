@@ -145,6 +145,8 @@ def estimacion():
         return None, None
     d = json.load(open(ESTIMACION / 'escenario-base.json'))
     meta = json.load(open(ESTIMACION / 'meta.json'))
+    if meta.get('interno', True) or meta.get('ficticio'):   # salida interna o de prueba: no se publica
+        return None, None
     hemi = {DEL_MODELO[k]: v for k, v in d['hemiciclo']['congreso'].items() if k in DEL_MODELO and v}
     filas = ''
     central = d['hemiciclo']['congreso']   # el mismo reparto que el hemiciclo
@@ -169,7 +171,7 @@ def estimacion():
 <figure><figcaption><span class="t">Congreso: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
 <div class="chart" id="hemi-modelo"></div></figure>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. <a href="../previsiones/">Método del modelo</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
+<p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. Método: media de las encuestas recientes (más peso a las nuevas y a las de muestra grande), repartida por provincia desde el resultado de 2023 con la señal de las europeas de 2024, escaños por D'Hondt en cada provincia y error de las encuestas medido en 25 elecciones españolas. <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">Código del modelo</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     return html_b, hemi
 
 
