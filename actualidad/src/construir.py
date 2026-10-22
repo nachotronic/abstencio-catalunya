@@ -1760,7 +1760,7 @@ PIEZAS += [
                   pie='Un bloque de pisos, una declaración de la renta, monedas, una madre con su hijo, un pensionista, el mapa de España y una urna: un collage.'),
     ),
     dict(
-        slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-23',
+        slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-20',
         titulo='Con el PSOE andaluz en mínimos: Sevilla, Jerez y otros 170 municipios que votaron a la izquierda en todas las generales de 1977 a 2008 dieron en 2023 más votos a PP y Vox', serie='29n',
         descripcion='En 172 municipios con 2,23 millones de electores, la izquierda estatal sumó más que la derecha en las diez generales de 1977 a 2008 y en 2023 fue al revés: Sevilla, Jerez, Móstoles, Algeciras, Chiclana. 115 cambiaron en 2011. El camino contrario lo han hecho 147, casi todos pequeños.',
         compara='Los 7.845 municipios con datos de las 16 elecciones generales de 1977 a 2023, con el voto sumado en dos bloques: izquierda estatal (PSOE y PCE, IU, Podemos o Sumar) y derecha estatal (UCD, CDS, AP y PP, Ciudadanos, UPyD y Vox). Feudo: un bloque suma más en las diez generales de 1977 a 2008. Vuelco: el otro bloque suma más en 2023.',
@@ -1779,7 +1779,7 @@ PIEZAS += [
                   fuente='Ministerio del Interior'),
     ),
     dict(
-        slug='calle-que-parte-madrid', fecha='2026-10-24',
+        slug='calle-que-parte-madrid', fecha='2026-10-21',
         titulo='A cinco semanas del 29N: en la calle de los Hermanos García Noblejas, en Madrid, PP y PSOE se cambian de acera 12 veces, y el PP siempre gana en el lado con más renta', serie='29n',
         descripcion='En Madrid, una de cada cinco parejas de secciones censales vecinas eligió un ganador distinto en 2023. Las calles donde más se repite son Hermanos García Noblejas, General Ricardos, la avenida de las Águilas y Hacienda de Pavones. En Sinesio Delgado, entre Tetuán y Fuencarral, el salto llega a 27 puntos.',
         compara='Las 6.112 parejas de secciones censales contiguas de la ciudad de Madrid (al menos 80 metros de límite común y 400 electores cada una) en las generales de 2023, con la calle que las separa y su renta por unidad de consumo de 2023.',
@@ -1801,7 +1801,7 @@ PIEZAS += [
                   fuente='Ministerio del Interior; callejero © OpenStreetMap'),
     ),
     dict(
-        slug='barrios-pobres-derecha-ricos-izquierda', fecha='2026-10-22',
+        slug='barrios-pobres-derecha-ricos-izquierda', fecha='2026-10-20',
         titulo='Vox busca el voto de los barrios obreros: en la Región de Murcia, nueve de cada diez secciones pobres ya votan más a PP y Vox que a PSOE y Sumar', serie='29n',
         descripcion='De las 3.289 secciones más pobres de España, 1.089 votaron más a PP y Vox en 2023, sobre todo en Murcia, Almería y Alicante. De las 3.290 más ricas, 924 votaron más a PSOE y Sumar: casi todas en Cataluña y el País Vasco, y un centenar en el centro de Madrid.',
         compara='Las 32.900 secciones censales con al menos 300 electores y dato de renta en las generales de 2023, agrupadas en diez tramos de igual tamaño según la renta media por unidad de consumo. Se comparan dos bloques: PP y Vox frente a PSOE y Sumar. Excepciones: secciones del tramo más pobre donde PP y Vox suman más, y del más rico donde PSOE y Sumar suman más; por provincias y, dentro de las 65 ciudades de al menos 75.000 electores, con los tramos de cada ciudad.',
@@ -2286,6 +2286,10 @@ NOMES_ENLLACADES = {'girona'}
 PUBLICAS = [p for p in PIEZAS if p['serie'] not in NOMES_ENLLACADES]
 
 if __name__ == '__main__':
+    # Una fecha futura deja la pieza fija arriba del carrusel durante días (Nacho, 22-10-2026): la fecha es la de publicación
+    futuras = [p['slug'] for p in PIEZAS if p['fecha'] > datetime.date.today().isoformat()]
+    if futuras:
+        sys.exit('Piezas con fecha futura (pon la fecha real de publicación): ' + ', '.join(futuras))
     for p in PIEZAS:
         pieza(p, PIEZAS if p['serie'] in NOMES_ENLLACADES else PUBLICAS)
     indice(PUBLICAS, PIEZAS)
