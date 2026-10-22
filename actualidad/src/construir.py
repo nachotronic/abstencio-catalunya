@@ -1310,9 +1310,8 @@ PIEZAS = [
                  ('https://documentos.fedea.net/pubs/fpp/2023/06/FPP2023-03.pdf', 'José Ignacio Conde-Ruiz y Vincenzo Galasso, Efectos económicos de la demografía política, Fedea Policy Paper 2023/03 (junio de 2023)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/voto-jubilados-secciones-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Voto a Vox en el quinto de secciones con más pensionistas y en el quinto con menos, generales de 2015 a 2023.',
-                  fuente='INE, Censo anual 2023, y Ministerio del Interior'),
+        foto=dict(src='img/actualidad/fotos/voto-jubilados-secciones-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Cartas, gafas y monedas sobre una mesa; un hombre mayor mira la ciudad desde su balcón.'),
     ),
 ]
 
