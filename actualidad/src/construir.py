@@ -1193,9 +1193,8 @@ PIEZAS = [
                  ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/funcionarios-pagas-extra-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Empleados públicos por cada 100 habitantes en las provincias donde más y donde menos pesan, coloreadas por el partido más votado en 2023.',
-                  fuente='Ministerio para la Transformación Digital y de la Función Pública; INE; Ministerio del Interior'),
+        foto=dict(src='img/actualidad/fotos/funcionarios-pagas-extra-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una empleada pública ante su ordenador, de espaldas, junto a pilas de expedientes y de monedas.'),
     ),
 ]
 
