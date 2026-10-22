@@ -1,0 +1,208 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--psoe:#e30613;--pp:#1d84ce;--vox:#5ac035;--sumar:#a2275f;--bar:#cfcacc;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--sumar:#d0679a;--bar:#4a454b;--neu:#3aa6bf}}:root[data-theme="dark"]{--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--sumar:#d0679a;--bar:#4a454b;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Feijóo y Saiz se pelean por la hucha de las pensiones: donde más pesan en la renta, PP y PSOE se llevaron el 72,8% del voto, casi diez puntos más que donde menos</h1>
+<p class="dek">En las secciones donde las pensiones son un tercio de la renta, el bipartidismo resiste y Vox saca su peor dato. Pero no votan en bloque: en las más pobres gana el PSOE por 6,6 puntos y en las más ricas, el PP por 10,2.</p>
+<div class="byline">Nacho G. del Álamo · 22 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div><p data-tipo="dato">En Ferrol, la ciudad de los astilleros, uno de cada tres euros que entran en las casas no llega en una nómina. Llega de la Seguridad Social. Según el atlas de renta del INE, las pensiones eran en 2023 el 33,9% de la renta bruta de sus vecinos, más que en ninguna otra ciudad de más de 50.000 habitantes con ese dato. En las generales de julio de aquel año, Ferrol votó al PP (38,7%) y al PSOE (29,4%), y a Vox solo uno de cada dieciocho votantes: el 5,6%.</p>
+<p data-tipo="contexto">Ese dinero es ahora el centro de la campaña. Empezó el 13 de octubre, cuando la portavoz del PP en el Congreso, Ester Muñoz, dijo que el modelo «hay que cambiarlo» y que el sistema «va a colapsar», según <a href="https://www.moncloa.com/2026/10/14/feijoo-pensiones-ipc-pp-psoe-3448623/">Moncloa.com</a>. Dos días después, en Bruselas, al terminar la cumbre del Partido Popular Europeo, Alberto Núñez Feijóo cortó la discusión de su propio partido, según la crónica de Europa Press que publicó <a href="https://www.ondavasca.com/feijoo-garantiza-que-las-pensiones-subiran-con-el-ipc-si-gobierna-son-innegociables/">Ondavasca</a>:</p>
+<blockquote class="cita"><p>«Es muy sencillo contestar a la pregunta de las pensiones. Las pensiones son innegociables y ya; se acabó»</p><footer>Alberto Núñez Feijóo, presidente del PP, en Bruselas el 15 de octubre, según <a href="https://www.ondavasca.com/feijoo-garantiza-que-las-pensiones-subiran-con-el-ipc-si-gobierna-son-innegociables/">Europa Press</a>.</footer></blockquote>
+<p data-tipo="contexto">No se acabó. El martes 20, en la rueda de prensa del Consejo de Ministros, la ministra de Inclusión, Seguridad Social y Migraciones y portavoz del Gobierno, Elma Saiz, le pidió a Feijóo «un poco más de rigor» y le contestó con la hucha. El Fondo de Reserva, dijo, bajó hasta unos 5.000 millones con los gobiernos del PP, cuando las pensiones llegaron a subir un 0,25%, y cerrará 2026 con unos 20.000 millones, según <a href="https://www.infobae.com/espana/2026/10/20/elma-saiz-contraataca-a-feijoo-con-la-hucha-de-las-pensiones-de-vaciarse-hasta-5000-millones-con-el-pp-a-cerrar-2026-con-20000/">Infobae</a>:</p>
+<blockquote class="cita"><p>«Para hablar de agujeros en el bolsillo de los pensionistas y en las cuentas de la Seguridad Social desde luego es un especialista el señor Feijóo»</p><footer>Elma Saiz, portavoz del Gobierno, el 20 de octubre, según <a href="https://www.infobae.com/espana/2026/10/20/elma-saiz-contraataca-a-feijoo-con-la-hucha-de-las-pensiones-de-vaciarse-hasta-5000-millones-con-el-pp-a-cerrar-2026-con-20000/">Infobae</a>.</footer></blockquote>
+<p data-tipo="contexto">Los dos partidos prometen lo mismo, subir las pensiones con el IPC, y discuten quién lo cumplirá. La pelea tiene una razón que cabe en una cifra: en julio de 2023, casi tres de cada cuatro votos de los barrios que más viven de una pensión fueron para uno de los dos.</p>
+<h2>Cinco Españas, ordenadas por la pensión</h2>
+<p data-tipo="contexto">El <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a> del INE desglosa de dónde sale la renta de cada sección censal: salarios, pensiones, prestaciones por desempleo, otras prestaciones y otros ingresos. He ordenado las 32.579 secciones censales con datos según cuánto pesaban las pensiones en su renta en 2023, el año de las últimas generales, y las he partido en cinco grupos con el mismo número de votantes, unos 4,6 millones cada uno. Dejo fuera el País Vasco, donde el atlas no desglosa las fuentes, y la provincia de Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023.</p>
+<p data-tipo="dato">En el grupo donde menos pesan, las pensiones son de media el 10,5% de la renta. En el que más, el 32,9%, y llegan hasta el 60,7%. En 667 secciones, las pensiones traen más dinero que los salarios.</p>
+<figure>
+<figcaption><span class="t">Voto en julio de 2023 según el peso de las pensiones en la renta de cada sección</span><span class="s">Secciones agrupadas en cinco grupos con el mismo número de votantes, de donde menos pesan las pensiones (1) a donde más (5). En % de votos a candidaturas</span></figcaption>
+<div class="chart" id="quint"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Atlas de Distribución de Renta de los Hogares (fuentes de ingresos, 2023); Ministerio del Interior, resultados del Congreso por mesa, sin voto exterior. Sin el País Vasco, donde el atlas no desglosa las fuentes de renta, ni la provincia de Santa Cruz de Tenerife, donde Vox no se presentó en 2023. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="quint-tbl"></div></details>
+</figure>
+<p data-tipo="dato">El PP saca su mejor resultado en los dos extremos: el 36% donde menos pesan las pensiones y el 38,2% donde más. El PSOE sube de un grupo a otro, del 27% al 34,6%. Vox y Sumar hacen el camino contrario: Vox baja del 15,8% al 11%, y Sumar, del 13,2% al 10,7%. Sumados, PP y PSOE tienen el 63% de los votos en el primer grupo y el 72,8% en el quinto.</p>
+<p data-tipo="patron">La participación dibuja una U: 71,8% en el primer grupo, 69,4% en los dos centrales y 72,2% en el último, el más alto. Que Vox saque menos donde más pesan las pensiones encaja con lo que vimos en <a href="https://mapaelectoral.es/actualidad/pensiones-barrios-envejecidos/">otra pieza</a> con la edad: su peor resultado está en los barrios más envejecidos.</p>
+<p data-tipo="contexto">Conviene no confundir los grupos con personas. El peso de las pensiones en la renta no es el porcentaje de pensionistas: una sección pobre con pocos jubilados puede depender mucho de ellos, y una rica con muchos, poco. El primer grupo es joven, con una edad media de 38,9 años, y tiene la renta más alta, 27.297 euros por unidad de consumo. El quinto tiene 49,8 años de edad media y 20.570 euros.</p>
+<h2>Dos Españas jubiladas</h2>
+<p data-tipo="contexto">La política suele hablar de los pensionistas como de un bloque. Lo hace también la teoría. En 2023, los economistas José Ignacio Conde-Ruiz, de Fedea y la Universidad Complutense, y Vincenzo Galasso, de la Universidad Bocconi, recordaban en un <a href="https://documentos.fedea.net/pubs/fpp/2023/06/FPP2023-03.pdf">documento de Fedea</a> que, según los modelos del votante mediano, la política elegida será la que más beneficie al votante con la edad mediana del electorado, y añadían:</p>
+<blockquote class="cita"><p>«El envejecimiento de la población no hace más que aumentar esta edad mediana, haciendo que la opción política sobre políticas redistributivas esté cada vez más diseñada para satisfacer a los ancianos, alejándose cada vez más de las preferencias de los jóvenes»</p><footer>José Ignacio Conde-Ruiz y Vincenzo Galasso, <a href="https://documentos.fedea.net/pubs/fpp/2023/06/FPP2023-03.pdf">«Efectos económicos de la demografía política»</a>, Fedea Policy Paper 2023/03 (junio de 2023).</footer></blockquote>
+<p data-tipo="dato">Las urnas, sección a sección, no dibujan un bloque. He partido el quinto grupo, las 8.269 secciones donde más pesan las pensiones, en tres tercios según su renta. En el más pobre, con 15.854 euros por unidad de consumo, gana el PSOE, con el 40,4%, frente al 33,8% del PP: 6,6 puntos de ventaja. En el más rico, con 25.149 euros, gana el PP, con el 40,7%, frente al 30,4% del PSOE: 10,2 puntos. La participación sube con la renta, del 68,8% al 75,4%.</p>
+<figure>
+<figcaption><span class="t">Voto en las secciones donde más pesan las pensiones, según su renta</span><span class="s">Grupo 5 (8.269 secciones) partido en tres tercios según la renta media por unidad de consumo. En % de votos a candidaturas, julio de 2023</span></figcaption>
+<div class="chart" id="renta"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: INE, Atlas de Distribución de Renta de los Hogares (fuentes de ingresos, 2023); Ministerio del Interior, resultados del Congreso por mesa, sin voto exterior. Sin el País Vasco, donde el atlas no desglosa las fuentes de renta, ni la provincia de Santa Cruz de Tenerife, donde Vox no se presentó en 2023. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="renta-tbl"></div></details>
+</figure>
+<p data-tipo="patron">La palabra pensión es la misma en los dos sitios, y el peso en la renta también: en torno a un tercio en los tres tercios. Lo que cambia es todo lo demás. Comparo, a sabiendas, barrios y no personas, pero la frontera que separa al PP del PSOE entre los barrios que viven de una pensión es la misma que los separa en el resto: la renta.</p>
+<h2>Donde el bipartidismo resistió</h2>
+<p data-tipo="dato">La foto no es solo de 2023. Con los mismos grupos, he mirado cómo votaron esas secciones en tres generales anteriores. En noviembre de 2011, las generales de la mayoría absoluta del PP, PP y PSOE sumaban el 71,5% en el primer grupo y el 79,9% en el quinto. En diciembre de 2015, con Podemos y Ciudadanos ya en las urnas, el 44,5% y el 60,6%: 16 puntos de diferencia. En noviembre de 2019, el 43,9% y el 60,1%.</p>
+<figure>
+<figcaption><span class="t">Voto a PP y PSOE en cuatro generales, según el peso de las pensiones en la renta de cada sección</span><span class="s">Grupos de 2023, de donde menos pesan las pensiones (1) a donde más (5). En % de votos a candidaturas</span></figcaption>
+<div class="chart" id="hist"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span></div>
+<div class="src">Fuente: INE, Atlas de Distribución de Renta de los Hogares (fuentes de ingresos, 2023); Ministerio del Interior, resultados del Congreso por mesa de 2011, 2015, noviembre de 2019 y 2023, sin voto exterior. Sin el País Vasco, donde el atlas no desglosa las fuentes de renta, ni la provincia de Santa Cruz de Tenerife, donde Vox no se presentó en 2023. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="hist-tbl"></div></details>
+</figure>
+<p data-tipo="patron">Cuando el voto se rompió, los barrios que más dependen de una pensión fueron los que menos se alejaron de los dos partidos de siempre: entre 2011 y 2015, PP y PSOE perdieron 27 puntos en el primer grupo y 19,3 en el quinto. La ventaja del PSOE en el quinto grupo sobre el primero fue de entre 7,6 y 9,8 puntos en las cuatro elecciones. La del PP cambia más: casi nula en 2011, de siete puntos en 2015 y de 2,2 en 2023.</p>
+<p data-tipo="contexto">Una advertencia de método: los grupos son los de 2023. Las secciones cambian de vecinos, y una que hoy vive de pensiones pudo vivir de salarios hace doce años. La comparación sirve para ver dónde votaban así, no para decir que fueron los mismos votantes.</p>
+<h2>Las ciudades de la pensión</h2>
+<p data-tipo="dato">Entre las ciudades de más de 50.000 habitantes, detrás de Ferrol vienen Ponferrada (31,4%), Avilés (30,2%), León, Salamanca y Torrelavega, todas por encima del 29%. Trece de las quince están en Galicia, Asturias, Cantabria y Castilla y León. Y votan distinto: Ponferrada y Torrelavega dieron la victoria al PSOE, con el 42,5% y el 40,9%; Salamanca, al PP, con el 46,4%.</p>
+<details><summary>Las 15 ciudades de más de 50.000 habitantes donde más pesan las pensiones en la renta</summary><div class="tbl" id="top-tbl"></div></details>
+<p data-tipo="hipotesis">Nada de esto dice qué votarán el 29N. Son datos por sección, no por persona, y no explican por qué se vota lo que se vota. Puede que en los barrios pobres pese el recuerdo de quién subió y quién congeló; puede que en los ricos pese más el resto del programa. Los datos no permiten elegir entre esas explicaciones.</p>
+<p data-tipo="dato">Lo que sí dicen es dónde se juega la pelea por la hucha. Feijóo dio la discusión por acabada; Saiz le llamó especialista en agujeros. En las secciones donde la pensión es un tercio de la renta, casi tres de cada cuatro votos fueron en 2023 a uno de los dos partidos que ahora se la disputan. Pero no al mismo. Con la misma pensión pesando en la renta, el voto cae de un lado o del otro según lo que haya alrededor: en los barrios pobres, del lado del PSOE; en los ricos, del lado del PP.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/pensiones-censo-mayores-29n/">El censo de los mayores</a> · <a href="https://mapaelectoral.es/actualidad/pensiones-barrios-envejecidos/">Vox en los barrios envejecidos</a> · <a href="https://mapaelectoral.es/actualidad/salarios-pensiones-ayudas-espana/">Salarios, pensiones y ayudas</a></p>
+<div class="foot">Datos: INE, Atlas de Distribución de Renta de los Hogares (fuentes de ingresos por sección censal, 2023); Ministerio del Interior, resultados electorales por mesa. Cálculo propio.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const Q=[{"q": 1, "n": 5067.0, "vot": 4593675.0, "pens": 10.538, "part": 71.837, "edad": 38.929, "renta": 27296.553, "PP": 35.985, "PSOE": 27.047, "VOX": 15.796, "SUMAR": 13.243, "mn": 1.0, "mx": 14.8}, {"q": 2, "n": 5818.0, "vot": 4594839.0, "pens": 17.125, "part": 69.443, "edad": 42.401, "renta": 23245.306, "PP": 31.416, "PSOE": 30.885, "VOX": 13.786, "SUMAR": 13.194, "mn": 14.8, "mx": 19.2}, {"q": 3, "n": 6402.0, "vot": 4594675.0, "pens": 21.057, "part": 69.412, "edad": 44.032, "renta": 21252.44, "PP": 31.603, "PSOE": 33.162, "VOX": 12.937, "SUMAR": 12.854, "mn": 19.2, "mx": 23.0}, {"q": 4, "n": 7023.0, "vot": 4594689.0, "pens": 25.218, "part": 70.595, "edad": 45.92, "renta": 20447.386, "PP": 34.187, "PSOE": 34.435, "VOX": 12.27, "SUMAR": 12.134, "mn": 23.0, "mx": 27.8}, {"q": 5, "n": 8269.0, "vot": 4595164.0, "pens": 32.921, "part": 72.245, "edad": 49.797, "renta": 20570.327, "PP": 38.17, "PSOE": 34.592, "VOX": 10.954, "SUMAR": 10.667, "mn": 27.8, "mx": 60.7}];const HI={"2011_11": [[47.5, 24.0], [44.2, 27.0], [44.1, 29.8], [45.8, 31.8], [48.2, 31.7]], "2015_12": [[27.6, 16.9], [27.1, 20.1], [27.8, 22.9], [30.3, 25.5], [34.5, 26.1]], "2019_11": [[20.5, 23.4], [19.3, 25.7], [20.0, 28.5], [22.5, 31.4], [26.9, 33.2]], "2023_07": [[36.0, 27.0], [31.4, 30.9], [31.6, 33.2], [34.2, 34.4], [38.2, 34.6]]};const R=[{"rq": "baja", "n": 2758.0, "vot": 1367336.0, "pens": 32.341, "part": 68.85, "edad": 48.44, "renta": 15854.043, "PP": 33.783, "PSOE": 40.402, "VOX": 12.724, "SUMAR": 9.611}, {"rq": "media", "n": 2755.0, "vot": 1476997.0, "pens": 33.333, "part": 72.002, "edad": 50.454, "renta": 19508.444, "PP": 39.286, "PSOE": 34.138, "VOX": 9.755, "SUMAR": 10.466}, {"rq": "alta", "n": 2756.0, "vot": 1750831.0, "pens": 33.025, "part": 75.363, "edad": 50.302, "renta": 25149.378, "PP": 40.655, "PSOE": 30.438, "VOX": 10.582, "SUMAR": 11.661}];const TT={"n": 32579.0, "vot": 22973042.0, "pens": 21.372, "part": 70.687, "edad": 44.216, "renta": 22559.191, "PP": 34.272, "PSOE": 32.024, "VOX": 13.148, "SUMAR": 12.418};const TOP=[["Ferrol", "A Coruña", 63209, 33.9, 69.1, 38.7, 29.4, 5.6, 17.0], ["Ponferrada", "León", 62798, 31.4, 70.1, 36.0, 42.5, 9.7, 9.1], ["Avilés", "Asturias", 75189, 30.2, 70.8, 33.5, 35.3, 11.9, 16.5], ["León", "León", 121600, 29.7, 73.1, 38.1, 30.9, 13.0, 5.7], ["Salamanca", "Salamanca", 143030, 29.6, 71.8, 46.4, 32.2, 12.6, 6.4], ["Torrelavega", "Cantabria", 50621, 29.3, 75.1, 35.6, 40.9, 11.5, 9.8], ["Gijón", "Asturias", 267493, 28.7, 72.4, 34.0, 34.3, 12.7, 16.3], ["Zamora", "Zamora", 59169, 28.6, 69.6, 42.0, 33.6, 12.3, 6.9], ["Cádiz", "Cádiz", 110403, 28.6, 71.4, 34.4, 36.5, 7.7, 16.5], ["Valladolid", "Valladolid", 296647, 28.1, 75.4, 40.3, 34.6, 13.3, 9.3], ["Santander", "Cantabria", 171252, 28.0, 73.8, 45.0, 31.6, 13.7, 7.6], ["Palencia", "Palencia", 75488, 27.9, 72.7, 39.8, 37.4, 11.7, 6.2], ["Ourense", "Ourense", 103495, 27.3, 70.3, 42.7, 35.4, 4.6, 6.9], ["Torrevieja", "Alicante", 95037, 27.0, 60.3, 38.1, 31.3, 19.0, 9.7], ["Segovia", "Segovia", 50624, 26.9, 74.8, 44.2, 33.0, 11.8, 8.6]];
+const nf=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'),pc=v=>String(v.toFixed(1)).replace('.',',')+'%',dc=v=>String(v.toFixed(1)).replace('.',',');
+const PS=[['PP','PP','var(--pp)'],['PSOE','PSOE','var(--psoe)'],['VOX','Vox','var(--vox)'],['SUMAR','Sumar','var(--sumar)']];
+function quint(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<560,cols=sm?2:4,pw=(W-(cols-1)*14)/cols,ph=sm?150:180,rows=Math.ceil(4/cols),H=rows*(ph+30)+18,mx=40;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a PP, PSOE, Vox y Sumar en julio de 2023 según el peso de las pensiones en la renta de cada sección'},box);
+ PS.forEach(([k,lab,c],j)=>{const ox=(j%cols)*(pw+14),oy=Math.floor(j/cols)*(ph+30),ih=ph-38,y=v=>oy+22+ih-v/mx*ih,gw=(pw-26)/5;
+  el('text',{x:ox,y:oy+13,'font-size':sm?12.5:13.5,class:'lab'},svg).textContent=lab;
+  [0,10,20,30,40].forEach(v=>{el('line',{x1:ox+22,x2:ox+pw,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.5},svg);
+   el('text',{x:ox+18,y:y(v)+4,'text-anchor':'end','font-size':10,fill:'var(--muted)'},svg).textContent=v});
+  Q.forEach((q,i)=>{const v=q[k],gx=ox+26+i*gw,bw=gw-5;
+   const r=el('rect',{x:gx,y:y(v),width:bw,height:y(0)-y(v),rx:2,fill:c},svg);
+   if(i==0||i==4)el('text',{x:gx+bw/2,y:y(v)-4,'text-anchor':'middle','font-size':sm?10:11,fill:'var(--fg)'},svg).textContent=dc(v);
+   el('text',{x:gx+bw/2,y:y(0)+13,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=i+1;
+   hov(box,tip,r,`<b>${lab}</b>, grupo ${i+1}<br>Secciones donde las pensiones son entre el ${dc(q.mn)}% y el ${dc(q.mx)}% de la renta<br>Voto en julio de 2023: <b>${pc(v)}</b>`)})});
+ el('text',{x:0,y:H-4,'font-size':10.5,fill:'var(--muted)'},svg).textContent=sm?'1 = menos peso de las pensiones · 5 = más':'Grupos: 1 = secciones donde las pensiones pesan menos en la renta · 5 = donde pesan más';}
+function renta(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?104:150,rh=sm?17:19,P=PS.slice(0,3),gh=P.length*rh+26,H=R.length*gh+4,x=v=>lw+v/50*(W-lw-48);
+ const L={baja:'Renta más baja',media:'Renta media',alta:'Renta más alta'};
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto en las secciones donde más pesan las pensiones, según su renta'},box);
+ R.forEach((g,j)=>{const y0=j*gh;
+  el('text',{x:0,y:y0+14,'font-size':sm?12:13,class:'lab'},svg).textContent=L[g.rq];
+  el('text',{x:0,y:y0+30,'font-size':sm?10.5:11.5,fill:'var(--muted)'},svg).textContent=(sm?'Part. ':'Participación ')+pc(g.part);
+  P.forEach(([k,lab,c],m)=>{const v=g[k],y=y0+m*rh+4;
+   const r=el('rect',{x:lw,y:y,width:x(v)-lw,height:rh-4,rx:3,fill:c},svg);
+   el('text',{x:x(v)+6,y:y+rh/2+2,'font-size':sm?11:12,fill:'var(--fg)'},svg).textContent=(sm?'':lab+' ')+pc(v);
+   hov(box,tip,r,`<b>${lab}</b>, secciones del grupo 5 con ${L[g.rq].toLowerCase()}<br>Renta media por unidad de consumo: ${nf(g.renta)} €<br>Voto en julio de 2023: <b>${pc(v)}</b>`)})});}
+function hist(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<560,cols=sm?2:4,pw=(W-(cols-1)*16)/cols,ph=sm?150:170,H=Math.ceil(4/cols)*(ph+26)+16,mn=10,mx=50;
+ const E=[['2011_11','2011'],['2015_12','2015'],['2019_11','Nov. 2019'],['2023_07','2023']];
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a PP y PSOE por grupo de peso de las pensiones en cuatro elecciones generales'},box);
+ E.forEach(([e,lab],j)=>{const ox=(j%cols)*(pw+16),oy=Math.floor(j/cols)*(ph+26),ih=ph-36,y=v=>oy+22+ih-(v-mn)/(mx-mn)*ih,xx=i=>ox+28+i*(pw-40)/4;
+  el('text',{x:ox,y:oy+13,'font-size':sm?12.5:13.5,class:'lab'},svg).textContent=lab;
+  [10,20,30,40,50].forEach(v=>{el('line',{x1:ox+22,x2:ox+pw,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.5},svg);
+   el('text',{x:ox+18,y:y(v)+4,'text-anchor':'end','font-size':10,fill:'var(--muted)'},svg).textContent=v});
+  [0,1,2,3,4].forEach(i=>el('text',{x:xx(i),y:y(mn)+13,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=i+1);
+  [['PP','var(--pp)',0],['PSOE','var(--psoe)',1]].forEach(([lab,c,k])=>{const pts=HI[e].map((d,i)=>[xx(i),y(d[k])]);
+   el('polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:c,'stroke-width':2},svg);
+   pts.forEach((p,i)=>{const v=HI[e][i][k];el('circle',{cx:p[0],cy:p[1],r:4,fill:c,stroke:'var(--bg)','stroke-width':2},svg);
+    const hit=el('circle',{cx:p[0],cy:p[1],r:11,fill:'transparent'},svg);hov(box,tip,hit,`<b>${lab}, ${E[j][1]}</b><br>Grupo ${i+1}: <b>${pc(v)}</b>`)})})});
+ el('text',{x:0,y:H-4,'font-size':10.5,fill:'var(--muted)'},svg).textContent=sm?'1 = menos peso de las pensiones · 5 = más':'Grupos: 1 = secciones donde las pensiones pesan menos en la renta (2023) · 5 = donde pesan más';}
+quint('quint');renta('renta');hist('hist');
+table('quint-tbl',['Grupo','Pensiones, % de la renta (rango)','Media','Secciones','Votantes 2023','Participación','Edad media','Renta por u. c.','PP','PSOE','Vox','Sumar'],Q.map(q=>[q.q,dc(q.mn)+' a '+dc(q.mx),pc(q.pens),nf(q.n),nf(q.vot),pc(q.part),dc(q.edad),nf(q.renta)+' €',pc(q.PP),pc(q.PSOE),pc(q.VOX),pc(q.SUMAR)]).concat([['España*','',pc(TT.pens),nf(TT.n),nf(TT.vot),pc(TT.part),dc(TT.edad),nf(TT.renta)+' €',pc(TT.PP),pc(TT.PSOE),pc(TT.VOX),pc(TT.SUMAR)]]));
+table('renta-tbl',['Secciones del grupo 5','Secciones','Pensiones, % de la renta','Renta por u. c.','Edad media','Participación','PP','PSOE','Vox','Sumar'],R.map(g=>[{baja:'Renta más baja',media:'Renta media',alta:'Renta más alta'}[g.rq],nf(g.n),pc(g.pens),nf(g.renta)+' €',dc(g.edad),pc(g.part),pc(g.PP),pc(g.PSOE),pc(g.VOX),pc(g.SUMAR)]));
+table('hist-tbl',['Elección','PP grupo 1','PP grupo 5','PSOE grupo 1','PSOE grupo 5'],[['2011_11','2011'],['2015_12','2015'],['2019_11','Noviembre de 2019'],['2023_07','Julio de 2023']].map(([e,l])=>[l,pc(HI[e][0][0]),pc(HI[e][4][0]),pc(HI[e][0][1]),pc(HI[e][4][1])]));
+table('top-tbl',['Municipio','Provincia','Habitantes','Pensiones, % de la renta','Participación','PP','PSOE','Vox','Sumar'],TOP.map(r=>[r[0],r[1],nf(r[2]),pc(r[3]),pc(r[4]),pc(r[5]),pc(r[6]),pc(r[7]),pc(r[8])]));
+
+</script>
