@@ -219,6 +219,32 @@ ALIANCA_2024 = {'08': 2.87, '17': 9.03, '25': 7.78, '43': 3.51}
 SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
 DERIVA = 1.25   # el error histórico se mide 5 días antes; a cinco semanas de la elección se amplía un 25 %
 BASE2026 = pathlib.Path('/mnt/project-files/previsiones/base/base2026_secciones.csv')
+EUROPEAS2024 = pathlib.Path('/mnt/project-files/previsiones/base/europeas2024_secciones.csv')
+# Señal de las europeas de 2024 (senal_local.py): en 2015 y 2019, corregir la base con la fuerza relativa de cada
+# provincia en las europeas intermedias frente a las generales anteriores, elevada a 0,5, redujo un tercio el error
+# del reparto entre provincias (2,9 → 1,9 y 2,8 → 1,9 puntos). Se aplica a los partidos de ámbito estatal.
+ALFA_EUROPEAS = 0.5
+SENAL_EUROPEAS = {'PP': ['PP'], 'PSOE': ['PSOE'], 'Vox': ['VOX'], 'Sumar': ['SUMAR', 'PODEMOS'], 'Podemos': ['SUMAR', 'PODEMOS']}
+
+
+def senal_europeas(provs, alfa=ALFA_EUROPEAS):
+    """Por lista y provincia: el factor (cuota provincial / nacional en europeas 2024) / (lo mismo en generales
+    2023), elevado a alfa, y la fuerza relativa en las europeas sola. Sumar y Podemos usan su espacio conjunto,
+    porque en 2023 fueron juntos."""
+    import pandas as pd
+    e = pd.read_csv(EUROPEAS2024, dtype={'tract_code': str})
+    g = pd.read_csv(BASE2026, dtype={'tract_code': str})
+    g['PODEMOS'] = 0   # en 2023, Podemos dentro de SUMAR
+    factor, fuerza = {}, {}
+    for lista, cols in SENAL_EUROPEAS.items():
+        rel = []
+        for d in (e, g):
+            x = d.assign(v=d[cols].sum(axis=1)).groupby(d.tract_code.str[:2])[['v', 'validos']].sum()
+            rel.append(((x.v / x.validos) / (x.v.sum() / x.validos.sum())).reindex(provs).fillna(0).values)
+        ok = (rel[0] > 0) & (rel[1] > 0)
+        factor[lista] = np.where(ok, (rel[0] / np.where(ok, rel[1], 1)) ** alfa, 1.0)
+        fuerza[lista] = rel[0]
+    return factor, fuerza
 
 
 def base_v1():
@@ -240,6 +266,14 @@ def base_v1():
         s = v.get('Sumar', 0) / val
         cuotas[i, LISTAS_V1.index('Sumar')] = s * (1 - cuota_pod[p])
         cuotas[i, LISTAS_V1.index('Podemos')] = s * cuota_pod[p]
+    factor, fuerza = senal_europeas(provs)
+    for k, f in factor.items():
+        j = LISTAS_V1.index(k)
+        cuotas[:, j] *= f
+        # sin lista en 2023 en la provincia (Vox en Santa Cruz de Tenerife, candidatura anulada): parte de su voto
+        # nacional de 2023 por su fuerza relativa en las europeas
+        nac = (cuotas[:, j] * validos).sum() / validos.sum()
+        cuotas[:, j] = np.where(cuotas[:, j] > 0, cuotas[:, j], nac * fuerza[k])
     indices = {'SALF': np.array([ind_salf[p] for p in provs]),
                'Aliança': np.array([ALIANCA_2024.get(p, 0) / 3.77 for p in provs])}
     return provs, cuotas, validos, indices
