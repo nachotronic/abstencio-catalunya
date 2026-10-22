@@ -217,8 +217,9 @@ BLOQUES_V1 = [
 # Aliança Catalana, Parlament 2024 (voto sobre válidos por provincia; Cataluña 3,77 %). Fuente: resultados oficiales.
 ALIANCA_2024 = {'08': 2.87, '17': 9.03, '25': 7.78, '43': 3.51}
 SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
-# Error de la media según la distancia a la elección (backtest.py): c medido en 10N-2019 y 23J-2023 a esos mismos
-# días. A 38 días sale 0,96, casi el doble que a 5 días (0,475); la ampliación fija del 25 % que usaba v1 se quedaba corta.
+# Error de la media según la distancia a la elección (error_encuestas.py): a 38 días, c = 0,85 en España (generales y
+# autonómicas) y 0,79 en 44 países (Jennings y Wlezien), frente a 0,5 a una semana; la ampliación fija del 25 % que
+# usaba v1 se quedaba corta.
 ELECCION = date(2026, 11, 29)
 BASE2026 = pathlib.Path('/mnt/project-files/previsiones/base/base2026_secciones.csv')
 EUROPEAS2024 = pathlib.Path('/mnt/project-files/previsiones/base/europeas2024_secciones.csv')
@@ -305,11 +306,17 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
     return c
 
 
+ERROR_POR_DISTANCIA = pathlib.Path('/mnt/project-files/previsiones/error_encuestas/error_por_distancia.csv')
+
+
 def c_horizonte(fecha):
-    """c de error ≈ c·raíz(voto) medido en 2019 y 2023 a los mismos días de la elección que `fecha` (mínimo 5)."""
-    import encuestas
-    dias = max((ELECCION - date.fromisoformat(fecha)).days, 5)
-    return dias, encuestas.error_historico(encuestas.carga(), dias)[1]
+    """c de error ≈ c·raíz(voto) a los días que faltan para el 29N desde `fecha`, interpolado entre las distancias
+    medidas por error_encuestas.py en España (generales 2019 y 2023 y 25-30 autonómicas desde 2015)."""
+    import pandas as pd
+    t = pd.read_csv(ERROR_POR_DISTANCIA)
+    t = t[t.fuente == 'españa'].sort_values('dias')
+    dias = (ELECCION - date.fromisoformat(fecha)).days
+    return dias, round(float(np.interp(dias, t.dias, t.c)), 3)
 
 
 def sigma_v1(cuotas_nac, c_error):
