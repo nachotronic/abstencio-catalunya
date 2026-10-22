@@ -133,7 +133,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-22</news:publication_date>
-      <news:title>En más de la mitad de los municipios de España, la mayoría de las casas están vacías o son segundas residencias</news:title>
+      <news:title>En 4.441 municipios hay más casas sin vecinos que con ellos</news:title>
     </news:news>
   </url>
   <url>
@@ -166,6 +166,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-22</news:publication_date>
       <news:title>Donde más preocupa la inmigración, más votó Vox, salvo en Cataluña</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/barrios-rentistas-pp-psoe-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>En los barrios de rentistas, el PP saca el 51% y el PSOE, el 21%</news:title>
     </news:news>
   </url>
   <url>
