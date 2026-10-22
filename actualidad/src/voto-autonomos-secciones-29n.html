@@ -1,0 +1,262 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--ppl:#9cc8eb;--psoe:#e30613;--psoel:#f4a3a6;--vox:#5ac035;--voxl:#b9e3a6;--sumar:#a2275f;--sumarl:#d98fb3}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--ppl:#2a5f86;--psoe:#ff5a5f;--psoel:#8a2a2e;--vox:#74d651;--voxl:#3f7a2a;--sumar:#d0679a;--sumarl:#9c4f76}}:root[data-theme="dark"]{--pp:#4fa8ea;--ppl:#2a5f86;--psoe:#ff5a5f;--psoel:#8a2a2e;--vox:#74d651;--voxl:#3f7a2a;--sumar:#d0679a;--sumarl:#9c4f76}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>En los barrios con más autónomos, el PP saca 13 puntos al PSOE</h1>
+<p class="dek">En los barrios con más trabajadores por cuenta propia, el PP sacó en 2023 un 41% y el PSOE un 28%; donde menos, al revés. Pasa con la misma renta, en Sevilla y en los pueblos. En Cataluña ese voto va a Junts. Vox, en cambio, no se mueve.</p>
+<div class="byline">Nacho G. del Álamo · 22 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div><p data-tipo="contexto">A las ocho de la mañana, en cualquier calle de España, suben las persianas. Las del bar, la ferretería, la peluquería, la gestoría del primer piso. Detrás de cada una hay alguien que no tiene nómina. Factura, paga la cuota a fin de mes y cuenta los días de lluvia como días perdidos. El INE los llama ocupados por cuenta propia. Casi todo el mundo los llama autónomos.</p>
+<p data-tipo="contexto">Hay calles donde casi todas las persianas son de alguien. Y calles donde nadie sube ninguna, porque todo el mundo sale temprano hacia un trabajo ajeno. Esas calles no votan igual. Lo que sigue intenta medir cuánto.</p>
+<p data-tipo="contexto">El 29 de noviembre se vota. Los autónomos llevan dos años en el centro de la pelea entre el Gobierno y la oposición: por las cuotas, por la reducción de jornada, por los presupuestos que no llegaron. En agosto de 2025, el presidente de la asociación ATA, Lorenzo Amor, pedía ya en una entrevista con <a href="https://www.bolsamania.com/noticias/economia/economia--amor-ata-sobre-las-cuentas-del-estado-de-2026-si-no-hay-presupuestos-hay-que-convocar-elecciones--20608152.html">Europa Press</a> unas elecciones que ahora llegan:</p>
+<blockquote class="cita"><p>«Si no hay Presupuestos Generales del Estado (PGE) para el año 2026, hay que convocar a elecciones»</p><footer>Lorenzo Amor, presidente de ATA y vicepresidente de la CEOE, a <a href="https://www.bolsamania.com/noticias/economia/economia--amor-ata-sobre-las-cuentas-del-estado-de-2026-si-no-hay-presupuestos-hay-que-convocar-elecciones--20608152.html">Europa Press</a> (10 de agosto de 2025).</footer></blockquote>
+<p data-tipo="contexto">El INE publica cuántos ocupados trabajan por cuenta propia en cada una de las <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=70006">secciones censales</a> de España. Son barrios de entre unos cientos y unos pocos miles de vecinos. Comparo, a sabiendas de que una sección no es una persona, ese porcentaje con lo que votó cada sección en las generales de julio de 2023. Son 34.257 secciones. Dejo fuera Santa Cruz de Tenerife, donde Vox no presentó lista.</p>
+<h2>Dos calles de Madrid</h2>
+<p data-tipo="dato">En la sección 001 del distrito de Salamanca, en Madrid, trabajan 444 vecinos. 172 lo hacen por cuenta propia: el 39%. En julio de 2023, el PP sacó allí el 68% de los votos y el PSOE, el 10%. En la sección de al lado, la 002, el 38% son autónomos y el PP llegó al 74%.</p>
+<p data-tipo="dato">En el sureste de la ciudad, en una sección de Puente de Vallecas, trabajan 508 vecinos. Por cuenta propia, 18: el 3,5%. Allí ganó el PSOE con el 34%, el PP sacó el 30% y Sumar, el 22%.</p>
+<p data-tipo="hipotesis">Son dos extremos, y no prueban nada. En Salamanca la renta por unidad de consumo supera los 58.000 euros; en esa sección de Vallecas, apenas pasa de 14.800. Cualquiera diría que lo que separa a las dos calles es el dinero, no la persiana. Por eso hay que mirar las 34.257 a la vez, y luego mirar dentro de cada nivel de renta.</p>
+<h2>La línea que cruza España</h2>
+<p data-tipo="dato">En el conjunto de España, el 16,5% de los ocupados trabaja por cuenta propia. Ordeno las secciones de menos a más autónomos y las parto en cinco grupos con el mismo número de votantes. En el primero, la media es del 9,1%. En el último, del 28,2%.</p>
+<p data-tipo="dato">En el grupo con menos autónomos, el PSOE ganó con el 37,2% y el PP sacó el 27,7%. En el grupo con más, el orden se invierte: PP, 40,9%; PSOE, 27,7%. Es una diferencia de 9,5 puntos a favor del PSOE en un extremo y de 13,2 a favor del PP en el otro. Entre medias, las dos líneas bajan y suben paso a paso, sin saltos.</p>
+<figure>
+<figcaption><span class="t">Voto en julio de 2023 según el peso de los autónomos en la sección</span><span class="s">Las 34.257 secciones, en cinco grupos con el mismo número de votantes, de menos a más ocupados por cuenta propia</span></figcaption>
+<div class="chart" id="esp"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="esp-tbl"></div></details>
+</figure>
+<p data-tipo="dato">Sumar recorre el mismo camino que el PSOE, pero más empinado: del 14,9% al 8,9%. Pierde cuatro de cada diez votos de un extremo al otro. La participación sube del 66,9% al 73,4%.</p>
+<p data-tipo="patron">Vox no se mueve. Saca el 12,8% en las secciones con menos autónomos y el 13,1% en las que más. En los cinco grupos, entre el 12,3% y el 13,1%. Es el partido que más ha hablado de los autónomos en los últimos años, y su voto es casi una línea recta.</p>
+<h2>¿No será la renta?</h2>
+<p data-tipo="contexto">Es la objeción obvia. Donde hay más autónomos, también hay algo más de dinero: la renta media pasa de 20.524 euros por unidad de consumo en el primer grupo a 24.324 en el último. Y se sabe que el PP sube con la renta.</p>
+<p data-tipo="dato">Así que repito la cuenta dentro de cada nivel de renta. Parto las secciones en cinco grupos por su <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">renta por unidad de consumo</a>, y cada grupo, en dos mitades: la que tiene menos autónomos y la que tiene más. En los cinco niveles de renta, la mitad con más autónomos vota más al PP y menos al PSOE.</p>
+<p data-tipo="dato">En las secciones más pobres, con menos de 17.376 euros, el PP pasa del 26,4% al 35,8% y el PSOE, del 41,3% al 36,6%. En el segundo grupo, el PP va del 29,5% al 39,7%. En las más ricas, del 35,7% al 40,6%, y el PSOE baja del 25,5% al 19,8%. La brecha es menor arriba, donde ya casi todos votan a la derecha, pero no desaparece.</p>
+<figure>
+<figcaption><span class="t">PP y PSOE en secciones de la misma renta, con menos y con más autónomos</span><span class="s">Cada nivel de renta, partido en dos mitades. Círculo hueco: la mitad con menos ocupados por cuenta propia. Círculo lleno: la mitad con más</span></figcaption>
+<div class="chart" id="renta"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio. Renta: INE, Atlas de distribución de renta de los hogares.</div>
+</figure>
+<p data-tipo="patron">Con la renta igualada, Vox sigue sin moverse: 15,1% frente a 15,9% en las secciones más pobres, 10,7% frente a 11,8% en las más ricas. Sumar baja en los cinco niveles. Lo que cambia con la persiana, a igual dinero, es sobre todo el reparto entre PP y PSOE.</p>
+<h2>Siete ciudades</h2>
+<p data-tipo="dato">Dentro de las grandes ciudades la línea se vuelve una pendiente. En Sevilla, en el quinto de secciones con menos autónomos (8%), el PSOE saca el 48,9% y el PP, el 20,4%. En el quinto con más (24%), el PP llega al 59,2% y el PSOE se queda en el 15,3%. En Madrid, el PP va del 31,2% al 56,0%. En Málaga, del 28,9% al 52,8%. En Zaragoza, del 27,5% al 50,0%.</p>
+<figure>
+<figcaption><span class="t">PP y PSOE en el quinto de secciones con menos y con más autónomos</span><span class="s">Siete ciudades, ordenadas por lo que gana el PP de un extremo al otro. Círculo hueco: el quinto con menos ocupados por cuenta propia. Círculo lleno: el quinto con más</span></figcaption>
+<div class="chart" id="ciudades"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+</figure>
+<p data-tipo="hipotesis">Aquí hay que tener cuidado. En las ciudades, el barrio de los autónomos es también el barrio rico: en Madrid, la renta del quinto con más autónomos dobla con creces la del quinto con menos. Es fácil imaginar ahí la consulta, el despacho o la notaría, pero los datos no dicen qué oficios son. En la ciudad, la persiana y la cuenta corriente van juntas, y estos datos no las pueden separar.</p>
+<p data-tipo="dato">Barcelona es la excepción que confirma el mapa catalán. El PP sube del 14,5% al 25,1%, pero nunca gana. El PSC baja del 41,7% al 23,7%, y lo que se lleva la diferencia es otra cosa.</p>
+<h2>Los pueblos, al revés</h2>
+<p data-tipo="dato">Lo más llamativo está fuera de las ciudades. En los municipios de menos de 10.000 habitantes, los autónomos pesan más: del 13,4% al 34,8% de los ocupados según el grupo. Son agricultores, ganaderos, transportistas, el bar de la plaza. Y en los pueblos, más autónomos no significa más dinero. Al contrario: la renta baja de 20.693 euros en el grupo con menos a 19.073 en el que más.</p>
+<p data-tipo="dato">Aun así, el PP sube del 27,1% al 40,8%. El PSOE apenas cambia: del 33,4% al 31,5%. Sumar cae a la mitad, del 12,5% al 6,7%. Vox baja un poco, del 13,2% al 11,9%.</p>
+<figure>
+<figcaption><span class="t">Municipios de menos de 10.000 habitantes: voto según el peso de los autónomos</span><span class="s">Secciones de pueblos pequeños, en cinco grupos con el mismo número de votantes, de menos a más ocupados por cuenta propia</span></figcaption>
+<div class="chart" id="rur"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+</figure>
+<p data-tipo="hipotesis">Esto no lo explica la renta, porque va en sentido contrario. Puede ser la edad, porque los pueblos con más autónomos son a menudo los más envejecidos. Puede ser el campo, donde casi todo el mundo es su propio jefe. Puede ser una tradición de voto que viene de mucho antes. Con estos datos no se puede elegir entre esas explicaciones.</p>
+<h2>Galicia, Cataluña, Euskadi</h2>
+<p data-tipo="dato">En Galicia la pendiente es la más fuerte de España. El PP pasa del 34,6% al 53,2%. El PSdeG baja del 34,5% al 26,2% y Sumar, del 14,7% al 6,2%. El BNG apenas se mueve, entre el 8,8% y el 9,8%. Y, como en los pueblos, la renta no sube: el grupo con más autónomos es el más pobre de los cinco.</p>
+<figure>
+<figcaption><span class="t">Galicia: voto según el peso de los autónomos en la sección</span><span class="s">Secciones de las cuatro provincias gallegas, en cinco grupos con el mismo número de votantes</span></figcaption>
+<div class="chart" id="gal"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSdeG</span><span><i class="sw" style="background:#76b3dd"></i>BNG</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+</figure>
+<p data-tipo="dato">En Cataluña, el voto de los autónomos no va al PP. Va a Junts, que pasa del 4,3% en las secciones con menos autónomos al 17,8% en las que más, y a ERC, que va del 8,7% al 15,6%. El PSC cae del 43,6% al 25,6%. El PP se queda casi plano, entre el 11,9% y el 15,3%, y Vox baja del 9,9% al 7,0%.</p>
+<figure>
+<figcaption><span class="t">Cataluña: voto según el peso de los autónomos en la sección</span><span class="s">Secciones de las cuatro provincias catalanas, en cinco grupos con el mismo número de votantes</span></figcaption>
+<div class="chart" id="cat"></div>
+<div class="legend"><span><i class="sw" style="background:var(--psoe)"></i>PSC</span><span><i class="sw" style="background:#00c3b2"></i>Junts</span><span><i class="sw" style="background:#ffb232"></i>ERC</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+</figure>
+<p data-tipo="dato">En el País Vasco pasa algo parecido, con dos ganadores. El PNV sube del 17,4% al 29,6% y EH Bildu, del 18,1% al 29,1%. El PSE baja del 34,2% al 15,3%. El PP, del 11,5% al 14,4%.</p>
+<figure>
+<figcaption><span class="t">País Vasco: voto según el peso de los autónomos en la sección</span><span class="s">Secciones de Álava, Gipuzkoa y Bizkaia, en cinco grupos con el mismo número de votantes</span></figcaption>
+<div class="chart" id="pv"></div>
+<div class="legend"><span><i class="sw" style="background:#2b8a3e"></i>PNV</span><span><i class="sw" style="background:#a5c400"></i>EH Bildu</span><span><i class="sw" style="background:var(--psoe)"></i>PSE</span><span><i class="sw" style="background:var(--pp)"></i>PP</span></div>
+<div class="src">Fuente: INE, Censo anual de población 2023 (ocupados por situación profesional y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">El patrón es el mismo en las tres comunidades: donde hay más autónomos, el PSOE pierde. Lo que cambia es quién recoge ese voto. En Galicia, el PP. En Cataluña, los partidos independentistas, y sobre todo Junts. En Euskadi, el PNV y Bildu a la par. Ninguna de las tres pone a Vox por encima de su media.</p>
+<h2>Lo que dicen las encuestas</h2>
+<p data-tipo="contexto">Las secciones dicen cómo votan los barrios, no las personas. Un barrio con muchos autónomos también tiene asalariados, jubilados y estudiantes. Para mirar a las personas hace falta una encuesta. Uso la del <a href="https://www.cis.es/en/surveys/barometro-de-septiembre-2023.-postelectoral-elecciones-generales-2023">CIS</a> de septiembre de 2023, la postelectoral de aquellas generales, con 10.104 entrevistas, y comparo el recuerdo de voto de los que trabajan por cuenta ajena con el de los que trabajan por cuenta propia.</p>
+<p data-tipo="dato">Entre los 3.692 asalariados que recuerdan haber votado, el PSOE sacó el 31,2%, el PP el 25,4%, Sumar el 22,4% y Vox el 9,1%. Entre los 828 que trabajan por cuenta propia, el PP llega al 37,0%, el PSOE se queda en el 23,8%, Vox sube al 13,7% y Sumar baja al 12,9%.</p>
+<figure>
+<figcaption><span class="t">Recuerdo de voto en las generales de 2023, asalariados y trabajadores por cuenta propia</span><span class="s">Porcentaje sobre quienes recuerdan su voto (partido, otro partido o en blanco). Color claro: asalariados. Color intenso: por cuenta propia</span></figcaption>
+<div class="chart" id="cis"></div>
+<div class="legend"><span><i class="sw" style="background:var(--ppl)"></i>Asalariados</span><span><i class="sw" style="background:var(--pp)"></i>Por cuenta propia</span></div>
+<div class="src">Fuente: CIS, estudio 3420, Barómetro de septiembre de 2023, postelectoral de las generales (P20a, situación profesional; cuenta propia incluye empresarios, autónomos sin asalariados, ayudas familiares y cooperativistas). Ponderado. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">La encuesta cuenta la misma historia que el mapa para el PP, el PSOE y Sumar. Para Vox, no. En el CIS, Vox saca cuatro puntos más entre los autónomos que entre los asalariados. En las secciones, su voto es plano. Puede que los autónomos que votan a Vox vivan repartidos por todo tipo de barrios, mientras que los del PP se concentran en unos pocos. O puede que la encuesta, con 828 casos, no dé para tanto. Las dos cosas son posibles, y las dos fuentes son honestas.</p>
+<p data-tipo="contexto">No es una idea nueva. En 2019, Alberto Garzón, entonces líder de Izquierda Unida y economista, revisaba en <a href="https://www.eldiario.es/opinion/tribuna-abierta/vota-clase-trabajadora-espana_129_1401496.html">eldiario.es</a> los estudios de los sociólogos Miguel Caínzos y Modesto Gayo y los suyos propios sobre el voto de clase en España. Su conclusión:</p>
+<blockquote class="cita"><p>«Directivos y cuadros, profesionales tradicionales, profesionales de gestión, otras profesiones, pequeños propietarios y autónomos y agricultores votan más a la derecha»</p><footer>Alberto Garzón, en <a href="https://www.eldiario.es/opinion/tribuna-abierta/vota-clase-trabajadora-espana_129_1401496.html">«¿A quién vota la clase trabajadora en España?»</a>, eldiario.es (9 de agosto de 2019).</footer></blockquote>
+<p data-tipo="contexto">En el mismo texto, con los datos de 2019, Garzón apuntaba ya que Vox era «más votado particularmente entre directivos y cuadros, profesionales tradicionales, otras profesiones y pequeños propietarios y autónomos». Siete años después, en la encuesta lo sigue siendo. En el mapa de los barrios, no se nota.</p>
+<h2>La cuota</h2>
+<p data-tipo="contexto">Los autónomos tampoco hablan con una sola voz. En octubre de 2025, cuando el Gobierno propuso subir las cuotas para 2026, las dos grandes asociaciones respondieron en sentidos opuestos, según recogió <a href="https://www.infobae.com/espana/2025/10/13/el-gobierno-propone-nuevas-cuotas-de-autonomos-para-2026-desde-217-hasta-796-euros-al-mes/">Infobae</a>. Eduardo Abad, presidente de UPTA, cercana a UGT, dijo que los tramos «se parecen mucho a los que todas las organizaciones» acordaron en 2022. Lorenzo Amor, de ATA, habló de «un nuevo sablazo»:</p>
+<blockquote class="cita"><p>«Y eso solo en 2026. Pretenden otra para 2027 y 2028. Con el aval de ATA, no»</p><footer>Lorenzo Amor, presidente de ATA, según <a href="https://www.infobae.com/espana/2025/10/13/el-gobierno-propone-nuevas-cuotas-de-autonomos-para-2026-desde-217-hasta-796-euros-al-mes/">Infobae</a> (13 de octubre de 2025).</footer></blockquote>
+<p data-tipo="contexto">Amor pidió que la subida se tramitara como decreto ley, es decir, que se votara en el Congreso, «para que se retraten los partidos». Es lo que hará cada urna el 29N, sección por sección.</p>
+<h2>Lo que no dicen los datos</h2>
+<p data-tipo="hipotesis">Nada de esto dice que ser autónomo haga votar al PP, ni a Junts, ni al PNV. Las secciones con muchos autónomos se diferencian de las demás en muchas cosas a la vez: la edad, el tamaño del municipio, la vivienda en propiedad, el nivel de estudios. He separado la renta, y la diferencia resiste. Las demás, no las he separado.</p>
+<p data-tipo="contexto">Hay más límites. El censo cuenta a la gente donde vive, no donde trabaja: el dueño de la tienda de Vallecas que vive en otro barrio cuenta en el suyo. «Cuenta propia» no es lo mismo que estar dado de alta como autónomo en la Seguridad Social: incluye a empresarios con asalariados, a cooperativistas y a quienes ayudan en el negocio familiar. Y los votos son de 2023; el censo laboral, del mismo año.</p>
+<p data-tipo="dato">Lo que sí dicen es que la frontera existe y es nítida. En los barrios donde casi nadie sube una persiana, el PSOE ganó por 9,5 puntos. En los barrios donde la sube uno de cada tres, el PP ganó por 13. Entre unos y otros hay cinco escalones, y en cada uno de ellos el PP gana un poco y el PSOE pierde otro poco.</p>
+<p data-tipo="patron">El 29 de noviembre es domingo. Las persianas estarán bajadas. Esa mañana, en las calles donde casi todas son de alguien, la gente saldrá a votar más que en ninguna otra, y lo hará, si se repite lo de 2023, de una manera muy distinta a la de la calle de enfrente.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/funcionarios-pagas-extra-29n/">Funcionarios y pagas extra</a> · <a href="https://mapaelectoral.es/actualidad/pensiones-revalorizacion-29n/">Pensiones</a></p>
+<div class="foot">Datos: INE, Censo anual de población 2023 por sección censal; INE, Atlas de distribución de renta de los hogares; Ministerio del Interior, generales del 23 de julio de 2023; CIS, estudio 3420. Cálculo propio. Se excluye la provincia de Santa Cruz de Tenerife.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const ESP=[{"lo": 2.3, "hi": 11.1, "cp": 9.13, "n": 6940, "part": 66.85, "renta": 20524, "PP": 27.701, "PSOE": 37.164, "VOX": 12.807, "SUMAR": 14.94}, {"lo": 11.1, "hi": 13.9, "cp": 12.47, "n": 6359, "part": 69.76, "renta": 22253, "PP": 29.87, "PSOE": 33.621, "VOX": 12.364, "SUMAR": 13.806}, {"lo": 13.9, "hi": 17.2, "cp": 15.44, "n": 6203, "part": 70.96, "renta": 23071, "PP": 32.113, "PSOE": 31.149, "VOX": 12.328, "SUMAR": 12.7}, {"lo": 17.2, "hi": 22.1, "cp": 19.39, "n": 6376, "part": 72.1, "renta": 23894, "PP": 35.386, "PSOE": 28.902, "VOX": 12.603, "SUMAR": 11.468}, {"lo": 22.1, "hi": 77.6, "cp": 28.16, "n": 8379, "part": 73.38, "renta": 24324, "PP": 40.91, "PSOE": 27.676, "VOX": 13.094, "SUMAR": 8.855}];const REN=[{"rq": 1, "renta_lo": 8797, "renta_hi": 17376, "cp_lo": 10.5, "cp_hi": 22.9, "PP_lo": 26.42, "PSOE_lo": 41.29, "VOX_lo": 15.12, "SUMAR_lo": 12.75, "PP_hi": 35.84, "PSOE_hi": 36.56, "VOX_hi": 15.85, "SUMAR_hi": 9.12}, {"rq": 2, "renta_lo": 17376, "renta_hi": 19834, "cp_lo": 11.3, "cp_hi": 22.8, "PP_lo": 29.49, "PSOE_lo": 36.36, "VOX_lo": 13.72, "SUMAR_lo": 13.81, "PP_hi": 39.69, "PSOE_hi": 31.19, "VOX_hi": 13.23, "SUMAR_hi": 9.98}, {"rq": 3, "renta_lo": 19834, "renta_hi": 22523, "cp_lo": 11.4, "cp_hi": 21.3, "PP_lo": 28.68, "PSOE_lo": 35.18, "VOX_lo": 12.07, "SUMAR_lo": 14.4, "PP_hi": 37.28, "PSOE_hi": 30.12, "VOX_hi": 12.1, "SUMAR_hi": 11.12}, {"rq": 4, "renta_lo": 22524, "renta_hi": 26951, "cp_lo": 11.8, "cp_hi": 20.5, "PP_lo": 27.76, "PSOE_lo": 32.12, "VOX_lo": 10.52, "SUMAR_lo": 15.0, "PP_hi": 32.2, "PSOE_hi": 27.5, "VOX_hi": 11.33, "SUMAR_hi": 12.61}, {"rq": 5, "renta_lo": 26951, "renta_hi": 58752, "cp_lo": 13.8, "cp_hi": 24.3, "PP_lo": 35.72, "PSOE_lo": 25.52, "VOX_lo": 10.73, "SUMAR_lo": 13.84, "PP_hi": 40.6, "PSOE_hi": 19.78, "VOX_hi": 11.82, "SUMAR_hi": 10.04}];const CIU=[["Sevilla", [8.02, 20.377, 48.885], [23.81, 59.2, 15.263]], ["Madrid", [7.38, 31.218, 35.706], [21.48, 55.958, 16.572]], ["Málaga", [9.15, 28.852, 37.35], [24.14, 52.794, 20.058]], ["Zaragoza", [7.42, 27.505, 35.25], [20.79, 50.013, 19.642]], ["Palma", [9.89, 27.637, 35.81], [24.57, 45.153, 22.453]], ["Barcelona", [9.94, 14.496, 41.651], [25.43, 25.052, 23.669]], ["Murcia", [10.26, 38.597, 26.32], [21.97, 48.972, 18.325]]];const RUR=[{"lo": 3.5, "hi": 15.9, "cp": 13.39, "n": 1343, "part": 70.74, "renta": 20693, "PP": 27.082, "PSOE": 33.444, "VOX": 13.177, "SUMAR": 12.548}, {"lo": 15.9, "hi": 19.3, "cp": 17.68, "n": 1423, "part": 72.3, "renta": 20691, "PP": 30.235, "PSOE": 32.287, "VOX": 12.206, "SUMAR": 11.328}, {"lo": 19.3, "hi": 23.3, "cp": 21.22, "n": 1646, "part": 72.77, "renta": 20612, "PP": 32.041, "PSOE": 32.19, "VOX": 11.485, "SUMAR": 10.577}, {"lo": 23.3, "hi": 28.8, "cp": 25.8, "n": 1936, "part": 73.7, "renta": 19720, "PP": 35.592, "PSOE": 32.708, "VOX": 11.504, "SUMAR": 8.814}, {"lo": 28.8, "hi": 77.6, "cp": 34.84, "n": 2811, "part": 74.66, "renta": 19073, "PP": 40.837, "PSOE": 31.503, "VOX": 11.877, "SUMAR": 6.655}];const CAT=[{"lo": 2.3, "hi": 10.6, "cp": 9.11, "n": 1069, "part": 62.17, "renta": 20817, "PSOE": 43.61, "JUNTS": 4.306, "ERC": 8.673, "SUMAR": 15.27, "PP": 13.83, "VOX": 9.94}, {"lo": 10.6, "hi": 13.0, "cp": 11.79, "n": 967, "part": 65.42, "renta": 23129, "PSOE": 38.772, "JUNTS": 7.449, "ERC": 11.667, "SUMAR": 15.516, "PP": 13.312, "VOX": 8.11}, {"lo": 13.0, "hi": 15.7, "cp": 14.29, "n": 924, "part": 66.0, "renta": 24696, "PSOE": 34.242, "JUNTS": 11.417, "ERC": 14.194, "SUMAR": 14.677, "PP": 12.262, "VOX": 7.13}, {"lo": 15.7, "hi": 19.9, "cp": 17.67, "n": 918, "part": 66.49, "renta": 26387, "PSOE": 30.274, "JUNTS": 14.925, "ERC": 15.663, "SUMAR": 13.645, "PP": 11.93, "VOX": 6.61}, {"lo": 19.9, "hi": 59.3, "cp": 25.36, "n": 1199, "part": 67.28, "renta": 31145, "PSOE": 25.59, "JUNTS": 17.803, "ERC": 15.649, "SUMAR": 11.045, "PP": 15.345, "VOX": 7.024}];const PV=[{"lo": 6.7, "hi": 12.4, "cp": 10.65, "n": 362, "part": 64.55, "renta": 23422, "PNV": 17.443, "BILDU": 18.059, "PSOE": 34.21, "PP": 11.533, "SUMAR": 13.566}, {"lo": 12.4, "hi": 14.4, "cp": 13.36, "n": 342, "part": 66.03, "renta": 24857, "PNV": 20.839, "BILDU": 22.13, "PSOE": 30.086, "PP": 10.135, "SUMAR": 12.471}, {"lo": 14.4, "hi": 16.5, "cp": 15.41, "n": 316, "part": 67.62, "renta": 26887, "PNV": 24.3, "BILDU": 23.451, "PSOE": 26.387, "PP": 10.567, "SUMAR": 11.191}, {"lo": 16.5, "hi": 20.4, "cp": 18.27, "n": 320, "part": 69.61, "renta": 29339, "PNV": 28.103, "BILDU": 26.92, "PSOE": 20.49, "PP": 10.84, "SUMAR": 10.07}, {"lo": 20.4, "hi": 54.1, "cp": 25.68, "n": 369, "part": 70.68, "renta": 34453, "PNV": 29.578, "BILDU": 29.075, "PSOE": 15.299, "PP": 14.433, "SUMAR": 8.132}];const GAL=[{"lo": 4.1, "hi": 13.8, "cp": 12.0, "n": 410, "part": 71.69, "renta": 20936, "PP": 34.645, "PSOE": 34.468, "BNG": 9.614, "SUMAR": 14.685, "VOX": 4.946}, {"lo": 13.8, "hi": 16.8, "cp": 15.32, "n": 402, "part": 72.87, "renta": 21968, "PP": 38.695, "PSOE": 31.992, "BNG": 9.82, "SUMAR": 13.204, "VOX": 4.789}, {"lo": 16.8, "hi": 20.6, "cp": 18.7, "n": 405, "part": 73.74, "renta": 22387, "PP": 43.562, "PSOE": 29.128, "BNG": 9.816, "SUMAR": 11.261, "VOX": 4.809}, {"lo": 20.6, "hi": 25.7, "cp": 22.87, "n": 431, "part": 73.8, "renta": 21973, "PP": 47.684, "PSOE": 27.484, "BNG": 9.326, "SUMAR": 9.355, "VOX": 4.887}, {"lo": 25.7, "hi": 58.7, "cp": 32.5, "n": 485, "part": 73.67, "renta": 20039, "PP": 53.153, "PSOE": 26.242, "BNG": 8.843, "SUMAR": 6.216, "VOX": 4.527}];const CIS={"Asalariados": {"PP": 25.4, "PSOE": 31.2, "VOX": 9.1, "SUMAR": 22.4}, "Por cuenta propia": {"PP": 37.0, "PSOE": 23.8, "VOX": 13.7, "SUMAR": 12.9}};
+const nf=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'),r1=v=>(Math.round(v*10+1e-6)/10).toFixed(1),pc=v=>r1(v).replace('.',',')+'%',dc=v=>r1(v).replace('.',',');
+const PC={PP:'var(--pp)',PSOE:'var(--psoe)',VOX:'var(--vox)',SUMAR:'var(--sumar)',JUNTS:'#00c3b2',ERC:'#ffb232',PNV:'#2b8a3e',BILDU:'#a5c400',BNG:'#76b3dd'},PN={PP:'PP',PSOE:'PSOE',VOX:'Vox',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',PNV:'PNV',BILDU:'EH Bildu',BNG:'BNG'};
+function lines(id,D,ps,mx,aria,psn){const box=document.getElementById(id);const tip=tipFor(box);psn=psn||{};
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,H=sm?240:270,ml=34,mr=sm?80:92,mt=12,mb=40,iw=W-ml-mr,ih=H-mt-mb,x=i=>ml+14+i*(iw-28)/4,y=v=>mt+ih-v/mx*ih;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':aria},box);
+ for(let v=0;v<=mx;v+=10){el('line',{x1:ml,x2:ml+iw,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.6},svg);el('text',{x:ml-5,y:y(v)+4,'text-anchor':'end','font-size':10.5,fill:'var(--muted)'},svg).textContent=v+'%'}
+ D.forEach((q,i)=>{el('text',{x:x(i),y:H-mb+16,'text-anchor':'middle','font-size':sm?10.5:11.5,fill:'var(--muted)'},svg).textContent=pc(q.cp).replace('%','')+(i==0?'%':'');});
+ el('text',{x:ml+iw/2,y:H-6,'text-anchor':'middle','font-size':sm?10.5:11.5,fill:'var(--muted)'},svg).textContent=sm?'Autónomos entre los ocupados del barrio':'% de ocupados por cuenta propia en las secciones de cada grupo';
+ const lab=[];ps.forEach(p=>{const pts=D.map((q,i)=>[x(i),y(q[p])]);
+  el('path',{d:'M'+pts.map(a=>a.join(',')).join('L'),fill:'none',stroke:PC[p],'stroke-width':2.4},svg);
+  D.forEach((q,i)=>{const c=el('circle',{cx:x(i),cy:y(q[p]),r:4.5,fill:PC[p],stroke:'var(--bg)','stroke-width':1.5},svg);
+   hov(box,tip,c,`<b>${psn[p]||PN[p]}</b>, grupo ${i+1} de 5<br>Secciones con entre ${dc(q.lo)}% y ${dc(q.hi)}% de autónomos<br>Voto en julio de 2023: <b>${pc(q[p])}</b>`)});
+  lab.push([y(D[4][p]),psn[p]||PN[p],D[4][p],p])});
+ lab.sort((a,b)=>a[0]-b[0]);for(let i=1;i<lab.length;i++)if(lab[i][0]-lab[i-1][0]<13)lab[i][0]=lab[i-1][0]+13;
+ lab.forEach(([yy,n,v,p])=>el('text',{x:x(4)+9,y:yy+4,'font-size':sm?10.5:11.5,style:'font-weight:600',fill:'var(--fg)'},svg).textContent=n+' '+pc(v));}
+function renta(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?78:120,rh=sm?46:40,H=REN.length*rh+30,x=v=>lw+(v-15)/30*(W-lw-16);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a PP y PSOE en secciones de la misma renta con menos y más autónomos'},box);
+ [15,25,35,45].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:0,y2:H-24,stroke:'var(--rule)','stroke-width':.6},svg);el('text',{x:x(v),y:H-8,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=v+'%'});
+ REN.forEach((r,i)=>{const y0=i*rh+6;
+  el('text',{x:lw-8,y:y0+rh/2,'text-anchor':'end','font-size':sm?10.5:11.5,class:'lab'},svg).textContent=sm?`Renta ${r.rq}`:`Renta: grupo ${r.rq} de 5`;
+  [['PP','var(--pp)',-7],['PSOE','var(--psoe)',7]].forEach(([p,c,dy])=>{const a=r[p+'_lo'],b=r[p+'_hi'],yy=y0+rh/2-4+dy;
+   el('line',{x1:x(a),x2:x(b),y1:yy,y2:yy,stroke:c,'stroke-width':2,'stroke-opacity':.55},svg);
+   const c1=el('circle',{cx:x(a),cy:yy,r:4.5,fill:'var(--bg)',stroke:c,'stroke-width':2},svg);const c2=el('circle',{cx:x(b),cy:yy,r:5,fill:c},svg);
+   const h=`<b>${PN[p]}</b>, secciones con renta por unidad de consumo entre ${nf(r.renta_lo)} y ${nf(r.renta_hi)} euros<br>Mitad con menos autónomos (${dc(r.cp_lo)}%): <b>${pc(a)}</b><br>Mitad con más autónomos (${dc(r.cp_hi)}%): <b>${pc(b)}</b>`;hov(box,tip,c1,h);hov(box,tip,c2,h)})});}
+function ciudades(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?66:84,rh=sm?40:36,H=CIU.length*rh+28,x=v=>lw+v/65*(W-lw-14);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'PP y PSOE en el quinto de secciones con menos y con más autónomos de siete ciudades'},box);
+ [0,20,40,60].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:0,y2:H-24,stroke:'var(--rule)','stroke-width':.6},svg);el('text',{x:x(v),y:H-8,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=v+'%'});
+ CIU.forEach(([c,a,b],i)=>{const y0=i*rh+4;el('text',{x:lw-8,y:y0+rh/2+2,'text-anchor':'end','font-size':sm?11:12,class:'lab'},svg).textContent=c;
+  [['PP',1,'var(--pp)',-6],['PSOE',2,'var(--psoe)',6]].forEach(([p,k,col,dy])=>{const yy=y0+rh/2-2+dy;
+   el('line',{x1:x(a[k]),x2:x(b[k]),y1:yy,y2:yy,stroke:col,'stroke-width':2,'stroke-opacity':.55},svg);
+   const c1=el('circle',{cx:x(a[k]),cy:yy,r:4.5,fill:'var(--bg)',stroke:col,'stroke-width':2},svg),c2=el('circle',{cx:x(b[k]),cy:yy,r:5,fill:col},svg);
+   const h=`<b>${c}, ${p}</b><br>Quinto de secciones con menos autónomos (${dc(a[0])}%): <b>${pc(a[k])}</b><br>Quinto con más autónomos (${dc(b[0])}%): <b>${pc(b[k])}</b>`;hov(box,tip,c1,h);hov(box,tip,c2,h)})});}
+function cis(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,ps=['PP','PSOE','VOX','SUMAR'],H=sm?200:210,ml=30,mb=34,mt=18,iw=W-ml-8,ih=H-mt-mb,gw=iw/4,y=v=>mt+ih-v/40*ih;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Recuerdo de voto en 2023 de asalariados y trabajadores por cuenta propia, CIS'},box);
+ [0,10,20,30,40].forEach(v=>{el('line',{x1:ml,x2:W-8,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.6},svg);el('text',{x:ml-5,y:y(v)+4,'text-anchor':'end','font-size':10.5,fill:'var(--muted)'},svg).textContent=v+'%'});
+ ps.forEach((p,i)=>{const gx=ml+i*gw,bw=Math.min(46,(gw-14)/2);[['Asalariados',p=='PP'?'var(--ppl)':p=='PSOE'?'var(--psoel)':p=='VOX'?'var(--voxl)':'var(--sumarl)'],['Por cuenta propia',PC[p]]].forEach(([g,c],k)=>{const v=CIS[g][p],bx=gx+gw/2-bw-1+k*(bw+2);
+   const r=el('rect',{x:bx,y:y(v),width:bw,height:y(0)-y(v),rx:3,fill:c},svg);el('text',{x:bx+bw/2,y:y(v)-5,'text-anchor':'middle','font-size':sm?10.5:11.5,fill:'var(--fg)'},svg).textContent=r1(v).replace('.',',');
+   hov(box,tip,r,`<b>${PN[p]}</b><br>${g}: <b>${pc(v)}</b> de los que recuerdan su voto`)});
+  el('text',{x:gx+gw/2,y:H-mb+16,'text-anchor':'middle','font-size':12,class:'lab'},svg).textContent=PN[p]});}
+lines('esp',ESP,['PP','PSOE','VOX','SUMAR'],45,'Voto a PP, PSOE, Vox y Sumar en julio de 2023 según el peso de los autónomos en la sección');
+renta('renta');ciudades('ciudades');cis('cis');
+lines('cat',CAT,['PSOE','JUNTS','ERC','PP','SUMAR'],45,'Cataluña: voto en 2023 según el peso de los autónomos en la sección',{PSOE:'PSC'});
+lines('rur',RUR,['PP','PSOE','VOX','SUMAR'],45,'Municipios de menos de 10.000 habitantes: voto en 2023 según el peso de los autónomos en la sección');
+lines('gal',GAL,['PP','PSOE','BNG','SUMAR'],55,'Galicia: voto en 2023 según el peso de los autónomos en la sección',{PSOE:'PSdeG'});
+lines('pv',PV,['PNV','BILDU','PSOE','PP'],40,'País Vasco: voto en 2023 según el peso de los autónomos en la sección',{PSOE:'PSE'});
+table('esp-tbl',['Grupo','Autónomos en las secciones','% medio','Renta media (€)','Participación','PP','PSOE','Vox','Sumar'],ESP.map((q,i)=>[i+1,dc(q.lo)+' a '+dc(q.hi)+'%',pc(q.cp),nf(q.renta),pc(q.part),pc(q.PP),pc(q.PSOE),pc(q.VOX),pc(q.SUMAR)]));
+
+</script>

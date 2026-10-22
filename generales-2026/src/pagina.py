@@ -242,11 +242,14 @@ def cobertura():
 
 
 HIST = lambda c: bool(re.match(r'^([ME](19\d\d|200[0-3])|(19\d\d|200[0-3])_\d\d)_', c))   # columnas de elecciones anteriores a 2004
+# Segunda República (1933_11, 1936_02): otra licencia (CC BY-NC-SA), se descarga aparte (republica.py --web)
+REP = lambda c: bool(re.match(r'^19[23]\d_\d\d_', c))
 
 
 def descargas():
     d = os.path.join(WEB, 'descargas'); os.makedirs(d, exist_ok=True)
     m = pd.read_csv(os.path.join(DATOS, 'municipios.csv'), dtype={'mun_code': str})
+    m = m[[c for c in m if not REP(c)]]
     m[[c for c in m if not HIST(c)]].to_csv(os.path.join(d, 'municipios.csv'), index=False)
     m[['mun_code', 'municipio', 'provincia'] + [c for c in m if HIST(c)]].to_csv(os.path.join(d, 'municipios_historico.csv'), index=False)
     # secciones: generales en los ficheros de siempre; municipales y europeas (M2023, E2024...) aparte, para no pasar de 50 MB
@@ -261,15 +264,16 @@ def descargas():
         'Datos derivados publicados con licencia CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).\n'
         'Cita: "Elecciones generales 2004-2023 por sección censal (con municipales y europeas)", ' + AUTOR + ', ' + HOY + ', ' + URL + '\n'
         'Fuentes originales: Ministerio del Interior (resultados electorales) e INE (Atlas de Distribución de Renta de los Hogares 2023; Censo 2021), '
-        'reutilizables citando la fuente.\n')
+        'reutilizables citando la fuente.\n'
+        'Excepción: municipios_republica.csv (generales de 1933 y 1936) tiene licencia CC BY-NC-SA 4.0; ver LICENCIA-republica.txt.\n')
 
 
 def llms(F):
     t = f"""# El mapa de las generales: cómo vota cada barrio de España
 
-> Resultados de las elecciones al Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Por municipio, el Congreso desde {F['g_desde']} (municipios_historico.csv). Incluye también las municipales de 2011 a 2023 y las europeas de 2004 a 2024 por sección, y las municipales de 1979 a 2007 y las europeas de 1987 a 1999 por municipio. Preparado para las elecciones generales del 29 de noviembre de 2026.
+> Resultados de las elecciones al Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera (INE). Por municipio, el Congreso desde {F['g_desde']} (municipios_historico.csv). Incluye también las municipales de 2011 a 2023 y las europeas de 2004 a 2024 por sección, y las municipales de 1979 a 2007 y las europeas de 1987 a 1999 por municipio. Y las generales de la Segunda República de 1933 y 1936 por municipio, con bloques electorales (listas abiertas). Preparado para las elecciones generales del 29 de noviembre de 2026.
 
-Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0.
+Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0 (salvo municipios_republica.csv: CC BY-NC-SA 4.0).
 
 ## Cifras clave (23J 2023, sin voto CERA)
 - Participación: {F['part']}. PP {F['pp']}, PSOE {F['psoe']}, Vox {F['vox']}, Sumar {F['sumar']} (sobre voto válido).
@@ -288,6 +292,7 @@ Autor: {F['autor']}. Actualizado: {F['hoy']}. Licencia de los datos: CC BY 4.0.
 - [secciones.csv]({F['url']}descargas/secciones.csv): una fila por sección censal INE 2023, resultados por elección y variables sociodemográficas.
 - [municipios.csv]({F['url']}descargas/municipios.csv): lo mismo por municipio.
 - [municipios_historico.csv]({F['url']}descargas/municipios_historico.csv): elecciones anteriores a 2004 por municipio (código INE actual).
+- [municipios_republica.csv]({F['url']}descargas/municipios_republica.csv): generales de 1933 y 1936 (Segunda República) por municipio actual, del Atlas Electoral de la Segunda República (UPF). Licencia CC BY-NC-SA 4.0.
 - [resultados_secciones_largo.csv]({F['url']}descargas/resultados_secciones_largo.csv): votos por sección, elección y familia política.
 """
     open(os.path.join(WEB, 'llms.txt'), 'w', encoding='utf-8').write(t)

@@ -23,6 +23,11 @@ Criterios (documentados en LEEME.md):
   - EH Bildu: Herri Batasuna (1979-1996) y Euskal Herritarrok (1998-1999), la izquierda abertzale de la que
     viene Bildu. Euskadiko Ezkerra (se integró en el PSE) y EA van en "Otros".
   - BNG incluye el Bloque Nacional-Popular Galego (1977-1979). Partido Andalucista, PSP, PST, PAR, UV, AIC: "Otros".
+- Segunda República (1933 y 1936, republica.py): familias por bloque electoral, porque se votaba a coaliciones de
+  listas abiertas. Derechas (CEDA, agrarios, tradicionalistas, Renovación; en 1936 también el Front Català d'Ordre),
+  Radicales y centro, Izquierda republicana (con las coaliciones republicano-socialistas de 1933), Frente Popular
+  (1936, incluye el Front d'Esquerres), Lliga Catalana (1933). Con familia de ahora: PSOE en solitario (1933),
+  PCE y otros obreros (1933, en "Sumar / Podemos / IU"), ERC (1933), PNV.
 """
 import re
 
@@ -41,11 +46,17 @@ FAMILIAS = [  # código, etiqueta, color
     ('CC', 'Coalición Canaria', '#f7d417'),
     ('UCD', 'UCD', '#e07b22'),
     ('CDS', 'CDS', '#7e57c2'),
+    # Segunda República (1933 y 1936): solo tienen votos en esas dos elecciones
+    ('DER', 'Derechas (CEDA y aliados)', '#24366b'),
+    ('CENTRO', 'Radicales y centro', '#8c6d4f'),
+    ('IZQREP', 'Izquierda republicana', '#6a3d9a'),
+    ('FP', 'Frente Popular', '#b3001b'),
+    ('LLIGA', 'Lliga Catalana', '#4a90a4'),
     ('OTROS', 'Otros', '#9a9a9a'),
 ]
 CODIGOS = [f[0] for f in FAMILIAS]
 # Nombre de la familia en las elecciones anteriores a un año (la pieza lo usa en leyenda y fichas)
-ALIAS = {'PP': [['1989', 'AP']], 'SUMAR': [['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
+ALIAS = {'PP': [['1989', 'AP']], 'SUMAR': [['1977', 'PCE y otros obreros'], ['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
 
 _REGLAS = [
     ('PP', r"^(PP\b|PP-|P\.P\.|UPN-PP|UPN$|NA\+)|^AP-PDP|^AP-PL"),
@@ -120,6 +131,8 @@ def _por_siglas(x: str, n: str):
 def familia(abrev: str, nombre: str = '') -> str:
     a = (abrev if isinstance(abrev, str) else '').strip().upper()
     n = (nombre if isinstance(nombre, str) else '').upper()
+    if a.startswith('REP:'):        # Segunda República: republica.py ya trae la familia asignada
+        return a[4:]
     if _NO_ES.search(n):
         return 'OTROS'
     for x in (a, a.replace('.', '')):

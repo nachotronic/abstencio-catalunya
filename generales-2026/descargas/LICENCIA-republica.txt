@@ -1,0 +1,4 @@
+municipios_republica.csv: elecciones generales de 1933 y 1936 por municipio actual.
+Datos derivados del Atlas Electoral de la Segunda República: Rodon, T., Vall-Prat, P. y Martín Álvarez, D. (2026). Electoral Atlas of the Spanish Second Republic (1931-1936), v2.0. Universitat Pompeu Fabra. https://doi.org/10.34810/data3274
+Licencia: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/), la misma del original: citar a los autores y a mapaelectoral.es, sin uso comercial y compartiendo lo derivado con la misma licencia.
+Cambios: bloques agrupados en familias, municipios desaparecidos sumados al municipio actual (INE, Alteraciones de los municipios desde 1842), porcentajes sin blancos ni nulos. Método: https://mapaelectoral.es/generales-2026/metodologia.html
