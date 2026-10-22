@@ -1293,6 +1293,27 @@ PIEZAS = [
                   pie='Votantes que tendrían que cambiar de papeleta para que el último escaño de cada provincia cambiara de partido, en las ocho provincias más ajustadas de las generales de 2023.',
                   fuente='Ministerio del Interior y Real Decreto 806/2026. Cálculo propio'),
     ),
+    dict(
+        slug='voto-jubilados-secciones-29n', fecha='2026-10-22',
+        titulo='Vox nunca ha llegado al 12% en los barrios de jubilados', serie='29n',
+        descripcion='En la quinta parte de las secciones con más pensionistas, Vox sacó el 9,5% en 2023 y no pasó del 11,6% ni en su mejor año; donde menos hay, llegó al 20,5%. El PP gana esos barrios en 40 de 51 provincias. El PSOE, en Sevilla, Huelva, Cáceres y Cataluña.',
+        compara='El porcentaje de residentes de 16 años o más que cobran una pensión de incapacidad, jubilación o prejubilación en cada una de las 34.257 secciones censales (Censo anual 2023) con el voto de cada sección en las generales de 2015 a 2023, en cinco grupos con el mismo número de votantes; con la misma proporción de mayores de 65 años; por provincia; y el recuerdo de voto de jubilados y trabajadores en la encuesta postelectoral del CIS.',
+        limites='Son datos por sección, no por persona: no dicen cómo vota cada pensionista. El censo cuenta a la gente donde vive. La categoría del INE es la de perceptores de pensión de incapacidad, jubilación o prejubilación y no menciona las de viudedad. Al separar la edad y la provincia, la diferencia del PP entre secciones con más y menos pensionistas se queda en torno a un punto. Las elecciones de 2015 a 2019 solo se comparan en secciones con el mismo código. Se excluye Santa Cruz de Tenerife, donde Vox no presentó lista en 2023. En la encuesta del CIS, el recuerdo de voto favorece al PSOE frente al resultado real.',
+        fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=66594', 'INE, Censo anual de población, población de 16 y más años por relación con la actividad y sección censal'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2015 a 2023 por sección'),
+                 ('https://www.cis.es/en/surveys/barometro-de-septiembre-2023.-postelectoral-elecciones-generales-2023', 'CIS, estudio 3420, Barómetro de septiembre de 2023, postelectoral de las generales'),
+                 ('https://www.que.es/2026/10/19/recortes-pensiones-pp-vox-29n/', 'Qué!, Los recortes de pensiones que PP y Vox abren en campaña (19-10-2026)'),
+                 ('https://www.eldiario.es/politica/pp-patina-pensiones-precampana-29n_1_13586089.html', 'elDiario.es, El PP patina con las pensiones en la precampaña del 29N (14-10-2026)'),
+                 ('https://www.democrata.es/elecciones-generales-espana/abascal-promete-pagar-pensiones-y-garantizar-vivienda-como-sea-y-refuerza-su-llamamiento-al-voto-presencial/', 'Demócrata, Abascal promete pagar pensiones y garantizar vivienda «como sea» (11-10-2026)'),
+                 ('https://theobjective.com/espana/politica/2026-10-07/saiz-revalorizacion-pensiones-pp-vox/', 'Europa Press en The Objective, Saiz y la revalorización de las pensiones (7-10-2026)'),
+                 ('https://www.articulo14.es/economia/el-voto-del-miedo-los-ingresos-de-casi-la-mitad-del-censo-depende-del-gobierno-20261013.html', 'Artículo 14, El voto del miedo (13-10-2026)'),
+                 ('https://documentos.fedea.net/pubs/fpp/2023/06/FPP2023-03.pdf', 'José Ignacio Conde-Ruiz y Vincenzo Galasso, Efectos económicos de la demografía política, Fedea Policy Paper 2023/03 (junio de 2023)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/voto-jubilados-secciones-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Voto a Vox en el quinto de secciones con más pensionistas y en el quinto con menos, generales de 2015 a 2023.',
+                  fuente='INE, Censo anual 2023, y Ministerio del Interior'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1852,6 +1873,7 @@ PIEZAS += [
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
+    'voto-jubilados-secciones-29n': 'El voto que no se mueve',
     'voto-autonomos-secciones-29n': 'La persiana y la urna',
     'ley-nietos-donde-estan-29n': 'Nietos sin papeleta',
     'pensiones-revalorizacion-29n': 'Dos Españas jubiladas',
