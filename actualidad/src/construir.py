@@ -1372,9 +1372,8 @@ PIEZAS = [
                  ('https://www.funcas.es/wp-content/uploads/2024/09/Estudios104_Torres_3.pdf', 'Raymond Torres, Funcas, estudio sobre jóvenes y vivienda (2024)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/vivienda-preocupa-voto-sumar-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Porcentaje que cita la vivienda entre los tres principales problemas de España por comunidad, barómetros del CIS de diciembre de 2025 a octubre de 2026.',
-                  fuente='CIS. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/vivienda-preocupa-voto-sumar-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un edificio de viviendas con una maleta en el portal y una urna con una papeleta.'),
     ),
     dict(
         slug='termometro-temas-inmigracion-29n', fecha='2026-10-22',
