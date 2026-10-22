@@ -1,0 +1,743 @@
+{
+ "version": "v1.1-encuestas-20261022",
+ "ficticio": false,
+ "interno": false,
+ "generado": "2026-10-22",
+ "semilla": 20261129,
+ "simulaciones": 2000,
+ "aviso": "Estimación con encuestas publicadas hasta el 22-10-2026. Margen amplio: a 38 días, el error típico de la media es de unos 5 puntos para un partido del 30 %.",
+ "media_encuestas": {
+  "BILDU": 1.36,
+  "BNG": 0.87,
+  "CC": 0.44,
+  "ERC": 2.33,
+  "JUNTS": 1.47,
+  "PNV": 0.87,
+  "PODEMOS": 2.97,
+  "PP": 31.18,
+  "PSOE": 26.9,
+  "SALF": 1.68,
+  "SUMAR": 6.57,
+  "UPN": 0.17,
+  "VOX": 18.77
+ },
+ "c_error": 0.853,
+ "dias_a_eleccion": 38,
+ "sigma_nac": {
+  "PP": 0.153,
+  "PSOE": 0.164,
+  "Vox": 0.197,
+  "Sumar": 0.3,
+  "Podemos": 0.3,
+  "SALF": 0.3,
+  "ERC": 0.3,
+  "Junts": 0.3,
+  "EH Bildu": 0.3,
+  "PNV": 0.3,
+  "BNG": 0.3,
+  "CC": 0.3,
+  "UPN": 0.3,
+  "CUP": 0.3,
+  "Aliança": 0.3,
+  "Nueva Canarias": 0.3,
+  "PACMA": 0.3
+ },
+ "voto_central": {
+  "PP": 31.18,
+  "PSOE": 26.9,
+  "Vox": 18.77,
+  "Sumar": 6.57,
+  "Podemos": 2.97,
+  "SALF": 1.68,
+  "ERC": 2.33,
+  "Junts": 1.47,
+  "EH Bildu": 1.36,
+  "PNV": 0.87,
+  "BNG": 0.87,
+  "CC": 0.44,
+  "UPN": 0.17,
+  "CUP": 0.4,
+  "Aliança": 0.54,
+  "Nueva Canarias": 0.18,
+  "PACMA": 0.69
+ },
+ "listas": [
+  "PP",
+  "PSOE",
+  "Vox",
+  "Sumar",
+  "Podemos",
+  "SALF",
+  "ERC",
+  "Junts",
+  "EH Bildu",
+  "PNV",
+  "BNG",
+  "CC",
+  "UPN",
+  "CUP",
+  "Aliança",
+  "Nueva Canarias",
+  "PACMA"
+ ],
+ "provincias": {
+  "01": "Álava",
+  "02": "Albacete",
+  "03": "Alicante",
+  "04": "Almería",
+  "05": "Ávila",
+  "06": "Badajoz",
+  "07": "Illes Balears",
+  "08": "Barcelona",
+  "09": "Burgos",
+  "10": "Cáceres",
+  "11": "Cádiz",
+  "12": "Castellón",
+  "13": "Ciudad Real",
+  "14": "Córdoba",
+  "15": "A Coruña",
+  "16": "Cuenca",
+  "17": "Girona",
+  "18": "Granada",
+  "19": "Guadalajara",
+  "20": "Gipuzkoa",
+  "21": "Huelva",
+  "22": "Huesca",
+  "23": "Jaén",
+  "24": "León",
+  "25": "Lleida",
+  "26": "La Rioja",
+  "27": "Lugo",
+  "28": "Madrid",
+  "29": "Málaga",
+  "30": "Murcia",
+  "31": "Navarra",
+  "32": "Ourense",
+  "33": "Asturias",
+  "34": "Palencia",
+  "35": "Las Palmas",
+  "36": "Pontevedra",
+  "37": "Salamanca",
+  "38": "Santa Cruz de Tenerife",
+  "39": "Cantabria",
+  "40": "Segovia",
+  "41": "Sevilla",
+  "42": "Soria",
+  "43": "Tarragona",
+  "44": "Teruel",
+  "45": "Toledo",
+  "46": "Valencia",
+  "47": "Valladolid",
+  "48": "Bizkaia",
+  "49": "Zamora",
+  "50": "Zaragoza",
+  "51": "Ceuta",
+  "52": "Melilla"
+ },
+ "ccaa": {
+  "Andalucía": [
+   "04",
+   "11",
+   "14",
+   "18",
+   "21",
+   "23",
+   "29",
+   "41"
+  ],
+  "Aragón": [
+   "22",
+   "44",
+   "50"
+  ],
+  "Asturias": [
+   "33"
+  ],
+  "Illes Balears": [
+   "07"
+  ],
+  "Canarias": [
+   "35",
+   "38"
+  ],
+  "Cantabria": [
+   "39"
+  ],
+  "Castilla y León": [
+   "05",
+   "09",
+   "24",
+   "34",
+   "37",
+   "40",
+   "42",
+   "47",
+   "49"
+  ],
+  "Castilla-La Mancha": [
+   "02",
+   "13",
+   "16",
+   "19",
+   "45"
+  ],
+  "Cataluña": [
+   "08",
+   "17",
+   "25",
+   "43"
+  ],
+  "Comunitat Valenciana": [
+   "03",
+   "12",
+   "46"
+  ],
+  "Extremadura": [
+   "06",
+   "10"
+  ],
+  "Galicia": [
+   "15",
+   "27",
+   "32",
+   "36"
+  ],
+  "Madrid": [
+   "28"
+  ],
+  "Murcia": [
+   "30"
+  ],
+  "Navarra": [
+   "31"
+  ],
+  "País Vasco": [
+   "01",
+   "20",
+   "48"
+  ],
+  "La Rioja": [
+   "26"
+  ],
+  "Ceuta": [
+   "51"
+  ],
+  "Melilla": [
+   "52"
+  ]
+ },
+ "escanos": {
+  "01": 4,
+  "02": 4,
+  "03": 12,
+  "04": 6,
+  "05": 3,
+  "06": 5,
+  "07": 8,
+  "08": 32,
+  "09": 4,
+  "10": 4,
+  "11": 8,
+  "12": 5,
+  "13": 5,
+  "14": 6,
+  "15": 8,
+  "16": 3,
+  "17": 6,
+  "18": 7,
+  "19": 3,
+  "20": 6,
+  "21": 5,
+  "22": 3,
+  "23": 5,
+  "24": 4,
+  "25": 4,
+  "26": 4,
+  "27": 4,
+  "28": 38,
+  "29": 11,
+  "30": 10,
+  "31": 5,
+  "32": 4,
+  "33": 7,
+  "34": 3,
+  "35": 8,
+  "36": 7,
+  "37": 4,
+  "38": 7,
+  "39": 5,
+  "40": 3,
+  "41": 12,
+  "42": 2,
+  "43": 6,
+  "44": 3,
+  "45": 6,
+  "46": 16,
+  "47": 5,
+  "48": 8,
+  "49": 3,
+  "50": 7,
+  "51": 1,
+  "52": 1
+ },
+ "mayoria": 176,
+ "senado": {
+  "elegidos": 209,
+  "designados": 57,
+  "circunscripciones": [
+   {
+    "cod": "01",
+    "nombre": "Álava",
+    "provincia": "01",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "02",
+    "nombre": "Albacete",
+    "provincia": "02",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "03",
+    "nombre": "Alicante",
+    "provincia": "03",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "04",
+    "nombre": "Almería",
+    "provincia": "04",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "05",
+    "nombre": "Ávila",
+    "provincia": "05",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "06",
+    "nombre": "Badajoz",
+    "provincia": "06",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "07M",
+    "nombre": "Mallorca",
+    "provincia": "07",
+    "senadores": 3,
+    "votos_elector": 2
+   },
+   {
+    "cod": "07N",
+    "nombre": "Menorca",
+    "provincia": "07",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "07I",
+    "nombre": "Eivissa",
+    "provincia": "07",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "07F",
+    "nombre": "Formentera",
+    "provincia": "07",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "08",
+    "nombre": "Barcelona",
+    "provincia": "08",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "09",
+    "nombre": "Burgos",
+    "provincia": "09",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "10",
+    "nombre": "Cáceres",
+    "provincia": "10",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "11",
+    "nombre": "Cádiz",
+    "provincia": "11",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "12",
+    "nombre": "Castellón",
+    "provincia": "12",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "13",
+    "nombre": "Ciudad Real",
+    "provincia": "13",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "14",
+    "nombre": "Córdoba",
+    "provincia": "14",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "15",
+    "nombre": "A Coruña",
+    "provincia": "15",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "16",
+    "nombre": "Cuenca",
+    "provincia": "16",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "17",
+    "nombre": "Girona",
+    "provincia": "17",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "18",
+    "nombre": "Granada",
+    "provincia": "18",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "19",
+    "nombre": "Guadalajara",
+    "provincia": "19",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "20",
+    "nombre": "Gipuzkoa",
+    "provincia": "20",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "21",
+    "nombre": "Huelva",
+    "provincia": "21",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "22",
+    "nombre": "Huesca",
+    "provincia": "22",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "23",
+    "nombre": "Jaén",
+    "provincia": "23",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "24",
+    "nombre": "León",
+    "provincia": "24",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "25",
+    "nombre": "Lleida",
+    "provincia": "25",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "26",
+    "nombre": "La Rioja",
+    "provincia": "26",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "27",
+    "nombre": "Lugo",
+    "provincia": "27",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "28",
+    "nombre": "Madrid",
+    "provincia": "28",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "29",
+    "nombre": "Málaga",
+    "provincia": "29",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "30",
+    "nombre": "Murcia",
+    "provincia": "30",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "31",
+    "nombre": "Navarra",
+    "provincia": "31",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "32",
+    "nombre": "Ourense",
+    "provincia": "32",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "33",
+    "nombre": "Asturias",
+    "provincia": "33",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "34",
+    "nombre": "Palencia",
+    "provincia": "34",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "35G",
+    "nombre": "Gran Canaria",
+    "provincia": "35",
+    "senadores": 3,
+    "votos_elector": 2
+   },
+   {
+    "cod": "35L",
+    "nombre": "Lanzarote",
+    "provincia": "35",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "35F",
+    "nombre": "Fuerteventura",
+    "provincia": "35",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "36",
+    "nombre": "Pontevedra",
+    "provincia": "36",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "37",
+    "nombre": "Salamanca",
+    "provincia": "37",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "38T",
+    "nombre": "Tenerife",
+    "provincia": "38",
+    "senadores": 3,
+    "votos_elector": 2
+   },
+   {
+    "cod": "38P",
+    "nombre": "La Palma",
+    "provincia": "38",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "38G",
+    "nombre": "La Gomera",
+    "provincia": "38",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "38H",
+    "nombre": "El Hierro",
+    "provincia": "38",
+    "senadores": 1,
+    "votos_elector": 1
+   },
+   {
+    "cod": "39",
+    "nombre": "Cantabria",
+    "provincia": "39",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "40",
+    "nombre": "Segovia",
+    "provincia": "40",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "41",
+    "nombre": "Sevilla",
+    "provincia": "41",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "42",
+    "nombre": "Soria",
+    "provincia": "42",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "43",
+    "nombre": "Tarragona",
+    "provincia": "43",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "44",
+    "nombre": "Teruel",
+    "provincia": "44",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "45",
+    "nombre": "Toledo",
+    "provincia": "45",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "46",
+    "nombre": "Valencia",
+    "provincia": "46",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "47",
+    "nombre": "Valladolid",
+    "provincia": "47",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "48",
+    "nombre": "Bizkaia",
+    "provincia": "48",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "49",
+    "nombre": "Zamora",
+    "provincia": "49",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "50",
+    "nombre": "Zaragoza",
+    "provincia": "50",
+    "senadores": 4,
+    "votos_elector": 3
+   },
+   {
+    "cod": "51",
+    "nombre": "Ceuta",
+    "provincia": "51",
+    "senadores": 2,
+    "votos_elector": 2
+   },
+   {
+    "cod": "52",
+    "nombre": "Melilla",
+    "provincia": "52",
+    "senadores": 2,
+    "votos_elector": 2
+   }
+  ]
+ },
+ "escenarios": [
+  {
+   "id": "base",
+   "titulo": "Escenario central",
+   "supuesto": "Estimación central ficticia, sin supuestos añadidos."
+  },
+  {
+   "id": "pp2",
+   "titulo": "PP +2 puntos",
+   "supuesto": "El PP gana 2 puntos de voto en toda España, restados al resto en proporción a su voto."
+  },
+  {
+   "id": "psoe2",
+   "titulo": "PSOE +2 puntos",
+   "supuesto": "El PSOE gana 2 puntos de voto en toda España, restados al resto en proporción."
+  },
+  {
+   "id": "vox2",
+   "titulo": "Vox +2 puntos",
+   "supuesto": "Vox gana 2 puntos de voto en toda España, restados al resto en proporción."
+  },
+  {
+   "id": "sumar2",
+   "titulo": "Sumar +2 puntos",
+   "supuesto": "Sumar gana 2 puntos de voto en toda España, restados al resto en proporción."
+  },
+  {
+   "id": "incierto",
+   "titulo": "Doble incertidumbre",
+   "supuesto": "Misma estimación central, con el doble de error nacional y provincial."
+  }
+ ],
+ "metodo": "/encuestas/metodo-modelo.html"
+}

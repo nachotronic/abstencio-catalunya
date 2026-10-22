@@ -4,8 +4,10 @@ Lee los CSV que actualiza dos veces al día el workflow «Encuestas» (prevision
 encuestas/index.html y encuestas/sitemap.xml. El workflow lo vuelve a ejecutar cuando llega una encuesta nueva, así
 que la página se refresca sola. Solo usa la biblioteca estándar.
 
-Qué publica: las cifras de cada encuesta tal como las publicó su encuestadora (voto y escaños), y la mediana de las
-encuestas recientes como resumen descriptivo. No publica estimaciones propias: el modelo de /previsiones/ va aparte.
+Qué publica: las cifras de cada encuesta tal como las publicó su encuestadora (voto y escaños), la mediana de las
+encuestas recientes como resumen descriptivo y, en un bloque aparte, la estimación del modelo de previsiones/src si
+el hilo del modelo ha dejado una salida publicable en previsiones/datos/publico/ (Nacho lo aprobó el 22-10-2026).
+Esa estimación no se recalcula aquí: cambia cuando se copia una salida nueva a esa carpeta.
 
 Fuentes: Electográfica (agregador, para localizar las encuestas y su ficha técnica) y la tabla de Wikipedia (CC BY-SA),
 que añade los escaños de cada encuestadora y los sondeos que Electográfica no recoge (ElectoPanel de Electomanía).
@@ -171,7 +173,7 @@ def estimacion():
 <figure><figcaption><span class="t">Congreso: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
 <div class="chart" id="hemi-modelo"></div></figure>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. Método: media de las encuestas recientes (más peso a las nuevas y a las de muestra grande), repartida por provincia desde el resultado de 2023 con la señal de las europeas de 2024, escaños por D'Hondt en cada provincia y error de las encuestas medido en 25 elecciones españolas. <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">Código del modelo</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
+<p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. {html.escape(meta.get('aviso', ''))} <a href="metodo-modelo.html">Cómo se calcula</a> · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     return html_b, hemi
 
 
@@ -423,7 +425,7 @@ def main():
     SALIDA.mkdir(exist_ok=True)
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-                                        f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n</urlset>\n', encoding='utf-8')
+                                        f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n</urlset>\n', encoding='utf-8')
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
 
 

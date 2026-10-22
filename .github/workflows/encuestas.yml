@@ -25,6 +25,9 @@ jobs:
       - name: Commit si hay cambios
         id: commit
         run: |
+          # art. 69.7 LOREG: no se publican encuestas nuevas en los cinco días anteriores a la votación del 29N
+          d=$(TZ=Europe/Madrid date +%F)
+          if [[ "$d" > "2026-11-23" && "$d" < "2026-11-29" ]]; then echo "Veda de encuestas (LOREG 69.7): no se publica"; exit 0; fi
           git add previsiones/datos/encuestas
           if git diff --cached --quiet -- '*.csv'; then echo "Sin encuestas nuevas"; exit 0; fi
           python3 encuestas/src/construir.py
