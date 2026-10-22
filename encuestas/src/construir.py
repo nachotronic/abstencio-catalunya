@@ -39,6 +39,11 @@ NOMBRE = {k: n for k, n, _, _ in TODOS}
 NO_ENCUESTAS = {'keydata', 'sumar'}   # medias de otros medios y sondeos internos de partido
 DESDE_GRAFICO = 365   # días que enseña el gráfico
 VISIBLES = 10
+# Estimación propia (motor de /previsiones/): solo se publica si existe esta carpeta, que el hilo del modelo llena
+# cuando Nacho valida sus cifras. Sin ella, la página no enseña nada del modelo.
+ESTIMACION = pathlib.Path(os.environ.get('ESTIMACION_DIR', RAIZ / 'previsiones/datos/publico'))
+DEL_MODELO = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'Podemos': 'PODEMOS', 'SALF': 'SALF', 'ERC': 'ERC',
+              'Junts': 'JUNTS', 'EH Bildu': 'BILDU', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN', 'Aliança': 'ALIANCA'}
 VENTANA_MEDIANA = 21
 
 
@@ -134,6 +139,40 @@ def promedio_escanos(con_esc):
     return {k: v for k, v in base.items() if v}, len(completas)
 
 
+def estimacion():
+    """Bloque «Estimación de Mapa Electoral» y escaños centrales para su hemiciclo; (None, None) si no hay salida publicable."""
+    if not (ESTIMACION / 'escenario-base.json').exists():
+        return None, None
+    d = json.load(open(ESTIMACION / 'escenario-base.json'))
+    meta = json.load(open(ESTIMACION / 'meta.json'))
+    hemi = {DEL_MODELO[k]: v for k, v in d['hemiciclo']['congreso'].items() if k in DEL_MODELO and v}
+    filas = ''
+    central = d['hemiciclo']['congreso']   # el mismo reparto que el hemiciclo
+    for l in sorted(d['listas'], key=lambda l: (-central.get(l['lista'], 0), -l['escanos'][2])):
+        if l['lista'] not in DEL_MODELO or l['escanos'][3] < 1:
+            continue
+        k = DEL_MODELO[l['lista']]
+        c = next(c for kk, _, c, _ in TODOS if kk == k)
+        filas += (f'<tr><td><i class="pt" style="background:{c}"></i>{NOMBRE[k]}</td><td class="n">{pc(l["voto"][2])}</td>'
+                  f'<td class="n"><b>{central.get(l["lista"], 0)}</b></td><td class="n">{round(l["escanos"][1])}-{round(l["escanos"][3])}</td></tr>')
+    pv = next((b for b in d['bloques'] if b['listas'] == ['PP', 'Vox']), None)
+    izq = next((b for b in d['bloques'] if b['bloque'].startswith('PSOE + Sumar + Podemos + ERC')), None)
+    prob = lambda p: f'{round(p * 100)} %' if 0.01 <= p <= 0.99 else ('menos del 1 %' if p < 0.01 else 'más del 99 %')
+    frase = ''
+    if pv:
+        frase += (f'PP y Vox suman {round(pv["escanos"][2])} escaños en el escenario central (entre {round(pv["escanos"][1])} y {round(pv["escanos"][3])} '
+                  f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.')
+    if izq:
+        frase += f' Los socios de la investidura de 2023 llegan a 176 en el {prob(izq["p_mayoria"])}.'
+    html_b = f"""<h2>Estimación de Mapa Electoral</h2>
+<p>{frase}</p>
+<figure><figcaption><span class="t">Congreso: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
+<div class="chart" id="hemi-modelo"></div></figure>
+<div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
+<p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. <a href="../previsiones/">Método del modelo</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
+    return html_b, hemi
+
+
 def pc(v):
     return f'{v:.1f}'.replace('.', ',') + ' %'
 
@@ -216,7 +255,7 @@ td.n,th.n{text-align:right;white-space:nowrap}
 td small{display:block;color:var(--muted);font-size:.75rem}
 td .medio{display:block;color:var(--muted);font-size:.8rem}
 td a{color:var(--fg);text-decoration-color:var(--rule)}
-th .pt{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+th .pt,td .pt{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
 tr.mayoria td.suma{font-weight:700}
 details{font-family:var(--ui);margin-top:.6rem} summary{cursor:pointer;color:var(--muted)}
 a{color:var(--acc)}
@@ -255,7 +294,7 @@ function dibuja(){box.innerHTML='';const W=Math.max(320,box.clientWidth||640),H=
   tip.innerHTML='<b>'+f.getDate()+' '+M[f.getMonth()]+' '+f.getFullYear()+'</b> · mediana<br>'+D.partidos.filter(p=>s[p[0]]!=null).map(p=>'<span style="color:'+col(p)+'">●</span> '+p[1]+' '+pc(s[p[0]])).join('<br>');
   tip.hidden=false;tip.style.left=Math.min(Math.max(px,90),W-90)+'px';tip.style.top=(pt.clientY-r.top)+'px'};
  svg.addEventListener('mousemove',mover);svg.addEventListener('touchstart',mover,{passive:true});svg.addEventListener('mouseleave',()=>{tip.hidden=true;g.setAttribute('visibility','hidden')})}
-function hemi(){const hb=document.getElementById('hemi');if(!hb||!D.hemi.length)return;hb.innerHTML='';
+function hemi(id,H0){const hb=document.getElementById(id);if(!hb||!H0.length)return;hb.innerHTML='';const D={hemi:H0};
  const W=Math.min(640,Math.max(300,hb.clientWidth||600)),R=W/2-4,H=R+30,filas=W<420?9:11,r0=R*.38;
  const total=D.hemi.reduce((a,p)=>a+p[1],0);const radios=[...Array(filas)].map((_,i)=>r0+(R-r0)*(i+.5)/filas);
  const suma=radios.reduce((a,b)=>a+b,0);let n=radios.map(r=>Math.round(total*r/suma));n[filas-1]+=total-n.reduce((a,b)=>a+b,0);
@@ -266,8 +305,8 @@ function hemi(){const hb=document.getElementById('hemi');if(!hb||!D.hemi.length)
  el('line',{x1:W/2,x2:W/2,y1:4,y2:R+4-r0+6,stroke:'var(--muted)','stroke-dasharray':'3 3'},svg);
  el('text',{x:W/2,y:R+24,'text-anchor':'middle',style:'font-size:13px'},svg).textContent='176 escaños: mayoría absoluta';
  const lg=document.createElement('div');lg.className='legend';lg.innerHTML=D.hemi.map(p=>'<span><i class="sw" style="background:'+(osc()?p[3]:p[2])+'"></i>'+p[4]+' '+p[1]+'</span>').join('');hb.appendChild(lg)}
-dibuja();hemi();let w=box.clientWidth;addEventListener('resize',()=>{if(box.clientWidth!==w){w=box.clientWidth;dibuja();hemi()}});
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dibuja();hemi()})})();
+const hemis=()=>{hemi('hemi',D.hemi);hemi('hemi-modelo',D.hemi_modelo)};dibuja();hemis();let w=box.clientWidth;addEventListener('resize',()=>{if(box.clientWidth!==w){w=box.clientWidth;dibuja();hemis()}});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dibuja();hemis()})})();
 </script>"""
 
 
@@ -280,7 +319,9 @@ def main():
     titular, entradilla, p1, p2, ultimas, con_esc, mayoria = textos(encs, hoy)
     desde_g = (hoy - timedelta(days=DESDE_GRAFICO)).isoformat()
     hemi, n_hemi = promedio_escanos(con_esc)
-    datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': [[k, hemi[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (hemi or {})],
+    bloque_modelo, hemi_m = estimacion()
+    asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
+    datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
     desde23 = [e for e in encs if e['fin'] >= '2023-07-24']
     recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
@@ -354,6 +395,7 @@ def main():
 {bloque_hemi}
 <p>Última encuesta de cada una en los últimos 30 días, con los escaños que publica. Un intervalo («132-137») es la horquilla de la propia encuestadora; la mayoría absoluta está en 176.</p>
 {tabla_esc}
+{bloque_modelo or ''}
 <h2>Las últimas {VISIBLES} encuestas</h2>
 <p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. Un asterisco en la fecha indica que no consta el trabajo de campo y se toma la publicación menos tres días.</p>
 {tabla}
