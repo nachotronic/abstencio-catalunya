@@ -110,5 +110,13 @@
  "vox-barrios-obreros-clase-29n": {
   "pie": "Voto en julio de 2023 según el peso de los empleos elementales en la sección.",
   "fuente": "INE, Censo anual de población 2023 (ocupados por grupo de ocupación y sección censal, por lugar de residencia), y Ministerio del Interior, generales de julio de 2023. Sin la provincia de Santa Cruz de Tenerife"
+ },
+ "republica-mapa-1936-hoy": {
+  "pie": "De 1936 a 2023, municipio a municipio: el bloque que sumó más votos en cada elección.",
+  "fuente": "Atlas Electoral de la Segunda República (UPF); Ministerio del Interior"
+ },
+ "girona-1936-participacio": {
+  "pie": "On es votava més, el 1936 o el 2023: diferència de participació per municipi.",
+  "fuente": "Atles Electoral de la Segona República (UPF); Ministeri de l'Interior"
  }
 }
