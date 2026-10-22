@@ -31,3 +31,9 @@
 - [Elecciones en La Rioja](https://mapaelectoral.es/elecciones/la-rioja/): en 2023, PP 45,7 %; participación 74,9 %.
 - [Elecciones en Ceuta](https://mapaelectoral.es/elecciones/ceuta/): en 2023, PP 38,8 %; participación 55,7 %.
 - [Elecciones en Melilla](https://mapaelectoral.es/elecciones/melilla/): en 2023, PP 49,2 %; participación 49,8 %.
+
+## Barrios de las grandes ciudades
+- [Barrios de Barcelona](https://mapaelectoral.es/municipio/barcelona/barcelona/#barrios): 67 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de Terrassa](https://mapaelectoral.es/municipio/barcelona/terrassa/#barrios): 17 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de Madrid](https://mapaelectoral.es/municipio/madrid/madrid/#barrios): 127 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de València](https://mapaelectoral.es/municipio/valencia/valencia/#barrios): 66 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
