@@ -1230,6 +1230,27 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/funcionarios-pagas-extra-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una empleada pública ante su ordenador, de espaldas, junto a pilas de expedientes y de monedas.'),
     ),
+    dict(
+        slug='ley-nietos-donde-estan-29n', fecha='2026-10-22',
+        titulo='El Constitucional deja sin voto a los nietos: los españoles adultos de América Latina crecen casi cinco veces más rápido y uno de cada tres está inscrito en Madrid', serie='29n',
+        descripcion='Desde 2023 hay 259.711 españoles más en América nacidos allí. México manda a Madrid el 58% de los suyos; Cuba, a Canarias la mitad; Uruguay, a Galicia. En Ourense, el 31% del censo ya vive fuera.',
+        compara='Los españoles residentes en el extranjero nacidos en su país de residencia, por país, entre el 1 de enero de 2021 y el de 2026, y los de 16 años o más residentes en 19 países de América Latina por provincia de inscripción, entre 2019 y 2026. Con el censo electoral de residentes en el extranjero de las generales del 29N por provincia.',
+        limites='El padrón de españoles en el extranjero cuenta residentes inscritos en los consulados a 1 de enero, no electores ni nacionalizados por la ley de nietos: su aumento incluye también nacimientos y nacionalidades por otras vías. Los adultos son los de 16 años o más, porque el INE agrupa así las edades por provincia. No hay datos públicos de cuántos de los 163.020 suspendidos hay en cada provincia ni de cómo votarían. Las explicaciones del reparto por provincias son hipótesis.',
+        fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=79676', 'INE, Padrón de Españoles Residentes en el Extranjero, población por país de residencia y lugar de nacimiento'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=79677', 'INE, Padrón de Españoles Residentes en el Extranjero, población por país de residencia y provincia de inscripción'),
+                 ('https://www.ine.es/dyngs/Prensa/EG2026.htm', 'INE, Elecciones a Cortes Generales de 29 de noviembre de 2026, nota de prensa (9-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/21/el-tribunal-constitucional-rechaza-el-recurso-del-defensor-del-pueblo-para-devolver-el-voto-a-163020-nacionalizados-por-la-ley-de-nietos/', 'Infobae, El Constitucional rechaza el recurso del Defensor del Pueblo (21-10-2026)'),
+                 ('https://www.elindependiente.com/espana/2026/10/21/el-constitucional-de-pumpido-inadmite-el-recurso-de-gabilondo-por-la-ley-de-nietos-y-mantiene-la-suspension-del-supremo/', 'El Independiente, El Constitucional inadmite el recurso de Gabilondo (21-10-2026)'),
+                 ('https://maldita.es/prebunking/20261016/nacionalizacion-ley-nietos-derecho-voto/', 'Maldita.es, La nacionalización a través de la «Ley de Nietos» y su derecho a voto (16-10-2026)'),
+                 ('https://www.elindependiente.com/espana/2026/07/16/ley-nietos-cera-voto-provincia-junta-electoral-central/', 'Europa Press en El Independiente, La Junta Electoral y la provincia de voto de la ley de nietos (16-7-2026)'),
+                 ('https://www.elcorreogallego.es/galicia/2026/07/13/ley-nietos-dispara-diaspora-derecho-132384738.html', 'El Correo Gallego, La ley de nietos dispara la diáspora con derecho a voto (13-7-2026)'),
+                 ('https://maldita.es/control-del-poder/20260630/cuando-feijoo-defendia-hijos-nietos-espanoles-extranjero-derecho-nacionalidad/', 'Maldita.es, Cuando Feijóo defendía que los hijos y nietos de españoles en el extranjero tenían derecho a la nacionalidad (30-6-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/ley-nietos-donde-estan-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Aumento de los españoles de 16 años o más que viven en América Latina, por provincia de inscripción, entre el 1 de enero de 2023 y el de 2026.',
+                  fuente='INE, Padrón de Españoles Residentes en el Extranjero'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1788,6 +1809,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'ley-nietos-donde-estan-29n': 'Nietos sin papeleta',
     'pensiones-revalorizacion-29n': 'Dos Españas jubiladas',
     'vox-galicia-coruna-abascal-29n': 'La espina de Abascal',
     'funcionarios-pagas-extra-29n': 'La nómina de enero',
