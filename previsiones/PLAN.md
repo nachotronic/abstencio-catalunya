@@ -72,3 +72,37 @@ fuentes ──ETL──► datos/limpios (versionados, con pruebas)
 - `src/encuestas.py`: media ponderada (última encuesta de cada encuestadora en 28 días; peso por antigüedad, vida media de 10 días, y por muestra) con la tabla de equivalencias de ChatGPT. Error de la media cinco días antes de la elección: 10N-2019, Vox −2,8 y Cs +2,5 puntos; 23J-2023, PSOE −3,4. Se resume en error ≈ 0,475·raíz(voto): unos 2,6 puntos para un partido del 30 %.
 - `src/motor.py --encuestas <media.json>` (v1): parte de 2023 por provincia con Sumar repartido entre Sumar (FA) y Podemos (base 2026), SALF según su índice de las europeas y Aliança según el Parlament 2024; cada lista sube o baja en proporción hasta clavar la media nacional. Error nacional por lista con esa regla, ampliado un 25 % por las semanas que faltan y acotado al 30 %; el error reparte voto entre listas sin cambiar el total. Escribe en la carpeta de trabajo `previsiones/salidas/`, no en la web.
 - Límites: subida proporcional (sin señal local ni regional), errores de partido independientes entre sí, Senado con voto de lista y Aliança sin cifra en casi ninguna encuesta (se mantiene su voto de 2024).
+
+## 9. Señal local: europeas sí, municipales no (22/10/2026)
+
+`src/senal_local.py` prueba, con el voto real de cada partido por provincia (o en España) dado, si una elección intermedia mejora el reparto frente a la subida proporcional desde las generales anteriores. Error medio en puntos:
+
+| Prueba | Proporcional | Con la intermedia (α = 0,5) |
+|---|---|---|
+| Provincias, 2011 → 2015 con europeas 2014 | 2,85 | 1,89 |
+| Provincias, 2016 → 2019-N con europeas 2019 | 2,79 | 1,87 |
+| Secciones, 2011 → 2015 con europeas 2014 | 3,30 | 2,37 |
+| Secciones, 2016 → 2019-N con europeas 2019 | 2,52 | 1,99 |
+| Secciones, 2019-N → 2023 con municipales 2023 | 2,83 | 4,23 (empeora) |
+
+La señal que funciona es la fuerza relativa de cada territorio en las europeas frente a las generales anteriores, a media potencia (α = 0,5, el mejor valor en las dos pruebas). Las municipales empeoran el reparto (pesan los candidatos locales). Para el 29N se aplica la de las europeas de 2024 a PP, PSOE, Vox y el espacio Sumar-Podemos en el motor v1, por provincia. Corrige además a Vox en Santa Cruz de Tenerife, donde en 2023 no tuvo candidatura al Congreso y el motor lo dejaba a cero. Autonómicas: sin datos por sección en el repositorio; quedan para después.
+
+## 10. Backtest y error según la distancia (22/10/2026)
+
+`src/backtest.py` rehace el motor para 10N-2019 y 23J-2023 solo con datos anteriores (generales previas, europeas de 2019 si caen en medio, media de encuestas a 5 y a 38 días, error de encuesta medido en la otra elección). Escaños mal puestos en España: 6-8 con el voto nacional exacto, 18-19 con la media a 5 días y 27-34 a 38 días. El reparto por provincias funciona; el error viene de las encuestas. A 38 días el error de la media es casi el doble que a 5 (c = 0,96 frente a 0,475), así que el motor (v1.1) mide c a la misma distancia del 29N en vez de ampliarlo un 25 % (ver §11 para el valor definitivo). Los partidos sin encuesta tienen ahora meta propia y no se encogen con el tope. Aun así, los intervalos del 80 % cubrieron el resultado en el 64-73 % de los casos: falta modelar errores correlacionados entre partidos (siguiente paso). El 28A-2019 no se puede probar (no hay encuestas de febrero a julio de 2019 en la extracción).
+
+## 11. Error de las encuestas con 25 elecciones (22/10/2026)
+
+`src/error_encuestas.py` mide c (error ≈ c·raíz(voto)) por días antes de la elección con tres fuentes: las dos generales, 54 autonómicas desde 2015 (1.191 encuestas de Electográfica frente a la ficha de resultados; PP, PSOE, Vox y Cs) y los datos de Jennings y Wlezien (2018, *Nature Human Behaviour*; 44 países, CC0). Coinciden: c ≈ 0,55 a una semana y ≈ 0,8 a cuatro o cinco semanas. A 38 días, España da 0,85 (intervalo del 90 %: 0,72-0,97; 25 elecciones) y 44 países, 0,79. El motor interpola c desde esa tabla (`error_por_distancia.csv`, fuente «españa»). Con c = 0,853: PP + Vox, mayoría en el 88 % de las simulaciones (v1: 96 %), mismas medianas. Sesgo medio a 38 días: Vox −1,5 puntos (90 %: −2,7 a −0,4), PP −1,2, PSOE +1,0; queda pendiente separarlo del sesgo de cada encuestadora antes de corregir nada.
+
+## 12. Sesgo de las encuestadoras y errores entre partidos (22/10/2026)
+
+`src/sesgo_encuestas.py`: el efecto de cada casa (sus encuestas del último año frente a la media de las demás, encogido) es grande en el CIS (PP −6,6 y PSOE +4,8 puntos), pero corregirlo no baja el error fuera de muestra (c a 38 días 0,845 → 0,841) y apenas cambia la media de hoy (PP 31,2 → 31,0). Restar el sesgo medio del sector en elecciones anteriores tampoco (0,838). No se corrige nada. Los errores entre partidos en 25 elecciones (PP-Vox −0,39, PSOE-Vox −0,30, PP-PSOE −0,23) ya los reproduce el motor por cómo reparte el error (−0,40, −0,35, −0,49); error del bloque PP + Vox 3,9 puntos frente a 4,1 observado. Sin cambios en el motor.
+
+## 13. Modelos de referencia y preregistro (22/10/2026)
+
+El backtest compara el motor con «repetir» (generales anteriores) y «aditivo» (misma subida en puntos en todas las provincias). A 38 días, escaños mal puestos: repetir 49 y 52, aditivo 36 y 28, motor 34 y 27 (10N-2019 y 23J-2023); CRPS de escaños 54,7 y 40,3 frente a 55,9 y 40,8 del aditivo. El motor gana a las dos, a la aditiva por poco. `PREREGISTRO.md` (borrador) fija modelo, calendario, métricas y referencias para evaluar el 29N; queda pendiente del visto bueno de Nacho.
+
+## 14. Clima (22/10/2026)
+
+`src/clima.py`: lluvia del día de 14 generales (1982-2023) por municipio con NASA POWER (MERRA-2) y regresión con efectos fijos de municipio y provincia × elección (96.718 observaciones). Que llueva baja la participación 0,25 puntos (error típico 0,15) y no mueve el voto al PP (+0,09; 0,20) ni al PSOE (−0,07; 0,19). Coincide con Artés (2014). Efecto en escaños: menos de uno. No entra en el motor.

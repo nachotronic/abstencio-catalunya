@@ -217,8 +217,37 @@ BLOQUES_V1 = [
 # Aliança Catalana, Parlament 2024 (voto sobre válidos por provincia; Cataluña 3,77 %). Fuente: resultados oficiales.
 ALIANCA_2024 = {'08': 2.87, '17': 9.03, '25': 7.78, '43': 3.51}
 SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
-DERIVA = 1.25   # el error histórico se mide 5 días antes; a cinco semanas de la elección se amplía un 25 %
+# Error de la media según la distancia a la elección (error_encuestas.py): a 38 días, c = 0,85 en España (generales y
+# autonómicas) y 0,79 en 44 países (Jennings y Wlezien), frente a 0,5 a una semana; la ampliación fija del 25 % que
+# usaba v1 se quedaba corta.
+ELECCION = date(2026, 11, 29)
 BASE2026 = pathlib.Path('/mnt/project-files/previsiones/base/base2026_secciones.csv')
+EUROPEAS2024 = pathlib.Path('/mnt/project-files/previsiones/base/europeas2024_secciones.csv')
+# Señal de las europeas de 2024 (senal_local.py): en 2015 y 2019, corregir la base con la fuerza relativa de cada
+# provincia en las europeas intermedias frente a las generales anteriores, elevada a 0,5, redujo un tercio el error
+# del reparto entre provincias (2,9 → 1,9 y 2,8 → 1,9 puntos). Se aplica a los partidos de ámbito estatal.
+ALFA_EUROPEAS = 0.5
+SENAL_EUROPEAS = {'PP': ['PP'], 'PSOE': ['PSOE'], 'Vox': ['VOX'], 'Sumar': ['SUMAR', 'PODEMOS'], 'Podemos': ['SUMAR', 'PODEMOS']}
+
+
+def senal_europeas(provs, alfa=ALFA_EUROPEAS):
+    """Por lista y provincia: el factor (cuota provincial / nacional en europeas 2024) / (lo mismo en generales
+    2023), elevado a alfa, y la fuerza relativa en las europeas sola. Sumar y Podemos usan su espacio conjunto,
+    porque en 2023 fueron juntos."""
+    import pandas as pd
+    e = pd.read_csv(EUROPEAS2024, dtype={'tract_code': str})
+    g = pd.read_csv(BASE2026, dtype={'tract_code': str})
+    g['PODEMOS'] = 0   # en 2023, Podemos dentro de SUMAR
+    factor, fuerza = {}, {}
+    for lista, cols in SENAL_EUROPEAS.items():
+        rel = []
+        for d in (e, g):
+            x = d.assign(v=d[cols].sum(axis=1)).groupby(d.tract_code.str[:2])[['v', 'validos']].sum()
+            rel.append(((x.v / x.validos) / (x.v.sum() / x.validos.sum())).reindex(provs).fillna(0).values)
+        ok = (rel[0] > 0) & (rel[1] > 0)
+        factor[lista] = np.where(ok, (rel[0] / np.where(ok, rel[1], 1)) ** alfa, 1.0)
+        fuerza[lista] = rel[0]
+    return factor, fuerza
 
 
 def base_v1():
@@ -240,6 +269,14 @@ def base_v1():
         s = v.get('Sumar', 0) / val
         cuotas[i, LISTAS_V1.index('Sumar')] = s * (1 - cuota_pod[p])
         cuotas[i, LISTAS_V1.index('Podemos')] = s * cuota_pod[p]
+    factor, fuerza = senal_europeas(provs)
+    for k, f in factor.items():
+        j = LISTAS_V1.index(k)
+        cuotas[:, j] *= f
+        # sin lista en 2023 en la provincia (Vox en Santa Cruz de Tenerife, candidatura anulada): parte de su voto
+        # nacional de 2023 por su fuerza relativa en las europeas
+        nac = (cuotas[:, j] * validos).sum() / validos.sum()
+        cuotas[:, j] = np.where(cuotas[:, j] > 0, cuotas[:, j], nac * fuerza[k])
     indices = {'SALF': np.array([ind_salf[p] for p in provs]),
                'Aliança': np.array([ALIANCA_2024.get(p, 0) / 3.77 for p in provs])}
     return provs, cuotas, validos, indices
@@ -255,6 +292,8 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
         objetivo = {**objetivo, 'Aliança': 0.0377 * peso[indices['Aliança'] > 0].sum()}
     for k, ind in indices.items():
         c[:, LISTAS_V1.index(k)] = ind * objetivo.get(k, 0)
+    # las listas sin encuesta conservan su voto nacional; sin meta, el tope las encogía vuelta a vuelta (backtest.py)
+    objetivo = {**{k: (c[:, j] * peso).sum() for j, k in enumerate(LISTAS_V1)}, **objetivo}
     for _ in range(iter):
         for k, t in objetivo.items():
             j = LISTAS_V1.index(k)
@@ -267,10 +306,45 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
     return c
 
 
+# Encuestas de generales de una sola comunidad (CEO en Cataluña, Sondaxe en Galicia...), regionales.py. En el backtest
+# de 2019 y 2023 solo ayudan para los partidos de una comunidad: su cifra en la encuesta nacional sale de una
+# submuestra pequeña. Para PP, PSOE, Vox o Sumar empeoraban el reparto entre provincias, así que no se usan.
+BETA_REGIONAL = 0.5
+REGIONALES = {'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN',
+              'ALIANCA': 'Aliança'}
+
+
+def senal_regional(central, provs, validos, fecha):
+    """Corrige en su comunidad a los partidos de una sola comunidad con la media de las encuestas regionales."""
+    import regionales
+    if not regionales.LIMPIAS.exists():
+        print('Sin', regionales.LIMPIAS, '(sin señal regional)')
+        return central, {}
+    med = regionales.medias(regionales.carga(), date.fromisoformat(fecha), list(REGIONALES))
+    med = {t: {REGIONALES[k]: v for k, v in x.items()} for t, x in med.items()}
+    c = regionales.ajusta(central, provs, validos, med, LISTAS_V1, BETA_REGIONAL)
+    fila = c.sum(1, keepdims=True)
+    c = np.where(fila > 0.985, c / fila * 0.985, c)
+    return c, {' '.join(t): {k: round(v * 100, 1) for k, v in x.items()} for t, x in med.items()}
+
+
+ERROR_POR_DISTANCIA = pathlib.Path('/mnt/project-files/previsiones/error_encuestas/error_por_distancia.csv')
+
+
+def c_horizonte(fecha):
+    """c de error ≈ c·raíz(voto) a los días que faltan para el 29N desde `fecha`, interpolado entre las distancias
+    medidas por error_encuestas.py en España (generales 2019 y 2023 y 25-30 autonómicas desde 2015)."""
+    import pandas as pd
+    t = pd.read_csv(ERROR_POR_DISTANCIA)
+    t = t[t.fuente == 'españa'].sort_values('dias')
+    dias = (ELECCION - date.fromisoformat(fecha)).days
+    return dias, round(float(np.interp(dias, t.dias, t.c)), 3)
+
+
 def sigma_v1(cuotas_nac, c_error):
-    """Error relativo nacional de cada lista: c·raíz(voto en puntos) del error histórico, ampliado por la deriva."""
+    """Error relativo nacional de cada lista: c·raíz(voto en puntos), con c medido a la misma distancia."""
     pts = np.maximum(cuotas_nac * 100, 0.3)
-    return np.minimum(DERIVA * c_error * np.sqrt(pts) / pts, SIGMA_MAX)
+    return np.minimum(c_error * np.sqrt(pts) / pts, SIGMA_MAX)
 
 
 def main_encuestas(fich_media):
@@ -278,12 +352,14 @@ def main_encuestas(fich_media):
     COMPOSICIONAL = True
     m = json.load(open(fich_media))
     LISTAS, BLOQUES = LISTAS_V1, BLOQUES_V1
-    VERSION = 'v1-encuestas-' + m['fecha'].replace('-', '')
+    VERSION = 'v1.2-encuestas-' + m['fecha'].replace('-', '')
+    dias, c_err = c_horizonte(m['fecha'])
     provs, cuotas, validos, indices = base_v1()
     objetivo = {DE_ENCUESTA[k]: v / 100 for k, v in m['media'].items() if k in DE_ENCUESTA}
     central = ajusta_a_encuestas(cuotas, validos, indices, objetivo)
+    central, med_reg = senal_regional(central, provs, validos, m['fecha'])
     nac = (central * validos[:, None]).sum(0) / validos.sum()
-    SIGMA_NAC = sigma_v1(nac, m['c_error'])
+    SIGMA_NAC = sigma_v1(nac, c_err)
     circ_sen = circunscripciones_senado(NOMBRES)
     carpeta = pathlib.Path('/mnt/project-files/previsiones/salidas') / VERSION
     carpeta.mkdir(parents=True, exist_ok=True)
@@ -300,7 +376,7 @@ def main_encuestas(fich_media):
     escrito('meta.json', {
         'version': VERSION, 'ficticio': False, 'interno': True, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
         'simulaciones': N_SIM, 'aviso': 'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.',
-        'media_encuestas': m['media'], 'c_error': m['c_error'], 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
+        'media_encuestas': m['media'], 'encuestas_regionales': med_reg, 'beta_regional': BETA_REGIONAL, 'c_error': c_err, 'dias_a_eleccion': dias, 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
         'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
