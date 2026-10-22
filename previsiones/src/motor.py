@@ -5,6 +5,7 @@ de cada partido es un número aleatorio con semilla fija, no una estimación. Si
 el reparto, no para publicar. El modelo de verdad (fases 4 y 5 del plan) sustituirá `estimacion_ficticia()`.
 
 Uso, desde la raíz del repositorio:  python3 previsiones/src/motor.py
+Estimación interna desde encuestas (v1, no se publica):  python3 previsiones/src/motor.py --encuestas <media-encuestas.json>
 Escribe previsiones/datos/<VERSION>/: meta.json, base.json, provincias.json y un fichero por escenario.
 """
 import json, math, pathlib, sys
@@ -47,6 +48,7 @@ ESCENARIOS = [  # id, título, supuesto explícito, {lista: puntos de voto nacio
     ('incierto', 'Doble incertidumbre', 'Misma estimación central, con el doble de error nacional y provincial.', {}, 2.0),
 ]
 SIGMA_NAC, SIGMA_PROV = 0.06, 0.08   # error relativo (ficticio) del voto de cada lista, nacional y provincial
+COMPOSICIONAL = False
 
 
 def matriz_base():
@@ -83,9 +85,11 @@ def simula(cuotas, validos, provs, sigma, rng):
     nac = rng.normal(0, SIGMA_NAC * sigma, (n, 1, L))
     prov = rng.normal(0, SIGMA_PROV * sigma, (n, P, L))
     sims = cuotas[None] * np.exp(nac + prov)
-    # el total de las listas no puede pasar del voto a candidaturas de 2023 (el blanco y «Otros» se mantienen)
     tope = cuotas.sum(1)[None, :, None]
-    sims = np.where(sims.sum(2, keepdims=True) > tope, sims / sims.sum(2, keepdims=True) * tope, sims)
+    if COMPOSICIONAL:   # v1: el error reparte voto entre listas sin cambiar el total de cada provincia
+        sims = sims / sims.sum(2, keepdims=True) * tope
+    else:   # el total de las listas no puede pasar del voto a candidaturas de 2023 (el blanco y «Otros» se mantienen)
+        sims = np.where(sims.sum(2, keepdims=True) > tope, sims / sims.sum(2, keepdims=True) * tope, sims)
     part = rng.normal(0, 0.025 * sigma, (n, 1))     # participación: error nacional ficticio
     votos_validos = validos[None] * (1 + part)
     return sims, votos_validos
@@ -195,6 +199,117 @@ def observado_2023():
     return {'provincias': out, 'ccaa': ccaa, 'escanos': {k: v for k, v in tot.items() if v}, 'voto': voto}
 
 
+# ---------------------------------------------------------------------------------------------------------
+# v1: estimación desde la media de encuestas (INTERNA: no se publica sin el visto bueno de Nacho)
+# ---------------------------------------------------------------------------------------------------------
+LISTAS_V1 = ['PP', 'PSOE', 'Vox', 'Sumar', 'Podemos', 'SALF', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC', 'UPN',
+             'CUP', 'Aliança', 'Nueva Canarias', 'PACMA']
+DE_ENCUESTA = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'SALF': 'SALF',
+               'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN',
+               'ALIANCA': 'Aliança'}
+BLOQUES_V1 = [
+    ('PP + Vox', ['PP', 'Vox']),
+    ('PP + Vox + SALF + UPN + CC', ['PP', 'Vox', 'SALF', 'UPN', 'CC']),
+    ('PSOE + Sumar + Podemos', ['PSOE', 'Sumar', 'Podemos']),
+    ('PSOE + Sumar + Podemos + ERC + Junts + EH Bildu + PNV + BNG + CC',
+     ['PSOE', 'Sumar', 'Podemos', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC']),
+]
+# Aliança Catalana, Parlament 2024 (voto sobre válidos por provincia; Cataluña 3,77 %). Fuente: resultados oficiales.
+ALIANCA_2024 = {'08': 2.87, '17': 9.03, '25': 7.78, '43': 3.51}
+SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
+DERIVA = 1.25   # el error histórico se mide 5 días antes; a cinco semanas de la elección se amplía un 25 %
+BASE2026 = pathlib.Path('/mnt/project-files/previsiones/base/base2026_secciones.csv')
+
+
+def base_v1():
+    """Cuotas de partida por provincia para LISTAS_V1: 2023 con Sumar repartido entre Sumar (FA) y Podemos según
+    las europeas de 2024 (base2026.py), e índices provinciales de dónde vota SALF (europeas 2024) y Aliança (2024)."""
+    import pandas as pd
+    b = pd.read_csv(BASE2026, dtype={'tract_code': str})
+    b['prov'] = b.tract_code.str[:2]
+    g = b.assign(salf=b.indice_salf * b.validos).groupby('prov')[['PODEMOS_2023', 'SUMAR_FA_2023', 'salf', 'validos']].sum()
+    cuota_pod = g.PODEMOS_2023 / (g.PODEMOS_2023 + g.SUMAR_FA_2023)
+    ind_salf = g.salf / g.validos
+    provs = sorted(BASE)
+    validos = np.array([BASE[p]['validos'] for p in provs], float)
+    cuotas = np.zeros((len(provs), len(LISTAS_V1)))
+    for i, p in enumerate(provs):
+        v, val = BASE[p]['v'], BASE[p]['validos']
+        for j, k in enumerate(LISTAS_V1):
+            cuotas[i, j] = v.get(k, 0) / val
+        s = v.get('Sumar', 0) / val
+        cuotas[i, LISTAS_V1.index('Sumar')] = s * (1 - cuota_pod[p])
+        cuotas[i, LISTAS_V1.index('Podemos')] = s * cuota_pod[p]
+    indices = {'SALF': np.array([ind_salf[p] for p in provs]),
+               'Aliança': np.array([ALIANCA_2024.get(p, 0) / 3.77 for p in provs])}
+    return provs, cuotas, validos, indices
+
+
+def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
+    """Subida o bajada proporcional de cada lista en todas las provincias hasta clavar su voto nacional de la media.
+    SALF y Aliança no tienen voto en 2023: parten de su índice provincial. Las listas sin encuesta (CUP, Nueva
+    Canarias, PACMA) mantienen su voto de 2023; Aliança, sin cifra en la media, su voto del Parlament 2024."""
+    c = cuotas.copy()
+    peso = validos / validos.sum()
+    if 'Aliança' not in objetivo:   # sin cifra en la media: su 3,77 % del voto catalán, expresado sobre España
+        objetivo = {**objetivo, 'Aliança': 0.0377 * peso[indices['Aliança'] > 0].sum()}
+    for k, ind in indices.items():
+        c[:, LISTAS_V1.index(k)] = ind * objetivo.get(k, 0)
+    for _ in range(iter):
+        for k, t in objetivo.items():
+            j = LISTAS_V1.index(k)
+            nac = (c[:, j] * peso).sum()
+            if nac > 0:
+                c[:, j] *= t / nac
+        tope = 0.985   # blanco y listas menores ocupan al menos un 1,5 % en cada provincia
+        fila = c.sum(1, keepdims=True)
+        c = np.where(fila > tope, c / fila * tope, c)
+    return c
+
+
+def sigma_v1(cuotas_nac, c_error):
+    """Error relativo nacional de cada lista: c·raíz(voto en puntos) del error histórico, ampliado por la deriva."""
+    pts = np.maximum(cuotas_nac * 100, 0.3)
+    return np.minimum(DERIVA * c_error * np.sqrt(pts) / pts, SIGMA_MAX)
+
+
+def main_encuestas(fich_media):
+    global LISTAS, BLOQUES, SIGMA_NAC, VERSION, COMPOSICIONAL
+    COMPOSICIONAL = True
+    m = json.load(open(fich_media))
+    LISTAS, BLOQUES = LISTAS_V1, BLOQUES_V1
+    VERSION = 'v1-encuestas-' + m['fecha'].replace('-', '')
+    provs, cuotas, validos, indices = base_v1()
+    objetivo = {DE_ENCUESTA[k]: v / 100 for k, v in m['media'].items() if k in DE_ENCUESTA}
+    central = ajusta_a_encuestas(cuotas, validos, indices, objetivo)
+    nac = (central * validos[:, None]).sum(0) / validos.sum()
+    SIGMA_NAC = sigma_v1(nac, m['c_error'])
+    circ_sen = circunscripciones_senado(NOMBRES)
+    carpeta = pathlib.Path('/mnt/project-files/previsiones/salidas') / VERSION
+    carpeta.mkdir(parents=True, exist_ok=True)
+    escrito = lambda nom, d: (carpeta / nom).write_text(json.dumps(d, ensure_ascii=False, separators=(',', ':')))
+    for cod, tit, sup, puntos, sigma in ESCENARIOS:
+        if cod == 'base':
+            sup = f"Media de encuestas a {m['fecha']} repartida por provincia con subida proporcional desde 2023."
+        r = corre(aplica_escenario(central, validos, puntos), validos, provs, sigma, np.random.default_rng(SEMILLA + 1), circ_sen)
+        r.update({'id': cod, 'titulo': tit, 'supuesto': sup})
+        escrito(f'escenario-{cod}.json', r)
+        print(cod, {l['lista']: l['escanos'][2] for l in r['listas'] if l['escanos'][2]},
+              {b['bloque']: b['p_mayoria'] for b in r['bloques']})
+    escrito('observado-2023.json', observado_2023())
+    escrito('meta.json', {
+        'version': VERSION, 'ficticio': False, 'interno': True, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
+        'simulaciones': N_SIM, 'aviso': 'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.',
+        'media_encuestas': m['media'], 'c_error': m['c_error'], 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
+        'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
+        'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
+        'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
+                   'circunscripciones': [{'cod': c[0], 'nombre': c[1], 'provincia': c[2], 'senadores': c[3], 'votos_elector': c[4]}
+                                         for c in circ_sen]},
+        'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS]})
+    print('Escrito en', carpeta)
+
+
 def main():
     rng = np.random.default_rng(SEMILLA)
     provs, cuotas, validos = matriz_base()
@@ -220,4 +335,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 2 and sys.argv[1] == '--encuestas':   # motor.py --encuestas salidas/media-encuestas-AAAAMMDD.json
+        main_encuestas(sys.argv[2])
+    else:
+        main()
