@@ -88,11 +88,12 @@ def media(d, ref, ventana=VENTANA, excluir=()):
     return {k: round(float(v), 2) for k, v in m.items() if k != 'OTROS'}, usadas
 
 
-def error_historico(d):
-    """Error de la media 5 días antes de cada elección y constante c de error ≈ c·raíz(voto)."""
+def error_historico(d, dias=5):
+    """Error de la media `dias` días antes de cada elección y constante c de error ≈ c·raíz(voto)."""
     filas = []
     for dia, res in RESULTADOS.items():
-        m, usadas = media(d, date.fromisoformat(dia) - timedelta(days=5))
+        m, usadas = media(d, date.fromisoformat(dia) - timedelta(days=dias))
+        m['SUMAR'] = m.get('SUMAR', 0) + m.pop('PODEMOS', 0)   # en 2019 y 2023 no se presentó por separado
         for k, v in res.items():
             filas.append({'eleccion': dia, 'partido': k, 'media': m.get(k), 'resultado': v, 'error': round(m[k] - v, 2),
                           'encuestas': len(usadas)})

@@ -217,7 +217,9 @@ BLOQUES_V1 = [
 # Aliança Catalana, Parlament 2024 (voto sobre válidos por provincia; Cataluña 3,77 %). Fuente: resultados oficiales.
 ALIANCA_2024 = {'08': 2.87, '17': 9.03, '25': 7.78, '43': 3.51}
 SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
-DERIVA = 1.25   # el error histórico se mide 5 días antes; a cinco semanas de la elección se amplía un 25 %
+# Error de la media según la distancia a la elección (backtest.py): c medido en 10N-2019 y 23J-2023 a esos mismos
+# días. A 38 días sale 0,96, casi el doble que a 5 días (0,475); la ampliación fija del 25 % que usaba v1 se quedaba corta.
+ELECCION = date(2026, 11, 29)
 BASE2026 = pathlib.Path('/mnt/project-files/previsiones/base/base2026_secciones.csv')
 EUROPEAS2024 = pathlib.Path('/mnt/project-files/previsiones/base/europeas2024_secciones.csv')
 # Señal de las europeas de 2024 (senal_local.py): en 2015 y 2019, corregir la base con la fuerza relativa de cada
@@ -289,6 +291,8 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
         objetivo = {**objetivo, 'Aliança': 0.0377 * peso[indices['Aliança'] > 0].sum()}
     for k, ind in indices.items():
         c[:, LISTAS_V1.index(k)] = ind * objetivo.get(k, 0)
+    # las listas sin encuesta conservan su voto nacional; sin meta, el tope las encogía vuelta a vuelta (backtest.py)
+    objetivo = {**{k: (c[:, j] * peso).sum() for j, k in enumerate(LISTAS_V1)}, **objetivo}
     for _ in range(iter):
         for k, t in objetivo.items():
             j = LISTAS_V1.index(k)
@@ -301,10 +305,17 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
     return c
 
 
+def c_horizonte(fecha):
+    """c de error ≈ c·raíz(voto) medido en 2019 y 2023 a los mismos días de la elección que `fecha` (mínimo 5)."""
+    import encuestas
+    dias = max((ELECCION - date.fromisoformat(fecha)).days, 5)
+    return dias, encuestas.error_historico(encuestas.carga(), dias)[1]
+
+
 def sigma_v1(cuotas_nac, c_error):
-    """Error relativo nacional de cada lista: c·raíz(voto en puntos) del error histórico, ampliado por la deriva."""
+    """Error relativo nacional de cada lista: c·raíz(voto en puntos), con c medido a la misma distancia."""
     pts = np.maximum(cuotas_nac * 100, 0.3)
-    return np.minimum(DERIVA * c_error * np.sqrt(pts) / pts, SIGMA_MAX)
+    return np.minimum(c_error * np.sqrt(pts) / pts, SIGMA_MAX)
 
 
 def main_encuestas(fich_media):
@@ -312,12 +323,13 @@ def main_encuestas(fich_media):
     COMPOSICIONAL = True
     m = json.load(open(fich_media))
     LISTAS, BLOQUES = LISTAS_V1, BLOQUES_V1
-    VERSION = 'v1-encuestas-' + m['fecha'].replace('-', '')
+    VERSION = 'v1.1-encuestas-' + m['fecha'].replace('-', '')
+    dias, c_err = c_horizonte(m['fecha'])
     provs, cuotas, validos, indices = base_v1()
     objetivo = {DE_ENCUESTA[k]: v / 100 for k, v in m['media'].items() if k in DE_ENCUESTA}
     central = ajusta_a_encuestas(cuotas, validos, indices, objetivo)
     nac = (central * validos[:, None]).sum(0) / validos.sum()
-    SIGMA_NAC = sigma_v1(nac, m['c_error'])
+    SIGMA_NAC = sigma_v1(nac, c_err)
     circ_sen = circunscripciones_senado(NOMBRES)
     carpeta = pathlib.Path('/mnt/project-files/previsiones/salidas') / VERSION
     carpeta.mkdir(parents=True, exist_ok=True)
@@ -334,7 +346,7 @@ def main_encuestas(fich_media):
     escrito('meta.json', {
         'version': VERSION, 'ficticio': False, 'interno': True, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
         'simulaciones': N_SIM, 'aviso': 'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.',
-        'media_encuestas': m['media'], 'c_error': m['c_error'], 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
+        'media_encuestas': m['media'], 'c_error': c_err, 'dias_a_eleccion': dias, 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
         'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
