@@ -6,6 +6,8 @@ el reparto, no para publicar. El modelo de verdad (fases 4 y 5 del plan) sustitu
 
 Uso, desde la raíz del repositorio:  python3 previsiones/src/motor.py
 Estimación interna desde encuestas (v1, no se publica):  python3 previsiones/src/motor.py --encuestas <media-encuestas.json>
+Estimación publicable para /encuestas/ (solo escenario base, en previsiones/datos/publico/):
+    python3 previsiones/src/motor.py --encuestas <media-encuestas.json> --publico
 Escribe previsiones/datos/<VERSION>/: meta.json, base.json, provincias.json y un fichero por escenario.
 """
 import json, math, pathlib, sys
@@ -221,8 +223,10 @@ SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·ra�
 # autonómicas) y 0,79 en 44 países (Jennings y Wlezien), frente a 0,5 a una semana; la ampliación fija del 25 % que
 # usaba v1 se quedaba corta.
 ELECCION = date(2026, 11, 29)
-BASE2026 = pathlib.Path('/mnt/project-files/previsiones/base/base2026_secciones.csv')
-EUROPEAS2024 = pathlib.Path('/mnt/project-files/previsiones/base/europeas2024_secciones.csv')
+# sumas por provincia de base2026.py y europeas2024.py (base_provincias.py), en el repositorio para que el motor
+# corra también en GitHub Actions
+BASE2026 = RAIZ / 'previsiones/datos/base/base2026_provincias.csv'
+EUROPEAS2024 = RAIZ / 'previsiones/datos/base/europeas2024_provincias.csv'
 # Señal de las europeas de 2024 (senal_local.py): en 2015 y 2019, corregir la base con la fuerza relativa de cada
 # provincia en las europeas intermedias frente a las generales anteriores, elevada a 0,5, redujo un tercio el error
 # del reparto entre provincias (2,9 → 1,9 y 2,8 → 1,9 puntos). Se aplica a los partidos de ámbito estatal.
@@ -235,14 +239,14 @@ def senal_europeas(provs, alfa=ALFA_EUROPEAS):
     2023), elevado a alfa, y la fuerza relativa en las europeas sola. Sumar y Podemos usan su espacio conjunto,
     porque en 2023 fueron juntos."""
     import pandas as pd
-    e = pd.read_csv(EUROPEAS2024, dtype={'tract_code': str})
-    g = pd.read_csv(BASE2026, dtype={'tract_code': str})
+    e = pd.read_csv(EUROPEAS2024, dtype={'prov': str}).set_index('prov')
+    g = pd.read_csv(BASE2026, dtype={'prov': str}).set_index('prov')
     g['PODEMOS'] = 0   # en 2023, Podemos dentro de SUMAR
     factor, fuerza = {}, {}
     for lista, cols in SENAL_EUROPEAS.items():
         rel = []
         for d in (e, g):
-            x = d.assign(v=d[cols].sum(axis=1)).groupby(d.tract_code.str[:2])[['v', 'validos']].sum()
+            x = d.assign(v=d[cols].sum(axis=1))
             rel.append(((x.v / x.validos) / (x.v.sum() / x.validos.sum())).reindex(provs).fillna(0).values)
         ok = (rel[0] > 0) & (rel[1] > 0)
         factor[lista] = np.where(ok, (rel[0] / np.where(ok, rel[1], 1)) ** alfa, 1.0)
@@ -254,9 +258,7 @@ def base_v1():
     """Cuotas de partida por provincia para LISTAS_V1: 2023 con Sumar repartido entre Sumar (FA) y Podemos según
     las europeas de 2024 (base2026.py), e índices provinciales de dónde vota SALF (europeas 2024) y Aliança (2024)."""
     import pandas as pd
-    b = pd.read_csv(BASE2026, dtype={'tract_code': str})
-    b['prov'] = b.tract_code.str[:2]
-    g = b.assign(salf=b.indice_salf * b.validos).groupby('prov')[['PODEMOS_2023', 'SUMAR_FA_2023', 'salf', 'validos']].sum()
+    g = pd.read_csv(BASE2026, dtype={'prov': str}).set_index('prov')
     cuota_pod = g.PODEMOS_2023 / (g.PODEMOS_2023 + g.SUMAR_FA_2023)
     ind_salf = g.salf / g.validos
     provs = sorted(BASE)
@@ -328,7 +330,7 @@ def senal_regional(central, provs, validos, fecha):
     return c, {' '.join(t): {k: round(v * 100, 1) for k, v in x.items()} for t, x in med.items()}
 
 
-ERROR_POR_DISTANCIA = pathlib.Path('/mnt/project-files/previsiones/error_encuestas/error_por_distancia.csv')
+ERROR_POR_DISTANCIA = RAIZ / 'previsiones/datos/base/error_por_distancia.csv'   # copia de error_encuestas.py
 
 
 def c_horizonte(fecha):
@@ -347,7 +349,12 @@ def sigma_v1(cuotas_nac, c_error):
     return np.minimum(c_error * np.sqrt(pts) / pts, SIGMA_MAX)
 
 
-def main_encuestas(fich_media):
+PUBLICO = RAIZ / 'previsiones/datos/publico'   # lo que lee /encuestas/ (Nacho aprobó publicarlo el 22-10-2026)
+
+
+def main_encuestas(fich_media, publico=False):
+    """Estimación desde la media de encuestas. Con publico=True solo calcula el escenario base y lo escribe, con
+    "interno": false, en PUBLICO (el workflow Encuestas lo hace cuando entra una encuesta nueva)."""
     global LISTAS, BLOQUES, SIGMA_NAC, VERSION, COMPOSICIONAL
     COMPOSICIONAL = True
     m = json.load(open(fich_media))
@@ -361,10 +368,12 @@ def main_encuestas(fich_media):
     nac = (central * validos[:, None]).sum(0) / validos.sum()
     SIGMA_NAC = sigma_v1(nac, c_err)
     circ_sen = circunscripciones_senado(NOMBRES)
-    carpeta = pathlib.Path('/mnt/project-files/previsiones/salidas') / VERSION
+    carpeta = PUBLICO if publico else pathlib.Path('/mnt/project-files/previsiones/salidas') / VERSION
     carpeta.mkdir(parents=True, exist_ok=True)
     escrito = lambda nom, d: (carpeta / nom).write_text(json.dumps(d, ensure_ascii=False, separators=(',', ':')))
     for cod, tit, sup, puntos, sigma in ESCENARIOS:
+        if publico and cod != 'base':
+            continue
         if cod == 'base':
             sup = f"Media de encuestas a {m['fecha']} repartida por provincia con subida proporcional desde 2023."
         r = corre(aplica_escenario(central, validos, puntos), validos, provs, sigma, np.random.default_rng(SEMILLA + 1), circ_sen)
@@ -372,17 +381,21 @@ def main_encuestas(fich_media):
         escrito(f'escenario-{cod}.json', r)
         print(cod, {l['lista']: l['escanos'][2] for l in r['listas'] if l['escanos'][2]},
               {b['bloque']: b['p_mayoria'] for b in r['bloques']})
-    escrito('observado-2023.json', observado_2023())
+    if not publico:
+        escrito('observado-2023.json', observado_2023())
+    aviso = (f"Estimación con encuestas hasta el {date.fromisoformat(m['fecha']):%d-%m-%Y}. Margen amplio: a {dias} días, el error "
+             f"típico de la media es de unos {c_err * math.sqrt(30):.0f} puntos para un partido del 30 %.") if publico else \
+        'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.'
     escrito('meta.json', {
-        'version': VERSION, 'ficticio': False, 'interno': True, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
-        'simulaciones': N_SIM, 'aviso': 'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.',
+        'version': VERSION, 'ficticio': False, 'interno': not publico, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
+        'simulaciones': N_SIM, 'aviso': aviso, 'metodo': '/encuestas/metodo-modelo.html',
         'media_encuestas': m['media'], 'encuestas_regionales': med_reg, 'beta_regional': BETA_REGIONAL, 'c_error': c_err, 'dias_a_eleccion': dias, 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
         'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
                    'circunscripciones': [{'cod': c[0], 'nombre': c[1], 'provincia': c[2], 'senadores': c[3], 'votos_elector': c[4]}
                                          for c in circ_sen]},
-        'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS]})
+        'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS if not publico or e[0] == 'base']})
     print('Escrito en', carpeta)
 
 
@@ -412,6 +425,6 @@ def main():
 
 if __name__ == '__main__':
     if len(sys.argv) > 2 and sys.argv[1] == '--encuestas':   # motor.py --encuestas salidas/media-encuestas-AAAAMMDD.json
-        main_encuestas(sys.argv[2])
+        main_encuestas(sys.argv[2], publico='--publico' in sys.argv)
     else:
         main()
