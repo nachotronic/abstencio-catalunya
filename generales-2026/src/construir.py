@@ -14,6 +14,7 @@ Fuentes
   otras_elecciones.py (datos/extra/raw_*_M2023.parquet, M2007_municipios.csv...). Congreso 1982-2000: pollspaindata,
   importado con otras_elecciones.py --pollspaindata. Las anteriores a 2004 van solo por municipio
   (datos/extra/<cod>_municipios.csv); sus secciones, con el código de la época, en datos/historico/.
+  Segunda República (1933_11 y 1936_02): republica.py, del Atlas Electoral de la Segunda República (UPF).
 
 Salidas en ./datos (tablas) y ./web/data (lo que carga la pieza).
 """
@@ -29,7 +30,7 @@ DATOS, WEB = os.path.join(AQUI, 'datos'), os.path.join(AQUI, 'web', 'data')
 EXTRA = os.path.join(DATOS, 'extra')   # resultados nuevos que deja actualizar_29n.py
 ETIQ = {'1977_06': '15J 1977', '1979_03': '1M 1979', '1982_10': '28O 1982', '1986_06': '22J 1986', '1989_10': '29O 1989',
         '1993_06': '6J 1993', '1996_03': '3M 1996', '2000_03': '12M 2000', '2004_03': '14M 2004', '2008_03': '9M 2008', '2011_11': '20N 2011', '2015_12': '20D 2015', '2016_06': '26J 2016', '2019_04': '28A 2019', '2019_11': '10N 2019', '2023_07': '23J 2023',
-        '2026_11': '29N 2026'}
+        '2026_11': '29N 2026', '1933_11': '19N 1933', '1936_02': '16F 1936'}
 TIPO = {'M': 'municipales', 'E': 'europeas'}
 etiq = lambda y: ETIQ.get(y) or (TIPO[y[0]].capitalize() + ' ' + y[1:] if y[0] in TIPO else y)
 tipo = lambda y: TIPO.get(y[0], 'generales')
@@ -142,7 +143,7 @@ def resultados_mun(y):
     d = pd.read_csv(os.path.join(EXTRA, f'{y}_municipios.csv'), dtype={'mun_code': str, 'siglas': str, 'nombre': str},
                     keep_default_na=False)          # hay siglas como "NA"
     d['fam'] = [familia(a, n) for a, n in zip(d.siglas, d.nombre if 'nombre' in d else [''] * len(d))]
-    t = d.groupby('mun_code')[['censo', 'votantes', 'blancos', 'nulos']].first()
+    t = d.groupby('mun_code')[['censo', 'votantes', 'blancos', 'nulos']].first().apply(pd.to_numeric, errors='coerce')  # vacío = sin dato (República)
     d['mun_code'] = d.mun_code.replace(FUSIONES)
     t = t.groupby(t.index.to_series().replace(FUSIONES)).sum()
     pv = d.pivot_table(index='mun_code', columns='fam', values='votos', aggfunc='sum', fill_value=0).reindex(columns=CODIGOS, fill_value=0)

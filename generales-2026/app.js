@@ -354,6 +354,10 @@
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
     h += '<table class="t-bars">' + rows.map(r => `<tr><th${nomL(r.f, y, mi) !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${nomL(r.f, y, mi).length > 16 ? 'normal' : 'nowrap'}">${escH(nomL(r.f, y, mi))}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
+    if (REPUBLICA(y)) {
+      const fus = !isSec && d[y + '_fus'] ? d[y + '_fus'][i] : null;
+      h += `<p class="t-na">Listas abiertas: peso de cada bloque en los votos a candidatos.${fus ? ' Suma los municipios de entonces: ' + escH(fus) + '.' : ''}</p>`;
+    }
     const part = d[y + '_part'] ? d[y + '_part'][i] : null;
     const esc = d[y + '_esc'] ? d[y + '_esc'][i] : null;
     h += `<dl class="t-kv">${esc != null ? `<dt>Escrutado</dt><dd>${pct(esc)}</dd>` : ''}<dt>Participación</dt><dd>${pct(part)}</dd>
@@ -382,6 +386,8 @@
   // elecciones sin resultados por sección (anteriores a 2004, municipales de 2007, directo): se avisa en la leyenda
   // nombre de una familia en una elección: antes de 1989 el PP era AP; antes de 2011, la izquierda abertzale era HB / EH
   const nomF = (f, y) => { const a = (META.alias || {})[f.cod] || [], yr = y.replace(/^\D/, '').slice(0, 4), m = a.find(([hasta]) => yr < hasta); return m ? m[1] : f.nombre; };
+  // Segunda República (1933 y 1936): se votaba a candidatos en listas abiertas, con varios votos por elector
+  const REPUBLICA = y => /^19[23]\d_/.test(y);
   const nomE = y => { const e = ELEC.find(e => e.cod === y); return e.nombre + (e.secciones === false ? ' (solo por municipio)' : ''); };
   function legend() {
     const el = $('#legend');
@@ -389,7 +395,7 @@
       const y = st.y, used = new Set(MUN[y + '_gana']);
       el.innerHTML = `<div class="lg-t">Partido más votado · ${nomE(y)}</div><div class="lg-sw">` +
         FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${nomF(f, y)}</span>`).join('') +
-        `</div><div class="lg-n">Más intenso cuanto mayor es su porcentaje de voto</div>`;
+        `</div><div class="lg-n">Más intenso cuanto mayor es su porcentaje de voto${REPUBLICA(y) ? '. Listas abiertas: peso de cada bloque en los votos a candidatos (Atlas Electoral de la Segunda República, UPF)' : ''}</div>`;
       return;
     }
     let lo, hi, cols, fmt, name;
@@ -417,8 +423,15 @@
   };
   opciones();
   selV.innerHTML = Object.entries(VARS).map(([k, v]) => `<option value="${k}">${v.name}</option>`).join('');
-  selP.innerHTML = FAM.filter(f => f.cod !== 'OTROS').map(f => `<option value="${f.cod}">${f.nombre}</option>`).join('');
-  const sync = () => { selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
+  // partidos: solo las familias con voto en la elección elegida (las de la República solo existen en 1933 y 1936)
+  const partidos = () => {
+    const fs = FAM.filter(f => f.cod !== 'OTROS' && MUN[st.y + '_' + f.cod]);
+    if (fs.length && !fs.some(f => f.cod === st.party)) st.party = fs[0].cod;
+    selP.innerHTML = fs.map(f => `<option value="${f.cod}">${nomF(f, st.y)}</option>`).join('');
+    selP.value = st.party;
+  };
+  partidos();
+  const sync = () => { partidos(); selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
   const elige = async y => {
     st.y = y; selE.disabled = true;
     try { await Promise.all([asegura(y), pideNombres(y)]); } finally { selE.disabled = false; }
