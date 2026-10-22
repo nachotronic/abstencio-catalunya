@@ -306,6 +306,28 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
     return c
 
 
+# Encuestas de generales de una sola comunidad (CEO en Cataluña, Sondaxe en Galicia...), regionales.py. En el backtest
+# de 2019 y 2023 solo ayudan para los partidos de una comunidad: su cifra en la encuesta nacional sale de una
+# submuestra pequeña. Para PP, PSOE, Vox o Sumar empeoraban el reparto entre provincias, así que no se usan.
+BETA_REGIONAL = 0.5
+REGIONALES = {'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN',
+              'ALIANCA': 'Aliança'}
+
+
+def senal_regional(central, provs, validos, fecha):
+    """Corrige en su comunidad a los partidos de una sola comunidad con la media de las encuestas regionales."""
+    import regionales
+    if not regionales.LIMPIAS.exists():
+        print('Sin', regionales.LIMPIAS, '(sin señal regional)')
+        return central, {}
+    med = regionales.medias(regionales.carga(), date.fromisoformat(fecha), list(REGIONALES))
+    med = {t: {REGIONALES[k]: v for k, v in x.items()} for t, x in med.items()}
+    c = regionales.ajusta(central, provs, validos, med, LISTAS_V1, BETA_REGIONAL)
+    fila = c.sum(1, keepdims=True)
+    c = np.where(fila > 0.985, c / fila * 0.985, c)
+    return c, {' '.join(t): {k: round(v * 100, 1) for k, v in x.items()} for t, x in med.items()}
+
+
 ERROR_POR_DISTANCIA = pathlib.Path('/mnt/project-files/previsiones/error_encuestas/error_por_distancia.csv')
 
 
@@ -330,11 +352,12 @@ def main_encuestas(fich_media):
     COMPOSICIONAL = True
     m = json.load(open(fich_media))
     LISTAS, BLOQUES = LISTAS_V1, BLOQUES_V1
-    VERSION = 'v1.1-encuestas-' + m['fecha'].replace('-', '')
+    VERSION = 'v1.2-encuestas-' + m['fecha'].replace('-', '')
     dias, c_err = c_horizonte(m['fecha'])
     provs, cuotas, validos, indices = base_v1()
     objetivo = {DE_ENCUESTA[k]: v / 100 for k, v in m['media'].items() if k in DE_ENCUESTA}
     central = ajusta_a_encuestas(cuotas, validos, indices, objetivo)
+    central, med_reg = senal_regional(central, provs, validos, m['fecha'])
     nac = (central * validos[:, None]).sum(0) / validos.sum()
     SIGMA_NAC = sigma_v1(nac, c_err)
     circ_sen = circunscripciones_senado(NOMBRES)
@@ -353,7 +376,7 @@ def main_encuestas(fich_media):
     escrito('meta.json', {
         'version': VERSION, 'ficticio': False, 'interno': True, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
         'simulaciones': N_SIM, 'aviso': 'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.',
-        'media_encuestas': m['media'], 'c_error': c_err, 'dias_a_eleccion': dias, 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
+        'media_encuestas': m['media'], 'encuestas_regionales': med_reg, 'beta_regional': BETA_REGIONAL, 'c_error': c_err, 'dias_a_eleccion': dias, 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
         'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),

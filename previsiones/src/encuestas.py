@@ -23,6 +23,9 @@ AQUI = pathlib.Path(__file__).resolve().parent
 RAIZ = AQUI.parents[1]
 CSV = pathlib.Path('/mnt/project-files/previsiones/encuestas/encuestas_generales_espana.csv')
 EQUIV = RAIZ / 'previsiones/datos/partidos_encuestas.csv'
+# Encuestas de Wikipedia de los últimos 120 días sin pareja en Electográfica (sobre todo ElectoPanel), de
+# cotejar_wikipedia.py. Formato ancho: una fila por encuesta, una columna por partido del modelo.
+FALTAN = RAIZ / 'previsiones/datos/encuestas/faltan_en_electografica.csv'
 VENTANA, VIDA_MEDIA, MUESTRA_DEF = 28, 10, 1000
 # Resultados oficiales sobre voto válido (blanco incluido), con CERA, desde actualidad/src/sistema/simulador.json.
 # En 2019 el espacio «SUMAR» de las encuestas es Unidas Podemos + Más País (como en la tabla de equivalencias).
@@ -74,6 +77,21 @@ def carga(csv=CSV):
              .voto.sum().reset_index())
 
 
+def con_wikipedia(d, fich=FALTAN):
+    """Añade a `d` (salida de carga()) las encuestas de Wikipedia que no están en Electográfica."""
+    if not pathlib.Path(fich).exists():
+        print('Sin', fich, '(solo Electográfica)')
+        return d
+    w = pd.read_csv(fich, dtype={'muestra': str})
+    partidos = [c for c in w.columns if c.isupper() and c != 'OTROS']
+    w = w.assign(url_electografica=w.fuente_original, casa=w.encuestadora.map(clave),
+                 fecha=pd.to_datetime(w.campo_fin).dt.date,
+                 n=pd.to_numeric(w.muestra, errors='coerce').fillna(MUESTRA_DEF).clip(500, 3000).astype(int))
+    w = w.melt(id_vars=['url_electografica', 'casa', 'encuestadora', 'cliente', 'fecha', 'n'], value_vars=partidos,
+               var_name='partido_modelo', value_name='voto').dropna(subset=['voto'])
+    return pd.concat([d, w[d.columns]], ignore_index=True)
+
+
 def media(d, ref, ventana=VENTANA, excluir=()):
     """Media ponderada en la fecha `ref` (date). Devuelve ({partido: %}, encuestas usadas)."""
     x = d[(d.fecha <= ref) & (d.fecha > ref - timedelta(days=ventana)) & ~d.casa.isin([clave(e) for e in excluir])]
@@ -105,6 +123,7 @@ def error_historico(d, dias=5):
 def main():
     d = carga(sys.argv[1] if len(sys.argv) > 1 else CSV)
     e, c = error_historico(d)
+    d = con_wikipedia(d)
     print(e.to_string(index=False))
     print(f'c = {c}  (p. ej. error típico {c * math.sqrt(30):.1f} puntos para un partido del 30 %, {c * math.sqrt(3):.1f} para uno del 3 %)')
     hoy = date.today()

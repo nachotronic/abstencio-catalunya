@@ -30,6 +30,7 @@ import pandas as pd
 AQUI = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(AQUI))
 import encuestas  # noqa: E402
+import regionales  # noqa: E402
 from reglas import ESCANOS_2023, dhondt  # noqa: E402
 
 LARGO = pathlib.Path('/mnt/project-files/generales/datos/resultados_secciones_largo.csv')
@@ -47,6 +48,9 @@ HORIZONTES = [5, 38]
 # «metas» es el motor; «tope», el motor v1; «aditivo» y «repetir», los modelos de referencia que hay que batir:
 # subida uniforme en puntos (la misma suma o resta en todas las provincias) y repetir las generales anteriores.
 METODOS = ['metas', 'tope', 'aditivo', 'repetir']
+BETAS = [0.5, 1]   # señal de las encuestas regionales, solo con «metas» y solo para los partidos sin cifra nacional
+# (con PP, PSOE, Vox y Sumar también, el reparto entre provincias empeoraba: 2019 a 5 días, de 20 a 28 escaños mal
+# puestos por provincia; 2023 con encuesta perfecta, de 0,98 a 1,22 puntos de error por provincia)
 ALFA, SIGMA_PROV, SIGMA_MAX, N_SIM, SEMILLA = 0.5, 0.08, 0.30, 2000, 20261129
 
 
@@ -61,7 +65,7 @@ def cuotas(x):
     return x[LISTAS].div(x.validos, axis=0)
 
 
-def central(R, ant, euro, objetivo, metodo):
+def central(R, ant, euro, objetivo, metodo, reg=None, beta=0):
     """Cuotas por provincia: generales anteriores × señal de las europeas, escaladas hasta clavar la media."""
     provs = R[ant].index
     c = cuotas(R[ant]).values.copy()
@@ -92,6 +96,8 @@ def central(R, ant, euro, objetivo, metodo):
             fila = c.sum(1, keepdims=True)
             c = np.where(fila > 0.985, c / fila * 0.985, c)
         return c
+    if reg:   # encuestas de generales por comunidad o provincia (regionales.py)
+        c = regionales.ajusta(c, list(provs), validos, reg, LISTAS, beta)
     # «metas»: como el anterior, pero las listas sin encuesta también tienen meta (su voto nacional de las
     # generales anteriores), para que el tope no las vaya encogiendo vuelta a vuelta en las provincias donde suben
     # los grandes (EH Bildu y PNV en Euskadi).
@@ -177,6 +183,7 @@ def crps(muestra, y):
 def main():
     R = carga()
     d = encuestas.carga()
+    dreg = regionales.carga()
     SALIDA.mkdir(parents=True, exist_ok=True)
     out = []
     for obj, ant, euro, dia, escanos, otra in PRUEBAS:
@@ -185,7 +192,8 @@ def main():
         validos = R[obj].validos.values.astype(float)   # el tamaño de cada provincia no se predice aquí
         real_nac = (cuotas(R[obj]) * R[obj].validos.values[:, None]).sum() / R[obj].validos.sum()
         variantes = [(f'{h} días', h) for h in HORIZONTES] + [('encuesta perfecta', None)]
-        for (nombre, h), metodo in [(v, m) for m in METODOS for v in variantes]:
+        for (nombre, h), (metodo, beta) in [(v, m) for m in [(m, 0) for m in METODOS] + [('metas', b) for b in BETAS]
+                                            for v in variantes]:
             if h is not None:
                 e, _ = encuestas.error_historico(d, h)
                 e = e[e.eleccion == otra]
@@ -200,7 +208,10 @@ def main():
                 m['SUMAR'] = m.get('SUMAR', 0) + m.pop('PODEMOS', 0)
                 objetivo = {k: m.get(k, 0) / 100 for k in EN_ENCUESTA}   # sin cifra en la media: no se presenta (Cs en 2023)
                 sig = sigma_nac(objetivo, c_err, 1)
-            c = central(R, ant, euro, objetivo, metodo)
+            reg = regionales.medias(dreg, dia - timedelta(days=h or 5), [k for k in LISTAS if k not in EN_ENCUESTA])
+            c = central(R, ant, euro, objetivo, metodo, reg, beta)
+            if beta:
+                metodo = f'metas+regional{beta}'
             sims, esc = simula(c, validos, provs, escanos, sig, np.random.default_rng(SEMILLA))
             r = evalua(nombre, c, sims, esc, R, obj, escanos, objetivo)
             r.update({'metodo': metodo, 'c_error': round(c_err, 3), 'senal_europeas': euro,
