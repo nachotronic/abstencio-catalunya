@@ -1576,8 +1576,17 @@ GUIAS = [('elecciones-29n-2026/', 'img/elecciones/congreso-urna-calendario-29n.j
          ('mapa-electoral-seccion-censal/', 'img/elecciones/plano-secciones-lupa.jpg', 'Sección censal', 'El mapa electoral calle a calle: qué es una sección censal')]
 
 
+# texto alternativo de las ilustraciones de las guías (describen la imagen, no repiten el titular)
+ALT_GUIAS = {'elecciones-29n-2026/': 'Urna ante el Congreso de los Diputados con un calendario marcado en el 29 de noviembre',
+             'resultados-elecciones-por-municipio/': 'Plazas, calles y edificios de pueblos y ciudades de España',
+             'participacion-electoral-por-barrio/': 'Cola de votantes ante un colegio electoral entre bloques de pisos',
+             'censo-electoral-2026/': 'Listas del censo electoral, un sobre de votación y un pasaporte',
+             'voto-y-renta-por-barrios/': 'Urna entre bloques de pisos y chalets',
+             'mapa-electoral-seccion-censal/': 'Plano de secciones censales bajo una lupa'}
+
+
 def guias_portada():
-    li = ''.join(f'<li><a href="elecciones/{r}"><img src="{img}" alt="" loading="lazy" width="300" height="200"><span class="atlas-k">{k}</span><b>{titulo}</b></a></li>'
+    li = ''.join(f'<li><a href="elecciones/{r}"><img src="{img}" alt="{ALT_GUIAS.get(r, "")}" loading="lazy" width="300" height="200"><span class="atlas-k">{k}</span><b>{titulo}</b></a></li>'
                  for r, img, k, titulo in GUIAS)
     li += '<li class="todas"><a href="elecciones/"><b>Por comunidad y provincia</b><span>Resultados, renta y participación de cada territorio</span></a></li>'
     return ('<section class="wide del-atlas del-guias" aria-labelledby="h-del-guias"><div class="da-cab"><h2 id="h-del-guias"><a href="elecciones/">Guías de las elecciones</a></h2>'
