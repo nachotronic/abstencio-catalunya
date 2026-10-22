@@ -2177,8 +2177,9 @@ CA = [
      "<p class=\"etiquetas\">Cada paràgraf porta una etiqueta: <b>dada</b> (xifra comprovable amb les fonts), <b>patró</b> (relació que es repeteix, sense afirmar-ne la causa), <b>hipòtesi</b> (explicació possible, sense dues fonts independents) o <b>context</b> (fets i declaracions publicats per altres, enllaçats). <a href=\"../../atlas/politica-editorial/#verificacion\">Com verifiquem</a> (en castellà)</p>"),
     ('t-dato">Dato<', 't-dato">Dada<'), ('t-patron">Patrón<', 't-patron">Patró<'), ('t-hipotesis">Hipótesis<', 't-hipotesis">Hipòtesi<'), ('t-contexto">Contexto<', 't-contexto">Context<'),
     ('<h2>Método y fuentes</h2>', '<h2>Mètode i fonts</h2>'), ('<dt>Qué se compara</dt>', '<dt>Què es compara</dt>'), ('<dt>Límites</dt>', '<dt>Límits</dt>'),
-    ('<dt>Cómo se calcula</dt><dd>Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>',
-     '<dt>Com es calcula</dt><dd>Percentatges sobre vots a candidatures, excepte la participació, que és sobre el cens. Xifres reproduïbles amb els scripts de l\'expedient de la peça. <a href="../../atlas/metodologia/index.html">Metodologia de l\'Atles</a> (en castellà)</dd>'),
+    ('<dt>Cómo se calcula</dt><dd>Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Cifras reproducibles con los scripts del expediente de la pieza. <a href="../metodologia.html">Metodología de Actualidad</a> · <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>',
+     '<dt>Com es calcula</dt><dd>Percentatges sobre vots a candidatures, excepte la participació, que és sobre el cens. Xifres reproduïbles amb els scripts de l\'expedient de la peça. <a href="../metodologia.html">Metodologia d\'Actualitat</a> · <a href="../../atlas/metodologia/index.html">Metodologia de l\'Atles</a> (en castellà)</dd>'),
+    ('<p class="etiquetas">Cómo se hacen estas piezas: <a href="../metodologia.html">Metodología de Actualidad</a></p>', '<p class="etiquetas">Com es fan aquestes peces: <a href="../metodologia.html">Metodologia d\'Actualitat</a> (en castellà)</p>'),
     ('<dt>Fuentes</dt>', '<dt>Fonts</dt>'), ('<dt>Autoría</dt>', '<dt>Autoria</dt>'), ('<dt>Revisión de datos y texto</dt>', '<dt>Revisió de dades i text</dt>'),
     ('<dt>Publicado · actualizado</dt>', '<dt>Publicat · actualitzat</dt>'), ('<dt>Correcciones</dt><dd>Ninguna.</dd>', '<dt>Correccions</dt><dd>Cap.</dd>'), ('<dt>Correcciones</dt>', '<dt>Correccions</dt>'),
     ('<span class="kicker">Estás aquí</span>', '<span class="kicker">Ets aquí</span>'), ('<p class="mas-datos">Más datos: ', '<p class="mas-datos">Més dades (en castellà): '),
@@ -2255,7 +2256,7 @@ def pieza(p, todas):
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>{p['compara']}</dd>
 <dt>Límites</dt><dd>{p['limites']}</dd>
-<dt>Cómo se calcula</dt><dd>{p.get('calculo', 'Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo.')} Cifras reproducibles con los scripts del expediente de la pieza. <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
+<dt>Cómo se calcula</dt><dd>{p.get('calculo', 'Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo.')} Cifras reproducibles con los scripts del expediente de la pieza. <a href="../metodologia.html">Metodología de Actualidad</a> · <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
@@ -2267,6 +2268,8 @@ def pieza(p, todas):
 <h2>Sigue leyendo</h2><ul class="sigue">{sigue}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>{POLITICA}</footer>"""
     main = re.sub(r'<div class="foot">.*?</div>', ficha, main, flags=re.S)
+    if '<dl class="ficha">' not in main:   # piezas sin bloque «Método y fuentes»: al menos, el enlace a la metodología general
+        main = main.replace('</main>', '<p class="etiquetas">Cómo se hacen estas piezas: <a href="../metodologia.html">Metodología de Actualidad</a></p>\n</main>', 1)
 
     jsonld = {'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
@@ -2344,6 +2347,7 @@ a{color:var(--fg)}
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
     open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
     urls = [f'  <url><loc>{url}</loc><lastmod>{max(p["fecha"] for p in todas)}</lastmod></url>']
+    urls.append(f'  <url><loc>{url}metodologia.html</loc><lastmod>{METODO_ACTUALIZADO}</lastmod></url>')
     urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p["fecha"]}</lastmod></url>' for p in (sitemap or todas)]
     open(os.path.join(RAIZ, 'actualidad', 'sitemap.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n')
@@ -2422,6 +2426,115 @@ def franja_serie(todas, clave, cabecera, sub, pre=''):
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})(document.currentScript.parentNode)</script></section>')
 
 
+# Metodología general de las piezas de Actualidad (Nacho, 22-10-2026): fuentes, cruces, controles, límites y verificación.
+# Cada pieza la enlaza desde «Método y fuentes». Fecha de la última revisión del texto:
+METODO_ACTUALIZADO = '2026-10-22'
+METODO_HTML = """<p class="kicker"><a href="index.html">Actualidad</a> · Metodología</p>
+<h1>Cómo se hacen las piezas de Actualidad</h1>
+<p class="entradilla">Las piezas de esta sección cruzan resultados electorales con datos de renta, edad, empleo o vivienda, casi siempre por sección censal. Esta página explica de dónde salen los datos, cómo se comparan, qué controles se aplican y qué no se puede concluir de ellos. Lo particular de cada pieza está en su bloque «Método y fuentes».</p>
+<nav class="indice" aria-label="En esta página"><a href="#fuentes">Fuentes</a> · <a href="#cruces">Cruces</a> · <a href="#controles">Controles</a> · <a href="#ponderacion">Ponderación</a> · <a href="#limites">Límites</a> · <a href="#excepciones">Dónde se rompe el patrón</a> · <a href="#verificacion">Verificación</a></nav>
+
+<h2 id="fuentes">Fuentes</h2>
+<p>Todas son públicas y cada pieza enlaza las que usa.</p>
+<ul>
+<li><b>Resultados electorales.</b> Ministerio del Interior (<a href="https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/">Infoelectoral</a>), por mesa, que se suman por sección censal. La base de casi todos los cruces son las generales del 23 de julio de 2023. El voto de los residentes en el extranjero (CERA) no se puede asignar a una sección: cada pieza dice si lo incluye. Para el Parlament de Catalunya, los datos abiertos de la Generalitat.</li>
+<li><b>Renta y edad.</b> INE, <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a>: renta por unidad de consumo, fuentes de ingresos (salarios, pensiones, prestaciones) y edad media por sección. Empieza en 2015: no se usa para explicar elecciones anteriores.</li>
+<li><b>Población, empleo y vivienda.</b> INE, <a href="https://www.ine.es/censos2021/C2021_Indicadores.csv">Censo de Población y Viviendas 2021</a> (estudios, paro, nacidos fuera, régimen de tenencia) y Censo anual de población (ocupados por rama y situación profesional). Estadísticas experimentales del INE: viviendas turísticas por sección e índice de precios del alquiler.</li>
+<li><b>Fiscalidad.</b> Agencia Tributaria, <a href="https://sede.agenciatributaria.gob.es/Sede/datosabiertos/catalogo/hacienda/Estadistica_de_los_declarantes_del_IRPF_por_municipios.shtml">estadística de los declarantes del IRPF por municipio</a>.</li>
+<li><b>Edificios.</b> Dirección General del Catastro, edificios en formato <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html">INSPIRE</a> (año de construcción, viviendas por edificio).</li>
+<li><b>Alquiler.</b> Ministerio de Vivienda, Sistema Estatal de Referencia del Precio del Alquiler (SERPAVI).</li>
+<li><b>Opinión.</b> CIS, microdatos de los barómetros, siempre con los pesos del propio CIS. Son encuestas a personas, con su margen de error, y se dice cuando una submuestra es pequeña.</li>
+</ul>
+
+<h2 id="cruces">Cómo se cruzan los datos</h2>
+<p>La mayoría de las piezas hacen comparaciones de dos variables, explicadas sin jerga:</p>
+<ul>
+<li><b>Grupos de igual tamaño.</b> Se ordenan las secciones (o los municipios) por una variable, por ejemplo la renta, y se parten en cinco grupos (quintiles) o diez (deciles) con el mismo número de secciones o de votantes. Después se compara el voto de cada grupo. Es la forma más habitual en los gráficos.</li>
+<li><b>Comparación de medias.</b> El voto o la participación de un grupo frente a otro: las secciones con más alquiler frente a las de menos, la quinta parte con más pensionistas frente al resto.</li>
+<li><b>Correlación.</b> Cuando se da un coeficiente, es el de Pearson entre secciones o municipios: va de −1 a 1 y mide si dos cifras suben y bajan juntas, no cuánto cambia una con la otra.</li>
+</ul>
+
+<h2 id="controles">Controles</h2>
+<p>Una relación entre dos cifras puede deberse a una tercera. Antes de publicar un patrón, se comprueba que aguanta al menos alguno de estos controles, y la pieza dice cuál:</p>
+<ul>
+<li><b>A igual renta.</b> La comparación se repite dentro de cada tramo de renta (tercios, quintiles) o entre secciones de renta parecida. Es el control más frecuente, porque la renta va unida a casi todo: edad, estudios, vivienda, empleo.</li>
+<li><b>A igual tamaño de municipio.</b> Las capitales, los pueblos pequeños y las ciudades medianas votan distinto. Cuando la variable cambia con el tamaño, la comparación se hace dentro de cada tramo de población.</li>
+<li><b>Dentro de cada provincia.</b> Comparar Sevilla con Ourense mezcla historias políticas distintas, y una tendencia del conjunto puede desaparecer o invertirse dentro de cada territorio (la llamada paradoja de Simpson). Por eso se repite la cuenta en cada provincia y se dice en cuántas se cumple: «en 50 de las 51 provincias», «en las 49 con datos».</li>
+<li><b>Sin el caso que más pesa.</b> Si una provincia o una ciudad aporta buena parte del efecto, se repite sin ella (por ejemplo, «sin Almería»).</li>
+<li><b>Regresión con controles.</b> En las piezas que descuentan varios rasgos a la vez (renta, paro, estudios, edad, población nacida fuera, tamaño), se usa una regresión lineal por mínimos cuadrados (MCO), ponderada por votantes o por censo, y se da el resultado en puntos de voto entre un caso típico con poco y uno con mucho de la variable. El texto lo cuenta como «a igualdad de lo demás», nunca como causa.</li>
+</ul>
+<h3>Dos reglas para las regresiones</h3>
+<p><b>Efectos fijos de provincia.</b> Una regresión con secciones de toda España supondría que las reglas son las mismas en Sevilla, en Ourense y en Barcelona. No lo son: cada provincia tiene su historia, su arraigo de partidos y su oferta electoral. Por eso los modelos llevan efectos fijos de provincia: estiman la relación solo con las diferencias entre secciones o municipios de la misma provincia. Así se hacen ya los modelos del <a href="../atlas/metodologia/">Atlas de las anomalías electorales</a> y la regresión de <a href="oficios-y-voto-municipios-29n/">los oficios y el voto</a>, y es la norma para cualquier regresión nueva que mezcle provincias.</p>
+<p><b>Errores agrupados y dependencia espacial.</b> Las secciones vecinas no son observaciones independientes: comparten renta, tipo de barrio y costumbres de voto. Una regresión que las trate como independientes da márgenes de error demasiado estrechos y puede hacer pasar por firme un efecto que no lo es. Desde octubre de 2026, las regresiones nuevas calculan los errores agrupados por municipio (por provincia cuando la unidad es el municipio), y un efecto que no se distingue de cero con esos errores no se publica como patrón. Cuando el patrón tiene una geografía muy marcada, se comprueba además si los residuos del modelo siguen agrupados en el mapa (índice de Moran) y, si es así, se contrasta con un modelo espacial (de retardo o de error) antes de publicar. Las piezas anteriores a esta regla no daban márgenes de error; sus cifras de regresión se revisarán con este criterio si se actualizan.</p>
+
+<h2 id="ponderacion">Cuánto pesa cada sección</h2>
+<ul>
+<li><b>Porcentajes de un grupo</b> (el voto del quintil más pobre, la participación de un distrito): se suman los votos y el censo de todas sus secciones. Equivale a una media ponderada por votantes o por censo, y así lo dice la nota del gráfico.</li>
+<li><b>Grupos.</b> Pueden tener el mismo número de secciones o el mismo número de votantes; la nota del gráfico dice cuál.</li>
+<li><b>Correlaciones y recuentos</b> («en 1.089 de las 3.289 secciones más pobres»): cada sección cuenta lo mismo, tenga 300 electores o 2.000, salvo que se diga lo contrario. Algunas piezas dejan fuera las secciones muy pequeñas, y lo dicen.</li>
+<li><b>Regresiones:</b> ponderadas por votantes o por censo, para que un pueblo de 200 habitantes no pese lo mismo que un barrio de 3.000.</li>
+</ul>
+
+<h2 id="limites">Lo que estos datos no dicen</h2>
+<ul>
+<li><b>No dicen quién vota a quién.</b> Son datos de secciones y municipios, no de personas. Que las secciones con más pensionistas voten más al PP no significa que los pensionistas voten al PP: pueden ser sus vecinos. Sacar conclusiones sobre individuos a partir de datos de grupos es la falacia ecológica, descrita por el sociólogo William S. Robinson en 1950 («<a href="https://doi.org/10.2307/2087176">Ecological Correlations and the Behavior of Individuals</a>», <i>American Sociological Review</i>). Para hablar de personas hacen falta encuestas, como las del CIS, y las piezas que las usan lo dicen.</li>
+<li><b>No dicen por qué.</b> «Donde más X, más Y» no es «X causa Y». Los controles descartan algunas explicaciones alternativas, no todas. Una explicación solo se da como tal con dos fuentes independientes; si no, se marca como hipótesis.</li>
+<li><b>Las fronteras importan.</b> El resultado de un cruce puede cambiar según se agrupe por sección, por distrito o por municipio, y las secciones cambian de límites entre elecciones.</li>
+<li><b>Las fechas no siempre coinciden.</b> Las elecciones son de 2023, el censo de 2021, la renta de 2023 o del último año publicado. Cada pieza dice qué año usa cada dato.</li>
+<li><b>Los extranjeros no votan en las generales.</b> En las secciones con mucha población extranjera, el voto es el de sus vecinos con nacionalidad española.</li>
+</ul>
+
+<h2 id="excepciones">Dónde se rompe el patrón</h2>
+<p>Comparar dentro de cada provincia sirve también para encontrar los lugares donde la regla general no se cumple, que a menudo son la noticia. Algunos ejemplos publicados:</p>
+<ul>
+<li>En el conjunto de España, las secciones pobres votan más a PSOE y Sumar. En la provincia de Murcia, 172 de sus 191 secciones del tramo más pobre votaron más a PP y Vox; en Almería, 117 de 141. En Sevilla, ninguna. <a href="barrios-pobres-derecha-ricos-izquierda/">La pieza</a>.</li>
+<li>Al revés, la mayoría de las secciones ricas que votan más a PSOE y Sumar que a PP y Vox están en Cataluña y el País Vasco, donde buena parte del voto conservador va a Junts o al PNV, que no entran en ninguno de los dos bloques.</li>
+<li>En Madrid, el oficio del barrio parece decir menos del voto que en provincias donde se vive y se trabaja en el mismo sitio. Es una hipótesis. <a href="oficios-y-voto-municipios-29n/">La pieza</a>.</li>
+</ul>
+
+<h2 id="verificacion">Verificación</h2>
+<ul>
+<li>Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados).</li>
+<li>Cada pieza tiene un expediente interno con los scripts que reproducen sus cifras y una tabla de afirmaciones (afirmaciones.csv) que liga cada frase con su número y su fuente. Un script de verificación vuelve a calcularlas antes de publicar; si una no cuadra, la pieza no sale.</li>
+<li>Ninguna conclusión se publica de forma automática: cada pieza la revisa una persona antes de publicarse.</li>
+<li>Los errores se corrigen en la propia pieza, con fecha, en su apartado «Correcciones», y en el <a href="../atlas/correcciones/">registro de correcciones</a>.</li>
+</ul>
+<p>Más detalle en la <a href="../atlas/politica-editorial/#verificacion">política editorial</a> y en la <a href="../atlas/metodologia/">metodología del Atlas</a>. El código y los datos derivados están en <a href="https://github.com/nachotronic/abstencio-catalunya">GitHub</a>.</p>
+"""
+
+
+def metodologia():
+    url = BASE + '/actualidad/metodologia.html'
+    titulo = 'Metodología de Actualidad: fuentes, cruces, controles y límites'
+    desc = ('Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), '
+            'comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.')
+    jsonld = {'@context': 'https://schema.org', '@type': 'WebPage', '@id': url, 'name': titulo, 'url': url, 'description': desc,
+              'inLanguage': 'es', 'dateModified': METODO_ACTUALIZADO, 'publisher': MEDIO,
+              'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'},
+              'isPartOf': {'@type': 'CollectionPage', 'name': 'Actualidad', 'url': BASE + '/actualidad/'}}
+    css = """<style>
+:root{--bg:#fbfaf8;--fg:#1d1a1c;--muted:#5d585b;--rule:#e2dddf}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#18161a;--fg:#f1edef;--muted:#b5aeb2;--rule:#343036;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#18161a;--fg:#f1edef;--muted:#b5aeb2;--rule:#343036;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.6}
+main{max-width:46rem;margin:0 auto;padding-block:2rem 4rem;padding-inline:16px}
+h1{font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.15;margin:.6rem 0}
+h2{font-size:1.3rem;margin:2.2rem 0 .6rem;scroll-margin-top:1rem}
+h3{font-family:var(--ui);font-size:1.05rem;margin:1.6rem 0 .4rem}
+a{color:var(--fg)}
+.entradilla{font-size:1.1rem}
+nav.indice{font-family:var(--ui);font-size:.9rem;color:var(--muted);border-block:1px solid var(--rule);padding:.6rem 0}
+nav.indice a{color:var(--muted)}
+main li{margin-bottom:.5rem}
+</style>"""
+    out = (cabecera(titulo, desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
+           + nav('../', 'Actualidad') + '\n<main>' + METODO_HTML
+           + f'<p class="firma">{AUTOR} · Actualizada el <time datetime="{METODO_ACTUALIZADO}">{fecha_larga(METODO_ACTUALIZADO)}</time></p>'
+           + '<footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
+           + POLITICA + '</footer></main>\n</body>\n</html>\n')
+    open(os.path.join(RAIZ, 'actualidad', 'metodologia.html'), 'w', encoding='utf-8').write(sin_index(out))
+
+
 def portada(todas):
     for f, pre in ((os.path.join(RAIZ, 'index.html'), ''), (os.path.join(RAIZ, 'generales-2026', 'src', 'plantilla.html'), '../')):
         t = open(f, encoding='utf-8').read()
@@ -2454,6 +2567,7 @@ if __name__ == '__main__':
     for p in PIEZAS:
         pieza(p, PIEZAS if p['serie'] in NOMES_ENLLACADES else PUBLICAS)
     indice(PUBLICAS, PIEZAS)
+    metodologia()
     portada(PUBLICAS)
     import esquema   # autor común, Dataset y migas de pan en todas las páginas (src/esquema.py)
     esquema.main()
