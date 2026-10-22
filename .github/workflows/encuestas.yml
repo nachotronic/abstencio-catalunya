@@ -1,5 +1,6 @@
 # Descarga las encuestas de generales (Electográfica) y las coteja con Wikipedia una vez al día (07:00 UTC).
-# Solo si cambia algún CSV de previsiones/datos/encuestas/: rehace la página /encuestas/, hace commit en main
+# Solo si cambia algún CSV de previsiones/datos/encuestas/: recalcula la estimación del modelo, rehace la página
+# /encuestas/, hace commit en main
 # y avisa a IndexNow (un push hecho por este workflow no lanza el de IndexNow).
 name: Encuestas
 on:
@@ -15,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Dependencias del modelo
+        run: pip install --quiet numpy pandas
       - name: Electográfica
         run: python3 previsiones/src/actualizar_encuestas.py
       - name: Cotejo con Wikipedia
@@ -29,6 +32,14 @@ jobs:
           if [[ "$d" > "2026-11-23" && "$d" < "2026-11-29" ]]; then echo "Veda de encuestas (LOREG 69.7): no se publica"; exit 0; fi
           git add previsiones/datos/encuestas
           if git diff --cached --quiet -- '*.csv'; then echo "Sin encuestas nuevas"; exit 0; fi
+          # estimación del modelo con la media nueva (Nacho eligió la actualización automática el 22-10-2026); si
+          # falla, se publica igual la página de encuestas con la estimación anterior
+          if SALIDAS=/tmp/salidas python3 previsiones/src/encuestas.py > /dev/null \
+             && python3 previsiones/src/motor.py --encuestas /tmp/salidas/media-encuestas-$(date +%Y%m%d).json --publico; then
+            git add previsiones/datos/publico
+          else
+            git checkout -- previsiones/datos/publico; echo "::warning::El modelo falló; se mantiene la estimación anterior"
+          fi
           python3 encuestas/src/construir.py
           git add encuestas index.html generales-2026/src/plantilla.html
           git config user.name "github-actions[bot]"
