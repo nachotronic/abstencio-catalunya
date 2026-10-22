@@ -25,6 +25,7 @@ sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'atlas' / 'src'))
 import territorios_datos as T  # noqa: E402
 import mapas_svg as MS  # noqa: E402
+import territorios_barrios as TB  # noqa: E402
 import esquema  # noqa: E402
 import paginas as atlas  # noqa: E402  (estilos, piezas y titulares del Atlas)
 from piezas import piezas  # noqa: E402
@@ -35,6 +36,7 @@ BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
 ACTUALIZADO = '2026-10-21'   # cámbiala a mano cuando cambien los datos o el texto
+BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 
@@ -611,6 +613,7 @@ def _ciudades():
 
 
 CIUDADES = _ciudades()
+BARRIOS = {c: TB.barrios(c) for c in sorted(set(TB.SB.mun_code)) if c in CIUDADES} if TB.SB is not None else {}
 
 
 def distrito_seccion(tc):
@@ -662,6 +665,7 @@ def pagina_ciudad(cod):
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
     h.append(b_sec)
+    h.append(bloque_barrios(cod, nombre, BARRIOS.get(cod, [])))
     h.append(b_renta)
     h.append(bloque_municipales(nombre, m, r))
     h.append(bloque_serie(nombre, serie))
@@ -683,6 +687,258 @@ def pagina_ciudad(cod):
     h.append(bloque_metodo())
     h.append(PIE)
     return ruta, ''.join(h)
+
+
+# ---------- fichas de barrio: /municipio/<provincia>/<municipio>/<barrio>/ ----------
+def ordinal(n):
+    return f'{n}.º'
+
+
+def puesto(valor, todos, alto=True):
+    """Puesto de `valor` entre `todos` (1 = el más alto si alto)."""
+    vs = sorted((v for v in todos if v is not None), reverse=alto)
+    return vs.index(valor) + 1 if valor in vs else None
+
+
+def art_partido(c, ccaa):
+    reg = REGIONAL.get(ccaa, {})
+    n = reg.get(c, T.NOMBRE[c].split(' /')[0])
+    return ('el ' if c in ('PP', 'PSOE', 'PNV', 'BNG') or n == 'PSC' else '') + n
+
+
+def cap(t):
+    return t[0].upper() + t[1:]
+
+
+def con_de(t):
+    return 'del ' + t[3:] if t.startswith('el ') else 'de ' + t
+
+
+def puntos(x):
+    return f'{abs(x) * 100:.1f}'.replace('.', ',')
+
+
+def intensidad(v):
+    return 0.45 if v < 0.30 else 0.65 if v < 0.40 else 0.85 if v < 0.50 else 1
+
+
+def ruta_barrio(cod, b):
+    return CIUDADES[cod] + b['slug'] + '/'
+
+
+def dato_demo(v, fmt):
+    return '—' if v is None or v != v else fmt(v)
+
+
+def pagina_barrio(cod, b, todos):
+    m = T.MUN[T.MUN.mun_code == cod]
+    ciudad, p = m.iloc[0].municipio, m.iloc[0].prov
+    ccaa = PROV_CCAA[p]
+    ruta = ruta_barrio(cod, b)
+    nivel = ruta.count('/')
+    global RAIZ_REL
+    RAIZ_REL = '../' * nivel
+    raiz = RAIZ_REL
+    nombre, r, dm, cods = b['nombre'], b['r'], b['demo'], b['secciones']
+    fichas = [x for x in todos if x['ficha']]
+    n = len(fichas)
+    tipo_b = 'barrio' if b['nivel'] == 10 else 'distrito'
+    tipos = 'barrios' if b['nivel'] == 10 else 'distritos'
+    rc = TB.resultado(TB.LARGO[(TB.LARGO.eleccion == T.ULTIMA) & TB.LARGO.mun_code.eq(cod)])
+    dc = TB.demografia(TB.LARGO[(TB.LARGO.eleccion == T.ULTIMA) & TB.LARGO.mun_code.eq(cod)].tract_code)
+    g = T.ganador(r)
+    resto = sorted((c for c in T.FAM if c not in (g, 'OTROS') and r['pct'][c]), key=lambda c: -r['pct'][c])
+    seg = resto[0]
+    gc = T.ganador(rc)
+    nom_g, nom_s = art_partido(g, ccaa), art_partido(seg, ccaa)
+    dist = f', en el distrito de {b["distrito"]}' if b['distrito'] and slug(b['distrito']) != slug(nombre) else ''
+    p_part = puesto(r['part'], [x['r']['part'] for x in fichas])
+    p_renta = puesto(dm['renta_uc'], [x['demo']['renta_uc'] for x in fichas]) if dm['renta_uc'] else None
+    # el partido que más se separa de la ciudad
+    dif = {c: (r['pct'][c] or 0) - (rc['pct'][c] or 0) for c in T.FAM if c != 'OTROS'}
+    lejos = max(dif, key=lambda c: abs(dif[c]))
+
+    titulo = f'Elecciones en {nombre} ({ciudad}): así vota el {tipo_b}, sección a sección'
+    desc = (f'{cap(nombre)}{dist} ({ciudad}): en las generales de 2023, {nom_g} ganó con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
+            f'Renta, edad, población extranjera y voto de sus {num(len(cods))} secciones censales desde 2004.')
+    about = {'@type': 'Place', 'name': f'{nombre} ({ciudad})', 'containedInPlace': {'@type': 'City', 'name': ciudad, 'url': BASE + CIUDADES[cod],
+             'containedInPlace': lugar(PROV_NOMBRE[p], ESPANA)}}
+    ld = ld_pagina(titulo, desc, ruta, about)
+    ld['datePublished'] = BARRIOS_PUBLICADO
+    ld['dateModified'] = max(ACTUALIZADO, BARRIOS_PUBLICADO)
+    pasos = [(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p]), (raiz + CIUDADES[cod], ciudad)]
+    h = [cabeza(titulo, desc, ruta, ld, nivel, nombre)]   # las migas de pan en JSON-LD las añade esquema.py
+    h.append(migas_html(pasos))
+    h.append(f'<p class="kicker">{tipo_b.capitalize()} de {escape(ciudad)}{escape(dist.replace(", en el distrito de", " · distrito"))} · Generales 2004-2023</p>'
+             f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
+    h.append(f'<p class="subtitulo">Cómo vota este {tipo_b} de {escape(ciudad)}, quién vive en él y en qué se separa del resto de la ciudad</p>')
+    act = max(ACTUALIZADO, BARRIOS_PUBLICADO)
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
+
+    # entradilla
+    comp_part = r['part'] - rc['part']
+    t_part = (f'{puntos(comp_part)} puntos {"más" if comp_part > 0 else "menos"} que el conjunto de {escape(ciudad)} ({pct(rc["part"])})'
+              if abs(comp_part) >= 0.005 else f'casi lo mismo que el conjunto de {escape(ciudad)} ({pct(rc["part"])})')
+    lead = (f'En {escape(nombre)}{escape(dist)}, {nom_g} fue la fuerza más votada en las elecciones generales del 23 de julio de 2023, con el {pct(r["pct"][g])} del voto válido, '
+            f'por delante {con_de(nom_s)} ({pct(r["pct"][seg])}). Votó el {pct(r["part"])} de sus {num(r["censo"])} electores, {t_part}')
+    lead += (f': es el {ordinal(p_part)} de los {num(n)} {tipos} de la ciudad con más participación.' if p_part and n >= 5 else '.')
+    h.append(f'<p class="resumen">{tipo("Dato")}{lead}</p>')
+    if g != gc:
+        h.append(p_('Dato', f'En el conjunto de la ciudad ganó {art_partido(gc, ccaa)} ({pct(rc["pct"][gc])}); aquí, {nom_g} le saca a {art_partido(gc, ccaa) if gc != seg else "ese partido"} '
+                    f'{puntos(r["pct"][g] - r["pct"][gc])} puntos.'))
+    if abs(dif[lejos]) >= 0.03:
+        h.append(p_('Dato', f'Donde más se separa {escape(nombre)} del resto de {escape(ciudad)} es en el voto {con_de(art_partido(lejos, ccaa))}: '
+                    f'{pct(r["pct"][lejos])}, frente al {pct(rc["pct"][lejos])} de la ciudad, {puntos(dif[lejos])} puntos {"más" if dif[lejos] > 0 else "menos"}.'))
+    # quién vive
+    frases = [f'Viven en {escape(nombre)} {num(dm["poblacion"])} personas (padrón de 2023)']
+    if dm['edad_media']:
+        frases.append(f'con una edad media de {dm["edad_media"]:.1f} años ({dc["edad_media"]:.1f} en {escape(ciudad)})'.replace('.', ','))
+    txt = ', '.join(frases) + '. '
+    if dm['extranjeros'] is not None:
+        txt += f'El {pct(dm["extranjeros"])} tiene nacionalidad extranjera, frente al {pct(dc["extranjeros"])} de la ciudad. '
+    if dm['estudios_sup_2021'] is not None:
+        txt += f'Según el censo de 2021, el {pct(dm["estudios_sup_2021"])} de los adultos tiene estudios superiores ({pct(dc["estudios_sup_2021"])} en la ciudad)'
+        txt += (f' y la tasa de paro era del {pct(dm["paro_2021"])} ({pct(dc["paro_2021"])}).' if dm['paro_2021'] is not None else '.')
+    h.append(p_('Dato', txt))
+    if dm['renta_uc']:
+        h.append(p_('Dato', f'La renta neta media por unidad de consumo es de {euros(dm["renta_uc"])} al año ({euros(dc["renta_uc"])} en {escape(ciudad)})'
+                    + (f': el {ordinal(p_renta)} {tipo_b} con más renta de los {num(n)} de la ciudad' if p_renta and n >= 5 else '')
+                    + (f'. El {pct(dm["pobreza"])} de la población vive por debajo del umbral de pobreza relativa (menos del 60 % de la renta mediana).' if dm['pobreza'] is not None else '.')))
+    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} calle a calle en el mapa de {escape(ciudad)}</a></p>')
+
+    # mapa
+    secs = TB.secciones(cods)
+    col = {s['cod']: (T.COLOR[s['gana']], intensidad(s['pct'])) for s in secs}
+    svg = TB.mapa(cod, cods, col, f'Partido más votado en cada sección censal de {nombre} en 2023')
+    if svg:
+        cuenta = {}
+        for s in secs:
+            cuenta[s['gana']] = cuenta.get(s['gana'], 0) + 1
+        reparto = '; '.join(f'{art_partido(c, ccaa)}, en {num(k)}' for c, k in sorted(cuenta.items(), key=lambda x: -x[1]))
+        h.append('<h2>Sección a sección</h2>'
+                 + p_('Dato', f'{escape(cap(nombre))} tiene {num(len(cods))} secciones censales, la unidad más pequeña con resultados electorales (entre 500 y 2.500 electores cada una). '
+                      f'En 2023 ganó {reparto}.')
+                 + figura(svg, f'Partido más votado en cada sección censal de {escape(nombre)}, generales de 2023; el color es más intenso cuanto mayor es su voto (menos del 30 %, 30-40 %, 40-50 %, 50 % o más). En gris, las secciones vecinas. '
+                          'Límites de las secciones: INE; del barrio: © colaboradores de OpenStreetMap (ODbL).', leyenda_partidos(cuenta)))
+    con_part = [s for s in secs if s['part'] is not None and s['censo'] >= 200]
+    if len(con_part) >= 4:
+        a, z = max(con_part, key=lambda s: s['part']), min(con_part, key=lambda s: s['part'])
+        frase = (f'Dentro del {tipo_b} también hay distancia: en la sección que más votó ({distrito_seccion(a["cod"])}) participó el {pct(a["part"])}, '
+                 f'y en la que menos ({distrito_seccion(z["cod"])}), el {pct(z["part"])}')
+        if a['renta'] and z['renta'] and a['renta'] == a['renta'] and z['renta'] == z['renta']:
+            frase += f'. La primera tiene una renta de {euros(a["renta"])} por unidad de consumo; la segunda, de {euros(z["renta"])}'
+        h.append(p_('Dato', frase + '.'))
+    filas = [[distrito_seccion(s['cod']).capitalize(), num(s['censo']), pct(s['part']),
+              f'<span style="color:{T.COLOR[s["gana"]]}">■</span> {escape(T.NOMBRE[s["gana"]])} ({pct(s["pct"])})',
+              euros(s['renta']) if s['renta'] and s['renta'] == s['renta'] else '—'] for s in secs]
+    t_sec = tabla(f'Secciones censales de {escape(nombre)}: generales de 2023 y renta por unidad de consumo (INE, 2023)',
+                  ['Sección', 'Censo', 'Participación', 'Más votado', 'Renta'], filas)
+    h.append(t_sec if len(filas) <= 12 else f'<details><summary>Las {num(len(filas))} secciones de {escape(nombre)}, una a una</summary>{t_sec}</details>')
+
+    # resultado
+    filas = [[escape(T.NOMBRE[c]), pct(r['pct'][c]), num(r['votos'][c]), pct(rc['pct'][c])]
+             for c in sorted(T.FAM, key=lambda c: -(r['pct'][c] or 0)) if (r['pct'][c] or 0) >= 0.005 or c == 'OTROS']
+    h.append('<h2>Resultado de las generales de 2023</h2>'
+             + p_('Dato', f'Voto por partido sobre voto válido (candidaturas más blancos) en las {num(len(cods))} secciones de {escape(nombre)}. '
+                  f'La línea discontinua marca el resultado del conjunto de {escape(ciudad)}.')
+             + f'<figure>{barras(r, rc)}<figcaption>Elecciones generales del 23 de julio de 2023, sin voto desde el extranjero (CERA). Fuente: Ministerio del Interior.</figcaption></figure>'
+             + tabla(f'Voto por partido en {escape(nombre)}, 23J 2023', ['Partido', 'Voto', 'Votos', escape(ciudad)], filas))
+
+    # serie desde 2004
+    s = TB.serie(cods)
+    ys = [y for y in TB.ELEC if s[y]]
+    if len(ys) >= 4:
+        fams = [c for c in T.FAM if c != 'OTROS' and max((s[y]['pct'][c] or 0) for y in ys) >= 0.05]
+        filas = [[T.etiqueta(y), pct(s[y]['part']), escape(T.nombre_familia(T.ganador(s[y]), y))] + [pct(s[y]['pct'][c]) if s[y]['pct'][c] else '—' for c in fams] for y in ys]
+        ganadores = [T.ganador(s[y]) for y in ys]
+        cambios = sum(1 for i in range(1, len(ganadores)) if ganadores[i] != ganadores[i - 1])
+        if cambios == 0:
+            t = f'{art_partido(ganadores[0], ccaa)[0].upper() + art_partido(ganadores[0], ccaa)[1:]} ha ganado en {escape(nombre)} todas las generales desde {T.etiqueta(ys[0])}.'
+        else:
+            veces = {c: ganadores.count(c) for c in set(ganadores)}
+            t = (f'Desde {T.etiqueta(ys[0])}, el {tipo_b} ha cambiado de partido más votado {cambios} {"vez" if cambios == 1 else "veces"}: '
+                 + ', '.join(f'{art_partido(c, ccaa)} ganó en {k}' for c, k in sorted(veces.items(), key=lambda x: -x[1])) + f' de {len(ys)} elecciones.')
+        dp = s[ys[-1]]['part'] - s[ys[0]]['part']
+        t += f' La participación ha pasado del {pct(s[ys[0]]["part"])} en {T.etiqueta(ys[0])} al {pct(s[ys[-1]]["part"])} en 2023.'
+        falta = [T.etiqueta(y) for y in TB.ELEC if not s[y]]
+        h.append('<h2>De 2004 a 2023</h2>' + p_('Dato', t)
+                 + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}, generales de 2004 a 2023',
+                         ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas)
+                 + '<p class="leyenda">Con las secciones censales de 2023: los resultados de cada elección son los de las secciones que ya existían con el mismo código. '
+                 + (f'No se muestran {", ".join(falta)} porque entonces faltaba más del 20 % del censo actual (secciones creadas o renumeradas después). ' if falta else '')
+                 + 'Las familias agrupan a cada partido con sus antecesores y coaliciones (Podemos, IU y Sumar; Junts y CiU).</p>')
+
+    # quién vive: tabla
+    filas = [['Habitantes (2023)', num(dm['poblacion']), num(dc['poblacion'])],
+             ['Edad media', dato_demo(dm['edad_media'], lambda v: f'{v:.1f}'.replace('.', ',')), dato_demo(dc['edad_media'], lambda v: f'{v:.1f}'.replace('.', ','))],
+             ['Menores de 18 años', dato_demo(dm['menores18'], pct), dato_demo(dc['menores18'], pct)],
+             ['65 años o más', dato_demo(dm['mayores65'], pct), dato_demo(dc['mayores65'], pct)],
+             ['Nacionalidad extranjera', dato_demo(dm['extranjeros'], pct), dato_demo(dc['extranjeros'], pct)],
+             ['Nacidos fuera de España (2021)', dato_demo(dm['nacidos_fuera_2021'], pct), dato_demo(dc['nacidos_fuera_2021'], pct)],
+             ['Con estudios superiores (2021)', dato_demo(dm['estudios_sup_2021'], pct), dato_demo(dc['estudios_sup_2021'], pct)],
+             ['Tasa de paro (2021)', dato_demo(dm['paro_2021'], pct), dato_demo(dc['paro_2021'], pct)],
+             ['Renta neta por unidad de consumo', dato_demo(dm['renta_uc'], euros), dato_demo(dc['renta_uc'], euros)],
+             ['Renta neta por habitante', dato_demo(dm['renta_pc'], euros), dato_demo(dc['renta_pc'], euros)],
+             ['Bajo el umbral de pobreza relativa', dato_demo(dm['pobreza'], pct), dato_demo(dc['pobreza'], pct)]]
+    h.append('<h2>Quién vive en el ' + tipo_b + '</h2>'
+             + tabla(f'Población, edad, origen, estudios y renta de {escape(nombre)} y de {escape(ciudad)}', ['', escape(nombre), escape(ciudad)], filas)
+             + '<p class="leyenda">Medias de las secciones del barrio ponderadas por su población. Padrón y Atlas de Distribución de Renta de los Hogares del INE (2023); '
+               'estudios, paro y lugar de nacimiento, del censo de población de 2021. La relación entre estas cifras y el voto es entre barrios, no entre personas.</p>')
+
+    # otros barrios
+    mismos = [x for x in fichas if x is not b and b['distrito'] and x['distrito'] == b['distrito']]
+    li = [f'<li><a href="{raiz}{ruta_barrio(cod, x)}">{escape(x["nombre"])}</a>: {art_partido(T.ganador(x["r"]), ccaa)}, participación del {pct(x["r"]["part"])}</li>' for x in mismos]
+    if li:
+        h.append(f'<h2>Otros barrios del distrito de {escape(b["distrito"])}</h2><ul>' + ''.join(li) + '</ul>')
+    h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}{CIUDADES[cod]}#barrios">Todos los {tipos} de {escape(ciudad)}</a></li>'
+             f'<li><a href="{raiz}{CIUDADES[cod]}">Elecciones en {escape(ciudad)}, desde 1977</a></li>'
+             f'<li><a href="{raiz}elecciones/participacion-electoral-por-barrio/">Participación electoral por barrio en toda España</a></li>'
+             f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li></ul>')
+    h.append(bloque_metodo_barrio(tipo_b))
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def bloque_metodo_barrio(tipo_b):
+    return (f'<h2>Método y fuentes</h2><dl class="ficha">'
+            f'<dt>Qué es el {tipo_b}</dt><dd>Los límites de barrios y distritos son los de OpenStreetMap (© colaboradores de OpenStreetMap, '
+            '<a href="https://opendatacommons.org/licenses/odbl/">licencia ODbL</a>), que en la mayoría de ciudades copian la división oficial del ayuntamiento. '
+            'Cada sección censal del INE se asigna al barrio con el que comparte más superficie; las que caen menos de la mitad dentro de un barrio no se asignan. '
+            'Como las secciones no siempre siguen los límites de los barrios, alguna manzana del borde puede quedar en el barrio vecino.</dd>'
+            '<dt>Datos</dt><dd>Resultados oficiales por mesa del Ministerio del Interior (Infoelectoral) agregados por sección censal, sin el voto de los residentes en el extranjero (CERA). '
+            'Renta y población: Atlas de Distribución de Renta de los Hogares y padrón del INE (2023); estudios, paro y lugar de nacimiento: censo de población de 2021.</dd>'
+            '<dt>Cómo se calcula</dt><dd>Porcentajes sobre voto válido (candidaturas más votos en blanco), sumando votos de las secciones, no promediando porcentajes. '
+            f'Participación: votantes entre censo. Agrupación de partidos y límites: <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.</dd>'
+            f'<dt>Datos abiertos</dt><dd>Las cifras salen de las <a href="{RAIZ_REL}generales-2026/metodologia.html#descargas">descargas del mapa</a> (CSV, licencia <a href="{LICENCIA}">CC BY 4.0</a>); '
+            f'la relación entre secciones y barrios está en <a href="{atlas.REPO}/blob/main/data/barrios/secciones_barrio.csv">data/barrios/secciones_barrio.csv</a>.</dd>'
+            f'<dt>Autoría y revisión</dt><dd><a href="{RAIZ_REL}sobre-mi.html">{esquema.FIRMA}</a>. Publicado el {fecha(BARRIOS_PUBLICADO)}; actualizado el {fecha(max(ACTUALIZADO, BARRIOS_PUBLICADO))}. '
+            f'<a href="{RAIZ_REL}atlas/politica-editorial/">Política editorial</a> · <a href="{RAIZ_REL}atlas/correcciones/">Correcciones</a></dd></dl>')
+
+
+def bloque_barrios(cod, nombre, todos):
+    """Bloque de la ficha del municipio con la tabla de sus barrios y el enlace a cada ficha."""
+    fichas = [b for b in todos if b['ficha']]
+    if len(fichas) < 2:
+        return ''
+    tipos = 'barrios' if fichas[0]['nivel'] == 10 else 'distritos'
+    ccaa = PROV_CCAA[cod[:2]]
+    con_d = any(b['distrito'] for b in fichas)
+    orden = sorted(fichas, key=lambda b: (slug(b['distrito'] or ''), slug(b['nombre'])))
+    filas = []
+    for b in orden:
+        g = T.ganador(b['r'])
+        filas.append([f'<a href="{b["slug"]}/">{escape(b["nombre"])}</a>'] + ([escape(b['distrito'] or '—')] if con_d else [])
+                     + [pct(b['r']['part']), f'<span style="color:{T.COLOR[g]}">■</span> {escape(T.NOMBRE[g])} ({pct(b["r"]["pct"][g])})',
+                        euros(b['demo']['renta_uc']) if b['demo']['renta_uc'] else '—'])
+    part = sorted(fichas, key=lambda b: -b['r']['part'])
+    sin = [b['nombre'] for b in todos if not b['ficha']]
+    txt = (f'{escape(nombre)} tiene ficha propia para {num(len(fichas))} {tipos}, con el voto de cada sección censal, la renta y quién vive en ellos. '
+           f'En 2023 el que más votó fue <a href="{part[0]["slug"]}/">{escape(part[0]["nombre"])}</a> ({pct(part[0]["r"]["part"])}) y el que menos, '
+           f'<a href="{part[-1]["slug"]}/">{escape(part[-1]["nombre"])}</a> ({pct(part[-1]["r"]["part"])}).')
+    return (f'<h2 id="barrios">{tipos.capitalize()} de {escape(nombre)}</h2>' + p_('Dato', txt)
+            + tabla(f'Generales de 2023 en cada {tipos[:-1]} de {escape(nombre)}', ['Barrio' if tipos == 'barrios' else 'Distrito'] + (['Distrito'] if con_d else [])
+                    + ['Participación', 'Más votado', 'Renta por u. c.'], filas, num_desde=2 if con_d else 1)
+            + (f'<p class="leyenda">Sin ficha propia, por tener menos de {TB.MINIMO} secciones censales: {escape(", ".join(sorted(sin)))}.</p>' if sin else ''))
 
 
 CENSO = pd.read_csv(ROOT / 'data' / 'censo' / 'censo_municipios_2023_2026.csv', dtype={'mun_code': str}).set_index('mun_code')
@@ -1532,6 +1788,8 @@ def sitemap(rutas):
 def llms(resumen):
     li = '\n'.join(f'- [Elecciones en {i["nombre"]}]({BASE}elecciones/{s}/): en 2023, {T.NOMBRE[i["ganador"]]} {pct(i["r"]["pct"][i["ganador"]])}; participación {pct(i["r"]["part"])}.'
                    for s, i in resumen.items())
+    bar = '\n'.join(f'- [Barrios de {_nom(c)}]({BASE}{CIUDADES[c]}#barrios): {num(sum(b["ficha"] for b in bs))} fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.'
+                     for c, bs in BARRIOS.items() if any(b['ficha'] for b in bs))
     return f"""# Elecciones en España por comunidad, provincia y sección censal
 
 > Páginas de entrada de Mapa Electoral: una por comunidad autónoma y por provincia con el resultado de las generales de 2023, la serie de las 16 elecciones al Congreso desde 1977, el voto por renta de las secciones censales y los municipios principales. Más páginas temáticas: el 29N, resultados por municipio, participación por barrio, sección censal y renta. Autor: {esquema.FIRMA}. Datos: Ministerio del Interior e INE, licencia CC BY 4.0.
@@ -1547,6 +1805,9 @@ def llms(resumen):
 
 ## Comunidades autónomas
 {li}
+
+## Barrios de las grandes ciudades
+{bar}
 """
 
 
@@ -1798,6 +2059,7 @@ def temas_indice():
 def main():
     pags, resumen = territorios()
     pags += [pagina_ciudad(c) for c in CIUDADES]
+    pags += [pagina_barrio(c, b, bs) for c, bs in BARRIOS.items() for b in bs if b['ficha']]
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_resultados(resumen)]
