@@ -15,7 +15,7 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 - Página «Sobre mí» (`sobre-mi.html`, `sobre-mi-ca.html`): nombre, biografía, cargo y enlaces en `AUTHOR_*` de `src/seo.py`; la firma de la pieza está en los dos `*_body.html`.
 - Verificación en Google Search Console y Bing Webmaster Tools: pega el código en `GOOGLE_VERIFICATION` y `BING_VERIFICATION` de `src/seo.py` y vuelve a ejecutarlo.
 - `data/`: datos limpios por sección y municipio (CSV y GeoJSON).
-- `data/empleo/`: ocupados por sector de actividad (4 sectores por sección censal y municipio; secciones A–U de la CNAE en municipios de 500 habitantes o más) del Censo anual de población del INE, 2021-2023, generados con `src/empleo_ine.py`. Incluye también el empleo público por provincia y administración (Registro Central de Personal, enero de 2026, `src/empleo_publico.py`). Fuente y límites en `data/empleo/LEEME.md`.
+- `data/empleo/`: ocupados por sector de actividad (4 sectores por sección censal y municipio; secciones A–U de la CNAE en municipios de 500 habitantes o más) del Censo anual de población del INE, 2021-2023, generados con `src/empleo_ine.py`. Incluye también el empleo público por provincia, administración, sector, sexo y tipo de personal, semestral de 2023 a 2026 (Registro Central de Personal, `src/empleo_publico.py`). Fuente y límites en `data/empleo/LEEME.md`.
 - `src/`: scripts en Python y plantillas con los que se han generado los datos y las páginas.
 
 ## Girona, sección a sección
