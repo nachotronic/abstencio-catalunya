@@ -1397,6 +1397,26 @@ PIEZAS = [
                   pie='Porcentaje que cita la inmigración entre los tres principales problemas de España, según el voto en 2023, de diciembre a junio y en septiembre y octubre.',
                   fuente='CIS. Cálculo propio'),
     ),
+    dict(
+        slug='barrios-rentistas-pp-psoe-29n', fecha='2026-10-22',
+        titulo='En los barrios de rentistas, el PP saca el 51% y el PSOE, el 21%', serie='29n',
+        descripcion='En los códigos postales donde dividendos, intereses y alquileres son más del 10% de la renta declarada a Hacienda, el PP dobló al PSOE en 2023. Donde no llegan al 4%, ganó el PSOE. Vox sacó lo mismo en unos y otros. Del barrio de Salamanca a Entrevías, de Pedralbes a Torreblanca.',
+        compara='El peso de las rentas del capital (capital mobiliario e inmuebles no afectos a actividades) en la renta bruta declarada en el IRPF de 2023, en 859 códigos postales de 66 grandes municipios y en 2.910 municipios de más de 1.000 habitantes, con el voto de las generales de julio de 2023: por código postal (sumando las secciones censales que caen en cada uno), en cinco grupos de menos a más peso del capital; por municipio, en diez tramos; dentro de cada ciudad y provincia, a igual renta media, con regresiones con efectos fijos de ciudad o provincia y errores estándar agrupados.',
+        limites='Son datos de barrios y municipios, no de personas: no dicen cómo vota quien cobra rentas del capital. Hacienda no publica datos por sección censal; el código postal solo existe en las grandes ciudades y agrupa los códigos con menos de 900 declaraciones. Las secciones se asignan al código postal donde cae la mayor parte de su superficie, con contornos del CNIG de 2015 (en el 88% de las secciones, más del 80% del área cae en un solo código). Son cifras de declarantes, no de toda la población. No incluye el País Vasco ni Navarra, con Hacienda propia, ni los municipios de menos de 1.000 habitantes. Los inmuebles incluyen la renta imputada por segundas viviendas. Cataluña se analiza aparte por su sistema de partidos. En Madrid y Sevilla, a igual renta, el capital no añade diferencia.',
+        calculo='Voto: porcentaje sobre votos válidos; participación, sobre el censo. Rentas del capital: capital mobiliario más rentas de bienes inmuebles no afectos a actividades económicas, sobre la renta bruta. Grupos: códigos postales con al menos 1.000 declaraciones fuera de Cataluña (662 de 54 ciudades) en cinco grupos de tamaño parecido; municipios fuera de Cataluña (2.441) en diez tramos. Regresiones por mínimos cuadrados con efectos fijos de ciudad (códigos postales) o de provincia (municipios) y errores estándar agrupados por ciudad o provincia; margen de error al 95%.',
+        fuentes=[('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfCodPostal/2023/home.html', 'Agencia Tributaria, Estadística de los declarantes del IRPF de los mayores municipios por código postal, 2023'),
+                 ('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfmunicipios/2023/home.html', 'Agencia Tributaria, Estadística de los declarantes del IRPF por municipios, 2023'),
+                 INTERIOR,
+                 ('https://centrodedescargas.cnig.es/CentroDescargas/', 'CNIG, códigos postales (CartoCiudad), vía github.com/inigoflores/ds-codigos-postales'),
+                 ('https://www.ine.es/ss/Satellite?L=es_ES&c=Page&cid=1259952026632&p=1259952026632&pagename=ProductosYServicios%2FPYSLayout', 'INE, contornos de las secciones censales 2023'),
+                 ('http://piketty.pse.ens.fr/files/Piketty2018.pdf', 'Thomas Piketty, Brahmin Left vs Merchant Right, World Inequality Lab WP 2018/7'),
+                 ('https://forbes.es/ultima-hora/991239/sumar-lleva-una-propuesta-al-congreso-para-subir-el-irpf-a-las-rentas-del-ahorro-a-partir-de-los-50-000-euros/', 'Europa Press en Forbes, Sumar lleva al Congreso subir el IRPF a las rentas del ahorro desde 50.000 euros (30-7-2026)'),
+                 ('https://www.bolsamania.com/noticias_print/economia/economia--feijoo-organiza-hoy-un-acto-contra-el-infierno-fiscal-de-sanchez-el-mismo-dia-que-se-inicia-la-renta--22254324.html', 'Europa Press en Bolsamanía, Feijóo organiza un acto contra «el infierno fiscal» de Sánchez (8-4-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/barrios-rentistas-pp-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano recoge unas llaves junto a un fajo de contratos, un edificio de viviendas y una urna transparente.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1957,6 +1977,7 @@ PIEZAS += [
 ANTETITULOS = {
     'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
+    'barrios-rentistas-pp-psoe-29n': 'Dividendos y alquileres',
     'casas-vacias-segundas-residencias': 'La casa cerrada',
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
     'oficios-y-voto-municipios-29n': 'El despacho y la urna',
