@@ -102,3 +102,7 @@ La señal que funciona es la fuerza relativa de cada territorio en las europeas 
 ## 13. Modelos de referencia y preregistro (22/10/2026)
 
 El backtest compara el motor con «repetir» (generales anteriores) y «aditivo» (misma subida en puntos en todas las provincias). A 38 días, escaños mal puestos: repetir 49 y 52, aditivo 36 y 28, motor 34 y 27 (10N-2019 y 23J-2023); CRPS de escaños 54,7 y 40,3 frente a 55,9 y 40,8 del aditivo. El motor gana a las dos, a la aditiva por poco. `PREREGISTRO.md` (borrador) fija modelo, calendario, métricas y referencias para evaluar el 29N; queda pendiente del visto bueno de Nacho.
+
+## 14. Clima (22/10/2026)
+
+`src/clima.py`: lluvia del día de 14 generales (1982-2023) por municipio con NASA POWER (MERRA-2) y regresión con efectos fijos de municipio y provincia × elección (96.718 observaciones). Que llueva baja la participación 0,25 puntos (error típico 0,15) y no mueve el voto al PP (+0,09; 0,20) ni al PSOE (−0,07; 0,19). Coincide con Artés (2014). Efecto en escaños: menos de uno. No entra en el motor.
