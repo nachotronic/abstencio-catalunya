@@ -35,6 +35,14 @@ class Encuestas(unittest.TestCase):
         self.assertEqual(np.count_nonzero(c[:, motor.LISTAS_V1.index('Aliança')]), 4)
         self.assertTrue((c[cat, motor.LISTAS_V1.index('Aliança')] > 0).all())
 
+    @unittest.skipUnless(motor.EUROPEAS2024.exists(), 'falta europeas2024_secciones.csv')
+    def test_vox_en_tenerife(self):
+        # en 2023 se anuló su candidatura al Congreso en Santa Cruz de Tenerife: no puede partir de cero en 2026
+        provs, cuotas, _, _ = motor.base_v1()
+        self.assertGreater(cuotas[provs.index('38'), motor.LISTAS_V1.index('Vox')], 0.03)
+        factor, _ = motor.senal_europeas(provs)
+        self.assertTrue(all(np.isfinite(f).all() for f in factor.values()))
+
 
 if __name__ == '__main__':
     unittest.main()

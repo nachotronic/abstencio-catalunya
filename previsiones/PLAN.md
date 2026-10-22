@@ -72,3 +72,17 @@ fuentes ──ETL──► datos/limpios (versionados, con pruebas)
 - `src/encuestas.py`: media ponderada (última encuesta de cada encuestadora en 28 días; peso por antigüedad, vida media de 10 días, y por muestra) con la tabla de equivalencias de ChatGPT. Error de la media cinco días antes de la elección: 10N-2019, Vox −2,8 y Cs +2,5 puntos; 23J-2023, PSOE −3,4. Se resume en error ≈ 0,475·raíz(voto): unos 2,6 puntos para un partido del 30 %.
 - `src/motor.py --encuestas <media.json>` (v1): parte de 2023 por provincia con Sumar repartido entre Sumar (FA) y Podemos (base 2026), SALF según su índice de las europeas y Aliança según el Parlament 2024; cada lista sube o baja en proporción hasta clavar la media nacional. Error nacional por lista con esa regla, ampliado un 25 % por las semanas que faltan y acotado al 30 %; el error reparte voto entre listas sin cambiar el total. Escribe en la carpeta de trabajo `previsiones/salidas/`, no en la web.
 - Límites: subida proporcional (sin señal local ni regional), errores de partido independientes entre sí, Senado con voto de lista y Aliança sin cifra en casi ninguna encuesta (se mantiene su voto de 2024).
+
+## 9. Señal local: europeas sí, municipales no (22/10/2026)
+
+`src/senal_local.py` prueba, con el voto real de cada partido por provincia (o en España) dado, si una elección intermedia mejora el reparto frente a la subida proporcional desde las generales anteriores. Error medio en puntos:
+
+| Prueba | Proporcional | Con la intermedia (α = 0,5) |
+|---|---|---|
+| Provincias, 2011 → 2015 con europeas 2014 | 2,85 | 1,89 |
+| Provincias, 2016 → 2019-N con europeas 2019 | 2,79 | 1,87 |
+| Secciones, 2011 → 2015 con europeas 2014 | 3,30 | 2,37 |
+| Secciones, 2016 → 2019-N con europeas 2019 | 2,52 | 1,99 |
+| Secciones, 2019-N → 2023 con municipales 2023 | 2,83 | 4,23 (empeora) |
+
+La señal que funciona es la fuerza relativa de cada territorio en las europeas frente a las generales anteriores, a media potencia (α = 0,5, el mejor valor en las dos pruebas). Las municipales empeoran el reparto (pesan los candidatos locales). Para el 29N se aplica la de las europeas de 2024 a PP, PSOE, Vox y el espacio Sumar-Podemos en el motor v1, por provincia. Corrige además a Vox en Santa Cruz de Tenerife, donde en 2023 no tuvo candidatura al Congreso y el motor lo dejaba a cero. Autonómicas: sin datos por sección en el repositorio; quedan para después.
