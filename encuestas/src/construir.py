@@ -168,9 +168,10 @@ def estimacion():
                   f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.')
     if izq:
         frase += f' Los socios de la investidura de 2023 llegan a 176 en el {prob(izq["p_mayoria"])}.'
-    html_b = f"""<h2>Estimación de Mapa Electoral</h2>
+    html_b = f"""<h2>Estimación propia de Mapa Electoral</h2>
+<p class="propio"><b>Modelo propio, no es una encuesta.</b> Todo lo anterior son cifras publicadas por las encuestadoras. Esto es un cálculo de Mapa Electoral: junta esas encuestas, las reparte por provincia y simula el resultado miles de veces.</p>
 <p>{frase}</p>
-<figure><figcaption><span class="t">Congreso: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
+<figure><figcaption><span class="t">Congreso según nuestro modelo: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
 <div class="chart" id="hemi-modelo"></div></figure>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. {html.escape(meta.get('aviso', ''))} <a href="metodo-modelo.html">Cómo se calcula</a> · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
@@ -219,15 +220,28 @@ def textos(encs, hoy):
     return titular, entradilla, p1, p2, ultimas, con_esc, mayoria
 
 
+MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+
+
+def dia(iso, anio=False):
+    d = date.fromisoformat(iso)
+    return f'{d.day} {MESES[d.month - 1]}' + (f' {d.year}' if anio else '')
+
+
+def fechas_celda(e):
+    """Fecha de publicación; si no consta (encuestas que solo recoge Wikipedia), fin del trabajo de campo con asterisco."""
+    iso = e.get('publicado') or e['fin']
+    return dia(iso, date.fromisoformat(iso).year != date.today().year) + ('' if e.get('publicado') else '*')
+
+
 def fila_tabla(e):
     casa = html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
     enlace = f'<a href="{html.escape(e["url"])}">{casa}</a>' if e['url'] else casa
-    f = date.fromisoformat(e['fin'])
-    campo = f'{f.day}/{f.month}' + ('*' if e['fin_aprox'] else '')
+    campo = fechas_celda(e)
     muestra = f'{int(e["muestra"]):,}'.replace(',', '.') if str(e['muestra']).isdigit() else '–'
     celdas = ''.join(f'<td class="n">{str(e["voto"][k]).replace(".", ",") if k in e["voto"] else "–"}'
                      + (f'<small>{e["esc"][k]}</small>' if k in e['esc'] else '') + '</td>' for k, *_ in PRINCIPALES)
-    return f'<tr><td>{enlace}</td><td class="n">{campo}</td><td class="n">{muestra}</td>{celdas}</tr>'
+    return f'<tr><td>{enlace}</td><td class="n fecha">{campo}</td><td class="n">{muestra}</td>{celdas}</tr>'
 
 
 ESTILOS = """<style>
@@ -256,6 +270,7 @@ table{border-collapse:collapse;font-family:var(--ui);font-size:.9rem;width:100%;
 th,td{text-align:left;padding:.35rem .4rem;border-bottom:1px solid var(--rule);vertical-align:top}
 th{font-weight:600;font-size:.8rem;color:var(--muted);white-space:nowrap}
 td.n,th.n{text-align:right;white-space:nowrap}
+td.fecha{font-size:.85rem}
 td small{display:block;color:var(--muted);font-size:.75rem}
 td .medio{display:block;color:var(--muted);font-size:.8rem}
 td a{color:var(--fg);text-decoration-color:var(--rule)}
@@ -265,6 +280,7 @@ details{font-family:var(--ui);margin-top:.6rem} summary{cursor:pointer;color:var
 a{color:var(--acc)}
 .faq h3{font-family:var(--ui);font-size:1.05rem;margin:1.2rem 0 .3rem}
 .descargas{font-family:var(--ui);font-size:.95rem}
+.propio{font-family:var(--ui);font-size:.95rem;background:var(--grid);border-left:3px solid var(--acc);padding:.6rem .8rem;border-radius:4px}
 @media (max-width:520px){body{font-size:17px}table{font-size:.82rem}}
 </style>"""
 
@@ -327,20 +343,21 @@ def main():
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
     datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
-    desde23 = [e for e in encs if e['fin'] >= '2023-07-24']
+    desde23 = sorted((e for e in encs if e['fin'] >= '2023-07-24'), key=lambda e: e.get('publicado') or e['fin'], reverse=True)
     recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
     cab_partidos = ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES)
-    tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Fin campo</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
+    tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
              f'<tbody>{"".join(fila_tabla(e) for e in recientes)}</tbody></table></div>')
     tabla_ant = (f'<details><summary>Ver las {len(anteriores)} encuestas anteriores, desde las generales de 2023</summary><div class="tbl"><table><thead><tr>'
-                 f'<th>Encuestadora y medio</th><th class="n">Fin campo</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
+                 f'<th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
                  f'<tbody>{"".join(fila_tabla(e) for e in anteriores)}</tbody></table></div></details>')
     filas_esc = ''
     for e in sorted(con_esc, key=lambda e: -rango_esc(e['esc']['PP'])[0]):
         lo = rango_esc(e['esc']['PP'])[0] + rango_esc(e['esc']['VOX'])[0]
         hi = rango_esc(e['esc']['PP'])[1] + rango_esc(e['esc']['VOX'])[1]
         suma = str(lo) if lo == hi else f'{lo}-{hi}'
-        nombre = html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
+        nombre = (html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
+                  + f'<span class="medio">Publicada el {fechas_celda(e)}</span>')
         # PP + Vox justo después del nombre, para que se vea en el móvil sin desplazar la tabla
         filas_esc += (f'<tr{" class=mayoria" if lo >= 176 else ""}><td>{nombre}</td><td class="n suma">{suma}</td>'
                       + ''.join(f'<td class="n">{e["esc"].get(k, "–")}</td>' for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS')) + '</tr>')
@@ -401,7 +418,7 @@ def main():
 {tabla_esc}
 {bloque_modelo or ''}
 <h2>Las últimas {VISIBLES} encuestas</h2>
-<p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. Un asterisco en la fecha indica que no consta el trabajo de campo y se toma la publicación menos tres días.</p>
+<p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. La fecha es la de publicación; con asterisco, la del final del trabajo de campo cuando la publicación no consta.</p>
 {tabla}
 {tabla_ant}
 <h2>Preguntas rápidas</h2>
