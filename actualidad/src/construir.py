@@ -12,7 +12,7 @@ import datetime, html, json, os, re, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, 'src'))
-from territorios_rutas import enlaces_actualidad  # noqa: E402  páginas por territorio y tema de /elecciones/
+from territorios_rutas import enlaces_actualidad, bloque_municipios_pieza  # noqa: E402  páginas por territorio, municipio y tema
 SRC = os.path.join(RAIZ, 'actualidad', 'src')
 BASE = 'https://mapaelectoral.es'
 # Editor de todo el sitio: el mismo objeto que atlas/src/paginas.py y src/seo.py
@@ -2123,6 +2123,10 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 .tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
 .tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
 .etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+aside.municipios-pieza{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:4px 16px 12px;margin:2rem 0;font-family:var(--ui)}
+aside.municipios-pieza h2{font-size:1.1rem;margin:.8rem 0 .3rem}aside.municipios-pieza p{font-size:.92rem;color:var(--muted);margin:0 0 .5rem}
+aside.municipios-pieza ul{columns:2 14rem;column-gap:2rem;margin:0;padding-left:1.1rem}aside.municipios-pieza li{break-inside:avoid;margin:2px 0}
+aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 @media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>"""
 
@@ -2134,7 +2138,8 @@ def fecha_larga(f):
 
 
 def nav(prefijo, actual):
-    items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('encuestas/', 'Encuestas'), ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
+    items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'),
+             ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
              ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
              ('sobre-mi.html', 'Sobre mí')]
     out = f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{prefijo}">Mapa Electoral</a>'
@@ -2201,7 +2206,13 @@ CA = [
     ('<dt>Fuentes</dt>', '<dt>Fonts</dt>'), ('<dt>Autoría</dt>', '<dt>Autoria</dt>'), ('<dt>Revisión de datos y texto</dt>', '<dt>Revisió de dades i text</dt>'),
     ('<dt>Publicado · actualizado</dt>', '<dt>Publicat · actualitzat</dt>'), ('<dt>Correcciones</dt><dd>Ninguna.</dd>', '<dt>Correccions</dt><dd>Cap.</dd>'), ('<dt>Correcciones</dt>', '<dt>Correccions</dt>'),
     ('<span class="kicker">Estás aquí</span>', '<span class="kicker">Ets aquí</span>'), ('<p class="mas-datos">Más datos: ', '<p class="mas-datos">Més dades (en castellà): '),
-    ('<h2>Sigue leyendo</h2>', '<h2>Segueix llegint</h2>'), ('<span class="kicker">Encuestas</span><b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b>', '<span class="kicker">Enquestes</span><b>Enquestes de les eleccions generals del 29N: totes, amb els escons, actualitzades cada dia (en castellà)</b>'), ('<b>Todas las piezas de actualidad</b>', "<b>Totes les peces d'actualitat</b>"),
+    ('<h2>Sigue leyendo</h2>', '<h2>Segueix llegint</h2>'),
+    ('<h2>Ver datos de este municipio en el mapa</h2>', "<h2>Veure les dades d'aquest municipi al mapa</h2>"),
+    ('<h2>Ver datos de estos municipios en el mapa</h2>', "<h2>Veure les dades d'aquests municipis al mapa</h2>"),
+    ('<p>El municipio que aparece en esta pieza: resultados por sección censal, voto por renta y las generales desde 1977 en su página, o calle a calle en el mapa.</p>',
+     '<p>El municipi que surt en aquesta peça: resultats per secció censal, vot per renda i les generals des del 1977 a la seva pàgina (en castellà), o carrer a carrer al mapa.</p>'),
+    ('<p>Los municipios que aparecen en esta pieza: resultados por sección censal, voto por renta y las generales desde 1977 en su página, o calle a calle en el mapa.</p>',
+     '<p>Els municipis que surten en aquesta peça: resultats per secció censal, vot per renda i les generals des del 1977 a la seva pàgina (en castellà), o carrer a carrer al mapa.</p>'), ('<span class="kicker">Encuestas</span><b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b>', '<span class="kicker">Enquestes</span><b>Enquestes de les eleccions generals del 29N: totes, amb els escons, actualitzades cada dia (en castellà)</b>'), ('<b>Todas las piezas de actualidad</b>', "<b>Totes les peces d'actualitat</b>"),
     ('Datos con licencia', 'Dades amb llicència'), ('>Código y datos<', '>Codi i dades<'), ('>Política editorial<', '>Política editorial<'),
 ]
 
@@ -2269,8 +2280,10 @@ def pieza(p, todas):
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola
         sigue = ENCUESTAS_SIGUE + sigue
     terr = enlaces_actualidad(p['slug'], '../../')
+    municipios = bloque_municipios_pieza(main, p['slug'], '../../')   # «Ver datos de estos municipios en el mapa», con los que nombra la pieza
     mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
-    ficha = f"""<h2>Método y fuentes</h2>
+    ficha = f"""{municipios}
+<h2>Método y fuentes</h2>
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>{p['compara']}</dd>
 <dt>Límites</dt><dd>{p['limites']}</dd>
