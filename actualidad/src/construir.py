@@ -1253,7 +1253,7 @@ PIEZAS = [
     ),
     dict(
         slug='voto-autonomos-secciones-29n', fecha='2026-10-22',
-        titulo='Donde más autónomos viven, el PP saca 13 puntos al PSOE', serie='29n',
+        titulo='En los barrios con más autónomos, el PP saca 13 puntos al PSOE', serie='29n',
         descripcion='En los barrios con más trabajadores por cuenta propia, el PP sacó en 2023 un 41% y el PSOE un 28%; donde menos, al revés. Pasa con la misma renta, en Sevilla y en los pueblos. En Cataluña ese voto va a Junts. Vox, en cambio, no se mueve.',
         compara='El porcentaje de ocupados por cuenta propia de cada una de las 34.257 secciones censales (Censo anual 2023, por lugar de residencia) con el voto de cada sección en las generales de julio de 2023, en cinco grupos con el mismo número de votantes; dentro de cada nivel de renta; en siete ciudades, en los municipios de menos de 10.000 habitantes, en Galicia, Cataluña y el País Vasco. Y el recuerdo de voto de asalariados y trabajadores por cuenta propia en la encuesta postelectoral del CIS.',
         limites='Son datos por sección, no por persona: no dicen cómo vota cada autónomo. El censo cuenta a los ocupados donde viven, no donde trabajan. Cuenta propia incluye empresarios con asalariados, cooperativistas y ayudas familiares, y no equivale al alta en el RETA. Solo se ha separado la renta; la edad, el tamaño del municipio o los estudios pueden explicar parte de la diferencia. Se excluye Santa Cruz de Tenerife, donde Vox no presentó lista en 2023. La encuesta del CIS tiene 828 trabajadores por cuenta propia que recuerdan su voto.',
