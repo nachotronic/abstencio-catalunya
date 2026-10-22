@@ -2095,7 +2095,7 @@ CA = [
     ('<dt>Fuentes</dt>', '<dt>Fonts</dt>'), ('<dt>Autoría</dt>', '<dt>Autoria</dt>'), ('<dt>Revisión de datos y texto</dt>', '<dt>Revisió de dades i text</dt>'),
     ('<dt>Publicado · actualizado</dt>', '<dt>Publicat · actualitzat</dt>'), ('<dt>Correcciones</dt><dd>Ninguna.</dd>', '<dt>Correccions</dt><dd>Cap.</dd>'), ('<dt>Correcciones</dt>', '<dt>Correccions</dt>'),
     ('<span class="kicker">Estás aquí</span>', '<span class="kicker">Ets aquí</span>'), ('<p class="mas-datos">Más datos: ', '<p class="mas-datos">Més dades (en castellà): '),
-    ('<h2>Sigue leyendo</h2>', '<h2>Segueix llegint</h2>'), ('<b>Todas las piezas de actualidad</b>', "<b>Totes les peces d'actualitat</b>"),
+    ('<h2>Sigue leyendo</h2>', '<h2>Segueix llegint</h2>'), ('<span class="kicker">Encuestas</span><b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b>', '<span class="kicker">Enquestes</span><b>Enquestes de les eleccions generals del 29N: totes, amb els escons, actualitzades cada dia (en castellà)</b>'), ('<b>Todas las piezas de actualidad</b>', "<b>Totes les peces d'actualitat</b>"),
     ('Datos con licencia', 'Dades amb llicència'), ('>Código y datos<', '>Codi i dades<'), ('>Política editorial<', '>Política editorial<'),
 ]
 
@@ -2108,6 +2108,10 @@ def en_catala(out, p):
         a, m, d = f.split('-')
         out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}')
     return out
+
+
+ENCUESTAS_SIGUE = ('<li><a href="../../encuestas/"><span class="kicker">Encuestas</span>'
+                   '<b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b></a></li>')
 
 
 def pieza(p, todas):
@@ -2156,6 +2160,8 @@ def pieza(p, todas):
                     f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
     sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
+    if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola
+        sigue = ENCUESTAS_SIGUE + sigue
     terr = enlaces_actualidad(p['slug'], '../../')
     mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
     ficha = f"""<h2>Método y fuentes</h2>
@@ -2246,7 +2252,7 @@ a{color:var(--fg)}
 </style>"""
     out = (cabecera('Actualidad', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Actualidad')
-           + f'\n<main><p class="kicker">Mapa Electoral</p><h1>Actualidad</h1><p>{desc} Para las piezas de fondo, el <a href="../atlas/index.html">Atlas de las anomalías electorales</a>.</p>'
+           + f'\n<main><p class="kicker">Mapa Electoral</p><h1>Actualidad</h1><p>{desc} Para las piezas de fondo, el <a href="../atlas/index.html">Atlas de las anomalías electorales</a>; para seguir la campaña, <a href="../encuestas/">todas las encuestas de las elecciones generales</a>, actualizadas cada día.</p>'
            + f'{items}<footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
     open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))

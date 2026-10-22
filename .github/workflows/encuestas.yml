@@ -31,7 +31,7 @@ jobs:
           git add previsiones/datos/encuestas
           if git diff --cached --quiet -- '*.csv'; then echo "Sin encuestas nuevas"; exit 0; fi
           python3 encuestas/src/construir.py
-          git add encuestas
+          git add encuestas index.html generales-2026/src/plantilla.html
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -m "Encuestas: actualización automática $(date -u +%F)"
