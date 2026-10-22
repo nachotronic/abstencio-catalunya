@@ -8,6 +8,8 @@ después por todas las páginas publicadas y:
 - sustituye cada `Person` con el nombre del autor por el mismo objeto completo (con `@id`, cargo,
   universidad y perfiles), para que Google vea una sola persona detrás de todas las piezas;
 - da `@id` al Dataset de la portada y lo enlaza desde las piezas de Actualidad (`isBasedOn`);
+- marca las piezas como `AnalysisNewsArticle` (subtipo de NewsArticle para análisis e interpretación de datos)
+  en vez de `NewsArticle`, también en las páginas que aún no se han regenerado con el tipo nuevo;
 - añade a cada página un bloque `BreadcrumbList` (Inicio › Sección › Pieza), sacado de la ruta
   y del <h1> de cada nivel.
 
@@ -58,6 +60,7 @@ NOMBRES = {
     'atlas/': 'Atlas de las anomalías electorales',
     'actualidad/': 'Actualidad',
     'generales-2026/metodologia.html': 'Metodología del mapa',
+    'encuestas/': 'Encuestas',
 }
 # Página de la que cuelga cada página suelta (las de carpeta cuelgan de la carpeta superior)
 PADRE = {
@@ -122,9 +125,11 @@ def normaliza(o, ruta):
         extra = {k: v for k, v in o.items() if k in ('jobTitle', 'description')}   # la página «Sobre mí» los da en su idioma
         return {**AUTOR, **extra}
     o = {k: normaliza(v, ruta) for k, v in o.items()}
+    if o.get('@type') == 'NewsArticle':
+        o['@type'] = 'AnalysisNewsArticle'
     if o.get('@type') == 'Dataset' and ruta in ('', 'generales-2026/metodologia.html') and 'generales-2026/descargas/' in json.dumps(o):
         o = {'@id': DATASET_ID, **{k: v for k, v in o.items() if k != '@id'}}
-    if o.get('@type') == 'NewsArticle' and ruta.startswith('actualidad/') and ruta != 'actualidad/' and 'isBasedOn' not in o:
+    if o.get('@type') == 'AnalysisNewsArticle' and ruta.startswith('actualidad/') and ruta != 'actualidad/' and 'isBasedOn' not in o:
         o['isBasedOn'] = dict(DATASET_REF)
     if isinstance(o.get('isBasedOn'), dict) and o['isBasedOn'].get('@id') == DATASET_ID:
         o['isBasedOn'] = dict(DATASET_REF)   # las citas incompletas de páginas anteriores también
@@ -174,7 +179,7 @@ def procesa(f):
 
 def paginas():
     yield from sorted(ROOT.glob('*.html'))
-    for d in ('atlas', 'actualidad', 'elecciones', 'generales-2026'):
+    for d in ('atlas', 'actualidad', 'elecciones', 'generales-2026', 'encuestas'):
         yield from sorted((ROOT / d).rglob('*.html'))
 
 

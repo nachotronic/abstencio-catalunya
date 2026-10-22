@@ -244,7 +244,7 @@ def tabla(t):
 
 def ld_pieza(p, ruta):
     revisado = bool(p['revisado'])
-    art = {'@type': 'NewsArticle', '@id': url(ruta) + '#articulo', 'headline': titular(p), 'alternativeHeadline': p['titulo'], 'description': p['resumen'],
+    art = {'@type': 'AnalysisNewsArticle', '@id': url(ruta) + '#articulo', 'headline': titular(p), 'alternativeHeadline': p['titulo'], 'description': p['resumen'],
            'url': url(ruta), 'inLanguage': 'es', 'datePublished': publicado(p), 'image': imagen(p), 'dateModified': actualizado(p),
            'author': AUTOR, 'publisher': MEDIO,
            'isPartOf': {'@type': 'CollectionPage', 'name': SERIES[p['serie']][0], 'url': url(p['serie'] + '/index.html')},
@@ -424,7 +424,7 @@ def portada():
     ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': NOMBRE, 'url': ATLAS_URL, 'inLanguage': 'es', 'author': AUTOR,
           'description': 'Piezas sobre lugares que votan distinto de lo que cabría esperar: excepciones, fronteras, gemelos y escaños decididos por pocos votos.',
           'image': imagen(),
-          'hasPart': [{'@type': 'NewsArticle', 'headline': titular(q), 'url': url(ruta_pieza(q))} for q in TODAS if q['revisado']]}
+          'hasPart': [{'@type': 'AnalysisNewsArticle', 'headline': titular(q), 'url': url(ruta_pieza(q))} for q in TODAS if q['revisado']]}
     h = [cabeza(NOMBRE, ld['description'], 'index.html', ld, nivel=0)]
     h.append(f'<p class="kicker">Periodismo de datos electorales · {len(TODAS)} piezas en {len({q["serie"] for q in TODAS})} series</p><h1>{NOMBRE}</h1>')
     h.append('<p class="resumen">Los resultados generales esconden lugares que votan distinto de lo que cabría esperar por sus vecinos, por los municipios que más se les parecen o por su propia historia. Cada pieza parte de una de esas comparaciones, enseña los datos y separa lo que se sabe de lo que todavía es hipótesis.</p>')
@@ -449,7 +449,7 @@ def pagina_serie(s):
     ps = [q for q in recientes() if q['serie'] == s]
     ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': nombre, 'description': desc, 'url': url(s + '/index.html'),
           'isPartOf': {'@type': 'CollectionPage', 'name': NOMBRE, 'url': ATLAS_URL},
-          'hasPart': [{'@type': 'NewsArticle', 'headline': titular(q), 'url': url(ruta_pieza(q))} for q in ps if q['revisado']]}
+          'hasPart': [{'@type': 'AnalysisNewsArticle', 'headline': titular(q), 'url': url(ruta_pieza(q))} for q in ps if q['revisado']]}
     h = [cabeza(f'{nombre} · {NOMBRE}', desc, s + '/index.html', ld, indexar=any(q['revisado'] for q in ps), nivel=1)]
     h.append(f'<p class="kicker"><a href="../index.html">{NOMBRE}</a> · Serie</p><h1>{escape(nombre)}</h1><p class="resumen">{escape(desc)}</p>')
     h.append(tarjetas(ps, '../'))
@@ -629,8 +629,8 @@ def franja_portada():
             ''.join(f'<li><a href="atlas/{ruta_pieza(q).replace("index.html", "")}">{img(q)}<span class="atlas-k">{escape(SERIES[q["serie"]][0])}</span>'
                     f'<b>{escape(titular(q))}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="atlas/"><b>Las {total} piezas del Atlas →</b><span>Excepciones, fronteras, gemelos, bisagras y más</span></a></li></ul>'
-            '<script>document.querySelectorAll(".del-atlas").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
-            's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
+            '<script>document.querySelectorAll(".del-atlas").forEach(s=>{const u=s.querySelector(".carrusel"),a=s.querySelector(".da-prev"),z=s.querySelector(".da-next"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
+            'if(u&&a&&z){a.onclick=m(-1);z.onclick=m(1)}})</script></section>')
 
 
 def compartir():

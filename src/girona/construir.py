@@ -135,7 +135,7 @@ def seo(lang, analytics, verif):
     t = TEXTS[lang]; other = TEXTS['ca' if lang == 'es' else 'es']
     url = BASE + t['url']
     ld = {'@context': 'https://schema.org', '@graph': [{
-        '@type': 'NewsArticle', '@id': url + '#article', 'headline': t['headline'], 'description': t['desc'], 'inLanguage': lang,
+        '@type': 'AnalysisNewsArticle', '@id': url + '#article', 'headline': t['headline'], 'description': t['desc'], 'inLanguage': lang,
         'url': url, 'mainEntityOfPage': url, 'image': BASE + 'img/compartir/girona.jpg', 'datePublished': PUBLISHED, 'dateModified': MODIFIED,
         'author': {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': 'Nacho G. del Álamo', 'url': BASE + 'sobre-mi.html'},
         'publisher': {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': 'Mapa Electoral', 'url': BASE,
