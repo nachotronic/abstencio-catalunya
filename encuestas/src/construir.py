@@ -168,9 +168,10 @@ def estimacion():
                   f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.')
     if izq:
         frase += f' Los socios de la investidura de 2023 llegan a 176 en el {prob(izq["p_mayoria"])}.'
-    html_b = f"""<h2>Estimación de Mapa Electoral</h2>
+    html_b = f"""<h2>Estimación propia de Mapa Electoral</h2>
+<p class="propio"><b>Modelo propio, no es una encuesta.</b> Todo lo anterior son cifras publicadas por las encuestadoras. Esto es un cálculo de Mapa Electoral: junta esas encuestas, las reparte por provincia y simula el resultado miles de veces.</p>
 <p>{frase}</p>
-<figure><figcaption><span class="t">Congreso: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
+<figure><figcaption><span class="t">Congreso según nuestro modelo: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
 <div class="chart" id="hemi-modelo"></div></figure>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. {html.escape(meta.get('aviso', ''))} <a href="metodo-modelo.html">Cómo se calcula</a> · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
@@ -178,7 +179,7 @@ def estimacion():
 
 
 def pc(v):
-    return f'{v:.1f}'.replace('.', ',') + ' %'
+    return f'{v:.1f}'.replace('.', ',') + '\u00a0%'
 
 
 def textos(encs, hoy):
@@ -219,15 +220,28 @@ def textos(encs, hoy):
     return titular, entradilla, p1, p2, ultimas, con_esc, mayoria
 
 
+MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+
+
+def dia(iso, anio=False):
+    d = date.fromisoformat(iso)
+    return f'{d.day} {MESES[d.month - 1]}' + (f' {d.year}' if anio else '')
+
+
+def fechas_celda(e):
+    """Fecha de publicación; si no consta (encuestas que solo recoge Wikipedia), fin del trabajo de campo con asterisco."""
+    iso = e.get('publicado') or e['fin']
+    return dia(iso, date.fromisoformat(iso).year != date.today().year) + ('' if e.get('publicado') else '*')
+
+
 def fila_tabla(e):
     casa = html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
     enlace = f'<a href="{html.escape(e["url"])}">{casa}</a>' if e['url'] else casa
-    f = date.fromisoformat(e['fin'])
-    campo = f'{f.day}/{f.month}' + ('*' if e['fin_aprox'] else '')
+    campo = fechas_celda(e)
     muestra = f'{int(e["muestra"]):,}'.replace(',', '.') if str(e['muestra']).isdigit() else '–'
     celdas = ''.join(f'<td class="n">{str(e["voto"][k]).replace(".", ",") if k in e["voto"] else "–"}'
                      + (f'<small>{e["esc"][k]}</small>' if k in e['esc'] else '') + '</td>' for k, *_ in PRINCIPALES)
-    return f'<tr><td>{enlace}</td><td class="n">{campo}</td><td class="n">{muestra}</td>{celdas}</tr>'
+    return f'<tr><td>{enlace}</td><td class="n fecha">{campo}</td><td class="n">{muestra}</td>{celdas}</tr>'
 
 
 ESTILOS = """<style>
@@ -256,6 +270,7 @@ table{border-collapse:collapse;font-family:var(--ui);font-size:.9rem;width:100%;
 th,td{text-align:left;padding:.35rem .4rem;border-bottom:1px solid var(--rule);vertical-align:top}
 th{font-weight:600;font-size:.8rem;color:var(--muted);white-space:nowrap}
 td.n,th.n{text-align:right;white-space:nowrap}
+td.fecha{font-size:.85rem}
 td small{display:block;color:var(--muted);font-size:.75rem}
 td .medio{display:block;color:var(--muted);font-size:.8rem}
 td a{color:var(--fg);text-decoration-color:var(--rule)}
@@ -263,8 +278,12 @@ th .pt,td .pt{display:inline-block;width:8px;height:8px;border-radius:50%;margin
 tr.mayoria td.suma{font-weight:700}
 details{font-family:var(--ui);margin-top:.6rem} summary{cursor:pointer;color:var(--muted)}
 a{color:var(--acc)}
-.faq h3{font-family:var(--ui);font-size:1.05rem;margin:1.2rem 0 .3rem}
+.faq details{border-bottom:1px solid var(--rule);margin:0;padding:.2rem 0}
+.faq summary{color:var(--fg)}
+.faq h3{display:inline;font-family:var(--ui);font-size:1.05rem;margin:0}
+.faq details p{margin:.3rem 0 .8rem}
 .descargas{font-family:var(--ui);font-size:.95rem}
+.propio{font-family:var(--ui);font-size:.95rem;background:var(--grid);border-left:3px solid var(--acc);padding:.6rem .8rem;border-radius:4px}
 @media (max-width:520px){body{font-size:17px}table{font-size:.82rem}}
 </style>"""
 
@@ -314,6 +333,32 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dibuja
 </script>"""
 
 
+def franja_portada(titular, med, actual, pre):
+    """Franja «Encuestas» de la portada, entre <!--encuestas:portada-->, justo debajo del mapa: titular y mediana de cada partido."""
+    cifras = ''.join(f'<li><i style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n} <b>{pc(med[k])}</b></li>'
+                     for k, n, c, _ in PRINCIPALES if k in med)
+    return (f'<section class="wide del-atlas del-encuestas" aria-labelledby="h-del-encuestas"><div class="da-cab"><h2 id="h-del-encuestas">'
+            f'<a href="{pre}encuestas/">Encuestas de las elecciones generales</a></h2><span class="de-act">Actualizado el {actual}</span></div>'
+            f'<a class="de-tit" href="{pre}encuestas/">{html.escape(titular)}</a><ul class="de-med">{cifras}</ul>'
+            f'<p class="de-pie">Mediana de la última encuesta de cada encuestadora en las tres últimas semanas. '
+            f'<a href="{pre}encuestas/">Todas las encuestas, los escaños y nuestra estimación →</a></p>'
+            '<style>.del-encuestas .de-act{font:13px var(--sans);color:var(--muted)}.del-encuestas .de-tit{display:block;font:700 clamp(19px,2.4vw,24px)/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:2px 0 8px}'
+            '.del-encuestas .de-tit:hover{text-decoration:underline}.del-encuestas .de-med{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;font:14px var(--sans)}'
+            '.del-encuestas .de-med i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.del-encuestas .de-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}</style></section>')
+
+
+def portada(titular, med, actual):
+    for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
+        if not f.exists():
+            continue
+        t = f.read_text(encoding='utf-8')
+        if '<!--encuestas:portada-->' not in t:   # la franja va justo encima de la de Actualidad
+            t = t.replace('<!--actualidad:ultimas-->', '<!--encuestas:portada--><!--/encuestas:portada-->\n<!--actualidad:ultimas-->', 1)
+        t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->',
+                   lambda m: '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre) + '<!--/encuestas:portada-->', t, flags=re.S)
+        f.write_text(t, encoding='utf-8')
+
+
 def main():
     encs = carga()
     resumen = json.load(open(DATOS / 'resumen.json'))
@@ -327,20 +372,21 @@ def main():
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
     datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
-    desde23 = [e for e in encs if e['fin'] >= '2023-07-24']
+    desde23 = sorted((e for e in encs if e['fin'] >= '2023-07-24'), key=lambda e: e.get('publicado') or e['fin'], reverse=True)
     recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
     cab_partidos = ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES)
-    tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Fin campo</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
+    tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
              f'<tbody>{"".join(fila_tabla(e) for e in recientes)}</tbody></table></div>')
     tabla_ant = (f'<details><summary>Ver las {len(anteriores)} encuestas anteriores, desde las generales de 2023</summary><div class="tbl"><table><thead><tr>'
-                 f'<th>Encuestadora y medio</th><th class="n">Fin campo</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
+                 f'<th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
                  f'<tbody>{"".join(fila_tabla(e) for e in anteriores)}</tbody></table></div></details>')
     filas_esc = ''
     for e in sorted(con_esc, key=lambda e: -rango_esc(e['esc']['PP'])[0]):
         lo = rango_esc(e['esc']['PP'])[0] + rango_esc(e['esc']['VOX'])[0]
         hi = rango_esc(e['esc']['PP'])[1] + rango_esc(e['esc']['VOX'])[1]
         suma = str(lo) if lo == hi else f'{lo}-{hi}'
-        nombre = html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
+        nombre = (html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
+                  + f'<span class="medio">Publicada el {fechas_celda(e)}</span>')
         # PP + Vox justo después del nombre, para que se vea en el móvil sin desplazar la tabla
         filas_esc += (f'<tr{" class=mayoria" if lo >= 176 else ""}><td>{nombre}</td><td class="n suma">{suma}</td>'
                       + ''.join(f'<td class="n">{e["esc"].get(k, "–")}</td>' for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS')) + '</tr>')
@@ -356,16 +402,44 @@ def main():
     tabla_esc = ('<div class="tbl"><table><thead><tr><th>Encuestadora</th><th class="n">PP + Vox</th>'
                  + ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES[:5])
                  + f'</tr></thead><tbody>{filas_esc}</tbody></table></div>') if con_esc else ''
-    ult = encs[0]
+    ult = next(e for e in desde23 if not e['reest'])
+    cis = next((e for e in encs if e['casa'] == 'CIS' and not e['reest']), None)
+    med = serie[-1]
+    n_desde23 = sum(1 for e in desde23 if not e['reest'])
     faq = [('¿Quién gana las elecciones generales según las encuestas?', p1.strip()),
            ('¿Cuál es la última encuesta de las generales?',
-            f'La última encuesta con trabajo de campo terminado es la de {ult["casa"]}{" para " + ult["medio"] if ult["medio"] else ""}, '
-            f'cerrada el {fecha_larga(ult["fin"])}: PP {pc(ult["voto"]["PP"])}, PSOE {pc(ult["voto"]["PSOE"])}'
+            f'La última publicada es la de {ult["casa"]}{" para " + ult["medio"] if ult["medio"] else ""}'
+            + (f', del {fecha_larga(ult["publicado"])}' if ult.get('publicado') else '') + f': PP {pc(ult["voto"]["PP"])}, PSOE {pc(ult["voto"]["PSOE"])}'
             + (f', Vox {pc(ult["voto"]["VOX"])}' if 'VOX' in ult['voto'] else '') + '.'),
            ('¿Suman mayoría absoluta PP y Vox en las encuestas?', p2 or 'Las encuestas recientes no publican escaños.'),
+           ('¿Cuánto saca cada partido de media?',
+            'La mediana de la última encuesta de cada encuestadora en las tres últimas semanas da: '
+            + ', '.join(f'{n} {pc(med[k])}' for k, n, *_ in PRINCIPALES if k in med) + '. Es un resumen de las encuestas, no una previsión.'),
+           ('¿Qué dice la última encuesta del CIS?',
+            f'El CIS publicó su última estimación el {fecha_larga(cis["publicado"] or cis["fin"])}: '
+            + ', '.join(f'{n} {pc(cis["voto"][k])}' for k, n, *_ in PRINCIPALES[:4] if k in cis['voto'])
+            + '. Su estimación suele apartarse del resto de encuestadoras, sobre todo en el PSOE.') if cis else None,
+           ('¿Qué estima el modelo de Mapa Electoral?',
+            f'Nuestro modelo propio, que junta las encuestas y simula el reparto por provincia, da en su escenario central '
+            + ', '.join(f'{NOMBRE[k]} {v}' for k, v in sorted(hemi_m.items(), key=lambda x: -x[1])[:5])
+            + f' escaños; PP y Vox sumarían {hemi_m.get("PP", 0) + hemi_m.get("VOX", 0)}. Es una estimación con margen amplio, no una encuesta.') if hemi_m else None,
+           ('¿Cuándo son las próximas elecciones generales?',
+            'El domingo 29 de noviembre de 2026. Se eligen los 350 diputados del Congreso y los senadores; la mayoría absoluta del Congreso está en 176 escaños.'),
+           ('¿Hasta cuándo se pueden publicar encuestas?',
+            'La ley electoral (artículo 69.7 de la LOREG) prohíbe publicar o difundir sondeos en los cinco días anteriores a la votación: del 24 al 28 de noviembre. '
+            'Esta página dejará de añadir encuestas nuevas esos días.'),
+           ('¿Por qué cada encuesta da un resultado distinto?',
+            'Cada encuestadora pregunta a una muestra diferente (por teléfono, internet o panel), en fechas distintas, y aplica su propia «cocina» para '
+            'pasar de lo que responde la gente a una estimación de voto. Por eso conviene mirar el conjunto y la tendencia, no una sola encuesta.'),
+           ('¿Son fiables las encuestas?',
+            'Aciertan el orden general, pero no el detalle: en las generales de 2019 y 2023 la media de las encuestas se equivocó hasta en 3,4 puntos en algún partido. '
+            'Un partido puede ganar o perder varios escaños por diferencias de un punto en algunas provincias.'),
+           ('¿Cuántas encuestas se han publicado desde las últimas generales?',
+            f'Esta página recoge {n_desde23:,} encuestas de ámbito estatal publicadas desde las generales de julio de 2023, sin contar las reestimaciones del CIS hechas por otras empresas.'.replace(',', '.')),
            ('¿Cada cuánto se actualiza esta página?',
             'Dos veces al día. Cuando aparece una encuesta nueva, la tabla, el gráfico y las cifras de esta página se recalculan solos.')]
-    faq_html = '<div class="faq">' + ''.join(f'<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>' for q, a in faq) + '</div>'
+    faq = [x for x in faq if x]
+    faq_html = '<div class="faq">' + ''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq) + '</div>'
     actual = fecha_larga(hoy.isoformat())
     descripcion = re.sub(r'\s+', ' ', entradilla)[:300]
     jsonld = [{'@context': 'https://schema.org', '@type': 'NewsArticle', '@id': URL + '#articulo', 'headline': titular,
@@ -401,7 +475,7 @@ def main():
 {tabla_esc}
 {bloque_modelo or ''}
 <h2>Las últimas {VISIBLES} encuestas</h2>
-<p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. Un asterisco en la fecha indica que no consta el trabajo de campo y se toma la publicación menos tres días.</p>
+<p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. La fecha es la de publicación; con asterisco, la del final del trabajo de campo cuando la publicación no consta.</p>
 {tabla}
 {tabla_ant}
 <h2>Preguntas rápidas</h2>
@@ -426,6 +500,7 @@ def main():
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n</urlset>\n', encoding='utf-8')
+    portada(titular, med, actual)
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
 
 
