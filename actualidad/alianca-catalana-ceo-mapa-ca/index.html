@@ -194,12 +194,16 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 .tipo{font-family:var(--ui);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px;opacity:.85}
 .tipo.t-patron,.tipo.t-hipotesis{color:var(--fg);opacity:1;border-bottom:1px dotted var(--muted)}
 .etiquetas{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.8rem 0 0}.etiquetas a{color:var(--muted)}
+aside.municipios-pieza{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:4px 16px 12px;margin:2rem 0;font-family:var(--ui)}
+aside.municipios-pieza h2{font-size:1.1rem;margin:.8rem 0 .3rem}aside.municipios-pieza p{font-size:.92rem;color:var(--muted);margin:0 0 .5rem}
+aside.municipios-pieza ul{columns:2 14rem;column-gap:2rem;margin:0;padding-left:1.1rem}aside.municipios-pieza li{break-inside:avoid;margin:2px 0}
+aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 @media (min-width:1100px){main p[data-tipo]{position:relative}main p[data-tipo]>.tipo{position:absolute;right:100%;top:.45em;margin-right:18px;white-space:nowrap}}
 </style>
 <script type="application/ld+json" id="migas">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mapaelectoral.es/"}, {"@type": "ListItem", "position": 2, "name": "Actualidad", "item": "https://mapaelectoral.es/actualidad/"}, {"@type": "ListItem", "position": 3, "name": "El CEO dona a Aliança Catalana fins a 25 escons: al Parlament del 2024 va treure el 3,8%, però el 24,9% al Ripollès i el 7,8% als pobles de menys de 1.000 electors", "item": "https://mapaelectoral.es/actualidad/alianca-catalana-ceo-mapa-ca/"}]}</script>
 </head>
 <body>
-<nav class="site" aria-label="Seccions del lloc"><a class="marca" href="../../">Mapa Electoral</a><a href="../../">Mapa de resultats</a><a href="../../elecciones/">Per territori</a><a href="../../encuestas/">Enquestes</a><a href="../../atlas/">Atlas</a><a href="../../actualidad/" aria-current="page">Actualitat</a><a href="../../actualidad/#comunidades">Comunitats</a><a href="../../actualidad/#historia">Història electoral</a><a href="../../sobre-mi-ca.html">Sobre mi</a></nav>
+<nav class="site" aria-label="Seccions del lloc"><a class="marca" href="../../">Mapa Electoral</a><a href="../../">Mapa de resultats</a><a href="../../elecciones/">Per territori</a><a href="../../municipio/">Municipios</a><a href="../../temas/">Temas</a><a href="../../encuestas/">Enquestes</a><a href="../../atlas/">Atlas</a><a href="../../actualidad/" aria-current="page">Actualitat</a><a href="../../actualidad/#comunidades">Comunitats</a><a href="../../actualidad/#historia">Història electoral</a><a href="../../sobre-mi-ca.html">Sobre mi</a></nav>
 <main>
 <p class="kicker"><a href="../">Actualitat</a> · El CEO i Aliança · Catalunya</p>
 <h1>El CEO dona a Aliança Catalana fins a 25 escons: al Parlament del 2024 va treure el 3,8%, però el 24,9% al Ripollès i el 7,8% als pobles de menys de 1.000 electors</h1>
@@ -240,6 +244,7 @@ footer{margin-top:3rem;font-family:var(--mono);font-size:.76rem;color:var(--mute
 <p data-tipo="contexto"><span class="tipo t-contexto">Context</span>El politòleg Toni Rodon advertia que el d'Aliança és un vot difícil de mesurar: «Molts votants d'Aliança són independentistes que se senten orfes, i si troben una iniciativa engrescadora, poden agafar-s'hi» (<a href="https://naciodigital.cat/politica/on-anira-vot-alianca-catalana-29-n.html">Nació Digital</a>). I un altre avís: «El votant d'extrema dreta sempre és molt volàtil».</p>
 <p data-tipo="hipotesis"><span class="tipo t-hipotesis">Hipòtesi</span>El baròmetre és una enquesta amb marge d'error i no una elecció, i el mapa del 2024 és la foto d'un partit que aleshores va treure el 3,8%. Si Aliança multipliqués el seu vot, no sabem si ho faria als mateixos llocs o en d'altres.</p>
 <p class="mas-datos"><a href="https://mapaelectoral.es/girona-ca.html">Girona, la demarcació catalana on menys adults voten</a> · <a href="https://mapaelectoral.es/actualidad/junts-girona-puigdemont-29n/">Junts a la Girona de Puigdemont</a></p>
+<aside class="municipios-pieza"><h2>Veure les dades d'aquests municipis al mapa</h2><p>Els municipis que surten en aquesta peça: resultats per secció censal, vot per renda i les generals des del 1977 a la seva pàgina (en castellà), o carrer a carrer al mapa.</p><ul><li data-mun="17147"><a href="../../municipio/girona/ripoll/">Ripoll</a> <span class="prov">(Girona)</span> · <a href="../../?m=17147">mapa</a></li><li data-mun="17036"><a href="../../municipio/girona/campdevanol/">Campdevànol</a> <span class="prov">(Girona)</span> · <a href="../../?m=17036">mapa</a></li></ul></aside>
 <h2>Mètode i fonts</h2>
 <dl class="ficha">
 <dt>Què es compara</dt><dd>El vot a Aliança Catalana a les eleccions al Parlament del 2024 als 947 municipis de Catalunya, per comarca, demarcació i mida del municipi, al costat del de Junts i Vox.</dd>

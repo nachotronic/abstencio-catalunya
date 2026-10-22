@@ -6,7 +6,11 @@
   sobre ese territorio. Las comunidades de una sola provincia no tienen página de provincia.
 - /elecciones/mapa-electoral-seccion-censal/ y /elecciones/voto-y-renta-por-barrios/: páginas temáticas.
 
-No hay fichas por municipio: el municipio se consulta en el mapa de la portada (?m=<código INE>).
+- /municipio/<provincia>/<municipio>/: una página por municipio de más de 1.000 habitantes (y cada capital), con índices
+  en /municipio/ y /municipio/<provincia>/. Hasta octubre de 2026 estaban en /elecciones/<comunidad>/<provincia>/<municipio>/;
+  ahí queda una redirección (meta refresh inmediato + canonical, lo más parecido a un 301 que permite GitHub Pages).
+- /temas/<tema>/: páginas nodales que reúnen las piezas de Actualidad y del Atlas de cada tema, las páginas de datos
+  y los municipios que esas piezas citan (src/territorios_rutas.py, TEMAS).
 Ninguna cifra se escribe a mano: salen de las descargas públicas del mapa (src/territorios_datos.py).
 Cada frase con cifras va marcada como dato o patrón, como en el resto del sitio.
 
@@ -35,7 +39,7 @@ SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 
 from territorios_rutas import PROV_SLUG, CCAA, PROV_CCAA, PROV_NOMBRE, ruta_provincia, ACTUALIDAD_LUGAR, ACTUALIDAD_MUNICIPIO, TEMA_RENTA, TEMA_SECCION, \
-    TEMA_PARTICIPACION, TEMA_MUNICIPIOS, ESCANOS_2023, ESCANOS_2026, es_29n  # noqa: E402
+    TEMA_PARTICIPACION, TEMA_MUNICIPIOS, ESCANOS_2023, ESCANOS_2026, es_29n, TEMAS, slug, ruta_municipio, ruta_municipio_antigua  # noqa: E402
 
 # ---------- formato ----------
 def pct(x, d=1):
@@ -72,6 +76,7 @@ def piezas_atlas():
     todas = [q for q in piezas(C) + piezas2(C) + piezas3(C) if q['revisado']]
     for q in todas:
         q['_provs'] = set(atlas.provincias(q))
+        q['_muns'] = set(atlas.municipios(q))   # se consulta en cada una de las 3.133 páginas de municipio
     return todas
 
 
@@ -333,11 +338,12 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga, imagen=None):
     global RAIZ_REL
     RAIZ_REL = '../' * nivel
     raiz = RAIZ_REL
-    menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('encuestas/', 'Encuestas'), ('atlas/', 'Atlas'), ('actualidad/', 'Actualidad'),
-            ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
+    menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'),
+            ('atlas/', 'Atlas'), ('actualidad/', 'Actualidad'), ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
             ('sobre-mi.html', 'Sobre mí')]
+    actual = ruta.split('/')[0] + '/'
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz or "./"}">{SITIO}</a>'
-           + ''.join(f'<a href="{raiz}{h}"{" aria-current=\"page\"" if h == "elecciones/" else ""}>{t}</a>' for h, t in menu) + '</nav>')
+           + ''.join(f'<a href="{raiz}{h}"{" aria-current=\"page\"" if h == actual else ""}>{t}</a>' for h, t in menu) + '</nav>')
     url = BASE + ruta
     return f"""<!doctype html>
 <html lang="es">
@@ -372,7 +378,7 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga, imagen=None):
 .migas{{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0 0 .4rem}}.migas a{{color:inherit}}
 .cols{{columns:2 14rem;column-gap:2rem}}td.n{{white-space:nowrap}}.cols li{{break-inside:avoid}}
 {MS.CSS}
-.faq h3{{font-size:1.05rem;margin:1.2rem 0 .3rem}}.foto img{{width:100%;height:auto}}
+.faq h3{{font-size:1.05rem;margin:1.2rem 0 .3rem}}.sigue .d{{display:block;color:var(--muted);font-weight:400;font-size:.95rem;margin-top:4px}}.foto img{{width:100%;height:auto}}
 </style>
 </head>
 <body>
@@ -599,14 +605,9 @@ def nombre_visible(t):
 T.MUN['municipio'] = T.MUN.municipio.map(nombre_visible)
 
 
-def slug(t):
-    t = unicodedata.normalize('NFKD', t.lower()).encode('ascii', 'ignore').decode()
-    return re.sub(r'[^a-z0-9]+', '-', t).strip('-')
-
-
 def _ciudades():
     m = T.MUN[((T.MUN.poblacion >= UMBRAL) | T.MUN.mun_code.isin(CAPITALES)) & ~T.MUN.prov.isin(['51', '52'])]
-    return {r.mun_code: f'{ruta_provincia(r.prov)}{slug(r.municipio)}/' for r in m.itertuples()}
+    return {r.mun_code: ruta_municipio(r.prov, r.municipio) for r in m.itertuples()}
 
 
 CIUDADES = _ciudades()
@@ -647,10 +648,7 @@ def pagina_ciudad(cod):
     faq_html, faq_ld = faq([q_censo]) if q_censo else ('', None)
     h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about), faq_ld] if faq_ld else ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
     raiz = RAIZ_REL
-    pasos = [(raiz, 'Inicio'), (raiz + 'elecciones/', 'Elecciones'), (raiz + f'elecciones/{ccaa}/', CCAA[ccaa][0])]
-    if not uni:
-        pasos.append((raiz + ruta_provincia(p), PROV_NOMBRE[p]))
-    h.append(migas_html(pasos))
+    h.append(migas_html([(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p])]))
     h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales 1977-2023</p>'
              f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
     h.append(f'<p class="subtitulo">{"Censo para el 29N, r" if b_censo else "R"}esultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
@@ -669,12 +667,15 @@ def pagina_ciudad(cod):
     h.append(bloque_serie(nombre, serie))
     h.append(faq_html)
     rel = actualidad_de([s for s, (c, _) in ACTUALIDAD_MUNICIPIO.items() if c == cod], raiz)
-    rel += [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in atlas.municipios(q)]
+    rel += [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in q['_muns']]
     h.append(bloque_relacionadas([], nivel, rel) if rel else '')
     pob = T.MUN.set_index('mun_code').poblacion
     otras = sorted((c for c in CIUDADES if c[:2] == p and c != cod), key=lambda c: -pob[c])[:10]   # los diez más poblados; el resto, en la provincia
     otras.sort(key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
     li = [f'<li><a href="{raiz}{ruta_provincia(p)}">Elecciones en {"la provincia de " if not uni else ""}{escape(nprov)}</a></li>']
+    if not uni:
+        li.append(f'<li><a href="{raiz}elecciones/{ccaa}/">Elecciones en {escape(CCAA[ccaa][0])}</a></li>')
+    li.append(f'<li><a href="{raiz}municipio/{PROV_SLUG[p]}/">Todos los municipios de {escape(PROV_NOMBRE[p])} con página propia</a></li>')
     li += [f'<li><a href="{raiz}{CIUDADES[c]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in otras]
     li += [f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li>',
            f'<li><a href="{raiz}elecciones/mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li>']
@@ -812,7 +813,9 @@ def indice(resumen):
     cs = sorted((c for c in CIUDADES if c in CAPITALES or pob[c] >= GRANDE), key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
     h.append(f'<h2>Ciudades</h2><p>Las {len(cs)} capitales de provincia y municipios de más de 50.000 habitantes, con el voto barrio a barrio. '
              f'Los {num(len(CIUDADES) - len(cs))} municipios de entre 1.000 y 50.000 habitantes con página propia están en la página de su provincia.</p><ul class="cols">'
-             + ''.join(f'<li><a href="{CIUDADES[c][len("elecciones/"):]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
+             + ''.join(f'<li><a href="../{CIUDADES[c]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
+    h.append('<p>Todos los municipios con página propia, provincia a provincia: <a href="../municipio/">elecciones por municipio</a>. '
+             'Las piezas agrupadas por tema: <a href="../temas/">temas</a>.</p>')
     h.append('<h2>Por tema</h2><ul>'
              '<li><a href="elecciones-29n-2026/">Elecciones generales del 29N de 2026</a>: fecha, campaña y diputados por provincia</li>'
              '<li><a href="resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026</a>: el escrutinio del 29N en directo y el resultado de 2023</li>'
@@ -1600,21 +1603,208 @@ def portada():
         f.write_text(t, encoding='utf-8')
 
 
+# ---------- índices de municipios (/municipio/) ----------
+def _nom(c):
+    return T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]
+
+
+def fila_municipio(c, raiz):
+    m = T.MUN[T.MUN.mun_code == c].iloc[0]
+    g = m['2023_07_gana']
+    gana = (f'<span style="color:{T.COLOR[g]}">■</span> {escape(T.NOMBRE[g])} ({pct(m[f"2023_07_{g}"])})'
+            if isinstance(g, str) and g in T.COLOR and pd.notna(m.get(f'2023_07_{g}')) else '—')
+    part = pct(m['2023_07_part']) if pd.notna(m['2023_07_part']) else '—'
+    return [f'<a href="{raiz}{CIUDADES[c]}">{escape(m.municipio)}</a>', num(m.poblacion), gana, part]
+
+
+def municipios_indice():
+    ruta = 'municipio/'
+    titulo = 'Elecciones por municipio: resultados de cada pueblo y ciudad de España desde 1977'
+    desc = (f'Una página por cada uno de los {num(len(CIUDADES))} municipios de más de 1.000 habitantes y por cada capital: '
+            'resultados por sección censal, voto por renta y las 16 elecciones generales desde 1977, provincia a provincia.')
+    provs = sorted({c[:2] for c in CIUDADES}, key=lambda p: PROV_SLUG[p])
+    partes = [{'@type': 'CollectionPage', 'name': f'Municipios de {PROV_NOMBRE[p]}', 'url': BASE + f'municipio/{PROV_SLUG[p]}/'} for p in provs]
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA, partes), 1, 'Municipios')]
+    h.append(migas_html([('../', 'Inicio')]))
+    h.append('<p class="kicker">Elecciones generales 1977-2023</p><h1 data-miga="Municipios">Elecciones por municipio</h1>')
+    h.append(f'<p class="firma">Por <a href="../sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    pob = T.MUN.set_index('mun_code').poblacion
+    h.append(f'<p class="resumen">{tipo("Dato")}Los {num(len(CIUDADES))} municipios de España con más de 1.000 habitantes, y las capitales de provincia que no llegan, '
+             f'tienen página propia con el resultado de cada sección censal, el voto por renta de sus barrios y las 16 elecciones generales desde 1977. '
+             f'Reúnen a {num(pob[list(CIUDADES)].sum())} de los {num(pob.sum())} habitantes de los municipios con datos. '
+             'Los demás se consultan en el <a href="../">mapa de la portada</a>.</p>')
+    filas = []
+    for p in provs:
+        cs = [c for c in CIUDADES if c[:2] == p]
+        mayor = max(cs, key=lambda c: pob[c])
+        filas.append([f'<a href="{PROV_SLUG[p]}/">{escape(PROV_NOMBRE[p])}</a>', num(len(cs)), f'<a href="../{CIUDADES[mayor]}">{escape(_nom(mayor))}</a>'])
+    h.append('<h2>Provincia a provincia</h2>' + tabla('Municipios con página propia en cada provincia', ['Provincia', 'Municipios', 'El más poblado'], filas, num_desde=1))
+    h.append('<p>Por comunidad y provincia, con la serie completa y el voto por renta: <a href="../elecciones/">elecciones por territorio</a>. '
+             'Por tema: <a href="../temas/">renta y voto, participación, historia electoral y más</a>.</p>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def municipios_provincia(p):
+    ruta = f'municipio/{PROV_SLUG[p]}/'
+    pob = T.MUN.set_index('mun_code').poblacion
+    cs = sorted((c for c in CIUDADES if c[:2] == p), key=lambda c: -pob[c])
+    nombre = PROV_NOMBRE[p]
+    en = en_provincia_txt(p)
+    titulo = f'Elecciones por municipio {en}: resultados de sus {num(len(cs))} municipios con página propia'
+    desc = (f'Resultados de las generales de 2023 y enlaces a la página de cada municipio de más de 1.000 habitantes {en}: '
+            'voto por sección censal, por renta y desde 1977.')
+    partes = [{'@type': 'WebPage', 'name': f'Elecciones en {_nom(c)}', 'url': BASE + CIUDADES[c]} for c in cs]
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, lugar(nombre, ESPANA), partes), 2, nombre)]
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Municipios')]))
+    h.append(f'<p class="kicker">Municipios · Elecciones generales 1977-2023</p><h1 data-miga="{escape(nombre)}">Elecciones por municipio {escape(en)}</h1>')
+    h.append(f'<p class="firma">Por <a href="../../sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    df = T.MUN[T.MUN.mun_code.isin(cs)]
+    gana = df['2023_07_gana'].value_counts()
+    resto = len(T.MUN[T.MUN.prov == p]) - len(cs)
+    h.append(f'<p class="resumen">{tipo("Dato")}{"Los " + num(len(cs)) + " municipios" if len(cs) > 1 else "El municipio"} {escape(en)} con página propia, '
+             f'del más poblado al menos. En las generales de 2023 el más votado fue '
+             + ', '.join(f'{T.NOMBRE[g]} en {num(n)}' for g, n in gana.items() if g in T.NOMBRE) + '. '
+             + (f'Los otros {num(resto)} municipios de la provincia, con menos de 1.000 habitantes, se consultan en el <a href="../../?m={cs[0]}">mapa</a>.' if resto > 0 else '')
+             + '</p>')
+    h.append(tabla(f'Generales de 2023 en cada municipio {escape(en)}', ['Municipio', 'Habitantes', 'Más votado', 'Participación'],
+                   [fila_municipio(c, '../../') for c in cs]))
+    h.append(f'<p>La provincia entera, con la serie desde 1977 y el voto por renta: <a href="../../{ruta_provincia(p)}">elecciones {escape(en)}</a>.</p>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def en_provincia_txt(p):
+    c = PROV_CCAA[p]
+    return CCAA[c][1] if len(CCAA[c][2]) == 1 else f'en la provincia de {PROV_NOMBRE[p]}'
+
+
+REDIRECCION = """<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elecciones en {nombre}</title>
+<link rel="canonical" href="{url}">
+<meta http-equiv="refresh" content="0; url={rel}">
+<script>location.replace({rel_js} + location.search + location.hash)</script>
+</head>
+<body style="font-family:system-ui,sans-serif;padding:16px">
+<p>La página de {nombre} se ha movido a <a href="{rel}">{url}</a>.</p>
+</body>
+</html>
+"""
+
+
+def redirecciones():
+    """Páginas en las rutas antiguas de cada municipio que llevan a la nueva."""
+    out = []
+    for c, nueva in CIUDADES.items():
+        m = T.MUN[T.MUN.mun_code == c].iloc[0]
+        vieja = ruta_municipio_antigua(m.prov, m.municipio)
+        rel = '../' * vieja.count('/') + nueva
+        out.append((vieja, REDIRECCION.format(nombre=escape(m.municipio), url=BASE + nueva, rel=rel, rel_js=json.dumps(rel))))
+    return out
+
+
+# ---------- páginas nodales por tema (/temas/) ----------
+def descripcion_de(ruta):
+    f = ROOT / ruta / 'index.html'
+    m = re.search(r'<meta name="description" content="([^"]*)"', f.read_text(encoding='utf-8')) if f.exists() else None
+    return m.group(1) if m else ''
+
+
+def municipios_de_pieza(s):
+    """Municipios que cita una pieza de Actualidad publicada (su bloque «Ver datos de estos municipios»)."""
+    f = ROOT / 'actualidad' / s / 'index.html'
+    if not f.exists():
+        return []
+    b = re.search(r'<aside class="municipios-pieza">.*?</aside>', f.read_text(encoding='utf-8'), re.S)
+    return re.findall(r'data-mun="(\d{5})"', b.group(0)) if b else []
+
+
+def tema_hub(t, d):
+    ruta = f'temas/{t}/'
+    raiz = '../../'
+    slugs = [s for s in dict.fromkeys(d['piezas']) if h1_de(f'actualidad/{s}')]
+    piezas_ = sorted(((publicada(s), s) for s in slugs), reverse=True)
+    titulo = d['titulo']
+    desc = f'{d["intro"].split(":")[0].split(".")[0]}. {num(len(slugs))} piezas de Mapa Electoral, con sus datos y los municipios que analizan.'
+    partes = [{'@type': 'NewsArticle', 'headline': h1_de(f'actualidad/{s}'), 'url': BASE + f'actualidad/{s}/'} for _, s in piezas_]
+    ld = ld_pagina(titulo, desc, ruta, None, partes)
+    ld['@type'] = 'CollectionPage'
+    h = [cabeza(titulo, desc, ruta, ld, 2, d['nombre'])]
+    h.append(migas_html([(raiz, 'Inicio'), ('../', 'Temas')]))
+    h.append(f'<p class="kicker">Tema</p><h1 data-miga="{escape(d["nombre"])}">{escape(d["nombre"])}</h1>')
+    h.append(f'<p class="subtitulo">{escape(titulo.split(": ", 1)[-1][0].upper() + titulo.split(": ", 1)[-1][1:])}</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{escape(d["intro"])}</p>')
+    datos = d['datos'] + d['atlas']
+    h.append('<h2>Los datos</h2><ul>' + ''.join(f'<li><a href="{raiz}{u}">{escape(n)}</a></li>' for u, n in datos) + '</ul>')
+    li = []
+    for fch, s in piezas_:
+        li.append(f'<li><a href="{raiz}actualidad/{s}/"><span class="kicker">Actualidad{" · " + fecha(fch) if fch else ""}</span>'
+                  f'<b>{escape(h1_de(f"actualidad/{s}"))}</b><span class="d">{escape(descripcion_de(f"actualidad/{s}"))}</span></a></li>')
+    h.append(f'<h2>Las piezas</h2><ul class="sigue">' + ''.join(li) + '</ul>')
+    cuenta = {}
+    for s in slugs:
+        for c in municipios_de_pieza(s):
+            if c in CIUDADES:
+                cuenta.setdefault(c, []).append(s)
+    if cuenta:
+        orden = sorted(cuenta, key=lambda c: (-len(cuenta[c]), slug(_nom(c))))[:40]
+        h.append('<h2>Ver datos de estos municipios en el mapa</h2>'
+                 f'<p>Los municipios que aparecen en las piezas de este tema{", los más citados primero" if len(orden) > 1 else ""}. Cada uno tiene su página con '
+                 'el voto por sección censal, por renta y desde 1977.</p><ul class="cols">'
+                 + ''.join(f'<li><a href="{raiz}{CIUDADES[c]}">{escape(_nom(c))}</a> ({escape(PROV_NOMBRE[c[:2]])})'
+                           f'{" · " + str(len(cuenta[c])) + " piezas" if len(cuenta[c]) > 1 else ""} · <a href="{raiz}?m={c}">mapa</a></li>' for c in orden)
+                 + '</ul>')
+    otros = [f'<a href="../{o}/">{escape(TEMAS[o]["nombre"])}</a>' for o in TEMAS if o != t]
+    h.append('<h2>Otros temas</h2><p>' + ' · '.join(otros) + '</p>')
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def temas_indice():
+    ruta = 'temas/'
+    titulo = 'Temas: renta y voto, participación, historia electoral, vivienda e inmigración'
+    desc = 'Las piezas de Mapa Electoral agrupadas por tema, con las páginas de datos de cada uno y los municipios que analizan.'
+    partes = [{'@type': 'CollectionPage', 'name': d['nombre'], 'url': BASE + f'temas/{t}/'} for t, d in TEMAS.items()]
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, None, partes), 1, 'Temas')]
+    h.append(migas_html([('../', 'Inicio')]))
+    h.append('<p class="kicker">Mapa Electoral</p><h1 data-miga="Temas">Temas</h1>')
+    h.append(f'<p class="resumen">{escape(desc)}</p>')
+    li = []
+    for t, d in TEMAS.items():
+        n = sum(1 for s in dict.fromkeys(d['piezas']) if h1_de(f'actualidad/{s}'))
+        li.append(f'<li><a href="{t}/"><span class="kicker">{num(n)} piezas</span><b>{escape(d["nombre"])}</b><span class="d">{escape(d["intro"])}</span></a></li>')
+    h.append('<ul class="sigue">' + ''.join(li) + '</ul>')
+    h.append('<p>Por territorio: <a href="../elecciones/">elecciones por comunidad y provincia</a> · <a href="../municipio/">elecciones por municipio</a>.</p>')
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
 def main():
     pags, resumen = territorios()
     pags += [pagina_ciudad(c) for c in CIUDADES]
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
+    (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_resultados(resumen)]
-    for ruta, html in pags:
+    pags += [municipios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
+    pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
+    for ruta, html in pags + redirecciones():
         f = ROOT / ruta / 'index.html'
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(html, encoding='utf-8')
-    rutas = sorted(r for r, _ in pags)
-    (OUT / 'sitemap.xml').write_text(sitemap(rutas), encoding='utf-8')
+    for sec in ('elecciones', 'municipio', 'temas'):   # un sitemap por carpeta: solo puede listar URL de su carpeta
+        rutas = sorted(r for r, _ in pags if r.startswith(sec + '/'))
+        (ROOT / sec / 'sitemap.xml').write_text(sitemap(rutas), encoding='utf-8')
     (OUT / 'llms.txt').write_text(llms(resumen), encoding='utf-8')
     portada()
     esquema.main()
-    print(f'territorios: {len(pags)} páginas en elecciones/')
+    print(f'territorios: {len(pags)} páginas en elecciones/, municipio/ y temas/')
 
 
 if __name__ == '__main__':

@@ -174,7 +174,7 @@ def procesa(f):
 
 def paginas():
     yield from sorted(ROOT.glob('*.html'))
-    for d in ('atlas', 'actualidad', 'elecciones', 'generales-2026'):
+    for d in ('atlas', 'actualidad', 'elecciones', 'municipio', 'temas', 'generales-2026'):
         yield from sorted((ROOT / d).rglob('*.html'))
 
 
