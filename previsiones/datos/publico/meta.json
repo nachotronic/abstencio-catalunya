@@ -1,5 +1,5 @@
 {
- "version": "v1.1-encuestas-20261022",
+ "version": "v1.2-encuestas-20261022",
  "ficticio": false,
  "interno": false,
  "generado": "2026-10-22",
@@ -7,24 +7,34 @@
  "simulaciones": 2000,
  "aviso": "Estimación con encuestas publicadas hasta el 22-10-2026. Margen amplio: a 38 días, el error típico de la media es de unos 5 puntos para un partido del 30 %.",
  "media_encuestas": {
-  "BILDU": 1.36,
-  "BNG": 0.87,
-  "CC": 0.44,
-  "ERC": 2.33,
-  "JUNTS": 1.47,
-  "PNV": 0.87,
-  "PODEMOS": 2.97,
-  "PP": 31.18,
-  "PSOE": 26.9,
-  "SALF": 1.68,
-  "SUMAR": 6.57,
+  "BILDU": 1.37,
+  "BNG": 0.91,
+  "CC": 0.4,
+  "ERC": 2.27,
+  "JUNTS": 1.4,
+  "PNV": 0.9,
+  "PODEMOS": 2.77,
+  "PP": 31.31,
+  "PSOE": 26.94,
+  "SALF": 1.69,
+  "SUMAR": 6.49,
   "UPN": 0.17,
-  "VOX": 18.77
+  "VOX": 18.8
  },
+ "encuestas_regionales": {
+  "08 17 25 43": {
+   "ERC": 19.0,
+   "Junts": 10.3
+  },
+  "15 27 32 36": {
+   "BNG": 14.0
+  }
+ },
+ "beta_regional": 0.5,
  "c_error": 0.853,
  "dias_a_eleccion": 38,
  "sigma_nac": {
-  "PP": 0.153,
+  "PP": 0.152,
   "PSOE": 0.164,
   "Vox": 0.197,
   "Sumar": 0.3,
@@ -43,23 +53,23 @@
   "PACMA": 0.3
  },
  "voto_central": {
-  "PP": 31.18,
-  "PSOE": 26.9,
-  "Vox": 18.77,
-  "Sumar": 6.57,
-  "Podemos": 2.97,
-  "SALF": 1.68,
-  "ERC": 2.33,
-  "Junts": 1.47,
-  "EH Bildu": 1.36,
-  "PNV": 0.87,
-  "BNG": 0.87,
-  "CC": 0.44,
+  "PP": 31.3,
+  "PSOE": 26.92,
+  "Vox": 18.79,
+  "Sumar": 6.49,
+  "Podemos": 2.77,
+  "SALF": 1.69,
+  "ERC": 2.47,
+  "Junts": 1.43,
+  "EH Bildu": 1.37,
+  "PNV": 0.9,
+  "BNG": 0.92,
+  "CC": 0.4,
   "UPN": 0.17,
   "CUP": 0.4,
   "Aliança": 0.54,
   "Nueva Canarias": 0.18,
-  "PACMA": 0.69
+  "PACMA": 0.68
  },
  "listas": [
   "PP",
