@@ -2008,7 +2008,7 @@ def fecha_larga(f):
 
 
 def nav(prefijo, actual):
-    items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
+    items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('encuestas/', 'Encuestas'), ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
              ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
              ('sobre-mi.html', 'Sobre mí')]
     out = f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{prefijo}">Mapa Electoral</a>'
@@ -2060,7 +2060,7 @@ MESOS_CA = ['de gener', 'de febrer', 'de març', "d'abril", 'de maig', 'de juny'
 CA = [
     ('<html lang="es">', '<html lang="ca">'), ('<meta property="og:locale" content="es_ES">', '<meta property="og:locale" content="ca_ES">'),
     ('"inLanguage": "es"', '"inLanguage": "ca"'),
-    ('aria-label="Secciones del sitio"', 'aria-label="Seccions del lloc"'), ('>Mapa de resultados<', '>Mapa de resultats<'), ('elecciones/">Por territorio<', 'elecciones/">Per territori<'),
+    ('aria-label="Secciones del sitio"', 'aria-label="Seccions del lloc"'), ('>Mapa de resultados<', '>Mapa de resultats<'), ('elecciones/">Por territorio<', 'elecciones/">Per territori<'), ('encuestas/">Encuestas<', 'encuestas/">Enquestes<'),
     ('>Actualidad</a> · ', '>Actualitat</a> · '), ('<p class="firma">Por <a href="../../sobre-mi.html">', '<p class="firma">Per <a href="../../sobre-mi-ca.html">'),
     ('aria-current="page">Actualidad</a>', 'aria-current="page">Actualitat</a>'), ('href="../../abstencion.html">Cataluña<', 'href="../../ca.html">Catalunya<'),
     ('>Cataluña<', '>Catalunya<'), ('actualidad/#comunidades">Comunidades<', 'actualidad/#comunidades">Comunitats<'), ('actualidad/#historia">Historia electoral<', 'actualidad/#historia">Història electoral<'), ('href="../../sobre-mi.html">Sobre mí<', 'href="../../sobre-mi-ca.html">Sobre mi<'),
