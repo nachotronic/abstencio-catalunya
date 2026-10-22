@@ -28,10 +28,17 @@ URL = BASE + '/encuestas/'
 PRINCIPALES = [('PP', 'PP', '#1d84ce', '#4fa8ea'), ('PSOE', 'PSOE', '#e30613', '#ff5a5f'), ('VOX', 'Vox', '#5ac035', '#74d651'),
                ('SUMAR', 'Sumar / Frente Amplio', '#a2275f', '#d0679a'), ('PODEMOS', 'Podemos', '#5a3c8f', '#8a6fe0'),
                ('SALF', 'SALF', '#785a46', '#a9876f')]
-NOMBRE = {k: n for k, n, _, _ in PRINCIPALES}
+# el resto de partidos con escaño, para el hemiciclo
+OTROS_ESC = [('ERC', 'ERC', '#f5b324', '#f7c454'), ('JUNTS', 'Junts', '#20c0b2', '#2fd0c2'), ('BILDU', 'EH Bildu', '#a5c400', '#b9d630'),
+             ('PNV', 'PNV', '#2b8a3e', '#4caf63'), ('BNG', 'BNG', '#4a9fdc', '#7ab8e6'), ('CC', 'CC', '#f7d417', '#f9e04a'),
+             ('UPN', 'UPN', '#0b3d91', '#5b7fd0'), ('ALIANCA', 'Aliança Catalana', '#064a81', '#4a86c0'), ('CS', 'Ciudadanos', '#eb6109', '#f28a45')]
+TODOS = PRINCIPALES + OTROS_ESC
+# orden aproximado de izquierda a derecha en el hemiciclo
+ORDEN_HEMI = ['BILDU', 'BNG', 'PODEMOS', 'SUMAR', 'ERC', 'PSOE', 'PNV', 'JUNTS', 'CC', 'CS', 'UPN', 'PP', 'ALIANCA', 'SALF', 'VOX']
+NOMBRE = {k: n for k, n, _, _ in TODOS}
 NO_ENCUESTAS = {'keydata', 'sumar'}   # medias de otros medios y sondeos internos de partido
 DESDE_GRAFICO = 365   # días que enseña el gráfico
-DIAS_TABLA = 60
+VISIBLES = 10
 VENTANA_MEDIANA = 21
 
 
@@ -70,7 +77,7 @@ def carga():
                     'inicio': r['campo_inicio'] or w.get('campo_inicio', ''), 'fin': fin.isoformat(), 'fin_aprox': not r['campo_fin'] and not w,
                     'publicado': r['publicado'], 'muestra': r['muestra'] or w.get('muestra', ''),
                     'voto': {k: num(r[k]) for k, *_ in PRINCIPALES if num(r[k]) is not None},
-                    'esc': {k: w.get(f'esc_{k}', '') for k, *_ in PRINCIPALES if w.get(f'esc_{k}')},
+                    'esc': {k: w.get(f'esc_{k}', '') for k, *_ in TODOS if w.get(f'esc_{k}')},
                     'url': r['fuente_original'] or w.get('fuente_original', '') or r['url_agregador']})
     for i, w in enumerate(wp):
         if i in usadas:
@@ -79,7 +86,7 @@ def carga():
             w = dict(w, encuestadora=f'{w["encuestadora"]} reestimado por {w["reestimacion"]}')
         out.append({'reest': bool(w.get('reestimacion')), 'casa': w['encuestadora'], 'medio': w['cliente'], 'inicio': w['campo_inicio'], 'fin': w['campo_fin'], 'fin_aprox': False,
                     'publicado': '', 'muestra': w['muestra'], 'voto': {k: num(w[k]) for k, *_ in PRINCIPALES if num(w[k]) is not None},
-                    'esc': {k: w[f'esc_{k}'] for k, *_ in PRINCIPALES if w.get(f'esc_{k}')}, 'url': w['fuente_original']})
+                    'esc': {k: w[f'esc_{k}'] for k, *_ in TODOS if w.get(f'esc_{k}')}, 'url': w['fuente_original']})
     out = [e for e in out if clave(e['casa']) not in NO_ENCUESTAS and 'PP' in e['voto'] and 'PSOE' in e['voto']]
     return sorted(out, key=lambda e: (e['fin'], e['casa']), reverse=True)
 
@@ -107,6 +114,24 @@ def medianas(encs, hasta):
 def rango_esc(t):
     a, _, b = t.partition('-')
     return int(a), int(b or a)
+
+
+def promedio_escanos(con_esc):
+    """Promedio de los escaños que publica cada encuestadora (centro del intervalo), solo las que dan el reparto
+    completo (suman entre 345 y 350), redondeado por restos mayores al total promediado."""
+    completas = []
+    for e in con_esc:
+        mid = {k: sum(rango_esc(v)) / 2 for k, v in e['esc'].items()}
+        if 345 <= sum(mid.values()) <= 350:
+            completas.append(mid)
+    if len(completas) < 3:
+        return None, 0
+    media = {k: sum(m.get(k, 0) for m in completas) / len(completas) for k in ORDEN_HEMI}
+    total = round(sum(media.values()))
+    base = {k: int(v) for k, v in media.items()}
+    for k in sorted(media, key=lambda k: media[k] - base[k], reverse=True)[:total - sum(base.values())]:
+        base[k] += 1
+    return {k: v for k, v in base.items() if v}, len(completas)
 
 
 def pc(v):
@@ -230,8 +255,19 @@ function dibuja(){box.innerHTML='';const W=Math.max(320,box.clientWidth||640),H=
   tip.innerHTML='<b>'+f.getDate()+' '+M[f.getMonth()]+' '+f.getFullYear()+'</b> · mediana<br>'+D.partidos.filter(p=>s[p[0]]!=null).map(p=>'<span style="color:'+col(p)+'">●</span> '+p[1]+' '+pc(s[p[0]])).join('<br>');
   tip.hidden=false;tip.style.left=Math.min(Math.max(px,90),W-90)+'px';tip.style.top=(pt.clientY-r.top)+'px'};
  svg.addEventListener('mousemove',mover);svg.addEventListener('touchstart',mover,{passive:true});svg.addEventListener('mouseleave',()=>{tip.hidden=true;g.setAttribute('visibility','hidden')})}
-dibuja();let w=box.clientWidth;addEventListener('resize',()=>{if(box.clientWidth!==w){w=box.clientWidth;dibuja()}});
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change',dibuja)})();
+function hemi(){const hb=document.getElementById('hemi');if(!hb||!D.hemi.length)return;hb.innerHTML='';
+ const W=Math.min(640,Math.max(300,hb.clientWidth||600)),R=W/2-4,H=R+30,filas=W<420?9:11,r0=R*.38;
+ const total=D.hemi.reduce((a,p)=>a+p[1],0);const radios=[...Array(filas)].map((_,i)=>r0+(R-r0)*(i+.5)/filas);
+ const suma=radios.reduce((a,b)=>a+b,0);let n=radios.map(r=>Math.round(total*r/suma));n[filas-1]+=total-n.reduce((a,b)=>a+b,0);
+ const pts=[];radios.forEach((r,i)=>{for(let j=0;j<n[i];j++){const a=Math.PI*(1-(n[i]>1?j/(n[i]-1):.5));pts.push({a,x:W/2+r*Math.cos(a),y:R+4-r*Math.sin(a)})}});
+ pts.sort((p,q)=>q.a-p.a);const dot=Math.min(R*.5/filas,(R-r0)/filas*.42);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Hemiciclo con el promedio de escaños de las encuestadoras'},hb);svg.style.maxWidth=W+'px';svg.style.margin='0 auto';
+ let k=0;for(const p of D.hemi)for(let j=0;j<p[1];j++){const q=pts[k++];el('circle',{cx:q.x,cy:q.y,r:dot,fill:osc()?p[3]:p[2]},svg)}
+ el('line',{x1:W/2,x2:W/2,y1:4,y2:R+4-r0+6,stroke:'var(--muted)','stroke-dasharray':'3 3'},svg);
+ el('text',{x:W/2,y:R+24,'text-anchor':'middle',style:'font-size:13px'},svg).textContent='176 escaños: mayoría absoluta';
+ const lg=document.createElement('div');lg.className='legend';lg.innerHTML=D.hemi.map(p=>'<span><i class="sw" style="background:'+(osc()?p[3]:p[2])+'"></i>'+p[4]+' '+p[1]+'</span>').join('');hb.appendChild(lg)}
+dibuja();hemi();let w=box.clientWidth;addEventListener('resize',()=>{if(box.clientWidth!==w){w=box.clientWidth;dibuja();hemi()}});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dibuja();hemi()})})();
 </script>"""
 
 
@@ -243,13 +279,14 @@ def main():
     serie = medianas(encs, max(ultima, hoy))
     titular, entradilla, p1, p2, ultimas, con_esc, mayoria = textos(encs, hoy)
     desde_g = (hoy - timedelta(days=DESDE_GRAFICO)).isoformat()
-    datos = {'partidos': PRINCIPALES, 'serie': serie,
+    hemi, n_hemi = promedio_escanos(con_esc)
+    datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': [[k, hemi[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (hemi or {})],
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
-    recientes = [e for e in encs if date.fromisoformat(e['fin']) > hoy - timedelta(days=DIAS_TABLA)]
+    desde23 = [e for e in encs if e['fin'] >= '2023-07-24']
+    recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
     cab_partidos = ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES)
     tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Fin campo</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
              f'<tbody>{"".join(fila_tabla(e) for e in recientes)}</tbody></table></div>')
-    anteriores = [e for e in encs if date.fromisoformat(e['fin']) <= hoy - timedelta(days=DIAS_TABLA) and e['fin'] >= '2023-07-24']
     tabla_ant = (f'<details><summary>Ver las {len(anteriores)} encuestas anteriores, desde las generales de 2023</summary><div class="tbl"><table><thead><tr>'
                  f'<th>Encuestadora y medio</th><th class="n">Fin campo</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
                  f'<tbody>{"".join(fila_tabla(e) for e in anteriores)}</tbody></table></div></details>')
@@ -262,6 +299,15 @@ def main():
         # PP + Vox justo después del nombre, para que se vea en el móvil sin desplazar la tabla
         filas_esc += (f'<tr{" class=mayoria" if lo >= 176 else ""}><td>{nombre}</td><td class="n suma">{suma}</td>'
                       + ''.join(f'<td class="n">{e["esc"].get(k, "–")}</td>' for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS')) + '</tr>')
+    if hemi:
+        pv = hemi.get('PP', 0) + hemi.get('VOX', 0)
+        lista = ', '.join(f'{NOMBRE[k]} {hemi[k]}' for k in sorted(hemi, key=hemi.get, reverse=True))
+        bloque_hemi = (f'<figure><figcaption><span class="t">Promedio de escaños de las {n_hemi} encuestadoras</span>'
+                       f'<span class="s">Media de los escaños que publica cada encuestadora en su última encuesta del último mes (el centro, si da un intervalo). '
+                       f'Solo las que publican el reparto completo de los 350.</span></figcaption><div class="chart" id="hemi"></div>'
+                       f'<p class="src">{lista}. PP y Vox suman {pv}; la mayoría absoluta está en 176. Es el promedio de lo que publican las encuestadoras, no una previsión de Mapa Electoral.</p></figure>')
+    else:
+        bloque_hemi = ''
     tabla_esc = ('<div class="tbl"><table><thead><tr><th>Encuestadora</th><th class="n">PP + Vox</th>'
                  + ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES[:5])
                  + f'</tr></thead><tbody>{filas_esc}</tbody></table></div>') if con_esc else ''
@@ -305,9 +351,10 @@ def main():
 <p class="src">Encuestas publicadas, vía Electográfica y Wikipedia. La mediana resume las encuestas: no es una previsión de Mapa Electoral.</p>
 </figure>
 <h2>Escaños que da cada encuestadora</h2>
+{bloque_hemi}
 <p>Última encuesta de cada una en los últimos 30 días, con los escaños que publica. Un intervalo («132-137») es la horquilla de la propia encuestadora; la mayoría absoluta está en 176.</p>
 {tabla_esc}
-<h2>Todas las encuestas de los últimos {DIAS_TABLA} días</h2>
+<h2>Las últimas {VISIBLES} encuestas</h2>
 <p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. Un asterisco en la fecha indica que no consta el trabajo de campo y se toma la publicación menos tres días.</p>
 {tabla}
 {tabla_ant}
