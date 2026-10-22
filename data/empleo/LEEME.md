@@ -22,6 +22,12 @@ Descargadas el 22-10-2026. Solo se guardan los totales de ambos sexos; las tabla
 - `empleo_sector_secciones.csv.gz`: una fila por sección censal y año. `seccion` (código INE de 10 cifras), `mun_code`, `anyo` y las mismas columnas de 4 sectores. Cada año usa **las secciones vigentes ese año**: las filas de 2023 cruzan directamente con las secciones de 2023 (en Cataluña casan 5.099 de las 5.115 de `data/catalunya_secciones_2023.csv`; las 16 que faltan son secciones divididas o renumeradas). Para comparar años hay que tener en cuenta los cambios de seccionado.
 - `lugar_trabajo_ciudades.csv`: 151 capitales y principales ciudades. De sus ocupados residentes, cuántos trabajan en el mismo municipio, en otro de la provincia, en otra provincia de la comunidad o en otra comunidad.
 
+## Empleo público por provincia
+
+- `empleo_publico_provincias.csv`: efectivos de las Administraciones públicas a enero de 2026 por provincia (`prov_code` INE), administración (`estado`, `ccaa`, `local`) y sector (docencia no universitaria, instituciones sanitarias, ayuntamientos, fuerzas armadas y cuerpos de seguridad, etc.), separados en `funcionario_carrera` (incluye el personal estatutario de la sanidad), `laboral` y `otro` (interinos, eventuales…). Se genera con `python3 src/empleo_publico.py <carpeta>`.
+- Fuente: Registro Central de Personal, [Estadística del personal al servicio de las Administraciones públicas (EPSAP)](https://digital.gob.es/funcion-publica/dgfp/registro-central-personal/boletin.html), microdatos de enero de 2026 (`Microdatos_Enero_2026.zip`, hoja `Agrupaciones_Total`), descargados el 22-10-2026. Total: 3.071.725 efectivos.
+- Cuenta **por lugar de trabajo** y su nivel más fino es la provincia. **No hay en abierto un recuento de funcionarios por municipio ni por sección**: ni la EPSAP, ni el censo (su «situación profesional» no separa público de privado), ni la EPA (provincial). Por municipio, lo más cercano son las ramas `cnae_O` (Administración pública), `cnae_P` (educación) y `cnae_Q` (sanidad) del censo, que mezclan empleo público y privado.
+
 ## Límites
 
 - **Residencia, no puesto de trabajo.** Mide a qué se dedican los vecinos, no cuántos empleos hay en el municipio. Una «ciudad de servicios» que atrae trabajadores de la comarca no se ve aquí; para eso haría falta afiliación a la Seguridad Social por municipio de la cuenta de cotización, que la Seguridad Social no publica en abierto para toda España (solo algunas comunidades, como Idescat en Cataluña, la dan por municipio y siempre por residencia).

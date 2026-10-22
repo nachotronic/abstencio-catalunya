@@ -1,0 +1,481 @@
+prov_code,provincia,administracion,sector,efectivos,funcionario_carrera,laboral,otro
+01,ARABA/ALAVA,ccaa,administracion de justicia,408,193,16,199
+01,ARABA/ALAVA,ccaa,administracion general ccaa,3731,2115,261,1355
+01,ARABA/ALAVA,ccaa,docencia no universitaria,6387,2390,767,3230
+01,ARABA/ALAVA,ccaa,instituciones sanitarias,9213,3944,52,5217
+01,ARABA/ALAVA,ccaa,policia,1348,1346,0,2
+01,ARABA/ALAVA,ccaa,universidades,7226,1497,4679,1050
+01,ARABA/ALAVA,estado,administracion al servicio de tribunales de instancia,30,24,0,6
+01,ARABA/ALAVA,estado,administracion del estado,604,430,152,22
+01,ARABA/ALAVA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1064,1064,0,0
+01,ARABA/ALAVA,local,ayuntamientos y otras entidades locales y sus ooaa,4508,2256,664,1588
+01,ARABA/ALAVA,local,diputaciones cabildos y consejos insulares y sus ooaa,2976,1541,69,1366
+02,ALBACETE,ccaa,administracion general ccaa,2355,1355,733,267
+02,ALBACETE,ccaa,docencia no universitaria,6891,4611,818,1462
+02,ALBACETE,ccaa,instituciones sanitarias,8158,4193,168,3797
+02,ALBACETE,estado,administracion al servicio de tribunales de instancia,443,353,18,72
+02,ALBACETE,estado,administracion del estado,1806,933,856,17
+02,ALBACETE,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2235,2203,0,32
+02,ALBACETE,local,ayuntamientos y otras entidades locales y sus ooaa,5171,314,4720,137
+02,ALBACETE,local,diputaciones cabildos y consejos insulares y sus ooaa,1118,532,317,269
+03,ALACANT/ALICANTE,ccaa,administracion de justicia,2063,1182,0,881
+03,ALACANT/ALICANTE,ccaa,administracion general ccaa,3300,1752,22,1526
+03,ALACANT/ALICANTE,ccaa,docencia no universitaria,31562,18261,571,12730
+03,ALACANT/ALICANTE,ccaa,instituciones sanitarias,19719,10843,1819,7057
+03,ALACANT/ALICANTE,ccaa,universidades,15667,6367,8008,1292
+03,ALACANT/ALICANTE,estado,administracion al servicio de tribunales de instancia,164,136,0,28
+03,ALACANT/ALICANTE,estado,administracion del estado,4262,3363,771,128
+03,ALACANT/ALICANTE,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,6546,6233,0,313
+03,ALACANT/ALICANTE,local,ayuntamientos y otras entidades locales y sus ooaa,19527,10007,4579,4941
+03,ALACANT/ALICANTE,local,diputaciones cabildos y consejos insulares y sus ooaa,1899,877,640,382
+04,ALMERIA,ccaa,administracion de justicia,668,543,0,125
+04,ALMERIA,ccaa,administracion general ccaa,2142,1289,698,155
+04,ALMERIA,ccaa,docencia no universitaria,13241,7876,1325,4040
+04,ALMERIA,ccaa,instituciones sanitarias,11426,5938,94,5394
+04,ALMERIA,ccaa,universidades,1831,1022,779,30
+04,ALMERIA,estado,administracion al servicio de tribunales de instancia,53,49,0,4
+04,ALMERIA,estado,administracion del estado,2398,1639,696,63
+04,ALMERIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,5096,4954,0,142
+04,ALMERIA,local,ayuntamientos y otras entidades locales y sus ooaa,6001,2525,2666,810
+04,ALMERIA,local,diputaciones cabildos y consejos insulares y sus ooaa,1664,755,782,127
+05,AVILA,ccaa,administracion general ccaa,1228,468,537,223
+05,AVILA,ccaa,docencia no universitaria,3064,1574,402,1088
+05,AVILA,ccaa,instituciones sanitarias,2472,1609,3,860
+05,AVILA,estado,administracion al servicio de tribunales de instancia,158,104,8,46
+05,AVILA,estado,administracion del estado,701,536,151,14
+05,AVILA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,3833,827,0,3006
+05,AVILA,local,ayuntamientos y otras entidades locales y sus ooaa,3022,589,2083,350
+05,AVILA,local,diputaciones cabildos y consejos insulares y sus ooaa,358,237,62,59
+06,BADAJOZ,ccaa,administracion general ccaa,8888,3583,4302,1003
+06,BADAJOZ,ccaa,docencia no universitaria,13429,8108,1683,3638
+06,BADAJOZ,ccaa,instituciones sanitarias,12251,7481,6,4764
+06,BADAJOZ,ccaa,universidades,3200,1416,1494,290
+06,BADAJOZ,estado,administracion al servicio de tribunales de instancia,657,355,19,283
+06,BADAJOZ,estado,administracion del estado,2167,1524,602,41
+06,BADAJOZ,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,6385,6336,0,49
+06,BADAJOZ,local,ayuntamientos y otras entidades locales y sus ooaa,14025,2363,10526,1136
+06,BADAJOZ,local,diputaciones cabildos y consejos insulares y sus ooaa,1144,728,121,295
+07,ILLES BALEARS,ccaa,administracion general ccaa,5959,2704,1085,2170
+07,ILLES BALEARS,ccaa,docencia no universitaria,17848,11833,891,5124
+07,ILLES BALEARS,ccaa,instituciones sanitarias,19376,11018,0,8358
+07,ILLES BALEARS,ccaa,universidades,2883,938,1720,225
+07,ILLES BALEARS,estado,administracion al servicio de tribunales de instancia,1400,568,40,792
+07,ILLES BALEARS,estado,administracion del estado,4067,2570,1333,164
+07,ILLES BALEARS,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,5322,5104,0,218
+07,ILLES BALEARS,local,ayuntamientos y otras entidades locales y sus ooaa,11622,4187,5681,1754
+07,ILLES BALEARS,local,diputaciones cabildos y consejos insulares y sus ooaa,5882,1028,4234,620
+08,BARCELONA,ccaa,administracion de justicia,6046,2741,0,3305
+08,BARCELONA,ccaa,administracion general ccaa,25394,14130,3220,8044
+08,BARCELONA,ccaa,docencia no universitaria,71642,48791,4655,18196
+08,BARCELONA,ccaa,instituciones sanitarias,40632,28846,83,11703
+08,BARCELONA,ccaa,policia,13903,12424,0,1479
+08,BARCELONA,ccaa,universidades,26061,5575,19650,836
+08,BARCELONA,estado,administracion al servicio de tribunales de instancia,600,407,0,193
+08,BARCELONA,estado,administracion del estado,12094,7240,4521,333
+08,BARCELONA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,5260,5238,0,22
+08,BARCELONA,local,ayuntamientos y otras entidades locales y sus ooaa,58032,27942,19167,10923
+08,BARCELONA,local,diputaciones cabildos y consejos insulares y sus ooaa,5542,3280,329,1933
+09,BURGOS,ccaa,administracion general ccaa,2319,822,1255,242
+09,BURGOS,ccaa,docencia no universitaria,5131,2550,632,1949
+09,BURGOS,ccaa,instituciones sanitarias,5607,3883,4,1720
+09,BURGOS,ccaa,universidades,1563,513,1016,34
+09,BURGOS,estado,administracion al servicio de tribunales de instancia,480,355,21,104
+09,BURGOS,estado,administracion del estado,1745,955,766,24
+09,BURGOS,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2701,2646,0,55
+09,BURGOS,local,ayuntamientos y otras entidades locales y sus ooaa,3586,742,2668,176
+09,BURGOS,local,diputaciones cabildos y consejos insulares y sus ooaa,1229,211,870,148
+10,CACERES,ccaa,administracion general ccaa,4628,1137,3287,204
+10,CACERES,ccaa,docencia no universitaria,8006,4901,1104,2001
+10,CACERES,ccaa,instituciones sanitarias,6459,3525,0,2934
+10,CACERES,estado,administracion al servicio de tribunales de instancia,468,276,27,165
+10,CACERES,estado,administracion del estado,1449,947,467,35
+10,CACERES,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,3275,1783,0,1492
+10,CACERES,local,ayuntamientos y otras entidades locales y sus ooaa,8699,1078,7156,465
+10,CACERES,local,diputaciones cabildos y consejos insulares y sus ooaa,1060,635,43,382
+11,CADIZ,ccaa,administracion de justicia,1177,958,0,219
+11,CADIZ,ccaa,administracion general ccaa,2803,1477,1153,173
+11,CADIZ,ccaa,docencia no universitaria,18684,10640,2125,5919
+11,CADIZ,ccaa,instituciones sanitarias,19442,10329,135,8978
+11,CADIZ,ccaa,universidades,3125,1191,1812,122
+11,CADIZ,estado,administracion al servicio de tribunales de instancia,112,89,0,23
+11,CADIZ,estado,administracion del estado,6334,4102,2091,141
+11,CADIZ,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,17890,16202,0,1688
+11,CADIZ,local,ayuntamientos y otras entidades locales y sus ooaa,12059,4610,6322,1127
+11,CADIZ,local,diputaciones cabildos y consejos insulares y sus ooaa,2019,529,1066,424
+12,CASTELLO/CASTELLON,ccaa,administracion de justicia,692,312,0,380
+12,CASTELLO/CASTELLON,ccaa,administracion general ccaa,1675,861,11,803
+12,CASTELLO/CASTELLON,ccaa,docencia no universitaria,11246,6913,199,4134
+12,CASTELLO/CASTELLON,ccaa,instituciones sanitarias,6477,3129,28,3320
+12,CASTELLO/CASTELLON,ccaa,universidades,2462,1049,1291,122
+12,CASTELLO/CASTELLON,estado,administracion al servicio de tribunales de instancia,52,35,0,17
+12,CASTELLO/CASTELLON,estado,administracion del estado,2209,1618,484,107
+12,CASTELLO/CASTELLON,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1855,1738,0,117
+12,CASTELLO/CASTELLON,local,ayuntamientos y otras entidades locales y sus ooaa,7854,3009,2555,2290
+12,CASTELLO/CASTELLON,local,diputaciones cabildos y consejos insulares y sus ooaa,598,387,15,196
+13,CIUDAD REAL,ccaa,administracion general ccaa,2771,1093,1243,435
+13,CIUDAD REAL,ccaa,docencia no universitaria,8581,5501,1070,2010
+13,CIUDAD REAL,ccaa,instituciones sanitarias,10446,5370,226,4850
+13,CIUDAD REAL,estado,administracion al servicio de tribunales de instancia,430,266,24,140
+13,CIUDAD REAL,estado,administracion del estado,1643,1099,498,46
+13,CIUDAD REAL,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1912,1865,0,47
+13,CIUDAD REAL,local,ayuntamientos y otras entidades locales y sus ooaa,8425,2062,5424,939
+13,CIUDAD REAL,local,diputaciones cabildos y consejos insulares y sus ooaa,547,383,39,125
+14,CORDOBA,ccaa,administracion de justicia,626,546,0,80
+14,CORDOBA,ccaa,administracion general ccaa,2593,1576,899,118
+14,CORDOBA,ccaa,docencia no universitaria,12339,8772,1474,2093
+14,CORDOBA,ccaa,instituciones sanitarias,12747,7860,145,4742
+14,CORDOBA,ccaa,universidades,3185,1066,1962,157
+14,CORDOBA,estado,administracion al servicio de tribunales de instancia,70,57,0,13
+14,CORDOBA,estado,administracion del estado,2990,1722,1206,62
+14,CORDOBA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,5705,5637,0,68
+14,CORDOBA,local,ayuntamientos y otras entidades locales y sus ooaa,9146,2656,5574,916
+14,CORDOBA,local,diputaciones cabildos y consejos insulares y sus ooaa,1260,5,1255,0
+15,A CORUÑA,ccaa,administracion de justicia,1317,1018,0,299
+15,A CORUÑA,ccaa,administracion general ccaa,9161,5351,1510,2300
+15,A CORUÑA,ccaa,docencia no universitaria,16202,11670,1015,3517
+15,A CORUÑA,ccaa,instituciones sanitarias,20966,11254,42,9670
+15,A CORUÑA,ccaa,universidades,7401,2894,4180,327
+15,A CORUÑA,estado,administracion al servicio de tribunales de instancia,114,92,0,22
+15,A CORUÑA,estado,administracion del estado,4769,3135,1545,89
+15,A CORUÑA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,8244,7728,0,516
+15,A CORUÑA,local,ayuntamientos y otras entidades locales y sus ooaa,8692,3756,4077,859
+15,A CORUÑA,local,diputaciones cabildos y consejos insulares y sus ooaa,861,562,20,279
+16,CUENCA,ccaa,administracion general ccaa,1703,821,551,331
+16,CUENCA,ccaa,docencia no universitaria,3761,2324,410,1027
+16,CUENCA,ccaa,instituciones sanitarias,3021,1425,66,1530
+16,CUENCA,estado,administracion al servicio de tribunales de instancia,171,104,12,55
+16,CUENCA,estado,administracion del estado,586,501,74,11
+16,CUENCA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,934,920,0,14
+16,CUENCA,local,ayuntamientos y otras entidades locales y sus ooaa,3572,210,3251,111
+16,CUENCA,local,diputaciones cabildos y consejos insulares y sus ooaa,559,26,478,55
+17,GIRONA,ccaa,administracion de justicia,871,288,0,583
+17,GIRONA,ccaa,administracion general ccaa,3733,2117,728,888
+17,GIRONA,ccaa,docencia no universitaria,13923,10030,845,3048
+17,GIRONA,ccaa,instituciones sanitarias,5022,3277,3,1742
+17,GIRONA,ccaa,policia,2219,2160,0,59
+17,GIRONA,ccaa,universidades,2617,587,1909,121
+17,GIRONA,estado,administracion al servicio de tribunales de instancia,70,31,0,39
+17,GIRONA,estado,administracion del estado,1284,905,330,49
+17,GIRONA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1300,1294,0,6
+17,GIRONA,local,ayuntamientos y otras entidades locales y sus ooaa,11069,3961,5515,1593
+17,GIRONA,local,diputaciones cabildos y consejos insulares y sus ooaa,699,479,180,40
+18,GRANADA,ccaa,administracion de justicia,1004,886,0,118
+18,GRANADA,ccaa,administracion general ccaa,3459,2022,1301,136
+18,GRANADA,ccaa,docencia no universitaria,14657,10697,1392,2568
+18,GRANADA,ccaa,instituciones sanitarias,17468,9536,124,7808
+18,GRANADA,ccaa,universidades,7802,4316,2990,496
+18,GRANADA,estado,administracion al servicio de tribunales de instancia,82,73,0,9
+18,GRANADA,estado,administracion del estado,3861,2544,1228,89
+18,GRANADA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,4274,4087,0,187
+18,GRANADA,local,ayuntamientos y otras entidades locales y sus ooaa,13752,4423,7674,1655
+18,GRANADA,local,diputaciones cabildos y consejos insulares y sus ooaa,1845,1253,175,417
+19,GUADALAJARA,ccaa,administracion general ccaa,1745,656,665,424
+19,GUADALAJARA,ccaa,docencia no universitaria,4430,2274,388,1768
+19,GUADALAJARA,ccaa,instituciones sanitarias,4282,1791,78,2413
+19,GUADALAJARA,estado,administracion al servicio de tribunales de instancia,224,151,13,60
+19,GUADALAJARA,estado,administracion del estado,859,484,364,11
+19,GUADALAJARA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1026,997,0,29
+19,GUADALAJARA,local,ayuntamientos y otras entidades locales y sus ooaa,3382,265,3097,20
+19,GUADALAJARA,local,diputaciones cabildos y consejos insulares y sus ooaa,460,0,460,0
+20,GIPUZKOA,ccaa,administracion de justicia,773,215,30,528
+20,GIPUZKOA,ccaa,administracion general ccaa,1433,799,235,399
+20,GIPUZKOA,ccaa,docencia no universitaria,11661,6248,1086,4327
+20,GIPUZKOA,ccaa,instituciones sanitarias,13332,6316,338,6678
+20,GIPUZKOA,ccaa,policia,1879,1879,0,0
+20,GIPUZKOA,estado,administracion al servicio de tribunales de instancia,52,31,0,21
+20,GIPUZKOA,estado,administracion del estado,1083,632,407,44
+20,GIPUZKOA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1627,1627,0,0
+20,GIPUZKOA,local,ayuntamientos y otras entidades locales y sus ooaa,7317,3469,1466,2382
+20,GIPUZKOA,local,diputaciones cabildos y consejos insulares y sus ooaa,2701,1246,615,840
+21,HUELVA,ccaa,administracion de justicia,509,299,0,210
+21,HUELVA,ccaa,administracion general ccaa,2104,1262,705,137
+21,HUELVA,ccaa,docencia no universitaria,9261,5123,1045,3093
+21,HUELVA,ccaa,instituciones sanitarias,8129,4398,52,3679
+21,HUELVA,ccaa,universidades,1679,653,958,68
+21,HUELVA,estado,administracion al servicio de tribunales de instancia,47,30,0,17
+21,HUELVA,estado,administracion del estado,2147,1446,623,78
+21,HUELVA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1952,1842,0,110
+21,HUELVA,local,ayuntamientos y otras entidades locales y sus ooaa,8453,2162,5484,807
+21,HUELVA,local,diputaciones cabildos y consejos insulares y sus ooaa,949,498,321,130
+22,HUESCA,ccaa,administracion de justicia,205,98,0,107
+22,HUESCA,ccaa,administracion general ccaa,1619,645,459,515
+22,HUESCA,ccaa,docencia no universitaria,4741,2200,368,2173
+22,HUESCA,ccaa,instituciones sanitarias,4287,2202,7,2078
+22,HUESCA,estado,administracion al servicio de tribunales de instancia,21,10,0,11
+22,HUESCA,estado,administracion del estado,758,459,293,6
+22,HUESCA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2532,2476,0,56
+22,HUESCA,local,ayuntamientos y otras entidades locales y sus ooaa,4459,736,3369,354
+22,HUESCA,local,diputaciones cabildos y consejos insulares y sus ooaa,430,247,26,157
+23,JAEN,ccaa,administracion de justicia,524,476,0,48
+23,JAEN,ccaa,administracion general ccaa,2526,1287,1103,136
+23,JAEN,ccaa,docencia no universitaria,10291,7009,1034,2248
+23,JAEN,ccaa,instituciones sanitarias,10641,6185,97,4359
+23,JAEN,ccaa,universidades,1857,902,889,66
+23,JAEN,estado,administracion al servicio de tribunales de instancia,50,39,0,11
+23,JAEN,estado,administracion del estado,1878,1361,469,48
+23,JAEN,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,4928,1976,0,2952
+23,JAEN,local,ayuntamientos y otras entidades locales y sus ooaa,8748,2101,5653,994
+23,JAEN,local,diputaciones cabildos y consejos insulares y sus ooaa,1512,923,75,514
+24,LEON,ccaa,administracion general ccaa,2336,1090,988,258
+24,LEON,ccaa,docencia no universitaria,6738,3750,900,2088
+24,LEON,ccaa,instituciones sanitarias,7450,5276,45,2129
+24,LEON,ccaa,universidades,1868,664,1169,35
+24,LEON,estado,administracion al servicio de tribunales de instancia,607,507,31,69
+24,LEON,estado,administracion del estado,2402,1459,889,54
+24,LEON,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,4792,4618,0,174
+24,LEON,local,ayuntamientos y otras entidades locales y sus ooaa,5605,1336,3984,285
+24,LEON,local,diputaciones cabildos y consejos insulares y sus ooaa,1454,739,165,550
+25,LLEIDA,ccaa,administracion de justicia,417,194,0,223
+25,LLEIDA,ccaa,administracion general ccaa,3434,2094,584,756
+25,LLEIDA,ccaa,docencia no universitaria,8132,5862,572,1698
+25,LLEIDA,ccaa,instituciones sanitarias,4963,3338,8,1617
+25,LLEIDA,ccaa,policia,1759,1682,0,77
+25,LLEIDA,ccaa,universidades,2308,431,1824,53
+25,LLEIDA,estado,administracion al servicio de tribunales de instancia,33,22,0,11
+25,LLEIDA,estado,administracion del estado,840,640,167,33
+25,LLEIDA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1296,1210,0,86
+25,LLEIDA,local,ayuntamientos y otras entidades locales y sus ooaa,6907,1586,4594,727
+25,LLEIDA,local,diputaciones cabildos y consejos insulares y sus ooaa,593,409,75,109
+26,LA RIOJA,ccaa,administracion de justicia,349,197,0,152
+26,LA RIOJA,ccaa,administracion general ccaa,3248,1513,451,1284
+26,LA RIOJA,ccaa,docencia no universitaria,5942,3116,275,2551
+26,LA RIOJA,ccaa,instituciones sanitarias,5945,3126,150,2669
+26,LA RIOJA,ccaa,universidades,923,465,380,78
+26,LA RIOJA,estado,administracion al servicio de tribunales de instancia,30,24,0,6
+26,LA RIOJA,estado,administracion del estado,1183,842,305,36
+26,LA RIOJA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1859,1829,0,30
+26,LA RIOJA,local,ayuntamientos y otras entidades locales y sus ooaa,2572,1000,1287,285
+27,LUGO,ccaa,administracion de justicia,309,241,0,68
+27,LUGO,ccaa,administracion general ccaa,3265,1581,778,906
+27,LUGO,ccaa,docencia no universitaria,5338,3568,352,1418
+27,LUGO,ccaa,instituciones sanitarias,6672,3769,28,2875
+27,LUGO,estado,administracion al servicio de tribunales de instancia,35,25,0,10
+27,LUGO,estado,administracion del estado,1485,1204,256,25
+27,LUGO,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1303,1277,0,26
+27,LUGO,local,ayuntamientos y otras entidades locales y sus ooaa,3597,880,2392,325
+27,LUGO,local,diputaciones cabildos y consejos insulares y sus ooaa,542,306,130,106
+28,MADRID,ccaa,administracion de justicia,7453,4477,298,2678
+28,MADRID,ccaa,administracion general ccaa,24167,8044,13051,3072
+28,MADRID,ccaa,docencia no universitaria,73514,40144,8968,24402
+28,MADRID,ccaa,instituciones sanitarias,98589,47430,1550,49609
+28,MADRID,ccaa,universidades,32902,11056,20759,1087
+28,MADRID,estado,administracion al servicio de tribunales de instancia,1996,1421,51,524
+28,MADRID,estado,administracion del estado,93417,55526,31570,6321
+28,MADRID,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,68082,66072,0,2010
+28,MADRID,local,ayuntamientos y otras entidades locales y sus ooaa,56841,32624,17116,7101
+29,MALAGA,ccaa,administracion de justicia,1631,1475,0,156
+29,MALAGA,ccaa,administracion general ccaa,3190,2078,952,160
+29,MALAGA,ccaa,docencia no universitaria,22742,16133,1847,4762
+29,MALAGA,ccaa,instituciones sanitarias,25061,14172,316,10573
+29,MALAGA,ccaa,universidades,4892,2055,2727,110
+29,MALAGA,estado,administracion al servicio de tribunales de instancia,142,121,0,21
+29,MALAGA,estado,administracion del estado,5182,3440,1624,118
+29,MALAGA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,7302,6944,0,358
+29,MALAGA,local,ayuntamientos y otras entidades locales y sus ooaa,18277,6772,9683,1822
+29,MALAGA,local,diputaciones cabildos y consejos insulares y sus ooaa,1353,757,68,528
+30,MURCIA,ccaa,administracion general ccaa,7136,4714,52,2370
+30,MURCIA,ccaa,docencia no universitaria,28465,17109,746,10610
+30,MURCIA,ccaa,instituciones sanitarias,30072,13054,96,16922
+30,MURCIA,ccaa,universidades,5672,2679,2699,294
+30,MURCIA,estado,administracion al servicio de tribunales de instancia,1602,1261,52,289
+30,MURCIA,estado,administracion del estado,5337,3733,1460,144
+30,MURCIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,10493,9653,0,840
+30,MURCIA,local,ayuntamientos y otras entidades locales y sus ooaa,13876,7090,3714,3072
+31,NAVARRA,ccaa,administracion de justicia,637,304,0,333
+31,NAVARRA,ccaa,administracion general ccaa,5496,3338,228,1930
+31,NAVARRA,ccaa,docencia no universitaria,12057,5733,206,6118
+31,NAVARRA,ccaa,instituciones sanitarias,14186,7356,231,6599
+31,NAVARRA,ccaa,policia,1147,1146,0,1
+31,NAVARRA,ccaa,universidades,2049,829,1204,16
+31,NAVARRA,estado,administracion al servicio de tribunales de instancia,52,43,0,9
+31,NAVARRA,estado,administracion del estado,1211,822,312,77
+31,NAVARRA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2830,2808,0,22
+31,NAVARRA,local,ayuntamientos y otras entidades locales y sus ooaa,7496,2363,4667,466
+32,OURENSE,ccaa,administracion de justicia,309,267,0,42
+32,OURENSE,ccaa,administracion general ccaa,2686,1325,661,700
+32,OURENSE,ccaa,docencia no universitaria,4263,2853,319,1091
+32,OURENSE,ccaa,instituciones sanitarias,6313,3450,21,2842
+32,OURENSE,estado,administracion al servicio de tribunales de instancia,30,21,0,9
+32,OURENSE,estado,administracion del estado,1432,1123,295,14
+32,OURENSE,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1078,1056,0,22
+32,OURENSE,local,ayuntamientos y otras entidades locales y sus ooaa,3956,738,3020,198
+32,OURENSE,local,diputaciones cabildos y consejos insulares y sus ooaa,808,193,615,0
+33,ASTURIAS,ccaa,administracion de justicia,1472,915,137,420
+33,ASTURIAS,ccaa,administracion general ccaa,10001,2012,5743,2246
+33,ASTURIAS,ccaa,docencia no universitaria,14759,8596,1307,4856
+33,ASTURIAS,ccaa,instituciones sanitarias,21100,10804,280,10016
+33,ASTURIAS,ccaa,universidades,3756,1635,1980,141
+33,ASTURIAS,estado,administracion al servicio de tribunales de instancia,113,99,0,14
+33,ASTURIAS,estado,administracion del estado,4018,2658,1290,70
+33,ASTURIAS,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,4798,4715,0,83
+33,ASTURIAS,local,ayuntamientos y otras entidades locales y sus ooaa,9689,2764,4701,2224
+34,PALENCIA,ccaa,administracion general ccaa,1409,515,722,172
+34,PALENCIA,ccaa,docencia no universitaria,2592,1412,421,759
+34,PALENCIA,ccaa,instituciones sanitarias,2416,1830,20,566
+34,PALENCIA,estado,administracion al servicio de tribunales de instancia,214,137,12,65
+34,PALENCIA,estado,administracion del estado,1098,812,238,48
+34,PALENCIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,865,856,0,9
+34,PALENCIA,local,ayuntamientos y otras entidades locales y sus ooaa,1836,94,1665,77
+34,PALENCIA,local,diputaciones cabildos y consejos insulares y sus ooaa,435,0,435,0
+35,LAS PALMAS,ccaa,administracion de justicia,1660,988,32,640
+35,LAS PALMAS,ccaa,administracion general ccaa,3457,1163,1270,1024
+35,LAS PALMAS,ccaa,docencia no universitaria,18708,8939,2156,7613
+35,LAS PALMAS,ccaa,instituciones sanitarias,23776,5000,186,18590
+35,LAS PALMAS,ccaa,policia,138,125,0,13
+35,LAS PALMAS,ccaa,universidades,2720,1068,1652,0
+35,LAS PALMAS,estado,administracion al servicio de tribunales de instancia,112,95,0,17
+35,LAS PALMAS,estado,administracion del estado,4774,3053,1576,145
+35,LAS PALMAS,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,9820,9629,0,191
+35,LAS PALMAS,local,ayuntamientos y otras entidades locales y sus ooaa,10646,2864,6461,1321
+35,LAS PALMAS,local,diputaciones cabildos y consejos insulares y sus ooaa,4461,873,2648,940
+36,PONTEVEDRA,ccaa,administracion de justicia,1017,827,0,190
+36,PONTEVEDRA,ccaa,administracion general ccaa,4545,2110,1076,1359
+36,PONTEVEDRA,ccaa,docencia no universitaria,13355,9708,750,2897
+36,PONTEVEDRA,ccaa,instituciones sanitarias,13822,7613,20,6189
+36,PONTEVEDRA,ccaa,universidades,3191,1462,1613,116
+36,PONTEVEDRA,estado,administracion al servicio de tribunales de instancia,98,84,0,14
+36,PONTEVEDRA,estado,administracion del estado,4206,2889,1262,55
+36,PONTEVEDRA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,5620,5133,0,487
+36,PONTEVEDRA,local,ayuntamientos y otras entidades locales y sus ooaa,6234,2672,3079,483
+36,PONTEVEDRA,local,diputaciones cabildos y consejos insulares y sus ooaa,1049,760,76,213
+37,SALAMANCA,ccaa,administracion general ccaa,1885,754,893,238
+37,SALAMANCA,ccaa,docencia no universitaria,4645,2727,616,1302
+37,SALAMANCA,ccaa,instituciones sanitarias,6048,3842,8,2198
+37,SALAMANCA,ccaa,universidades,4363,1416,2837,110
+37,SALAMANCA,estado,administracion al servicio de tribunales de instancia,363,310,19,34
+37,SALAMANCA,estado,administracion del estado,1883,1277,566,40
+37,SALAMANCA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2588,2556,0,32
+37,SALAMANCA,local,ayuntamientos y otras entidades locales y sus ooaa,4368,1235,2845,288
+37,SALAMANCA,local,diputaciones cabildos y consejos insulares y sus ooaa,1015,421,227,367
+38,SANTA CRUZ DE TENERIFE,ccaa,administracion de justicia,1272,663,27,582
+38,SANTA CRUZ DE TENERIFE,ccaa,administracion general ccaa,3982,1295,1441,1246
+38,SANTA CRUZ DE TENERIFE,ccaa,docencia no universitaria,16571,7399,2213,6959
+38,SANTA CRUZ DE TENERIFE,ccaa,instituciones sanitarias,22207,3847,678,17682
+38,SANTA CRUZ DE TENERIFE,ccaa,policia,137,121,0,16
+38,SANTA CRUZ DE TENERIFE,ccaa,universidades,2781,983,1670,128
+38,SANTA CRUZ DE TENERIFE,estado,administracion al servicio de tribunales de instancia,126,90,0,36
+38,SANTA CRUZ DE TENERIFE,estado,administracion del estado,3275,2170,1011,94
+38,SANTA CRUZ DE TENERIFE,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,6054,5874,0,180
+38,SANTA CRUZ DE TENERIFE,local,ayuntamientos y otras entidades locales y sus ooaa,12484,2989,7943,1552
+38,SANTA CRUZ DE TENERIFE,local,diputaciones cabildos y consejos insulares y sus ooaa,5955,1118,3907,930
+39,CANTABRIA,ccaa,administracion de justicia,716,531,6,179
+39,CANTABRIA,ccaa,administracion general ccaa,4659,2035,1634,990
+39,CANTABRIA,ccaa,docencia no universitaria,10359,5872,773,3714
+39,CANTABRIA,ccaa,instituciones sanitarias,11659,6572,49,5038
+39,CANTABRIA,ccaa,universidades,2058,777,1202,79
+39,CANTABRIA,estado,administracion al servicio de tribunales de instancia,60,52,0,8
+39,CANTABRIA,estado,administracion del estado,2709,1603,1056,50
+39,CANTABRIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1846,1769,0,77
+39,CANTABRIA,local,ayuntamientos y otras entidades locales y sus ooaa,5721,1887,2883,951
+40,SEGOVIA,ccaa,administracion general ccaa,1353,440,668,245
+40,SEGOVIA,ccaa,docencia no universitaria,3228,1704,412,1112
+40,SEGOVIA,ccaa,instituciones sanitarias,1886,1427,1,458
+40,SEGOVIA,estado,administracion al servicio de tribunales de instancia,176,103,9,64
+40,SEGOVIA,estado,administracion del estado,995,652,321,22
+40,SEGOVIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,1414,1328,0,86
+40,SEGOVIA,local,ayuntamientos y otras entidades locales y sus ooaa,2545,597,1681,267
+40,SEGOVIA,local,diputaciones cabildos y consejos insulares y sus ooaa,906,461,255,190
+41,SEVILLA,ccaa,administracion de justicia,1810,1463,0,347
+41,SEVILLA,ccaa,administracion general ccaa,11062,7666,2049,1347
+41,SEVILLA,ccaa,docencia no universitaria,28453,19208,2795,6450
+41,SEVILLA,ccaa,instituciones sanitarias,30612,16203,283,14126
+41,SEVILLA,ccaa,universidades,10362,4271,5704,387
+41,SEVILLA,estado,administracion al servicio de tribunales de instancia,266,216,2,48
+41,SEVILLA,estado,administracion del estado,8525,5044,3318,163
+41,SEVILLA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,10438,10263,0,175
+41,SEVILLA,local,ayuntamientos y otras entidades locales y sus ooaa,26026,6064,17665,2297
+41,SEVILLA,local,diputaciones cabildos y consejos insulares y sus ooaa,1679,554,698,427
+42,SORIA,ccaa,administracion general ccaa,1391,488,747,156
+42,SORIA,ccaa,docencia no universitaria,2188,981,375,832
+42,SORIA,ccaa,instituciones sanitarias,1623,1083,11,529
+42,SORIA,estado,administracion al servicio de tribunales de instancia,140,84,12,44
+42,SORIA,estado,administracion del estado,732,575,128,29
+42,SORIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,647,610,0,37
+42,SORIA,local,ayuntamientos y otras entidades locales y sus ooaa,1262,190,989,83
+42,SORIA,local,diputaciones cabildos y consejos insulares y sus ooaa,531,79,398,54
+43,TARRAGONA,ccaa,administracion de justicia,923,344,0,579
+43,TARRAGONA,ccaa,administracion general ccaa,4216,2429,901,886
+43,TARRAGONA,ccaa,docencia no universitaria,14566,10490,932,3144
+43,TARRAGONA,ccaa,instituciones sanitarias,6490,4608,9,1873
+43,TARRAGONA,ccaa,policia,2314,2230,0,84
+43,TARRAGONA,ccaa,universidades,3387,575,2713,99
+43,TARRAGONA,estado,administracion al servicio de tribunales de instancia,82,46,0,36
+43,TARRAGONA,estado,administracion del estado,1623,930,651,42
+43,TARRAGONA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,896,886,0,10
+43,TARRAGONA,local,ayuntamientos y otras entidades locales y sus ooaa,11557,3660,6225,1672
+43,TARRAGONA,local,diputaciones cabildos y consejos insulares y sus ooaa,1361,496,635,230
+44,TERUEL,ccaa,administracion de justicia,110,62,0,48
+44,TERUEL,ccaa,administracion general ccaa,1760,476,656,628
+44,TERUEL,ccaa,docencia no universitaria,3238,1450,291,1497
+44,TERUEL,ccaa,instituciones sanitarias,3212,1573,8,1631
+44,TERUEL,estado,administracion al servicio de tribunales de instancia,8,7,0,1
+44,TERUEL,estado,administracion del estado,592,437,140,15
+44,TERUEL,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,786,720,0,66
+44,TERUEL,local,ayuntamientos y otras entidades locales y sus ooaa,2964,284,2262,418
+44,TERUEL,local,diputaciones cabildos y consejos insulares y sus ooaa,341,121,76,144
+45,TOLEDO,ccaa,administracion general ccaa,6036,3076,1243,1717
+45,TOLEDO,ccaa,docencia no universitaria,12137,6572,1235,4330
+45,TOLEDO,ccaa,instituciones sanitarias,11908,5367,170,6371
+45,TOLEDO,ccaa,universidades,4768,2094,2370,304
+45,TOLEDO,estado,administracion al servicio de tribunales de instancia,521,326,17,178
+45,TOLEDO,estado,administracion del estado,1871,1423,371,77
+45,TOLEDO,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2892,2691,0,201
+45,TOLEDO,local,ayuntamientos y otras entidades locales y sus ooaa,11269,687,10557,25
+45,TOLEDO,local,diputaciones cabildos y consejos insulares y sus ooaa,973,64,893,16
+46,VALÈNCIA/VALENCIA,ccaa,administracion de justicia,3104,2100,0,1004
+46,VALÈNCIA/VALENCIA,ccaa,administracion general ccaa,10360,6600,141,3619
+46,VALÈNCIA/VALENCIA,ccaa,docencia no universitaria,37691,26713,687,10291
+46,VALÈNCIA/VALENCIA,ccaa,instituciones sanitarias,37998,16328,2061,19609
+46,VALÈNCIA/VALENCIA,ccaa,universidades,5555,2738,2513,304
+46,VALÈNCIA/VALENCIA,estado,administracion al servicio de tribunales de instancia,241,202,0,39
+46,VALÈNCIA/VALENCIA,estado,administracion del estado,9035,5836,2874,325
+46,VALÈNCIA/VALENCIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,11957,11595,0,362
+46,VALÈNCIA/VALENCIA,local,ayuntamientos y otras entidades locales y sus ooaa,29464,11972,10052,7440
+46,VALÈNCIA/VALENCIA,local,diputaciones cabildos y consejos insulares y sus ooaa,1153,670,105,378
+47,VALLADOLID,ccaa,administracion general ccaa,6160,3406,1990,764
+47,VALLADOLID,ccaa,docencia no universitaria,6813,4131,665,2017
+47,VALLADOLID,ccaa,instituciones sanitarias,9006,6160,2,2844
+47,VALLADOLID,ccaa,universidades,4307,1362,2806,139
+47,VALLADOLID,estado,administracion al servicio de tribunales de instancia,617,533,34,50
+47,VALLADOLID,estado,administracion del estado,2601,1792,762,47
+47,VALLADOLID,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,3737,3663,0,74
+47,VALLADOLID,local,ayuntamientos y otras entidades locales y sus ooaa,5482,1725,3327,430
+47,VALLADOLID,local,diputaciones cabildos y consejos insulares y sus ooaa,1015,609,141,265
+48,BIZKAIA,ccaa,administracion de justicia,1484,787,45,652
+48,BIZKAIA,ccaa,administracion general ccaa,2073,1214,417,442
+48,BIZKAIA,ccaa,docencia no universitaria,16895,7808,1926,7161
+48,BIZKAIA,ccaa,instituciones sanitarias,24872,11346,349,13177
+48,BIZKAIA,ccaa,policia,3637,3637,0,0
+48,BIZKAIA,estado,administracion al servicio de tribunales de instancia,106,88,0,18
+48,BIZKAIA,estado,administracion del estado,2256,1345,876,35
+48,BIZKAIA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,2086,2086,0,0
+48,BIZKAIA,local,ayuntamientos y otras entidades locales y sus ooaa,10551,4646,3031,2874
+48,BIZKAIA,local,diputaciones cabildos y consejos insulares y sus ooaa,4883,2392,1451,1040
+49,ZAMORA,ccaa,administracion general ccaa,1562,565,801,196
+49,ZAMORA,ccaa,docencia no universitaria,2919,1620,407,892
+49,ZAMORA,ccaa,instituciones sanitarias,2729,2107,11,611
+49,ZAMORA,estado,administracion al servicio de tribunales de instancia,201,157,16,28
+49,ZAMORA,estado,administracion del estado,549,439,105,5
+49,ZAMORA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,852,817,0,35
+49,ZAMORA,local,ayuntamientos y otras entidades locales y sus ooaa,2384,190,2086,108
+49,ZAMORA,local,diputaciones cabildos y consejos insulares y sus ooaa,401,233,54,114
+50,ZARAGOZA,ccaa,administracion de justicia,922,665,0,257
+50,ZARAGOZA,ccaa,administracion general ccaa,5391,3009,926,1456
+50,ZARAGOZA,ccaa,docencia no universitaria,14437,7177,867,6393
+50,ZARAGOZA,ccaa,instituciones sanitarias,20441,10473,63,9905
+50,ZARAGOZA,ccaa,universidades,6299,2582,3284,433
+50,ZARAGOZA,estado,administracion al servicio de tribunales de instancia,83,75,0,8
+50,ZARAGOZA,estado,administracion del estado,5050,3092,1750,208
+50,ZARAGOZA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,12768,11247,0,1521
+50,ZARAGOZA,local,ayuntamientos y otras entidades locales y sus ooaa,11366,5204,4853,1309
+50,ZARAGOZA,local,diputaciones cabildos y consejos insulares y sus ooaa,582,156,425,1
+51,CEUTA,ccaa,administracion general ccaa,1439,865,464,110
+51,CEUTA,estado,administracion al servicio de tribunales de instancia,189,137,17,35
+51,CEUTA,estado,administracion del estado,4189,2505,560,1124
+51,CEUTA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,4353,4313,0,40
+52,MELILLA,ccaa,administracion general ccaa,1274,684,246,344
+52,MELILLA,estado,administracion al servicio de tribunales de instancia,190,123,13,54
+52,MELILLA,estado,administracion del estado,4415,2465,635,1315
+52,MELILLA,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,4552,4511,0,41
+99,EXTRANJERO,estado,administracion del estado,8741,2413,6175,153
+99,EXTRANJERO,estado,fuerzas armadas y fuerzas y cuerpos de seguridad del estado,953,953,0,0
