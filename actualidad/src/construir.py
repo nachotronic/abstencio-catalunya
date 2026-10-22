@@ -1192,9 +1192,8 @@ PIEZAS = [
                  ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/pensiones-revalorizacion-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Voto en julio de 2023 en las 8.269 secciones donde más pesan las pensiones en la renta, según la renta del barrio.',
-                  fuente='INE, Atlas de Distribución de Renta de los Hogares; Ministerio del Interior'),
+        foto=dict(src='img/actualidad/fotos/pensiones-revalorizacion-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Dos jubilados en un banco, de espaldas, ante un edificio oficial con la bandera de España y dos pilas de monedas.'),
     ),
 ]
 
