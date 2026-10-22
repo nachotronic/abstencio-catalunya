@@ -1334,6 +1334,26 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/oficios-y-voto-municipios-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un obrero con casco y planos, una sanitaria que vota en una urna transparente y una tendera tras el mostrador.'),
     ),
+    dict(
+        slug='vivienda-preocupa-voto-sumar-29n', fecha='2026-10-22',
+        titulo='Donde más preocupa la vivienda, más se votó a Sumar', serie='29n',
+        descripcion='En Baleares, el País Vasco y Madrid más de la mitad de los entrevistados por el CIS cita la vivienda como problema; en Murcia, el 36%. Son las comunidades donde Sumar sacó más votos en 2023. Entre los votantes de Vox, solo uno de cada cuatro la nombra.',
+        compara='El porcentaje de entrevistados que cita la vivienda entre los tres principales problemas de España en los nueve barómetros del CIS de diciembre de 2025 a octubre de 2026 (37.191 entrevistas, ponderadas), por mes, edad, recuerdo de voto de 2023 y comunidad autónoma; el voto real de 2023 en cada comunidad; la fidelidad de voto de quienes la citan y quienes no; y el voto de 2023 en las secciones censales ordenadas por el precio del alquiler (SERPAVI 2023).',
+        limites='Es una encuesta: dice qué piensan los entrevistados, no cómo votará cada comunidad. Las muestras de las comunidades pequeñas son reducidas, y las de Ceuta y Melilla, mínimas. La correlación entre comunidades no prueba que la preocupación por la vivienda cause el voto a Sumar. El recuerdo de voto del CIS favorece al PSOE frente al resultado real. El precio del alquiler por sección solo existe donde hay suficientes contratos declarados; dentro de cada provincia y nivel de renta, el alquiler apenas separa el voto.',
+        fuentes=[('https://www.cis.es/estudios/catalogo-estudios', 'CIS, barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582), microdatos'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023 por sección'),
+                 ('https://www.mivau.gob.es/vivienda/alquila-con-garantias/sistema-estatal-de-referencia-del-precio-del-alquiler-de-vivienda', 'Ministerio de Vivienda, Sistema Estatal de Referencia del Precio del Alquiler (SERPAVI), 2023'),
+                 ('https://es.euronews.com/2026/10/10/sanchez-abre-la-campana-electoral-del-29n-en-su-ciudad-talisman-con-la-vivienda-como-eje-p', 'Euronews, Sánchez abre la campaña del 29N con la vivienda como eje (10-10-2026)'),
+                 ('https://www.esdiario.com/nacional/261005/199512/feijoo-vivienda-ases-29n-sanchez-busca-rescatar-decretos-tumbados-su-manera.html', 'ESdiario, Feijóo y la vivienda (5-10-2026)'),
+                 ('https://www.emol.com/noticias/Internacional/2026/10/05/1213240/pedro-sanchez-adelanta-elecciones.html', 'AP en Emol, Pedro Sánchez adelanta las elecciones (5-10-2026)'),
+                 ('https://www.diariodeleon.es/nacional/261009/2099728/vivienda-pasa-factura-feijoo.html', 'Diario de León, encuesta DYM: la vivienda pasa factura (9-10-2026)'),
+                 ('https://www.funcas.es/wp-content/uploads/2024/09/Estudios104_Torres_3.pdf', 'Raymond Torres, Funcas, estudio sobre jóvenes y vivienda (2024)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/vivienda-preocupa-voto-sumar-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Porcentaje que cita la vivienda entre los tres principales problemas de España por comunidad, barómetros del CIS de diciembre de 2025 a octubre de 2026.',
+                  fuente='CIS. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1892,6 +1912,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
     'oficios-y-voto-municipios-29n': 'El despacho y la urna',
     'voto-jubilados-secciones-29n': 'El voto que no se mueve',
