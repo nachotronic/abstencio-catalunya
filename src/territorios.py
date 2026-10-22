@@ -340,7 +340,7 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga, imagen=None):
     global RAIZ_REL
     RAIZ_REL = '../' * nivel
     raiz = RAIZ_REL
-    menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'),
+    menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'),
             ('atlas/', 'Atlas'), ('actualidad/', 'Actualidad'), ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
             ('sobre-mi.html', 'Sobre mí')]
     actual = ruta.split('/')[0] + '/'
@@ -730,7 +730,7 @@ FOTO_BARRIO_GENERICA = ('barrios-generica.jpg', 'Un bloque de pisos, casas bajas
 
 
 def foto_barrio(cod, raiz):
-    f, alt = FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)
+    f, alt = FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)   # cod None: la genérica (portada de barrios)
     return (f'<figure class="foto"><img src="{raiz}img/elecciones/{f}" alt="{escape(alt)}" width="1280" height="720" loading="eager">'
             f'<figcaption>{escape(alt)} Ilustración generada con IA para Mapa Electoral. <a href="{raiz}atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>')
 
@@ -910,6 +910,7 @@ def pagina_barrio(cod, b, todos):
     if li:
         h.append(f'<h2>Otros barrios del distrito de {escape(b["distrito"])}</h2><ul>' + ''.join(li) + '</ul>')
     h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}{CIUDADES[cod]}#barrios">Todos los {tipos} de {escape(ciudad)}</a></li>'
+             f'<li><a href="{raiz}municipio/barrios/">Barrios de las grandes ciudades de España</a></li>'
              f'<li><a href="{raiz}{CIUDADES[cod]}">Elecciones en {escape(ciudad)}, desde 1977</a></li>'
              f'<li><a href="{raiz}elecciones/participacion-electoral-por-barrio/">Participación electoral por barrio en toda España</a></li>'
              f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li></ul>')
@@ -1928,9 +1929,68 @@ def municipios_indice():
         mayor = max(cs, key=lambda c: pob[c])
         filas.append([f'<a href="{PROV_SLUG[p]}/">{escape(PROV_NOMBRE[p])}</a>', num(len(cs)), f'<a href="../{CIUDADES[mayor]}">{escape(_nom(mayor))}</a>'])
     h.append('<h2>Provincia a provincia</h2>' + tabla('Municipios con página propia en cada provincia', ['Provincia', 'Municipios', 'El más poblado'], filas, num_desde=1))
+    h.append(f'<p>Las grandes ciudades tienen además una ficha por barrio: <a href="barrios/">elecciones barrio a barrio en {num(sum(1 for bs in BARRIOS.values() if any(b["ficha"] for b in bs)))} ciudades</a>.</p>')
     h.append('<p>Por comunidad y provincia, con la serie completa y el voto por renta: <a href="../elecciones/">elecciones por territorio</a>. '
              'Por tema: <a href="../temas/">renta y voto, participación, historia electoral y más</a>.</p>')
     h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def barrios_indice():
+    ruta = 'municipio/barrios/'
+    cs = sorted((c for c, bs in BARRIOS.items() if any(b['ficha'] for b in bs)), key=lambda c: slug(_nom(c)))
+    todas = [(c, b) for c in cs for b in BARRIOS[c] if b['ficha']]
+    titulo = f'Elecciones barrio a barrio: {num(len(todas))} barrios de {num(len(cs))} grandes ciudades de España'
+    desc = (f'Cómo vota cada barrio de Madrid, Barcelona, València, Sevilla, Málaga y {num(len(cs) - 5)} ciudades más: voto por sección censal, '
+            'participación, renta, edad y población extranjera, con ficha propia para cada barrio.')
+    partes = [{'@type': 'CollectionPage', 'name': f'Barrios de {_nom(c)}', 'url': BASE + CIUDADES[c] + '#barrios'} for c in cs]
+    ld = ld_pagina(titulo, desc, ruta, ESPANA, partes)
+    ld['datePublished'] = BARRIOS_PUBLICADO
+    ld['dateModified'] = max(ACTUALIZADO, BARRIOS_PUBLICADO)
+    h = [cabeza(titulo, desc, ruta, ld, 2, 'Barrios', imagen='img/elecciones/' + FOTO_BARRIO_GENERICA[0])]
+    raiz = '../../'
+    act = max(ACTUALIZADO, BARRIOS_PUBLICADO)
+    h.append(migas_html([(raiz, 'Inicio'), ('../', 'Municipios')]))
+    h.append('<p class="kicker">Barrios · Elecciones generales 2004-2023</p><h1 data-miga="Barrios">Elecciones barrio a barrio</h1>')
+    h.append('<p class="subtitulo">Una ficha por barrio de las grandes ciudades: cómo vota, quién vive en él y en qué se separa del resto de su ciudad</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
+    h.append(foto_barrio(None, raiz))
+    con = [(c, b) for c, b in todas if b['r']['censo'] >= 3000]
+    alto = sorted(con, key=lambda x: -x[1]['r']['part'])
+    enl = lambda c, b: f'<a href="{raiz}{ruta_barrio(c, b)}">{escape(cap(b["nombre"]))}</a> ({escape(_nom(c))}, {pct(b["r"]["part"])})'
+    h.append(f'<p class="resumen">{tipo("Dato")}{num(len(todas))} barrios de {num(len(cs))} ciudades tienen ficha propia, con el voto de cada una de sus secciones censales en las generales desde 2004, '
+             f'la renta y quién vive en ellos. En las generales de 2023, el barrio que más votó fue {enl(*alto[0])} y el que menos, {enl(*alto[-1])}: '
+             f'{puntos(alto[0][1]["r"]["part"] - alto[-1][1]["r"]["part"])} puntos de distancia.</p>')
+    h.append('<h2>Ciudad a ciudad</h2>')
+    filas = []
+    for c in cs:
+        fb = [b for b in BARRIOS[c] if b['ficha']]
+        rico = max((b for b in fb if b['demo']['renta_uc']), key=lambda b: b['demo']['renta_uc'])
+        pobre = min((b for b in fb if b['demo']['renta_uc']), key=lambda b: b['demo']['renta_uc'])
+        tipos = 'barrios' if fb[0]['nivel'] == 10 else 'distritos'
+        filas.append([f'<a href="{raiz}{CIUDADES[c]}#barrios">{escape(_nom(c))}</a>', f'{num(len(fb))} {tipos}',
+                      f'<a href="{raiz}{ruta_barrio(c, rico)}">{escape(cap(rico["nombre"]))}</a> ({euros(rico["demo"]["renta_uc"])})',
+                      f'<a href="{raiz}{ruta_barrio(c, pobre)}">{escape(cap(pobre["nombre"]))}</a> ({euros(pobre["demo"]["renta_uc"])})'])
+    h.append(tabla('Ciudades con fichas de barrio: el barrio con más y con menos renta neta por unidad de consumo (INE, 2023)',
+                   ['Ciudad', 'Fichas', 'Más renta', 'Menos renta'], filas, num_desde=9))
+    fila = lambda c, b: [f'<a href="{raiz}{ruta_barrio(c, b)}">{escape(cap(b["nombre"]))}</a>', escape(_nom(c)), pct(b['r']['part']),
+                         f'<span style="color:{T.COLOR[T.ganador(b["r"])]}">■</span> {escape(T.NOMBRE[T.ganador(b["r"])])}',
+                         euros(b['demo']['renta_uc']) if b['demo']['renta_uc'] else '—']
+    cab = ['Barrio', 'Ciudad', 'Participación', 'Más votado', 'Renta por u. c.']
+    h.append('<h2>Donde más y donde menos se vota</h2>'
+             + p_('Dato', 'Los diez barrios con más participación en las generales de 2023 y los diez con menos, entre los que tienen al menos 3.000 electores.')
+             + tabla('Los diez barrios con más participación, generales de 2023', cab, [fila(*x) for x in alto[:10]], num_desde=2)
+             + tabla('Los diez barrios con menos participación, generales de 2023', cab, [fila(*x) for x in alto[::-1][:10]], num_desde=2))
+    h.append('<h2>Todos los barrios</h2>' + ''.join(
+        f'<details><summary>{escape(_nom(c))}: {num(sum(b["ficha"] for b in BARRIOS[c]))} fichas</summary><p>'
+        + ' · '.join(f'<a href="{raiz}{ruta_barrio(c, b)}">{escape(cap(b["nombre"]))}</a>' for b in sorted((b for b in BARRIOS[c] if b['ficha']), key=lambda b: slug(b['nombre'])))
+        + '</p></details>' for c in cs))
+    h.append(f'<p>El resto de municipios, con el voto por sección censal: <a href="../">elecciones por municipio</a>. '
+             f'Por tema: <a href="{raiz}elecciones/participacion-electoral-por-barrio/">participación por barrio</a> y <a href="{raiz}elecciones/voto-y-renta-por-barrios/">voto y renta por barrios</a>.</p>')
+    global RAIZ_REL
+    RAIZ_REL = raiz
+    h.append(bloque_metodo_barrio('barrio'))
     h.append(PIE)
     return ruta, ''.join(h)
 
@@ -2082,7 +2142,7 @@ def main():
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_resultados(resumen)]
-    pags += [municipios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
+    pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
     for ruta, html in pags + redirecciones():
         f = ROOT / ruta / 'index.html'
