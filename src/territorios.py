@@ -718,6 +718,23 @@ def puntos(x):
     return f'{abs(x) * 100:.1f}'.replace('.', ',')
 
 
+# Ilustración de cabecera de las fichas de barrio, una por ciudad (collages con IA de Nacho); el resto, la genérica
+FOTOS_BARRIO = {
+    '28079': ('barrios-madrid.jpg', 'Bloques de ladrillo de un barrio obrero frente a fachadas señoriales de Madrid, con una urna en medio y el plano de calles al fondo: un collage.'),
+    '08019': ('barrios-barcelona.jpg', 'La cuadrícula del Eixample vista desde arriba, entre torres de pisos y casas con jardín, con sobres de votación volando: un collage.'),
+    '46250': ('barrios-valencia.jpg', 'La catedral y los tejados de Ciutat Vella, fincas de la periferia y la huerta, con una urna en primer plano: un collage.'),
+    '41091': ('barrios-sevilla.jpg', 'Una calle encalada del centro de Sevilla frente a bloques de pisos junto al Guadalquivir, con una urna: un collage.'),
+    '29067': ('barrios-malaga.jpg', 'Edificios del centro de Málaga, torres de la costa y el puerto al fondo, con una urna en primer plano: un collage.'),
+}
+FOTO_BARRIO_GENERICA = ('barrios-generica.jpg', 'Un bloque de pisos, casas bajas y un edificio antiguo cosidos como un mosaico urbano, con una urna en el centro: un collage.')
+
+
+def foto_barrio(cod, raiz):
+    f, alt = FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)
+    return (f'<figure class="foto"><img src="{raiz}img/elecciones/{f}" alt="{escape(alt)}" width="1280" height="720" loading="eager">'
+            f'<figcaption>{escape(alt)} Ilustración generada con IA para Mapa Electoral. <a href="{raiz}atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>')
+
+
 def intensidad(v):
     return 0.45 if v < 0.30 else 0.65 if v < 0.40 else 0.85 if v < 0.50 else 1
 
@@ -767,13 +784,15 @@ def pagina_barrio(cod, b, todos):
     ld['datePublished'] = BARRIOS_PUBLICADO
     ld['dateModified'] = max(ACTUALIZADO, BARRIOS_PUBLICADO)
     pasos = [(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p]), (raiz + CIUDADES[cod], ciudad)]
-    h = [cabeza(titulo, desc, ruta, ld, nivel, nombre)]   # las migas de pan en JSON-LD las añade esquema.py
+    ld['primaryImageOfPage'] = BASE + 'img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0]
+    h = [cabeza(titulo, desc, ruta, ld, nivel, nombre, imagen='img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0])]   # las migas de pan en JSON-LD las añade esquema.py
     h.append(migas_html(pasos))
     h.append(f'<p class="kicker">{tipo_b.capitalize()} de {escape(ciudad)}{escape(dist.replace(", en el distrito de", " · distrito"))} · Generales 2004-2023</p>'
              f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
     h.append(f'<p class="subtitulo">Cómo vota este {tipo_b} de {escape(ciudad)}, quién vive en él y en qué se separa del resto de la ciudad</p>')
     act = max(ACTUALIZADO, BARRIOS_PUBLICADO)
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
+    h.append(foto_barrio(cod, raiz))
 
     # entradilla
     comp_part = r['part'] - rc['part']
