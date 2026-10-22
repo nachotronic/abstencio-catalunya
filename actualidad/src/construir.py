@@ -1354,6 +1354,27 @@ PIEZAS = [
                   pie='Porcentaje que cita la vivienda entre los tres principales problemas de España por comunidad, barómetros del CIS de diciembre de 2025 a octubre de 2026.',
                   fuente='CIS. Cálculo propio'),
     ),
+    dict(
+        slug='termometro-temas-inmigracion-29n', fecha='2026-10-22',
+        titulo='La inmigración preocupa más, salvo a los votantes de Vox', serie='29n',
+        descripcion='Desde septiembre la cita como problema el 20,4% de los entrevistados por el CIS, tres puntos más que en la primera mitad del año. Sube entre los votantes del PP, del 23,6% al 29%, y del PSOE, del 11% al 14,8%. Entre los de Vox baja, del 41,5% al 31,5%.',
+        compara='Los problemas que citan los entrevistados en los nueve barómetros del CIS de diciembre de 2025 a octubre de 2026 (37.191 entrevistas, ponderadas), mes a mes; la intención de voto más simpatía de quienes citan cada problema; los problemas que cita cada electorado según su recuerdo de voto de 2023; la preocupación por la inmigración antes y después del verano; y por comunidad autónoma, frente al voto real a Vox en 2023.',
+        limites='Es una encuesta: dice qué problemas nombran los entrevistados, no qué decidirá su voto. La intención de voto del CIS sobrestima al PSOE; por eso se comparan distancias con el conjunto y se ha repetido el cálculo ajustando el recuerdo de voto al resultado de 2023. Las muestras de los votantes de Vox y de las comunidades pequeñas son reducidas, y por eso se comparan periodos y no meses. Que un cambio coincida con un hecho no prueba que ese hecho lo causara.',
+        fuentes=[('https://www.cis.es/estudios/catalogo-estudios', 'CIS, barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582), microdatos'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/20/abascal-urge-a-elegir-entre-prosperidad-libertad-y-orden-o-inmigracion-caos-y-subdesarrollo-en-las-elecciones/', 'Europa Press en Infobae, Abascal urge a elegir entre «prosperidad, libertad y orden» o «inmigración, caos y subdesarrollo» (20-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/20/feijoo-cree-que-sanchez-convoca-elecciones-para-que-no-le-investiguen-y-apunta-a-dinero-de-prostitucion-en-sus-primarias/', 'Europa Press en Infobae, entrevista de Feijóo en la Cadena COPE (20-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/18/feijoo-promete-una-ley-antiokupaciones-tras-el-29n-y-se-la-encarga-a-xavier-garcia-albiol/', 'Infobae, Feijóo promete una ley antiokupaciones tras el 29N (18-10-2026)'),
+                 ('https://es.euronews.com/2026/10/10/sanchez-abre-la-campana-electoral-del-29n-en-su-ciudad-talisman-con-la-vivienda-como-eje-p', 'Euronews, Sánchez abre la campaña del 29N con la vivienda como eje (10-10-2026)'),
+                 ('https://maldita.es/desinfo/20260520/preguntas-y-respuestas-imputacion-zapatero-plus-ultra/', 'Maldita.es, Preguntas y respuestas sobre la imputación de Zapatero en el caso Plus Ultra (20-5-2026)'),
+                 ('https://colmenadedatos.com/encuesta-cis-el-psoe-se-desploma-junio-2026/', 'Colmena de Datos, análisis del barómetro del CIS de junio de 2026'),
+                 ('https://eprints.gla.ac.uk/197637', 'Laura Morales, Sergi Pardos-Prado y Virginia Ros, Issue emergence and the dynamics of electoral competition around immigration in Spain, Acta Politica (2015)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/termometro-temas-inmigracion-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Porcentaje que cita la inmigración entre los tres principales problemas de España, según el voto en 2023, de diciembre a junio y en septiembre y octubre.',
+                  fuente='CIS. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1912,6 +1933,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
     'oficios-y-voto-municipios-29n': 'El despacho y la urna',
