@@ -1,5 +1,6 @@
 # Descarga las encuestas de generales (Electográfica) y las coteja con Wikipedia dos veces al día.
-# Solo hace commit en main si cambia algún CSV de previsiones/datos/encuestas/. No toca ninguna página de la web.
+# Solo si cambia algún CSV de previsiones/datos/encuestas/: rehace la página /encuestas/, hace commit en main
+# y avisa a IndexNow (un push hecho por este workflow no lanza el de IndexNow).
 name: Encuestas
 on:
   schedule:
@@ -22,10 +23,20 @@ jobs:
         continue-on-error: true
         run: python3 previsiones/src/cotejar_wikipedia.py
       - name: Commit si hay cambios
+        id: commit
         run: |
           git add previsiones/datos/encuestas
           if git diff --cached --quiet -- '*.csv'; then echo "Sin encuestas nuevas"; exit 0; fi
+          python3 encuestas/src/construir.py
+          git add encuestas
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -m "Encuestas: actualización automática $(date -u +%F)"
           for i in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && break; sleep 10; done
+          echo "publicado=1" >> "$GITHUB_OUTPUT"
+      - name: Avisar a IndexNow
+        if: steps.commit.outputs.publicado == '1'
+        continue-on-error: true
+        run: |
+          sleep 120   # que GitHub Pages publique antes
+          python3 src/indexnow.py encuestas/index.html

@@ -10,7 +10,7 @@ encuestas.
 
 Escribe en previsiones/datos/encuestas/:
 - wikipedia_generales_espana.csv: una fila por encuesta, con encuestadora, medio, fechas de campo, muestra, una
-  columna por partido del modelo y el enlace a la fuente original de la referencia.
+  columna por partido del modelo, `reestimacion` (otra empresa que recalcula los datos brutos del CIS), los escaños que publica la encuestadora (esc_*) y el enlace a la fuente original.
 - faltan_en_electografica.csv: las de Wikipedia de los últimos 120 días sin pareja en Electográfica (misma
   encuestadora y fin de campo a menos de 4 días).
 """
@@ -86,6 +86,12 @@ def numero(txt):
     return float(m.group(1)) if m else None
 
 
+def escanos_de(txt):
+    """Escaños bajo el porcentaje: «{{font|...|text=134}}» o «text=132/137» -> (mínimo, máximo)."""
+    m = re.search(r'text=(\d+)(?:\s*[/–-]\s*(\d+))?\s*\}\}', txt)
+    return (int(m.group(1)), int(m.group(2) or m.group(1))) if m else None
+
+
 def fechas(txt, anio):
     """«15–17 Oct», «28 Sep–3 Oct», «30 Dec 2025–3 Jan», «12 Oct» -> (inicio, fin) en ISO."""
     t = re.sub(r'<ref.*?(</ref>|/>)|\{\{[^}]*\}\}|\[\[|\]\]', '', txt).replace('&ndash;', '–').replace('-', '–')
@@ -146,6 +152,8 @@ def parsea(texto):
                     vals.append(val)
             if len(vals) < 4 or 'election' in vals[0].lower() and '[[' in vals[0]:
                 continue
+            # «CIS {{smaller|(Opina 360)}}»: otra empresa reestima los datos brutos del CIS; no es una encuesta nueva
+            reest = re.search(r'\{\{smaller\|\(([^)]*)\)\}\}', vals[0])
             firma = re.sub(r'<ref.*?(</ref>|/>)|\{\{[^}]*\}\}|\[\[(?:[^]|]*\|)?|\]\]|\'\'+', '', vals[0]).strip()
             if not firma or 'background' in vals[0]:
                 continue
@@ -153,16 +161,25 @@ def parsea(texto):
             casa, _, medio = firma.partition('/')
             ci, cf = fechas(vals[1], anio)
             n = re.sub(r'[^\d]', '', re.sub(r'<ref.*?(</ref>|/>)', '', vals[2]))
-            votos = {}
+            votos, escanos = {}, {}
             for p, v in zip(partidos, vals[4:4 + len(partidos)]):
                 x = numero(v) if '–' not in v.split('<br')[0] else None
                 if x is not None:
                     mod = PARTIDOS.get(p, 'OTROS')
                     votos[mod] = round(votos.get(mod, 0) + x, 2)
+                    e = escanos_de(v)
+                    if e and mod != 'OTROS':
+                        a, b = escanos.get(mod, (0, 0))
+                        escanos[mod] = (a + e[0], b + e[1])
             if not votos or not cf:
                 continue
-            filas_out.append({'encuestadora': casa.strip(), 'cliente': medio.strip(), 'campo_inicio': ci, 'campo_fin': cf,
-                              'muestra': n, **{p: votos.get(p, '') for p in ORDEN}, 'fuente_original': url.group(1) if url else ''})
+            filas_out.append({'encuestadora': casa.strip(), 'cliente': medio.strip(), 'reestimacion': reest.group(1) if reest else '',
+                              'campo_inicio': ci, 'campo_fin': cf,
+                              'muestra': n, **{p: votos.get(p, '') for p in ORDEN},
+                              # escaños que publica la propia encuestadora: «134» o un intervalo «132-137»
+                              **{f'esc_{p}': ('' if p not in escanos else str(escanos[p][0]) if escanos[p][0] == escanos[p][1]
+                                              else f'{escanos[p][0]}-{escanos[p][1]}') for p in ORDEN if p != 'OTROS'},
+                              'fuente_original': url.group(1) if url else ''})
     return filas_out
 
 
@@ -186,7 +203,7 @@ def main():
         c = clave(r['encuestadora'])
         # «IMOP» en Wikipedia es «IMOP Insights» en Electográfica: basta con que un nombre empiece por el otro
         fechas_eg = [g for k, v in casas.items() if k.startswith(c) or c.startswith(k) for g in v]
-        if f >= desde and c not in AGREGADORES and not any(abs((f - g).days) <= 4 for g in fechas_eg):
+        if f >= desde and c not in AGREGADORES and not r['reestimacion'] and not any(abs((f - g).days) <= 4 for g in fechas_eg):
             faltan.append(r)
     with open(SALIDA / 'faltan_en_electografica.csv', 'w', newline='') as fh:
         w = csv.DictWriter(fh, fieldnames=list(wp[0])); w.writeheader(); w.writerows(faltan)
