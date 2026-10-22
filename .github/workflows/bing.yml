@@ -1,0 +1,26 @@
+# Envía cada día a Bing Webmaster las URL del sitemap que aún no se han enviado (cupo de 100 al día y 1.000 al mes).
+# Necesita el secreto BING_WEBMASTER_KEY en el repositorio. Guarda lo enviado en data/seo/bing_enviadas.json.
+name: Bing
+on:
+  schedule:
+    - cron: '30 5 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enviar URL pendientes
+        env:
+          BING_WEBMASTER_KEY: ${{ secrets.BING_WEBMASTER_KEY }}
+        run: python3 src/bing_enviar.py
+      - name: Guardar lo enviado
+        run: |
+          git add data/seo/bing_enviadas.json
+          if git diff --cached --quiet; then echo "Nada enviado hoy"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Bing: URL enviadas $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && break; sleep 10; done
