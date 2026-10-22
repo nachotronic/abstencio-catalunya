@@ -1659,6 +1659,20 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/salaris-pensions-ajudes-girona.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una mare amb el seu fill, d’esquena, davant les cases de l’Onyar i la catedral de Girona.'),
     ),
+    dict(
+        slug='polaritzacio-girona', fecha='2026-10-22', idioma='ca',
+        titulo='A Girona el vot independentista va del 4% al 75% segons la secció', serie='girona',
+        descripcion="Girona és la sisena de 41 ciutats catalanes on els barris voten més diferent (índex de Duncan), però només la 22a on aquestes diferències formen blocs (índex de Moran). La Font de la Pólvora, una illa.",
+        compara="Les 57 seccions censals urbanes de Girona a les eleccions al Parlament del 2024, comparades amb els 41 municipis catalans amb 15 seccions urbanes o més, amb Salt i amb la renda per unitat de consum del 2023.",
+        limites="Són dades de seccions, no de persones, i no expliquen per què s'agrupa el vot. El bloc independentista (Junts, ERC, CUP i Aliança Catalana) és una suma de partits que no sempre van junts; sense Aliança l'índex amb prou feines canvia. Els índexs depenen de com dibuixa l'INE les seccions i de què es considera veí. Les seccions rurals (menys de 1.000 habitants per km²) queden fora. Els noms dels barris surten dels carrers de cada secció. Sense vot exterior. Límits de secció simplificats.",
+        calculo="Percentatges sobre vots a candidatures. Índex de Moran global i local (9.999 permutacions, significació al 5%) amb veïnatge de tipus reina normalitzat per files. Índex de Duncan entre el bloc independentista i la resta. Pes del districte: part de la variància entre seccions explicada pel districte censal, ponderada per vots.",
+        fuentes=[('https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr', "Generalitat de Catalunya, Transparència Catalunya: resultats del Parlament 2024 per secció censal"),
+                 INE_CA,
+                 ('https://www.ine.es/prodyser/cartografia/seccionado_2023.zip', "INE, cartografia de seccions censals (1 de gener del 2023)"),
+                 ('https://intranet.colpis.cat/files/revista/101_articulo.pdf', 'Macià Serra, COLPIS, sobre el vot a Girona')],
+        enlaces=[],
+        lugar='Girona',
+    ),
 ]
 
 # Serie «Bastiones y desiertos»: las cinco secciones de España con más y con menos voto de cada partido (generales 2023)
@@ -1987,11 +2001,32 @@ PIEZAS += [
                   pie='Secciones del 10% más pobre de España donde PP y Vox suman más que PSOE y Sumar, y del 10% más rico donde pasa lo contrario. Generales de 2023.',
                   fuente='Ministerio del Interior e INE'),
     ),
+    dict(
+        slug='capitales-partidas-por-barrios', fecha='2026-10-22',
+        titulo='Sevilla vota por barrios y Lugo, mezclada: el índice que mide qué capitales están partidas por el voto', serie='29n',
+        descripcion='El índice de Moran del voto por sección censal en las 52 capitales: Ceuta, Sevilla, Barcelona, Madrid, Bilbao, Toledo y Granada votan por bloques de barrios; Soria, Lugo y Cuenca, mezcladas. Lo que más se repite es la distancia de renta entre barrios.',
+        compara='Las 10.542 secciones censales urbanas (1.000 habitantes por km² o más) de las 50 capitales de provincia, Ceuta y Melilla en las generales de 2023, con la renta por unidad de consumo de 2023 y el índice de Gini y la ratio P80/P20 de cada ciudad. La clasificación se repite con las generales de 2008 a 2019.',
+        limites='Son datos de secciones, no de personas, y no explican por qué se agrupa el voto. El índice de Moran depende de cómo dibuja el INE las secciones, de qué se considera vecino y del número de secciones: sube con el tamaño de la ciudad. En Soria (20 secciones urbanas) no es estadísticamente significativo. En Cataluña y el País Vasco la diferencia PP−PSOE no es el eje principal del voto. El peso de la vivienda unifamiliar se aproxima con los alquileres declarados (SERPAVI), sin País Vasco ni Navarra. La renta de las secciones más ricas está topada en 58.752 euros. Con 52 ciudades, las regresiones tienen pocos grados de libertad. Sin voto exterior.',
+        calculo='Índice de Moran global de la diferencia de voto PP−PSOE (sobre voto válido) por sección, con vecindad de tipo reina (secciones que comparten lado o vértice) normalizada por filas y 9.999 permutaciones; robustez con vecindad por lados, con los seis vecinos más cercanos, con todas las secciones y con el eje principal de cada ciudad. Índice de Duncan entre PP+Vox+Cs y PSOE+Sumar con votos por sección. Peso del distrito: parte de la varianza del margen entre secciones explicada por el distrito censal. Regresiones de la ciudad: MCO con el logaritmo de la población, errores robustos y, como comprobación, efectos fijos de comunidad autónoma con errores agrupados por comunidad.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.ine.es/prodyser/cartografia/seccionado_2023.zip', 'INE, cartografía digitalizada de secciones censales (1 de enero de 2023)'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=37677', 'INE, Atlas de Distribución de Renta de los Hogares: índice de Gini y distribución P80/P20 por municipio (2023)'),
+                 ('https://www.mivau.gob.es/vivienda/alquila-bien-es-tu-derecho/serpavi', 'Ministerio de Vivienda, SERPAVI 2011-2024 (alquileres declarados de pisos y viviendas unifamiliares)'),
+                 ('https://www.eldiario.es/sevilla/poligono-sur-pajaritos-repiten-barrios-pobres-espana_1_10225697.html', 'elDiario.es con datos consultados por Europa Press, Polígono Sur y Los Pajaritos (22-5-2023)'),
+                 ('https://www.openstreetmap.org/', 'OpenStreetMap (Nominatim), nombres de calle y barrio'),
+                 ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', 'Manuel Trujillo y Braulio Gómez Fortes, La segregación electoral interurbana en España, VIII Informe FOESSA (2019)'),
+                 ('https://www.revistas.ufrj.br/index.php/EspacoAberto/article/view/61567', 'Carme Bellet y Gonzalo Andrés, Manifestaciones actuales de la segregación residencial en ciudades medias españolas, Espaço Aberto (2024)'),
+                 ('https://www.eldiario.es/catalunya/toni-rodon-politologo-segregacion-favorece-voto-extrema-derecha_1_10076472.html', 'elDiario.es, entrevista a Toni Rodon (2-4-2023)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'capitales-partidas-por-barrios': 'Ciudades partidas',
+    'polaritzacio-girona': "Una ciutat d'illes",
     'inmigracion-preocupa-voto-vox-29n': 'La inquietud y la papeleta',
     'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',

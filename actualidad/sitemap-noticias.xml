@@ -296,4 +296,12 @@
       <news:title>Vox busca el voto de los barrios obreros: en la Región de Murcia, nueve de cada diez secciones pobres ya votan más a PP y Vox que a PSOE y Sumar</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/capitales-partidas-por-barrios/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>Sevilla vota por barrios y Lugo, mezclada: el índice que mide qué capitales están partidas por el voto</news:title>
+    </news:news>
+  </url>
 </urlset>
