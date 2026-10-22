@@ -1314,6 +1314,28 @@ PIEZAS = [
                   pie='Voto a Vox en el quinto de secciones con más pensionistas y en el quinto con menos, generales de 2015 a 2023.',
                   fuente='INE, Censo anual 2023, y Ministerio del Interior'),
     ),
+    dict(
+        slug='oficios-y-voto-municipios-29n', fecha='2026-10-22',
+        titulo='Vox saca un tercio más donde más gente vive del comercio', serie='29n',
+        descripcion='En los municipios con más ocupados en el comercio de cada provincia, Vox sacó en 2023 el 14,6%; en los que menos, el 11%. Donde abundan las finanzas y los despachos profesionales, el PP sube del 28,3% al 35,8%. Donde se vive de la hostelería, se vota menos. El mapa de los oficios de 4.090 municipios.',
+        compara='El porcentaje de ocupados de cada rama de actividad (21 secciones de la CNAE-2009) en los municipios de 500 habitantes o más (Censo anual 2023, por lugar de residencia) con el voto de cada municipio en las generales de julio de 2023: en cinco grupos con el mismo número de votantes, de menos a más peso de la rama frente a la media de su provincia; dentro de cada tercio de renta; por comunidad; y con una regresión dentro de cada provincia que descuenta renta, tamaño, edad media, nacidos fuera de España, estudios superiores y paro.',
+        limites='Son datos por municipio, no por persona: no dicen cómo vota quien trabaja en cada rama. El censo cuenta a los ocupados donde viven, no donde trabajan, y solo da las ramas en los 4.144 municipios de 500 habitantes o más. Se excluye Santa Cruz de Tenerife, donde Vox no presentó lista en 2023. Las ramas de la CNAE mezclan empleo público y privado, y el comercio incluye el mayorista. Con todos los controles, las diferencias son de uno a dos puntos y medio. La renta es de 2022 y los estudios, el paro y el origen, del censo de 2021.',
+        fuentes=[('https://www.ine.es/jaxiT3/Tabla.htm?t=69992', 'INE, Censo anual de población, ocupados por sexo y actividad, municipios de 500 habitantes o más'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de distribución de renta de los hogares'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales del 23 de julio de 2023 por municipio'),
+                 ('https://confecomerc.es/wp-content/uploads/2023/07/CEC_ELECCIONESGENERALES_20231107.pdf', 'Confederación Española de Comercio, Propuestas del sector comercio para las elecciones generales de 2023'),
+                 ('https://www.elsaltodiario.com/almeria/mar-de-plastico-desierto-institucional', 'María Usero, Un mar de plástico en un desierto institucional, El Salto (2018)'),
+                 ('https://doi.org/10.3389/fpos.2025.1717586', 'Rosa Roig, Priscila Espinosa y José M. Pavía, Who votes for Vox? Socioeconomic profiles and electoral shifts in the region of Madrid, Frontiers in Political Science (2025)'),
+                 ('https://www.eldiario.es/castilla-y-leon/politica/voto-vox-castilla-leon-hombres-jovenes-autonomos-clase-alta_1_9085508.html', 'elDiario.es, Quién votó a Vox en Castilla y León: hombres jóvenes, autónomos y de clase alta (18-6-2022)'),
+                 ('https://torrijostoday.com/castilla-la-mancha/funez-pp-propone-bajadas-de-impuestos-menos-burocracia-mas-conciliacion-y-facilitar-el-relevo-generacional/', 'Europa Press en Torrijos Today, Fúnez (PP) propone bajadas de impuestos para los autónomos (22-10-2026)'),
+                 ('https://www.cronista.com/espana/politica-es/feijoo-propone-un-plan-integral-de-autonomos-y-eximir-por-dos-anos-la-cuota-para-nuevos-emprendedores/', 'EFE en El Cronista, Feijóo propone un Plan Integral de Autónomos (27-10-2025)'),
+                 ('https://elbierzo.eldiario.es/ponferrada/vox-confirma-pablo-calvo-cabeza-lista-vox-congreso-leon-mitin-abascal-ponferrada_1_13601490.html', 'elDiario.es El Bierzo, mitin de Abascal en Ponferrada (20-10-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/oficios-y-voto-municipios-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='El oficio que más destaca en cada municipio de 500 habitantes o más frente a la media de España, 2023.',
+                  fuente='INE, Censo anual de población 2023. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1873,6 +1895,7 @@ PIEZAS += [
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
+    'oficios-y-voto-municipios-29n': 'El mostrador y la urna',
     'voto-jubilados-secciones-29n': 'El voto que no se mueve',
     'voto-autonomos-secciones-29n': 'La persiana y la urna',
     'ley-nietos-donde-estan-29n': 'Nietos sin papeleta',
