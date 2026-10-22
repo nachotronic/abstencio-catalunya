@@ -2211,7 +2211,9 @@ def franja_portada(todas, pre=''):
     """Carrusel «Actualidad» de la portada del sitio, entre las marcas <!--actualidad:ultimas-->, encima del del Atlas.
     Mismo formato que la franja del Atlas (atlas/src/paginas.py): miniatura, serie y titular. Las miniaturas las hace miniaturas.mjs."""
     # Las piezas de ciudad «barrio a barrio» no van en el carrusel (Nacho, 15-10-2026)
-    ult = [q for q in todas[::-1] if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n'))][:10]
+    # Las más recientes por fecha, no por su sitio en PIEZAS: las piezas se añaden en bloques distintos (Nacho, 22-10-2026)
+    recientes = sorted(todas[::-1], key=lambda q: q['fecha'], reverse=True)   # sorted es estable: en el mismo día, la última añadida primero
+    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n'))][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
