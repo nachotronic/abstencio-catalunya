@@ -1,8 +1,8 @@
 """Media de encuestas para el motor de previsiones, y su error histórico en 2019 y 2023.
 
-Entrada: el CSV largo que escribe `extraer.py` desde el feed de Electográfica (una fila por encuesta y partido) y la
-tabla de equivalencias `previsiones/datos/partidos_encuestas.csv`. Se citan siempre la encuestadora y el medio
-original, no el agregador.
+Entrada: el CSV largo que `actualizar_encuestas.py` descarga cada día del feed de Electográfica a
+previsiones/datos/encuestas/generales_espana.csv (una fila por encuesta y partido) y la tabla de equivalencias
+`previsiones/datos/partidos_encuestas.csv`. Se citan siempre la encuestadora y el medio original, no el agregador.
 
 Método (deliberadamente simple y explicable):
 - Fecha de cada encuesta: fin del trabajo de campo; si no consta (encuestas antiguas), publicación menos 3 días.
@@ -21,7 +21,7 @@ import pandas as pd
 
 AQUI = pathlib.Path(__file__).resolve().parent
 RAIZ = AQUI.parents[1]
-CSV = pathlib.Path('/mnt/project-files/previsiones/encuestas/encuestas_generales_espana.csv')
+CSV = RAIZ / 'previsiones/datos/encuestas/generales_espana.csv'
 EQUIV = RAIZ / 'previsiones/datos/partidos_encuestas.csv'
 # Encuestas de Wikipedia de los últimos 120 días sin pareja en Electográfica (sobre todo ElectoPanel), de
 # cotejar_wikipedia.py. Formato ancho: una fila por encuesta, una columna por partido del modelo.
