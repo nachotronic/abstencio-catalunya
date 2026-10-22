@@ -14,6 +14,7 @@ En este repositorio, la web está en esta carpeta (`index.html`, `app.js`, `data
 | `plantilla.html`, `metodologia.html` | Plantillas de las páginas. |
 | `otras_elecciones.py` | Importa municipales y europeas desde los zips de Infoelectoral (`04202305_MESA.zip`, `07202406_MESA.zip`, `04200705_MUNI.zip`…). |
 | `nombres.py` | Saca el nombre real de cada candidatura por elección y municipio (PSC, PSdeG, UPN, En Comú Podem, Trias per Barcelona…) para la ficha del mapa: `data/nombres/<elección>.json`. |
+| `republica.py`, `republica_municipios_ine.csv` | Generales de 1933 y 1936 (Segunda República) por municipio, del Atlas Electoral de la Segunda República (UPF), con la tabla del INE que lleva cada municipio desaparecido al actual. Ver abajo. |
 | `actualizar_29n.py` | Carga resultados nuevos: simulacro, JSON del directo, CSV por municipio o ficheros por mesa de Interior. |
 | `directo/` | Cloudflare Worker que sirve los resultados en directo a la pieza. |
 | `web/` | La web lista para publicar (GitHub Pages). |
@@ -24,6 +25,16 @@ En este repositorio, la web está en esta carpeta (`index.html`, `app.js`, `data
 El selector de elección incluye municipales (2011-2023 por sección, 2007 por municipio) y europeas (2019 y 2024). Se cargan con `python3 otras_elecciones.py <zips de Infoelectoral>` y después `construir.py` y `pagina.py`. En la web van en ficheros aparte (`data/e/M2023.json`, `data/sec/28_M2023.json`…) que solo se descargan al elegir esa elección, para que la carga inicial no crezca. Para añadir otra, basta con subir su zip (por mesa si existe) y repetir.
 
 Requisitos: Python 3 con pandas, geopandas, pyarrow. `python3 construir.py && python3 pagina.py` reconstruye todo.
+
+## Segunda República (1933 y 1936)
+
+Desde el 22-10-2026 el selector incluye las generales de 1933 y 1936 por municipio, del [Atlas Electoral de la Segunda República](https://doi.org/10.34810/data3274) (Rodon, Vall-Prat y Martín Álvarez, UPF, v2.0, **licencia CC BY-NC-SA 4.0**: su descarga va aparte, `descargas/municipios_republica.csv`, con `LICENCIA-republica.txt`). La de 1931 solo está por circunscripción en el atlas y no entra.
+
+- `python3 republica.py <carpeta del atlas descomprimido> --web` escribe `data/e/1933_11.json` y `1936_02.json`, añade las elecciones y las familias a `data/meta.json`, los nombres de Cataluña en 1936 (`data/nombres/1936_02.json`) y la descarga; sin `--web`, solo `datos/extra/1933_11_municipios.csv` y `1936_02_...` para `construir.py`. Tras una reconstrucción completa (`construir.py && pagina.py`), volver a pasarlo con `--web`, que añade a la ficha los municipios de la época que suma cada uno.
+- Familias por bloque electoral (Derechas, Radicales y centro, Izquierda republicana, Frente Popular, Lliga) y, donde el bloque es un partido con continuidad, las de ahora (PSOE, PCE en Sumar/IU, ERC, PNV): `partidos.py` y `fam()` en `republica.py`.
+- Listas abiertas con varios votos por elector: el peso de cada familia es la suma de votos de sus candidatos entre la de todos (sin blancos ni nulos). Participación solo la real.
+- Municipios desaparecidos (unos 1.390): `republica_municipios_ine.csv`, sacada una a una de las «Alteraciones de los municipios en los Censos de Población desde 1842» del INE (22 repartidos entre varios municipios van al primero que cita el INE; Pedrosa del Rey y Argusino, anegados por embalses, asignados a mano a Riaño y Muga de Sayago).
+- Sin reparto: Teruel y Barcelona ciudad en 1933 (la fuente municipal no reproduce el resultado oficial), los municipios a los que les falta un bloque de al menos el 10 % en su circunscripción y los que no llegan al 85 % de los votos posibles (votantes por nombres en la papeleta). Comprobación: sumados por circunscripción, la mayor diferencia con el resultado oficial del atlas es de 0,3 puntos en la mediana.
 
 ## Nombres de candidatura y callejero
 
