@@ -1195,6 +1195,23 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/pensiones-revalorizacion-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Dos jubilados en un banco, de espaldas, ante un edificio oficial con la bandera de España y dos pilas de monedas.'),
     ),
+    dict(
+        slug='vox-galicia-coruna-abascal-29n', fecha='2026-10-22',
+        titulo='Abascal llama a Galicia «espina clavada»: Vox no llegó al 5% en seis de cada diez secciones gallegas en 2023, y en el resto de España, en una de cada nueve', serie='29n',
+        descripcion='Las cargas en María Pita fueron contra la protesta; en las urnas, A Coruña le dio el 4,8%. En toda Galicia, Vox sacó lo mismo en los barrios ricos que en los pobres, en las ciudades que en las aldeas: un mapa sin manchas.',
+        compara='El voto a Vox en las generales de noviembre de 2019 y julio de 2023 por comunidad, por sección censal y por municipio, en Galicia y en el resto de España, con las secciones agrupadas por renta y por tamaño de municipio. Y la ciudad de A Coruña, sección a sección.',
+        limites='Son datos por sección, no por persona: no dicen quién vota a quién ni por qué. Sin voto exterior. «Resto de España» no incluye la provincia de Santa Cruz de Tenerife, donde Vox no tuvo lista al Congreso en 2023. Las explicaciones de los expertos citados son suyas: los datos casan con ellas, pero no las prueban.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.infobae.com/espana/2026/10/21/la-protesta-contra-el-acto-de-santiago-abascal-en-a-coruna-deriva-en-cargas-policiales-a-los-manifestantes-y-momentos-de-tension/', 'Infobae, La protesta contra el acto de Santiago Abascal en A Coruña deriva en cargas policiales (21-10-2026)'),
+                 ('https://www.publico.es/politica/anzuelo-ultra-vox-cala-galicia.html', 'Lois Pérez (Luzes) en Público, El anzuelo ultra: por qué Vox no cala en Galicia (10-10-2026)'),
+                 ('https://www.eldebate.com/espana/galicia/20240114/vox-lanza-precampana-gallega-entrar-unico-parlamento-no-tiene-representacion_166757.html', 'El Debate, Vox lanza su precampaña gallega para entrar en el único parlamento en el que no tiene representación (14-1-2024)'),
+                 ('https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Galicia_de_2024', 'Elecciones al Parlamento de Galicia de 2024, resultados'),
+                 ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
+        enlaces=[],
+        lugar='Galicia',
+        foto=dict(src='img/actualidad/fotos/vox-galicia-coruna-abascal-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Santiago Abascal, cabizbajo, ante la Torre de Hércules de A Coruña.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -1754,6 +1771,7 @@ PIEZAS += [
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'pensiones-revalorizacion-29n': 'Dos Españas jubiladas',
+    'vox-galicia-coruna-abascal-29n': 'La espina de Abascal',
     'trump-espana-invadida-inmigracion-29n': 'Lo que se ve y lo que no',
     'vox-pp-senado-pacto-29n': 'Las 19 del pacto',
     'frente-amplio-podemos-madrid-escanos-29n': 'Dos papeletas en Madrid',

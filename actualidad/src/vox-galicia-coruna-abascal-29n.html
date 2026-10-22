@@ -1,0 +1,191 @@
+<title>La huelga y los barrios que menos votan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--vox:#5ac035;--pp:#1d84ce;--bar:#cfcacc;--neu:#1d7f95;--voxl:#b9e3a6}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--vox:#74d651;--pp:#4fa8ea;--bar:#4a454b;--neu:#3aa6bf;--voxl:#3f7a2a}}:root[data-theme="dark"]{--vox:#74d651;--pp:#4fa8ea;--bar:#4a454b;--neu:#3aa6bf;--voxl:#3f7a2a}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Abascal llama a Galicia «espina clavada»: Vox no llegó al 5% en seis de cada diez secciones gallegas en 2023, y en el resto de España, en una de cada nueve</h1>
+<p class="dek">Las cargas en María Pita fueron contra la protesta; en las urnas, A Coruña le dio el 4,8%. En toda Galicia, Vox sacó lo mismo en los barrios ricos que en los pobres, en las ciudades que en las aldeas: un mapa sin manchas.</p>
+<div class="byline">Nacho G. del Álamo · 22 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div><p data-tipo="contexto">Ayer por la mañana, en la plaza de María Pita, el ayuntamiento de A Coruña miraba a dos públicos separados por un cordón de antidisturbios. A un lado, los que habían ido a escuchar a Santiago Abascal. Al otro, miles de estudiantes que coreaban desde las once «A Coruña es antifascista». Volaron huevos y petardos, y la Policía cargó varias veces, la última al terminar el acto, según la crónica de <a href="https://www.infobae.com/espana/2026/10/21/la-protesta-contra-el-acto-de-santiago-abascal-en-a-coruna-deriva-en-cargas-policiales-a-los-manifestantes-y-momentos-de-tension/">Infobae</a>. Arriba, en el escenario, Abascal dio las gracias a los antidisturbios:</p>
+<blockquote class="cita"><p>«No hay coacción, no hay violencia, no hay mordaza que pueda con nosotros»</p><footer>Santiago Abascal, presidente de Vox, en A Coruña el 21 de octubre, según <a href="https://www.infobae.com/espana/2026/10/21/la-protesta-contra-el-acto-de-santiago-abascal-en-a-coruna-deriva-en-cargas-policiales-a-los-manifestantes-y-momentos-de-tension/">Infobae</a>.</footer></blockquote>
+<p data-tipo="contexto">Y dijo otra cosa, más reveladora: que Galicia es una «espina clavada», y que confía en tener allí un buen resultado. Ante los medios, el secretario xeral de Galiza Nova, la organización juvenil del BNG, Artai Gabiás, respondía que los «discursos de odio» de Vox «no son bien recibidos en Galicia».</p>
+<p data-tipo="dato">La espina tiene medida. En las generales de julio de 2023, Vox sacó en Galicia el 4,8% de los votos, sin contar el voto exterior. En el resto de España, el 13,2%. Solo el País Vasco le votó menos. En las autonómicas de febrero de 2024 bajó al 2,27% y se quedó otra vez sin diputados, según el <a href="https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Galicia_de_2024">escrutinio</a>. Galicia es el único parlamento autonómico donde Vox no ha tenido nunca representación, como recordaba <a href="https://www.eldebate.com/espana/galicia/20240114/vox-lanza-precampana-gallega-entrar-unico-parlamento-no-tiene-representacion_166757.html">El Debate</a> antes de aquellas elecciones.</p>
+<figure>
+<figcaption><span class="t">Voto a Vox en las generales de julio de 2023, por comunidad</span><span class="s">En % de votos a candidaturas. Canarias, solo la provincia de Las Palmas</span></figcaption>
+<div class="chart" id="ccaa"></div>
+<div class="src">Fuente: Ministerio del Interior, resultados del Congreso por mesa, sin voto exterior. «Resto de España» no incluye la provincia de Santa Cruz de Tenerife, donde Vox no se presentó en 2023. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="ccaa-tbl"></div></details>
+</figure>
+<h2>Un mapa sin manchas</h2>
+<p data-tipo="dato">Lo raro de Galicia no es solo la media. Es que no tiene excepciones. De sus 2.149 secciones censales, en 1.287, seis de cada diez, Vox no llegó al 5%. En el resto de España, eso pasó en una de cada nueve. Ocho de cada diez secciones gallegas le dieron entre el 2% y el 6%, una franja estrecha como una calle. Y solo dos superaron la media de España: las dos en Ribeira, donde Vox sacó su mejor sección gallega, con el 13,9%.</p>
+<figure>
+<figcaption><span class="t">Cuántas secciones dieron a Vox cada porcentaje de voto en 2023</span><span class="s">% de las secciones de cada territorio, según el voto a Vox en la sección. Verde: Galicia; gris: resto de España</span></figcaption>
+<div class="chart" id="dist"></div>
+<div class="legend"><span><i class="sw" style="background:var(--vox)"></i>Galicia</span><span><i class="sw" style="background:var(--bar)"></i>Resto de España</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados del Congreso por mesa, sin voto exterior. «Resto de España» no incluye la provincia de Santa Cruz de Tenerife, donde Vox no se presentó en 2023. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="dist-tbl"></div></details>
+</figure>
+<p data-tipo="patron">En el resto de España, Vox cambia mucho de un barrio a otro. Saca el 15,7% en el quinto de secciones más pobres y el 11,5% en el más rico. En Galicia la renta apenas lo mueve: el 5% en las más pobres, el 4,8% en las más ricas. Tampoco el tamaño del municipio: el 4% en los pueblos de menos de 2.000 habitantes, el 4,7% en las ciudades de más de 50.000.</p>
+<figure>
+<figcaption><span class="t">Voto a Vox en 2023 según la renta de la sección</span><span class="s">Secciones agrupadas en cinco quintos de renta por unidad de consumo con el mismo número de votantes. En % de votos a candidaturas</span></figcaption>
+<div class="chart" id="renta"></div>
+<div class="legend"><span><i class="sw" style="background:var(--vox)"></i>Galicia</span><span><i class="sw" style="background:var(--bar)"></i>Resto de España</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados del Congreso por mesa, sin voto exterior; INE, Atlas de Distribución de Renta de los Hogares. Sin la provincia de Santa Cruz de Tenerife. Cálculo propio.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="renta-tbl"></div></details>
+</figure>
+<h2>María Pita, sección a sección</h2>
+<p data-tipo="dato">A Coruña cuenta la misma historia de cerca. En noviembre de 2019, Vox sacó en la ciudad el 8,1%. En julio de 2023, el 4,8%. El PP pasó, en el mismo tiempo, del 27,4% al 39,9%. De sus 186 secciones, la que más votó a Vox le dio el 8,9%; la que menos, el 1,7%. Y mientras el voto al PP sube y baja con la renta del barrio, con una correlación de 0,86, el de Vox casi no le hace caso: 0,23.</p>
+<p data-tipo="dato">Ninguna gran ciudad gallega le dio más del 6%. Vigo, el 4,7%; Lugo, el 4,4%; Santiago, el 3,7%, su peor resultado entre las siete ciudades. La mejor fue Ferrol, con el 5,6%. Fuera de las ciudades, sus mejores municipios grandes son dos villas marineras de las rías: Ribeira (9,2%) y Marín (6,9%).</p>
+<details><summary>Vox en las ciudades gallegas, en 2019 y 2023</summary><div class="tbl" id="cit-tbl"></div></details>
+<h2>Por qué no prende</h2>
+<p data-tipo="contexto">Este mes, la revista Luzes preguntó a historiadores y politólogos gallegos por qué Vox no cala, en un reportaje que publicó <a href="https://www.publico.es/politica/anzuelo-ultra-vox-cala-galicia.html">Público</a>. El historiador Xosé Manoel Núñez Seixas apuntó al partido que tiene enfrente:</p>
+<blockquote class="cita"><p>«Vox se nutre de desencantados con el PP, pero aquí el Partido Popular es una inmensa maquinaria de poder, sobre todo en las zonas rurales, y eso inhibe su capacidad para captar candidatos electorales»</p><footer>Xosé Manoel Núñez Seixas, historiador, en <a href="https://www.publico.es/politica/anzuelo-ultra-vox-cala-galicia.html">Público</a> (10 de octubre de 2026).</footer></blockquote>
+<p data-tipo="contexto">Paloma Castro, profesora de Ciencia Política en la Universidad de Santiago y coautora con Erika Jaráiz de un estudio del CIS sobre la construcción emocional de la extrema derecha en España, apuntó a la identidad: desde Fraga, el PP gallego ha abrazado el galleguismo sin intención nacionalista.</p>
+<blockquote class="cita"><p>«Ese discurso no se construyó por oposición al nacionalismo español y, por eso, el relato de Vox resulta difícil de encajar en este eje de competición»</p><footer>Paloma Castro, Universidad de Santiago de Compostela, en <a href="https://www.publico.es/politica/anzuelo-ultra-vox-cala-galicia.html">Público</a> (10 de octubre de 2026).</footer></blockquote>
+<p data-tipo="patron">Los datos de 2023 casan con las dos ideas, sin probarlas. El PP gallego sacó el 43,6%, once puntos más que en el resto de España, y el 55,3% en los pueblos de menos de 2.000 habitantes, donde Vox se quedó en el 4%. Pero entre 2019 y 2023 el PP subió casi lo mismo en Galicia (11,6 puntos) que fuera (12 puntos). La diferencia de Galicia no es de esa elección: venía de antes.</p>
+<p data-tipo="hipotesis">Nada de esto dice qué pasará el 29N. Son datos por sección, no por persona, y no explican por qué vota cada uno lo que vota. Abascal ha empezado por Galicia su precampaña y espera recortar distancia con el PP en las cuatro provincias. Los datos solo dicen de dónde parte.</p>
+<p data-tipo="dato">Parte de un mapa sin manchas. En María Pita, ayer, cabían a la vez los que aplaudían y los que gritaban, separados por un cordón de cascos. En las urnas de 2023, la plaza no estaba partida en dos. De cada cien votantes de la ciudad, menos de cinco eligieron a Vox, y ninguna de sus 186 secciones le dio ni uno de cada diez. La espina, de momento, es pequeña y está repartida casi por igual.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/pp-cinco-pueblos-galicia/">Los pueblos gallegos del PP</a> · <a href="https://mapaelectoral.es/actualidad/bng-cinco-pueblos-allariz/">El BNG, de Vilar de Santos a Allariz</a> · <a href="https://mapaelectoral.es/actualidad/galicia-historia-electoral/">Galicia: historia electoral</a></p>
+<div class="foot">Datos: Ministerio del Interior, resultados electorales por mesa; INE, Atlas de Distribución de Renta de los Hogares. Cálculo propio.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+const CCR=[["País Vasco", 2.61, 2.43], ["Galicia", 4.79, 7.81], ["Navarra", 5.68, 5.8], ["Cataluña", 7.76, 6.3], ["La Rioja", 9.74, 11.44], ["Asturias", 12.48, 15.89], ["Extremadura", 13.63, 16.82], ["Castilla y León", 13.8, 16.66], ["Madrid", 14.02, 18.36], ["Cantabria", 14.06, 14.95], ["Canarias (Las Palmas)", 14.62, 13.33], ["Aragón", 14.64, 17.01], ["Baleares", 15.22, 17.08], ["Andalucía", 15.33, 20.4], ["C. Valenciana", 15.64, 18.48], ["Melilla", 15.98, 18.42], ["Castilla-La Mancha", 17.78, 21.92], ["Murcia", 21.84, 27.99], ["Ceuta", 23.3, 35.27]];const HG=[1.6, 30.3, 50.1, 15.2, 2.2, 0.4, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0];const HR=[2.9, 5.1, 5.6, 6.4, 9.4, 13.2, 15.4, 13.5, 10.3, 6.8, 8.2, 3.1];const QG=[[5.03, 45.06, 17869], [4.79, 45.17, 19319], [4.7, 43.36, 20387], [4.61, 41.22, 21973], [4.83, 42.95, 26253]];const QR=[[15.68, 30.95, 15706], [14.68, 32.93, 18535], [13.03, 31.21, 21124], [11.17, 29.09, 24583], [11.46, 38.07, 31668]];const CIT=[["A Coruña", 245774, 8.1, 4.8, 39.9, 31.0, 8.7, 8.9], ["Vigo", 292093, 6.5, 4.7, 31.4, 37.3, 8.5, 9.6], ["Santiago de Compostela", 98047, 6.2, 3.7, 41.9, 25.9, 13.1, 6.6], ["Pontevedra", 82698, 8.1, 5.1, 39.8, 31.9, 8.8, 8.9], ["Lugo", 98465, 8.7, 4.4, 46.8, 32.8, 8.8, 6.8], ["Ourense", 103495, 7.8, 4.6, 42.7, 35.4, 8.9, 7.8], ["Ferrol", 63209, 8.7, 5.6, 38.7, 29.4, 7.7, 11.4], ["Ribeira", 26937, 13.4, 9.2, 45.8, 22.8, 11.7, 13.9], ["Marín", 23903, 9.1, 6.9, 44.6, 27.8, 7.9, 9.5], ["Ames", 32750, 8.7, 5.4, 40.5, 27.1, 11.4, 8.5], ["Vilagarcía de Arousa", 37673, 7.4, 4.5, 40.1, 32.4, 8.6, 8.9]];
+const nf=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'),pc=v=>String(v.toFixed(1)).replace('.',',')+'%',dc=v=>String(v.toFixed(1)).replace('.',',');
+function ccaa(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?118:150,rh=sm?19:20,H=CCR.length*rh+6,x=v=>lw+v/25*(W-lw-44);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a Vox en las generales de julio de 2023 por comunidad autónoma'},box);
+ CCR.forEach(([n,v,v19],i)=>{const y=i*rh,g=n=='Galicia';
+  el('text',{x:lw-8,y:y+rh/2+4,'text-anchor':'end','font-size':sm?11:12,class:'lab',style:g?'font-weight:700':''},svg).textContent=n;
+  const r=el('rect',{x:lw,y:y+3,width:x(v)-lw,height:rh-6,rx:3,fill:g?'var(--vox)':'var(--voxl)'},svg);
+  el('text',{x:x(v)+5,y:y+rh/2+4,'font-size':sm?10.5:11.5,fill:'var(--fg)',style:g?'font-weight:700':''},svg).textContent=pc(v);
+  hov(box,tip,r,`<b>${n}</b><br>Vox en julio de 2023: <b>${pc(v)}</b><br>En noviembre de 2019: ${pc(v19)}`)});}
+const BL=['0-2','2-4','4-6','6-8','8-10','10-12','12-14','14-16','16-18','18-20','20-25','25+'];
+function dist(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,H=sm?220:250,ml=38,mr=8,mt=10,mb=34,iw=W-ml-mr,ih=H-mt-mb,n=BL.length,gw=iw/n,y=v=>mt+ih-v/55*ih;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Reparto de las secciones censales según el voto a Vox en 2023, Galicia y resto de España'},box);
+ [0,10,20,30,40,50].forEach(v=>{el('line',{x1:ml,x2:W-mr,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.5},svg);el('text',{x:ml-5,y:y(v)+4,'text-anchor':'end','font-size':10,fill:'var(--muted)'},svg).textContent=v+'%'});
+ BL.forEach((b,i)=>{const bw=(gw-4)/2,gx=ml+i*gw+2;
+  const r1=el('rect',{x:gx,y:y(HG[i]),width:bw,height:y(0)-y(HG[i]),rx:2,fill:'var(--vox)'},svg);
+  const r2=el('rect',{x:gx+bw+1,y:y(HR[i]),width:bw,height:y(0)-y(HR[i]),rx:2,fill:'var(--bar)'},svg);
+  if(!sm||i%2==0)el('text',{x:gx+gw/2-2,y:H-mb+14,'text-anchor':'middle','font-size':sm?9.5:10.5,fill:'var(--muted)'},svg).textContent=b;
+  const h=`<b>Secciones donde Vox sacó ${b}%</b><br>Galicia: <b>${pc(HG[i])}</b> de sus secciones<br>Resto de España: <b>${pc(HR[i])}</b>`;hov(box,tip,r1,h);hov(box,tip,r2,h)});
+ el('text',{x:ml+iw/2,y:H-4,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent='Voto a Vox en la sección, %';}
+function renta(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,H=sm?210:230,ml=34,mr=sm?70:96,mt=12,mb=30,iw=W-ml-mr,ih=H-mt-mb,y=v=>mt+ih-v/20*ih,xx=i=>ml+10+i*(iw-20)/4;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a Vox según la renta de la sección, Galicia y resto de España'},box);
+ [0,5,10,15,20].forEach(v=>{el('line',{x1:ml,x2:ml+iw,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':.5},svg);el('text',{x:ml-5,y:y(v)+4,'text-anchor':'end','font-size':10,fill:'var(--muted)'},svg).textContent=v});
+ [0,1,2,3,4].forEach(i=>el('text',{x:xx(i),y:H-12,'text-anchor':'middle','font-size':10.5,fill:'var(--muted)'},svg).textContent=i+1);
+ [['Galicia',QG,'var(--vox)'],['Resto de España',QR,'var(--bar)']].forEach(([n,Q,c])=>{const pts=Q.map((q,i)=>[xx(i),y(q[0])]);
+  el('polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:c,'stroke-width':2},svg);
+  pts.forEach((p,i)=>{el('circle',{cx:p[0],cy:p[1],r:4,fill:c,stroke:'var(--bg)','stroke-width':2},svg);const hit=el('circle',{cx:p[0],cy:p[1],r:11,fill:'transparent'},svg);
+   hov(box,tip,hit,`<b>${n}</b>, quinto ${i+1} de renta<br>Renta mediana por u. c.: ${nf(Q[i][2])} €<br>Vox: <b>${pc(Q[i][0])}</b> · PP: ${pc(Q[i][1])}`)});
+  el('text',{x:xx(4)+8,y:y(Q[4][0])+4,'font-size':sm?10.5:11.5,class:'lab'},svg).textContent=sm?(n=='Galicia'?'Galicia':'Resto'):n});
+ el('text',{x:ml,y:H-1,'font-size':10,fill:'var(--muted)'},svg).textContent=sm?'1 = más pobres · 5 = más ricas':'Quintos de renta: 1 = secciones más pobres · 5 = más ricas';}
+ccaa('ccaa');dist('dist');renta('renta');
+table('ccaa-tbl',['Comunidad','Vox, nov. 2019','Vox, jul. 2023'],CCR.slice().reverse().map(r=>[r[0],pc(r[2]),pc(r[1])]));
+table('dist-tbl',['Vox en la sección','Galicia, % de secciones','Resto de España, % de secciones'],BL.map((b,i)=>[b+'%',pc(HG[i]),pc(HR[i])]));
+table('renta-tbl',['Quinto de renta','Galicia: Vox','Galicia: PP','Resto: Vox','Resto: PP'],QG.map((q,i)=>[i+1,pc(q[0]),pc(q[1]),pc(QR[i][0]),pc(QR[i][1])]));
+table('cit-tbl',['Municipio','Habitantes','Vox nov. 2019','Vox jul. 2023','PP 2023','PSOE 2023','BNG 2023','Su mejor sección (Vox 2023)'],CIT.map(r=>[r[0],nf(r[1]),pc(r[2]),pc(r[3]),pc(r[4]),pc(r[5]),pc(r[6]),pc(r[7])]));
+
+</script>
