@@ -189,7 +189,7 @@ TEMAS = {
         piezas=TEMA_MUNICIPIOS + ['bildu-cinco-pueblos-lizartza', 'bng-cinco-pueblos-allariz', 'erc-cinco-pueblos-blancafort-flix',
                                   'junts-cinco-pueblos-amer', 'pnv-cinco-pueblos-bermeo', 'pp-cinco-pueblos-galicia', 'sumar-cinco-pueblos-marinaleda',
                                   'baltar-censo-y-participacion', 'europeas-arona', 'casas-vacias-segundas-residencias', 'oficios-y-voto-municipios-29n',
-                                  'municipios-izquierda-1977-derecha-2023', 'pueblos-unanimes-empates-29n'],
+                                  'municipios-izquierda-1977-derecha-2023', 'pueblos-unanimes-empates-29n', 'ganar-por-un-voto-29n'],
         datos=[('elecciones/resultados-elecciones-por-municipio/', 'Resultados de las elecciones por municipio desde 1977'),
                ('municipio/', 'Elecciones en cada municipio de más de 1.000 habitantes')],
         atlas=[('atlas/excepciones/', 'Atlas: las excepciones'), ('atlas/contra-su-provincia/', 'Atlas: contra su provincia'),
