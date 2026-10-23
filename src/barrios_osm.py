@@ -4,15 +4,18 @@ Ciudades: las 50 capitales de provincia y los municipios de más de 100.000 habi
 Límites de barrio y distrito: OpenStreetMap (relaciones boundary=administrative de nivel 10 y 9 dentro del municipio,
 buscado por su código INE, ine:municipio), © colaboradores de OpenStreetMap, licencia ODbL. Donde el municipio no tiene
 barrios en OSM se usan los distritos; donde no tiene ninguno de los dos, no hay fichas.
+En las grandes ciudades que no tienen barrios en OSM se usan los límites que publica el ayuntamiento (OFICIALES).
 Cada sección va al barrio con el que comparte más superficie (geometría de secciones del INE de 2023, vía ineAtlas).
 
 Salida (en el repositorio, para que las páginas se regeneren sin red):
 - data/barrios/secciones_barrio.csv: tract_code, mun_code, barrio, distrito, nivel, osm_id, solape (fracción de la sección dentro del barrio)
+  (osm_id es el identificador de la relación de OSM, u «of-N» en los barrios de fuente municipal)
+- data/barrios/fuentes.json: fuente de los límites de las ciudades que no salen de OSM
 - data/barrios/geo/<mun_code>.json: secciones de la ciudad simplificadas (metros, ETRS89 UTM 30N) para los mapas de las fichas
 
 Uso: python3 src/barrios_osm.py [códigos INE...]   (descarga en caché; vuelve a descargar solo lo que falte)
 """
-import glob, json, os, pathlib, sys, time, urllib.parse, urllib.request
+import glob, json, os, re, pathlib, sys, time, urllib.parse, urllib.request
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry import LineString
@@ -29,6 +32,87 @@ CAPITALES = {'01059', '02003', '03014', '04013', '05019', '06015', '07040', '080
              '43148', '44216', '45168', '46250', '47186', '48020', '49275', '50297'}
 MINIMO = 100_000
 COBERTURA = 0.7   # parte de las secciones que tiene que caer en algún barrio
+
+# Ciudades grandes sin barrios en OSM: límites del ayuntamiento. url de descarga, campo del nombre y, si lo hay, cómo sacar el distrito.
+OFICIALES = {
+    '01059': {'url': 'https://www.vitoria-gasteiz.org/docs/j34/catalogo/01/87/BarriosSep2019.json', 'campo': 'TEXTO',
+              'fuente': 'los límites de barrios del Ayuntamiento de Vitoria-Gasteiz (datos abiertos, septiembre de 2019)',
+              'web': 'https://www.vitoria-gasteiz.org/wb021/was/contenidoAction.do?idioma=es&uid=app_j34_0187'},
+    '15030': {'url': 'https://ide.coruna.gal/server/rest/services/Publica/CB_DIVISIONES_ADMINISTRATIVAS/MapServer/3/query'
+                     '?where=1%3D1&outFields=*&outSR=4326&f=geojson', 'campo': 'nom_barrio',
+              'fuente': 'la IDE municipal del Concello da Coruña (capa «Barrios / AA VV»)',
+              'web': 'https://ide.coruna.gal/server/rest/services/Publica/CB_DIVISIONES_ADMINISTRATIVAS/MapServer'},
+    '30030': {'url': 'https://geoserver.murcia.es/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature'
+                     '&typeNames=Murcia:pedanias_barrios&outputFormat=application/json&srsName=EPSG:4326', 'campo': 'nombre',
+              'distrito': ('https://geoserver.murcia.es/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature'
+                           '&typeNames=Murcia:barrios&outputFormat=application/json&srsName=EPSG:4326', 'Casco urbano', 'Pedanías'),
+              'fuente': 'el geoportal del Ayuntamiento de Murcia (barrios y pedanías)',
+              'web': 'https://geoserver.murcia.es/geoserver/wfs?service=WFS&request=GetCapabilities'},
+    '03014': {'url': 'https://gist.githubusercontent.com/josemamira/fb7206917d82be27cbdfa5d2b1fc1b22/raw/'
+                     '3defaa7fdb725e37d017dc7496778fa49e7945cf/barrios_Alicante.geojson', 'campo': 'barrio',
+              'fuente': 'los barrios de Alicante digitalizados por José Manuel Mira (no es una publicación del ayuntamiento)',
+              'web': 'https://gist.github.com/josemamira/fb7206917d82be27cbdfa5d2b1fc1b22'},
+}
+# Los nombres oficiales vienen en mayúsculas y a menudo sin tildes
+TILDES = {'MARIA': 'María', 'JOSE': 'José', 'XOSE': 'Xosé', 'RINCON': 'Rincón', 'CORONACION': 'Coronación', 'MARTIN': 'Martín',
+          'CRISTOBAL': 'Cristóbal', 'ESTACION': 'Estación', 'FABRICA': 'Fábrica', 'POLIGONO': 'Polígono', 'DARSENA': 'Dársena',
+          'CASTRILLON': 'Castrillón', 'NOSTIAN': 'Nostián', 'PURISIMA': 'Purísima', 'ANTON': 'Antón', 'ANDRES': 'Andrés',
+          'GINES': 'Ginés', 'BARTOLOME': 'Bartolomé', 'NICOLAS': 'Nicolás', 'PIO': 'Pío', 'ANTOLIN': 'Antolín', 'BENIAJAN': 'Beniaján',
+          'JAVALI': 'Javalí', 'JERONIMO': 'Jerónimo', 'MARTINEZ': 'Martínez', 'ANGEL': 'Ángel', 'ALQUERIAS': 'Alquerías',
+          'LUCIA': 'Lucía', 'FLOREZ': 'Flórez', 'BREOGAN': 'Breogán', 'ANIMAS': 'Ánimas', 'BATERIA': 'Batería',
+          'TRASATLANTICOS': 'Trasatlánticos', 'REFINERIA': 'Refinería', 'PETROLEO': 'Petróleo', 'RIO': 'Río', 'ASIS': 'Asís',
+          'ORZAN': 'Orzán', 'EIRIS': 'Eirís', 'UNIV.': 'Universitario de', 'URB.': 'Urbanización', 'NTRA.': 'Nuestra', 'SRA.': 'Señora de la',
+          'STA.': 'Santa', 'PAU': 'PAU', 'GURUGU': 'Gurugú', 'BENALUA': 'Benalúa'}
+MINUSCULAS = {'de', 'del', 'la', 'las', 'los', 'el', 'y', 'e', 'da', 'do', 'das', 'dos', 'a'}
+
+
+def nombre_propio(t):
+    """«SANTA MARIA DE OZA» -> «Santa María de Oza»."""
+    out = []
+    for i, w in enumerate(t.split()):
+        a, w, z = ('(' if w.startswith('(') else ''), w.strip('()'), (')' if w.endswith(')') else '')   # «AGRELA (PARQUE EMPRESARIAL)»
+        x = TILDES.get(w) or (w if re.fullmatch(r'[IVXL]+', w) else w.capitalize())
+        if '-' in w and w not in TILDES:
+            x = '-'.join(TILDES.get(p) or p.capitalize() for p in w.split('-'))
+        if "'" in w:   # CABEÇÓ D'OR
+            x = "'".join(p.capitalize() if j else p.lower() for j, p in enumerate(w.split("'")))
+        out.append(a + (x.lower() if i and not a and x.lower() in MINUSCULAS and out[-1] != '-' else x) + z)
+    return ' '.join(out)
+
+
+def descarga(url, cod, sufijo=''):
+    f = CACHE / 'oficial' / f'{cod}{sufijo}.json'
+    if not f.exists():
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_bytes(urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'mapaelectoral.es'}), timeout=120).read())
+    d = json.loads(f.read_text())
+    if 'features' in d and d['features'] and 'attributes' in d['features'][0]:   # Esri JSON (Vitoria)
+        from shapely.geometry import Polygon
+        from shapely.ops import unary_union as uu
+        wkid = d.get('spatialReference', {}).get('wkid', 4326)
+        filas = [{**x['attributes'], 'geometry': uu([Polygon(r).buffer(0) for r in x['geometry']['rings']]) if len(x['geometry']['rings']) > 1
+                  else Polygon(x['geometry']['rings'][0]).buffer(0)} for x in d['features']]
+        return gpd.GeoDataFrame(filas, crs=wkid).to_crs(25830)
+    return gpd.read_file(f).to_crs(25830)
+
+
+def oficial(cod):
+    """Barrios de fuente municipal con las mismas columnas que relaciones() (todos a nivel 10, o 9 el distrito)."""
+    o = OFICIALES[cod]
+    g = descarga(o['url'], cod)
+    g['nombre'] = g[o['campo']].astype(str).str.strip().map(nombre_propio)
+    g = g.dissolve('nombre', as_index=False)[['nombre', 'geometry']]   # barrios en varios polígonos con el mismo nombre
+    g['osm_id'] = [f'of-{i + 1}' for i in range(len(g))]
+    g['nivel'] = 10
+    if 'distrito' in o:
+        url, dentro, fuera = o['distrito']
+        b = descarga(url, cod, '-distritos').union_all()
+        dis = g.copy()
+        dis['nombre'] = [dentro if x.intersection(b).area > 0.5 * x.area else fuera for x in g.geometry]
+        dis = dis.dissolve('nombre', as_index=False)
+        dis['osm_id'], dis['nivel'] = [f'of-d{i}' for i in range(len(dis))], 9
+        g = pd.concat([g, dis[['nombre', 'geometry', 'osm_id', 'nivel']]], ignore_index=True)
+    return gpd.GeoDataFrame(g, crs=25830)
 
 
 def ciudades():
@@ -91,7 +175,7 @@ def main(cods):
     for cod in cods:
         sec = geo[geo.mun_code == cod].copy()
         sec['area'] = sec.area
-        rel = relaciones(overpass(cod))
+        rel = oficial(cod) if cod in OFICIALES else relaciones(overpass(cod))
         if rel is None:
             print(f'{cod}: sin barrios ni distritos en OSM')
             continue
@@ -118,7 +202,7 @@ def main(cods):
         if a.barrio.fillna('').str.fullmatch(r'(?i)(distrito|districte|barrutia)?\s*(\d+|[IVXL]+)').mean() > 0.5:
             print(f'{cod}: los distritos de OSM solo tienen número, sin nombre de barrio')
             continue
-        if nivel == 10 and niveles.get(9, 0) >= 2:
+        if nivel == 10 and niveles.get(9, 0) >= (2 if cod not in OFICIALES else 1):
             dist = asigna(sec, rel, 9)[['tract_code', 'nombre']].rename(columns={'nombre': 'distrito'})
             a = a.merge(dist, on='tract_code', how='left')
         else:
@@ -141,6 +225,8 @@ def main(cods):
         if f.stem not in set(nuevo.mun_code):
             f.unlink()
     nuevo.sort_values('tract_code').to_csv(OUT / 'secciones_barrio.csv', index=False)
+    (OUT / 'fuentes.json').write_text(json.dumps({c: {'fuente': o['fuente'], 'web': o['web']} for c, o in OFICIALES.items()
+                                                  if c in set(nuevo.mun_code)}, ensure_ascii=False, indent=1) + '\n')
 
 
 if __name__ == '__main__':
