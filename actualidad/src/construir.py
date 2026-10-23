@@ -1571,6 +1571,25 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/feijoo-aborto-eutanasia-sanidad-publica-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Alberto Núñez Feijóo, ante el micrófono de un estudio de radio frente a su entrevistador: un collage.'),
     ),
+    dict(
+        slug='pueblos-unanimes-empates-29n', fecha='2026-10-23',
+        titulo='Mota del Cuervo, 1.243 a 1.243: los pueblos del empate y los del voto unánime', serie='29n', figura=1,
+        descripcion='En 94 municipios los dos primeros partidos empataron en las generales de 2023; en tres de ellos, con más de mil votos. En otros cinco, un solo partido se llevó todos los votos, y en Orexa fueron 62 de 62 para EH Bildu.',
+        compara='Los votos de cada partido en cada municipio en las generales de 2023, y la serie de empates y de votos unánimes en todas las generales desde 1977.',
+        limites='Un empate es que los dos partidos más votados del municipio tengan exactamente los mismos votos; la unanimidad cuenta solo votos a candidaturas, sin blancos ni nulos. Los partidos se agrupan en familias comparables entre elecciones, lo que puede alterar algún empate antiguo, y por eso la serie histórica se limita a los empates entre PP y PSOE. La explicación del aumento de empates es una hipótesis.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales al Congreso de 1977 a 2023 por municipio'),
+                 ('https://www.ultimahora.es/elecciones/23j/congreso/mota-del-cuervo.html', 'Última Hora, resultados del 23J en Mota del Cuervo'),
+                 ('https://www.ultimahora.es/elecciones/23j/congreso/guadiana-del-caudillo.html', 'Última Hora, resultados del 23J en Guadiana'),
+                 ('https://www.ultimahora.es/elecciones/23j/congreso/dona-mencia.html', 'Última Hora, resultados del 23J en Doña Mencía'),
+                 ('https://www.eldiario.es/euskadi/orexa-fortin-guipuzcoano-eleccion-eleccion-pueblo-vota-bloque-eh-bildu_1_10404176.html', 'elDiario.es, Orexa, el fortín guipuzcoano (25-7-2023)'),
+                 ('https://www.elespanol.com/reportajes/20260315/villamedianilla-tinieblas-jaramillo-pueblos-burgos-llamaron-vecinos-formar-mesas/1003744170262_0.html', 'El Español, los pueblos de Burgos que llamaron a vecinos de fuera para formar mesas (15-3-2026)'),
+                 ('https://boe.es/boe/dias/2020/03/09/pdfs/BOE-A-2020-3329.pdf', 'BOE, cambio de denominación de Guadiana del Caudillo por Guadiana (9-3-2020)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985 del Régimen Electoral General, artículos 163 y 196')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/pueblos-unanimes-empates-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un pueblo con su campanario y una lluvia de papeletas iguales: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2402,6 +2421,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'pueblos-unanimes-empates-29n': 'Empates y unanimidades',
     'feijoo-aborto-eutanasia-sanidad-publica-29n': 'Aborto y eutanasia',
     'ivan-redondo-12-millones-derecha-29n': 'La aritmética del bloque',
     'salario-minimo-provincias-feijoo-29n': 'El sueldo del debate',
