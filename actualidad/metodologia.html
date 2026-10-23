@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Metodología de Actualidad: fuentes, cruces, controles y límites · Mapa Electoral</title>
-<meta name="description" content="Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.">
+<title>Metodología de Actualidad: fuentes, cruces, regresiones, encuestas y límites · Mapa Electoral</title>
+<meta name="description" content="Cómo se hacen las piezas de Actualidad de Mapa Electoral: más de veinte fuentes (Interior, INE, Agencia Tributaria, Catastro, SERPAVI, CIS), comparaciones por grupos, controles, regresiones con efectos fijos y errores agrupados, encuestas, análisis espacial y límites de los datos agregados.">
 <meta name="author" content="Nacho G. del Álamo">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mapaelectoral.es/actualidad/metodologia.html">
 <link rel="alternate" type="application/rss+xml" title="Mapa Electoral · Actualidad" href="https://mapaelectoral.es/actualidad/feed.xml">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Mapa Electoral">
-<meta property="og:title" content="Metodología de Actualidad: fuentes, cruces, controles y límites">
-<meta property="og:description" content="Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.">
+<meta property="og:title" content="Metodología de Actualidad: fuentes, cruces, regresiones, encuestas y límites">
+<meta property="og:description" content="Cómo se hacen las piezas de Actualidad de Mapa Electoral: más de veinte fuentes (Interior, INE, Agencia Tributaria, Catastro, SERPAVI, CIS), comparaciones por grupos, controles, regresiones con efectos fijos y errores agrupados, encuestas, análisis espacial y límites de los datos agregados.">
 <meta property="og:url" content="https://mapaelectoral.es/actualidad/metodologia.html">
 <meta property="og:image" content="https://mapaelectoral.es/img/compartir/atlas.jpg">
 <meta property="og:image:width" content="1200">
@@ -26,11 +26,11 @@
  "@context": "https://schema.org",
  "@type": "WebPage",
  "@id": "https://mapaelectoral.es/actualidad/metodologia.html",
- "name": "Metodología de Actualidad: fuentes, cruces, controles y límites",
+ "name": "Metodología de Actualidad: fuentes, cruces, regresiones, encuestas y límites",
  "url": "https://mapaelectoral.es/actualidad/metodologia.html",
- "description": "Cómo se hacen las piezas de Actualidad de Mapa Electoral: fuentes (Interior, INE, Agencia Tributaria, Catastro, CIS), comparaciones por grupos, controles por renta, tamaño y provincia, regresiones con efectos fijos y los límites de los datos agregados.",
+ "description": "Cómo se hacen las piezas de Actualidad de Mapa Electoral: más de veinte fuentes (Interior, INE, Agencia Tributaria, Catastro, SERPAVI, CIS), comparaciones por grupos, controles, regresiones con efectos fijos y errores agrupados, encuestas, análisis espacial y límites de los datos agregados.",
  "inLanguage": "es",
- "dateModified": "2026-10-22",
+ "dateModified": "2026-10-23",
  "publisher": {
   "@type": "NewsMediaOrganization",
   "@id": "https://mapaelectoral.es/#medio",
@@ -115,6 +115,11 @@ a{color:var(--fg)}
 nav.indice{font-family:var(--ui);font-size:.9rem;color:var(--muted);border-block:1px solid var(--rule);padding:.6rem 0}
 nav.indice a{color:var(--muted)}
 main li{margin-bottom:.5rem}
+figure.met{margin:1.6rem 0;padding:1rem 0;border-block:1px solid var(--rule)}
+figure.met figcaption{font-family:var(--ui);font-size:1rem;line-height:1.35;margin-bottom:.7rem}
+figure.met figcaption span{color:var(--muted);font-size:.92rem}
+figure.met .src{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.6rem 0 0}
+figure.met svg g:hover line,figure.met svg g:hover circle,figure.met svg g:hover rect{opacity:.7}
 </style><style>
 :root{--serif:"Newsreader",Georgia,serif;--ui:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--surface:#fff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--surface:#1e2025}}
@@ -160,75 +165,188 @@ aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 <nav class="site" aria-label="Secciones del sitio"><a class="marca" href="../">Mapa Electoral</a><a href="../">Mapa de resultados</a><a href="../elecciones/">Por territorio</a><a href="../municipio/">Municipios</a><a href="../municipio/barrios/">Barrios</a><a href="../temas/">Temas</a><a href="../encuestas/">Encuestas</a><a href="../atlas/">Atlas</a><a href="../actualidad/" aria-current="page">Actualidad</a><a href="../actualidad/#comunidades">Comunidades</a><a href="../actualidad/#historia">Historia electoral</a><a href="../sobre-mi.html">Sobre mí</a></nav>
 <main><p class="kicker"><a href="./">Actualidad</a> · Metodología</p>
 <h1>Cómo se hacen las piezas de Actualidad</h1>
-<p class="entradilla">Las piezas de esta sección cruzan resultados electorales con datos de renta, edad, empleo o vivienda, casi siempre por sección censal. Esta página explica de dónde salen los datos, cómo se comparan, qué controles se aplican y qué no se puede concluir de ellos. Lo particular de cada pieza está en su bloque «Método y fuentes».</p>
-<nav class="indice" aria-label="En esta página"><a href="#fuentes">Fuentes</a> · <a href="#cruces">Cruces</a> · <a href="#controles">Controles</a> · <a href="#ponderacion">Ponderación</a> · <a href="#limites">Límites</a> · <a href="#excepciones">Dónde se rompe el patrón</a> · <a href="#verificacion">Verificación</a></nav>
+<p class="entradilla">Las piezas de esta sección cruzan resultados electorales con datos de renta, edad, empleo, vivienda u opinión, casi siempre por sección censal: las unidades de unos 1.300 vecinos de media en las que el INE divide España para votar.</p>
+<p>Esta página explica de dónde salen los datos, cómo se comparan, qué herramientas estadísticas se usan y qué no se puede concluir de ellos. Lo particular de cada pieza está en su bloque «Método y fuentes».</p>
+<nav class="indice" aria-label="En esta página"><a href="#fuentes">Fuentes</a> · <a href="#cruces">Cruces</a> · <a href="#controles">Controles</a> · <a href="#regresiones">Regresiones</a> · <a href="#encuestas">Encuestas</a> · <a href="#mapa">El mapa</a> · <a href="#escanos">Escaños</a> · <a href="#ponderacion">Ponderación</a> · <a href="#limites">Límites</a> · <a href="#excepciones">Dónde se rompe el patrón</a> · <a href="#verificacion">Verificación</a></nav>
 
 <h2 id="fuentes">Fuentes</h2>
-<p>Todas son públicas y cada pieza enlaza las que usa.</p>
+<p>Todas son públicas y cada pieza enlaza las que usa. Son más de veinte bases de datos, agrupadas aquí por tema.</p>
+
+<h3>Elecciones</h3>
 <ul>
-<li><b>Resultados electorales.</b> Ministerio del Interior (<a href="https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/">Infoelectoral</a>), por mesa, que se suman por sección censal. La base de casi todos los cruces son las generales del 23 de julio de 2023. El voto de los residentes en el extranjero (CERA) no se puede asignar a una sección: cada pieza dice si lo incluye. Para el Parlament de Catalunya, los datos abiertos de la Generalitat.</li>
-<li><b>Renta y edad.</b> INE, <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a>: renta por unidad de consumo, fuentes de ingresos (salarios, pensiones, prestaciones) y edad media por sección. Empieza en 2015: no se usa para explicar elecciones anteriores.</li>
-<li><b>Población, empleo y vivienda.</b> INE, <a href="https://www.ine.es/censos2021/C2021_Indicadores.csv">Censo de Población y Viviendas 2021</a> (estudios, paro, nacidos fuera, régimen de tenencia) y Censo anual de población (ocupados por rama y situación profesional). Estadísticas experimentales del INE: viviendas turísticas por sección e índice de precios del alquiler.</li>
-<li><b>Fiscalidad.</b> Agencia Tributaria, <a href="https://sede.agenciatributaria.gob.es/Sede/datosabiertos/catalogo/hacienda/Estadistica_de_los_declarantes_del_IRPF_por_municipios.shtml">estadística de los declarantes del IRPF por municipio</a>.</li>
-<li><b>Edificios.</b> Dirección General del Catastro, edificios en formato <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html">INSPIRE</a> (año de construcción, viviendas por edificio).</li>
-<li><b>Alquiler.</b> Ministerio de Vivienda, Sistema Estatal de Referencia del Precio del Alquiler (SERPAVI).</li>
-<li><b>Opinión.</b> CIS, microdatos de los barómetros, siempre con los pesos del propio CIS. Son encuestas a personas, con su margen de error, y se dice cuando una submuestra es pequeña.</li>
+<li><b>Ministerio del Interior</b> (<a href="https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/">Infoelectoral</a>). Resultados por mesa de las generales, municipales y europeas, que se suman por sección censal desde 2004 y por municipio desde 1977.</li>
+<li><b>Junta Electoral Central</b>, resúmenes oficiales publicados en el BOE, para escaños, senadores y cifras definitivas por provincia.</li>
+<li><b>Generalitat de Catalunya</b>, <a href="https://analisi.transparenciacatalunya.cat/d/ntc4-rnwr">datos abiertos</a> de las elecciones al Parlament por sección (2021 y 2024).</li>
+<li><b>Segunda República.</b> El <a href="https://doi.org/10.34810/data3274">Atlas electoral de la Segunda República</a> de Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez (Universitat Pompeu Fabra), para las generales de 1933 y 1936 por municipio.</li>
+<li><b>INE, Oficina del Censo Electoral.</b> Electores por edad y provincia (2023 y 2026), censo de residentes en el extranjero (CERA) y Padrón de Españoles Residentes en el Extranjero.</li>
 </ul>
+
+<h3>Renta e impuestos</h3>
+<ul>
+<li><b>INE, <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a>.</b> Renta por unidad de consumo, fuentes de ingresos (salarios, pensiones, prestaciones, otros), índice de Gini y edad media, por sección. Empieza en 2015: nunca se usa para explicar elecciones anteriores.</li>
+<li><b>Agencia Tributaria</b>, <a href="https://sede.agenciatributaria.gob.es/Sede/datosabiertos/catalogo/hacienda/Estadistica_de_los_declarantes_del_IRPF_por_municipios.shtml">estadística de los declarantes del IRPF</a> por municipio y, en las ciudades grandes, por código postal: rentas del trabajo, del capital y de actividades económicas. Los códigos postales se pasan a secciones con la cartografía de CartoCiudad (IGN).</li>
+<li><b>Ministerio de Inclusión y Seguridad Social</b>, nómina mensual de pensiones.</li>
+</ul>
+
+<h3>Población y empleo</h3>
+<ul>
+<li><b>INE, <a href="https://www.ine.es/censos2021/C2021_Indicadores.csv">Censo de Población y Viviendas 2021</a></b>, indicadores por sección: estudios, paro, población nacida fuera, régimen de tenencia de la vivienda y viviendas no principales.</li>
+<li><b>INE, Censo anual de población</b> (2021 a 2025): ocupados por grupo de ocupación, por situación profesional (asalariados, autónomos, empresarios) y por rama de actividad; población por país de nacimiento.</li>
+<li><b>INE, Estadística Continua de Población, Encuesta de Población Activa y Encuesta de Condiciones de Vida</b>, para el contexto por provincia o comunidad.</li>
+<li><b>Afiliación a la Seguridad Social por municipio</b>, donde las comunidades la publican, y el boletín estadístico del personal de las administraciones públicas, por provincia. No hay datos abiertos de funcionarios por municipio.</li>
+</ul>
+
+<h3>Vivienda</h3>
+<ul>
+<li><b>INE, Censo 2021</b>: viviendas principales y no principales (tabla 59525) y viviendas según su consumo eléctrico (tabla 59531), que es como el INE estima las vacías.</li>
+<li><b>INE, viviendas turísticas</b> por sección (estadística experimental).</li>
+<li><b>Ministerio de Vivienda, <a href="https://www.mivau.gob.es/vivienda/alquila-bien-es-tu-derecho/serpavi">SERPAVI</a></b>: precio de los alquileres declarados a Hacienda, de 2011 a 2024.</li>
+<li><b>Dirección General del Catastro</b>, edificios en formato <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html">INSPIRE</a>: año de construcción y viviendas por edificio.</li>
+<li><b>Consejo General del Poder Judicial</b>, lanzamientos (desahucios) por territorio.</li>
+</ul>
+
+<h3>Opinión</h3>
+<ul>
+<li><b>CIS, microdatos</b> de los barómetros mensuales y de las encuestas preelectorales y postelectorales. Se usan las respuestas individuales, no solo las tablas publicadas.</li>
+<li><b>Centre d'Estudis d'Opinió</b> de la Generalitat, para Cataluña.</li>
+<li><b>Encuestas publicadas</b> por los medios, recopiladas en la sección de <a href="../encuestas/">encuestas</a>.</li>
+</ul>
+
+<h3>Mapas y nombres</h3>
+<ul>
+<li><b>INE</b>, contornos de las secciones censales y callejero del censo electoral.</li>
+<li><b>IGN, CartoCiudad</b>, y <b>OpenStreetMap</b>, para poner nombre de calle y de barrio a cada sección.</li>
+<li><b>Ayuntamientos</b> (Madrid, Málaga, Zaragoza, Sevilla, Palma, Girona…), para sus distritos y barrios oficiales.</li>
+</ul>
+
+<figure class="met"><figcaption><b>Qué años cubre cada fuente</b><br><span>Los puntos son años sueltos; las barras, series continuas</span></figcaption>
+<svg viewBox="0 0 440 234" role="img" aria-labelledby="tl-t" style="width:100%;max-width:560px;display:block"><title id="tl-t">Años que cubre cada fuente</title><line x1="178.7" x2="178.7" y1="6" y2="206" stroke="var(--rule)"/><text x="178.7" y="222" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">1940</text><line x1="236.0" x2="236.0" y1="6" y2="206" stroke="var(--rule)"/><text x="236.0" y="222" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">1960</text><line x1="293.3" x2="293.3" y1="6" y2="206" stroke="var(--rule)"/><text x="293.3" y="222" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">1980</text><line x1="350.6" x2="350.6" y1="6" y2="206" stroke="var(--rule)"/><text x="350.6" y="222" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">2000</text><line x1="407.9" x2="407.9" y1="6" y2="206" stroke="var(--rule)"/><text x="407.9" y="222" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">2020</text><text x="0" y="23" font-size="13" font-family="var(--ui)" fill="var(--fg)">Generales, por municipio</text><circle cx="284.7" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="290.4" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="299.0" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="310.5" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="319.1" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="330.6" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="339.2" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="350.6" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="362.1" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="373.5" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="382.1" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="393.6" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="396.5" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="405.1" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="407.5" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="416.5" cy="18" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><text x="0" y="47" font-size="13" font-family="var(--ui)" fill="var(--fg)">Generales, por sección</text><circle cx="362.1" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="373.5" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="382.1" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="393.6" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="396.5" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="405.1" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="407.5" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="416.5" cy="42" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><text x="0" y="71" font-size="13" font-family="var(--ui)" fill="var(--fg)">Segunda República</text><circle cx="158.6" cy="66" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="167.2" cy="66" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><text x="0" y="95" font-size="13" font-family="var(--ui)" fill="var(--fg)">Renta (INE)</text><rect x="393.6" y="85" width="22.9" height="10" rx="3" fill="var(--fg)" opacity=".75"/><text x="0" y="119" font-size="13" font-family="var(--ui)" fill="var(--fg)">Censo 2021 y Censo anual</text><rect x="410.8" y="109" width="11.5" height="10" rx="3" fill="var(--fg)" opacity=".75"/><circle cx="410.8" cy="114" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><text x="0" y="143" font-size="13" font-family="var(--ui)" fill="var(--fg)">IRPF (Agencia Tributaria)</text><circle cx="416.5" cy="138" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><text x="0" y="167" font-size="13" font-family="var(--ui)" fill="var(--fg)">Alquiler (SERPAVI)</text><rect x="382.1" y="157" width="37.3" height="10" rx="3" fill="var(--fg)" opacity=".75"/><text x="0" y="191" font-size="13" font-family="var(--ui)" fill="var(--fg)">Encuestas del CIS</text><rect x="424.8" y="181" width="4.0" height="10" rx="3" fill="var(--fg)" opacity=".75"/><circle cx="393.6" cy="186" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="396.5" cy="186" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="405.1" cy="186" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/><circle cx="416.5" cy="186" r="3.2" fill="var(--fg)" stroke="var(--bg)" stroke-width="1"/></svg>
+<p class="src">Por eso las piezas comparan casi siempre con las generales de 2023: es la elección más cercana a los datos de renta, censo e impuestos.</p></figure>
 
 <h2 id="cruces">Cómo se cruzan los datos</h2>
-<p>La mayoría de las piezas hacen comparaciones de dos variables, explicadas sin jerga:</p>
-<ul>
-<li><b>Grupos de igual tamaño.</b> Se ordenan las secciones (o los municipios) por una variable, por ejemplo la renta, y se parten en cinco grupos (quintiles) o diez (deciles) con el mismo número de secciones o de votantes. Después se compara el voto de cada grupo. Es la forma más habitual en los gráficos.</li>
-<li><b>Comparación de medias.</b> El voto o la participación de un grupo frente a otro: las secciones con más alquiler frente a las de menos, la quinta parte con más pensionistas frente al resto.</li>
-<li><b>Correlación.</b> Cuando se da un coeficiente, es el de Pearson entre secciones o municipios: va de −1 a 1 y mide si dos cifras suben y bajan juntas, no cuánto cambia una con la otra.</li>
-</ul>
+<p>La mayoría de las piezas comparan dos cifras. Estas son las herramientas, de la más sencilla a la más compleja.</p>
+
+<h3>De la mesa a la sección</h3>
+<p>Interior publica los votos de cada mesa. Cada mesa pertenece a una sección censal, así que se suman los votos y el censo de todas las mesas de cada sección.</p>
+<p>Las secciones cambian de límites de una elección a otra. Para comparar elecciones se usan las secciones con el mismo código, y antes de 2004 solo se compara por municipio, porque las secciones de entonces no se corresponden con las actuales.</p>
+
+<h3>Grupos de igual tamaño</h3>
+<p>Se ordenan las secciones por una variable, por ejemplo la renta, y se parten en cinco grupos (quintiles) o diez (deciles) con el mismo número de secciones o de votantes. Después se compara el voto de cada grupo.</p>
+<p>Es la forma más habitual en los gráficos porque se entiende sin fórmulas: «en el 10% de barrios más ricos, el PP saca tanto; en el 10% más pobre, tanto».</p>
+
+<h3>Comparación de medias</h3>
+<p>El voto o la participación de un grupo frente a otro: las secciones con más alquiler frente a las de menos, la quinta parte con más pensionistas frente al resto.</p>
+
+<h3>Correlación</h3>
+<p>Cuando se da un coeficiente, es el de Pearson entre secciones o municipios. Va de −1 a 1 y mide si dos cifras suben y bajan juntas, no cuánto cambia una con la otra.</p>
+<p>Una correlación de 0,3 entre secciones ya es notable; una de 0,8 es rara y suele esconder una variable común, como la renta o el tamaño del municipio.</p>
+
+<h3>Curvas a lo largo del tiempo</h3>
+<p>Para ver cómo cambia un patrón, se repite la misma cuenta por deciles en cada elección, con los mismos grupos de secciones, y se dibuja una curva por año. Así se ve, por ejemplo, cómo se ha movido la frontera de renta entre Junts y el PP.</p>
 
 <h2 id="controles">Controles</h2>
-<p>Una relación entre dos cifras puede deberse a una tercera. Antes de publicar un patrón, se comprueba que aguanta al menos alguno de estos controles, y la pieza dice cuál:</p>
+<p>Una relación entre dos cifras puede deberse a una tercera. Antes de publicar un patrón, se comprueba que aguanta al menos alguno de estos controles, y la pieza dice cuál.</p>
 <ul>
-<li><b>A igual renta.</b> La comparación se repite dentro de cada tramo de renta (tercios, quintiles) o entre secciones de renta parecida. Es el control más frecuente, porque la renta va unida a casi todo: edad, estudios, vivienda, empleo.</li>
-<li><b>A igual tamaño de municipio.</b> Las capitales, los pueblos pequeños y las ciudades medianas votan distinto. Cuando la variable cambia con el tamaño, la comparación se hace dentro de cada tramo de población.</li>
-<li><b>Dentro de cada provincia.</b> Comparar Sevilla con Ourense mezcla historias políticas distintas, y una tendencia del conjunto puede desaparecer o invertirse dentro de cada territorio (la llamada paradoja de Simpson). Por eso se repite la cuenta en cada provincia y se dice en cuántas se cumple: «en 50 de las 51 provincias», «en las 49 con datos».</li>
-<li><b>Sin el caso que más pesa.</b> Si una provincia o una ciudad aporta buena parte del efecto, se repite sin ella (por ejemplo, «sin Almería»).</li>
-<li><b>Regresión con controles.</b> En las piezas que descuentan varios rasgos a la vez (renta, paro, estudios, edad, población nacida fuera, tamaño), se usa una regresión lineal por mínimos cuadrados (MCO), ponderada por votantes o por censo, y se da el resultado en puntos de voto entre un caso típico con poco y uno con mucho de la variable. El texto lo cuenta como «a igualdad de lo demás», nunca como causa.</li>
+<li><b>A igual renta.</b> La comparación se repite dentro de cada tramo de renta o entre secciones de renta parecida. Es el control más frecuente, porque la renta va unida a casi todo: edad, estudios, vivienda, empleo.</li>
+<li><b>A igual tamaño de municipio.</b> Las capitales, los pueblos pequeños y las ciudades medianas votan distinto. Cuando la variable cambia con el tamaño, se compara dentro de cada tramo de población.</li>
+<li><b>Dentro de cada provincia.</b> Una tendencia del conjunto puede desaparecer o invertirse dentro de cada territorio: es la paradoja de Simpson. Por eso se repite la cuenta en cada provincia y se dice en cuántas se cumple: «en 50 de las 51 provincias».</li>
+<li><b>Sin el caso que más pesa.</b> Si una provincia o una ciudad aporta buena parte del efecto, se repite sin ella («sin Almería»).</li>
 </ul>
-<h3>Dos reglas para las regresiones</h3>
-<p><b>Efectos fijos de provincia.</b> Una regresión con secciones de toda España supondría que las reglas son las mismas en Sevilla, en Ourense y en Barcelona. No lo son: cada provincia tiene su historia, su arraigo de partidos y su oferta electoral. Por eso los modelos llevan efectos fijos de provincia: estiman la relación solo con las diferencias entre secciones o municipios de la misma provincia. Así se hacen ya los modelos del <a href="../atlas/metodologia/">Atlas de las anomalías electorales</a> y la regresión de <a href="oficios-y-voto-municipios-29n/">los oficios y el voto</a>, y es la norma para cualquier regresión nueva que mezcle provincias.</p>
-<p><b>Errores agrupados y dependencia espacial.</b> Las secciones vecinas no son observaciones independientes: comparten renta, tipo de barrio y costumbres de voto. Una regresión que las trate como independientes da márgenes de error demasiado estrechos y puede hacer pasar por firme un efecto que no lo es. Desde octubre de 2026, las regresiones nuevas calculan los errores agrupados por municipio (por provincia cuando la unidad es el municipio), y un efecto que no se distingue de cero con esos errores no se publica como patrón. Cuando el patrón tiene una geografía muy marcada, se comprueba además si los residuos del modelo siguen agrupados en el mapa (índice de Moran) y, si es así, se contrasta con un modelo espacial (de retardo o de error) antes de publicar. Las piezas anteriores a esta regla no daban márgenes de error; sus cifras de regresión se revisarán con este criterio si se actualizan.</p>
+
+<h2 id="regresiones">Regresiones</h2>
+<p>Cuando hay que descontar varias cosas a la vez (renta, paro, estudios, edad, población nacida fuera, tamaño), se usa una regresión.</p>
+
+<h3>Mínimos cuadrados ponderados</h3>
+<p>Es una regresión lineal (MCO) en la que cada sección pesa según sus votantes o su censo. El resultado se da en puntos de voto: «por cada 10 puntos más de mayores de 65, el PP sube 2 puntos».</p>
+<p>El texto lo cuenta como «a igualdad de lo demás», nunca como causa.</p>
+
+<h3>Efectos fijos</h3>
+<p>Una regresión con secciones de toda España supondría que las reglas son las mismas en Sevilla, en Ourense y en Barcelona. No lo son: cada provincia tiene su historia, sus partidos y su oferta electoral.</p>
+<p>Los efectos fijos de provincia resuelven eso. El modelo solo compara secciones de la misma provincia, nunca una de Sevilla con una de Ourense. Los de municipio van más allá: solo comparan barrios de la misma ciudad, y se usan en los municipios con al menos 20 secciones.</p>
+<p>El gráfico muestra la misma pregunta con tres modelos: cuánto cambia el voto de 2023 por cada 1.000 euros más de renta por unidad de consumo.</p>
+
+<figure class="met"><figcaption><b>Lo que cambia al comparar dentro de cada provincia</b><br><span>Puntos de voto en 2023 por cada 1.000 euros más de renta por unidad de consumo, con su intervalo del 95%. Pasa el dedo o el ratón por cada punto</span></figcaption>
+<svg viewBox="0 0 440 362" role="img" aria-labelledby="fe-t" style="width:100%;max-width:560px;display:block"><title id="fe-t">Cambio en el voto de 2023 por cada 1.000 euros más de renta por unidad de consumo, según el modelo</title><line x1="97.2" x2="97.2" y1="36" y2="334" stroke="var(--rule)" /><text x="97.2" y="350" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">-1,00</text><line x1="165.3" x2="165.3" y1="36" y2="334" stroke="var(--rule)" /><text x="165.3" y="350" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">-0,50</text><line x1="233.4" x2="233.4" y1="36" y2="334" stroke="var(--rule)" stroke-width="1.5"/><text x="233.4" y="350" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">0</text><line x1="301.5" x2="301.5" y1="36" y2="334" stroke="var(--rule)" /><text x="301.5" y="350" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">+0,50</text><line x1="369.5" x2="369.5" y1="36" y2="334" stroke="var(--rule)" /><text x="369.5" y="350" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">+1,00</text><circle cx="75.0" cy="18" r="4.5" fill="var(--bg)" stroke="var(--fg)" stroke-width="2"/><text x="84" y="22" font-size="13" font-family="var(--ui)" fill="var(--fg)">Sin efectos fijos</text><circle cx="221.2" cy="18" r="5" fill="var(--fg)" stroke="var(--bg)" stroke-width="1.5"/><text x="230.2" y="22" font-size="13" font-family="var(--ui)" fill="var(--fg)">Provincia</text><rect x="310.1" y="13.5" width="9" height="9" fill="var(--fg)" stroke="var(--bg)" stroke-width="1.5"/><text x="323.6" y="22" font-size="13" font-family="var(--ui)" fill="var(--fg)">Municipio</text><text x="0" y="77.5" font-size="14" font-weight="600" font-family="var(--ui)" fill="var(--fg)">PP</text><g><title>PP, sin efectos fijos: +0,47 puntos por cada 1.000 euros (intervalo del 95%: de +0,13 a +0,80; 34.939 secciones)</title><line x1="251.1" x2="342.3" y1="53.5" y2="53.5" stroke="#1d84ce" stroke-width="2"/><circle cx="297.4" cy="53.5" r="4.5" fill="var(--bg)" stroke="#1d84ce" stroke-width="2"/><rect x="70" y="44.0" width="354" height="19" fill="transparent"/></g><g><title>PP, efectos fijos de provincia: +0,93 puntos por cada 1.000 euros (intervalo del 95%: de +0,84 a +1,01; 34.939 secciones)</title><line x1="347.8" x2="370.9" y1="72.5" y2="72.5" stroke="#1d84ce" stroke-width="2"/><circle cx="360.0" cy="72.5" r="5" fill="#1d84ce" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="63.0" width="354" height="19" fill="transparent"/></g><g><title>PP, efectos fijos de municipio: +1,04 puntos por cada 1.000 euros (intervalo del 95%: de +0,93 a +1,16; 20.265 secciones)</title><line x1="360.0" x2="391.3" y1="91.5" y2="91.5" stroke="#1d84ce" stroke-width="2"/><rect x="370.5" y="87.0" width="9" height="9" fill="#1d84ce" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="82.0" width="354" height="19" fill="transparent"/></g><text x="0" y="148.5" font-size="14" font-weight="600" font-family="var(--ui)" fill="var(--fg)">PSOE</text><g><title>PSOE, sin efectos fijos: -0,76 puntos por cada 1.000 euros (intervalo del 95%: de -0,85 a -0,68; 34.939 secciones)</title><line x1="117.7" x2="140.8" y1="124.5" y2="124.5" stroke="#e30613" stroke-width="2"/><circle cx="129.9" cy="124.5" r="4.5" fill="var(--bg)" stroke="#e30613" stroke-width="2"/><rect x="70" y="115.0" width="354" height="19" fill="transparent"/></g><g><title>PSOE, efectos fijos de provincia: -0,86 puntos por cada 1.000 euros (intervalo del 95%: de -0,96 a -0,76; 34.939 secciones)</title><line x1="102.7" x2="129.9" y1="143.5" y2="143.5" stroke="#e30613" stroke-width="2"/><circle cx="116.3" cy="143.5" r="5" fill="#e30613" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="134.0" width="354" height="19" fill="transparent"/></g><g><title>PSOE, efectos fijos de municipio: -0,89 puntos por cada 1.000 euros (intervalo del 95%: de -1,03 a -0,75; 20.265 secciones)</title><line x1="93.1" x2="131.3" y1="162.5" y2="162.5" stroke="#e30613" stroke-width="2"/><rect x="107.7" y="158.0" width="9" height="9" fill="#e30613" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="153.0" width="354" height="19" fill="transparent"/></g><text x="0" y="219.5" font-size="14" font-weight="600" font-family="var(--ui)" fill="var(--fg)">Vox</text><g><title>Vox, sin efectos fijos: -0,11 puntos por cada 1.000 euros (intervalo del 95%: de -0,23 a +0,02; 34.939 secciones)</title><line x1="202.1" x2="236.1" y1="195.5" y2="195.5" stroke="#63be21" stroke-width="2"/><circle cx="218.4" cy="195.5" r="4.5" fill="var(--bg)" stroke="#63be21" stroke-width="2"/><rect x="70" y="186.0" width="354" height="19" fill="transparent"/></g><g><title>Vox, efectos fijos de provincia: +0,02 puntos por cada 1.000 euros (intervalo del 95%: de -0,04 a +0,08; 34.939 secciones)</title><line x1="227.9" x2="244.3" y1="214.5" y2="214.5" stroke="#63be21" stroke-width="2"/><circle cx="236.1" cy="214.5" r="5" fill="#63be21" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="205.0" width="354" height="19" fill="transparent"/></g><g><title>Vox, efectos fijos de municipio: +0,07 puntos por cada 1.000 euros (intervalo del 95%: de -0,01 a +0,14; 20.265 secciones)</title><line x1="232.0" x2="252.4" y1="233.5" y2="233.5" stroke="#63be21" stroke-width="2"/><rect x="238.4" y="229.0" width="9" height="9" fill="#63be21" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="224.0" width="354" height="19" fill="transparent"/></g><text x="0" y="290.5" font-size="14" font-weight="600" font-family="var(--ui)" fill="var(--fg)">Sumar</text><g><title>Sumar, sin efectos fijos: -0,02 puntos por cada 1.000 euros (intervalo del 95%: de -0,08 a +0,03; 34.939 secciones)</title><line x1="222.5" x2="237.5" y1="266.5" y2="266.5" stroke="#a9205b" stroke-width="2"/><circle cx="230.7" cy="266.5" r="4.5" fill="var(--bg)" stroke="#a9205b" stroke-width="2"/><rect x="70" y="257.0" width="354" height="19" fill="transparent"/></g><g><title>Sumar, efectos fijos de provincia: -0,18 puntos por cada 1.000 euros (intervalo del 95%: de -0,28 a -0,09; 34.939 secciones)</title><line x1="195.3" x2="221.1" y1="285.5" y2="285.5" stroke="#a9205b" stroke-width="2"/><circle cx="208.9" cy="285.5" r="5" fill="#a9205b" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="276.0" width="354" height="19" fill="transparent"/></g><g><title>Sumar, efectos fijos de municipio: -0,27 puntos por cada 1.000 euros (intervalo del 95%: de -0,36 a -0,19; 20.265 secciones)</title><line x1="184.4" x2="207.5" y1="304.5" y2="304.5" stroke="#a9205b" stroke-width="2"/><rect x="192.1" y="300.0" width="9" height="9" fill="#a9205b" stroke="var(--bg)" stroke-width="1.5"/><rect x="70" y="295.0" width="354" height="19" fill="transparent"/></g><text x="424" y="350" text-anchor="end" font-size="0"></text></svg>
+<p class="src">Fuente: Ministerio del Interior, generales de julio de 2023, e INE, Atlas de Distribución de Renta de los Hogares. 34.939 secciones; el modelo de municipio usa las 20.265 de los municipios con 20 secciones o más. Ponderado por votantes, errores agrupados por municipio. Cálculo propio.</p></figure>
+
+<p>Sin efectos fijos, el PP sube medio punto por cada 1.000 euros. Dentro de cada provincia, casi un punto, y dentro de cada ciudad, algo más. Mezclar provincias escondía la mitad de la relación. Una explicación probable: hay provincias ricas donde el PP saca poco, como las vascas y las catalanas.</p>
+<p>Con Sumar pasa algo parecido: en el conjunto de España no hay relación con la renta, pero dentro de cada ciudad los barrios más ricos le votan menos.</p>
+
+<h3>Errores agrupados</h3>
+<p>Las secciones vecinas no son independientes: comparten renta, tipo de barrio y costumbres de voto. Si el modelo las trata como si lo fueran, cree tener más información de la que tiene y da márgenes de error demasiado estrechos.</p>
+<p>Por eso los errores se agrupan por municipio (por provincia cuando la unidad es el municipio). Un efecto que no se distingue de cero con esos errores no se publica como patrón.</p>
+
+<figure class="met"><figcaption><b>El mismo efecto, dos márgenes de error</b><br><span>Puntos de voto a Vox en 2023 por cada 1.000 euros más de renta, con efectos fijos de provincia: intervalo del 95%</span></figcaption>
+<svg viewBox="0 0 440 120" role="img" aria-labelledby="cl-t" style="width:100%;max-width:560px;display:block"><title id="cl-t">Intervalo del 95% del efecto de la renta en el voto a Vox, con errores sin agrupar y agrupados por municipio</title><line x1="167.1" x2="167.1" y1="8" y2="90" stroke="var(--rule)" /><text x="167.1" y="108" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">-0,05</text><line x1="252.8" x2="252.8" y1="8" y2="90" stroke="var(--rule)" stroke-width="1.5"/><text x="252.8" y="108" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">0</text><line x1="338.4" x2="338.4" y1="8" y2="90" stroke="var(--rule)" /><text x="338.4" y="108" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">+0,05</text><line x1="424.0" x2="424.0" y1="8" y2="90" stroke="var(--rule)" /><text x="424.0" y="108" text-anchor="middle" font-size="13" font-family="var(--ui)" fill="var(--muted)">+0,10</text><g><title>Sin agrupar: de +0,01 a +0,02 puntos</title><text x="0" y="33" font-size="13" font-family="var(--ui)" fill="var(--fg)">Sin agrupar</text><line x1="274.5" x2="295.4" y1="28" y2="28" stroke="#63be21" stroke-width="3" stroke-linecap="round"/><circle cx="284.9" cy="28" r="5" fill="#63be21" stroke="var(--bg)" stroke-width="1.5"/></g><g><title>Agrupados por municipio: de -0,04 a +0,08 puntos</title><text x="0" y="67" font-size="13" font-family="var(--ui)" fill="var(--fg)">Agrupados por municipio</text><line x1="180.1" x2="389.8" y1="62" y2="62" stroke="#63be21" stroke-width="3" stroke-linecap="round"/><circle cx="284.9" cy="62" r="5" fill="#63be21" stroke="var(--bg)" stroke-width="1.5"/></g></svg>
+<p class="src">Fuente: Interior e INE. 34.939 secciones. Cálculo propio.</p></figure>
+
+<p>Sin agrupar, parece que Vox sube un poco con la renta y que el resultado es firme. Agrupando por municipio, el margen se multiplica por siete y cruza el cero: no se puede decir que la renta mueva el voto a Vox dentro de cada provincia.</p>
+<p>Las piezas anteriores a octubre de 2026 no daban márgenes de error; sus cifras de regresión se revisarán con este criterio si se actualizan.</p>
+
+<h3>Intervalos de confianza</h3>
+<p>Cuando un gráfico muestra una línea a cada lado de un punto, es el intervalo del 95%: el rango de valores compatibles con los datos. Si cruza el cero, el efecto no se distingue de la nada.</p>
+
+<h2 id="encuestas">Encuestas</h2>
+<p>Los datos por sección no dicen cómo vota cada persona. Para eso están las encuestas, sobre todo los microdatos del CIS.</p>
+<ul>
+<li><b>Pesos.</b> Siempre se usan los pesos que publica el propio CIS, que corrigen la muestra para que se parezca a la población.</li>
+<li><b>Voto más simpatía.</b> Es la suma de quien dice que votaría a un partido y de quien, sin decidir, se siente más cercano a él. No es la estimación de voto del CIS, que aplica un modelo propio que no se reproduce aquí.</li>
+<li><b>Varios barómetros juntos.</b> Para tener muestras grandes de grupos pequeños (los jóvenes de una comunidad, por ejemplo), se suman varios barómetros seguidos y se dice cuáles.</li>
+<li><b>Margen de error.</b> Cada porcentaje lleva su intervalo del 95%. Con 1.000 entrevistas ronda los 3 puntos; con 100, los 10.</li>
+<li><b>Submuestras pequeñas.</b> Cuando un grupo tiene muy pocas entrevistas (en general, menos de 100), no se pinta en el mapa ni se comenta como dato.</li>
+<li><b>Recuerdo de voto.</b> Cuando se compara con el voto anterior, se tiene en cuenta que el recuerdo no coincide con el resultado real: en los barómetros del CIS, más gente dice haber votado al PSOE en 2023 de la que lo votó.</li>
+</ul>
+
+<h2 id="mapa">El mapa también cuenta</h2>
+<p>Los barrios parecidos suelen estar juntos, y eso tiene sus propias herramientas.</p>
+<ul>
+<li><b>Índice de Moran.</b> Mide si los valores altos están cerca de otros altos y los bajos de otros bajos. Va de −1 a 1. Se usa para comprobar si lo que el modelo no explica sigue agrupado en el mapa: si es así, falta algo en el modelo.</li>
+<li><b>Modelos espaciales.</b> Cuando los residuos siguen agrupados, se repite la regresión con un modelo que tiene en cuenta a los vecinos (de retardo o de error espacial) antes de publicar.</li>
+<li><b>Focos locales (LISA).</b> Señalan en el mapa los grupos de barrios que votan muy parecido entre sí y muy distinto del resto de la ciudad.</li>
+<li><b>Índice de disimilitud de Duncan.</b> Mide qué parte del voto de un partido tendría que cambiar de barrio para repartirse igual por toda la ciudad. Va de 0 (repartido por igual) a 100 (concentrado del todo).</li>
+</ul>
+
+<h2 id="escanos">Escaños</h2>
+<ul>
+<li><b>Ley D'Hondt.</b> Las simulaciones de escaños aplican la regla de la ley electoral en cada provincia, con la barrera del 3% de los votos válidos.</li>
+<li><b>El último escaño.</b> Se calcula cuántos votos le faltaron al segundo partido para quitarle el último diputado al primero. Es lo que permite decir que un escaño se decidió por unos cientos de votos.</li>
+<li><b>Coaliciones hipotéticas.</b> Cuando se suman los votos de dos partidos para ver qué habría sacado una lista conjunta, se dice siempre que es un ejercicio: los votantes de una lista conjunta no son la suma exacta de los de sus partidos por separado.</li>
+</ul>
 
 <h2 id="ponderacion">Cuánto pesa cada sección</h2>
 <ul>
-<li><b>Porcentajes de un grupo</b> (el voto del quintil más pobre, la participación de un distrito): se suman los votos y el censo de todas sus secciones. Equivale a una media ponderada por votantes o por censo, y así lo dice la nota del gráfico.</li>
-<li><b>Grupos.</b> Pueden tener el mismo número de secciones o el mismo número de votantes; la nota del gráfico dice cuál.</li>
-<li><b>Correlaciones y recuentos</b> («en 1.089 de las 3.289 secciones más pobres»): cada sección cuenta lo mismo, tenga 300 electores o 2.000, salvo que se diga lo contrario. Algunas piezas dejan fuera las secciones muy pequeñas, y lo dicen.</li>
+<li><b>Porcentajes de un grupo</b> (el voto del quintil más pobre, la participación de un distrito): se suman los votos y el censo de todas sus secciones. Equivale a una media ponderada por votantes o por censo.</li>
+<li><b>Grupos.</b> Pueden tener el mismo número de secciones o de votantes; la nota del gráfico dice cuál.</li>
+<li><b>Correlaciones y recuentos</b> («en 1.089 de las 3.289 secciones más pobres»): cada sección cuenta lo mismo, salvo que se diga lo contrario. Algunas piezas dejan fuera las secciones muy pequeñas, y lo dicen.</li>
 <li><b>Regresiones:</b> ponderadas por votantes o por censo, para que un pueblo de 200 habitantes no pese lo mismo que un barrio de 3.000.</li>
 </ul>
 
 <h2 id="limites">Lo que estos datos no dicen</h2>
 <ul>
-<li><b>No dicen quién vota a quién.</b> Son datos de secciones y municipios, no de personas. Que las secciones con más pensionistas voten más al PP no significa que los pensionistas voten al PP: pueden ser sus vecinos. Sacar conclusiones sobre individuos a partir de datos de grupos es la falacia ecológica, descrita por el sociólogo William S. Robinson en 1950 («<a href="https://doi.org/10.2307/2087176">Ecological Correlations and the Behavior of Individuals</a>», <i>American Sociological Review</i>). Para hablar de personas hacen falta encuestas, como las del CIS, y las piezas que las usan lo dicen.</li>
-<li><b>No dicen por qué.</b> «Donde más X, más Y» no es «X causa Y». Los controles descartan algunas explicaciones alternativas, no todas. Una explicación solo se da como tal con dos fuentes independientes; si no, se marca como hipótesis.</li>
-<li><b>Las fronteras importan.</b> El resultado de un cruce puede cambiar según se agrupe por sección, por distrito o por municipio, y las secciones cambian de límites entre elecciones.</li>
-<li><b>Las fechas no siempre coinciden.</b> Las elecciones son de 2023, el censo de 2021, la renta de 2023 o del último año publicado. Cada pieza dice qué año usa cada dato.</li>
+<li><b>No dicen quién vota a quién.</b> Son datos de secciones y municipios, no de personas. Que las secciones con más pensionistas voten más al PP no significa que los pensionistas voten al PP: pueden ser sus vecinos. Es la falacia ecológica, descrita por William S. Robinson en 1950 («<a href="https://doi.org/10.2307/2087176">Ecological Correlations and the Behavior of Individuals</a>», <i>American Sociological Review</i>).</li>
+<li><b>No dicen por qué.</b> «Donde más X, más Y» no es «X causa Y». Los controles descartan algunas explicaciones, no todas. Una explicación solo se da como tal con dos fuentes independientes; si no, se marca como hipótesis.</li>
+<li><b>Las fronteras importan.</b> El resultado de un cruce puede cambiar según se agrupe por sección, por distrito o por municipio.</li>
+<li><b>Las fechas no siempre coinciden.</b> Las elecciones son de 2023, el censo de 2021, la renta de 2023. Cada pieza dice qué año usa cada dato.</li>
 <li><b>Los extranjeros no votan en las generales.</b> En las secciones con mucha población extranjera, el voto es el de sus vecinos con nacionalidad española.</li>
+<li><b>Los pueblos pequeños tienen una sola sección.</b> En 881 municipios de más de 1.000 habitantes no hay barrios que comparar, y sus fichas lo dicen.</li>
 </ul>
 
 <h2 id="excepciones">Dónde se rompe el patrón</h2>
-<p>Comparar dentro de cada provincia sirve también para encontrar los lugares donde la regla general no se cumple, que a menudo son la noticia. Algunos ejemplos publicados:</p>
+<p>Comparar dentro de cada provincia sirve también para encontrar los lugares donde la regla general no se cumple, que a menudo son la noticia.</p>
 <ul>
 <li>En el conjunto de España, las secciones pobres votan más a PSOE y Sumar. En la provincia de Murcia, 172 de sus 191 secciones del tramo más pobre votaron más a PP y Vox; en Almería, 117 de 141. En Sevilla, ninguna. <a href="barrios-pobres-derecha-ricos-izquierda/">La pieza</a>.</li>
-<li>Al revés, la mayoría de las secciones ricas que votan más a PSOE y Sumar que a PP y Vox están en Cataluña y el País Vasco, donde buena parte del voto conservador va a Junts o al PNV, que no entran en ninguno de los dos bloques.</li>
+<li>Al revés, la mayoría de las secciones ricas que votan más a PSOE y Sumar que a PP y Vox están en Cataluña y el País Vasco, donde buena parte del voto conservador va a Junts o al PNV.</li>
 <li>En Madrid, el oficio del barrio parece decir menos del voto que en provincias donde se vive y se trabaja en el mismo sitio. Es una hipótesis. <a href="oficios-y-voto-municipios-29n/">La pieza</a>.</li>
 </ul>
 
 <h2 id="verificacion">Verificación</h2>
 <ul>
 <li>Cada párrafo lleva una etiqueta: <b>dato</b> (cifra comprobable con las fuentes), <b>patrón</b> (relación que se repite, sin afirmar la causa), <b>hipótesis</b> (explicación posible, sin dos fuentes independientes) o <b>contexto</b> (hechos y declaraciones publicados por otros, enlazados).</li>
-<li>Cada pieza tiene un expediente interno con los scripts que reproducen sus cifras y una tabla de afirmaciones (afirmaciones.csv) que liga cada frase con su número y su fuente. Un script de verificación vuelve a calcularlas antes de publicar; si una no cuadra, la pieza no sale.</li>
+<li>Cada pieza tiene un expediente interno con los scripts que reproducen sus cifras y una tabla que liga cada frase con su número y su fuente. Si una cifra no cuadra, la pieza no sale.</li>
 <li>Ninguna conclusión se publica de forma automática: cada pieza la revisa una persona antes de publicarse.</li>
-<li>Los errores se corrigen en la propia pieza, con fecha, en su apartado «Correcciones», y en el <a href="../atlas/correcciones/">registro de correcciones</a>.</li>
+<li>Los errores se corrigen en la propia pieza, con fecha, y en el <a href="../atlas/correcciones/">registro de correcciones</a>.</li>
 </ul>
 <p>Más detalle en la <a href="../atlas/politica-editorial/#verificacion">política editorial</a> y en la <a href="../atlas/metodologia/">metodología del Atlas</a>. El código y los datos derivados están en <a href="https://github.com/nachotronic/abstencio-catalunya">GitHub</a>.</p>
-<p class="firma">Nacho G. del Álamo · Actualizada el <time datetime="2026-10-22">22 de octubre de 2026</time></p><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a></footer></main>
+<p class="firma">Nacho G. del Álamo · Actualizada el <time datetime="2026-10-23">23 de octubre de 2026</time></p><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a></footer></main>
 </body>
 </html>
