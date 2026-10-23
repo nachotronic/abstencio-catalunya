@@ -192,4 +192,36 @@
       <news:title>El mapa de 1936 apenas se parece al de hoy: 1.545 pueblos que votaron a las derechas eligen ahora a la izquierda</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/lorca-fuente-vaqueros-viznar-1936/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Fuente Vaqueros, el pueblo de Lorca, dio el 77,5 % al Frente Popular; Víznar, donde lo mataron, el 63 % a las derechas</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/pueblos-guerra-civil-voto-1936/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Gernika votó al PNV en 1936 y volvió a hacerlo en 2023, por 11 votos; Belchite tiene hoy menos electores que antes de su batalla</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mujeres-1933-frente-popular-1936/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Las mujeres votaron por primera vez en 1933 y ganaron las derechas; en 1936 volvieron a votar y 888 pueblos se pasaron al Frente Popular</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/fieles-1936-izquierda-derecha/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>256 pueblos han votado a la izquierda en 1936 y en las 16 generales de la democracia; 1.610, siempre a la derecha</news:title>
+    </news:news>
+  </url>
 </urlset>

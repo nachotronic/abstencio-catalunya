@@ -1509,6 +1509,9 @@ PIEZAS = [
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
 ENLACES_TEXTO = {
+    'lorca-fuente-vaqueros-viznar-1936': [
+        ('Museo Reina Sofía', 'https://commons.wikimedia.org/wiki/File:Fotograf%C3%ADa_an%C3%B3nima_MNCARS_4.jpg'),
+    ],
     'beiras-nacionalismo-gallego': [
         ('según el obituario de elDiario.es', PIEZAS[0]['fuentes'][2][0]),
     ],
@@ -2131,6 +2134,83 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='lorca-fuente-vaqueros-viznar-1936', fecha='2026-10-23',
+        titulo='Fuente Vaqueros, el pueblo de Lorca, dio el 77,5 % al Frente Popular; Víznar, donde lo mataron, el 63 % a las derechas', serie='historia',
+        descripcion='Las urnas de febrero de 1936 en la provincia de Granada, pueblo a pueblo: la vega de Lorca votó a la izquierda y la sierra donde lo fusilaron, a las derechas. Unas elecciones que se anularon y se repitieron en mayo, y lo que queda de aquel mapa en 2023.',
+        compara='Los municipios de la provincia de Granada en las generales del 19 de noviembre de 1933, del 16 de febrero de 1936 (primera vuelta, anulada) y del 23 de julio de 2023. En 1936, el Frente Popular frente a las derechas; en 2023, la izquierda (PSOE y Sumar) frente a la derecha (PP y Vox).',
+        limites='Las elecciones de febrero de 1936 en Granada se anularon por injerencias del gobernador civil y se repitieron en mayo sin las derechas; el Atlas solo recoge la votación de febrero. En 1933 y 1936 se votaba con listas abiertas y varios votos por elector; el peso de cada bloque es su parte de los votos a candidatos. La participación de 1936 en Granada es una estimación y no se usa. Sin datos de 1933 en Granada capital y Víznar. En 1936, Pinos Puente incluye Valderrubio (Asquerosa), segregado en 2013. El voto de un municipio no dice nada de los crímenes que se cometieron en él después. Sin voto exterior en 2023.',
+        calculo='Bloque ganador: el que suma más porcentaje de voto en el municipio. Media provincial de 1933 y 1936 ponderada por el censo, y de 2023 por los votantes. Correlación de Pearson entre el porcentaje del Frente Popular en 1936 y el de la izquierda en 2023, municipio a municipio, en los 167 municipios comparables.',
+        fuentes=[('https://doi.org/10.34810/data3274', 'Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, CORA Repositori de Dades de Recerca (CC BY-NC-SA 4.0)'),
+                 INTERIOR,
+                 ('https://www.cronica.com.mx/cultura/2026/08/17/la-busqueda-de-los-restos-de-garcia-lorca-una-historia-sin-final-que-suma-capitulos/', 'EFE, «La búsqueda de los restos de García Lorca, una historia sin final que suma capítulos» (17-8-2026)'),
+                 ('https://www.lacapitalmdp.com/ian-gibson-encontrar-a-lorca-seria-un-simbolo-de-reconciliacion-para-espana/', 'EFE (Magdalena Tsanis), entrevista a Ian Gibson (23-5-2026)'),
+                 ('https://semanariouniversidad.com/suplementos/los-dialogos-caricaturista-salvaje/', 'Luis Bagaría, «Diálogos de un caricaturista salvaje», conversación con Federico García Lorca, El Sol (10-6-1936), transcripción'),
+                 ('https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_1936', 'Wikipedia, «Elecciones generales de España de 1936» (consultada el 23-10-2026)'),
+                 ('https://es.wikipedia.org/wiki/Valderrubio', 'Wikipedia, «Valderrubio» (consultada el 23-10-2026)')],
+        enlaces=[],
+        lugar='Granada',
+        foto=dict(src='img/actualidad/fotos/lorca-fuente-vaqueros-viznar-1936.jpg', ancho=1280, alto=720,
+                  pie='Federico García Lorca en la Huerta de San Vicente, Granada, en 1932 (autor anónimo, Museo Reina Sofía, dominio público), y cola de votantes en Granada el 16 de febrero de 1936.',
+                  url='https://commons.wikimedia.org/wiki/File:Granada,_general_elections_of_1936.jpg', credito='Torres y Chinchilla (derecha), dominio público, vía Wikimedia Commons'),
+    ),
+    dict(
+        slug='pueblos-guerra-civil-voto-1936', fecha='2026-10-23',
+        titulo='Gernika votó al PNV en 1936 y volvió a hacerlo en 2023, por 11 votos; Belchite tiene hoy menos electores que antes de su batalla', serie='historia',
+        descripcion='Gernika, Badajoz, Paracuellos, Brunete y Belchite antes de la guerra: así votaron el 16 de febrero de 1936 y así votan ahora. Badajoz votó al Frente Popular y Paracuellos, a las derechas; Brunete vota casi igual que entonces, y Belchite ha perdido electores.',
+        compara='Cinco municipios conocidos por la Guerra Civil (Gernika-Lumo, Badajoz, Paracuellos de Jarama, Brunete y Belchite) en las generales del 19 de noviembre de 1933, del 16 de febrero de 1936 y del 23 de julio de 2023.',
+        limites='El voto de un municipio no explica lo que pasó en él durante la guerra: las víctimas de Paracuellos venían de las cárceles de Madrid y Gernika fue bombardeada por aviones alemanes e italianos. En 1936 se votaba con listas abiertas y varios votos por elector; el peso de cada candidatura es su parte de los votos a candidatos. En 1936, Gernika incluye los pueblos que entonces formaban su municipio (Ajangiz, Arratzu, Kortezubi, Forua, Murueta y Nabarniz); en 2023, solo Gernika-Lumo. El censo de 1936 era de mayores de 23 años y el de 2023, de 18. Las cifras de víctimas son estimaciones de historiadores y varían mucho. Sin voto exterior en 2023.',
+        calculo='Porcentaje de voto de cada candidatura (1936) y de cada partido (2023) en el municipio; electores del censo de cada elección. Diferencia de votos entre PNV y EH Bildu en Gernika-Lumo en 2023, con los resultados por mesa.',
+        fuentes=[('https://doi.org/10.34810/data3274', 'Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, CORA Repositori de Dades de Recerca (CC BY-NC-SA 4.0)'),
+                 INTERIOR,
+                 ('https://commons.wikimedia.org/wiki/File:The_tragedy_of_Guernica_(George_Steer).jpg', 'George Steer, «The tragedy of Guernica. Town destroyed in air attack», The Times (28-4-1937)'),
+                 ('https://orain.eus/es/politica/2026/04/26/gernika-recuerda-las-victimas-del-bombardeo-en-su-89-aniversario/', 'EITB, «Gernika recuerda a las víctimas del bombardeo en su 89 aniversario» (26-4-2026)'),
+                 ('https://www.elsaltodiario.com/memoria-historica/se-cumplen-85-anos-de-la-masacre-de-badajoz-contada-por-el-periodista-jay-allen', 'Félix Población, «Se cumplen 85 años de la masacre de Badajoz, contada por el periodista Jay Allen», El Salto (14-8-2021)'),
+                 ('https://en.wikipedia.org/wiki/Badajoz_massacre', 'Wikipedia, «Badajoz massacre» (consultada el 23-10-2026)'),
+                 ('https://en.wikipedia.org/wiki/Paracuellos_massacres', 'Wikipedia, «Paracuellos massacres» (consultada el 23-10-2026)'),
+                 ('https://en.wikipedia.org/wiki/Battle_of_Brunete', 'Wikipedia, «Battle of Brunete» (consultada el 23-10-2026)'),
+                 ('https://es.wikipedia.org/wiki/Brunete', 'Wikipedia, «Brunete» (consultada el 23-10-2026)'),
+                 ('https://www.elobservador.com.uy/espana/bbc-news-mundo/la-pompeya-espanola-el-pueblo-que-quedo-congelado-el-tiempo-sufrir-uno-los-asedios-mas-sangrientos-la-guerra-civil-n6012193', 'BBC News Mundo, «La Pompeya española: el pueblo que quedó congelado en el tiempo» (10-8-2025)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/pueblos-guerra-civil-voto-1936.jpg', ancho=1280, alto=720,
+                  pie='Gernika en ruinas tras el bombardeo del 26 de abril de 1937.',
+                  url='https://commons.wikimedia.org/wiki/File:El_poblado_de_Guernica_en_ruinas_tras_el_bombardeo.jpg', credito='Autor anónimo, dominio público, vía Wikimedia Commons'),
+    ),
+    dict(
+        slug='mujeres-1933-frente-popular-1936', fecha='2026-10-23',
+        titulo='Las mujeres votaron por primera vez en 1933 y ganaron las derechas; en 1936 volvieron a votar y 888 pueblos se pasaron al Frente Popular', serie='historia',
+        descripcion='A las mujeres se les echó la culpa de la victoria de las derechas en 1933. En febrero de 1936, con las mismas votantes, 888 municipios pasaron de las derechas al Frente Popular y 393 hicieron el camino contrario. Lo que cambió fue la oferta: la izquierda unida y el centro hundido.',
+        compara='Los 6.690 municipios actuales con datos de las generales del 19 de noviembre de 1933 (primera vuelta) y del 16 de febrero de 1936. En 1933, las izquierdas (PSOE, comunistas, ERC y republicanos de izquierda) frente a las derechas (con la Lliga); en 1936, el Frente Popular frente a las derechas.',
+        limites='El Atlas no separa el voto por sexo: no dice a quién votaron las mujeres. En 1933 sumamos candidaturas de izquierda que fueron por separado y dejamos fuera al centro. En 1933 hubo segunda vuelta en algunas provincias; usamos la primera. Los resultados de febrero de 1936 en Granada y Cuenca se anularon y se repitieron en mayo. Listas abiertas y varios votos por elector: el peso de cada bloque es su parte de los votos a candidatos. La participación solo se conoce en las dos elecciones en 3.162 municipios. Se excluyen los empates.',
+        calculo='Bloque ganador: el que suma más porcentaje de voto en el municipio. Media ponderada por el censo de cada elección. Participación: votantes sobre censo.',
+        fuentes=[('https://doi.org/10.34810/data3274', 'Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, CORA Repositori de Dades de Recerca (CC BY-NC-SA 4.0)'),
+                 ('https://es.ara.cat/cultura/falsos-topicos-sufragio-femenino-espana_130_4134771.html', 'Sílvia Marimon, «Los falsos tópicos del sufragio femenino en España», Ara (1-10-2021)'),
+                 ('https://www.marxists.org/espanol/tematica/mujer/autores/campoamor/1931/oct01.htm', 'Clara Campoamor, discurso en las Cortes del 1 de octubre de 1931'),
+                 ('https://es.wikipedia.org/wiki/Clara_Campoamor', 'Wikipedia, «Clara Campoamor» (consultada el 23-10-2026)'),
+                 ('https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_1933', 'Wikipedia, «Elecciones generales de España de 1933» (consultada el 23-10-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/mujeres-1933-frente-popular-1936.jpg', ancho=1280, alto=720,
+                  pie='Mesa electoral en las escuelas del ayuntamiento de Éibar en el referéndum del Estatuto vasco, el 5 de noviembre de 1933, presidida por Pastora Medina Corta.',
+                  url='https://commons.wikimedia.org/wiki/File:01_eibar.jpg', credito='Indalecio Ojanguren, CC BY-SA 3.0, Diputación Foral de Gipuzkoa, vía Wikimedia Commons'),
+    ),
+    dict(
+        slug='fieles-1936-izquierda-derecha', fecha='2026-10-23',
+        titulo='256 pueblos han votado a la izquierda en 1936 y en las 16 generales de la democracia; 1.610, siempre a la derecha', serie='historia',
+        descripcion="L'Hospitalet, Gijón, Sabadell y Dos Hermanas votaron al Frente Popular en 1936 y a la izquierda en todas las generales desde 1977; Burgos, Ávila y Zamora, a la derecha. Los fieles a la derecha son aldeas castellanas que han perdido electores; los de la izquierda, ciudades obreras y pueblos jornaleros.",
+        compara='Los 7.365 municipios actuales con datos de las generales de febrero de 1936 y de las 16 generales de 1977 a 2023. En 1936, el Frente Popular frente a las derechas. Desde 1977, la izquierda (PSOE, PCE, IU, Podemos y Sumar, ERC, EH Bildu y BNG) frente a la derecha y el centroderecha (UCD, AP y PP, CDS, Ciudadanos, UPyD, Vox, CiU y Junts, PNV y CC).',
+        limites='Los bloques no son los mismos partidos en 1936 y después: comparamos coaliciones de entonces con sumas de partidos de ahora. Contar a UCD, CDS, Ciudadanos, CiU, Junts, PNV y CC con la derecha es una decisión. Se excluyen los 127 municipios donde en 1936 ganó el PNV o el centro, y los empates. Faltan casi todos los municipios de Cuenca y Pontevedra en 1936. Los municipios desaparecidos se suman al actual en que se integraron. El censo de 1936 era de mayores de 23 años.',
+        calculo='Bloque ganador en cada elección: el que suma más porcentaje de voto en el municipio. Fiel: el mismo bloque en las 17 elecciones. Electores: censo de 1936 y de 2023.',
+        fuentes=[('https://doi.org/10.34810/data3274', 'Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, CORA Repositori de Dades de Recerca (CC BY-NC-SA 4.0)'),
+                 INTERIOR,
+                 ('https://es.ara.cat/politica/votaron-pueblo-elecciones-1936_1_5730095.html', 'Aleix Moldes, «¿Qué votaron en tu pueblo en 1936? El mapa electoral de la Segunda República», Ara (8-5-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/fieles-1936-izquierda-derecha.jpg', ancho=1280, alto=720,
+                  pie='Cola para votar bajo la lluvia en La Guindalera, Madrid, el 16 de febrero de 1936.',
+                  url='https://commons.wikimedia.org/wiki/File:1936_Spanish_general_elections.jpg', credito='Firmada «Videa y Cortés», dominio público, vía Wikimedia Commons'),
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
@@ -2139,6 +2219,10 @@ ANTETITULOS = {
     'teruel-cha-izquierda-escano-29n': 'El voto útil en Teruel',
     'sanchez-revuelta-broncano-voto-joven-29n': 'La generación Broncano',
     'republica-mapa-1936-hoy': 'Noventa años después',
+    'lorca-fuente-vaqueros-viznar-1936': 'Los pueblos de Lorca',
+    'pueblos-guerra-civil-voto-1936': 'Antes de la guerra',
+    'mujeres-1933-frente-popular-1936': 'El primer voto de las mujeres',
+    'fieles-1936-izquierda-derecha': 'Noventa años en el mismo lado',
     'girona-1936-participacio': 'Les urnes del 1936',
     'capitales-partidas-por-barrios': 'Ciudades partidas',
     'polaritzacio-girona': "Una ciutat d'illes",
@@ -2587,7 +2671,8 @@ def franja_portada(todas, pre=''):
     # Las piezas de ciudad «barrio a barrio» no van en el carrusel (Nacho, 15-10-2026)
     # Las más recientes por fecha, no por su sitio en PIEZAS: las piezas se añaden en bloques distintos (Nacho, 22-10-2026)
     recientes = sorted(todas[::-1], key=lambda q: q['fecha'], reverse=True)   # sorted es estable: en el mismo día, la última añadida primero
-    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n'))][:10]
+    # Las de Historia electoral solo van en su propio carrusel, no en el de Actualidad (Nacho, 23-10-2026)
+    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] != 'historia'][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +

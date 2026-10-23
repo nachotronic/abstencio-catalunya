@@ -1,0 +1,121 @@
+<title>Los pueblos de la guerra</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--pnv:#2b8a3e;--bildu:#a5c400;--fp:#b3001b;--der:#24366b;--sumar:#a2275f;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--pnv:#4caf63;--bildu:#b9d630;--fp:#ff6b70;--der:#7d8fc9;--sumar:#d0679a;--neu:#3aa6bf}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--pnv:#4caf63;--bildu:#b9d630;--fp:#ff6b70;--der:#7d8fc9;--sumar:#d0679a;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>.mapa svg path.p{fill:var(--other);stroke:var(--bg);stroke-width:.6}.mapa circle{stroke:var(--bg);stroke-width:.6;fill-opacity:.85}.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px}.mini h3{font-family:var(--ui);font-size:1rem;margin:0;font-weight:600}@media (max-width:520px){.mini{grid-template-columns:1fr}}</style>
+<style>.mapa-img{width:100%;height:auto;display:block}.sw.dd{background:color-mix(in srgb,var(--der) 32%,var(--bg))}.sw.ii{background:color-mix(in srgb,var(--fp) 32%,var(--bg))}.sw.di{background:var(--psoe)}.sw.id{background:var(--pp)}.cita{border-left:3px solid var(--fp);padding:.2em 0 .2em 1em;margin:1.4em 0;font-size:1.08rem}</style>
+<style>.cita{border-left:3px solid var(--fp);padding:.2em 0 .2em 1em;margin:1.4em 0;font-size:1.08rem}.foto-h{margin:1.6em 0}.foto-h img{width:100%;height:auto;display:block;border-radius:4px}.foto-h figcaption{font:13px/1.45 var(--ui);color:var(--muted);margin-top:.5em}.foto-h.vert img{max-width:420px;margin:0 auto}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Gernika votó al PNV en 1936 y volvió a hacerlo en 2023, por 11 votos; Belchite tiene hoy menos electores que antes de su batalla</h1>
+<p class="dek">Gernika, Badajoz, Paracuellos, Brunete y Belchite. España aprendió sus nombres por un bombardeo, dos matanzas y dos batallas. Antes de eso fueron cinco municipios que votaron el 16 de febrero de 1936. Así votaron entonces y así votan ahora.</p>
+<div class="byline">Nacho G. del Álamo · 23 de octubre de 2026</div>
+<p data-tipo="contexto" style="margin-top:1.4rem">El corresponsal de <i>The Times</i> George Steer llegó a Gernika pasada la medianoche del 26 al 27 de abril de 1937 y escribió su crónica desde Bilbao a la mañana siguiente. Empieza así: «Guernica, la ciudad más antigua de los vascos y el centro de su tradición cultural, fue completamente destruida ayer por la tarde por los aviones de los insurgentes». Unos párrafos más abajo da un dato que explica la hora: «El lunes era el día habitual de mercado en Guernica para toda la comarca». Y otro que explica el resto: «Guernica no era un objetivo militar» (<a href="https://commons.wikimedia.org/wiki/File:The_tragedy_of_Guernica_(George_Steer).jpg">la crónica, en inglés</a>; traducción propia).</p>
+<p data-tipo="contexto">Catorce meses antes, en febrero de 1936, los vecinos de Gernika habían votado en unas elecciones generales. También los de Badajoz, los de Paracuellos de Jarama, los de Brunete y los de Belchite. El <a href="https://doi.org/10.34810/data3274">Atlas Electoral de la Segunda República</a> de la Universitat Pompeu Fabra recoge aquellos resultados municipio a municipio, y desde esta semana están en <a href="https://mapaelectoral.es/">nuestro mapa</a>. Hemos buscado esos cinco nombres.</p>
+<h2>Gernika: once votos</h2>
+<p data-tipo="dato">En febrero de 1936, la candidatura del PNV sacó el 49,0% de los votos a candidatos en Gernika y los pueblos que entonces formaban su municipio. Las derechas llegaron al 41,5% y el Frente Popular, al 9,5%. Había 5.515 electores. Noventa años después, en las generales de julio de 2023, el PNV volvió a ser el partido más votado en Gernika-Lumo: 3.220 votos, el 36,6%. EH Bildu sacó 3.209. La diferencia fue de 11 votos.</p>
+<figure class="foto-h"><img src="../../img/actualidad/republica/steer-times-1937.jpg" width="1280" height="1094" alt="Recorte de The Times con la crónica de George Steer titulada The tragedy of Guernica. Town destroyed in air attack." loading="lazy" decoding="async"><figcaption>La crónica de George Steer en <i>The Times</i>, 28 de abril de 1937: «The tragedy of Guernica. Town destroyed in air attack». Foto: <a href="https://commons.wikimedia.org/wiki/File:The_tragedy_of_Guernica_(George_Steer).jpg">George Steer, dominio público, vía Wikimedia Commons</a>.</figcaption></figure>
+<p data-tipo="contexto">Este 26 de abril, en el 89 aniversario, sonaron las sirenas a las 15.45, la hora en que empezó el bombardeo. El alcalde, José María Gorroño, habló de la memoria como «no solo un reconocimiento, sino un deber asumido ante la historia y ante la conciencia colectiva», según <a href="https://orain.eus/es/politica/2026/04/26/gernika-recuerda-las-victimas-del-bombardeo-en-su-89-aniversario/">EITB</a>. «No es un ejercicio retórico», dijo.</p>
+<h2>Badajoz: la ciudad que votó al Frente Popular</h2>
+<p data-tipo="dato">La ciudad de Badajoz tenía 20.900 electores en febrero de 1936. Votó el 70%. El Frente Popular sacó el 55,7% y las derechas, el 44,2%. En 1933 habían ganado las derechas, con el 53,5%.</p>
+<p data-tipo="contexto">El 14 de agosto de 1936, las tropas sublevadas del teniente coronel Juan Yagüe tomaron la ciudad. Los prisioneros, sobre todo civiles, fueron encerrados en la plaza de toros, y esa misma noche empezaron las ejecuciones, según el <a href="https://en.wikipedia.org/wiki/Badajoz_massacre">resumen de la Wikipedia en inglés</a>, que recoge estimaciones de entre 500 y 4.000 muertos. La lista nominal del historiador Francisco Espinosa reúne 1.341 víctimas, y él mismo la considera incompleta. El periodista estadounidense Jay Allen lo contó desde Elvas, al otro lado de la frontera portuguesa, en el <i>Chicago Tribune</i> del 30 de agosto: «Esta es la historia más dolorosa que me ha tocado escribir» (<a href="https://www.elsaltodiario.com/memoria-historica/se-cumplen-85-anos-de-la-masacre-de-badajoz-contada-por-el-periodista-jay-allen">traducción publicada en El Salto</a>).</p>
+<figure class="foto-h"><img src="../../img/actualidad/republica/badajoz-1936.jpg" width="1280" height="960" alt="La plaza de toros de Badajoz en agosto de 1936, con camiones en el ruedo." loading="lazy" decoding="async"><figcaption>La plaza de toros de Badajoz a mediados de agosto de 1936, tras la toma de la ciudad. La fecha exacta y el autor no se conocen. Foto: <a href="https://commons.wikimedia.org/wiki/File:Badajoz_bull-ring,_1936.jpg">autor desconocido, dominio público, vía Wikimedia Commons</a>.</figcaption></figure>
+<p data-tipo="dato">En 2023, Badajoz tenía 118.739 electores, casi seis veces más que en 1936. La derecha sumó el 60,0%, con el PP en el 43,4%, y el PSOE se quedó en el 30,0%.</p>
+<h2>Paracuellos: 417 electores</h2>
+<p data-tipo="dato">Paracuellos de Jarama era un pueblo de 417 electores. En febrero de 1936 votó el 82%. Las derechas ganaron con el 55,0%, frente al 44,8% del Frente Popular. En 1933 había ganado el PSOE, con el 45,6%.</p>
+<p data-tipo="contexto">Entre noviembre y principios de diciembre de 1936, con Madrid sitiada, miles de presos sacados de las cárceles de la capital fueron llevados en camiones a los campos de Paracuellos y de Torrejón de Ardoz, fusilados y enterrados en fosas comunes. Las cifras varían: Paul Preston y Gabriel Jackson dan un mínimo de unos mil muertos; Hugh Thomas, Antony Beevor o Julián Casanova hablan de entre 2.000 y 2.700. Las órdenes de saca, la responsabilidad de Santiago Carrillo y el papel de los asesores soviéticos se siguen debatiendo, según recoge la <a href="https://en.wikipedia.org/wiki/Paracuellos_massacres">Wikipedia en inglés</a>. Las víctimas no eran vecinos del pueblo: venían de Madrid.</p>
+<p data-tipo="dato">En 2023, Paracuellos tenía 16.776 electores, 40 veces más que en 1936. La derecha sumó el 65,4% y el PP, solo, el 48,1%.</p>
+<h2>Brunete: el pueblo que se reconstruyó</h2>
+<p data-tipo="dato">Brunete tenía 886 electores. Votó el 74%, y las derechas sacaron el 63,9%, frente al 36,1% del Frente Popular.</p>
+<p data-tipo="contexto">El 6 de julio de 1937, el ejército republicano lanzó una ofensiva al oeste de Madrid para aliviar el cerco de la capital. Ese mismo día, a mediodía, Brunete cayó en sus manos. El 24 de julio lo recuperaron las tropas de Franco (<a href="https://en.wikipedia.org/wiki/Battle_of_Brunete">Wikipedia en inglés</a>). Las bajas se cuentan por decenas de miles. «Como consecuencia de los combates, la localidad quedó destruida», resume la <a href="https://es.wikipedia.org/wiki/Brunete">Wikipedia en español</a>; «fue reconstruida en la posguerra por la Dirección General de Regiones Devastadas».</p>
+<figure class="foto-h vert"><img src="../../img/actualidad/republica/brunete-vanguardia-1937.jpg" width="720" height="1023" alt="Portada de La Vanguardia del 11 de julio de 1937 con fotografías de mandos republicanos y de tanques e infantería avanzando por el campo." loading="lazy" decoding="async"><figcaption>Portada de <i>La Vanguardia</i> del 11 de julio de 1937 sobre la ofensiva de Brunete: arriba, Enrique Líster con el Estado Mayor de la 11.ª División; abajo, tanques e infantería. Foto: <a href="https://commons.wikimedia.org/wiki/File:1937-07-11_LA_VANGUARDIA_1.jpg">autor anónimo, dominio público, vía Wikimedia Commons</a>.</figcaption></figure>
+<p data-tipo="dato">En 2023, Brunete tenía 7.154 electores, ocho veces más. La derecha sumó el 64,9%, casi lo mismo que las derechas en 1936. Es, de los cinco, el único donde el mapa apenas se ha movido.</p>
+<h2>Belchite: menos electores que en 1936</h2>
+<p data-tipo="dato">Belchite tenía 2.122 electores en febrero de 1936 y votó el 82%, la participación más alta de los cinco. Ganó el Frente Popular con el 40,4%. Las derechas sacaron el 36,2% y el centro, el 23,4%.</p>
+<p data-tipo="contexto">El asedio duró catorce días, del 24 de agosto al 6 de septiembre de 1937. «Nadie sabe la cifra exacta» de muertos, dijo el alcalde, Carmelo Pérez, a la <a href="https://www.elobservador.com.uy/espana/bbc-news-mundo/la-pompeya-espanola-el-pueblo-que-quedo-congelado-el-tiempo-sufrir-uno-los-asedios-mas-sangrientos-la-guerra-civil-n6012193">BBC</a>; los historiadores la sitúan entre 4.000 y 5.000. Ernest Hemingway escribió que «lucharon de casa en casa, de habitación en habitación, rompiendo paredes con piquetas». Después de la guerra, Franco decidió dejar las ruinas en pie y construir un pueblo nuevo al lado. Los últimos vecinos dejaron el pueblo viejo en 1964. Para el alcalde, es un lugar «que representa lo que fue una guerra civil, una guerra entre hermanos, entre padres e hijos».</p>
+<figure class="foto-h"><img src="../../img/actualidad/republica/belchite-1937.jpg" width="1280" height="877" alt="Casas destruidas de Belchite después de la batalla, con muros derrumbados." loading="lazy" decoding="async"><figcaption>Casas destruidas en Belchite después de la batalla, septiembre de 1937. Publicada en <i>Za mír a svobodu</i>, de los voluntarios checoslovacos en España. Foto: <a href="https://commons.wikimedia.org/wiki/File:Destroyed_houses_in_Belchite_after_the_battle,_September_1937.png">autor desconocido, dominio público, vía Wikimedia Commons</a>.</figcaption></figure>
+<p data-tipo="dato">En julio de 2023, Belchite tenía 1.221 electores: 901 menos que en 1936, aunque entonces solo votaban los mayores de 23 años. Es el único de los cinco que ha perdido electores. Votó el 80%, y la derecha sumó el 58,7%, con el PP en el 40,6%.</p>
+<figure>
+<figcaption><span class="t">Los cinco pueblos, en 1936 y en 2023</span><span class="s">Porcentaje de voto de cada candidatura en las generales de febrero de 1936 y de cada partido en las de julio de 2023</span></figcaption>
+<div class="chart" id="pue"></div>
+<div class="legend"><span><i class="sw" style="background:var(--fp)"></i>Frente Popular</span><span><i class="sw" style="background:var(--der)"></i>Derechas</span><span><i class="sw" style="background:var(--other)"></i>Centro</span><span><i class="sw" style="background:var(--pnv)"></i>PNV</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span><span><i class="sw" style="background:var(--bildu)"></i>EH Bildu</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: Atlas Electoral de la Segunda República (UPF); Ministerio del Interior. En 1936, porcentaje sobre los votos a candidatos; Gernika incluye los pueblos que entonces formaban su municipio (Ajangiz, Arratzu, Kortezubi, Forua, Murueta y Nabarniz). En 2023, sobre los votos a candidaturas; el resto, otros partidos. Cálculo propio.</div>
+</figure>
+<h2>Lo que estos datos no dicen</h2>
+<p data-tipo="contexto">Nada de lo que pasó en estos cinco lugares se explica por cómo votaron sus vecinos. A Gernika la bombardearon aviones de la Legión Cóndor alemana y de la Aviación Legionaria italiana, al servicio de los sublevados. A los presos de Paracuellos los trajeron de Madrid. Badajoz votó al Frente Popular y Paracuellos a las derechas, y en los dos hubo matanzas, cometidas por bandos distintos. Los datos dicen cómo votaban estos pueblos seis meses antes de la guerra. Nada más.</p>
+<p data-tipo="contexto">En 1936 se votaba con listas abiertas y varios votos por elector; aquí, el peso de cada candidatura es su parte de los votos a candidatos. El censo era de mayores de 23 años y el de 2023, de 18. Quienes votaron aquel febrero tendrían hoy al menos 113 años.</p>
+<p data-tipo="contexto">En el pueblo viejo de Belchite no vota nadie desde 1964. Las calles siguen ahí, sin tejados. Los vecinos votan en el pueblo nuevo. En 1936 eran 2.122 electores. Ahora son 1.221.</p>
+<p><a href="https://mapaelectoral.es/">Mira 1933 y 1936 en tu municipio, en el mapa</a> · Más: <a href="https://mapaelectoral.es/actualidad/lorca-fuente-vaqueros-viznar-1936/">Los pueblos de Lorca</a> · <a href="https://mapaelectoral.es/actualidad/republica-mapa-1936-hoy/">El mapa de 1936 apenas se parece al de hoy</a></p>
+<div class="foot">Datos: Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, DOI 10.34810/data3274, licencia CC BY-NC-SA 4.0; Ministerio del Interior, generales de 2023 (Infoelectoral, vía pollspaindata), sin voto exterior. Cálculo propio.</div>
+</main>
+<script>
+const D={"pue":[["Gernika",{"FP":9.5,"PNV":49.0,"CENTRO":0.0,"DER":41.5},{"PSOE":14.0,"SUMAR":6.9,"BILDU":36.5,"PNV":36.6,"PP":4.0,"VOX":1.1},"5.515","12.513"],["Badajoz",{"FP":55.7,"PNV":0.0,"CENTRO":0.0,"DER":44.2},{"PSOE":30.0,"SUMAR":7.0,"BILDU":0.0,"PNV":0.0,"PP":43.4,"VOX":16.6},"20.900","118.739"],["Paracuellos",{"FP":44.8,"PNV":0.0,"CENTRO":0.0,"DER":55.0},{"PSOE":20.0,"SUMAR":12.4,"BILDU":0.0,"PNV":0.0,"PP":48.1,"VOX":17.3},"417","16.776"],["Brunete",{"FP":36.1,"PNV":0.0,"CENTRO":0.0,"DER":63.9},{"PSOE":20.1,"SUMAR":13.1,"BILDU":0.0,"PNV":0.0,"PP":45.1,"VOX":19.9},"886","7.154"],["Belchite",{"FP":40.4,"PNV":0.0,"CENTRO":23.4,"DER":36.2},{"PSOE":28.5,"SUMAR":8.8,"BILDU":0.0,"PNV":0.0,"PP":40.6,"VOX":18.0},"2.122","1.221"]]};
+const NS='http://www.w3.org/2000/svg';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+const c1=v=>v.toFixed(1).replace('.',',');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+const C36={FP:'var(--fp)',PNV:'var(--pnv)',CENTRO:'var(--other)',DER:'var(--der)'},L36={FP:'Frente Popular',PNV:'PNV',CENTRO:'Centro',DER:'Derechas'};
+const C23={PSOE:'var(--psoe)',SUMAR:'var(--sumar)',BILDU:'var(--bildu)',PNV:'var(--pnv)',PP:'var(--pp)',VOX:'var(--vox)'},L23={PSOE:'PSOE',SUMAR:'Sumar',BILDU:'EH Bildu',PNV:'PNV',PP:'PP',VOX:'Vox'};
+(function(){const box=document.getElementById('pue');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),narrow=W<480,bh=18,gap=6,blk=2*bh+gap+30,m={l:narrow?44:52,r:8,t:6,b:4},H=m.t+m.b+D.pue.length*blk;
+ const x=v=>m.l+v/100*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto por candidatura en 1936 y por partido en 2023 en Gernika, Badajoz, Paracuellos, Brunete y Belchite'},box);
+ D.pue.forEach((p,i)=>{const y0=m.t+i*blk;
+  el('text',{x:m.l,y:y0+13,'font-size':14,'font-weight':700,class:'lab'},svg).textContent=p[0];
+  [[p[1],C36,L36,'1936',p[3]],[p[2],C23,L23,'2023',p[4]]].forEach(([v,C,L,yr,ce],j)=>{const y=y0+22+j*(bh+gap);let x0=m.l;
+   el('text',{x:m.l-6,y:y+bh/2+4,'text-anchor':'end','font-size':11},svg).textContent=yr;
+   el('rect',{x:m.l,y,width:W-m.l-m.r,height:bh,fill:'var(--grid)'},svg);
+   Object.keys(C).forEach(k=>{const w=v[k]/100*(W-m.l-m.r);if(w<=0)return;el('rect',{x:x0,y,width:Math.max(0,w-1),height:bh,fill:C[k]},svg);
+    if(w>34)el('text',{x:x0+4,y:y+bh/2+4,'font-size':11,style:'fill:#fff','font-weight':600},svg).textContent=Math.round(v[k]);x0+=w});
+   hov(box,tip,el('rect',{x:0,y,width:W,height:bh,fill:'transparent'},svg),`<b>${p[0]}, ${yr}</b> · ${ce} electores<br>`+Object.keys(C).filter(k=>v[k]>0).map(k=>`${L[k]}: ${c1(v[k])}%`).join('<br>'))})});
+})();
+</script>
