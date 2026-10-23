@@ -1722,11 +1722,12 @@ INTERIOR_CA = (INTERIOR[0], "Ministeri de l'Interior, resultats electorals per m
 INE_CA = (INE[0], "INE, Atles de Distribució de Renda de les Llars (renda i edat per secció), via ineAtlas.data")
 PIEZAS += [
     dict(
-        slug='girona-barri-a-barri-29n', fecha='2026-10-15', idioma='ca',
+        slug='girona-barri-a-barri-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 22:54',
+        correcciones="23-10-2026: s'hi afegeixen el vot de Vox a la Font de la Pólvora i a Vila-roja comptat sobre el cens i en vots, la relació entre renda i vot a Vox a les 62 seccions, la cita d'un estudi acadèmic sobre el perfil del votant de Vox i un apartat final sobre com pesen la ciutat, els barris i el vot de la CUP en el repartiment dels sis escons de la demarcació el 29N.",
         titulo='Girona, barri a barri: el 2019 Junts guanyava en 36 seccions i el PSC en 13; el 2023, el PSC en 43 i Junts en 19', serie='girona',
         descripcion='A la Font de la Pólvora va votar el 33,4% dels electors; a Montjuïc, el 74,9%. Les 62 seccions de Girona, de les generals de 2019 a les de 2023, abans del 29N.',
         compara='Les 62 seccions censals de la ciutat de Girona a les generals de novembre de 2019 i juliol de 2023, agrupades per districte censal de l\'INE i per trams de renda per unitat de consum de 2023.',
-        limites='Són dades de seccions, no de persones, i no expliquen per què cada barri vota com vota. Sense vot exterior, de manera que la participació surt més alta que l\'oficial. La comparació amb novembre de 2019 només inclou les 61 seccions que conserven el codi. Els districtes censals de l\'INE no coincideixen amb els barris municipals; els noms que els donem surten dels carrers de cada secció i són descriptius. Els límits de secció estan simplificats.',
+        limites='Són dades de seccions, no de persones, i no expliquen per què cada barri vota com vota. Sense vot exterior, de manera que la participació surt més alta que l\'oficial. La comparació amb novembre de 2019 només inclou les 61 seccions que conserven el codi. Els districtes censals de l\'INE no coincideixen amb els barris municipals; els noms que els donem surten dels carrers de cada secció i són descriptius. Els límits de secció estan simplificats. El càlcul de quants votants més hi hauria hagut amb una altra participació és aritmètic, no una previsió, i no diu a qui haurien votat.',
         fuentes=[INTERIOR_CA, INE_CA,
                  ('https://www.girona.cat/opendata/dataset/sectors', 'Ajuntament de Girona, dades obertes: barris i sectors'),
                  ('https://intranet.colpis.cat/files/revista/101_articulo.pdf', 'Macià Serra, COLPIS, sobre el vot a Girona'),
@@ -1737,7 +1738,9 @@ PIEZAS += [
                  ('https://naciodigital.cat/girona/politica-girona/lluc-salellas-alcalde-girona-junts-psc-mes-pendents-barcelona-madrid.html', 'Nació Digital, entrevista a Lluc Salellas (2-8-2026)'),
                  ('https://3cat.cat/3catinfo/junts-anunciara-aquest-mati-que-trenca-el-pacte-a-lajuntament-de-girona-amb-guanyem-i-erc/noticia/3420236/', '3Cat, Junts trenca el pacte de govern (14-7-2026)'),
                  ('https://naciodigital.cat/politica/junts-repetira-equip-a-madrid-sota-el-lideratge-de-miriam-nogueras.html', 'Nació Digital, les llistes de Junts (8-10-2026)'),
-                 ('https://cdn.girona.cat/sgdap/carrers/19870322-06.pdf', 'Punt Diari, els carrers de Can Gibert (22-3-1987)')],
+                 ('https://cdn.girona.cat/sgdap/carrers/19870322-06.pdf', 'Punt Diari, els carrers de Can Gibert (22-3-1987)'),
+                 ('https://doi.org/10.3389/fpos.2025.1717586', 'Roig, Espinosa i Pavía, «Who votes for Vox?», Frontiers in Political Science (2025)'),
+                 ('https://github.com/dadosdelaplace/pollspaindata', "pollspaindata (dades d'Interior per mesa): vots per candidatura a la ciutat i a la província el 2023")],
         enlaces=[],
         lugar='Girona',
         foto=dict(src='img/actualidad/fotos/girona-barri-a-barri-29n.jpg', ancho=1280, alto=720, ia=True,
