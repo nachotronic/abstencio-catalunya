@@ -1549,6 +1549,28 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/ivan-redondo-12-millones-derecha-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Iván Redondo, junto a una lupa sobre tablas de resultados.'),
     ),
+    dict(
+        slug='feijoo-aborto-eutanasia-sanidad-publica-29n', fecha='2026-10-23',
+        titulo='Feijóo y el aborto «en la pública»: 77% en Galicia, 0,5% en Madrid', serie='29n', figura=0,
+        descripcion='Tres de cada cuatro abortos ya se hacen en hospitales públicos en la Galicia del PP; en Madrid, menos de uno de cada doscientos, y en Extremadura, ninguno. Con la eutanasia pasa lo mismo: en Baleares se pide casi siete veces más que en Murcia.',
+        compara='El porcentaje de abortos hechos en centros públicos en cada comunidad de 2015 a 2024 y las solicitudes de eutanasia resueltas en 2024 por cada 100.000 habitantes (Ministerio de Sanidad), junto al gobierno autonómico de 2024 y el voto de las generales de 2023.',
+        limites='Los porcentajes de aborto son los del informe de Sanidad de octubre de 2025, que pueden diferir unas décimas de las tablas por comunidad de residencia del informe IVE 2024. Las tasas de eutanasia cuentan solicitudes resueltas en 2024, no personas que murieron por eutanasia. Las correlaciones son entre 17 comunidades, sin Ceuta ni Melilla, y no permiten conclusiones causales ni dicen nada de cada votante. Las frases de Feijóo proceden de la Cadena SER y de Público.',
+        fuentes=[('https://www.sanidad.gob.es/areas/promocionPrevencion/embarazo/docs/Informe_IVEs_Publico_Privado_2015_2024.pdf', 'Ministerio de Sanidad, Situación del aborto en la sanidad pública (octubre de 2025)'),
+                 ('https://www.sanidad.gob.es/areas/promocionPrevencion/embarazo/docs/IVE_2024.pdf', 'Ministerio de Sanidad, Interrupción voluntaria del embarazo, datos 2024'),
+                 ('https://www.sanidad.gob.es/areas/calidadAsistencial/eutanasia/docs/Informe_Anual_2024_Prestacion_de_Ayuda_para_Morir.pdf', 'Ministerio de Sanidad, Informe anual 2024 de la prestación de ayuda para morir'),
+                 ('https://doi.org/10.1344/rbd2025.64.49218', 'Toro Flores, Análisis de la aplicación de la Ley de Eutanasia en España: primeros tres años (2021-2023), Revista de Bioética y Derecho 64 (2025)'),
+                 ('https://www.sercomunicacion.com/aimar-bretos-entrevista-a-alberto-nunez-feijoo-en-hoy-por-hoy/', 'Cadena SER, Aimar Bretos entrevista a Alberto Núñez Feijóo en Hoy por Hoy (23-10-2026)'),
+                 ('https://www.publico.es/tremending/despues-pensiones-ahora-feijoo-retrata-aborto-muerte-digna-ninguna-mujer-quede-escuchar-esto.html', 'Público, Feijóo se retrata con el aborto o la muerte digna (23-10-2026)'),
+                 ('https://www.publico.es/politica/feijoo-deja-sola-ayuso-desafio-ley-aborto.html', 'Público, Feijóo deja sola a Ayuso en su desafío a la ley del aborto (9-10-2025)'),
+                 ('https://www.eldiario.es/politica/constitucional-censura-sanidad-publica-envie-mujer-abortar-privada-comunidad-autonoma_1_10346676.html', 'elDiario.es, El Constitucional censura que la sanidad pública envíe a una mujer a abortar a la privada en otra comunidad (2023)'),
+                 ('https://valenciaplaza.com/valenciaplaza/el-tribunal-constitucional-rechaza-el-recurso-del-pp-contra-la-ley-de-la-eutanasia', 'Valencia Plaza, El Tribunal Constitucional rechaza el recurso del PP contra la ley de la eutanasia (2023)'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/feijoo-aborto-eutanasia-sanidad-publica-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Porcentaje de abortos hechos en centros públicos en cada comunidad en 2024.',
+                  fuente='Ministerio de Sanidad. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2380,6 +2402,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'feijoo-aborto-eutanasia-sanidad-publica-29n': 'Aborto y eutanasia',
     'ivan-redondo-12-millones-derecha-29n': 'La aritmética del bloque',
     'salario-minimo-provincias-feijoo-29n': 'El sueldo del debate',
     'teruel-cha-izquierda-escano-29n': 'El voto útil en Teruel',
