@@ -129,8 +129,6 @@
     return { longitude, latitude, zoom: Math.round(z * 100) / 100, pitch: 0, bearing: 0 };
   };
   let view = HOME();
-  const LABELS = ['28079', '08019', '46250', '41091', '50297', '29067', '48020', '07040', '35016', '15030'];
-  const lab = LABELS.map(c => { const i = MUN.cod.indexOf(c); return i < 0 ? null : { t: MUN.nombre[i], p: MUN.c[i] }; }).filter(Boolean);
   const [[x0, y0], [x1, y1]] = [canT([-18.4 + CDX, 27.4 + CDY]), canT([-13.2 + CDX, 29.6 + CDY])];
   const CANFRAME = [{ path: [[x0, y0], [x0, y1], [x1, y1], [x1, y0], [x0, y0]] }];
   let hover = null;
@@ -239,12 +237,13 @@
       characterSet: 'auto', fontSettings: { sdf: true }, outlineWidth: 3, outlineColor: [...fondo, 230], parameters: { depthCompare: 'always' } });
   }
 
-  // Nombres de municipio al acercarse: de más a menos habitantes, con un mínimo que baja con el zoom, sin que se pisen
+  // Nombres de municipio (desde la vista de España): de más a menos habitantes, con un mínimo que baja con el zoom, sin que se pisen
   const ORDM = MUN.nombre.map((n, i) => i).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
-  const MINPOB = z => z < 9 ? 40000 : z < 10 ? 8000 : z < 11 ? 1500 : 0;
+  const MINPOB = z => z < 6 ? 150000 : z < 7 ? 50000 : z < 8 ? 15000 : z < 9 ? 5000 : z < 10 ? 1500 : z < 11 ? 300 : 0;
   function capaMunicipios() {
     let vp = null; const out = [];
     try { vp = dk.getViewports()[0]; } catch (e) { pideRedraw(); }   // la primera vez, antes de que deck.gl tenga el mapa montado
+    if (vp && Math.abs(vp.width - $('#map').clientWidth) > 2) pideRedraw();   // deck.gl aún no se ha ajustado al tamaño del mapa
     if (vp) {
       const W = vp.width, H = vp.height, min = MINPOB(view.zoom), cajas = [];
       for (const i of ORDM) {
@@ -252,11 +251,11 @@
         const q = MUN.c[i]; if (!q) continue;
         const [sx, sy] = vp.project(q);
         if (sx < 0 || sy < 0 || sx > W || sy > H) continue;
-        const grande = (MUN.poblacion[i] || 0) >= 100000, s = grande ? 13 : 11.5;
-        const w = MUN.nombre[i].length * s * .56 + 10, h = s + 8, c = [sx - w / 2, sy - h / 2, sx + w / 2, sy + h / 2];
+        const pob = MUN.poblacion[i] || 0, grande = pob >= 100000, s = grande ? 13 : pob >= 20000 ? 11.5 : 10.5;
+        const w = MUN.nombre[i].length * s * .56 + 6, h = s + 4, c = [sx - w / 2, sy - h / 2, sx + w / 2, sy + h / 2];
         if (cajas.some(o => c[0] < o[2] && c[2] > o[0] && c[1] < o[3] && c[3] > o[1])) continue;
         cajas.push(c); out.push({ t: MUN.nombre[i], p: q, s, g: grande });
-        if (out.length > 160) break;
+        if (out.length > 300) break;
       }
     }
     const tinta = hex(css('--ink') || '#111'), fondo = hex(css('--surface') || '#fff');
@@ -302,14 +301,7 @@
         getFillColor: hex(css('--ink') || '#111'), getLineColor: hex(css('--surface') || '#fff'), lineWidthUnits: 'pixels', getLineWidth: 2 }));
     }
     if (conRot) L.push(capaRotulos());
-    if (view.zoom >= 8 && !(conRot && view.zoom >= 12)) L.push(capaMunicipios());
-    if (view.zoom < 8) {
-      L.push(new deck.TextLayer({
-        id: 'lab', data: lab, getPosition: o => o.p, getText: o => o.t, getSize: 12, fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600,
-        getColor: hex(css('--ink') || '#111'), outlineWidth: 3, outlineColor: [...hex(css('--surface') || '#fff'), 230], fontSettings: { sdf: true },
-        characterSet: 'auto', parameters: { depthCompare: 'always' },
-      }));
-    }
+    if (!(conRot && view.zoom >= 12)) L.push(capaMunicipios());   // con el callejero, los nombres los pone OpenFreeMap
     return L;
   }
 
