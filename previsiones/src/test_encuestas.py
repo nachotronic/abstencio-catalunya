@@ -31,9 +31,7 @@ class Encuestas(unittest.TestCase):
         for k, t in objetivo.items():
             self.assertAlmostEqual(nac[motor.LISTAS_V1.index(k)], t, places=4)
         self.assertTrue((c.sum(1) <= 0.985 + 1e-9).all())
-        cat = [provs.index(p) for p in ('08', '17', '25', '43')]
-        self.assertEqual(np.count_nonzero(c[:, motor.LISTAS_V1.index('Aliança')]), 4)
-        self.assertTrue((c[cat, motor.LISTAS_V1.index('Aliança')] > 0).all())
+        self.assertNotIn('Aliança', motor.LISTAS_V1)   # no se presenta al 29N
 
     @unittest.skipUnless(motor.EUROPEAS2024.exists(), 'falta europeas2024_secciones.csv')
     def test_vox_en_tenerife(self):

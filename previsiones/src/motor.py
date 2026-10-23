@@ -204,11 +204,12 @@ def observado_2023():
 # ---------------------------------------------------------------------------------------------------------
 # v1: estimación desde la media de encuestas (INTERNA: no se publica sin el visto bueno de Nacho)
 # ---------------------------------------------------------------------------------------------------------
+# Aliança Catalana no se presenta a las generales del 29N (Nacho, 23-10-2026): fuera de las listas; las encuestas
+# que aún la miden no se usan para ella y su voto no se reparte a nadie.
 LISTAS_V1 = ['PP', 'PSOE', 'Vox', 'Sumar', 'Podemos', 'SALF', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC', 'UPN',
-             'CUP', 'Aliança', 'Nueva Canarias', 'PACMA']
+             'CUP', 'Nueva Canarias', 'PACMA']
 DE_ENCUESTA = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'SALF': 'SALF',
-               'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN',
-               'ALIANCA': 'Aliança'}
+               'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN'}
 BLOQUES_V1 = [
     ('PP + Vox', ['PP', 'Vox']),
     ('PP + Vox + SALF + UPN + CC', ['PP', 'Vox', 'SALF', 'UPN', 'CC']),
@@ -216,8 +217,6 @@ BLOQUES_V1 = [
     ('PSOE + Sumar + Podemos + ERC + Junts + EH Bildu + PNV + BNG + CC',
      ['PSOE', 'Sumar', 'Podemos', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC']),
 ]
-# Aliança Catalana, Parlament 2024 (voto sobre válidos por provincia; Cataluña 3,77 %). Fuente: resultados oficiales.
-ALIANCA_2024 = {'08': 2.87, '17': 9.03, '25': 7.78, '43': 3.51}
 SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
 # Error de la media según la distancia a la elección (error_encuestas.py): a 38 días, c = 0,85 en España (generales y
 # autonómicas) y 0,79 en 44 países (Jennings y Wlezien), frente a 0,5 a una semana; la ampliación fija del 25 % que
@@ -256,7 +255,7 @@ def senal_europeas(provs, alfa=ALFA_EUROPEAS):
 
 def base_v1():
     """Cuotas de partida por provincia para LISTAS_V1: 2023 con Sumar repartido entre Sumar (FA) y Podemos según
-    las europeas de 2024 (base2026.py), e índices provinciales de dónde vota SALF (europeas 2024) y Aliança (2024)."""
+    las europeas de 2024 (base2026.py), e índice provincial de dónde vota SALF (europeas 2024)."""
     import pandas as pd
     g = pd.read_csv(BASE2026, dtype={'prov': str}).set_index('prov')
     cuota_pod = g.PODEMOS_2023 / (g.PODEMOS_2023 + g.SUMAR_FA_2023)
@@ -279,19 +278,16 @@ def base_v1():
         # nacional de 2023 por su fuerza relativa en las europeas
         nac = (cuotas[:, j] * validos).sum() / validos.sum()
         cuotas[:, j] = np.where(cuotas[:, j] > 0, cuotas[:, j], nac * fuerza[k])
-    indices = {'SALF': np.array([ind_salf[p] for p in provs]),
-               'Aliança': np.array([ALIANCA_2024.get(p, 0) / 3.77 for p in provs])}
+    indices = {'SALF': np.array([ind_salf[p] for p in provs])}
     return provs, cuotas, validos, indices
 
 
 def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
     """Subida o bajada proporcional de cada lista en todas las provincias hasta clavar su voto nacional de la media.
-    SALF y Aliança no tienen voto en 2023: parten de su índice provincial. Las listas sin encuesta (CUP, Nueva
-    Canarias, PACMA) mantienen su voto de 2023; Aliança, sin cifra en la media, su voto del Parlament 2024."""
+    SALF no tiene voto en 2023: parte de su índice provincial. Las listas sin encuesta (CUP, Nueva Canarias, PACMA)
+    mantienen su voto de 2023."""
     c = cuotas.copy()
     peso = validos / validos.sum()
-    if 'Aliança' not in objetivo:   # sin cifra en la media: su 3,77 % del voto catalán, expresado sobre España
-        objetivo = {**objetivo, 'Aliança': 0.0377 * peso[indices['Aliança'] > 0].sum()}
     for k, ind in indices.items():
         c[:, LISTAS_V1.index(k)] = ind * objetivo.get(k, 0)
     # las listas sin encuesta conservan su voto nacional; sin meta, el tope las encogía vuelta a vuelta (backtest.py)
@@ -312,8 +308,7 @@ def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
 # de 2019 y 2023 solo ayudan para los partidos de una comunidad: su cifra en la encuesta nacional sale de una
 # submuestra pequeña. Para PP, PSOE, Vox o Sumar empeoraban el reparto entre provincias, así que no se usan.
 BETA_REGIONAL = 0.5
-REGIONALES = {'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN',
-              'ALIANCA': 'Aliança'}
+REGIONALES = {'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN'}
 
 
 def senal_regional(central, provs, validos, fecha):
