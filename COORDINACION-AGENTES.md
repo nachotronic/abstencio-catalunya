@@ -21,8 +21,8 @@
 
 - Sin Issue ni fila en `ENCARGOS.md`. La cola es `ILUSTRACIONES.md`: piezas con un gráfico (o nada) como cabecera, de la más reciente a la más antigua, con la guía de estilo. Se rehace con cada `construir.py` de Actualidad y la pieza sale de la lista en cuanto tiene ilustración.
 - Claude publica las piezas con un gráfico de datos como cabecera y no las bloquea esperando ilustración.
-- ChatGPT hace la ilustración que pida Nacho y se la da como `<slug>.jpg`. Nacho la manda al hilo de Claude; el nombre del fichero basta para saber a qué pieza va. Si ChatGPT puede subir binarios, también vale un PR con solo `img/actualidad/fotos/<slug>.jpg`.
-- Claude la pasa a JPG 1280×720 sin recortar, pone `ia=True` en la fuente y comprueba que el fichero existe en la rama. Nunca reemplazar gráficos/mapas de datos dentro de la pieza por ilustraciones.
+- ChatGPT hace la ilustración que pida Nacho y la sube él mismo: rama `chatgpt/ilustracion-<slug>`, solo `img/actualidad/buzon/<slug>.jpg`, PR «Ilustración: <slug>». Nacho no la descarga ni la reenvía.
+- Claude recoge esos PR (en el repaso diario o cuando Nacho le avise), la pasa a `img/actualidad/fotos/<slug>.jpg` a 1280×720 sin recortar, pone `ia=True`, enseña el resultado a Nacho y publica con su OK. Nunca reemplazar gráficos/mapas de datos dentro de la pieza por ilustraciones.
 
 ## Protocolo especial: datos y modelos
 

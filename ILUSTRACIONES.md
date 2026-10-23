@@ -6,11 +6,11 @@ Son las piezas de Actualidad que aún llevan un gráfico de datos como imagen de
 
 ## Cómo se hace una ilustración
 
-1. **ChatGPT** lee esta lista y hace la ilustración de la pieza que pida Nacho, siguiendo la guía de estilo de abajo. No hace falta Issue ni PR.
-2. **Nacho** la descarga y la manda al hilo de Claude (el de Actualidad o cualquier otro). Si el fichero se llama `<slug>.jpg`, no hace falta escribir nada más: el nombre dice a qué pieza va.
-3. **Claude** la convierte a JPG de 1280 × 720 sin recortar, la pone en `img/actualidad/fotos/<slug>.jpg` con `ia=True` y abre el PR.
+1. **Nacho** le dice a ChatGPT qué pieza ilustrar (por ejemplo: «haz la ilustración de `escanos-en-el-filo-29n`»).
+2. **ChatGPT** la hace siguiendo la guía de estilo de abajo y **la sube él mismo** al repositorio: rama `chatgpt/ilustracion-<slug>`, un único fichero `img/actualidad/buzon/<slug>.jpg` (JPG, 16:9) y un PR contra `main` titulado «Ilustración: <slug>». Nada más: no toca `construir.py` ni ningún HTML. Si no consigue subir el binario, lo dice en el chat y no da la ilustración por entregada.
+3. **Claude** recoge los PR de `chatgpt/ilustracion-*`, mueve la imagen a `img/actualidad/fotos/`, la pone de cabecera con `ia=True`, enseña a Nacho cómo queda y publica cuando Nacho da el OK. Si Nacho la rechaza, se pide otra.
 
-Si ChatGPT puede subir el JPG él mismo, también vale: rama `chatgpt/ilustracion-<slug>`, solo el fichero `img/actualidad/fotos/<slug>.jpg` y un PR contra `main`. Claude cambia la cabecera en `construir.py`.
+El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algunas piezas ya tienen en `img/actualidad/fotos/<slug>.jpg` su gráfico de cabecera.
 
 ## Guía de estilo
 
