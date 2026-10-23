@@ -1,7 +1,7 @@
 """Cifras y mapas de las fichas de barrio (/municipio/<provincia>/<municipio>/<barrio>/), que escribe src/territorios.py.
 
 Qué secciones censales forman cada barrio sale de data/barrios/secciones_barrio.csv (src/barrios_osm.py, límites de
-OpenStreetMap); los votos, de las descargas del mapa (resultados por sección desde 2004, con las secciones de hoy),
+OpenStreetMap o, en algunas ciudades, del ayuntamiento: fuentes.json); los votos, de las descargas del mapa (resultados por sección desde 2004, con las secciones de hoy),
 y la renta y la población, del Atlas de Distribución de Renta de los Hogares del INE y del censo de 2021.
 """
 import json, pathlib
@@ -32,6 +32,8 @@ def _carga():
 
 
 SB, DEMOS, LARGO = _carga()
+# ciudades cuyos límites no salen de OSM sino del ayuntamiento (o de otra recopilación): {mun_code: {'fuente', 'web'}}
+FUENTES = json.loads((D / 'fuentes.json').read_text()) if (D / 'fuentes.json').exists() else {}
 
 
 def resultado(lar):

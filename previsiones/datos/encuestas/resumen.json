@@ -1,13 +1,13 @@
 {
- "descargado": "2026-10-22T14:55Z",
+ "descargado": "2026-10-23T07:05Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1047,
+ "encuestas_espana": 1048,
  "encuestas_infraestatales": 137,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-10-19",
-  "encuestadora": "Sigma Dos",
-  "cliente": "El Mundo"
+  "publicado": "2026-10-23",
+  "encuestadora": "IMOP Insights",
+  "cliente": "El Confidencial"
  },
  "siglas_sin_equivalencia": {
   "Autonómicas - CUP": 2,
@@ -18,7 +18,7 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 573,
+  "encuestas": 574,
   "ultima_fin_campo": "2026-10-17",
   "faltan_en_electografica_120_dias": 18
  }
