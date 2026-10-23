@@ -142,7 +142,9 @@ def corre(cuotas, validos, provs, sigma, rng, circ_sen):
     for nom, ks in BLOQUES:
         js = [LISTAS.index(k) for k in ks]
         suma = tot_cong[:, js].sum(1)
+        lo = int(suma.min())
         out['bloques'].append({'bloque': nom, 'listas': ks, 'escanos': percentiles(suma),
+                               'escanos_dist': {'desde': lo, 'p': [round(float(v) / n, 4) for v in np.bincount(suma - lo)]},
                                'p_mayoria': round(float((suma >= MAYORIA).mean()), 3)})
     base_part = 66.6   # participación ficticia de partida (no es la de 2023 ni una estimación)
     out['participacion'] = percentiles(base_part * vv.sum(1) / validos.sum())

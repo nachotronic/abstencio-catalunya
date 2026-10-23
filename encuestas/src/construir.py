@@ -193,11 +193,17 @@ def estimacion():
                             ((pv, 'PP + Vox', 'PP'), (izq, 'Socios de 2023', 'PSOE')) if b]
     MODELO_JS['partidos'] = [[NOMBRE[DEL_MODELO[l['lista']]].replace(' / Frente Amplio', ''), *color(l['lista']), r0(l['escanos'])]
                              for l in sorted(d['listas'], key=lambda l: -l['escanos'][2]) if l['lista'] in DEL_MODELO and l['escanos'][3] >= 1]
+    MODELO_JS['dist_bloques'] = [[n, *color(cl), b['escanos_dist']['desde'], b['escanos_dist']['p'], r0(b['escanos'])] for b, n, cl in
+                                 ((pv, 'PP + Vox', 'PP'), (izq, 'Socios de 2023', 'PSOE')) if b and 'escanos_dist' in b]
     MODELO_JS['dist'] = [[NOMBRE[DEL_MODELO[l['lista']]].replace(' / Frente Amplio', ''), *color(l['lista']), l['escanos_dist']['desde'], l['escanos_dist']['p'], r0(l['escanos'])]
                          for l in sorted(d['listas'], key=lambda l: -l['escanos'][2])[:4] if l['lista'] in DEL_MODELO]
     html_b = f"""<h2>Estimación propia de Mapa Electoral</h2>
 <p class="propio"><b>Modelo propio, no es una encuesta.</b> Todo lo anterior son cifras publicadas por las encuestadoras. Esto es un cálculo de Mapa Electoral: junta esas encuestas, las reparte por provincia y simula el resultado miles de veces.</p>
+<div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
+                          for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023', '#e30613')) if b)}</div>
 <p>{frase}</p>
+<figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. La línea marca la mayoría absoluta; en color intenso, la horquilla del 80 %.</span></figcaption>
+<div class="chart" id="dist-bloques"></div></figure>
 <figure><figcaption><span class="t">¿Llegan a la mayoría absoluta? Escaños de cada bloque</span><span class="s">La barra gruesa recoge el 80 % de las simulaciones; la fina, el 95 %; el punto es la mediana. A la derecha, en qué porcentaje de simulaciones llega a 176.</span></figcaption>
 <div class="chart" id="horq-bloques"></div></figure>
 <figure><figcaption><span class="t">Congreso según nuestro modelo: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
@@ -319,6 +325,10 @@ a{color:var(--acc)}
 .faq details p{margin:.3rem 0 .8rem}
 .descargas{font-family:var(--ui);font-size:.95rem}
 .insertar textarea{width:100%;font:12px/1.45 monospace;color:var(--fg);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:8px;margin-top:.4rem}
+.prob{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:1rem 0;font-family:var(--ui)}.prob div{border:1px solid var(--rule);border-radius:6px;padding:.7rem .9rem}
+.prob b{display:block;font-size:2.4rem;line-height:1.05;font-variant-numeric:tabular-nums}.prob span{display:block;color:var(--muted);font-size:.9rem;margin-top:.2rem}
+.caja{font-family:var(--ui);font-size:.95rem;border:1px solid var(--rule);border-radius:6px;padding:.5rem .9rem;margin:1rem 0}.caja summary{color:var(--fg);font-weight:600}.caja ul{margin:.5rem 0;padding-left:1.1rem}.caja li{margin:.3rem 0}
+@media (max-width:520px){.prob{grid-template-columns:1fr}}
 .propio{font-family:var(--ui);font-size:.95rem;background:var(--grid);border-left:3px solid var(--acc);padding:.6rem .8rem;border-radius:4px}
 @media (max-width:520px){body{font-size:17px}table{font-size:.82rem}}
 </style>"""
@@ -396,7 +406,7 @@ function rangos(id,filas,minX,maxX,linea,der){const box=document.getElementById(
   hit.addEventListener('mousemove',ev=>muestra(box,ev,txt));hit.addEventListener('touchstart',ev=>muestra(box,ev,txt),{passive:true});
   hit.addEventListener('mouseleave',()=>{tipDe(box).hidden=true})})}
 // columnas: distribución de escaños de cada partido en las simulaciones, en paneles
-function columnas(id,series){const box=document.getElementById(id);if(!box||!series.length)return;box.innerHTML='';
+function columnas(id,series,linea){const box=document.getElementById(id);if(!box||!series.length)return;box.innerHTML='';
  const W=Math.max(300,box.clientWidth||640),por=W<500?1:2,pw=(W-(por-1)*20)/por,ph=130,filasP=Math.ceil(series.length/por),H=filasP*(ph+44);
  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Distribución de escaños de cada partido en las simulaciones'},box);
  series.forEach((s,i)=>{let [n,c0,o0,desde,p0,a]=s;const k=p0.length>60?3:1,p=[];desde=desde-desde%k;   // de 3 en 3 escaños si hay muchos
@@ -410,12 +420,14 @@ function columnas(id,series){const box=document.getElementById(id);if(!box||!ser
    const hit=el('rect',{x:ox+j*bw,y:oy,width:bw,height:ph,fill:'transparent'},svg);
    hit.addEventListener('mousemove',ev=>muestra(box,ev,txt));hit.addEventListener('touchstart',ev=>muestra(box,ev,txt),{passive:true});
    hit.addEventListener('mouseleave',()=>{tipDe(box).hidden=true})});
+  if(linea&&linea>=desde&&linea<desde+p.length*k){const lx=ox+(linea-desde)/k*bw;el('line',{x1:lx,x2:lx,y1:oy-2,y2:oy+ph+2,stroke:'var(--fg)','stroke-dasharray':'3 3'},svg);
+   el('text',{x:lx+4,y:oy+10,style:'fill:var(--fg);font-weight:600'},svg).textContent=linea}
   const paso=p.length*k>80?20:p.length*k>30?10:5;
   for(let e=Math.ceil(desde/paso)*paso;e<desde+p.length*k-paso/2;e+=paso)el('text',{x:ox+((e-desde)/k+.5)*bw,y:oy+ph+15,'text-anchor':'middle'},svg).textContent=e})}
 function todo(){const M=D.modelo||{};
  if(M.bloques)rangos('horq-bloques',M.bloques.map(b=>({n:b[0],c:b[1],o:b[2],a:b[3],p:b[4]})),100,250,176,f=>f.p+' %');
  if(M.partidos)rangos('horq-partidos',M.partidos.map(b=>({n:b[0],c:b[1],o:b[2],a:b[3]})),0,Math.ceil(Math.max(...M.partidos.map(b=>b[3][4]))/25)*25,0,null);
- if(M.dist)columnas('dist-modelo',M.dist);
+ if(M.dist)columnas('dist-modelo',M.dist);if(M.dist_bloques)columnas('dist-bloques',M.dist_bloques,176);
  if(D.pv&&D.pv.length)rangos('horq-encuestas',D.pv.map(e=>({n:e[0],c:'#1d84ce',o:'#4fa8ea',a:[e[1],e[2]],
   tip:'<b>'+e[0]+'</b><br>PP + Vox: '+(e[1]===e[2]?e[1]:e[1]+'-'+e[2])+' escaños'})),170,230,176,null)}
 todo();let w=document.body.clientWidth;addEventListener('resize',()=>{if(document.body.clientWidth!==w){w=document.body.clientWidth;todo()}});
@@ -834,6 +846,11 @@ def main():
 <div class="legend">{''.join(f'<span><i class="sw" style="background:{c}"></i>{n}</span>' for _, n, c, _ in PRINCIPALES)}</div>
 <p class="src">Encuestas publicadas, vía Electográfica y Wikipedia. La mediana resume las encuestas: no es una previsión de Mapa Electoral.</p>
 </figure>
+<details class="caja"><summary>Cómo se hace la media: qué pesa más y qué hemos descartado</summary><ul>
+<li><b>En el gráfico y las cifras de arriba</b>, la línea es la mediana de la última encuesta de cada encuestadora en las tres últimas semanas. Es un resumen descriptivo: cada encuestadora cuenta igual.</li>
+<li><b>En nuestro modelo</b>, la media es ponderada. Entra la última encuesta de cada encuestadora de los últimos 28 días, y pesa más cuanto más reciente es y cuanto mayor es su muestra: una encuesta de hace diez días pesa algo más de un tercio que una de hoy, y una de 3.000 entrevistas, 1,7 veces una de 1.000.</li>
+<li><b>Lo que hemos probado y descartado</b>: corregir el sesgo de cada encuestadora y el sesgo histórico del conjunto. Con las generales de 2019 y 2023 y las autonómicas desde 2015, ninguna de las dos correcciones reducía el error de la media. Tampoco ponderamos por técnica (teléfono o internet): no hay datos que muestren que una acierte más que otra.</li>
+</ul><p><a href="metodo-modelo.html">Método completo del modelo</a></p></details>
 <h2>Promedio de escaños: lo que da cada encuestadora</h2>
 {bloque_hemi}
 {'<figure><figcaption><span class="t">PP + Vox en cada encuesta</span><span class="s">Escaños que dan juntos en la última encuesta de cada encuestadora del último mes; la barra es la horquilla de la propia encuestadora. La línea marca la mayoría absoluta (176).</span></figcaption><div class="chart" id="horq-encuestas"></div></figure>' if pv_casas else ''}
