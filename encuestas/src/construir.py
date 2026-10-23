@@ -40,10 +40,11 @@ PRINCIPALES = [('PP', 'PP', '#1d84ce', '#4fa8ea'), ('PSOE', 'PSOE', '#e30613', '
 # el resto de partidos con escaño, para el hemiciclo
 OTROS_ESC = [('ERC', 'ERC', '#f5b324', '#f7c454'), ('JUNTS', 'Junts', '#20c0b2', '#2fd0c2'), ('BILDU', 'EH Bildu', '#a5c400', '#b9d630'),
              ('PNV', 'PNV', '#2b8a3e', '#4caf63'), ('BNG', 'BNG', '#4a9fdc', '#7ab8e6'), ('CC', 'CC', '#f7d417', '#f9e04a'),
-             ('UPN', 'UPN', '#0b3d91', '#5b7fd0'), ('ALIANCA', 'Aliança Catalana', '#064a81', '#4a86c0'), ('CS', 'Ciudadanos', '#eb6109', '#f28a45')]
+             ('UPN', 'UPN', '#0b3d91', '#5b7fd0'), ('ALIANCA', 'Aliança Catalana', '#064a81', '#4a86c0'), ('CS', 'Ciudadanos', '#eb6109', '#f28a45'),
+             ('NC', 'Nueva Canarias', '#e08a2e', '#f0a050'), ('CUP', 'CUP', '#d4b200', '#f0d000')]
 TODOS = PRINCIPALES + OTROS_ESC
 # orden aproximado de izquierda a derecha en el hemiciclo
-ORDEN_HEMI = ['BILDU', 'BNG', 'PODEMOS', 'SUMAR', 'ERC', 'PSOE', 'PNV', 'JUNTS', 'CC', 'CS', 'UPN', 'PP', 'ALIANCA', 'SALF', 'VOX']
+ORDEN_HEMI = ['BILDU', 'CUP', 'BNG', 'PODEMOS', 'SUMAR', 'ERC', 'NC', 'PSOE', 'PNV', 'JUNTS', 'CC', 'CS', 'UPN', 'PP', 'ALIANCA', 'SALF', 'VOX']
 NOMBRE = {k: n for k, n, _, _ in TODOS}
 NO_ENCUESTAS = {'keydata', 'sumar'}   # medias de otros medios y sondeos internos de partido
 DESDE_GRAFICO = 365   # días que enseña el gráfico
@@ -52,7 +53,8 @@ VISIBLES = 10
 # cuando Nacho valida sus cifras. Sin ella, la página no enseña nada del modelo.
 ESTIMACION = pathlib.Path(os.environ.get('ESTIMACION_DIR', RAIZ / 'previsiones/datos/publico'))
 DEL_MODELO = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'Podemos': 'PODEMOS', 'SALF': 'SALF', 'ERC': 'ERC',
-              'Junts': 'JUNTS', 'EH Bildu': 'BILDU', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN', 'Aliança': 'ALIANCA'}
+              'Junts': 'JUNTS', 'EH Bildu': 'BILDU', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN', 'Aliança': 'ALIANCA',
+              'Nueva Canarias': 'NC', 'CUP': 'CUP'}
 VENTANA_MEDIANA = 21
 
 
@@ -514,7 +516,7 @@ const ver=ev=>{const p=ev.target.closest('path');if(!p){t.hidden=true;return}con
  t.textContent=p.dataset.t;t.hidden=false;t.style.left=Math.min(Math.max(pt.clientX-r.left,120),r.width-120)+'px';t.style.top=(pt.clientY-r.top)+'px'};
 box.addEventListener('mousemove',ver);box.addEventListener('touchstart',ver,{passive:true});box.addEventListener('mouseleave',()=>{t.hidden=true})})();
 </script>"""
-COLOR_EXTRA = {'CUP': '#e5c100', 'Nueva Canarias': '#8a8486', 'PACMA': '#8a8486'}   # listas del modelo sin color en TODOS
+COLOR_EXTRA = {'PACMA': '#8a8486'}   # listas del modelo sin color en TODOS
 
 
 def color_lista(l):
