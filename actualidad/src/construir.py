@@ -1567,9 +1567,8 @@ PIEZAS = [
                  ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/feijoo-aborto-eutanasia-sanidad-publica-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Porcentaje de abortos hechos en centros públicos en cada comunidad en 2024.',
-                  fuente='Ministerio de Sanidad. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/feijoo-aborto-eutanasia-sanidad-publica-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Alberto Núñez Feijóo, ante el micrófono de un estudio de radio frente a su entrevistador: un collage.'),
     ),
 ]
 
