@@ -1534,6 +1534,7 @@ PIEZAS = [
                  ('https://www.eldebate.com/espana/20261014/ivan-redondo-suma-discurso-remontada-psoe-sanchez-tiene-posibilidades-feijoo_469316.html', 'El Debate, Iván Redondo se suma al discurso de la remontada (14-10-2026)'),
                  ('https://www.elespanol.com/alicante/20261022/ivan-redondo-desembarca-alicante-teoria-remontada-psoe/1003744430892_0.html', 'El Español, Iván Redondo desembarca en Alicante con su teoría de la remontada del PSOE el 29-N (22-10-2026)'),
                  ('https://x.com/thewarroomblog', 'Iván Redondo, cuenta de X @thewarroomblog'),
+                 ('https://doi.org/10.3389/fpos.2021.688130', 'Rama, Cordero y Zagórski, Three Is a Crowd? Podemos, Ciudadanos, and Vox: The End of Bipartisanship in Spain, Frontiers in Political Science 3 (2021)'),
                  ('https://recyt.fecyt.es/index.php/recp/article/download/37589/21106', 'Penadés y Santiuste, La desigualdad en el sistema electoral español y el premio a la localización del voto, Revista Española de Ciencia Política 32 (2013)')],
         enlaces=[],
         lugar='España',
