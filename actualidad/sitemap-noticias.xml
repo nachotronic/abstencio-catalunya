@@ -1,62 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/senado-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>El Senado de 2023: 120 senadores para el PP con un tercio de los votos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/ley-nietos-voto-exterior-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>El Supremo deja sin voto a 163.020 nacionalizados por la ley de nietos: en 2023, el voto exterior ya le dio al PP un escaño del PSOE en Madrid</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/senado-psoe-frente-amplio-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>PSOE y Frente Amplio, juntos al Senado: con los votos de 2023, su lista habría ganado al PP en 17 provincias donde este sacó tres senadores</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/albiol-badalona-pp-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Albiol, cabeza de lista del PP por Barcelona: en Badalona sacó el 55,7% en las municipales de 2023 y dos meses después el PP se quedó en el 16,6%</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/palencia-psoe-lista-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Dimite la lista del PSOE en Palencia tras imponer Ferraz a Martínez Seijo: en 2023 al partido le faltaron 7.097 votos para un segundo diputado</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-coaliciones-izquierda-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Separados el 29N, como en 2015: con los votos de aquel año, una sola papeleta de Podemos e IU habría sacado 86 diputados, no 71</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/frente-amplio-podemos-madrid-escanos-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Delgado contra Montero en Madrid: con los votos de 2023, Podemos necesitaría uno de cada cinco votos de Sumar para sacar escaño</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/vox-pp-senado-pacto-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -193,83 +137,11 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/psoe-cinco-barrios-ceuta/</loc>
+    <loc>https://mapaelectoral.es/actualidad/sanchez-revuelta-broncano-voto-joven-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 barrios de España donde el PSOE saca más del 86% de los votos: todos están en Ceuta (y dónde no llega al 2,5%)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pp-cinco-pueblos-galicia/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 pueblos de España donde el PP saca hasta el 81,5% de los votos: todos en Galicia (y los dos rincones vascos donde no tuvo ni un voto)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/vox-cinco-barrios-el-ejido-ceuta/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 barrios de España donde Vox saca más del 39% de los votos: El Ejido, Ceuta y el campo de Murcia (y los pueblos vascos donde no tuvo ni un voto)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/sumar-cinco-pueblos-marinaleda/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 pueblos de España donde Sumar saca más del 52% de los votos: Marinaleda, Trebujena y una pedanía de Córdoba (y dónde no llega al 0,5%)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/bildu-cinco-pueblos-lizartza/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 pueblos donde EH Bildu saca más del 68% de los votos: de Lizartza a Goizueta (y los barrios de Getxo donde no llega al 1%)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pnv-cinco-pueblos-bermeo/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 pueblos donde el PNV saca más del 52% de los votos: Bermeo y la costa de Bizkaia (y los barrios de Errenteria donde no llega al 8%)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/cc-cinco-barrios-la-orotava/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 barrios de Canarias donde Coalición Canaria saca más del 42%: El Paso y La Orotava (y el Gáldar de su nuevo socio, donde no llega al 2%)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/erc-cinco-pueblos-blancafort-flix/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 pueblos donde ERC saca más del 35% de los votos: Blancafort, Flix y Tortosa (y el barrio de Tarragona donde no tuvo ni un voto)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/junts-cinco-pueblos-amer/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Los 5 pueblos donde Junts saca más del 40% de los votos: encabeza Amer, el de Puigdemont (y los barrios del área de Barcelona donde no tuvo ni un voto)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/bng-cinco-pueblos-allariz/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>El BNG solo ganó en una sección de España: los 5 pueblos donde más le votan, de Vilar de Santos a Allariz (y los de Ourense donde no llega al 2%)</news:title>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Sánchez en La Revuelta: entre los hombres jóvenes, Vox casi dobla al PSOE</news:title>
     </news:news>
   </url>
   <url>
@@ -289,27 +161,11 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/municipios-izquierda-1977-derecha-2023/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Con el PSOE andaluz en mínimos: Sevilla, Jerez y otros 170 municipios que votaron a la izquierda en todas las generales de 1977 a 2008 dieron en 2023 más votos a PP y Vox</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/calle-que-parte-madrid/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-21</news:publication_date>
       <news:title>A cinco semanas del 29N: en la calle de los Hermanos García Noblejas, en Madrid, PP y PSOE se cambian de acera 12 veces, y el PP siempre gana en el lado con más renta</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/barrios-pobres-derecha-ricos-izquierda/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-20</news:publication_date>
-      <news:title>Vox busca el voto de los barrios obreros: en la Región de Murcia, nueve de cada diez secciones pobres ya votan más a PP y Vox que a PSOE y Sumar</news:title>
     </news:news>
   </url>
   <url>
