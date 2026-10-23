@@ -1761,7 +1761,7 @@ PIEZAS += [
                   pie="Una papereta amb el número 285 i el mapa de la província: un collage."),
     ),
     dict(
-        slug='junts-girona-puigdemont-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 22:50',
+        slug='junts-girona-puigdemont-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 22:47',
         correcciones="23-10-2026: s'hi afegeixen el recompte de vots per blocs sobre el cens (independentistes i no independentistes) i la participació secció a secció, la desmobilització independentista del 2023 i un apartat sobre el PSC. Es corregeixen xifres calculades abans amb una aproximació: Junts va treure el 19,2% a la ciutat el 2023, no el 19,1%; el 25,9% el 2019, no el 25,8%; el PSC, el 29,6% el 2023, no el 29,3%; a la província, Junts va treure el 19,8% el 2023 (no el 19,6%) i va guanyar en 181 seccions (no 180) i el PSC en 326 (no 327); al Parlament del 2024, el 35,3% i 426 de les 536 seccions sense comptar el vot exterior (abans 35,2% i 428 de 537). Els percentatges de les seccions del Mercadal, el Carme i Montjuïc del 2024 estaven calculats sobre vots vàlids i no sobre vots a candidatures, com la resta de la peça. Les conclusions no canvien.",
         titulo='A Girona, Junts gairebé duplica el vot del Congrés al Parlament: el 19,2% el 2023 i el 36,3% el 2024, amb Puigdemont de candidat', serie='girona',
         descripcion='Al Parlament, Junts va guanyar en 48 de les 62 seccions de la ciutat; a les generals, en 19. Però la distància ja hi era el 2021, sense Puigdemont a la papereta.',
