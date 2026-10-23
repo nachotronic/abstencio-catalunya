@@ -1,4 +1,416 @@
 tract_code,mun_code,barrio,distrito,nivel,osm_id,solape
+0105901001,01059,Casco Viejo,,10,of-10,0.908
+0105901003,01059,Casco Viejo,,10,of-10,0.977
+0105901004,01059,Casco Viejo,,10,of-10,0.936
+0105901005,01059,Casco Viejo,,10,of-10,0.994
+0105901008,01059,Casco Viejo,,10,of-10,0.903
+0105901010,01059,Casco Viejo,,10,of-10,0.91
+0105901012,01059,Ensanche,,10,of-15,0.942
+0105901013,01059,Ensanche,,10,of-15,0.978
+0105901014,01059,Ensanche,,10,of-15,0.906
+0105901015,01059,Ensanche,,10,of-15,0.94
+0105901017,01059,Ensanche,,10,of-15,0.925
+0105901018,01059,Ensanche,,10,of-15,0.908
+0105901019,01059,Coronación,,10,of-11,0.961
+0105901021,01059,Coronación,,10,of-11,0.823
+0105901023,01059,Coronación,,10,of-11,0.899
+0105901025,01059,Coronación,,10,of-11,1.0
+0105901026,01059,Coronación,,10,of-11,0.94
+0105901027,01059,Coronación,,10,of-11,0.883
+0105901029,01059,Coronación,,10,of-11,0.901
+0105901030,01059,Coronación,,10,of-11,0.566
+0105901031,01059,El Pilar,,10,of-14,0.879
+0105901033,01059,El Pilar,,10,of-14,1.0
+0105901035,01059,El Pilar,,10,of-14,0.854
+0105901036,01059,El Pilar,,10,of-14,0.864
+0105901037,01059,El Pilar,,10,of-14,0.758
+0105901039,01059,El Pilar,,10,of-14,0.889
+0105901040,01059,El Pilar,,10,of-14,0.897
+0105902001,01059,Lovaina,,10,of-18,0.905
+0105902002,01059,Lovaina,,10,of-18,0.842
+0105902003,01059,Lovaina,,10,of-18,1.0
+0105902004,01059,Lovaina,,10,of-18,0.884
+0105902005,01059,Lovaina,,10,of-18,0.961
+0105902006,01059,Lovaina,,10,of-18,0.829
+0105902008,01059,Gazalbide,,10,of-16,0.709
+0105902009,01059,Gazalbide,,10,of-16,0.801
+0105902010,01059,Txagorritxu,,10,of-26,0.979
+0105902011,01059,Txagorritxu,,10,of-26,0.761
+0105902012,01059,Txagorritxu,,10,of-26,0.84
+0105902014,01059,Txagorritxu,,10,of-26,0.97
+0105902015,01059,Txagorritxu,,10,of-26,0.959
+0105902016,01059,Txagorritxu,,10,of-26,0.875
+0105902017,01059,San Martín,,10,of-22,0.928
+0105902018,01059,San Martín,,10,of-22,0.975
+0105902019,01059,San Martín,,10,of-22,0.842
+0105902021,01059,San Martín,,10,of-22,0.865
+0105902022,01059,San Martín,,10,of-22,0.585
+0105902023,01059,San Martín,,10,of-22,1.0
+0105902024,01059,San Martín,,10,of-22,0.946
+0105902025,01059,San Martín,,10,of-22,0.873
+0105902026,01059,Ariznabarra,,10,of-8,0.712
+0105902027,01059,Ariznabarra,,10,of-8,0.884
+0105902028,01059,Ariznabarra,,10,of-8,1.0
+0105902030,01059,Ariznabarra,,10,of-8,0.785
+0105902031,01059,Ariznabarra,,10,of-8,0.86
+0105902032,01059,Ariznabarra,,10,of-8,0.718
+0105902033,01059,Mendizorrotza,,10,of-19,0.952
+0105902034,01059,Mendizorrotza,,10,of-19,0.973
+0105902035,01059,Mendizorrotza,,10,of-19,0.978
+0105902036,01059,Zabalgana,,10,of-27,0.981
+0105902037,01059,Zabalgana,,10,of-27,0.987
+0105902038,01059,Zabalgana,,10,of-27,1.0
+0105902039,01059,Zabalgana,,10,of-27,1.0
+0105902040,01059,Zabalgana,,10,of-27,0.997
+0105902041,01059,Zabalgana,,10,of-27,1.0
+0105902042,01059,Zabalgana,,10,of-27,1.0
+0105902043,01059,Zabalgana,,10,of-27,1.0
+0105902044,01059,Zabalgana,,10,of-27,0.966
+0105902045,01059,Zabalgana,,10,of-27,0.977
+0105902046,01059,Zabalgana,,10,of-27,1.0
+0105902047,01059,Zabalgana,,10,of-27,0.989
+0105902048,01059,Zabalgana,,10,of-27,1.0
+0105903001,01059,Zaramaga,,10,of-28,0.925
+0105903002,01059,Zaramaga,,10,of-28,0.951
+0105903003,01059,Zaramaga,,10,of-28,0.98
+0105903004,01059,Zaramaga,,10,of-28,0.982
+0105903005,01059,Zaramaga,,10,of-28,0.919
+0105903008,01059,Zaramaga,,10,of-28,0.959
+0105903009,01059,Zaramaga,,10,of-28,0.961
+0105903011,01059,Zaramaga,,10,of-28,0.792
+0105903013,01059,Aranbizkarra,,10,of-5,0.834
+0105903014,01059,Aranbizkarra,,10,of-5,0.935
+0105903015,01059,Aranbizkarra,,10,of-5,0.892
+0105903016,01059,Aranbizkarra,,10,of-5,0.947
+0105903018,01059,Aranbizkarra,,10,of-5,0.822
+0105903019,01059,Aranbizkarra,,10,of-5,0.847
+0105903020,01059,Aranbizkarra,,10,of-5,0.902
+0105903021,01059,Aranbizkarra,,10,of-5,0.92
+0105903023,01059,El Anglo,,10,of-13,0.835
+0105903025,01059,El Anglo,,10,of-13,0.715
+0105903026,01059,El Anglo,,10,of-13,0.855
+0105903027,01059,Santiago,,10,of-25,0.89
+0105903028,01059,Santiago,,10,of-25,0.842
+0105903029,01059,Santiago,,10,of-25,0.94
+0105903030,01059,Arana,,10,of-4,0.76
+0105903032,01059,Arana,,10,of-4,0.802
+0105903034,01059,Arantzabela,,10,of-6,0.688
+0105903035,01059,Salburua,,10,of-20,0.973
+0105903036,01059,Salburua,,10,of-20,0.944
+0105903037,01059,Salburua,,10,of-20,0.994
+0105903038,01059,Salburua,,10,of-20,0.943
+0105903039,01059,Salburua,,10,of-20,0.996
+0105903040,01059,Salburua,,10,of-20,0.999
+0105903041,01059,Salburua,,10,of-20,1.0
+0105903042,01059,Salburua,,10,of-20,0.996
+0105903043,01059,Salburua,,10,of-20,0.997
+0105904001,01059,Desamparados,,10,of-12,0.86
+0105904002,01059,Desamparados,,10,of-12,0.87
+0105904004,01059,Desamparados,,10,of-12,0.943
+0105904005,01059,Desamparados,,10,of-12,0.921
+0105904006,01059,Desamparados,,10,of-12,0.801
+0105904007,01059,Judimendi,,10,of-17,0.879
+0105904008,01059,Judimendi,,10,of-17,0.875
+0105904009,01059,Judimendi,,10,of-17,0.965
+0105904012,01059,Judimendi,,10,of-17,0.882
+0105904014,01059,Santa Lucía,,10,of-24,0.913
+0105904016,01059,Santa Lucía,,10,of-24,0.963
+0105904017,01059,Santa Lucía,,10,of-24,0.889
+0105904018,01059,Santa Lucía,,10,of-24,0.89
+0105904019,01059,Santa Lucía,,10,of-24,1.0
+0105904020,01059,Santa Lucía,,10,of-24,0.862
+0105904021,01059,Adurtza,,10,of-2,0.863
+0105904022,01059,Adurtza,,10,of-2,0.974
+0105904023,01059,Adurtza,,10,of-2,0.965
+0105904025,01059,Adurtza,,10,of-2,0.94
+0105904026,01059,San Cristóbal,,10,of-21,0.775
+0105904027,01059,San Cristóbal,,10,of-21,0.93
+0105904029,01059,San Cristóbal,,10,of-21,0.945
+0105904031,01059,San Cristóbal,,10,of-21,0.948
+0105904032,01059,Aretxabaleta-Gardelegi,,10,of-7,0.976
+0105905001,01059,Ali-Gobeo,,10,of-3,0.909
+0105905002,01059,Sansomendi,,10,of-23,0.747
+0105905003,01059,Sansomendi,,10,of-23,0.915
+0105905006,01059,Ali-Gobeo,,10,of-3,0.55
+0105905007,01059,Sansomendi,,10,of-23,1.0
+0105905008,01059,Sansomendi,,10,of-23,1.0
+0105905009,01059,Sansomendi,,10,of-23,1.0
+0105905010,01059,Sansomendi,,10,of-23,0.939
+0105905012,01059,Sansomendi,,10,of-23,0.941
+0105905013,01059,Sansomendi,,10,of-23,0.919
+0105905014,01059,Arriaga-Lakua,,10,of-9,0.869
+0105905015,01059,Arriaga-Lakua,,10,of-9,0.937
+0105905016,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905017,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905018,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905019,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905021,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905022,01059,Arriaga-Lakua,,10,of-9,0.965
+0105905023,01059,Zona Rural Noroeste,,10,of-30,1.0
+0105905025,01059,Zona Rural Noroeste,,10,of-30,1.0
+0105905026,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905027,01059,Arriaga-Lakua,,10,of-9,0.963
+0105905028,01059,Arriaga-Lakua,,10,of-9,0.973
+0105905029,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905030,01059,Arriaga-Lakua,,10,of-9,0.893
+0105905031,01059,Arriaga-Lakua,,10,of-9,0.965
+0105905032,01059,Sansomendi,,10,of-23,0.935
+0105905033,01059,Sansomendi,,10,of-23,0.939
+0105905034,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905035,01059,Arriaga-Lakua,,10,of-9,0.9
+0105905036,01059,Arriaga-Lakua,,10,of-9,0.944
+0105905037,01059,Arriaga-Lakua,,10,of-9,1.0
+0105905038,01059,Arriaga-Lakua,,10,of-9,0.912
+0105905039,01059,Sansomendi,,10,of-23,0.917
+0105906001,01059,Zona Rural Este,,10,of-29,0.832
+0105906002,01059,Zona Rural Suroeste,,10,of-31,0.983
+0105906003,01059,Zona Rural Noroeste,,10,of-30,0.981
+0301401001,03014,Puerto,,10,of-43,0.968
+0301401002,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401003,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401004,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401005,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401006,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401007,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401008,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401009,03014,Centro,,10,of-13,1.0
+0301401010,03014,Centro,,10,of-13,1.0
+0301401011,03014,Centro,,10,of-13,1.0
+0301401012,03014,Casco Antiguo - Santa Cruz,,10,of-11,1.0
+0301401014,03014,Centro,,10,of-13,1.0
+0301401015,03014,Centro,,10,of-13,1.0
+0301401018,03014,Casco Antiguo - Santa Cruz,,10,of-11,1.0
+0301401019,03014,Rabal Roig - Virgen del Socorro,,10,of-44,1.0
+0301401020,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401021,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401022,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401023,03014,Ensanche - Diputación,,10,of-22,1.0
+0301401026,03014,Rabal Roig - Virgen del Socorro,,10,of-44,1.0
+0301402001,03014,Ensanche - Diputación,,10,of-22,1.0
+0301402002,03014,Ensanche - Diputación,,10,of-22,1.0
+0301402003,03014,Mercado,,10,of-31,1.0
+0301402005,03014,Mercado,,10,of-31,1.0
+0301402006,03014,Mercado,,10,of-31,1.0
+0301402008,03014,Mercado,,10,of-31,1.0
+0301402009,03014,Mercado,,10,of-31,1.0
+0301402010,03014,Campoamor,,10,of-8,1.0
+0301402011,03014,Campoamor,,10,of-8,1.0
+0301402012,03014,Campoamor,,10,of-8,1.0
+0301402013,03014,Campoamor,,10,of-8,1.0
+0301402014,03014,Campoamor,,10,of-8,1.0
+0301402016,03014,Campoamor,,10,of-8,1.0
+0301402017,03014,Campoamor,,10,of-8,1.0
+0301402018,03014,Mercado,,10,of-31,1.0
+0301402019,03014,Mercado,,10,of-31,1.0
+0301402020,03014,San Antón,,10,of-48,1.0
+0301402021,03014,Campoamor,,10,of-8,1.0
+0301402022,03014,San Antón,,10,of-48,1.0
+0301402023,03014,Carolinas Bajas,,10,of-10,1.0
+0301402024,03014,Carolinas Bajas,,10,of-10,1.0
+0301402025,03014,Carolinas Bajas,,10,of-10,1.0
+0301402026,03014,Carolinas Bajas,,10,of-10,1.0
+0301402028,03014,Carolinas Bajas,,10,of-10,1.0
+0301402029,03014,Carolinas Bajas,,10,of-10,1.0
+0301402030,03014,Carolinas Bajas,,10,of-10,1.0
+0301402032,03014,Campoamor,,10,of-8,1.0
+0301402033,03014,Campoamor,,10,of-8,1.0
+0301403001,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403002,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403003,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403004,03014,Carolinas Altas,,10,of-9,1.0
+0301403005,03014,Carolinas Altas,,10,of-9,1.0
+0301403006,03014,Carolinas Altas,,10,of-9,1.0
+0301403007,03014,Carolinas Altas,,10,of-9,1.0
+0301403008,03014,Carolinas Altas,,10,of-9,1.0
+0301403009,03014,Carolinas Altas,,10,of-9,1.0
+0301403010,03014,Carolinas Altas,,10,of-9,1.0
+0301403011,03014,Carolinas Altas,,10,of-9,1.0
+0301403012,03014,Sidi Ifni - Nou Alacant,,10,of-54,1.0
+0301403013,03014,Sidi Ifni - Nou Alacant,,10,of-54,1.0
+0301403014,03014,Sidi Ifni - Nou Alacant,,10,of-54,1.0
+0301403015,03014,Sidi Ifni - Nou Alacant,,10,of-54,1.0
+0301403016,03014,Vistahermosa,,10,of-61,0.999
+0301403017,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403019,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403020,03014,Plá del Bon Repós,,10,of-38,0.775
+0301403021,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403022,03014,Carolinas Altas,,10,of-9,1.0
+0301403023,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403024,03014,Carolinas Altas,,10,of-9,1.0
+0301403026,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403027,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403028,03014,Carolinas Altas,,10,of-9,1.0
+0301403029,03014,Carolinas Altas,,10,of-9,1.0
+0301403030,03014,Garbinet,,10,of-26,1.0
+0301403031,03014,Carolinas Altas,,10,of-9,1.0
+0301403032,03014,Carolinas Altas,,10,of-9,1.0
+0301403033,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403034,03014,Plá del Bon Repós,,10,of-38,1.0
+0301403035,03014,Carolinas Altas,,10,of-9,1.0
+0301403036,03014,Garbinet,,10,of-26,1.0
+0301403037,03014,Garbinet,,10,of-26,0.993
+0301403038,03014,Garbinet,,10,of-26,1.0
+0301403039,03014,Garbinet,,10,of-26,1.0
+0301403040,03014,Garbinet,,10,of-26,1.0
+0301403041,03014,Garbinet,,10,of-26,1.0
+0301404001,03014,Virgen del Carmen,,10,of-59,1.0
+0301404002,03014,Albufereta,,10,of-1,1.0
+0301404003,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404004,03014,Virgen del Carmen,,10,of-59,1.0
+0301404005,03014,Albufereta,,10,of-1,1.0
+0301404006,03014,Virgen del Carmen,,10,of-59,1.0
+0301404007,03014,Cuatrocientas Viviendas,,10,of-19,1.0
+0301404008,03014,Juan XXIII,,10,of-27,1.0
+0301404009,03014,Virgen del Remedio,,10,of-60,1.0
+0301404010,03014,Colonia Requena,,10,of-16,1.0
+0301404012,03014,Juan XXIII,,10,of-27,1.0
+0301404013,03014,Juan XXIII,,10,of-27,1.0
+0301404014,03014,Juan XXIII,,10,of-27,1.0
+0301404015,03014,Juan XXIII,,10,of-27,1.0
+0301404016,03014,Juan XXIII,,10,of-27,1.0
+0301404017,03014,Vistahermosa,,10,of-61,1.0
+0301404018,03014,Serra Grossa,,10,of-53,1.0
+0301404019,03014,Vistahermosa,,10,of-61,1.0
+0301404020,03014,Albufereta,,10,of-1,1.0
+0301404021,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404022,03014,Playa de San Juan - PAU 5,,10,of-37,1.0
+0301404023,03014,Villafranqueza,,10,of-58,1.0
+0301404024,03014,Villafranqueza,,10,of-58,1.0
+0301404025,03014,Juan XXIII,,10,of-27,1.0
+0301404026,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404027,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404028,03014,Playa de San Juan,,10,of-36,1.0
+0301404029,03014,Juan XXIII,,10,of-27,1.0
+0301404030,03014,Playa de San Juan,,10,of-36,1.0
+0301404031,03014,Albufereta,,10,of-1,1.0
+0301404032,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404033,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404034,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404035,03014,Albufereta,,10,of-1,1.0
+0301404036,03014,Playa de San Juan,,10,of-36,1.0
+0301404037,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404038,03014,Playa de San Juan,,10,of-36,1.0
+0301404039,03014,Cabo de las Huertas,,10,of-7,1.0
+0301404040,03014,Condomina - Playa San Juan,,10,of-17,1.0
+0301404041,03014,Monnegre,,10,of-32,0.817
+0301404042,03014,Condomina - Playa San Juan,,10,of-17,1.0
+0301404043,03014,Condomina - Playa San Juan,,10,of-17,1.0
+0301404044,03014,Condomina Golf - Playa de San Juan,,10,of-18,1.0
+0301404045,03014,Condomina - Playa San Juan,,10,of-17,1.0
+0301404046,03014,Condomina Golf - Playa de San Juan,,10,of-18,1.0
+0301404047,03014,Condomina - Playa San Juan,,10,of-17,1.0
+0301404048,03014,Playa de San Juan - PAU 5,,10,of-37,1.0
+0301405001,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405002,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405003,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405004,03014,Lo Morant - San Nicolás de Bari,,10,of-29,1.0
+0301405005,03014,Los Ángeles,,10,of-30,1.0
+0301405006,03014,Lo Morant - San Nicolás de Bari,,10,of-29,1.0
+0301405007,03014,Virgen del Remedio,,10,of-60,1.0
+0301405008,03014,Lo Morant - San Nicolás de Bari,,10,of-29,1.0
+0301405009,03014,Ciudad Jardín,,10,of-14,0.992
+0301405010,03014,Virgen del Remedio,,10,of-60,1.0
+0301405011,03014,Lo Morant - San Nicolás de Bari,,10,of-29,1.0
+0301405012,03014,Virgen del Remedio,,10,of-60,1.0
+0301405014,03014,Virgen del Remedio,,10,of-60,1.0
+0301405016,03014,Virgen del Remedio,,10,of-60,1.0
+0301405017,03014,Virgen del Remedio,,10,of-60,1.0
+0301405018,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405019,03014,Virgen del Remedio,,10,of-60,1.0
+0301405020,03014,Virgen del Remedio,,10,of-60,1.0
+0301405022,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405023,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405024,03014,Lo Morant - San Nicolás de Bari,,10,of-29,1.0
+0301405025,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301405026,03014,Altozano-Conde Lumiares,,10,of-3,1.0
+0301406001,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406002,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406003,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406004,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406005,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406006,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406007,03014,Polígono de San Blas,,10,of-42,1.0
+0301406008,03014,Polígono de San Blas,,10,of-42,1.0
+0301406009,03014,Polígono de San Blas,,10,of-42,1.0
+0301406010,03014,Polígono de San Blas,,10,of-42,1.0
+0301406011,03014,Polígono de San Blas,,10,of-42,1.0
+0301406012,03014,Los Ángeles,,10,of-30,1.0
+0301406013,03014,Los Ángeles,,10,of-30,1.0
+0301406014,03014,Los Ángeles,,10,of-30,1.0
+0301406015,03014,Los Ángeles,,10,of-30,1.0
+0301406016,03014,Los Ángeles,,10,of-30,1.0
+0301406017,03014,San Agustín,,10,of-47,1.0
+0301406018,03014,Tómbola,,10,of-56,1.0
+0301406019,03014,Rabasa,,10,of-45,1.0
+0301406020,03014,Divina Pastora,,10,of-20,1.0
+0301406021,03014,Los Ángeles,,10,of-30,1.0
+0301406022,03014,Tómbola,,10,of-56,1.0
+0301406023,03014,Polígono de San Blas,,10,of-42,0.981
+0301406024,03014,Rabasa,,10,of-45,1.0
+0301406025,03014,PAU 2,,10,of-35,0.764
+0301406026,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406027,03014,Polígono de San Blas,,10,of-42,1.0
+0301406028,03014,San Blas - Santo Domingo,,10,of-49,1.0
+0301406029,03014,Polígono de San Blas,,10,of-42,0.962
+0301406030,03014,Polígono de San Blas,,10,of-42,1.0
+0301406031,03014,PAU 2,,10,of-35,0.981
+0301406032,03014,PAU 2,,10,of-35,0.992
+0301406033,03014,PAU 1,,10,of-34,0.64
+0301406034,03014,Polígono de San Blas,,10,of-42,0.965
+0301406035,03014,PAU 1,,10,of-34,0.566
+0301407001,03014,Alipark,,10,of-2,1.0
+0301407002,03014,Alipark,,10,of-2,1.0
+0301407003,03014,San Fernando - Princesa Mercedes,,10,of-50,1.0
+0301407004,03014,San Fernando - Princesa Mercedes,,10,of-50,1.0
+0301407005,03014,San Fernando - Princesa Mercedes,,10,of-50,1.0
+0301407006,03014,Florida Alta,,10,of-23,1.0
+0301407007,03014,Florida Alta,,10,of-23,1.0
+0301407008,03014,Florida Alta,,10,of-23,1.0
+0301407009,03014,Florida Baja,,10,of-24,1.0
+0301407010,03014,Florida Baja,,10,of-24,1.0
+0301407011,03014,Florida Baja,,10,of-24,1.0
+0301407012,03014,Florida Baja,,10,of-24,1.0
+0301407013,03014,Florida Alta,,10,of-23,1.0
+0301407014,03014,Ciudad de Asís,,10,of-15,1.0
+0301407016,03014,Ciudad de Asís,,10,of-15,1.0
+0301407017,03014,Ciudad de Asís,,10,of-15,1.0
+0301407018,03014,Florida Baja,,10,of-24,1.0
+0301407019,03014,Florida Baja,,10,of-24,1.0
+0301407020,03014,Florida Baja,,10,of-24,1.0
+0301407022,03014,San Fernando - Princesa Mercedes,,10,of-50,1.0
+0301407024,03014,Ciudad de Asís,,10,of-15,1.0
+0301407025,03014,Alipark,,10,of-2,1.0
+0301407026,03014,Florida Alta,,10,of-23,1.0
+0301407027,03014,Florida Baja,,10,of-24,1.0
+0301408001,03014,Benalúa,,10,of-5,1.0
+0301408002,03014,Benalúa,,10,of-5,1.0
+0301408003,03014,Benalúa,,10,of-5,1.0
+0301408004,03014,Benalúa,,10,of-5,1.0
+0301408005,03014,Benalúa,,10,of-5,1.0
+0301408006,03014,Benalúa,,10,of-5,1.0
+0301408007,03014,Benalúa,,10,of-5,1.0
+0301408008,03014,Polígono Babel,,10,of-39,1.0
+0301408009,03014,Polígono Babel,,10,of-39,1.0
+0301408010,03014,Polígono Babel,,10,of-39,0.756
+0301408011,03014,Polígono Babel,,10,of-39,1.0
+0301408012,03014,San Gabriel,,10,of-51,1.0
+0301408013,03014,San Gabriel,,10,of-51,1.0
+0301408014,03014,El Palmeral -Urbanova - Tabarca,,10,of-21,0.937
+0301408015,03014,Rebolledo,,10,of-46,1.0
+0301408016,03014,Fontcalent,,10,of-25,0.798
+0301408017,03014,Polígono Babel,,10,of-39,1.0
+0301408018,03014,Polígono Babel,,10,of-39,1.0
+0301408019,03014,Polígono Babel,,10,of-39,0.944
+0301408021,03014,Benalúa,,10,of-5,1.0
+0301408022,03014,San Gabriel,,10,of-51,1.0
+0301408023,03014,Moralet,,10,of-33,0.871
+0301408024,03014,Polígono Babel,,10,of-39,1.0
+0301408025,03014,Polígono Babel,,10,of-39,1.0
+0301408026,03014,El Palmeral -Urbanova - Tabarca,,10,of-21,1.0
+0301408027,03014,Polígono Babel,,10,of-39,1.0
+0301408028,03014,El Palmeral -Urbanova - Tabarca,,10,of-21,1.0
+0301408029,03014,Bacarot,,10,of-4,0.651
+0301408030,03014,Polígono Babel,,10,of-39,1.0
 0801501001,08015,Centre,Districte 1,10,12025198,0.874
 0801501002,08015,Centre,Districte 1,10,12025198,0.943
 0801501003,08015,Centre,Districte 1,10,12025198,0.908
@@ -2028,6 +2440,178 @@ tract_code,mun_code,barrio,distrito,nivel,osm_id,solape
 1402110042,14021,Poniente Sur,,9,1431993,1.0
 1402110047,14021,Poniente Sur,,9,1431993,1.0
 1402110048,14021,Poniente Sur,,9,1431993,1.0
+1503001001,15030,Peixaria,,10,of-82,0.529
+1503001002,15030,Peixaria,,10,of-82,1.0
+1503001003,15030,Cidade Vella,,10,of-29,0.872
+1503001004,15030,Orzán,,10,of-66,0.679
+1503001006,15030,Peixaria,,10,of-82,0.999
+1503001007,15030,Orzán,,10,of-66,0.86
+1503002001,15030,As Atochas,,10,of-15,0.788
+1503002002,15030,Monte Alto,,10,of-49,0.629
+1503002003,15030,Zalaeta,,10,of-109,0.903
+1503002004,15030,As Atochas,,10,of-15,1.0
+1503002005,15030,As Atochas,,10,of-15,1.0
+1503002006,15030,Agra San Amaro,,10,of-12,0.746
+1503002007,15030,Pelamios,,10,of-83,0.687
+1503002008,15030,Agra San Amaro,,10,of-12,0.749
+1503002009,15030,Monte Alto,,10,of-49,0.996
+1503002010,15030,Monte Alto,,10,of-49,1.0
+1503002011,15030,Monte Alto,,10,of-49,0.863
+1503002012,15030,Monte Alto,,10,of-49,1.0
+1503002013,15030,Monte Alto,,10,of-49,1.0
+1503002014,15030,Monte Alto,,10,of-49,0.85
+1503002015,15030,Monte Alto,,10,of-49,1.0
+1503002016,15030,Monte Alto,,10,of-49,1.0
+1503002017,15030,Monte Alto,,10,of-49,0.999
+1503002018,15030,Monte Alto,,10,of-49,1.0
+1503002019,15030,Monte Alto,,10,of-49,1.0
+1503002020,15030,As Lagoas,,10,of-16,0.727
+1503002021,15030,As Lagoas,,10,of-16,0.567
+1503002022,15030,Durmideiras,,10,of-32,0.595
+1503002023,15030,A Torre,,10,of-10,0.83
+1503003001,15030,Ensanche,,10,of-37,0.976
+1503003002,15030,Ensanche,,10,of-37,0.764
+1503003003,15030,Juan Flórez,,10,of-42,0.997
+1503003004,15030,Juan Flórez,,10,of-42,0.998
+1503003005,15030,Juan Flórez,,10,of-42,0.997
+1503003006,15030,Ensanche,,10,of-37,1.0
+1503003007,15030,Ensanche,,10,of-37,0.547
+1503003009,15030,Juan Flórez,,10,of-42,0.704
+1503003010,15030,A Falperra (Gurugú),,10,of-2,0.611
+1503003011,15030,Ensanche,,10,of-37,0.608
+1503003012,15030,A Falperra (Gurugú),,10,of-2,1.0
+1503003013,15030,A Falperra (Gurugú),,10,of-2,1.0
+1503003014,15030,A Falperra (Gurugú),,10,of-2,0.635
+1503003015,15030,Santa Lucía,,10,of-100,0.637
+1503003016,15030,Catro Camiños,,10,of-27,0.55
+1503003017,15030,Catro Camiños,,10,of-27,0.947
+1503003018,15030,A Cubela,,10,of-1,0.513
+1503003021,15030,Juan Flórez,,10,of-42,0.999
+1503003022,15030,San Diego,,10,of-95,1.0
+1503003023,15030,San Diego,,10,of-95,0.906
+1503004001,15030,Santa Margarida,,10,of-101,0.814
+1503004002,15030,Santa Margarida,,10,of-101,0.951
+1503004003,15030,Sagrada Familia,,10,of-93,1.0
+1503004004,15030,Sagrada Familia,,10,of-93,1.0
+1503004005,15030,Sagrada Familia,,10,of-93,0.995
+1503004006,15030,Sagrada Familia,,10,of-93,1.0
+1503004007,15030,Os Mallos,,10,of-68,0.577
+1503004008,15030,Catro Camiños,,10,of-27,0.5
+1503004009,15030,Catro Camiños,,10,of-27,0.645
+1503004010,15030,Novos Xulgados,,10,of-58,0.517
+1503004011,15030,Os Mallos,,10,of-68,1.0
+1503004012,15030,Os Mallos,,10,of-68,1.0
+1503004013,15030,Os Mallos,,10,of-68,1.0
+1503004014,15030,Sagrada Familia,,10,of-93,0.999
+1503004015,15030,Sagrada Familia,,10,of-93,0.988
+1503004018,15030,Novos Xulgados,,10,of-58,0.607
+1503004019,15030,Os Mallos,,10,of-68,1.0
+1503004020,15030,Estación,,10,of-39,0.685
+1503004021,15030,Os Mallos,,10,of-68,1.0
+1503004022,15030,Os Mallos,,10,of-68,1.0
+1503004023,15030,Os Mallos,,10,of-68,0.989
+1503004024,15030,A Sardiñeira,,10,of-8,0.84
+1503004025,15030,Os Mallos,,10,of-68,1.0
+1503004026,15030,Sagrada Familia,,10,of-93,1.0
+1503004028,15030,Sagrada Familia,,10,of-93,0.999
+1503004029,15030,Os Mallos,,10,of-68,1.0
+1503005001,15030,Riazor,,10,of-90,0.572
+1503005003,15030,Ensanche de Riazor,,10,of-38,1.0
+1503005004,15030,Paseo das Pontes,,10,of-73,0.944
+1503005005,15030,Cidade Xardín,,10,of-30,0.743
+1503005006,15030,Cidade Escolar,,10,of-28,0.686
+1503005007,15030,Peruleiro,,10,of-85,1.0
+1503005008,15030,San Pedro de Visma,,10,of-96,0.618
+1503005009,15030,Cidade Escolar,,10,of-28,0.562
+1503005010,15030,Labañou,,10,of-43,0.733
+1503005011,15030,Monte de San Pedro,,10,of-55,0.752
+1503005012,15030,San Pedro de Visma,,10,of-96,0.622
+1503005013,15030,Ensanche de Riazor,,10,of-38,0.637
+1503005014,15030,Riazor,,10,of-90,0.842
+1503005015,15030,San Roque de Fora,,10,of-97,0.706
+1503005016,15030,Agra do Orzán,,10,of-13,0.828
+1503005017,15030,Os Rosais,,10,of-69,0.764
+1503005018,15030,Os Rosais,,10,of-69,0.907
+1503005019,15030,Os Rosais,,10,of-69,1.0
+1503005020,15030,Os Rosais,,10,of-69,0.994
+1503005021,15030,Os Rosais,,10,of-69,1.0
+1503005022,15030,Os Rosais,,10,of-69,0.979
+1503006001,15030,Paseo das Pontes,,10,of-73,0.997
+1503006002,15030,Agra do Orzán,,10,of-13,0.996
+1503006003,15030,Agra do Orzán,,10,of-13,1.0
+1503006004,15030,Agra do Orzán,,10,of-13,1.0
+1503006005,15030,Agra do Orzán,,10,of-13,1.0
+1503006006,15030,Ronda de Outeiro,,10,of-91,0.529
+1503006007,15030,Ronda de Outeiro,,10,of-91,0.967
+1503006008,15030,Agra do Orzán,,10,of-13,1.0
+1503006009,15030,Agra do Orzán,,10,of-13,1.0
+1503006010,15030,Ronda de Outeiro,,10,of-91,1.0
+1503006011,15030,Agra do Orzán,,10,of-13,1.0
+1503006012,15030,Ronda de Outeiro,,10,of-91,1.0
+1503006013,15030,Ronda de Outeiro,,10,of-91,1.0
+1503006014,15030,Agra do Orzán,,10,of-13,1.0
+1503006015,15030,Agra do Orzán,,10,of-13,1.0
+1503006016,15030,Agra do Orzán,,10,of-13,0.701
+1503006017,15030,Agra do Orzán,,10,of-13,1.0
+1503006018,15030,Agra do Orzán,,10,of-13,1.0
+1503006019,15030,Agra do Orzán,,10,of-13,1.0
+1503006020,15030,Agra do Orzán,,10,of-13,1.0
+1503006021,15030,Agra do Orzán,,10,of-13,1.0
+1503006022,15030,Agra do Orzán,,10,of-13,1.0
+1503006023,15030,Ronda de Outeiro,,10,of-91,0.99
+1503007001,15030,A Gaiteira,,10,of-3,0.999
+1503007002,15030,Os Castros,,10,of-67,1.0
+1503007003,15030,Castrillón,,10,of-25,0.659
+1503007004,15030,Os Castros,,10,of-67,1.0
+1503007005,15030,Castrillón,,10,of-25,0.997
+1503007006,15030,Os Castros,,10,of-67,0.669
+1503007007,15030,Castrillón,,10,of-25,1.0
+1503007008,15030,Castrillón,,10,of-25,0.651
+1503007009,15030,A Cubela,,10,of-1,0.999
+1503007010,15030,A Gaiteira,,10,of-3,0.833
+1503007011,15030,A Gaiteira,,10,of-3,1.0
+1503007012,15030,San Diego,,10,of-95,0.716
+1503007013,15030,San Diego,,10,of-95,0.718
+1503007014,15030,Os Castros,,10,of-67,0.614
+1503007015,15030,Lonzas,,10,of-44,0.657
+1503007016,15030,Polígono Elviña 2ª Fase,,10,of-87,0.917
+1503007017,15030,Polígono Elviña 1ª Fase,,10,of-86,1.0
+1503007018,15030,Polígono Elviña 1ª Fase,,10,of-86,1.0
+1503007019,15030,Polígono Elviña 2ª Fase,,10,of-87,1.0
+1503007020,15030,Monelos,,10,of-48,0.7
+1503007021,15030,Castrillón,,10,of-25,0.812
+1503007022,15030,Monelos,,10,of-48,0.987
+1503007023,15030,Barrio das Flores,,10,of-19,1.0
+1503007025,15030,Barrio das Flores,,10,of-19,1.0
+1503007026,15030,Barrio das Flores,,10,of-19,0.999
+1503007028,15030,O Birloque,,10,of-59,0.995
+1503007029,15030,Polígono Elviña 2ª Fase,,10,of-87,1.0
+1503007030,15030,Polígono Elviña 2ª Fase,,10,of-87,1.0
+1503007033,15030,Polígono Elviña 1ª Fase,,10,of-86,1.0
+1503007034,15030,Polígono Elviña 1ª Fase,,10,of-86,1.0
+1503007035,15030,Monelos,,10,of-48,0.792
+1503007036,15030,Someso,,10,of-103,0.56
+1503007038,15030,Monelos,,10,of-48,0.999
+1503007039,15030,Monte das Moas,,10,of-54,0.732
+1503007040,15030,Monte das Moas,,10,of-54,0.678
+1503007041,15030,Santa María de Oza,,10,of-102,0.738
+1503007042,15030,Matogrande,,10,of-45,1.0
+1503007043,15030,Matogrande,,10,of-45,0.984
+1503007044,15030,Ponte da Pedra,,10,of-88,0.991
+1503008001,15030,Eirís de Arriba,,10,of-36,0.659
+1503008002,15030,Eirís de Arriba,,10,of-36,0.991
+1503008003,15030,Eirís de Arriba,,10,of-36,0.539
+1503008004,15030,Eirís de Abaixo,,10,of-35,0.506
+1503008005,15030,A Zapateira,,10,of-11,0.665
+1503008006,15030,Río de Quintas,,10,of-92,0.701
+1503009004,15030,Monte Currelos,,10,of-51,0.544
+1503009005,15030,Monte Currelos,,10,of-51,0.755
+1503009006,15030,Novo Mesoiro,,10,of-57,0.992
+1503009007,15030,Monte da Zapateira,,10,of-53,0.526
+1503010002,15030,O Ventorrillo,,10,of-64,1.0
+1503010003,15030,O Ventorrillo,,10,of-64,1.0
+1503010004,15030,O Ventorrillo,,10,of-64,1.0
+1503010005,15030,Agrela (Parque Empresarial),,10,of-14,0.738
 1808701001,18087,Centro - Sagrario,Centro,10,9462464,0.999
 1808701004,18087,Centro - Sagrario,Centro,10,9462464,0.602
 1808701005,18087,Centro - Sagrario,Centro,10,9462464,1.0
@@ -5691,6 +6275,392 @@ tract_code,mun_code,barrio,distrito,nivel,osm_id,solape
 3001610044,30016,El Plan,,9,3364974,0.996
 3001610045,30016,Canteras,,9,3361595,1.0
 3001610046,30016,El Plan,,9,3364974,1.0
+3003001001,30030,El Ranero,Casco urbano,10,of-21,0.99
+3003001002,30030,Santa María de Gracia,Casco urbano,10,of-73,0.997
+3003001003,30030,Santa María de Gracia,Casco urbano,10,of-73,1.0
+3003001004,30030,San Basilio,Casco urbano,10,of-57,1.0
+3003001005,30030,El Ranero,Casco urbano,10,of-21,0.981
+3003001006,30030,Santa María de Gracia,Casco urbano,10,of-73,0.987
+3003001007,30030,Santa María de Gracia,Casco urbano,10,of-73,1.0
+3003001008,30030,Santa María de Gracia,Casco urbano,10,of-73,1.0
+3003001009,30030,San Basilio,Casco urbano,10,of-57,0.886
+3003001010,30030,San Antón,Casco urbano,10,of-55,0.915
+3003001011,30030,San Antón,Casco urbano,10,of-55,0.998
+3003001012,30030,San Antón,Casco urbano,10,of-55,1.0
+3003001013,30030,San Antón,Casco urbano,10,of-55,1.0
+3003001014,30030,Santa María de Gracia,Casco urbano,10,of-73,0.997
+3003001015,30030,Santa María de Gracia,Casco urbano,10,of-73,0.983
+3003001016,30030,Santa María de Gracia,Casco urbano,10,of-73,0.979
+3003001018,30030,San Antón,Casco urbano,10,of-55,0.999
+3003001019,30030,San Miguel,Casco urbano,10,of-64,1.0
+3003001020,30030,San Miguel,Casco urbano,10,of-64,1.0
+3003001021,30030,San Antón,Casco urbano,10,of-55,0.99
+3003001022,30030,San Miguel,Casco urbano,10,of-64,1.0
+3003001023,30030,San Miguel,Casco urbano,10,of-64,1.0
+3003001024,30030,San Miguel,Casco urbano,10,of-64,1.0
+3003001025,30030,San Andrés,Casco urbano,10,of-53,0.97
+3003001026,30030,San Andrés,Casco urbano,10,of-53,0.986
+3003001027,30030,San Nicolás,Casco urbano,10,of-65,0.988
+3003001028,30030,San Miguel,Casco urbano,10,of-64,0.979
+3003001029,30030,San Nicolás,Casco urbano,10,of-65,0.984
+3003001030,30030,San Nicolás,Casco urbano,10,of-65,0.952
+3003001031,30030,Santa Catalina,Casco urbano,10,of-70,0.969
+3003001032,30030,Santa Catalina,Casco urbano,10,of-70,0.974
+3003001033,30030,San Antolín,Casco urbano,10,of-54,1.0
+3003001034,30030,San Antolín,Casco urbano,10,of-54,0.98
+3003001035,30030,San Pedro,Casco urbano,10,of-66,0.978
+3003001036,30030,San Antolín,Casco urbano,10,of-54,0.99
+3003001037,30030,San Pedro,Casco urbano,10,of-66,0.938
+3003001038,30030,Santa María de Gracia,Casco urbano,10,of-73,0.993
+3003001040,30030,Espinardo,Casco urbano,10,of-23,0.999
+3003001041,30030,Espinardo,Casco urbano,10,of-23,1.0
+3003001042,30030,Espinardo,Casco urbano,10,of-23,1.0
+3003001043,30030,Espinardo,Casco urbano,10,of-23,0.984
+3003001044,30030,Espinardo,Casco urbano,10,of-23,0.999
+3003001046,30030,Espinardo,Casco urbano,10,of-23,0.971
+3003001047,30030,San Antón,Casco urbano,10,of-55,0.997
+3003001048,30030,San Antón,Casco urbano,10,of-55,1.0
+3003001049,30030,Espinardo,Casco urbano,10,of-23,0.995
+3003001050,30030,Santa María de Gracia,Casco urbano,10,of-73,0.999
+3003001051,30030,Santa María de Gracia,Casco urbano,10,of-73,0.999
+3003001052,30030,San Antolín,Casco urbano,10,of-54,0.979
+3003001053,30030,San Basilio,Casco urbano,10,of-57,0.993
+3003001054,30030,El Ranero,Casco urbano,10,of-21,0.989
+3003001056,30030,El Ranero,Casco urbano,10,of-21,0.992
+3003001057,30030,Santa María de Gracia,Casco urbano,10,of-73,0.977
+3003001058,30030,Santa María de Gracia,Casco urbano,10,of-73,0.946
+3003001059,30030,San Antón,Casco urbano,10,of-55,0.994
+3003001060,30030,Espinardo,Casco urbano,10,of-23,0.999
+3003001061,30030,San Basilio,Casco urbano,10,of-57,1.0
+3003001062,30030,San Antolín,Casco urbano,10,of-54,0.99
+3003001063,30030,San Basilio,Casco urbano,10,of-57,1.0
+3003001064,30030,Espinardo,Casco urbano,10,of-23,0.994
+3003001065,30030,Espinardo,Casco urbano,10,of-23,1.0
+3003001066,30030,Espinardo,Casco urbano,10,of-23,0.984
+3003002001,30030,Vista Alegre,Casco urbano,10,of-80,0.991
+3003002002,30030,Vista Alegre,Casco urbano,10,of-80,0.995
+3003002003,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003002004,30030,Vista Alegre,Casco urbano,10,of-80,0.977
+3003002005,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003002006,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003002008,30030,Vista Alegre,Casco urbano,10,of-80,0.746
+3003002009,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003002010,30030,La Flota,Casco urbano,10,of-36,0.993
+3003002011,30030,San Miguel,Casco urbano,10,of-64,1.0
+3003002012,30030,La Fama,Casco urbano,10,of-35,0.986
+3003002013,30030,La Fama,Casco urbano,10,of-35,0.989
+3003002014,30030,La Fama,Casco urbano,10,of-35,0.989
+3003002015,30030,La Fama,Casco urbano,10,of-35,0.978
+3003002017,30030,La Paz,Casco urbano,10,of-37,0.988
+3003002019,30030,San Miguel,Casco urbano,10,of-64,0.98
+3003002020,30030,San Lorenzo,Casco urbano,10,of-63,0.992
+3003002021,30030,San Lorenzo,Casco urbano,10,of-63,0.982
+3003002022,30030,La Fama,Casco urbano,10,of-35,0.996
+3003002023,30030,La Fama,Casco urbano,10,of-35,1.0
+3003002025,30030,La Fama,Casco urbano,10,of-35,0.978
+3003002028,30030,La Paz,Casco urbano,10,of-37,0.972
+3003002030,30030,San Bartolomé,Casco urbano,10,of-56,0.95
+3003002031,30030,La Catedral,Casco urbano,10,of-34,0.987
+3003002032,30030,San Lorenzo,Casco urbano,10,of-63,0.955
+3003002033,30030,Santa Eulalia,Casco urbano,10,of-72,0.992
+3003002034,30030,Santa Eulalia,Casco urbano,10,of-72,0.98
+3003002035,30030,Santa Eulalia,Casco urbano,10,of-72,0.99
+3003002036,30030,San Juan,Casco urbano,10,of-62,0.994
+3003002037,30030,San Juan,Casco urbano,10,of-62,0.973
+3003002038,30030,La Paz,Casco urbano,10,of-37,0.973
+3003002039,30030,La Paz,Casco urbano,10,of-37,0.968
+3003002041,30030,La Catedral,Casco urbano,10,of-34,0.959
+3003002042,30030,San Juan,Casco urbano,10,of-62,0.991
+3003002043,30030,San Juan,Casco urbano,10,of-62,0.993
+3003002045,30030,Vistabella,Casco urbano,10,of-81,0.982
+3003002046,30030,Vistabella,Casco urbano,10,of-81,0.991
+3003002047,30030,Vistabella,Casco urbano,10,of-81,0.981
+3003002048,30030,Vistabella,Casco urbano,10,of-81,0.984
+3003002051,30030,La Flota,Casco urbano,10,of-36,0.984
+3003002053,30030,La Flota,Casco urbano,10,of-36,0.984
+3003002054,30030,La Flota,Casco urbano,10,of-36,0.954
+3003002055,30030,La Flota,Casco urbano,10,of-36,0.991
+3003002056,30030,Vista Alegre,Casco urbano,10,of-80,0.998
+3003002057,30030,Vista Alegre,Casco urbano,10,of-80,0.997
+3003002058,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003002059,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003002060,30030,La Flota,Casco urbano,10,of-36,1.0
+3003002062,30030,Vista Alegre,Casco urbano,10,of-80,1.0
+3003003001,30030,La Purísima-Barriomar,Casco urbano,10,of-38,0.984
+3003003002,30030,El Carmen,Casco urbano,10,of-16,0.995
+3003003003,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003004,30030,El Carmen,Casco urbano,10,of-16,0.985
+3003003005,30030,El Carmen,Casco urbano,10,of-16,0.988
+3003003006,30030,El Carmen,Casco urbano,10,of-16,0.999
+3003003007,30030,El Carmen,Casco urbano,10,of-16,0.987
+3003003008,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.986
+3003003009,30030,Infante Juan Manuel,Casco urbano,10,of-27,1.0
+3003003010,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.993
+3003003011,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.944
+3003003012,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003013,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003014,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.994
+3003003015,30030,Infante Juan Manuel,Casco urbano,10,of-27,1.0
+3003003016,30030,Infante Juan Manuel,Casco urbano,10,of-27,1.0
+3003003017,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003018,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003019,30030,El Carmen,Casco urbano,10,of-16,0.998
+3003003020,30030,Buenos Aires,Casco urbano,10,of-7,0.977
+3003003021,30030,Nuestra Señora de la Fuensanta,Casco urbano,10,of-48,0.765
+3003003023,30030,La Purísima-Barriomar,Casco urbano,10,of-38,0.994
+3003003024,30030,La Purísima-Barriomar,Casco urbano,10,of-38,0.953
+3003003025,30030,San Pío X,Casco urbano,10,of-67,0.99
+3003003026,30030,San Pío X,Casco urbano,10,of-67,0.995
+3003003027,30030,Santiago el Mayor,Casco urbano,10,of-74,0.978
+3003003028,30030,Santiago el Mayor,Casco urbano,10,of-74,1.0
+3003003029,30030,Santiago el Mayor,Casco urbano,10,of-74,0.999
+3003003030,30030,Santiago el Mayor,Casco urbano,10,of-74,1.0
+3003003031,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.968
+3003003032,30030,El Carmen,Casco urbano,10,of-16,0.901
+3003003033,30030,Infante Juan Manuel,Casco urbano,10,of-27,1.0
+3003003034,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.999
+3003003035,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.857
+3003003036,30030,El Carmen,Casco urbano,10,of-16,0.927
+3003003037,30030,Buenos Aires,Casco urbano,10,of-7,0.978
+3003003038,30030,El Carmen,Casco urbano,10,of-16,0.918
+3003003039,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003040,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003041,30030,Santiago el Mayor,Casco urbano,10,of-74,0.969
+3003003042,30030,Infante Juan Manuel,Casco urbano,10,of-27,0.951
+3003003043,30030,El Carmen,Casco urbano,10,of-16,0.98
+3003003044,30030,El Carmen,Casco urbano,10,of-16,1.0
+3003003045,30030,El Carmen,Casco urbano,10,of-16,0.997
+3003003046,30030,Santiago el Mayor,Casco urbano,10,of-74,0.959
+3003003047,30030,Santiago el Mayor,Casco urbano,10,of-74,0.999
+3003003049,30030,Infante Juan Manuel,Casco urbano,10,of-27,1.0
+3003004001,30030,El Puntal,Pedanías,10,of-19,0.997
+3003004002,30030,El Puntal,Pedanías,10,of-19,0.985
+3003004003,30030,Churra,Pedanías,10,of-13,1.0
+3003004004,30030,Churra,Pedanías,10,of-13,0.985
+3003004005,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004006,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004007,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004008,30030,Cabezo de Torres,Pedanías,10,of-8,0.999
+3003004009,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004010,30030,Cabezo de Torres,Pedanías,10,of-8,0.977
+3003004011,30030,El Esparragal,Pedanías,10,of-17,0.998
+3003004012,30030,El Esparragal,Pedanías,10,of-17,0.976
+3003004013,30030,Cobatillas,Pedanías,10,of-14,0.985
+3003004014,30030,Monteagudo,Pedanías,10,of-46,0.993
+3003004015,30030,Monteagudo,Pedanías,10,of-46,0.996
+3003004016,30030,Monteagudo,Pedanías,10,of-46,0.991
+3003004017,30030,Zarandona,Pedanías,10,of-82,0.995
+3003004018,30030,Zarandona,Pedanías,10,of-82,0.998
+3003004019,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.931
+3003004020,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.996
+3003004021,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004022,30030,Puente Tocinos,Pedanías,10,of-50,0.999
+3003004023,30030,Puente Tocinos,Pedanías,10,of-50,0.968
+3003004024,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004025,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004026,30030,Casillas,Pedanías,10,of-10,0.997
+3003004027,30030,Casillas,Pedanías,10,of-10,0.997
+3003004028,30030,Llano de Brujas,Pedanías,10,of-41,0.999
+3003004029,30030,Llano de Brujas,Pedanías,10,of-41,0.997
+3003004030,30030,Llano de Brujas,Pedanías,10,of-41,0.996
+3003004031,30030,Santa Cruz,Pedanías,10,of-71,0.994
+3003004032,30030,El Raal,Pedanías,10,of-20,0.997
+3003004033,30030,El Raal,Pedanías,10,of-20,0.99
+3003004034,30030,El Raal,Pedanías,10,of-20,0.999
+3003004035,30030,El Raal,Pedanías,10,of-20,0.984
+3003004036,30030,Cabezo de Torres,Pedanías,10,of-8,0.998
+3003004037,30030,Zarandona,Pedanías,10,of-82,0.995
+3003004038,30030,Zarandona,Pedanías,10,of-82,0.995
+3003004039,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004040,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004041,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004042,30030,El Puntal,Pedanías,10,of-19,0.999
+3003004043,30030,Churra,Pedanías,10,of-13,0.967
+3003004044,30030,El Esparragal,Pedanías,10,of-17,0.997
+3003004045,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.978
+3003004046,30030,Puente Tocinos,Pedanías,10,of-50,0.999
+3003004047,30030,Llano de Brujas,Pedanías,10,of-41,0.985
+3003004048,30030,Santa Cruz,Pedanías,10,of-71,0.998
+3003004049,30030,Zarandona,Pedanías,10,of-82,0.982
+3003004050,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004051,30030,Churra,Pedanías,10,of-13,0.999
+3003004052,30030,El Esparragal,Pedanías,10,of-17,0.638
+3003004053,30030,El Puntal,Pedanías,10,of-19,0.99
+3003004054,30030,Churra,Pedanías,10,of-13,0.947
+3003004055,30030,Churra,Pedanías,10,of-13,1.0
+3003004056,30030,Churra,Pedanías,10,of-13,0.997
+3003004057,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004058,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004059,30030,Cabezo de Torres,Pedanías,10,of-8,1.0
+3003004060,30030,Cabezo de Torres,Pedanías,10,of-8,0.996
+3003004061,30030,Cobatillas,Pedanías,10,of-14,0.997
+3003004062,30030,El Esparragal,Pedanías,10,of-17,0.986
+3003004063,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.973
+3003004064,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.993
+3003004065,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.937
+3003004066,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004067,30030,Puente Tocinos,Pedanías,10,of-50,0.988
+3003004068,30030,Puente Tocinos,Pedanías,10,of-50,1.0
+3003004069,30030,Casillas,Pedanías,10,of-10,0.995
+3003004070,30030,El Raal,Pedanías,10,of-20,0.979
+3003004071,30030,El Raal,Pedanías,10,of-20,0.983
+3003004072,30030,Zarandona,Pedanías,10,of-82,0.994
+3003004073,30030,El Puntal,Pedanías,10,of-19,0.966
+3003004074,30030,Santiago y Zaraiche,Pedanías,10,of-75,0.993
+3003004075,30030,El Esparragal,Pedanías,10,of-17,1.0
+3003005001,30030,Sangonera la Verde,Pedanías,10,of-69,1.0
+3003005002,30030,Sangonera la Verde,Pedanías,10,of-69,0.967
+3003005003,30030,Sangonera la Verde,Pedanías,10,of-69,1.0
+3003005004,30030,Sangonera la Verde,Pedanías,10,of-69,1.0
+3003005005,30030,San Ginés,Pedanías,10,of-60,0.995
+3003005006,30030,El Palmar,Pedanías,10,of-18,0.997
+3003005007,30030,El Palmar,Pedanías,10,of-18,0.984
+3003005008,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005009,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005011,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005012,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005013,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005014,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005015,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005016,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005017,30030,La Alberca,Pedanías,10,of-32,0.709
+3003005018,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005019,30030,La Alberca,Pedanías,10,of-32,0.999
+3003005020,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005021,30030,Santo Ángel,Pedanías,10,of-76,0.995
+3003005022,30030,Santo Ángel,Pedanías,10,of-76,0.543
+3003005023,30030,Algezares,Pedanías,10,of-1,1.0
+3003005024,30030,Algezares,Pedanías,10,of-1,1.0
+3003005025,30030,Algezares,Pedanías,10,of-1,0.918
+3003005026,30030,San Benito - Progreso,Pedanías,10,of-59,0.935
+3003005027,30030,San Benito - Patiño,Pedanías,10,of-58,0.996
+3003005028,30030,San Benito - Progreso,Pedanías,10,of-59,0.984
+3003005029,30030,San Benito - Patiño,Pedanías,10,of-58,0.998
+3003005030,30030,San Benito - Patiño,Pedanías,10,of-58,0.971
+3003005031,30030,San Benito - Progreso,Pedanías,10,of-59,0.995
+3003005032,30030,Sangonera la Verde,Pedanías,10,of-69,1.0
+3003005033,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005034,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005035,30030,Santo Ángel,Pedanías,10,of-76,0.994
+3003005036,30030,San Benito - Progreso,Pedanías,10,of-59,1.0
+3003005037,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005038,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005039,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005040,30030,Algezares,Pedanías,10,of-1,1.0
+3003005041,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005042,30030,Sangonera la Verde,Pedanías,10,of-69,0.989
+3003005043,30030,El Palmar,Pedanías,10,of-18,0.905
+3003005044,30030,San Benito - Patiño,Pedanías,10,of-58,0.997
+3003005045,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005046,30030,Sangonera la Verde,Pedanías,10,of-69,1.0
+3003005047,30030,Sangonera la Verde,Pedanías,10,of-69,1.0
+3003005048,30030,San Ginés,Pedanías,10,of-60,0.97
+3003005049,30030,San Ginés,Pedanías,10,of-60,0.996
+3003005050,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005051,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005052,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005053,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005054,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005055,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005056,30030,El Palmar,Pedanías,10,of-18,1.0
+3003005057,30030,La Alberca,Pedanías,10,of-32,1.0
+3003005058,30030,Santo Ángel,Pedanías,10,of-76,1.0
+3003005059,30030,Santo Ángel,Pedanías,10,of-76,1.0
+3003005060,30030,Algezares,Pedanías,10,of-1,1.0
+3003005061,30030,Algezares,Pedanías,10,of-1,0.998
+3003005062,30030,San Benito - Progreso,Pedanías,10,of-59,1.0
+3003005063,30030,San Benito - Patiño,Pedanías,10,of-58,1.0
+3003005064,30030,Sangonera la Verde,Pedanías,10,of-69,0.959
+3003006001,30030,Los Dolores,Pedanías,10,of-43,1.0
+3003006002,30030,Los Dolores,Pedanías,10,of-43,0.979
+3003006003,30030,Los Dolores,Pedanías,10,of-43,0.995
+3003006004,30030,Garres y Lages,Pedanías,10,of-24,1.0
+3003006005,30030,Garres y Lages,Pedanías,10,of-24,0.911
+3003006006,30030,Garres y Lages,Pedanías,10,of-24,1.0
+3003006007,30030,Beniaján,Pedanías,10,of-6,1.0
+3003006008,30030,Beniaján,Pedanías,10,of-6,0.996
+3003006009,30030,Beniaján,Pedanías,10,of-6,0.997
+3003006010,30030,Beniaján,Pedanías,10,of-6,0.956
+3003006011,30030,Beniaján,Pedanías,10,of-6,0.992
+3003006013,30030,San José de la Vega,Pedanías,10,of-61,1.0
+3003006014,30030,San José de la Vega,Pedanías,10,of-61,0.984
+3003006015,30030,Torreagüera,Pedanías,10,of-78,1.0
+3003006016,30030,Torreagüera,Pedanías,10,of-78,1.0
+3003006017,30030,Torreagüera,Pedanías,10,of-78,0.99
+3003006018,30030,Torreagüera,Pedanías,10,of-78,1.0
+3003006019,30030,Los Ramos,Pedanías,10,of-45,0.99
+3003006020,30030,Los Ramos,Pedanías,10,of-45,1.0
+3003006022,30030,Alquerías,Pedanías,10,of-3,1.0
+3003006023,30030,Alquerías,Pedanías,10,of-3,0.997
+3003006024,30030,Alquerías,Pedanías,10,of-3,0.989
+3003006025,30030,Alquerías,Pedanías,10,of-3,0.998
+3003006026,30030,Cañadas de San Pedro,Pedanías,10,of-12,0.842
+3003006027,30030,Beniaján,Pedanías,10,of-6,1.0
+3003006028,30030,Los Dolores,Pedanías,10,of-43,1.0
+3003006029,30030,Garres y Lages,Pedanías,10,of-24,0.987
+3003006030,30030,Garres y Lages,Pedanías,10,of-24,1.0
+3003006031,30030,Torreagüera,Pedanías,10,of-78,0.997
+3003006032,30030,Beniaján,Pedanías,10,of-6,1.0
+3003006033,30030,Torreagüera,Pedanías,10,of-78,0.994
+3003006034,30030,Garres y Lages,Pedanías,10,of-24,0.777
+3003006035,30030,Garres y Lages,Pedanías,10,of-24,0.979
+3003006036,30030,Beniaján,Pedanías,10,of-6,0.996
+3003006037,30030,Beniaján,Pedanías,10,of-6,1.0
+3003006038,30030,Beniaján,Pedanías,10,of-6,1.0
+3003006039,30030,San José de la Vega,Pedanías,10,of-61,0.999
+3003006040,30030,San José de la Vega,Pedanías,10,of-61,0.997
+3003006041,30030,Alquerías,Pedanías,10,of-3,0.996
+3003006042,30030,Zeneta,Pedanías,10,of-83,0.998
+3003006043,30030,Torreagüera,Pedanías,10,of-78,1.0
+3003007001,30030,Cañada Hermosa,Pedanías,10,of-11,0.698
+3003007002,30030,Javalí Nuevo,Pedanías,10,of-28,1.0
+3003007003,30030,Javalí Nuevo,Pedanías,10,of-28,0.979
+3003007004,30030,Javalí Viejo,Pedanías,10,of-29,0.982
+3003007005,30030,Javalí Viejo,Pedanías,10,of-29,0.708
+3003007006,30030,La Ñora,Pedanías,10,of-40,0.994
+3003007007,30030,La Ñora,Pedanías,10,of-40,0.997
+3003007008,30030,Guadalupe,Pedanías,10,of-26,1.0
+3003007009,30030,Guadalupe,Pedanías,10,of-26,1.0
+3003007010,30030,Guadalupe,Pedanías,10,of-26,0.994
+3003007011,30030,Aljucer,Pedanías,10,of-2,0.998
+3003007012,30030,La Albatalia,Pedanías,10,of-31,0.98
+3003007013,30030,La Albatalia,Pedanías,10,of-31,0.997
+3003007014,30030,La Arboleja,Pedanías,10,of-33,0.983
+3003007015,30030,La Arboleja,Pedanías,10,of-33,0.982
+3003007016,30030,Rincón de Seca,Pedanías,10,of-52,0.983
+3003007017,30030,Rincón de Seca,Pedanías,10,of-52,0.983
+3003007018,30030,Rincón de Beniscornia,Pedanías,10,of-51,0.985
+3003007019,30030,La Raya,Pedanías,10,of-39,1.0
+3003007020,30030,La Raya,Pedanías,10,of-39,0.972
+3003007021,30030,Puebla de Soto,Pedanías,10,of-49,0.995
+3003007022,30030,Nonduermas,Pedanías,10,of-47,0.991
+3003007023,30030,Nonduermas,Pedanías,10,of-47,0.989
+3003007024,30030,Sangonera la Seca,Pedanías,10,of-68,0.999
+3003007025,30030,Sangonera la Seca,Pedanías,10,of-68,0.871
+3003007026,30030,Aljucer,Pedanías,10,of-2,0.997
+3003007027,30030,Era Alta,Pedanías,10,of-22,0.991
+3003007028,30030,Era Alta,Pedanías,10,of-22,0.993
+3003007029,30030,Aljucer,Pedanías,10,of-2,1.0
+3003007030,30030,Aljucer,Pedanías,10,of-2,0.994
+3003007031,30030,Aljucer,Pedanías,10,of-2,0.998
+3003007032,30030,Sangonera la Seca,Pedanías,10,of-68,0.993
+3003007033,30030,Sangonera la Seca,Pedanías,10,of-68,0.981
+3003007034,30030,Aljucer,Pedanías,10,of-2,0.994
+3003007035,30030,Guadalupe,Pedanías,10,of-26,0.998
+3003007036,30030,Javalí Nuevo,Pedanías,10,of-28,0.99
+3003007037,30030,Javalí Nuevo,Pedanías,10,of-28,1.0
+3003007038,30030,La Ñora,Pedanías,10,of-40,0.956
+3003007039,30030,La Ñora,Pedanías,10,of-40,0.973
+3003007040,30030,La Ñora,Pedanías,10,of-40,0.971
+3003007041,30030,Guadalupe,Pedanías,10,of-26,0.969
+3003007042,30030,Guadalupe,Pedanías,10,of-26,1.0
+3003007043,30030,Puebla de Soto,Pedanías,10,of-49,0.989
+3003007044,30030,Era Alta,Pedanías,10,of-22,0.971
+3003008002,30030,Valladolises y Lo Jurado,Pedanías,10,of-79,0.557
+3003008003,30030,Gea y Truyols,Pedanías,10,of-25,0.55
+3003008004,30030,Sucina,Pedanías,10,of-77,0.973
+3003008005,30030,Lobosillo,Pedanías,10,of-42,0.992
+3003008006,30030,Corvera,Pedanías,10,of-15,1.0
 3120101001,31201,Casco Antiguo,,10,3960157,0.996
 3120101003,31201,Casco Antiguo,,10,3960157,0.96
 3120101004,31201,Casco Antiguo,,10,3960157,0.996
