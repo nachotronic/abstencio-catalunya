@@ -147,7 +147,7 @@ TEMAS = {
               'y dónde hay más casas vacías que vecinos.',
         piezas=['maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'pisos-turisticos-y-votantes', 'psoe-barrios-de-alquiler',
                 'precio-del-alquiler-y-voto', 'acampada-sol-distrito-centro', 'casas-vacias-segundas-residencias',
-                'vivienda-preocupa-voto-sumar-29n', 'desahucios-ocupaciones-cgpj-29n', 'vivienda-inmigracion-economia-cis', 'barrios-rentistas-pp-psoe-29n'],
+                'vivienda-preocupa-voto-sumar-29n', 'desahucios-ocupaciones-cgpj-29n', 'vivienda-inmigracion-economia-cis', 'barrios-rentistas-pp-psoe-29n', 'sanchez-revuelta-broncano-voto-joven-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España')],
         atlas=[]),
     'inmigracion': dict(
@@ -157,7 +157,7 @@ TEMAS = {
               'por la inmigración que mide el CIS y el voto a cada partido.',
         piezas=['vox-poblacion-nacida-fuera', 'inmigracion-preocupa-voto-vox-29n', 'trump-espana-invadida-inmigracion-29n',
                 'termometro-temas-inmigracion-29n', 'vivienda-inmigracion-economia-cis', 'vox-cinco-barrios-el-ejido-ceuta',
-                'ley-nietos-donde-estan-29n'],
+                'ley-nietos-donde-estan-29n', 'sanchez-revuelta-broncano-voto-joven-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal')],
         atlas=[]),
     'barrio-a-barrio': dict(

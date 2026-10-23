@@ -1469,6 +1469,24 @@ PIEZAS = [
                   pie='Peso de CiU o Junts en el voto que suman con el PP, de las secciones más pobres a las más ricas de Cataluña, en 2011, 2019 y 2023.',
                   fuente='Interior e INE. Cálculo propio'),
     ),
+    dict(
+        slug='sanchez-revuelta-broncano-voto-joven-29n', fecha='2026-10-23',
+        titulo='Sánchez en La Revuelta: entre los hombres jóvenes, Vox casi dobla al PSOE', serie='29n',
+        descripcion='Sánchez fue a La Revuelta de Broncano a buscar el voto joven. En los nueve barómetros del CIS desde diciembre, Vox y el PSOE empatan entre los menores de 35, pero entre los hombres de esa edad Vox saca un 24,6% y el PSOE un 13,3%. La vivienda preocupa a la mitad de los jóvenes y la inmigración, más que a sus abuelos.',
+        compara='La intención de voto más simpatía de los nueve barómetros del CIS de diciembre de 2025 a octubre de 2026 (37.191 entrevistas, ponderadas), por edad, sexo y comunidad; los problemas que los entrevistados citan como principales de España; y el voto de 2023 por sección censal según el peso de los mayores de 65, con efectos fijos de provincia o de municipio y errores agrupados por municipio.',
+        limites='Las encuestas tienen margen de error, que se muestra en los gráficos; por comunidad, las muestras de menores de 35 son pequeñas y por debajo de 100 entrevistas no se pintan. La intención de voto no es voto: los jóvenes votan menos y deciden más tarde. Los datos por sección son agregados y no dicen cómo vota cada persona. Nada de esto mide el efecto de la entrevista en La Revuelta. Son correlaciones, no causas.',
+        fuentes=[('https://www.cis.es/estudios/catalogo-estudios', 'CIS, barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582), microdatos'),
+                 INTERIOR, INE,
+                 ('https://www.rtve.es/noticias/20261023/pedro-sanchez-revuelta-frases-entrevista/17279243.shtml', 'RTVE, las frases de Pedro Sánchez en La Revuelta (23-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/22/sanchez-promete-que-si-sigue-gobernando-la-revuelta-seguira-en-tve-y-alerta-de-que-pp-y-vox-impondran-censura/', 'Europa Press, Sánchez promete que si sigue gobernando La Revuelta seguirá en TVE (22-10-2026)'),
+                 ('https://www.publico.es/politica/partidos/sanchez-revuelta-acuerdan-madre-suyas-subo-pensiones.html', 'Público, Sánchez en La Revuelta (23-10-2026)'),
+                 ('https://www.centroreinasofia.org/download/13929/', 'Kuric Kardelis, Gómez Miguel y Sanmartín Ortí, Barómetro Juventud y Género 2025, Centro Reina Sofía de Fad Juventud')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/sanchez-revuelta-broncano-voto-joven-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Intención de voto más simpatía al PSOE, el PP, Vox y Sumar por grupo de edad, en los nueve barómetros del CIS desde diciembre de 2025.',
+                  fuente='CIS, microdatos. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2100,6 +2118,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'sanchez-revuelta-broncano-voto-joven-29n': 'La generación Broncano',
     'republica-mapa-1936-hoy': 'Noventa años después',
     'girona-1936-participacio': 'Les urnes del 1936',
     'capitales-partidas-por-barrios': 'Ciudades partidas',
