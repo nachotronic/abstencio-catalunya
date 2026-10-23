@@ -1501,9 +1501,8 @@ PIEZAS = [
                  ('https://recyt.fecyt.es/index.php/recp/article/download/37589/21106', 'Penadés y Santiuste, La desigualdad en el sistema electoral español y el premio a la localización del voto, Revista Española de Ciencia Política 32 (2013)')],
         enlaces=[],
         lugar='Teruel',
-        foto=dict(src='img/actualidad/fotos/teruel-cha-izquierda-escano-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Votos de las listas a la izquierda del PSOE en Teruel frente a los votos que costó el tercer escaño, de 2004 a 2023.',
-                  fuente='Ministerio del Interior. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/teruel-cha-izquierda-escano-29n-ilustracion.jpg', ancho=1280, alto=720, ia=True,
+                  pie='La torre mudéjar de San Martín, en Teruel, dos papeletas separadas por un desgarro y un escaño junto a una urna.'),
     ),
     dict(
         slug='salario-minimo-provincias-feijoo-29n', fecha='2026-10-23',
