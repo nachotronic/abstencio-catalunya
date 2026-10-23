@@ -120,7 +120,7 @@ TEMAS = {
               'el censo electoral y el voto de los residentes en el extranjero.',
         piezas=TEMA_PARTICIPACION + ['barrios-donde-vota-menos-de-la-mitad', 'alquiler-ciudad-a-ciudad', 'europeas-arona', 'voto-en-blanco',
                                      'pensiones-censo-mayores-29n', 'ley-nietos-voto-exterior-29n', 'ley-nietos-donde-estan-29n',
-                                     'blocs-i-cases-girona', 'salaris-pensions-ajudes-girona', 'vox-barrios-obreros-clase-29n'],
+                                     'blocs-i-cases-girona', 'salaris-pensions-ajudes-girona', 'vox-barrios-obreros-clase-29n', 'girona-1936-participacio'],
         datos=[('elecciones/participacion-electoral-por-barrio/', 'Participación electoral por barrio en toda España'),
                ('elecciones/censo-electoral-2026/', 'Censo electoral de 2026 por provincia y municipio'),
                ('abstencion.html', '¿Quién no vota en Cataluña? La abstención sección a sección')],
@@ -128,14 +128,15 @@ TEMAS = {
     'historico': dict(
         nombre='Historia electoral',
         titulo='Historia electoral de España: las elecciones desde 1977, comunidad a comunidad',
-        intro='Las 16 elecciones generales desde 1977 y las autonómicas de cada comunidad: quién ganó, qué partidos desaparecieron '
+        intro='Las generales de la Segunda República (1933 y 1936), las 16 desde 1977 y las autonómicas de cada comunidad: quién ganó, qué partidos desaparecieron '
               'y qué municipios votan siempre igual o cambian siempre de ganador.',
         piezas=HISTORIA_CCAA + ['mapa-derecha-1977-2023', 'psoe-1982-mas-del-60', 'ucd-ciudadanos-hundimiento', 'psa-andalucistas-1979',
                                 'avila-suarez-cds', 'municipios-izquierda-1977-derecha-2023', 'pueblos-menos-votantes-que-en-1977',
                                 'censo-electoral-desde-1977', 'nunca-gano-el-psoe', 'nunca-gano-la-derecha', 'municipios-fieles',
                                 'plasencia-acierta-siempre', 'mont-roig-municipio-cambiante', 'trebujena-pce-sumar', 'voto-en-blanco',
                                 'izquierda-del-psoe-secciones', 'beiras-nacionalismo-gallego', 'psoe-andalucia-generales-autonomicas',
-                                'psoe-madrid-municipales-generales', 'europeas-solo-con-municipales', 'euskadi-empate-a-tres'],
+                                'psoe-madrid-municipales-generales', 'europeas-solo-con-municipales', 'euskadi-empate-a-tres',
+                                'republica-mapa-1936-hoy', 'girona-1936-participacio'],
         datos=[('elecciones/resultados-elecciones-por-municipio/', 'Resultados de las elecciones por municipio desde 1977'),
                ('elecciones/', 'Elecciones por comunidad y provincia, con las 16 generales desde 1977')],
         atlas=[('atlas/el-municipio-que-cambio/', 'Atlas: el municipio que cambió')]),

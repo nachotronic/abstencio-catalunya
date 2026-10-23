@@ -1708,6 +1708,23 @@ PIEZAS += [
         enlaces=[],
         lugar='Girona',
     ),
+    dict(
+        slug='girona-1936-participacio', fecha='2026-10-22', idioma='ca',
+        titulo="El 1936 Salt votava més que avui: 76 % de participació, contra el 55 % del 23J", serie='girona',
+        descripcion="A 128 dels 219 municipis de la demarcació de Girona es va votar més el febrer del 1936 que a les generals del 2023: el 77 % a Girona ciutat, contra el 62 %; el 73 % a Figueres, contra el 55 %. El 1933, la primera vegada que van votar les dones, la participació va ser deu punts més baixa.",
+        compara="Els 219 municipis actuals de la demarcació de Girona a les eleccions generals del 19 de novembre del 1933, del 16 de febrer del 1936 i del 23 de juliol del 2023: participació i candidatura guanyadora.",
+        limites="El 1936 només votaven els majors de 23 anys, i el 2023, els de 18 en amunt; la participació és sobre el cens de cada elecció. Els municipis desapareguts des del 1936 se sumen a l'actual en què es van integrar, segons l'INE. El 1933 i el 1936 es votava amb llistes obertes i diversos vots per elector; el pes de cada candidatura és la seva part dels vots a candidats. Les dades per municipi no separen el vot per sexe. Les correlacions no expliquen per què es vota menys avui. Sense vot exterior el 2023.",
+        calculo="Participació: votants sobre cens de cada elecció. Mitjana de la demarcació ponderada pel cens. Correlació de Pearson entre municipis.",
+        fuentes=[('https://doi.org/10.34810/data3274', 'Toni Rodon, Pau Vall-Prat i Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, CORA Repositori de Dades de Recerca (CC BY-NC-SA 4.0)'),
+                 INTERIOR_CA, INE_CA,
+                 ('https://www.ine.es/intercensal/', "INE, alteracions dels municipis als censos de població des del 1842"),
+                 ('https://es.ara.cat/politica/votaron-pueblo-elecciones-1936_1_5730095.html', "Aleix Moldes, «¿Qué votaron en tu pueblo en 1936?», Ara (8-5-2026)"),
+                 ('https://naciodigital.cat/politica/que-es-va-votar-durant-la-segona-republica-al-teu-poble-aixi-funciona-el-nou-atles-interactiu.html', "Nació Digital, «Què es va votar durant la Segona República al teu poble?» (7-5-2026)"),
+                 ('https://www.marxists.org/espanol/tematica/mujer/autores/campoamor/1931/oct01.htm', "Clara Campoamor, discurs a les Corts de l'1 d'octubre del 1931"),
+                 ('https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_1933', "Viquipèdia en castellà, «Elecciones generales de España de 1933» (consultada el 22-10-2026)")],
+        enlaces=[],
+        lugar='Girona',
+    ),
 ]
 
 # Serie «Bastiones y desiertos»: las cinco secciones de España con más y con menos voto de cada partido (generales 2023)
@@ -2057,9 +2074,34 @@ PIEZAS += [
     ),
 ]
 
+
+# Segunda República (1933 y 1936), con los datos del Atlas Electoral de la UPF integrados en el mapa
+PIEZAS += [
+    dict(
+        slug='republica-mapa-1936-hoy', fecha='2026-10-22',
+        titulo='El mapa de 1936 apenas se parece al de hoy: 1.545 pueblos que votaron a las derechas eligen ahora a la izquierda', serie='historia',
+        descripcion='De 7.494 municipios con datos de las generales de 1936 y 2023, 2.741 han cambiado de bloque. 1.545 pasaron de las derechas a la izquierda, sobre todo en Cataluña, Navarra y el País Vasco; 1.196, del Frente Popular a la derecha, entre ellos Madrid, Sevilla, Málaga, València y Zaragoza.',
+        compara='Los 7.494 municipios actuales con datos de las generales del 16 de febrero de 1936 y del 23 de julio de 2023. En 1936, el Frente Popular frente a las derechas (la CEDA y sus aliados, con el Front Català d\'Ordre en Cataluña). En 2023, la izquierda (PSOE, Sumar, ERC, EH Bildu y BNG) frente a la derecha y el centroderecha (PP con UPN, Vox, Junts, PNV y Coalición Canaria).',
+        limites='Los bloques de 1936 y los de 2023 no son los mismos partidos: comparamos coaliciones de entonces con sumas de partidos de ahora. Contar a Junts, PNV y CC con la derecha es una decisión; si solo se cuentan PP y Vox, los municipios que pasan de las derechas a la izquierda son 1.662. En 1936 se votaba con listas abiertas y varios votos por elector; el peso de cada bloque es su parte de los votos a candidatos. El censo de 1936 era de mayores de 23 años y el de 2023, de 18. Faltan Cuenca y Pontevedra en 1936 y hay huecos en otras provincias; los municipios desaparecidos se suman al actual en que se integraron, según el INE. Los datos de 1936 son los del Atlas, que no resuelven el debate sobre irregularidades en algunas provincias. Sin voto exterior en 2023.',
+        calculo='Bloque ganador: el que suma más porcentaje de voto en el municipio (en 1936, sobre los votos a candidatos; en 2023, sobre los votos a candidaturas). Se excluyen 12 empates. Correlación de Pearson entre el porcentaje del Frente Popular en 1936 y el de la izquierda en 2023, municipio a municipio. Participación: votantes sobre censo de cada elección, en los 4.300 municipios con las dos cifras.',
+        fuentes=[('https://doi.org/10.34810/data3274', 'Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, CORA Repositori de Dades de Recerca (CC BY-NC-SA 4.0)'),
+                 INTERIOR,
+                 ('https://www.ine.es/intercensal/', 'INE, Alteraciones de los municipios en los Censos de Población desde 1842'),
+                 ('https://es.ara.cat/politica/votaron-pueblo-elecciones-1936_1_5730095.html', 'Aleix Moldes, «¿Qué votaron en tu pueblo en 1936? El mapa electoral de la Segunda República», Ara (8-5-2026)'),
+                 ('https://ojs.ehu.eus/index.php/HC/article/download/19831/18135/76711', 'Eduardo González Calleja y Francisco Sánchez Pérez, «Revisando el revisionismo. A propósito del libro 1936. Fraude y violencia en las elecciones del Frente Popular», Historia Contemporánea 58 (2018)'),
+                 ('https://proapi.planetadelibros.com/descargas/sala-prensa-libro/sinopsis-y-biografia/244062/1936-fraude-y-violencia-en-las-elecciones-del-frente-popular.pdf', 'Espasa, sinopsis de 1936. Fraude y violencia en las elecciones del Frente Popular, de Manuel Álvarez Tardío y Roberto Villa García (2017)'),
+                 ('https://www.marxists.org/espanol/tematica/mujer/autores/campoamor/1931/oct01.htm', 'Clara Campoamor, discurso en las Cortes del 1 de octubre de 1931'),
+                 ('https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_1936', 'Wikipedia, «Elecciones generales de España de 1936» (consultada el 22-10-2026)')],
+        enlaces=[],
+        lugar='España',
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'republica-mapa-1936-hoy': 'Noventa años después',
+    'girona-1936-participacio': 'Les urnes del 1936',
     'capitales-partidas-por-barrios': 'Ciudades partidas',
     'polaritzacio-girona': "Una ciutat d'illes",
     'frontera-renta-pp-junts-pnv-29n': 'La frontera del dinero',

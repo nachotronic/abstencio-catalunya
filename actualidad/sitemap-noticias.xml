@@ -320,4 +320,12 @@
       <news:title>Sevilla vota por barrios y Lugo, mezclada: el índice que mide qué capitales están partidas por el voto</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/republica-mapa-1936-hoy/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>El mapa de 1936 apenas se parece al de hoy: 1.545 pueblos que votaron a las derechas eligen ahora a la izquierda</news:title>
+    </news:news>
+  </url>
 </urlset>
