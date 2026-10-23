@@ -153,6 +153,14 @@ TEMAS = {
                 'vivienda-preocupa-voto-sumar-29n', 'desahucios-ocupaciones-cgpj-29n', 'vivienda-inmigracion-economia-cis', 'barrios-rentistas-pp-psoe-29n', 'sanchez-revuelta-broncano-voto-joven-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España')],
         atlas=[]),
+    'sanidad-y-derechos': dict(
+        nombre='Aborto, eutanasia y sanidad',
+        titulo='Aborto, eutanasia y sanidad pública: el mapa de los derechos comunidad a comunidad',
+        intro='Dónde se aborta en un hospital público y dónde en una clínica privada, dónde se pide la eutanasia '
+              'y cómo encaja cada mapa con el voto.',
+        piezas=['feijoo-aborto-eutanasia-sanidad-publica-29n'],
+        datos=[],
+        atlas=[]),
     'inmigracion': dict(
         nombre='Inmigración y voto',
         titulo='Inmigración y voto: población nacida fuera, preocupación y voto a Vox',
