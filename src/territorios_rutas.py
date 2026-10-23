@@ -109,7 +109,7 @@ TEMAS = {
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
         piezas=TEMA_RENTA + ['barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
-                             'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n'],
+                             'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
                ('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal')],
         atlas=[]),
