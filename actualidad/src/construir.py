@@ -1231,7 +1231,7 @@ PIEZAS = [
                   pie='Una empleada pública ante su ordenador, de espaldas, junto a pilas de expedientes y de monedas.'),
     ),
     dict(
-        slug='ley-nietos-donde-estan-29n', fecha='2026-10-22', actualizado='2026-10-23',
+        slug='ley-nietos-donde-estan-29n', fecha='2026-10-22', actualizado='2026-10-23 21:37',
         titulo='El Constitucional deja sin voto a los nietos: los españoles adultos de América Latina crecen casi cinco veces más rápido y uno de cada tres está inscrito en Madrid', serie='29n',
         descripcion='Desde 2023 hay 259.711 españoles más en América nacidos allí. México manda a Madrid el 58% de los suyos; Cuba, a Canarias la mitad; Uruguay, a Galicia. En Ourense, el 31% del censo ya vive fuera.',
         compara='Los españoles residentes en el extranjero nacidos en su país de residencia, por país, entre el 1 de enero de 2021 y el de 2026, y los de 16 años o más residentes en 19 países de América Latina por provincia de inscripción, entre 2019 y 2026. Con el censo electoral de residentes en el extranjero de las generales del 29N por provincia.',
@@ -2602,9 +2602,19 @@ aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 
 
 def fecha_larga(f):
+    # f: 'AAAA-MM-DD' o, en las actualizaciones, 'AAAA-MM-DD HH:MM' (hora peninsular)
     meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-    a, m, d = f.split('-')
-    return f'{int(d)} de {meses[int(m) - 1]} de {a}'
+    dia, _, hora = f.partition(' ')
+    a, m, d = dia.split('-')
+    return f'{int(d)} de {meses[int(m) - 1]} de {a}' + (f', a las {hora.replace(":", ".")}' if hora else '')
+
+
+def fecha_iso(f):
+    """'AAAA-MM-DD HH:MM' (hora de Madrid) → ISO 8601 con zona; una fecha sola se deja como está."""
+    if ' ' not in f:
+        return f
+    from zoneinfo import ZoneInfo
+    return datetime.datetime.strptime(f, '%Y-%m-%d %H:%M').replace(tzinfo=ZoneInfo('Europe/Madrid')).isoformat()
 
 
 def nav(prefijo, actual):
@@ -2692,8 +2702,10 @@ def en_catala(out, p):
         out = out.replace(es, ca)
     out = re.sub(r'<h2>Serie «(.*?)»: (\d+) piezas</h2>', lambda m: f'<h2>Sèrie «{SERIES_CA.get(p["serie"], m.group(1))}»: {m.group(2)} peces</h2>', out)
     for f in {p['fecha'], p.get('actualizado', p['fecha'])}:
-        a, m, d = f.split('-')
-        out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}')
+        dia, _, hora = f.partition(' ')
+        a, m, d = dia.split('-')
+        out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}' + (f', a les {hora.replace(":", ".")}' if hora else ''))
+    out = out.replace(' · Actualizado el <time', ' · Actualitzat el <time')
     return out
 
 
@@ -2713,7 +2725,9 @@ def pieza(p, todas):
 
     main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {antetitulo(p)}{"" if antetitulo(p) == p["lugar"] else " · " + p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
-                  f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time></p>', main)
+                  f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time>'
+                  + (f' · Actualizado el <time datetime="{fecha_iso(p["actualizado"])}">{fecha_larga(p["actualizado"])}</time>' if p.get('actualizado', p['fecha']) != p['fecha'] else '')
+                  + '</p>', main)
     fo = p.get('foto') or SERIES_FOTO.get(p['serie'])
     principal = fo or GRAFICO_PRINCIPAL.get(p['slug'])   # el gráfico principal ya está en la pieza: solo va en NewsArticle y en el RSS
     if fo:
@@ -2774,7 +2788,7 @@ def pieza(p, todas):
 
     jsonld = {'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
-              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': p.get('actualizado', p['fecha']),
+              'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': p['fecha'], 'dateModified': fecha_iso(p.get('actualizado', p['fecha'])),
               'image': ([f"{BASE}/{principal['src']}"] if principal else []) + [imagen],   # la imagen principal (1280x720) primero, para Discover
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
@@ -2849,7 +2863,7 @@ a{color:var(--fg)}
     open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
     urls = [f'  <url><loc>{url}</loc><lastmod>{max(p["fecha"] for p in todas)}</lastmod></url>']
     urls.append(f'  <url><loc>{url}metodologia.html</loc><lastmod>{METODO_ACTUALIZADO}</lastmod></url>')
-    urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p["fecha"]}</lastmod></url>' for p in (sitemap or todas)]
+    urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p.get("actualizado", p["fecha"])[:10]}</lastmod></url>' for p in (sitemap or todas)]
     open(os.path.join(RAIZ, 'actualidad', 'sitemap.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n')
     # Google News: solo piezas de los dos últimos días (norma de Google), como atlas/sitemap-noticias.xml
