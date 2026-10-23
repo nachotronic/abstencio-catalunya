@@ -1546,9 +1546,8 @@ PIEZAS = [
                  ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/ivan-redondo-12-millones-derecha-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Votos a PP, Vox, Ciudadanos, UPyD y UPN o Navarra Suma en las generales de 2004 a 2023, en millones.',
-                  fuente='Ministerio del Interior. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/ivan-redondo-12-millones-derecha-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Iván Redondo, junto a una lupa sobre tablas de resultados.'),
     ),
 ]
 
