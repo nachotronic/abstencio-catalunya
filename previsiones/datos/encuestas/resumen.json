@@ -1,5 +1,5 @@
 {
- "descargado": "2026-10-23T07:05Z",
+ "descargado": "2026-10-23T12:20Z",
  "fuente": "https://www.electografica.com",
  "encuestas_espana": 1048,
  "encuestas_infraestatales": 137,
@@ -11,6 +11,7 @@
  },
  "siglas_sin_equivalencia": {
   "Autonómicas - CUP": 2,
+  "CCa-1ºCAN": 2,
   "JxSí": 1,
   "CSQP": 1,
   "CeC": 1,
