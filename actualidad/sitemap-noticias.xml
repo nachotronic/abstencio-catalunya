@@ -145,6 +145,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/teruel-cha-izquierda-escano-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>CHA se retira en Teruel: la única vez que la izquierda tuvo votos para un escaño fue en 2015, y fue dividida</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/barrios-donde-vota-menos-de-la-mitad/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
