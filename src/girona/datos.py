@@ -7,8 +7,10 @@ Uso: python3 src/girona/datos.py DIR_IRRV SECCIONES_2019_2024
   DIR_IRRV: carpeta con irrv_<elección>.csv de Transparència Catalunya (dataset irrv-2mfc, todos los niveles)
   SECCIONES_2019_2024: secciones_elecciones_2019_2024.csv (municipales 2023 y Parlament 2024 por sección)
 Comarcas: src/girona/comarcas.json (Idescat, api.idescat.cat/emex/v1/nodes.json?tipus=com,mun).
+Votos nulos y en blanco: raw_poll_stations_congress_<elección>.parquet de pollspaindata (inst/extdata), en la carpeta
+de la variable POLLSPAIN (por defecto /tmp/pollspaindata/inst/extdata). Si no está, ese bloque se salta.
 """
-import sys, json, pathlib
+import os, sys, json, pathlib
 import numpy as np, pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
@@ -93,10 +95,46 @@ order = np.argsort(-np.abs(b[1:]))
 R['reg'] = dict(r2=float(r2), n=len(d), coef=[dict(var=X[i], b=float(b[i + 1] * 100), se=float(se[i + 1] * 100), sd=float(d[X[i]].std())) for i in order])
 R['corr'] = {v: float(g[[v, 'turnout']].corr().iloc[0, 1]) for v in X}
 
+
+# ---- comprobación del modelo: efectos fijos de comarca o de municipio y errores agrupados por municipio
+def ols_fe(fe):
+    D = pd.get_dummies(d[fe], drop_first=True, dtype=float)
+    M = np.column_stack([Z.values, D.values]); Aw = M * W[:, None]
+    bb, *_ = np.linalg.lstsq(Aw, y, rcond=None)
+    u = (d.turnout.values - M @ bb) * W
+    inv = np.linalg.pinv(Aw.T @ Aw); cl = pd.factorize(d.mun_code)[0]; G = cl.max() + 1
+    S = np.zeros_like(inv)
+    for k in range(G):
+        sk = Aw[cl == k].T @ u[cl == k]; S += np.outer(sk, sk)
+    V = inv @ S @ inv * G / (G - 1) * (len(d) - 1) / (len(d) - M.shape[1])
+    return [dict(var=X[i], b=float(bb[i + 1] * 100), se=float(np.sqrt(V[i + 1, i + 1]) * 100)) for i in range(len(X))]
+d = d.assign(com=d.mun_code.map(COM))
+R['reg_fe'] = {'comarca': ols_fe('com'), 'municipio': ols_fe('mun_code')}
+
+# ---- Girona frente a otras ciudades catalanas: participación del quintil de renta más pobre y más rico
+R['ciudades_quint'] = {}
+for c in ['Barcelona', 'Girona', 'Lleida', 'Tarragona', 'Reus', 'Sabadell', 'Terrassa']:
+    x = cat[cat.mun_name == c].dropna(subset=['net_income_equiv'])
+    t = x.groupby(pd.qcut(x.net_income_equiv, 5, labels=False)).apply(lambda z: z.voters.sum() / z.electorate.sum())
+    R['ciudades_quint'][c] = dict(q1=float(t.iloc[0]), q5=float(t.iloc[-1]), n=len(x))
+
 # ---- caída 2019 → 2023 por cuartil de voto independentista
 R['indep'] = [dict(lo=float(x.indep_share19.min()), hi=float(x.indep_share19.max()), t19=float((x.t2019_11 * x.electorate).sum() / x.dropna(subset=['t2019_11']).electorate.sum()),
                    t23=float(x.voters.sum() / x.electorate.sum())) for _, x in g.dropna(subset=['indep_share19']).groupby(pd.qcut(g.indep_share19, 4, labels=False))]
 R['drop_total'] = hist(g)[3] - g.voters.sum() / g.electorate.sum()
+# ---- 2019 → 2023: votos nulos y en blanco por cuartil de voto independentista (cuentan como participación)
+PS = pathlib.Path(os.environ.get('POLLSPAIN', '/tmp/pollspaindata/inst/extdata'))
+if (PS / 'raw_poll_stations_congress_2023_07.parquet').exists():
+    gi4 = g.dropna(subset=['indep_share19']).set_index('tract_code')
+    q4 = pd.qcut(gi4.indep_share19, 4, labels=False)
+    R['nulos'] = {}
+    for k in ['2019_11', '2023_07']:
+        p = pd.read_parquet(PS / f'raw_poll_stations_congress_{k}.parquet'); p = p[p.cod_INE_prov == '17']
+        p['tract_code'] = p.cod_INE_prov + p.cod_INE_mun + p.cod_mun_district + p.cod_sec
+        s_ = p.groupby('tract_code')[['blank_ballots', 'invalid_ballots', 'census_counting']].sum().reindex(gi4.index)
+        z = pd.DataFrame({'nb': s_.blank_ballots + s_.invalid_ballots, 'c': s_.census_counting, 'q': q4}).dropna().groupby('q').sum()
+        R['nulos'][k] = [float(v) for v in z.nb / z.c]
+
 R['indep19'] = float(np.average(g.indep_share19.dropna(), weights=g.dropna(subset=['indep_share19']).electorate))
 
 # ---- historia por tamaño de municipio (generales, secciones con el mismo código)
@@ -106,6 +144,12 @@ R['size_hist'] = {str(k): hist(x) for k, x in g.groupby('size', observed=True)}
 # ---- secciones con menos participación
 R['low'] = g[g.electorate > 300].sort_values('turnout').head(10)[['tract_code', 'mun_name', 'turnout', 'pct_ad_vota', 'pct_ad_sinderecho', 'net_income_equiv',
                                                                   'pct_foreign', 'pct_higher_ed_completed', 'unemployment_rate', 'electorate']].to_dict('records')
+# la sección más baja: menores, mayores y en cuántas de las 12 elecciones es la que menos vota de la provincia
+ev0 = pd.read_csv(ROOT / 'data' / 'evolucion_secciones.csv', dtype={'tract_code': str}).set_index('tract_code')
+ev0 = ev0[ev0.index.str[:2] == '17']
+lo = g.set_index('tract_code').loc[R['low'][0]['tract_code']]
+R['low_perfil'] = dict(tract_code=lo.name, population=float(lo.population), pct_under18=float(lo.pct_under18), pct_over65=float(lo.pct_over65),
+                       rank=[int(ev0[c].rank()[lo.name]) for c in EL], n_elec=len(EL))
 
 # ---- ciudad de Girona: quintiles de renta dentro de la ciudad
 gi = g[g.mun_name == 'Girona']
@@ -129,6 +173,8 @@ e['size'] = pd.cut(e.mun_code.map(popm), [0, 2000, 10000, 30000, 1e7], labels=['
 R['mun_size'] = {str(k): dict(mstats(x), n=int(x.mun_code.nunique())) for k, x in e.groupby('size', observed=True)}
 R['mun_towns'] = {t: mstats(e[e.mun_name == t]) for t in TOWNS + ['Roses', "Castell d'Aro, Platja d'Aro i s'Agaró", "Escala, L'", 'Torroella de Montgrí', 'Puigcerdà']}
 R['mun_prov'] = mstats(e)
+R['perfil_towns'] = {t: dict(under18=float(np.average(x.pct_under18, weights=x.population)), single_hh=float(np.average(x.pct_single_hh, weights=x.population)))
+                     for t, x in g[g.mun_name.isin(['Salt', 'Lloret de Mar'])].groupby('mun_name')}
 dq = pd.qcut(e.net_income_equiv, 10, labels=False)
 R['deciles'] = [dict(d=int(k) + 1, lo=float(x.net_income_equiv.min()), hi=float(x.net_income_equiv.max()), g=round(part(x, 'g2023'), 3),
                      m=round(part(x, 'm2023'), 3), p=round(part(x, 'p2024'), 3)) for k, x in e.groupby(dq)]
@@ -179,4 +225,7 @@ pr('deciles', [(d['d'], d['g'], d['m'], d['p']) for d in R['deciles']])
 pr('evo', R['evo_prov']); pr('evo q', R['evo_q']); pr('evo drop', R['evo_drop'])
 pr('comarcas', json.dumps({k: {a: (round(b, 3) if not isinstance(b, list) else None) for a, b in v.items()} for k, v in R['comarcas'].items()}, ensure_ascii=False))
 pr('muni10k', [(r['mun_name'], round(r['vota'], 3), round(r['sinp'], 3), round(r['t'], 3)) for r in R['muni10k']])
+pr('reg_fe', {k: [(c['var'], round(c['b'], 2), round(c['se'], 2)) for c in v] for k, v in R['reg_fe'].items()})
+pr('ciudades_quint', {k: (round(v['q1'], 3), round(v['q5'], 3), v['n']) for k, v in R['ciudades_quint'].items()})
+pr('low_perfil', R['low_perfil']); pr('perfil_towns', R['perfil_towns']); pr('nulos', R.get('nulos'))
 pr('compare', [(c['name'], round(c['vota'], 3), round(c['sin'], 3), round(c['turnout'], 3), round(c['income']), round(c['foreign'], 3), round(c['univ'], 3), [round(h, 3) for h in c['hist']]) for c in R['compare']])

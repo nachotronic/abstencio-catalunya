@@ -15,7 +15,7 @@ import base64, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 HERE = ROOT / 'src' / 'girona'
 BASE = 'https://mapaelectoral.es/'
-PUBLISHED, MODIFIED = '2026-10-13', '2026-10-13'
+PUBLISHED, MODIFIED = '2026-10-13', '2026-10-23T22:30:00+02:00'
 START, END = '<div class="wide">\n<header class="col">', '<script src="https://unpkg.com/deck.gl'
 
 R = json.load(open(HERE / 'resumen.json', encoding='utf-8'))
@@ -143,7 +143,7 @@ def seo(lang, analytics, verif):
         'license': 'https://creativecommons.org/licenses/by/4.0/', 'isAccessibleForFree': True, 'keywords': t['kw'],
         'contentLocation': {'@type': 'Place', 'name': t['place']},
         'citation': ['https://github.com/dadosdelaplace/pollspain', 'https://github.com/pablogguz/ineAtlas.data', 'https://analisi.transparenciacatalunya.cat/d/irrv-2mfc',
-                     'https://www.ciemen.cat/wp-content/uploads/2026/07/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf'],
+                     'https://www.ciemen.cat/wp-content/uploads/2026/10/El-dret-de-vot-de-les-persones-immigrades-a-Catalunya.pdf'],
         'isPartOf': {'@id': BASE + ('abstencion.html' if lang == 'es' else 'ca.html') + '#article'},
         'workTranslation' if lang == 'es' else 'translationOfWork': {'@id': BASE + other['url'] + '#article'}}]}
     e = lambda x: x.replace('&', '&amp;').replace('"', '&quot;')
