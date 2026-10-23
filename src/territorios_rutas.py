@@ -136,7 +136,8 @@ TEMAS = {
                                 'plasencia-acierta-siempre', 'mont-roig-municipio-cambiante', 'trebujena-pce-sumar', 'voto-en-blanco',
                                 'izquierda-del-psoe-secciones', 'beiras-nacionalismo-gallego', 'psoe-andalucia-generales-autonomicas',
                                 'psoe-madrid-municipales-generales', 'europeas-solo-con-municipales', 'euskadi-empate-a-tres',
-                                'republica-mapa-1936-hoy', 'girona-1936-participacio'],
+                                'republica-mapa-1936-hoy', 'girona-1936-participacio', 'lorca-fuente-vaqueros-viznar-1936', 'pueblos-guerra-civil-voto-1936',
+                                'mujeres-1933-frente-popular-1936', 'fieles-1936-izquierda-derecha'],
         datos=[('elecciones/resultados-elecciones-por-municipio/', 'Resultados de las elecciones por municipio desde 1977'),
                ('elecciones/', 'Elecciones por comunidad y provincia, con las 16 generales desde 1977')],
         atlas=[('atlas/el-municipio-que-cambio/', 'Atlas: el municipio que cambió')]),
@@ -286,7 +287,8 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
-EXCLUIR_PIEZA = {'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'}}
+EXCLUIR_PIEZA = {'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'},
+                 'lorca-fuente-vaqueros-viznar-1936': {'30024'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}}
 # Comunidades y provincias con el mismo nombre que su capital: solo cuentan como municipio con «ciudad de» delante
 # o si la pieza es de esa ciudad (ACTUALIDAD_MUNICIPIO). Así «la Comunidad de Madrid» o «la provincia de Sevilla» no enlazan la ciudad.
 AMBIGUOS = {slug(x) for n in PROV_NOMBRE.values() for x in n.split('/')} | {'valencia', 'castellon', 'alicante'}
