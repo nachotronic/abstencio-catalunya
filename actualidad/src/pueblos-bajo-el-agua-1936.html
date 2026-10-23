@@ -1,0 +1,133 @@
+<title>Los pueblos bajo el agua</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--fp:#b3001b;--der:#24366b;--sumar:#a2275f;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--fp:#ff6b70;--der:#7d8fc9;--sumar:#d0679a;--neu:#3aa6bf}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--fp:#ff6b70;--der:#7d8fc9;--sumar:#d0679a;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>.mapa svg path.p{fill:var(--other);stroke:var(--bg);stroke-width:.6}.mapa circle{stroke:var(--bg);stroke-width:.6;fill-opacity:.85}.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px}.mini h3{font-family:var(--ui);font-size:1rem;margin:0;font-weight:600}@media (max-width:520px){.mini{grid-template-columns:1fr}}</style>
+<style>.mapa-img{width:100%;height:auto;display:block}.sw.dd{background:color-mix(in srgb,var(--der) 32%,var(--bg))}.sw.ii{background:color-mix(in srgb,var(--fp) 32%,var(--bg))}.sw.di{background:var(--psoe)}.sw.id{background:var(--pp)}.cita{border-left:3px solid var(--fp);padding:.2em 0 .2em 1em;margin:1.4em 0;font-size:1.08rem}</style>
+<style>.cita{border-left:3px solid var(--fp);padding:.2em 0 .2em 1em;margin:1.4em 0;font-size:1.08rem}.foto-h{margin:1.6em 0}.foto-h img{width:100%;height:auto;display:block;border-radius:4px}.foto-h figcaption{font:13px/1.45 var(--ui);color:var(--muted);margin-top:.5em}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Riaño dio el 86 % a las derechas en 1936; Mequinenza, el 89 % al Frente Popular. Así votaban los pueblos que se tragaron los pantanos</h1>
+<p class="dek">Dieciocho pueblos que votaron en febrero de 1936 y que después quedaron bajo un embalse, o desalojados para hacerlo. Había 12.014 electores. Ganaron las derechas en 12 y el Frente Popular en 5. Hoy, donde quedan, se vota de otra manera, y en algunos ya no vota nadie.</p>
+<div class="byline">Nacho G. del Álamo · 23 de octubre de 2026</div>
+<p data-tipo="contexto" style="margin-top:1.4rem">Es noviembre de 1984 en Riaño, en la montaña de León. Llueve y la niebla tapa la sierra al fondo de la calle. Hay coches aparcados en la acera, un Renault rojo en primer plano, y tres vecinos que caminan por el centro de la calzada. A la izquierda, el cartel del Hostal Riaño; a la derecha, el de un café y una galería de madera que se cae a pedazos. La foto es de Rafaelji, que la publicó en la Enciclopedia Libre. Es una de las últimas imágenes del pueblo.</p>
+<p data-tipo="contexto">En julio de 1987 empezaron a derribar las casas de nueve pueblos del valle: Anciles, Salio, Huelde, Éscaro, La Puerta, Burón, Pedrosa del Rey, Riaño y Vegacerneja, según la <a href="https://es.wikipedia.org/wiki/Embalse_de_Ria%C3%B1o">Wikipedia</a>. Durante el desalojo murió en su casa un vecino de Riaño, Simón Pardo, «Mones»; la misma fuente lo describe como «el suicidio de un vecino de Riaño». Hubo manifestaciones, cargas policiales y ocupación del valle. «Las compuertas del embalse de Riaño se cerraron el 31 de diciembre de 1987».</p>
+<p data-tipo="dato">Medio siglo antes, el 16 de febrero de 1936, el municipio de Riaño tenía 1.132 electores. Votó el 71%. Las derechas sacaron el 85,9% de los votos a candidatos y el Frente Popular, el 13,6%, según el <a href="https://doi.org/10.34810/data3274">Atlas Electoral de la Segunda República</a> de la Universitat Pompeu Fabra. En Pedrosa del Rey, que era municipio propio y hoy es parte de Riaño, las derechas llegaron al 93,8%.</p>
+<figure class="foto-h"><img src="../../img/actualidad/republica/mequinenza-1987.jpg" width="1280" height="820" alt="Casas abandonadas del pueblo viejo de Mequinenza en una ladera de bancales, con el castillo arriba y el agua verde del embalse abajo." loading="lazy" decoding="async"><figcaption>Las casas que quedaron del pueblo viejo de Mequinenza y el castillo, sobre el embalse, en diciembre de 1987. Foto: <a href="https://commons.wikimedia.org/wiki/File:Mequinenza_1987_02.jpg">LBM1948, CC BY-SA 4.0, vía Wikimedia Commons</a>.</figcaption></figure>
+
+<h2>Seiscientas presas</h2>
+<p data-tipo="contexto">El franquismo hizo del pantano un símbolo. Erik Swyngedouw, geógrafo de la Universidad de Mánchester, lo estudió en <i>Liquid Power</i>, un libro sobre el agua y la modernización de España. Según la <a href="https://www.penguin.co.nz/books/liquid-power-9780262548960">presentación del libro</a>, el régimen «incluyó seiscientas presas, la expansión de la hidroelectricidad y el regadío masivo» (traducción propia). Unos quinientos pueblos de España están hoy bajo el agua, según el cálculo que recoge Águeda García de Durango en <a href="https://www.iagua.es/blogs/agueda-garcia-de-durango/pueblos-sumergidos">iAgua</a>.</p>
+<p data-tipo="contexto">No todos eran municipios. Muchos eran aldeas, y la mayoría eran tan pequeños que nadie publicó nunca sus resultados electorales. Pero el Atlas tiene los de 1936 de los municipios que existían entonces, también de los que ya no existen. Hemos buscado los que quedaron bajo un embalse o se vaciaron por uno, y hemos encontrado dieciocho con datos. Son pocos, y no son una muestra de nada: son los que tienen nombre en las dos listas.</p>
+<figure>
+<figcaption><span class="t">Dieciocho pueblos que se llevó el agua</span><span class="s">Voto en las generales de febrero de 1936 y, en julio de 2023, en el municipio al que pertenecen hoy</span></figcaption>
+<div class="chart" id="agua"></div>
+<div class="legend"><span><i class="sw" style="background:var(--fp)"></i>Frente Popular, 1936</span><span><i class="sw" style="background:var(--other)"></i>Centro, 1936</span><span><i class="sw" style="background:var(--der)"></i>Derechas, 1936</span><span><i class="sw" style="background:var(--psoe)"></i>Izquierda, 2023</span><span><i class="sw" style="background:var(--pp)"></i>Derecha, 2023</span></div>
+<div class="src">Fuente: Atlas Electoral de la Segunda República (UPF); Ministerio del Interior. En 1936, porcentaje sobre los votos a candidatos. En 2023, izquierda: PSOE, Sumar, ERC, EH Bildu y BNG; derecha: PP, Vox, Junts, PNV y CC; el resto, otros partidos (en Castellote, sobre todo Teruel Existe). Embalse y año, según la Wikipedia de cada pueblo. Cálculo propio.</div>
+</figure>
+<p data-tipo="dato">De los dieciocho, las derechas ganaron en 12, el Frente Popular en 5 y el centro en uno, Portomarín. Las mayores victorias de las derechas fueron en pueblos de montaña de muy pocos electores: Lanuza, en el Pirineo de Huesca, con 119 electores y el 98,8%; Santolea, en Teruel, con el 97,8%; Pedrosa del Rey, en León, con el 93,8%, y Vegamián, también en León, con el 92,4%.</p>
+<p data-tipo="patron">Las victorias del Frente Popular están en pueblos de valle, de minas o de jornaleros: Mequinenza, Fayón, Linares del Arroyo, Granadilla y Peñarrubia. No hay un patrón que relacione el voto de 1936 con el embalse que vino después. Los pantanos se hicieron donde había un río y un valle estrecho, no donde se votaba de una manera u otra.</p>
+
+<h2>Mequinenza, la de las minas</h2>
+<p data-tipo="dato">Mequinenza era el más grande de los dieciocho: 1.968 electores. En febrero de 1936 votó el 68%, y el Frente Popular sacó el 88,6%, el más alto de Aragón entre los municipios de más de 1.500 electores. Las derechas se quedaron en el 11,2%.</p>
+<p data-tipo="contexto">Era un pueblo de mineros y llaüters, los barqueros del Ebro. La gente «trabajaba principalmente en la extracción de lignito de las minas» y llevaba el carbón en barcas por el río, según la <a href="https://es.wikipedia.org/wiki/Pueblo_Viejo_de_Mequinenza">Wikipedia</a>. «La construcción de la presa de Ribarroja supuso la desaparición de la mayor parte del casco urbano». Los vecinos tuvieron que «abandonar sus casas y presenciar su derribo». En 1967, «la apertura del embalse de Ribarroja anegó el pueblo de Mequinenza y el pueblo viejo de Fayón», recoge la <a href="https://es.wikipedia.org/wiki/Fay%C3%B3n">misma enciclopedia</a>. El escritor Jesús Moncada, nacido allí, contó aquel final en su novela <i>Camí de sirga</i> (1988).</p>
+<p data-tipo="dato">En julio de 2023, Mequinenza tenía 1.720 electores, menos que en 1936. La izquierda sumó el 54,1% y la derecha, el 41,3%. El PSOE, con el 38,6%, fue el más votado. Fayón, que en 1936 tenía 807 electores y dio el 57,3% al Frente Popular, tiene hoy 273.</p>
+
+<h2>Talavera la Vieja, Granadilla y Peñarrubia</h2>
+<p data-tipo="dato">Talavera la Vieja, en Cáceres, tenía 755 electores en 1936. Votó el 83% y dio el 67,0% a las derechas. Las aguas del embalse de Valdecañas la cubrieron en 1963.</p>
+<p data-tipo="contexto">Un decreto de diciembre de 1964 acordó «la disolución del Municipio de Talavera la Vieja». Sus vecinos «fueron realojados en diversos pueblos que creó el Instituto de la Vivienda», entre ellos Rosalejo y Tiétar, y muchos otros se fueron a Barcelona y a Madrid, según la <a href="https://es.wikipedia.org/wiki/Talavera_la_Vieja">Wikipedia</a>. Su término es hoy de Bohonal de Ibor, donde en 2023 la derecha sumó el 54,3%.</p>
+<p data-tipo="dato">Granadilla, también en Cáceres, votó lo contrario: 477 electores, el 88% de participación y el 56,2% para el Frente Popular. El Consejo de Ministros decretó en 1955 la expropiación de casi todo su término para el embalse de Gabriel y Galán. Los últimos vecinos se fueron en 1964. El agua nunca llegó a cubrirlo: se quedó aislado en una península, y hoy se visita como pueblo restaurado, según la <a href="https://es.wikipedia.org/wiki/Granadilla_(C%C3%A1ceres)">Wikipedia</a>.</p>
+<p data-tipo="dato">Peñarrubia, en Málaga, tenía 1.020 electores y dio el 71,5% al Frente Popular. «A partir de 1971, fue desalojado para construir el embalse de Guadalteba», y en 1973 dejó de ser municipio: su término pasó a Campillos, según la <a href="https://es.wikipedia.org/wiki/Pe%C3%B1arrubia_(M%C3%A1laga)">Wikipedia</a>. Casi todos sus 1.800 vecinos se fueron a una barriada nueva de Málaga, Santa Rosalía. Campillos dio en 2023 el 57,1% a la izquierda.</p>
+
+<h2>Jánovas, el pantano que no se hizo</h2>
+<p data-tipo="dato">Albella y Jánovas, en el Sobrarbe, tenía 549 electores en 1936. Votó el 51% y dio el 57,6% a las derechas y el 40,1% al Frente Popular.</p>
+<p data-tipo="contexto">A Jánovas lo vaciaron para un embalse que nunca se construyó. En febrero de 1966, un empleado de Iberduero sacó de la escuela, agarrada del pelo, a la maestra que daba clase a los once niños del pueblo, cuenta Eduardo Bayona en <a href="https://www.publico.es/sociedad/paca-castillo-mujer-mantuvo-vivo-pueblo.html">Público</a>. «Te dije ayer que no volvieras a abrirla», le dijo. La escuela no volvió a abrir. La familia de Paca Castillo y Emilio Garcés resistió sola hasta 1984. El proyecto se rechazó en 2001 por su impacto ambiental.</p>
+<p class="cita" data-tipo="contexto">«Nos arruinaron la vida. Con estos tiburones no hay quien salga».<br><small>Paca Castillo, vecina de Jánovas, en <i>Salvados</i>, citada por <a href="https://www.publico.es/sociedad/paca-castillo-mujer-mantuvo-vivo-pueblo.html">Público</a>.</small></p>
+<p data-tipo="dato">Jánovas es hoy parte de Fiscal, donde en 2023 la derecha sumó el 50,9% y la izquierda, el 45,1%. Sus antiguos vecinos han recuperado la mayor parte de las propiedades expropiadas y rehacen algunas casas.</p>
+
+<h2>Yesa: un balneario y un pueblo del sindicato</h2>
+<p data-tipo="dato">El embalse de Yesa, en el límite de Zaragoza y Navarra, se llevó tres municipios con datos en el Atlas. Tiermas, con 458 electores, dio el 53,0% a las derechas y el 46,2% al Frente Popular. Escó, con 164, el 68,9% a las derechas. Ruesta, con 287, el 82,9%.</p>
+<p data-tipo="contexto">Tiermas tenía unos baños de aguas sulfurosas, que reaparecen «cuando el nivel de las aguas lo permite, generalmente desde el mes de septiembre en adelante», según la <a href="https://es.wikipedia.org/wiki/Tiermas">Wikipedia</a>. Hoy es de Sigüés, un municipio de 66 electores. Ruesta «fue deshabitada debido a la construcción del embalse de Yesa». La Confederación Hidrográfica del Ebro cedió su uso al sindicato CGT, nacido de una escisión de la CNT (<a href="https://es.wikipedia.org/wiki/Ruesta">Wikipedia</a>). El pueblo que en 1936 dio el 82,9% a las derechas es hoy un pueblo de anarcosindicalistas.</p>
+
+<h2>Pirineo, León y Castilla</h2>
+<p data-tipo="contexto">Mediano, en Huesca, quedó inundado el 29 de abril de 1969 «por las fuertes lluvias y la apertura del embalse». El campanario de su iglesia sigue asomando por encima del agua (<a href="https://es.wikipedia.org/wiki/Mediano_(Huesca)">Wikipedia</a>). En 1936 tenía 161 electores, y las derechas ganaron por menos de un punto: 50,2% contra 49,3%.</p>
+<p data-tipo="contexto">Vegamián, en León, «desapareció definitivamente el 23 de junio de 1969, bajo las aguas del embalse Juan Benet», con sus aldeas (<a href="https://es.wikipedia.org/wiki/Vegami%C3%A1n">Wikipedia</a>). Lanuza se vació con la construcción de su embalse en 1976, y en los años noventa sus antiguos vecinos «consiguieron recuperar las propiedades no sumergidas» (<a href="https://es.wikipedia.org/wiki/Lanuza">Wikipedia</a>). Santolea perdió su vega a orillas del Guadalope, y Linares del Arroyo, en Segovia, «desapareció anegada por el embalse de Linares a mediados del siglo XX» (<a href="https://es.wikipedia.org/wiki/Santolea">Wikipedia</a>; <a href="https://es.wikipedia.org/wiki/Linares_del_Arroyo">Wikipedia</a>).</p>
+<p data-tipo="contexto">El último de la lista no es de Franco. Tiurana, en Lleida, fue «abandonada en 1999 por motivo de la construcción del pantano de Rialb», y el pueblo nuevo se inauguró en 2007 (<a href="https://es.wikipedia.org/wiki/Tiurana">Wikipedia</a>). En 1936 tenía 262 electores. En 2023, 57. Portomarín, en Lugo, se trasladó en 1962 por el embalse de Belesar; las piedras de su iglesia de San Nicolás «fueron numeradas y ensambladas de nuevo» en el pueblo nuevo (<a href="https://es.wikipedia.org/wiki/Portomar%C3%ADn">Wikipedia</a>).</p>
+
+<h2>Lo que queda</h2>
+<p data-tipo="dato">Los dieciocho pueblos pertenecen hoy a 16 municipios. En 7 de ellos ganó la izquierda en julio de 2023 y en los demás, la derecha. Riaño, que en 1936 dio el 85,9% a las derechas, tiene hoy 421 electores y dio a la derecha el 52,3%, con el PP en el 39,8%.</p>
+<p data-tipo="patron">Los votos de 1936 y los de 2023 no son los mismos vecinos ni el mismo lugar. Algunos de estos municipios absorbieron a otros pueblos, y otros perdieron casi toda su población. Comparar a Ruesta en 1936 con Urriés en 2023, donde votan 42 personas, es comparar dos cosas distintas.</p>
+
+<h2>Lo que estos datos no dicen</h2>
+<p data-tipo="contexto">Los dieciocho pueblos son los que hemos podido identificar en el Atlas con un embalse documentado; no son todos. Faltan las aldeas que no eran municipio, como casi todas las del valle de Riaño, y los municipios sin datos de 1936. El voto de un pueblo no explica por qué se hizo allí un pantano. En 1936 se votaba con listas abiertas y varios votos por elector; el peso de cada bloque es su parte de los votos a candidatos. El censo era de mayores de 23 años. Los datos de 2023 son del municipio entero al que pertenece hoy cada pueblo, no del pueblo.</p>
+<p data-tipo="contexto">En la foto de 1984, el cartel del Hostal Riaño todavía cuelga sobre la calle. Tres años después, la calle estaba bajo el agua. En 1936 votaron allí 803 personas. Hoy, en el Riaño nuevo, en un alto sobre el embalse, votan 332.</p>
+<p><a href="https://mapaelectoral.es/">Mira 1933 y 1936 en tu municipio, en el mapa</a> · Más: <a href="https://mapaelectoral.es/actualidad/republica-mapa-1936-hoy/">El mapa de 1936 apenas se parece al de hoy</a> · <a href="https://mapaelectoral.es/actualidad/pueblos-guerra-civil-voto-1936/">Los pueblos de la guerra</a></p>
+<div class="foot">Datos: Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, DOI 10.34810/data3274, licencia CC BY-NC-SA 4.0; Ministerio del Interior, generales de 2023 (Infoelectoral, vía pollspaindata), sin voto exterior. Cálculo propio.</div>
+</main>
+<script>
+const D={"f":[["Mequinenza","Zaragoza","Ribarroja, 1967","1.968",{"FP":88.6,"CEN":0.2,"DER":11.2},"Mequinenza",{"IZQ":54.1,"DER":41.3}],["Peñarrubia","Málaga","Guadalteba, 1971","1.020",{"FP":71.5,"CEN":0.0,"DER":28.5},"Campillos",{"IZQ":57.1,"DER":41.2}],["Linares del Arroyo","Segovia","Linares, 1951","299",{"FP":62.2,"CEN":0.8,"DER":36.6},"Maderuelo",{"IZQ":40.0,"DER":57.5}],["Portomarín","Lugo","Belesar, 1962","2.254",{"FP":0.0,"CEN":50.3,"DER":41.0},"Portomarín",{"IZQ":29.2,"DER":70.0}],["Fayón","Zaragoza","Ribarroja, 1967","807",{"FP":57.3,"CEN":0.5,"DER":42.1},"Fayón",{"IZQ":52.7,"DER":42.8}],["Granadilla","Cáceres","Gabriel y Galán; no se inundó, 1964","477",{"FP":56.2,"CEN":0.0,"DER":43.8},"Mohedas de Granadilla",{"IZQ":52.2,"DER":45.4}],["Mediano","Huesca","Mediano, 1969","161",{"FP":49.3,"CEN":0.0,"DER":50.2},"La Fueva",{"IZQ":47.2,"DER":45.9}],["Tiermas","Zaragoza","Yesa","458",{"FP":46.2,"CEN":0.8,"DER":53.0},"Sigüés",{"IZQ":42.0,"DER":50.0}],["Albella y Jánovas","Huesca","Jánovas, nunca construido","549",{"FP":40.1,"CEN":0.6,"DER":57.6},"Fiscal",{"IZQ":45.1,"DER":50.9}],["Tiurana","Lleida","Rialb, 1999","262",{"FP":39.8,"CEN":0.1,"DER":60.0},"Tiurana",{"IZQ":21.4,"DER":66.7}],["Talavera la Vieja","Cáceres","Valdecañas, 1963","755",{"FP":33.0,"CEN":0.0,"DER":67.0},"Bohonal de Ibor",{"IZQ":44.4,"DER":54.3}],["Escó","Zaragoza","Yesa","164",{"FP":29.6,"CEN":1.5,"DER":68.9},"Sigüés",{"IZQ":42.0,"DER":50.0}],["Ruesta","Zaragoza","Yesa","287",{"FP":15.0,"CEN":2.1,"DER":82.9},"Urriés",{"IZQ":65.4,"DER":26.9}],["Riaño","León","Riaño, 1987","1.132",{"FP":13.6,"CEN":0.5,"DER":85.9},"Riaño",{"IZQ":27.2,"DER":52.3}],["Vegamián","León","Porma, 1969","698",{"FP":6.4,"CEN":0.6,"DER":92.4},"Boñar",{"IZQ":44.1,"DER":42.7}],["Pedrosa del Rey","León","Riaño, 1987","278",{"FP":5.1,"CEN":1.0,"DER":93.8},"Riaño",{"IZQ":27.2,"DER":52.3}],["Santolea","Teruel","Santolea, 1970","326",{"FP":1.7,"CEN":0.1,"DER":97.8},"Castellote",{"IZQ":32.7,"DER":39.0}],["Lanuza","Huesca","Lanuza, 1976","119",{"FP":1.2,"CEN":0.0,"DER":98.8},"Sallent de Gállego",{"IZQ":36.8,"DER":58.5}]]};
+const NS='http://www.w3.org/2000/svg';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+const c1=v=>v.toFixed(1).replace('.',',');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+(function(){const box=document.getElementById('agua');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),narrow=W<520,bh=12,gap=3,rh=2*bh+gap+(narrow?22:10),m={l:narrow?6:150,r:6,t:4,b:4},H=m.t+m.b+D.f.length*rh;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto en 1936 de dieciocho pueblos anegados o expropiados por embalses, y voto en 2023 del municipio al que pertenecen'},box);
+ const C1={FP:'var(--fp)',CEN:'var(--other)',DER:'var(--der)'},C2={IZQ:'var(--psoe)',DER:'var(--pp)'};
+ D.f.forEach((f,i)=>{const y0=m.t+i*rh+(narrow?16:0);
+  el('text',{x:narrow?m.l:m.l-8,y:narrow?y0-4:y0+bh+2,'text-anchor':narrow?'start':'end','font-size':12,'font-weight':600,class:'lab'},svg).textContent=f[0];
+  [[f[4],C1,'1936'],[f[6],C2,'2023']].forEach(([v,C,yr],j)=>{const y=y0+j*(bh+gap);let x0=m.l;const w0=W-m.l-m.r;
+   el('rect',{x:m.l,y,width:w0,height:bh,fill:'var(--grid)'},svg);
+   Object.keys(C).forEach(k=>{const w=v[k]/100*w0;if(w<=0)return;el('rect',{x:x0,y,width:Math.max(0,w-1),height:bh,fill:C[k]},svg);x0+=w});});
+  hov(box,tip,el('rect',{x:0,y:y0-(narrow?16:0),width:W,height:rh,fill:'transparent'},svg),
+   `<b>${f[0]}</b> (${f[1]}) · ${f[2]}<br>1936, ${f[3]} electores: Frente Popular ${c1(f[4].FP)}%, derechas ${c1(f[4].DER)}%${f[4].CEN>0.5?', centro '+c1(f[4].CEN)+'%':''}<br>2023, en ${f[5]}: izquierda ${c1(f[6].IZQ)}%, derecha ${c1(f[6].DER)}%`)});
+})();
+</script>

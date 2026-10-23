@@ -1,0 +1,140 @@
+<title>Cataluña, de la Lliga al Front</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--fp:#b3001b;--der:#24366b;--sumar:#a2275f;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--fp:#ff6b70;--der:#7d8fc9;--sumar:#d0679a;--neu:#3aa6bf}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--fp:#ff6b70;--der:#7d8fc9;--sumar:#d0679a;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>.mapa svg path.p{fill:var(--other);stroke:var(--bg);stroke-width:.6}.mapa circle{stroke:var(--bg);stroke-width:.6;fill-opacity:.85}.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px}.mini h3{font-family:var(--ui);font-size:1rem;margin:0;font-weight:600}@media (max-width:520px){.mini{grid-template-columns:1fr}}</style>
+<style>.mapa-img{width:100%;height:auto;display:block}.sw.dd{background:color-mix(in srgb,var(--der) 32%,var(--bg))}.sw.ii{background:color-mix(in srgb,var(--fp) 32%,var(--bg))}.sw.di{background:var(--psoe)}.sw.id{background:var(--pp)}.cita{border-left:3px solid var(--fp);padding:.2em 0 .2em 1em;margin:1.4em 0;font-size:1.08rem}</style>
+<style>:root{--erc:#f5b324;--junts:#20c0b2}.cita{border-left:3px solid var(--fp);padding:.2em 0 .2em 1em;margin:1.4em 0;font-size:1.08rem}.foto-h{margin:1.6em 0}.foto-h img{width:100%;height:auto;display:block;border-radius:4px}.foto-h figcaption{font:13px/1.45 var(--ui);color:var(--muted);margin-top:.5em}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Vic dio el 69 % a la Lliga en 1933 y hoy es la gran ciudad de Junts; L'Hospitalet dio el 77 % al Front d'Esquerres de Companys y hoy vota al PSC</h1>
+<p class="dek">En noviembre de 1933, la Lliga de Cambó ganó en Cataluña más diputados que Esquerra. Once meses después, Lluís Companys proclamó el Estado Catalán y acabó en la cárcel con todo su Gobierno. En febrero de 1936, con él todavía preso, el Front d'Esquerres sacó el 59%. Donde aquel frente ganó con más fuerza, hoy gana el PSC; donde ganaron las derechas, Junts y ERC sacan hoy sus mejores resultados.</p>
+<div class="byline">Nacho G. del Álamo · 23 de octubre de 2026</div>
+<p data-tipo="contexto" style="margin-top:1.4rem">Siete hombres de traje miran a la cámara detrás de unas rejas. Algunos sonríen. El del centro, con el pelo rizado y un pañuelo blanco en el bolsillo, se agarra a un barrote. Es Lluís Companys, presidente de la Generalitat, preso con los consejeros de su Gobierno, entre ellos Joan Comorera. La foto, que se atribuye al fotógrafo Alfonso, se publicó en la prensa de 1936 y hoy está en <a href="https://commons.wikimedia.org/wiki/File:Companys,_Comorera_and_others_behind_bars.jpg">Wikimedia Commons</a>.</p>
+<p data-tipo="contexto">Fotos como esa hicieron más que cualquier mitin. «Las fotografías de Companys tras los barrotes de su celda, amplia y eficazmente explotadas, contribuyeron de manera poderosa a forjar la imagen del president como mito», escribe el historiador Jordi Canal, citado en la <a href="https://es.wikipedia.org/wiki/Proclamaci%C3%B3n_del_Estado_Catal%C3%A1n_de_1934">Wikipedia</a>.</p>
+<p data-tipo="dato">El 16 de febrero de 1936, Companys era candidato del Front d'Esquerres por la ciudad de Barcelona y salió elegido diputado sin salir de la cárcel (<a href="https://es.wikipedia.org/wiki/Llu%C3%ADs_Companys">Wikipedia</a>). En la ciudad, el Front sacó el 62,7% de los votos a candidatos, según el <a href="https://doi.org/10.34810/data3274">Atlas Electoral de la Segunda República</a> de la Universitat Pompeu Fabra. En toda Cataluña, el 59,0%.</p>
+
+<h2>Noviembre de 1933: gana la Lliga</h2>
+<p data-tipo="dato">Dos años antes, la derecha catalanista de la Lliga había ganado las generales en Cataluña. Sacó 24 diputados y ERC, 18, según la <a href="https://ca.wikipedia.org/wiki/Eleccions_generals_espanyoles_de_1933">Viquipèdia</a>, y ganó la mayoría de los escaños de la ciudad de Barcelona. El Atlas no tiene el voto de la capital en 1933, pero sí el del resto de Cataluña: allí la Lliga sumó el 42,9% y las izquierdas juntas, el 54,1%, aunque fueron divididas en varias candidaturas.</p>
+<p data-tipo="dato">La Lliga fue la más votada en 321 de los 865 municipios con datos en las dos elecciones. En Vic sacó el 69,5%; en Calella, el 92,6%; en Blanes, el 75,7%. Fuera de Barcelona, las izquierdas ganaban en las ciudades industriales: en L'Hospitalet de Llobregat sumaron el 54,1%. En 1933, además, la CNT había pedido no votar (lo contamos en <a href="https://mapaelectoral.es/actualidad/abstencion-anarquista-cnt-1933-1936/">la abstención anarquista de 1933</a>).</p>
+
+<h2>El 6 de octubre</h2>
+<p data-tipo="contexto">El 6 de octubre de 1934, a las ocho y diez de la tarde, Companys salió al balcón de la Generalitat y proclamó «el Estado Catalán de la República Federal Española», contra el Gobierno de Lerroux en el que acababa de entrar la CEDA. La traducción al castellano de su discurso, que recoge la <a href="https://es.wikipedia.org/wiki/Proclamaci%C3%B3n_del_Estado_Catal%C3%A1n_de_1934">Wikipedia</a>, decía:</p>
+<p class="cita" data-tipo="contexto">«En esta hora solemne, en nombre del pueblo y del Parlamento, el Gobierno que presido asume todas las facultades del Poder en Cataluña».<br><small>Lluís Companys, desde el balcón del Palau de la Generalitat, 6 de octubre de 1934.</small></p>
+<p data-tipo="contexto">Agustí Calvet, Gaziel, director de <i>La Vanguardia</i>, lo escuchó por la radio y dejó escrito: «Eso es, ni más ni menos, una declaración de guerra». El general Batet esperó toda la noche. A las seis de la mañana del día 7, Companys se rindió. Murieron 46 personas, y «más de tres mil personas fueron encarceladas, la mayoría de ellas en el vapor Uruguay», anclado en el puerto de Barcelona (<a href="https://es.wikipedia.org/wiki/Proclamaci%C3%B3n_del_Estado_Catal%C3%A1n_de_1934">Wikipedia</a>).</p>
+<p data-tipo="contexto">En junio de 1935, el Tribunal de Garantías Constitucionales condenó a Companys y a sus consejeros a treinta años de prisión. Companys fue a cumplirlos al penal de El Puerto de Santa María, el mismo donde dos años antes habían posado presos Durruti y Ascaso. El Estatuto quedó suspendido, se cerró el Parlamento y unos cien ayuntamientos fueron sustituidos por comisiones gestoras de derechas.</p>
+<p data-tipo="contexto">La Lliga entró en el gobierno de la Generalitat nombrado desde Madrid. Según los historiadores José Luis de la Granja, Justo Beramendi y Pere Anguera, citados en la Wikipedia, eso «confirmó su imagen de cómplice de los enemigos de la autonomía y alejó de ella a sectores de clases medias».</p>
+
+<h2>Febrero de 1936: gana el Front</h2>
+<p data-tipo="dato">En febrero de 1936, la izquierda fue unida en el Front d'Esquerres, y la Lliga, con el resto de la derecha, en el Front Català d'Ordre. El Front d'Esquerres sacó el 59,0% en Cataluña y el Front Català d'Ordre, el 40,8%. La participación subió en las cinco circunscripciones: en la ciudad de Barcelona, del 60% al 65%; en Girona, del 61% al 71%; en Lleida, del 61% al 71%. ERC sacó 22 diputados y la Lliga, 12 (<a href="https://ca.wikipedia.org/wiki/Eleccions_generals_espanyoles_de_1936">Viquipèdia</a>).</p>
+<p data-tipo="dato">De los 321 municipios donde había ganado la Lliga en 1933, 68 votaron en 1936 al Front d'Esquerres. Pero el cambio no fue en una sola dirección: de los 544 donde habían ganado las izquierdas, 106 votaron al Front Català d'Ordre. En L'Hospitalet, el Front d'Esquerres llegó al 77,1%. En Vic, la derecha volvió a ganar, con el 63,6%.</p>
+<figure>
+<figcaption><span class="t">Doce ciudades de la Lliga al Front, y hoy</span><span class="s">Voto en las generales de noviembre de 1933 y febrero de 1936, y en las de julio de 2023</span></figcaption>
+<div class="chart" id="cat"></div>
+<div class="legend"><span><i class="sw" style="background:var(--der)"></i>Lliga (1933) y Front Català d'Ordre (1936)</span><span><i class="sw" style="background:var(--fp)"></i>Izquierdas (1933) y Front d'Esquerres (1936)</span><span><i class="sw" style="background:var(--psoe)"></i>PSC</span><span><i class="sw" style="background:var(--erc)"></i>ERC</span><span><i class="sw" style="background:var(--junts)"></i>Junts</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: Atlas Electoral de la Segunda República (UPF); Ministerio del Interior, sin voto exterior. En 1933 y 1936, porcentaje sobre los votos a candidatos; en 1933, las izquierdas suman ERC, republicanos de izquierda y comunistas, que fueron por separado. Cálculo propio.</div>
+</figure>
+
+<h2>La amnistía y el balcón</h2>
+<p data-tipo="contexto">El 21 de febrero, el Gobierno de Manuel Azaña aprobó la amnistía «a los penados y encausados por delitos políticos y sociales» (<a href="https://www.boe.es/gazeta/dias/1936/02/22/pdfs/GMD-1936-53.pdf">Gaceta de Madrid</a>). Esa misma noche, Companys y los consejeros Comorera y Lluhí salieron del penal de El Puerto. El 1 de marzo de 1936 volvió al balcón de la plaza de Sant Jaume. <i>La Vanguardia</i> publicó su discurso dos días después (<a href="http://hemeroteca.lavanguardia.com/preview/1936/03/03/pagina-10/33123560/pdf.html">hemeroteca</a>):</p>
+<p class="cita" data-tipo="contexto">«Recogemos las lecciones de la experiencia, volveremos a sufrir, volveremos a luchar y volveremos a ganar».<br><small>Lluís Companys, 1 de marzo de 1936, según la traducción que recoge la <a href="https://es.wikipedia.org/wiki/Llu%C3%ADs_Companys">Wikipedia</a>.</small></p>
+
+<h2>Lo que queda en las urnas</h2>
+<figure>
+<figcaption><span class="t">Donde ganó el Front d'Esquerres, hoy gana el PSC</span><span class="s">Voto medio de 2023 a PSC, ERC y Junts en los municipios catalanes, según el voto al Front d'Esquerres en febrero de 1936</span></figcaption>
+<div class="chart" id="ban"></div>
+<div class="legend"><span><i class="sw" style="background:var(--psoe)"></i>PSC</span><span><i class="sw" style="background:var(--erc)"></i>ERC</span><span><i class="sw" style="background:var(--junts)"></i>Junts</span></div>
+<div class="src">Fuente: Atlas Electoral de la Segunda República (UPF); Ministerio del Interior, generales de 2023, sin voto exterior. Media ponderada por los votantes de 2023 de los 886 municipios actuales con datos de 1936. Cálculo propio.</div>
+</figure>
+<p data-tipo="dato">En los municipios donde el Front d'Esquerres pasó del 70% en 1936, el PSC sacó en 2023 el 39,3% de media; ERC, el 11,4%, y Junts, el 8,0%. Donde el Front se quedó por debajo del 40%, el PSC bajó al 28,3%, y ERC y Junts subieron al 16,8% y al 17,9%. De una franja a la siguiente, el PSC siempre sube y Junts siempre baja.</p>
+<p data-tipo="dato">L'Hospitalet, que dio el 77,1% al Front, votó en 2023 al PSC con el 46,4%, y ERC se quedó en el 7,7%. Vic, la ciudad de la Lliga, es hoy la ciudad de más de 20.000 electores donde más se vota a Junts: el 27,3%, por delante del PSC, con el 25,5%.</p>
+<p data-tipo="patron">El partido de Companys no ha heredado el mapa del Front d'Esquerres. Lo ha heredado el PSC. Y los votos de ERC y de Junts se concentran hoy donde en 1936 ganaron las derechas, en la Cataluña interior y de ciudades medianas.</p>
+<p data-tipo="hipotesis">Una explicación posible, que estos datos no prueban, es que las ciudades industriales que votaron al Front en 1936 recibieron después a cientos de miles de inmigrantes del resto de España, y que sus hijos votan hoy al PSC. La otra parte del mapa, la de las comarcas que no se industrializaron tanto, conservó más su población y pasó del catalanismo de derechas al independentismo. Comprobarlo exigiría saber quién vivía en cada municipio en cada época.</p>
+
+<h2>Lo que estos datos no dicen</h2>
+<p data-tipo="contexto">El Atlas no tiene los votos de la ciudad de Barcelona en 1933, así que la comparación de ese año es sin la capital. En 1933 las izquierdas fueron por separado y las sumamos nosotros. Comparar la Lliga con Junts o el Front d'Esquerres con el PSC no quiere decir que sean el mismo partido: son las mismas calles, noventa años después. En 1933 y 1936 se votaba con listas abiertas y varios votos por elector, y el peso de cada bloque es su parte de los votos a candidatos. El censo era de mayores de 23 años; el de 2023, de mayores de 18, sin voto exterior. La relación entre 1936 y 2023 es una media por franjas, no una relación de causa.</p>
+<p data-tipo="contexto">En la foto de las rejas, Companys sonríe. Dos semanas después de las elecciones, volvía a estar en el balcón. Noventa años después, el mapa de aquel febrero sigue en las urnas, pero con otros nombres.</p>
+<p><a href="https://mapaelectoral.es/">Mira 1933 y 1936 en tu municipio, en el mapa</a> · Más: <a href="https://mapaelectoral.es/actualidad/girona-1936-participacio/">Les urnes del 1936 a Girona</a> · <a href="https://mapaelectoral.es/actualidad/asturias-1934-1936-revolucion-urnas/">Asturias, de octubre a febrero</a></p>
+<div class="foot">Datos: Toni Rodon, Pau Vall-Prat y Diego Martín Álvarez, Electoral Atlas of the Spanish Second Republic (1931-1936), Universitat Pompeu Fabra, DOI 10.34810/data3274, licencia CC BY-NC-SA 4.0; participación por circunscripción, del mismo Atlas; Ministerio del Interior, generales de 2023 (Infoelectoral, vía pollspaindata), sin voto exterior. Cálculo propio.</div>
+</main>
+<script>
+const D={"f":[["Vic","8.757",{"L":69.5,"E":29.2},{"F":36.4,"D":63.6},{"PSOE":25.5,"ERC":16.5,"JUNTS":27.3,"SUMAR":8.8,"PP":7.1,"VOX":4.3}],["Calella","4.835",{"L":92.6,"E":1.8},{"F":40.8,"D":59.2},{"PSOE":31.8,"ERC":15.9,"JUNTS":15.4,"SUMAR":11.5,"PP":11.9,"VOX":7.3}],["Blanes","4.190",{"L":75.7,"E":13.5},{"F":50.0,"D":50.0},{"PSOE":38.6,"ERC":10.7,"JUNTS":8.9,"SUMAR":15.9,"PP":12.9,"VOX":8.1}],["Amposta","5.311",{"L":55.5,"E":44.5},{"F":76.2,"D":20.5},{"PSOE":33.7,"ERC":21.8,"JUNTS":11.3,"SUMAR":10.6,"PP":9.4,"VOX":8.7}],["Igualada","8.395",{"L":48.6,"E":43.7},{"F":53.9,"D":46.1},{"PSOE":31.1,"ERC":16.8,"JUNTS":18.0,"SUMAR":10.2,"PP":9.3,"VOX":6.4}],["Mataró","17.563",{"L":46.1,"E":49.8},{"F":58.0,"D":42.0},{"PSOE":35.2,"ERC":11.6,"JUNTS":9.3,"SUMAR":14.2,"PP":13.8,"VOX":10.6}],["Manresa","19.515",{"L":43.3,"E":54.6},{"F":58.2,"D":41.8},{"PSOE":31.3,"ERC":16.0,"JUNTS":17.3,"SUMAR":10.6,"PP":9.4,"VOX":7.4}],["Girona","12.521",{"L":31.6,"E":47.4},{"F":51.0,"D":49.0},{"PSOE":29.3,"ERC":11.9,"JUNTS":19.1,"SUMAR":11.5,"PP":10.8,"VOX":6.3}],["Terrassa","23.408",{"L":43.4,"E":54.8},{"F":62.6,"D":37.4},{"PSOE":36.5,"ERC":11.4,"JUNTS":8.3,"SUMAR":16.0,"PP":12.3,"VOX":10.0}],["Sabadell","27.748",{"L":38.8,"E":57.7},{"F":64.1,"D":35.9},{"PSOE":38.9,"ERC":11.0,"JUNTS":9.0,"SUMAR":15.0,"PP":11.8,"VOX":8.3}],["Reus","19.282",{"L":32.5,"E":67.5},{"F":68.7,"D":31.2},{"PSOE":34.1,"ERC":12.6,"JUNTS":10.5,"SUMAR":10.9,"PP":14.5,"VOX":11.5}],["L'Hospitalet de Llobregat","20.970",{"L":38.9,"E":54.1},{"F":77.1,"D":22.9},{"PSOE":46.4,"ERC":7.7,"JUNTS":3.1,"SUMAR":15.3,"PP":15.5,"VOX":8.4}]],"b":[["Menos del 40%",202,{"PSOE":28.3,"ERC":16.8,"JUNTS":17.9}],["40-50%",178,{"PSOE":29.9,"ERC":16.7,"JUNTS":15.8}],["50-60%",212,{"PSOE":33.3,"ERC":13.9,"JUNTS":13.0}],["60-70%",175,{"PSOE":35.3,"ERC":12.2,"JUNTS":9.6}],["Más del 70%",119,{"PSOE":39.3,"ERC":11.4,"JUNTS":8.0}]]};
+const NS='http://www.w3.org/2000/svg';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+const c1=v=>v.toFixed(1).replace('.',',');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+const NOMP={PSOE:'PSC',ERC:'ERC',JUNTS:'Junts',SUMAR:'Sumar',PP:'PP',VOX:'Vox'};
+const CP={PSOE:'var(--psoe)',ERC:'var(--erc)',JUNTS:'var(--junts)',SUMAR:'var(--sumar)',PP:'var(--pp)',VOX:'var(--vox)'};
+(function(){const box=document.getElementById('cat');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),narrow=W<520,bh=10,gap=2,rh=3*bh+2*gap+(narrow?22:12),m={l:narrow?34:190,r:6,t:4,b:4},H=m.t+m.b+D.f.length*rh;
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':"Voto en 1933, 1936 y 2023 en doce ciudades catalanas"},box);
+ D.f.forEach((f,i)=>{const y0=m.t+i*rh+(narrow?16:0);
+  el('text',{x:narrow?0:m.l-38,y:narrow?y0-4:y0+bh*1.5+gap+4,'text-anchor':narrow?'start':'end','font-size':12,'font-weight':600,class:'lab'},svg).textContent=f[0];
+  [[f[2],{L:'var(--der)',E:'var(--fp)'},'1933'],[f[3],{D:'var(--der)',F:'var(--fp)'},'1936'],[f[4],CP,'2023']].forEach(([v,C,yr],j)=>{const y=y0+j*(bh+gap);let x0=m.l;const w0=W-m.l-m.r;
+   el('text',{x:m.l-4,y:y+bh-1,'text-anchor':'end','font-size':10,class:'lab',fill:'var(--muted)'},svg).textContent=yr;
+   el('rect',{x:m.l,y,width:w0,height:bh,fill:'var(--grid)'},svg);
+   Object.keys(C).forEach(k=>{const w=(v[k]||0)/100*w0;if(w<=0)return;el('rect',{x:x0,y,width:Math.max(0,w-1),height:bh,fill:C[k]},svg);x0+=w});});
+  hov(box,tip,el('rect',{x:0,y:y0-(narrow?16:0),width:W,height:rh,fill:'transparent'},svg),
+   `<b>${f[0]}</b> · ${f[1]} electores en 1936<br>1933: Lliga ${c1(f[2].L)}%, izquierdas ${c1(f[2].E)}%<br>1936: Front d'Esquerres ${c1(f[3].F)}%, Front Català d'Ordre ${c1(f[3].D)}%<br>2023: `+Object.keys(CP).map(k=>NOMP[k]+' '+c1(f[4][k])+'%').join(', '))});
+})();
+(function(){const box=document.getElementById('ban');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),narrow=W<520,H=260,m={l:30,r:6,t:14,b:narrow?42:30};
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':"Voto medio a PSC, ERC y Junts en 2023 según el voto al Front d'Esquerres en 1936"},box);
+ const K=['PSOE','ERC','JUNTS'],mx=45,ih=H-m.t-m.b,gw=(W-m.l-m.r)/D.b.length,bw=Math.min(34,(gw-14)/3);
+ [0,10,20,30,40].forEach(t=>{const y=m.t+ih*(1-t/mx);el('line',{x1:m.l,x2:W-m.r,y1:y,y2:y,stroke:'var(--grid)'},svg);el('text',{x:m.l-4,y:y+4,'text-anchor':'end','font-size':10,class:'lab',fill:'var(--muted)'},svg).textContent=t+'%'});
+ D.b.forEach((b,i)=>{const gx=m.l+i*gw+(gw-3*bw-4)/2;
+  K.forEach((k,j)=>{const v=b[2][k],h=ih*v/mx,x=gx+j*(bw+2);el('rect',{x,y:m.t+ih-h,width:bw,height:h,fill:CP[k]},svg)});
+  const t=el('text',{x:m.l+i*gw+gw/2,y:H-m.b+16,'text-anchor':'middle','font-size':narrow?10:12,class:'lab'},svg);t.textContent=b[0];
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:ih,fill:'transparent'},svg),`<b>Front d'Esquerres: ${b[0]}</b> (${b[1]} municipios)<br>2023: PSC ${c1(b[2].PSOE)}%, ERC ${c1(b[2].ERC)}%, Junts ${c1(b[2].JUNTS)}%`)});
+ el('text',{x:m.l,y:H-4,'font-size':11,class:'lab',fill:'var(--muted)'},svg).textContent="Voto al Front d'Esquerres en 1936 →";
+})();
+</script>
