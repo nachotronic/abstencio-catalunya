@@ -10,7 +10,7 @@ Uso: python3 src/bing_enviar.py [--prueba]  (lo lanza cada día .github/workflow
 La clave sale de la variable BING_WEBMATER_KEY (así está escrita) o BING_WEBMASTER_KEY.
 Nunca imprime la clave.
 """
-import json, os, re, sys, datetime, urllib.request, urllib.parse
+import json, os, re, sys, time, datetime, urllib.request, urllib.parse
 
 SITE = "https://mapaelectoral.es/"
 API = "https://ssl.bing.com/webmaster/api.svc/json/"
@@ -22,7 +22,14 @@ if not KEY:
 
 
 def get(url):
-    return urllib.request.urlopen(url, timeout=60).read().decode()
+    # GitHub Pages devuelve a veces un 503 suelto: tres intentos antes de rendirse
+    for intento in range(3):
+        try:
+            return urllib.request.urlopen(url, timeout=60).read().decode()
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or intento == 2:
+                raise
+            time.sleep(10)
 
 
 def api(metodo, cuerpo=None):
