@@ -1486,6 +1486,25 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/sanchez-revuelta-broncano-voto-joven-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Pedro Sánchez, sentado en un sofá antiguo, frente a David Broncano en su mesa.'),
     ),
+    dict(
+        slug='teruel-cha-izquierda-escano-29n', fecha='2026-10-23',
+        titulo='CHA se retira en Teruel: la única vez que la izquierda tuvo votos para un escaño fue en 2015, y fue dividida', serie='29n',
+        descripcion='Desde 1977, ninguna lista a la izquierda del PSOE ha ganado un diputado por Teruel. En 2015, Podemos e IU-CHA sumaron 15.689 votos por separado, más que los 14.112 con los que el PP ganó el tercer escaño. En 2023, aunque todos los votantes de Sumar hubieran votado al PSOE, le habrían faltado 235 votos.',
+        compara='El reparto de los tres escaños de Teruel con la ley D\'Hondt en las generales de 2004 a 2023, con voto exterior, y de 1977 a 2000 por municipio; los votos de las listas a la izquierda del PSOE frente a los que costó el tercer escaño; y el voto a Sumar en 2023 en los 236 municipios de la provincia.',
+        limites='Los votos de una elección no son los de la siguiente. Sumar votos de listas distintas supone que sus votantes habrían votado igual a una lista conjunta, y en 2016 no fue así. El cálculo de 2023 supone que todos los votantes de Sumar se pasan al PSOE y que nadie más cambia. Los datos de 1977 a 2000 son por municipio y no incluyen el voto exterior. El mapa no incluye el voto exterior.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 1977 a 2023 en la provincia de Teruel, por mesa y municipio, con voto exterior desde 2004 (vía pollspaindata)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/22/iu-asegura-que-el-29n-habra-papeletas-de-la-izquierda-transformadora-en-teruel/', 'EFE, IU asegura que el 29N habrá papeletas de la izquierda transformadora en Teruel (22-10-2026)'),
+                 ('https://www.publico.es/politica/cha-frente-amplio-aragon-anuncia-presentara-congreso-teruel.html', 'Público, CHA-Frente Amplio Aragón anuncia que no se presentará al Congreso por Teruel (21-10-2026)'),
+                 ('https://www.eldiario.es/aragon/politica/cha-frente-amplio-renuncian-presentarse-congreso-teruel-evitar-dispersion-voto_1_13604566.html', 'elDiario.es, CHA y el Frente Amplio renuncian a presentarse al Congreso por Teruel e IU Aragón se desmarca (21-10-2026)'),
+                 ('https://arainfo.org/teruel-existe-29n-recuperar-voz-propia-congreso/', 'AraInfo, Teruel Existe irá al 29N (5-10-2026)'),
+                 ('https://www.redalyc.org/pdf/997/99715164005.pdf', 'Jorge Urdánoz Ganuza, Umbrales de representación y proporcionalidad, REIS 121 (2008)'),
+                 ('https://recyt.fecyt.es/index.php/recp/article/download/37589/21106', 'Penadés y Santiuste, La desigualdad en el sistema electoral español y el premio a la localización del voto, Revista Española de Ciencia Política 32 (2013)')],
+        enlaces=[],
+        lugar='Teruel',
+        foto=dict(src='img/actualidad/fotos/teruel-cha-izquierda-escano-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Votos de las listas a la izquierda del PSOE en Teruel frente a los votos que costó el tercer escaño, de 2004 a 2023.',
+                  fuente='Ministerio del Interior. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2117,6 +2136,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'teruel-cha-izquierda-escano-29n': 'El voto útil en Teruel',
     'sanchez-revuelta-broncano-voto-joven-29n': 'La generación Broncano',
     'republica-mapa-1936-hoy': 'Noventa años después',
     'girona-1936-participacio': 'Les urnes del 1936',
