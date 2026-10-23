@@ -1,0 +1,18 @@
+{
+ "01059": {
+  "fuente": "los límites de barrios del Ayuntamiento de Vitoria-Gasteiz (datos abiertos, septiembre de 2019)",
+  "web": "https://www.vitoria-gasteiz.org/wb021/was/contenidoAction.do?idioma=es&uid=app_j34_0187"
+ },
+ "15030": {
+  "fuente": "la IDE municipal del Concello da Coruña (capa «Barrios / AA VV»)",
+  "web": "https://ide.coruna.gal/server/rest/services/Publica/CB_DIVISIONES_ADMINISTRATIVAS/MapServer"
+ },
+ "30030": {
+  "fuente": "el geoportal del Ayuntamiento de Murcia (barrios y pedanías)",
+  "web": "https://geoserver.murcia.es/geoserver/wfs?service=WFS&request=GetCapabilities"
+ },
+ "03014": {
+  "fuente": "los barrios de Alicante digitalizados por José Manuel Mira (no es una publicación del ayuntamiento)",
+  "web": "https://gist.github.com/josemamira/fb7206917d82be27cbdfa5d2b1fc1b22"
+ }
+}

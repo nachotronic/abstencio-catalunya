@@ -33,6 +33,8 @@
 - [Elecciones en Melilla](https://mapaelectoral.es/elecciones/melilla/): en 2023, PP 49,2 %; participación 49,8 %.
 
 ## Barrios de las grandes ciudades
+- [Barrios de Vitoria-Gasteiz](https://mapaelectoral.es/municipio/alava/vitoria-gasteiz/#barrios): 23 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de Alacant/Alicante](https://mapaelectoral.es/municipio/alicante/alacant-alicante/#barrios): 32 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Badalona](https://mapaelectoral.es/municipio/barcelona/badalona/#barrios): 22 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Barcelona](https://mapaelectoral.es/municipio/barcelona/barcelona/#barrios): 67 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de L'Hospitalet de Llobregat](https://mapaelectoral.es/municipio/barcelona/l-hospitalet-de-llobregat/#barrios): 12 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
@@ -41,6 +43,7 @@
 - [Barrios de Burgos](https://mapaelectoral.es/municipio/burgos/burgos/#barrios): 4 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Cáceres](https://mapaelectoral.es/municipio/caceres/caceres/#barrios): 7 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Córdoba](https://mapaelectoral.es/municipio/cordoba/cordoba/#barrios): 7 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de A Coruña](https://mapaelectoral.es/municipio/a-coruna/a-coruna/#barrios): 22 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Granada](https://mapaelectoral.es/municipio/granada/granada/#barrios): 19 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Donostia/San Sebastián](https://mapaelectoral.es/municipio/gipuzkoa/donostia-san-sebastian/#barrios): 16 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Huesca](https://mapaelectoral.es/municipio/huesca/huesca/#barrios): 4 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
@@ -50,6 +53,7 @@
 - [Barrios de Madrid](https://mapaelectoral.es/municipio/madrid/madrid/#barrios): 127 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Málaga](https://mapaelectoral.es/municipio/malaga/malaga/#barrios): 46 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Cartagena](https://mapaelectoral.es/municipio/murcia/cartagena/#barrios): 12 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de Murcia](https://mapaelectoral.es/municipio/murcia/murcia/#barrios): 51 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Pamplona/Iruña](https://mapaelectoral.es/municipio/navarra/pamplona-iruna/#barrios): 14 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Gijón](https://mapaelectoral.es/municipio/asturias/gijon/#barrios): 18 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Oviedo](https://mapaelectoral.es/municipio/asturias/oviedo/#barrios): 21 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.

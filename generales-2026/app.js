@@ -310,7 +310,7 @@
     touchAction: 'pan-y',   // en el móvil, deslizar en vertical mueve la página; en horizontal y con dos dedos, el mapa
     views: new deck.MapView({ repeat: false }), layers: [], getCursor: ({ isHovering }) => isHovering ? 'pointer' : 'grab',
     onViewStateChange: ({ viewState }) => { view = viewState; loadVisible(); redraw(); return viewState; },
-    onHover: info => { setHover(info); },
+    onHover: info => { resalta(info); },   // al pasar el ratón solo se resalta el contorno; la ficha sale al hacer clic
     onClick: info => { setHover(info, true); },
   });
   const attr = document.createElement('div');
@@ -363,11 +363,12 @@
     if (N) { const m = N.m[f.cod], p = N.p[f.cod], k = m && c in m ? m[c] : p && p[c.slice(0, 2)]; if (k) return N.n[k]; }
     return nomF(f, y);
   };
-  pideNombres(st.y).then(() => { if (!tip.hidden && tipAbierta) tip.innerHTML = ficha(...tipAbierta); });
+  pideNombres(st.y).then(() => { if (!tip.hidden && tipAbierta) tip.innerHTML = CERRAR + ficha(...tipAbierta); });
   const escH = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
   // ---------- ficha (tooltip)
-  const tip = $('#tip');
+  const tip = $('#tip'), CERRAR = '<button class="t-x" type="button" aria-label="Cerrar">×</button>';
+  tip.addEventListener('click', e => { if (e.target.closest('.t-x')) { tip.hidden = true; hover = null; redraw(); } });
   function ficha(d, i, isSec) {
     const y = st.y, rows = FAM.map((f, k) => ({ f, v: d[y + '_' + f.cod] ? d[y + '_' + f.cod][i] : null }))
       .filter(r => r.v != null && r.v > 0.005).sort((a, b) => b.v - a.v).slice(0, 6);
@@ -395,12 +396,19 @@
     if (b) h += `<p class="t-bar"><a href="${new URL('../' + b[1], RAIZ || location.href).href}">Ver el barrio: ${escH(b[0])} →</a></p>`;
     return h;
   }
+  function resalta(info) {
+    if (!tip.hidden) return;   // con una ficha abierta se mantiene su contorno
+    const o = info.object, id = o && info.layer.id;
+    if (!o) { if (hover) { hover = null; redraw(); } return; }
+    const all = id.startsWith('sec') ? SEC[id.slice(3)].polys : MUNP;
+    if (!hover || hover.key !== id + o.i) { hover = { key: id + o.i, polys: all.filter(p => p.i === o.i) }; redraw(); }
+  }
   function setHover(info, pin) {
     const o = info.object;
-    if (!o) { if (!pin) { tip.hidden = true; hover = null; redraw(); } return; }
+    if (!o) { tip.hidden = true; hover = null; redraw(); return; }   // clic fuera: se cierra la ficha
     const id = info.layer.id, isSec = id.startsWith('sec');
     const d = isSec ? SEC[id.slice(3)].d : MUN, all = isSec ? SEC[id.slice(3)].polys : MUNP;
-    tipAbierta = [d, o.i, isSec]; tip.innerHTML = ficha(d, o.i, isSec); tip.hidden = false;
+    tipAbierta = [d, o.i, isSec]; tip.innerHTML = CERRAR + ficha(d, o.i, isSec); tip.hidden = false;
     const W = $('#map').clientWidth, H = $('#map').clientHeight, tw = tip.offsetWidth, th = tip.offsetHeight;
     let x = info.x + 14, y = info.y + 14;
     if (x + tw > W - 8) x = info.x - tw - 14; if (y + th > H - 8) y = Math.max(8, H - th - 8);
@@ -543,7 +551,7 @@
     const conSec = o && secHas(p);
     const [d, k, isSec] = conSec ? [S.d, o.i, true] : [MUN, i, false];
     hover = { key: (isSec ? 'sec' + p : 'mun') + k, polys: (isSec ? S.polys : MUNP).filter(q => q.i === k) };
-    tipAbierta = [d, k, isSec]; tip.innerHTML = ficha(d, k, isSec); tip.hidden = false;
+    tipAbierta = [d, k, isSec]; tip.innerHTML = CERRAR + ficha(d, k, isSec); tip.hidden = false;
     tip.style.left = '8px'; tip.style.top = narrow() ? 'auto' : '8px'; tip.style.bottom = narrow() ? '8px' : 'auto';
     redraw();
   }
@@ -608,7 +616,7 @@
     if (qe && qe !== st.y && ELEC.some(e => e.cod === qe)) { selE.value = qe; await elige(qe); }
     $('#q').value = `${MUN.nombre[qm]} (${MUN.provs[MUN.prov[qm]] || ''})`;
     abre(qm);
-    tipAbierta = [MUN, qm, false]; tip.innerHTML = ficha(MUN, qm, false); tip.hidden = false;
+    tipAbierta = [MUN, qm, false]; tip.innerHTML = CERRAR + ficha(MUN, qm, false); tip.hidden = false;
     tip.style.left = '8px'; tip.style.top = narrow() ? 'auto' : '8px'; tip.style.bottom = narrow() ? '8px' : 'auto';
   }
 

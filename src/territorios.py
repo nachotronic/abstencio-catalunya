@@ -769,7 +769,8 @@ def pagina_barrio(cod, b, todos):
     seg = resto[0]
     gc = T.ganador(rc)
     nom_g, nom_s = art_partido(g, ccaa), art_partido(seg, ccaa)
-    dist = f', en el distrito de {b["distrito"]}' if b['distrito'] and slug(b['distrito']) != slug(nombre) else ''
+    zona = ZONAS.get(b['distrito'])
+    dist = (zona[0].format(ciudad=ciudad) if zona else f', en el distrito de {b["distrito"]}') if b['distrito'] and slug(b['distrito']) != slug(nombre) else ''
     p_part = puesto(r['part'], [x['r']['part'] for x in fichas])
     p_renta = puesto(dm['renta_uc'], [x['demo']['renta_uc'] for x in fichas]) if dm['renta_uc'] else None
     # el partido que más se separa de la ciudad
@@ -788,7 +789,9 @@ def pagina_barrio(cod, b, todos):
     ld['primaryImageOfPage'] = BASE + 'img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0]
     h = [cabeza(titulo, desc, ruta, ld, nivel, nombre, imagen='img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0])]   # las migas de pan en JSON-LD las añade esquema.py
     h.append(migas_html(pasos))
-    h.append(f'<p class="kicker">{tipo_b.capitalize()} de {escape(ciudad)}{escape(dist.replace(", en el distrito de", " · distrito"))} · Generales 2004-2023</p>'
+    antetitulo = (f'Pedanía de {ciudad}' if zona and zona[1] == 'pedanía' else
+                  f'{tipo_b.capitalize()} de {ciudad}' + (" · " + zona[1] if zona else dist.replace(", en el distrito de", " · distrito")))
+    h.append(f'<p class="kicker">{escape(antetitulo)} · Generales 2004-2023</p>'
              f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
     h.append(f'<p class="subtitulo">Cómo vota este {tipo_b} de {escape(ciudad)}, quién vive en él y en qué se separa del resto de la ciudad</p>')
     act = max(ACTUALIZADO, BARRIOS_PUBLICADO)
@@ -839,7 +842,8 @@ def pagina_barrio(cod, b, todos):
                  + p_('Dato', f'{escape(cap(nombre))} tiene {num(len(cods))} secciones censales, la unidad más pequeña con resultados electorales (entre 500 y 2.500 electores cada una). '
                       f'En 2023 ganó {reparto}.')
                  + figura(svg, f'Partido más votado en cada sección censal de {escape(nombre)}, generales de 2023; el color es más intenso cuanto mayor es su voto (menos del 30 %, 30-40 %, 40-50 %, 50 % o más). En gris, las secciones vecinas. '
-                          'Límites de las secciones: INE; del barrio: © colaboradores de OpenStreetMap (ODbL).', leyenda_partidos(cuenta)))
+                          'Límites de las secciones: INE; del barrio: '
+                          + (escape(TB.FUENTES[cod]['fuente']) if cod in TB.FUENTES else '© colaboradores de OpenStreetMap (ODbL)') + '.', leyenda_partidos(cuenta)))
     con_part = [s for s in secs if s['part'] is not None and s['censo'] >= 200]
     if len(con_part) >= 4:
         a, z = max(con_part, key=lambda s: s['part']), min(con_part, key=lambda s: s['part'])
@@ -909,21 +913,34 @@ def pagina_barrio(cod, b, todos):
     mismos = [x for x in fichas if x is not b and b['distrito'] and x['distrito'] == b['distrito']]
     li = [f'<li><a href="{raiz}{ruta_barrio(cod, x)}">{escape(x["nombre"])}</a>: {art_partido(T.ganador(x["r"]), ccaa)}, participación del {pct(x["r"]["part"])}</li>' for x in mismos]
     if li:
-        h.append(f'<h2>Otros barrios del distrito de {escape(b["distrito"])}</h2><ul>' + ''.join(li) + '</ul>')
+        h.append(f'<h2>{escape(zona[2].format(ciudad=ciudad)) if zona else "Otros barrios del distrito de " + escape(b["distrito"])}</h2><ul>' + ''.join(li) + '</ul>')
     h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}{CIUDADES[cod]}#barrios">Todos los {tipos} de {escape(ciudad)}</a></li>'
              f'<li><a href="{raiz}municipio/barrios/">Barrios de las grandes ciudades de España</a></li>'
              f'<li><a href="{raiz}{CIUDADES[cod]}">Elecciones en {escape(ciudad)}, desde 1977</a></li>'
              f'<li><a href="{raiz}elecciones/participacion-electoral-por-barrio/">Participación electoral por barrio en toda España</a></li>'
              f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li></ul>')
-    h.append(bloque_metodo_barrio(tipo_b))
+    h.append(bloque_metodo_barrio(tipo_b, cod))
     h.append(PIE)
     return ruta, ''.join(h)
 
 
-def bloque_metodo_barrio(tipo_b):
+# agrupaciones que no son distritos (Murcia: casco urbano y pedanías): frase, antetítulo y título de «otros barrios»
+ZONAS = {'Pedanías': (', una de las pedanías de {ciudad}', 'pedanía', 'Otras pedanías de {ciudad}'),
+         'Casco urbano': (', en el casco urbano', 'casco urbano', 'Otros barrios del casco urbano de {ciudad}')}
+
+
+def bloque_metodo_barrio(tipo_b, cod=None):
+    if cod in TB.FUENTES:
+        f = TB.FUENTES[cod]
+        limites = (f'Los límites de los barrios de {escape(_nom(cod))} salen de <a href="{escape(f["web"])}">{escape(f["fuente"])}</a>, '
+                   'porque OpenStreetMap no tiene los barrios de esta ciudad. ')
+    else:
+        limites = ('Los límites de barrios y distritos son los de OpenStreetMap (© colaboradores de OpenStreetMap, '
+                   '<a href="https://opendatacommons.org/licenses/odbl/">licencia ODbL</a>), que en la mayoría de ciudades copian la división oficial del ayuntamiento'
+                   + (f'; en {", ".join(escape(_nom(c)) for c in sorted(TB.FUENTES, key=_nom))}, que no los tienen en OpenStreetMap, se usan los del ayuntamiento '
+                      'o la mejor recopilación disponible (cada ficha lo indica)' if cod is None and TB.FUENTES else '') + '. ')
     return (f'<h2>Método y fuentes</h2><dl class="ficha">'
-            f'<dt>Qué es el {tipo_b}</dt><dd>Los límites de barrios y distritos son los de OpenStreetMap (© colaboradores de OpenStreetMap, '
-            '<a href="https://opendatacommons.org/licenses/odbl/">licencia ODbL</a>), que en la mayoría de ciudades copian la división oficial del ayuntamiento. '
+            f'<dt>Qué es el {tipo_b}</dt><dd>{limites}'
             'Cada sección censal del INE se asigna al barrio con el que comparte más superficie; las que caen menos de la mitad dentro de un barrio no se asignan. '
             'Como las secciones no siempre siguen los límites de los barrios, alguna manzana del borde puede quedar en el barrio vecino.</dd>'
             '<dt>Datos</dt><dd>Resultados oficiales por mesa del Ministerio del Interior (Infoelectoral) agregados por sección censal, sin el voto de los residentes en el extranjero (CERA). '
