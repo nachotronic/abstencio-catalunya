@@ -1807,7 +1807,7 @@ PIEZAS += [
                   pie="Sílvia Orriols, un ajuntament, unes barres i un mapa de Catalunya: un collage."),
     ),
     dict(
-        slug='blocs-i-cases-girona', fecha='2026-10-21', idioma='ca', actualizado='2026-10-23 23:00',
+        slug='blocs-i-cases-girona', fecha='2026-10-21', idioma='ca', actualizado='2026-10-23 23:08',
         titulo="Als barris de blocs dels anys seixanta i setanta de Girona vota un de cada tres adults; a les zones de cases, gairebé sis de cada deu", serie='girona',
         descripcion="La participació sobre el cens va ser del 50,9% als blocs i del 64,5% a les cases, segons els 511.090 habitatges del Cadastre situats secció a secció. Als blocs, el PSC va treure el 41,2% el 2023; a les cases, el 23,2%. Són els extrems: secció a secció, la relació és moderada, i la renda i la població estrangera hi diuen més que l'edifici.",
         compara="Els 205.879 edificis residencials del Cadastre a la província de Girona (any de construcció i nombre d'habitatges), agregats a les 536 seccions censals del 2023 i creuats amb la participació i el vot a les generals de juliol del 2023, la renda de l'INE i el cens del 2021.",
