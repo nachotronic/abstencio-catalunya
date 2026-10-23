@@ -842,6 +842,7 @@ PIEZAS = [
     ),
     dict(
         slug='senado-29n', fecha='2026-10-20',
+        actualizado='2026-10-23 23:15',
         titulo='El Senado de 2023: 120 senadores para el PP con un tercio de los votos', serie='29n',
         descripcion='Con el voto limitado, el PP ganó el 57,7 % de los 208 senadores de 2023 con el 33,1 % del voto al Congreso. Vox y Sumar, con más del 12 % cada uno, no ganaron ninguno.',
         compara='El porcentaje de voto al Congreso y el de senadores por partido en las elecciones de julio de 2023, y el reparto por circunscripción (provincias de cuatro escaños, insulares, Ceuta y Melilla).',
@@ -1317,6 +1318,7 @@ PIEZAS = [
     ),
     dict(
         slug='casas-vacias-segundas-residencias', fecha='2026-10-22',
+        actualizado='2026-10-23 23:15',
         titulo='En 4.441 municipios hay más casas sin vecinos que con ellos', serie='vivienda',
         descripcion='En 4.441 de los 8.131 municipios, más de la mitad de las viviendas no son residencia habitual. Mapas de las casas vacías (Galicia) y de temporada (costa y sierras). Ávila (59,4%), Teruel y Soria encabezan el interior; Oropesa del Mar (85%) y Peníscola, la costa. El PP saca más donde hay más casas vacías, pero por edad y provincia. Los pueblos de segunda residencia votan cuatro puntos menos.',
         compara='El porcentaje de viviendas no principales de cada municipio (Censo 2021) y, en los municipios con datos de consumo eléctrico, el de viviendas vacías y de uso esporádico, con el voto y la participación de cada municipio en las generales de julio de 2023: en cinco grupos con el mismo número de votantes, en toda España y dentro de cada provincia; una regresión con provincia, edad media, renta y tamaño; y, por sección censal, la comparación dentro de cada municipio con renta, edad y población extranjera.',
@@ -1744,7 +1746,7 @@ PIEZAS += [
                   pie="Girona, l'Onyar i la Catedral, amb el mapa de les seccions: un collage."),
     ),
     dict(
-        slug='girona-esco-285-vots-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 23:05',
+        slug='girona-esco-285-vots-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 23:15',
         titulo="L'escó més ajustat d'Espanya és a Girona: el PP se'n va quedar fora per 285 vots, menys gent de la que vota en una mesa", serie='girona',
         descripcion="Cap de les 536 seccions de la província no va donar 285 vots al PP: la que més, 188. A la Vajol, Susqueda, Meranges i Albanyà junts hi van votar 238 persones.",
         compara="El repartiment dels sis escons de la província de Girona a les generals de juliol del 2023 i de novembre del 2019, amb la llei D'Hondt, i els vots per mesa, secció i municipi.",
@@ -1763,7 +1765,7 @@ PIEZAS += [
                   pie="Una papereta amb el número 285 i el mapa de la província: un collage."),
     ),
     dict(
-        slug='junts-girona-puigdemont-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 22:47',
+        slug='junts-girona-puigdemont-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 23:15',
         correcciones="23-10-2026: s'hi afegeixen el recompte de vots per blocs sobre el cens (independentistes i no independentistes) i la participació secció a secció, la desmobilització independentista del 2023 i un apartat sobre el PSC. Es corregeixen xifres calculades abans amb una aproximació: Junts va treure el 19,2% a la ciutat el 2023, no el 19,1%; el 25,9% el 2019, no el 25,8%; el PSC, el 29,6% el 2023, no el 29,3%; a la província, Junts va treure el 19,8% el 2023 (no el 19,6%) i va guanyar en 181 seccions (no 180) i el PSC en 326 (no 327); al Parlament del 2024, el 35,3% i 426 de les 536 seccions sense comptar el vot exterior (abans 35,2% i 428 de 537). Els percentatges de les seccions del Mercadal, el Carme i Montjuïc del 2024 estaven calculats sobre vots vàlids i no sobre vots a candidatures, com la resta de la peça. Les conclusions no canvien.",
         titulo='A Girona, Junts gairebé duplica el vot del Congrés al Parlament: el 19,2% el 2023 i el 36,3% el 2024, amb Puigdemont de candidat', serie='girona',
         descripcion='Al Parlament, Junts va guanyar en 48 de les 62 seccions de la ciutat; a les generals, en 19. Però la distància ja hi era el 2021, sense Puigdemont a la papereta.',
@@ -1810,6 +1812,7 @@ PIEZAS += [
     ),
     dict(
         slug='blocs-i-cases-girona', fecha='2026-10-21', idioma='ca',
+        actualizado='2026-10-23 23:15',
         titulo="Als barris de blocs dels anys seixanta i setanta de Girona vota un de cada tres adults; a les zones de cases, gairebé sis de cada deu", serie='girona',
         descripcion="La participació sobre el cens va ser del 50,9% als blocs i del 64,5% a les cases, segons els 511.090 habitatges del Cadastre situats secció a secció. Als blocs, el PSC va treure el 41,2% el 2023; a les cases, el 23,2%. Són els extrems: secció a secció, la relació és moderada.",
         compara="Els 205.879 edificis residencials del Cadastre a la província de Girona (any de construcció i nombre d'habitatges), agregats a les 536 seccions censals del 2023 i creuats amb la participació i el vot a les generals de juliol del 2023, la renda de l'INE i el cens del 2021.",
@@ -1827,7 +1830,7 @@ PIEZAS += [
                   pie="Blocs dels anys setanta, l'Onyar i la Catedral, cases amb jardí i una urna: un collage."),
     ),
     dict(
-        slug='salaris-pensions-ajudes-girona', fecha='2026-10-21', idioma='ca', actualizado='2026-10-23 23:05',
+        slug='salaris-pensions-ajudes-girona', fecha='2026-10-21', idioma='ca', actualizado='2026-10-23 23:15',
         correcciones="23-10-2026: s'hi afegeix un apartat que separa, als barris on més pesen les prestacions, l'abstenció de qui pot votar i la barrera del cens (adults sense nacionalitat espanyola), amb un gràfic i la comparació entre la costa, Girona i Salt i la resta de l'interior. Es reforça l'avís que són dades de barris i no de persones. Les xifres anteriors no canvien.",
         titulo="Als barris de Girona on més pesa l'atur en la renda es vota 12 punts menys; on més pesen les pensions, igual que a la resta", serie='girona',
         descripcion="Dades d'Hisenda via l'INE, secció a secció. A la Font de la Pólvora, el 31,8% de la renda són prestacions i hi va votar el 33,4%. On més pesa l'atur, el PSC va treure el 37,5% i Junts l'11,0%.",
@@ -2126,6 +2129,7 @@ PIEZAS += [
     ),
     dict(
         slug='salarios-pensiones-ayudas-espana', fecha='2026-10-21',
+        actualizado='2026-10-23 23:15',
         titulo='Ante el 29N: del Polígono Sur a la Cañada Real, en 78 de los 93 barrios donde más pesan las ayudas sociales no votó ni la mitad', serie='29n',
         descripcion='Datos de Hacienda vía el INE, sección a sección: en esos 93 barrios las prestaciones pasan del 20% de la renta. En el quinto de secciones donde más pesan se votó 9,6 puntos menos y el PSOE sacó 10 más que el PP; donde más pesan las pensiones, casi igual que en el resto.',
         compara='La composición de la renta bruta de 2023 (salarios, pensiones, prestaciones por desempleo, otras prestaciones y otros ingresos) de 33.260 secciones censales de España, cruzada con la participación y el voto en las generales de julio de 2023; por secciones, por grupos de secciones y por provincias.',
@@ -2209,6 +2213,7 @@ PIEZAS += [
     ),
     dict(
         slug='capitales-partidas-por-barrios', fecha='2026-10-22',
+        actualizado='2026-10-23 23:15',
         titulo='Sevilla vota por barrios y Lugo, mezclada: el índice que mide qué capitales están partidas por el voto', serie='29n',
         descripcion='El índice de Moran del voto por sección censal en las 52 capitales: Ceuta, Sevilla, Barcelona, Madrid, Bilbao, Toledo y Granada votan por bloques de barrios; Soria, Lugo y Cuenca, mezcladas. Lo que más se repite es la distancia de renta entre barrios.',
         compara='Las 10.542 secciones censales urbanas (1.000 habitantes por km² o más) de las 50 capitales de provincia, Ceuta y Melilla en las generales de 2023, con la renta por unidad de consumo de 2023 y el índice de Gini y la ratio P80/P20 de cada ciudad. La clasificación se repite con las generales de 2008 a 2019.',
