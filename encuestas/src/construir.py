@@ -187,6 +187,7 @@ def estimacion():
 <figure><figcaption><span class="t">Congreso según nuestro modelo: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
 <div class="chart" id="hemi-modelo"></div></figure>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
+<p><a href="provincias.html">Escaños provincia a provincia según el modelo, con las más disputadas →</a></p>
 <p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. {html.escape(meta.get('aviso', ''))} <a href="metodo-modelo.html">Cómo se calcula</a> · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     return html_b, hemi
 
@@ -435,6 +436,104 @@ footer{{border-top:1px solid var(--rule);margin-top:12px;padding-top:8px;font-si
     (SALIDA / 'insertar.html').write_text(pagina, encoding='utf-8')
 
 
+COLOR_EXTRA = {'CUP': '#e5c100', 'Nueva Canarias': '#8a8486', 'PACMA': '#8a8486'}   # listas del modelo sin color en TODOS
+
+
+def color_lista(l):
+    return next(c for k, _, c, _ in TODOS if k == DEL_MODELO[l]) if l in DEL_MODELO else COLOR_EXTRA.get(l, '#8a8486')
+
+
+def nombre_lista(l):
+    return NOMBRE[DEL_MODELO[l]] if l in DEL_MODELO else l
+
+
+def provincias():
+    """encuestas/provincias.html: escaños de cada provincia según el modelo (mediana y horquilla del 80 %) y las más
+    disputadas. Solo si hay salida publicable del modelo, como el bloque de la estimación. Devuelve True si la escribe."""
+    if not (ESTIMACION / 'escenario-base.json').exists():
+        return False
+    d = json.load(open(ESTIMACION / 'escenario-base.json'))
+    meta = json.load(open(ESTIMACION / 'meta.json'))
+    if meta.get('interno', True) or meta.get('ficticio'):
+        return False
+    sys.path.insert(0, str(RAIZ / 'src'))
+    from territorios_rutas import ruta_provincia
+    nombres, prov = meta['provincias'], d['provincias']
+    primero = {c: max(v['listas'], key=lambda l: l['p_primera']) for c, v in prov.items()}
+    from collections import Counter
+    cuenta = Counter(l['lista'] for l in primero.values())
+    lider, n_lider = cuenta.most_common(1)[0]
+    art = 'el ' if lider in ('PP', 'PSOE', 'PNV', 'BNG') else ''
+    titular = f'Encuesta por provincias: {art}{nombre_lista(lider)} saldría primero en {n_lider} de {len(prov)}, según nuestro modelo'
+    partes = [f'{"el " if l in ("PP", "PSOE", "PNV", "BNG") else ""}{nombre_lista(l)} en {n}' for l, n in cuenta.most_common()]
+    partes[0] += ' provincias'
+    reparto = ', '.join(partes[:-1]) + ' y ' + partes[-1] if len(partes) > 1 else partes[0]
+    p1 = (f'Con la media de las encuestas del {fecha_larga(meta["generado"])} repartida por provincia, el partido con más probabilidades de quedar primero '
+          f'es {reparto}. «Primero» es el que queda delante en más simulaciones.')
+    reñidas = sorted(prov, key=lambda c: primero[c]['p_primera'])[:6]
+
+    def segundo(c):
+        return sorted(prov[c]['listas'], key=lambda l: -l['p_primera'])[1]
+    p2 = ('Las provincias donde el primer puesto está menos claro: '
+          + '; '.join(f'{nombres[c]} ({nombre_lista(primero[c]["lista"])} {round(primero[c]["p_primera"] * 100)} %, '
+                      f'{nombre_lista(segundo(c)["lista"])} {round(segundo(c)["p_primera"] * 100)} %)' for c in reñidas) + '.')
+    filas = ''
+    for ca, cods in meta['ccaa'].items():
+        for c in cods:
+            v = prov[c]
+            con = [l for l in sorted(v['listas'], key=lambda l: (-l['escanos'][1], -l['voto'][1])) if l['escanos'][2] > 0]
+            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nombre_lista(l["lista"]).replace(" / Frente Amplio", ""))} <b>{l["escanos"][1]}</b>'
+                            + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '') + '</span>' for l in con)
+            pr = primero[c]
+            # «Primero» antes del reparto para que se vea en el móvil sin desplazar la tabla
+            filas += (f'<tr><td><a href="../{ruta_provincia(c)}">{html.escape(nombres[c])}</a><span class="medio">{html.escape(ca)} · {v["escanos_total"]} escaños</span></td>'
+                      f'<td class="n"><i class="pt" style="background:{color_lista(pr["lista"])}"></i>{html.escape(nombre_lista(pr["lista"]))}<small>{round(pr["p_primera"] * 100)} %</small></td>'
+                      f'<td>{chips}</td></tr>')
+    faq = [('¿Es esto una encuesta por provincias?',
+            'No. Las encuestadoras casi nunca publican sus datos por provincia. Esto es un cálculo de Mapa Electoral: toma la media de las encuestas nacionales, '
+            'la reparte por provincia a partir de los resultados de 2023 y las europeas de 2024, y simula el resultado '
+            f'{meta["simulaciones"]:,} veces con el error histórico de las encuestas.'.replace(',', '.')),
+           ('¿Qué provincias están más disputadas?', p2),
+           ('¿Qué significa la horquilla de escaños?',
+            'En el 80 % de las simulaciones, el partido saca un número de escaños dentro de ese intervalo. La cifra grande es la mediana. '
+            'Por eso la suma de las medianas de una provincia puede no coincidir exactamente con sus escaños.'),
+           ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva en la página de encuestas, el modelo se vuelve a calcular y esta tabla cambia con él. '
+            'Del 24 al 28 de noviembre no se actualiza: la ley electoral prohíbe publicar sondeos esos días.')]
+    actual = fecha_larga(meta['generado'])
+    url = URL + 'provincias.html'
+    desc = f'Escaños de cada una de las 52 circunscripciones según la media de encuestas de las generales del 29N, con su horquilla y las provincias más disputadas. Modelo propio, actualizado el {actual}.'
+    jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': url + '#articulo', 'headline': titular, 'description': desc,
+               'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': '2026-10-23', 'dateModified': meta['generado'],
+               'image': [f'{BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}'], 'about': {'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'},
+               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO, 'isAccessibleForFree': True},
+              {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': url + '#preguntas', 'inLanguage': 'es',
+               'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
+    cuerpo = f"""<main>
+<p class="kicker">Modelo propio · Elecciones generales del 29N</p>
+<h1 data-miga="Por provincias">{html.escape(titular)}</h1>
+<p class="dek">Los escaños de cada circunscripción con la media de las encuestas, su horquilla y quién tiene más opciones de quedar primero.</p>
+<p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
+<p class="propio"><b>Modelo propio, no es una encuesta.</b> Las encuestadoras no publican sus datos por provincia. Estas cifras salen del modelo de Mapa Electoral, que reparte por provincia la media de las <a href="./">encuestas publicadas</a>. <a href="metodo-modelo.html">Cómo se calcula</a>.</p>
+<p data-tipo="dato">{html.escape(p1)}</p>
+<p data-tipo="dato">{html.escape(p2)}</p>
+<h2>Escaños por provincia según la media de encuestas</h2>
+<p>La cifra grande es la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones y, debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a sus resultados de 2023, sección a sección.</p>
+<div class="tbl"><table class="prov"><thead><tr><th>Provincia</th><th class="n">Primero</th><th>Escaños: mediana y horquilla</th></tr></thead><tbody>{filas}</tbody></table></div>
+<p class="src">{html.escape(meta.get('aviso', ''))} Modelo v{html.escape(meta['version'].split('-')[0].lstrip('v'))}; <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>
+<h2>Preguntas frecuentes</h2>
+<div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="./"><span class="kicker">Encuestas</span><b>Todas las encuestas de las generales y su promedio</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li><li><a href="../elecciones/elecciones-29n-2026/"><span class="kicker">29N</span><b>Escaños por provincia: cómo se reparten</b></a></li></ul>
+<footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
+</main>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
+    estilos = ESTILOS.replace('</style>', '.prov td{vertical-align:middle}.chip{display:inline-block;margin:1px 8px 1px 0;white-space:nowrap}.chip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px}'
+                              '.chip small{display:inline;margin-left:3px;color:var(--muted);font-size:.72rem}</style>')
+    pagina = (cabecera('Encuestas por provincias: escaños en cada provincia (29N)', desc, url, f'{BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}', jsonld)
+              .replace('<meta property="og:title" content="Encuestas por provincias: escaños en cada provincia (29N)">', f'<meta property="og:title" content="{html.escape(titular)}">')
+              + estilos + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + cuerpo + '\n</body>\n</html>\n')
+    (SALIDA / 'provincias.html').write_text(pagina, encoding='utf-8')
+    return True
+
+
 def main():
     encs = carga()
     resumen = json.load(open(DATOS / 'resumen.json'))
@@ -445,6 +544,7 @@ def main():
     desde_g = (hoy - timedelta(days=DESDE_GRAFICO)).isoformat()
     hemi, n_hemi = promedio_escanos(con_esc)
     bloque_modelo, hemi_m = estimacion()
+    hay_provincias = provincias()
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
     datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
@@ -507,6 +607,9 @@ def main():
             f'Nuestro modelo propio, que junta las encuestas y simula el reparto por provincia, da en su escenario central '
             + ', '.join(f'{NOMBRE[k]} {v}' for k, v in sorted(hemi_m.items(), key=lambda x: -x[1])[:5])
             + f' escaños; PP y Vox sumarían {hemi_m.get("PP", 0) + hemi_m.get("VOX", 0)}. Es una estimación con margen amplio, no una encuesta.') if hemi_m else None,
+           ('¿Hay encuestas por provincias?',
+            'Las encuestadoras casi nunca publican sus datos por provincia. Nuestro modelo reparte la media de las encuestas por provincia: '
+            'la tabla con los escaños de cada una y las más disputadas está en mapaelectoral.es/encuestas/provincias.html.') if hay_provincias else None,
            ('¿Cuándo son las próximas elecciones generales?',
             'El domingo 29 de noviembre de 2026. Se eligen los 350 diputados del Congreso y los senadores; la mayoría absoluta del Congreso está en 176 escaños.'),
            ('¿Hasta cuándo se pueden publicar encuestas?',
@@ -538,9 +641,7 @@ def main():
     jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': URL + '#articulo', 'headline': h1,
                'description': descripcion, 'url': URL, 'mainEntityOfPage': URL, 'inLanguage': 'es',
                'datePublished': '2026-10-22', 'dateModified': hoy.isoformat(), 'image': [imagen],
-               'about': {'@type': 'Event', 'name': 'Elecciones generales de España de 2026', 'startDate': '2026-11-29',
-                         'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
-                         'location': {'@type': 'Country', 'name': 'España'}},
+               'about': {'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'},   # no Event: Search Console lo marca (PR #52)
                'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO,
                'isAccessibleForFree': True},
               {'@context': 'https://schema.org', '@type': 'Dataset', '@id': URL + '#datos',
@@ -599,7 +700,7 @@ def main():
 <p class="descargas">Descargar los datos: <a href="../previsiones/datos/encuestas/encuestas_limpias.csv">todas las encuestas (CSV)</a> · <a href="../previsiones/datos/encuestas/wikipedia_generales_espana.csv">con escaños, según Wikipedia (CSV)</a> · <a href="../img/compartir/encuestas.jpg" download="encuestas-generales-{hoy.isoformat()}.jpg">resumen de hoy en imagen, para redes</a></p>
 <details class="insertar"><summary>Insertar este resumen en tu web</summary><p>Copia este código: muestra la mediana de las encuestas y el promedio de escaños, se actualiza solo y enlaza a esta página. Datos con licencia CC BY-SA 4.0.</p>
 <textarea rows="3" readonly onclick="this.select()" aria-label="Código para insertar el resumen de encuestas">&lt;iframe src="{URL}insertar.html" title="Encuestas de las elecciones generales · Mapa Electoral" width="100%" height="680" style="border:0;max-width:640px" loading="lazy"&gt;&lt;/iframe&gt;</textarea></details>
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
     pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld)
@@ -609,12 +710,13 @@ def main():
     SALIDA.mkdir(exist_ok=True)
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-                                        f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n</urlset>\n', encoding='utf-8')
+                                        f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
+                                        + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '') + '</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
     # autor común y migas de pan (BreadcrumbList), como en el resto del sitio: la página se regenera sola dos veces al día
     sys.path.insert(0, str(RAIZ / 'src'))
     import esquema
-    for f in (SALIDA / 'index.html', SALIDA / 'metodo-modelo.html'):
+    for f in (SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html'):
         if f.exists():
             esquema.procesa(f)
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
