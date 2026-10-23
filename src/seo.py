@@ -677,6 +677,9 @@ def main():
     # el mapa interactivo se carga después del texto (portada y piezas de Cataluña y Girona)
     import diferido
     diferido.main()
+    # favicon, apple-touch-icon y manifiesto en el <head> de todas las páginas
+    import iconos
+    iconos.main()
 
 
 main()

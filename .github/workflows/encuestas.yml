@@ -41,6 +41,7 @@ jobs:
             git checkout -- previsiones/datos/publico; echo "::warning::El modelo falló; se mantiene la estimación anterior"
           fi
           python3 encuestas/src/construir.py
+          python3 src/iconos.py
           git add encuestas index.html generales-2026/src/plantilla.html img/compartir/encuestas.jpg
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"

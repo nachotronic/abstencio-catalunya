@@ -2881,6 +2881,8 @@ def feed(todas, n=40):
         f'<channel><title>Mapa Electoral · Actualidad</title><link>{BASE}/actualidad/</link>'
         f'<atom:link href="{BASE}/actualidad/feed.xml" rel="self" type="application/rss+xml"/>'
         '<description>Piezas con datos al hilo de la actualidad electoral, por Nacho G. del Álamo.</description><language>es</language>'
+        # icono del canal: lo muestran los lectores de RSS y los avisos de Chrome al seguir el sitio
+        f'<image><url>{BASE}/favicon-96.png</url><title>Mapa Electoral · Actualidad</title><link>{BASE}/actualidad/</link><width>96</width><height>96</height></image>'
         f'<lastBuildDate>{fecha_rss(ult)}</lastBuildDate>\n' + '\n'.join(items) + '\n</channel></rss>\n')
 
 
