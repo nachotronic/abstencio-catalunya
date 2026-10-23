@@ -15,7 +15,7 @@ import base64, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 HERE = ROOT / 'src' / 'girona'
 BASE = 'https://mapaelectoral.es/'
-PUBLISHED, MODIFIED = '2026-10-13', '2026-10-23T22:30:00+02:00'
+PUBLISHED, MODIFIED = '2026-10-13', '2026-10-23T22:25:00+02:00'
 START, END = '<div class="wide">\n<header class="col">', '<script src="https://unpkg.com/deck.gl'
 
 R = json.load(open(HERE / 'resumen.json', encoding='utf-8'))
