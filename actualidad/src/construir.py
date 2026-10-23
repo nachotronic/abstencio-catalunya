@@ -573,7 +573,7 @@ PIEZAS = [
                   pie='Una mano deposita un sobre en una urna transparente, frente a un colegio electoral vacío.'),
     ),
     dict(
-        slug='alianca-catalana-ceo-mapa', fecha='2026-10-15', actualizado='2026-10-23 23:00',
+        slug='alianca-catalana-ceo-mapa', fecha='2026-10-15', actualizado='2026-10-23 23:05',
         titulo='El CEO da a Aliança Catalana hasta 25 escaños: en el Parlament de 2024 sacó el 3,8%, pero el 24,9% en el Ripollès y el 7,8% en los pueblos de menos de 1.000 electores', serie='29n',
         descripcion='Aliança no se presenta el 29N, pero el barómetro del CEO la sitúa como tercera fuerza en unas elecciones al Parlament. Su único resultado oficial dibuja un mapa con centro en el Ripollès, fuerte en el norte de Girona y el interior, y débil en el área de Barcelona.',
         compara='El voto a Aliança Catalana en las elecciones al Parlament de 2024 en los 947 municipios de Cataluña, por comarca, provincia y tamaño del municipio, junto al de Junts y Vox.',
@@ -1786,7 +1786,7 @@ PIEZAS += [
                   pie="Puigdemont davant de l'Onyar i el mapa de les seccions de Girona: un collage."),
     ),
     dict(
-        slug='alianca-catalana-ceo-mapa-ca', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 23:00',
+        slug='alianca-catalana-ceo-mapa-ca', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 23:05',
         titulo="El CEO dona a Aliança Catalana fins a 25 escons: al Parlament del 2024 va treure el 3,8%, però el 24,9% al Ripollès i el 7,8% als pobles de menys de 1.000 electors", serie='girona',
         descripcion="Aliança no es presenta el 29N, però el baròmetre del CEO la situa com a tercera força en unes eleccions al Parlament. El seu únic resultat oficial dibuixa un mapa amb centre al Ripollès, fort al nord de Girona i a l'interior.",
         compara="El vot a Aliança Catalana a les eleccions al Parlament del 2024 als 947 municipis de Catalunya, per comarca, demarcació i mida del municipi, al costat del de Junts i Vox.",
