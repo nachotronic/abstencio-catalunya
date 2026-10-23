@@ -1,6 +1,6 @@
 # Coordinación Claude ↔ ChatGPT — Mapa Electoral
 
-**Fuente única de tareas: GitHub Issues.** Este documento establece el protocolo; no es otra lista de pendientes. `ENCARGOS.md` se mantiene como índice de ilustraciones: una fila por encargo con el enlace a su Issue, sin estados propios (decisión de Nacho, 21-10-2026). No mantener estados manuales duplicados.
+**Fuente única de tareas: GitHub Issues**, salvo las ilustraciones. Este documento establece el protocolo; no es otra lista de pendientes. Las ilustraciones no llevan Issue desde el 22-10-2026 (decisión de Nacho): la lista de piezas que esperan una es [`ILUSTRACIONES.md`](ILUSTRACIONES.md), que se genera sola. No mantener estados manuales duplicados.
 
 ## Responsabilidades
 
@@ -19,9 +19,10 @@
 
 ## Protocolo especial: ilustraciones
 
-- Issue con pieza/slug, concepto, formato 1280×720 JPG, plazo y guía de estilo: tonos apagados, fondo claro, minimalismo, aire, **sin palabras ni datos inventados**.
-- ChatGPT entrega JPG comprobable y, si puede, PR con archivo binario. Si la herramienta no permite subir binarios, adjunta el archivo al usuario y comenta «Pendiente de integración» con nombre/ruta: **no declarar entregado en GitHub**.
-- Claude integra la imagen y configura `ia=True` en fuente; comprueba que existe el archivo en la rama antes de cerrar. Nunca reemplazar gráficos/mapas de datos por ilustraciones.
+- Sin Issue ni fila en `ENCARGOS.md`. La cola es `ILUSTRACIONES.md`: piezas con un gráfico (o nada) como cabecera, de la más reciente a la más antigua, con la guía de estilo. Se rehace con cada `construir.py` de Actualidad y la pieza sale de la lista en cuanto tiene ilustración.
+- Claude publica las piezas con un gráfico de datos como cabecera y no las bloquea esperando ilustración.
+- ChatGPT hace la ilustración que pida Nacho y se la da como `<slug>.jpg`. Nacho la manda al hilo de Claude; el nombre del fichero basta para saber a qué pieza va. Si ChatGPT puede subir binarios, también vale un PR con solo `img/actualidad/fotos/<slug>.jpg`.
+- Claude la pasa a JPG 1280×720 sin recortar, pone `ia=True` en la fuente y comprueba que el fichero existe en la rama. Nunca reemplazar gráficos/mapas de datos dentro de la pieza por ilustraciones.
 
 ## Protocolo especial: datos y modelos
 
@@ -34,10 +35,9 @@
 
 **Al iniciar:** leer `AGENTS.md`, este documento, Issues abiertas pertinentes y PR activas. Identificar bloqueos y comprobar qué cambió desde la última sesión. **Al terminar:** dejar en la Issue un comentario de máximo cinco líneas: estado, enlace, pruebas, bloqueo y siguiente responsable.
 
-## Estado inicial al 21-10-2026 (enlaces, no lista paralela)
+## Estado
 
-- Previsiones: [#157](https://github.com/nachotronic/abstencio-catalunya/issues/157); auditoría [PR #166](https://github.com/nachotronic/abstencio-catalunya/pull/166); equivalencias [PR #167](https://github.com/nachotronic/abstencio-catalunya/pull/167) (borrador).
-- Ilustración prestaciones/participación: [#165](https://github.com/nachotronic/abstencio-catalunya/issues/165) — pendiente de subir JPG al repositorio.
-- Ilustraciones que estaban en `ENCARGOS.md`: migradas a [#171](https://github.com/nachotronic/abstencio-catalunya/issues/171) y [#172](https://github.com/nachotronic/abstencio-catalunya/issues/172), enlazadas desde el índice.
+- Previsiones: [#157](https://github.com/nachotronic/abstencio-catalunya/issues/157).
+- Ilustraciones: las Issues del flujo antiguo (#165, #171-#201) se cerraron el 23-10-2026; lo pendiente está en `ILUSTRACIONES.md`.
 
 **Regla clave:** GitHub es el buzón compartido, no un canal de conversación instantánea. Los agentes consultan las Issues al ser activados; ninguno puede asumir que el otro recibe mensajes automáticamente.

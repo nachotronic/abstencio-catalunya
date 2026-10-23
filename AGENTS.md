@@ -4,7 +4,7 @@ Este repositorio es la web [mapaelectoral.es](https://mapaelectoral.es/), public
 
 ## Cómo trabajar con Git
 
-- El reparto de tareas entre agentes, los estados y el traspaso entre sesiones están en [`COORDINACION-AGENTES.md`](COORDINACION-AGENTES.md). Léelo al empezar cada sesión, junto con las Issues abiertas y los PR activos.
+- El reparto de tareas entre agentes, los estados y el traspaso entre sesiones están en [`COORDINACION-AGENTES.md`](COORDINACION-AGENTES.md). Léelo al empezar cada sesión, junto con las Issues abiertas, los PR activos y, si vas a ilustrar, `ILUSTRACIONES.md`.
 
 - **Nunca hagas push a `main`.** Todo cambio va en una rama propia y un pull request contra `main`. Nacho revisa y fusiona.
 - Ramas: `chatgpt/<tema-corto>` (por ejemplo `chatgpt/ilustracion-sanchez`). Las ramas `claude/...` son de otro agente: no las toques.
@@ -19,7 +19,8 @@ Lo que mejor encaja contigo son las **ilustraciones de cabecera** (collages edit
 
 - Formato: JPG horizontal de **1280 × 720**, sin texto incrustado, estilo collage editorial. Una ilustración por pieza, sin repetir.
 - Dónde va: `img/actualidad/fotos/<slug-de-la-pieza>.jpg`, y en `actualidad/src/construir.py` la pieza lleva `foto=dict(src='img/actualidad/fotos/<slug>.jpg', ancho=1280, alto=720, ia=True, pie='…')`. Con `ia=True` el pie añade solo «Ilustración generada con IA para Mapa Electoral» y el enlace a la política de uso de IA.
-- **Encargos**: cada encargo es una **Issue de GitHub** (responsable, ruta, fecha límite y criterios de aceptación en el cuerpo). Sigue el protocolo de `COORDINACION-AGENTES.md`: comenta «En curso» al empezar, entrega en un PR contra `main` con `Refs #N` y comenta «En revisión» con el enlace. `ENCARGOS.md` es solo un índice que enlaza a esas Issues: en el PR de entrega, pasa su fila de «Pendientes» a «Hechos» con el número del PR. Si una idea no te encaja, propón otra en la Issue.
+- **Qué ilustrar**: [`ILUSTRACIONES.md`](ILUSTRACIONES.md) lista, de la más reciente a la más antigua, las piezas que aún no tienen ilustración, con su slug y la guía de estilo. Se genera sola al construir Actualidad: no hace falta Issue para cada ilustración (decisión de Nacho, 22-10-2026). Nacho te dirá cuál hacer.
+- **Cómo entregarla**: lo normal es dársela a Nacho como `<slug>.jpg` y que él la mande a Claude, que la integra. Si puedes subir el binario, también vale un PR desde `chatgpt/ilustracion-<slug>` con solo `img/actualidad/fotos/<slug>.jpg`; Claude cambia la cabecera en `construir.py`. No digas que está entregada si el JPG no está en el repositorio.
 - Si la ilustración aún no tiene pieza, súbela a `img/actualidad/reserva/<tema>.jpg` y di en el PR qué representa.
 - **Nunca** uses IA para mapas, gráficos ni nada que muestre datos: eso se dibuja a partir de los datos. Tampoco hagas pasar una ilustración por fotografía ni imites el logotipo o la imagen de un medio o un partido.
 

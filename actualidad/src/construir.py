@@ -3138,4 +3138,5 @@ if __name__ == '__main__':
     portada(PUBLICAS)
     import esquema   # autor común, Dataset y migas de pan en todas las páginas (src/esquema.py)
     esquema.main()
-    print('Actualidad:', len(PIEZAS), 'piezas')
+    import ilustraciones   # ILUSTRACIONES.md: piezas que aún esperan su ilustración
+    print('Actualidad:', len(PIEZAS), 'piezas;', ilustraciones.escribir(PIEZAS, SERIES_FOTO, RAIZ, BASE), 'sin ilustración')
