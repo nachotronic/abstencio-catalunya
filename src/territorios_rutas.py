@@ -288,7 +288,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 EXCLUIR_PIEZA = {'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'},
-                 'lorca-fuente-vaqueros-viznar-1936': {'30024'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}}
+                 'lorca-fuente-vaqueros-viznar-1936': {'30024', '27012'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}, 'republica-mapa-1936-hoy': {'17155'}}
 # Comunidades y provincias con el mismo nombre que su capital: solo cuentan como municipio con «ciudad de» delante
 # o si la pieza es de esa ciudad (ACTUALIDAD_MUNICIPIO). Así «la Comunidad de Madrid» o «la provincia de Sevilla» no enlazan la ciudad.
 AMBIGUOS = {slug(x) for n in PROV_NOMBRE.values() for x in n.split('/')} | {'valencia', 'castellon', 'alicante'}
@@ -346,6 +346,9 @@ def municipios_citados(html, slug_pieza=None):
         c = _UNICOS[m.group(1)]
         if c in EXCLUIR_PIEZA.get(slug_pieza, ()):
             continue
+        art, _, resto = m.group(1).partition(' ')
+        if art in ('la', 'el', 'les', 'els', 'los', 'las', 'lo') and resto in _UNICOS:
+            continue   # «la Granada nazarí» es Granada, no La Granada (Barcelona)
         antes = texto[:m.start()].split()[-1:] or ['']
         despues = texto[m.end():].split()[:1] or ['']
         if c != propio and ((_NOMBRE_PROPIO.fullmatch(antes[0]) and antes[0] not in ANTES_OK) or antes[0] in ('La', 'la', 'El', 'el')
