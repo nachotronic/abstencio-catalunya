@@ -154,6 +154,9 @@ def promedio_escanos(con_esc):
     return {k: v for k, v in base.items() if v}, len(completas)
 
 
+MODELO_JS = {}   # datos de los gráficos de horquillas del modelo, que estimacion() deja para el script
+
+
 def estimacion():
     """Bloque «Estimación de Mapa Electoral» y escaños centrales para su hemiciclo; (None, None) si no hay salida publicable."""
     if not (ESTIMACION / 'escenario-base.json').exists():
@@ -181,12 +184,27 @@ def estimacion():
                   f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.')
     if izq:
         frase += f' Los socios de la investidura de 2023 llegan a 176 en el {prob(izq["p_mayoria"])}.'
+    color = lambda l: next((c, o) for kk, _, c, o in TODOS if kk == DEL_MODELO[l])
+    r0 = lambda a: [round(x) for x in a]
+    # horquillas: percentiles 2,5 / 10 / 50 / 90 / 97,5 de las simulaciones (motor.py)
+    MODELO_JS['bloques'] = [[n, *color(cl), r0(b['escanos']), round(b['p_mayoria'] * 100)] for b, n, cl in
+                            ((pv, 'PP + Vox', 'PP'), (izq, 'Socios de 2023', 'PSOE')) if b]
+    MODELO_JS['partidos'] = [[NOMBRE[DEL_MODELO[l['lista']]].replace(' / Frente Amplio', ''), *color(l['lista']), r0(l['escanos'])]
+                             for l in sorted(d['listas'], key=lambda l: -l['escanos'][2]) if l['lista'] in DEL_MODELO and l['escanos'][3] >= 1]
+    MODELO_JS['dist'] = [[NOMBRE[DEL_MODELO[l['lista']]].replace(' / Frente Amplio', ''), *color(l['lista']), l['escanos_dist']['desde'], l['escanos_dist']['p'], r0(l['escanos'])]
+                         for l in sorted(d['listas'], key=lambda l: -l['escanos'][2])[:4] if l['lista'] in DEL_MODELO]
     html_b = f"""<h2>Estimación propia de Mapa Electoral</h2>
 <p class="propio"><b>Modelo propio, no es una encuesta.</b> Todo lo anterior son cifras publicadas por las encuestadoras. Esto es un cálculo de Mapa Electoral: junta esas encuestas, las reparte por provincia y simula el resultado miles de veces.</p>
 <p>{frase}</p>
+<figure><figcaption><span class="t">¿Llegan a la mayoría absoluta? Escaños de cada bloque</span><span class="s">La barra gruesa recoge el 80 % de las simulaciones; la fina, el 95 %; el punto es la mediana. A la derecha, en qué porcentaje de simulaciones llega a 176.</span></figcaption>
+<div class="chart" id="horq-bloques"></div></figure>
 <figure><figcaption><span class="t">Congreso según nuestro modelo: escaños en el escenario central</span><span class="s">Media de encuestas repartida por provincia y simulada {meta['simulaciones']:,} veces con el error histórico de las encuestas. Generado el {fecha_larga(meta['generado'])}.</span></figcaption>
 <div class="chart" id="hemi-modelo"></div></figure>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto</th><th class="n">Escaños (central)</th><th class="n">Horquilla 80 %</th></tr></thead><tbody>{filas}</tbody></table></div>
+<figure><figcaption><span class="t">Horquilla de escaños de cada partido</span><span class="s">Barra gruesa: 80 % de las simulaciones; fina: 95 %; punto: mediana.</span></figcaption>
+<div class="chart" id="horq-partidos"></div></figure>
+<figure><figcaption><span class="t">Cuántas veces sale cada resultado</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las simulaciones en que sale. En color intenso, la horquilla del 80 %.</span></figcaption>
+<div class="chart" id="dist-modelo"></div></figure>
 <p><a href="provincias.html">Escaños provincia a provincia según el modelo, con las más disputadas →</a></p>
 <p class="src">Es una estimación, no un resultado: una de cada cinco veces el resultado real de un partido caerá fuera de su horquilla. {html.escape(meta.get('aviso', ''))} <a href="metodo-modelo.html">Cómo se calcula</a> · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     return html_b, hemi
@@ -304,7 +322,7 @@ a{color:var(--acc)}
 </style>"""
 
 SCRIPT = """<script>
-(()=>{const D=__DATOS__;
+(()=>{const D=window.__ENC=__DATOS__;
 const NS='http://www.w3.org/2000/svg',box=document.getElementById('graf');
 const osc=()=>document.documentElement.dataset.theme==='dark'||(document.documentElement.dataset.theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);
 const col=p=>p[osc()?3:2];
@@ -346,6 +364,60 @@ function hemi(id,H0){const hb=document.getElementById(id);if(!hb||!H0.length)ret
  const lg=document.createElement('div');lg.className='legend';lg.innerHTML=D.hemi.map(p=>'<span><i class="sw" style="background:'+(osc()?p[3]:p[2])+'"></i>'+p[4]+' '+p[1]+'</span>').join('');hb.appendChild(lg)}
 const hemis=()=>{hemi('hemi',D.hemi);hemi('hemi-modelo',D.hemi_modelo)};dibuja();hemis();let w=box.clientWidth;addEventListener('resize',()=>{if(box.clientWidth!==w){w=box.clientWidth;dibuja();hemis()}});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dibuja();hemis()})})();
+</script>
+<script>
+(()=>{const D=window.__ENC,NS='http://www.w3.org/2000/svg';
+const osc=()=>document.documentElement.dataset.theme==='dark'||(document.documentElement.dataset.theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+const pct=v=>(v*100).toFixed(1).replace('.',',')+' %';
+function tipDe(box){let t=box.querySelector('.tip');if(!t){t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t)}return t}
+function muestra(box,ev,html){const t=tipDe(box),r=box.getBoundingClientRect(),pt=ev.touches?ev.touches[0]:ev;t.innerHTML=html;t.hidden=false;
+ t.style.left=Math.min(Math.max(pt.clientX-r.left,90),r.width-90)+'px';t.style.top=(pt.clientY-r.top)+'px'}
+// horquillas: una fila por serie; a = [p2,5, p10, p50, p90, p97,5]; der = texto a la derecha
+function rangos(id,filas,minX,maxX,linea,der){const box=document.getElementById(id);if(!box||!filas.length)return;box.innerHTML='';
+ const W=Math.max(300,box.clientWidth||640),mov=W<500,lab=mov?118:150,mr=der?(mov?44:60):16,fh=30,top=22,H=top+filas.length*fh+6;
+ const x=v=>lab+(v-minX)/(maxX-minX)*(W-lab-mr);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Horquillas de escaños'},box);
+ const paso=[5,10,25,50].find(v=>v*(W-lab-mr)/(maxX-minX)>=38)||100;   // marcas a 38 px como mínimo
+ for(let v=minX;v<=maxX;v+=paso){el('line',{x1:x(v),x2:x(v),y1:top-4,y2:H-4,stroke:'var(--grid)'},svg);if(linea&&Math.abs(x(v)-x(linea))<30)continue;el('text',{x:x(v),y:12,'text-anchor':'middle'},svg).textContent=v}
+ if(linea){el('line',{x1:x(linea),x2:x(linea),y1:top-6,y2:H-2,stroke:'var(--fg)','stroke-dasharray':'3 3'},svg);
+  el('text',{x:x(linea)+4,y:12,style:'fill:var(--fg);font-weight:600'},svg).textContent=linea}
+ filas.forEach((f,i)=>{const y=top+i*fh+fh/2,c=osc()?f.o:f.c,a=f.a;
+  el('text',{x:lab-8,y:y+4,'text-anchor':'end',style:'fill:var(--fg)'},svg).textContent=f.n;
+  if(a.length>3)el('line',{x1:x(a[0]),x2:x(a[4]),y1:y,y2:y,stroke:c,'stroke-width':2,'stroke-opacity':.55},svg);
+  const lo=a.length>3?a[1]:a[0],hi=a.length>3?a[3]:a[a.length-1];
+  el('rect',{x:x(lo),y:y-6,width:Math.max(8,x(hi)-x(lo)),transform:x(hi)-x(lo)<8?`translate(-4,0)`:'',height:12,rx:4,fill:c},svg);
+  if(a.length>3){el('circle',{cx:x(a[2]),cy:y,r:5,fill:'var(--bg)',stroke:c,'stroke-width':2.5},svg)}
+  if(der)el('text',{x:W-4,y:y+4,'text-anchor':'end',style:'fill:var(--fg);font-weight:600'},svg).textContent=der(f);
+  const hit=el('rect',{x:0,y:y-fh/2,width:W,height:fh,fill:'transparent'},svg);
+  const txt=f.tip||('<b>'+f.n+'</b><br>Mediana '+a[2]+' escaños<br>80 %: '+a[1]+'-'+a[3]+' · 95 %: '+a[0]+'-'+a[4]);
+  hit.addEventListener('mousemove',ev=>muestra(box,ev,txt));hit.addEventListener('touchstart',ev=>muestra(box,ev,txt),{passive:true});
+  hit.addEventListener('mouseleave',()=>{tipDe(box).hidden=true})})}
+// columnas: distribución de escaños de cada partido en las simulaciones, en paneles
+function columnas(id,series){const box=document.getElementById(id);if(!box||!series.length)return;box.innerHTML='';
+ const W=Math.max(300,box.clientWidth||640),por=W<500?1:2,pw=(W-(por-1)*20)/por,ph=130,filasP=Math.ceil(series.length/por),H=filasP*(ph+44);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Distribución de escaños de cada partido en las simulaciones'},box);
+ series.forEach((s,i)=>{let [n,c0,o0,desde,p0,a]=s;const k=p0.length>60?3:1,p=[];desde=desde-desde%k;   // de 3 en 3 escaños si hay muchos
+  p0.forEach((v,j)=>{const b=Math.floor((s[3]+j-desde)/k);p[b]=(p[b]||0)+v});for(let j=0;j<p.length;j++)p[j]=p[j]||0;const c=osc()?o0:c0,ox=(i%por)*(pw+20),oy=Math.floor(i/por)*(ph+44)+18;
+  const mx=Math.max(...p),bw=pw/p.length,y=v=>oy+ph-v/mx*ph;
+  el('text',{x:ox,y:oy-4,style:'fill:var(--fg);font-weight:600'},svg).textContent=n+' · mediana '+a[2];
+  el('line',{x1:ox,x2:ox+pw,y1:oy+ph,y2:oy+ph,stroke:'var(--rule)'},svg);
+  p.forEach((v,j)=>{const e=desde+j*k,e2=e+k-1;if(!v)return;const dentro=e2>=a[1]&&e<=a[3];
+   const r=el('rect',{x:ox+j*bw+.5,y:y(v),width:Math.max(1,bw-1),height:oy+ph-y(v),fill:c,'fill-opacity':dentro?1:.3},svg);
+   const txt='<b>'+n+': '+(k>1?e+'-'+e2:e)+' escaños</b><br>'+pct(v)+' de las simulaciones';
+   const hit=el('rect',{x:ox+j*bw,y:oy,width:bw,height:ph,fill:'transparent'},svg);
+   hit.addEventListener('mousemove',ev=>muestra(box,ev,txt));hit.addEventListener('touchstart',ev=>muestra(box,ev,txt),{passive:true});
+   hit.addEventListener('mouseleave',()=>{tipDe(box).hidden=true})});
+  const paso=p.length*k>80?20:p.length*k>30?10:5;
+  for(let e=Math.ceil(desde/paso)*paso;e<desde+p.length*k-paso/2;e+=paso)el('text',{x:ox+((e-desde)/k+.5)*bw,y:oy+ph+15,'text-anchor':'middle'},svg).textContent=e})}
+function todo(){const M=D.modelo||{};
+ if(M.bloques)rangos('horq-bloques',M.bloques.map(b=>({n:b[0],c:b[1],o:b[2],a:b[3],p:b[4]})),100,250,176,f=>f.p+' %');
+ if(M.partidos)rangos('horq-partidos',M.partidos.map(b=>({n:b[0],c:b[1],o:b[2],a:b[3]})),0,Math.ceil(Math.max(...M.partidos.map(b=>b[3][4]))/25)*25,0,null);
+ if(M.dist)columnas('dist-modelo',M.dist);
+ if(D.pv&&D.pv.length)rangos('horq-encuestas',D.pv.map(e=>({n:e[0],c:'#1d84ce',o:'#4fa8ea',a:[e[1],e[2]],
+  tip:'<b>'+e[0]+'</b><br>PP + Vox: '+(e[1]===e[2]?e[1]:e[1]+'-'+e[2])+' escaños'})),170,230,176,null)}
+todo();let w=document.body.clientWidth;addEventListener('resize',()=>{if(document.body.clientWidth!==w){w=document.body.clientWidth;todo()}});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',todo)})();
 </script>"""
 
 
@@ -436,6 +508,12 @@ footer{{border-top:1px solid var(--rule);margin-top:12px;padding-top:8px;font-si
     (SALIDA / 'insertar.html').write_text(pagina, encoding='utf-8')
 
 
+TIP_MAPA = """<script>
+(()=>{const box=document.getElementById('mapa-prov');if(!box)return;const t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+const ver=ev=>{const p=ev.target.closest('path');if(!p){t.hidden=true;return}const r=box.getBoundingClientRect(),pt=ev.touches?ev.touches[0]:ev;
+ t.textContent=p.dataset.t;t.hidden=false;t.style.left=Math.min(Math.max(pt.clientX-r.left,120),r.width-120)+'px';t.style.top=(pt.clientY-r.top)+'px'};
+box.addEventListener('mousemove',ver);box.addEventListener('touchstart',ver,{passive:true});box.addEventListener('mouseleave',()=>{t.hidden=true})})();
+</script>"""
 COLOR_EXTRA = {'CUP': '#e5c100', 'Nueva Canarias': '#8a8486', 'PACMA': '#8a8486'}   # listas del modelo sin color en TODOS
 
 
@@ -445,6 +523,50 @@ def color_lista(l):
 
 def nombre_lista(l):
     return NOMBRE[DEL_MODELO[l]] if l in DEL_MODELO else l
+
+
+def nivel(p):
+    """Intensidad del color según la probabilidad de quedar primero (tres escalones, los de la leyenda del mapa)."""
+    return 1 if p >= .8 else .62 if p >= .6 else .3
+
+
+def svg_mapa_provincias(primero, nombres):
+    """Mapa de provincias coloreado por el partido con más probabilidades de quedar primero; geometría de la portada
+    (generales-2026/data/provincias.json, anillos en deltas enteros, Canarias ya desplazada al suroeste)."""
+    g = json.load(open(RAIZ / 'generales-2026/data/provincias.json'))
+    S, kx = g['S'], math.cos(math.radians(39.5))
+    anillos = []
+    for c, partes in zip(g['cod'], g['poly']):
+        for f in partes:
+            x, y, pts = f[0], f[1], [(f[0], f[1])]
+            for k in range(2, len(f), 2):
+                x += f[k]; y += f[k + 1]; pts.append((x, y))
+            anillos.append((c, [(px / S * kx, -py / S) for px, py in pts]))
+    xs = [x for _, r in anillos for x, _ in r]; ys = [y for _, r in anillos for _, y in r]
+    W = 640; esc = W / (max(xs) - min(xs)); H = round((max(ys) - min(ys)) * esc)
+    caminos = {}
+    for c, r in anillos:
+        d, ult = '', None
+        for x, y in r:
+            q = (round((x - min(xs)) * esc, 1), round((y - min(ys)) * esc, 1))
+            if ult and abs(q[0] - ult[0]) + abs(q[1] - ult[1]) < .8:   # puntos a menos de un píxel: fuera
+                continue
+            d += ('L' if d else 'M') + f'{q[0]:g},{q[1]:g}'; ult = q
+        caminos[c] = caminos.get(c, '') + d + 'Z'
+    out = ''
+    for c, d in caminos.items():
+        pr = primero.get(c)
+        if not pr:
+            continue
+        t = f'{nombres[c]}: {nombre_lista(pr["lista"])} primero en el {round(pr["p_primera"] * 100)} % de las simulaciones'
+        out += (f'<path d="{d}" fill="{color_lista(pr["lista"])}" fill-opacity="{nivel(pr["p_primera"])}" data-t="{html.escape(t)}">'
+                f'<title>{html.escape(t)}</title></path>')
+    # recuadro de Canarias, que no está en su sitio
+    cx = [(x - min(xs)) * esc for c, r in anillos if c in ('35', '38') for x, _ in r]
+    cy = [(y - min(ys)) * esc for c, r in anillos if c in ('35', '38') for _, y in r]
+    marco = f'<rect x="{min(cx) - 8:.0f}" y="{min(cy) - 8:.0f}" width="{max(cx) - min(cx) + 16:.0f}" height="{max(cy) - min(cy) + 16:.0f}" fill="none" stroke="var(--rule)"/>'
+    return (f'<svg class="mapa-prov" viewBox="-2 -2 {W + 4} {H + 4}" role="img" aria-label="Mapa de provincias según el partido con más probabilidades de quedar primero">'
+            f'{marco}<g stroke="var(--bg)" stroke-width=".8" stroke-linejoin="round">{out}</g></svg>')
 
 
 def provincias():
@@ -477,6 +599,18 @@ def provincias():
     p2 = ('Las provincias donde el primer puesto está menos claro: '
           + '; '.join(f'{nombres[c]} ({nombre_lista(primero[c]["lista"])} {round(primero[c]["p_primera"] * 100)} %, '
                       f'{nombre_lista(segundo(c)["lista"])} {round(segundo(c)["p_primera"] * 100)} %)' for c in reñidas) + '.')
+    # duelos: probabilidad de quedar primero de los dos primeros en las provincias más reñidas
+    duelos = ''
+    for c in sorted(prov, key=lambda c: primero[c]['p_primera'])[:8]:
+        a, b = primero[c], segundo(c)
+        pa, pb = round(a['p_primera'] * 100), round(b['p_primera'] * 100)
+        duelos += (f'<div class="duelo"><span class="dn">{html.escape(nombres[c])}</span><span class="db">'
+                   f'<i style="width:{pa}%;background:{color_lista(a["lista"])}" title="{html.escape(nombre_lista(a["lista"]))} {pa} %"></i>'
+                   f'<i style="width:{pb}%;background:{color_lista(b["lista"])}" title="{html.escape(nombre_lista(b["lista"]))} {pb} %"></i></span>'
+                   f'<span class="dl">{html.escape(nombre_lista(a["lista"]))} <b>{pa} %</b> · {html.escape(nombre_lista(b["lista"]))} <b>{pb} %</b></span></div>')
+    presentes = sorted({l['lista'] for l in primero.values()}, key=lambda l: -cuenta[l])
+    leyenda = (''.join(f'<span><i class="sw" style="background:{color_lista(l)}"></i>{html.escape(nombre_lista(l))} ({cuenta[l]})</span>' for l in presentes)
+               + '<span class="int">Probabilidad: <i style="opacity:.3"></i>menos del 60 % <i style="opacity:.62"></i>60-80 % <i></i>más del 80 %</span>')
     filas = ''
     for ca, cods in meta['ccaa'].items():
         for c in cods:
@@ -484,6 +618,13 @@ def provincias():
             con = [l for l in sorted(v['listas'], key=lambda l: (-l['escanos'][1], -l['voto'][1])) if l['escanos'][2] > 0]
             chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nombre_lista(l["lista"]).replace(" / Frente Amplio", ""))} <b>{l["escanos"][1]}</b>'
                             + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '') + '</span>' for l in con)
+            # un cuadrado por escaño con la mediana de cada partido; los que no reparten las medianas, en gris
+            cuad, n = '', 0
+            for l in con:
+                k = min(l['escanos'][1], v['escanos_total'] - n); n += k
+                cuad += f'<i style="background:{color_lista(l["lista"])}"></i>' * k
+            cuad += '<i class="aire"></i>' * (v['escanos_total'] - n)
+            chips = f'<span class="esc" aria-hidden="true">{cuad}</span>' + chips
             pr = primero[c]
             # «Primero» antes del reparto para que se vea en el móvil sin desplazar la tabla
             filas += (f'<tr><td><a href="../{ruta_provincia(c)}">{html.escape(nombres[c])}</a><span class="medio">{html.escape(ca)} · {v["escanos_total"]} escaños</span></td>'
@@ -515,9 +656,14 @@ def provincias():
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
 <p class="propio"><b>Modelo propio, no es una encuesta.</b> Las encuestadoras no publican sus datos por provincia. Estas cifras salen del modelo de Mapa Electoral, que reparte por provincia la media de las <a href="./">encuestas publicadas</a>. <a href="metodo-modelo.html">Cómo se calcula</a>.</p>
 <p data-tipo="dato">{html.escape(p1)}</p>
+<figure><figcaption><span class="t">Quién saldría primero en cada provincia</span><span class="s">Partido que queda delante en más simulaciones; cuanto más intenso el color, más claro lo tiene. Entre paréntesis, en cuántas provincias.</span></figcaption>
+<div class="chart" id="mapa-prov">{svg_mapa_provincias(primero, nombres)}</div>
+<div class="legend">{leyenda}</div></figure>
 <p data-tipo="dato">{html.escape(p2)}</p>
+<figure><figcaption><span class="t">Las provincias más disputadas</span><span class="s">Porcentaje de simulaciones en que queda primero cada uno de los dos partidos con más opciones.</span></figcaption>
+<div class="duelos">{duelos}</div></figure>
 <h2>Escaños por provincia según la media de encuestas</h2>
-<p>La cifra grande es la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones y, debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a sus resultados de 2023, sección a sección.</p>
+<p>Cada cuadrado es un escaño, con el color del partido que lo saca en la mediana; en gris, los que quedan en el aire. La cifra grande es la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones y, debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a sus resultados de 2023, sección a sección.</p>
 <div class="tbl"><table class="prov"><thead><tr><th>Provincia</th><th class="n">Primero</th><th>Escaños: mediana y horquilla</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">{html.escape(meta.get('aviso', ''))} Modelo v{html.escape(meta['version'].split('-')[0].lstrip('v'))}; <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>
 <h2>Preguntas frecuentes</h2>
@@ -526,10 +672,17 @@ def provincias():
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     estilos = ESTILOS.replace('</style>', '.prov td{vertical-align:middle}.chip{display:inline-block;margin:1px 8px 1px 0;white-space:nowrap}.chip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px}'
-                              '.chip small{display:inline;margin-left:3px;color:var(--muted);font-size:.72rem}</style>')
+                              '.chip small{display:inline;margin-left:3px;color:var(--muted);font-size:.72rem}'
+                              '.esc{display:flex;flex-wrap:wrap;gap:2px;margin:2px 0 4px;max-width:330px}.esc i{width:9px;height:9px;border-radius:2px;display:block}.esc i.aire{background:var(--grid);outline:1px solid var(--rule);outline-offset:-1px}'
+                              '.mapa-prov{max-width:640px;margin:0 auto}.mapa-prov path:hover{stroke:var(--fg);stroke-width:1.5}'
+                              '.legend .int{color:var(--muted)}.legend .int i{display:inline-block;width:12px;height:12px;border-radius:2px;background:var(--fg);margin:0 3px 0 8px;vertical-align:-1px}'
+                              '.duelo{display:grid;grid-template-columns:8.5em 1fr;gap:2px 10px;align-items:center;font-family:var(--ui);font-size:.9rem;margin:6px 0}'
+                              '.duelo .db{display:flex;height:14px;background:var(--grid);border-radius:3px;overflow:hidden;gap:2px}.duelo .db i{display:block;height:100%}'
+                              '.duelo .dl{grid-column:2;color:var(--muted);font-size:.8rem}'
+                              '@media (max-width:520px){.duelo{grid-template-columns:6.5em 1fr}}</style>')
     pagina = (cabecera('Encuestas por provincias: escaños en cada provincia (29N)', desc, url, f'{BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}', jsonld)
               .replace('<meta property="og:title" content="Encuestas por provincias: escaños en cada provincia (29N)">', f'<meta property="og:title" content="{html.escape(titular)}">')
-              + estilos + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + cuerpo + '\n</body>\n</html>\n')
+              + estilos + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + cuerpo + '\n' + TIP_MAPA + '\n</body>\n</html>\n')
     (SALIDA / 'provincias.html').write_text(pagina, encoding='utf-8')
     return True
 
@@ -546,7 +699,8 @@ def main():
     bloque_modelo, hemi_m = estimacion()
     hay_provincias = provincias()
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
-    datos = {'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
+    pv_casas = [[e['casa'], *suma_pv(e)] for e in sorted(con_esc, key=lambda e: -sum(suma_pv(e)))]
+    datos = {'modelo': MODELO_JS, 'pv': pv_casas, 'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
     desde23 = sorted((e for e in encs if e['fin'] >= '2023-07-24'), key=lambda e: e.get('publicado') or e['fin'], reverse=True)
     recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
@@ -680,6 +834,7 @@ def main():
 </figure>
 <h2>Promedio de escaños: lo que da cada encuestadora</h2>
 {bloque_hemi}
+{'<figure><figcaption><span class="t">PP + Vox en cada encuesta</span><span class="s">Escaños que dan juntos en la última encuesta de cada encuestadora del último mes; la barra es la horquilla de la propia encuestadora. La línea marca la mayoría absoluta (176).</span></figcaption><div class="chart" id="horq-encuestas"></div></figure>' if pv_casas else ''}
 <p>Última encuesta de cada una en los últimos 30 días, con los escaños que publica. Un intervalo («132-137») es la horquilla de la propia encuestadora; la mayoría absoluta está en 176.</p>
 {tabla_esc}
 {bloque_modelo or ''}
