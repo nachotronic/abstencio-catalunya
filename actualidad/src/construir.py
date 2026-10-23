@@ -1483,9 +1483,8 @@ PIEZAS = [
                  ('https://www.centroreinasofia.org/download/13929/', 'Kuric Kardelis, Gómez Miguel y Sanmartín Ortí, Barómetro Juventud y Género 2025, Centro Reina Sofía de Fad Juventud')],
         enlaces=[],
         lugar='España',
-        foto=dict(src='img/actualidad/fotos/sanchez-revuelta-broncano-voto-joven-29n.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Intención de voto más simpatía al PSOE, el PP, Vox y Sumar por grupo de edad, en los nueve barómetros del CIS desde diciembre de 2025.',
-                  fuente='CIS, microdatos. Cálculo propio'),
+        foto=dict(src='img/actualidad/fotos/sanchez-revuelta-broncano-voto-joven-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Pedro Sánchez, sentado en un sofá antiguo, frente a David Broncano en su mesa.'),
     ),
 ]
 
