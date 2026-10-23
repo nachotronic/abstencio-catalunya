@@ -1590,6 +1590,22 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/pueblos-unanimes-empates-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un pueblo con su campanario y una lluvia de papeletas iguales: un collage.'),
     ),
+    dict(
+        slug='ganar-por-un-voto-29n', fecha='2026-10-23',
+        titulo='Santa Cruz de Mudela, 874 a 873: los 185 pueblos que se ganaron por un voto', serie='29n', figura=0,
+        descripcion='En las generales de 2023, en 185 municipios el partido más votado ganó por un solo voto. El récord de la democracia es de Almoradí, en 2019: el PP le sacó un voto a Vox con más de nueve mil votantes.',
+        compara='Los votos de cada partido en cada municipio en las generales de 2023, y los municipios ganados por un voto en todas las generales desde 1977.',
+        limites='Ganar por un voto es que el partido más votado del municipio saque exactamente un voto más que el segundo, con el escrutinio definitivo del Ministerio del Interior; los recuentos provisionales publicados la noche electoral pueden diferir en algún voto. Los partidos se agrupan en familias comparables entre elecciones, lo que puede alterar algún caso antiguo. La explicación del aumento es una hipótesis.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales al Congreso de 1977 a 2023 por municipio'),
+                 ('https://www.ultimahora.es/elecciones/23j/congreso/santa-cruz-de-mudela.html', 'Última Hora, resultados del 23J en Santa Cruz de Mudela'),
+                 ('https://www.naciodigital.cat/eleccionscongres10N2019/municipi/03015', 'Nació Digital, resultados del 10N de 2019 en Almoradí'),
+                 ('https://www.vozpopuli.com/espana/pueblo-alcalde-cara-cruz.html', 'Vozpópuli, el pueblo que eligió alcalde a cara o cruz (6-6-2023)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985 del Régimen Electoral General, artículo 196')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/ganar-por-un-voto-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano mete el último sobre en una urna transparente, con una lupa al lado: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2421,6 +2437,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'ganar-por-un-voto-29n': 'Un voto de diferencia',
     'pueblos-unanimes-empates-29n': 'Empates y unanimidades',
     'feijoo-aborto-eutanasia-sanidad-publica-29n': 'Aborto y eutanasia',
     'ivan-redondo-12-millones-derecha-29n': 'La aritmética del bloque',
