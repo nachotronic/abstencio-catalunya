@@ -1856,7 +1856,7 @@ PIEZAS += [
         lugar='Girona',
     ),
     dict(
-        slug='girona-1936-participacio', fecha='2026-10-22', idioma='ca', actualizado='2026-10-23 23:15',
+        slug='girona-1936-participacio', fecha='2026-10-22', idioma='ca', actualizado='2026-10-23 23:02',
         titulo="El 1936 Salt votava més que avui: 76 % de participació, contra el 55 % del 23J", serie='girona',
         descripcion="A 128 dels 219 municipis de la demarcació de Girona es va votar més el febrer del 1936 que a les generals del 2023: el 77 % a Girona ciutat, contra el 62 %; el 73 % a Figueres, contra el 55 %. El 1933, la primera vegada que van votar les dones, la participació va ser deu punts més baixa.",
         compara="Els 219 municipis actuals de la demarcació de Girona a les eleccions generals del 19 de novembre del 1933, del 16 de febrer del 1936 i del 23 de juliol del 2023: participació i candidatura guanyadora.",
