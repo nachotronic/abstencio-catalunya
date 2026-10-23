@@ -177,6 +177,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/pueblos-unanimes-empates-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Mota del Cuervo, 1.243 a 1.243: los pueblos del empate y los del voto unánime</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/barrios-donde-vota-menos-de-la-mitad/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
