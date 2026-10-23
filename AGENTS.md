@@ -45,6 +45,6 @@ Requisitos: Python 3 con pandas, geopandas y pyarrow; Node con Playwright para l
 - Pieza de Cataluña en catalán: `python3 src/build_ca.py`
 - Portada (tras cambiar `generales-2026/`): `python3 src/portada.py`
 - Páginas por territorio: `python3 src/territorios.py`
-- Al final, siempre: `python3 src/seo.py` (sitemap, `llms.txt` y datos estructurados)
+- Al final, siempre: `python3 src/seo.py` (sitemap, `llms.txt`, datos estructurados y favicon en todas las páginas, vía `src/iconos.py`)
 
 Algunos scripts leen datos de una carpeta de trabajo que no está en el repositorio; si te falta un fichero, dilo en el PR en vez de inventar los datos.
