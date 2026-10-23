@@ -1524,6 +1524,31 @@ PIEZAS = [
                   pie='Porcentaje de asalariados de cada provincia que cobró en 2024 menos de un salario mínimo en todo el año.',
                   fuente='Agencia Tributaria. Cálculo propio'),
     ),
+    dict(
+        slug='ivan-redondo-12-millones-derecha-29n', fecha='2026-10-23',
+        titulo='Los 12 millones de la derecha que cita Iván Redondo solo existieron una vez: en 2011', serie='29n', figura=0,
+        descripcion='Desde entonces, PP, Vox, Ciudadanos y UPyD han sumado entre 10,45 y 11,33 millones de votos. La ecuación de Redondo, con Vox en el 20% y el PP en el 27-28%, exige un bloque más grande que el de 2023, y con los votos de entonces daría a la derecha 177 escaños: mayoría absoluta.',
+        compara='Los votos del bloque de la derecha (PP, Vox, Ciudadanos, UPyD y UPN o Navarra Suma) en las generales de 2004 a 2023, con voto exterior; y una simulación mecánica de escaños con los votos de 2023 por provincia y el reparto de 2026 en varios escenarios de PP y Vox.',
+        limites='La simulación mueve votos en la misma proporción en todas las provincias, algo que nunca ocurre, y no es una previsión. En Santa Cruz de Tenerife Vox no se presentó en 2023. Incluir a Ciudadanos y UPyD en el bloque es una elección; los nacionalistas quedan fuera. Los porcentajes son sobre los votos a candidaturas, sin el voto en blanco, y son unas décimas más altos que los oficiales. Las frases de Redondo se citan de su cuenta de X y de la prensa que las recogió. Los trasvases salen del recuerdo de voto del CIS: son lo que dicen los encuestados, con un margen de error de en torno a punto y medio, y el recuerdo de voto al PP y a Vox tiende a quedarse corto.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2004 a 2023 por mesa, con voto exterior (vía pollspaindata)'),
+                 ('https://www.eldebate.com/espana/20261014/ivan-redondo-suma-discurso-remontada-psoe-sanchez-tiene-posibilidades-feijoo_469316.html', 'El Debate, Iván Redondo se suma al discurso de la remontada (14-10-2026)'),
+                 ('https://www.elespanol.com/alicante/20261022/ivan-redondo-desembarca-alicante-teoria-remontada-psoe/1003744430892_0.html', 'El Español, Iván Redondo desembarca en Alicante con su teoría de la remontada del PSOE el 29-N (22-10-2026)'),
+                 ('https://x.com/thewarroomblog', 'Iván Redondo, cuenta de X @thewarroomblog'),
+                 ('https://doi.org/10.3389/fpos.2021.688130', 'Rama, Cordero y Zagórski, Three Is a Crowd? Podemos, Ciudadanos, and Vox: The End of Bipartisanship in Spain, Frontiers in Political Science 3 (2021)'),
+                 ('https://recyt.fecyt.es/index.php/recp/article/download/37589/21106', 'Penadés y Santiuste, La desigualdad en el sistema electoral español y el premio a la localización del voto, Revista Española de Ciencia Política 32 (2013)'),
+                 ('https://www.cis.es/documents/d/cis/es3420vpMT_a', 'CIS, estudio 3420, poselectoral de las generales de 2023, tabulación por recuerdo de voto'),
+                 ('https://www.cis.es/documents/d/cis/es3269rei_a', 'CIS, estudio 3269, poselectoral de las generales de noviembre de 2019'),
+                 ('https://www.cis.es/documents/d/cis/es3248rei_a', 'CIS, estudio 3248, poselectoral de las generales de abril de 2019'),
+                 ('https://www.cis.es/documents/d/cis/es3145rei_a', 'CIS, estudio 3145, poselectoral de las generales de 2016'),
+                 ('https://www.cis.es/documents/d/cis/es3126rei_a', 'CIS, estudio 3126, poselectoral de las generales de 2015'),
+                 ('https://www.cis.es/documents/d/cis/es2920rei_a', 'CIS, estudio 2920, poselectoral de las generales de 2011'),
+                 ('https://doi.org/10.5477/cis/reis.192.27-46', 'Alaminos y Alaminos-Fernández, Recuerdo de voto y distorsiones analíticas: el caso español tras las elecciones generales de 2023, REIS 192 (2025)'),
+                 ('https://rtvc.es/vox-no-presenta-lista-electoral-por-la-provincia-de-santa-cruz-de-tenerife/', 'RTVC, Vox no presenta lista electoral por la provincia de Santa Cruz de Tenerife (2023)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/ivan-redondo-12-millones-derecha-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Iván Redondo, junto a una lupa sobre tablas de resultados.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2355,6 +2380,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'ivan-redondo-12-millones-derecha-29n': 'La aritmética del bloque',
     'salario-minimo-provincias-feijoo-29n': 'El sueldo del debate',
     'teruel-cha-izquierda-escano-29n': 'El voto útil en Teruel',
     'sanchez-revuelta-broncano-voto-joven-29n': 'La generación Broncano',

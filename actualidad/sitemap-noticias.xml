@@ -161,6 +161,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/ivan-redondo-12-millones-derecha-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Los 12 millones de la derecha que cita Iván Redondo solo existieron una vez: en 2011</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/barrios-donde-vota-menos-de-la-mitad/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
