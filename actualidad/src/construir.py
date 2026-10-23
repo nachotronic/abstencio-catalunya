@@ -1505,6 +1505,25 @@ PIEZAS = [
                   pie='Votos de las listas a la izquierda del PSOE en Teruel frente a los votos que costó el tercer escaño, de 2004 a 2023.',
                   fuente='Ministerio del Interior. Cálculo propio'),
     ),
+    dict(
+        slug='salario-minimo-provincias-feijoo-29n', fecha='2026-10-23',
+        titulo='Huelva, Almería y Jaén: más de la mitad de sus asalariados cobró en 2024 menos de un salario mínimo al año', serie='29n', figura=1,
+        descripcion='Mientras Feijóo y Díaz discuten sobre el salario mínimo y el IRPF, los datos de Hacienda dicen que el 37% de los asalariados de España no llegó en 2024 a 15.876 euros en todo el año. En Huelva fue el 56%; en Madrid, el 30%. Las diez provincias con más sueldos bajos reparten 69 escaños el 29N.',
+        compara='Los asalariados de cada provincia según lo que cobraron en todo 2024, en múltiplos del salario mínimo (Agencia Tributaria, modelo 190), frente al voto de las generales de 2023 y al reparto de escaños; con una comparación dentro de cada comunidad autónoma (efectos fijos de comunidad y errores agrupados por comunidad).',
+        limites='Cobrar menos de un salario mínimo en el año no es cobrar el salario mínimo: incluye a quien trabajó solo unos meses o a tiempo parcial. Los datos son por provincia y no dicen cómo vota cada trabajador. Faltan el País Vasco y Navarra, con Hacienda foral. Los salarios son de 2024 y los votos, de 2023. La relación con el voto de Sumar se apoya en 48 provincias de 17 comunidades, varias con una sola provincia.',
+        fuentes=[('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/mercado/2024/home.html', 'Agencia Tributaria, Mercado de trabajo y pensiones en las fuentes tributarias 2024 y 2023: asalariados por provincia y tramos de salario'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023 por provincia, con voto exterior (vía pollspaindata)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/23/feijoo-precisa-que-su-objetivo-es-subir-tanto-el-salario-minimo-como-el-medio/', 'EFE, Feijóo precisa que su objetivo es subir tanto el salario mínimo como el medio (23-10-2026)'),
+                 ('https://www.publico.es/politica/feijoo-equivoca-directo-dice-personas-cobran-salario-minimo-deben-pagar-irpf.html', 'Público, Feijóo se equivoca en directo sobre el IRPF del salario mínimo (23-10-2026)'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3815', 'Real Decreto 126/2026, por el que se fija el salario mínimo interprofesional para 2026'),
+                 ('https://repositorio.bde.es/handle/123456789/16842', 'Barceló y otros, Los efectos del salario mínimo interprofesional en el empleo: nueva evidencia para España, Banco de España, Documento Ocasional 2113 (2021)'),
+                 ('https://www.bolsamania.com/noticias/economia/economialaboral--el-crecimiento-del-empleo-disminuyo-45-puntos-por-la-subida-del-smi-de-2019-segun-fedea--19728150.html', 'Europa Press, El crecimiento del empleo disminuyó 4,5 puntos por la subida del SMI de 2019, según Fedea (19-5-2025)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/salario-minimo-provincias-feijoo-29n.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Porcentaje de asalariados de cada provincia que cobró en 2024 menos de un salario mínimo en todo el año.',
+                  fuente='Agencia Tributaria. Cálculo propio'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2336,6 +2355,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'salario-minimo-provincias-feijoo-29n': 'El sueldo del debate',
     'teruel-cha-izquierda-escano-29n': 'El voto útil en Teruel',
     'sanchez-revuelta-broncano-voto-joven-29n': 'La generación Broncano',
     'republica-mapa-1936-hoy': 'Noventa años después',
