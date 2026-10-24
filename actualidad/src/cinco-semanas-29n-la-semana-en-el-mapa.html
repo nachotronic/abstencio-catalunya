@@ -1,0 +1,122 @@
+<title>La semana en márgenes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--sumar:#a2275f;--erc:#f0a81c;--junts:#16a99c;--pnv:#2b8a3e;--bildu:#8fa800;--bng:#4a9fdc;--cc:#e0b400;--otros:#9a9a9a;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--erc:#f5b324;--junts:#2fd0c2;--pnv:#4fbf7d;--bildu:#b5d12a;--bng:#7ab8e6;--cc:#f2cf3d;--otros:#8a8a8a;--neu:#3aa6bf}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--erc:#f5b324;--junts:#2fd0c2;--pnv:#4fbf7d;--bildu:#b5d12a;--bng:#7ab8e6;--cc:#f2cf3d;--otros:#8a8a8a;--neu:#3aa6bf}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>.margenes td:nth-child(3){white-space:nowrap;font-weight:600}.margenes td a{color:var(--fg)}@media (max-width:520px){.margenes td:nth-child(3){white-space:normal}}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Un voto en Santa Cruz de Mudela, 101 en Cantabria, 7.097 en Palencia: la semana en que el 29N se contó en márgenes</h1>
+<p class="dek">A cinco semanas de las elecciones, la campaña ha pasado por Palencia, Badalona, Ceuta, Ferrol, el plató de La Revuelta y Teruel. En casi todas las paradas, lo que decide no es el tamaño de los bloques, que apenas se mueve desde 2015, sino unos pocos cientos de votos en el sitio justo.</p>
+<div class="byline">Nacho G. del Álamo · 24 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div><p data-tipo="contexto">El lunes por la mañana, en Palencia, el PSOE se quedó sin candidatos al Congreso. La víspera, la Comisión Federal de Listas había cambiado al número uno que había votado la provincia, Álvaro Bilbao, por la diputada María Luz Martínez Seijo. Bilbao había salido de la ejecutiva provincial con 77 votos a favor y una abstención, según <a href="https://www.elespanol.com/castilla-y-leon/region/palencia/20261019/rebelion-psoe-palencia-ferraz-toda-lista-renuncia-imposicion-martinez-seijo/1003744426904_0.html">El Español</a>. Renunciaron los otros dos titulares y los dos suplentes. La alcaldesa de la ciudad, Miriam Andrés, que es también la secretaria provincial del partido, lo resumió en X con una frase que no necesita traducción:</p>
+<blockquote class="cita"><p>«Os habéis pasado la voz de la militancia por el forro.»</p><footer>Miriam Andrés, alcaldesa de Palencia y secretaria provincial del PSOE. Recogido por <a href="https://www.elespanol.com/castilla-y-leon/region/palencia/20261019/rebelion-psoe-palencia-ferraz-toda-lista-renuncia-imposicion-martinez-seijo/1003744426904_0.html">El Español</a>.</footer></blockquote>
+<p data-tipo="dato">Palencia reparte tres diputados. En 2023 el PSOE sacó 33.613 votos y el PP, 40.709, y el tercer escaño fue para el PP. Para quitárselo, a los socialistas les habrían hecho falta <strong>7.097 votos</strong> más. En abril de 2019, el único año de este siglo en que fueron el partido más votado de la provincia, se quedaron a 478.</p>
+<p data-tipo="contexto">Siete mil votos es la cifra más grande de esta crónica. Todas las demás son más pequeñas. Esta es la semana del 17 al 23 de octubre contada desde los mapas: siete días, 64 piezas publicadas en esta sección y una idea que atraviesa casi todas. Lo que el 29N vaya a decidir lo va a decidir poca gente, en sitios concretos, y a menudo por la mínima.</p>
+
+<h2>Badalona: el alcalde que en mayo vale el triple</h2>
+<p data-tipo="contexto">La semana empezó el sábado 17, cuando el PP anunció que Xavier García Albiol será su cabeza de lista por Barcelona, sin dejar la alcaldía de Badalona. El lunes ya grababa vídeos. En el primero de su serie #AlbiolSinFiltros habló de inmigración y de Francia, según <a href="https://www.infobae.com/espana/agencias/2026/10/19/albiol-reclama-controlar-la-inmigracion-irregular-si-no-acabaremos-como-francia/">Europa Press</a>:</p>
+<blockquote class="cita"><p>«Si no tomamos medidas y ponemos freno a la política de Pedro Sánchez y sus socios de dejar entrar a todo el mundo, que todo el mundo es bueno, acabaremos como Francia»</p><footer>Xavier García Albiol, alcalde de Badalona y candidato del PP por Barcelona. <a href="https://www.infobae.com/espana/agencias/2026/10/19/albiol-reclama-controlar-la-inmigracion-irregular-si-no-acabaremos-como-francia/">Europa Press</a>.</footer></blockquote>
+<p data-tipo="dato">Badalona votó dos veces en dos meses en 2023, y eso permite <a href="https://mapaelectoral.es/actualidad/albiol-badalona-pp-29n/">medir cuánto pesa su nombre</a>. En las municipales de mayo, la lista de Albiol sacó el 55,7% y fue la más votada en 145 de las 149 secciones censales de la ciudad. En las generales de julio, el PP se quedó en el 16,6% y no ganó en ninguna. En 2019 pasó lo mismo: 37,6% en mayo y 9,4% en las generales de noviembre.</p>
+<p data-tipo="patron">Sección a sección, los dos resultados se mueven juntos, con una correlación de 0,82: donde Albiol es más fuerte, el PP también lo es. Pero en todas las secciones de la ciudad, el PP de las generales sacó menos de la mitad que el alcalde. La pregunta del fichaje es si algo de ese voto de alcalde viaja con él a la papeleta del Congreso.</p>
+
+<h2>Ceuta, vista desde el Despacho Oval</h2>
+<p data-tipo="contexto">El martes 20, en la Casa Blanca, en un acto sobre fraudes en Minnesota, Donald Trump se acordó de España. Lo contó <a href="https://www.infobae.com/america/agencias/2026/10/20/trump-afirma-que-espana-fue-invadida-por-migrantes-y-no-esta-haciendo-nada-al-respecto/">EFE</a>:</p>
+<blockquote class="cita"><p>«En el caso de Francia y de toda Europa, fíjense en lo que ocurrió en España: el país fue invadido de forma repentina y masiva. Llegaron por decenas de miles, entraron a raudales en España, y el país no está haciendo nada al respecto»</p><footer>Donald Trump, presidente de Estados Unidos, el 20 de octubre, según la traducción de <a href="https://www.infobae.com/america/agencias/2026/10/20/trump-afirma-que-espana-fue-invadida-por-migrantes-y-no-esta-haciendo-nada-al-respecto/">EFE</a>.</footer></blockquote>
+<p data-tipo="contexto">La entrada masiva más reciente es la de Ceuta, los días 30 y 31 de julio, cuando miles de personas llegaron desde Marruecos por el espigón de El Tarajal y a nado. El ministro del Interior, Fernando Grande-Marlaska, cifró las entradas en unas 72.000, y dijo que unas 70.000 ya habían salido de la ciudad, según <a href="https://elfarodeceuta.es/marlaska-niega-cni-avisara-entrada-masiva-ceuta-confirma-72-000-personas-cruzaron-marruecos/">El Faro de Ceuta</a>.</p>
+<p data-tipo="dato">La otra entrada, la que no sale en los telediarios, la cuenta el INE. El 1 de enero de 2019 vivían en España 6.549.309 personas nacidas en el extranjero; el 1 de enero de 2026, 10.036.888. Solo en 2025 fueron 572.678 más, unas 1.569 al día. Y <a href="https://mapaelectoral.es/actualidad/trump-espana-invadida-inmigracion-29n/">el cruce con el voto</a> no dibuja lo que el discurso supone: en los municipios donde más creció su peso, Vox sacó el 12,3% en 2023; donde menos creció, el 13%.</p>
+
+<h2>Ferrol y la hucha de las pensiones</h2>
+<p data-tipo="dato">En Ferrol, la ciudad de los astilleros, uno de cada tres euros que entran en las casas llega de la Seguridad Social: las pensiones eran en 2023 el 33,9% de la renta de sus vecinos, según el atlas de renta del INE. Aquel julio, Ferrol votó al PP (38,7%) y al PSOE (29,4%). A Vox, uno de cada dieciocho votantes.</p>
+<p data-tipo="contexto">Esta semana, esos euros fueron el centro de la discusión. Feijóo había zanjado el debate en su propio partido el día 15, en Bruselas, según <a href="https://www.ondavasca.com/feijoo-garantiza-que-las-pensiones-subiran-con-el-ipc-si-gobierna-son-innegociables/">Europa Press</a>: «Las pensiones son innegociables y ya; se acabó». El martes, la portavoz del Gobierno, Elma Saiz, le contestó con el Fondo de Reserva, según <a href="https://www.infobae.com/espana/2026/10/20/elma-saiz-contraataca-a-feijoo-con-la-hucha-de-las-pensiones-de-vaciarse-hasta-5000-millones-con-el-pp-a-cerrar-2026-con-20000/">Infobae</a>:</p>
+<blockquote class="cita"><p>«Para hablar de agujeros en el bolsillo de los pensionistas y en las cuentas de la Seguridad Social desde luego es un especialista el señor Feijóo»</p><footer>Elma Saiz, portavoz del Gobierno, el 20 de octubre, según <a href="https://www.infobae.com/espana/2026/10/20/elma-saiz-contraataca-a-feijoo-con-la-hucha-de-las-pensiones-de-vaciarse-hasta-5000-millones-con-el-pp-a-cerrar-2026-con-20000/">Infobae</a>.</footer></blockquote>
+<p data-tipo="patron">Los dos prometen lo mismo, subirlas con el IPC, y se pelean por quién lo cumplirá. <a href="https://mapaelectoral.es/actualidad/pensiones-revalorizacion-29n/">La razón cabe en una cifra</a>: en las secciones censales donde más pesan las pensiones en la renta, PP y PSOE se llevaron juntos el 72,8% del voto, casi diez puntos más que donde menos pesan. Es el último reducto del bipartidismo, y no vota en bloque: en las más pobres de esas secciones gana el PSOE, y en las más ricas, el PP.</p>
+
+<h2>La Revuelta: dos países con la misma edad</h2>
+<p data-tipo="contexto">El jueves por la noche, Pedro Sánchez se sentó en La Revuelta, el programa de David Broncano en La 1. Hora y media, camisa remangada y un ajedrez de regalo. Cuando el presentador le preguntó por los insultos, el presidente se acordó de los pensionistas, según <a href="https://www.rtve.es/noticias/20261023/pedro-sanchez-revuelta-frases-entrevista/17279243.shtml">RTVE</a>:</p>
+<blockquote class="cita"><p>«Se acuerdan de mi madre, yo también de las suyas cuando subo las pensiones o el salario mínimo»</p><footer>Pedro Sánchez en La Revuelta, el 22 de octubre de 2026, según <a href="https://www.rtve.es/noticias/20261023/pedro-sanchez-revuelta-frases-entrevista/17279243.shtml">RTVE</a>.</footer></blockquote>
+<p data-tipo="dato">Pero quien ve La Revuelta es más joven, y <a href="https://mapaelectoral.es/actualidad/sanchez-revuelta-broncano-voto-joven-29n/">entre los jóvenes hay dos países</a>. En los nueve últimos barómetros del CIS, 37.191 entrevistas, los hombres de 18 a 34 años dan a Vox el 24,6% de voto más simpatía y al PSOE, el 13,3%. Las mujeres de la misma edad, al revés: el 28,5% al PSOE y el 14,1% a Vox. Entre los mayores de 75, el PSOE gana casi nueve a uno.</p>
+
+<h2>Teruel: la izquierda que se retira</h2>
+<p data-tipo="contexto">El miércoles, Chunta Aragonesista decidió que su coalición no presentará lista al Congreso por Teruel. Su presidente, Jorge Pueyo, lo explicó con una fórmula de manual: «Evitar la dispersión del voto y hacer todo lo posible para conseguir una mayoría progresista», según <a href="https://www.publico.es/politica/cha-frente-amplio-aragon-anuncia-presentara-congreso-teruel.html">Público</a>. Izquierda Unida, socia de la misma coalición, mantendrá la suya.</p>
+<blockquote class="cita"><p>«Es una mala decisión, no es defender a la izquierda, es no dar opción a la gente a votar a la izquierda»</p><footer>Marta Abengochea, coordinadora general de IU Aragón, según <a href="https://www.publico.es/politica/cha-frente-amplio-aragon-anuncia-presentara-congreso-teruel.html">Público</a>.</footer></blockquote>
+<p data-tipo="dato">Desde 1977, ninguna lista a la izquierda del PSOE ha sacado diputado por Teruel. <a href="https://mapaelectoral.es/actualidad/teruel-cha-izquierda-escano-29n/">Solo una vez tuvo los votos</a>: en diciembre de 2015, Podemos sacó 11.806 y la lista de IU y CHA, 3.883. Juntas, 15.689, más que los 14.112 con los que el PP ganó el tercer escaño. Fueron por separado. Y en 2023, aunque todos los votantes de Sumar hubieran votado al PSOE, a los socialistas les habrían faltado 235 votos para ese escaño.</p>
+
+<h2>El filo: de un pueblo de La Mancha a la mesa de un ministro</h2>
+<p data-tipo="dato">Santa Cruz de Mudela es un pueblo de vino y de paso, al sur de Ciudad Real. El 23 de julio de 2023 votaron allí 2.313 personas, y cuando terminó el recuento el PP tenía 874 votos y el PSOE, 873. No fue el único: en 2023, <a href="https://mapaelectoral.es/actualidad/ganar-por-un-voto-29n/">en 185 municipios</a> el más votado ganó por un voto, y en otros 94, como Mota del Cuervo (1.243 a 1.243), <a href="https://mapaelectoral.es/actualidad/pueblos-unanimes-empates-29n/">los dos primeros empataron</a>.</p>
+<p data-tipo="dato">Un pueblo ganado por un voto no da un diputado: los votos se suman en la provincia. Pero el reparto provincial también tiene su filo. Con los votos de 2023 y los escaños de 2026, <a href="https://mapaelectoral.es/actualidad/escanos-en-el-filo-29n/">seis escaños habrían cambiado de partido</a> si menos de mil personas hubieran cambiado su papeleta. En Cantabria bastaban <strong>101</strong> votantes de Vox que hubieran votado al PP. Con menos de 5.000, hay 32 escaños en el aire.</p>
+<p data-tipo="contexto">La politóloga Annick Laruelle, investigadora de Ikerbasque en la Universidad del País Vasco, lo explicaba en 2019 sin mirar a ningún pueblo en concreto:</p>
+<blockquote class="cita"><p>«La falta de proporcionalidad del sistema español no se debe tanto a la regla d’Hondt (o al umbral electoral) sino al elevado número de pequeños distritos.»</p><footer>Annick Laruelle, Ikerbasque y Universidad del País Vasco, en <a href="https://www.ehu.eus/es/web/campusa/-/el-reparto-de-los-escanos-en-el-congreso">Campusa</a>, 24 de mayo de 2019.</footer></blockquote>
+<p data-tipo="dato">El filo más caro de la semana estuvo en los tribunales. El Constitucional no admitió el miércoles el recurso del Defensor del Pueblo, y el Supremo mantiene sin voto el 29N a 163.020 nacionalizados por la ley de nietos. El jueves dio a los ministros Félix Bolaños y José Manuel Albares <a href="https://mapaelectoral.es/actualidad/ley-nietos-donde-estan-29n/">hasta el 28 de octubre a las 15 horas</a> para entregarle la lista nominal de afectados, según <a href="https://theobjective.com/espana/tribunales/2026-10-23/supremo-bolanos-albares-afectados-ley-nietos/">The Objective</a>. En 2023, <a href="https://mapaelectoral.es/actualidad/ley-nietos-voto-exterior-29n/">el voto de fuera ya cambió un escaño</a>: antes de sumarlo, el último diputado de Madrid era del PSOE por 120 votos de cociente; con él, pasó al PP.</p>
+
+<figure>
+<figcaption><span class="t">La semana, en márgenes</span><span class="s">Lo que separó a ganadores y perdedores en las elecciones de 2023 en cada lugar del que se habló entre el 17 y el 23 de octubre</span></figcaption>
+<div class="tbl"><table class="margenes"><thead><tr><th>Dónde</th><th>La noticia de la semana</th><th>El margen</th></tr></thead><tbody>
+<tr><td><a href="https://mapaelectoral.es/actualidad/ganar-por-un-voto-29n/">Santa Cruz de Mudela</a></td><td>Los pueblos que se ganan por un voto</td><td>1 voto entre PP y PSOE</td></tr>
+<tr><td><a href="https://mapaelectoral.es/actualidad/escanos-en-el-filo-29n/">Cantabria</a></td><td>Los escaños en el filo del 29N</td><td>101 votantes para el quinto escaño</td></tr>
+<tr><td><a href="https://mapaelectoral.es/actualidad/ley-nietos-voto-exterior-29n/">Madrid</a></td><td>El Supremo mantiene sin voto a 163.020 nacionalizados</td><td>120 votos de cociente antes del voto exterior</td></tr>
+<tr><td><a href="https://mapaelectoral.es/actualidad/teruel-cha-izquierda-escano-29n/">Teruel</a></td><td>CHA retira su lista al Congreso</td><td>235 votos al PSOE, aun con todo Sumar</td></tr>
+<tr><td><a href="https://mapaelectoral.es/actualidad/palencia-psoe-lista-29n/">Palencia</a></td><td>Dimite la lista del PSOE</td><td>7.097 votos para un segundo diputado</td></tr>
+<tr><td><a href="https://mapaelectoral.es/actualidad/albiol-badalona-pp-29n/">Badalona</a></td><td>Albiol, cabeza de lista del PP</td><td>Del 55,7% en mayo al 16,6% en julio</td></tr>
+</tbody></table></div>
+<div class="src">Fuente: Ministerio del Interior, generales de 2023 por municipio y circunscripción, y municipales de 2023. Cálculos de cada pieza enlazada.</div>
+</figure>
+
+<h2>Once millones arriba, once millones abajo</h2>
+<p data-tipo="contexto">Iván Redondo, el que fuera jefe de gabinete de Sánchez, tiene una cifra para estas elecciones y la ha repetido estos días en televisión y en una conferencia en Alicante. La escribió en <a href="https://x.com/thewarroomblog">su cuenta de X</a>:</p>
+<blockquote class="cita"><p>«Hay una ecuación electoral que conviene tener presente: PP + VOX. Cuando VOX está en el 20%, el PP suele situarse en el 27% o el 28%. No puede estar en el 33%. El bloque de la derecha lleva en torno a 12 millones de votos desde 2011, los que sumaban Rajoy y Rosa Díez»</p><footer>Iván Redondo, en <a href="https://x.com/thewarroomblog">su cuenta de X</a>.</footer></blockquote>
+<p data-tipo="dato">Los votos están contados, y <a href="https://mapaelectoral.es/actualidad/ivan-redondo-12-millones-derecha-29n/">los 12 millones solo existieron una vez</a>, en 2011. Desde 2015, PP, Vox, Ciudadanos y UPyD han sumado entre 10,45 y 11,33 millones de votos. Pero Redondo acierta en lo que importa: el bloque es sorprendentemente estable. En cinco elecciones generales se ha movido dentro de una franja de 900.000 votos, mientras por dentro nacía Vox y desaparecía Ciudadanos.</p>
+<p data-tipo="hipotesis">Si los bloques apenas cambian de tamaño, lo que se mueve es otra cosa: quién se queda en casa, a qué papeleta va cada voto dentro del mismo bloque y en qué provincia cae. Esa es la lectura que dejan juntas las piezas de esta semana, y es una hipótesis: ninguna de ellas mide qué votará nadie el 29N.</p>
+<p data-tipo="contexto">Quedan cinco semanas. En Santa Cruz de Mudela, el 23 de julio de 2023, habría bastado con que un solo votante del PP se hubiera quedado en casa para que el pueblo amaneciera empatado.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · <a href="https://mapaelectoral.es/actualidad/">Todas las piezas de Actualidad</a></p><div class="foot">Datos: Ministerio del Interior, resultados electorales de 2015 a 2023; INE, Estadística Continua de Población y Atlas de Distribución de Renta de los Hogares; CIS, barómetros de diciembre de 2025 a octubre de 2026. Las cifras proceden de las piezas enlazadas, donde se explica cómo se calcula cada una.</div>
+</main>
+
+<script>
+/* Pieza sin gráficos interactivos: la tabla es HTML estático */
+</script>
