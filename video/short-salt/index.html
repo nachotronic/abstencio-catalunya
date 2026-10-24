@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=block" rel="stylesheet">
+<style>html,body{margin:0;background:#12141d}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+// Short vertical 9:16: «En Salt, solo 1 de cada 3 adultos votó». Cada fotograma se dibuja con render(t), t en segundos.
+const W = 1080, H = 1920, DUR = 30;
+const C = {bg:'#12141d', fg:'#e8eaf2', muted:'#9aa0b8', rule:'#2c3042', vote:'#7d8ce8', noright:'#e0a440', abst:'#c77da3', empty:'#2a2e3e'};
+const F = {display:'"Bricolage Grotesque"', body:'"Newsreader"', mono:'"IBM Plex Mono"'};
+const ctx = document.getElementById('c').getContext('2d');
+let S = [], MUN = {}, BOX;
+
+const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3)/2; };
+const seg = (t, a, b) => ease((t - a) / (b - a));
+const lerp = (a, b, k) => a + (b - a) * k;
+function mix(c1, c2, k) {
+  const p = c => [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
+  const a = p(c1), b = p(c2);
+  return 'rgb(' + a.map((v, i) => Math.round(lerp(v, b[i], k))).join(',') + ')';
+}
+// Escala divergente alrededor de la media catalana (54 de cada 100 adultos votaron)
+function colour(v) {
+  if (v == null) return C.empty;
+  const d = (v - 0.545) / 0.25;
+  return d < 0 ? mix('#3a3550', C.abst, clamp(-d)) : mix('#3a3550', C.vote, clamp(d));
+}
+
+async function load() {
+  S = await (await fetch('secciones.json')).json();
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  for (const s of S) {
+    let a = 1e9, b = 1e9, c = -1e9, d = -1e9;
+    for (const r of s.r) for (let i = 0; i < r.length; i += 2) {
+      a = Math.min(a, r[i]); c = Math.max(c, r[i]); b = Math.min(b, r[i+1]); d = Math.max(d, r[i+1]);
+    }
+    s.cx = (a + c) / 2; s.cy = (b + d) / 2;
+    s.o = (Math.sin(s.cx * 913.1 + s.cy * 377.7) * 43758.5453) % 1; s.o = Math.abs(s.o);
+    x0 = Math.min(x0, a); y0 = Math.min(y0, b); x1 = Math.max(x1, c); y1 = Math.max(y1, d);
+    const m = MUN[s.m] || (MUN[s.m] = {x: 0, y: 0, n: 0});
+    m.x += s.cx; m.y += s.cy; m.n++;
+  }
+  for (const k in MUN) { MUN[k].x /= MUN[k].n; MUN[k].y /= MUN[k].n; }
+  BOX = {x0, y0, x1, y1};
+  await document.fonts.load('800 40px ' + F.display);
+  await document.fonts.load('400 40px ' + F.body);
+  await document.fonts.load('500 40px ' + F.mono);
+  await document.fonts.ready;
+}
+
+// Cámaras: centro (x,y) en coordenadas proyectadas y ancho visible
+function cams() {
+  const cat = {x: (BOX.x0 + BOX.x1)/2, y: (BOX.y0 + BOX.y1)/2 + 0.25, w: (BOX.x1 - BOX.x0) * 1.08};
+  const wide = {x: cat.x, y: cat.y, w: cat.w * 1.25};
+  const gi = {x: MUN['Salt'].x + 0.03, y: MUN['Salt'].y - 0.01, w: 0.8};
+  const salt = {x: MUN['Salt'].x, y: MUN['Salt'].y + 0.012, w: 0.085};
+  return {cat, wide, gi, salt};
+}
+function camAt(t) {
+  const K = cams();
+  const blend = (a, b, k) => ({x: lerp(a.x, b.x, k), y: lerp(a.y, b.y, k), w: Math.exp(lerp(Math.log(a.w), Math.log(b.w), k))});
+  if (t < 10) return K.cat;
+  if (t < 11.5) return blend(K.cat, K.wide, seg(t, 10, 11.5));     // primero se aleja
+  if (t < 15) return blend(K.wide, K.gi, seg(t, 11.5, 15));         // luego desciende sobre Girona
+  if (t < 18.5) return K.gi;
+  if (t < 21) return blend(K.gi, K.salt, seg(t, 18.5, 21));
+  return K.salt;
+}
+
+function drawMap(t, mapTop, mapH) {
+  const cam = camAt(t);
+  const sc = W / cam.w;
+  const ox = W/2 - cam.x * sc, oy = mapTop + mapH/2 - cam.y * sc;
+  const reveal = seg(t, 2.8, 7.5);
+  const focus = t > 18.5 ? seg(t, 18.5, 20) : 0;
+  ctx.save();
+  ctx.lineJoin = 'round';
+  for (const s of S) {
+    const sx = s.cx * sc + ox, sy = s.cy * sc + oy;
+    if (sx < -400 || sx > W + 400 || sy < mapTop - 400 || sy > mapTop + mapH + 400) continue;
+    const vis = clamp((reveal * 1.3 - s.o * 0.3) * 1);
+    const dim = (focus && s.m !== 'Salt') ? 1 - 0.75 * focus : 1;
+    ctx.globalAlpha = (0.12 + 0.88 * vis) * dim;
+    ctx.fillStyle = vis > 0.02 ? colour(s.v) : C.empty;
+    ctx.beginPath();
+    for (const r of s.r) {
+      ctx.moveTo(r[0]*sc + ox, r[1]*sc + oy);
+      for (let i = 2; i < r.length; i += 2) ctx.lineTo(r[i]*sc + ox, r[i+1]*sc + oy);
+      ctx.closePath();
+    }
+    ctx.fill();
+    if (sc > 3000) { ctx.strokeStyle = 'rgba(18,20,29,.6)'; ctx.lineWidth = sc > 8000 ? 2 : 0.8; ctx.stroke(); }
+  }
+  ctx.restore();
+  return {sc, ox, oy};
+}
+
+function text(str, x, y, font, color, align='left', alpha=1) {
+  ctx.save(); ctx.globalAlpha = alpha; ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+  ctx.strokeStyle = 'rgba(18,20,29,.85)'; ctx.lineWidth = 8; ctx.lineJoin = 'round'; ctx.strokeText(str, x, y);
+  ctx.fillText(str, x, y); ctx.restore();
+}
+function lines(arr, x, y, size, lh, font, color, alpha=1, align='left') {
+  arr.forEach((l, i) => {
+    if (typeof l === 'string') text(l, x, y + i*lh, font.replace('SZ', size + 'px'), color, align, alpha);
+    else { // tramos de colores en la misma línea
+      let cx = x; ctx.font = font.replace('SZ', size + 'px');
+      if (align === 'center') cx = x - l.reduce((s, p) => s + ctx.measureText(p[0]).width, 0) / 2;
+      for (const [s, c] of l) { text(s, cx, y + i*lh, ctx.font, c, 'left', alpha); ctx.font = font.replace('SZ', size + 'px'); cx += ctx.measureText(s).width; }
+    }
+  });
+}
+const fade = (t, a, b, d=0.5) => clamp(Math.min((t - a)/d, (b - t)/d));
+
+function label(m, v, t, a, b, p, dx=0, dy=0, side='right') {
+  const al = fade(t, a, b);
+  if (al <= 0) return;
+  const M = MUN[m];
+  const x = M.x * p.sc + p.ox, y = M.y * p.sc + p.oy;
+  ctx.save(); ctx.globalAlpha = al;
+  ctx.fillStyle = C.fg; ctx.beginPath(); ctx.arc(x, y, 9, 0, 7); ctx.fill();
+  ctx.strokeStyle = C.fg; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + dx, y + dy); ctx.stroke();
+  ctx.restore();
+  const tx = x + dx + (side === 'right' ? 14 : -14), al2 = side === 'right' ? 'left' : 'right';
+  text(m, tx, y + dy - 6, '700 46px ' + F.display, C.fg, al2, al);
+  text('votaron ' + Math.round(v * 100) + ' de 100', tx, y + dy + 42, '500 32px ' + F.mono, v < .45 ? C.abst : C.vote, al2, al);
+}
+
+function render(t) {
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+  const mapTop = 470, mapH = 930;  // la franja inferior la tapa la interfaz de Shorts
+  const p = drawMap(t, mapTop, mapH);
+  // degradados para que el texto se lea sobre el mapa
+  let g = ctx.createLinearGradient(0, 0, 0, mapTop + 120);
+  g.addColorStop(0, C.bg); g.addColorStop(.72, C.bg); g.addColorStop(1, 'rgba(18,20,29,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, mapTop + 120);
+  g = ctx.createLinearGradient(0, mapTop + mapH - 160, 0, H);
+  g.addColorStop(0, 'rgba(18,20,29,0)'); g.addColorStop(.3, C.bg); g.addColorStop(1, C.bg);
+  ctx.fillStyle = g; ctx.fillRect(0, mapTop + mapH - 160, W, H);
+
+  const X = 72;
+  text('GENERALES 23J · CATALUÑA', X, 150, '500 30px ' + F.mono, C.muted, 'left', fade(t, -1, 26));
+
+  // 1. Gancho
+  let a = fade(t, -1, 9.6);
+  lines(['En Salt, solo', [['1 de cada 3', C.abst]], 'adultos votó'], X, 270, 92, 98, '800 SZ ' + F.display, C.fg, a);
+
+  // 2. Cataluña entera
+  a = fade(t, 10, 18.3);
+  lines(['En Cataluña votaron', [['54 de cada 100', C.vote], [' adultos', C.fg]]], X, 260, 72, 84, '800 SZ ' + F.display, C.fg, a);
+  lines(['Pero en el eje Salt, Lloret y Figueres', 'la cifra se hunde'], X, 420, 40, 50, '400 SZ ' + F.body, C.muted, fade(t, 12.5, 18.3));
+
+  // leyenda
+  a = fade(t, 4, 14.2);
+  if (a > 0) {
+    const lx = X, ly = 1440, lw = W - 2*X;
+    for (let i = 0; i < 100; i++) { ctx.globalAlpha = a; ctx.fillStyle = colour(0.25 + i/99 * 0.55); ctx.fillRect(lx + i*lw/100, ly, lw/100 + 1, 26); }
+    ctx.globalAlpha = 1;
+    text('Adultos que votaron, por sección censal', lx, ly - 22, '500 28px ' + F.mono, C.muted, 'left', a);
+    text('25%', lx, ly + 66, '500 28px ' + F.mono, C.abst, 'left', a);
+    text('media 54%', lx + lw * (0.545 - .25)/.55, ly + 66, '500 28px ' + F.mono, C.fg, 'center', a);
+    text('80%', lx + lw, ly + 66, '500 28px ' + F.mono, C.vote, 'right', a);
+  }
+
+  // etiquetas sobre el mapa de Girona
+  label('Girona', 0.498, t, 14.6, 18.5, p, 90, -90, 'right');
+  label('Salt', 0.337, t, 15.0, 18.5, p, -30, 150, 'right');
+  label('Figueres', 0.395, t, 15.4, 18.5, p, -60, -40, 'left');
+  label('Lloret de Mar', 0.358, t, 15.8, 18.5, p, -80, -40, 'left');
+
+  // 3. Desglose de Salt
+  a = fade(t, 18.8, 26.2);
+  lines(['De cada 100 adultos', 'que viven en Salt…'], X, 260, 72, 84, '800 SZ ' + F.display, C.fg, a);
+  const parts = [[0.337, C.vote, 'votaron'], [0.277, C.abst, 'pudieron y no votaron'], [0.386, C.noright, 'no tienen derecho a voto']];
+  const by = 1180;
+  let acc = 0;
+  parts.forEach(([v, c, l], i) => {
+    const k = seg(t, 20.5 + i*1.3, 21.7 + i*1.3) * a;
+    if (k <= 0) { acc += v; return; }
+    ctx.globalAlpha = a; ctx.fillStyle = c;
+    ctx.fillRect(X + acc * (W - 2*X), by, v * (W - 2*X) * k, 64);
+    ctx.globalAlpha = 1;
+    text(Math.round(v * 100) + '', X, by + 150 + i*88, '800 70px ' + F.display, c, 'left', k);
+    text(l, X + 120, by + 140 + i*88, '400 44px ' + F.body, C.fg, 'left', k);
+    acc += v;
+  });
+  text('No tener la nacionalidad española deja fuera a 39 de cada 100', X, 420, '400 36px ' + F.body, C.muted, 'left', fade(t, 24.2, 26.2));
+
+  // 4. Cierre
+  a = fade(t, 26.5, 40);
+  if (a > 0) {
+    ctx.globalAlpha = a * 0.92; ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+    lines(['Quién no vota', 'y por qué,', 'sección a sección'], W/2, 760, 96, 104, '800 SZ ' + F.display, C.fg, a, 'center');
+    text('mapaelectoral.es', W/2, 1130, '700 64px ' + F.display, C.vote, 'center', a);
+    text('Fuente: Ministerio del Interior e INE (2023).', W/2, 1420, '500 26px ' + F.mono, C.muted, 'center', a);
+    text('Adultos residentes, generales del 23 de julio de 2023.', W/2, 1465, '500 26px ' + F.mono, C.muted, 'center', a);
+  }
+}
+window.DUR = DUR;
+window.ready = load().then(() => { render(0); return true; });
+window.render = render;
+</script>
+</body>
+</html>
