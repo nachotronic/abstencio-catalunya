@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/vox-pp-senado-pacto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-21</news:publication_date>
-      <news:title>PP y Vox negocian el Senado: con los votos de 2023, sumar a Vox le devolvería a la derecha 19 provincias frente a la lista de PSOE y Frente Amplio</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/trump-espana-invadida-inmigracion-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-21</news:publication_date>
-      <news:title>Trump dice que España fue «invadida»: los vecinos nacidos fuera pasaron de 6,5 a 10 millones en siete años, y donde más crecieron Vox no sacó más votos</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/pensiones-revalorizacion-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -193,27 +177,27 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/barrios-donde-vota-menos-de-la-mitad/</loc>
+    <loc>https://mapaelectoral.es/actualidad/asi-queda-el-mapa-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-21</news:publication_date>
-      <news:title>A seis semanas del 29N: en 534 barrios de España no votó ni la mitad del censo, y tres de cada cuatro están entre los más pobres</news:title>
+      <news:publication_date>2026-10-24</news:publication_date>
+      <news:title>Así queda el mapa electoral de España antes del 29N: el PP ganó en 40 provincias y el PSOE, en 10</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/salarios-pensiones-ayudas-espana/</loc>
+    <loc>https://mapaelectoral.es/actualidad/coaliciones-quien-va-con-quien-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-21</news:publication_date>
-      <news:title>Ante el 29N: del Polígono Sur a la Cañada Real, en 78 de los 93 barrios donde más pesan las ayudas sociales no votó ni la mitad</news:title>
+      <news:publication_date>2026-10-24</news:publication_date>
+      <news:title>Quién va con quién el 29N: Frente Amplio y Podemos, separados en 47 provincias; en 2015, juntos habrían sacado 15 diputados más</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/calle-que-parte-madrid/</loc>
+    <loc>https://mapaelectoral.es/actualidad/provincias-en-el-filo-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-21</news:publication_date>
-      <news:title>A cinco semanas del 29N: en la calle de los Hermanos García Noblejas, en Madrid, PP y PSOE se cambian de acera 12 veces, y el PP siempre gana en el lado con más renta</news:title>
+      <news:publication_date>2026-10-24</news:publication_date>
+      <news:title>Las provincias que deciden el 29N: 32 escaños se movían en 2023 con menos de 5.000 votantes, y el PP defiende 13</news:title>
     </news:news>
   </url>
   <url>
