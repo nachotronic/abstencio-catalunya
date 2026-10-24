@@ -449,6 +449,20 @@ def franja_portada(titular, med, actual, pre):
             '.del-encuestas .de-med i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.del-encuestas .de-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}</style></section>')
 
 
+def post_x(titular, med, hoy):
+    """Texto del post para X/Bluesky con la cifra del día; el enlace saca la tarjeta (og:image) como imagen.
+    X cuenta cualquier enlace como 23 caracteres: el texto queda por debajo de 280."""
+    d = date.fromisoformat(hoy)
+    cifras = ' · '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(med[k]).replace(chr(160), " ")}' for k, n, *_ in PRINCIPALES[:3] if k in med)
+    texto = (f'Encuestas del 29N ({d.day} {MESES[d.month - 1]}): {titular[0].lower() + titular[1:] if titular.startswith("El ") else titular}.\n\n'
+             f'Mediana: {cifras}.\n\n'
+             'Todas las encuestas y nuestro modelo:')
+    etiquetas = '#29N #EleccionesGenerales #Encuestas'
+    while len(texto) + 23 + len(etiquetas) + 4 > 280 and '\n\nMediana' in texto:   # si no cabe, fuera la línea de cifras
+        texto = texto.split('\n\nMediana')[0] + '\n\nTodas las encuestas, con su fuente, y nuestro modelo:'
+    return texto, URL, etiquetas
+
+
 def portada(titular, med, actual):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
@@ -872,6 +886,7 @@ def main():
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 </dl>
 <p class="descargas">Descargar los datos: <a href="../previsiones/datos/encuestas/encuestas_limpias.csv">todas las encuestas (CSV)</a> · <a href="../previsiones/datos/encuestas/wikipedia_generales_espana.csv">con escaños, según Wikipedia (CSV)</a> · <a href="../img/compartir/encuestas.jpg" download="encuestas-generales-{hoy.isoformat()}.jpg">resumen de hoy en imagen, para redes</a></p>
+<!--compartir-->
 <details class="insertar"><summary>Insertar este resumen en tu web</summary><p>Copia este código: muestra la mediana de las encuestas y el promedio de escaños, se actualiza solo y enlaza a esta página. Datos con licencia CC BY-SA 4.0.</p>
 <textarea rows="3" readonly onclick="this.select()" aria-label="Código para insertar el resumen de encuestas">&lt;iframe src="{URL}insertar.html" title="Encuestas de las elecciones generales · Mapa Electoral" width="100%" height="680" style="border:0;max-width:640px" loading="lazy"&gt;&lt;/iframe&gt;</textarea></details>
 <h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
@@ -882,11 +897,20 @@ def main():
               + ESTILOS + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
               + SCRIPT.replace('__DATOS__', json.dumps(datos, ensure_ascii=False, separators=(',', ':'))) + '\n</body>\n</html>\n')
     SALIDA.mkdir(exist_ok=True)
+    from urllib.parse import quote
+    texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
+    intento = f'https://x.com/intent/post?text={quote(texto + chr(10) + chr(10) + etiquetas)}&url={quote(enlace)}'
+    bsky = f'https://bsky.app/intent/compose?text={quote(texto + " " + enlace + chr(10) + chr(10) + etiquetas)}'
+    pagina = pagina.replace('<!--compartir-->', f'<p class="descargas">Compartir el resumen de hoy: <a href="{html.escape(intento)}" target="_blank" rel="noopener">en X</a> · '
+                            f'<a href="{html.escape(bsky)}" target="_blank" rel="noopener">en Bluesky</a></p>', 1)
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
                                         + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '') + '</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
+    # post para redes de esta actualización: el workflow solo vuelve a escribirlo cuando entra una encuesta nueva
+    texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
+    (SALIDA / 'post-redes.txt').write_text(f'{texto}\n{enlace}\n\n{etiquetas}\n', encoding='utf-8')
     # autor común y migas de pan (BreadcrumbList), como en el resto del sitio: la página se regenera sola dos veces al día
     sys.path.insert(0, str(RAIZ / 'src'))
     import esquema

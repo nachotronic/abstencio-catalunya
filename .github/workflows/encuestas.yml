@@ -5,7 +5,8 @@
 name: Encuestas
 on:
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '17 6 * * *'    # 7:17 en invierno (minuto poco concurrido: GitHub retrasa mucho las tareas en punto)
+    - cron: '17 18 * * *'   # 19:17
   workflow_dispatch:
 permissions:
   contents: write
