@@ -1702,6 +1702,8 @@ PIEZAS = [
                  ('https://x.com/thewarroomblog', 'Iván Redondo, cuenta de X')],
         enlaces=[],
         lugar='España',
+        foto=dict(src='img/actualidad/fotos/cinco-semanas-29n-la-semana-en-el-mapa.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna transparente con sobres sobre el mapa de España, entre una ciudad y un pueblo: un collage.'),
     ),
 ]
 
