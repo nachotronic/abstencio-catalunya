@@ -1,0 +1,8 @@
+# Abre un PR cuando hay versión nueva de una acción de GitHub usada en los workflows
+# (las acciones están fijadas por commit, así que sin esto no se actualizarían nunca).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
