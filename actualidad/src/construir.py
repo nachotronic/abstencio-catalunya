@@ -1678,6 +1678,33 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/provincias-en-el-filo-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
+    dict(
+        slug='cinco-semanas-29n-la-semana-en-el-mapa', fecha='2026-10-24',
+        titulo='Un voto en Santa Cruz de Mudela, 101 en Cantabria, 7.097 en Palencia: la semana en que el 29N se contó en márgenes', serie='29n', figura=0,
+        descripcion='Crónica de la semana del 17 al 23 de octubre desde los mapas: Palencia, Badalona, Ceuta, Ferrol, La Revuelta, Teruel y el voto de los nietos. Los bloques apenas se mueven desde 2015; lo que decide son unos pocos cientos de votos en el sitio justo.',
+        compara='Los márgenes de las generales y municipales de 2023 en los lugares de los que se habló durante la semana, con las cifras de las piezas de Actualidad publicadas entre el 17 y el 23 de octubre.',
+        limites='Es una pieza de resumen: cada cifra procede de una pieza ya publicada, enlazada en el texto, donde se explica cómo se calcula. Los márgenes no son comparables entre sí (un voto en un municipio, votantes que cambian de papeleta en una provincia, cocientes D\'Hondt) y ninguno predice el resultado del 29N. La lectura conjunta del último apartado es una hipótesis.',
+        calculo='Cada cifra, como se explica en su pieza de origen.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2015 a 2023 y de las municipales de 2023'),
+                 ('https://www.ine.es/dyngs/Prensa/ECP2T26.htm', 'INE, Estadística Continua de Población'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares'),
+                 ('https://www.cis.es/estudios/catalogo-estudios', 'CIS, barómetros de diciembre de 2025 a octubre de 2026'),
+                 ('https://www.elespanol.com/castilla-y-leon/region/palencia/20261019/rebelion-psoe-palencia-ferraz-toda-lista-renuncia-imposicion-martinez-seijo/1003744426904_0.html', 'El Español, la lista del PSOE de Palencia renuncia (19-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/19/albiol-reclama-controlar-la-inmigracion-irregular-si-no-acabaremos-como-francia/', 'Europa Press, Albiol y la inmigración (19-10-2026)'),
+                 ('https://www.infobae.com/america/agencias/2026/10/20/trump-afirma-que-espana-fue-invadida-por-migrantes-y-no-esta-haciendo-nada-al-respecto/', 'EFE, Trump dice que España fue «invadida» (20-10-2026)'),
+                 ('https://elfarodeceuta.es/marlaska-niega-cni-avisara-entrada-masiva-ceuta-confirma-72-000-personas-cruzaron-marruecos/', 'El Faro de Ceuta, Marlaska y las 72.000 entradas'),
+                 ('https://www.ondavasca.com/feijoo-garantiza-que-las-pensiones-subiran-con-el-ipc-si-gobierna-son-innegociables/', 'Europa Press, Feijóo y las pensiones (15-10-2026)'),
+                 ('https://www.infobae.com/espana/2026/10/20/elma-saiz-contraataca-a-feijoo-con-la-hucha-de-las-pensiones-de-vaciarse-hasta-5000-millones-con-el-pp-a-cerrar-2026-con-20000/', 'Infobae, Elma Saiz y la hucha de las pensiones (20-10-2026)'),
+                 ('https://www.rtve.es/noticias/20261023/pedro-sanchez-revuelta-frases-entrevista/17279243.shtml', 'RTVE, las frases de Sánchez en La Revuelta (23-10-2026)'),
+                 ('https://www.publico.es/politica/cha-frente-amplio-aragon-anuncia-presentara-congreso-teruel.html', 'Público, CHA no se presenta al Congreso por Teruel'),
+                 ('https://theobjective.com/espana/tribunales/2026-10-23/supremo-bolanos-albares-afectados-ley-nietos/', 'The Objective, el Supremo y la lista de afectados por la ley de nietos (23-10-2026)'),
+                 ('https://www.ehu.eus/es/web/campusa/-/el-reparto-de-los-escanos-en-el-congreso', 'Annick Laruelle en Campusa (UPV/EHU), 24-5-2019'),
+                 ('https://x.com/thewarroomblog', 'Iván Redondo, cuenta de X')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/cinco-semanas-29n-la-semana-en-el-mapa.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna transparente con sobres sobre el mapa de España, entre una ciudad y un pueblo: un collage.'),
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2529,6 +2556,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
     'ganar-por-un-voto-29n': 'Un voto de diferencia',
     'asi-queda-el-mapa-29n': 'El mapa de partida',
     'coaliciones-quien-va-con-quien-29n': 'Quién va con quién',
