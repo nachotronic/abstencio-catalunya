@@ -1749,6 +1749,9 @@ PIEZAS = [
                  ('https://www.vozpopuli.com/espana/madrid/vox-encuentra-en-madrid-su-gran-caladero-de-afiliaciones-una-de-cada-cuatro-se-producen-en-la-region.html', 'Vozpópuli, la campaña de Vox en el sur de Madrid')],
         enlaces=[],
         lugar='España',
+        actualizado='2026-10-25 10:56',
+        foto=dict(src='img/actualidad/fotos/quien-vota-que-barrios-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un despacho, un taller y un banco con dos jubilados en la misma calle, cada uno con su sobre: un collage.'),
     ),
 ]
 
