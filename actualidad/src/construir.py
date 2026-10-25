@@ -1738,7 +1738,7 @@ PIEZAS = [
         calculo='Voto: porcentaje sobre votos válidos. Pareja de secciones vecinas: comparten al menos 80 metros de límite (con 12 metros de tolerancia) y tienen al menos 400 electores cada una. Salto: diferencia en puntos entre las dos secciones. Calle: la que devuelve el geocodificador inverso de CartoCiudad en al menos tres de cinco puntos del límite común. Medias por distrito y por barrio: media simple de sus secciones.',
         fuentes=[INTERIOR, PARLAMENT, INE,
                  ('https://www.cartociudad.es/', 'CartoCiudad (IGN), geocodificador inverso para el nombre de cada calle'),
-                 ('https://www.openstreetmap.org/', 'OpenStreetMap, nombres de barrio'),
+                 ('https://www.openstreetmap.org/', 'OpenStreetMap, nombres de barrio y trazado de las calles'),
                  ('https://beteve.cat/politica/mapa-on-concentra-vot-partits-barcelona-eleccions-generals-2023/', 'Betevé, Marcos Arizmendi: on es concentra el vot de cada partit a Barcelona (generales 2023)'),
                  ('https://beteve.cat/politica/la-renda-duna-famila-de-pedralbes-multiplica-per-sis-la-duna-de-ciutat-meridiana/', 'Betevé, la renda d\'una família de Pedralbes multiplica per sis la de Ciutat Meridiana'),
                  ('https://naciodigital.cat/politica/la-meridiana-de-la-via-lliure.html', 'Nació Digital, Pep Martí: la Meridiana de la Via Lliure (8-9-2015)'),
