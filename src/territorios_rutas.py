@@ -118,7 +118,7 @@ TEMAS = {
         titulo='Participación y abstención: quién no vota en España y dónde',
         intro='Dónde se vota menos y quién se queda en casa: participación por barrio, por renta y por tipo de elección, '
               'el censo electoral y el voto de los residentes en el extranjero.',
-        piezas=TEMA_PARTICIPACION + ['barrios-donde-vota-menos-de-la-mitad', 'alquiler-ciudad-a-ciudad', 'europeas-arona', 'voto-en-blanco',
+        piezas=TEMA_PARTICIPACION + ['voto-correo-29n', 'barrios-donde-vota-menos-de-la-mitad', 'alquiler-ciudad-a-ciudad', 'europeas-arona', 'voto-en-blanco',
                                      'pensiones-censo-mayores-29n', 'ley-nietos-voto-exterior-29n', 'ley-nietos-donde-estan-29n',
                                      'blocs-i-cases-girona', 'salaris-pensions-ajudes-girona', 'vox-barrios-obreros-clase-29n', 'girona-1936-participacio'],
         datos=[('elecciones/participacion-electoral-por-barrio/', 'Participación electoral por barrio en toda España'),
