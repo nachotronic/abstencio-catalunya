@@ -111,7 +111,7 @@ const S = {
       text(miles(v / d), W - 2 * X, 0, '800 72px ' + F.display, c, 'right', clamp(k * 3));
       ctx.restore();
     }
-    text(G.divNote, X, 1400, '400 44px ' + F.body, C.fg, 'left', ease((t - 3.6) / 0.4));
+    [].concat(G.divNote).forEach((l, i) => text(l, X, 1370 + i * 58, '400 44px ' + F.body, C.fg, 'left', ease((t - 3.6 - i * 0.3) / 0.4)));
   },
   tabla(t) {
     pop(G.tablaTitle, X, 300, 80, 92, 0, t);
@@ -143,7 +143,7 @@ const S = {
     });
     // contador y escaños
     const got = WIN.filter(w => t > awardAt(w.k)).length, cy = top + G.partidos.length * ch + 80;
-    if (!got) text('Buscamos el número más alto…', X, cy, '400 44px ' + F.body, C.fg, 'left', ease((t - 1.2) / 0.3));
+    if (!got) text('Buscamos el cociente más alto…', X, cy, '400 44px ' + F.body, C.fg, 'left', ease((t - 1.2) / 0.3));
     else {
       const w = WIN[got - 1], lt2 = t - awardAt(got - 1);
       text('Escaño ' + got + ':', X, cy, '400 44px ' + F.body, C.fg, 'left', ease(lt2 / 0.25));

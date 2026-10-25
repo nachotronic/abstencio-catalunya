@@ -36,13 +36,13 @@
     ]
   ],
   "votosTitle": [
-    "1. Cantabria",
+    "1. Un ejemplo: Cantabria",
     "reparte 5 escaños"
   ],
   "votosSub": "Votos (solo cuentan los que pasan del 3%)",
   "tablaTitle": [
     "3. Los 5 escaños van a",
-    "los 5 números más altos"
+    "los 5 cocientes más altos"
   ],
   "ultimo": {
     "title": [
@@ -53,13 +53,13 @@
       "p": "Vox",
       "label": "Vox ÷ 1",
       "q": 49243,
-      "note": "se lleva el 5º escaño"
+      "note": "el 5º cociente: se lleva el último escaño"
     },
     "b": {
       "p": "PP",
       "label": "PP ÷ 3",
       "q": 49108.67,
-      "note": "se queda fuera"
+      "note": "el 6º cociente: se queda fuera"
     },
     "punch": [
       "Al PP le faltaron",
@@ -79,5 +79,8 @@
     "2. Los votos de cada",
     "partido se dividen"
   ],
-  "divNote": "…y lo mismo con todos los partidos."
+  "divNote": [
+    "Cada resultado es un cociente.",
+    "Y lo mismo con todos los partidos."
+  ]
 }
