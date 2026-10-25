@@ -17,6 +17,9 @@ const F = {display:'"Bricolage Grotesque"', body:'"Newsreader"', mono:'"IBM Plex
 const K_LAT = Math.cos(41.7 * Math.PI / 180);   // misma proyección que prep_geo.py
 const ctx = document.getElementById('c').getContext('2d');
 let S = [], MUN = {}, SEC = {}, BOX, G;
+// Favicon del sitio (copia de /favicon.svg) para el cierre
+const LOGO = new Image();
+LOGO.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#fff"/><g stroke="#fff" stroke-width="3"><path d="M4 4h30v26H4z" fill="#e30613" transform="translate(0 0)"/><path d="M34 4h26v20H34z" fill="#1d84ce"/><path d="M4 30h22v30H4z" fill="#1d84ce"/><path d="M26 30h8v-6h26v20H26z" fill="#e30613"/><path d="M26 44h34v16H26z" fill="#6b2c91"/></g></svg>');
 
 const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
 const ease = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3)/2; };
@@ -60,6 +63,7 @@ async function load() {
   await document.fonts.load('400 40px ' + F.body);
   await document.fonts.load('500 40px ' + F.mono);
   await document.fonts.ready;
+  await LOGO.decode();
 }
 
 // Un punto del guion: "mun:Salt", "sec:1706601005" o [lon, lat]
@@ -234,6 +238,7 @@ function render(t) {
   a = fade(t, 26.5, 40);
   if (a > 0) {
     ctx.globalAlpha = a * 0.92; ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+    ctx.globalAlpha = a; ctx.drawImage(LOGO, W/2 - 90, 440, 180, 180); ctx.globalAlpha = 1;
     lines(G.outro, W/2, 760, 96, 104, '800 SZ ' + F.display, C.fg, a, 'center');
     text(G.url || 'mapaelectoral.es', W/2, 1130, '700 64px ' + F.display, C.vote, 'center', a);
     G.source.forEach((s, i) => text(s, W/2, 1420 + i*45, '500 26px ' + F.mono, C.muted, 'center', a));
