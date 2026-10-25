@@ -128,7 +128,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <figure>
 <figcaption><span class="t">Las calles con más saltos</span><span class="s">Parejas de secciones vecinas separadas por cada calle en las que PP y Vox, o el independentismo, cambian 10 puntos o más de un lado a otro</span></figcaption>
 <div class="chart" id="calles"></div>
-<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP + Vox, generales 2023</span><span><i class="sw" style="background:var(--neu)"></i>ERC + Junts + CUP + Aliança, autonómicas 2024</span></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP + Vox, generales 2023</span><span><i class="sw" style="background:var(--erc)"></i>ERC + Junts + CUP + Aliança, autonómicas 2024</span></div>
 <div class="src">Fuente: Ministerio del Interior; Generalitat de Catalunya; CartoCiudad (IGN), nombres de calle. Cálculo propio.</div>
 <details><summary>Ver la tabla por calle</summary><div class="tbl" id="calles-tbl"></div></details>
 </figure>
@@ -211,7 +211,7 @@ const PN={PSOE:'PSC',PP:'PP',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',VOX:'Vox'};
  const bin=(v,b)=>{const i=b.findIndex(t=>v<t);return i<0?b.length:i};
  const LEG={w:'<span><i class="sw" style="background:var(--psoe)"></i>PSC</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar</span><span><i class="sw" style="background:var(--junts)"></i>Junts</span><span style="color:var(--muted)">Partido más votado, generales 2023; cuanto más intenso, más votos sacó</span>',
   der:'<span>PP + Vox, generales 2023:</span><span class="ramp">'+OP.map(o=>`<i style="background:var(--pp);opacity:${o}"></i>`).join('')+'</span><span style="color:var(--muted)">menos de 15% · 45% o más</span>',
-  ind:'<span>ERC + Junts + CUP + Aliança, autonómicas 2024:</span><span class="ramp">'+OP.map(o=>`<i style="background:var(--neu);opacity:${o}"></i>`).join('')+'</span><span style="color:var(--muted)">menos de 25% · 55% o más</span>'};
+  ind:'<span>ERC + Junts + CUP + Aliança, autonómicas 2024:</span><span class="ramp">'+OP.map(o=>`<i style="background:var(--erc);opacity:${o}"></i>`).join('')+'</span><span style="color:var(--muted)">menos de 25% · 55% o más</span>'};
  const ALT={der:'<span style="color:var(--muted)">La altura es PP + Vox</span>',ind:'<span style="color:var(--muted)">La altura es el voto independentista</span>',c:''};
  const ficha=s=>`<b>${s[6]||'Barcelona'}</b> · sección ${s[0].slice(0,2)}-${s[0].slice(2)}<br>Ganador 23J: ${PN[s[1]]}<br>PP + Vox: ${c1(s[2])}% · PSC: ${c1(s[7].PSOE)}%<br>Independentismo 2024: ${c1(s[3])}%<br>Renta: ${s[4]?N(s[4])+' €':'s. d.'}`;
  let modo='w',alto=null,paso=-1;
@@ -223,7 +223,7 @@ const PN={PSOE:'PSC',PP:'PP',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',VOX:'Vox'};
   const css=n=>{const v=getComputedStyle(document.documentElement).getPropertyValue(n).trim();if(v[0]==='#'){const h=v.length===4?v.slice(1).split('').map(c=>c+c).join(''):v.slice(1,7);return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16))}const m=v.match(/\d+/g);return m?m.slice(0,3).map(Number):[128,128,128]};
   let C={};const colores=()=>{C={bg:css('--bg'),fg:css('--fg'),PSOE:css('--psoe'),PP:css('--pp'),SUMAR:css('--sumar'),JUNTS:css('--junts'),ERC:css('--erc'),VOX:css('--vox'),neu:css('--neu'),otro:css('--other')}};colores();
   const mezcla=(c,o)=>c.map((v,i)=>Math.round(v*o+C.bg[i]*(1-o)));
-  const fill=s=>modo==='w'?mezcla(C[s[1]]||C.otro,OPW[bin(s[7][s[1]]||0,BW)]):modo==='der'?mezcla(C.PP,OP[bin(s[2],BR)]):mezcla(C.neu,OP[bin(s[3],BRI)]);
+  const fill=s=>modo==='w'?mezcla(C[s[1]]||C.otro,OPW[bin(s[7][s[1]]||0,BW)]):modo==='der'?mezcla(C.PP,OP[bin(s[2],BR)]):mezcla(C.ERC,OP[bin(s[3],BRI)]);
   const elev=s=>!alto?0:alto==='c'?140:(alto==='der'?s[2]:s[3])*18;
   const DATA=RINGS.map((polygon,i)=>({i,polygon}));
   const tam=()=>({width:box.clientWidth||innerWidth,height:box.clientHeight||400});
@@ -235,7 +235,7 @@ const PN={PSOE:'PSC',PP:'PP',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',VOX:'Vox'};
     getFillColor:d=>fill(SECS[d.i]),getElevation:d=>elev(SECS[d.i]),elevationScale:es,pickable:true,autoHighlight:true,highlightColor:[255,255,255,110],
     material:{ambient:.55,diffuse:.55,shininess:20,specularColor:[40,40,40]},
     updateTriggers:{getFillColor:[modo,C.bg+''],getElevation:[alto]},transitions:reduce?{}:{getElevation:{duration:900},getFillColor:{duration:600}}}),
-   new deck.PolygonLayer({id:'bordes',data:DATA,getPolygon:d=>d.polygon,visible:!alto,filled:false,stroked:true,extruded:false,getLineColor:[...C.bg,230],getLineWidth:1,lineWidthUnits:'pixels',lineWidthMinPixels:1,updateTriggers:{getLineColor:[C.bg+'']}}),
+   new deck.PolygonLayer({id:'bordes',data:DATA,getPolygon:d=>d.polygon,visible:!alto,filled:false,stroked:true,extruded:false,getLineColor:[...C.bg,210],getLineWidth:.5,lineWidthUnits:'pixels',lineWidthMinPixels:.5,updateTriggers:{getLineColor:[C.bg+'']}}),
    new deck.PathLayer({id:'calle-halo',data:hl,getPath:d=>d,getColor:[...C.bg,245],getWidth:11,widthUnits:'pixels',capRounded:true,jointRounded:true,parameters:{depthCompare:'always',depthWriteEnabled:false}}),
    new deck.PathLayer({id:'calle',data:hl,getPath:d=>d,getColor:C.fg,getWidth:5,widthUnits:'pixels',capRounded:true,jointRounded:true,parameters:{depthCompare:'always',depthWriteEnabled:false}}),
    new deck.TextLayer({id:'barrios',data:labs,getPosition:d=>[d[1],d[2]],getText:d=>d[0],getTextAnchor:d=>d[3]||'middle',characterSet:'auto',fontFamily:'Barlow Semi Condensed, Arial Narrow, Arial, sans-serif',fontWeight:600,getSize:14,
@@ -261,7 +261,7 @@ const PN={PSOE:'PSC',PP:'PP',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',VOX:'Vox'};
   RINGS.forEach(rs=>rs.forEach(r=>r.forEach(([a,b])=>{const X=a*kx,Y=-b;x0=Math.min(x0,X);x1=Math.max(x1,X);y0=Math.min(y0,Y);y1=Math.max(y1,Y)})));
   const MW=1000,sc=MW/(x1-x0),MH=(y1-y0)*sc,pr=([a,b])=>[(a*kx-x0)*sc,(-b-y0)*sc];
   const svg=el('svg',{preserveAspectRatio:'xMidYMid meet'},box);const gS=el('g',{},svg),gH=el('g',{},svg),gL=el('g',{},svg);
-  const fill=(s,m)=>m==='w'?[PCOL[s[1]]||'var(--other)',OPW[bin(s[7][s[1]]||0,BW)]]:m==='der'?['var(--pp)',OP[bin(s[2],BR)]]:['var(--neu)',OP[bin(s[3],BRI)]];
+  const fill=(s,m)=>m==='w'?[PCOL[s[1]]||'var(--other)',OPW[bin(s[7][s[1]]||0,BW)]]:m==='der'?['var(--pp)',OP[bin(s[2],BR)]]:['var(--erc)',OP[bin(s[3],BRI)]];
   const ps=RINGS.map((rs,i)=>{const p=el('path',{d:rs.map(r=>'M'+r.map(q=>pr(q).map(v=>v.toFixed(1)).join(',')).join('L')+'Z').join(''),class:'s'},gS);hov(box,tip,p,ficha(SECS[i]));return p});
   const pinta=()=>{ps.forEach((p,i)=>{const [c,o]=fill(SECS[i],modo);p.style.fill=c;p.style.fillOpacity=o});leyenda()};
   let cur=[MW/2,MH/2,MW],raf=0,labs=[];const asp=()=>{const r=box.getBoundingClientRect();return r.height/Math.max(1,r.width)||1};
@@ -305,7 +305,7 @@ const PK=[['PP','var(--pp)','PP'],['PSOE','var(--psoe)','PSC'],['VOX','var(--vox
 })();
 table('pares-tbl',['Calle','Lado (sección)','PP','PSC','Vox','Sumar','ERC','Junts','Indep. 2024','Participación','Renta (€)'],CA.flatMap(c=>c[2].map(s=>[c[0]+' · '+c[1],s[0]+' ('+s[1]+')',c1(s[2].PP)+'%',c1(s[2].PSOE)+'%',c1(s[2].VOX)+'%',c1(s[2].SUMAR)+'%',c1(s[2].ERC)+'%',c1(s[2].JUNTS)+'%',c1(s[6])+'%',c1(s[3])+'%',N(s[4])])));
 (function(){const box=document.getElementById('calles');const tip=tipFor(box);
- const rows=[...CLD.map(d=>[...d,'var(--pp)','PP + Vox']),...CLI.map(d=>[...d,'var(--neu)','independentismo'])];
+ const rows=[...CLD.map(d=>[...d,'var(--pp)','PP + Vox']),...CLI.map(d=>[...d,'var(--erc)','independentismo'])];
  const W=Math.max(300,box.clientWidth||640),narrow=W<540,rh=narrow?38:28,m={l:narrow?0:220,r:30,t:6,b:24},H=m.t+m.b+rh*rows.length+10,hi=16;
  const x=v=>m.l+v/hi*(W-m.l-m.r);
  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Parejas de secciones con un salto de 10 puntos o más por calle'},box);
