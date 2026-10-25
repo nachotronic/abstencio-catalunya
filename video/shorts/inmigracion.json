@@ -1,0 +1,29 @@
+{
+  "plantilla": "guia",
+  "kicker": "INMIGRACIÓN Y VOTO · 23J",
+  "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035", "Sumar": "#a2275f", "ext": "#3aa6bf"},
+  "escenas": [
+    {"tipo": "hook", "dur": 2.8, "lineas": ["¿Vota más a Vox", "un barrio con", [["más inmigrantes?", "Vox"]]]},
+    {"tipo": "mapamun", "dur": 4.4, "titulo": ["Dónde viven más", "extranjeros"], "sub": "% de población extranjera por municipio (2023)", "dato": "ext",
+     "rampa": [[0.03, "#1f2a33", "< 3 %"], [0.06, "#1f4352", "3-6 %"], [0.10, "#256274", "6-10 %"], [0.15, "#2d8399", "10-15 %"], [0.25, "#3aa6bf", "15-25 %"], [1.01, "#9be3f2", "25 % o más"]]},
+    {"tipo": "barrasPartidos", "dur": 4.6, "titulo": ["Respuesta:", "casi igual"], "sub": "% de voto a Vox por decil de extranjeros", "max": 18, "alto": 480,
+     "izq": "← menos extranjeros", "der": "más →", "series": [["Vox", "Vox", [12.1, 12.1, 12.2, 12.0, 12.2, 12.3, 12.2, 12.9, 12.8, 13.3]]]},
+    {"tipo": "numeros", "dur": 4.0, "titulo": ["Una diferencia", "de 1,2 puntos"], "items": [
+      ["12,1 %", "Vox", ["donde menos del 2,6 %", "de los vecinos es extranjero"]],
+      ["13,3 %", "Vox", ["donde lo es más del 24 %"]]]},
+    {"tipo": "barrasPartidos", "dur": 4.6, "titulo": ["Lo que sí cambia:", "la participación"], "sub": "% del censo que votó, por decil de extranjeros", "max": 80, "alto": 480,
+     "izq": "← menos extranjeros", "der": "más →", "series": [["Votó", "vote", [72.6, 73.0, 73.0, 72.6, 72.1, 71.4, 70.5, 69.1, 67.4, 62.6]]]},
+    {"tipo": "barrasPartidos", "dur": 5.0, "titulo": ["Y el PP baja", "casi 8 puntos"], "sub": "% del voto en cada decil de extranjeros", "max": 40,
+     "izq": "← menos extranjeros", "der": "más →", "series": [
+       ["PP", "PP", [37.1, 36.0, 35.5, 34.4, 33.6, 32.5, 31.5, 31.3, 30.4, 29.5]],
+       ["PSOE", "PSOE", [34.0, 31.9, 30.7, 30.2, 30.3, 30.8, 31.6, 31.8, 32.5, 33.6]],
+       ["Vox", "Vox", [12.1, 12.1, 12.2, 12.0, 12.2, 12.3, 12.2, 12.9, 12.8, 13.3]],
+       ["Sumar", "Sumar", [10.8, 11.3, 11.6, 11.9, 12.3, 12.5, 12.8, 13.0, 13.7, 13.9]]]},
+    {"tipo": "hook", "dur": 2.6, "lineas": ["Ojo: compara barrios,", "no personas. Y la", "mayoría de extranjeros", "no vota en generales"], "size": 70, "y": 600},
+    {"tipo": "cierre", "dur": 3.2, "lineas": ["Vox y los", "barrios con", "inmigración"], "ruta": "/actualidad/vox-poblacion-nacida-fuera/"}
+  ],
+  "fuente": [
+    "Fuentes: Ministerio del Interior (23J 2023, por",
+    "sección) e INE (población extranjera, 2023)."
+  ]
+}
