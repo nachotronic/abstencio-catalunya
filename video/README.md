@@ -2,7 +2,7 @@
 
 Plantilla HTML en canvas (`plantilla/short.html`) que se graba fotograma a fotograma con Chromium y se codifica con ffmpeg.
 Cada Short es un guion en `shorts/<nombre>.json`: gancho, métrica del mapa, región y etiquetas, foco, bloque final
-(`stack`, `bars` o `facts`) y cierre. Duración fija de 30 s, 1080x1920.
+(`stack`, `bars` o `facts`) y cierre. Los tiempos del guion van en escala de 30 s y se reproducen a SPEED (1,3): unos 23 s, 1080x1920.
 
 ```
 python3 video/prep_geo.py data/catalunya_secciones_2023.geojson video/comun/secciones.json   # una vez
