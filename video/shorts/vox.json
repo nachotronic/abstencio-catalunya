@@ -7,7 +7,7 @@
   "escenas": [
     {
       "tipo": "hook",
-      "dur": 4.4,
+      "dur": 2.6,
       "lineas": [
         "Vox sacó el 23J",
         [
@@ -18,8 +18,7 @@
         ]
       ],
       "contador": 3057068,
-      "color": "Vox",
-      "cuenta": 1.4
+      "color": "Vox"
     },
     {
       "tipo": "mapamun",
