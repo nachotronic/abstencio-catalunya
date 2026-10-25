@@ -167,7 +167,7 @@ const S = {
   hook(s, t) {
     pop(s.lineas, X, s.y || 600, s.size || 104, (s.size || 104) * 1.15, 0.1, t, 0.25);
     if (s.contador) {
-      const k = ease((t - 0.6) / (s.dur - 1.2));
+      const k = ease((t - 0.6) / (s.cuenta || s.dur - 1.2));   // cuenta: segundos que tarda en contar
       text(miles(s.contador * k), X, (s.y || 600) + s.lineas.length * (s.size || 104) * 1.15 + 80, '800 150px ' + F.display, col(s.color || 'vote'), 'left', clamp((t - 0.5) * 4));
     }
   },
