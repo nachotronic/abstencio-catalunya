@@ -1731,6 +1731,8 @@ PIEZAS = [
     ),
     dict(
         slug='calle-que-parte-barcelona', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/calle-que-parte-barcelona.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una gran avenida de Barcelona con fachadas modernistas a cada lado y el cielo partido en dos colores: un collage.'),
         titulo='La Diagonal parte la derecha y la Meridiana, el independentismo: en Les Corts, PP y Vox sacan 26 puntos más en una acera que en la de enfrente', serie='29n',
         descripcion='En Barcelona, el PSC ganó en casi todas las secciones censales el 23 de julio de 2023, pero sus vecinas no votan igual. La Diagonal es la calle que más veces separa a dos ganadores. La Meridiana no cambia el ganador, pero separa a Porta, donde el independentismo sacó el 29% en las autonómicas de 2024, de Sant Andreu, donde sacó el 47%.',
         compara='Las 2.632 parejas de secciones censales contiguas de la ciudad de Barcelona (al menos 80 metros de límite común y 400 electores cada una): ganador y voto a PP y Vox en las generales de 2023, voto a ERC, Junts, CUP y Aliança Catalana en las autonómicas de 2024, la calle que las separa y su renta por unidad de consumo.',
