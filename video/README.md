@@ -26,3 +26,10 @@ barras por partido (colores de cada partido) e ideología. Se elige con `"planti
   que lee `generales-2026/data`). Guiones: `espana-1977-2023`, `republica-1933-1936`.
 - `plantilla/dhondt.html`: reparto de escaños de una provincia con sus votos reales (`dhondt-cantabria`, votos de
   `actualidad/src/sistema/simulador.json`).
+
+## Plantilla de las guías
+
+`plantilla/guia.html`: una lista de escenas en el guion (`hook`, `lista`, `mapa` de provincias, `mapamun`, `zoom` de España a una
+sección, `barras`, `lineas`, `numeros`, `reparto`, `cierre` con la ruta de la guía). Datos: `prep_provincias.py` →
+`comun/provincias.json`, `prep_espana.py` → `comun/espana.json`, `prep_secciones.py 28` → `comun/sec28.json`.
+Guiones: `guia-29n`, `guia-censo`, `guia-municipios` (timelapse), `guia-participacion`, `guia-renta`, `guia-seccion`.

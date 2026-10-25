@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=block" rel="stylesheet">
+<style>html,body{margin:0;background:#12141d}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+// Short vertical 9:16 para las guías de las elecciones: una lista de escenas en shorts/<nombre>.json (?c=<nombre>).
+// Tipos de escena: hook, lista, mapa (provincias), numeros, reparto y cierre. Cada una dura lo que diga su «dur».
+const W = 1080, H = 1920, X = 72;
+const C = {bg:'#12141d', fg:'#e8eaf2', muted:'#9aa0b8', vote:'#7d8ce8', empty:'#2a2e3e', cell:'#1d2030', none:'#2e3247'};
+const F = {display:'"Bricolage Grotesque"', body:'"Newsreader"', mono:'"IBM Plex Mono"'};
+const ctx = document.getElementById('c').getContext('2d');
+let G, P, BOX, SCN = [], M = null, MBOX, SEC = {};
+const LOGO = new Image();
+LOGO.src = '../../favicon.svg';
+
+const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const inout = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3)/2; };
+const back = x => { x = clamp(x); const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, k) => a + (b - a) * k;
+const miles = v => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const col = c => C[c] || (G.colores && G.colores[c]) || c;
+function mixHex(c1, c2, k) {
+  const p = c => [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
+  const a = p(c1), b = p(c2);
+  return 'rgb(' + a.map((v, i) => Math.round(lerp(v, b[i], k))).join(',') + ')';
+}
+
+async function load() {
+  G = await (await fetch('../shorts/' + new URLSearchParams(location.search).get('c') + '.json')).json();
+  P = await (await fetch('../comun/provincias.json')).json();
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  P.meta = P.poly.map(rings => {
+    let a = 1e9, b = 1e9, c = -1e9, d = -1e9;
+    for (const r of rings) for (let j = 0; j < r.length; j += 2) { a = Math.min(a, r[j]); c = Math.max(c, r[j]); b = Math.min(b, r[j+1]); d = Math.max(d, r[j+1]); }
+    x0 = Math.min(x0, a); y0 = Math.min(y0, b); x1 = Math.max(x1, c); y1 = Math.max(y1, d);
+    // centro: el del anillo más grande (las islas no lo desplazan)
+    let best = null, bs = -1;
+    for (const r of rings) { let ra = 1e9, rb = 1e9, rc = -1e9, rd = -1e9; for (let j = 0; j < r.length; j += 2) { ra = Math.min(ra, r[j]); rc = Math.max(rc, r[j]); rb = Math.min(rb, r[j+1]); rd = Math.max(rd, r[j+1]); }
+      const s = (rc - ra) * (rd - rb); if (s > bs) { bs = s; best = [(ra + rc) / 2, (rb + rd) / 2, ra, rb, rc, rd]; } }
+    return {cx: best[0], cy: best[1], box: [a, b, c, d]};
+  });
+  BOX = {x0, y0, x1, y1};
+  for (const e of G.escenas) if (e.secciones && !SEC[e.secciones]) {
+    const d = await (await fetch('../comun/' + e.secciones + '.json')).json();
+    d.cx = d.poly.map(rs => { const r = rs[0]; let a = 0, b = 0; for (let j = 0; j < r.length; j += 2) { a += r[j]; b += r[j+1]; } return [a / (r.length / 2), b / (r.length / 2)]; });
+    SEC[e.secciones] = d;
+  }
+  if (G.escenas.some(s => s.tipo === 'mapamun' || s.tipo === 'zoom')) {   // municipios, solo si algún guion los usa
+    M = await (await fetch('../comun/espana.json')).json();
+    let a = 1e9, b = 1e9, c = -1e9, d = -1e9;
+    M.meta = M.poly.map(rings => {
+      let ra = 1e9, rb = 1e9, rc = -1e9, rd = -1e9;
+      for (const r of rings) for (let j = 0; j < r.length; j += 2) { ra = Math.min(ra, r[j]); rc = Math.max(rc, r[j]); rb = Math.min(rb, r[j+1]); rd = Math.max(rd, r[j+1]); }
+      a = Math.min(a, ra); c = Math.max(c, rc); b = Math.min(b, rb); d = Math.max(d, rd);
+      return {cx: (ra + rc) / 2, o: Math.abs(Math.sin(ra * 912.7 + rb * 331.1) * 43758.5) % 1};
+    });
+    MBOX = {x0: a, y0: b, x1: c, y1: d};
+  }
+  let t = 0;
+  for (const s of G.escenas) { SCN.push([s, t, t + s.dur]); t += s.dur; }
+  window.DUR = t;
+  await document.fonts.load('800 40px ' + F.display);
+  await document.fonts.load('400 40px ' + F.body);
+  await document.fonts.load('500 40px ' + F.mono);
+  await document.fonts.ready;
+  await LOGO.decode();
+}
+
+function text(str, x, y, font, color, align='left', alpha=1, scale=1) {
+  if (alpha <= 0) return;
+  ctx.save(); ctx.globalAlpha = clamp(alpha); ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+  ctx.strokeStyle = 'rgba(18,20,29,.85)'; ctx.lineWidth = 8; ctx.lineJoin = 'round';
+  ctx.translate(x, y); ctx.scale(scale, scale); ctx.strokeText(str, 0, 0); ctx.fillText(str, 0, 0); ctx.restore();
+}
+function pop(arr, x, y, size, lh, t0, t, step=0.18, align='left') {
+  const f = '800 ' + size + 'px ' + F.display;
+  arr.forEach((l, i) => {
+    const k = (t - t0 - i * step) / 0.35;
+    if (k <= 0) return;
+    ctx.save(); ctx.font = f;
+    const parts = typeof l === 'string' ? [[l, C.fg]] : l;
+    const wTot = parts.reduce((s, p) => s + ctx.measureText(p[0]).width, 0);
+    ctx.translate(x, y + i * lh); ctx.scale(back(k), back(k));
+    let cx = align === 'center' ? -wTot / 2 : 0;
+    for (const [str, c] of parts) { text(str, cx, 0, f, col(c), 'left', clamp(k * 3)); cx += ctx.measureText(str).width; }
+    ctx.restore();
+  });
+}
+function rrect(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, Math.max(w, 0.1), h, Math.min(r, Math.max(w, 0.1) / 2)); ctx.fill(); }
+// Cuenta hasta el número (admite «38.728.356» o «+1» en el texto)
+const cuenta = (s, k) => s.replace(/[\d.]+/, d => miles(parseInt(d.replace(/\./g, '')) * k));
+
+function backdrop(t) {
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+  [[0.2, 0.25, '#1d84ce'], [0.85, 0.6, '#e30613'], [0.3, 0.85, '#7d8ce8']].forEach(([bx, by, c], i) => {
+    const x = W * (bx + 0.08 * Math.sin(t * 0.7 + i * 2)), y = H * (by + 0.05 * Math.cos(t * 0.5 + i));
+    const g = ctx.createRadialGradient(x, y, 0, x, y, 700);
+    g.addColorStop(0, c); g.addColorStop(1, 'rgba(18,20,29,0)');
+    ctx.globalAlpha = 0.12; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+  });
+}
+
+// Color de cada provincia según el modo de la escena
+function fillOf(S, c) {
+  const p = P.prov[c];
+  if (S.relleno === 'escanos') { const v = clamp((p.e26 - 1) / 15); return mixHex('#2e3456', C.vote, Math.sqrt(v)); }
+  if (S.relleno === 'ganador') return col(p.gana23);
+  if (S.relleno === 'censo') {
+    if (!p.censo) return C.none;
+    const v = (p.censo[2] + p.censo[3]) / (p.censo[0] + p.censo[1]) - 1;
+    for (const [tope, c2] of G.rampaCenso) if (v < tope) return c2;
+  }
+  return C.none;
+}
+
+function drawMap(S, t, top, h) {
+  const bw = BOX.x1 - BOX.x0, bh = BOX.y1 - BOX.y0;
+  const base = Math.min(W / (bw * 1.12), h / (bh * 1.05));
+  let cam = {x: BOX.x0 + bw / 2, y: BOX.y0 + bh / 2}, sc = base;
+  if (S.zoom) {   // acercarse a unas provincias
+    const ids = S.zoom.map(c => P.cod.indexOf(c));
+    const b = ids.reduce((a, i) => [Math.min(a[0], P.meta[i].box[0]), Math.min(a[1], P.meta[i].box[1]), Math.max(a[2], P.meta[i].box[2]), Math.max(a[3], P.meta[i].box[3])], [1e9, 1e9, -1e9, -1e9]);
+    const zs = Math.min(W / ((b[2] - b[0]) * 1.8), h / ((b[3] - b[1]) * 1.8)), k = inout((t - 0.3) / 1.2);
+    cam = {x: lerp(cam.x, (b[0] + b[2]) / 2, k), y: lerp(cam.y, (b[1] + b[3]) / 2, k)};
+    sc = Math.exp(lerp(Math.log(base), Math.log(zs), k));
+  }
+  sc *= 1 + 0.03 * t / S.dur;
+  const ox = W / 2 - cam.x * sc, oy = top + h / 2 - cam.y * sc;
+  // orden de aparición: de más a menos escaños, o barrido de oeste a este
+  const order = P.cod.map((c, i) => i).sort((a, b) => S.relleno === 'escanos' ? P.prov[P.cod[b]].e26 - P.prov[P.cod[a]].e26 : P.meta[a].cx - P.meta[b].cx);
+  const rank = new Array(P.cod.length); order.forEach((i, r) => rank[i] = r);
+  const dur = S.revelar || 2.4;
+  P.poly.forEach((rings, i) => {
+    const c = P.cod[i], k = clamp((t - 0.2 - rank[i] / P.cod.length * dur) / 0.3);
+    const dim = S.resalta && !S.resalta.includes(c) ? 0.3 : 1;
+    ctx.globalAlpha = dim;
+    ctx.fillStyle = k > 0 ? mixHex(C.none, (fillOf(S, c).startsWith('#') ? fillOf(S, c) : '#2e3247'), k) : C.none;
+    if (k > 0 && !fillOf(S, c).startsWith('#')) ctx.fillStyle = fillOf(S, c);
+    ctx.beginPath();
+    for (const r of rings) {
+      ctx.moveTo(r[0] * sc + ox, r[1] * sc + oy);
+      for (let j = 2; j < r.length; j += 2) ctx.lineTo(r[j] * sc + ox, r[j+1] * sc + oy);
+      ctx.closePath();
+    }
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(18,20,29,.9)'; ctx.lineWidth = 1.5; ctx.stroke();
+  });
+  ctx.globalAlpha = 1;
+  // números de escaños sobre cada provincia
+  if (S.cifras) P.cod.forEach((c, i) => {
+    const k = clamp((t - 0.35 - rank[i] / P.cod.length * dur) / 0.3);
+    if (k <= 0 || (S.resalta && !S.resalta.includes(c))) return;
+    const m = P.meta[i], v = P.prov[c][S.cifras];
+    text(String(v), m.cx * sc + ox, m.cy * sc + oy + 10, '800 ' + Math.round(clamp(sc / 110, 1, 2.5) * 26) + 'px ' + F.display, C.fg, 'center', k, back(k));
+  });
+  return {sc, ox, oy, rank, dur};
+}
+
+const S = {
+  hook(s, t) {
+    pop(s.lineas, X, s.y || 600, s.size || 104, (s.size || 104) * 1.15, 0.1, t, 0.25);
+    if (s.contador) {
+      const k = ease((t - 0.6) / (s.dur - 1.2));
+      text(miles(s.contador * k), X, (s.y || 600) + s.lineas.length * (s.size || 104) * 1.15 + 80, '800 150px ' + F.display, col(s.color || 'vote'), 'left', clamp((t - 0.5) * 4));
+    }
+  },
+  lista(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    s.items.forEach(([a, b, c], i) => {
+      const k = (t - 0.5 - i * 0.45) / 0.35, y = 600 + i * 200;
+      if (k <= 0) return;
+      ctx.save(); ctx.translate(X, y); ctx.scale(back(k), back(k));
+      ctx.globalAlpha = clamp(k * 3); ctx.fillStyle = col(c || 'cell'); rrect(0, -78, 230, 120, 16); ctx.globalAlpha = 1;
+      text(a, 115, 0, '800 56px ' + F.display, C.fg, 'center', clamp(k * 3));
+      text(b, 270, 0, '400 46px ' + F.body, C.fg, 'left', clamp(k * 3));
+      ctx.restore();
+    });
+  },
+  mapa(s, t) {
+    pop(s.titulo, X, 300, 76, 88, 0, t);
+    if (s.sub) text(s.sub, X, 450, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const p = drawMap(s, t, 520, 860);
+    (s.etiquetas || []).forEach((L, j) => {
+      const i = P.cod.indexOf(L.p), m = P.meta[i], al = ease((t - (L.t || 1.6 + j * 0.3)) / 0.3);
+      if (al <= 0) return;
+      const x = m.cx * p.sc + p.ox, y = m.cy * p.sc + p.oy, dx = L.dx || 0, dy = L.dy || 0;
+      ctx.save(); ctx.globalAlpha = al; ctx.strokeStyle = C.fg; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + dx, y + dy); ctx.stroke();
+      ctx.fillStyle = C.fg; ctx.beginPath(); ctx.arc(x, y, 8, 0, 7); ctx.fill(); ctx.restore();
+      const right = (L.lado || 'right') === 'right', tx = x + dx + (right ? 12 : -12), al2 = right ? 'left' : 'right';
+      text(L.nombre, tx, y + dy - 4, '800 52px ' + F.display, C.fg, al2, al, back((t - (L.t || 1.6 + j * 0.3)) / 0.3));
+      if (L.nota) text(L.nota, tx, y + dy + 44, '500 34px ' + F.mono, col(L.color || 'fg'), al2, al);
+    });
+    if (s.contador) {   // suma de escaños al ritmo en que aparecen las provincias
+      let n = 0; P.cod.forEach((c, i) => { if (t > 0.2 + p.rank[i] / P.cod.length * p.dur) n += P.prov[c].e26; });
+      text(String(n), W - X, 1500, '800 140px ' + F.display, C.vote, 'right', ease((t - 0.2) / 0.3));
+      text(s.contador, W - X, 1550, '500 30px ' + F.mono, C.muted, 'right', ease((t - 0.2) / 0.3));
+    }
+    if (s.leyenda) s.leyenda.forEach(([c, l], j) => {
+      const a = ease((t - 0.8 - j * 0.1) / 0.3), y = 1440 + j * 52;
+      ctx.globalAlpha = a; ctx.fillStyle = col(c); rrect(X, y - 30, 36, 36, 8); ctx.globalAlpha = 1;
+      text(l, X + 52, y, '500 32px ' + F.mono, C.fg, 'left', a);
+    });
+  },
+  mapamun(s, t) {
+    pop(s.titulo, X, 300, 76, 88, 0, t);
+    if (s.sub) text(s.sub, X, 450, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const bw = MBOX.x1 - MBOX.x0, bh = MBOX.y1 - MBOX.y0, top = 520, h = 860;
+    const sc = Math.min(W / (bw * 1.12), h / (bh * 1.05)) * (1 + 0.04 * t / s.dur);
+    const ox = W / 2 - (MBOX.x0 + bw / 2) * sc, oy = top + h / 2 - (MBOX.y0 + bh / 2) * sc;
+    M.poly.forEach((rings, i) => {
+      const m = M.meta[i], k = clamp((t - 0.2 - (0.6 * m.o + 0.4 * (m.cx - MBOX.x0) / bw) * (s.revelar || 1.6)) / 0.25);
+      const v = M.part23[i];
+      ctx.fillStyle = k <= 0 || v < 0 ? C.none : G.rampaPart.find(([tope]) => v < tope)[1];
+      ctx.beginPath();
+      for (const r of rings) {
+        ctx.moveTo(r[0] * sc + ox, r[1] * sc + oy);
+        for (let j = 2; j < r.length; j += 2) ctx.lineTo(r[j] * sc + ox, r[j+1] * sc + oy);
+        ctx.closePath();
+      }
+      ctx.fill();
+    });
+    (s.leyenda || G.rampaPart.map(([, c, l]) => [c, l])).forEach(([c, l], j) => {
+      const a = ease((t - 0.8 - j * 0.08) / 0.3), x = X + (j % 3) * 320, y = 1440 + Math.floor(j / 3) * 56;
+      ctx.globalAlpha = a; ctx.fillStyle = col(c); rrect(x, y - 30, 36, 36, 8); ctx.globalAlpha = 1;
+      text(l, x + 50, y, '500 30px ' + F.mono, C.fg, 'left', a);
+    });
+  },
+  zoom(s, t) {
+    // cámara por fotogramas clave [t, lon, lat, ancho en grados]
+    const K = s.camara, kq = 0.7660;  // cos(40º), la proyección de prep_espana.py
+    let a = K[0], b = K[K.length - 1];
+    for (let i = 0; i < K.length - 1; i++) if (t >= K[i][0] && t <= K[i + 1][0]) { a = K[i]; b = K[i + 1]; }
+    const k = b === a ? 1 : inout((t - a[0]) / (b[0] - a[0]));
+    const lon = lerp(a[1], b[1], k), lat = lerp(a[2], b[2], k), wdeg = Math.exp(lerp(Math.log(a[3]), Math.log(b[3]), k));
+    const sc = W / (wdeg * kq), top = 520, h = 900, ox = W / 2 - lon * kq * sc, oy = top + h / 2 + lat * sc;
+    const mix = clamp((1.4 - wdeg) / 0.8);   // por debajo de ~1,4º se pasa de municipios a secciones
+    const draw = (rings) => { ctx.beginPath(); for (const r of rings) { ctx.moveTo(r[0] * sc + ox, r[1] * sc + oy); for (let j = 2; j < r.length; j += 2) ctx.lineTo(r[j] * sc + ox, r[j+1] * sc + oy); ctx.closePath(); } };
+    const fam = i => i < 0 ? C.none : M.familias[i].color;
+    if (mix < 1) { ctx.globalAlpha = 1; M.poly.forEach((rings, i) => { ctx.fillStyle = fam(M.gana['2023_07'][i]); draw(rings); ctx.fill(); }); }
+    const D = SEC[s.secciones], foco = s.foco ? D.cod.indexOf(s.foco) : -1, fk = s.foco ? ease((t - s.focoT) / 0.5) : 0;
+    if (mix > 0) {
+      D.poly.forEach((rings, i) => {
+        const [cx, cy] = D.cx[i], X2 = cx * sc + ox, Y2 = cy * sc + oy;
+        if (X2 < -300 || X2 > W + 300 || Y2 < top - 300 || Y2 > top + h + 300) return;
+        ctx.globalAlpha = mix * (i === foco ? 1 : 1 - 0.7 * fk);
+        ctx.fillStyle = fam(D.gana[i]); draw(rings); ctx.fill();
+        ctx.strokeStyle = 'rgba(18,20,29,.85)'; ctx.lineWidth = clamp(sc / 4000, 0.4, 3); ctx.stroke();
+      });
+      if (foco >= 0 && fk > 0) {
+        ctx.globalAlpha = 1; draw(D.poly[foco]); ctx.strokeStyle = '#fff'; ctx.lineWidth = 6 + 3 * Math.sin(t * 8); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    // degradados para leer el texto
+    let g = ctx.createLinearGradient(0, 0, 0, top + 80); g.addColorStop(0, C.bg); g.addColorStop(.8, C.bg); g.addColorStop(1, 'rgba(18,20,29,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, top + 80);
+    g = ctx.createLinearGradient(0, top + h - 120, 0, H); g.addColorStop(0, 'rgba(18,20,29,0)'); g.addColorStop(.25, C.bg); g.addColorStop(1, C.bg);
+    ctx.fillStyle = g; ctx.fillRect(0, top + h - 120, W, H);
+    for (const [t0, t1, lines, sub] of s.textos) {
+      if (t < t0 || t > t1) continue;
+      pop(lines, X, 300, 76, 88, t0, t);
+      if (sub) text(sub, X, 460, '500 30px ' + F.mono, C.muted, 'left', ease((t - t0 - 0.3) / 0.3) * clamp((t1 - t) / 0.2));
+    }
+    if (s.ficha && fk > 0) s.ficha.forEach(([n, l, c], j) => {
+      const kk = ease((t - s.focoT - 0.4 - j * 0.25) / 0.4), y = 1460 + Math.floor(j / 2) * 130, x = X + (j % 2) * 470;
+      text(n, x, y, '800 64px ' + F.display, col(c || 'fg'), 'left', kk);
+      text(l, x, y + 40, '500 28px ' + F.mono, C.muted, 'left', kk);
+    });
+  },
+  barras(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const top = 620, bottom = 1300, n = s.valores.length, gap = 14, bw = (W - 2 * X - gap * (n - 1)) / n;
+    s.valores.forEach((v, i) => {
+      const k = ease((t - 0.5 - i * 0.12) / 0.7), x = X + i * (bw + gap), h = (bottom - top) * (v - s.min) / (s.max - s.min) * k;
+      const c = i === 0 ? col(s.colorIni) : i === n - 1 ? col(s.colorFin) : '#4a4f6e';
+      ctx.fillStyle = c; rrect(x, bottom - h, bw, h, 8);
+      if (i === 0 || i === n - 1) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, bottom - h - 22, '800 48px ' + F.display, c, 'center', k);
+      text(String(i + 1), x + bw / 2, bottom + 44, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3));
+    });
+    text(s.izq, X, bottom + 100, '500 28px ' + F.mono, col(s.colorIni), 'left', ease((t - 0.6) / 0.3));
+    text(s.der, W - X, bottom + 100, '500 28px ' + F.mono, col(s.colorFin), 'right', ease((t - 0.6) / 0.3));
+    if (s.nota) [].concat(s.nota).forEach((l, j) => text(l, X, bottom + 190 + j * 50, '400 40px ' + F.body, C.fg, 'left', ease((t - 2.2 - j * 0.2) / 0.4)));
+  },
+  lineas(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const top = 600, bottom = 1300, x0 = X + 10, x1 = W - X - 150, n = s.series[0][2].length;
+    const px = i => x0 + (x1 - x0) * i / (n - 1), py = v => bottom - (bottom - top) * (v - s.min) / (s.max - s.min);
+    for (let i = 0; i < n; i++) text(String(i + 1), px(i), bottom + 50, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.3) / 0.3));
+    text(s.izq, x0, bottom + 110, '500 28px ' + F.mono, C.muted, 'left', ease((t - 0.4) / 0.3));
+    text(s.der, x1 + 40, bottom + 110, '500 28px ' + F.mono, C.muted, 'right', ease((t - 0.4) / 0.3));
+    const prog = clamp((t - 0.6) / 2.2) * (n - 1);
+    s.series.forEach(([nm, c, vals], si) => {
+      ctx.strokeStyle = col(c); ctx.lineWidth = si < 2 ? 12 : 6; ctx.lineJoin = ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(px(0), py(vals[0]));
+      for (let i = 1; i <= Math.floor(prog); i++) ctx.lineTo(px(i), py(vals[i]));
+      const f = prog - Math.floor(prog), j = Math.floor(prog);
+      let ex = px(j), ey = py(vals[j]);
+      if (j < n - 1) { ex = lerp(px(j), px(j + 1), f); ey = lerp(py(vals[j]), py(vals[j + 1]), f); ctx.lineTo(ex, ey); }
+      ctx.stroke();
+      ctx.fillStyle = col(c); ctx.beginPath(); ctx.arc(ex, ey, si < 2 ? 16 : 10, 0, 7); ctx.fill();
+      const vv = lerp(vals[j], vals[Math.min(n - 1, j + 1)], j < n - 1 ? f : 0);
+      text(nm + ' ' + vv.toFixed(1).replace('.', ','), ex + 26, ey + 12 + (s.desv ? s.desv[si] : 0), '800 ' + (si < 2 ? 40 : 32) + 'px ' + F.display, col(c), 'left', ease((t - 0.6) / 0.3));
+      if (si < 2) text(vals[0].toFixed(1).replace('.', ','), px(0), py(vals[0]) - 30, '700 30px ' + F.mono, col(c), 'center', prog > 1.2 ? 1 : 0);  // punto de partida
+    });
+  },
+  numeros(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    s.items.forEach(([n, c, l], i) => {
+      const k = ease((t - 0.5 - i * 0.6) / 0.8), y = 640 + i * 300;
+      text(cuenta(n, k), X, y, '800 120px ' + F.display, col(c), 'left', clamp(k * 3));
+      [].concat(l).forEach((ln, j) => text(ln, X, y + 64 + j * 50, '400 42px ' + F.body, C.fg, 'left', clamp(k * 3)));
+    });
+  },
+  reparto(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    const tot = s.partes.reduce((a, p) => a + p[0], 0), y = 640, w = W - 2 * X;
+    let acc = 0;
+    s.partes.forEach(([v, c, l], i) => {
+      const k = ease((t - 0.5 - i * 0.6) / 0.6);
+      ctx.fillStyle = col(c); rrect(X + acc / tot * w, y, v / tot * w * k, 90, 12);
+      text(miles(v * k), X, y + 220 + i * 190, '800 96px ' + F.display, col(c), 'left', clamp(k * 3));
+      text(l, X, y + 275 + i * 190, '400 42px ' + F.body, C.fg, 'left', clamp(k * 3));
+      acc += v;
+    });
+  },
+  cierre(s, t) {
+    const k = back(t / 0.4);
+    ctx.save(); ctx.translate(W / 2, 530); ctx.scale(k, k); ctx.globalAlpha = clamp(t * 4); ctx.drawImage(LOGO, -90, -90, 180, 180); ctx.restore();
+    pop(s.lineas, W / 2, 760, 92, 100, 0.15, t, 0.15, 'center');
+    text('mapaelectoral.es', W / 2, 1110, '700 64px ' + F.display, C.vote, 'center', ease((t - 0.6) / 0.3));
+    if (s.ruta) text(s.ruta, W / 2, 1170, '500 32px ' + F.mono, C.fg, 'center', ease((t - 0.7) / 0.3));
+    G.fuente.forEach((f, i) => text(f, W / 2, 1320 + i * 44, '500 26px ' + F.mono, C.muted, 'center', ease((t - 0.8) / 0.3)));
+  },
+};
+
+function render(t) {
+  backdrop(t);
+  const last = SCN[SCN.length - 1];
+  for (const [s, a, b] of SCN) {
+    if (t < a || t >= b) continue;
+    const lt = t - a, out = b - t, end = s === last[0];
+    const dx = (1 - ease(lt / 0.25)) * (a > 0 ? 200 : 0) - (!end && out < 0.2 ? (1 - out / 0.2) * 120 : 0);
+    ctx.save(); ctx.translate(dx, 0); S[s.tipo](s, lt); ctx.restore();
+    if (!end && out < 0.2) { ctx.globalAlpha = 0.85 * (1 - out / 0.2); ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+    if (lt < 0.08 && a > 0) { ctx.globalAlpha = 0.18 * (1 - lt / 0.08); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+  }
+  text(G.kicker, X, 150, '500 30px ' + F.mono, C.muted, 'left', t < last[1] ? 1 : 0);
+}
+window.ready = load().then(() => { render(0); return true; });
+window.render = render;
+</script>
+</body>
+</html>

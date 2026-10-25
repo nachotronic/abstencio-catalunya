@@ -1,0 +1,21 @@
+{
+  "plantilla": "guia",
+  "kicker": "CENSO ELECTORAL · 29N 2026",
+  "rampaCenso": [[0, "#f2e6dc"], [0.02, "#e9eef2"], [0.04, "#93aec0"], [9, "#3f6c8c"]],
+  "escenas": [
+    {"tipo": "hook", "dur": 3.2, "lineas": ["El 29N pueden", "votar"], "contador": 38728356, "y": 560},
+    {"tipo": "reparto", "dur": 4.0, "titulo": ["Dónde viven", "los electores"],
+     "partes": [[35958711, "vote", "viven en España"], [2769645, "#e0a440", "viven en el extranjero"]]},
+    {"tipo": "numeros", "dur": 3.8, "titulo": ["Respecto a las", "generales de 2023"],
+     "items": [["+1.261.924", "vote", "electores más"], ["6", "#f2e6dc", ["provincias pierden electores"]]]},
+    {"tipo": "mapa", "dur": 5.0, "titulo": ["Dónde crece", "el censo"], "sub": "Variación de electores, 2023-2026", "relleno": "censo", "revelar": 1.6,
+     "etiquetas": [{"p": "28", "nombre": "Madrid", "nota": "+6,0 %", "color": "#93aec0", "dx": -150, "dy": -120, "lado": "left", "t": 2.0},
+                   {"p": "19", "nombre": "Guadalajara", "nota": "+6,0 %", "color": "#93aec0", "dx": 90, "dy": -90, "t": 2.3},
+                   {"p": "16", "nombre": "Cuenca", "nota": "−0,8 %", "color": "#f2e6dc", "dx": 110, "dy": 110, "t": 2.6}],
+     "leyenda": [["#3f6c8c", "más del 4 %"], ["#93aec0", "del 2 al 4 %"], ["#e9eef2", "del 0 al 2 %"], ["#f2e6dc", "pierde electores"]]},
+    {"tipo": "numeros", "dur": 3.4, "titulo": ["En Ourense, casi 1 de 3", "vota desde el extranjero"],
+     "items": [["31 %", "#e0a440", ["de sus electores vive fuera", "de España, el récord"]]]},
+    {"tipo": "cierre", "dur": 3.2, "lineas": ["Tu provincia", "y tu municipio,", "en el censo"], "ruta": "/elecciones/censo-electoral-2026/"}
+  ],
+  "fuente": ["Fuente: INE, Oficina del Censo Electoral, censo de", "consulta de las generales de 2026 y de 2023."]
+}

@@ -25,7 +25,8 @@ for e in meta['elecciones']:
     c = e['cod']
     src = m if c + '_gana' in m else json.load(open(os.path.join(D, 'e', c + '.json')))
     gana[c] = [-1 if g is None else g for g in src[c + '_gana']]
-out = {'familias': meta['familias'], 'nombres': {e['cod']: e['nombre'] for e in meta['elecciones']},
+part = [p if p is not None else -1 for p in m['2023_07_part']]
+out = {'part23': part, 'familias': meta['familias'], 'nombres': {e['cod']: e['nombre'] for e in meta['elecciones']},
        'cod': m['cod'], 'poly': polys, 'gana': gana}
 json.dump(out, open(sys.argv[1], 'w'), separators=(',', ':'))
 print(len(polys), list(gana))

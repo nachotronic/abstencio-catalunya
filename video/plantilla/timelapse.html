@@ -190,6 +190,7 @@ function render(t) {
     ctx.save(); ctx.translate(W / 2, 530); ctx.scale(k, k); ctx.globalAlpha = clamp(lt * 4); ctx.drawImage(LOGO, -90, -90, 180, 180); ctx.restore();
     pop(G.outro, W / 2, 760, 96, 104, 0.15, lt, 0.15, 'center');
     text(G.url || 'mapaelectoral.es', W / 2, 1130, '700 64px ' + F.display, C.vote, 'center', ease((lt - 0.6) / 0.3));
+    if (G.ruta) text(G.ruta, W / 2, 1190, '500 32px ' + F.mono, C.fg, 'center', ease((lt - 0.7) / 0.3));
     G.source.forEach((s, i) => text(s, W / 2, 1300 + i * 44, '500 26px ' + F.mono, C.muted, 'center', ease((lt - 0.8) / 0.3)));
   }
   // destello en cada cambio de elección

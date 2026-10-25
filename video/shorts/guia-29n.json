@@ -1,0 +1,146 @@
+{
+  "plantilla": "guia",
+  "kicker": "ELECCIONES GENERALES · 29N 2026",
+  "colores": {
+    "PP": "#1d84ce",
+    "PSOE": "#e30613",
+    "Vox": "#5ac035",
+    "Sumar": "#a2275f",
+    "EH Bildu": "#a5c400",
+    "PNV": "#2b8a3e",
+    "Junts": "#20c0b2",
+    "ERC": "#f5b324",
+    "BNG": "#7ab8e6",
+    "CC": "#f7d417",
+    "UPN": "#1d84ce"
+  },
+  "escenas": [
+    {
+      "tipo": "hook",
+      "dur": 2.6,
+      "lineas": [
+        "29 de noviembre:",
+        "España elige a",
+        [
+          [
+            "350 diputados",
+            "vote"
+          ]
+        ]
+      ]
+    },
+    {
+      "tipo": "lista",
+      "dur": 4.2,
+      "titulo": [
+        "Las fechas",
+        "que importan"
+      ],
+      "items": [
+        [
+          "13 nov",
+          "Empieza la campaña"
+        ],
+        [
+          "27 nov",
+          "Termina la campaña"
+        ],
+        [
+          "29 nov",
+          "Se vota",
+          "#3846a0"
+        ],
+        [
+          "23 dic",
+          "Se constituye el Congreso"
+        ]
+      ]
+    },
+    {
+      "tipo": "mapa",
+      "dur": 5.2,
+      "titulo": [
+        "Cada provincia",
+        "elige sus diputados"
+      ],
+      "sub": "Escaños por provincia el 29N",
+      "relleno": "escanos",
+      "cifras": "e26",
+      "revelar": 3.0,
+      "contador": "diputados"
+    },
+    {
+      "tipo": "mapa",
+      "dur": 4.6,
+      "titulo": [
+        "Este año, Madrid",
+        "gana uno y Cádiz lo pierde"
+      ],
+      "relleno": "escanos",
+      "revelar": 0.01,
+      "resalta": [
+        "28",
+        "11"
+      ],
+      "etiquetas": [
+        {
+          "p": "28",
+          "nombre": "Madrid",
+          "nota": "de 37 a 38",
+          "color": "vote",
+          "dx": 70,
+          "dy": -110,
+          "t": 1.2
+        },
+        {
+          "p": "11",
+          "nombre": "Cádiz",
+          "nota": "de 9 a 8",
+          "color": "#e0a440",
+          "dx": 60,
+          "dy": 120,
+          "t": 1.6
+        }
+      ]
+    },
+    {
+      "tipo": "mapa",
+      "dur": 4.6,
+      "titulo": [
+        "El punto de partida:",
+        "quién ganó en 2023"
+      ],
+      "sub": "Partido más votado en cada provincia, 23J",
+      "relleno": "ganador",
+      "revelar": 1.6,
+      "leyenda": [
+        [
+          "PP",
+          "PP, en 40 provincias"
+        ],
+        [
+          "PSOE",
+          "PSOE, en 10"
+        ],
+        [
+          "EH Bildu",
+          "EH Bildu (Gipuzkoa) y PNV (Bizkaia)"
+        ]
+      ]
+    },
+    {
+      "tipo": "cierre",
+      "dur": 3.2,
+      "lineas": [
+        "Todo sobre",
+        "el 29N, provincia",
+        "a provincia"
+      ],
+      "ruta": "/elecciones/elecciones-29n-2026/"
+    }
+  ],
+  "fuente": [
+    "Fuentes: Real Decreto 806/2026; Ministerio del Interior",
+    "(generales del 23 de julio de 2023)."
+  ]
+}
