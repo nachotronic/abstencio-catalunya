@@ -68,7 +68,7 @@ ACTUALIDAD_MUNICIPIO = {
     'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
     'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'),
     'valencia-barrio-a-barrio-29n': ('46250', 'València'), 'zaragoza-barrio-a-barrio-29n': ('50297', 'Zaragoza'),
-    'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'),
+    'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'), 'calle-que-parte-barcelona': ('08019', 'Barcelona'),
     'girona-barri-a-barri-29n': ('17079', 'Girona'),
 }
 # Piezas de cada página temática
@@ -176,7 +176,7 @@ TEMAS = {
         titulo='Elecciones barrio a barrio: el voto de cada sección censal en las grandes ciudades',
         intro='Las grandes ciudades contadas sección a sección: dónde gana cada partido, qué calles parten el voto en dos '
               'y los barrios donde un partido saca sus mejores resultados.',
-        piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
+        piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'calle-que-parte-barcelona', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
                                'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal'),
                ('', 'Mapa de resultados calle a calle')],

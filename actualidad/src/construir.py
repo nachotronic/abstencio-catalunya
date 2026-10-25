@@ -1705,6 +1705,23 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/cinco-semanas-29n-la-semana-en-el-mapa.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una urna transparente con sobres sobre el mapa de España, entre una ciudad y un pueblo: un collage.'),
     ),
+    dict(
+        slug='calle-que-parte-barcelona', fecha='2026-10-25',
+        titulo='La Diagonal parte la derecha y la Meridiana, el independentismo: en Les Corts, PP y Vox sacan 26 puntos más en una acera que en la de enfrente', serie='29n',
+        descripcion='En Barcelona, el PSC ganó en casi todas las secciones censales el 23 de julio de 2023, pero sus vecinas no votan igual. La Diagonal es la calle que más veces separa a dos ganadores. La Meridiana no cambia el ganador, pero separa a Porta, donde el independentismo sacó el 29% en las autonómicas de 2024, de Sant Andreu, donde sacó el 47%.',
+        compara='Las 2.632 parejas de secciones censales contiguas de la ciudad de Barcelona (al menos 80 metros de límite común y 400 electores cada una): ganador y voto a PP y Vox en las generales de 2023, voto a ERC, Junts, CUP y Aliança Catalana en las autonómicas de 2024, la calle que las separa y su renta por unidad de consumo.',
+        limites='Son datos de secciones, no de personas, y no explican por qué cada lado vota distinto. Se mezclan dos elecciones: el ganador y PP más Vox son de las generales de 2023; la suma independentista, de las autonómicas de 2024. La calle de cada límite sale de un geocodificador en cinco puntos y puede no coincidir con el límite en todos sus metros. La renta de las secciones más ricas está topada en 58.752 euros. Sin voto exterior.',
+        calculo='Voto: porcentaje sobre votos válidos. Pareja de secciones vecinas: comparten al menos 80 metros de límite (con 12 metros de tolerancia) y tienen al menos 400 electores cada una. Salto: diferencia en puntos entre las dos secciones. Calle: la que devuelve el geocodificador inverso de CartoCiudad en al menos tres de cinco puntos del límite común. Medias por distrito y por barrio: media simple de sus secciones.',
+        fuentes=[INTERIOR, PARLAMENT, INE,
+                 ('https://www.cartociudad.es/', 'CartoCiudad (IGN), geocodificador inverso para el nombre de cada calle'),
+                 ('https://www.openstreetmap.org/', 'OpenStreetMap, nombres de barrio'),
+                 ('https://beteve.cat/politica/mapa-on-concentra-vot-partits-barcelona-eleccions-generals-2023/', 'Betevé, Marcos Arizmendi: on es concentra el vot de cada partit a Barcelona (generales 2023)'),
+                 ('https://beteve.cat/politica/la-renda-duna-famila-de-pedralbes-multiplica-per-sis-la-duna-de-ciutat-meridiana/', 'Betevé, la renda d\'una família de Pedralbes multiplica per sis la de Ciutat Meridiana'),
+                 ('https://naciodigital.cat/politica/la-meridiana-de-la-via-lliure.html', 'Nació Digital, Pep Martí: la Meridiana de la Via Lliure (8-9-2015)'),
+                 ('https://www.eldiario.es/catalunya/toni-rodon-politologo-segregacion-favorece-voto-extrema-derecha_1_10076472.html', 'elDiario.es, entrevista a Toni Rodon (2-4-2023)')],
+        enlaces=[],
+        lugar='Barcelona',
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2556,6 +2573,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'calle-que-parte-barcelona': 'Dos fronteras',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
     'ganar-por-un-voto-29n': 'Un voto de diferencia',
     'asi-queda-el-mapa-29n': 'El mapa de partida',
