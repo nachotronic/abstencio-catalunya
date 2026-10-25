@@ -111,6 +111,7 @@ function fillOf(S, c) {
   const p = P.prov[c];
   if (S.relleno === 'escanos') { const v = clamp((p.e26 - 1) / 15); return mixHex('#2e3456', C.vote, Math.sqrt(v)); }
   if (S.relleno === 'ganador') return col(p.gana23);
+  if (S.relleno === 'grupos') { const g = S.grupos.find(([, ps]) => ps.includes(c)); return col(g ? g[0] : S.otro); }
   if (S.relleno === 'censo') {
     if (!p.censo) return C.none;
     const v = (p.censo[2] + p.censo[3]) / (p.censo[0] + p.censo[1]) - 1;

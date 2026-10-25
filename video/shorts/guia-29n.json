@@ -31,7 +31,7 @@
     },
     {
       "tipo": "lista",
-      "dur": 4.2,
+      "dur": 3.8,
       "titulo": [
         "Las fechas",
         "que importan"
@@ -58,7 +58,7 @@
     },
     {
       "tipo": "mapa",
-      "dur": 5.2,
+      "dur": 4.8,
       "titulo": [
         "Cada provincia",
         "elige sus diputados"
@@ -71,7 +71,7 @@
     },
     {
       "tipo": "mapa",
-      "dur": 4.6,
+      "dur": 4.2,
       "titulo": [
         "Este año, Madrid",
         "gana uno y Cádiz lo pierde"
@@ -105,7 +105,7 @@
     },
     {
       "tipo": "mapa",
-      "dur": 4.6,
+      "dur": 4.2,
       "titulo": [
         "El punto de partida:",
         "quién ganó en 2023"
@@ -129,6 +129,78 @@
       ]
     },
     {
+      "tipo": "mapa",
+      "dur": 5.2,
+      "titulo": [
+        "La izquierda, por",
+        "separado en 47 provincias"
+      ],
+      "sub": "Frente Amplio y Podemos al Congreso, a 24 de octubre",
+      "relleno": "grupos",
+      "otro": "#3a3f58",
+      "revelar": 1.4,
+      "grupos": [
+        [
+          "Sumar",
+          [
+            "35",
+            "38",
+            "46",
+            "03",
+            "12"
+          ]
+        ],
+        [
+          "ERC",
+          [
+            "08",
+            "17",
+            "25",
+            "43"
+          ]
+        ]
+      ],
+      "leyenda": [
+        [
+          "Sumar",
+          "Juntos: Canarias y C. Valenciana"
+        ],
+        [
+          "ERC",
+          "Cataluña: Podemos, en las listas de ERC"
+        ],
+        [
+          "#3a3f58",
+          "Separados"
+        ]
+      ]
+    },
+    {
+      "tipo": "numeros",
+      "dur": 4.4,
+      "titulo": [
+        "Y el Senado:",
+        "PSOE y Frente Amplio"
+      ],
+      "items": [
+        [
+          "43",
+          "PSOE",
+          [
+            "provincias con lista conjunta"
+          ]
+        ],
+        [
+          "26",
+          "#e0a440",
+          [
+            "de octubre se cierran las listas;",
+            "PP y Vox negocian el Senado"
+          ]
+        ]
+      ]
+    },
+    {
       "tipo": "cierre",
       "dur": 3.2,
       "lineas": [
@@ -141,6 +213,7 @@
   ],
   "fuente": [
     "Fuentes: Real Decreto 806/2026; Ministerio del Interior",
-    "(generales del 23 de julio de 2023)."
+    "(23J); coaliciones según Público, elDiario.es, Europa",
+    "Press y Efe, recogidas en mapaelectoral.es (24 de octubre)."
   ]
 }
