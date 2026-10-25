@@ -240,7 +240,7 @@ const PN={PSOE:'PSC',PP:'PP',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',VOX:'Vox'};
    new deck.PathLayer({id:'calle-halo',data:hl,getPath:d=>d,getColor:[...C.bg,235],getWidth:6,widthUnits:'pixels',capRounded:true,jointRounded:true,parameters:{depthCompare:'always',depthWriteEnabled:false}}),
    new deck.PathLayer({id:'calle',data:hl,getPath:d=>d,getColor:C.fg,getWidth:2.5,widthUnits:'pixels',capRounded:true,jointRounded:true,parameters:{depthCompare:'always',depthWriteEnabled:false}}),
    new deck.TextLayer({id:'calles-n',data:cn,getPosition:d=>[d[1],d[2]],getText:d=>d[0],characterSet:'auto',fontFamily:'Georgia, Times New Roman, serif',fontWeight:400,getSize:12,
-    getColor:[...C.bg],background:true,getBackgroundColor:[...C.fg,225],backgroundPadding:[5,2,5,2],getPixelOffset:d=>[0,d[3]>0?14:-14],getAlignmentBaseline:d=>d[3]>0?'top':'bottom',parameters:{depthCompare:'always',depthWriteEnabled:false}}),
+    getColor:[...C.bg],background:true,getBackgroundColor:[...C.fg,225],backgroundPadding:[5,2,5,2],getPixelOffset:d=>d[3],getAlignmentBaseline:d=>d[3][1]>0?'top':'bottom',parameters:{depthCompare:'always',depthWriteEnabled:false}}),
    new deck.TextLayer({id:'barrios',data:labs,getPosition:d=>[d[1],d[2]],getText:d=>d[0],getTextAnchor:d=>d[3]||'middle',characterSet:'auto',fontFamily:'Barlow Semi Condensed, Arial Narrow, Arial, sans-serif',fontWeight:600,getSize:14,
     getColor:C.fg,outlineWidth:4,outlineColor:[...C.bg,235],fontSettings:{sdf:true},getPixelOffset:d=>d[3]==='start'?[6,0]:d[3]==='end'?[-6,0]:[0,0],getAlignmentBaseline:'center',parameters:{depthCompare:'always',depthWriteEnabled:false}})];
   const dk=new deck.Deck({parent:box,viewState:cam,controller:false,touchAction:'pan-y',layers:capas(),useDevicePixels:Math.min(devicePixelRatio||1,2),
@@ -257,13 +257,14 @@ const PN={PSOE:'PSC',PP:'PP',SUMAR:'Sumar',JUNTS:'Junts',ERC:'ERC',VOX:'Vox'};
    if(!s.cn||!s.cn.length)return [];
    const t=tam(),vp=new deck.WebMercatorViewport({...t,...vista(s)});
    const caja=(x,y,w,h)=>[x-8,y-6,x+w+8,y+h+6],pisa=(a,b)=>a[0]<b[2]&&b[0]<a[2]&&a[1]<b[3]&&b[1]<a[3];
-   const ocup=(s.lab||[]).map(d=>{const [x,y]=vp.project([d[1],d[2]]),w=d[0].length*8+8,a=d[3]||'middle';const x0=a==='start'?x+6:a==='end'?x-6-w:x-w/2;return caja(x0,y-11,w,22)});
+   const ocup=(s.lab||[]).map(d=>{const [x,y]=vp.project([d[1],d[2]]),w=d[0].length*8+8,a=d[3]||'middle';const x0=a==='start'?x+6:a==='end'?x-6-w:x-w/2;return caja(x0-4,y-14,w+8,36)});
    return s.cn.map(([n,cs])=>{const w=n.length*6.6+14;let mejor=null,nota=-1e9;
-    cs.forEach((c,k)=>[-1,1].forEach(dy=>{const [x,y]=vp.project(c),b=caja(x-w/2,dy<0?y-34:y+14,w,20);
+    const OFS=[[0,-14],[0,14],[0,-38],[0,38],[-.6,-14],[.6,-14],[-.6,14],[.6,14],[0,-62],[0,62]];
+    cs.forEach((c,k)=>OFS.forEach(([fx,dy],j)=>{const [x0,y]=vp.project(c),x=x0+fx*w,b=caja(x-w/2,dy<0?y+dy-20:y+dy,w,20);
      const fuera=b[0]<0||b[2]>t.width||b[1]<0||b[3]>t.height;
      const choques=ocup.filter(o=>pisa(o,b)).length;
-     const v=-choques*1000-(fuera?500:0)-Math.abs(k-(cs.length-1)/2)-(dy>0?1:0);
-     if(v>nota){nota=v;mejor=[c,dy,b]}}));
+     const v=-choques*1000-(fuera?500:0)-Math.abs(k-(cs.length-1)/2)*.5-j*2;
+     if(v>nota){nota=v;mejor=[c,[fx*w,dy],b]}}));
     ocup.push(mejor[2]);return [n,mejor[0][0],mejor[0][1],mejor[1]]})}
   function ir(i){paso=i;const s=STEPS[i];modo=s.m;alto=s.h;hl=s.hl;labs=s.lab;sel=s.sec||[];cn=coloca(s);leyenda(sel.length);vuela(vista(s))}
   addEventListener('resize',()=>{base=vista(STEPS[0]).zoom;if(paso>=0)pon(vista(STEPS[paso]))});
