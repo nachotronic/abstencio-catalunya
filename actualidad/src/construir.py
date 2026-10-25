@@ -2597,6 +2597,21 @@ PIEZAS += [
                   url='https://commons.wikimedia.org/wiki/File:Rosalejo_02.jpg', credito='19Tarrestnom65, CC BY-SA 4.0, vía Wikimedia Commons'),
     ),
     dict(
+        slug='mujeres-jovenes-voto-29n', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/mujeres-jovenes-voto-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Tres mujeres jóvenes con su sobre camino de la urna: un collage.'),
+        titulo='El voto a Vox de las mujeres jóvenes se ha triplicado desde 2023, y la izquierda ha perdido 13 puntos entre ellas', serie='29n', figura=0,
+        descripcion='En los barómetros del CIS, Vox pasa del 4,4% al 13,6% entre las mujeres de 18 a 29 años. Los hombres de su edad siguen muy por delante: uno de cada cuatro dice que votaría a Vox. La brecha entre ellos y ellas se abrió en 2023, y desde entonces no se ha cerrado.',
+        compara='El voto más simpatía a Vox y a la izquierda estatal por sexo y edad en los microdatos de 26 encuestas del CIS, de 2019 a octubre de 2026, y la ubicación ideológica de los entrevistados.',
+        limites='Son encuestas: el voto más simpatía no es la estimación de voto del CIS ni una previsión, y los niveles pueden estar sesgados; las diferencias entre grupos de la misma encuesta son más fiables. Los barómetros de 2026 tienen pesos muy variables y los márgenes de error usan el tamaño efectivo de la muestra. Los partidos cambian de nombre entre 2019 y 2026, por eso la serie compara Vox y el bloque de la izquierda estatal. Los resultados reales no se pueden separar por sexo ni por edad. Las causas que proponen los expertos citados son hipótesis.',
+        fuentes=[('https://www.cis.es/', 'CIS, microdatos de los barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536 a 3582)'),
+                 ('https://www.cis.es/documents/d/cis/MD3420', 'CIS, estudio 3420, barómetro de septiembre de 2023, y otros 16 estudios de 2019 a 2025'),
+                 ('https://acento.com.do/politica/la-politica-abre-una-nueva-brecha-de-genero-entre-jovenes-de-todo-el-mundo-9595155.html', 'EFE, La política abre una nueva brecha de género entre jóvenes de todo el mundo (22-12-2025)'),
+                 ('https://www.publico.es/mujer/brecha-ideologica-divide-juventud-derechas-nunca-cada-vez-izquierdas.html', 'Público, la brecha ideológica que divide a la juventud (7-3-2024)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
         slug='psoe-primera-fuerza-29n', fecha='2026-10-25',
         foto=dict(src='img/actualidad/fotos/psoe-primera-fuerza-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una urna llena de sobres con uno rojo delante, entre los escaños del Congreso y el sillón de la presidencia: un collage.'),
@@ -2638,6 +2653,7 @@ PIEZAS += [
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'voto-correo-29n': 'Votar desde casa',
+    'mujeres-jovenes-voto-29n': 'Brecha de género',
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
