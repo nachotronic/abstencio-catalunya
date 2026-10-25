@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=block" rel="stylesheet">
+<style>html,body{margin:0;background:#12141d}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+// Short vertical 9:16 que explica D'Hondt con los votos reales de una provincia. Guion en shorts/<nombre>.json (?c=<nombre>).
+// Escenas (segundos): gancho 0-2,5 · votos 2,5-6 · tabla y reparto 6-14 · el último escaño 14-17,5 · cierre 17,5-20,5.
+const W = 1080, H = 1920, DUR = 20.5;
+const C = {bg:'#12141d', fg:'#e8eaf2', muted:'#9aa0b8', vote:'#7d8ce8', empty:'#2a2e3e', cell:'#1d2030'};
+const F = {display:'"Bricolage Grotesque"', body:'"Newsreader"', mono:'"IBM Plex Mono"'};
+const SC = [['hook', 0, 2.5], ['votos', 2.5, 6], ['tabla', 6, 14], ['ultimo', 14, 17.5], ['outro', 17.5, 30]];
+const ctx = document.getElementById('c').getContext('2d');
+let G, Q = [], WIN = [], NEXT;
+const LOGO = new Image();
+LOGO.src = '../../favicon.svg';
+
+const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const back = x => { x = clamp(x); const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const miles = v => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const pcol = p => (G.partidos.find(x => x[0] === p) || [0, C.fg])[1];
+const col = c => C[c] || (c[0] === '#' ? c : pcol(c));
+
+async function load() {
+  G = await (await fetch('../shorts/' + new URLSearchParams(location.search).get('c') + '.json')).json();
+  // cocientes y reparto
+  G.partidos.forEach(([p, c, v], i) => { for (let d = 1; d <= G.escanos; d++) Q.push({p, i, d, q: v / d}); });
+  const sorted = [...Q].sort((a, b) => b.q - a.q);
+  WIN = sorted.slice(0, G.escanos);
+  WIN.forEach((w, k) => w.k = k);
+  NEXT = sorted[G.escanos];  // el primer cociente que se queda sin escaño
+  await document.fonts.load('800 40px ' + F.display);
+  await document.fonts.load('400 40px ' + F.body);
+  await document.fonts.load('500 40px ' + F.mono);
+  await document.fonts.ready;
+  await LOGO.decode();
+}
+
+function text(str, x, y, font, color, align='left', alpha=1, scale=1) {
+  if (alpha <= 0) return;
+  ctx.save(); ctx.globalAlpha = clamp(alpha); ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+  ctx.translate(x, y); ctx.scale(scale, scale); ctx.fillText(str, 0, 0); ctx.restore();
+}
+function pop(arr, x, y, size, lh, t0, t, step=0.18, align='left') {
+  const f = '800 ' + size + 'px ' + F.display;
+  arr.forEach((l, i) => {
+    const k = (t - t0 - i * step) / 0.35;
+    if (k <= 0) return;
+    ctx.save(); ctx.font = f;
+    const parts = typeof l === 'string' ? [[l, C.fg]] : l;
+    const wTot = parts.reduce((s, p) => s + ctx.measureText(p[0]).width, 0);
+    ctx.translate(x, y + i * lh); ctx.scale(back(k), back(k));
+    let cx = align === 'center' ? -wTot / 2 : 0;
+    for (const [str, c] of parts) { text(str, cx, 0, f, col(c), 'left', clamp(k * 3)); cx += ctx.measureText(str).width; }
+    ctx.restore();
+  });
+}
+function rrect(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, Math.max(w, 0.1), h, Math.min(r, Math.max(w, 0.1) / 2)); ctx.fill(); }
+
+function backdrop(t) {
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+  G.partidos.slice(0, 3).forEach(([p, c], i) => {
+    const x = W * (0.2 + 0.6 * i / 2 + 0.06 * Math.sin(t * 0.6 + i * 2)), y = H * (0.3 + 0.35 * (i % 2) + 0.04 * Math.cos(t * 0.5 + i));
+    const g = ctx.createRadialGradient(x, y, 0, x, y, 650);
+    g.addColorStop(0, c); g.addColorStop(1, 'rgba(18,20,29,0)');
+    ctx.globalAlpha = 0.16; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+  });
+}
+
+// Escaños ganados hasta el instante t de la escena «tabla»
+const awardAt = k => 2.4 + k * 0.95;
+function seats(x, y, lt, r=34) {
+  const n = G.escanos, gap = 22, total = n * 2 * r + (n - 1) * gap, x0 = x - total / 2;
+  for (let k = 0; k < n; k++) {
+    const w = WIN[k], a = lt - awardAt(k) - 0.35;
+    ctx.fillStyle = a > 0 ? pcol(w.p) : C.empty;
+    const s = a > 0 ? back(a / 0.3) : 1;
+    ctx.beginPath(); ctx.arc(x0 + r + k * (2 * r + gap), y, r * s, 0, 7); ctx.fill();
+  }
+}
+
+const X = 72;
+const S = {
+  hook(t) { pop(G.hook, X, 620, 108, 124, 0.1, t, 0.28); },
+  votos(t) {
+    pop(G.votosTitle, X, 300, 80, 92, 0, t);
+    text(G.votosSub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const max = G.partidos[0][2], lw = W - 2 * X - 200;
+    G.partidos.forEach(([p, c, v], i) => {
+      const y = 620 + i * 190, k = ease((t - 0.3 - i * 0.2) / 0.8);
+      text(p, X, y + 64, '800 56px ' + F.display, c, 'left', k * 3);
+      ctx.fillStyle = c; rrect(X + 200, y + 10, lw * v / max * k, 70, 10);
+      text(miles(v * k), X + 200 + 18, y + 120, '500 36px ' + F.mono, C.fg, 'left', k);
+    });
+  },
+  tabla(t) {
+    pop(G.tablaTitle, X, 300, 80, 92, 0, t);
+    const n = G.escanos, lab = 170, cw = (W - 2 * X - lab) / n, ch = 118, top = 560;
+    for (let d = 1; d <= n; d++) text('÷' + d, X + lab + (d - 0.5) * cw, top - 24, '700 40px ' + F.display, C.muted, 'center', ease((t - 0.3) / 0.3));
+    G.partidos.forEach(([p, c], i) => {
+      const y = top + i * ch;
+      text(p, X, y + 70, '800 46px ' + F.display, c, 'left', ease((t - 0.3 - i * 0.1) / 0.3));
+      for (let d = 1; d <= n; d++) {
+        const q = Q.find(o => o.i === i && o.d === d), w = WIN.find(o => o === q);
+        const k = ease((t - 0.5 - i * 0.12 - d * 0.09) / 0.35);
+        const won = w && t > awardAt(w.k);
+        const gx = X + lab + (d - 1) * cw + 6, gy = y + 8;
+        const flash = won ? back((t - awardAt(w.k)) / 0.3) : 1;
+        ctx.save(); ctx.translate(gx + (cw - 12) / 2, gy + (ch - 16) / 2); ctx.scale(flash, flash);
+        ctx.globalAlpha = k; ctx.fillStyle = won ? c : C.cell; rrect(-(cw - 12) / 2, -(ch - 16) / 2, cw - 12, ch - 16, 12);
+        ctx.restore(); ctx.globalAlpha = 1;
+        if (q === NEXT && t > awardAt(n - 1) + 0.6) {  // el que se queda a las puertas parpadea
+          ctx.save(); ctx.strokeStyle = c; ctx.lineWidth = 5; ctx.globalAlpha = 0.6 + 0.4 * Math.sin((t - awardAt(n - 1)) * 10);
+          ctx.beginPath(); ctx.roundRect(gx, gy, cw - 12, ch - 16, 12); ctx.stroke(); ctx.restore();
+        }
+        text(miles(q.q), gx + (cw - 12) / 2, gy + (ch - 16) / 2 + 12, '500 30px ' + F.mono, won ? '#fff' : C.muted, 'center', k);
+      }
+    });
+    // contador y escaños
+    const got = WIN.filter(w => t > awardAt(w.k)).length;
+    text(got ? 'Escaño ' + got + ' de ' + n + ': el cociente más alto que queda' : 'Se reparten de mayor a menor cociente', X, top + G.partidos.length * ch + 70, '500 30px ' + F.mono, C.fg, 'left', ease((t - 1.6) / 0.3));
+    seats(W / 2, top + G.partidos.length * ch + 190, t);
+    // resumen final por partido
+    if (t > awardAt(n - 1) + 0.5) {
+      const tally = {};
+      WIN.forEach(w => tally[w.p] = (tally[w.p] || 0) + 1);
+      const s = Object.entries(tally).map(([p, k]) => p + ' ' + k).join(' · ');
+      text(s, W / 2, top + G.partidos.length * ch + 300, '800 54px ' + F.display, C.fg, 'center', ease((t - awardAt(n - 1) - 0.5) / 0.3));
+    }
+  },
+  ultimo(t) {
+    const U = G.ultimo;
+    pop(U.title, X, 300, 80, 92, 0, t);
+    [[U.a, 0], [U.b, 1]].forEach(([r, i]) => {
+      const k = ease((t - 0.4 - i * 0.45) / 0.5), y = 640 + i * 330;
+      text(r.label, X, y, '800 54px ' + F.display, pcol(r.p), 'left', k);
+      text(miles(r.q * k), X, y + 150, '800 140px ' + F.display, C.fg, 'left', k);
+      text(r.note, X, y + 210, '500 30px ' + F.mono, C.muted, 'left', k);
+    });
+    pop([[[U.punch[0], C.fg]], [[U.punch[1], pcol(U.b.p)]]], X, 1370, 76, 90, 1.8, t);
+  },
+  outro(t) {
+    const k = back(t / 0.4);
+    ctx.save(); ctx.translate(W / 2, 530); ctx.scale(k, k); ctx.globalAlpha = clamp(t * 4); ctx.drawImage(LOGO, -90, -90, 180, 180); ctx.restore();
+    pop(G.outro, W / 2, 760, 96, 104, 0.15, t, 0.15, 'center');
+    text(G.url || 'mapaelectoral.es', W / 2, 1130, '700 64px ' + F.display, C.vote, 'center', ease((t - 0.6) / 0.3));
+    G.source.forEach((s, i) => text(s, W / 2, 1300 + i * 44, '500 26px ' + F.mono, C.muted, 'center', ease((t - 0.8) / 0.3)));
+  },
+};
+
+function render(t) {
+  backdrop(t);
+  text(G.kicker, X, 150, '500 30px ' + F.mono, C.muted, 'left', t < 17.5 ? 1 : 0);
+  for (const [name, a, b] of SC) {
+    if (t < a || t >= b) continue;
+    const lt = t - a, out = b - t;
+    const dx = (1 - ease(lt / 0.25)) * 220 - (out < 0.2 ? (1 - out / 0.2) * 120 : 0);
+    ctx.save(); ctx.translate(dx, 0); S[name](lt); ctx.restore();
+    if (out < 0.2) { ctx.globalAlpha = 0.85 * (1 - out / 0.2); ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+    if (lt < 0.08 && a > 0) { ctx.globalAlpha = 0.2 * (1 - lt / 0.08); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+  }
+}
+window.DUR = DUR;
+window.ready = load().then(() => { render(0); return true; });
+window.render = render;
+</script>
+</body>
+</html>

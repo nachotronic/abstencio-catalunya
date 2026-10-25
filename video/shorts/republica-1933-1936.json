@@ -1,0 +1,98 @@
+{
+  "plantilla": "timelapse",
+  "kicker": "SEGUNDA REPÚBLICA · ESPAÑA",
+  "hook": [
+    "1933, 1936",
+    "y hoy:",
+    [
+      [
+        "el mapa de España",
+        "vote"
+      ]
+    ],
+    "pueblo a pueblo"
+  ],
+  "hookDur": 2.4,
+  "per": 3.4,
+  "barLabel": "Municipios donde ganó cada bloque o partido",
+  "alias": {
+    "DER": "Derechas",
+    "FP": "Frente Popular",
+    "CENTRO": "Radicales y centro",
+    "IZQREP": "Izquierda republicana",
+    "OTROS": "Otros",
+    "JUNTS": "Junts"
+  },
+  "elecciones": [
+    {
+      "cod": "1933_11",
+      "year": 1933,
+      "label": "19 de noviembre",
+      "who": "Derechas",
+      "color": "DER",
+      "seats": "",
+      "note": "Primera vez que votan las mujeres"
+    },
+    {
+      "cod": "1936_02",
+      "year": 1936,
+      "label": "16 de febrero",
+      "who": "Frente Popular",
+      "color": "FP",
+      "seats": "Izquierda unida",
+      "note": "Cinco meses después, la guerra"
+    },
+    {
+      "cod": "2023_07",
+      "year": 2023,
+      "label": "23 de julio",
+      "who": "PP",
+      "color": "PP",
+      "seats": "137 escaños",
+      "note": "Gobierna el PSOE"
+    }
+  ],
+  "facts": {
+    "title": [
+      "Pueblo a pueblo,",
+      "el mapa se dio la vuelta"
+    ],
+    "items": [
+      [
+        "888",
+        "FP",
+        [
+          "pueblos pasaron de las derechas",
+          "al Frente Popular de 1933 a 1936"
+        ]
+      ],
+      [
+        "1.545",
+        "PSOE",
+        [
+          "votaron a las derechas en 1936",
+          "y hoy eligen a la izquierda"
+        ]
+      ],
+      [
+        "1.196",
+        "PP",
+        [
+          "hicieron el camino contrario"
+        ]
+      ]
+    ]
+  },
+  "factsDur": 4.2,
+  "outro": [
+    "La historia",
+    "de tu pueblo,",
+    "en el mapa"
+  ],
+  "source": [
+    "Fuentes: Electoral Atlas of the Spanish Second Republic",
+    "(Rodon, Vall-Prat y Martín, UPF), CC BY-NC-SA 4.0;",
+    "Ministerio del Interior. Sin datos: Málaga y Las Palmas",
+    "(1933), Pontevedra y Cuenca (1936)."
+  ]
+}

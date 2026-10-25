@@ -19,3 +19,10 @@ se guardan en la carpeta del proyecto `videos/`.
 `plantilla/encuesta.html`, unos 21 s con cortes cada 2-4 s: gancho, cuadrícula de 100 puntos, barras por edad,
 barras por partido (colores de cada partido) e ideología. Se elige con `"plantilla": "encuesta"` en el guion
 (ejemplo: `shorts/mujeres-jovenes.json`, microdatos del CIS 3420; se descargan en https://www.cis.es/documents/d/cis/MD3420).
+
+## Plantillas de mapa nacional y de D'Hondt
+
+- `plantilla/timelapse.html`: mapa municipal de España elección tras elección (necesita `python3 video/prep_espana.py video/comun/espana.json`,
+  que lee `generales-2026/data`). Guiones: `espana-1977-2023`, `republica-1933-1936`.
+- `plantilla/dhondt.html`: reparto de escaños de una provincia con sus votos reales (`dhondt-cantabria`, votos de
+  `actualidad/src/sistema/simulador.json`).

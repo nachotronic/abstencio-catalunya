@@ -1,0 +1,16 @@
+{
+  "plantilla": "dhondt",
+  "kicker": "GENERALES 23J · CANTABRIA",
+  "hook": ["Así se reparten", "los escaños:", [["la ley D'Hondt", "vote"]], "en 20 segundos"],
+  "escanos": 5,
+  "partidos": [["PP", "#1d84ce", 147326], ["PSOE", "#e30613", 116596], ["Vox", "#5ac035", 49243], ["Sumar", "#a2275f", 29713]],
+  "votosTitle": ["1. Cantabria", "reparte 5 escaños"],
+  "votosSub": "Votos (solo cuentan los que pasan del 3%)",
+  "tablaTitle": ["2. Se dividen", "entre 1, 2, 3, 4 y 5"],
+  "ultimo": {"title": ["3. El último escaño", "se decide por poco"],
+             "a": {"p": "Vox", "label": "Vox ÷ 1", "q": 49243, "note": "se lleva el 5º escaño"},
+             "b": {"p": "PP", "label": "PP ÷ 3", "q": 49108.67, "note": "se queda fuera"},
+             "punch": ["Al PP le faltaron", "404 votos"]},
+  "outro": ["Calcula", "los escaños", "de tu provincia"],
+  "source": ["Fuente: Ministerio del Interior, generales del 23J.", "Votos válidos de Cantabria; umbral del 3%."]
+}
