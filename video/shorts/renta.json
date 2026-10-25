@@ -1,0 +1,19 @@
+{
+  "kicker": "GENERALES 23J · CATALUÑA",
+  "metric": {"field": "t", "mean": 0.654, "spread": 0.2, "legend": "Participación sobre el censo, por sección"},
+  "hook": ["Los barrios ricos", "votan", [["18 puntos más", "vote"]], "que los pobres"],
+  "map": {"title": ["En Cataluña votó", [["el 65%", "vote"], [" del censo", "fg"]]],
+          "sub": ["En Barcelona, la brecha", "se ve barrio a barrio"]},
+  "region": {"at": [2.155, 41.405], "w": 0.115},
+  "labels": [
+    {"at": [2.1873, 41.4497], "name": "Trinitat Nova", "value": 0.515, "note": "votó el 52%", "dx": -60, "dy": 90, "side": "left"},
+    {"at": [2.1706, 41.3798], "name": "el Raval", "value": 0.528, "note": "votó el 53%", "dx": 40, "dy": 90},
+    {"at": [2.1323, 41.3979], "name": "les Tres Torres", "value": 0.74, "note": "votó el 74%", "dx": 40, "dy": -120}
+  ],
+  "final": {"type": "bars", "title": ["Participación según", "la renta de la sección"],
+            "note": ["Secciones de Cataluña en diez grupos iguales,", "de la renta más baja a la más alta"],
+            "values": [0.54, 0.603, 0.624, 0.641, 0.652, 0.667, 0.678, 0.692, 0.70, 0.719], "max": 0.8,
+            "left": "← más pobres", "right": "más ricas →"},
+  "outro": ["Quién no vota", "y por qué,", "sección a sección"],
+  "source": ["Fuente: Ministerio del Interior e INE (2023).", "Renta por unidad de consumo (Atlas de Renta del INE)."]
+}

@@ -1,21 +1,22 @@
 // Graba una composición HTML fotograma a fotograma y la codifica a MP4.
-// Uso: node render.js <carpeta> <salida.mp4> [fps] [--stills t1,t2,...]
+// Uso: node render.js <guion> <salida.mp4> [fps] [--stills t1,t2,...]   (guion = nombre en shorts/, p. ej. salt)
 const { chromium } = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path');
 const { spawn } = require('child_process');
 
-const [dir, out, fpsArg, flag, list] = process.argv.slice(2);
+const [name, out, fpsArg, flag, list] = process.argv.slice(2);
+const dir = __dirname;
 const fps = +(fpsArg || 30);
 const types = { '.html': 'text/html', '.json': 'application/json', '.js': 'text/javascript' };
 const srv = http.createServer((q, r) => {
-  const f = path.join(dir, decodeURIComponent(q.url.split('?')[0]) === '/' ? 'index.html' : decodeURIComponent(q.url.split('?')[0]));
+  const f = path.join(dir, decodeURIComponent(q.url.split('?')[0]));
   fs.readFile(f, (e, b) => { if (e) { r.writeHead(404); r.end(); } else { r.writeHead(200, { 'Content-Type': types[path.extname(f)] || 'application/octet-stream' }); r.end(b); } });
 }).listen(0);
 
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
-  await page.goto(`http://localhost:${srv.address().port}/`);
+  await page.goto(`http://localhost:${srv.address().port}/plantilla/short.html?c=${encodeURIComponent(name)}`);
   await page.evaluate(() => window.ready);
   const canvas = await page.$('canvas');
   if (flag === '--stills') {

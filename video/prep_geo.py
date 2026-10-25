@@ -22,7 +22,7 @@ for f in g['features']:
                 pts.extend(q); last = q
         if len(pts) >= 6:
             rings.append(pts)
-    feats.append({'m': p['mun_name'], 'v': p.get('pct_ad_vota'), 's': p.get('pct_ad_sinderecho'),
-                  'a': p.get('pct_ad_abst'), 'r': rings})
+    feats.append({'c': p['tract_code'], 'm': p['mun_name'], 't': p.get('turnout'), 'v': p.get('pct_ad_vota'),
+                  's': p.get('pct_ad_sinderecho'), 'a': p.get('pct_ad_abst'), 'r': rings})
 json.dump(feats, open(dst, 'w'), separators=(',', ':'))
 print(len(feats))
