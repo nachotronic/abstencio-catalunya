@@ -131,6 +131,37 @@
       ]
     },
     {
+      "tipo": "numeros",
+      "dur": 4.4,
+      "titulo": [
+        "¿Y Vox?",
+        "Más fuerte abajo"
+      ],
+      "items": [
+        [
+          "15,4 %",
+          "Vox",
+          [
+            "en el 10 % más pobre"
+          ]
+        ],
+        [
+          "10,0 %",
+          "Vox",
+          [
+            "su mínimo, en el decil 9"
+          ]
+        ],
+        [
+          "12,0 %",
+          "Vox",
+          [
+            "repunta en el 10 % más rico"
+          ]
+        ]
+      ]
+    },
+    {
       "tipo": "hook",
       "dur": 2.4,
       "lineas": [
