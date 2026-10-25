@@ -2598,6 +2598,8 @@ PIEZAS += [
     ),
     dict(
         slug='psoe-primera-fuerza-29n', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/psoe-primera-fuerza-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna llena de sobres con uno rojo delante, entre los escaños del Congreso y el sillón de la presidencia: un collage.'),
         titulo='El PP saca 6 puntos al PSOE en las encuestas: ni el mayor fallo de la última década, el de 2023, daría el sorpasso que anuncia Iván Redondo', serie='29n', figura=0,
         descripcion='En 2023, los sondeos de la última semana exageraron la ventaja del PP en 4,9 puntos. Si hoy se equivocaran igual, el PP seguiría por delante por algo más de un punto. Solo una de las trece encuestas privadas de octubre deja al PSOE a menos de dos puntos.',
         compara='La estimación del PP y del PSOE en la última encuesta de cada empresa privada publicada desde el 4 de octubre de 2026, y el error de las encuestas en la ventaja del PP sobre el PSOE en las generales de 2015 a 2023.',
