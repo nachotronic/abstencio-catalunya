@@ -57,6 +57,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/barcelona-madrid-clasico-del-voto-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-25</news:publication_date>
+      <news:title>El otro Clásico: en los barrios de renta media, el PP saca el triple de votos en Madrid que en Barcelona</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/asi-queda-el-mapa-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -94,6 +102,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-25</news:publication_date>
       <news:title>La Diagonal parte la derecha y la Meridiana, el independentismo: en Les Corts, PP y Vox sacan 26 puntos más en una acera que en la de enfrente</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/quien-vota-que-barrios-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-25</news:publication_date>
+      <news:title>Quién vota qué, barrio a barrio: el PP sube 21 puntos donde pesan las rentas del capital, el PSOE 15 donde abundan los peones y Vox solo se mueve con los jubilados</news:title>
     </news:news>
   </url>
   <url>
