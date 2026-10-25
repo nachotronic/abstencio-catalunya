@@ -2596,11 +2596,26 @@ PIEZAS += [
                   pie='Casas de colonos en Rosalejo (Cáceres), pueblo fundado por el Instituto Nacional de Colonización en 1956, en mayo de 2021.',
                   url='https://commons.wikimedia.org/wiki/File:Rosalejo_02.jpg', credito='19Tarrestnom65, CC BY-SA 4.0, vía Wikimedia Commons'),
     ),
+    dict(
+        slug='voto-correo-29n', fecha='2026-10-25',
+        titulo='Siete de cada cien electores pidieron votar por correo en 2023, más del triple que en 2015: en Bizkaia, 14; en Girona, 3', serie='29n', figura=0,
+        descripcion='Las dos generales con más voto por correo fueron las de verano, 2016 y 2023. El 29N cae en noviembre, como 2011 y 2019, cuando se pidió mucho menos. Y en 2023 no lo pidieron sobre todo los mayores: lo pidieron los electores de 25 a 44 años y los de las ciudades grandes.',
+        compara='Las solicitudes de voto por correo aceptadas por la Oficina del Censo Electoral en las generales de 2004 a 2023, por cada 100 electores residentes en España, por provincia y, en 2023, por edad y tamaño del municipio.',
+        limites='Son solicitudes, no votos, contadas por la provincia de inscripción del elector. El INE y Correos cuentan cosas distintas y sus totales no coinciden. Los votos emitidos solo están en notas de prensa de Correos y faltan o son provisionales en 2008, 2011 y 2015. No incluye a los residentes en el extranjero. Las razones de los cambios (vacaciones, pandemia) son hipótesis. El voto por correo no se puede separar en los resultados.',
+        fuentes=[('https://www.ine.es/', 'INE, Oficina del Censo Electoral, solicitudes de voto por correo en las elecciones generales de 2004 a 2023 (tablas 59755, 59758, 59759, 59763 y 59764 para 2023)'),
+                 ('https://www.correos.com/sala-prensa/exito-en-la-gestion-del-voto-por-correo-que-marca-record-historico-con-2-471-935-votos-admitidos-para-las-elecciones-generales/', 'Correos, récord histórico con 2.471.935 votos admitidos (22-7-2023)'),
+                 ('https://www.correos.com/sala-prensa/ya-se-puede-solicitar-el-voto-por-correo-para-las-elecciones-generales-del-29-de-noviembre/', 'Correos, ya se puede solicitar el voto por correo para el 29N (6-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-abascal-ayuso-cuestionan-voto-correo-podra-solicitar-manana-29n-20261005151138.html', 'Europa Press, Abascal y Ayuso cuestionan el voto por correo (5-10-2026)'),
+                 ('https://diariodeavisos.elespanol.com/2026/10/correos-canarias-voto-feijoo/', 'Diario de Avisos, Correos en Canarias responde a Feijóo (8-10-2026)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'voto-correo-29n': 'Votar desde casa',
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
     'ganar-por-un-voto-29n': 'Un voto de diferencia',
