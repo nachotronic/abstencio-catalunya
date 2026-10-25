@@ -9,11 +9,12 @@
 <canvas id="c" width="1080" height="1920"></canvas>
 <script>
 // Short vertical 9:16 que explica D'Hondt con los votos reales de una provincia. Guion en shorts/<nombre>.json (?c=<nombre>).
-// Escenas (segundos): gancho 0-2,5 · votos 2,5-6 · tabla y reparto 6-14 · el último escaño 14-17,5 · cierre 17,5-20,5.
-const W = 1080, H = 1920, DUR = 20.5;
+// Escenas (segundos): gancho 0-2,5 · votos 2,5-6,5 · división de un partido 6,5-11,5 · tabla y reparto 11,5-22,5 ·
+// el último escaño 22,5-27 · cierre 27-30. Más pausado que los otros Shorts: aquí manda que se entienda.
+const W = 1080, H = 1920, DUR = 30;
 const C = {bg:'#12141d', fg:'#e8eaf2', muted:'#9aa0b8', vote:'#7d8ce8', empty:'#2a2e3e', cell:'#1d2030'};
 const F = {display:'"Bricolage Grotesque"', body:'"Newsreader"', mono:'"IBM Plex Mono"'};
-const SC = [['hook', 0, 2.5], ['votos', 2.5, 6], ['tabla', 6, 14], ['ultimo', 14, 17.5], ['outro', 17.5, 30]];
+const SC = [['hook', 0, 2.5], ['votos', 2.5, 6.5], ['division', 6.5, 11.5], ['tabla', 11.5, 22.5], ['ultimo', 22.5, 27], ['outro', 27, 40]];
 const ctx = document.getElementById('c').getContext('2d');
 let G, Q = [], WIN = [], NEXT;
 const LOGO = new Image();
@@ -73,7 +74,7 @@ function backdrop(t) {
 }
 
 // Escaños ganados hasta el instante t de la escena «tabla»
-const awardAt = k => 2.4 + k * 0.95;
+const awardAt = k => 2.2 + k * 1.6;
 function seats(x, y, lt, r=34) {
   const n = G.escanos, gap = 22, total = n * 2 * r + (n - 1) * gap, x0 = x - total / 2;
   for (let k = 0; k < n; k++) {
@@ -98,6 +99,20 @@ const S = {
       text(miles(v * k), X + 200 + 18, y + 120, '500 36px ' + F.mono, C.fg, 'left', k);
     });
   },
+  division(t) {
+    pop(G.divTitle, X, 300, 80, 92, 0, t);
+    const [p, c, v] = G.partidos[0];
+    text('Por ejemplo, el ' + p + ':', X, 520, '500 34px ' + F.mono, C.muted, 'left', ease((t - 0.4) / 0.3));
+    for (let d = 1; d <= G.escanos; d++) {
+      const k = (t - 0.6 - (d - 1) * 0.55) / 0.35, y = 640 + (d - 1) * 140;
+      if (k <= 0) continue;
+      ctx.save(); ctx.translate(X, y); ctx.scale(back(k), back(k));
+      text(miles(v) + ' ÷ ' + d + ' =', 0, 0, '700 58px ' + F.display, C.muted, 'left', clamp(k * 3));
+      text(miles(v / d), W - 2 * X, 0, '800 72px ' + F.display, c, 'right', clamp(k * 3));
+      ctx.restore();
+    }
+    text(G.divNote, X, 1400, '400 44px ' + F.body, C.fg, 'left', ease((t - 3.6) / 0.4));
+  },
   tabla(t) {
     pop(G.tablaTitle, X, 300, 80, 92, 0, t);
     const n = G.escanos, lab = 170, cw = (W - 2 * X - lab) / n, ch = 118, top = 560;
@@ -119,18 +134,28 @@ const S = {
           ctx.beginPath(); ctx.roundRect(gx, gy, cw - 12, ch - 16, 12); ctx.stroke(); ctx.restore();
         }
         text(miles(q.q), gx + (cw - 12) / 2, gy + (ch - 16) / 2 + 12, '500 30px ' + F.mono, won ? '#fff' : C.muted, 'center', k);
+        if (won) {  // número de orden del escaño
+          const bx = gx + cw - 22, by = gy + 6;
+          ctx.fillStyle = C.fg; ctx.beginPath(); ctx.arc(bx, by, 22 * flash, 0, 7); ctx.fill();
+          text(String(w.k + 1), bx, by + 10, '800 28px ' + F.display, C.bg, 'center');
+        }
       }
     });
     // contador y escaños
-    const got = WIN.filter(w => t > awardAt(w.k)).length;
-    text(got ? 'Escaño ' + got + ' de ' + n + ': el cociente más alto que queda' : 'Se reparten de mayor a menor cociente', X, top + G.partidos.length * ch + 70, '500 30px ' + F.mono, C.fg, 'left', ease((t - 1.6) / 0.3));
-    seats(W / 2, top + G.partidos.length * ch + 190, t);
+    const got = WIN.filter(w => t > awardAt(w.k)).length, cy = top + G.partidos.length * ch + 80;
+    if (!got) text('Buscamos el número más alto…', X, cy, '400 44px ' + F.body, C.fg, 'left', ease((t - 1.2) / 0.3));
+    else {
+      const w = WIN[got - 1], lt2 = t - awardAt(got - 1);
+      text('Escaño ' + got + ':', X, cy, '400 44px ' + F.body, C.fg, 'left', ease(lt2 / 0.25));
+      text(w.p + ' (' + miles(w.q) + ')', X + 230, cy, '800 52px ' + F.display, pcol(w.p), 'left', ease(lt2 / 0.25));
+    }
+    seats(W / 2, top + G.partidos.length * ch + 200, t);
     // resumen final por partido
     if (t > awardAt(n - 1) + 0.5) {
       const tally = {};
       WIN.forEach(w => tally[w.p] = (tally[w.p] || 0) + 1);
       const s = Object.entries(tally).map(([p, k]) => p + ' ' + k).join(' · ');
-      text(s, W / 2, top + G.partidos.length * ch + 300, '800 54px ' + F.display, C.fg, 'center', ease((t - awardAt(n - 1) - 0.5) / 0.3));
+      text(s, W / 2, top + G.partidos.length * ch + 320, '800 54px ' + F.display, C.fg, 'center', ease((t - awardAt(n - 1) - 0.5) / 0.3));
     }
   },
   ultimo(t) {
@@ -155,7 +180,7 @@ const S = {
 
 function render(t) {
   backdrop(t);
-  text(G.kicker, X, 150, '500 30px ' + F.mono, C.muted, 'left', t < 17.5 ? 1 : 0);
+  text(G.kicker, X, 150, '500 30px ' + F.mono, C.muted, 'left', t < 27 ? 1 : 0);
   for (const [name, a, b] of SC) {
     if (t < a || t >= b) continue;
     const lt = t - a, out = b - t;
