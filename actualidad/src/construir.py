@@ -1530,7 +1530,7 @@ PIEZAS = [
                   fuente='Agencia Tributaria. Cálculo propio'),
     ),
     dict(
-        slug='ivan-redondo-12-millones-derecha-29n', fecha='2026-10-23',
+        slug='ivan-redondo-12-millones-derecha-29n', fecha='2026-10-23', actualizado='2026-10-25 08:56',
         titulo='Los 12 millones de la derecha que cita Iván Redondo solo existieron una vez: en 2011', serie='29n', figura=0,
         descripcion='Desde entonces, PP, Vox, Ciudadanos y UPyD han sumado entre 10,45 y 11,33 millones de votos. La ecuación de Redondo, con Vox en el 20% y el PP en el 27-28%, exige un bloque más grande que el de 2023, y con los votos de entonces daría a la derecha 177 escaños: mayoría absoluta.',
         compara='Los votos del bloque de la derecha (PP, Vox, Ciudadanos, UPyD y UPN o Navarra Suma) en las generales de 2004 a 2023, con voto exterior; y una simulación mecánica de escaños con los votos de 2023 por provincia y el reparto de 2026 en varios escenarios de PP y Vox.',
@@ -2596,12 +2596,33 @@ PIEZAS += [
                   pie='Casas de colonos en Rosalejo (Cáceres), pueblo fundado por el Instituto Nacional de Colonización en 1956, en mayo de 2021.',
                   url='https://commons.wikimedia.org/wiki/File:Rosalejo_02.jpg', credito='19Tarrestnom65, CC BY-SA 4.0, vía Wikimedia Commons'),
     ),
+    dict(
+        slug='psoe-primera-fuerza-29n', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/psoe-primera-fuerza-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna llena de sobres con uno rojo delante, entre los escaños del Congreso y el sillón de la presidencia: un collage.'),
+        titulo='El PP saca 6 puntos al PSOE en las encuestas: ni el mayor fallo de la última década, el de 2023, daría el sorpasso que anuncia Iván Redondo', serie='29n', figura=0,
+        descripcion='En 2023, los sondeos de la última semana exageraron la ventaja del PP en 4,9 puntos. Si hoy se equivocaran igual, el PP seguiría por delante por algo más de un punto. Solo una de las trece encuestas privadas de octubre deja al PSOE a menos de dos puntos.',
+        compara='La estimación del PP y del PSOE en la última encuesta de cada empresa privada publicada desde el 4 de octubre de 2026, y el error de las encuestas en la ventaja del PP sobre el PSOE en las generales de 2015 a 2023.',
+        limites='El error se mide con la mediana de las encuestas publicadas con trabajo de campo terminado entre 14 y 6 días antes de votar, sin ponderar por tamaño ni por empresa, y el resultado sobre votos válidos. Las recopilaciones de Wikipedia y Electográfica pueden no estar completas. Cinco elecciones son pocas para sacar una regla. Aplicar el error de 2023 a las encuestas de hoy es una cuenta, no una previsión. Las frases de Redondo se citan de la prensa que recogió su entrevista en RNE.',
+        fuentes=[('https://www.esdiario.com/nacional/261013/200111/ivan-redondo-psoe-sanchez-29n.html', 'ESdiario, entrevista de Iván Redondo en RNE (13-10-2026)'),
+                 ('https://es.ara.cat/politica/exguru-pedro-sanchez-cree-psoe-primera-fuerza-29-n_1_5875719.html', 'Ara, El exgurú de Pedro Sánchez que cree que el PSOE puede ser primera fuerza el 29-N (10-10-2026)'),
+                 ('https://www.electografica.com/', 'Electográfica, encuestas de las generales de noviembre de 2019, 2023 y 2026'),
+                 ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2015_Spanish_general_election', 'Wikipedia, encuestas de las generales de 2015'),
+                 ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2016_Spanish_general_election', 'Wikipedia, encuestas de las generales de 2016'),
+                 ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_April_2019_Spanish_general_election', 'Wikipedia, encuestas de las generales de abril de 2019'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2015 a 2023'),
+                 ('https://www.diaridetarragona.com/elecciones/198717/las-encuestas-vuelven-a-fallar-da16259794.html', 'EFE, Las encuestas vuelven a fallar (24-7-2023)'),
+                 ('https://elespanol.com/espana/politica/20230724/michavila-hace-bueno-tezanos-arrastro-pp-creando-expectativas-condicionaron/781172083_0.html', 'El Español, sobre las encuestas de GAD3 en el 23J (24-7-2023)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
+    'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
     'ganar-por-un-voto-29n': 'Un voto de diferencia',
     'barcelona-madrid-clasico-del-voto-29n': 'El otro Clásico',
