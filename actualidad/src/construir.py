@@ -1705,6 +1705,27 @@ PIEZAS = [
         foto=dict(src='img/actualidad/fotos/cinco-semanas-29n-la-semana-en-el-mapa.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una urna transparente con sobres sobre el mapa de España, entre una ciudad y un pueblo: un collage.'),
     ),
+    dict(
+        slug='quien-vota-que-barrios-29n', fecha='2026-10-25',
+        titulo='Quién vota qué, barrio a barrio: el PP sube 21 puntos donde pesan las rentas del capital, el PSOE 15 donde abundan los peones y Vox solo se mueve con los jubilados', serie='29n', figura=0,
+        descripcion='Crónica del domingo: las piezas de la semana sobre de qué viven los vecinos de cada barrio, contadas de una vez con un gráfico que cambia al bajar. La renta del capital, los autónomos, el oficio y la pensión reparten el voto entre PP y PSOE; a Vox casi no lo mueven.',
+        compara='El voto en las generales de 2023 en los grupos de secciones censales (o códigos postales) donde menos y donde más pesan las rentas del capital, los autónomos, los empleos elementales y los pensionistas, con las cifras de las piezas publicadas entre el 19 y el 23 de octubre.',
+        limites='Es una pieza de resumen: cada cifra procede de una pieza ya publicada y enlazada, donde se explica el cálculo. Las cuatro preguntas no usan la misma unidad (códigos postales de 54 ciudades sin Cataluña para el capital; secciones censales para el resto) ni son independientes: en las ciudades, el barrio de los autónomos es también el de más renta. Una sección no es una persona: no se puede saber cómo vota cada rentista, autónomo, peón o pensionista.',
+        calculo='Grupos de igual número de votantes, del que menos al que más tiene de cada característica; porcentajes sobre votos a candidaturas y participación sobre el censo.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, generales de 2023 por sección censal'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=70006', 'INE, censo anual 2023: ocupados por cuenta propia por sección censal'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=70004', 'INE, censo anual 2023: ocupados por ocupación y sección censal'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=66594', 'INE, censo anual 2023: pensionistas por sección censal'),
+                 ('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfCodPostal/2023/home.html', 'Agencia Tributaria, IRPF 2023 por código postal'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares'),
+                 ('http://piketty.pse.ens.fr/files/Piketty2018.pdf', 'Thomas Piketty, Brahmin Left vs Merchant Right (2018)'),
+                 ('https://www.eldiario.es/opinion/tribuna-abierta/vota-clase-trabajadora-espana_129_1401496.html', 'Alberto Garzón, ¿A quién vota la clase trabajadora en España? (eldiario.es, 2019)'),
+                 ('https://doi.org/10.3389/fpos.2025.1717586', 'Roig, Espinosa y Pavía, Who votes for Vox? (Frontiers in Political Science, 2025)'),
+                 ('https://revistas.um.es/sh/article/download/451231/291101/1533611', 'Manuel Trujillo, Sociología Histórica (2020)'),
+                 ('https://www.vozpopuli.com/espana/madrid/vox-encuentra-en-madrid-su-gran-caladero-de-afiliaciones-una-de-cada-cuatro-se-producen-en-la-region.html', 'Vozpópuli, la campaña de Vox en el sur de Madrid')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
@@ -2556,6 +2577,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
     'ganar-por-un-voto-29n': 'Un voto de diferencia',
     'asi-queda-el-mapa-29n': 'El mapa de partida',
