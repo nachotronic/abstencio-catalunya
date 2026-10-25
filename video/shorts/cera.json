@@ -1,0 +1,26 @@
+{
+  "plantilla": "guia",
+  "kicker": "VOTO EXTERIOR (CERA) · 29N",
+  "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035", "Sumar": "#a2275f", "cera": "#e0a440"},
+  "escenas": [
+    {"tipo": "hook", "dur": 4.0, "cuenta": 1.4, "lineas": ["El 29N pueden votar", [["desde el extranjero:", "cera"]]], "contador": 2769645, "color": "cera"},
+    {"tipo": "numeros", "dur": 3.8, "titulo": ["Pero en 2023", "votó muy poca gente"], "items": [
+      ["9 %", "cera", ["de los inscritos fuera", "(208.431 de 2.328.260)"]],
+      ["70 %", "vote", ["dentro de España"]]]},
+    {"tipo": "parejas", "dur": 4.6, "titulo": ["¿Votan distinto", "los de fuera?"], "sub": "% del voto válido, 23J 2023", "max": 36, "claves": ["dentro", "fuera"],
+     "pares": [["PP", "PP", 33.1, 33.0], ["PSOE", "PSOE", 31.7, 29.0], ["Vox", "Vox", 12.4, 11.2], ["Sumar", "Sumar", 12.3, 14.8]]},
+    {"tipo": "numeros", "dur": 4.2, "titulo": ["Y cambió el último", "escaño de Madrid"], "items": [
+      ["120", "PSOE", ["votos de cociente: ventaja del PSOE", "sin el voto exterior"]],
+      ["122", "PP", ["votos de cociente: ventaja del PP", "con el voto exterior"]]]},
+    {"tipo": "numeros", "dur": 4.0, "titulo": ["Para el 29N,", "441.385 electores más"], "items": [
+      ["+19 %", "cera", ["inscritos en el extranjero", "respecto a 2023"]],
+      ["+32,5 %", "cera", ["en Madrid, la que más crece", "(de 376.504 a 498.874)"]]]},
+    {"tipo": "numeros", "dur": 3.4, "titulo": ["Y 163.020 inscritos,", "con el voto suspendido"], "items": [
+      ["163.020", "cera", ["nacionalizados por la ley de nietos:", "el Supremo suspendió su voto", "de forma cautelar"]]]},
+    {"tipo": "cierre", "dur": 3.2, "lineas": ["El voto", "de fuera,", "provincia a provincia"], "ruta": "/actualidad/ley-nietos-voto-exterior-29n/"}
+  ],
+  "fuente": [
+    "Fuentes: Interior (23J 2023, voto CERA), INE",
+    "(censo del 29N, 9-10-2026) y Tribunal Supremo."
+  ]
+}
