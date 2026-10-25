@@ -13,3 +13,9 @@ node video/render.js salt "fotos/f%t.png" 30 --stills 1,17 # fotogramas sueltos 
 Los textos y datos deben quedar por encima de y≈1500 y lejos del borde derecho: la interfaz de Shorts tapa esa zona.
 Las cifras de cada guion salen de piezas publicadas o de `data/`. Los MP4 no van al repositorio (se publicaría en Pages):
 se guardan en la carpeta del proyecto `videos/`.
+
+## Plantilla de encuesta (sin mapa)
+
+`plantilla/encuesta.html`, unos 21 s con cortes cada 2-4 s: gancho, cuadrícula de 100 puntos, barras por edad,
+barras por partido (colores de cada partido) e ideología. Se elige con `"plantilla": "encuesta"` en el guion
+(ejemplo: `shorts/mujeres-jovenes.json`, microdatos del CIS 3420; se descargan en https://www.cis.es/documents/d/cis/MD3420).
