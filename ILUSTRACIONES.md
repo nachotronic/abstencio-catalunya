@@ -20,11 +20,10 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (57)
+## Pendientes (56)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
-| 2026-10-25 | [`calle-que-parte-barcelona`](https://mapaelectoral.es/actualidad/calle-que-parte-barcelona/) | La Diagonal parte la derecha y la Meridiana, el independentismo: en Les Corts, PP y Vox sacan 26 puntos más en una acera que en la de enfrente | primer gráfico de la pieza |
 | 2026-10-25 | [`quien-vota-que-barrios-29n`](https://mapaelectoral.es/actualidad/quien-vota-que-barrios-29n/) | Quién vota qué, barrio a barrio: el PP sube 21 puntos donde pesan las rentas del capital, el PSOE 15 donde abundan los peones y Vox solo se mueve con los jubilados | primer gráfico de la pieza |
 | 2026-10-23 | [`salario-minimo-provincias-feijoo-29n`](https://mapaelectoral.es/actualidad/salario-minimo-provincias-feijoo-29n/) | Huelva, Almería y Jaén: más de la mitad de sus asalariados cobró en 2024 menos de un salario mínimo al año | gráfico |
 | 2026-10-22 | [`ley-nietos-donde-estan-29n`](https://mapaelectoral.es/actualidad/ley-nietos-donde-estan-29n/) | El Constitucional deja sin voto a los nietos: los españoles adultos de América Latina crecen casi cinco veces más rápido y uno de cada tres está inscrito en Madrid | gráfico |
