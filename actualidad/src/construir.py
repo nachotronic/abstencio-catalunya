@@ -2618,6 +2618,8 @@ PIEZAS += [
     ),
     dict(
         slug='voto-correo-29n', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/voto-correo-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una cola ante el mostrador de Correos, sobres en la mano, y dos buzones amarillos junto al mapa de España: un collage.'),
         titulo='Siete de cada cien electores pidieron votar por correo en 2023, más del triple que en 2015: en Bizkaia, 14; en Girona, 3', serie='29n', figura=0,
         descripcion='Las dos generales con más voto por correo fueron las de verano, 2016 y 2023. El 29N cae en noviembre, como 2011 y 2019, cuando se pidió mucho menos. Y en 2023 no lo pidieron sobre todo los mayores: lo pidieron los electores de 25 a 44 años y los de las ciudades grandes.',
         compara='Las solicitudes de voto por correo aceptadas por la Oficina del Censo Electoral en las generales de 2004 a 2023, por cada 100 electores residentes en España, por provincia y, en 2023, por edad y tamaño del municipio.',
