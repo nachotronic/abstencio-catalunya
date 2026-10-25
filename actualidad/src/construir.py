@@ -2847,6 +2847,7 @@ def en_catala(out, p):
         a, m, d = dia.split('-')
         out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}' + (f', a les {hora.replace(":", ".")}' if hora else ''))
     out = out.replace(' · Actualizado el <time', ' · Actualitzat el <time')
+    out = re.sub(r'<b>Ver las (\d+) piezas de la serie</b>', r'<b>Veure les \1 peces de la sèrie</b>', out)
     return out
 
 
@@ -2898,8 +2899,12 @@ def pieza(p, todas):
     fuentes = ''.join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for u, t in p['fuentes'])
     # la serie entera, en orden, con la pieza actual marcada; después, las últimas de otras series
     serie = [q for q in todas if q['serie'] == p['serie']]
+    # como mucho 20 piezas de la serie alrededor de la actual (Nacho, 25-10-2026: la del 29N pasaba de 80)
+    i = serie.index(p); ini = max(0, min(i - 10, len(serie) - 20)); ventana = serie[ini:ini + 20]
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
-                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
+                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in ventana)
+    if len(serie) > len(ventana):
+        lista += f'<li class="todas"><a href="../index.html#{p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
     sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola
