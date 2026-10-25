@@ -107,7 +107,7 @@ TEMAS = {
         titulo='Renta y voto: cómo votan los barrios ricos y los pobres de España',
         intro='Las piezas que cruzan el voto de cada sección censal con la renta de sus hogares, el paro, las pensiones, '
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
-        piezas=TEMA_RENTA + ['barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
+        piezas=TEMA_RENTA + ['quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
                              'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
