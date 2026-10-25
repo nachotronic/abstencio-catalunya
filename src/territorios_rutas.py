@@ -56,7 +56,7 @@ ACTUALIDAD_LUGAR = {
     'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
     'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
     'acampada-sol-distrito-centro': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
-    'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'ceuta-melilla-participacion-29n': ['51', '52'],
+    'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
     'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'zaragoza-barrio-a-barrio-29n': ['50'],
@@ -177,7 +177,7 @@ TEMAS = {
         intro='Las grandes ciudades contadas sección a sección: dónde gana cada partido, qué calles parten el voto en dos '
               'y los barrios donde un partido saca sus mejores resultados.',
         piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
-                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n'],
+                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal'),
                ('', 'Mapa de resultados calle a calle')],
         atlas=[('atlas/ciudad-y-entorno/', 'Atlas: la ciudad y su entorno')]),
