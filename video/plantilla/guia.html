@@ -216,8 +216,8 @@ const S = {
     const ox = W / 2 - (MBOX.x0 + bw / 2) * sc, oy = top + h / 2 - (MBOX.y0 + bh / 2) * sc;
     M.poly.forEach((rings, i) => {
       const m = M.meta[i], k = clamp((t - 0.2 - (0.6 * m.o + 0.4 * (m.cx - MBOX.x0) / bw) * (s.revelar || 1.6)) / 0.25);
-      const v = M.part23[i];
-      ctx.fillStyle = k <= 0 || v < 0 ? C.none : G.rampaPart.find(([tope]) => v < tope)[1];
+      const v = M[s.dato || 'part23'][i], rampa = s.rampa || G.rampaPart;
+      ctx.fillStyle = k <= 0 || v < 0 ? C.none : rampa.find(([tope]) => v < tope)[1];
       ctx.beginPath();
       for (const r of rings) {
         ctx.moveTo(r[0] * sc + ox, r[1] * sc + oy);
@@ -226,7 +226,7 @@ const S = {
       }
       ctx.fill();
     });
-    (s.leyenda || G.rampaPart.map(([, c, l]) => [c, l])).forEach(([c, l], j) => {
+    (s.leyenda || (s.rampa || G.rampaPart).map(([, c, l]) => [c, l])).forEach(([c, l], j) => {
       const a = ease((t - 0.8 - j * 0.08) / 0.3), x = X + (j % 3) * 320, y = 1440 + Math.floor(j / 3) * 56;
       ctx.globalAlpha = a; ctx.fillStyle = col(c); rrect(x, y - 30, 36, 36, 8); ctx.globalAlpha = 1;
       text(l, x + 50, y, '500 30px ' + F.mono, C.fg, 'left', a);
@@ -282,7 +282,7 @@ const S = {
       const k = ease((t - 0.5 - i * 0.12) / 0.7), x = X + i * (bw + gap), h = (bottom - top) * (v - s.min) / (s.max - s.min) * k;
       const c = i === 0 ? col(s.colorIni) : i === n - 1 ? col(s.colorFin) : '#4a4f6e';
       ctx.fillStyle = c; rrect(x, bottom - h, bw, h, 8);
-      if (i === 0 || i === n - 1) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, bottom - h - 22, '800 48px ' + F.display, c, 'center', k);
+      if (marca.includes(i)) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, bottom - h - 22, '800 48px ' + F.display, c, 'center', k);
       text(String(i + 1), x + bw / 2, bottom + 44, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3));
     });
     text(s.izq, X, bottom + 100, '500 28px ' + F.mono, col(s.colorIni), 'left', ease((t - 0.6) / 0.3));
@@ -293,14 +293,14 @@ const S = {
   barrasPartidos(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
-    const n = s.series[0][2].length, lab = 170, gap = 10, bw = (W - 2 * X - lab - gap * (n - 1)) / n, rowH = 215, top = 540;
+    const n = s.series[0][2].length, lab = 170, gap = 10, bw = (W - 2 * X - lab - gap * (n - 1)) / n, rowH = s.alto || 215, top = 540, marca = s.marcar || [0, n - 1];
     s.series.forEach(([nm, c, vals], si) => {
       const base = top + (si + 1) * rowH - 20, hmax = rowH - 55;
       text(nm, X, base - 10, '800 ' + (si < 2 ? 48 : 40) + 'px ' + F.display, col(c), 'left', ease((t - 0.3 - si * 0.15) / 0.3));
       vals.forEach((v, i) => {
         const k = ease((t - 0.5 - si * 0.15 - i * 0.06) / 0.6), x = X + lab + i * (bw + gap), h = hmax * v / s.max * k;
-        ctx.globalAlpha = i === 0 || i === n - 1 ? 1 : 0.55; ctx.fillStyle = col(c); rrect(x, base - h, bw, h, 5); ctx.globalAlpha = 1;
-        if (i === 0 || i === n - 1) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, base - h - 12, '700 28px ' + F.mono, C.fg, 'center', k);
+        ctx.globalAlpha = marca.includes(i) ? 1 : 0.55; ctx.fillStyle = col(c); rrect(x, base - h, bw, h, 5); ctx.globalAlpha = 1;
+        if (marca.includes(i)) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, base - h - 12, '700 28px ' + F.mono, C.fg, 'center', k);
       });
     });
     const yb = top + s.series.length * rowH + 20;

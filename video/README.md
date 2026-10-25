@@ -33,3 +33,5 @@ barras por partido (colores de cada partido) e ideología. Se elige con `"planti
 sección, `barras`, `lineas`, `numeros`, `reparto`, `cierre` con la ruta de la guía). Datos: `prep_provincias.py` →
 `comun/provincias.json`, `prep_espana.py` → `comun/espana.json`, `prep_secciones.py 28` → `comun/sec28.json`.
 Guiones: `guia-29n`, `guia-censo`, `guia-municipios` (timelapse), `guia-participacion`, `guia-renta`, `guia-seccion`.
+
+`vox` usa la misma plantilla: mapa municipal con `dato: "vox23"` y `rampa` propia (`mapamun`), y barras de un solo partido (`barrasPartidos` con `alto` y `marcar`, los deciles que llevan cifra). `vox23` lo genera `prep_espana.py`.
