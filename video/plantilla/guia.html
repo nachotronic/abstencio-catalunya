@@ -289,6 +289,25 @@ const S = {
     text(s.der, W - X, bottom + 100, '500 28px ' + F.mono, col(s.colorFin), 'right', ease((t - 0.6) / 0.3));
     if (s.nota) [].concat(s.nota).forEach((l, j) => text(l, X, bottom + 190 + j * 50, '400 40px ' + F.body, C.fg, 'left', ease((t - 2.2 - j * 0.2) / 0.4)));
   },
+  // Una fila de diez barras por partido (deciles de renta), cada una en el color del partido
+  barrasPartidos(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const n = s.series[0][2].length, lab = 170, gap = 10, bw = (W - 2 * X - lab - gap * (n - 1)) / n, rowH = 215, top = 540;
+    s.series.forEach(([nm, c, vals], si) => {
+      const base = top + (si + 1) * rowH - 20, hmax = rowH - 55;
+      text(nm, X, base - 10, '800 ' + (si < 2 ? 48 : 40) + 'px ' + F.display, col(c), 'left', ease((t - 0.3 - si * 0.15) / 0.3));
+      vals.forEach((v, i) => {
+        const k = ease((t - 0.5 - si * 0.15 - i * 0.06) / 0.6), x = X + lab + i * (bw + gap), h = hmax * v / s.max * k;
+        ctx.globalAlpha = i === 0 || i === n - 1 ? 1 : 0.55; ctx.fillStyle = col(c); rrect(x, base - h, bw, h, 5); ctx.globalAlpha = 1;
+        if (i === 0 || i === n - 1) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, base - h - 12, '700 28px ' + F.mono, C.fg, 'center', k);
+      });
+    });
+    const yb = top + s.series.length * rowH + 20;
+    for (let i = 0; i < n; i++) text(String(i + 1), X + lab + i * (bw + gap) + bw / 2, yb, '500 26px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3));
+    text(s.izq, X + lab, yb + 50, '500 28px ' + F.mono, C.muted, 'left', ease((t - 0.4) / 0.3));
+    text(s.der, W - X, yb + 50, '500 28px ' + F.mono, C.muted, 'right', ease((t - 0.4) / 0.3));
+  },
   lineas(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));

@@ -1,19 +1,159 @@
 {
   "plantilla": "guia",
   "kicker": "VOTO Y RENTA · GENERALES 23J",
-  "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035", "Sumar": "#a2275f"},
+  "colores": {
+    "PP": "#1d84ce",
+    "PSOE": "#e30613",
+    "Vox": "#5ac035",
+    "Sumar": "#a2275f"
+  },
   "escenas": [
-    {"tipo": "hook", "dur": 2.8, "lineas": ["Barrios más pobres:", [["gana el PSOE", "PSOE"]], "Barrios más ricos:", [["gana el PP", "PP"]]]},
-    {"tipo": "lineas", "dur": 5.4, "titulo": ["Del barrio más pobre", "al más rico"], "sub": "% del voto por decil de renta de la sección", "min": 5, "max": 47,
-     "izq": "← menos renta", "der": "más renta →", "desv": [0, 0, -14, 24],
-     "series": [["PP", "PP", [29.4, 32.8, 34.0, 34.4, 33.7, 32.0, 30.8, 29.2, 31.1, 43.5]],
-                ["PSOE", "PSOE", [41.2, 37.0, 34.8, 33.5, 33.1, 32.9, 31.4, 29.6, 26.4, 20.3]],
-                ["Vox", "Vox", [15.4, 14.9, 13.9, 12.8, 12.1, 11.6, 11.4, 10.4, 10.0, 12.0]],
-                ["Sumar", "Sumar", [10.5, 11.0, 11.7, 12.1, 12.5, 13.1, 13.5, 14.1, 13.9, 10.7]]]},
-    {"tipo": "numeros", "dur": 3.6, "titulo": ["Del 10 % más pobre", "al 10 % más rico"],
-     "items": [["+14", "PP", ["puntos sube el PP"]], ["−21", "PSOE", ["puntos baja el PSOE"]]]},
-    {"tipo": "hook", "dur": 2.4, "lineas": ["Ojo: es una relación", "entre barrios,", "no entre personas"], "size": 80, "y": 640},
-    {"tipo": "cierre", "dur": 3.2, "lineas": ["Cómo vota", "tu barrio según", "su renta"], "ruta": "/elecciones/voto-y-renta-por-barrios/"}
+    {
+      "tipo": "hook",
+      "dur": 2.8,
+      "lineas": [
+        "Barrios más pobres:",
+        [
+          [
+            "gana el PSOE",
+            "PSOE"
+          ]
+        ],
+        "Barrios más ricos:",
+        [
+          [
+            "gana el PP",
+            "PP"
+          ]
+        ]
+      ]
+    },
+    {
+      "tipo": "barrasPartidos",
+      "dur": 5.4,
+      "titulo": [
+        "Del barrio más pobre",
+        "al más rico"
+      ],
+      "sub": "% del voto en cada decil de renta de la sección",
+      "max": 45,
+      "izq": "← menos renta",
+      "der": "más renta →",
+      "series": [
+        [
+          "PP",
+          "PP",
+          [
+            29.4,
+            32.8,
+            34.0,
+            34.4,
+            33.7,
+            32.0,
+            30.8,
+            29.2,
+            31.1,
+            43.5
+          ]
+        ],
+        [
+          "PSOE",
+          "PSOE",
+          [
+            41.2,
+            37.0,
+            34.8,
+            33.5,
+            33.1,
+            32.9,
+            31.4,
+            29.6,
+            26.4,
+            20.3
+          ]
+        ],
+        [
+          "Vox",
+          "Vox",
+          [
+            15.4,
+            14.9,
+            13.9,
+            12.8,
+            12.1,
+            11.6,
+            11.4,
+            10.4,
+            10.0,
+            12.0
+          ]
+        ],
+        [
+          "Sumar",
+          "Sumar",
+          [
+            10.5,
+            11.0,
+            11.7,
+            12.1,
+            12.5,
+            13.1,
+            13.5,
+            14.1,
+            13.9,
+            10.7
+          ]
+        ]
+      ]
+    },
+    {
+      "tipo": "numeros",
+      "dur": 3.6,
+      "titulo": [
+        "Del 10 % más pobre",
+        "al 10 % más rico"
+      ],
+      "items": [
+        [
+          "+14",
+          "PP",
+          [
+            "puntos sube el PP"
+          ]
+        ],
+        [
+          "−21",
+          "PSOE",
+          [
+            "puntos baja el PSOE"
+          ]
+        ]
+      ]
+    },
+    {
+      "tipo": "hook",
+      "dur": 2.4,
+      "lineas": [
+        "Ojo: es una relación",
+        "entre barrios,",
+        "no entre personas"
+      ],
+      "size": 80,
+      "y": 640
+    },
+    {
+      "tipo": "cierre",
+      "dur": 3.2,
+      "lineas": [
+        "Cómo vota",
+        "tu barrio según",
+        "su renta"
+      ],
+      "ruta": "/elecciones/voto-y-renta-por-barrios/"
+    }
   ],
-  "fuente": ["Fuente: Ministerio del Interior e INE (renta por", "unidad de consumo). Generales del 23 de julio de 2023."]
+  "fuente": [
+    "Fuente: Ministerio del Interior e INE (renta por",
+    "unidad de consumo). Generales del 23 de julio de 2023."
+  ]
 }
