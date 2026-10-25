@@ -2652,7 +2652,7 @@ PIEZAS += [
     ),
     dict(
         slug='corrupcion-penaliza-voto-29n', fecha='2026-10-25',
-        titulo='La corrupción castiga al partido y apenas premia al rival', serie='29n',
+        titulo='29N: la corrupción le cuesta votos al PSOE, pero apenas se los da al PP', serie='29n',
         descripcion='Quince años de barómetros del CIS, 528.018 entrevistas: quien cita la corrupción como problema deja más a su partido, pero el gran rival recoge poco de ese voto: la mayor parte va a la abstención o a terceros partidos. Hoy le cuesta al PSOE 9,5 puntos de fidelidad.',
         compara='La fidelidad de voto (voto más simpatía igual al recuerdo de voto en las últimas generales) de quienes citan la corrupción y el fraude entre los tres principales problemas de España y de quienes no, en 166 barómetros del CIS de diciembre de 2010 a octubre de 2026 (528.018 entrevistas), por año y por etapa de gobierno; el destino del voto de quienes la citan; la serie mensual de la corrupción como problema; la comparación con otros problemas en 2023-2026; y la repetición de voto en los poselectorales de 2015, 2016, noviembre de 2019 y 2023.',
         limites='Es una encuesta: mide intenciones, no votos. El recuerdo de voto del CIS sobrerrepresenta al PSOE e infrarrepresenta al PP y a Vox. Antes de septiembre de 2018 solo hay intención de voto en uno de cada tres barómetros, y algunos estudios antiguos no traen ponderación. Citar la corrupción puede ser consecuencia del desencanto y no su causa. En los poselectorales de 2015 y 2016 la pregunta es de lista cerrada y no es comparable en nivel con la pregunta abierta de los barómetros. Que un pico coincida con un caso judicial no prueba que el caso lo causara.',
@@ -2681,7 +2681,7 @@ PIEZAS += [
 ANTETITULOS = {
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
-    'corrupcion-penaliza-voto-29n': 'Quince años de corrupción',
+    'corrupcion-penaliza-voto-29n': 'Corrupción y 29N',
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
