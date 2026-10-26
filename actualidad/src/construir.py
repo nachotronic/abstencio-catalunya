@@ -2635,7 +2635,9 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-semana-29n', fecha='2026-10-26',
+        slug='encuestas-semana-29n', fecha='2026-10-26', actualizado='2026-10-26 07:10',
+        foto=dict(src='img/actualidad/fotos/encuestas-semana-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano marca casillas en una hoja de encuesta junto a una urna transparente con sobres y un calendario de hojas que pasan: un collage.'),
         titulo='El PP baja en las cinco encuestas de la semana, pero con Vox sigue sumando mayoría absoluta en todas', serie='29n', figura=0,
         descripcion='Desde finales de septiembre, la mediana de las encuestas ha bajado al PP dos puntos, del 33,7% al 31,7%. El PSOE recupera menos de uno y Vox se queda cerca del 19%. Nuestro modelo da hoy a PP y Vox 195 escaños, 19 más de los que hacen falta.',
         compara='Las cinco encuestas nacionales publicadas entre el 19 y el 25 de octubre de 2026, cada una con la anterior de la misma empresa, y la mediana semanal de las encuestas desde finales de agosto.',
