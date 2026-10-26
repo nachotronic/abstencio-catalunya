@@ -27,6 +27,8 @@ EQUIV = RAIZ / 'previsiones/datos/partidos_encuestas.csv'
 # cotejar_wikipedia.py. Formato ancho: una fila por encuesta, una columna por partido del modelo.
 FALTAN = RAIZ / 'previsiones/datos/encuestas/faltan_en_electografica.csv'
 VENTANA, VIDA_MEDIA, MUESTRA_DEF = 28, 10, 1000
+# Sondeos internos de partidos que Wikipedia lista con el partido como encuestadora: no entran en la media.
+PARTIDOS_ENCUESTADORES = {'PSOE', 'PP', 'VOX', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'PNV', 'EAJ-PNV', 'EH BILDU', 'BNG', 'SALF'}
 # Resultados oficiales sobre voto válido (blanco incluido), con CERA, desde actualidad/src/sistema/simulador.json.
 # En 2019 el espacio «SUMAR» de las encuestas es Unidas Podemos + Más País (como en la tabla de equivalencias).
 RESULTADOS = {
@@ -83,6 +85,7 @@ def con_wikipedia(d, fich=FALTAN):
         print('Sin', fich, '(solo Electográfica)')
         return d
     w = pd.read_csv(fich, dtype={'muestra': str})
+    w = w[~w.encuestadora.str.upper().str.strip().isin(PARTIDOS_ENCUESTADORES)]
     partidos = [c for c in w.columns if c.isupper() and c != 'OTROS']
     w = w.assign(url_electografica=w.fuente_original, casa=w.encuestadora.map(clave),
                  fecha=pd.to_datetime(w.campo_fin).dt.date,

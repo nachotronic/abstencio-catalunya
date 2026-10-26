@@ -33,8 +33,21 @@ LISTAS = ['PP', 'PSOE', 'Vox', 'Sumar', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG'
 # Peso (ficticio) de cada isla en el voto de su provincia, solo para repartir los senadores insulares
 PESO_ISLA = {'07M': .80, '07N': .08, '07I': .11, '07F': .01, '35G': .78, '35L': .13, '35F': .09,
              '38T': .87, '38P': .08, '38G': .02, '38H': .03}
-# Senadores de designación autonómica: FICTICIOS. En el modelo real, la composición vigente de cada parlamento.
-DESIGNADOS = {'PP': 27, 'PSOE': 20, 'Vox': 3, 'Sumar': 1, 'ERC': 2, 'Junts': 1, 'EH Bildu': 1, 'PNV': 2}
+# Senadores de designación autonómica (58): los designados en la XV legislatura por cada parlamento, salvo
+# Extremadura, que votó en diciembre de 2025 (D'Hondt con su Asamblea nueva). Es un dato, no una previsión; los
+# parlamentos los vuelven a designar con su composición vigente. «Otros» es Geroa Bai (Navarra).
+DESIGNADOS_CSV = RAIZ / 'previsiones/datos/senado_designados.csv'
+
+
+def _designados():
+    import csv
+    out = {}
+    for r in csv.DictReader(open(DESIGNADOS_CSV, encoding='utf-8')):
+        out[r['lista_modelo']] = out.get(r['lista_modelo'], 0) + int(r['senadores'])
+    return out
+
+
+DESIGNADOS = _designados()
 BLOQUES = [  # sumas aritméticas, no coaliciones previstas
     ('PP + Vox', ['PP', 'Vox']),
     ('PP + Vox + UPN + CC', ['PP', 'Vox', 'UPN', 'CC']),
@@ -139,13 +152,17 @@ def corre(cuotas, validos, provs, sigma, rng, circ_sen):
             'lista': k, 'voto': percentiles(pct_nac[:, j]), 'escanos': percentiles(tot_cong[:, j]),
             'escanos_dist': {'desde': lo, 'p': [round(float(v) / n, 4) for v in dist]},
             'senado': percentiles(tot_sen[:, j]), 'designados': DESIGNADOS.get(k, 0)})
+    mayoria_sen = (int(tot_sen[0].sum()) + sum(DESIGNADOS.values())) // 2 + 1 if len(circ_sen) else 0
     for nom, ks in BLOQUES:
         js = [LISTAS.index(k) for k in ks]
         suma = tot_cong[:, js].sum(1)
         lo = int(suma.min())
         out['bloques'].append({'bloque': nom, 'listas': ks, 'escanos': percentiles(suma),
                                'escanos_dist': {'desde': lo, 'p': [round(float(v) / n, 4) for v in np.bincount(suma - lo)]},
-                               'p_mayoria': round(float((suma >= MAYORIA).mean()), 3)})
+                               'p_mayoria': round(float((suma >= MAYORIA).mean()), 3),
+                               # Senado completo: elegidos simulados + designados (dato)
+                               'senado': percentiles(sen_bloque := tot_sen[:, js].sum(1) + sum(DESIGNADOS.get(k, 0) for k in ks)),
+                               'p_mayoria_senado': round(float((sen_bloque >= mayoria_sen).mean()), 3)})
     base_part = 66.6   # participación ficticia de partida (no es la de 2023 ni una estimación)
     out['participacion'] = percentiles(base_part * vv.sum(1) / validos.sum())
     for i, p in enumerate(provs):
@@ -255,6 +272,10 @@ def senal_europeas(provs, alfa=ALFA_EUROPEAS):
     return factor, fuerza
 
 
+PODEMOS_CON_FA = {'03', '12', '46', '35', '38'}
+PODEMOS_CON_ERC = {'08', '17', '25', '43'}
+
+
 def base_v1():
     """Cuotas de partida por provincia para LISTAS_V1: 2023 con Sumar repartido entre Sumar (FA) y Podemos según
     las europeas de 2024 (base2026.py), e índice provincial de dónde vota SALF (europeas 2024)."""
@@ -280,6 +301,13 @@ def base_v1():
         # nacional de 2023 por su fuerza relativa en las europeas
         nac = (cuotas[:, j] * validos).sum() / validos.sum()
         cuotas[:, j] = np.where(cuotas[:, j] > 0, cuotas[:, j], nac * fuerza[k])
+    # Podemos no tiene papeleta propia en todas las provincias (coaliciones-quien-va-con-quien-29n): en Canarias y la
+    # Comunitat Valenciana va con el Frente Amplio y en Cataluña mete a los suyos en las listas de ERC
+    for i, p in enumerate(provs):
+        destino = 'Sumar' if p in PODEMOS_CON_FA else 'ERC' if p in PODEMOS_CON_ERC else None
+        if destino:
+            cuotas[i, LISTAS_V1.index(destino)] += cuotas[i, LISTAS_V1.index('Podemos')]
+            cuotas[i, LISTAS_V1.index('Podemos')] = 0
     indices = {'SALF': np.array([ind_salf[p] for p in provs])}
     return provs, cuotas, validos, indices
 
@@ -390,6 +418,8 @@ def main_encuestas(fich_media, publico=False):
         'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
+                   'designados_por_lista': DESIGNADOS,
+                   'mayoria': (sum(c[3] for c in circ_sen) + sum(DESIGNADOS.values())) // 2 + 1,
                    'circunscripciones': [{'cod': c[0], 'nombre': c[1], 'provincia': c[2], 'senadores': c[3], 'votos_elector': c[4]}
                                          for c in circ_sen]},
         'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS if not publico or e[0] == 'base']})
@@ -415,6 +445,8 @@ def main():
         'aviso': 'Datos ficticios para diseñar la web. No son una estimación ni una previsión electoral.',
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
+                   'designados_por_lista': DESIGNADOS,
+                   'mayoria': (sum(c[3] for c in circ_sen) + sum(DESIGNADOS.values())) // 2 + 1,
                    'circunscripciones': [{'cod': c[0], 'nombre': c[1], 'provincia': c[2], 'senadores': c[3], 'votos_elector': c[4]}
                                          for c in circ_sen]},
         'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS]})
