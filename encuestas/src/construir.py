@@ -30,6 +30,7 @@ try:   # tarjeta para redes; sin Pillow, la página se rehace igual y la imagen 
 except ImportError:
     tarjeta = None
 import encuestadoras  # noqa: E402  (una página por encuestadora)
+import calculadora  # noqa: E402  (calculadora de escaños)
 
 DATOS = RAIZ / 'previsiones/datos/encuestas'
 SALIDA = RAIZ / 'encuestas'
@@ -203,6 +204,7 @@ def estimacion():
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
                           for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023', '#e30613')) if b)}</div>
 <p>{frase}</p>
+<p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt.</p>
 <figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. La línea marca la mayoría absoluta; en color intenso, la horquilla del 80 %.</span></figcaption>
 <div class="chart" id="dist-bloques"></div></figure>
 <figure><figcaption><span class="t">¿Llegan a la mayoría absoluta? Escaños de cada bloque</span><span class="s">La barra gruesa recoge el 80 % de las simulaciones; la fina, el 95 %; el punto es la mediana. A la derecha, en qué porcentaje de simulaciones llega a 176.</span></figcaption>
@@ -702,7 +704,7 @@ def provincias():
 <p class="src">{html.escape(meta.get('aviso', ''))} Modelo v{html.escape(meta['version'].split('-')[0].lstrip('v'))}; <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="./"><span class="kicker">Encuestas</span><b>Todas las encuestas de las generales y su promedio</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li><li><a href="../elecciones/elecciones-29n-2026/"><span class="kicker">29N</span><b>Escaños por provincia: cómo se reparten</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="./"><span class="kicker">Encuestas</span><b>Todas las encuestas de las generales y su promedio</b></a></li><li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li><li><a href="../elecciones/elecciones-29n-2026/"><span class="kicker">29N</span><b>Escaños por provincia: cómo se reparten</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     estilos = ESTILOS.replace('</style>', '.prov td{vertical-align:middle}.chip{display:inline-block;margin:1px 8px 1px 0;white-space:nowrap}.chip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px}'
@@ -732,6 +734,7 @@ def main():
     hemi, n_hemi = promedio_escanos(con_esc)
     bloque_modelo, hemi_m = estimacion()
     hay_provincias = provincias()
+    hay_calculadora = calculadora.genera(sys.modules[__name__])
     casas = encuestadoras.genera(encs, SALIDA, sys.modules[__name__])
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
     pv_casas = [[e['casa'], *suma_pv(e)] for e in sorted(con_esc, key=lambda e: -sum(suma_pv(e)))]
@@ -917,6 +920,7 @@ def main():
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
                                         + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '')
+                                        + (f'  <url><loc>{URL}calculadora-escanos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_calculadora else '')
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas)
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
