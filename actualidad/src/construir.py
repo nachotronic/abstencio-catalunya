@@ -2649,6 +2649,10 @@ PIEZAS += [
                  ('https://www.eldiario.es/politica/sanchez-saca-psoe-pesimismo-errores-feijoo-miedo-vox_1_13607713.html', 'elDiario.es, sobre los sondeos internos del PSOE (25-10-2026)'),
                  ('https://www.electografica.com/', 'Electográfica, encuestas de las generales de 2026'),
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
         slug='listas-29n-quien-encabeza', fecha='2026-10-26',
         titulo='Las listas del 29N, puesto a puesto: 251 escaños casi decididos y 210 candidatos en el aire para los otros 99', serie='29n', figura=0,
         descripcion='Con las encuestas de hoy, Vox tiene más puestos en el aire que seguros, y 18 de sus cabezas de lista no tienen el escaño garantizado. Irene Montero sale en 95 de cada 100 simulaciones; su número dos, en 56.',
