@@ -1880,6 +1880,9 @@ COMUNIDADES = []
 for h in piezas_comunidades():
     q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
     q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
+    # <title> con lo que se busca («qué partido gobierna…», «desde cuándo gobierna…»); el titular sigue en h1 y og:title
+    corto = re.sub(r'^(La|El) ', '', h['corto'].replace(' en las urnas', ''))
+    q['titulo_seo'] = f'¿Quién gobierna {corto}? Historia electoral y resultados desde 1977'
     if os.path.exists(os.path.join(SRC, '..', '..', 'img', 'actualidad', 'fotos', h['slug'] + '.jpg')):
         q['foto'] = dict(src=f"img/actualidad/fotos/{h['slug']}.jpg", ancho=1280, alto=720, ia=True,
                          pie=f"Collage sobre las elecciones en {h['lugar']}: la bandera, el mapa y vecinos votando.")
@@ -3183,7 +3186,10 @@ def pieza(p, todas):
                            'isPartOf': {'@id': url + '#articulo'},
                            'mainEntity': [{'@type': 'Question', 'name': html.unescape(q), 'acceptedAnswer': {'@type': 'Answer', 'text': html.unescape(r)}}
                                           for q, r in qs]}]
-    out = (cabecera(p['titulo'], p['descripcion'], url, imagen, jsonld) + estilos + CSS_SITIO + '\n</head>\n<body>\n'
+    cab = cabecera(p.get('titulo_seo') or p['titulo'], p['descripcion'], url, imagen, jsonld)
+    if p.get('titulo_seo'):   # el título SEO solo va en <title>; en redes, el titular
+        cab = cab.replace(f'<meta property="og:title" content="{html.escape(p["titulo_seo"])}">', f'<meta property="og:title" content="{html.escape(p["titulo"])}">', 1)
+    out = (cab + estilos + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../../', 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
     if p.get('idioma') == 'ca':
         out = en_catala(out, p)
