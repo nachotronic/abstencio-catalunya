@@ -1417,15 +1417,18 @@ PIEZAS = [
                   fuente='CIS. Cálculo propio'),
     ),
     dict(
-        slug='inmigracion-preocupa-voto-vox-29n', fecha='2026-10-22',
+        slug='inmigracion-preocupa-voto-vox-29n', fecha='2026-10-22', actualizado='2026-10-26 10:08',
         titulo='Donde más preocupa la inmigración, más votó Vox, salvo en Cataluña', serie='29n',
         descripcion='Fuera de Cataluña, el País Vasco, Navarra y Galicia, en las provincias donde Vox pasó del 15% en 2023 el 20% de los entrevistados por el CIS cita la inmigración como problema; donde no llegó al 14%, el 15%. Hasta los votantes del PP la citan más allí: el 29%, frente al 21,5%. Tarragona y Girona, con poco voto a Vox, son las que más la citan.',
-        compara='El porcentaje de entrevistados que cita la inmigración entre los tres principales problemas de España en los nueve barómetros del CIS de diciembre de 2025 a octubre de 2026 (37.191 entrevistas, ponderadas), por provincia, frente al voto real a Vox en las generales de 2023 y al porcentaje de extranjeros empadronados (INE, enero de 2025); por recuerdo de voto del entrevistado; y un modelo con efectos fijos de comunidad autónoma y errores agrupados por provincia.',
-        limites='Es una encuesta repartida por provincias: las muestras de las provincias pequeñas son reducidas (68 entrevistas en Soria). El voto a Vox es el de 2023 y la preocupación, la de este año. Es una correlación: no prueba que la preocupación lleve al voto ni al revés. Santa Cruz de Tenerife queda fuera del cruce con el voto porque Vox no presentó lista allí en 2023. Al tener en cuenta el porcentaje de extranjeros, la relación se debilita.',
+        compara='El porcentaje de entrevistados que cita la inmigración entre los tres principales problemas de España en los nueve barómetros del CIS de diciembre de 2025 a octubre de 2026 (37.191 entrevistas, ponderadas), por provincia, frente al voto real a Vox en las generales de 2023 y al porcentaje de extranjeros empadronados (INE, enero de 2025); por recuerdo de voto del entrevistado; un modelo con efectos fijos de comunidad autónoma y errores agrupados por provincia; un modelo logístico multinivel (entrevistados dentro de provincias dentro de comunidades); modelos espaciales de retardo y de error entre provincias vecinas; y pruebas de no linealidad (tramos, términos cuadráticos y regresión sobre la mediana).',
+        calculo='Porcentaje de entrevistados que citan la inmigración entre los tres principales problemas de España, con los datos ponderados del CIS. Multinivel: regresión logística con interceptos aleatorios de provincia y comunidad (lme4), controlando el recuerdo de voto de 2023, la edad, el sexo, el tamaño de municipio y el barómetro; el efecto se da como cambio medio en puntos. Espaciales: modelos de retardo (SAR) y de error (SEM) por máxima verosimilitud (spreg), con matriz de las cinco provincias más cercanas, sobre la preocupación de cada provincia ajustada por la composición de sus entrevistados; índice de Moran con 9.999 permutaciones. Se comprobó también con cuatro y seis vecinas. No linealidad: regresiones por tramos con cortes en el 10%, 15% y 20% de extranjeros y en el 13%, 15% y 17% de voto a Vox, términos cuadráticos y regresión cuantílica (cuartiles y mediana). Margen de error al 95%.',
+        correcciones='26-10-2026: se añaden un modelo multinivel, modelos espaciales y pruebas de no linealidad. El efecto del voto a Vox es menor que el de la primera versión: de +0,4 a +0,8 puntos por cada punto de Vox, no +1,2. Se matiza que el aumento dentro de cada electorado solo se distingue con claridad entre los votantes del PSOE. Santa Cruz de Tenerife, que faltaba también en el mapa y en la tabla, aparece ahora con sus datos (22,4%); sigue fuera del cruce con el voto porque Vox no se presentó allí en 2023.',
+        limites='Es una encuesta repartida por provincias: las muestras de las provincias pequeñas son reducidas (68 entrevistas en Soria). El voto a Vox es el de 2023 y la preocupación, la de este año. Es una correlación: no prueba que la preocupación lleve al voto ni al revés. Santa Cruz de Tenerife queda fuera del cruce con el voto porque Vox no presentó lista allí en 2023. Al tener en cuenta el porcentaje de extranjeros, la relación se debilita. El modelo espacial trabaja con 39 o 51 provincias, pocas para detectar curvas: que no aparezca una saturación no prueba que no exista. El CIS no publica el municipio ni la sección del entrevistado, así que el modelo multinivel no puede bajar de la provincia.',
         fuentes=[('https://www.cis.es/estudios/catalogo-estudios', 'CIS, barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582), microdatos'),
                  ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2023'),
                  ('https://www.ine.es/jaxiT3/Tabla.htm?t=56949', 'INE, Estadística Continua de Población, población por provincia y nacionalidad, 1 de enero de 2025'),
                  ('https://www.realinstitutoelcano.org/comentarios/la-opinion-publica-espanyola-sobre-la-inmigracion-en-contexto/', 'Rut Bermejo Casado y Carmen González Enríquez, La opinión pública española sobre la inmigración en contexto, Real Instituto Elcano (3-10-2024)'),
+                 ('https://dx.doi.org/10.5209/poso.75974', 'Ismael Crespo Martínez y Alberto Mora Rodríguez, El auge de la extrema derecha en Europa: el caso de Vox en la Región de Murcia, Política y Sociedad 59(3) (2022)'),
                  ('https://democrata.es/elecciones-generales-espana/visita-abascal-aviles-desata-protestas-obliga-establecer-cordon-policial', 'Demócrata, Abascal defiende en Avilés la «remigración» y la prioridad nacional (21-10-2026)'),
                  ('https://www.elindependiente.com/sociedad/2025/07/14/detenidos-autor-agresion-torre-pacheco/amp/', 'El Independiente, Torre Pacheco (14-7-2025)')],
         enlaces=[],
@@ -1730,6 +1733,25 @@ PIEZAS = [
                   pie='Una urna transparente con sobres sobre el mapa de España, entre una ciudad y un pueblo: un collage.'),
     ),
     dict(
+        slug='calle-que-parte-barcelona', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/calle-que-parte-barcelona.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una gran avenida de Barcelona con fachadas modernistas a cada lado y el cielo partido en dos colores: un collage.'),
+        titulo='Las dos calles que parten Barcelona: la Diagonal en el voto a la derecha, la Meridiana en el independentismo', serie='29n',
+        descripcion='En Barcelona, el PSC ganó en casi todas las secciones censales el 23 de julio de 2023, pero sus vecinas no votan igual. La Diagonal es la calle que más veces separa a dos ganadores. La Meridiana no cambia el ganador, pero separa a Porta, donde el independentismo sacó el 29% en las autonómicas de 2024, de Sant Andreu, donde sacó el 47%.',
+        compara='Las 2.632 parejas de secciones censales contiguas de la ciudad de Barcelona (al menos 80 metros de límite común y 400 electores cada una): ganador y voto a PP y Vox en las generales de 2023, voto a ERC, Junts, CUP y Aliança Catalana en las autonómicas de 2024, la calle que las separa y su renta por unidad de consumo.',
+        limites='Son datos de secciones, no de personas, y no explican por qué cada lado vota distinto. Se mezclan dos elecciones: el ganador y PP más Vox son de las generales de 2023; la suma independentista, de las autonómicas de 2024. La calle de cada límite sale de un geocodificador en cinco puntos y puede no coincidir con el límite en todos sus metros. La renta de las secciones más ricas está topada en 58.752 euros. Sin voto exterior.',
+        calculo='Voto: porcentaje sobre votos válidos. Pareja de secciones vecinas: comparten al menos 80 metros de límite (con 12 metros de tolerancia) y tienen al menos 400 electores cada una. Salto: diferencia en puntos entre las dos secciones. Calle: la que devuelve el geocodificador inverso de CartoCiudad en al menos tres de cinco puntos del límite común. Medias por distrito y por barrio: media simple de sus secciones.',
+        fuentes=[INTERIOR, PARLAMENT, INE,
+                 ('https://www.cartociudad.es/', 'CartoCiudad (IGN), geocodificador inverso para el nombre de cada calle'),
+                 ('https://www.openstreetmap.org/', 'OpenStreetMap, nombres de barrio y trazado de las calles'),
+                 ('https://beteve.cat/politica/mapa-on-concentra-vot-partits-barcelona-eleccions-generals-2023/', 'Betevé, Marcos Arizmendi: on es concentra el vot de cada partit a Barcelona (generales 2023)'),
+                 ('https://beteve.cat/politica/la-renda-duna-famila-de-pedralbes-multiplica-per-sis-la-duna-de-ciutat-meridiana/', 'Betevé, la renda d\'una família de Pedralbes multiplica per sis la de Ciutat Meridiana'),
+                 ('https://naciodigital.cat/politica/la-meridiana-de-la-via-lliure.html', 'Nació Digital, Pep Martí: la Meridiana de la Via Lliure (8-9-2015)'),
+                 ('https://www.eldiario.es/catalunya/toni-rodon-politologo-segregacion-favorece-voto-extrema-derecha_1_10076472.html', 'elDiario.es, entrevista a Toni Rodon (2-4-2023)')],
+        enlaces=[],
+        lugar='Barcelona',
+    ),
+    dict(
         slug='quien-vota-que-barrios-29n', fecha='2026-10-25',
         titulo='Quién vota qué, barrio a barrio: el PP sube 21 puntos donde pesan las rentas del capital, el PSOE 15 donde abundan los peones y Vox solo se mueve con los jubilados', serie='29n', figura=0,
         descripcion='Crónica del domingo: las piezas de la semana sobre de qué viven los vecinos de cada barrio, contadas de una vez con un gráfico que cambia al bajar. La renta del capital, los autónomos, el oficio y la pensión reparten el voto entre PP y PSOE; a Vox casi no lo mueven.',
@@ -1757,6 +1779,12 @@ PIEZAS = [
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
 ENLACES_TEXTO = {
+    'adelante-andalucia-psoe-29n': [
+        ('según EFE', 'https://www.infobae.com/espana/agencias/2026/10/23/adelante-logra-los-avales-para-las-elecciones-y-espera-parar-a-la-derecha-con-andalucismo/'),
+        ('según el escrutinio de la Junta de Andalucía', 'https://resultadoseleccionesandalucia.es'),
+        ('según explicó María Jesús Montero el 20 de octubre', 'https://www.europapress.es/andalucia/noticia-psoe-cedera-frente-amplio-numero-candidaturas-andaluzas-senado-29n-sevilla-huelva-20261020133736.html'),
+        ('Según Europa Press', 'https://www.europapress.es/andalucia/noticia-vox-pp-partidos-mayor-fidelidad-17m-psoe-movilizaria-mas-generales-cis-20260627100950.html'),
+    ],
     'lorca-fuente-vaqueros-viznar-1936': [
         ('Museo Reina Sofía', 'https://commons.wikimedia.org/wiki/File:Fotograf%C3%ADa_an%C3%B3nima_MNCARS_4.jpg'),
     ],
@@ -2635,7 +2663,9 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-semana-29n', fecha='2026-10-26',
+        slug='encuestas-semana-29n', fecha='2026-10-26', actualizado='2026-10-26 07:10',
+        foto=dict(src='img/actualidad/fotos/encuestas-semana-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano marca casillas en una hoja de encuesta junto a una urna transparente con sobres y un calendario de hojas que pasan: un collage.'),
         titulo='El PP baja en las cinco encuestas de la semana, pero con Vox sigue sumando mayoría absoluta en todas', serie='29n', figura=0,
         descripcion='Desde finales de septiembre, la mediana de las encuestas ha bajado al PP dos puntos, del 33,7% al 31,7%. El PSOE recupera menos de uno y Vox se queda cerca del 19%. Nuestro modelo da hoy a PP y Vox 195 escaños, 19 más de los que hacen falta.',
         compara='Las cinco encuestas nacionales publicadas entre el 19 y el 25 de octubre de 2026, cada una con la anterior de la misma empresa, y la mediana semanal de las encuestas desde finales de agosto.',
@@ -2649,6 +2679,30 @@ PIEZAS += [
                  ('https://www.eldiario.es/politica/sanchez-saca-psoe-pesimismo-errores-feijoo-miedo-vox_1_13607713.html', 'elDiario.es, sobre los sondeos internos del PSOE (25-10-2026)'),
                  ('https://www.electografica.com/', 'Electográfica, encuestas de las generales de 2026'),
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='listas-29n-quien-encabeza', fecha='2026-10-26',
+        foto=dict(src='img/actualidad/fotos/listas-29n-quien-encabeza.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Dos papeletas, una morada y otra rosa, rasgadas a cada lado de un escaño vacío del Congreso, con dos sobres: un collage.'),
+        titulo='¿Sale tu candidato? Busca tu provincia: el día que se cierran las listas, 251 escaños están casi decididos y 210 candidatos se juegan los otros 99', serie='29n', figura=0,
+        descripcion='Con las encuestas de hoy, Vox tiene más puestos en el aire que seguros, y 18 de sus cabezas de lista no tienen el escaño garantizado. Irene Montero sale en 95 de cada 100 simulaciones; su número dos, en 56.',
+        compara='La probabilidad de salir elegido de cada puesto de cada lista al Congreso en las 52 circunscripciones, con el modelo de Mapa Electoral y la media de encuestas del 26 de octubre de 2026, y los nombres publicados de las listas.',
+        limites='Las probabilidades dependen de la media de encuestas y del reparto por provincia del modelo, cuyo método está publicado; cambiarán con las encuestas. Los nombres proceden de los partidos y la prensa antes del registro de candidaturas; las listas oficiales son las del BOE del 28 de octubre. El modelo trata a UPN como lista propia aunque va en coalición con el PP en Navarra.',
+        calculo='Para cada puesto k de cada lista y provincia, proporción de las 2.000 simulaciones en que la lista saca k escaños o más. Casi seguro: 90% o más; en el aire: entre 10% y 90%.',
+        fuentes=[('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños'),
+                 ('https://www.galiciapress.es/articulo/politica/2026-10-25/6065328-manana-ultimo-dia-registrar-listas-partidos-coaliciones-juntas-electorales-provinciales', 'Europa Press, último día para registrar las listas (25-10-2026)'),
+                 ('https://www.diariosigloxxi.com/texto-s/mostrar/680244/feijoo-exige-cabezas-lista-pp-arquitectos-reconstruccion-frente-abalos-koldos-sanchez', 'Servimedia, Feijóo presenta a sus cabezas de lista (25-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/25/abascal-presenta-manana-en-un-acto-en-talavera-toledo-a-los-cabezas-de-lista-de-vox-para-las-elecciones-del-29n/', 'Infobae, cabezas de lista de Vox (25-10-2026)'),
+                 ('https://www.diariosigloxxi.com/texto-ep/mostrar/20261025201442/frente-amplio-encara-cierre-listas-lunes-incognita-candidaturas-varias-provincias', 'Europa Press, listas de Frente Amplio y Podemos (25-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/21/la-lider-de-sumar-ira-de-numero-4-en-la-lista-por-madrid-de-frente-amplio-al-congreso/', 'EFE, lista de Frente Amplio por Madrid (21-10-2026)'),
+                 ('https://www.democrata.es/elecciones-generales-espana/consulte-aqui-lista-psoe-por-madrid-elecciones-29n-estos-son-candidatos-congreso-senado/', 'Demócrata, lista del PSOE por Madrid (14-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/22/comuns-avala-con-el-59-de-votos-la-lista-de-colau-al-29n-en-la-que-no-estara-aina-vidal/', 'EFE, lista de los Comuns (22-10-2026)'),
+                 ('https://www.elnacional.cat/es/politica/estos-candidatos-psc-elecciones-generales-2026-listas-completas_1710943_102.html', 'El Nacional, listas del PSC'),
+                 ('https://www.diarimes.com/es/actualidad/cataluna/261020/erc-ratifica-listas-29-n-rufian-frente-junqueras-amnistiado-cierre_239317.html', 'Diari Més, listas de ERC (20-10-2026)'),
+                 ('https://www.democrata.es/politica/feijoo-releva-al-60-de-sus-cabezas-de-lista-al-congreso-y-los-reunira-el-domingo-en-salamanca/', 'Demócrata, cabezas de lista del PP'),
+                 ('https://eldiario.es/madrid/dimite-delegado-gobierno-madrid-quedarse-fuera-listas-psoe-elecciones_1_13613892.html', 'elDiario.es, dimisión de Francisco Martín (25-10-2026)')],
         enlaces=[],
         lugar='España',
     ),
@@ -2694,17 +2748,67 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='adelante-andalucia-psoe-29n', fecha='2026-10-26',
+        foto=dict(src='img/actualidad/fotos/adelante-andalucia-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna, dos montones de papeletas, verdes y rojas, y una calle blanca de un pueblo andaluz: un collage.'),
+        titulo='Uno de cada tres votantes de Adelante venía del PSOE, pero el mapa andaluz no muestra la fuga', serie='29n',
+        descripcion='Adelante Andalucía pasó de 168.448 a 402.244 votos el 17M y va sola el 29N. Las encuestas dicen que entre un cuarto y un tercio de sus votantes había votado al PSOE en 2022, pero en los 785 municipios sube lo mismo donde el PSOE se hunde que donde crece.',
+        compara='El voto de Adelante Andalucía, el PSOE-A y Por Andalucía en las autonómicas de 2022 y 2026 en los 785 municipios andaluces (resultados de la Junta), por provincia, por quintiles de cambio del PSOE y en los 52 municipios de más de 20.000 electores; el origen del voto de Adelante según el recuerdo de voto de las encuestas del CENTRA y del CIS; y el voto por edad en el postelectoral del CENTRA.',
+        limites='Los resultados agregados por municipio no dicen quién cambió su voto: un trasvase del PSOE a Adelante repartido por igual en todo el territorio no se vería en la comparación entre municipios. El recuerdo de voto de las encuestas se desvía del resultado real (el postelectoral del CENTRA da a Adelante el 17,2 % de los votantes, frente al 9,6 % real) y las muestras provinciales son pequeñas. Las cifras del CIS vienen de la crónica de Europa Press, no de los microdatos. Las autonómicas no predicen las generales: el barómetro del CENTRA mide voto al Parlamento andaluz.',
+        calculo='Porcentajes sobre voto válido, por municipio, con los resultados definitivos de la Junta de Andalucía. Regresión lineal del cambio de Adelante sobre el cambio del PSOE-A y el de Por Andalucía, con efectos fijos de provincia, ponderada por censo y con errores agrupados por provincia; repetida con porcentajes sobre censo y controlando el cambio de participación, con el mismo resultado. Encuestas del CENTRA: preelectoral ponderado con su coeficiente; postelectoral sin ponderar (muestra proporcional), solo quienes dicen haber votado.',
+        fuentes=[('https://resultadoseleccionesandalucia.es', 'Junta de Andalucía, Sistema de Información Electoral (SIEL), resultados por municipio de las elecciones al Parlamento de Andalucía de 2022 y 2026'),
+                 ('https://www.centrodeestudiosandaluces.es/encuestas/estudio-preelectoral-elecciones-autonomicas-2026', 'Fundación CENTRA, Estudio preelectoral elecciones autonómicas 2026, microdatos'),
+                 ('https://www.centrodeestudiosandaluces.es/encuestas/cat/electorales', 'Fundación CENTRA, Estudio postelectoral elecciones autonómicas 2026, microdatos'),
+                 ('https://www.centrodeestudiosandaluces.es/barometro/barometro-andaluz-de-septiembre-de-2026', 'Fundación CENTRA, Barómetro Andaluz de septiembre de 2026, estimación de voto y frecuencias'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-vox-pp-partidos-mayor-fidelidad-17m-psoe-movilizaria-mas-generales-cis-20260627100950.html', 'Europa Press, el postelectoral del CIS en Andalucía (27-6-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-moreno-pierde-mayoria-absoluta-no-evita-lio-vox-subida-adelante-nuevo-descenso-psoe-20260517230451.html', 'Europa Press, resultados del 17M (17-5-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/23/adelante-logra-los-avales-para-las-elecciones-y-espera-parar-a-la-derecha-con-andalucismo/', 'EFE en Infobae, Adelante logra los avales para las elecciones (23-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-adelante-andalucia-afea-criticas-ir-solitario-29n-no-cuestiona-cataluna-euskadi-galicia-20261009095337.html', 'Europa Press, José Ignacio García en La 1 de TVE (9-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'cadiz-00351/noticia-adelante-defiende-papeleta-29n-frente-lio-izquierda-problema-no-division-20261013132040.html', 'Europa Press, José Ignacio García en Jerez de la Frontera (13-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-maillo-afea-adelante-decida-ir-solitario-29n-hablar-nadie-fragmentacion-conviene-pp-vox-20261014095424.html', 'Europa Press, Antonio Maíllo en Canal Sur Televisión (14-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-psoe-cedera-frente-amplio-numero-candidaturas-andaluzas-senado-29n-sevilla-huelva-20261020133736.html', 'Europa Press, el PSOE-A y el Frente Amplio en el Senado (20-10-2026)'),
+                 ('https://www.eldiario.es/andalucia/generacion-mollete-caldo-cultivo-explica-sorpresa-adelante-andalucia_1_13228933.html', 'elDiario.es, «La generación mollete» (Carla Rivero, 18-5-2026)'),
+                 ('https://www.idpbarcelona.net/docs/public/iccaa/2022/andalucia_2022.pdf', 'Mª Reyes Pérez Alberdi, Andalucía, en Informe Comunidades Autónomas 2022, Instituto de Derecho Público (2023)')],
+        enlaces=[],
+        lugar='Andalucía',
+    ),
+    dict(
+        slug='inmigracion-cuesta-votos-psoe-29n', fecha='2026-10-26',
+        foto=dict(src='img/actualidad/fotos/inmigracion-cuesta-votos-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano deposita un voto en una urna roja, junto a una calle de bloques con vecinos que vuelven de la compra: un collage.'),
+        titulo='La inmigración ya le cuesta votos al PSOE, no solo al PP', serie='29n',
+        descripcion='Veintiséis años de barómetros del CIS, 806.169 entrevistas: en 2006 la inmigración era el gran problema y no movía el voto; desde 2018 aleja del PP hacia Vox a quien la cita. En 2026 los votantes socialistas que la nombran son 13,6 puntos menos fieles, el peor dato de la serie, y se reparten entre el PP, Vox y la abstención.',
+        compara='La fidelidad de voto (voto más simpatía igual al recuerdo de voto en las últimas generales) de quienes citan la inmigración entre los tres principales problemas de España y de quienes no, en 278 barómetros del CIS de septiembre de 2000 a octubre de 2026 (806.169 entrevistas), año a año, para los votantes del PSOE y del PP; el destino de ese voto desde 2018; el flujo de voto en 2026 de los votantes de PSOE, PP y Vox en 2023 que la citan; cuántos la citan según adónde va su voto; y el porcentaje de votantes del PSOE que la citan por provincia desde diciembre de 2023.',
+        limites='Es una encuesta: mide intenciones, no votos. El recuerdo de voto del CIS sobrerrepresenta al PSOE e infrarrepresenta al PP y a Vox. Antes de septiembre de 2018 solo hay intención de voto en uno de cada tres barómetros, y algunos estudios antiguos no traen ponderación. Los ficheros de 2000 a 2010 no permiten controlar por ideología, edad ni estudios, así que para esos años el modelo es reducido y no es del todo comparable con el posterior. Citar la inmigración puede ser consecuencia del alejamiento de un partido y no su causa. Las muestras provinciales son pequeñas en las provincias menos pobladas y en Ceuta y Melilla.',
+        calculo='Regresiones lineales de la fidelidad (0 o 100) sobre citar la inmigración, año a año y por partido del recuerdo de voto. Desde 2011, con controles de edad, sexo, estudios, ideología (lineal y al cuadrado) y otros cinco problemas citados (el Gobierno, la corrupción, el paro, la economía y los políticos), efectos fijos de provincia y de barómetro y errores agrupados por provincia; de 2000 a 2010, solo sexo, corrupción y efectos fijos. Margen de error al 95%. El destino del voto se estima con el mismo modelo usando el voto a cada opción como resultado. Porcentajes ponderados cuando el estudio trae ponderación. Pruebas de robustez para 2026 y para diciembre de 2023 a octubre de 2026: sin otros problemas, sin controles, ponderado, sin Cataluña, País Vasco y Navarra, solo el primer problema, sin indecisos y logit (efecto marginal medio); el efecto sobre el PSOE en 2026 va de −11,8 a −18,9 puntos.',
+        fuentes=[('https://www.cis.es/estudios/catalogo-estudios', 'CIS, microdatos de 278 barómetros de septiembre de 2000 a octubre de 2026 (estudios 2398 a 3582)'),
+                 ('https://www.realinstitutoelcano.org/comentarios/la-opinion-publica-espanyola-sobre-la-inmigracion-en-contexto/', 'Rut Bermejo Casado y Carmen González Enríquez, La opinión pública española sobre la inmigración en contexto, Real Instituto Elcano (3-10-2024)'),
+                 ('https://eprints.gla.ac.uk/197637', 'Laura Morales, Sergi Pardos-Prado y Virginia Ros, Issue emergence and the dynamics of electoral competition around immigration in Spain, Acta Politica (2015)'),
+                 ('https://www.vozpopuli.com/actualidad/canarias-supera-falta-dos-meses-record-inmigrantes-ilegales-2006.html', 'EFE en Vozpópuli, Canarias supera el récord de llegadas de 2006 (4-11-2023)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/20/feijoo-cree-que-sanchez-convoca-elecciones-para-que-no-le-investiguen-y-apunta-a-dinero-de-prostitucion-en-sus-primarias/', 'Europa Press en Infobae, entrevista de Feijóo en la Cadena COPE (20-10-2026)'),
+                 ('https://democrata.es/elecciones-generales-espana/visita-abascal-aviles-desata-protestas-obliga-establecer-cordon-policial', 'Demócrata, la visita de Abascal a Avilés (21-10-2026)'),
+                 ('https://www.vozpopuli.com/espana/politica/sanchez-defiende-su-regularizacion-masiva-espana-es-hija-de-la-migracion-y-no-sera-madre-de-la-xenofobia.html', 'Vozpópuli, Sánchez defiende la regularización en Barcelona (18-4-2026)'),
+                 ('https://www.elsalvador.com/noticias/internacional/espana-preve-regularizar-a-500-000-inmigrantes/1260209/2026/', 'AFP en El Salvador, España prevé regularizar a 500.000 inmigrantes (27-1-2026)'),
+                 ('https://www.elsalvador.com/noticias/internacional/espana-regulariza-a-migrantes-sin-papeles/1269825/2026/', 'AFP en El Salvador, España regulariza a migrantes sin papeles (14-4-2026)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
+    'adelante-andalucia-psoe-29n': 'La izquierda andaluza',
     'corrupcion-penaliza-voto-29n': 'Corrupción y 29N',
+    'inmigracion-cuesta-votos-psoe-29n': 'Inmigración y 29N',
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'encuestas-semana-29n': 'Las encuestas, semana a semana',
+    'listas-29n-quien-encabeza': 'Quién sale y quién no',
     'cinco-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
     'ganar-por-un-voto-29n': 'Un voto de diferencia',
     'barcelona-madrid-clasico-del-voto-29n': 'El otro Clásico',
@@ -2979,6 +3083,7 @@ def en_catala(out, p):
         a, m, d = dia.split('-')
         out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}' + (f', a les {hora.replace(":", ".")}' if hora else ''))
     out = out.replace(' · Actualizado el <time', ' · Actualitzat el <time')
+    out = re.sub(r'<b>Ver las (\d+) piezas de la serie</b>', r'<b>Veure les \1 peces de la sèrie</b>', out)
     return out
 
 
@@ -3030,8 +3135,12 @@ def pieza(p, todas):
     fuentes = ''.join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for u, t in p['fuentes'])
     # la serie entera, en orden, con la pieza actual marcada; después, las últimas de otras series
     serie = [q for q in todas if q['serie'] == p['serie']]
+    # como mucho 20 piezas de la serie alrededor de la actual (Nacho, 25-10-2026: la del 29N pasaba de 80)
+    i = serie.index(p); ini = max(0, min(i - 10, len(serie) - 20)); ventana = serie[ini:ini + 20]
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
-                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
+                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in ventana)
+    if len(serie) > len(ventana):
+        lista += f'<li class="todas"><a href="../index.html#{p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
     sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola

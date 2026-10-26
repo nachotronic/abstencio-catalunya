@@ -53,7 +53,7 @@ ACTUALIDAD_LUGAR = {
     'colau-barcelona-comuns': ['08'], 'europeas-arona': ['38'], 'euskadi-empate-a-tres': ['01', '20', '48'],
     'mont-roig-municipio-cambiante': ['43'], 'municipios-fieles': ['41'], 'pisos-turisticos-y-votantes': ['08'],
     'plasencia-acierta-siempre': ['10'], 'precio-del-alquiler-y-voto': ['46'], 'psa-andalucistas-1979': ['04', '11', '14', '18', '21', '23', '29', '41'],
-    'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
+    'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'adelante-andalucia-psoe-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
     'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
     'acampada-sol-distrito-centro': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
@@ -68,7 +68,7 @@ ACTUALIDAD_MUNICIPIO = {
     'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
     'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'),
     'valencia-barrio-a-barrio-29n': ('46250', 'València'), 'zaragoza-barrio-a-barrio-29n': ('50297', 'Zaragoza'),
-    'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'),
+    'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'), 'calle-que-parte-barcelona': ('08019', 'Barcelona'),
     'girona-barri-a-barri-29n': ('17079', 'Girona'),
 }
 # Piezas de cada página temática
@@ -169,7 +169,8 @@ TEMAS = {
               'por la inmigración que mide el CIS y el voto a cada partido.',
         piezas=['vox-poblacion-nacida-fuera', 'inmigracion-preocupa-voto-vox-29n', 'trump-espana-invadida-inmigracion-29n',
                 'termometro-temas-inmigracion-29n', 'vivienda-inmigracion-economia-cis', 'vox-cinco-barrios-el-ejido-ceuta',
-                'ley-nietos-donde-estan-29n', 'sanchez-revuelta-broncano-voto-joven-29n', 'mujeres-jovenes-voto-29n'],
+                'ley-nietos-donde-estan-29n', 'sanchez-revuelta-broncano-voto-joven-29n', 'mujeres-jovenes-voto-29n',
+                'inmigracion-cuesta-votos-psoe-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal')],
         atlas=[]),
     'barrio-a-barrio': dict(
@@ -177,7 +178,7 @@ TEMAS = {
         titulo='Elecciones barrio a barrio: el voto de cada sección censal en las grandes ciudades',
         intro='Las grandes ciudades contadas sección a sección: dónde gana cada partido, qué calles parten el voto en dos '
               'y los barrios donde un partido saca sus mejores resultados.',
-        piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
+        piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'calle-que-parte-barcelona', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
                                'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal'),
                ('', 'Mapa de resultados calle a calle')],
@@ -203,8 +204,8 @@ TEMAS = {
         piezas=['escanos-en-el-filo-29n', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
-                'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n',
-                'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n'],
+                'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'listas-29n-quien-encabeza',
+                'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n', 'adelante-andalucia-psoe-29n'],
         datos=[('elecciones/como-se-vota/', 'Cómo se vota: el precio de un escaño por provincia'),
                ('elecciones/elecciones-29n-2026/', 'Elecciones generales del 29N de 2026: diputados por provincia')],
         atlas=[('atlas/bisagras/', 'Atlas: las bisagras')]),
@@ -302,7 +303,8 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
 EXCLUIR_PIEZA = {'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'},
                  'lorca-fuente-vaqueros-viznar-1936': {'30024', '27012'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}, 'republica-mapa-1936-hoy': {'17155'},
                  'abstencion-anarquista-cnt-1933-1936': {'45071'}, 'asturias-1934-1936-revolucion-urnas': {'45071'},
-                 'pueblos-bajo-el-agua-1936': {'23055', '48027'}, 'pueblos-colonizacion-franquismo-voto': {'23028', '50008'}}
+                 'pueblos-bajo-el-agua-1936': {'23055', '48027'}, 'pueblos-colonizacion-franquismo-voto': {'23028', '50008'},
+                 'calle-que-parte-barcelona': {'14057'}}
 # Comunidades y provincias con el mismo nombre que su capital: solo cuentan como municipio con «ciudad de» delante
 # o si la pieza es de esa ciudad (ACTUALIDAD_MUNICIPIO). Así «la Comunidad de Madrid» o «la provincia de Sevilla» no enlazan la ciudad.
 AMBIGUOS = {slug(x) for n in PROV_NOMBRE.values() for x in n.split('/')} | {'valencia', 'castellon', 'alicante'}

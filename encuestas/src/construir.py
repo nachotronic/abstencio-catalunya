@@ -29,6 +29,7 @@ try:   # tarjeta para redes; sin Pillow, la página se rehace igual y la imagen 
     from tarjeta import tarjeta
 except ImportError:
     tarjeta = None
+import encuestadoras  # noqa: E402  (una página por encuestadora)
 
 DATOS = RAIZ / 'previsiones/datos/encuestas'
 SALIDA = RAIZ / 'encuestas'
@@ -726,6 +727,7 @@ def main():
     hemi, n_hemi = promedio_escanos(con_esc)
     bloque_modelo, hemi_m = estimacion()
     hay_provincias = provincias()
+    casas = encuestadoras.genera(encs, SALIDA, sys.modules[__name__])
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
     pv_casas = [[e['casa'], *suma_pv(e)] for e in sorted(con_esc, key=lambda e: -sum(suma_pv(e)))]
     datos = {'modelo': MODELO_JS, 'pv': pv_casas, 'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
@@ -875,6 +877,9 @@ def main():
 <p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. La fecha es la de publicación; con asterisco, la del final del trabajo de campo cuando la publicación no consta.</p>
 {tabla}
 {tabla_ant}
+<h2>Encuestas de cada encuestadora</h2>
+<p>La última encuesta de cada una, cómo ha cambiado, cuánto se aparta de las demás y cuánto acertó en 2023.</p>
+<ul class="casas">{''.join(f'<li><a href="{r}/">{html.escape(n)}</a> <small>{k} encuestas</small></li>' for r, n, k, _ in casas)}</ul>
 <h2>Preguntas frecuentes sobre las encuestas</h2>
 {faq_html}
 <h2>Método y fuentes</h2>
@@ -894,7 +899,7 @@ def main():
 </main>"""
     pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld)
               .replace('<meta property="og:title" content="' + html.escape(titulo) + '">', '<meta property="og:title" content="' + html.escape(titular) + '">')
-              + ESTILOS + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
+              + ESTILOS + encuestadoras.css_partidos(PRINCIPALES) + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
               + SCRIPT.replace('__DATOS__', json.dumps(datos, ensure_ascii=False, separators=(',', ':'))) + '\n</body>\n</html>\n')
     SALIDA.mkdir(exist_ok=True)
     from urllib.parse import quote
@@ -906,7 +911,8 @@ def main():
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
-                                        + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '') + '</urlset>\n', encoding='utf-8')
+                                        + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '')
+                                        + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas) + '</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
     # post para redes de esta actualización: el workflow solo vuelve a escribirlo cuando entra una encuesta nueva
     texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
@@ -914,7 +920,7 @@ def main():
     # autor común y migas de pan (BreadcrumbList), como en el resto del sitio: la página se regenera sola dos veces al día
     sys.path.insert(0, str(RAIZ / 'src'))
     import esquema
-    for f in (SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html'):
+    for f in [SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html'] + [SALIDA / r / 'index.html' for r, *_ in casas]:
         if f.exists():
             esquema.procesa(f)
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')

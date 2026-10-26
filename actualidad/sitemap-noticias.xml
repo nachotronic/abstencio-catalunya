@@ -41,6 +41,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/calle-que-parte-barcelona/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-25</news:publication_date>
+      <news:title>Las dos calles que parten Barcelona: la Diagonal en el voto a la derecha, la Meridiana en el independentismo</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/quien-vota-que-barrios-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -73,6 +81,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/listas-29n-quien-encabeza/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>¿Sale tu candidato? Busca tu provincia: el día que se cierran las listas, 251 escaños están casi decididos y 210 candidatos se juegan los otros 99</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/voto-correo-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -86,6 +102,22 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-25</news:publication_date>
       <news:title>29N: la corrupción le cuesta votos al PSOE, pero apenas se los da al PP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/adelante-andalucia-psoe-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>Uno de cada tres votantes de Adelante venía del PSOE, pero el mapa andaluz no muestra la fuga</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/inmigracion-cuesta-votos-psoe-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>La inmigración ya le cuesta votos al PSOE, no solo al PP</news:title>
     </news:news>
   </url>
 </urlset>
