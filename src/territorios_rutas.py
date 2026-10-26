@@ -203,7 +203,7 @@ TEMAS = {
         piezas=['escanos-en-el-filo-29n', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
-                'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'listas-29n-quien-encabeza',
+                'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'listas-29n-quien-encabeza',
                 'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n'],
         datos=[('elecciones/como-se-vota/', 'Cómo se vota: el precio de un escaño por provincia'),
                ('elecciones/elecciones-29n-2026/', 'Elecciones generales del 29N de 2026: diputados por provincia')],
