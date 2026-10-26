@@ -2067,6 +2067,26 @@ def fila_municipio(c, raiz):
     return [f'<a href="{raiz}{CIUDADES[c]}">{escape(m.municipio)}</a>', num(m.poblacion), gana, part]
 
 
+def buscador_html(ejemplo='Getafe o Lavapiés'):
+    """Buscador de municipios y barrios con ficha; carga municipio/buscador.json (src/pagina_404.py) al primer uso."""
+    return ('<form class="busca-mun" role="search" onsubmit="return false"><label for="bq">Busca tu municipio o tu barrio</label>'
+            f'<input id="bq" type="search" autocomplete="off" placeholder="Por ejemplo, {ejemplo}" aria-controls="bres">'
+            '<ul id="bres" aria-live="polite"></ul><p id="bvacio" hidden>No hay ningún municipio ni barrio con ficha con ese nombre.</p></form>'
+            '<style>.busca-mun{margin:1.2rem 0 1.6rem;font-family:var(--sans,system-ui)}.busca-mun label{display:block;font-weight:600;font-size:15px;margin-bottom:6px}'
+            '.busca-mun input{width:100%;box-sizing:border-box;font:17px var(--sans,system-ui);padding:11px 13px;border:1.5px solid var(--rule);border-radius:6px;background:var(--surface,#fff);color:var(--fg)}'
+            '.busca-mun input:focus{outline:none;border-color:var(--accent)}.busca-mun ul{list-style:none;margin:6px 0 0;padding:0}'
+            '.busca-mun li a{display:flex;justify-content:space-between;gap:12px;padding:8px 12px;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--fg);font-size:16px}'
+            '.busca-mun li a:hover,.busca-mun li a:focus{color:var(--accent)}.busca-mun li span{color:var(--muted);font-size:14px}.busca-mun p{color:var(--muted);font-size:15px}</style>'
+            '<script>(()=>{const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g," ").trim();'
+            'let d=null,c=null;const carga=()=>c||(c=fetch("/municipio/buscador.json").then(r=>r.json()).then(x=>d=x.map(y=>[y,norm(y[0])])));'
+            'const q=document.getElementById("bq"),res=document.getElementById("bres"),v=document.getElementById("bvacio");'
+            'const busca=t=>{t=norm(t);if(!t||!d)return[];const a=[],b=[];for(const[x,n]of d){if(n.startsWith(t))a.push(x);else if(n.includes(" "+t)||(t.length>3&&n.includes(t)))b.push(x)}'
+            'const o=(p,r)=>p[3]-r[3]||p[0].length-r[0].length;return a.sort(o).concat(b.sort(o)).slice(0,10)};'
+            'const pinta=()=>{const r=busca(q.value);res.replaceChildren(...r.map(x=>{const li=document.createElement("li"),a=document.createElement("a"),s=document.createElement("span");'
+            'a.href=x[2];a.textContent=x[0];s.textContent=x[3]?"barrio de "+x[1]:x[1];a.append(s);li.append(a);return li}));v.hidden=!(q.value.trim().length>1&&!r.length)};'
+            'q.addEventListener("focus",carga,{once:true});q.addEventListener("input",()=>carga().then(pinta));})()</script>')
+
+
 def municipios_indice():
     ruta = 'municipio/'
     titulo = 'Elecciones por municipio: resultados de cada pueblo y ciudad de España desde 1977'
@@ -2083,6 +2103,7 @@ def municipios_indice():
              f'tienen página propia con el resultado de cada sección censal, el voto por renta de sus barrios y las 16 elecciones generales desde 1977. '
              f'Reúnen a {num(pob[list(CIUDADES)].sum())} de los {num(pob.sum())} habitantes de los municipios con datos. '
              'Los demás se consultan en el <a href="../">mapa de la portada</a>.</p>')
+    h.append(buscador_html())
     filas = []
     for p in provs:
         cs = [c for c in CIUDADES if c[:2] == p]
@@ -2122,6 +2143,7 @@ def barrios_indice():
     h.append(f'<p class="resumen">{tipo("Dato")}{num(len(todas))} barrios de {num(len(cs))} ciudades tienen ficha propia, con el voto de cada una de sus secciones censales en las generales desde 2004, '
              f'la renta y quién vive en ellos. En las generales de 2023, el barrio que más votó fue {enl(*alto[0])} y el que menos, {enl(*alto[-1])}: '
              f'{puntos(alto[0][1]["r"]["part"] - alto[-1][1]["r"]["part"])} puntos de distancia.</p>')
+    h.append(buscador_html('Lavapiés, Gràcia o Triana'))
     h.append('<h2>Ciudad a ciudad</h2>')
     filas = []
     for c in cs:
