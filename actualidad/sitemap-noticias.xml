@@ -65,6 +65,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/listas-29n-quien-encabeza/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>Las listas del 29N, puesto a puesto: 251 escaños casi decididos y 210 candidatos en el aire para los otros 99</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/voto-correo-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
