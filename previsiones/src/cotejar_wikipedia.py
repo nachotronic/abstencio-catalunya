@@ -28,8 +28,10 @@ PARTIDOS = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'FA': 'S
             'Podemos': 'PODEMOS', 'SALF': 'SALF', 'ERC': 'ERC', 'Junts': 'JUNTS', 'EH Bildu': 'BILDU', 'PNV': 'PNV',
             'BNG': 'BNG', 'CCa': 'CC', 'UPN': 'UPN', 'Aliança.cat': 'ALIANCA', 'CS': 'CS', "Cs": 'CS'}
 ORDEN = ['PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS', 'SALF', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC', 'UPN', 'ALIANCA', 'CS', 'OTROS']
-# KeyData (Público) es una media de encuestas, no una encuesta: no cuenta como falta
+# KeyData (Público) es una media de encuestas, no una encuesta: no cuenta como falta. Tampoco los sondeos internos
+# que un partido filtra a la prensa (Wikipedia los apunta con el partido como encuestadora)
 AGREGADORES = {'keydata'}
+PARTIDOS_COMO_CASA = {'pp', 'psoe', 'vox', 'sumar', 'podemos', 'erc', 'junts', 'pnv', 'bildu', 'ehbildu', 'bng'}
 
 
 def clave(nombre):
@@ -203,7 +205,7 @@ def main():
         c = clave(r['encuestadora'])
         # «IMOP» en Wikipedia es «IMOP Insights» en Electográfica: basta con que un nombre empiece por el otro
         fechas_eg = [g for k, v in casas.items() if k.startswith(c) or c.startswith(k) for g in v]
-        if f >= desde and c not in AGREGADORES and not r['reestimacion'] and not any(abs((f - g).days) <= 4 for g in fechas_eg):
+        if f >= desde and c not in AGREGADORES | PARTIDOS_COMO_CASA and not r['reestimacion'] and not any(abs((f - g).days) <= 4 for g in fechas_eg):
             faltan.append(r)
     with open(SALIDA / 'faltan_en_electografica.csv', 'w', newline='') as fh:
         w = csv.DictWriter(fh, fieldnames=list(wp[0])); w.writeheader(); w.writerows(faltan)
