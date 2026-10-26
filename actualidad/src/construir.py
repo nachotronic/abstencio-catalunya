@@ -2697,7 +2697,9 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='inmigracion-cuesta-votos-psoe-29n', fecha='2026-10-26', figura=1,
+        slug='inmigracion-cuesta-votos-psoe-29n', fecha='2026-10-26',
+        foto=dict(src='img/actualidad/fotos/inmigracion-cuesta-votos-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano deposita un voto en una urna roja, junto a una calle de bloques con vecinos que vuelven de la compra: un collage.'),
         titulo='La inmigración ya le cuesta votos al PSOE, no solo al PP', serie='29n',
         descripcion='Veintiséis años de barómetros del CIS, 806.169 entrevistas: en 2006 la inmigración era el gran problema y no movía el voto; desde 2018 aleja del PP hacia Vox a quien la cita. En 2026 los votantes socialistas que la nombran son 13,6 puntos menos fieles, el peor dato de la serie, y se reparten entre el PP, Vox y la abstención.',
         compara='La fidelidad de voto (voto más simpatía igual al recuerdo de voto en las últimas generales) de quienes citan la inmigración entre los tres principales problemas de España y de quienes no, en 278 barómetros del CIS de septiembre de 2000 a octubre de 2026 (806.169 entrevistas), año a año, para los votantes del PSOE y del PP; el destino de ese voto desde 2018; el flujo de voto en 2026 de los votantes de PSOE, PP y Vox en 2023 que la citan; cuántos la citan según adónde va su voto; y el porcentaje de votantes del PSOE que la citan por provincia desde diciembre de 2023.',
