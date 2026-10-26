@@ -2654,7 +2654,7 @@ PIEZAS += [
     ),
     dict(
         slug='listas-29n-quien-encabeza', fecha='2026-10-26',
-        titulo='Las listas del 29N, puesto a puesto: 251 escaños casi decididos y 210 candidatos en el aire para los otros 99', serie='29n', figura=0,
+        titulo='¿Sale tu candidato? Busca tu provincia: el día que se cierran las listas, 251 escaños están casi decididos y 210 candidatos se juegan los otros 99', serie='29n', figura=0,
         descripcion='Con las encuestas de hoy, Vox tiene más puestos en el aire que seguros, y 18 de sus cabezas de lista no tienen el escaño garantizado. Irene Montero sale en 95 de cada 100 simulaciones; su número dos, en 56.',
         compara='La probabilidad de salir elegido de cada puesto de cada lista al Congreso en las 52 circunscripciones, con el modelo de Mapa Electoral y la media de encuestas del 26 de octubre de 2026, y los nombres publicados de las listas.',
         limites='Las probabilidades dependen de la media de encuestas y del reparto por provincia del modelo, cuyo método está publicado; cambiarán con las encuestas. Los nombres proceden de los partidos y la prensa antes del registro de candidaturas; las listas oficiales son las del BOE del 28 de octubre. El modelo trata a UPN como lista propia aunque va en coalición con el PP en Navarra.',
