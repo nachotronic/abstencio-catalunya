@@ -209,6 +209,14 @@ TEMAS = {
         datos=[('elecciones/como-se-vota/', 'Cómo se vota: el precio de un escaño por provincia'),
                ('elecciones/elecciones-29n-2026/', 'Elecciones generales del 29N de 2026: diputados por provincia')],
         atlas=[('atlas/bisagras/', 'Atlas: las bisagras')]),
+    'internacional': dict(
+        nombre='Elecciones internacionales',
+        titulo='Elecciones en el mundo: los mapas electorales de otros países',
+        intro='Las elecciones de otros países contadas con sus datos oficiales y sus mapas: quién ganó en cada región, '
+              'dónde se movió el voto y cómo se compara con la elección anterior.',
+        piezas=['brasil-lula-remontada-mapa-estados'],
+        datos=[],
+        atlas=[]),
 }
 SLUG_TEMA = {s: t for t, d in TEMAS.items() for s in d['piezas']}
 

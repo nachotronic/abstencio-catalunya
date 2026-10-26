@@ -118,5 +118,9 @@
  "girona-1936-participacio": {
   "pie": "On es votava més, el 1936 o el 2023: diferència de participació per municipi.",
   "fuente": "Atles Electoral de la Segona República (UPF); Ministeri de l'Interior"
+ },
+ "brasil-lula-remontada-mapa-estados": {
+  "pie": "Quién ganó en cada estado de Brasil.",
+  "fuente": "TSE, resultados oficiales de 2026 por estado (primera y segunda vuelta) y datos abiertos de 2022 (votación por municipio y zona)"
  }
 }
