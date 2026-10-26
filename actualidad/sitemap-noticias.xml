@@ -104,4 +104,12 @@
       <news:title>29N: la corrupción le cuesta votos al PSOE, pero apenas se los da al PP</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/inmigracion-cuesta-votos-psoe-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>La inmigración ya le cuesta votos al PSOE, no solo al PP</news:title>
+    </news:news>
+  </url>
 </urlset>
