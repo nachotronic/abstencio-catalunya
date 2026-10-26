@@ -106,3 +106,19 @@ El backtest compara el motor con «repetir» (generales anteriores) y «aditivo�
 ## 14. Clima (22/10/2026)
 
 `src/clima.py`: lluvia del día de 14 generales (1982-2023) por municipio con NASA POWER (MERRA-2) y regresión con efectos fijos de municipio y provincia × elección (96.718 observaciones). Que llueva baja la participación 0,25 puntos (error típico 0,15) y no mueve el voto al PP (+0,09; 0,20) ni al PSOE (−0,07; 0,19). Coincide con Artés (2014). Efecto en escaños: menos de uno. No entra en el motor.
+
+## 15. Autonómicas como señal y Senado completo (26/10/2026)
+
+**Autonómicas: no entran.** Señal probada: lo que cada partido (PP, PSOE, Vox) sacó en las últimas autonómicas de su
+comunidad frente a lo esperable por la tendencia nacional de las encuestas en esa fecha, elevado a α, en las
+provincias de esa comunidad; también en doble diferencia frente a las autonómicas anteriores. Con el voto nacional
+real (solo mide el reparto entre provincias), empeora en las tres pruebas. En 23J-2023, con α = 0,5, el error por
+provincia sube de 0,98 a 1,03 puntos y los escaños mal puestos por provincia de 21 a 29, porque las mayorías del PP en
+las autonómicas de 2021-2023 no se trasladaron a las generales. En 28A y 10N-2019 el resultado es mixto o peor.
+Script y tabla: /mnt/project-files/previsiones/autonomicas/.
+
+**Senado completo:** 58 designados reales (`previsiones/datos/senado_designados.csv`) sumados a los elegidos
+simulados; cada bloque trae su mayoría en el Senado (134 de 267).
+
+**Trasvases del CIS (23/10/2026): no entran.** La mezcla con la subida proporcional mejora 2023 y empeora 2019
+(/mnt/project-files/previsiones/trasvases/).
