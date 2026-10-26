@@ -24,6 +24,59 @@
    ]
   },
   {
+   "tipo": "tabla",
+   "dur": 4.6,
+   "titulo": [
+    "4 encuestas",
+    "publicadas hoy"
+   ],
+   "sub": "% de voto estimado",
+   "cols": [
+    [
+     "PP",
+     "PP"
+    ],
+    [
+     "PSOE",
+     "PSOE"
+    ],
+    [
+     "Vox",
+     "Vox"
+    ]
+   ],
+   "filas": [
+    [
+     "NC Report",
+     "La Razón",
+     33.1,
+     25.8,
+     19.0
+    ],
+    [
+     "Winston",
+     "Artículo14",
+     29.4,
+     27.1,
+     19.2
+    ],
+    [
+     "SocioMétrica",
+     "El Español",
+     32.4,
+     27.0,
+     18.6
+    ],
+    [
+     "Sigma Dos",
+     "El Mundo",
+     30.6,
+     26.1,
+     19.9
+    ]
+   ]
+  },
+  {
    "tipo": "numeros",
    "dur": 3.8,
    "titulo": [
@@ -62,12 +115,12 @@
     [
      "PP",
      "PP",
-     31.5
+     31.2
     ],
     [
      "PSOE",
      "PSOE",
-     26.4
+     26.9
     ],
     [
      "Vox",
@@ -77,12 +130,12 @@
     [
      "Sumar",
      "Sumar",
-     6.8
+     6.7
     ],
     [
      "Podemos",
      "Podemos",
-     2.7
+     2.6
     ]
    ]
   },
@@ -109,13 +162,8 @@
     ],
     [
      "NC Report",
-     207,
-     212
-    ],
-    [
-     "SocioMétrica",
-     205,
-     205
+     206,
+     210
     ],
     [
      "DYM",
@@ -123,24 +171,19 @@
      208
     ],
     [
-     "Winston",
-     204,
-     204
-    ],
-    [
      "Data10",
      203,
      203
     ],
     [
-     "Sigma Dos",
-     197,
-     205
-    ],
-    [
      "Target Point",
      199,
      203
+    ],
+    [
+     "SocioMétrica",
+     200,
+     200
     ],
     [
      "40dB.",
@@ -158,6 +201,11 @@
      211
     ],
     [
+     "Sigma Dos",
+     191,
+     200
+    ],
+    [
      "IMOP Insights",
      195,
      195
@@ -171,42 +219,15 @@
      "GESOP",
      189,
      197
+    ],
+    [
+     "Winston",
+     191,
+     191
     ]
    ],
    "nota": [
     "14 de 14 les dan mayoría absoluta"
-   ]
-  },
-  {
-   "tipo": "numeros",
-   "dur": 4.2,
-   "titulo": [
-    "La última:",
-    "Ateneo del Dato"
-   ],
-   "sub": "elDiario.es, publicada el 25 de octubre",
-   "items": [
-    [
-     "31,1 %",
-     "PP",
-     [
-      "PP"
-     ]
-    ],
-    [
-     "27,6 %",
-     "PSOE",
-     [
-      "PSOE"
-     ]
-    ],
-    [
-     "19,8 %",
-     "Vox",
-     [
-      "Vox"
-     ]
-    ]
    ]
   },
   {

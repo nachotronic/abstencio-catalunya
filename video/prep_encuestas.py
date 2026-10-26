@@ -22,6 +22,7 @@ ult = max((e for e in encs if e.get('publicado') and not e['reest']), key=lambda
 dias = (date(2026, 11, 29) - hoy).days
 pv = sorted(([e['casa'], *K.suma_pv(e)] for e in con_esc), key=lambda r: -(r[1] + r[2]))
 fp = date.fromisoformat(ult['publicado'])
+nuevas = [e for e in encs if e.get('publicado') == hoy.isoformat() and not e['reest'] and 'VOX' in e['voto']]
 
 escenas = [
     {'tipo': 'hook', 'dur': 2.8, 'lineas': [f'A {dias} días del 29N,', '¿qué dicen', [['las encuestas?', 'vote']]]},
@@ -33,10 +34,15 @@ escenas = [
     {'tipo': 'horquillas', 'dur': 5.4, 'titulo': ['PP + Vox, escaños', 'en cada encuesta'], 'sub': 'Horquilla de cada encuestadora', 'eje': [150, 220],
      'linea': 176, 'lineaTxt': '176: mayoría', 'color': 'PP', 'filas': [[c[:18], a, b] for c, a, b in pv],
      'nota': [f'{mayoria} de {len(con_esc)} les dan mayoría absoluta']},
+] + ([{'tipo': 'tabla', 'dur': 4.6, 'titulo': [f'{len(nuevas)} encuestas', 'publicadas hoy'], 'sub': '% de voto estimado',
+        'cols': [['PP', 'PP'], ['PSOE', 'PSOE'], ['Vox', 'Vox']],
+        'filas': [[e['casa'], e['medio'], e['voto']['PP'], e['voto']['PSOE'], e['voto']['VOX']] for e in nuevas]}] if len(nuevas) > 1 else [
     {'tipo': 'numeros', 'dur': 4.2, 'titulo': ['La última:', ult['casa']], 'sub': f'{ult["medio"] + ", " if ult["medio"] else ""}publicada el {fp.day} de {MES[fp.month - 1]}',
-     'items': [[pc(ult['voto'][k]), COL[k], [COL[k]]] for k in ('PP', 'PSOE', 'VOX') if k in ult['voto']]},
+     'items': [[pc(ult['voto'][k]), COL[k], [COL[k]]] for k in ('PP', 'PSOE', 'VOX') if k in ult['voto']]}]) + [
     {'tipo': 'cierre', 'dur': 3.2, 'lineas': ['Todas las', 'encuestas,', 'cada día'], 'ruta': '/encuestas/'},
 ]
+# las encuestas del día van justo después de la pregunta inicial
+escenas.insert(1, escenas.pop(next(i for i, e in enumerate(escenas) if e['tipo'] in ('tabla', 'numeros') and e['titulo'][0] != 'El PP gana en')))
 guion = {'plantilla': 'guia', 'kicker': f'ENCUESTAS DEL 29N · {hoy.day} DE {MES[hoy.month - 1].upper()}',
          'colores': {'PP': '#1d84ce', 'PSOE': '#e30613', 'Vox': '#5ac035', 'Sumar': '#a2275f', 'Podemos': '#5a3c8f'},
          'escenas': escenas,

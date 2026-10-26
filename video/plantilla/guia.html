@@ -358,6 +358,19 @@ const S = {
     });
     if (s.nota) [].concat(s.nota).forEach((l, j) => text(l, X, yb + 120 + j * 50, '400 40px ' + F.body, C.fg, 'left', ease((t - 2.2 - j * 0.2) / 0.4)));
   },
+  // Tabla de encuestas: s.cols = [[nombre, color]], s.filas = [[encuestadora, medio, v1, v2, ...]]
+  tabla(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const cw = 150, x0 = W - X - cw * s.cols.length, top = 600, rowH = 150;
+    s.cols.forEach(([nm, c], j) => text(nm, x0 + (j + 0.5) * cw, top, '800 40px ' + F.display, col(c), 'center', ease((t - 0.3) / 0.3)));
+    s.filas.forEach(([casa, medio, ...vs], i) => {
+      const y = top + 90 + i * rowH, k = ease((t - 0.5 - i * 0.25) / 0.5);
+      text(casa, X, y, '700 40px ' + F.display, C.fg, 'left', k);
+      if (medio) text(medio, X, y + 42, '500 26px ' + F.mono, C.muted, 'left', k);
+      vs.forEach((v, j) => text(v.toFixed(1).replace('.', ','), x0 + (j + 0.5) * cw, y + 10, '800 52px ' + F.display, col(s.cols[j][1]), 'center', k));
+    });
+  },
   lineas(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
