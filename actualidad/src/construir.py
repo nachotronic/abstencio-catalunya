@@ -1730,6 +1730,25 @@ PIEZAS = [
                   pie='Una urna transparente con sobres sobre el mapa de España, entre una ciudad y un pueblo: un collage.'),
     ),
     dict(
+        slug='calle-que-parte-barcelona', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/calle-que-parte-barcelona.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una gran avenida de Barcelona con fachadas modernistas a cada lado y el cielo partido en dos colores: un collage.'),
+        titulo='Las dos calles que parten Barcelona: la Diagonal en el voto a la derecha, la Meridiana en el independentismo', serie='29n',
+        descripcion='En Barcelona, el PSC ganó en casi todas las secciones censales el 23 de julio de 2023, pero sus vecinas no votan igual. La Diagonal es la calle que más veces separa a dos ganadores. La Meridiana no cambia el ganador, pero separa a Porta, donde el independentismo sacó el 29% en las autonómicas de 2024, de Sant Andreu, donde sacó el 47%.',
+        compara='Las 2.632 parejas de secciones censales contiguas de la ciudad de Barcelona (al menos 80 metros de límite común y 400 electores cada una): ganador y voto a PP y Vox en las generales de 2023, voto a ERC, Junts, CUP y Aliança Catalana en las autonómicas de 2024, la calle que las separa y su renta por unidad de consumo.',
+        limites='Son datos de secciones, no de personas, y no explican por qué cada lado vota distinto. Se mezclan dos elecciones: el ganador y PP más Vox son de las generales de 2023; la suma independentista, de las autonómicas de 2024. La calle de cada límite sale de un geocodificador en cinco puntos y puede no coincidir con el límite en todos sus metros. La renta de las secciones más ricas está topada en 58.752 euros. Sin voto exterior.',
+        calculo='Voto: porcentaje sobre votos válidos. Pareja de secciones vecinas: comparten al menos 80 metros de límite (con 12 metros de tolerancia) y tienen al menos 400 electores cada una. Salto: diferencia en puntos entre las dos secciones. Calle: la que devuelve el geocodificador inverso de CartoCiudad en al menos tres de cinco puntos del límite común. Medias por distrito y por barrio: media simple de sus secciones.',
+        fuentes=[INTERIOR, PARLAMENT, INE,
+                 ('https://www.cartociudad.es/', 'CartoCiudad (IGN), geocodificador inverso para el nombre de cada calle'),
+                 ('https://www.openstreetmap.org/', 'OpenStreetMap, nombres de barrio y trazado de las calles'),
+                 ('https://beteve.cat/politica/mapa-on-concentra-vot-partits-barcelona-eleccions-generals-2023/', 'Betevé, Marcos Arizmendi: on es concentra el vot de cada partit a Barcelona (generales 2023)'),
+                 ('https://beteve.cat/politica/la-renda-duna-famila-de-pedralbes-multiplica-per-sis-la-duna-de-ciutat-meridiana/', 'Betevé, la renda d\'una família de Pedralbes multiplica per sis la de Ciutat Meridiana'),
+                 ('https://naciodigital.cat/politica/la-meridiana-de-la-via-lliure.html', 'Nació Digital, Pep Martí: la Meridiana de la Via Lliure (8-9-2015)'),
+                 ('https://www.eldiario.es/catalunya/toni-rodon-politologo-segregacion-favorece-voto-extrema-derecha_1_10076472.html', 'elDiario.es, entrevista a Toni Rodon (2-4-2023)')],
+        enlaces=[],
+        lugar='Barcelona',
+    ),
+    dict(
         slug='quien-vota-que-barrios-29n', fecha='2026-10-25',
         titulo='Quién vota qué, barrio a barrio: el PP sube 21 puntos donde pesan las rentas del capital, el PSOE 15 donde abundan los peones y Vox solo se mueve con los jubilados', serie='29n', figura=0,
         descripcion='Crónica del domingo: las piezas de la semana sobre de qué viven los vecinos de cada barrio, contadas de una vez con un gráfico que cambia al bajar. La renta del capital, los autónomos, el oficio y la pensión reparten el voto entre PP y PSOE; a Vox casi no lo mueven.',
@@ -2725,6 +2744,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
     'corrupcion-penaliza-voto-29n': 'Corrupción y 29N',
@@ -3006,6 +3026,7 @@ def en_catala(out, p):
         a, m, d = dia.split('-')
         out = out.replace(fecha_larga(f), f'{int(d)} {MESOS_CA[int(m) - 1]} de {a}' + (f', a les {hora.replace(":", ".")}' if hora else ''))
     out = out.replace(' · Actualizado el <time', ' · Actualitzat el <time')
+    out = re.sub(r'<b>Ver las (\d+) piezas de la serie</b>', r'<b>Veure les \1 peces de la sèrie</b>', out)
     return out
 
 
@@ -3057,8 +3078,12 @@ def pieza(p, todas):
     fuentes = ''.join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for u, t in p['fuentes'])
     # la serie entera, en orden, con la pieza actual marcada; después, las últimas de otras series
     serie = [q for q in todas if q['serie'] == p['serie']]
+    # como mucho 20 piezas de la serie alrededor de la actual (Nacho, 25-10-2026: la del 29N pasaba de 80)
+    i = serie.index(p); ini = max(0, min(i - 10, len(serie) - 20)); ventana = serie[ini:ini + 20]
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
-                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie)
+                    f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in ventana)
+    if len(serie) > len(ventana):
+        lista += f'<li class="todas"><a href="../index.html#{p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
     otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
     sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola

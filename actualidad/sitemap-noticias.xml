@@ -41,6 +41,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/calle-que-parte-barcelona/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-25</news:publication_date>
+      <news:title>Las dos calles que parten Barcelona: la Diagonal en el voto a la derecha, la Meridiana en el independentismo</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/quien-vota-que-barrios-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
