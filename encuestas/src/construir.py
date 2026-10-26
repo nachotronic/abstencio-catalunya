@@ -600,6 +600,9 @@ def svg_mapa_provincias(primero, nombres):
             f'{marco}<g stroke="var(--bg)" stroke-width=".8" stroke-linejoin="round">{out}</g></svg>')
 
 
+PROV_PAGINAS = []   # [(ruta, nombre)] de las páginas /encuestas/<provincia>/ que escribe provincias()
+
+
 def provincias():
     """encuestas/provincias.html: escaños de cada provincia según el modelo (mediana y horquilla del 80 %) y las más
     disputadas. Solo si hay salida publicable del modelo, como el bloque de la estimación. Devuelve True si la escribe."""
@@ -610,7 +613,9 @@ def provincias():
     if meta.get('interno', True) or meta.get('ficticio'):
         return False
     sys.path.insert(0, str(RAIZ / 'src'))
-    from territorios_rutas import ruta_provincia
+    from territorios_rutas import ruta_provincia, PROV_SLUG
+    import provincias_paginas
+    PROV_PAGINAS[:] = provincias_paginas.genera(d, meta, sys.modules[__name__], ruta_provincia, PROV_SLUG.get)
     nombres, prov = meta['provincias'], d['provincias']
     primero = {c: max(v['listas'], key=lambda l: l['p_primera']) for c, v in prov.items()}
     from collections import Counter
@@ -658,7 +663,7 @@ def provincias():
             chips = f'<span class="esc" aria-hidden="true">{cuad}</span>' + chips
             pr = primero[c]
             # «Primero» antes del reparto para que se vea en el móvil sin desplazar la tabla
-            filas += (f'<tr><td><a href="../{ruta_provincia(c)}">{html.escape(nombres[c])}</a><span class="medio">{html.escape(ca)} · {v["escanos_total"]} escaños</span></td>'
+            filas += (f'<tr><td><a href="{PROV_SLUG[c]}/">{html.escape(nombres[c])}</a><span class="medio">{html.escape(ca)} · {v["escanos_total"]} escaños · <a href="../{ruta_provincia(c)}">2023</a></span></td>'
                       f'<td class="n"><i class="pt" style="background:{color_lista(pr["lista"])}"></i>{html.escape(nombre_lista(pr["lista"]))}<small>{round(pr["p_primera"] * 100)} %</small></td>'
                       f'<td>{chips}</td></tr>')
     faq = [('¿Es esto una encuesta por provincias?',
@@ -694,7 +699,7 @@ def provincias():
 <figure><figcaption><span class="t">Las provincias más disputadas</span><span class="s">Porcentaje de simulaciones en que queda primero cada uno de los dos partidos con más opciones.</span></figcaption>
 <div class="duelos">{duelos}</div></figure>
 <h2>Escaños por provincia según la media de encuestas</h2>
-<p>Cada cuadrado es un escaño, con el color del partido que lo saca en la mediana; en gris, los que quedan en el aire. La cifra grande es la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones y, debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a sus resultados de 2023, sección a sección.</p>
+<p>Cada cuadrado es un escaño, con el color del partido que lo saca en la mediana; en gris, los que quedan en el aire. La cifra grande es la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones y, debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a su página con el detalle y, al lado, a sus resultados de 2023, sección a sección.</p>
 <div class="tbl"><table class="prov"><thead><tr><th>Provincia</th><th class="n">Primero</th><th>Escaños: mediana y horquilla</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">{html.escape(meta.get('aviso', ''))} Modelo v{html.escape(meta['version'].split('-')[0].lstrip('v'))}; <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>
 <h2>Preguntas frecuentes</h2>
@@ -916,7 +921,8 @@ def main():
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
                                         + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '')
                                         + (f'  <url><loc>{URL}calculadora-escanos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_calculadora else '')
-                                        + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas) + '</urlset>\n', encoding='utf-8')
+                                        + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas)
+                                        + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
     # post para redes de esta actualización: el workflow solo vuelve a escribirlo cuando entra una encuesta nueva
     texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
@@ -924,7 +930,7 @@ def main():
     # autor común y migas de pan (BreadcrumbList), como en el resto del sitio: la página se regenera sola dos veces al día
     sys.path.insert(0, str(RAIZ / 'src'))
     import esquema
-    for f in [SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html'] + [SALIDA / r / 'index.html' for r, *_ in casas]:
+    for f in [SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html'] + [SALIDA / r / 'index.html' for r, *_ in casas + PROV_PAGINAS]:
         if f.exists():
             esquema.procesa(f)
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
