@@ -2819,6 +2819,8 @@ PIEZAS += [
                  ('https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm', 'Constitución de la República Federativa de Brasil, artículo 14')],
         enlaces=[],
         lugar='Brasil',
+        foto=dict(src='img/actualidad/fotos/brasil-lula-remontada-mapa-estados.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Quién ganó en cada estado de Brasil en la segunda vuelta.', fuente='TSE, resultados oficiales por estado; contornos de IBGE'),
     ),
 ]
 
