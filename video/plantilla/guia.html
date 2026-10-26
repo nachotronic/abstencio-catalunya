@@ -324,6 +324,40 @@ const S = {
       });
     });
   },
+  // Barras horizontales, una por fila: s.filas = [[nombre, color, valor]]
+  barrasH(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const lab = 270, lw = W - 2 * X - lab - 170, top = 580, rowH = s.alto || 130;
+    s.filas.forEach(([nm, c, v], i) => {
+      const y = top + i * rowH, k = ease((t - 0.5 - i * 0.15) / 0.6), w = lw * v / s.max * k;
+      text(nm, X, y + 56, '800 50px ' + F.display, col(c), 'left', k);
+      ctx.fillStyle = col(c); rrect(X + lab, y + 8, w, 64, 10);
+      text((v * k).toFixed(1).replace('.', ',') + ' %', X + lab + w + 16, y + 56, '800 46px ' + F.display, C.fg, 'left', k);
+    });
+  },
+  // Horquillas por fila sobre un eje con una línea de referencia: s.filas = [[nombre, bajo, alto]], s.eje = [min, max], s.linea
+  horquillas(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const lab = 330, x0 = X + lab, x1 = W - X - 90, top = 560, rowH = Math.min(64, 820 / s.filas.length);
+    const px = v => x0 + (x1 - x0) * (v - s.eje[0]) / (s.eje[1] - s.eje[0]);
+    const kl = ease((t - 0.3) / 0.4), xl = px(s.linea), yb = top + s.filas.length * rowH;
+    ctx.globalAlpha = kl; ctx.strokeStyle = C.fg; ctx.lineWidth = 3; ctx.setLineDash([10, 8]);
+    ctx.beginPath(); ctx.moveTo(xl, top - 30); ctx.lineTo(xl, yb); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+    text(s.lineaTxt || String(s.linea), xl, yb + 44, '700 30px ' + F.mono, C.fg, 'center', kl);
+    s.filas.forEach(([nm, a, b], i) => {
+      const y = top + i * rowH + rowH / 2, k = ease((t - 0.6 - i * 0.08) / 0.4), c = col(a >= s.linea ? s.color : s.colorNo || 'muted');
+      text(nm, X, y + 11, '500 30px ' + F.mono, C.fg, 'left', k);
+      ctx.globalAlpha = k; ctx.fillStyle = c;
+      if (b > a) rrect(px(a), y - 11, (px(b) - px(a)) * k, 22, 11);
+      ctx.beginPath(); ctx.arc(px(a), y, 17, 0, 7); ctx.fill();
+      if (b > a) { ctx.beginPath(); ctx.arc(px(a) + (px(b) - px(a)) * k, y, 17, 0, 7); ctx.fill(); }
+      ctx.globalAlpha = 1;
+      text(a === b ? String(a) : a + '-' + b, W - X, y + 11, '700 28px ' + F.mono, C.fg, 'right', k);
+    });
+    if (s.nota) [].concat(s.nota).forEach((l, j) => text(l, X, yb + 120 + j * 50, '400 40px ' + F.body, C.fg, 'left', ease((t - 2.2 - j * 0.2) / 0.4)));
+  },
   lineas(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
@@ -349,6 +383,7 @@ const S = {
   },
   numeros(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
     s.items.forEach(([n, c, l], i) => {
       const k = ease((t - 0.5 - i * 0.6) / 0.8), y = 640 + i * 300;
       text(cuenta(n, k), X, y, '800 120px ' + F.display, col(c), 'left', clamp(k * 3));
