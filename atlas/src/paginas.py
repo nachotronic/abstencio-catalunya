@@ -171,10 +171,10 @@ def url(p):
 def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atlas'):
     rel = '../' * nivel
     raiz = rel + '../'
-    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('territorio', f'{raiz}elecciones/', 'Por territorio'), ('barrios', f'{raiz}municipio/barrios/', 'Barrios'), ('encuestas', f'{raiz}encuestas/', 'Encuestas'),
+    menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('territorio', f'{raiz}elecciones/', 'Por territorio'), ('municipios', f'{raiz}municipio/', 'Municipios'), ('barrios', f'{raiz}municipio/barrios/', 'Barrios'), ('temas', f'{raiz}temas/', 'Temas'), ('encuestas', f'{raiz}encuestas/', 'Encuestas'),
             ('atlas', f'{rel}index.html', 'Atlas'),
             ('actualidad', f'{raiz}actualidad/', 'Actualidad'),
-            ('comunidades', f'{raiz}actualidad/#comunidades', 'Comunidades'), ('historia', f'{raiz}actualidad/#historia', 'Historia electoral'), ('metodologia', f'{rel}metodologia/index.html', 'Metodología'),
+            ('comunidades', f'{raiz}actualidad/#comunidades', 'Comunidades'), ('historia', f'{raiz}actualidad/#historia', 'Historia electoral'),
             ('sobre', f'{raiz}sobre-mi.html', 'Sobre mí')]
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz}">{SITIO}</a>' +
            ''.join(f'<a href="{h}"{" aria-current=\"page\"" if k == actual else ""}>{t}</a>' for k, h, t in menu) + '</nav>')
@@ -226,7 +226,7 @@ def siguelo():
             + f' por <a href="{ATLAS_URL}feed.xml">RSS</a> o en <a href="{X_URL}">X</a>.{form}</aside>')
 
 
-PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</a> · <a href="{REPO}">Código y datos</a> · <a href="{ATLAS_URL}politica-editorial/">Política editorial</a> · <a href="{ATLAS_URL}politica-editorial/#ia">Uso de IA</a>: con apoyo de IA, revisado por {FIRMA}</footer>
+PIE = f"""<footer>{NOMBRE} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</a> · <a href="{REPO}">Código y datos</a> · <a href="{ATLAS_URL}metodologia/">Metodología</a> · <a href="{ATLAS_URL}politica-editorial/">Política editorial</a> · <a href="{ATLAS_URL}politica-editorial/#ia">Uso de IA</a>: con apoyo de IA, revisado por {FIRMA}</footer>
 </main>
 </body>
 </html>
