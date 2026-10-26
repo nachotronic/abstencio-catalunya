@@ -272,6 +272,10 @@ def senal_europeas(provs, alfa=ALFA_EUROPEAS):
     return factor, fuerza
 
 
+PODEMOS_CON_FA = {'03', '12', '46', '35', '38'}
+PODEMOS_CON_ERC = {'08', '17', '25', '43'}
+
+
 def base_v1():
     """Cuotas de partida por provincia para LISTAS_V1: 2023 con Sumar repartido entre Sumar (FA) y Podemos según
     las europeas de 2024 (base2026.py), e índice provincial de dónde vota SALF (europeas 2024)."""
@@ -297,6 +301,13 @@ def base_v1():
         # nacional de 2023 por su fuerza relativa en las europeas
         nac = (cuotas[:, j] * validos).sum() / validos.sum()
         cuotas[:, j] = np.where(cuotas[:, j] > 0, cuotas[:, j], nac * fuerza[k])
+    # Podemos no tiene papeleta propia en todas las provincias (coaliciones-quien-va-con-quien-29n): en Canarias y la
+    # Comunitat Valenciana va con el Frente Amplio y en Cataluña mete a los suyos en las listas de ERC
+    for i, p in enumerate(provs):
+        destino = 'Sumar' if p in PODEMOS_CON_FA else 'ERC' if p in PODEMOS_CON_ERC else None
+        if destino:
+            cuotas[i, LISTAS_V1.index(destino)] += cuotas[i, LISTAS_V1.index('Podemos')]
+            cuotas[i, LISTAS_V1.index('Podemos')] = 0
     indices = {'SALF': np.array([ind_salf[p] for p in provs])}
     return provs, cuotas, validos, indices
 
