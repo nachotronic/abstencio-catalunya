@@ -46,7 +46,7 @@ TODOS = PRINCIPALES + OTROS_ESC
 # orden aproximado de izquierda a derecha en el hemiciclo
 ORDEN_HEMI = ['BILDU', 'CUP', 'BNG', 'PODEMOS', 'SUMAR', 'ERC', 'NC', 'PSOE', 'PNV', 'JUNTS', 'CC', 'CS', 'UPN', 'PP', 'ALIANCA', 'SALF', 'VOX']
 NOMBRE = {k: n for k, n, _, _ in TODOS}
-NO_ENCUESTAS = {'keydata', 'sumar'}   # medias de otros medios y sondeos internos de partido
+NO_ENCUESTAS = {'keydata', 'sumar', 'psoe', 'pp', 'vox', 'podemos'}   # medias de otros medios y sondeos internos de partido
 DESDE_GRAFICO = 365   # días que enseña el gráfico
 VISIBLES = 10
 # Estimación propia (motor de /previsiones/): solo se publica si existe esta carpeta, que el hilo del modelo llena
