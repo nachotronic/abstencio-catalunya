@@ -1,0 +1,126 @@
+<title>Las jóvenes y Vox</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--sumar:#a2275f;--cs:#eb6109;--upyd:#e5007d;--upn:#1b3f8f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--cs:#f5873f;--upyd:#f0559f;--upn:#6d8fd6}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--cs:#f5873f;--upyd:#f0559f;--upn:#6d8fd6}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>:root{--vox:#5ac035;--neu:#1d7f95}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--vox:#74d651;--neu:#3aa6bf}}:root[data-theme="dark"]{--vox:#74d651;--neu:#3aa6bf}</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>El voto a Vox de las mujeres jóvenes se ha triplicado desde 2023, y la izquierda ha perdido 13 puntos entre ellas</h1>
+<p class="dek">En los barómetros del CIS, Vox pasa del 4,4% al 13,6% entre las mujeres de 18 a 29 años. Los hombres de su edad siguen muy por delante: uno de cada cuatro dice que votaría a Vox. La brecha entre ellos y ellas se abrió en 2023, y desde entonces no se ha cerrado.</p>
+<div class="byline">Nacho G. del Álamo · 25 de octubre de 2026</div>
+<div style="margin-top:1.4rem"></div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<p data-tipo="contexto">Se repite mucho que los jóvenes votan distinto según sean chicos o chicas: ellos más a la derecha, ellas más a la izquierda. Ya contamos que <a href="https://mapaelectoral.es/actualidad/sanchez-revuelta-broncano-voto-joven-29n/">entre los hombres jóvenes Vox casi dobla al PSOE</a>. Esta pieza mira a las mujeres jóvenes, y cómo ha cambiado su voto desde 2019. Para eso he reunido los microdatos de 26 encuestas del CIS: los nueve barómetros publicados desde diciembre de 2025, 37.191 entrevistas en total, y 17 estudios anteriores.</p>
+<p data-tipo="contexto">La medida es la que publica el CIS como «voto más simpatía»: el partido que cada entrevistado dice que votaría, o por el que siente más simpatía, sobre el total de entrevistados, incluidos los indecisos y los que no votarían. No es la estimación de voto del CIS. Sirve sobre todo para comparar grupos dentro de la misma encuesta.</p>
+<h2>Uno de cada cuatro, uno de cada ocho</h2>
+<p data-tipo="dato">En los barómetros de diciembre de 2025 a octubre de 2026, el <strong>25,5%</strong> de los hombres de 18 a 24 años dice que votaría a Vox. Entre las mujeres de su edad, el <strong>12,3%</strong>. La distancia, 13,2 puntos, es más del triple del margen de error. Con el PSOE pasa al revés: lo elige el 31,8% de ellas y el 13,4% de ellos.</p>
+<p data-tipo="dato">Si se cuenta solo a quienes nombran un partido, Vox sube al 32,3% entre los chicos de 18 a 24 años y al 15,1% entre las chicas. Sumando PSOE, Sumar, Podemos y el resto de la izquierda estatal, ellas dan a la izquierda el 42,7% y ellos, el 21,2%.</p>
+<figure>
+<figcaption><span class="t">Vox, por edad y sexo</span><span class="s">Voto más simpatía a Vox en los barómetros del CIS de diciembre de 2025 a octubre de 2026, en porcentaje de los entrevistados. Pasa el dedo o el ratón por cada fila</span></figcaption>
+<div class="chart" id="edad"></div>
+<div class="legend"><span><i class="sw" style="background:var(--bg);border:2px solid var(--vox);box-sizing:border-box;border-radius:50%"></i>Mujeres</span><span><i class="sw" style="background:var(--vox);border-radius:50%"></i>Hombres</span></div>
+<div class="src">Fuente: CIS, microdatos de los barómetros 3536 a 3582. Cálculo propio con el peso de cada encuesta.</div>
+</figure>
+<p data-tipo="patron">El gráfico deja ver algo que se suele pasar por alto: las mujeres que más votan a Vox no son las más jóvenes. Entre las de 25 a 34 años, Vox llega al 15,4%, y entre las de 35 a 44, al 16,6%. Las de 18 a 24 están por debajo, con el 12,3%. Entre los hombres, Vox baja con la edad sin excepción.</p>
+<h2>Lo que ha pasado desde 2023</h2>
+<p data-tipo="dato">La brecha no siempre existió. En 2019 y 2020, entre los jóvenes de 18 a 29 años, Vox sacaba el 9,0% de los hombres y el 4,0% de las mujeres, y la izquierda tenía prácticamente el mismo apoyo en los dos sexos: 34,8% y 35,5%.</p>
+<p data-tipo="dato">Todo se separó en 2023. Antes del 23J, la izquierda subió al 51,2% entre las mujeres jóvenes y se quedó en el 36,1% entre los hombres. En el barómetro de septiembre de 2023, ya después de votar, llegaba al <strong>55,4%</strong> entre ellas. Desde entonces ha caído al <strong>42,0%</strong>: 13,4 puntos menos.</p>
+<p data-tipo="dato">En el mismo tiempo, Vox ha pasado del <strong>4,4%</strong> al <strong>13,6%</strong> entre las mujeres de 18 a 29 años. Entre los hombres de esa edad, del 14,6% al 25,3%. Las dos cifras se han multiplicado, pero la distancia entre ellos y ellas en el voto a Vox se ha movido entre 9 y 16 puntos desde 2023, sin cerrarse.</p>
+<figure>
+<figcaption><span class="t">Cómo ha cambiado el voto de los jóvenes de 18 a 29 años</span><span class="s">Voto más simpatía en los barómetros del CIS, en porcentaje de los entrevistados. A la izquierda, Vox; a la derecha, PSOE, Sumar, Podemos y el resto de la izquierda estatal. Pasa el dedo o el ratón por cada punto</span></figcaption>
+<div class="maps"><div><h3>Vox</h3><div class="chart" id="tvox"></div></div><div><h3>Izquierda estatal</h3><div class="chart" id="tizq"></div></div></div>
+<div class="legend"><span><i class="sw" style="background:var(--fg);height:2px"></i>Hombres</span><span><i class="sw" style="background:repeating-linear-gradient(90deg,var(--fg) 0 4px,transparent 4px 7px);height:2px"></i>Mujeres</span></div>
+<div class="src">Fuente: CIS, microdatos de 26 encuestas de 2019 a 2026, agrupadas por periodo. Cálculo propio.</div>
+<details><summary>Ver las cifras y los márgenes de error</summary><div class="tbl" id="ttbl"></div></details>
+</figure>
+<p data-tipo="patron">Los hombres jóvenes se han ido a la derecha, también en cómo se definen: en la escala de 1 (extrema izquierda) a 10 (extrema derecha) pasan de 4,53 en 2019-20 a 5,27 ahora. Las mujeres jóvenes, en cambio, se ubican casi igual que hace seis años: 4,32 entonces y 4,26 ahora. Lo que ha cambiado entre ellas es el voto, no la ideología declarada.</p>
+<p data-tipo="patron">Y las mujeres jóvenes no son las que más votan a la izquierda. Las mayores de 65 años le dan el 44,0%, más que las de 18 a 24, que le dan el 42,7%. Vox, en cambio, saca entre las jóvenes más del doble que entre las mayores, donde se queda en el 4,9%. Ellas sí se colocan más a la izquierda: 4,22 frente a 4,83.</p>
+<h2>Lo que dicen los expertos</h2>
+<p data-tipo="contexto">La brecha entre chicos y chicas se ha visto en muchos países. María Solanas, del Real Instituto Elcano, dijo a la agencia <a href="https://acento.com.do/politica/la-politica-abre-una-nueva-brecha-de-genero-entre-jovenes-de-todo-el-mundo-9595155.html">EFE</a> en diciembre de 2025 que la brecha de voto por género se ha hecho «más amplia» entre los más jóvenes. Eva Anduiza, catedrática de Ciencia Política de la Universidad Autónoma de Barcelona, la explicaba así en <a href="https://www.publico.es/mujer/brecha-ideologica-divide-juventud-derechas-nunca-cada-vez-izquierdas.html">Público</a> en 2024:</p>
+<blockquote class="cita"><p>«Esta brecha entre la juventud es un problema global. A veces más por derechización de los hombres y a veces más porque las mujeres se desplazan hacia la izquierda, pero está pasando en multitud de países.»</p><footer>Eva Anduiza (UAB), en <a href="https://www.publico.es/mujer/brecha-ideologica-divide-juventud-derechas-nunca-cada-vez-izquierdas.html">Público</a> (7 de marzo de 2024).</footer></blockquote>
+<p data-tipo="contexto">En la misma pieza, la politóloga Silvia Claveria, de la Universidad Carlos III, apuntaba a la socialización de las chicas: «Las jóvenes se han socializado en un momento de explosión del movimiento feminista, que les puede hacer politizarse mucho más y ubicarse más a la izquierda que las mujeres de otras edades».</p>
+<p data-tipo="hipotesis">Los datos del CIS encajan con la primera parte de la frase de Anduiza: en España, la brecha la han abierto sobre todo los hombres, que se han movido a la derecha. La segunda, que las mujeres vayan hacia la izquierda, se vio en 2023 y desde entonces se ha deshecho en parte. En la misma pieza de EFE, Marcela Ríos, de IDEA Internacional, describía algo parecido en América Latina: «Esa diferencia se está acortando y la agenda proseguridad y antimigrantes también está logrando apoyo entre las mujeres jóvenes». Con encuestas no se puede saber por qué.</p>
+<h2>Lo que no dicen estos números</h2>
+<p data-tipo="contexto">Son encuestas, no votos. El voto más simpatía no es una previsión, y el CIS ha recibido críticas por dar al PSOE más de lo que luego saca, así que los niveles pueden estar sesgados. Las diferencias entre grupos de la misma encuesta son más fiables que las cifras sueltas. Los pesos de los barómetros de 2026 varían mucho, y los márgenes de error se han calculado con esa pérdida de precisión: entre las mujeres de 18 a 29 años, unos dos puntos arriba o abajo.</p>
+<p data-tipo="contexto">Las etiquetas de los partidos cambian con los años: en 2019 no existían Sumar ni Se Acabó la Fiesta. Por eso la comparación en el tiempo se hace con Vox y con el bloque de la izquierda estatal, que excluye a ERC, Bildu o el BNG. Los resultados de las generales no se pueden separar por sexo ni por edad, así que no hay forma de comprobarlo con votos reales.</p>
+<p data-tipo="patron">Lo que sí dicen es que Vox ha crecido entre las jóvenes, no solo entre los jóvenes. Puedes ver cómo votó cada barrio en el <a href="https://mapaelectoral.es/">mapa por secciones</a>, y cómo votaron las mujeres la primera vez que pudieron, en <a href="https://mapaelectoral.es/actualidad/mujeres-1933-frente-popular-1936/">1933</a>.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/sanchez-revuelta-broncano-voto-joven-29n/">Sánchez en La Revuelta y el voto joven</a></p><div class="foot">Datos: CIS, microdatos de los barómetros de diciembre de 2025 a octubre de 2026 (estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582) y de 17 estudios de 2019 a 2025. Variable de voto más simpatía (VOTOSIMG), ideología (ESCIDEOL), sexo y edad. Porcentajes ponderados sobre el total de entrevistados. Márgenes de error al 95% con el tamaño efectivo de la muestra. Izquierda estatal: PSOE, Sumar, Podemos, Unidas Podemos y otras candidaturas de izquierda de ámbito estatal.</div>
+</main>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const TR=[["2019-20", 4.0, 35.5, 9.0, 34.8, 1.1, 1.6, 1533, 1704], ["2021", 5.1, 40.7, 10.8, 37.5, 2.0, 2.8, 452, 465], ["2023, antes del 23J", 7.5, 51.2, 17.7, 36.1, 1.3, 1.7, 1937, 2373], ["2023, después del 23J", 4.4, 55.4, 14.6, 38.8, 1.5, 2.3, 804, 933], ["2024", 7.9, 44.5, 23.5, 27.7, 2.2, 3.6, 876, 1019], ["2025", 15.2, 36.7, 24.7, 22.9, 3.6, 4.3, 582, 739], ["Dic. 2025-oct. 2026", 13.6, 42.0, 25.3, 21.8, 2.0, 2.3, 1838, 2517]], ED=[["18-24", 12.3, 25.5, 2.5, 2.7, 892, 1357], ["25-34", 15.4, 24.0, 2.2, 2.6, 2080, 2519], ["35-44", 16.6, 20.8, 1.9, 2.1, 2769, 3143], ["45-64", 9.9, 15.1, 0.9, 1.1, 7757, 7995], ["65+", 4.9, 6.8, 0.9, 1.1, 4430, 4249]];
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(h,x,y){t.innerHTML=h;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;t.style.left=Math.min(Math.max(x,tw/2),bw-tw/2)+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+function hov(box,tip,hit,h){const f=ev=>{const [a,b]=pos(box,ev);tip.show(h,a,b)};hit.addEventListener('mousemove',f);hit.addEventListener('touchstart',f,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+const c1=v=>v.toFixed(1).replace('.',',');
+(function(){const box=document.getElementById('edad'),tip=tipFor(box);
+ const W=Math.max(300,box.clientWidth||640),n=W<500,rh=36,m={l:n?56:80,r:20,t:6,b:24},H=m.t+m.b+rh*ED.length,hi=30,x=v=>m.l+v/hi*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Voto a Vox por edad y sexo'},box);
+ for(let v=0;v<=hi;v+=n?10:5){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ ED.forEach((d,i)=>{const y=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:y+4,'text-anchor':'end',class:'lab'},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:y,y2:y,stroke:'var(--vox)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy:y,r:6,fill:'var(--bg)',stroke:'var(--vox)','stroke-width':2.5},svg);
+  el('circle',{cx:x(d[2]),cy:y,r:6,fill:'var(--vox)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(i===0){el('text',{x:x(d[1]),y:y-11,'text-anchor':'middle','font-size':12},svg).textContent='Mujeres';el('text',{x:x(d[2]),y:y-11,'text-anchor':'middle','font-size':12},svg).textContent='Hombres'}
+  hov(box,tip,el('rect',{x:0,y:y-rh/2,width:W,height:rh,fill:'transparent'},svg),`<b>${d[0]} años</b><br>Mujeres: ${c1(d[1])}% (±${c1(d[3])}; ${d[5].toLocaleString('es-ES')} entrevistas)<br>Hombres: ${c1(d[2])}% (±${c1(d[4])}; ${d[6].toLocaleString('es-ES')} entrevistas)`)})})();
+function linea(id,iw,im,col,hi,nombre){const box=document.getElementById(id),tip=tipFor(box);
+ const W=Math.max(150,box.clientWidth||320),H=W<260?200:230,m={l:30,r:8,t:10,b:30},n=TR.length,x=i=>m.l+i*(W-m.l-m.r)/(n-1),y=v=>H-m.b-v/hi*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':nombre+' entre los jóvenes de 18 a 29 años, por sexo, 2019-2026'},box);
+ for(let v=0;v<=hi;v+=hi>40?20:10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-4,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'}
+ (W<300?[['2019',0],['2026',n-1]]:[['2019',0],['2023',2.5],['2026',n-1]]).forEach(([t,i])=>el('text',{x:x(i),y:H-10,'text-anchor':i?(i===n-1?'end':'middle'):'start'},svg).textContent=t);
+ const P=k=>TR.map((d,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(d[k]).toFixed(1)).join('');
+ el('path',{d:P(im),fill:'none',stroke:col,'stroke-width':2},svg);el('path',{d:P(iw),fill:'none',stroke:col,'stroke-width':2,'stroke-dasharray':'5 3'},svg);
+ TR.forEach((d,i)=>{[[iw,'Mujeres'],[im,'Hombres']].forEach(([k,s])=>{el('circle',{cx:x(i),cy:y(d[k]),r:3.5,fill:k===iw?'var(--bg)':col,stroke:col,'stroke-width':2},svg)});
+  hov(box,tip,el('rect',{x:x(i)-(W-m.l-m.r)/(n-1)/2,y:m.t,width:(W-m.l-m.r)/(n-1),height:H-m.t-m.b,fill:'transparent'},svg),`<b>${d[0]}</b><br>${nombre}<br>Mujeres: ${c1(d[iw])}%<br>Hombres: ${c1(d[im])}%`)});}
+linea('tvox',1,3,'var(--vox)',30,'Vox');linea('tizq',2,4,'var(--neu)',60,'Izquierda estatal');
+document.getElementById('ttbl').innerHTML='<table><thead><tr><th>Periodo</th><th class="n">Vox mujeres</th><th class="n">Vox hombres</th><th class="n">Izquierda mujeres</th><th class="n">Izquierda hombres</th><th class="n">Entrevistas</th></tr></thead><tbody>'+TR.map(d=>`<tr><td>${d[0]}</td><td class="n">${c1(d[1])} ±${c1(d[5])}</td><td class="n">${c1(d[3])} ±${c1(d[6])}</td><td class="n">${c1(d[2])}</td><td class="n">${c1(d[4])}</td><td class="n">${(d[7]+d[8]).toLocaleString('es-ES')}</td></tr>`).join('')+'</tbody></table>';
+</script>
