@@ -1,62 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/sanchez-revuelta-broncano-voto-joven-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Sánchez en La Revuelta: entre los hombres jóvenes, Vox casi dobla al PSOE</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/teruel-cha-izquierda-escano-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>CHA se retira en Teruel: la única vez que la izquierda tuvo votos para un escaño fue en 2015, y fue dividida</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/salario-minimo-provincias-feijoo-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Huelva, Almería y Jaén: más de la mitad de sus asalariados cobró en 2024 menos de un salario mínimo al año</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/ivan-redondo-12-millones-derecha-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Los 12 millones de la derecha que cita Iván Redondo solo existieron una vez: en 2011</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/feijoo-aborto-eutanasia-sanidad-publica-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Feijóo y el aborto «en la pública»: 77% en Galicia, 0,5% en Madrid</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pueblos-unanimes-empates-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Mota del Cuervo, 1.243 a 1.243: los pueblos del empate y los del voto unánime</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/ganar-por-un-voto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Santa Cruz de Mudela, 874 a 873: los 185 pueblos que se ganaron por un voto</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/barcelona-madrid-clasico-del-voto-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -105,86 +49,6 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/lorca-fuente-vaqueros-viznar-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Fuente Vaqueros, el pueblo de Lorca, dio el 77,5 % al Frente Popular; Víznar, donde lo mataron, el 63 % a las derechas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pueblos-guerra-civil-voto-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Gernika votó al PNV en 1936 y volvió a hacerlo en 2023, por 11 votos; Belchite tiene hoy menos electores que antes de su batalla</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mujeres-1933-frente-popular-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Las mujeres votaron por primera vez en 1933 y ganaron las derechas; en 1936 volvieron a votar y 888 pueblos se pasaron al Frente Popular</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/fieles-1936-izquierda-derecha/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>256 pueblos han votado a la izquierda en 1936 y en las 16 generales de la democracia; 1.610, siempre a la derecha</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/abstencion-anarquista-cnt-1933-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Cuando la CNT pidió no votar, en Alcalá de Gurrea votaron 87 de 829 electores; dos años después, 517</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pueblos-bajo-el-agua-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Riaño dio el 86 % a las derechas en 1936; Mequinenza, el 89 % al Frente Popular. Así votaban los pueblos que se tragaron los pantanos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pueblos-que-ya-no-existen-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Vallecas dio el 86 % al Frente Popular y Franco la borró del mapa: los 1.334 pueblos que votaron en 1936 y ya no existen</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/asturias-1934-1936-revolucion-urnas/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Mieres votó en masa dieciséis meses después de la revolución: el 86 % fue a las urnas y el 79 % eligió al Frente Popular</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/cataluna-lliga-front-esquerres-1933-1936/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Vic dio el 69 % a la Lliga en 1933 y hoy es la gran ciudad de Junts; L&#x27;Hospitalet dio el 77 % al Front d&#x27;Esquerres de Companys y hoy vota al PSC</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/pueblos-colonizacion-franquismo-voto/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>Los pueblos que levantó Franco votan más a Vox que sus vecinos: en Tiétar, Rosalejo y Pueblonuevo de Miramontes pasó del 25 %</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/mujeres-jovenes-voto-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -198,6 +62,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-25</news:publication_date>
       <news:title>El PP saca 6 puntos al PSOE en las encuestas: ni el mayor fallo de la última década, el de 2023, daría el sorpasso que anuncia Iván Redondo</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/encuestas-semana-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>El PP baja en las cinco encuestas de la semana, pero con Vox sigue sumando mayoría absoluta en todas</news:title>
     </news:news>
   </url>
   <url>

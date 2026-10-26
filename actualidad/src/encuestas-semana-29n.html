@@ -1,0 +1,129 @@
+<title>Las encuestas de la semana</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--sumar:#a2275f;--cs:#eb6109;--upyd:#e5007d;--upn:#1b3f8f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--cs:#f5873f;--upyd:#f0559f;--upn:#6d8fd6}}:root[data-theme="dark"]{--pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--cs:#f5873f;--upyd:#f0559f;--upn:#6d8fd6}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>El PP baja en las cinco encuestas de la semana, pero con Vox sigue sumando mayoría absoluta en todas</h1>
+<p class="dek">Desde finales de septiembre, la mediana de las encuestas ha bajado al PP dos puntos, del 33,7% al 31,7%. El PSOE recupera menos de uno y Vox se queda cerca del 19%. Nuestro modelo da hoy a PP y Vox 194 escaños, 18 más de los que hacen falta.</p>
+<div class="byline">Nacho G. del Álamo · 26 de octubre de 2026</div>
+<div style="margin-top:1.4rem"></div>
+<style>:root{--podemos:#5a3c8f}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--podemos:#8a6fe0}}:root[data-theme="dark"]{--podemos:#8a6fe0}blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<p data-tipo="contexto">Esta es la primera entrega de un repaso semanal. Cada lunes, hasta que la ley prohíba publicar encuestas cinco días antes de votar, contaremos qué sondeos nacionales salieron en los siete días anteriores y qué ha cambiado en ellos. Comparamos cada encuesta con la anterior de la misma empresa, porque cada casa tiene su método y mezclarlas confunde lo que se mueve con lo que es distinto.</p>
+<h2>Cinco encuestas, la misma dirección para el PP</h2>
+<p data-tipo="dato">Entre el lunes 19 y el domingo 25 de octubre se publicaron cinco encuestas nacionales: la de <a href="https://www.elmundo.es/espana/encuestas/2026/10/19/6ad4f168e9cf4a2c7a8b458b.html">Sigma Dos para El Mundo</a>, la de <a href="https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/">IMOP Insights para El Confidencial</a> y, el domingo, las de <a href="https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html">Ateneo del Dato para elDiario.es</a>, <a href="https://www.elespanol.com/espana/politica/20261025/izquierda-no-remonta-sanchez-gana-escanos-costa-frente-podemos-sondeo-noche/1003744434105_0.html">SocioMétrica para El Español</a> y el <a href="https://electomania.es/electopanel-25-octubre-el-pp-baja-de-nuevo-frente-amplio-crece/">ElectoPanel de Electomanía</a>. Las cinco tienen una entrega anterior con la que compararlas.</p>
+<p data-tipo="dato">En las cinco, <strong>el PP baja</strong>. La caída va de <strong>0,4 puntos</strong> en Sigma Dos a <strong>2,1</strong> en Ateneo del Dato. IMOP le quita 1,9 y lo deja en el 28,5%, la cifra más baja de las cinco.</p>
+<figure>
+<figcaption><span class="t">Cuánto ha cambiado cada partido respecto a la encuesta anterior de la misma empresa</span><span class="s">Diferencia en puntos entre la encuesta publicada esta semana y la anterior de la misma casa. Cada punto es una encuesta. Pasa el dedo o el ratón por cada punto</span></figcaption>
+<div class="chart" id="cambios"></div>
+<div class="src">Fuente: Sigma Dos, IMOP Insights, Ateneo del Dato, SocioMétrica y Electomanía, en los medios enlazados. Frente Amplio incluye Compromís y Front Valencià cuando se publican aparte. SocioMétrica no da una cifra propia para Podemos. Cálculo propio.</div>
+<details><summary>Ver las cifras</summary><div class="tbl" id="cambios-tbl"></div></details>
+</figure>
+<p data-tipo="dato">El resto se mueve menos y no siempre hacia el mismo lado. Vox sube en cuatro, entre una décima y un punto, y baja dos décimas en SocioMétrica. El PSOE sube en tres, repite en Sigma Dos y baja cuatro décimas en el ElectoPanel. Frente Amplio sube en tres y baja en Ateneo del Dato y en SocioMétrica. Podemos baja en las cuatro que lo dan por separado.</p>
+<p data-tipo="patron">La suma de PP y Vox baja en cuatro de las cinco encuestas y se queda igual en Sigma Dos. Es decir, en estas encuestas lo que pierde el PP no pasa entero a Vox. Lo que no dicen es adónde va: para eso harían falta las transferencias de voto de cada sondeo, que no todas las empresas publican.</p>
+<h2>La tendencia desde septiembre</h2>
+<p data-tipo="dato">Para ver la tendencia uso la mediana que publicamos cada día en <a href="https://mapaelectoral.es/encuestas/">nuestra página de encuestas</a>: la última encuesta de cada empresa en las tres semanas anteriores. El 27 de septiembre, el PP estaba en el <strong>33,7%</strong>; el 25 de octubre, en el <strong>31,7%</strong>. En ese tiempo, el PSOE ha pasado del 25,6% al 26,5%, y Vox, del 18,6% al 18,9%.</p>
+<figure>
+<figcaption><span class="t">La mediana de las encuestas, semana a semana</span><span class="s">Estimación de voto, en %. Mediana de la última encuesta de cada empresa publicada en las tres semanas anteriores a cada domingo. Pasa el dedo o el ratón por el gráfico</span></figcaption>
+<div class="chart" id="tendencia"></div>
+<div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar / Frente Amplio</span><span><i class="sw" style="background:var(--podemos)"></i>Podemos</span></div>
+<div class="src">Fuente: encuestas publicadas, recopiladas por Electográfica y Wikipedia. Incluye el CIS, que con la mediana pesa como una encuesta más. No incluye la de SocioMétrica del 25 de octubre, que aún no recogen esas fuentes. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">La bajada del PP empieza la primera semana de octubre. Desde entonces sigue, pero en las tres últimas semanas se mueve por décimas: 32,0%, 31,9% y 31,7%.</p>
+<p data-tipo="contexto">El salto de finales de septiembre, del 32,2% al 33,7%, se explica en parte por cómo se calcula la mediana: entran y salen encuestas de la ventana de tres semanas, y la llegada de dos o tres sondeos con el PP alto basta para moverla. Por eso conviene mirar a la vez la comparación de cada empresa consigo misma, que es la del primer gráfico.</p>
+<h2>Lo que significa en escaños</h2>
+<p data-tipo="dato">Cuatro de las cinco encuestas de la semana publican escaños en su artículo. PP y Vox suman <strong>194</strong> en el ElectoPanel, <strong>195</strong> en IMOP, <strong>198</strong> en SocioMétrica y entre <strong>197 y 205</strong> en Sigma Dos. La mayoría absoluta está en 176.</p>
+<p data-tipo="dato"><a href="https://mapaelectoral.es/encuestas/metodo-modelo.html">Nuestro modelo</a> convierte la media de las encuestas en escaños provincia a provincia y simula 2.000 resultados posibles. Hoy da al PP <strong>126</strong> diputados, al PSOE <strong>108</strong> y a Vox <strong>68</strong>. PP y Vox suman 194 y pasan de 176 en el <strong>88%</strong> de las simulaciones.</p>
+<p data-tipo="patron">Que el PP baje no ha cambiado, por ahora, la cuenta de la mayoría. El modelo daba a PP y Vox 196 escaños el 22 de octubre, el primer día que lo publicamos, y 194 hoy. Los escaños que pierde el PP en la estimación los recogen sobre todo Vox y el PSOE.</p>
+<h2>Lo que no entra en la cuenta</h2>
+<p data-tipo="contexto">El fin de semana, elDiario.es publicó que el PSOE ya sería primera fuerza en intención directa de voto, según datos del propio partido.</p>
+<blockquote class="cita"><p>«Trackings internos que manejan en Ferraz»</p><footer>Así describe <a href="https://www.eldiario.es/politica/sanchez-saca-psoe-pesimismo-errores-feijoo-miedo-vox_1_13607713.html">elDiario.es</a> la fuente de esas cifras (25 de octubre de 2026).</footer></blockquote>
+<p data-tipo="contexto">No es una encuesta publicada con su ficha técnica, sino un sondeo de un partido contado por fuentes de ese partido, y no entra en nuestra media. Hasta este lunes sí entraba por error: Wikipedia lo recoge en su tabla y nuestro cotejo automático lo incorporó el día 25. Ya lo hemos quitado de la mediana y del modelo. Con la mediana apenas cambiaba nada; las cifras de esta pieza ya están calculadas sin él.</p>
+<p data-tipo="dato">El CIS no ha publicado nada esta semana. Su último barómetro, del 14 de octubre, daba al PSOE el 34,0% y al PP el 22,2%, y es la única encuesta que pone a los socialistas por delante. Lo analizamos en <a href="https://mapaelectoral.es/actualidad/psoe-primera-fuerza-29n/">la pieza sobre el sorpasso</a>.</p>
+<p data-tipo="contexto">Las encuestas de esta semana se hicieron antes de que se conozcan las listas. Los partidos tienen hasta hoy para presentar sus candidaturas, que se publican en el BOE el miércoles 28. El lunes que viene, la siguiente entrega.</p>
+<p><a href="https://mapaelectoral.es/encuestas/">Todas las encuestas, con su mediana diaria y los escaños</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/psoe-primera-fuerza-29n/">El sorpasso que no sale</a> · <a href="https://mapaelectoral.es/actualidad/escanos-en-el-filo-29n/">Los escaños en el filo</a></p><div class="foot">Datos: encuestas nacionales publicadas entre el 19 y el 25 de octubre de 2026 y su entrega anterior, en los medios que las encargaron; mediana diaria de mapaelectoral.es/encuestas con datos de Electográfica y Wikipedia; estimación del modelo de Mapa Electoral del 26 de octubre de 2026 (2.000 simulaciones).</div>
+</main>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const CAM=[["Sigma Dos", "El Mundo", "19 de octubre", [31.9, 25.3, 19.1, 7.6, 3.1], [31.5, 25.3, 19.5, 8.1, 2.8]], ["IMOP Insights", "El Confidencial", "23 de octubre", [30.4, 26.5, 19.0, 7.6, 2.3], [28.5, 27.1, 20.0, 8.9, 1.9]], ["Ateneo del Dato", "elDiario.es", "25 de octubre", [33.2, 27.5, 19.2, 7.0, 3.3], [31.1, 27.6, 19.8, 6.8, 2.7]], ["SocioMétrica", "El Español", "25 de octubre", [32.6, 26.2, 18.8, 5.8, 2.8], [32.0, 27.0, 18.6, 5.4, null]], ["ElectoPanel", "Electomanía", "25 de octubre", [31.8, 27.1, 18.9, 6.2, 2.0], [30.9, 26.7, 19.0, 7.0, 1.7]]], SEM=[{"d": "2026-08-30", "PP": 32.3, "PSOE": 25.7, "VOX": 18.1, "SUMAR": 6.4, "PODEMOS": 3.6, "SALF": 1.9}, {"d": "2026-09-06", "PP": 32.0, "PSOE": 26.1, "VOX": 18.1, "SUMAR": 6.3, "PODEMOS": 3.6, "SALF": 1.8}, {"d": "2026-09-13", "PP": 32.3, "PSOE": 25.9, "VOX": 18.5, "SUMAR": 6.2, "PODEMOS": 3.4, "SALF": 1.9}, {"d": "2026-09-20", "PP": 32.2, "PSOE": 25.9, "VOX": 18.8, "SUMAR": 5.9, "PODEMOS": 3.3, "SALF": 1.9}, {"d": "2026-09-27", "PP": 33.7, "PSOE": 25.6, "VOX": 18.6, "SUMAR": 6.1, "PODEMOS": 3.3, "SALF": 1.9}, {"d": "2026-10-04", "PP": 33.2, "PSOE": 26.3, "VOX": 18.4, "SUMAR": 6.3, "PODEMOS": 3.3, "SALF": 1.7}, {"d": "2026-10-11", "PP": 32.0, "PSOE": 26.2, "VOX": 18.8, "SUMAR": 6.3, "PODEMOS": 3.2, "SALF": 1.8}, {"d": "2026-10-18", "PP": 31.9, "PSOE": 26.3, "VOX": 18.9, "SUMAR": 6.2, "PODEMOS": 3.0, "SALF": 1.8}, {"d": "2026-10-25", "PP": 31.7, "PSOE": 26.5, "VOX": 18.9, "SUMAR": 6.5, "PODEMOS": 2.8, "SALF": 1.8}];
+const PART=[['PP','PP','--pp'],['PSOE','PSOE','--psoe'],['VOX','Vox','--vox'],['SUMAR','Frente Amplio','--sumar'],['PODEMOS','Podemos','--podemos']];
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(h,x,y){t.innerHTML=h;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;t.style.left=Math.min(Math.max(x,tw/2),bw-tw/2)+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+function hov(box,tip,hit,h){const f=ev=>{const [a,b]=pos(box,ev);tip.show(typeof h==='function'?h(ev):h,a,b)};hit.addEventListener('mousemove',f);hit.addEventListener('touchstart',f,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−'),sg=v=>(v>0?'+':v===0?'±':'')+c1(v);
+(function(){const box=document.getElementById('cambios'),tip=tipFor(box);
+ const W=Math.max(300,box.clientWidth||640),n=W<500,rh=46,m={l:n?96:120,r:18,t:22,b:26},H=m.t+m.b+rh*PART.length,lo=-2.5,hi=1.5,x=v=>m.l+(v-lo)/(hi-lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Cambio de cada partido en las cinco encuestas de la semana respecto a la anterior de cada empresa'},box);
+ el('text',{x:x(lo)+2,y:13},svg).textContent='← Baja';el('text',{x:x(hi)-2,y:13,'text-anchor':'end'},svg).textContent='Sube →';
+ for(let v=-2.5;v<=1.5;v+=.5){if(n&&v%1)continue;el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-6,'text-anchor':'middle'},svg).textContent=v===0?'0':sg(v)}
+ PART.forEach((p,j)=>{const y=m.t+j*rh+rh/2;
+  el('text',{x:m.l-10,y:y+4,'text-anchor':'end',class:'lab','font-size':n?12:13},svg).textContent=p[1];
+  const ds=CAM.map(c=>[c,c[4][j]==null?null:+(c[4][j]-c[3][j]).toFixed(1)]).filter(d=>d[1]!==null);
+  const seen={};ds.forEach(([c,d])=>{const k=d.toFixed(1),o=(seen[k]=(seen[k]||0)+1)-1,dy=(o%2?1:-1)*Math.ceil(o/2)*9;
+   const ci=el('circle',{cx:x(d),cy:y+dy,r:6.5,fill:`var(${p[2]})`,stroke:'var(--bg)','stroke-width':2},svg);
+   hov(box,tip,ci,`<b>${c[0]}</b> · ${c[1]}<br>${p[1]}: ${c1(c[3][j])}% → ${c1(c[4][j])}%<br>Cambio: ${sg(d)} puntos`)})});
+ const t=document.getElementById('cambios-tbl');t.innerHTML='<table><thead><tr><th>Encuesta</th>'+PART.map(p=>`<th class="n">${p[1]}</th>`).join('')+'</tr></thead><tbody>'+CAM.map(c=>`<tr><td>${c[0]} (${c[2]})</td>`+PART.map((p,j)=>`<td class="n">${c[4][j]==null?'—':c1(c[4][j])+' ('+sg(+(c[4][j]-c[3][j]).toFixed(1))+')'}</td>`).join('')+'</tr>').join('')+'</tbody></table>'})();
+(function(){const box=document.getElementById('tendencia'),tip=tipFor(box);
+ const W=Math.max(300,box.clientWidth||640),n=W<500,H=n?300:340,m={l:34,r:n?40:50,t:12,b:26},lo=0,hi=36,N=SEM.length,x=i=>m.l+i/(N-1)*(W-m.l-m.r),y=v=>m.t+(1-(v-lo)/(hi-lo))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Mediana semanal de las encuestas por partido, de finales de agosto al 25 de octubre de 2026'},box);
+ for(let v=0;v<=35;v+=5){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=v+'%'}
+ const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],fd=s=>{const [a,b,c]=s.split('-');return +c+' '+MES[+b-1]};
+ SEM.forEach((s,i)=>{if(n&&i%2)return;el('text',{x:x(i),y:H-6,'text-anchor':'middle'},svg).textContent=fd(s.d)});
+ PART.forEach(p=>{const pts=SEM.map((s,i)=>[x(i),y(s[p[0]])]);
+  el('path',{d:'M'+pts.map(q=>q.join(',')).join('L'),fill:'none',stroke:`var(${p[2]})`,'stroke-width':2.5,'stroke-linejoin':'round'},svg);
+  const L=pts[pts.length-1];el('circle',{cx:L[0],cy:L[1],r:4,fill:`var(${p[2]})`},svg);
+  el('text',{x:L[0]+7,y:L[1]+4,'font-size':12},svg).textContent=c1(SEM[N-1][p[0]])});
+ const cr=el('line',{x1:0,x2:0,y1:m.t,y2:H-m.b,stroke:'var(--muted)',opacity:0},svg);
+ const hit=el('rect',{x:m.l,y:m.t,width:W-m.l-m.r,height:H-m.t-m.b,fill:'transparent'},svg);
+ hov(box,tip,hit,ev=>{const [a]=pos(box,ev),sc=W/box.getBoundingClientRect().width,i=Math.max(0,Math.min(N-1,Math.round((a*sc-m.l)/(W-m.l-m.r)*(N-1)))),s=SEM[i];cr.setAttribute('x1',x(i));cr.setAttribute('x2',x(i));cr.setAttribute('opacity',.6);
+  return `<b>Semana hasta el ${fd(s.d)}</b><br>`+PART.map(p=>`${p[1]==='Frente Amplio'?'Sumar / FA':p[1]}: ${c1(s[p[0]])}%`).join('<br>')});
+ hit.addEventListener('mouseleave',()=>cr.setAttribute('opacity',0))})();
+</script>
