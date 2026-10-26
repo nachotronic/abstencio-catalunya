@@ -1779,6 +1779,12 @@ PIEZAS = [
 
 # Enlaces a las fuentes dentro del texto: (texto exacto, url)
 ENLACES_TEXTO = {
+    'adelante-andalucia-psoe-29n': [
+        ('según EFE', 'https://www.infobae.com/espana/agencias/2026/10/23/adelante-logra-los-avales-para-las-elecciones-y-espera-parar-a-la-derecha-con-andalucismo/'),
+        ('según el escrutinio de la Junta de Andalucía', 'https://resultadoseleccionesandalucia.es'),
+        ('según explicó María Jesús Montero el 20 de octubre', 'https://www.europapress.es/andalucia/noticia-psoe-cedera-frente-amplio-numero-candidaturas-andaluzas-senado-29n-sevilla-huelva-20261020133736.html'),
+        ('Según Europa Press', 'https://www.europapress.es/andalucia/noticia-vox-pp-partidos-mayor-fidelidad-17m-psoe-movilizaria-mas-generales-cis-20260627100950.html'),
+    ],
     'lorca-fuente-vaqueros-viznar-1936': [
         ('Museo Reina Sofía', 'https://commons.wikimedia.org/wiki/File:Fotograf%C3%ADa_an%C3%B3nima_MNCARS_4.jpg'),
     ],
@@ -2743,6 +2749,31 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
+        slug='adelante-andalucia-psoe-29n', fecha='2026-10-26',
+        foto=dict(src='img/actualidad/fotos/adelante-andalucia-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna, dos montones de papeletas, verdes y rojas, y una calle blanca de un pueblo andaluz: un collage.'),
+        titulo='Uno de cada tres votantes de Adelante venía del PSOE, pero el mapa andaluz no muestra la fuga', serie='29n',
+        descripcion='Adelante Andalucía pasó de 168.448 a 402.244 votos el 17M y va sola el 29N. Las encuestas dicen que entre un cuarto y un tercio de sus votantes había votado al PSOE en 2022, pero en los 785 municipios sube lo mismo donde el PSOE se hunde que donde crece.',
+        compara='El voto de Adelante Andalucía, el PSOE-A y Por Andalucía en las autonómicas de 2022 y 2026 en los 785 municipios andaluces (resultados de la Junta), por provincia, por quintiles de cambio del PSOE y en los 52 municipios de más de 20.000 electores; el origen del voto de Adelante según el recuerdo de voto de las encuestas del CENTRA y del CIS; y el voto por edad en el postelectoral del CENTRA.',
+        limites='Los resultados agregados por municipio no dicen quién cambió su voto: un trasvase del PSOE a Adelante repartido por igual en todo el territorio no se vería en la comparación entre municipios. El recuerdo de voto de las encuestas se desvía del resultado real (el postelectoral del CENTRA da a Adelante el 17,2 % de los votantes, frente al 9,6 % real) y las muestras provinciales son pequeñas. Las cifras del CIS vienen de la crónica de Europa Press, no de los microdatos. Las autonómicas no predicen las generales: el barómetro del CENTRA mide voto al Parlamento andaluz.',
+        calculo='Porcentajes sobre voto válido, por municipio, con los resultados definitivos de la Junta de Andalucía. Regresión lineal del cambio de Adelante sobre el cambio del PSOE-A y el de Por Andalucía, con efectos fijos de provincia, ponderada por censo y con errores agrupados por provincia; repetida con porcentajes sobre censo y controlando el cambio de participación, con el mismo resultado. Encuestas del CENTRA: preelectoral ponderado con su coeficiente; postelectoral sin ponderar (muestra proporcional), solo quienes dicen haber votado.',
+        fuentes=[('https://resultadoseleccionesandalucia.es', 'Junta de Andalucía, Sistema de Información Electoral (SIEL), resultados por municipio de las elecciones al Parlamento de Andalucía de 2022 y 2026'),
+                 ('https://www.centrodeestudiosandaluces.es/encuestas/estudio-preelectoral-elecciones-autonomicas-2026', 'Fundación CENTRA, Estudio preelectoral elecciones autonómicas 2026, microdatos'),
+                 ('https://www.centrodeestudiosandaluces.es/encuestas/cat/electorales', 'Fundación CENTRA, Estudio postelectoral elecciones autonómicas 2026, microdatos'),
+                 ('https://www.centrodeestudiosandaluces.es/barometro/barometro-andaluz-de-septiembre-de-2026', 'Fundación CENTRA, Barómetro Andaluz de septiembre de 2026, estimación de voto y frecuencias'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-vox-pp-partidos-mayor-fidelidad-17m-psoe-movilizaria-mas-generales-cis-20260627100950.html', 'Europa Press, el postelectoral del CIS en Andalucía (27-6-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-moreno-pierde-mayoria-absoluta-no-evita-lio-vox-subida-adelante-nuevo-descenso-psoe-20260517230451.html', 'Europa Press, resultados del 17M (17-5-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/23/adelante-logra-los-avales-para-las-elecciones-y-espera-parar-a-la-derecha-con-andalucismo/', 'EFE en Infobae, Adelante logra los avales para las elecciones (23-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-adelante-andalucia-afea-criticas-ir-solitario-29n-no-cuestiona-cataluna-euskadi-galicia-20261009095337.html', 'Europa Press, José Ignacio García en La 1 de TVE (9-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'cadiz-00351/noticia-adelante-defiende-papeleta-29n-frente-lio-izquierda-problema-no-division-20261013132040.html', 'Europa Press, José Ignacio García en Jerez de la Frontera (13-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-maillo-afea-adelante-decida-ir-solitario-29n-hablar-nadie-fragmentacion-conviene-pp-vox-20261014095424.html', 'Europa Press, Antonio Maíllo en Canal Sur Televisión (14-10-2026)'),
+                 ('https://www.europapress.es/andalucia/' + 'noticia-psoe-cedera-frente-amplio-numero-candidaturas-andaluzas-senado-29n-sevilla-huelva-20261020133736.html', 'Europa Press, el PSOE-A y el Frente Amplio en el Senado (20-10-2026)'),
+                 ('https://www.eldiario.es/andalucia/generacion-mollete-caldo-cultivo-explica-sorpresa-adelante-andalucia_1_13228933.html', 'elDiario.es, «La generación mollete» (Carla Rivero, 18-5-2026)'),
+                 ('https://www.idpbarcelona.net/docs/public/iccaa/2022/andalucia_2022.pdf', 'Mª Reyes Pérez Alberdi, Andalucía, en Informe Comunidades Autónomas 2022, Instituto de Derecho Público (2023)')],
+        enlaces=[],
+        lugar='Andalucía',
+    ),
+    dict(
         slug='inmigracion-cuesta-votos-psoe-29n', fecha='2026-10-26',
         foto=dict(src='img/actualidad/fotos/inmigracion-cuesta-votos-psoe-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una mano deposita un voto en una urna roja, junto a una calle de bloques con vecinos que vuelven de la compra: un collage.'),
@@ -2771,6 +2802,7 @@ ANTETITULOS = {
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
+    'adelante-andalucia-psoe-29n': 'La izquierda andaluza',
     'corrupcion-penaliza-voto-29n': 'Corrupción y 29N',
     'inmigracion-cuesta-votos-psoe-29n': 'Inmigración y 29N',
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
