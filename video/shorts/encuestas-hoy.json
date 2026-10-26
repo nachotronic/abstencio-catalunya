@@ -28,23 +28,23 @@
    "dur": 3.8,
    "titulo": [
     "El PP gana en",
-    "15 de 17 encuestas"
+    "15 de 16 encuestas"
    ],
    "items": [
     [
      "15",
      "PP",
      [
-      "de las 17 encuestadoras del último",
+      "de las 16 encuestadoras del último",
       "mes dan ganador al PP"
      ]
     ],
     [
-     "2",
+     "1",
      "PSOE",
      [
-      "dan ganador al PSOE:",
-      "un sondeo del propio PSOE y el CIS"
+      "da ganador al PSOE:",
+      "el CIS"
      ]
     ]
    ]
@@ -77,7 +77,7 @@
     [
      "Sumar",
      "Sumar",
-     6.5
+     6.8
     ],
     [
      "Podemos",
@@ -133,11 +133,6 @@
      203
     ],
     [
-     "Ateneo del Dato",
-     191,
-     212
-    ],
-    [
      "Sigma Dos",
      197,
      205
@@ -156,6 +151,11 @@
      "GAD3",
      198,
      198
+    ],
+    [
+     "Ateneo del Dato",
+     183,
+     211
     ],
     [
      "IMOP Insights",
@@ -182,26 +182,26 @@
    "dur": 4.2,
    "titulo": [
     "La última:",
-    "IMOP Insights"
+    "Ateneo del Dato"
    ],
-   "sub": "El Confidencial, publicada el 23 de octubre",
+   "sub": "elDiario.es, publicada el 25 de octubre",
    "items": [
     [
-     "28,5 %",
+     "31,1 %",
      "PP",
      [
       "PP"
      ]
     ],
     [
-     "27,1 %",
+     "27,6 %",
      "PSOE",
      [
       "PSOE"
      ]
     ],
     [
-     "20,0 %",
+     "19,8 %",
      "Vox",
      [
       "Vox"

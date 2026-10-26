@@ -27,7 +27,7 @@ escenas = [
     {'tipo': 'hook', 'dur': 2.8, 'lineas': [f'A {dias} días del 29N,', '¿qué dicen', [['las encuestas?', 'vote']]]},
     {'tipo': 'numeros', 'dur': 3.8, 'titulo': [f'El PP gana en', f'{n_pp} de {n} encuestas'], 'items': [
         [str(n_pp), 'PP', [f'de las {n} encuestadoras del último', 'mes dan ganador al PP']],
-        [str(n - n_pp), 'PSOE', ['dan ganador al PSOE:', ' y '.join(otros)]]]},
+        [str(n - n_pp), 'PSOE', [('da' if n - n_pp == 1 else 'dan') + ' ganador al PSOE:', ' y '.join(otros)]]]},
     {'tipo': 'barrasH', 'dur': 4.2, 'titulo': ['La mediana', 'de las encuestas'], 'sub': '% de voto estimado, últimas 3 semanas', 'max': 36,
      'filas': [[COL[k], COL[k], med[k]] for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS') if k in med]},
     {'tipo': 'horquillas', 'dur': 5.4, 'titulo': ['PP + Vox, escaños', 'en cada encuesta'], 'sub': 'Horquilla de cada encuestadora', 'eje': [150, 220],
