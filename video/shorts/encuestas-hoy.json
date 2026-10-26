@@ -181,9 +181,10 @@
    "tipo": "numeros",
    "dur": 4.2,
    "titulo": [
-    "La última: IMOP Insights",
-    "El Confidencial, 23 de octubre"
+    "La última:",
+    "IMOP Insights"
    ],
+   "sub": "El Confidencial, publicada el 23 de octubre",
    "items": [
     [
      "28,5 %",
