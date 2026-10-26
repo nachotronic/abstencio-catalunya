@@ -2652,6 +2652,8 @@ PIEZAS += [
     ),
     dict(
         slug='corrupcion-penaliza-voto-29n', fecha='2026-10-25',
+        foto=dict(src='img/actualidad/fotos/corrupcion-penaliza-voto-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna roja resquebrajada que pierde sobres junto a una urna azul casi vacía: un collage.'),
         titulo='29N: la corrupción le cuesta votos al PSOE, pero apenas se los da al PP', serie='29n',
         descripcion='Quince años de barómetros del CIS, 528.018 entrevistas: quien cita la corrupción como problema deja más a su partido, pero el gran rival recoge poco de ese voto: la mayor parte va a la abstención o a terceros partidos. Hoy le cuesta al PSOE 9,5 puntos de fidelidad.',
         compara='La fidelidad de voto (voto más simpatía igual al recuerdo de voto en las últimas generales) de quienes citan la corrupción y el fraude entre los tres principales problemas de España y de quienes no, en 166 barómetros del CIS de diciembre de 2010 a octubre de 2026 (528.018 entrevistas), por año y por etapa de gobierno; el destino del voto de quienes la citan; la serie mensual de la corrupción como problema; la comparación con otros problemas en 2023-2026; y la repetición de voto en los poselectorales de 2015, 2016, noviembre de 2019 y 2023.',
