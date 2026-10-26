@@ -35,7 +35,7 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-10-21'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-10-26'   # cámbiala a mano cuando cambien los datos o el texto
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
@@ -402,7 +402,7 @@ PIE = f"""<footer>{SITIO} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</
 
 # Páginas publicadas después que el resto
 PUBLICADA = {'elecciones/elecciones-29n-2026/': '2026-10-15', 'elecciones/participacion-electoral-por-barrio/': '2026-10-15',
-             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20', 'elecciones/resultados-elecciones-generales-2026/': '2026-10-21'}
+             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20', 'elecciones/resultados-elecciones-generales-2026/': '2026-10-21', 'elecciones/votar-29n/': '2026-10-26'}
 
 
 def ld_pagina(titulo, desc, ruta, about=None, partes=None):
@@ -435,13 +435,13 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     serie = T.serie(df)
     r = serie[T.ULTIMA]
     g = T.ganador(r)
-    titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó cada municipio desde 1977'
+    titulo = f'Elecciones 29N 2026 en {nombre}: censo electoral y cómo votó cada municipio'
     ambito = 'la ciudad' if provs[0] in ('51', '52') else ('la comunidad' if tipo_txt == 'Comunidad' else 'la provincia')
     cods = CENSO.index[CENSO.index.str[:2].isin(provs)]   # del INE, con los municipios nuevos que aún no tienen resultados
     b_censo, q_censo = bloque_censo(nombre, cods, ambito,
                                     [(p, f'<a href="{"../" * nivel}{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>') for p in provs] if len(provs) > 1 else (), en)
-    desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
-            + (f'Censo para el 29N: {num(censo_29n(cods)[2])} electores. ' if q_censo else '')
+    desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cods)[2])} electores. ' if q_censo else '')
+            + f'Así votó en las generales de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             + 'Voto por renta de los barrios y municipios principales.')
     about = lugar(nombre, contenido or ESPANA)
     faq_html, faq_ld = faq([q_censo]) if q_censo else ('', None)
@@ -640,9 +640,10 @@ def pagina_ciudad(cod):
     b_sec = bloque_secciones(nombre, sec)
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
     b_censo, q_censo = bloque_censo(nombre, cod)
-    titulo = f'Elecciones generales 2026 (29N) en {nombre}: así votó {"cada barrio " if b_sec else ""}desde 1977'
-    desc = (f'Antes del 29N, así votó {nombre} en las generales de 1977 a 2023. En 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
-            + (f'Censo para el 29N: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
+    titulo = (f'Elecciones 29N 2026 en {nombre}: {"censo electoral y " if q_censo else ""}'
+              + ('cómo votó cada barrio' if b_sec else 'resultados desde 1977'))
+    desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
+            + f'Así votó en las generales de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
                (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
                 'Resultados de la serie completa y municipales frente a generales.')))
@@ -1139,6 +1140,90 @@ def tema_como_se_vota():
     return ruta, ''.join(h)
 
 
+LOREG = 'https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672'
+INE_PLAZOS = 'https://www.ine.es/dyngs/CEL/index.htm?cid=1702'
+INE_SEDE = 'https://sede.ine.gob.es/'
+CORREOS_29N = 'https://www.correos.com/sala-prensa/ya-se-puede-solicitar-el-voto-por-correo-para-las-elecciones-generales-del-29-de-noviembre/'
+PUBLICO_MESA = 'https://www.publico.es/sociedad/tengo-votar-elecciones-generales-29n-consultar-colegio-mesa-electoral.html'
+LEGALITAS_29N = 'https://www.legalitas.com/actualidad/elecciones-2026'
+
+
+def tema_votar():
+    """Guía práctica «Cómo votar el 29N»: colegio, documentos, voto por correo y permisos, con fuentes oficiales."""
+    ruta = 'elecciones/votar-29n/'
+    titulo = 'Dónde y cómo votar el 29N: colegio electoral, voto por correo y plazos'
+    desc = ('Guía práctica para votar en las elecciones generales del 29 de noviembre de 2026: cómo saber tu colegio y tu mesa, qué documento llevar, '
+            'hasta cuándo pedir y enviar el voto por correo y qué permisos tienes si trabajas. Con los plazos oficiales del INE.')
+    qs = [('¿Dónde me toca votar el 29N?',
+           f'En el colegio y la mesa que indica la tarjeta censal, que la Oficina del Censo Electoral envía del 2 al 10 de noviembre. '
+           f'También se puede consultar en la <a href="{INE_SEDE}">sede electrónica del INE</a> o en el teléfono gratuito 900 343 232.'),
+          ('¿A qué hora abren los colegios electorales?',
+           f'La votación empieza a las 9.00 y sigue sin interrupción hasta las 20.00 (<a href="{LOREG}">artículo 84 de la LOREG</a>).'),
+          ('¿Qué documento hay que llevar para votar?',
+           f'El DNI, el pasaporte o el permiso de conducir, con fotografía y en original (<a href="{LOREG}">artículo 85 de la LOREG</a>). No sirven fotocopias.'),
+          ('¿Hasta cuándo se puede pedir el voto por correo?',
+           f'Hasta el 19 de noviembre, en cualquier oficina de Correos o en su web con certificado digital o DNI electrónico. Hay que mandarlo antes del 25 de noviembre (<a href="{INE_PLAZOS}">INE</a>).'),
+          ('¿Tengo derecho a horas libres para votar si trabajo el domingo?',
+           f'Sí: hasta cuatro horas retribuidas, según cuánto coincida tu jornada con el horario de votación (<a href="{LEGALITAS_29N}">Legálitas</a>).')]
+    faq_html, faq_ld = faq(qs)
+    ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Cómo votar el 29N')]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Guía práctica · 29 de noviembre de 2026</p><h1 data-miga="Cómo votar el 29N">Dónde y cómo votar el 29N</h1>')
+    h.append('<p class="subtitulo">Tu colegio y tu mesa, qué llevar, el voto por correo paso a paso y los permisos si trabajas o te toca mesa</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}Las generales se votan el domingo 29 de noviembre de 2026, de 9.00 a 20.00, en el colegio que asigna la Oficina del Censo Electoral. '
+             'Quien no pueda ir ese día puede pedir el voto por correo hasta el 19 de noviembre y enviarlo hasta el 25.</p>')
+
+    h.append('<h2 id="colegio">Dónde me toca votar</h2>'
+             + p_('Dato', 'La Oficina del Censo Electoral manda a cada elector, del 2 al 10 de noviembre, la tarjeta censal con su colegio, su mesa y la dirección. '
+                  f'Si cambian, lo comunica del 10 al 23 de noviembre (<a href="{INE_PLAZOS}">calendario del INE</a>).')
+             + p_('Dato', f'No hace falta esperar a la carta: en la <a href="{INE_SEDE}">sede electrónica del INE</a> se consulta con la provincia, el municipio y la primera letra del primer apellido, '
+                  'o con Cl@ve, que muestra directamente tus datos censales. Para dudas, la Oficina del Censo tiene el teléfono gratuito 900 343 232. '
+                  f'Y el mismo domingo cada colegio tiene un callejero con la mesa que corresponde a cada calle (<a href="{PUBLICO_MESA}">Público</a>).')
+             + f'<p>Si quieres ver cuántos electores hay en tu municipio y cómo votó tu barrio en 2023, búscalo en el <a href="{raiz}municipio/">índice de municipios</a> o en el <a href="{raiz}">mapa</a>.</p>')
+
+    h.append('<h2 id="documentos">Qué llevar</h2>'
+             + p_('Dato', f'El DNI, el pasaporte o el permiso de conducir, con tu fotografía y en original (<a href="{LOREG}">artículo 85 de la LOREG</a>). '
+                  'La tarjeta censal no es obligatoria: sirve para saber tu mesa, no para votar.'))
+
+    filas = [['Residentes en España', 'del 6 de octubre al 19 de noviembre', 'del 9 al 22 de noviembre', 'del 9 al 25 de noviembre'],
+             ['Residentes temporalmente en el extranjero', 'del 6 al 31 de octubre', 'del 3 al 17 de noviembre', 'del 3 al 25 de noviembre'],
+             ['Residentes en el extranjero (CERA)', 'no hace falta, la documentación llega sin pedirla', 'del 24 de octubre al 14 de noviembre', 'por correo al consulado del 4 al 24 de noviembre, o en la urna del consulado del 21 al 26']]
+    h.append('<h2 id="correo">Voto por correo</h2>'
+             + p_('Dato', 'Se pide en cualquier oficina de Correos, con el DNI, el pasaporte o el permiso de conducir originales, o en la web de Correos con certificado digital o DNI electrónico. '
+                  'Tiene que pedirlo cada elector en persona; solo en caso de enfermedad o discapacidad, acreditada con certificado médico oficial, puede hacerlo otra persona con un poder notarial o consular. '
+                  f'La documentación llega a la dirección que indiques en la solicitud (<a href="{CORREOS_29N}">Correos</a>).')
+             + ''.join(f'<h3>{q}</h3><ul><li><b>Pedirlo</b>: {x}</li><li><b>Recibir la documentación</b>: {y}</li><li><b>Enviar el voto</b>: {z}</li></ul>'
+                       for q, x, y, z in filas)
+             + f'<p class="leyenda">Fuente: <a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral, plazos de interés para los electores</a>. '
+               'Para los residentes temporales y los CERA, la documentación sale antes o después según haya o no impugnación de candidaturas.</p>'
+             + f'<p>Cuánto se ha usado el voto por correo y quién lo pide: <a href="{raiz}actualidad/voto-correo-29n/">siete de cada cien electores lo pidieron en 2023</a>.</p>')
+
+    h.append('<h2 id="trabajo">Si trabajas el domingo o te toca mesa</h2>'
+             + p_('Dato', 'Quien trabaje el 29 de noviembre tiene derecho a hasta cuatro horas libres y retribuidas para votar, según cuánto coincida su jornada con el horario de votación; '
+                  'la empresa puede decidir en qué momento se toman.')
+             + p_('Dato', 'Formar parte de una mesa electoral es obligatorio salvo que la Junta Electoral acepte una excusa justificada; no presentarse puede castigarse con prisión de tres meses a un año o multa '
+                  f'(<a href="{LOREG}">artículo 143 de la LOREG</a>). Presidentes y vocales tienen permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes '
+                  f'(<a href="{LEGALITAS_29N}">Legálitas</a>).'))
+
+    h.append('<h2>Y por la noche</h2>'
+             f'<p>Desde las 20.00, el <a href="{raiz}">mapa de resultados</a> irá mostrando el recuento en directo, y la página de <a href="../resultados-elecciones-generales-2026/">resultados de las generales de 2026</a> el reparto de escaños. '
+             f'El calendario de campaña y los diputados de cada provincia están en <a href="../elecciones-29n-2026/">la guía del 29N</a>; cómo se convierten los votos en escaños, en <a href="../como-se-vota/">Cómo se vota</a>.</p>')
+    h.append(faq_html)
+    h.append('<h2>Fuentes</h2><ul>'
+             f'<li><a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral: plazos de interés para los electores, generales del 29 de noviembre de 2026</a></li>'
+             f'<li><a href="{LOREG}">Ley Orgánica 5/1985, del Régimen Electoral General (LOREG)</a>, artículos 84, 85 y 143</li>'
+             f'<li><a href="{CORREOS_29N}">Correos: ya se puede solicitar el voto por correo para las elecciones generales del 29 de noviembre</a></li>'
+             f'<li><a href="{PUBLICO_MESA}">Público: dónde tengo que votar en las elecciones generales del 29N</a> (14 de octubre de 2026)</li>'
+             f'<li><a href="{LEGALITAS_29N}">Legálitas: guía legal para votar, trabajar y formar parte de una mesa electoral el 29N</a> (5 de octubre de 2026)</li>'
+             f'<li><a href="{BOE_29N}">Real Decreto 806/2026</a>, de convocatoria</li></ul>'
+             '<p class="leyenda">Esta guía resume la norma y los plazos oficiales; ante cualquier duda manda lo que digan el INE, la Junta Electoral Central y el BOE. Si ves un error, escríbeme y lo corrijo.</p>')
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
 def indice(resumen):
     titulo = 'Elecciones en España por comunidad autónoma, provincia y sección censal'
     desc = 'Resultados de las elecciones generales de 1977 a 2023 en cada comunidad autónoma y provincia, con el voto por renta de los barrios y enlaces al mapa por sección censal.'
@@ -1172,6 +1257,7 @@ def indice(resumen):
              '<li><a href="participacion-electoral-por-barrio/">Participación electoral por barrio</a>: dónde se vota más y dónde menos</li>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
+             '<li><a href="votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio electoral, qué llevar, el voto por correo y los plazos</li>'
              '<li><a href="como-se-vota/">Cómo se vota</a>: el precio de un escaño por provincia y los votos que no eligen a nadie</li>'
              '<li><a href="../abstencion.html">Participación por sección censal en Cataluña</a>: quién no vota y dónde</li>'
              '<li><a href="../atlas/">Atlas de las anomalías electorales</a>: los lugares que votan distinto de lo que cabría esperar</li></ul>')
@@ -1429,6 +1515,7 @@ def tema_29n(resumen):
              '<li><b>6 de octubre</b>: el BOE publica la disolución de las Cortes y la convocatoria.</li>'
              '<li><b>13 de noviembre</b>, a las 0.00: empieza la campaña electoral.</li>'
              '<li><b>27 de noviembre</b>, a las 24.00: termina la campaña.</li>'
+             '<li><b>19 de noviembre</b>: último día para pedir el voto por correo (<a href="../votar-29n/">cómo votar el 29N</a>).</li>'
              '<li><b>29 de noviembre</b>: jornada electoral.</li>'
              '<li><b>23 de diciembre</b>, a las 10.00: sesiones constitutivas del Congreso y del Senado.</li></ul>'
              + p_('Dato', f'Fuente: <a href="{BOE_29N}">Real Decreto 806/2026, de 5 de octubre</a>. El mapa de resultados tendrá en directo el recuento de la noche del 29N, sección a sección.'))
@@ -1784,6 +1871,7 @@ def tema_resultados(resumen):
     h.append('<h2>Más datos</h2><ul><li><a href="../elecciones-29n-2026/">Elecciones del 29N: fecha, campaña y escaños por provincia</a></li>'
              '<li><a href="../resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio desde 1977</a></li>'
              '<li><a href="../censo-electoral-2026/">Censo electoral de 2026 por provincia y municipio</a></li>'
+             '<li><a href="../votar-29n/">Dónde y cómo votar el 29N: colegio, voto por correo y plazos</a></li>'
              '<li><a href="../como-se-vota/">Cómo se vota: el precio de un escaño</a></li>'
              '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li></ul>')
     h.append(bloque_metodo())
@@ -2218,7 +2306,7 @@ def main():
         ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_resultados(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_resultados(resumen)]
     pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
     for ruta, html in pags + redirecciones():
