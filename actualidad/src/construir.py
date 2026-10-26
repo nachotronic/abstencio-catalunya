@@ -2654,6 +2654,8 @@ PIEZAS += [
     ),
     dict(
         slug='listas-29n-quien-encabeza', fecha='2026-10-26',
+        foto=dict(src='img/actualidad/fotos/listas-29n-quien-encabeza.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Dos papeletas, una morada y otra rosa, rasgadas a cada lado de un escaño vacío del Congreso, con dos sobres: un collage.'),
         titulo='¿Sale tu candidato? Busca tu provincia: el día que se cierran las listas, 251 escaños están casi decididos y 210 candidatos se juegan los otros 99', serie='29n', figura=0,
         descripcion='Con las encuestas de hoy, Vox tiene más puestos en el aire que seguros, y 18 de sus cabezas de lista no tienen el escaño garantizado. Irene Montero sale en 95 de cada 100 simulaciones; su número dos, en 56.',
         compara='La probabilidad de salir elegido de cada puesto de cada lista al Congreso en las 52 circunscripciones, con el modelo de Mapa Electoral y la media de encuestas del 26 de octubre de 2026, y los nombres publicados de las listas.',
