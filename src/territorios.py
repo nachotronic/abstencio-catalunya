@@ -1474,7 +1474,7 @@ def diputados_por_provincia():
 
 def tema_29n(resumen):
     ruta = 'elecciones/elecciones-29n-2026/'
-    titulo = 'Elecciones generales 29N 2026: escaños por provincia, fecha, campaña y resultados de 2023'
+    titulo = 'Elecciones 29N 2026: mapa, escaños por provincia, fecha y resultados de 2023'
     desc = ('Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Fechas de la campaña, los 350 diputados provincia a provincia '
             '(Madrid gana uno y Cádiz lo pierde), mapas del resultado de 2023 y lo que puede decidirse en cada territorio.')
     qs = [('¿Cuándo son las elecciones generales de 2026?',
