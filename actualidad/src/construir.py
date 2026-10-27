@@ -2867,12 +2867,33 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='serbia-estudiantes-vucic-mapa-distritos', fecha='2026-10-27',
+        titulo='Vučić ganó en los 25 distritos de Serbia en 2023; los estudiantes le han ganado en 18 y en Zaječar el recuento va por 31 votos', serie='internacional',
+        descripcion='La Lista Estudiantil saca el 53,4% de los votos válidos y la de Aleksandar Vučić, el 39,7%, con el 97,6% de los colegios escrutados. Vučić perdió menos de 100.000 votos frente a 2023: lo que cambió fue que fueron a votar casi medio millón de personas más. Belgrado aporta casi seis de cada diez votos de la ventaja.',
+        compara='Las legislativas anticipadas de Serbia del 25 de octubre de 2026 en los 25 distritos (24 distritos y la ciudad de Belgrado), frente a las legislativas de diciembre de 2023, y la lista del SNS frente a la segunda más votada en todas las legislativas desde 2012.',
+        limites='Los resultados de 2026 son provisionales: faltan 201 de los 8.392 colegios (85 de ellos en el extranjero), así que los votos de cada lista subirán algo. La participación de 2026 se calcula sobre los electores de los colegios ya escrutados. Los totales por distrito no dicen quién cambió su voto ni quién votó por primera vez: son saldos, no trasvases. El mapa no incluye Kosovo (60 colegios y unos 100.000 electores inscritos en Serbia), el voto en el extranjero ni el de las prisiones, que sí están en los totales nacionales. Los porcentajes se calculan sobre los votos válidos y pueden diferir unas décimas de los oficiales de la RIK, que usan todos los votantes.',
+        fuentes=[('https://www.rik.parlament.gov.rs/542645/rezultati/', 'Comisión Electoral de la República de Serbia (RIK), resultados de las legislativas de 2026 por colegio electoral y de 2023 por municipio'),
+                 ('https://en.wikipedia.org/wiki/2022_Serbian_general_election', 'Wikipedia, resultados oficiales de las legislativas de 2012, 2014, 2016, 2020 y 2022 (de la RIK)'),
+                 ('https://www.openstreetmap.org/relation/1677007', 'OpenStreetMap, contornos de los distritos administrativos de Serbia (ODbL), vía polygons.openstreetmap.fr, simplificados'),
+                 ('https://www.elfinanciero.com.mx/mundo/2026/10/26/estudiantes-ganan-elecciones-en-serbia-terminan-con-gobierno-del-conservador-aleksandar-vucic/', 'EFE vía El Financiero, Estudiantes ganan elecciones en Serbia (26-10-2026)'),
+                 ('https://es-us.noticias.yahoo.com/vucic-reconoce-derrota-movimiento-estudiantil-070622339.html', 'Reuters vía Yahoo Noticias, Vucic reconoce su derrota ante el movimiento estudiantil (26-10-2026)'),
+                 ('https://www.eldiario.es/internacional/movimiento-estudiantil-pone-reinado-autoritario-12-anos-vucic-serbia_1_13614161.html', 'elDiario.es, Un movimiento estudiantil pone fin al reinado autoritario de 12 años de Vucic (26-10-2026)')],
+        enlaces=[],
+        lugar='Serbia',
+        foto=dict(src='img/actualidad/fotos/serbia-estudiantes-vucic-mapa-distritos.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Quién ganó en cada distrito de Serbia en las legislativas del 25 de octubre.', fuente='RIK, resultados provisionales por colegio; contornos de OpenStreetMap'),
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
+    'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
