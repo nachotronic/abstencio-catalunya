@@ -178,7 +178,7 @@ const S = {
       if (k <= 0) return;
       ctx.save(); ctx.translate(X, y); ctx.scale(back(k), back(k));
       ctx.globalAlpha = clamp(k * 3); ctx.fillStyle = col(c || 'cell'); rrect(0, -78, 230, 120, 16); ctx.globalAlpha = 1;
-      text(a, 115, 0, '800 56px ' + F.display, C.fg, 'center', clamp(k * 3));
+      text(a, 115, 0, '800 ' + (a.length > 5 ? 44 : 56) + 'px ' + F.display, C.fg, 'center', clamp(k * 3));
       text(b, 270, 0, '400 46px ' + F.body, C.fg, 'left', clamp(k * 3));
       ctx.restore();
     });
@@ -346,10 +346,10 @@ const S = {
     ctx.globalAlpha = kl; ctx.strokeStyle = C.fg; ctx.lineWidth = 3; ctx.setLineDash([10, 8]);
     ctx.beginPath(); ctx.moveTo(xl, top - 30); ctx.lineTo(xl, yb); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
     text(s.lineaTxt || String(s.linea), xl, yb + 44, '700 30px ' + F.mono, C.fg, 'center', kl);
-    s.filas.forEach(([nm, a, b], i) => {
-      const y = top + i * rowH + rowH / 2, k = ease((t - 0.6 - i * 0.08) / 0.4), c = col(a >= s.linea ? s.color : s.colorNo || 'muted');
+    s.filas.forEach(([nm, a, b, cf], i) => {   // cf: color propio de la fila (se atenúa bajo la línea)
+      const y = top + i * rowH + rowH / 2, k = ease((t - 0.6 - i * 0.08) / 0.4), c = col(cf || (a >= s.linea ? s.color : s.colorNo || 'muted'));
       text(nm, X, y + 11, '500 30px ' + F.mono, C.fg, 'left', k);
-      ctx.globalAlpha = k; ctx.fillStyle = c;
+      ctx.globalAlpha = k * (cf && a < s.linea ? 0.4 : 1); ctx.fillStyle = c;
       if (b > a) rrect(px(a), y - 11, (px(b) - px(a)) * k, 22, 11);
       ctx.beginPath(); ctx.arc(px(a), y, 17, 0, 7); ctx.fill();
       if (b > a) { ctx.beginPath(); ctx.arc(px(a) + (px(b) - px(a)) * k, y, 17, 0, 7); ctx.fill(); }
@@ -457,6 +457,32 @@ const S = {
       const vv = lerp(vals[j], vals[Math.min(n - 1, j + 1)], j < n - 1 ? f : 0);
       text(nm + ' ' + vv.toFixed(1).replace('.', ','), ex + 26, ey + 12 + (s.desv ? s.desv[si] : 0), '800 ' + (si < 2 ? 40 : 32) + 'px ' + F.display, col(c), 'left', ease((t - 0.6) / 0.3));
       if (si < 2) text(vals[0].toFixed(1).replace('.', ','), px(0), py(vals[0]) - 30, '700 30px ' + F.mono, col(c), 'center', prog > 1.2 ? 1 : 0);  // punto de partida
+    });
+  },
+  // Rejilla de ganadores: s.filas = [[nombre, cifra, [color por columna]]], s.cols = etiquetas, s.marcar = filas a resaltar desde s.foco segundos
+  rejilla(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const lab = 300, n = s.cols.length, gap = 4, cw = (W - 2 * X - lab - gap * (n - 1)) / n, top = 540, rowH = Math.min(cw + gap, 880 / s.filas.length);
+    const foco = s.marcar ? ease((t - (s.foco || 4)) / 0.5) : 0;
+    s.filas.forEach(([nm, cifra, cs], i) => {
+      const y = top + i * rowH + (s.separar && i >= s.separar ? 18 : 0), dim = s.marcar && !s.marcar.includes(i) ? 1 - 0.7 * foco : 1;
+      const kn = ease((t - 0.3 - i * 0.03) / 0.3);
+      ctx.globalAlpha = dim; text(nm, X, y + rowH * 0.7, '600 26px ' + F.mono, C.fg, 'left', kn);
+      ctx.globalAlpha = dim; text(String(cifra), X + lab - 18, y + rowH * 0.7, '800 30px ' + F.display, C.fg, 'right', clamp((t - 0.6 - (s.barrido || 2.4)) / 0.3));
+      cs.forEach((c, j) => {
+        const k = ease((t - 0.6 - j / n * (s.barrido || 2.4)) / 0.25);
+        if (k <= 0) return;
+        ctx.globalAlpha = k * dim; ctx.fillStyle = col(c); rrect(X + lab + j * (cw + gap), y + 2, cw, rowH - gap - 2, 5);
+      });
+      ctx.globalAlpha = 1;
+    });
+    const yb = top + s.filas.length * rowH + (s.separar ? 18 : 0) + 34;
+    s.cols.forEach((l, j) => { if (j % 3 === 0 || j === n - 1) text(l, X + lab + j * (cw + gap) + cw / 2, yb, '500 24px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3)); });
+    (s.leyenda || []).forEach(([c, l], j) => {
+      const a = ease((t - 1 - j * 0.1) / 0.3), x = X + (j % 4) * 240, y = yb + 70 + Math.floor(j / 4) * 46;
+      ctx.globalAlpha = a; ctx.fillStyle = col(c); rrect(x, y - 26, 30, 30, 5); ctx.globalAlpha = 1;
+      text(l, x + 44, y, '500 28px ' + F.mono, C.fg, 'left', a);
     });
   },
   numeros(s, t) {

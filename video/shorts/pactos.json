@@ -1,0 +1,11 @@
+{"plantilla": "guia", "kicker": "SIMULADOR DE PACTOS · 29N",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "CERA": "#e0a440"},
+ "fuente": ["Fuente: Diarios de Sesiones del Congreso,", "investiduras 1996-2023; artículo 99 de la Constitución."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.2, "cuenta": 1.4, "lineas": ["Escaños para", "gobernar a la primera:"], "contador": 176, "color": "vote", "size": 96},
+  {"tipo": "lista", "dur": 5.2, "titulo": ["Las reglas", "de la investidura"], "items": [["176", "1ª votación: mayoría absoluta", "vote"], ["+ sí", "2ª: más síes que noes", "PSOE"], ["2 meses", "sin presidente: elecciones", "CERA"]]},
+  {"tipo": "horquillas", "dur": 6.5, "titulo": ["Síes de cada", "investidura"], "sub": "Desde 1996. Atenuado: no llegó a 176", "eje": [100, 210], "linea": 176, "lineaTxt": "176",
+   "filas": [["Aznar 1996", 181, 181, "PP"], ["Aznar 2000", 202, 202, "PP"], ["Zapatero 2004", 183, 183, "PSOE"], ["Zapatero 2008", 169, 169, "PSOE"], ["Rajoy 2011", 187, 187, "PP"], ["Sánchez 2016", 131, 131, "PSOE"], ["Rajoy 2016", 170, 170, "PP"], ["Moción 2018", 180, 180, "PSOE"], ["Sánchez 2019", 124, 124, "PSOE"], ["Sánchez 2020", 167, 167, "PSOE"], ["Feijóo 2023", 172, 172, "PP"], ["Sánchez 2023", 179, 179, "PSOE"]]},
+  {"tipo": "numeros", "dur": 5.2, "titulo": ["Sin llegar", "a 176"], "items": [["3", "vote", ["presidentes investidos en", "segunda votación: 2008, 2016, 2020"]], ["3", "muted", ["candidatos que fracasaron:", "Sánchez dos veces, Feijóo una"]], ["2", "CERA", ["repeticiones electorales:", "2016 y 2019"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["¿Quién suma", "176 el 29N?"], "ruta": "/encuestas/simulador-pactos/"}
+ ]}
