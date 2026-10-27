@@ -22,7 +22,10 @@ ult = max((e for e in encs if e.get('publicado') and not e['reest']), key=lambda
 dias = (date(2026, 11, 29) - hoy).days
 pv = sorted(([e['casa'], *K.suma_pv(e)] for e in con_esc), key=lambda r: -(r[1] + r[2]))
 fp = date.fromisoformat(ult['publicado'])
-nuevas = [e for e in encs if e.get('publicado') == hoy.isoformat() and not e['reest'] and 'VOX' in e['voto']]
+dia_n = max(e['publicado'] for e in encs if e.get('publicado') and e['publicado'] <= hoy.isoformat())
+nuevas = [e for e in encs if e.get('publicado') == dia_n and not e['reest'] and 'VOX' in e['voto']]
+dn = date.fromisoformat(dia_n)
+cuando = 'publicadas hoy' if dn == hoy else 'publicadas ayer' if (hoy - dn).days == 1 else f'del {dn.day} de {MES[dn.month - 1]}'
 
 escenas = [
     {'tipo': 'hook', 'dur': 2.8, 'lineas': [f'A {dias} días del 29N,', '¿qué dicen', [['las encuestas?', 'vote']]]},
@@ -34,7 +37,7 @@ escenas = [
     {'tipo': 'horquillas', 'dur': 5.4, 'titulo': ['PP + Vox, escaños', 'en cada encuesta'], 'sub': 'Horquilla de cada encuestadora', 'eje': [150, 220],
      'linea': 176, 'lineaTxt': '176: mayoría', 'color': 'PP', 'filas': [[c[:18], a, b] for c, a, b in pv],
      'nota': [f'{mayoria} de {len(con_esc)} les dan mayoría absoluta']},
-] + ([{'tipo': 'tabla', 'dur': 4.6, 'titulo': [f'{len(nuevas)} encuestas', 'publicadas hoy'], 'sub': '% de voto estimado',
+] + ([{'tipo': 'tabla', 'dur': 4.6, 'titulo': [f'{len(nuevas)} encuestas', cuando], 'sub': '% de voto estimado',
         'cols': [['PP', 'PP'], ['PSOE', 'PSOE'], ['Vox', 'Vox']],
         'filas': [[e['casa'], e['medio'], e['voto']['PP'], e['voto']['PSOE'], e['voto']['VOX']] for e in nuevas]}] if len(nuevas) > 1 else [
     {'tipo': 'numeros', 'dur': 4.2, 'titulo': ['La última:', ult['casa']], 'sub': f'{ult["medio"] + ", " if ult["medio"] else ""}publicada el {fp.day} de {MES[fp.month - 1]}',
