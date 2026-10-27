@@ -183,15 +183,20 @@ def estimacion():
     pv = next((b for b in d['bloques'] if b['listas'] == ['PP', 'Vox']), None)
     izq = next((b for b in d['bloques'] if b['bloque'].startswith('PSOE + Sumar + Podemos + ERC')), None)
     prob = lambda p: f'{round(p * 100)} %' if 0.01 <= p <= 0.99 else ('menos del 1 %' if p < 0.01 else 'más del 99 %')
+    # tres quintos (210): reforma de la Constitución (art. 167) y elección del CGPJ y de cuatro magistrados del Constitucional
+    p_desde = lambda b, t: sum(x for i, x in enumerate(b['escanos_dist']['p']) if b['escanos_dist']['desde'] + i >= t) if b and 'escanos_dist' in b else None
     frase = ''
     if pv:
         frase += (f'PP y Vox suman {round(pv["escanos"][2])} escaños en el escenario central (entre {round(pv["escanos"][1])} y {round(pv["escanos"][3])} '
-                  f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.')
+                  f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.'
+                  + (f' A los tres quintos de la Cámara, 210 escaños, llegan en el {prob(p_desde(pv, 210))}: es la mayoría que pide el Congreso para reformar la Constitución (el Senado también tiene que aprobarla por tres quintos), '
+                     'para elegir a los diez vocales del CGPJ que le tocan y a cuatro magistrados del Constitucional.' if p_desde(pv, 210) is not None else ''))
     if izq:
         frase += f' Los socios de la investidura de 2023 llegan a 176 en el {prob(izq["p_mayoria"])}.'
     color = lambda l: next((c, o) for kk, _, c, o in TODOS if kk == DEL_MODELO[l])
     r0 = lambda a: [round(x) for x in a]
     # horquillas: percentiles 2,5 / 10 / 50 / 90 / 97,5 de las simulaciones (motor.py)
+    MODELO_JS['p210'] = p_desde(pv, 210)
     MODELO_JS['bloques'] = [[n, *color(cl), r0(b['escanos']), round(b['p_mayoria'] * 100)] for b, n, cl in
                             ((pv, 'PP + Vox', 'PP'), (izq, 'Socios de 2023', 'PSOE')) if b]
     MODELO_JS['partidos'] = [[NOMBRE[DEL_MODELO[l['lista']]].replace(' / Frente Amplio', ''), *color(l['lista']), r0(l['escanos'])]
@@ -203,10 +208,10 @@ def estimacion():
     html_b = f"""<h2>Estimación propia de Mapa Electoral</h2>
 <p class="propio"><b>Modelo propio, no es una encuesta.</b> Todo lo anterior son cifras publicadas por las encuestadoras. Esto es un cálculo de Mapa Electoral: junta esas encuestas, las reparte por provincia y simula el resultado miles de veces.</p>
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
-                          for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023', '#e30613')) if b)}</div>
+                          for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023', '#e30613')) if b)}{f'<div><b style="color:#1d84ce">{prob(p_desde(pv, 210))}</b><span>de las simulaciones: PP y Vox llegan a 210, los tres quintos</span></div>' if p_desde(pv, 210) is not None else ''}</div>
 <p>{frase}</p>
 <p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt. Y en el <a href="simulador-pactos/">simulador de pactos</a>, decide qué vota cada partido y mira quién sale investido.</p>
-<figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. La línea marca la mayoría absoluta; en color intenso, la horquilla del 80 %.</span></figcaption>
+<figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. Las líneas marcan la mayoría absoluta (176) y los tres quintos (210); en color intenso, la horquilla del 80 %.</span></figcaption>
 <div class="chart" id="dist-bloques"></div></figure>
 <figure><figcaption><span class="t">¿Llegan a la mayoría absoluta? Escaños de cada bloque</span><span class="s">La barra gruesa recoge el 80 % de las simulaciones; la fina, el 95 %; el punto es la mediana. A la derecha, en qué porcentaje de simulaciones llega a 176.</span></figcaption>
 <div class="chart" id="horq-bloques"></div></figure>
@@ -253,6 +258,7 @@ def textos(encs, hoy):
           + ('Vox queda tercero en todas.' if tercero_vox == n else f'Vox queda tercero en {tercero_vox}.' if tercero_vox else ''))
     con_esc = [e for e in ultimas if 'PP' in e['esc'] and 'VOX' in e['esc']]
     mayoria = sum(1 for e in con_esc if rango_esc(e['esc']['PP'])[0] + rango_esc(e['esc']['VOX'])[0] >= 176)
+    tres_q = [e['casa'] for e in con_esc if rango_esc(e['esc']['PP'])[0] + rango_esc(e['esc']['VOX'])[0] >= 210]
     # titular breve: última encuesta de cada encuestadora en 30 días; la mayoría, solo en las que dan escaños
     if con_esc:
         con_vox = 'con Vox' if primero == 'PP' else 'PP y Vox'
@@ -261,7 +267,11 @@ def textos(encs, hoy):
     else:
         titular = gana
     p2 = ((f'Las {mayoria} que publican escaños dan' if mayoria == len(con_esc) else f'De las {len(con_esc)} que publican escaños, {mayoria} dan')
-          + ' al PP y a Vox juntos 176 o más, la mayoría absoluta del Congreso (con un intervalo, se cuenta el extremo bajo).') if con_esc else ''
+          + ' al PP y a Vox juntos 176 o más, la mayoría absoluta del Congreso (con un intervalo, se cuenta el extremo bajo).'
+          + (' Ninguna les da los tres quintos de la Cámara, 210 escaños.' if not tres_q else
+             (f' Todas les dan además 210 o más' if len(tres_q) == len(con_esc) else
+              f' {"Una de ellas, " + tres_q[0] + "," if len(tres_q) == 1 else str(len(tres_q)) + " (" + ", ".join(tres_q) + ")"} les {"da" if len(tres_q) == 1 else "dan"} además 210 o más')
+             + ', los tres quintos de la Cámara.')) if con_esc else ''
     return titular, entradilla, p1, p2, ultimas, con_esc, mayoria
 
 
@@ -277,6 +287,45 @@ def fechas_celda(e):
     """Fecha de publicación; si no consta (encuestas que solo recoge Wikipedia), fin del trabajo de campo con asterisco."""
     iso = e.get('publicado') or e['fin']
     return dia(iso, date.fromisoformat(iso).year != date.today().year) + ('' if e.get('publicado') else '*')
+
+
+DIAS_SEMANA = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
+
+
+def lo_ultimo(desde23, casas):
+    """Párrafo de arriba con las encuestas publicadas en los tres últimos días con publicación (como mucho tres),
+    sus cifras y el cambio frente a la anterior de la misma encuestadora. Solo datos."""
+    pub = lambda e: e.get('publicado') or e['fin']
+    validas = [e for e in desde23 if not e['reest']]
+    if not validas:
+        return ''
+    tope = (date.fromisoformat(pub(validas[0])) - timedelta(days=2)).isoformat()
+    con_pagina = {r for r, *_ in casas}
+    frases = []
+    for i, e in enumerate([e for e in validas if pub(e) >= tope][:3]):
+        d = date.fromisoformat(pub(e))
+        cuando = f'{DIAS_SEMANA[d.weekday()]} {d.day} de {fecha_larga(d.isoformat()).split(" de ")[1]}'
+        r = encuestadoras.ruta_de(clave(e['casa']))
+        nombre = f'<a href="{r}/">{html.escape(e["casa"])}</a>' if r in con_pagina else html.escape(e['casa'])
+        quien = nombre + (f' para {html.escape(e["medio"])}' if e['medio'] else '')
+        cifras = ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(e["voto"][k])}' for k, n, *_ in PRINCIPALES[:4] if k in e['voto'])
+        esc = f', con {e["esc"]["PP"]} escaños para el PP y {e["esc"]["VOX"]} para Vox' if 'PP' in e['esc'] and 'VOX' in e['esc'] else ''
+        fuente = f' (<a href="{html.escape(e["url"])}">fuente</a>)' if e['url'] else ''
+        ant = next((x for x in validas if x is not e and clave(x['casa']) == clave(e['casa']) and pub(x) < pub(e)), None)
+        cambio = ''
+        if ant:
+            mov = []
+            for k in ('PP', 'PSOE', 'VOX'):
+                if k in e['voto'] and k in ant['voto']:
+                    dv = round(e['voto'][k] - ant['voto'][k], 1)
+                    mov.append(f'{NOMBRE[k] if k != "VOX" else "Vox"} {"se queda igual" if dv == 0 else ("sube " if dv > 0 else "baja ") + (f"{abs(dv):g}".replace(".", ",")) + (" punto" if abs(dv) == 1 else " puntos")}')
+            if mov:
+                cambio = f' Frente a su encuesta anterior, del {fecha_larga(pub(ant))}: ' + ', '.join(mov) + '.'
+        mismo = i and pub(e) == pub(validas[0])
+        frases.append((f'La más reciente es la de {quien}, publicada el {cuando}' if i == 0 else
+                       (('Y la de ' if i == 2 else 'Ese mismo día salió también la de ') if mismo else f'El {cuando} salió la de ') + quien)
+                      + f': {cifras}{esc}{fuente}.{cambio}')
+    return '<p data-tipo="dato" class="ultimo"><b>Lo último.</b> ' + ' '.join(frases) + '</p>'
 
 
 def fila_tabla(e):
@@ -424,14 +473,14 @@ function columnas(id,series,linea){const box=document.getElementById(id);if(!box
    const hit=el('rect',{x:ox+j*bw,y:oy,width:bw,height:ph,fill:'transparent'},svg);
    hit.addEventListener('mousemove',ev=>muestra(box,ev,txt));hit.addEventListener('touchstart',ev=>muestra(box,ev,txt),{passive:true});
    hit.addEventListener('mouseleave',()=>{tipDe(box).hidden=true})});
-  if(linea&&linea>=desde&&linea<desde+p.length*k){const lx=ox+(linea-desde)/k*bw;el('line',{x1:lx,x2:lx,y1:oy-2,y2:oy+ph+2,stroke:'var(--fg)','stroke-dasharray':'3 3'},svg);
-   el('text',{x:lx+4,y:oy+10,style:'fill:var(--fg);font-weight:600'},svg).textContent=linea}
+  [].concat(linea||[]).forEach(L=>{if(L>=desde&&L<desde+p.length*k){const lx=ox+(L-desde)/k*bw;el('line',{x1:lx,x2:lx,y1:oy-2,y2:oy+ph+2,stroke:'var(--fg)','stroke-dasharray':'3 3'},svg);
+   const fin=lx>ox+pw-34;el('text',{x:fin?lx-4:lx+4,y:oy+10,'text-anchor':fin?'end':'start',style:'fill:var(--fg);font-weight:600'},svg).textContent=L}})
   const paso=p.length*k>80?20:p.length*k>30?10:5;
   for(let e=Math.ceil(desde/paso)*paso;e<desde+p.length*k-paso/2;e+=paso)el('text',{x:ox+((e-desde)/k+.5)*bw,y:oy+ph+15,'text-anchor':'middle'},svg).textContent=e})}
 function todo(){const M=D.modelo||{};
  if(M.bloques)rangos('horq-bloques',M.bloques.map(b=>({n:b[0],c:b[1],o:b[2],a:b[3],p:b[4]})),100,250,176,f=>f.p+' %');
  if(M.partidos)rangos('horq-partidos',M.partidos.map(b=>({n:b[0],c:b[1],o:b[2],a:b[3]})),0,Math.ceil(Math.max(...M.partidos.map(b=>b[3][4]))/25)*25,0,null);
- if(M.dist)columnas('dist-modelo',M.dist);if(M.dist_bloques)columnas('dist-bloques',M.dist_bloques,176);
+ if(M.dist)columnas('dist-modelo',M.dist);if(M.dist_bloques)columnas('dist-bloques',M.dist_bloques,[176,210]);
  if(D.pv&&D.pv.length)rangos('horq-encuestas',D.pv.map(e=>({n:e[0],c:'#1d84ce',o:'#4fa8ea',a:[e[1],e[2]],
   tip:'<b>'+e[0]+'</b><br>PP + Vox: '+(e[1]===e[2]?e[1]:e[1]+'-'+e[2])+' escaños'})),170,230,176,null)}
 todo();let w=document.body.clientWidth;addEventListener('resize',()=>{if(document.body.clientWidth!==w){w=document.body.clientWidth;todo()}});
@@ -781,6 +830,13 @@ def main():
             + (f', del {fecha_larga(ult["publicado"])}' if ult.get('publicado') else '') + f': PP {pc(ult["voto"]["PP"])}, PSOE {pc(ult["voto"]["PSOE"])}'
             + (f', Vox {pc(ult["voto"]["VOX"])}' if 'VOX' in ult['voto'] else '') + '.'),
            ('¿Suman mayoría absoluta PP y Vox en las encuestas?', p2 or 'Las encuestas recientes no publican escaños.'),
+           ('¿Pueden PP y Vox llegar a la mayoría de tres quintos?',
+            'Los tres quintos del Congreso son 210 escaños: la mayoría que pide para reformar la Constitución (artículo 167, también con tres quintos del Senado) '
+            'y para elegir a sus vocales del CGPJ y a cuatro magistrados del Constitucional. '
+            + ((lambda t: 'Ninguna de las encuestas recientes que publican escaños les da 210 o más. ' if not t else
+                f'De las {len(con_esc)} encuestas recientes que publican escaños, {"solo una" if len(t) == 1 else len(t)} les {"da" if len(t) == 1 else "dan"} 210 o más: {", ".join(e["casa"] for e in t)}. ')
+               ([e for e in con_esc if suma_pv(e)[0] >= 210]) if con_esc else '')
+            + (f'En el modelo de Mapa Electoral, PP y Vox llegan a 210 en el {round(MODELO_JS["p210"] * 100)} % de las simulaciones.' if MODELO_JS.get('p210') is not None and 0.01 <= MODELO_JS['p210'] <= 0.99 else '')),
            ('¿Qué encuestas dan mayoría absoluta a PP y Vox?',
             (f'Con la última encuesta de cada encuestadora en los últimos 30 días, dan a PP y Vox juntos 176 escaños o más: '
              + ', '.join(f'{e["casa"]}{" (" + e["medio"] + ")" if e["medio"] else ""}' for e in con_esc if suma_pv(e)[0] >= 176) + '. '
@@ -864,6 +920,7 @@ def main():
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
 <p class="dek">{html.escape(entradilla)}</p>
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy.isoformat()}">{actual}</time></p>
+{lo_ultimo(desde23, casas)}
 <p data-tipo="dato">{html.escape(p1)}</p>
 <p data-tipo="dato">{html.escape(p2)}</p>
 <figure>
