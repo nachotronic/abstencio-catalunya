@@ -1,5 +1,5 @@
 // Mapa de las generales: municipios para toda España y secciones censales al acercarse.
-// Datos en data/: meta.json, municipios.json, provincias.json, resumen.json y sec/<prov>.json (generales).
+// Datos en data/: meta.json, municipios-ligero.json (municipios.json sin las generales anteriores, src/ligero.py), provincias.json, resumen.json y sec/<prov>.json (generales).
 // Municipales y europeas, aparte: e/<elección>.json y sec/<prov>_<elección>.json, que se cargan al elegirlas.
 (async function () {
   const $ = s => document.querySelector(s);
@@ -9,7 +9,7 @@
   // Barrio de cada sección de las grandes ciudades (src/territorios.py): se pide al acercarse a las secciones
   let BAR = null, BARP = null;
   const pideBar = () => BARP || (BARP = get('barrios.json').then(j => { BAR = j; }).catch(() => { BAR = { r: [], s: {} }; }));
-  const [META, MUN, PROV, RES] = await Promise.all([get('meta.json'), get('municipios.json'), get('provincias.json'), get('resumen.json')]);
+  const [META, MUN, PROV, RES] = await Promise.all([get('meta.json'), get('municipios-ligero.json'), get('provincias.json'), get('resumen.json')]);
   const FAM = META.familias, FCOD = FAM.map(f => f.cod);
   const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
   FAM.forEach(f => f.rgb = hex(f.color));
@@ -328,10 +328,11 @@
   }
 
   // elecciones que viven en ficheros aparte: columnas que se añaden a MUN y a cada provincia al elegirlas
+  // (municipios-ligero.json solo trae la última generales; las de 2004-2019 también llegan de e/<elección>.json, ver src/ligero.py)
   const aparte = y => (ELEC.find(e => e.cod === y) || {}).aparte;
-  const pedido = {};
+  const pedido = {}, fuera = new Set(META.elecciones.filter(e => !MUN[e.cod + '_part']).map(e => e.cod));
   function asegura(y) {
-    if (!aparte(y) || MUN[y + '_part']) return Promise.resolve();
+    if (!fuera.has(y) || MUN[y + '_part']) return Promise.resolve();
     return pedido[y] || (pedido[y] = get('e/' + y + '.json').then(d => { Object.assign(MUN, d); }));
   }
   function aseguraSec(p, y) {
