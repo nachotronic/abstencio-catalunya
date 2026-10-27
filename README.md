@@ -44,6 +44,8 @@ Abstención en las elecciones generales (2015–2023) por sección censal en Cat
 2. `python3 listas-electorales-29n/src/diputados.py` descarga los diputados de la XV legislatura (datos abiertos del Congreso).
 3. `python3 listas-electorales-29n/src/construir.py` y después `python3 src/seo.py`.
 
+El workflow `.github/workflows/listas.yml` hace los pasos 1 y 3 solo (`src/automatico.py`): mira el sumario del BOE cada 10 minutos la noche y la mañana del 28 de octubre y del 3 de noviembre, y publica en `main` en cuanto salen las listas, si están las 52 provincias y las listas completas; si no, el job queda en rojo y no publica nada.
+
 Mientras no haya listas del 29N en `datos/`, la sección funciona en modo avance con las del 23J de 2023 y lo dice arriba. Las probabilidades por puesto están en `datos/puestos-29n.json` (la simulación de la pieza «Las listas del 29N, puesto a puesto»).
 
 ## Previsiones (prototipo, sin publicar)

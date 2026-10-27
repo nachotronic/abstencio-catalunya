@@ -135,29 +135,37 @@ def lee(xml):
     return out
 
 
+def guarda(eleccion, idents, fase):
+    """Descarga uno o varios documentos del BOE (si una junta sale aparte), junta sus candidaturas y las guarda en
+    datos/<eleccion>-<fase>.json. Devuelve las candidaturas y las provincias que faltan."""
+    cands, xml0 = [], None
+    for ident in idents:
+        xml = descarga(f'https://www.boe.es/diario_boe/xml.php?id={ident}').decode('utf-8')
+        xml0 = xml0 or xml
+        cands += lee(xml)
+    fecha = re.search(r'<fecha_publicacion>(\d{8})</fecha_publicacion>', xml0).group(1)
+    falta = sorted(set(PROV_SLUG) - {c['prov'] for c in cands})
+    DESTINO.mkdir(parents=True, exist_ok=True)
+    salida = {'eleccion': eleccion, 'fase': fase, 'boe': idents[0], 'otros_boe': idents[1:], 'fecha_boe': f'{fecha[:4]}-{fecha[4:6]}-{fecha[6:]}',
+              'url': f'https://www.boe.es/diario_boe/txt.php?id={idents[0]}', 'pdf': re.search(r'<url_pdf>(.*?)</url_pdf>', xml0).group(1),
+              'candidaturas': cands}
+    (DESTINO / f'{eleccion}-{fase}.json').write_text(json.dumps(salida, ensure_ascii=False, separators=(',', ':')))
+    cands_ok = [c for c in cands if not c.get('no_proclamada')]
+    cong = [c for c in cands_ok if c['camara'] == 'congreso']
+    print(f'{", ".join(idents)}: {len(cong)} candidaturas al Congreso, {sum(len(c["titulares"]) for c in cong)} titulares y '
+          f'{sum(len(c["suplentes"]) for c in cong)} suplentes; {len(cands_ok) - len(cong)} al Senado; {len(cands) - len(cands_ok)} no proclamadas.')
+    if falta:
+        print('Aviso: faltan provincias', falta)
+    return cands, falta
+
+
 def main():
     eleccion = sys.argv[1]
     if sys.argv[2] == '--buscar':
         for i, t in buscar(sys.argv[3]):
             print(i, t)
         return
-    ident, fase = sys.argv[2], sys.argv[3]
-    xml = descarga(f'https://www.boe.es/diario_boe/xml.php?id={ident}').decode('utf-8')
-    fecha = re.search(r'<fecha_publicacion>(\d{8})</fecha_publicacion>', xml).group(1)
-    cands = lee(xml)
-    prov = {c['prov'] for c in cands}
-    falta = sorted(set(PROV_SLUG) - prov)
-    if falta:
-        print('Aviso: faltan provincias', falta)
-    DESTINO.mkdir(parents=True, exist_ok=True)
-    salida = {'eleccion': eleccion, 'fase': fase, 'boe': ident, 'fecha_boe': f'{fecha[:4]}-{fecha[4:6]}-{fecha[6:]}',
-              'url': f'https://www.boe.es/diario_boe/txt.php?id={ident}', 'pdf': re.search(r'<url_pdf>(.*?)</url_pdf>', xml).group(1),
-              'candidaturas': cands}
-    (DESTINO / f'{eleccion}-{fase}.json').write_text(json.dumps(salida, ensure_ascii=False, separators=(',', ':')))
-    cands_ok = [c for c in cands if not c.get('no_proclamada')]
-    cong = [c for c in cands_ok if c['camara'] == 'congreso']
-    print(f'{ident}: {len(cong)} candidaturas al Congreso, {sum(len(c["titulares"]) for c in cong)} titulares y '
-          f'{sum(len(c["suplentes"]) for c in cong)} suplentes; {len(cands_ok) - len(cong)} al Senado; {len(cands) - len(cands_ok)} no proclamadas.')
+    guarda(eleccion, [sys.argv[2]], sys.argv[3])
 
 
 if __name__ == '__main__':
