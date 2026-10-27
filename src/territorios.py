@@ -1474,7 +1474,7 @@ def diputados_por_provincia():
 
 def tema_29n(resumen):
     ruta = 'elecciones/elecciones-29n-2026/'
-    titulo = 'Elecciones generales 29N 2026: escaños por provincia, fecha, campaña y resultados de 2023'
+    titulo = 'Elecciones 29N 2026: mapa, escaños por provincia, fecha y resultados de 2023'
     desc = ('Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Fechas de la campaña, los 350 diputados provincia a provincia '
             '(Madrid gana uno y Cádiz lo pierde), mapas del resultado de 2023 y lo que puede decidirse en cada territorio.')
     qs = [('¿Cuándo son las elecciones generales de 2026?',
@@ -1542,7 +1542,8 @@ def tema_29n(resumen):
                   f'Con los mismos votos y el reparto de 2026, en el que Madrid gana un diputado y Cádiz lo pierde, el PP tendría {num(R26["PP"])} y el PSOE {num(R26["PSOE"])}; el resto, igual.')
              + tabla('Votos y escaños de cada partido en las generales de 2023', ['Partido', 'Votos', '% del voto válido', 'Escaños', 'Con el reparto de 2026'],
                      [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
-             + f'<p class="leyenda">Fuente: Ministerio del Interior. Votos y escaños por candidatura. Cálculo del reparto con la regla D\'Hondt en <a href="{raiz}actualidad/precio-del-escano-29n/">el precio del escaño</a>.</p>')
+             + f'<p class="leyenda">Fuente: Ministerio del Interior. Votos y escaños por candidatura. Cálculo del reparto con la regla D\'Hondt en <a href="{raiz}actualidad/precio-del-escano-29n/">el precio del escaño</a>.</p>'
+            f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar tras el 29N? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>')
     cuenta = {}
     for g in gp.values():
         cuenta[g] = cuenta.get(g, 0) + 1
@@ -1817,7 +1818,7 @@ def tema_resultados(resumen):
            'y en él se suma el voto de los españoles que viven en el extranjero, que puede cambiar algún escaño ajustado. Después se proclaman los electos.'),
           ('¿Hasta cuándo se pueden publicar encuestas?',
            'La ley electoral prohíbe publicar o difundir sondeos electorales en los cinco días anteriores a la votación, del martes 24 al sábado 28 de noviembre. '
-           'Mapa Electoral no publica encuestas ni estimaciones: solo resultados oficiales.'),
+           'Mapa Electoral recoge las encuestas publicadas hasta el lunes 23 y en esos cinco días no las actualiza. En esta página solo hay resultados oficiales.'),
           ('¿Dónde veo los resultados de mi municipio o de mi barrio?',
            'En el mapa de Mapa Electoral: escribe tu calle y número en el buscador. Cada provincia y cada municipio de más de 1.000 habitantes tiene además su página, '
            'con los resultados desde 1977, enlazada en la tabla de esta página.')]
@@ -1845,7 +1846,8 @@ def tema_resultados(resumen):
                   'en el que Madrid gana un diputado y Cádiz lo pierde.')
              + tabla('Votos y escaños de cada partido en las generales de 2023', ['Partido', 'Votos', '% del voto válido', 'Escaños', 'Con el reparto de 2026'],
                      [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
-             + '<p class="leyenda">Fuente: Ministerio del Interior.</p>')
+             + '<p class="leyenda">Fuente: Ministerio del Interior.</p>'
+            f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>')
     h.append(bloque_resultado('España', e))
     rp = {p: r_prov(p) for p in ESCANOS_2026}
     gp = {p: T.ganador(r) for p, r in rp.items()}

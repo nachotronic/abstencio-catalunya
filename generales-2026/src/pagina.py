@@ -207,7 +207,7 @@ def tablas(V):
 def jsonld(F):
     art = {
         '@context': 'https://schema.org', '@type': 'AnalysisNewsArticle',
-        'headline': 'El mapa de las generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera',
+        'headline': 'El mapa de las elecciones generales: cómo vota cada barrio de España según su renta, su edad y su población extranjera',
         'description': f"Resultados del Congreso de 2004 a 2023 en las {F['nsec']} secciones censales de España, cruzados con renta, pobreza, edad y población extranjera del INE.",
         'datePublished': PUBLICADO, 'dateModified': F['hoy'], 'inLanguage': 'es', 'url': F['url'],
         'image': 'https://mapaelectoral.es/img/compartir/portada.jpg',
