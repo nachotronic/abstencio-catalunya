@@ -86,7 +86,7 @@ def genera(m, hemi_encuestas=None, n_hemi=0):
     datos = {'partidos': partidos, 'puntos': puntos, 'historicos': historicos, 'alias': {n: k for n, k in m.DEL_MODELO.items() if n != k}}
 
     url = m.URL + 'simulador-pactos/'
-    titulo = 'Simulador de pactos del 29N: ¿quién suma 176 escaños?'
+    titulo = 'Simulador de pactos del 29N: ¿quién puede gobernar? Las mayorías que suman 176'
     desc = ('Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura en el Congreso del 29N. '
             f'Parte de la media de encuestas del {actual}, con las mayorías posibles y las investiduras reales desde 1996.')
     faq = [('¿Cuántos votos hacen falta para investir a un presidente del Gobierno?',

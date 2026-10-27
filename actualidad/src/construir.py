@@ -3205,7 +3205,9 @@ def en_catala(out, p):
 
 
 ENCUESTAS_SIGUE = ('<li><a href="../../encuestas/"><span class="kicker">Encuestas</span>'
-                   '<b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b></a></li>')
+                   '<b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b></a></li>'
+                   '<li><a href="../../encuestas/simulador-pactos/"><span class="kicker">Pactos</span>'
+                   '<b>Simulador de pactos del 29N: ¿quién puede gobernar? Decide qué vota cada partido</b></a></li>')
 
 
 def pieza(p, todas):

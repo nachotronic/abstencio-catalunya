@@ -447,7 +447,7 @@ def franja_portada(titular, med, actual, pre):
             f'<a href="{pre}encuestas/">Encuestas de las elecciones generales</a></h2><span class="de-act">Actualizado el {actual}</span></div>'
             f'<a class="de-tit" href="{pre}encuestas/">{html.escape(titular)}</a><ul class="de-med">{cifras}</ul>'
             f'<p class="de-pie">Mediana de la última encuesta de cada encuestadora en las tres últimas semanas. '
-            f'<a href="{pre}encuestas/">Todas las encuestas, los escaños y nuestra estimación →</a></p>'
+            f'<a href="{pre}encuestas/">Todas las encuestas, los escaños y nuestra estimación →</a> · <a href="{pre}encuestas/simulador-pactos/">¿Quién puede gobernar? Simulador de pactos →</a></p>'
             '<style>.del-encuestas .de-act{font:13px var(--sans);color:var(--muted)}.del-encuestas .de-tit{display:block;font:700 clamp(19px,2.4vw,24px)/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:2px 0 8px}'
             '.del-encuestas .de-tit:hover{text-decoration:underline}.del-encuestas .de-med{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;font:14px var(--sans)}'
             '.del-encuestas .de-med i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.del-encuestas .de-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}</style></section>')
