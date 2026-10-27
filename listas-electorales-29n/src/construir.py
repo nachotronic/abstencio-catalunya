@@ -33,6 +33,10 @@ CARPETA = RAIZ / 'listas-electorales-29n'
 DATOS = CARPETA / 'datos'
 URL = BASE + '/listas-electorales-29n/'
 PUBLICADO = '2026-10-27'
+# Ilustración de cabecera (ChatGPT, buzón, 27-10-2026) y su recorte 1200x630 para redes; la tarjeta de datos va aparte
+ILUSTRACION = dict(src='img/listas/listas-electorales-29n.jpg', ancho=1280, alto=720,
+                   pie='Un tablón con listas electorales de colores y una lupa sobre uno de los nombres.')
+TARJETA_DATOS = 'img/compartir/listas-electorales-29n-datos.jpg'
 # Calendario del 29N (LOREG, contado desde la convocatoria del BOE del 6 de octubre de 2026)
 CALENDARIO = [('2026-10-26', 'Fin del plazo para presentar candidaturas'),
               ('2026-10-28', 'El BOE publica las candidaturas presentadas'),
@@ -555,7 +559,7 @@ def main():
     desc = ('Buscador de las listas electorales del 29N: todos los candidatos al Congreso y al Senado por provincia y partido, con el BOE y las opciones de salir elegido de cada uno.')
     imagen = f'{BASE}/img/compartir/listas-electorales-29n.jpg'
     jsonld = [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': url + '#pagina', 'name': titular, 'description': desc, 'url': url, 'inLanguage': 'es',
-               'datePublished': PUBLICADO, 'dateModified': hoy, 'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO,
+               'datePublished': PUBLICADO, 'dateModified': hoy, 'image': [f'{BASE}/{ILUSTRACION["src"]}', imagen], 'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO,
                'about': {'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'}},
               {'@context': 'https://schema.org', '@type': 'Dataset', '@id': url + '#datos', 'name': 'Listas electorales al Congreso y al Senado' + (' (23J de 2023)' if avance else ' del 29N de 2026'),
                'description': 'Candidatos de cada candidatura, provincia y cámara, tal como los publica el BOE.', 'url': url, 'license': 'https://creativecommons.org/licenses/by/4.0/',
@@ -570,6 +574,7 @@ def main():
 <h1 data-miga="Listas electorales del 29N">{e(titular)}</h1>
 <p class="dek">{e(dek)}</p>
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy}">{fecha_larga(hoy)}</time></p>
+<figure class="foto"><img src="../{ILUSTRACION['src']}" alt="{e(ILUSTRACION['pie'])}" width="{ILUSTRACION['ancho']}" height="{ILUSTRACION['alto']}"><figcaption>{e(ILUSTRACION['pie'])} Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>
 {aviso}
 <form class="filtros" role="search" onsubmit="return false">
 <input id="q" type="search" placeholder="Busca un candidato: nombre o apellido" aria-label="Nombre del candidato" autocomplete="off">
@@ -602,7 +607,7 @@ def main():
 <dt>Límites</dt><dd>Entre las listas presentadas (28 de octubre) y las proclamadas (3 de noviembre) las juntas pueden excluir candidaturas o nombres. Los colores agrupan a cada partido con sus marcas territoriales (PSC con PSOE, Compromís con Frente Amplio).</dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 </dl>
-<p class="descargas">Descargar: <a href="{nombre_csv}">todas las listas en CSV</a> (una fila por candidato, con suplentes) · <a href="candidatos.json">JSON</a></p>
+<p class="descargas">Descargar: <a href="{nombre_csv}">todas las listas en CSV</a> (una fila por candidato, con suplentes) · <a href="candidatos.json">JSON</a> · <a href="../{TARJETA_DATOS}">resumen en imagen</a></p>
 <h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../actualidad/listas-29n-quien-encabeza/"><span class="kicker">Puesto a puesto</span><b>Qué puestos de cada lista dan escaño</b></a></li><li><a href="../encuestas/"><span class="kicker">Encuestas</span><b>Todas las encuestas del 29N y su media</b></a></li><li><a href="../actualidad/ministros-listas-29n/"><span class="kicker">Ministros</span><b>Dónde van los ministros en las listas</b></a></li><li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li></ul>
 <footer>Mapa Electoral · Datos del BOE · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/listas-electorales-29n">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
@@ -621,7 +626,7 @@ def main():
         if n >= 3:
             barras.append(('Sumar' if avance and p[0] == 'SUMAR' else p[2].replace('Sumar / ', ''), n, p[3]))
     barras = sorted(barras, key=lambda b: -b[1])[:8]
-    tarjeta(RAIZ / 'img/compartir/listas-electorales-29n.jpg', titular,
+    tarjeta(RAIZ / TARJETA_DATOS, titular,
             f'{len(cong)} candidaturas al Congreso{" en 2023" if avance else ""}, {miles(n_cong)} candidatos titulares. Candidaturas por partido:', barras)
     import esquema
     for f in [CARPETA / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()]:
