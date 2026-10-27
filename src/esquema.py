@@ -61,6 +61,7 @@ NOMBRES = {
     'actualidad/': 'Actualidad',
     'generales-2026/metodologia.html': 'Metodología del mapa',
     'encuestas/': 'Encuestas',
+    'listas-electorales-29n/': 'Listas electorales del 29N',
 }
 # Página de la que cuelga cada página suelta (las de carpeta cuelgan de la carpeta superior)
 PADRE = {
@@ -179,7 +180,7 @@ def procesa(f):
 
 def paginas():
     yield from sorted(ROOT.glob('*.html'))
-    for d in ('atlas', 'actualidad', 'elecciones', 'municipio', 'temas', 'generales-2026', 'encuestas'):
+    for d in ('atlas', 'actualidad', 'elecciones', 'municipio', 'temas', 'generales-2026', 'encuestas', 'listas-electorales-29n'):
         yield from sorted((ROOT / d).rglob('*.html'))
 
 
