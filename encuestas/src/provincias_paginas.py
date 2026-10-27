@@ -72,7 +72,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                   {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': url + '#preguntas', 'inLanguage': 'es',
                    'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
         cuerpo = f"""<main>
-<p class="kicker"><a href="../">Encuestas</a> · <a href="../provincias.html">Por provincias</a> · {html.escape(ccaa_de[cod])}</p>
+<p class="kicker"><a href="../">Encuestas elecciones generales 2026</a> · <a href="../provincias.html">Por provincias</a> · {html.escape(ccaa_de[cod])}</p>
 <h1 data-miga="{html.escape(nombre)}">{html.escape(titular)}</h1>
 <p class="dek">Los {total} escaños de {html.escape(nombre)} con la media de las encuestas de las generales del 29N: reparto central, horquilla y probabilidad de quedar primero.</p>
 <p class="firma">Por <a href="../../sobre-mi.html">{c.AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
@@ -88,7 +88,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
 {f'<h2>Otras provincias de {html.escape(ccaa_de[cod])}</h2><ul class="casas">' + ''.join(f'<li><a href="../{s}/">{html.escape(nm)}</a></li>' for s, nm in vecinas) + '</ul>' if vecinas else ''}
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../../listas-electorales-29n/{slug}/"><span class="kicker">Listas</span><b>Los candidatos del 29N en {html.escape(nombre)}, puesto a puesto</b></a></li><li><a href="../provincias.html"><span class="kicker">Por provincias</span><b>Las 52 provincias y las más disputadas</b></a></li><li><a href="../"><span class="kicker">Encuestas</span><b>Todas las encuestas de las generales y su promedio</b></a></li><li><a href="../../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../../listas-electorales-29n/{slug}/"><span class="kicker">Listas</span><b>Los candidatos del 29N en {html.escape(nombre)}, puesto a puesto</b></a></li><li><a href="../provincias.html"><span class="kicker">Por provincias</span><b>Las 52 provincias y las más disputadas</b></a></li><li><a href="../"><span class="kicker">Encuestas</span><b>Todas las encuestas de las elecciones generales 2026 y su promedio</b></a></li><li><a href="../../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
         estilos = c.ESTILOS.replace('</style>', '.esc{display:flex;flex-wrap:wrap;gap:3px;margin:.6rem 0}.esc.grande i{width:18px;height:18px;border-radius:3px;display:block}'

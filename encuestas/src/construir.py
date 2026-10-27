@@ -248,7 +248,7 @@ def textos(encs, hoy):
     gana = f'{art}{NOMBRE[primero]} gana en las {n} encuestas' if n1 == n else f'{art}{NOMBRE[primero]} gana en {n1} de {n} encuestas'
     rangos = {k: (min(e['voto'][k] for e in ultimas if k in e['voto']), max(e['voto'][k] for e in ultimas if k in e['voto']))
               for k in ('PP', 'PSOE', 'VOX')}
-    entradilla = (f'Últimas encuestas de las elecciones generales: con la última de cada encuestadora en los últimos 30 días, el PP va del {pc(rangos["PP"][0])} al {pc(rangos["PP"][1])}, '
+    entradilla = (f'Últimas encuestas de las elecciones generales 2026: con la última de cada encuestadora en los últimos 30 días, el PP va del {pc(rangos["PP"][0])} al {pc(rangos["PP"][1])}, '
                   f'el PSOE del {pc(rangos["PSOE"][0])} al {pc(rangos["PSOE"][1])} y Vox del {pc(rangos["VOX"][0])} al {pc(rangos["VOX"][1])}. '
                   'Todas las encuestas publicadas, con su fuente, actualizadas cada día.')
     disidentes = [e for e in ultimas if lider(e) != primero]
@@ -736,7 +736,7 @@ def provincias():
               {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': url + '#preguntas', 'inLanguage': 'es',
                'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
     cuerpo = f"""<main>
-<p class="kicker">Modelo propio · Elecciones generales del 29N</p>
+<p class="kicker"><a href="./">Encuestas elecciones generales 2026</a> · Modelo propio</p>
 <h1 data-miga="Por provincias">{html.escape(titular)}</h1>
 <p class="dek">Los escaños de cada circunscripción con la media de las encuestas, su horquilla y quién tiene más opciones de quedar primero.</p>
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
@@ -754,7 +754,7 @@ def provincias():
 <p class="src">{html.escape(meta.get('aviso', ''))} Modelo v{html.escape(meta['version'].split('-')[0].lstrip('v'))}; <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="./"><span class="kicker">Encuestas</span><b>Todas las encuestas de las generales y su promedio</b></a></li><li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li><li><a href="../elecciones/elecciones-29n-2026/"><span class="kicker">29N</span><b>Escaños por provincia: cómo se reparten</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="./"><span class="kicker">Encuestas</span><b>Todas las encuestas de las elecciones generales 2026 y su promedio</b></a></li><li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li><li><a href="../elecciones/elecciones-29n-2026/"><span class="kicker">29N</span><b>Escaños por provincia: cómo se reparten</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>""".replace(f"{meta['simulaciones']:,}", f"{meta['simulaciones']:,}".replace(',', '.'))
     estilos = ESTILOS.replace('</style>', '.prov td{vertical-align:middle}.chip{display:inline-block;margin:1px 8px 1px 0;white-space:nowrap}.chip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px}'
@@ -879,8 +879,8 @@ def main():
     faq_html = '<div class="faq">' + ''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq) + '</div>'
     actual = fecha_larga(hoy.isoformat())
     descripcion = re.sub(r'\s+', ' ', entradilla)[:300]
-    # h1 con los términos que se buscan («encuestas», «generales») sin perder la cifra del titular
-    h1 = 'Encuestas de las generales: ' + (titular[0].lower() + titular[1:] if titular.startswith('El ') else titular).replace(' encuestas;', ';', 1)
+    # h1 con la búsqueda principal («encuestas elecciones generales 2026») sin perder la cifra del titular
+    h1 = 'Encuestas de las elecciones generales 2026: ' + (titular[0].lower() + titular[1:] if titular.startswith('El ') else titular).replace(' encuestas;', ';', 1)
     imagen = f'{BASE}/img/compartir/encuestas.jpg?v={hoy.isoformat()}'   # la tarjeta cambia: versión para que las redes no usen la vieja
     if tarjeta:
         tarjeta(RAIZ / 'img/compartir/encuestas.jpg', titular,
@@ -916,13 +916,14 @@ def main():
                'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
     titulo = 'Encuestas elecciones generales 2026: sondeos y promedio del 29N'
     main_html = f"""<main>
-<p class="kicker">Elecciones generales · 29 de noviembre</p>
+<p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
 <p class="dek">{html.escape(entradilla)}</p>
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy.isoformat()}">{actual}</time></p>
 {lo_ultimo(desde23, casas)}
 <p data-tipo="dato">{html.escape(p1)}</p>
 <p data-tipo="dato">{html.escape(p2)}</p>
+<p data-tipo="contexto">Las elecciones generales de 2026 se celebran el domingo 29 de noviembre: se eligen los 350 diputados del Congreso, y la mayoría absoluta está en 176. Esta página reúne todas las encuestas de las elecciones generales publicadas desde julio de 2023 ({f'{n_desde23:,}'.replace(',', '.')} hasta hoy), con su encuestadora, su medio y el enlace a la original, y las resume en una mediana y un promedio de escaños.{' Para ver tu circunscripción están las <a href="provincias.html">encuestas por provincias</a>.' if hay_provincias else ''}{' Con la <a href="calculadora-escanos/">calculadora de escaños</a> repartes los diputados con tus propios porcentajes.' if hay_calculadora else ''}{' Y con el <a href="simulador-pactos/">simulador de pactos</a> ves quién suma 176.' if hay_pactos else ''}</p>
 <figure>
 <figcaption><span class="t">Voto estimado en cada encuesta, último año</span><span class="s">Cada punto es una encuesta; la línea es la mediana de la última encuesta de cada encuestadora en los {VENTANA_MEDIANA} días anteriores (con tres o más). Porcentaje sobre voto válido. Sumar incluye el Frente Amplio y sus socios.</span></figcaption>
 <div class="chart" id="graf"></div>
@@ -940,7 +941,7 @@ def main():
 <p>Última encuesta de cada una en los últimos 30 días, con los escaños que publica. Un intervalo («132-137») es la horquilla de la propia encuestadora; la mayoría absoluta está en 176.</p>
 {tabla_esc}
 {bloque_modelo or ''}
-<h2>Últimas encuestas de las elecciones generales</h2>
+<h2>Últimas encuestas de las elecciones generales 2026</h2>
 <p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada nombre enlaza a la publicación original. «CIS reestimado por…» son los datos brutos del CIS recalculados por otra empresa: no cuentan como encuesta propia ni entran en el gráfico. La fecha es la de publicación; con asterisco, la del final del trabajo de campo cuando la publicación no consta.</p>
 {tabla}
 {tabla_ant}
@@ -961,7 +962,7 @@ def main():
 <!--compartir-->
 <details class="insertar"><summary>Insertar este resumen en tu web</summary><p>Copia este código: muestra la mediana de las encuestas y el promedio de escaños, se actualiza solo y enlaza a esta página. Datos con licencia CC BY-SA 4.0.</p>
 <textarea rows="3" readonly onclick="this.select()" aria-label="Código para insertar el resumen de encuestas">&lt;iframe src="{URL}insertar.html" title="Encuestas de las elecciones generales · Mapa Electoral" width="100%" height="680" style="border:0;max-width:640px" loading="lazy"&gt;&lt;/iframe&gt;</textarea></details>
-<h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}{'<li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños con tus porcentajes</b></a></li>' if hay_calculadora else ''}{'<li><a href="simulador-pactos/"><span class="kicker">Simulador</span><b>¿Quién suma 176? Haz tú los pactos del 29N</b></a></li>' if hay_pactos else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
     pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld)
@@ -990,7 +991,7 @@ def main():
     # autor común y migas de pan (BreadcrumbList), como en el resto del sitio: la página se regenera sola dos veces al día
     sys.path.insert(0, str(RAIZ / 'src'))
     import esquema
-    for f in [SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html'] + [SALIDA / r / 'index.html' for r, *_ in casas + PROV_PAGINAS]:
+    for f in [SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html', SALIDA / 'calculadora-escanos/index.html', SALIDA / 'simulador-pactos/index.html'] + [SALIDA / r / 'index.html' for r, *_ in casas + PROV_PAGINAS]:
         if f.exists():
             esquema.procesa(f)
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
