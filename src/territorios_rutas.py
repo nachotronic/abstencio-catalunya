@@ -179,7 +179,7 @@ TEMAS = {
         intro='Las grandes ciudades contadas sección a sección: dónde gana cada partido, qué calles parten el voto en dos '
               'y los barrios donde un partido saca sus mejores resultados.',
         piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'calle-que-parte-barcelona', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
-                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n'],
+                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n', 'alvise-salf-donde-vota-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal'),
                ('', 'Mapa de resultados calle a calle')],
         atlas=[('atlas/ciudad-y-entorno/', 'Atlas: la ciudad y su entorno')]),
@@ -202,7 +202,7 @@ TEMAS = {
         intro='Cómo se convierten los votos en escaños: los diputados que se decidieron por unos cientos de votos, '
               'lo que cuesta un escaño en cada provincia, el Senado y lo que habrían sacado las coaliciones.',
         piezas=['escanos-en-el-filo-29n', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
-                'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
+                'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'pacto-pp-vox-senado-provincias-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
                 'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'listas-29n-quien-encabeza',
                 'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n', 'adelante-andalucia-psoe-29n'],
@@ -214,7 +214,7 @@ TEMAS = {
         titulo='Elecciones en el mundo: los mapas electorales de otros países',
         intro='Las elecciones de otros países contadas con sus datos oficiales y sus mapas: quién ganó en cada región, '
               'dónde se movió el voto y cómo se compara con la elección anterior.',
-        piezas=['brasil-lula-remontada-mapa-estados'],
+        piezas=['israel-elecciones-encuestas-knesset', 'serbia-estudiantes-vucic-mapa-distritos', 'brasil-lula-remontada-mapa-estados'],
         datos=[],
         atlas=[]),
 }

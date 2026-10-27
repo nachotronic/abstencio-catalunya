@@ -1,0 +1,170 @@
+<title>El pacto PP-Vox en el Senado</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--psoe:#e30613;--pp:#1d84ce;--vox:#5ac035;--bar:#cfcacc}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--bar:#4a454b}}:root[data-theme="dark"]{--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--bar:#4a454b}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<main>
+<h1>PP y Vox pactan el Senado: con las encuestas sumarían entre 158 y 163 senadores, alrededor de los 160 que necesitan para renovar el Constitucional sin el PSOE</h1>
+<p class="dek">El acuerdo añade entre 8 y 13 senadores elegidos a la derecha. Ocho salen de Valencia y las islas, donde Vox se retira; el resto depende de que los votantes de Vox den sus otros dos votos al PP en Sevilla, Asturias y Álava.</p>
+<div class="byline">Nacho G. del Álamo · 27 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}.chips{display:flex;flex-wrap:wrap;gap:.35rem .5rem;font-family:var(--ui);font-size:.95rem;margin:.4rem 0 1rem}.chips b{font-weight:600}</style>
+<div style="margin-top:1.4rem"></div>
+<p data-tipo="contexto">El PP y Vox cerraron el lunes un acuerdo para el Senado, a pocas horas de que acabara el plazo para registrar las candidaturas del 29N. Vox no presentará lista propia en seis provincias: Las Palmas, Santa Cruz de Tenerife, Cádiz, Valencia, Castellón y Baleares. Allí el PP llevará en su lista a un independiente propuesto por Vox, al que cederá «la segunda o tercera posición», según <a href="https://www.europapress.es/nacional/noticia-pp-vox-esperan-lograr-140-senadores-gracias-pacto-concurrir-senado-20261026185958.html">Europa Press</a>. En otras 14 provincias, Vox presentará un solo candidato en vez de tres. Y el PP no se presentará en Gipuzkoa, Girona y Tarragona. En las 23 provincias restantes, cada partido irá por su cuenta.</p>
+<p data-tipo="contexto">Es la respuesta a Senado de Progreso, la candidatura con la que el PSOE, el Frente Amplio y otros partidos de izquierda se presentan unidos en 47 circunscripciones del Senado, según <a href="https://www.europapress.es/nacional/noticia-senado-tiene-casi-60-escanos-asignados-margen-elecciones-23-pp-19-psoe-vox-20261026175641.html">Europa Press</a>. Santiago Abascal llamó al acuerdo «gesto patriótico» en el acto en el que presentó a sus cabezas de lista en Talavera de la Reina. Dijo que estaban «obligados a hacer un gesto político» y que espera que «sea útil para el objetivo»:</p>
+<blockquote class="cita"><p>«En tres palabras: todo por España»</p><footer>Santiago Abascal, presidente de Vox, en Talavera de la Reina (Toledo), el 26 de octubre. Recogido por <a href="https://www.europapress.es/nacional/noticia-abascal-ve-renuncia-vox-presentar-candidaturas-senado-gesto-patriotico-todo-espana-20261026203730.html">Europa Press</a>.</footer></blockquote>
+<p data-tipo="contexto">Desde el Gobierno, el ministro de Hacienda, Arcadi España, lo resumió así esa misma noche en TVE, según <a href="https://www.europapress.es/nacional/noticia-arcadi-espana-asegura-nace-nuevo-partido-pacto-pp-vox-senado-hoy-decidido-casarse-20261026235858.html">Europa Press</a>:</p>
+<blockquote class="cita"><p>«Hoy ha nacido un nuevo partido, que es el Partido Popular y Vox, y donde da igual a quién votes, porque vas a votar siempre extrema derecha»</p><footer>Arcadi España, ministro de Hacienda, en «La noche en 24 horas» de TVE. Recogido por <a href="https://www.europapress.es/nacional/noticia-arcadi-espana-asegura-nace-nuevo-partido-pacto-pp-vox-senado-hoy-decidido-casarse-20261026235858.html">Europa Press</a>.</footer></blockquote>
+<p data-tipo="contexto">Lo que se juega es una mayoría de tres quintos. El Senado propone a cuatro de los doce magistrados del Tribunal Constitucional, y para eso hacen falta tres quintos de la Cámara, según el <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a159">artículo 159 de la Constitución</a>. Hoy son 160 de 266 senadores. De ellos, 208 se votan el 29N y 58 los designan los parlamentos autonómicos. De esos 58, el PP tiene 23 y Vox, 5, según <a href="https://www.europapress.es/nacional/noticia-senado-tiene-casi-60-escanos-asignados-margen-elecciones-23-pp-19-psoe-vox-20261026175641.html">Europa Press</a>. Con esos 28 de partida, a la derecha le harían falta 132 de los 208 que se votan. Las fuentes de la negociación citadas por Europa Press esperan entre 125 y 140.</p>
+<p data-tipo="contexto">El pacto tiene esta forma por cómo se vota el Senado. En cada provincia de la península se eligen cuatro senadores y cada votante marca hasta tres nombres. Salen los cuatro candidatos con más votos, así que el partido más votado suele llevarse tres y el segundo, uno. Un letrado de las Cortes lo explicaba así:</p>
+<blockquote class="cita"><p>«Se trata de que, en condiciones normales los candidatos pertenecientes al partido más votado se queden con la mayoría de los senadores, mientras que el segundo partido se quede con uno»</p><footer>Fabio Pascua Mateo, letrado de las Cortes Generales y profesor de la Universidad Complutense, en la <a href="https://revista.cortesgenerales.es/rcg/article/download/98/91">Revista de las Cortes Generales</a> (2018).</footer></blockquote>
+<h2>La cuenta, provincia a provincia</h2>
+<p data-tipo="contexto">He repetido la cuenta de la <a href="https://mapaelectoral.es/actualidad/vox-pp-senado-pacto-29n/">pieza del 21 de octubre</a>, ahora con el acuerdo real, en las 59 circunscripciones del Senado, islas incluidas. Parto de los votos de cada candidato al Senado en 2023, publicados por la Junta Electoral Central en el <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907">BOE</a>. Supongo que PSOE y Sumar suman sus votos en una lista conjunta donde va Senado de Progreso: en las 43 provincias de todas las comunidades salvo Cataluña, Baleares y Canarias, según el registro de la Junta Electoral Central que recoge <a href="https://www.europapress.es/nacional/noticia-registradas-jec-nueve-coaliciones-electorales-dos-congreso-tres-senado-cuatro-autonomicas-20261017150113.html">Europa Press</a>, y en las islas de Baleares, donde el PSOE va con Més, Izquierda Unida y Sumar. En Canarias, Sumar va con Podemos y Nueva Canarias, separado del PSOE. Y hago la cuenta dos veces: con los votos de 2023 tal cual, y moviéndolos en cada provincia según lo que han cambiado los partidos en la <a href="https://mapaelectoral.es/encuestas/">media de encuestas</a> del 25 de octubre (PP del 33,1% al 31,7%, PSOE del 31,7% al 26,5%, Vox del 12,4% al 18,9% y Sumar, ahora Frente Amplio, del 12,3% al 6,5%).</p>
+<p data-tipo="contexto">En las 14 provincias donde Vox presenta un solo candidato, el resultado depende de qué hagan sus votantes con los otros dos votos de la papeleta. Por eso doy tres versiones: que no voten a nadie más, que repartan esos dos votos entre los tres candidatos del PP o que los den a los dos primeros.</p>
+<p data-tipo="dato">Con las encuestas, PP y Vox sacarían 122 senadores elegidos sin pacto y entre 130 y 135 con el acuerdo. Con sus 28 designados, se quedarían entre 158 y 163, a ambos lados de los 160 de los tres quintos. Sin el pacto, 150.</p>
+<figure>
+<figcaption><span class="t">Senadores elegidos de PP y Vox, sin pacto, con el acuerdo y con una lista única en todas partes</span><span class="s">Punto gris: con los votos de 2023. Punto azul: con los votos movidos según la media de encuestas. La línea marca 132, los elegidos que necesitan para los tres quintos con sus 28 designados</span></figcaption>
+<div class="chart" id="esc"></div>
+<div class="legend"><span><i class="sw" style="background:var(--other);border:2px solid var(--pp)"></i>Votos de 2023</span><span><i class="sw" style="background:var(--pp)"></i>Votos de 2023 movidos según las encuestas</span></div>
+<div class="src">Fuente: Junta Electoral Central, resultados del Senado de 2023 por candidato (BOE); media de encuestas de mapaelectoral.es del 25-10-2026; Europa Press, senadores designados. Simulación propia.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="esc-tbl"></div></details>
+</figure>
+<p data-tipo="dato">Con los votos de 2023 la cuenta queda lejos: 80 senadores elegidos sin pacto y entre 90 y 107 con él. Si PP y Vox hubieran ido juntos en todas partes, 127. Con las encuestas, la lista única llegaría a 135, lo mismo que el acuerdo en su mejor versión, porque con Vox en el 18,9% el PP ya gana solo en buena parte de las provincias.</p>
+<p data-tipo="dato">El acuerdo pesa sobre todo en las seis provincias donde Vox se retira. Con las encuestas, PP y Vox pasarían ahí de 12 a 20 senadores: Valencia, de uno a tres, y Las Palmas, de uno a cuatro, porque con los votos sumados el PP ganaría en Gran Canaria, Lanzarote y Fuerteventura. Las fuentes de la negociación esperan entre 11 y 12 senadores más en esas seis, según <a href="https://www.europapress.es/nacional/noticia-pp-vox-esperan-lograr-140-senadores-gracias-pacto-concurrir-senado-20261026185958.html">Europa Press</a>.</p>
+<figure>
+<figcaption><span class="t">Senadores de PP y Vox en las provincias del acuerdo</span><span class="s">Sin pacto y con el acuerdo; cuando hay dos cifras, la primera es si los votantes de Vox no dan sus otros votos al PP y la segunda, si se los dan</span></figcaption>
+<div class="tbl" id="prov-tbl"></div>
+<div class="src">Fuente: Junta Electoral Central, resultados del Senado de 2023 por candidato (BOE); media de encuestas de mapaelectoral.es. Simulación propia.</div>
+</figure>
+<p data-tipo="patron">En las 14 provincias de un solo candidato de Vox, el acuerdo apenas cambia nada con las encuestas, salvo en tres. En diez, el PP ya ganaría solo, y en Navarra, donde compite UPN, la cuenta no cambia. Las tres que quedan son Sevilla, Asturias y Álava: el PP pasaría de uno a tres senadores en las dos primeras, y de ninguno a uno en Álava, solo si los votantes de Vox dan sus otros dos votos al PP. Con los votos de 2023, en cambio, esos votos decidirían once provincias.</p>
+<p data-tipo="dato">En Tarragona, donde el PP se retira, el candidato de Vox podría llevarse el cuarto senador si le votan los votantes del PP. En 2023, el PP sacó allí unos 49.000 votos por candidato y Vox, 29.000; juntos habrían superado los 66.000 de ERC. Europa Press recoge que las partes ven «una alta posibilidad» de que Vox saque allí un senador.</p>
+<p data-tipo="patron">En las otras 23 provincias, PP y Vox compiten por separado. Ahí están Madrid, Málaga, Toledo, Córdoba, Burgos y León, donde con los votos de 2023 el PP solo perdía frente a la lista conjunta y ganaba con los votos de Vox. Con las encuestas, el PP ganaría solo en todas ellas. Y en Murcia y Almería, ir por separado da más: el PP sacaría tres senadores y Vox el cuarto, el que sería de la izquierda con una lista única.</p>
+<h2>Lo que la cuenta no dice</h2>
+<p data-tipo="hipotesis">Es una simulación, no una previsión. Mueve los votos de 2023 con la media nacional de encuestas igual en todas las provincias, y no sabemos si el voto cambiará igual en Valencia que en Asturias. Supone también que todos los votantes de Vox votan a los candidatos del PP donde Vox se retira, y que todos los de PSOE y Sumar votan a la lista conjunta.</p>
+<p data-tipo="hipotesis">La clave, el comportamiento de los votantes de Vox en las 14 provincias, no se puede saber de antemano. En el Senado cada votante marca nombres, y muchos marcan menos de los que pueden o mezclan partidos. La cuenta tampoco dice cuántos de esos senadores serían de Vox, porque eso depende del puesto que ocupe su independiente en cada lista del PP. Las fuentes de la negociación calculan hasta diez, según <a href="https://www.europapress.es/nacional/noticia-pp-vox-esperan-lograr-140-senadores-gracias-pacto-concurrir-senado-20261026185958.html">Europa Press</a>.</p>
+<p data-tipo="contexto">Los 28 designados de PP y Vox tampoco están asegurados. Los parlamentos autonómicos los eligen tras sus propias elecciones, y la mayoría de las comunidades vota el año que viene, como recuerda <a href="https://www.europapress.es/nacional/noticia-senado-tiene-casi-60-escanos-asignados-margen-elecciones-23-pp-19-psoe-vox-20261026175641.html">Europa Press</a>. Las listas definitivas se publican en el BOE el miércoles 28.</p>
+<p data-tipo="dato">El resumen: con las encuestas, el acuerdo añade a PP y Vox entre 8 y 13 senadores elegidos, y los deja justo alrededor de los 160 de los tres quintos. Más de la mitad de ese margen se decide en Valencia y las islas. El resto depende de lo que hagan los votantes de Vox en Sevilla, Asturias y Álava.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/vox-pp-senado-pacto-29n/">PP y Vox negocian el Senado</a> · <a href="https://mapaelectoral.es/actualidad/senado-psoe-frente-amplio-29n/">PSOE y Frente Amplio, juntos al Senado</a> · <a href="https://mapaelectoral.es/encuestas/">Encuestas del 29N</a></p>
+<div class="foot">Datos: Junta Electoral Central, resultados oficiales del Senado de 2023 por candidato (BOE-A-2023-18907 y BOE-A-2023-19537); media de encuestas de mapaelectoral.es; senadores designados, Europa Press. Simulación propia de votos por candidato.</div>
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+
+const ESC=[["Sin pacto", 80, 122], ["Acuerdo, si los votantes de Vox no dan más votos al PP", 90, 130], ["Acuerdo, si los dan a los dos primeros del PP", 102, 134], ["Acuerdo, si los reparten entre los tres del PP", 107, 135], ["Lista única de PP y Vox en todas partes", 127, 135]],PR=[["Vox se retira y va en la lista del PP", "Las Palmas", "1", "3", "1", "4"], ["Vox se retira y va en la lista del PP", "S. C. de Tenerife", "1", "3", "2", "3"], ["Vox se retira y va en la lista del PP", "Cádiz", "1", "3", "3", "3"], ["Vox se retira y va en la lista del PP", "Valencia", "1", "1", "1", "3"], ["Vox se retira y va en la lista del PP", "Castellón", "1", "3", "3", "3"], ["Vox se retira y va en la lista del PP", "Baleares", "1", "3", "2", "4"], ["Vox presenta un solo candidato", "Sevilla", "1", "1", "1", "1 / 3"], ["Vox presenta un solo candidato", "Huelva", "1", "1 / 2", "3", "3"], ["Vox presenta un solo candidato", "Asturias", "1", "1", "1", "1 / 3"], ["Vox presenta un solo candidato", "Badajoz", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Álava", "0", "0 / 1", "0", "0 / 1"], ["Vox presenta un solo candidato", "Navarra", "0", "0", "0", "0"], ["Vox presenta un solo candidato", "Cáceres", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Huesca", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Zaragoza", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Alicante", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Granada", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Cuenca", "1", "1 / 3", "3", "3"], ["Vox presenta un solo candidato", "Pontevedra", "1", "1 / 2", "3", "3"], ["Vox presenta un solo candidato", "Jaén", "1", "1 / 3", "3", "3"], ["El PP no se presenta", "Gipuzkoa", "0", "0", "0", "0"], ["El PP no se presenta", "Girona", "0", "0", "0", "0"], ["El PP no se presenta", "Tarragona", "0", "0 / 1", "0", "0 / 1"]];
+function esc(id){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,rh=sm?52:46,m={l:sm?8:12,r:28,t:24,b:30},H=m.t+m.b+rh*ESC.length,lo=70,hi=145;
+ const x=v=>m.l+(v-lo)/(hi-lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Senadores elegidos de PP y Vox en cada escenario, con los votos de 2023 y con las encuestas'},box);
+ for(let v=lo+10;v<=hi;v+=10){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-8,'text-anchor':'middle'},svg).textContent=v}
+ el('line',{x1:x(132),x2:x(132),y1:m.t-6,y2:H-m.b,stroke:'var(--fg)','stroke-dasharray':'4 3'},svg);
+ el('text',{x:x(132)-5,y:m.t-8,'text-anchor':'end','font-size':11.5,class:'lab'},svg).textContent='132: tres quintos';
+ ESC.forEach((d,i)=>{const y0=m.t+i*rh,cy=y0+rh-14;
+  el('text',{x:m.l,y:y0+16,'text-anchor':'start','font-size':sm?12:13,class:i==0||i==4?'':'lab'},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--pp)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--pp)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--pp)',stroke:'var(--bg)','stroke-width':2},svg);
+  el('text',{x:x(d[1])-10,y:cy+4,'text-anchor':'end','font-size':12},svg).textContent=d[1];
+  el('text',{x:x(d[2])+10,y:cy+4,'text-anchor':'start',class:'lab','font-size':12},svg).textContent=d[2];
+  hov(box,tip,el('rect',{x:0,y:y0,width:W,height:rh,fill:'transparent'},svg),`<b>${d[0]}</b><br>Con los votos de 2023: <b>${d[1]}</b><br>Con las encuestas: <b>${d[2]}</b> (+28 designados = ${d[2]+28})`)});}
+esc('esc');
+table('esc-tbl',['Escenario','Votos de 2023','Encuestas','Encuestas + 28 designados'],ESC.map(d=>[d[0],d[1],d[2],d[2]+28]));
+{let h='<table><thead><tr><th rowspan="2">Provincia</th><th class="n" colspan="2">Votos de 2023</th><th class="n" colspan="2">Encuestas</th></tr><tr><th class="n">Sin pacto</th><th class="n">Acuerdo</th><th class="n">Sin pacto</th><th class="n">Acuerdo</th></tr></thead><tbody>',g='';
+ PR.forEach(r=>{if(r[0]!=g){g=r[0];h+=`<tr><td colspan="5" style="font-weight:600;padding-top:.8rem">${g}</td></tr>`}
+  h+=`<tr><td>${r[1]}</td>`+r.slice(2).map((v,i)=>`<td class="n"${i==3?' style="font-weight:600"':''}>${v}</td>`).join('')+'</tr>'});
+ document.getElementById('prov-tbl').innerHTML=h+'</tbody></table>'}
+</script>

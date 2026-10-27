@@ -1,0 +1,200 @@
+<title>Israel: las encuestas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--psoe:#e30613;--pp:#1d84ce;--vox:#5ac035;--bar:#cfcacc}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--bar:#4a454b}}:root[data-theme="dark"]{--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--bar:#4a454b}</style>
+<style>.caja{border-left:3px solid var(--rule);background:color-mix(in srgb,var(--fg) 4%,transparent);padding:.8em 1em;margin:1.4em 0;border-radius:0 4px 4px 0}.caja p{margin:0}</style>
+
+<style>:root{--salf:#785a46}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--salf:#a9876f}}:root[data-theme="dark"]{--salf:#a9876f}</style>
+<style>:root{--gov:#1f5aa5;--opp:#3d9fd9;--arab:#0b8f7f;--shas:#222;--utj:#003366;--juntos:#2A2A78;--dems:#2A38D7}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--gov:#5b8fd6;--opp:#62B9F2;--arab:#2cc2ae;--shas:#cfcfcf;--utj:#6f97c4;--juntos:#8c8ce0;--dems:#7d87f0}}
+:root[data-theme="dark"]{--gov:#5b8fd6;--opp:#62B9F2;--arab:#2cc2ae;--shas:#cfcfcf;--utj:#6f97c4;--juntos:#8c8ce0;--dems:#7d87f0}
+.tbl{overflow-x:auto}</style>
+<main>
+<h1>Solo una televisión le daba la mayoría a Netanyahu</h1>
+<p class="dek">En las 24 encuestas de las dos últimas semanas, su bloque se quedó en 52,5 escaños de media, ocho y medio por debajo de los 61. Solo las cinco de Canal 14 le daban la mayoría. Y el partido nuevo de Gadi Eisenkot iba por delante del Likud en 16 de ellas.</p>
+<div class="byline">Nacho G. del Álamo · 27 de octubre de 2026</div>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}</style>
+<div style="margin-top:1.4rem"></div>
+<p data-tipo="contexto">Israel elige hoy su Parlamento, la Knesset, en las primeras elecciones desde el ataque de Hamás del 7 de octubre de 2023. Unos 7,3 millones de personas pueden votar hasta las diez de la noche, las nueve en España, según <a href="https://www.europapress.es/internacional/noticia-abren-urnas-israel-decisiva-jornada-electoral-20261027064413.html">Europa Press</a>. Los 120 escaños se reparten en una sola circunscripción para todo el país, y solo entran las listas que pasan del 3,25% de los votos. La mayoría está en 61.</p>
+<p data-tipo="contexto">Benjamin Netanyahu aspira a repetir la coalición que gobierna desde finales de 2022: su partido, el Likud, con Sionismo Religioso, Otzma Yehudit y los dos partidos ultraortodoxos, Shas y Judaísmo Unido de la Torá. Enfrente, un bloque encabezado por Yashar, el partido del exjefe del Ejército Gadi Eisenkot. Las encuestas están prohibidas desde el viernes 23 a medianoche, así que las últimas son de ese día.</p>
+<p data-tipo="dato">He sumado los escaños de las 24 encuestas publicadas en las dos últimas semanas, de nueve empresas y diez medios. El bloque de Netanyahu se queda en 52,5 escaños de media, ocho y medio por debajo de la mayoría. La mitad de las encuestas le daban 50 o menos.</p>
+<figure>
+<figcaption><span class="t">Ningún bloque llega a 61 por sí solo</span><span class="s">Escaños de cada bloque en las 24 encuestas de las dos últimas semanas: media (barra) y la más baja y la más alta (línea). El rombo es el resultado de 2022</span></figcaption>
+<div class="chart" id="bloques"></div>
+<div class="src">Fuente: encuestas publicadas entre el 13 y el 23 de octubre de 2026, recopiladas en <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election">Wikipedia</a>; resultado de 2022, Comité Central Electoral. Bloque de Netanyahu: los cinco partidos del Gobierno actual.</div>
+</figure>
+<p data-tipo="dato">Solo cinco de las 24 encuestas le daban 61 escaños o más, y las cinco eran de la misma cadena, Canal 14. Sin ellas, la media del bloque baja a 50.</p>
+<p data-tipo="dato">La oposición tampoco llega. Los partidos de la oposición sionista, con Yashar a la cabeza, suman 52,6 escaños de media y no pasan de 58 en ninguna encuesta. Los dos partidos árabes, Ra'am y la Lista Conjunta, suben de los 10 escaños de 2022 a 14. Con ellos, la oposición tendría 66,5 escaños de media y pasaría de 61 en 19 de las 24 encuestas.</p>
+<blockquote class="cita"><p>«ninguno consigue sumar a priori los 61 escaños necesarios si bien la oposición parece disponer de más opciones para hacerlo»</p><footer>Leyre Guijo, enviada especial de <a href="https://www.europapress.es/internacional/noticia-israel-dividido-decide-si-avala-netanyahu-apuesta-cambio-primeras-elecciones-20261026173759.html">Europa Press</a> a Tel Aviv, 26 de octubre.</footer></blockquote>
+<p data-tipo="contexto">La duda es si esos escaños árabes se pueden contar. Europa Press explica que ninguno de los dos bloques llegaría a la mayoría «en el caso de mantenerse ambos en sus promesas electorales de no gobernar en coalición con determinadas facciones».</p>
+<h2>Un bloque que no se movió en toda la campaña</h2>
+<p data-tipo="dato">Desde septiembre, la media semanal del bloque de Netanyahu se ha movido entre 50,1 y 53,4 escaños. Sin Canal 14, entre 48,3 y 50,4. La campaña no lo ha acercado a la mayoría en ninguna semana.</p>
+<figure>
+<figcaption><span class="t">El bloque de Netanyahu, semana a semana</span><span class="s">Media de escaños en las encuestas de cada semana, con y sin Canal 14</span></figcaption>
+<div class="chart" id="semanas"></div>
+<div class="src">Fuente: 83 encuestas publicadas desde el 1 de septiembre de 2026, recopiladas en Wikipedia. Semanas de lunes a domingo.</div>
+</figure>
+<h2>Yashar, por delante del Likud</h2>
+<p data-tipo="dato">El Likud sigue siendo el partido de Netanyahu, pero ya no es el primero en la mayoría de las encuestas. Yashar, el partido de Eisenkot, que se presenta por primera vez, iba por delante en 16 de las 24. Solo las de Canal 14 y las de i24 ponían primero al Likud. De media, el Likud saca 22,4 escaños y Yashar, 21,5. Sin Canal 14, el orden se invierte: 21,9 para Yashar y 20,4 para el Likud. En 2022, el Likud sacó 32.</p>
+<figure>
+<figcaption><span class="t">Escaños de cada partido en las encuestas</span><span class="s">Media de las 24 encuestas de las dos últimas semanas y la más baja y la más alta. La línea discontinua marca el umbral del 3,25%, unos 4 escaños</span></figcaption>
+<div class="chart" id="partidos"></div>
+<div class="legend" id="leg-partidos"></div>
+<div class="src">Fuente: encuestas publicadas entre el 13 y el 23 de octubre de 2026, recopiladas en Wikipedia. Un partido por debajo del umbral cuenta como 0 escaños.</div>
+</figure>
+<p data-tipo="dato">Dos listas están en el filo del umbral. Los Reservistas, de Yoaz Hendel, se quedaban fuera en 12 de las 24 encuestas. Amcha Yisrael, del exgeneral Ofer Winter, en 16 de 22. Winter no forma parte del Gobierno, pero algunos medios, como Canal 13, lo cuentan en el bloque de Netanyahu. Sumándolo, el bloque sube a 53,5 escaños de media.</p>
+<p data-tipo="hipotesis">Con estos márgenes, el resultado puede depender de quién pase el 3,25%. Una lista que se queda en el 3% pierde todos sus votos, y esos escaños se reparten entre las demás. Y las encuestas israelíes también se equivocan: en 2022, las últimas de Canal 12 y de Kan daban 60 escaños al bloque de Netanyahu, según la <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_Israeli_legislative_election">recopilación de Wikipedia</a>, y sacó 64.</p>
+<figure>
+<figcaption><span class="t">Las 24 encuestas, una a una</span><span class="s">Escaños de cada bloque</span></figcaption>
+<div class="tbl" id="encuestas-tbl"></div>
+<div class="src">Fuente: Wikipedia, con el enlace a cada encuesta. «Oposición»: partidos sionistas de la oposición.</div>
+</figure>
+<p data-tipo="contexto">Los primeros sondeos a pie de urna se conocerán al cierre de los colegios. El recuento oficial llegará en unos días, y entonces publicaremos el mapa del voto por localidades.</p>
+<p class="mas">Más elecciones internacionales: <a href="/actualidad/serbia-estudiantes-vucic-mapa-distritos/">Serbia, distrito a distrito</a> · <a href="/actualidad/brasil-lula-remontada-mapa-estados/">Brasil, estado a estado</a> · <a href="/temas/internacional/">Elecciones internacionales</a></p>
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const fmt=v=>v.toFixed(1).replace('.',',')+'%';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+
+const c1=v=>v.toFixed(1).replace('.',',').replace('-','−');
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+function dumb(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:v===0?'var(--muted)':'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=String(v).replace('-','−')+(o.unit||'')}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2;
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:'var(--comuns)','stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:'var(--comuns)','stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:'var(--comuns)',stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||o.bold&&o.bold(d,i)){const l=d[2]<d[1];
+  el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+  el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),o.tip(d));});}
+function table(id,head,rows){document.getElementById(id).innerHTML='<table><thead><tr>'+head.map((h,i)=>`<th${i?' class="n"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map((v,i)=>`<td${i?' class="n"':''}>${v}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+
+function bars(id,cats,series,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),H=o.h||(W<500?240:280),m={l:o.ml||34,r:6,t:22,b:o.mb||(W<500?44:34)};
+ const n=cats.length,gw=(W-m.l-m.r)/n,k=series.length,bw=Math.min(40,(gw-8)/k),y=v=>H-m.b-(v-(o.lo||0))/(o.hi-(o.lo||0))*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo||0;v<=o.hi;v+=o.step||10){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end'},svg).textContent=(o.tf?o.tf(v):String(v).replace('.',','))+(o.unit??'%')}
+ cats.forEach((c,i)=>{const gx=m.l+i*gw+(gw-bw*k)/2;
+  series.forEach((s,j)=>{const v=s.vals[i];const col=typeof s.color=='function'?s.color(i):s.color;
+   el('rect',{x:gx+j*bw+1,y:y(v),width:bw-2,height:y(o.lo||0)-y(v),rx:3,fill:col},svg);
+   if(o.show&&o.show(i,j))el('text',{x:gx+j*bw+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lab','font-size':12},svg).textContent=(o.f||c1)(v);});
+  const lx=m.l+i*gw+gw/2;el('text',{x:lx,y:H-m.b+16,'text-anchor':W<500&&o.rot?'end':'middle',transform:W<500&&o.rot?`rotate(-40 ${lx} ${H-m.b+12})`:'','font-size':W<500?11:12},svg).textContent=c;
+  hov(box,tip,el('rect',{x:m.l+i*gw,y:m.t,width:gw,height:H-m.t-m.b,fill:'transparent'},svg),(o.tip?o.tip(i):c)+'<br>'+series.map(s=>`${s.name}: <b>${(o.f||c1)(s.vals[i])}${o.unit??'%'}</b>`).join('<br>'));});
+ return box}
+function dumbc(id,rows,o){const box=document.getElementById(id);const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),rh=o.rh||30,m={l:W<500?(o.ml||110):(o.mlw||150),r:24,t:6,b:26},H=m.t+m.b+rh*rows.length;const x=v=>m.l+(v-o.lo)/(o.hi-o.lo)*(W-m.l-m.r);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':o.label},box);
+ for(let v=o.lo;v<=o.hi;v+=o.step){el('line',{x1:x(v),x2:x(v),y1:m.t,y2:H-m.b,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-5,'text-anchor':'middle'},svg).textContent=v+'%'}
+ rows.forEach((d,i)=>{const cy=m.t+i*rh+rh/2,pc=d[3]||o.color||'var(--comuns)';
+  el('text',{x:m.l-8,y:cy+4,'text-anchor':'end',class:(o.bold&&o.bold(d,i))?'lab':'','font-size':W<500?12:13},svg).textContent=d[0];
+  el('line',{x1:x(d[1]),x2:x(d[2]),y1:cy,y2:cy,stroke:pc,'stroke-width':2,opacity:.45},svg);
+  el('circle',{cx:x(d[1]),cy,r:6,fill:'var(--other)',stroke:pc,'stroke-width':2},svg);
+  el('circle',{cx:x(d[2]),cy,r:6,fill:pc,stroke:'var(--bg)','stroke-width':2},svg);
+  if(!o.nolab||(o.bold&&o.bold(d,i))){const l=d[2]<d[1];
+   el('text',{x:x(d[2])+(l?-11:11),y:cy+4,'text-anchor':l?'end':'start',class:'lab','font-size':12},svg).textContent=c1(d[2]);
+   el('text',{x:x(d[1])+(l?11:-11),y:cy+4,'text-anchor':l?'start':'end','font-size':12},svg).textContent=c1(d[1]);}
+  hov(box,tip,el('rect',{x:0,y:cy-rh/2,width:W,height:rh,fill:'transparent'},svg),`${d[0]}<br>${o.a}: <b>${c1(d[1])}%</b> · ${o.b}: <b>${c1(d[2])}%</b>`);});
+ return box}
+
+
+
+const D={"polls": [["2026-10-23", "Channel 13", "MP+TM+SN+A", 50, 54, 16, "https://13tv.co.il/item/news/politics/politics/survey-905415900/?pid=98577"], ["2026-10-23", "HaHadashot 12", "Midgam R&C", 50, 56, 14, "https://www.mako.co.il/news-israel-elections/2026/Article-8ea5e45ec2961a1027.htm"], ["2026-10-22", "Israel Hayom", "Kantar", 50, 56, 14, "https://www.israelhayom.co.il/news/politics/article/21694000"], ["2026-10-22", "Maariv", "LRI+P4A", 48, 58, 14, "https://www.maariv.co.il/news/elections-2026/article-1380289"], ["2026-10-22", "Channel 14", "SF+ND", 62, 44, 14, "https://www.c14.co.il/article/1750553"], ["2026-10-22", "Zman Yisrael", "Yossi Tatika", 51, 55, 14, "https://www.zman.co.il/735649/"], ["2026-10-21", "Channel 13", "MP+TM+SN+A", 49, 56, 15, "https://13tv.co.il/item/news/politics/politics/ksgoq-905411865/?pid=106628/"], ["2026-10-21", "HaHadashot 12", "Midgam R&C", 47, 55, 14, "https://www.mako.co.il/news-israel-elections/2026/Article-bf175ad340f51a1027.htm"], ["2026-10-21", "Channel 14", "SF+ND", 62, 44, 14, "https://www.c14.co.il/article/1748686"], ["2026-10-20", "i24 News", "Direct Polls", 58, 48, 14, "https://www.i24news.tv/he/news/israel-elections-2026/polls/artc-91da6024"], ["2026-10-20", "Channel 16", "Maagar Mochot", 46, 56, 14, "https://www.ch16.co.il/player/episode/6ad7c75c42b177b76126222c"], ["2026-10-20", "Channel 14", "SF+ND", 62, 44, 14, "https://www.c14.co.il/article/1746819"], ["2026-10-19", "Walla", "LRI+P4A", 48, 58, 14, "https://www.walla.co.il/news/politics/383958175"], ["2026-10-19", "Channel 13", "MP+TM+SN+A", 46, 55, 15, "https://13tv.co.il/item/news/politics/politics/jw3wm-905406894/"], ["2026-10-19", "HaHadashot 12", "Midgam R&C", 51, 55, 14, "https://www.mako.co.il/news-israel-elections/2026/Article-a6eb664b9d451a1026.htm"], ["2026-10-19", "Channel 14", "SF+ND", 62, 45, 13, "https://www.c14.co.il/article/1745051"], ["2026-10-18", "i24 News", "Direct Polls", 57, 49, 14, "https://www.i24news.tv/he/news/israel-elections-2026/polls/artc-81805"], ["2026-10-18", "Kan 11", "Kantar", 51, 56, 13, "https://www.kan.org.il/content/kan-news/politic/1110393/"], ["2026-10-18", "Channel 14", "SF+ND", 61, 46, 13, "https://www.c14.co.il/article/1743088"], ["2026-10-15", "Maariv", "LRI+P4A", 47, 55, 14, "https://www.jpost.com/israel-election-2026/article-911902"], ["2026-10-15", "Zman Yisrael", "Yossi Tatika", 49, 58, 13, "https://www.timesofisrael.com/toi-poll-eisenkot-opens-up-big-lead-on-netanyahu-but-both-blocs-short-of-majority/"], ["2026-10-14", "Channel 13", "MP+TM+SN+A", 47, 54, 15, "https://13tv.co.il/item/news/politics/politics/survey-905396904/?pid=106628"], ["2026-10-13", "i24 News", "Direct Polls", 57, 50, 13, "https://www.i24news.tv/he/news/israel-elections-2026/polls/artc-b9e16632"], ["2026-10-13", "Channel 16", "Maagar Mochot", 48, 55, 13, "https://www.ch16.co.il/player/episode/6ace7ddac544041ace194b0b"]], "par": [["Likud", "Likud", 22.4, 18, 30, "#1f5aa5", "gobierno", 0], ["Yashar", "Yashar", 21.5, 19, 26, "#62B9F2", "oposicion", 0], ["Together", "Juntos (Bennett 2026 + Yesh Atid)", 12.7, 9, 15, "#2A2A78", "oposicion", 0], ["Dems", "Los Demócratas (Laborismo + Meretz)", 9, 8, 10, "#2A38D7", "oposicion", 0], ["Joint List", "Lista Conjunta (Hadash, Ta'al, Balad)", 8.4, 7, 9, "#01B2AC", "arabes", 0], ["Otzma", "Otzma Yehudit", 8.0, 7, 10, "#FF4500", "gobierno", 0], ["Shas", "Shas", 8.0, 6, 10, "#000000", "gobierno", 0], ["UTJ", "Judaísmo Unido de la Torá", 7.6, 7, 8, "#003366", "gobierno", 0], ["Yisrael Beiteinu", "Yisrael Beiteinu", 7.3, 5, 9, "#23C2EB", "oposicion", 0], ["RZP-Zehut", "Sionismo Religioso-Zehut", 6.6, 6, 8, "#4F9298", "gobierno", 0], ["Ra'am", "Ra'am (Lista Árabe Unida, con Yoav Segalovitz)", 5.6, 5, 7, "#15793D", "arabes", 0], ["Reserv.-NEP", "Los Reservistas-Nuevo Partido Económico", 2.0, 0, 5, "#68692C", "oposicion", 12], ["Amcha Yisrael", "Amcha Yisrael (Pueblo de Israel)", 1.1, 0, 4, "#8f36bf", "otros_derecha", 16]], "wk": [["2026-08-31", 51, 49.5, 54.11, 12.22, 9], ["2026-09-07", 51.92, 49.82, 53.46, 12.08, 13], ["2026-09-14", 51.8, 48.75, 52.8, 12.3, 10], ["2026-09-21", 50.12, 48.29, 53.75, 12.5, 8], ["2026-09-28", 53.38, 50, 51.25, 12.62, 8], ["2026-10-05", 51.62, 50, 52.75, 13, 8], ["2026-10-12", 52.36, 50.44, 53.18, 13.36, 11], ["2026-10-19", 52.62, 49.5, 52.44, 14.19, 16]], "bl": {"gov": {"avg": 52.46, "min": 46, "max": 62, "median": 50.0, "n_polls_gov_ge_61": 5}, "opp": {"avg": 52.58, "min": 44, "max": 58, "median": 55.0, "n_polls_gov_ge_61": null, "n_polls_ge_61": 0}, "arab": {"avg": 13.96, "min": 13, "max": 16, "median": 14.0, "n_polls_gov_ge_61": null}, "other": {"avg": 1, "min": 0, "max": 4, "median": 0.0, "n_polls_gov_ge_61": null}, "gov_plus_amcha": {"avg": 53.46, "min": 48, "max": 62, "median": 51.0, "n_polls_gov_ge_61": 5}, "opp_plus_arab": {"avg": 66.54, "min": 58, "max": 72, "n_polls_ge_61": 19}}, "r22": {"netanyahu_coalition (Likud, RZ-Otzma, Shas, UTJ)": 64, "zionist_opposition (Yesh Atid, National Unity, Yisrael Beiteinu, Labor)": 46, "arab (Ra'am, Hadash-Ta'al)": 10}};
+const PCOL={'Likud':'var(--gov)','Yashar':'var(--opp)','Together':'var(--juntos)','Dems':'var(--dems)','Joint List':'#01B2AC','Otzma':'#FF4500','Shas':'var(--shas)','UTJ':'var(--utj)','Yisrael Beiteinu':'#23C2EB','RZP-Zehut':'#4F9298',"Ra'am":'#15793D','Reserv.-NEP':'#8a8b3c','Amcha Yisrael':'#8f36bf'};
+const PNOM={'Likud':'Likud','Yashar':'Yashar','Together':'Juntos','Dems':'Demócratas','Joint List':'Lista Conjunta','Otzma':'Otzma Yehudit','Shas':'Shas','UTJ':'Judaísmo Unido','Yisrael Beiteinu':'Yisrael Beiteinu','RZP-Zehut':'Sion. Religioso','Ra\'am':'Ra\'am','Reserv.-NEP':'Reservistas','Amcha Yisrael':'Amcha Yisrael'};
+const BL={gobierno:'Bloque de Netanyahu',oposicion:'Oposición',arabes:'Partidos árabes',otros_derecha:'Fuera de los bloques'};
+(function(){const box=document.getElementById('bloques');const tip=tipFor(box);
+ const B=[['Bloque de Netanyahu',D.bl.gov,64,'var(--gov)'],['Oposición sionista',D.bl.opp,46,'var(--opp)'],['Partidos árabes',D.bl.arab,10,'var(--arab)']];
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=4,rh=62,H=B.length*rh+44,mx=70,x=v=>lw+v/mx*(W-lw-14);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Escaños de cada bloque en las encuestas'},box);
+ [0,20,40,60].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:18,y2:H-22,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-6,'text-anchor':'middle','font-size':11},svg).textContent=v});
+ el('line',{x1:x(61),x2:x(61),y1:16,y2:H-22,stroke:'var(--fg)','stroke-width':1.5,'stroke-dasharray':'4 3'},svg);
+ el('text',{x:x(61),y:11,'text-anchor':'middle','font-size':11.5,class:'lab'},svg).textContent='Mayoría: 61';
+ B.forEach((b,i)=>{const y=i*rh+40,bh=20;
+  el('text',{x:lw,y:y-6,'font-size':13,class:'lab'},svg).textContent=b[0];
+  el('rect',{x:lw,y,width:x(b[1].avg)-lw,height:bh,rx:3,fill:b[3]},svg);
+  el('line',{x1:x(b[1].min),x2:x(b[1].max),y1:y+bh/2,y2:y+bh/2,stroke:'var(--fg)','stroke-width':1.5},svg);
+  [b[1].min,b[1].max].forEach(v=>el('line',{x1:x(v),x2:x(v),y1:y+bh/2-5,y2:y+bh/2+5,stroke:'var(--fg)','stroke-width':1.5},svg));
+  const rx=x(b[2]),ry=y+bh+9;el('path',{d:`M${rx} ${ry-5}L${rx+5} ${ry}L${rx} ${ry+5}L${rx-5} ${ry}Z`,fill:'var(--bg)',stroke:'var(--fg)','stroke-width':1.5},svg);
+  el('text',{x:lw+6,y:y+bh/2+4.5,'font-size':12.5,'font-weight':700,style:'fill:#fff'},svg).textContent=c1(b[1].avg);
+  hov(box,tip,el('rect',{x:0,y:y-4,width:W,height:rh,fill:'transparent'},svg),`<b>${b[0]}</b><br>Media: <b>${c1(b[1].avg)}</b> escaños<br>Entre ${b[1].min} y ${b[1].max}<br>En 2022: ${b[2]}`)});})();
+(function(){const box=document.getElementById('semanas');const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,m={l:30,r:sm?70:96,t:14,b:30},H=sm?230:260,lo=44,hi=64,n=D.wk.length;
+ const x=i=>m.l+i/(n-1)*(W-m.l-m.r),y=v=>m.t+(hi-v)/(hi-lo)*(H-m.t-m.b);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Media semanal del bloque de Netanyahu'},box);
+ [45,50,55,60].forEach(v=>{el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--grid)'},svg);el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end','font-size':11},svg).textContent=v});
+ el('line',{x1:m.l,x2:W-m.r,y1:y(61),y2:y(61),stroke:'var(--fg)','stroke-width':1.5,'stroke-dasharray':'4 3'},svg);
+ el('text',{x:W-m.r+6,y:y(61)+4,'font-size':11,class:'lab'},svg).textContent='Mayoría';
+ const mes=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+ D.wk.forEach((w,i)=>{if(sm&&i%2)return;const [Y,M,Dd]=w[0].split('-');el('text',{x:x(i),y:H-8,'text-anchor':'middle','font-size':11},svg).textContent=`${+Dd} ${mes[+M-1]}`});
+ [[1,'var(--gov)','Todas',''],[2,'var(--gov)','Sin Canal 14','5 4']].forEach(([k,c,nm,da])=>{
+  el('path',{d:D.wk.map((w,i)=>(i?'L':'M')+x(i)+' '+y(w[k])).join(''),fill:'none',stroke:c,'stroke-width':2,'stroke-dasharray':da},svg);
+  D.wk.forEach((w,i)=>el('circle',{cx:x(i),cy:y(w[k]),r:4,fill:da?'var(--bg)':c,stroke:c,'stroke-width':2},svg));
+  const l=D.wk[n-1];el('text',{x:W-m.r+8,y:y(l[k])+4,'font-size':11.5,class:'lab'},svg).textContent=nm});
+ D.wk.forEach((w,i)=>hov(box,tip,el('rect',{x:x(i)-(W-m.l-m.r)/(2*(n-1)),y:0,width:(W-m.l-m.r)/(n-1),height:H,fill:'transparent'},svg),`<b>Semana del ${w[0].split('-').reverse().slice(0,2).join('/')}</b><br>Todas: <b>${c1(w[1])}</b><br>Sin Canal 14: ${c1(w[2])}<br>${w[5]} encuestas`));})();
+(function(){const box=document.getElementById('partidos');const tip=tipFor(box);
+ const P=D.par,W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?126:150,rh=sm?24:26,H=P.length*rh+26,mx=32,x=v=>lw+v/mx*(W-lw-30);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Escaños de cada partido en las encuestas'},box);
+ [0,10,20,30].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:0,y2:H-22,stroke:'var(--grid)'},svg);el('text',{x:x(v),y:H-6,'text-anchor':'middle','font-size':11},svg).textContent=v});
+ el('line',{x1:x(4),x2:x(4),y1:0,y2:H-22,stroke:'var(--muted)','stroke-dasharray':'3 3'},svg);
+ P.forEach((p,i)=>{const y=i*rh+3,bh=rh-9;
+  el('text',{x:lw-8,y:y+bh/2+4,'text-anchor':'end','font-size':sm?11.5:12.5,class:'lab'},svg).textContent=PNOM[p[0]]||p[0];
+  el('rect',{x:lw,y,width:Math.max(1,x(p[2])-lw),height:bh,rx:2,fill:PCOL[p[0]]},svg);
+  el('line',{x1:x(p[3]),x2:x(p[4]),y1:y+bh/2,y2:y+bh/2,stroke:'var(--fg)','stroke-width':1.2},svg);
+  el('text',{x:x(p[4])+5,y:y+bh/2+4,'font-size':11.5},svg).textContent=c1(p[2]);
+  hov(box,tip,el('rect',{x:0,y:y-3,width:W,height:rh,fill:'transparent'},svg),`<b>${p[1]}</b><br>${BL[p[6]]}<br>Media: <b>${c1(p[2])}</b> escaños<br>Entre ${p[3]} y ${p[4]}`+(p[7]?`<br>Fuera del Parlamento en ${p[7]} encuestas`:''))});
+ document.getElementById('leg-partidos').innerHTML='<span>Barra: media</span><span>Línea: la encuesta más baja y la más alta</span>';})();
+table('encuestas-tbl',['Encuesta','Netanyahu','Oposición','Árabes'],D.polls.map(p=>{const m=p[1].replace('Channel','Canal'),f=`${+p[0].slice(8)}/${+p[0].slice(5,7)}`;return [f+' · '+(p[6]?`<a href="${p[6]}">${m}</a>`:m),p[3]>=61?`<b>${p[3]}</b>`:p[3],p[4],p[5]]}));
+</script>
