@@ -209,6 +209,16 @@ a{color:var(--acc)}
 .eje{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
 .eje .mayoria{color:var(--fg);font-weight:600}
 .rapidos{display:flex;flex-wrap:wrap;gap:6px}
+.arma{font-size:.85rem;color:var(--muted);margin:-.3rem 0 -.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.sim .chips button{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 11px 5px 8px;border:1.5px solid var(--c);font-weight:600}
+.chips button i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.chips button small{font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.sim .chips button[aria-pressed=true]{background:var(--c);color:var(--t,#fff)}
+.chips button[aria-pressed=true] i{background:var(--t,#fff)}
+.chips button[aria-pressed=true] small{color:var(--t,#fff);opacity:.85}
+.sim .chips button.ab{background:color-mix(in srgb,var(--c) 30%,transparent)}
+@media (max-width:520px){.chips{gap:5px}.sim .chips button{padding:4px 9px 4px 7px;font-size:.82rem;gap:5px}}
 .sim button,.sim select{font:600 .85rem var(--ui);border:1px solid var(--rule);background:transparent;color:var(--fg);border-radius:6px;padding:6px 10px;cursor:pointer}
 .sim button:hover,.sim select:hover{border-color:var(--fg)}
 .hemi{margin:0}
@@ -313,6 +323,8 @@ aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
   <div class="eje"><span id="e-si"></span><span class="mayoria">176</span><span id="e-no"></span></div>
 </div>
 <div class="rapidos" id="rapidos" aria-label="Pactos de ejemplo"></div>
+<p class="arma">O arma el tuyo: toca los partidos que votan sí.</p>
+<div class="chips" id="chips" role="group" aria-label="Partidos que votan sí"></div>
 <figure class="hemi"><div id="hemi"></div><figcaption class="ley"><span><i class="s"></i>Sí</span><span><i class="a"></i>Abstención</span><span><i class="n"></i>No</span></figcaption></figure>
 <div class="mandos">
   <div class="cab"><label for="punto"><b>Escaños de partida</b></label><select id="punto"></select></div>
@@ -379,6 +391,12 @@ function colocaFilas(){const con=ORD.filter(k=>esc[k]),sin=ORD.filter(k=>!esc[k]
 const RAP=[['PP + Vox',{PP:'s',VOX:'s'}],['PP + Vox + UPN + CC',{PP:'s',VOX:'s',UPN:'s',CC:'s'}],['Socios de 2023',D.historicos[0].v],['PP + PSOE',{PP:'s',PSOE:'s'}],['PP con abstención del PSOE',{PP:'s',PSOE:'a'}]];
 const rap=document.getElementById('rapidos');
 RAP.forEach(([n,v])=>{const x=el('button',{type:'button'},n);x.onclick=()=>aplica(v);rap.append(x)});
+// fila de partidos: un toque suma o quita del sí (las abstenciones, en las filas de abajo)
+const chips=document.getElementById('chips'),C={};
+ORD.forEach(k=>{C[k]=el('button',{type:'button',style:'--c:'+P[k].c,'aria-pressed':'false'},el('i'),P[k].n,el('small'));C[k].onclick=()=>{voto[k]=voto[k]==='s'?'n':'s';pinta()}});
+function pintaChips(){chips.replaceChildren(...ORD.filter(k=>esc[k]).sort((a,b)=>esc[b]-esc[a]).map(k=>{const b=C[k];b.style.setProperty('--c',col(k));
+  const h=col(k).slice(1),lum=(.299*parseInt(h.slice(0,2),16)+.587*parseInt(h.slice(2,4),16)+.114*parseInt(h.slice(4,6),16))/255;b.style.setProperty('--t',lum>.62?'#1d1a1c':'#fff');
+  b.lastChild.textContent=esc[k];b.setAttribute('aria-pressed',String(voto[k]==='s'));b.classList.toggle('ab',voto[k]==='a');b.title=voto[k]==='a'?'Se abstiene':'';return b}))}
 function aplica(v){reset();for(const k in v)if(k in voto)voto[k]=v[k];pinta();document.getElementById('veredicto').scrollIntoView({block:'nearest',behavior:'smooth'})}
 // hemiciclo: cada partido en su sitio de izquierda a derecha; color lleno si vota sí, tenue si se abstiene, hueco si vota no
 const hb=document.getElementById('hemi');let pts=[];
@@ -413,7 +431,7 @@ function pinta(){
   const tot=ORD.reduce((a,k)=>a+esc[k],0);
   if(!punto&&sel.value)sel.value='';else if(punto)sel.value=punto;
   const pp=D.puntos.find(p=>p[0]===punto);document.getElementById('nota-punto').textContent=pp?pp[2]+'.':'Escaños cambiados a mano o llegados de la calculadora de escaños.';
-  colocaFilas();
+  colocaFilas();pintaChips();
   ORD.forEach(k=>{F[k].out.value=esc[k];F[k].out.textContent=esc[k];F[k].row.classList.toggle('cero',!esc[k]);for(const v in F[k].vb)F[k].vb[v].setAttribute('aria-pressed',String(voto[k]===v))});
   const su=document.getElementById('suma');
   su.textContent=tot===350?'Los partidos suman los 350 escaños.':`Los partidos suman ${tot} escaños: ${tot>350?'sobran '+(tot-350):'faltan '+(350-tot)} para los 350 del Congreso.`;
@@ -424,7 +442,7 @@ function pinta(){
   barra.replaceChildren(...ks('s').map(k=>seg(k,esc[k],1)),...ks('a').map(k=>seg(k,esc[k],.3)));
   document.getElementById('e-si').textContent=`${si} sí`+(ab?` · ${ab} abst.`:'');document.getElementById('e-no').textContent=`${no} no`;
   const ver=document.getElementById('veredicto');
-  if(!si){ver.innerHTML='Marca qué partidos votan <b>sí</b> o prueba uno de estos pactos.'}
+  if(!si){ver.innerHTML='Toca los partidos que votan <b>sí</b> o prueba uno de estos pactos.'}
   else{const cand=ks('s')[0],quien=`Un candidato del <b>${P[cand].n}</b>`,apoyos=lista(ks('s').map(k=>P[k].n));
     if(si>=MAY)ver.innerHTML=`<span class="ok">✔</span> ${quien} saldría investido <b>en primera votación</b>: ${si} síes de ${apoyos}. También bastarían para una moción de censura.`;
     else if(si>no)ver.innerHTML=`<span class="ok">✔</span> ${quien} saldría investido <b>en segunda votación</b>: ${si} síes frente a ${no} noes. Se queda a ${MAY-si} de los 176 de la primera.`;
