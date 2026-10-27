@@ -65,6 +65,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/comuns-psc-senado-girona-lleida-tarragona-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-27</news:publication_date>
+      <news:title>Comuns se retira del Senado en Girona, Lleida y Tarragona: con las encuestas, el PSC pasaría de 3 a 7 de los 12 senadores y le cerraría a Vox la primera plaza en Tarragona</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/pacto-pp-vox-senado-provincias-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

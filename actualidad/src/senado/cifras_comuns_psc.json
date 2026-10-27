@@ -1,0 +1,236 @@
+{
+ "modelo": "v1.2-encuestas-20261027",
+ "provincias": {
+  "17": {
+   "nombre": "Girona",
+   "sin_pp": true,
+   "2023": {
+    "votos": {
+     "PSOE": 78181,
+     "Junts": 67470,
+     "ERC": 61960,
+     "Sumar": 28241,
+     "PP": 29421,
+     "Vox": 16993
+    },
+    "sin_pactos": {
+     "PSOE": 3,
+     "Junts": 1
+    },
+    "solo_pp_vox": {
+     "PSOE": 3,
+     "Junts": 1
+    },
+    "con_pactos": {
+     "PSOE": 3,
+     "Junts": 1
+    },
+    "con_pactos_votos": {
+     "PSOE": 106422,
+     "Junts": 67470,
+     "ERC": 61960,
+     "Vox": 46414
+    },
+    "umbral_comuns": 0.0,
+    "umbral_pp_vox_segundo": 1.716,
+    "umbral_pp_vox_primero_sin_comuns": 2.08
+   },
+   "encuestas": {
+    "votos": {
+     "PSOE": 61070,
+     "Junts": 60638,
+     "ERC": 72418,
+     "Sumar": 10839,
+     "PP": 26985,
+     "Vox": 26348
+    },
+    "sin_pactos": {
+     "ERC": 3,
+     "PSOE": 1
+    },
+    "solo_pp_vox": {
+     "ERC": 3,
+     "PSOE": 1
+    },
+    "con_pactos": {
+     "ERC": 3,
+     "PSOE": 1
+    },
+    "con_pactos_votos": {
+     "PSOE": 71909,
+     "Junts": 60638,
+     "ERC": 72418,
+     "Vox": 53333
+    },
+    "umbral_comuns": 1.047,
+    "umbral_pp_vox_segundo": 1.707,
+    "umbral_pp_vox_primero_sin_comuns": 1.287
+   }
+  },
+  "25": {
+   "nombre": "Lleida",
+   "sin_pp": false,
+   "2023": {
+    "votos": {
+     "PSOE": 46195,
+     "ERC": 39485,
+     "Junts": 34626,
+     "PP": 22514,
+     "Sumar": 11814,
+     "Vox": 9893
+    },
+    "sin_pactos": {
+     "PSOE": 3,
+     "ERC": 1
+    },
+    "solo_pp_vox": {
+     "PSOE": 3,
+     "ERC": 1
+    },
+    "con_pactos": {
+     "PSOE": 3,
+     "ERC": 1
+    },
+    "con_pactos_votos": {
+     "PSOE": 58009,
+     "ERC": 39485,
+     "Junts": 34626,
+     "PP": 22514,
+     "Vox": 9893
+    },
+    "umbral_comuns": 0.0
+   },
+   "encuestas": {
+    "votos": {
+     "PSOE": 36190,
+     "ERC": 40538,
+     "Junts": 31153,
+     "PP": 20161,
+     "Sumar": 4641,
+     "Vox": 16135
+    },
+    "sin_pactos": {
+     "ERC": 3,
+     "PSOE": 1
+    },
+    "solo_pp_vox": {
+     "ERC": 3,
+     "PSOE": 1
+    },
+    "con_pactos": {
+     "PSOE": 3,
+     "ERC": 1
+    },
+    "con_pactos_votos": {
+     "PSOE": 40831,
+     "ERC": 40538,
+     "Junts": 31153,
+     "PP": 20161,
+     "Vox": 16135
+    },
+    "umbral_comuns": 0.937
+   }
+  },
+  "43": {
+   "nombre": "Tarragona",
+   "sin_pp": true,
+   "2023": {
+    "votos": {
+     "PSOE": 104770,
+     "ERC": 66185,
+     "PP": 48866,
+     "Junts": 43461,
+     "Sumar": 31852,
+     "Vox": 28046
+    },
+    "sin_pactos": {
+     "PSOE": 3,
+     "ERC": 1
+    },
+    "solo_pp_vox": {
+     "PSOE": 3,
+     "Vox": 1
+    },
+    "con_pactos": {
+     "PSOE": 3,
+     "Vox": 1
+    },
+    "con_pactos_votos": {
+     "PSOE": 136622,
+     "ERC": 66185,
+     "Junts": 43461,
+     "Vox": 76912
+    },
+    "umbral_comuns": 0.0,
+    "umbral_pp_vox_segundo": 0.78,
+    "umbral_pp_vox_primero_sin_comuns": 1.57
+   },
+   "encuestas": {
+    "votos": {
+     "PSOE": 85312,
+     "ERC": 76858,
+     "PP": 46491,
+     "Junts": 39211,
+     "Sumar": 11801,
+     "Vox": 42329
+    },
+    "sin_pactos": {
+     "PSOE": 3,
+     "ERC": 1
+    },
+    "solo_pp_vox": {
+     "Vox": 3,
+     "PSOE": 1
+    },
+    "con_pactos": {
+     "PSOE": 3,
+     "Vox": 1
+    },
+    "con_pactos_votos": {
+     "PSOE": 97113,
+     "ERC": 76858,
+     "Junts": 39211,
+     "Vox": 88820
+    },
+    "umbral_comuns": 0.297,
+    "umbral_pp_vox_segundo": 0.743,
+    "umbral_pp_vox_primero_sin_comuns": 0.925
+   }
+  }
+ },
+ "total_2023": {
+  "sin_pactos": {
+   "PSOE": 9,
+   "Junts": 1,
+   "ERC": 2
+  },
+  "solo_pp_vox": {
+   "PSOE": 9,
+   "Junts": 1,
+   "ERC": 1,
+   "Vox": 1
+  },
+  "con_pactos": {
+   "PSOE": 9,
+   "Junts": 1,
+   "ERC": 1,
+   "Vox": 1
+  }
+ },
+ "total_encuestas": {
+  "sin_pactos": {
+   "ERC": 7,
+   "PSOE": 5
+  },
+  "solo_pp_vox": {
+   "ERC": 6,
+   "PSOE": 3,
+   "Vox": 3
+  },
+  "con_pactos": {
+   "ERC": 4,
+   "PSOE": 7,
+   "Vox": 1
+  }
+ }
+}

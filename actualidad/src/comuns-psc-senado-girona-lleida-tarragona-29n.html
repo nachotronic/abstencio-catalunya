@@ -1,0 +1,125 @@
+<title>Comuns se retira del Senado</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
+  --comuns:#a2275f; --muni:#1b8fa8; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
+  --comuns:#d0679a; --muni:#2a9ab4; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+ul{padding-left:1.2rem;margin:0 0 1rem} li{margin-bottom:.35rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{position:relative;margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.maps h3{font-family:var(--ui);font-size:1rem;margin:0 0 .3rem;font-weight:600}
+.maps h3 b{color:var(--comuns)}
+.tip{position:absolute;pointer-events:none;background:var(--tipbg);color:var(--tipfg);font-family:var(--ui);font-size:.9rem;line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid var(--comuns);outline-offset:2px}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}.maps{gap:8px}}
+</style>
+<style>:root{--psoe:#e30613;--pp:#1d84ce;--vox:#5ac035;--erc:#f0a81c;--junts:#16a99c}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--erc:#f5b324;--junts:#2fd0c2}}:root[data-theme="dark"]{--psoe:#ff5a5f;--pp:#4fa8ea;--vox:#74d651;--erc:#f5b324;--junts:#2fd0c2}</style>
+<style>blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}
+.ctl{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin:.7rem 0 .2rem;font-family:var(--ui)}.ctl div{display:flex;gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.ctl button{font:inherit;font-size:.95rem;background:transparent;color:var(--fg);border:0;padding:.3rem .7rem;cursor:pointer}.ctl button+button{border-left:1px solid var(--rule)}
+.ctl button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}.ctl button:focus-visible{outline:2px solid var(--comuns);outline-offset:-2px}
+.prov{margin-top:1rem}.prov h3{font-family:var(--ui);font-size:1.05rem;margin:0 0 .2rem;font-weight:600}.prov h3 span{font-weight:400;color:var(--muted)}</style>
+
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>Comuns se retira del Senado en Girona, Lleida y Tarragona: con las encuestas, el PSC pasaría de 3 a 7 de los 12 senadores y le cerraría a Vox la primera plaza en Tarragona</h1>
+<p class="dek">Con los votos de 2023, el acuerdo no cambia nada: el PSC ya ganaba en las tres provincias. Con la media de encuestas, decide Lleida por menos de 300 votos por candidato y en Tarragona evita que Vox, con los votos del PP, quede primero.</p>
+<div class="byline">Nacho G. del Álamo · 27 de octubre de 2026</div>
+<div style="margin-top:1.4rem"></div>
+<p data-tipo="contexto">Comuns no presentará candidatos al Senado en Girona, Lleida y Tarragona el 29 de noviembre. Lo anunciaron el martes en un comunicado conjunto con el PSC, que «a su vez se compromete a designar a un senador a propuesta de los comunes», según <a href="https://www.infobae.com/espana/agencias/2026/10/27/comuns-retira-sus-candidaturas-al-senado-en-girona-lleida-y-tarragona-en-favor-del-psc/">Efe</a>. Según <a href="https://www.infobae.com/espana/agencias/2026/10/27/los-comuns-retiran-su-candidatura-al-senado-en-girona-lleida-y-tarragona-tras-un-acuerdo-con-el-psc/">Europa Press</a>, lo que se retira es la candidatura de Frente Amplio, y el compromiso de los socialistas es apoyar en el Parlament «un senador de designación autonómica» que propongan los Comuns. El acuerdo no afecta a Barcelona.</p>
+<p data-tipo="contexto">El acuerdo llega un día después del pacto del PP y Vox para el Senado, por el que el PP no se presenta en Gipuzkoa, Girona y Tarragona, como se contó en <a href="https://mapaelectoral.es/actualidad/pacto-pp-vox-senado-provincias-29n/">esta pieza</a>. En Lleida, el PP y Vox van por separado. Europa Press recuerda otro movimiento parecido en el Congreso: la Chunta Aragonesista retiró su lista en Teruel en favor del PSOE, algo que <a href="https://mapaelectoral.es/actualidad/teruel-cha-izquierda-escano-29n/">ya analizamos</a>.</p>
+<p data-tipo="contexto">PSC y Comuns explican la decisión por el acuerdo de la derecha. Según Europa Press, sostienen que el pacto de Feijóo y Abascal «tiene el objetivo de controlar esta cámara para que se convierta en un instrumento de regresión democrática y control de instituciones del Estado», y añaden:</p>
+<blockquote class="cita"><p>«Es especialmente grave que el acuerdo entregue el liderazgo de circunscripciones catalanas a Vox, la extrema derecha que quiere acabar con las instituciones y derechos y libertades de Catalunya, y nuestro autogobierno»</p><footer>Comunicado conjunto del PSC y Comuns, según <a href="https://www.infobae.com/espana/agencias/2026/10/27/los-comuns-retiran-su-candidatura-al-senado-en-girona-lleida-y-tarragona-tras-un-acuerdo-con-el-psc/">Europa Press</a> (27-10-2026).</footer></blockquote>
+<p data-tipo="contexto">Para entender por qué importa, hay que recordar cómo se vota el Senado. En cada una de estas provincias se eligen cuatro senadores y cada elector marca hasta tres nombres. Salen los cuatro candidatos más votados, así que quien queda primero suele llevarse tres y el segundo, uno:</p>
+<blockquote class="cita"><p>«Se trata de que, en condiciones normales los candidatos pertenecientes al partido más votado se queden con la mayoría de los senadores, mientras que el segundo partido se quede con uno»</p><footer>Fabio Pascua Mateo, letrado de las Cortes Generales y profesor de la Universidad Complutense, en la <a href="https://revista.cortesgenerales.es/rcg/article/download/98/91">Revista de las Cortes Generales</a> (2018).</footer></blockquote>
+<p data-tipo="contexto">He hecho la cuenta con los votos oficiales de cada candidato al Senado en julio de 2023, los que publicó la Junta Electoral Central en el <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907">BOE</a>. Para cada partido tomo sus votos por candidato: la suma de lo que sacaron sus tres candidatos, dividida entre tres. Luego sumo los de Comuns a los del PSC y, en Girona y Tarragona, los del PP a los de Vox. Lo hago dos veces: con los votos tal como fueron y con esos votos movidos según el cambio de cada partido en la <a href="https://mapaelectoral.es/encuestas/">media de encuestas</a> de Mapa Electoral del 27 de octubre, provincia a provincia.</p>
+<h2>Con los votos de 2023, nada cambia para el PSC</h2>
+<p data-tipo="dato">En 2023, el PSC ganó en las tres provincias con margen: 10.711 votos por candidato sobre Junts en Girona, 6.710 sobre ERC en Lleida y 38.585 sobre ERC en Tarragona. Sacó 9 de los 12 senadores, y con los votos de Comuns seguiría teniendo 9. El único cambio de esa cuenta viene del otro pacto: en Tarragona, Vox con los votos del PP (76.912) habría superado a ERC (66.185) y se habría quedado el cuarto senador. Para eso basta con que le voten el 78% de los votantes del PP.</p>
+<figure>
+<figcaption><span class="t">Votos por candidato al Senado en Girona, Lleida y Tarragona</span><span class="s">Con los dos pactos, el tramo claro es lo que suman los votos de Comuns al PSC y los del PP a Vox. El número de la derecha es el de senadores</span></figcaption>
+<div class="ctl"><div role="group" aria-label="Votos"><button type="button" data-v="encuestas" aria-pressed="true">Con las encuestas</button><button type="button" data-v="2023" aria-pressed="false">Votos de 2023</button></div><div role="group" aria-label="Pactos"><button type="button" data-p="1" aria-pressed="true">Con los dos pactos</button><button type="button" data-p="0" aria-pressed="false">Sin pactos</button></div></div>
+<div class="chart" id="sen"></div>
+<div class="legend"><span><i class="sw" style="background:var(--psoe)"></i>PSC</span><span><i class="sw" style="background:var(--comuns)"></i>Comuns</span><span><i class="sw" style="background:var(--erc)"></i>ERC</span><span><i class="sw" style="background:var(--junts)"></i>Junts</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
+<div class="src">Fuente: Junta Electoral Central, votos por candidato del Senado de 2023 (BOE de 1 de septiembre de 2023); media de encuestas y modelo provincial de Mapa Electoral (27-10-2026). Simulación propia con transferencia completa de votos.</div>
+<details><summary>Ver la tabla</summary><div class="tbl" id="sen-tbl"></div></details>
+</figure>
+<h2>Con las encuestas, el acuerdo lo decide casi todo</h2>
+<p data-tipo="dato">La media de encuestas dibuja otro mapa. El PSC baja y ERC sube, y Comuns cae de entre el 8% y el 11% del voto al Congreso en 2023 a entre el 3% y el 4%. Sin ningún pacto, ERC quedaría primera en Girona y Lleida y sacaría 7 senadores; el PSC, 5. Con solo el pacto de PP y Vox, el PSC bajaría a 3: en Tarragona, Vox con los votos del PP (88.820 por candidato) superaría al PSC (85.312) y se quedaría tres senadores. Con los dos pactos, el reparto cambia de lado: 7 senadores para el PSC, 4 para ERC y 1 para Vox.</p>
+<p data-tipo="dato">Lleida es la más ajustada. Con las encuestas, ERC sacaría 40.538 votos por candidato y el PSC, 36.190. Con los 4.641 de Comuns, el PSC llegaría a 40.831: 293 por delante. Necesita que le voten el 94% de los votantes de Comuns para quedar primero, y con eso los tres senadores pasarían de ERC al PSC.</p>
+<p data-tipo="dato">En Tarragona el acuerdo cubre las dos puntas. Si Comuns se presentara, Vox quedaría primero con que el 93% de los votantes del PP votara a sus candidatos. Con Comuns fuera, al PSC le basta con recibir el 30% de sus votos para seguir primero aunque Vox se lleve todos los del PP. ERC perdería en cualquier caso su senador de Tarragona si al menos el 74% de los votantes del PP vota a Vox: es el pacto de la derecha, no el de la izquierda, el que se lo quita.</p>
+<p data-tipo="dato">En Girona, el acuerdo no le da la victoria al PSC con las encuestas: con los votos de Comuns llegaría a 71.909 votos por candidato, 509 menos que ERC. Lo que sí hace es asegurarle el cuarto senador. Sin Comuns, el PSC (61.070) quedaría solo 432 votos por delante de Junts (60.638) en la pelea por esa plaza.</p>
+<p data-tipo="dato">El senador que Comuns recibiría a cambio no sale de las urnas. Lo elige el Parlament, que hoy tiene ocho senadores de designación autonómica: 3 del PSC, 3 de Junts, 1 de ERC y 1 del PP. Comuns, con 6 de los 135 diputados, no tiene ninguno por sí solo.</p>
+<h2>Lo que la cuenta no dice</h2>
+<p data-tipo="hipotesis">Esto es una simulación, no una previsión. Supone que todos los votantes de Comuns votan a los tres candidatos del PSC y que todos los del PP votan a los de Vox donde el PP no se presenta. En el Senado eso no está garantizado: cada elector elige nombres, y muchos marcan menos de tres o mezclan partidos. En 2023, el primer candidato de Comuns en Girona sacó 32.934 votos y el tercero, 22.814. Algunos de sus votantes pueden quedarse en casa, votar a ERC o repartir sus tres cruces entre dos listas.</p>
+<p data-tipo="hipotesis">La versión con encuestas mueve los votos del Senado de cada partido con su cambio en el Congreso, y ese cambio sale de un modelo que reparte la media de encuestas por provincias, con un margen amplio. Las diferencias de Lleida y Girona, de unos cientos de votos por candidato, están muy por debajo de ese margen: las dos provincias están en el aire. Tampoco cuenta a la CUP, que no se presentó al Senado en 2023, ni sabe aún cuántos candidatos presenta cada partido: las listas oficiales se publican en el BOE del 28 de octubre.</p>
+<p data-tipo="dato">Para el 29N, la cuenta queda así: con los votos de 2023, el pacto de PSC y Comuns no cambia ningún senador. Con las encuestas, decide Lleida por 293 votos por candidato, le asegura al PSC un senador en Girona y le cierra a Vox la primera plaza en Tarragona. Son siete senadores para el PSC en lugar de tres.</p>
+<p><a href="https://mapaelectoral.es/">Explora el mapa por sección</a> · Más piezas: <a href="https://mapaelectoral.es/actualidad/pacto-pp-vox-senado-provincias-29n/">El pacto de PP y Vox, provincia a provincia</a> · <a href="https://mapaelectoral.es/actualidad/senado-psoe-frente-amplio-29n/">PSOE y Frente Amplio, juntos al Senado</a> · <a href="https://mapaelectoral.es/encuestas/lleida/">La encuesta de Lleida</a></p>
+<div class="foot">Datos: Junta Electoral Central, votos por candidato del Senado de 2023 (BOE-A-2023-18907); modelo de encuestas de Mapa Electoral (v1.2, 27-10-2026). Cálculo: actualidad/src/senado/comuns_psc.py.</div>
+
+</main>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tipFor(box){let t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+  return {show(html,x,y){t.innerHTML=html;t.hidden=false;const bw=box.clientWidth,tw=t.offsetWidth;const cx=Math.min(Math.max(x,tw/2),bw-tw/2);t.style.left=cx+'px';t.style.top=y+'px'},hide(){t.hidden=true}}}
+function pos(box,ev){const r=box.getBoundingClientRect();const p=ev.touches?ev.touches[0]:ev;return [p.clientX-r.left,p.clientY-r.top]}
+function hov(box,tip,hit,html){const h=ev=>{const [a,b]=pos(box,ev);tip.show(html,a,b)};hit.addEventListener('mousemove',h);hit.addEventListener('touchstart',h,{passive:true});hit.addEventListener('mouseleave',()=>tip.hide())}
+const nf=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const D={"Girona":{"2023":{"PSOE":78181,"Junts":67470,"ERC":61960,"Sumar":28241,"PP":29421,"Vox":16993},"encuestas":{"PSOE":61070,"Junts":60638,"ERC":72418,"Sumar":10839,"PP":26985,"Vox":26348},"sin_pp":true},"Lleida":{"2023":{"PSOE":46195,"ERC":39485,"Junts":34626,"PP":22514,"Sumar":11814,"Vox":9893},"encuestas":{"PSOE":36190,"ERC":40538,"Junts":31153,"PP":20161,"Sumar":4641,"Vox":16135},"sin_pp":false},"Tarragona":{"2023":{"PSOE":104770,"ERC":66185,"PP":48866,"Junts":43461,"Sumar":31852,"Vox":28046},"encuestas":{"PSOE":85312,"ERC":76858,"PP":46491,"Junts":39211,"Sumar":11801,"Vox":42329},"sin_pp":true}};
+const NOM={PSOE:'PSC',Sumar:'Comuns',ERC:'ERC',Junts:'Junts',PP:'PP',Vox:'Vox'},COL={PSOE:'psoe',Sumar:'comuns',ERC:'erc',Junts:'junts',PP:'pp',Vox:'vox'};
+let V='encuestas',P=1;
+function filas(d){const v=d[V];let r=Object.keys(v).map(k=>({k,base:v[k],extra:0,de:null}));
+ if(P){const ps=r.find(x=>x.k=='PSOE'),su=r.find(x=>x.k=='Sumar');ps.extra=su.base;ps.de='Sumar';r=r.filter(x=>x!==su);
+  if(d.sin_pp){const vx=r.find(x=>x.k=='Vox'),pp=r.find(x=>x.k=='PP');vx.extra=pp.base;vx.de='PP';r=r.filter(x=>x!==pp)}}
+ r.sort((a,b)=>(b.base+b.extra)-(a.base+a.extra));r.forEach((x,i)=>x.sen=i==0?3:i==1?1:0);return r}
+function dibuja(){const box=document.getElementById('sen');box.innerHTML='';const tip=tipFor(box);
+ const W=Math.max(320,box.clientWidth||640),sm=W<500,lw=sm?58:70,rh=24,mx=V=='2023'?140000:100000,x=v=>v/mx*(W-lw-(sm?92:135));
+ for(const [n,d] of Object.entries(D)){const r=filas(d);const div=document.createElement('div');div.className='prov';
+  div.innerHTML=`<h3>${n}${P&&d.sin_pp?' <span>· el PP no se presenta</span>':''}${P&&!d.sin_pp?' <span>· el PP y Vox van por separado</span>':''}</h3>`;box.appendChild(div);
+  const H=r.length*rh+4,svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':`Votos por candidato al Senado en ${n}`},div);
+  r.forEach((f,i)=>{const y=i*rh+2,t=f.base+f.extra;
+   el('text',{x:lw-6,y:y+rh/2+4,'text-anchor':'end',class:f.sen?'lab':'','font-size':sm?12:13},svg).textContent=NOM[f.k];
+   el('rect',{x:lw,y:y+3,width:Math.max(1,x(f.base)),height:rh-8,rx:2,fill:`var(--${COL[f.k]})`},svg);
+   if(f.extra)el('rect',{x:lw+x(f.base),y:y+3,width:x(f.extra),height:rh-8,rx:2,fill:`var(--${COL[f.de]})`,'fill-opacity':.45},svg);
+   el('text',{x:lw+x(t)+6,y:y+rh/2+4,'font-size':12},svg).textContent=nf(t)+(f.sen?(sm?` · ${f.sen}`:` · ${f.sen} senador${f.sen>1?'es':''}`):'');
+   hov(div,tip,el('rect',{x:0,y,width:W,height:rh,fill:'transparent'},svg),`<b>${NOM[f.k]}</b> · ${n}<br>${nf(f.base)} votos por candidato`+(f.extra?`<br>+ ${nf(f.extra)} de ${NOM[f.de]}: <b>${nf(t)}</b>`:'')+`<br>Senadores: <b>${f.sen}</b>`)});}
+ tabla()}
+function tabla(){const rows=[];for(const [n,d] of Object.entries(D))filas(d).forEach(f=>rows.push([n,NOM[f.k]+(f.extra?' + '+NOM[f.de]:''),nf(f.base+f.extra),f.sen]));
+ document.getElementById('sen-tbl').innerHTML='<table><thead><tr><th>Provincia</th><th>Candidatura</th><th class="n">Votos por candidato</th><th class="n">Senadores</th></tr></thead><tbody>'+rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="n">${r[2]}</td><td class="n">${r[3]}</td></tr>`).join('')+'</tbody></table>'}
+document.querySelectorAll('.ctl button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.v)V=b.dataset.v;else P=+b.dataset.p;
+ document.querySelectorAll('.ctl button').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.v?c.dataset.v==V:+c.dataset.p==P)));dibuja()}));
+dibuja();let rw=0;addEventListener('resize',()=>{clearTimeout(rw);rw=setTimeout(dibuja,150)});
+</script>

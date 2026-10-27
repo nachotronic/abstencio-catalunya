@@ -2725,6 +2725,23 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
+        slug='comuns-psc-senado-girona-lleida-tarragona-29n', fecha='2026-10-27',
+        titulo='Comuns se retira del Senado en Girona, Lleida y Tarragona: con las encuestas, el PSC pasaría de 3 a 7 de los 12 senadores y le cerraría a Vox la primera plaza en Tarragona', serie='29n',
+        descripcion='Con los votos de 2023, el acuerdo no cambia nada: el PSC ya ganaba en las tres provincias. Con la media de encuestas, decide Lleida por menos de 300 votos por candidato y en Tarragona evita que Vox, con los votos del PP, quede primero.',
+        compara='Los votos por candidato al Senado de PSC, Comuns, ERC, Junts, PP y Vox en Girona, Lleida y Tarragona en 2023, y esos votos movidos con el cambio de cada partido en el modelo provincial de encuestas de Mapa Electoral del 27 de octubre de 2026, sin pactos, con solo el pacto de PP y Vox (el PP no se presenta en Girona y Tarragona) y con el acuerdo de PSC y Comuns (Comuns no se presenta en las tres).',
+        limites='Es una simulación, no una previsión. Supone transferencia completa: todos los votantes de Comuns votan a los tres candidatos del PSC y todos los del PP a los de Vox donde el PP no se presenta; en el voto limitado del Senado eso no está garantizado. La versión con encuestas mueve los votos del Senado de cada partido en proporción a su cambio en el voto al Congreso entre 2023 y el modelo, que tiene un margen amplio; las diferencias de Girona y Lleida están dentro de ese margen. No incluye a la CUP, que no se presentó al Senado en 2023, ni el número real de candidatos de cada lista, que se publica en el BOE del 28 de octubre. No incluye Barcelona, que no entra en el acuerdo.',
+        calculo='Votos por candidato: suma de los votos de los candidatos de cada partido en la provincia dividida entre el número de candidatos que presentó (tres). En cada provincia se eligen cuatro senadores: tres para la lista con más votos por candidato y uno para la segunda. Con encuestas, votos por candidato de 2023 multiplicados por el cociente entre el voto al Congreso del partido en el modelo (27-10-2026) y en 2023, en la provincia. Umbrales: parte de los votos por candidato de Comuns (o del PP) que hace falta transferir para cambiar el orden.',
+        fuentes=[('https://www.infobae.com/espana/agencias/2026/10/27/comuns-retira-sus-candidaturas-al-senado-en-girona-lleida-y-tarragona-en-favor-del-psc/', 'Efe, Comuns retira sus candidaturas al Senado en Girona, Lleida y Tarragona en favor del PSC (27-10-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/10/27/los-comuns-retiran-su-candidatura-al-senado-en-girona-lleida-y-tarragona-tras-un-acuerdo-con-el-psc/', 'Europa Press, Los Comuns retiran su candidatura al Senado en Girona, Lleida y Tarragona tras un acuerdo con el PSC (27-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-pp-vox-esperan-lograr-140-senadores-gracias-pacto-concurrir-senado-20261026185958.html', 'Europa Press, PP y Vox esperan lograr hasta 140 senadores gracias a su pacto (26-10-2026)'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907', 'Junta Electoral Central, resultados de las elecciones al Congreso y al Senado de 23 de julio de 2023, BOE de 1-9-2023'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños'),
+                 ('https://www.senado.es/web/composicionorganizacion/senadores/composicionsenado/index.html', 'Senado, composición de la Cámara (senadores de designación autonómica)'),
+                 ('https://revista.cortesgenerales.es/rcg/article/download/98/91', 'Fabio Pascua Mateo, Cuarenta años de elecciones a las Cortes Generales, Revista de las Cortes Generales 103 (2018)')],
+        enlaces=[],
+        lugar='Cataluña',
+    ),
+    dict(
         slug='pacto-pp-vox-senado-provincias-29n', fecha='2026-10-27', actualizado='2026-10-27 10:30',
         correcciones='27-10-2026: la simulación suponía la lista conjunta de PSOE y Sumar en 50 circunscripciones, incluidas las siete islas canarias y sin el País Vasco. Se ha recalculado con las circunscripciones reales de Senado de Progreso (sin Canarias y con el País Vasco). Con las encuestas el resultado no cambia: entre 130 y 135 senadores elegidos para PP y Vox, entre 158 y 163 con los designados. Con los votos de 2023 pasa de 87-104 a 90-107, y la lista única de PP y Vox, de 124 a 127 (de 137 a 135 con encuestas). En Álava, el acuerdo le daría a la derecha un senador con las encuestas, no dos.',
         foto=dict(src='img/actualidad/fotos/pacto-pp-vox-senado-provincias-29n.jpg', ancho=1280, alto=720, ia=True,
@@ -2911,6 +2928,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'comuns-psc-senado-girona-lleida-tarragona-29n': 'Un paso al lado',
     'israel-elecciones-encuestas-knesset': 'Israel vota',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
