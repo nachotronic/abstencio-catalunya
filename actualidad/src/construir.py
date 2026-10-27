@@ -2844,10 +2844,10 @@ PIEZAS += [
 SERIES['internacional'] = 'Internacional'
 PIEZAS += [
     dict(
-        slug='brasil-lula-remontada-mapa-estados', fecha='2026-10-26',
+        slug='brasil-lula-remontada-mapa-estados', fecha='2026-10-26', actualizado='2026-10-27 06:55',
         titulo='Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color', serie='internacional',
         descripcion='En tres semanas, Lula sumó 10,4 millones de votos y Flávio Bolsonaro, 3,7. Casi la mitad de la subida de Lula salió del Sudeste, donde aun así perdió. Frente a 2022, 25 de los 27 estados votaron al mismo candidato, y la región Norte se decidió por 1.079 votos.',
-        compara='La primera y la segunda vuelta de las presidenciales de Brasil de 2026 en los 27 estados (26 estados y el Distrito Federal), frente a la segunda vuelta de 2022, y la abstención en las presidenciales desde 1994.',
+        compara='La primera y la segunda vuelta de las presidenciales de Brasil de 2026 en los 27 estados (26 estados y el Distrito Federal), frente a la segunda vuelta de 2022; la ventaja del más votado en cada vuelta desde 1989, y la abstención en las presidenciales desde 1994.',
         limites='Son totales por estado: no dicen quién cambió su voto entre las dos vueltas ni quién votó solo en una de ellas, así que los votos que suma cada candidato son saldos, no trasvases. El mapa no incluye el voto en el exterior, que sí está en los totales nacionales. Los datos de 2026 son del portal de resultados del TSE y los de 2022 y la abstención desde 1994, de sus datos abiertos. La abstención se calcula sobre los electores con derecho a voto para presidente. En la primera vuelta, el color del mapa compara solo a Lula y a Flávio.',
         fuentes=[('https://resultados.tse.jus.br/oficial/app/index.html', 'Tribunal Superior Electoral de Brasil, resultados oficiales de la primera y la segunda vuelta de 2026 por estado'),
                  ('https://dadosabertos.tse.jus.br/', 'TSE, datos abiertos: votación por candidato, municipio y zona de 2022, y detalle de la votación por municipio y zona de 1994 a 2022 (abstención)'),
@@ -2857,7 +2857,9 @@ PIEZAS += [
                  ('https://www.poder360.com.br/poder-eleicoes-2026/leia-e-assista-a-integra-do-discurso-de-flavio-bolsonaro/', 'Poder360, íntegra del discurso de Flávio Bolsonaro (25-10-2026)'),
                  ('https://www.brasildefato.com.br/2026/09/30/governos-de-lula-transformaram-o-nordeste-e-explicam-vitoria-folgada-na-regiao-afirma-cientista-politico/', 'Brasil de Fato, entrevista al politólogo Benedito Tadeu César (UFRGS) (30-9-2026)'),
                  ('https://revistaoeste.com/politica/flavio-supera-lula-pela-1a-vez-em-minas-mostra-quaest/', 'Revista Oeste, Minas Gerais y el ganador de las presidenciales desde 1989'),
-                 ('https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm', 'Constitución de la República Federativa de Brasil, artículo 14')],
+                 ('https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm', 'Constitución de la República Federativa de Brasil, artículo 14'),
+                 ('https://www.bahianoticias.com.br/noticia/321931-desde-1989-quem-ganha-o-primeiro-turno-para-presidente-vence-tambem-o-segundo-e-tabu-pode-ser-quebrado', 'Bahia Notícias, desde 1989 quien gana la primera vuelta gana también la segunda (resultados de 1989)'),
+                 ('https://www.gazetasp.com.br/cotidiano/44528-desde-diretas-ja-brasil-nunca-teve-virada-no-segundo-tur/', 'Gazeta SP (Folhapress), Brasil nunca tuvo una remontada en segunda vuelta desde las Diretas Já (resultados de 1989)')],
         enlaces=[],
         lugar='Brasil',
         foto=dict(src='img/actualidad/fotos/brasil-lula-remontada-mapa-estados.jpg', ancho=1280, alto=720, grafico=True,

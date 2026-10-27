@@ -4,16 +4,16 @@
 /* Layout: una columna de lectura de ~65ch; los gráficos se abren algo más anchos */
 :root{
   --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8;
-  --acc:#a2275f; --pt:#c8102e; --pl:#1f4e9a; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
+  --acc:#a2275f; --pt:#c8102e; --pl:#1f4e9a; --psl:#c99a00; --prn:#2a8a57; --other:#d9d4d6; --tipbg:#1d1a1c; --tipfg:#fbfaf8;
   --serif:"Literata",Georgia,"Times New Roman",serif;
   --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
-  --acc:#d0679a; --pt:#e04a5f; --pl:#5d8fdc; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
+  --acc:#d0679a; --pt:#e04a5f; --pl:#5d8fdc; --psl:#e0b52e; --prn:#4fb882; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e;
-  --acc:#d0679a; --pt:#e04a5f; --pl:#5d8fdc; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
+  --acc:#d0679a; --pt:#e04a5f; --pl:#5d8fdc; --psl:#e0b52e; --prn:#4fb882; --other:#3e393f; --tipbg:#f1edef; --tipfg:#18161a; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
 main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
 .draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
@@ -72,6 +72,14 @@ blockquote.cita .orig{font-family:var(--ui);font-size:.92rem;color:var(--muted);
 
 <p style="margin-top:1.4rem" data-tipo="contexto">Luiz Inácio Lula da Silva ganó el domingo la segunda vuelta de las presidenciales de Brasil con el 51,79% de los votos válidos, 64.256.232, frente al 48,21% del senador Flávio Bolsonaro, 59.826.041, según el escrutinio completo del Tribunal Superior Electoral (<a href="https://resultados.tse.jus.br/oficial/app/index.html">TSE</a>). Tres semanas antes, en la primera vuelta del 4 de octubre, el más votado había sido Flávio, con el 47,03%, dos puntos por delante de Lula. Según <a href="https://es-us.noticias.yahoo.com/lula-gana-elecciones-presidenciales-remontada-001814404.html">EFE</a>, es «la primera vez desde el fin de la dictadura militar (1964-1985) que un candidato que quedó en segundo lugar en la primera ronda electoral se impone en la segunda vuelta a su adversario».</p>
 <p data-tipo="contexto">Brasil elige presidente por voto directo: todo el país es una sola circunscripción y gana quien saca más votos, así que los estados no reparten nada, a diferencia de Estados Unidos. Pero el mapa por estados cuenta dónde está el voto de cada uno y dónde se movió. He descargado los resultados oficiales del TSE de las dos vueltas, estado a estado, y los he comparado con la segunda vuelta de 2022, cuando Lula ganó a Jair Bolsonaro, el padre de Flávio, por 50,9% a 49,1%.</p>
+<p data-tipo="dato">La remontada rompe una regla que se había cumplido siempre. Desde la vuelta de la elección directa, en 1989, Brasil había celebrado siete presidenciales con segunda vuelta (en 1994 y 1998 Fernando Henrique Cardoso ganó en la primera), y en las siete el más votado en la primera ronda acabó ganando la segunda, como recordaba <a href="https://www.bahianoticias.com.br/noticia/321931-desde-1989-quem-ganha-o-primeiro-turno-para-presidente-vence-tambem-o-segundo-e-tabu-pode-ser-quebrado">Bahia Notícias</a> antes de la votación. La ventaja de Flávio el 4 de octubre, 1,87 puntos, era además la más corta de toda la serie: la anterior más estrecha, la de Lula en 2022, fue de 5,23.</p>
+<figure>
+<figcaption><span class="t">El que gana la primera vuelta gana la segunda… hasta 2026</span><span class="s">Ventaja del más votado sobre el segundo, en puntos de los votos válidos, en cada vuelta</span></figcaption>
+<div class="chart" id="vueltas"></div>
+<div class="legend" id="vueltas-ley"></div>
+<div class="src">Fuente: TSE, datos abiertos (votación por candidato, 2002-2022) y resultados oficiales de 2026; 1989, resultados del TSE recogidos por <a href="https://www.bahianoticias.com.br/noticia/321931-desde-1989-quem-ganha-o-primeiro-turno-para-presidente-vence-tambem-o-segundo-e-tabu-pode-ser-quebrado">Bahia Notícias</a> y <a href="https://www.gazetasp.com.br/cotidiano/44528-desde-diretas-ja-brasil-nunca-teve-virada-no-segundo-tur/">Folhapress</a>. En 1994 y 1998 no hubo segunda vuelta. Cálculo propio.</div>
+</figure>
+<p data-tipo="patron">El gráfico enseña también otra cosa: en seis de las siete elecciones anteriores, el ganador de la primera vuelta llegó a la segunda con menos ventaja de la que tenía. Solo en 2006 Lula la amplió, de 7 a 22 puntos. Con una ventaja de partida tan corta como la de este año, bastaba que el recorte habitual fuera algo mayor para darle la vuelta al resultado.</p>
 
 <figure>
 <figcaption><span class="t">Quién ganó en cada estado de Brasil</span><span class="s">Porcentaje sobre los votos a los dos candidatos. Toca o pasa por encima de un estado para ver sus cifras</span></figcaption>
@@ -207,6 +215,21 @@ const mb=document.getElementById('m-ele');
 mb.insertAdjacentHTML('afterbegin','<span>Ver</span>');
 MODOS.forEach(([k,t])=>{const b=document.createElement('button');b.textContent=t;b.setAttribute('aria-pressed',k===modo);
   b.onclick=()=>{modo=k;mb.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));dibujaMapa()};mb.appendChild(b)});
-function todo(){dibujaMapa();dibujaSubida();dibujaAbst()}
-tabla();todo();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{dibujaSubida();dibujaAbst()},150)});
+const VU=[[1989,'Collor','PRN',13.29,'Collor','PRN',6.06],[2002,'Lula','PT',23.24,'Lula','PT',22.54],[2006,'Lula','PT',6.97,'Lula','PT',21.66],
+  [2010,'Dilma','PT',14.30,'Dilma','PT',12.10],[2014,'Dilma','PT',8.04,'Dilma','PT',3.28],[2018,'Bolsonaro','PSL',16.75,'Bolsonaro','PSL',10.26],
+  [2022,'Lula','PT',5.23,'Lula','PT',1.80],[2026,'Flávio','PL',1.87,'Lula','PT',3.58]];
+const COLP={PT:'var(--pt)',PL:'var(--pl)',PSL:'var(--psl)',PRN:'var(--prn)'};
+function dibujaVueltas(){const box=document.getElementById('vueltas');box.innerHTML='';
+  const W=Math.max(box.clientWidth,300),nar=W<480,lw=nar?40:48,bh=12,gap=14,rh=2*bh+2+gap,H=VU.length*rh+20,mx=25,sc=(W-lw-(nar?96:120))/mx;
+  const s=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Ventaja del más votado en la primera y en la segunda vuelta de las presidenciales de Brasil, 1989-2026'},box);
+  [5,10,15,20,25].forEach(v=>{const x=lw+v*sc;el('line',{x1:x,x2:x,y1:0,y2:H-16,stroke:'var(--grid)'},s);el('text',{x,y:H-3,'text-anchor':'middle'},s).textContent=v});
+  VU.forEach(([a,n1,p1,m1,n2,p2,m2],i)=>{const y=i*rh;
+    el('text',{x:lw-8,y:y+bh+5,'text-anchor':'end',class:'lab',style:a===2026?'font-weight:700':''},s).textContent=a;
+    [[n1,p1,m1,'1.ª'],[n2,p2,m2,'2.ª']].forEach(([n,p,m,v],j)=>{const yy=y+j*(bh+2),w=m*sc;
+      el('rect',{x:lw,y:yy,width:w,height:bh,fill:COLP[p],'fill-opacity':j?1:.55},s);
+      el('text',{x:lw+w+5,y:yy+bh-2,style:'font-size:12px'},s).textContent=`${v} ${n} +${m.toFixed(1).replace('.',',')}`})});
+  document.getElementById('vueltas-ley').innerHTML=[['--pt','PT'],['--pl','PL'],['--psl','PSL'],['--prn','PRN']].map(([c,t])=>`<span><i class="sw" style="background:var(${c})"></i>${t}</span>`).join('')+
+    '<span>· barra clara, 1.ª vuelta; oscura, 2.ª</span>'}
+function todo(){dibujaMapa();dibujaVueltas();dibujaSubida();dibujaAbst()}
+tabla();todo();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{dibujaVueltas();dibujaSubida();dibujaAbst()},150)});
 </script>
