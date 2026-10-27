@@ -93,7 +93,7 @@ def primera_pantalla(s):
         return s
     # la franja con las últimas piezas del Atlas (la rellena atlas/src/paginas.py) va pegada al mapa
     # (y encima, la de Actualidad, que rellena actualidad/src/construir.py, y la de Encuestas, de encuestas/src/construir.py)
-    fm = re.search(r'\s*(?:<!--encuestas:portada-->.*?<!--/encuestas:portada-->\s*)?(?:<!--actualidad:ultimas-->.*?<!--/actualidad:ultimas-->\s*)?<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->(?:\s*<!--simulador:portada-->.*?<!--/simulador:portada-->)?', s, re.S)
+    fm = re.search(r'\s*(?:<!--encuestas:portada-->.*?<!--/encuestas:portada-->\s*(?:<!--listas:portada-->.*?<!--/listas:portada-->\s*)?)?(?:<!--actualidad:ultimas-->.*?<!--/actualidad:ultimas-->\s*)?<!--atlas:ultimas-->.*?<!--/atlas:ultimas-->(?:\s*<!--simulador:portada-->.*?<!--/simulador:portada-->)?', s, re.S)
     franja = fm.group(0).strip() if fm else ''
     if fm:
         s = s[:fm.start()] + s[fm.end():]
