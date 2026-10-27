@@ -2686,6 +2686,25 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
+        slug='bilbao-barrios-disturbios-voto-29n', fecha='2026-10-27', actualizado='2026-10-27 11:00',
+        titulo='Bilbao, barrio a barrio: Vox no pasa del 4,5% en ninguno y Bildu va del 8% al 31%', serie='29n',
+        descripcion='Tras los disturbios del lunes, el voto de la ciudad en las últimas generales: Vox sacó el 3,2%, frente al 12,4% en España. Lo que más separa a los barrios es la renta: el PP va del 6,5% de Bilbao la Vieja al 30% de Abando e Indautxu, donde Bildu se queda en el 8%.',
+        compara='El voto en las generales de 2023 en los barrios y distritos de Bilbao, por sección censal, frente a Bizkaia y España, y su relación con la renta, la edad y el peso de los jóvenes de cada sección.',
+        limites='Los barrios son los de OpenStreetMap, que no tiene barrios para Errekalde ni Basurto-Zorroza: esos dos distritos aparecen enteros. Los barrios con menos de tres secciones no se muestran en el gráfico. Cuatro secciones de 277 no tienen resultado de 2023. Las correlaciones describen secciones censales, no a personas, y no dicen nada de quién participó en los disturbios. El censo anual del INE da la edad en grupos de cinco años, así que se usa el grupo de 20 a 29 años y no el de 18 a 29.',
+        calculo='Porcentajes sobre voto válido (candidaturas más votos en blanco); participación sobre el censo de residentes en España, sin el voto exterior. Correlaciones de Pearson entre las 273 secciones con resultado.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados por mesa de las generales de 2023 y 2019 y de las municipales de 2023'),
+                 ('https://www.ine.es/dynt3/inebase/index.htm?padre=12385', 'INE, Atlas de distribución de renta de los hogares (renta por unidad de consumo por sección)'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=65034', 'INE, Censo anual 2023: población por sexo y edad por sección censal (tabla 65034)'),
+                 ('https://www.openstreetmap.org/', 'OpenStreetMap, límites de barrios de Bilbao (© colaboradores de OpenStreetMap, ODbL)'),
+                 ('https://www.europapress.es/euskadi/noticia-total-19-detenidos-siete-ellos-menores-disturbios-manifestacion-contra-vito-quiles-bilbao-20261026231151.html', 'Europa Press, 19 detenidos, siete de ellos menores, en los disturbios de Bilbao (26-10-2026)'),
+                 ('https://www.europapress.es/euskadi/noticia-detenidas-nueves-personas-incidentes-bilbao-manifestacion-contra-vito-quiles-20261026202840.html', 'Europa Press, detenidas nueve personas en los incidentes de Bilbao (26-10-2026)'),
+                 ('https://www.europapress.es/euskadi/noticia-pradales-cree-intolerable-inaceptable-varios-cientos-radicales-hayan-creado-caos-bilbao-20261026231254.html', 'Europa Press, Pradales: «intolerable e inaceptable» (26-10-2026)'),
+                 ('https://www.europapress.es/euskadi/noticia-alcalde-bilbao-disturbios-no-son-antifascistas-son-autenticos-fascistas-20261026214616.html', 'Europa Press, el alcalde de Bilbao sobre los disturbios (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-feijoo-condena-nuevo-intento-intimidacion-izquierda-violenta-bilbao-garantiza-orden-si-gobierna-20261027073329.html', 'Europa Press, Feijóo condena el «intento de intimidación» en Bilbao (27-10-2026)')],
+        enlaces=[],
+        lugar='Bilbao',
+    ),
+    dict(
         slug='alvise-salf-donde-vota-29n', fecha='2026-10-27',
         foto=dict(src='img/actualidad/fotos/alvise-salf-donde-vota-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un hombre mira el móvil junto a un sobre electoral y, al lado, una calle de bloques nuevos con una urna en la acera: un collage.'),
@@ -2890,6 +2909,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'bilbao-barrios-disturbios-voto-29n': 'Tras los disturbios',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',

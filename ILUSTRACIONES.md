@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (57)
+## Pendientes (58)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-10-27 | [`bilbao-barrios-disturbios-voto-29n`](https://mapaelectoral.es/actualidad/bilbao-barrios-disturbios-voto-29n/) | Bilbao, barrio a barrio: Vox no pasa del 4,5% en ninguno y Bildu va del 8% al 31% | primer gráfico de la pieza |
 | 2026-10-27 | [`serbia-estudiantes-vucic-mapa-distritos`](https://mapaelectoral.es/actualidad/serbia-estudiantes-vucic-mapa-distritos/) | Vučić ganó en los 25 distritos de Serbia en 2023; los estudiantes le han ganado en 18 y en Zaječar el recuento va por 31 votos | gráfico |
 | 2026-10-26 | [`brasil-lula-remontada-mapa-estados`](https://mapaelectoral.es/actualidad/brasil-lula-remontada-mapa-estados/) | Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color | gráfico |
 | 2026-10-23 | [`salario-minimo-provincias-feijoo-29n`](https://mapaelectoral.es/actualidad/salario-minimo-provincias-feijoo-29n/) | Huelva, Almería y Jaén: más de la mitad de sus asalariados cobró en 2024 menos de un salario mínimo al año | gráfico |
