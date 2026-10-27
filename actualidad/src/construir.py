@@ -990,11 +990,11 @@ PIEZAS = [
     ),
     dict(
         slug='ley-nietos-voto-exterior-29n', fecha='2026-10-20',
-        titulo='El Supremo deja sin voto a 163.020 nacionalizados por la ley de nietos: en 2023, el voto exterior ya le dio al PP un escaño del PSOE en Madrid', serie='29n',
-        descripcion='El voto de fuera cambió el último diputado de Madrid por menos de 200 votos de cociente. Para el 29N, el censo de residentes en el extranjero ha crecido un 19%, y más de una cuarta parte del aumento está en Madrid.',
+        titulo='El voto de fuera, el del «pucherazo», le dio un escaño al PP en 2023', serie='29n',
+        descripcion='En 2023 el voto exterior cambió el último diputado de Madrid, del PSOE al PP. Para el 29N, el censo de fuera ha crecido un 19%, el Supremo mantiene sin voto a 163.020 nacionalizados por la ley de nietos y un estudio del CEU estima que los nietos inscritos son unos 250.000.',
         compara='El voto de los residentes en el extranjero (CERA) en las generales de 2023 por provincia frente al voto emitido en España, el reparto del último escaño de Madrid con y sin ese voto, y el censo de residentes en el extranjero de 2023 frente al del 29N.',
         limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. El censo de 2023 es el que figura en los ficheros de Interior y el de 2026 el que publica el INE, que pueden no medir exactamente lo mismo. No hay datos públicos de cuántos de los 163.020 suspendidos hay en cada provincia ni de cómo votarían, así que no se puede calcular a quién afecta la suspensión. Los porcentajes de PSOE incluyen al PSC y a sus federaciones, y los de Sumar todas sus marcas; el PP no incluye a UPN.',
-        actualizado='2026-10-20',
+        actualizado='2026-10-27 09:30',
         correcciones='20-10-2026: el aumento del censo exterior en Madrid (122.370) es el 27,7% del total (441.385), más de una cuarta parte, no «casi un tercio». Además, la lista de fuentes decía «sin voto exterior (CERA)», pero los cálculos sí incluyen el voto exterior, como indican los gráficos y los límites. Se corrige la fuente. Las cifras no cambian. También se corrige la nota de método, que decía «votos a candidaturas»: los porcentajes son sobre voto válido, como indica el gráfico, y la fuente del gráfico de Madrid, que ahora cita el voto CERA.',
         calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
         fuentes=[INTERIOR_CERA,
@@ -1005,7 +1005,12 @@ PIEZAS = [
                  ('https://www.infobae.com/america/agencias/2026/10/11/sanchez-pide-frenar-el-intento-de-atropello-que-impediria-votar-a-nietos-de-exiliados/', 'Infobae (Efe), Sánchez pide frenar el «intento de atropello» (11-10-2026)'),
                  ('https://www.infobae.com/espana/agencias/2026/10/12/vox-celebra-que-el-supremo-le-de-la-razon-con-la-ley-de-nietos-y-que-las-elecciones-se-celebren-sin-fraude/', 'Infobae (Europa Press), Vox celebra que el Supremo le dé la razón (12-10-2026)'),
                  ('https://www.publico.es/politica/1-26-millones-electores-incorporan-censo-29-n.html', 'Público (agencias), Más de 1,26 millones de electores se incorporan al censo (9-10-2026)'),
-                 ('https://doi.org/10.5944/rdp.120.2024.41766', 'Álvarez Vélez y Corres-Illera, La relevancia del voto CERA, Revista de Derecho Político 120 (2024)')],
+                 ('https://doi.org/10.5944/rdp.120.2024.41766', 'Álvarez Vélez y Corres-Illera, La relevancia del voto CERA, Revista de Derecho Político 120 (2024)'),
+                 ('https://efe.com/espana/2026-10-26/jueces-lesion-irreparable-constitucional-ley-de-nietos/', 'Efe, Dos jueces advierten de una lesión «irreparable» ante el fallo del Constitucional por la ley de nietos (26-10-2026)'),
+                 ('https://efe.com/espana/2026-10-26/albares-identificacion-afectados-ley-nietos/', 'Efe, Albares confía en que el miércoles estén identificados los afectados por la ley de nietos (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-hazte-oir-pide-supremo-extienda-suspension-voto-ley-nietos-hijos-beneficiados-20261026190143.html', 'Europa Press, Hazte Oír pide al Supremo que extienda la suspensión a los hijos de los beneficiados (26-10-2026)'),
+                 ('https://www.elindependiente.com/espana/2026/10/26/ley-nietos-suma-250-000-electores-voto-exterior-estudio-ceu-cefas/', 'El Independiente (Europa Press), La ley de nietos suma 250.000 electores al voto exterior, según CEU-CEFAS (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-milei-vuelve-llamar-ladron-corrupto-sanchez-le-acusa-tratar-amanar-elecciones-ley-nietos-20261024160259.html', 'Europa Press, Milei acusa a Sánchez de tratar de amañar las elecciones con la ley de nietos (24-10-2026)')],
         enlaces=[],
         lugar='España',
         foto=dict(src='img/actualidad/fotos/ley-nietos-voto-exterior-29n.jpg', ancho=1280, alto=720, ia=True,
@@ -2686,10 +2691,25 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='alvise-salf-donde-vota-29n', fecha='2026-10-27',
+        slug='israel-elecciones-encuestas-knesset', fecha='2026-10-27', actualizado='2026-10-27 10:00',
+        titulo='Solo una televisión le daba la mayoría a Netanyahu', serie='internacional',
+        descripcion='En las 24 encuestas de las dos últimas semanas, su bloque se quedó en 52,5 escaños de media, ocho y medio por debajo de los 61. Solo las cinco de Canal 14 le daban la mayoría. Y el partido nuevo de Gadi Eisenkot iba por delante del Likud en 16 de ellas.',
+        compara='Los escaños que daban a cada partido y a cada bloque las 24 encuestas publicadas en Israel en las dos semanas anteriores a las elecciones a la Knesset del 27 de octubre de 2026, su evolución semanal desde septiembre y el resultado de 2022.',
+        limites='Son encuestas, no resultados. Se han tomado de la recopilación de Wikipedia, que enlaza cada una, y se han sumado los escaños por partido. El bloque de Netanyahu son los cinco partidos del Gobierno actual (Likud, Sionismo Religioso-Zehut, Otzma Yehudit, Shas y Judaísmo Unido de la Torá); Amcha Yisrael se deja fuera, aunque algunos medios lo incluyen. Un partido por debajo del umbral cuenta como 0 escaños. Canal 14 publicó cinco de las 24 encuestas, por eso se dan las medias con y sin ella.',
+        calculo='Media simple de los escaños de cada partido en las encuestas con fin de trabajo de campo entre el 13 y el 26 de octubre de 2026 (la última, del 23). Bloques: suma de los partidos de cada encuesta. Serie semanal: media de las encuestas de cada semana, de lunes a domingo.',
+        fuentes=[('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election', 'Wikipedia, Opinion polling for the 2026 Israeli legislative election (consultada el 27-10-2026)'),
+                 ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2022_Israeli_legislative_election', 'Wikipedia, Opinion polling for the 2022 Israeli legislative election'),
+                 ('https://en.wikipedia.org/wiki/2022_Israeli_legislative_election', 'Comité Central Electoral de Israel, resultados de 2022 (vía Wikipedia)'),
+                 ('https://www.europapress.es/internacional/noticia-abren-urnas-israel-decisiva-jornada-electoral-20261027064413.html', 'Europa Press, Abren las urnas en Israel en una decisiva jornada electoral (27-10-2026)'),
+                 ('https://www.europapress.es/internacional/noticia-israel-dividido-decide-si-avala-netanyahu-apuesta-cambio-primeras-elecciones-20261026173759.html', 'Europa Press, Un Israel dividido decide si avala a Netanyahu o apuesta por el cambio (26-10-2026)')],
+        enlaces=[],
+        lugar='Israel',
+    ),
+    dict(
+        slug='alvise-salf-donde-vota-29n', fecha='2026-10-27', actualizado='2026-10-27 10:30',
         foto=dict(src='img/actualidad/fotos/alvise-salf-donde-vota-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un hombre mira el móvil junto a un sobre electoral y, al lado, una calle de bloques nuevos con una urna en la acera: un collage.'),
-        titulo='Alvise solo tiene una puerta al Congreso: Madrid, donde le basta el 3% y las encuestas le dan el 2%', serie='29n',
+        titulo='Madrid es la puerta más cercana de Alvise al Congreso: le basta el 3% y las encuestas le dan el 2%', serie='29n',
         descripcion='Con su voto de las europeas habría sacado escaño también en Valencia y Málaga. Su voto es de ciudades dormitorio: le votó el 7,1% en los barrios más jóvenes y el 2,5% en los más envejecidos, con Cártama, Mijas y Roquetas a la cabeza. Se presenta en 47 provincias.',
         compara='El voto a Se Acabó La Fiesta y a Vox en las elecciones europeas de 2024 en las 36.000 secciones censales de España, según la edad media, la renta, el paro, los estudios y los nacidos fuera de cada sección, por tamaño de municipio y por provincia, y su estimación para el 29N con la media de encuestas y el modelo de Mapa Electoral.',
         limites='Las europeas son otro tipo de elección, con menos participación, y SALF se presentó entonces como agrupación de electores. Es una relación entre secciones, no entre personas: no dice quién votó a SALF. La edad media y la renta son del Atlas de distribución de renta del INE; el paro, los estudios y los nacidos fuera, del Censo de 2021. La regresión (mínimos cuadrados ponderados por votos válidos, efectos fijos por provincia, errores agrupados por municipio) describe asociaciones, no causas. Sin el voto desde el extranjero.',
@@ -2705,13 +2725,14 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='pacto-pp-vox-senado-provincias-29n', fecha='2026-10-27',
+        slug='pacto-pp-vox-senado-provincias-29n', fecha='2026-10-27', actualizado='2026-10-27 10:30',
+        correcciones='27-10-2026: la simulación suponía la lista conjunta de PSOE y Sumar en 50 circunscripciones, incluidas las siete islas canarias y sin el País Vasco. Se ha recalculado con las circunscripciones reales de Senado de Progreso (sin Canarias y con el País Vasco). Con las encuestas el resultado no cambia: entre 130 y 135 senadores elegidos para PP y Vox, entre 158 y 163 con los designados. Con los votos de 2023 pasa de 87-104 a 90-107, y la lista única de PP y Vox, de 124 a 127 (de 137 a 135 con encuestas). En Álava, el acuerdo le daría a la derecha un senador con las encuestas, no dos.',
         foto=dict(src='img/actualidad/fotos/pacto-pp-vox-senado-provincias-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un apretón de manos entre una manga azul y otra verde sobre una papeleta rosa del Senado, con el hemiciclo de la Cámara Alta al fondo: un collage.'),
         titulo='PP y Vox pactan el Senado: con las encuestas sumarían entre 158 y 163 senadores, alrededor de los 160 que necesitan para renovar el Constitucional sin el PSOE', serie='29n',
         descripcion='El acuerdo añade entre 8 y 13 senadores elegidos a la derecha. Ocho salen de Valencia y las islas, donde Vox se retira; el resto depende de que los votantes de Vox den sus otros dos votos al PP en Sevilla, Asturias y Álava.',
         compara='Los senadores elegidos de PP y Vox en las 59 circunscripciones del Senado sin pacto, con el acuerdo del 26 de octubre (Vox se retira en seis provincias, presenta un solo candidato en catorce y el PP se retira en tres) y con una lista única, frente a la lista conjunta de PSOE y Frente Amplio, con los votos del Senado de 2023 y con esos votos movidos según la media de encuestas del 25 de octubre de 2026.',
-        limites='Es una simulación, no una previsión. Usa los votos por candidato del Senado de 2023 y, en la versión con encuestas, los mueve con el cambio de cada partido en la media nacional de encuestas, igual en todas las provincias. Supone transferencia completa: los votantes de Vox votan al PP donde Vox se retira, los del PP a Vox donde se retira el PP y los de PSOE y Sumar a la lista conjunta, que se supone en 50 circunscripciones (todas menos Cataluña, el País Vasco, Ceuta y Melilla) aunque va en 47. En las 14 provincias con un solo candidato de Vox se dan tres versiones del voto de sus electores. No dice cuántos senadores serían de Vox dentro de las listas del PP. Los 28 senadores designados de PP y Vox son los actuales y cambiarán con las elecciones autonómicas.',
+        limites='Es una simulación, no una previsión. Usa los votos por candidato del Senado de 2023 y, en la versión con encuestas, los mueve con el cambio de cada partido en la media nacional de encuestas, igual en todas las provincias. Supone transferencia completa: los votantes de Vox votan al PP donde Vox se retira, los del PP a Vox donde se retira el PP y los de PSOE y Sumar a la lista conjunta, en las circunscripciones donde va Senado de Progreso según el registro de la Junta Electoral Central: las 43 provincias de las comunidades salvo Cataluña, Baleares y Canarias, más las islas de Baleares, donde el PSOE va con Més, IU y Sumar. En Canarias, Ceuta y Melilla la cuenta trata a PSOE y Sumar por separado; tratar Ceuta y Melilla como lista conjunta no cambia ningún resultado. En las 14 provincias con un solo candidato de Vox se dan tres versiones del voto de sus electores. No dice cuántos senadores serían de Vox dentro de las listas del PP. Los 28 senadores designados de PP y Vox son los actuales y cambiarán con las elecciones autonómicas.',
         calculo='Votos por candidato: suma de los votos de los candidatos de cada partido en la circunscripción dividida entre el número de candidatos que presentó. Se eligen los candidatos con más votos (cuatro por provincia, tres en Gran Canaria, Tenerife y Mallorca, dos en Ceuta y Melilla y uno en las demás islas), presentando cada partido tantos candidatos como votos tiene el elector. Factores de encuestas: PP 31,7/33,05; PSOE 26,5/31,7; Vox 18,9/12,39; Sumar 6,5/12,31.',
         fuentes=[('https://www.europapress.es/nacional/noticia-pp-vox-esperan-lograr-140-senadores-gracias-pacto-concurrir-senado-20261026185958.html', 'Europa Press, PP y Vox esperan lograr hasta 140 senadores gracias a su pacto (26-10-2026)'),
                  ('https://www.europapress.es/nacional/noticia-abascal-ve-renuncia-vox-presentar-candidaturas-senado-gesto-patriotico-todo-espana-20261026203730.html', 'Europa Press, Abascal ve la renuncia de Vox un «gesto patriótico» (26-10-2026)'),
@@ -2867,12 +2888,34 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='serbia-estudiantes-vucic-mapa-distritos', fecha='2026-10-27',
+        titulo='Vučić ganó en los 25 distritos de Serbia en 2023; los estudiantes le han ganado en 18 y en Zaječar el recuento va por 31 votos', serie='internacional',
+        descripcion='La Lista Estudiantil saca el 53,4% de los votos válidos y la de Aleksandar Vučić, el 39,7%, con el 97,6% de los colegios escrutados. Vučić perdió menos de 100.000 votos frente a 2023: lo que cambió fue que fueron a votar casi medio millón de personas más. Belgrado aporta casi seis de cada diez votos de la ventaja.',
+        compara='Las legislativas anticipadas de Serbia del 25 de octubre de 2026 en los 25 distritos (24 distritos y la ciudad de Belgrado), frente a las legislativas de diciembre de 2023, y la lista del SNS frente a la segunda más votada en todas las legislativas desde 2012.',
+        limites='Los resultados de 2026 son provisionales: faltan 201 de los 8.392 colegios (85 de ellos en el extranjero), así que los votos de cada lista subirán algo. La participación de 2026 se calcula sobre los electores de los colegios ya escrutados. Los totales por distrito no dicen quién cambió su voto ni quién votó por primera vez: son saldos, no trasvases. El mapa no incluye Kosovo (60 colegios y unos 100.000 electores inscritos en Serbia), el voto en el extranjero ni el de las prisiones, que sí están en los totales nacionales. Los porcentajes se calculan sobre los votos válidos y pueden diferir unas décimas de los oficiales de la RIK, que usan todos los votantes.',
+        fuentes=[('https://www.rik.parlament.gov.rs/542645/rezultati/', 'Comisión Electoral de la República de Serbia (RIK), resultados de las legislativas de 2026 por colegio electoral y de 2023 por municipio'),
+                 ('https://en.wikipedia.org/wiki/2022_Serbian_general_election', 'Wikipedia, resultados oficiales de las legislativas de 2012, 2014, 2016, 2020 y 2022 (de la RIK)'),
+                 ('https://www.openstreetmap.org/relation/1677007', 'OpenStreetMap, contornos de los distritos administrativos de Serbia (ODbL), vía polygons.openstreetmap.fr, simplificados'),
+                 ('https://www.elfinanciero.com.mx/mundo/2026/10/26/estudiantes-ganan-elecciones-en-serbia-terminan-con-gobierno-del-conservador-aleksandar-vucic/', 'EFE vía El Financiero, Estudiantes ganan elecciones en Serbia (26-10-2026)'),
+                 ('https://es-us.noticias.yahoo.com/vucic-reconoce-derrota-movimiento-estudiantil-070622339.html', 'Reuters vía Yahoo Noticias, Vucic reconoce su derrota ante el movimiento estudiantil (26-10-2026)'),
+                 ('https://www.eldiario.es/internacional/movimiento-estudiantil-pone-reinado-autoritario-12-anos-vucic-serbia_1_13614161.html', 'elDiario.es, Un movimiento estudiantil pone fin al reinado autoritario de 12 años de Vucic (26-10-2026)')],
+        enlaces=[],
+        lugar='Serbia',
+        foto=dict(src='img/actualidad/fotos/serbia-estudiantes-vucic-mapa-distritos.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Quién ganó en cada distrito de Serbia en las legislativas del 25 de octubre.', fuente='RIK, resultados provisionales por colegio; contornos de OpenStreetMap'),
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'israel-elecciones-encuestas-knesset': 'Israel vota',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
+    'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
@@ -3162,7 +3205,9 @@ def en_catala(out, p):
 
 
 ENCUESTAS_SIGUE = ('<li><a href="../../encuestas/"><span class="kicker">Encuestas</span>'
-                   '<b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b></a></li>')
+                   '<b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b></a></li>'
+                   '<li><a href="../../encuestas/simulador-pactos/"><span class="kicker">Pactos</span>'
+                   '<b>Simulador de pactos del 29N: ¿quién puede gobernar? Decide qué vota cada partido</b></a></li>')
 
 
 def pieza(p, todas):

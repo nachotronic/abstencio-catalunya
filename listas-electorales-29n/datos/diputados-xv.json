@@ -1,0 +1,2890 @@
+{
+"fuente": "https://www.congreso.es/es/opendata/diputados",
+"descargado": "2026-10-27",
+"diputados": [
+{
+"nombre": "Santiago Abascal Conde",
+"circ": "Madrid",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Sofía Acedo Reyes",
+"circ": "Melilla",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Juan José Aizcorbe Torra",
+"circ": "Barcelona",
+"formacion": "VOX",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Mertxe Aizpurua Arzallus",
+"circ": "Gipuzkoa",
+"formacion": "EH Bildu",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Javier Alfonso Cendón",
+"circ": "León",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ana Isabel Alós López",
+"circ": "Huesca",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Cayetana Álvarez de Toledo Peralta-Ramos",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Beatriz Álvarez Fanjul",
+"circ": "Bizkaia",
+"formacion": "PP",
+"alta": "07/08/2023",
+"baja": ""
+},
+{
+"nombre": "Teslem Andala Ubbi",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carlos Aragonés Mendiguchía",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "11/08/2023",
+"baja": ""
+},
+{
+"nombre": "Francisco Aranda Vargas",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Silverio Argüelles García",
+"circ": "Asturias",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Francina Armengol Socias",
+"circ": "Balears (Illes)",
+"formacion": "PSIB-PSOE",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Manuel Arribas Maroto",
+"circ": "Ávila",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ione Belarra Urteaga",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "11/08/2023",
+"baja": ""
+},
+{
+"nombre": "Elías Bendodo Benasayag",
+"circ": "Málaga",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "José Antonio Bermúdez de Castro Fernández",
+"circ": "Salamanca",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Patricia Blanquer Alcaraz",
+"circ": "Alicante/Alacant",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Juan Bravo Baena",
+"circ": "Sevilla",
+"formacion": "PP",
+"alta": "01/08/2023",
+"baja": ""
+},
+{
+"nombre": "Tomás Cabezón Casas",
+"circ": "Soria",
+"formacion": "PP",
+"alta": "31/07/2023",
+"baja": ""
+},
+{
+"nombre": "Eduardo Carazo Hermoso",
+"circ": "Valladolid",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Carmen Castilla Álvarez",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ricardo Chamorro Delmo",
+"circ": "Ciudad Real",
+"formacion": "VOX",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Óscar Clavell López",
+"circ": "Castellón/Castelló",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Manuel Cobo Vega",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Francisco José Conde López",
+"circ": "Lugo",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Dolores Corujo Berriel",
+"circ": "Palmas (Las)",
+"formacion": "PSOE",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Rafaela Crespín Rubio",
+"circ": "Córdoba",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Josep Maria Cruset Domènech",
+"circ": "Tarragona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Soledad Cruz-Guzmán García",
+"circ": "Sevilla",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Félix De las Cuevas Cortés",
+"circ": "Cantabria",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Jaime Miguel De los Santos González",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Rocío De Meer Méndez",
+"circ": "Almería",
+"formacion": "VOX",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Fernando De Rosa Torner",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Luc Andre Diouf Dioh",
+"circ": "Palmas (Las)",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": ""
+},
+{
+"nombre": "Alberto Fabra Part",
+"circ": "Castellón/Castelló",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Antidio Fagúndez Campo",
+"circ": "Zamora",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Luisa Faneca López",
+"circ": "Huelva",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Andrea Fernández Benéitez",
+"circ": "León",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Mercedes Fernández González",
+"circ": "Asturias",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "José María Figaredo Álvarez-Sala",
+"circ": "Asturias",
+"formacion": "VOX",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carlos Javier Floriano Corrales",
+"circ": "Cáceres",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carmen Fúnez de Gregorio",
+"circ": "Ciudad Real",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Concepción Gamarra Ruiz-Clavijo",
+"circ": "Rioja (La)",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Maribel García López",
+"circ": "Badajoz",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Roberto García Morís",
+"circ": "Asturias",
+"formacion": "PSOE",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Elisa Garrido Jiménez",
+"circ": "Rioja (La)",
+"formacion": "PSOE",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Esther Gil de Reboleño Lastortres",
+"circ": "Cádiz",
+"formacion": "SUMAR",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ignacio Gil Lázaro",
+"circ": "Valencia/València",
+"formacion": "VOX",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Marta González Vázquez",
+"circ": "Coruña (A)",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Mirian Guardiola Salmerón",
+"circ": "Murcia",
+"formacion": "PP",
+"alta": "18/09/2023",
+"baja": ""
+},
+{
+"nombre": "Txema Guijarro García",
+"circ": "Alicante/Alacant",
+"formacion": "SUMAR",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Lídia Guinart Moreno",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Sergio Gutiérrez Prieto",
+"circ": "Toledo",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carlos Hernández Quero",
+"circ": "Málaga",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Rafael Antonio Hernando Fraile",
+"circ": "Almería",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Milena Herrera García",
+"circ": "Balears (Illes)",
+"formacion": "PSIB-PSOE",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Pablo Hispán Iglesias de Ussel",
+"circ": "Granada",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Guillermo Hita Téllez",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "11/06/2024",
+"baja": ""
+},
+{
+"nombre": "Belén Hoyo Juliá",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ángel Ibáñez Hernando",
+"circ": "Burgos",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Alberto Ibáñez Mezquita",
+"circ": "Valencia/València",
+"formacion": "SUMAR",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Teresa Jordà i Roura",
+"circ": "Barcelona",
+"formacion": "ERC",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Marc Lamuà Estañol",
+"circ": "Girona",
+"formacion": "PSC-PSOE",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Isaura Leal Fernández",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Mikel Legarda Uriarte",
+"circ": "Araba/Álava",
+"formacion": "EAJ-PNV",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Patxi López Álvarez",
+"circ": "Bizkaia",
+"formacion": "PSE-EE (PSOE)",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ignacio López Cano",
+"circ": "Málaga",
+"formacion": "PSOE",
+"alta": "11/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ángel López Maraver",
+"circ": "Guadalajara",
+"formacion": "VOX",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Adriana Maldonado López",
+"circ": "Navarra",
+"formacion": "PSN-PSOE",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "José Vicente Marí Bosó",
+"circ": "Balears (Illes)",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Guillermo Mariscal Anaya",
+"circ": "Palmas (Las)",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carlos Martín Urriza",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Verónica Martínez Barbero",
+"circ": "Pontevedra",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Lander Martínez Hierro",
+"circ": "Bizkaia",
+"formacion": "SUMAR",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carmen Martínez Ramírez",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Joaquín Martínez Salmerón",
+"circ": "Murcia",
+"formacion": "PSOE",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Luz Martínez Seijo",
+"circ": "Palencia",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Oskar Matute García de Jalón",
+"circ": "Bizkaia",
+"formacion": "EH Bildu",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Valle Mellado Sierra",
+"circ": "Tarragona",
+"formacion": "PSC-PSOE",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Lourdes Méndez Monasterio",
+"circ": "Murcia",
+"formacion": "VOX",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Montse Mínguez García",
+"circ": "Lleida",
+"formacion": "PSC-PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Sandra Moneo Díez",
+"circ": "Burgos",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Vicente Montávez Aguillaume",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "17/09/2024",
+"baja": ""
+},
+{
+"nombre": "Macarena Montesinos de Miguel",
+"circ": "Alicante/Alacant",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Pedro Muñoz Abrines",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ester Muñoz de la Iglesia",
+"circ": "León",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Cristina Narbona Ruiz",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Begoña Nasarre Oliva",
+"circ": "Huesca",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carmen Navarro Lacoba",
+"circ": "Albacete",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Míriam Nogueras i Camero",
+"circ": "Barcelona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Alberto Núñez Feijóo",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "José Enrique Núñez Guijarro",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "30/01/2024",
+"baja": ""
+},
+{
+"nombre": "Jaime Eduardo de Olano Vela",
+"circ": "Lugo",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Patricia Otero Rodríguez",
+"circ": "Lugo",
+"formacion": "PsdeG-PSOE",
+"alta": "12/03/2024",
+"baja": ""
+},
+{
+"nombre": "Esther Peña Camarero",
+"circ": "Burgos",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "María Mercè Perea i Conillas",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Pablo Pérez Coronado",
+"circ": "Segovia",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Álvaro Pérez López",
+"circ": "Coruña (A)",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Gerardo Pisarello Prados",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Óscar Puente Santiago",
+"circ": "Valladolid",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Pedro Puy Fraga",
+"circ": "Pontevedra",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Arnau Ramírez Carner",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "María de las Nieves Ramírez Moreno",
+"circ": "Málaga",
+"formacion": "PSOE",
+"alta": "01/08/2023",
+"baja": ""
+},
+{
+"nombre": "César Joaquín Ramos Esteban",
+"circ": "Cáceres",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Néstor Rego Candamil",
+"circ": "Coruña (A)",
+"formacion": "BNG",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Patricia Rodríguez Calleja",
+"circ": "Ávila",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "María José Rodríguez de Millán Parro",
+"circ": "Madrid",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Alfonso Rodríguez Gómez de Celis",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": ""
+},
+{
+"nombre": "José Antonio Rodríguez Salas",
+"circ": "Granada",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": ""
+},
+{
+"nombre": "Carlos Rojas García",
+"circ": "Granada",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Antonio Román Jasanada",
+"circ": "Guadalajara",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Rafaela Romero Pozo",
+"circ": "Gipuzkoa",
+"formacion": "PSE-EE (PSOE)",
+"alta": "04/08/2023",
+"baja": ""
+},
+{
+"nombre": "María de los Reyes Romero Vilches",
+"circ": "Sevilla",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Susana Ros Martínez",
+"circ": "Castellón/Castelló",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Gabriel Rufián Romero",
+"circ": "Barcelona",
+"formacion": "ERC",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Juan Carlos Ruiz Boix",
+"circ": "Cádiz",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Luis Carlos Sahuquillo García",
+"circ": "Cuenca",
+"formacion": "PSOE",
+"alta": "01/08/2023",
+"baja": ""
+},
+{
+"nombre": "José María Sánchez García",
+"circ": "Alicante/Alacant",
+"formacion": "VOX",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "María del Mar Sánchez Sierra",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Maribel Sánchez Torregrosa",
+"circ": "Almería",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Enrique Fernando Santiago Romero",
+"circ": "Córdoba",
+"formacion": "SUMAR",
+"alta": "07/08/2023",
+"baja": ""
+},
+{
+"nombre": "Sergio Sayas López",
+"circ": "Navarra",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": ""
+},
+{
+"nombre": "Borja Sémper Pascual",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "11/08/2023",
+"baja": ""
+},
+{
+"nombre": "Juan Francisco Serrano Martínez",
+"circ": "Jaén",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Rafael Simancas Simancas",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": ""
+},
+{
+"nombre": "Alejandro Soler Mur",
+"circ": "Alicante/Alacant",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": ""
+},
+{
+"nombre": "Miguel Tellado Filgueira",
+"circ": "Coruña (A)",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Cristina Teniente Sánchez",
+"circ": "Cáceres",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Juan Antonio Valero Morales",
+"circ": "Málaga",
+"formacion": "SUMAR",
+"alta": "03/08/2023",
+"baja": ""
+},
+{
+"nombre": "Maribel Vaquero Montero",
+"circ": "Gipuzkoa",
+"formacion": "EAJ-PNV",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Marta Varela Pazos",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "Ana Belén Vázquez Blanco",
+"circ": "Ourense",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Elvira Velasco Morillo",
+"circ": "Zamora",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Vicenç Vidal Matas",
+"circ": "Balears (Illes)",
+"formacion": "SUMAR",
+"alta": "09/08/2023",
+"baja": ""
+},
+{
+"nombre": "Aina Vidal Sáez",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": ""
+},
+{
+"nombre": "José Zaragoza Alonso",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": ""
+},
+{
+"nombre": "Cristina Abades Martínez",
+"circ": "Lugo",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Luis Ábalos Meco",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "28/01/2026"
+},
+{
+"nombre": "José Luis Aceves Galindo",
+"circ": "Segovia",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Adrio Taracido",
+"circ": "Pontevedra",
+"formacion": "PsdeG-PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Joseba Andoni Agirretxea Urresti",
+"circ": "Gipuzkoa",
+"formacion": "EAJ-PNV",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Cristina Agüera Gago",
+"circ": "Barcelona",
+"formacion": "PP",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Rocío Aguirre Gil de Biedma",
+"circ": "Madrid",
+"formacion": "VOX",
+"alta": "16/01/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Manuel Albares Bueno",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Francisco José Alcaraz Martos",
+"circ": "Jaén",
+"formacion": "VOX",
+"alta": "01/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Pilar Alegría Continente",
+"circ": "Zaragoza",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Alma Alfonso Silvestre",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Pilar Alía Aguado",
+"circ": "Toledo",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Oriol Almirón Ruiz",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "10/09/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Emilia Almodóvar Sánchez",
+"circ": "Cáceres",
+"formacion": "PSOE",
+"alta": "19/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Fèlix Alonso Cantorné",
+"circ": "Tarragona",
+"formacion": "SUMAR",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Alicia Álvarez González",
+"circ": "S/C Tenerife",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Francesc-Marc Álvaro Vidal",
+"circ": "Barcelona",
+"formacion": "ERC",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carmen Andrés Añón",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Asier Antona Gómez",
+"circ": "S/C Tenerife",
+"formacion": "PP",
+"alta": "11/08/2023",
+"baja": "12/09/2024"
+},
+{
+"nombre": "Pablo Antuñano Colina",
+"circ": "Cantabria",
+"formacion": "PSOE",
+"alta": "01/08/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Trinidad Carmen Argota Castro",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Blanca Armario González",
+"circ": "Cádiz",
+"formacion": "VOX",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Alberto Asarta Cuevas",
+"circ": "Castellón/Castelló",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Evarist Aznar Teruel",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "15/01/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Lázaro Azorín Salar",
+"circ": "Alicante/Alacant",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Eloi Badia Casas",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carmelo Barrio Baroja",
+"circ": "Araba/Álava",
+"formacion": "PP",
+"alta": "19/03/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Montserrat Bassa Coll",
+"circ": "Girona",
+"formacion": "ERC",
+"alta": "16/08/2023",
+"baja": "24/09/2024"
+},
+{
+"nombre": "Meritxell Batet Lamaña",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "16/08/2023",
+"baja": "06/09/2023"
+},
+{
+"nombre": "Juan Andrés Bayón Rolo",
+"circ": "Pontevedra",
+"formacion": "PP",
+"alta": "11/06/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Luis María Beamonte Mesa",
+"circ": "Zaragoza",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Enrique Belda Pérez-Pedrero",
+"circ": "Ciudad Real",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Rafael Benigno Belmonte Gómez",
+"circ": "Sevilla",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Gabriel Blanco Arrúe",
+"circ": "Bizkaia",
+"formacion": "PSE-EE (PSOE)",
+"alta": "10/06/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Júlia Boada Danés",
+"circ": "Girona",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Félix Bolaños García",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Elena Bondía Pinós",
+"circ": "Zaragoza",
+"formacion": "PP",
+"alta": "02/09/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Isabel María Borrego Cortés",
+"circ": "Murcia",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Iván Cacho Isla",
+"circ": "Navarra",
+"formacion": "PSN-PSOE",
+"alta": "18/06/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pilar Calvo Gómez",
+"circ": "Barcelona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carmen Calvo Poyato",
+"circ": "Granada",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "13/02/2024"
+},
+{
+"nombre": "Víctor Camino Miñana",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Jorge Campos Asensi",
+"circ": "Balears (Illes)",
+"formacion": "VOX",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Andrea Canelo Matito",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "10/09/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María de las Mercedes Cantalapiedra Álvarez",
+"circ": "Valladolid",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Zaida Cantera de Castro",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "31/05/2024"
+},
+{
+"nombre": "María Eugenia Carballedo Berlanga",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Casares Hontañón",
+"circ": "Cantabria",
+"formacion": "PSOE",
+"alta": "16/08/2023",
+"baja": "29/07/2025"
+},
+{
+"nombre": "Alberto Catalán Higueras",
+"circ": "Navarra",
+"formacion": "UPN",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Antonio Cavacasillas Rodríguez",
+"circ": "Badajoz",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Javier Celaya Brey",
+"circ": "Ceuta",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Blanca Cercas Mena",
+"circ": "Girona",
+"formacion": "PSC-PSOE",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Santos Cerdán León",
+"circ": "Navarra",
+"formacion": "PSN-PSOE",
+"alta": "03/08/2023",
+"baja": "16/06/2025"
+},
+{
+"nombre": "Josep Maria Cervera Pinart",
+"circ": "Girona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Raquel Clemente Muñoz",
+"circ": "Teruel",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ana Cobo Carmona",
+"circ": "Jaén",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Noelia Cobo Pérez",
+"circ": "Cantabria",
+"formacion": "PSOE",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Rafael Cofiño Fernández",
+"circ": "Asturias",
+"formacion": "SUMAR",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Agustín Conde Bajén",
+"circ": "Toledo",
+"formacion": "PP",
+"alta": "01/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ignasi Conesa Coma",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "19/09/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Mario Cortés Carballo",
+"circ": "Málaga",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Gabriel Cruz Santana",
+"circ": "Huelva",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Cuesta Rodríguez",
+"circ": "Segovia",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Raúl Cuevas Larrosa",
+"circ": "Zaragoza",
+"formacion": "PP",
+"alta": "17/12/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Javier De Andrés Guerra",
+"circ": "Araba/Álava",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "14/03/2024"
+},
+{
+"nombre": "Olvido De la Rosa Baena",
+"circ": "Granada",
+"formacion": "PSOE",
+"alta": "20/02/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Llanos De Luna Tobarra",
+"circ": "Barcelona",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Luisa Del Moral Leal",
+"circ": "Jaén",
+"formacion": "PP",
+"alta": "01/08/2023",
+"baja": "28/12/2023"
+},
+{
+"nombre": "Emilio Jesús Del Valle Rodríguez",
+"circ": "Cantabria",
+"formacion": "VOX",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Celso Luis Delgado Arce",
+"circ": "Ourense",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Jimena Delgado-Taramona Hernández",
+"circ": "Palmas (Las)",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Raúl Díaz Marín",
+"circ": "Rioja (La)",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Yolanda Díaz Pérez",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Íñigo Errejón Galván",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "14/08/2023",
+"baja": "24/10/2024"
+},
+{
+"nombre": "Aitor Esteban Bravo",
+"circ": "Bizkaia",
+"formacion": "EAJ-PNV",
+"alta": "16/08/2023",
+"baja": "01/04/2025"
+},
+{
+"nombre": "Etna Estrems Fayos",
+"circ": "Girona",
+"formacion": "ERC",
+"alta": "08/10/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Fernández Hernández",
+"circ": "Zaragoza",
+"formacion": "VOX",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Sandra Fernández Herranz",
+"circ": "Balears (Illes)",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "11/07/2025"
+},
+{
+"nombre": "Paula Fernández Pena",
+"circ": "Pontevedra",
+"formacion": "PsdeG-PSOE",
+"alta": "09/04/2024",
+"baja": "07/02/2025"
+},
+{
+"nombre": "Tomás Fernández Ríos",
+"circ": "Huelva",
+"formacion": "VOX",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carlos Flores Juberías",
+"circ": "Valencia/València",
+"formacion": "VOX",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Javier José Folch Blanc",
+"circ": "Huesca",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Silvia Franco González",
+"circ": "León",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Marije Fullaondo la Cruz",
+"circ": "Bizkaia",
+"formacion": "EH Bildu",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Ignacio Gallardo Barrena",
+"circ": "Cádiz",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carlos García Adanero",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "11/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Begoña García Bernal",
+"circ": "Cáceres",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "13/12/2023"
+},
+{
+"nombre": "María Montserrat García Chavarría",
+"circ": "Coruña (A)",
+"formacion": "PsdeG-PSOE",
+"alta": "23/04/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Manuel García Félix",
+"circ": "Huelva",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "David García Gomis",
+"circ": "Alicante/Alacant",
+"formacion": "VOX",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Luisa García Gurrutxaga",
+"circ": "Gipuzkoa",
+"formacion": "PSE-EE (PSOE)",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Cristóbal Garre Murcia",
+"circ": "Málaga",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Irene Garrido Valenzuela",
+"circ": "Pontevedra",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Isidre Gavin i Valls",
+"circ": "Lleida",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carlos Gil Santiago",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "09/01/2026"
+},
+{
+"nombre": "José Ramón Gómez Besteiro",
+"circ": "Lugo",
+"formacion": "PsdeG-PSOE",
+"alta": "08/08/2023",
+"baja": "01/03/2024"
+},
+{
+"nombre": "Héctor Gómez Hernández",
+"circ": "S/C Tenerife",
+"formacion": "PSOE",
+"alta": "16/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Luis Antonio Gómez Piña",
+"circ": "Pontevedra",
+"formacion": "PsdeG-PSOE",
+"alta": "11/02/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María del Mar González Bella",
+"circ": "Zaragoza",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "13/12/2024"
+},
+{
+"nombre": "Mercedes González Fernández",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": "17/09/2024"
+},
+{
+"nombre": "Juan Antonio González Gracia",
+"circ": "Badajoz",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ana González Herdaro",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "05/02/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Nahuel González López",
+"circ": "Valencia/València",
+"formacion": "SUMAR",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Esteban González Pons",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "01/07/2024"
+},
+{
+"nombre": "Jacobo González-Robatto Perote",
+"circ": "Granada",
+"formacion": "VOX",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Marta Gracia Blanco",
+"circ": "Zaragoza",
+"formacion": "PSOE",
+"alta": "16/01/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Fernando Grande-Marlaska Gómez",
+"circ": "Cádiz",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Inés Granollers Cunillera",
+"circ": "Lleida",
+"formacion": "ERC",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Sonia Guerra López",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": "27/08/2024"
+},
+{
+"nombre": "María Guijarro Ceballos",
+"circ": "Bizkaia",
+"formacion": "PSE-EE (PSOE)",
+"alta": "04/08/2023",
+"baja": "04/06/2025"
+},
+{
+"nombre": "Víctor Gutiérrez Santiago",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "05/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Antonio Hernando Vera",
+"circ": "Almería",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": "28/11/2023"
+},
+{
+"nombre": "José Alberto Herrero Bono",
+"circ": "Teruel",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ignacio Hoces Íñiguez",
+"circ": "Badajoz",
+"formacion": "VOX",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Luis Huguet Tous",
+"circ": "Tarragona",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "07/06/2024"
+},
+{
+"nombre": "Miquel Iceta i Llorens",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "08/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Isabel Iniesta Egido",
+"circ": "Albacete",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Jon Iñarritu García",
+"circ": "Gipuzkoa",
+"formacion": "EH Bildu",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Hana Jalloul Muro",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "05/12/2023",
+"baja": "21/06/2024"
+},
+{
+"nombre": "Juan Carlos Jerez Antequera",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Beatriz Jiménez Linuesa",
+"circ": "Cuenca",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Irene Jódar Pérez",
+"circ": "Murcia",
+"formacion": "PSOE",
+"alta": "09/09/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Manuel Lago Peñas",
+"circ": "Coruña (A)",
+"formacion": "SUMAR",
+"alta": "06/02/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Adriana Lastra Fernández",
+"circ": "Asturias",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": "16/07/2024"
+},
+{
+"nombre": "Laura María Lima García",
+"circ": "S/C Tenerife",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Esther Llamazares Domingo",
+"circ": "Asturias",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Teresa Llorens Carbonell",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": "03/09/2024"
+},
+{
+"nombre": "Marta Lois González",
+"circ": "Coruña (A)",
+"formacion": "SUMAR",
+"alta": "14/08/2023",
+"baja": "01/02/2024"
+},
+{
+"nombre": "Óscar López Águeda",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "11/08/2023",
+"baja": "01/12/2023"
+},
+{
+"nombre": "Candela López Tagliafico",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "30/01/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Cristina López Zamora",
+"circ": "Ciudad Real",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Macarena Lorente Anaya",
+"circ": "Cádiz",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Juan Antonio Lorenzo Cazorla",
+"circ": "Almería",
+"formacion": "PSOE",
+"alta": "28/11/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Losada Fernández",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "28/11/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Francisco Lucas Ayala",
+"circ": "Murcia",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "02/09/2025"
+},
+{
+"nombre": "Alfonso Carlos Macías Gata",
+"circ": "Badajoz",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Marta Madrenas i Mir",
+"circ": "Girona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Bartolomé Madrid Olmo",
+"circ": "Córdoba",
+"formacion": "PP",
+"alta": "11/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Milagros Marcos Ortega",
+"circ": "Palencia",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Inmaculada Marín Aparicio",
+"circ": "Cádiz",
+"formacion": "PP",
+"alta": "09/06/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Luis Alberto Marín González",
+"circ": "Murcia",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "14/09/2023"
+},
+{
+"nombre": "Manuel Mariscal Zabala",
+"circ": "Toledo",
+"formacion": "VOX",
+"alta": "11/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Amador Marqués Atés",
+"circ": "Lleida",
+"formacion": "PSC-PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Nacho Martín Blanco",
+"circ": "Barcelona",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Samuel Martín García",
+"circ": "Salamanca",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Andreu Martín Martínez",
+"circ": "Tarragona",
+"formacion": "PSC-PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Margarita Martín Rodríguez",
+"circ": "Ourense",
+"formacion": "PsdeG-PSOE",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Antonio Martínez Gómez",
+"circ": "Albacete",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ana Martínez Labella",
+"circ": "Almería",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Sergio Carlos Matos Castro",
+"circ": "S/C Tenerife",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "05/12/2024"
+},
+{
+"nombre": "Alberto Mayoral de Lamo",
+"circ": "Córdoba",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Jesús Mayoral Pérez",
+"circ": "Toledo",
+"formacion": "PSOE",
+"alta": "19/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carina Mejías Sánchez",
+"circ": "Barcelona",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Joaquín Melgarejo Moreno",
+"circ": "Alicante/Alacant",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pepe Mercadal Baquero",
+"circ": "Balears (Illes)",
+"formacion": "PSIB-PSOE",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Javier Merino Martínez",
+"circ": "Rioja (La)",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Joan Mesquida Mayans",
+"circ": "Balears (Illes)",
+"formacion": "PP",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Àgueda Micó Micó",
+"circ": "Valencia/València",
+"formacion": "SUMAR",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Miñones Conde",
+"circ": "Coruña (A)",
+"formacion": "PsdeG-PSOE",
+"alta": "14/08/2023",
+"baja": "09/04/2024"
+},
+{
+"nombre": "Ainhoa Molina León",
+"circ": "S/C Tenerife",
+"formacion": "PP",
+"alta": "17/09/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Jesús Montero Cuadrado",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "16/08/2023",
+"baja": "11/06/2026"
+},
+{
+"nombre": "Tristana María Moraleja Gómez",
+"circ": "Coruña (A)",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Álvaro Morales Álvarez",
+"circ": "Burgos",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Diana Morant Ripoll",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "14/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Cristina Moreno Borrás",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "04/07/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Mª Isabel Moreno Fernández",
+"circ": "Cádiz",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Jesús Moro Almaraz",
+"circ": "Salamanca",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Aurora Nacarino-Brabo Jiménez",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Navarro López",
+"circ": "Zaragoza",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "01/09/2026"
+},
+{
+"nombre": "Javier Noriega Gómez",
+"circ": "Cantabria",
+"formacion": "PP",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Noelia Núñez González",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "24/07/2025"
+},
+{
+"nombre": "Viviane Ogou i Corbi",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "11/02/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Francisco Javier Ortega Smith-Molina",
+"circ": "Madrid",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Mikel Otero Gabirondo",
+"circ": "Araba/Álava",
+"formacion": "EH Bildu",
+"alta": "18/02/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Mercedes Otero García",
+"circ": "Asturias",
+"formacion": "PSOE",
+"alta": "22/07/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Brígida Pachón Martín",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "11/06/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Josep Pagès i Massó",
+"circ": "Barcelona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/09/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Héctor Palencia Rubio",
+"circ": "Ávila",
+"formacion": "PP",
+"alta": "31/07/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Miguel Ángel Paniagua Núñez",
+"circ": "Palencia",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Josep Paré Aregall",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "09/01/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Julia Parra Aparicio",
+"circ": "Alicante/Alacant",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Agustín Parra Gallego",
+"circ": "Barcelona",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Sandra Pascual Rocamora",
+"circ": "Alicante/Alacant",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ana María Pastor Julián",
+"circ": "Pontevedra",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "31/05/2024"
+},
+{
+"nombre": "Juan Luis Pedreño Molina",
+"circ": "Murcia",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Isabel María Pérez Ortiz",
+"circ": "Málaga",
+"formacion": "PSOE",
+"alta": "01/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Daniel Pérez Osma",
+"circ": "Cuenca",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Isabel Gema Pérez Recuerda",
+"circ": "Málaga",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Gala Pin Ferrando",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": "10/02/2025"
+},
+{
+"nombre": "Luis Planas Puchades",
+"circ": "Córdoba",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "Inés Plaza García",
+"circ": "Almería",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Araceli Poblador Pacheco",
+"circ": "Alicante/Alacant",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Modesto Pose Mesura",
+"circ": "Pontevedra",
+"formacion": "PsdeG-PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Isabel Pozueta Fernández",
+"circ": "Navarra",
+"formacion": "EH Bildu",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Isabel Prieto Serrano",
+"circ": "Córdoba",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Jorge Pueyo Sanz",
+"circ": "Zaragoza",
+"formacion": "SUMAR",
+"alta": "09/08/2023",
+"baja": "30/01/2026"
+},
+{
+"nombre": "Eduard Pujol Bonell",
+"circ": "Barcelona",
+"formacion": "JxCAT-JUNTS",
+"alta": "10/08/2023",
+"baja": "25/07/2024"
+},
+{
+"nombre": "Rosa Quintana Carballo",
+"circ": "Ourense",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Miguel Ángel Quintanilla Navarro",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Jonay Quintero Hernández",
+"circ": "S/C Tenerife",
+"formacion": "PSOE",
+"alta": "10/12/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Artemi Rallo Lombarte",
+"circ": "Castellón/Castelló",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Óscar Ramajo Prada",
+"circ": "Zamora",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Ramírez del Río",
+"circ": "Córdoba",
+"formacion": "VOX",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Lourdes Ramírez Martín",
+"circ": "Granada",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Alda Recas Martín",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "29/10/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Gonzalo Redondo Cárdenas",
+"circ": "Ciudad Real",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "David Regades Fernández",
+"circ": "Pontevedra",
+"formacion": "PsdeG-PSOE",
+"alta": "07/08/2023",
+"baja": "03/04/2024"
+},
+{
+"nombre": "Nerea Renteria Lasanta",
+"circ": "Bizkaia",
+"formacion": "EAJ-PNV",
+"alta": "08/04/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Juan Diego Requena Ruiz",
+"circ": "Jaén",
+"formacion": "PP",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Luis Alfonso Rey de las Heras",
+"circ": "Soria",
+"formacion": "PSOE",
+"alta": "01/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Esperanza Reynal Reillo",
+"circ": "Valencia/València",
+"formacion": "PP",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Teresa Ribera Rodríguez",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "16/08/2023",
+"baja": "01/12/2023"
+},
+{
+"nombre": "Engracia Rivera Arias",
+"circ": "Sevilla",
+"formacion": "SUMAR",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Marta María Rivera de la Cruz",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "14/08/2023",
+"baja": "19/01/2024"
+},
+{
+"nombre": "Caridad Rives Arcayna",
+"circ": "Murcia",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Margarita Robles Fernández",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "01/12/2023"
+},
+{
+"nombre": "Joaquín Robles López",
+"circ": "Murcia",
+"formacion": "VOX",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Andrés Alberto Rodríguez Almeida",
+"circ": "Palmas (Las)",
+"formacion": "VOX",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Isabel Rodríguez García",
+"circ": "Ciudad Real",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/12/2023"
+},
+{
+"nombre": "María Elvira Rodríguez Herrer",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "02/09/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Javier Rodríguez Palacios",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "05/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Santi Rodríguez Serra",
+"circ": "Barcelona",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Esther Rodríguez Suárez",
+"circ": "S/C Tenerife",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Juan Antonio Rojas Manrique",
+"circ": "S/C Tenerife",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Alberto Rojo Blas",
+"circ": "Guadalajara",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Ignacio Romaní Cantera",
+"circ": "Cádiz",
+"formacion": "PP",
+"alta": "16/08/2023",
+"baja": "08/06/2026"
+},
+{
+"nombre": "Patricia Rueda Perelló",
+"circ": "Málaga",
+"formacion": "VOX",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Víctor Javier Ruiz de Diego",
+"circ": "Zaragoza",
+"formacion": "PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Iñaki Ruiz de Pinedo Undiano",
+"circ": "Araba/Álava",
+"formacion": "EH Bildu",
+"alta": "14/08/2023",
+"baja": "14/02/2025"
+},
+{
+"nombre": "María de la Cabeza Ruiz Solás",
+"circ": "Madrid",
+"formacion": "VOX",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pablo Sáez Alonso-Muñumer",
+"circ": "Valladolid",
+"formacion": "VOX",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Emilio Sáez Cruz",
+"circ": "Albacete",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Idoia Sagastizabal Unzetabarrenetxea",
+"circ": "Bizkaia",
+"formacion": "EAJ-PNV",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Sainz Martín",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "25/06/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Francisco José Salazar Rodríguez",
+"circ": "Sevilla",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "28/11/2023"
+},
+{
+"nombre": "Jordi Salvador i Duch",
+"circ": "Tarragona",
+"formacion": "ERC",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Carmen Sánchez Díaz",
+"circ": "Cádiz",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Raquel Sánchez Jiménez",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "03/08/2023",
+"baja": "28/12/2023"
+},
+{
+"nombre": "Carlos Alberto Sánchez Ojeda",
+"circ": "Palmas (Las)",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "César Sánchez Pérez",
+"circ": "Alicante/Alacant",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pedro Sánchez Pérez-Castejón",
+"circ": "Madrid",
+"formacion": "PSOE",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Javier Sánchez Serna",
+"circ": "Murcia",
+"formacion": "SUMAR",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Herminio Rufino Sancho Íñiguez",
+"circ": "Teruel",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ada Santana Aguilera",
+"circ": "Palmas (Las)",
+"formacion": "PSOE",
+"alta": "07/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Noemí Santana Perera",
+"circ": "Palmas (Las)",
+"formacion": "SUMAR",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Agustín Santos Maraver",
+"circ": "Madrid",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Luisa Sanz Martínez",
+"circ": "Valladolid",
+"formacion": "PSOE",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Vicent Manuel Sarrià Morell",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Miguel Ángel Sastre Uyá",
+"circ": "Cádiz",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Daniel Senderos Oraá",
+"circ": "Araba/Álava",
+"formacion": "PSE-EE (PSOE)",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "David Serrada Pariente",
+"circ": "Salamanca",
+"formacion": "PSOE",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Francisco Sierra Caballero",
+"circ": "Sevilla",
+"formacion": "SUMAR",
+"alta": "14/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carlos Simarro Vicens",
+"circ": "Balears (Illes)",
+"formacion": "PP",
+"alta": "21/07/2025",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Alba Soldevilla Novials",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "12/12/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Susana Sumelzo Jordán",
+"circ": "Zaragoza",
+"formacion": "PSOE",
+"alta": "01/08/2023",
+"baja": "11/01/2024"
+},
+{
+"nombre": "Obdulia Taboadela Álvarez",
+"circ": "Coruña (A)",
+"formacion": "PsdeG-PSOE",
+"alta": "11/08/2023",
+"baja": "11/09/2026"
+},
+{
+"nombre": "Diego Taibo Monelos",
+"circ": "Coruña (A)",
+"formacion": "PsdeG-PSOE",
+"alta": "15/09/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ricardo Tarno Blanco",
+"circ": "Sevilla",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Milagros Tolón Jaime",
+"circ": "Toledo",
+"formacion": "PSOE",
+"alta": "08/08/2023",
+"baja": "13/12/2023"
+},
+{
+"nombre": "Violante Tomás Olivares",
+"circ": "Murcia",
+"formacion": "PP",
+"alta": "04/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María Torres Tejada",
+"circ": "Jaén",
+"formacion": "PP",
+"alta": "09/01/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Carla Toscano de Balbín",
+"circ": "Madrid",
+"formacion": "VOX",
+"alta": "14/08/2023",
+"baja": "11/01/2024"
+},
+{
+"nombre": "Marta Trenzano Rubio",
+"circ": "Valencia/València",
+"formacion": "PSOE",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Edurne Uriarte Bengoechea",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "30/01/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Cristina Valido García",
+"circ": "S/C Tenerife",
+"formacion": "CCa",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pilar Vallugera Balañà",
+"circ": "Barcelona",
+"formacion": "ERC",
+"alta": "10/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "María del Mar Vázquez Jiménez",
+"circ": "Málaga",
+"formacion": "PP",
+"alta": "03/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Pablo Vázquez Vega",
+"circ": "Madrid",
+"formacion": "PP",
+"alta": "08/08/2023",
+"baja": "19/01/2024"
+},
+{
+"nombre": "María Elisa Vedrina Conesa",
+"circ": "Tarragona",
+"formacion": "PP",
+"alta": "11/06/2024",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Martina Velarde Gómez",
+"circ": "Granada",
+"formacion": "SUMAR",
+"alta": "08/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "José Manuel Velasco Retamosa",
+"circ": "Toledo",
+"formacion": "PP",
+"alta": "09/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Bella Verano Domínguez",
+"circ": "Huelva",
+"formacion": "PP",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Ferran Verdejo Vicente",
+"circ": "Barcelona",
+"formacion": "PSC-PSOE",
+"alta": "02/08/2023",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Laura Vergara Román",
+"circ": "Zaragoza",
+"formacion": "SUMAR",
+"alta": "10/02/2026",
+"baja": "06/10/2026"
+},
+{
+"nombre": "Lilith Verstrynge Revuelta",
+"circ": "Barcelona",
+"formacion": "SUMAR",
+"alta": "16/08/2023",
+"baja": "26/01/2024"
+}
+]
+}

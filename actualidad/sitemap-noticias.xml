@@ -49,11 +49,19 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/israel-elecciones-encuestas-knesset/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-27</news:publication_date>
+      <news:title>Solo una televisión le daba la mayoría a Netanyahu</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/alvise-salf-donde-vota-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-27</news:publication_date>
-      <news:title>Alvise solo tiene una puerta al Congreso: Madrid, donde le basta el 3% y las encuestas le dan el 2%</news:title>
+      <news:title>Madrid es la puerta más cercana de Alvise al Congreso: le basta el 3% y las encuestas le dan el 2%</news:title>
     </news:news>
   </url>
   <url>
@@ -110,6 +118,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-26</news:publication_date>
       <news:title>Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/serbia-estudiantes-vucic-mapa-distritos/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-27</news:publication_date>
+      <news:title>Vučić ganó en los 25 distritos de Serbia en 2023; los estudiantes le han ganado en 18 y en Zaječar el recuento va por 31 votos</news:title>
     </news:news>
   </url>
 </urlset>

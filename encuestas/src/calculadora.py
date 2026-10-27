@@ -73,7 +73,7 @@ def genera(m):
   <div class="cab"><b>Voto en toda España</b><button type="button" id="reset">Volver a la media de encuestas</button></div>
   <div id="sliders"></div>
   <p class="suma" id="suma"></p>
-  <button type="button" id="compartir" class="compartir">Copiar enlace con mi reparto</button>
+  <button type="button" id="compartir" class="compartir">Copiar enlace con mi reparto</button> <a class="compartir" id="a-pactos" href="../simulador-pactos/">Probar pactos con estos escaños</a>
 </div>
 </section>
 
@@ -88,7 +88,7 @@ def genera(m):
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
 <p class="src">Reglas: ley D'Hondt y barrera del 3 % de los votos válidos en cada circunscripción (artículos 162 y 163 de la LOREG), con los diputados de cada provincia para 2026. No incluye el voto exterior por separado ni el Senado. Datos de partida: escenario central del modelo de Mapa Electoral del {actual}.</p>
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../provincias.html"><span class="kicker">Modelo</span><b>Encuestas por provincias: escaños en cada provincia</b></a></li><li><a href="../../actualidad/precio-del-escano-29n/"><span class="kicker">Sistema electoral</span><b>El precio de un escaño en cada provincia</b></a></li><li><a href="../../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../simulador-pactos/"><span class="kicker">Simulador</span><b>¿Quién suma 176? Haz tú los pactos del 29N</b></a></li><li><a href="../provincias.html"><span class="kicker">Modelo</span><b>Encuestas por provincias: escaños en cada provincia</b></a></li><li><a href="../../actualidad/precio-del-escano-29n/"><span class="kicker">Sistema electoral</span><b>El precio de un escaño en cada provincia</b></a></li><li><a href="../../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
     estilos = m.ESTILOS.replace('</style>', CSS + '</style>')
@@ -115,7 +115,7 @@ CSS = """
 .bloques div{display:flex;justify-content:space-between;gap:10px}
 .bloques .si b{color:var(--acc)}
 .mandos .cab{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:.4rem;flex-wrap:wrap}
-.mandos button,.compartir{font:600 .85rem var(--ui);border:1px solid var(--rule);background:transparent;color:var(--fg);border-radius:6px;padding:6px 10px;cursor:pointer}
+.mandos button,.compartir{display:inline-block;text-decoration:none;font:600 .85rem var(--ui);border:1px solid var(--rule);background:transparent;color:var(--fg);border-radius:6px;padding:6px 10px;cursor:pointer}
 .mandos button:hover{border-color:var(--fg)}
 .sl{display:grid;grid-template-columns:7.5em 1fr 4.6em;align-items:center;gap:10px;margin:4px 0}
 .sl label{font-weight:600;font-size:.92rem;display:flex;align-items:center;gap:6px}
@@ -203,6 +203,7 @@ function pinta(){
     const sq=[];D.orden.forEach(k=>{for(let i=0;i<(r[k]||0);i++)sq.push(el('i',{title:P[k].n,style:'background:'+col(k)}))});
     return el('div',{className:'pv'},el('a',{href:url},nom),el('span',{className:'n'},' · '+esc),cambia?el('span',{className:'cm',title:'Cambia respecto a la media'}):'',el('div',{className:'esc'},...sq),
       el('div',{className:'n'},D.orden.filter(k=>r[k]).sort((a,b)=>r[b]-r[a]).map(k=>P[k].n+' '+r[k]).join(' · ')))}));
+  document.getElementById('a-pactos').href='../simulador-pactos/#e='+D.orden.filter(k=>total[k]).map(k=>encodeURIComponent(k)+'.'+total[k]).join(',');
   try{history.replaceState(null,'',Object.keys(nat).some(k=>Math.abs(nat[k]-base[k])>0.05)?'#'+Object.keys(nat).filter(k=>Math.abs(nat[k]-base[k])>0.05).map(k=>encodeURIComponent(k)+'='+nat[k]).join('&'):location.pathname)}catch(e){}
 }
 document.getElementById('reset').onclick=()=>{nat={...base};pinta()};
