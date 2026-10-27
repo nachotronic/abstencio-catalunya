@@ -27,7 +27,7 @@ VIEJOS = re.compile(r'[ \t]*<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*>
 def paginas():
     yield from sorted(ROOT.glob('*.html'))
     for d in ('29n', 'abstencion', 'atlas', 'actualidad', 'elecciones', 'municipio', 'temas', 'generales',
-              'generales-2026', 'encuestas', 'previsiones', 'insertar'):
+              'generales-2026', 'encuestas', 'listas-electorales-29n', 'previsiones', 'insertar'):
         if (ROOT / d).is_dir():
             yield from sorted((ROOT / d).rglob('*.html'))
 
