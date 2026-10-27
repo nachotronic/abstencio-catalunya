@@ -277,12 +277,12 @@ const S = {
   barras(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
-    const top = 620, bottom = 1300, n = s.valores.length, gap = 14, bw = (W - 2 * X - gap * (n - 1)) / n;
+    const top = 620, bottom = 1300, n = s.valores.length, gap = 14, bw = (W - 2 * X - gap * (n - 1)) / n, marca = s.marcar || [0, n - 1];
     s.valores.forEach((v, i) => {
       const k = ease((t - 0.5 - i * 0.12) / 0.7), x = X + i * (bw + gap), h = (bottom - top) * (v - s.min) / (s.max - s.min) * k;
       const c = i === 0 ? col(s.colorIni) : i === n - 1 ? col(s.colorFin) : '#4a4f6e';
       ctx.fillStyle = c; rrect(x, bottom - h, bw, h, 8);
-      if (marca.includes(i)) text((v * k).toFixed(1).replace('.', ','), x + bw / 2, bottom - h - 22, '800 48px ' + F.display, c, 'center', k);
+      if (marca.includes(i)) text(s.enteros ? miles(v * k) : (v * k).toFixed(1).replace('.', ','), x + bw / 2, bottom - h - 22, '800 48px ' + F.display, c, 'center', k);
       text(String(i + 1), x + bw / 2, bottom + 44, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3));
     });
     text(s.izq, X, bottom + 100, '500 28px ' + F.mono, col(s.colorIni), 'left', ease((t - 0.6) / 0.3));
@@ -319,7 +319,7 @@ const S = {
       [[a, 0.45, s.claves[0]], [b, 1, s.claves[1]]].forEach(([v, al, cl], j) => {
         const yy = y + j * 64, w = lw * v / s.max * k;
         ctx.globalAlpha = al * k; ctx.fillStyle = col(c); rrect(X + lab, yy, w, 52, 8); ctx.globalAlpha = 1;
-        text(v.toFixed(1).replace('.', ',') + ' %', X + lab + w + 14, yy + 38, '700 32px ' + F.mono, C.fg, 'left', k);
+        text((s.enteros ? miles(v * k) : v.toFixed(1).replace('.', ',')) + (s.unidad ?? ' %'), X + lab + w + 14, yy + 38, '700 32px ' + F.mono, C.fg, 'left', k);
         if (i === 0) text(cl, X + lab + 14, yy + 36, '600 26px ' + F.mono, '#fff', 'left', k);
       });
     });
@@ -333,7 +333,7 @@ const S = {
       const y = top + i * rowH, k = ease((t - 0.5 - i * 0.15) / 0.6), w = lw * v / s.max * k;
       text(nm, X, y + 56, '800 50px ' + F.display, col(c), 'left', k);
       ctx.fillStyle = col(c); rrect(X + lab, y + 8, w, 64, 10);
-      text((v * k).toFixed(1).replace('.', ',') + ' %', X + lab + w + 16, y + 56, '800 46px ' + F.display, C.fg, 'left', k);
+      text((s.signo ? '+' : '') + (s.enteros ? miles(v * k) : (v * k).toFixed(1).replace('.', ',')) + (s.unidad ?? ' %'), X + lab + w + 16, y + 56, '800 46px ' + F.display, C.fg, 'left', k);
     });
   },
   // Horquillas por fila sobre un eje con una línea de referencia: s.filas = [[nombre, bajo, alto]], s.eje = [min, max], s.linea
@@ -369,6 +369,71 @@ const S = {
       text(casa, X, y, '700 40px ' + F.display, C.fg, 'left', k);
       if (medio) text(medio, X, y + 42, '500 26px ' + F.mono, C.muted, 'left', k);
       vs.forEach((v, j) => text(v.toFixed(1).replace('.', ','), x0 + (j + 0.5) * cw, y + 10, '800 52px ' + F.display, col(s.cols[j][1]), 'center', k));
+    });
+  },
+  // Mapa de puntos sobre provincias en SVG: s.lienzo = [ancho, alto], s.prov = [trazados SVG], s.pts = [[x, y, color, valor]]
+  puntos(s, t) {
+    pop(s.titulo, X, 300, 76, 88, 0, t);
+    if (s.sub) text(s.sub, X, 450, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const [lw, lh] = s.lienzo, sc = Math.min((W - 40) / lw, 860 / lh) * (1 + 0.04 * t / s.dur), ox = (W - lw * sc) / 2, oy = 520 + (860 - lh * sc) / 2;
+    ctx.save(); ctx.translate(ox, oy); ctx.scale(sc, sc);
+    ctx.fillStyle = '#20243a'; ctx.strokeStyle = '#3a3f58'; ctx.lineWidth = 0.6 / sc * 2;
+    if (!s._p) s._p = s.prov.map(d => new Path2D(d));
+    s._p.forEach((p, i) => {
+      const c = s.relleno && s.relleno[i], k = c ? ease((t - 0.4 - (s.orden ? s.orden[i] : 0) * (s.revelar || 1.6)) / 0.3) : 0;
+      ctx.fillStyle = '#20243a'; ctx.fill(p);
+      if (k > 0) { ctx.globalAlpha = k; ctx.fillStyle = col(c); ctx.fill(p); ctx.globalAlpha = 1; }
+      ctx.stroke(p);
+    });
+    const vmax = Math.max(...s.pts.map(p => p[3]));
+    s.pts.forEach(([x, y, c, v], i) => {
+      const k = ease((t - 0.4 - (i % 97) / 97 * (s.revelar || 1.6)) / 0.3);
+      if (k <= 0) return;
+      ctx.globalAlpha = 0.75 * k; ctx.fillStyle = col(c);
+      ctx.beginPath(); ctx.arc(x, y, (1.2 + 5 * Math.sqrt(v / vmax)) * back(k), 0, 7); ctx.fill();
+    });
+    ctx.restore(); ctx.globalAlpha = 1;
+    (s.leyenda || []).forEach(([c, l], j) => {
+      const dos = s.leyenda.length > 4, a = ease((t - 0.8 - j * 0.1) / 0.3), x = X + (dos ? (j % 2) * 470 : 0), y = 1400 + (dos ? Math.floor(j / 2) : j) * 48;
+      ctx.globalAlpha = a; ctx.fillStyle = col(c); ctx.beginPath(); ctx.arc(x + 18, y - 12, 16, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+      text(l, x + 52, y, '500 32px ' + F.mono, C.fg, 'left', a);
+    });
+  },
+  // Máximo y mínimo de un partido: s.filas = [[lugar, valor, detalle]], barra sobre el 100 %
+  extremos(s, t) {
+    pop(s.titulo, X, 300, 84, 96, 0, t);
+    if (s.sub) text(s.sub, X, 490, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const lw = W - 2 * X;
+    s.filas.forEach(([lugar, v, det], i) => {
+      const y = 620 + i * 380, k = ease((t - 0.5 - i * 0.7) / 0.8);
+      text(cuenta(String(v).replace('.', ',') + ' %', k), X, y + 100, '800 130px ' + F.display, i === 0 ? col(s.color) : C.muted, 'left', clamp(k * 3));
+      ctx.fillStyle = '#2a2e3e'; rrect(X, y + 140, lw, 34, 17);
+      ctx.fillStyle = i === 0 ? col(s.color) : C.muted; rrect(X, y + 140, Math.max(lw * v / 100 * k, 6), 34, 17);
+      text(lugar, X, y + 230, '700 44px ' + F.display, C.fg, 'left', clamp(k * 3));
+      if (det) text(det, X, y + 280, '400 38px ' + F.body, C.muted, 'left', clamp(k * 3));
+    });
+  },
+  // Serie temporal larga: s.datos = [[etiqueta, valor]], s.marcas = [[índice, texto]], s.ejes = [[índice, texto]]
+  serie(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const top = 640, bottom = 1280, x0 = X, x1 = W - X, n = s.datos.length;
+    const px = i => x0 + (x1 - x0) * i / (n - 1), py = v => bottom - (bottom - top) * v / s.max;
+    ctx.strokeStyle = '#2a2e3e'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0, bottom); ctx.lineTo(x1, bottom); ctx.stroke();
+    s.ejes.forEach(([i, l]) => text(l, px(i), bottom + 50, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.3) / 0.3)));
+    const prog = clamp((t - 0.5) / (s.dibujo || 2.6)) * (n - 1), j = Math.floor(prog);
+    ctx.beginPath(); ctx.moveTo(px(0), bottom);
+    for (let i = 0; i <= j; i++) ctx.lineTo(px(i), py(s.datos[i][1]));
+    ctx.lineTo(px(j), bottom); ctx.closePath(); ctx.globalAlpha = 0.25; ctx.fillStyle = col(s.color); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.beginPath(); ctx.moveTo(px(0), py(s.datos[0][1]));
+    for (let i = 1; i <= j; i++) ctx.lineTo(px(i), py(s.datos[i][1]));
+    ctx.strokeStyle = col(s.color); ctx.lineWidth = 6; ctx.lineJoin = 'round'; ctx.stroke();
+    (s.marcas || []).forEach(([i, l, l2], m) => {
+      if (j < i) return;
+      const a = ease((prog - i) / 15), x = px(i), y = py(s.datos[i][1]), der = x > W / 2;
+      ctx.globalAlpha = a; ctx.fillStyle = C.fg; ctx.beginPath(); ctx.arc(x, y, 12, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+      text(l, x + (der ? -20 : 20), y - 20, '800 52px ' + F.display, col(s.color), der ? 'right' : 'left', a);
+      if (l2) text(l2, x + (der ? -20 : 20), y + 22, '500 28px ' + F.mono, C.fg, der ? 'right' : 'left', a);
     });
   },
   lineas(s, t) {
