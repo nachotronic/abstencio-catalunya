@@ -179,7 +179,7 @@ TEMAS = {
         intro='Las grandes ciudades contadas sección a sección: dónde gana cada partido, qué calles parten el voto en dos '
               'y los barrios donde un partido saca sus mejores resultados.',
         piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'calle-que-parte-barcelona', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
-                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n'],
+                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n', 'alvise-salf-donde-vota-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal'),
                ('', 'Mapa de resultados calle a calle')],
         atlas=[('atlas/ciudad-y-entorno/', 'Atlas: la ciudad y su entorno')]),
