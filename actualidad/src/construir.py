@@ -2689,8 +2689,8 @@ PIEZAS += [
         slug='alvise-salf-donde-vota-29n', fecha='2026-10-27',
         foto=dict(src='img/actualidad/fotos/alvise-salf-donde-vota-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Un hombre mira el móvil junto a un sobre electoral y, al lado, una calle de bloques nuevos con una urna en la acera: un collage.'),
-        titulo='Alvise, el candidato de las ciudades dormitorio: en las europeas sacó casi el triple de votos en los barrios jóvenes que en los envejecidos', serie='29n',
-        descripcion='Le votó el 7,1% en los barrios más jóvenes y el 2,5% en los más envejecidos, con Cártama, Mijas y Roquetas a la cabeza. Ahora se presenta al Congreso en 47 provincias con el 1,8% en las encuestas, y el modelo no le da diputado en nueve de cada diez simulaciones.',
+        titulo='Alvise solo tiene una puerta al Congreso: Madrid, donde le basta el 3% y las encuestas le dan el 2%', serie='29n',
+        descripcion='Con su voto de las europeas habría sacado escaño también en Valencia y Málaga. Su voto es de ciudades dormitorio: le votó el 7,1% en los barrios más jóvenes y el 2,5% en los más envejecidos, con Cártama, Mijas y Roquetas a la cabeza. Se presenta en 47 provincias.',
         compara='El voto a Se Acabó La Fiesta y a Vox en las elecciones europeas de 2024 en las 36.000 secciones censales de España, según la edad media, la renta, el paro, los estudios y los nacidos fuera de cada sección, por tamaño de municipio y por provincia, y su estimación para el 29N con la media de encuestas y el modelo de Mapa Electoral.',
         limites='Las europeas son otro tipo de elección, con menos participación, y SALF se presentó entonces como agrupación de electores. Es una relación entre secciones, no entre personas: no dice quién votó a SALF. La edad media y la renta son del Atlas de distribución de renta del INE; el paro, los estudios y los nacidos fuera, del Censo de 2021. La regresión (mínimos cuadrados ponderados por votos válidos, efectos fijos por provincia, errores agrupados por municipio) describe asociaciones, no causas. Sin el voto desde el extranjero.',
         calculo='% de SALF sobre votos válidos por sección; deciles de secciones por edad media; regresión del % de SALF sobre edad media, renta por unidad de consumo, % de nacidos fuera, % con estudios superiores y % de paro, con efectos fijos por provincia: −0,24 puntos por año de edad media (error 0,006).',
@@ -2868,7 +2868,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
-    'alvise-salf-donde-vota-29n': 'El voto de Alvise',
+    'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'calle-que-parte-barcelona': 'Dos fronteras',
