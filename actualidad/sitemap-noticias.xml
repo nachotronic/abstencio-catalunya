@@ -49,6 +49,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/alvise-salf-donde-vota-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-27</news:publication_date>
+      <news:title>Alvise se presenta al Congreso en 47 provincias: en las europeas le votó el 7,1% en los barrios más jóvenes y el 2,5% en los más envejecidos</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/pacto-pp-vox-senado-provincias-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

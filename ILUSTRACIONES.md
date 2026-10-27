@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (56)
+## Pendientes (57)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-10-27 | [`alvise-salf-donde-vota-29n`](https://mapaelectoral.es/actualidad/alvise-salf-donde-vota-29n/) | Alvise se presenta al Congreso en 47 provincias: en las europeas le votó el 7,1% en los barrios más jóvenes y el 2,5% en los más envejecidos | gráfico |
 | 2026-10-26 | [`brasil-lula-remontada-mapa-estados`](https://mapaelectoral.es/actualidad/brasil-lula-remontada-mapa-estados/) | Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color | gráfico |
 | 2026-10-23 | [`salario-minimo-provincias-feijoo-29n`](https://mapaelectoral.es/actualidad/salario-minimo-provincias-feijoo-29n/) | Huelva, Almería y Jaén: más de la mitad de sus asalariados cobró en 2024 menos de un salario mínimo al año | gráfico |
 | 2026-10-22 | [`ley-nietos-donde-estan-29n`](https://mapaelectoral.es/actualidad/ley-nietos-donde-estan-29n/) | El Constitucional deja sin voto a los nietos: los españoles adultos de América Latina crecen casi cinco veces más rápido y uno de cada tres está inscrito en Madrid | gráfico |
