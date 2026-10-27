@@ -31,6 +31,7 @@ except ImportError:
     tarjeta = None
 import encuestadoras  # noqa: E402  (una página por encuestadora)
 import calculadora  # noqa: E402  (calculadora de escaños)
+import pactos  # noqa: E402  (simulador de pactos)
 
 DATOS = RAIZ / 'previsiones/datos/encuestas'
 SALIDA = RAIZ / 'encuestas'
@@ -204,7 +205,7 @@ def estimacion():
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
                           for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023', '#e30613')) if b)}</div>
 <p>{frase}</p>
-<p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt.</p>
+<p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt. Y en el <a href="simulador-pactos/">simulador de pactos</a>, decide qué vota cada partido y mira quién sale investido.</p>
 <figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. La línea marca la mayoría absoluta; en color intenso, la horquilla del 80 %.</span></figcaption>
 <div class="chart" id="dist-bloques"></div></figure>
 <figure><figcaption><span class="t">¿Llegan a la mayoría absoluta? Escaños de cada bloque</span><span class="s">La barra gruesa recoge el 80 % de las simulaciones; la fina, el 95 %; el punto es la mediana. A la derecha, en qué porcentaje de simulaciones llega a 176.</span></figcaption>
@@ -735,6 +736,7 @@ def main():
     bloque_modelo, hemi_m = estimacion()
     hay_provincias = provincias()
     hay_calculadora = calculadora.genera(sys.modules[__name__])
+    hay_pactos = pactos.genera(sys.modules[__name__], hemi, n_hemi)
     casas = encuestadoras.genera(encs, SALIDA, sys.modules[__name__])
     asientos = lambda h: [[k, h[k], *next((c, o, n) for kk, n, c, o in TODOS if kk == k)] for k in ORDEN_HEMI if k in (h or {})]
     pv_casas = [[e['casa'], *suma_pv(e)] for e in sorted(con_esc, key=lambda e: -sum(suma_pv(e)))]
@@ -921,6 +923,7 @@ def main():
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
                                         + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '')
                                         + (f'  <url><loc>{URL}calculadora-escanos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_calculadora else '')
+                                        + (f'  <url><loc>{URL}simulador-pactos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_pactos else '')
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas)
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
     portada(titular, med, actual)
