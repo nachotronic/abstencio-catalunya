@@ -390,6 +390,7 @@ def web(geo, sec, mun):
                 json.dump(columnas(x, 'tract_code', [y]), open(f, 'w'), separators=(',', ':'))
                 tam += os.path.getsize(f)
     json.dump(meta, open(os.path.join(WEB, 'meta.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
+    import ligero; ligero.DATA = WEB; ligero.main()   # copia ligera para la carga inicial del mapa
     print('web: municipios', os.path.getsize(os.path.join(WEB, 'municipios.json')) // 1024, 'KB; secciones', tam // 1024, 'KB')
 
 

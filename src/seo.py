@@ -677,6 +677,9 @@ def main():
     # el mapa interactivo se carga después del texto (portada y piezas de Cataluña y Girona)
     import diferido
     diferido.main()
+    # versiones WebP de 640 px para las tarjetas de los carruseles de la portada en el móvil
+    import movil
+    movil.main()
     # favicon, apple-touch-icon y manifiesto en el <head> de todas las páginas
     import iconos
     iconos.main()

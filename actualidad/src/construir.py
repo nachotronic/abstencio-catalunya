@@ -1880,6 +1880,9 @@ COMUNIDADES = []
 for h in piezas_comunidades():
     q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
     q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
+    # <title> con lo que se busca («qué partido gobierna…», «desde cuándo gobierna…»); el titular sigue en h1 y og:title
+    corto = re.sub(r'^(La|El) ', '', h['corto'].replace(' en las urnas', ''))
+    q['titulo_seo'] = f'¿Quién gobierna {corto}? Historia electoral y resultados desde 1977'
     if os.path.exists(os.path.join(SRC, '..', '..', 'img', 'actualidad', 'fotos', h['slug'] + '.jpg')):
         q['foto'] = dict(src=f"img/actualidad/fotos/{h['slug']}.jpg", ancho=1280, alto=720, ia=True,
                          pie=f"Collage sobre las elecciones en {h['lugar']}: la bandera, el mapa y vecinos votando.")
@@ -2683,6 +2686,47 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
+        slug='alvise-salf-donde-vota-29n', fecha='2026-10-27',
+        foto=dict(src='img/actualidad/fotos/alvise-salf-donde-vota-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un hombre mira el móvil junto a un sobre electoral y, al lado, una calle de bloques nuevos con una urna en la acera: un collage.'),
+        titulo='Alvise solo tiene una puerta al Congreso: Madrid, donde le basta el 3% y las encuestas le dan el 2%', serie='29n',
+        descripcion='Con su voto de las europeas habría sacado escaño también en Valencia y Málaga. Su voto es de ciudades dormitorio: le votó el 7,1% en los barrios más jóvenes y el 2,5% en los más envejecidos, con Cártama, Mijas y Roquetas a la cabeza. Se presenta en 47 provincias.',
+        compara='El voto a Se Acabó La Fiesta y a Vox en las elecciones europeas de 2024 en las 36.000 secciones censales de España, según la edad media, la renta, el paro, los estudios y los nacidos fuera de cada sección, por tamaño de municipio y por provincia, y su estimación para el 29N con la media de encuestas y el modelo de Mapa Electoral.',
+        limites='Las europeas son otro tipo de elección, con menos participación, y SALF se presentó entonces como agrupación de electores. Es una relación entre secciones, no entre personas: no dice quién votó a SALF. La edad media y la renta son del Atlas de distribución de renta del INE; el paro, los estudios y los nacidos fuera, del Censo de 2021. La regresión (mínimos cuadrados ponderados por votos válidos, efectos fijos por provincia, errores agrupados por municipio) describe asociaciones, no causas. Sin el voto desde el extranjero.',
+        calculo='% de SALF sobre votos válidos por sección; deciles de secciones por edad media; regresión del % de SALF sobre edad media, renta por unidad de consumo, % de nacidos fuera, % con estudios superiores y % de paro, con efectos fijos por provincia: −0,24 puntos por año de edad media (error 0,006).',
+        fuentes=[('https://theobjective.com/espana/politica/2026-10-27/alvise-senado-pp-vox-congreso/', 'The Objective, Alvise renuncia al Senado tras el pacto PP-Vox pero se presenta en 47 provincias al Congreso (27-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-alvise-presentara-elecciones-cabeza-lista-salf-madrid-20261005163400.html', 'Europa Press, Alvise se presentará a las elecciones como cabeza de lista de SALF por Madrid (5-10-2026)'),
+                 ('https://www.ceutaldia.com/articulo/politica/acabo-fiesta-empieza-carlos-pavon-sera-candidato-ceuta-congreso/20261025203842323236.html', 'Ceuta al Día, Carlos Pavón será el candidato de SALF en Ceuta (25-10-2026)'),
+                 ('https://www.ucm.es/icca/explorando-el-exito-politico-electoral-de-se', 'Imanol Negral Bravo y Álvaro Sánchez García, Explorando el éxito político-electoral de Se Acabó La Fiesta, ICCA (Universidad Complutense)'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones al Parlamento Europeo de 2024 por sección censal'),
+                 ('https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177088&menu=ultiDatos&idp=1254735976608', 'INE, Atlas de distribución de renta de los hogares'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='pacto-pp-vox-senado-provincias-29n', fecha='2026-10-27',
+        foto=dict(src='img/actualidad/fotos/pacto-pp-vox-senado-provincias-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un apretón de manos entre una manga azul y otra verde sobre una papeleta rosa del Senado, con el hemiciclo de la Cámara Alta al fondo: un collage.'),
+        titulo='PP y Vox pactan el Senado: con las encuestas sumarían entre 158 y 163 senadores, alrededor de los 160 que necesitan para renovar el Constitucional sin el PSOE', serie='29n',
+        descripcion='El acuerdo añade entre 8 y 13 senadores elegidos a la derecha. Ocho salen de Valencia y las islas, donde Vox se retira; el resto depende de que los votantes de Vox den sus otros dos votos al PP en Sevilla, Asturias y Álava.',
+        compara='Los senadores elegidos de PP y Vox en las 59 circunscripciones del Senado sin pacto, con el acuerdo del 26 de octubre (Vox se retira en seis provincias, presenta un solo candidato en catorce y el PP se retira en tres) y con una lista única, frente a la lista conjunta de PSOE y Frente Amplio, con los votos del Senado de 2023 y con esos votos movidos según la media de encuestas del 25 de octubre de 2026.',
+        limites='Es una simulación, no una previsión. Usa los votos por candidato del Senado de 2023 y, en la versión con encuestas, los mueve con el cambio de cada partido en la media nacional de encuestas, igual en todas las provincias. Supone transferencia completa: los votantes de Vox votan al PP donde Vox se retira, los del PP a Vox donde se retira el PP y los de PSOE y Sumar a la lista conjunta, que se supone en 50 circunscripciones (todas menos Cataluña, el País Vasco, Ceuta y Melilla) aunque va en 47. En las 14 provincias con un solo candidato de Vox se dan tres versiones del voto de sus electores. No dice cuántos senadores serían de Vox dentro de las listas del PP. Los 28 senadores designados de PP y Vox son los actuales y cambiarán con las elecciones autonómicas.',
+        calculo='Votos por candidato: suma de los votos de los candidatos de cada partido en la circunscripción dividida entre el número de candidatos que presentó. Se eligen los candidatos con más votos (cuatro por provincia, tres en Gran Canaria, Tenerife y Mallorca, dos en Ceuta y Melilla y uno en las demás islas), presentando cada partido tantos candidatos como votos tiene el elector. Factores de encuestas: PP 31,7/33,05; PSOE 26,5/31,7; Vox 18,9/12,39; Sumar 6,5/12,31.',
+        fuentes=[('https://www.europapress.es/nacional/noticia-pp-vox-esperan-lograr-140-senadores-gracias-pacto-concurrir-senado-20261026185958.html', 'Europa Press, PP y Vox esperan lograr hasta 140 senadores gracias a su pacto (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-abascal-ve-renuncia-vox-presentar-candidaturas-senado-gesto-patriotico-todo-espana-20261026203730.html', 'Europa Press, Abascal ve la renuncia de Vox un «gesto patriótico» (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-arcadi-espana-asegura-nace-nuevo-partido-pacto-pp-vox-senado-hoy-decidido-casarse-20261026235858.html', 'Europa Press, Arcadi España: «Hoy ha nacido un nuevo partido» (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-senado-tiene-casi-60-escanos-asignados-margen-elecciones-23-pp-19-psoe-vox-20261026175641.html', 'Europa Press, el Senado tiene casi 60 escaños asignados al margen de las elecciones (26-10-2026)'),
+                 ('https://www.elespanol.com/espana/politica/20261026/pp-vox-llegan-acuerdo-listas-senado-abascal-retiran-provincias-feijoo/1003744434759_0.html', 'El Español, PP y Vox llegan a un acuerdo para las listas del Senado (26-10-2026)'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907', 'Junta Electoral Central, resultados de las elecciones al Congreso y al Senado de 23 de julio de 2023, BOE de 1-9-2023'),
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-19537', 'Junta Electoral Central, corrección de errores, BOE de 16-9-2023'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a159', 'Constitución Española, artículo 159'),
+                 ('https://mapaelectoral.es/encuestas/', 'Mapa Electoral, media de encuestas'),
+                 ('https://revista.cortesgenerales.es/rcg/article/download/98/91', 'Fabio Pascua Mateo, Cuarenta años de elecciones a las Cortes Generales, Revista de las Cortes Generales 103 (2018)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
         slug='listas-29n-quien-encabeza', fecha='2026-10-26',
         foto=dict(src='img/actualidad/fotos/listas-29n-quien-encabeza.jpg', ancho=1280, alto=720, ia=True,
                   pie='Dos papeletas, una morada y otra rosa, rasgadas a cada lado de un escaño vacío del Congreso, con dos sobres: un collage.'),
@@ -2796,9 +2840,39 @@ PIEZAS += [
     ),
 ]
 
+# Serie «Internacional»: elecciones de otros países contadas con mapas (decisión de Nacho, 26-10-2026: en Actualidad y en /temas/internacional/)
+SERIES['internacional'] = 'Internacional'
+PIEZAS += [
+    dict(
+        slug='brasil-lula-remontada-mapa-estados', fecha='2026-10-26', actualizado='2026-10-27 06:55',
+        titulo='Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color', serie='internacional',
+        descripcion='En tres semanas, Lula sumó 10,4 millones de votos y Flávio Bolsonaro, 3,7. Casi la mitad de la subida de Lula salió del Sudeste, donde aun así perdió. Frente a 2022, 25 de los 27 estados votaron al mismo candidato, y la región Norte se decidió por 1.079 votos.',
+        compara='La primera y la segunda vuelta de las presidenciales de Brasil de 2026 en los 27 estados (26 estados y el Distrito Federal), frente a la segunda vuelta de 2022; la ventaja del más votado en cada vuelta desde 1989, y la abstención en las presidenciales desde 1994.',
+        limites='Son totales por estado: no dicen quién cambió su voto entre las dos vueltas ni quién votó solo en una de ellas, así que los votos que suma cada candidato son saldos, no trasvases. El mapa no incluye el voto en el exterior, que sí está en los totales nacionales. Los datos de 2026 son del portal de resultados del TSE y los de 2022 y la abstención desde 1994, de sus datos abiertos. La abstención se calcula sobre los electores con derecho a voto para presidente. En la primera vuelta, el color del mapa compara solo a Lula y a Flávio.',
+        fuentes=[('https://resultados.tse.jus.br/oficial/app/index.html', 'Tribunal Superior Electoral de Brasil, resultados oficiales de la primera y la segunda vuelta de 2026 por estado'),
+                 ('https://dadosabertos.tse.jus.br/', 'TSE, datos abiertos: votación por candidato, municipio y zona de 2022, y detalle de la votación por municipio y zona de 1994 a 2022 (abstención)'),
+                 ('https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais.html', 'IBGE, mallas territoriales de los estados (vía click_that_hood), simplificadas'),
+                 ('https://es-us.noticias.yahoo.com/lula-gana-elecciones-presidenciales-remontada-001814404.html', 'EFE vía Yahoo Noticias, Lula gana las elecciones presidenciales tras una remontada inédita ante Flávio Bolsonaro (25-10-2026)'),
+                 ('https://www.poder360.com.br/poder-eleicoes-2026/leia-a-integra-do-pronunciamento-da-vitoria-de-lula-2/', 'Poder360, íntegra del discurso de la victoria de Lula (25-10-2026)'),
+                 ('https://www.poder360.com.br/poder-eleicoes-2026/leia-e-assista-a-integra-do-discurso-de-flavio-bolsonaro/', 'Poder360, íntegra del discurso de Flávio Bolsonaro (25-10-2026)'),
+                 ('https://www.brasildefato.com.br/2026/09/30/governos-de-lula-transformaram-o-nordeste-e-explicam-vitoria-folgada-na-regiao-afirma-cientista-politico/', 'Brasil de Fato, entrevista al politólogo Benedito Tadeu César (UFRGS) (30-9-2026)'),
+                 ('https://revistaoeste.com/politica/flavio-supera-lula-pela-1a-vez-em-minas-mostra-quaest/', 'Revista Oeste, Minas Gerais y el ganador de las presidenciales desde 1989'),
+                 ('https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm', 'Constitución de la República Federativa de Brasil, artículo 14'),
+                 ('https://www.bahianoticias.com.br/noticia/321931-desde-1989-quem-ganha-o-primeiro-turno-para-presidente-vence-tambem-o-segundo-e-tabu-pode-ser-quebrado', 'Bahia Notícias, desde 1989 quien gana la primera vuelta gana también la segunda (resultados de 1989)'),
+                 ('https://www.gazetasp.com.br/cotidiano/44528-desde-diretas-ja-brasil-nunca-teve-virada-no-segundo-tur/', 'Gazeta SP (Folhapress), Brasil nunca tuvo una remontada en segunda vuelta desde las Diretas Já (resultados de 1989)')],
+        enlaces=[],
+        lugar='Brasil',
+        foto=dict(src='img/actualidad/fotos/brasil-lula-remontada-mapa-estados.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Quién ganó en cada estado de Brasil en la segunda vuelta.', fuente='TSE, resultados oficiales por estado; contornos de IBGE'),
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
+    'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
+    'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
@@ -3046,7 +3120,7 @@ MESOS_CA = ['de gener', 'de febrer', 'de març', "d'abril", 'de maig', 'de juny'
 CA = [
     ('<html lang="es">', '<html lang="ca">'), ('<meta property="og:locale" content="es_ES">', '<meta property="og:locale" content="ca_ES">'),
     ('"inLanguage": "es"', '"inLanguage": "ca"'),
-    ('aria-label="Secciones del sitio"', 'aria-label="Seccions del lloc"'), ('>Mapa de resultados<', '>Mapa de resultats<'), ('elecciones/">Por territorio<', 'elecciones/">Per territori<'), ('encuestas/">Encuestas<', 'encuestas/">Enquestes<'), ('barrios/">Barrios<', 'barrios/">Barris<'),
+    ('aria-label="Secciones del sitio"', 'aria-label="Seccions del lloc"'), ('>Mapa de resultados<', '>Mapa de resultats<'), ('elecciones/">Por territorio<', 'elecciones/">Per territori<'), ('municipio/">Municipios<', 'municipio/">Municipis<'), ('temas/">Temas<', 'temas/">Temes<'), ('encuestas/">Encuestas<', 'encuestas/">Enquestes<'), ('barrios/">Barrios<', 'barrios/">Barris<'),
     ('>Actualidad</a> · ', '>Actualitat</a> · '), ('<p class="firma">Por <a href="../../sobre-mi.html">', '<p class="firma">Per <a href="../../sobre-mi-ca.html">'),
     ('aria-current="page">Actualidad</a>', 'aria-current="page">Actualitat</a>'), ('href="../../abstencion.html">Cataluña<', 'href="../../ca.html">Catalunya<'),
     ('>Cataluña<', '>Catalunya<'), ('actualidad/#comunidades">Comunidades<', 'actualidad/#comunidades">Comunitats<'), ('actualidad/#historia">Historia electoral<', 'actualidad/#historia">Història electoral<'), ('href="../../sobre-mi.html">Sobre mí<', 'href="../../sobre-mi-ca.html">Sobre mi<'),
@@ -3183,7 +3257,10 @@ def pieza(p, todas):
                            'isPartOf': {'@id': url + '#articulo'},
                            'mainEntity': [{'@type': 'Question', 'name': html.unescape(q), 'acceptedAnswer': {'@type': 'Answer', 'text': html.unescape(r)}}
                                           for q, r in qs]}]
-    out = (cabecera(p['titulo'], p['descripcion'], url, imagen, jsonld) + estilos + CSS_SITIO + '\n</head>\n<body>\n'
+    cab = cabecera(p.get('titulo_seo') or p['titulo'], p['descripcion'], url, imagen, jsonld)
+    if p.get('titulo_seo'):   # el título SEO solo va en <title>; en redes, el titular
+        cab = cab.replace(f'<meta property="og:title" content="{html.escape(p["titulo_seo"])}">', f'<meta property="og:title" content="{html.escape(p["titulo"])}">', 1)
+    out = (cab + estilos + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../../', 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
     if p.get('idioma') == 'ca':
         out = en_catala(out, p)
