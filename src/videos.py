@@ -1,4 +1,4 @@
-"""Carrusel «Vídeos en X» de la portada (Nacho, 28-10-2026), entre las marcas <!--videos:portada-->, debajo del de Actualidad.
+"""Carrusel «Vídeos en X» de la portada (Nacho, 28-10-2026), entre las marcas <!--videos:portada-->, debajo del del Atlas.
 
 Cada tarjeta es un fotograma del vídeo (img/videos/<nombre>.jpg, 360 × 480: el tercio de arriba,
 donde van los textos y las cifras; abajo queda la zona segura vacía de los Shorts) que enlaza al tuit en X.
@@ -75,8 +75,9 @@ def franja(pre=''):
 def portada():
     f = ROOT / 'index.html'
     t = f.read_text(encoding='utf-8')
-    if '<!--videos:portada-->' not in t:   # justo debajo del carrusel de Actualidad
-        t = t.replace('<!--/actualidad:ultimas-->', '<!--/actualidad:ultimas-->\n<!--videos:portada--><!--/videos:portada-->', 1)
+    # justo debajo del carrusel del Atlas (Nacho, 28-10-2026)
+    t = re.sub(r'\n?<!--videos:portada-->.*?<!--/videos:portada-->', '', t, flags=re.S)
+    t = t.replace('<!--/atlas:ultimas-->', '<!--/atlas:ultimas-->\n<!--videos:portada--><!--/videos:portada-->', 1)
     t = re.sub(r'<!--videos:portada-->.*?<!--/videos:portada-->',
                lambda m: '<!--videos:portada-->' + franja() + '<!--/videos:portada-->', t, flags=re.S)
     f.write_text(t, encoding='utf-8')
