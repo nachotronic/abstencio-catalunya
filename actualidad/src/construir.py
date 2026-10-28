@@ -2926,6 +2926,27 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
+        titulo='Netanyahu se queda a cuatro escaños de la mayoría con el 40% escrutado, y la oposición solo llega a 61 con los partidos árabes', serie='internacional',
+        descripcion='Con 2,1 millones de votos contados, los cinco partidos del Gobierno saliente suman 57 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 47. Los dos partidos árabes tienen 16, y su peso ha ido subiendo a medida que avanzaba el recuento. Estas son las combinaciones posibles.',
+        compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 40% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 y la evolución del recuento durante la madrugada; frente a los resultados de 2022.',
+        limites='Resultados provisionales: el recuento oficial estaba en torno al 40% (2.122.846 votos válidos) y faltan, entre otros, los votos de los soldados. Los escaños cambiarán. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación.',
+        fuentes=[('https://www.kikar.co.il/political-news/israel-elections-voting-turnout', 'Kikar HaShabbat, recuento oficial del Comité Central Electoral de Israel a las 4.03, 4.47 y 5.57 del 28-10-2026 (votos por partido)'),
+                 ('https://www.israelnationalnews.com/news/435272', 'Arutz Sheva, reparto provisional de escaños con el 37,4% de los votos contados (28-10-2026)'),
+                 ('https://en.wikipedia.org/wiki/2026_Israeli_legislative_election', 'Wikipedia, resultados de 2022 y composición de las listas de 2026'),
+                 ('https://www.telemundo40.com/noticias/mundo/israel-elecciones-kneset-resultados-gadi-eisenkot-benjamin-netanyahu/2554061/', 'EFE vía Telemundo, Aún sin resultados electorales, opositor Eisenkot afirma triunfo (27-10-2026)'),
+                 ('https://www.elconfidencial.com/mundo/2026-10-28/netanyahu-castigado-su-bloque-cae-en-escanos_4454401/', 'El Confidencial, Israel castiga (a medias) a Netanyahu (28-10-2026)'),
+                 ('https://es-us.noticias.yahoo.com/elecciones-israel-participaci%C3%B3n-r%C3%A9cord-sondeos-023026272.html', 'France 24 vía Yahoo Noticias, participación récord y encuestas a pie de urna (28-10-2026)'),
+                 ('https://www.infobae.com/america/mundo/2026/10/27/el-bloque-de-eisenkot-aventaja-a-netanyahu-en-las-elecciones-de-israel-pero-ninguno-logra-mayoria/', 'Infobae, el proceso de formación de Gobierno (27-10-2026)')],
+        enlaces=[],
+        lugar='Israel',
+        foto=dict(src='img/actualidad/fotos/israel-pactos-escanos-knesset.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las coaliciones posibles en la Knesset con el recuento provisional del 28 de octubre.', fuente='Comité Central Electoral de Israel, recuento provisional al 40%'),
+    ),
+]
+
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
@@ -2935,6 +2956,7 @@ ANTETITULOS = {
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
+    'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',

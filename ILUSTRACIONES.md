@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (58)
+## Pendientes (59)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-10-28 | [`israel-pactos-escanos-knesset`](https://mapaelectoral.es/actualidad/israel-pactos-escanos-knesset/) | Netanyahu se queda a cuatro escaños de la mayoría con el 40% escrutado, y la oposición solo llega a 61 con los partidos árabes | gráfico |
 | 2026-10-27 | [`israel-elecciones-encuestas-knesset`](https://mapaelectoral.es/actualidad/israel-elecciones-encuestas-knesset/) | Solo una televisión le daba la mayoría a Netanyahu | primer gráfico de la pieza |
 | 2026-10-27 | [`serbia-estudiantes-vucic-mapa-distritos`](https://mapaelectoral.es/actualidad/serbia-estudiantes-vucic-mapa-distritos/) | Vučić ganó en los 25 distritos de Serbia en 2023; los estudiantes le han ganado en 18 y en Zaječar el recuento va por 31 votos | gráfico |
 | 2026-10-26 | [`brasil-lula-remontada-mapa-estados`](https://mapaelectoral.es/actualidad/brasil-lula-remontada-mapa-estados/) | Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color | gráfico |
