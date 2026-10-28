@@ -2730,6 +2730,8 @@ PIEZAS += [
     ),
     dict(
         slug='feijoo-albiol-barcelona-disturbios-29n', fecha='2026-10-28',
+        foto=dict(src='img/actualidad/fotos/feijoo-albiol-barcelona-disturbios-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Feijóo y Albiol leen un papel; al lado, una esquina del Eixample con una valla metálica: un collage.'),
         titulo='Feijóo busca el voto del orden en la comunidad que más cita la inseguridad', serie='29n',
         descripcion='Antes de los disturbios del sábado, el 11% de los catalanes ya nombraba la inseguridad entre los grandes problemas de España, más del doble que en el resto. La citan más los simpatizantes de Junts y Vox que los del PP. Y Albiol arrastra votos en Badalona, pero Badalona es el 4% de la provincia.',
         compara='El porcentaje que cita la inseguridad ciudadana entre los tres principales problemas de España en Cataluña, en el resto de España y por partido dentro de Cataluña, en los barómetros del CIS de diciembre de 2025 a octubre de 2026; el voto de Albiol en Badalona en las municipales y del PP en las generales de 2023; y el PP en Barcelona en el modelo de encuestas.',
@@ -2752,6 +2754,8 @@ PIEZAS += [
     ),
     dict(
         slug='rufian-montero-la-revuelta-29n', fecha='2026-10-28',
+        foto=dict(src='img/actualidad/fotos/rufian-montero-la-revuelta-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Rufián y Montero en un sofá rojo de plató, con Broncano de pie y una cámara de televisión: un collage.'),
         titulo='Rufián le guarda a Podemos el puesto 6: sale en 7 de cada 10 simulaciones', serie='29n',
         descripcion='Tras pasar por La Revuelta, el tándem de ERC y Podemos se juega en Barcelona el escaño de Alejandra Sandoval. Y el duelo que busca Rufián con el PSC está entre los jóvenes: entre los catalanes de menos de 45 años, ERC y el PSC empatan en el CIS.',
         compara='La probabilidad de salir elegido de cada puesto de la lista de ERC por Barcelona, donde van dos independientes de Podemos (puestos 6 y 10), con el modelo de Mapa Electoral; y el voto más simpatía a PSC, ERC, Sumar y Podemos en Cataluña por edad en los barómetros del CIS de diciembre de 2025 a octubre de 2026.',
