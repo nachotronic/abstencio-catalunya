@@ -61,7 +61,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-26</news:publication_date>
-      <news:title>¿Sale tu candidato? Busca tu provincia: el día que se cierran las listas, 251 escaños están casi decididos y 210 candidatos se juegan los otros 99</news:title>
+      <news:title>¿Sale tu candidato? Con las listas oficiales del BOE, 250 escaños están casi decididos y 204 candidatos se juegan los otros 100</news:title>
     </news:news>
   </url>
   <url>
@@ -105,11 +105,19 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/barrios-caseros-inquilinos-voto-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-28</news:publication_date>
+      <news:title>Donde viven los caseros gana el PP; donde viven los inquilinos, gana la abstención</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/israel-pactos-escanos-knesset/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-28</news:publication_date>
-      <news:title>Netanyahu se queda a cuatro escaños de la mayoría con el 40% escrutado, y la oposición solo llega a 61 con los partidos árabes</news:title>
+      <news:title>Netanyahu se queda a ocho escaños de la mayoría: con el 86% escrutado, ya ni Liberman le daría los 61</news:title>
     </news:news>
   </url>
 </urlset>

@@ -130,6 +130,9 @@ def normaliza(o, ruta):
         o['@type'] = 'AnalysisNewsArticle'
     if o.get('@type') == 'Dataset' and ruta in ('', 'generales-2026/metodologia.html') and 'generales-2026/descargas/' in json.dumps(o):
         o = {'@id': DATASET_ID, **{k: v for k, v in o.items() if k != '@id'}}
+    if o.get('@type') == 'Dataset' and isinstance(o.get('creator'), dict) and o['creator'].get('@type') not in ('Person', 'Organization'):
+        # Google solo acepta Person u Organization en el creator de un Dataset (no subtipos como NewsMediaOrganization)
+        o['creator'] = {**o['creator'], '@type': 'Organization'}
     if o.get('@type') == 'AnalysisNewsArticle' and ruta.startswith('actualidad/') and ruta != 'actualidad/' and 'isBasedOn' not in o:
         o['isBasedOn'] = dict(DATASET_REF)
     if isinstance(o.get('isBasedOn'), dict) and o['isBasedOn'].get('@id') == DATASET_ID:

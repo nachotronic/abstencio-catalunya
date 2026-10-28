@@ -32,10 +32,18 @@ jobs:
           d=$(TZ=Europe/Madrid date +%F)
           if [[ "$d" > "2026-11-23" && "$d" < "2026-11-29" ]]; then echo "Veda de encuestas (LOREG 69.7): no se publica"; exit 0; fi
           git add previsiones/datos/encuestas
-          if git diff --cached --quiet -- '*.csv'; then echo "Sin encuestas nuevas"; exit 0; fi
+          nuevas=1
+          if git diff --cached --quiet -- '*.csv'; then
+            nuevas=0
+            # sin encuestas nuevas, la página y la card de portada se rehacen igual una vez al día (Nacho, 28-10-2026),
+            # para que la fecha de «Actualizado» sea la de hoy
+            if grep -q "datetime=\"$d\"" encuestas/index.html; then echo "Sin encuestas nuevas; ya actualizada hoy"; exit 0; fi
+          fi
           # estimación del modelo con la media nueva (Nacho eligió la actualización automática el 22-10-2026); si
           # falla, se publica igual la página de encuestas con la estimación anterior
-          if SALIDAS=/tmp/salidas python3 previsiones/src/encuestas.py > /dev/null \
+          if [[ $nuevas == 0 ]]; then
+            echo "Sin encuestas nuevas: se rehace la página sin recalcular el modelo"
+          elif SALIDAS=/tmp/salidas python3 previsiones/src/encuestas.py > /dev/null \
              && python3 previsiones/src/motor.py --encuestas /tmp/salidas/media-encuestas-$(date +%Y%m%d).json --publico; then
             git add previsiones/datos/publico
           else
@@ -43,10 +51,10 @@ jobs:
           fi
           python3 encuestas/src/construir.py
           python3 src/iconos.py
-          git add encuestas index.html generales-2026/src/plantilla.html img/compartir/encuestas.jpg
+          git add encuestas index.html generales-2026/src/plantilla.html img/compartir/encuestas.jpg img/movil
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Encuestas: actualización automática $(date -u +%F)"
+          git commit -m "Encuestas: actualización automática $(date -u +%F)$([[ $nuevas == 0 ]] && echo ' (sin encuestas nuevas)')"
           for i in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && break; sleep 10; done
           echo "publicado=1" >> "$GITHUB_OUTPUT"
       - name: Avisar a IndexNow

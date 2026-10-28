@@ -2813,15 +2813,18 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='listas-29n-quien-encabeza', fecha='2026-10-26',
+        slug='listas-29n-quien-encabeza', fecha='2026-10-26', actualizado='2026-10-28 09:40',
         foto=dict(src='img/actualidad/fotos/listas-29n-quien-encabeza.jpg', ancho=1280, alto=720, ia=True,
                   pie='Dos papeletas, una morada y otra rosa, rasgadas a cada lado de un escaño vacío del Congreso, con dos sobres: un collage.'),
-        titulo='¿Sale tu candidato? Busca tu provincia: el día que se cierran las listas, 251 escaños están casi decididos y 210 candidatos se juegan los otros 99', serie='29n', figura=0,
-        descripcion='Con las encuestas de hoy, Vox tiene más puestos en el aire que seguros, y 18 de sus cabezas de lista no tienen el escaño garantizado. Irene Montero sale en 95 de cada 100 simulaciones; su número dos, en 56.',
-        compara='La probabilidad de salir elegido de cada puesto de cada lista al Congreso en las 52 circunscripciones, con el modelo de Mapa Electoral y la media de encuestas del 26 de octubre de 2026, y los nombres publicados de las listas.',
-        limites='Las probabilidades dependen de la media de encuestas y del reparto por provincia del modelo, cuyo método está publicado; cambiarán con las encuestas. Los nombres proceden de los partidos y la prensa antes del registro de candidaturas; las listas oficiales son las del BOE del 28 de octubre. El modelo trata a UPN como lista propia aunque va en coalición con el PP en Navarra.',
+        titulo='¿Sale tu candidato? Con las listas oficiales del BOE, 250 escaños están casi decididos y 204 candidatos se juegan los otros 100', serie='29n', figura=0,
+        descripcion='Las candidaturas ya son oficiales. Vox tiene más puestos en el aire que seguros, y 18 de sus cabezas de lista no tienen el escaño garantizado. Irene Montero sale en 95 de cada 100 simulaciones; su número dos, en 56.',
+        compara='La probabilidad de salir elegido de cada puesto de cada lista al Congreso en las 52 circunscripciones, con el modelo de Mapa Electoral y la media de encuestas del 26 de octubre de 2026, y los nombres de las candidaturas presentadas que publicó el BOE el 28 de octubre de 2026.',
+        limites='Las probabilidades dependen de la media de encuestas y del reparto por provincia del modelo, cuyo método está publicado; cambiarán con las encuestas. Los nombres son los de las candidaturas presentadas (BOE del 28 de octubre); las juntas electorales las proclaman el 2 de noviembre y pueden pedir correcciones. El modelo no mide como una sola lista las coaliciones UPN-PP (Navarra) y Unidad del Pueblo Canario (Canarias), y todavía reparte voto a la CUP, que no se presenta.',
         calculo='Para cada puesto k de cada lista y provincia, proporción de las 2.000 simulaciones en que la lista saca k escaños o más. Casi seguro: 90% o más; en el aire: entre 10% y 90%.',
-        fuentes=[('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños'),
+        fuentes=[('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-22607', 'BOE, candidaturas presentadas al Congreso y al Senado (28-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-boe-publica-listas-congreso-senado-29n-no-seran-definitivas-proxima-semana-20261028073650.html', 'Europa Press, el BOE publica las listas (28-10-2026)'),
+                 ('https://www.democrata.es/politica/ampliacion-la-militancia-de-la-cup-avala-no-concurrir-al-29n-con-un-68-9-de-apoyos/', 'Demócrata, la CUP no se presenta el 29N'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños'),
                  ('https://www.galiciapress.es/articulo/politica/2026-10-25/6065328-manana-ultimo-dia-registrar-listas-partidos-coaliciones-juntas-electorales-provinciales', 'Europa Press, último día para registrar las listas (25-10-2026)'),
                  ('https://www.diariosigloxxi.com/texto-s/mostrar/680244/feijoo-exige-cabezas-lista-pp-arquitectos-reconstruccion-frente-abalos-koldos-sanchez', 'Servimedia, Feijóo presenta a sus cabezas de lista (25-10-2026)'),
                  ('https://www.infobae.com/espana/agencias/2026/10/25/abascal-presenta-manana-en-un-acto-en-talavera-toledo-a-los-cabezas-de-lista-de-vox-para-las-elecciones-del-29n/', 'Infobae, cabezas de lista de Vox (25-10-2026)'),
@@ -2987,17 +2990,47 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='barrios-caseros-inquilinos-voto-29n', fecha='2026-10-28',
+        titulo='Donde viven los caseros gana el PP; donde viven los inquilinos, gana la abstención', serie='29n',
+        descripcion='En los códigos postales donde más de uno de cada cinco contribuyentes declara ingresos por alquiler, el PP sacó en 2023 el 52% y el PSOE, el 20%. Donde menos, ganó el PSOE. En los barrios con más hogares de alquiler el voto apenas cambia, pero se vota casi siete puntos menos, también a igual renta.',
+        compara='El porcentaje de declaraciones del IRPF de 2024 con rendimientos del capital inmobiliario (caseros) en 813 códigos postales de 66 grandes municipios, con el voto de las generales de julio de 2023 (sumando las secciones censales de cada código), en cinco grupos de menos a más caseros; el porcentaje de hogares que viven de alquiler (Censo de 2021) en las 36.000 secciones censales, con su participación; y las dos cosas dentro de cada ciudad o municipio y a igual renta, edad, extranjeros y estudios, con regresiones con efectos fijos de ciudad o de municipio y errores estándar agrupados.',
+        limites='Son datos de barrios, no de personas: no dicen cómo vota un casero ni un inquilino. Hacienda cuenta declaraciones, no personas, y las atribuye al domicilio de quien cobra el alquiler, no al del piso; no incluye empresas, no residentes ni pisos turísticos explotados como actividad económica, ni el País Vasco o Navarra. El código postal solo existe en las grandes ciudades, y las secciones se asignan al código donde cae la mayor parte de su superficie, con contornos del CNIG de 2015. Los datos fiscales son de 2024, los votos de 2023 y la tenencia de 2021. A igual renta, buena parte del efecto de los caseros es el de tener patrimonio en general: con las rentas del capital mobiliario en el modelo, se queda en la mitad. Cataluña se analiza aparte por su sistema de partidos.',
+        calculo='Caseros: declaraciones con rendimientos del capital inmobiliario sobre el total de declaraciones del código postal. Voto: porcentaje sobre votos válidos; participación, sobre el censo. Grupos: códigos postales con al menos 500 declaraciones fuera de Cataluña (687 de 56 ciudades), y secciones con al menos 200 electores fuera de Cataluña (28.268), en cinco grupos del mismo tamaño. Regresiones por mínimos cuadrados ponderados por censo, con efectos fijos de ciudad (códigos postales) o de municipio (secciones) y errores estándar agrupados por ciudad o municipio; controles: logaritmo de la renta neta por unidad de consumo (INE, 2024), porcentaje de hogares de alquiler, edad media, porcentaje de extranjeros y de titulados superiores; margen de error al 95%.',
+        fuentes=[('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfCodPostal/2024/home.html', 'Agencia Tributaria, Estadística de los declarantes del IRPF de los mayores municipios por código postal, 2024'),
+                 ('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfmunicipios/2024/home.html', 'Agencia Tributaria, Estadística de los declarantes del IRPF por municipios, 2024'),
+                 INTERIOR, INE_CENSO,
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=30824', 'INE, Atlas de Distribución de Renta de los Hogares: renta por sección censal, 2024 (tabla 30824)'),
+                 ('https://ine.es/experimental/viv_turistica/exp_viv_turistica_tablas.htm', 'INE, Medición del número de viviendas turísticas en España, mayo de 2026 (estadística experimental)'),
+                 ('https://centrodedescargas.cnig.es/CentroDescargas/', 'CNIG, códigos postales (CartoCiudad), vía github.com/inigoflores/ds-codigos-postales'),
+                 ('https://elpais.com/economia/2026-10-24/donde-viven-los-caseros-barrios-de-renta-alta-y-zonas-turisticas-concentran-a-quienes-declaran-ingresos-de-alquiler.html', 'El País, Pablo Sempere y Yolanda Clemente, ¿Dónde viven los caseros? (24-10-2026)'),
+                 ('https://www.dsca.gob.es/sites/default/files/prensa/Informe%201%20Multiarrendadores.pdf', 'Gil, Villas, García-Duch y Lebrusán, Un mercado dominado por multiarrendadores, Ministerio de Derechos Sociales, Consumo y Agenda 2030 e IFS-CSIC (2026)'),
+                 ('https://www.journals.uchicago.edu/doi/10.1086/714932', 'Andrew B. Hall y Jesse Yoder, Does Homeownership Influence Political Behavior?, The Journal of Politics 84(1) (2022)'),
+                 ('https://www.democrata.es/politica/ampliacion-casi-uno-de-cada-cinco-diputados-que-votara-los-decretos-de-vivienda-declara-ingresos-por-alquiler-entre-ellos-sanchez-y-feijoo/', 'Europa Press en Demócrata, Casi uno de cada cinco diputados que votará los decretos de vivienda declara ingresos por alquiler (29-9-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/barrios-caseros-inquilinos-voto-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano entrega unas llaves a otra delante de una calle de casas de pisos, junto a un contrato y un sobre.'),
+    ),
 ]
 
 PIEZAS += [
     dict(
         slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
-        titulo='Netanyahu se queda a cuatro escaños de la mayoría con el 40% escrutado, y la oposición solo llega a 61 con los partidos árabes', serie='internacional',
-        descripcion='Con 2,1 millones de votos contados, los cinco partidos del Gobierno saliente suman 57 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 47. Los dos partidos árabes tienen 16, y su peso ha ido subiendo a medida que avanzaba el recuento. Estas son las combinaciones posibles.',
-        compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 40% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 y la evolución del recuento durante la madrugada; frente a los resultados de 2022.',
-        limites='Resultados provisionales: el recuento oficial estaba en torno al 40% (2.122.846 votos válidos) y faltan, entre otros, los votos de los soldados. Los escaños cambiarán. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación.',
+        actualizado='2026-10-28 17:32',
+        titulo='Netanyahu se queda a ocho escaños de la mayoría: con el 86% escrutado, ya ni Liberman le daría los 61', serie='internacional',
+        descripcion='Con 4,85 millones de votos contados, los cinco partidos del Gobierno saliente suman 53 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 48. Los dos partidos árabes tienen 19. Estas son las combinaciones posibles, y el mapa del voto por localidad.',
+        compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 86% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
+        limites='Resultados provisionales, en actualización: el recuento oficial estaba en torno al 86% (83,4% de las urnas) y faltan, entre otros, los votos de los soldados. Los escaños cambiarán. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación. El mapa sitúa cada localidad en el centro de su término aproximado, con un círculo proporcional a los votos contados. La comparación con 2022 por distrito pondera cada localidad por la parte de colegios ya escrutada en 2026; no separa los cambios de participación de los cambios de voto. Distritos según la lista oficial de localidades de data.gov.il; Cisjordania son solo los asentamientos israelíes, donde no votan los palestinos.',
         fuentes=[('https://www.kikar.co.il/political-news/israel-elections-voting-turnout', 'Kikar HaShabbat, recuento oficial del Comité Central Electoral de Israel a las 4.03, 4.47 y 5.57 del 28-10-2026 (votos por partido)'),
                  ('https://www.israelnationalnews.com/news/435272', 'Arutz Sheva, reparto provisional de escaños con el 37,4% de los votos contados (28-10-2026)'),
+                 ('https://www.ynet.co.il/news/elections2026', 'Ynet, calculadora de escaños con el recuento oficial a las 14.34 del 28-10-2026 (votos y escaños por lista)'),
+                 ('https://www.ynet.co.il/news/blogs/article/hjvyjpc2fe', 'Ynet, reparto provisional de escaños con el 48% y el 60% escrutado (28-10-2026)'),
+                 ('https://www.ynetnews.com/article/hjnatbkaml', 'Ynetnews, reparto con el 65% escrutado y declaraciones de Golan, Eisenkot y Netanyahu (28-10-2026)'),
+                 ('https://www.mako.co.il/news-politics/2026_q4/liveblog-f5b5a09693081a1026.htm', 'Mako, reparto provisional de escaños con el 70% escrutado (28-10-2026, 10.52 hora de Israel)'),
+                 ('https://elections.kaplanopensource.co.il/26/', 'Kaplan Open Source, resultados del Comité Central Electoral por localidad (recuento provisional a las 14.41 del 28-10-2026)'),
+                 ('https://data.gov.il/dataset/votes-knesset', 'data.gov.il, resultados de la Knesset de 2022 por localidad (Comité Central Electoral)'),
+                 ('https://data.gov.il/dataset/citiesandsettelments', 'data.gov.il, lista de localidades con su distrito y subdistrito'),
                  ('https://en.wikipedia.org/wiki/2026_Israeli_legislative_election', 'Wikipedia, resultados de 2022 y composición de las listas de 2026'),
                  ('https://www.telemundo40.com/noticias/mundo/israel-elecciones-kneset-resultados-gadi-eisenkot-benjamin-netanyahu/2554061/', 'EFE vía Telemundo, Aún sin resultados electorales, opositor Eisenkot afirma triunfo (27-10-2026)'),
                  ('https://www.elconfidencial.com/mundo/2026-10-28/netanyahu-castigado-su-bloque-cae-en-escanos_4454401/', 'El Confidencial, Israel castiga (a medias) a Netanyahu (28-10-2026)'),
@@ -3006,7 +3039,7 @@ PIEZAS += [
         enlaces=[],
         lugar='Israel',
         foto=dict(src='img/actualidad/fotos/israel-pactos-escanos-knesset.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Las coaliciones posibles en la Knesset con el recuento provisional del 28 de octubre.', fuente='Comité Central Electoral de Israel, recuento provisional al 40%'),
+                  pie='Partido más votado en cada localidad de Israel, con el recuento provisional del 28 de octubre. El tamaño de cada círculo depende de los votos contados.', fuente='Comité Central Electoral de Israel, vía Kaplan Open Source (recuento provisional)'),
     ),
 ]
 
@@ -3064,6 +3097,7 @@ ANTETITULOS = {
     'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
     'barrios-rentistas-pp-psoe-29n': 'Dividendos y alquileres',
+    'barrios-caseros-inquilinos-voto-29n': 'Las llaves y la urna',
     'casas-vacias-segundas-residencias': 'La casa cerrada',
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
     'oficios-y-voto-municipios-29n': 'El despacho y la urna',
@@ -3217,7 +3251,7 @@ def fecha_iso(f):
 
 
 def nav(prefijo, actual):
-    items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'),
+    items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'), ('listas-electorales-29n/', 'Listas 29N'),
              ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
              ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
              ('sobre-mi.html', 'Sobre mí')]
@@ -3530,6 +3564,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'albiol-badalona-pp-29n': '2026-10-28',
     'rufian-montero-la-revuelta-29n': '2026-10-28',
     'feijoo-albiol-barcelona-disturbios-29n': '2026-10-28',
+    'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
 
@@ -3550,7 +3585,7 @@ def franja_portada(todas, pre=''):
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
-            f'<li class="todas"><a href="{pre}actualidad/"><b>Las {len(todas)} piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES)}</span></a></li></ul>'
+            f'<li class="todas"><a href="{pre}actualidad/"><b>Todas las piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES)}</span></a></li></ul>'
             '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
@@ -3570,7 +3605,7 @@ def franja_serie(todas, clave, cabecera, sub, pre=''):
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{q["lugar"]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie) +
-            f'<li class="todas"><a href="{pre}actualidad/#{clave}"><b>Las {len(serie)} piezas de la serie →</b><span>{sub}</span></a></li></ul>'
+            f'<li class="todas"><a href="{pre}actualidad/#{clave}"><b>Todas las piezas de la serie →</b><span>{sub}</span></a></li></ul>'
             '<script>(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})(document.currentScript.parentNode)</script></section>')
 

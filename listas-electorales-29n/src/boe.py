@@ -118,7 +118,7 @@ def lee(xml):
         if re.match(r'(?i)^no proclamada\.?$', t):
             cand['no_proclamada'] = True
             continue
-        if re.match(r'(?i)^suplentes\s*:?$', t):
+        if re.match(r'(?i)^suplentes?\s*:?$', t):
             en_suplentes = True
             continue
         ms = re.match(r'(?i)^suplente\s*(\d*)\s*:\s*(.+)$', t)
