@@ -283,7 +283,7 @@ const S = {
       const c = i === 0 ? col(s.colorIni) : i === n - 1 ? col(s.colorFin) : '#4a4f6e';
       ctx.fillStyle = c; rrect(x, bottom - h, bw, h, 8);
       if (marca.includes(i)) text(s.enteros ? miles(v * k) : (v * k).toFixed(1).replace('.', ','), x + bw / 2, bottom - h - 22, '800 48px ' + F.display, c, 'center', k);
-      text(String(i + 1), x + bw / 2, bottom + 44, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3));
+      text(s.etiquetas ? s.etiquetas[i] : String(i + 1), x + bw / 2, bottom + 44, '500 28px ' + F.mono, C.muted, 'center', ease((t - 0.4) / 0.3));
     });
     text(s.izq, X, bottom + 100, '500 28px ' + F.mono, col(s.colorIni), 'left', ease((t - 0.6) / 0.3));
     text(s.der, W - X, bottom + 100, '500 28px ' + F.mono, col(s.colorFin), 'right', ease((t - 0.6) / 0.3));
