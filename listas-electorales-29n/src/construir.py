@@ -52,7 +52,7 @@ PARTIDOS = [
     ('PP', r'^(PP|P\.P\.|PP-|UPN-PP|PP-UPN|PP-PAR)|PARTIDO POPULAR', 'PP', '#1d84ce', '#4fa8ea', 'PP'),
     ('PSOE', r'PSOE|^PSC\b|^PSE|^PSDEG|^PSIB|^PSN|SOCIALISTA OBRERO|SOCIALISTES DE CATALUNYA', 'PSOE', '#e30613', '#ff5a5f', 'PSOE'),
     ('VOX', r'^VOX$', 'Vox', '#5ac035', '#74d651', 'Vox'),
-    ('SUMAR', r'SUMAR|FRENTE AMPLIO|FRONT AMPLI|COMPROM[IÍ]S|EN COM[UÚ]|COMUNS|ECP\b|M[EÉ]S PER MALLORCA|MÁS MADRID|MÁS PAÍS', 'Sumar / Frente Amplio', '#a2275f', '#d0679a', 'Sumar'),
+    ('SUMAR', r'SUMAR|FRENTE AMPLI[OU]|FRONT AMPLI|FRONTE AMPLA|COMPROM[IÍ]S|EN COM[UÚ]|COMUNS|ECP\b|M[EÉ]S PER MALLORCA|MÁS MADRID|MÁS PAÍS', 'Sumar / Frente Amplio', '#a2275f', '#d0679a', 'Sumar'),
     ('PODEMOS', r'^PODEMOS|^UNIDAS PODEMOS', 'Podemos', '#5a3c8f', '#8a6fe0', 'Podemos'),
     ('SALF', r'SE ACAB[OÓ] LA FIESTA|^SALF', 'SALF', '#785a46', '#a9876f', 'SALF'),
     ('ERC', r'^ERC|ESQUERRA REPUBLICANA', 'ERC', '#f5b324', '#f7c454', 'ERC'),
