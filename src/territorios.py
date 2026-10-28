@@ -340,7 +340,7 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga, imagen=None):
     global RAIZ_REL
     RAIZ_REL = '../' * nivel
     raiz = RAIZ_REL
-    menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'),
+    menu = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'), ('listas-electorales-29n/', 'Listas 29N'),
             ('atlas/', 'Atlas'), ('actualidad/', 'Actualidad'), ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
             ('sobre-mi.html', 'Sobre mí')]
     actual = ruta.split('/')[0] + '/'
@@ -429,6 +429,16 @@ ESPANA = {'@type': 'Country', 'name': 'España'}
 
 
 # ---------- páginas de territorio ----------
+def enlace_listas(provs, raiz):
+    """Enlace a las listas del 29N (BOE) de cada circunscripción: listas-electorales-29n/<provincia>/."""
+    if len(provs) == 1:
+        p = provs[0]
+        return (f'<p class="listas29"><a href="{raiz}listas-electorales-29n/{PROV_SLUG[p]}/">Candidatos del 29N por {escape(PROV_NOMBRE[p])}: '
+                'las listas al Congreso y al Senado, puesto a puesto →</a></p>')
+    return ('<p class="listas29">Candidatos del 29N, las listas al Congreso y al Senado de cada provincia: '
+            + ' · '.join(f'<a href="{raiz}listas-electorales-29n/{PROV_SLUG[p]}/">listas por {escape(PROV_NOMBRE[p])}</a>' for p in sorted(provs, key=lambda p: PROV_NOMBRE[p])) + '.</p>')
+
+
 def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(), tipo_txt='Comunidad', contenido=None, ccaa=None):
     df = T.MUN[T.MUN.prov.isin(provs)]
     sec = T.SEC[T.SEC.prov.isin(provs)]
@@ -455,6 +465,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, en, r, serie, ccaa)}</p>')
     mayor = df.sort_values('poblacion', ascending=False).iloc[0]
     h.append(f'<p><a class="vermapa" href="{raiz}?m={mayor.mun_code}">Ver {escape(mayor.municipio)} y el resto de {escape(nombre)} en el mapa por sección censal</a></p>')
+    h.append(enlace_listas(provs, raiz))
     if hijos:
         h.append('<h2>Provincias</h2>' + tabla(f'Generales de 2023 {en}, por provincia', ['Provincia', 'Participación', 'Más votado', 'Segundo'],
                                                 [hijo for hijo in hijos]))
@@ -663,6 +674,7 @@ def pagina_ciudad(cod):
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
                 f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
     h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"calle a calle " if b_sec else ""}en el mapa por sección censal</a></p>')
+    h.append(enlace_listas([p], raiz))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
     h.append(b_sec)
@@ -1184,6 +1196,9 @@ def tema_votar():
                   f'Y el mismo domingo cada colegio tiene un callejero con la mesa que corresponde a cada calle (<a href="{PUBLICO_MESA}">Público</a>).')
              + f'<p>Si quieres ver cuántos electores hay en tu municipio y cómo votó tu barrio en 2023, búscalo en el <a href="{raiz}municipio/">índice de municipios</a> o en el <a href="{raiz}">mapa</a>.</p>')
 
+    h.append('<h2 id="candidatos">Quién va en cada papeleta</h2>'
+             + p_('Dato', f'Antes de ir puedes ver a los candidatos de cada partido: las <a href="{raiz}listas-electorales-29n/">listas electorales del 29N</a> al Congreso y al Senado '
+                  'de las 52 circunscripciones, tal como las publica el BOE, con un buscador por nombre y una página por provincia.'))
     h.append('<h2 id="documentos">Qué llevar</h2>'
              + p_('Dato', f'El DNI, el pasaporte o el permiso de conducir, con tu fotografía y en original (<a href="{LOREG}">artículo 85 de la LOREG</a>). '
                   'La tarjeta censal no es obligatoria: sirve para saber tu mesa, no para votar.'))
@@ -1543,7 +1558,8 @@ def tema_29n(resumen):
              + tabla('Votos y escaños de cada partido en las generales de 2023', ['Partido', 'Votos', '% del voto válido', 'Escaños', 'Con el reparto de 2026'],
                      [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
              + f'<p class="leyenda">Fuente: Ministerio del Interior. Votos y escaños por candidatura. Cálculo del reparto con la regla D\'Hondt en <a href="{raiz}actualidad/precio-del-escano-29n/">el precio del escaño</a>.</p>'
-            f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar tras el 29N? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>')
+            f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar tras el 29N? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>'
+            f'<p><a href="{raiz}listas-electorales-29n/">Listas electorales del 29N: busca a los candidatos al Congreso y al Senado de cada provincia →</a></p>')
     cuenta = {}
     for g in gp.values():
         cuenta[g] = cuenta.get(g, 0) + 1
@@ -1847,7 +1863,8 @@ def tema_resultados(resumen):
              + tabla('Votos y escaños de cada partido en las generales de 2023', ['Partido', 'Votos', '% del voto válido', 'Escaños', 'Con el reparto de 2026'],
                      [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
              + '<p class="leyenda">Fuente: Ministerio del Interior.</p>'
-            f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>')
+            f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>'
+            f'<p><a href="{raiz}listas-electorales-29n/">Listas electorales del 29N: los candidatos de cada partido en las 52 provincias →</a></p>')
     h.append(bloque_resultado('España', e))
     rp = {p: r_prov(p) for p in ESCANOS_2026}
     gp = {p: T.ganador(r) for p, r in rp.items()}
