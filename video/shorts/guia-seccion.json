@@ -1,0 +1,158 @@
+{
+  "plantilla": "guia",
+  "kicker": "EL MAPA CALLE A CALLE",
+  "colores": {
+    "PP": "#1d84ce",
+    "PSOE": "#e30613",
+    "Sumar": "#a2275f"
+  },
+  "escenas": [
+    {
+      "tipo": "hook",
+      "dur": 2.6,
+      "lineas": [
+        "España no vota",
+        "por provincias:",
+        "vota en",
+        [
+          [
+            "36.459 barrios",
+            "vote"
+          ]
+        ]
+      ]
+    },
+    {
+      "tipo": "zoom",
+      "dur": 12.0,
+      "secciones": "sec28",
+      "foco": "2807901023",
+      "focoT": 7.6,
+      "camara": [
+        [
+          0,
+          -3.6,
+          39.4,
+          16.5
+        ],
+        [
+          1.2,
+          -3.6,
+          39.4,
+          16.5
+        ],
+        [
+          4.2,
+          -3.72,
+          40.42,
+          1.0
+        ],
+        [
+          6.6,
+          -3.7093996641114764,
+          40.4092,
+          0.09
+        ],
+        [
+          7.4,
+          -3.7093996641114764,
+          40.4092,
+          0.016
+        ],
+        [
+          12,
+          -3.7093996641114764,
+          40.4092,
+          0.014
+        ]
+      ],
+      "textos": [
+        [
+          0,
+          3.6,
+          [
+            "8.131 municipios…"
+          ],
+          "Partido más votado en las generales de 2023"
+        ],
+        [
+          3.6,
+          7.3,
+          [
+            "…y cada uno, dividido",
+            "en secciones censales"
+          ],
+          "Madrid, sección a sección"
+        ],
+        [
+          7.3,
+          12,
+          [
+            "Una sección: entre 500",
+            "y 2.500 electores"
+          ],
+          "Embajadores (Lavapiés), Madrid"
+        ]
+      ],
+      "ficha": [
+        [
+          "924",
+          "electores",
+          "fg"
+        ],
+        [
+          "69,9 %",
+          "votó el 23J",
+          "fg"
+        ],
+        [
+          "Sumar",
+          "el más votado",
+          "Sumar"
+        ],
+        [
+          "30 %",
+          "población extranjera",
+          "fg"
+        ]
+      ]
+    },
+    {
+      "tipo": "numeros",
+      "dur": 3.6,
+      "titulo": [
+        "Cada una con su",
+        "resultado y sus datos"
+      ],
+      "items": [
+        [
+          "18.436",
+          "PP",
+          [
+            "secciones donde ganó el PP"
+          ]
+        ],
+        [
+          "16.090",
+          "PSOE",
+          [
+            "donde ganó el PSOE"
+          ]
+        ]
+      ]
+    },
+    {
+      "tipo": "cierre",
+      "dur": 3.2,
+      "lineas": [
+        "Busca tu calle",
+        "en el mapa"
+      ],
+      "ruta": "/elecciones/mapa-electoral-seccion-censal/"
+    }
+  ],
+  "fuente": [
+    "Fuentes: Ministerio del Interior (generales del",
+    "23J) e INE (secciones censales y población)."
+  ]
+}

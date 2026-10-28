@@ -1,0 +1,248 @@
+{
+ "plantilla": "guia",
+ "kicker": "ENCUESTAS DEL 29N · 27 DE OCTUBRE",
+ "colores": {
+  "PP": "#1d84ce",
+  "PSOE": "#e30613",
+  "Vox": "#5ac035",
+  "Sumar": "#a2275f",
+  "Podemos": "#5a3c8f"
+ },
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 2.8,
+   "lineas": [
+    "A 33 días del 29N,",
+    "¿qué dicen",
+    [
+     [
+      "las encuestas?",
+      "vote"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "tabla",
+   "dur": 4.6,
+   "titulo": [
+    "4 encuestas",
+    "publicadas ayer"
+   ],
+   "sub": "% de voto estimado",
+   "cols": [
+    [
+     "PP",
+     "PP"
+    ],
+    [
+     "PSOE",
+     "PSOE"
+    ],
+    [
+     "Vox",
+     "Vox"
+    ]
+   ],
+   "filas": [
+    [
+     "SocioMétrica",
+     "El Español",
+     32.4,
+     27.0,
+     18.6
+    ],
+    [
+     "NC Report",
+     "La Razón",
+     33.1,
+     25.8,
+     19.0
+    ],
+    [
+     "Winston",
+     "Artículo14",
+     29.4,
+     27.1,
+     19.2
+    ],
+    [
+     "Sigma Dos",
+     "El Mundo",
+     30.6,
+     26.1,
+     19.9
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 3.8,
+   "titulo": [
+    "El PP gana en",
+    "15 de 16 encuestas"
+   ],
+   "items": [
+    [
+     "15",
+     "PP",
+     [
+      "de las 16 encuestadoras del último",
+      "mes dan ganador al PP"
+     ]
+    ],
+    [
+     "1",
+     "PSOE",
+     [
+      "da ganador al PSOE:",
+      "el CIS"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "barrasH",
+   "dur": 4.2,
+   "titulo": [
+    "La mediana",
+    "de las encuestas"
+   ],
+   "sub": "% de voto estimado, últimas 3 semanas",
+   "max": 36,
+   "filas": [
+    [
+     "PP",
+     "PP",
+     31.4
+    ],
+    [
+     "PSOE",
+     "PSOE",
+     26.7
+    ],
+    [
+     "Vox",
+     "Vox",
+     19.0
+    ],
+    [
+     "Sumar",
+     "Sumar",
+     6.8
+    ],
+    [
+     "Podemos",
+     "Podemos",
+     2.6
+    ]
+   ]
+  },
+  {
+   "tipo": "horquillas",
+   "dur": 5.4,
+   "titulo": [
+    "PP + Vox, escaños",
+    "en cada encuesta"
+   ],
+   "sub": "Horquilla de cada encuestadora",
+   "eje": [
+    150,
+    220
+   ],
+   "linea": 176,
+   "lineaTxt": "176: mayoría",
+   "color": "PP",
+   "filas": [
+    [
+     "Hamalgama Métrica",
+     212,
+     212
+    ],
+    [
+     "NC Report",
+     206,
+     210
+    ],
+    [
+     "DYM",
+     200,
+     208
+    ],
+    [
+     "Data10",
+     203,
+     203
+    ],
+    [
+     "Target Point",
+     199,
+     203
+    ],
+    [
+     "SocioMétrica",
+     200,
+     200
+    ],
+    [
+     "40dB.",
+     186,
+     214
+    ],
+    [
+     "GAD3",
+     198,
+     198
+    ],
+    [
+     "Ateneo del Dato",
+     183,
+     211
+    ],
+    [
+     "Sigma Dos",
+     191,
+     200
+    ],
+    [
+     "IMOP Insights",
+     195,
+     195
+    ],
+    [
+     "EM-Analytics",
+     194,
+     194
+    ],
+    [
+     "GESOP",
+     189,
+     197
+    ],
+    [
+     "Winston",
+     191,
+     191
+    ]
+   ],
+   "nota": [
+    "14 de 14 les dan mayoría absoluta"
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.2,
+   "lineas": [
+    "Todas las",
+    "encuestas,",
+    "cada día"
+   ],
+   "ruta": "/encuestas/"
+  }
+ ],
+ "fuente": [
+  "Encuestas publicadas, vía Electográfica y Wikipedia.",
+  "La mediana resume encuestas: no es una previsión."
+ ]
+}

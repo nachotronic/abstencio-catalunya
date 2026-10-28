@@ -1,0 +1,10 @@
+{"plantilla": "guia", "kicker": "QUIÉN VOTA · RENTA Y PARTICIPACIÓN",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035", "CERA": "#e0a440"},
+ "fuente": ["Fuentes: Ministerio del Interior; INE, renta por", "unidad de consumo 2023 (36.462 secciones)."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.4, "cuenta": 1.4, "lineas": ["Puntos más de", "participación en los", "barrios ricos que en", "los pobres (23J):"], "contador": 15, "color": "vote", "size": 84},
+  {"tipo": "barras", "dur": 5.4, "titulo": ["La brecha se ha", "duplicado desde 2004"], "sub": "Puntos de diferencia, 10% más rico vs 10% más pobre", "valores": [7.9, 8.0, 9.9, 13.5, 14.0, 15.3, 16.7, 15.2], "etiquetas": ["'04", "'08", "'11", "'15", "'16", "A19", "N19", "'23"], "min": 0, "max": 18, "marcar": [0, 6, 7], "colorIni": "vote", "colorFin": "CERA", "izq": "Generales 2004", "der": "2023"},
+  {"tipo": "parejas", "dur": 5.6, "titulo": ["En las europeas,", "22 puntos"], "sub": "Participación: 10% de secciones más pobre y más rico", "max": 80, "claves": ["más pobres", "más ricos"], "pares": [["Gen. 23", "vote", 62.6, 77.8], ["Mun. 23", "vote", 58.1, 70.1], ["Eur. 24", "CERA", 39.2, 61.4]]},
+  {"tipo": "parejas", "dur": 5.6, "titulo": ["Y no votan", "lo mismo"], "sub": "Voto el 23J en el 10% más pobre y el más rico", "max": 50, "claves": ["más pobres", "más ricos"], "pares": [["PSOE", "PSOE", 41.2, 20.3], ["PP", "PP", 29.4, 43.5], ["Vox", "Vox", 15.4, 12.0]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Quién vota", "en España"], "ruta": "/actualidad/quien-vota-barrios-renta-edad-inmigracion/"}
+ ]}

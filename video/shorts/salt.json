@@ -1,0 +1,20 @@
+{
+  "kicker": "GENERALES 23J · CATALUÑA",
+  "metric": {"field": "v", "mean": 0.54, "spread": 0.25, "legend": "Adultos que votaron, por sección censal"},
+  "hook": ["En Salt, solo", [["1 de cada 3", "abst"]], "adultos votó"],
+  "map": {"title": ["En Cataluña votaron", [["54 de cada 100", "vote"], [" adultos", "fg"]]],
+          "sub": ["Pero en el eje Salt, Lloret y Figueres", "la cifra se hunde"]},
+  "region": {"at": "mun:Salt", "dx": 0.03, "dy": -0.01, "w": 0.8},
+  "labels": [
+    {"at": "mun:Girona", "name": "Girona", "value": 0.498, "note": "votaron 50 de 100", "dx": 90, "dy": -90},
+    {"at": "mun:Salt", "name": "Salt", "value": 0.337, "note": "votaron 34 de 100", "dx": -30, "dy": 150},
+    {"at": "mun:Figueres", "name": "Figueres", "value": 0.395, "note": "votaron 40 de 100", "dx": -60, "dy": -40, "side": "left"},
+    {"at": "mun:Lloret de Mar", "name": "Lloret de Mar", "value": 0.358, "note": "votaron 36 de 100", "dx": -80, "dy": -40, "side": "left"}
+  ],
+  "focus": {"at": "mun:Salt", "dy": 0.012, "w": 0.085},
+  "final": {"type": "stack", "title": ["De cada 100 adultos", "que viven en Salt…"],
+            "note": ["No tener la nacionalidad española deja fuera a 39 de cada 100"],
+            "parts": [[0.337, "vote", "votaron"], [0.277, "abst", "pudieron y no votaron"], [0.386, "noright", "no tienen derecho a voto"]]},
+  "outro": ["Quién no vota", "y por qué,", "sección a sección"],
+  "source": ["Fuente: Ministerio del Interior e INE (2023).", "Adultos residentes, generales del 23 de julio de 2023."]
+}

@@ -1,0 +1,16 @@
+{
+  "plantilla": "guia",
+  "kicker": "PARTICIPACIÓN · GENERALES 23J",
+  "rampaPart": [[0.60, "#e9eef2", "menos del 60 %"], [0.65, "#c3d2dc", "60-65 %"], [0.70, "#93aec0", "65-70 %"], [0.75, "#6489a3", "70-75 %"], [0.80, "#3d6683", "75-80 %"], [9, "#1f4560", "80 % o más"]],
+  "escenas": [
+    {"tipo": "hook", "dur": 2.8, "lineas": ["En 538 barrios", "de España votó", "menos de", [["la mitad", "#c77da3"]]]},
+    {"tipo": "mapamun", "dur": 4.6, "titulo": ["Se vota más en el", "interior y en el norte"], "sub": "Participación del censo residente por municipio", "revelar": 1.8},
+    {"tipo": "barras", "dur": 5.0, "titulo": ["Y más en los", "barrios con más renta"], "sub": "Participación por decil de renta de la sección (%)",
+     "valores": [62.6, 67.6, 68.8, 69.6, 70.2, 70.6, 70.9, 71.9, 73.8, 77.8], "min": 0, "max": 80, "colorIni": "#c77da3", "colorFin": "vote",
+     "izq": "← menos renta", "der": "más renta →", "nota": ["En Málaga, la brecha va", "del 46,7 % al 80,6 %."]},
+    {"tipo": "numeros", "dur": 3.6, "titulo": ["36.459 secciones,", "barrio a barrio"],
+     "items": [["538", "#c77da3", ["votaron menos de la mitad", "de sus electores"]], ["4.691", "vote", ["votaron el 80 % o más"]]]},
+    {"tipo": "cierre", "dur": 3.2, "lineas": ["¿Cuánto vota", "tu barrio?"], "ruta": "/elecciones/participacion-electoral-por-barrio/"}
+  ],
+  "fuente": ["Fuente: Ministerio del Interior e INE (renta).", "Censo residente, generales del 23 de julio de 2023."]
+}

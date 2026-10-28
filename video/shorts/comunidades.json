@@ -1,0 +1,587 @@
+{
+ "plantilla": "guia",
+ "kicker": "LAS COMUNIDADES EN LAS URNAS",
+ "colores": {
+  "ERC": "#f5b324",
+  "JUNTS": "#20c0b2",
+  "PNV": "#2b8a3e",
+  "PP": "#1d84ce",
+  "PSOE": "#e30613",
+  "SUMAR": "#a2275f",
+  "UCD": "#ef6c1a",
+  "VOX": "#5ac035",
+  "CERA": "#e0a440"
+ },
+ "fuente": [
+  "Fuente: Ministerio del Interior, generales 1977-2023.",
+  "Ganador: partido o familia más votada en la comunidad."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 4.2,
+   "cuenta": 1.4,
+   "lineas": [
+    "Generales en las que",
+    "Aragón votó lo mismo",
+    "que toda España:"
+   ],
+   "contador": 16,
+   "color": "vote",
+   "size": 92
+  },
+  {
+   "tipo": "rejilla",
+   "dur": 8.5,
+   "titulo": [
+    "Quién ganó",
+    "en cada comunidad"
+   ],
+   "sub": "16 generales. Cifra: veces que coincide con España",
+   "cols": [
+    "'77",
+    "'79",
+    "'82",
+    "'86",
+    "'89",
+    "'93",
+    "'96",
+    "'00",
+    "'04",
+    "'08",
+    "'11",
+    "'15",
+    "'16",
+    "'19A",
+    "'19N",
+    "'23"
+   ],
+   "filas": [
+    [
+     "España",
+     "",
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Aragón",
+     16,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "C.-La Mancha",
+     14,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Asturias",
+     13,
+     [
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Baleares",
+     13,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Canarias",
+     13,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PSOE"
+     ]
+    ],
+    [
+     "Extremadura",
+     13,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PSOE",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PSOE"
+     ]
+    ],
+    [
+     "Cantabria",
+     12,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP"
+     ]
+    ],
+    [
+     "La Rioja",
+     12,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Ceuta",
+     12,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "VOX",
+      "PP"
+     ]
+    ],
+    [
+     "Andalucía",
+     11,
+     [
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PSOE",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Castilla y León",
+     11,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP"
+     ]
+    ],
+    [
+     "C. Valenciana",
+     11,
+     [
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Madrid",
+     11,
+     [
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PSOE",
+      "PP"
+     ]
+    ],
+    [
+     "Murcia",
+     11,
+     [
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "VOX",
+      "PP"
+     ]
+    ],
+    [
+     "Navarra",
+     10,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP"
+     ]
+    ],
+    [
+     "Melilla",
+     10,
+     [
+      "UCD",
+      "UCD",
+      "PSOE",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP"
+     ]
+    ],
+    [
+     "Galicia",
+     9,
+     [
+      "UCD",
+      "UCD",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PP",
+      "PSOE",
+      "PP",
+      "PP"
+     ]
+    ],
+    [
+     "Cataluña",
+     6,
+     [
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "PSOE",
+      "JUNTS",
+      "SUMAR",
+      "SUMAR",
+      "ERC",
+      "ERC",
+      "PSOE"
+     ]
+    ],
+    [
+     "País Vasco",
+     2,
+     [
+      "PNV",
+      "PNV",
+      "PNV",
+      "PNV",
+      "PNV",
+      "PSOE",
+      "PNV",
+      "PNV",
+      "PNV",
+      "PSOE",
+      "PNV",
+      "SUMAR",
+      "SUMAR",
+      "PNV",
+      "PNV",
+      "PSOE"
+     ]
+    ]
+   ],
+   "separar": 1,
+   "marcar": [
+    0,
+    1
+   ],
+   "foco": 4.6,
+   "barrido": 2.6,
+   "leyenda": [
+    [
+     "PSOE",
+     "PSOE"
+    ],
+    [
+     "PP",
+     "PP"
+    ],
+    [
+     "UCD",
+     "UCD"
+    ],
+    [
+     "PNV",
+     "PNV"
+    ],
+    [
+     "SUMAR",
+     "Podemos"
+    ],
+    [
+     "ERC",
+     "ERC"
+    ],
+    [
+     "JUNTS",
+     "CiU"
+    ],
+    [
+     "VOX",
+     "Vox"
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.6,
+   "titulo": [
+    "El espejo",
+    "y los que van aparte"
+   ],
+   "items": [
+    [
+     "16",
+     "vote",
+     [
+      "Aragón: siempre con",
+      "el ganador de España"
+     ]
+    ],
+    [
+     "6",
+     "ERC",
+     [
+      "Cataluña: CiU, En Comú",
+      "y ERC también ganaron allí"
+     ]
+    ],
+    [
+     "2",
+     "PNV",
+     [
+      "País Vasco: el PNV ganó",
+      "11 de las 16 generales"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.4,
+   "lineas": [
+    "Aragón,",
+    "el espejo de España"
+   ],
+   "ruta": "/actualidad/aragon-historia-electoral/"
+  }
+ ]
+}

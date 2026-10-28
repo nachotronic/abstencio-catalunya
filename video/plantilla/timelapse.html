@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=block" rel="stylesheet">
+<style>html,body{margin:0;background:#12141d}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+// Short vertical 9:16: mapa municipal de España elección tras elección. Guion en shorts/<nombre>.json (?c=<nombre>).
+// Escenas: gancho (G.hookDur) · una elección cada G.per segundos · datos finales opcionales (G.facts) · cierre.
+const W = 1080, H = 1920;
+const C = {bg:'#12141d', fg:'#e8eaf2', muted:'#9aa0b8', vote:'#7d8ce8', empty:'#2a2e3e', none:'#2e3247'};
+const F = {display:'"Bricolage Grotesque"', body:'"Newsreader"', mono:'"IBM Plex Mono"'};
+const ctx = document.getElementById('c').getContext('2d');
+let G, M, FAM, EL, BOX, T = {};
+const LOGO = new Image();
+LOGO.src = '../../favicon.svg';
+
+const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const inout = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3)/2; };
+const back = x => { x = clamp(x); const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, k) => a + (b - a) * k;
+const famColor = i => i < 0 ? C.none : FAM[i].color;
+const miles = v => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+// Para texto sobre fondo oscuro: aclara los colores de partido muy oscuros
+function legible(c) {
+  const v = [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
+  return Math.max(...v) < 140 ? mixHex(c, '#ffffff', 0.45) : c;
+}
+const col = c => C[c] || (FAM && FAM.find(f => f.cod === c) || {}).color || c;
+function mixHex(c1, c2, k) {
+  const p = c => [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
+  const a = p(c1), b = p(c2);
+  return 'rgb(' + a.map((v, i) => Math.round(lerp(v, b[i], k))).join(',') + ')';
+}
+
+async function load() {
+  G = await (await fetch('../shorts/' + new URLSearchParams(location.search).get('c') + '.json')).json();
+  M = await (await fetch('../comun/espana.json')).json();
+  FAM = M.familias;
+  EL = G.elecciones;
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  M.meta = M.poly.map((rings, i) => {
+    let a = 1e9, b = 1e9, c = -1e9, d = -1e9;
+    for (const r of rings) for (let j = 0; j < r.length; j += 2) { a = Math.min(a, r[j]); c = Math.max(c, r[j]); b = Math.min(b, r[j+1]); d = Math.max(d, r[j+1]); }
+    x0 = Math.min(x0, a); y0 = Math.min(y0, b); x1 = Math.max(x1, c); y1 = Math.max(y1, d);
+    return {cx: (a + c) / 2, cy: (b + d) / 2};
+  });
+  BOX = {x0, y0, x1, y1};
+  // orden de cambio: barrido de oeste a este con algo de azar
+  M.meta.forEach(o => { const r = Math.abs(Math.sin(o.cx * 912.7 + o.cy * 331.1) * 43758.5) % 1; o.o = 0.65 * r + 0.35 * (o.cx - x0) / (x1 - x0); });
+  // cuántos municipios gana cada familia en cada elección
+  for (const e of EL) {
+    const n = new Array(FAM.length).fill(0);
+    for (const g of M.gana[e.cod]) if (g >= 0) n[g]++;
+    e.n = n;
+  }
+  // tiempos
+  T.e0 = G.hookDur; T.e1 = T.e0 + EL.length * G.per;
+  T.f1 = T.e1 + (G.facts ? G.factsDur : 0);
+  T.end = T.f1 + 3;
+  window.DUR = T.end;
+  await document.fonts.load('800 40px ' + F.display);
+  await document.fonts.load('400 40px ' + F.body);
+  await document.fonts.load('500 40px ' + F.mono);
+  await document.fonts.ready;
+  await LOGO.decode();
+}
+
+function text(str, x, y, font, color, align='left', alpha=1, scale=1) {
+  if (alpha <= 0) return;
+  ctx.save(); ctx.globalAlpha = clamp(alpha); ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+  ctx.strokeStyle = 'rgba(18,20,29,.85)'; ctx.lineWidth = 8; ctx.lineJoin = 'round';
+  ctx.translate(x, y); ctx.scale(scale, scale); ctx.strokeText(str, 0, 0); ctx.fillText(str, 0, 0); ctx.restore();
+}
+function pop(arr, x, y, size, lh, t0, t, step=0.18, align='left') {
+  const f = '800 ' + size + 'px ' + F.display;
+  arr.forEach((l, i) => {
+    const k = (t - t0 - i * step) / 0.35;
+    if (k <= 0) return;
+    ctx.save(); ctx.font = f;
+    const parts = typeof l === 'string' ? [[l, C.fg]] : l;
+    const wTot = parts.reduce((s, p) => s + ctx.measureText(p[0]).width, 0);
+    ctx.translate(align === 'center' ? x : x + 0, y + i * lh); ctx.scale(back(k), back(k));
+    let cx = align === 'center' ? -wTot / 2 : 0;
+    for (const [str, c] of parts) { text(str, cx, 0, f, col(c), 'left', clamp(k * 3)); cx += ctx.measureText(str).width; }
+    ctx.restore();
+  });
+}
+
+// Índice de la elección en pantalla y avance del cambio de colores
+function state(t) {
+  if (t < T.e0) return {i: 0, k: 0, lt: -1};
+  const i = Math.min(EL.length - 1, Math.floor((t - T.e0) / G.per));
+  const lt = t - T.e0 - i * G.per;
+  return {i, k: i === 0 ? 1 : clamp(lt / Math.min(0.55, G.per * 0.5)), lt};
+}
+
+function drawMap(t, top, h) {
+  const s = state(t);
+  const cur = M.gana[EL[s.i].cod], prev = s.i > 0 ? M.gana[EL[s.i - 1].cod] : null;
+  const bw = BOX.x1 - BOX.x0, bh = BOX.y1 - BOX.y0;
+  const zoom = 1 + 0.06 * clamp(t / T.e1);   // la cámara se acerca despacio durante toda la serie
+  const sc = Math.min((W - 130) / bw, h / bh) * zoom;
+  const ox = W / 2 - (BOX.x0 + bw / 2) * sc, oy = top + h / 2 - (BOX.y0 + bh / 2) * sc;
+  const reveal = t < T.e0 ? ease((t - 0.3) / 1.2) : 1;
+  ctx.save();
+  for (let i = 0; i < M.poly.length; i++) {
+    const o = M.meta[i];
+    let c;
+    if (!prev) c = famColor(cur[i]);
+    else {
+      const kk = clamp((s.k * 1.6 - o.o * 0.6));
+      c = kk >= 1 || prev[i] === cur[i] ? famColor(cur[i]) : kk <= 0 ? famColor(prev[i]) : mixHex(famColor(prev[i]), famColor(cur[i]), kk);
+    }
+    ctx.globalAlpha = t < T.e0 ? 0.25 + 0.75 * clamp(reveal * 1.4 - o.o * 0.4) : 1;
+    ctx.fillStyle = c;
+    ctx.beginPath();
+    for (const r of M.poly[i]) {
+      ctx.moveTo(r[0] * sc + ox, r[1] * sc + oy);
+      for (let j = 2; j < r.length; j += 2) ctx.lineTo(r[j] * sc + ox, r[j+1] * sc + oy);
+      ctx.closePath();
+    }
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+// Barra de municipios ganados, que se interpola entre elecciones
+function bar(t, y) {
+  const s = state(t), e = EL[s.i], p = s.i > 0 ? EL[s.i - 1] : e, k = s.k;
+  const n = e.n.map((v, j) => lerp(p.n[j], v, k)), tot = n.reduce((a, b) => a + b, 0);
+  const X = 72, w = W - 2 * X;
+  text(G.barLabel || 'Municipios donde fue el partido más votado', X, y - 24, '500 28px ' + F.mono, C.muted);
+  let acc = 0;
+  const order = n.map((v, j) => [v, j]).sort((a, b) => b[0] - a[0]);
+  for (const [v, j] of order) {
+    if (v <= 0) continue;
+    ctx.fillStyle = FAM[j].color; ctx.fillRect(X + acc / tot * w, y, v / tot * w + 0.5, 54);
+    acc += v;
+  }
+  order.slice(0, 3).forEach(([v, j], r) => {
+    const nm = (G.alias && G.alias[FAM[j].cod]) || FAM[j].nombre;
+    text(nm, X, y + 118 + r * 58, '700 44px ' + F.display, legible(FAM[j].color));
+    text(miles(v), W - X, y + 118 + r * 58, '500 40px ' + F.mono, C.fg, 'right');
+  });
+}
+
+function render(t) {
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+  const X = 72;
+  drawMap(t, 560, 760);
+  text(G.kicker, X, 150, '500 30px ' + F.mono, C.muted, 'left', t < T.f1 ? 1 : 0);
+
+  if (t < T.e0) {
+    pop(G.hook, X, 250, 84, 92, 0.1, t, 0.25);
+  } else if (t < T.e1) {
+    const s = state(t), e = EL[s.i];
+    // el año cuenta desde el anterior
+    const y0 = s.i > 0 ? EL[s.i - 1].year : e.year, yr = Math.round(lerp(y0, e.year, ease(s.lt / 0.35)));
+    const pk = s.lt < 0.3 ? back(s.lt / 0.3) : 1;
+    text(String(yr), X, 330, '800 200px ' + F.display, C.fg, 'left', 1, pk);
+    text(e.label || '', W - X, 330, '500 32px ' + F.mono, C.muted, 'right', ease(s.lt / 0.3));
+    const wc = legible(col(e.color));
+    text(e.who, X, 412, '800 64px ' + F.display, wc, 'left', ease((s.lt - 0.1) / 0.3), back((s.lt - 0.1) / 0.3));
+    text(e.seats || '', W - X, 412, '500 32px ' + F.mono, C.fg, 'right', ease((s.lt - 0.2) / 0.3));
+    if (e.note) text(e.note, X, 470, '400 36px ' + F.body, C.muted, 'left', ease((s.lt - 0.3) / 0.3));
+    bar(t, 1360);
+    // barra de progreso de la serie
+    const pr = (t - T.e0) / (T.e1 - T.e0);
+    ctx.fillStyle = C.empty; ctx.fillRect(X, 505, W - 2 * X, 6);
+    ctx.fillStyle = C.fg; ctx.fillRect(X, 505, (W - 2 * X) * pr, 6);
+  } else if (t < T.f1) {
+    const lt = t - T.e1;
+    ctx.globalAlpha = 0.8 * ease(lt / 0.3); ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+    pop(G.facts.title, X, 300, 84, 96, 0, lt);
+    G.facts.items.forEach(([n, c, l], i) => {
+      const k = ease((lt - 0.5 - i * 0.5) / 0.4), y = 620 + i * 290;
+      const num = n.replace(/[\d.]+/, d => miles(parseInt(d.replace(/\./g, '')) * k));
+      text(num, X, y, '800 130px ' + F.display, legible(col(c)), 'left', k);
+      [].concat(l).forEach((ln, j) => text(ln, X, y + 66 + j * 50, '400 42px ' + F.body, C.fg, 'left', k));
+    });
+  } else {
+    const lt = t - T.f1;
+    ctx.globalAlpha = 0.92 * ease(lt / 0.3); ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+    const k = back(lt / 0.4);
+    ctx.save(); ctx.translate(W / 2, 530); ctx.scale(k, k); ctx.globalAlpha = clamp(lt * 4); ctx.drawImage(LOGO, -90, -90, 180, 180); ctx.restore();
+    pop(G.outro, W / 2, 760, 96, 104, 0.15, lt, 0.15, 'center');
+    text(G.url || 'mapaelectoral.es', W / 2, 1130, '700 64px ' + F.display, C.vote, 'center', ease((lt - 0.6) / 0.3));
+    if (G.ruta) text(G.ruta, W / 2, 1190, '500 32px ' + F.mono, C.fg, 'center', ease((lt - 0.7) / 0.3));
+    G.source.forEach((s, i) => text(s, W / 2, 1300 + i * 44, '500 26px ' + F.mono, C.muted, 'center', ease((lt - 0.8) / 0.3)));
+  }
+  // destello en cada cambio de elección
+  const s = state(t);
+  if (t >= T.e0 && t < T.e1 && s.i > 0 && s.lt < 0.08) { ctx.globalAlpha = 0.12 * (1 - s.lt / 0.08); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+}
+window.ready = load().then(() => { render(0); return true; });
+window.render = render;
+</script>
+</body>
+</html>
