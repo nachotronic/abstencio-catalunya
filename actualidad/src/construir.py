@@ -3017,7 +3017,7 @@ PIEZAS += [
 PIEZAS += [
     dict(
         slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
-        actualizado='2026-10-28 14:40',
+        actualizado='2026-10-28 17:32',
         titulo='Netanyahu se queda a ocho escaños de la mayoría: con el 86% escrutado, ya ni Liberman le daría los 61', serie='internacional',
         descripcion='Con 4,85 millones de votos contados, los cinco partidos del Gobierno saliente suman 53 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 48. Los dos partidos árabes tienen 19. Estas son las combinaciones posibles, y el mapa del voto por localidad.',
         compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 86% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
@@ -3028,7 +3028,7 @@ PIEZAS += [
                  ('https://www.ynet.co.il/news/blogs/article/hjvyjpc2fe', 'Ynet, reparto provisional de escaños con el 48% y el 60% escrutado (28-10-2026)'),
                  ('https://www.ynetnews.com/article/hjnatbkaml', 'Ynetnews, reparto con el 65% escrutado y declaraciones de Golan, Eisenkot y Netanyahu (28-10-2026)'),
                  ('https://www.mako.co.il/news-politics/2026_q4/liveblog-f5b5a09693081a1026.htm', 'Mako, reparto provisional de escaños con el 70% escrutado (28-10-2026, 10.52 hora de Israel)'),
-                 ('https://elections.kaplanopensource.co.il/26/', 'Kaplan Open Source, resultados del Comité Central Electoral por localidad (recuento provisional a las 12.41 del 28-10-2026)'),
+                 ('https://elections.kaplanopensource.co.il/26/', 'Kaplan Open Source, resultados del Comité Central Electoral por localidad (recuento provisional a las 14.41 del 28-10-2026)'),
                  ('https://data.gov.il/dataset/votes-knesset', 'data.gov.il, resultados de la Knesset de 2022 por localidad (Comité Central Electoral)'),
                  ('https://data.gov.il/dataset/citiesandsettelments', 'data.gov.il, lista de localidades con su distrito y subdistrito'),
                  ('https://en.wikipedia.org/wiki/2026_Israeli_legislative_election', 'Wikipedia, resultados de 2022 y composición de las listas de 2026'),
