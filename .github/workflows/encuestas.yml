@@ -51,7 +51,7 @@ jobs:
           fi
           python3 encuestas/src/construir.py
           python3 src/iconos.py
-          git add encuestas index.html generales-2026/src/plantilla.html img/compartir/encuestas.jpg
+          git add encuestas index.html generales-2026/src/plantilla.html img/compartir/encuestas.jpg img/movil
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -m "Encuestas: actualización automática $(date -u +%F)$([[ $nuevas == 0 ]] && echo ' (sin encuestas nuevas)')"
