@@ -1,0 +1,17 @@
+{
+  "kicker": "GENERALES 23J · CATALUÑA",
+  "metric": {"field": "t", "mean": 0.654, "spread": 0.2, "legend": "Participación sobre el censo, por sección"},
+  "hook": ["La sección que", "menos vota de", "Cataluña: ", [["el 22%", "abst"]]],
+  "map": {"title": ["En Cataluña votó", [["el 65%", "vote"], [" del censo", "fg"]]],
+          "sub": ["La que menos vota", "está en Figueres"]},
+  "region": {"at": "mun:Figueres", "dy": 0.03, "w": 0.32},
+  "labels": [
+    {"at": "mun:Figueres", "name": "Figueres", "value": 0.5545, "note": "votó el 55%", "dx": 60, "dy": -120}
+  ],
+  "focus": {"at": "sec:1706601005", "w": 0.03},
+  "final": {"type": "facts", "title": ["No es la que", "más extranjeros tiene"],
+            "note": ["Renta de 9.638 € por unidad de consumo,", "la más baja de Cataluña"],
+            "items": [["22%", "abst", "votó"], ["17%", "noright", "extranjeros"], ["59%", "abst", "de paro"], ["3%", "abst", "con estudios superiores"]]},
+  "outro": ["Quién no vota", "y por qué,", "sección a sección"],
+  "source": ["Fuente: Ministerio del Interior e INE (2023).", "Sección 1706601005, generales del 23 de julio de 2023."]
+}

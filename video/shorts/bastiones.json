@@ -1,0 +1,144 @@
+{
+ "plantilla": "guia",
+ "kicker": "BASTIONES Y DESIERTOS · 23J",
+ "colores": {
+  "PP": "#1d84ce",
+  "PSOE": "#e30613",
+  "Vox": "#5ac035",
+  "Sumar": "#a2275f"
+ },
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 2.8,
+   "lineas": [
+    "Del 93 % al 0 %:",
+    "dónde arrasa",
+    "y dónde no existe",
+    [
+     [
+      "cada partido",
+      "vote"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "extremos",
+   "dur": 4.4,
+   "titulo": [
+    [
+     [
+      "PSOE",
+      "PSOE"
+     ]
+    ]
+   ],
+   "color": "PSOE",
+   "sub": "% del voto en la sección, 23J",
+   "filas": [
+    [
+     "Príncipe Alfonso (Ceuta)",
+     93.2,
+     "Sus 5 mejores barrios, en Ceuta"
+    ],
+    [
+     "Errezil (Gipuzkoa)",
+     1.1,
+     "3 papeletas de 274"
+    ]
+   ]
+  },
+  {
+   "tipo": "extremos",
+   "dur": 4.4,
+   "titulo": [
+    [
+     [
+      "PP",
+      "PP"
+     ]
+    ]
+   ],
+   "color": "PP",
+   "sub": "% del voto en la sección, 23J",
+   "filas": [
+    [
+     "Avión (Ourense)",
+     81.5,
+     "Sus 5 mejores pueblos, en Galicia"
+    ],
+    [
+     "Ereñotzu (Hernani) y Amoroto",
+     0,
+     "Ni un voto"
+    ]
+   ]
+  },
+  {
+   "tipo": "extremos",
+   "dur": 4.4,
+   "titulo": [
+    [
+     [
+      "Vox",
+      "Vox"
+     ]
+    ]
+   ],
+   "color": "Vox",
+   "sub": "% del voto en la sección, 23J",
+   "filas": [
+    [
+     "El campo de El Ejido (Almería)",
+     43.7,
+     "Su techo: ninguna pasa del 45 %"
+    ],
+    [
+     "18 secciones vascas y navarras",
+     0,
+     "Ni un voto"
+    ]
+   ]
+  },
+  {
+   "tipo": "extremos",
+   "dur": 4.6,
+   "titulo": [
+    [
+     [
+      "Sumar",
+      "Sumar"
+     ]
+    ]
+   ],
+   "color": "Sumar",
+   "sub": "Hoy, Frente Amplio y Podemos por separado",
+   "filas": [
+    [
+     "Marinaleda (Sevilla)",
+     68.6,
+     "El único sitio por encima del 60 %"
+    ],
+    [
+     "Príncipe Alfonso (Ceuta)",
+     0.3,
+     "Donde el PSOE saca el 93 %"
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.2,
+   "lineas": [
+    "Los bastiones",
+    "de cada partido"
+   ],
+   "ruta": "/actualidad/"
+  }
+ ],
+ "fuente": [
+  "Fuente: Ministerio del Interior, resultados por mesa",
+  "(23J). Secciones con 300 electores o más."
+ ]
+}

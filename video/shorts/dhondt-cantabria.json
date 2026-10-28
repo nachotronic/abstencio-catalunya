@@ -1,0 +1,86 @@
+{
+  "plantilla": "dhondt",
+  "kicker": "GENERALES 23J · CANTABRIA",
+  "hook": [
+    "Así se reparten",
+    "los escaños:",
+    [
+      [
+        "la ley D'Hondt",
+        "vote"
+      ]
+    ],
+    "paso a paso"
+  ],
+  "escanos": 5,
+  "partidos": [
+    [
+      "PP",
+      "#1d84ce",
+      147326
+    ],
+    [
+      "PSOE",
+      "#e30613",
+      116596
+    ],
+    [
+      "Vox",
+      "#5ac035",
+      49243
+    ],
+    [
+      "Sumar",
+      "#a2275f",
+      29713
+    ]
+  ],
+  "votosTitle": [
+    "1. Ejemplo: Cantabria",
+    "reparte 5 escaños"
+  ],
+  "votosSub": "Votos (solo cuentan los que pasan del 3%)",
+  "tablaTitle": [
+    "3. Los 5 escaños van a",
+    "los 5 cocientes más altos"
+  ],
+  "ultimo": {
+    "title": [
+      "4. El último escaño",
+      "se decide por poco"
+    ],
+    "a": {
+      "p": "Vox",
+      "label": "Vox ÷ 1",
+      "q": 49243,
+      "note": "el 5º cociente: se lleva el último escaño"
+    },
+    "b": {
+      "p": "PP",
+      "label": "PP ÷ 3",
+      "q": 49108.67,
+      "note": "el 6º cociente: se queda fuera"
+    },
+    "punch": [
+      "Al PP le faltaron",
+      "404 votos"
+    ]
+  },
+  "outro": [
+    "Calcula",
+    "los escaños",
+    "de tu provincia"
+  ],
+  "source": [
+    "Fuente: Ministerio del Interior, generales del 23J.",
+    "Votos válidos de Cantabria; umbral del 3%."
+  ],
+  "divTitle": [
+    "2. Los votos de cada",
+    "partido se dividen"
+  ],
+  "divNote": [
+    "Cada resultado es un cociente.",
+    "Y lo mismo con todos los partidos."
+  ]
+}

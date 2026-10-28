@@ -1,0 +1,15 @@
+{
+  "plantilla": "encuesta",
+  "kicker": "GENERALES 23J · ESPAÑA",
+  "hook": ["Los chicos jóvenes", "votaron a Vox", [["más del triple", "#5ac035"]], "que las chicas"],
+  "dots": {"title": "De cada 100 votantes de 18 a 29 años…", "party": "Vox", "color": "#5ac035",
+           "groups": [["Hombres", 18], ["Mujeres", 5]]},
+  "edad": {"title": ["Cuanto más joven,", "más brecha"], "sub": "Voto a Vox por edad y sexo, % de votantes", "color": "#5ac035",
+           "rows": [["18-29", 17.8, 5.4], ["30-44", 12.8, 7.0], ["45-64", 11.3, 6.7], ["65+", 7.4, 3.8]]},
+  "partidos": {"title": ["Ellas votaron más", "a la izquierda"], "sub": "Votantes de 18 a 29 años, %",
+               "rows": [["PSOE", "#e30613", 26.9, 35.1], ["Sumar", "#a2275f", 19.9, 26.6], ["PP", "#1d84ce", 18.4, 17.0], ["Vox", "#5ac035", 17.8, 5.4]]},
+  "ideologia": {"title": ["Y se sitúan", "más a la izquierda"], "sub": "Autoubicación de 1 (izquierda) a 10 (derecha), 18-29 años",
+                "h": 4.81, "m": 4.07},
+  "outro": ["Quién vota qué", "y dónde,", "sección a sección"],
+  "source": ["Fuente: CIS, estudio 3420 (postelectoral 23J), microdatos.", "Recuerdo de voto ponderado. 18-29 años: unas 470", "entrevistas por sexo, margen de ±4,5 puntos."]
+}
