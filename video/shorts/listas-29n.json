@@ -1,0 +1,10 @@
+{"plantilla": "guia", "kicker": "LISTAS DEL 29N · BOE DEL 28 DE OCTUBRE",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035", "CERA": "#e0a440"},
+ "fuente": ["Fuentes: BOE del 28-10-2026 (candidaturas presentadas);", "modelo de Mapa Electoral, encuestas del 26-10."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.2, "cuenta": 1.4, "lineas": ["Candidatos al Congreso", "en las listas del 29N:"], "contador": 4031, "color": "vote", "size": 92},
+  {"tipo": "numeros", "dur": 5.4, "titulo": ["Lo que dicen", "las listas"], "items": [["555", "vote", ["candidaturas en las 52 provincias"]], ["205", "vote", ["titulares son diputados", "en la legislatura que acaba"]], ["207", "CERA", ["tienen el escaño en el aire", "con las encuestas"]]]},
+  {"tipo": "barrasH", "dur": 5.0, "titulo": ["Dónde hay", "más papeletas"], "sub": "Candidaturas al Congreso por provincia", "max": 16, "enteros": true, "unidad": "", "alto": 125, "filas": [["Araba", "vote", 15], ["Madrid", "vote", 14], ["Las Palmas", "vote", 14], ["Valencia", "vote", 14], ["Ceuta", "muted", 6], ["Melilla", "muted", 6]]},
+  {"tipo": "numeros", "dur": 5.6, "titulo": ["A cara o cruz", "con las encuestas"], "sub": "Simulaciones en las que sale elegido", "items": [["50 %", "PSOE", ["María Álvarez Collada", "PSOE, Asturias"]], ["50 %", "Vox", ["Matías Recio Juárez", "Vox, Palencia"]], ["49 %", "PP", ["Carlos Arturo Bernal Bergua", "PP, Málaga"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Busca a los", "candidatos de", "tu provincia"], "ruta": "/listas-electorales-29n/"}
+ ]}

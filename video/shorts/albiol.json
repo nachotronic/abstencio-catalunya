@@ -1,0 +1,11 @@
+{"plantilla": "guia", "kicker": "BADALONA · VOTO DUAL",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613"},
+ "fuente": ["Fuente: Ministerio del Interior, resultados por mesa,", "municipales y generales de 2019 y 2023."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.4, "cuenta": 1.4, "lineas": ["Votos de Albiol", "en Badalona,", "municipales de 2023:"], "contador": 50163, "color": "PP", "size": 92},
+  {"tipo": "parejas", "dur": 5.4, "titulo": ["Dos meses después,", "el PP sacó 16.405"], "sub": "% del voto válido en Badalona. 2019: generales de abril", "max": 60, "claves": ["municipales", "generales"], "pares": [["2023", "PP", 55.7, 16.6], ["2019", "PP", 37.6, 6.5]]},
+  {"tipo": "numeros", "dur": 4.6, "titulo": ["Sección", "a sección"], "items": [["145", "PP", ["de las 149 secciones las ganó", "Albiol en mayo de 2023"]], ["0", "PSOE", ["ganó el PP en julio:", "el PSC se llevó la ciudad"]]]},
+  {"tipo": "parejas", "dur": 5.4, "titulo": ["Más ventaja en", "los barrios socialistas"], "sub": "Quinta parte de secciones con más y menos voto PSOE", "max": 65, "claves": ["mayo", "julio"], "pares": [["+ PSOE", "PP", 60.5, 17.4], ["− PSOE", "PP", 40.3, 12.1]]},
+  {"tipo": "numeros", "dur": 5.0, "titulo": ["Pero Badalona", "pesa poco"], "items": [["4 %", "vote", ["del censo de la provincia", "de Barcelona"]], ["+1,3", "PP", ["puntos para el PP en la provincia", "si arrastrara a todos sus votantes"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Albiol y", "el voto dual"], "ruta": "/actualidad/albiol-badalona-pp-29n/"}
+ ]}
