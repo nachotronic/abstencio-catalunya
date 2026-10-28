@@ -3509,6 +3509,13 @@ def imagen_carrusel(q, pre):
     return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="{alt_tarjeta(q, None)}" loading="lazy" width="300" height="200">'
 
 
+PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
+    'albiol-badalona-pp-29n': '2026-10-28',
+    'rufian-montero-la-revuelta-29n': '2026-10-28',
+    'feijoo-albiol-barcelona-disturbios-29n': '2026-10-28',
+}
+
+
 def franja_portada(todas, pre=''):
     """Carrusel «Actualidad» de la portada del sitio, entre las marcas <!--actualidad:ultimas-->, encima del del Atlas.
     Mismo formato que la franja del Atlas (atlas/src/paginas.py): miniatura, serie y titular. Las miniaturas las hace miniaturas.mjs."""
@@ -3516,6 +3523,10 @@ def franja_portada(todas, pre=''):
     # Las más recientes por fecha, no por su sitio en PIEZAS: las piezas se añaden en bloques distintos (Nacho, 22-10-2026)
     recientes = sorted(todas[::-1], key=lambda q: q['fecha'], reverse=True)   # sorted es estable: en el mismo día, la última añadida primero
     # Las de Historia electoral solo van en su propio carrusel, no en el de Actualidad (Nacho, 23-10-2026)
+    # Fijas delante, en este orden, hasta el día indicado (Nacho, 28-10-2026: Albiol, Broncano y Feijóo las primeras)
+    hoy = datetime.date.today().isoformat()
+    fijas = [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta]
+    recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
     ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] != 'historia'][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
