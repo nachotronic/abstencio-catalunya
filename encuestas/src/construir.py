@@ -488,18 +488,19 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',todo)})();
 </script>"""
 
 
-def franja_portada(titular, med, actual, pre):
+def franja_portada(titular, med, actual, pre, ultima=''):
     """Franja «Encuestas» de la portada, entre <!--encuestas:portada-->, justo debajo del mapa: titular y mediana de cada partido."""
     cifras = ''.join(f'<li><i style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n} <b>{pc(med[k])}</b></li>'
                      for k, n, c, _ in PRINCIPALES if k in med)
     return (f'<section class="wide del-atlas del-encuestas" aria-labelledby="h-del-encuestas"><div class="da-cab"><h2 id="h-del-encuestas">'
             f'<a href="{pre}encuestas/">Encuestas de las elecciones generales</a></h2><span class="de-act">Actualizado el {actual}</span></div>'
             f'<a class="de-tit" href="{pre}encuestas/">{html.escape(titular)}</a><ul class="de-med">{cifras}</ul>'
+            + (f'<p class="de-ult">{ultima}</p>' if ultima else '') +
             f'<p class="de-pie">Mediana de la última encuesta de cada encuestadora en las tres últimas semanas. '
             f'<a href="{pre}encuestas/">Todas las encuestas, los escaños y nuestra estimación →</a> · <a href="{pre}encuestas/simulador-pactos/">¿Quién puede gobernar? Simulador de pactos →</a></p>'
             '<style>.del-encuestas .de-act{font:13px var(--sans);color:var(--muted)}.del-encuestas .de-tit{display:block;font:700 clamp(19px,2.4vw,24px)/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:2px 0 8px}'
             '.del-encuestas .de-tit:hover{text-decoration:underline}.del-encuestas .de-med{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;font:14px var(--sans)}'
-            '.del-encuestas .de-med i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.del-encuestas .de-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}</style></section>')
+            '.del-encuestas .de-med i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.del-encuestas .de-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}.del-encuestas .de-ult{font:14px/1.4 var(--sans);margin:8px 0 0}</style></section>')
 
 
 def post_x(titular, med, hoy):
@@ -516,7 +517,7 @@ def post_x(titular, med, hoy):
     return texto, URL, etiquetas
 
 
-def portada(titular, med, actual):
+def portada(titular, med, actual, ultima=''):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
             continue
@@ -524,7 +525,7 @@ def portada(titular, med, actual):
         if '<!--encuestas:portada-->' not in t:   # la franja va justo encima de la de Actualidad
             t = t.replace('<!--actualidad:ultimas-->', '<!--encuestas:portada--><!--/encuestas:portada-->\n<!--actualidad:ultimas-->', 1)
         t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->',
-                   lambda m: '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre) + '<!--/encuestas:portada-->', t, flags=re.S)
+                   lambda m: '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, ultima) + '<!--/encuestas:portada-->', t, flags=re.S)
         f.write_text(t, encoding='utf-8')
 
 
@@ -984,7 +985,10 @@ def main():
                                         + (f'  <url><loc>{URL}simulador-pactos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_pactos else '')
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas)
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
-    portada(titular, med, actual)
+    d_ult = date.fromisoformat(ult.get('publicado') or ult['fin'])
+    portada(titular, med, actual, f'Última encuesta: <b>{html.escape(ult["casa"])}</b>' + (f' para {html.escape(ult["medio"])}' if ult['medio'] else '')
+            + f', publicada el {DIAS_SEMANA[d_ult.weekday()]} {d_ult.day} de {fecha_larga(d_ult.isoformat()).split(" de ")[1]}: '
+            + ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(ult["voto"][k])}' for k, n, *_ in PRINCIPALES[:3] if k in ult['voto']) + '.')
     # post para redes de esta actualización: el workflow solo vuelve a escribirlo cuando entra una encuesta nueva
     texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
     (SALIDA / 'post-redes.txt').write_text(f'{texto}\n{enlace}\n\n{etiquetas}\n', encoding='utf-8')
