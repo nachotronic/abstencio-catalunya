@@ -67,6 +67,9 @@ PARTIDOS = [
     ('CS', r"^(CS|C'S|C´S)$|CIUDADANOS-PARTIDO|CIUTADANS", 'Ciudadanos', '#eb6109', '#f28a45', 'Ciudadanos'),
     ('CUP', r'^CUP', 'CUP', '#d4b200', '#f0d000', 'CUP'),
 ]
+# Coaliciones que el modelo no simula como una sola lista: sin probabilidad por puesto (el modelo da por separado
+# PP y UPN en Navarra, y Nueva Canarias y Sumar/Podemos en Canarias)
+SIN_MODELO = r'UPN-PP|UNIDAD DEL PUEBLO CANARIO'
 OTRO = ('OTROS', '', 'Otros', '#8a8589', '#a9a4a8', None)
 # en el modelo, Podemos va dentro de otras listas en estas provincias (encuestas, «PODEMOS_CON_ERC» y «PODEMOS_CON_FA»)
 
@@ -169,7 +172,8 @@ def prepara(datos, avance):
         if avance and f[0] == 'SUMAR':   # en 2023 no existía el Frente Amplio
             corto = 'Sumar'
         c = dict(c, fam=f[0], corto=corto, color=f[3], oscuro=f[4])
-        probs = None if avance or c['camara'] != 'congreso' or not f[5] else pu['puestos'].get(c['prov'], {}).get(f[5], [])
+        sin = re.search(SIN_MODELO, c['denominacion'].upper())
+        probs = None if avance or sin or c['camara'] != 'congreso' or not f[5] else pu['puestos'].get(c['prov'], {}).get(f[5], [])
         for p in c['titulares']:
             if probs is not None:
                 p['p'] = probs[p['n'] - 1] if p['n'] - 1 < len(probs) else 0.0

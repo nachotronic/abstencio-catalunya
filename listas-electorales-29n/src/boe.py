@@ -61,6 +61,7 @@ def buscar(dia):
 
 
 def texto(p):
+    p = re.sub(r'<span class="no_partir">(.*?)</span>', r'\1', p)   # «CH<span>A-IU</span>»: sin espacio
     t = re.sub(r'<[^>]+>', ' ', p)
     return re.sub(r'\s+', ' ', html.unescape(t)).strip()
 
