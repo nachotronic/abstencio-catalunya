@@ -2971,6 +2971,22 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/serbia-estudiantes-vucic-mapa-distritos.jpg', ancho=1280, alto=720, grafico=True,
                   pie='Quién ganó en cada distrito de Serbia en las legislativas del 25 de octubre.', fuente='RIK, resultados provisionales por colegio; contornos de OpenStreetMap'),
     ),
+    dict(
+        slug='quien-vota-barrios-renta-edad-inmigracion', fecha='2026-10-28',
+        titulo='En los barrios ricos se vota 15 puntos más que en los pobres, y en las europeas, 22: quién vota en España según la renta, la edad y la inmigración', serie='29n',
+        descripcion='En el 10% de secciones censales con más renta votó el 77,8% en las generales de 2023; en el 10% más pobre, el 62,6%. La distancia era de 7,9 puntos en 2004. Vox saca más en los barrios jóvenes y la inmigración baja la participación, pero no sube el voto a Vox.',
+        compara='La participación y el voto en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, en las 36.462 secciones censales de España, agrupadas en diez tramos con el mismo censo según la renta, la pobreza, la edad media, la población extranjera, los estudios y el paro que el INE mide en cada sección.',
+        limites='Son datos por sección, no por persona: que en las secciones más pobres se vote más a un partido no significa que cada persona pobre lo vote. Los deciles mezclan territorios (el 10% más pobre pesa mucho en Andalucía, Canarias y Extremadura) y las relaciones son descriptivas, no causas. Sin voto exterior (CERA). Los adultos sin derecho a voto son una estimación (adultos del padrón menos censo electoral). Las elecciones antiguas solo cuentan en las secciones que conservan su código de 2023. Las cifras usan todas las secciones con dato de renta y pueden diferir en unas décimas de las de otras piezas que filtran secciones distintas. Este texto estuvo en la portada del sitio hasta el 28 de octubre de 2026.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html', 'elDiario.es, Braulio Gómez (Universidad de Deusto) sobre los barrios que no votan (7-4-2019)'),
+                 ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', 'Manuel Trujillo y Braulio Gómez Fortes, La segregación electoral interurbana en España, VIII Informe FOESSA (2019)'),
+                 ('https://www.elobservador.com.uy/nota/por-que-sera-decisivo-el-voto-joven-el-23j-202371961447', 'EFE vía El Observador, Manuel Mostaza sobre el voto joven (19-7-2023)'),
+                 ('https://www.eldiario.es/desalambre/voto-inmigrante-extranjeros-legalmente-espana_1_1636823.html', 'elDiario.es, Rafael Naranjo (Universidad de Málaga) sobre el voto de los extranjeros (15-5-2019)'),
+                 ('https://doi.org/10.21308/recp.62.01', 'Irene Delgado Sotillos, Revista Española de Ciencia Política, n.º 62 (2023)'),
+                 ('https://www.eldiario.es/piedrasdepapel/Vox-derecha-populista-escision-PP_6_850474947.html', 'Héctor Meleiro, Piedras de Papel, elDiario.es (26-12-2018)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 PIEZAS += [
@@ -2997,6 +3013,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'quien-vota-barrios-renta-edad-inmigracion': 'Quién vota',
     'israel-elecciones-encuestas-knesset': 'Israel vota',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
     'feijoo-albiol-barcelona-disturbios-29n': 'Feijóo en Barcelona',
