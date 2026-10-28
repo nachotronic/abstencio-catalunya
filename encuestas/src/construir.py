@@ -32,6 +32,7 @@ except ImportError:
 import encuestadoras  # noqa: E402  (una página por encuestadora)
 import calculadora  # noqa: E402  (calculadora de escaños)
 import pactos  # noqa: E402  (simulador de pactos)
+import sigue  # noqa: E402  (cards con imagen en «Sigue leyendo»)
 
 DATOS = RAIZ / 'previsiones/datos/encuestas'
 SALIDA = RAIZ / 'encuestas'
@@ -998,6 +999,7 @@ def main():
     for f in [SALIDA / 'index.html', SALIDA / 'metodo-modelo.html', SALIDA / 'provincias.html', SALIDA / 'calculadora-escanos/index.html', SALIDA / 'simulador-pactos/index.html'] + [SALIDA / r / 'index.html' for r, *_ in casas + PROV_PAGINAS]:
         if f.exists():
             esquema.procesa(f)
+            sigue.procesa(f)   # «Sigue leyendo» como cards con la imagen de cada página
     print(f'encuestas: {len(encs)} encuestas, {len(recientes)} en la tabla; {titular}')
 
 
