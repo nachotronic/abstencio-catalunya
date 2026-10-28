@@ -472,6 +472,42 @@ def tarjeta(destino, titular, sub, barras):
     im.save(destino, quality=88)
 
 
+def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_boe):
+    """Franja «Listas del 29N» de la portada, justo debajo del mapa: titular, cifras y buscador."""
+    e = html.escape
+    opts = ''.join(f'<option value="{c}">{e(PROV_NOMBRE[c].split("/")[0])}</option>' for c in sorted(PROV_SLUG, key=lambda c: slug(PROV_NOMBRE[c])))
+    cifras = ('' if avance else
+              f'<ul class="li-cif"><li><b>{miles(n_cong)}</b> candidatos al Congreso</li><li><b>{n_listas}</b> listas</li>'
+              f'<li><b>{miles(n_sen)}</b> al Senado</li><li><b>{n_dip}</b> diputados que se presentan</li></ul>')
+    act = 'Listas del 23J hasta que salgan las del BOE' if avance else f'BOE del {fecha_larga(fecha_boe)}'
+    return (f'<section class="wide del-atlas del-listas" aria-labelledby="h-del-listas"><div class="da-cab"><h2 id="h-del-listas">'
+            f'<a href="{pre}listas-electorales-29n/">Listas electorales del 29N</a></h2><span class="li-act">{e(act)}</span></div>'
+            f'<a class="li-tit" href="{pre}listas-electorales-29n/">{e(titular)}</a>{cifras}'
+            f'<form class="li-bus" action="{pre}listas-electorales-29n/" method="get" role="search"><input name="q" type="search" placeholder="Busca un candidato" aria-label="Nombre del candidato">'
+            f'<select name="provincia" aria-label="Provincia"><option value="">Todas las provincias</option>{opts}</select><button>Buscar</button></form>'
+            f'<p class="li-pie">Todos los nombres de las listas al Congreso y al Senado, con las opciones de salir elegido de cada uno. <a href="{pre}listas-electorales-29n/#provincias">Listas provincia a provincia →</a></p>'
+            '<style>.del-listas .li-act{font:13px var(--sans);color:var(--muted)}.del-listas .li-tit{display:block;font:700 clamp(19px,2.4vw,24px)/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:2px 0 8px}'
+            '.del-listas .li-tit:hover{text-decoration:underline}.del-listas .li-cif{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px;font:14px var(--sans);color:var(--muted)}'
+            '.del-listas .li-cif b{color:var(--ink);font-size:16px}.del-listas .li-bus{display:flex;flex-wrap:wrap;gap:8px;font:15px var(--sans)}'
+            '.del-listas .li-bus input{flex:1 1 14rem;min-width:0;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--rule,#ccc);border-radius:6px;background:transparent;color:var(--ink)}'
+            '.del-listas .li-bus select{font:inherit;font-size:16px;padding:8px;border:1px solid var(--rule,#ccc);border-radius:6px;background:transparent;color:var(--ink);max-width:100%}'
+            '.del-listas .li-bus button{font:inherit;font-weight:600;padding:8px 16px;border:0;border-radius:6px;background:var(--ink);color:var(--bg,#fff);cursor:pointer}'
+            '.del-listas .li-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}</style></section>')
+
+
+def portada(*args):
+    """Pone la franja en la portada (y en la plantilla de generales-2026/) entre <!--listas:portada-->, debajo del mapa
+    y encima de la de encuestas."""
+    for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
+        if not f.exists():
+            continue
+        t = f.read_text(encoding='utf-8')
+        t = re.sub(r'\n?<!--listas:portada-->.*?<!--/listas:portada-->', '', t, flags=re.S)
+        bloque = '<!--listas:portada-->' + franja_portada(pre, *args) + '<!--/listas:portada-->\n'
+        t = t.replace('<!--encuestas:portada-->', bloque + '<!--encuestas:portada-->', 1)
+        f.write_text(t, encoding='utf-8')
+
+
 def main():
     datos, avance = carga()
     cands = prepara(datos, avance)
@@ -597,7 +633,7 @@ def main():
 {f'<p data-tipo="dato">{e(p3)}</p>' if p3 else ''}
 <h2>Fechas clave de las listas del 29N</h2>
 <ul class="cal">{cal}</ul>
-<h2>Listas del 29N por provincia</h2>
+<h2 id="provincias">Listas del 29N por provincia</h2>
 <p>Cada provincia tiene su página con todas las candidaturas al Congreso y al Senado, puesto a puesto{', y los puestos que dan escaño según las encuestas' if avance else ', con las opciones de cada candidato'}.</p>
 <ul class="provs">{provs}</ul>
 <h2>Preguntas frecuentes sobre las listas del 29N</h2>
@@ -632,6 +668,7 @@ def main():
     barras = sorted(barras, key=lambda b: -b[1])[:8]
     tarjeta(RAIZ / TARJETA_DATOS, titular,
             f'{len(cong)} candidaturas al Congreso{" en 2023" if avance else ""}, {miles(n_cong)} candidatos titulares. Candidaturas por partido:', barras)
+    portada(titular, n_cong, len(cong), n_sen, n_dip, avance, datos['fecha_boe'])
     import esquema
     for f in [CARPETA / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()]:
         esquema.procesa(f)
