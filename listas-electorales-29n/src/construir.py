@@ -475,7 +475,7 @@ def tarjeta(destino, titular, sub, barras):
 def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_boe):
     """Franja «Listas del 29N» de la portada, justo debajo del mapa: titular, cifras y buscador."""
     e = html.escape
-    opts = ''.join(f'<option value="{c}">{e(PROV_NOMBRE[c].split("/")[0])}</option>' for c in sorted(PROV_SLUG, key=lambda c: slug(PROV_NOMBRE[c])))
+    opts = ''.join(f'<option value="{PROV_SLUG[c]}/">{e(PROV_NOMBRE[c].split("/")[0])}</option>' for c in sorted(PROV_SLUG, key=lambda c: slug(PROV_NOMBRE[c])))
     cifras = ('' if avance else
               f'<ul class="li-cif"><li><b>{miles(n_cong)}</b> candidatos al Congreso</li><li><b>{n_listas}</b> listas</li>'
               f'<li><b>{miles(n_sen)}</b> al Senado</li><li><b>{n_dip}</b> diputados que se presentan</li></ul>')
@@ -483,9 +483,10 @@ def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_b
     # tres cards en fila en escritorio (en móvil, una debajo de otra): buscador, simulador de pactos y listas por provincia
     return (f'<section class="wide del-atlas del-listas" aria-labelledby="h-del-listas"><div class="da-cab"><h2 id="h-del-listas">'
             f'<a href="{pre}listas-electorales-29n/">Listas electorales del 29N</a></h2><span class="li-act">{e(act)}</span></div>'
-            f'<div class="li-fila"><div class="atlas li-main"><span class="atlas-k">Buscador de candidatos</span><a class="li-tit" href="{pre}listas-electorales-29n/">{e(titular)}</a>{cifras}'
-            f'<form class="li-bus" action="{pre}listas-electorales-29n/" method="get" role="search"><input name="q" type="search" placeholder="Busca un candidato" aria-label="Nombre del candidato">'
-            f'<select name="provincia" aria-label="Provincia"><option value="">Todas las provincias</option>{opts}</select><button>Buscar</button></form></div>'
+            f'<div class="li-fila"><div class="atlas li-main"><span class="atlas-k">Listas oficiales del BOE</span><a class="li-tit" href="{pre}listas-electorales-29n/">{e(titular)}</a>{cifras}'
+            # elegir provincia lleva a su página de listas (sin JavaScript, el botón abre la página general)
+            f'<form class="li-bus" action="{pre}listas-electorales-29n/" method="get" onsubmit="var v=this.p.value;if(v){{location.href=this.action+v;return false}}">'
+            f'<select name="p" aria-label="Provincia"><option value="">Elige tu provincia</option>{opts}</select><button>Ver las listas</button></form></div>'
             f'<a class="atlas" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
             '<span>Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura, a partir de la media de encuestas.</span>'
             '<span class="atlas-go">Simulador de pactos del 29N →</span></a>'
