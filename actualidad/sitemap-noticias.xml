@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/barcelona-madrid-clasico-del-voto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>El otro Clásico: en los barrios de renta media, el PP saca el triple de votos en Madrid que en Barcelona</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/calle-que-parte-barcelona/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>Las dos calles que parten Barcelona: la Diagonal en el voto a la derecha, la Meridiana en el independentismo</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/quien-vota-que-barrios-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>Quién vota qué, barrio a barrio: el PP sube 21 puntos donde pesan las rentas del capital, el PSOE 15 donde abundan los peones y Vox solo se mueve con los jubilados</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mujeres-jovenes-voto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>El voto a Vox de las mujeres jóvenes se ha triplicado desde 2023, y la izquierda ha perdido 13 puntos entre ellas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/psoe-primera-fuerza-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>El PP saca 6 puntos al PSOE en las encuestas: ni el mayor fallo de la última década, el de 2023, daría el sorpasso que anuncia Iván Redondo</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/encuestas-semana-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -89,22 +49,6 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/voto-correo-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>Siete de cada cien electores pidieron votar por correo en 2023, más del triple que en 2015: en Bizkaia, 14; en Girona, 3</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/corrupcion-penaliza-voto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-25</news:publication_date>
-      <news:title>29N: la corrupción le cuesta votos al PSOE, pero apenas se los da al PP</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/adelante-andalucia-psoe-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -134,6 +78,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-27</news:publication_date>
       <news:title>Vučić ganó en los 25 distritos de Serbia en 2023; los estudiantes le han ganado en 18 y en Zaječar el recuento va por 31 votos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/israel-pactos-escanos-knesset/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-28</news:publication_date>
+      <news:title>Netanyahu se queda a cuatro escaños de la mayoría con el 40% escrutado, y la oposición solo llega a 61 con los partidos árabes</news:title>
     </news:news>
   </url>
 </urlset>
