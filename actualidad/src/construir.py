@@ -3017,8 +3017,8 @@ PIEZAS += [
 PIEZAS += [
     dict(
         slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
-        actualizado='2026-10-28 12:04',
-        titulo='Con el 78% escrutado, Netanyahu se queda en 54 escaños y solo llegaría a 61 con Liberman; la oposición, solo con los partidos árabes', serie='internacional',
+        actualizado='2026-10-28 12:27',
+        titulo='Netanyahu se queda a siete escaños de la mayoría: con el 78% escrutado, solo Liberman le daría los 61', serie='internacional',
         descripcion='Con 4,4 millones de votos contados, los cinco partidos del Gobierno saliente suman 54 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 49. Los dos partidos árabes tienen 17. Estas son las combinaciones posibles, y el mapa del voto por localidad.',
         compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 78% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
         limites='Resultados provisionales, en actualización: el recuento oficial estaba en torno al 78% (75,9% de las urnas) y faltan, entre otros, los votos de los soldados. Los escaños cambiarán. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación. El mapa sitúa cada localidad en el centro de su término aproximado, con un círculo proporcional a los votos contados. La comparación con 2022 por distrito pondera cada localidad por la parte de colegios ya escrutada en 2026; no separa los cambios de participación de los cambios de voto. Distritos según la lista oficial de localidades de data.gov.il; Cisjordania son solo los asentamientos israelíes, donde no votan los palestinos.',
