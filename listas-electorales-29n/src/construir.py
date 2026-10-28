@@ -480,25 +480,26 @@ def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_b
               f'<ul class="li-cif"><li><b>{miles(n_cong)}</b> candidatos al Congreso</li><li><b>{n_listas}</b> listas</li>'
               f'<li><b>{miles(n_sen)}</b> al Senado</li><li><b>{n_dip}</b> diputados que se presentan</li></ul>')
     act = 'Listas del 23J hasta que salgan las del BOE' if avance else f'BOE del {fecha_larga(fecha_boe)}'
+    # tres cards en fila en escritorio (en móvil, una debajo de otra): buscador, simulador de pactos y listas por provincia
     return (f'<section class="wide del-atlas del-listas" aria-labelledby="h-del-listas"><div class="da-cab"><h2 id="h-del-listas">'
             f'<a href="{pre}listas-electorales-29n/">Listas electorales del 29N</a></h2><span class="li-act">{e(act)}</span></div>'
-            f'<div class="li-fila"><div class="li-main"><a class="li-tit" href="{pre}listas-electorales-29n/">{e(titular)}</a>{cifras}'
+            f'<div class="li-fila"><div class="atlas li-main"><span class="atlas-k">Buscador de candidatos</span><a class="li-tit" href="{pre}listas-electorales-29n/">{e(titular)}</a>{cifras}'
             f'<form class="li-bus" action="{pre}listas-electorales-29n/" method="get" role="search"><input name="q" type="search" placeholder="Busca un candidato" aria-label="Nombre del candidato">'
-            f'<select name="provincia" aria-label="Provincia"><option value="">Todas las provincias</option>{opts}</select><button>Buscar</button></form>'
-            f'<p class="li-pie">Todos los nombres de las listas al Congreso y al Senado, con las opciones de salir elegido de cada uno. <a href="{pre}listas-electorales-29n/#provincias">Listas provincia a provincia →</a></p></div>'
-            # al lado, la card del simulador de pactos (en móvil, debajo)
-            f'<a class="atlas li-sim" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
+            f'<select name="provincia" aria-label="Provincia"><option value="">Todas las provincias</option>{opts}</select><button>Buscar</button></form></div>'
+            f'<a class="atlas" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
             '<span>Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura, a partir de la media de encuestas.</span>'
-            '<span class="atlas-go">Simulador de pactos del 29N →</span></a></div>'
-            '<style>.del-listas .li-act{font:13px var(--sans);color:var(--muted)}.del-listas .li-tit{display:block;font:700 clamp(19px,2.4vw,24px)/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:2px 0 8px}'
-            '.del-listas .li-tit:hover{text-decoration:underline}.del-listas .li-cif{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px;font:14px var(--sans);color:var(--muted)}'
-            '.del-listas .li-cif b{color:var(--ink);font-size:16px}.del-listas .li-bus{display:flex;flex-wrap:wrap;gap:8px;font:15px var(--sans)}'
-            '.del-listas .li-bus input{flex:1 1 14rem;min-width:0;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--rule,#ccc);border-radius:6px;background:transparent;color:var(--ink)}'
-            '.del-listas .li-bus select{font:inherit;font-size:16px;padding:8px;border:1px solid var(--rule,#ccc);border-radius:6px;background:transparent;color:var(--ink);max-width:100%}'
+            '<span class="atlas-go">Simulador de pactos del 29N →</span></a>'
+            f'<a class="atlas" href="{pre}listas-electorales-29n/#provincias"><span class="atlas-k">Candidatos por provincia</span><b>Las listas de tu provincia, una a una</b>'
+            '<span>Las 52 circunscripciones, al Congreso y al Senado, con las opciones de salir elegido de cada candidato.</span>'
+            '<span class="atlas-go">Listas provincia a provincia →</span></a></div>'
+            '<style>.del-listas .li-act{font:13px var(--sans);color:var(--muted)}.del-listas .li-tit{display:block;font:600 21px/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:0 0 6px}'
+            '.del-listas .li-tit:hover{text-decoration:underline}.del-listas .li-cif{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:2px 14px;font:13.5px var(--sans);color:var(--muted)}'
+            '.del-listas .li-cif b{color:var(--ink);font-size:15px}.del-listas .li-bus{display:flex;flex-wrap:wrap;gap:8px;font:15px var(--sans)}'
+            '.del-listas .li-bus input{flex:1 1 12rem;min-width:0;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--rule,#ccc);border-radius:6px;background:transparent;color:var(--ink)}'
+            '.del-listas .li-bus select{flex:1 1 9rem;font:inherit;font-size:16px;padding:8px;border:1px solid var(--rule,#ccc);border-radius:6px;background:transparent;color:var(--ink);max-width:100%}'
             '.del-listas .li-bus button{font:inherit;font-weight:600;padding:8px 16px;border:0;border-radius:6px;background:var(--ink);color:var(--bg,#fff);cursor:pointer}'
-            '.del-listas .li-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}'
-            '.del-listas .li-fila{display:grid;gap:14px 28px}.del-listas .li-sim{margin:0}'
-            '@media(min-width:900px){.del-listas .li-fila{grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:start}}</style></section>')
+            '.del-listas .li-fila{display:grid;gap:12px}.del-listas .li-fila .atlas{margin:0}.del-listas .li-main:hover{border-color:var(--line)}'
+            '@media(min-width:900px){.del-listas .li-fila{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}}</style></section>')
 
 
 def portada(*args):
