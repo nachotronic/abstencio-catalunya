@@ -3570,7 +3570,7 @@ def franja_serie(todas, clave, cabecera, sub, pre=''):
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{q["lugar"]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie) +
-            f'<li class="todas"><a href="{pre}actualidad/#{clave}"><b>Las {len(serie)} piezas de la serie →</b><span>{sub}</span></a></li></ul>'
+            f'<li class="todas"><a href="{pre}actualidad/#{clave}"><b>Todas las piezas de la serie →</b><span>{sub}</span></a></li></ul>'
             '<script>(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})(document.currentScript.parentNode)</script></section>')
 
