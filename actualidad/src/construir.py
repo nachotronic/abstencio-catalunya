@@ -3017,7 +3017,7 @@ PIEZAS += [
 PIEZAS += [
     dict(
         slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
-        actualizado='2026-10-28 13:52',
+        actualizado='2026-10-28 14:40',
         titulo='Netanyahu se queda a ocho escaños de la mayoría: con el 86% escrutado, ya ni Liberman le daría los 61', serie='internacional',
         descripcion='Con 4,85 millones de votos contados, los cinco partidos del Gobierno saliente suman 53 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 48. Los dos partidos árabes tienen 19. Estas son las combinaciones posibles, y el mapa del voto por localidad.',
         compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 86% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
@@ -3039,7 +3039,7 @@ PIEZAS += [
         enlaces=[],
         lugar='Israel',
         foto=dict(src='img/actualidad/fotos/israel-pactos-escanos-knesset.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Las coaliciones posibles en la Knesset con el recuento provisional del 28 de octubre.', fuente='Comité Central Electoral de Israel, recuento provisional al 86%'),
+                  pie='Partido más votado en cada localidad de Israel, con el recuento provisional del 28 de octubre. El tamaño de cada círculo depende de los votos contados.', fuente='Comité Central Electoral de Israel, vía Kaplan Open Source (recuento provisional)'),
     ),
 ]
 
