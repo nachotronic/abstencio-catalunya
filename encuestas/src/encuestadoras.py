@@ -222,7 +222,7 @@ def genera(encs, salida, c):
         extra_cis = ('<p>La estimación del CIS se aparta del resto de encuestadoras, sobre todo en el PSOE: '
                      '<a href="../../actualidad/cis-tezanos-estimacion-29n/">así le fue en elecciones anteriores</a>.</p>') if k == 'cis' else ''
         cuerpo = f"""<main>
-<p class="kicker"><a href="../">Encuestas</a> · Elecciones generales del 29N</p>
+<p class="kicker"><a href="../">Encuestas elecciones generales 2026</a> · 29N</p>
 <h1 data-miga="{html.escape(nombre)}">{html.escape(h1)}</h1>
 <p class="dek">{html.escape(dek)}</p>
 <p class="firma">Por <a href="../../sobre-mi.html">{c.AUTOR}</a> · Actualizado el <time datetime="{pub}">{c.fecha_larga(pub)}</time></p>
@@ -235,7 +235,7 @@ def genera(encs, salida, c):
 <h2>Todas las encuestas {del_(nombre)} desde 2023</h2>
 <p>Voto estimado en porcentaje y, debajo, escaños cuando la encuestadora los publica. Cada fila enlaza a la publicación original.</p>
 {tabla}
-<p><a href="../">Todas las encuestas de las generales, su promedio y nuestra estimación →</a></p>
+<p><a href="../">Todas las encuestas de las elecciones generales 2026, su promedio y nuestra estimación →</a></p>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
 <h2>Las demás encuestadoras</h2>

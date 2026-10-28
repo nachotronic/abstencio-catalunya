@@ -60,7 +60,7 @@ NOMBRES = {
     'atlas/': 'Atlas de las anomalías electorales',
     'actualidad/': 'Actualidad',
     'generales-2026/metodologia.html': 'Metodología del mapa',
-    'encuestas/': 'Encuestas',
+    'encuestas/': 'Encuestas elecciones generales 2026',
     'listas-electorales-29n/': 'Listas electorales del 29N',
 }
 # Página de la que cuelga cada página suelta (las de carpeta cuelgan de la carpeta superior)

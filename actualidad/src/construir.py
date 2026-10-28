@@ -1040,13 +1040,17 @@ PIEZAS = [
                   pie='Papeletas del Senado, un mapa de provincias y la fachada del Senado: un collage.'),
     ),
     dict(
-        slug='albiol-badalona-pp-29n', fecha='2026-10-20',
-        titulo='Albiol, cabeza de lista del PP por Barcelona: en Badalona sacó el 55,7% en las municipales de 2023 y dos meses después el PP se quedó en el 16,6%', serie='29n',
-        descripcion='Su lista fue la más votada en 145 de las 149 secciones de la ciudad en mayo; en las generales de julio, el PP no ganó en ninguna. En 2019 pasó lo mismo: 37,6% en municipales y 9,4% en generales.',
+        slug='albiol-badalona-pp-29n', fecha='2026-10-20', actualizado='2026-10-28 06:30',
+        titulo='Albiol saca en Badalona tres veces los votos del PP', serie='29n',
+        descripcion='En las municipales de 2023 le votaron 50.163 vecinos; dos meses después, el PP sacó 16.405 en las generales. Su ventaja es mayor en los barrios socialistas. Pero Badalona es el 4% del censo de la provincia: aunque arrastrara a todos sus votantes, el PP sumaría 1,3 puntos.',
         compara='El voto al PP en Badalona en las municipales de 2011, 2015, 2019 y 2023, con Xavier García Albiol de cabeza de lista, frente al voto al PP en las generales de abril y noviembre de 2019 y julio de 2023, en total y por sección censal.',
-        limites='Los datos agregados por sección no permiten saber qué votantes cambiaron su voto ni cuántos se abstuvieron en una de las dos elecciones. El censo de las municipales incluye a residentes de la UE, que no votan en generales. No es una previsión: en 2026 Albiol se presenta al Congreso, no a la alcaldía.',
-        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo.',
+        limites='Los datos agregados por sección no permiten saber qué votantes cambiaron su voto ni cuántos se abstuvieron en una de las dos elecciones. El censo de las municipales incluye a residentes de la UE, que no votan en generales. No es una previsión: en 2026 Albiol se presenta al Congreso, no a la alcaldía. Los quintiles por voto al PSOE describen barrios, no personas. El techo de 1,3 puntos supone que todos los votantes municipales de Albiol votan al PP; no es una previsión. El modelo de encuestas es del 22 de octubre de 2026.',
+        calculo='Porcentajes sobre voto válido (votos a candidaturas más votos en blanco), salvo la participación, que es sobre el censo. Quintiles: las 149 secciones ordenadas por voto al PSOE en julio de 2023, en cinco grupos de igual número de secciones, con porcentajes sobre la suma de votos de cada grupo. Correlación de Pearson por sección entre la diferencia del PP (municipales menos generales) y el voto a ERC más Junts en las generales.',
         fuentes=[INTERIOR,
+                 ('https://www.europapress.es/catalunya/noticia-29n-albiol-dice-pp-tiene-claro-quien-vulnerable-verdad-jeta-20261024150522.html', 'Europa Press, Albiol: el PP tiene claro «quién es vulnerable de verdad» (24-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-albiol-pp-ve-absoluto-desprecio-sanchez-afectados-disturbios-barcelona-20261026131018.html', 'Europa Press, Albiol ve «absoluto desprecio» de Sánchez a los afectados por los disturbios (26-10-2026)'),
+                 ('https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Catalu%C3%B1a_de_2015', 'Elecciones al Parlamento de Cataluña de 2015, resultados'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños'),
                  ('https://cronicaglobal.elespanol.com/politica/20261017/pp-confirma-albiol-cabeza-lista-barcelona-congreso/1003742803654_0.html', 'Crónica Global, El PP confirma a Albiol como cabeza de lista por Barcelona (17-10-2026)'),
                  ('https://www.democrata.es/politica/garcia-albiol-encabezara-la-lista-del-pp-por-barcelona-al-congreso/', 'Demócrata, García Albiol, número uno del PP por Barcelona (17-10-2026)'),
                  ('https://www.moncloa.com/2026/10/17/albiol-candidato-pp-barcelona-29n-3450251', 'Moncloa.com, Feijóo confirma a Albiol como candidato por Barcelona (17-10-2026)'),
@@ -2725,6 +2729,49 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
+        slug='feijoo-albiol-barcelona-disturbios-29n', fecha='2026-10-28',
+        foto=dict(src='img/actualidad/fotos/feijoo-albiol-barcelona-disturbios-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Feijóo y Albiol leen un papel; al lado, una esquina del Eixample con una valla metálica: un collage.'),
+        titulo='Feijóo busca el voto del orden en la comunidad que más cita la inseguridad', serie='29n',
+        descripcion='Antes de los disturbios del sábado, el 11% de los catalanes ya nombraba la inseguridad entre los grandes problemas de España, más del doble que en el resto. La citan más los simpatizantes de Junts y Vox que los del PP. Y Albiol arrastra votos en Badalona, pero Badalona es el 4% de la provincia.',
+        compara='El porcentaje que cita la inseguridad ciudadana entre los tres principales problemas de España en Cataluña, en el resto de España y por partido dentro de Cataluña, en los barómetros del CIS de diciembre de 2025 a octubre de 2026; el voto de Albiol en Badalona en las municipales y del PP en las generales de 2023; y el PP en Barcelona en el modelo de encuestas.',
+        limites='Los barómetros del CIS son anteriores a los disturbios del 24 de octubre. La pregunta es sobre los problemas de España, no sobre el voto. El voto más simpatía no es una estimación de voto; los márgenes por partido en Cataluña van de dos a cinco puntos. El cálculo de 1,3 puntos supone que todos los votantes municipales de Albiol votan al PP, un techo, no una previsión. Los estudios citados tratan de Estados Unidos (1960-1972) y Londres (2011).',
+        calculo='CIS: porcentaje ponderado (PESO normalizado a media 1 en cada estudio) de entrevistados que citan «La inseguridad ciudadana» en PESPANNA1, PESPANNA2 o PESPANNA3, estudios 3536 a 3582; margen al 95% con n efectiva de Kish. Badalona: votos a candidaturas más blancos. Último escaño: cociente D\'Hondt del escaño 32 de Barcelona en 2023 sobre votos válidos.',
+        fuentes=[('https://www.catalunyapress.es/articulo/politica-nacional/2026-10-27/6068322-feijoo-convirte-disturbios-barcelona-arma-29-n-visitara-tiendas-afectadas-miercoles', 'Catalunya Press, Feijóo visitará las tiendas afectadas por los disturbios (27-10-2026)'),
+                 ('https://www.democrata.es/elecciones-generales-espana/feijoo-seguridad-barcelona-albiol-vivienda/', 'Demócrata, Feijóo arranca en Barcelona su campaña por la seguridad (27-10-2026)'),
+                 ('https://elpais.com/espana/elecciones-generales/2026-10-27/feijoo-hace-de-los-disturbios-de-barcelona-uno-de-los-ejes-de-su-campana-contra-sanchez.html', 'El País, Feijóo hace de los disturbios de Barcelona uno de los ejes de su campaña (27-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-128-detenidos-disturbios-barcelona-sabado-72-ellos-menores-edad-20261025090646.html', 'Europa Press, 128 detenidos por los disturbios de Barcelona (25-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-mossos-elevan-130-detenidos-disturbios-barcelona-cuales-76-menores-20261026120129.html', 'Europa Press, los Mossos elevan a 130 los detenidos (26-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-feijoo-acusa-sanchez-generar-tension-porque-sabe-pierde-promete-ser-implacable-violentos-20261027141144.html', 'Europa Press, Feijóo promete ser «implacable con los violentos» (27-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-albiol-pp-ve-absoluto-desprecio-sanchez-afectados-disturbios-barcelona-20261026131018.html', 'Europa Press, Albiol ve «absoluto desprecio» de Sánchez a los afectados (26-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-parlon-ve-voluntad-desestabilizacion-caos-organizadores-disturbios-barcelona-20261026092542.html', 'Europa Press, Parlon ve voluntad de desestabilización (26-10-2026)'),
+                 ('https://doi.org/10.1017/S000305542000009X', 'Omar Wasow, Agenda Seeding: How 1960s Black Protests Moved Elites, Public Opinion and Voting, American Political Science Review 114 (2020)'),
+                 ('https://doi.org/10.1017/psrm.2022.49', 'Gabriel León-Ablan y Peter John, How urban riots influence political behavior: vote choices after the 2011 London riots, Political Science Research and Methods (2022)'),
+                 ('https://www.cis.es/', 'CIS, microdatos de los barómetros de diciembre de 2025 a octubre de 2026'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Barcelona',
+    ),
+    dict(
+        slug='rufian-montero-la-revuelta-29n', fecha='2026-10-28',
+        foto=dict(src='img/actualidad/fotos/rufian-montero-la-revuelta-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Rufián y Montero en un sofá rojo de plató, con Broncano de pie y una cámara de televisión: un collage.'),
+        titulo='Rufián le guarda a Podemos el puesto 6: sale en 7 de cada 10 simulaciones', serie='29n',
+        descripcion='Tras pasar por La Revuelta, el tándem de ERC y Podemos se juega en Barcelona el escaño de Alejandra Sandoval. Y el duelo que busca Rufián con el PSC está entre los jóvenes: entre los catalanes de menos de 45 años, ERC y el PSC empatan en el CIS.',
+        compara='La probabilidad de salir elegido de cada puesto de la lista de ERC por Barcelona, donde van dos independientes de Podemos (puestos 6 y 10), con el modelo de Mapa Electoral; y el voto más simpatía a PSC, ERC, Sumar y Podemos en Cataluña por edad en los barómetros del CIS de diciembre de 2025 a octubre de 2026.',
+        limites='El modelo de escaños reparte la media de encuestas por provincia y no distingue a los candidatos de Podemos dentro de la lista de ERC; cambiará con las encuestas. El voto más simpatía del CIS no es una estimación de voto. En Cataluña hay entre 335 y 1.153 entrevistas por grupo de edad, con márgenes de error de tres a cinco puntos. Que los simpatizantes de Podemos voten a ERC es una suposición.',
+        calculo='Puestos: proporción de las 2.000 simulaciones del modelo (media de encuestas del 26 de octubre de 2026) en que ERC saca en Barcelona al menos tantos escaños como el número del puesto. CIS: porcentaje ponderado (PESO normalizado a media 1 en cada estudio) de entrevistados con residencia en Cataluña que citan cada partido en VOTOSIMG, sobre el total de la celda; estudios 3536, 3540, 3544, 3546, 3557, 3562, 3567, 3577 y 3582.',
+        fuentes=[('https://www.europapress.es/nacional/noticia-montero-propone-prohibir-especulacion-expropiar-fondos-buitre-hacer-frente-problema-vivienda-20261028001153.html', 'Europa Press, Montero propone prohibir la especulación y expropiar a los fondos buitre (28-10-2026)'),
+                 ('https://www.europapress.es/epsocial/igualdad/noticia-irene-montero-cree-bastante-gente-sabia-era-errejon-mientras-rufian-le-sorprendio-absolutamente-20261027231247.html', 'Europa Press, Montero y Rufián en La Revuelta (27-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-alejandra-sandoval-maria-pozuelo-candidatas-podemos-lista-erc-barcelona-20261016154616.html', 'Europa Press, Alejandra Sandoval y María Pozuelo, candidatas de Podemos en la lista de ERC por Barcelona (16-10-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-bases-podemos-avalan-acuerdo-erc-cataluna-pactos-coalicion-canarias-valencia-20261016170110.html', 'Europa Press, las bases de Podemos avalan el acuerdo con ERC (16-10-2026)'),
+                 ('https://www.europapress.es/catalunya/noticia-rufian-erc-defiende-colaboracion-someter-psoe-no-estar-sometidos-20261024132859.html', 'Europa Press, Rufián defiende colaborar para «someter al PSOE» (24-10-2026)'),
+                 ('https://www.cis.es/', 'CIS, microdatos de los barómetros de diciembre de 2025 a octubre de 2026'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Cataluña',
+    ),
+    dict(
         slug='comuns-psc-senado-girona-lleida-tarragona-29n', fecha='2026-10-27',
         foto=dict(src='img/actualidad/fotos/comuns-psc-senado-girona-lleida-tarragona-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='La catedral de Girona, la Seu Vella de Lleida y el anfiteatro de Tarragona detrás de una papeleta rosa del Senado con dos franjas, roja y morada: un collage.'),
@@ -2924,17 +2971,58 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/serbia-estudiantes-vucic-mapa-distritos.jpg', ancho=1280, alto=720, grafico=True,
                   pie='Quién ganó en cada distrito de Serbia en las legislativas del 25 de octubre.', fuente='RIK, resultados provisionales por colegio; contornos de OpenStreetMap'),
     ),
+    dict(
+        slug='quien-vota-barrios-renta-edad-inmigracion', fecha='2026-10-28',
+        titulo='En los barrios ricos se vota 15 puntos más que en los pobres, y en las europeas, 22: quién vota en España según la renta, la edad y la inmigración', serie='29n',
+        descripcion='En el 10% de secciones censales con más renta votó el 77,8% en las generales de 2023; en el 10% más pobre, el 62,6%. La distancia era de 7,9 puntos en 2004. Vox saca más en los barrios jóvenes y la inmigración baja la participación, pero no sube el voto a Vox.',
+        compara='La participación y el voto en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, en las 36.462 secciones censales de España, agrupadas en diez tramos con el mismo censo según la renta, la pobreza, la edad media, la población extranjera, los estudios y el paro que el INE mide en cada sección.',
+        limites='Son datos por sección, no por persona: que en las secciones más pobres se vote más a un partido no significa que cada persona pobre lo vote. Los deciles mezclan territorios (el 10% más pobre pesa mucho en Andalucía, Canarias y Extremadura) y las relaciones son descriptivas, no causas. Sin voto exterior (CERA). Los adultos sin derecho a voto son una estimación (adultos del padrón menos censo electoral). Las elecciones antiguas solo cuentan en las secciones que conservan su código de 2023. Las cifras usan todas las secciones con dato de renta y pueden diferir en unas décimas de las de otras piezas que filtran secciones distintas. Este texto estuvo en la portada del sitio hasta el 28 de octubre de 2026.',
+        fuentes=[INTERIOR, INE,
+                 ('https://www.eldiario.es/politica/barrios-pobres-van-votar-elecciones_1_1162754.html', 'elDiario.es, Braulio Gómez (Universidad de Deusto) sobre los barrios que no votan (7-4-2019)'),
+                 ('https://www.foessa.es/main-files/uploads/sites/16/2019/05/3.4.pdf', 'Manuel Trujillo y Braulio Gómez Fortes, La segregación electoral interurbana en España, VIII Informe FOESSA (2019)'),
+                 ('https://www.elobservador.com.uy/nota/por-que-sera-decisivo-el-voto-joven-el-23j-202371961447', 'EFE vía El Observador, Manuel Mostaza sobre el voto joven (19-7-2023)'),
+                 ('https://www.eldiario.es/desalambre/voto-inmigrante-extranjeros-legalmente-espana_1_1636823.html', 'elDiario.es, Rafael Naranjo (Universidad de Málaga) sobre el voto de los extranjeros (15-5-2019)'),
+                 ('https://doi.org/10.21308/recp.62.01', 'Irene Delgado Sotillos, Revista Española de Ciencia Política, n.º 62 (2023)'),
+                 ('https://www.eldiario.es/piedrasdepapel/Vox-derecha-populista-escision-PP_6_850474947.html', 'Héctor Meleiro, Piedras de Papel, elDiario.es (26-12-2018)')],
+        enlaces=[],
+        lugar='España',
+    ),
+]
+
+PIEZAS += [
+    dict(
+        slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
+        titulo='Netanyahu se queda a cuatro escaños de la mayoría con el 40% escrutado, y la oposición solo llega a 61 con los partidos árabes', serie='internacional',
+        descripcion='Con 2,1 millones de votos contados, los cinco partidos del Gobierno saliente suman 57 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 47. Los dos partidos árabes tienen 16, y su peso ha ido subiendo a medida que avanzaba el recuento. Estas son las combinaciones posibles.',
+        compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 40% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 y la evolución del recuento durante la madrugada; frente a los resultados de 2022.',
+        limites='Resultados provisionales: el recuento oficial estaba en torno al 40% (2.122.846 votos válidos) y faltan, entre otros, los votos de los soldados. Los escaños cambiarán. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación.',
+        fuentes=[('https://www.kikar.co.il/political-news/israel-elections-voting-turnout', 'Kikar HaShabbat, recuento oficial del Comité Central Electoral de Israel a las 4.03, 4.47 y 5.57 del 28-10-2026 (votos por partido)'),
+                 ('https://www.israelnationalnews.com/news/435272', 'Arutz Sheva, reparto provisional de escaños con el 37,4% de los votos contados (28-10-2026)'),
+                 ('https://en.wikipedia.org/wiki/2026_Israeli_legislative_election', 'Wikipedia, resultados de 2022 y composición de las listas de 2026'),
+                 ('https://www.telemundo40.com/noticias/mundo/israel-elecciones-kneset-resultados-gadi-eisenkot-benjamin-netanyahu/2554061/', 'EFE vía Telemundo, Aún sin resultados electorales, opositor Eisenkot afirma triunfo (27-10-2026)'),
+                 ('https://www.elconfidencial.com/mundo/2026-10-28/netanyahu-castigado-su-bloque-cae-en-escanos_4454401/', 'El Confidencial, Israel castiga (a medias) a Netanyahu (28-10-2026)'),
+                 ('https://es-us.noticias.yahoo.com/elecciones-israel-participaci%C3%B3n-r%C3%A9cord-sondeos-023026272.html', 'France 24 vía Yahoo Noticias, participación récord y encuestas a pie de urna (28-10-2026)'),
+                 ('https://www.infobae.com/america/mundo/2026/10/27/el-bloque-de-eisenkot-aventaja-a-netanyahu-en-las-elecciones-de-israel-pero-ninguno-logra-mayoria/', 'Infobae, el proceso de formación de Gobierno (27-10-2026)')],
+        enlaces=[],
+        lugar='Israel',
+        foto=dict(src='img/actualidad/fotos/israel-pactos-escanos-knesset.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Las coaliciones posibles en la Knesset con el recuento provisional del 28 de octubre.', fuente='Comité Central Electoral de Israel, recuento provisional al 40%'),
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'quien-vota-barrios-renta-edad-inmigracion': 'Quién vota',
     'israel-elecciones-encuestas-knesset': 'Israel vota',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
+    'feijoo-albiol-barcelona-disturbios-29n': 'Feijóo en Barcelona',
+    'rufian-montero-la-revuelta-29n': 'El tándem de La Revuelta',
     'comuns-psc-senado-girona-lleida-tarragona-29n': 'Senado en Cataluña',
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
+    'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
     'mujeres-jovenes-voto-29n': 'Brecha de género',
@@ -3438,6 +3526,13 @@ def imagen_carrusel(q, pre):
     return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="{alt_tarjeta(q, None)}" loading="lazy" width="300" height="200">'
 
 
+PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
+    'albiol-badalona-pp-29n': '2026-10-28',
+    'rufian-montero-la-revuelta-29n': '2026-10-28',
+    'feijoo-albiol-barcelona-disturbios-29n': '2026-10-28',
+}
+
+
 def franja_portada(todas, pre=''):
     """Carrusel «Actualidad» de la portada del sitio, entre las marcas <!--actualidad:ultimas-->, encima del del Atlas.
     Mismo formato que la franja del Atlas (atlas/src/paginas.py): miniatura, serie y titular. Las miniaturas las hace miniaturas.mjs."""
@@ -3445,6 +3540,10 @@ def franja_portada(todas, pre=''):
     # Las más recientes por fecha, no por su sitio en PIEZAS: las piezas se añaden en bloques distintos (Nacho, 22-10-2026)
     recientes = sorted(todas[::-1], key=lambda q: q['fecha'], reverse=True)   # sorted es estable: en el mismo día, la última añadida primero
     # Las de Historia electoral solo van en su propio carrusel, no en el de Actualidad (Nacho, 23-10-2026)
+    # Fijas delante, en este orden, hasta el día indicado (Nacho, 28-10-2026: Albiol, Broncano y Feijóo las primeras)
+    hoy = datetime.date.today().isoformat()
+    fijas = [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta]
+    recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
     ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] != 'historia'][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'

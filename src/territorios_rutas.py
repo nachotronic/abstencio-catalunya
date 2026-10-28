@@ -109,7 +109,7 @@ TEMAS = {
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
         piezas=TEMA_RENTA + ['quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
-                             'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n'],
+                             'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n', 'quien-vota-barrios-renta-edad-inmigracion'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
                ('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal')],
         atlas=[]),
@@ -121,7 +121,7 @@ TEMAS = {
         piezas=TEMA_PARTICIPACION + ['voto-correo-29n', 'barrios-donde-vota-menos-de-la-mitad', 'alquiler-ciudad-a-ciudad', 'europeas-arona', 'voto-en-blanco',
                                      'pensiones-censo-mayores-29n', 'ley-nietos-voto-exterior-29n', 'ley-nietos-donde-estan-29n',
                                      'blocs-i-cases-girona', 'salaris-pensions-ajudes-girona', 'vox-barrios-obreros-clase-29n', 'girona-1936-participacio',
-                                     'corrupcion-penaliza-voto-29n'],
+                                     'corrupcion-penaliza-voto-29n', 'quien-vota-barrios-renta-edad-inmigracion'],
         datos=[('elecciones/participacion-electoral-por-barrio/', 'Participación electoral por barrio en toda España'),
                ('elecciones/censo-electoral-2026/', 'Censo electoral de 2026 por provincia y municipio'),
                ('abstencion.html', '¿Quién no vota en Cataluña? La abstención sección a sección')],
@@ -201,7 +201,7 @@ TEMAS = {
         titulo='Escaños y sistema electoral: el precio de un diputado, los restos y las coaliciones',
         intro='Cómo se convierten los votos en escaños: los diputados que se decidieron por unos cientos de votos, '
               'lo que cuesta un escaño en cada provincia, el Senado y lo que habrían sacado las coaliciones.',
-        piezas=['escanos-en-el-filo-29n', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
+        piezas=['feijoo-albiol-barcelona-disturbios-29n', 'rufian-montero-la-revuelta-29n', 'escanos-en-el-filo-29n', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'pacto-pp-vox-senado-provincias-29n', 'comuns-psc-senado-girona-lleida-tarragona-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
                 'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'listas-29n-quien-encabeza',
@@ -214,7 +214,7 @@ TEMAS = {
         titulo='Elecciones en el mundo: los mapas electorales de otros países',
         intro='Las elecciones de otros países contadas con sus datos oficiales y sus mapas: quién ganó en cada región, '
               'dónde se movió el voto y cómo se compara con la elección anterior.',
-        piezas=['israel-elecciones-encuestas-knesset', 'serbia-estudiantes-vucic-mapa-distritos', 'brasil-lula-remontada-mapa-estados'],
+        piezas=['israel-pactos-escanos-knesset', 'israel-elecciones-encuestas-knesset', 'serbia-estudiantes-vucic-mapa-distritos', 'brasil-lula-remontada-mapa-estados'],
         datos=[],
         atlas=[]),
 }
