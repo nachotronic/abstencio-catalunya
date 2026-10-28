@@ -1489,9 +1489,12 @@ def diputados_por_provincia():
 
 def tema_29n(resumen):
     ruta = 'elecciones/elecciones-29n-2026/'
-    titulo = 'Elecciones 29N 2026: mapa, escaños por provincia, fecha y resultados de 2023'
+    titulo = 'Elecciones 29N 2026: mapa, escaños por provincia y por partido, fecha y resultados de 2023'
     desc = ('Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Fechas de la campaña, los 350 diputados provincia a provincia '
-            '(Madrid gana uno y Cádiz lo pierde), mapas del resultado de 2023 y lo que puede decidirse en cada territorio.')
+            '(Madrid gana uno y Cádiz lo pierde), cuántos escaños tiene cada partido, cuántos votos cuesta un escaño y mapas del resultado de 2023.')
+    pt = SIS['partidos']
+    esc = {x['partido']: x['escanos'] for x in pt}
+    vpe = {x['partido']: x['votos_por_escano'] for x in pt}
     qs = [('¿Cuándo son las elecciones generales de 2026?',
            f'El domingo 29 de noviembre de 2026. Las convoca el <a href="{BOE_29N}">Real Decreto 806/2026</a>, publicado en el BOE el 6 de octubre, que disuelve el Congreso y el Senado elegidos el 23 de julio de 2023.'),
           ('¿Cuándo empieza la campaña electoral?',
@@ -1503,6 +1506,18 @@ def tema_29n(resumen):
           ('¿Cuántos diputados tiene cada partido?',
            'En el Congreso elegido en 2023: ' + '; '.join(f'{x["partido"]}, {x["escanos"]}' for x in SIS['partidos'] if x['escanos']) + '. '
            'Son los escaños de cada candidatura el día de las elecciones; algunos diputados cambiaron después de grupo parlamentario.'),
+          ('¿Cuántos escaños tiene Podemos en el Congreso?',
+           f'Podemos no se presentó con siglas propias en 2023: fue dentro de Sumar, que sacó {esc["Sumar"]} diputados. Cinco de ellos eran de Podemos y en diciembre de 2023 '
+           'dejaron el grupo de Sumar y pasaron al Grupo Mixto. El 29N Podemos y Sumar se presentan por separado, así que el reparto de 2023 no dice cuántos escaños sacará cada uno.'),
+          ('¿Cuántos escaños tienen Vox y Junts?',
+           f'Vox obtuvo {esc["Vox"]} diputados en 2023, la tercera fuerza, y Junts, {esc["Junts"]}. '
+           'Son los escaños que conservan hasta que se constituyan las nuevas Cortes el 23 de diciembre de 2026.'),
+          ('¿Cuántos votos hacen falta para un escaño?',
+           f'Depende de la provincia y del partido. En 2023 al PP cada diputado le costó {num(vpe["PP"])} votos de media, al PSOE {num(vpe["PSOE"])}, a Vox {num(vpe["Vox"])} y a Sumar {num(vpe["Sumar"])}; '
+           f'los partidos que concentran su voto en pocas provincias, como Junts ({num(vpe["Junts"])}) o el PNV ({num(vpe["PNV"])}), necesitan menos. No hay un mínimo fijo: la ley D\'Hondt reparte los escaños de cada provincia por separado, '
+           'y solo cuentan las candidaturas que superan el 3 % del voto válido en esa provincia.'),
+          ('¿Cuántos escaños hacen falta para la mayoría absoluta?',
+           '176 de 350. En 2023 ningún partido se acercó: el PP sacó 137 y el PSOE 121, y la investidura de Pedro Sánchez salió adelante con 179 votos a favor en noviembre de 2023.'),
           ('¿Cuántos senadores elige cada provincia?',
            'Cuatro en cada provincia; tres en Gran Canaria, Mallorca y Tenerife; uno en Ibiza-Formentera, Menorca, Fuerteventura, La Gomera, El Hierro, Lanzarote y La Palma, y dos en Ceuta y en Melilla.'),
           ('¿Cuándo se constituyen las nuevas Cortes?',
@@ -1511,12 +1526,13 @@ def tema_29n(resumen):
            'En el mapa de Mapa Electoral: escribe tu calle y número en el buscador y pulsa en tu sección censal. La noche del 29N el mapa mostrará el recuento en directo.')]
     faq_html, faq_ld = faq(qs)
     ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    act = ld['dateModified'] = max(ACTUALIZADO, '2026-10-28')   # respuestas a búsquedas de escaños
     h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Elecciones 29N 2026', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
     h.append('<p class="kicker">Elecciones generales · 29 de noviembre de 2026</p><h1 data-miga="Elecciones 29N 2026">Elecciones generales del 29N de 2026</h1>')
     h.append('<p class="subtitulo">Cuándo se vota, cuántos diputados elige cada provincia y cómo votó cada territorio en 2023, el punto de partida</p>')
-    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
     h.append(foto_html(ruta, raiz))
     e = T.ESPANA
     h.append(f'<p class="resumen">{tipo("Dato")}Las elecciones al Congreso y al Senado se celebran el domingo 29 de noviembre de 2026, convocadas por el '
@@ -1546,12 +1562,18 @@ def tema_29n(resumen):
         filas.append([f'<a href="../../{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>', str(ESCANOS_2026[p]), str(ESCANOS_2023[p]),
                       (f'{d:+d}'.replace('-', '−') if d else '='), ' · '.join(f'{escape(k)} {v}' for k, v in sorted(esc.items(), key=lambda kv: -kv[1])),
                       num(round(epd[p], -2)), pct(r['part'])])
-    h.append('<h2 id="escanos">Escaños por provincia en 2026</h2>'
-             + p_('Dato', 'Diputados que elige cada circunscripción el 29N y en 2023, cómo se repartieron en 2023, electores residentes por diputado y participación del censo residente. '
+    h.append('<h2 id="escanos">Escaños por provincia en 2026: cuántos diputados elige cada una</h2>'
+             + p_('Dato', 'Las 52 circunscripciones eligen, de mayor a menor: ' + diputados_por_provincia())
+             + p_('Dato', 'En la tabla, diputados que elige cada circunscripción el 29N y en 2023, cómo se repartieron en 2023, electores residentes por diputado y participación del censo residente. '
                   'Cada provincia enlaza a su página, con el voto por municipio y por barrio desde 1977.')
              + tabla('Escaños por circunscripción en las generales de 2026 y de 2023', ['Provincia', '2026', '2023', 'Cambio', 'Reparto en 2023', 'Electores por diputado', 'Participación 2023'], filas))
-    pt = SIS['partidos']
-    h.append('<h2 id="partidos">Escaños de cada partido</h2>'
+    h.append('<h2 id="partidos">Cuántos escaños tiene cada partido en el Congreso</h2>'
+             + '<ul>' + ''.join(f'<li><b>{escape(x["partido"])}</b>: {num(x["escanos"])} diputado{"s" if x["escanos"] > 1 else ""} ({x["pct_escanos"]:.1f} % de la cámara, con el {x["pct"]:.1f} % del voto)</li>'.replace('.', ',')
+                                for x in pt if x['escanos']) + '</ul>'
+             + p_('Dato', 'Es el Congreso elegido el 23 de julio de 2023, que sigue en funciones a través de la Diputación Permanente hasta el 23 de diciembre. '
+                  'La mayoría absoluta está en 176. Algunos diputados cambiaron de grupo durante la legislatura: los cinco de Podemos, elegidos en las listas de Sumar, '
+                  f'pasaron al <a href="https://www.elsaltodiario.com/podemos/podemos-oficializa-ruptura-sumar-pasa-al-grupo-mixto">Grupo Mixto en diciembre de 2023</a>. El 29N Podemos se presenta por su cuenta; '
+                  f'cuántos escaños podría sacar en Madrid, en <a href="{raiz}actualidad/frente-amplio-podemos-madrid-escanos-29n/">esta simulación con los votos de 2023</a>.')
              + p_('Dato', 'En las generales de 2023 el PP obtuvo ' + num(pt[0]['escanos']) + ' diputados; '
                   + '; '.join(f'{escape(x["partido"])}, {num(x["escanos"])}' for x in pt[1:] if x['escanos']) + '. '
                   f'Con los mismos votos y el reparto de 2026, en el que Madrid gana un diputado y Cádiz lo pierde, el PP tendría {num(R26["PP"])} y el PSOE {num(R26["PSOE"])}; el resto, igual.')
@@ -1564,7 +1586,7 @@ def tema_29n(resumen):
     for g in gp.values():
         cuenta[g] = cuenta.get(g, 0) + 1
     orden = sorted(cuenta, key=lambda c: -cuenta[c])
-    h.append('<h2>Quién ganó en cada provincia en 2023</h2>'
+    h.append('<h2 id="mapa">Mapa de diputados por provincia y partido más votado en 2023</h2>'
              + p_('Dato', 'En las generales de 2023 el PP fue la lista más votada en ' + num(cuenta.get('PP', 0)) + ' de las 52 circunscripciones; '
                   + '; '.join(f'{T.NOMBRE[c]}, en {num(cuenta[c])}' for c in orden if c != 'PP') + '. '
                   'El número de cada provincia es el de diputados que elige el 29N.')
@@ -1578,7 +1600,10 @@ def tema_29n(resumen):
         h.append(p_('Dato', f'Entre noviembre de 2019 y julio de 2023 cambió el partido más votado en {num(len(cambian))} provincias: '
                     + ', '.join(f'<a href="../../{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a> ({T.NOMBRE[r19[p]]} → {T.NOMBRE[gp[p]]})' for p in sorted(cambian, key=lambda p: PROV_NOMBRE[p])) + '.'))
     mn, mx = min(epd, key=epd.get), max(epd, key=epd.get)
-    h.append('<h2>Cuánto vale cada voto</h2>'
+    h.append('<h2 id="votos-escano">Cuántos votos son un escaño</h2>'
+             + p_('Dato', 'No hay una cifra fija: cada provincia reparte sus diputados por separado con la regla D\'Hondt. En 2023, de media, cada escaño costó '
+                  + '; '.join(f'{num(vpe[k])} votos al {k}' if k in ('PP', 'PSOE') else f'{num(vpe[k])} a {k}' for k in ('PP', 'PSOE', 'Vox', 'Sumar', 'ERC', 'Junts', 'EH Bildu', 'PNV')) + '. '
+                  'Los partidos grandes y los que concentran su voto en pocas provincias pagan menos por escaño; los que quedan terceros o cuartos en provincias pequeñas pierden muchos votos sin representación.')
              + p_('Dato', f'Con el censo residente de 2023, en {escape(PROV_NOMBRE[mn])} hay un diputado por cada {num(round(epd[mn], -2))} electores, y en {escape(PROV_NOMBRE[mx])}, '
                   f'uno por cada {num(round(epd[mx], -2))}: {str(round(epd[mx] / epd[mn], 1)).replace(".", ",")} veces más. La ley electoral da a cada provincia un mínimo de dos diputados y reparte el resto por población, '
                   'así que las provincias pequeñas eligen más diputados por elector.')
