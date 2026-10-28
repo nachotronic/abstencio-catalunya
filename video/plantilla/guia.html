@@ -375,7 +375,7 @@ const S = {
   puntos(s, t) {
     pop(s.titulo, X, 300, 76, 88, 0, t);
     if (s.sub) text(s.sub, X, 450, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
-    const [lw, lh] = s.lienzo, sc = Math.min((W - 40) / lw, 860 / lh) * (1 + 0.04 * t / s.dur), ox = (W - lw * sc) / 2, oy = 520 + (860 - lh * sc) / 2;
+    const [lw, lh] = s.lienzo, alto = s.alto || 860, sc = Math.min((W - 40) / lw, alto / lh) * (1 + 0.04 * t / s.dur), ox = (s.ox ?? (W - lw * sc) / 2), oy = (s.y0 || 520) + (alto - lh * sc) / 2;
     ctx.save(); ctx.translate(ox, oy); ctx.scale(sc, sc);
     ctx.fillStyle = '#20243a'; ctx.strokeStyle = '#3a3f58'; ctx.lineWidth = 0.6 / sc * 2;
     if (!s._p) s._p = s.prov.map(d => new Path2D(d));
@@ -390,11 +390,11 @@ const S = {
       const k = ease((t - 0.4 - (i % 97) / 97 * (s.revelar || 1.6)) / 0.3);
       if (k <= 0) return;
       ctx.globalAlpha = 0.75 * k; ctx.fillStyle = col(c);
-      ctx.beginPath(); ctx.arc(x, y, (1.2 + 5 * Math.sqrt(v / vmax)) * back(k), 0, 7); ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, ((s.base || 1.2) + (s.radio || 5) * Math.sqrt(v / vmax)) * back(k), 0, 7); ctx.fill();
     });
     ctx.restore(); ctx.globalAlpha = 1;
     (s.leyenda || []).forEach(([c, l], j) => {
-      const dos = s.leyenda.length > 4, a = ease((t - 0.8 - j * 0.1) / 0.3), x = X + (dos ? (j % 2) * 470 : 0), y = 1400 + (dos ? Math.floor(j / 2) : j) * 48;
+      const dos = s.leyenda.length > 4, a = ease((t - 0.8 - j * 0.1) / 0.3), x = (s.leyX || X) + (dos && !s.leyCol ? (j % 2) * 470 : 0), y = (s.leyY || 1400) + (dos && !s.leyCol ? Math.floor(j / 2) : j) * 48;
       ctx.globalAlpha = a; ctx.fillStyle = col(c); ctx.beginPath(); ctx.arc(x + 18, y - 12, 16, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
       text(l, x + 52, y, '500 32px ' + F.mono, C.fg, 'left', a);
     });
