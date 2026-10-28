@@ -3,7 +3,7 @@
 Cada tarjeta es un fotograma del vídeo (img/videos/<nombre>.jpg, 360 × 480: el tercio de arriba,
 donde van los textos y las cifras; abajo queda la zona segura vacía de los Shorts) que enlaza al tuit en X.
 Sin embeds de X: su widgets.js pesa más que todo el carrusel y frenaría el mapa. Mientras no se apunte
-el enlace del tuit ('tuit'), la tarjeta lleva a la pestaña de vídeos del perfil.
+el enlace del tuit ('tuit'), la tarjeta lleva a la pestaña de vídeos del perfil @_mapaelectoral.
 
 Los vídeos (x-<nombre>.mp4) están en /mnt/project-files/videos/, nunca en el repositorio. Para añadir uno:
 ponlo al principio de VIDEOS (los más nuevos delante) y lanza
@@ -15,7 +15,7 @@ import html, pathlib, re, subprocess
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 VIDEOS_DIR = pathlib.Path('/mnt/project-files/videos')
-PERFIL = 'https://x.com/nachotronic'
+PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
@@ -60,7 +60,7 @@ def franja(pre=''):
             f'<a href="{PERFIL}" target="_blank" rel="noopener">Vídeos en X</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Vídeos anteriores">←</button><button type="button" class="da-next" aria-label="Más vídeos">→</button></span></div>'
             f'<ul class="carrusel">{tarjetas}'
-            f'<li class="todas"><a href="{PERFIL}" target="_blank" rel="noopener"><b>Todos los vídeos en X →</b><span>@nachotronic</span></a></li></ul>'
+            f'<li class="todas"><a href="{PERFIL}" target="_blank" rel="noopener"><b>Todos los vídeos en X →</b><span>@_mapaelectoral</span></a></li></ul>'
             '<style>.del-videos .carrusel{grid-auto-columns:minmax(170px,calc((100% - 80px)/6.3))}'
             '.del-videos .dv-img{position:relative;display:block;margin-bottom:6px}'
             '.del-videos .carrusel img{aspect-ratio:3/4;height:auto;margin:0;background:#0d1220}'
