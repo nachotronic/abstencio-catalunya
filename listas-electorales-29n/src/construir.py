@@ -611,7 +611,7 @@ def main():
                'about': {'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'}},
               {'@context': 'https://schema.org', '@type': 'Dataset', '@id': url + '#datos', 'name': 'Listas electorales al Congreso y al Senado' + (' (23J de 2023)' if avance else ' del 29N de 2026'),
                'description': 'Candidatos de cada candidatura, provincia y cámara, tal como los publica el BOE.', 'url': url, 'license': 'https://creativecommons.org/licenses/by/4.0/',
-               'isBasedOn': datos['url'], 'creator': MEDIO, 'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'text/csv', 'contentUrl': url + nombre_csv}]},
+               'isBasedOn': datos['url'], 'creator': {**MEDIO, '@type': 'Organization'}, 'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'text/csv', 'contentUrl': url + nombre_csv}]},
               {'@context': 'https://schema.org', '@type': 'ItemList', '@id': url + '#provincias', 'name': 'Listas del 29N por provincia',
                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': f'{url}{PROV_SLUG[c]}/', 'name': f'Listas del 29N en {PROV_NOMBRE[c].split("/")[0]}'}
                                    for i, c in enumerate(sorted(PROV_SLUG, key=lambda c: slug(PROV_NOMBRE[c])))]},

@@ -908,7 +908,7 @@ def main():
                'variableMeasured': ['Encuestadora', 'Medio', 'Inicio y fin del trabajo de campo', 'Fecha de publicación', 'Tamaño de la muestra']
                                    + [f'Estimación de voto de {n} (%)' for _, n, *_ in PRINCIPALES] + ['Escaños de cada partido en el Congreso'],
                'isBasedOn': ['https://www.electografica.com/', 'https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election'],
-               'creator': MEDIO, 'distribution': [{'@type': 'DataDownload', 'name': 'Todas las encuestas', 'encodingFormat': 'text/csv',
+               'creator': {**MEDIO, '@type': 'Organization'}, 'distribution': [{'@type': 'DataDownload', 'name': 'Todas las encuestas', 'encodingFormat': 'text/csv',
                                                    'contentUrl': f'{BASE}/previsiones/datos/encuestas/encuestas_limpias.csv'},
                                                   {'@type': 'DataDownload', 'name': 'Encuestas con escaños, según Wikipedia', 'encodingFormat': 'text/csv',
                                                    'contentUrl': f'{BASE}/previsiones/datos/encuestas/wikipedia_generales_espana.csv'}]},
