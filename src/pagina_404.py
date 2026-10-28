@@ -41,7 +41,7 @@ def paginas_totales():
 
 
 NAV = [('/', 'Mapa de resultados'), ('/elecciones/', 'Por territorio'), ('/municipio/', 'Municipios'), ('/municipio/barrios/', 'Barrios'),
-       ('/temas/', 'Temas'), ('/encuestas/', 'Encuestas'), ('/atlas/', 'Atlas'), ('/actualidad/', 'Actualidad'),
+       ('/temas/', 'Temas'), ('/encuestas/', 'Encuestas'), ('/listas-electorales-29n/', 'Listas 29N'), ('/atlas/', 'Atlas'), ('/actualidad/', 'Actualidad'),
        ('/actualidad/#comunidades', 'Comunidades'), ('/actualidad/#historia', 'Historia electoral'), ('/sobre-mi.html', 'Sobre mí')]
 
 
