@@ -118,5 +118,9 @@
  "girona-1936-participacio": {
   "pie": "On es votava més, el 1936 o el 2023: diferència de participació per municipi.",
   "fuente": "Atles Electoral de la Segona República (UPF); Ministeri de l'Interior"
+ },
+ "quien-vota-barrios-renta-edad-inmigracion": {
+  "pie": "Participación en los barrios más pobres y más ricos, de 2004 a 2024.",
+  "fuente": "Ministerio del Interior e INE"
  }
 }
