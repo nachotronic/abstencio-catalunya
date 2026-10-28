@@ -2990,6 +2990,28 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='barrios-caseros-inquilinos-voto-29n', fecha='2026-10-28',
+        titulo='Donde viven los caseros gana el PP; donde viven los inquilinos, gana la abstención', serie='29n',
+        descripcion='En los códigos postales donde más de uno de cada cinco contribuyentes declara ingresos por alquiler, el PP sacó en 2023 el 52% y el PSOE, el 20%. Donde menos, ganó el PSOE. En los barrios con más hogares de alquiler el voto apenas cambia, pero se vota casi siete puntos menos, también a igual renta.',
+        compara='El porcentaje de declaraciones del IRPF de 2024 con rendimientos del capital inmobiliario (caseros) en 813 códigos postales de 66 grandes municipios, con el voto de las generales de julio de 2023 (sumando las secciones censales de cada código), en cinco grupos de menos a más caseros; el porcentaje de hogares que viven de alquiler (Censo de 2021) en las 36.000 secciones censales, con su participación; y las dos cosas dentro de cada ciudad o municipio y a igual renta, edad, extranjeros y estudios, con regresiones con efectos fijos de ciudad o de municipio y errores estándar agrupados.',
+        limites='Son datos de barrios, no de personas: no dicen cómo vota un casero ni un inquilino. Hacienda cuenta declaraciones, no personas, y las atribuye al domicilio de quien cobra el alquiler, no al del piso; no incluye empresas, no residentes ni pisos turísticos explotados como actividad económica, ni el País Vasco o Navarra. El código postal solo existe en las grandes ciudades, y las secciones se asignan al código donde cae la mayor parte de su superficie, con contornos del CNIG de 2015. Los datos fiscales son de 2024, los votos de 2023 y la tenencia de 2021. A igual renta, buena parte del efecto de los caseros es el de tener patrimonio en general: con las rentas del capital mobiliario en el modelo, se queda en la mitad. Cataluña se analiza aparte por su sistema de partidos.',
+        calculo='Caseros: declaraciones con rendimientos del capital inmobiliario sobre el total de declaraciones del código postal. Voto: porcentaje sobre votos válidos; participación, sobre el censo. Grupos: códigos postales con al menos 500 declaraciones fuera de Cataluña (687 de 56 ciudades), y secciones con al menos 200 electores fuera de Cataluña (28.268), en cinco grupos del mismo tamaño. Regresiones por mínimos cuadrados ponderados por censo, con efectos fijos de ciudad (códigos postales) o de municipio (secciones) y errores estándar agrupados por ciudad o municipio; controles: logaritmo de la renta neta por unidad de consumo (INE, 2024), porcentaje de hogares de alquiler, edad media, porcentaje de extranjeros y de titulados superiores; margen de error al 95%.',
+        fuentes=[('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfCodPostal/2024/home.html', 'Agencia Tributaria, Estadística de los declarantes del IRPF de los mayores municipios por código postal, 2024'),
+                 ('https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfmunicipios/2024/home.html', 'Agencia Tributaria, Estadística de los declarantes del IRPF por municipios, 2024'),
+                 INTERIOR, INE_CENSO,
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=30824', 'INE, Atlas de Distribución de Renta de los Hogares: renta por sección censal, 2024 (tabla 30824)'),
+                 ('https://ine.es/experimental/viv_turistica/exp_viv_turistica_tablas.htm', 'INE, Medición del número de viviendas turísticas en España, mayo de 2026 (estadística experimental)'),
+                 ('https://centrodedescargas.cnig.es/CentroDescargas/', 'CNIG, códigos postales (CartoCiudad), vía github.com/inigoflores/ds-codigos-postales'),
+                 ('https://elpais.com/economia/2026-10-24/donde-viven-los-caseros-barrios-de-renta-alta-y-zonas-turisticas-concentran-a-quienes-declaran-ingresos-de-alquiler.html', 'El País, Pablo Sempere y Yolanda Clemente, ¿Dónde viven los caseros? (24-10-2026)'),
+                 ('https://www.dsca.gob.es/sites/default/files/prensa/Informe%201%20Multiarrendadores.pdf', 'Gil, Villas, García-Duch y Lebrusán, Un mercado dominado por multiarrendadores, Ministerio de Derechos Sociales, Consumo y Agenda 2030 e IFS-CSIC (2026)'),
+                 ('https://www.journals.uchicago.edu/doi/10.1086/714932', 'Andrew B. Hall y Jesse Yoder, Does Homeownership Influence Political Behavior?, The Journal of Politics 84(1) (2022)'),
+                 ('https://www.democrata.es/politica/ampliacion-casi-uno-de-cada-cinco-diputados-que-votara-los-decretos-de-vivienda-declara-ingresos-por-alquiler-entre-ellos-sanchez-y-feijoo/', 'Europa Press en Demócrata, Casi uno de cada cinco diputados que votará los decretos de vivienda declara ingresos por alquiler (29-9-2026)')],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/barrios-caseros-inquilinos-voto-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano entrega unas llaves a otra delante de una calle de casas de pisos, junto a un contrato y un sobre.'),
+    ),
 ]
 
 PIEZAS += [
@@ -3067,6 +3089,7 @@ ANTETITULOS = {
     'termometro-temas-inmigracion-29n': 'El termómetro de los temas',
     'vivienda-preocupa-voto-sumar-29n': 'La casa en la urna',
     'barrios-rentistas-pp-psoe-29n': 'Dividendos y alquileres',
+    'barrios-caseros-inquilinos-voto-29n': 'Las llaves y la urna',
     'casas-vacias-segundas-residencias': 'La casa cerrada',
     'escanos-en-el-filo-29n': 'La aritmética del último escaño',
     'oficios-y-voto-municipios-29n': 'El despacho y la urna',
@@ -3533,6 +3556,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'albiol-badalona-pp-29n': '2026-10-28',
     'rufian-montero-la-revuelta-29n': '2026-10-28',
     'feijoo-albiol-barcelona-disturbios-29n': '2026-10-28',
+    'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
 
