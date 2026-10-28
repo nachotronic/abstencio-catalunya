@@ -35,3 +35,10 @@ sección, `barras`, `lineas`, `numeros`, `reparto`, `cierre` con la ruta de la g
 Guiones: `guia-29n`, `guia-censo`, `guia-municipios` (timelapse), `guia-participacion`, `guia-renta`, `guia-seccion`.
 
 `vox` usa la misma plantilla: mapa municipal con `dato: "vox23"` y `rampa` propia (`mapamun`), y barras de un solo partido (`barrasPartidos` con `alto` y `marcar`, los deciles que llevan cifra). `vox23` lo genera `prep_espana.py`.
+
+## Israel (escenas `hemiciclo` y `apilado`)
+
+`python3 video/prep_israel.py /mnt/project-files/internacional/israel-2026` escribe `shorts/israel.json` con los datos de la pieza
+`israel-pactos-escanos-knesset`: hemiciclo de la Knesset por bloques, mapa del partido más votado por localidad (escena `puntos` con
+`origen`/`alto` para recortar el lienzo), voto árabe por distrito 2022-2026 (`parejas`) y sumas para llegar a 61 (`apilado`).
+Los escaños están en el propio script: actualizarlos si cambia el recuento y volver a ejecutar `localidades.py` de la pieza para el mapa.

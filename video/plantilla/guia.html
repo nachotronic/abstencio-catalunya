@@ -375,8 +375,9 @@ const S = {
   puntos(s, t) {
     pop(s.titulo, X, 300, 76, 88, 0, t);
     if (s.sub) text(s.sub, X, 450, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
-    const [lw, lh] = s.lienzo, sc = Math.min((W - 40) / lw, 860 / lh) * (1 + 0.04 * t / s.dur), ox = (W - lw * sc) / 2, oy = 520 + (860 - lh * sc) / 2;
-    ctx.save(); ctx.translate(ox, oy); ctx.scale(sc, sc);
+    const [lw, lh] = s.lienzo, mh = s.alto || 860, sc = Math.min((W - 40) / lw, mh / lh) * (1 + 0.04 * t / s.dur), ox = (W - lw * sc) / 2, oy = 520 + (mh - lh * sc) / 2;
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 500, W, mh + 40); ctx.clip();   // s.origen: recorta el lienzo desde ese punto
+    ctx.translate(ox, oy); ctx.scale(sc, sc); if (s.origen) ctx.translate(-s.origen[0], -s.origen[1]);
     ctx.fillStyle = '#20243a'; ctx.strokeStyle = '#3a3f58'; ctx.lineWidth = 0.6 / sc * 2;
     if (!s._p) s._p = s.prov.map(d => new Path2D(d));
     s._p.forEach((p, i) => {
@@ -390,11 +391,11 @@ const S = {
       const k = ease((t - 0.4 - (i % 97) / 97 * (s.revelar || 1.6)) / 0.3);
       if (k <= 0) return;
       ctx.globalAlpha = 0.75 * k; ctx.fillStyle = col(c);
-      ctx.beginPath(); ctx.arc(x, y, (1.2 + 5 * Math.sqrt(v / vmax)) * back(k), 0, 7); ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, (1.2 + (s.radio || 5) * Math.sqrt(v / vmax)) * back(k), 0, 7); ctx.fill();
     });
     ctx.restore(); ctx.globalAlpha = 1;
     (s.leyenda || []).forEach(([c, l], j) => {
-      const dos = s.leyenda.length > 4, a = ease((t - 0.8 - j * 0.1) / 0.3), x = X + (dos ? (j % 2) * 470 : 0), y = 1400 + (dos ? Math.floor(j / 2) : j) * 48;
+      const dos = s.leyenda.length > 4, a = ease((t - 0.8 - j * 0.1) / 0.3), x = X + (dos ? (j % 2) * 470 : 0), y = 540 + (s.alto || 860) + (dos ? Math.floor(j / 2) : j) * 48;
       ctx.globalAlpha = a; ctx.fillStyle = col(c); ctx.beginPath(); ctx.arc(x + 18, y - 12, 16, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
       text(l, x + 52, y, '500 32px ' + F.mono, C.fg, 'left', a);
     });
@@ -484,6 +485,51 @@ const S = {
       ctx.globalAlpha = a; ctx.fillStyle = col(c); rrect(x, y - 26, 30, 30, 5); ctx.globalAlpha = 1;
       text(l, x + 44, y, '500 28px ' + F.mono, C.fg, 'left', a);
     });
+  },
+  // Hemiciclo: s.partidos = [[nombre, color, escaños]] en orden de izquierda a derecha, s.bloques = [[nombre, color, escaños]]
+  hemiciclo(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const tot = s.partidos.reduce((a, p) => a + p[2], 0), cx = W / 2, cy = 980, filas = s.filas || 6, r0 = 230, r1 = 460;
+    const asientos = [];
+    for (let f = 0; f < filas; f++) {
+      const r = r0 + (r1 - r0) * f / (filas - 1), n = Math.round(tot * r / ((r0 + r1) / 2) / filas);
+      for (let j = 0; j < n; j++) asientos.push([Math.PI * (1 - j / (n - 1)), r]);
+    }
+    while (asientos.length > tot) asientos.splice(asientos.length - 1 - Math.floor(asientos.length / filas), 1);
+    while (asientos.length < tot) asientos.push([Math.PI / 2, r1 + 40]);
+    asientos.sort((a, b) => b[0] - a[0] || a[1] - b[1]);
+    const colores = s.partidos.flatMap(([, c, e]) => Array(e).fill(col(c)));
+    asientos.forEach(([a, r], i) => {
+      const k = back((t - 0.4 - i / tot * (s.revelar || 1.8)) / 0.25);
+      if (k <= 0) return;
+      ctx.fillStyle = colores[i]; ctx.beginPath(); ctx.arc(cx + r * Math.cos(a), cy - r * Math.sin(a), 17 * k, 0, 7); ctx.fill();
+    });
+    const kl = ease((t - 2.2) / 0.4);
+    text(s.mayoria || '61 para gobernar', cx, cy + 70, '700 34px ' + F.mono, C.fg, 'center', kl);
+    (s.bloques || []).forEach(([nm, c, e], j) => {
+      const k = ease((t - 2.4 - j * 0.35) / 0.4), y = cy + 200 + j * 110;
+      text(cuenta(String(e), k), X, y, '800 90px ' + F.display, col(c), 'left', clamp(k * 3));
+      text(nm, X + 150, y - 8, '400 44px ' + F.body, C.fg, 'left', clamp(k * 3));
+    });
+  },
+  // Sumas de escaños apiladas por partido con la línea de mayoría: s.filas = [[nombre, [[color, escaños], ...]]]
+  apilado(s, t) {
+    pop(s.titulo, X, 300, 80, 92, 0, t);
+    if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
+    const x0 = X, x1 = W - X - 110, top = 590, rowH = s.alto || 128, px = v => x0 + (x1 - x0) * v / s.max;
+    const kl = ease((t - 0.3) / 0.4), xl = px(s.linea), yb = top + s.filas.length * rowH;
+    s.filas.forEach(([nm, partes], i) => {
+      const y = top + i * rowH, k = ease((t - 0.5 - i * 0.3) / 0.6), tot = partes.reduce((a, p) => a + p[1], 0);
+      text(nm, X, y + 34, '600 32px ' + F.mono, C.fg, 'left', clamp(k * 3));
+      let acc = 0;
+      partes.forEach(([c, v]) => { ctx.globalAlpha = clamp(k * 3) * (tot >= s.linea ? 1 : 0.8); ctx.fillStyle = col(c); rrect(px(acc * k), y + 50, Math.max((px(v) - x0) * k - 3, 0.1), 52, 6); acc += v; });
+      ctx.globalAlpha = 1;
+      text(miles(tot * k) + (tot >= s.linea ? ' ✓' : ''), px(tot * k) + 14, y + 92, '800 44px ' + F.display, tot >= s.linea ? C.fg : C.muted, 'left', clamp(k * 3));
+    });
+    ctx.globalAlpha = kl; ctx.strokeStyle = C.fg; ctx.lineWidth = 3; ctx.setLineDash([10, 8]);
+    ctx.beginPath(); ctx.moveTo(xl, top - 10); ctx.lineTo(xl, yb + 10); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+    text(s.lineaTxt || String(s.linea), xl, yb + 54, '700 30px ' + F.mono, C.fg, 'center', kl);
   },
   numeros(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
