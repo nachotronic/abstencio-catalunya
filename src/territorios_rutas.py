@@ -179,7 +179,7 @@ TEMAS = {
         intro='Las grandes ciudades contadas sección a sección: dónde gana cada partido, qué calles parten el voto en dos '
               'y los barrios donde un partido saca sus mejores resultados.',
         piezas=TEMA_SECCION + ['calle-que-parte-madrid', 'calle-que-parte-barcelona', 'girona-barri-a-barri-29n', 'psoe-cinco-barrios-ceuta', 'cc-cinco-barrios-la-orotava',
-                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n', 'alvise-salf-donde-vota-29n'],
+                               'vox-cinco-barrios-el-ejido-ceuta', 'ciudadanos-democracia21-29n', 'albiol-badalona-pp-29n', 'asi-queda-el-mapa-29n', 'barcelona-madrid-clasico-del-voto-29n', 'alvise-salf-donde-vota-29n', 'puente-valladolid-segundo-escano-29n'],
         datos=[('elecciones/mapa-electoral-seccion-censal/', 'Mapa electoral de España por sección censal'),
                ('', 'Mapa de resultados calle a calle')],
         atlas=[('atlas/ciudad-y-entorno/', 'Atlas: la ciudad y su entorno')]),
@@ -191,7 +191,7 @@ TEMAS = {
         piezas=TEMA_MUNICIPIOS + ['bildu-cinco-pueblos-lizartza', 'bng-cinco-pueblos-allariz', 'erc-cinco-pueblos-blancafort-flix',
                                   'junts-cinco-pueblos-amer', 'pnv-cinco-pueblos-bermeo', 'pp-cinco-pueblos-galicia', 'sumar-cinco-pueblos-marinaleda',
                                   'baltar-censo-y-participacion', 'europeas-arona', 'casas-vacias-segundas-residencias', 'oficios-y-voto-municipios-29n',
-                                  'municipios-izquierda-1977-derecha-2023', 'pueblos-unanimes-empates-29n', 'ganar-por-un-voto-29n'],
+                                  'municipios-izquierda-1977-derecha-2023', 'pueblos-unanimes-empates-29n', 'ganar-por-un-voto-29n', 'dana-pueblos-primeras-generales-29n'],
         datos=[('elecciones/resultados-elecciones-por-municipio/', 'Resultados de las elecciones por municipio desde 1977'),
                ('municipio/', 'Elecciones en cada municipio de más de 1.000 habitantes')],
         atlas=[('atlas/excepciones/', 'Atlas: las excepciones'), ('atlas/contra-su-provincia/', 'Atlas: contra su provincia'),
@@ -205,7 +205,7 @@ TEMAS = {
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'pacto-pp-vox-senado-provincias-29n', 'comuns-psc-senado-girona-lleida-tarragona-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
                 'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'listas-29n-quien-encabeza',
-                'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n', 'adelante-andalucia-psoe-29n'],
+                'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n', 'adelante-andalucia-psoe-29n', 'puente-valladolid-segundo-escano-29n'],
         datos=[('elecciones/como-se-vota/', 'Cómo se vota: el precio de un escaño por provincia'),
                ('elecciones/elecciones-29n-2026/', 'Elecciones generales del 29N de 2026: diputados por provincia')],
         atlas=[('atlas/bisagras/', 'Atlas: las bisagras')]),
@@ -308,7 +308,8 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
-EXCLUIR_PIEZA = {'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'},
+EXCLUIR_PIEZA = {'puente-valladolid-segundo-escano-29n': {'45177', '14001', '45200'},   # lugares del accidente, no de la pieza
+                 'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'},
                  'lorca-fuente-vaqueros-viznar-1936': {'30024', '27012'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}, 'republica-mapa-1936-hoy': {'17155'},
                  'abstencion-anarquista-cnt-1933-1936': {'45071'}, 'asturias-1934-1936-revolucion-urnas': {'45071'},
                  'pueblos-bajo-el-agua-1936': {'23055', '48027'}, 'pueblos-colonizacion-franquismo-voto': {'23028', '50008'},

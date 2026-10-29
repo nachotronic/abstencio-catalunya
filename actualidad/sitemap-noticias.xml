@@ -25,6 +25,22 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/dana-pueblos-primeras-generales-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-29</news:publication_date>
+      <news:title>Dos años de la DANA: sus 74 pueblos llegan al 29N partidos, 38 del PSOE y 36 del PP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/puente-valladolid-segundo-escano-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-10-29</news:publication_date>
+      <news:title>Puente descarta dimitir y se juega en Valladolid el escaño de su número dos: sale en el 54%</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/rufian-montero-la-revuelta-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
