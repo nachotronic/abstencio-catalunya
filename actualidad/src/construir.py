@@ -3567,9 +3567,11 @@ def imagen_carrusel(q, pre):
 
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
-    'albiol-badalona-pp-29n': '2026-10-28',
-    'rufian-montero-la-revuelta-29n': '2026-10-28',
-    'feijoo-albiol-barcelona-disturbios-29n': '2026-10-28',
+    # Nacho, 29-10-2026: las cuatro actualizadas hoy, las primeras
+    'ley-nietos-voto-exterior-29n': '2026-10-29',
+    'ley-nietos-donde-estan-29n': '2026-10-29',
+    'listas-29n-quien-encabeza': '2026-10-29',
+    'rufian-montero-la-revuelta-29n': '2026-10-29',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
