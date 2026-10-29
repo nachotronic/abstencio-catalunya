@@ -3023,12 +3023,13 @@ PIEZAS += [
 PIEZAS += [
     dict(
         slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
-        actualizado='2026-10-28 17:32',
+        actualizado='2026-10-29 07:05',
         titulo='Netanyahu se queda a ocho escaños de la mayoría: con el 86% escrutado, ya ni Liberman le daría los 61', serie='internacional',
         descripcion='Con 4,85 millones de votos contados, los cinco partidos del Gobierno saliente suman 53 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 48. Los dos partidos árabes tienen 19. Estas son las combinaciones posibles, y el mapa del voto por localidad.',
         compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con cerca del 86% de los votos contados, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
         limites='Resultados provisionales, en actualización: el recuento oficial estaba en torno al 86% (83,4% de las urnas) y faltan, entre otros, los votos de los soldados. Los escaños cambiarán. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación. El mapa sitúa cada localidad en el centro de su término aproximado, con un círculo proporcional a los votos contados. La comparación con 2022 por distrito pondera cada localidad por la parte de colegios ya escrutada en 2026; no separa los cambios de participación de los cambios de voto. Distritos según la lista oficial de localidades de data.gov.il; Cisjordania son solo los asentamientos israelíes, donde no votan los palestinos.',
-        fuentes=[('https://www.kikar.co.il/political-news/israel-elections-voting-turnout', 'Kikar HaShabbat, recuento oficial del Comité Central Electoral de Israel a las 4.03, 4.47 y 5.57 del 28-10-2026 (votos por partido)'),
+        fuentes=[('https://www.europapress.es/internacional/noticia-partido-netanyahu-acusa-fuerzas-arabes-robar-elecciones-pide-investigacion-oficial-20261028172856.html', 'Europa Press, el Likud acusa a los partidos árabes de «robar» las elecciones (28-10-2026)'),
+                 ('https://www.kikar.co.il/political-news/israel-elections-voting-turnout', 'Kikar HaShabbat, recuento oficial del Comité Central Electoral de Israel a las 4.03, 4.47 y 5.57 del 28-10-2026 (votos por partido)'),
                  ('https://www.israelnationalnews.com/news/435272', 'Arutz Sheva, reparto provisional de escaños con el 37,4% de los votos contados (28-10-2026)'),
                  ('https://www.ynet.co.il/news/elections2026', 'Ynet, calculadora de escaños con el recuento oficial a las 14.34 del 28-10-2026 (votos y escaños por lista)'),
                  ('https://www.ynet.co.il/news/blogs/article/hjvyjpc2fe', 'Ynet, reparto provisional de escaños con el 48% y el 60% escrutado (28-10-2026)'),
@@ -3572,6 +3573,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'ley-nietos-donde-estan-29n': '2026-10-29',
     'listas-29n-quien-encabeza': '2026-10-29',
     'rufian-montero-la-revuelta-29n': '2026-10-29',
+    'israel-pactos-escanos-knesset': '2026-10-29',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
