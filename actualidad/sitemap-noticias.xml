@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/encuestas-semana-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-26</news:publication_date>
-      <news:title>El PP baja en las cinco encuestas de la semana, pero con Vox sigue sumando mayoría absoluta en todas</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/israel-elecciones-encuestas-knesset/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -54,38 +46,6 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-27</news:publication_date>
       <news:title>PP y Vox pactan el Senado: con las encuestas sumarían entre 158 y 163 senadores, alrededor de los 160 que necesitan para renovar el Constitucional sin el PSOE</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/listas-29n-quien-encabeza/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-26</news:publication_date>
-      <news:title>¿Sale tu candidato? Con las listas oficiales del BOE, 250 escaños están casi decididos y 204 candidatos se juegan los otros 100</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/adelante-andalucia-psoe-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-26</news:publication_date>
-      <news:title>Uno de cada tres votantes de Adelante venía del PSOE, pero el mapa andaluz no muestra la fuga</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/inmigracion-cuesta-votos-psoe-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-26</news:publication_date>
-      <news:title>La inmigración ya le cuesta votos al PSOE, no solo al PP</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/brasil-lula-remontada-mapa-estados/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-26</news:publication_date>
-      <news:title>Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color</news:title>
     </news:news>
   </url>
   <url>
