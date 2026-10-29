@@ -5,6 +5,7 @@
 name: Encuestas
 on:
   schedule:
+    - cron: '7 23 * * *'    # 0:07 en invierno: la fecha de «Actualizado» de la portada cambia al empezar el día (Nacho, 29-10-2026)
     - cron: '17 6 * * *'    # 7:17 en invierno (minuto poco concurrido: GitHub retrasa mucho las tareas en punto)
     - cron: '17 18 * * *'   # 19:17
   workflow_dispatch:
