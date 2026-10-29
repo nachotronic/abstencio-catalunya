@@ -1,0 +1,10 @@
+{"plantilla": "guia", "kicker": "VALLADOLID · 29N",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035"},
+ "fuente": ["Fuentes: modelo de Mapa Electoral (encuestas hasta el", "26-10, 2.000 simulaciones); Ministerio del Interior."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.6, "cuenta": 1.4, "lineas": ["Simulaciones en las que", "el PSOE gana su 2º", "escaño en Valladolid (%):"], "contador": 54, "color": "PSOE", "size": 88},
+  {"tipo": "barrasH", "dur": 5.4, "titulo": ["El quinto escaño,", "a tres bandas"], "sub": "% de simulaciones en que sale elegido", "max": 70, "enteros": true, "alto": 150, "filas": [["Redondo", "PSOE", 54], ["Muñoz", "PP", 33], ["Santana", "Vox", 15]]},
+  {"tipo": "parejas", "dur": 5.4, "titulo": ["De 2023", "a las encuestas"], "sub": "% de voto en la provincia", "max": 50, "claves": ["2023", "encuestas"], "pares": [["PP", "PP", 41.2, 38.2], ["PSOE", "PSOE", 33.0, 27.2], ["Vox", "Vox", 15.3, 22.5]]},
+  {"tipo": "numeros", "dur": 5.0, "titulo": ["Margen estrecho"], "items": [["1,7", "PSOE", ["puntos: lo que puede bajar el PSOE", "y conservar el escaño de Redondo"]], ["+2,3", "PSOE", ["puntos sacó Puente de alcalde", "sobre el PSOE de las generales (2023)"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Valladolid y", "el escaño de Puente"], "ruta": "/actualidad/puente-valladolid-segundo-escano-29n/"}
+ ]}
