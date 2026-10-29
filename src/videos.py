@@ -19,7 +19,9 @@ PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
-    dict(nombre='israel', t=9.5, k='Israel', titulo='A Netanyahu le faltan ocho escaños: quién ganó en cada localidad', tuit=''),
+    dict(nombre='valladolid', t=8, k='Valladolid', titulo='El quinto escaño de Valladolid, a tres bandas: Redondo sale en el 54 %', tuit=''),
+    dict(nombre='dana', t=8, k='DANA', titulo='Los 74 pueblos de la DANA llegan al 29N partidos: 38 del PSOE y 36 del PP', tuit=''),
+    dict(nombre='israel', t=9.5, k='Israel', titulo='Netanyahu solo llega a 61 con Ra\'am: quién ganó en cada localidad', tuit=''),
     dict(nombre='albiol', t=4, k='Badalona', titulo='Los 50.163 votos de Albiol en Badalona, y lo que valen el 29N', tuit=''),
     dict(nombre='listas-29n', t=8, k='Listas del 29N', titulo='4.031 candidatos al Congreso: 207 con el escaño en el aire', tuit=''),
     dict(nombre='inseguridad', t=8, k='Cataluña', titulo='La inseguridad ya preocupaba en Cataluña antes de los disturbios', tuit=''),

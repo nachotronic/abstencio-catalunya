@@ -1,0 +1,10 @@
+{"plantilla": "guia", "kicker": "DOS AÑOS DE LA DANA · 29N",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Vox": "#5ac035", "Sumar": "#a2275f", "CERA": "#e0a440"},
+ "fuente": ["Fuentes: BOE (RDL 6/2024, anexo), Ministerio del", "Interior e INE (censo electoral 2023 y 2026)."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.6, "cuenta": 1.4, "lineas": ["Electores de los", "74 pueblos de la DANA", "llamados a votar el 29N:"], "contador": 755341, "color": "vote", "size": 88},
+  {"tipo": "parejas", "dur": 5.4, "titulo": ["Partidos", "casi por la mitad"], "sub": "Municipios donde ganó cada partido", "max": 45, "enteros": true, "unidad": "", "claves": ["generales 2023", "europeas 2024"], "pares": [["PSOE", "PSOE", 38, 36], ["PP", "PP", 36, 38]]},
+  {"tipo": "barrasH", "dur": 5.0, "titulo": ["El voto en los 74,", "generales de 2023"], "sub": "% de votos a candidaturas", "max": 40, "alto": 130, "filas": [["PSOE", "PSOE", 33.8], ["PP", "PP", 32.3], ["Vox", "Vox", 16.8], ["Sumar", "Sumar", 15.8]]},
+  {"tipo": "numeros", "dur": 5.0, "titulo": ["La riada no ha", "vaciado el censo"], "items": [["+3,8 %", "vote", ["electores desde 2023", "(España: +2,3 %)"]], ["6", "CERA", ["pueblos del interior", "pierden electores"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Los pueblos", "de la DANA", "ante el 29N"], "ruta": "/actualidad/dana-pueblos-primeras-generales-29n/"}
+ ]}
