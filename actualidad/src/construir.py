@@ -3110,6 +3110,7 @@ ANTETITULOS = {
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
+    'eeuu-elecciones-medio-mandato-mapa': 'A cuatro días del 3 de noviembre',
     'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
@@ -3615,6 +3616,37 @@ def imagen_carrusel(q, pre):
     return f'<img src="{pre}img/actualidad/{q["slug"]}.jpg" alt="{alt_tarjeta(q, None)}" loading="lazy" width="300" height="200">'
 
 
+# Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
+PIEZAS += [
+    dict(
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30',
+        titulo='Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan', serie='internacional',
+        descripcion='Estados Unidos elige el 3 de noviembre a los 435 miembros de la Cámara de Representantes. En 2024 ganaron los republicanos, 220 a 215. Nueve estados han cambiado sus distritos, la mayoría a petición de Trump, con mapas pensados para darle nueve escaños netos más. En el resto del país, a los demócratas les bastaría un giro de 4 puntos; las encuestas apuntan a unos 11.',
+        compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
+        limites='Los distritos son los de 2024, los únicos con resultados: en los nueve estados que los han redibujado se vota el 3 de noviembre con otros límites. La cuenta del giro resta los mismos puntos en todos los distritos que no cambian; no es una previsión. Los objetivos de los mapas nuevos son los que buscaban sus autores según Sabato\'s Crystal Ball y Wikipedia, no un cálculo propio con los límites nuevos. Los porcentajes son sobre el total de votos válidos de cada distrito; en los distritos sin rival del otro partido, la ventaja es la del candidato único.',
+        fuentes=[('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, Statistics of the Presidential and Congressional Election of November 5, 2024'),
+                 ('https://clerk.house.gov/member_info/olm-119.pdf', 'Clerk de la Cámara de Representantes, lista oficial de miembros (1-10-2026)'),
+                 ('https://www.the-downballot.com/p/data', 'The Downballot, presidenciales de 2024 por distrito de la Cámara'),
+                 ('https://www2.census.gov/geo/tiger/GENZ2024/', 'U.S. Census Bureau, contornos de los distritos del 119.º Congreso (cb_2024_us_cd119_500k)'),
+                 ('https://sabatoscrystalball.substack.com/p/gop-redistricting-edge-blunted-by', "Sabato's Crystal Ball (Kyle Kondik), la ventaja republicana de la redistribución (15-9-2026)"),
+                 ('https://en.wikipedia.org/wiki/2025%E2%80%932026_United_States_redistricting', 'Wikipedia, 2025-2026 United States redistricting'),
+                 ('https://www.supremecourt.gov/opinions/25pdf/24-109_21o3.pdf', 'Tribunal Supremo de EE. UU., Louisiana v. Callais (29-4-2026)'),
+                 ('https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections', 'The American Presidency Project (UC Santa Barbara), escaños del partido del presidente en las legislativas de mitad de mandato'),
+                 ('https://www.natesilver.net/p/nate-silver-2026-midterm-election-polls-model', 'Silver Bulletin, voto genérico al Congreso (28-10-2026)'),
+                 ('https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin', 'Silver Bulletin, aprobación de Trump (29-10-2026)'),
+                 ('https://www.cookpolitical.com/analysis/senate/senate-overview/senate-majority-squarely-democrats-sights-kansas-moves-toss-two', 'The Cook Political Report, calificaciones del Senado'),
+                 ('https://en.wikipedia.org/wiki/2026_United_States_Senate_elections', 'Wikipedia, 2026 United States Senate elections'),
+                 ('https://www.europapress.es/internacional/noticia-trump-cancela-mitines-presenciales-kansas-iowa-pocos-dias-elecciones-medio-mandato-eeuu-20261030041336.html', 'Europa Press, Trump cancela sus mítines presenciales en Kansas e Iowa (30-10-2026)'),
+                 ('https://www.europapress.es/internacional/noticia-trump-promete-gobernar-golpe-veto-si-republicanos-pierden-congreso-midterms-20261023175717.html', 'Europa Press, Trump promete gobernar a golpe de veto si los republicanos pierden el Congreso (23-10-2026)'),
+                 ('https://www.infobae.com/america/agencias/2026/10/29/rediseno-de-mapas-electorales-en-eeuu-solo-ha-dado-tres-escanos-seguros-a-los-republicanos/', 'EFE vía Infobae, el rediseño de mapas solo ha dado tres escaños seguros a los republicanos (29-10-2026)'),
+                 ('https://www.defensa.gob.es/ceseden/-/ieee/2026-elecciones-estados-unidos-medio-termino-opinion-109', 'Juan Luis Manfredi, IEEE, documento de opinión sobre las elecciones de medio término (26-10-2026)')],
+        enlaces=[],
+        lugar='Estados Unidos',
+        foto=dict(src='img/actualidad/fotos/eeuu-elecciones-medio-mandato-mapa.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano marca una papeleta junto al Capitolio de Washington, entre jirones rojos y azules: un collage.'),
+    ),
+]
+
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
@@ -3624,6 +3656,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'listas-29n-quien-encabeza': '2026-10-29',
     'rufian-montero-la-revuelta-29n': '2026-10-29',
     'israel-pactos-escanos-knesset': '2026-10-29',
+    'eeuu-elecciones-medio-mandato-mapa': '2026-10-30',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
