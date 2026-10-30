@@ -3642,8 +3642,8 @@ PIEZAS += [
                  ('https://www.defensa.gob.es/ceseden/-/ieee/2026-elecciones-estados-unidos-medio-termino-opinion-109', 'Juan Luis Manfredi, IEEE, documento de opinión sobre las elecciones de medio término (26-10-2026)')],
         enlaces=[],
         lugar='Estados Unidos',
-        foto=dict(src='img/actualidad/fotos/eeuu-elecciones-medio-mandato-mapa.jpg', ancho=1280, alto=720, grafico=True,
-                  pie='Los 435 distritos de la Cámara de Representantes, con la altura según la ventaja del ganador en 2024.', fuente='Clerk de la Cámara de Representantes; contornos del U.S. Census Bureau'),
+        foto=dict(src='img/actualidad/fotos/eeuu-elecciones-medio-mandato-mapa.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano marca una papeleta junto al Capitolio de Washington, entre jirones rojos y azules: un collage.'),
     ),
 ]
 

@@ -20,11 +20,10 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (61)
+## Pendientes (60)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
-| 2026-10-30 | [`eeuu-elecciones-medio-mandato-mapa`](https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/) | Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan | gráfico |
 | 2026-10-28 | [`quien-vota-barrios-renta-edad-inmigracion`](https://mapaelectoral.es/actualidad/quien-vota-barrios-renta-edad-inmigracion/) | En los barrios ricos se vota 15 puntos más que en los pobres, y en las europeas, 22: quién vota en España según la renta, la edad y la inmigración | primer gráfico de la pieza |
 | 2026-10-28 | [`israel-pactos-escanos-knesset`](https://mapaelectoral.es/actualidad/israel-pactos-escanos-knesset/) | Con todo el voto contado, Netanyahu solo llega a 61 escaños si suma a Ra'am, el partido islamista árabe | gráfico |
 | 2026-10-27 | [`israel-elecciones-encuestas-knesset`](https://mapaelectoral.es/actualidad/israel-elecciones-encuestas-knesset/) | Solo una televisión le daba la mayoría a Netanyahu | primer gráfico de la pieza |
