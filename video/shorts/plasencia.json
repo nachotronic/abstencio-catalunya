@@ -1,0 +1,9 @@
+{"plantilla": "guia", "kicker": "HISTORIA ELECTORAL · 1977-2023",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "UCD": "#e07b22", "CERA": "#e0a440"},
+ "fuente": ["Fuente: Ministerio del Interior, 16 generales.", "Ganador con todas las listas, también las locales."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.6, "cuenta": 1.2, "lineas": ["Municipios que votaron", "al ganador de España", "en las 16 generales:"], "contador": 27, "color": "CERA", "size": 92},
+  {"tipo": "barras", "dur": 5.6, "titulo": ["Acertar siempre", "es cada vez más raro"], "sub": "Municipios que no han fallado nunca, hasta cada año", "valores": [5792, 2357, 334, 104, 46, 27], "etiquetas": ["1977", "1982", "1996", "2004", "N19", "2023"], "min": 0, "max": 6000, "enteros": true, "marcar": [0, 1, 2, 3, 4, 5], "colorIni": "UCD", "colorFin": "CERA", "izq": "UCD gana", "der": "PP gana"},
+  {"tipo": "numeros", "dur": 5.4, "titulo": ["El mayor,", "Plasencia"], "items": [["32.589", "CERA", ["electores en Plasencia (Cáceres),", "16 de 16"]], ["66", "vote", ["electores en Sigüés (Zaragoza),", "el más pequeño"]], ["14", "vote", ["de los 27 están en Aragón"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["16 de 16:", "los pueblos que", "siempre aciertan"], "ruta": "/actualidad/plasencia-acierta-siempre/"}
+ ]}

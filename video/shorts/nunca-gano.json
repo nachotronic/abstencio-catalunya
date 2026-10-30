@@ -1,0 +1,9 @@
+{"plantilla": "guia", "kicker": "HISTORIA ELECTORAL · 1977-2023",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613"},
+ "fuente": ["Fuente: Ministerio del Interior, 16 generales.", "Ganador con todas las listas, también las locales."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.6, "cuenta": 1.4, "lineas": ["Municipios donde", "el PSOE nunca ha", "ganado unas generales:"], "contador": 1932, "color": "PSOE", "size": 92},
+  {"tipo": "numeros", "dur": 5.2, "titulo": ["Ni con los 202", "diputados de 1982"], "items": [["1,7 M", "PSOE", ["de electores en ellos"]], ["64.677", "PP", ["electores en Pozuelo de Alarcón,", "el mayor: solo UCD y PP"]]]},
+  {"tipo": "numeros", "dur": 5.2, "titulo": ["Y al revés,", "la derecha estatal"], "items": [["864", "PP", ["municipios donde nunca ha ganado:", "ni UCD, AP, PP, CDS, Cs ni Vox"]], ["6,5 M", "PP", ["de electores: Barcelona,", "Terrassa, Dos Hermanas…"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Dónde nunca", "ha ganado", "cada bloque"], "ruta": "/actualidad/nunca-gano-el-psoe/"}
+ ]}
