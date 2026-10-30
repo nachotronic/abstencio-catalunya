@@ -19,6 +19,10 @@ PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
+    dict(nombre='precio-escano', t=8, k='Ley electoral', titulo='Un diputado cuesta 97.532 votos en Madrid y 25.304 en Teruel', tuit=''),
+    dict(nombre='plasencia', t=8, k='Historia electoral', titulo='16 de 16: los 27 municipios que siempre votan al ganador', tuit=''),
+    dict(nombre='ucd-cs', t=8, k='Historia electoral', titulo='De 5.990 municipios a 762: los hundimientos de UCD y Ciudadanos', tuit=''),
+    dict(nombre='nunca-gano', t=8, k='Historia electoral', titulo='1.932 municipios donde el PSOE nunca ha ganado, y 864 sin la derecha', tuit=''),
     dict(nombre='dana', t=8, k='DANA', titulo='Los 74 pueblos de la DANA llegan al 29N partidos: 38 del PSOE y 36 del PP', tuit=''),
     dict(nombre='valladolid', t=8, k='Valladolid', titulo='El quinto escaño de Valladolid, a tres bandas: Redondo sale en el 54 %', tuit=''),
     dict(nombre='israel', t=9.5, k='Israel', titulo='Netanyahu solo llega a 61 con Ra\'am: quién ganó en cada localidad', tuit=''),

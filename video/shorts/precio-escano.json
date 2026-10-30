@@ -1,0 +1,10 @@
+{"plantilla": "guia", "kicker": "EL PRECIO DEL ESCAÑO · GENERALES 23J",
+ "colores": {"PP": "#1d84ce", "PSOE": "#e30613", "Sumar": "#a2275f", "PNV": "#2b8a3e", "Bildu": "#a5c400", "Junts": "#20c0b2", "BNG": "#7ab8e6", "CERA": "#e0a440"},
+ "fuente": ["Fuente: Ministerio del Interior (23J 2023, con voto", "exterior). Votos válidos divididos por escaños."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.4, "cuenta": 1.4, "lineas": ["Votos que costó", "un diputado en Madrid", "en 2023:"], "contador": 97532, "color": "vote", "size": 92},
+  {"tipo": "barrasH", "dur": 5.2, "titulo": ["En Teruel y Soria,", "casi cuatro veces menos"], "sub": "Votos válidos por escaño, 23J", "max": 100000, "enteros": true, "unidad": "", "alto": 140, "filas": [["Madrid", "vote", 97532], ["Soria", "CERA", 25384], ["Teruel", "CERA", 25304]]},
+  {"tipo": "barrasH", "dur": 5.6, "titulo": ["Y según", "el partido"], "sub": "Votos en España por cada diputado, 23J", "max": 160000, "enteros": true, "unidad": "", "alto": 120, "filas": [["BNG", "BNG", 153995], ["Sumar", "Sumar", 98225], ["PP", "PP", 59570], ["Junts", "Junts", 56490], ["Bildu", "Bildu", 55855], ["PNV", "PNV", 55458]]},
+  {"tipo": "numeros", "dur": 5.0, "titulo": ["Es el diseño", "del sistema"], "items": [["102", "vote", ["escaños se reparten antes de contar", "habitantes: 2 por provincia, 1 Ceuta, 1 Melilla"]], ["29", "CERA", ["de las 52 circunscripciones", "eligen 5 diputados o menos"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["El precio del", "escaño en tu", "provincia"], "ruta": "/actualidad/precio-del-escano-29n/"}
+ ]}

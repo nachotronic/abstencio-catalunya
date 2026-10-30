@@ -1,0 +1,9 @@
+{"plantilla": "guia", "kicker": "HISTORIA ELECTORAL · LOS GRANDES HUNDIMIENTOS",
+ "colores": {"UCD": "#e07b22", "CS": "#eb6109", "PSOE": "#e30613", "Vox": "#5ac035"},
+ "fuente": ["Fuente: Ministerio del Interior, generales de", "1977 a 2019, sin voto exterior."],
+ "escenas": [
+  {"tipo": "hook", "dur": 4.4, "cuenta": 1.4, "lineas": ["Municipios donde", "UCD fue la más", "votada en 1979:"], "contador": 5990, "color": "UCD", "size": 92},
+  {"tipo": "numeros", "dur": 5.2, "titulo": ["Tres años", "después, 1982"], "items": [["762", "UCD", ["municipios ganados"]], ["6,7 %", "UCD", ["de los votos, desde el 35 %"]], ["4.055", "PSOE", ["municipios para el PSOE,", "que llega a la mayoría absoluta"]]]},
+  {"tipo": "numeros", "dur": 5.2, "titulo": ["Ciudadanos,", "en siete meses"], "items": [["115 → 5", "CS", ["municipios ganados,", "abril → noviembre de 2019"]], ["6,9 %", "CS", ["de los votos, desde el 16 %"]]]},
+  {"tipo": "cierre", "dur": 3.4, "lineas": ["Los dos grandes", "hundimientos de", "la democracia"], "ruta": "/actualidad/ucd-ciudadanos-hundimiento/"}
+ ]}
