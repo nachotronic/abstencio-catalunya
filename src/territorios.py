@@ -35,7 +35,7 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-10-26'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-10-31'   # cámbiala a mano cuando cambien los datos o el texto
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
@@ -402,7 +402,8 @@ PIE = f"""<footer>{SITIO} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</
 
 # Páginas publicadas después que el resto
 PUBLICADA = {'elecciones/elecciones-29n-2026/': '2026-10-15', 'elecciones/participacion-electoral-por-barrio/': '2026-10-15',
-             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20', 'elecciones/resultados-elecciones-generales-2026/': '2026-10-21', 'elecciones/votar-29n/': '2026-10-26'}
+             'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20', 'elecciones/resultados-elecciones-generales-2026/': '2026-10-21', 'elecciones/votar-29n/': '2026-10-26',
+             'elecciones/mesa-electoral-29n/': '2026-10-31', 'elecciones/voto-por-correo-29n/': '2026-10-31'}
 
 
 def ld_pagina(titulo, desc, ruta, about=None, partes=None):
@@ -651,6 +652,7 @@ def pagina_ciudad(cod):
     b_sec = bloque_secciones(nombre, sec)
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
     b_censo, q_censo = bloque_censo(nombre, cod)
+    b_mesas, q_mesas = bloque_mesas(nombre, cod)
     titulo = (f'Elecciones 29N 2026 en {nombre}: {"censo electoral y " if q_censo else ""}'
               + ('cómo votó cada barrio' if b_sec else 'resultados desde 1977'))
     desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
@@ -660,8 +662,8 @@ def pagina_ciudad(cod):
                 'Resultados de la serie completa y municipales frente a generales.')))
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
-    faq_html, faq_ld = faq([q_censo]) if q_censo else ('', None)
-    h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about), faq_ld] if faq_ld else ld_pagina(titulo, desc, ruta, about), nivel, nombre)]
+    faq_html, faq_ld = faq(([q_censo] if q_censo else []) + q_mesas)
+    h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about), faq_ld], nivel, nombre)]
     raiz = RAIZ_REL
     h.append(migas_html([(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p])]))
     h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales 1977-2023</p>'
@@ -677,6 +679,7 @@ def pagina_ciudad(cod):
     h.append(enlace_listas([p], raiz))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
+    h.append(b_mesas)
     h.append(b_sec)
     h.append(bloque_barrios(cod, nombre, BARRIOS.get(cod, [])))
     h.append(b_renta)
@@ -1158,6 +1161,44 @@ INE_SEDE = 'https://sede.ine.gob.es/'
 CORREOS_29N = 'https://www.correos.com/sala-prensa/ya-se-puede-solicitar-el-voto-por-correo-para-las-elecciones-generales-del-29-de-noviembre/'
 PUBLICO_MESA = 'https://www.publico.es/sociedad/tengo-votar-elecciones-generales-29n-consultar-colegio-mesa-electoral.html'
 LEGALITAS_29N = 'https://www.legalitas.com/actualidad/elecciones-2026'
+CLM24_MESAS = 'https://www.clm24.es/actualidad/mesas-electorales-29n-sorteos-sabado-31-octubre/20261030134318484921.html'
+UH_MESA = 'https://www.ultimahora.es/noticias/elecciones-29n/2026/10/25/2732623/mesa-electoral-para-29n-cuando-sabras-tocado-cuando-recibiras-notificacion.html'
+# mesas de cada municipio en las generales de 2023 (resultados por mesa de Interior, vía pollspaindata; sin las mesas CERA)
+MESAS = pd.read_csv(ROOT / 'data' / 'censo' / 'mesas_congreso_2023.csv', dtype={'mun_code': str}).set_index('mun_code')
+TEL_CENSO = '900 343 232'
+
+
+def bloque_mesas(nombre, cod):
+    """Bloque «Mesas electorales» de la ficha de un municipio y sus preguntas frecuentes (mesa, dónde voto, censo)."""
+    raiz = RAIZ_REL
+    qs = [(f'¿Cómo sé si me ha tocado mesa electoral en {nombre}?',
+           f'El ayuntamiento sortea a los miembros de las mesas entre el 31 de octubre y el 4 de noviembre, y la designación se notifica a cada persona en los tres días siguientes '
+           f'(<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>). Quien recibe la notificación tiene siete días para alegar una causa justificada ante la Junta Electoral de Zona. '
+           f'Todo el proceso, en <a href="{raiz}elecciones/mesa-electoral-29n/">la mesa electoral del 29N</a>.'),
+          (f'¿Dónde voto en {nombre} el 29N?',
+           f'En el colegio y la mesa que indica la tarjeta censal, que la Oficina del Censo Electoral envía del 2 al 10 de noviembre (<a href="{INE_PLAZOS}">INE</a>). '
+           f'También se puede consultar en la <a href="{INE_SEDE}">sede electrónica del INE</a> o en el teléfono gratuito {TEL_CENSO}.'),
+          (f'¿Cómo consulto el censo electoral de {nombre}?',
+           f'El censo de las generales se pudo consultar y reclamar en los ayuntamientos del 12 al 19 de octubre (<a href="{INE_PLAZOS}">INE</a>). '
+           f'Ahora, en la <a href="{INE_SEDE}">sede electrónica del INE</a> se comprueba con Cl@ve en qué mesa y colegio estás inscrito. '
+           f'Las cifras de todos los municipios, en <a href="{raiz}elecciones/censo-electoral-2026/">el censo electoral de 2026</a>.')]
+    if cod not in MESAS.index:
+        return '', qs
+    m = MESAS.loc[cod]
+    mesas = int(m.mesas)
+    txt = (f'En las generales de 2023, {escape(nombre)} votó en {num(mesas)} {"mesa electoral" if mesas == 1 else "mesas electorales"}'
+           + (f', repartidas en sus {num(int(m.secciones))} secciones censales' if m.secciones > 1 else '') + '. '
+           f'Cada mesa la forman un presidente y dos vocales, y para cada uno se sortean dos suplentes: {"nueve personas" if mesas == 1 else f"{num(9 * mesas)} vecinos designados en total"}. '
+           'El número de mesas del 29N puede variar ligeramente con los cambios del censo.')
+    txt2 = (f'El sorteo se hace entre el 31 de octubre y el 4 de noviembre, entre los electores de cada mesa que saben leer y escribir y tienen menos de 70 años; '
+            f'el presidente debe tener el título de Bachiller o de FP de segundo grado. La designación se notifica en tres días, y hay siete para alegar una causa justificada '
+            f'ante la Junta Electoral de Zona; los mayores de 65 pueden renunciar en ese plazo (<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>). '
+            f'Presidentes y vocales cobran una dieta de 75 euros (<a href="{CLM24_MESAS}">CLM24</a>).')
+    html_ = ('<h2 id="mesas">Mesas electorales para el 29N</h2>' + p_('Dato', txt) + p_('Dato', txt2)
+             + f'<p class="leyenda">Fuente: Ministerio del Interior, resultados por mesa de las generales de 2023 (sin las mesas de residentes en el extranjero); LOREG.</p>'
+             + f'<p><a href="{raiz}elecciones/mesa-electoral-29n/">Qué hacer si te toca mesa el 29N</a> · <a href="{raiz}elecciones/votar-29n/">Dónde y cómo votar</a> · '
+               f'<a href="{raiz}elecciones/voto-por-correo-29n/">Voto por correo</a></p>')
+    return html_, qs
 
 
 def tema_votar():
@@ -1214,14 +1255,16 @@ def tema_votar():
                        for q, x, y, z in filas)
              + f'<p class="leyenda">Fuente: <a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral, plazos de interés para los electores</a>. '
                'Para los residentes temporales y los CERA, la documentación sale antes o después según haya o no impugnación de candidaturas.</p>'
-             + f'<p>Cuánto se ha usado el voto por correo y quién lo pide: <a href="{raiz}actualidad/voto-correo-29n/">siete de cada cien electores lo pidieron en 2023</a>.</p>')
+             + f'<p>Cuánto se ha usado el voto por correo y quién lo pide: <a href="{raiz}actualidad/voto-correo-29n/">siete de cada cien electores lo pidieron en 2023</a>. '
+               'Paso a paso, en <a href="../voto-por-correo-29n/">el voto por correo para el 29N</a>.</p>')
 
     h.append('<h2 id="trabajo">Si trabajas el domingo o te toca mesa</h2>'
              + p_('Dato', 'Quien trabaje el 29 de noviembre tiene derecho a hasta cuatro horas libres y retribuidas para votar, según cuánto coincida su jornada con el horario de votación; '
                   'la empresa puede decidir en qué momento se toman.')
              + p_('Dato', 'Formar parte de una mesa electoral es obligatorio salvo que la Junta Electoral acepte una excusa justificada; no presentarse puede castigarse con prisión de tres meses a un año o multa '
                   f'(<a href="{LOREG}">artículo 143 de la LOREG</a>). Presidentes y vocales tienen permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes '
-                  f'(<a href="{LEGALITAS_29N}">Legálitas</a>).'))
+                  f'(<a href="{LEGALITAS_29N}">Legálitas</a>).')
+             + '<p>El sorteo, las excusas y la dieta, en <a href="../mesa-electoral-29n/">la mesa electoral del 29N</a>.</p>')
 
     h.append('<h2>Y por la noche</h2>'
              f'<p>Desde las 20.00, el <a href="{raiz}">mapa de resultados</a> irá mostrando el recuento en directo, y la página de <a href="../resultados-elecciones-generales-2026/">resultados de las generales de 2026</a> el reparto de escaños. '
@@ -1235,6 +1278,137 @@ def tema_votar():
              f'<li><a href="{LEGALITAS_29N}">Legálitas: guía legal para votar, trabajar y formar parte de una mesa electoral el 29N</a> (5 de octubre de 2026)</li>'
              f'<li><a href="{BOE_29N}">Real Decreto 806/2026</a>, de convocatoria</li></ul>'
              '<p class="leyenda">Esta guía resume la norma y los plazos oficiales; ante cualquier duda manda lo que digan el INE, la Junta Electoral Central y el BOE. Si ves un error, escríbeme y lo corrijo.</p>')
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def tema_mesa():
+    """Explicativo «Mesa electoral del 29N»: sorteo, notificación, excusas, horario, dieta y permisos, con la LOREG y el número de mesas por municipio."""
+    ruta = 'elecciones/mesa-electoral-29n/'
+    titulo = 'Mesa electoral 29N: cómo saber si te ha tocado, excusas, horario y dieta de 75 euros'
+    desc = ('Todo sobre las mesas electorales de las generales del 29 de noviembre de 2026: el sorteo del 31 de octubre al 4 de noviembre, la notificación, '
+            'los siete días para alegar una excusa, quién puede renunciar, a qué hora hay que estar, la dieta de 75 euros y los permisos. Con la LOREG.')
+    total23 = int(MESAS.mesas.sum())
+    qs = [('¿Cuándo es el sorteo de las mesas electorales del 29N?',
+           f'Entre el 31 de octubre y el 4 de noviembre de 2026: la ley lo fija entre los días 25 y 29 después de la convocatoria, publicada el 6 de octubre '
+           f'(<a href="{LOREG}">artículo 26.4 de la LOREG</a>). Lo hace cada ayuntamiento en sorteo público.'),
+          ('¿Cómo sé si me ha tocado mesa electoral?',
+           f'La designación se notifica a cada persona en un plazo de tres días desde el sorteo (<a href="{LOREG}">artículo 27.2 de la LOREG</a>), así que las notificaciones llegan hasta el 7 de noviembre '
+           f'(<a href="{CLM24_MESAS}">CLM24</a>). Ante cualquier duda, el ayuntamiento o la Junta Electoral de Zona.'),
+          ('¿Quién puede ser miembro de una mesa?',
+           f'Cualquier elector de la mesa que sepa leer y escribir y tenga menos de 70 años. El presidente debe tener el título de Bachiller o de FP de segundo grado, '
+           f'o, si no hay suficientes, el de Graduado Escolar (<a href="{LOREG}">artículo 26.2 de la LOREG</a>).'),
+          ('¿Me puedo librar de la mesa electoral?',
+           f'Solo con una causa justificada y documentada, que hay que alegar ante la Junta Electoral de Zona en los siete días siguientes a la notificación; la Junta resuelve en cinco días y sin recurso. '
+           f'Los mayores de 65 años pueden renunciar en ese mismo plazo (<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>).'),
+          ('¿Cuánto se cobra por estar en una mesa electoral?',
+           f'75 euros para el presidente y los vocales, cinco más que en 2023, según la Orden INT/650/2026 (<a href="{CLM24_MESAS}">CLM24</a>, <a href="{UH_MESA}">Última Hora</a>). '
+           'Los suplentes solo la cobran si acaban ocupando el puesto de un titular.'),
+          ('¿A qué hora hay que estar en la mesa el 29N?',
+           f'A las 8.00, una hora antes de que empiece la votación, para constituir la mesa; la votación va de 9.00 a 20.00 y después se hace el recuento (<a href="{LOREG}">artículos 80 y 84 de la LOREG</a>).'),
+          ('¿Qué pasa si no me presento?',
+           f'Es un delito electoral: puede castigarse con prisión de tres meses a un año o multa de seis a 24 meses (<a href="{LOREG}">artículo 143 de la LOREG</a>).'),
+          ('¿Tengo permiso en el trabajo si me toca mesa?',
+           f'Sí: permiso retribuido toda la jornada del domingo y una reducción de cinco horas en la jornada del lunes siguiente (<a href="{LEGALITAS_29N}">Legálitas</a>).')]
+    faq_html, faq_ld = faq(qs)
+    ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Mesa electoral 29N')]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Guía práctica · 29 de noviembre de 2026</p><h1 data-miga="Mesa electoral 29N">La mesa electoral del 29N, paso a paso</h1>')
+    h.append('<p class="subtitulo">El sorteo, cómo te enteras, cuándo y cómo librarte, qué hay que hacer el domingo y cuánto se cobra</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}Los ayuntamientos sortean del 31 de octubre al 4 de noviembre a los presidentes y vocales de las mesas del 29N, y notifican la designación en los tres días siguientes. '
+             f'En las generales de 2023 hubo {num(total23)} mesas en España, sin contar las de residentes en el extranjero; para estas se prevén 61.033 (<a href="{CLM24_MESAS}">CLM24</a>).</p>')
+    h.append('<h2 id="sorteo">El sorteo y la notificación</h2>'
+             + p_('Dato', 'Cada mesa la forman un presidente y dos vocales, y para cada uno se sortean dos suplentes: nueve personas por mesa. Se eligen por sorteo público entre los electores de esa mesa '
+                  'que saben leer y escribir y tienen menos de 70 años; el presidente, además, debe tener el título de Bachiller o de FP de segundo grado, o en su defecto el de Graduado Escolar. '
+                  f'El sorteo se hace entre los días 25 y 29 después de la convocatoria, que se publicó el 6 de octubre: del 31 de octubre al 4 de noviembre (<a href="{LOREG}">artículo 26 de la LOREG</a>).')
+             + p_('Dato', f'La designación se notifica a cada persona en tres días (<a href="{LOREG}">artículo 27.2</a>), es decir, hasta el 7 de noviembre. '
+                  f'Para estas elecciones se calcula que los ayuntamientos llamarán a 549.297 personas entre titulares y suplentes (<a href="{CLM24_MESAS}">CLM24</a>).'))
+    h.append('<h2 id="excusas">Excusas y renuncias</h2>'
+             + p_('Dato', 'Quien recibe la designación tiene siete días para alegar ante la Junta Electoral de Zona una causa justificada y documentada que le impida aceptar el cargo; '
+                  f'la Junta resuelve en cinco días y no cabe recurso (<a href="{LOREG}">artículo 27.3 de la LOREG</a>). Los mayores de 65 años pueden renunciar en ese mismo plazo de siete días, sin más explicación.')
+             + p_('Dato', f'No presentarse sin causa justificada es un delito electoral, castigado con prisión de tres meses a un año o multa de seis a 24 meses (<a href="{LOREG}">artículo 143</a>).'))
+    h.append('<h2 id="domingo">El domingo 29</h2>'
+             + p_('Dato', f'Titulares y suplentes deben estar en el colegio a las 8.00 para constituir la mesa (<a href="{LOREG}">artículo 80 de la LOREG</a>); si faltan titulares, los sustituyen los suplentes. '
+                  'La votación va de 9.00 a 20.00 sin interrupción; después la mesa cuenta los votos del Congreso y del Senado en público y firma las actas.')
+             + p_('Dato', f'Presidentes y vocales cobran una dieta de 75 euros, cinco más que en 2023 (Orden INT/650/2026; <a href="{CLM24_MESAS}">CLM24</a>, <a href="{UH_MESA}">Última Hora</a>); '
+                  'los suplentes solo si acaban ocupando un puesto. Tienen permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes '
+                  f'(<a href="{LEGALITAS_29N}">Legálitas</a>).'))
+    top = MESAS.mesas.nlargest(15)
+    nom = T.MUN.set_index('mun_code').municipio
+    enl = lambda c: f'<a href="../../{CIUDADES[c]}#mesas">{escape(nom[c])}</a>' if c in CIUDADES else escape(nom.get(c, c))
+    h.append('<h2 id="municipios">Cuántas mesas hay en tu municipio</h2>'
+             + p_('Dato', 'Cada ficha de municipio dice cuántas mesas tuvo en las generales de 2023 y cuántas personas se sortearon. Estos son los que más tuvieron:')
+             + tabla('Municipios con más mesas electorales en las generales de 2023', ['Municipio', 'Mesas', 'Personas sorteadas (titulares y suplentes)'],
+                     [[enl(c), num(v), num(9 * v)] for c, v in top.items()])
+             + '<p class="leyenda">Fuente: Ministerio del Interior, resultados por mesa de las generales de 2023, sin las mesas de residentes en el extranjero. '
+               'El resto, en el <a href="../../municipio/">índice de municipios</a>.</p>')
+    h.append(faq_html)
+    h.append('<h2>Más guías</h2><ul>'
+             '<li><a href="../votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio, qué llevar y los permisos</li>'
+             '<li><a href="../voto-por-correo-29n/">Voto por correo para el 29N</a>: plazos y cómo pedirlo</li>'
+             '<li><a href="../censo-electoral-2026/">Censo electoral de 2026</a>: cómo consultarlo y cuántos electores hay en cada municipio</li>'
+             '<li><a href="../elecciones-29n-2026/">Elecciones generales del 29N</a>: calendario y diputados por provincia</li></ul>')
+    h.append('<h2>Fuentes</h2><ul>'
+             f'<li><a href="{LOREG}">Ley Orgánica 5/1985, del Régimen Electoral General (LOREG)</a>, artículos 26, 27, 80, 84 y 143</li>'
+             f'<li><a href="{CLM24_MESAS}">CLM24: mesas electorales del 29N, sorteos desde el sábado 31 de octubre</a> (30 de octubre de 2026)</li>'
+             f'<li><a href="{UH_MESA}">Última Hora: mesa electoral para el 29N, cuándo sabrás si te ha tocado</a> (25 de octubre de 2026)</li>'
+             f'<li><a href="{LEGALITAS_29N}">Legálitas: guía legal para votar, trabajar y formar parte de una mesa electoral el 29N</a></li>'
+             f'<li><a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral: plazos de interés para los electores</a></li></ul>'
+             '<p class="leyenda">Esta guía resume la norma; ante cualquier duda manda lo que digan la Junta Electoral de Zona, la Junta Electoral Central y el BOE. Si ves un error, escríbeme y lo corrijo.</p>')
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+def tema_correo():
+    """Explicativo «Voto por correo para el 29N»: plazos del INE para residentes, residentes temporales y CERA, y cómo pedirlo."""
+    ruta = 'elecciones/voto-por-correo-29n/'
+    titulo = 'Voto por correo 29N: hasta el 19 de noviembre para pedirlo y el 25 para enviarlo'
+    desc = ('Cómo votar por correo en las elecciones generales del 29 de noviembre de 2026: quién puede pedirlo, dónde y con qué documento, '
+            'y los plazos oficiales del INE para residentes en España, residentes temporales en el extranjero y CERA.')
+    qs = [('¿Hasta cuándo se puede pedir el voto por correo para el 29N?',
+           f'Hasta el 19 de noviembre si vives en España. La documentación llega del 9 al 22 de noviembre y el voto hay que enviarlo hasta el 25 (<a href="{INE_PLAZOS}">INE</a>).'),
+          ('¿Dónde se pide el voto por correo?',
+           f'En cualquier oficina de Correos, con el DNI, el pasaporte o el permiso de conducir originales, o en la web de Correos con certificado digital o DNI electrónico (<a href="{CORREOS_29N}">Correos</a>).'),
+          ('¿Puede pedir el voto por correo otra persona por mí?',
+           f'Solo en caso de enfermedad o discapacidad acreditada con certificado médico oficial, con un poder notarial o consular (<a href="{CORREOS_29N}">Correos</a>).'),
+          ('¿Cómo votan los españoles que viven en el extranjero?',
+           f'Los inscritos en el CERA reciben la documentación sin pedirla y votan por correo al consulado del 4 al 24 de noviembre o en la urna del consulado del 21 al 26. '
+           f'Los residentes temporales en el extranjero tenían que pedirlo hasta el 31 de octubre (<a href="{INE_PLAZOS}">INE</a>).')]
+    faq_html, faq_ld = faq(qs)
+    ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Voto por correo 29N')]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Guía práctica · 29 de noviembre de 2026</p><h1 data-miga="Voto por correo 29N">Voto por correo para el 29N</h1>')
+    h.append('<p class="subtitulo">Quién puede, dónde se pide, con qué documento y los plazos para residentes en España y en el extranjero</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}Quien no pueda ir a votar el domingo 29 de noviembre puede pedir el voto por correo hasta el 19 de noviembre en cualquier oficina de Correos '
+             'y enviarlo hasta el 25. La documentación llega del 9 al 22 de noviembre a la dirección que se indique.</p>')
+    h.append('<h2 id="pedirlo">Cómo se pide</h2>'
+             + p_('Dato', 'Se pide en cualquier oficina de Correos, con el DNI, el pasaporte o el permiso de conducir originales, o en la web de Correos con certificado digital o DNI electrónico. '
+                  'Tiene que pedirlo cada elector en persona; solo en caso de enfermedad o discapacidad, acreditada con certificado médico oficial, puede hacerlo otra persona con un poder notarial o consular. '
+                  f'La documentación llega a la dirección que indiques en la solicitud (<a href="{CORREOS_29N}">Correos</a>).'))
+    filas = [['Residentes en España', 'del 6 de octubre al 19 de noviembre', 'del 9 al 22 de noviembre', 'del 9 al 25 de noviembre'],
+             ['Residentes temporalmente en el extranjero', 'del 6 al 31 de octubre', 'del 3 al 17 de noviembre', 'del 3 al 25 de noviembre'],
+             ['Residentes en el extranjero (CERA)', 'no hace falta pedirlo', 'del 24 de octubre al 14 de noviembre', 'al consulado por correo del 4 al 24 de noviembre, o en su urna del 21 al 26']]
+    h.append('<h2 id="plazos">Plazos</h2>'
+             + tabla('Plazos del voto por correo para las generales del 29 de noviembre de 2026', ['Quién', 'Pedirlo', 'Recibir la documentación', 'Enviar el voto'], filas)
+             + f'<p class="leyenda">Fuente: <a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral, plazos de interés para los electores</a>. '
+               'Para los residentes temporales y los CERA, la documentación sale antes o después según haya o no impugnación de candidaturas.</p>')
+    h.append('<h2 id="cuantos">Cuántos votan por correo</h2>'
+             f'<p>En las generales de 2023, siete de cada cien electores pidieron el voto por correo: quién lo pide y dónde, en <a href="{raiz}actualidad/voto-correo-29n/">el voto por correo del 29N</a>.</p>')
+    h.append(faq_html)
+    h.append('<h2>Más guías</h2><ul>'
+             '<li><a href="../votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio, qué llevar y los permisos</li>'
+             '<li><a href="../mesa-electoral-29n/">La mesa electoral del 29N</a>: sorteo, excusas y dieta</li>'
+             '<li><a href="../censo-electoral-2026/">Censo electoral de 2026</a>: cómo consultarlo</li></ul>')
+    h.append('<h2>Fuentes</h2><ul>'
+             f'<li><a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral: plazos de interés para los electores, generales del 29 de noviembre de 2026</a></li>'
+             f'<li><a href="{CORREOS_29N}">Correos: ya se puede solicitar el voto por correo para las elecciones generales del 29 de noviembre</a></li></ul>'
+             '<p class="leyenda">Ante cualquier duda manda lo que digan el INE, Correos y la Junta Electoral Central. Si ves un error, escríbeme y lo corrijo.</p>')
     h.append(PIE)
     return ruta, ''.join(h)
 
@@ -1273,6 +1447,8 @@ def indice(resumen):
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
              '<li><a href="votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio electoral, qué llevar, el voto por correo y los plazos</li>'
+             '<li><a href="mesa-electoral-29n/">Mesa electoral del 29N</a>: el sorteo, cómo saber si te ha tocado, excusas, horario y dieta</li>'
+             '<li><a href="voto-por-correo-29n/">Voto por correo para el 29N</a>: cómo pedirlo y hasta cuándo enviarlo</li>'
              '<li><a href="como-se-vota/">Cómo se vota</a>: el precio de un escaño por provincia y los votos que no eligen a nadie</li>'
              '<li><a href="../abstencion.html">Participación por sección censal en Cataluña</a>: quién no vota y dónde</li>'
              '<li><a href="../atlas/">Atlas de las anomalías electorales</a>: los lugares que votan distinto de lo que cabría esperar</li></ul>')
@@ -1754,7 +1930,14 @@ def tema_censo(resumen):
            f'{num(cera)}, inscritos en el Censo de Españoles Residentes Ausentes (CERA): {num(c.cera_2026.sum() - c.cera_2023.sum())} más que en 2023. '
            'Votan desde su país de residencia y su voto se suma al de la provincia en la que están inscritos.'),
           ('¿Dónde puedo comprobar si estoy en el censo?',
-           'En la <a href="https://www.ine.es/oficina_censo/">Oficina del Censo Electoral del INE</a>, que expone el censo antes de cada elección para consultas y reclamaciones.')]
+           f'En la <a href="{INE_SEDE}">sede electrónica del INE</a>, con Cl@ve, que muestra tus datos censales, tu colegio y tu mesa, o en el teléfono gratuito {TEL_CENSO}. '
+           f'El plazo oficial de consulta y reclamaciones en los ayuntamientos y consulados fue del 12 al 19 de octubre (<a href="{INE_PLAZOS}">INE</a>).'),
+          ('¿Todavía puedo reclamar si no estoy en el censo?',
+           f'El plazo de reclamaciones del censo de las generales del 29N terminó el 19 de octubre; la Oficina del Censo las resolvió hasta el 22 y las expuso el 23. '
+           f'Contra esa resolución cabe recurso ante el juzgado de lo contencioso-administrativo en cinco días desde la notificación (<a href="{INE_PLAZOS}">INE</a>).'),
+          ('¿Cuándo llega la tarjeta censal?',
+           f'La Oficina del Censo Electoral la envía del 2 al 10 de noviembre, con el colegio y la mesa de cada elector; si cambian, lo comunica del 10 al 23 de noviembre (<a href="{INE_PLAZOS}">INE</a>). '
+           'No hace falta llevarla para votar.')]
     faq_html, faq_ld = faq(qs)
     h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, ESPANA), faq_ld], 2, 'Censo electoral 2026', imagen_og(ruta))]
     raiz = RAIZ_REL
@@ -1767,6 +1950,15 @@ def tema_censo(resumen):
              f'({variacion(total, t23)}). {num(cer)} viven en España y {num(cera)} en el extranjero, el {pct(cera / total)} del censo; '
              f'los del extranjero han crecido un {variacion(c.cera_2026.sum(), c.cera_2023.sum())[1:]}, y los residentes, un {variacion(cer, c.cer_2023.sum())[1:]}.</p>')
     h.append(f'<p><a class="vermapa" href="{raiz}">Abrir el mapa electoral calle a calle</a> <a class="vermapa" href="{CENSO_INE}">Datos del INE</a></p>')
+    filas_c = [['Consulta del censo en ayuntamientos y consulados', 'del 12 al 19 de octubre'], ['Reclamaciones de inclusión o exclusión', 'del 12 al 19 de octubre'],
+               ['Resolución de las reclamaciones', 'del 12 al 22 de octubre'], ['Exposición de las resoluciones', '23 de octubre'],
+               ['Envío de la tarjeta censal (colegio y mesa)', 'del 2 al 10 de noviembre'], ['Aviso de cambio de mesa o colegio', 'del 10 al 23 de noviembre']]
+    h.append('<h2 id="consultar">Cómo consultar el censo y dónde votas</h2>'
+             + p_('Dato', f'En la <a href="{INE_SEDE}">sede electrónica del INE</a> se comprueba con Cl@ve si estás inscrito y en qué colegio y mesa votas; '
+                  f'sin Cl@ve, con la provincia, el municipio y la primera letra del primer apellido. La Oficina del Censo atiende dudas en el teléfono gratuito {TEL_CENSO}.')
+             + tabla('Plazos del censo electoral para las generales del 29 de noviembre de 2026', ['Trámite', 'Fechas'], filas_c)
+             + f'<p class="leyenda">Fuente: <a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral, plazos de interés para los electores</a>. '
+               'El censo de cada municipio, con sus mesas, está en su ficha: búscalo en el <a href="../../municipio/">índice de municipios</a>.</p>')
     # provincias
     P = c.groupby('prov')[['cer_2023', 'cera_2023', 'cer_2026', 'cera_2026', 't23', 't26']].sum()
     P['v'] = P.t26 / P.t23 - 1
@@ -2022,7 +2214,10 @@ def llms(resumen):
 - [Elecciones generales del 29N de 2026: fecha, campaña y diputados por provincia]({BASE}elecciones/elecciones-29n-2026/)
 - [Resultados de las elecciones generales de 2026 (29N): escrutinio en directo y resultados de 2023 por provincia]({BASE}elecciones/resultados-elecciones-generales-2026/)
 - [Resultados de las elecciones generales por municipio desde 1977]({BASE}elecciones/resultados-elecciones-por-municipio/)
-- [Censo electoral de las generales de 2026 por provincia y municipio]({BASE}elecciones/censo-electoral-2026/)
+- [Censo electoral de las generales de 2026 por provincia y municipio]({BASE}elecciones/censo-electoral-2026/): cómo consultarlo, plazos y electores de cada municipio.
+- [Dónde y cómo votar el 29N]({BASE}elecciones/votar-29n/): colegio, documentos y permisos.
+- [Mesa electoral del 29N]({BASE}elecciones/mesa-electoral-29n/): sorteo del 31 de octubre al 4 de noviembre, excusas, horario y dieta de 75 euros; cada ficha de municipio dice cuántas mesas tiene.
+- [Voto por correo para el 29N]({BASE}elecciones/voto-por-correo-29n/): pedirlo hasta el 19 de noviembre y enviarlo hasta el 25.
 - [Participación electoral por barrio]({BASE}elecciones/participacion-electoral-por-barrio/)
 - [Mapa electoral de España por sección censal]({BASE}elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios]({BASE}elecciones/voto-y-renta-por-barrios/)
@@ -2372,7 +2567,7 @@ def main():
         ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_resultados(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_mesa(), tema_correo(), tema_resultados(resumen)]
     pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
     for ruta, html in pags + redirecciones():
