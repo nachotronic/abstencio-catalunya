@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/feijoo-albiol-barcelona-disturbios-29n/</loc>
+    <loc>https://mapaelectoral.es/actualidad/cuatro-semanas-29n-la-semana-en-el-mapa/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-28</news:publication_date>
-      <news:title>Feijóo busca el voto del orden en la comunidad que más cita la inseguridad</news:title>
+      <news:publication_date>2026-10-31</news:publication_date>
+      <news:title>A cuatro semanas del 29N, 250 escaños están casi decididos y 204 candidatos se juegan los otros 100: la semana en que la campaña se paró</news:title>
     </news:news>
   </url>
   <url>
@@ -22,38 +22,6 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-10-29</news:publication_date>
       <news:title>Puente descarta dimitir y se juega en Valladolid el escaño de su número dos: sale en el 54%</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/rufian-montero-la-revuelta-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-28</news:publication_date>
-      <news:title>Rufián le guarda a Podemos el puesto 6: sale en 7 de cada 10 simulaciones</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/quien-vota-barrios-renta-edad-inmigracion/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-28</news:publication_date>
-      <news:title>En los barrios ricos se vota 15 puntos más que en los pobres, y en las europeas, 22: quién vota en España según la renta, la edad y la inmigración</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/barrios-caseros-inquilinos-voto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-28</news:publication_date>
-      <news:title>Donde viven los caseros gana el PP; donde viven los inquilinos, gana la abstención</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/israel-pactos-escanos-knesset/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-28</news:publication_date>
-      <news:title>Con todo el voto contado, Netanyahu solo llega a 61 escaños si suma a Ra&#x27;am, el partido islamista árabe</news:title>
     </news:news>
   </url>
   <url>
