@@ -214,7 +214,7 @@ TEMAS = {
         titulo='Elecciones en el mundo: los mapas electorales de otros países',
         intro='Las elecciones de otros países contadas con sus datos oficiales y sus mapas: quién ganó en cada región, '
               'dónde se movió el voto y cómo se compara con la elección anterior.',
-        piezas=['eeuu-elecciones-medio-mandato-mapa', 'israel-pactos-escanos-knesset', 'israel-elecciones-encuestas-knesset', 'serbia-estudiantes-vucic-mapa-distritos', 'brasil-lula-remontada-mapa-estados'],
+        piezas=['eeuu-noche-electoral-guia-horarios', 'eeuu-elecciones-medio-mandato-mapa', 'israel-pactos-escanos-knesset', 'israel-elecciones-encuestas-knesset', 'serbia-estudiantes-vucic-mapa-distritos', 'brasil-lula-remontada-mapa-estados'],
         datos=[],
         atlas=[]),
 }

@@ -122,5 +122,9 @@
  "quien-vota-barrios-renta-edad-inmigracion": {
   "pie": "Participación en los barrios más pobres y más ricos, de 2004 a 2024.",
   "fuente": "Ministerio del Interior e INE"
+ },
+ "eeuu-noche-electoral-guia-horarios": {
+  "pie": "Hora de cierre de los colegios en cada estado, en hora peninsular española, el miércoles 4 de noviembre.",
+  "fuente": "270toWin y The Green Papers, horas de cierre de 2026. Cálculo propio de la hora española"
  }
 }
