@@ -1,0 +1,132 @@
+{
+ "plantilla": "guia",
+ "kicker": "EMPATES Y UNANIMIDADES · 23J",
+ "colores": {
+  "PP": "#1d84ce",
+  "PSOE": "#e30613",
+  "Sumar": "#a2275f",
+  "Vox": "#5ac035",
+  "Bildu": "#a5c400"
+ },
+ "fuente": [
+  "Fuente: Ministerio del Interior, generales de 2023.",
+  "Votos a candidaturas por municipio."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 4.4,
+   "cuenta": 1.2,
+   "lineas": [
+    "Municipios donde los",
+    "dos primeros partidos",
+    "empataron el 23J:"
+   ],
+   "contador": 94,
+   "color": "vote",
+   "size": 92
+  },
+  {
+   "tipo": "barrasH",
+   "dur": 5.2,
+   "titulo": [
+    "Mota del Cuervo",
+    "(Cuenca)"
+   ],
+   "sub": "Votos el 23J, con 3.526 votantes",
+   "max": 1400,
+   "enteros": true,
+   "unidad": "",
+   "alto": 140,
+   "filas": [
+    [
+     "PP",
+     "PP",
+     1243
+    ],
+    [
+     "PSOE",
+     "PSOE",
+     1243
+    ],
+    [
+     "Sumar",
+     "Sumar",
+     536
+    ],
+    [
+     "Vox",
+     "Vox",
+     386
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.6,
+   "titulo": [
+    "No fue",
+    "el único"
+   ],
+   "items": [
+    [
+     "613 a 613",
+     "PP",
+     [
+      "PP y PSOE en Guadiana (Badajoz)"
+     ]
+    ],
+    [
+     "1.100 a 1.100",
+     "Sumar",
+     [
+      "PSOE y Sumar en Doña Mencía (Córdoba)"
+     ]
+    ],
+    [
+     "6, 6 y 6",
+     "vote",
+     [
+      "PSOE, ERC y Junts en La Febró (Tarragona)"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.2,
+   "titulo": [
+    "Y el otro extremo:",
+    "todo a uno"
+   ],
+   "items": [
+    [
+     "62 de 62",
+     "Bildu",
+     [
+      "votos a candidaturas para EH Bildu",
+      "en Orexa (Gipuzkoa)"
+     ]
+    ],
+    [
+     "5",
+     "vote",
+     [
+      "pueblos unánimes en 2023;",
+      "en 1979 fueron 26"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.4,
+   "lineas": [
+    "Los pueblos",
+    "del empate y",
+    "del voto unánime"
+   ],
+   "ruta": "/actualidad/pueblos-unanimes-empates-29n/"
+  }
+ ]
+}

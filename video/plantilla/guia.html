@@ -312,15 +312,17 @@ const S = {
   parejas(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
-    const lab = 190, lw = W - 2 * X - lab - 150, top = 580, rowH = 200;
+    // s.arriba: el nombre va encima de sus dos barras (nombres largos, como municipios)
+    const lab = s.arriba ? 120 : 190, lw = W - 2 * X - lab - (s.arriba ? 200 : 150), top = 580, rowH = s.arriba ? 250 : 200;
     s.pares.forEach(([nm, c, a, b], i) => {
-      const y = top + i * rowH, k = ease((t - 0.5 - i * 0.25) / 0.6);
-      text(nm, X, y + 74, '800 48px ' + F.display, col(c), 'left', k);
+      const y = top + i * rowH + (s.arriba ? 60 : 0), k = ease((t - 0.5 - i * 0.25) / 0.6);
+      text(nm, X, s.arriba ? y - 16 : y + 74, '800 48px ' + F.display, col(c), 'left', k);
       [[a, 0.45, s.claves[0]], [b, 1, s.claves[1]]].forEach(([v, al, cl], j) => {
         const yy = y + j * 64, w = lw * v / s.max * k;
         ctx.globalAlpha = al * k; ctx.fillStyle = col(c); rrect(X + lab, yy, w, 52, 8); ctx.globalAlpha = 1;
         text((s.enteros ? miles(v * k) : v.toFixed(1).replace('.', ',')) + (s.unidad ?? ' %'), X + lab + w + 14, yy + 38, '700 32px ' + F.mono, C.fg, 'left', k);
-        if (i === 0) text(cl, X + lab + 14, yy + 36, '600 26px ' + F.mono, '#fff', 'left', k);
+        if (s.arriba) text(cl, X, yy + 38, '600 30px ' + F.mono, C.muted, 'left', k);
+        else if (i === 0) text(cl, X + lab + 14, yy + 36, '600 26px ' + F.mono, '#fff', 'left', k);
       });
     });
   },
