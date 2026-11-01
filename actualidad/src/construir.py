@@ -3355,7 +3355,7 @@ def nav(prefijo, actual):
     items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'), ('listas-electorales-29n/', 'Listas 29N'),
              ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
              ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
-             ('sobre-mi.html', 'Sobre mí')]
+             ('actualidad/#internacional', 'Internacional'), ('sobre-mi.html', 'Sobre mí')]
     out = f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{prefijo}">Mapa Electoral</a>'
     for href, txt in items:
         cur = ' aria-current="page"' if txt == actual else ''
@@ -3742,12 +3742,12 @@ def franja_portada(todas, pre=''):
     # Las piezas de ciudad «barrio a barrio» no van en el carrusel (Nacho, 15-10-2026)
     # Las más recientes por fecha, no por su sitio en PIEZAS: las piezas se añaden en bloques distintos (Nacho, 22-10-2026)
     recientes = sorted(todas[::-1], key=lambda q: q['fecha'], reverse=True)   # sorted es estable: en el mismo día, la última añadida primero
-    # Las de Historia electoral solo van en su propio carrusel, no en el de Actualidad (Nacho, 23-10-2026)
+    # Las de Historia electoral solo van en su propio carrusel, no en el de Actualidad (Nacho, 23-10-2026); las de Internacional, igual (1-11-2026)
     # Fijas delante, en este orden, hasta el día indicado (Nacho, 28-10-2026: Albiol, Broncano y Feijóo las primeras)
     hoy = datetime.date.today().isoformat()
     fijas = [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta]
     recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
-    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] != 'historia'][:10]
+    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] not in ('historia', 'internacional')][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
@@ -3759,14 +3759,15 @@ def franja_portada(todas, pre=''):
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 
 
-FRANJAS = (('historia', 'Historia electoral · desde 1977', 'Todas las elecciones generales desde 1977'),
+FRANJAS = (('internacional', 'Internacional', 'Elecciones en el resto del mundo'),   # Nacho, 1-11-2026: sección propia, justo debajo de Actualidad
+           ('historia', 'Historia electoral · desde 1977', 'Todas las elecciones generales desde 1977'),
            ('comunidades', 'Las comunidades en las urnas', 'Un reportaje por comunidad, con su mapa municipal'))
 
 
 def franja_serie(todas, clave, cabecera, sub, pre=''):
     """Carrusel de una serie en la portada, debajo del de Actualidad: la serie entera, en su orden."""
     serie = [q for q in todas if q['serie'] == clave]
-    if clave == 'historia':   # las más nuevas delante: al final del carrusel no se veían (Nacho, 23-10-2026)
+    if clave in ('historia', 'internacional'):   # las más nuevas delante: al final del carrusel no se veían (Nacho, 23-10-2026)
         serie = sorted(serie[::-1], key=lambda q: q['fecha'], reverse=True)
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-{clave}"><div class="da-cab"><h2 id="h-del-{clave}"><a href="{pre}actualidad/#{clave}">{cabecera}</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
