@@ -1,18 +1,18 @@
 {
- "descargado": "2026-11-01T02:09Z",
+ "descargado": "2026-11-01T13:22Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1053,
+ "encuestas_espana": 1054,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-10-26",
-  "encuestadora": "Winston",
-  "cliente": "Artículo14"
+  "publicado": "2026-11-01",
+  "encuestadora": "Sondaxe",
+  "cliente": "La Voz de Galicia"
  },
  "siglas_sin_equivalencia": {
   "CCa-1ºCAN": 3,
+  "CCa-1ªCAN": 3,
   "Autonómicas - CUP": 2,
-  "CCa-1ªCAN": 2,
   "JxSí": 1,
   "CSQP": 1,
   "CeC": 1,
@@ -22,8 +22,8 @@
   "D21": 1
  },
  "wikipedia": {
-  "encuestas": 581,
-  "ultima_fin_campo": "2026-10-25",
-  "faltan_en_electografica_120_dias": 17
+  "encuestas": 584,
+  "ultima_fin_campo": "2026-10-30",
+  "faltan_en_electografica_120_dias": 18
  }
 }
