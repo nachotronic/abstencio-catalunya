@@ -1,0 +1,229 @@
+{
+ "plantilla": "guia",
+ "kicker": "HISTORIA ELECTORAL · 1977-2023",
+ "colores": {
+  "d90": "#f2b84b",
+  "d50": "#8c6a45",
+  "d0": "#3a3f58",
+  "pierde": "#e0a440",
+  "gana": "#7d8ce8"
+ },
+ "fuente": [
+  "Fuente: Ministerio del Interior, censo de cada",
+  "general, sin voto exterior. Los censos de los 70",
+  "tenían errores, sobre todo en Galicia."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 4.6,
+   "cuenta": 1.4,
+   "lineas": [
+    "Municipios que votarán",
+    "el 29N con menos",
+    "electores que en 1977:"
+   ],
+   "contador": 4157,
+   "color": "pierde",
+   "size": 92
+  },
+  {
+   "tipo": "mapa",
+   "dur": 5.4,
+   "titulo": [
+    "En Zamora, casi",
+    "todos los pueblos"
+   ],
+   "sub": "% de municipios con menos electores que en 1977",
+   "relleno": "grupos",
+   "otro": "d0",
+   "revelar": 1.6,
+   "grupos": [
+    [
+     "d90",
+     [
+      "49",
+      "44",
+      "34",
+      "42",
+      "19",
+      "09",
+      "37",
+      "16",
+      "05",
+      "27",
+      "50",
+      "24",
+      "40",
+      "32",
+      "47",
+      "22",
+      "33",
+      "10"
+     ]
+    ],
+    [
+     "d50",
+     [
+      "26",
+      "12",
+      "25",
+      "02",
+      "13",
+      "04",
+      "06",
+      "31",
+      "18",
+      "15",
+      "43",
+      "23",
+      "45",
+      "14",
+      "21",
+      "29",
+      "39",
+      "36",
+      "03",
+      "01",
+      "20",
+      "46"
+     ]
+    ],
+    [
+     "d0",
+     [
+      "17",
+      "48",
+      "41",
+      "08",
+      "38",
+      "30",
+      "11",
+      "28",
+      "07",
+      "51",
+      "52",
+      "35"
+     ]
+    ]
+   ],
+   "etiquetas": [
+    {
+     "p": "49",
+     "nombre": "Zamora",
+     "nota": "95,7 %",
+     "dx": -150,
+     "dy": -150,
+     "lado": "left",
+     "t": 1.8
+    },
+    {
+     "p": "28",
+     "nombre": "Madrid",
+     "nota": "4,5 %",
+     "dx": 170,
+     "dy": 120,
+     "t": 2.2
+    }
+   ],
+   "leyenda": [
+    [
+     "d90",
+     "75 % o más"
+    ],
+    [
+     "d50",
+     "entre 25 y 75 %"
+    ],
+    [
+     "d0",
+     "menos del 25 %"
+    ]
+   ]
+  },
+  {
+   "tipo": "parejas",
+   "dur": 5.2,
+   "arriba": true,
+   "titulo": [
+    "Los que más",
+    "han perdido"
+   ],
+   "sub": "Electores en 1977 y en 2023",
+   "max": 7000,
+   "enteros": true,
+   "unidad": "",
+   "claves": [
+    "1977",
+    "2023"
+   ],
+   "pares": [
+    [
+     "Navia de Suarna (Lugo)",
+     "pierde",
+     3233,
+     930
+    ],
+    [
+     "Rubiá (Ourense)",
+     "pierde",
+     3336,
+     1234
+    ],
+    [
+     "Algarinejo (Granada)",
+     "pierde",
+     4599,
+     1985
+    ]
+   ]
+  },
+  {
+   "tipo": "parejas",
+   "dur": 5.2,
+   "arriba": true,
+   "titulo": [
+    "Y Las Rozas,",
+    "14 veces más"
+   ],
+   "sub": "Electores en 1977 y en 2023",
+   "max": 72000,
+   "enteros": true,
+   "unidad": "",
+   "claves": [
+    "1977",
+    "2023"
+   ],
+   "pares": [
+    [
+     "Las Rozas de Madrid",
+     "gana",
+     4878,
+     70249
+    ],
+    [
+     "Valdemoro (Madrid)",
+     "gana",
+     4776,
+     56551
+    ],
+    [
+     "Rincón de la Victoria (Málaga)",
+     "gana",
+     4190,
+     37757
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.4,
+   "lineas": [
+    "El censo de",
+    "tu pueblo,",
+    "desde 1977"
+   ],
+   "ruta": "/actualidad/pueblos-menos-votantes-que-en-1977/"
+  }
+ ]
+}

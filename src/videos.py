@@ -19,6 +19,8 @@ PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
+    dict(nombre='empates', t=8, k='Empates y unanimidades', titulo='1.243 a 1.243: los 94 pueblos donde empataron los dos primeros', tuit=''),
+    dict(nombre='menos-electores', t=8, k='Historia electoral', titulo='4.157 municipios tienen menos electores que en 1977', tuit=''),
     dict(nombre='eeuu-camara', t=9.5, k='Estados Unidos', titulo='Los 435 distritos que deciden la Cámara de EE. UU.', tuit=''),
     dict(nombre='eeuu-mapas', t=9, k='Estados Unidos', titulo='Nueve estados redibujaron sus distritos: lo que gana cada partido', tuit=''),
     dict(nombre='precio-escano', t=8, k='Ley electoral', titulo='Un diputado cuesta 97.532 votos en Madrid y 25.304 en Teruel', tuit=''),
