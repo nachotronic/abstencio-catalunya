@@ -3507,7 +3507,8 @@ def pieza(p, todas):
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola
         sigue = ENCUESTAS_SIGUE + sigue
     terr = enlaces_actualidad(p['slug'], '../../')
-    municipios = bloque_municipios_pieza(main, p['slug'], '../../')   # «Ver datos de estos municipios en el mapa», con los que nombra la pieza
+    # Las piezas internacionales no enlazan municipios españoles: «Nevada» o «El Paso» son estados y ciudades de EE. UU. (fallo del 1-11-2026)
+    municipios = '' if p.get('serie') == 'internacional' else bloque_municipios_pieza(main, p['slug'], '../../')   # «Ver datos de estos municipios en el mapa», con los que nombra la pieza
     mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
     ficha = f"""{municipios}
 <h2>Método y fuentes</h2>
@@ -3714,6 +3715,9 @@ PIEZAS += [
                  ('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, resultados de 2024')],
         enlaces=[],
         lugar='Estados Unidos',
+        foto=dict(src='img/actualidad/fotos/eeuu-noche-electoral-guia-horarios-grafico.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Hora de cierre de los colegios en cada estado, en hora peninsular española, el miércoles 4 de noviembre.',
+                  fuente='270toWin y The Green Papers'),
     ),
 ]
 
