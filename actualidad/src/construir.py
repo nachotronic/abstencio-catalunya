@@ -1717,7 +1717,7 @@ PIEZAS = [
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
     dict(
-        slug='derbi-vasco-bilbao-donostia-29n', fecha='2026-10-31',
+        slug='derbi-vasco-bilbao-donostia-29n', fecha='2026-11-01',
         titulo='El derbi en las urnas: el PNV bajó en 414 de las 415 secciones de Bilbao y Donostia, y el PSOE ganó en las dos ciudades', serie='29n', figura=0,
         descripcion='El día del Athletic-Real Sociedad, Bilbao y Donostia sección a sección. En 2023, el PSOE fue primero en las dos. En Bilbao manda la renta: el PSOE en los barrios pobres, el PNV y el PP en los ricos. En Donostia, EH Bildu gana en una de cada cuatro secciones.',
         compara='El voto en las generales de 2004 a 2023 en Bilbao y Donostia, por municipio y por sección censal, y el voto de 2023 por quintil de renta de la sección dentro de cada ciudad.',

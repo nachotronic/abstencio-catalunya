@@ -6,7 +6,10 @@
 - [Elecciones generales del 29N de 2026: fecha, campaña y diputados por provincia](https://mapaelectoral.es/elecciones/elecciones-29n-2026/)
 - [Resultados de las elecciones generales de 2026 (29N): escrutinio en directo y resultados de 2023 por provincia](https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/)
 - [Resultados de las elecciones generales por municipio desde 1977](https://mapaelectoral.es/elecciones/resultados-elecciones-por-municipio/)
-- [Censo electoral de las generales de 2026 por provincia y municipio](https://mapaelectoral.es/elecciones/censo-electoral-2026/)
+- [Censo electoral de las generales de 2026 por provincia y municipio](https://mapaelectoral.es/elecciones/censo-electoral-2026/): cómo consultarlo, plazos y electores de cada municipio.
+- [Dónde y cómo votar el 29N](https://mapaelectoral.es/elecciones/votar-29n/): colegio, documentos y permisos.
+- [Mesa electoral del 29N](https://mapaelectoral.es/elecciones/mesa-electoral-29n/): sorteo del 31 de octubre al 4 de noviembre, excusas, horario y dieta de 75 euros; cada ficha de municipio dice cuántas mesas tiene.
+- [Voto por correo para el 29N](https://mapaelectoral.es/elecciones/voto-por-correo-29n/): pedirlo hasta el 19 de noviembre y enviarlo hasta el 25.
 - [Participación electoral por barrio](https://mapaelectoral.es/elecciones/participacion-electoral-por-barrio/)
 - [Mapa electoral de España por sección censal](https://mapaelectoral.es/elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios](https://mapaelectoral.es/elecciones/voto-y-renta-por-barrios/)
