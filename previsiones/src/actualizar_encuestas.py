@@ -85,11 +85,11 @@ def slug_casa(url):
 
 # Erratas de Electográfica comprobadas contra la fuente original (url de Electográfica -> {sigla: voto}).
 # Se aplican sobre lo descargado, así que llegan a todos los CSV. Cada una, con la fuente que la justifica.
+# OJO: en 2026 el PP va en coalición con UPN en Navarra, y Electográfica y Wikipedia suman UPN al PP (NC Report 2-11:
+# PP 32,6 + UPN 0,4 = 33,0; escaños 138-140 + 2). Eso no es una errata: no se corrige.
 CORRECCIONES = {
-    # La Razón, 2-11-2026: texto e infografía dan PP 32,6 % (PP + Vox = 51,9 %; siete puntos sobre el PSOE), UPN 0,4 %
-    'https://www.electografica.com/2026/11/encuesta-nc-report-261102.html': {'PP': 32.6, 'UPN': 0.4},
-    # Vozpópuli, 2-11-2026: texto y gráfico dan PP 32,0 % (PP + Vox = 51,9 %; 5,6 puntos sobre el PSOE)
-    'https://www.electografica.com/2026/11/encuesta-hamalgama-metrica-261102.html': {'PP': 32.0},
+    # Hamalgama 2-11: el PP de 32,4 ya incluye a UPN (32,0 + 0,4, Vozpópuli); el UPN 0,2 aparte lo contaba dos veces
+    'https://www.electografica.com/2026/11/encuesta-hamalgama-metrica-261102.html': {'UPN': None},
 }
 
 
