@@ -3794,6 +3794,8 @@ PIEZAS += [
                  ('https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election', 'Wikipedia, 2026 Bulgarian presidential election: apoyos para la segunda vuelta y candidaturas')],
         enlaces=[],
         lugar='Bulgaria',
+        foto=dict(src='img/actualidad/fotos/bulgaria-yotova-gyurov-mapa-municipios.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Quién ganó en cada municipio de Bulgaria en la primera vuelta de las presidenciales.', fuente='CIK, resultados por colegio; contornos de Boyko Yurukov'),
     ),
 ]
 
