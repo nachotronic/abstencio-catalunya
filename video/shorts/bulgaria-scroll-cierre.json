@@ -1,0 +1,5 @@
+{"plantilla": "guia", "kicker": "BULGARIA · PRESIDENCIALES",
+ "fuente": ["Fuente: Comisión Electoral Central (CIK),", "primera vuelta por colegio electoral."],
+ "escenas": [
+  {"tipo": "cierre", "dur": 3.0, "lineas": ["Bulgaria,", "municipio a", "municipio"], "ruta": "/actualidad/bulgaria-yotova-gyurov-mapa-municipios/"}
+ ]}
