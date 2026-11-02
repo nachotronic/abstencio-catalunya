@@ -3167,6 +3167,7 @@ ANTETITULOS = {
     'encuestas-semana-29n': 'Las encuestas, semana a semana',
     'encuestas-antes-despues-urda-29n': 'Las encuestas, semana a semana',
     'banez-huelva-pp-29n': 'Fátima Báñez (1967-2026)',
+    'bulgaria-yotova-gyurov-mapa-municipios': 'Bulgaria, municipio a municipio',
     'listas-29n-quien-encabeza': 'Quién sale y quién no',
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'cuatro-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
@@ -3776,8 +3777,29 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='bulgaria-yotova-gyurov-mapa-municipios', fecha='2026-11-02',
+        titulo='Yotova ganó en 256 de los 265 municipios de Bulgaria; Gyurov solo se impuso en Sofía, Plovdiv, Varna y otros cinco', serie='internacional',
+        descripcion='Iliana Yotova será presidenta de Bulgaria tras ganar la segunda vuelta con el 57,6% de los votos válidos. En la primera, con los datos de cada colegio, la geografía era clara: el europeísta Andrey Gyurov ganaba en la capital, en las grandes ciudades y en el voto del extranjero, y Yotova en casi todo lo demás. En la provincia de Kardzhali solo votó el 8,6% del censo.',
+        compara='La primera vuelta de las presidenciales de Bulgaria del 25 de octubre de 2026 en los 265 municipios y las 28 provincias, a partir de las actas de los 12.719 colegios electorales, y los totales nacionales de la primera y la segunda vuelta (1 de noviembre).',
+        limites='La CIK aún no ha publicado la segunda vuelta por colegio, así que el mapa es solo de la primera. Los datos agregados no dicen quién cambió su voto entre vueltas ni por qué se votó menos en unas zonas que en otras. Los porcentajes se calculan sobre los votos válidos, incluidos los de «no apoyo a nadie», como hace la CIK. La participación por municipio es cálculo propio (votantes entre censo más inscritos el día de la votación) y da para el conjunto un 22,7%, frente al 22,98% oficial de la CIK, que usa otra base. La participación del extranjero no se calcula porque allí no hay censo previo. Los nombres de lugar se transcriben del búlgaro.',
+        calculo='Votos de cada candidato por colegio, sumados por municipio con el código EKATTE de cada localidad; votos de «no apoyo a nadie» del papel y de las máquinas de votación. Los totales cuadran con el acta nacional de la CIK salvo por 2 votos a candidatos.',
+        fuentes=[('https://results.cik.bg/', 'Comisión Electoral Central de Bulgaria (CIK), datos abiertos de la primera vuelta por colegio electoral y resultados nacionales de la segunda vuelta'),
+                 ('https://github.com/yurukov/Bulgaria-geocoding', 'Boyko Yurukov, Bulgaria-geocoding: contornos de municipios y provincias y códigos EKATTE'),
+                 ('https://www.citypopulation.de/en/bulgaria/admin/09__k%C7%8Erd%C5%BEali/', 'citypopulation.de, provincia de Kardzhali: censo de 2021 por etnia (Instituto Nacional de Estadística de Bulgaria)'),
+                 ('https://www.elespanol.com/mundo/20261102/iliana-yotova-gana-segunda-vuelta-presidencial-bulgaria-consolida-linea-prorrusa-frente-europeista-gyurov/1003744442987_0.html', 'El Español, Iliana Yotova gana la segunda vuelta presidencial en Bulgaria (2-11-2026)'),
+                 ('https://balkaninsight.com/2026/10/30/bulgarias-presidential-race-heads-to-runoff-as-russia-divides-the-two-candidates/bi/', 'Balkan Insight, Bulgaria’s Presidential Race Heads to Runoff (30-10-2026)'),
+                 ('https://www.aljazeera.com/news/2026/11/1/bulgarian-president-yotova-leads-runoff-exit-polls-show', 'Al Jazeera, con AFP, AP y Reuters: Initial results indicate victory for Iotova (1-11-2026)'),
+                 ('https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election', 'Wikipedia, 2026 Bulgarian presidential election: apoyos para la segunda vuelta y candidaturas')],
+        enlaces=[],
+        lugar='Bulgaria',
+    ),
+]
+
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
+    'bulgaria-yotova-gyurov-mapa-municipios': '2026-11-03',
     'banez-huelva-pp-29n': '2026-11-02',
     'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
