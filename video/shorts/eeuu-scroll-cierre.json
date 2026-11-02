@@ -1,0 +1,5 @@
+{"plantilla": "guia", "kicker": "ESTADOS UNIDOS · 3 DE NOVIEMBRE",
+ "fuente": ["Horarios: 270toWin y The Green Papers.", "Hora peninsular española."],
+ "escenas": [
+  {"tipo": "cierre", "dur": 3.0, "lineas": ["La noche", "electoral, hora", "a hora"], "ruta": "/actualidad/eeuu-noche-electoral-guia-horarios/"}
+ ]}

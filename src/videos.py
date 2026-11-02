@@ -19,6 +19,9 @@ PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
+    dict(nombre='bulgaria-scroll', t=5, k='Bulgaria', titulo='Yotova ganó en 256 de los 265 municipios de Bulgaria', tuit=''),
+    dict(nombre='banez-scroll', t=8.5, k='Huelva', titulo='Báñez y el PP en Huelva: de 9 municipios a 17', tuit=''),
+    dict(nombre='eeuu-noche-scroll', t=15, k='Estados Unidos', titulo='La noche electoral de EE. UU., hora a hora desde España', tuit=''),
     dict(nombre='empates', t=8, k='Empates y unanimidades', titulo='1.243 a 1.243: los 94 pueblos donde empataron los dos primeros', tuit=''),
     dict(nombre='menos-electores', t=8, k='Historia electoral', titulo='4.157 municipios tienen menos electores que en 1977', tuit=''),
     dict(nombre='eeuu-camara', t=9.5, k='Estados Unidos', titulo='Los 435 distritos que deciden la Cámara de EE. UU.', tuit=''),
