@@ -134,5 +134,9 @@
  "banez-huelva-pp-29n": {
   "pie": "PP y PSOE en la provincia de Huelva, en todas las generales.",
   "fuente": "Ministerio del Interior, resultados por municipio"
+ },
+ "bulgaria-yotova-gyurov-mapa-municipios": {
+  "pie": "Quién ganó en cada municipio de Bulgaria en la primera vuelta.",
+  "fuente": "Comisión Electoral Central de Bulgaria (CIK), datos abiertos por colegio electoral"
  }
 }
