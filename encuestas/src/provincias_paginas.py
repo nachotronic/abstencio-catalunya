@@ -20,8 +20,9 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         nombre, slug = nombres[cod], slug_provincia(cod)
         indice.append((slug, nombre))
         total = v['escanos_total']
-        listas = sorted(v['listas'], key=lambda l: (-l['escanos'][1], -l['voto'][1]))
-        con = [l for l in listas if l['escanos'][2] > 0]
+        rc = c.reparto_provincia(v)   # suma exactamente `total`
+        listas = sorted(v['listas'], key=lambda l: (-rc[l['lista']], -l['voto'][1]))
+        con = [l for l in listas if l['escanos'][2] > 0 or rc[l['lista']] > 0]
         primero = max(v['listas'], key=lambda l: l['p_primera'])
         segundo = sorted(v['listas'], key=lambda l: -l['p_primera'])[1]
         n = c.nombre_lista
@@ -29,8 +30,8 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         art = lambda l: 'el ' if l in ('PP', 'PSOE', 'PNV', 'BNG') else ''
         pp = lambda x: f'{round(x * 100)} %' if 0.01 <= x <= 0.99 else ('menos del 1 %' if x < 0.01 else 'más del 99 %')
         titular = f'Encuesta en {nombre}: {art(primero["lista"])}{corto(primero["lista"])} saldría primero en el {pp(primero["p_primera"])} de las simulaciones'
-        reparto = ', '.join(f'{corto(l["lista"])} {l["escanos"][1]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
-                            for l in con if l['escanos'][2] > 0)
+        reparto = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
+                            for l in con)
         p1 = (f'{nombre} elige {total} diputado{"s" if total > 1 else ""} el 29 de noviembre. Con la media de las encuestas nacionales repartida por provincia, '
               f'el reparto central es {reparto}. Entre paréntesis, el intervalo del 80 % de las simulaciones.')
         p2 = (f'{art(primero["lista"]).capitalize()}{corto(primero["lista"])} queda primero en el {pp(primero["p_primera"])} de las {sims} simulaciones, '
@@ -46,15 +47,11 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         for l in listas:
             if l['voto'][1] < 1 and l['escanos'][2] == 0:
                 continue
-            esc = str(l['escanos'][1]) + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '')
+            esc = str(rc[l['lista']]) + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '')
             filas += (f'<tr><td><i class="pt" style="background:{c.color_lista(l["lista"])}"></i>{html.escape(corto(l["lista"]))}</td>'
                       f'<td class="n">{pc(l["voto"][1])}<small>{str(l["voto"][0]).replace(".", ",")}-{str(l["voto"][2]).replace(".", ",")}</small></td>'
                       f'<td class="n">{esc}</td><td class="n">{pp(l["p_primera"]) if l["p_primera"] >= 0.005 else "–"}</td></tr>')
-        cuad, k = '', 0
-        for l in con:
-            m = min(l['escanos'][1], total - k); k += m
-            cuad += f'<i style="background:{c.color_lista(l["lista"])}" title="{html.escape(corto(l["lista"]))}"></i>' * m
-        cuad += '<i class="aire"></i>' * (total - k)
+        cuad = ''.join(f'<i style="background:{c.color_lista(l["lista"])}" title="{html.escape(corto(l["lista"]))}"></i>' * rc[l['lista']] for l in con)
         vecinas = [(slug_provincia(p), nombres[p]) for p in meta['ccaa'][ccaa_de[cod]] if p != cod]
         faq = [(f'¿Cuántos diputados elige {nombre}?', f'{total}. Se reparten con la ley D\'Hondt entre las candidaturas que pasan del 3 % de los votos válidos de la provincia.'),
                (f'¿Quién gana en {nombre} según las encuestas?', p2 + ' ' + p1),
@@ -78,13 +75,13 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <p class="firma">Por <a href="../../sobre-mi.html">{c.AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
 <p class="propio"><b>Modelo propio, no es una encuesta de {html.escape(nombre)}.</b> Las encuestadoras no publican sus datos por provincia. Estas cifras salen del modelo de Mapa Electoral, que reparte por provincia la media de las <a href="../">encuestas publicadas</a> y simula el resultado {sims} veces. <a href="../metodo-modelo.html">Cómo se calcula</a>.</p>
 <p data-tipo="dato">{html.escape(p1)}</p>
-<figure><figcaption><span class="t">Los {total} escaños de {html.escape(nombre)} en el reparto central</span><span class="s">Un cuadrado por escaño, con el color del partido que lo saca en la mediana de las simulaciones; en gris, los que quedan en el aire.</span></figcaption>
+<figure><figcaption><span class="t">Los {total} escaños de {html.escape(nombre)} en el reparto central</span><span class="s">Un cuadrado por escaño, con el color del partido que lo saca en el reparto central.</span></figcaption>
 <div class="esc grande" aria-hidden="true">{cuad}</div></figure>
 <p data-tipo="dato">{html.escape(p2)}</p>
 <p data-tipo="dato">{html.escape(p3)}</p>
 <h2>Voto y escaños de cada partido en {html.escape(nombre)}</h2>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto (80 %)</th><th class="n">Escaños (80 %)</th><th class="n">Primero</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p class="src">Cifra grande: mediana de las simulaciones; debajo, el intervalo del 80 %. {html.escape(meta.get('aviso', ''))} <a href="../../{ruta_provincia(cod)}">Resultados de 2023 en {html.escape(nombre)}, sección a sección →</a></p>
+<p class="src">Cifra grande: reparto central, la mediana de las simulaciones ajustada para que sume los escaños de la provincia; debajo, el intervalo del 80 %. {html.escape(meta.get('aviso', ''))} <a href="../../{ruta_provincia(cod)}">Resultados de 2023 en {html.escape(nombre)}, sección a sección →</a></p>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
 {f'<h2>Otras provincias de {html.escape(ccaa_de[cod])}</h2><ul class="casas">' + ''.join(f'<li><a href="../{s}/">{html.escape(nm)}</a></li>' for s, nm in vecinas) + '</ul>' if vecinas else ''}

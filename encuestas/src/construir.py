@@ -600,6 +600,27 @@ box.addEventListener('mousemove',ver);box.addEventListener('touchstart',ver,{pas
 COLOR_EXTRA = {'PACMA': '#8a8486'}   # listas del modelo sin color en TODOS
 
 
+def reparto_provincia(v):
+    """Reparto central de una provincia que suma sus escaños: {lista: escaños}.
+
+    Las medianas de cada partido por separado no tienen por qué sumar el total (Bizkaia daba 7 de 8 y Ceuta, 0 de 1).
+    Se parte de ellas y se ajustan como en D'Hondt con el voto mediano: si faltan escaños, el siguiente va a la lista
+    con mayor cociente voto / (escaños + 1); si sobran, sale el de la lista con menor voto / escaños. Solo se tocan
+    listas cuya horquilla del 80 % admite el cambio (salvo que ninguna lo admita)."""
+    e = {l['lista']: l['escanos'][1] for l in v['listas']}
+    voto = {l['lista']: l['voto'][1] for l in v['listas']}
+    lo = {l['lista']: l['escanos'][0] for l in v['listas']}
+    hi = {l['lista']: l['escanos'][2] for l in v['listas']}
+    total = v['escanos_total']
+    while sum(e.values()) < total:
+        cand = [k for k in e if e[k] < hi[k]] or list(e)
+        k = max(cand, key=lambda k: voto[k] / (e[k] + 1)); e[k] += 1
+    while sum(e.values()) > total:
+        cand = [k for k in e if 0 < e[k] and lo[k] < e[k]] or [k for k in e if e[k] > 0]
+        k = min(cand, key=lambda k: voto[k] / e[k]); e[k] -= 1
+    return e
+
+
 def color_lista(l):
     return next(c for k, _, c, _ in TODOS if k == DEL_MODELO[l]) if l in DEL_MODELO else COLOR_EXTRA.get(l, '#8a8486')
 
@@ -703,15 +724,12 @@ def provincias():
     for ca, cods in meta['ccaa'].items():
         for c in cods:
             v = prov[c]
-            con = [l for l in sorted(v['listas'], key=lambda l: (-l['escanos'][1], -l['voto'][1])) if l['escanos'][2] > 0]
-            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nombre_lista(l["lista"]).replace(" / Frente Amplio", ""))} <b>{l["escanos"][1]}</b>'
+            rc = reparto_provincia(v)
+            con = [l for l in sorted(v['listas'], key=lambda l: (-rc[l['lista']], -l['voto'][1])) if l['escanos'][2] > 0 or rc[l['lista']] > 0]
+            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nombre_lista(l["lista"]).replace(" / Frente Amplio", ""))} <b>{rc[l["lista"]]}</b>'
                             + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '') + '</span>' for l in con)
-            # un cuadrado por escaño con la mediana de cada partido; los que no reparten las medianas, en gris
-            cuad, n = '', 0
-            for l in con:
-                k = min(l['escanos'][1], v['escanos_total'] - n); n += k
-                cuad += f'<i style="background:{color_lista(l["lista"])}"></i>' * k
-            cuad += '<i class="aire"></i>' * (v['escanos_total'] - n)
+            # un cuadrado por escaño con el reparto central, que suma los escaños de la provincia
+            cuad = ''.join(f'<i style="background:{color_lista(l["lista"])}"></i>' * rc[l['lista']] for l in con)
             chips = f'<span class="esc" aria-hidden="true">{cuad}</span>' + chips
             pr = primero[c]
             # «Primero» antes del reparto para que se vea en el móvil sin desplazar la tabla
@@ -724,8 +742,10 @@ def provincias():
             f'{meta["simulaciones"]:,} veces con el error histórico de las encuestas.'.replace(',', '.')),
            ('¿Qué provincias están más disputadas?', p2),
            ('¿Qué significa la horquilla de escaños?',
-            'En el 80 % de las simulaciones, el partido saca un número de escaños dentro de ese intervalo. La cifra grande es la mediana. '
-            'Por eso la suma de las medianas de una provincia puede no coincidir exactamente con sus escaños.'),
+            'En el 80 % de las simulaciones, el partido saca un número de escaños dentro de ese intervalo. La cifra grande es el reparto central: '
+            'la mediana de cada partido, ajustada para que la provincia reparta exactamente sus escaños. Las medianas sueltas no siempre suman '
+            'el total, así que el escaño que falta va al partido con más voto por escaño (como en la ley D\'Hondt) y el que sobra sale del que tiene menos, '
+            'siempre dentro de su horquilla.'),
            ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva en la página de encuestas, el modelo se vuelve a calcular y esta tabla cambia con él. '
             'Del 24 al 28 de noviembre no se actualiza: la ley electoral prohíbe publicar sondeos esos días.')]
     actual = fecha_larga(meta['generado'])
@@ -751,7 +771,7 @@ def provincias():
 <figure><figcaption><span class="t">Las provincias más disputadas</span><span class="s">Porcentaje de simulaciones en que queda primero cada uno de los dos partidos con más opciones.</span></figcaption>
 <div class="duelos">{duelos}</div></figure>
 <h2>Escaños por provincia según la media de encuestas</h2>
-<p>Cada cuadrado es un escaño, con el color del partido que lo saca en la mediana; en gris, los que quedan en el aire. La cifra grande es la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones y, debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a su página con el detalle y, al lado, a sus resultados de 2023, sección a sección.</p>
+<p>Cada cuadrado es un escaño, con el color del partido que lo saca en el reparto central. La cifra grande es ese reparto: la mediana de escaños de cada partido en {meta['simulaciones']:,} simulaciones, ajustada para que cada provincia sume sus escaños; debajo, la horquilla del 80 %. «Primero» es el partido con más probabilidades de quedar delante, con esa probabilidad. Cada provincia enlaza a su página con el detalle y, al lado, a sus resultados de 2023, sección a sección.</p>
 <div class="tbl"><table class="prov"><thead><tr><th>Provincia</th><th class="n">Primero</th><th>Escaños: mediana y horquilla</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">{html.escape(meta.get('aviso', ''))} Modelo v{html.escape(meta['version'].split('-')[0].lstrip('v'))}; <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones">código</a>.</p>
 <h2>Preguntas frecuentes</h2>
