@@ -3701,13 +3701,14 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-02 07:40',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
         limites='En los estados con dos husos horarios se toma la hora en que cierra la mayor parte del estado. En Dakota del Norte las fuentes no coinciden en algunos colegios. Las calificaciones son las de The Cook Political Report a 30 de octubre y pueden cambiar antes del martes. La ventaja de 2024 en los distritos que han cambiado de límites no es comparable.',
         fuentes=[('https://www.270towin.com/poll-closing-times', '270toWin, horas de cierre de los colegios en 2026'),
                  ('https://www.thegreenpapers.com/G26/closing.phtml', 'The Green Papers, horas de cierre de los colegios en 2026'),
+                 ('https://www.sos.la.gov/electionsandvoting/getelectioninformation/reviewtypesofelections', 'Secretaría de Estado de Luisiana, tipos de elección (primaria abierta a la Cámara el 3-11-2026 y segunda vuelta el 12-12-2026)'),
                  ('https://www.cookpolitical.com/ratings/house-race-ratings', 'The Cook Political Report, calificaciones de la Cámara (30-10-2026)'),
                  ('https://www.cookpolitical.com/ratings/senate-race-ratings', 'The Cook Political Report, calificaciones del Senado (30-10-2026)'),
                  ('https://election.lab.ufl.edu/', 'Election Lab de la Universidad de Florida, voto anticipado (1-11-2026)'),
