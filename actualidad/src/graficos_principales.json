@@ -126,5 +126,9 @@
  "eeuu-noche-electoral-guia-horarios": {
   "pie": "Hora de cierre de los colegios en cada estado, en hora peninsular española, el miércoles 4 de noviembre.",
   "fuente": "270toWin y The Green Papers, horas de cierre de 2026. Cálculo propio de la hora española"
+ },
+ "encuestas-antes-despues-urda-29n": {
+  "pie": "Cuánto cambia cada partido respecto a la encuesta anterior de la misma empresa.",
+  "fuente": "Winston, Sigma Dos, NC Report, Electomanía y SocioMétrica, en los medios enlazados; las cifras de Sigma Dos del 1 de noviembre, según Electográfica"
  }
 }
