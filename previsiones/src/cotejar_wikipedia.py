@@ -31,6 +31,10 @@ ORDEN = ['PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS', 'SALF', 'ERC', 'JUNTS', 'BILDU
 # KeyData (Público) es una media de encuestas, no una encuesta: no cuenta como falta. Tampoco los sondeos internos
 # que un partido filtra a la prensa (Wikipedia los apunta con el partido como encuestadora)
 AGREGADORES = {'keydata'}
+# sondeos internos de partido que Wikipedia apunta con el medio que los publica como encuestadora (url de la fuente)
+SONDEOS_INTERNOS = {
+    'https://theobjective.com/espana/2026-11-01/sondeo-vox-71-escanos/',   # sondeo interno de Vox, desmentido por Vox
+}
 PARTIDOS_COMO_CASA = {'pp', 'psoe', 'vox', 'sumar', 'podemos', 'erc', 'junts', 'pnv', 'bildu', 'ehbildu', 'bng'}
 
 
@@ -148,10 +152,13 @@ def parsea(texto):
                 attr, val = cs.pop(0)
                 span = int(re.search(r'colspan="?(\d+)', attr).group(1)) if 'colspan' in attr else 1
                 rs = int(re.search(r'rowspan="?(\d+)', attr).group(1)) if 'rowspan' in attr else 1
-                for _ in range(span):
+                # una cifra conjunta que abarca varias columnas (p. ej. FA + FV con colspan=2) se cuenta una sola vez:
+                # repetirla en cada columna duplicaba el voto y los escaños cuando las dos son el mismo partido del modelo
+                for i in range(span):
+                    v = val if i == 0 else ''
                     if rs > 1:
-                        pend[len(vals)] = (val, rs - 1)
-                    vals.append(val)
+                        pend[len(vals)] = (v, rs - 1)
+                    vals.append(v)
             if len(vals) < 4 or 'election' in vals[0].lower() and '[[' in vals[0]:
                 continue
             # «CIS {{smaller|(Opina 360)}}»: otra empresa reestima los datos brutos del CIS; no es una encuesta nueva
@@ -173,7 +180,7 @@ def parsea(texto):
                     if e and mod != 'OTROS':
                         a, b = escanos.get(mod, (0, 0))
                         escanos[mod] = (a + e[0], b + e[1])
-            if not votos or not cf:
+            if not votos or not cf or (url and url.group(1) in SONDEOS_INTERNOS):
                 continue
             filas_out.append({'encuestadora': casa.strip(), 'cliente': medio.strip(), 'reestimacion': reest.group(1) if reest else '',
                               'campo_inicio': ci, 'campo_fin': cf,
