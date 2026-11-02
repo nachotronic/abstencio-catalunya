@@ -1,5 +1,5 @@
 {
- "descargado": "2026-11-02T02:26Z",
+ "descargado": "2026-11-02T05:28Z",
  "fuente": "https://www.electografica.com",
  "encuestas_espana": 1056,
  "encuestas_infraestatales": 139,
@@ -22,8 +22,8 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 584,
-  "ultima_fin_campo": "2026-10-30",
-  "faltan_en_electografica_120_dias": 19
+  "encuestas": 585,
+  "ultima_fin_campo": "2026-11-01",
+  "faltan_en_electografica_120_dias": 18
  }
 }
