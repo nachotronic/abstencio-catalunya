@@ -3708,6 +3708,7 @@ PIEZAS += [
         limites='En los estados con dos husos horarios se toma la hora en que cierra la mayor parte del estado. En Dakota del Norte las fuentes no coinciden en algunos colegios. Las calificaciones son las de The Cook Political Report a 30 de octubre y pueden cambiar antes del martes. La ventaja de 2024 en los distritos que han cambiado de límites no es comparable.',
         fuentes=[('https://www.270towin.com/poll-closing-times', '270toWin, horas de cierre de los colegios en 2026'),
                  ('https://www.thegreenpapers.com/G26/closing.phtml', 'The Green Papers, horas de cierre de los colegios en 2026'),
+                 ('https://www.sos.la.gov/electionsandvoting/getelectioninformation/reviewtypesofelections', 'Secretaría de Estado de Luisiana, tipos de elección (primaria abierta a la Cámara el 3-11-2026 y segunda vuelta el 12-12-2026)'),
                  ('https://www.cookpolitical.com/ratings/house-race-ratings', 'The Cook Political Report, calificaciones de la Cámara (30-10-2026)'),
                  ('https://www.cookpolitical.com/ratings/senate-race-ratings', 'The Cook Political Report, calificaciones del Senado (30-10-2026)'),
                  ('https://election.lab.ufl.edu/', 'Election Lab de la Universidad de Florida, voto anticipado (1-11-2026)'),
