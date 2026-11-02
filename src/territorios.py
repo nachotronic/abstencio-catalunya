@@ -367,7 +367,8 @@ def cabeza(titulo, desc, ruta, ld, nivel, miga, imagen=None):
 <meta property="og:image:height" content="{720 if imagen else 630}">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@nachotronic">
+<meta name="twitter:site" content="@_mapaelectoral">
+<meta name="twitter:creator" content="@nachotronic">
 <link rel="license" href="{LICENCIA}">
 <link rel="alternate" type="text/plain" title="llms.txt" href="{BASE}elecciones/llms.txt">
 <script type="application/ld+json">
