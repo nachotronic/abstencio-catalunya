@@ -1,7 +1,7 @@
 {
- "descargado": "2026-11-01T22:01Z",
+ "descargado": "2026-11-02T02:26Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1055,
+ "encuestas_espana": 1056,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
@@ -11,7 +11,7 @@
  },
  "siglas_sin_equivalencia": {
   "CCa-1ºCAN": 4,
-  "CCa-1ªCAN": 3,
+  "CCa-1ªCAN": 4,
   "Autonómicas - CUP": 2,
   "UPC": 2,
   "D21": 2,
