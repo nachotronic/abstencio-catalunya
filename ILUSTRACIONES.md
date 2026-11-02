@@ -24,7 +24,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
-| 2026-11-02 | [`encuestas-antes-despues-urda-29n`](https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/) | El PSOE subía en las tres encuestas hechas antes del choque de Urda y baja en las tres hechas después | primer gráfico de la pieza |
+| 2026-11-02 | [`encuestas-antes-despues-urda-29n`](https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/) | Tres de tres: el PSOE baja en todas las encuestas hechas tras el choque de Urda | primer gráfico de la pieza |
 | 2026-11-01 | [`derbi-vasco-bilbao-donostia-29n`](https://mapaelectoral.es/actualidad/derbi-vasco-bilbao-donostia-29n/) | El derbi en las urnas: el PNV bajó en 414 de las 415 secciones de Bilbao y Donostia, y el PSOE ganó en las dos ciudades | primer gráfico de la pieza |
 | 2026-11-01 | [`eeuu-noche-electoral-guia-horarios`](https://mapaelectoral.es/actualidad/eeuu-noche-electoral-guia-horarios/) | De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España | gráfico |
 | 2026-10-31 | [`cuatro-semanas-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/cuatro-semanas-29n-la-semana-en-el-mapa/) | A cuatro semanas del 29N, 250 escaños están casi decididos y 204 candidatos se juegan los otros 100: la semana en que la campaña se paró | primer gráfico de la pieza |
