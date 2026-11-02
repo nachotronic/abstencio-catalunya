@@ -51,7 +51,8 @@ AUTHOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': AUTHO
 PUBLISHER = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': 'Mapa Electoral', 'url': BASE,
              'founder': {'@type': 'Person', 'name': AUTHOR_NAME, 'url': BASE + 'sobre-mi.html'},
              'publishingPrinciples': BASE + 'atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + 'atlas/politica-editorial/#verificacion',
-             'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
+             'correctionsPolicy': BASE + 'atlas/correcciones/', 'logo': {'@type': 'ImageObject', 'url': BASE + 'icon-512.png', 'width': 512, 'height': 512},
+             'sameAs': ['https://x.com/_mapaelectoral']}
 LICENSE = 'https://creativecommons.org/licenses/by/4.0/'
 IMAGE = BASE + 'img/portada.png'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
@@ -422,11 +423,31 @@ def methodology(L):
 
 
 AB = {
- 'es': dict(title='Sobre mí', back='← Volver a la pieza', other='Català', h_work='Trabajos', h_links='Enlaces', contact='Escríbeme',
-            works=[('abstencion.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
+ 'es': dict(title='Sobre mí', back='← Mapa Electoral', other='Català', h_work='Trabajos', h_links='Enlaces', contact='Escríbeme',
+            h_medio='Mapa Electoral',
+            medio='Edito y escribo <a href="/">Mapa Electoral</a>, un medio de datos sobre elecciones en España: resultados por municipio, barrio y sección censal, '
+                  'encuestas y análisis. Los datos se publican con licencia CC BY 4.0 y el <a href="' + REPO + '">código está en GitHub</a>. '
+                  'Cómo trabajamos: <a href="/atlas/politica-editorial/">política editorial y verificación</a>, '
+                  '<a href="/atlas/correcciones/">correcciones</a> y <a href="/generales-2026/metodologia.html">metodología del mapa</a>.',
+            works=[('/', 'Mapa electoral de España: elecciones generales del 29N, municipio a municipio', 'Octubre de 2026'),
+                   ('/encuestas/', 'Encuestas de las elecciones generales 2026, actualizadas a diario', 'Octubre de 2026'),
+                   ('/municipio/', 'Fichas de municipios: censo electoral y resultados', 'Octubre de 2026'),
+                   ('/atlas/', 'Atlas de las anomalías electorales', 'Octubre de 2026'),
+                   ('/actualidad/', 'Actualidad: análisis de datos electorales', 'Octubre de 2026'),
+                   ('abstencion.html', '¿Quién no vota en Cataluña? Abstención por sección censal', 'Octubre de 2026'),
                    ('metodologia.html', 'Metodología y datos abiertos de la pieza', 'Octubre de 2026')]),
- 'ca': dict(title='Sobre mi', back='← Tornar a la peça', other='Español', h_work='Treballs', h_links='Enllaços', contact='Escriu-me',
-            works=[('ca.html', 'Qui no vota a Catalunya? Abstenció per secció censal', 'Octubre del 2026'),
+ 'ca': dict(title='Sobre mi', back='← Mapa Electoral', other='Español', h_work='Treballs', h_links='Enllaços', contact='Escriu-me',
+            h_medio='Mapa Electoral',
+            medio='Edito i escric <a href="/" hreflang="es">Mapa Electoral</a>, un mitjà de dades sobre eleccions a Espanya: resultats per municipi, barri i secció censal, '
+                  'enquestes i anàlisi. Les dades es publiquen amb llicència CC BY 4.0 i el <a href="' + REPO + '">codi és a GitHub</a>. '
+                  'Com treballem: <a href="/atlas/politica-editorial/" hreflang="es">política editorial i verificació</a>, '
+                  '<a href="/atlas/correcciones/" hreflang="es">correccions</a> i <a href="/generales-2026/metodologia.html" hreflang="es">metodologia del mapa</a>.',
+            works=[('/', 'Mapa electoral d\'Espanya: eleccions generals del 29N, municipi a municipi', 'Octubre del 2026'),
+                   ('/encuestas/', 'Enquestes de les eleccions generals 2026, actualitzades cada dia', 'Octubre del 2026'),
+                   ('/municipio/', 'Fitxes de municipis: cens electoral i resultats', 'Octubre del 2026'),
+                   ('/atlas/', 'Atles de les anomalies electorals', 'Octubre del 2026'),
+                   ('/actualidad/', 'Actualitat: anàlisi de dades electorals', 'Octubre del 2026'),
+                   ('ca.html', 'Qui no vota a Catalunya? Abstenció per secció censal', 'Octubre del 2026'),
                    ('metodologia-ca.html', 'Metodologia i dades obertes de la peça', 'Octubre del 2026')]),
 }
 ALT_A = [('es', BASE + 'sobre-mi.html'), ('ca', BASE + 'sobre-mi-ca.html'), ('x-default', BASE + 'sobre-mi.html')]
@@ -447,7 +468,8 @@ def about(L):
     bio = f'<p>{e(AUTHOR_BIO_PAGE[L])}</p>\n' if AUTHOR_BIO_PAGE[L] else ''
     if AUTHOR_EXTRA_PAGE[L]: bio += f'<p>{AUTHOR_EXTRA_PAGE[L]}</p>\n'
     works = '\n'.join(f'<li><a href="{u}">{e(n)}</a> · {d}</li>' for u, n, d in a['works'])
-    links = '\n'.join([f'<li><a href="{CONTACT}">{a["contact"]}</a></li>'] + [f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS])
+    links = '\n'.join([f'<li><a href="{CONTACT}">{a["contact"]}</a></li>'] + [f'<li><a href="{e(u)}" rel="me">{e(n)}</a></li>' for n, u in AUTHOR_LINKS]
+                      + ['<li><a href="https://x.com/_mapaelectoral">Mapa Electoral en X (@_mapaelectoral)</a></li>'])
     return f'''<!doctype html>
 <html lang="{L}">
 <head>
@@ -459,9 +481,11 @@ def about(L):
 </head>
 <body>
 <main>
-<nav><a href="{t['page']}">{a['back']}</a><a href="{ABOUT[other_L]}" hreflang="{other_L}" lang="{other_L}">{a['other']}</a></nav>
+<nav><a href="/">{a['back']}</a><a href="{ABOUT[other_L]}" hreflang="{other_L}" lang="{other_L}">{a['other']}</a></nav>
 {job}<h1>{e(AUTHOR_NAME)}</h1>
-{bio}<h2>{a['h_work']}</h2>
+{bio}<h2>{a['h_medio']}</h2>
+<p>{a['medio']}</p>
+<h2>{a['h_work']}</h2>
 <ul>
 {works}
 </ul>

@@ -19,7 +19,8 @@ BASE = 'https://mapaelectoral.es'
 MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '/#medio', 'name': 'Mapa Electoral', 'url': BASE + '/',
          'founder': {'@type': 'Person', 'name': 'Nacho G. del Álamo', 'url': BASE + '/sobre-mi.html'},
          'publishingPrinciples': BASE + '/atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + '/atlas/politica-editorial/#verificacion',
-         'correctionsPolicy': BASE + '/atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
+         'correctionsPolicy': BASE + '/atlas/correcciones/', 'logo': {'@type': 'ImageObject', 'url': BASE + '/icon-512.png', 'width': 512, 'height': 512},
+         'sameAs': ['https://x.com/_mapaelectoral']}
 POLITICA = ' · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a>'
 AUTOR = 'Nacho G. del Álamo'
 CF = ("<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' "
@@ -3410,7 +3411,8 @@ def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, ma
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@nachotronic">
+<meta name="twitter:site" content="@_mapaelectoral">
+<meta name="twitter:creator" content="@nachotronic">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=1)}
