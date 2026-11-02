@@ -35,7 +35,7 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-10-31'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-11-02'   # cámbiala a mano cuando cambien los datos o el texto
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
@@ -404,7 +404,8 @@ PIE = f"""<footer>{SITIO} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</
 # Páginas publicadas después que el resto
 PUBLICADA = {'elecciones/elecciones-29n-2026/': '2026-10-15', 'elecciones/participacion-electoral-por-barrio/': '2026-10-15',
              'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20', 'elecciones/resultados-elecciones-generales-2026/': '2026-10-21', 'elecciones/votar-29n/': '2026-10-26',
-             'elecciones/mesa-electoral-29n/': '2026-10-31', 'elecciones/voto-por-correo-29n/': '2026-10-31'}
+             'elecciones/mesa-electoral-29n/': '2026-10-31', 'elecciones/voto-por-correo-29n/': '2026-10-31',
+             'elecciones/que-voto-tu-calle/': '2026-11-02'}
 
 
 def ld_pagina(titulo, desc, ruta, about=None, partes=None):
@@ -794,9 +795,9 @@ def pagina_barrio(cod, b, todos):
     dif = {c: (r['pct'][c] or 0) - (rc['pct'][c] or 0) for c in T.FAM if c != 'OTROS'}
     lejos = max(dif, key=lambda c: abs(dif[c]))
 
-    titulo = f'Elecciones en {nombre} ({ciudad}): así vota el {tipo_b}, sección a sección'
+    titulo = f'Elecciones en {nombre} ({ciudad}): cómo vota el {tipo_b}, calle a calle y sección a sección'
     desc = (f'{cap(nombre)}{dist} ({ciudad}): en las generales de 2023, {nom_g} ganó con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
-            f'Renta, edad, población extranjera y voto de sus {num(len(cods))} secciones censales desde 2004.')
+            f'Busca tu calle: renta, edad, población extranjera y voto de sus {num(len(cods))} secciones censales desde 2004.')
     about = {'@type': 'Place', 'name': f'{nombre} ({ciudad})', 'containedInPlace': {'@type': 'City', 'name': ciudad, 'url': BASE + CIUDADES[cod],
              'containedInPlace': lugar(PROV_NOMBRE[p], ESPANA)}}
     ld = ld_pagina(titulo, desc, ruta, about)
@@ -823,6 +824,7 @@ def pagina_barrio(cod, b, todos):
             f'por delante {con_de(nom_s)} ({pct(r["pct"][seg])}). Votó el {pct(r["part"])} de sus {num(r["censo"])} electores, {t_part}')
     lead += (f': es el {ordinal(p_part)} de los {num(n)} {tipos} de la ciudad con más participación.' if p_part and n >= 5 else '.')
     h.append(f'<p class="resumen">{tipo("Dato")}{lead}</p>')
+    h.append(f'<p class="calle">¿Y en tu calle? <a href="{raiz}elecciones/que-voto-tu-calle/">Busca tu dirección</a> y mira qué votó tu sección censal en cada elección desde 2004.</p>')
     if g != gc:
         h.append(p_('Dato', f'En el conjunto de la ciudad ganó {art_partido(gc, ccaa)} ({pct(rc["pct"][gc])}); aquí, {nom_g} le saca a {art_partido(gc, ccaa) if gc != seg else "ese partido"} '
                     f'{puntos(r["pct"][g] - r["pct"][gc])} puntos.'))
@@ -989,7 +991,8 @@ def bloque_barrios(cod, nombre, todos):
     sin = [b['nombre'] for b in todos if not b['ficha']]
     txt = (f'{escape(nombre)} tiene ficha propia para {num(len(fichas))} {tipos}, con el voto de cada sección censal, la renta y quién vive en ellos. '
            f'En 2023 el que más votó fue <a href="{part[0]["slug"]}/">{escape(part[0]["nombre"])}</a> ({pct(part[0]["r"]["part"])}) y el que menos, '
-           f'<a href="{part[-1]["slug"]}/">{escape(part[-1]["nombre"])}</a> ({pct(part[-1]["r"]["part"])}).')
+           f'<a href="{part[-1]["slug"]}/">{escape(part[-1]["nombre"])}</a> ({pct(part[-1]["r"]["part"])}). '
+           f'Para bajar a tu calle, <a href="{RAIZ_REL}elecciones/que-voto-tu-calle/">busca tu dirección</a>.')
     return (f'<h2 id="barrios">{tipos.capitalize()} de {escape(nombre)}</h2>' + p_('Dato', txt)
             + tabla(f'Generales de 2023 en cada {tipos[:-1]} de {escape(nombre)}', ['Barrio' if tipos == 'barrios' else 'Distrito'] + (['Distrito'] if con_d else [])
                     + ['Participación', 'Más votado', 'Renta por u. c.'], filas, num_desde=2 if con_d else 1)
@@ -1112,7 +1115,7 @@ def bloque_secciones(nombre, sec):
             + p_('Dato', f'En las generales de 2023, partido más votado en cada una de las {num(len(s))} secciones censales de {escape(nombre)}: {reparto}.')
             + p_('Dato', f'La participación fue más alta en {lista(alto)} y más baja en {lista(bajo)}. '
                  f'Entre la sección que más votó y la que menos hay {(alto.part.iloc[0] - bajo.part.iloc[0]) * 100:.0f} puntos.')
-            + f'<p class="leyenda">Las secciones se identifican por su distrito y número del INE; en el <a href="{RAIZ_REL}?m={s.mun_code.iloc[0]}">mapa</a> se ven sobre las calles.</p>')
+            + f'<p class="leyenda">Las secciones se identifican por su distrito y número del INE; en el <a href="{RAIZ_REL}?m={s.mun_code.iloc[0]}">mapa</a> se ven sobre las calles. Para ver la tuya, <a href="{RAIZ_REL}elecciones/que-voto-tu-calle/">busca tu dirección</a>.</p>')
 
 
 def bloque_municipales(nombre, m, rg):
@@ -1414,6 +1417,62 @@ def tema_correo():
     return ruta, ''.join(h)
 
 
+def tema_calle():
+    """Entrada «Qué votó tu calle»: buscador de dirección que lleva al mapa, qué se puede saber y qué no, y fichas de barrio."""
+    ruta = 'elecciones/que-voto-tu-calle/'
+    titulo = 'Qué votó tu calle: busca tu dirección y mira el voto de tu barrio en cada elección'
+    nsec = len(T.SEC)
+    fichas = {c: [b for b in bs if b['ficha']] for c, bs in BARRIOS.items()}
+    fichas = {c: v for c, v in fichas.items() if len(v) >= 2}
+    nfichas = sum(len(v) for v in fichas.values())
+    desc = (f'Escribe tu calle y número y el mapa te lleva a tu sección censal: qué se votó en ella en las generales desde 2004, con renta, edad y población extranjera. '
+            f'{num(nsec)} secciones de toda España y {num(nfichas)} barrios con ficha propia.')
+    qs = [('¿Puedo saber qué votó mi vecino?',
+           'No. El voto es secreto y nadie publica qué votó cada persona. Lo más cerca que se puede llegar es la sección censal, '
+           'un trozo de barrio de entre unas 500 y 2.500 personas con derecho a voto que vota en sus propias mesas: su resultado sí se conoce y es el que muestra el mapa.'),
+          ('¿Cómo veo qué se votó en mi calle?',
+           'Escribe tu calle y número en el buscador de esta página o en el del mapa de la portada. El mapa se acerca a tu dirección, marca tu sección censal y abre su ficha con el voto de cada partido y la participación.'),
+          ('¿Desde cuándo hay resultados por calle?',
+           'Las generales al Congreso están por sección censal desde 2004, las municipales desde 2011 y las europeas desde 2004. Las elecciones anteriores se ven por municipio, desde 1977.'),
+          ('¿Cuándo estarán los resultados del 29N por calle?',
+           'La noche del 29 de noviembre el mapa mostrará el recuento en directo. El voto de cada sección censal llegará cuando el Ministerio del Interior publique los resultados por mesa.'),
+          ('¿Por qué mi calle sale partida en dos secciones?',
+           'Las secciones se dibujan por número de electores, no por calles: una avenida larga puede repartirse entre varias, y una acera votar en una sección y la de enfrente en otra. Por eso el buscador usa el número del portal.')]
+    faq_html, faq_ld = faq(qs)
+    ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Qué votó tu calle', imagen_og(ruta))]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Guía · Calle a calle</p><h1 data-miga="Qué votó tu calle">Qué votó tu calle</h1>')
+    h.append('<p class="subtitulo">Escribe tu dirección y mira cómo votó tu sección censal en cada elección desde 2004</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append('<style>.buscacalle{display:flex;flex-wrap:wrap;gap:8px;margin:1.2rem 0 1.6rem}.buscacalle input{flex:1 1 16rem;font:inherit;padding:.6rem .8rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg)}'
+             '.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.buscacalle button{font:600 1rem var(--sans);padding:.6rem 1.1rem;border:0;border-radius:6px;background:var(--fg);color:var(--bg);cursor:pointer}</style>'
+             f'<form class="buscacalle" action="{raiz}#mapa" method="get" role="search"><label class="vh" for="q-calle">Calle y número, municipio</label>'
+             '<input id="q-calle" name="q" required placeholder="Calle Mayor 3, Soria" autocomplete="street-address"><button type="submit">Ver mi calle en el mapa</button></form>')
+    h.append(f'<p class="resumen">{tipo("Dato")}El mapa tiene el voto de las generales en las {num(nsec)} secciones censales de España, la unidad más pequeña con resultado propio. '
+             'Escribe tu calle y número y te lleva a la tuya: partido más votado, voto de cada candidatura con su nombre real y participación, y también su renta, su edad media y su población extranjera.</p>')
+    h.append(foto_html(ruta, raiz))
+    filas = []
+    for c, v in sorted(fichas.items(), key=lambda kv: -len(kv[1])):
+        filas.append([f'<a href="{raiz}{CIUDADES[c]}#barrios">{escape(_nom(c))}</a>', num(len(v))])
+    h.append('<h2 id="barrios">Tu barrio, con ficha propia</h2>'
+             + p_('Dato', f'En {num(len(fichas))} ciudades grandes, cada barrio o distrito tiene además su ficha: {num(nfichas)} en total, con el voto de cada una de sus secciones, '
+                  f'en qué se separa del resto de la ciudad, su renta y quién vive en él. Están todas en el <a href="{raiz}municipio/barrios/">índice de barrios</a>.')
+             + tabla('Ciudades con fichas de barrio o distrito', ['Ciudad', 'Fichas'], filas[:15], num_desde=1)
+             + (f'<p class="leyenda">Y {num(len(filas) - 15)} ciudades más en el <a href="{raiz}municipio/barrios/">índice de barrios</a>.</p>' if len(filas) > 15 else ''))
+    h.append('<h2>Calles que parten el voto</h2>' + lista_piezas(TEMA_SECCION + ['calle-que-parte-madrid', 'calle-que-parte-barcelona'], 2))
+    h.append(faq_html)
+    h.append('<h2>Más guías</h2><ul>'
+             '<li><a href="../mapa-electoral-seccion-censal/">Mapa electoral por sección censal</a>: qué es una sección y qué datos tiene</li>'
+             '<li><a href="../participacion-electoral-por-barrio/">Participación por barrio</a>: dónde se vota más y dónde menos</li>'
+             '<li><a href="../voto-y-renta-por-barrios/">Voto y renta por barrios</a>: cómo vota cada sección según su renta</li>'
+             '<li><a href="../votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio electoral</li></ul>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
 def indice(resumen):
     titulo = 'Elecciones en España por comunidad autónoma, provincia y sección censal'
     desc = 'Resultados de las elecciones generales de 1977 a 2023 en cada comunidad autónoma y provincia, con el voto por renta de los barrios y enlaces al mapa por sección censal.'
@@ -1445,6 +1504,7 @@ def indice(resumen):
              '<li><a href="resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio</a>: quién ganó en cada pueblo y ciudad desde 1977</li>'
              '<li><a href="censo-electoral-2026/">Censo electoral de 2026</a>: cuántos electores votan el 29N en cada provincia y municipio</li>'
              '<li><a href="participacion-electoral-por-barrio/">Participación electoral por barrio</a>: dónde se vota más y dónde menos</li>'
+             '<li><a href="que-voto-tu-calle/">Qué votó tu calle</a>: busca tu dirección y mira el voto de tu sección censal</li>'
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
              '<li><a href="votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio electoral, qué llevar, el voto por correo y los plazos</li>'
@@ -1601,6 +1661,8 @@ def r_prov(p, y=None):
 BOE_29N = 'https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742'
 # Ilustración de cabecera de cada página de entrada (collages con IA de Nacho; los mapas y gráficos, nunca)
 FOTOS = {
+    'elecciones/que-voto-tu-calle/': ('barrios-generica.jpg',
+                                     'Bloques de pisos y casas bajas en una calle de barrio, con una urna en medio: un collage.'),
     'elecciones/elecciones-29n-2026/': ('congreso-urna-calendario-29n.jpg',
                                        'El hemiciclo del Congreso, una urna con papeletas y un calendario con el 29 marcado: un collage.'),
     'elecciones/participacion-electoral-por-barrio/': ('colegio-electoral-cola-y-bloques.jpg',
@@ -2220,6 +2282,7 @@ def llms(resumen):
 - [Mesa electoral del 29N]({BASE}elecciones/mesa-electoral-29n/): sorteo del 31 de octubre al 4 de noviembre, excusas, horario y dieta de 75 euros; cada ficha de municipio dice cuántas mesas tiene.
 - [Voto por correo para el 29N]({BASE}elecciones/voto-por-correo-29n/): pedirlo hasta el 19 de noviembre y enviarlo hasta el 25.
 - [Participación electoral por barrio]({BASE}elecciones/participacion-electoral-por-barrio/)
+- [Qué votó tu calle]({BASE}elecciones/que-voto-tu-calle/): busca tu dirección y mira el voto de tu sección censal desde 2004.
 - [Mapa electoral de España por sección censal]({BASE}elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios]({BASE}elecciones/voto-y-renta-por-barrios/)
 
@@ -2243,6 +2306,7 @@ def franja_portada():
             '<a href="elecciones/censo-electoral-2026/">censo electoral de 2026</a> · '
             '<a href="elecciones/participacion-electoral-por-barrio/">participación electoral por barrio</a> · '
             '<a href="elecciones/voto-y-renta-por-barrios/">voto y renta por barrios</a> · '
+            '<a href="elecciones/que-voto-tu-calle/">qué votó tu calle</a> · '
             '<a href="elecciones/mapa-electoral-seccion-censal/">mapa electoral por sección censal</a> · '
             '<a href="abstencion.html">participación por sección censal en Cataluña</a> · '
             '<a href="atlas/">anomalías electorales municipio a municipio</a></p></section>')
@@ -2254,7 +2318,8 @@ GUIAS = [('elecciones-29n-2026/', 'img/elecciones/congreso-urna-calendario-29n.j
          ('participacion-electoral-por-barrio/', 'img/elecciones/colegio-electoral-cola-y-bloques.jpg', 'Participación', 'Dónde se vota más y dónde menos, barrio a barrio'),
          ('censo-electoral-2026/', 'img/elecciones/listas-censo-sobre-pasaporte.jpg', 'Censo', 'Cuántos electores votan el 29N en cada provincia y municipio'),
          ('voto-y-renta-por-barrios/', 'img/elecciones/urna-entre-bloques-y-chalets.jpg', 'Renta', 'Cómo vota cada barrio según su renta'),
-         ('mapa-electoral-seccion-censal/', 'img/elecciones/plano-secciones-lupa.jpg', 'Sección censal', 'El mapa electoral calle a calle: qué es una sección censal')]
+         ('mapa-electoral-seccion-censal/', 'img/elecciones/plano-secciones-lupa.jpg', 'Sección censal', 'El mapa electoral calle a calle: qué es una sección censal'),
+         ('que-voto-tu-calle/', 'img/elecciones/barrios-generica.jpg', 'Tu calle', 'Qué votó tu calle: busca tu dirección')]
 
 
 # texto alternativo de las ilustraciones de las guías (describen la imagen, no repiten el titular)
@@ -2263,7 +2328,8 @@ ALT_GUIAS = {'elecciones-29n-2026/': 'Urna ante el Congreso de los Diputados con
              'participacion-electoral-por-barrio/': 'Cola de votantes ante un colegio electoral entre bloques de pisos',
              'censo-electoral-2026/': 'Listas del censo electoral, un sobre de votación y un pasaporte',
              'voto-y-renta-por-barrios/': 'Urna entre bloques de pisos y chalets',
-             'mapa-electoral-seccion-censal/': 'Plano de secciones censales bajo una lupa'}
+             'mapa-electoral-seccion-censal/': 'Plano de secciones censales bajo una lupa',
+             'que-voto-tu-calle/': 'Bloques de pisos, casas bajas y una urna en una calle de barrio'}
 
 
 def guias_portada():
@@ -2568,7 +2634,7 @@ def main():
         ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_mesa(), tema_correo(), tema_resultados(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_mesa(), tema_correo(), tema_calle(), tema_resultados(resumen)]
     pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
     for ruta, html in pags + redirecciones():

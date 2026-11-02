@@ -11,6 +11,7 @@
 - [Mesa electoral del 29N](https://mapaelectoral.es/elecciones/mesa-electoral-29n/): sorteo del 31 de octubre al 4 de noviembre, excusas, horario y dieta de 75 euros; cada ficha de municipio dice cuántas mesas tiene.
 - [Voto por correo para el 29N](https://mapaelectoral.es/elecciones/voto-por-correo-29n/): pedirlo hasta el 19 de noviembre y enviarlo hasta el 25.
 - [Participación electoral por barrio](https://mapaelectoral.es/elecciones/participacion-electoral-por-barrio/)
+- [Qué votó tu calle](https://mapaelectoral.es/elecciones/que-voto-tu-calle/): busca tu dirección y mira el voto de tu sección censal desde 2004.
 - [Mapa electoral de España por sección censal](https://mapaelectoral.es/elecciones/mapa-electoral-seccion-censal/)
 - [Voto y renta por barrios](https://mapaelectoral.es/elecciones/voto-y-renta-por-barrios/)
 

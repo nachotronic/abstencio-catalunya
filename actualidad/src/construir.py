@@ -596,6 +596,7 @@ PIEZAS = [
     ),
     dict(
         slug='como-voto-tu-calle', fecha='2026-10-15',
+        actualizado='2026-11-02 14:55',
         titulo='Cómo votó tu calle: una de cada cuatro secciones censales eligió en 2023 un ganador distinto al de su municipio', serie='29n',
         descripcion='Guía para buscar tu dirección en el mapa electoral calle a calle: qué es una sección censal, qué dice la ficha de cada una (voto, participación, renta, edad) y qué no dice.',
         compara='El partido más votado en las generales de 2023 en cada una de las 30.587 secciones censales de municipios con más de una sección, frente al partido más votado en su municipio.',
@@ -615,6 +616,7 @@ PIEZAS = [
     ),
     dict(
         slug='calle-que-parte-el-voto', fecha='2026-10-15',
+        actualizado='2026-11-02 14:55',
         titulo='La calle que parte el voto: el PP sacó el 55,9% a un lado de la avenida de Francia, en València, y el 16,4% al otro', serie='29n',
         descripcion='En nueve grandes ciudades, una de cada cinco parejas de secciones censales vecinas eligió un ganador distinto en 2023. Seis calles donde se ve, de El Palo a la Diagonal, y un patrón de renta.',
         compara='Las 16.154 parejas de secciones censales contiguas (al menos 80 metros de límite común y 400 electores cada una) de Madrid, Barcelona, València, Sevilla, Zaragoza, Málaga, Murcia, Palma y Bilbao en las generales de 2023, y su renta por unidad de consumo de 2023.',
@@ -1788,6 +1790,7 @@ PIEZAS = [
     ),
     dict(
         slug='calle-que-parte-barcelona', fecha='2026-10-25',
+        actualizado='2026-11-02 14:55',
         foto=dict(src='img/actualidad/fotos/calle-que-parte-barcelona.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una gran avenida de Barcelona con fachadas modernistas a cada lado y el cielo partido en dos colores: un collage.'),
         titulo='Las dos calles que parten Barcelona: la Diagonal en el voto a la derecha, la Meridiana en el independentismo', serie='29n',
@@ -2402,6 +2405,7 @@ PIEZAS += [
     ),
     dict(
         slug='calle-que-parte-madrid', fecha='2026-10-21',
+        actualizado='2026-11-02 14:55',
         titulo='A cinco semanas del 29N: en la calle de los Hermanos García Noblejas, en Madrid, PP y PSOE se cambian de acera 12 veces, y el PP siempre gana en el lado con más renta', serie='29n',
         descripcion='En Madrid, una de cada cinco parejas de secciones censales vecinas eligió un ganador distinto en 2023. Las calles donde más se repite son Hermanos García Noblejas, General Ricardos, la avenida de las Águilas y Hacienda de Pavones. En Sinesio Delgado, entre Tetuán y Fuencarral, el salto llega a 27 puntos.',
         compara='Las 6.112 parejas de secciones censales contiguas de la ciudad de Madrid (al menos 80 metros de límite común y 400 electores cada una) en las generales de 2023, con la calle que las separa y su renta por unidad de consumo de 2023.',
