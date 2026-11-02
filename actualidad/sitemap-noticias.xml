@@ -17,19 +17,19 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-10-30</news:publication_date>
-      <news:title>Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/eeuu-noche-electoral-guia-horarios/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-01</news:publication_date>
       <news:title>De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-02</news:publication_date>
+      <news:title>El PSOE subía en las tres encuestas hechas antes del choque de Urda y baja en las tres hechas después</news:title>
     </news:news>
   </url>
 </urlset>

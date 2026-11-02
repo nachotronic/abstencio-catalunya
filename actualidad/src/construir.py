@@ -3164,6 +3164,7 @@ ANTETITULOS = {
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'encuestas-semana-29n': 'Las encuestas, semana a semana',
+    'encuestas-antes-despues-urda-29n': 'Las encuestas, semana a semana',
     'listas-29n-quien-encabeza': 'Quién sale y quién no',
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'cuatro-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
@@ -3721,8 +3722,35 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='encuestas-antes-despues-urda-29n', fecha='2026-11-02',
+        titulo='El PSOE subía en las tres encuestas hechas antes del choque de Urda y baja en las tres hechas después', serie='29n', figura=0,
+        descripcion='En las encuestas con trabajo de campo anterior al 28 de octubre, el PSOE ganaba entre ocho décimas y dos puntos respecto a la anterior de la misma empresa; en las tres hechas después, pierde entre cuatro décimas y punto y medio. El PP hace el camino contrario. Nuestro modelo da hoy a PP y Vox 198 escaños.',
+        compara='Las seis encuestas nacionales publicadas entre el 26 de octubre y el 1 de noviembre de 2026 que tienen una entrega reciente de la misma empresa, separadas según su trabajo de campo fuera anterior o posterior al choque de trenes de Urda del 28 de octubre, y la mediana semanal de las encuestas desde finales de agosto.',
+        limites='Que los cambios coincidan en el tiempo con el accidente no prueba que se deban a él. Comparar una encuesta con la anterior de la misma empresa no elimina el error de muestreo: varios cambios están dentro del margen de error. El ElectoPanel empezó su trabajo de campo el mismo 28 de octubre y SocioMétrica acumula entrevistas desde septiembre. Las cifras de la encuesta de Sigma Dos del 1 de noviembre son las que recoge Electográfica. La mediana usa la última encuesta de cada empresa en las tres semanas anteriores, sin ponderar, e incluye el CIS. Los sondeos internos de los partidos no se cuentan.',
+        calculo='Diferencia, en puntos, entre la estimación de PP, PSOE y Vox en cada encuesta de la semana y en la anterior de la misma empresa. En SocioMétrica, el PP sin UPN. Mediana semanal: la de la página de encuestas, tomada cada domingo y recalculada con los datos del 2 de noviembre.',
+        fuentes=[('https://www.articulo14.es/politica/encuesta-articulo14-el-psoe-se-coloca-6-escanos-del-pp-que-mantiene-una-mayoria-de-190-escanos-con-vox-20261026.html', 'Winston para Artículo14 (26-10-2026)'),
+                 ('https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3', 'Sigma Dos para El Mundo (26-10-2026)'),
+                 ('https://www.larazon.es/espana/18-votantes-socialistas-apoyan-hoy-vox_202610266adea62a3eef771e1ac8d43d.html', 'NC Report para La Razón (26-10-2026)'),
+                 ('https://electomania.es/electopanel-1-nov-el-psoe-baja-y-vuelve-a-minimos/', 'ElectoPanel de Electomanía (1-11-2026)'),
+                 ('https://www.electografica.com/2026/11/encuesta-sigmados-261101.html', 'Electográfica, encuesta de Sigma Dos para El Mundo (1-11-2026)'),
+                 ('https://www.elespanol.com/espana/politica/20261101/primer-sondeo-tragedia-pp-vox-amplian-ventaja-sanchez-sigue-cayendo-pese-vaciar-frente-amplio/1003744442810_0.html', 'SocioMétrica para El Español (1-11-2026)'),
+                 ('https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm', 'Sondaxe para La Voz de Galicia (1-11-2026)'),
+                 ('https://theobjective.com/espana/2026-11-01/sondeo-vox-71-escanos/', 'The Objective, sondeo atribuido a Vox (1-11-2026)'),
+                 ('https://democrata.es/encuestas/elecciones-generales/encuesta-elecciones-generales-sondeo-interno-vox-anterior-urda-situa-psoe-por-delante-pp-pero-mantiene-mayoria-derecha', 'Demócrata, Vox desmiente el sondeo (1-11-2026)'),
+                 ('https://maldita.es/desinfo/20261028/preguntas-respuestas-accidente-tren-urda/', 'Maldita, preguntas y respuestas sobre el accidente de Urda (28-10-2026)'),
+                 ('https://rtvc.es/ultima-hora-accidente-trenes-ave-yryo-sevilla-madrid-toledo-directo-heridos-30-octubre-2026/', 'RTVC, balance del accidente de Urda (30-10-2026)'),
+                 ('https://www.democrata.es/politica/pp-exige-dimision-oscar-puente-accidente-tren-urda/', 'Demócrata, el PP exige la dimisión de Óscar Puente'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
+    ),
+]
+
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
+    'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
     'puente-valladolid-segundo-escano-29n': '2026-10-29',
     'ley-nietos-voto-exterior-29n': '2026-10-29',
