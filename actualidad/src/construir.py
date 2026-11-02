@@ -1717,7 +1717,7 @@ PIEZAS = [
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
     dict(
-        slug='derbi-vasco-bilbao-donostia-29n', fecha='2026-11-01',
+        slug='derbi-vasco-bilbao-donostia-29n', fecha='2026-11-01', actualizado='2026-11-02 08:20',
         titulo='El derbi en las urnas: el PNV bajó en 414 de las 415 secciones de Bilbao y Donostia, y el PSOE ganó en las dos ciudades', serie='29n', figura=0,
         descripcion='El día del Athletic-Real Sociedad, Bilbao y Donostia sección a sección. En 2023, el PSOE fue primero en las dos. En Bilbao manda la renta: el PSOE en los barrios pobres, el PNV y el PP en los ricos. En Donostia, EH Bildu gana en una de cada cuatro secciones.',
         compara='El voto en las generales de 2004 a 2023 en Bilbao y Donostia, por municipio y por sección censal, y el voto de 2023 por quintil de renta de la sección dentro de cada ciudad.',
@@ -3106,20 +3106,21 @@ PIEZAS += [
 PIEZAS += [
     dict(
         slug='israel-pactos-escanos-knesset', fecha='2026-10-28',
-        actualizado='2026-10-29 19:55',
+        actualizado='2026-11-02 09:15',
         titulo='Con todo el voto contado, Netanyahu solo llega a 61 escaños si suma a Ra\'am, el partido islamista árabe', serie='internacional',
         descripcion='Con los 5,67 millones de votos contados, los cinco partidos del Gobierno saliente suman 53 de los 120 escaños de la Knesset y los cuatro de la oposición sionista, 48. Los dos partidos árabes tienen 19, y Ra\'am, con 8, es el único socio con el que Netanyahu llega a 61. Estas son las combinaciones posibles, y el mapa del voto por localidad.',
-        compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con todo el voto contado, a falta de la proclamación oficial, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
-        limites='Recuento completo, dobles sobres incluidos, pero aún sin la proclamación oficial del Comité, que puede introducir pequeñas correcciones. Los votos por localidad del mapa no incluyen los dobles sobres, que no se asignan a ninguna localidad. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación. El mapa sitúa cada localidad en el centro de su término aproximado, con un círculo proporcional a los votos contados. La comparación con 2022 por distrito pondera cada localidad por la parte de colegios ya escrutada en 2026; no separa los cambios de participación de los cambios de voto. Distritos según la lista oficial de localidades de data.gov.il; Cisjordania son solo los asentamientos israelíes, donde no votan los palestinos.',
+        compara='El reparto provisional de escaños de las legislativas de Israel del 27 de octubre de 2026, con el resultado final, las combinaciones de partidos que llegan a la mayoría de 61 la evolución de los bloques durante el recuento y el voto por localidad y distrito, con el voto a los partidos árabes frente a 2022.',
+        limites='Resultado final del Comité Central Electoral, dobles sobres incluidos; el Comité lo entrega al presidente el 4 de noviembre. Los votos por localidad del mapa no incluyen los dobles sobres, que no se asignan a ninguna localidad. Las cifras proceden del Comité Central Electoral, pero se han tomado de la prensa israelí porque la web del Comité no es accesible desde fuera de Israel. Las coaliciones del gráfico son sumas aritméticas, no escenarios probables: las posiciones de cada partido se citan en el texto. Los bloques son los declarados antes de la votación. El mapa sitúa cada localidad en el centro de su término aproximado, con un círculo proporcional a los votos contados. La comparación con 2022 por distrito pondera cada localidad por la parte de colegios ya escrutada en 2026; no separa los cambios de participación de los cambios de voto. Distritos según la lista oficial de localidades de data.gov.il; Cisjordania son solo los asentamientos israelíes, donde no votan los palestinos.',
         fuentes=[('https://www.europapress.es/internacional/noticia-partido-netanyahu-acusa-fuerzas-arabes-robar-elecciones-pide-investigacion-oficial-20261028172856.html', 'Europa Press, el Likud acusa a los partidos árabes de «robar» las elecciones (28-10-2026)'),
                  ('https://www.nytimes.com/2026/10/29/world/middleeast/netanyahu-fear-election-votes.html', 'The New York Times, How Netanyahu Used Fear, Again, to Win More Votes Than Anyone Else (29-10-2026)'),
                  ('https://www.nytimes.com/2026/10/29/world/middleeast/israel-election-coalition-scenarios.html', 'The New York Times, With No Clear Winner, How Could Israel Get a Prime Minister? (29-10-2026)'),
                  ('https://www.nytimes.com/2026/10/28/world/middleeast/israel-election-arab-parties.html', 'The New York Times, Surprise Showing by Arab Parties in Israeli Vote Puts Them in Spotlight (28-10-2026)'),
                  ('https://www.nytimes.com/2026/10/28/world/middleeast/israel-election-results-eisenkot.html', 'The New York Times, Eisenkot, Netanyahu’s Main Rival in Israel’s Election, Faces a Dilemma (28-10-2026)'),
                  ('https://www.nytimes.com/live/2026/10/27/world/israel-elections/netanyahu-accuses-arab-citizens-of-trying-to-steal-the-elections-in-racial-appeal-to-voters', 'The New York Times, Netanyahu accuses Arab citizens of ‘trying to steal the elections’ in racial appeal to voters (27-10-2026)'),
+                 ('https://www.timesofisrael.com/liveblog_entry/central-elections-committee-publishes-final-election-results-knesset-to-be-sworn-in-nov-10/', 'The Times of Israel, el Comité Central Electoral publica los resultados finales (29-10-2026)'),
                  ('https://www.kikar.co.il/political-news/israel-elections-voting-turnout', 'Kikar HaShabbat, recuento oficial del Comité Central Electoral de Israel a las 4.03, 4.47 y 5.57 del 28-10-2026 (votos por partido)'),
                  ('https://www.israelnationalnews.com/news/435272', 'Arutz Sheva, reparto provisional de escaños con el 37,4% de los votos contados (28-10-2026)'),
-                 ('https://www.ynet.co.il/news/elections2026', 'Ynet, calculadora de escaños con el recuento oficial a las 14.34 del 28-10-2026 y a las 19.57 del 29-10-2026 (votos y escaños por lista)'),
+                 ('https://www.ynet.co.il/news/elections2026', 'Ynet, calculadora de escaños con el recuento oficial a las 14.34 del 28-10-2026 y con el resultado final del 30-10-2026 (votos y escaños por lista)'),
                  ('https://www.ynet.co.il/news/blogs/article/hjvyjpc2fe', 'Ynet, reparto provisional de escaños con el 48% y el 60% escrutado (28-10-2026)'),
                  ('https://www.ynetnews.com/article/hjnatbkaml', 'Ynetnews, reparto con el 65% escrutado y declaraciones de Golan, Eisenkot y Netanyahu (28-10-2026)'),
                  ('https://www.mako.co.il/news-politics/2026_q4/liveblog-f5b5a09693081a1026.htm', 'Mako, reparto provisional de escaños con el 70% escrutado (28-10-2026, 10.52 hora de Israel)'),
@@ -3164,6 +3165,9 @@ ANTETITULOS = {
     'quien-vota-que-barrios-29n': 'Crónica del domingo',
     'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'encuestas-semana-29n': 'Las encuestas, semana a semana',
+    'encuestas-antes-despues-urda-29n': 'Las encuestas, semana a semana',
+    'banez-huelva-pp-29n': 'Fátima Báñez (1967-2026)',
+    'bulgaria-yotova-gyurov-mapa-municipios': 'Bulgaria, municipio a municipio',
     'listas-29n-quien-encabeza': 'Quién sale y quién no',
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'cuatro-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
@@ -3665,7 +3669,7 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-01 12:12',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-02 08:20',
         titulo='Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan', serie='internacional',
         descripcion='Estados Unidos elige el 3 de noviembre a los 435 miembros de la Cámara de Representantes. En 2024 ganaron los republicanos, 220 a 215. Nueve estados han cambiado sus distritos, la mayoría a petición de Trump, con mapas pensados para darle nueve escaños netos más. En el resto del país, a los demócratas les bastaría un giro de 4 puntos; las encuestas apuntan a unos 11.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
@@ -3700,13 +3704,14 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-02 08:20',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
         limites='En los estados con dos husos horarios se toma la hora en que cierra la mayor parte del estado. En Dakota del Norte las fuentes no coinciden en algunos colegios. Las calificaciones son las de The Cook Political Report a 30 de octubre y pueden cambiar antes del martes. La ventaja de 2024 en los distritos que han cambiado de límites no es comparable.',
         fuentes=[('https://www.270towin.com/poll-closing-times', '270toWin, horas de cierre de los colegios en 2026'),
                  ('https://www.thegreenpapers.com/G26/closing.phtml', 'The Green Papers, horas de cierre de los colegios en 2026'),
+                 ('https://www.sos.la.gov/electionsandvoting/getelectioninformation/reviewtypesofelections', 'Secretaría de Estado de Luisiana, tipos de elección (primaria abierta a la Cámara el 3-11-2026 y segunda vuelta el 12-12-2026)'),
                  ('https://www.cookpolitical.com/ratings/house-race-ratings', 'The Cook Political Report, calificaciones de la Cámara (30-10-2026)'),
                  ('https://www.cookpolitical.com/ratings/senate-race-ratings', 'The Cook Political Report, calificaciones del Senado (30-10-2026)'),
                  ('https://election.lab.ufl.edu/', 'Election Lab de la Universidad de Florida, voto anticipado (1-11-2026)'),
@@ -3721,8 +3726,84 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='encuestas-antes-despues-urda-29n', fecha='2026-11-02', actualizado='2026-11-02 08:20',
+        titulo='Tres de tres: el PSOE baja en todas las encuestas hechas tras el choque de Urda', serie='29n', figura=0,
+        foto=dict(src='img/actualidad/fotos/encuestas-antes-despues-urda-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Dos montones de cuestionarios separados por un desgarro, uno sobre rojo y otro sobre azul bajo una lupa, junto a una urna: un collage.'),
+        descripcion='En las encuestas con trabajo de campo anterior al 28 de octubre, el PSOE ganaba entre ocho décimas y algo más de dos puntos respecto a la anterior de la misma empresa; en las tres hechas después, pierde entre cuatro décimas y punto y medio. El PP hace el camino contrario. Nuestro modelo da hoy a PP y Vox 198 escaños.',
+        compara='Las seis encuestas nacionales publicadas entre el 26 de octubre y el 1 de noviembre de 2026 que tienen una entrega reciente de la misma empresa, separadas según su trabajo de campo fuera anterior o posterior al choque de trenes de Urda del 28 de octubre, y la mediana semanal de las encuestas desde finales de agosto.',
+        limites='Que los cambios coincidan en el tiempo con el accidente no prueba que se deban a él. Comparar una encuesta con la anterior de la misma empresa no elimina el error de muestreo: varios cambios están dentro del margen de error. El ElectoPanel empezó su trabajo de campo el mismo 28 de octubre y SocioMétrica acumula entrevistas desde septiembre. Las cifras de la encuesta de Sigma Dos del 1 de noviembre son las que recoge Electográfica. La mediana usa la última encuesta de cada empresa en las tres semanas anteriores, sin ponderar, e incluye el CIS. Los sondeos internos de los partidos no se cuentan.',
+        calculo='Diferencia, en puntos, entre la estimación de PP, PSOE y Vox en cada encuesta de la semana y en la anterior de la misma empresa. En SocioMétrica, el PP sin UPN. Mediana semanal: la de la página de encuestas, tomada cada domingo y recalculada con los datos del 2 de noviembre.',
+        fuentes=[('https://www.articulo14.es/politica/encuesta-articulo14-el-psoe-se-coloca-6-escanos-del-pp-que-mantiene-una-mayoria-de-190-escanos-con-vox-20261026.html', 'Winston para Artículo14 (26-10-2026)'),
+                 ('https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3', 'Sigma Dos para El Mundo (26-10-2026)'),
+                 ('https://www.larazon.es/espana/18-votantes-socialistas-apoyan-hoy-vox_202610266adea62a3eef771e1ac8d43d.html', 'NC Report para La Razón (26-10-2026)'),
+                 ('https://electomania.es/electopanel-1-nov-el-psoe-baja-y-vuelve-a-minimos/', 'ElectoPanel de Electomanía (1-11-2026)'),
+                 ('https://www.electografica.com/2026/11/encuesta-sigmados-261101.html', 'Electográfica, encuesta de Sigma Dos para El Mundo (1-11-2026)'),
+                 ('https://www.elespanol.com/espana/politica/20261101/primer-sondeo-tragedia-pp-vox-amplian-ventaja-sanchez-sigue-cayendo-pese-vaciar-frente-amplio/1003744442810_0.html', 'SocioMétrica para El Español (1-11-2026)'),
+                 ('https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm', 'Sondaxe para La Voz de Galicia (1-11-2026)'),
+                 ('https://theobjective.com/espana/2026-11-01/sondeo-vox-71-escanos/', 'The Objective, sondeo atribuido a Vox (1-11-2026)'),
+                 ('https://democrata.es/encuestas/elecciones-generales/encuesta-elecciones-generales-sondeo-interno-vox-anterior-urda-situa-psoe-por-delante-pp-pero-mantiene-mayoria-derecha', 'Demócrata, Vox desmiente el sondeo (1-11-2026)'),
+                 ('https://maldita.es/desinfo/20261028/preguntas-respuestas-accidente-tren-urda/', 'Maldita, preguntas y respuestas sobre el accidente de Urda (28-10-2026)'),
+                 ('https://rtvc.es/ultima-hora-accidente-trenes-ave-yryo-sevilla-madrid-toledo-directo-heridos-30-octubre-2026/', 'RTVC, balance del accidente de Urda (30-10-2026)'),
+                 ('https://www.democrata.es/politica/pp-exige-dimision-oscar-puente-accidente-tren-urda/', 'Demócrata, el PP exige la dimisión de Óscar Puente'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
+    ),
+]
+
+PIEZAS += [
+    dict(
+        slug='banez-huelva-pp-29n', fecha='2026-11-02',
+        titulo='Fátima Báñez encabezó seis veces la lista del PP en Huelva: ganó la provincia una vez, y nunca en su pueblo', serie='29n',
+        descripcion='La exministra de Empleo, fallecida en el accidente de tren de Urda, fue la número uno del PP al Congreso por Huelva de 2000 a 2016. En ese tiempo el PP pasó de ganar en 9 municipios de la provincia a ganar en 17, pero solo superó al PSOE en el conjunto de Huelva en 2011. En San Juan del Puerto, donde nació, el PSOE ha ganado todas las generales.',
+        compara='El voto al PP y al PSOE en la provincia de Huelva y en San Juan del Puerto en todas las generales de 1977 a 2023, y el partido más votado en cada uno de los 79 u 80 municipios de la provincia en 2000, 2011 y 2023.',
+        limites='Los datos no permiten separar el efecto de la candidata del de la tendencia nacional del PP. Los porcentajes de los gráficos son sobre votos a candidaturas y difieren unas décimas de los oficiales sobre voto válido, que son los que se citan en el texto para 2011 y 2023. Faltan los datos municipales de 1982 de San Juan del Puerto y de otro municipio.',
+        calculo='Porcentajes: votos de cada partido entre la suma de votos a candidaturas, por municipio y para el total provincial. Municipios ganados: los que tienen al PP como lista más votada.',
+        fuentes=[INTERIOR,
+                 ('https://www.boe.es/boe/dias/2000/02/15/pdfs/A06975-07058.pdf', 'BOE, candidaturas proclamadas, generales de 2000'),
+                 ('https://www.boe.es/boe/dias/2011/10/25/pdfs/BOE-A-2011-16745.pdf', 'BOE, candidaturas proclamadas, generales de 2011'),
+                 ('https://www.boe.es/boe/dias/2016/05/31/pdfs/BOE-A-2016-5186.pdf', 'BOE, candidaturas proclamadas, generales de 2016'),
+                 ('https://www.boe.es/boe/dias/2019/04/02/pdfs/BOE-A-2019-4902.pdf', 'BOE, candidaturas proclamadas, generales de abril de 2019'),
+                 ('https://es.wikipedia.org/wiki/Circunscripci%C3%B3n_electoral_de_Huelva', 'Wikipedia, circunscripción electoral de Huelva (resultados oficiales)'),
+                 ('https://www.europapress.es/nacional/noticia-feijoo-lamenta-muerte-fatima-banez-accidente-urda-era-mujer-incansable-leal-amiga-20261029150620.html', 'Europa Press, Feijóo lamenta la muerte de Fátima Báñez'),
+                 ('https://www.democrata.es/politica/el-psoe-expresa-su-pesar-por-la-muerte-de-fatima-banez-y-destaca-su-trayectoria-publica/', 'Europa Press (en Demócrata), el PSOE expresa su pesar'),
+                 ('https://www.democrata.es/actualidad/san-juan-del-puerto-expresa-su-mas-profundo-dolor-por-la-muerte-de-la-exministra-fatima-banez/', 'Europa Press (en Demócrata), nota del Ayuntamiento de San Juan del Puerto'),
+                 ('https://www.vozpopuli.com/dolcevita/la-emotiva-carta-de-rajoy-a-fatima-banez-la-exministra-fallecida-en-el-accidente-de-tren-nunca-fue-partidaria-del-enfrentamiento-ni-la-bronca-era-inteligente-capaz-y-sobre-todo-era-buena.html', 'Vozpópuli, la carta de Rajoy a Fátima Báñez')],
+        enlaces=[],
+        lugar='Huelva',
+    ),
+]
+
+PIEZAS += [
+    dict(
+        slug='bulgaria-yotova-gyurov-mapa-municipios', fecha='2026-11-02',
+        titulo='Yotova ganó en 256 de los 265 municipios de Bulgaria; Gyurov solo se impuso en Sofía, Plovdiv, Varna y otros cinco', serie='internacional',
+        descripcion='Iliana Yotova será presidenta de Bulgaria tras ganar la segunda vuelta con el 57,6% de los votos válidos. En la primera, con los datos de cada colegio, la geografía era clara: el europeísta Andrey Gyurov ganaba en la capital, en las grandes ciudades y en el voto del extranjero, y Yotova en casi todo lo demás. En la provincia de Kardzhali solo votó el 8,6% del censo.',
+        compara='La primera vuelta de las presidenciales de Bulgaria del 25 de octubre de 2026 en los 265 municipios y las 28 provincias, a partir de las actas de los 12.719 colegios electorales, y los totales nacionales de la primera y la segunda vuelta (1 de noviembre).',
+        limites='La CIK aún no ha publicado la segunda vuelta por colegio, así que el mapa es solo de la primera. Los datos agregados no dicen quién cambió su voto entre vueltas ni por qué se votó menos en unas zonas que en otras. Los porcentajes se calculan sobre los votos válidos, incluidos los de «no apoyo a nadie», como hace la CIK. La participación por municipio es cálculo propio (votantes entre censo más inscritos el día de la votación) y da para el conjunto un 22,7%, frente al 22,98% oficial de la CIK, que usa otra base. La participación del extranjero no se calcula porque allí no hay censo previo. Los nombres de lugar se transcriben del búlgaro.',
+        calculo='Votos de cada candidato por colegio, sumados por municipio con el código EKATTE de cada localidad; votos de «no apoyo a nadie» del papel y de las máquinas de votación. Los totales cuadran con el acta nacional de la CIK salvo por 2 votos a candidatos.',
+        fuentes=[('https://results.cik.bg/', 'Comisión Electoral Central de Bulgaria (CIK), datos abiertos de la primera vuelta por colegio electoral y resultados nacionales de la segunda vuelta'),
+                 ('https://github.com/yurukov/Bulgaria-geocoding', 'Boyko Yurukov, Bulgaria-geocoding: contornos de municipios y provincias y códigos EKATTE'),
+                 ('https://www.citypopulation.de/en/bulgaria/admin/09__k%C7%8Erd%C5%BEali/', 'citypopulation.de, provincia de Kardzhali: censo de 2021 por etnia (Instituto Nacional de Estadística de Bulgaria)'),
+                 ('https://www.elespanol.com/mundo/20261102/iliana-yotova-gana-segunda-vuelta-presidencial-bulgaria-consolida-linea-prorrusa-frente-europeista-gyurov/1003744442987_0.html', 'El Español, Iliana Yotova gana la segunda vuelta presidencial en Bulgaria (2-11-2026)'),
+                 ('https://balkaninsight.com/2026/10/30/bulgarias-presidential-race-heads-to-runoff-as-russia-divides-the-two-candidates/bi/', 'Balkan Insight, Bulgaria’s Presidential Race Heads to Runoff (30-10-2026)'),
+                 ('https://www.aljazeera.com/news/2026/11/1/bulgarian-president-yotova-leads-runoff-exit-polls-show', 'Al Jazeera, con AFP, AP y Reuters: Initial results indicate victory for Iotova (1-11-2026)'),
+                 ('https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election', 'Wikipedia, 2026 Bulgarian presidential election: apoyos para la segunda vuelta y candidaturas')],
+        enlaces=[],
+        lugar='Bulgaria',
+        foto=dict(src='img/actualidad/fotos/bulgaria-yotova-gyurov-mapa-municipios.jpg', ancho=1280, alto=720, grafico=True,
+                  pie='Quién ganó en cada municipio de Bulgaria en la primera vuelta de las presidenciales.', fuente='CIK, resultados por colegio; contornos de Boyko Yurukov'),
+    ),
+]
+
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
+    'bulgaria-yotova-gyurov-mapa-municipios': '2026-11-03',
+    'banez-huelva-pp-29n': '2026-11-02',
+    'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
     'puente-valladolid-segundo-escano-29n': '2026-10-29',
     'ley-nietos-voto-exterior-29n': '2026-10-29',

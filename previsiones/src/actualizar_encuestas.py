@@ -83,6 +83,16 @@ def slug_casa(url):
     return m.group(1).replace('-', ' ').title() if m else ''
 
 
+# Erratas de Electográfica comprobadas contra la fuente original (url de Electográfica -> {sigla: voto}).
+# Se aplican sobre lo descargado, así que llegan a todos los CSV. Cada una, con la fuente que la justifica.
+# OJO: en 2026 el PP va en coalición con UPN en Navarra, y Electográfica y Wikipedia suman UPN al PP (NC Report 2-11:
+# PP 32,6 + UPN 0,4 = 33,0; escaños 138-140 + 2). Eso no es una errata: no se corrige.
+CORRECCIONES = {
+    # Hamalgama 2-11: el PP de 32,4 ya incluye a UPN (32,0 + 0,4, Vozpópuli); el UPN 0,2 aparte lo contaba dos veces
+    'https://www.electografica.com/2026/11/encuesta-hamalgama-metrica-261102.html': {'UPN': None},
+}
+
+
 def ambito(a):
     """«GALICIA (Congreso)», «GALICIA» y «GALICIA ▪ Elecciones generales ▪ Sondeo…» (2017-18) son lo mismo."""
     a = re.split(r'\s*(?:▪|\||Sondeo|Encuesta|\(Congreso\))', a)[0].strip()
@@ -120,6 +130,8 @@ def main():
     for etiqueta in ('Generales', 'Generales_CCAA'):
         rows += [dict(r, etiqueta=etiqueta) for r in map(parsea, descarga(etiqueta)) if r]
     rows = list({r['url']: r for r in rows}.values())
+    for r in rows:
+        r['voto'].update(CORRECCIONES.get(r['url'], {}))
     # ámbito España: desde 2018 (antes las entradas estaban en inglés y otro formato y no se leen bien)
     esp = [r for r in rows if r['ambito'] == 'ESPAÑA']
     infra = [dict(r, ambito=ambito(r['ambito'])) for r in rows if r['etiqueta'] == 'Generales_CCAA' and r['ambito'] != 'ESPAÑA']

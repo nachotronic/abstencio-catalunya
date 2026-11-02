@@ -56,7 +56,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -m "Encuestas: actualización automática $(date -u +%F)$([[ $nuevas == 0 ]] && echo ' (sin encuestas nuevas)')"
-          for i in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && break; sleep 10; done
+          # si otro PR ha tocado los mismos ficheros generados (index.html, la franja de encuestas), en el choque gana
+          # lo que acaba de generar este workflow; si aun así no se puede subir, el job falla en rojo en vez de dar
+          # «success» sin publicar nada (2-11-2026: la actualización de las 8:14 no se publicó por un choque en index.html)
+          subido=0
+          for i in 1 2 3; do
+            if git pull --rebase -X theirs -q origin main && git push origin HEAD:main; then subido=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          if [[ $subido == 0 ]]; then echo "::error::No se pudo subir la actualización a main"; exit 1; fi
           echo "publicado=1" >> "$GITHUB_OUTPUT"
       - name: Avisar a IndexNow
         if: steps.commit.outputs.publicado == '1'
