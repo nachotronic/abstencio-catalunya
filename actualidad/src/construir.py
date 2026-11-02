@@ -3137,11 +3137,31 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/israel-pactos-escanos-knesset.jpg', ancho=1280, alto=720, grafico=True,
                   pie='Partido más votado en cada localidad de Israel, con el recuento provisional del 29 de octubre. El tamaño de cada círculo depende de los votos contados.', fuente='Comité Central Electoral de Israel, vía Kaplan Open Source (recuento provisional)'),
     ),
+    dict(
+        slug='me-ha-tocado-mesa-electoral-29n', fecha='2026-11-02',
+        titulo='En los pueblos de menos de 100 electores, la mesa necesita a uno de cada seis vecinos; en las ciudades, a uno de cada setenta', serie='29n',
+        descripcion='Los ayuntamientos sortean hasta el 4 de noviembre a las 549.297 personas que formarán las mesas del 29N. Quien recibe la carta tiene siete días para librarse con una excusa que acepte la Junta Electoral de Zona. Si no la tiene, le toca: 75 euros de dieta, cinco horas libres el lunes y, si no se presenta, un delito.',
+        compara='Las mesas electorales de las generales de julio de 2023 y sus electores, por tamaño del municipio y por provincia, con las normas del sorteo, las excusas y las obligaciones de los miembros de mesa para el 29N.',
+        limites='Puestos por cada 1.000 electores: nueve puestos por mesa (presidente, dos vocales y seis suplentes) sobre el censo de residentes en España de 2023; no descuenta a los mayores de 70 ni a quienes no pueden presidir, así que no es la probabilidad exacta de que a alguien le toque. Las mesas del 29N pueden variar con el censo. La lista de excusas de la Junta Electoral Central no es cerrada y cada Junta de Zona decide. Las cifras de excusas de 2023 vienen de un informe de Interior citado por Maldita.es, sin desglose de aceptadas por tipo.',
+        fuentes=[('https://www.periodicodeibiza.es/noticias/elecciones-29n/2026/10/31/2740455/ayuntamientos-empiezan-sortear-desde-este-sabado-mesas-electorales-para-noviembre.html', 'Europa Press, los ayuntamientos empiezan a sortear las mesas del 29 de noviembre (31-10-2026)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica del Régimen Electoral General, artículos 26, 27, 28 y 143'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-2011-7705', 'Junta Electoral Central, Instrucción 6/2011 sobre impedimentos y excusas de los miembros de mesa (texto consolidado)'),
+                 ('https://eno.ombudsman.europa.eu/home/news/archives-2015/maincontent/la-junta-electoral-central-acept.html', 'Defensor del Pueblo, la JEC acepta su recomendación sobre quienes ya han sido miembros de mesa (14-1-2015)'),
+                 ('https://eno.ombudsman.europa.eu/home/news/archives-2016/maincontent/presencia-en-mesas-electorales.html', 'Defensor del Pueblo, presencia en mesas electorales de personas con discapacidad (16-9-2016)'),
+                 ('https://maldita.es/malditodato/20240516/motivos-exclusion-mesas-electorales-2023/', 'Maldita.es, las excusas más frecuentes para librarse de una mesa en 2023 (16-5-2024)'),
+                 ('https://www.eldebate.com/espana/andalucia/20240611/70-euros-doce-horas-trabajo-sirviendo-democracia_203995.html', 'El Debate, Marta de la Chica, 70 euros por más de doce horas de trabajo sirviendo a la democracia (11-6-2024)'),
+                 INTERIOR],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/me-ha-tocado-mesa-electoral-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Unas manos abren la carta de la designación frente a una mesa electoral vacía, con la urna y tres sillas.'),
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'me-ha-tocado-mesa-electoral-29n': 'La carta del sorteo',
     'quien-vota-barrios-renta-edad-inmigracion': 'Quién vota',
     'israel-elecciones-encuestas-knesset': 'Israel vota',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
