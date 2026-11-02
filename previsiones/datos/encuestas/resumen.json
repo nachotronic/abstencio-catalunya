@@ -1,17 +1,15 @@
 {
- "descargado": "2026-11-02T05:28Z",
+ "descargado": "2026-11-02T07:26Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1056,
+ "encuestas_espana": 1058,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-01",
-  "encuestadora": "Sondaxe",
-  "cliente": "La Voz de Galicia"
+  "publicado": "2026-11-02",
+  "encuestadora": "Target Point",
+  "cliente": "El Debate"
  },
  "siglas_sin_equivalencia": {
-  "CCa-1ºCAN": 4,
-  "CCa-1ªCAN": 4,
   "Autonómicas - CUP": 2,
   "UPC": 2,
   "D21": 2,
