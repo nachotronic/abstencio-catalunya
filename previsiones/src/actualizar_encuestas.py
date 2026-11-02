@@ -88,6 +88,8 @@ def slug_casa(url):
 CORRECCIONES = {
     # La Razón, 2-11-2026: texto e infografía dan PP 32,6 % (PP + Vox = 51,9 %; siete puntos sobre el PSOE), UPN 0,4 %
     'https://www.electografica.com/2026/11/encuesta-nc-report-261102.html': {'PP': 32.6, 'UPN': 0.4},
+    # Vozpópuli, 2-11-2026: texto y gráfico dan PP 32,0 % (PP + Vox = 51,9 %; 5,6 puntos sobre el PSOE)
+    'https://www.electografica.com/2026/11/encuesta-hamalgama-metrica-261102.html': {'PP': 32.0},
 }
 
 
