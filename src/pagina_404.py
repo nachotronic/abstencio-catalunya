@@ -42,7 +42,7 @@ def paginas_totales():
 
 NAV = [('/', 'Mapa de resultados'), ('/elecciones/', 'Por territorio'), ('/municipio/', 'Municipios'), ('/municipio/barrios/', 'Barrios'),
        ('/temas/', 'Temas'), ('/encuestas/', 'Encuestas'), ('/listas-electorales-29n/', 'Listas 29N'), ('/atlas/', 'Atlas'), ('/actualidad/', 'Actualidad'),
-       ('/actualidad/#comunidades', 'Comunidades'), ('/actualidad/#historia', 'Historia electoral'), ('/actualidad/#internacional', 'Internacional'), ('/sobre-mi.html', 'Sobre mí')]
+       ('/actualidad/#comunidades', 'Comunidades'), ('/actualidad/#historia', 'Historia electoral'), ('/internacional/', 'Internacional'), ('/sobre-mi.html', 'Sobre mí')]
 
 
 def miles(n):

@@ -62,6 +62,7 @@ NOMBRES = {
     'sobre-mi-ca.html': 'Sobre mi',
     'atlas/': 'Atlas de las anomalías electorales',
     'actualidad/': 'Actualidad',
+    'internacional/': 'Internacional',
     'generales-2026/metodologia.html': 'Metodología del mapa',
     'encuestas/': 'Encuestas elecciones generales 2026',
     'listas-electorales-29n/': 'Listas electorales del 29N',
@@ -204,7 +205,7 @@ def procesa(f):
 
 def paginas():
     yield from sorted(ROOT.glob('*.html'))
-    for d in ('atlas', 'actualidad', 'elecciones', 'municipio', 'temas', 'generales-2026', 'encuestas', 'listas-electorales-29n'):
+    for d in ('atlas', 'actualidad', 'elecciones', 'municipio', 'temas', 'generales-2026', 'encuestas', 'listas-electorales-29n', 'internacional'):
         yield from sorted((ROOT / d).rglob('*.html'))
 
 

@@ -175,7 +175,7 @@ def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atla
     menu = [('resultados', f'{raiz}{GENERALES}', 'Mapa de resultados'), ('territorio', f'{raiz}elecciones/', 'Por territorio'), ('municipios', f'{raiz}municipio/', 'Municipios'), ('barrios', f'{raiz}municipio/barrios/', 'Barrios'), ('temas', f'{raiz}temas/', 'Temas'), ('encuestas', f'{raiz}encuestas/', 'Encuestas'), ('listas', f'{raiz}listas-electorales-29n/', 'Listas 29N'),
             ('atlas', f'{rel}index.html', 'Atlas'),
             ('actualidad', f'{raiz}actualidad/', 'Actualidad'),
-            ('comunidades', f'{raiz}actualidad/#comunidades', 'Comunidades'), ('historia', f'{raiz}actualidad/#historia', 'Historia electoral'), ('internacional', f'{raiz}actualidad/#internacional', 'Internacional'),
+            ('comunidades', f'{raiz}actualidad/#comunidades', 'Comunidades'), ('historia', f'{raiz}actualidad/#historia', 'Historia electoral'), ('internacional', f'{raiz}internacional/', 'Internacional'),
             ('sobre', f'{raiz}sobre-mi.html', 'Sobre mí')]
     nav = (f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{raiz}">{SITIO}</a>' +
            ''.join(f'<a href="{h}"{" aria-current=\"page\"" if k == actual else ""}>{t}</a>' for k, h, t in menu) + '</nav>')

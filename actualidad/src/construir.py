@@ -3380,7 +3380,7 @@ def nav(prefijo, actual):
     items = [('', 'Mapa de resultados'), ('elecciones/', 'Por territorio'), ('municipio/', 'Municipios'), ('municipio/barrios/', 'Barrios'), ('temas/', 'Temas'), ('encuestas/', 'Encuestas'), ('listas-electorales-29n/', 'Listas 29N'),
              ('atlas/index.html', 'Atlas'), ('actualidad/index.html', 'Actualidad'),
              ('actualidad/#comunidades', 'Comunidades'), ('actualidad/#historia', 'Historia electoral'),
-             ('actualidad/#internacional', 'Internacional'), ('sobre-mi.html', 'Sobre mí')]
+             ('internacional/', 'Internacional'), ('sobre-mi.html', 'Sobre mí')]   # sección propia (Nacho, 2-11-2026)
     out = f'<nav class="site" aria-label="Secciones del sitio"><a class="marca" href="{prefijo}">Mapa Electoral</a>'
     for href, txt in items:
         cur = ' aria-current="page"' if txt == actual else ''
@@ -3478,6 +3478,9 @@ ENCUESTAS_SIGUE = ('<li><a href="../../encuestas/"><span class="kicker">Encuesta
                    '<b>Simulador de pactos del 29N: ¿quién puede gobernar? Decide qué vota cada partido</b></a></li>')
 
 
+TODAS_INTL = '<li><a href="../../internacional/"><span class="kicker">Internacional</span><b>Todas las elecciones en el resto del mundo</b></a></li>'
+
+
 def pieza(p, todas):
     src = open(os.path.join(SRC, p['slug'] + '.html'), encoding='utf-8').read()
     estilos = ''.join(re.findall(r'<style>.*?</style>', src, re.S))
@@ -3488,7 +3491,9 @@ def pieza(p, todas):
     imagen = f"{BASE}/img/compartir/actualidad-{p['slug']}.jpg"
     f = fecha_larga(p['fecha'])
 
-    main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker"><a href="../index.html">Actualidad</a> · {antetitulo(p)}{"" if antetitulo(p) == p["lugar"] else " · " + p["lugar"]}</p>\n', main)
+    intl = p['serie'] == 'internacional'   # las internacionales cuelgan de /internacional/, aunque su dirección siga en /actualidad/ (Nacho, 2-11-2026)
+    seccion = '<a href="../../internacional/">Internacional</a>' if intl else '<a href="../index.html">Actualidad</a>'
+    main = re.sub(r'<span class="draft">.*?</span>\n?', f'<p class="kicker">{seccion} · {antetitulo(p)}{"" if antetitulo(p) == p["lugar"] else " · " + p["lugar"]}</p>\n', main)
     main = re.sub(r'<div class="byline">.*?</div>',
                   f'<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · <time datetime="{p["fecha"]}">{f}</time>'
                   + (f' · Actualizado el <time datetime="{fecha_iso(p["actualizado"])}">{fecha_larga(p["actualizado"])}</time>' if p.get('actualizado', p['fecha']) != p['fecha'] else '')
@@ -3527,8 +3532,8 @@ def pieza(p, todas):
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
                     f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in ventana)
     if len(serie) > len(ventana):
-        lista += f'<li class="todas"><a href="../index.html#{p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
-    otras = [q for q in todas if q['serie'] != p['serie']][::-1][:3]
+        lista += f'<li class="todas"><a href="{"../../internacional/" if intl else "../index.html#" + p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
+    otras = [q for q in todas if q['serie'] != p['serie'] and (intl or q['serie'] != 'internacional')][::-1][:3]   # las piezas españolas no recomiendan las internacionales
     sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola
         sigue = ENCUESTAS_SIGUE + sigue
@@ -3550,7 +3555,7 @@ def pieza(p, todas):
 </dl>
 <h2>Serie «{SERIES[p['serie']]}»: {len(serie)} piezas</h2><ol class="serie">{lista}</ol>
 {mas}
-<h2>Sigue leyendo</h2><ul class="sigue">{sigue}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue">{sigue}{TODAS_INTL if intl else ''}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>{POLITICA}</footer>"""
     main = re.sub(r'<div class="foot">.*?</div>', ficha, main, flags=re.S)
     if '<dl class="ficha">' not in main:   # piezas sin bloque «Método y fuentes»: al menos, el enlace a la metodología general
@@ -3562,7 +3567,7 @@ def pieza(p, todas):
               'image': ([f"{BASE}/{principal['src']}"] if principal else []) + [imagen],   # la imagen principal (1280x720) primero, para Discover
               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html', 'sameAs': ['https://x.com/nachotronic', 'https://github.com/nachotronic']},
               'publisher': MEDIO,
-              'isPartOf': {'@type': 'CollectionPage', 'name': 'Actualidad', 'url': BASE + '/actualidad/'},
+              'isPartOf': {'@type': 'CollectionPage', 'name': 'Internacional', 'url': BASE + '/internacional/'} if intl else {'@type': 'CollectionPage', 'name': 'Actualidad', 'url': BASE + '/actualidad/'},
               'isAccessibleForFree': True, 'license': 'https://creativecommons.org/licenses/by/4.0/'}
     # «Preguntas rápidas» (comunidades/faq.py): además de NewsArticle, FAQPage con las mismas preguntas y respuestas
     qs = re.findall(r'<h3>(.*?)</h3><p>(.*?)</p>', re.search(r'<div class="faq">(.*?)</div>', main, re.S).group(1)) if '<div class="faq">' in main else []
@@ -3575,7 +3580,7 @@ def pieza(p, todas):
     if p.get('titulo_seo'):   # el título SEO solo va en <title>; en redes, el titular
         cab = cab.replace(f'<meta property="og:title" content="{html.escape(p["titulo_seo"])}">', f'<meta property="og:title" content="{html.escape(p["titulo"])}">', 1)
     out = (cab + estilos + CSS_SITIO + '\n</head>\n<body>\n'
-           + nav('../../', 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
+           + nav('../../', 'Internacional' if intl else 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
     if p.get('idioma') == 'ca':
         out = en_catala(out, p)
     d = os.path.join(RAIZ, 'actualidad', p['slug'])
@@ -3589,6 +3594,8 @@ def sin_index(html):
 
 
 def indice(todas, sitemap=None):
+    todas_es = todas
+    todas = [p for p in todas if p['serie'] != 'internacional']   # las internacionales tienen su propia página (Nacho, 2-11-2026)
     url = BASE + '/actualidad/'
     desc = 'Piezas cortas que cruzan la actualidad del día con los datos electorales por sección censal. Cada cifra, con su fuente.'
     jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Actualidad', 'url': url, 'description': desc,
@@ -3630,23 +3637,49 @@ a{color:var(--fg)}
 </style>"""
     out = (cabecera('Actualidad', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Actualidad')
-           + f'\n<main><p class="kicker">Mapa Electoral</p><h1>Actualidad</h1><p>{desc} Para las piezas de fondo, el <a href="../atlas/index.html">Atlas de las anomalías electorales</a>; para seguir la campaña, <a href="../encuestas/">todas las encuestas de las elecciones generales</a>, actualizadas cada día.</p>'
+           + f'\n<main><p class="kicker">Mapa Electoral</p><h1>Actualidad</h1><p>{desc} Para las piezas de fondo, el <a href="../atlas/index.html">Atlas de las anomalías electorales</a>; para seguir la campaña, <a href="../encuestas/">todas las encuestas de las elecciones generales</a>, actualizadas cada día. Las elecciones de otros países están en <a href="../internacional/">Internacional</a>.</p>'
            + f'{items}<footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
     open(os.path.join(RAIZ, 'actualidad', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
     urls = [f'  <url><loc>{url}</loc><lastmod>{max(p["fecha"] for p in todas)}</lastmod></url>']
     urls.append(f'  <url><loc>{url}metodologia.html</loc><lastmod>{METODO_ACTUALIZADO}</lastmod></url>')
-    urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p.get("actualizado", p["fecha"])[:10]}</lastmod></url>' for p in (sitemap or todas)]
+    intl = [p for p in todas_es if p['serie'] == 'internacional']
+    if intl:
+        urls.append(f'  <url><loc>{BASE}/internacional/</loc><lastmod>{max(p.get("actualizado", p["fecha"])[:10] for p in intl)}</lastmod></url>')
+    urls += [f'  <url><loc>{url}{p["slug"]}/</loc><lastmod>{p.get("actualizado", p["fecha"])[:10]}</lastmod></url>' for p in (sitemap or todas_es)]
     open(os.path.join(RAIZ, 'actualidad', 'sitemap.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n')
     # Google News: solo piezas de los dos últimos días (norma de Google), como atlas/sitemap-noticias.xml
     lim = (datetime.date.today() - datetime.timedelta(days=2)).isoformat()
     noticias = ''.join(f'  <url>\n    <loc>{url}{p["slug"]}/</loc>\n    <news:news>\n      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>\n'
                        f'      <news:publication_date>{p["fecha"]}</news:publication_date>\n      <news:title>{html.escape(p["titulo"])}</news:title>\n    </news:news>\n  </url>\n'
-                       for p in todas if p['fecha'] >= lim)
+                       for p in todas_es if p['fecha'] >= lim)
     open(os.path.join(RAIZ, 'actualidad', 'sitemap-noticias.xml'), 'w', encoding='utf-8').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + noticias + '</urlset>\n')
-    feed(todas)
+    feed(todas_es)
+    internacional(todas_es, css, imagen_tarjeta)
+
+
+def internacional(todas, css, imagen_tarjeta):
+    """Página /internacional/: las elecciones de otros países, aparte de Actualidad (Nacho, 2-11-2026).
+    Las piezas siguen en /actualidad/<slug>/ para no romper enlaces ni lo que Google ya tiene indexado."""
+    qs = sorted([q for q in todas if q['serie'] == 'internacional'][::-1], key=lambda q: q['fecha'], reverse=True)
+    if not qs:
+        return
+    url = BASE + '/internacional/'
+    desc = 'Elecciones en el resto del mundo contadas con mapas: quién ganó en cada estado, distrito o municipio, y qué cambió. Cada cifra, con su fuente oficial.'
+    jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Internacional', 'url': url, 'description': desc, 'inLanguage': 'es',
+              'hasPart': [{'@type': 'AnalysisNewsArticle', 'headline': q['titulo'], 'url': f"{BASE}/actualidad/{q['slug']}/", 'datePublished': q['fecha']} for q in qs]}
+    tarjetas = ''.join(f'<li><a href="../actualidad/{q["slug"]}/">{imagen_tarjeta(q)}<span class="txt"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span>'
+                       f'<b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>' for q in qs)
+    out = (cabecera('Internacional: elecciones en el resto del mundo', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld).replace('<meta property="og:type" content="article">', '<meta property="og:type" content="website">')
+           + css + CSS_SITIO + '\n</head>\n<body>\n'
+           + nav('../', 'Internacional')
+           + f'\n<main><p class="kicker">Mapa Electoral</p><h1 data-miga="Internacional">Internacional</h1><p>{desc} Las elecciones españolas, en <a href="../actualidad/">Actualidad</a>.</p>'
+           + f'<ul class="sigue tarjetas">{tarjetas}</ul><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
+           + POLITICA + '</footer></main>\n</body>\n</html>\n')
+    os.makedirs(os.path.join(RAIZ, 'internacional'), exist_ok=True)
+    open(os.path.join(RAIZ, 'internacional', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
 
 
 def feed(todas, n=40):
@@ -3867,7 +3900,7 @@ def franja_portada(todas, pre=''):
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
-            f'<li class="todas"><a href="{pre}actualidad/"><b>Todas las piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES)}</span></a></li></ul>'
+            f'<li class="todas"><a href="{pre}actualidad/"><b>Todas las piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES and k != 'internacional')}</span></a></li></ul>'
             '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
@@ -3880,15 +3913,16 @@ FRANJAS = (('internacional', 'Internacional', 'Elecciones en el resto del mundo'
 
 def franja_serie(todas, clave, cabecera, sub, pre=''):
     """Carrusel de una serie en la portada, debajo del de Actualidad: la serie entera, en su orden."""
+    todas_url = f'{pre}internacional/' if clave == 'internacional' else f'{pre}actualidad/#{clave}'   # Internacional tiene página propia (Nacho, 2-11-2026)
     serie = [q for q in todas if q['serie'] == clave]
     if clave in ('historia', 'internacional'):   # las más nuevas delante: al final del carrusel no se veían (Nacho, 23-10-2026)
         serie = sorted(serie[::-1], key=lambda q: q['fecha'], reverse=True)
-    return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-{clave}"><div class="da-cab"><h2 id="h-del-{clave}"><a href="{pre}actualidad/#{clave}">{cabecera}</a></h2>'
+    return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-{clave}"><div class="da-cab"><h2 id="h-del-{clave}"><a href="{todas_url}">{cabecera}</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{q["lugar"]}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in serie) +
-            f'<li class="todas"><a href="{pre}actualidad/#{clave}"><b>Todas las piezas de la serie →</b><span>{sub}</span></a></li></ul>'
+            f'<li class="todas"><a href="{todas_url}"><b>Todas las piezas de la serie →</b><span>{sub}</span></a></li></ul>'
             '<script>(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})(document.currentScript.parentNode)</script></section>')
 
