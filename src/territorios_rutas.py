@@ -121,7 +121,7 @@ TEMAS = {
         piezas=TEMA_PARTICIPACION + ['voto-correo-29n', 'barrios-donde-vota-menos-de-la-mitad', 'alquiler-ciudad-a-ciudad', 'europeas-arona', 'voto-en-blanco',
                                      'pensiones-censo-mayores-29n', 'ley-nietos-voto-exterior-29n', 'ley-nietos-donde-estan-29n',
                                      'blocs-i-cases-girona', 'salaris-pensions-ajudes-girona', 'vox-barrios-obreros-clase-29n', 'girona-1936-participacio',
-                                     'corrupcion-penaliza-voto-29n', 'quien-vota-barrios-renta-edad-inmigracion', 'barrios-caseros-inquilinos-voto-29n'],
+                                     'corrupcion-penaliza-voto-29n', 'quien-vota-barrios-renta-edad-inmigracion', 'barrios-caseros-inquilinos-voto-29n', 'me-ha-tocado-mesa-electoral-29n'],
         datos=[('elecciones/participacion-electoral-por-barrio/', 'Participación electoral por barrio en toda España'),
                ('elecciones/censo-electoral-2026/', 'Censo electoral de 2026 por provincia y municipio'),
                ('abstencion.html', '¿Quién no vota en Cataluña? La abstención sección a sección')],

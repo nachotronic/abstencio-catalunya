@@ -21,7 +21,8 @@ PUBLICADO = '2026-10-06'   # fecha de publicación de la pieza; no cambia al reg
 MEDIO = {'@type': 'NewsMediaOrganization', '@id': 'https://mapaelectoral.es/#medio', 'name': 'Mapa Electoral', 'url': 'https://mapaelectoral.es/',
          'founder': {'@type': 'Person', 'name': AUTOR, 'url': 'https://mapaelectoral.es/sobre-mi.html'},
          'publishingPrinciples': 'https://mapaelectoral.es/atlas/politica-editorial/', 'verificationFactCheckingPolicy': 'https://mapaelectoral.es/atlas/politica-editorial/#verificacion',
-         'correctionsPolicy': 'https://mapaelectoral.es/atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
+         'correctionsPolicy': 'https://mapaelectoral.es/atlas/correcciones/', 'logo': {'@type': 'ImageObject', 'url': 'https://mapaelectoral.es/icon-512.png', 'width': 512, 'height': 512},
+         'sameAs': ['https://x.com/_mapaelectoral']}
 NOM = {c: n for c, n, _ in FAMILIAS}
 FAM12 = [c for c, _, _ in FAMILIAS if c != 'OTROS']
 COL = {c: col for c, _, col in FAMILIAS}

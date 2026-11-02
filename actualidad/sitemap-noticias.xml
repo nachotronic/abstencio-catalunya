@@ -17,6 +17,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/me-ha-tocado-mesa-electoral-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-02</news:publication_date>
+      <news:title>En los pueblos de menos de 100 electores, la mesa necesita a uno de cada seis vecinos; en las ciudades, a uno de cada setenta</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/eeuu-noche-electoral-guia-horarios/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -45,7 +53,7 @@
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-02</news:publication_date>
-      <news:title>Yotova ganó en 256 de los 265 municipios de Bulgaria; Gyurov solo se impuso en Sofía, Plovdiv, Varna y otros cinco</news:title>
+      <news:title>Bulgaria elige a la candidata más cercana a Rusia; el europeísta ganó en 8 de los 265 municipios en primera vuelta</news:title>
     </news:news>
   </url>
 </urlset>

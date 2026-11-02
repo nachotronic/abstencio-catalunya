@@ -10,6 +10,7 @@ después por todas las páginas publicadas y:
 - da `@id` al Dataset de la portada y lo enlaza desde las piezas de Actualidad (`isBasedOn`);
 - marca las piezas como `AnalysisNewsArticle` (subtipo de NewsArticle para análisis e interpretación de datos)
   en vez de `NewsArticle`, también en las páginas que aún no se han regenerado con el tipo nuevo;
+- deja el editor (`#medio`) con logotipo y la cuenta de X del medio, y las etiquetas twitter:site/creator;
 - añade a cada página un bloque `BreadcrumbList` (Inicio › Sección › Pieza), sacado de la ruta
   y del <h1> de cada nivel.
 
@@ -31,11 +32,13 @@ AUTOR = {'@type': 'Person', '@id': BASE + 'sobre-mi.html#person', 'name': FIRMA,
          'affiliation': {'@type': 'CollegeOrUniversity', 'name': 'Universitat de Girona', 'url': 'https://www.udg.edu/'},
          'knowsAbout': ['Periodismo de datos', 'Elecciones en España', 'Geografía electoral', 'Visualización de datos'],
          'sameAs': [u for _, u in PERFILES]}
+LOGO = {'@type': 'ImageObject', 'url': BASE + 'icon-512.png', 'width': 512, 'height': 512}
+X_MEDIO = 'https://x.com/_mapaelectoral'   # cuenta del medio; la del autor va en AUTOR
 # Editor de todo el sitio. Los generadores tienen su copia; este script deja el fundador igual en todas.
 MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': 'Mapa Electoral', 'url': BASE,
          'founder': AUTOR,
          'publishingPrinciples': BASE + 'atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + 'atlas/politica-editorial/#verificacion',
-         'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
+         'correctionsPolicy': BASE + 'atlas/correcciones/', 'logo': LOGO, 'sameAs': [X_MEDIO]}
 # Conjunto de datos del mapa de resultados: está descrito en la portada y en su metodología
 DATASET_ID = BASE + 'generales-2026/metodologia.html#datos'
 # Referencia completa a ese Dataset: Google exige name y description (50 caracteres o más) en cada
@@ -127,6 +130,9 @@ def normaliza(o, ruta):
         extra = {k: v for k, v in o.items() if k in ('jobTitle', 'description')}   # la página «Sobre mí» los da en su idioma
         return {**AUTOR, **extra}
     o = {k: normaliza(v, ruta) for k, v in o.items()}
+    if o.get('@type') == 'NewsMediaOrganization' and str(o.get('@id', '')).endswith('/#medio'):
+        o['logo'] = dict(LOGO)            # logotipo del editor (Google lo pide en Article y Discover)
+        o['sameAs'] = [X_MEDIO]           # perfil del medio, no el personal
     if o.get('@type') == 'NewsArticle':
         o['@type'] = 'AnalysisNewsArticle'
     if o.get('@type') == 'Dataset' and ruta in ('', 'generales-2026/metodologia.html') and 'generales-2026/descargas/' in json.dumps(o):
@@ -151,6 +157,20 @@ def serializa(obj, original):
     return json.dumps(obj, ensure_ascii=False).replace('</', '<\\/')
 
 
+TW_SITE = '<meta name="twitter:site" content="@_mapaelectoral">'
+TW_CREATOR = '<meta name="twitter:creator" content="@nachotronic">'
+
+
+def twitter(s):
+    """Tarjetas de X: el sitio es la cuenta del medio (@_mapaelectoral) y el autor, @nachotronic."""
+    s = s.replace('<meta name="twitter:site" content="@nachotronic">', TW_SITE)
+    if 'name="twitter:card"' in s and TW_SITE not in s:
+        s = re.sub(r'(<meta name="twitter:card"[^>]*>)', r'\1\n' + TW_SITE, s, count=1)
+    if TW_SITE in s and TW_CREATOR not in s:
+        s = s.replace(TW_SITE, TW_SITE + '\n' + TW_CREATOR, 1)
+    return s
+
+
 def procesa(f):
     ruta = f.relative_to(ROOT).as_posix()
     ruta = ruta[:-len('index.html')] if ruta.endswith('index.html') else ruta
@@ -168,6 +188,7 @@ def procesa(f):
             return m.group(0)
         return m.group(1) + serializa(normaliza(obj, ruta), m.group(2)) + m.group(3)
     s = LD.sub(cambia, s)
+    s = twitter(s)
     if ruta == 'generales-2026/metodologia.html' and '"Dataset"' not in s:
         # el Dataset del mapa se describe en la portada; su página propia es la metodología
         m = re.search(r'<script type="application/ld\+json">(\{[^<]*?"@type": "Dataset".*?)</script>', (ROOT / 'index.html').read_text(encoding='utf-8'), re.S)

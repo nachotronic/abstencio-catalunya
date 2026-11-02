@@ -19,7 +19,8 @@ BASE = 'https://mapaelectoral.es'
 MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '/#medio', 'name': 'Mapa Electoral', 'url': BASE + '/',
          'founder': {'@type': 'Person', 'name': 'Nacho G. del Álamo', 'url': BASE + '/sobre-mi.html'},
          'publishingPrinciples': BASE + '/atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + '/atlas/politica-editorial/#verificacion',
-         'correctionsPolicy': BASE + '/atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
+         'correctionsPolicy': BASE + '/atlas/correcciones/', 'logo': {'@type': 'ImageObject', 'url': BASE + '/icon-512.png', 'width': 512, 'height': 512},
+         'sameAs': ['https://x.com/_mapaelectoral']}
 POLITICA = ' · <a href="https://mapaelectoral.es/atlas/politica-editorial/">Política editorial</a>'
 AUTOR = 'Nacho G. del Álamo'
 CF = ("<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' "
@@ -3137,11 +3138,31 @@ PIEZAS += [
         foto=dict(src='img/actualidad/fotos/israel-pactos-escanos-knesset.jpg', ancho=1280, alto=720, grafico=True,
                   pie='Partido más votado en cada localidad de Israel, con el recuento provisional del 29 de octubre. El tamaño de cada círculo depende de los votos contados.', fuente='Comité Central Electoral de Israel, vía Kaplan Open Source (recuento provisional)'),
     ),
+    dict(
+        slug='me-ha-tocado-mesa-electoral-29n', fecha='2026-11-02',
+        titulo='En los pueblos de menos de 100 electores, la mesa necesita a uno de cada seis vecinos; en las ciudades, a uno de cada setenta', serie='29n',
+        descripcion='Los ayuntamientos sortean hasta el 4 de noviembre a las 549.297 personas que formarán las mesas del 29N. Quien recibe la carta tiene siete días para librarse con una excusa que acepte la Junta Electoral de Zona. Si no la tiene, le toca: 75 euros de dieta, cinco horas libres el lunes y, si no se presenta, un delito.',
+        compara='Las mesas electorales de las generales de julio de 2023 y sus electores, por tamaño del municipio y por provincia, con las normas del sorteo, las excusas y las obligaciones de los miembros de mesa para el 29N.',
+        limites='Puestos por cada 1.000 electores: nueve puestos por mesa (presidente, dos vocales y seis suplentes) sobre el censo de residentes en España de 2023; no descuenta a los mayores de 70 ni a quienes no pueden presidir, así que no es la probabilidad exacta de que a alguien le toque. Las mesas del 29N pueden variar con el censo. La lista de excusas de la Junta Electoral Central no es cerrada y cada Junta de Zona decide. Las cifras de excusas de 2023 vienen de un informe de Interior citado por Maldita.es, sin desglose de aceptadas por tipo.',
+        fuentes=[('https://www.periodicodeibiza.es/noticias/elecciones-29n/2026/10/31/2740455/ayuntamientos-empiezan-sortear-desde-este-sabado-mesas-electorales-para-noviembre.html', 'Europa Press, los ayuntamientos empiezan a sortear las mesas del 29 de noviembre (31-10-2026)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica del Régimen Electoral General, artículos 26, 27, 28 y 143'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-2011-7705', 'Junta Electoral Central, Instrucción 6/2011 sobre impedimentos y excusas de los miembros de mesa (texto consolidado)'),
+                 ('https://eno.ombudsman.europa.eu/home/news/archives-2015/maincontent/la-junta-electoral-central-acept.html', 'Defensor del Pueblo, la JEC acepta su recomendación sobre quienes ya han sido miembros de mesa (14-1-2015)'),
+                 ('https://eno.ombudsman.europa.eu/home/news/archives-2016/maincontent/presencia-en-mesas-electorales.html', 'Defensor del Pueblo, presencia en mesas electorales de personas con discapacidad (16-9-2016)'),
+                 ('https://maldita.es/malditodato/20240516/motivos-exclusion-mesas-electorales-2023/', 'Maldita.es, las excusas más frecuentes para librarse de una mesa en 2023 (16-5-2024)'),
+                 ('https://www.eldebate.com/espana/andalucia/20240611/70-euros-doce-horas-trabajo-sirviendo-democracia_203995.html', 'El Debate, Marta de la Chica, 70 euros por más de doce horas de trabajo sirviendo a la democracia (11-6-2024)'),
+                 INTERIOR],
+        enlaces=[],
+        lugar='España',
+        foto=dict(src='img/actualidad/fotos/me-ha-tocado-mesa-electoral-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Unas manos abren la carta de la designación frente a una mesa electoral vacía, con la urna y tres sillas.'),
+    ),
 ]
 
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'me-ha-tocado-mesa-electoral-29n': 'La carta del sorteo',
     'quien-vota-barrios-renta-edad-inmigracion': 'Quién vota',
     'israel-elecciones-encuestas-knesset': 'Israel vota',
     'alvise-salf-donde-vota-29n': '¿Escaño para Alvise?',
@@ -3390,7 +3411,8 @@ def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, ma
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@nachotronic">
+<meta name="twitter:site" content="@_mapaelectoral">
+<meta name="twitter:creator" content="@nachotronic">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=1)}
@@ -3812,9 +3834,9 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='bulgaria-yotova-gyurov-mapa-municipios', fecha='2026-11-02',
-        titulo='Yotova ganó en 256 de los 265 municipios de Bulgaria; Gyurov solo se impuso en Sofía, Plovdiv, Varna y otros cinco', serie='internacional',
-        descripcion='Iliana Yotova será presidenta de Bulgaria tras ganar la segunda vuelta con el 57,6% de los votos válidos. En la primera, con los datos de cada colegio, la geografía era clara: el europeísta Andrey Gyurov ganaba en la capital, en las grandes ciudades y en el voto del extranjero, y Yotova en casi todo lo demás. En la provincia de Kardzhali solo votó el 8,6% del censo.',
+        slug='bulgaria-yotova-gyurov-mapa-municipios', fecha='2026-11-02', actualizado='2026-11-02 13:50',
+        titulo='Bulgaria elige a la candidata más cercana a Rusia; el europeísta ganó en 8 de los 265 municipios en primera vuelta', serie='internacional',
+        descripcion='Iliana Yotova, presidenta en funciones y aliada del primer ministro Rumen Radev, ganó la segunda vuelta con el 57,6% tras una campaña dominada por la guerra de Ucrania y los ataques con drones en el mar Negro. Su rival, el ex primer ministro en funciones Andrey Gyurov, quería una Bulgaria «aliada fiable de la OTAN». En la primera vuelta Gyurov solo ganó en la capital, en las grandes ciudades y en el voto del extranjero. En la provincia de Kardzhali votó el 8,6% del censo.',
         compara='La primera vuelta de las presidenciales de Bulgaria del 25 de octubre de 2026 en los 265 municipios y las 28 provincias, a partir de las actas de los 12.719 colegios electorales, y los totales nacionales de la primera y la segunda vuelta (1 de noviembre).',
         limites='La CIK aún no ha publicado la segunda vuelta por colegio, así que el mapa es solo de la primera. Los datos agregados no dicen quién cambió su voto entre vueltas ni por qué se votó menos en unas zonas que en otras. Los porcentajes se calculan sobre los votos válidos, incluidos los de «no apoyo a nadie», como hace la CIK. La participación por municipio es cálculo propio (votantes entre censo más inscritos el día de la votación) y da para el conjunto un 22,7%, frente al 22,98% oficial de la CIK, que usa otra base. La participación del extranjero no se calcula porque allí no hay censo previo. Los nombres de lugar se transcriben del búlgaro.',
         calculo='Votos de cada candidato por colegio, sumados por municipio con el código EKATTE de cada localidad; votos de «no apoyo a nadie» del papel y de las máquinas de votación. Los totales cuadran con el acta nacional de la CIK salvo por 2 votos a candidatos.',
@@ -3824,7 +3846,18 @@ PIEZAS += [
                  ('https://www.elespanol.com/mundo/20261102/iliana-yotova-gana-segunda-vuelta-presidencial-bulgaria-consolida-linea-prorrusa-frente-europeista-gyurov/1003744442987_0.html', 'El Español, Iliana Yotova gana la segunda vuelta presidencial en Bulgaria (2-11-2026)'),
                  ('https://balkaninsight.com/2026/10/30/bulgarias-presidential-race-heads-to-runoff-as-russia-divides-the-two-candidates/bi/', 'Balkan Insight, Bulgaria’s Presidential Race Heads to Runoff (30-10-2026)'),
                  ('https://www.aljazeera.com/news/2026/11/1/bulgarian-president-yotova-leads-runoff-exit-polls-show', 'Al Jazeera, con AFP, AP y Reuters: Initial results indicate victory for Iotova (1-11-2026)'),
-                 ('https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election', 'Wikipedia, 2026 Bulgarian presidential election: apoyos para la segunda vuelta y candidaturas')],
+                 ('https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election', 'Wikipedia, 2026 Bulgarian presidential election: apoyos para la segunda vuelta y candidaturas'),
+                 ('https://www.news4jax.com/business/2025/12/11/bulgarias-government-resigns-as-large-public-protests-grip-the-nation-weeks-before-joining-eurozone/', 'AP, Bulgaria’s government resigns as large public protests grip the nation (11-12-2025)'),
+                 ('https://www.pbs.org/newshour/world/left-leaning-bulgarian-president-rumen-radev-says-he-is-stepping-down', 'AP, Rumen Radev says he is stepping down (19-1-2026)'),
+                 ('https://bntnews.bg/news/iliana-iotova-is-bulgaria-39s-new-president-1375503news.html', 'BNT, Iliana Iotova is Bulgaria’s new president (enero de 2026)'),
+                 ('https://romania.rferl.org/a/alegeri-anticipate-in-bulgaria-vot-pe-19-aprilie-a-opta-oara-in-cinci-ani/33681554.html', 'Radio Europa Libre, elecciones anticipadas el 19 de abril (18-2-2026)'),
+                 ('https://www.aljazeera.com/news/2026/4/20/bulgarias-former-president-radev-wins-election-all-you-need-to-know', 'Al Jazeera, Radev wins election (20-4-2026)'),
+                 ('https://www.lanacion.com.ar/usa/bulgaria-will-vote-for-president-as-ukraine-and-black-sea-drone-attacks-dominate-campaign-nid23102026/', 'AP vía La Nación, la guerra y los drones en el mar Negro dominan la campaña (23-10-2026)'),
+                 ('https://www.lanacion.com.ar/usa/bulgarian-incumbent-president-faces-pro-western-reformist-in-runoff-on-sunday-nid26102026/', 'AP vía La Nación, la presidenta se enfrenta a un reformista proeuropeo en la segunda vuelta (26-10-2026)'),
+                 ('https://www.yahoo.com/news/world/articles/divided-bulgaria-votes-tense-presidential-054434455.html', 'AFP vía Yahoo, Bulgarian president wins runoff vote as Black Sea attacks raise stakes (1-11-2026)'),
+                 ('https://kyivindependent.com/russia-friendly-yotova-wins-bulgarias-presidential-runoff/', 'The Kyiv Independent, Russia-friendly Yotova wins Bulgaria’s presidential runoff (2-11-2026)'),
+                 ('https://bntnews.bg/news/parliament-sets-date-for-presidential-election-1405826news.html', 'BNT, el Parlamento fija la fecha de las presidenciales (31-7-2026)'),
+                 ('https://www.bta.bg/en/news/bulgaria/1233655-media-review-october-27', 'BTA, resumen de prensa del 27 de octubre de 2026 (Dnevnik sobre la participación en los feudos del DPS)')],
         enlaces=[],
         lugar='Bulgaria',
         foto=dict(src='img/actualidad/fotos/bulgaria-yotova-gyurov-mapa-municipios.jpg', ancho=1280, alto=720, grafico=True,

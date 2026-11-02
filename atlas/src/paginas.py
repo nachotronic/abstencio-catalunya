@@ -25,7 +25,8 @@ AUTOR = {'@type': 'Person', 'name': FIRMA, 'url': BASE + 'sobre-mi.html', 'sameA
 MEDIO = {'@type': 'NewsMediaOrganization', '@id': BASE + '#medio', 'name': SITIO, 'url': BASE,
          'founder': {'@type': 'Person', 'name': FIRMA, 'url': BASE + 'sobre-mi.html'},
          'publishingPrinciples': BASE + 'atlas/politica-editorial/', 'verificationFactCheckingPolicy': BASE + 'atlas/politica-editorial/#verificacion',
-         'correctionsPolicy': BASE + 'atlas/correcciones/', 'sameAs': ['https://x.com/nachotronic']}
+         'correctionsPolicy': BASE + 'atlas/correcciones/', 'logo': {'@type': 'ImageObject', 'url': BASE + 'icon-512.png', 'width': 512, 'height': 512},
+         'sameAs': ['https://x.com/_mapaelectoral']}
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 REPO = 'https://github.com/nachotronic/abstencio-catalunya'
 CF = '''<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf0453d1d8f247d4a5dd55aff7b685ae"}'></script><!-- End Cloudflare Web Analytics -->'''
@@ -199,7 +200,8 @@ def cabeza(titulo, desc, ruta, ld, indexar=True, nivel=0, img=None, actual='atla
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@nachotronic">
+<meta name="twitter:site" content="@_mapaelectoral">
+<meta name="twitter:creator" content="@nachotronic">
 <link rel="license" href="{LICENCIA}">
 <link rel="alternate" type="application/rss+xml" title="{NOMBRE}" href="{ATLAS_URL}feed.xml">
 <link rel="alternate" type="text/plain" title="llms.txt" href="{rel}llms.txt">
