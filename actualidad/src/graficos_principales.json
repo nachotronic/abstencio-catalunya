@@ -130,5 +130,9 @@
  "encuestas-antes-despues-urda-29n": {
   "pie": "Cuánto cambia cada partido respecto a la encuesta anterior de la misma empresa.",
   "fuente": "Winston, Sigma Dos, NC Report, Electomanía y SocioMétrica, en los medios enlazados; las cifras de Sigma Dos del 1 de noviembre, según Electográfica"
+ },
+ "banez-huelva-pp-29n": {
+  "pie": "PP y PSOE en la provincia de Huelva, en todas las generales.",
+  "fuente": "Ministerio del Interior, resultados por municipio"
  }
 }

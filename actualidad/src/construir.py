@@ -3165,6 +3165,7 @@ ANTETITULOS = {
     'psoe-primera-fuerza-29n': 'El sorpasso que no sale',
     'encuestas-semana-29n': 'Las encuestas, semana a semana',
     'encuestas-antes-despues-urda-29n': 'Las encuestas, semana a semana',
+    'banez-huelva-pp-29n': 'Fátima Báñez (1967-2026)',
     'listas-29n-quien-encabeza': 'Quién sale y quién no',
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'cuatro-semanas-29n-la-semana-en-el-mapa': 'Crónica del sábado',
@@ -3751,8 +3752,32 @@ PIEZAS += [
     ),
 ]
 
+PIEZAS += [
+    dict(
+        slug='banez-huelva-pp-29n', fecha='2026-11-02',
+        titulo='Fátima Báñez encabezó seis veces la lista del PP en Huelva: ganó la provincia una vez, y nunca en su pueblo', serie='29n',
+        descripcion='La exministra de Empleo, fallecida en el accidente de tren de Urda, fue la número uno del PP al Congreso por Huelva de 2000 a 2016. En ese tiempo el PP pasó de ganar en 9 municipios de la provincia a ganar en 17, pero solo superó al PSOE en el conjunto de Huelva en 2011. En San Juan del Puerto, donde nació, el PSOE ha ganado todas las generales.',
+        compara='El voto al PP y al PSOE en la provincia de Huelva y en San Juan del Puerto en todas las generales de 1977 a 2023, y el partido más votado en cada uno de los 79 u 80 municipios de la provincia en 2000, 2011 y 2023.',
+        limites='Los datos no permiten separar el efecto de la candidata del de la tendencia nacional del PP. Los porcentajes de los gráficos son sobre votos a candidaturas y difieren unas décimas de los oficiales sobre voto válido, que son los que se citan en el texto para 2011 y 2023. Faltan los datos municipales de 1982 de San Juan del Puerto y de otro municipio.',
+        calculo='Porcentajes: votos de cada partido entre la suma de votos a candidaturas, por municipio y para el total provincial. Municipios ganados: los que tienen al PP como lista más votada.',
+        fuentes=[INTERIOR,
+                 ('https://www.boe.es/boe/dias/2000/02/15/pdfs/A06975-07058.pdf', 'BOE, candidaturas proclamadas, generales de 2000'),
+                 ('https://www.boe.es/boe/dias/2011/10/25/pdfs/BOE-A-2011-16745.pdf', 'BOE, candidaturas proclamadas, generales de 2011'),
+                 ('https://www.boe.es/boe/dias/2016/05/31/pdfs/BOE-A-2016-5186.pdf', 'BOE, candidaturas proclamadas, generales de 2016'),
+                 ('https://www.boe.es/boe/dias/2019/04/02/pdfs/BOE-A-2019-4902.pdf', 'BOE, candidaturas proclamadas, generales de abril de 2019'),
+                 ('https://es.wikipedia.org/wiki/Circunscripci%C3%B3n_electoral_de_Huelva', 'Wikipedia, circunscripción electoral de Huelva (resultados oficiales)'),
+                 ('https://www.europapress.es/nacional/noticia-feijoo-lamenta-muerte-fatima-banez-accidente-urda-era-mujer-incansable-leal-amiga-20261029150620.html', 'Europa Press, Feijóo lamenta la muerte de Fátima Báñez'),
+                 ('https://www.democrata.es/politica/el-psoe-expresa-su-pesar-por-la-muerte-de-fatima-banez-y-destaca-su-trayectoria-publica/', 'Europa Press (en Demócrata), el PSOE expresa su pesar'),
+                 ('https://www.democrata.es/actualidad/san-juan-del-puerto-expresa-su-mas-profundo-dolor-por-la-muerte-de-la-exministra-fatima-banez/', 'Europa Press (en Demócrata), nota del Ayuntamiento de San Juan del Puerto'),
+                 ('https://www.vozpopuli.com/dolcevita/la-emotiva-carta-de-rajoy-a-fatima-banez-la-exministra-fallecida-en-el-accidente-de-tren-nunca-fue-partidaria-del-enfrentamiento-ni-la-bronca-era-inteligente-capaz-y-sobre-todo-era-buena.html', 'Vozpópuli, la carta de Rajoy a Fátima Báñez')],
+        enlaces=[],
+        lugar='Huelva',
+    ),
+]
+
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
+    'banez-huelva-pp-29n': '2026-11-02',
     'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
     'puente-valladolid-segundo-escano-29n': '2026-10-29',
