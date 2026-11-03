@@ -1,0 +1,188 @@
+{
+ "pieza": "acampada-sol-alquiler-madrid-distritos-29n",
+ "_datos_disponibles": {
+  "HM": "dict",
+  "CEN": "dict",
+  "NOM": "dict",
+  "HB": "lista de 21: [\"Villaverde\", \"10,26 €/m²\", 22.7, \"var(--alq)\"]",
+  "TB": "lista de 22: [\"Centro\", \"12,26\", \"15,27\", \"17,70\", \"44,4\", \"15,9\", \"37,9\", \"71,8\"]",
+  "B1": "lista de 4: 10"
+ },
+ "cifras": [
+  {
+   "texto": "deprisa en el sur de Madrid, un 22,7% en Villaverde desde",
+   "cifra": "22,7",
+   "calculo": "[h[2] for h in HB if h[0]=='Villaverde'][0]"
+  },
+  {
+   "texto": "Villaverde desde 2019 frente al 15,9% de Centro",
+   "cifra": "15,9",
+   "calculo": "[h[2] for h in HB if h[0]=='Centro'][0]"
+  },
+  {
+   "texto": "personas en la Puerta del Sol, 38 días después de que",
+   "cifra": "38",
+   "calculo": "(30-26)+31+3"
+  },
+  {
+   "texto": "más caros de Madrid, con 17,70 euros el metro cuadrado",
+   "cifra": "17,70",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][3].replace(',','.'))"
+  },
+  {
+   "texto": "los convocantes. Tres días antes había sido desahuciada",
+   "cifra": "Tres",
+   "calculo": "26-23"
+  },
+  {
+   "texto": "el Gobierno había aprobado tres días antes, con los",
+   "cifra": "tres",
+   "calculo": "(30-29)+2"
+  },
+  {
+   "texto": "alquiler ha subido en los 21 distritos de Madrid.",
+   "cifra": "21",
+   "calculo": "len(HB)"
+  },
+  {
+   "texto": "pisos alquilados pasó de 9,85 euros el metro cuadrado",
+   "cifra": "9,85",
+   "calculo": "float([r for r in TB if r[0]=='Madrid (ciudad)'][0][1].replace(',','.'))"
+  },
+  {
+   "texto": "cuadrado al mes en 2015 a 13,97 en 2024, un 41,8% más,",
+   "cifra": "13,97",
+   "calculo": "float([r for r in TB if r[0]=='Madrid (ciudad)'][0][3].replace(',','.'))"
+  },
+  {
+   "texto": "2015 a 13,97 en 2024, un 41,8% más, según el Sistema",
+   "cifra": "41,8",
+   "calculo": "float([r for r in TB if r[0]=='Madrid (ciudad)'][0][4].replace(',','.'))"
+  },
+  {
+   "texto": "estaba la acampada, subió un 44,4%, hasta 17,70 euros.",
+   "cifra": "44,4",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][4].replace(',','.'))"
+  },
+  {
+   "texto": "acampada, subió un 44,4%, hasta 17,70 euros. Solo Chamberí",
+   "cifra": "17,70",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][3].replace(',','.'))"
+  },
+  {
+   "texto": "17,70 euros. Solo Chamberí (18,55) y Salamanca (18,31)",
+   "cifra": "18,55",
+   "calculo": "float([r for r in TB if r[0]=='Chamberí'][0][3].replace(',','.'))"
+  },
+  {
+   "texto": "Chamberí (18,55) y Salamanca (18,31) son más caros.",
+   "cifra": "18,31",
+   "calculo": "float([r for r in TB if r[0]=='Salamanca'][0][3].replace(',','.'))"
+  },
+  {
+   "texto": "barato, se ha encarecido un 22,7%; Carabanchel, un 21,6%;",
+   "cifra": "22,7",
+   "calculo": "float([r for r in TB if r[0]=='Villaverde'][0][5].replace(',','.'))"
+  },
+  {
+   "texto": "un 22,7%; Carabanchel, un 21,6%; Puente de Vallecas",
+   "cifra": "21,6",
+   "calculo": "float([r for r in TB if r[0]=='Carabanchel'][0][5].replace(',','.'))"
+  },
+  {
+   "texto": "Puente de Vallecas y Usera, un 21,3%, y Latina, un 20,9%.",
+   "cifra": "21,3",
+   "calculo": "float([r for r in TB if r[0]=='Usera'][0][5].replace(',','.'))"
+  },
+  {
+   "texto": "Usera, un 21,3%, y Latina, un 20,9%. En Centro la subida",
+   "cifra": "20,9",
+   "calculo": "float([r for r in TB if r[0]=='Latina'][0][5].replace(',','.'))"
+  },
+  {
+   "texto": "Centro la subida fue del 15,9%, por debajo de la media",
+   "cifra": "15,9",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][5].replace(',','.'))"
+  },
+  {
+   "texto": "de la media de la ciudad (17,7%). Son precios nominales,",
+   "cifra": "17,7",
+   "calculo": "float([r for r in TB if r[0]=='Madrid (ciudad)'][0][5].replace(',','.'))"
+  },
+  {
+   "texto": "más hogares de alquiler: el 37,9% en 2021, frente al",
+   "cifra": "37,9",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][6].replace(',','.'))"
+  },
+  {
+   "texto": "37,9% en 2021, frente al 24,0% de la ciudad, según",
+   "cifra": "24,0",
+   "calculo": "float([r for r in TB if r[0]=='Madrid (ciudad)'][0][6].replace(',','.'))"
+  },
+  {
+   "texto": "generales de 2023 votó allí el 71,8% del censo, menos que",
+   "cifra": "71,8",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][7].replace(',','.'))"
+  },
+  {
+   "texto": "en el conjunto de Madrid (73,4%), y Sumar sacó su mejor",
+   "cifra": "73,4",
+   "calculo": "float([r for r in TB if r[0]=='Madrid (ciudad)'][0][7].replace(',','.'))"
+  },
+  {
+   "texto": "resultado de la ciudad, el 29,1%.",
+   "cifra": "29,1",
+   "calculo": "float([r for r in TB if r[0]=='Centro'][0][8].replace(',','.'))"
+  },
+  {
+   "texto": "38 días en Sol",
+   "cifra": "38",
+   "calculo": "(30-26)+31+3"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Policía desalojó de madrugada a 334 personas en la Puerta",
+   "fuente": "https://www.vozpopuli.com/espana/la-policia-culmina-el-desalojo-de-la-acampada-de-sol-334-expulsados-y-dos-personas-detenidas-.html"
+  },
+  {
+   "texto": "según EFE. Fueron desalojadas 334 personas y participaron",
+   "fuente": "https://www.vozpopuli.com/espana/la-policia-culmina-el-desalojo-de-la-acampada-de-sol-334-expulsados-y-dos-personas-detenidas-.html"
+  },
+  {
+   "texto": "334 personas y participaron 400 agentes, según Vozpópuli",
+   "fuente": "https://www.eldiario.es/madrid/somos/policia-desaloja-madrugada-acampada-sol-marcha-principales-organizaciones_1_13632746.html"
+  },
+  {
+   "texto": "Delegación del Gobierno cifró en 25.000 personas y el Sindicato",
+   "fuente": "https://www.yucatan.com.mx/mundo/2026/09/26/protestan-por-la-crisis-de-vivienda-acampan-en-la-puerta-del-sol-en-madrid.html"
+  },
+  {
+   "texto": "Sindicato de Inquilinas en 300.000, según Telemadrid",
+   "fuente": "https://www.yucatan.com.mx/mundo/2026/09/26/protestan-por-la-crisis-de-vivienda-acampan-en-la-puerta-del-sol-en-madrid.html"
+  },
+  {
+   "texto": "desahuciada Maricarmen Abascal, de 87 años, que murió el 7",
+   "fuente": "https://www.eldiario.es/madrid/somos/muere-maricarmen-mujer-convirtio-lucha-vivienda-clamor-recorrio-espana_1_13570571.html"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "desalojaron este martes, hacia las tres de la madrugada, lo",
+   "motivo": "es una hora"
+  },
+  {
+   "texto": "con la misma renta, cada diez puntos más de hogares",
+   "motivo": "coeficiente de la regresión por sección (−0,32, error 0,03, n = 2.416), explicado en «Cómo se calcula»; resumen.json en /mnt/project-files/actualidad/sol-2026/"
+  },
+  {
+   "texto": "de alquiler van con unos tres puntos menos de participación.",
+   "motivo": "coeficiente de la regresión por sección (−0,32 × 10), explicado en «Cómo se calcula»"
+  },
+  {
+   "texto": "renta. Ya lo vimos en las 25 mayores ciudades y en",
+   "motivo": "título de otra pieza enlazada"
+  }
+ ],
+ "permitir_espana": []
+}
