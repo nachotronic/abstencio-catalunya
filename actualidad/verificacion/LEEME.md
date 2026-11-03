@@ -55,6 +55,7 @@ Cuentan como cifras los números (también «once», «nueve»…) de los párra
   - Datos disponibles: cada `const`/`let` del `<script>` de la pieza, por su nombre (`DIS`, `HIS`, `MAPAS`…), que son los mismos datos que dibujan el mapa y los gráficos; también `D['NOMBRE']`.
   - Ficheros del repositorio: `csv('ruta/fichero.csv')` (lista de filas, con los números ya convertidos) y `json('ruta/fichero.json')`.
   - Funciones: `len`, `sum`, `min`, `max`, `abs`, `round`, `sorted`, `mean`, `median`, `any`, `all`, `set`, `dict`, `zip`…
+- **Cuidado con el redondeo de los datos**: si la cifra depende de un umbral («menos de 5 puntos») y los datos de la pieza están redondeados, un caso en el límite puede caer del lado equivocado. Ejemplo: en la previa de EE. UU., Colorado 3 figura con 5,0 en `DIS`, pero Hurd ganó por 4,98 puntos según el Clerk; «37 distritos por menos de 5 puntos» es correcto. Esas cifras van en `externas`, con la fuente oficial sin redondear, no recalculadas desde los datos redondeados.
 - **`externas`**: la cifra viene de otra fuente (encuestas, agencias, informes oficiales). `fuente` tiene que ser un enlace que esté en la pieza (en el texto o en «Método y fuentes»). No se puede recalcular: el informe la lista para que el editor la compruebe a mano.
 - **`ignorar`**: números que no son datos (una cita literal, «dos años después»…), con su `motivo`.
 - **`permitir_espana`**: en una pieza internacional, una mención española justificada, con su `motivo`.
