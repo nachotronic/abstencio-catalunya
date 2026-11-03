@@ -352,6 +352,7 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
 <p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{date.today().isoformat()}">{fecha_larga(date.today().isoformat())}</time></p>
 {aviso}
 <form class="buscar-prov" action="../" method="get" role="search"><label for="q">Buscar un candidato en toda España</label><input id="q" name="q" type="search" placeholder="Nombre o apellido" autocomplete="off"><input type="hidden" name="provincia" value="{cod}"><button>Buscar</button></form>
+<p class="listas29"><a href="../mi-diputado/?provincia={cod}">¿Quiénes son tus diputados por {e(corto)}? Los de la legislatura que acaba y quién repite el 29N →</a></p>
 {f'<p data-tipo="dato">{e(p_modelo)} <a href="../../encuestas/{sl}/">Escaños de {e(corto)} según las encuestas</a>.</p>' if p_modelo else ''}
 <h2>Candidatos al Congreso por {e(corto)} ({anio})</h2>
 <p>{len(cong)} candidaturas con {miles(n_cong)} titulares{'' if not avance else ''}. {'Cada nombre lleva la probabilidad de salir elegido según la media de encuestas: <span class="pr seguro">casi seguro</span> (90 % o más), <span class="pr aire">en el aire</span> (10-90 %) y <span class="pr dificil">difícil</span>. ' if not avance else ''}La raya marca el puesto {total}: los escaños que reparte la provincia. <span class="mk dip">diputado/a</span>: tuvo escaño en la legislatura que acaba.{' <span class="mk r23">repite</span>: ya fue candidato en 2023.' if not avance else ''}</p>
@@ -512,6 +513,188 @@ def portada(*args):
         t = t.replace('<!--encuestas:portada-->', bloque + '<!--encuestas:portada-->', 1)
         f.write_text(t, encoding='utf-8')
 
+MI_DIPUTADO = CARPETA / 'mi-diputado'
+URL_MI = URL + 'mi-diputado/'
+PUBLICADO_MI = '2026-11-03'
+DISOLUCION = '06/10/2026'   # las Cortes se disolvieron con la convocatoria del BOE del 6 de octubre de 2026
+
+
+def municipios_provincia():
+    """Todos los municipios del INE con su provincia, y la ruta de su ficha si la tiene (municipio/buscador.json)."""
+    ultimo = {}
+    with open(RAIZ / 'data/censo/censo_municipios.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            if r['anyo'] >= ultimo.get(r['mun_code'], ('', ''))[0]:
+                ultimo[r['mun_code']] = (r['anyo'], r['municipio'])
+    fichas = {}
+    for nombre, _, ruta, barrio in json.loads((RAIZ / 'municipio/buscador.json').read_text()):
+        if not barrio:
+            fichas[(ruta.split('/')[2], clave_nombre(nombre))] = ruta
+    out = []
+    for cod, (_, nombre) in sorted(ultimo.items(), key=lambda x: clave_nombre(x[1][1])):
+        prov = cod[:2]
+        ps = PROV_SLUG.get(prov)
+        if not ps:
+            continue
+        ruta = next((fichas[(ps, clave_nombre(n))] for n in [nombre] + nombre.split('/') if (ps, clave_nombre(n)) in fichas), '')
+        out.append([nombre, prov, ruta.removeprefix('/municipio/')])
+    return out
+
+
+def pagina_mi_diputado(cands, modelo, dips_fecha, datos, avance, pu_meta):
+    """/listas-electorales-29n/mi-diputado/: de un código postal o un municipio a sus diputados y a los candidatos del 29N
+    con opciones de salir. El contenido de las 52 provincias va en la página (lo lee Google); el buscador solo elige cuál enseñar."""
+    e = html.escape
+    hoy = date.today().isoformat()
+    dips, _ = diputados()
+    finales = {p: [x for x in xs if not x['baja'] or x['baja'].startswith(DISOLUCION)] for p, xs in dips.items()}
+    n_fin = sum(len(v) for v in finales.values())
+    cong = [c for c in cands if c['camara'] == 'congreso']
+    orden = sorted(PROV_SLUG, key=lambda c: slug(PROV_NOMBRE[c]))
+    secciones, opciones = [], []
+    repiten_total = 0
+    for cod in orden:
+        corto = PROV_NOMBRE[cod].split('/')[0]
+        sl = PROV_SLUG[cod]
+        total = modelo[cod]['escanos_total']
+        cs = [c for c in cong if c['prov'] == cod]
+        # quién de la legislatura que acaba vuelve a ir en una lista al Congreso por la provincia
+        vuelve = {}
+        for c in cs:
+            for p in c['titulares']:
+                d = es_diputado(p['nombre'], cod, dips)
+                if d:
+                    vuelve.setdefault(d['nombre'], (c, p))
+        ds = sorted(finales.get(cod, []), key=lambda x: (familia(x['formacion'], x['formacion'])[0] != 'PP', familia(x['formacion'], x['formacion'])[0], clave_nombre(x['nombre'])))
+        reparto = Counter(x['formacion'] for x in ds)
+        lis = ''
+        for x in ds:
+            f = familia(x['formacion'], x['formacion'])
+            v = vuelve.get(x['nombre'])
+            if v:
+                repiten_total += 1
+                c, p = v
+                extra = f'Repite: n.º {p["n"]} de {e(c["siglas"] or c["corto"])}' + (f' <span class="pr {nivel(p.get("p"))}">{pct(p.get("p"))}</span>' if p.get('p') is not None else '')
+            else:
+                extra = f'No figura en las listas al Congreso por {e(corto)}' if not avance else ''
+            lis += f'<li><i class="pt" style="background:{f[3]}"></i><b>{e(x["nombre"])}</b> <small>{e(x["formacion"])}{" · " + extra if extra else ""}</small></li>'
+        dif = total - len(ds)
+        cambio = '' if not dif else (f', {"uno" if abs(dif) == 1 else abs(dif)} {"más" if dif > 0 else "menos"} que en 2023')
+        bloque_29 = ''
+        if not avance:
+            seg = sorted(((p['p'], p['n'], p['nombre'], c) for c in cs for p in c['titulares'] if p.get('p') is not None and p['p'] >= 0.9), key=lambda t: (-t[0], t[3]['corto'], t[1]))
+            aire = sorted(((p['p'], p['n'], p['nombre'], c) for c in cs for p in c['titulares'] if p.get('p') is not None and 0.1 <= p['p'] < 0.9), key=lambda t: -t[0])
+            fila = lambda t: (f'<li><i class="pt" style="background:{t[3]["color"]}"></i><b>{e(t[2])}</b> <small>{e(t[3]["siglas"] or t[3]["corto"])}, n.º {t[1]}'
+                              f'{" · diputado/a" if es_diputado(t[2], cod, dips) else ""}</small> <span class="pr {nivel(t[0])}">{pct(t[0])}</span></li>')
+            sin = sorted({c['siglas'] or c['corto'] for c in cs if re.search(SIN_MODELO, c['denominacion'].upper())})
+            bloque_29 = (f'<h4>Candidatos del 29N con escaño casi seguro ({len(seg)})</h4><ul class="gente">{"".join(map(fila, seg)) or "<li>Ninguno con el 90 % o más.</li>"}</ul>'
+                         + (f'<h4>Con el escaño en el aire ({len(aire)})</h4><ul class="gente">{"".join(map(fila, aire))}</ul>' if aire else '')
+                         + (f'<p class="nota">Sin probabilidad por puesto: {e(", ".join(sin))} (el modelo no la simula como una sola lista).</p>' if sin else ''))
+        secciones.append(f"""<details class="prov-dip" id="p-{cod}" data-prov="{cod}"><summary><h3>Diputados por {e(corto)}</h3> <small>{total} escaños el 29N</small></summary>
+<div class="cuerpo"><p>{e(corto)} elige {total} diputado{"s" if total != 1 else ""} al Congreso el 29N{e(cambio)}. Reparto de la legislatura que acaba: {e(", ".join(f"{k} {n}" for k, n in reparto.most_common()))}.</p>
+<h4>Diputados de la legislatura que acaba ({len(ds)})</h4><ul class="gente">{lis}</ul>
+{bloque_29}
+<p class="enlaces"><a href="../{sl}/">Todas las listas del 29N en {e(corto)}</a> · <a href="../../encuestas/{sl}/">Escaños de {e(corto)} según las encuestas</a> · <a href="../../{ruta_provincia(cod)}">Cómo votó en 2023</a></p></div></details>""")
+        opciones.append(f'<option value="{cod}">{e(corto)}</option>')
+    munis = municipios_provincia()
+    MI_DIPUTADO.mkdir(exist_ok=True)
+    (MI_DIPUTADO / 'municipios.json').write_text(json.dumps(munis, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    titulo = '¿Quién es mi diputado? Búscalo por código postal (29N)'
+    titular = '¿Quién es mi diputado? Escribe tu código postal o tu municipio'
+    dek = ('En el Congreso no hay un diputado por barrio: cada provincia elige varios, por listas. Aquí ves los de tu provincia en la legislatura que acaba, '
+           'si vuelven a presentarse y qué candidatos del 29N tienen el escaño casi seguro o en el aire según la media de encuestas.')
+    desc = ('Busca tu diputado por código postal o municipio: los diputados de tu provincia en la legislatura que acaba, si repiten en las listas del 29N '
+            'y qué candidatos tienen opciones de salir elegidos según las encuestas.')
+    faq = [('¿Quién es mi diputado?',
+            'En España no hay un diputado por distrito o barrio. Cada provincia es una circunscripción que elige varios diputados por listas cerradas '
+            '(Madrid 38, Barcelona 32, Soria 2, Ceuta y Melilla 1 el 29N). Tus diputados son todos los que elige tu provincia.'),
+           ('¿Cómo sé mi provincia a partir del código postal?',
+            'Las dos primeras cifras del código postal son el número de la provincia (28 es Madrid, 08 Barcelona, 46 Valencia). Votas en la provincia '
+            'del municipio donde estás inscrito en el censo electoral, que normalmente es donde estás empadronado.'),
+           ('¿Cuántos diputados de la legislatura que acaba vuelven a presentarse?',
+            f'{repiten_total} de los {n_fin} diputados que tenían escaño al disolverse las Cortes, el 6 de octubre de 2026, figuran en una lista al Congreso por la misma provincia '
+            f'en el BOE del {fecha_larga(datos["fecha_boe"])}. Los que se presentan por otra provincia o solo al Senado no cuentan aquí.' if not avance else ''),
+           ('¿Qué significa «casi seguro» o «en el aire»?',
+            f'Es el porcentaje de las {pu_meta["simulaciones"]:,} simulaciones del modelo de Mapa Electoral (media de encuestas repartida por provincia) en que ese puesto de la lista sale elegido: '.replace(',', '.')
+            + 'casi seguro, el 90 % o más; en el aire, entre el 10 % y el 90 %. Es una estimación, no un resultado.')]
+    faq = [(q, a) for q, a in faq if a]
+    jsonld = [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': URL_MI + '#pagina', 'name': titular, 'description': desc, 'url': URL_MI, 'inLanguage': 'es',
+               'datePublished': PUBLICADO_MI, 'dateModified': hoy, 'isPartOf': {'@id': URL + '#pagina'}, 'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'},
+               'publisher': MEDIO, 'about': [{'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'}, {'@type': 'Thing', 'name': 'Congreso de los Diputados'}],
+               'potentialAction': {'@type': 'SearchAction', 'target': URL_MI + '?q={search_term_string}', 'query-input': 'required name=search_term_string'}},
+              {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': URL_MI + '#preguntas', 'inLanguage': 'es',
+               'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
+    fuente_boe = f'<a href="{datos["url"]}">BOE del {fecha_larga(datos["fecha_boe"])}</a>, candidaturas {datos["fase"]}'
+    cuerpo = f"""<main>
+<p class="kicker"><a href="../">Listas electorales del 29N</a> · Mi diputado</p>
+<h1 data-miga="Mi diputado">{e(titular)}</h1>
+<p class="dek">{e(dek)}</p>
+<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy}">{fecha_larga(hoy)}</time></p>
+<form class="filtros mi" role="search" onsubmit="return false">
+<input id="q" type="search" inputmode="search" placeholder="Código postal o municipio (por ejemplo, 28001 o Móstoles)" aria-label="Código postal o municipio" autocomplete="off">
+<select id="fprov" aria-label="O elige tu provincia"><option value="">O elige provincia</option>{''.join(opciones)}</select>
+</form>
+<ul id="sug" class="sug" hidden></ul>
+<p class="cuenta" id="donde" aria-live="polite"></p>
+<div id="resultado"></div>
+<p data-tipo="dato">{n_fin} diputados tenían escaño al disolverse las Cortes el 6 de octubre de 2026.{f" {repiten_total} de ellos van en una lista al Congreso por la misma provincia en el BOE del {fecha_larga(datos['fecha_boe'])}." if not avance else ""}</p>
+<h2 id="provincias">Diputados y candidatos, provincia a provincia</h2>
+<p>Abre tu provincia para ver sus diputados de la legislatura que acaba y los candidatos del 29N con opciones. La probabilidad de cada candidato: <span class="pr seguro">casi seguro</span> (90 % o más) y <span class="pr aire">en el aire</span> (10-90 %).</p>
+<div class="todas">{''.join(secciones)}</div>
+<h2>Preguntas frecuentes</h2>
+<div class="faq">{''.join(f'<details><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in faq)}</div>
+<h2>Fuentes</h2>
+<dl class="ficha">
+<dt>Diputados</dt><dd><a href="https://www.congreso.es/es/opendata/diputados">Datos abiertos del Congreso</a>, descargados el {fecha_larga(dips_fecha)}: quién tenía escaño en cada provincia al disolverse las Cortes (incluye a quienes sustituyeron a otro diputado durante la legislatura).</dd>
+<dt>Listas del 29N</dt><dd>{fuente_boe}. Un diputado «repite» si su nombre coincide con el de un titular de una lista al Congreso por la misma provincia; un nombre escrito de otra forma puede quedarse sin marcar.</dd>
+<dt>Opciones de salir elegido</dt><dd>Modelo de Mapa Electoral con la media de encuestas del {fecha_larga(pu_meta['modelo'])}. <a href="../../encuestas/metodo-modelo.html">Cómo se calcula</a>. Es una estimación, no un resultado.</dd>
+<dt>Código postal y municipios</dt><dd>Las dos primeras cifras del código postal indican la provincia. Municipios del INE ({miles(len(munis))}).</dd>
+<dt>Autoría</dt><dd>{AUTOR}</dd>
+</dl>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../"><span class="kicker">Buscador</span><b>Todos los candidatos del 29N, por nombre</b></a></li><li><a href="../../encuestas/"><span class="kicker">Encuestas</span><b>Todas las encuestas del 29N y su media</b></a></li><li><a href="../../elecciones/elecciones-29n-2026/"><span class="kicker">29N</span><b>Elecciones del 29N: mapa, escaños y fecha</b></a></li><li><a href="../../"><span class="kicker">Mapa</span><b>El mapa electoral de España, calle a calle</b></a></li></ul>
+<footer>Mapa Electoral · <a href="../candidatos-29n.csv">Descargar todas las listas (CSV)</a> · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/listas-electorales-29n">Código y datos</a> · <a href="../../atlas/politica-editorial/">Política editorial</a></footer>
+</main>"""
+    script = """<script>
+(()=>{const $=s=>document.querySelector(s),q=$('#q'),fp=$('#fprov'),sug=$('#sug'),res=$('#resultado'),donde=$('#donde');
+const norm=s=>s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();
+const nombre=c=>{const o=fp.querySelector('option[value="'+c+'"]');return o?o.textContent:''};
+let M=null;const carga=()=>M||(M=fetch('municipios.json?v=__V__').then(r=>r.json()).then(d=>d.map(x=>[x,norm(x[0])])));
+function ensena(c,txt,ficha){const s=document.getElementById('p-'+c);if(!s){res.innerHTML='';donde.textContent=txt;return}
+ donde.innerHTML=txt;res.innerHTML='<div class="elegida">'+s.querySelector('.cuerpo').innerHTML+(ficha?'<p class="enlaces"><a href="../../municipio/'+ficha+'">Cómo votó cada barrio de tu municipio en 2023</a></p>':'')+'</div>';
+ fp.value=c;sug.hidden=true}
+function cp(v){const c=v.slice(0,2);if(+c>=1&&+c<=52){ensena(c,'El código postal '+v+' es de la provincia de <b>'+nombre(c)+'</b>. Votas allí si estás inscrito en el censo de un municipio de esa provincia.');history.replaceState(null,'','?q='+v)}
+ else{donde.textContent='Ese código postal no existe: las dos primeras cifras van del 01 al 52.';res.innerHTML=''}}
+function elige(m){q.value=m[0];ensena(m[1],'<b>'+m[0]+'</b> vota en la circunscripción de <b>'+nombre(m[1])+'</b>.',m[2]);history.replaceState(null,'','?q='+encodeURIComponent(m[0]))}
+async function busca(salta){const v=q.value.trim();sug.hidden=true;
+ if(/^\\d{5}$/.test(v))return cp(v);if(/^\\d+$/.test(v)){donde.textContent=v.length<5?'Escribe las cinco cifras del código postal.':'';return}
+ const t=norm(v);if(t.length<2){donde.textContent='';return}
+ const d=await carga();const a=d.filter(x=>x[1].startsWith(t)),b=d.filter(x=>!x[1].startsWith(t)&&x[1].includes(t));const r=a.concat(b).slice(0,8);
+ if(!r.length){donde.textContent='No encuentro ese municipio. Prueba con el código postal o elige la provincia.';return}
+ if(salta&&(r.length===1||r[0][1]===t))return elige(r[0][0]);
+ donde.textContent='';sug.innerHTML=r.map((x,i)=>'<li><button type="button" data-i="'+i+'">'+x[0][0]+' <small>'+nombre(x[0][1])+'</small></button></li>').join('');sug.hidden=false;
+ sug.querySelectorAll('button').forEach(b=>b.onclick=()=>elige(r[+b.dataset.i][0]))}
+q.addEventListener('input',()=>busca(false));q.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();busca(true)}});
+fp.addEventListener('change',()=>{if(fp.value){ensena(fp.value,'Provincia de <b>'+nombre(fp.value)+'</b>.');history.replaceState(null,'','?provincia='+fp.value)}});
+const u=new URLSearchParams(location.search);if(u.get('q')){q.value=u.get('q');busca(true)}else if(u.get('provincia')){fp.value=u.get('provincia');fp.dispatchEvent(new Event('change'))}
+})();
+</script>""".replace('__V__', f'{datos["boe"]}-{hoy}')
+    estilos = """<style>
+.filtros.mi input[type=search]{flex:1 1 18rem;font-size:17px;padding:.6rem .7rem}
+.sug{list-style:none;padding:0;margin:-.4rem 0 1rem;font-family:var(--ui);border:1px solid var(--rule);border-radius:6px;max-width:32rem;background:var(--surface)}
+.sug button{display:block;width:100%;text-align:left;background:none;color:var(--fg);border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:.5rem .7rem}.sug li:last-child button{border-bottom:0}.sug small{color:var(--muted)}
+.elegida{border:1px solid var(--rule);border-left:4px solid var(--acc);border-radius:6px;padding:.3rem 1rem .6rem;margin:0 0 1.5rem;background:var(--surface)}
+.prov-dip{border-bottom:1px solid var(--rule)}.prov-dip summary{cursor:pointer;padding:.45rem 0;font-family:var(--ui)}.prov-dip summary h3{display:inline;font-size:1.02rem;margin:0}.prov-dip summary small{color:var(--muted)}
+.prov-dip h4,.elegida h4{font-family:var(--ui);font-size:.95rem;margin:1rem 0 .3rem}
+ul.gente{list-style:none;padding:0;margin:0;columns:2 18rem;column-gap:1.5rem;font-family:var(--ui);font-size:.92rem}ul.gente li{break-inside:avoid;margin:.18rem 0;line-height:1.35}ul.gente small{color:var(--muted)}
+ul.gente .pt{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.enlaces,.nota{font-family:var(--ui);font-size:.88rem}.nota{color:var(--muted)}
+</style>"""
+    pagina = (cabecera(titulo, desc, URL_MI, f'{BASE}/img/compartir/listas-electorales-29n.jpg', jsonld)
+              .replace('<meta property="og:title" content="' + e(titulo) + '">', f'<meta property="og:title" content="{e(titular)}">')
+              + ESTILOS + ESTILOS_LISTAS + estilos + CSS_SITIO + '\n</head>\n<body>\n' + nav('../../', '') + '\n' + cuerpo + '\n' + script + '\n</body>\n</html>\n')
+    (MI_DIPUTADO / 'index.html').write_text(pagina, encoding='utf-8')
+    return repiten_total, n_fin
+
 
 def main():
     datos, avance = carga()
@@ -629,6 +812,7 @@ def main():
 <label><input id="fcab" type="checkbox"> Solo cabezas de lista</label>
 {'' if avance else '<label><input id="fsal" type="checkbox"> Solo con opciones de salir</label>'}
 </form>
+<p class="listas29"><a href="mi-diputado/">¿Quién es mi diputado? Búscalo por código postal o municipio →</a></p>
 <p class="cuenta" id="cuenta" aria-live="polite">Cargando las listas…</p>
 <div class="tbl"><table id="res"><thead><tr><th>Candidato</th><th class="n">Puesto</th><th>Candidatura</th><th>Provincia</th><th class="n">{'Opciones de salir' if not avance else ''}</th></tr></thead><tbody></tbody></table></div>
 <p><button id="mas" hidden>Ver más</button></p>
@@ -653,7 +837,7 @@ def main():
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 </dl>
 <p class="descargas">Descargar: <a href="{nombre_csv}">todas las listas en CSV</a> (una fila por candidato, con suplentes) · <a href="candidatos.json">JSON</a> · <a href="../{TARJETA_DATOS}">resumen en imagen</a></p>
-<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../actualidad/listas-29n-quien-encabeza/"><span class="kicker">Puesto a puesto</span><b>Qué puestos de cada lista dan escaño</b></a></li><li><a href="../encuestas/"><span class="kicker">Encuestas</span><b>Todas las encuestas del 29N y su media</b></a></li><li><a href="../actualidad/ministros-listas-29n/"><span class="kicker">Ministros</span><b>Dónde van los ministros en las listas</b></a></li><li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li></ul>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="mi-diputado/"><span class="kicker">Mi diputado</span><b>Tus diputados y candidatos, por código postal</b></a></li><li><a href="../actualidad/listas-29n-quien-encabeza/"><span class="kicker">Puesto a puesto</span><b>Qué puestos de cada lista dan escaño</b></a></li><li><a href="../encuestas/"><span class="kicker">Encuestas</span><b>Todas las encuestas del 29N y su media</b></a></li><li><a href="../actualidad/ministros-listas-29n/"><span class="kicker">Ministros</span><b>Dónde van los ministros en las listas</b></a></li><li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li></ul>
 <footer>Mapa Electoral · Datos del BOE · <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/listas-electorales-29n">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
     script = (BUSCADOR.replace('__PARTIDOS__', json.dumps(partidos, ensure_ascii=False))
@@ -664,6 +848,7 @@ def main():
     (CARPETA / 'index.html').write_text(pagina, encoding='utf-8')
     (CARPETA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                          f'  <url><loc>{URL}</loc><lastmod>{hoy}</lastmod></url>\n'
+                                         f'  <url><loc>{URL_MI}</loc><lastmod>{hoy}</lastmod></url>\n'
                                          + ''.join(f'  <url><loc>{URL}{s}/</loc><lastmod>{hoy}</lastmod></url>\n' for s in PROV_SLUG.values()) + '</urlset>\n', encoding='utf-8')
     barras = []
     for p in PARTIDOS:
@@ -674,8 +859,9 @@ def main():
     tarjeta(RAIZ / TARJETA_DATOS, titular,
             f'{len(cong)} candidaturas al Congreso{" en 2023" if avance else ""}, {miles(n_cong)} candidatos titulares. Candidaturas por partido:', barras)
     portada(titular, n_cong, len(cong), n_sen, n_dip, avance, datos['fecha_boe'])
+    pagina_mi_diputado(cands, modelo, dips_fecha, datos, avance, pu_meta)
     import esquema
-    for f in [CARPETA / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()]:
+    for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()]:
         esquema.procesa(f)
     print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados; {titular}')
 
