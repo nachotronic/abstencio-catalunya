@@ -1,0 +1,427 @@
+{
+ "pieza": "nueva-zelanda-elecciones-mapa-circunscripciones",
+ "_datos_disponibles": {
+  "GM": "dict",
+  "MM": "dict",
+  "P23": "dict",
+  "PV": "dict",
+  "PT": "lista de 15: [\"29 Oct – 2 Nov\", \"1 News–Verian\", \"29.5\", \"28.8\", \"16.4\", \"10\", \"8.4\", \"0.4\", \"6.2\"]"
+ },
+ "cifras": [
+  {
+   "texto": "de Nueva Zelanda cae del 38% al 29,5% y llega casi",
+   "cifra": "38",
+   "calculo": "round(P23['National'])"
+  },
+  {
+   "texto": "Nueva Zelanda cae del 38% al 29,5% y llega casi empatado",
+   "cifra": "29,5",
+   "calculo": "PV['National']"
+  },
+  {
+   "texto": "da al Partido Nacional el 29,5% y a los laboristas",
+   "cifra": "29,5",
+   "calculo": "PV['National']"
+  },
+  {
+   "texto": "laboristas de Chris Hipkins el 28,8%, y deja a la coalición",
+   "cifra": "28,8",
+   "calculo": "PV['Labour']"
+  },
+  {
+   "texto": "escaños, por debajo de los 61 de la mayoría. El mapa",
+   "cifra": "61",
+   "calculo": "120//2+1"
+  },
+  {
+   "texto": "la mayoría. El mapa de las 71 circunscripciones muestra",
+   "cifra": "71",
+   "calculo": "len(GM['rows'])+len(MM['rows'])"
+  },
+  {
+   "texto": "ministro, Christopher Luxon, el 29,5% del voto de partido,",
+   "cifra": "29,5",
+   "calculo": "PV['National']"
+  },
+  {
+   "texto": "voto de partido, frente al 38,1% que sacó en 2023. Los",
+   "cifra": "38,1",
+   "calculo": "round(P23['National'],1)"
+  },
+  {
+   "texto": "de Chris Hipkins tienen el 28,8%; los Verdes, el 16,4%;",
+   "cifra": "28,8",
+   "calculo": "PV['Labour']"
+  },
+  {
+   "texto": "el 28,8%; los Verdes, el 16,4%; ACT, el 10,0%; NZ",
+   "cifra": "16,4",
+   "calculo": "PV['Green']"
+  },
+  {
+   "texto": "Verdes, el 16,4%; ACT, el 10,0%; NZ First, el 8,4%,",
+   "cifra": "10,0",
+   "calculo": "PV['ACT']"
+  },
+  {
+   "texto": "ACT, el 10,0%; NZ First, el 8,4%, y Opportunity, el",
+   "cifra": "8,4",
+   "calculo": "PV['NZ First']"
+  },
+  {
+   "texto": "el 8,4%, y Opportunity, el 6,2%. El margen de error",
+   "cifra": "6,2",
+   "calculo": "PV['Opportunity']"
+  },
+  {
+   "texto": "diferencia entre los dos grandes, siete décimas, está dentro",
+   "cifra": "siete",
+   "calculo": "round((PV['National']-PV['Labour'])*10)"
+  },
+  {
+   "texto": "escaños, por debajo de los 61 que dan la mayoría en",
+   "cifra": "61",
+   "calculo": "120//2+1"
+  },
+  {
+   "texto": "daba a los laboristas el 30,6% y al Partido Nacional",
+   "cifra": "30,6",
+   "calculo": "float(PT[1][3])"
+  },
+  {
+   "texto": "y al Partido Nacional el 24,8%, por debajo de su desastroso",
+   "cifra": "24,8",
+   "calculo": "float(PT[1][2])"
+  },
+  {
+   "texto": "la coalición, 54. De las 15 encuestas publicadas",
+   "cifra": "15",
+   "calculo": "len(PT)"
+  },
+  {
+   "texto": "Nacional va por delante en siete, los laboristas en seis",
+   "cifra": "siete",
+   "calculo": "len([q for q in PT if float(q[2])>float(q[3])])"
+  },
+  {
+   "texto": "siete, los laboristas en seis y en dos empatan.",
+   "cifra": "seis",
+   "calculo": "len([q for q in PT if float(q[3])>float(q[2])])"
+  },
+  {
+   "texto": "Este año hay 71 circunscripciones, una",
+   "cifra": "71",
+   "calculo": "len(GM['rows'])+len(MM['rows'])"
+  },
+  {
+   "texto": "la Isla Norte pasa de 49 a 48 generales, la Isla Sur",
+   "cifra": "48",
+   "calculo": "len([r for r in GM['rows'] if r[15]=='Norte'])"
+  },
+  {
+   "texto": "generales, la Isla Sur mantiene 16 y siguen las siete maoríes,",
+   "cifra": "16",
+   "calculo": "len([r for r in GM['rows'] if r[15]=='Sur'])"
+  },
+  {
+   "texto": "mantiene 16 y siguen las siete maoríes, según el informe",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])"
+  },
+  {
+   "texto": "Representación de 2025. Los otros 49 escaños salen de las",
+   "cifra": "49",
+   "calculo": "120-len(GM['rows'])-len(MM['rows'])"
+  },
+  {
+   "texto": "Nacional habría ganado en 2023 45 de las 64 circunscripciones",
+   "cifra": "45",
+   "calculo": "len([r for r in GM['rows'] if r[3]=='National'])"
+  },
+  {
+   "texto": "ganado en 2023 45 de las 64 circunscripciones generales;",
+   "cifra": "64",
+   "calculo": "len(GM['rows'])"
+  },
+  {
+   "texto": "generales; los laboristas, 15; los Verdes, dos, y",
+   "cifra": "15",
+   "calculo": "len([r for r in GM['rows'] if r[3]=='Labour'])"
+  },
+  {
+   "texto": "Raue en The Tally Room. Las siete maoríes se las habrían",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])"
+  },
+  {
+   "texto": "repartido Te Pāti Māori, con seis, y los laboristas, con",
+   "cifra": "seis",
+   "calculo": "len([r for r in MM['rows'] if r[3]=='Te Pāti Māori'])"
+  },
+  {
+   "texto": "Cuatro circunscripciones se",
+   "cifra": "Cuatro",
+   "calculo": "len([r for r in GM['rows'] if r[7]<1])"
+  },
+  {
+   "texto": "Nelson, para los laboristas por 0,1; Wellington North, para",
+   "cifra": "0,1",
+   "calculo": "[r for r in GM['rows'] if r[2]=='Nelson'][0][7]"
+  },
+  {
+   "texto": "laboristas sobre los Verdes por 0,5; Banks Peninsula, para",
+   "cifra": "0,5",
+   "calculo": "[r for r in GM['rows'] if r[2]=='Wellington North'][0][7]"
+  },
+  {
+   "texto": "para el Partido Nacional por 0,8, y Waitākere, para los",
+   "cifra": "0,8",
+   "calculo": "[r for r in GM['rows'] if r[2]=='Banks Peninsula'][0][7]"
+  },
+  {
+   "texto": "Waitākere, para los laboristas por 0,9. Con el voto de partido,",
+   "cifra": "0,9",
+   "calculo": "[r for r in GM['rows'] if r[2]=='Waitākere'][0][7]"
+  },
+  {
+   "texto": "Nacional fue el más votado en 53 de las 64 generales;",
+   "cifra": "53",
+   "calculo": "len([r for r in GM['rows'] if r[8]=='National'])"
+  },
+  {
+   "texto": "el más votado en 53 de las 64 generales; los laboristas,",
+   "cifra": "64",
+   "calculo": "len(GM['rows'])"
+  },
+  {
+   "texto": "generales; los laboristas, en nueve, y los Verdes, en dos.",
+   "cifra": "nueve",
+   "calculo": "len([r for r in GM['rows'] if r[8]=='Labour'])"
+  },
+  {
+   "texto": "el Partido Nacional casi nueve puntos por debajo de",
+   "cifra": "nueve",
+   "calculo": "round(P23['National']-PV['National'])"
+  },
+  {
+   "texto": "en el maorí, que elige a siete diputados con circunscripciones",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])"
+  },
+  {
+   "texto": "2023, Te Pāti Māori ganó seis de las siete con solo",
+   "cifra": "seis",
+   "calculo": "len([r for r in MM['rows'] if r[3]=='Te Pāti Māori'])"
+  },
+  {
+   "texto": "Pāti Māori ganó seis de las siete con solo el 3,1% del",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])"
+  },
+  {
+   "texto": "de las siete con solo el 3,1% del voto de partido.",
+   "cifra": "3,1",
+   "calculo": "round(P23['Te Pāti Māori'],1)"
+  },
+  {
+   "texto": "mire. Te Pāti Māori ganó seis de las siete en el voto",
+   "cifra": "seis",
+   "calculo": "len([r for r in MM['rows'] if r[3]=='Te Pāti Māori'])"
+  },
+  {
+   "texto": "Pāti Māori ganó seis de las siete en el voto de circunscripción,",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])"
+  },
+  {
+   "texto": "el voto de partido en las siete. Ese voto dividido explica",
+   "cifra": "siete",
+   "calculo": "len([r for r in MM['rows'] if r[8]=='Labour'])"
+  },
+  {
+   "texto": "última encuesta tiene el 0,4% del voto de partido.",
+   "cifra": "0,4",
+   "calculo": "PV['Te Pāti Māori']"
+  },
+  {
+   "texto": "Las siete circunscripciones maoríes",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])"
+  },
+  {
+   "texto": "circunscripción en 2023Las 64 circunscripciones generales",
+   "cifra": "64",
+   "calculo": "len(GM['rows'])"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "y deja a la coalición con 58 escaños, por debajo",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "octubre y el 2 de noviembre a 1.006 votantes, da al Partido",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "El margen de error es de 3,1 puntos, según 1News:",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "Nacional, ACT y NZ First) tendría 58 escaños, por debajo",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "mayoría en un Parlamento de 120. La semana anterior,",
+   "fuente": "https://en.wikipedia.org/wiki/Results_of_the_2023_New_Zealand_general_election"
+  },
+  {
+   "texto": "misma encuestadora, llegaba a 61. La oposición de izquierda",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "y Te Pāti Māori) tendría 56 o 60, según cómo se",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "Pāti Māori) tendría 56 o 60, según cómo se calculen",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "escaños maoríes, y Opportunity, siete, según el cálculo de",
+   "fuente": "https://www.1news.co.nz/2026/11/03/final-poll-election-set-to-go-down-to-wire-as-nationals-partners-slip/"
+  },
+  {
+   "texto": "del 20 al 26 de octubre a 1.000 personas, daba a los",
+   "fuente": "https://www.rnz.co.nz/news/politics_election-2026/2211553/rnz-reid-research-poll-national-below-disastrous-2020-result-as-opportunity-surges"
+  },
+  {
+   "texto": "Verdes y Opportunity sumarían 64 escaños, y la coalición,",
+   "fuente": "https://www.rnz.co.nz/news/politics_election-2026/2211553/rnz-reid-research-poll-national-below-disastrous-2020-result-as-opportunity-surges"
+  },
+  {
+   "texto": "escaños, y la coalición, 54. De las 15 encuestas",
+   "fuente": "https://www.rnz.co.nz/news/politics_election-2026/2211553/rnz-reid-research-poll-national-below-disastrous-2020-result-as-opportunity-surges"
+  },
+  {
+   "texto": "partido es el que reparte los 120 escaños: un partido",
+   "fuente": "https://en.wikipedia.org/wiki/Results_of_the_2023_New_Zealand_general_election"
+  },
+  {
+   "texto": "2023: la Isla Norte pasa de 49 a 48 generales, la Isla",
+   "fuente": "https://elections.nz/assets/pagecomponent-file-files/REPORT-OF-THE-REPRESENTATION-COMMISSION-2025-WEB.pdf"
+  },
+  {
+   "texto": "votación: el plazo acaba 13 días antes, y se amplía",
+   "fuente": "https://www.justice.govt.nz/about/news-and-media/news/electoral-law-changes/"
+  },
+  {
+   "texto": "presos condenados a menos de tres años por delitos cometidos",
+   "fuente": "https://www.justice.govt.nz/about/news-and-media/news/electoral-law-changes/"
+  },
+  {
+   "texto": "Hasta el lunes habían votado 1.074.416 personas, frente a 860.668",
+   "fuente": "https://www.odt.co.nz/news/national/1-million-have-now-voted-ahead-of-election-day-fwrvh6ue"
+  },
+  {
+   "texto": "1.074.416 personas, frente a 860.668 en el mismo punto de",
+   "fuente": "https://www.odt.co.nz/news/national/1-million-have-now-voted-ahead-of-election-day-fwrvh6ue"
+  },
+  {
+   "texto": "los neozelandeses, con el 63%, por delante de la",
+   "fuente": "https://www.ipsos.com/en-nz/34th-ipsos-nz-issues-monitor-sept-2026"
+  },
+  {
+   "texto": "por delante de la sanidad (44%), la economía (34%)",
+   "fuente": "https://www.ipsos.com/en-nz/34th-ipsos-nz-issues-monitor-sept-2026"
+  },
+  {
+   "texto": "sanidad (44%), la economía (34%) y el paro (21%), según",
+   "fuente": "https://www.ipsos.com/en-nz/34th-ipsos-nz-issues-monitor-sept-2026"
+  },
+  {
+   "texto": "economía (34%) y el paro (21%), según Ipsos. Hipkins",
+   "fuente": "https://www.ipsos.com/en-nz/34th-ipsos-nz-issues-monitor-sept-2026"
+  },
+  {
+   "texto": "porcentaje, la Cámara pasó de 120 a 122 diputados, y a",
+   "fuente": "https://en.wikipedia.org/wiki/Results_of_the_2023_New_Zealand_general_election"
+  },
+  {
+   "texto": "porcentaje, la Cámara pasó de 120 a 122 diputados, y a 123 tras",
+   "fuente": "https://en.wikipedia.org/wiki/Results_of_the_2023_New_Zealand_general_election"
+  },
+  {
+   "texto": "120 a 122 diputados, y a 123 tras la elección parcial",
+   "fuente": "https://en.wikipedia.org/wiki/Results_of_the_2023_New_Zealand_general_election"
+  },
+  {
+   "texto": "solo nombre, además de sus siete candidatos de circunscripción,",
+   "fuente": "https://www.1news.co.nz/2026/10/04/te-pati-maori-announces-one-person-party-list-for-2026-election/"
+  },
+  {
+   "texto": "Electoral se ha fijado tener el 50% escrutado hacia las",
+   "fuente": "https://www.rnz.co.nz/news/politics/2310557/explainer-how-your-votes-are-counted-on-election-day"
+  },
+  {
+   "texto": "10.00, hora española, y el 95% hacia las 11.30, según",
+   "fuente": "https://www.rnz.co.nz/news/politics/2310557/explainer-how-your-votes-are-counted-on-election-day"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "escaños: un partido que saca el 30% tiene, en la práctica,",
+   "motivo": "ejemplo ilustrativo del reparto proporcional"
+  },
+  {
+   "texto": "tiene, en la práctica, el 30% de la Cámara, sumando",
+   "motivo": "ejemplo ilustrativo del reparto proporcional"
+  },
+  {
+   "texto": "el reparto hace falta el 5% del voto de partido",
+   "motivo": "umbral legal del sistema MMP"
+  },
+  {
+   "texto": "última encuesta supera el 5% que le daría escaños.",
+   "motivo": "umbral legal del sistema MMP"
+  },
+  {
+   "texto": "de Nueva Zelanda, que va 12 horas por delante de",
+   "motivo": "diferencia horaria entre Nueva Zelanda (NZDT, UTC+13) y la España peninsular (UTC+1)"
+  },
+  {
+   "texto": "claro: margen de menos de 5 puntos; medio, de 5",
+   "motivo": "umbral de la leyenda del mapa"
+  },
+  {
+   "texto": "menos de 5 puntos; medio, de 5 a 15; intenso, más de",
+   "motivo": "umbral de la leyenda del mapa"
+  },
+  {
+   "texto": "de 5 puntos; medio, de 5 a 15; intenso, más de 15.",
+   "motivo": "umbral de la leyenda del mapa"
+  },
+  {
+   "texto": "de 5 a 15; intenso, más de 15. Pasa por encima o toca",
+   "motivo": "umbral de la leyenda del mapa"
+  }
+ ],
+ "permitir_espana": [
+  {
+   "texto": "de las elecciones generales de Nueva Zelanda",
+   "motivo": "nombre de la elección neozelandesa, no dato español"
+  },
+  {
+   "texto": "que va 12 horas por delante de España",
+   "motivo": "hora de los colegios para el lector español"
+  },
+  {
+   "texto": "a las 7.00 del sábado, hora peninsular",
+   "motivo": "horario para el lector español"
+  },
+  {
+   "texto": "hacia las 10.00, hora española",
+   "motivo": "horario para el lector español"
+  }
+ ]
+}
