@@ -3209,7 +3209,7 @@ ANTETITULOS = {
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
-    'eeuu-elecciones-medio-mandato-mapa': 'A cuatro días del 3 de noviembre',
+    'eeuu-elecciones-medio-mandato-mapa': 'Noche electoral, en directo',
     'eeuu-noche-electoral-guia-horarios': 'Guía para la noche del martes',
     'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
@@ -3764,12 +3764,14 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-03 08:25',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-03 21:30',
         titulo='Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan', serie='internacional',
         descripcion='Estados Unidos elige el 3 de noviembre a los 435 miembros de la Cámara de Representantes. En 2024 ganaron los republicanos, 220 a 215. Nueve estados han cambiado sus distritos, la mayoría a petición de Trump, con mapas pensados para darle nueve escaños netos más. En el resto del país, a los demócratas les bastaría un giro de 4 puntos; las encuestas apuntan a unos 11.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
         limites='Los distritos son los de 2024, los únicos con resultados: en los nueve estados que los han redibujado se vota el 3 de noviembre con otros límites. La cuenta del giro resta los mismos puntos en todos los distritos que no cambian; no es una previsión. Los objetivos de los mapas nuevos son los que buscaban sus autores según Sabato\'s Crystal Ball y Wikipedia, no un cálculo propio con los límites nuevos. Los porcentajes son sobre el total de votos válidos de cada distrito; en los distritos sin rival del otro partido, la ventaja es la del candidato único. Los recuentos por tramos de ventaja usan los votos sin redondear: el 3.º de Colorado, que el republicano Jeff Hurd ganó por 4,98 puntos, cuenta entre los decididos por menos de 5, aunque el mapa muestre 5,0.',
-        fuentes=[('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, Statistics of the Presidential and Congressional Election of November 5, 2024'),
+        fuentes=[('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-house.html', 'Associated Press, resultados de la Cámara de 2026, a través de The New York Times (en directo, 3 y 4-11-2026)'),
+                 ('https://www.nbcnews.com/politics/2026-elections/house-results', 'NBC News Decision Desk, proyecciones de la Cámara de 2026 (en directo, 3 y 4-11-2026)'),
+                 ('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, Statistics of the Presidential and Congressional Election of November 5, 2024'),
                  ('https://clerk.house.gov/member_info/olm-119.pdf', 'Clerk de la Cámara de Representantes, lista oficial de miembros (1-10-2026)'),
                  ('https://www.the-downballot.com/p/data', 'The Downballot, presidenciales de 2024 por distrito de la Cámara'),
                  ('https://www2.census.gov/geo/tiger/GENZ2024/', 'U.S. Census Bureau, contornos de los distritos del 119.º Congreso (cb_2024_us_cd119_500k)'),
@@ -3799,12 +3801,14 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-03 08:15',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-03 21:30',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
         limites='En los estados con dos husos horarios se toma la hora en que cierra la mayor parte del estado. En Dakota del Norte las fuentes no coinciden en algunos colegios. Las calificaciones son las de The Cook Political Report a 30 de octubre y pueden cambiar antes del martes. La ventaja de 2024 en los distritos que han cambiado de límites no es comparable.',
-        fuentes=[('https://www.270towin.com/poll-closing-times', '270toWin, horas de cierre de los colegios en 2026'),
+        fuentes=[('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html', 'Associated Press, resultados del Senado y de gobernadores de 2026, a través de The New York Times (en directo, 3 y 4-11-2026)'),
+                 ('https://www.nbcnews.com/politics/2026-elections/senate-results', 'NBC News Decision Desk, proyecciones del Senado de 2026 (en directo, 3 y 4-11-2026)'),
+                 ('https://www.270towin.com/poll-closing-times', '270toWin, horas de cierre de los colegios en 2026'),
                  ('https://www.thegreenpapers.com/G26/closing.phtml', 'The Green Papers, horas de cierre de los colegios en 2026'),
                  ('https://www.sos.la.gov/elections-voting/election-dates', 'Secretaría de Estado de Luisiana, calendario electoral (primaria abierta a la Cámara el 3-11-2026 y segunda vuelta el 12-12-2026)'),
                  ('https://www.cookpolitical.com/ratings/house-race-ratings', 'The Cook Political Report, calificaciones de la Cámara (30-10-2026)'),
@@ -3996,7 +4000,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'ley-nietos-donde-estan-29n': '2026-10-29',
     'rufian-montero-la-revuelta-29n': '2026-10-29',
     'israel-pactos-escanos-knesset': '2026-10-29',
-    'eeuu-elecciones-medio-mandato-mapa': '2026-11-01',
+    'eeuu-elecciones-medio-mandato-mapa': '2026-11-04',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
