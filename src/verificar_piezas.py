@@ -477,7 +477,8 @@ ESPANA = [r'\bPSOE\b', r'\bPP\b', r'\bVox\b', r'\bSumar\b', r'\bPodemos\b', r'\b
           r'\bAndalucía\b', r'\bCataluña\b', r'\bCatalunya\b', r'\bComunidad de Madrid\b', r'\bGalicia\b', r'\bEuskadi\b',
           r'\bPaís Vasco\b', r'\bComunidad Valenciana\b', r'\bCastilla y León\b', r'\bCastilla-La Mancha\b', r'\bExtremadura\b',
           r'\bAragón\b', r'\bAsturias\b', r'\bCantabria\b', r'\bNavarra\b', r'\bLa Rioja\b', r'\bRegión de Murcia\b',
-          r'\bBaleares\b', r'\bCanarias\b', r'\bCeuta\b', r'\bMelilla\b', r'generales de 2023', r'elecciones generales']
+          r'\bBaleares\b', r'\bCanarias\b', r'\bCeuta\b', r'\bMelilla\b',
+          r'generales de julio de 2023', r'elecciones generales españolas']   # «elecciones generales» sola no: también las hay en Nueva Zelanda (#420)
 ENLACES_ESPANA = [r'infoelectoral\.interior\.gob\.es', r'(?<![\w.])ine\.es/', r'(?:\.\./)+municipio/', r'(?:\.\./)+generales-2026/',
                   r'(?:\.\./)+listas-electorales-29n/', r'(?:\.\./)+encuestas/', r'(?:\.\./)+29n/', r'(?:\.\./)+elecciones/']
 
