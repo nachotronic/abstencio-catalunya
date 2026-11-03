@@ -3870,21 +3870,24 @@ PIEZAS += [
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
+    # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después
+    'listas-29n-quien-encabeza': '2026-11-03',
+    'eeuu-noche-electoral-guia-horarios': '2026-11-04',
+    'banez-huelva-pp-29n': '2026-11-03',
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
     'bulgaria-yotova-gyurov-mapa-municipios': '2026-11-03',
-    'banez-huelva-pp-29n': '2026-11-02',
     'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
     'puente-valladolid-segundo-escano-29n': '2026-10-29',
     'ley-nietos-voto-exterior-29n': '2026-10-29',
     'ley-nietos-donde-estan-29n': '2026-10-29',
-    'listas-29n-quien-encabeza': '2026-10-29',
     'rufian-montero-la-revuelta-29n': '2026-10-29',
     'israel-pactos-escanos-knesset': '2026-10-29',
-    'eeuu-noche-electoral-guia-horarios': '2026-11-04',
     'eeuu-elecciones-medio-mandato-mapa': '2026-11-01',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
+
+INTER_EN_ACTUALIDAD = {'eeuu-noche-electoral-guia-horarios'}   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
 def franja_portada(todas, pre=''):
@@ -3898,7 +3901,7 @@ def franja_portada(todas, pre=''):
     hoy = datetime.date.today().isoformat()
     fijas = [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta]
     recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
-    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] not in ('historia', 'internacional')][:10]
+    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and (q['serie'] not in ('historia', 'internacional') or q['slug'] in fijas and q['slug'] in INTER_EN_ACTUALIDAD)][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
