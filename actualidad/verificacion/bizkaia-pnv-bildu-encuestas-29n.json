@@ -1,0 +1,385 @@
+{
+ "pieza": "bizkaia-pnv-bildu-encuestas-29n",
+ "cifras": [
+  {
+   "texto": "El PNV ganó en 92 municipios de Bizkaia",
+   "cifra": "92",
+   "calculo": "D['M19']['PNV']"
+  },
+  {
+   "texto": "municipios de Bizkaia en 2019 y en 55 en 2023: su feudo llega",
+   "cifra": "55",
+   "calculo": "D['M23']['PNV']"
+  },
+  {
+   "texto": "cuatro años, EH Bildu le quitó 27 pueblos y el PSOE 10,",
+   "cifra": "27",
+   "calculo": "D['CAMBIOS']['PNV-BILDU']"
+  },
+  {
+   "texto": "quitó 27 pueblos y el PSOE 10, Bilbao incluido. El",
+   "cifra": "10",
+   "calculo": "D['CAMBIOS']['PNV-PSOE']"
+  },
+  {
+   "texto": "resultado en unas generales, el 27,1 %. Hoy la media de encuestas",
+   "cifra": "27,1",
+   "calculo": "D['SERIE']['2023']['PNV']"
+  },
+  {
+   "texto": "Bildu y el PSOE entre el 22,2 % y el 22,4 %.",
+   "cifra": "22,2",
+   "calculo": "D['MODELO']['PSOE']['voto'][1]"
+  },
+  {
+   "texto": "PSOE entre el 22,2 % y el 22,4 %.",
+   "cifra": "22,4",
+   "calculo": "D['MODELO']['PNV']['voto'][1]"
+  },
+  {
+   "texto": "el partido más votado en 92 de los 112 municipios",
+   "cifra": "92",
+   "calculo": "D['M19']['PNV']"
+  },
+  {
+   "texto": "partido más votado en 92 de los 112 municipios de Bizkaia.",
+   "cifra": "112",
+   "calculo": "sum(D['M19'].values())"
+  },
+  {
+   "texto": "de julio de 2023, solo en 55. Perdió 27 pueblos frente",
+   "cifra": "55",
+   "calculo": "D['M23']['PNV']"
+  },
+  {
+   "texto": "2023, solo en 55. Perdió 27 pueblos frente a EH",
+   "cifra": "27",
+   "calculo": "D['CAMBIOS']['PNV-BILDU']"
+  },
+  {
+   "texto": "pueblos frente a EH Bildu y 10 frente al PSOE. Fue",
+   "cifra": "10",
+   "calculo": "D['CAMBIOS']['PNV-PSOE']"
+  },
+  {
+   "texto": "cuarenta municipios vizcaínos: 43, cuando su máximo anterior",
+   "cifra": "43",
+   "calculo": "D['M23']['BILDU']"
+  },
+  {
+   "texto": "máximo anterior eran los 32 de Amaiur en 2011.",
+   "cifra": "32",
+   "calculo": "max(v for k,v in D['HIST_B'].items() if k!='2023')"
+  },
+  {
+   "texto": "provincia, pero por poco: el 27,1 % de los votos a candidaturas,",
+   "cifra": "27,1",
+   "calculo": "D['SERIE']['2023']['PNV']"
+  },
+  {
+   "texto": "a candidaturas, frente al 26,0 % del PSOE y el 20,8",
+   "cifra": "26,0",
+   "calculo": "D['SERIE']['2023']['PSOE']"
+  },
+  {
+   "texto": "frente al 26,0 % del PSOE y el 20,8 % de EH Bildu. Es su",
+   "cifra": "20,8",
+   "calculo": "D['SERIE']['2023']['BILDU']"
+  },
+  {
+   "texto": "más bajo en Bizkaia en las 16 generales de la democracia.",
+   "cifra": "16",
+   "calculo": "len(D['SERIE'])"
+  },
+  {
+   "texto": "noviembre de 2019 había sacado el 35,5 %.",
+   "cifra": "35,5",
+   "calculo": "D['SERIE']['2019-N']['PNV']"
+  },
+  {
+   "texto": "votado en Bizkaia en 14 de las 16 elecciones. Las dos",
+   "cifra": "16",
+   "calculo": "len(D['SERIE'])"
+  },
+  {
+   "texto": "los municipios al azar. Los 27 que pasaron a EH Bildu",
+   "cifra": "27",
+   "calculo": "D['CAMBIOS']['PNV-BILDU']"
+  },
+  {
+   "texto": "costa oriental: Durango (29.675 habitantes, EH Bildu",
+   "cifra": "29.675",
+   "calculo": "D['MUN']['Durango']['pob']"
+  },
+  {
+   "texto": "(29.675 habitantes, EH Bildu 30,1 %, PNV 28,3 %), Amorebieta-Etxano",
+   "cifra": "30,1",
+   "calculo": "D['MUN']['Durango']['BILDU']"
+  },
+  {
+   "texto": "habitantes, EH Bildu 30,1 %, PNV 28,3 %), Amorebieta-Etxano",
+   "cifra": "28,3",
+   "calculo": "D['MUN']['Durango']['PNV']"
+  },
+  {
+   "texto": "28,3 %), Amorebieta-Etxano (33,0 % frente a 32,2 %) y",
+   "cifra": "33,0",
+   "calculo": "D['MUN']['Amorebieta-Etxano']['BILDU']"
+  },
+  {
+   "texto": "Amorebieta-Etxano (33,0 % frente a 32,2 %) y Lekeitio, donde",
+   "cifra": "32,2",
+   "calculo": "D['MUN']['Amorebieta-Etxano']['PNV']"
+  },
+  {
+   "texto": "pasó de la mitad del voto (52,3 %). Los 10 que pasaron",
+   "cifra": "52,3",
+   "calculo": "D['MUN']['Lekeitio']['BILDU']"
+  },
+  {
+   "texto": "mitad del voto (52,3 %). Los 10 que pasaron al PSOE",
+   "cifra": "10",
+   "calculo": "D['CAMBIOS']['PNV-PSOE']"
+  },
+  {
+   "texto": "colores del mapa engañan. Los 43 municipios donde ganó",
+   "cifra": "43",
+   "calculo": "D['M23']['BILDU']"
+  },
+  {
+   "texto": "donde ganó EH Bildu suman 121.215 habitantes, el 11 %",
+   "cifra": "121.215",
+   "calculo": "D['POB']['BILDU']"
+  },
+  {
+   "texto": "suman 121.215 habitantes, el 11 % de la provincia. Los",
+   "cifra": "11",
+   "calculo": "D['POB']['BILDU']/D['POBT']*100"
+  },
+  {
+   "texto": "11 % de la provincia. Los 14 del PSOE suman 704.907,",
+   "cifra": "14",
+   "calculo": "D['M23']['PSOE']"
+  },
+  {
+   "texto": "provincia. Los 14 del PSOE suman 704.907, el 62 %: además de",
+   "cifra": "704.907",
+   "calculo": "D['POB']['PSOE']"
+  },
+  {
+   "texto": "del PSOE suman 704.907, el 62 %: además de Bilbao,",
+   "cifra": "62",
+   "calculo": "D['POB']['PSOE']/D['POBT']*100"
+  },
+  {
+   "texto": "además de Bilbao, Barakaldo (38,4 %), Portugalete y Sestao,",
+   "cifra": "38,4",
+   "calculo": "D['MUN']['Barakaldo']['PSOE']"
+  },
+  {
+   "texto": "margen derecha, con Getxo (28,5 %) y Leioa, y municipios",
+   "cifra": "28,5",
+   "calculo": "D['MUN']['Getxo']['PNV']"
+  },
+  {
+   "texto": "por provincia y la simula 2.000 veces, deja hoy a Bizkaia",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "PNV y EH Bildu tienen el 22,4 % estimado cada uno,",
+   "cifra": "22,4",
+   "calculo": "D['MODELO']['PNV']['voto'][1]"
+  },
+  {
+   "texto": "estimado cada uno, y el PSOE el 22,2 %. EH Bildu queda primero",
+   "cifra": "22,2",
+   "calculo": "D['MODELO']['PSOE']['voto'][1]"
+  },
+  {
+   "texto": "Bildu queda primero en el 36 % de las simulaciones,",
+   "cifra": "36",
+   "calculo": "D['MODELO']['EH Bildu']['p1']"
+  },
+  {
+   "texto": "simulaciones, el PNV en el 36 % y el PSOE en el 28",
+   "cifra": "36",
+   "calculo": "D['MODELO']['PNV']['p1']"
+  },
+  {
+   "texto": "en el 36 % y el PSOE en el 28 %.",
+   "cifra": "28",
+   "calculo": "D['MODELO']['PSOE']['p1']"
+  },
+  {
+   "texto": "El reparto central de los ocho escaños de Bizkaia sería",
+   "cifra": "ocho",
+   "calculo": "sum(v['central'] for v in D['MODELO'].values())"
+  },
+  {
+   "texto": "escaños de Bizkaia sería 3 para EH Bildu, 2 para",
+   "cifra": "3",
+   "calculo": "D['MODELO']['EH Bildu']['central']"
+  },
+  {
+   "texto": "Bizkaia sería 3 para EH Bildu, 2 para el PNV, 2 para",
+   "cifra": "2",
+   "calculo": "D['MODELO']['PNV']['central']"
+  },
+  {
+   "texto": "EH Bildu, 2 para el PNV, 2 para el PSOE y 1 para",
+   "cifra": "2",
+   "calculo": "D['MODELO']['PSOE']['central']"
+  },
+  {
+   "texto": "el PNV, 2 para el PSOE y 1 para el PP. Pero las",
+   "cifra": "1",
+   "calculo": "D['MODELO']['PP']['central']"
+  },
+  {
+   "texto": "el PNV podría sacar entre 1 y 3, y EH Bildu y el",
+   "cifra": "1",
+   "calculo": "D['MODELO']['PNV']['esc'][0]"
+  },
+  {
+   "texto": "PNV podría sacar entre 1 y 3, y EH Bildu y el PSOE,",
+   "cifra": "3",
+   "calculo": "D['MODELO']['PNV']['esc'][2]"
+  },
+  {
+   "texto": "EH Bildu y el PSOE, entre 2 y 3. En el conjunto",
+   "cifra": "2",
+   "calculo": "D['MODELO']['EH Bildu']['esc'][0]"
+  },
+  {
+   "texto": "Bildu y el PSOE, entre 2 y 3. En el conjunto de Euskadi,",
+   "cifra": "3",
+   "calculo": "D['MODELO']['EH Bildu']['esc'][2]"
+  },
+  {
+   "texto": "Euskadi, el reparto central da 7 escaños a EH Bildu,",
+   "cifra": "7",
+   "calculo": "D['EUS']['EH Bildu']"
+  },
+  {
+   "texto": "da 7 escaños a EH Bildu, 5 al PSOE, 4 al PNV y",
+   "cifra": "5",
+   "calculo": "D['EUS']['PSOE']"
+  },
+  {
+   "texto": "escaños a EH Bildu, 5 al PSOE, 4 al PNV y 2 al PP. Los",
+   "cifra": "4",
+   "calculo": "D['EUS']['PNV']"
+  },
+  {
+   "texto": "Bildu, 5 al PSOE, 4 al PNV y 2 al PP. Los candidatos",
+   "cifra": "2",
+   "calculo": "D['EUS']['PP']"
+  },
+  {
+   "texto": "mismo PNV se quedó en el 27,1 % en las generales de",
+   "cifra": "27,1",
+   "calculo": "D['SERIE']['2023']['PNV']"
+  },
+  {
+   "texto": "las encuestas vascas, y a 26 días de la votación",
+   "cifra": "26",
+   "calculo": "29-3"
+  },
+  {
+   "texto": "de cuántos votos pesa: los 43 municipios de EH Bildu",
+   "cifra": "43",
+   "calculo": "D['M23']['BILDU']"
+  },
+  {
+   "texto": "en Bizkaia% de voto en las 16 elecciones generales",
+   "cifra": "16",
+   "calculo": "len(D['SERIE'])"
+  },
+  {
+   "texto": "(modelo de Mapa Electoral. 2.000 simulaciones. 3 de noviembre)",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "más votado en Bizkaia en 14 de las 16 elecciones.",
+   "condicion": "sum(max(['PNV','PSOE','BILDU','PP','SUMAR'], key=lambda f: D['SERIE'][a][f])=='PNV' for a in D['SERIE'])==13 and max(['PNV','PSOE','BILDU','PP','SUMAR'], key=lambda f: D['SERIE']['2015'][f])=='SUMAR'"
+  },
+  {
+   "texto": "más de cuarenta municipios vizcaínos:",
+   "condicion": "D['M23']['BILDU']>40 and all(v<=40 for k,v in D['HIST_B'].items() if k!='2023')"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "más votado en Bizkaia en 14 de las 16 elecciones.",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2015/euskadi/vizcaya"
+  },
+  {
+   "texto": "por menos de un punto (el 29,0 % frente al 28,4 %,",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2016/congreso/euskadi/vizcaya"
+  },
+  {
+   "texto": "punto (el 29,0 % frente al 28,4 %, según los resultados",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2016/congreso/euskadi/vizcaya"
+  },
+  {
+   "texto": "dos puntos: el PNV sacó el 28,1 % y Podemos el 26,3",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2015/euskadi/vizcaya"
+  },
+  {
+   "texto": "sacó el 28,1 % y Podemos el 26,3 % (resultados de 2015).",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2015/euskadi/vizcaya"
+  },
+  {
+   "texto": "julio, hecho por Gizaker con 3.000 entrevistas, daba al",
+   "fuente": "https://orain.eus/es/politica/2026/07/01/pnv-sumaria-un-escano-en-las-elecciones-forales-en-bizkaia-eh-bildu-podria-sumar-2-segun-un-sondeo-foral/"
+  },
+  {
+   "texto": "entrevistas, daba al PNV el 39,3 % en las elecciones",
+   "fuente": "https://orain.eus/es/politica/2026/07/01/pnv-sumaria-un-escano-en-las-elecciones-forales-en-bizkaia-eh-bildu-podria-sumar-2-segun-un-sondeo-foral/"
+  },
+  {
+   "texto": "de 2023, y a EH Bildu el 29,5 %, según EITB. Dos meses",
+   "fuente": "https://orain.eus/es/politica/2026/07/01/pnv-sumaria-un-escano-en-las-elecciones-forales-en-bizkaia-eh-bildu-podria-sumar-2-segun-un-sondeo-foral/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "llega al 29N en empate a tres",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "En cuatro años, EH Bildu le quitó",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "112 municipios de Bizkaia. Cuatro años después, en las",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "política ganaban en más de cuarenta municipios vizcaínos:",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "a Bizkaia en un empate a tres. El PNV y EH Bildu tienen",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "El 29N: un empate a tres",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "Bizkaia cambió de color en cuatro añosPartido más votado",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "Cuatro décadas de voto en Bizkaia%",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  },
+  {
+   "texto": "Bizkaia, empate a tres en la media de encuestasVoto",
+   "motivo": "número en palabras que no es un dato («tres» partidos, «cuatro» años, «cuarenta» como umbral redondo)"
+  }
+ ]
+}

@@ -50,7 +50,7 @@ PROV_NOMBRE = {'01': 'Araba/Álava', '02': 'Albacete', '03': 'Alicante', '04': '
 # se enlazan solas desde su comunidad.
 ACTUALIDAD_LUGAR = {
     'avila-suarez-cds': ['05'], 'baltar-censo-y-participacion': ['32'], 'beiras-nacionalismo-gallego': ['15', '27', '32', '36'],
-    'colau-barcelona-comuns': ['08'], 'europeas-arona': ['38'], 'euskadi-empate-a-tres': ['01', '20', '48'],
+    'colau-barcelona-comuns': ['08'], 'europeas-arona': ['38'], 'euskadi-empate-a-tres': ['01', '20', '48'], 'euskadi-29n-guia': ['01', '20', '48'], 'bizkaia-pnv-bildu-encuestas-29n': ['48'],
     'mont-roig-municipio-cambiante': ['43'], 'municipios-fieles': ['41'], 'pisos-turisticos-y-votantes': ['08'],
     'plasencia-acierta-siempre': ['10'], 'precio-del-alquiler-y-voto': ['46'], 'psa-andalucistas-1979': ['04', '11', '14', '18', '21', '23', '29', '41'],
     'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'adelante-andalucia-psoe-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
@@ -188,7 +188,7 @@ TEMAS = {
         titulo='Pueblos y municipios: los que siempre votan igual, los que cambian y los bastiones de cada partido',
         intro='Los municipios que han votado lo mismo desde 1977, los que aciertan siempre el ganador, los que se vacían de electores '
               'y los pueblos donde cada partido saca sus mejores resultados.',
-        piezas=TEMA_MUNICIPIOS + ['bildu-cinco-pueblos-lizartza', 'bng-cinco-pueblos-allariz', 'erc-cinco-pueblos-blancafort-flix',
+        piezas=TEMA_MUNICIPIOS + ['bizkaia-pnv-bildu-encuestas-29n', 'bildu-cinco-pueblos-lizartza', 'bng-cinco-pueblos-allariz', 'erc-cinco-pueblos-blancafort-flix',
                                   'junts-cinco-pueblos-amer', 'pnv-cinco-pueblos-bermeo', 'pp-cinco-pueblos-galicia', 'sumar-cinco-pueblos-marinaleda',
                                   'baltar-censo-y-participacion', 'europeas-arona', 'casas-vacias-segundas-residencias', 'oficios-y-voto-municipios-29n',
                                   'municipios-izquierda-1977-derecha-2023', 'pueblos-unanimes-empates-29n', 'ganar-por-un-voto-29n', 'dana-pueblos-primeras-generales-29n'],
@@ -201,7 +201,7 @@ TEMAS = {
         titulo='Escaños y sistema electoral: el precio de un diputado, los restos y las coaliciones',
         intro='Cómo se convierten los votos en escaños: los diputados que se decidieron por unos cientos de votos, '
               'lo que cuesta un escaño en cada provincia, el Senado y lo que habrían sacado las coaliciones.',
-        piezas=['feijoo-albiol-barcelona-disturbios-29n', 'rufian-montero-la-revuelta-29n', 'escanos-en-el-filo-29n', 'cuatro-semanas-29n-la-semana-en-el-mapa', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
+        piezas=['euskadi-29n-guia', 'feijoo-albiol-barcelona-disturbios-29n', 'rufian-montero-la-revuelta-29n', 'escanos-en-el-filo-29n', 'cuatro-semanas-29n-la-semana-en-el-mapa', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'pacto-pp-vox-senado-provincias-29n', 'comuns-psc-senado-girona-lleida-tarragona-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
                 'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'encuestas-antes-despues-urda-29n', 'banez-huelva-pp-29n', 'listas-29n-quien-encabeza',
