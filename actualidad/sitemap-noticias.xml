@@ -48,4 +48,12 @@
       <news:title>Bulgaria elige a la candidata más cercana a Rusia; el europeísta ganó en 8 de los 265 municipios en primera vuelta</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/nueva-zelanda-elecciones-mapa-circunscripciones/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-03</news:publication_date>
+      <news:title>El partido del primer ministro de Nueva Zelanda cae del 38% al 29,5% y llega casi empatado con los laboristas a las elecciones del sábado</news:title>
+    </news:news>
+  </url>
 </urlset>
