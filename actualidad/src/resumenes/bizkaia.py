@@ -52,10 +52,11 @@ POB = {k: int(v) for k, v in m.groupby(f'{b}_gana').poblacion.sum().items()}
 POBT = int(m.poblacion.sum())
 HIST_B = {an(e): int(((h if e < '2004' else m)[f'{e}_gana'] == 'BILDU').sum()) for e in EL}
 assert max(v for k, v in HIST_B.items() if k != '2023') == 32 and HIST_B['2023'] == 43
-cols = ['municipio', 'poblacion', f'{a}_gana', f'{b}_gana', f'{b}_PNV', f'{b}_PSOE', f'{b}_BILDU', f'{b}_PP', f'{b}_part']
-MUN = {r[0]: {'pob': int(r[1]), 'g19': r[2], 'g23': r[3], 'PNV': round(r[4] * 100, 2), 'PSOE': round(r[5] * 100, 2),
-              'BILDU': round(r[6] * 100, 2), 'PP': round(r[7] * 100, 2), 'part': round(r[8] * 100, 2)}
-       for r in m[cols].itertuples(index=False)}
+tot23 = sum(m[f'{b}_v{f}'] for f in F)   # votos a candidaturas, como en la provincia (las columnas 2023_07_X son sobre voto válido)
+MUN = {r.municipio: {'pob': int(r.poblacion), 'g19': r.g19, 'g23': r.g23,
+                     **{k: round(getattr(r, k) / r.tot * 100, 4) for k in ('PNV', 'PSOE', 'BILDU', 'PP')}}
+       for r in pd.DataFrame({'municipio': m.municipio, 'poblacion': m.poblacion, 'g19': m[f'{a}_gana'], 'g23': m[f'{b}_gana'], 'tot': tot23,
+                              **{k: m[f'{b}_v{k}'] for k in ('PNV', 'PSOE', 'BILDU', 'PP')}}).itertuples(index=False)}
 assert MUN['Durango']['g23'] == 'BILDU' and MUN['Amorebieta-Etxano']['g23'] == 'BILDU' and MUN['Bilbao']['g23'] == 'PSOE'
 assert MUN['Getxo']['g23'] == 'PNV' and MUN['Leioa']['g23'] == 'PNV' and MUN['Galdakao']['g23'] == 'PNV'
 
@@ -232,7 +233,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_modelo}
 <p data-tipo="dato">El reparto central de los ocho escaños de Bizkaia sería {MODELO["EH Bildu"]["central"]} para EH Bildu, {MODELO["PNV"]["central"]} para el PNV, {MODELO["PSOE"]["central"]} para el PSOE y {MODELO["PP"]["central"]} para el PP. Pero las horquillas se solapan: el PNV podría sacar entre {MODELO["PNV"]["esc"][0]} y {MODELO["PNV"]["esc"][2]}, y EH Bildu y el PSOE, entre {MODELO["EH Bildu"]["esc"][0]} y {MODELO["EH Bildu"]["esc"][2]}. En el conjunto de Euskadi, el reparto central da {EUS["EH Bildu"]} escaños a EH Bildu, {EUS["PSOE"]} al PSOE, {EUS["PNV"]} al PNV y {EUS["PP"]} al PP. Los candidatos de cada lista y sus opciones de salir están en las <a href="{BASE}listas-electorales-29n/bizkaia/">listas del 29N en Bizkaia</a>.</p>
 <p data-tipo="contexto">El Sociómetro del Gobierno vasco, la encuesta propia de Lehendakaritza, va más allá. Con trabajo de campo del 20 al 23 de octubre, deja al PNV como tercera fuerza en Euskadi. Según <a href="{SOCIO}">elDiario.es</a>, los jeltzales «serían incluso terceros en Bizkaia, su gran feudo». La cabeza de lista del PNV por Bizkaia, Idoia Sagastizabal, defendió el 17 de octubre que el partido tiene «claro el rumbo» en plena «marejada» y que «las etiquetas no resuelven los problemas», según <a href="{ORAIN_PNV}">EITB</a>.</p>
-<p data-tipo="contexto">Las generales no son las forales. El sondeo de la Diputación de Bizkaia publicado en julio, hecho por Gizaker con 3.000 entrevistas, daba al PNV el 39,3 % en las elecciones a Juntas Generales de 2027, una décima más que en las de 2023, y a EH Bildu el 29,5 %, según <a href="{FORAL}">EITB</a>. Dos meses después de esas forales de mayo de 2023, el mismo PNV se quedó en el {p(SERIE["2023"]["PNV"])} % en las generales de julio. Ese doble voto, más nacionalista en las elecciones vascas y más repartido en las de España, es el que el PNV necesita recuperar el 29N.</p>
+<p data-tipo="contexto">Las generales no son las forales. El sondeo de la Diputación de Bizkaia publicado en julio, hecho por Gizaker con 3.000 entrevistas, daba al PNV el 39,3 % en las elecciones a Juntas Generales de 2027, una décima más que en las de 2023, y a EH Bildu el 29,5 %, según <a href="{FORAL}">EITB</a>. Dos meses después de esas forales de mayo de 2023, el mismo PNV se quedó en el {p(SERIE["2023"]["PNV"])} % en las generales de julio.</p>
 
 <h2>Lo que estos datos no dicen</h2>
 <p data-tipo="contexto">Los porcentajes de esta pieza son sobre votos a candidaturas y sin el voto de los vizcaínos que viven en el extranjero, por eso difieren en unas décimas de los oficiales. En 2015, nuestra serie suma Podemos e IU, que se presentaron por separado; los resultados de ese año en el texto son los oficiales de cada lista. El modelo no es una encuesta de Bizkaia: reparte la media nacional por provincia con el resultado de 2023 y las encuestas vascas, y a 26 días de la votación su margen de error es amplio. Y el ganador de un municipio no dice nada de cuántos votos pesa: los {M23["BILDU"]} municipios de EH Bildu tienen menos habitantes que Bilbao.</p>

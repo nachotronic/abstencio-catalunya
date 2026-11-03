@@ -112,32 +112,32 @@
    "calculo": "D['MUN']['Durango']['pob']"
   },
   {
-   "texto": "(29.675 habitantes, EH Bildu 29,9 %, PNV 28,1 %), Amorebieta-Etxano",
-   "cifra": "29,9",
+   "texto": "(29.675 habitantes, EH Bildu 30,1 %, PNV 28,3 %), Amorebieta-Etxano",
+   "cifra": "30,1",
    "calculo": "D['MUN']['Durango']['BILDU']"
   },
   {
-   "texto": "habitantes, EH Bildu 29,9 %, PNV 28,1 %), Amorebieta-Etxano",
-   "cifra": "28,1",
+   "texto": "habitantes, EH Bildu 30,1 %, PNV 28,3 %), Amorebieta-Etxano",
+   "cifra": "28,3",
    "calculo": "D['MUN']['Durango']['PNV']"
   },
   {
-   "texto": "28,1 %), Amorebieta-Etxano (32,9 % frente a 32,1 %) y",
-   "cifra": "32,9",
+   "texto": "28,3 %), Amorebieta-Etxano (33,0 % frente a 32,2 %) y",
+   "cifra": "33,0",
    "calculo": "D['MUN']['Amorebieta-Etxano']['BILDU']"
   },
   {
-   "texto": "Amorebieta-Etxano (32,9 % frente a 32,1 %) y Lekeitio, donde",
-   "cifra": "32,1",
+   "texto": "Amorebieta-Etxano (33,0 % frente a 32,2 %) y Lekeitio, donde",
+   "cifra": "32,2",
    "calculo": "D['MUN']['Amorebieta-Etxano']['PNV']"
   },
   {
-   "texto": "pasó de la mitad del voto (52,1 %). Los 10 que pasaron",
-   "cifra": "52,1",
+   "texto": "pasó de la mitad del voto (52,3 %). Los 10 que pasaron",
+   "cifra": "52,3",
    "calculo": "D['MUN']['Lekeitio']['BILDU']"
   },
   {
-   "texto": "mitad del voto (52,1 %). Los 10 que pasaron al PSOE",
+   "texto": "mitad del voto (52,3 %). Los 10 que pasaron al PSOE",
    "cifra": "10",
    "calculo": "D['CAMBIOS']['PNV-PSOE']"
   },
@@ -172,13 +172,13 @@
    "calculo": "D['POB']['PSOE']/D['POBT']*100"
   },
   {
-   "texto": "además de Bilbao, Barakaldo (38,2 %), Portugalete y Sestao,",
-   "cifra": "38,2",
+   "texto": "además de Bilbao, Barakaldo (38,4 %), Portugalete y Sestao,",
+   "cifra": "38,4",
    "calculo": "D['MUN']['Barakaldo']['PSOE']"
   },
   {
-   "texto": "margen derecha, con Getxo (28,3 %) y Leioa, y municipios",
-   "cifra": "28,3",
+   "texto": "margen derecha, con Getxo (28,5 %) y Leioa, y municipios",
+   "cifra": "28,5",
    "calculo": "D['MUN']['Getxo']['PNV']"
   },
   {
