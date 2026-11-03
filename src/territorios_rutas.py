@@ -55,7 +55,7 @@ ACTUALIDAD_LUGAR = {
     'plasencia-acierta-siempre': ['10'], 'precio-del-alquiler-y-voto': ['46'], 'psa-andalucistas-1979': ['04', '11', '14', '18', '21', '23', '29', '41'],
     'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'adelante-andalucia-psoe-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'],
     'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
-    'acampada-sol-distrito-centro': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
+    'acampada-sol-distrito-centro': ['28'], 'acampada-sol-alquiler-madrid-distritos-29n': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
@@ -63,7 +63,7 @@ ACTUALIDAD_LUGAR = {
 }
 # Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
 ACTUALIDAD_MUNICIPIO = {
-    'acampada-sol-distrito-centro': ('28079', 'Madrid'), 'almeida-feijoo-madrid': ('28079', 'Madrid'),
+    'acampada-sol-distrito-centro': ('28079', 'Madrid'), 'acampada-sol-alquiler-madrid-distritos-29n': ('28079', 'Madrid'), 'almeida-feijoo-madrid': ('28079', 'Madrid'),
     'barcelona-barrio-a-barrio-29n': ('08019', 'Barcelona'), 'madrid-barrio-a-barrio-29n': ('28079', 'Madrid'),
     'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
     'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'),
@@ -150,7 +150,7 @@ TEMAS = {
         intro='Cómo votan los barrios de inquilinos y los de propietarios, qué pasa con el censo donde crecen los pisos turísticos '
               'y dónde hay más casas vacías que vecinos.',
         piezas=['maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'pisos-turisticos-y-votantes', 'psoe-barrios-de-alquiler',
-                'precio-del-alquiler-y-voto', 'acampada-sol-distrito-centro', 'casas-vacias-segundas-residencias',
+                'precio-del-alquiler-y-voto', 'acampada-sol-alquiler-madrid-distritos-29n', 'acampada-sol-distrito-centro', 'casas-vacias-segundas-residencias',
                 'vivienda-preocupa-voto-sumar-29n', 'desahucios-ocupaciones-cgpj-29n', 'vivienda-inmigracion-economia-cis', 'barrios-rentistas-pp-psoe-29n', 'sanchez-revuelta-broncano-voto-joven-29n', 'barrios-caseros-inquilinos-voto-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España')],
         atlas=[]),
