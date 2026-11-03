@@ -1,0 +1,270 @@
+{
+ "pieza": "euskadi-29n-guia",
+ "cifras": [
+  {
+   "texto": "Elecciones del 29N en Euskadi: 18 escaños, 1.824.886 electores",
+   "cifra": "18",
+   "calculo": "D['ESCT']"
+  },
+  {
+   "texto": "29N en Euskadi: 18 escaños, 1.824.886 electores y una Bizkaia",
+   "cifra": "1.824.886",
+   "calculo": "D['CT']['total']"
+  },
+  {
+   "texto": "encuestas, EH Bildu sacaría 7 de los 18 escaños vascos;",
+   "cifra": "7",
+   "calculo": "D['EUS']['EH Bildu']"
+  },
+  {
+   "texto": "EH Bildu sacaría 7 de los 18 escaños vascos; Bizkaia,",
+   "cifra": "18",
+   "calculo": "D['ESCT']"
+  },
+  {
+   "texto": "escaños vascos; Bizkaia, con 8, está en el aire.",
+   "cifra": "8",
+   "calculo": "D['MOD']['48']['total']"
+  },
+  {
+   "texto": "noviembre, Euskadi elige 18 de los 350 diputados",
+   "cifra": "18",
+   "calculo": "D['ESCT']"
+  },
+  {
+   "texto": "350 diputados del Congreso: 8 por Bizkaia, 6 por Gipuzkoa",
+   "cifra": "8",
+   "calculo": "D['MOD']['48']['total']"
+  },
+  {
+   "texto": "Congreso: 8 por Bizkaia, 6 por Gipuzkoa y 4 por",
+   "cifra": "6",
+   "calculo": "D['MOD']['20']['total']"
+  },
+  {
+   "texto": "Bizkaia, 6 por Gipuzkoa y 4 por Araba/Álava. Pueden",
+   "cifra": "4",
+   "calculo": "D['MOD']['01']['total']"
+  },
+  {
+   "texto": "Araba/Álava. Pueden votar 1.824.886 personas, 35.811 más",
+   "cifra": "1.824.886",
+   "calculo": "D['CT']['total']"
+  },
+  {
+   "texto": "votar 1.824.886 personas, 35.811 más que en 2023: 1.728.228",
+   "cifra": "35.811",
+   "calculo": "D['CT']['total']-D['CT']['t23']"
+  },
+  {
+   "texto": "personas, 35.811 más que en 2023: 1.728.228 viven en el País Vasco",
+   "cifra": "1.728.228",
+   "calculo": "D['CT']['res']"
+  },
+  {
+   "texto": "viven en el País Vasco y 96.658 en el extranjero. Esta",
+   "cifra": "96.658",
+   "calculo": "D['CT']['cera']"
+  },
+  {
+   "texto": "territorio elige cuatro senadores, doce en total. En el Senado",
+   "cifra": "doce",
+   "calculo": "3*4"
+  },
+  {
+   "texto": "central de nuestro modelo da 7 escaños a EH Bildu,",
+   "cifra": "7",
+   "calculo": "D['EUS']['EH Bildu']"
+  },
+  {
+   "texto": "da 7 escaños a EH Bildu, 5 al PSOE, 4 al PNV y",
+   "cifra": "5",
+   "calculo": "D['EUS']['PSOE']"
+  },
+  {
+   "texto": "escaños a EH Bildu, 5 al PSOE, 4 al PNV y 2 al PP. Es",
+   "cifra": "4",
+   "calculo": "D['EUS']['PNV']"
+  },
+  {
+   "texto": "Bildu, 5 al PSOE, 4 al PNV y 2 al PP. Es una proyección",
+   "cifra": "2",
+   "calculo": "D['EUS']['PP']"
+  },
+  {
+   "texto": "proyección con un margen amplio: a 26 días de la votación,",
+   "cifra": "26",
+   "calculo": "29-3"
+  },
+  {
+   "texto": "Bildu queda primero en el 87 % de las simulaciones,",
+   "cifra": "87",
+   "calculo": "D['MOD']['20']['listas']['EH Bildu']['p1']"
+  },
+  {
+   "texto": "las simulaciones, con el 33,9 % estimado. En Araba/Álava,",
+   "cifra": "33,9",
+   "calculo": "D['MOD']['20']['listas']['EH Bildu']['voto']"
+  },
+  {
+   "texto": "PSOE queda primero en el 59 %. Bizkaia es un empate",
+   "cifra": "59",
+   "calculo": "D['MOD']['01']['listas']['PSOE']['p1']"
+  },
+  {
+   "texto": "Bildu y el PNV tienen el 22,4 % estimado cada uno",
+   "cifra": "22,4",
+   "calculo": "D['MOD']['48']['listas']['PNV']['voto']"
+  },
+  {
+   "texto": "estimado cada uno y el PSOE el 22,2 %, y lo explicamos en",
+   "cifra": "22,2",
+   "calculo": "D['MOD']['48']['listas']['PSOE']['voto']"
+  },
+  {
+   "texto": "votado en el País Vasco con el 25,4 % de los votos a candidaturas,",
+   "cifra": "25,4",
+   "calculo": "D['R23']['PV']['PSOE']"
+  },
+  {
+   "texto": "candidaturas, por delante del PNV (24,2 %) y EH Bildu (24,1",
+   "cifra": "24,2",
+   "calculo": "D['R23']['PV']['PNV']"
+  },
+  {
+   "texto": "PNV (24,2 %) y EH Bildu (24,1 %). Fue el empate a",
+   "cifra": "24,1",
+   "calculo": "D['R23']['PV']['BILDU']"
+  },
+  {
+   "texto": "distinto: el PNV ganó en Bizkaia (27,1 %), EH Bildu en Gipuzkoa",
+   "cifra": "27,1",
+   "calculo": "D['R23']['48']['PNV']"
+  },
+  {
+   "texto": "%), EH Bildu en Gipuzkoa (31,4 %) y el PSOE en Araba/Álava",
+   "cifra": "31,4",
+   "calculo": "D['R23']['20']['BILDU']"
+  },
+  {
+   "texto": "y el PSOE en Araba/Álava (27,8 %).",
+   "cifra": "27,8",
+   "calculo": "D['R23']['01']['PSOE']"
+  },
+  {
+   "texto": "Bildu fue el más votado en 140 de los 251 municipios",
+   "cifra": "140",
+   "calculo": "D['MUN23']['BILDU']"
+  },
+  {
+   "texto": "más votado en 140 de los 251 municipios vascos, el",
+   "cifra": "251",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios vascos, el PNV en 76, el PSOE en 29 y el",
+   "cifra": "76",
+   "calculo": "D['MUN23']['PNV']"
+  },
+  {
+   "texto": "el PNV en 76, el PSOE en 29 y el PP en 6. La historia",
+   "cifra": "29",
+   "calculo": "D['MUN23']['PSOE']"
+  },
+  {
+   "texto": "el PSOE en 29 y el PP en 6. La historia completa,",
+   "cifra": "6",
+   "calculo": "D['MUN23']['PP']"
+  },
+  {
+   "texto": "Los 153 municipios vascos de",
+   "cifra": "153",
+   "calculo": "sum(D['NPAG'].values())"
+  },
+  {
+   "texto": "renta y la serie desde 1977: 75 en Bizkaia, 56 en Gipuzkoa",
+   "cifra": "75",
+   "calculo": "D['NPAG']['48']"
+  },
+  {
+   "texto": "desde 1977: 75 en Bizkaia, 56 en Gipuzkoa y 22 en",
+   "cifra": "56",
+   "calculo": "D['NPAG']['20']"
+  },
+  {
+   "texto": "Bizkaia, 56 en Gipuzkoa y 22 en Araba/Álava. Las",
+   "cifra": "22",
+   "calculo": "D['NPAG']['01']"
+  },
+  {
+   "texto": "página para cada uno de sus 24 barrios, de Abando a",
+   "cifra": "24",
+   "calculo": "D['NBAR']"
+  },
+  {
+   "texto": "Los 18 escaños vascos según",
+   "cifra": "18",
+   "calculo": "D['ESCT']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "El BOE publicó 11 candidaturas al Congreso",
+   "fuente": "https://www.boe.es/"
+  },
+  {
+   "texto": "al Congreso por Bizkaia, 11 por Gipuzkoa y 14 por",
+   "fuente": "https://www.boe.es/"
+  },
+  {
+   "texto": "Bizkaia, 11 por Gipuzkoa y 14 por Araba/Álava. Estas",
+   "fuente": "https://www.boe.es/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "y una Bizkaia en empate a tres",
+   "motivo": "«empate a tres»: número de partidos"
+  },
+  {
+   "texto": "noviembre, Euskadi elige 18 de los 350 diputados del Congreso:",
+   "motivo": "total de escaños del Congreso, fijado por la ley electoral"
+  },
+  {
+   "texto": "Además, cada territorio elige cuatro senadores, doce en total.",
+   "motivo": "senadores por provincia, fijados por la Constitución"
+  },
+  {
+   "texto": "cada elector marca hasta tres nombres, y los cuatro",
+   "motivo": "número máximo de nombres en la papeleta del Senado (ley electoral)"
+  },
+  {
+   "texto": "hasta tres nombres, y los cuatro más votados de la provincia",
+   "motivo": "senadores por provincia, fijados por la Constitución"
+  },
+  {
+   "texto": "típico de la media es de unos cuatro puntos para un partido",
+   "motivo": "aviso del modelo (previsiones/datos/publico/meta.json): «el error típico de la media es de unos 4 puntos para un partido del 30 %»"
+  },
+  {
+   "texto": "puntos para un partido del 30 %.",
+   "motivo": "aviso del modelo (previsiones/datos/publico/meta.json)"
+  },
+  {
+   "texto": "%. Bizkaia es un empate a tres: EH Bildu y el PNV tienen",
+   "motivo": "«empate a tres»: número de partidos"
+  },
+  {
+   "texto": "(24,1 %). Fue el empate a tres más ajustado desde 1977,",
+   "motivo": "«empate a tres»: número de partidos"
+  },
+  {
+   "texto": "contamos en Euskadi, empate a tres. Cada territorio votó",
+   "motivo": "título de otra pieza"
+  },
+  {
+   "texto": "municipios vascos de más de 1.000 habitantes tienen página",
+   "motivo": "umbral de población para tener página de municipio"
+  }
+ ]
+}

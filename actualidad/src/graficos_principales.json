@@ -138,5 +138,13 @@
  "bulgaria-yotova-gyurov-mapa-municipios": {
   "pie": "Quién ganó en cada municipio de Bulgaria en la primera vuelta.",
   "fuente": "Comisión Electoral Central de Bulgaria (CIK), datos abiertos por colegio electoral"
+ },
+ "bizkaia-pnv-bildu-encuestas-29n": {
+  "pie": "Cuatro décadas de voto en Bizkaia.",
+  "fuente": "Ministerio del Interior"
+ },
+ "euskadi-29n-guia": {
+  "pie": "Los 18 escaños vascos según la media de encuestas.",
+  "fuente": "modelo de Mapa Electoral con la media de las encuestas nacionales repartida por provincia"
  }
 }

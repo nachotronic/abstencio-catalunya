@@ -20,10 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (66)
+## Pendientes (68)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-03 | [`bizkaia-pnv-bildu-encuestas-29n`](https://mapaelectoral.es/actualidad/bizkaia-pnv-bildu-encuestas-29n/) | El PNV ganó en 92 municipios de Bizkaia en 2019 y en 55 en 2023: su feudo llega al 29N en empate a tres | primer gráfico de la pieza |
+| 2026-11-03 | [`euskadi-29n-guia`](https://mapaelectoral.es/actualidad/euskadi-29n-guia/) | Elecciones del 29N en Euskadi: 18 escaños, 1.824.886 electores y una Bizkaia en empate a tres | primer gráfico de la pieza |
 | 2026-11-03 | [`listas-proclamadas-29n`](https://mapaelectoral.es/actualidad/listas-proclamadas-29n/) | Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León | primer gráfico de la pieza |
 | 2026-11-02 | [`banez-huelva-pp-29n`](https://mapaelectoral.es/actualidad/banez-huelva-pp-29n/) | Fátima Báñez encabezó seis veces la lista del PP en Huelva: ganó la provincia una vez, y nunca en su pueblo | primer gráfico de la pieza |
 | 2026-11-02 | [`bulgaria-yotova-gyurov-mapa-municipios`](https://mapaelectoral.es/actualidad/bulgaria-yotova-gyurov-mapa-municipios/) | Bulgaria elige a la candidata más cercana a Rusia; el europeísta ganó en 8 de los 265 municipios en primera vuelta | gráfico |
