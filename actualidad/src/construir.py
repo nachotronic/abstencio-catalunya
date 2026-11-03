@@ -1921,6 +1921,8 @@ HISTORIA = []
 for h in PIEZAS_HISTORIA:
     q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
     q.update(fecha=h.get('fecha', '2026-10-08'), serie='historia', enlaces=[])
+    if h.get('actualizado'):
+        q['actualizado'] = h['actualizado']
     if h.get('foto'):
         q['foto'] = {k: v for k, v in h['foto'].items() if k != 'origen'}
     HISTORIA.append(q)

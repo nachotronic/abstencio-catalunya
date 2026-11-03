@@ -1,0 +1,190 @@
+{
+ "pieza": "euskadi-empate-a-tres",
+ "cifras": [
+  {
+   "texto": "Tres partidos en 1,3 puntos: el empate a",
+   "cifra": "1,3",
+   "calculo": "D['euskadi']['dif3'][-1]"
+  },
+  {
+   "texto": "las generales de 2023, PSE (25,4 %), PNV (24,2 %) y EH",
+   "cifra": "25,4",
+   "calculo": "D['euskadi']['PSOE'][-1]"
+  },
+  {
+   "texto": "2023, PSE (25,4 %), PNV (24,2 %) y EH Bildu (24,1",
+   "cifra": "24,2",
+   "calculo": "D['euskadi']['PNV'][-1]"
+  },
+  {
+   "texto": "PNV (24,2 %) y EH Bildu (24,1 %) quedaron en 1,3 puntos",
+   "cifra": "24,1",
+   "calculo": "D['euskadi']['BILDU'][-1]"
+  },
+  {
+   "texto": "Bildu (24,1 %) quedaron en 1,3 puntos en el País Vasco,",
+   "cifra": "1,3",
+   "calculo": "D['euskadi']['dif3'][-1]"
+  },
+  {
+   "texto": "desde 1977. EH Bildu ganó en 140 municipios; el PSE,",
+   "cifra": "140",
+   "calculo": "D['euskadi']['munis23']['BILDU']"
+  },
+  {
+   "texto": "140 municipios; el PSE, en 29.",
+   "cifra": "29",
+   "calculo": "D['euskadi']['munis23']['PSOE']"
+  },
+  {
+   "texto": "El PSE-EE sacó el 25,4 % de los votos a candidaturas",
+   "cifra": "25,4",
+   "calculo": "D['euskadi']['PSOE'][-1]"
+  },
+  {
+   "texto": "voto exterior), el PNV el 24,2 % y EH Bildu el 24,1",
+   "cifra": "24,2",
+   "calculo": "D['euskadi']['PNV'][-1]"
+  },
+  {
+   "texto": "PNV el 24,2 % y EH Bildu el 24,1 %. Entre el primero",
+   "cifra": "24,1",
+   "calculo": "D['euskadi']['BILDU'][-1]"
+  },
+  {
+   "texto": "el primero y el tercero, 1,3 puntos. En las 15 generales",
+   "cifra": "1,3",
+   "calculo": "D['euskadi']['dif3'][-1]"
+  },
+  {
+   "texto": "tercero, 1,3 puntos. En las 15 generales anteriores,",
+   "cifra": "15",
+   "calculo": "len(EL)-1"
+  },
+  {
+   "texto": "el tercero había sido de 5,9 puntos, en 1989.",
+   "cifra": "5,9",
+   "calculo": "min(D['euskadi']['dif3'][:-1])"
+  },
+  {
+   "texto": "votado en el País Vasco en 11 de las 16 generales.",
+   "cifra": "11",
+   "calculo": "sum(max(['PNV','PSOE','BILDU','PP','SUMAR','UCD'], key=lambda f: D['euskadi'][f][i])=='PNV' for i in range(len(EL)))"
+  },
+  {
+   "texto": "el País Vasco en 11 de las 16 generales. Las excepciones",
+   "cifra": "16",
+   "calculo": "len(EL)"
+  },
+  {
+   "texto": "y el 29,2 % en 2016, ya en coalición",
+   "cifra": "29,2",
+   "calculo": "D['euskadi']['SUMAR'][EL.index('2016')]"
+  },
+  {
+   "texto": "Su mejor resultado fue el 34,2 % de 2004. El de 2023,",
+   "cifra": "34,2",
+   "calculo": "max(D['euskadi']['PNV'])"
+  },
+  {
+   "texto": "% de 2004. El de 2023, el 24,2 %, es el más bajo desde",
+   "cifra": "24,2",
+   "calculo": "D['euskadi']['PNV'][-1]"
+  },
+  {
+   "texto": "EH Bildu, con el 24,1 %, igualó prácticamente",
+   "cifra": "24,1",
+   "calculo": "D['euskadi']['BILDU'][-1]"
+  },
+  {
+   "texto": "%, igualó prácticamente el 24,4 % de Amaiur en 2011,",
+   "cifra": "24,4",
+   "calculo": "D['euskadi']['BILDU'][EL.index('2011')]"
+  },
+  {
+   "texto": "Gipuzkoa ganó EH Bildu, con el 31,4 %; en Bizkaia, el PNV,",
+   "cifra": "31,4",
+   "calculo": "D['euskadi']['prov23']['Gipuzkoa']['BILDU']"
+  },
+  {
+   "texto": "en Bizkaia, el PNV, con el 27,1 %, por delante del PSE",
+   "cifra": "27,1",
+   "calculo": "D['euskadi']['prov23']['Bizkaia']['PNV']"
+  },
+  {
+   "texto": "27,1 %, por delante del PSE (26,0 %), y en Álava, el PSE,",
+   "cifra": "26,0",
+   "calculo": "D['euskadi']['prov23']['Bizkaia']['PSOE']"
+  },
+  {
+   "texto": "en Álava, el PSE, con el 27,8 %.",
+   "cifra": "27,8",
+   "calculo": "D['euskadi']['prov23']['Araba/Álava']['PSOE']"
+  },
+  {
+   "texto": "fue la lista más votada en 140 de los 251 municipios",
+   "cifra": "140",
+   "calculo": "D['euskadi']['munis23']['BILDU']"
+  },
+  {
+   "texto": "más votada en 140 de los 251 municipios vascos, el",
+   "cifra": "251",
+   "calculo": "sum(D['euskadi']['munis23'].values())"
+  },
+  {
+   "texto": "municipios vascos, el PNV en 76, el PSE en 29 y el PP",
+   "cifra": "76",
+   "calculo": "D['euskadi']['munis23']['PNV']"
+  },
+  {
+   "texto": "vascos, el PNV en 76, el PSE en 29 y el PP en 6. El PSE",
+   "cifra": "29",
+   "calculo": "D['euskadi']['munis23']['PSOE']"
+  },
+  {
+   "texto": "76, el PSE en 29 y el PP en 6. El PSE sumó más votos",
+   "cifra": "6",
+   "calculo": "D['euskadi']['munis23']['PP']"
+  },
+  {
+   "texto": "el tercero había sido de 5,9 puntos, en 1989.",
+   "condicion": "D['euskadi']['dif3'][EL.index('1989')]==min(D['euskadi']['dif3'][:-1])"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "cuando ganó Podemos (con el 26,2 % del voto válido en",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2015/congreso/euskadi"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Tres partidos en 1,3 puntos:",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  },
+  {
+   "texto": "en 1,3 puntos: el empate a tres de Euskadi en 2023 no",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  },
+  {
+   "texto": "la menor distancia entre tres partidos desde 1977.",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  },
+  {
+   "texto": "generales de julio de 2023, los tres primeros partidos quedaron",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  },
+  {
+   "texto": "Tres territorios, tres ganadores",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  },
+  {
+   "texto": "Tres territorios, tres ganadores",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  },
+  {
+   "texto": "Cuatro décadas de voto en EuskadiVoto",
+   "motivo": "recuento verbal de partidos, territorios o décadas, no un dato calculado"
+  }
+ ]
+}

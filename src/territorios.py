@@ -432,14 +432,28 @@ ESPANA = {'@type': 'Country', 'name': 'España'}
 
 
 # ---------- páginas de territorio ----------
+# Nombre en castellano que mucha gente usa al buscar, cuando el oficial es otro (se añade entre paréntesis en título y texto).
+ALIAS_PROV = {'48': 'Vizcaya', '20': 'Guipúzcoa'}
+ALIAS_CCAA = {'pais-vasco': 'Euskadi'}
+
+
+def con_alias(nombre, alias):
+    return f'{nombre} ({alias})' if alias else nombre
+
+
 def enlace_listas(provs, raiz):
     """Enlace a las listas del 29N (BOE) de cada circunscripción: listas-electorales-29n/<provincia>/."""
     if len(provs) == 1:
         p = provs[0]
         return (f'<p class="listas29"><a href="{raiz}listas-electorales-29n/{PROV_SLUG[p]}/">Candidatos del 29N por {escape(PROV_NOMBRE[p])}: '
-                'las listas al Congreso y al Senado, puesto a puesto →</a></p>')
+                'las listas al Congreso y al Senado, puesto a puesto →</a></p>'
+                f'<p class="listas29"><a href="{raiz}encuestas/{PROV_SLUG[p]}/">Encuesta del 29N en {escape(PROV_NOMBRE[p])}: '
+                'los escaños según la media de encuestas →</a></p>')
+    orden = sorted(provs, key=lambda p: PROV_NOMBRE[p])
     return ('<p class="listas29">Candidatos del 29N, las listas al Congreso y al Senado de cada provincia: '
-            + ' · '.join(f'<a href="{raiz}listas-electorales-29n/{PROV_SLUG[p]}/">listas por {escape(PROV_NOMBRE[p])}</a>' for p in sorted(provs, key=lambda p: PROV_NOMBRE[p])) + '.</p>')
+            + ' · '.join(f'<a href="{raiz}listas-electorales-29n/{PROV_SLUG[p]}/">listas por {escape(PROV_NOMBRE[p])}</a>' for p in orden) + '.</p>'
+            '<p class="listas29">Escaños de cada provincia según la media de encuestas: '
+            + ' · '.join(f'<a href="{raiz}encuestas/{PROV_SLUG[p]}/">encuesta de {escape(PROV_NOMBRE[p])}</a>' for p in orden) + '.</p>')
 
 
 def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(), tipo_txt='Comunidad', contenido=None, ccaa=None):
@@ -448,12 +462,13 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     serie = T.serie(df)
     r = serie[T.ULTIMA]
     g = T.ganador(r)
-    titulo = f'Elecciones 29N 2026 en {nombre}: censo electoral y cómo votó cada municipio'
+    nombre_t = con_alias(nombre, ALIAS_PROV.get(provs[0]) if tipo_txt == 'Provincia' else ALIAS_CCAA.get(ccaa))
+    titulo = f'Elecciones 29N 2026 en {nombre_t}: censo electoral y cómo votó cada municipio'
     ambito = 'la ciudad' if provs[0] in ('51', '52') else ('la comunidad' if tipo_txt == 'Comunidad' else 'la provincia')
     cods = CENSO.index[CENSO.index.str[:2].isin(provs)]   # del INE, con los municipios nuevos que aún no tienen resultados
     b_censo, q_censo = bloque_censo(nombre, cods, ambito,
                                     [(p, f'<a href="{"../" * nivel}{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>') for p in provs] if len(provs) > 1 else (), en)
-    desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cods)[2])} electores. ' if q_censo else '')
+    desc = ((f'Censo electoral para el 29N en {nombre_t}: {num(censo_29n(cods)[2])} electores. ' if q_censo else '')
             + f'Así votó en las generales de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
             + 'Voto por renta de los barrios y municipios principales.')
     about = lugar(nombre, contenido or ESPANA)
@@ -674,7 +689,7 @@ def pagina_ciudad(cod):
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
-    conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {nprov}'
+    conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
                 f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
     h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"calle a calle " if b_sec else ""}en el mapa por sección censal</a></p>')
@@ -2491,7 +2506,7 @@ def municipios_provincia(p):
     cs = sorted((c for c in CIUDADES if c[:2] == p), key=lambda c: -pob[c])
     nombre = PROV_NOMBRE[p]
     en = en_provincia_txt(p)
-    titulo = f'Elecciones por municipio {en}: resultados de sus {num(len(cs))} municipios con página propia'
+    titulo = f'Elecciones por municipio {en}{" (" + ALIAS_PROV[p] + ")" if p in ALIAS_PROV else ""}: resultados de sus {num(len(cs))} municipios con página propia'
     desc = (f'Resultados de las generales de 2023 y enlaces a la página de cada municipio de más de 1.000 habitantes {en}: '
             'voto por sección censal, por renta y desde 1977.')
     partes = [{'@type': 'WebPage', 'name': f'Elecciones en {_nom(c)}', 'url': BASE + CIUDADES[c]} for c in cs]
