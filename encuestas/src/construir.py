@@ -188,7 +188,8 @@ def estimacion():
     p_desde = lambda b, t: sum(x for i, x in enumerate(b['escanos_dist']['p']) if b['escanos_dist']['desde'] + i >= t) if b and 'escanos_dist' in b else None
     frase = ''
     if pv:
-        frase += (f'PP y Vox suman {round(pv["escanos"][2])} escaños en el escenario central (entre {round(pv["escanos"][1])} y {round(pv["escanos"][3])} '
+        # la cifra central es la suma de la tabla (reparto que suma 350), no la mediana del bloque, que puede diferir en uno
+        frase += (f'PP y Vox suman {central.get("PP", 0) + central.get("Vox", 0)} escaños en el escenario central (entre {round(pv["escanos"][1])} y {round(pv["escanos"][3])} '
                   f'en el 80 % de las simulaciones) y llegan a 176 en el {prob(pv["p_mayoria"])} de ellas.'
                   + (f' A los tres quintos de la Cámara, 210 escaños, llegan en el {prob(p_desde(pv, 210))}: es la mayoría que pide el Congreso para reformar la Constitución (el Senado también tiene que aprobarla por tres quintos), '
                      'para elegir a los diez vocales del CGPJ que le tocan y a cuatro magistrados del Constitucional.' if p_desde(pv, 210) is not None else ''))
