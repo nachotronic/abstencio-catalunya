@@ -36,6 +36,10 @@ Lo que mejor encaja contigo son las **ilustraciones de cabecera** (collages edit
 - **Nada de relleno SEO**: ni páginas vacías ni texto escrito para buscadores.
 - Fotos reales: Wikimedia Commons, con autor y licencia.
 
+## Antes de fusionar una pieza (regla de Nacho, 3-11-2026)
+
+Ninguna pieza de Actualidad o Internacional se fusiona sin (a) la revisión de un hilo editor separado y (b) la Action «Verificar piezas» en verde: cifras del texto recalculadas desde los datos de la pieza, enlaces vivos, imágenes presentes y ningún dato español en las internacionales. Cómo declarar las cifras: [`actualidad/verificacion/LEEME.md`](actualidad/verificacion/LEEME.md).
+
 ## Construir
 
 Requisitos: Python 3 con pandas, geopandas y pyarrow; Node con Playwright para las imágenes. Las órdenes, desde la raíz:
