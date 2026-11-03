@@ -1820,7 +1820,8 @@ def tema_29n(resumen):
                      [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
              + f'<p class="leyenda">Fuente: Ministerio del Interior. Votos y escaños por candidatura. Cálculo del reparto con la regla D\'Hondt en <a href="{raiz}actualidad/precio-del-escano-29n/">el precio del escaño</a>.</p>'
             f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar tras el 29N? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>'
-            f'<p><a href="{raiz}listas-electorales-29n/">Listas electorales del 29N: busca a los candidatos al Congreso y al Senado de cada provincia →</a></p>')
+            f'<p><a href="{raiz}listas-electorales-29n/">Listas electorales del 29N: busca a los candidatos al Congreso y al Senado de cada provincia →</a></p>'
+            f'<p><a href="{raiz}listas-electorales-29n/mi-diputado/">¿Quién es mi diputado? Búscalo por código postal o municipio, con los candidatos del 29N que tienen opciones →</a></p>')
     cuenta = {}
     for g in gp.values():
         cuenta[g] = cuenta.get(g, 0) + 1
@@ -2144,7 +2145,8 @@ def tema_resultados(resumen):
                      [[escape(x['partido']), num(x['votos']), f'{x["pct"]:.1f}'.replace('.', ',') + ' %', str(x['escanos']), str(R26.get(x['partido'], 0))] for x in pt if x['escanos']])
              + '<p class="leyenda">Fuente: Ministerio del Interior.</p>'
             f'<p><a href="{raiz}encuestas/simulador-pactos/">¿Quién puede gobernar? Prueba los pactos en el simulador: qué partidos suman 176 →</a></p>'
-            f'<p><a href="{raiz}listas-electorales-29n/">Listas electorales del 29N: los candidatos de cada partido en las 52 provincias →</a></p>')
+            f'<p><a href="{raiz}listas-electorales-29n/">Listas electorales del 29N: los candidatos de cada partido en las 52 provincias →</a></p>'
+            f'<p><a href="{raiz}listas-electorales-29n/mi-diputado/">¿Quién es mi diputado? Búscalo por código postal o municipio, con los candidatos del 29N que tienen opciones →</a></p>')
     h.append(bloque_resultado('España', e))
     rp = {p: r_prov(p) for p in ESCANOS_2026}
     gp = {p: T.ganador(r) for p, r in rp.items()}
