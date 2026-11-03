@@ -3728,7 +3728,7 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-02 08:20',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-03 08:15',
         titulo='Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan', serie='internacional',
         descripcion='Estados Unidos elige el 3 de noviembre a los 435 miembros de la Cámara de Representantes. En 2024 ganaron los republicanos, 220 a 215. Nueve estados han cambiado sus distritos, la mayoría a petición de Trump, con mapas pensados para darle nueve escaños netos más. En el resto del país, a los demócratas les bastaría un giro de 4 puntos; las encuestas apuntan a unos 11.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
@@ -3763,14 +3763,14 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-02 08:20',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-03 08:15',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
         limites='En los estados con dos husos horarios se toma la hora en que cierra la mayor parte del estado. En Dakota del Norte las fuentes no coinciden en algunos colegios. Las calificaciones son las de The Cook Political Report a 30 de octubre y pueden cambiar antes del martes. La ventaja de 2024 en los distritos que han cambiado de límites no es comparable.',
         fuentes=[('https://www.270towin.com/poll-closing-times', '270toWin, horas de cierre de los colegios en 2026'),
                  ('https://www.thegreenpapers.com/G26/closing.phtml', 'The Green Papers, horas de cierre de los colegios en 2026'),
-                 ('https://www.sos.la.gov/electionsandvoting/getelectioninformation/reviewtypesofelections', 'Secretaría de Estado de Luisiana, tipos de elección (primaria abierta a la Cámara el 3-11-2026 y segunda vuelta el 12-12-2026)'),
+                 ('https://www.sos.la.gov/elections-voting/election-dates', 'Secretaría de Estado de Luisiana, calendario electoral (primaria abierta a la Cámara el 3-11-2026 y segunda vuelta el 12-12-2026)'),
                  ('https://www.cookpolitical.com/ratings/house-race-ratings', 'The Cook Political Report, calificaciones de la Cámara (30-10-2026)'),
                  ('https://www.cookpolitical.com/ratings/senate-race-ratings', 'The Cook Political Report, calificaciones del Senado (30-10-2026)'),
                  ('https://election.lab.ufl.edu/', 'Election Lab de la Universidad de Florida, voto anticipado (1-11-2026)'),
@@ -3870,21 +3870,24 @@ PIEZAS += [
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
+    # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después
+    'listas-29n-quien-encabeza': '2026-11-03',
+    'eeuu-noche-electoral-guia-horarios': '2026-11-04',
+    'banez-huelva-pp-29n': '2026-11-03',
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
     'bulgaria-yotova-gyurov-mapa-municipios': '2026-11-03',
-    'banez-huelva-pp-29n': '2026-11-02',
     'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
     'puente-valladolid-segundo-escano-29n': '2026-10-29',
     'ley-nietos-voto-exterior-29n': '2026-10-29',
     'ley-nietos-donde-estan-29n': '2026-10-29',
-    'listas-29n-quien-encabeza': '2026-10-29',
     'rufian-montero-la-revuelta-29n': '2026-10-29',
     'israel-pactos-escanos-knesset': '2026-10-29',
-    'eeuu-noche-electoral-guia-horarios': '2026-11-04',
     'eeuu-elecciones-medio-mandato-mapa': '2026-11-01',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
+
+INTER_EN_ACTUALIDAD = {'eeuu-noche-electoral-guia-horarios'}   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
 def franja_portada(todas, pre=''):
@@ -3898,7 +3901,7 @@ def franja_portada(todas, pre=''):
     hoy = datetime.date.today().isoformat()
     fijas = [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta]
     recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
-    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and q['serie'] not in ('historia', 'internacional')][:10]
+    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and (q['serie'] not in ('historia', 'internacional') or q['slug'] in fijas and q['slug'] in INTER_EN_ACTUALIDAD)][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
