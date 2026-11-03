@@ -22,7 +22,7 @@ En cada pieza de Actualidad o Internacional que el PR crea o cambia (su `<slug>.
 | **Cifras** | Cifra de un párrafo nuevo o cambiado sin declarar; cálculo que no da la cifra del texto; frase declarada que ya no está; cifra del titular o la entradilla que no aparece en el cuerpo | |
 | **Enlaces** | Enlace interno a una página que no existe; externo que da 404, 410 o un dominio inexistente | Web que no deja entrar a robots (403, 5xx, tiempo agotado) |
 | **Imágenes** | `<img>`, foto de cabecera, Open Graph o `img/compartir/actualidad-<slug>.jpg` que falta, está vacía o no es una imagen | |
-| **Internacional** | Partidos, líderes o comunidades españolas, «29N», fuentes españolas (Interior, INE) o enlaces a municipios, generales o encuestas españolas, en el texto o en los datos del mapa | |
+| **Internacional** | Partidos, líderes o comunidades españolas (no basta «elecciones generales», que también las hay en otros países), «29N», fuentes españolas (Interior, INE) o enlaces a municipios, generales o encuestas españolas, en el texto o en los datos del mapa | |
 | **Actualización** | Pieza publicada que cambia de texto sin cambiar `actualizado` | |
 
 Cuentan como cifras los números (también «once», «nueve»…) de los párrafos con `data-tipo`, el titular, la entradilla, los intertítulos y los pies de gráfico. No cuentan los años, las fechas, las horas, los ordinales ni códigos como KY-6. En una pieza ya publicada solo se exigen las cifras de los párrafos nuevos o cambiados.
