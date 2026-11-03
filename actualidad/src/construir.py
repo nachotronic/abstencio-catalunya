@@ -3787,11 +3787,11 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='encuestas-antes-despues-urda-29n', fecha='2026-11-02', actualizado='2026-11-02 08:20',
-        titulo='Tres de tres: el PSOE baja en todas las encuestas hechas tras el choque de Urda', serie='29n', figura=0,
+        slug='encuestas-antes-despues-urda-29n', fecha='2026-11-02', actualizado='2026-11-03 08:07',
+        titulo='Cuatro de cuatro: el PSOE baja en todas las encuestas hechas tras el choque de Urda', serie='29n', figura=0,
         foto=dict(src='img/actualidad/fotos/encuestas-antes-despues-urda-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Dos montones de cuestionarios separados por un desgarro, uno sobre rojo y otro sobre azul bajo una lupa, junto a una urna: un collage.'),
-        descripcion='En las encuestas con trabajo de campo anterior al 28 de octubre, el PSOE ganaba entre ocho décimas y algo más de dos puntos respecto a la anterior de la misma empresa; en las tres hechas después, pierde entre cuatro décimas y punto y medio. El PP hace el camino contrario. Nuestro modelo da hoy a PP y Vox 198 escaños.',
+        descripcion='En las encuestas con trabajo de campo anterior al 28 de octubre, el PSOE ganaba entre ocho décimas y algo más de dos puntos respecto a la anterior de la misma empresa; en las cuatro hechas después, pierde entre cuatro décimas y punto y medio. Nuestro modelo da hoy a PP y Vox 200 escaños.',
         compara='Las seis encuestas nacionales publicadas entre el 26 de octubre y el 1 de noviembre de 2026 que tienen una entrega reciente de la misma empresa, separadas según su trabajo de campo fuera anterior o posterior al choque de trenes de Urda del 28 de octubre, y la mediana semanal de las encuestas desde finales de agosto.',
         limites='Que los cambios coincidan en el tiempo con el accidente no prueba que se deban a él. Comparar una encuesta con la anterior de la misma empresa no elimina el error de muestreo: varios cambios están dentro del margen de error. El ElectoPanel empezó su trabajo de campo el mismo 28 de octubre y SocioMétrica acumula entrevistas desde septiembre. Las cifras de la encuesta de Sigma Dos del 1 de noviembre son las que recoge Electográfica. La mediana usa la última encuesta de cada empresa en las tres semanas anteriores, sin ponderar, e incluye el CIS. Los sondeos internos de los partidos no se cuentan.',
         calculo='Diferencia, en puntos, entre la estimación de PP, PSOE y Vox en cada encuesta de la semana y en la anterior de la misma empresa. En SocioMétrica, el PP sin UPN. Mediana semanal: la de la página de encuestas, tomada cada domingo y recalculada con los datos del 2 de noviembre.',
