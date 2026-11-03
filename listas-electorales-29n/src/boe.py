@@ -70,6 +70,15 @@ def nombre_limpio(t):
     return re.sub(r'\s+', ' ', t.strip().rstrip('.').strip())
 
 
+def sin_etiqueta(t):
+    """Senado: algunas juntas añaden al nombre la coalición entre paréntesis («Ana Gil Pérez (SENADO DE PROGRESO)»,
+    «… (SDP (PSOE-IU-MS))»). Se quita si va en mayúsculas o es «Senado de Progreso»; un apodo («(Chami)») se queda."""
+    m = re.search(r'\s*\(((?:[^()]|\([^()]*\))*)\)\s*$', t)
+    if m and (m.group(1).upper() == m.group(1) or slug(m.group(1)) == 'senado-de-progreso'):
+        return t[:m.start()].rstrip(' .')
+    return t
+
+
 def lee(xml):
     """Devuelve la lista de candidaturas: provincia, cámara, circunscripción (islas en el Senado), número de orden en el
     BOE, denominación, siglas, titulares y suplentes (en el Senado, los dos suplentes de cada candidato)."""
@@ -124,12 +133,12 @@ def lee(xml):
             continue
         ms = re.match(r'(?i)^suplente\s*(\d*)\s*:\s*(.+)$', t)
         if ms and camara == 'senado' and cand['titulares']:
-            cand['titulares'][-1].setdefault('suplentes', []).append(re.sub(r'(?i)\s*\(independ\w*\)$', '', nombre_limpio(ms.group(2))))
+            cand['titulares'][-1].setdefault('suplentes', []).append(sin_etiqueta(re.sub(r'(?i)\s*\(independ\w*\)$', '', nombre_limpio(ms.group(2)))))
             continue
         m = re.match(r'^(\d+)\.\s*(.+)$', t)
         if en_suplentes == 'senado':
             if m and 'data-sangria="2"' in attrs:
-                cand['titulares'][-1].setdefault('suplentes', []).append(re.sub(r'(?i)\s*\(independ\w*\)$', '', nombre_limpio(m.group(2))))
+                cand['titulares'][-1].setdefault('suplentes', []).append(sin_etiqueta(re.sub(r'(?i)\s*\(independ\w*\)$', '', nombre_limpio(m.group(2)))))
                 continue
             en_suplentes = False   # sin sangría: el siguiente candidato
         if not m and camara == 'senado' and t.endswith('.') and not re.match(r'(?i)^suplente', t):
@@ -140,6 +149,8 @@ def lee(xml):
         ind = re.search(r'\s*\((independiente|independent|independentea)\)$', persona['nombre'], re.I)
         if ind:   # «Ana Gil Perdices (Independiente)»: la etiqueta va aparte
             persona['nombre'], persona['independiente'] = persona['nombre'][:ind.start()].rstrip(' .'), True
+        if camara == 'senado':
+            persona['nombre'] = sin_etiqueta(persona['nombre'])
         (cand['suplentes'] if en_suplentes else cand['titulares']).append(persona)
     return out
 

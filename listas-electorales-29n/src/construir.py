@@ -140,6 +140,28 @@ def pct(p):
     return f'{round(p * 100)}\u00a0%'
 
 
+def en_pct(p):
+    """«en el 54 %», «en más del 99 %», «en menos del 1 %»."""
+    t = pct(p)
+    return f'en {t}' if t.startswith(('más', 'menos')) else f'en el {t}'
+
+
+def nombre_partido(c):
+    """Nombre corto de la candidatura y su forma con «de»: («PP», «del PP»), («Vox», «de Vox»), («Comuns», «de los Comuns»)."""
+    den, sig = c['denominacion'].upper(), c['siglas']
+    if c['fam'] == 'OTROS':
+        n = sig or c['denominacion']
+        return n, f'de {n}'
+    if c['fam'] == 'SUMAR':
+        for pat, n, d in (('COMUNS', 'Comuns', 'de los Comuns'), ('COMPROM', 'Compromís', 'de Compromís'), ('ARAMÉS', 'AraMés', 'de AraMés'),
+                          ('CHUNTA', 'CHA-Frente Amplio', 'de CHA-Frente Amplio'), ('PUEBLO CANARIO', 'Unidad del Pueblo Canario', 'de Unidad del Pueblo Canario')):
+            if pat in den:
+                return n, d
+        return 'Frente Amplio', 'del Frente Amplio'
+    n = 'PSC' if sig.startswith('PSC') else c['corto']
+    return n, (f'del {n}' if n in ('PP', 'PSOE', 'PSC', 'PNV', 'BNG') else f'de {n}')
+
+
 def nivel(p):
     if p is None:
         return ''
@@ -728,21 +750,21 @@ def pagina_candidato(c, p, cs_prov, datos, pu_meta):
     cod = c['prov']
     corto, sl = PROV_NOMBRE[cod].split('/')[0], PROV_SLUG[cod]
     nombre, n = p['nombre'], p['n']
-    partido = c['corto'] if c['fam'] != 'OTROS' else (c['siglas'] or c['denominacion'])
+    partido, de_partido = nombre_partido(c)
     pu = json.loads((DATOS / 'puestos-29n.json').read_text())['puestos'].get(cod, {})
     fam = next((f for f in PARTIDOS if f[0] == c['fam']), None)
     probs = pu.get(fam[5]) if fam and fam[5] else None
     hoy = date.today().isoformat()
     fase = 'proclamadas' if datos['fase'] == 'proclamadas' else 'presentadas'
     fuente_boe = f'<a href="{datos["url"]}">BOE del {fecha_larga(datos["fecha_boe"])}</a>, candidaturas {fase}'
-    titulo = f'{nombre}: número {n} de {partido} por {corto} en las elecciones del 29N'
+    titulo = f'{nombre}: número {n} {de_partido} por {corto} en las elecciones del 29N'
     parrafos = [('dato', f'{e(nombre)} va en el puesto {n} de la lista de {e(c["denominacion"])} al Congreso por {e(corto)} en las elecciones generales '
                          f'del 29 de noviembre de 2026, según las candidaturas {fase} en el {fuente_boe.split(">", 1)[1].split("<")[0]}.')]
     if 'p' in p and probs:
         media = sum(probs)
-        parrafos.append(('dato', f'Con la media de encuestas del {fecha_larga(pu_meta["modelo"])}, el puesto {n} de esta lista consigue escaño en el {pct(p["p"])} '
+        parrafos.append(('dato', f'Con la media de encuestas del {fecha_larga(pu_meta["modelo"])}, el puesto {n} de esta lista consigue escaño {en_pct(p["p"])} '
                                  f'de las {miles(pu_meta["simulaciones"])} simulaciones del modelo de Mapa Electoral: <span class="pr {nivel(p["p"])}">{NIVEL[nivel(p["p"])].lower()}</span>. '
-                                 f'La lista de {e(partido)} saca de media {f"{media:.1f}".replace(".", ",")} escaños en {e(corto)}. Es una estimación, no un resultado.'))
+                                 f'La lista {e(de_partido)} saca de media {f"{media:.1f}".replace(".", ",")} escaños en {e(corto)}. Es una estimación, no un resultado.'))
     elif re.search(SIN_MODELO, c['denominacion'].upper()) or not probs:
         parrafos.append(('dato', 'El modelo de Mapa Electoral no calcula las opciones de esta lista, que no mide por separado.'))
     d = p.get('dipx')
@@ -752,7 +774,7 @@ def pagina_candidato(c, p, cs_prov, datos, pu_meta):
         larga = lambda f: fecha_larga('-'.join(reversed(f.split('/')))) if f.count('/') == 2 else f   # el Congreso da DD/MM/AAAA
         cuando = ('hasta la disolución de las Cortes, el 6 de octubre de 2026' if not baja or baja.startswith('06/10/2026')
                   else f'hasta el {larga(baja)}, cuando dejó el escaño')
-        parrafos.append(('dato', f'Ha sido miembro del Congreso en la XV legislatura, por {e(d["circ"])} y en la candidatura de {e(d["formacion"])}, '
+        parrafos.append(('dato', f'Ha sido miembro del Congreso en la XV legislatura, por {e(d["circ"])} y en la candidatura {"del" if d["formacion"].upper().startswith(("PP", "PS", "PNV", "EAJ", "BNG")) else "de"} {e(d["formacion"])}, '
                                  f'desde el {e(larga(d["alta"]))} {cuando}.'))
         docs = d.get('declaraciones', {})
         li = []
@@ -774,7 +796,7 @@ def pagina_candidato(c, p, cs_prov, datos, pu_meta):
         nm = e(x['nombre']) if x is p else (f'<a href="../{x["ficha"]}/">{e(x["nombre"])}</a>' if x.get('ficha') else e(x['nombre']))
         filas += f'<li{" class=yo" if x is p else ""}><span class="nm">{nm}</span>{marcas(x)}{chip(x)}</li>'
     otras = [(x, q) for x in orden_listas([y for y in cs_prov if y['camara'] == 'congreso' and y is not c], None) for q in x['titulares'][:1] if q.get('ficha')][:6]
-    desc = (f'{nombre} es el número {n} de {partido} al Congreso por {corto} el 29N'
+    desc = (f'{nombre} es el número {n} {de_partido} al Congreso por {corto} el 29N'
             + (f': {pct(p["p"])} de opciones de conseguir escaño según la media de encuestas' if 'p' in p else '')
             + ('. Escaño en la XV legislatura y sus declaraciones de bienes' if d else '') + '. Lista completa del BOE.')[:300]
     url = f'{URL}{sl}/{p["ficha"]}/'
@@ -787,11 +809,11 @@ def pagina_candidato(c, p, cs_prov, datos, pu_meta):
     cuerpo = f"""<main>
 <p class="kicker"><a href="../../">Listas electorales del 29N</a> · <a href="../">{e(corto)}</a> · {e(partido)}</p>
 <h1 data-miga="{e(nombre)}">{e(nombre)}</h1>
-<p class="dek">Número {n} de {e(partido)} al Congreso por {e(corto)} en las elecciones generales del 29N{f" · {pct(p['p'])} de opciones de escaño" if 'p' in p else ''}</p>
+<p class="dek">Número {n} {e(de_partido)} al Congreso por {e(corto)} en las elecciones generales del 29N{f" · {pct(p['p'])} de opciones de escaño" if 'p' in p else ''}</p>
 <p class="firma">Por <a href="../../../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy}">{fecha_larga(hoy)}</time></p>
 {''.join(f'<p data-tipo="{t}">{x}</p>' for t, x in parrafos)}
 {trans}
-<h2>La lista de {e(partido)} por {e(corto)}</h2>
+<h2>La lista {e(de_partido)} por {e(corto)}</h2>
 <section class="lista" style="--c:{c['color']};--co:{c['oscuro']}"><h3><span class="sg">{e(c['siglas'] or c['corto'])}</span> <span class="den">{e(c['denominacion'])}</span></h3><ol>{filas}</ol></section>
 {f'<h2>Otros cabezas de lista por {e(corto)}</h2><ul class="sigue">' + ''.join(f'<li><a href="../{q["ficha"]}/"><span class="kicker">{e(x["corto"] if x["fam"] != "OTROS" else (x["siglas"] or x["denominacion"]))}</span><b>{e(q["nombre"])}</b></a></li>' for x, q in otras) + '</ul>' if otras else ''}
 <h2>Más sobre el 29N en {e(corto)}</h2><ul class="sigue"><li><a href="../"><span class="kicker">Listas</span><b>Todos los candidatos al Congreso y al Senado por {e(corto)}</b></a></li><li><a href="../../mi-diputado/?provincia={cod}"><span class="kicker">Mi diputado</span><b>Los diputados de {e(corto)} y quién repite</b></a></li><li><a href="../../../encuestas/{sl}/"><span class="kicker">Encuestas</span><b>Los escaños de {e(corto)} según las encuestas</b></a></li><li><a href="../../../{ruta_provincia(cod)}"><span class="kicker">Resultados</span><b>Cómo votó {e(corto)} en 2023</b></a></li></ul>
