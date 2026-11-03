@@ -1,0 +1,194 @@
+{
+ "pieza": "listas-proclamadas-29n",
+ "_datos_disponibles": {
+  "NP": "lista de 32: [\"congreso\", \"Alicante\", \"FE de las JONS\"]",
+  "BAR": "lista de 9: [\"PACMA\", 7, 0]"
+ },
+ "cifras": [
+  {
+   "texto": "juntas electorales dejan fuera 32 listas del 29N: PACMA",
+   "cifra": "32",
+   "calculo": "len(NP)"
+  },
+  {
+   "texto": "listas del 29N: PACMA pierde siete provincias y Podemos",
+   "cifra": "siete",
+   "calculo": "sum(1 for x in NP if x[2]=='PACMA')"
+  },
+  {
+   "texto": "candidaturas proclamadas: 21 listas al Congreso y",
+   "cifra": "21",
+   "calculo": "sum(1 for x in NP if x[0]=='congreso')"
+  },
+  {
+   "texto": "proclamadas: 21 listas al Congreso y 11 al Senado no pasan el",
+   "cifra": "11",
+   "calculo": "sum(1 for x in NP if x[0]=='senado')"
+  },
+  {
+   "texto": "proclamaron el lunes las 52 juntas electorales provinciales.",
+   "cifra": "52",
+   "calculo": "len({c['prov'] for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas']})"
+  },
+  {
+   "texto": "documento de proclamación recoge 555 listas al Congreso:",
+   "cifra": "555",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='congreso')"
+  },
+  {
+   "texto": "recoge 555 listas al Congreso: 534 proclamadas y 21 no",
+   "cifra": "534",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='congreso' and not c.get('no_proclamada'))"
+  },
+  {
+   "texto": "Congreso: 534 proclamadas y 21 no proclamadas. Al Senado,",
+   "cifra": "21",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='congreso' and c.get('no_proclamada'))"
+  },
+  {
+   "texto": "cada circunscripción, hay 361 listas proclamadas y",
+   "cifra": "361",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='senado' and not c.get('no_proclamada'))"
+  },
+  {
+   "texto": "361 listas proclamadas y 11 no proclamadas. En total,",
+   "cifra": "11",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='senado' and c.get('no_proclamada'))"
+  },
+  {
+   "texto": "no proclamadas. En total, 32 listas no proclamadas.",
+   "cifra": "32",
+   "calculo": "len(NP)"
+  },
+  {
+   "texto": "proclamadas. A ellas se suman cinco que desaparecen del",
+   "cifra": "cinco",
+   "calculo": "len(json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'])-(len(json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'])-sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='31' and c['siglas']=='PCTE'))"
+  },
+  {
+   "texto": "PACMA había presentado 37 listas al Congreso y",
+   "cifra": "37",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'] if c['camara']=='congreso' and c['siglas']=='PACMA')"
+  },
+  {
+   "texto": "al Congreso y le proclaman 30. Las siete que se caen",
+   "cifra": "30",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='congreso' and c['siglas']=='PACMA' and not c.get('no_proclamada'))"
+  },
+  {
+   "texto": "Congreso y le proclaman 30. Las siete que se caen son las",
+   "cifra": "siete",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='congreso' and c['siglas']=='PACMA' and c.get('no_proclamada'))"
+  },
+  {
+   "texto": "las generales de 2023 tuvo 51 listas proclamadas al",
+   "cifra": "51",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2023-proclamadas.json')['candidaturas'] if c['camara']=='congreso' and c['siglas']=='PACMA')"
+  },
+  {
+   "texto": "de este martes) del número tres al Congreso al número",
+   "condicion": "any(p['n']==3 and 'Gisbert' in p['nombre'] for c in json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'] if c['prov']=='25' and c['camara']=='congreso' and c['siglas']=='ERC' for p in c['titulares'])"
+  },
+  {
+   "texto": "tres al Congreso al número tres al Senado, sube a Lídia",
+   "condicion": "any(p['n']==3 and 'Gisbert' in p['nombre'] for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='25' and c['camara']=='senado' for p in c['titulares'])"
+  },
+  {
+   "texto": "Peruga, que era suplente, al tres del Congreso, y deja",
+   "condicion": "any(p['n']==3 and 'Peruga' in p['nombre'] for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='25' and c['camara']=='congreso' and c['siglas']=='ERC' for p in c['titulares'])"
+  },
+  {
+   "texto": "opciones de escaño: el número ocho de Compromís por Alicante,",
+   "condicion": "[p['nombre'] for c in json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'] if c['prov']=='03' and c['camara']=='congreso' and c['siglas'].startswith('COMPROMIS') for p in c['titulares'] if p['n']==8]!=[p['nombre'] for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='03' and c['camara']=='congreso' and c['siglas'].startswith('COMPROMIS') for p in c['titulares'] if p['n']==8]"
+  },
+  {
+   "texto": "Compromís por Alicante, el nueve de Alhora en Barcelona",
+   "condicion": "[p['nombre'] for c in json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'] if c['prov']=='08' and c['siglas']=='ALHORA' for p in c['titulares'] if p['n']==9]!=[p['nombre'] for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='08' and c['siglas']=='ALHORA' for p in c['titulares'] if p['n']==9]"
+  },
+  {
+   "texto": "en Madrid, SALF, que tenía 37 titulares en el BOE",
+   "cifra": "37",
+   "calculo": "[len(c['titulares']) for c in json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'] if c['prov']=='28' and c['camara']=='congreso' and c['siglas']=='SALF'][0]"
+  },
+  {
+   "texto": "presentadas, tiene ahora los 38 que reparte la provincia.",
+   "cifra": "38",
+   "calculo": "[len(c['titulares']) for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='28' and c['camara']=='congreso' and c['siglas']=='SALF'][0]"
+  },
+  {
+   "texto": "Cinco listas del 28 de octubre,",
+   "cifra": "Cinco",
+   "calculo": "len(json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'])-(len(json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'])-sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['prov']=='31' and c['siglas']=='PCTE'))"
+  },
+  {
+   "texto": "octubre, dos al Congreso y tres al Senado, ya no figuran",
+   "cifra": "tres",
+   "calculo": "sum(1 for c in json('listas-electorales-29n/datos/2026-presentadas.json')['candidaturas'] if c['camara']=='senado')-(sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='senado')-sum(1 for c in json('listas-electorales-29n/datos/2026-proclamadas.json')['candidaturas'] if c['camara']=='senado' and c['prov']=='31' and c['siglas']=='PCTE'))"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "vez cumplido el plazo de 48 horas que los partidos",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/02/las-juntas-electorales-proclaman-este-lunes-las-candidaturas-para-las-elecciones-del-29n/"
+  },
+  {
+   "texto": "la firma de, al menos, el 0,1% de los electores de",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a169"
+  },
+  {
+   "texto": "provincial ha dejado fuera las tres candidaturas de Podemos",
+   "fuente": "https://www.heraldodeleon.es/leon/junta-electoral-anula-tres-listas-podemos-senado-leon-remite-fiscalia-dni-manipulado-formacion/20261103080806115954.html"
+  },
+  {
+   "texto": "Mundo Más Justo presentó 18 firmas válidas cuando",
+   "fuente": "https://www.heraldodeleon.es/leon/junta-electoral-anula-tres-listas-podemos-senado-leon-remite-fiscalia-dni-manipulado-formacion/20261103080806115954.html"
+  },
+  {
+   "texto": "válidas cuando necesitaba 427, el 0,1% de los 426.012",
+   "fuente": "https://www.heraldodeleon.es/leon/junta-electoral-anula-tres-listas-podemos-senado-leon-remite-fiscalia-dni-manipulado-formacion/20261103080806115954.html"
+  },
+  {
+   "texto": "cuando necesitaba 427, el 0,1% de los 426.012 electores",
+   "fuente": "https://www.heraldodeleon.es/leon/junta-electoral-anula-tres-listas-podemos-senado-leon-remite-fiscalia-dni-manipulado-formacion/20261103080806115954.html"
+  },
+  {
+   "texto": "necesitaba 427, el 0,1% de los 426.012 electores del censo",
+   "fuente": "https://www.heraldodeleon.es/leon/junta-electoral-anula-tres-listas-podemos-senado-leon-remite-fiscalia-dni-manipulado-formacion/20261103080806115954.html"
+  },
+  {
+   "texto": "Constitucional hasta el día 9, que tendrá hasta el",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/02/las-juntas-electorales-proclaman-este-lunes-las-candidaturas-para-las-elecciones-del-29n/"
+  },
+  {
+   "texto": "día 9, que tendrá hasta el 12 para resolver. Una lista",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/02/las-juntas-electorales-proclaman-este-lunes-las-candidaturas-para-las-elecciones-del-29n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "para presentarse (artículo 169.3 de la LOREG). El requisito",
+   "motivo": "número de artículo de la ley"
+  },
+  {
+   "texto": "electoral» (Ley Orgánica 2/2011). Antes de la proclamación,",
+   "motivo": "número de ley"
+  },
+  {
+   "texto": "candidaturas». Democracia 21, la candidatura de Miriam",
+   "motivo": "nombre de un partido"
+  },
+  {
+   "texto": "extendió la decisión a las tres listas. El periódico",
+   "motivo": "las mismas tres candidaturas de Podemos que da el Heraldo de León (fuente enlazada en el párrafo)"
+  },
+  {
+   "texto": "de subsanación (artículo 48.1 de la LOREG). La mayoría",
+   "motivo": "número de artículo de la ley"
+  },
+  {
+   "texto": "contencioso-administrativo (artículo 49), y según el calendario",
+   "motivo": "número de artículo de la ley"
+  }
+ ],
+ "permitir_espana": []
+}
