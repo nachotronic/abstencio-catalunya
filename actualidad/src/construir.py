@@ -3787,7 +3787,7 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='encuestas-antes-despues-urda-29n', fecha='2026-11-02', actualizado='2026-11-03 07:57',
+        slug='encuestas-antes-despues-urda-29n', fecha='2026-11-02', actualizado='2026-11-03 08:07',
         titulo='Cuatro de cuatro: el PSOE baja en todas las encuestas hechas tras el choque de Urda', serie='29n', figura=0,
         foto=dict(src='img/actualidad/fotos/encuestas-antes-despues-urda-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Dos montones de cuestionarios separados por un desgarro, uno sobre rojo y otro sobre azul bajo una lupa, junto a una urna: un collage.'),
