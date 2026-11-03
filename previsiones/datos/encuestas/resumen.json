@@ -1,13 +1,13 @@
 {
- "descargado": "2026-11-03T00:57Z",
+ "descargado": "2026-11-03T23:23Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1059,
+ "encuestas_espana": 1060,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-02",
-  "encuestadora": "Target Point",
-  "cliente": "El Debate"
+  "publicado": "2026-11-03",
+  "encuestadora": "More in Common",
+  "cliente": "n/a"
  },
  "siglas_sin_equivalencia": {
   "UPC": 3,
@@ -20,7 +20,7 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 588,
+  "encuestas": 589,
   "ultima_fin_campo": "2026-11-01",
   "faltan_en_electografica_120_dias": 18
  }
