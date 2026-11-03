@@ -3927,7 +3927,7 @@ PIEZAS += [
                   pie='Subida del alquiler en cada distrito de Madrid desde 2019.', fuente='Ministerio de Vivienda (SERPAVI)'),
     ),
     dict(
-        slug='listas-proclamadas-29n', fecha='2026-11-03', actualizado='2026-11-03 09:00',
+        slug='listas-proclamadas-29n', fecha='2026-11-03', actualizado='2026-11-03 09:10',
         titulo='Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León', serie='29n', figura=0,
         descripcion='El BOE publica las candidaturas proclamadas: 21 listas al Congreso y 11 al Senado no pasan el corte. En León, la junta envía a la Fiscalía la copia del DNI de una suplente de Podemos, y en Tenerife el número dos del PP al Senado es otro.',
         compara='Las candidaturas al Congreso y al Senado del BOE de candidaturas presentadas (28 de octubre de 2026) y del BOE de candidaturas proclamadas (3 de noviembre de 2026), lista a lista y nombre a nombre, en las 52 circunscripciones y las islas.',
