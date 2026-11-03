@@ -1,0 +1,11 @@
+{
+  "pieza": "eeuu-elecciones-medio-mandato-mapa",
+  "cifras": [
+    {"texto": "llenando a lo largo de la noche con los 435 distritos en los que se vota", "cifra": "435", "calculo": "len(DIR['dist'])"}
+  ],
+  "externas": [],
+  "ignorar": [
+    {"texto": "Lo actualizaremos cada 30 o 45 minutos.", "motivo": "frecuencia prevista de actualización, no es un dato"}
+  ],
+  "permitir_espana": []
+}
