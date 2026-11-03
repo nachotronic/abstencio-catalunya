@@ -503,7 +503,7 @@ tabla('comp',['Municipio','Electores europeas 2014','Electores generales 2015','
 
 # ---------------------------------------------------------------------------------------------------------------
 P.append(dict(
-    slug='euskadi-empate-a-tres', lugar='País Vasco', datos=['euskadi'],
+    slug='euskadi-empate-a-tres', lugar='País Vasco', datos=['euskadi'], actualizado='2026-11-03 11:55',
     corto='Euskadi, empate a tres',
     titulo='Tres partidos en 1,3 puntos: el empate a tres de Euskadi en 2023 no tiene precedentes',
     dek='En julio de 2023 el PSE sacó el 25,4 % en el País Vasco, el PNV el 24,2 % y EH Bildu el 24,1 %. En ninguna de las 16 generales desde 1977 habían quedado tres partidos tan juntos. '
@@ -513,7 +513,7 @@ P.append(dict(
 <p data-tipo="dato">El PSE-EE sacó el <strong>25,4 %</strong> de los votos a candidaturas (sin voto exterior), el PNV el <strong>24,2 %</strong> y EH Bildu el <strong>24,1 %</strong>. Entre el primero y el tercero, 1,3 puntos. En las 15 generales anteriores, la distancia más corta entre el primero y el tercero había sido de 5,9 puntos, en 1989.</p>
 {fig('serie', 'Cuatro décadas de voto en Euskadi', 'Voto en las generales en Álava, Bizkaia y Gipuzkoa', 'Fuente: Ministerio del Interior. HB, EH, Amaiur y EH Bildu, en la misma familia; en 2000, 2004 y 2008 la izquierda abertzale no se presentó o sus listas fueron ilegalizadas. ' + SIN_CERA, [('PNV','PNV'),('PSOE','PSE-EE (PSOE)'),('BILDU','HB / EH Bildu'),('PP','AP / PP'),('SUMAR','IU / Podemos / Sumar')])}
 <h2>El PNV, primero casi siempre</h2>
-<p data-tipo="dato">El PNV fue el partido más votado en el País Vasco en 11 de las 16 generales. Las excepciones son 1993 y 2008, cuando ganó el PSE; 2015 y 2016, cuando ganó Podemos (con el 29,1 % y el 29,2 %), y 2023. Su mejor resultado fue el 34,2 % de 2004. El de 2023, el 24,2 %, es el más bajo desde 1989.</p>
+<p data-tipo="dato">El PNV fue el partido más votado en el País Vasco en 11 de las 16 generales. Las excepciones son 1993 y 2008, cuando ganó el PSE; 2015 y 2016, cuando ganó Podemos (con el 26,2 % de los votos a candidaturas en 2015, según el <a href="https://www.publico.es/resultados-elecciones/generales/2015/congreso/euskadi">escrutinio oficial</a>, y el 29,2 % en 2016, ya en coalición con IU), y 2023. Su mejor resultado fue el 34,2 % de 2004. El de 2023, el 24,2 %, es el más bajo desde 1989.</p>
 <p data-tipo="dato">EH Bildu, con el 24,1 %, igualó prácticamente el 24,4 % de Amaiur en 2011, el máximo de la izquierda abertzale en unas generales.</p>
 {fig('dif', 'Nunca habían estado tan cerca', 'Distancia en puntos entre el primer y el tercer partido en el País Vasco, en cada elección general', 'Fuente: Ministerio del Interior.')}
 <h2>Tres territorios, tres ganadores</h2>
