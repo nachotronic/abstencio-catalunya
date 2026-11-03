@@ -64,4 +64,12 @@
       <news:title>Desalojada la acampada de Sol: el alquiler sube más deprisa en el sur de Madrid, un 22,7% en Villaverde desde 2019 frente al 15,9% de Centro</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/listas-proclamadas-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-03</news:publication_date>
+      <news:title>Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León</news:title>
+    </news:news>
+  </url>
 </urlset>

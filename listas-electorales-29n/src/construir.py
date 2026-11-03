@@ -140,6 +140,28 @@ def pct(p):
     return f'{round(p * 100)}\u00a0%'
 
 
+def en_pct(p):
+    """«en el 54 %», «en más del 99 %», «en menos del 1 %»."""
+    t = pct(p)
+    return f'en {t}' if t.startswith(('más', 'menos')) else f'en el {t}'
+
+
+def nombre_partido(c):
+    """Nombre corto de la candidatura y su forma con «de»: («PP», «del PP»), («Vox», «de Vox»), («Comuns», «de los Comuns»)."""
+    den, sig = c['denominacion'].upper(), c['siglas']
+    if c['fam'] == 'OTROS':
+        n = sig or c['denominacion']
+        return n, f'de {n}'
+    if c['fam'] == 'SUMAR':
+        for pat, n, d in (('COMUNS', 'Comuns', 'de los Comuns'), ('COMPROM', 'Compromís', 'de Compromís'), ('ARAMÉS', 'AraMés', 'de AraMés'),
+                          ('CHUNTA', 'CHA-Frente Amplio', 'de CHA-Frente Amplio'), ('PUEBLO CANARIO', 'Unidad del Pueblo Canario', 'de Unidad del Pueblo Canario')):
+            if pat in den:
+                return n, d
+        return 'Frente Amplio', 'del Frente Amplio'
+    n = 'PSC' if sig.startswith('PSC') else c['corto']
+    return n, (f'del {n}' if n in ('PP', 'PSOE', 'PSC', 'PNV', 'BNG') else f'de {n}')
+
+
 def nivel(p):
     if p is None:
         return ''
@@ -179,6 +201,7 @@ def prepara(datos, avance):
                 p['p'] = probs[p['n'] - 1] if p['n'] - 1 < len(probs) else 0.0
             d = es_diputado(p['nombre'], c['prov'], dips)
             if d:
+                p['dipx'] = d
                 p['dip'] = d['formacion'] + (' (de baja)' if d['baja'] and not d['baja'].startswith('06/10/2026') else '')
             if prev:
                 k = clave_nombre(p['nombre'])
@@ -235,7 +258,8 @@ def bloque_lista(c, total):
         sup = ''
         if p.get('suplentes'):
             sup = f'<small>Suplentes: {e(", ".join(p["suplentes"]))}</small>'
-        filas += f'<li{corte}><span class="nm">{e(p["nombre"])}</span>{marcas(p)}{chip(p)}{sup}</li>'
+        nm = f'<a href="{p["ficha"]}/">{e(p["nombre"])}</a>' if p.get('ficha') else e(p['nombre'])
+        filas += f'<li{corte}><span class="nm">{nm}</span>{marcas(p)}{chip(p)}{sup}</li>'
     sup = ''
     if c['suplentes']:
         sup = (f'<details><summary>{len(c["suplentes"])} suplente{"s" if len(c["suplentes"]) != 1 else ""}</summary><ol>'
@@ -322,11 +346,12 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
     if salida:
         faq.insert(2, (f'¿Qué candidatos de {corto} tienen el escaño en el aire?', '; '.join(salida[:5]) + '. Probabilidades según el modelo de Mapa Electoral con la media de encuestas.'))
     if cod in ('07', '35', '38'):
-        faq.append(('¿Cómo se elige el Senado en las islas?', 'En Baleares y Canarias cada isla o agrupación de islas elige sus propios senadores: tres Mallorca, Gran Canaria y Tenerife, y uno cada una de las demás.'))
+        faq.append(('¿Cómo se elige el Senado en las islas?', 'En Baleares y Canarias cada isla elige sus propios senadores: tres Mallorca, Gran Canaria y Tenerife, donde cada elector puede marcar hasta dos nombres, '
+                    'y uno cada una de las demás (Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro), donde se marca uno (LOREG, artículos 165 y 166).'))
     elif cod in ('51', '52'):
-        faq.append((f'¿Cuántos senadores elige {corto}?', 'Dos. Cada elector puede votar a uno.'))
+        faq.append((f'¿Cuántos senadores elige {corto}?', 'Dos. Cada elector puede marcar hasta dos nombres, y salen los dos más votados (LOREG, artículos 165 y 166).'))
     else:
-        faq.append((f'¿Cuántos senadores elige {corto}?', 'Cuatro. Cada elector puede marcar hasta tres nombres, de una o de varias candidaturas, y salen los cuatro más votados.'))
+        faq.append((f'¿Cuántos senadores elige {corto}?', 'Cuatro. Cada elector puede marcar hasta tres nombres, de una o de varias candidaturas, y salen los cuatro más votados (LOREG, artículos 165 y 166).'))
     faq = [(q, a) for q, a in faq if a]
     url = f'{URL}{sl}/'
     desc = (f'Listas electorales del 29N en {corto}: candidatos al Congreso y al Senado de cada partido, puesto a puesto, y quién tiene opciones de salir. '
@@ -358,8 +383,8 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
 <p>{len(cong)} candidaturas con {miles(n_cong)} titulares{'' if not avance else ''}. {'Cada nombre lleva la probabilidad de salir elegido según la media de encuestas: <span class="pr seguro">casi seguro</span> (90 % o más), <span class="pr aire">en el aire</span> (10-90 %) y <span class="pr dificil">difícil</span>. ' if not avance else ''}La raya marca el puesto {total}: los escaños que reparte la provincia. <span class="mk dip">diputado/a</span>: tuvo escaño en la legislatura que acaba.{' <span class="mk r23">repite</span>: ya fue candidato en 2023.' if not avance else ''}</p>
 <nav class="menu-listas" aria-label="Candidaturas al Congreso">{menu}</nav>
 <div class="listas">{''.join(bloque_lista(c, total) for c in cong)}</div>
-<h2>Candidatos al Senado por {e(corto)} ({anio})</h2>
-<p>{len(sen)} candidaturas y {n_sen} candidatos{', por islas' if cod in ('07', '35', '38') else ''}. Junto a cada nombre, sus dos suplentes.</p>
+<h2 id="senado">Candidatos al Senado por {e(corto)} ({anio})</h2>
+<p>{len(sen)} candidaturas y {n_sen} candidatos{', por islas' if cod in ('07', '35', '38') else ''}. Junto a cada nombre, sus dos suplentes. <a href="../senado/#{slug(corto) if cod not in ('07', '35', '38') else 'candidatos'}">Cómo se vota al Senado y cuántas cruces caben en la papeleta</a>.</p>
 <div class="listas">{''.join(bloque_lista(c, 0) for c in sen)}</div>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in faq)}</div>
@@ -415,12 +440,12 @@ let lim=100;
 const pc=p=>p==null?'':p>=.995?'más del 99\u00a0%':p<.005?'menos del 1\u00a0%':Math.round(p*100)+'\u00a0%';
 const nv=p=>p==null?'':p>=.9?'seguro':p>=.1?'aire':'dificil';
 function pinta(){const t=norm(q.value.trim()),pv=fp.value,pa=fpa.value,c=fc.value,cab=fcab.checked,sal=fsal&&fsal.checked;
- const out=[];for(const r of D){ // r: [nombre, prov, camara, partido, puesto, suplente, prob, diputado, circ, k]
+ const out=[];for(const r of D){ // r: [nombre, prov, camara, partido, puesto, suplente, prob, diputado, circ, ficha, k]
   if(pv&&r[1]!==pv)continue;if(c&&r[2]!==+c)continue;if(pa&&P[r[3]][0]!==pa)continue;if(cab&&(r[4]!==1||r[5]))continue;
-  if(sal&&!(r[6]>=.1))continue;if(t&&!r[9].includes(t))continue;out.push(r)}
+  if(sal&&!(r[6]>=.1))continue;if(t&&!r[10].includes(t))continue;out.push(r)}
  if(!t&&!pv&&!pa&&!cab&&!sal){out.sort((a,b)=>(b[6]??-1)-(a[6]??-1))}
  cuenta.textContent=out.length.toLocaleString('es-ES')+(out.length===1?' candidato':' candidatos')+(AV?' (listas de 2023)':'');
- res.innerHTML=out.slice(0,lim).map(r=>{const p=P[r[3]];return `<tr><td class="nm"><b>${r[0]}</b>${r[7]?'<span class="mk dip">diputado/a</span>':''}${r[5]?' <small>suplente</small>':''}</td>`+
+ res.innerHTML=out.slice(0,lim).map(r=>{const p=P[r[3]];return `<tr><td class="nm"><b>${r[9]?`<a href="${PROV[r[1]][0]}/${r[9]}/">${r[0]}</a>`:r[0]}</b>${r[7]?'<span class="mk dip">diputado/a</span>':''}${r[5]?' <small>suplente</small>':''}</td>`+
  `<td class="n">${r[4]}</td><td><i class="pt" style="background:${p[2]}"></i>${p[1]}<small>${r[2]?'Senado':'Congreso'}${r[8]?' · '+r[8]:''}</small></td>`+
  `<td><a href="${PROV[r[1]][0]}/">${PROV[r[1]][1]}</a></td><td class="n">${r[6]==null?'–':`<span class="pr ${nv(r[6])}">${pc(r[6])}</span>`}</td></tr>`}).join('');
  mas.hidden=out.length<=lim;
@@ -696,6 +721,249 @@ ul.gente .pt{display:inline-block;width:9px;height:9px;border-radius:50%;margin-
     return repiten_total, n_fin
 
 
+# ---------- fichas de candidato: /listas-electorales-29n/<provincia>/<nombre>/ ----------
+UMBRAL_FICHA = 0.05   # ficha propia para los titulares al Congreso con al menos un 5 % de opciones, y para los diputados de la XV
+
+
+def elige_fichas(cands, avance):
+    """Marca en cada titular con ficha su carpeta (p['ficha'], relativa a la página de su provincia). Solo con listas del 29N."""
+    if avance:
+        return []
+    out, usados = [], set()
+    for c in cands:
+        if c['camara'] != 'congreso':
+            continue
+        for p in c['titulares']:
+            if not (p.get('p', 0) >= UMBRAL_FICHA or p.get('dipx')):
+                continue
+            s = slug(p['nombre'])
+            if (c['prov'], s) in usados:   # dos personas con el mismo nombre en la misma provincia
+                s = f'{s}-{slug(c["siglas"] or c["corto"])}'
+            usados.add((c['prov'], s))
+            p['ficha'] = s
+            out.append((c, p))
+    return out
+
+
+def pagina_candidato(c, p, cs_prov, datos, pu_meta):
+    e = html.escape
+    cod = c['prov']
+    corto, sl = PROV_NOMBRE[cod].split('/')[0], PROV_SLUG[cod]
+    nombre, n = p['nombre'], p['n']
+    partido, de_partido = nombre_partido(c)
+    pu = json.loads((DATOS / 'puestos-29n.json').read_text())['puestos'].get(cod, {})
+    fam = next((f for f in PARTIDOS if f[0] == c['fam']), None)
+    probs = pu.get(fam[5]) if fam and fam[5] else None
+    hoy = date.today().isoformat()
+    fase = 'proclamadas' if datos['fase'] == 'proclamadas' else 'presentadas'
+    fuente_boe = f'<a href="{datos["url"]}">BOE del {fecha_larga(datos["fecha_boe"])}</a>, candidaturas {fase}'
+    titulo = f'{nombre}: número {n} {de_partido} por {corto} en las elecciones del 29N'
+    parrafos = [('dato', f'{e(nombre)} va en el puesto {n} de la lista de {e(c["denominacion"])} al Congreso por {e(corto)} en las elecciones generales '
+                         f'del 29 de noviembre de 2026, según las candidaturas {fase} en el {fuente_boe.split(">", 1)[1].split("<")[0]}.')]
+    if 'p' in p and probs:
+        media = sum(probs)
+        parrafos.append(('dato', f'Con la media de encuestas del {fecha_larga(pu_meta["modelo"])}, el puesto {n} de esta lista consigue escaño {en_pct(p["p"])} '
+                                 f'de las {miles(pu_meta["simulaciones"])} simulaciones del modelo de Mapa Electoral: <span class="pr {nivel(p["p"])}">{NIVEL[nivel(p["p"])].lower()}</span>. '
+                                 f'La lista {e(de_partido)} saca de media {f"{media:.1f}".replace(".", ",")} escaños en {e(corto)}. Es una estimación, no un resultado.'))
+    elif re.search(SIN_MODELO, c['denominacion'].upper()) or not probs:
+        parrafos.append(('dato', 'El modelo de Mapa Electoral no calcula las opciones de esta lista, que no mide por separado.'))
+    d = p.get('dipx')
+    trans = ''
+    if d:
+        baja = d.get('baja', '')
+        larga = lambda f: fecha_larga('-'.join(reversed(f.split('/')))) if f.count('/') == 2 else f   # el Congreso da DD/MM/AAAA
+        cuando = ('hasta la disolución de las Cortes, el 6 de octubre de 2026' if not baja or baja.startswith('06/10/2026')
+                  else f'hasta el {larga(baja)}, cuando dejó el escaño')
+        parrafos.append(('dato', f'Ha sido miembro del Congreso en la XV legislatura, por {e(d["circ"])} y en la candidatura {"del" if d["formacion"].upper().startswith(("PP", "PS", "PNV", "EAJ", "BNG")) else "de"} {e(d["formacion"])}, '
+                                 f'desde el {e(larga(d["alta"]))} {cuando}.'))
+        docs = d.get('declaraciones', {})
+        li = []
+        for k, t in (('bienes', 'Declaración de bienes y rentas'), ('intereses', 'Declaración de intereses económicos'), ('actividades', 'Declaración de actividades')):
+            if k in docs:
+                f = docs[k]['fecha']
+                li.append(f'<li><a href="{e(docs[k]["url"])}">{t}</a>{f" ({fecha_larga(f)})" if f else ""} <small>PDF</small></li>')
+        if d.get('ficha'):
+            li.append(f'<li><a href="{e(d["ficha"])}">Ficha en el Congreso de los Diputados</a>: biografía, iniciativas e intervenciones</li>')
+        if li:
+            trans = ('<h2 id="transparencia">Transparencia: bienes, intereses y actividades</h2>'
+                     '<p>Las declaraciones que entregó al Congreso como miembro de la XV legislatura. El Congreso las publica tal como las presenta cada diputado.</p>'
+                     f'<ul class="docs">{"".join(li)}</ul>')
+    if p.get('en23'):
+        pv, cam, sig, n23 = p['en23']
+        parrafos.append(('dato', f'En las generales del 23 de julio de 2023 iba en el puesto {n23} de {e(sig)} al {"Congreso" if cam == "congreso" else "Senado"} por {e(PROV_NOMBRE.get(pv, pv).split("/")[0])}.'))
+    filas = ''
+    for x in c['titulares']:
+        nm = e(x['nombre']) if x is p else (f'<a href="../{x["ficha"]}/">{e(x["nombre"])}</a>' if x.get('ficha') else e(x['nombre']))
+        filas += f'<li{" class=yo" if x is p else ""}><span class="nm">{nm}</span>{marcas(x)}{chip(x)}</li>'
+    otras = [(x, q) for x in orden_listas([y for y in cs_prov if y['camara'] == 'congreso' and y is not c], None) for q in x['titulares'][:1] if q.get('ficha')][:6]
+    desc = (f'{nombre} es el número {n} {de_partido} al Congreso por {corto} el 29N'
+            + (f': {pct(p["p"])} de opciones de conseguir escaño según la media de encuestas' if 'p' in p else '')
+            + ('. Escaño en la XV legislatura y sus declaraciones de bienes' if d else '') + '. Lista completa del BOE.')[:300]
+    url = f'{URL}{sl}/{p["ficha"]}/'
+    persona = {'@type': 'Person', '@id': url + '#persona', 'name': nombre, 'memberOf': {'@type': 'Organization', 'name': c['denominacion']}}
+    if d and d.get('ficha'):
+        persona['sameAs'] = [d['ficha']]
+    jsonld = [{'@context': 'https://schema.org', '@type': 'ProfilePage', '@id': url + '#pagina', 'name': titulo, 'description': desc, 'url': url, 'inLanguage': 'es',
+               'datePublished': PUBLICADO_FICHAS, 'dateModified': hoy, 'isPartOf': {'@id': URL + '#pagina'}, 'mainEntity': persona,
+               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO}]
+    cuerpo = f"""<main>
+<p class="kicker"><a href="../../">Listas electorales del 29N</a> · <a href="../">{e(corto)}</a> · {e(partido)}</p>
+<h1 data-miga="{e(nombre)}">{e(nombre)}</h1>
+<p class="dek">Número {n} {e(de_partido)} al Congreso por {e(corto)} en las elecciones generales del 29N{f" · {pct(p['p'])} de opciones de escaño" if 'p' in p else ''}</p>
+<p class="firma">Por <a href="../../../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy}">{fecha_larga(hoy)}</time></p>
+{''.join(f'<p data-tipo="{t}">{x}</p>' for t, x in parrafos)}
+{trans}
+<h2>La lista {e(de_partido)} por {e(corto)}</h2>
+<section class="lista" style="--c:{c['color']};--co:{c['oscuro']}"><h3><span class="sg">{e(c['siglas'] or c['corto'])}</span> <span class="den">{e(c['denominacion'])}</span></h3><ol>{filas}</ol></section>
+{f'<h2>Otros cabezas de lista por {e(corto)}</h2><ul class="sigue">' + ''.join(f'<li><a href="../{q["ficha"]}/"><span class="kicker">{e(x["corto"] if x["fam"] != "OTROS" else (x["siglas"] or x["denominacion"]))}</span><b>{e(q["nombre"])}</b></a></li>' for x, q in otras) + '</ul>' if otras else ''}
+<h2>Más sobre el 29N en {e(corto)}</h2><ul class="sigue"><li><a href="../"><span class="kicker">Listas</span><b>Todos los candidatos al Congreso y al Senado por {e(corto)}</b></a></li><li><a href="../../mi-diputado/?provincia={cod}"><span class="kicker">Mi diputado</span><b>Los diputados de {e(corto)} y quién repite</b></a></li><li><a href="../../../encuestas/{sl}/"><span class="kicker">Encuestas</span><b>Los escaños de {e(corto)} según las encuestas</b></a></li><li><a href="../../../{ruta_provincia(cod)}"><span class="kicker">Resultados</span><b>Cómo votó {e(corto)} en 2023</b></a></li></ul>
+<h2>Fuentes</h2>
+<dl class="ficha">
+<dt>Lista</dt><dd>{fuente_boe}. Nombre tal como lo publica la junta electoral provincial.</dd>
+<dt>Opciones de conseguir escaño</dt><dd>Modelo de Mapa Electoral con la media de encuestas del {fecha_larga(pu_meta['modelo'])}: reparte el voto por provincia y simula {miles(pu_meta['simulaciones'])} resultados. <a href="../../../encuestas/metodo-modelo.html">Cómo se calcula</a>.</dd>
+{'<dt>Congreso</dt><dd><a href="https://www.congreso.es/es/opendata/diputados">Datos abiertos del Congreso</a> y ficha de cada diputado en congreso.es (declaraciones). La persona se identifica comparando el nombre en la misma provincia.</dd>' if d else ''}
+<dt>Autoría</dt><dd>{AUTOR}. ¿Algún error? <a href="../../../sobre-mi.html">Escríbeme</a>.</dd>
+</dl>
+<footer>Mapa Electoral · <a href="../../candidatos-29n.csv">Descargar todas las listas (CSV)</a> · <a href="../../../atlas/politica-editorial/">Política editorial</a></footer>
+</main>"""
+    imagen = f'{BASE}/img/compartir/listas-electorales-29n.jpg'
+    pagina = (cabecera(titulo, desc, url, imagen, jsonld) + ESTILOS + ESTILOS_LISTAS + ESTILOS_FICHA + CSS_SITIO
+              + '\n</head>\n<body>\n' + nav('../../../', '') + '\n' + cuerpo + '\n</body>\n</html>\n')
+    destino = CARPETA / sl / p['ficha']
+    destino.mkdir(parents=True, exist_ok=True)
+    (destino / 'index.html').write_text(pagina, encoding='utf-8')
+    return destino / 'index.html', url
+
+
+PUBLICADO_FICHAS = '2026-11-03'
+ESTILOS_FICHA = """<style>
+.lista li.yo{font-weight:700}.docs{font-family:var(--ui)}.docs li{margin:.25rem 0}.docs small{color:var(--muted);font-size:.75rem}
+main>p .pr{margin-left:0}
+</style>"""
+
+# ---------- guía del Senado: /listas-electorales-29n/senado/ ----------
+SENADO = CARPETA / 'senado'
+URL_SENADO = URL + 'senado/'
+PUBLICADO_SENADO = '2026-11-03'
+ISLAS_3 = ('Mallorca', 'Gran Canaria', 'Tenerife')   # LOREG 165.3: tres senadores; las demás islas, uno
+LOREG = 'https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672'
+
+
+def senadores(cod, circ):
+    """Senadores que elige la circunscripción y nombres que puede marcar cada elector (LOREG, artículos 165 y 166.1.a)."""
+    if circ:
+        return (3, 2) if circ in ISLAS_3 else (1, 1)
+    if cod in ('51', '52'):
+        return 2, 2
+    return 4, 3
+
+
+def pagina_senado(cands, datos, avance):
+    e = html.escape
+    hoy = date.today().isoformat()
+    sen = [c for c in cands if c['camara'] == 'senado']
+    circs = defaultdict(list)
+    for c in sen:
+        circs[(c['prov'], c['circ'])].append(c)
+    orden = sorted(circs, key=lambda k: slug(k[1] or PROV_NOMBRE[k[0]]))
+    total = sum(senadores(*k)[0] for k in orden)
+    n_cand = sum(len(c['titulares']) for c in sen)
+    fase = 'proclamadas' if datos['fase'] == 'proclamadas' else 'presentadas'
+    fuente_boe = f'<a href="{datos["url"]}">BOE del {fecha_larga(datos["fecha_boe"])}</a>, candidaturas {fase}'
+    filas_tabla, secciones, opciones = [], [], []
+    for k in orden:
+        cod, circ = k
+        corto = PROV_NOMBRE[cod].split('/')[0]
+        nombre = circ or corto
+        esc, marca = senadores(cod, circ)
+        ancla = slug(nombre)
+        cs = sorted(circs[k], key=lambda c: c['orden'])
+        nc = sum(len(c['titulares']) for c in cs)
+        opciones.append(f'<option value="{ancla}">{e(nombre)}{" (" + e(corto) + ")" if circ else ""}</option>')
+        filas_tabla.append(f'<tr><td><a href="#{ancla}">{e(nombre)}</a>{f" <small>{e(corto)}</small>" if circ else ""}</td><td class="n">{esc}</td><td class="n">{marca}</td><td class="n">{len(cs)}</td><td class="n">{nc}</td></tr>')
+        lis = ''.join(f'<li><i class="pt" style="--c:{c["color"]};--co:{c["oscuro"]}"></i><b>{e(c["siglas"] or c["corto"])}</b>: '
+                      + ', '.join(e(re.sub(r'\s*\([A-ZÁÉÍÓÚÜÑÇ .\-]{4,}\)$', '', p['nombre'])) for p in c['titulares']) + '</li>' for c in cs)
+        texto = (f'Marca hasta {marca} nombres, del mismo partido o de partidos distintos.' if marca > 1 else 'Marca un solo nombre.')
+        secciones.append(f'<section class="circ" id="{ancla}"><h3>{e(nombre)}{f" <small>{e(corto)}</small>" if circ else ""}</h3>'
+                         f'<p class="regla"><b>{esc} senador{"es" if esc > 1 else ""} · {"hasta " + str(marca) + " cruces" if marca > 1 else "una cruz"}.</b> {e(texto)}</p>'
+                         f'<p class="nota">{len(cs)} candidatura{"s" if len(cs) != 1 else ""} y {nc} candidato{"s" if nc != 1 else ""}, por el orden del BOE. '
+                         f'<a href="../{PROV_SLUG[cod]}/#senado">Con sus suplentes, en la página de {e(corto)}</a>.</p><ul class="gente">{lis}</ul></section>')
+    anio = '2023' if avance else '2026'
+    titulo = 'Cómo votar al Senado el 29N: cuántos nombres marcar en tu provincia'
+    titular = f'Cómo votar al Senado el 29N: hasta tres cruces en la provincia, dos o una en las islas'
+    dek = (f'El Senado se vota con listas abiertas: se marcan nombres, no partidos. Cuántos escaños elige cada provincia e isla, cuántas cruces caben '
+           f'en la papeleta, qué la anula y los {miles(n_cand)} candidatos de las {len(orden)} circunscripciones.')
+    desc = ('Guía para votar al Senado el 29N: cuántas cruces marcar en cada provincia e isla, qué anula el voto y la lista de candidatos al Senado por '
+            'circunscripción según el BOE.')[:300]
+    faq = [('¿Cuántos nombres puedo marcar en la papeleta del Senado?',
+            'Hasta tres en las provincias, que eligen cuatro senadores. Hasta dos en Mallorca, Gran Canaria y Tenerife (eligen tres) y en Ceuta y Melilla (eligen dos). '
+            'Uno en Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro, que eligen uno cada una (LOREG, artículos 165 y 166).'),
+           ('¿Puedo votar a candidatos de partidos distintos al Senado?',
+            'Sí. Las cruces pueden ir a candidatos de cualquier candidatura de la papeleta, siempre que no pasen del máximo de la circunscripción (LOREG, artículo 166).'),
+           ('¿Qué anula el voto al Senado?',
+            'Marcar más nombres de los permitidos (LOREG, artículo 96.3). También añadir, tachar o modificar nombres, escribir en la papeleta o alterarla de cualquier otra forma: el artículo 96.2 lo aplica a todos los procesos electorales, y la propia papeleta del Senado avisa de que «cualquier alteración» anula el voto (artículo 172.3.e).'),
+           ('¿Es válida una papeleta del Senado sin ninguna cruz?',
+            'Sí: cuenta como voto en blanco, igual que el sobre vacío (LOREG, artículo 96.5).'),
+           ('¿Quién sale elegido senador?',
+            'Los candidatos con más votos de la circunscripción, hasta cubrir sus escaños (LOREG, artículo 166.1.b). No hay reparto proporcional entre partidos: '
+            'cuentan los votos de cada nombre.'),
+           ('¿En qué orden salen los partidos en la papeleta del Senado?',
+            'Lo fija cada junta electoral provincial según los votos al Senado de 2023: se suman los de todos los candidatos de cada partido, federación o coalición, de más a menos, '
+            'y las agrupaciones de electores y los partidos que no se presentaron entonces van después, por sorteo (LOREG, artículo 172.3.b). El apartado 172.3.c añade una regla para las coaliciones que se separan o se juntan. '
+            'En Eivissa y Formentera, que estrenan circunscripción, no hay resultados previos propios. Dentro de cada candidatura, los nombres van en el orden que fija el partido (172.3.a). Por eso la papeleta no tiene por qué coincidir con el orden del BOE.'),
+           ('¿Aparecen los suplentes en la papeleta?', 'No. Cada candidato al Senado lleva suplentes, pero no figuran en la papeleta (LOREG, artículo 171.2).')]
+    url = URL_SENADO
+    jsonld = [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': url + '#pagina', 'name': titular, 'description': desc, 'url': url, 'inLanguage': 'es',
+               'datePublished': PUBLICADO_SENADO, 'dateModified': hoy, 'isPartOf': {'@id': URL + '#pagina'},
+               'about': [{'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'}, {'@type': 'Organization', 'name': 'Senado de España'}],
+               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO},
+              {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': url + '#preguntas', 'inLanguage': 'es',
+               'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
+    cuerpo = f"""<main>
+<p class="kicker"><a href="../">Listas electorales del 29N</a> · Senado</p>
+<h1 data-miga="Cómo votar al Senado">{e(titular)}</h1>
+<p class="dek">{e(dek)}</p>
+<p class="firma">Por <a href="../../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy}">{fecha_larga(hoy)}</time></p>
+<form class="filtros" onsubmit="return false"><label for="circ">Ve a tu provincia o isla</label><select id="circ"><option value="">Elige…</option>{''.join(opciones)}</select></form>
+<p data-tipo="dato">El 29 de noviembre se eligen por votación directa {total} senadores en {len(orden)} circunscripciones: las 47 provincias peninsulares, las once islas de Baleares y Canarias que tienen senadores propios, y Ceuta y Melilla (<a href="{LOREG}#a165">LOREG, artículo 165</a>). El resto del Senado lo designan los parlamentos autonómicos.</p>
+<p data-tipo="dato">A diferencia del Congreso, no se vota una lista cerrada. La papeleta del Senado trae, en una sola hoja, a todos los candidatos de todas las candidaturas de la circunscripción, cada uno con su casilla, y el elector marca con una cruz los nombres que quiere (<a href="{LOREG}#a172">artículo 172.3</a>). Puede repartir las cruces entre partidos distintos.</p>
+<p data-tipo="dato">El número de cruces depende de dónde se vota. Las provincias eligen cuatro senadores y se marcan hasta tres nombres; Mallorca, Gran Canaria y Tenerife eligen tres y se marcan hasta dos; Ceuta y Melilla eligen dos y se marcan hasta dos; y Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro eligen uno, con una sola cruz (<a href="{LOREG}#a166">artículo 166.1.a</a>). Salen elegidos los nombres más votados (artículo 166.1.b).</p>
+<p data-tipo="dato">Una cruz de más anula el voto (<a href="{LOREG}#a96">artículo 96.3</a>), igual que tachar, añadir o modificar nombres o escribir en la papeleta (96.2); la papeleta lo recuerda en una nota: «cualquier alteración en la papeleta determinará la nulidad del voto» (172.3.e). En cambio, una papeleta del Senado sin ninguna cruz es un voto en blanco válido (96.5). Marcar menos cruces de las permitidas también es válido.</p>
+<h2>Cuántos senadores elige cada circunscripción</h2>
+<div class="tbl"><table class="senado"><thead><tr><th>Circunscripción</th><th class="n">Senadores</th><th class="n">Cruces, como máximo</th><th class="n">Candidaturas</th><th class="n">Candidatos</th></tr></thead><tbody>{''.join(filas_tabla)}</tbody></table></div>
+<h2 id="candidatos">Los candidatos al Senado del 29N, provincia a provincia</h2>
+<p>Los nombres, tal como los publica el {fuente_boe}, y en el orden del BOE. El orden de la papeleta lo fija cada junta electoral provincial según los votos al Senado de 2023 (artículo 172.3.b y c), así que puede ser otro; en Eivissa y Formentera, que estrenan circunscripción, no hay resultados previos propios.</p>
+{''.join(secciones)}
+<h2>Preguntas frecuentes sobre el voto al Senado</h2>
+<div class="faq">{''.join(f'<details><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in faq)}</div>
+<h2>Fuentes</h2>
+<dl class="ficha">
+<dt>Reglas del voto</dt><dd><a href="{LOREG}">Ley Orgánica 5/1985 del Régimen Electoral General</a>, texto consolidado del BOE: artículos 96, 165, 166, 171 y 172.</dd>
+<dt>Candidatos</dt><dd>{fuente_boe}. Nombres tal como los publica cada junta electoral provincial.</dd>
+<dt>Autoría</dt><dd>{AUTOR}. ¿Algún error? <a href="../../sobre-mi.html">Escríbeme</a>.</dd>
+</dl>
+<h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../"><span class="kicker">Buscador</span><b>Todos los candidatos del 29N, al Congreso y al Senado</b></a></li><li><a href="../mi-diputado/"><span class="kicker">Mi diputado</span><b>Tus diputados y candidatos, por código postal</b></a></li><li><a href="../../encuestas/"><span class="kicker">Encuestas</span><b>Todas las encuestas del 29N y su media</b></a></li></ul>
+<footer>Mapa Electoral · <a href="../candidatos-29n.csv">Descargar todas las listas (CSV)</a> · <a href="../../atlas/politica-editorial/">Política editorial</a></footer>
+</main>"""
+    script = """<script>document.getElementById('circ').addEventListener('change',ev=>{if(ev.target.value)location.hash=ev.target.value})</script>"""
+    estilos = """<style>
+.circ{border-top:1px solid var(--rule);padding:.4rem 0 .6rem}.circ h3{margin:.5rem 0 .2rem}.circ h3 small{color:var(--muted);font-weight:400;font-size:.85rem}
+.circ .regla{font-family:var(--ui);font-size:.95rem;margin:.2rem 0}.circ .nota{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin:.2rem 0 .4rem}
+ul.gente{list-style:none;padding:0;margin:0;columns:2 18rem;column-gap:1.5rem;font-family:var(--ui);font-size:.92rem}ul.gente li{break-inside:avoid;margin:.2rem 0;line-height:1.35}
+ul.gente .pt{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;background:var(--c)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) ul.gente .pt{background:var(--co)}}
+:root[data-theme="dark"] ul.gente .pt{background:var(--co)}
+table.senado td small{color:var(--muted)}
+.filtros label{width:100%}
+</style>"""
+    pagina = (cabecera(titulo, desc, url, f'{BASE}/img/compartir/listas-electorales-29n.jpg', jsonld)
+              .replace('<meta property="og:title" content="' + e(titulo) + '">', f'<meta property="og:title" content="{e(titular)}">')
+              + ESTILOS + ESTILOS_LISTAS + estilos + CSS_SITIO + '\n</head>\n<body>\n' + nav('../../', '') + '\n' + cuerpo + '\n' + script + '\n</body>\n</html>\n')
+    SENADO.mkdir(exist_ok=True)
+    (SENADO / 'index.html').write_text(pagina, encoding='utf-8')
+    return total, len(orden)
+
+
 def main():
     datos, avance = carga()
     cands = prepara(datos, avance)
@@ -705,6 +973,13 @@ def main():
     por_prov = defaultdict(list)
     for c in cands:
         por_prov[c['prov']].append(c)
+    con_ficha = elige_fichas(cands, avance)
+    import shutil
+    for sl in PROV_SLUG.values():   # fichas viejas (alguien que ya no está en las listas o bajó del umbral)
+        for d in (CARPETA / sl).glob('*/'):
+            if (d / 'index.html').exists():
+                shutil.rmtree(d)
+    fichas = [pagina_candidato(c, p, por_prov[c['prov']], datos, pu_meta) for c, p in con_ficha]
     for cod in PROV_SLUG:
         pagina_provincia(cod, por_prov.get(cod, []), modelo, generado, avance, datos, cands)
 
@@ -719,13 +994,13 @@ def main():
         i = idx[k]
         cam = 0 if c['camara'] == 'congreso' else 1
         for p in c['titulares']:
-            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 0, p.get('p'), 1 if p.get('dip') else 0, c['circ']])
+            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 0, p.get('p'), 1 if p.get('dip') else 0, c['circ'], p.get('ficha', '')])
             csv_filas.append([PROV_NOMBRE[c['prov']], c['circ'], c['camara'], c['siglas'], c['denominacion'], p['n'], 'titular', p['nombre'],
                               '' if 'p' not in p else round(p['p'], 3), 'sí' if p.get('dip') else ''])
             for s in p.get('suplentes', []):
                 csv_filas.append([PROV_NOMBRE[c['prov']], c['circ'], c['camara'], c['siglas'], c['denominacion'], p['n'], 'suplente', s, '', ''])
         for p in c['suplentes']:
-            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 1, None, 1 if p.get('dip') else 0, c['circ']])
+            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 1, None, 1 if p.get('dip') else 0, c['circ'], ''])
             csv_filas.append([PROV_NOMBRE[c['prov']], c['circ'], c['camara'], c['siglas'], c['denominacion'], p['n'], 'suplente', p['nombre'], '', 'sí' if p.get('dip') else ''])
     (CARPETA / 'candidatos.json').write_text(json.dumps(filas, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     nombre_csv = 'candidatos-29n.csv'
@@ -781,7 +1056,7 @@ def main():
             'No es una encuesta ni un resultado: cambia con las encuestas.'.replace(',', '.')),
            ('¿Cómo se reparten los escaños del Congreso?', 'Cada provincia elige un número fijo de diputados (Madrid 38 y Barcelona 32; Soria, 2; Ceuta y Melilla, 1). '
             'Se reparten con la ley D\'Hondt entre las listas que superan el 3 % de los votos válidos de la provincia, y salen los primeros de cada lista por orden.'),
-           ('¿Cómo se vota al Senado?', 'Con listas abiertas: en cada provincia peninsular se eligen cuatro senadores y el elector puede marcar hasta tres nombres de cualquier candidatura. En las islas, cada isla elige los suyos.')]
+           ('¿Cómo se vota al Senado?', 'Con listas abiertas: en cada provincia peninsular se eligen cuatro senadores y el elector puede marcar hasta tres nombres de cualquier candidatura. En las islas, cada isla elige los suyos, y Ceuta y Melilla eligen dos. Guía completa en mapaelectoral.es/listas-electorales-29n/senado/.')]
     url = URL
     titulo = 'Listas electorales 29N: buscador de candidatos al Congreso y Senado por provincia'
     desc = ('Buscador de las listas electorales del 29N: todos los candidatos al Congreso y al Senado por provincia y partido, con el BOE y las opciones de salir elegido de cada uno.')
@@ -813,6 +1088,7 @@ def main():
 {'' if avance else '<label><input id="fsal" type="checkbox"> Solo con opciones de salir</label>'}
 </form>
 <p class="listas29"><a href="mi-diputado/">¿Quién es mi diputado? Búscalo por código postal o municipio →</a></p>
+<p class="listas29"><a href="senado/">Cómo votar al Senado: cuántas cruces marcar en tu provincia →</a></p>
 <p class="cuenta" id="cuenta" aria-live="polite">Cargando las listas…</p>
 <div class="tbl"><table id="res"><thead><tr><th>Candidato</th><th class="n">Puesto</th><th>Candidatura</th><th>Provincia</th><th class="n">{'Opciones de salir' if not avance else ''}</th></tr></thead><tbody></tbody></table></div>
 <p><button id="mas" hidden>Ver más</button></p>
@@ -849,7 +1125,9 @@ def main():
     (CARPETA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                          f'  <url><loc>{URL}</loc><lastmod>{hoy}</lastmod></url>\n'
                                          f'  <url><loc>{URL_MI}</loc><lastmod>{hoy}</lastmod></url>\n'
-                                         + ''.join(f'  <url><loc>{URL}{s}/</loc><lastmod>{hoy}</lastmod></url>\n' for s in PROV_SLUG.values()) + '</urlset>\n', encoding='utf-8')
+                                         f'  <url><loc>{URL_SENADO}</loc><lastmod>{hoy}</lastmod></url>\n'
+                                         + ''.join(f'  <url><loc>{URL}{s}/</loc><lastmod>{hoy}</lastmod></url>\n' for s in PROV_SLUG.values())
+                                         + ''.join(f'  <url><loc>{u}</loc><lastmod>{hoy}</lastmod></url>\n' for _, u in fichas) + '</urlset>\n', encoding='utf-8')
     barras = []
     for p in PARTIDOS:
         n = sum(1 for c in cong if c['fam'] == p[0])
@@ -860,10 +1138,11 @@ def main():
             f'{len(cong)} candidaturas al Congreso{" en 2023" if avance else ""}, {miles(n_cong)} candidatos titulares. Candidaturas por partido:', barras)
     portada(titular, n_cong, len(cong), n_sen, n_dip, avance, datos['fecha_boe'])
     pagina_mi_diputado(cands, modelo, dips_fecha, datos, avance, pu_meta)
+    n_senadores, n_circ = pagina_senado(cands, datos, avance)
     import esquema
-    for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()]:
+    for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html', SENADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()] + [f for f, _ in fichas]:
         esquema.procesa(f)
-    print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados; {titular}')
+    print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados, {len(fichas)} fichas, Senado {n_senadores} escaños en {n_circ} circunscripciones; {titular}')
 
 
 if __name__ == '__main__':
