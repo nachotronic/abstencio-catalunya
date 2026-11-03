@@ -179,6 +179,7 @@ def prepara(datos, avance):
                 p['p'] = probs[p['n'] - 1] if p['n'] - 1 < len(probs) else 0.0
             d = es_diputado(p['nombre'], c['prov'], dips)
             if d:
+                p['dipx'] = d
                 p['dip'] = d['formacion'] + (' (de baja)' if d['baja'] and not d['baja'].startswith('06/10/2026') else '')
             if prev:
                 k = clave_nombre(p['nombre'])
@@ -235,7 +236,8 @@ def bloque_lista(c, total):
         sup = ''
         if p.get('suplentes'):
             sup = f'<small>Suplentes: {e(", ".join(p["suplentes"]))}</small>'
-        filas += f'<li{corte}><span class="nm">{e(p["nombre"])}</span>{marcas(p)}{chip(p)}{sup}</li>'
+        nm = f'<a href="{p["ficha"]}/">{e(p["nombre"])}</a>' if p.get('ficha') else e(p['nombre'])
+        filas += f'<li{corte}><span class="nm">{nm}</span>{marcas(p)}{chip(p)}{sup}</li>'
     sup = ''
     if c['suplentes']:
         sup = (f'<details><summary>{len(c["suplentes"])} suplente{"s" if len(c["suplentes"]) != 1 else ""}</summary><ol>'
@@ -322,11 +324,12 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
     if salida:
         faq.insert(2, (f'¿Qué candidatos de {corto} tienen el escaño en el aire?', '; '.join(salida[:5]) + '. Probabilidades según el modelo de Mapa Electoral con la media de encuestas.'))
     if cod in ('07', '35', '38'):
-        faq.append(('¿Cómo se elige el Senado en las islas?', 'En Baleares y Canarias cada isla o agrupación de islas elige sus propios senadores: tres Mallorca, Gran Canaria y Tenerife, y uno cada una de las demás.'))
+        faq.append(('¿Cómo se elige el Senado en las islas?', 'En Baleares y Canarias cada isla elige sus propios senadores: tres Mallorca, Gran Canaria y Tenerife, donde cada elector puede marcar hasta dos nombres, '
+                    'y uno cada una de las demás (Menorca, Ibiza, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro), donde se marca uno (LOREG, artículos 165 y 166).'))
     elif cod in ('51', '52'):
-        faq.append((f'¿Cuántos senadores elige {corto}?', 'Dos. Cada elector puede votar a uno.'))
+        faq.append((f'¿Cuántos senadores elige {corto}?', 'Dos. Cada elector puede marcar hasta dos nombres, y salen los dos más votados (LOREG, artículos 165 y 166).'))
     else:
-        faq.append((f'¿Cuántos senadores elige {corto}?', 'Cuatro. Cada elector puede marcar hasta tres nombres, de una o de varias candidaturas, y salen los cuatro más votados.'))
+        faq.append((f'¿Cuántos senadores elige {corto}?', 'Cuatro. Cada elector puede marcar hasta tres nombres, de una o de varias candidaturas, y salen los cuatro más votados (LOREG, artículos 165 y 166).'))
     faq = [(q, a) for q, a in faq if a]
     url = f'{URL}{sl}/'
     desc = (f'Listas electorales del 29N en {corto}: candidatos al Congreso y al Senado de cada partido, puesto a puesto, y quién tiene opciones de salir. '
@@ -415,12 +418,12 @@ let lim=100;
 const pc=p=>p==null?'':p>=.995?'más del 99\u00a0%':p<.005?'menos del 1\u00a0%':Math.round(p*100)+'\u00a0%';
 const nv=p=>p==null?'':p>=.9?'seguro':p>=.1?'aire':'dificil';
 function pinta(){const t=norm(q.value.trim()),pv=fp.value,pa=fpa.value,c=fc.value,cab=fcab.checked,sal=fsal&&fsal.checked;
- const out=[];for(const r of D){ // r: [nombre, prov, camara, partido, puesto, suplente, prob, diputado, circ, k]
+ const out=[];for(const r of D){ // r: [nombre, prov, camara, partido, puesto, suplente, prob, diputado, circ, ficha, k]
   if(pv&&r[1]!==pv)continue;if(c&&r[2]!==+c)continue;if(pa&&P[r[3]][0]!==pa)continue;if(cab&&(r[4]!==1||r[5]))continue;
-  if(sal&&!(r[6]>=.1))continue;if(t&&!r[9].includes(t))continue;out.push(r)}
+  if(sal&&!(r[6]>=.1))continue;if(t&&!r[10].includes(t))continue;out.push(r)}
  if(!t&&!pv&&!pa&&!cab&&!sal){out.sort((a,b)=>(b[6]??-1)-(a[6]??-1))}
  cuenta.textContent=out.length.toLocaleString('es-ES')+(out.length===1?' candidato':' candidatos')+(AV?' (listas de 2023)':'');
- res.innerHTML=out.slice(0,lim).map(r=>{const p=P[r[3]];return `<tr><td class="nm"><b>${r[0]}</b>${r[7]?'<span class="mk dip">diputado/a</span>':''}${r[5]?' <small>suplente</small>':''}</td>`+
+ res.innerHTML=out.slice(0,lim).map(r=>{const p=P[r[3]];return `<tr><td class="nm"><b>${r[9]?`<a href="${PROV[r[1]][0]}/${r[9]}/">${r[0]}</a>`:r[0]}</b>${r[7]?'<span class="mk dip">diputado/a</span>':''}${r[5]?' <small>suplente</small>':''}</td>`+
  `<td class="n">${r[4]}</td><td><i class="pt" style="background:${p[2]}"></i>${p[1]}<small>${r[2]?'Senado':'Congreso'}${r[8]?' · '+r[8]:''}</small></td>`+
  `<td><a href="${PROV[r[1]][0]}/">${PROV[r[1]][1]}</a></td><td class="n">${r[6]==null?'–':`<span class="pr ${nv(r[6])}">${pc(r[6])}</span>`}</td></tr>`}).join('');
  mas.hidden=out.length<=lim;
@@ -696,6 +699,127 @@ ul.gente .pt{display:inline-block;width:9px;height:9px;border-radius:50%;margin-
     return repiten_total, n_fin
 
 
+# ---------- fichas de candidato: /listas-electorales-29n/<provincia>/<nombre>/ ----------
+UMBRAL_FICHA = 0.05   # ficha propia para los titulares al Congreso con al menos un 5 % de opciones, y para los diputados de la XV
+
+
+def elige_fichas(cands, avance):
+    """Marca en cada titular con ficha su carpeta (p['ficha'], relativa a la página de su provincia). Solo con listas del 29N."""
+    if avance:
+        return []
+    out, usados = [], set()
+    for c in cands:
+        if c['camara'] != 'congreso':
+            continue
+        for p in c['titulares']:
+            if not (p.get('p', 0) >= UMBRAL_FICHA or p.get('dipx')):
+                continue
+            s = slug(p['nombre'])
+            if (c['prov'], s) in usados:   # dos personas con el mismo nombre en la misma provincia
+                s = f'{s}-{slug(c["siglas"] or c["corto"])}'
+            usados.add((c['prov'], s))
+            p['ficha'] = s
+            out.append((c, p))
+    return out
+
+
+def pagina_candidato(c, p, cs_prov, datos, pu_meta):
+    e = html.escape
+    cod = c['prov']
+    corto, sl = PROV_NOMBRE[cod].split('/')[0], PROV_SLUG[cod]
+    nombre, n = p['nombre'], p['n']
+    partido = c['corto'] if c['fam'] != 'OTROS' else (c['siglas'] or c['denominacion'])
+    pu = json.loads((DATOS / 'puestos-29n.json').read_text())['puestos'].get(cod, {})
+    fam = next((f for f in PARTIDOS if f[0] == c['fam']), None)
+    probs = pu.get(fam[5]) if fam and fam[5] else None
+    hoy = date.today().isoformat()
+    fase = 'proclamadas' if datos['fase'] == 'proclamadas' else 'presentadas'
+    fuente_boe = f'<a href="{datos["url"]}">BOE del {fecha_larga(datos["fecha_boe"])}</a>, candidaturas {fase}'
+    titulo = f'{nombre}: número {n} de {partido} por {corto} en las elecciones del 29N'
+    parrafos = [('dato', f'{e(nombre)} va en el puesto {n} de la lista de {e(c["denominacion"])} al Congreso por {e(corto)} en las elecciones generales '
+                         f'del 29 de noviembre de 2026, según las candidaturas {fase} en el {fuente_boe.split(">", 1)[1].split("<")[0]}.')]
+    if 'p' in p and probs:
+        media = sum(probs)
+        parrafos.append(('dato', f'Con la media de encuestas del {fecha_larga(pu_meta["modelo"])}, el puesto {n} de esta lista consigue escaño en el {pct(p["p"])} '
+                                 f'de las {miles(pu_meta["simulaciones"])} simulaciones del modelo de Mapa Electoral: <span class="pr {nivel(p["p"])}">{NIVEL[nivel(p["p"])].lower()}</span>. '
+                                 f'La lista de {e(partido)} saca de media {f"{media:.1f}".replace(".", ",")} escaños en {e(corto)}. Es una estimación, no un resultado.'))
+    elif re.search(SIN_MODELO, c['denominacion'].upper()) or not probs:
+        parrafos.append(('dato', 'El modelo de Mapa Electoral no calcula las opciones de esta lista, que no mide por separado.'))
+    d = p.get('dipx')
+    trans = ''
+    if d:
+        baja = d.get('baja', '')
+        larga = lambda f: fecha_larga('-'.join(reversed(f.split('/')))) if f.count('/') == 2 else f   # el Congreso da DD/MM/AAAA
+        cuando = ('hasta la disolución de las Cortes, el 6 de octubre de 2026' if not baja or baja.startswith('06/10/2026')
+                  else f'hasta el {larga(baja)}, cuando dejó el escaño')
+        parrafos.append(('dato', f'Ha sido miembro del Congreso en la XV legislatura, por {e(d["circ"])} y en la candidatura de {e(d["formacion"])}, '
+                                 f'desde el {e(larga(d["alta"]))} {cuando}.'))
+        docs = d.get('declaraciones', {})
+        li = []
+        for k, t in (('bienes', 'Declaración de bienes y rentas'), ('intereses', 'Declaración de intereses económicos'), ('actividades', 'Declaración de actividades')):
+            if k in docs:
+                f = docs[k]['fecha']
+                li.append(f'<li><a href="{e(docs[k]["url"])}">{t}</a>{f" ({fecha_larga(f)})" if f else ""} <small>PDF</small></li>')
+        if d.get('ficha'):
+            li.append(f'<li><a href="{e(d["ficha"])}">Ficha en el Congreso de los Diputados</a>: biografía, iniciativas e intervenciones</li>')
+        if li:
+            trans = ('<h2 id="transparencia">Transparencia: bienes, intereses y actividades</h2>'
+                     '<p>Las declaraciones que entregó al Congreso como miembro de la XV legislatura. El Congreso las publica tal como las presenta cada diputado.</p>'
+                     f'<ul class="docs">{"".join(li)}</ul>')
+    if p.get('en23'):
+        pv, cam, sig, n23 = p['en23']
+        parrafos.append(('dato', f'En las generales del 23 de julio de 2023 iba en el puesto {n23} de {e(sig)} al {"Congreso" if cam == "congreso" else "Senado"} por {e(PROV_NOMBRE.get(pv, pv).split("/")[0])}.'))
+    filas = ''
+    for x in c['titulares']:
+        nm = e(x['nombre']) if x is p else (f'<a href="../{x["ficha"]}/">{e(x["nombre"])}</a>' if x.get('ficha') else e(x['nombre']))
+        filas += f'<li{" class=yo" if x is p else ""}><span class="nm">{nm}</span>{marcas(x)}{chip(x)}</li>'
+    otras = [(x, q) for x in orden_listas([y for y in cs_prov if y['camara'] == 'congreso' and y is not c], None) for q in x['titulares'][:1] if q.get('ficha')][:6]
+    desc = (f'{nombre} es el número {n} de {partido} al Congreso por {corto} el 29N'
+            + (f': {pct(p["p"])} de opciones de conseguir escaño según la media de encuestas' if 'p' in p else '')
+            + ('. Escaño en la XV legislatura y sus declaraciones de bienes' if d else '') + '. Lista completa del BOE.')[:300]
+    url = f'{URL}{sl}/{p["ficha"]}/'
+    persona = {'@type': 'Person', '@id': url + '#persona', 'name': nombre, 'memberOf': {'@type': 'Organization', 'name': c['denominacion']}}
+    if d and d.get('ficha'):
+        persona['sameAs'] = [d['ficha']]
+    jsonld = [{'@context': 'https://schema.org', '@type': 'ProfilePage', '@id': url + '#pagina', 'name': titulo, 'description': desc, 'url': url, 'inLanguage': 'es',
+               'datePublished': PUBLICADO_FICHAS, 'dateModified': hoy, 'isPartOf': {'@id': URL + '#pagina'}, 'mainEntity': persona,
+               'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO}]
+    cuerpo = f"""<main>
+<p class="kicker"><a href="../../">Listas electorales del 29N</a> · <a href="../">{e(corto)}</a> · {e(partido)}</p>
+<h1 data-miga="{e(nombre)}">{e(nombre)}</h1>
+<p class="dek">Número {n} de {e(partido)} al Congreso por {e(corto)} en las elecciones generales del 29N{f" · {pct(p['p'])} de opciones de escaño" if 'p' in p else ''}</p>
+<p class="firma">Por <a href="../../../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy}">{fecha_larga(hoy)}</time></p>
+{''.join(f'<p data-tipo="{t}">{x}</p>' for t, x in parrafos)}
+{trans}
+<h2>La lista de {e(partido)} por {e(corto)}</h2>
+<section class="lista" style="--c:{c['color']};--co:{c['oscuro']}"><h3><span class="sg">{e(c['siglas'] or c['corto'])}</span> <span class="den">{e(c['denominacion'])}</span></h3><ol>{filas}</ol></section>
+{f'<h2>Otros cabezas de lista por {e(corto)}</h2><ul class="sigue">' + ''.join(f'<li><a href="../{q["ficha"]}/"><span class="kicker">{e(x["corto"] if x["fam"] != "OTROS" else (x["siglas"] or x["denominacion"]))}</span><b>{e(q["nombre"])}</b></a></li>' for x, q in otras) + '</ul>' if otras else ''}
+<h2>Más sobre el 29N en {e(corto)}</h2><ul class="sigue"><li><a href="../"><span class="kicker">Listas</span><b>Todos los candidatos al Congreso y al Senado por {e(corto)}</b></a></li><li><a href="../../mi-diputado/?provincia={cod}"><span class="kicker">Mi diputado</span><b>Los diputados de {e(corto)} y quién repite</b></a></li><li><a href="../../../encuestas/{sl}/"><span class="kicker">Encuestas</span><b>Los escaños de {e(corto)} según las encuestas</b></a></li><li><a href="../../../{ruta_provincia(cod)}"><span class="kicker">Resultados</span><b>Cómo votó {e(corto)} en 2023</b></a></li></ul>
+<h2>Fuentes</h2>
+<dl class="ficha">
+<dt>Lista</dt><dd>{fuente_boe}. Nombre tal como lo publica la junta electoral provincial.</dd>
+<dt>Opciones de conseguir escaño</dt><dd>Modelo de Mapa Electoral con la media de encuestas del {fecha_larga(pu_meta['modelo'])}: reparte el voto por provincia y simula {miles(pu_meta['simulaciones'])} resultados. <a href="../../../encuestas/metodo-modelo.html">Cómo se calcula</a>.</dd>
+{'<dt>Congreso</dt><dd><a href="https://www.congreso.es/es/opendata/diputados">Datos abiertos del Congreso</a> y ficha de cada diputado en congreso.es (declaraciones). La persona se identifica comparando el nombre en la misma provincia.</dd>' if d else ''}
+<dt>Autoría</dt><dd>{AUTOR}. ¿Algún error? <a href="../../../sobre-mi.html">Escríbeme</a>.</dd>
+</dl>
+<footer>Mapa Electoral · <a href="../../candidatos-29n.csv">Descargar todas las listas (CSV)</a> · <a href="../../../atlas/politica-editorial/">Política editorial</a></footer>
+</main>"""
+    imagen = f'{BASE}/img/compartir/listas-electorales-29n.jpg'
+    pagina = (cabecera(titulo, desc, url, imagen, jsonld) + ESTILOS + ESTILOS_LISTAS + ESTILOS_FICHA + CSS_SITIO
+              + '\n</head>\n<body>\n' + nav('../../../', '') + '\n' + cuerpo + '\n</body>\n</html>\n')
+    destino = CARPETA / sl / p['ficha']
+    destino.mkdir(parents=True, exist_ok=True)
+    (destino / 'index.html').write_text(pagina, encoding='utf-8')
+    return destino / 'index.html', url
+
+
+PUBLICADO_FICHAS = '2026-11-03'
+ESTILOS_FICHA = """<style>
+.lista li.yo{font-weight:700}.docs{font-family:var(--ui)}.docs li{margin:.25rem 0}.docs small{color:var(--muted);font-size:.75rem}
+main>p .pr{margin-left:0}
+</style>"""
+
+
 def main():
     datos, avance = carga()
     cands = prepara(datos, avance)
@@ -705,6 +829,13 @@ def main():
     por_prov = defaultdict(list)
     for c in cands:
         por_prov[c['prov']].append(c)
+    con_ficha = elige_fichas(cands, avance)
+    import shutil
+    for sl in PROV_SLUG.values():   # fichas viejas (alguien que ya no está en las listas o bajó del umbral)
+        for d in (CARPETA / sl).glob('*/'):
+            if (d / 'index.html').exists():
+                shutil.rmtree(d)
+    fichas = [pagina_candidato(c, p, por_prov[c['prov']], datos, pu_meta) for c, p in con_ficha]
     for cod in PROV_SLUG:
         pagina_provincia(cod, por_prov.get(cod, []), modelo, generado, avance, datos, cands)
 
@@ -719,13 +850,13 @@ def main():
         i = idx[k]
         cam = 0 if c['camara'] == 'congreso' else 1
         for p in c['titulares']:
-            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 0, p.get('p'), 1 if p.get('dip') else 0, c['circ']])
+            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 0, p.get('p'), 1 if p.get('dip') else 0, c['circ'], p.get('ficha', '')])
             csv_filas.append([PROV_NOMBRE[c['prov']], c['circ'], c['camara'], c['siglas'], c['denominacion'], p['n'], 'titular', p['nombre'],
                               '' if 'p' not in p else round(p['p'], 3), 'sí' if p.get('dip') else ''])
             for s in p.get('suplentes', []):
                 csv_filas.append([PROV_NOMBRE[c['prov']], c['circ'], c['camara'], c['siglas'], c['denominacion'], p['n'], 'suplente', s, '', ''])
         for p in c['suplentes']:
-            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 1, None, 1 if p.get('dip') else 0, c['circ']])
+            filas.append([p['nombre'], c['prov'], cam, i, p['n'], 1, None, 1 if p.get('dip') else 0, c['circ'], ''])
             csv_filas.append([PROV_NOMBRE[c['prov']], c['circ'], c['camara'], c['siglas'], c['denominacion'], p['n'], 'suplente', p['nombre'], '', 'sí' if p.get('dip') else ''])
     (CARPETA / 'candidatos.json').write_text(json.dumps(filas, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     nombre_csv = 'candidatos-29n.csv'
@@ -849,7 +980,8 @@ def main():
     (CARPETA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                          f'  <url><loc>{URL}</loc><lastmod>{hoy}</lastmod></url>\n'
                                          f'  <url><loc>{URL_MI}</loc><lastmod>{hoy}</lastmod></url>\n'
-                                         + ''.join(f'  <url><loc>{URL}{s}/</loc><lastmod>{hoy}</lastmod></url>\n' for s in PROV_SLUG.values()) + '</urlset>\n', encoding='utf-8')
+                                         + ''.join(f'  <url><loc>{URL}{s}/</loc><lastmod>{hoy}</lastmod></url>\n' for s in PROV_SLUG.values())
+                                         + ''.join(f'  <url><loc>{u}</loc><lastmod>{hoy}</lastmod></url>\n' for _, u in fichas) + '</urlset>\n', encoding='utf-8')
     barras = []
     for p in PARTIDOS:
         n = sum(1 for c in cong if c['fam'] == p[0])
@@ -861,9 +993,9 @@ def main():
     portada(titular, n_cong, len(cong), n_sen, n_dip, avance, datos['fecha_boe'])
     pagina_mi_diputado(cands, modelo, dips_fecha, datos, avance, pu_meta)
     import esquema
-    for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()]:
+    for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()] + [f for f, _ in fichas]:
         esquema.procesa(f)
-    print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados; {titular}')
+    print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados, {len(fichas)} fichas; {titular}')
 
 
 if __name__ == '__main__':

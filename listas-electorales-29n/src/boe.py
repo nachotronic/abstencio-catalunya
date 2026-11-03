@@ -74,9 +74,9 @@ def lee(xml):
     """Devuelve la lista de candidaturas: provincia, cámara, circunscripción (islas en el Senado), número de orden en el
     BOE, denominación, siglas, titulares y suplentes (en el Senado, los dos suplentes de cada candidato)."""
     cuerpo = xml.split('<texto>', 1)[1]
-    parrafos = re.findall(r'<p class="([a-z_0-9]+)"[^>]*>(.*?)</p>', cuerpo, re.S)
+    parrafos = re.findall(r'<p class="([a-z_0-9]+)"([^>]*)>(.*?)</p>', cuerpo, re.S)
     out, prov, camara, circ, cand, en_suplentes = [], None, None, None, None, False
-    for clase, contenido in parrafos:
+    for clase, attrs, contenido in parrafos:
         t = texto(contenido)
         if not t:
             continue
@@ -119,16 +119,24 @@ def lee(xml):
             cand['no_proclamada'] = True
             continue
         if re.match(r'(?i)^suplentes?\s*:?$', t):
-            en_suplentes = True
+            # en el Senado, «Suplente:» abre los suplentes del último candidato (Ceuta y Melilla: «1. …», «2. …» sangrados)
+            en_suplentes = 'senado' if camara == 'senado' and cand['titulares'] else True
             continue
         ms = re.match(r'(?i)^suplente\s*(\d*)\s*:\s*(.+)$', t)
         if ms and camara == 'senado' and cand['titulares']:
             cand['titulares'][-1].setdefault('suplentes', []).append(re.sub(r'(?i)\s*\(independ\w*\)$', '', nombre_limpio(ms.group(2))))
             continue
         m = re.match(r'^(\d+)\.\s*(.+)$', t)
+        if en_suplentes == 'senado':
+            if m and 'data-sangria="2"' in attrs:
+                cand['titulares'][-1].setdefault('suplentes', []).append(re.sub(r'(?i)\s*\(independ\w*\)$', '', nombre_limpio(m.group(2))))
+                continue
+            en_suplentes = False   # sin sangría: el siguiente candidato
+        if not m and camara == 'senado' and t.endswith('.') and not re.match(r'(?i)^suplente', t):
+            m = re.match(r'^()(.+)$', t)   # Valladolid: los candidatos al Senado sin número
         if not m:
             continue
-        persona = {'n': int(m.group(1)), 'nombre': nombre_limpio(m.group(2))}
+        persona = {'n': int(m.group(1)) if m.group(1) else len(cand['titulares']) + 1, 'nombre': nombre_limpio(m.group(2))}
         ind = re.search(r'\s*\((independiente|independent|independentea)\)$', persona['nombre'], re.I)
         if ind:   # «Ana Gil Perdices (Independiente)»: la etiqueta va aparte
             persona['nombre'], persona['independiente'] = persona['nombre'][:ind.start()].rstrip(' .'), True

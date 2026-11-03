@@ -663,7 +663,7 @@ aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 <main>
 <p class="kicker"><a href="../elecciones/elecciones-29n-2026/">Elecciones del 29N</a> · Candidatos</p>
 <h1 data-miga="Listas electorales del 29N">Listas del 29N: 3.817 candidatos al Congreso, y quién tiene opciones de salir</h1>
-<p class="dek">Busca por nombre, provincia o partido entre los 5.972 nombres de las listas al Congreso y al Senado del 3 de noviembre de 2026, con la probabilidad de salir elegido de cada puesto según la media de encuestas.</p>
+<p class="dek">Busca por nombre, provincia o partido entre los 5.997 nombres de las listas al Congreso y al Senado del 3 de noviembre de 2026, con la probabilidad de salir elegido de cada puesto según la media de encuestas.</p>
 <p class="firma">Por <a href="../sobre-mi.html">Nacho G. del Álamo</a> · Actualizado el <time datetime="2026-11-03">3 de noviembre de 2026</time></p>
 <figure class="foto"><img src="../img/listas/listas-electorales-29n.jpg" alt="Un tablón con listas electorales de colores y una lupa sobre uno de los nombres." width="1280" height="720"><figcaption>Un tablón con listas electorales de colores y una lupa sobre uno de los nombres. Ilustración generada con IA para Mapa Electoral. <a href="../atlas/politica-editorial/#ia">Uso de IA</a>.</figcaption></figure>
 
@@ -679,7 +679,7 @@ aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 <p class="cuenta" id="cuenta" aria-live="polite">Cargando las listas…</p>
 <div class="tbl"><table id="res"><thead><tr><th>Candidato</th><th class="n">Puesto</th><th>Candidatura</th><th>Provincia</th><th class="n">Opciones de salir</th></tr></thead><tbody></tbody></table></div>
 <p><button id="mas" hidden>Ver más</button></p>
-<div class="cifras"><div><b>534</b><span>candidaturas al Congreso</span></div><div><b>3.817</b><span>candidatos titulares al Congreso</span></div><div><b>777</b><span>candidatos al Senado</span></div><div><b>205</b><span>titulares que son diputados</span></div></div>
+<div class="cifras"><div><b>534</b><span>candidaturas al Congreso</span></div><div><b>3.817</b><span>candidatos titulares al Congreso</span></div><div><b>802</b><span>candidatos al Senado</span></div><div><b>205</b><span>titulares que son diputados</span></div></div>
 <p data-tipo="dato">Al 29N se presentan 534 candidaturas al Congreso en las 52 provincias, con 3.817 candidatos titulares y 1.378 suplentes. Concurren en todas o casi todas PP, PSOE, Vox. La provincia con más listas es Araba, con 14.</p>
 <p data-tipo="dato">Con la media de las encuestas, 204 candidatos tienen el escaño en el aire (salen elegidos en entre el 10 % y el 90 % de las simulaciones). Entre los más cerca del cara o cruz: María Álvarez Collada (PSOE, Asturias, 50 %); Sara Daroca Núñez (Vox, Santa Cruz de Tenerife, 50 %); Matías Recio Juárez (Vox, Palencia, 50 %); Carlos Arturo Bernal Bergua (PP, Málaga, 49 %); Pilar Esperanza González Alemán Pareja Obregón (Vox, Sevilla, 51 %).</p>
 <p data-tipo="dato">205 de los titulares son diputados en la legislatura que acaba (XV), según los datos abiertos del Congreso.</p>
@@ -694,7 +694,7 @@ aside.municipios-pieza .prov{color:var(--muted);font-size:.9em}
 <dl class="ficha">
 <dt>Listas</dt><dd><a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23103">BOE del 3 de noviembre de 2026</a>, candidaturas proclamadas. Se leen del XML oficial (<a href="https://github.com/nachotronic/abstencio-catalunya/blob/main/listas-electorales-29n/src/boe.py">código</a>) y se comprueba que estén las 52 juntas provinciales y que cada lista tenga sus puestos completos.</dd>
 <dt>Opciones de salir elegido</dt><dd>Modelo de Mapa Electoral con la media de encuestas del 26 de octubre de 2026 (2,000 simulaciones). La misma simulación de <a href="../actualidad/listas-29n-quien-encabeza/">Las listas del 29N, puesto a puesto</a>. Solo para el Congreso y para las listas que mide el modelo.</dd>
-<dt>Diputados de la legislatura que acaba</dt><dd><a href="https://www.congreso.es/es/opendata/diputados">Datos abiertos del Congreso</a>, descargados el 27 de octubre de 2026: altas y bajas de la XV legislatura, comparadas por nombre en la misma provincia. Un nombre escrito de otra forma puede quedarse sin marcar.</dd>
+<dt>Diputados de la legislatura que acaba</dt><dd><a href="https://www.congreso.es/es/opendata/diputados">Datos abiertos del Congreso</a>, descargados el 3 de noviembre de 2026: altas y bajas de la XV legislatura, comparadas por nombre en la misma provincia. Un nombre escrito de otra forma puede quedarse sin marcar.</dd>
 
 <dt>Límites</dt><dd>Entre las listas presentadas (28 de octubre) y las proclamadas (3 de noviembre) las juntas pueden excluir candidaturas o nombres. Los colores agrupan a cada partido con sus marcas territoriales (PSC con PSOE, Compromís con Frente Amplio).</dd>
 <dt>Autoría</dt><dd>Nacho G. del Álamo</dd>
@@ -711,12 +711,12 @@ let lim=100;
 const pc=p=>p==null?'':p>=.995?'más del 99 %':p<.005?'menos del 1 %':Math.round(p*100)+' %';
 const nv=p=>p==null?'':p>=.9?'seguro':p>=.1?'aire':'dificil';
 function pinta(){const t=norm(q.value.trim()),pv=fp.value,pa=fpa.value,c=fc.value,cab=fcab.checked,sal=fsal&&fsal.checked;
- const out=[];for(const r of D){ // r: [nombre, prov, camara, partido, puesto, suplente, prob, diputado, circ, k]
+ const out=[];for(const r of D){ // r: [nombre, prov, camara, partido, puesto, suplente, prob, diputado, circ, ficha, k]
   if(pv&&r[1]!==pv)continue;if(c&&r[2]!==+c)continue;if(pa&&P[r[3]][0]!==pa)continue;if(cab&&(r[4]!==1||r[5]))continue;
-  if(sal&&!(r[6]>=.1))continue;if(t&&!r[9].includes(t))continue;out.push(r)}
+  if(sal&&!(r[6]>=.1))continue;if(t&&!r[10].includes(t))continue;out.push(r)}
  if(!t&&!pv&&!pa&&!cab&&!sal){out.sort((a,b)=>(b[6]??-1)-(a[6]??-1))}
  cuenta.textContent=out.length.toLocaleString('es-ES')+(out.length===1?' candidato':' candidatos')+(AV?' (listas de 2023)':'');
- res.innerHTML=out.slice(0,lim).map(r=>{const p=P[r[3]];return `<tr><td class="nm"><b>${r[0]}</b>${r[7]?'<span class="mk dip">diputado/a</span>':''}${r[5]?' <small>suplente</small>':''}</td>`+
+ res.innerHTML=out.slice(0,lim).map(r=>{const p=P[r[3]];return `<tr><td class="nm"><b>${r[9]?`<a href="${PROV[r[1]][0]}/${r[9]}/">${r[0]}</a>`:r[0]}</b>${r[7]?'<span class="mk dip">diputado/a</span>':''}${r[5]?' <small>suplente</small>':''}</td>`+
  `<td class="n">${r[4]}</td><td><i class="pt" style="background:${p[2]}"></i>${p[1]}<small>${r[2]?'Senado':'Congreso'}${r[8]?' · '+r[8]:''}</small></td>`+
  `<td><a href="${PROV[r[1]][0]}/">${PROV[r[1]][1]}</a></td><td class="n">${r[6]==null?'–':`<span class="pr ${nv(r[6])}">${pc(r[6])}</span>`}</td></tr>`}).join('');
  mas.hidden=out.length<=lim;
