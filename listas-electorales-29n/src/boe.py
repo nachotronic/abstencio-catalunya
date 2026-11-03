@@ -71,12 +71,18 @@ def nombre_limpio(t):
 
 
 def sin_etiqueta(t):
-    """Senado: algunas juntas añaden al nombre la coalición entre paréntesis («Ana Gil Pérez (SENADO DE PROGRESO)»,
-    «… (SDP (PSOE-IU-MS))»). Se quita si va en mayúsculas o es «Senado de Progreso»; un apodo («(Chami)») se queda."""
-    m = re.search(r'\s*\(((?:[^()]|\([^()]*\))*)\)\s*$', t)
-    if m and (m.group(1).upper() == m.group(1) or slug(m.group(1)) == 'senado-de-progreso'):
-        return t[:m.start()].rstrip(' .')
-    return t
+    """Senado: algunas juntas añaden al nombre la coalición, entre paréntesis o corchetes («Ana Gil Pérez (SENADO DE
+    PROGRESO)», «… (SDP (PSOE-IU-MS))», «… [SDP (PSOE-IU-MS)]», «… (CCa-1.ºCAN)»). Se quita si lleva siglas (dos
+    mayúsculas seguidas) o es «Senado de Progreso»; un apodo («(Chami)», «(Pim)») se queda."""
+    while True:
+        m = re.search(r'\s*\[[^\[\]]*\]\s*$', t) or re.search(r'\s*\(((?:[^()]|\([^()]*\))*)\)\s*$', t)
+        if not m:
+            return t
+        dentro = m.group(0).strip()[1:-1]
+        if m.group(0).strip().startswith('[') or re.search(r'[A-ZÁÉÍÓÚÑ]{2,}', dentro) or slug(dentro) in ('', 'senado-de-progreso'):
+            t = t[:m.start()].rstrip(' .')
+        else:
+            return t
 
 
 def lee(xml):

@@ -347,7 +347,7 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
         faq.insert(2, (f'¿Qué candidatos de {corto} tienen el escaño en el aire?', '; '.join(salida[:5]) + '. Probabilidades según el modelo de Mapa Electoral con la media de encuestas.'))
     if cod in ('07', '35', '38'):
         faq.append(('¿Cómo se elige el Senado en las islas?', 'En Baleares y Canarias cada isla elige sus propios senadores: tres Mallorca, Gran Canaria y Tenerife, donde cada elector puede marcar hasta dos nombres, '
-                    'y uno cada una de las demás (Menorca, Ibiza, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro), donde se marca uno (LOREG, artículos 165 y 166).'))
+                    'y uno cada una de las demás (Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro), donde se marca uno (LOREG, artículos 165 y 166).'))
     elif cod in ('51', '52'):
         faq.append((f'¿Cuántos senadores elige {corto}?', 'Dos. Cada elector puede marcar hasta dos nombres, y salen los dos más votados (LOREG, artículos 165 y 166).'))
     else:
@@ -897,19 +897,20 @@ def pagina_senado(cands, datos, avance):
             'circunscripción según el BOE.')[:300]
     faq = [('¿Cuántos nombres puedo marcar en la papeleta del Senado?',
             'Hasta tres en las provincias, que eligen cuatro senadores. Hasta dos en Mallorca, Gran Canaria y Tenerife (eligen tres) y en Ceuta y Melilla (eligen dos). '
-            'Uno en Menorca, Ibiza, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro, que eligen uno cada una (LOREG, artículos 165 y 166).'),
+            'Uno en Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro, que eligen uno cada una (LOREG, artículos 165 y 166).'),
            ('¿Puedo votar a candidatos de partidos distintos al Senado?',
             'Sí. Las cruces pueden ir a candidatos de cualquier candidatura de la papeleta, siempre que no pasen del máximo de la circunscripción (LOREG, artículo 166).'),
            ('¿Qué anula el voto al Senado?',
-            'Marcar más nombres de los permitidos (LOREG, artículo 96.3), y también añadir, tachar o cambiar nombres o su orden, o escribir en la papeleta (artículo 96.2).'),
+            'Marcar más nombres de los permitidos (LOREG, artículo 96.3). También añadir, tachar o modificar nombres, escribir en la papeleta o alterarla de cualquier otra forma: el artículo 96.2 lo aplica a todos los procesos electorales, y la propia papeleta del Senado avisa de que «cualquier alteración» anula el voto (artículo 172.3.e).'),
            ('¿Es válida una papeleta del Senado sin ninguna cruz?',
             'Sí: cuenta como voto en blanco, igual que el sobre vacío (LOREG, artículo 96.5).'),
            ('¿Quién sale elegido senador?',
             'Los candidatos con más votos de la circunscripción, hasta cubrir sus escaños (LOREG, artículo 166.1.b). No hay reparto proporcional entre partidos: '
             'cuentan los votos de cada nombre.'),
            ('¿En qué orden salen los partidos en la papeleta del Senado?',
-            'Primero las candidaturas que obtuvieron votos en las últimas elecciones al Senado en esa circunscripción, de más a menos; después, las demás, por sorteo '
-            '(LOREG, artículo 172.3.b). Dentro de cada candidatura, los nombres van en el orden que fija el partido. Por eso la papeleta no tiene por qué coincidir con el orden del BOE.'),
+            'Lo fija cada junta electoral provincial según los votos al Senado de 2023: se suman los de todos los candidatos de cada partido, federación o coalición, de más a menos, '
+            'y las agrupaciones de electores y los partidos que no se presentaron entonces van después, por sorteo (LOREG, artículo 172.3.b). El apartado 172.3.c añade una regla para las coaliciones que se separan o se juntan. '
+            'En Eivissa y Formentera, que estrenan circunscripción, no hay resultados previos propios. Dentro de cada candidatura, los nombres van en el orden que fija el partido (172.3.a). Por eso la papeleta no tiene por qué coincidir con el orden del BOE.'),
            ('¿Aparecen los suplentes en la papeleta?', 'No. Cada candidato al Senado lleva suplentes, pero no figuran en la papeleta (LOREG, artículo 171.2).')]
     url = URL_SENADO
     jsonld = [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': url + '#pagina', 'name': titular, 'description': desc, 'url': url, 'inLanguage': 'es',
@@ -926,12 +927,12 @@ def pagina_senado(cands, datos, avance):
 <form class="filtros" onsubmit="return false"><label for="circ">Ve a tu provincia o isla</label><select id="circ"><option value="">Elige…</option>{''.join(opciones)}</select></form>
 <p data-tipo="dato">El 29 de noviembre se eligen por votación directa {total} senadores en {len(orden)} circunscripciones: las 47 provincias peninsulares, las once islas de Baleares y Canarias que tienen senadores propios, y Ceuta y Melilla (<a href="{LOREG}#a165">LOREG, artículo 165</a>). El resto del Senado lo designan los parlamentos autonómicos.</p>
 <p data-tipo="dato">A diferencia del Congreso, no se vota una lista cerrada. La papeleta del Senado trae, en una sola hoja, a todos los candidatos de todas las candidaturas de la circunscripción, cada uno con su casilla, y el elector marca con una cruz los nombres que quiere (<a href="{LOREG}#a172">artículo 172.3</a>). Puede repartir las cruces entre partidos distintos.</p>
-<p data-tipo="dato">El número de cruces depende de dónde se vota. Las provincias eligen cuatro senadores y se marcan hasta tres nombres; Mallorca, Gran Canaria y Tenerife eligen tres y se marcan hasta dos; Ceuta y Melilla eligen dos y se marcan hasta dos; y Menorca, Ibiza, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro eligen uno, con una sola cruz (<a href="{LOREG}#a166">artículo 166.1.a</a>). Salen elegidos los nombres más votados (artículo 166.1.b).</p>
-<p data-tipo="dato">Una cruz de más anula el voto (<a href="{LOREG}#a96">artículo 96.3</a>), igual que tachar, añadir o cambiar de orden los nombres (96.2). En cambio, una papeleta del Senado sin ninguna cruz es un voto en blanco válido (96.5). Marcar menos cruces de las permitidas también es válido.</p>
+<p data-tipo="dato">El número de cruces depende de dónde se vota. Las provincias eligen cuatro senadores y se marcan hasta tres nombres; Mallorca, Gran Canaria y Tenerife eligen tres y se marcan hasta dos; Ceuta y Melilla eligen dos y se marcan hasta dos; y Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro eligen uno, con una sola cruz (<a href="{LOREG}#a166">artículo 166.1.a</a>). Salen elegidos los nombres más votados (artículo 166.1.b).</p>
+<p data-tipo="dato">Una cruz de más anula el voto (<a href="{LOREG}#a96">artículo 96.3</a>), igual que tachar, añadir o modificar nombres o escribir en la papeleta (96.2); la papeleta lo recuerda en una nota: «cualquier alteración en la papeleta determinará la nulidad del voto» (172.3.e). En cambio, una papeleta del Senado sin ninguna cruz es un voto en blanco válido (96.5). Marcar menos cruces de las permitidas también es válido.</p>
 <h2>Cuántos senadores elige cada circunscripción</h2>
 <div class="tbl"><table class="senado"><thead><tr><th>Circunscripción</th><th class="n">Senadores</th><th class="n">Cruces, como máximo</th><th class="n">Candidaturas</th><th class="n">Candidatos</th></tr></thead><tbody>{''.join(filas_tabla)}</tbody></table></div>
 <h2 id="candidatos">Los candidatos al Senado del 29N, provincia a provincia</h2>
-<p>Los nombres, tal como los publica el {fuente_boe}, y en el orden del BOE. En la papeleta, los partidos van ordenados por los votos que sacaron al Senado en 2023 en esa circunscripción, así que el orden puede cambiar.</p>
+<p>Los nombres, tal como los publica el {fuente_boe}, y en el orden del BOE. El orden de la papeleta lo fija cada junta electoral provincial según los votos al Senado de 2023 (artículo 172.3.b y c), así que puede ser otro; en Eivissa y Formentera, que estrenan circunscripción, no hay resultados previos propios.</p>
 {''.join(secciones)}
 <h2>Preguntas frecuentes sobre el voto al Senado</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in faq)}</div>
