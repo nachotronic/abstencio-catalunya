@@ -2,98 +2,68 @@
  "pieza": "eeuu-elecciones-medio-mandato-mapa",
  "cifras": [
   {
-   "texto": "Associated Press y NBC News coinciden ya en 226 escaños",
-   "cifra": "226",
+   "texto": "Associated Press y NBC News coinciden ya en 269 escaños",
+   "cifra": "269",
    "calculo": "DIR['D'] + DIR['R'] + DIR['O']"
   },
   {
-   "texto": "226 escaños: 140 para los demócratas y 86 para los republicanos",
-   "cifra": "140",
+   "texto": "269 escaños: 170 para los demócratas y 99 para los republicanos",
+   "cifra": "170",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "140 para los demócratas y 86 para los republicanos",
-   "cifra": "86",
+   "texto": "170 para los demócratas y 99 para los republicanos",
+   "cifra": "99",
    "calculo": "DIR['R']"
   },
   {
-   "texto": "Ya son cinco los distritos que cambian de partido",
-   "cifra": "cinco",
+   "texto": "Ya son nueve los distritos que cambian de partido",
+   "cifra": "nueve",
    "calculo": "DIR['cambios_D'] + DIR['cambios_R']"
   },
   {
-   "texto": "los cinco a favor de los demócratas",
-   "cifra": "cinco",
+   "texto": "los nueve a favor de los demócratas",
+   "cifra": "nueve",
    "calculo": "DIR['cambios_D'] if DIR['cambios_R'] == 0 else -1"
   },
   {
-   "texto": "A los tres de la actualización anterior",
-   "cifra": "tres",
-   "calculo": "3"
+   "texto": "Desde la actualización anterior se suman cuatro",
+   "cifra": "cuatro",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] in ('CO-08','MO-02','NE-02','VA-02') and v[1] == 'D' and v[2]])"
   },
   {
-   "texto": "el 6.º de Kentucky, el 7.º de Nueva Jersey",
-   "cifra": "6",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'KY-06' and v[1] == 'D' and v[2]])*6"
-  },
-  {
-   "texto": "el 7.º de Nueva Jersey y el 7.º de Pensilvania",
-   "cifra": "7",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'NJ-07' and v[1] == 'D' and v[2]])*7"
-  },
-  {
-   "texto": "y el 7.º de Pensilvania)",
-   "cifra": "7",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'PA-07' and v[1] == 'D' and v[2]])*7"
-  },
-  {
-   "texto": "el 8.º de Pensilvania, con Paige Cognetti",
+   "texto": "el 8.º de Colorado, con Manny Rutinel",
    "cifra": "8",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'PA-08' and v[1] == 'D' and v[2]])*8"
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'CO-08' and v[1] == 'D' and v[2]])*8"
   },
   {
-   "texto": "el 10.º del mismo estado, con Janelle Stelson",
-   "cifra": "10",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'PA-10' and v[1] == 'D' and v[2]])*10"
+   "texto": "el 2.º de Misuri, con Fred Wellman",
+   "cifra": "2",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'MO-02' and v[1] == 'D' and v[2]])*2"
   },
   {
-   "texto": "Pensilvania da ya 10 escaños a los demócratas",
-   "cifra": "10",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('PA-') and v[1] == 'D'])"
+   "texto": "el 2.º de Nebraska, con Denise Powell",
+   "cifra": "2",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'NE-02' and v[1] == 'D' and v[2]])*2"
   },
   {
-   "texto": "y 6 a los republicanos. Florida",
-   "cifra": "6",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('PA-') and v[1] == 'R'])"
+   "texto": "el 2.º de Virginia, con Elaine Luria",
+   "cifra": "2",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'VA-02' and v[1] == 'D' and v[2]])*2"
   },
   {
-   "texto": "da 16 a los republicanos y 7 a los demócratas",
-   "cifra": "16",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'R'])"
+   "texto": "California da ya 18 escaños a los demócratas",
+   "cifra": "18",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('CA-') and v[1] == 'D'])"
   },
   {
-   "texto": "16 a los republicanos y 7 a los demócratas, y Nueva York",
-   "cifra": "7",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D'])"
-  },
-  {
-   "texto": "y Nueva York, 17 a los demócratas",
-   "cifra": "17",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NY-') and v[1] == 'D'])"
-  },
-  {
-   "texto": "17 a los demócratas y 3 a los republicanos",
-   "cifra": "3",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NY-') and v[1] == 'R'])"
-  },
-  {
-   "texto": "Hay otros 26 escaños que de momento solo da una de las dos fuentes",
-   "cifra": "26",
+   "texto": "Hay otros 31 escaños que de momento solo da una de las dos fuentes",
+   "cifra": "31",
    "calculo": "len(DIR['solo_ap']) + len(DIR['solo_nbc'])"
   },
   {
-   "texto": "faltan 209 escaños",
-   "cifra": "209",
+   "texto": "faltan 166 escaños",
+   "cifra": "166",
    "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']"
   },
   {
@@ -102,32 +72,37 @@
    "calculo": "218"
   },
   {
-   "texto": "65 son de California, Washington y Oregón",
-   "cifra": "65",
+   "texto": "a los demócratas les faltan 48",
+   "cifra": "48",
+   "calculo": "218 - DIR['D']"
+  },
+  {
+   "texto": "42 son de California, Washington y Oregón",
+   "cifra": "42",
    "origen": "titular",
    "calculo": "52 + 10 + 6 - len([v for v in DIR['dist'].values() if v[0][:2] in ('CA', 'WA', 'OR') and v[1] in ('D', 'R', 'O')])"
   },
   {
-   "texto": "Los demócratas arrebatan cinco escaños",
-   "cifra": "cinco",
+   "texto": "arrebatan nueve escaños",
+   "cifra": "nueve",
    "calculo": "DIR['cambios_D'] if DIR['cambios_R'] == 0 else -1",
    "origen": "titular"
   },
   {
-   "texto": "llevan 140",
-   "cifra": "140",
+   "texto": "llevan 170",
+   "cifra": "170",
    "calculo": "DIR['D']",
    "origen": "titular"
   },
   {
-   "texto": "a 86 en la Cámara",
-   "cifra": "86",
+   "texto": "a 99",
+   "cifra": "99",
    "calculo": "DIR['R']",
    "origen": "titular"
   },
   {
-   "texto": "en la Cámara, con 209 por decidir",
-   "cifra": "209",
+   "texto": "con 166 por decidir",
+   "cifra": "166",
    "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']",
    "origen": "titular"
   },
@@ -150,24 +125,19 @@
    "origen": "titular"
   },
   {
-   "texto": "coinciden en 226 escaños",
-   "cifra": "226",
+   "texto": "coinciden en 269 escaños",
+   "cifra": "269",
    "calculo": "DIR['D'] + DIR['R'] + DIR['O']",
    "origen": "titular"
   },
   {
-   "texto": "de los 209 por decidir",
-   "cifra": "209",
+   "texto": "de los 166 por decidir",
+   "cifra": "166",
    "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']",
    "origen": "titular"
   }
  ],
  "externas": [
-  {
-   "texto": "En el Senado ya hay cuatro cambios de partido, y en los gobernadores, otros cuatro",
-   "fuente": "https://mapaelectoral.es/actualidad/eeuu-noche-electoral-guia-horarios/",
-   "nota": "Senado NC, SC, OH, TX; gobernadores GA, IA, OH, TX; AP+NBC con gained, crudo 20261104-0521"
-  },
   {
    "texto": "ganaron la Cámara por 220 escaños a 215",
    "origen": "titular",
@@ -175,6 +145,11 @@
    "nota": "resultado de 2024, el mismo que en la previa"
   }
  ],
- "ignorar": [],
+ "ignorar": [
+  {
+   "texto": "California da ya 18 escaños a los demócratas y, de momento, ninguno a los republicanos",
+   "motivo": "«ninguno» comprobado: 0 distritos de CA con ganador R confirmado en el crudo 20261104-0559"
+  }
+ ],
  "permitir_espana": []
 }
