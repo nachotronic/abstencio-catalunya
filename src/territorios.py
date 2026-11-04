@@ -439,6 +439,51 @@ ALIAS_CCAA = {'pais-vasco': 'Euskadi'}
 PIEZAS_EN_MUNICIPIOS = {'28': 8}
 
 
+_VECINOS = {}
+
+
+def vecinos(cod, eps=0.004, n=8):
+    """Municipios de alrededor: los que tienen algún vértice de su contorno a menos de `eps` grados (unos 400 m)
+    de uno del contorno de `cod`, ordenados por cuántos vértices comparten cerca (cuanto más frontera, antes).
+    La geometría es la simplificada del mapa, así que puede faltar algún vecino con una frontera muy corta."""
+    import collections, math
+    if not _VECINOS:
+        for c, rs in MS.geometria('mun').items():
+            for r in rs:
+                for x, y in r:
+                    _VECINOS.setdefault((math.floor(x / eps), math.floor(y / eps)), set()).add(c)
+    cuenta = collections.Counter()
+    for r in MS.geometria('mun').get(cod, []):
+        for x, y in r:
+            i, j = math.floor(x / eps), math.floor(y / eps)
+            for a in (-1, 0, 1):
+                for b in (-1, 0, 1):
+                    cuenta.update(_VECINOS.get((i + a, j + b), ()))
+    cuenta.pop(cod, None)
+    return [c for c, _ in cuenta.most_common(n)]
+
+
+def bloque_vecinos(nombre, cod, raiz):
+    """Tabla «Municipios de alrededor» de la ficha de un municipio: quién ganó en 2023 en cada vecino y su participación."""
+    y = T.ULTIMA
+    filas = []
+    for c in vecinos(cod):
+        m = T.MUN[T.MUN.mun_code == c]
+        if m.empty:
+            continue
+        r = T.resultado(m, y)
+        g = T.ganador(r)
+        nom = escape(m.iloc[0].municipio)
+        enl = f'<a href="{raiz}{CIUDADES[c]}">{nom}</a>' if c in CIUDADES else f'<a href="{raiz}?m={c}">{nom}</a>'
+        filas.append([enl, f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—', pct(r['part'])])
+    if not filas:
+        return ''
+    return ('<h2 id="alrededor">Cómo votaron los municipios de alrededor</h2>'
+            + p_('Dato', f'Los municipios de alrededor de {escape(nombre)}, con el partido más votado y la participación en las generales de 2023.')
+            + tabla(f'Municipios de alrededor de {escape(nombre)}, generales de 2023', ['Municipio', 'Más votado', 'Participación'], filas)
+            + '<p class="leyenda">Fuente: Ministerio del Interior. Los vecinos salen del contorno simplificado del mapa, así que puede faltar alguno con una frontera muy corta.</p>')
+
+
 def con_alias(nombre, alias):
     return f'{nombre} ({alias})' if alias else nombre
 
@@ -679,6 +724,13 @@ def pagina_ciudad(cod):
             + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
                (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
                 'Resultados de la serie completa y municipales frente a generales.')))
+    if p in PIEZAS_EN_MUNICIPIOS:   # provincias en prueba: el título empieza por lo que se busca («elecciones <municipio>») y nombra la mesa
+        titulo = (f'Elecciones en {nombre} 29N 2026: ' + ('resultados por barrio' if b_sec else 'resultados desde 1977')
+                  + (', censo y mesas electorales' if q_censo else ' y mesas electorales'))
+        desc = (f'Elecciones en {nombre}: en las generales de 2023 ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
+                + (f'{num(censo_29n(cod)[2])} electores para el 29N. ' if q_censo else '')
+                + ('Resultados por barrio y sección censal, ' if b_sec else 'Resultados ')
+                + 'cómo saber si te ha tocado mesa y dónde votar, y cada elección desde 1977.')
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     faq_html, faq_ld = faq(([q_censo] if q_censo else []) + q_mesas)
@@ -714,6 +766,8 @@ def pagina_ciudad(cod):
         prov_rel += actualidad_de([hist], raiz) if (ROOT / 'actualidad' / hist / 'index.html').exists() else []
         rel += prov_rel[:PIEZAS_EN_MUNICIPIOS[p]]
     h.append(bloque_relacionadas([], nivel, rel) if rel else '')
+    if p in PIEZAS_EN_MUNICIPIOS:
+        h.append(bloque_vecinos(nombre, cod, raiz))
     pob = T.MUN.set_index('mun_code').poblacion
     otras = sorted((c for c in CIUDADES if c[:2] == p and c != cod), key=lambda c: -pob[c])[:10]   # los diez más poblados; el resto, en la provincia
     otras.sort(key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
