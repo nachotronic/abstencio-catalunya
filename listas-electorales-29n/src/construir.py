@@ -70,6 +70,17 @@ PARTIDOS = [
 # Coaliciones que el modelo no simula como una sola lista: sin probabilidad por puesto (el modelo da por separado
 # PP y UPN en Navarra, y Nueva Canarias y Sumar/Podemos en Canarias)
 SIN_MODELO = r'UPN-PP|UNIDAD DEL PUEBLO CANARIO'
+# Titulares que renuncian después de la proclamación: su nombre sigue en la papeleta (LOREG art. 48.1), pero no ocupan
+# el escaño si sale; lo cubre el siguiente de la lista (art. 48.2). Sin probabilidad propia: los puestos de debajo
+# suben uno. Clave: (provincia, nombre según clave_nombre).
+RENUNCIAS = {
+    ('47', 'oscar puente santiago'): {
+        'fecha': '3 de noviembre de 2026',
+        'url': 'https://www.europapress.es/economia/transportes-00343/noticia-puente-avanza-dimision-tragedia-urda-decision-empatia-victimas-20261103211310.html',
+        'medio': 'Europa Press',
+        'pieza': 'actualidad/puente-valladolid-segundo-escano-29n/',
+    },
+}
 OTRO = ('OTROS', '', 'Otros', '#8a8589', '#a9a4a8', None)
 # en el modelo, Podemos va dentro de otras listas en estas provincias (encuestas, «PODEMOS_CON_ERC» y «PODEMOS_CON_FA»)
 
@@ -196,9 +207,17 @@ def prepara(datos, avance):
         c = dict(c, fam=f[0], corto=corto, color=f[3], oscuro=f[4])
         sin = re.search(SIN_MODELO, c['denominacion'].upper())
         probs = None if avance or sin or c['camara'] != 'congreso' or not f[5] else pu['puestos'].get(c['prov'], {}).get(f[5], [])
+        salta = 0   # renuncias por encima: el puesto efectivo sube uno por cada una
         for p in c['titulares']:
-            if probs is not None:
-                p['p'] = probs[p['n'] - 1] if p['n'] - 1 < len(probs) else 0.0
+            r = RENUNCIAS.get((c['prov'], clave_nombre(p['nombre']))) if c['camara'] == 'congreso' else None
+            if r:
+                p['renuncia'] = r
+                salta += 1
+            elif probs is not None:
+                i = p['n'] - 1 - salta
+                p['p'] = probs[i] if i < len(probs) else 0.0
+            if salta and not r:
+                p['efectivo'] = p['n'] - salta
             d = es_diputado(p['nombre'], c['prov'], dips)
             if d:
                 p['dipx'] = d
@@ -235,6 +254,8 @@ def orden_listas(cs, modelo_prov):
 
 
 def chip(p):
+    if p.get('renuncia'):
+        return f'<span class="mk ren" title="Renunció el {p["renuncia"]["fecha"]}: sigue en la papeleta, pero el escaño pasa al siguiente (LOREG art. 48.2)">renuncia</span>'
     if 'p' not in p:
         return ''
     return f'<span class="pr {nivel(p["p"])}" title="Probabilidad de salir elegido según el modelo">{pct(p["p"])}</span>'
@@ -302,7 +323,7 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
     n_cong = sum(len(c['titulares']) for c in cong)
     n_sen = sum(len(c['titulares']) for c in sen)
     anio = '2023' if avance else '2026'
-    cabezas = [(c['corto'], c['titulares'][0]['nombre']) for c in cong if c['titulares'] and c['fam'] != 'OTROS'][:8]
+    cabezas = [(c['corto'], c['titulares'][0]['nombre'] + (f' (renunció el {c["titulares"][0]["renuncia"]["fecha"]}, pero sigue en la papeleta)' if c['titulares'][0].get('renuncia') else '')) for c in cong if c['titulares'] and c['fam'] != 'OTROS'][:8]
     if avance:
         titular = f'Listas del 29N en {corto}: el BOE publica los candidatos el 28 de octubre'
         dek = (f'{corto} elige {total} diputados el 29 de noviembre. Mientras llegan las listas oficiales, aquí están las del 23J de 2023, '
@@ -417,6 +438,7 @@ ESTILOS_LISTAS = """<style>
 .pr.seguro{background:#1f7a3a;color:#fff}.pr.aire{background:#f0c53a;color:#1d1a1c}.pr.dificil{background:var(--grid);color:var(--muted)}
 .mk{display:inline-block;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--rule);border-radius:3px;padding:0 .3rem;margin-left:.35rem;color:var(--muted);vertical-align:1px}
 .mk.dip{border-color:var(--fg);color:var(--fg)}
+.mk.ren{border-style:dashed}
 .menu-listas{display:flex;flex-wrap:wrap;gap:6px;font-family:var(--ui);font-size:.85rem}.menu-listas a{border:1px solid var(--rule);border-left:4px solid var(--c);border-radius:4px;padding:.1rem .5rem;text-decoration:none;color:var(--fg)}
 form.buscar-prov,.filtros{font-family:var(--ui);display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:1rem 0}
 form.buscar-prov label{width:100%;font-size:.9rem;color:var(--muted)}
@@ -599,7 +621,7 @@ def pagina_mi_diputado(cands, modelo, dips_fecha, datos, avance, pu_meta):
             if v:
                 repiten_total += 1
                 c, p = v
-                extra = f'Repite: n.º {p["n"]} de {e(c["siglas"] or c["corto"])}' + (f' <span class="pr {nivel(p.get("p"))}">{pct(p.get("p"))}</span>' if p.get('p') is not None else '')
+                extra = f'Repite: n.º {p["n"]} de {e(c["siglas"] or c["corto"])}' + (f' · renunció el {p["renuncia"]["fecha"]}, pero sigue en la papeleta' if p.get('renuncia') else '') + (f' <span class="pr {nivel(p.get("p"))}">{pct(p.get("p"))}</span>' if p.get('p') is not None else '')
             else:
                 extra = f'No figura en las listas al Congreso por {e(corto)}' if not avance else ''
             lis += f'<li><i class="pt" style="background:{f[3]}"></i><b>{e(x["nombre"])}</b> <small>{e(x["formacion"])}{" · " + extra if extra else ""}</small></li>'
@@ -760,9 +782,18 @@ def pagina_candidato(c, p, cs_prov, datos, pu_meta):
     titulo = f'{nombre}: número {n} {de_partido} por {corto} en las elecciones del 29N'
     parrafos = [('dato', f'{e(nombre)} va en el puesto {n} de la lista de {e(c["denominacion"])} al Congreso por {e(corto)} en las elecciones generales '
                          f'del 29 de noviembre de 2026, según las candidaturas {fase} en el {fuente_boe.split(">", 1)[1].split("<")[0]}.')]
+    if p.get('renuncia'):
+        r = p['renuncia']
+        parrafos.append(('dato', f'El {r["fecha"]} anunció que renuncia a ir en la lista (<a href="{e(r["url"])}">{e(r["medio"])}</a>). Las candidaturas ya estaban proclamadas y no se pueden modificar, '
+                                 f'así que su nombre seguirá en la papeleta; si el puesto sale elegido, el escaño pasa al siguiente de la lista (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acuarentayocho">LOREG, art. 48</a>). '
+                                 f'<a href="../../../{r["pieza"]}">Qué cambia en {e(corto)}</a>.'))
     if 'p' in p and probs:
         media = sum(probs)
-        parrafos.append(('dato', f'Con la media de encuestas del {fecha_larga(pu_meta["modelo"])}, el puesto {n} de esta lista consigue escaño {en_pct(p["p"])} '
+        ef = p.get('efectivo', n)
+        if ef != n:
+            parrafos.append(('dato', f'Con la renuncia de {e(", ".join(x["nombre"] for x in c["titulares"] if x.get("renuncia") and x["n"] < n))}, que sigue en la papeleta, '
+                                     f'el puesto {n} cuenta como el {ef}.º a la hora de repartir los escaños de la lista.'))
+        parrafos.append(('dato', f'Con la media de encuestas del {fecha_larga(pu_meta["modelo"])}, el puesto {ef} de esta lista consigue escaño {en_pct(p["p"])} '
                                  f'de las {miles(pu_meta["simulaciones"])} simulaciones del modelo de Mapa Electoral: <span class="pr {nivel(p["p"])}">{NIVEL[nivel(p["p"])].lower()}</span>. '
                                  f'La lista {e(de_partido)} saca de media {f"{media:.1f}".replace(".", ",")} escaños en {e(corto)}. Es una estimación, no un resultado.'))
     elif re.search(SIN_MODELO, c['denominacion'].upper()) or not probs:
@@ -798,6 +829,7 @@ def pagina_candidato(c, p, cs_prov, datos, pu_meta):
     otras = [(x, q) for x in orden_listas([y for y in cs_prov if y['camara'] == 'congreso' and y is not c], None) for q in x['titulares'][:1] if q.get('ficha')][:6]
     desc = (f'{nombre} es el número {n} {de_partido} al Congreso por {corto} el 29N'
             + (f': {pct(p["p"])} de opciones de conseguir escaño según la media de encuestas' if 'p' in p else '')
+            + (f'. Renunció el {p["renuncia"]["fecha"]}, pero su nombre sigue en la papeleta' if p.get('renuncia') else '')
             + ('. Escaño en la XV legislatura y sus declaraciones de bienes' if d else '') + '. Lista completa del BOE.')[:300]
     url = f'{URL}{sl}/{p["ficha"]}/'
     persona = {'@type': 'Person', '@id': url + '#persona', 'name': nombre, 'memberOf': {'@type': 'Organization', 'name': c['denominacion']}}
