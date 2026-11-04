@@ -3739,12 +3739,27 @@ a{color:var(--fg)}
     internacional(todas_es, css, imagen_tarjeta)
 
 
+# Bloque fijo de /internacional/ con los gráficos de las elecciones de EE. UU. (Nacho, 4-11-2026)
+_G = '../actualidad/eeuu-elecciones-medio-mandato-mapa/'
+ESPECIAL_EEUU = ('<section class="esp" aria-labelledby="h-esp-eeuu"><p class="kicker">Especial</p><h2 id="h-esp-eeuu">Elecciones de medio mandato en EE.&nbsp;UU. 2026</h2>'
+    '<ul>'
+    f'<li><a href="{_G}#congreso"><b>Así queda el Congreso</b><span>Senado y Cámara en barras y hemiciclos; pestañas con los elegidos, los gobernadores y los cambios de partido</span></a></li>'
+    f'<li><a href="{_G}#recorrido"><b>Los distritos que cambian, en 3D</b><span>Recorrido con scroll por los distritos que pasan a los demócratas: los más ajustados y los vuelcos más grandes</span></a></li>'
+    f'<li><a href="{_G}#directo"><b>La Cámara, distrito a distrito</b><span>El mapa de los 435 distritos con el ganador de cada uno</span></a></li>'
+    '<li><a href="../actualidad/eeuu-resultados-medio-mandato-2026/"><b>Resultados y resumen</b><span>Senado, Cámara y gobernadores: quién gana y qué escaños cambian de manos</span></a></li>'
+    '<li><a href="../actualidad/eeuu-noche-electoral-guia-horarios/"><b>La noche electoral, hora a hora</b><span>Los cierres de urnas, estado a estado</span></a></li>'
+    '</ul></section>'
+    '<style>.esp{border:1px solid var(--line,#ddd);border-left:4px solid #1f5bc6;padding:14px 16px;margin:18px 0 26px}.esp h2{margin:.1rem 0 .6rem}.esp ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}'
+    '@media(min-width:760px){.esp ul{grid-template-columns:1fr 1fr}}.esp a{display:block;text-decoration:none;color:inherit}.esp a b{display:block;text-decoration:underline}.esp a span{font-size:.9em;opacity:.8}</style>')
+
+
 def internacional(todas, css, imagen_tarjeta):
     """Página /internacional/: las elecciones de otros países, aparte de Actualidad (Nacho, 2-11-2026).
     Las piezas siguen en /actualidad/<slug>/ para no romper enlaces ni lo que Google ya tiene indexado."""
     qs = sorted([q for q in todas if q['serie'] == 'internacional'][::-1], key=lambda q: q['fecha'], reverse=True)
     if not qs:
         return
+    qs = sorted(qs, key=lambda q: INTER_DESTACADAS.index(q['slug']) if q['slug'] in INTER_DESTACADAS else len(INTER_DESTACADAS))
     url = BASE + '/internacional/'
     desc = 'Elecciones en el resto del mundo contadas con mapas: quién ganó en cada estado, distrito o municipio, y qué cambió. Cada cifra, con su fuente oficial.'
     jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Internacional', 'url': url, 'description': desc, 'inLanguage': 'es',
@@ -3755,7 +3770,8 @@ def internacional(todas, css, imagen_tarjeta):
            + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Internacional')
            + f'\n<main><p class="kicker">Mapa Electoral</p><h1 data-miga="Internacional">Internacional</h1><p>{desc} Las elecciones españolas, en <a href="../actualidad/">Actualidad</a>.</p>'
-           + f'<ul class="sigue tarjetas">{tarjetas}</ul><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
+           + ESPECIAL_EEUU
+           + f'<h2>Todas las piezas</h2><ul class="sigue tarjetas">{tarjetas}</ul><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
     os.makedirs(os.path.join(RAIZ, 'internacional'), exist_ok=True)
     open(os.path.join(RAIZ, 'internacional', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
@@ -4064,6 +4080,9 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
+# Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
+# Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
+INTER_DESTACADAS = ['eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
 INTER_EN_ACTUALIDAD = {'eeuu-resultados-medio-mandato-2026'}   # editor, 4-11-2026 8.20: la de la Cámara sale, para no repetir cifras distintas seguidas   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
@@ -4101,6 +4120,8 @@ def franja_serie(todas, clave, cabecera, sub, pre=''):
     serie = [q for q in todas if q['serie'] == clave]
     if clave in ('historia', 'internacional'):   # las más nuevas delante: al final del carrusel no se veían (Nacho, 23-10-2026)
         serie = sorted(serie[::-1], key=lambda q: q['fecha'], reverse=True)
+    if clave == 'internacional':
+        serie = sorted(serie, key=lambda q: INTER_DESTACADAS.index(q['slug']) if q['slug'] in INTER_DESTACADAS else len(INTER_DESTACADAS))
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-{clave}"><div class="da-cab"><h2 id="h-del-{clave}"><a href="{todas_url}">{cabecera}</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
