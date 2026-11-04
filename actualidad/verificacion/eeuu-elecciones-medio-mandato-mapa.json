@@ -1,14 +1,48 @@
 {
-  "pieza": "eeuu-elecciones-medio-mandato-mapa",
-  "cifras": [
-    {"texto": "Associated Press y NBC News coinciden ya en 18 escaños", "cifra": "18", "calculo": "DIR['D'] + DIR['R'] + DIR['O']"},
-    {"texto": "coinciden ya en 18 escaños: 12 para los demócratas y 6 para los republicanos", "cifra": "12", "calculo": "DIR['D']"},
-    {"texto": "12 para los demócratas y 6 para los republicanos", "cifra": "6", "calculo": "DIR['R']"},
-    {"texto": "Los demócratas se llevan los cuatro distritos de Georgia decididos hasta ahora", "cifra": "cuatro", "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('GA-') and v[1] == 'D']) if not [v for v in DIR['dist'].values() if v[0].startswith('GA-') and v[1] == 'R'] else -1"},
-    {"texto": "Florida, que estrena mapa, va de momento cuatro a cuatro", "cifra": "cuatro", "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D']) if len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D']) == len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'R']) else -1"},
-    {"texto": "Hay otros 13 escaños que de momento solo da una de las dos fuentes", "cifra": "13", "calculo": "len(DIR['solo_ap']) + len(DIR['solo_nbc'])"}
-  ],
-  "externas": [],
-  "ignorar": [],
-  "permitir_espana": []
+ "pieza": "eeuu-elecciones-medio-mandato-mapa",
+ "cifras": [
+  {
+   "texto": "Associated Press y NBC News coinciden ya en 53 escaños",
+   "cifra": "53",
+   "calculo": "DIR['D'] + DIR['R'] + DIR['O']"
+  },
+  {
+   "texto": "53 escaños: 36 para los demócratas y 17 para los republicanos",
+   "cifra": "36",
+   "calculo": "DIR['D']"
+  },
+  {
+   "texto": "36 para los demócratas y 17 para los republicanos",
+   "cifra": "17",
+   "calculo": "DIR['R']"
+  },
+  {
+   "texto": "Florida, que estrena mapa, da 11 a los republicanos y 6 a los demócratas",
+   "cifra": "11",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'R'])"
+  },
+  {
+   "texto": "da 11 a los republicanos y 6 a los demócratas",
+   "cifra": "6",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D'])"
+  },
+  {
+   "texto": "En Nueva Jersey, los demócratas suman cinco",
+   "cifra": "cinco",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NJ-') and v[1] == 'D']) if len([v for v in DIR['dist'].values() if v[0].startswith('NJ-') and v[1] == 'R']) == 0 else -1"
+  },
+  {
+   "texto": "y en Virginia, cuatro, por uno de los republicanos",
+   "cifra": "cuatro",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('VA-') and v[1] == 'D']) if len([v for v in DIR['dist'].values() if v[0].startswith('VA-') and v[1] == 'R']) == 1 else -1"
+  },
+  {
+   "texto": "Hay otros 16 escaños que de momento solo da una de las dos fuentes",
+   "cifra": "16",
+   "calculo": "len(DIR['solo_ap']) + len(DIR['solo_nbc'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
 }
