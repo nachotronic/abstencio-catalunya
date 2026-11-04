@@ -19,6 +19,12 @@ PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
+    dict(nombre='eeuu-congreso-scroll', t=8, k='Estados Unidos', titulo='Los demócratas, con 229 escaños en la Cámara de EE. UU.: el mapa, distrito a distrito', tuit=''),
+    dict(nombre='eeuu-resultados-scroll', t=5, k='Estados Unidos', titulo='Los demócratas ganan escaños de Carolina del Norte a Texas', tuit=''),
+    dict(nombre='como-votar-29n', t=7, k='Cómo votar', titulo='Cómo votar el 29N: horario, qué llevar y dónde te toca', tuit=''),
+    dict(nombre='voto-correo-guia', t=8, k='Voto por correo', titulo='Voto por correo: pídelo hasta el 19 de noviembre', tuit=''),
+    dict(nombre='mesa-electoral-guia', t=8, k='Mesa electoral', titulo='Si te toca mesa el 29N: plazos, excusas y qué pasa si no vas', tuit=''),
+    dict(nombre='tarjeta-censal-guia', t=8, k='Tarjeta censal', titulo='La tarjeta censal no hace falta para votar', tuit=''),
     dict(nombre='bulgaria-scroll', t=5, k='Bulgaria', titulo='Yotova ganó en 256 de los 265 municipios de Bulgaria', tuit=''),
     dict(nombre='banez-scroll', t=8.5, k='Huelva', titulo='Báñez y el PP en Huelva: de 9 municipios a 17', tuit=''),
     dict(nombre='eeuu-noche-scroll', t=15, k='Estados Unidos', titulo='La noche electoral de EE. UU., hora a hora desde España', tuit=''),

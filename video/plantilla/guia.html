@@ -490,9 +490,9 @@ const S = {
   numeros(s, t) {
     pop(s.titulo, X, 300, 80, 92, 0, t);
     if (s.sub) text(s.sub, X, 470, '500 30px ' + F.mono, C.muted, 'left', ease((t - 0.3) / 0.3));
-    s.items.forEach(([n, c, l], i) => {
+    s.items.forEach(([n, c, l, fijo], i) => {   // fijo: la cifra sale tal cual, sin contar (teléfonos, fechas)
       const k = ease((t - 0.5 - i * 0.6) / 0.8), y = 640 + i * 300;
-      text(cuenta(n, k), X, y, '800 120px ' + F.display, col(c), 'left', clamp(k * 3));
+      text(fijo ? n : cuenta(n, k), X, y, '800 120px ' + F.display, col(c), 'left', clamp(k * 3));
       [].concat(l).forEach((ln, j) => text(ln, X, y + 64 + j * 50, '400 42px ' + F.body, C.fg, 'left', clamp(k * 3)));
     });
   },
