@@ -3,27 +3,27 @@
  "cifras": [],
  "externas": [
   {
-   "texto": "coinciden ya en diez carreras al Senado: nueve para los demócratas y una para los republicanos",
+   "texto": "coinciden ya en 14 carreras al Senado: 11 para los demócratas y 3 para los republicanos",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "AP (NYT num_races_called 10) + NBC; directo/crudo/20261104-0235/estados.json"
+   "nota": "AP (outcome.won en el NYT) + NBC; directo/crudo/20261104-0316/estados.json"
   },
   {
-   "texto": "suman 43, y los republicanos, 32",
+   "texto": "suman 45, y los republicanos, 34",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "NYT party_balance DEM 43 / GOP 32 y NBC bopData dem 43 / rep 32 (no renovados 34 D con 2 independientes, 31 R)"
+   "nota": "NYT party_balance DEM 45 / GOP 34 y NBC bopData dem 45 / rep 34"
   },
   {
    "texto": "A los demócratas les hacen falta 51 para la mayoría; a los republicanos les bastan 50",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "NYT to_win DEM 51, GOP 50 (desempate del vicepresidente)"
+   "nota": "NYT to_win DEM 51, GOP 50"
   },
   {
-   "texto": "Hay cinco gobernadores decididos",
+   "texto": "Hay nueve gobernadores decididos, siete demócratas y dos republicanos",
    "fuente": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-   "nota": "AP + NBC: IL, MD, MA, PA, RI; directo/crudo/20261104-0235/estados.json"
+   "nota": "AP + NBC: CO, IL, MD, MA, NY, PA, RI (D); FL, WY (R); ninguno con gained; directo/crudo/20261104-0316/estados.json"
   },
   {
-   "texto": "las dos fuentes coinciden en 53 escaños, 36 demócratas y 17 republicanos",
+   "texto": "las dos coinciden en 104 escaños, 72 demócratas y 32 republicanos",
    "fuente": "https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/#directo",
    "nota": "mismo recuento que el bloque de la Cámara (DIR)"
   }
