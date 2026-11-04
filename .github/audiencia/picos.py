@@ -18,7 +18,7 @@ for a,b in [('2026-10-08','2026-10-31'),('2026-11-01','2026-11-04')]:
 def cat(p):
     m=re.match(r'^/([^/]+)/',p or '/')
     return m.group(1) if m else p
-for d in ['2026-11-03','2026-11-04']:
+for d in ['2026-11-04']:
     rows=grp(d,d,['requestPath','refererHost'],5000)
     print('\n=== DIA',d)
     c=collections.Counter(); ref=collections.Counter(); pth=collections.Counter()
@@ -32,7 +32,7 @@ for d in ['2026-11-03','2026-11-04']:
 for d in ['2026-11-04']:
     print('\n=== HORAS',d)
     for r in sorted(grp(d,d,['datetimeHour']),key=lambda r:r['dimensions']['datetimeHour']): print(r['dimensions']['datetimeHour'],r['sum']['visits'])
-print('\n=== PROVINCIAS municipio hoy')
+print('\n=== PROVINCIAS municipio hoy (ejecucion 2)')
 import collections as C
 pv=C.Counter()
 for r in grp('2026-11-04','2026-11-04',['requestPath'],5000):
