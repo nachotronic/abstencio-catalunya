@@ -7,7 +7,7 @@ Datos (listas-electorales-29n/datos/):
   28-10-2026 la sección funciona en modo «avance»: enseña las listas oficiales del 23J de 2023 y lo dice arriba.
 - diputados-xv.json: quién tuvo escaño en la legislatura que acaba (lo escribe diputados.py).
 - puestos-29n.json: probabilidad de salir elegido de cada puesto de cada lista según el modelo de /encuestas/ (la
-  misma simulación de la pieza «Las listas del 29N, puesto a puesto»). Solo se aplica a las listas del 29N.
+  misma simulación del escenario base publicado; se recalcula con /mnt/project-files/listas/puestos/puestos.py). Solo se aplica a las listas del 29N.
 
 Escribe index.html, <provincia>/index.html (52), candidatos.json (para el buscador), candidatos-29n.csv y sitemap.xml.
 
@@ -756,7 +756,8 @@ def elige_fichas(cands, avance):
         if c['camara'] != 'congreso':
             continue
         for p in c['titulares']:
-            if not (p.get('p', 0) >= UMBRAL_FICHA or p.get('dipx')):
+            ya = (CARPETA / PROV_SLUG[c['prov']] / slug(p['nombre']) / 'index.html').exists()   # una ficha publicada no se borra si baja del umbral
+            if not (p.get('p', 0) >= UMBRAL_FICHA or p.get('dipx') or ya):
                 continue
             s = slug(p['nombre'])
             if (c['prov'], s) in usados:   # dos personas con el mismo nombre en la misma provincia
@@ -1138,7 +1139,7 @@ def main():
 <h2>Método y fuentes</h2>
 <dl class="ficha">
 <dt>Listas</dt><dd>{fuente_boe}, candidaturas {datos['fase']}{' para el 23J de 2023' if avance else ''}. Se leen del XML oficial (<a href="https://github.com/nachotronic/abstencio-catalunya/blob/main/listas-electorales-29n/src/boe.py">código</a>) y se comprueba que estén las 52 juntas provinciales y que cada lista tenga sus puestos completos.</dd>
-<dt>Opciones de salir elegido</dt><dd>Modelo de Mapa Electoral con la media de encuestas del {fecha_larga(pu_meta['modelo'])} ({pu_meta['simulaciones']:,} simulaciones). La misma simulación de <a href="../actualidad/listas-29n-quien-encabeza/">Las listas del 29N, puesto a puesto</a>. Solo para el Congreso y para las listas que mide el modelo.</dd>
+<dt>Opciones de salir elegido</dt><dd>Modelo de Mapa Electoral con la media de encuestas del {fecha_larga(pu_meta['modelo'])} ({pu_meta['simulaciones']:,} simulaciones), el mismo escenario base que publica <a href="../encuestas/">/encuestas/</a>. <a href="../actualidad/listas-29n-quien-encabeza/">Las listas del 29N, puesto a puesto</a> hizo el mismo cálculo con las encuestas del 26 de octubre. Solo para el Congreso y para las listas que mide el modelo.</dd>
 <dt>Diputados de la legislatura que acaba</dt><dd><a href="https://www.congreso.es/es/opendata/diputados">Datos abiertos del Congreso</a>, descargados el {fecha_larga(dips_fecha)}: altas y bajas de la XV legislatura, comparadas por nombre en la misma provincia. Un nombre escrito de otra forma puede quedarse sin marcar.</dd>
 {'<dt>Listas de 2023</dt><dd>Las proclamadas en el BOE del 27 de junio de 2023, sin las correcciones posteriores ni las listas que los tribunales readmitieron después.</dd>' if avance else ''}
 <dt>Límites</dt><dd>Entre las listas presentadas (28 de octubre) y las proclamadas (3 de noviembre) las juntas pueden excluir candidaturas o nombres. Los colores agrupan a cada partido con sus marcas territoriales (PSC con PSOE, Compromís con Frente Amplio).</dd>
