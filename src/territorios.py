@@ -442,10 +442,13 @@ PIEZAS_EN_MUNICIPIOS = {'28': 8}
 _VECINOS = {}
 
 
-def vecinos(cod, eps=0.004, n=8):
-    """Municipios de alrededor: los que tienen algún vértice de su contorno a menos de `eps` grados (unos 400 m)
-    de uno del contorno de `cod`, ordenados por cuántos vértices comparten cerca (cuanto más frontera, antes).
-    La geometría es la simplificada del mapa, así que puede faltar algún vecino con una frontera muy corta."""
+VECINOS_WD = json.loads((ROOT / 'src' / 'vecinos_madrid.json').read_text(encoding='utf-8'))['vecinos']
+
+
+def vecinos(cod, eps=0.004, n=16):
+    """Municipios con los que limita `cod`. Hacen falta dos fuentes: la frontera común en Wikidata (P47, en
+    vecinos_madrid.json) y el contorno del mapa (algún vértice a menos de `eps` grados, unos 400 m). La segunda
+    sola da falsos vecinos (Alcobendas para Tres Cantos), así que solo ordena: más vértices cerca, más frontera."""
     import collections, math
     if not _VECINOS:
         for c, rs in MS.geometria('mun').items():
@@ -460,7 +463,8 @@ def vecinos(cod, eps=0.004, n=8):
                 for b in (-1, 0, 1):
                     cuenta.update(_VECINOS.get((i + a, j + b), ()))
     cuenta.pop(cod, None)
-    return [c for c, _ in cuenta.most_common(n)]
+    wd = set(VECINOS_WD.get(cod, ()))
+    return [c for c, _ in cuenta.most_common() if c in wd][:n]
 
 
 def bloque_vecinos(nombre, cod, raiz):
@@ -479,9 +483,9 @@ def bloque_vecinos(nombre, cod, raiz):
     if not filas:
         return ''
     return ('<h2 id="alrededor">Cómo votaron los municipios de alrededor</h2>'
-            + p_('Dato', f'Los municipios de alrededor de {escape(nombre)}, con el partido más votado y la participación en las generales de 2023.')
+            + p_('Dato', f'Los municipios vecinos de {escape(nombre)}, con el partido más votado y la participación en las generales de 2023.')
             + tabla(f'Municipios de alrededor de {escape(nombre)}, generales de 2023', ['Municipio', 'Más votado', 'Participación'], filas)
-            + '<p class="leyenda">Fuente: Ministerio del Interior. Los vecinos salen del contorno simplificado del mapa, así que puede faltar alguno con una frontera muy corta.</p>')
+            + '<p class="leyenda">Fuentes: Ministerio del Interior (resultados) y Wikidata (municipios que comparten límite), comprobado con el contorno del mapa.</p>')
 
 
 def con_alias(nombre, alias):
