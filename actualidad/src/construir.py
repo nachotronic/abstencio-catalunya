@@ -2854,15 +2854,18 @@ PIEZAS += [
         lugar='Valencia',
     ),
     dict(
-        slug='puente-valladolid-segundo-escano-29n', fecha='2026-10-29',
+        slug='puente-valladolid-segundo-escano-29n', fecha='2026-10-29', actualizado='2026-11-04 08:30',
         foto=dict(src='img/actualidad/fotos/puente-valladolid-segundo-escano-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Óscar Puente ante dos escaños de cuero rojo, uno con un sobre de votación, y la plaza Mayor de Valladolid: un collage.'),
-        titulo='Puente descarta dimitir y se juega en Valladolid el escaño de su número dos: sale en el 54%', serie='29n',
-        descripcion='El ministro de Transportes, que ha descartado dimitir tras el accidente de Urda, es el número uno del PSOE en una provincia de cinco diputados. Con la media de las encuestas, el segundo escaño socialista, el de Ana Redondo, depende de menos de dos puntos. En la capital, Puente sacaba como alcalde unos dos puntos más que su partido en las generales.',
+        titulo='Puente dimite y deja la lista de Valladolid, pero su nombre seguirá en la papeleta: el segundo escaño del PSOE sale en el 47,5%', serie='29n',
+        descripcion='El ministro de Transportes anunció el martes en el Congreso que dimite y que no irá en las listas del 29N. Las candidaturas ya están proclamadas, así que seguirá como número uno en la papeleta del PSOE y su escaño, si sale, pasa a los siguientes. Con las encuestas hasta el 3 de noviembre, el segundo escaño socialista, ahora el de José Domingo Castaño, sale en el 47,5% de las simulaciones.',
         compara='El reparto de los cinco diputados de Valladolid en 2023 y con el modelo de encuestas de Mapa Electoral; el voto al PSOE en la ciudad de Valladolid en las municipales de 2011 a 2023, con Óscar Puente de candidato, frente a las generales de esos años; y el voto de julio y mayo de 2023 en las 252 secciones censales de la ciudad.',
-        limites='El modelo usa encuestas anteriores al accidente de Urda (28 de octubre) y no mide su efecto. No es una previsión: el reparto cambiará con las encuestas. Los datos agregados por sección no dicen qué votantes cambiaron su voto entre mayo y julio. El censo de las municipales incluye a residentes de la UE, que no votan en generales. Que el nombre de Puente sume votos en una lista provincial es una hipótesis que los datos no permiten comprobar.',
-        calculo='Probabilidad de cada candidato: proporción de las 2.000 simulaciones del modelo (media de encuestas del 26 de octubre de 2026) en que su partido saca en Valladolid al menos tantos escaños como su puesto en la lista. Cocientes de la ley D\'Hondt con el reparto central del 27 de octubre. Porcentajes de ciudad y provincia sobre votos a candidaturas; en el mapa y la tabla, sobre voto válido de cada sección. Barrios: asignación de secciones a barrios de OpenStreetMap de Mapa Electoral.',
+        limites='El modelo usa la media de encuestas hasta el 3 de noviembre: incluye las hechas después del accidente de Urda, pero ninguna posterior a la dimisión de Puente, y no mide el efecto de ninguno de los dos. No es una previsión: el reparto cambiará con las encuestas. Los datos agregados por sección no dicen qué votantes cambiaron su voto entre mayo y julio. El censo de las municipales incluye a residentes de la UE, que no votan en generales. Que el nombre de Puente sume votos en una lista provincial es una hipótesis que los datos no permiten comprobar.',
+        calculo='Probabilidad de cada candidato: proporción de las 2.000 simulaciones del modelo (media de encuestas del 3 de noviembre de 2026) en que su partido saca en Valladolid al menos tantos escaños como su puesto efectivo en la lista; tras la baja de Puente, el primer escaño del PSOE es para Ana Redondo y el segundo para José Domingo Castaño (artículo 48.2 de la LOREG). Cocientes de la ley D\'Hondt con el voto central del 3 de noviembre. Cifras del 29 de octubre: modelo con la media de encuestas del 26 de octubre. Porcentajes de ciudad y provincia sobre votos a candidaturas; en el mapa y la tabla, sobre voto válido de cada sección. Barrios: asignación de secciones a barrios de OpenStreetMap de Mapa Electoral.',
         fuentes=[INTERIOR,
+                 ('https://www.europapress.es/economia/transportes-00343/noticia-puente-avanza-dimision-tragedia-urda-decision-empatia-victimas-20261103211310.html', 'Europa Press, Puente dimite como ministro y candidato del PSOE (3-11-2026)'),
+                 ('https://www.infobae.com/espana/agencias/2026/11/03/puente-figurara-como-numero-uno-de-la-papeleta-del-psoe-por-valladolid-pese-a-su-renuncia/', 'EFE (en Infobae), Puente figurará como número uno de la papeleta del PSOE por Valladolid pese a su renuncia (3-11-2026)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acuarentayocho', 'BOE, Ley Orgánica del Régimen Electoral General, artículo 48'),
                  ('https://www.europapress.es/economia/transportes-00343/noticia-puente-descarta-dimitir-accidente-ferroviario-20261028151506.html', 'Europa Press, Puente descarta dimitir tras el accidente ferroviario (28-10-2026)'),
                  ('https://www.europapress.es/nacional/noticia-colision-dos-trenes-urda-toledo-accidente-ferroviario-mas-grave-angrois-20261028140544.html', 'Europa Press, el accidente más grave desde Angrois (28-10-2026)'),
                  ('https://www.europapress.es/economia/transportes-00343/noticia-csif-pide-dimision-puente-senalar-trabajador-adif-accidente-urda-20261028194015.html', 'Europa Press, CSIF pide la dimisión de Puente (28-10-2026)'),
@@ -3985,6 +3988,8 @@ PIEZAS += [
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
+    # Nacho, 4-11-2026: Puente, tras su dimisión, la primera
+    'puente-valladolid-segundo-escano-29n': '2026-11-06',
     # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después
     'listas-29n-quien-encabeza': '2026-11-03',
     'eeuu-elecciones-medio-mandato-mapa': '2026-11-04',   # editor, 4-11-2026 6.00: ya es la de resultados, la primera
@@ -3995,7 +4000,6 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'nueva-zelanda-elecciones-mapa-circunscripciones': '2026-11-07',
     'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
-    'puente-valladolid-segundo-escano-29n': '2026-10-29',
     'ley-nietos-voto-exterior-29n': '2026-10-29',
     'ley-nietos-donde-estan-29n': '2026-10-29',
     'rufian-montero-la-revuelta-29n': '2026-10-29',
