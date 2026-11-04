@@ -1720,7 +1720,7 @@ PIEZAS = [
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
     dict(
-        slug='bizkaia-pnv-bildu-encuestas-29n', fecha='2026-11-03',
+        slug='bizkaia-pnv-bildu-encuestas-29n', fecha='2026-11-03', actualizado='2026-11-04 07:37',
         titulo='El PNV ganó en 92 municipios de Bizkaia en 2019 y en 55 en 2023: su feudo llega al 29N en empate a tres', serie='29n', figura=0,
         descripcion='En cuatro años, EH Bildu le quitó 27 pueblos y el PSOE 10, Bilbao incluido. El PNV ganó la provincia con su peor resultado en unas generales, el 27,1 %. Hoy la media de encuestas deja al PNV, EH Bildu y el PSOE entre el 22,2 % y el 22,4 %.',
         compara='El partido más votado en cada uno de los 112 municipios de Bizkaia en las generales de noviembre de 2019 y de julio de 2023, el voto de la provincia en las 16 generales desde 1977 y la estimación de la media de encuestas para el 29N.',
@@ -1736,7 +1736,7 @@ PIEZAS = [
         lugar='Bizkaia',
     ),
     dict(
-        slug='euskadi-29n-guia', fecha='2026-11-03',
+        slug='euskadi-29n-guia', fecha='2026-11-03', actualizado='2026-11-04 07:37',
         titulo='Elecciones del 29N en Euskadi: 18 escaños, 1.824.886 electores y una Bizkaia en empate a tres', serie='29n', figura=0,
         descripcion='Qué se vota, quién encabeza las listas, qué dicen las encuestas y cómo votó cada municipio en 2023. Con la media de encuestas, EH Bildu sacaría 7 de los 18 escaños vascos; Bizkaia, con 8, está en el aire.',
         compara='El censo de consulta del 29N, las candidaturas proclamadas en el BOE, el modelo de encuestas de Mapa Electoral del 3 de noviembre y los resultados de las generales de 2023 por provincia y municipio.',
@@ -3801,7 +3801,7 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 06:46',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 07:37',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',

@@ -187,7 +187,7 @@ g_mapa = figura('El mapa de Bizkaia cambió de color en cuatro años',
 g_serie = figura('Cuatro décadas de voto en Bizkaia', '% de voto en las 16 elecciones generales desde 1977', lineas(),
                  'Fuente: Ministerio del Interior. HB, EH, Amaiur y EH Bildu, en la misma línea; en 2000, 2004 y 2008 la izquierda '
                  'abertzale no se presentó o sus listas fueron ilegalizadas; en 1979, AP no tiene dato propio en nuestra serie. ' + SIN_CERA, LEY4,
-                 (['Elección', 'PNV', 'PSOE', 'EH Bildu', 'PP'], [[t, p(s['PNV']), p(s['PSOE']), p(s['BILDU']) if s['BILDU'] else '–', p(s['PP'])] for t, s in SERIE.items()]))
+                 (['Elección', 'PNV', 'PSOE', 'EH Bildu', 'PP'], [[t, p(s['PNV']), p(s['PSOE']), p(s['BILDU']) if s['BILDU'] else '–', p(s['PP']) if s['PP'] else '–'] for t, s in SERIE.items()]))
 ORD = sorted(MODELO, key=lambda k: -MODELO[k]['voto'][1])
 NOMM = lambda k: 'Frente Amplio (Sumar)' if k == 'Sumar' else k
 g_modelo = figura('Bizkaia, empate a tres en la media de encuestas',
@@ -236,8 +236,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">Las generales no son las forales. El sondeo de la Diputación de Bizkaia publicado en julio, hecho por Gizaker con 3.000 entrevistas, daba al PNV el 39,3 % en las elecciones a Juntas Generales de 2027, una décima más que en las de 2023, y a EH Bildu el 29,5 %, según <a href="{FORAL}">EITB</a>. Dos meses después de esas forales de mayo de 2023, el mismo PNV se quedó en el {p(SERIE["2023"]["PNV"])} % en las generales de julio.</p>
 
 <h2>Lo que estos datos no dicen</h2>
-<p data-tipo="contexto">Los porcentajes de esta pieza son sobre votos a candidaturas y sin el voto de los vizcaínos que viven en el extranjero, por eso difieren en unas décimas de los oficiales. En 2015, nuestra serie suma Podemos e IU, que se presentaron por separado; los resultados de ese año en el texto son los oficiales de cada lista. El modelo no es una encuesta de Bizkaia: reparte la media nacional por provincia con el resultado de 2023 y las encuestas vascas, y a 26 días de la votación su margen de error es amplio. Y el ganador de un municipio no dice nada de cuántos votos pesa: los {M23["BILDU"]} municipios de EH Bildu tienen menos habitantes que Bilbao.</p>
-{datos_js}'''
+<p data-tipo="contexto">Los porcentajes de esta pieza son sobre votos a candidaturas y sin el voto de los vizcaínos que viven en el extranjero, por eso difieren en unas décimas de los oficiales. En 2015, nuestra serie suma Podemos e IU, que se presentaron por separado; los resultados de ese año en el texto son los oficiales de cada lista. El modelo no es una encuesta de Bizkaia: reparte la media nacional por provincia con el resultado de 2023 y las encuestas vascas, y a 26 días de la votación su margen de error es amplio. Y el ganador de un municipio no dice nada de cuántos votos pesa: los {M23["BILDU"]} municipios de EH Bildu tienen menos habitantes que Bilbao.</p>'''
 
 preguntas = [
     ('¿Quién ganó las elecciones generales de 2023 en Bizkaia?', f'El PNV, con el {p(SERIE["2023"]["PNV"])} % de los votos a candidaturas (sin voto exterior), por delante del PSOE ({p(SERIE["2023"]["PSOE"])} %) y EH Bildu ({p(SERIE["2023"]["BILDU"])} %). Fue el peor resultado del PNV en Bizkaia en unas generales.'),
@@ -254,4 +253,4 @@ pieza('bizkaia-pnv-bildu-encuestas-29n', 'Bizkaia, el feudo del PNV',
       f'El PNV ganó en {M19["PNV"]} municipios de Bizkaia en 2019 y en {M23["PNV"]} en 2023: su feudo llega al 29N en empate a tres',
       f'En cuatro años, EH Bildu le quitó {nb} pueblos y el PSOE {npnv}, Bilbao incluido. El PNV ganó la provincia con su peor resultado en unas generales, '
       f'el {p(SERIE["2023"]["PNV"])} %. Hoy la media de encuestas deja al PNV, EH Bildu y el PSOE entre el {p(MODELO["PSOE"]["voto"][1])} % y el {p(MODELO["PNV"]["voto"][1])} %.',
-      '3 de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+      '3 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
