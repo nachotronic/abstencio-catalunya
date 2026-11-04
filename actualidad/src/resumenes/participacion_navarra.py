@@ -80,12 +80,12 @@ fil = ([(k, MUN[k]['part'], C_ALTA, f'{p(MUN[k]["part"])} %') for k in ALTOS]
        + [(k, MUN[k]['part'], C_BAJA, f'{p(MUN[k]["part"])} %') for k in BAJOS[::-1]])
 g_ext = figura('Los diez que más votaron y los diez que menos', 'Participación en las generales de 2023 en los municipios navarros de 1.000 habitantes o más',
                barras(fil, 100, 'Participación en los diez municipios navarros que más votaron y en los diez que menos', ml=150, alto=22,
-                      linea=(NAV_PART, f'Navarra, {p(NAV_PART)} %')),
+                      linea=(NAV_PART, f'Navarra, {p(NAV_PART)} %'), separar=True),
                'Fuente: Ministerio del Interior. ' + SIN_CERA, [('Los diez que más', C_ALTA), ('Los diez que menos', C_BAJA)],
                (['Municipio', 'Participación', 'Voto a EH Bildu'], [[k, p(MUN[k]['part']), p(MUN[k]['bildu'])] for k in ALTOS + BAJOS[::-1]]))
 g_pam = figura('Pamplona y su alrededor', 'Participación en las generales de 2023 en Pamplona y en los municipios de su alrededor con 1.000 habitantes o más',
                barras([(k, v['part'], C_GRIS, f'{p(v["part"])} %') for k, v in PAM.items()], 100, 'Participación en Pamplona y los municipios de su alrededor',
-                      ml=150, alto=22, linea=(NAV_PART, f'Navarra, {p(NAV_PART)} %')),
+                      ml=150, alto=22, linea=(NAV_PART, f'Navarra, {p(NAV_PART)} %'), separar=True),
                'Fuente: Ministerio del Interior. ' + SIN_CERA, None,
                (['Municipio', '2023', 'Noviembre de 2019', 'Voto a EH Bildu en 2023'],
                 [[k, p(v['part']), p(v['part19']), p(v['bildu'])] for k, v in PAM.items()]))
