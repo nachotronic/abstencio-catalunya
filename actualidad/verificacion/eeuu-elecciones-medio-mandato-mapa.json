@@ -100,6 +100,66 @@
    "texto": "y la mayoría está en 218",
    "cifra": "218",
    "calculo": "218"
+  },
+  {
+   "texto": "65 son de California, Washington y Oregón",
+   "cifra": "65",
+   "origen": "titular",
+   "calculo": "52 + 10 + 6 - len([v for v in DIR['dist'].values() if v[0][:2] in ('CA', 'WA', 'OR') and v[1] in ('D', 'R', 'O')])"
+  },
+  {
+   "texto": "Los demócratas arrebatan cinco escaños",
+   "cifra": "cinco",
+   "calculo": "DIR['cambios_D'] if DIR['cambios_R'] == 0 else -1",
+   "origen": "titular"
+  },
+  {
+   "texto": "llevan 140",
+   "cifra": "140",
+   "calculo": "DIR['D']",
+   "origen": "titular"
+  },
+  {
+   "texto": "a 86 en la Cámara",
+   "cifra": "86",
+   "calculo": "DIR['R']",
+   "origen": "titular"
+  },
+  {
+   "texto": "en la Cámara, con 209 por decidir",
+   "cifra": "209",
+   "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']",
+   "origen": "titular"
+  },
+  {
+   "texto": "elige a los 435 miembros",
+   "cifra": "435",
+   "calculo": "435",
+   "origen": "titular"
+  },
+  {
+   "texto": "además de 35 senadores",
+   "cifra": "35",
+   "calculo": "len(DIR['senado']['senate'])",
+   "origen": "titular"
+  },
+  {
+   "texto": "y 36 gobernadores",
+   "cifra": "36",
+   "calculo": "len(DIR['senado']['governor'])",
+   "origen": "titular"
+  },
+  {
+   "texto": "coinciden en 226 escaños",
+   "cifra": "226",
+   "calculo": "DIR['D'] + DIR['R'] + DIR['O']",
+   "origen": "titular"
+  },
+  {
+   "texto": "de los 209 por decidir",
+   "cifra": "209",
+   "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']",
+   "origen": "titular"
   }
  ],
  "externas": [
@@ -107,6 +167,12 @@
    "texto": "En el Senado ya hay cuatro cambios de partido, y en los gobernadores, otros cuatro",
    "fuente": "https://mapaelectoral.es/actualidad/eeuu-noche-electoral-guia-horarios/",
    "nota": "Senado NC, SC, OH, TX; gobernadores GA, IA, OH, TX; AP+NBC con gained, crudo 20261104-0521"
+  },
+  {
+   "texto": "ganaron la Cámara por 220 escaños a 215",
+   "origen": "titular",
+   "fuente": "https://history.house.gov/Institution/Election-Statistics/Election-Statistics/",
+   "nota": "resultado de 2024, el mismo que en la previa"
   }
  ],
  "ignorar": [],
