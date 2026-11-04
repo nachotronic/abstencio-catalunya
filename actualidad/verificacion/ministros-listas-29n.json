@@ -1,0 +1,46 @@
+{
+  "pieza": "ministros-listas-29n",
+  "_datos_disponibles": {
+    "R": "lista de 11: [\"Ana Redondo\", \"Valladolid\", 2, \"—\", 2, 5, 33.6, 17483, 16.9]"
+  },
+  "cifras": [
+    {
+      "texto": "Once ministros en las listas",
+      "cifra": "Once",
+      "calculo": "len(R)"
+    },
+    {
+      "texto": "caería si el PSOE perdiera el 17% de sus votos",
+      "cifra": "17",
+      "calculo": "round(R[0][8])"
+    },
+    {
+      "texto": "ministro se quedara fuera: en diez de los once casos, más",
+      "cifra": "diez",
+      "calculo": "sum(1 for r in R if r[8]>60)"
+    },
+    {
+      "texto": "quedara fuera: en diez de los once casos, más del 60%.",
+      "cifra": "once",
+      "calculo": "len(R)"
+    },
+    {
+      "texto": "de los once casos, más del 60%.",
+      "cifra": "60",
+      "calculo": "60 if min(r[8] for r in R if r[0]!='Ana Redondo')>60 else None"
+    },
+    {
+      "texto": "Diez puestos holgados y uno",
+      "cifra": "Diez",
+      "calculo": "sum(1 for r in R if r[8]>60)"
+    },
+    {
+      "texto": "perdiera el 68,8% de sus votos de 2023, y el segundo",
+      "cifra": "68,8",
+      "calculo": "[r for r in R if r[0]=='Óscar Puente'][0][8]"
+    }
+  ],
+  "externas": [],
+  "ignorar": [],
+  "permitir_espana": []
+}
