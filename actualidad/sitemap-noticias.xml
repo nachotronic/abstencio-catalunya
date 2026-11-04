@@ -25,6 +25,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-04</news:publication_date>
+      <news:title>Los demócratas ganan el Senado y la Cámara: arrebatan siete escaños del Senado a los republicanos, de Texas a Carolina del Sur</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

@@ -1,0 +1,392 @@
+{
+  "pieza": "eeuu-resultados-medio-mandato-2026",
+  "cifras": [
+    {
+      "texto": "Senado y la Cámara: arrebatan siete escaños del Senado a",
+      "cifra": "siete",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "Unidos. En el Senado tienen ya 53 de los 100 escaños;",
+      "cifra": "53",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')"
+    },
+    {
+      "texto": "Senado tienen ya 53 de los 100 escaños; en la Cámara,",
+      "cifra": "100",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+DIR['senado']['senate_nbc_bop']['bar']['rep']['notUpForElection']+len(DIR['senado']['senate'])"
+    },
+    {
+      "texto": "dos fuentes coinciden en 215 escaños demócratas y",
+      "cifra": "215",
+      "calculo": "DIR['D']"
+    },
+    {
+      "texto": "215 escaños demócratas y 128 republicanos, con 92",
+      "cifra": "128",
+      "calculo": "DIR['R']"
+    },
+    {
+      "texto": "demócratas y 128 republicanos, con 92 por decidir. Los demócratas",
+      "cifra": "92",
+      "calculo": "DIR['pendientes']"
+    },
+    {
+      "texto": "Press y NBC News coinciden en 343 de los 435 escaños de",
+      "cifra": "343",
+      "calculo": "DIR['D']+DIR['R']"
+    },
+    {
+      "texto": "News coinciden en 343 de los 435 escaños de la Cámara",
+      "cifra": "435",
+      "calculo": "len(DIR['dist'])"
+    },
+    {
+      "texto": "Cámara de Representantes: 215 para los demócratas",
+      "cifra": "215",
+      "calculo": "DIR['D']"
+    },
+    {
+      "texto": "215 para los demócratas y 128 para los republicanos.",
+      "cifra": "128",
+      "calculo": "DIR['R']"
+    },
+    {
+      "texto": "los republicanos. Faltan 92 y la mayoría está en",
+      "cifra": "92",
+      "calculo": "DIR['pendientes']"
+    },
+    {
+      "texto": "Faltan 92 y la mayoría está en 218, pero las dos fuentes",
+      "cifra": "218",
+      "calculo": "len(DIR['dist'])//2+1"
+    },
+    {
+      "texto": "De momento, 16 distritos cambian de",
+      "cifra": "16",
+      "calculo": "DIR['cambios_D']"
+    },
+    {
+      "texto": "favor de los demócratas: cuatro en Pensilvania, tres",
+      "cifra": "cuatro",
+      "calculo": "sum(1 for v in DIR['dist'].values() if v[2] and v[1]=='D' and v[0].startswith('PA-'))"
+    },
+    {
+      "texto": "demócratas: cuatro en Pensilvania, tres en Iowa, dos en Wisconsin",
+      "cifra": "tres",
+      "calculo": "sum(1 for v in DIR['dist'].values() if v[2] and v[1]=='D' and v[0].startswith('IA-'))"
+    },
+    {
+      "texto": "En el Senado se elegían 35 de los 100 escaños.",
+      "cifra": "35",
+      "calculo": "len(DIR['senado']['senate'])"
+    },
+    {
+      "texto": "Senado se elegían 35 de los 100 escaños. Las dos fuentes",
+      "cifra": "100",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+DIR['senado']['senate_nbc_bop']['bar']['rep']['notUpForElection']+len(DIR['senado']['senate'])"
+    },
+    {
+      "texto": "dos fuentes coinciden en 30 carreras: 19 para los",
+      "cifra": "30",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['confirmado'])"
+    },
+    {
+      "texto": "coinciden en 30 carreras: 19 para los demócratas",
+      "cifra": "19",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')"
+    },
+    {
+      "texto": "19 para los demócratas y 11 para los republicanos.",
+      "cifra": "11",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='R')"
+    },
+    {
+      "texto": "elegían, los demócratas suman 53, contando a los dos",
+      "cifra": "53",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')"
+    },
+    {
+      "texto": "ellos, y los republicanos 42. Faltan cinco: Alaska,",
+      "cifra": "42",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['rep']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='R')"
+    },
+    {
+      "texto": "los republicanos 42. Faltan cinco: Alaska, Míchigan, Misisipi,",
+      "cifra": "cinco",
+      "calculo": "len(DIR['senado']['senate'])-sum(1 for x in DIR['senado']['senate'] if x['confirmado'])"
+    },
+    {
+      "texto": "Nebraska. La mayoría está en 51; con 50, desempata el",
+      "cifra": "51",
+      "calculo": "100//2+1"
+    },
+    {
+      "texto": "La mayoría está en 51; con 50, desempata el vicepresidente,",
+      "cifra": "50",
+      "calculo": "100//2"
+    },
+    {
+      "texto": "Los demócratas arrebatan siete escaños a los republicanos",
+      "cifra": "siete",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "y Texas. En seis de esos siete estados ganó Trump las",
+      "cifra": "siete",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "hermano, Lindsey Graham. Con el 94,9 % del voto estimado",
+      "cifra": "94,9",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='SC'][0]['eevp']"
+    },
+    {
+      "texto": "contado, Andrews saca el 51,1 % y Graham, el 46,7",
+      "cifra": "51,1",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='SC'][0]['pct']['Annie Andrews']"
+    },
+    {
+      "texto": "saca el 51,1 % y Graham, el 46,7 %.",
+      "cifra": "46,7",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='SC'][0]['pct']['Darline Graham']"
+    },
+    {
+      "texto": "estado, Ken Paxton, por el 53,9 % frente al 44,3 %,",
+      "cifra": "53,9",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='TX'][0]['pct']['James Talarico']"
+    },
+    {
+      "texto": "Paxton, por el 53,9 % frente al 44,3 %, con el 90,4 % del",
+      "cifra": "44,3",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='TX'][0]['pct']['Ken Paxton']"
+    },
+    {
+      "texto": "frente al 44,3 %, con el 90,4 % del voto estimado",
+      "cifra": "90,4",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='TX'][0]['eevp']"
+    },
+    {
+      "texto": "un cuarto mandato, por el 52,6 % frente al 45,9 %.",
+      "cifra": "52,6",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='TX'][0]['pct']['Gina Hinojosa']"
+    },
+    {
+      "texto": "mandato, por el 52,6 % frente al 45,9 %.",
+      "cifra": "45,9",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='TX'][0]['pct']['Greg Abbott']"
+    },
+    {
+      "texto": "vuelve al Senado: gana por el 49,4 % frente al 45,8 % a",
+      "cifra": "49,4",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='OH'][0]['pct']['Sherrod Brown']"
+    },
+    {
+      "texto": "gana por el 49,4 % frente al 45,8 % a Jon Husted, que",
+      "cifra": "45,8",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='OH'][0]['pct']['Jon Husted']"
+    },
+    {
+      "texto": "gana a Ashley Hinson, por el 50,4 % frente al 46,5 %,",
+      "cifra": "50,4",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='IA'][0]['pct']['Josh Turek']"
+    },
+    {
+      "texto": "Hinson, por el 50,4 % frente al 46,5 %, el escaño que deja",
+      "cifra": "46,5",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='IA'][0]['pct']['Ashley Hinson']"
+    },
+    {
+      "texto": "senador Roger Marshall por el 51,1 % frente al 45,9 %.",
+      "cifra": "51,1",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='KS'][0]['pct']['Adam Hamilton']"
+    },
+    {
+      "texto": "Marshall por el 51,1 % frente al 45,9 %.",
+      "cifra": "45,9",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='KS'][0]['pct']['Roger Marshall']"
+    },
+    {
+      "texto": "a Michael Whatley, por el 58,7 % frente al 39,1 %,",
+      "cifra": "58,7",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NC'][0]['pct']['Roy Cooper']"
+    },
+    {
+      "texto": "Whatley, por el 58,7 % frente al 39,1 %, el escaño del republicano",
+      "cifra": "39,1",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NC'][0]['pct']['Michael Whatley']"
+    },
+    {
+      "texto": "senadora desde 1997, por el 53,5 % frente al 46,4 %,",
+      "cifra": "53,5",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Troy Jackson']"
+    },
+    {
+      "texto": "1997, por el 53,5 % frente al 46,4 %, con el 76,7 % del",
+      "cifra": "46,4",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Susan Collins']"
+    },
+    {
+      "texto": "frente al 46,4 %, con el 76,7 % del voto estimado",
+      "cifra": "76,7",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['eevp']"
+    },
+    {
+      "texto": "De los cinco escaños sin decidir,",
+      "cifra": "cinco",
+      "calculo": "len(DIR['senado']['senate'])-sum(1 for x in DIR['senado']['senate'] if x['confirmado'])"
+    },
+    {
+      "texto": "Cindy Hyde-Smith tienen el 48,9 % cada uno. En Alaska,",
+      "cifra": "48,9",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MS'][0]['pct']['Scott Colom']"
+    },
+    {
+      "texto": "están a una décima, con el 48,1 % frente al 48,0 %.",
+      "cifra": "48,1",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['pct']['Mary Peltola']"
+    },
+    {
+      "texto": "décima, con el 48,1 % frente al 48,0 %. En Míchigan, el demócrata",
+      "cifra": "48,0",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['pct']['Dan Sullivan']"
+    },
+    {
+      "texto": "demócrata Abdul El-Sayed lleva el 51,7 %; en Nebraska, el senador",
+      "cifra": "51,7",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MI'][0]['pct']['Abdul El-Sayed']"
+    },
+    {
+      "texto": "republicano Pete Ricketts lleva el 49,7 % y el independiente",
+      "cifra": "49,7",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NE'][0]['pct']['Pete Ricketts']"
+    },
+    {
+      "texto": "independiente Dan Osborn, el 44,4 %. En Montana, una de",
+      "cifra": "44,4",
+      "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NE'][0]['pct']['Dan Osborn']"
+    },
+    {
+      "texto": "Se elegían 36 gobernadores. Las dos",
+      "cifra": "36",
+      "calculo": "len(DIR['senado']['governor'])"
+    },
+    {
+      "texto": "dos fuentes coinciden en 30: 19 demócratas y 11",
+      "cifra": "30",
+      "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado'])"
+    },
+    {
+      "texto": "fuentes coinciden en 30: 19 demócratas y 11 republicanos.",
+      "cifra": "19",
+      "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado']=='D')"
+    },
+    {
+      "texto": "coinciden en 30: 19 demócratas y 11 republicanos. Los demócratas",
+      "cifra": "11",
+      "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado']=='R')"
+    },
+    {
+      "texto": "Los demócratas arrebatan cuatro gobiernos a los republicanos,",
+      "cifra": "cuatro",
+      "calculo": "sum(1 for x in DIR['senado']['governor'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "a Vivek Ramaswamy por el 51,7 % frente al 45,0 %;",
+      "cifra": "51,7",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='OH'][0]['pct']['Amy Acton']"
+    },
+    {
+      "texto": "Ramaswamy por el 51,7 % frente al 45,0 %; en Iowa, Rob Sand",
+      "cifra": "45,0",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='OH'][0]['pct']['Vivek Ramaswamy']"
+    },
+    {
+      "texto": "en Iowa, Rob Sand saca el 55,4 %, y en Georgia, Keisha",
+      "cifra": "55,4",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='IA'][0]['pct']['Rob Sand']"
+    },
+    {
+      "texto": "Keisha Lance Bottoms, el 54,2 %.",
+      "cifra": "54,2",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='GA'][0]['pct']['Keisha Bottoms']"
+    },
+    {
+      "texto": "a Jermaine Johnson por el 51,6 % frente al 47,1 %.",
+      "cifra": "51,6",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='SC'][0]['pct']['Alan Wilson']"
+    },
+    {
+      "texto": "Johnson por el 51,6 % frente al 47,1 %. En Kansas, que gobiernan",
+      "cifra": "47,1",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='SC'][0]['pct']['Jermaine Johnson']"
+    },
+    {
+      "texto": "el recuento sigue: con el 94 % del voto estimado",
+      "cifra": "94",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='KS'][0]['eevp']"
+    },
+    {
+      "texto": "demócrata Cindy Holscher tiene el 50,4 % y el republicano Ty",
+      "cifra": "50,4",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='KS'][0]['pct']['Cindy Holscher']"
+    },
+    {
+      "texto": "republicano Ty Masterson, el 49,6 %. Faltan también Alaska,",
+      "cifra": "49,6",
+      "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='KS'][0]['pct']['Ty Masterson']"
+    },
+    {
+      "texto": "El Senado: siete escaños pasan a los",
+      "cifra": "siete",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "Cuatro gobiernos cambian de",
+      "cifra": "Cuatro",
+      "calculo": "sum(1 for x in DIR['senado']['governor'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "Los siete escaños del Senado que",
+      "cifra": "siete",
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D')"
+    },
+    {
+      "texto": "Los cuatro gobiernos que pasan",
+      "cifra": "cuatro",
+      "calculo": "sum(1 for x in DIR['senado']['governor'] if x['cambio'] and x['confirmado']=='D')"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "ahora, los republicanos tenían 53 senadores frente a 47",
+      "fuente": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections"
+    },
+    {
+      "texto": "tenían 53 senadores frente a 47 y 220 representantes",
+      "fuente": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections"
+    },
+    {
+      "texto": "53 senadores frente a 47 y 220 representantes frente",
+      "fuente": "https://history.house.gov/Institution/Election-Statistics/Election-Statistics/"
+    },
+    {
+      "texto": "220 representantes frente a 215, según los resultados",
+      "fuente": "https://history.house.gov/Institution/Election-Statistics/Election-Statistics/"
+    },
+    {
+      "texto": "Kansas, Maine, Ohio y Texas. En seis de esos siete estados",
+      "fuente": "https://en.wikipedia.org/wiki/2024_United_States_presidential_election"
+    },
+    {
+      "texto": "todo el estado en más de tres décadas. La demócrata",
+      "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html"
+    },
+    {
+      "texto": "aprobación del presidente en el 37,3 %, según el promedio",
+      "fuente": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin"
+    }
+  ],
+  "ignorar": [],
+  "permitir_espana": []
+}

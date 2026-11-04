@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (68)
+## Pendientes (69)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-04 | [`eeuu-resultados-medio-mandato-2026`](https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/) | Los demócratas ganan el Senado y la Cámara: arrebatan siete escaños del Senado a los republicanos, de Texas a Carolina del Sur | primer gráfico de la pieza |
 | 2026-11-03 | [`bizkaia-pnv-bildu-encuestas-29n`](https://mapaelectoral.es/actualidad/bizkaia-pnv-bildu-encuestas-29n/) | El PNV ganó en 92 municipios de Bizkaia en 2019 y en 55 en 2023: su feudo llega al 29N en empate a tres | primer gráfico de la pieza |
 | 2026-11-03 | [`euskadi-29n-guia`](https://mapaelectoral.es/actualidad/euskadi-29n-guia/) | Elecciones del 29N en Euskadi: 18 escaños, 1.824.886 electores y una Bizkaia en empate a tres | primer gráfico de la pieza |
 | 2026-11-03 | [`listas-proclamadas-29n`](https://mapaelectoral.es/actualidad/listas-proclamadas-29n/) | Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León | primer gráfico de la pieza |
