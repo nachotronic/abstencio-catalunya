@@ -73,8 +73,10 @@ BLOQUE = {e: {k: round(cuota(Q, e, k), 2) for k in ('PP', 'PSOE', 'VOX', 'SUMAR'
 SUBE_PSOE = int(sum((r[f'{b}_vPSOE'] / sum(r[f'{b}_v{f}'] for f in F)) > (r[f'{a}_vPSOE'] / sum(r[f'{a}_v{f}'] for f in F))
                     for _, r in Q.iterrows()))
 assert SUBE_PSOE == 16 == len(Q)
-DER = {e: round(BLOQUE[e]['PP'] + BLOQUE[e]['VOX'] + BLOQUE[e]['CS'], 2) for e in (a, b)}
-IZQ = {e: round(BLOQUE[e]['PSOE'] + BLOQUE[e]['SUMAR'], 2) for e in (a, b)}
+# las sumas, de las cifras ya redondeadas a un decimal que da el texto, para que cuadren a la vista
+r1 = lambda v: round(v + 1e-9, 1)
+DER = {e: round(r1(BLOQUE[e]['PP']) + r1(BLOQUE[e]['VOX']) + r1(BLOQUE[e]['CS']), 1) for e in (a, b)}
+IZQ = {e: round(r1(BLOQUE[e]['PSOE']) + r1(BLOQUE[e]['SUMAR']), 1) for e in (a, b)}
 
 
 def fila(nombre):

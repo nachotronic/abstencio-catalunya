@@ -185,13 +185,13 @@
    "calculo": "D['BLOQUE']['2023_07']['VOX']"
   },
   {
-   "texto": "Vox y Ciudadanos sumaban el 47,0 % en 2019; PP y Vox,",
-   "cifra": "47,0",
+   "texto": "Vox y Ciudadanos sumaban el 47,1 % en 2019; PP y Vox,",
+   "cifra": "47,1",
    "calculo": "D['DER']['2019_11']"
   },
   {
-   "texto": "47,0 % en 2019; PP y Vox, el 49,1 % en 2023. A la izquierda",
-   "cifra": "49,1",
+   "texto": "47,1 % en 2019; PP y Vox, el 49,2 % en 2023. A la izquierda",
+   "cifra": "49,2",
    "calculo": "D['DER']['2023_07']"
   },
   {

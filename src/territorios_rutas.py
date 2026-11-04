@@ -308,7 +308,8 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
-EXCLUIR_PIEZA = {'puente-valladolid-segundo-escano-29n': {'45177', '14001', '45200'},   # lugares del accidente, no de la pieza
+EXCLUIR_PIEZA = {'cinturon-rojo-madrid-29n': {'31062', '11028'},   # Cabanillas y Puerto Real salen de «Cabanillas de la Sierra» y «Rozas de Puerto Real» en el mapa
+                 'puente-valladolid-segundo-escano-29n': {'45177', '14001', '45200'},   # lugares del accidente, no de la pieza
                  'palencia-psoe-lista-29n': {'48020'}, 'castilla-y-leon-historia-electoral': {'48020'},
                  'lorca-fuente-vaqueros-viznar-1936': {'30024', '27012'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}, 'republica-mapa-1936-hoy': {'17155'},
                  'abstencion-anarquista-cnt-1933-1936': {'45071'}, 'asturias-1934-1936-revolucion-urnas': {'45071'},

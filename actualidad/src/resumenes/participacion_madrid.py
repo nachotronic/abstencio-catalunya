@@ -60,7 +60,8 @@ for e in EL:
     d = h if e < '2004' else m
     f = lambda cs: float(d[d.mun_code.isin(cs)][f'{e}_votantes'].sum() / d[d.mun_code.isin(cs)][f'{e}_censo'].sum() * 100)
     SERIE[an(e)] = {'pobres': round(f(POBRES), 2), 'ricos': round(f(RICOS), 2)}
-BRECHA = {k: round(v['ricos'] - v['pobres'], 2) for k, v in SERIE.items()}
+r1 = lambda v: round(v + 1e-9, 1)
+BRECHA = {k: round(r1(v['ricos']) - r1(v['pobres']), 1) for k, v in SERIE.items()}   # de las cifras redondeadas que da el texto, para que cuadren a la vista
 assert max(BRECHA, key=BRECHA.get) == '2023' and round(BRECHA['2023'], 1) == 7.5
 assert max(v for k, v in BRECHA.items() if k != '2023') == BRECHA['2016']
 assert BRECHA['2016'] > BRECHA['2015'] and BRECHA['2019-N'] > BRECHA['2019-A']
@@ -130,7 +131,7 @@ B, P = BIG['Boadilla del Monte'], BIG['Parla']
 d1, d10 = DEC[1], DEC[10]
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="dato">En las generales de julio de 2023, en la décima parte más pobre de la Comunidad de Madrid votó el {p(d1["part"])} % del censo. En la décima parte más rica, el {p(d10["part"])} %. Son {p(d10["part"] - d1["part"])} puntos de diferencia entre secciones censales de una misma región. La participación sube con la renta en cada uno de los diez escalones, sin excepción.</p>
+<p data-tipo="dato">En las generales de julio de 2023, en la décima parte más pobre de la Comunidad de Madrid votó el {p(d1["part"])} % del censo. En la décima parte más rica, el {p(d10["part"])} %. Son {p(r1(d10["part"]) - r1(d1["part"]))} puntos de diferencia entre secciones censales de una misma región. La participación sube con la renta en cada uno de los diez escalones, sin excepción.</p>
 {g_dec}
 <p data-tipo="dato">Entre los grandes municipios pasa lo mismo. {MU("boadilla-del-monte", "Boadilla del Monte")}, con una renta por unidad de consumo de {n(B["renta"])} euros, fue el que más votó: el {p(B["part"])} %. {MU("parla", "Parla")}, con {n(P["renta"])} euros, menos de la mitad, el que menos: el {p(P["part"])} %. En los {len(M1000)} municipios de más de 1.000 habitantes, la correlación entre renta y participación es de {n(CORR_M, 2)}; entre las secciones, de {n(CORR, 2)}. Es una relación fuerte, pero es una correlación: no dice que la renta, por sí sola, haga votar más.</p>
 {g_big}
@@ -138,10 +139,10 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <h2>Una brecha que se ha ensanchado</h2>
 <p data-tipo="dato">La diferencia no es nueva, pero nunca había sido tan grande. En los seis grandes municipios con más renta ({", ".join(NRIC[:-1])} y {NRIC[-1]}) votó en 2023 el {p(SERIE["2023"]["ricos"])} %; en los seis con menos ({", ".join(NPOB[:-1])} y {NPOB[-1]}), el {p(SERIE["2023"]["pobres"])} %. Son {p(BRECHA["2023"])} puntos, la mayor distancia en las 16 generales desde 1977. Hasta 2015, su máximo eran los {p(MAX_ANT)} puntos de 2000. Las dos repeticiones electorales la ensancharon: {p(BRECHA["2016"])} puntos en 2016 y {p(BRECHA["2019-N"])} en noviembre de 2019, frente a {p(BRECHA["2015"])} y {p(BRECHA["2019-A"])} en las elecciones que se repetían.</p>
 {g_serie}
-<p data-tipo="patron">Cuando la participación cae, cae más en los municipios con menos renta. En la repetición de noviembre de 2019 bajó {p(SERIE["2019-A"]["ricos"] - SERIE["2019-N"]["ricos"])} puntos en los seis más ricos y {p(SERIE["2019-A"]["pobres"] - SERIE["2019-N"]["pobres"])} en los seis más pobres. En 2023, los ricos subieron un poco, al {p(SERIE["2023"]["ricos"])} %, y los pobres siguieron bajando, al {p(SERIE["2023"]["pobres"])} %.</p>
+<p data-tipo="patron">Cuando la participación cae, cae más en los municipios con menos renta. En la repetición de noviembre de 2019 bajó {p(r1(SERIE["2019-A"]["ricos"]) - r1(SERIE["2019-N"]["ricos"]))} puntos en los seis más ricos y {p(r1(SERIE["2019-A"]["pobres"]) - r1(SERIE["2019-N"]["pobres"]))} en los seis más pobres. En 2023, los ricos subieron un poco, al {p(SERIE["2023"]["ricos"])} %, y los pobres siguieron bajando, al {p(SERIE["2023"]["pobres"])} %.</p>
 <p data-tipo="contexto">La población extranjera no explica la diferencia por sí misma. En la décima parte más pobre, el {p(d1["ext"])} % de los vecinos es extranjero, frente al {p(d10["ext"])} % en la más rica. Pero en las generales solo votan los españoles, y el censo con el que se calcula la participación solo los incluye a ellos: un vecino extranjero no cuenta como abstención.</p>
 <p data-tipo="hipotesis">Hay varias explicaciones posibles, y los datos agregados no permiten elegir entre ellas: la que relaciona votar con el nivel de estudios, la del desencanto de quienes sienten que la política no cambia su vida y la de la movilización, porque los partidos hacen más campaña donde la participación es alta. Los datos por sección describen dónde se vota menos, no por qué.</p>
-<blockquote class="cita"><p>«Existe el tipo de votante que no se siente capacitado o cree que no entiende el lenguaje de la política institucional».</p><footer>Jean-Baptiste Harguindéguy, politólogo de la Universidad Pablo de Olavide, sobre la abstención en los barrios con menos renta, en <a href="{SALTO}">El Salto</a> (2019)</footer></blockquote>
+<blockquote class="cita"><p>«Existe el tipo de votante que no se siente capacitado o cree que no entiende el lenguaje de la política institucional».</p><footer>Jean-Baptiste Harguindéguy, politólogo de la Universidad Pablo de Olavide, sobre la abstención en los barrios con menos renta de las ciudades andaluzas, en <a href="{SALTO}">El Salto</a> (2019)</footer></blockquote>
 
 <h2>Lo que estos datos no dicen</h2>
 <p data-tipo="contexto">La participación de esta pieza es la de los residentes en España, sin el voto exterior, que vota muy poco; por eso sale más alta que la oficial. La renta es la del Atlas del INE de 2023 y se aplica a todas las elecciones: los municipios más ricos y más pobres de hoy no son necesariamente los de 1977. Las secciones son las de 2023. Y una sección o un municipio no es una persona: que en las secciones pobres se vote menos no dice que cada vecino con poca renta se abstenga.</p>'''

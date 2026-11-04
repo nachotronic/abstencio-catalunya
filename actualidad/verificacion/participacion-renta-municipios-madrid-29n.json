@@ -120,13 +120,13 @@
    "calculo": "D['BRECHA']['2019-N']"
   },
   {
-   "texto": "noviembre de 2019, frente a 4,8 y 5,0 en las elecciones",
+   "texto": "noviembre de 2019, frente a 4,8 y 4,9 en las elecciones",
    "cifra": "4,8",
    "calculo": "D['BRECHA']['2015']"
   },
   {
-   "texto": "noviembre de 2019, frente a 4,8 y 5,0 en las elecciones que",
-   "cifra": "5,0",
+   "texto": "noviembre de 2019, frente a 4,8 y 4,9 en las elecciones que",
+   "cifra": "4,9",
    "calculo": "D['BRECHA']['2019-A']"
   },
   {
