@@ -3803,7 +3803,7 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 09:34',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 10:05',
         titulo='Los demócratas ganan la Cámara con 218 escaños, justo la mayoría, y arrebatan 16 a los republicanos: el mapa, distrito a distrito', serie='internacional',
         descripcion='Associated Press y NBC News coinciden a las 8.38, hora peninsular, en 352 de los 435 escaños de la Cámara de Representantes: 218 para los demócratas y 134 para los republicanos. De los 83 por decidir, 15 son de California, Washington y Oregón. En el Senado, AP y NBC dan la mayoría a los demócratas desde las 8.27, con Míchigan: 51 escaños, y 54 con las proyecciones de la mesa de decisión de The New York Times.',
         compara='Los escaños de la Cámara y del Senado que Associated Press y NBC News dan a cada partido, y los ganadores de cada carrera al Senado, a la Cámara y a gobernador; en los distritos que cambian de partido, la ventaja en el recuento de AP frente a la ventaja republicana de 2024.',
