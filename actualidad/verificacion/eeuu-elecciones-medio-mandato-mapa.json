@@ -2,69 +2,79 @@
  "pieza": "eeuu-elecciones-medio-mandato-mapa",
  "cifras": [
   {
-   "texto": "Associated Press y NBC News coinciden ya en 269 escaños",
-   "cifra": "269",
+   "texto": "Associated Press y NBC News coinciden ya en 315 escaños",
+   "cifra": "315",
    "calculo": "DIR['D'] + DIR['R'] + DIR['O']"
   },
   {
-   "texto": "269 escaños: 170 para los demócratas y 99 para los republicanos",
-   "cifra": "170",
+   "texto": "315 escaños: 196 para los demócratas y 119 para los republicanos",
+   "cifra": "196",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "170 para los demócratas y 99 para los republicanos",
-   "cifra": "99",
+   "texto": "196 para los demócratas y 119 para los republicanos",
+   "cifra": "119",
    "calculo": "DIR['R']"
   },
   {
-   "texto": "Ya son nueve los distritos que cambian de partido",
-   "cifra": "nueve",
-   "calculo": "DIR['cambios_D'] + DIR['cambios_R']"
-  },
-  {
-   "texto": "los nueve a favor de los demócratas",
-   "cifra": "nueve",
-   "calculo": "DIR['cambios_D'] if DIR['cambios_R'] == 0 else -1"
+   "texto": "Ya son 13 los distritos que cambian de partido",
+   "cifra": "13",
+   "calculo": "DIR['cambios_D'] + DIR['cambios_R'] if DIR['cambios_R'] == 0 else -1"
   },
   {
    "texto": "Desde la actualización anterior se suman cuatro",
    "cifra": "cuatro",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] in ('CO-08','MO-02','NE-02','VA-02') and v[1] == 'D' and v[2]])"
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] in ('IA-01','IA-02','IA-03','PA-01') and v[1] == 'D' and v[2]])"
   },
   {
-   "texto": "el 8.º de Colorado, con Manny Rutinel",
-   "cifra": "8",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'CO-08' and v[1] == 'D' and v[2]])*8"
+   "texto": "tres de Iowa",
+   "cifra": "tres",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] in ('IA-01','IA-02','IA-03') and v[1] == 'D' and v[2]])"
   },
   {
-   "texto": "el 2.º de Misuri, con Fred Wellman",
+   "texto": "(el 1.º, con Christina Bohannan",
+   "cifra": "1",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'IA-01' and v[1] == 'D' and v[2]])*1"
+  },
+  {
+   "texto": "el 2.º, con Lindsay James",
    "cifra": "2",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'MO-02' and v[1] == 'D' and v[2]])*2"
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'IA-02' and v[1] == 'D' and v[2]])*2"
   },
   {
-   "texto": "el 2.º de Nebraska, con Denise Powell",
-   "cifra": "2",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'NE-02' and v[1] == 'D' and v[2]])*2"
+   "texto": "el 3.º, con Sarah Trone Garriott",
+   "cifra": "3",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'IA-03' and v[1] == 'D' and v[2]])*3"
   },
   {
-   "texto": "el 2.º de Virginia, con Elaine Luria",
-   "cifra": "2",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'VA-02' and v[1] == 'D' and v[2]])*2"
+   "texto": "el 1.º de Pensilvania, con Bob Harvie",
+   "cifra": "1",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0] == 'PA-01' and v[1] == 'D' and v[2]])*1"
   },
   {
-   "texto": "California da ya 18 escaños a los demócratas",
-   "cifra": "18",
+   "texto": "California da ya 29 escaños a los demócratas",
+   "cifra": "29",
    "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('CA-') and v[1] == 'D'])"
   },
   {
-   "texto": "Hay otros 31 escaños que de momento solo da una de las dos fuentes",
-   "cifra": "31",
+   "texto": "y 1 a los republicanos. Hay otros",
+   "cifra": "1",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('CA-') and v[1] == 'R'])"
+  },
+  {
+   "texto": "Hay otros 26 escaños que de momento solo da una de las dos fuentes",
+   "cifra": "26",
    "calculo": "len(DIR['solo_ap']) + len(DIR['solo_nbc'])"
   },
   {
-   "texto": "faltan 166 escaños",
-   "cifra": "166",
+   "texto": "Faltan 120 escaños",
+   "cifra": "120",
    "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']"
+  },
+  {
+   "texto": "22 de ellos en California",
+   "cifra": "22",
+   "calculo": "52 - len([v for v in DIR['dist'].values() if v[0].startswith('CA-') and v[1] in ('D', 'R', 'O')])"
   },
   {
    "texto": "y la mayoría está en 218",
@@ -72,37 +82,37 @@
    "calculo": "218"
   },
   {
-   "texto": "a los demócratas les faltan 48",
-   "cifra": "48",
+   "texto": "a los demócratas les faltan 22",
+   "cifra": "22",
    "calculo": "218 - DIR['D']"
   },
   {
-   "texto": "42 son de California, Washington y Oregón",
-   "cifra": "42",
+   "texto": "28 son de California, Washington y Oregón",
+   "cifra": "28",
    "origen": "titular",
    "calculo": "52 + 10 + 6 - len([v for v in DIR['dist'].values() if v[0][:2] in ('CA', 'WA', 'OR') and v[1] in ('D', 'R', 'O')])"
   },
   {
-   "texto": "arrebatan nueve escaños",
-   "cifra": "nueve",
+   "texto": "arrebatan 13 escaños",
+   "cifra": "13",
    "calculo": "DIR['cambios_D'] if DIR['cambios_R'] == 0 else -1",
    "origen": "titular"
   },
   {
-   "texto": "llevan 170",
-   "cifra": "170",
+   "texto": "llevan 196",
+   "cifra": "196",
    "calculo": "DIR['D']",
    "origen": "titular"
   },
   {
-   "texto": "a 99",
-   "cifra": "99",
+   "texto": "a 119",
+   "cifra": "119",
    "calculo": "DIR['R']",
    "origen": "titular"
   },
   {
-   "texto": "con 166 por decidir",
-   "cifra": "166",
+   "texto": "con 120 por decidir",
+   "cifra": "120",
    "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']",
    "origen": "titular"
   },
@@ -125,19 +135,24 @@
    "origen": "titular"
   },
   {
-   "texto": "coinciden en 269 escaños",
-   "cifra": "269",
+   "texto": "coinciden en 315 escaños",
+   "cifra": "315",
    "calculo": "DIR['D'] + DIR['R'] + DIR['O']",
    "origen": "titular"
   },
   {
-   "texto": "de los 166 por decidir",
-   "cifra": "166",
+   "texto": "de los 120 por decidir",
+   "cifra": "120",
    "calculo": "435 - DIR['D'] - DIR['R'] - DIR['O']",
    "origen": "titular"
   }
  ],
  "externas": [
+  {
+   "texto": "Una de las dos fuentes ya les da la mayoría de la Cámara",
+   "fuente": "https://www.nbcnews.com/politics/2026-elections/house-results",
+   "nota": "NBC bopData dem 219 isWinner true; NYT/AP party_balance House DEM winner false (196 llamados); crudo 20261104-0646. No se cuenta."
+  },
   {
    "texto": "ganaron la Cámara por 220 escaños a 215",
    "origen": "titular",
@@ -145,11 +160,6 @@
    "nota": "resultado de 2024, el mismo que en la previa"
   }
  ],
- "ignorar": [
-  {
-   "texto": "California da ya 18 escaños a los demócratas y, de momento, ninguno a los republicanos",
-   "motivo": "«ninguno» comprobado: 0 distritos de CA con ganador R confirmado en el crudo 20261104-0559"
-  }
- ],
+ "ignorar": [],
  "permitir_espana": []
 }

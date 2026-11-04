@@ -3,32 +3,27 @@
  "cifras": [],
  "externas": [
   {
-   "texto": "suman 51, los que necesitaban; los republicanos, 39",
+   "texto": "suman 52; los republicanos, 41",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "NYT party_balance DEM 51 (winner true, controlled_at 04:34Z) / GOP 39; NBC bopData dem 51 isWinner true (rep 40 porque cuenta Dakota del Sur, solo NBC); directo/crudo/20261104-0559"
+   "nota": "NYT party_balance DEM 52 (winner true) / GOP 41; NBC bopData dem 52 (isWinner true) / rep 41; directo/crudo/20261104-0646"
   },
   {
-   "texto": "Las dos fuentes coinciden en 25 carreras: 17 para los demócratas y 8 para los republicanos",
+   "texto": "Las dos fuentes coinciden en 28 de las 35 carreras: 18 para los demócratas y 10 para los republicanos",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "AP + NBC; nuevas desde 5.21: IA, KS (D, gained), TN (R); directo/crudo/20261104-0559"
+   "nota": "AP + NBC; nuevas desde 5.59: MN (D), LA, SD (R), ninguna con gained; directo/crudo/20261104-0646"
   },
   {
-   "texto": "Son ya seis los cambios de partido, los seis a favor de los demócratas",
+   "texto": "Los cambios de partido siguen siendo seis",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "gained en NC, SC, OH, TX, IA, KS; directo/crudo/20261104-0559"
+   "nota": "gained en NC, SC, OH, TX, IA, KS; directo/crudo/20261104-0646"
   },
   {
-   "texto": "Hay 20 gobernadores decididos, 15 demócratas y 5 republicanos",
+   "texto": "Hay 27 gobernadores decididos, 18 demócratas y 9 republicanos, con cuatro cambios de partido",
    "fuente": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-   "nota": "AP + NBC; nuevos desde 5.21: WI (D), OK, SD (R); ME, SC, VT con una sola fuente; directo/crudo/20261104-0559"
+   "nota": "AP + NBC; nuevos desde 5.59: HI, ME, MN (D), ID, SC, TN, VT (R), ninguno con gained; NH solo AP; gained en GA, IA, OH, TX; directo/crudo/20261104-0646"
   },
   {
-   "texto": "Los cambios de partido siguen siendo cuatro",
-   "fuente": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-   "nota": "gained en GA, IA, OH, TX; directo/crudo/20261104-0559"
-  },
-  {
-   "texto": "las dos fuentes coinciden en 269 escaños, 170 demócratas y 99 republicanos",
+   "texto": "las dos fuentes coinciden en 315 escaños, 196 demócratas y 119 republicanos",
    "fuente": "https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/#directo",
    "nota": "mismo recuento que el bloque de la Cámara (DIR)"
   }
