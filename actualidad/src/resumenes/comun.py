@@ -93,20 +93,29 @@ def figura(titulo, sub, cuerpo, fuente, leyenda=None, tabla=None):
             f'<div class="chart">{cuerpo}</div>\n{ley}\n<div class="src">{fuente}</div>{tab}\n</figure>\n')
 
 
-def barras(filas, maximo, etiqueta, W=640, ml=150, alto=26, fmt=None, linea=None):
-    """Barras horizontales. filas: [(nombre, valor, color, texto_al_final)]."""
+def barras(filas, maximo, etiqueta, W=640, ml=150, alto=26, fmt=None, linea=None, separar=False):
+    """Barras horizontales. filas: [(nombre, valor, color, texto_al_final)].
+    separar=True: las cifras van en una columna a la derecha y la etiqueta de la línea de referencia, arriba,
+    para que ninguna se monte sobre la línea discontinua cuando los valores están cerca de ella."""
     fmt = fmt or (lambda v: n(v))
-    H = alto * len(filas) + 8
+    top = 20 if (separar and linea is not None) else 0
+    H = alto * len(filas) + 8 + top
     x = lambda v: ml + v / maximo * (W - ml - 70)
     out = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(etiqueta)}">']
     for i, (nom, v, col, txt) in enumerate(filas):
-        y = 4 + i * alto
+        y = top + 4 + i * alto
         out.append(f'<text x="{ml - 8}" y="{y + alto / 2 + 4:.1f}" text-anchor="end" class="lab">{esc(nom)}</text>')
         out.append(f'<rect x="{ml}" y="{y + 4}" width="{max(1.5, x(v) - ml):.1f}" height="{alto - 9}" fill="{col}" rx="2"><title>{esc(nom)}: {esc(txt or fmt(v))}</title></rect>')
-        out.append(f'<text x="{x(v) + 6:.1f}" y="{y + alto / 2 + 4:.1f}">{esc(txt or fmt(v))}</text>')
+        xv = W - 4 if separar else x(v) + 6
+        out.append(f'<text x="{xv:.1f}" y="{y + alto / 2 + 4:.1f}"{' text-anchor="end"' if separar else ''}>{esc(txt or fmt(v))}</text>')
     if linea is not None:
-        out.append(f'<line x1="{x(linea[0]):.1f}" x2="{x(linea[0]):.1f}" y1="0" y2="{H}" stroke="var(--fg)" stroke-dasharray="3 3"/>'
-                   f'<text x="{x(linea[0]) + 4:.1f}" y="{H - 2}" class="lab">{esc(linea[1])}</text>')
+        xl = x(linea[0])
+        if separar:
+            out.append(f'<line x1="{xl:.1f}" x2="{xl:.1f}" y1="{top - 4}" y2="{H}" stroke="var(--fg)" stroke-dasharray="3 3"/>'
+                       f'<text x="{xl:.1f}" y="{top - 8}" text-anchor="middle" class="lab">{esc(linea[1])}</text>')
+        else:
+            out.append(f'<line x1="{xl:.1f}" x2="{xl:.1f}" y1="0" y2="{H}" stroke="var(--fg)" stroke-dasharray="3 3"/>'
+                       f'<text x="{xl + 4:.1f}" y="{H - 2}" class="lab">{esc(linea[1])}</text>')
     out.append('</svg>')
     return ''.join(out)
 

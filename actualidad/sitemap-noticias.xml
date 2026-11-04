@@ -9,6 +9,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-04</news:publication_date>
+      <news:title>En la Navarra donde EH Bildu pasa del 40 % votó el 64 %; donde no llega al 15 %, el 71 %: el mapa de la participación, pueblo a pueblo</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

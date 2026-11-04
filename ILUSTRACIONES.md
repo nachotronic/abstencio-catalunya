@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (67)
+## Pendientes (68)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-04 | [`cinturon-rojo-madrid-29n`](https://mapaelectoral.es/actualidad/cinturon-rojo-madrid-29n/) | El PP ganó Coslada por siete votos: el PSOE pasó de ganar en 16 de los 24 grandes municipios de Madrid a 4, aunque subió en todos | primer gráfico de la pieza |
+| 2026-11-04 | [`participacion-navarra-municipios-29n`](https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/) | En la Navarra donde EH Bildu pasa del 40 % votó el 64 %; donde no llega al 15 %, el 71 %: el mapa de la participación, pueblo a pueblo | primer gráfico de la pieza |
 | 2026-11-04 | [`participacion-renta-municipios-madrid-29n`](https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/) | En la Madrid más pobre votó el 61 %; en la más rica, el 83 %: entre los grandes municipios, la brecha es la mayor desde 1977 | primer gráfico de la pieza |
 | 2026-11-02 | [`banez-huelva-pp-29n`](https://mapaelectoral.es/actualidad/banez-huelva-pp-29n/) | Fátima Báñez encabezó seis veces la lista del PP en Huelva: ganó la provincia una vez, y nunca en su pueblo | primer gráfico de la pieza |
 | 2026-11-02 | [`bulgaria-yotova-gyurov-mapa-municipios`](https://mapaelectoral.es/actualidad/bulgaria-yotova-gyurov-mapa-municipios/) | Bulgaria elige a la candidata más cercana a Rusia; el europeísta ganó en 8 de los 265 municipios en primera vuelta | gráfico |
