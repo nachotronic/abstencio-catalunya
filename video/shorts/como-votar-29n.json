@@ -1,0 +1,106 @@
+{
+ "plantilla": "guia",
+ "kicker": "CÓMO VOTAR · 29N 2026",
+ "colores": {
+  "CERA": "#e0a440",
+  "alerta": "#e30613"
+ },
+ "fuente": [
+  "Fuente: INE, Oficina del Censo Electoral, y Ley",
+  "Orgánica del Régimen Electoral General (LOREG)."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 3.4,
+   "lineas": [
+    "Cómo votar el 29N,",
+    "en 20 segundos"
+   ],
+   "size": 96
+  },
+  {
+   "tipo": "numeros",
+   "dur": 4.6,
+   "titulo": [
+    "Cuándo"
+   ],
+   "items": [
+    [
+     "9 a 20 h",
+     "vote",
+     [
+      "el domingo 29 de noviembre"
+     ]
+    ],
+    [
+     "4 h",
+     "vote",
+     [
+      "libres y pagadas si trabajas",
+      "ese domingo"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.0,
+   "titulo": [
+    "Qué llevar"
+   ],
+   "items": [
+    [
+     "DNI",
+     "vote",
+     [
+      "o pasaporte o permiso de conducir,",
+      "en original y con foto (art. 85 LOREG)"
+     ]
+    ],
+    [
+     "No hace falta",
+     "CERA",
+     [
+      "la tarjeta censal: solo dice",
+      "dónde te toca votar"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.0,
+   "titulo": [
+    "Dónde"
+   ],
+   "items": [
+    [
+     "2-10 nov",
+     "vote",
+     [
+      "llega la tarjeta censal con",
+      "tu colegio y tu mesa"
+     ]
+    ],
+    [
+     "900 343 232",
+     "vote",
+     [
+      "teléfono gratuito del censo,",
+      "o consulta en la sede del INE"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.2,
+   "lineas": [
+    "Dónde y cómo",
+    "votar el 29N"
+   ],
+   "ruta": "/elecciones/votar-29n/"
+  }
+ ]
+}

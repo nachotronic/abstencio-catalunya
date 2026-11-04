@@ -1,0 +1,101 @@
+{
+ "plantilla": "guia",
+ "kicker": "TARJETA CENSAL · 29N 2026",
+ "colores": {
+  "CERA": "#e0a440",
+  "alerta": "#e30613"
+ },
+ "fuente": [
+  "Fuente: INE, Oficina del Censo Electoral; LOREG,",
+  "art. 85; Interior, generales de 2023 por mesa."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 3.6,
+   "lineas": [
+    "La tarjeta censal",
+    "llega del 2 al",
+    "10 de noviembre"
+   ],
+   "size": 96
+  },
+  {
+   "tipo": "numeros",
+   "dur": 4.8,
+   "titulo": [
+    "Qué trae"
+   ],
+   "items": [
+    [
+     "Tu mesa",
+     "vote",
+     [
+      "colegio, sección, mesa",
+      "y dirección"
+     ]
+    ],
+    [
+     "10-23 nov",
+     "vote",
+     [
+      "te avisan si cambia algo"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.0,
+   "titulo": [
+    "¿No te llega?",
+    "Votas igual"
+   ],
+   "items": [
+    [
+     "DNI",
+     "vote",
+     [
+      "o pasaporte o permiso de conducir,",
+      "en original y con foto"
+     ]
+    ],
+    [
+     "900 343 232",
+     "vote",
+     [
+      "teléfono gratuito del censo,",
+      "o la sede electrónica del INE"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 4.2,
+   "titulo": [
+    "Con tu sección,",
+    "mira cómo votó"
+   ],
+   "items": [
+    [
+     "36.462",
+     "CERA",
+     [
+      "secciones censales con su",
+      "resultado de 2023"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.2,
+   "lineas": [
+    "Cómo votó",
+    "tu sección"
+   ],
+   "ruta": "/elecciones/tarjeta-censal-29n/"
+  }
+ ]
+}

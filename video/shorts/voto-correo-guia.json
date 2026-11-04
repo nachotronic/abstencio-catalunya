@@ -1,0 +1,117 @@
+{
+ "plantilla": "guia",
+ "kicker": "VOTO POR CORREO · 29N 2026",
+ "colores": {
+  "CERA": "#e0a440",
+  "alerta": "#e30613"
+ },
+ "fuente": [
+  "Fuente: INE, Oficina del Censo Electoral, plazos",
+  "para los electores; Correos."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 4.0,
+   "cuenta": 1.2,
+   "lineas": [
+    "Electores de cada 100",
+    "que pidieron el voto",
+    "por correo en 2023:"
+   ],
+   "contador": 7,
+   "size": 88
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.6,
+   "titulo": [
+    "Los plazos, si",
+    "vives en España"
+   ],
+   "items": [
+    [
+     "19 nov",
+     "vote",
+     [
+      "último día para pedirlo"
+     ]
+    ],
+    [
+     "9-22 nov",
+     "vote",
+     [
+      "llega la documentación a casa"
+     ]
+    ],
+    [
+     "25 nov",
+     "alerta",
+     [
+      "último día para enviar el voto"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.0,
+   "titulo": [
+    "Cómo se pide"
+   ],
+   "items": [
+    [
+     "En Correos",
+     "vote",
+     [
+      "en persona, con DNI, pasaporte",
+      "o permiso de conducir originales"
+     ]
+    ],
+    [
+     "En la web",
+     "vote",
+     [
+      "de Correos, con certificado digital",
+      "o DNI electrónico"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 4.6,
+   "titulo": [
+    "Si vives fuera",
+    "(CERA)"
+   ],
+   "items": [
+    [
+     "Sin pedirlo",
+     "CERA",
+     [
+      "la documentación llega a casa"
+     ]
+    ],
+    [
+     "4-24 nov",
+     "CERA",
+     [
+      "voto por correo al consulado;",
+      "urna en el consulado del 21 al 26"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.2,
+   "lineas": [
+    "El voto por",
+    "correo, paso",
+    "a paso"
+   ],
+   "ruta": "/elecciones/voto-por-correo-29n/"
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "plantilla": "guia",
+ "kicker": "MESA ELECTORAL · 29N 2026",
+ "colores": {
+  "CERA": "#e0a440",
+  "alerta": "#e30613"
+ },
+ "fuente": [
+  "Fuente: LOREG, arts. 26, 27 y 143; Junta Electoral",
+  "Central, Instrucción 6/2011."
+ ],
+ "escenas": [
+  {
+   "tipo": "hook",
+   "dur": 4.0,
+   "cuenta": 1.0,
+   "lineas": [
+    "Personas que se",
+    "sortean para cada",
+    "mesa electoral:"
+   ],
+   "contador": 9,
+   "size": 92
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.6,
+   "titulo": [
+    "El calendario"
+   ],
+   "items": [
+    [
+     "31 oct-4 nov",
+     "vote",
+     [
+      "sorteo en cada ayuntamiento"
+     ]
+    ],
+    [
+     "3 días",
+     "vote",
+     [
+      "para notificarte (art. 27.2)"
+     ]
+    ],
+    [
+     "7 días",
+     "vote",
+     [
+      "para alegar una excusa ante",
+      "la Junta Electoral de Zona"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 5.0,
+   "titulo": [
+    "Quién puede",
+    "librarse"
+   ],
+   "items": [
+    [
+     "+65 años",
+     "vote",
+     [
+      "pueden renunciar sin",
+      "más explicación"
+     ]
+    ],
+    [
+     "Excusas",
+     "vote",
+     [
+      "baja médica, embarazo de 6 meses,",
+      "cuidado de menores… con justificante"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "numeros",
+   "dur": 4.4,
+   "titulo": [
+    "Y si no vas"
+   ],
+   "items": [
+    [
+     "Delito",
+     "alerta",
+     [
+      "prisión de 3 meses a 1 año",
+      "o multa (art. 143 LOREG)"
+     ]
+    ]
+   ]
+  },
+  {
+   "tipo": "cierre",
+   "dur": 3.2,
+   "lineas": [
+    "La mesa",
+    "electoral,",
+    "paso a paso"
+   ],
+   "ruta": "/elecciones/mesa-electoral-29n/"
+  }
+ ]
+}
