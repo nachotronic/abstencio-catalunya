@@ -3209,7 +3209,7 @@ ANTETITULOS = {
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
-    'eeuu-elecciones-medio-mandato-mapa': 'Noche electoral, en directo',
+    'eeuu-elecciones-medio-mandato-mapa': 'Resultados de la noche electoral',
     'eeuu-noche-electoral-guia-horarios': 'Guía para la noche del martes',
     'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
@@ -3764,9 +3764,9 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 05:59',
-        titulo='Los demócratas ganan el Senado y, en la Cámara, arrebatan nueve escaños a los republicanos y llevan 170 a 99, con 166 por decidir', serie='internacional',
-        descripcion='Estados Unidos elige a los 435 miembros de la Cámara de Representantes, además de 35 senadores y 36 gobernadores. A las 5.59, hora peninsular, Associated Press y NBC News coinciden en 269 escaños; de los 166 por decidir, 42 son de California, Washington y Oregón, y Hawái y Alaska cierran sus colegios a partir de las 6.00. Las dos fuentes dan ya la mayoría del Senado a los demócratas. En 2024, los republicanos ganaron la Cámara por 220 escaños a 215.',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 06:51',
+        titulo='Los demócratas ganan el Senado y, en la Cámara, arrebatan 13 escaños a los republicanos y llevan 196 a 119, con 120 por decidir', serie='internacional',
+        descripcion='Estados Unidos elige a los 435 miembros de la Cámara de Representantes, además de 35 senadores y 36 gobernadores. A las 6.46, hora peninsular, Associated Press y NBC News coinciden en 315 escaños; de los 120 por decidir, 28 son de California, Washington y Oregón. Las dos fuentes dan ya la mayoría del Senado a los demócratas. En 2024, los republicanos ganaron la Cámara por 220 escaños a 215.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
         limites='Los distritos son los de 2024, los únicos con resultados: en los nueve estados que los han redibujado se vota el 3 de noviembre con otros límites. La cuenta del giro resta los mismos puntos en todos los distritos que no cambian; no es una previsión. Los objetivos de los mapas nuevos son los que buscaban sus autores según Sabato\'s Crystal Ball y Wikipedia, no un cálculo propio con los límites nuevos. Los porcentajes son sobre el total de votos válidos de cada distrito; en los distritos sin rival del otro partido, la ventaja es la del candidato único. Los recuentos por tramos de ventaja usan los votos sin redondear: el 3.º de Colorado, que el republicano Jeff Hurd ganó por 4,98 puntos, cuenta entre los decididos por menos de 5, aunque el mapa muestre 5,0.',
         fuentes=[('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-house.html', 'Associated Press, resultados de la Cámara de 2026, a través de The New York Times (en directo, 3 y 4-11-2026)'),
@@ -3801,7 +3801,7 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 05:59',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 06:46',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
