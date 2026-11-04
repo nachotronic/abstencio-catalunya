@@ -35,7 +35,7 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-11-02'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-11-04'   # cámbiala a mano cuando cambien los datos o el texto
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
@@ -746,6 +746,7 @@ def pagina_ciudad(cod):
     h.append(f'<p class="subtitulo">{"Censo para el 29N, r" if b_censo else "R"}esultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
+    h.append(bloque_donde_votar(nombre, cod))
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
@@ -1283,6 +1284,40 @@ def bloque_mesas(nombre, cod):
              + f'<p><a href="{raiz}elecciones/mesa-electoral-29n/">Qué hacer si te toca mesa el 29N</a> · <a href="{raiz}elecciones/votar-29n/">Dónde y cómo votar</a> · '
                f'<a href="{raiz}elecciones/voto-por-correo-29n/">Voto por correo</a></p>')
     return html_, qs
+
+
+DONDE_CSS = ('.dondevotar{border:1px solid var(--rule);border-left:4px solid var(--fg);border-radius:6px;padding:.4rem 1rem .6rem;margin:1.4rem 0}'
+             '.dondevotar h2{margin-top:.6rem}.dondevotar ul{padding-left:1.1rem;margin:.4rem 0}.dondevotar li{margin:.35rem 0}')
+
+
+def bloque_donde_votar(nombre, cod):
+    """Recuadro «Dónde votar en <municipio> el 29N», arriba de la ficha: cómo saber tu colegio y tu mesa, horario, documento,
+    voto por correo y las cifras del municipio (electores residentes del censo de consulta y mesas de 2023). Solo plazos oficiales."""
+    raiz = RAIZ_REL
+    n = escape(nombre)
+    c = censo_29n(cod)
+    cifras = []
+    if c:
+        cifras.append(f'{num(c[0])} electores que viven en el municipio, según el censo de consulta del INE')
+    if cod in MESAS.index:
+        m = MESAS.loc[cod]
+        mesas, secs = int(m.mesas), int(m.secciones)
+        cifras.append(f'{num(mesas)} {"mesa" if mesas == 1 else "mesas"} en las generales de 2023'
+                      + (f', repartidas en {num(secs)} secciones censales' if secs > 1 else ''))
+    li = [f'<li><b>Tu colegio y tu mesa</b> vienen en la tarjeta censal, que la Oficina del Censo Electoral envía del 2 al 10 de noviembre. '
+          f'Sin esperarla, se consultan en la <a href="{INE_SEDE}">sede electrónica del INE</a> (con la provincia, el municipio y la primera letra del primer apellido, o con Cl@ve) '
+          f'o en el teléfono gratuito {TEL_CENSO}.</li>',
+          '<li><b>Horario</b>: el domingo 29 de noviembre, de 9.00 a 20.00.</li>',
+          '<li><b>Qué llevar</b>: el DNI, el pasaporte o el permiso de conducir, con fotografía y en original. La tarjeta censal no es obligatoria.</li>',
+          '<li><b>Si no puedes ir</b>: el voto por correo se pide en Correos hasta el 19 de noviembre y se envía hasta el 25.</li>']
+    if cifras:
+        li.append(f'<li><b>En {n}</b>: ' + '; '.join(cifras) + '.</li>')
+    return (f'<style>{DONDE_CSS}</style><section class="dondevotar" aria-labelledby="donde-votar"><h2 id="donde-votar">Dónde votar en {n} el 29N</h2>'
+            + '<ul>' + ''.join(li) + '</ul>'
+            + f'<p class="leyenda">Fuentes: <a href="{INE_PLAZOS}">INE, plazos de interés para los electores</a>; <a href="{LOREG}">LOREG</a>, artículos 84 y 85; '
+              'censo de consulta del INE de 2026 y resultados por mesa de Interior de 2023.</p>'
+            + f'<p><a href="{raiz}elecciones/votar-29n/">Guía completa para votar el 29N</a> · <a href="{raiz}elecciones/mesa-electoral-29n/">Si te ha tocado mesa</a> · '
+              f'<a href="{raiz}elecciones/voto-por-correo-29n/">Voto por correo</a></p></section>')
 
 
 def tema_votar():
