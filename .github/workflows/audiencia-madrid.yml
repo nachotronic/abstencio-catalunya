@@ -14,6 +14,9 @@ jobs:
           python3 - <<'PY'
           import json, os, urllib.request, collections
           tok = os.environ.get('CF_TOKEN', '')
+          partes = tok.split()   # el secreto puede llevar saltos de línea o «Bearer» delante
+          tok = next((p for p in partes if p.startswith('cfut_')), partes[-1] if partes else '')
+          print('partes en el secreto:', len(partes))
           if not tok:
               raise SystemExit('Falta el secreto CLOUDFLARE_API_TOKEN')
           def q(dims, f='2026-10-21', t='2026-11-04'):
