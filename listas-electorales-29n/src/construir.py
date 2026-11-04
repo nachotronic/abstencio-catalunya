@@ -365,7 +365,7 @@ def pagina_provincia(cod, cs, modelo, generado, avance, datos, todas):
     if not avance and cabezas:
         faq.insert(1, (f'¿Quién encabeza las listas al Congreso por {corto}?', '; '.join(f'{p}: {n}' for p, n in cabezas) + '.'))
     if salida:
-        faq.insert(2, (f'¿Qué candidatos de {corto} tienen el escaño en el aire?', '; '.join(salida[:5]) + '. Probabilidades según el modelo de Mapa Electoral con la media de encuestas.'))
+        faq.insert(2, (f'¿Qué candidatos de {corto} tienen el escaño en el aire?', '; '.join(salida[:5]) + '. Probabilidades según el modelo de Mapa Electoral con la media de encuestas del ' + fecha_larga(json.loads((DATOS / 'puestos-29n.json').read_text())['modelo']) + '.'))
     if cod in ('07', '35', '38'):
         faq.append(('¿Cómo se elige el Senado en las islas?', 'En Baleares y Canarias cada isla elige sus propios senadores: tres Mallorca, Gran Canaria y Tenerife, donde cada elector puede marcar hasta dos nombres, '
                     'y uno cada una de las demás (Menorca, Eivissa, Formentera, Fuerteventura, Lanzarote, La Palma, La Gomera y El Hierro), donde se marca uno (LOREG, artículos 165 y 166).'))
@@ -686,7 +686,7 @@ def pagina_mi_diputado(cands, modelo, dips_fecha, datos, avance, pu_meta):
 <div id="resultado"></div>
 <p data-tipo="dato">{n_fin} diputados tenían escaño al disolverse las Cortes el 6 de octubre de 2026.{f" {repiten_total} de ellos van en una lista al Congreso por la misma provincia en el BOE del {fecha_larga(datos['fecha_boe'])}." if not avance else ""}</p>
 <h2 id="provincias">Diputados y candidatos, provincia a provincia</h2>
-<p>Abre tu provincia para ver sus diputados de la legislatura que acaba y los candidatos del 29N con opciones. La probabilidad de cada candidato: <span class="pr seguro">casi seguro</span> (90 % o más) y <span class="pr aire">en el aire</span> (10-90 %).</p>
+<p>Abre tu provincia para ver sus diputados de la legislatura que acaba y los candidatos del 29N con opciones. La probabilidad de cada candidato, con la media de encuestas del {fecha_larga(pu_meta['modelo'])}: <span class="pr seguro">casi seguro</span> (90 % o más) y <span class="pr aire">en el aire</span> (10-90 %).</p>
 <div class="todas">{''.join(secciones)}</div>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in faq)}</div>
