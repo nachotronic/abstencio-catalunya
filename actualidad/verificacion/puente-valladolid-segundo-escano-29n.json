@@ -1,0 +1,305 @@
+{
+ "pieza": "puente-valladolid-segundo-escano-29n",
+ "_datos_disponibles": {
+  "SEC": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "escaño del PSOE sale en el 47,5%",
+   "cifra": "47,5",
+   "calculo": "float(QUINTO[0][2])"
+  },
+  {
+   "texto": "Domingo Castaño, sale en el 47,5% de las simulaciones.",
+   "cifra": "47,5",
+   "calculo": "float(QUINTO[0][2])"
+  },
+  {
+   "texto": "segundo escaño sale en el 47,5% de las 2.000 simulaciones",
+   "cifra": "47,5",
+   "calculo": "float(QUINTO[0][2])"
+  },
+  {
+   "texto": "da en Valladolid al PP el 38,5% (41,2% en 2023), al",
+   "cifra": "38,5",
+   "calculo": "PROV[0][2]"
+  },
+  {
+   "texto": "Valladolid al PP el 38,5% (41,2% en 2023), al PSOE el",
+   "cifra": "41,2",
+   "calculo": "PROV[0][1]"
+  },
+  {
+   "texto": "(41,2% en 2023), al PSOE el 26,5% (33%) y a Vox el 23%",
+   "cifra": "26,5",
+   "calculo": "PROV[1][2]"
+  },
+  {
+   "texto": "2023), al PSOE el 26,5% (33%) y a Vox el 23% (15,3%).",
+   "cifra": "33",
+   "calculo": "PROV[1][1]"
+  },
+  {
+   "texto": "el 26,5% (33%) y a Vox el 23% (15,3%). El 29 de octubre,",
+   "cifra": "23",
+   "calculo": "PROV[2][2]"
+  },
+  {
+   "texto": "26,5% (33%) y a Vox el 23% (15,3%). El 29 de octubre,",
+   "cifra": "15,3",
+   "calculo": "PROV[2][1]"
+  },
+  {
+   "texto": "Domingo Castaño, sale en el 47,5%; el de Irene Muñoz,",
+   "cifra": "47,5",
+   "calculo": "float(QUINTO[0][2])"
+  },
+  {
+   "texto": "número tres del PP, en el 36,4%, y el de Atenea Santana,",
+   "cifra": "36,4",
+   "calculo": "float(QUINTO[1][2])"
+  },
+  {
+   "texto": "número dos de Vox, en el 16,9%. El 29 de octubre,",
+   "cifra": "16,9",
+   "calculo": "float(QUINTO[2][2])"
+  },
+  {
+   "texto": "PSOE tiene un cociente de 13,3 puntos (26,5 entre dos)",
+   "cifra": "13,3",
+   "calculo": "PROV[1][2]/2"
+  },
+  {
+   "texto": "cociente de 13,3 puntos (26,5 entre dos) y el tercero",
+   "cifra": "26,5",
+   "calculo": "PROV[1][2]"
+  },
+  {
+   "texto": "dos) y el tercero del PP, de 12,8 (38,5 entre tres). Si",
+   "cifra": "12,8",
+   "calculo": "PROV[0][2]/3"
+  },
+  {
+   "texto": "tercero del PP, de 12,8 (38,5 entre tres). Si el PP",
+   "cifra": "38,5",
+   "calculo": "PROV[0][2]"
+  },
+  {
+   "texto": "escaño mientras sacara más del 25,7%: un margen de 0,8 puntos,",
+   "cifra": "25,7",
+   "calculo": "2*PROV[0][2]/3"
+  },
+  {
+   "texto": "más del 25,7%: un margen de 0,8 puntos, unos 2.600 votos",
+   "cifra": "0,8",
+   "calculo": "PROV[1][2]-2*PROV[0][2]/3"
+  },
+  {
+   "texto": "margen de 0,8 puntos, unos 2.600 votos con la participación",
+   "cifra": "2.600",
+   "calculo": "(PROV[1][2]-2*PROV[0][2]/3)/100*17483/0.169/(PROV[1][1]/100)",
+   "tolerancia": 100
+  },
+  {
+   "texto": "socialista de Valladolid está a 0,8 puntos de cambiar de",
+   "cifra": "0,8",
+   "calculo": "PROV[1][2]-2*PROV[0][2]/3"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "dejó el miércoles al menos 68 muertos, según el balance",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "Adamuz (Córdoba) en enero, con 46 fallecidos, según la",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "la ley electoral (artículo 48) solo permite modificarlas",
+   "motivo": "número del artículo de la LOREG"
+  },
+  {
+   "texto": "escaño sale en el 47,5% de las 2.000 simulaciones del modelo",
+   "motivo": "número de simulaciones del modelo (meta.json, simulaciones: 2000)"
+  },
+  {
+   "texto": "Valladolid elige cinco diputados. En 2023 el",
+   "motivo": "recuento de candidatos o de puestos en la frase"
+  },
+  {
+   "texto": "Vox, y al PP le faltaron 3.669 votos para quitárselo,",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "margen: se habría perdido con 17.483 votos menos, el 16,9%",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "con 17.483 votos menos, el 16,9% de los que tuvo el",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "accidente, daba al PSOE el 27,2%. El reparto central",
+   "motivo": "cifra de la versión del 29 de octubre (modelo con la media de encuestas del 26 de octubre), que se mantiene como comparación"
+  },
+  {
+   "texto": "el quinto se lo disputan tres candidatos. En las 2.000",
+   "motivo": "recuento de candidatos o de puestos en la frase"
+  },
+  {
+   "texto": "disputan tres candidatos. En las 2.000 simulaciones, el segundo",
+   "motivo": "número de simulaciones del modelo (meta.json, simulaciones: 2000)"
+  },
+  {
+   "texto": "el de Irene Muñoz, número tres del PP, en el 36,4%,",
+   "motivo": "recuento de candidatos o de puestos en la frase"
+  },
+  {
+   "texto": "entonces de Redondo, salía en el 54%.",
+   "motivo": "cifra de la versión del 29 de octubre (modelo con la media de encuestas del 26 de octubre), que se mantiene como comparación"
+  },
+  {
+   "texto": "del PP, de 12,8 (38,5 entre tres). Si el PP no se moviera,",
+   "motivo": "recuento de candidatos o de puestos en la frase"
+  },
+  {
+   "texto": "octubre el margen era de 1,7 puntos.",
+   "motivo": "cifra de la versión del 29 de octubre (modelo con la media de encuestas del 26 de octubre), que se mantiene como comparación"
+  },
+  {
+   "texto": "provincia: en 2023 aportó el 57% de los votos. Allí",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "votos. Allí el PSOE sacó el 34,8% en las generales, frente",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "las generales, frente al 30,5% en el resto de la provincia.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "historial propio, porque fue cuatro veces el candidato socialista",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "En 2011 sacó el 27,7% y perdió frente a Javier",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "la Riva. En 2015 bajó al 23,6%, el peor resultado",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "Se Puede. En 2019 subió al 35,9% y fue el más votado.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "más votado. En 2023 sacó el 37,1%, de nuevo por delante",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "nuevo por delante del PP (36,6%), pero perdió la alcaldía",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "municipales sacaba en 2023 tres veces los votos del",
+   "motivo": "recuento de candidatos o de puestos en la frase"
+  },
+  {
+   "texto": "alcalde va por delante: entre cuatro y seis puntos más que",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "por delante: entre cuatro y seis puntos más que el PSOE",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "dos generales de 2019, y 2,3 puntos más en 2023.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "las generales de julio en 201 de las 252 secciones",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "generales de julio en 201 de las 252 secciones censales,",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "par: la correlación es de 0,97. En julio, el PSOE ganó",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "En julio, el PSOE ganó en 127 secciones y el PP en",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "127 secciones y el PP en 125; en mayo, Puente había",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "mayo, Puente había ganado en 148.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "de 2023 el PSOE pasó del 40% en Pajarillos, Pilarica,",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "Delicias, con un máximo del 50,1% en Pajarillos Bajos.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "Pajarillos Bajos. El PP pasó del 50% en el centro (Plaza",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "socialista, el PSOE sacó el 48,9% y la participación",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "la participación fue del 67,1%; en la menos socialista,",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "socialista, el PSOE se quedó en el 21,2%, el PP sacó el 54,5%",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "en el 21,2%, el PP sacó el 54,5% y votó el 80,9%.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "PP sacó el 54,5% y votó el 80,9%.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "el barrio más poblado: el 39,1% para la lista de Puente",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "lista de Puente en mayo y el 32,8% para el PSOE en julio.",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  },
+  {
+   "texto": "Antes del accidente estaba a 1,7.",
+   "motivo": "cifra de la versión del 29 de octubre (modelo con la media de encuestas del 26 de octubre), que se mantiene como comparación"
+  },
+  {
+   "texto": "Cinco diputados y uno en el",
+   "motivo": "recuento de candidatos o de puestos en la frase"
+  },
+  {
+   "texto": "Valladolid?Porcentaje de las 2.000 simulaciones del modelo",
+   "motivo": "número de simulaciones del modelo (meta.json, simulaciones: 2000)"
+  },
+  {
+   "texto": "secciónElige la elección. Las 252 secciones censales de",
+   "motivo": "párrafo del 29 de octubre sin cambios; revisado por el editor entonces"
+  }
+ ],
+ "permitir_espana": []
+}
