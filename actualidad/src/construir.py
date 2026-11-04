@@ -3209,7 +3209,7 @@ ANTETITULOS = {
     'pacto-pp-vox-senado-provincias-29n': 'Tres quintos en el aire',
     'brasil-lula-remontada-mapa-estados': 'Brasil, estado a estado',
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
-    'eeuu-elecciones-medio-mandato-mapa': 'Noche electoral, en directo',
+    'eeuu-elecciones-medio-mandato-mapa': 'Resultados de la noche electoral',
     'eeuu-noche-electoral-guia-horarios': 'Guía para la noche del martes',
     'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
@@ -3764,7 +3764,7 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 06:46',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 06:51',
         titulo='Los demócratas ganan el Senado y, en la Cámara, arrebatan 13 escaños a los republicanos y llevan 196 a 119, con 120 por decidir', serie='internacional',
         descripcion='Estados Unidos elige a los 435 miembros de la Cámara de Representantes, además de 35 senadores y 36 gobernadores. A las 6.46, hora peninsular, Associated Press y NBC News coinciden en 315 escaños; de los 120 por decidir, 28 son de California, Washington y Oregón. Las dos fuentes dan ya la mayoría del Senado a los demócratas. En 2024, los republicanos ganaron la Cámara por 220 escaños a 215.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
