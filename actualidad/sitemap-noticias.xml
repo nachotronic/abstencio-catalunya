@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://mapaelectoral.es/actualidad/cinturon-rojo-madrid-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-04</news:publication_date>
+      <news:title>El PP ganó Coslada por siete votos: el PSOE pasó de ganar en 16 de los 24 grandes municipios de Madrid a 4, aunque subió en todos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-04</news:publication_date>
+      <news:title>En la Madrid más pobre votó el 61 %; en la más rica, el 83 %: entre los grandes municipios, la brecha es la mayor desde 1977</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/bizkaia-pnv-bildu-encuestas-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

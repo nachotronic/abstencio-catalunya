@@ -57,7 +57,7 @@ ACTUALIDAD_LUGAR = {
     'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
     'acampada-sol-distrito-centro': ['28'], 'acampada-sol-alquiler-madrid-distritos-29n': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
-    'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'malaga-barrio-a-barrio-29n': ['29'],
+    'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'frente-amplio-podemos-madrid-escanos-29n': ['28'], 'calle-que-parte-madrid': ['28'], 'cinturon-rojo-madrid-29n': ['28'], 'participacion-renta-municipios-madrid-29n': ['28'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
     'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'zaragoza-barrio-a-barrio-29n': ['50'],
 }
@@ -72,7 +72,7 @@ ACTUALIDAD_MUNICIPIO = {
     'girona-barri-a-barri-29n': ('17079', 'Girona'),
 }
 # Piezas de cada página temática
-TEMA_RENTA = ['maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'psoe-barrios-de-alquiler', 'precio-del-alquiler-y-voto',
+TEMA_RENTA = ['participacion-renta-municipios-madrid-29n', 'maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'psoe-barrios-de-alquiler', 'precio-del-alquiler-y-voto',
               'huelga-11n-paro-participacion', 'vox-poblacion-nacida-fuera', 'pisos-turisticos-y-votantes',
               'pobreza-participacion-barrios', 'pensiones-barrios-envejecidos', 'malaga-barrio-a-barrio-29n']
 TEMA_SECCION = ['como-voto-tu-calle', 'calle-que-parte-el-voto', 'madrid-barrio-a-barrio-29n', 'barcelona-barrio-a-barrio-29n',
@@ -80,10 +80,10 @@ TEMA_SECCION = ['como-voto-tu-calle', 'calle-que-parte-el-voto', 'madrid-barrio-
                 'murcia-barrio-a-barrio-29n', 'palma-barrio-a-barrio-29n',
                 'izquierda-del-psoe-secciones', 'colau-barcelona-comuns', 'rufian-erc-comuns', 'mapa-derecha-1977-2023']
 
-TEMA_PARTICIPACION = ['pobreza-participacion-barrios', 'maricarmen-alquiler-y-voto', 'huelga-11n-paro-participacion', 'votar-en-noviembre',
+TEMA_PARTICIPACION = ['participacion-renta-municipios-madrid-29n', 'pobreza-participacion-barrios', 'maricarmen-alquiler-y-voto', 'huelga-11n-paro-participacion', 'votar-en-noviembre',
                       'ceuta-melilla-participacion-29n', 'palma-barrio-a-barrio-29n', 'malaga-barrio-a-barrio-29n', 'europeas-solo-con-municipales',
                       'baltar-censo-y-participacion', 'censo-electoral-desde-1977']
-TEMA_MUNICIPIOS = ['nunca-gano-el-psoe', 'nunca-gano-la-derecha', 'psoe-1982-mas-del-60', 'pueblos-menos-votantes-que-en-1977',
+TEMA_MUNICIPIOS = ['cinturon-rojo-madrid-29n', 'nunca-gano-el-psoe', 'nunca-gano-la-derecha', 'psoe-1982-mas-del-60', 'pueblos-menos-votantes-que-en-1977',
                    'ucd-ciudadanos-hundimiento', 'municipios-fieles', 'plasencia-acierta-siempre', 'mont-roig-municipio-cambiante',
                    'trebujena-pce-sumar', 'aceituna-de-mesa-pueblos', 'mapa-derecha-1977-2023']
 # Piezas sobre las generales del 29N que no llevan «29n» en la ruta

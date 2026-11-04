@@ -1,0 +1,221 @@
+{
+ "pieza": "participacion-renta-municipios-madrid-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Madrid más pobre votó el 61 %; en la más rica, el",
+   "cifra": "61",
+   "calculo": "D['DEC']['1']['part']"
+  },
+  {
+   "texto": "61 %; en la más rica, el 83 %: entre los grandes",
+   "cifra": "83",
+   "calculo": "D['DEC']['10']['part']"
+  },
+  {
+   "texto": "Boadilla del Monte votó un 82,5 % y Parla un 67,2 %.",
+   "cifra": "82,5",
+   "calculo": "D['BIG']['Boadilla del Monte']['part']"
+  },
+  {
+   "texto": "votó un 82,5 % y Parla un 67,2 %. Entre los seis grandes",
+   "cifra": "67,2",
+   "calculo": "D['BIG']['Parla']['part']"
+  },
+  {
+   "texto": "pobres, la diferencia es hoy de 7,5 puntos, la mayor desde",
+   "cifra": "7,5",
+   "calculo": "D['BRECHA']['2023']"
+  },
+  {
+   "texto": "Comunidad de Madrid votó el 60,9 % del censo. En la décima",
+   "cifra": "60,9",
+   "calculo": "D['DEC']['1']['part']"
+  },
+  {
+   "texto": "décima parte más rica, el 83,1 %. Son 22,2 puntos de",
+   "cifra": "83,1",
+   "calculo": "D['DEC']['10']['part']"
+  },
+  {
+   "texto": "más rica, el 83,1 %. Son 22,2 puntos de diferencia",
+   "cifra": "22,2",
+   "calculo": "D['DEC']['10']['part'] - D['DEC']['1']['part']"
+  },
+  {
+   "texto": "renta en cada uno de los diez escalones, sin excepción.",
+   "cifra": "diez",
+   "calculo": "len(D['DEC'])"
+  },
+  {
+   "texto": "por unidad de consumo de 43.769 euros, fue el que más",
+   "cifra": "43.769",
+   "calculo": "D['BIG']['Boadilla del Monte']['renta']"
+  },
+  {
+   "texto": "euros, fue el que más votó: el 82,5 %. Parla, con 17.942",
+   "cifra": "82,5",
+   "calculo": "D['BIG']['Boadilla del Monte']['part']"
+  },
+  {
+   "texto": "votó: el 82,5 %. Parla, con 17.942 euros, menos de la mitad,",
+   "cifra": "17.942",
+   "calculo": "D['BIG']['Parla']['renta']"
+  },
+  {
+   "texto": "la mitad, el que menos: el 67,2 %. En los 135 municipios",
+   "cifra": "67,2",
+   "calculo": "D['BIG']['Parla']['part']"
+  },
+  {
+   "texto": "menos: el 67,2 %. En los 135 municipios de más de",
+   "cifra": "135",
+   "calculo": "len(csv('generales-2026/descargas/municipios.csv')) and sum(1 for r in csv('generales-2026/descargas/municipios.csv') if str(r['mun_code']).zfill(5)[:2] == '28' and r['poblacion'] >= 1000)"
+  },
+  {
+   "texto": "renta y participación es de 0,69; entre las secciones,",
+   "cifra": "0,69",
+   "calculo": "D['CORR_M']"
+  },
+  {
+   "texto": "0,69; entre las secciones, de 0,75. Es una relación fuerte,",
+   "cifra": "0,75",
+   "calculo": "D['CORR']"
+  },
+  {
+   "texto": "Alarcón) votó en 2023 el 79,6 %; en los seis con menos",
+   "cifra": "79,6",
+   "calculo": "D['SERIE']['2023']['ricos']"
+  },
+  {
+   "texto": "Rey, Aranjuez y Leganés), el 72,1 %. Son 7,5 puntos, la",
+   "cifra": "72,1",
+   "calculo": "D['SERIE']['2023']['pobres']"
+  },
+  {
+   "texto": "Leganés), el 72,1 %. Son 7,5 puntos, la mayor distancia",
+   "cifra": "7,5",
+   "calculo": "D['BRECHA']['2023']"
+  },
+  {
+   "texto": "la mayor distancia en las 16 generales desde 1977.",
+   "cifra": "16",
+   "calculo": "len(D['SERIE'])"
+  },
+  {
+   "texto": "2015, su máximo eran los 6,0 puntos de 2000. Las",
+   "cifra": "6,0",
+   "calculo": "D['BRECHA']['2000']"
+  },
+  {
+   "texto": "electorales la ensancharon: 6,9 puntos en 2016 y 6,3",
+   "cifra": "6,9",
+   "calculo": "D['BRECHA']['2016']"
+  },
+  {
+   "texto": "ensancharon: 6,9 puntos en 2016 y 6,3 en noviembre de 2019,",
+   "cifra": "6,3",
+   "calculo": "D['BRECHA']['2019-N']"
+  },
+  {
+   "texto": "noviembre de 2019, frente a 4,8 y 5,0 en las elecciones",
+   "cifra": "4,8",
+   "calculo": "D['BRECHA']['2015']"
+  },
+  {
+   "texto": "noviembre de 2019, frente a 4,8 y 5,0 en las elecciones que",
+   "cifra": "5,0",
+   "calculo": "D['BRECHA']['2019-A']"
+  },
+  {
+   "texto": "de noviembre de 2019 bajó 4,7 puntos en los seis más",
+   "cifra": "4,7",
+   "calculo": "D['SERIE']['2019-A']['ricos'] - D['SERIE']['2019-N']['ricos']"
+  },
+  {
+   "texto": "puntos en los seis más ricos y 6,1 en los seis más pobres.",
+   "cifra": "6,1",
+   "calculo": "D['SERIE']['2019-A']['pobres'] - D['SERIE']['2019-N']['pobres']"
+  },
+  {
+   "texto": "ricos subieron un poco, al 79,6 %, y los pobres siguieron",
+   "cifra": "79,6",
+   "calculo": "D['SERIE']['2023']['ricos']"
+  },
+  {
+   "texto": "pobres siguieron bajando, al 72,1 %.",
+   "cifra": "72,1",
+   "calculo": "D['SERIE']['2023']['pobres']"
+  },
+  {
+   "texto": "décima parte más pobre, el 29,2 % de los vecinos es",
+   "cifra": "29,2",
+   "calculo": "D['DEC']['1']['ext']"
+  },
+  {
+   "texto": "es extranjero, frente al 10,2 % en la más rica. Pero",
+   "cifra": "10,2",
+   "calculo": "D['DEC']['10']['ext']"
+  },
+  {
+   "texto": "Madrid, por decil de renta (diez grupos con el mismo",
+   "cifra": "diez",
+   "calculo": "len(D['DEC'])"
+  },
+  {
+   "texto": "Los 24 grandes municipios,",
+   "cifra": "24",
+   "calculo": "len(D['BIG'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "Parla un 67,2 %. Entre los seis grandes municipios más",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "municipios más ricos y los seis más pobres, la diferencia",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "135 municipios de más de 1.000 habitantes, la correlación",
+   "motivo": "umbral de población de la comparación"
+  },
+  {
+   "texto": "había sido tan grande. En los seis grandes municipios con",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "con más renta (Alcobendas, Tres Cantos, Majadahonda,",
+   "motivo": "nombre del municipio Tres Cantos"
+  },
+  {
+   "texto": "en 2023 el 79,6 %; en los seis con menos (Parla, Fuenlabrada,",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "2019 bajó 4,7 puntos en los seis más ricos y 6,1 en los",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "seis más ricos y 6,1 en los seis más pobres. En 2023,",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "1977Participación en las generales en los seis municipios de más de",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  },
+  {
+   "texto": "seis municipios de más de 50.000 habitantes con más renta",
+   "motivo": "umbral de población de la comparación"
+  },
+  {
+   "texto": "habitantes con más renta y en los seis con menos",
+   "motivo": "tamaño de los dos grupos de municipios que se comparan (seis y seis)"
+  }
+ ],
+ "permitir_espana": []
+}

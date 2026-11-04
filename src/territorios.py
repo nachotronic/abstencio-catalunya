@@ -435,6 +435,8 @@ ESPANA = {'@type': 'Country', 'name': 'España'}
 # Nombre en castellano que mucha gente usa al buscar, cuando el oficial es otro (se añade entre paréntesis en título y texto).
 ALIAS_PROV = {'48': 'Vizcaya', '20': 'Guipúzcoa'}
 ALIAS_CCAA = {'pais-vasco': 'Euskadi'}
+# Provincias cuyas páginas de municipio enlazan las piezas de Actualidad de la provincia (cuántas, las más recientes primero).
+PIEZAS_EN_MUNICIPIOS = {'28': 8}
 
 
 def con_alias(nombre, alias):
@@ -706,6 +708,11 @@ def pagina_ciudad(cod):
     h.append(faq_html)
     rel = actualidad_de([s for s, (c, _) in ACTUALIDAD_MUNICIPIO.items() if c == cod], raiz)
     rel += [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in q['_muns']]
+    if p in PIEZAS_EN_MUNICIPIOS:   # provincias donde cada municipio enlaza también las piezas sobre su provincia y la historia de su comunidad
+        hist = f'{ccaa}-historia-electoral'
+        prov_rel = actualidad_de([s for s, ps in ACTUALIDAD_LUGAR.items() if p in ps], raiz)
+        prov_rel += actualidad_de([hist], raiz) if (ROOT / 'actualidad' / hist / 'index.html').exists() else []
+        rel += prov_rel[:PIEZAS_EN_MUNICIPIOS[p]]
     h.append(bloque_relacionadas([], nivel, rel) if rel else '')
     pob = T.MUN.set_index('mun_code').poblacion
     otras = sorted((c for c in CIUDADES if c[:2] == p and c != cod), key=lambda c: -pob[c])[:10]   # los diez más poblados; el resto, en la provincia
