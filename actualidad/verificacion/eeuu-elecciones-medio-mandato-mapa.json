@@ -2,44 +2,59 @@
  "pieza": "eeuu-elecciones-medio-mandato-mapa",
  "cifras": [
   {
-   "texto": "Associated Press y NBC News coinciden ya en 104 escaños",
-   "cifra": "104",
+   "texto": "Associated Press y NBC News coinciden ya en 150 escaños",
+   "cifra": "150",
    "calculo": "DIR['D'] + DIR['R'] + DIR['O']"
   },
   {
-   "texto": "104 escaños: 72 para los demócratas y 32 para los republicanos",
-   "cifra": "72",
+   "texto": "150 escaños: 99 para los demócratas y 51 para los republicanos",
+   "cifra": "99",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "72 para los demócratas y 32 para los republicanos",
-   "cifra": "32",
+   "texto": "99 para los demócratas y 51 para los republicanos",
+   "cifra": "51",
    "calculo": "DIR['R']"
   },
   {
-   "texto": "Florida, que estrena mapa, da 15 a los republicanos y 7 a los demócratas",
+   "texto": "sigue dando 15 a los republicanos y 7 a los demócratas",
    "cifra": "15",
    "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'R'])"
   },
   {
-   "texto": "da 15 a los republicanos y 7 a los demócratas",
+   "texto": "15 a los republicanos y 7 a los demócratas",
    "cifra": "7",
    "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D'])"
   },
   {
-   "texto": "Nueva York suma nueve demócratas",
-   "cifra": "nueve",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NY-') and v[1] == 'D']) if len([v for v in DIR['dist'].values() if v[0].startswith('NY-') and v[1] == 'R']) == 0 else -1"
+   "texto": "Nueva York da 14 escaños a los demócratas",
+   "cifra": "14",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NY-') and v[1] == 'D'])"
   },
   {
-   "texto": "y Nueva Jersey, ocho",
-   "cifra": "ocho",
-   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NJ-') and v[1] == 'D']) if len([v for v in DIR['dist'].values() if v[0].startswith('NJ-') and v[1] == 'R']) == 0 else -1"
+   "texto": "y 1 a los republicanos, y Nueva Jersey",
+   "cifra": "1",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NY-') and v[1] == 'R'])"
   },
   {
-   "texto": "Hay otros 16 escaños que de momento solo da una de las dos fuentes",
-   "cifra": "16",
+   "texto": "y Nueva Jersey, 9 y 1",
+   "cifra": "9",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NJ-') and v[1] == 'D'])"
+  },
+  {
+   "texto": "Nueva Jersey, 9 y 1.",
+   "cifra": "1",
+   "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('NJ-') and v[1] == 'R'])"
+  },
+  {
+   "texto": "Hay otros 22 escaños que de momento solo da una de las dos fuentes",
+   "cifra": "22",
    "calculo": "len(DIR['solo_ap']) + len(DIR['solo_nbc'])"
+  },
+  {
+   "texto": "el 7.º distrito de Nueva Jersey",
+   "cifra": "7",
+   "calculo": "len([g for g,v in DIR['dist'].items() if v[0] == 'NJ-07' and v[1] == 'D' and v[2]])*7"
   }
  ],
  "externas": [],
