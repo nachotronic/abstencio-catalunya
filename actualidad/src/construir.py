@@ -3988,7 +3988,6 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después
     'listas-29n-quien-encabeza': '2026-11-03',
     'eeuu-elecciones-medio-mandato-mapa': '2026-11-04',   # editor, 4-11-2026 6.00: ya es la de resultados, la primera
-    'eeuu-noche-electoral-guia-horarios': '2026-11-04',
     'banez-huelva-pp-29n': '2026-11-03',
     'acampada-sol-alquiler-madrid-distritos-29n': '2026-11-04',
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
@@ -4004,7 +4003,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
-INTER_EN_ACTUALIDAD = {'eeuu-noche-electoral-guia-horarios', 'eeuu-elecciones-medio-mandato-mapa'}   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
+INTER_EN_ACTUALIDAD = {'eeuu-elecciones-medio-mandato-mapa'}   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
 def franja_portada(todas, pre=''):
