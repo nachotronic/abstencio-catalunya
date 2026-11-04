@@ -1241,6 +1241,7 @@ def tema_como_se_vota():
 
 
 LOREG = 'https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672'
+JEC_EXCUSAS = 'https://www.boe.es/buscar/act.php?id=BOE-A-2011-7705'   # Instrucción 6/2011 de la JEC, texto consolidado
 INE_PLAZOS = 'https://www.ine.es/dyngs/CEL/index.htm?cid=1702'
 INE_SEDE = 'https://sede.ine.gob.es/'
 CORREOS_29N = 'https://www.correos.com/sala-prensa/ya-se-puede-solicitar-el-voto-por-correo-para-las-elecciones-generales-del-29-de-noviembre/'
@@ -1406,7 +1407,7 @@ def tema_mesa():
     ruta = 'elecciones/mesa-electoral-29n/'
     titulo = 'Mesa electoral 29N: cómo saber si te ha tocado, excusas, horario y dieta de 75 euros'
     desc = ('Todo sobre las mesas electorales de las generales del 29 de noviembre de 2026: el sorteo del 31 de octubre al 4 de noviembre, la notificación, '
-            'los siete días para alegar una excusa, quién puede renunciar, a qué hora hay que estar, la dieta de 75 euros y los permisos. Con la LOREG.')
+            'los siete días para alegar una excusa, qué excusas valen, qué hacer si luego no puedes ir, a qué hora hay que estar, la dieta de 75 euros y los permisos. Con la LOREG.')
     total23 = int(MESAS.mesas.sum())
     qs = [('¿Cuándo es el sorteo de las mesas electorales del 29N?',
            f'Entre el 31 de octubre y el 4 de noviembre de 2026: la ley lo fija entre los días 25 y 29 después de la convocatoria, publicada el 6 de octubre '
@@ -1420,6 +1421,13 @@ def tema_mesa():
           ('¿Me puedo librar de la mesa electoral?',
            f'Solo con una causa justificada y documentada, que hay que alegar ante la Junta Electoral de Zona en los siete días siguientes a la notificación; la Junta resuelve en cinco días y sin recurso. '
            f'Los mayores de 65 años pueden renunciar en ese mismo plazo (<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>).'),
+          ('¿Qué excusas acepta la Junta Electoral?',
+           'Siempre se aceptan, si se acreditan, tener entre 65 y 70 años, una discapacidad declarada, estar de baja médica, estar embarazada de seis meses o más o de permiso por nacimiento, '
+           'cuidar de un lactante, de menores de 12 años o de un familiar dependiente, o haber estado en una mesa al menos tres veces en los últimos diez años. '
+           f'Otras, como una enfermedad, una operación inaplazable o una boda familiar, las valora la Junta caso a caso (<a href="{JEC_EXCUSAS}">Instrucción 6/2011 de la Junta Electoral Central</a>).'),
+          ('¿Qué hago si ya no puedo ir a la mesa el 29N?',
+           'Si el impedimento surge después de los siete días para alegar, hay que comunicarlo con justificante a la Junta Electoral de Zona al menos 72 horas antes, es decir, antes de las 8.00 del 26 de noviembre. '
+           f'Si surge más tarde, el aviso tiene que ser inmediato y siempre antes de las 8.00 del domingo; la Junta llama al suplente (<a href="{LOREG}">artículo 27.4 de la LOREG</a>).'),
           ('¿Cuánto se cobra por estar en una mesa electoral?',
            f'75 euros para el presidente y los vocales, cinco más que en 2023, según la Orden INT/650/2026 (<a href="{CLM24_MESAS}">CLM24</a>, <a href="{UH_MESA}">Última Hora</a>). '
            'Los suplentes solo la cobran si acaban ocupando el puesto de un titular.'),
@@ -1447,8 +1455,23 @@ def tema_mesa():
                   f'Para estas elecciones se calcula que los ayuntamientos llamarán a 549.297 personas entre titulares y suplentes (<a href="{CLM24_MESAS}">CLM24</a>).'))
     h.append('<h2 id="excusas">Excusas y renuncias</h2>'
              + p_('Dato', 'Quien recibe la designación tiene siete días para alegar ante la Junta Electoral de Zona una causa justificada y documentada que le impida aceptar el cargo; '
-                  f'la Junta resuelve en cinco días y no cabe recurso (<a href="{LOREG}">artículo 27.3 de la LOREG</a>). Los mayores de 65 años pueden renunciar en ese mismo plazo de siete días, sin más explicación.')
+                  f'la Junta resuelve en cinco días y no cabe recurso administrativo (<a href="{LOREG}">artículo 27.3 de la LOREG</a>), aunque sí uno contencioso-administrativo. Los mayores de 65 años pueden renunciar en ese mismo plazo de siete días, sin más explicación.')
+             + p_('Dato', 'La Junta Electoral Central fija desde 2011 qué excusas valen, con una lista que ha ido ampliando y que es orientativa, no cerrada. Se aceptan siempre, si se acreditan con el documento que pide, '
+                  'tener entre 65 y 70 años, una discapacidad declarada de cualquier grado, una incapacidad permanente absoluta o gran invalidez, estar de baja médica, estar embarazada de seis meses o más o disfrutar del permiso por nacimiento o adopción, '
+                  'haber formado parte de una mesa al menos tres veces en los últimos diez años si la mesa queda cubierta, o tener una orden de alejamiento en vigor frente a alguien que vota en el mismo colegio. '
+                  'También el cuidado de un lactante, de menores de 12 años o personas con discapacidad a cargo, o de un familiar hasta el segundo grado que no pueda valerse por sí mismo.')
+             + p_('Dato', 'Otras excusas las valora cada Junta según el caso: una enfermedad o lesión que impida o haga muy penoso el cargo, con certificado médico que lo detalle; una operación o pruebas médicas inaplazables esos días; '
+                  'un acontecimiento familiar inaplazable, como una boda, del interesado o de un familiar cercano; ser madre o padre de menores de 14 años en una familia monoparental o sin otro progenitor disponible ese día; '
+                  'haberse mudado a otra comunidad; o trabajar el domingo en servicios esenciales, en la administración electoral o como responsable informativo de un medio. '
+                  f'Si la Junta rechaza la excusa, tiene que explicar por qué (<a href="{JEC_EXCUSAS}">Instrucción 6/2011</a>).')
              + p_('Dato', f'No presentarse sin causa justificada es un delito electoral, castigado con prisión de tres meses a un año o multa de seis a 24 meses (<a href="{LOREG}">artículo 143</a>).'))
+    h.append('<h2 id="no-puedo-ir">Si después no puedes ir</h2>'
+             + p_('Dato', 'Si el problema aparece cuando ya han pasado los siete días para alegar, por ejemplo una baja o una urgencia familiar, hay que comunicarlo a la Junta Electoral de Zona con los justificantes '
+                  'al menos 72 horas antes de la hora a la que hay que estar en la mesa, es decir, antes de las 8.00 del jueves 26 de noviembre. Si surge después, el aviso tiene que ser inmediato y, en todo caso, '
+                  f'antes de las 8.00 del domingo. La Junta avisa al suplente si hay tiempo y, si hace falta, nombra a otra persona (<a href="{LOREG}">artículo 27.4 de la LOREG</a>).')
+             + p_('Dato', 'Si a las 8.00 no se reúnen un presidente y dos vocales ni con los suplentes, los presentes o, si no hay nadie, la autoridad gubernativa, levantan una declaración de lo ocurrido y avisan a la Junta. '
+                  'La Junta puede designar libremente a quien quiera, incluso a un elector que esté en ese momento en el local, e informa a la Fiscalía de quién no se presentó. '
+                  f'Si a las 10.00 la mesa sigue sin constituirse, la Junta convoca una nueva votación en esa mesa en los dos días siguientes (<a href="{LOREG}">artículo 80 de la LOREG</a>).'))
     h.append('<h2 id="domingo">El domingo 29</h2>'
              + p_('Dato', f'Titulares y suplentes deben estar en el colegio a las 8.00 para constituir la mesa (<a href="{LOREG}">artículo 80 de la LOREG</a>); si faltan titulares, los sustituyen los suplentes. '
                   'La votación va de 9.00 a 20.00 sin interrupción; después la mesa cuenta los votos del Congreso y del Senado en público y firma las actas.')
@@ -1467,11 +1490,13 @@ def tema_mesa():
     h.append(faq_html)
     h.append('<h2>Más guías</h2><ul>'
              '<li><a href="../votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio, qué llevar y los permisos</li>'
+             '<li><a href="../../actualidad/me-ha-tocado-mesa-electoral-29n/">En los pueblos pequeños la mesa necesita a uno de cada seis vecinos</a>: por qué el sorteo no pesa igual en todas partes</li>'
              '<li><a href="../voto-por-correo-29n/">Voto por correo para el 29N</a>: plazos y cómo pedirlo</li>'
              '<li><a href="../censo-electoral-2026/">Censo electoral de 2026</a>: cómo consultarlo y cuántos electores hay en cada municipio</li>'
              '<li><a href="../elecciones-29n-2026/">Elecciones generales del 29N</a>: calendario y diputados por provincia</li></ul>')
     h.append('<h2>Fuentes</h2><ul>'
              f'<li><a href="{LOREG}">Ley Orgánica 5/1985, del Régimen Electoral General (LOREG)</a>, artículos 26, 27, 80, 84 y 143</li>'
+             f'<li><a href="{JEC_EXCUSAS}">Instrucción 6/2011 de la Junta Electoral Central sobre excusas para formar parte de las mesas</a>, texto consolidado con las reformas de 2014, 2016, 2018, 2023 y 2025</li>'
              f'<li><a href="{CLM24_MESAS}">CLM24: mesas electorales del 29N, sorteos desde el sábado 31 de octubre</a> (30 de octubre de 2026)</li>'
              f'<li><a href="{UH_MESA}">Última Hora: mesa electoral para el 29N, cuándo sabrás si te ha tocado</a> (25 de octubre de 2026)</li>'
              f'<li><a href="{LEGALITAS_29N}">Legálitas: guía legal para votar, trabajar y formar parte de una mesa electoral el 29N</a></li>'
