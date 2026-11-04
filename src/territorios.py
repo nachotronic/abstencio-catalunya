@@ -405,7 +405,7 @@ PIE = f"""<footer>{SITIO} · Datos con licencia <a href="{LICENCIA}">CC BY 4.0</
 PUBLICADA = {'elecciones/elecciones-29n-2026/': '2026-10-15', 'elecciones/participacion-electoral-por-barrio/': '2026-10-15',
              'elecciones/resultados-elecciones-por-municipio/': '2026-10-15', 'elecciones/censo-electoral-2026/': '2026-10-20', 'elecciones/como-se-vota/': '2026-10-20', 'elecciones/resultados-elecciones-generales-2026/': '2026-10-21', 'elecciones/votar-29n/': '2026-10-26',
              'elecciones/mesa-electoral-29n/': '2026-10-31', 'elecciones/voto-por-correo-29n/': '2026-10-31',
-             'elecciones/que-voto-tu-calle/': '2026-11-02'}
+             'elecciones/que-voto-tu-calle/': '2026-11-02', 'elecciones/tarjeta-censal-29n/': '2026-11-04'}
 
 
 def ld_pagina(titulo, desc, ruta, about=None, partes=None):
@@ -1307,7 +1307,7 @@ def bloque_donde_votar(nombre, cod):
                       + (f', repartidas en {num(secs)} secciones censales' if secs > 1 else ''))
     li = [f'<li><b>Tu colegio y tu mesa</b> vienen en la tarjeta censal, que la Oficina del Censo Electoral envía del 2 al 10 de noviembre. '
           f'Sin esperarla, se consultan en la <a href="{INE_SEDE}">sede electrónica del INE</a> (con la provincia, el municipio y la primera letra del primer apellido, o con Cl@ve) '
-          f'o en el teléfono gratuito {TEL_CENSO}.</li>',
+          f'o en el teléfono gratuito {TEL_CENSO}. Con tu sección, mira <a href="{raiz}{TARJETA_RUTA}">cómo votó en 2023</a>.</li>',
           '<li><b>Horario</b>: el domingo 29 de noviembre, de 9.00 a 20.00.</li>',
           '<li><b>Qué llevar</b>: el DNI, el pasaporte o el permiso de conducir, con fotografía y en original. La tarjeta censal no es obligatoria.</li>',
           '<li><b>Si no puedes ir</b>: el voto por correo se pide en Correos hasta el 19 de noviembre y se envía hasta el 25.</li>']
@@ -1355,6 +1355,7 @@ def tema_votar():
              + p_('Dato', f'No hace falta esperar a la carta: en la <a href="{INE_SEDE}">sede electrónica del INE</a> se consulta con la provincia, el municipio y la primera letra del primer apellido, '
                   'o con Cl@ve, que muestra directamente tus datos censales. Para dudas, la Oficina del Censo tiene el teléfono gratuito 900 343 232. '
                   f'Y el mismo domingo cada colegio tiene un callejero con la mesa que corresponde a cada calle (<a href="{PUBLICO_MESA}">Público</a>).')
+             + f'<p>Con la sección de tu tarjeta, mira <a href="../tarjeta-censal-29n/">cómo votó tu sección en 2023</a>.</p>'
              + f'<p>Si quieres ver cuántos electores hay en tu municipio y cómo votó tu barrio en 2023, búscalo en el <a href="{raiz}municipio/">índice de municipios</a> o en el <a href="{raiz}">mapa</a>.</p>')
 
     h.append('<h2 id="candidatos">Quién va en cada papeleta</h2>'
@@ -1398,6 +1399,150 @@ def tema_votar():
              f'<li><a href="{LEGALITAS_29N}">Legálitas: guía legal para votar, trabajar y formar parte de una mesa electoral el 29N</a> (5 de octubre de 2026)</li>'
              f'<li><a href="{BOE_29N}">Real Decreto 806/2026</a>, de convocatoria</li></ul>'
              '<p class="leyenda">Esta guía resume la norma y los plazos oficiales; ante cualquier duda manda lo que digan el INE, la Junta Electoral Central y el BOE. Si ves un error, escríbeme y lo corrijo.</p>')
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+TARJETA_RUTA = 'elecciones/tarjeta-censal-29n/'
+NOMBRE_FAM_2023 = {'SUMAR': 'Sumar', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'OTROS': 'Otros'}
+
+
+def datos_tarjeta():
+    """Datos ligeros del buscador de la tarjeta censal: por provincia, el resultado de las generales de 2023 de cada sección
+    (sin polígonos) y de cada municipio; y la lista de municipios. Salen de los mismos JSON que el mapa (generales-2026/data)."""
+    import json as _j
+    base = ROOT / 'generales-2026' / 'data'
+    meta = _j.loads((base / 'meta.json').read_text())
+    fams = [f for f in meta['familias']]
+    lig = _j.loads((base / 'municipios-ligero.json').read_text())
+    out = ROOT / TARJETA_RUTA / 'datos'
+    out.mkdir(parents=True, exist_ok=True)
+    y = '2023_07_'
+    usadas = [f['cod'] for f in fams if y + f['cod'] in lig]
+    colores = {f['cod']: f['color'] for f in fams}
+    nombres = {f['cod']: NOMBRE_FAM_2023.get(f['cod'], f['nombre']) for f in fams}
+    colores['OTROS'] = colores.get('OTROS', '#9a9a9a')
+    munis, nsec = [], 0
+    for prov in sorted(PROV_NOMBRE):
+        f = base / 'sec' / f'{prov}.json'
+        if not f.exists():
+            continue
+        d = _j.loads(f.read_text())
+        ks = [k for k in usadas if y + k in d and any(v for v in d[y + k] if v)]
+        secs = {'cod': d['cod'], 'part': d[y + 'part'], 'censo': d[y + 'censo']}
+        secs.update({k: d[y + k] for k in ks})
+        idx = [i for i, c in enumerate(lig['cod']) if c[:2] == prov]
+        mun = {lig['cod'][i]: [lig[y + 'part'][i]] + [lig[y + k][i] for k in ks] for i in idx}
+        (out / f'{prov}.json').write_text(_j.dumps({'partidos': ks, 'sec': secs, 'mun': mun}, separators=(',', ':')))
+        nsec += len(d['cod'])
+        con = set(c[:5] for c in d['cod'])
+        munis += [[lig['cod'][i], lig['nombre'][i], PROV_NOMBRE[prov], CIUDADES.get(lig['cod'][i], '')] for i in idx if lig['cod'][i] in con]
+    (out / 'municipios.json').write_text(_j.dumps({'municipios': munis, 'colores': colores, 'nombres': nombres}, ensure_ascii=False, separators=(',', ':')))
+    return len(munis), nsec
+
+
+TARJETA_JS = r"""
+(function(){
+const R=document.getElementById('tc'),inp=document.getElementById('tc-mun'),sel=document.getElementById('tc-sec'),out=document.getElementById('tc-res'),dl=document.getElementById('tc-lista');
+const base=R.dataset.datos,raiz=R.dataset.raiz;let M=null,P={},mun=null;
+const pc=v=>v==null?'—':(v*100).toFixed(1).replace('.',',')+' %';
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lab=c=>'Distrito '+c.slice(5,7)+' · Sección '+c.slice(7,10);
+async function lista(){if(M)return M;M=await (await fetch(base+'municipios.json')).json();
+  dl.innerHTML=M.municipios.map(m=>'<option value="'+esc(m[1]+' ('+m[2]+')')+'">').join('');return M;}
+async function prov(p){if(!P[p])P[p]=await (await fetch(base+p+'.json')).json();return P[p];}
+inp.addEventListener('focus',lista,{once:true});
+async function eligeMun(cod,sec){await lista();mun=M.municipios.find(m=>m[0]===cod);if(!mun)return;
+  inp.value=mun[1]+' ('+mun[2]+')';const d=await prov(cod.slice(0,2));
+  const cs=d.sec.cod.map((c,i)=>[c,i]).filter(x=>x[0].slice(0,5)===cod);
+  sel.innerHTML='<option value="">Elige tu distrito y sección</option>'+cs.map(x=>'<option value="'+x[1]+'">'+lab(x[0])+'</option>').join('');
+  sel.disabled=false;out.innerHTML='';
+  const k=sec!=null?cs.find(x=>x[0]===sec):(cs.length===1?cs[0]:null);
+  if(k){sel.value=k[1];muestra(+k[1]);}else if(sec){out.innerHTML='<p class="tc-aviso">No encuentro la sección '+esc(lab(sec).toLowerCase())+' en '+esc(mun[1])+'. Puede ser nueva o haber cambiado desde 2023: busca tu calle en el <a href="'+raiz+'?q='+encodeURIComponent(mun[1])+'#mapa">mapa</a>.</p>';}}
+inp.addEventListener('change',async()=>{await lista();const m=M.municipios.find(m=>(m[1]+' ('+m[2]+')')===inp.value)||M.municipios.find(m=>m[1].toLowerCase()===inp.value.trim().toLowerCase());
+  if(m)eligeMun(m[0]);else{sel.disabled=true;sel.innerHTML='<option>Primero, tu municipio</option>';out.innerHTML='<p class="tc-aviso">Elige tu municipio de la lista.</p>';}});
+sel.addEventListener('change',()=>{if(sel.value!=='')muestra(+sel.value);});
+function muestra(i){const d=P[mun[0].slice(0,2)],c=d.sec.cod[i],mm=d.mun[mun[0]]||[];
+  history.replaceState(null,'','#s='+c);
+  const fs=d.partidos.map((k,j)=>[k,d.sec[k][i],mm[j+1]]).filter(x=>x[1]>=0.005||x[2]>=0.005).sort((a,b)=>b[1]-a[1]);
+  const max=Math.max(...fs.map(x=>Math.max(x[1]||0,x[2]||0)),0.01);
+  const ot=fs.find(x=>x[0]==='OTROS'),pa=fs.filter(x=>x[0]!=='OTROS');const g=pa.length&&pa[0][1]>0&&!(ot&&ot[1]>=pa[0][1])?M.nombres[pa[0][0]]:null;
+  let h='<h3>'+esc(lab(c))+' de '+esc(mun[1])+'</h3>';
+  if(d.sec.censo[i]==null||d.sec.part[i]==null){out.innerHTML=h+'<p class="tc-aviso">Esta sección no tiene resultado propio de 2023.</p>';return;}
+  h+='<p>En las generales de 2023 votó el <b>'+pc(d.sec.part[i])+'</b> de sus '+d.sec.censo[i].toLocaleString('es-ES')+' electores (en todo '+esc(mun[1])+', el '+pc(mm[0])+')'+(g?', y el partido más votado fue <b>'+esc(g)+'</b>':'')+'.</p>';
+  h+='<div class="tc-bar" role="list">'+fs.map(x=>'<div role="listitem" class="tc-f"><span class="tc-n">'+esc(M.nombres[x[0]]||x[0])+'</span><span class="tc-b"><i style="width:'+(x[1]/max*100).toFixed(1)+'%;background:'+(M.colores[x[0]]||'#999')+'"></i></span><b>'+pc(x[1])+'</b><small>'+pc(x[2])+'</small></div>').join('')+'</div>';
+  h+='<p class="leyenda">Porcentaje del voto válido. A la derecha, en gris, el de todo '+esc(mun[1])+'. «Otros» suma el resto de candidaturas. Cada sección vota en sus propias mesas: el resultado es el del conjunto de las mesas de la sección.</p>';
+  h+='<p><a class="vermapa" href="'+raiz+'?m='+mun[0]+'">Ver '+esc(mun[1])+' en el mapa, calle a calle</a>'+(mun[3]?' · <a href="'+raiz+mun[3]+'">Ficha de '+esc(mun[1])+'</a>':'')+'</p>';
+  out.innerHTML=h;}
+const s=(location.hash.match(/s=(\d{10})/)||[])[1];if(s)eligeMun(s.slice(0,5),s);
+})();
+"""
+
+TARJETA_CSS = ('.tc{border:1px solid var(--rule);border-radius:8px;padding:.8rem 1rem 1rem;margin:1.2rem 0 1.6rem}'
+               '.tc label{display:block;font:600 15px var(--sans);margin:.5rem 0 .3rem}'
+               '.tc input,.tc select{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:.6rem .7rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg)}'
+               '.tc h3{margin:1rem 0 .3rem}.tc-aviso{color:var(--muted)}'
+               '.tc-f{display:grid;grid-template-columns:7.5rem 1fr 3.6rem 3.4rem;gap:.5rem;align-items:center;font:14px var(--sans);margin:.25rem 0}'
+               '.tc-b{background:var(--rule);height:.8rem;border-radius:3px;overflow:hidden}.tc-b i{display:block;height:100%}'
+               '.tc-f b{text-align:right}.tc-f small{text-align:right;color:var(--muted)}'
+               '@media (max-width:420px){.tc-f{grid-template-columns:5.6rem 1fr 3.4rem 3.2rem;font-size:13px}}')
+
+
+def tema_tarjeta():
+    """«Tarjeta censal del 29N»: cuándo llega, qué trae y qué hacer, con un buscador que muestra cómo votó en 2023 la sección de la tarjeta."""
+    ruta = TARJETA_RUTA
+    nmun, nsec = datos_tarjeta()
+    titulo = 'Tarjeta censal 29N: cuándo llega, qué trae y cómo votó tu sección'
+    desc = ('La tarjeta censal de las generales del 29 de noviembre llega del 2 al 10 de noviembre con tu colegio, tu sección y tu mesa. '
+            'Qué hacer si no te llega, si hace falta para votar y un buscador para ver cómo votó tu sección en 2023.')
+    qs = [('¿Cuándo llega la tarjeta censal del 29N?',
+           f'La Oficina del Censo Electoral la envía del 2 al 10 de noviembre. Si después cambia tu colegio o tu mesa, lo comunica del 10 al 23 de noviembre (<a href="{INE_PLAZOS}">INE</a>).'),
+          ('¿Hace falta la tarjeta censal para votar?',
+           f'No. Sirve para saber dónde votas. Para votar hay que llevar el DNI, el pasaporte o el permiso de conducir, con fotografía y en original (<a href="{LOREG}">artículo 85 de la LOREG</a>).'),
+          ('¿Qué hago si no me llega la tarjeta censal?',
+           f'Puedes votar igual. Tu colegio y tu mesa se consultan en la <a href="{INE_SEDE}">sede electrónica del INE</a>, con la provincia, el municipio y la primera letra del primer apellido o con Cl@ve, '
+           f'o en el teléfono gratuito de la Oficina del Censo Electoral, {TEL_CENSO}.'),
+          ('¿Puedo ver qué se votó en mi mesa?',
+           'Lo más cerca que se puede llegar es tu sección censal, el trozo de barrio que vota en tus mismas mesas. Elige tu municipio y la sección de tu tarjeta en el buscador de esta página y verás su resultado de las generales de 2023. '
+           'El voto de cada persona es secreto.')]
+    faq_html, faq_ld = faq(qs)
+    ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Tarjeta censal 29N')]
+    raiz = RAIZ_REL
+    h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Guía práctica · 29 de noviembre de 2026</p><h1 data-miga="Tarjeta censal 29N">La tarjeta censal del 29N y cómo votó tu sección</h1>')
+    h.append('<p class="subtitulo">Cuándo llega, qué trae, qué hacer si no te llega y qué se votó en 2023 en la sección que aparece en ella</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}La Oficina del Censo Electoral envía del 2 al 10 de noviembre la tarjeta censal de las generales del 29N: dice en qué colegio, sección y mesa vota cada elector. '
+             'No hace falta para votar. Con la sección que trae, aquí puedes ver cómo votaron en 2023 tus vecinos de sección.</p>')
+    h.append(f'<style>{TARJETA_CSS}</style>'
+             f'<section class="tc" id="tc" aria-labelledby="tc-h" data-datos="datos/" data-raiz="{raiz}"><h2 id="tc-h" style="margin-top:.3rem">Cómo votó tu sección</h2>'
+             '<p>Busca en tu tarjeta censal, o en la consulta del INE, tu distrito y tu sección.</p>'
+             '<label for="tc-mun">1. Tu municipio</label><input id="tc-mun" list="tc-lista" autocomplete="off" placeholder="Escribe y elige de la lista"><datalist id="tc-lista"></datalist>'
+             '<label for="tc-sec">2. Tu distrito y tu sección</label><select id="tc-sec" disabled><option>Primero, tu municipio</option></select>'
+             '<div id="tc-res" aria-live="polite"></div>'
+             f'<noscript><p>El buscador necesita JavaScript. También puedes buscar tu calle en el <a href="{raiz}">mapa</a>.</p></noscript></section>'
+             f'<script>{TARJETA_JS}</script>')
+    h.append(f'<p class="leyenda">{num(nsec)} secciones censales de {num(nmun)} municipios, con los resultados por mesa del Ministerio del Interior de las generales de 2023 agregados por sección. '
+             'El INE revisa las secciones cada año: si la tuya es nueva o ha cambiado de número desde 2023, puede no aparecer o no coincidir del todo. '
+             f'En ese caso, busca tu calle en <a href="{raiz}elecciones/que-voto-tu-calle/">Qué votó tu calle</a>.</p>')
+    h.append('<h2 id="llega">Cuándo llega y qué trae</h2>'
+             + p_('Dato', 'La Oficina del Censo Electoral manda a cada elector, del 2 al 10 de noviembre, la tarjeta censal con su colegio, su sección, su mesa y la dirección del colegio. '
+                  f'Si alguno de esos datos cambia después, lo comunica del 10 al 23 de noviembre (<a href="{INE_PLAZOS}">calendario del INE</a>).'))
+    h.append('<h2 id="sin-tarjeta">Si no te llega o la pierdes</h2>'
+             + p_('Dato', f'La tarjeta no es obligatoria: se vota con el DNI, el pasaporte o el permiso de conducir, con fotografía y en original (<a href="{LOREG}">artículo 85 de la LOREG</a>). '
+                  f'El colegio y la mesa se consultan en la <a href="{INE_SEDE}">sede electrónica del INE</a>, con la provincia, el municipio y la primera letra del primer apellido o con Cl@ve, '
+                  f'o en el teléfono gratuito {TEL_CENSO}. Y el mismo domingo cada colegio tiene un callejero con la mesa que corresponde a cada calle (<a href="{PUBLICO_MESA}">Público</a>).'))
+    h.append('<h2 id="y-ahora">Y después</h2>'
+             f'<p>Qué llevar, el horario y el voto por correo, en <a href="../votar-29n/">dónde y cómo votar el 29N</a>. Si te ha llegado también la notificación de mesa, en <a href="../mesa-electoral-29n/">la mesa electoral del 29N</a>. '
+             f'Y cuántos electores hay en tu municipio, en <a href="../censo-electoral-2026/">el censo electoral de 2026</a>.</p>')
+    h.append(faq_html)
+    h.append('<h2>Fuentes</h2><ul>'
+             f'<li><a href="{INE_PLAZOS}">INE, Oficina del Censo Electoral: plazos de interés para los electores, generales del 29 de noviembre de 2026</a></li>'
+             f'<li><a href="{LOREG}">Ley Orgánica 5/1985, del Régimen Electoral General (LOREG)</a>, artículo 85</li>'
+             '<li>Ministerio del Interior (Infoelectoral): resultados por mesa de las generales de 2023, agregados por sección censal</li>'
+             f'<li><a href="{PUBLICO_MESA}">Público: dónde tengo que votar en las elecciones generales del 29N</a> (14 de octubre de 2026)</li></ul>')
+    h.append(bloque_metodo())
     h.append(PIE)
     return ruta, ''.join(h)
 
@@ -1648,6 +1793,7 @@ def indice(resumen):
              '<li><a href="mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a>: qué es una sección, qué datos tiene cada una y cómo consultarlas</li>'
              '<li><a href="voto-y-renta-por-barrios/">Voto y renta por barrios</a>: participación y voto de cada partido según la renta de la sección</li>'
              '<li><a href="votar-29n/">Dónde y cómo votar el 29N</a>: tu colegio electoral, qué llevar, el voto por correo y los plazos</li>'
+             '<li><a href="tarjeta-censal-29n/">Tarjeta censal del 29N</a>: cuándo llega, qué hacer si no te llega y cómo votó tu sección</li>'
              '<li><a href="mesa-electoral-29n/">Mesa electoral del 29N</a>: el sorteo, cómo saber si te ha tocado, excusas, horario y dieta</li>'
              '<li><a href="voto-por-correo-29n/">Voto por correo para el 29N</a>: cómo pedirlo y hasta cuándo enviarlo</li>'
              '<li><a href="como-se-vota/">Cómo se vota</a>: el precio de un escaño por provincia y los votos que no eligen a nadie</li>'
@@ -2776,7 +2922,7 @@ def main():
         ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_mesa(), tema_correo(), tema_calle(), tema_resultados(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_tarjeta(), tema_mesa(), tema_correo(), tema_calle(), tema_resultados(resumen)]
     pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
     for ruta, html in pags + redirecciones():
