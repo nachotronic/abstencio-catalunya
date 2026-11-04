@@ -40,7 +40,8 @@
      "vote",
      [
       "te avisan si cambia algo"
-     ]
+     ],
+     true
     ]
    ]
   },
@@ -66,7 +67,8 @@
      [
       "teléfono gratuito del censo,",
       "o la sede electrónica del INE"
-     ]
+     ],
+     true
     ]
    ]
   },
@@ -84,7 +86,8 @@
      [
       "secciones censales con su",
       "resultado de 2023"
-     ]
+     ],
+     true
     ]
    ]
   },

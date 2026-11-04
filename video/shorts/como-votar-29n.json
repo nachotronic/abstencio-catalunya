@@ -31,15 +31,18 @@
      "vote",
      [
       "el domingo 29 de noviembre"
-     ]
+     ],
+     true
     ],
     [
-     "4 h",
+     "Hasta 4 h",
      "vote",
      [
-      "libres y pagadas si trabajas",
-      "ese domingo"
-     ]
+      "libres y pagadas si trabajas el",
+      "domingo, según cuánto coincida tu",
+      "jornada con el horario de votación"
+     ],
+     true
     ]
    ]
   },
@@ -81,7 +84,8 @@
      [
       "llega la tarjeta censal con",
       "tu colegio y tu mesa"
-     ]
+     ],
+     true
     ],
     [
      "900 343 232",
@@ -89,7 +93,8 @@
      [
       "teléfono gratuito del censo,",
       "o consulta en la sede del INE"
-     ]
+     ],
+     true
     ]
    ]
   },
