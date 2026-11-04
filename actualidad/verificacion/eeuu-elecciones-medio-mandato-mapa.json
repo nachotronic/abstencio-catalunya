@@ -1,9 +1,12 @@
 {
   "pieza": "eeuu-elecciones-medio-mandato-mapa",
   "cifras": [
-    {"texto": "Associated Press y NBC News coinciden en cuatro: tres para los demócratas", "cifra": "cuatro", "calculo": "DIR['D'] + DIR['R'] + DIR['O']"},
-    {"texto": "coinciden en cuatro: tres para los demócratas y uno para los republicanos", "cifra": "tres", "calculo": "DIR['D']"},
-    {"texto": "Morgan McGarvey retiene el 3.er distrito, el de Louisville", "cifra": "3", "calculo": "int(DIR['dist']['2103'][0].split('-')[1]) if DIR['dist']['2103'][1] == 'D' else -1"}
+    {"texto": "Associated Press y NBC News coinciden ya en 18 escaños", "cifra": "18", "calculo": "DIR['D'] + DIR['R'] + DIR['O']"},
+    {"texto": "coinciden ya en 18 escaños: 12 para los demócratas y 6 para los republicanos", "cifra": "12", "calculo": "DIR['D']"},
+    {"texto": "12 para los demócratas y 6 para los republicanos", "cifra": "6", "calculo": "DIR['R']"},
+    {"texto": "Los demócratas se llevan los cuatro distritos de Georgia decididos hasta ahora", "cifra": "cuatro", "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('GA-') and v[1] == 'D']) if not [v for v in DIR['dist'].values() if v[0].startswith('GA-') and v[1] == 'R'] else -1"},
+    {"texto": "Florida, que estrena mapa, va de momento cuatro a cuatro", "cifra": "cuatro", "calculo": "len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D']) if len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'D']) == len([v for v in DIR['dist'].values() if v[0].startswith('FL-') and v[1] == 'R']) else -1"},
+    {"texto": "Hay otros 13 escaños que de momento solo da una de las dos fuentes", "cifra": "13", "calculo": "len(DIR['solo_ap']) + len(DIR['solo_nbc'])"}
   ],
   "externas": [],
   "ignorar": [],
