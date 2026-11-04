@@ -12,7 +12,7 @@ jobs:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           python3 - <<'PY'
-          import json, os, urllib.request, collections
+          import json, os, urllib.request, urllib.error, collections
           tok = os.environ.get('CF_TOKEN', '')
           partes = tok.split()   # el secreto puede llevar saltos de línea o «Bearer» delante
           tok = next((p for p in partes if p.startswith('cfut_')), partes[-1] if partes else '')
@@ -24,7 +24,10 @@ jobs:
                       'variables': {'a': 'dee996483598974c337d0777f5ef047c', 's': '532b57a6348a4babba29020993949dd7', 'f': f, 't': t}}
               r = urllib.request.Request('https://api.cloudflare.com/client/v4/graphql', json.dumps(body).encode(),
                                          {'Authorization': 'Bearer ' + tok, 'Content-Type': 'application/json'})
-              d = json.load(urllib.request.urlopen(r))
+              try:
+                  d = json.load(urllib.request.urlopen(r))
+              except urllib.error.HTTPError as e:
+                  raise SystemExit('HTTP %s: %s' % (e.code, e.read().decode()[:600]))
               if d.get('errors'):
                   raise SystemExit(json.dumps(d['errors']))
               return d['data']['viewer']['accounts'][0]['rumPageloadEventsAdaptiveGroups']
