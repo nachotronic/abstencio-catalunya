@@ -154,5 +154,9 @@
  "participacion-renta-municipios-madrid-29n": {
   "pie": "Cuanta más renta, más participación, escalón a escalón.",
   "fuente": "Ministerio del Interior (resultados por mesa) e INE, Atlas de Distribución de Renta de los Hogares 2023 (renta neta por unidad de consumo)"
+ },
+ "participacion-navarra-municipios-29n": {
+  "pie": "Pamplona y su alrededor.",
+  "fuente": "Ministerio del Interior"
  }
 }

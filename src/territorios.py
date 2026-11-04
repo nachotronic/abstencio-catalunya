@@ -436,7 +436,7 @@ ESPANA = {'@type': 'Country', 'name': 'España'}
 ALIAS_PROV = {'48': 'Vizcaya', '20': 'Guipúzcoa'}
 ALIAS_CCAA = {'pais-vasco': 'Euskadi'}
 # Provincias cuyas páginas de municipio enlazan las piezas de Actualidad de la provincia (cuántas, las más recientes primero).
-PIEZAS_EN_MUNICIPIOS = {'28': 8}
+PIEZAS_EN_MUNICIPIOS = {'28': 8, '31': 8}
 
 
 _VECINOS = {}
@@ -721,6 +721,7 @@ def pagina_ciudad(cod):
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
     b_censo, q_censo = bloque_censo(nombre, cod)
     b_mesas, q_mesas = bloque_mesas(nombre, cod)
+    q_mesas = q_mesas + preguntas_mesa_lugar(nombre)
     titulo = (f'Elecciones 29N 2026 en {nombre}: {"censo electoral y " if q_censo else ""}'
               + ('cómo votó cada barrio' if b_sec else 'resultados desde 1977'))
     desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
@@ -747,6 +748,7 @@ def pagina_ciudad(cod):
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
     h.append(bloque_donde_votar(nombre, cod))
+    h.append(bloque_te_toca_mesa(nombre, cod))
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
@@ -755,7 +757,6 @@ def pagina_ciudad(cod):
     h.append(enlace_listas([p], raiz))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
-    h.append(b_mesas)
     h.append(b_sec)
     h.append(bloque_barrios(cod, nombre, BARRIOS.get(cod, [])))
     h.append(b_renta)
@@ -886,7 +887,13 @@ def pagina_barrio(cod, b, todos):
     ld['dateModified'] = max(ACTUALIZADO, BARRIOS_PUBLICADO)
     pasos = [(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p]), (raiz + CIUDADES[cod], ciudad)]
     ld['primaryImageOfPage'] = BASE + 'img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0]
-    h = [cabeza(titulo, desc, ruta, ld, nivel, nombre, imagen='img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0])]   # las migas de pan en JSON-LD las añade esquema.py
+    # en las preguntas y recuadros del 29N el barrio lleva su distrito, que es lo que se busca: «mesa electoral Chamberí»
+    lugar_b = f'{nombre} ({b["distrito"]})' if b['distrito'] and slug(b['distrito']) != slug(nombre) else nombre
+    faq_b, faq_b_ld = faq([(f'¿Dónde voto en {lugar_b} el 29N?',
+                            f'En el colegio y la mesa que indica la tarjeta censal, que la Oficina del Censo Electoral envía del 2 al 10 de noviembre (<a href="{INE_PLAZOS}">INE</a>). '
+                            f'También se puede consultar en la <a href="{INE_SEDE}">sede electrónica del INE</a> o en el teléfono gratuito {TEL_CENSO}.')]
+                          + preguntas_mesa_lugar(lugar_b))
+    h = [cabeza(titulo, desc, ruta, [ld, faq_b_ld], nivel, nombre, imagen='img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0])]   # las migas de pan en JSON-LD las añade esquema.py
     h.append(migas_html(pasos))
     antetitulo = (f'Pedanía de {ciudad}' if zona and zona[1] == 'pedanía' else
                   f'{tipo_b.capitalize()} de {ciudad}' + (" · " + zona[1] if zona else dist.replace(", en el distrito de", " · distrito")))
@@ -906,6 +913,9 @@ def pagina_barrio(cod, b, todos):
     lead += (f': es el {ordinal(p_part)} de los {num(n)} {tipos} de la ciudad con más participación.' if p_part and n >= 5 else '.')
     h.append(f'<p class="resumen">{tipo("Dato")}{lead}</p>')
     h.append(f'<p class="calle">¿Y en tu calle? <a href="{raiz}elecciones/que-voto-tu-calle/">Busca tu dirección</a> y mira qué votó tu sección censal en cada elección desde 2004.</p>')
+    cif_b = f'{num(r["censo"])} electores en las generales de 2023, en {num(len(cods))} {"sección censal" if len(cods) == 1 else "secciones censales"}'
+    h.append(bloque_donde_votar(lugar_b, cod, cifras_barrio=cif_b))
+    h.append(bloque_te_toca_mesa(lugar_b, cod, cifras_barrio=cif_b))
     if g != gc:
         h.append(p_('Dato', f'En el conjunto de la ciudad ganó {art_partido(gc, ccaa)} ({pct(rc["pct"][gc])}); aquí, {nom_g} le saca a {art_partido(gc, ccaa) if gc != seg else "ese partido"} '
                     f'{puntos(r["pct"][g] - r["pct"][gc])} puntos.'))
@@ -1019,6 +1029,7 @@ def pagina_barrio(cod, b, todos):
              f'<li><a href="{raiz}{CIUDADES[cod]}">Elecciones en {escape(ciudad)}, desde 1977</a></li>'
              f'<li><a href="{raiz}elecciones/participacion-electoral-por-barrio/">Participación electoral por barrio en toda España</a></li>'
              f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li></ul>')
+    h.append(faq_b)
     h.append(bloque_metodo_barrio(tipo_b, cod))
     h.append(PIE)
     return ruta, ''.join(h)
@@ -1291,16 +1302,16 @@ DONDE_CSS = ('.dondevotar{border:1px solid var(--rule);border-left:4px solid var
              '.dondevotar h2{margin-top:.6rem}.dondevotar ul{padding-left:1.1rem;margin:.4rem 0}.dondevotar li{margin:.35rem 0}')
 
 
-def bloque_donde_votar(nombre, cod):
+def bloque_donde_votar(nombre, cod, cifras_barrio=None):
     """Recuadro «Dónde votar en <municipio> el 29N», arriba de la ficha: cómo saber tu colegio y tu mesa, horario, documento,
     voto por correo y las cifras del municipio (electores residentes del censo de consulta y mesas de 2023). Solo plazos oficiales."""
     raiz = RAIZ_REL
     n = escape(nombre)
-    c = censo_29n(cod)
-    cifras = []
+    c = None if cifras_barrio else censo_29n(cod)
+    cifras = [cifras_barrio] if cifras_barrio else []
     if c:
         cifras.append(f'{num(c[0])} electores que viven en el municipio, según el censo de consulta del INE')
-    if cod in MESAS.index:
+    if cod in MESAS.index and not cifras_barrio:
         m = MESAS.loc[cod]
         mesas, secs = int(m.mesas), int(m.secciones)
         cifras.append(f'{num(mesas)} {"mesa" if mesas == 1 else "mesas"} en las generales de 2023'
@@ -1319,6 +1330,45 @@ def bloque_donde_votar(nombre, cod):
               'censo de consulta del INE de 2026 y resultados por mesa de Interior de 2023.</p>'
             + f'<p><a href="{raiz}elecciones/votar-29n/">Guía completa para votar el 29N</a> · <a href="{raiz}elecciones/mesa-electoral-29n/">Si te ha tocado mesa</a> · '
               f'<a href="{raiz}elecciones/voto-por-correo-29n/">Voto por correo</a></p></section>')
+
+
+def preguntas_mesa_lugar(nombre):
+    """Preguntas frecuentes de la mesa con el nombre del municipio o del barrio («¿Cuánto se cobra por la mesa en Chamberí?»):
+    mismas respuestas y fuentes que la página de la mesa electoral."""
+    raiz = RAIZ_REL
+    return [(f'¿Cuánto se cobra por estar en una mesa electoral en {nombre}?',
+             f'Lo mismo que en toda España: 75 euros para el presidente y los vocales, cinco más que en 2023, según la Orden INT/650/2026 (<a href="{CLM24_MESAS}">CLM24</a>, <a href="{UH_MESA}">Última Hora</a>). '
+             f'Además, permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes (<a href="{LEGALITAS_29N}">Legálitas</a>).'),
+            (f'¿Qué excusas valen para no ir a la mesa en {nombre}?',
+             'Las mismas en todas partes. Siempre se aceptan, si se acreditan, tener entre 65 y 70 años, una discapacidad declarada, estar de baja médica, estar embarazada de seis meses o más o de permiso por nacimiento, '
+             'cuidar de un lactante, de menores de 12 años o de un familiar dependiente, o haber estado en una mesa al menos tres veces en los últimos diez años. '
+             f'Otras las valora la Junta Electoral de Zona caso a caso (<a href="{JEC_EXCUSAS}">Instrucción 6/2011 de la Junta Electoral Central</a>). '
+             f'Hay siete días desde la notificación para alegarlas; todo, en <a href="{raiz}elecciones/mesa-electoral-29n/#excusas">la mesa electoral del 29N</a>.')]
+
+
+def bloque_te_toca_mesa(nombre, cod=None, cifras_barrio=None):
+    """Recuadro «¿Te ha tocado mesa en <lugar>?», para quien acaba de recibir la notificación: plazos para alegar, renuncia de los mayores
+    de 65, requisitos, hora, dieta, permisos y sanción, con la LOREG y las fuentes que ya cita la página de la mesa electoral."""
+    raiz = RAIZ_REL
+    n = escape(nombre)
+    li = ['<li><b>La notificación</b> llega en los tres días siguientes al sorteo, que los ayuntamientos hicieron entre el 31 de octubre y el 4 de noviembre. '
+          f'Desde que la recibes tienes <b>siete días</b> para alegar una causa justificada ante la Junta Electoral de Zona, y los mayores de 65 pueden renunciar en ese plazo (<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>).</li>',
+          '<li><b>Excusas que se aceptan siempre</b>, si se acreditan: tener entre 65 y 70 años, una discapacidad declarada, estar de baja médica, estar embarazada de seis meses o más o de permiso por nacimiento, '
+          f'cuidar de un lactante, de menores de 12 años o de un familiar dependiente, o haber estado en una mesa al menos tres veces en diez años. Otras las valora la Junta caso a caso (<a href="{JEC_EXCUSAS}">Instrucción 6/2011 de la JEC</a>).</li>',
+          '<li><b>Quién puede tocar</b>: cualquier elector de la mesa que sepa leer y escribir y tenga menos de 70 años. El presidente debe tener el título de Bachiller o de FP de segundo grado.</li>',
+          f'<li><b>El domingo</b>: a las 8.00 en el colegio, una hora antes de abrir, para constituir la mesa; se vota de 9.00 a 20.00 y después se cuenta (<a href="{LOREG}">artículos 80 y 84</a>).</li>',
+          f'<li><b>Dieta y permisos</b>: 75 euros para presidentes y vocales (<a href="{CLM24_MESAS}">CLM24</a>), permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes (<a href="{LEGALITAS_29N}">Legálitas</a>).</li>',
+          f'<li><b>Si no vas</b>: es obligatorio salvo excusa aceptada; no presentarse puede castigarse con prisión de tres meses a un año o multa (<a href="{LOREG}">artículo 143</a>).</li>']
+    dato = ''
+    if cifras_barrio:
+        dato = f'<li><b>En {n}</b>: {cifras_barrio}.</li>'
+    elif cod is not None and cod in MESAS.index:
+        mesas = int(MESAS.loc[cod].mesas)
+        dato = (f'<li><b>En {n}</b>: {num(mesas)} {"mesa" if mesas == 1 else "mesas"} en las generales de 2023, '
+                f'{"nueve personas designadas" if mesas == 1 else f"{num(9 * mesas)} vecinos designados"} entre titulares y suplentes.</li>')
+    return (f'<style>{DONDE_CSS}</style><section class="dondevotar" aria-labelledby="te-toca-mesa"><h2 id="te-toca-mesa">¿Te ha tocado mesa en {n}?</h2>'
+            + '<ul>' + ''.join(li) + dato + '</ul>'
+            + f'<p><a href="{raiz}elecciones/mesa-electoral-29n/">Todo sobre la mesa electoral del 29N</a>: excusas aceptadas, qué se hace en la mesa y cómo se cobra.</p></section>')
 
 
 def tema_votar():
@@ -1625,7 +1675,7 @@ def tema_mesa():
                   f'(<a href="{LEGALITAS_29N}">Legálitas</a>).'))
     top = MESAS.mesas.nlargest(15)
     nom = T.MUN.set_index('mun_code').municipio
-    enl = lambda c: f'<a href="../../{CIUDADES[c]}#mesas">{escape(nom[c])}</a>' if c in CIUDADES else escape(nom.get(c, c))
+    enl = lambda c: f'<a href="../../{CIUDADES[c]}#te-toca-mesa">{escape(nom[c])}</a>' if c in CIUDADES else escape(nom.get(c, c))
     h.append('<h2 id="municipios">Cuántas mesas hay en tu municipio</h2>'
              + p_('Dato', 'Cada ficha de municipio dice cuántas mesas tuvo en las generales de 2023 y cuántas personas se sortearon. Estos son los que más tuvieron:')
              + tabla('Municipios con más mesas electorales en las generales de 2023', ['Municipio', 'Mesas', 'Personas sorteadas (titulares y suplentes)'],

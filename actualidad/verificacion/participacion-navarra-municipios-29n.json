@@ -1,0 +1,282 @@
+{
+ "pieza": "participacion-navarra-municipios-29n",
+ "cifras": [
+  {
+   "texto": "Navarra donde EH Bildu pasa del 40 % votó el 64 %; donde",
+   "condicion": "len([m for m in D['MUN'].values() if m['bildu']>=40])==D['GRUPOS']['alto']['n']"
+  },
+  {
+   "texto": "Bildu pasa del 40 % votó el 64 %; donde no llega al",
+   "cifra": "64",
+   "calculo": "D['GRUPOS']['alto']['gen']"
+  },
+  {
+   "texto": "el 64 %; donde no llega al 15 %, el 71 %: el mapa",
+   "condicion": "len([m for m in D['MUN'].values() if m['bildu']<15])==D['GRUPOS']['bajo']['n']"
+  },
+  {
+   "texto": "donde no llega al 15 %, el 71 %: el mapa de la participación,",
+   "cifra": "71",
+   "calculo": "D['GRUPOS']['bajo']['gen']"
+  },
+  {
+   "texto": "Fontellas votó un 80,9 % y Olazti un 59,9 %.",
+   "cifra": "80,9",
+   "calculo": "D['MUN']['Fontellas']['part']"
+  },
+  {
+   "texto": "votó un 80,9 % y Olazti un 59,9 %. La renta apenas explica",
+   "cifra": "59,9",
+   "calculo": "D['MUN']['Olazti']['part']"
+  },
+  {
+   "texto": "bastante más. Pamplona votó el 70,2 %, y a su alrededor",
+   "cifra": "70,2",
+   "calculo": "D['MUN']['Pamplona']['part']"
+  },
+  {
+   "texto": "de 2023 votó en Navarra el 69,9 % de sus electores residentes,",
+   "cifra": "69,9",
+   "calculo": "D['NAV_PART']"
+  },
+  {
+   "texto": "en el conjunto de España (70,4 %). Pero dentro de Navarra",
+   "cifra": "70,4",
+   "calculo": "D['ES_PART']"
+  },
+  {
+   "texto": "dentro de Navarra hay más de veinte puntos de distancia",
+   "condicion": "max(m['part'] for m in D['MUN'].values())-min(m['part'] for m in D['MUN'].values())>20"
+  },
+  {
+   "texto": "entre pueblos. Entre los 86 municipios de 1.000",
+   "cifra": "86",
+   "calculo": "len(D['MUN'])"
+  },
+  {
+   "texto": "los 86 municipios de 1.000 habitantes o más, el que más",
+   "condicion": "all(m['pob']>=1000 for m in D['MUN'].values())"
+  },
+  {
+   "texto": "Fontellas, en la Ribera, con el 80,9 %, seguido de Monteagudo",
+   "cifra": "80,9",
+   "calculo": "D['MUN']['Fontellas']['part']"
+  },
+  {
+   "texto": "%, seguido de Monteagudo (79,3 %). El que menos, Olazti,",
+   "cifra": "79,3",
+   "calculo": "D['MUN']['Monteagudo']['part']"
+  },
+  {
+   "texto": "Olazti, en la Sakana, con el 59,9 %, por delante de Ultzama",
+   "cifra": "59,9",
+   "calculo": "D['MUN']['Olazti']['part']"
+  },
+  {
+   "texto": "%, por delante de Ultzama (61,5 %) e Irurtzun (61,6",
+   "cifra": "61,5",
+   "calculo": "D['MUN']['Ultzama']['part']"
+  },
+  {
+   "texto": "Ultzama (61,5 %) e Irurtzun (61,6 %).",
+   "cifra": "61,6",
+   "calculo": "D['MUN']['Irurtzun']['part']"
+  },
+  {
+   "texto": "su voto más alto. En los 7 municipios donde EH",
+   "cifra": "7",
+   "calculo": "D['GRUPOS']['alto']['n']"
+  },
+  {
+   "texto": "municipios donde EH Bildu pasó del 40 % votó el 64,3 %; en",
+   "condicion": "len([m for m in D['MUN'].values() if m['bildu']>=40])==D['GRUPOS']['alto']['n']"
+  },
+  {
+   "texto": "Bildu pasó del 40 % votó el 64,3 %; en los 47 donde no",
+   "cifra": "64,3",
+   "calculo": "D['GRUPOS']['alto']['gen']"
+  },
+  {
+   "texto": "% votó el 64,3 %; en los 47 donde no llegó al 15",
+   "cifra": "47",
+   "calculo": "D['GRUPOS']['bajo']['n']"
+  },
+  {
+   "texto": "los 47 donde no llegó al 15 %, el 71,1 %. La correlación",
+   "condicion": "len([m for m in D['MUN'].values() if m['bildu']<15])==D['GRUPOS']['bajo']['n']"
+  },
+  {
+   "texto": "donde no llegó al 15 %, el 71,1 %. La correlación entre",
+   "cifra": "71,1",
+   "calculo": "D['GRUPOS']['bajo']['gen']"
+  },
+  {
+   "texto": "y voto a EH Bildu en los 86 municipios es de -0,59.",
+   "cifra": "86",
+   "calculo": "len(D['MUN'])"
+  },
+  {
+   "texto": "los 86 municipios es de -0,59.",
+   "cifra": "0,59",
+   "calculo": "abs(D['CORR_B'])"
+  },
+  {
+   "texto": "mayo de 2023, esos mismos 7 municipios votaron el",
+   "cifra": "7",
+   "calculo": "D['GRUPOS']['alto']['n']"
+  },
+  {
+   "texto": "mismos 7 municipios votaron el 65,2 % y los 47 de menos",
+   "cifra": "65,2",
+   "calculo": "D['GRUPOS']['alto']['mun']"
+  },
+  {
+   "texto": "municipios votaron el 65,2 % y los 47 de menos voto a EH Bildu,",
+   "cifra": "47",
+   "calculo": "D['GRUPOS']['bajo']['n']"
+  },
+  {
+   "texto": "menos voto a EH Bildu, el 70,6 %. La distancia se estrecha",
+   "cifra": "70,6",
+   "calculo": "D['GRUPOS']['bajo']['mun']"
+  },
+  {
+   "texto": "distancia se estrecha algo, de 6,8 a 5,4 puntos, pero no",
+   "cifra": "6,8",
+   "calculo": "D['GRUPOS']['bajo']['gen']-D['GRUPOS']['alto']['gen']"
+  },
+  {
+   "texto": "se estrecha algo, de 6,8 a 5,4 puntos, pero no desaparece.",
+   "cifra": "5,4",
+   "calculo": "D['GRUPOS']['bajo']['mun']-D['GRUPOS']['alto']['mun']"
+  },
+  {
+   "texto": "y participación en estos 86 municipios es de -0,07,",
+   "cifra": "86",
+   "calculo": "len(D['MUN'])"
+  },
+  {
+   "texto": "estos 86 municipios es de -0,07, prácticamente nula.",
+   "cifra": "0,07",
+   "calculo": "abs(D['CORR_R'])"
+  },
+  {
+   "texto": "Pamplona votó el 70,2 %. A su alrededor, el",
+   "cifra": "70,2",
+   "calculo": "D['MUN']['Pamplona']['part']"
+  },
+  {
+   "texto": "el que más votó fue Cizur (75,7 %), seguido de Zizur",
+   "cifra": "75,7",
+   "calculo": "D['MUN']['Cizur']['part']"
+  },
+  {
+   "texto": "%), seguido de Zizur Mayor (73,2 %) y Aranguren (73,1",
+   "cifra": "73,2",
+   "calculo": "D['MUN']['Zizur Mayor']['part']"
+  },
+  {
+   "texto": "Mayor (73,2 %) y Aranguren (73,1 %). Valle de Egüés votó",
+   "cifra": "73,1",
+   "calculo": "D['MUN']['Aranguren']['part']"
+  },
+  {
+   "texto": "%). Valle de Egüés votó el 70,6 %, Huarte el 70,1 %,",
+   "cifra": "70,6",
+   "calculo": "D['MUN']['Valle de Egüés']['part']"
+  },
+  {
+   "texto": "votó el 70,6 %, Huarte el 70,1 %, Ansoáin el 69,3 %,",
+   "cifra": "70,1",
+   "calculo": "D['MUN']['Huarte']['part']"
+  },
+  {
+   "texto": "Huarte el 70,1 %, Ansoáin el 69,3 %, Noáin el 67,8 % y",
+   "cifra": "69,3",
+   "calculo": "D['MUN']['Ansoáin']['part']"
+  },
+  {
+   "texto": "Ansoáin el 69,3 %, Noáin el 67,8 % y Berrioplano el 67,5",
+   "cifra": "67,8",
+   "calculo": "D['MUN']['Noáin']['part']"
+  },
+  {
+   "texto": "el 67,8 % y Berrioplano el 67,5 %. El que menos, Berriozar,",
+   "cifra": "67,5",
+   "calculo": "D['MUN']['Berrioplano']['part']"
+  },
+  {
+   "texto": "menos, Berriozar, con el 63,7 %.",
+   "cifra": "63,7",
+   "calculo": "D['MUN']['Berriozar']['part']"
+  },
+  {
+   "texto": "la participación subió en 55 de los 86 municipios.",
+   "cifra": "55",
+   "calculo": "D['SUBEN']"
+  },
+  {
+   "texto": "participación subió en 55 de los 86 municipios. Alrededor",
+   "cifra": "86",
+   "calculo": "len(D['MUN'])"
+  },
+  {
+   "texto": "Pamplona fue al revés: bajó en 9 de los 14, entre ellos",
+   "cifra": "9",
+   "calculo": "sum(D['MUN'][n]['part']<D['MUN'][n]['part19'] for n in ['Pamplona', 'Valle de Egüés', 'Ansoáin', 'Huarte', 'Zizur Mayor', 'Noáin', 'Berrioplano', 'Aranguren', 'Barañáin', 'Villava', 'Burlada', 'Berriozar', 'Orkoien', 'Cizur'])"
+  },
+  {
+   "texto": "al revés: bajó en 9 de los 14, entre ellos Valle de",
+   "cifra": "14",
+   "calculo": "len(['Pamplona', 'Valle de Egüés', 'Ansoáin', 'Huarte', 'Zizur Mayor', 'Noáin', 'Berrioplano', 'Aranguren', 'Barañáin', 'Villava', 'Burlada', 'Berriozar', 'Orkoien', 'Cizur'])"
+  },
+  {
+   "texto": "Valle de Egüés, que pasó del 73,5 % al 70,6 %, y Aranguren,",
+   "cifra": "73,5",
+   "calculo": "D['MUN']['Valle de Egüés']['part19']"
+  },
+  {
+   "texto": "Egüés, que pasó del 73,5 % al 70,6 %, y Aranguren, del",
+   "cifra": "70,6",
+   "calculo": "D['MUN']['Valle de Egüés']['part']"
+  },
+  {
+   "texto": "70,6 %, y Aranguren, del 76,8 % al 73,1 %.",
+   "cifra": "76,8",
+   "calculo": "D['MUN']['Aranguren']['part19']"
+  },
+  {
+   "texto": "Aranguren, del 76,8 % al 73,1 %.",
+   "cifra": "73,1",
+   "calculo": "D['MUN']['Aranguren']['part']"
+  },
+  {
+   "texto": "municipios navarros de 1.000 habitantes o más",
+   "condicion": "all(m['pob']>=1000 for m in D['MUN'].values())"
+  },
+  {
+   "texto": "de su alrededor con 1.000 habitantes o más",
+   "condicion": "all(D['MUN'][n]['pob']>=1000 for n in ['Pamplona', 'Valle de Egüés', 'Ansoáin', 'Huarte', 'Zizur Mayor', 'Noáin', 'Berrioplano', 'Aranguren', 'Barañáin', 'Villava', 'Burlada', 'Berriozar', 'Orkoien', 'Cizur'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "Los diez que menos votaron están",
+   "motivo": "número de barras del gráfico (diez y diez), no un dato"
+  },
+  {
+   "texto": "con el mismo cálculo, es de 0,69 (quién no vota en Madrid).",
+   "motivo": "cifra de la pieza «Quién no vota en Madrid» (correlación renta-participación en los municipios de 1.000 habitantes o más), declarada y verificada en su propia declaración"
+  },
+  {
+   "texto": "Los diez que más votaron y los",
+   "motivo": "número de barras del gráfico (diez y diez), no un dato"
+  },
+  {
+   "texto": "diez que más votaron y los diez que menosParticipación",
+   "motivo": "número de barras del gráfico (diez y diez), no un dato"
+  }
+ ],
+ "permitir_espana": []
+}
