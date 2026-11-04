@@ -2,34 +2,104 @@
   "pieza": "eeuu-elecciones-medio-mandato-mapa",
   "cifras": [
     {
-      "texto": "dos fuentes coinciden en 218 escaños demócratas,",
-      "cifra": "218",
-      "calculo": "DIR['D']"
+      "texto": "Los demócratas ganan la Cámara con 222 escaños",
+      "cifra": "222",
+      "calculo": "DIR['D']",
+      "origen": "titular"
     },
     {
-      "texto": "Press y NBC News coinciden en 352 de los 435 escaños de",
-      "cifra": "352",
-      "calculo": "DIR['D']+DIR['R']"
+      "texto": "y arrebatan 16 a los republicanos",
+      "cifra": "16",
+      "calculo": "DIR['cambios_D'] if DIR['cambios_R']==0 else -1",
+      "origen": "titular"
     },
     {
-      "texto": "News coinciden en 352 de los 435 escaños de la Cámara",
+      "texto": "hora peninsular, hay 360 de los 435 escaños",
+      "cifra": "360",
+      "calculo": "DIR['D']+DIR['R']+DIR['O']",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "hay 360 de los 435 escaños de la Cámara",
+      "cifra": "435",
+      "calculo": "len(DIR['dist'])",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "decididos: 222 para los demócratas y 138",
+      "cifra": "222",
+      "calculo": "DIR['D']",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "222 para los demócratas y 138 para los republicanos. De los 75",
+      "cifra": "138",
+      "calculo": "DIR['R']",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "De los 75 por decidir, 12 son de California",
+      "cifra": "75",
+      "calculo": "DIR['pendientes']",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "por decidir, 12 son de California",
+      "cifra": "12",
+      "calculo": "len([w for w in DIR['dist'].values() if w[0][:2]=='CA' and not w[1]])",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "tienen la mayoría: 51 escaños, y 54 con",
+      "cifra": "51",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D' and CALL.get(x['estado'])=='ap')",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "51 escaños, y 54 con los pendientes",
+      "cifra": "54",
+      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')",
+      "origen": "entradilla"
+    },
+    {
+      "texto": "hora peninsular, hay 360 de los 435 escaños",
+      "cifra": "360",
+      "calculo": "DIR['D']+DIR['R']+DIR['O']"
+    },
+    {
+      "texto": "hay 360 de los 435 escaños de la Cámara",
       "cifra": "435",
       "calculo": "len(DIR['dist'])"
     },
     {
-      "texto": "Cámara de Representantes: 218 para los demócratas,",
-      "cifra": "218",
+      "texto": "decididos: 222 para los demócratas, cuatro",
+      "cifra": "222",
       "calculo": "DIR['D']"
     },
     {
-      "texto": "demócratas, justo la mayoría, y 134 para los republicanos.",
-      "cifra": "134",
+      "texto": "222 para los demócratas, cuatro más",
+      "cifra": "cuatro",
+      "calculo": "DIR['D']-218"
+    },
+    {
+      "texto": "cuatro más de los 218 de la mayoría, y 138 para",
+      "cifra": "218",
+      "calculo": "len(DIR['dist'])//2+1"
+    },
+    {
+      "texto": "de la mayoría, y 138 para los republicanos",
+      "cifra": "138",
       "calculo": "DIR['R']"
     },
     {
-      "texto": "los republicanos. Faltan 83.",
-      "cifra": "83",
+      "texto": "Faltan 75; 12 de ellos",
+      "cifra": "75",
       "calculo": "DIR['pendientes']"
+    },
+    {
+      "texto": "Faltan 75; 12 de ellos, en California",
+      "cifra": "12",
+      "calculo": "len([w for w in DIR['dist'].values() if w[0][:2]=='CA' and not w[1]])"
     },
     {
       "texto": "De momento, 16 distritos cambian de",
@@ -47,67 +117,7 @@
       "calculo": "sum(1 for v in DIR['dist'].values() if v[2] and v[1]=='D' and v[0].startswith('IA-'))"
     },
     {
-      "texto": "Los demócratas ganan la Cámara con 218 escaños",
-      "cifra": "218",
-      "calculo": "DIR['D']",
-      "origen": "titular"
-    },
-    {
-      "texto": "justo la mayoría, y arrebatan 16 a los republicanos",
-      "cifra": "16",
-      "calculo": "DIR['cambios_D'] if DIR['cambios_R']==0 else -1",
-      "origen": "titular"
-    },
-    {
-      "texto": "hora peninsular, en 352 de los 435 escaños",
-      "cifra": "352",
-      "calculo": "DIR['D']+DIR['R']+DIR['O']",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "en 352 de los 435 escaños de la Cámara",
-      "cifra": "435",
-      "calculo": "len(DIR['dist'])",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "de Representantes: 218 para los demócratas y 134",
-      "cifra": "218",
-      "calculo": "DIR['D']",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "218 para los demócratas y 134 para los republicanos. De los 83",
-      "cifra": "134",
-      "calculo": "DIR['R']",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "De los 83 por decidir, 15 son de California",
-      "cifra": "83",
-      "calculo": "DIR['pendientes']",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "15 son de California, Washington y Oregón",
-      "cifra": "15",
-      "calculo": "52+10+6-len([w for w in DIR['dist'].values() if w[0][:2] in ('CA','WA','OR') and w[1] in ('D','R','O')])",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "con Míchigan: 51 escaños, y 54 con",
-      "cifra": "51",
-      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D' and CALL.get(x['estado'])=='ap')",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "51 escaños, y 54 con las proyecciones",
-      "cifra": "54",
-      "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')",
-      "origen": "entradilla"
-    },
-    {
-      "texto": "Associated Press y NBC News dan 51 escaños a los demócratas",
+      "texto": "los demócratas tienen 51 escaños, contando",
       "cifra": "51",
       "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D' and CALL.get(x['estado'])=='ap')"
     },
@@ -117,14 +127,14 @@
       "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']"
     },
     {
-      "texto": "votan con ellos, y 42 a los republicanos",
-      "cifra": "42",
+      "texto": "votan con ellos, y los republicanos 44",
+      "cifra": "44",
       "calculo": "DIR['senado']['senate_nbc_bop']['bar']['rep']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='R')"
     },
     {
-      "texto": "proyecta otros tres para los demócratas",
+      "texto": "Otros tres escaños, en Carolina",
       "cifra": "tres",
-      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D' and CALL.get(x['estado'])=='nyt')"
+      "calculo": "sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D' and CALL.get(x['estado'])!='ap')"
     },
     {
       "texto": "con ellos sumarían 54",
@@ -132,12 +142,32 @@
       "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')"
     },
     {
-      "texto": "justo la mayoría, y 134 republicanos",
-      "cifra": "134",
+      "texto": "los demócratas tienen 222 escaños, cuatro",
+      "cifra": "222",
+      "calculo": "DIR['D']"
+    },
+    {
+      "texto": "222 escaños, cuatro más de los",
+      "cifra": "cuatro",
+      "calculo": "DIR['D']-218"
+    },
+    {
+      "texto": "cuatro más de los 218 de la mayoría, y los republicanos",
+      "cifra": "218",
+      "calculo": "len(DIR['dist'])//2+1"
+    },
+    {
+      "texto": "y los republicanos 138; faltan 75",
+      "cifra": "138",
       "calculo": "DIR['R']"
     },
     {
-      "texto": "los demócratas arrebatan 16 distritos a los republicanos",
+      "texto": "republicanos 138; faltan 75.",
+      "cifra": "75",
+      "calculo": "DIR['pendientes']"
+    },
+    {
+      "texto": "Los demócratas arrebatan 16 distritos a los republicanos",
       "cifra": "16",
       "calculo": "len(F3D) if DIR['cambios_R']==0 else -1"
     },
@@ -147,18 +177,18 @@
       "calculo": "len(DIR['senado']['governor'])"
     },
     {
-      "texto": "NBC News dan 19 a los demócratas",
-      "cifra": "19",
+      "texto": "Los demócratas ganan 21 y los republicanos",
+      "cifra": "21",
       "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado']=='D')"
     },
     {
-      "texto": "y 11 a los republicanos; faltan 6",
-      "cifra": "11",
+      "texto": "y los republicanos 12; faltan 3",
+      "cifra": "12",
       "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado']=='R')"
     },
     {
-      "texto": "a los republicanos; faltan 6.",
-      "cifra": "6",
+      "texto": "12; faltan 3, en Alaska",
+      "cifra": "3",
       "calculo": "sum(1 for x in DIR['senado']['governor'] if not x['confirmado'])"
     },
     {
@@ -167,7 +197,7 @@
       "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado']=='D' and x['cambio'])"
     },
     {
-      "texto": "Estos son los 16 distritos que Associated Press y NBC News dan a los demócratas",
+      "texto": "Estos son los 16 distritos que ganan los demócratas",
       "cifra": "16",
       "calculo": "len(F3D)",
       "_gen": "recorrido"
