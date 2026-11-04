@@ -3908,7 +3908,7 @@ PIEZAS += [
                   pie='Quién ganó en cada municipio de Bulgaria en la primera vuelta de las presidenciales.', fuente='CIK, resultados por colegio; contornos de Boyko Yurukov'),
     ),
     dict(
-        slug='nueva-zelanda-elecciones-mapa-circunscripciones', fecha='2026-11-03', actualizado='2026-11-03 09:25',
+        slug='nueva-zelanda-elecciones-mapa-circunscripciones', fecha='2026-11-03', actualizado='2026-11-04 07:33',
         titulo='El partido del primer ministro de Nueva Zelanda cae del 38% al 29,5% y llega casi empatado con los laboristas a las elecciones del sábado', serie='internacional',
         descripcion='Christopher Luxon gobierna desde 2023 con dos socios a su derecha. La última encuesta de 1News–Verian da al Partido Nacional el 29,5% y a los laboristas de Chris Hipkins el 28,8%, y deja a la coalición con 58 escaños, por debajo de los 61 de la mayoría. El mapa de las 71 circunscripciones muestra quién habría ganado cada una en 2023 con los límites nuevos.',
         compara='Las 71 circunscripciones de las elecciones generales de Nueva Zelanda del 7 de noviembre de 2026 (64 generales y 7 maoríes, con los límites de 2025), con el resultado de 2023 trasladado a esos límites, y la evolución del voto de partido desde 2023 en las 15 encuestas publicadas desde septiembre.',
@@ -3928,7 +3928,7 @@ PIEZAS += [
                  ('https://www.odt.co.nz/news/national/1-million-have-now-voted-ahead-of-election-day-fwrvh6ue', 'Otago Daily Times, más de un millón de votos anticipados (3-11-2026)'),
                  ('https://www.1news.co.nz/2026/05/11/kapa-kingi-splits-from-te-pati-maori-launches-new-party/', '1News, Kapa-Kingi deja Te Pāti Māori y funda un partido (11-5-2026)'),
                  ('https://www.scoop.co.nz/stories/PA2608/S00211.htm', 'Comunicado de Tākuta Ferris, candidato independiente en Te Tai Tonga (23-8-2026)'),
-                 ('https://www.1news.co.nz/2026/10/04/te-pati-maori-announces-one-person-party-list-for-2026-election/', '1News, Te Pāti Māori presenta una lista de una sola persona (4-10-2026)'),
+                 ('https://www.1news.co.nz/2026/10/09/tamaki-makaurau-meet-two-candidates-vying-for-the-smallest-maori-seat/', '1News, Tāmaki Makaurau: los candidatos del escaño maorí más pequeño, con la lista de un solo nombre de Te Pāti Māori (9-10-2026)'),
                  ('https://www.1news.co.nz/2026/01/25/key-dates-and-new-voting-rules-as-nzs-election-countdown-begins', '1News, fechas clave y nuevas reglas de voto (25-1-2026)'),
                  ('https://www.rnz.co.nz/news/politics/2310557/explainer-how-your-votes-are-counted-on-election-day', 'RNZ, cómo se cuentan los votos el día de la elección (3-11-2026)')],
         enlaces=[],
