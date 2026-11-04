@@ -169,8 +169,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <li>{LK("bildu-cinco-pueblos-lizartza", "Los cinco pueblos más de EH Bildu")}</li>
 <li>{LK("frontera-renta-pp-junts-pnv-29n", "La frontera de la renta: PP, Junts y PNV")}</li>
 </ul>
-<p data-tipo="contexto">Las páginas de comunidad y de provincia, con todos los datos de cada territorio: <a href="{BASE}elecciones/pais-vasco/">País Vasco (Euskadi)</a>, <a href="{BASE}elecciones/pais-vasco/bizkaia/">Bizkaia</a>, <a href="{BASE}elecciones/pais-vasco/gipuzkoa/">Gipuzkoa</a> y <a href="{BASE}elecciones/pais-vasco/alava/">Araba/Álava</a>.</p>
-{datos_js}'''
+<p data-tipo="contexto">Las páginas de comunidad y de provincia, con todos los datos de cada territorio: <a href="{BASE}elecciones/pais-vasco/">País Vasco (Euskadi)</a>, <a href="{BASE}elecciones/pais-vasco/bizkaia/">Bizkaia</a>, <a href="{BASE}elecciones/pais-vasco/gipuzkoa/">Gipuzkoa</a> y <a href="{BASE}elecciones/pais-vasco/alava/">Araba/Álava</a>.</p>'''
 
 preguntas = [
     ('¿Cuántos diputados elige el País Vasco el 29N?', f'{ESCT}: {MOD["48"]["total"]} Bizkaia, {MOD["20"]["total"]} Gipuzkoa y {MOD["01"]["total"]} Araba/Álava. Además, cada territorio elige cuatro senadores.'),
@@ -186,4 +185,4 @@ pieza('euskadi-29n-guia', 'El 29N en Euskadi: guía',
       f'Elecciones del 29N en Euskadi: {ESCT} escaños, {n(CT["total"])} electores y una Bizkaia en empate a tres',
       f'Qué se vota, quién encabeza las listas, qué dicen las encuestas y cómo votó cada municipio en 2023. Con la media de encuestas, '
       f'EH Bildu sacaría {EUS["EH Bildu"]} de los {ESCT} escaños vascos; Bizkaia, con {MOD["48"]["total"]}, está en el aire.',
-      '3 de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+      '3 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

@@ -180,12 +180,12 @@ def mapa_provincias(colores, titulos, etiqueta, opacidad=None):
             f'{marco}<g stroke="var(--bg)" stroke-width=".8" stroke-linejoin="round">{out}</g></svg>')
 
 
-def pieza(slug, titulo_corto, h1, dek, fecha_larga, cuerpo, preguntas, enlaces, foot):
+def pieza(slug, titulo_corto, h1, dek, fecha_larga, cuerpo, preguntas, enlaces, foot, scripts=''):
     faq = ('<h2>Preguntas frecuentes</h2>\n<div class="faq">'
            + ''.join(f'<h3>{esc(q)}</h3><p>{r}</p>' for q, r in preguntas) + '</div>\n')
     htmlp = (CABEZA.replace('{titulo}', esc(titulo_corto)) + '<main>\n<span class="draft">Borrador para revisión · no publicado</span>\n'
              f'<h1>{h1}</h1>\n<p class="dek">{dek}</p>\n<div class="byline">Nacho G. del Álamo · {fecha_larga}</div>\n'
-             + cuerpo + faq + f'<p>{enlaces}</p>' + f'<div class="foot">{foot}</div>\n</main>\n'
-             '<script>/* Gráficos en SVG estático: sin interacción */</script>\n')
+             + cuerpo + faq + f'<p>{enlaces}</p>' + f'<div class="foot">{foot}</div>\n</main>\n' + scripts
+             + '<script>/* Gráficos en SVG estático: sin interacción */</script>\n')
     (SRC / f'{slug}.html').write_text(htmlp, encoding='utf-8')
     print('escrito', slug, len(htmlp))
