@@ -18,7 +18,7 @@ for a,b in [('2026-10-08','2026-10-31'),('2026-11-01','2026-11-04')]:
 def cat(p):
     m=re.match(r'^/([^/]+)/',p or '/')
     return m.group(1) if m else p
-for d in ['2026-10-30','2026-11-01','2026-11-02','2026-11-03','2026-11-04']:
+for d in ['2026-11-03','2026-11-04']:
     rows=grp(d,d,['requestPath','refererHost'],5000)
     print('\n=== DIA',d)
     c=collections.Counter(); ref=collections.Counter(); pth=collections.Counter()
@@ -28,10 +28,17 @@ for d in ['2026-10-30','2026-11-01','2026-11-02','2026-11-03','2026-11-04']:
         if p.startswith('/municipio/') or p.startswith('/elecciones/'): k=p.split('/')[1]
         c[k]+=v; ref[r['dimensions']['refererHost'] or '(directo)']+=v; pth[p]+=v
     print('secciones',c.most_common(15)); print('referers',ref.most_common(12))
-    for p,v in pth.most_common(30): print('  ',v,p)
-for d in ['2026-11-02','2026-11-03','2026-11-04']:
+    for p,v in pth.most_common(45): print('  ',v,p)
+for d in ['2026-11-04']:
     print('\n=== HORAS',d)
     for r in sorted(grp(d,d,['datetimeHour']),key=lambda r:r['dimensions']['datetimeHour']): print(r['dimensions']['datetimeHour'],r['sum']['visits'])
+print('\n=== PROVINCIAS municipio hoy')
+import collections as C
+pv=C.Counter()
+for r in grp('2026-11-04','2026-11-04',['requestPath'],5000):
+    p=r['dimensions']['requestPath']
+    if p.startswith('/municipio/') and p.count('/')>=4: pv[p.split('/')[2]]+=r['sum']['visits']
+print(pv.most_common(15))
 print('\n=== DISPOSITIVO/PAIS 2-3 nov')
 print([(r['dimensions'],r['sum']['visits']) for r in grp('2026-11-02','2026-11-03',['deviceType'])])
 print([(r['dimensions'],r['sum']['visits']) for r in grp('2026-11-02','2026-11-03',['countryName'],10)])
