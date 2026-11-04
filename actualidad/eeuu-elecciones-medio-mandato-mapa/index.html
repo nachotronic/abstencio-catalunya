@@ -395,22 +395,22 @@ carga('https://unpkg.com/deck.gl@9.4.0/dist.min.js').then(()=>{
  const DATA=[];POLY.forEach((rs,i)=>rs.forEach(e=>{let x=e[0],y=e[1];const r=[[x/1e3,y/1e3]];for(let k=2;k<e.length;k+=2){x+=e[k];y+=e[k+1];r.push([x/1e3,y/1e3])}DATA.push({i,polygon:r})}));
  const alto=i=>FI.has(i)?FI.get(i)[3]*9000+15000:0;
  const cen={};F3D.forEach(f=>{const p=DATA.filter(d=>d.i===f[4]).map(d=>d.polygon).sort((a,b)=>b.length-a.length)[0];cen[f[4]]=p.reduce((a,q)=>[a[0]+q[0],a[1]+q[1]],[0,0]).map(v=>v/p.length)});
- let sel=new Set(),paso=-1;
+ let sel=new Set(),paso=-1,es=1,base=null;
  const n1=v=>v.toFixed(1).replace('.',',');
  const capas=()=>[
-  new deck.PolygonLayer({id:'cgs-dis',data:DATA,getPolygon:d=>d.polygon,extruded:true,filled:true,stroked:false,getFillColor:d=>FI.has(d.i)?(sel.has(d.i)?DEM:mix(DEM,.38)):tenue,getElevation:d=>alto(d.i),pickable:true,autoHighlight:true,highlightColor:[255,255,255,90],material:{ambient:.55,diffuse:.55,shininess:20,specularColor:[40,40,40]},updateTriggers:{getFillColor:[[...sel].join()]},transitions:reduce?{}:{getFillColor:{duration:500}}}),
+  new deck.PolygonLayer({id:'cgs-dis',data:DATA,getPolygon:d=>d.polygon,extruded:true,filled:true,stroked:false,getFillColor:d=>FI.has(d.i)?(sel.has(d.i)?DEM:mix(DEM,.38)):tenue,getElevation:d=>alto(d.i),elevationScale:es,pickable:true,autoHighlight:true,highlightColor:[255,255,255,90],material:{ambient:.55,diffuse:.55,shininess:20,specularColor:[40,40,40]},updateTriggers:{getFillColor:[[...sel].join()]},transitions:reduce?{}:{getFillColor:{duration:500},elevationScale:{duration:1200}}}),
   new deck.PathLayer({id:'cgs-bor',data:DATA.filter(d=>!FI.has(d.i)),getPath:d=>d.polygon,getColor:[...BG,220],getWidth:.5,widthUnits:'pixels'}),
-  new deck.TextLayer({id:'cgs-lab',data:[...sel].filter(i=>sel.size<=4||(box.clientWidth||600)>=600||FI.get(i)[3]>=10).map(i=>({t:FI.get(i)[0],p:[...cen[i],alto(i)+4000]})),getPosition:d=>d.p,getText:d=>d.t,getSize:14,fontWeight:700,fontFamily:'Barlow Semi Condensed, Arial Narrow, Arial, sans-serif',getColor:FG,outlineWidth:4,outlineColor:[...BG,235],fontSettings:{sdf:true},characterSet:'auto',getPixelOffset:[0,-10],parameters:{depthCompare:'always',depthWriteEnabled:false}})];
+  new deck.TextLayer({id:'cgs-lab',data:[...sel].filter(i=>sel.size<=4||(box.clientWidth||600)>=600||FI.get(i)[3]>=10).map(i=>({t:FI.get(i)[0],p:[...cen[i],alto(i)*es+4000]})),getPosition:d=>d.p,getText:d=>d.t,getSize:14,fontWeight:700,fontFamily:'Barlow Semi Condensed, Arial Narrow, Arial, sans-serif',getColor:FG,outlineWidth:4,outlineColor:[...BG,235],fontSettings:{sdf:true},characterSet:'auto',getPixelOffset:[0,-10],parameters:{depthCompare:'always',depthWriteEnabled:false}})];
  const tam=()=>({width:box.clientWidth||600,height:box.clientHeight||400});
  function vista(ids,k){const t=tam(),vp=new deck.WebMercatorViewport(t);let a=[180,90],b=[-180,-90];DATA.forEach(d=>{if(!ids.has(d.i))return;d.polygon.forEach(([x,y])=>{a=[Math.min(a[0],x),Math.min(a[1],y)];b=[Math.max(b[0],x),Math.max(b[1],y)]})});
-  const pad=Math.round(Math.min(t.width,t.height)*(ids.size>3?.06:.2));const v=vp.fitBounds([a,b],{padding:pad,maxZoom:8.2});
+  const pad=Math.round(Math.min(t.width,t.height)*(ids.size>3?.06:.2));const v=vp.fitBounds([a,b],{padding:pad,maxZoom:6.6});
   return {longitude:v.longitude,latitude:v.latitude-(ids.size>3?1.6:.25*Math.pow(2,7-v.zoom)),zoom:v.zoom-(ids.size>3?.1:.3),pitch:ids.size>3?48:55,bearing:[-8,-20,15,-12,20,0][k%6],maxPitch:70}}
  const dk=new deck.Deck({parent:box,initialViewState:vista(new Set(F3D.map(f=>f[4])),0),controller:{dragPan:false,dragRotate:false,scrollZoom:false,doubleClickZoom:false,touchZoom:false,touchRotate:false,keyboard:false},touchAction:'pan-y',useDevicePixels:Math.min(devicePixelRatio||1,2),layers:capas(),
   getTooltip:({object})=>{if(!object||!FI.has(object.i))return null;const f=FI.get(object.i);return {html:`<b>${f[0]}</b><br>Gana en 2026: ${f[1]}, por ${n1(f[5])} puntos (${Math.round(f[6])}% contado)<br>En 2024: ${f[2]}, republicano, por ${n1(f[3])} puntos`,style:{background:'var(--bg)',color:'var(--fg)',border:'1px solid var(--rule)',fontFamily:'var(--ui)',fontSize:'13px',padding:'6px 8px'}}}});
- function ir(k){if(k===paso)return;paso=k;sel=new Set(REC[k].map(l=>LI.get(l)));dk.setProps({initialViewState:{...vista(sel,k),transitionDuration:reduce?0:1600,transitionInterpolator:new deck.FlyToInterpolator({curve:1.4,speed:1.1})},layers:capas()})}
+ function ir(k){if(k===paso)return;paso=k;sel=new Set(REC[k].map(l=>LI.get(l)));const v=vista(sel,k);if(base===null)base=v.zoom;es=Math.min(1,Math.pow(2,(base-v.zoom)*.75));dk.setProps({initialViewState:{...v,transitionDuration:reduce?0:1600,transitionInterpolator:new deck.FlyToInterpolator({curve:1.4,speed:1.1})},layers:capas()})}
  ir(0);
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)ir(+e.target.dataset.i)}),{rootMargin:'-55% 0px -45% 0px'});pasos.forEach(p=>io.observe(p));
- addEventListener('resize',()=>{const k=paso;paso=-1;ir(k)});
+ addEventListener('resize',()=>{const k=paso;paso=-1;base=null;ir(0);if(k>0){paso=-1;ir(k)}});
  }catch(e){sinGL()}
 });
 })();/*congreso:fin*/
