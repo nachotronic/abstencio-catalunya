@@ -757,6 +757,7 @@ def pagina_ciudad(cod):
     h.append(enlace_listas([p], raiz))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
+    h.append(b_mesas)
     h.append(b_sec)
     h.append(bloque_barrios(cod, nombre, BARRIOS.get(cod, [])))
     h.append(b_renta)
@@ -1288,7 +1289,7 @@ def bloque_mesas(nombre, cod):
            f'Cada mesa la forman un presidente y dos vocales, y para cada uno se sortean dos suplentes: {"nueve personas" if mesas == 1 else f"{num(9 * mesas)} vecinos designados en total"}. '
            'El número de mesas del 29N puede variar ligeramente con los cambios del censo.')
     txt2 = (f'El sorteo se hace entre el 31 de octubre y el 4 de noviembre, entre los electores de cada mesa que saben leer y escribir y tienen menos de 70 años; '
-            f'el presidente debe tener el título de Bachiller o de FP de segundo grado. La designación se notifica en tres días, y hay siete para alegar una causa justificada '
+            f'el presidente, el título de Bachiller o de FP de segundo grado o, en su defecto, el de Graduado Escolar o equivalente (artículo 26.2). La designación se notifica en tres días, y hay siete para alegar una causa justificada '
             f'ante la Junta Electoral de Zona; los mayores de 65 pueden renunciar en ese plazo (<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>). '
             f'Presidentes y vocales cobran una dieta de 75 euros (<a href="{CLM24_MESAS}">CLM24</a>).')
     html_ = ('<h2 id="mesas">Mesas electorales para el 29N</h2>' + p_('Dato', txt) + p_('Dato', txt2)
@@ -1338,7 +1339,7 @@ def preguntas_mesa_lugar(nombre):
     raiz = RAIZ_REL
     return [(f'¿Cuánto se cobra por estar en una mesa electoral en {nombre}?',
              f'Lo mismo que en toda España: 75 euros para el presidente y los vocales, cinco más que en 2023, según la Orden INT/650/2026 (<a href="{CLM24_MESAS}">CLM24</a>, <a href="{UH_MESA}">Última Hora</a>). '
-             f'Además, permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes (<a href="{LEGALITAS_29N}">Legálitas</a>).'),
+             f'Además, permiso retribuido de jornada completa el domingo si para ti es día laborable y, en todo caso, cinco horas menos de trabajo el lunes (<a href="{LOREG}">artículo 28 de la LOREG</a>).'),
             (f'¿Qué excusas valen para no ir a la mesa en {nombre}?',
              'Las mismas en todas partes. Siempre se aceptan, si se acreditan, tener entre 65 y 70 años, una discapacidad declarada, estar de baja médica, estar embarazada de seis meses o más o de permiso por nacimiento, '
              'cuidar de un lactante, de menores de 12 años o de un familiar dependiente, o haber estado en una mesa al menos tres veces en los últimos diez años. '
@@ -1354,10 +1355,10 @@ def bloque_te_toca_mesa(nombre, cod=None, cifras_barrio=None):
     li = ['<li><b>La notificación</b> llega en los tres días siguientes al sorteo, que los ayuntamientos hicieron entre el 31 de octubre y el 4 de noviembre. '
           f'Desde que la recibes tienes <b>siete días</b> para alegar una causa justificada ante la Junta Electoral de Zona, y los mayores de 65 pueden renunciar en ese plazo (<a href="{LOREG}">artículos 26 y 27 de la LOREG</a>).</li>',
           '<li><b>Excusas que se aceptan siempre</b>, si se acreditan: tener entre 65 y 70 años, una discapacidad declarada, estar de baja médica, estar embarazada de seis meses o más o de permiso por nacimiento, '
-          f'cuidar de un lactante, de menores de 12 años o de un familiar dependiente, o haber estado en una mesa al menos tres veces en diez años. Otras las valora la Junta caso a caso (<a href="{JEC_EXCUSAS}">Instrucción 6/2011 de la JEC</a>).</li>',
-          '<li><b>Quién puede tocar</b>: cualquier elector de la mesa que sepa leer y escribir y tenga menos de 70 años. El presidente debe tener el título de Bachiller o de FP de segundo grado.</li>',
+          f'cuidar de un lactante, de menores de 12 años o de un familiar dependiente, o haber estado en una mesa al menos tres veces en diez años, si la mesa queda cubierta. Otras las valora la Junta caso a caso (<a href="{JEC_EXCUSAS}">Instrucción 6/2011 de la JEC</a>).</li>',
+          f'<li><b>Quién puede tocar</b>: cualquier elector de la mesa que sepa leer y escribir y tenga menos de 70 años. El presidente debe tener el título de Bachiller o de FP de segundo grado o, en su defecto, el de Graduado Escolar o equivalente (<a href="{LOREG}">artículo 26.2</a>).</li>',
           f'<li><b>El domingo</b>: a las 8.00 en el colegio, una hora antes de abrir, para constituir la mesa; se vota de 9.00 a 20.00 y después se cuenta (<a href="{LOREG}">artículos 80 y 84</a>).</li>',
-          f'<li><b>Dieta y permisos</b>: 75 euros para presidentes y vocales (<a href="{CLM24_MESAS}">CLM24</a>), permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes (<a href="{LEGALITAS_29N}">Legálitas</a>).</li>',
+          f'<li><b>Dieta y permisos</b>: 75 euros para presidentes y vocales (<a href="{CLM24_MESAS}">CLM24</a>), permiso retribuido de jornada completa el domingo si para ti es día laborable y, en todo caso, cinco horas menos de trabajo el lunes (<a href="{LOREG}">artículo 28 de la LOREG</a>).</li>',
           f'<li><b>Si no vas</b>: es obligatorio salvo excusa aceptada; no presentarse puede castigarse con prisión de tres meses a un año o multa (<a href="{LOREG}">artículo 143</a>).</li>']
     dato = ''
     if cifras_barrio:
@@ -1365,7 +1366,8 @@ def bloque_te_toca_mesa(nombre, cod=None, cifras_barrio=None):
     elif cod is not None and cod in MESAS.index:
         mesas = int(MESAS.loc[cod].mesas)
         dato = (f'<li><b>En {n}</b>: {num(mesas)} {"mesa" if mesas == 1 else "mesas"} en las generales de 2023, '
-                f'{"nueve personas designadas" if mesas == 1 else f"{num(9 * mesas)} vecinos designados"} entre titulares y suplentes.</li>')
+                f'{"nueve personas designadas" if mesas == 1 else f"{num(9 * mesas)} vecinos designados"} entre titulares y suplentes con esas mesas; el 29N pueden variar algo con el censo '
+                f'(<a href="#mesas">detalle</a>).</li>')
     return (f'<style>{DONDE_CSS}</style><section class="dondevotar" aria-labelledby="te-toca-mesa"><h2 id="te-toca-mesa">¿Te ha tocado mesa en {n}?</h2>'
             + '<ul>' + ''.join(li) + dato + '</ul>'
             + f'<p><a href="{raiz}elecciones/mesa-electoral-29n/">Todo sobre la mesa electoral del 29N</a>: excusas aceptadas, qué se hace en la mesa y cómo se cobra.</p></section>')
@@ -1433,8 +1435,8 @@ def tema_votar():
              + p_('Dato', 'Quien trabaje el 29 de noviembre tiene derecho a hasta cuatro horas libres y retribuidas para votar, según cuánto coincida su jornada con el horario de votación; '
                   'la empresa puede decidir en qué momento se toman.')
              + p_('Dato', 'Formar parte de una mesa electoral es obligatorio salvo que la Junta Electoral acepte una excusa justificada; no presentarse puede castigarse con prisión de tres meses a un año o multa '
-                  f'(<a href="{LOREG}">artículo 143 de la LOREG</a>). Presidentes y vocales tienen permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes '
-                  f'(<a href="{LEGALITAS_29N}">Legálitas</a>).')
+                  f'(<a href="{LOREG}">artículo 143 de la LOREG</a>). Presidentes y vocales tienen permiso retribuido de jornada completa el domingo si para ellos es día laborable y, en todo caso, cinco horas menos de trabajo el lunes '
+                  f'(<a href="{LOREG}">artículo 28 de la LOREG</a>).')
              + '<p>El sorteo, las excusas y la dieta, en <a href="../mesa-electoral-29n/">la mesa electoral del 29N</a>.</p>')
 
     h.append('<h2>Y por la noche</h2>'
@@ -1611,7 +1613,7 @@ def tema_mesa():
            f'La designación se notifica a cada persona en un plazo de tres días desde el sorteo (<a href="{LOREG}">artículo 27.2 de la LOREG</a>), así que las notificaciones llegan hasta el 7 de noviembre '
            f'(<a href="{CLM24_MESAS}">CLM24</a>). Ante cualquier duda, el ayuntamiento o la Junta Electoral de Zona.'),
           ('¿Quién puede ser miembro de una mesa?',
-           f'Cualquier elector de la mesa que sepa leer y escribir y tenga menos de 70 años. El presidente debe tener el título de Bachiller o de FP de segundo grado, '
+           f'Cualquier elector de la mesa que sepa leer y escribir y tenga menos de 70 años. El presidente debe tener el título de Bachiller o de FP de segundo grado o, en su defecto, el de Graduado Escolar o equivalente, '
            f'o, si no hay suficientes, el de Graduado Escolar (<a href="{LOREG}">artículo 26.2 de la LOREG</a>).'),
           ('¿Me puedo librar de la mesa electoral?',
            f'Solo con una causa justificada y documentada, que hay que alegar ante la Junta Electoral de Zona en los siete días siguientes a la notificación; la Junta resuelve en cinco días y sin recurso. '
@@ -1631,7 +1633,7 @@ def tema_mesa():
           ('¿Qué pasa si no me presento?',
            f'Es un delito electoral: puede castigarse con prisión de tres meses a un año o multa de seis a 24 meses (<a href="{LOREG}">artículo 143 de la LOREG</a>).'),
           ('¿Tengo permiso en el trabajo si me toca mesa?',
-           f'Sí: permiso retribuido toda la jornada del domingo y una reducción de cinco horas en la jornada del lunes siguiente (<a href="{LEGALITAS_29N}">Legálitas</a>).')]
+           f'Sí: permiso retribuido de jornada completa el domingo si para ti es día laborable y, en todo caso, una reducción de cinco horas en la jornada del lunes siguiente (<a href="{LOREG}">artículo 28 de la LOREG</a>).')]
     faq_html, faq_ld = faq(qs)
     ld = ld_pagina(titulo, desc, ruta, ESPANA)
     h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Mesa electoral 29N')]
@@ -1671,8 +1673,8 @@ def tema_mesa():
              + p_('Dato', f'Titulares y suplentes deben estar en el colegio a las 8.00 para constituir la mesa (<a href="{LOREG}">artículo 80 de la LOREG</a>); si faltan titulares, los sustituyen los suplentes. '
                   'La votación va de 9.00 a 20.00 sin interrupción; después la mesa cuenta los votos del Congreso y del Senado en público y firma las actas.')
              + p_('Dato', f'Presidentes y vocales cobran una dieta de 75 euros, cinco más que en 2023 (Orden INT/650/2026; <a href="{CLM24_MESAS}">CLM24</a>, <a href="{UH_MESA}">Última Hora</a>); '
-                  'los suplentes solo si acaban ocupando un puesto. Tienen permiso retribuido toda la jornada del domingo y cinco horas menos de trabajo el lunes '
-                  f'(<a href="{LEGALITAS_29N}">Legálitas</a>).'))
+                  'los suplentes solo si acaban ocupando un puesto. Tienen permiso retribuido de jornada completa el domingo si para ellos es día laborable y, en todo caso, cinco horas menos de trabajo el lunes '
+                  f'(<a href="{LOREG}">artículo 28 de la LOREG</a>).'))
     top = MESAS.mesas.nlargest(15)
     nom = T.MUN.set_index('mun_code').municipio
     enl = lambda c: f'<a href="../../{CIUDADES[c]}#te-toca-mesa">{escape(nom[c])}</a>' if c in CIUDADES else escape(nom.get(c, c))

@@ -20,10 +20,10 @@ E = '2023_07'
 C_ALTA, C_BAJA, C_GRIS = '#2f6f8f', '#c2581b', 'var(--otros)'   # no son colores de partido: la participación no es de nadie
 
 m = pd.read_csv('generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
-ES_PART = round(float(m[f'{E}_votantes'].sum() / m[f'{E}_censo'].sum() * 100), 2)
+ES_PART = round(float(m[f'{E}_votantes'].sum() / m[f'{E}_censo'].sum() * 100), 6)
 nv = m[m.mun_code.str[:2] == '31']
 assert len(nv) == 272
-NAV_PART = round(float(nv[f'{E}_votantes'].sum() / nv[f'{E}_censo'].sum() * 100), 2)
+NAV_PART = round(float(nv[f'{E}_votantes'].sum() / nv[f'{E}_censo'].sum() * 100), 6)
 g = nv[nv.poblacion >= 1000].copy()
 assert len(g) == 86
 g['part'] = g[f'{E}_votantes'] / g[f'{E}_censo'] * 100
@@ -39,7 +39,7 @@ s = s[(s.mun_code.str[:2] == '31') & (s.eleccion == 'M2023')].groupby('mun_code'
 assert set(g.mun_code) <= set(s.index)
 
 def part(df, cv='votantes', cc='censo'):
-    return round(float(df[cv].sum() / df[cc].sum() * 100), 2)
+    return round(float(df[cv].sum() / df[cc].sum() * 100), 6)
 
 ALTO = g[g.bildu >= 40]
 BAJO = g[g.bildu < 15]
@@ -53,7 +53,7 @@ assert CORR_B == -0.59 and CORR_R == -0.07, (CORR_B, CORR_R)
 SUBEN = int((g.part > g.part19).sum())
 assert SUBEN == 55
 
-MUN = {r.nom: {'part': round(r.part, 2), 'part19': round(r.part19, 2), 'bildu': round(r.bildu, 2), 'pob': int(r.poblacion),
+MUN = {r.nom: {'part': round(r.part, 6), 'part19': round(r.part19, 6), 'bildu': round(r.bildu, 6), 'pob': int(r.poblacion),
                'renta': None if pd.isna(r.renta_uc) else int(r.renta_uc), 'cod': r.mun_code} for r in g.itertuples()}
 ORD = sorted(MUN, key=lambda k: MUN[k]['part'])
 BAJOS, ALTOS = ORD[:10], ORD[-10:][::-1]
@@ -66,7 +66,7 @@ assert all(k in MUN for k in PAMPLONA), [k for k in PAMPLONA if k not in MUN]
 PAM = {k: MUN[k] for k in sorted(PAMPLONA, key=lambda k: -MUN[k]['part'])}
 PAM_MAX, PAM_MIN = max(PAM, key=lambda k: PAM[k]['part']), min(PAM, key=lambda k: PAM[k]['part'])
 assert PAM_MAX == 'Cizur' and PAM_MIN == 'Berriozar', (PAM_MAX, PAM_MIN)
-PAM_BAJAN = sorted(k for k in PAM if PAM[k]['part'] < PAM[k]['part19'])
+PAM_BAJAN = sorted(k for k in PAM if round(PAM[k]['part'], 1) < round(PAM[k]['part19'], 1))   # a un decimal, como en la tabla (Berriozar: 63,7 y 63,7)
 
 import sys
 sys.path.insert(0, 'src')
@@ -135,6 +135,6 @@ foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y de 202
 
 pieza('participacion-navarra-municipios-29n', 'Quién vota en Navarra',
       f'En la Navarra donde EH Bildu pasa del 40 % votó el {n(ga["gen"])} %; donde no llega al 15 %, el {n(gb["gen"])} %: el mapa de la participación, pueblo a pueblo',
-      f'Fontellas votó un {p(F["part"])} % y Olazti un {p(O["part"])} %. La renta apenas explica nada en Navarra; el voto a EH Bildu, bastante más. '
+      f'Fontellas votó un {p(F["part"])} % y Olazti un {p(O["part"])} %. En Navarra la participación apenas va ligada a la renta; al voto a EH Bildu, bastante más. '
       f'Pamplona votó el {p(MUN["Pamplona"]["part"])} %, y a su alrededor la participación bajó respecto a 2019.',
       '4 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

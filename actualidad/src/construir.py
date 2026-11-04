@@ -1739,7 +1739,7 @@ PIEZAS = [
     dict(
         slug='participacion-navarra-municipios-29n', fecha='2026-11-04',
         titulo='En la Navarra donde EH Bildu pasa del 40 % votó el 64 %; donde no llega al 15 %, el 71 %: el mapa de la participación, pueblo a pueblo', serie='29n', figura=0,
-        descripcion='Fontellas votó un 80,9 % y Olazti un 59,9 %. La renta apenas explica nada en Navarra; el voto a EH Bildu, bastante más. Pamplona votó el 70,2 %, y a su alrededor la participación bajó respecto a 2019.',
+        descripcion='Fontellas votó un 80,9 % y Olazti un 59,9 %. En Navarra la participación apenas va ligada a la renta; al voto a EH Bildu, bastante más. Pamplona votó el 70,2 %, y a su alrededor la participación bajó respecto a 2019.',
         compara='La participación en las generales de julio de 2023 y de noviembre de 2019 y en las municipales de mayo de 2023 en los 86 municipios navarros de 1.000 habitantes o más, con su voto a EH Bildu y su renta.',
         limites='Participación de los residentes en España, sin voto exterior: sale algo más alta que la oficial. El censo de las municipales incluye a los vecinos de la UE. La renta es la del Atlas del INE de 2023. Son datos de municipios, no de personas, y una correlación no es una causa.',
         calculo='Participación: votantes (candidaturas, blancos y nulos) entre censo. Grupos: municipios con el 40 % o más de voto a EH Bildu en las generales de 2023 y con menos del 15 %, sumando votantes y censo. Correlación de Pearson entre municipios. Script: actualidad/src/resumenes/participacion_navarra.py.',

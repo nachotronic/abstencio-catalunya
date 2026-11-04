@@ -25,7 +25,7 @@
    "calculo": "D['MUN']['Fontellas']['part']"
   },
   {
-   "texto": "votó un 80,9 % y Olazti un 59,9 %. La renta apenas explica",
+   "texto": "votó un 80,9 % y Olazti un 59,9 %. En Navarra la",
    "cifra": "59,9",
    "calculo": "D['MUN']['Olazti']['part']"
   },
@@ -196,13 +196,13 @@
    "calculo": "D['MUN']['Ansoáin']['part']"
   },
   {
-   "texto": "Ansoáin el 69,3 %, Noáin el 67,8 % y Berrioplano el 67,5",
+   "texto": "Ansoáin el 69,3 %, Noáin el 67,8 % y Berrioplano el 67,4",
    "cifra": "67,8",
    "calculo": "D['MUN']['Noáin']['part']"
   },
   {
-   "texto": "el 67,8 % y Berrioplano el 67,5 %. El que menos, Berriozar,",
-   "cifra": "67,5",
+   "texto": "el 67,8 % y Berrioplano el 67,4 %. El que menos, Berriozar,",
+   "cifra": "67,4",
    "calculo": "D['MUN']['Berrioplano']['part']"
   },
   {
@@ -223,7 +223,7 @@
   {
    "texto": "Pamplona fue al revés: bajó en 9 de los 14, entre ellos",
    "cifra": "9",
-   "calculo": "sum(D['MUN'][n]['part']<D['MUN'][n]['part19'] for n in ['Pamplona', 'Valle de Egüés', 'Ansoáin', 'Huarte', 'Zizur Mayor', 'Noáin', 'Berrioplano', 'Aranguren', 'Barañáin', 'Villava', 'Burlada', 'Berriozar', 'Orkoien', 'Cizur'])"
+   "calculo": "sum(round(D['MUN'][n]['part'],1)<round(D['MUN'][n]['part19'],1) for n in ['Pamplona', 'Valle de Egüés', 'Ansoáin', 'Huarte', 'Zizur Mayor', 'Noáin', 'Berrioplano', 'Aranguren', 'Barañáin', 'Villava', 'Burlada', 'Berriozar', 'Orkoien', 'Cizur'])"
   },
   {
    "texto": "al revés: bajó en 9 de los 14, entre ellos Valle de",
