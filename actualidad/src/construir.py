@@ -3798,6 +3798,7 @@ PIEZAS += [
                  ('https://www.europapress.es/internacional/noticia-trump-promete-gobernar-golpe-veto-si-republicanos-pierden-congreso-midterms-20261023175717.html', 'Europa Press, Trump promete gobernar a golpe de veto si los republicanos pierden el Congreso (23-10-2026)'),
                  ('https://www.infobae.com/america/agencias/2026/10/29/rediseno-de-mapas-electorales-en-eeuu-solo-ha-dado-tres-escanos-seguros-a-los-republicanos/', 'EFE vía Infobae, el rediseño de mapas solo ha dado tres escaños seguros a los republicanos (29-10-2026)'),
                  ('https://www.defensa.gob.es/ceseden/-/ieee/2026-elecciones-estados-unidos-medio-termino-opinion-109', 'Juan Luis Manfredi, IEEE, documento de opinión sobre las elecciones de medio término (26-10-2026)')],
+        correcciones='4-11-2026, 8.42: a las 6.46 atribuimos a Associated Press y NBC News la mayoría demócrata del Senado, pero las proyecciones de Carolina del Sur e Iowa eran de la mesa de decisión de The New York Times, no de AP; con AP, los demócratas sumaban 50. AP les dio la mayoría a las 8.27, con Míchigan.',
         enlaces=[],
         lugar='Estados Unidos',
         foto=dict(src='img/actualidad/fotos/eeuu-elecciones-medio-mandato-mapa.jpg', ancho=1280, alto=720, ia=True,
@@ -3823,6 +3824,7 @@ PIEZAS += [
                  ('https://politifact.com/article/2026/oct/29/election-night-results-midterms-senate-trump/', 'PolitiFact, qué estados contarán rápido y cuáles tardarán (29-10-2026)'),
                  ('https://www.infobae.com/america/agencias/2026/10/30/a-cuatro-dias-de-las-elecciones-de-eeuu-trump-se-reengancha-a-la-campana-y-el-papa-vota/', 'EFE vía Infobae, Trump se reengancha a la campaña (30-10-2026)'),
                  ('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, resultados de 2024')],
+        correcciones='4-11-2026, 8.42: a las 6.46 atribuimos a Associated Press y NBC News la mayoría demócrata del Senado, pero las proyecciones de Carolina del Sur e Iowa eran de la mesa de decisión de The New York Times, no de AP; con AP, los demócratas sumaban 50. AP les dio la mayoría a las 8.27, con Míchigan.',
         enlaces=[],
         lugar='Estados Unidos',
         foto=dict(src='img/actualidad/fotos/eeuu-noche-electoral-guia-horarios-grafico.jpg', ancho=1280, alto=720, grafico=True,
@@ -3834,8 +3836,8 @@ PIEZAS += [
 # Coordinador, 4-11-2026 7.57: la pieza de resultados de la mañana, con el Senado a mano y las dos fuentes
 PIEZAS += [
     dict(
-        slug='eeuu-resultados-medio-mandato-2026', fecha='2026-11-04',
-        titulo='Los demócratas ganan el Senado y la Cámara, con escaños arrebatados a los republicanos de Texas a Carolina del Sur', serie='internacional',
+        slug='eeuu-resultados-medio-mandato-2026', fecha='2026-11-04', actualizado='2026-11-04 08:45',
+        titulo='Los demócratas ganan el Senado y la Cámara, con escaños arrebatados a los republicanos de Carolina del Norte a Texas', serie='internacional',
         descripcion='Associated Press y NBC News dan a los demócratas la mayoría de las dos cámaras del Congreso de Estados Unidos. En el Senado tienen 51 de los 100 escaños con las proyecciones de AP, y 54 si se suman las de la mesa de decisión de The New York Times; en la Cámara, las dos fuentes coinciden en 218 escaños demócratas, justo la mayoría, y 134 republicanos, con 83 por decidir. Los demócratas arrebatan además a los republicanos los gobiernos de Georgia, Iowa, Ohio y Texas.',
         compara='Las carreras al Senado y a gobernador y los 435 distritos de la Cámara que The New York Times (con las proyecciones de Associated Press o, en algunas carreras al Senado, las de su propia mesa de decisión) y NBC News dan por ganados, los dos, a las 8.38 (Cámara) y 8.39 (Senado y gobernadores), hora peninsular, con el partido que tenía cada escaño.',
         limites='Son proyecciones, no resultados certificados: los estados certifican en las próximas semanas, y en California, Washington y Oregón el recuento puede tardar días. Solo damos un escaño o un gobierno por ganado cuando lo proyectan las dos fuentes. En los datos de The New York Times, el ganador del Senado en Iowa, Maine y Carolina del Sur lo proyecta su propia mesa de decisión, no AP. «Cambia de partido» sigue el criterio de The New York Times, que tiene en cuenta los distritos redibujados. Los porcentajes son sobre el voto contado a esa hora.',
@@ -3857,6 +3859,8 @@ PIEZAS += [
         sin_atlas=True,
         enlaces=[],
         lugar='Estados Unidos',
+        foto=dict(src='img/actualidad/fotos/eeuu-resultados-medio-mandato-2026.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Manos que reparten papeletas sobre una mesa roja y azul, con el Capitolio de Washington al fondo: un collage.'),
     ),
 ]
 
