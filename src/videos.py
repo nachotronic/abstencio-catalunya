@@ -19,7 +19,7 @@ PERFIL = 'https://x.com/_mapaelectoral'
 
 # nombre del mp4 (x-<nombre>.mp4), segundo del fotograma, antetítulo, titular, enlace del tuit
 VIDEOS = [
-    dict(nombre='eeuu-congreso-scroll', t=8, k='Estados Unidos', titulo='Así queda el Congreso de EE. UU., distrito a distrito', tuit=''),
+    dict(nombre='eeuu-congreso-scroll', t=8, k='Estados Unidos', titulo='Los demócratas, con 229 escaños en la Cámara de EE. UU.: el mapa, distrito a distrito', tuit=''),
     dict(nombre='eeuu-resultados-scroll', t=5, k='Estados Unidos', titulo='Los demócratas ganan escaños de Carolina del Norte a Texas', tuit=''),
     dict(nombre='como-votar-29n', t=7, k='Cómo votar', titulo='Cómo votar el 29N: horario, qué llevar y dónde te toca', tuit=''),
     dict(nombre='voto-correo-guia', t=8, k='Voto por correo', titulo='Voto por correo: pídelo hasta el 19 de noviembre', tuit=''),
