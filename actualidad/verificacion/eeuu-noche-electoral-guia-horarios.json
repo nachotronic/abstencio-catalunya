@@ -3,14 +3,14 @@
  "cifras": [],
  "externas": [
   {
-   "texto": "coinciden ya en 14 carreras al Senado: 11 para los demócratas y 3 para los republicanos",
+   "texto": "coinciden ya en 16 carreras al Senado: 11 para los demócratas y 5 para los republicanos",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "AP (outcome.won en el NYT) + NBC; directo/crudo/20261104-0316/estados.json"
+   "nota": "AP (outcome.won / race_call_status en el NYT) + NBC; directo/crudo/20261104-0356/estados.json"
   },
   {
-   "texto": "suman 45, y los republicanos, 34",
+   "texto": "suman 45, y los republicanos, 36",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "NYT party_balance DEM 45 / GOP 34 y NBC bopData dem 45 / rep 34"
+   "nota": "NYT party_balance DEM 45 / GOP 36 (NBC bopData da 37 R porque incluye Tennessee, solo NBC)"
   },
   {
    "texto": "A los demócratas les hacen falta 51 para la mayoría; a los republicanos les bastan 50",
@@ -18,12 +18,12 @@
    "nota": "NYT to_win DEM 51, GOP 50"
   },
   {
-   "texto": "Hay nueve gobernadores decididos, siete demócratas y dos republicanos",
+   "texto": "Hay 11 gobernadores decididos, 9 demócratas y 2 republicanos",
    "fuente": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-   "nota": "AP + NBC: CO, IL, MD, MA, NY, PA, RI (D); FL, WY (R); ninguno con gained; directo/crudo/20261104-0316/estados.json"
+   "nota": "AP + NBC: CO, CT, GA, IL, MD, MA, NY, PA, RI (D); FL, WY (R); GA con gained; directo/crudo/20261104-0356/estados.json"
   },
   {
-   "texto": "las dos coinciden en 104 escaños, 72 demócratas y 32 republicanos",
+   "texto": "las dos fuentes coinciden en 150 escaños, 99 demócratas y 51 republicanos",
    "fuente": "https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/#directo",
    "nota": "mismo recuento que el bloque de la Cámara (DIR)"
   }
