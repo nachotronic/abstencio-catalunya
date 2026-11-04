@@ -2,13 +2,13 @@
  "pieza": "eeuu-resultados-medio-mandato-2026",
  "cifras": [
   {
-   "texto": "los republicanos. Faltan 68.",
-   "cifra": "68",
+   "texto": "los republicanos. Faltan 65.",
+   "cifra": "65",
    "calculo": "DIR['pendientes']"
   },
   {
-   "texto": "De momento, 18 distritos cambian de",
-   "cifra": "18",
+   "texto": "De momento, 19 distritos cambian de",
+   "cifra": "19",
    "calculo": "DIR['cambios_D']"
   },
   {
@@ -77,13 +77,13 @@
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='TX'][0]['pct']['James Talarico']"
   },
   {
-   "texto": "Paxton, por el 55,1 % frente al 43,0 %, con el 98,9 % del",
+   "texto": "Paxton, por el 55,1 % frente al 43,0 %, con el 99,0 % del",
    "cifra": "43,0",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='TX'][0]['pct']['Ken Paxton']"
   },
   {
-   "texto": "frente al 43,0 %, con el 98,9 % del voto estimado",
-   "cifra": "98,9",
+   "texto": "frente al 43,0 %, con el 99,0 % del voto estimado",
+   "cifra": "99,0",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='TX'][0]['eevp']"
   },
   {
@@ -137,18 +137,18 @@
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NC'][0]['pct']['Michael Whatley']"
   },
   {
-   "texto": "senadora desde 1997, por el 53,6 % frente al 46,3 %,",
-   "cifra": "53,6",
+   "texto": "senadora desde 1997, por el 53,4 % frente al 46,5 %,",
+   "cifra": "53,4",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Troy Jackson']"
   },
   {
-   "texto": "1997, por el 53,6 % frente al 46,3 %, con el 92,1 % del",
-   "cifra": "46,3",
+   "texto": "1997, por el 53,4 % frente al 46,5 %, con el 91,0 % del",
+   "cifra": "46,5",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Susan Collins']"
   },
   {
-   "texto": "frente al 46,3 %, con el 92,1 % del voto estimado",
-   "cifra": "92,1",
+   "texto": "frente al 46,5 %, con el 91,0 % del voto estimado",
+   "cifra": "91,0",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['eevp']"
   },
   {
@@ -225,62 +225,62 @@
    "origen": "entradilla"
   },
   {
-   "texto": "en la Cámara, 229 escaños, 11",
-   "cifra": "229",
+   "texto": "en la Cámara, 232 escaños, 14",
+   "cifra": "232",
    "calculo": "DIR['D']",
    "origen": "entradilla"
   },
   {
-   "texto": "229 escaños, 11 más de los 218",
-   "cifra": "11",
+   "texto": "232 escaños, 14 más de los 218",
+   "cifra": "14",
    "calculo": "DIR['D']-218",
    "origen": "entradilla"
   },
   {
-   "texto": "11 más de los 218 de la mayoría, frente",
+   "texto": "14 más de los 218 de la mayoría, frente",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1",
    "origen": "entradilla"
   },
   {
-   "texto": "frente a 138 republicanos, con 68",
+   "texto": "frente a 138 republicanos, con 65",
    "cifra": "138",
    "calculo": "DIR['R']",
    "origen": "entradilla"
   },
   {
-   "texto": "republicanos, con 68 por decidir",
-   "cifra": "68",
+   "texto": "republicanos, con 65 por decidir",
+   "cifra": "65",
    "calculo": "DIR['pendientes']",
    "origen": "entradilla"
   },
   {
-   "texto": "hora peninsular, hay 367 de los 435",
-   "cifra": "367",
+   "texto": "hora peninsular, hay 370 de los 435",
+   "cifra": "370",
    "calculo": "DIR['D']+DIR['R']+DIR['O']"
   },
   {
-   "texto": "hay 367 de los 435 escaños",
+   "texto": "hay 370 de los 435 escaños",
    "cifra": "435",
    "calculo": "len(DIR['dist'])"
   },
   {
-   "texto": "decididos: 229 para los demócratas, 11",
-   "cifra": "229",
+   "texto": "decididos: 232 para los demócratas, 14",
+   "cifra": "232",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "229 para los demócratas, 11 más",
-   "cifra": "11",
+   "texto": "232 para los demócratas, 14 más",
+   "cifra": "14",
    "calculo": "DIR['D']-218"
   },
   {
-   "texto": "11 más de los 218 de la mayoría, y 138 para",
+   "texto": "14 más de los 218 de la mayoría, y 138 para",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1"
   },
   {
-   "texto": "de la mayoría, y 138 para los republicanos. Faltan 68.",
+   "texto": "de la mayoría, y 138 para los republicanos. Faltan 65.",
    "cifra": "138",
    "calculo": "DIR['R']"
   },
@@ -310,27 +310,17 @@
    "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D' and CALL.get(x['estado'])=='ap')"
   },
   {
-   "texto": "Cindy Hyde-Smith, el 48,9 %, con el 96",
+   "texto": "Cindy Hyde-Smith, el 48,9 %, con el 95",
    "cifra": "48,9",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MS'][0]['pct']['Cindy Hyde-Smith']"
   },
   {
-   "texto": "el 48,9 %, con el 96 % del voto",
-   "cifra": "96",
+   "texto": "el 48,9 %, con el 95 % del voto",
+   "cifra": "95",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MS'][0]['eevp']"
   },
   {
-   "texto": "Dan Sullivan tiene el 47,9 %",
-   "cifra": "47,9",
-   "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['pct']['Dan Sullivan']"
-  },
-  {
-   "texto": "Mary Peltola, el 48,2 %",
-   "cifra": "48,2",
-   "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['pct']['Mary Peltola']"
-  },
-  {
-   "texto": "el 48,2 %, con el 74 % contado",
+   "texto": "el 47,9 %, con el 74 % contado",
    "cifra": "74",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['eevp']"
   },
@@ -345,8 +335,8 @@
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NE'][0]['pct']['Pete Ricketts']"
   },
   {
-   "texto": "frente al 43,7 % del independiente Dan Osborn",
-   "cifra": "43,7",
+   "texto": "frente al 43,6 % del independiente Dan Osborn",
+   "cifra": "43,6",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NE'][0]['pct']['Dan Osborn']"
   },
   {
@@ -385,8 +375,8 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='OR'][0]['pct']['Tina Kotek']"
   },
   {
-   "texto": "Jim Pillen, con el 50,7 %",
-   "cifra": "50,7",
+   "texto": "Jim Pillen, con el 50,8 %",
+   "cifra": "50,8",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NE'][0]['pct']['Jim Pillen']"
   },
   {
@@ -400,8 +390,8 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['pct']['Joe Lombardo']"
   },
   {
-   "texto": "44,2 %, con el 87 % del voto",
-   "cifra": "87",
+   "texto": "44,2 %, con el 88 % del voto",
+   "cifra": "88",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['eevp']"
   },
   {
@@ -410,9 +400,19 @@
    "calculo": "sum(1 for x in DIR['senado']['governor'] if x['cambio'] and x['confirmado']=='D')"
   },
   {
-   "texto": "cuatro en Pensilvania, tres en Iowa, dos en Míchigan",
+   "texto": "cuatro en Pensilvania, tres en Iowa, tres en Míchigan",
    "cifra": "tres",
    "calculo": "sum(1 for v in DIR['dist'].values() if v[2] and v[1]=='D' and v[0].startswith('IA-'))"
+  },
+  {
+   "texto": "Mary Peltola tiene el 48,2 %",
+   "cifra": "48,2",
+   "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['pct']['Mary Peltola']"
+  },
+  {
+   "texto": "Dan Sullivan, el 47,9 %",
+   "cifra": "47,9",
+   "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='AK'][0]['pct']['Dan Sullivan']"
   }
  ],
  "externas": [
