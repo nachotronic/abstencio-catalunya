@@ -3,14 +3,19 @@
  "cifras": [],
  "externas": [
   {
-   "texto": "coinciden ya en 17 carreras al Senado: 12 para los demócratas y 5 para los republicanos",
+   "texto": "coinciden ya en 22 carreras al Senado: 15 para los demócratas y 7 para los republicanos",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "AP (outcome.won / race_call_status en el NYT) + NBC; nueva: SC (Andrews, D, gained); directo/crudo/20261104-0439/estados.json"
+   "nota": "AP + NBC; nuevas desde 4.39: OH, OR, TX (D), AL, AR (R); directo/crudo/20261104-0521/estados.json"
   },
   {
-   "texto": "suman 46, y los republicanos, 36",
+   "texto": "Ya son cuatro los cambios de partido, los cuatro a favor de los demócratas",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "NYT party_balance DEM 46 / GOP 36; AL, AR y TN solo NBC, no contados"
+   "nota": "gained en NC, SC, OH, TX; directo/crudo/20261104-0521/estados.json"
+  },
+  {
+   "texto": "suman 49, y los republicanos, 38",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "NYT party_balance DEM 49 / GOP 38; KS y TN solo NBC, no contados"
   },
   {
    "texto": "A los demócratas les hacen falta 51 para la mayoría; a los republicanos les bastan 50",
@@ -18,12 +23,17 @@
    "nota": "NYT to_win DEM 51, GOP 50"
   },
   {
-   "texto": "Los gobernadores decididos siguen siendo 11, 9 demócratas y 2 republicanos",
+   "texto": "Hay 17 gobernadores decididos, 14 demócratas y 3 republicanos",
    "fuente": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-   "nota": "AP + NBC: CO, CT, GA, IL, MD, MA, NY, PA, RI (D); FL, WY (R); GA con gained; AR solo NBC; crudo 20261104-0439"
+   "nota": "AP + NBC; nuevos desde 4.39: CA, IA, NM, OH, TX (D), AR (R); VT y WI solo NBC; directo/crudo/20261104-0521/estados.json"
   },
   {
-   "texto": "las dos fuentes coinciden en 187 escaños, 122 demócratas y 65 republicanos",
+   "texto": "Cambian de partido cuatro, todos a favor de los demócratas",
+   "fuente": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+   "nota": "gained en GA, IA, OH, TX; directo/crudo/20261104-0521/estados.json"
+  },
+  {
+   "texto": "las dos fuentes coinciden en 226 escaños, 140 demócratas y 86 republicanos",
    "fuente": "https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/#directo",
    "nota": "mismo recuento que el bloque de la Cámara (DIR)"
   }
