@@ -1722,7 +1722,7 @@ PIEZAS = [
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
     dict(
-        slug='bizkaia-pnv-bildu-encuestas-29n', fecha='2026-11-03', actualizado='2026-11-04 07:37',
+        slug='bizkaia-pnv-bildu-encuestas-29n', fecha='2026-11-03', actualizado='2026-11-04 08:26',
         titulo='El PNV ganó en 92 municipios de Bizkaia en 2019 y en 55 en 2023: su feudo llega al 29N en empate a tres', serie='29n', figura=0,
         descripcion='En cuatro años, EH Bildu le quitó 27 pueblos y el PSOE 10, Bilbao incluido. El PNV ganó la provincia con su peor resultado en unas generales, el 27,1 %. Hoy la media de encuestas deja al PNV, EH Bildu y el PSOE entre el 22,2 % y el 22,4 %.',
         compara='El partido más votado en cada uno de los 112 municipios de Bizkaia en las generales de noviembre de 2019 y de julio de 2023, el voto de la provincia en las 16 generales desde 1977 y la estimación de la media de encuestas para el 29N.',
@@ -1735,10 +1735,12 @@ PIEZAS = [
                  ('https://orain.eus/es/politica/2026/10/17/el-pnv-ratifica-unanimidad-maribel-vaquero-idoia-sagastizabal-gorka-urtaran-candidatos-al-congreso/', 'EITB, el PNV ratifica a sus candidatos al Congreso (17-10-2026)'),
                  ('https://orain.eus/es/politica/2026/07/01/pnv-sumaria-un-escano-en-las-elecciones-forales-en-bizkaia-eh-bildu-podria-sumar-2-segun-un-sondeo-foral/', 'EITB, la prospección foral de la Diputación de Bizkaia (1-7-2026)')],
         enlaces=[],
+        foto=dict(src='img/actualidad/fotos/bizkaia-pnv-bildu-encuestas-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='El Puente Colgante entre Getxo y Portugalete, con sobres de votación, papeles y una lupa: un collage.'),
         lugar='Bizkaia',
     ),
     dict(
-        slug='euskadi-29n-guia', fecha='2026-11-03', actualizado='2026-11-04 07:37',
+        slug='euskadi-29n-guia', fecha='2026-11-03', actualizado='2026-11-04 08:26',
         titulo='Elecciones del 29N en Euskadi: 18 escaños, 1.824.886 electores y una Bizkaia en empate a tres', serie='29n', figura=0,
         descripcion='Qué se vota, quién encabeza las listas, qué dicen las encuestas y cómo votó cada municipio en 2023. Con la media de encuestas, EH Bildu sacaría 7 de los 18 escaños vascos; Bizkaia, con 8, está en el aire.',
         compara='El censo de consulta del 29N, las candidaturas proclamadas en el BOE, el modelo de encuestas de Mapa Electoral del 3 de noviembre y los resultados de las generales de 2023 por provincia y municipio.',
@@ -1748,6 +1750,8 @@ PIEZAS = [
                  ('https://www.boe.es/', 'BOE, candidaturas proclamadas a las elecciones generales del 29N'),
                  ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, generales de 2023 por municipio')],
         enlaces=[],
+        foto=dict(src='img/actualidad/fotos/euskadi-29n-guia.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una urna con papeletas ante una ría con el Guggenheim al fondo y un caserío en el campo: un collage.'),
         lugar='País Vasco',
     ),
     dict(
@@ -4003,7 +4007,7 @@ PIEZAS += [
                   pie='Tiendas de campaña recogidas ante la Casa de Correos, en la Puerta del Sol, con policías al lado: un collage.'),
     ),
     dict(
-        slug='listas-proclamadas-29n', fecha='2026-11-03', actualizado='2026-11-03 09:10',
+        slug='listas-proclamadas-29n', fecha='2026-11-03', actualizado='2026-11-04 08:26',
         titulo='Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León', serie='29n', figura=0,
         descripcion='El BOE publica las candidaturas proclamadas: 21 listas al Congreso y 11 al Senado no pasan el corte. En León, la junta envía a la Fiscalía la copia del DNI de una suplente de Podemos, y en Tenerife el número dos del PP al Senado es otro.',
         compara='Las candidaturas al Congreso y al Senado del BOE de candidaturas presentadas (28 de octubre de 2026) y del BOE de candidaturas proclamadas (3 de noviembre de 2026), lista a lista y nombre a nombre, en las 52 circunscripciones y las islas.',
@@ -4019,6 +4023,8 @@ PIEZAS += [
                  ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2011-1639', 'Ley Orgánica 2/2011, preámbulo sobre los avales'),
                  ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-15066', 'BOE, candidaturas proclamadas en las generales de 2023')],
         enlaces=[],
+        foto=dict(src='img/actualidad/fotos/listas-proclamadas-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Una mano aparta una hoja de un montón de listas de candidatos, junto a un sello de caucho: un collage.'),
         lugar='España',
     ),
 ]
