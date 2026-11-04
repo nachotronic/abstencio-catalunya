@@ -335,14 +335,7 @@
       "_gen": "recorrido"
     }
   ],
-  "externas": [
-    {
-      "texto": "ganaron la Cámara por 220 escaños a 215",
-      "origen": "titular",
-      "fuente": "https://history.house.gov/Institution/Election-Statistics/Election-Statistics/",
-      "nota": "resultado de 2024, el mismo que en la previa"
-    }
-  ],
+  "externas": [],
   "ignorar": [],
   "permitir_espana": []
 }
