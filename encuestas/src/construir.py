@@ -674,6 +674,15 @@ def svg_mapa_provincias(primero, nombres):
             f'{marco}<g stroke="var(--bg)" stroke-width=".8" stroke-linejoin="round">{out}</g></svg>')
 
 
+def fechas_meta(pagina, publicado, modificado):
+    """Añade article:published_time / article:modified_time (y og:updated_time) en <head>, con la misma fecha que el
+    dateModified del JSON-LD y la firma visible, para que Google no tenga que adivinar la fecha de la página."""
+    extra = (f'<meta property="article:published_time" content="{publicado}">\n<meta property="article:modified_time" content="{modificado}">\n'
+             f'<meta property="og:updated_time" content="{modificado}">\n')
+    return pagina.replace('\n</head>', '\n' + extra.rstrip('\n') + '\n</head>', 1)
+
+
+FECHA_MODELO = ['']  # fecha del último cálculo del modelo (meta['generado']): lastmod real en el sitemap
 PROV_PAGINAS = []   # [(ruta, nombre)] de las páginas /encuestas/<provincia>/ que escribe provincias()
 
 
@@ -689,6 +698,7 @@ def provincias():
     sys.path.insert(0, str(RAIZ / 'src'))
     from territorios_rutas import ruta_provincia, PROV_SLUG
     import provincias_paginas
+    FECHA_MODELO[0] = meta['generado'][:10]
     PROV_PAGINAS[:] = provincias_paginas.genera(d, meta, sys.modules[__name__], ruta_provincia, PROV_SLUG.get)
     nombres, prov = meta['provincias'], d['provincias']
     primero = {c: max(v['listas'], key=lambda l: l['p_primera']) for c, v in prov.items()}
@@ -748,7 +758,7 @@ def provincias():
             'el total, así que el escaño que falta va al partido con más voto por escaño (como en la ley D\'Hondt) y el que sobra sale del que tiene menos, '
             'siempre dentro de su horquilla.'),
            ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva en la página de encuestas, el modelo se vuelve a calcular y esta tabla cambia con él. '
-            'Del 24 al 28 de noviembre no se actualiza: la ley electoral prohíbe publicar sondeos esos días.')]
+            'En los cinco días anteriores a la votación del 29N no se actualiza: la ley electoral prohíbe publicar sondeos esos días.')]
     actual = fecha_larga(meta['generado'])
     url = URL + 'provincias.html'
     desc = f'Escaños de cada una de las 52 circunscripciones según la media de encuestas de las generales del 29N, con su horquilla y las provincias más disputadas. Modelo propio, actualizado el {actual}.'
@@ -792,6 +802,7 @@ def provincias():
     pagina = (cabecera('Encuestas por provincias: escaños en cada provincia (29N)', desc, url, f'{BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}', jsonld)
               .replace('<meta property="og:title" content="Encuestas por provincias: escaños en cada provincia (29N)">', f'<meta property="og:title" content="{html.escape(titular)}">')
               + estilos + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + cuerpo + '\n' + TIP_MAPA + '\n</body>\n</html>\n')
+    pagina = fechas_meta(pagina, '2026-10-23', meta['generado'][:10])
     (SALIDA / 'provincias.html').write_text(pagina, encoding='utf-8')
     return True
 
@@ -886,7 +897,7 @@ def main():
            ('¿Cuándo son las próximas elecciones generales?',
             'El domingo 29 de noviembre de 2026. Se eligen los 350 diputados del Congreso y los senadores; la mayoría absoluta del Congreso está en 176 escaños.'),
            ('¿Hasta cuándo se pueden publicar encuestas?',
-            'La ley electoral (artículo 69.7 de la LOREG) prohíbe publicar o difundir sondeos en los cinco días anteriores a la votación: del 24 al 28 de noviembre. '
+            'La ley electoral (artículo 69.7 de la LOREG) prohíbe publicar o difundir sondeos en los cinco días anteriores a la votación del 29N. '
             'Esta página dejará de añadir encuestas nuevas esos días.'),
            ('¿Por qué cada encuesta da un resultado distinto?',
             'Cada encuestadora pregunta a una muestra diferente (por teléfono, internet o panel), en fechas distintas, y aplica su propia «cocina» para '
@@ -999,14 +1010,15 @@ def main():
     bsky = f'https://bsky.app/intent/compose?text={quote(texto + " " + enlace + chr(10) + chr(10) + etiquetas)}'
     pagina = pagina.replace('<!--compartir-->', f'<p class="descargas">Compartir el resumen de hoy: <a href="{html.escape(intento)}" target="_blank" rel="noopener">en X</a> · '
                             f'<a href="{html.escape(bsky)}" target="_blank" rel="noopener">en Bluesky</a></p>', 1)
+    pagina = fechas_meta(pagina, '2026-10-22', hoy.isoformat())
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
-                                        + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_provincias else '')
+                                        + (f'  <url><loc>{URL}provincias.html</loc><lastmod>{FECHA_MODELO[0]}</lastmod></url>\n' if hay_provincias else '')
                                         + (f'  <url><loc>{URL}calculadora-escanos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_calculadora else '')
                                         + (f'  <url><loc>{URL}simulador-pactos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_pactos else '')
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas)
-                                        + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
+                                        + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{FECHA_MODELO[0]}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
     d_ult = date.fromisoformat(ult.get('publicado') or ult['fin'])
     portada(titular, med, actual, f'Última encuesta: <b>{html.escape(ult["casa"])}</b>' + (f' para {html.escape(ult["medio"])}' if ult['medio'] else '')
             + f', publicada el {DIAS_SEMANA[d_ult.weekday()]} {d_ult.day} de {fecha_larga(d_ult.isoformat()).split(" de ")[1]}: '

@@ -58,7 +58,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                (f'¿Hay encuestas de las generales en {nombre}?',
                 'Casi nunca: las encuestadoras publican sus datos para toda España y muy rara vez por provincia. Estas cifras no son una encuesta, '
                 f'sino el modelo de Mapa Electoral, que reparte la media de las encuestas nacionales por provincia y simula el resultado {sims} veces.'),
-               ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva. Del 24 al 28 de noviembre no cambia: la ley electoral prohíbe publicar sondeos esos días.')]
+               ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva. En los cinco días anteriores a la votación del 29N no cambia: la ley electoral prohíbe publicar sondeos esos días.')]
         url = f'{c.URL}{slug}/'
         desc = (f'Escaños de {nombre} en las generales del 29N según la media de encuestas: {reparto}. Modelo de Mapa Electoral, actualizado el {actual}.')[:300]
         imagen = f'{c.BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}'
@@ -95,6 +95,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                   .replace(f'<meta property="og:title" content="Encuesta {html.escape(nombre)} elecciones generales 2026: escaños según la media de encuestas">',
                            f'<meta property="og:title" content="{html.escape(titular)}">')
                   + estilos + c.CSS_SITIO + '\n</head>\n<body>\n' + c.nav('../../', 'Encuestas') + '\n' + cuerpo + '\n</body>\n</html>\n')
+        pagina = c.fechas_meta(pagina, '2026-10-26', max(meta['generado'][:10], '2026-10-26'))
         (c.SALIDA / slug).mkdir(exist_ok=True)
         (c.SALIDA / slug / 'index.html').write_text(pagina, encoding='utf-8')
     return indice

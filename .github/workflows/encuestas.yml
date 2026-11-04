@@ -72,4 +72,7 @@ jobs:
         continue-on-error: true
         run: |
           sleep 120   # que GitHub Pages publique antes
-          python3 src/indexnow.py encuestas/index.html
+          # todas las páginas que ha cambiado esta actualización (portada de encuestas, provincias.html, las 52 de provincia,
+          # encuestadoras...), no solo /encuestas/: un push hecho con GITHUB_TOKEN no lanza indexnow.yml, así que este es
+          # el único aviso que reciben (4-11-2026: provincias.html no se avisaba nunca)
+          git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '*.html' | xargs -r python3 src/indexnow.py
