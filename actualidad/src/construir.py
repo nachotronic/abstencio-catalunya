@@ -3764,7 +3764,7 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-03 21:30',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 01:16',
         titulo='Trump mandó redibujar el mapa para conservar la Cámara; las encuestas no le acompañan', serie='internacional',
         descripcion='Estados Unidos elige el 3 de noviembre a los 435 miembros de la Cámara de Representantes. En 2024 ganaron los republicanos, 220 a 215. Nueve estados han cambiado sus distritos, la mayoría a petición de Trump, con mapas pensados para darle nueve escaños netos más. En el resto del país, a los demócratas les bastaría un giro de 4 puntos; las encuestas apuntan a unos 11.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
@@ -3801,7 +3801,7 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-03 21:30',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 01:16',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
@@ -4004,7 +4004,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
-INTER_EN_ACTUALIDAD = {'eeuu-noche-electoral-guia-horarios'}   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
+INTER_EN_ACTUALIDAD = {'eeuu-noche-electoral-guia-horarios', 'eeuu-elecciones-medio-mandato-mapa'}   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
 def franja_portada(todas, pre=''):

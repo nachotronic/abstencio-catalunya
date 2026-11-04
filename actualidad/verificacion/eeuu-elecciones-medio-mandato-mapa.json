@@ -1,11 +1,11 @@
 {
   "pieza": "eeuu-elecciones-medio-mandato-mapa",
   "cifras": [
-    {"texto": "llenando a lo largo de la noche con los 435 distritos en los que se vota", "cifra": "435", "calculo": "len(DIR['dist'])"}
+    {"texto": "Associated Press y NBC News coinciden en cuatro: tres para los demócratas", "cifra": "cuatro", "calculo": "DIR['D'] + DIR['R'] + DIR['O']"},
+    {"texto": "coinciden en cuatro: tres para los demócratas y uno para los republicanos", "cifra": "tres", "calculo": "DIR['D']"},
+    {"texto": "Morgan McGarvey retiene el 3.er distrito, el de Louisville", "cifra": "3", "calculo": "int(DIR['dist']['2103'][0].split('-')[1]) if DIR['dist']['2103'][1] == 'D' else -1"}
   ],
   "externas": [],
-  "ignorar": [
-    {"texto": "Lo actualizaremos cada 30 o 45 minutos.", "motivo": "frecuencia prevista de actualización, no es un dato"}
-  ],
+  "ignorar": [],
   "permitir_espana": []
 }
