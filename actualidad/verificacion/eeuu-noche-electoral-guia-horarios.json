@@ -1,0 +1,9 @@
+{
+  "pieza": "eeuu-noche-electoral-guia-horarios",
+  "cifras": [],
+  "externas": [
+    {"texto": "las dos coinciden ya en cuatro escaños, tres demócratas y uno republicano", "fuente": "https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/#directo", "nota": "mismo recuento que el bloque en directo de la pieza de la Cámara (DIR: D=3, R=1), AP + NBC News"}
+  ],
+  "ignorar": [],
+  "permitir_espana": []
+}
