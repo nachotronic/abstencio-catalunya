@@ -1,0 +1,344 @@
+{
+ "pieza": "cinturon-rojo-madrid-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "el PSOE pasó de ganar en 16 de los 24 grandes municipios",
+   "cifra": "16",
+   "calculo": "D['PSOE24']['2019-N']"
+  },
+  {
+   "texto": "pasó de ganar en 16 de los 24 grandes municipios de",
+   "cifra": "24",
+   "calculo": "sum(D['GANA24']['2023'].values())"
+  },
+  {
+   "texto": "grandes municipios de Madrid a 4, aunque subió en todos",
+   "cifra": "4",
+   "calculo": "D['PSOE24']['2023']"
+  },
+  {
+   "texto": "en las generales. En los 16 municipios que el PSOE",
+   "cifra": "16",
+   "calculo": "D['SUBE_PSOE']"
+  },
+  {
+   "texto": "ganaba en 2019, subió del 31,1 % al 33,0 %; el PP,",
+   "cifra": "31,1",
+   "calculo": "D['BLOQUE']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "2019, subió del 31,1 % al 33,0 %; el PP, del 19,6 %",
+   "cifra": "33,0",
+   "calculo": "D['BLOQUE']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "31,1 % al 33,0 %; el PP, del 19,6 % al 35,3 %, tras la",
+   "cifra": "19,6",
+   "calculo": "D['BLOQUE']['2019_11']['PP']"
+  },
+  {
+   "texto": "33,0 %; el PP, del 19,6 % al 35,3 %, tras la desaparición",
+   "cifra": "35,3",
+   "calculo": "D['BLOQUE']['2023_07']['PP']"
+  },
+  {
+   "texto": "el PSOE había sacado allí 14 puntos de ventaja. Coslada",
+   "cifra": "14",
+   "calculo": "D['MUN']['Coslada']['PSOE19'] - D['MUN']['Coslada']['PP19']"
+  },
+  {
+   "texto": "fue el más ajustado de los 12 municipios grandes que",
+   "cifra": "12",
+   "calculo": "D['PSOE24']['2019-N'] - D['PSOE24']['2023']"
+  },
+  {
+   "texto": "una elección y otra. De los 24 municipios madrileños",
+   "cifra": "24",
+   "calculo": "sum(D['GANA24']['2023'].values())"
+  },
+  {
+   "texto": "PSOE fue el más votado en 16 en 2019 y en 4 en 2023:",
+   "cifra": "16",
+   "calculo": "D['PSOE24']['2019-N']"
+  },
+  {
+   "texto": "votado en 16 en 2019 y en 4 en 2023: Fuenlabrada,",
+   "cifra": "4",
+   "calculo": "D['PSOE24']['2023']"
+  },
+  {
+   "texto": "de 2019, el PSOE ganó en 68 de los 179 municipios,",
+   "cifra": "68",
+   "calculo": "D['C19']['PSOE']"
+  },
+  {
+   "texto": "el PSOE ganó en 68 de los 179 municipios, Vox en 61,",
+   "cifra": "179",
+   "calculo": "sum(D['C19'].values())"
+  },
+  {
+   "texto": "los 179 municipios, Vox en 61, el PP en 47 y Unidas",
+   "cifra": "61",
+   "calculo": "D['C19']['VOX']"
+  },
+  {
+   "texto": "municipios, Vox en 61, el PP en 47 y Unidas Podemos en",
+   "cifra": "47",
+   "calculo": "D['C19']['PP']"
+  },
+  {
+   "texto": "en 47 y Unidas Podemos en 3. En 2023, el PP ganó",
+   "cifra": "3",
+   "calculo": "D['C19']['SUMAR']"
+  },
+  {
+   "texto": "3. En 2023, el PP ganó en 158, el PSOE en 19 y Sumar",
+   "cifra": "158",
+   "calculo": "D['C23']['PP']"
+  },
+  {
+   "texto": "PP ganó en 158, el PSOE en 19 y Sumar en 2. Los cuatro",
+   "cifra": "19",
+   "calculo": "D['C23']['PSOE']"
+  },
+  {
+   "texto": "el PSOE en 19 y Sumar en 2. Los cuatro grandes",
+   "cifra": "2",
+   "calculo": "D['C23']['SUMAR']"
+  },
+  {
+   "texto": "PSOE en 19 y Sumar en 2. Los cuatro grandes que le quedan",
+   "cifra": "cuatro",
+   "calculo": "D['PSOE24']['2023']"
+  },
+  {
+   "texto": "que le quedan al PSOE suman 702.930 habitantes, el 10 %",
+   "cifra": "702.930",
+   "calculo": "D['POB4']"
+  },
+  {
+   "texto": "suman 702.930 habitantes, el 10 % de la Comunidad.",
+   "cifra": "10",
+   "calculo": "D['POB4'] / D['POBT'] * 100"
+  },
+  {
+   "texto": "municipios porque bajara. En los 16 grandes que ganó en",
+   "cifra": "16",
+   "calculo": "D['SUBE_PSOE']"
+  },
+  {
+   "texto": "ganó en 2019, subió en los 16: sumados, pasó del 31,1",
+   "cifra": "16",
+   "calculo": "D['SUBE_PSOE']"
+  },
+  {
+   "texto": "los 16: sumados, pasó del 31,1 % al 33,0 % de los votos",
+   "cifra": "31,1",
+   "calculo": "D['BLOQUE']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "sumados, pasó del 31,1 % al 33,0 % de los votos a candidaturas.",
+   "cifra": "33,0",
+   "calculo": "D['BLOQUE']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "candidaturas. En Fuenlabrada llegó al 37,8 %, desde el 33,8 %.",
+   "cifra": "37,8",
+   "calculo": "D['MUN']['Fuenlabrada']['PSOE23']"
+  },
+  {
+   "texto": "llegó al 37,8 %, desde el 33,8 %. Lo que cambió fue",
+   "cifra": "33,8",
+   "calculo": "D['MUN']['Fuenlabrada']['PSOE19']"
+  },
+  {
+   "texto": "mismos municipios pasó del 19,6 % al 35,3 %.",
+   "cifra": "19,6",
+   "calculo": "D['BLOQUE']['2019_11']['PP']"
+  },
+  {
+   "texto": "municipios pasó del 19,6 % al 35,3 %.",
+   "cifra": "35,3",
+   "calculo": "D['BLOQUE']['2023_07']['PP']"
+  },
+  {
+   "texto": "noviembre de 2019 sacó el 8,9 % en esos 16 municipios",
+   "cifra": "8,9",
+   "calculo": "D['BLOQUE']['2019_11']['CS']"
+  },
+  {
+   "texto": "2019 sacó el 8,9 % en esos 16 municipios y no se presentó",
+   "cifra": "16",
+   "calculo": "D['SUBE_PSOE']"
+  },
+  {
+   "texto": "con la bajada de Vox, del 18,6 % al 13,9 %. PP, Vox",
+   "cifra": "18,6",
+   "calculo": "D['BLOQUE']['2019_11']['VOX']"
+  },
+  {
+   "texto": "bajada de Vox, del 18,6 % al 13,9 %. PP, Vox y Ciudadanos",
+   "cifra": "13,9",
+   "calculo": "D['BLOQUE']['2023_07']['VOX']"
+  },
+  {
+   "texto": "Vox y Ciudadanos sumaban el 47,1 % en 2019; PP y Vox,",
+   "cifra": "47,1",
+   "calculo": "D['DER']['2019_11']"
+  },
+  {
+   "texto": "47,1 % en 2019; PP y Vox, el 49,2 % en 2023. A la izquierda",
+   "cifra": "49,2",
+   "calculo": "D['DER']['2023_07']"
+  },
+  {
+   "texto": "había a su izquierda bajó del 20,3 % al 16,4 %, y los dos",
+   "cifra": "20,3",
+   "calculo": "D['BLOQUE']['2019_11']['SUMAR']"
+  },
+  {
+   "texto": "izquierda bajó del 20,3 % al 16,4 %, y los dos juntos",
+   "cifra": "16,4",
+   "calculo": "D['BLOQUE']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "juntos se quedaron casi igual (51,4 % y 49,4 %).",
+   "cifra": "51,4",
+   "calculo": "D['IZQ']['2019_11']"
+  },
+  {
+   "texto": "quedaron casi igual (51,4 % y 49,4 %).",
+   "cifra": "49,4",
+   "calculo": "D['IZQ']['2023_07']"
+  },
+  {
+   "texto": "PSOE. 2019 fue un regreso: 18 municipios en abril,",
+   "cifra": "18",
+   "calculo": "D['PSOE24']['2019-A']"
+  },
+  {
+   "texto": "mejor resultado desde 1986, y 16 en noviembre.",
+   "cifra": "16",
+   "calculo": "D['PSOE24']['2019-N']"
+  },
+  {
+   "texto": "por provincia y la simula 2.000 veces, da hoy al PP",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "2.000 veces, da hoy al PP el 37,5 % en la circunscripción",
+   "cifra": "37,5",
+   "calculo": "D['MODELO']['PP']['voto'][1]"
+  },
+  {
+   "texto": "circunscripción de Madrid, al PSOE el 23,5 % y a Vox el 21,4 %.",
+   "cifra": "23,5",
+   "calculo": "D['MODELO']['PSOE']['voto'][1]"
+  },
+  {
+   "texto": "PSOE el 23,5 % y a Vox el 21,4 %. El PP queda primero",
+   "cifra": "21,4",
+   "calculo": "D['MODELO']['Vox']['voto'][1]"
+  },
+  {
+   "texto": "El PP queda primero en el 97 % de las simulaciones.",
+   "cifra": "97",
+   "calculo": "D['MODELO']['PP']['p1']"
+  },
+  {
+   "texto": "municipios, pero deja al PSOE 4,6 puntos por debajo de",
+   "cifra": "4,6",
+   "calculo": "D['PROV23']['PSOE'] - D['MODELO']['PSOE']['voto'][1]"
+  },
+  {
+   "texto": "2023 en la provincia, el 28,1 %.",
+   "cifra": "28,1",
+   "calculo": "D['PROV23']['PSOE']"
+  },
+  {
+   "texto": "«Municipios grandes» son los 24 que hoy pasan de 50.000",
+   "cifra": "24",
+   "calculo": "sum(D['GANA24']['2023'].values())"
+  },
+  {
+   "texto": "votado en cada uno de los 179 municipios de la Comunidad",
+   "cifra": "179",
+   "calculo": "sum(D['C23'].values())"
+  },
+  {
+   "texto": "subió mucho másVoto en los 16 municipios grandes que",
+   "cifra": "16",
+   "calculo": "D['SUBE_PSOE']"
+  },
+  {
+   "texto": "más de 50.000 habitantes (24) donde el PSOE fue el",
+   "cifra": "24",
+   "calculo": "sum(D['GANA24']['2023'].values())"
+  },
+  {
+   "texto": "(modelo de Mapa Electoral, 2.000 simulaciones, 3 de noviembre)",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "ochenta: en 1982 ganó en 21 de estos 24 municipios.",
+   "cifra": "21",
+   "calculo": "D['PSOE24']['1982']"
+  },
+  {
+   "texto": "1982 ganó en 21 de estos 24 municipios. Desde entonces",
+   "cifra": "24",
+   "calculo": "sum(D['GANA24']['2023'].values())"
+  },
+  {
+   "texto": "con Mariano Rajoy, en los 24, y en 2016 ningún gran",
+   "cifra": "24",
+   "calculo": "D['GANA24']['2011']['PP']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "El PP ganó Coslada por siete votos: el PSOE pasó",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2023/comunidad-de-madrid/madrid/coslada"
+  },
+  {
+   "texto": "el PP ganó en Coslada por siete votos: 14.437 frente",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2023/comunidad-de-madrid/madrid/coslada"
+  },
+  {
+   "texto": "Coslada por siete votos: 14.437 frente a 14.430 del",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2023/comunidad-de-madrid/madrid/coslada"
+  },
+  {
+   "texto": "siete votos: 14.437 frente a 14.430 del PSOE, según los",
+   "fuente": "https://www.publico.es/resultados-elecciones/generales/2023/comunidad-de-madrid/madrid/coslada"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "los resultados oficiales. Cuatro años antes, en noviembre",
+   "motivo": "cuatro años entre las generales de 2019 y 2023"
+  },
+  {
+   "texto": "municipios madrileños de más de 50.000 habitantes, el PSOE",
+   "motivo": "umbral de la definición de municipio grande"
+  },
+  {
+   "texto": "son los 24 que hoy pasan de 50.000 habitantes, con la misma",
+   "motivo": "umbral de la definición de municipio grande"
+  },
+  {
+   "texto": "MadridMunicipios de más de 50.000 habitantes (24) donde",
+   "motivo": "umbral de la definición de municipio grande"
+  },
+  {
+   "texto": "las generales de los años ochenta: en 1982 ganó en 21",
+   "motivo": "década; en 1982, 1986 y 1989 el PSOE ganó en la mayoría de los 24 (21, 19 y 16)"
+  }
+ ],
+ "permitir_espana": []
+}
