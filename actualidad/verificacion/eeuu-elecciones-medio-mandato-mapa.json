@@ -2,17 +2,6 @@
   "pieza": "eeuu-elecciones-medio-mandato-mapa",
   "cifras": [
     {
-      "texto": "y la mayoría está en 218",
-      "cifra": "218",
-      "calculo": "218"
-    },
-    {
-      "texto": "y 36 gobernadores",
-      "cifra": "36",
-      "calculo": "len(DIR['senado']['governor'])",
-      "origen": "titular"
-    },
-    {
       "texto": "dos fuentes coinciden en 218 escaños demócratas,",
       "cifra": "218",
       "calculo": "DIR['D']"
@@ -153,11 +142,6 @@
       "calculo": "len(F3D) if DIR['cambios_R']==0 else -1"
     },
     {
-      "texto": "Andy Barr ganó por 26,1 puntos",
-      "cifra": "26,1",
-      "calculo": "max(f[3] for f in F3D) if max(F3D,key=lambda f:f[3])[2]=='Andy Barr' else -1"
-    },
-    {
       "texto": "Se elegían 36 gobernadores",
       "cifra": "36",
       "calculo": "len(DIR['senado']['governor'])"
@@ -183,19 +167,172 @@
       "calculo": "sum(1 for x in DIR['senado']['governor'] if x['confirmado']=='D' and x['cambio'])"
     },
     {
-      "texto": "Estos son los doce distritos republicanos",
-      "cifra": "doce",
-      "calculo": "len(sorted([d for d in DIS if d[3]=='R' and d[7] is not None and d[1] not in ('TX','FL','OH','NC','TN','AL','LA','UT','CA')], key=lambda d: d[7])[:12])"
+      "texto": "Estos son los 16 distritos que Associated Press y NBC News dan a los demócratas",
+      "cifra": "16",
+      "calculo": "len(F3D)",
+      "_gen": "recorrido"
     },
     {
-      "texto": "todos por menos de 4 puntos",
-      "cifra": "4",
-      "calculo": "4 if max(d[7] for d in sorted([d for d in DIS if d[3]=='R' and d[7] is not None and d[1] not in ('TX','FL','OH','NC','TN','AL','LA','UT','CA')], key=lambda d: d[7])[:12])<4 else -1"
+      "texto": "J.D. Ford gana a Victoria Spartz por 3,3 puntos",
+      "cifra": "3,3",
+      "calculo": "round([f for f in F3D if f[0]=='IN-5'][0][5],1)",
+      "_gen": "recorrido"
     },
     {
-      "texto": "todos por menos de 4 puntos: tres en Pensilvania",
+      "texto": "con el 99% del voto esperado ya contado",
+      "cifra": "99",
+      "calculo": "[f for f in F3D if f[0]=='IN-5'][0][6]",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Victoria Spartz lo ganó para los republicanos por 18,6 puntos",
+      "cifra": "18,6",
+      "calculo": "round([f for f in F3D if f[0]=='IN-5'][0][3],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Indiana, distrito 5.",
+      "cifra": "5",
+      "calculo": "int('IN-5'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Mitchell Berman gana a Bryan Steil por 3,9 puntos",
+      "cifra": "3,9",
+      "calculo": "round([f for f in F3D if f[0]=='WI-1'][0][5],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "con el 99% del voto esperado ya contado",
+      "cifra": "99",
+      "calculo": "[f for f in F3D if f[0]=='WI-1'][0][6]",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Bryan Steil lo ganó para los republicanos por 10,2 puntos",
+      "cifra": "10,2",
+      "calculo": "round([f for f in F3D if f[0]=='WI-1'][0][3],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Wisconsin, distrito 1.",
+      "cifra": "1",
+      "calculo": "int('WI-1'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Lindsay James gana a Joe Mitchell por 4,0 puntos",
+      "cifra": "4,0",
+      "calculo": "round([f for f in F3D if f[0]=='IA-2'][0][5],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "con el 99% del voto esperado ya contado",
+      "cifra": "99",
+      "calculo": "[f for f in F3D if f[0]=='IA-2'][0][6]",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Ashley Hinson lo ganó para los republicanos por 15,6 puntos",
+      "cifra": "15,6",
+      "calculo": "round([f for f in F3D if f[0]=='IA-2'][0][3],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Iowa, distrito 2.",
+      "cifra": "2",
+      "calculo": "int('IA-2'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Andy Barr lo ganó por 26,1 puntos en 2024",
+      "cifra": "26,1",
+      "calculo": "round(max(f[3] for f in F3D),1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el demócrata Zach Dembo gana por 9,4 puntos",
+      "cifra": "9,4",
+      "calculo": "round([f for f in F3D if f[0]=='KY-6'][0][5],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "con el 99% del voto esperado contado",
+      "cifra": "99",
+      "calculo": "[f for f in F3D if f[0]=='KY-6'][0][6]",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Kentucky, distrito 6.",
+      "cifra": "6",
+      "calculo": "int('KY-6'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el distrito 1 de Iowa, por 0,2",
+      "cifra": "0,2",
+      "calculo": "round([f for f in F3D if f[0]=='IA-1'][0][3],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el distrito 1 de Iowa, por 0,2",
+      "cifra": "1",
+      "calculo": "int('IA-1'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el distrito 8 de Colorado, por 0,7",
+      "cifra": "0,7",
+      "calculo": "round([f for f in F3D if f[0]=='CO-8'][0][3],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el distrito 8 de Colorado, por 0,7",
+      "cifra": "8",
+      "calculo": "int('CO-8'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el distrito 7 de Pensilvania, por 1,0",
+      "cifra": "1,0",
+      "calculo": "round([f for f in F3D if f[0]=='PA-7'][0][3],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "el distrito 7 de Pensilvania, por 1,0",
+      "cifra": "7",
+      "calculo": "int('PA-7'.split('-')[1])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "tres ya estaban en el filo",
       "cifra": "tres",
-      "calculo": "sum(1 for d in sorted([d for d in DIS if d[3]=='R' and d[7] is not None and d[1] not in ('TX','FL','OH','NC','TN','AL','LA','UT','CA')], key=lambda d: d[7])[:12] if d[1]=='PA')"
+      "calculo": "len(sorted(F3D, key=lambda f: f[3])[:3])",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Christina Bohannan por 9,2",
+      "cifra": "9,2",
+      "calculo": "round([f for f in F3D if f[0]=='IA-1'][0][5],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Manny Rutinel por 14,7",
+      "cifra": "14,7",
+      "calculo": "round([f for f in F3D if f[0]=='CO-8'][0][5],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "Bob Brooks por 12,1",
+      "cifra": "12,1",
+      "calculo": "round([f for f in F3D if f[0]=='PA-7'][0][5],1)",
+      "_gen": "recorrido"
+    },
+    {
+      "texto": "En Colorado solo está contado el 78% del voto esperado",
+      "cifra": "78",
+      "calculo": "[f for f in F3D if f[0]=='CO-8'][0][6]",
+      "_gen": "recorrido"
     }
   ],
   "externas": [
