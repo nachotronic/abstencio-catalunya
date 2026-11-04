@@ -107,7 +107,7 @@ def cola(ruta):
 
 def textos(p):
     """Mismos datos para todas las redes; cada una con su largo máximo."""
-    t, d, u = p['titulo'], p.get('entradilla', ''), p.get('enlace')
+    t, d, u = p.get('titulo', ''), p.get('entradilla', ''), p.get('enlace')
     if 'texto' in p:  # entrada de la cola: el texto lo ha aprobado Nacho tal cual
         base = p['texto']
         return {
