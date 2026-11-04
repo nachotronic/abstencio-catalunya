@@ -3,16 +3,6 @@
  "cifras": [],
  "externas": [
   {
-   "texto": "suman 52; los republicanos, 41",
-   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "NYT party_balance DEM 52 (winner true) / GOP 41; NBC bopData dem 52 (isWinner true) / rep 41; directo/crudo/20261104-0646"
-  },
-  {
-   "texto": "Las dos fuentes coinciden en 28 de las 35 carreras: 18 para los demócratas y 10 para los republicanos",
-   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
-   "nota": "AP + NBC; nuevas desde 5.59: MN (D), LA, SD (R), ninguna con gained; directo/crudo/20261104-0646"
-  },
-  {
    "texto": "Los cambios de partido siguen siendo seis",
    "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
    "nota": "gained en NC, SC, OH, TX, IA, KS; directo/crudo/20261104-0646"
@@ -26,6 +16,36 @@
    "texto": "las dos fuentes coinciden en 315 escaños, 196 demócratas y 119 republicanos",
    "fuente": "https://mapaelectoral.es/actualidad/eeuu-elecciones-medio-mandato-mapa/#directo",
    "nota": "mismo recuento que el bloque de la Cámara (DIR)"
+  },
+  {
+   "texto": "que votan con ellos, suman 51",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "crudo 20261104-0839: 34 no renovados + 17 carreras AP+NBC (called_by ap); Míchigan AP winner_accepted_at 07:27:28Z"
+  },
+  {
+   "texto": "tienen 54; los republicanos, 42",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "crudo 0839: NYT party_balance DEM 54 / GOP 42; NBC bopData 54/42; IA, ME y SC con called_by nyt"
+  },
+  {
+   "texto": "los demócratas sumaban 50 senadores",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "crudo 20261104-0646: 18 D confirmadas, de ellas SC e IA con called_by nyt → 34+16"
+  },
+  {
+   "texto": "y los republicanos 41",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "crudo 0646: 31 no renovados + 10"
+  },
+  {
+   "texto": "llegaban a 52",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "crudo 0646: NYT party_balance DEM 52 (con mesa del NYT en SC e IA)"
+  },
+  {
+   "texto": "las fuentes coinciden en 28 de las 35 carreras: 18 para los demócratas y 10 para los republicanos",
+   "fuente": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html",
+   "nota": "crudo 0646: confirmadas 28 (18 D, 10 R), contando SC e IA de la mesa del NYT"
   }
  ],
  "ignorar": [],

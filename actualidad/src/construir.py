@@ -3220,6 +3220,7 @@ ANTETITULOS = {
     'serbia-estudiantes-vucic-mapa-distritos': 'Serbia, distrito a distrito',
     'eeuu-elecciones-medio-mandato-mapa': 'Resultados de la noche electoral',
     'eeuu-noche-electoral-guia-horarios': 'Guía para la noche del martes',
+    'eeuu-resultados-medio-mandato-2026': 'Elecciones de medio mandato en EE. UU.',
     'israel-pactos-escanos-knesset': 'Israel, las cuentas del 61',
     'calle-que-parte-barcelona': 'Dos fronteras',
     'voto-correo-29n': 'Votar desde casa',
@@ -3595,7 +3596,7 @@ def pieza(p, todas):
 <dl class="ficha">
 <dt>Qué se compara</dt><dd>{p['compara']}</dd>
 <dt>Límites</dt><dd>{p['limites']}</dd>
-<dt>Cómo se calcula</dt><dd>{p.get('calculo', 'Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo.')} Cifras reproducibles con los scripts del expediente de la pieza. <a href="../metodologia.html">Metodología de Actualidad</a> · <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a></dd>
+<dt>Cómo se calcula</dt><dd>{p.get('calculo', 'Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo.')} Cifras reproducibles con los scripts del expediente de la pieza. <a href="../metodologia.html">Metodología de Actualidad</a>{'' if p.get('sin_atlas') else ' · <a href="../../atlas/metodologia/index.html">Metodología del Atlas</a>'}</dd>
 <dt>Fuentes</dt><dd><ul>{fuentes}</ul></dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
 <dt>Revisión de datos y texto</dt><dd>{AUTOR}, {f}</dd>
@@ -3773,9 +3774,9 @@ def imagen_carrusel(q, pre):
 # Nacho, 30-10-2026: «Estados unidos. Empieza por ahi. [...] Hazte una pieza consistente. Con 3d?»
 PIEZAS += [
     dict(
-        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 06:51',
+        slug='eeuu-elecciones-medio-mandato-mapa', fecha='2026-10-30', actualizado='2026-11-04 08:42',
         titulo='Los demócratas ganan el Senado y, en la Cámara, arrebatan 13 escaños a los republicanos y llevan 196 a 119, con 120 por decidir', serie='internacional',
-        descripcion='Estados Unidos elige a los 435 miembros de la Cámara de Representantes, además de 35 senadores y 36 gobernadores. A las 6.46, hora peninsular, Associated Press y NBC News coinciden en 315 escaños; de los 120 por decidir, 28 son de California, Washington y Oregón. Las dos fuentes dan ya la mayoría del Senado a los demócratas. En 2024, los republicanos ganaron la Cámara por 220 escaños a 215.',
+        descripcion='Estados Unidos elige a los 435 miembros de la Cámara de Representantes, además de 35 senadores y 36 gobernadores. A las 6.46, hora peninsular, Associated Press y NBC News coinciden en 315 escaños; de los 120 por decidir, 28 son de California, Washington y Oregón. En el Senado, Associated Press y NBC News dan la mayoría a los demócratas desde las 8.27, con Míchigan. En 2024, los republicanos ganaron la Cámara por 220 escaños a 215.',
         compara='Los 435 distritos de la Cámara de Representantes con el resultado de 2024 y el de las presidenciales de 2024 en cada uno; los escaños de los nueve estados que han redibujado sus distritos, en 2024 y con el mapa nuevo; los escaños del partido del presidente en las legislativas de mitad de mandato desde 1946.',
         limites='Los distritos son los de 2024, los únicos con resultados: en los nueve estados que los han redibujado se vota el 3 de noviembre con otros límites. La cuenta del giro resta los mismos puntos en todos los distritos que no cambian; no es una previsión. Los objetivos de los mapas nuevos son los que buscaban sus autores según Sabato\'s Crystal Ball y Wikipedia, no un cálculo propio con los límites nuevos. Los porcentajes son sobre el total de votos válidos de cada distrito; en los distritos sin rival del otro partido, la ventaja es la del candidato único. Los recuentos por tramos de ventaja usan los votos sin redondear: el 3.º de Colorado, que el republicano Jeff Hurd ganó por 4,98 puntos, cuenta entre los decididos por menos de 5, aunque el mapa muestre 5,0.',
         fuentes=[('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-house.html', 'Associated Press, resultados de la Cámara de 2026, a través de The New York Times (en directo, 3 y 4-11-2026)'),
@@ -3801,6 +3802,7 @@ PIEZAS += [
                  ('https://www.europapress.es/internacional/noticia-trump-promete-gobernar-golpe-veto-si-republicanos-pierden-congreso-midterms-20261023175717.html', 'Europa Press, Trump promete gobernar a golpe de veto si los republicanos pierden el Congreso (23-10-2026)'),
                  ('https://www.infobae.com/america/agencias/2026/10/29/rediseno-de-mapas-electorales-en-eeuu-solo-ha-dado-tres-escanos-seguros-a-los-republicanos/', 'EFE vía Infobae, el rediseño de mapas solo ha dado tres escaños seguros a los republicanos (29-10-2026)'),
                  ('https://www.defensa.gob.es/ceseden/-/ieee/2026-elecciones-estados-unidos-medio-termino-opinion-109', 'Juan Luis Manfredi, IEEE, documento de opinión sobre las elecciones de medio término (26-10-2026)')],
+        correcciones='4-11-2026, 8.42: a las 6.46 atribuimos a Associated Press y NBC News la mayoría demócrata del Senado, pero las proyecciones de Carolina del Sur e Iowa eran de la mesa de decisión de The New York Times, no de AP; con AP, los demócratas sumaban 50. AP les dio la mayoría a las 8.27, con Míchigan.',
         enlaces=[],
         lugar='Estados Unidos',
         foto=dict(src='img/actualidad/fotos/eeuu-elecciones-medio-mandato-mapa.jpg', ancho=1280, alto=720, ia=True,
@@ -3810,7 +3812,7 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 07:37',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 08:42',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
@@ -3826,11 +3828,43 @@ PIEZAS += [
                  ('https://politifact.com/article/2026/oct/29/election-night-results-midterms-senate-trump/', 'PolitiFact, qué estados contarán rápido y cuáles tardarán (29-10-2026)'),
                  ('https://www.infobae.com/america/agencias/2026/10/30/a-cuatro-dias-de-las-elecciones-de-eeuu-trump-se-reengancha-a-la-campana-y-el-papa-vota/', 'EFE vía Infobae, Trump se reengancha a la campaña (30-10-2026)'),
                  ('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, resultados de 2024')],
+        correcciones='4-11-2026, 8.42: a las 6.46 atribuimos a Associated Press y NBC News la mayoría demócrata del Senado, pero las proyecciones de Carolina del Sur e Iowa eran de la mesa de decisión de The New York Times, no de AP; con AP, los demócratas sumaban 50. AP les dio la mayoría a las 8.27, con Míchigan.',
         enlaces=[],
         lugar='Estados Unidos',
         foto=dict(src='img/actualidad/fotos/eeuu-noche-electoral-guia-horarios-grafico.jpg', ancho=1280, alto=720, grafico=True,
                   pie='Hora de cierre de los colegios en cada estado, en hora peninsular española, el miércoles 4 de noviembre.',
                   fuente='270toWin y The Green Papers'),
+    ),
+]
+
+# Coordinador, 4-11-2026 7.57: la pieza de resultados de la mañana, con el Senado a mano y las dos fuentes
+PIEZAS += [
+    dict(
+        slug='eeuu-resultados-medio-mandato-2026', fecha='2026-11-04', actualizado='2026-11-04 08:45',
+        titulo='Los demócratas ganan el Senado y la Cámara, con escaños arrebatados a los republicanos de Carolina del Norte a Texas', serie='internacional',
+        descripcion='Associated Press y NBC News dan a los demócratas la mayoría de las dos cámaras del Congreso de Estados Unidos. En el Senado tienen 51 de los 100 escaños con las proyecciones de AP, y 54 si se suman las de la mesa de decisión de The New York Times; en la Cámara, las dos fuentes coinciden en 218 escaños demócratas, justo la mayoría, y 134 republicanos, con 83 por decidir. Los demócratas arrebatan además a los republicanos los gobiernos de Georgia, Iowa, Ohio y Texas.',
+        compara='Las carreras al Senado y a gobernador y los 435 distritos de la Cámara que The New York Times (con las proyecciones de Associated Press o, en algunas carreras al Senado, las de su propia mesa de decisión) y NBC News dan por ganados, los dos, a las 8.38 (Cámara) y 8.39 (Senado y gobernadores), hora peninsular, con el partido que tenía cada escaño.',
+        limites='Son proyecciones, no resultados certificados: los estados certifican en las próximas semanas, y en California, Washington y Oregón el recuento puede tardar días. Solo damos un escaño o un gobierno por ganado cuando lo proyectan las dos fuentes. En los datos de The New York Times, el ganador del Senado en Iowa, Maine y Carolina del Sur lo proyecta su propia mesa de decisión, no AP. «Cambia de partido» sigue el criterio de The New York Times, que tiene en cuenta los distritos redibujados. Los porcentajes son sobre el voto contado a esa hora.',
+        fuentes=[('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-senate.html', 'Associated Press y mesa de decisión de The New York Times, resultados del Senado de 2026, a través de The New York Times (4-11-2026, 8.39)'),
+                 ('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-governor.html', 'Associated Press, resultados de gobernadores de 2026, a través de The New York Times (4-11-2026, 8.39)'),
+                 ('https://www.nytimes.com/interactive/2026/11/03/us/elections/results-house.html', 'Associated Press, resultados de la Cámara de 2026, a través de The New York Times (4-11-2026, 8.38)'),
+                 ('https://www.nbcnews.com/politics/2026-elections/senate-results', 'NBC News Decision Desk, proyecciones del Senado de 2026 (4-11-2026, 8.39)'),
+                 ('https://www.nbcnews.com/politics/2026-elections/governor-results', 'NBC News Decision Desk, proyecciones de gobernadores de 2026 (4-11-2026, 8.39)'),
+                 ('https://www.nbcnews.com/politics/2026-elections/house-results', 'NBC News Decision Desk, proyecciones de la Cámara de 2026 (4-11-2026, 8.38)'),
+                 ('https://history.house.gov/Institution/Election-Statistics/Election-Statistics/', 'Clerk de la Cámara de Representantes, resultados de 2024'),
+                 ('https://en.wikipedia.org/wiki/2026_United_States_Senate_elections', 'Wikipedia, 2026 United States Senate elections'),
+                 ('https://en.wikipedia.org/wiki/2024_United_States_presidential_election', 'Wikipedia, 2024 United States presidential election'),
+                 ('https://www.aljazeera.com/news/2026/11/4/democrat-annie-andrews-flips-south-carolinas-senate-seat', 'Al Jazeera, Annie Andrews gana el escaño de Carolina del Sur (4-11-2026)'),
+                 ('https://www.foxcarolina.com/2026/07/13/who-is-darline-graham-lindsey-grahams-sister-named-interim-senator/', 'Fox Carolina, Darline Graham, nombrada senadora interina (13-7-2026)'),
+                 ('https://www.eltiempo.com/mundo/eeuu-y-canada/presidente-trump-dice-que-acepta-los-resultados-de-las-elecciones-intermedias-y-espera-llegar-a-acuerdos-con-los-democratas-tras-alcanzar-la-mayoria-3598283', 'El Tiempo, con EFE y AFP, Trump dice que acepta los resultados (4-11-2026)'),
+                 ('https://www.rawstory.com/gop-midterms-2678190623/', 'Raw Story, Kyle Kondik (Sabato\'s Crystal Ball) en la CNN (2-11-2026)'),
+                 ('https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin', 'Silver Bulletin, aprobación de Trump (30-10-2026)')],
+        calculo='Porcentajes sobre el voto contado de cada candidato a esa hora; «escrutado» es el voto estimado contado que da The New York Times.',
+        sin_atlas=True,
+        enlaces=[],
+        lugar='Estados Unidos',
+        foto=dict(src='img/actualidad/fotos/eeuu-resultados-medio-mandato-2026.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Manos que reparten papeletas sobre una mesa roja y azul, con el Capitolio de Washington al fondo: un collage.'),
     ),
 ]
 
@@ -4000,7 +4034,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'puente-valladolid-segundo-escano-29n': '2026-11-06',
     # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después
     'listas-29n-quien-encabeza': '2026-11-03',
-    'eeuu-elecciones-medio-mandato-mapa': '2026-11-04',   # editor, 4-11-2026 6.00: ya es la de resultados, la primera
+    'eeuu-resultados-medio-mandato-2026': '2026-11-06',   # coordinador, 4-11-2026: la de resultados de la mañana, la segunda tras Puente
     'banez-huelva-pp-29n': '2026-11-03',
     'acampada-sol-alquiler-madrid-distritos-29n': '2026-11-04',
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
@@ -4015,7 +4049,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
-INTER_EN_ACTUALIDAD = {'eeuu-elecciones-medio-mandato-mapa'}   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
+INTER_EN_ACTUALIDAD = {'eeuu-resultados-medio-mandato-2026'}   # editor, 4-11-2026 8.20: la de la Cámara sale, para no repetir cifras distintas seguidas   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
 def franja_portada(todas, pre=''):
