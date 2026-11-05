@@ -9,6 +9,7 @@ Uso, desde la raíz del repositorio: python3 actualidad/src/construir.py && node
 También rellena la franja «Actualidad» de la portada (index.html y la plantilla de generales-2026).
 """
 import datetime, html, json, os, re, sys
+from zoneinfo import ZoneInfo
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, 'src'))
@@ -4126,7 +4127,7 @@ def franja_portada(todas, pre=''):
     recientes = sorted(todas[::-1], key=lambda q: q['fecha'], reverse=True)   # sorted es estable: en el mismo día, la última añadida primero
     # Las de Historia electoral solo van en su propio carrusel, no en el de Actualidad (Nacho, 23-10-2026); las de Internacional, igual (1-11-2026)
     # Fijas delante, en este orden, hasta el día indicado (Nacho, 28-10-2026: Albiol, Broncano y Feijóo las primeras)
-    hoy = datetime.date.today().isoformat()
+    hoy = datetime.datetime.now(ZoneInfo('Europe/Madrid')).date().isoformat()   # hora de Madrid, no UTC
     # La pieza nueva del día, siempre la primera, delante de las fijas, sin que haya que pedirlo (Nacho, 5-11-2026)
     del_dia = [q['slug'] for q in recientes if q['fecha'] == hoy and q['serie'] not in ('historia', 'internacional')]
     fijas = del_dia + [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta and s not in del_dia]
