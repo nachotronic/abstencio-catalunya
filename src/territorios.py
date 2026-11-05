@@ -721,7 +721,7 @@ def pagina_ciudad(cod):
     b_renta = bloque_renta(nombre, f'en {nombre}', sec, ciudad=True)
     b_censo, q_censo = bloque_censo(nombre, cod)
     b_mesas, q_mesas = bloque_mesas(nombre, cod)
-    q_mesas = q_mesas + preguntas_mesa_lugar(nombre)
+    q_mesas = q_mesas + preguntas_mesa_lugar(nombre) + preguntas_correo_lugar(nombre, cod)
     titulo = (f'Elecciones 29N 2026 en {nombre}: {"censo electoral y " if q_censo else ""}'
               + ('cómo votó cada barrio' if b_sec else 'resultados desde 1977'))
     desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
@@ -893,7 +893,7 @@ def pagina_barrio(cod, b, todos):
     faq_b, faq_b_ld = faq([(f'¿Dónde voto en {lugar_b} el 29N?',
                             f'En el colegio y la mesa que indica la tarjeta censal, que la Oficina del Censo Electoral envía del 2 al 10 de noviembre (<a href="{INE_PLAZOS}">INE</a>). '
                             f'También se puede consultar en la <a href="{INE_SEDE}">sede electrónica del INE</a> o en el teléfono gratuito {TEL_CENSO}.')]
-                          + preguntas_mesa_lugar(lugar_b))
+                          + preguntas_mesa_lugar(lugar_b) + preguntas_correo_lugar(lugar_b, cod))
     h = [cabeza(titulo, desc, ruta, [ld, faq_b_ld], nivel, nombre, imagen='img/elecciones/' + FOTOS_BARRIO.get(cod, FOTO_BARRIO_GENERICA)[0])]   # las migas de pan en JSON-LD las añade esquema.py
     h.append(migas_html(pasos))
     antetitulo = (f'Pedanía de {ciudad}' if zona and zona[1] == 'pedanía' else
@@ -1322,7 +1322,8 @@ def bloque_donde_votar(nombre, cod, cifras_barrio=None):
           f'o en el teléfono gratuito {TEL_CENSO}. Con tu sección, mira <a href="{raiz}{TARJETA_RUTA}">cómo votó en 2023</a>.</li>',
           '<li><b>Horario</b>: el domingo 29 de noviembre, de 9.00 a 20.00.</li>',
           '<li><b>Qué llevar</b>: el DNI, el pasaporte o el permiso de conducir, con fotografía y en original. La tarjeta censal no es obligatoria.</li>',
-          '<li><b>Si no puedes ir</b>: el voto por correo se pide en Correos hasta el 19 de noviembre y se envía hasta el 25.</li>']
+          '<li><b>Si no puedes ir</b>: el voto por correo se pide en Correos hasta el 19 de noviembre y se envía hasta el 25'
+          + (f'; {frase_correo_prov(cod)} (<a href="{raiz}actualidad/voto-correo-29n/">provincia a provincia</a>)' if frase_correo_prov(cod) else '') + '.</li>']
     if cifras:
         li.append(f'<li><b>En {n}</b>: ' + '; '.join(cifras) + '.</li>')
     return (f'<style>{DONDE_CSS}</style><section class="dondevotar" aria-labelledby="donde-votar"><h2 id="donde-votar">Dónde votar en {n} el 29N</h2>'
@@ -1331,6 +1332,45 @@ def bloque_donde_votar(nombre, cod, cifras_barrio=None):
               'censo de consulta del INE de 2026 y resultados por mesa de Interior de 2023.</p>'
             + f'<p><a href="{raiz}elecciones/votar-29n/">Guía completa para votar el 29N</a> · <a href="{raiz}elecciones/mesa-electoral-29n/">Si te ha tocado mesa</a> · '
               f'<a href="{raiz}elecciones/voto-por-correo-29n/">Voto por correo</a></p></section>')
+
+
+def _correo_provincias():
+    """Solicitudes de voto por correo por cada 100 electores residentes en 2023, por provincia (código INE). Salen de los datos
+    de la pieza «voto-correo-29n» (INE, Oficina del Censo Electoral, tabla 59758), la misma fuente que ya verificó esa pieza."""
+    s = (ROOT / 'actualidad' / 'src' / 'voto-correo-29n.html').read_text(encoding='utf-8')
+    filas, _ = json.JSONDecoder().raw_decode(s[s.index('PROV=') + 5:])
+    k = lambda x: unicodedata.normalize('NFD', x.lower()).encode('ascii', 'ignore').decode()
+    nombres = {}
+    for c, n in PROV_NOMBRE.items():
+        for parte in [n] + n.split('/'):
+            nombres[k(parte)] = c
+    return {nombres[k(f[0])]: f[1] for f in filas}
+
+
+CORREO_PROV = _correo_provincias()
+assert len(CORREO_PROV) == 52, len(CORREO_PROV)
+
+
+def frase_correo_prov(cod):
+    """«En 2023 lo pidieron 12,9 de cada 100 electores de la provincia de Madrid», o '' si no hay dato."""
+    p = cod[:2]
+    if p not in CORREO_PROV:
+        return ''
+    v = CORREO_PROV[p]
+    lugar = PROV_NOMBRE[p] if p in ('51', '52') else f'la provincia de {PROV_NOMBRE[p]}'
+    if p in ('07', '28', '31', '33', '39', '26', '30'):   # comunidades uniprovinciales y Baleares: sin «la provincia de»
+        lugar = {'07': 'las Illes Balears', '28': 'la Comunidad de Madrid', '31': 'Navarra', '33': 'Asturias', '39': 'Cantabria', '26': 'La Rioja', '30': 'la Región de Murcia'}[p]
+    return f'en 2023 lo pidieron {f"{v:.1f}".replace(".", ",")} de cada 100 electores de {lugar}'
+
+
+def preguntas_correo_lugar(nombre, cod):
+    """Pregunta frecuente «¿Cómo se vota por correo en <lugar>?», con los plazos del INE y el dato de 2023 de su provincia."""
+    raiz = RAIZ_REL
+    f = frase_correo_prov(cod)
+    return [(f'¿Cómo se vota por correo en {nombre} el 29N?',
+             f'Se pide en cualquier oficina de Correos o en su web hasta el 19 de noviembre; la documentación llega del 9 al 22 y el voto se envía hasta el 25 (<a href="{INE_PLAZOS}">INE</a>). '
+             + (f'{f[0].upper() + f[1:]}, según la Oficina del Censo Electoral (<a href="{raiz}actualidad/voto-correo-29n/">el voto por correo, provincia a provincia</a>). ' if f else '')
+             + f'Todos los pasos, en <a href="{raiz}elecciones/voto-por-correo-29n/">el voto por correo del 29N</a>.')]
 
 
 def preguntas_mesa_lugar(nombre):
