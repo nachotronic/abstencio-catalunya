@@ -8,7 +8,7 @@ spec = importlib.util.spec_from_file_location('encuestas_construir', os.path.joi
 K = importlib.util.module_from_spec(spec); spec.loader.exec_module(K)
 
 MES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-COL = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos'}
+COL = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'SALF': 'SALF', 'PODEMOS': 'Podemos'}
 pc = lambda v: f'{v:.1f}'.replace('.', ',') + ' %'
 
 encs = K.carga()
@@ -30,10 +30,10 @@ cuando = 'publicadas hoy' if dn == hoy else 'publicadas ayer' if (hoy - dn).days
 escenas = [
     {'tipo': 'hook', 'dur': 2.8, 'lineas': [f'A {dias} días del 29N,', '¿qué dicen', [['las encuestas?', 'vote']]]},
     {'tipo': 'numeros', 'dur': 3.8, 'titulo': [f'El PP gana en', f'{n_pp} de {n} encuestas'], 'items': [
-        [str(n_pp), 'PP', [f'de las {n} encuestadoras del último', 'mes dan ganador al PP']],
-        [str(n - n_pp), 'PSOE', [('da' if n - n_pp == 1 else 'dan') + ' ganador al PSOE:', ' y '.join(otros)]]]},
-    {'tipo': 'barrasH', 'dur': 4.2, 'titulo': ['La mediana', 'de las encuestas'], 'sub': '% de voto estimado, últimas 3 semanas', 'max': 36,
-     'filas': [[COL[k], COL[k], med[k]] for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS') if k in med]},
+        [str(n_pp), 'PP', [f'de las {n} encuestadoras del último', 'mes dan ganador al PP'], True],   # True: sin contador
+        [str(n - n_pp), 'PSOE', [('da' if n - n_pp == 1 else 'dan') + ' ganador al PSOE' + (':' if otros else ''), ' y '.join(otros)] if otros else ['dan ganador al PSOE'], True]]},
+    {'tipo': 'barrasH', 'dur': 4.2, 'titulo': ['La mediana', 'de las encuestas'], 'sub': '% de voto estimado, últimas 3 semanas', 'max': 36, 'fijo': True,
+     'filas': [[COL[k], COL[k], med[k]] for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'SALF', 'PODEMOS') if k in med]},
     {'tipo': 'horquillas', 'dur': 5.4, 'titulo': ['PP + Vox, escaños', 'en cada encuesta'], 'sub': 'Horquilla de cada encuestadora', 'eje': [150, 220],
      'linea': 176, 'lineaTxt': '176: mayoría', 'color': 'PP', 'filas': [[c[:18], a, b] for c, a, b in pv],
      'nota': [f'{mayoria} de {len(con_esc)} les dan mayoría absoluta']},
@@ -41,13 +41,13 @@ escenas = [
         'cols': [['PP', 'PP'], ['PSOE', 'PSOE'], ['Vox', 'Vox']],
         'filas': [[e['casa'], e['medio'], e['voto']['PP'], e['voto']['PSOE'], e['voto']['VOX']] for e in nuevas]}] if len(nuevas) > 1 else [
     {'tipo': 'numeros', 'dur': 4.2, 'titulo': ['La última:', ult['casa']], 'sub': f'{ult["medio"] + ", " if ult["medio"] else ""}publicada el {fp.day} de {MES[fp.month - 1]}',
-     'items': [[pc(ult['voto'][k]), COL[k], [COL[k]]] for k in ('PP', 'PSOE', 'VOX') if k in ult['voto']]}]) + [
+     'items': [[pc(ult['voto'][k]), COL[k], [COL[k]], True] for k in ('PP', 'PSOE', 'VOX') if k in ult['voto']]}]) + [
     {'tipo': 'cierre', 'dur': 3.2, 'lineas': ['Todas las', 'encuestas,', 'cada día'], 'ruta': '/encuestas/'},
 ]
 # las encuestas del día van justo después de la pregunta inicial
 escenas.insert(1, escenas.pop(next(i for i, e in enumerate(escenas) if e['tipo'] in ('tabla', 'numeros') and e['titulo'][0] != 'El PP gana en')))
 guion = {'plantilla': 'guia', 'kicker': f'ENCUESTAS DEL 29N · {hoy.day} DE {MES[hoy.month - 1].upper()}',
-         'colores': {'PP': '#1d84ce', 'PSOE': '#e30613', 'Vox': '#5ac035', 'Sumar': '#a2275f', 'Podemos': '#5a3c8f'},
+         'colores': {'PP': '#1d84ce', 'PSOE': '#e30613', 'Vox': '#5ac035', 'Sumar': '#a2275f', 'SALF': '#a9876f', 'Podemos': '#5a3c8f'},
          'escenas': escenas,
          'fuente': ['Encuestas publicadas, vía Electográfica y Wikipedia.', 'La mediana resume encuestas: no es una previsión.']}
 json.dump(guion, open(os.path.join(RAIZ, 'video', 'shorts', 'encuestas-hoy.json'), 'w'), ensure_ascii=False, indent=1)
