@@ -25,22 +25,17 @@
    "calculo": "len(D['AIRE']['12'])"
   },
   {
-   "texto": "de noviembre, Vox sube de 5 a 8,0 escaños de media",
-   "cifra": "5",
-   "calculo": "D['E23']['CV']['VOX']"
-  },
-  {
-   "texto": "noviembre, Vox sube de 5 a 8,0 escaños de media en",
+   "texto": "noviembre, Vox subiría de 5 a 8,0 escaños de media en",
    "cifra": "8,0",
    "calculo": "D['MEDIA']['CV']['Vox']"
   },
   {
-   "texto": "Valenciana y el PSOE baja de 11 a 9,2. En Castellón,",
+   "texto": "Valenciana y el PSOE bajaría de 11 a 9,2. En Castellón,",
    "cifra": "11",
    "calculo": "D['E23']['CV']['PSOE']"
   },
   {
-   "texto": "Valenciana y el PSOE baja de 11 a 9,2. En Castellón, el segundo",
+   "texto": "y el PSOE bajaría de 11 a 9,2. En Castellón, el segundo",
    "cifra": "9,2",
    "calculo": "D['MEDIA']['CV']['PSOE']"
   },
@@ -95,7 +90,7 @@
    "calculo": "D['E23']['CV']['SUMAR']"
   },
   {
-   "texto": "Compromís, 4. PP y Vox sumaron 18, uno más que la mitad.",
+   "texto": "Compromís, 4. PP y Vox sumaron 18, uno más de los 17 de",
    "cifra": "18",
    "calculo": "D['E23']['CV']['PP']+D['E23']['CV']['VOX']"
   },

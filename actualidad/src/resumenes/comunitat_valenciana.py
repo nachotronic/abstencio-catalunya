@@ -152,7 +152,7 @@ g_esc = figura('Cuántos escaños tendría cada uno',
                barras([(f'{NOMBRE[k]}', MEDIA['CV'][k], COLL[k], f'{p(MEDIA["CV"][k])} (en 2023, {E23["CV"][{"Vox": "VOX", "Sumar": "SUMAR"}.get(k, k)]})') for k in ORD],
                       14, 'Escaños medios en la Comunitat Valenciana', ml=110),
                'Fuente: modelo de Mapa Electoral con la media de las encuestas nacionales repartida por provincia; escaños de 2023 del Congreso. '
-               'En 2023, la lista de la izquierda del PSOE era Sumar (con Compromís); el 29N es Compromís-Front Valencià, con Podem y EUPV.',
+               'En 2023, la lista de la izquierda del PSOE era Sumar (con Compromís); el 29N es Compromís-Front Valencià (COMPROMIS-EUPV-PODEM-ERPV), con Podem, EUPV y ERPV.',
                None,
                (['Lista', 'Valencia', 'Alicante', 'Castellón', 'Comunitat', 'En 2023'],
                 [[NOMBRE[k]] + [p(MEDIA[c][k]) for c in ('46', '03', '12', 'CV')] + [str(E23['CV'][{'Vox': 'VOX', 'Sumar': 'SUMAR'}.get(k, k)])] for k in ORD]))
@@ -188,11 +188,11 @@ ppvox23 = E23['CV']['PP'] + E23['CV']['VOX']
 assert ppvox23 == 18 and PPVOX['med'] == 20
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="dato">La Comunitat Valenciana elige 33 de los 350 diputados del Congreso: 16 por Valencia, 12 por Alicante y 5 por Castellón. En las generales de julio de 2023, el PP sacó {E23["CV"]["PP"]}, el PSOE {E23["CV"]["PSOE"]}, Vox {E23["CV"]["VOX"]} y Sumar, que iba con Compromís, {E23["CV"]["SUMAR"]}. PP y Vox sumaron {ppvox23}, uno más que la mitad. El PP fue el más votado en {GAN["PP"]} de los {NMUN} municipios valencianos y el PSOE en {GAN["PSOE"]}.</p>
+<p data-tipo="dato">La Comunitat Valenciana elige 33 de los 350 diputados del Congreso: 16 por Valencia, 12 por Alicante y 5 por Castellón. En las generales de julio de 2023, el PP sacó {E23["CV"]["PP"]}, el PSOE {E23["CV"]["PSOE"]}, Vox {E23["CV"]["VOX"]} y Sumar, que iba con Compromís, {E23["CV"]["SUMAR"]}. PP y Vox sumaron {ppvox23}, uno más de los 17 de la mayoría. El PP fue el más votado en {GAN["PP"]} de los {NMUN} municipios valencianos y el PSOE en {GAN["PSOE"]}.</p>
 {g_mapa}
 <p data-tipo="dato">Con la media de encuestas del 3 de noviembre, nuestro modelo, que reparte el voto nacional por provincia y simula {n(SIMS)} resultados, da a PP y Vox {PPVOX["med"]:.0f} de los 33 escaños valencianos en la mediana, dos más que en 2023, y al PSOE y a Compromís-Front Valencià {PPVOX["izq"]:.0f}. En el {p(PPVOX["may"])} % de las simulaciones, PP y Vox llegan al menos a 17, la mitad más uno. Por partidos, el PP saca de media {p(MEDIA["CV"]["PP"])} escaños, el PSOE {p(MEDIA["CV"]["PSOE"])}, Vox {p(MEDIA["CV"]["Vox"])} y Compromís {p(MEDIA["CV"]["Sumar"])}.</p>
 {g_esc}
-<p data-tipo="contexto">La encuesta de SyM Consulting para <a href="{SYM}">El Periódico de Aquí</a>, hecha del 6 al 16 de octubre, da 18 escaños a PP y Vox y 15 al PSOE y a Compromís: el PP, 12; el PSOE, 10; Vox, 6, y Compromís-Front Valencià, 5. El periódico advierte de que se hizo antes del accidente de Urda.</p>
+<p data-tipo="contexto">La encuesta de SyM Consulting para <a href="{SYM}">El Periódico de Aquí</a>, hecha del 6 al 16 de octubre, da 18 escaños a PP y Vox y 15 al PSOE y a Compromís: el PP, 12; el PSOE, 10; Vox, 6, y Compromís-Front Valencià, 5. El periódico advierte de que se hizo antes del accidente ferroviario de Urda (Toledo) y de los disturbios en Barcelona y Bilbao.</p>
 
 <h2>Castellón: dos escaños para cuatro candidatos</h2>
 <p data-tipo="dato">El reparto más ajustado está en {LV("12")}, que elige cinco diputados. El primero del PP, del PSOE y de Vox salen casi siempre. Los otros dos se los disputan cuatro candidatos: Óscar Clavell, número dos del PP, sale en el {p(cas["PP"])} % de las simulaciones; Sergio Bou, número dos del PSOE, en el {p(cas["PSOE"])} %; Ignasi García, cabeza de lista de Compromís, en el {p(cas["Sumar"])} %, y Llanos Massó, número dos de Vox, en el {p(cas["Vox"])} %. El reparto más probable, en el {p(r12[0][1] * 100)} % de las simulaciones, es el de 2023: dos del PP, dos del PSOE y uno de Vox. El siguiente, en el {p(r12[1][1] * 100)} %, cambia el segundo del PSOE por uno de Compromís.</p>
@@ -202,7 +202,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="hipotesis">Es una estimación con la media nacional de encuestas repartida por provincia, no una encuesta valenciana, y no mide a Compromís por separado: le da la cuota de Sumar y Podemos. Si Compromís-Front Valencià rinde mejor que esa suma, como apunta SyM, los escaños en el aire de Castellón y Alicante serían los primeros en moverse.</p>
 
 <h2>Las listas</h2>
-<p data-tipo="contexto">La alcaldesa de València, María José Catalá, encabeza la lista del PP por Valencia. «Ante la duda, València siempre será lo primero», dijo en un vídeo difundido por <a href="{EP_CATALA}">Europa Press</a> sobre su candidatura; añadió que «hay mucho en juego». A la izquierda del PSOE, Compromís, Podem, Esquerra Unida y Esquerra Republicana del País Valencià cerraron in extremis una coalición, Compromís-Front Valencià, que Àgueda Micó calificó de «histórico en la Comunitat Valenciana», según <a href="{COMP_ACUERDO}">Actualidad Castellón</a>.</p>
+<p data-tipo="contexto">La alcaldesa de València, María José Catalá, encabeza la lista del PP por Valencia. «Ante la duda, València siempre será lo primero», dijo sobre su candidatura en declaraciones a <a href="{EP_CATALA}">Europa Press Televisión</a>; añadió que «hay mucho en juego». A la izquierda del PSOE, Compromís, Podem, Esquerra Unida y Esquerra Republicana del País Valencià cerraron in extremis una coalición, Compromís-Front Valencià, que Àgueda Micó calificó de «histórico en la Comunitat Valenciana», según <a href="{COMP_ACUERDO}">Actualidad Castellón</a>.</p>
 <blockquote class="cita"><p>«El conocimiento por parte de los ciudadanos de los candidatos que aparecen en las candidaturas, exceptuando quizás el cabeza de lista, es mínimo».</p><footer>Carlos Fernández Esquer, politólogo (UAM), en <a href="{ESQUER}">Apuntes Electorales</a> (2019)</footer></blockquote>
 
 <h2>Lo que estos datos no dicen</h2>
@@ -222,6 +222,6 @@ foot = ('Datos: Ministerio del Interior, generales de 2023 por municipio; Congre
 
 pieza('comunitat-valenciana-escanos-29n', 'Los 33 escaños valencianos',
       f'PP y Vox pasarían de {ppvox23} a {PPVOX["med"]:.0f} de los 33 escaños valencianos con la media de encuestas; en Castellón, dos se los disputan cuatro candidatos',
-      f'Con la media de encuestas del 3 de noviembre, Vox sube de {E23["CV"]["VOX"]} a {p(MEDIA["CV"]["Vox"])} escaños de media en la Comunitat Valenciana y el PSOE baja de {E23["CV"]["PSOE"]} a {p(MEDIA["CV"]["PSOE"])}. '
+      f'Con la media de encuestas del 3 de noviembre, Vox subiría de {E23["CV"]["VOX"]} a {p(MEDIA["CV"]["Vox"])} escaños de media en la Comunitat Valenciana y el PSOE bajaría de {E23["CV"]["PSOE"]} a {p(MEDIA["CV"]["PSOE"])}. '
       f'En Castellón, el segundo del PSOE sale en el {p(cas["PSOE"])} % de las simulaciones y el cabeza de lista de Compromís, en el {p(cas["Sumar"])} %.',
       '5 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
