@@ -6,6 +6,7 @@
   "PSOE": "#e30613",
   "Vox": "#5ac035",
   "Sumar": "#a2275f",
+  "SALF": "#a9876f",
   "Podemos": "#5a3c8f"
  },
  "escenas": [
@@ -37,21 +38,24 @@
      "PP",
      [
       "PP"
-     ]
+     ],
+     true
     ],
     [
      "27,6 %",
      "PSOE",
      [
       "PSOE"
-     ]
+     ],
+     true
     ],
     [
      "20,8 %",
      "Vox",
      [
       "Vox"
-     ]
+     ],
+     true
     ]
    ]
   },
@@ -91,6 +95,7 @@
    ],
    "sub": "% de voto estimado, últimas 3 semanas",
    "max": 36,
+   "fijo": true,
    "filas": [
     [
      "PP",
@@ -111,6 +116,11 @@
      "Sumar",
      "Sumar",
      6.9
+    ],
+    [
+     "SALF",
+     "SALF",
+     2.4
     ],
     [
      "Podemos",
