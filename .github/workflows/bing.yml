@@ -7,6 +7,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  statuses: write
 jobs:
   enviar:
     runs-on: ubuntu-latest
@@ -23,4 +24,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -m "Bing: URL enviadas $(date -u +%F)"
-          for i in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && break; sleep 10; done
+          GITHUB_TOKEN="${{ github.token }}" src/subir_a_main.sh
