@@ -1,0 +1,251 @@
+{
+ "03": {
+  "repartos": [
+   [
+    {
+     "PP": 5,
+     "PSOE": 3,
+     "Vox": 3,
+     "Sumar": 1
+    },
+    0.241
+   ],
+   [
+    {
+     "PP": 4,
+     "PSOE": 4,
+     "Vox": 3,
+     "Sumar": 1
+    },
+    0.196
+   ],
+   [
+    {
+     "PP": 4,
+     "Vox": 4,
+     "PSOE": 3,
+     "Sumar": 1
+    },
+    0.111
+   ],
+   [
+    {
+     "PP": 4,
+     "PSOE": 3,
+     "Vox": 3,
+     "Sumar": 2
+    },
+    0.094
+   ],
+   [
+    {
+     "PP": 5,
+     "PSOE": 4,
+     "Vox": 2,
+     "Sumar": 1
+    },
+    0.076
+   ],
+   [
+    {
+     "PP": 5,
+     "PSOE": 3,
+     "Vox": 2,
+     "Sumar": 2
+    },
+    0.035
+   ]
+  ],
+  "media": {
+   "PP": 4.48,
+   "PSOE": 3.35,
+   "Vox": 2.99,
+   "Sumar": 1.17,
+   "Podemos": 0.0,
+   "SALF": 0.0,
+   "ERC": 0.0,
+   "Junts": 0.0,
+   "EH Bildu": 0.0,
+   "PNV": 0.0,
+   "BNG": 0.0,
+   "CC": 0.0,
+   "UPN": 0.0,
+   "CUP": 0.0,
+   "Nueva Canarias": 0.0,
+   "PACMA": 0.0
+  },
+  "ppvox_mas": 0.924,
+  "empate": 0.072,
+  "izq_mas": 0.004
+ },
+ "12": {
+  "repartos": [
+   [
+    {
+     "PP": 2,
+     "PSOE": 2,
+     "Vox": 1
+    },
+    0.36
+   ],
+   [
+    {
+     "PP": 2,
+     "PSOE": 1,
+     "Vox": 1,
+     "Sumar": 1
+    },
+    0.309
+   ],
+   [
+    {
+     "PP": 2,
+     "Vox": 2,
+     "PSOE": 1
+    },
+    0.143
+   ],
+   [
+    {
+     "PSOE": 2,
+     "PP": 1,
+     "Vox": 1,
+     "Sumar": 1
+    },
+    0.069
+   ],
+   [
+    {
+     "PP": 3,
+     "PSOE": 1,
+     "Vox": 1
+    },
+    0.065
+   ],
+   [
+    {
+     "Vox": 2,
+     "PP": 1,
+     "PSOE": 1,
+     "Sumar": 1
+    },
+    0.026
+   ]
+  ],
+  "media": {
+   "PP": 1.94,
+   "PSOE": 1.46,
+   "Vox": 1.19,
+   "Sumar": 0.41,
+   "Podemos": 0.0,
+   "SALF": 0.0,
+   "ERC": 0.0,
+   "Junts": 0.0,
+   "EH Bildu": 0.0,
+   "PNV": 0.0,
+   "BNG": 0.0,
+   "CC": 0.0,
+   "UPN": 0.0,
+   "CUP": 0.0,
+   "Nueva Canarias": 0.0,
+   "PACMA": 0.0
+  },
+  "ppvox_mas": 0.925,
+  "empate": 0.0,
+  "izq_mas": 0.074
+ },
+ "46": {
+  "repartos": [
+   [
+    {
+     "PP": 5,
+     "PSOE": 5,
+     "Vox": 4,
+     "Sumar": 2
+    },
+    0.103
+   ],
+   [
+    {
+     "PP": 5,
+     "PSOE": 4,
+     "Vox": 4,
+     "Sumar": 3
+    },
+    0.101
+   ],
+   [
+    {
+     "PP": 6,
+     "PSOE": 4,
+     "Vox": 4,
+     "Sumar": 2
+    },
+    0.096
+   ],
+   [
+    {
+     "PP": 6,
+     "PSOE": 5,
+     "Vox": 3,
+     "Sumar": 2
+    },
+    0.067
+   ],
+   [
+    {
+     "PP": 5,
+     "PSOE": 5,
+     "Vox": 3,
+     "Sumar": 3
+    },
+    0.066
+   ],
+   [
+    {
+     "PP": 6,
+     "PSOE": 4,
+     "Vox": 3,
+     "Sumar": 3
+    },
+    0.059
+   ]
+  ],
+  "media": {
+   "PP": 5.3,
+   "PSOE": 4.43,
+   "Vox": 3.79,
+   "Sumar": 2.47,
+   "Podemos": 0.0,
+   "SALF": 0.01,
+   "ERC": 0.0,
+   "Junts": 0.0,
+   "EH Bildu": 0.0,
+   "PNV": 0.0,
+   "BNG": 0.0,
+   "CC": 0.0,
+   "UPN": 0.0,
+   "CUP": 0.0,
+   "Nueva Canarias": 0.0,
+   "PACMA": 0.0
+  },
+  "ppvox_mas": 0.748,
+  "empate": 0.21,
+  "izq_mas": 0.043
+ },
+ "CV": {
+  "media": {
+   "PP": 11.72,
+   "PSOE": 9.24,
+   "Vox": 7.96,
+   "Sumar": 4.06
+  },
+  "ppvox_med": 20.0,
+  "izq_med": 13.0,
+  "ppvox_mayoria_17": 0.956,
+  "ppvox_p10_p90": [
+   17.0,
+   22.0
+  ]
+ }
+}

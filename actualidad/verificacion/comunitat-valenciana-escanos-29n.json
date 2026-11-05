@@ -1,0 +1,372 @@
+{
+ "pieza": "comunitat-valenciana-escanos-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "PP y Vox pasarían de 18 a 20 de los 33 escaños",
+   "cifra": "18",
+   "calculo": "D['E23']['CV']['PP']+D['E23']['CV']['VOX']"
+  },
+  {
+   "texto": "PP y Vox pasarían de 18 a 20 de los 33 escaños valencianos",
+   "cifra": "20",
+   "calculo": "D['PPVOX']['med']"
+  },
+  {
+   "texto": "pasarían de 18 a 20 de los 33 escaños valencianos",
+   "cifra": "33",
+   "calculo": "sum(D['E23']['CV'].values())"
+  },
+  {
+   "texto": "Castellón, dos se los disputan cuatro candidatos",
+   "cifra": "cuatro",
+   "calculo": "len(D['AIRE']['12'])"
+  },
+  {
+   "texto": "de noviembre, Vox sube de 5 a 8,0 escaños de media",
+   "cifra": "5",
+   "calculo": "D['E23']['CV']['VOX']"
+  },
+  {
+   "texto": "noviembre, Vox sube de 5 a 8,0 escaños de media en",
+   "cifra": "8,0",
+   "calculo": "D['MEDIA']['CV']['Vox']"
+  },
+  {
+   "texto": "Valenciana y el PSOE baja de 11 a 9,2. En Castellón,",
+   "cifra": "11",
+   "calculo": "D['E23']['CV']['PSOE']"
+  },
+  {
+   "texto": "Valenciana y el PSOE baja de 11 a 9,2. En Castellón, el segundo",
+   "cifra": "9,2",
+   "calculo": "D['MEDIA']['CV']['PSOE']"
+  },
+  {
+   "texto": "segundo del PSOE sale en el 45,5 % de las simulaciones",
+   "cifra": "45,5",
+   "calculo": "[x[2] for x in D['AIRE']['12'] if x[0]=='PSOE' and x[1]==2][0]"
+  },
+  {
+   "texto": "lista de Compromís, en el 40,6 %.",
+   "cifra": "40,6",
+   "calculo": "[x[2] for x in D['AIRE']['12'] if x[0]=='Sumar' and x[1]==1][0]"
+  },
+  {
+   "texto": "Comunitat Valenciana elige 33 de los 350 diputados",
+   "cifra": "33",
+   "calculo": "sum(D['E23']['CV'].values())"
+  },
+  {
+   "texto": "350 diputados del Congreso: 16 por Valencia, 12 por",
+   "cifra": "16",
+   "calculo": "sum(D['E23']['46'].values())"
+  },
+  {
+   "texto": "Congreso: 16 por Valencia, 12 por Alicante y 5 por",
+   "cifra": "12",
+   "calculo": "sum(D['E23']['03'].values())"
+  },
+  {
+   "texto": "Valencia, 12 por Alicante y 5 por Castellón. En las",
+   "cifra": "5",
+   "calculo": "sum(D['E23']['12'].values())"
+  },
+  {
+   "texto": "julio de 2023, el PP sacó 13, el PSOE 11, Vox 5 y",
+   "cifra": "13",
+   "calculo": "D['E23']['CV']['PP']"
+  },
+  {
+   "texto": "2023, el PP sacó 13, el PSOE 11, Vox 5 y Sumar, que",
+   "cifra": "11",
+   "calculo": "D['E23']['CV']['PSOE']"
+  },
+  {
+   "texto": "sacó 13, el PSOE 11, Vox 5 y Sumar, que iba con",
+   "cifra": "5",
+   "calculo": "D['E23']['CV']['VOX']"
+  },
+  {
+   "texto": "Sumar, que iba con Compromís, 4. PP y Vox sumaron 18,",
+   "cifra": "4",
+   "calculo": "D['E23']['CV']['SUMAR']"
+  },
+  {
+   "texto": "Compromís, 4. PP y Vox sumaron 18, uno más que la mitad.",
+   "cifra": "18",
+   "calculo": "D['E23']['CV']['PP']+D['E23']['CV']['VOX']"
+  },
+  {
+   "texto": "El PP fue el más votado en 307 de los 542 municipios",
+   "cifra": "307",
+   "calculo": "D['GAN']['PP']"
+  },
+  {
+   "texto": "más votado en 307 de los 542 municipios valencianos",
+   "cifra": "542",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "valencianos y el PSOE en 224.",
+   "cifra": "224",
+   "calculo": "D['GAN']['PSOE']"
+  },
+  {
+   "texto": "nacional por provincia y simula 2.000 resultados, da a PP",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "resultados, da a PP y Vox 20 de los 33 escaños valencianos",
+   "cifra": "20",
+   "calculo": "D['PPVOX']['med']"
+  },
+  {
+   "texto": "resultados, da a PP y Vox 20 de los 33 escaños valencianos",
+   "cifra": "33",
+   "calculo": "sum(D['E23']['CV'].values())"
+  },
+  {
+   "texto": "Compromís-Front Valencià 13. En el 95,6 % de las",
+   "cifra": "13",
+   "calculo": "D['PPVOX']['izq']"
+  },
+  {
+   "texto": "Compromís-Front Valencià 13. En el 95,6 % de las simulaciones,",
+   "cifra": "95,6",
+   "calculo": "D['PPVOX']['may']"
+  },
+  {
+   "texto": "PP y Vox llegan al menos a 17, la mitad más uno. Por",
+   "cifra": "17",
+   "calculo": "sum(D['E23']['CV'].values())//2+1"
+  },
+  {
+   "texto": "partidos, el PP saca de media 11,7 escaños, el PSOE 9,2,",
+   "cifra": "11,7",
+   "calculo": "D['MEDIA']['CV']['PP']"
+  },
+  {
+   "texto": "media 11,7 escaños, el PSOE 9,2, Vox 8,0 y Compromís",
+   "cifra": "9,2",
+   "calculo": "D['MEDIA']['CV']['PSOE']"
+  },
+  {
+   "texto": "escaños, el PSOE 9,2, Vox 8,0 y Compromís 4,1.",
+   "cifra": "8,0",
+   "calculo": "D['MEDIA']['CV']['Vox']"
+  },
+  {
+   "texto": "9,2, Vox 8,0 y Compromís 4,1.",
+   "cifra": "4,1",
+   "calculo": "D['MEDIA']['CV']['Sumar']"
+  },
+  {
+   "texto": "está en Castellón, que elige cinco diputados. El primero",
+   "cifra": "cinco",
+   "calculo": "sum(D['E23']['12'].values())"
+  },
+  {
+   "texto": "otros dos se los disputan cuatro candidatos: Óscar Clavell,",
+   "cifra": "cuatro",
+   "calculo": "len(D['AIRE']['12'])"
+  },
+  {
+   "texto": "número dos del PP, sale en el 87,8 % de las simulaciones;",
+   "cifra": "87,8",
+   "calculo": "[x[2] for x in D['AIRE']['12'] if x[0]=='PP' and x[1]==2][0]"
+  },
+  {
+   "texto": "número dos del PSOE, en el 45,5 %; Ignasi García, cabeza",
+   "cifra": "45,5",
+   "calculo": "[x[2] for x in D['AIRE']['12'] if x[0]=='PSOE' and x[1]==2][0]"
+  },
+  {
+   "texto": "lista de Compromís, en el 40,6 %, y Llanos Massó, número",
+   "cifra": "40,6",
+   "calculo": "[x[2] for x in D['AIRE']['12'] if x[0]=='Sumar' and x[1]==1][0]"
+  },
+  {
+   "texto": "número dos de Vox, en el 19,2 %. El reparto más probable,",
+   "cifra": "19,2",
+   "calculo": "[x[2] for x in D['AIRE']['12'] if x[0]=='Vox' and x[1]==2][0]"
+  },
+  {
+   "texto": "reparto más probable, en el 36,0 % de las simulaciones,",
+   "cifra": "36,0",
+   "calculo": "D['REP']['12'][0][1]*100"
+  },
+  {
+   "texto": "Vox. El siguiente, en el 30,9 %, cambia el segundo",
+   "cifra": "30,9",
+   "calculo": "D['REP']['12'][1][1]*100"
+  },
+  {
+   "texto": "En Alicante hay cinco puestos entre el 10",
+   "cifra": "cinco",
+   "calculo": "len(D['AIRE']['03'])"
+  },
+  {
+   "texto": "simulaciones: el tercero de Vox (79,7 %), el quinto del PP",
+   "cifra": "79,7",
+   "calculo": "[x[2] for x in D['AIRE']['03'] if x[0]=='Vox' and x[1]==3][0]"
+  },
+  {
+   "texto": "(79,7 %), el quinto del PP (47,6 %), el cuarto del PSOE",
+   "cifra": "47,6",
+   "calculo": "[x[2] for x in D['AIRE']['03'] if x[0]=='PP' and x[1]==5][0]"
+  },
+  {
+   "texto": "(47,6 %), el cuarto del PSOE (38,5 %), el segundo de Compromís",
+   "cifra": "38,5",
+   "calculo": "[x[2] for x in D['AIRE']['03'] if x[0]=='PSOE' and x[1]==4][0]"
+  },
+  {
+   "texto": "el segundo de Compromís (21,7 %) y el cuarto de Vox",
+   "cifra": "21,7",
+   "calculo": "[x[2] for x in D['AIRE']['03'] if x[0]=='Sumar' and x[1]==2][0]"
+  },
+  {
+   "texto": "(21,7 %) y el cuarto de Vox (17,9 %). En Valencia, la",
+   "cifra": "17,9",
+   "calculo": "[x[2] for x in D['AIRE']['03'] if x[0]=='Vox' and x[1]==4][0]"
+  },
+  {
+   "texto": "más diputados elige, hay ocho; los más disputados",
+   "cifra": "ocho",
+   "calculo": "len(D['AIRE']['46'])"
+  },
+  {
+   "texto": "el tercero de Compromís (45,5 %) y el quinto del PSOE",
+   "cifra": "45,5",
+   "calculo": "[x[2] for x in D['AIRE']['46'] if x[0]=='Sumar' and x[1]==3][0]"
+  },
+  {
+   "texto": "%) y el quinto del PSOE (45,1 %).",
+   "cifra": "45,1",
+   "calculo": "[x[2] for x in D['AIRE']['46'] if x[0]=='PSOE' and x[1]==5][0]"
+  },
+  {
+   "texto": "entre bloques: Vox pasa de 5 escaños a una media",
+   "cifra": "5",
+   "calculo": "D['E23']['CV']['VOX']"
+  },
+  {
+   "texto": "5 escaños a una media de 8,0 y el PP baja de 13 a",
+   "cifra": "8,0",
+   "calculo": "D['MEDIA']['CV']['Vox']"
+  },
+  {
+   "texto": "media de 8,0 y el PP baja de 13 a 11,7; el PSOE baja",
+   "cifra": "13",
+   "calculo": "D['E23']['CV']['PP']"
+  },
+  {
+   "texto": "8,0 y el PP baja de 13 a 11,7; el PSOE baja de 11",
+   "cifra": "11,7",
+   "calculo": "D['MEDIA']['CV']['PP']"
+  },
+  {
+   "texto": "13 a 11,7; el PSOE baja de 11 a 9,2 y Compromís se",
+   "cifra": "11",
+   "calculo": "D['E23']['CV']['PSOE']"
+  },
+  {
+   "texto": "11,7; el PSOE baja de 11 a 9,2 y Compromís se queda",
+   "cifra": "9,2",
+   "calculo": "D['MEDIA']['CV']['PSOE']"
+  },
+  {
+   "texto": "9,2 y Compromís se queda en 4,1, como los 4 de Sumar",
+   "cifra": "4,1",
+   "calculo": "D['MEDIA']['CV']['Sumar']"
+  },
+  {
+   "texto": "se queda en 4,1, como los 4 de Sumar en 2023.",
+   "cifra": "4",
+   "calculo": "D['MEDIA']['CV']['Sumar']"
+  },
+  {
+   "texto": "Castellón: dos escaños para cuatro candidatos",
+   "cifra": "cuatro",
+   "calculo": "len(D['AIRE']['12'])"
+  },
+  {
+   "texto": "El PP ganó en 307 municipios valencianos",
+   "cifra": "307",
+   "calculo": "D['GAN']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 542 municipios de la Comunitat",
+   "cifra": "542",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "unoEscaños medios en las 2.000 simulaciones del modelo",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "del 6 al 16 de octubre, da 18 escaños a PP y Vox y",
+   "cifra": "18",
+   "fuente": "https://www.elperiodicodeaqui.com/politica/encuesta-elecciones-generales-comunitat-valenciana_100123203_102.html"
+  },
+  {
+   "texto": "da 18 escaños a PP y Vox y 15 al PSOE y a Compromís:",
+   "cifra": "15",
+   "fuente": "https://www.elperiodicodeaqui.com/politica/encuesta-elecciones-generales-comunitat-valenciana_100123203_102.html"
+  },
+  {
+   "texto": "PSOE y a Compromís: el PP, 12; el PSOE, 10; Vox, 6,",
+   "cifra": "12",
+   "fuente": "https://www.elperiodicodeaqui.com/politica/encuesta-elecciones-generales-comunitat-valenciana_100123203_102.html"
+  },
+  {
+   "texto": "Compromís: el PP, 12; el PSOE, 10; Vox, 6, y Compromís-Front",
+   "cifra": "10",
+   "fuente": "https://www.elperiodicodeaqui.com/politica/encuesta-elecciones-generales-comunitat-valenciana_100123203_102.html"
+  },
+  {
+   "texto": "PP, 12; el PSOE, 10; Vox, 6, y Compromís-Front Valencià,",
+   "cifra": "6",
+   "fuente": "https://www.elperiodicodeaqui.com/politica/encuesta-elecciones-generales-comunitat-valenciana_100123203_102.html"
+  },
+  {
+   "texto": "Compromís-Front Valencià, 5. El periódico advierte",
+   "cifra": "5",
+   "fuente": "https://www.elperiodicodeaqui.com/politica/encuesta-elecciones-generales-comunitat-valenciana_100123203_102.html"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Valenciana elige 33 de los 350 diputados del Congreso:",
+   "motivo": "diputados del Congreso (LOREG, art. 162)"
+  },
+  {
+   "texto": "hay cinco puestos entre el 10 % y el 90 % de las simulaciones:",
+   "motivo": "umbral de la definición de puesto «en el aire» (10-90 %)"
+  },
+  {
+   "texto": "puestos entre el 10 % y el 90 % de las simulaciones:",
+   "motivo": "umbral de la definición de puesto «en el aire» (10-90 %)"
+  },
+  {
+   "texto": "2024, y su margen es amplio a 24 días de la votación.",
+   "motivo": "días del 5 al 29 de noviembre"
+  },
+  {
+   "texto": "que salen elegidos entre el 10 % y el 90 % de las simulaciones",
+   "motivo": "umbral de la definición de puesto «en el aire» (10-90 %)"
+  },
+  {
+   "texto": "elegidos entre el 10 % y el 90 % de las simulaciones",
+   "motivo": "umbral de la definición de puesto «en el aire» (10-90 %)"
+  }
+ ],
+ "permitir_espana": []
+}
