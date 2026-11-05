@@ -335,7 +335,8 @@ const S = {
       const y = top + i * rowH, k = ease((t - 0.5 - i * 0.15) / 0.6), w = lw * v / s.max * k;
       text(nm, X, y + 56, '800 50px ' + F.display, col(c), 'left', k);
       ctx.fillStyle = col(c); rrect(X + lab, y + 8, w, 64, 10);
-      text((s.signo ? '+' : '') + (s.enteros ? miles(v * k) : (v * k).toFixed(1).replace('.', ',')) + (s.unidad ?? ' %'), X + lab + w + 16, y + 56, '800 46px ' + F.display, C.fg, 'left', k);
+      const kv = s.fijo ? 1 : k;   // fijo: la cifra final desde el primer fotograma, sin contar
+      text((s.signo ? '+' : '') + (s.enteros ? miles(v * kv) : (v * kv).toFixed(1).replace('.', ',')) + (s.unidad ?? ' %'), X + lab + w + 16, y + 56, '800 46px ' + F.display, C.fg, 'left', k);
     });
   },
   // Horquillas por fila sobre un eje con una línea de referencia: s.filas = [[nombre, bajo, alto]], s.eje = [min, max], s.linea
