@@ -3764,6 +3764,8 @@ ESPECIAL_EEUU = ('<section class="esp" aria-labelledby="h-esp-eeuu"><p class="ki
     '<style>.esp{border:1px solid var(--line,#ddd);border-left:4px solid #1f5bc6;padding:14px 16px;margin:18px 0 26px}.esp h2{margin:.1rem 0 .6rem}.esp ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}'
     '@media(min-width:760px){.esp ul{grid-template-columns:1fr 1fr}}.esp a{display:block;text-decoration:none;color:inherit}.esp a b{display:block;text-decoration:underline}.esp a span{font-size:.9em;opacity:.8}</style>')
 
+EN_ESPECIAL = ('eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026', 'eeuu-noche-electoral-guia-horarios')
+
 
 def internacional(todas, css, imagen_tarjeta):
     """Página /internacional/: las elecciones de otros países, aparte de Actualidad (Nacho, 2-11-2026).
@@ -3776,14 +3778,15 @@ def internacional(todas, css, imagen_tarjeta):
     desc = 'Elecciones en el resto del mundo contadas con mapas: quién ganó en cada estado, distrito o municipio, y qué cambió. Cada cifra, con su fuente oficial.'
     jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Internacional', 'url': url, 'description': desc, 'inLanguage': 'es',
               'hasPart': [{'@type': 'AnalysisNewsArticle', 'headline': q['titulo'], 'url': f"{BASE}/actualidad/{q['slug']}/", 'datePublished': q['fecha']} for q in qs]}
+    # Las piezas de EE. UU. ya están en el bloque Especial: no se repiten debajo (Nacho, 5-11-2026, «hay como dos piezas repetidas»)
     tarjetas = ''.join(f'<li><a href="../actualidad/{q["slug"]}/">{imagen_tarjeta(q)}<span class="txt"><span class="kicker">{fecha_larga(q["fecha"])} · {q["lugar"]}</span>'
-                       f'<b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>' for q in qs)
+                       f'<b>{html.escape(q["titulo"])}</b><span class="d">{html.escape(q["descripcion"])}</span></span></a></li>' for q in qs if q['slug'] not in EN_ESPECIAL)
     out = (cabecera('Internacional: elecciones en el resto del mundo', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld).replace('<meta property="og:type" content="article">', '<meta property="og:type" content="website">')
            + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Internacional')
            + f'\n<main><p class="kicker">Mapa Electoral</p><h1 data-miga="Internacional">Internacional</h1><p>{desc} Las elecciones españolas, en <a href="../actualidad/">Actualidad</a>.</p>'
            + ESPECIAL_EEUU
-           + f'<h2>Todas las piezas</h2><ul class="sigue tarjetas">{tarjetas}</ul><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
+           + f'<h2>Las demás elecciones</h2><ul class="sigue tarjetas">{tarjetas}</ul><footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
            + POLITICA + '</footer></main>\n</body>\n</html>\n')
     os.makedirs(os.path.join(RAIZ, 'internacional'), exist_ok=True)
     open(os.path.join(RAIZ, 'internacional', 'index.html'), 'w', encoding='utf-8').write(sin_index(out))
