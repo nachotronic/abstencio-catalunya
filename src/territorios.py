@@ -2681,6 +2681,24 @@ def guias_portada():
             f'<ul class="carrusel">{li}</ul></section>')
 
 
+# Franja «Votar el 29N, estos días», justo debajo del mapa de la portada: lo que se busca cada semana antes del 29N
+# (tarjeta censal del 2 al 10 de noviembre, notificaciones de mesa, voto por correo hasta el 19). Se cambia aquí según el calendario.
+VOTAR_PORTADA = [('elecciones/tarjeta-censal-29n/', 'Tarjeta censal', '¿Te ha llegado la tarjeta censal? Mira cómo votó tu sección en 2023'),
+                 ('elecciones/mesa-electoral-29n/', 'Mesa electoral', '¿Te ha tocado mesa? Plazos, excusas que valen y cuánto se cobra'),
+                 ('elecciones/voto-por-correo-29n/', 'Voto por correo', 'Voto por correo: se pide hasta el 19 de noviembre')]
+
+
+def votar_portada():
+    li = ''.join(f'<li><a href="{r}"><span class="atlas-k">{k}</span><b>{t}</b></a></li>' for r, k, t in VOTAR_PORTADA)
+    css = ('.votar-29n{margin:18px auto 6px}.votar-29n h2{font-size:15px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px;color:var(--muted)}'
+           '.votar-29n ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}'
+           '.votar-29n a{display:block;height:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none}'
+           '.votar-29n a:hover b{text-decoration:underline}.votar-29n b{display:block;font-size:16px;line-height:1.3;margin-top:2px}'
+           '@media (max-width:760px){.votar-29n ul{grid-template-columns:1fr;gap:6px}.votar-29n a{padding:7px 10px}.votar-29n .atlas-k{font-size:11px}.votar-29n b{font-size:14.5px}}')
+    return (f'<section class="wide votar-29n" aria-labelledby="h-votar-29n"><style>{css}</style>'
+            f'<h2 id="h-votar-29n">Votar el 29N, estos días</h2><ul>{li}</ul></section>')
+
+
 def portada():
     """Rellena la franja entre <!--territorios--> y las guías entre <!--elecciones:guias--> (debajo de Actualidad)
     en la portada y en la plantilla del mapa (rutas desde generales-2026/)."""
@@ -2694,6 +2712,10 @@ def portada():
         rel = lambda s: re.sub(r'(href|src)="(?!https?:)', lambda m: f'{m.group(1)}="{pre}', s)
         franja = re.sub(r'href="(?!https?:)', 'href="' + pre, franja_portada())
         guias = rel(guias_portada())
+        votar = rel(votar_portada())
+        if '<!--votar:portada-->' not in t:   # debajo del mapa, antes de las listas
+            t = t.replace('<!--listas:portada-->', '<!--votar:portada--><!--/votar:portada-->\n<!--listas:portada-->', 1)
+        t = re.sub(r'<!--votar:portada-->.*?<!--/votar:portada-->', lambda m: '<!--votar:portada-->' + votar + '<!--/votar:portada-->', t, flags=re.S)
         t = re.sub(r'<!--territorios-->.*?<!--/territorios-->', lambda m: '<!--territorios-->' + franja + '<!--/territorios-->', t, flags=re.S)
         t = re.sub(r'<!--elecciones:guias-->.*?<!--/elecciones:guias-->', lambda m: '<!--elecciones:guias-->' + guias + '<!--/elecciones:guias-->', t, flags=re.S)
         f.write_text(t, encoding='utf-8')
