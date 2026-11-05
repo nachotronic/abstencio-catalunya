@@ -1,6 +1,6 @@
 {
  "plantilla": "guia",
- "kicker": "ENCUESTAS DEL 29N · 27 DE OCTUBRE",
+ "kicker": "ENCUESTAS DEL 29N · 5 DE NOVIEMBRE",
  "colores": {
   "PP": "#1d84ce",
   "PSOE": "#e30613",
@@ -13,7 +13,7 @@
    "tipo": "hook",
    "dur": 2.8,
    "lineas": [
-    "A 33 días del 29N,",
+    "A 24 días del 29N,",
     "¿qué dicen",
     [
      [
@@ -24,55 +24,34 @@
    ]
   },
   {
-   "tipo": "tabla",
-   "dur": 4.6,
+   "tipo": "numeros",
+   "dur": 4.2,
    "titulo": [
-    "4 encuestas",
-    "publicadas ayer"
+    "La última:",
+    "More in Common"
    ],
-   "sub": "% de voto estimado",
-   "cols": [
+   "sub": "publicada el 3 de noviembre",
+   "items": [
     [
+     "28,3 %",
      "PP",
-     "PP"
+     [
+      "PP"
+     ]
     ],
     [
+     "27,6 %",
      "PSOE",
-     "PSOE"
+     [
+      "PSOE"
+     ]
     ],
     [
+     "20,8 %",
      "Vox",
-     "Vox"
-    ]
-   ],
-   "filas": [
-    [
-     "SocioMétrica",
-     "El Español",
-     32.4,
-     27.0,
-     18.6
-    ],
-    [
-     "NC Report",
-     "La Razón",
-     33.1,
-     25.8,
-     19.0
-    ],
-    [
-     "Winston",
-     "Artículo14",
-     29.4,
-     27.1,
-     19.2
-    ],
-    [
-     "Sigma Dos",
-     "El Mundo",
-     30.6,
-     26.1,
-     19.9
+     [
+      "Vox"
+     ]
     ]
    ]
   },
@@ -81,24 +60,25 @@
    "dur": 3.8,
    "titulo": [
     "El PP gana en",
-    "15 de 16 encuestas"
+    "15 de 15 encuestas"
    ],
    "items": [
     [
      "15",
      "PP",
      [
-      "de las 16 encuestadoras del último",
+      "de las 15 encuestadoras del último",
       "mes dan ganador al PP"
-     ]
+     ],
+     true
     ],
     [
-     "1",
+     "0",
      "PSOE",
      [
-      "da ganador al PSOE:",
-      "el CIS"
-     ]
+      "dan ganador al PSOE"
+     ],
+     true
     ]
    ]
   },
@@ -115,27 +95,27 @@
     [
      "PP",
      "PP",
-     31.4
+     31.1
     ],
     [
      "PSOE",
      "PSOE",
-     26.7
+     26.6
     ],
     [
      "Vox",
      "Vox",
-     19.0
+     19.3
     ],
     [
      "Sumar",
      "Sumar",
-     6.8
+     6.9
     ],
     [
      "Podemos",
      "Podemos",
-     2.6
+     2.1
     ]
    ]
   },
@@ -156,14 +136,14 @@
    "color": "PP",
    "filas": [
     [
-     "Hamalgama Métrica",
-     212,
-     212
-    ],
-    [
      "NC Report",
      206,
      210
+    ],
+    [
+     "Hamalgama Métrica",
+     207,
+     207
     ],
     [
      "DYM",
@@ -171,19 +151,19 @@
      208
     ],
     [
-     "Data10",
+     "SocioMétrica",
      203,
      203
     ],
     [
      "Target Point",
      199,
-     203
+     207
     ],
     [
-     "SocioMétrica",
-     200,
-     200
+     "Sigma Dos",
+     196,
+     208
     ],
     [
      "40dB.",
@@ -196,24 +176,19 @@
      198
     ],
     [
+     "EM-Analytics",
+     197,
+     197
+    ],
+    [
      "Ateneo del Dato",
      183,
      211
     ],
     [
-     "Sigma Dos",
-     191,
-     200
-    ],
-    [
      "IMOP Insights",
      195,
      195
-    ],
-    [
-     "EM-Analytics",
-     194,
-     194
     ],
     [
      "GESOP",
@@ -227,7 +202,7 @@
     ]
    ],
    "nota": [
-    "14 de 14 les dan mayoría absoluta"
+    "13 de 13 les dan mayoría absoluta"
    ]
   },
   {

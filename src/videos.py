@@ -43,7 +43,7 @@ VIDEOS = [
     dict(nombre='listas-29n', t=8, k='Listas del 29N', titulo='4.031 candidatos al Congreso: 207 con el escaño en el aire', tuit=''),
     dict(nombre='inseguridad', t=8, k='Cataluña', titulo='La inseguridad ya preocupaba en Cataluña antes de los disturbios', tuit=''),
     dict(nombre='quien-vota', t=8, k='Participación', titulo='En los barrios ricos se vota 15 puntos más que en los pobres', tuit=''),
-    dict(nombre='encuestas-hoy', t=8, k='Encuestas', titulo='El PP gana en 15 de 16 encuestadoras', tuit=''),
+    dict(nombre='encuestas-hoy', t=8, k='Encuestas', titulo='El PP gana en las 15 encuestas del último mes', tuit=''),
     dict(nombre='pactos', t=4, k='Investidura', titulo='176 síes para gobernar a la primera', tuit=''),
     dict(nombre='atlas-cizur', t=8, k='Atlas de las anomalías', titulo='Cizur y Zizur Mayor: a 1,4 km y 31 puntos de distancia', tuit=''),
     dict(nombre='comunidades', t=8, k='Comunidades', titulo='Aragón ha votado lo mismo que España en las 16 generales', tuit=''),
