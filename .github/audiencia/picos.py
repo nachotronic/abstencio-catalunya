@@ -12,7 +12,7 @@ def grp(t1,t2,dims,limit=5000):
     f='{AND:[{siteTag:"%s"},{datetime_geq:"%s"},{datetime_lt:"%s"},{requestPath_notin:%s}]}'%(SITE,t1,t2,json.dumps(EXC))
     q='{viewer{accounts(filter:{accountTag:"%s"}){g:rumPageloadEventsAdaptiveGroups(limit:%d,filter:%s,orderBy:[sum_visits_DESC]){count sum{visits} dimensions{%s}}}}}'%(ACC,limit,f,' '.join(dims))
     return gql(q)
-H='09' # hora UTC fin, e.g. 09
+H='16' # hora UTC fin, e.g. 09
 for d in ['2026-11-04','2026-11-05']:
     rows=grp(f'{d}T00:00:00Z',f'{d}T{H}:00:00Z',['requestPath','refererHost'])
     sec=collections.Counter(); ref=collections.Counter(); pth=collections.Counter(); prov=collections.Counter()
@@ -38,3 +38,15 @@ for d1,d2 in [('2026-10-29','2026-11-05')]:
     f='{AND:[{siteTag:"%s"},{date_geq:"%s"},{date_leq:"%s"}]}'%(SITE,d1,d2)
     q='{viewer{accounts(filter:{accountTag:"%s"}){g:rumPageloadEventsAdaptiveGroups(limit:100,filter:%s){sum{visits} dimensions{date}}}}}'%(ACC,f)
     print('diario',sorted((r['dimensions']['date'],r['sum']['visits']) for r in gql(q)))
+
+RUT=['/actualidad/voto-correo-29n/','/elecciones/tarjeta-censal-29n/','/elecciones/mesa-electoral-29n/','/elecciones/voto-por-correo-29n/','/elecciones/votar-29n/']
+for d in ['2026-11-04','2026-11-05']:
+    rows=grp(f'{d}T00:00:00Z',f'{d}T{H}:00:00Z',['requestPath','refererHost'],10000)
+    print('\nRUTAS',d)
+    for r0 in RUT:
+        v=sum(r['sum']['visits'] for r in rows if r['dimensions']['requestPath']==r0)
+        c=sum(r['count'] for r in rows if r['dimensions']['requestPath']==r0)
+        ci=sum(r['count'] for r in rows if r['dimensions']['requestPath']==r0 and 'mapaelectoral' in (r['dimensions']['refererHost'] or ''))
+        print(f'  {r0}: visitas {v}, paginas vistas {c}, desde la propia web {ci}')
+    tot=sum(r['count'] for r in rows); intr=sum(r['count'] for r in rows if 'mapaelectoral' in (r['dimensions']['refererHost'] or ''))
+    print('  paginas vistas totales',tot,'internas',intr)
