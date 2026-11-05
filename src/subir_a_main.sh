@@ -23,7 +23,7 @@ for i in 1 2 3; do
     curl -fsS -X POST -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" \
       "https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$sha" \
       -d "{\"state\":\"success\",\"context\":\"verificar\",\"description\":\"verificar_piezas.py en el workflow $GITHUB_WORKFLOW\",\"target_url\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}" >/dev/null \
-      || echo "::warning::no se pudo publicar el estado «verificar»"
+      || { echo "::error::no se pudo publicar el estado «verificar» (¿falta statuses: write?)"; git push -q origin --delete "$temporal" || true; exit 1; }
     if git push origin HEAD:main; then git push -q origin --delete "$temporal" || true; exit 0; fi
     git push -q origin --delete "$temporal" || true
   fi
