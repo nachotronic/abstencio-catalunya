@@ -68,12 +68,12 @@
    "calculo": "D['MUN']['Monteagudo']['part']"
   },
   {
-   "texto": "Olazti, en la Sakana, con el 59,9 %, por delante de Ultzama",
+   "texto": "Olazti, en la Sakana, con el 59,9 %, seguido de Ultzama",
    "cifra": "59,9",
    "calculo": "D['MUN']['Olazti']['part']"
   },
   {
-   "texto": "%, por delante de Ultzama (61,5 %) e Irurtzun (61,6",
+   "texto": "%, seguido de Ultzama (61,5 %) e Irurtzun (61,6",
    "cifra": "61,5",
    "calculo": "D['MUN']['Ultzama']['part']"
   },

@@ -1722,7 +1722,7 @@ PIEZAS = [
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
     dict(
-        slug='cinturon-rojo-madrid-29n', fecha='2026-11-04',
+        slug='cinturon-rojo-madrid-29n', fecha='2026-11-04', actualizado='2026-11-05 07:32',
         titulo='El PP ganó Coslada por siete votos: el PSOE pasó de ganar en 16 de los 24 grandes municipios de Madrid a 4, aunque subió en todos', serie='29n', figura=0,
         descripcion='Fuenlabrada, Parla, Leganés y Getafe son lo que queda del cinturón rojo en las generales. En los 16 municipios que el PSOE ganaba en 2019, subió del 31,1 % al 33,0 %; el PP, del 19,6 % al 35,3 %, tras la desaparición de Ciudadanos.',
         compara='El partido más votado en cada uno de los 179 municipios de la Comunidad de Madrid en las generales de noviembre de 2019 y de julio de 2023, el voto de los 24 municipios de más de 50.000 habitantes desde 1977 y la media de encuestas para el 29N en la provincia.',
@@ -1737,7 +1737,7 @@ PIEZAS = [
         lugar='Comunidad de Madrid',
     ),
     dict(
-        slug='participacion-navarra-municipios-29n', fecha='2026-11-04',
+        slug='participacion-navarra-municipios-29n', fecha='2026-11-04', actualizado='2026-11-05 07:32',
         titulo='En la Navarra donde EH Bildu pasa del 40 % votó el 64 %; donde no llega al 15 %, el 71 %: el mapa de la participación, pueblo a pueblo', serie='29n', figura=0,
         descripcion='Fontellas votó un 80,9 % y Olazti un 59,9 %. En Navarra la participación apenas va ligada a la renta; al voto a EH Bildu, bastante más. Pamplona votó el 70,2 %, y a su alrededor la participación bajó respecto a 2019.',
         compara='La participación en las generales de julio de 2023 y de noviembre de 2019 y en las municipales de mayo de 2023 en los 86 municipios navarros de 1.000 habitantes o más, con su voto a EH Bildu y su renta.',
@@ -3886,7 +3886,7 @@ PIEZAS += [
 # Coordinador, 4-11-2026 7.57: la pieza de resultados de la mañana, con el Senado a mano y las dos fuentes
 PIEZAS += [
     dict(
-        slug='eeuu-resultados-medio-mandato-2026', fecha='2026-11-04', actualizado='2026-11-04 23:15',
+        slug='eeuu-resultados-medio-mandato-2026', fecha='2026-11-04', actualizado='2026-11-05 07:32',
         titulo='Los demócratas ganan el Senado y la Cámara, con escaños arrebatados a los republicanos de Carolina del Norte a Texas', serie='internacional',
         descripcion='Los demócratas tienen la mayoría de las dos cámaras del Congreso de Estados Unidos. En el Senado tienen 51 de los 100 escaños, y 54 con los pendientes de confirmar; en la Cámara, 232 escaños, 14 más de los 218 de la mayoría, frente a 138 republicanos, con 65 por decidir. Los demócratas arrebatan además a los republicanos los gobiernos de Georgia, Iowa, Nevada, Ohio y Texas.',
         compara='Las carreras al Senado y a gobernador y los 435 distritos de la Cámara que The New York Times (con las proyecciones de Associated Press o, en algunas carreras al Senado, las de su propia mesa de decisión) y NBC News dan por ganados, los dos, a las 23.05, hora peninsular, con el partido que tenía cada escaño.',
