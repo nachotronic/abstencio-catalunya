@@ -196,7 +196,7 @@ g_mapa = figura('De un mapa rojo, azul y verde a uno casi todo azul',
 AN24 = list(GANA24)
 g_serie = figura('El PSOE, en los grandes municipios de Madrid', 'Municipios de más de 50.000 habitantes (24) donde el PSOE fue el más votado en cada elección general',
                  barras([(t, PSOE24[t], COLOR['PSOE'], str(PSOE24[t])) for t in AN24], 24, 'Municipios grandes ganados por el PSOE', ml=70, alto=24),
-                 'Fuente: Ministerio del Interior. Los mismos 24 municipios en todas las elecciones (Tres Cantos no existía hasta 1991). '
+                 'Fuente: Ministerio del Interior. Los mismos 24 municipios en todas las elecciones (Tres Cantos no existía hasta 1991, y de 1977 nuestra serie no tiene los datos de Fuenlabrada). '
                  'Falta 2015: nuestra serie suma Podemos e IU, que fueron por separado, y no permite saber quién ganó cada municipio.', None,
                  (['Elección', 'PSOE', 'PP', 'Otros'], [[t, str(PSOE24[t]), str(GANA24[t].get('PP', 0)),
                                                        str(sum(v for k, v in GANA24[t].items() if k not in ('PSOE', 'PP')))] for t in AN24]))

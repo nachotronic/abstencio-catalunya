@@ -390,8 +390,8 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['pct']['Joe Lombardo']"
   },
   {
-   "texto": "44,2 %, con el 88 % del voto",
-   "cifra": "88",
+   "texto": "44,2 %, con el 87,8 % del voto",
+   "cifra": "87,8",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['eevp']"
   },
   {
