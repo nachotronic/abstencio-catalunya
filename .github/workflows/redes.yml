@@ -1,0 +1,64 @@
+# Publica en redes sociales las piezas nuevas de Actualidad y la cola programada (redes/cola.json).
+# No publica nada hasta que exista la variable del repo REDES_ACTIVAS y los secretos de cada red: redes/LEEME.md.
+# Para pararlo todo al instante: variable del repo REDES_PAUSA = 1.
+name: Redes sociales
+on:
+  schedule:
+    - cron: '4,19,34,49 * * * *'   # cada 15 minutos (minutos poco concurridos)
+  push:
+    branches: [main]
+    paths: ['actualidad/feed.xml', 'redes/cola.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: redes   # nunca dos pasadas a la vez: así no sale nada repetido
+  cancel-in-progress: false
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Registro de lo publicado (rama redes-registro)
+        run: |
+          git config user.name "mapaelectoral-redes"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin redes-registro; then
+            git worktree add -q ../registro origin/redes-registro
+          else
+            git worktree add -q --detach ../registro
+            cd ../registro && git checkout -q --orphan redes-registro && git rm -rqf . && echo '{}' > registro.json
+          fi
+      - name: Esperar a que la web publique el push
+        if: github.event_name == 'push'
+        run: sleep 150
+      - name: Publicar
+        env:
+          REDES_ACTIVAS: ${{ vars.REDES_ACTIVAS }}
+          REDES_PAUSA: ${{ vars.REDES_PAUSA }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          BLUESKY_USUARIO: ${{ secrets.BLUESKY_USUARIO }}
+          BLUESKY_PASSWORD_APP: ${{ secrets.BLUESKY_PASSWORD_APP }}
+          MASTODON_SERVIDOR: ${{ secrets.MASTODON_SERVIDOR }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CANAL: ${{ secrets.TELEGRAM_CANAL }}
+          THREADS_USUARIO_ID: ${{ secrets.THREADS_USUARIO_ID }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          INSTAGRAM_USUARIO_ID: ${{ secrets.INSTAGRAM_USUARIO_ID }}
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+        run: |
+          pip install --quiet requests requests-oauthlib
+          python3 redes/src/publicar.py --registro ../registro/registro.json --cola redes/cola.json --resumen "$GITHUB_STEP_SUMMARY"
+      - name: Guardar el registro
+        if: always()
+        run: |
+          cd ../registro
+          git add registro.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -qm "Registro de redes $(date -u +%FT%TZ)"
+          git push -q origin HEAD:redes-registro
