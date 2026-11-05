@@ -332,7 +332,7 @@
   {
    "texto": "tres ya estaban en el filo",
    "cifra": "tres",
-   "calculo": "len(sorted(F3D, key=lambda f: f[3])[:3])",
+   "calculo": "len(sorted([f for f in F3D if f[3] is not None], key=lambda f: f[3])[:3])",
    "_gen": "recorrido"
   },
   {
