@@ -1762,6 +1762,8 @@ PIEZAS = [
                  ('https://www.boe.es/boe/dias/2026/11/03/', 'BOE del 3 de noviembre de 2026, candidaturas proclamadas'),
                  ('https://econpapers.repec.org/RePEc:cup:pscirm:v:4:y:2016:i:02:p:379-397_00', 'Fernández-Vázquez, Barberá y Rivero, Political Science Research and Methods (2016)')],
         enlaces=[],
+        foto=dict(src='img/actualidad/fotos/psoe-valencia-abalos-municipios-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='José Luis Ábalos ante unos papeles, una urna y las casas de un pueblo: un collage.'),
         lugar='Valencia',
     ),
     dict(
