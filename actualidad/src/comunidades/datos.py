@@ -125,7 +125,7 @@ EXTRA = {'madrid': [(1999, '2003', {'PP': 55, 'PSOE': 47, 'PCE / IU': 9}, 111), 
 
 # 2015: en estas provincias la suma de Podemos, IU y sus aliados superaba al ganador real
 PROV_CORR = {('canarias', 'Las Palmas', '2015_12'): ('PP', 28.2), ('pais-vasco', 'Bizkaia', '2015_12'): ('PNV', 28.1),
-             ('comunidad-valenciana', 'Valencia/Valéncia', '2015_12'): ('PP', 30.4),
+             ('comunidad-valenciana', 'Valencia/València', '2015_12'): ('PP', 30.4),
              ('pais-vasco', 'Araba/Álava', '2015_12'): ('SUMAR', 27.0), ('pais-vasco', 'Gipuzkoa', '2015_12'): ('SUMAR', 25.3)}
 
 
