@@ -1,0 +1,161 @@
+{
+ "pieza": "psoe-valencia-abalos-municipios-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "número dos sacó en 2023 el 32,4 %, su mejor resultado",
+   "cifra": "32,4",
+   "calculo": "D['SERIE']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "el modelo le da los mismos 5 escaños",
+   "cifra": "5",
+   "calculo": "D['MOD']['escanos'][1]"
+  },
+  {
+   "texto": "PSOE fue el más votado en 134 de los 266 municipios",
+   "cifra": "134",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "más votado en 134 de los 266 municipios en 2023 y",
+   "cifra": "266",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "respecto a noviembre de 2019 en 232. Para el 29N, el modelo,",
+   "cifra": "232",
+   "calculo": "D['SUBE']"
+  },
+  {
+   "texto": "anteriores al registro, le da 5 escaños en la mediana.",
+   "cifra": "5",
+   "calculo": "D['MOD']['escanos'][1]"
+  },
+  {
+   "texto": "lista sacó en la provincia el 32,4 % de los votos, su mejor",
+   "cifra": "32,4",
+   "calculo": "D['SERIE']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "mejor resultado desde 2008 (40,4 %) y 5,1 puntos más",
+   "cifra": "40,4",
+   "calculo": "D['SERIE']['2008_03']['PSOE']"
+  },
+  {
+   "texto": "resultado desde 2008 (40,4 %) y 5,1 puntos más que en noviembre",
+   "cifra": "5,1",
+   "calculo": "D['SERIE']['2023_07']['PSOE']-D['SERIE']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "noviembre de 2019. El PP sacó el 33,9 %. El PSOE sacó 5 de",
+   "cifra": "33,9",
+   "calculo": "D['SERIE']['2023_07']['PP']"
+  },
+  {
+   "texto": "sacó el 33,9 %. El PSOE sacó 5 de los 16 diputados",
+   "cifra": "5",
+   "calculo": "D['ESC23']"
+  },
+  {
+   "texto": "%. El PSOE sacó 5 de los 16 diputados de la provincia.",
+   "cifra": "16",
+   "calculo": "16"
+  },
+  {
+   "texto": "PSOE fue el más votado en 134 de los 266 municipios",
+   "cifra": "134",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "más votado en 134 de los 266 municipios de la provincia",
+   "cifra": "266",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "respecto a noviembre de 2019 en 232. Entre los que tienen",
+   "cifra": "232",
+   "calculo": "D['SUBE']"
+  },
+  {
+   "texto": "porcentaje sacó fue Gandia, con el 35,3 %.",
+   "cifra": "35,3",
+   "calculo": "D['GRANDES'][0][1]"
+  },
+  {
+   "texto": "encabeza Pilar Bernabé, y de los 16 titulares de 2023 solo",
+   "cifra": "16",
+   "calculo": "16"
+  },
+  {
+   "texto": "titulares de 2023 solo repiten 3: Carmen Martínez Ramírez,",
+   "cifra": "3",
+   "calculo": "len(D['REPITEN'])"
+  },
+  {
+   "texto": "le da en la mediana de las 2.000 simulaciones 5 escaños,",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "de las 2.000 simulaciones 5 escaños, los mismos",
+   "cifra": "5",
+   "calculo": "D['MOD']['escanos'][1]"
+  },
+  {
+   "texto": "mismos que en 2023, y entre 4 y 6 en el 80 % central.",
+   "cifra": "4",
+   "calculo": "D['MOD']['escanos'][0]"
+  },
+  {
+   "texto": "que en 2023, y entre 4 y 6 en el 80 % central.",
+   "cifra": "6",
+   "calculo": "D['MOD']['escanos'][2]"
+  },
+  {
+   "texto": "6 en el 80 % central. Con 5, saldrían elegidos de",
+   "cifra": "5",
+   "calculo": "D['MOD']['escanos'][1]"
+  },
+  {
+   "texto": "Martínez Ramírez, la número 5.",
+   "cifra": "5",
+   "calculo": "D['MOD']['escanos'][1]"
+  },
+  {
+   "texto": "PSOE fue el más votado en 134 de los 266 municipios",
+   "cifra": "134",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "más votado en 134 de los 266 municipios de la provinciaPorcentaje",
+   "cifra": "266",
+   "calculo": "D['NMUN']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Valencia, según Público. Hubo seis detenidos, entre ellos",
+   "cifra": "seis",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/05/la-uco-registra-la-casa-de-abalos-y-pide-informacion-a-adif-sobre-contratos-amanados/"
+  },
+  {
+   "texto": "junio el Supremo lo condenó a 24 años por liderar una",
+   "cifra": "24",
+   "fuente": "https://www.elespanol.com/espana/tribunales/20260622/supremo-condena-abalos-anos-prision-liderar-grupo-criminal-koldo-libra-aldama-carcel-ayudar-justicia/1003744278646_0.html"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Entre los que tienen más de 50.000 electores, donde mayor",
+   "motivo": "umbral de electores para elegir los municipios grandes"
+  },
+  {
+   "texto": "2023, y entre 4 y 6 en el 80 % central. Con 5, saldrían",
+   "motivo": "definición del intervalo entre los percentiles 10 y 90"
+  }
+ ],
+ "permitir_espana": []
+}
