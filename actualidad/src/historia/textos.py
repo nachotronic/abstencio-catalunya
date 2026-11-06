@@ -169,7 +169,7 @@ dispersion('apvox',PT.map(p=>[p[2],p[3],p[4],p[5]]),{max:40,ticks:[0,10,20,30,40
 
 # ---------------------------------------------------------------------------------------------------------------
 P.append(dict(
-    slug='pueblos-menos-votantes-que-en-1977', lugar='España', datos=['censo_pueblos'],
+    slug='pueblos-menos-votantes-que-en-1977', actualizado='2026-11-06 10:55', lugar='España', datos=['censo_pueblos'],
     foto=dict(src='img/actualidad/fotos/pueblos-menos-votantes-que-en-1977.jpg', ancho=1280, alto=720, ia=True, pie='Un pueblo de la meseta y un camino vacío.', origen='pueblo-vacio.jpg'),
     corto='Menos votantes que en 1977',
     titulo='6 de cada 10 municipios tienen menos electores que en 1977; Las Rozas tiene 14 veces más',
@@ -287,7 +287,7 @@ tabla('top',['Municipio','Provincia','PCE 1977','Sumar 2023'],T.top77.map(c=>[c[
 
 # ---------------------------------------------------------------------------------------------------------------
 P.append(dict(
-    slug='psoe-1982-mas-del-60', lugar='España', datos=['psoe60'],
+    slug='psoe-1982-mas-del-60', actualizado='2026-11-06 10:55', lugar='España', datos=['psoe60'],
     corto='El PSOE de 1982',
     titulo='En 1982 el PSOE pasaba del 60 % en al menos 748 municipios; en 2023, en 67',
     dek='El 28 de octubre de 1982 el PSOE sacó el 48,2 % y su mayor victoria. Superó el 60 % en al menos 748 municipios. En julio de 2023 lo hizo en 67. '
@@ -465,7 +465,7 @@ tabla('prov',['Elección','Ourense','Lugo','España','Electores Ourense','Electo
 
 # ---------------------------------------------------------------------------------------------------------------
 P.append(dict(
-    slug='europeas-arona', lugar='Canarias, Ceuta y Melilla', datos=['europeas'],
+    slug='europeas-arona', actualizado='2026-11-06 10:55', lugar='Canarias, Ceuta y Melilla', datos=['europeas'],
     corto='Europeas en Arona',
     titulo='En Arona votó uno de cada cinco electores en las europeas de 2014',
     dek='Las europeas de 2014 dejaron el 45,8 % de participación en España. En Arona (Tenerife), el 22,3 %, el mínimo entre los municipios de más de 20.000 electores. '

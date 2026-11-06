@@ -106,7 +106,7 @@ PIEZAS = [
                  ('https://www.canarias7.es/elecciones/generales/convocatoria-elecciones-generales-obliga-cancelar-eventos-programados-20261007131300-nt.html', 'Canarias7, eventos cancelados por el 29N (7-10-2026)')],
         enlaces=[],
         lugar='España',
-        actualizado='2026-10-09',
+        actualizado='2026-11-06 10:55',
         correcciones='9-10-2026: el BOE publicó el decreto el martes 6 de octubre, no el lunes.',
     ),
     dict(
@@ -179,7 +179,7 @@ PIEZAS = [
                  (EL_ESPANOL, 'El Español, directo sobre la muerte de Maricarmen Abascal (7-10-2026)')],
         enlaces=[],
         lugar='703 municipios',
-        actualizado='2026-10-09',
+        actualizado='2026-11-06 10:55',
         correcciones='9-10-2026: la correlación dentro de cada ciudad va de 0,08 a 0,14, no «no llega a 0,1». La conclusión, que la relación es muy débil, no cambia.',
     ),
     dict(
@@ -619,7 +619,7 @@ PIEZAS = [
     ),
     dict(
         slug='calle-que-parte-el-voto', fecha='2026-10-15',
-        actualizado='2026-11-02 14:55',
+        actualizado='2026-11-06 10:55',
         titulo='La calle que parte el voto: el PP sacó el 55,9% a un lado de la avenida de Francia, en València, y el 16,4% al otro', serie='29n',
         descripcion='En nueve grandes ciudades, una de cada cinco parejas de secciones censales vecinas eligió un ganador distinto en 2023. Seis calles donde se ve, de El Palo a la Diagonal, y un patrón de renta.',
         compara='Las 16.154 parejas de secciones censales contiguas (al menos 80 metros de límite común y 400 electores cada una) de Madrid, Barcelona, València, Sevilla, Zaragoza, Málaga, Murcia, Palma y Bilbao en las generales de 2023, y su renta por unidad de consumo de 2023.',
@@ -678,7 +678,7 @@ PIEZAS = [
                   pie='Azoteas, árboles y una fuente: una ciudad mediterránea en collage.'),
     ),
     dict(
-        slug='valencia-barrio-a-barrio-29n', fecha='2026-10-15',
+        slug='valencia-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-06 10:55',
         titulo='València borró a Compromís del mapa: ganaba en 101 secciones en 2019 y en 15 en 2023', serie='29n',
         descripcion='El PP pasó a ser el más votado en 335 de las 591 secciones censales de la ciudad. El PSOE resiste en un arco de barrios del norte, el oeste y el mar, y 64 secciones se decidieron por menos de dos puntos.',
         compara='Las 591 secciones censales de València en las generales de noviembre de 2019 y julio de 2023, agrupadas por distrito censal del INE y por tramos de renta por unidad de consumo de 2023.',
@@ -894,7 +894,7 @@ PIEZAS = [
         lugar='España',
     ),
     dict(
-        slug='pensiones-censo-mayores-29n', fecha='2026-10-16',
+        slug='pensiones-censo-mayores-29n', fecha='2026-10-16', actualizado='2026-11-06 10:55',
         titulo='Feijóo y Sánchez chocan por las pensiones en un censo con 10,2 millones de electores de 65 años o más: superan a los de 18 a 34 en 49 de las 52 provincias', serie='29n',
         descripcion='En Zamora, Ourense y Lugo hay casi tres electores mayores por cada joven. Las nueve provincias donde los mayores doblan a los jóvenes eligen 34 diputados, y en todas ganó el PP en 2023.',
         compara='Los electores residentes en España de 65 años o más y de 18 a 34 en cada una de las 52 provincias, según el censo de consulta de las generales del 29N y el de 2023, junto al partido más votado en cada provincia en 2023 y los escaños que elige el 29N.',
@@ -953,7 +953,7 @@ PIEZAS = [
                   pie='Gabriel Rufián e Irene Montero, con el hemiciclo del Congreso y dos papeles en blanco entre ambos: un collage.'),
     ),
     dict(
-        slug='desahucios-ocupaciones-cgpj-29n', fecha='2026-10-16',
+        slug='desahucios-ocupaciones-cgpj-29n', fecha='2026-10-16', actualizado='2026-11-06 10:55',
         titulo='Ocupación: en las provincias con más demandas ante los juzgados, Vox sacó el 15,9% en 2023, frente al 11,5% en las que menos', serie='29n',
         descripcion='Los datos del CGPJ publicados hoy: los desahucios por alquiler caen un 57,7% y las demandas por ocupación, un 9%. Por habitante, Ávila, Baleares y Girona encabezan las demandas; el cruce con el voto de 2023 apenas dibuja un patrón.',
         compara='Los lanzamientos practicados y las demandas por ocupación ilegal de vivienda ingresadas en los juzgados por trimestre desde 2025, y por provincia en 2025 por cada 100.000 habitantes, junto al voto de 2023 en cada provincia.',
@@ -1230,7 +1230,7 @@ PIEZAS = [
                   pie='Santiago Abascal, cabizbajo, ante la Torre de Hércules de A Coruña.'),
     ),
     dict(
-        slug='funcionarios-pagas-extra-29n', fecha='2026-10-22',
+        slug='funcionarios-pagas-extra-29n', fecha='2026-10-22', actualizado='2026-11-06 10:55',
         titulo='El 29N deja en el aire la subida de tres millones de empleados públicos: en Teruel o Soria hay el doble por habitante que en Barcelona, y donde más pesan, Sumar sacó un tercio menos', serie='29n',
         descripcion='El Gobierno promete el 4,5% en enero, pero no dice si lo aprobará antes de las elecciones. En las provincias con más empleo público, sobre todo del interior, Sumar sacó el 9,7% en 2023; donde menos, el 14,3%. Del PP, la diferencia casi desaparece sin Cataluña.',
         compara='Los empleados públicos por cada 100 habitantes en cada provincia, según el registro de enero de 2026, y el voto al Congreso en julio de 2023, con las provincias agrupadas en tres grupos con la misma población. También sin Cataluña, el País Vasco ni Navarra.',
@@ -1335,7 +1335,7 @@ PIEZAS = [
     ),
     dict(
         slug='casas-vacias-segundas-residencias', fecha='2026-10-22',
-        actualizado='2026-10-23 23:15',
+        actualizado='2026-11-06 10:55',
         titulo='En 4.441 municipios hay más casas sin vecinos que con ellos', serie='vivienda',
         descripcion='En 4.441 de los 8.131 municipios, más de la mitad de las viviendas no son residencia habitual. Mapas de las casas vacías (Galicia) y de temporada (costa y sierras). Ávila (59,4%), Teruel y Soria encabezan el interior; Oropesa del Mar (85%) y Peníscola, la costa. El PP saca más donde hay más casas vacías, pero por edad y provincia. Los pueblos de segunda residencia votan cuatro puntos menos.',
         compara='El porcentaje de viviendas no principales de cada municipio (Censo 2021) y, en los municipios con datos de consumo eléctrico, el de viviendas vacías y de uso esporádico, con el voto y la participación de cada municipio en las generales de julio de 2023: en cinco grupos con el mismo número de votantes, en toda España y dentro de cada provincia; una regresión con provincia, edad media, renta y tamaño; y, por sección censal, la comparación dentro de cada municipio con renta, edad y población extranjera.',
@@ -1596,7 +1596,7 @@ PIEZAS = [
                   pie='Alberto Núñez Feijóo, ante el micrófono de un estudio de radio frente a su entrevistador: un collage.'),
     ),
     dict(
-        slug='pueblos-unanimes-empates-29n', fecha='2026-10-23',
+        slug='pueblos-unanimes-empates-29n', fecha='2026-10-23', actualizado='2026-11-06 10:55',
         titulo='Mota del Cuervo, 1.243 a 1.243: los pueblos del empate y los del voto unánime', serie='29n', figura=1,
         descripcion='En 94 municipios los dos primeros partidos empataron en las generales de 2023; en tres de ellos, con más de mil votos. En otros cinco, un solo partido se llevó todos los votos, y en Orexa fueron 62 de 62 para EH Bildu.',
         compara='Los votos de cada partido en cada municipio en las generales de 2023, y la serie de empates y de votos unánimes en todas las generales desde 1977.',
@@ -1615,7 +1615,7 @@ PIEZAS = [
                   pie='Un pueblo con su campanario y una lluvia de papeletas iguales: un collage.'),
     ),
     dict(
-        slug='ganar-por-un-voto-29n', fecha='2026-10-23',
+        slug='ganar-por-un-voto-29n', fecha='2026-10-23', actualizado='2026-11-06 10:55',
         titulo='Santa Cruz de Mudela, 874 a 873: los 185 pueblos que se ganaron por un voto', serie='29n', figura=0,
         descripcion='En las generales de 2023, en 185 municipios el partido más votado ganó por un solo voto. El récord de la democracia es de Almoradí, en 2019: el PP le sacó un voto a Vox con más de nueve mil votantes.',
         compara='Los votos de cada partido en cada municipio en las generales de 2023, y los municipios ganados por un voto en todas las generales desde 1977.',
@@ -1749,7 +1749,7 @@ PIEZAS = [
         lugar='Navarra',
     ),
     dict(
-        slug='psoe-valencia-abalos-municipios-29n', fecha='2026-11-06',
+        slug='psoe-valencia-abalos-municipios-29n', fecha='2026-11-06', actualizado='2026-11-06 10:55',
         titulo='La lista del PSOE por Valencia con Ábalos de número dos sacó en 2023 el 32,4 %, su mejor resultado desde 2008; el 29N, con Pilar Bernabé, el modelo le da los mismos 5 escaños', serie='29n', figura=0,
         descripcion='La UCO registró el 5 de noviembre la casa del exministro en Valencia. En la provincia, el PSOE fue el más votado en 134 de los 266 municipios en 2023 y subió respecto a noviembre de 2019 en 232. Para el 29N, el modelo, con encuestas anteriores al registro, le da 5 escaños en la mediana.',
         compara='El voto al PSOE en la provincia de Valencia en las ocho generales desde 2004, por municipio en 2023, las listas proclamadas de 2023 y 2026 y el reparto que da el modelo de encuestas de Mapa Electoral del 5 de noviembre.',
@@ -1862,7 +1862,7 @@ PIEZAS = [
         lugar='Bilbao y Donostia',
     ),
     dict(
-        slug='cuatro-semanas-29n-la-semana-en-el-mapa', fecha='2026-10-31',
+        slug='cuatro-semanas-29n-la-semana-en-el-mapa', fecha='2026-10-31', actualizado='2026-11-06 10:55',
         titulo='A cuatro semanas del 29N, 250 escaños están casi decididos y 204 candidatos se juegan los otros 100: la semana en que la campaña se paró', serie='29n', figura=0,
         descripcion='Crónica de la semana del 24 al 30 de octubre desde los mapas: las listas del BOE, el pacto de PP y Vox en el Senado, los disturbios de Barcelona, Puente en Valladolid, los pueblos de la DANA y las encuestas. El choque de trenes de Urda paró la precampaña el miércoles.',
         compara='Las cifras de las 25 piezas de Actualidad publicadas entre el 25 y el 30 de octubre: simulaciones del modelo de encuestas con las listas del BOE, resultados de 2023 por sección y municipio, y barómetros del CIS.',
@@ -2064,6 +2064,8 @@ COMUNIDADES = []
 for h in piezas_comunidades():
     q = {k: h[k] for k in ('slug', 'titulo', 'descripcion', 'compara', 'limites', 'fuentes', 'lugar')}
     q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
+    if h.get('actualizado'):
+        q['actualizado'] = h['actualizado']
     # <title> con lo que se busca («qué partido gobierna…», «desde cuándo gobierna…»); el titular sigue en h1 y og:title
     corto = re.sub(r'^(La|El) ', '', h['corto'].replace(' en las urnas', ''))
     q['titulo_seo'] = f'¿Quién gobierna {corto}? Historia electoral y resultados desde 1977'
@@ -2492,7 +2494,7 @@ PIEZAS += [
     ),
     dict(
         slug='salarios-pensiones-ayudas-espana', fecha='2026-10-21',
-        actualizado='2026-10-23 23:15',
+        actualizado='2026-11-06 10:55',
         titulo='Ante el 29N: del Polígono Sur a la Cañada Real, en 78 de los 93 barrios donde más pesan las ayudas sociales no votó ni la mitad', serie='29n',
         descripcion='Datos de Hacienda vía el INE, sección a sección: en esos 93 barrios las prestaciones pasan del 20% de la renta. En el quinto de secciones donde más pesan se votó 9,6 puntos menos y el PSOE sacó 10 más que el PP; donde más pesan las pensiones, casi igual que en el resto.',
         compara='La composición de la renta bruta de 2023 (salarios, pensiones, prestaciones por desempleo, otras prestaciones y otros ingresos) de 33.260 secciones censales de España, cruzada con la participación y el voto en las generales de julio de 2023; por secciones, por grupos de secciones y por provincias.',
@@ -2512,7 +2514,7 @@ PIEZAS += [
                   pie='Un bloque de pisos, una declaración de la renta, monedas, una madre con su hijo, un pensionista, el mapa de España y una urna: un collage.'),
     ),
     dict(
-        slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-20',
+        slug='municipios-izquierda-1977-derecha-2023', fecha='2026-10-20', actualizado='2026-11-06 10:55',
         titulo='Con el PSOE andaluz en mínimos: Sevilla, Jerez y otros 170 municipios que votaron a la izquierda en todas las generales de 1977 a 2008 dieron en 2023 más votos a PP y Vox', serie='29n',
         descripcion='En 172 municipios con 2,23 millones de electores, la izquierda estatal sumó más que la derecha en las diez generales de 1977 a 2008 y en 2023 fue al revés: Sevilla, Jerez, Móstoles, Algeciras, Chiclana. 115 cambiaron en 2011. El camino contrario lo han hecho 147, casi todos pequeños.',
         compara='Los 7.845 municipios con datos de las 16 elecciones generales de 1977 a 2023, con el voto sumado en dos bloques: izquierda estatal (PSOE y PCE, IU, Podemos o Sumar) y derecha estatal (UCD, CDS, AP y PP, Ciudadanos, UPyD y Vox). Feudo: un bloque suma más en las diez generales de 1977 a 2008. Vuelco: el otro bloque suma más en 2023.',
@@ -2931,7 +2933,7 @@ PIEZAS += [
         lugar='Barcelona',
     ),
     dict(
-        slug='dana-pueblos-primeras-generales-29n', fecha='2026-10-29',
+        slug='dana-pueblos-primeras-generales-29n', fecha='2026-10-29', actualizado='2026-11-06 10:55',
         foto=dict(src='img/actualidad/fotos/dana-pueblos-primeras-generales-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Carlos Mazón, presidente de la Generalitat el día de la riada, entre una urna con sobres y una calle de pueblo con la marca del barro en las fachadas: un collage.'),
         titulo='Dos años de la DANA: sus 74 pueblos llegan al 29N partidos, 38 del PSOE y 36 del PP', serie='29n',
@@ -4108,7 +4110,7 @@ PIEZAS += [
                   pie='Tiendas de campaña recogidas ante la Casa de Correos, en la Puerta del Sol, con policías al lado: un collage.'),
     ),
     dict(
-        slug='listas-proclamadas-29n', fecha='2026-11-03', actualizado='2026-11-04 08:26',
+        slug='listas-proclamadas-29n', fecha='2026-11-03', actualizado='2026-11-06 10:55',
         titulo='Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León', serie='29n', figura=0,
         descripcion='El BOE publica las candidaturas proclamadas: 21 listas al Congreso y 11 al Senado no pasan el corte. En León, la junta envía a la Fiscalía la copia del DNI de una suplente de Podemos, y en Tenerife el número dos del PP al Senado es otro.',
         compara='Las candidaturas al Congreso y al Senado del BOE de candidaturas presentadas (28 de octubre de 2026) y del BOE de candidaturas proclamadas (3 de noviembre de 2026), lista a lista y nombre a nombre, en las 52 circunscripciones y las islas.',

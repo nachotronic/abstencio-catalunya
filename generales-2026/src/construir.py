@@ -93,6 +93,7 @@ def bonito(n):
     """'Palmas de Gran Canaria, Las' -> 'Las Palmas de Gran Canaria'; 'Balears, Illes' -> 'Illes Balears'."""
     if not isinstance(n, str):
         return n
+    n = n.replace('Valéncia', 'València')   # la fuente trae «Valencia/Valéncia»; el nombre oficial en valenciano lleva tilde grave
     m = re.match(r'^(.*), (La|Las|El|Los|L\'|Les|Els|A|As|O|Os|Illes|Lo)$', n)
     if m:
         art = m.group(2)

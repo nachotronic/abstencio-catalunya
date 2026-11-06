@@ -18,7 +18,7 @@ CCAA = {
  'castilla-la-mancha': ('Castilla-La Mancha', ['Albacete', 'Ciudad Real', 'Cuenca', 'Guadalajara', 'Toledo']),
  'castilla-y-leon': ('Castilla y León', ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora']),
  'cataluna': ('Cataluña', ['Barcelona', 'Girona', 'Lleida', 'Tarragona']),
- 'comunidad-valenciana': ('Comunitat Valenciana', ['Alicante', 'Castellón/Castelló', 'Valencia/Valéncia']),
+ 'comunidad-valenciana': ('Comunitat Valenciana', ['Alicante', 'Castellón/Castelló', 'Valencia/València']),
  'extremadura': ('Extremadura', ['Badajoz', 'Cáceres']),
  'galicia': ('Galicia', ['A Coruña', 'Lugo', 'Ourense', 'Pontevedra']),
  'madrid': ('Comunidad de Madrid', ['Madrid']),
