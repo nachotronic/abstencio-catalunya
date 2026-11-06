@@ -3122,7 +3122,7 @@ PIEZAS += [
 SERIES['internacional'] = 'Internacional'
 PIEZAS += [
     dict(
-        slug='brasil-lula-remontada-mapa-estados', fecha='2026-10-26', actualizado='2026-10-27 06:55',
+        slug='brasil-lula-remontada-mapa-estados', fecha='2026-10-26', actualizado='2026-11-06 08:10',
         titulo='Lula pasó de perder por 2,2 millones de votos a ganar por 4,4: en el mapa de Brasil solo Minas Gerais cambió de color', serie='internacional',
         descripcion='En tres semanas, Lula sumó 10,4 millones de votos y Flávio Bolsonaro, 3,7. Casi la mitad de la subida de Lula salió del Sudeste, donde aun así perdió. Frente a 2022, 25 de los 27 estados votaron al mismo candidato, y la región Norte se decidió por 1.079 votos.',
         compara='La primera y la segunda vuelta de las presidenciales de Brasil de 2026 en los 27 estados (26 estados y el Distrito Federal), frente a la segunda vuelta de 2022; la ventaja del más votado en cada vuelta desde 1989, y la abstención en las presidenciales desde 1994.',
@@ -3137,7 +3137,7 @@ PIEZAS += [
                  ('https://revistaoeste.com/politica/flavio-supera-lula-pela-1a-vez-em-minas-mostra-quaest/', 'Revista Oeste, Minas Gerais y el ganador de las presidenciales desde 1989'),
                  ('https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm', 'Constitución de la República Federativa de Brasil, artículo 14'),
                  ('https://www.bahianoticias.com.br/noticia/321931-desde-1989-quem-ganha-o-primeiro-turno-para-presidente-vence-tambem-o-segundo-e-tabu-pode-ser-quebrado', 'Bahia Notícias, desde 1989 quien gana la primera vuelta gana también la segunda (resultados de 1989)'),
-                 ('https://www.gazetasp.com.br/cotidiano/44528-desde-diretas-ja-brasil-nunca-teve-virada-no-segundo-tur/', 'Gazeta SP (Folhapress), Brasil nunca tuvo una remontada en segunda vuelta desde las Diretas Já (resultados de 1989)')],
+                 ('https://web.archive.org/web/20261006010733/https://www.gazetasp.com.br/cotidiano/44528-desde-diretas-ja-brasil-nunca-teve-virada-no-segundo-tur/', 'Gazeta SP (Folhapress), Brasil nunca tuvo una remontada en segunda vuelta desde las Diretas Já (resultados de 1989; copia de Internet Archive)')],
         enlaces=[],
         lugar='Brasil',
         foto=dict(src='img/actualidad/fotos/brasil-lula-remontada-mapa-estados.jpg', ancho=1280, alto=720, grafico=True,
