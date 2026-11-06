@@ -747,6 +747,7 @@ def pagina_ciudad(cod):
     h.append(f'<p class="subtitulo">{"Censo para el 29N, r" if b_censo else "R"}esultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
+    h.append(bloque_encuesta_prov(p, nombre))
     h.append(bloque_donde_votar(nombre, cod))
     h.append(bloque_te_toca_mesa(nombre, cod))
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
@@ -915,6 +916,7 @@ def pagina_barrio(cod, b, todos):
     h.append(f'<p class="resumen">{tipo("Dato")}{lead}</p>')
     h.append(f'<p class="calle">¿Y en tu calle? <a href="{raiz}elecciones/que-voto-tu-calle/">Busca tu dirección</a> y mira qué votó tu sección censal en cada elección desde 2004.</p>')
     cif_b = f'{num(r["censo"])} electores en las generales de 2023, en {num(len(cods))} {"sección censal" if len(cods) == 1 else "secciones censales"}'
+    h.append(bloque_encuesta_prov(cod[:2], lugar_b))
     h.append(bloque_donde_votar(lugar_b, cod, cifras_barrio=cif_b))
     h.append(bloque_te_toca_mesa(lugar_b, cod, cifras_barrio=cif_b))
     if g != gc:
@@ -1301,6 +1303,22 @@ def bloque_mesas(nombre, cod):
 
 DONDE_CSS = ('.dondevotar{border:1px solid var(--rule);border-left:4px solid var(--fg);border-radius:6px;padding:.4rem 1rem .6rem;margin:1.4rem 0}'
              '.dondevotar h2{margin-top:.6rem}.dondevotar ul{padding-left:1.1rem;margin:.4rem 0}.dondevotar li{margin:.35rem 0}')
+
+
+ENCUESTA_CSS = ('.encprov{display:block;border:1px solid var(--rule);border-left:4px solid var(--fg);border-radius:6px;padding:.55rem 1rem;margin:1.2rem 0;'
+                'color:inherit;text-decoration:none}.encprov:hover b{text-decoration:underline}.encprov small{display:block;font-size:.8em;letter-spacing:.06em;'
+                'text-transform:uppercase;opacity:.75}.encprov b{display:block;font-size:1.05em;line-height:1.3;margin:.15rem 0}')
+
+
+def bloque_encuesta_prov(p, nombre):
+    """Tarjeta arriba de la ficha (municipio o barrio) que lleva a la encuesta del 29N de su provincia. Sin cifras de la encuesta,
+    para que no se quede atrás cuando se actualiza la media: solo los escaños que reparte la circunscripción."""
+    n_prov, esc = escape(PROV_NOMBRE[p]), ESCANOS_2026[p]
+    reparto = 'quién se lleva su único diputado' if esc == 1 else f'cómo se reparten sus {esc} diputados'
+    return (f'<style>{ENCUESTA_CSS}</style><a class="encprov" href="{RAIZ_REL}encuestas/{PROV_SLUG[p]}/">'
+            f'<small>Encuesta del 29N · {n_prov}</small>'
+            f'<b>¿Quién ganaría en {n_prov}? Mira {reparto} según la media de encuestas →</b>'
+            f'<span>{escape(nombre)} vota en la circunscripción de {n_prov}. La media se actualiza con cada encuesta nueva.</span></a>')
 
 
 def bloque_donde_votar(nombre, cod, cifras_barrio=None):
