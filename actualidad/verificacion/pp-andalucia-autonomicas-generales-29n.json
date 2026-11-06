@@ -1,0 +1,164 @@
+{
+ "pieza": "pp-andalucia-autonomicas-generales-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "PP de Moreno sacó en mayo 150.000 votos más que el PP",
+   "cifra": "150.000",
+   "calculo": "round(D['DIFV'],-3)"
+  },
+  {
+   "texto": "de 2023 en Andalucía, con 194.000 votantes menos: ganó",
+   "cifra": "194.000",
+   "calculo": "round(D['DIFVOT'],-3)"
+  },
+  {
+   "texto": "votantes menos: ganó votos en 603 de los 785 municipios",
+   "cifra": "603",
+   "calculo": "D['R']['AN']['mas']"
+  },
+  {
+   "texto": "ganó votos en 603 de los 785 municipios",
+   "cifra": "785",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "El PP sacó el 42,0 % en las autonómicas",
+   "cifra": "42,0",
+   "calculo": "D['R']['AN']['pct26']"
+  },
+  {
+   "texto": "autonómicas de mayo y el 36,8 % en las generales de",
+   "cifra": "36,8",
+   "calculo": "D['R']['AN']['pct23']"
+  },
+  {
+   "texto": "Moreno sacó en Andalucía 1.738.421 votos, el 42,0 % de",
+   "cifra": "1.738.421",
+   "calculo": "D['R']['AN']['pp26']"
+  },
+  {
+   "texto": "Andalucía 1.738.421 votos, el 42,0 % de los votos a candidaturas.",
+   "cifra": "42,0",
+   "calculo": "D['R']['AN']['pct26']"
+  },
+  {
+   "texto": "había sacado en la comunidad 1.588.654, el 36,8 %. Son 150.000",
+   "cifra": "1.588.654",
+   "calculo": "D['R']['AN']['pp23']"
+  },
+  {
+   "texto": "la comunidad 1.588.654, el 36,8 %. Son 150.000 votos",
+   "cifra": "36,8",
+   "calculo": "D['R']['AN']['pct23']"
+  },
+  {
+   "texto": "1.588.654, el 36,8 %. Son 150.000 votos más en mayo, aunque",
+   "cifra": "150.000",
+   "calculo": "round(D['DIFV'],-3)"
+  },
+  {
+   "texto": "aunque fueron a votar unas 194.000 personas menos: 4.222.831",
+   "cifra": "194.000",
+   "calculo": "round(D['DIFVOT'],-3)"
+  },
+  {
+   "texto": "unas 194.000 personas menos: 4.222.831 frente a 4.417.266.",
+   "cifra": "4.222.831",
+   "calculo": "D['R']['AN']['vot26']"
+  },
+  {
+   "texto": "menos: 4.222.831 frente a 4.417.266.",
+   "cifra": "4.417.266",
+   "calculo": "D['R']['AN']['vot23']"
+  },
+  {
+   "texto": "votos en mayo que en 2023 en 603 de los 785 municipios",
+   "cifra": "603",
+   "calculo": "D['R']['AN']['mas']"
+  },
+  {
+   "texto": "que en 2023 en 603 de los 785 municipios andaluces",
+   "cifra": "785",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "salvo Almería, donde sacó 1.911 menos. Donde más ganó",
+   "cifra": "1.911",
+   "calculo": "D['R']['04']['pp23']-D['R']['04']['pp26']"
+  },
+  {
+   "texto": "más ganó fue en Sevilla: 58.159 votos más. Entre los",
+   "cifra": "58.159",
+   "calculo": "D['R']['41']['pp26']-D['R']['41']['pp23']"
+  },
+  {
+   "texto": "la ciudad de Sevilla, con 20.372 votos más.",
+   "cifra": "20.372",
+   "calculo": "D['GRANDES'][0][1]"
+  },
+  {
+   "texto": "PP en Andalucía entre el 31,1 % y el 36,6 % según",
+   "cifra": "31,1",
+   "calculo": "min(D['MEDV'].values())"
+  },
+  {
+   "texto": "Andalucía entre el 31,1 % y el 36,6 % según la provincia,",
+   "cifra": "36,6",
+   "calculo": "max(D['MEDV'].values())"
+  },
+  {
+   "texto": "provincia, en la mediana de las 2.000 simulaciones. En las",
+   "cifra": "2.000",
+   "calculo": "D['SIMS']"
+  },
+  {
+   "texto": "2.000 simulaciones. En las ocho provincias, esa cifra",
+   "cifra": "ocho",
+   "calculo": "len(D['MEDV'])"
+  },
+  {
+   "texto": "medianas provinciales da al PP 25 de los 61 diputados",
+   "cifra": "25",
+   "calculo": "D['PPMOD']"
+  },
+  {
+   "texto": "provinciales da al PP 25 de los 61 diputados andaluces,",
+   "cifra": "61",
+   "calculo": "61"
+  },
+  {
+   "texto": "porcentaje que el de Feijóo en las ocho provinciasPorcentaje",
+   "cifra": "ocho",
+   "calculo": "len(D['MEDV'])"
+  },
+  {
+   "texto": "votos en mayo que en 2023 en 603 de los 785 municipios",
+   "cifra": "603",
+   "calculo": "D['R']['AN']['mas']"
+  },
+  {
+   "texto": "que en 2023 en 603 de los 785 municipios andalucesMunicipios",
+   "cifra": "785",
+   "calculo": "D['NMUN']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "martes, en una entrevista en Cuatro recogida por Europa",
+   "motivo": "nombre de la cadena de televisión"
+  },
+  {
+   "texto": "los municipios de más de 100.000 electores, la mayor",
+   "motivo": "umbral de electores para elegir los municipios grandes"
+  },
+  {
+   "texto": "Andalucía, el PSOE saca casi diez puntos más en las generales",
+   "motivo": "cifra de la pieza psoe-andalucia-generales-autonomicas, enlazada"
+  }
+ ],
+ "permitir_espana": []
+}
