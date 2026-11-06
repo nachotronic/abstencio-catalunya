@@ -2,13 +2,13 @@
  "pieza": "eeuu-resultados-medio-mandato-2026",
  "cifras": [
   {
-   "texto": "los republicanos. Faltan 40.",
-   "cifra": "40",
+   "texto": "los republicanos. Faltan 31.",
+   "cifra": "31",
    "calculo": "DIR['pendientes']"
   },
   {
-   "texto": "De momento, 23 distritos cambian de",
-   "cifra": "23",
+   "texto": "De momento, 27 distritos cambian de",
+   "cifra": "27",
    "calculo": "DIR['cambios_D']"
   },
   {
@@ -137,18 +137,18 @@
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NC'][0]['pct']['Michael Whatley']"
   },
   {
-   "texto": "senadora desde 1997, por el 53,3 % frente al 46,7 %,",
-   "cifra": "53,3",
+   "texto": "senadora desde 1997, por el 53,2 % frente al 46,8 %,",
+   "cifra": "53,2",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Troy Jackson']"
   },
   {
-   "texto": "1997, por el 53,3 % frente al 46,7 %, con el 92,1 % del",
-   "cifra": "46,7",
+   "texto": "1997, por el 53,2 % frente al 46,8 %, con el 93,3 % del",
+   "cifra": "46,8",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Susan Collins']"
   },
   {
-   "texto": "frente al 46,7 %, con el 92,1 % del voto estimado",
-   "cifra": "92,1",
+   "texto": "frente al 46,8 %, con el 93,3 % del voto estimado",
+   "cifra": "93,3",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['eevp']"
   },
   {
@@ -225,63 +225,63 @@
    "origen": "entradilla"
   },
   {
-   "texto": "en la Cámara, 243 escaños, 25",
-   "cifra": "243",
+   "texto": "en la Cámara, 249 escaños, 31",
+   "cifra": "249",
    "calculo": "DIR['D']",
    "origen": "entradilla"
   },
   {
-   "texto": "243 escaños, 25 más de los 218",
-   "cifra": "25",
+   "texto": "249 escaños, 31 más de los 218",
+   "cifra": "31",
    "calculo": "DIR['D']-218",
    "origen": "entradilla"
   },
   {
-   "texto": "25 más de los 218 de la mayoría, frente",
+   "texto": "31 más de los 218 de la mayoría, frente",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1",
    "origen": "entradilla"
   },
   {
-   "texto": "frente a 152 republicanos, con 40",
-   "cifra": "152",
+   "texto": "frente a 155 republicanos, con 31",
+   "cifra": "155",
    "calculo": "DIR['R']",
    "origen": "entradilla"
   },
   {
-   "texto": "republicanos, con 40 por decidir",
-   "cifra": "40",
+   "texto": "republicanos, con 31 por decidir",
+   "cifra": "31",
    "calculo": "DIR['pendientes']",
    "origen": "entradilla"
   },
   {
-   "texto": "hora peninsular, hay 395 de los 435",
-   "cifra": "395",
+   "texto": "hora peninsular, hay 404 de los 435",
+   "cifra": "404",
    "calculo": "DIR['D']+DIR['R']+DIR['O']"
   },
   {
-   "texto": "hay 395 de los 435 escaños",
+   "texto": "hay 404 de los 435 escaños",
    "cifra": "435",
    "calculo": "len(DIR['dist'])"
   },
   {
-   "texto": "decididos: 243 para los demócratas, 25",
-   "cifra": "243",
+   "texto": "decididos: 249 para los demócratas, 31",
+   "cifra": "249",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "243 para los demócratas, 25 más",
-   "cifra": "25",
+   "texto": "249 para los demócratas, 31 más",
+   "cifra": "31",
    "calculo": "DIR['D']-218"
   },
   {
-   "texto": "25 más de los 218 de la mayoría, y 152 para",
+   "texto": "31 más de los 218 de la mayoría, y 155 para",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1"
   },
   {
-   "texto": "de la mayoría, y 152 para los republicanos. Faltan 40.",
-   "cifra": "152",
+   "texto": "de la mayoría, y 155 para los republicanos. Faltan 31.",
+   "cifra": "155",
    "calculo": "DIR['R']"
   },
   {
@@ -365,13 +365,13 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='KS'][0]['pct']['Ty Masterson']"
   },
   {
-   "texto": "Katie Hobbs, con el 55,5 %",
-   "cifra": "55,5",
+   "texto": "Katie Hobbs, con el 55,4 %",
+   "cifra": "55,4",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='AZ'][0]['pct']['Katie Hobbs']"
   },
   {
-   "texto": "Tina Kotek, con el 51,9 %",
-   "cifra": "51,9",
+   "texto": "Tina Kotek, con el 52,6 %",
+   "cifra": "52,6",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='OR'][0]['pct']['Tina Kotek']"
   },
   {
@@ -390,8 +390,8 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['pct']['Joe Lombardo']"
   },
   {
-   "texto": "44,2 %, con el 90,1 % del voto",
-   "cifra": "90,1",
+   "texto": "44,2 %, con el 92,4 % del voto",
+   "cifra": "92,4",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['eevp']"
   },
   {
