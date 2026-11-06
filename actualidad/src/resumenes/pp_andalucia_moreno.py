@@ -36,8 +36,8 @@ x['dif'] = x.v_PP26 - x['2023_07_vPP']
 
 def resumen(g):
     return {'pp26': int(g.v_PP26.sum()), 'pp23': int(g['2023_07_vPP'].sum()),
-            'pct26': round(g.v_PP26.sum() / g.votoscandidatura26.sum() * 100, 2),
-            'pct23': round(g['2023_07_vPP'].sum() / g.tot23.sum() * 100, 2),
+            'pct26': float(g.v_PP26.sum() / g.votoscandidatura26.sum() * 100),   # sin redondear: el redondeo doble daba Granada 37,4 en vez de 37,3
+            'pct23': float(g['2023_07_vPP'].sum() / g.tot23.sum() * 100),
             'vot26': int(g.votostotales26.sum()), 'vot23': int(g['2023_07_votantes'].sum()),
             'mas': int((g.dif > 0).sum()), 'n': len(g)}
 
@@ -90,6 +90,13 @@ nom = dict(zip(x.mun_code, x.municipio))
 MAS, MEN = COLOR['PP'], '#c9c9c9'
 
 
+def tip(d):
+    d = int(d)
+    if d == 0:
+        return 'los mismos votos del PP'
+    return f'{d:+,}'.replace(',', '.') + (' voto' if abs(d) == 1 else ' votos') + ' del PP'
+
+
 def mapa(W=640):
     S, kx = G['S'], math.cos(math.radians(37.4))
     AN_ = []
@@ -109,7 +116,7 @@ def mapa(W=640):
         camino[c] = camino.get(c, '') + d + 'Z'
     assert len(camino) == NMUN, len(camino)
     out = ''.join(f'<path d="{d}" fill="{(MAS if dif[c] > 0 else MEN) if c in dif else "var(--otros)"}"><title>{esc(nom.get(c, c))}: '
-                  f'{f"{int(dif[c]):+,}".replace(",", ".") if c in dif else "sin datos"} votos del PP</title></path>' for c, d in camino.items())
+                  f'{tip(dif[c]) if c in dif else "sin datos"}</title></path>' for c, d in camino.items())
     return (f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Municipios andaluces donde el PP sacó más votos en las autonómicas de 2026 que en las generales de 2023" style="max-width:{W}px;margin:0 auto">'
             f'<g stroke="var(--bg)" stroke-width=".3" stroke-linejoin="round">{out}</g></svg>')
 
@@ -117,7 +124,7 @@ def mapa(W=640):
 g_mapa = figura(f'El PP sacó más votos en mayo que en 2023 en {AN["mas"]} de los {NMUN} municipios andaluces',
                 'Municipios donde el PP sacó más votos en las autonómicas de mayo de 2026 que en las generales de julio de 2023',
                 mapa(), 'Fuente: Junta de Andalucía y Ministerio del Interior, resultados por municipio, sin voto exterior.',
-                [('Más votos en mayo de 2026', MAS), ('Menos votos', MEN)],
+                [('Más votos en mayo de 2026', MAS), ('Los mismos o menos', MEN)],
                 (['Municipio', 'Votos PP 2026', 'Votos PP 2023', 'Diferencia'],
                  [[esc(r['municipio']), n(int(r['v_PP26'])), n(int(r['2023_07_vPP'])), f"{int(r['dif']):+,}".replace(',', '.')] for r in GRANDES.to_dict('records')]))
 
@@ -142,7 +149,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 
 <h2>Lo que da el modelo para el 29N</h2>
 <p data-tipo="dato">El modelo de Mapa Electoral del 5 de noviembre, que reparte la media de las encuestas nacionales por provincia, da al PP en Andalucía entre el {p(rango_v[0])} % y el {p(rango_v[1])} % según la provincia, en la mediana de las {n(SIMS)} simulaciones. En las ocho provincias, esa cifra queda por debajo de lo que sacó el PP con Feijóo en 2023, y aún más lejos de lo que sacó con Moreno en mayo. En escaños, la suma de las medianas provinciales da al PP {PPMOD} de los 61 diputados andaluces, los mismos que sacó en 2023.</p>
-<p data-tipo="hipotesis">Que el PP saque más en unas autonómicas que en unas generales encaja con lo que la ciencia política llama voto dual: parte del electorado vota distinto según lo que se elige. Los datos por municipio no dicen quiénes son esos votantes, ni si repetirán en noviembre. En un mitin en Euskadi, Moreno pidió el voto para el PP como un «reproche democrático» a Sánchez, según <a href="{EUSKADI}">Córdoba Buenas Noticias</a>.</p>
+<p data-tipo="hipotesis">Que el PP saque más en unas autonómicas que en unas generales encaja con lo que la ciencia política llama voto dual: parte del electorado vota distinto según lo que se elige. Los datos por municipio no dicen quiénes son esos votantes, ni si repetirán en noviembre. En un acto del PP en Bilbao, Moreno pidió el voto para el PP como un «reproche democrático» a Sánchez, según <a href="{EUSKADI}">Córdoba Buenas Noticias</a>.</p>
 <p data-tipo="contexto">La misma comparación para el PSOE está en {L("psoe-andalucia-generales-autonomicas", "la pieza sobre el voto dual socialista")}: en Andalucía, el PSOE saca casi diez puntos más en las generales que en las autonómicas.</p>
 
 <h2>Lo que estos datos no dicen</h2>
