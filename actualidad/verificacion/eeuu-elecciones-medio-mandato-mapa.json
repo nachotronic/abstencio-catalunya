@@ -2,44 +2,44 @@
  "pieza": "eeuu-elecciones-medio-mandato-mapa",
  "cifras": [
   {
-   "texto": "Los demócratas ganan la Cámara con 243 escaños",
-   "cifra": "243",
+   "texto": "Los demócratas ganan la Cámara con 249 escaños",
+   "cifra": "249",
    "calculo": "DIR['D']",
    "origen": "titular"
   },
   {
-   "texto": "y arrebatan 23 a los republicanos",
-   "cifra": "23",
+   "texto": "y arrebatan 27 a los republicanos",
+   "cifra": "27",
    "calculo": "DIR['cambios_D'] if DIR['cambios_R']==0 else -1",
    "origen": "titular"
   },
   {
-   "texto": "hora peninsular, hay 395 de los 435 escaños",
-   "cifra": "395",
+   "texto": "hora peninsular, hay 404 de los 435 escaños",
+   "cifra": "404",
    "calculo": "DIR['D']+DIR['R']+DIR['O']",
    "origen": "entradilla"
   },
   {
-   "texto": "hay 395 de los 435 escaños de la Cámara",
+   "texto": "hay 404 de los 435 escaños de la Cámara",
    "cifra": "435",
    "calculo": "len(DIR['dist'])",
    "origen": "entradilla"
   },
   {
-   "texto": "decididos: 243 para los demócratas y 152",
-   "cifra": "243",
+   "texto": "decididos: 249 para los demócratas y 155",
+   "cifra": "249",
    "calculo": "DIR['D']",
    "origen": "entradilla"
   },
   {
-   "texto": "243 para los demócratas y 152 para los republicanos. De los 40",
-   "cifra": "152",
+   "texto": "249 para los demócratas y 155 para los republicanos. De los 31",
+   "cifra": "155",
    "calculo": "DIR['R']",
    "origen": "entradilla"
   },
   {
-   "texto": "De los 40 por decidir, 6 son de California",
-   "cifra": "40",
+   "texto": "De los 31 por decidir, 6 son de California",
+   "cifra": "31",
    "calculo": "DIR['pendientes']",
    "origen": "entradilla"
   },
@@ -62,43 +62,43 @@
    "origen": "entradilla"
   },
   {
-   "texto": "hora peninsular, hay 395 de los 435 escaños",
-   "cifra": "395",
+   "texto": "hora peninsular, hay 404 de los 435 escaños",
+   "cifra": "404",
    "calculo": "DIR['D']+DIR['R']+DIR['O']"
   },
   {
-   "texto": "hay 395 de los 435 escaños de la Cámara",
+   "texto": "hay 404 de los 435 escaños de la Cámara",
    "cifra": "435",
    "calculo": "len(DIR['dist'])"
   },
   {
-   "texto": "decididos: 243 para los demócratas, 25",
-   "cifra": "243",
+   "texto": "decididos: 249 para los demócratas, 31",
+   "cifra": "249",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "243 para los demócratas, 25 más",
-   "cifra": "25",
+   "texto": "249 para los demócratas, 31 más",
+   "cifra": "31",
    "calculo": "DIR['D']-218"
   },
   {
-   "texto": "25 más de los 218 de la mayoría, y 152 para",
+   "texto": "31 más de los 218 de la mayoría, y 155 para",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1"
   },
   {
-   "texto": "de la mayoría, y 152 para los republicanos",
-   "cifra": "152",
+   "texto": "de la mayoría, y 155 para los republicanos",
+   "cifra": "155",
    "calculo": "DIR['R']"
   },
   {
-   "texto": "Faltan 40; seis de ellos",
-   "cifra": "40",
+   "texto": "Faltan 31; seis de ellos",
+   "cifra": "31",
    "calculo": "DIR['pendientes']"
   },
   {
-   "texto": "De momento, 23 distritos cambian de",
-   "cifra": "23",
+   "texto": "De momento, 27 distritos cambian de",
+   "cifra": "27",
    "calculo": "DIR['cambios_D']"
   },
   {
@@ -132,33 +132,33 @@
    "calculo": "DIR['senado']['senate_nbc_bop']['bar']['dem']['notUpForElection']+sum(1 for x in DIR['senado']['senate'] if x['confirmado']=='D')"
   },
   {
-   "texto": "los demócratas tienen 243 escaños, 25",
-   "cifra": "243",
+   "texto": "los demócratas tienen 249 escaños, 31",
+   "cifra": "249",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "243 escaños, 25 más de los",
-   "cifra": "25",
+   "texto": "249 escaños, 31 más de los",
+   "cifra": "31",
    "calculo": "DIR['D']-218"
   },
   {
-   "texto": "25 más de los 218 de la mayoría, y los republicanos",
+   "texto": "31 más de los 218 de la mayoría, y los republicanos",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1"
   },
   {
-   "texto": "y los republicanos 152; faltan 40",
-   "cifra": "152",
+   "texto": "y los republicanos 155; faltan 31",
+   "cifra": "155",
    "calculo": "DIR['R']"
   },
   {
-   "texto": "republicanos 152; faltan 40.",
-   "cifra": "40",
+   "texto": "republicanos 155; faltan 31.",
+   "cifra": "31",
    "calculo": "DIR['pendientes']"
   },
   {
-   "texto": "Los demócratas arrebatan 23 distritos a los republicanos",
-   "cifra": "23",
+   "texto": "Los demócratas arrebatan 27 distritos a los republicanos",
+   "cifra": "27",
    "calculo": "len(F3D) if DIR['cambios_R']==0 else -1"
   },
   {
@@ -187,13 +187,13 @@
    "calculo": "sum(1 for v in DIR['dist'].values() if v[2] and v[1]=='D' and v[0].startswith('IA-'))"
   },
   {
-   "texto": "Faltan 40; seis de ellos, en California",
+   "texto": "Faltan 31; seis de ellos, en California",
    "cifra": "seis",
    "calculo": "len([w for w in DIR['dist'].values() if w[0][:2]=='CA' and not w[1]])"
   },
   {
-   "texto": "Estos son los 23 distritos que ganan los demócratas",
-   "cifra": "23",
+   "texto": "Estos son los 27 distritos que ganan los demócratas",
+   "cifra": "27",
    "calculo": "len(F3D)",
    "_gen": "recorrido"
   },
@@ -222,14 +222,14 @@
    "_gen": "recorrido"
   },
   {
-   "texto": "Shannon Taylor gana a Rob Wittman por 2,3 puntos",
-   "cifra": "2,3",
+   "texto": "Shannon Taylor gana a Rob Wittman por 2,4 puntos",
+   "cifra": "2,4",
    "calculo": "round([f for f in F3D if f[0]=='VA-1'][0][5],1)",
    "_gen": "recorrido"
   },
   {
-   "texto": "con el 98% del voto esperado ya contado",
-   "cifra": "98",
+   "texto": "con el 99% del voto esperado ya contado",
+   "cifra": "99",
    "calculo": "[f for f in F3D if f[0]=='VA-1'][0][6]",
    "_gen": "recorrido"
   },
@@ -246,27 +246,27 @@
    "_gen": "recorrido"
   },
   {
-   "texto": "J.D. Ford gana a Victoria Spartz por 3,3 puntos",
-   "cifra": "3,3",
-   "calculo": "round([f for f in F3D if f[0]=='IN-5'][0][5],1)",
+   "texto": "Zack Mullock gana a Jeff Van Drew por 2,6 puntos",
+   "cifra": "2,6",
+   "calculo": "round([f for f in F3D if f[0]=='NJ-2'][0][5],1)",
    "_gen": "recorrido"
   },
   {
-   "texto": "con el 99% del voto esperado ya contado",
-   "cifra": "99",
-   "calculo": "[f for f in F3D if f[0]=='IN-5'][0][6]",
+   "texto": "con el 97% del voto esperado ya contado",
+   "cifra": "97",
+   "calculo": "[f for f in F3D if f[0]=='NJ-2'][0][6]",
    "_gen": "recorrido"
   },
   {
-   "texto": "Victoria Spartz lo ganó para los republicanos por 18,6 puntos",
-   "cifra": "18,6",
-   "calculo": "round([f for f in F3D if f[0]=='IN-5'][0][3],1)",
+   "texto": "Jefferson Van Drew lo ganó para los republicanos por 16,9 puntos",
+   "cifra": "16,9",
+   "calculo": "round([f for f in F3D if f[0]=='NJ-2'][0][3],1)",
    "_gen": "recorrido"
   },
   {
-   "texto": "Indiana, distrito 5.",
-   "cifra": "5",
-   "calculo": "int('IN-5'.split('-')[1])",
+   "texto": "Nueva Jersey, distrito 2.",
+   "cifra": "2",
+   "calculo": "int('NJ-2'.split('-')[1])",
    "_gen": "recorrido"
   },
   {
@@ -342,8 +342,8 @@
    "_gen": "recorrido"
   },
   {
-   "texto": "Manny Rutinel por 12,9",
-   "cifra": "12,9",
+   "texto": "Manny Rutinel por 13,6",
+   "cifra": "13,6",
    "calculo": "round([f for f in F3D if f[0]=='CO-8'][0][5],1)",
    "_gen": "recorrido"
   },
@@ -354,8 +354,8 @@
    "_gen": "recorrido"
   },
   {
-   "texto": "En Colorado solo está contado el 91% del voto esperado",
-   "cifra": "91",
+   "texto": "En Colorado solo está contado el 95% del voto esperado",
+   "cifra": "95",
    "calculo": "[f for f in F3D if f[0]=='CO-8'][0][6]",
    "_gen": "recorrido"
   }
