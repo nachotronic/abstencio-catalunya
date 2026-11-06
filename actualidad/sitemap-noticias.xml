@@ -17,19 +17,19 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-06</news:publication_date>
-      <news:title>El PP de Moreno sacó en mayo 150.000 votos más que el PP de Feijóo en las generales de 2023 en Andalucía, con 194.000 votantes menos: ganó votos en 603 de los 785 municipios</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-06</news:publication_date>
       <news:title>La lista del PSOE por Valencia con Ábalos de número dos sacó en 2023 el 32,4 %, su mejor resultado desde 2008; el 29N, con Pilar Bernabé, el modelo le da los mismos 5 escaños</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-06</news:publication_date>
+      <news:title>El PP de Moreno sacó en mayo 150.000 votos más que el PP de Feijóo en las generales de 2023 en Andalucía, con 194.000 votantes menos: ganó votos en 603 de los 785 municipios</news:title>
     </news:news>
   </url>
   <url>
