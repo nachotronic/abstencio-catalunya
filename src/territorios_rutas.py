@@ -59,7 +59,7 @@ ACTUALIDAD_LUGAR = {
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'frente-amplio-podemos-madrid-escanos-29n': ['28'], 'calle-que-parte-madrid': ['28'], 'cinturon-rojo-madrid-29n': ['28'], 'participacion-renta-municipios-madrid-29n': ['28'], 'participacion-navarra-municipios-29n': ['31'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
-    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'zaragoza-barrio-a-barrio-29n': ['50'],
+    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'zaragoza-barrio-a-barrio-29n': ['50'],
 }
 # Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
 ACTUALIDAD_MUNICIPIO = {
@@ -205,7 +205,7 @@ TEMAS = {
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'pacto-pp-vox-senado-provincias-29n', 'comuns-psc-senado-girona-lleida-tarragona-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n',
                 'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'encuestas-antes-despues-urda-29n', 'banez-huelva-pp-29n', 'listas-29n-quien-encabeza',
-                'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n', 'adelante-andalucia-psoe-29n', 'puente-valladolid-segundo-escano-29n', 'listas-proclamadas-29n', 'comunitat-valenciana-escanos-29n'],
+                'coaliciones-quien-va-con-quien-29n', 'provincias-en-el-filo-29n', 'asi-queda-el-mapa-29n', 'adelante-andalucia-psoe-29n', 'puente-valladolid-segundo-escano-29n', 'listas-proclamadas-29n', 'comunitat-valenciana-escanos-29n', 'psoe-valencia-abalos-municipios-29n'],
         datos=[('elecciones/como-se-vota/', 'Cómo se vota: el precio de un escaño por provincia'),
                ('elecciones/elecciones-29n-2026/', 'Elecciones generales del 29N de 2026: diputados por provincia')],
         atlas=[('atlas/bisagras/', 'Atlas: las bisagras')]),

@@ -17,6 +17,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-06</news:publication_date>
+      <news:title>La lista del PSOE por Valencia con Ábalos de número dos sacó en 2023 el 32,4 %, su mejor resultado desde 2008; el 29N, con Pilar Bernabé, el modelo le da los mismos 5 escaños</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -33,51 +41,11 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/bizkaia-pnv-bildu-encuestas-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-03</news:publication_date>
-      <news:title>El PNV ganó en 92 municipios de Bizkaia en 2019 y en 55 en 2023: su feudo llega al 29N en empate a tres</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/euskadi-29n-guia/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-03</news:publication_date>
-      <news:title>Elecciones del 29N en Euskadi: 18 escaños, 1.824.886 electores y una Bizkaia en empate a tres</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-04</news:publication_date>
       <news:title>Los demócratas ganan el Senado y la Cámara, con escaños arrebatados a los republicanos de Carolina del Norte a Texas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/nueva-zelanda-elecciones-mapa-circunscripciones/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-03</news:publication_date>
-      <news:title>El partido del primer ministro de Nueva Zelanda cae del 38% al 29,5% y llega casi empatado con los laboristas a las elecciones del sábado</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/acampada-sol-alquiler-madrid-distritos-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-03</news:publication_date>
-      <news:title>Desalojada la acampada de Sol: el alquiler sube más deprisa en el sur de Madrid, un 22,7% en Villaverde desde 2019 frente al 15,9% de Centro</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/listas-proclamadas-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-03</news:publication_date>
-      <news:title>Las juntas electorales dejan fuera 32 listas del 29N: PACMA pierde siete provincias y Podemos se queda sin candidatos al Senado en León</news:title>
     </news:news>
   </url>
 </urlset>
