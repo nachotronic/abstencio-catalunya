@@ -1,13 +1,13 @@
 {
- "descargado": "2026-11-06T14:16Z",
+ "descargado": "2026-11-06T23:07Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1062,
+ "encuestas_espana": 1063,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-06",
-  "encuestadora": "Celeste-Tel",
-  "cliente": "Onda Cero"
+  "encuestadora": "SW Demoscopia",
+  "cliente": "La Séptima"
  },
  "siglas_sin_equivalencia": {
   "UPC": 3,
@@ -20,8 +20,8 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 590,
-  "ultima_fin_campo": "2026-11-04",
+  "encuestas": 592,
+  "ultima_fin_campo": "2026-11-05",
   "faltan_en_electografica_120_dias": 18
  }
 }
