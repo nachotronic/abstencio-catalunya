@@ -20,11 +20,10 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (70)
+## Pendientes (69)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
-| 2026-11-06 | [`pp-andalucia-autonomicas-generales-29n`](https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/) | El PP de Moreno sacó en mayo 150.000 votos más que el PP de Feijóo en las generales de 2023 en Andalucía, con 194.000 votantes menos: ganó votos en 603 de los 785 municipios | primer gráfico de la pieza |
 | 2026-11-05 | [`comunitat-valenciana-escanos-29n`](https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/) | PP y Vox pasarían de 18 a 20 de los 33 escaños valencianos con la media de encuestas; en Castellón, dos se los disputan cuatro candidatos | primer gráfico de la pieza |
 | 2026-11-04 | [`cinturon-rojo-madrid-29n`](https://mapaelectoral.es/actualidad/cinturon-rojo-madrid-29n/) | El PP ganó Coslada por siete votos: el PSOE pasó de ganar en 16 de los 24 grandes municipios de Madrid a 4, aunque subió en todos | primer gráfico de la pieza |
 | 2026-11-04 | [`participacion-navarra-municipios-29n`](https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/) | En la Navarra donde EH Bildu pasa del 40 % votó el 64 %; donde no llega al 15 %, el 71 %: el mapa de la participación, pueblo a pueblo | primer gráfico de la pieza |

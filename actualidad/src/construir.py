@@ -1761,6 +1761,8 @@ PIEZAS = [
                  ('https://www.cope.es/programas/la-manana-fin-de-semana/noticias/politologo-manuel-mostaza-desvela-clave-pp-consiga-absoluta-andalucia-punado-votos-20260419_3348254.html', 'COPE, el politólogo Manuel Mostaza sobre Moreno (19-4-2026)'),
                  ('https://www.cordobabn.com/andalucia/video-29n-moreno-anima-euskadi-votantes-hacer-reproche-democratico-sanchez-apoyando-pp/20261026201341272499.html', 'Córdoba Buenas Noticias, Moreno en Euskadi: «reproche democrático» (26-10-2026)')],
         enlaces=[],
+        foto=dict(src='img/actualidad/fotos/pp-andalucia-autonomicas-generales-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Juanma Moreno y Alberto Núñez Feijóo, con un palacio entre palmeras y sobres de votación: un collage.'),
         lugar='Andalucía',
     ),
     dict(
