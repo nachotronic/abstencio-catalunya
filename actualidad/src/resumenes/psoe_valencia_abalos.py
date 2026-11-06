@@ -32,7 +32,7 @@ SERIE, GANA = {}, {}
 for e, _ in EL:
     T = sum(v[f'{e}_v{f}'].sum() for f in F if f'{e}_v{f}' in v)
     SERIE[e] = {k: round(v[f'{e}_v{k}'].sum() / T * 100, 2) for k in ('PSOE', 'PP')}
-    GANA[e] = {k: int((v[f'{e}_gana'] == k).sum()) for k in ('PSOE', 'PP')}
+    GANA[e] = {k: int((v[f'{e}_gana'] == k).sum()) for k in ('PSOE', 'PP')}   # solo se usa 2023: en 2015-2019, «gana» suma UP y Compromís en SUMAR
 assert SERIE['2023_07']['PSOE'] == 32.35 and SERIE['2008_03']['PSOE'] == 40.42
 MEJOR = max((e for e, _ in EL if e > '2008_03'), key=lambda e: SERIE[e]['PSOE'])
 assert MEJOR == '2023_07'
@@ -83,8 +83,8 @@ g_serie = figura(f'El PSOE sacó en 2023 en la provincia de Valencia su mejor re
                         'Voto al PSOE en la provincia de Valencia', ml=90),
                  'Fuente: Ministerio del Interior, resultados por municipio; porcentaje sobre votos a candidaturas, sin voto exterior (CERA).',
                  None,
-                 (['Elección', 'PSOE', 'PP', 'Municipios donde ganó el PSOE', 'Donde ganó el PP'],
-                  [[t, f'{p(SERIE[e]["PSOE"])} %', f'{p(SERIE[e]["PP"])} %', str(GANA[e]['PSOE']), str(GANA[e]['PP'])] for e, t in EL]))
+                 (['Elección', 'PSOE', 'PP'],
+                  [[t, f'{p(SERIE[e]["PSOE"])} %', f'{p(SERIE[e]["PP"])} %'] for e, t in EL]))
 
 G = json.load(open(RAIZ / 'generales-2026/data/municipios.json'))
 TRAMOS = [(20, '#fbe3e1'), (25, '#f4b6b1'), (30, '#ea827a'), (35, '#d9534a'), (40, '#b82a22'), (101, '#7f1510')]
@@ -138,10 +138,10 @@ med = MODP['escanos'][1]
 assert MODP['escanos'] == [4, 5, 6] and med == 5 == ESC23
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">La UCO de la Guardia Civil registró este jueves la casa de José Luis Ábalos en Valencia y pidió información a Adif en una nueva pieza separada del caso Koldo, que instruye el juez de la Audiencia Nacional Ismael Moreno, según <a href="{EFE}">EFE</a>. Hubo seis detenidos, entre ellos la pareja del exministro, que salieron en libertad por la tarde, según <a href="{PUBLICO}">Público</a>. Ábalos lleva un año en prisión y en junio el Supremo lo condenó a 24 años por liderar una organización criminal, según <a href="{SUPREMO}">El Español</a>.</p>
+<p data-tipo="contexto">La UCO de la Guardia Civil registró este jueves la casa de José Luis Ábalos y pidió información a Adif en una nueva pieza separada del caso Koldo, que instruye el juez de la Audiencia Nacional Ismael Moreno, según <a href="{EFE}">EFE</a>; la casa está en Valencia, según <a href="{PUBLICO}">Público</a>. Hubo seis detenidos, entre ellos la pareja del exministro, que salieron en libertad por la tarde, según Público. Ábalos lleva un año en prisión y en junio el Supremo lo condenó a 24 años por liderar una organización criminal, según <a href="{SUPREMO}">El Español</a>.</p>
 <p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en las generales de julio de 2023, detrás de Diana Morant, según las candidaturas publicadas en el BOE. Esa lista sacó en la provincia el {p(s23)} % de los votos, su mejor resultado desde 2008 ({p(s08)} %) y {p(s23 - s19)} puntos más que en noviembre de 2019. El PP sacó el {p(pp23)} %. El PSOE sacó {ESC23} de los 16 diputados de la provincia. Tras estallar el caso, en febrero de 2024, Ábalos pasó al Grupo Mixto, y dejó el escaño el 28 de enero de 2026, según el Congreso.</p>
 {g_serie}
-<p data-tipo="dato">El PSOE fue el más votado en {GANA["2023_07"]["PSOE"]} de los {NMUN} municipios de la provincia, menos que los {GANA["2019_11"]["PSOE"]} de noviembre de 2019, aunque subió en {SUBE} de ellos. Entre los que tienen más de 50.000 electores, donde más votos sacó fue {esc(gv.municipio)}, con el {p(gv.psoe)} %.</p>
+<p data-tipo="dato">El PSOE fue el más votado en {GANA["2023_07"]["PSOE"]} de los {NMUN} municipios de la provincia y subió respecto a noviembre de 2019 en {SUBE}. Entre los que tienen más de 50.000 electores, donde mayor porcentaje sacó fue {esc(gv.municipio)}, con el {p(gv.psoe)} %.</p>
 {g_mapa}
 
 <h2>El 29N, con otra lista</h2>
@@ -164,7 +164,7 @@ foot = ('Datos: Ministerio del Interior, generales de 2004 a 2023 por municipio;
         'Congreso de los Diputados, diputados de la XV legislatura; modelo de encuestas de Mapa Electoral del 5 de noviembre de 2026. '
         'Cálculo: actualidad/src/resumenes/psoe_valencia_abalos.py.')
 
-DATOS = {'SERIE': SERIE, 'GANA': GANA, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
+DATOS = {'SERIE': SERIE, 'GANA': {'2023_07': GANA['2023_07']}, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
          'REPITEN': REPITEN, 'GRANDES': [[r.municipio, round(r.psoe, 2), round(r.dif, 2)] for r in GRANDES.itertuples()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 

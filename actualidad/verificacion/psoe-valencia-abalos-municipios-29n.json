@@ -20,17 +20,12 @@
    "calculo": "D['GANA']['2023_07']['PSOE']"
   },
   {
-   "texto": "más votado en 134 de los 266 municipios en 2023,",
+   "texto": "más votado en 134 de los 266 municipios en 2023 y",
    "cifra": "266",
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "municipios en 2023, frente a 168 en noviembre de 2019,",
-   "cifra": "168",
-   "calculo": "D['GANA']['2019_11']['PSOE']"
-  },
-  {
-   "texto": "de 2019, aunque subió en 232. Para el 29N, el modelo,",
+   "texto": "respecto a noviembre de 2019 en 232. Para el 29N, el modelo,",
    "cifra": "232",
    "calculo": "D['SUBE']"
   },
@@ -75,22 +70,17 @@
    "calculo": "D['GANA']['2023_07']['PSOE']"
   },
   {
-   "texto": "más votado en 134 de los 266 municipios de la provincia,",
+   "texto": "más votado en 134 de los 266 municipios de la provincia",
    "cifra": "266",
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "provincia, menos que los 168 de noviembre de 2019,",
-   "cifra": "168",
-   "calculo": "D['GANA']['2019_11']['PSOE']"
-  },
-  {
-   "texto": "de 2019, aunque subió en 232 de ellos. Entre los",
+   "texto": "respecto a noviembre de 2019 en 232. Entre los que tienen",
    "cifra": "232",
    "calculo": "D['SUBE']"
   },
   {
-   "texto": "votos sacó fue Gandia, con el 35,3 %.",
+   "texto": "porcentaje sacó fue Gandia, con el 35,3 %.",
    "cifra": "35,3",
    "calculo": "D['GRANDES'][0][1]"
   },
@@ -147,7 +137,7 @@
  ],
  "externas": [
   {
-   "texto": "Ismael Moreno, según EFE. Hubo seis detenidos, entre ellos",
+   "texto": "Valencia, según Público. Hubo seis detenidos, entre ellos",
    "cifra": "seis",
    "fuente": "https://www.infobae.com/espana/agencias/2026/11/05/la-uco-registra-la-casa-de-abalos-y-pide-informacion-a-adif-sobre-contratos-amanados/"
   },
@@ -159,7 +149,7 @@
  ],
  "ignorar": [
   {
-   "texto": "Entre los que tienen más de 50.000 electores, donde más",
+   "texto": "Entre los que tienen más de 50.000 electores, donde mayor",
    "motivo": "umbral de electores para elegir los municipios grandes"
   },
   {
