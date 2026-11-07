@@ -5,8 +5,8 @@
  },
  "cifras": [
   {
-   "texto": "número dos sacó en 2023 el 32,4 %, su mejor resultado",
-   "cifra": "32,4",
+   "texto": "número dos sacó en 2023 el 32,3 %, su mejor resultado",
+   "cifra": "32,3",
    "calculo": "D['SERIE']['2023_07']['PSOE']"
   },
   {
@@ -35,8 +35,8 @@
    "calculo": "D['MOD']['escanos'][1]"
   },
   {
-   "texto": "lista sacó en la provincia el 32,4 % de los votos, su mejor",
-   "cifra": "32,4",
+   "texto": "lista sacó en la provincia el 32,3 % de los votos, su mejor",
+   "cifra": "32,3",
    "calculo": "D['SERIE']['2023_07']['PSOE']"
   },
   {
@@ -120,9 +120,24 @@
    "calculo": "D['MOD']['escanos'][1]"
   },
   {
-   "texto": "Martínez Ramírez, la número 5.",
+   "texto": "Martínez Ramírez, la número 5. El modelo se actualiza",
    "cifra": "5",
    "calculo": "D['MOD']['escanos'][1]"
+  },
+  {
+   "texto": "noviembre le sigue dando 5 en la mediana, pero",
+   "cifra": "5",
+   "calculo": "D['MOD07']['escanos'][1]"
+  },
+  {
+   "texto": "en la mediana, pero entre 4 y 5, como recoge la",
+   "cifra": "4",
+   "calculo": "D['MOD']['escanos'][0]"
+  },
+  {
+   "texto": "la mediana, pero entre 4 y 5, como recoge la página",
+   "cifra": "5",
+   "calculo": "D['MOD07']['escanos'][2]"
   },
   {
    "texto": "PSOE fue el más votado en 134 de los 266 municipios",
