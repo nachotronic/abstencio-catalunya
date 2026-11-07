@@ -380,18 +380,18 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NE'][0]['pct']['Jim Pillen']"
   },
   {
-   "texto": "Joe Lombardo, por el 51,7 %",
-   "cifra": "51,7",
+   "texto": "Joe Lombardo, por el 51,6 %",
+   "cifra": "51,6",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['pct']['Aaron Ford']"
   },
   {
-   "texto": "por el 51,7 % frente al 44,0 %",
+   "texto": "por el 51,6 % frente al 44,0 %",
    "cifra": "44,0",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['pct']['Joe Lombardo']"
   },
   {
-   "texto": "44,0 %, con el 94,6 % del voto",
-   "cifra": "94,6",
+   "texto": "44,0 %, con el 94,8 % del voto",
+   "cifra": "94,8",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['eevp']"
   },
   {
