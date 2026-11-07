@@ -289,7 +289,7 @@
    "_donde": "patron"
   },
   {
-   "texto": "La participación fue del 74,6% del censo, según la",
+   "texto": "La participación fue del 74,6% de los electores con derecho a voto,",
    "cifra": "74,6",
    "calculo": "D[\"participacion\"]",
    "_donde": "patron"
