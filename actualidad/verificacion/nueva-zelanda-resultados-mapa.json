@@ -265,25 +265,25 @@
    "_donde": "patron"
   },
   {
-   "texto": "Opportunity, 3,7 puntos; NZ First, 3,7; los laboristas, 2,4;",
+   "texto": "Opportunity, 3,7 puntos; NZ First, 3,7; los laboristas, 2,5;",
    "cifra": "3,7",
    "calculo": "D['dif_pct']['NZ First']",
    "_donde": "patron"
   },
   {
-   "texto": "First, 3,7; los laboristas, 2,4; ACT, 2,3, y los Verdes,",
-   "cifra": "2,4",
+   "texto": "First, 3,7; los laboristas, 2,5; ACT, 2,3, y los Verdes,",
+   "cifra": "2,5",
    "calculo": "D[\"dif_pct\"][\"Labour\"]",
    "_donde": "patron"
   },
   {
-   "texto": "los laboristas, 2,4; ACT, 2,3, y los Verdes, 1,7.",
+   "texto": "los laboristas, 2,5; ACT, 2,3, y los Verdes, 1,7.",
    "cifra": "2,3",
    "calculo": "D[\"dif_pct\"][\"ACT\"]",
    "_donde": "patron"
   },
   {
-   "texto": "2,4; ACT, 2,3, y los Verdes, 1,7. La participación fue",
+   "texto": "2,5; ACT, 2,3, y los Verdes, 1,7. La participación fue",
    "cifra": "1,7",
    "calculo": "D[\"dif_pct\"][\"Green\"]",
    "_donde": "patron"
