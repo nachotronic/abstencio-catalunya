@@ -105,8 +105,27 @@ def _etiqueta_en_frase(etq, frase):
     return bool(re.search(rf'(?<!\w){re.escape(e)}(?!\w)', f))
 
 
+def _declarada(txt, frase, decl):
+    """La cifra está en «cifras» de la declaración: la Action ya la recalcula desde el dato sin redondear."""
+    f = _txt(frase).lower()
+    for e in decl.get('cifras', []):
+        t = _txt(e.get('texto', '')).lower()
+        c = str(e.get('cifra', '')).strip()
+        if t and t in f and (c == txt or (not c and txt in t)):
+            return True
+    return False
+
+
+AVISO_BRUTO = ('Si sale del dato sin redondear, es correcta (la resta de cifras ya redondeadas puede moverse ±0,1): '
+               'declárala en «cifras» con su cálculo para que la Action la compruebe contra el dato.')
+
+
 def comprobar_redondeo(inf, textos, main, decl):
-    """textos: [(dónde, texto)] del titular, la entradilla y los párrafos."""
+    """textos: [(dónde, texto)] del titular, la entradilla y los párrafos.
+
+    La cifra correcta es la que sale del dato sin redondear. Si la pieza la declara en «cifras», la Action ya la
+    comprueba contra el dato y aquí no se mira. Si no, solo tenemos las cifras que se ven: una diferencia que se
+    separa ±0,1 de su resta puede ser correcta, así que da aviso (el editor lo explica), nunca error."""
     tbs = tablas(main)
     for donde, t in textos:
         for fr in frases(t):
@@ -115,6 +134,8 @@ def comprobar_redondeo(inf, textos, main, decl):
             pts = [(m.group(1), _num(m.group(1))) for m in re.finditer(PUNTOS, fr)]
             pcs = [_num(m.group(1)) for m in re.finditer(PCT, fr)]
             for txt, (n, dec) in pts:
+                if _declarada(txt, fr, decl):
+                    continue
                 tol = 0.5 * 10 ** -dec + 0.05   # lo que se puede mover una resta por el redondeo de sus dos cifras
                 # a) dos porcentajes en la misma frase y una diferencia en puntos
                 if len(pcs) == 2 and pcs[0][1] == pcs[1][1] and pcs[0][1] >= dec:   # «en torno al 32 %» no da décimas
@@ -122,9 +143,9 @@ def comprobar_redondeo(inf, textos, main, decl):
                     if _r(d, dec) == n:
                         continue
                     if abs(d - n) <= tol:
-                        inf.error('Redondeo: la diferencia no cuadra con las cifras que se ven',
-                                  f'«{txt} puntos», pero {_fmt(pcs[0][0], pcs[0][1])} − {_fmt(pcs[1][0], pcs[1][1])} = '
-                                  f'{_fmt(_r(d, dec), dec)} ({donde}): «{fr[:220]}»')
+                        inf.aviso('Redondeo: la diferencia no es la resta de las cifras que se ven',
+                                  f'«{txt} puntos», y {_fmt(pcs[0][0], pcs[0][1])} − {_fmt(pcs[1][0], pcs[1][1])} = '
+                                  f'{_fmt(_r(d, dec), dec)} ({donde}): «{fr[:220]}». {AVISO_BRUTO}')
                         continue
                 # b) un porcentaje en la frase y el otro en una tabla: misma columna, fila nombrada en la frase
                 for a, da in pcs:
@@ -140,9 +161,9 @@ def comprobar_redondeo(inf, textos, main, decl):
                                     continue
                                 d = abs(a - v[0])
                                 if abs(d - n) <= tol and _r(d, dec) != n:
-                                    inf.error('Redondeo: la diferencia no cuadra con la tabla de la pieza',
-                                              f'«{txt} puntos», pero {_fmt(a, da)} − {_fmt(v[0], v[1])} ({etq}, en la tabla) = '
-                                              f'{_fmt(_r(d, dec), dec)} ({donde}): «{fr[:220]}»')
+                                    inf.aviso('Redondeo: la diferencia no es la resta de la tabla de la pieza',
+                                              f'«{txt} puntos», y {_fmt(a, da)} − {_fmt(v[0], v[1])} ({etq}, en la tabla) = '
+                                              f'{_fmt(_r(d, dec), dec)} ({donde}): «{fr[:220]}». {AVISO_BRUTO}')
             # c) la misma cifra con distinto redondeo en el texto y en la fila de una tabla con ese nombre
             todos = re.findall(PCT, fr)
             for m in re.finditer(PCT, fr):
@@ -183,8 +204,11 @@ def comprobar_tablas(inf, main, decl):
                 if pares and len(buenos) >= len(pares) / 2:
                     for f, calc, d, dec in pares:
                         if _r(calc, dec) != d:
-                            inf.error('Tabla: la diferencia no es la resta de sus columnas',
-                                      f'{nombre}, fila «{f[0]}»: {f[j - 2]} − {f[j - 1]} = {_fmt(_r(calc, dec), dec)}, y la tabla pone {f[j]}')
+                            cerca = abs(_r(calc, dec) - d) <= 10 ** -dec + 1e-9
+                            (inf.aviso if cerca else inf.error)(
+                                'Tabla: la diferencia no es la resta de sus columnas',
+                                f'{nombre}, fila «{f[0]}»: {f[j - 2]} − {f[j - 1]} = {_fmt(_r(calc, dec), dec)}, y la tabla pone {f[j]}'
+                                + (f'. {AVISO_BRUTO}' if cerca else ''))
         # fila de total
         for i, f in enumerate(filas):
             if re.match(TOTALES, f[0].lower()) and i > 1:
