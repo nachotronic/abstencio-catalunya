@@ -2,13 +2,16 @@
 
 Salen de los fallos que el repaso diario encontró en piezas ya fusionadas:
 
-1. Redondeo. La cifra del texto tiene que cuadrar con las cifras que ve el lector, no solo con el dato bruto:
-   - «del 27,2 % al 32,4 %, 5,1 puntos más» -> con lo que se ve son 5,2 (error);
-   - «5,1 puntos más que en noviembre de 2019» con 32,4 en el texto y 27,2 en la tabla, en la fila
-     «nov. 2019» de la misma columna (error);
+1. Redondeo. La cifra buena es la que sale del dato sin redondear: una diferencia se calcula restando los datos
+   brutos, nunca restando las cifras ya redondeadas que se muestran. Por eso la resta de las cifras mostradas
+   puede separarse una décima de la diferencia publicada sin que haya error:
+   - «del 62,9 % al 77,0 %, 14,0 puntos más» (76,992 − 62,946 = 14,046): correcto aunque 77,0 − 62,9 dé 14,1.
+   - Si la pieza declara la diferencia en «cifras», la Action ya la recalcula contra el dato y aquí no se mira.
+   - Si no la declara, una diferencia a ±0,1 de la resta de las cifras que se ven (en la misma frase, o en la
+     fila de una tabla que la frase nombra: «nov. 2019» ↔ «noviembre de 2019») da aviso, nunca error.
    - «Nevada, con el 88 %» en el texto y 87,8 % en la fila «Nevada» de una tabla (aviso).
 2. Tablas.
-   - Columna «Diferencia»: tiene que ser la resta de las dos columnas de su izquierda (error en la fila que no da).
+   - Columna «Diferencia»: la resta de las dos columnas de su izquierda (aviso a una décima, error si se separa más).
    - Fila o columna «Total» (o «Suma», «Comunitat», «España»...): tiene que ser la suma de las demás (error).
    - Filas de recuentos que suman distinto que la mayoría (aviso: puede estar explicado en una nota).
    - «0,0» en una tabla que marca con «–» lo que no tiene dato (aviso).
