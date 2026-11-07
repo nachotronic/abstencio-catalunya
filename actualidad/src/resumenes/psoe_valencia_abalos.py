@@ -25,15 +25,22 @@ EL = [('2004_03', '2004'), ('2008_03', '2008'), ('2011_11', '2011'), ('2015_12',
 
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
 v = m[m.mun_code.str[:2] == '46'].copy()
+def nombre(x):   # «Pobla de Farnals, la» → «La Pobla de Farnals»; «Eliana, l'» → «L'Eliana»
+    if ', ' not in x:
+        return x
+    base, art = x.rsplit(', ', 1)
+    return art[0].upper() + art[1:] + ('' if art.endswith("'") else ' ') + base
+v['municipio'] = v.municipio.map(nombre)
+assert nombre('Pobla de Farnals, la') == 'La Pobla de Farnals' and nombre("Eliana, l'") == "L'Eliana"
 NMUN = len(v)
 assert NMUN == 266, NMUN
 
 SERIE, GANA = {}, {}
 for e, _ in EL:
     T = sum(v[f'{e}_v{f}'].sum() for f in F if f'{e}_v{f}' in v)
-    SERIE[e] = {k: round(v[f'{e}_v{k}'].sum() / T * 100, 2) for k in ('PSOE', 'PP')}
+    SERIE[e] = {k: v[f'{e}_v{k}'].sum() / T * 100 for k in ('PSOE', 'PP')}   # sin redondear: p() redondea una sola vez
     GANA[e] = {k: int((v[f'{e}_gana'] == k).sum()) for k in ('PSOE', 'PP')}   # solo se usa 2023: en 2015-2019, «gana» suma UP y Compromís en SUMAR
-assert SERIE['2023_07']['PSOE'] == 32.35 and SERIE['2008_03']['PSOE'] == 40.42
+assert round(SERIE['2023_07']['PSOE'], 4) == 32.3476 and round(SERIE['2019_11']['PSOE'], 4) == 27.2481 and round(SERIE['2008_03']['PSOE'], 1) == 40.4
 MEJOR = max((e for e, _ in EL if e > '2008_03'), key=lambda e: SERIE[e]['PSOE'])
 assert MEJOR == '2023_07'
 
@@ -71,11 +78,21 @@ assert sum(E23.values()) == 16, E23
 ESC23 = E23['PSOE']
 
 # Modelo del 3-11
-ESCB = json.load(open(RAIZ / 'previsiones/datos/publico/escenario-base.json'))['provincias']['46']
-meta = json.load(open(RAIZ / 'previsiones/datos/publico/meta.json'))
+# El modelo se publica cada día: la pieza usa el del 5-11 (commit 12b04a065d) y cita el del 7-11 (b46bc68e10), congelados de git
+import subprocess
+def modelo(commit):
+    g = lambda f: json.loads(subprocess.run(['git', '-C', str(RAIZ), 'show', f'{commit}:previsiones/datos/publico/{f}'], capture_output=True, check=True, text=True).stdout)
+    meta = g('meta.json')
+    return meta, next(l for l in g('escenario-base.json')['provincias']['46']['listas'] if l['lista'] == 'PSOE')
+meta, MODP = modelo('12b04a065d')
 assert meta['generado'] == '2026-11-05', meta['generado']
 SIMS = meta['simulaciones']
-MODP = next(l for l in ESCB['listas'] if l['lista'] == 'PSOE')
+meta07, MOD07 = modelo('b46bc68e10')
+assert meta07['generado'] == '2026-11-07' and MOD07['escanos'] == [4, 5, 5], MOD07
+PUESTOS = json.load(open(RAIZ / 'listas-electorales-29n/datos/puestos-29n.json'))
+assert PUESTOS['modelo'] == '2026-11-03'
+meta03, MOD03 = modelo('8f52a52535')
+assert meta03['generado'] == '2026-11-03' and MOD03['escanos'][1] == MODP['escanos'][1] - 1, MOD03
 # --- Gráficos ---
 g_serie = figura(f'El PSOE sacó en 2023 en la provincia de Valencia su mejor resultado desde 2008',
                  'Porcentaje de voto del PSOE en la provincia de Valencia en cada elección general',
@@ -145,7 +162,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_mapa}
 
 <h2>El 29N, con otra lista</h2>
-<p data-tipo="dato">La lista del PSOE por Valencia para el 29N la encabeza Pilar Bernabé, y de los 16 titulares de 2023 solo repiten {len(REPITEN)}: {", ".join(esc(x) for x in REPITEN[:-1])} y {esc(REPITEN[-1])}. El modelo de Mapa Electoral del 5 de noviembre, hecho con encuestas anteriores al registro, le da en la mediana de las {n(SIMS)} simulaciones {med} escaños, los mismos que en 2023, y entre {MODP["escanos"][0]} y {MODP["escanos"][2]} en el 80 % central. Con {med}, saldrían elegidos de Pilar Bernabé a {esc(L26[med - 1])}, la número {med}.</p>
+<p data-tipo="dato">La lista del PSOE por Valencia para el 29N la encabeza Pilar Bernabé, y de los 16 titulares de 2023 solo repiten {len(REPITEN)}: {", ".join(esc(x) for x in REPITEN[:-1])} y {esc(REPITEN[-1])}. El modelo de Mapa Electoral del 5 de noviembre, hecho con encuestas anteriores al registro, le da en la mediana de las {n(SIMS)} simulaciones {med} escaños, los mismos que en 2023, y entre {MODP["escanos"][0]} y {MODP["escanos"][2]} en el 80 % central. Con {med}, saldrían elegidos de Pilar Bernabé a {esc(L26[med - 1])}, la número {med}. El modelo se actualiza cada día con las encuestas nuevas: el del 7 de noviembre le sigue dando {MOD07["escanos"][1]} en la mediana, pero entre {MOD07["escanos"][0]} y {MOD07["escanos"][2]}, como recoge la página de <a href="{BASE}encuestas/valencia/">encuestas de Valencia</a>. Las probabilidades de cada puesto de las listas se calcularon con el modelo del 3 de noviembre, que daba al PSOE un escaño menos en la mediana.</p>
 <p data-tipo="contexto">Pedro Sánchez dijo el jueves que «ninguna de esas personas [las detenidas] tiene nada que ver conmigo», y el portavoz socialista en el Congreso, Patxi López, habló de «qué casualidad que siempre que el PSOE saca cabeza», según <a href="{PUBLICO}">Público</a>.</p>
 <blockquote class="cita"><p>«We find that voters ignore corruption when there are side benefits to it, and that punishment is only administered in those cases in which they do not receive compensation» («Los votantes pasan por alto la corrupción cuando les reporta beneficios, y solo la castigan cuando no reciben compensación»).</p><footer>Pablo Fernández-Vázquez, Pablo Barberá y Gonzalo Rivero, con datos de las municipales españolas de 2011, en <a href="{PAPER}">Political Science Research and Methods</a> (2016)</footer></blockquote>
 <p data-tipo="hipotesis">Los datos no dicen si el caso Koldo moverá votos en Valencia. En 2023, con Ábalos en la lista, el PSOE subió en la provincia, pero entonces el caso aún no se había conocido: estalló en febrero de 2024. Las encuestas que use el modelo a partir de ahora serán las primeras que puedan recoger el registro.</p>
@@ -164,8 +181,8 @@ foot = ('Datos: Ministerio del Interior, generales de 2004 a 2023 por municipio;
         'Congreso de los Diputados, diputados de la XV legislatura; modelo de encuestas de Mapa Electoral del 5 de noviembre de 2026. '
         'Cálculo: actualidad/src/resumenes/psoe_valencia_abalos.py.')
 
-DATOS = {'SERIE': SERIE, 'GANA': {'2023_07': GANA['2023_07']}, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
-         'REPITEN': REPITEN, 'GRANDES': [[r.municipio, round(r.psoe, 2), round(r.dif, 2)] for r in GRANDES.itertuples()]}
+DATOS = {'SERIE': SERIE, 'MOD07': MOD07, 'MOD03': MOD03, 'GANA': {'2023_07': GANA['2023_07']}, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
+         'REPITEN': REPITEN, 'GRANDES': [[r.municipio, round(r.psoe, 4), round(r.dif, 4)] for r in GRANDES.itertuples()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza('psoe-valencia-abalos-municipios-29n', 'El PSOE de Valencia',
