@@ -3202,7 +3202,8 @@ PIEZAS += [
                   pie='Quién ganó en cada distrito de Serbia en las legislativas del 25 de octubre.', fuente='RIK, resultados provisionales por colegio; contornos de OpenStreetMap'),
     ),
     dict(
-        slug='quien-vota-barrios-renta-edad-inmigracion', fecha='2026-10-28',
+        slug='quien-vota-barrios-renta-edad-inmigracion', fecha='2026-10-28', actualizado='2026-11-08 00:31',
+        correcciones='8-11-2026: cuatro diferencias entre el 10 % de secciones más pobre y el más rico se recalculan con las cifras que se muestran, y suben o bajan una décima: 12,0 puntos en las municipales de 2023 (no 11,9), 13,5 en las de 2019 (no 13,6), 14,1 en las generales de 2016 (no 14,0) y 22,2 en las europeas de 2024 (no 22,1). Las conclusiones no cambian.',
         titulo='En los barrios ricos se vota 15 puntos más que en los pobres, y en las europeas, 22: quién vota en España según la renta, la edad y la inmigración', serie='29n',
         descripcion='En el 10% de secciones censales con más renta votó el 77,8% en las generales de 2023; en el 10% más pobre, el 62,6%. La distancia era de 7,9 puntos en 2004. Vox saca más en los barrios jóvenes y la inmigración baja la participación, pero no sube el voto a Vox.',
         compara='La participación y el voto en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, en las 36.462 secciones censales de España, agrupadas en diez tramos con el mismo censo según la renta, la pobreza, la edad media, la población extranjera, los estudios y el paro que el INE mide en cada sección.',

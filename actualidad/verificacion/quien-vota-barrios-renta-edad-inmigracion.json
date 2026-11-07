@@ -1,0 +1,67 @@
+{
+ "pieza": "quien-vota-barrios-renta-edad-inmigracion",
+ "_datos_disponibles": {
+  "BRECHA": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "elecciones analizadas: votó el 39,2% en las secciones más",
+   "cifra": "39,2",
+   "calculo": "BRECHA['europeas']['2024'][0]"
+  },
+  {
+   "texto": "secciones más pobres y el 61,4% en las más ricas, 22,2",
+   "cifra": "61,4",
+   "calculo": "BRECHA['europeas']['2024'][1]"
+  },
+  {
+   "texto": "el 61,4% en las más ricas, 22,2 puntos. En las europeas",
+   "cifra": "22,2",
+   "calculo": "BRECHA['europeas']['2024'][1]-BRECHA['europeas']['2024'][0]"
+  },
+  {
+   "texto": "que las municipales, fue de 14,4 puntos.",
+   "cifra": "14,4",
+   "calculo": "BRECHA['europeas']['2019'][1]-BRECHA['europeas']['2019'][0]"
+  },
+  {
+   "texto": "mayor que hace una década: 3,8 puntos en 2011 y 12,0",
+   "cifra": "3,8",
+   "calculo": "BRECHA['municipales']['2011'][1]-BRECHA['municipales']['2011'][0]"
+  },
+  {
+   "texto": "década: 3,8 puntos en 2011 y 12,0 puntos en 2023 (58,1%",
+   "cifra": "12,0",
+   "calculo": "BRECHA['municipales']['2023'][1]-BRECHA['municipales']['2023'][0]"
+  },
+  {
+   "texto": "2011 y 12,0 puntos en 2023 (58,1% frente a 70,1%), por",
+   "cifra": "58,1",
+   "calculo": "BRECHA['municipales']['2023'][0]"
+  },
+  {
+   "texto": "puntos en 2023 (58,1% frente a 70,1%), por debajo del máximo",
+   "cifra": "70,1",
+   "calculo": "BRECHA['municipales']['2023'][1]"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "con una participación del 49%, la diferencia entre",
+   "cifra": "49",
+   "fuente": "https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/"
+  },
+  {
+   "texto": "ricas (9,2%) que en las más",
+   "cifra": "9,2",
+   "fuente": "https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/"
+  },
+  {
+   "texto": "pobres (6,8%), al contrario",
+   "cifra": "6,8",
+   "fuente": "https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}
