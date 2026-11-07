@@ -31,3 +31,14 @@ for s in ['mestalla','cinco-semanas','semana-en-el-mapa','eeuu','medio-mandato']
 for dims in (['refererPath','requestPath'],['refererPath'],['requestPath','datetimeHour']):
     rs=grp(dims,50,d1=H,d2=H,extra=',{refererHost_like:"%abc.es%"}')
     print('ABC',dims,[(r['dimensions'],r['sum']['visits']) for r in rs])
+rs=grp(['refererHost','refererPath','requestPath'],2000,d1='2026-10-08',d2=H)
+agg=collections.defaultdict(lambda:[0,collections.Counter(),collections.Counter(),set()])
+for r in rs:
+    d=r['dimensions']; h=d['refererHost'] or ''
+    if not h or any(x in h for x in ['google','bing','mapaelectoral','duckduckgo','yahoo','ecosia','brave','yandex','qwant','baidu','startpage']): continue
+    a=agg[h]; a[0]+=r['sum']['visits']; a[1][d['requestPath']]+=r['sum']['visits']; a[2][d['refererPath']]+=r['sum']['visits']
+for h,a in sorted(agg.items(),key=lambda x:-x[1][0])[:40]: print('REFH',h,a[0],a[1].most_common(4),a[2].most_common(4))
+rs=grp(['refererHost','date'],2000,d1='2026-10-08',d2=H)
+for r in rs:
+    h=r['dimensions']['refererHost'] or ''
+    if h in [x for x,a in sorted(agg.items(),key=lambda x:-x[1][0])[:15]]: print('REFD',h,r['dimensions']['date'],r['sum']['visits'])
