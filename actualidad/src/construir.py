@@ -1749,7 +1749,7 @@ PIEZAS = [
         lugar='Navarra',
     ),
     dict(
-        slug='psoe-valencia-abalos-municipios-29n', fecha='2026-11-06', actualizado='2026-11-06 10:55',
+        slug='psoe-valencia-abalos-municipios-29n', fecha='2026-11-06', actualizado='2026-11-07 07:28',
         titulo='La lista del PSOE por Valencia con Ábalos de número dos sacó en 2023 el 32,4 %, su mejor resultado desde 2008; el 29N, con Pilar Bernabé, el modelo le da los mismos 5 escaños', serie='29n', figura=0,
         descripcion='La UCO registró el 5 de noviembre la casa del exministro en Valencia. En la provincia, el PSOE fue el más votado en 134 de los 266 municipios en 2023 y subió respecto a noviembre de 2019 en 232. Para el 29N, el modelo, con encuestas anteriores al registro, le da 5 escaños en la mediana.',
         compara='El voto al PSOE en la provincia de Valencia en las ocho generales desde 2004, por municipio en 2023, las listas proclamadas de 2023 y 2026 y el reparto que da el modelo de encuestas de Mapa Electoral del 5 de noviembre.',

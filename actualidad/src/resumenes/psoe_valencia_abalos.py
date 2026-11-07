@@ -71,11 +71,21 @@ assert sum(E23.values()) == 16, E23
 ESC23 = E23['PSOE']
 
 # Modelo del 3-11
-ESCB = json.load(open(RAIZ / 'previsiones/datos/publico/escenario-base.json'))['provincias']['46']
-meta = json.load(open(RAIZ / 'previsiones/datos/publico/meta.json'))
+# El modelo se publica cada día: la pieza usa el del 5-11 (commit 12b04a065d) y cita el del 7-11 (b46bc68e10), congelados de git
+import subprocess
+def modelo(commit):
+    g = lambda f: json.loads(subprocess.run(['git', '-C', str(RAIZ), 'show', f'{commit}:previsiones/datos/publico/{f}'], capture_output=True, check=True, text=True).stdout)
+    meta = g('meta.json')
+    return meta, next(l for l in g('escenario-base.json')['provincias']['46']['listas'] if l['lista'] == 'PSOE')
+meta, MODP = modelo('12b04a065d')
 assert meta['generado'] == '2026-11-05', meta['generado']
 SIMS = meta['simulaciones']
-MODP = next(l for l in ESCB['listas'] if l['lista'] == 'PSOE')
+meta07, MOD07 = modelo('b46bc68e10')
+assert meta07['generado'] == '2026-11-07' and MOD07['escanos'] == [4, 5, 5], MOD07
+PUESTOS = json.load(open(RAIZ / 'listas-electorales-29n/datos/puestos-29n.json'))
+assert PUESTOS['modelo'] == '2026-11-03'
+meta03, MOD03 = modelo('8f52a52535')
+assert meta03['generado'] == '2026-11-03' and MOD03['escanos'][1] == MODP['escanos'][1] - 1, MOD03
 # --- Gráficos ---
 g_serie = figura(f'El PSOE sacó en 2023 en la provincia de Valencia su mejor resultado desde 2008',
                  'Porcentaje de voto del PSOE en la provincia de Valencia en cada elección general',
@@ -139,13 +149,13 @@ assert MODP['escanos'] == [4, 5, 6] and med == 5 == ESC23
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">La UCO de la Guardia Civil registró este jueves la casa de José Luis Ábalos y pidió información a Adif en una nueva pieza separada del caso Koldo, que instruye el juez de la Audiencia Nacional Ismael Moreno, según <a href="{EFE}">EFE</a>; la casa está en Valencia, según <a href="{PUBLICO}">Público</a>. Hubo seis detenidos, entre ellos la pareja del exministro, que salieron en libertad por la tarde, según Público. Ábalos lleva un año en prisión y en junio el Supremo lo condenó a 24 años por liderar una organización criminal, según <a href="{SUPREMO}">El Español</a>.</p>
-<p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en las generales de julio de 2023, detrás de Diana Morant, según las candidaturas publicadas en el BOE. Esa lista sacó en la provincia el {p(s23)} % de los votos, su mejor resultado desde 2008 ({p(s08)} %) y {p(s23 - s19)} puntos más que en noviembre de 2019. El PP sacó el {p(pp23)} %. El PSOE sacó {ESC23} de los 16 diputados de la provincia. Tras estallar el caso, en febrero de 2024, Ábalos pasó al Grupo Mixto, y dejó el escaño el 28 de enero de 2026, según el Congreso.</p>
+<p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en las generales de julio de 2023, detrás de Diana Morant, según las candidaturas publicadas en el BOE. Esa lista sacó en la provincia el {p(s23)} % de los votos, su mejor resultado desde 2008 ({p(s08)} %) y {p(round(s23, 1) - round(s19, 1))} puntos más que en noviembre de 2019. El PP sacó el {p(pp23)} %. El PSOE sacó {ESC23} de los 16 diputados de la provincia. Tras estallar el caso, en febrero de 2024, Ábalos pasó al Grupo Mixto, y dejó el escaño el 28 de enero de 2026, según el Congreso.</p>
 {g_serie}
 <p data-tipo="dato">El PSOE fue el más votado en {GANA["2023_07"]["PSOE"]} de los {NMUN} municipios de la provincia y subió respecto a noviembre de 2019 en {SUBE}. Entre los que tienen más de 50.000 electores, donde mayor porcentaje sacó fue {esc(gv.municipio)}, con el {p(gv.psoe)} %.</p>
 {g_mapa}
 
 <h2>El 29N, con otra lista</h2>
-<p data-tipo="dato">La lista del PSOE por Valencia para el 29N la encabeza Pilar Bernabé, y de los 16 titulares de 2023 solo repiten {len(REPITEN)}: {", ".join(esc(x) for x in REPITEN[:-1])} y {esc(REPITEN[-1])}. El modelo de Mapa Electoral del 5 de noviembre, hecho con encuestas anteriores al registro, le da en la mediana de las {n(SIMS)} simulaciones {med} escaños, los mismos que en 2023, y entre {MODP["escanos"][0]} y {MODP["escanos"][2]} en el 80 % central. Con {med}, saldrían elegidos de Pilar Bernabé a {esc(L26[med - 1])}, la número {med}.</p>
+<p data-tipo="dato">La lista del PSOE por Valencia para el 29N la encabeza Pilar Bernabé, y de los 16 titulares de 2023 solo repiten {len(REPITEN)}: {", ".join(esc(x) for x in REPITEN[:-1])} y {esc(REPITEN[-1])}. El modelo de Mapa Electoral del 5 de noviembre, hecho con encuestas anteriores al registro, le da en la mediana de las {n(SIMS)} simulaciones {med} escaños, los mismos que en 2023, y entre {MODP["escanos"][0]} y {MODP["escanos"][2]} en el 80 % central. Con {med}, saldrían elegidos de Pilar Bernabé a {esc(L26[med - 1])}, la número {med}. El modelo se actualiza cada día con las encuestas nuevas: el del 7 de noviembre le sigue dando {MOD07["escanos"][1]} en la mediana, pero entre {MOD07["escanos"][0]} y {MOD07["escanos"][2]}, como recoge la página de <a href="{BASE}encuestas/valencia/">encuestas de Valencia</a>. Las probabilidades de cada puesto de las listas se calcularon con el modelo del 3 de noviembre, que daba al PSOE un escaño menos en la mediana.</p>
 <p data-tipo="contexto">Pedro Sánchez dijo el jueves que «ninguna de esas personas [las detenidas] tiene nada que ver conmigo», y el portavoz socialista en el Congreso, Patxi López, habló de «qué casualidad que siempre que el PSOE saca cabeza», según <a href="{PUBLICO}">Público</a>.</p>
 <blockquote class="cita"><p>«We find that voters ignore corruption when there are side benefits to it, and that punishment is only administered in those cases in which they do not receive compensation» («Los votantes pasan por alto la corrupción cuando les reporta beneficios, y solo la castigan cuando no reciben compensación»).</p><footer>Pablo Fernández-Vázquez, Pablo Barberá y Gonzalo Rivero, con datos de las municipales españolas de 2011, en <a href="{PAPER}">Political Science Research and Methods</a> (2016)</footer></blockquote>
 <p data-tipo="hipotesis">Los datos no dicen si el caso Koldo moverá votos en Valencia. En 2023, con Ábalos en la lista, el PSOE subió en la provincia, pero entonces el caso aún no se había conocido: estalló en febrero de 2024. Las encuestas que use el modelo a partir de ahora serán las primeras que puedan recoger el registro.</p>
@@ -164,7 +174,7 @@ foot = ('Datos: Ministerio del Interior, generales de 2004 a 2023 por municipio;
         'Congreso de los Diputados, diputados de la XV legislatura; modelo de encuestas de Mapa Electoral del 5 de noviembre de 2026. '
         'Cálculo: actualidad/src/resumenes/psoe_valencia_abalos.py.')
 
-DATOS = {'SERIE': SERIE, 'GANA': {'2023_07': GANA['2023_07']}, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
+DATOS = {'SERIE': SERIE, 'MOD07': MOD07, 'MOD03': MOD03, 'GANA': {'2023_07': GANA['2023_07']}, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
          'REPITEN': REPITEN, 'GRANDES': [[r.municipio, round(r.psoe, 2), round(r.dif, 2)] for r in GRANDES.itertuples()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
