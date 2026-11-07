@@ -62,10 +62,15 @@ def barrios(cod):
     s = SB[SB.mun_code == cod]
     lar = LARGO[LARGO.eleccion == T.ULTIMA]
     out = []
-    for (nombre, osm), g in s.groupby(['barrio', 'osm_id']):
+    # Un barrio = un nombre dentro de su distrito. OSM tiene a veces el mismo barrio partido en dos relaciones
+    # (Gros y Amaraberri, en Donostia): se juntan, para no publicar dos fichas con medio barrio cada una.
+    # El distrito de cada relación es el de la mayoría de sus secciones (un barrio puede cruzar un límite de distrito).
+    dist = s.assign(distrito=s.distrito.fillna('')).groupby('osm_id').distrito.agg(lambda x: x.mode().iloc[0])
+    for (nombre, d), g in s.assign(_d=s.osm_id.map(dist)).groupby(['barrio', '_d']):
+        osm = g.osm_id.mode().iloc[0]
         cods = g.tract_code.tolist()
         r = resultado(lar[lar.tract_code.isin(cods)])
-        out.append({'nombre': nombre, 'osm_id': osm, 'distrito': g.distrito.mode().iloc[0] if g.distrito.notna().any() else None,
+        out.append({'nombre': nombre, 'osm_id': osm, 'distrito': d or None,
                     'nivel': int(g.nivel.iloc[0]), 'secciones': cods, 'r': r, 'demo': demografia(cods)})
     vistos = {}
     for b in sorted(out, key=lambda b: -len(b['secciones'])):   # dos barrios con el mismo nombre: el pequeño lleva el distrito
