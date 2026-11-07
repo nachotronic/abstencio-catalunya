@@ -3328,6 +3328,7 @@ ANTETITULOS = {
     'banez-huelva-pp-29n': 'Fátima Báñez (1967-2026)',
     'bulgaria-yotova-gyurov-mapa-municipios': 'Bulgaria, municipio a municipio',
     'nueva-zelanda-elecciones-mapa-circunscripciones': 'Nueva Zelanda, circunscripción a circunscripción',
+    'nueva-zelanda-resultados-mapa': 'Nueva Zelanda, resultados',
     'listas-29n-quien-encabeza': 'Quién sale y quién no',
     'listas-proclamadas-29n': 'Listas proclamadas',
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
@@ -4057,7 +4058,7 @@ PIEZAS += [
                   pie='Quién ganó en cada municipio de Bulgaria en la primera vuelta de las presidenciales.', fuente='CIK, resultados por colegio; contornos de Boyko Yurukov'),
     ),
     dict(
-        slug='nueva-zelanda-elecciones-mapa-circunscripciones', fecha='2026-11-03', actualizado='2026-11-04 07:33',
+        slug='nueva-zelanda-elecciones-mapa-circunscripciones', fecha='2026-11-03', actualizado='2026-11-07 23:10',
         titulo='El partido del primer ministro de Nueva Zelanda cae del 38% al 29,5% y llega casi empatado con los laboristas a las elecciones del sábado', serie='internacional',
         descripcion='Christopher Luxon gobierna desde 2023 con dos socios a su derecha. La última encuesta de 1News–Verian da al Partido Nacional el 29,5% y a los laboristas de Chris Hipkins el 28,8%, y deja a la coalición con 58 escaños, por debajo de los 61 de la mayoría. El mapa de las 71 circunscripciones muestra quién habría ganado cada una en 2023 con los límites nuevos.',
         compara='Las 71 circunscripciones de las elecciones generales de Nueva Zelanda del 7 de noviembre de 2026 (64 generales y 7 maoríes, con los límites de 2025), con el resultado de 2023 trasladado a esos límites, y la evolución del voto de partido desde 2023 en las 15 encuestas publicadas desde septiembre.',
@@ -4134,7 +4135,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07',
+        slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07', actualizado='2026-11-07 23:10',
         titulo='A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos', serie='29n', figura=0,
         descripcion='Crónica de la semana del 1 al 6 de noviembre desde los mapas: la dimisión de Puente, el registro a Ábalos, las encuestas tras Urda, las listas proclamadas, el cinturón rojo de Madrid, el empate a tres en Bizkaia y Estados Unidos. Diez de once encuestas con escaños dan mayoría a PP y Vox.',
         compara='Las cifras de las 19 piezas de Actualidad publicadas entre el 1 y el 6 de noviembre y la última encuesta de cada encuestadora con escaños en los últimos 30 días, con el escenario central del modelo de Mapa Electoral del 7 de noviembre.',
@@ -4165,6 +4166,25 @@ PIEZAS += [
         enlaces=[],
         lugar='Valencia',
     ),
+    dict(
+        slug='nueva-zelanda-resultados-mapa', fecha='2026-11-07',
+        titulo='Los laboristas ganan el voto de partido por 3.650 votos, pero la coalición de Luxon suma 67 de los 131 escaños en el recuento provisional de Nueva Zelanda', serie='internacional', figura=2,
+        descripcion='El Partido Nacional del primer ministro cae del 38,1% al 29,2%, pero gana 42 de las 71 circunscripciones. Con NZ First y ACT llega a 67 escaños, uno más de los 66 de la mayoría en una Cámara que crece a 131. Faltan los votos especiales: el resultado oficial se publicará el 27 de noviembre.',
+        compara='El recuento provisional de las elecciones generales de Nueva Zelanda del 7 de noviembre de 2026 (voto de partido, escaños y ganador de las 71 circunscripciones) con el resultado de 2023 y con la estimación de quién habría ganado cada circunscripción en 2023 con los límites de 2025.',
+        limites='Es el recuento provisional de la noche electoral, sin los votos especiales: el voto de partido, los escaños y algunas circunscripciones pueden cambiar en el recuento oficial del 27 de noviembre. Los ganadores de 2023 por circunscripción son la estimación no oficial de Ben Raue (The Tally Room) con los límites nuevos. Los porcentajes se calculan sobre el total de votos de partido que publica RNZ. El mapa omite las islas Chatham, que forman parte de Wellington Bays.',
+        calculo='Colores del mapa: partido que gana la circunscripción en el recuento provisional; tono según la ventaja en votos sobre el segundo (menos de 1.000, de 1.000 a 5.000, más de 5.000). Cambios: partido ganador frente al ganador estimado de 2023 con los límites de 2025. Mayoría: la mitad de los escaños más uno. Variación del voto de partido: porcentajes de 2023 y 2026 calculados con los votos, sin redondear antes de restar.',
+        fuentes=[('https://www.rnz.co.nz/news/election-2026-results', 'RNZ, resultados de las elecciones de 2026: voto de partido y escaños (recuento provisional, 8-11-2026, 3.45)'),
+                 ('https://www.rnz.co.nz/news/election-2026-results/electorates', 'RNZ, resultados por circunscripción (recuento provisional, 8-11-2026, 3.45)'),
+                 ('https://es-us.noticias.yahoo.com/resultado-ajustado-conservadores-laboristas-n-115639166.html', 'EFE vía Yahoo Noticias, resultado ajustado entre conservadores y laboristas (7-11-2026)'),
+                 ('https://www.rnz.co.nz/news/politics_election-2026/2417370/election-results-chris-hipkins-says-every-vote-matters-as-outcome-unclear', 'RNZ, Hipkins: «cada voto importa» (7-11-2026)'),
+                 ('https://www.rnz.co.nz/news/politics_election-2026/2431516/turnout-for-2026-election-on-track-to-be-the-second-lowest-in-new-zealand-history', 'RNZ, la participación de 2026, camino de ser la segunda más baja (8-11-2026)'),
+                 ('https://www.rnz.co.nz/news/politics_election-2026/2117687/analysis-ruling-out-opportunity-only-harms-luxon-s-election-chances-right-it-s-not-that-simple', 'RNZ / The Conversation, análisis de Grant Duncan sobre Opportunity (24-10-2026)'),
+                 ('https://www.tallyroom.com.au/62140', 'Ben Raue, The Tally Room: resultados de 2023 con los límites de 2025 (estimación no oficial)'),
+                 ('https://en.wikipedia.org/wiki/Results_of_the_2023_New_Zealand_general_election', 'Wikipedia, Results of the 2023 New Zealand general election'),
+                 ('https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/General_Electorates_2025/FeatureServer/0', 'Stats NZ / Comisión de Representación: contornos de las circunscripciones de 2025')],
+        enlaces=[],
+        lugar='Nueva Zelanda',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
@@ -4177,7 +4197,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'acampada-sol-alquiler-madrid-distritos-29n': '2026-11-04',
     # Nacho, 29-10-2026: las nuevas y las actualizadas hoy, las primeras
     'bulgaria-yotova-gyurov-mapa-municipios': '2026-11-03',
-    'nueva-zelanda-elecciones-mapa-circunscripciones': '2026-11-07',
+    'nueva-zelanda-resultados-mapa': '2026-11-09',   # coordinador, 7-11-2026: los resultados sustituyen a la previa
     'encuestas-antes-despues-urda-29n': '2026-11-02',
     'dana-pueblos-primeras-generales-29n': '2026-10-29',
     'ley-nietos-voto-exterior-29n': '2026-10-29',
@@ -4189,7 +4209,8 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
 
 # Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
 # Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
-INTER_DESTACADAS = ['eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
+INTER_DESTACADAS = ['nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
+INTER_FUERA_CARRUSEL = {'nueva-zelanda-elecciones-mapa-circunscripciones'}   # coordinador, 7-11-2026: con los resultados publicados, la previa sale del carrusel Internacional de la portada (sigue en /internacional/)
 INTER_EN_ACTUALIDAD = {'eeuu-resultados-medio-mandato-2026'}   # editor, 4-11-2026 8.20: la de la Cámara sale, para no repetir cifras distintas seguidas   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
@@ -4231,6 +4252,7 @@ def franja_serie(todas, clave, cabecera, sub, pre=''):
         serie = sorted(serie[::-1], key=lambda q: q['fecha'], reverse=True)
     if clave == 'internacional':
         serie = sorted(serie, key=lambda q: INTER_DESTACADAS.index(q['slug']) if q['slug'] in INTER_DESTACADAS else len(INTER_DESTACADAS))
+        serie = [q for q in serie if q['slug'] not in INTER_FUERA_CARRUSEL]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-{clave}"><div class="da-cab"><h2 id="h-del-{clave}"><a href="{todas_url}">{cabecera}</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +

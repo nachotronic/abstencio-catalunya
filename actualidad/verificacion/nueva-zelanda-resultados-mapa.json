@@ -1,0 +1,459 @@
+{
+ "pieza": "nueva-zelanda-resultados-mapa",
+ "_datos_disponibles": {
+  "D": "dict",
+  "GM": "dict",
+  "MM": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "ganan el voto de partido por 3.650 votos, pero la coalición",
+   "cifra": "3.650",
+   "calculo": "D[\"diferencia\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "la coalición de Luxon suma 67 de los 131 escaños en",
+   "cifra": "67",
+   "calculo": "D[\"coalicion\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "coalición de Luxon suma 67 de los 131 escaños en el recuento",
+   "cifra": "131",
+   "calculo": "D[\"total_escanos\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "del primer ministro cae del 38,1% al 29,2%, pero gana",
+   "cifra": "38,1",
+   "calculo": "D[\"p23\"][\"National\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "ministro cae del 38,1% al 29,2%, pero gana 42 de las",
+   "cifra": "29,2",
+   "calculo": "D[\"pct\"][\"National\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "38,1% al 29,2%, pero gana 42 de las 71 circunscripciones.",
+   "cifra": "42",
+   "calculo": "D[\"escanos\"][\"National\"][\"circ\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "29,2%, pero gana 42 de las 71 circunscripciones. Con",
+   "cifra": "71",
+   "calculo": "D[\"n_circ\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Con NZ First y ACT llega a 67 escaños, uno más de",
+   "cifra": "67",
+   "calculo": "D[\"coalicion\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "67 escaños, uno más de los 66 de la mayoría en una",
+   "cifra": "66",
+   "calculo": "D[\"mayoria\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "en una Cámara que crece a 131. Faltan los votos especiales:",
+   "cifra": "131",
+   "calculo": "D[\"total_escanos\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Nueva Zelanda del sábado, con 710.330 votos y el 29,4%, según",
+   "cifra": "710.330",
+   "calculo": "D[\"votos\"][\"Labour\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sábado, con 710.330 votos y el 29,4%, según el recuento",
+   "cifra": "29,4",
+   "calculo": "D[\"pct\"][\"Labour\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Christopher Luxon, tiene 706.680 votos y el 29,2%: 3.650",
+   "cifra": "706.680",
+   "calculo": "D[\"votos\"][\"National\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "tiene 706.680 votos y el 29,2%: 3.650 votos menos,",
+   "cifra": "29,2",
+   "calculo": "D[\"pct\"][\"National\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "706.680 votos y el 29,2%: 3.650 votos menos, la diferencia",
+   "cifra": "3.650",
+   "calculo": "D[\"diferencia\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Detrás van los Verdes, con el 13,3%; ACT, con el 10,9%;",
+   "cifra": "13,3",
+   "calculo": "D[\"pct\"][\"Green\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con el 13,3%; ACT, con el 10,9%; NZ First, con el 9,8%;",
+   "cifra": "10,9",
+   "calculo": "D[\"pct\"][\"ACT\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 10,9%; NZ First, con el 9,8%; Opportunity, con el",
+   "cifra": "9,8",
+   "calculo": "D[\"pct\"][\"NZ First\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "9,8%; Opportunity, con el 6,0%, y Te Pāti Māori, con",
+   "cifra": "6,0",
+   "calculo": "round(D['pct']['Opportunity'],1)",
+   "_donde": "dato"
+  },
+  {
+   "texto": "6,0%, y Te Pāti Māori, con el 0,6%.",
+   "cifra": "0,6",
+   "calculo": "D[\"pct\"][\"Te Pāti Māori\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El Partido Nacional gana 42 de las 71 circunscripciones",
+   "cifra": "42",
+   "calculo": "D[\"escanos\"][\"National\"][\"circ\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Partido Nacional gana 42 de las 71 circunscripciones y",
+   "cifra": "71",
+   "calculo": "D[\"n_circ\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "circunscripciones y suma 42 escaños; los laboristas",
+   "cifra": "42",
+   "calculo": "D[\"escanos\"][\"National\"][\"circ\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "escaños; los laboristas ganan 21 y, con 15 de lista,",
+   "cifra": "21",
+   "calculo": "D[\"escanos\"][\"Labour\"][\"circ\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "laboristas ganan 21 y, con 15 de lista, llegan a 36.",
+   "cifra": "15",
+   "calculo": "D[\"escanos\"][\"Labour\"][\"lista\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con 15 de lista, llegan a 36. Los tres partidos del",
+   "cifra": "36",
+   "calculo": "D[\"escanos\"][\"Labour\"][\"total\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el Partido Nacional, ACT (13 escaños) y NZ First",
+   "cifra": "13",
+   "calculo": "D[\"escanos\"][\"ACT\"][\"total\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(13 escaños) y NZ First (12), suman 67, uno más",
+   "cifra": "12",
+   "calculo": "D['escanos']['NZ First']['total']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "escaños) y NZ First (12), suman 67, uno más de los 66 que",
+   "cifra": "67",
+   "calculo": "D[\"coalicion\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "suman 67, uno más de los 66 que dan la mayoría.",
+   "cifra": "66",
+   "calculo": "D[\"mayoria\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "mayoría. Laboristas, Verdes (16), Opportunity (7) y",
+   "cifra": "16",
+   "calculo": "D['escanos']['Green']['total']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Verdes (16), Opportunity (7) y Te Pāti Māori (5)",
+   "cifra": "7",
+   "calculo": "D['escanos']['Opportunity']['total']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Opportunity (7) y Te Pāti Māori (5) suman 64, según RNZ.",
+   "cifra": "5",
+   "calculo": "D['escanos']['Te Pāti Māori']['total']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y Te Pāti Māori (5) suman 64, según RNZ. Luxon había",
+   "cifra": "64",
+   "calculo": "D[\"oposicion\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "voto de partido reparte los 120 escaños de la Cámara,",
+   "cifra": "120",
+   "calculo": "D['total_escanos']-D['sobrantes']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "con Te Pāti Māori, que gana cinco circunscripciones con",
+   "cifra": "cinco",
+   "calculo": "D[\"escanos\"][\"Te Pāti Māori\"][\"circ\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "circunscripciones con el 0,6% del voto. Por eso el",
+   "cifra": "0,6",
+   "calculo": "D[\"pct\"][\"Te Pāti Māori\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "eso el Parlamento tendría 131 escaños, 11 más de los",
+   "cifra": "131",
+   "calculo": "D[\"total_escanos\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Parlamento tendría 131 escaños, 11 más de los 120 habituales,",
+   "cifra": "11",
+   "calculo": "D['sobrantes']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "131 escaños, 11 más de los 120 habituales, según RNZ",
+   "cifra": "120",
+   "calculo": "D['total_escanos']-D['sobrantes']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "el Partido Nacional pierde 8,9 puntos de voto de partido",
+   "cifra": "8,9",
+   "calculo": "round(-D['dif_pct']['National'],1)",
+   "_donde": "patron"
+  },
+  {
+   "texto": "partido y Te Pāti Māori, 2,5. Todos los demás suben:",
+   "cifra": "2,5",
+   "calculo": "round(-D['dif_pct']['Te Pāti Māori'],1)",
+   "_donde": "patron"
+  },
+  {
+   "texto": "demás suben: Opportunity, 3,7 puntos; NZ First, 3,7;",
+   "cifra": "3,7",
+   "calculo": "round(D['dif_pct']['Opportunity'],1)",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Opportunity, 3,7 puntos; NZ First, 3,7; los laboristas, 2,5;",
+   "cifra": "3,7",
+   "calculo": "D['dif_pct']['NZ First']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "First, 3,7; los laboristas, 2,5; ACT, 2,3, y los Verdes,",
+   "cifra": "2,5",
+   "calculo": "D[\"dif_pct\"][\"Labour\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "los laboristas, 2,5; ACT, 2,3, y los Verdes, 1,7.",
+   "cifra": "2,3",
+   "calculo": "D[\"dif_pct\"][\"ACT\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "2,5; ACT, 2,3, y los Verdes, 1,7. La participación fue",
+   "cifra": "1,7",
+   "calculo": "D[\"dif_pct\"][\"Green\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "La participación fue del 74,6% de los electores con derecho a voto,",
+   "cifra": "74,6",
+   "calculo": "D[\"participacion\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Diez de las 71 circunscripciones",
+   "cifra": "Diez",
+   "calculo": "D['n_cambios']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Diez de las 71 circunscripciones cambian",
+   "cifra": "71",
+   "calculo": "D[\"n_circ\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Ben Raue en The Tally Room. Siete pasan a los laboristas:",
+   "cifra": "Siete",
+   "calculo": "D['cambios_a']['Labour']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Partido Nacional baja de 45 circunscripciones a",
+   "cifra": "45",
+   "calculo": "D[\"circ_2023_nocional\"][\"National\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de 45 circunscripciones a 42 y los laboristas suben",
+   "cifra": "42",
+   "calculo": "D[\"escanos\"][\"National\"][\"circ\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y los laboristas suben de 16 a 21.",
+   "cifra": "16",
+   "calculo": "D['circ_2023_nocional']['Labour']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "laboristas suben de 16 a 21.",
+   "cifra": "21",
+   "calculo": "D['circ_ganadas']['Labour']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Cinco circunscripciones se",
+   "cifra": "Cinco",
+   "calculo": "D['menos_500']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "circunscripciones se deciden por menos de 500 votos: Wairarapa, para",
+   "cifra": "500",
+   "calculo": "500 if D['menos_500']==5 else -1",
+   "_donde": "dato"
+  },
+  {
+   "texto": "para el Partido Nacional por 139; Wellington Bays, para",
+   "cifra": "139",
+   "calculo": "D[\"margen\"][\"Wairarapa\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Bays, para los laboristas por 140; Mt Roskill, para los",
+   "cifra": "140",
+   "calculo": "D[\"margen\"][\"Wellington Bays\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Roskill, para los laboristas por 262; Te Tai Tokerau, para",
+   "cifra": "262",
+   "calculo": "D[\"margen\"][\"Mt Roskill\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Tokerau, para Te Pāti Māori por 436, y Hamilton East, para",
+   "cifra": "436",
+   "calculo": "D[\"margen\"][\"Te Tai Tokerau\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "para el Partido Nacional por 456, según RNZ. Luxon retiene",
+   "cifra": "456",
+   "calculo": "D[\"margen\"][\"Hamilton East\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Luxon retiene Botany por 13.073 votos, y Hipkins, Remutaka",
+   "cifra": "13.073",
+   "calculo": "D[\"margen\"][\"Botany\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "votos, y Hipkins, Remutaka por 14.424.",
+   "cifra": "14.424",
+   "calculo": "D[\"margen\"][\"Remutaka\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Por qué la Cámara pasa de 120 a 131 escaños",
+   "cifra": "120",
+   "calculo": "D['total_escanos']-D['sobrantes']",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "qué la Cámara pasa de 120 a 131 escaños",
+   "cifra": "131",
+   "calculo": "D[\"total_escanos\"]",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "(circ.) y de lista. Mayoría: 66 de 131",
+   "cifra": "66",
+   "calculo": "D[\"mayoria\"]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "de lista. Mayoría: 66 de 131",
+   "cifra": "131",
+   "calculo": "D[\"total_escanos\"]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "gana cada circunscripciónLas 64 circunscripciones generales",
+   "cifra": "64",
+   "calculo": "len(GM['rows'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Las siete circunscripciones maoríesQuién",
+   "cifra": "siete",
+   "calculo": "len(MM['rows'])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Con el 100% de los colegios escrutados,",
+   "fuente": "https://www.rnz.co.nz/news/election-2026-results"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "provisional. Tono claro: menos de 1.000 votos de ventaja; medio,",
+   "motivo": "umbral del tono del mapa"
+  },
+  {
+   "texto": "votos de ventaja; medio, de 1.000 a 5.000; intenso, más",
+   "motivo": "umbral del tono del mapa"
+  },
+  {
+   "texto": "ventaja; medio, de 1.000 a 5.000; intenso, más de 5.000.",
+   "motivo": "umbral del tono del mapa"
+  },
+  {
+   "texto": "a 5.000; intenso, más de 5.000. Pasa por encima o toca",
+   "motivo": "umbral del tono del mapa"
+  },
+  {
+   "texto": "de lista, llegan a 36. Los tres partidos del Gobierno",
+   "motivo": "los tres partidos del Gobierno saliente: Partido Nacional, ACT y NZ First, nombrados a continuación"
+  }
+ ],
+ "permitir_espana": []
+}
