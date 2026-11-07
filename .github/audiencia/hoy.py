@@ -28,3 +28,6 @@ print('REF',ref.most_common(10))
 for s in ['mestalla','cinco-semanas','semana-en-el-mapa','eeuu','medio-mandato']:
     rs=grp(['requestPath','date'],500,d1='2026-11-06',d2=H,extra=',{requestPath_like:"%%%s%%"}'%s)
     print('SLUG',s,[(r['dimensions']['date'],r['dimensions']['requestPath'],r['sum']['visits'],r['count']) for r in rs])
+for dims in (['refererPath','requestPath'],['refererPath'],['requestPath','datetimeHour']):
+    rs=grp(dims,50,d1=H,d2=H,extra=',{refererHost_like:"%abc.es%"}')
+    print('ABC',dims,[(r['dimensions'],r['sum']['visits']) for r in rs])
