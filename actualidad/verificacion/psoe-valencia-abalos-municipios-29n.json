@@ -5,8 +5,8 @@
  },
  "cifras": [
   {
-   "texto": "número dos sacó en 2023 el 32,4 %, su mejor resultado",
-   "cifra": "32,4",
+   "texto": "número dos sacó en 2023 el 32,3 %, su mejor resultado",
+   "cifra": "32,3",
    "calculo": "D['SERIE']['2023_07']['PSOE']"
   },
   {
@@ -35,19 +35,19 @@
    "calculo": "D['MOD']['escanos'][1]"
   },
   {
-   "texto": "lista sacó en la provincia el 32,4 % de los votos, su mejor",
-   "cifra": "32,4",
+   "texto": "lista sacó en la provincia el 32,3 % de los votos, su mejor",
+   "cifra": "32,3",
    "calculo": "D['SERIE']['2023_07']['PSOE']"
   },
   {
-   "texto": "mejor resultado desde 2008 (40,4 %) y 5,2 puntos más",
+   "texto": "mejor resultado desde 2008 (40,4 %) y 5,1 puntos más",
    "cifra": "40,4",
    "calculo": "D['SERIE']['2008_03']['PSOE']"
   },
   {
-   "texto": "resultado desde 2008 (40,4 %) y 5,2 puntos más que en noviembre",
-   "cifra": "5,2",
-   "calculo": "round(D['SERIE']['2023_07']['PSOE'],1)-round(D['SERIE']['2019_11']['PSOE'],1)"
+   "texto": "resultado desde 2008 (40,4 %) y 5,1 puntos más que en noviembre",
+   "cifra": "5,1",
+   "calculo": "D['SERIE']['2023_07']['PSOE']-D['SERIE']['2019_11']['PSOE']"
   },
   {
    "texto": "noviembre de 2019. El PP sacó el 33,9 %. El PSOE sacó 5 de",

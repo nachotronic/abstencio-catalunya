@@ -25,15 +25,22 @@ EL = [('2004_03', '2004'), ('2008_03', '2008'), ('2011_11', '2011'), ('2015_12',
 
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
 v = m[m.mun_code.str[:2] == '46'].copy()
+def nombre(x):   # «Pobla de Farnals, la» → «La Pobla de Farnals»; «Eliana, l'» → «L'Eliana»
+    if ', ' not in x:
+        return x
+    base, art = x.rsplit(', ', 1)
+    return art[0].upper() + art[1:] + ('' if art.endswith("'") else ' ') + base
+v['municipio'] = v.municipio.map(nombre)
+assert nombre('Pobla de Farnals, la') == 'La Pobla de Farnals' and nombre("Eliana, l'") == "L'Eliana"
 NMUN = len(v)
 assert NMUN == 266, NMUN
 
 SERIE, GANA = {}, {}
 for e, _ in EL:
     T = sum(v[f'{e}_v{f}'].sum() for f in F if f'{e}_v{f}' in v)
-    SERIE[e] = {k: round(v[f'{e}_v{k}'].sum() / T * 100, 2) for k in ('PSOE', 'PP')}
+    SERIE[e] = {k: v[f'{e}_v{k}'].sum() / T * 100 for k in ('PSOE', 'PP')}   # sin redondear: p() redondea una sola vez
     GANA[e] = {k: int((v[f'{e}_gana'] == k).sum()) for k in ('PSOE', 'PP')}   # solo se usa 2023: en 2015-2019, «gana» suma UP y Compromís en SUMAR
-assert SERIE['2023_07']['PSOE'] == 32.35 and SERIE['2008_03']['PSOE'] == 40.42
+assert round(SERIE['2023_07']['PSOE'], 4) == 32.3476 and round(SERIE['2019_11']['PSOE'], 4) == 27.2481 and round(SERIE['2008_03']['PSOE'], 1) == 40.4
 MEJOR = max((e for e, _ in EL if e > '2008_03'), key=lambda e: SERIE[e]['PSOE'])
 assert MEJOR == '2023_07'
 
@@ -149,7 +156,7 @@ assert MODP['escanos'] == [4, 5, 6] and med == 5 == ESC23
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">La UCO de la Guardia Civil registró este jueves la casa de José Luis Ábalos y pidió información a Adif en una nueva pieza separada del caso Koldo, que instruye el juez de la Audiencia Nacional Ismael Moreno, según <a href="{EFE}">EFE</a>; la casa está en Valencia, según <a href="{PUBLICO}">Público</a>. Hubo seis detenidos, entre ellos la pareja del exministro, que salieron en libertad por la tarde, según Público. Ábalos lleva un año en prisión y en junio el Supremo lo condenó a 24 años por liderar una organización criminal, según <a href="{SUPREMO}">El Español</a>.</p>
-<p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en las generales de julio de 2023, detrás de Diana Morant, según las candidaturas publicadas en el BOE. Esa lista sacó en la provincia el {p(s23)} % de los votos, su mejor resultado desde 2008 ({p(s08)} %) y {p(round(s23, 1) - round(s19, 1))} puntos más que en noviembre de 2019. El PP sacó el {p(pp23)} %. El PSOE sacó {ESC23} de los 16 diputados de la provincia. Tras estallar el caso, en febrero de 2024, Ábalos pasó al Grupo Mixto, y dejó el escaño el 28 de enero de 2026, según el Congreso.</p>
+<p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en las generales de julio de 2023, detrás de Diana Morant, según las candidaturas publicadas en el BOE. Esa lista sacó en la provincia el {p(s23)} % de los votos, su mejor resultado desde 2008 ({p(s08)} %) y {p(s23 - s19)} puntos más que en noviembre de 2019. El PP sacó el {p(pp23)} %. El PSOE sacó {ESC23} de los 16 diputados de la provincia. Tras estallar el caso, en febrero de 2024, Ábalos pasó al Grupo Mixto, y dejó el escaño el 28 de enero de 2026, según el Congreso.</p>
 {g_serie}
 <p data-tipo="dato">El PSOE fue el más votado en {GANA["2023_07"]["PSOE"]} de los {NMUN} municipios de la provincia y subió respecto a noviembre de 2019 en {SUBE}. Entre los que tienen más de 50.000 electores, donde mayor porcentaje sacó fue {esc(gv.municipio)}, con el {p(gv.psoe)} %.</p>
 {g_mapa}
@@ -175,7 +182,7 @@ foot = ('Datos: Ministerio del Interior, generales de 2004 a 2023 por municipio;
         'Cálculo: actualidad/src/resumenes/psoe_valencia_abalos.py.')
 
 DATOS = {'SERIE': SERIE, 'MOD07': MOD07, 'MOD03': MOD03, 'GANA': {'2023_07': GANA['2023_07']}, 'NMUN': NMUN, 'SUBE': SUBE, 'ESC23': ESC23, 'MOD': MODP, 'SIMS': SIMS,
-         'REPITEN': REPITEN, 'GRANDES': [[r.municipio, round(r.psoe, 2), round(r.dif, 2)] for r in GRANDES.itertuples()]}
+         'REPITEN': REPITEN, 'GRANDES': [[r.municipio, round(r.psoe, 4), round(r.dif, 4)] for r in GRANDES.itertuples()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza('psoe-valencia-abalos-municipios-29n', 'El PSOE de Valencia',
