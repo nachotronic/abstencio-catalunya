@@ -423,6 +423,15 @@ def main_encuestas(fich_media, publico=False):
                    'circunscripciones': [{'cod': c[0], 'nombre': c[1], 'provincia': c[2], 'senadores': c[3], 'votos_elector': c[4]}
                                          for c in circ_sen]},
         'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS if not publico or e[0] == 'base']})
+    if publico:
+        # copia con fecha: las piezas citan «el modelo del 5 de noviembre» y «Verificar piezas» lo recalcula con ella
+        # (previsiones/src/modelo_archivado.py). La última del día sustituye a las anteriores de ese día.
+        meta = json.loads((carpeta / 'meta.json').read_text())
+        hist = carpeta / 'historico'
+        hist.mkdir(exist_ok=True)
+        (hist / f"{meta['generado']}.json").write_text(json.dumps(
+            {'meta': {k: meta[k] for k in ('version', 'generado', 'simulaciones', 'aviso', 'media_encuestas')},
+             'escenario': json.loads((carpeta / 'escenario-base.json').read_text())}, ensure_ascii=False, separators=(',', ':')))
     print('Escrito en', carpeta)
 
 

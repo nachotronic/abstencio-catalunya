@@ -24,6 +24,10 @@ Qué comprueba en cada pieza que el PR crea o cambia:
    comunidades, fuentes (Interior, INE), enlaces a páginas de municipios o de las generales. Una mención
    justificada se declara en «permitir_espana» con su motivo.
 5. Actualización. Si una pieza ya publicada cambia de texto, su `actualizado` tiene que cambiar.
+7. Modelo con fecha (7-11-2026). Si el texto cita «el modelo del 5 de noviembre», tiene que haber copia de ese
+   día en previsiones/datos/publico/historico/ (error si no). Las cifras del modelo se recalculan con esa copia:
+   en el cálculo, modelo('2026-11-05') o provincia_modelo('2026-11-05', '46', 'PSOE'). Una cifra de una frase
+   que habla del modelo y se calcula solo con la copia que lleva la pieza da aviso.
 
 Uso, desde la raíz:
     python3 src/verificar_piezas.py                      # piezas cambiadas respecto a origin/main
@@ -33,6 +37,9 @@ Uso, desde la raíz:
 """
 import argparse, concurrent.futures, html, importlib.util, json, os, re, subprocess, sys, unicodedata
 import urllib.error, urllib.parse, urllib.request
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'previsiones', 'src'))
+import modelo_archivado   # noqa: E402
 
 sys.dont_write_bytecode = True   # no ensuciar los __pycache__ del repositorio al importar construir.py
 
@@ -238,7 +245,8 @@ def entorno(D):
                   set=set, list=list, dict=dict, tuple=tuple, zip=zip, range=range, enumerate=enumerate,
                   float=float, int=int, str=str, bool=bool, filter=filter, map=map, isinstance=isinstance,
                   mean=statistics.mean, median=statistics.median, True_=True)
-    return {'__builtins__': seguro, 'D': D, 'csv': leer_csv, 'json': leer_json, **D}
+    return {'__builtins__': seguro, 'D': D, 'csv': leer_csv, 'json': leer_json,
+            'modelo': modelo_archivado.modelo, 'provincia_modelo': modelo_archivado.provincia, **D}
 
 
 # ---------------------------------------------------------------- comprobaciones
@@ -503,6 +511,58 @@ def comprobar_internacional(inf, p, main, script, decl):
                 inf.error('Enlace o fuente española en una pieza internacional', h)
 
 
+MES_NUM = {m: i for i, m in enumerate(['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
+                                       'septiembre', 'octubre', 'noviembre', 'diciembre'], 1)}
+MES_NUM['setiembre'] = 9
+CITA_MODELO = [rf'modelo\b[^.]{{0,70}}?\bdel? (\d{{1,2}}) de ({MESES})\b',
+               r'modelo\b[^.]{0,70}?\bdel? (\d{1,2})-(\d{1,2})(?:-\d{2,4})?\b',
+               rf'media de (?:las )?encuestas\b[^.]{{0,40}}?\bdel? (\d{{1,2}}) de ({MESES})\b']
+
+
+def citas_modelo(texto, anio):
+    """Fechas AAAA-MM-DD de «el modelo del 5 de noviembre», «el modelo del 3-11», «la media de encuestas del 3 de noviembre»."""
+    out = []
+    for pat in CITA_MODELO:
+        for m in re.finditer(pat, texto, re.I):
+            d, mes = m.group(1), m.group(2)
+            mes = MES_NUM.get(mes.lower()) if not mes.isdigit() else int(mes)
+            if mes and 1 <= int(d) <= 31:
+                out.append((f'{anio}-{mes:02d}-{int(d):02d}', m.group(0)))
+    return out
+
+
+def comprobar_modelo(inf, p, main, decl, textos):
+    anio = (p.get('fecha') or '2026')[:4]
+    citadas = set()
+    for donde, t in textos:
+        for f, frase in citas_modelo(norm(t), anio):
+            citadas.add(f)
+            if not modelo_archivado.fecha_vigente(f):
+                inf.error('Modelo citado sin copia archivada', f'«{frase}» ({donde}): no hay previsiones/datos/publico/historico/{f}.json ni anterior')
+            elif modelo_archivado.fecha_vigente(f) != f:
+                inf.notas.append(f'◦ «{frase}»: ese día no hubo encuesta nueva; vale el modelo del {modelo_archivado.fecha_vigente(f)}')
+    if not citadas:
+        return
+    cuerpo = norm(limpio(main))
+    solo_copia = []
+    for e in decl.get('cifras', []):
+        frase = norm(e.get('texto', ''))
+        calc = e.get('calculo', '') + e.get('condicion', '')
+        if not frase or 'modelo(' in calc:
+            continue
+        i = cuerpo.find(frase)
+        if i == -1:
+            continue
+        cerca = cuerpo[max(0, i - 80):i + len(frase) + 40].lower()
+        if re.search(r'\bmodelo\b|simulaciones|en la mediana', cerca):
+            solo_copia.append(f'«{e.get("texto")}» = {e.get("cifra")}')
+    if solo_copia:
+        f = sorted(citadas)[-1]
+        inf.aviso('Cifras del modelo comprobadas solo con la copia que lleva la pieza',
+                  f'{len(solo_copia)} cifras, como ' + '; '.join(solo_copia[:3]) +
+                  f". Recalcúlalas con el modelo archivado de la fecha que cita la pieza: modelo('{f}') o provincia_modelo('{f}', '<cód. provincia>', '<lista>').")
+
+
 def comprobar_actualizado(inf, p, pb, parrafos, parrafos_base):
     if pb is None:
         return
@@ -599,6 +659,7 @@ def principal():
             inf.error('Falta la declaración de cifras', f'actualidad/verificacion/{slug}.json (créala con: python3 src/verificar_piezas.py --plantilla {slug})')
         if cambia_texto:
             comprobar_cifras(inf, p, main, decl, parrafos_base, completa or nueva)
+        comprobar_modelo(inf, p, main, decl, [('titular', p['titulo']), ('entradilla', p['descripcion'])] + bloques(main))
         comprobar_enlaces_e_imagenes(inf, p, pagina, ruta_pag, externos)
         if p.get('serie') == 'internacional':
             comprobar_internacional(inf, p, main, script, decl)
