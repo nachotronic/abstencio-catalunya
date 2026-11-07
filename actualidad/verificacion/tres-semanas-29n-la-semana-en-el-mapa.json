@@ -1,0 +1,453 @@
+{
+ "pieza": "tres-semanas-29n-la-semana-en-el-mapa",
+ "_datos_disponibles": {},
+ "cifras": [
+  {
+   "texto": "Bizkaia y Estados Unidos. Diez de once encuestas con",
+   "cifra": "Diez",
+   "calculo": "sum(r[1] >= 176 for r in D['ENC'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "y Estados Unidos. Diez de once encuestas con escaños",
+   "cifra": "once",
+   "calculo": "len(D['ENC'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "al viernes 6 publicamos 19 piezas en esta sección.",
+   "cifra": "19",
+   "calculo": "len(D['SEMANA'])",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Diez de once encuestas dan",
+   "cifra": "Diez",
+   "calculo": "sum(r[1] >= 176 for r in D['ENC'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Diez de once encuestas dan a PP y",
+   "cifra": "once",
+   "calculo": "len(D['ENC'])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "El jueves 5, la UCO registró la",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/05/la-uco-registra-la-casa-de-abalos-y-pide-informacion-a-adif-sobre-contratos-amanados/"
+  },
+  {
+   "texto": "Las cuatro primeras encuestas hechas",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "de la misma empresa, entre cuatro décimas y punto y medio.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "octubre subía. Hoy, de las 13 encuestadoras con una",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "una encuesta en los últimos 30 días, 12 dan ganador",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "encuesta en los últimos 30 días, 12 dan ganador al PP. La",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "el viernes daba al PSOE el 31,0 % y al PP el 28,5 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "PSOE el 31,0 % y al PP el 28,5 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-antes-despues-urda-29n/"
+  },
+  {
+   "texto": "De las 11 encuestadoras que publican",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "encuestadoras que publican escaños, 10 dan a PP y Vox juntos",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "10 dan a PP y Vox juntos 176 o más, contando el extremo",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "en su escenario central PP 127, PSOE 108, Vox 68, Sumar",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "escenario central PP 127, PSOE 108, Vox 68, Sumar y el",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "central PP 127, PSOE 108, Vox 68, Sumar y el Frente Amplio",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "Sumar y el Frente Amplio 13 y ERC 11. PP y Vox sumarían",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "el Frente Amplio 13 y ERC 11. PP y Vox sumarían 195,",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "ERC 11. PP y Vox sumarían 195, entre 176 y 212 en",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "y Vox sumarían 195, entre 176 y 212 en ocho de cada",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "sumarían 195, entre 176 y 212 en ocho de cada diez",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "sumarían 195, entre 176 y 212 en ocho de cada diez simulaciones,",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "176 y 212 en ocho de cada diez simulaciones, y llegan",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "la mayoría absoluta en el 91 % de ellas. A los tres",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "en el 91 % de ellas. A los tres quintos, 210, en el",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "ellas. A los tres quintos, 210, en el 14 %. Las cifras",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "tres quintos, 210, en el 14 %. Las cifras de cada",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "exministra Fátima Báñez. Encabezó seis veces la lista del PP",
+   "fuente": "https://mapaelectoral.es/actualidad/banez-huelva-pp-29n/"
+  },
+  {
+   "texto": "Domingo Castaño, sale en el 47,5 % de las simulaciones.",
+   "fuente": "https://mapaelectoral.es/municipio/valladolid/valladolid/"
+  },
+  {
+   "texto": "semana anterior salía en el 54 %.",
+   "fuente": "https://mapaelectoral.es/municipio/valladolid/valladolid/"
+  },
+  {
+   "texto": "Morant. Esa lista sacó el 32,3 %, el mejor resultado",
+   "fuente": "https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/"
+  },
+  {
+   "texto": "2008, y fue la más votada en 134 de sus 266 municipios.",
+   "fuente": "https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/"
+  },
+  {
+   "texto": "más votada en 134 de sus 266 municipios. Para el",
+   "fuente": "https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/"
+  },
+  {
+   "texto": "el modelo le da los mismos cinco escaños. Ábalos, que",
+   "fuente": "https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/"
+  },
+  {
+   "texto": "Valenciana, PP y Vox pasarían de 18 a 20 de los 33 escaños",
+   "fuente": "https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/"
+  },
+  {
+   "texto": "PP y Vox pasarían de 18 a 20 de los 33 escaños con",
+   "fuente": "https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/"
+  },
+  {
+   "texto": "pasarían de 18 a 20 de los 33 escaños con la media",
+   "fuente": "https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/"
+  },
+  {
+   "texto": "escaño del PSOE sale en el 45,5 % de las simulaciones",
+   "fuente": "https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/"
+  },
+  {
+   "texto": "lista de Compromís, en el 40,6 %. Y hoy, día del Valencia-Real",
+   "fuente": "https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/"
+  },
+  {
+   "texto": "Bernabéu: el PP ganó en sus 23 secciones censales en",
+   "fuente": "https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/"
+  },
+  {
+   "texto": "electorales dejaron fuera 32 listas: 21 al Congreso",
+   "fuente": "https://mapaelectoral.es/actualidad/listas-proclamadas-29n/"
+  },
+  {
+   "texto": "dejaron fuera 32 listas: 21 al Congreso y 11 al",
+   "fuente": "https://mapaelectoral.es/actualidad/listas-proclamadas-29n/"
+  },
+  {
+   "texto": "listas: 21 al Congreso y 11 al Senado. PACMA pierde",
+   "fuente": "https://mapaelectoral.es/actualidad/listas-proclamadas-29n/"
+  },
+  {
+   "texto": "11 al Senado. PACMA pierde siete provincias, y en León",
+   "fuente": "https://mapaelectoral.es/actualidad/listas-proclamadas-29n/"
+  },
+  {
+   "texto": "ayuntamientos sortearon a las 549.297 personas que formarán",
+   "fuente": "https://mapaelectoral.es/actualidad/me-ha-tocado-mesa-electoral-29n/"
+  },
+  {
+   "texto": "En los pueblos de menos de 100 electores, la mesa necesita",
+   "fuente": "https://mapaelectoral.es/actualidad/me-ha-tocado-mesa-electoral-29n/"
+  },
+  {
+   "texto": "mesa necesita a uno de cada seis vecinos; en las ciudades,",
+   "fuente": "https://mapaelectoral.es/actualidad/me-ha-tocado-mesa-electoral-29n/"
+  },
+  {
+   "texto": "las ciudades, a uno de cada setenta. Quien recibe la carta",
+   "fuente": "https://mapaelectoral.es/actualidad/me-ha-tocado-mesa-electoral-29n/"
+  },
+  {
+   "texto": "Quien recibe la carta tiene siete días para presentar",
+   "fuente": "https://mapaelectoral.es/actualidad/me-ha-tocado-mesa-electoral-29n/"
+  },
+  {
+   "texto": "2023, el PP ganó Coslada por siete votos. Es el ejemplo",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 16 de los 24 grandes municipios",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "pasó de ganar en 16 de los 24 grandes municipios de",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "Madrid en 2019 a ganar en 4, aunque subió en todos.",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "aunque subió en todos. En esos 16 municipios, el PSOE",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "municipios, el PSOE subió del 31,1 % al 33,0 %, y el PP,",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "PSOE subió del 31,1 % al 33,0 %, y el PP, del 19,6",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "% al 33,0 %, y el PP, del 19,6 % al 35,3 %, tras la",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "%, y el PP, del 19,6 % al 35,3 %, tras la desaparición",
+   "fuente": "https://mapaelectoral.es/municipio/madrid/coslada/"
+  },
+  {
+   "texto": "renta de la Comunidad votó el 60,9 % del censo en 2023;",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/"
+  },
+  {
+   "texto": "décima parte más rica, el 83,1 %. Entre los seis grandes",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/"
+  },
+  {
+   "texto": "rica, el 83,1 %. Entre los seis grandes municipios más",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/"
+  },
+  {
+   "texto": "municipios más ricos y los seis más pobres, la distancia",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/"
+  },
+  {
+   "texto": "pobres, la distancia es hoy de 7,5 puntos, la mayor desde",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-renta-municipios-madrid-29n/"
+  },
+  {
+   "texto": "Policía desalojó de madrugada a 334 personas de la acampada",
+   "fuente": "https://mapaelectoral.es/actualidad/acampada-sol-alquiler-madrid-distritos-29n/"
+  },
+  {
+   "texto": "vivienda de la Puerta del Sol, 38 días después de que",
+   "fuente": "https://mapaelectoral.es/actualidad/acampada-sol-alquiler-madrid-distritos-29n/"
+  },
+  {
+   "texto": "deprisa en el sur de Madrid: un 22,7 % en Villaverde desde",
+   "fuente": "https://mapaelectoral.es/actualidad/acampada-sol-alquiler-madrid-distritos-29n/"
+  },
+  {
+   "texto": "Villaverde desde 2019, frente al 15,9 % de Centro, según el",
+   "fuente": "https://mapaelectoral.es/actualidad/acampada-sol-alquiler-madrid-distritos-29n/"
+  },
+  {
+   "texto": "El País Vasco elige 18 diputados, y con la",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "encuestas EH Bildu sacaría siete. Lo que está en el aire",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "aire es Bizkaia, que elige ocho. El PNV ganó allí en",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "ocho. El PNV ganó allí en 92 municipios en 2019 y",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "92 municipios en 2019 y en 55 en 2023: EH Bildu le",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "en 2023: EH Bildu le quitó 27 y el PSOE, 10, Bilbao",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "Bildu le quitó 27 y el PSOE, 10, Bilbao incluido. La",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "Bildu y el PSOE entre el 22,2 % y el 22,4 %. El domingo,",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "PSOE entre el 22,2 % y el 22,4 %. El domingo, día del",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "contamos que el PNV bajó en 414 de las 415 secciones",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "el PNV bajó en 414 de las 415 secciones de Bilbao",
+   "fuente": "https://mapaelectoral.es/actualidad/euskadi-29n-guia/"
+  },
+  {
+   "texto": "renta. Donde EH Bildu pasa del 40 %, votó el 64 %; donde",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/"
+  },
+  {
+   "texto": "Bildu pasa del 40 %, votó el 64 %; donde no llega al",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/"
+  },
+  {
+   "texto": "el 64 %; donde no llega al 15 %, el 71 %. Fontellas",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/"
+  },
+  {
+   "texto": "donde no llega al 15 %, el 71 %. Fontellas votó un",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/"
+  },
+  {
+   "texto": "el 71 %. Fontellas votó un 80,9 % y Olazti un 59,9 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/"
+  },
+  {
+   "texto": "votó un 80,9 % y Olazti un 59,9 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/participacion-navarra-municipios-29n/"
+  },
+  {
+   "texto": "en las autonómicas de mayo 150.000 votos más que el PP",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/"
+  },
+  {
+   "texto": "las generales de 2023, con 194.000 votantes menos. Ganó",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/"
+  },
+  {
+   "texto": "votantes menos. Ganó votos en 603 de los 785 municipios",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/"
+  },
+  {
+   "texto": "Ganó votos en 603 de los 785 municipios andaluces",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-andalucia-autonomicas-generales-29n/"
+  },
+  {
+   "texto": "recuento de esta mañana tienen 252 escaños en la Cámara",
+   "fuente": "https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/"
+  },
+  {
+   "texto": "Representantes, frente a 161 republicanos y con 22",
+   "fuente": "https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/"
+  },
+  {
+   "texto": "a 161 republicanos y con 22 por decidir, y 51 de",
+   "fuente": "https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/"
+  },
+  {
+   "texto": "republicanos y con 22 por decidir, y 51 de los 100 del Senado.",
+   "fuente": "https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/"
+  },
+  {
+   "texto": "por decidir, y 51 de los 100 del Senado. En Bulgaria,",
+   "fuente": "https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/"
+  },
+  {
+   "texto": "las presidenciales con el 57,6 %. Y hoy vota Nueva",
+   "fuente": "https://mapaelectoral.es/actualidad/eeuu-resultados-medio-mandato-2026/"
+  },
+  {
+   "texto": "la medianoche del jueves 12 al viernes 13. A partir",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "del jueves 12 al viernes 13. A partir del martes",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "viernes 13. A partir del martes 24 no se podrán publicar",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "electoral lo prohíbe en los cinco días anteriores a la",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "la mayoría absoluta en el 91 % de nuestras simulaciones:",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  },
+  {
+   "texto": "rojo de Madrid, el empate a tres en Bizkaia y Estados",
+   "fuente": "https://mapaelectoral.es/actualidad/bizkaia-pnv-bildu-encuestas-29n/"
+  },
+  {
+   "texto": "Euskadi y Navarra: un empate a tres",
+   "fuente": "https://mapaelectoral.es/actualidad/bizkaia-pnv-bildu-encuestas-29n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "A tres semanas del 29N, PP",
+   "motivo": "del 7 al 29 de noviembre: tres semanas (calendario)"
+  },
+  {
+   "texto": "El martes 3, al final de su comparecencia",
+   "motivo": "fecha"
+  },
+  {
+   "texto": "Vox siguen por encima de 176",
+   "motivo": "umbral de la mayoría absoluta del Congreso"
+  },
+  {
+   "texto": "que empieza el viernes 13. Del domingo 1 al viernes 6",
+   "motivo": "fechas"
+  }
+ ],
+ "permitir_espana": []
+}

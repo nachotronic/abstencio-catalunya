@@ -24,4 +24,20 @@
       <news:title>PP y Vox pasarían de 18 a 20 de los 33 escaños valencianos con la media de encuestas; en Castellón, dos se los disputan cuatro candidatos</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/tres-semanas-29n-la-semana-en-el-mapa/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-07</news:publication_date>
+      <news:title>A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/valencia-madrid-mestalla-barrios-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-07</news:publication_date>
+      <news:title>Mestalla vota como el Bernabéu: el PP ganó en las 23 secciones del distrito del Valencia y en 100 de las 101 del Real Madrid</news:title>
+    </news:news>
+  </url>
 </urlset>
