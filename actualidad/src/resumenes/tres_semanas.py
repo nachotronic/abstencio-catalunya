@@ -1,4 +1,4 @@
-"""Crónica del sábado 7-11-2026: «A tres semanas del 29N», la semana del 31 de octubre al 6 de noviembre desde los mapas.
+"""Crónica del sábado 7-11-2026: «A tres semanas del 29N», la semana del 1 al 6 de noviembre desde los mapas.
 
 Cada cifra sale de una pieza ya publicada y enlazada (donde se explica el cálculo) o de la página de encuestas del 7-11-2026
 (encuestas/index.html: última encuesta de cada encuestadora en los últimos 30 días y escenario central del modelo).
@@ -41,7 +41,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <blockquote class="cita"><p>«Un ministro de transportes de un país como España no puede continuar en su cargo con dos accidentes de esta gravedad en menos de un año. Por muy distintos que sean, y tenga o no responsabilidad directa en ellos, es una cuestión de dignidad política, de coherencia y de empatía con las víctimas»</p><footer>Óscar Puente, en la Diputación Permanente, el 3 de noviembre. Recogido por <a href="{PUENTE}">Europa Press</a>.</footer></blockquote>
 <p data-tipo="contexto">El jueves 5, la UCO registró la casa de José Luis Ábalos en València, en una nueva pieza separada del caso Koldo, según <a href="{UCO}">EFE</a>. El viernes, Pedro Sánchez reabrió la precampaña del PSOE precisamente en València, y habló de Puente:</p>
 <blockquote class="cita"><p>«El ejemplo de dignidad y ejemplaridad que ha ejercido Óscar Puente ellos jamás lo practicarán durante ninguna crisis»</p><footer>Pedro Sánchez, en el mitin del PSOE en València, el 6 de noviembre. Recogido por <a href="{INFOBAE}">Infobae</a>.</footer></blockquote>
-<p data-tipo="contexto">Fue la semana en que los partidos volvieron a la precampaña tras el luto por Urda, y la última antes de la campaña, que empieza el viernes 13. Del domingo al viernes publicamos 19 piezas en esta sección. Esta es la semana del 31 de octubre al 6 de noviembre contada desde los mapas.</p>
+<p data-tipo="contexto">Fue la semana en que los partidos volvieron a la precampaña tras el luto por Urda, y la última antes de la campaña, que empieza el viernes 13. Del domingo 1 al viernes 6 publicamos 19 piezas en esta sección. Esta es la semana del 1 al 6 de noviembre contada desde los mapas.</p>
 
 <h2>Las encuestas: el PSOE baja tras Urda y PP y Vox siguen por encima de 176</h2>
 <p data-tipo="dato">Las cuatro primeras encuestas hechas después del accidente coincidieron en una cosa: <a href="{A}encuestas-antes-despues-urda-29n/">el PSOE bajaba en todas</a> respecto a la anterior de la misma empresa, entre cuatro décimas y punto y medio. En las de antes del 28 de octubre subía. Hoy, de las 13 encuestadoras con una encuesta en los últimos 30 días, 12 dan ganador al PP. La excepción es SW Demoscopia, que el viernes daba al PSOE el 31,0 % y al PP el 28,5 %.</p>
@@ -52,7 +52,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 
 <h2>Valladolid y Valencia: el escaño de Puente y la lista de Ábalos</h2>
 <p data-tipo="dato">Puente ya no será diputado, pero su nombre seguirá en la papeleta: las candidaturas estaban proclamadas cuando dimitió, así que sigue como número uno del PSOE en {M('valladolid/valladolid', 'Valladolid')}, y si saca escaño pasa a los siguientes de la lista. Con las encuestas hasta el 3 de noviembre, <a href="{A}puente-valladolid-segundo-escano-29n/">el segundo escaño socialista</a>, ahora el de José Domingo Castaño, sale en el 47,5 % de las simulaciones. La semana anterior salía en el 54 %.</p>
-<p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en 2023, detrás de Diana Morant. <a href="{A}psoe-valencia-abalos-municipios-29n/">Esa lista sacó el 32,4 %</a>, el mejor resultado del PSOE en la provincia desde 2008, y fue la más votada en 134 de sus 266 municipios. Para el 29N, con Pilar Bernabé al frente y encuestas anteriores al registro, el modelo le da los mismos cinco escaños. Ábalos, que está en prisión, contestó el viernes en X:</p>
+<p data-tipo="dato">Ábalos fue el número dos de la lista del PSOE por Valencia en 2023, detrás de Diana Morant. <a href="{A}psoe-valencia-abalos-municipios-29n/">Esa lista sacó el 32,3 %</a>, el mejor resultado del PSOE en la provincia desde 2008, y fue la más votada en 134 de sus 266 municipios. Para el 29N, con Pilar Bernabé al frente y encuestas anteriores al registro, el modelo le da los mismos cinco escaños. Ábalos, que está en prisión, contestó el viernes en X:</p>
 <blockquote class="cita"><p>«No voy a atribuir intenciones que desconozco, pero tampoco voy a fingir que no llama poderosamente la atención»</p><footer>José Luis Ábalos, el 6 de noviembre, sobre la coincidencia del registro con las declaraciones de Koldo García. Recogido por EFE en <a href="{ABALOS}">El Ideal Gallego</a>.</footer></blockquote>
 <p data-tipo="dato">En el conjunto de la Comunitat Valenciana, <a href="{A}comunitat-valenciana-escanos-29n/">PP y Vox pasarían de 18 a 20 de los 33 escaños</a> con la media de encuestas del 3 de noviembre. En Castellón, el segundo escaño del PSOE sale en el 45,5 % de las simulaciones y el cabeza de lista de Compromís, en el 40,6 %. Y hoy, día del Valencia-Real Madrid, contamos que <a href="{A}valencia-madrid-mestalla-barrios-29n/">el distrito de Mestalla vota como el del Bernabéu</a>: el PP ganó en sus 23 secciones censales en 2023.</p>
 
@@ -109,10 +109,10 @@ preguntas = [
 ]
 enlaces = (f'{L("cuatro-semanas-29n-la-semana-en-el-mapa", "La crónica del sábado anterior")} · <a href="{BASE}encuestas/">Encuestas del 29N</a> · '
            f'<a href="{BASE}encuestas/provincias.html">Encuestas por provincias</a> · {L("valencia-madrid-mestalla-barrios-29n", "Mestalla vota como el Bernabéu")}')
-foot = 'Datos: piezas de Mapa Electoral de la semana del 31 de octubre al 6 de noviembre de 2026, enlazadas en cada párrafo, donde se explica cada cálculo; encuestas publicadas y modelo de Mapa Electoral a 7 de noviembre de 2026. Cálculo: actualidad/src/resumenes/tres_semanas.py.'
+foot = 'Datos: piezas de Mapa Electoral de la semana del 1 al 6 de noviembre de 2026, enlazadas en cada párrafo, donde se explica cada cálculo; encuestas publicadas y modelo de Mapa Electoral a 7 de noviembre de 2026. Cálculo: actualidad/src/resumenes/tres_semanas.py.'
 
-TIT = f'A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el {MODELO["p176"]} % de nuestras simulaciones: la semana en que dimitió Puente y la UCO volvió a casa de Ábalos'
-DEK = 'Puente se fue del Gobierno y de la lista, la UCO registró la casa de Ábalos en València y los partidos volvieron a la precampaña tras el luto por Urda. Diez de once encuestas con escaños dan mayoría a PP y Vox. Esta es la semana del 31 de octubre al 6 de noviembre contada desde los mapas.'
+TIT = f'A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el {MODELO["p176"]} % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos'
+DEK = 'Puente se fue del Gobierno y de la lista, la UCO registró la casa de Ábalos en València y los partidos volvieron a la precampaña tras el luto por Urda. Diez de once encuestas con escaños dan mayoría a PP y Vox. Esta es la semana del 1 al 6 de noviembre contada desde los mapas.'
 import json
 datos_js = '<script>const D=' + json.dumps({'SEMANA': [s for s, _ in semana], 'ENC': ENC, 'MODELO': MODELO}, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 if __name__ == '__main__':

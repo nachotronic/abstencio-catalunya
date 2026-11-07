@@ -4135,8 +4135,8 @@ PIEZAS += [
     ),
     dict(
         slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07',
-        titulo='A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO volvió a casa de Ábalos', serie='29n', figura=0,
-        descripcion='Crónica de la semana del 31 de octubre al 6 de noviembre desde los mapas: la dimisión de Puente, el registro a Ábalos, las encuestas tras Urda, las listas proclamadas, el cinturón rojo de Madrid, el empate a tres en Bizkaia y Estados Unidos. Diez de once encuestas con escaños dan mayoría a PP y Vox.',
+        titulo='A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos', serie='29n', figura=0,
+        descripcion='Crónica de la semana del 1 al 6 de noviembre desde los mapas: la dimisión de Puente, el registro a Ábalos, las encuestas tras Urda, las listas proclamadas, el cinturón rojo de Madrid, el empate a tres en Bizkaia y Estados Unidos. Diez de once encuestas con escaños dan mayoría a PP y Vox.',
         compara='Las cifras de las 19 piezas de Actualidad publicadas entre el 1 y el 6 de noviembre y la última encuesta de cada encuestadora con escaños en los últimos 30 días, con el escenario central del modelo de Mapa Electoral del 7 de noviembre.',
         limites='Es una pieza de resumen: cada cifra procede de una pieza ya publicada, enlazada en el texto, donde se explica cómo se calcula, o de la página de encuestas. Las cifras de encuestas cambian cada día. La crónica no atribuye a ningún hecho de la semana un efecto en el voto.',
         calculo='Cada cifra, como se explica en su pieza de origen. Encuestas: última de cada encuestadora con trabajo de campo en los últimos 30 días; si da una horquilla, se cuenta el extremo bajo para la mayoría absoluta. Script: actualidad/src/resumenes/tres_semanas.py.',
