@@ -18,7 +18,8 @@ También escribe encuestas/insertar.html (resumen para iframe) y, con Pillow, la
 Uso, desde la raíz:  python3 encuestas/src/construir.py
 """
 import csv, html, json, math, os, pathlib, re, statistics, sys, unicodedata
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 sys.dont_write_bytecode = True   # no ensuciar los .pyc que hay en el repositorio
 RAIZ = pathlib.Path(__file__).resolve().parents[2]
@@ -519,7 +520,7 @@ def post_x(titular, med, hoy):
     return texto, URL, etiquetas
 
 
-def portada(titular, med, actual, ultima=''):
+def portada(titular, med, actual, ultima='', hoy=''):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
             continue
@@ -528,7 +529,18 @@ def portada(titular, med, actual, ultima=''):
             t = t.replace('<!--actualidad:ultimas-->', '<!--encuestas:portada--><!--/encuestas:portada-->\n<!--actualidad:ultimas-->', 1)
         t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->',
                    lambda m: '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, ultima) + '<!--/encuestas:portada-->', t, flags=re.S)
+        if hoy and f.name == 'index.html':
+            # la portada cambia cada día con esta franja: la fecha que lee Google (JSON-LD) tiene que cambiar con ella,
+            # no quedarse en la del último build completo del mapa (Nacho, 7-11-2026: Google veía el 13 de octubre)
+            # solo el del AnalysisNewsArticle (el Dataset de las secciones censales no cambia con las encuestas)
+            t = re.sub(r'("@type": "AnalysisNewsArticle"[^<]*?"dateModified": ")\d{4}-\d{2}-\d{2}"', lambda m: m.group(1) + hoy + '"', t, count=1)
         f.write_text(t, encoding='utf-8')
+    mapa = RAIZ / 'sitemap.xml'   # y el lastmod de la portada en el sitemap principal
+    if hoy and mapa.exists():
+        t = mapa.read_text(encoding='utf-8')
+        t2 = re.sub(r'(<loc>https://mapaelectoral\.es/</loc><lastmod>)\d{4}-\d{2}-\d{2}', lambda m: m.group(1) + hoy, t)
+        if t2 != t:
+            mapa.write_text(t2, encoding='utf-8')
 
 
 def svg_hemiciclo(hemi):
@@ -1022,7 +1034,8 @@ def main():
     d_ult = date.fromisoformat(ult.get('publicado') or ult['fin'])
     portada(titular, med, actual, f'Última encuesta: <b>{html.escape(ult["casa"])}</b>' + (f' para {html.escape(ult["medio"])}' if ult['medio'] else '')
             + f', publicada el {DIAS_SEMANA[d_ult.weekday()]} {d_ult.day} de {fecha_larga(d_ult.isoformat()).split(" de ")[1]}: '
-            + ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(ult["voto"][k])}' for k, n, *_ in PRINCIPALES[:3] if k in ult['voto']) + '.')
+            + ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(ult["voto"][k])}' for k, n, *_ in PRINCIPALES[:3] if k in ult['voto']) + '.',
+            datetime.now(ZoneInfo('Europe/Madrid')).date().isoformat())   # fecha de Madrid, no la UTC de la descarga
     # post para redes de esta actualización: el workflow solo vuelve a escribirlo cuando entra una encuesta nueva
     texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
     (SALIDA / 'post-redes.txt').write_text(f'{texto}\n{enlace}\n\n{etiquetas}\n', encoding='utf-8')
