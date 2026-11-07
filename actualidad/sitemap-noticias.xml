@@ -40,4 +40,12 @@
       <news:title>Mestalla vota como el Bernabéu: el PP ganó en las 23 secciones del distrito del Valencia y en 100 de las 101 del Real Madrid</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/nueva-zelanda-resultados-mapa/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-07</news:publication_date>
+      <news:title>Los laboristas ganan el voto de partido por 3.650 votos, pero la coalición de Luxon suma 67 de los 131 escaños en el recuento provisional de Nueva Zelanda</news:title>
+    </news:news>
+  </url>
 </urlset>
