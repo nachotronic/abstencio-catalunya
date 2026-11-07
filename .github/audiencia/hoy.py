@@ -25,3 +25,6 @@ ref=collections.Counter()
 for r in grp(['refererHost'],d1=H,d2=H):
     h=r['dimensions']['refererHost'] or '(directo)'; h='google' if 'google' in h else h; ref[h]+=r['sum']['visits']
 print('REF',ref.most_common(10))
+for s in ['mestalla','cinco-semanas','semana-en-el-mapa','eeuu','medio-mandato']:
+    rs=grp(['requestPath','date'],500,d1='2026-11-06',d2=H,extra=',{requestPath_like:"%%%s%%"}'%s)
+    print('SLUG',s,[(r['dimensions']['date'],r['dimensions']['requestPath'],r['sum']['visits'],r['count']) for r in rs])
