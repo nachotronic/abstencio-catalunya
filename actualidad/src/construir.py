@@ -4058,7 +4058,7 @@ PIEZAS += [
                   pie='Quién ganó en cada municipio de Bulgaria en la primera vuelta de las presidenciales.', fuente='CIK, resultados por colegio; contornos de Boyko Yurukov'),
     ),
     dict(
-        slug='nueva-zelanda-elecciones-mapa-circunscripciones', fecha='2026-11-03', actualizado='2026-11-07 23:20',
+        slug='nueva-zelanda-elecciones-mapa-circunscripciones', fecha='2026-11-03', actualizado='2026-11-07 23:10',
         titulo='El partido del primer ministro de Nueva Zelanda cae del 38% al 29,5% y llega casi empatado con los laboristas a las elecciones del sábado', serie='internacional',
         descripcion='Christopher Luxon gobierna desde 2023 con dos socios a su derecha. La última encuesta de 1News–Verian da al Partido Nacional el 29,5% y a los laboristas de Chris Hipkins el 28,8%, y deja a la coalición con 58 escaños, por debajo de los 61 de la mayoría. El mapa de las 71 circunscripciones muestra quién habría ganado cada una en 2023 con los límites nuevos.',
         compara='Las 71 circunscripciones de las elecciones generales de Nueva Zelanda del 7 de noviembre de 2026 (64 generales y 7 maoríes, con los límites de 2025), con el resultado de 2023 trasladado a esos límites, y la evolución del voto de partido desde 2023 en las 15 encuestas publicadas desde septiembre.',
@@ -4135,7 +4135,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07',
+        slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07', actualizado='2026-11-07 23:10',
         titulo='A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos', serie='29n', figura=0,
         descripcion='Crónica de la semana del 1 al 6 de noviembre desde los mapas: la dimisión de Puente, el registro a Ábalos, las encuestas tras Urda, las listas proclamadas, el cinturón rojo de Madrid, el empate a tres en Bizkaia y Estados Unidos. Diez de once encuestas con escaños dan mayoría a PP y Vox.',
         compara='Las cifras de las 19 piezas de Actualidad publicadas entre el 1 y el 6 de noviembre y la última encuesta de cada encuestadora con escaños en los últimos 30 días, con el escenario central del modelo de Mapa Electoral del 7 de noviembre.',
