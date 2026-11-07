@@ -26,14 +26,14 @@ En cada pieza de Actualidad o Internacional que el PR crea o cambia (su `<slug>.
 | **Actualización** | Pieza publicada que cambia de texto sin cambiar `actualizado` | |
 | **Modelo con fecha** | El texto cita «el modelo del 5 de noviembre» (o «del 5-11», «la media de encuestas del…») y no hay copia de ese día ni anterior en `previsiones/datos/publico/historico/` | Cifras de frases que hablan del modelo que se calculan solo con la copia que lleva la pieza |
 
-El modelo de /encuestas/ se recalcula cada vez que entra una encuesta y se sobrescribe. Desde el 7-11-2026, `previsiones/src/motor.py` guarda una copia por día en `previsiones/datos/publico/historico/AAAA-MM-DD.json` (con copias hacia atrás desde el 22-10). Los días sin encuesta nueva vale la copia anterior, que es la que se veía en la web. En los cálculos de la declaración:
+El modelo de /encuestas/ se recalcula cada vez que entra una encuesta y se sobrescribe. Desde el 7-11-2026, `previsiones/src/motor.py` guarda cada versión en `previsiones/datos/publico/historico/AAAA-MM-DD-HHMM.json`, con la hora de Madrid en que se publicó (las anteriores, desde el 22-10, salen del historial de git con la hora de cada commit). Un día puede tener varias versiones: sin hora vale la última del día, y con `hora='HH:MM'` la que se veía a esa hora. Los días sin encuesta nueva vale la copia anterior, que es la que se veía en la web. En los cálculos de la declaración:
 
 ```json
 {"texto": "le da en la mediana de las 2.000 simulaciones 5 escaños", "cifra": "5",
  "calculo": "provincia_modelo('2026-11-05', '46', 'PSOE')['escanos'][1]"}
 ```
 
-`modelo('2026-11-05')` devuelve `{'meta': …, 'escenario': …}`; `provincia_modelo(fecha, cod, lista)`, la lista en esa provincia (`voto` y `escanos` son [p10, mediana, p90]). Así, la cifra de la pieza se compara con el modelo que se publicó ese día y no con una copia hecha a mano, y la pieza, /encuestas/ y las listas dicen lo mismo para la misma fecha.
+`modelo('2026-11-05')` devuelve `{'meta': …, 'escenario': …}`; `provincia_modelo(fecha, cod, lista)`, la lista en esa provincia (las dos admiten `hora='HH:MM'`) (`voto` y `escanos` son [p10, mediana, p90]). Así, la cifra de la pieza se compara con el modelo que se publicó ese día y no con una copia hecha a mano, y la pieza, /encuestas/ y las listas dicen lo mismo para la misma fecha.
 
 Cuentan como cifras los números (también «once», «nueve»…) de los párrafos con `data-tipo`, el titular, la entradilla, los intertítulos y los pies de gráfico. No cuentan los años, las fechas, las horas, los ordinales ni códigos como KY-6. En una pieza ya publicada solo se exigen las cifras de los párrafos nuevos o cambiados.
 

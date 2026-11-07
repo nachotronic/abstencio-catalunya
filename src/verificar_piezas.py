@@ -25,8 +25,9 @@ Qué comprueba en cada pieza que el PR crea o cambia:
    justificada se declara en «permitir_espana» con su motivo.
 5. Actualización. Si una pieza ya publicada cambia de texto, su `actualizado` tiene que cambiar.
 7. Modelo con fecha (7-11-2026). Si el texto cita «el modelo del 5 de noviembre», tiene que haber copia de ese
-   día en previsiones/datos/publico/historico/ (error si no). Las cifras del modelo se recalculan con esa copia:
-   en el cálculo, modelo('2026-11-05') o provincia_modelo('2026-11-05', '46', 'PSOE'). Una cifra de una frase
+   día o anterior en previsiones/datos/publico/historico/ (error si no). Las copias llevan fecha y hora de Madrid
+   (AAAA-MM-DD-HHMM); sin hora vale la última del día. Las cifras del modelo se recalculan con esa copia: en el
+   cálculo, modelo('2026-11-05') o provincia_modelo('2026-11-05', '46', 'PSOE'), con hora='HH:MM' si hace falta. Una cifra de una frase
    que habla del modelo y se calcula solo con la copia que lleva la pieza da aviso.
 
 Uso, desde la raíz:
@@ -538,9 +539,14 @@ def comprobar_modelo(inf, p, main, decl, textos):
         for f, frase in citas_modelo(norm(t), anio):
             citadas.add(f)
             if not modelo_archivado.fecha_vigente(f):
-                inf.error('Modelo citado sin copia archivada', f'«{frase}» ({donde}): no hay previsiones/datos/publico/historico/{f}.json ni anterior')
+                inf.error('Modelo citado sin copia archivada', f'«{frase}» ({donde}): no hay copia del {f} ni anterior en previsiones/datos/publico/historico/')
             elif modelo_archivado.fecha_vigente(f) != f:
-                inf.notas.append(f'◦ «{frase}»: ese día no hubo encuesta nueva; vale el modelo del {modelo_archivado.fecha_vigente(f)}')
+                inf.notas.append(f'◦ «{frase}»: ese día no hubo encuesta nueva; vale el modelo del {modelo_archivado.version_vigente(f)}')
+            else:
+                del_dia = [v for v in modelo_archivado.versiones() if v.startswith(f)]
+                if len(del_dia) > 1:
+                    inf.notas.append(f'◦ «{frase}»: el {f} hubo {len(del_dia)} versiones del modelo ({", ".join(v[11:13] + "." + v[13:] for v in del_dia)}); '
+                                     f'sin hora se usa la última. Si la pieza se escribió con otra, el cálculo lleva hora=\'HH:MM\'')
     if not citadas:
         return
     cuerpo = norm(limpio(main))
