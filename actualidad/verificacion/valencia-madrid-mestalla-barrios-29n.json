@@ -412,12 +412,6 @@
    "_donde": "contexto"
   },
   {
-   "texto": "ciudad, donde el PP sacó el 55,4 %, igual que el Bernabéu",
-   "cifra": "55,4",
-   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"PP\"]",
-   "_donde": "contexto"
-  },
-  {
    "texto": "Tres estadios, tres distritosGenerales",
    "cifra": "Tres",
    "calculo": "3",
@@ -428,17 +422,14 @@
    "cifra": "tres",
    "calculo": "3",
    "_donde": "pie"
+  },
+  {
+   "texto": "como en el del Bernabéu (59,0 %)",
+   "cifra": "59,0",
+   "calculo": "D['CH']['PP']"
   }
  ],
  "externas": [
-  {
-   "texto": "encuestas nacionales, da al PP 5 de los 16 escaños de",
-   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
-  },
-  {
-   "texto": "nacionales, da al PP 5 de los 16 escaños de la provincia",
-   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
-  },
   {
    "texto": "de Valencia, al PSOE otros 5, a Vox 4 y a Sumar 2.",
    "fuente": "https://mapaelectoral.es/encuestas/valencia/"
@@ -457,6 +448,10 @@
   },
   {
    "texto": "otros 5, a Vox 4 y a Sumar 2. El PP queda primero",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "reparto central al PP 5 de los 16 escaños",
    "fuente": "https://mapaelectoral.es/encuestas/valencia/"
   }
  ],

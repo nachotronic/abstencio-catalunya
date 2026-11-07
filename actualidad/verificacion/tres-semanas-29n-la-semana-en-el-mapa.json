@@ -15,7 +15,7 @@
    "_donde": "entradilla"
   },
   {
-   "texto": "domingo al viernes publicamos 19 piezas en esta sección.",
+   "texto": "al viernes 6 publicamos 19 piezas en esta sección.",
    "cifra": "19",
    "calculo": "len(D['SEMANA'])",
    "_donde": "contexto"
@@ -147,7 +147,7 @@
    "fuente": "https://mapaelectoral.es/municipio/valladolid/valladolid/"
   },
   {
-   "texto": "Morant. Esa lista sacó el 32,4 %, el mejor resultado",
+   "texto": "Morant. Esa lista sacó el 32,3 %, el mejor resultado",
    "fuente": "https://mapaelectoral.es/actualidad/psoe-valencia-abalos-municipios-29n/"
   },
   {
@@ -441,12 +441,12 @@
    "motivo": "fecha"
   },
   {
-   "texto": "campaña, que empieza el viernes 13. Del domingo al viernes",
-   "motivo": "fecha"
-  },
-  {
    "texto": "Vox siguen por encima de 176",
    "motivo": "umbral de la mayoría absoluta del Congreso"
+  },
+  {
+   "texto": "que empieza el viernes 13. Del domingo 1 al viernes 6",
+   "motivo": "fechas"
   }
  ],
  "permitir_espana": []
