@@ -113,6 +113,8 @@ foot = 'Datos: piezas de Mapa Electoral de la semana del 31 de octubre al 6 de n
 
 TIT = f'A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el {MODELO["p176"]} % de nuestras simulaciones: la semana en que dimitió Puente y la UCO volvió a casa de Ábalos'
 DEK = 'Puente se fue del Gobierno y de la lista, la UCO registró la casa de Ábalos en València y los partidos volvieron a la precampaña tras el luto por Urda. Diez de once encuestas con escaños dan mayoría a PP y Vox. Esta es la semana del 31 de octubre al 6 de noviembre contada desde los mapas.'
+import json
+datos_js = '<script>const D=' + json.dumps({'SEMANA': [s for s, _ in semana], 'ENC': ENC, 'MODELO': MODELO}, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 if __name__ == '__main__':
     print(TIT)
-    pieza('tres-semanas-29n-la-semana-en-el-mapa', 'A tres semanas del 29N: la semana en el mapa', TIT, DEK, '7 de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+    pieza('tres-semanas-29n-la-semana-en-el-mapa', 'A tres semanas del 29N: la semana en el mapa', TIT, DEK, '7 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, datos_js)

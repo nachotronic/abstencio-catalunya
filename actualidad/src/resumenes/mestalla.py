@@ -156,7 +156,7 @@ DEBATE = 'https://www.eldebate.com/espana/comunidad-valenciana/20261010/psoe-pre
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">Esta noche, a las nueve, el Valencia recibe al Real Madrid en Mestalla. El estadio está en el barrio de {MV('mestalla', 'Mestalla')}, en el distrito de El Pla del Real. El Santiago Bernabéu está en el distrito madrileño de Chamartín. Son dos estadios de dos ciudades distintas, pero sus distritos votan casi igual: en las generales de julio de 2023, el PP ganó en las {PLA['n']} secciones censales de El Pla del Real y en {CH['gana']['PP']} de las {CH['n']} de Chamartín.</p>
-<p data-tipo="dato">En El Pla del Real, el PP sacó el {p(PLA['PP'])} % de los votos, casi veinte puntos más que en el conjunto de {CV} ({p(pc(E, 'PP'))} %). Detrás quedaron Vox ({p(PLA['VOX'])} %), el PSOE ({p(PLA['PSOE'])} %) y Sumar ({p(PLA['SUMAR'])} %). Es el distrito de la ciudad donde más se votó, el {p(PLA['part'])} %, y el de más renta, con una mediana de {n(PLA['renta'])} € por unidad de consumo. En Chamartín, el PP sacó el {p(CH['PP'])} %, con una participación del {p(CH['part'])} % y una renta mediana de {n(CH['renta'])} €.</p>
+<p data-tipo="dato">En El Pla del Real, el PP sacó el {p(PLA['PP'])} % de los votos, {p(PLA['PP'] - pc(E, 'PP'))} puntos más que en el conjunto de {CV} ({p(pc(E, 'PP'))} %). Detrás quedaron Vox ({p(PLA['VOX'])} %), el PSOE ({p(PLA['PSOE'])} %) y Sumar ({p(PLA['SUMAR'])} %). Es el distrito de la ciudad donde más se votó, el {p(PLA['part'])} %, y el de más renta, con una mediana de {n(PLA['renta'])} € por unidad de consumo. En Chamartín, el PP sacó el {p(CH['PP'])} %, con una participación del {p(CH['part'])} % y una renta mediana de {n(CH['renta'])} €.</p>
 {g_tres}
 <h2>La ciudad: el PP subió en todas las secciones</h2>
 <p data-tipo="dato">En el conjunto de València, el PP fue primero en 2023 con el {p(pc(E, 'PP'))} %, por delante del PSOE ({p(pc(E, 'PSOE'))} %), Sumar ({p(pc(E, 'SUMAR'))} %) y Vox ({p(pc(E, 'VOX'))} %). En noviembre de 2019 había ganado el PSOE, con el {p(pc(E0, 'PSOE'))} % frente al {p(pc(E0, 'PP'))} % del PP. De las {N2} secciones que se pueden comparar entre las dos elecciones, el PP subió en las {SUBE_PP} y el PSOE en {SUBE_PSOE}. El PP ganó en {v.gana.value_counts()['PP']} de las {len(v)} secciones de la ciudad; el PSOE, en {v.gana.value_counts()['PSOE']}, y Sumar, en {v.gana.value_counts()['SUMAR']}.</p>
@@ -198,7 +198,17 @@ foot = 'Datos: Ministerio del Interior, generales de noviembre de 2019 y julio d
 
 TIT = f'Mestalla vota como el Bernabéu: el PP ganó en las {PLA["n"]} secciones del distrito del Valencia y en {CH["gana"]["PP"]} de las {CH["n"]} del Real Madrid'
 DEK = f'El día del Valencia-Real Madrid, València sección a sección. En El Pla del Real, el distrito de Mestalla, el PP sacó el {p(PLA["PP"])} % en 2023; en Benicalap, donde se construye el Nou Mestalla, el PSOE ganó en {BEN["gana"]["PSOE"]} de {BEN["n"]} secciones.'
+# Datos de la pieza para la comprobación automática (src/verificar_piezas.py): los mismos que el texto
+r1 = lambda x: round(float(x), 4)
+def plano(s):
+    return {**{k: r1(s[k]) for k in P}, 'part': r1(s['part']), 'renta': r1(s['renta']), 'n': int(s['n']), 'gana': {k: int(c) for k, c in s['gana'].items()}}
+DATOS = {'CIU': {e: {k: r1(pc(e, k)) for k in P} for e in (E, E0)}, 'DIST': {k: plano(s) for k, s in D.items()},
+         'BARR': {k: plano(B[k]) for k in ('Mestalla', 'Exposició', 'el Pla del Remei', 'els Orriols', 'el Carme', 'Benicalap')},
+         'Q': {str(q): plano(s) for q, s in Q.items()}, 'CH': plano(CH), 'N2': N2, 'SUBE_PP': SUBE_PP, 'SUBE_PSOE': SUBE_PSOE,
+         'NSEC': len(v), 'GANA': {k: int(c) for k, c in v.gana.value_counts().items()}, 'SUMB': SUMB, 'SINBARRIO': int(v.barrio.isna().sum()),
+         'PLA0': {k: r1(cuota(PLA0, k, E0)) for k in ('PP', 'PSOE', 'VOX')}}
+datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 if __name__ == '__main__':
     print(TIT)
     print(DEK)
-    pieza('valencia-madrid-mestalla-barrios-29n', 'Mestalla y el Bernabéu en las urnas', TIT, DEK, '7 de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+    pieza('valencia-madrid-mestalla-barrios-29n', 'Mestalla y el Bernabéu en las urnas', TIT, DEK, '7 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, datos_js)

@@ -1,0 +1,478 @@
+{
+ "pieza": "valencia-madrid-mestalla-barrios-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Bernabéu: el PP ganó en las 23 secciones del distrito",
+   "cifra": "23",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"gana\"][\"PP\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "distrito del Valencia y en 100 de las 101 del Real",
+   "cifra": "100",
+   "calculo": "D['CH']['gana']['PP']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "Valencia y en 100 de las 101 del Real Madrid",
+   "cifra": "101",
+   "calculo": "D[\"CH\"][\"n\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "de Mestalla, el PP sacó el 55,4 % en 2023; en Benicalap,",
+   "cifra": "55,4",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"PP\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Mestalla, el PSOE ganó en 24 de 30 secciones.",
+   "cifra": "24",
+   "calculo": "D[\"DIST\"][\"Benicalap\"][\"gana\"][\"PSOE\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Mestalla, el PSOE ganó en 24 de 30 secciones.",
+   "cifra": "30",
+   "calculo": "D['DIST']['Benicalap']['n']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "de 2023, el PP ganó en las 23 secciones censales de",
+   "cifra": "23",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"gana\"][\"PP\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "censales de El Pla del Real y en 100 de las 101 de Chamartín.",
+   "cifra": "100",
+   "calculo": "D[\"CH\"][\"gana\"][\"PP\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "del Real y en 100 de las 101 de Chamartín.",
+   "cifra": "101",
+   "calculo": "D[\"CH\"][\"n\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Pla del Real, el PP sacó el 55,4 % de los votos, 18,9",
+   "cifra": "55,4",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de los votos, 18,9 puntos más que en el",
+   "cifra": "18,9",
+   "calculo": "D['DIST']['el Pla del Real']['PP'] - D['CIU']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el conjunto de València (36,5 %). Detrás quedaron",
+   "cifra": "36,5",
+   "calculo": "D['CIU']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%). Detrás quedaron Vox (16,4 %), el PSOE (16,2 %)",
+   "cifra": "16,4",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"VOX\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quedaron Vox (16,4 %), el PSOE (16,2 %) y Sumar (10,3 %).",
+   "cifra": "16,2",
+   "calculo": "D['DIST']['el Pla del Real']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE (16,2 %) y Sumar (10,3 %). Es el distrito de",
+   "cifra": "10,3",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"SUMAR\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ciudad donde más se votó, el 84,0 %, y el de más renta,",
+   "cifra": "84,0",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "renta, con una mediana de 34.619 € por unidad de consumo.",
+   "cifra": "34.619",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"renta\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Chamartín, el PP sacó el 59,0 %, con una participación",
+   "cifra": "59,0",
+   "calculo": "D[\"CH\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con una participación del 81,0 % y una renta mediana",
+   "cifra": "81,0",
+   "calculo": "D[\"CH\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% y una renta mediana de 42.089 €.",
+   "cifra": "42.089",
+   "calculo": "D[\"CH\"][\"renta\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue primero en 2023 con el 36,5 %, por delante del PSOE",
+   "cifra": "36,5",
+   "calculo": "D['CIU']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%, por delante del PSOE (29,5 %), Sumar (17,7 %) y",
+   "cifra": "29,5",
+   "calculo": "D[\"CIU\"][\"2023_07\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del PSOE (29,5 %), Sumar (17,7 %) y Vox (14,1 %). En",
+   "cifra": "17,7",
+   "calculo": "D[\"CIU\"][\"2023_07\"][\"SUMAR\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%), Sumar (17,7 %) y Vox (14,1 %). En noviembre de",
+   "cifra": "14,1",
+   "calculo": "D['CIU']['2023_07']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "había ganado el PSOE, con el 24,8 % frente al 24,4 % del",
+   "cifra": "24,8",
+   "calculo": "D[\"CIU\"][\"2019_11\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE, con el 24,8 % frente al 24,4 % del PP. De las 585",
+   "cifra": "24,4",
+   "calculo": "D[\"CIU\"][\"2019_11\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al 24,4 % del PP. De las 585 secciones que se pueden",
+   "cifra": "585",
+   "calculo": "D['N2']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "elecciones, el PP subió en las 585 y el PSOE en 561. El",
+   "cifra": "585",
+   "calculo": "D['SUBE_PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "subió en las 585 y el PSOE en 561. El PP ganó en 335 de",
+   "cifra": "561",
+   "calculo": "D[\"SUBE_PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE en 561. El PP ganó en 335 de las 591 secciones",
+   "cifra": "335",
+   "calculo": "D[\"GANA\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El PP ganó en 335 de las 591 secciones de la ciudad;",
+   "cifra": "591",
+   "calculo": "D[\"NSEC\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de la ciudad; el PSOE, en 241, y Sumar, en 15.",
+   "cifra": "241",
+   "calculo": "D[\"GANA\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE, en 241, y Sumar, en 15.",
+   "cifra": "15",
+   "calculo": "D['GANA']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "cerca de ella en L'Eixample (48,8 %), los dos distritos",
+   "cifra": "48,8",
+   "calculo": "D[\"DIST\"][\"l'Eixample\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "junto al mar, el PSOE ganó en 38 de las 42 secciones,",
+   "cifra": "38",
+   "calculo": "D[\"DIST\"][\"Poblats Marítims\"][\"gana\"][\"PSOE\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "el PSOE ganó en 38 de las 42 secciones, con el 35,2",
+   "cifra": "42",
+   "calculo": "D[\"DIST\"][\"Poblats Marítims\"][\"n\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "las 42 secciones, con el 35,2 %, y se votó menos que",
+   "cifra": "35,2",
+   "calculo": "D[\"DIST\"][\"Poblats Marítims\"][\"PSOE\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "ningún otro distrito: el 70,9 %.",
+   "cifra": "70,9",
+   "calculo": "D[\"DIST\"][\"Poblats Marítims\"][\"part\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "conservador: el PP sacó el 49,9 % y el PSOE, el 20,1",
+   "cifra": "49,9",
+   "calculo": "D[\"BARR\"][\"Mestalla\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 49,9 % y el PSOE, el 20,1 %. En el vecino Exposició,",
+   "cifra": "20,1",
+   "calculo": "D[\"BARR\"][\"Mestalla\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Exposició, el PP llegó al 61,4 %. El máximo de la ciudad",
+   "cifra": "61,4",
+   "calculo": "D[\"BARR\"][\"Exposició\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "L'Eixample: el PP sacó el 64,5 % y el PSOE, el 8,5",
+   "cifra": "64,5",
+   "calculo": "D[\"BARR\"][\"el Pla del Remei\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 64,5 % y el PSOE, el 8,5 %. En els Orriols, al",
+   "cifra": "8,5",
+   "calculo": "D[\"BARR\"][\"el Pla del Remei\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al norte, el PSOE sacó el 37,8 % y votó el 65,4 %.",
+   "cifra": "37,8",
+   "calculo": "D[\"BARR\"][\"els Orriols\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 37,8 % y votó el 65,4 %.",
+   "cifra": "65,4",
+   "calculo": "D[\"BARR\"][\"els Orriols\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Compromís, solo fue primera en 15 secciones, todas en",
+   "cifra": "15",
+   "calculo": "D['GANA']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "centro y de la primera corona: 5 en Russafa, 4 en Benimaclet,",
+   "cifra": "5",
+   "calculo": "D['SUMB']['Russafa']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "primera corona: 5 en Russafa, 4 en Benimaclet, 3 en",
+   "cifra": "4",
+   "calculo": "D['SUMB']['Benimaclet']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Russafa, 4 en Benimaclet, 3 en el Carme, y una en",
+   "cifra": "3",
+   "calculo": "D['SUMB']['el Carme']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Botànic. En el Carme sacó el 31,7 %.",
+   "cifra": "31,7",
+   "calculo": "D['BARR']['el Carme']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "por renta y se parten en cinco grupos iguales, el voto",
+   "cifra": "cinco",
+   "calculo": "len(D['Q'])",
+   "_donde": "patron"
+  },
+  {
+   "texto": "más pobre, el PSOE sacó el 37,5 % y el PP, el 28,0 %.",
+   "cifra": "37,5",
+   "calculo": "D[\"Q\"][\"0\"][\"PSOE\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "sacó el 37,5 % y el PP, el 28,0 %. En la quinta parte",
+   "cifra": "28,0",
+   "calculo": "D[\"Q\"][\"0\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "parte más rica, el PP sacó el 49,6 % y el PSOE, el 19,5",
+   "cifra": "49,6",
+   "calculo": "D[\"Q\"][\"4\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "sacó el 49,6 % y el PSOE, el 19,5 %. La participación",
+   "cifra": "19,5",
+   "calculo": "D[\"Q\"][\"4\"][\"PSOE\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "%. La participación va del 66,5 % al 83,1 %.",
+   "cifra": "66,5",
+   "calculo": "D[\"Q\"][\"0\"][\"part\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "participación va del 66,5 % al 83,1 %.",
+   "cifra": "83,1",
+   "calculo": "D[\"Q\"][\"4\"][\"part\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "de 2023, el PSOE ganó en 24 de las 30 secciones",
+   "cifra": "24",
+   "calculo": "D[\"DIST\"][\"Benicalap\"][\"gana\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE ganó en 24 de las 30 secciones del distrito,",
+   "cifra": "30",
+   "calculo": "D[\"DIST\"][\"Benicalap\"][\"n\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "secciones del distrito, con el 35,0 %, por delante del PP",
+   "cifra": "35,0",
+   "calculo": "D['DIST']['Benicalap']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "35,0 %, por delante del PP (31,8 %). Votó el 72,3 %,",
+   "cifra": "31,8",
+   "calculo": "D[\"DIST\"][\"Benicalap\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del PP (31,8 %). Votó el 72,3 %, casi doce puntos",
+   "cifra": "72,3",
+   "calculo": "D[\"DIST\"][\"Benicalap\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%). Votó el 72,3 %, casi doce puntos menos que en",
+   "cifra": "doce",
+   "calculo": "D['DIST']['el Pla del Real']['part'] - D['DIST']['Benicalap']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y la renta mediana es de 18.032 €, poco más de la mitad.",
+   "cifra": "18.032",
+   "calculo": "D[\"DIST\"][\"Benicalap\"][\"renta\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Benicalap, el PSOE ganó en 21 de sus 27 secciones.",
+   "cifra": "21",
+   "calculo": "D[\"BARR\"][\"Benicalap\"][\"gana\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE ganó en 21 de sus 27 secciones.",
+   "cifra": "27",
+   "calculo": "D[\"BARR\"][\"Benicalap\"][\"n\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "uno donde el PSOE gana en cuatro de cada cinco. No dice",
+   "_donde": "hipotesis",
+   "condicion": "abs(D['DIST']['Benicalap']['gana']['PSOE'] / D['DIST']['Benicalap']['n'] - 0.8) < 0.01"
+  },
+  {
+   "texto": "de la renta. En València, 18 secciones no tienen",
+   "cifra": "18",
+   "calculo": "D['SINBARRIO']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "ciudad, donde el PP sacó el 55,4 %, igual que el Bernabéu",
+   "cifra": "55,4",
+   "calculo": "D[\"DIST\"][\"el Pla del Real\"][\"PP\"]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Tres estadios, tres distritosGenerales",
+   "cifra": "Tres",
+   "calculo": "3",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Tres estadios, tres distritosGenerales de",
+   "cifra": "tres",
+   "calculo": "3",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "encuestas nacionales, da al PP 5 de los 16 escaños de",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "nacionales, da al PP 5 de los 16 escaños de la provincia",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "de Valencia, al PSOE otros 5, a Vox 4 y a Sumar 2.",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "Valencia, al PSOE otros 5, a Vox 4 y a Sumar 2. El PP queda",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "El PP queda primero en el 67 % de las simulaciones",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "simulaciones y el PSOE en el 27 %. Las cifras, que se",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  },
+  {
+   "texto": "otros 5, a Vox 4 y a Sumar 2. El PP queda primero",
+   "fuente": "https://mapaelectoral.es/encuestas/valencia/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "El Valencia lleva casi veinte años construyendo su",
+   "motivo": "las obras del Nou Mestalla empezaron en 2007: casi veinte años (cuenta de calendario)"
+  },
+  {
+   "texto": "Esta noche, a las nueve, el Valencia recibe",
+   "motivo": "hora del partido (21.00)"
+  },
+  {
+   "texto": "PSOE gana en cuatro de cada cinco. No dice nada de cómo",
+   "motivo": "parte de la proporción «cuatro de cada cinco», comprobada en la condición"
+  }
+ ],
+ "permitir_espana": []
+}
