@@ -1,0 +1,268 @@
+{
+ "pieza": "a-quien-beneficia-abstencion-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "las urnas como la media, cinco escaños de 2023 habrían",
+   "cifra": "cinco",
+   "calculo": "len(set(x[0] for x in D['cambios_sube']))",
+   "_donde": "titular"
+  },
+  {
+   "texto": "habrían cambiado de manos: cuatro, hacia el PSOE",
+   "cifra": "cuatro",
+   "calculo": "sum(x[2] for x in D['cambios_sube'] if x[1] in ('PSOE','PSC'))",
+   "_donde": "titular"
+  },
+  {
+   "texto": "en 2023, el PSOE sacó el 37,3 % y el PP el 27,4 %;",
+   "cifra": "37,3",
+   "calculo": "D['Q']['voto']['PSOE'][0]*100",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "sacó el 37,3 % y el PP el 27,4 %; en la que más votó,",
+   "cifra": "27,4",
+   "calculo": "D['Q']['voto']['PP'][0]*100",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "de julio de 2023 votó el 70,4 % del censo residente",
+   "cifra": "70,4",
+   "calculo": "D['nat']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la que más y se parten en cinco grupos con el mismo",
+   "cifra": "cinco",
+   "calculo": "len(D['Q']['part'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "censo, en el primero votó el 60,6 % y en el último, el",
+   "cifra": "60,6",
+   "calculo": "D['Q']['part'][0]*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "60,6 % y en el último, el 78,6 %.",
+   "cifra": "78,6",
+   "calculo": "D['Q']['part'][4]*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "provincia, el PSOE sacó el 37,3 % del voto válido y",
+   "cifra": "37,3",
+   "calculo": "D['Q']['voto']['PSOE'][0]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "del voto válido y el PP, el 27,4 %. En el quinto que",
+   "cifra": "27,4",
+   "calculo": "D['Q']['voto']['PP'][0]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "más vota, el PP llegó al 39,6 % y el PSOE se quedó",
+   "cifra": "39,6",
+   "calculo": "D['Q']['voto']['PP'][4]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "y el PSOE se quedó en el 26,5 %. Vox y Sumar apenas",
+   "cifra": "26,5",
+   "calculo": "D['Q']['voto']['PSOE'][4]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "un supuesto fuerte. En las 15.773 secciones censales que",
+   "cifra": "15.773",
+   "calculo": "D['bajo_media']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "que la media de España (de 36.460), la participación sube",
+   "cifra": "36.460",
+   "calculo": "D['secciones']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "participación sube hasta el 70,4 %, y los nuevos votantes",
+   "cifra": "70,4",
+   "calculo": "D['nat']*100",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "vecinos que sí votaron. Son 1.071.823 votos más. Con ellos,",
+   "cifra": "1.071.823",
+   "calculo": "D['extra_sube']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "el PSOE y el PSC ganarían 4 escaños, el PP perdería",
+   "cifra": "4",
+   "calculo": "sum(x[2] for x in D['cambios_sube'] if x[1] in ('PSOE','PSC'))",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "4 escaños, el PP perdería 2 y Junts, 2.",
+   "cifra": "2",
+   "calculo": "-sum(x[2] for x in D['cambios_sube'] if x[1]=='JXCAT - JUNTS')",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "el PP perdería 2 y Junts, 2.",
+   "cifra": "2",
+   "calculo": "-sum(x[2] for x in D['cambios_sube'] if x[1]=='JXCAT - JUNTS')",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "se decidieron por menos de 2.500 votos. Los cinco estaban",
+   "calculo": "POR HACER (o pásala a «externas» con su fuente, o a «ignorar» con su motivo)",
+   "_donde": "patron",
+   "condicion": "all(D['margen'][p][2] < 2500 for p in set(x[0] for x in D['cambios_sube']))"
+  },
+  {
+   "texto": "menos de 2.500 votos. Los cinco estaban así de ajustados:",
+   "cifra": "cinco",
+   "calculo": "len(set(x[0] for x in D['cambios_sube']))",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Girona, al PP le faltaron 284 votos para quitarle",
+   "cifra": "284",
+   "calculo": "D['margen']['17'][2]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "esas secciones Junts sacó el 19,0 % y el PP, el 9,9 %;",
+   "cifra": "19,0",
+   "calculo": "D['girona_bajo']['junts']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 19,0 % y el PP, el 9,9 %; en las pocas que",
+   "cifra": "9,9",
+   "calculo": "D['girona_bajo']['pp']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "votaron más, Junts llegó al 26,6 % y el PP se quedó en",
+   "cifra": "26,6",
+   "calculo": "D['girona_resto']['junts']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% y el PP se quedó en el 7,5 %. Los votos que añade",
+   "cifra": "7,5",
+   "calculo": "D['girona_resto']['pp']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el mismo supuesto, serían 10.395.977 votos más, y cambiarían",
+   "cifra": "10.395.977",
+   "calculo": "D['extra_todos']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "cambiarían exactamente los mismos cinco escaños. Y al revés:",
+   "cifra": "cinco",
+   "calculo": "len(set(x[0] for x in D['cambios_todos']))",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "En 2023 hubo 200.682 votos en blanco, el",
+   "cifra": "200.682",
+   "calculo": "D['blancos']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "200.682 votos en blanco, el 0,8 % del voto válido, y",
+   "cifra": "0,8",
+   "calculo": "D['blancos']/D['validos']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "0,8 % del voto válido, y 264.382 nulos. Ningún escaño",
+   "cifra": "264.382",
+   "calculo": "D['nulos']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la CUP en Barcelona, con 67.266 votos, el 2,5 %. Sin",
+   "cifra": "67.266",
+   "calculo": "D['cup_bcn']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Barcelona, con 67.266 votos, el 2,5 %. Sin los 21.059 votos",
+   "cifra": "2,5",
+   "calculo": "D['cup_bcn']/D['validos_bcn']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "votos, el 2,5 %. Sin los 21.059 votos en blanco de la",
+   "cifra": "21.059",
+   "calculo": "D['blancos_bcn']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "provincia habría tenido el 2,5 %, también por debajo",
+   "cifra": "2,5",
+   "calculo": "D['cup_bcn']/(D['validos_bcn']-D['blancos_bcn'])*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "debajo del 3 %: le faltaban 12.759 votos.",
+   "cifra": "12.759",
+   "calculo": "int(0.03*D['validos_bcn'])+1-D['cup_bcn']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "deja como fue. Por eso los cinco escaños son un orden",
+   "cifra": "cinco",
+   "calculo": "len(set(x[0] for x in D['cambios_sube']))",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Un millón de votos más, cinco escaños",
+   "cifra": "cinco",
+   "calculo": "len(set(x[0] for x in D['cambios_sube']))",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "participación y partidas en cinco grupos con el mismo",
+   "cifra": "cinco",
+   "calculo": "len(D['Q']['part'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Los cinco escaños que cambiarían",
+   "cifra": "cinco",
+   "calculo": "len(set(x[0] for x in D['cambios_sube']))",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "provincia y la misma barrera del 3 %, el PSOE y el PSC",
+   "motivo": "barrera legal del 3 % (LOREG, art. 163)"
+  },
+  {
+   "texto": "por eso sube la barrera del 3 % que una lista necesita",
+   "motivo": "barrera legal del 3 % (LOREG, art. 163)"
+  },
+  {
+   "texto": "hace falta mucho más del 3 % para llevarse uno.",
+   "motivo": "barrera legal del 3 % (LOREG, art. 163)"
+  },
+  {
+   "texto": "%, también por debajo del 3 %: le faltaban 12.759",
+   "motivo": "barrera legal del 3 % (LOREG, art. 163)"
+  }
+ ],
+ "permitir_espana": []
+}
