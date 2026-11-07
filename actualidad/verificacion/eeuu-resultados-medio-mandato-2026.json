@@ -2,13 +2,13 @@
  "pieza": "eeuu-resultados-medio-mandato-2026",
  "cifras": [
   {
-   "texto": "los republicanos. Faltan 25.",
-   "cifra": "25",
+   "texto": "los republicanos. Faltan 22.",
+   "cifra": "22",
    "calculo": "DIR['pendientes']"
   },
   {
-   "texto": "De momento, 27 distritos cambian de",
-   "cifra": "27",
+   "texto": "De momento, 28 distritos cambian de",
+   "cifra": "28",
    "calculo": "DIR['cambios_D']"
   },
   {
@@ -142,13 +142,13 @@
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Troy Jackson']"
   },
   {
-   "texto": "1997, por el 53,1 % frente al 46,8 %, con el 93,4 % del",
+   "texto": "1997, por el 53,1 % frente al 46,8 %, con el 93,6 % del",
    "cifra": "46,8",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['pct']['Susan Collins']"
   },
   {
-   "texto": "frente al 46,8 %, con el 93,4 % del voto estimado",
-   "cifra": "93,4",
+   "texto": "frente al 46,8 %, con el 93,6 % del voto estimado",
+   "cifra": "93,6",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='ME'][0]['eevp']"
   },
   {
@@ -225,63 +225,63 @@
    "origen": "entradilla"
   },
   {
-   "texto": "en la Cámara, 250 escaños, 32",
-   "cifra": "250",
+   "texto": "en la Cámara, 252 escaños, 34",
+   "cifra": "252",
    "calculo": "DIR['D']",
    "origen": "entradilla"
   },
   {
-   "texto": "250 escaños, 32 más de los 218",
-   "cifra": "32",
+   "texto": "252 escaños, 34 más de los 218",
+   "cifra": "34",
    "calculo": "DIR['D']-218",
    "origen": "entradilla"
   },
   {
-   "texto": "32 más de los 218 de la mayoría, frente",
+   "texto": "34 más de los 218 de la mayoría, frente",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1",
    "origen": "entradilla"
   },
   {
-   "texto": "frente a 160 republicanos, con 25",
-   "cifra": "160",
+   "texto": "frente a 161 republicanos, con 22",
+   "cifra": "161",
    "calculo": "DIR['R']",
    "origen": "entradilla"
   },
   {
-   "texto": "republicanos, con 25 por decidir",
-   "cifra": "25",
+   "texto": "republicanos, con 22 por decidir",
+   "cifra": "22",
    "calculo": "DIR['pendientes']",
    "origen": "entradilla"
   },
   {
-   "texto": "hora peninsular, hay 410 de los 435",
-   "cifra": "410",
+   "texto": "hora peninsular, hay 413 de los 435",
+   "cifra": "413",
    "calculo": "DIR['D']+DIR['R']+DIR['O']"
   },
   {
-   "texto": "hay 410 de los 435 escaños",
+   "texto": "hay 413 de los 435 escaños",
    "cifra": "435",
    "calculo": "len(DIR['dist'])"
   },
   {
-   "texto": "decididos: 250 para los demócratas, 32",
-   "cifra": "250",
+   "texto": "decididos: 252 para los demócratas, 34",
+   "cifra": "252",
    "calculo": "DIR['D']"
   },
   {
-   "texto": "250 para los demócratas, 32 más",
-   "cifra": "32",
+   "texto": "252 para los demócratas, 34 más",
+   "cifra": "34",
    "calculo": "DIR['D']-218"
   },
   {
-   "texto": "32 más de los 218 de la mayoría, y 160 para",
+   "texto": "34 más de los 218 de la mayoría, y 161 para",
    "cifra": "218",
    "calculo": "len(DIR['dist'])//2+1"
   },
   {
-   "texto": "de la mayoría, y 160 para los republicanos. Faltan 25.",
-   "cifra": "160",
+   "texto": "de la mayoría, y 161 para los republicanos. Faltan 22.",
+   "cifra": "161",
    "calculo": "DIR['R']"
   },
   {
@@ -310,13 +310,13 @@
    "calculo": "sum(1 for x in DIR['senado']['senate'] if x['cambio'] and x['confirmado']=='D' and CALL.get(x['estado'])=='ap')"
   },
   {
-   "texto": "Cindy Hyde-Smith, el 48,8 %, con el 96",
+   "texto": "Cindy Hyde-Smith, el 48,8 %, con el 97",
    "cifra": "48,8",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MS'][0]['pct']['Cindy Hyde-Smith']"
   },
   {
-   "texto": "el 48,8 %, con el 96 % del voto",
-   "cifra": "96",
+   "texto": "el 48,8 %, con el 97 % del voto",
+   "cifra": "97",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MS'][0]['eevp']"
   },
   {
@@ -330,13 +330,13 @@
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='MT'][0]['pct']['Kurt Alme']"
   },
   {
-   "texto": "Pete Ricketts, con el 50,2 %",
-   "cifra": "50,2",
+   "texto": "Pete Ricketts, con el 50,1 %",
+   "cifra": "50,1",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NE'][0]['pct']['Pete Ricketts']"
   },
   {
-   "texto": "frente al 43,8 % del independiente Dan Osborn",
-   "cifra": "43,8",
+   "texto": "frente al 43,9 % del independiente Dan Osborn",
+   "cifra": "43,9",
    "calculo": "[x for x in DIR['senado']['senate'] if x['estado']=='NE'][0]['pct']['Dan Osborn']"
   },
   {
@@ -365,18 +365,18 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='KS'][0]['pct']['Ty Masterson']"
   },
   {
-   "texto": "Katie Hobbs, con el 55,5 %",
-   "cifra": "55,5",
+   "texto": "Katie Hobbs, con el 55,6 %",
+   "cifra": "55,6",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='AZ'][0]['pct']['Katie Hobbs']"
   },
   {
-   "texto": "Tina Kotek, con el 52,6 %",
-   "cifra": "52,6",
+   "texto": "Tina Kotek, con el 53,3 %",
+   "cifra": "53,3",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='OR'][0]['pct']['Tina Kotek']"
   },
   {
-   "texto": "Jim Pillen, con el 50,6 %",
-   "cifra": "50,6",
+   "texto": "Jim Pillen, con el 50,5 %",
+   "cifra": "50,5",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NE'][0]['pct']['Jim Pillen']"
   },
   {
@@ -390,8 +390,8 @@
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['pct']['Joe Lombardo']"
   },
   {
-   "texto": "44,0 %, con el 94,1 % del voto",
-   "cifra": "94,1",
+   "texto": "44,0 %, con el 94,6 % del voto",
+   "cifra": "94,6",
    "calculo": "[x for x in DIR['senado']['governor'] if x['estado']=='NV'][0]['eevp']"
   },
   {
