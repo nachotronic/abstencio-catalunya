@@ -67,5 +67,5 @@ Si el texto cambia y una frase declarada deja de aparecer, la comprobación fall
 1. Escribe la pieza y constrúyela como siempre.
 2. `python3 src/verificar_piezas.py --plantilla <slug>` crea o completa la declaración con cada cifra pendiente; rellena el `calculo` o pásala a `externas` o `ignorar`.
 3. `python3 src/verificar_piezas.py --slug <slug>` hasta que salga en verde; abre el PR.
-4. El hilo editor revisa la pieza y la lista de cifras externas del informe de la Action.
+4. El hilo editor revisa la pieza con la [lista fija del editor](EDITOR.md), incluida la lista de cifras externas del informe de la Action, y la pega marcada en un comentario del PR.
 5. Con la Action en verde y el visto bueno del editor, Nacho fusiona.
