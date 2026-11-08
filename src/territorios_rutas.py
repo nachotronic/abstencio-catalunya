@@ -59,7 +59,7 @@ ACTUALIDAD_LUGAR = {
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'frente-amplio-podemos-madrid-escanos-29n': ['28'], 'calle-que-parte-madrid': ['28'], 'cinturon-rojo-madrid-29n': ['28'], 'participacion-renta-municipios-madrid-29n': ['28'], 'participacion-navarra-municipios-29n': ['31'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
-    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'zaragoza-barrio-a-barrio-29n': ['50'],
+    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'zaragoza-barrio-a-barrio-29n': ['50'],
 }
 # Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
 ACTUALIDAD_MUNICIPIO = {
@@ -107,7 +107,7 @@ TEMAS = {
         titulo='Renta y voto: cómo votan los barrios ricos y los pobres de España',
         intro='Las piezas que cruzan el voto de cada sección censal con la renta de sus hogares, el paro, las pensiones, '
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
-        piezas=TEMA_RENTA + ['valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
+        piezas=TEMA_RENTA + ['atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
                              'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n', 'quien-vota-barrios-renta-edad-inmigracion', 'barrios-caseros-inquilinos-voto-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
@@ -308,7 +308,9 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
+INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019')}   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
 EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
+                 'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014', '10901'},   # Manzanares (Ciudad Real), Amposta (Tarragona) y Rosalejo (Cáceres) salen del río y de los barrios madrileños de Amposta y Rosas
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla
                  'cinturon-rojo-madrid-29n': {'31062', '11028'},   # Cabanillas y Puerto Real salen de «Cabanillas de la Sierra» y «Rozas de Puerto Real» en el mapa
                  'puente-valladolid-segundo-escano-29n': {'45177', '14001', '45200'},   # lugares del accidente, no de la pieza
@@ -393,6 +395,10 @@ def municipios_citados(html, slug_pieza=None):
     if propio and propio in NOMBRES:
         cuenta[propio] = cuenta.get(propio, 0) + 100   # la ciudad de la pieza, siempre la primera
         primero.setdefault(propio, -1)
+    for i, c in enumerate(INCLUIR_PIEZA.get(slug_pieza, ())):   # las ciudades de la pieza, delante, aunque el texto las nombre de forma que no se detecta
+        if c in NOMBRES:
+            cuenta[c] = cuenta.get(c, 0) + 100
+            primero[c] = -10 + i
     return sorted(cuenta.items(), key=lambda x: (-x[1], primero[x[0]]))
 
 

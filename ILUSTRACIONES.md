@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (73)
+## Pendientes (74)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-08 | [`a-quien-beneficia-abstencion-29n`](https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/) | Si los barrios que menos votan fueran a las urnas como la media, cinco escaños de 2023 habrían cambiado de manos: cuatro, hacia el PSOE | primer gráfico de la pieza |
+| 2026-11-08 | [`atletico-barca-metropolitano-camp-nou-29n`](https://mapaelectoral.es/actualidad/atletico-barca-metropolitano-camp-nou-29n/) | Del Calderón al Metropolitano: el Atlético se mudó a un distrito con casi un tercio menos de renta, siete puntos menos de participación y donde el PSOE gana en 57 de las 112 secciones | primer gráfico de la pieza |
 | 2026-11-07 | [`tres-semanas-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/tres-semanas-29n-la-semana-en-el-mapa/) | A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos | primer gráfico de la pieza |
 | 2026-11-07 | [`valencia-madrid-mestalla-barrios-29n`](https://mapaelectoral.es/actualidad/valencia-madrid-mestalla-barrios-29n/) | Mestalla vota como el Bernabéu: el PP ganó en las 23 secciones del distrito del Valencia y en 100 de las 101 del Real Madrid | primer gráfico de la pieza |
 | 2026-11-07 | [`nueva-zelanda-resultados-mapa`](https://mapaelectoral.es/actualidad/nueva-zelanda-resultados-mapa/) | Los laboristas ganan el voto de partido por 3.650 votos, pero la coalición de Luxon suma 67 de los 131 escaños en el recuento provisional de Nueva Zelanda | primer gráfico de la pieza |

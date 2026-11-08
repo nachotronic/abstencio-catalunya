@@ -48,4 +48,12 @@
       <news:title>Si los barrios que menos votan fueran a las urnas como la media, cinco escaños de 2023 habrían cambiado de manos: cuatro, hacia el PSOE</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/atletico-barca-metropolitano-camp-nou-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-08</news:publication_date>
+      <news:title>Del Calderón al Metropolitano: el Atlético se mudó a un distrito con casi un tercio menos de renta, siete puntos menos de participación y donde el PSOE gana en 57 de las 112 secciones</news:title>
+    </news:news>
+  </url>
 </urlset>
