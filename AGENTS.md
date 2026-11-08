@@ -38,7 +38,7 @@ Lo que mejor encaja contigo son las **ilustraciones de cabecera** (collages edit
 
 ## Antes de fusionar una pieza (regla de Nacho, 3-11-2026)
 
-Ninguna pieza de Actualidad o Internacional se fusiona sin (a) la revisión de un hilo editor separado y (b) la Action «Verificar piezas» en verde: cifras del texto recalculadas desde los datos de la pieza, enlaces vivos, imágenes presentes y ningún dato español en las internacionales. Cómo declarar las cifras: [`actualidad/verificacion/LEEME.md`](actualidad/verificacion/LEEME.md).
+Ninguna pieza de Actualidad o Internacional se fusiona sin (a) la revisión de un hilo editor separado y (b) la Action «Verificar piezas» en verde: cifras del texto recalculadas desde los datos de la pieza, enlaces vivos, imágenes presentes y ningún dato español en las internacionales. Cómo declarar las cifras: [`actualidad/verificacion/LEEME.md`](actualidad/verificacion/LEEME.md). Qué revisa el hilo editor a mano, punto por punto: [`actualidad/verificacion/EDITOR.md`](actualidad/verificacion/EDITOR.md).
 
 ## Construir
 
