@@ -1,0 +1,353 @@
+{
+ "pieza": "atletico-barca-metropolitano-camp-nou-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "un tercio menos de renta, siete puntos menos de participación",
+   "cifra": "siete",
+   "calculo": "round(D[\"dif_part\"])",
+   "_donde": "titular"
+  },
+  {
+   "texto": "participación y donde el PSOE gana en 57 de las 112 secciones",
+   "cifra": "57",
+   "calculo": "D[\"SB\"][\"gana\"][\"PSOE\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "el PSOE gana en 57 de las 112 secciones",
+   "cifra": "112",
+   "calculo": "D[\"SB\"][\"n\"]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "el Calderón, el PP ganó en 97 de 111 secciones en",
+   "cifra": "97",
+   "calculo": "D[\"ARG\"][\"gana\"][\"PP\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Calderón, el PP ganó en 97 de 111 secciones en 2023. El",
+   "cifra": "111",
+   "calculo": "D[\"ARG\"][\"n\"]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "San Blas-Canillejas es de 21.376 € por unidad de consumo,",
+   "cifra": "21.376",
+   "calculo": "D[\"SB\"][\"renta\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "unidad de consumo, frente a 31.378 € en Arganzuela. También",
+   "cifra": "31.378",
+   "calculo": "D[\"ARG\"][\"renta\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de julio de 2023 votó el 71,2 % del censo en San Blas-Canillejas",
+   "cifra": "71,2",
+   "calculo": "D[\"SB\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "San Blas-Canillejas y el 78,4 % en Arganzuela, siete",
+   "cifra": "78,4",
+   "calculo": "D[\"ARG\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 78,4 % en Arganzuela, siete puntos más. Y el voto",
+   "cifra": "siete",
+   "calculo": "round(D[\"dif_part\"])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Arganzuela, el PP ganó en 97 de las 111 secciones;",
+   "cifra": "97",
+   "calculo": "D[\"ARG\"][\"gana\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Arganzuela, el PP ganó en 97 de las 111 secciones; en San Blas-Canillejas,",
+   "cifra": "111",
+   "calculo": "D[\"ARG\"][\"n\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Blas-Canillejas, el PSOE ganó en 57 de 112 y el PP en 55.",
+   "cifra": "57",
+   "calculo": "D[\"SB\"][\"gana\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Blas-Canillejas, el PSOE ganó en 57 de 112 y el PP en 55.",
+   "cifra": "112",
+   "calculo": "D[\"SB\"][\"n\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó en 57 de 112 y el PP en 55.",
+   "cifra": "55",
+   "calculo": "D[\"SB\"][\"gana\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "casi lo mismo en 2023: el 38,4 % en Arganzuela y el",
+   "cifra": "38,4",
+   "calculo": "D[\"ARG\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "38,4 % en Arganzuela y el 37,9 % en San Blas-Canillejas.",
+   "cifra": "37,9",
+   "calculo": "D[\"SB\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el resto. El PSOE sacó el 30,9 % en San Blas-Canillejas",
+   "cifra": "30,9",
+   "calculo": "D[\"SB\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "San Blas-Canillejas y el 27,2 % en Arganzuela, y Sumar,",
+   "cifra": "27,2",
+   "calculo": "D[\"ARG\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en Arganzuela, y Sumar, el 22,9 % en Arganzuela y el",
+   "cifra": "22,9",
+   "calculo": "D[\"ARG\"][\"SUMAR\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "22,9 % en Arganzuela y el 17,1 % en San Blas-Canillejas.",
+   "cifra": "17,1",
+   "calculo": "D[\"SB\"][\"SUMAR\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "distrito del Metropolitano (11,9 %) que en el del Calderón",
+   "cifra": "11,9",
+   "calculo": "D[\"SB\"][\"VOX\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%) que en el del Calderón (9,7 %).",
+   "cifra": "9,7",
+   "calculo": "D[\"ARG\"][\"VOX\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Arganzuela votaba al PP (49,2 %) y San Blas-Canillejas,",
+   "cifra": "49,2",
+   "calculo": "D[\"SER\"][\"Arganzuela\"][\"2004_03\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Blas-Canillejas, al PSOE (50,1 %). En las dos elecciones",
+   "cifra": "50,1",
+   "calculo": "D[\"SER\"][\"San Blas - Canillejas\"][\"2004_03\"][\"PSOE\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Amposta, la renta mediana es de 14.447 €, el PSOE sacó el 40,0",
+   "cifra": "14.447",
+   "calculo": "D[\"AMP\"][\"renta\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "14.447 €, el PSOE sacó el 40,0 % y votó el 57,8 %.",
+   "cifra": "40,0",
+   "calculo": "D[\"AMP\"][\"PSOE\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "sacó el 40,0 % y votó el 57,8 %. El barrio del estadio,",
+   "cifra": "57,8",
+   "calculo": "D[\"AMP\"][\"part\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "Calderón: renta mediana de 29.392 €, frente a 32.591 €",
+   "cifra": "29.392",
+   "calculo": "D[\"ROS\"][\"renta\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "mediana de 29.392 €, frente a 32.591 € en Imperial; participación",
+   "cifra": "32.591",
+   "calculo": "D[\"IMP\"][\"renta\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "Imperial; participación del 79,3 %, frente al 80,0 %,",
+   "cifra": "79,3",
+   "calculo": "D[\"ROS\"][\"part\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "participación del 79,3 %, frente al 80,0 %, y el PP primero en",
+   "cifra": "80,0",
+   "calculo": "D[\"IMP\"][\"part\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "80,0 %, y el PP primero en 16 de sus 17 secciones,",
+   "cifra": "16",
+   "calculo": "D[\"ROS\"][\"gana\"][\"PP\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "el PP primero en 16 de sus 17 secciones, frente a",
+   "cifra": "17",
+   "calculo": "D[\"ROS\"][\"n\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "17 secciones, frente a las 17 de Imperial. El Atlético",
+   "cifra": "17",
+   "calculo": "D[\"IMP\"][\"gana\"][\"PP\"]",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "2023, el PSC ganó allí en 42 de las 57 secciones,",
+   "cifra": "42",
+   "calculo": "D[\"LC\"][\"gana\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSC ganó allí en 42 de las 57 secciones, con el 28,0",
+   "cifra": "57",
+   "calculo": "D[\"LC\"][\"n\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "las 57 secciones, con el 28,0 %, y el PP en 15, con",
+   "cifra": "28,0",
+   "calculo": "D[\"LC\"][\"PSOE\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con el 28,0 %, y el PP en 15, con el 23,7 % en el",
+   "cifra": "15",
+   "calculo": "D[\"LC\"][\"gana\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%, y el PP en 15, con el 23,7 % en el conjunto del",
+   "cifra": "23,7",
+   "calculo": "D[\"LC\"][\"PP\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "distrito. Detrás quedaron Junts (14,2 %) y ERC (11,6 %).",
+   "cifra": "14,2",
+   "calculo": "D[\"LC\"][\"JUNTS\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quedaron Junts (14,2 %) y ERC (11,6 %).",
+   "cifra": "11,6",
+   "calculo": "D[\"LC\"][\"ERC\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El 23,7 % de les Corts es el",
+   "cifra": "23,7",
+   "calculo": "D[\"LC\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "resultado del PP entre los diez distritos de Barcelona,",
+   "cifra": "diez",
+   "calculo": "D[\"n_distritos_bcn\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "ciudad, el PP se quedó en el 15,9 %. Dentro de les Corts,",
+   "cifra": "15,9",
+   "calculo": "D[\"BCNC\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Corts, el PP ganó en las 7 secciones de Pedralbes,",
+   "cifra": "7",
+   "calculo": "D[\"PED\"][\"gana\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "secciones de Pedralbes, con el 43,5 %. En el barrio del",
+   "cifra": "43,5",
+   "calculo": "D[\"PED\"][\"PP\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "del estadio, el PSC ganó en 12 de las 15.",
+   "cifra": "12",
+   "calculo": "D[\"MAT\"][\"gana\"][\"PSOE\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "el PSC ganó en 12 de las 15.",
+   "cifra": "15",
+   "calculo": "D[\"MAT\"][\"n\"]",
+   "_donde": "patron"
+  },
+  {
+   "texto": "participación de les Corts, del 72,4 %, empata con la de",
+   "cifra": "72,4",
+   "calculo": "D[\"DB\"][\"les Corts\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "conjunto de la ciudad votó el 67,4 % del censo; en Madrid,",
+   "cifra": "67,4",
+   "calculo": "D[\"BCNC\"][\"part\"]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del censo; en Madrid, el 73,4 %.",
+   "cifra": "73,4",
+   "calculo": "D[\"MADC\"][\"part\"]",
+   "_donde": "dato"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Metropolitano, en la jornada 12 de LaLiga, según el",
+   "fuente": "https://www.atleticodemadrid.com/noticias/previa-del-atletico-de-madrid-fc-barcelona-jornada-12-laliga-08-11-2026"
+  },
+  {
+   "texto": "Mahou-Calderón tendrá más de 1.300 viviendas, según el",
+   "fuente": "https://diario.madrid.es/blog/2023/04/03/de-estadio-a-gran-parque-historia-de-una-metamorfosis-urbana/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Esta noche, a las nueve, el Atlético recibe",
+   "motivo": "hora del partido (21.00), según el club"
+  },
+  {
+   "texto": "Atlético-Barça, los distritos de los tres estadios. En Arganzuela,",
+   "motivo": "número de estadios: Calderón, Metropolitano y Camp Nou"
+  },
+  {
+   "texto": "Tres estadios, tres distritosGenerales",
+   "motivo": "número de estadios"
+  },
+  {
+   "texto": "Tres estadios, tres distritosGenerales de",
+   "motivo": "número de distritos"
+  },
+  {
+   "texto": "Los dos distritos llevan veinte años cambiando de forma",
+   "motivo": "de las generales de 2004 a las de 2023, las del gráfico"
+  }
+ ],
+ "permitir_espana": []
+}
