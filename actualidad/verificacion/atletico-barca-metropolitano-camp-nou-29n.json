@@ -203,15 +203,9 @@
    "_donde": "hipotesis"
   },
   {
-   "texto": "el PP primero en 16 de sus 17 secciones, frente a",
+   "texto": "en 16 de sus 17 secciones, frente a todas",
    "cifra": "17",
    "calculo": "D[\"ROS\"][\"n\"]",
-   "_donde": "hipotesis"
-  },
-  {
-   "texto": "17 secciones, frente a las 17 de Imperial. El Atlético",
-   "cifra": "17",
-   "calculo": "D[\"IMP\"][\"gana\"][\"PP\"]",
    "_donde": "hipotesis"
   },
   {
@@ -315,6 +309,16 @@
    "cifra": "73,4",
    "calculo": "D[\"MADC\"][\"part\"]",
    "_donde": "dato"
+  },
+  {
+   "texto": "todas las de Imperial, 17 de 17. El Atlético",
+   "cifra": "17",
+   "calculo": "D[\"IMP\"][\"gana\"][\"PP\"]"
+  },
+  {
+   "texto": "las de Imperial, 17 de 17. El Atlético cambió",
+   "cifra": "17",
+   "calculo": "D[\"IMP\"][\"n\"]"
   }
  ],
  "externas": [
@@ -325,6 +329,10 @@
   {
    "texto": "Mahou-Calderón tendrá más de 1.300 viviendas, según el",
    "fuente": "https://diario.madrid.es/blog/2023/04/03/de-estadio-a-gran-parque-historia-de-una-metamorfosis-urbana/"
+  },
+  {
+   "texto": "Alimarket cifra en 1.312 las de Ribera del Calderón",
+   "fuente": "https://www.alimarket.es/construccion/noticia/323402/las-obras-de-las-1-312-viviendas-de-ribera-del-calderon-podrian-comenzar-este-ano"
   }
  ],
  "ignorar": [
