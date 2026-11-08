@@ -158,5 +158,9 @@
  "participacion-navarra-municipios-29n": {
   "pie": "Pamplona y su alrededor.",
   "fuente": "Ministerio del Interior"
+ },
+ "a-quien-beneficia-abstencion-29n": {
+  "pie": "Voto por partido según cuánto vota la sección censal, dentro de cada provincia.",
+  "fuente": "Ministerio del Interior, resultados por mesa de las generales de julio de 2023, vía pollspaindata"
  }
 }

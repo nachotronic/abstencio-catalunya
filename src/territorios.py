@@ -35,8 +35,12 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-11-04'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-11-08'   # cámbiala a mano cuando cambien los datos o el texto
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
+# Noche del 29N: con True, el título, la descripción y la cabecera de cada ficha de municipio pasan a «Resultados del 29N en X».
+# Se cambia a True (y se reconstruye) cuando Interior publique los primeros datos; el escrutinio en directo de la ficha
+# (generales-2026/directo-municipio.js) se enciende solo con la URL de directo.url en generales-2026/data/meta.json.
+NOCHE_29N = False
 SITIO = 'Mapa Electoral'
 LICENCIA = 'https://creativecommons.org/licenses/by/4.0/'
 
@@ -231,6 +235,27 @@ def bloque_resultado(nombre, r):
                  f'Votaron {num(r["votantes"])} de {num(r["censo"])} electores residentes.')
             + f'<figure>{barras(r, T.ESPANA)}<figcaption>Elecciones generales del 23 de julio de 2023, sin voto desde el extranjero (CERA). Fuente: Ministerio del Interior.</figcaption></figure>'
             + tabla(f'Voto por partido en {escape(nombre)}, 23J 2023', ['Partido', 'Voto', 'Votos', 'España'], filas))
+
+
+DIRECTO_CSS = ('.directo29n{border:1px solid var(--line,#ddd);border-left:4px solid var(--fg);padding:.6em 1em;margin:1.2em 0}'
+               '.directo29n h2{margin-top:.2em}.d-fila{display:grid;grid-template-columns:9.5em 1fr 4.5em;gap:.5em;align-items:center;margin:.25em 0;font:14px var(--sans)}'
+               '.d-bar{height:16px}.d-bar i{display:block;height:100%;border-radius:2px}.d-va{color:var(--muted)}.d-estado{font:13px var(--sans);color:var(--muted)}')
+
+
+def bloque_directo(nombre, cod, r):
+    """Recuadro «Resultados del 29N en <municipio>»: hasta la noche electoral, un aviso con el enlace al mapa en directo;
+    esa noche, el escrutinio del municipio, que pinta generales-2026/directo-municipio.js con el JSON del directo."""
+    raiz = RAIZ_REL
+    n = escape(nombre)
+    r23 = json.dumps({'part': round(r['part'], 6) if r['part'] else None}, separators=(',', ':'))
+    aviso = (f'Interior empieza a publicar el escrutinio la noche del domingo 29 de noviembre, después del cierre de los colegios. '
+             f'Desde entonces, aquí aparece el escrutinio de {n} actualizado cada minuto, junto al resultado de 2023. '
+             if not NOCHE_29N else f'El escrutinio de {n} aparece aquí en cuanto se cargan los datos de Interior. ')
+    return (f'<style>{DIRECTO_CSS}</style><section class="directo29n" id="directo-mun" data-mun="{cod}" data-raiz="{raiz or "./"}" data-r23=\'{escape(r23)}\' aria-labelledby="resultados-29n">'
+            f'<h2 id="resultados-29n">Resultados del 29N en {n}</h2>'
+            f'<p class="d-aviso">{aviso}<a href="{raiz}elecciones/resultados-elecciones-generales-2026/">Resultados del 29N en toda España</a> · '
+            f'<a href="{raiz}?m={cod}">{n} en el mapa</a></p>' + frase_avances_mun(nombre, cod) + '<div class="d-cuerpo" aria-live="polite"></div>'
+            f'<script src="{raiz}generales-2026/directo-municipio.js" defer></script></section>')
 
 
 def bloque_serie(nombre, serie):
@@ -736,20 +761,28 @@ def pagina_ciudad(cod):
                 + (f'{num(censo_29n(cod)[2])} electores para el 29N. ' if q_censo else '')
                 + ('Resultados por barrio y sección censal, ' if b_sec else 'Resultados ')
                 + 'cómo saber si te ha tocado mesa y dónde votar, y cada elección desde 1977.')
+    if NOCHE_29N:   # noche electoral: lo que se busca es «resultados elecciones <municipio>»
+        titulo = f'Resultados de las elecciones del 29N en {nombre}: escrutinio en directo' + (' y voto por barrio' if b_sec else ' y voto desde 1977')
+        desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, mesa a mesa según avanza el escrutinio de Interior, '
+                f'frente a 2023: entonces ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo.')
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     faq_html, faq_ld = faq(([q_censo] if q_censo else []) + q_mesas)
     h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about), faq_ld], nivel, nombre)]
     raiz = RAIZ_REL
     h.append(migas_html([(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p])]))
-    h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales 1977-2023</p>'
-             f'<h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
+    h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales {"del 29N de 2026" if NOCHE_29N else "1977-2023"}</p>'
+             f'<h1 data-miga="{escape(nombre)}">{"Resultados de las elecciones" if NOCHE_29N else "Elecciones"} en {escape(nombre)}</h1>')
     h.append(f'<p class="subtitulo">{"Censo para el 29N, r" if b_censo else "R"}esultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
+    if NOCHE_29N:
+        h.append(bloque_directo(nombre, cod, r))
     h.append(bloque_encuesta_prov(p, nombre))
     h.append(bloque_donde_votar(nombre, cod))
     h.append(bloque_te_toca_mesa(nombre, cod))
+    if not NOCHE_29N:
+        h.append(bloque_directo(nombre, cod, r))
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
@@ -2363,9 +2396,117 @@ def tema_participacion(resumen):
     h.append('<h2>Piezas sobre quién vota y quién no</h2>' + lista_piezas(TEMA_PARTICIPACION, 2)
              + f'<ul class="sigue"><li><a href="{raiz}abstencion.html"><span class="kicker">Reportaje</span><b>¿Quién no vota en Cataluña? La abstención en las 5.115 secciones censales catalanas</b></a></li></ul>')
     h.append('<h2>Más datos</h2><ul><li><a href="../elecciones-29n-2026/">Elecciones generales del 29N de 2026</a></li>'
+             '<li><a href="../participacion-29n-hora-a-hora/">Participación del 29N hora a hora: los avances de las 14.00 y las 18.00</a></li>'
              '<li><a href="../voto-y-renta-por-barrios/">Voto y renta por barrios</a></li>'
              '<li><a href="../mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li></ul>')
     h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
+
+
+AVANCES = pd.read_csv(ROOT / 'data' / 'censo' / 'avances_participacion.csv', dtype={'mun_code': str})   # src/avances_participacion.py
+CANARIAS = ('35', '38')   # una hora menos: el avance «de las 14.00» es allí a las 13.00
+RUTA_HORAS = 'elecciones/participacion-29n-hora-a-hora/'
+
+
+def avances(df):
+    """Avances de las 14.00 y las 18.00 y participación final sobre el censo de un conjunto de filas de AVANCES."""
+    c = df.censo.sum()
+    return {'a14': df.a14.sum() / c, 'a18': df.a18.sum() / c, 'fin': df.votantes.sum() / c, 'censo': c} if c else None
+
+
+def avances_mun(cod, y='2023_07'):
+    d = AVANCES[(AVANCES.mun_code == cod) & (AVANCES.eleccion == y)]
+    return avances(d) if len(d) else None
+
+
+def frase_avances_mun(nombre, cod):
+    """Para la ficha del municipio: cómo iba la participación a las 14.00 y a las 18.00 en 2023, frente a España."""
+    a, e = avances_mun(cod), avances(AVANCES[AVANCES.eleccion == '2023_07'])
+    if not a:
+        return ''
+    hora = ' (13.00 y 17.00 en Canarias)' if cod[:2] in CANARIAS else ''
+    return p_('Dato', f'Para comparar los avances del 29N: en las generales de 2023, a las 14.00 había votado en las mesas el {pct(a["a14"])} del censo de {escape(nombre)} '
+              f'y a las 18.00 el {pct(a["a18"])}{hora}; en el conjunto de España, el {pct(e["a14"])} y el {pct(e["a18"])}. Al cierre, con el voto por correo, votó el {pct(a["fin"])}. '
+              f'<a href="{RAIZ_REL}{RUTA_HORAS}">La participación hora a hora en toda España</a>.')
+
+
+def tema_participacion_horas():
+    ruta = RUTA_HORAS
+    raiz = '../../'
+    global RAIZ_REL
+    RAIZ_REL = raiz
+    A = AVANCES
+    S = {y: avances(A[A.eleccion == y]) for y in sorted(A.eleccion.unique())}
+    a23, a19 = S['2023_07'], S['2019_11']
+    titulo = 'Participación del 29N hora a hora: los avances de las 14.00 y las 18.00, provincia a provincia y municipio a municipio'
+    desc = (f'Cuánta gente había votado a las 14.00 y a las 18.00 en cada generales desde 2004: en 2023, el {pct(a23["a14"])} y el {pct(a23["a18"])} del censo; '
+            f'en noviembre de 2019, el {pct(a19["a14"])} y el {pct(a19["a18"])}. Por provincia y por municipio, para comparar los avances del 29N.')
+    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Participación hora a hora', imagen_og('elecciones/participacion-electoral-por-barrio/'))]
+    h.append(migas_html([(raiz, 'Inicio'), ('../', 'Elecciones')]))
+    h.append('<p class="kicker">Elecciones del 29N · Participación</p><h1 data-miga="Participación hora a hora">Participación del 29N hora a hora</h1>')
+    h.append('<p class="subtitulo">Los avances de las 14.00 y las 18.00 de cada elección general desde 2004, para saber si el 29N se vota más o menos que otras veces</p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}En las generales de julio de 2023, a las 14.00 había votado en las mesas el {pct(a23["a14"])} del censo residente en España y a las 18.00, el {pct(a23["a18"])}. '
+             f'Al final votó el {pct(a23["fin"])}. En las últimas generales de noviembre, las de 2019, los avances fueron del {pct(a19["a14"])} y el {pct(a19["a18"])}, y la participación final, del {pct(a19["fin"])}.</p>')
+    h.append(p_('Contexto', 'El domingo 29 de noviembre los colegios abren de 9.00 a 20.00. El Ministerio del Interior da dos avances de participación durante el día, con los votantes '
+                'que han pasado por las mesas a las 14.00 y a las 18.00, y publica cada uno poco después de esa hora. Esta página se actualizará con los avances del 29N cuando se conozcan.'))
+    h.append(p_('Contexto', 'Los avances solo cuentan a quien vota en persona. El voto por correo se suma al final, al abrir las urnas, así que entre las 18.00 y el cierre la participación '
+                f'sube más cuando hay mucho voto por correo: en julio de 2023, cuando Correos admitió el récord de 2.471.935 votos, subió {pct(a23["fin"] - a23["a18"])[:-2]} puntos entre las 18.00 y el final; '
+                f'en noviembre de 2019, {pct(a19["fin"] - a19["a18"])[:-2]}. Por eso un avance de las 18.00 más bajo no anuncia por sí solo una participación final más baja. '
+                f'Más en <a href="{raiz}actualidad/voto-correo-29n/">el voto por correo, provincia a provincia</a>.'))
+    filas = [[T.etiqueta(y), pct(S[y]['a14']), pct(S[y]['a18']), pct(S[y]['fin'])] for y in S]
+    h.append('<h2>Los avances de cada elección general desde 2004</h2>'
+             + p_('Dato', f'La participación a las 14.00 ha ido del {pct(min(s["a14"] for s in S.values()))} al {pct(max(s["a14"] for s in S.values()))} en las ocho generales desde 2004. '
+                  f'En las dos de noviembre, 2011 y 2019, el primer avance se quedó en el {pct(S["2011_11"]["a14"])} y el {pct(S["2019_11"]["a14"])}.')
+             + tabla('Participación sobre el censo residente en España: avances de las 14.00 y las 18.00 y participación final', ['Elección', '14.00', '18.00', 'Final'], filas))
+    # por tamaño de municipio
+    pob = T.MUN.set_index('mun_code').poblacion
+    cortes = [(0, 1000, 'Menos de 1.000 habitantes'), (1000, 5000, 'De 1.000 a 5.000'), (5000, 20000, 'De 5.000 a 20.000'), (20000, 100000, 'De 20.000 a 100.000'), (100000, 10**9, 'Más de 100.000')]
+    filas, tam = [], {}
+    for y in ('2019_11', '2023_07'):
+        d = A[(A.eleccion == y) & ~A.mun_code.str[:2].isin(CANARIAS)]
+        d = d.assign(pob=d.mun_code.map(pob))
+        for lo, hi, et in cortes:
+            tam[(y, et)] = avances(d[(d.pob >= lo) & (d.pob < hi)])
+    for lo, hi, et in cortes:
+        a, b = tam[('2019_11', et)], tam[('2023_07', et)]
+        filas.append([et, pct(a['a14']), pct(a['a18']), pct(b['a14']), pct(b['a18'])])
+    p0, p4 = tam[('2023_07', cortes[0][2])], tam[('2023_07', cortes[-1][2])]
+    q0, q4 = tam[('2019_11', cortes[0][2])], tam[('2019_11', cortes[-1][2])]
+    h.append('<h2>Pueblos y ciudades: depende de la elección</h2>'
+             + p_('Dato', f'En julio de 2023, a las 14.00 ya había votado el {pct(p0["a14"])} del censo en los municipios de menos de 1.000 habitantes y el {pct(p4["a14"])} en los de más de 100.000, sin contar Canarias. '
+                  f'En noviembre de 2019 fue al revés: el {pct(q0["a14"])} en los pueblos más pequeños y el {pct(q4["a14"])} en las ciudades más grandes. '
+                  'Qué tipo de municipio va por delante a mediodía cambia de una elección a otra, así que un avance alto en un sitio no anticipa por sí solo cómo acabará. '
+                  'Es una comparación entre municipios: no dice a qué hora vota cada persona.')
+             + tabla('Avances de participación por tamaño del municipio (sin Canarias, que vota con una hora menos)', ['Municipio', '14.00 (2019)', '18.00 (2019)', '14.00 (2023)', '18.00 (2023)'], filas))
+    # por provincia
+    filas = []
+    for p in sorted(PROV_NOMBRE, key=lambda p: slug(PROV_NOMBRE[p])):
+        a, b = avances(A[(A.eleccion == '2019_11') & (A.mun_code.str[:2] == p)]), avances(A[(A.eleccion == '2023_07') & (A.mun_code.str[:2] == p)])
+        if a and b:
+            filas.append([f'<a href="{raiz}{ruta_provincia(p)}">{escape(PROV_NOMBRE[p])}</a>' + (' *' if p in CANARIAS else ''),
+                          pct(a['a14']), pct(a['a18']), pct(a['fin']), pct(b['a14']), pct(b['a18']), pct(b['fin'])])
+    h.append('<h2>Provincia a provincia</h2>'
+             + p_('Dato', 'Avances de participación de las dos últimas generales en cada provincia, sobre el censo residente. El asterisco marca las provincias canarias, donde los avances se toman a las 13.00 y a las 17.00, hora local.')
+             + tabla('Avances de participación por provincia en noviembre de 2019 y julio de 2023', ['Provincia', '14.00 (2019)', '18.00 (2019)', 'Final (2019)', '14.00 (2023)', '18.00 (2023)', 'Final (2023)'], filas))
+    # ciudades
+    d = A[(A.eleccion == '2023_07') & A.mun_code.isin([c for c in CIUDADES if pob.get(c, 0) >= GRANDE]) & ~A.mun_code.str[:2].isin(CANARIAS)]
+    d = d.assign(p14=d.a14 / d.censo).sort_values('p14')
+    lm = lambda x: ', '.join(f'<a href="{raiz}{CIUDADES[c]}">{escape(_nom(c))}</a> ({pct(v)})' for c, v in zip(x.mun_code, x.p14))
+    h.append('<h2>Las ciudades que votan más pronto y más tarde</h2>'
+             + p_('Dato', f'Entre los municipios de más de 50.000 habitantes fuera de Canarias, donde más se había votado a las 14.00 en 2023 fue en {lm(d.tail(5).iloc[::-1])}; '
+                  f'donde menos, en {lm(d.head(5))}.')
+             + '<p>Cada municipio de más de 1.000 habitantes tiene en su página sus avances de 2023, para compararlos con los del 29N. Búscalo en <a href="' + raiz + 'municipio/">el índice de municipios</a>.</p>')
+    h.append('<h2>Más datos</h2><ul>'
+             '<li><a href="../resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026, en directo la noche del 29N</a></li>'
+             '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio, sección a sección</a></li>'
+             '<li><a href="../votar-29n/">Dónde y cómo votar el 29N</a></li></ul>')
+    h.append('<h2>Método y fuentes</h2>'
+             '<p>Los avances salen de los ficheros por mesa del Ministerio del Interior, que dan para cada mesa los votantes del primer y del segundo avance, '
+             'leídos por <a href="https://github.com/dadosdelaplace/pollspaindata">pollspaindata</a>. Se suman por municipio y se dividen por el censo de residentes en España; '
+             'el voto desde el extranjero (CERA) no entra, así que las cifras pueden diferir hasta en una décima de las que dio Interior aquella noche. '
+             'Datos por municipio y elección: <a href="https://github.com/nachotronic/abstencio-catalunya/blob/main/data/censo/avances_participacion.csv">avances_participacion.csv</a> (CC BY 4.0).</p>')
     h.append(PIE)
     return ruta, ''.join(h)
 
@@ -2567,6 +2708,7 @@ def tema_resultados(resumen):
     h.append(faq_html)
     h.append('<h2>Más datos</h2><ul><li><a href="../elecciones-29n-2026/">Elecciones del 29N: fecha, campaña y escaños por provincia</a></li>'
              '<li><a href="../resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio desde 1977</a></li>'
+             '<li><a href="../participacion-29n-hora-a-hora/">Participación del 29N hora a hora: los avances de las 14.00 y las 18.00</a></li>'
              '<li><a href="../censo-electoral-2026/">Censo electoral de 2026 por provincia y municipio</a></li>'
              '<li><a href="../votar-29n/">Dónde y cómo votar el 29N: colegio, voto por correo y plazos</a></li>'
              '<li><a href="../como-se-vota/">Cómo se vota: el precio de un escaño</a></li>'
@@ -3054,7 +3196,7 @@ def main():
         ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     (ROOT / 'src' / 'ciudades.json').write_text(json.dumps(CIUDADES, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
     (ROOT / 'src' / 'ciudades_nombres.json').write_text(json.dumps({c: [_nom(c), c[:2]] for c in CIUDADES}, ensure_ascii=False, indent=0, sort_keys=True), encoding='utf-8')
-    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_tarjeta(), tema_mesa(), tema_correo(), tema_calle(), tema_resultados(resumen)]
+    pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_tarjeta(), tema_mesa(), tema_correo(), tema_calle(), tema_resultados(resumen), tema_participacion_horas()]
     pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
     for ruta, html in pags + redirecciones():

@@ -24,6 +24,11 @@ En cada pieza de Actualidad o Internacional que el PR crea o cambia (su `<slug>.
 | **Imágenes** | `<img>`, foto de cabecera, Open Graph o `img/compartir/actualidad-<slug>.jpg` que falta, está vacía o no es una imagen | |
 | **Internacional** | Partidos, líderes o comunidades españolas (no basta «elecciones generales», que también las hay en otros países), «29N», fuentes españolas (Interior, INE) o enlaces a municipios, generales o encuestas españolas, en el texto o en los datos del mapa | |
 | **Actualización** | Pieza publicada que cambia de texto sin cambiar `actualizado` | |
+| **Redondeo** | | Diferencia en puntos a ±0,1 de la resta de las cifras que ve el lector en la misma frase, o en la fila de la tabla que la frase nombra («nov. 2019» ↔ «noviembre de 2019»). La cifra buena es la del dato sin redondear: «14,0 puntos» con 62,9 % y 77,0 % es correcto si sale de 76,992 − 62,946. Las diferencias se calculan siempre desde el dato bruto, nunca restando cifras mostradas; si la pieza la declara en `cifras`, la Action la comprueba contra el dato y no avisa. La misma cifra con distinto redondeo en el texto y en la fila de una tabla con ese nombre («88 %» y «87,8 %» para Nevada) |
+| **Tablas** | Columna «Diferencia» que se separa más de una décima de la resta de las dos de su izquierda (a una décima es aviso: puede venir del dato sin redondear); fila o columna «Total» (o «España», «Comunitat»…) que no es la suma de las demás | Filas de recuentos que suman distinto que la mayoría (un municipio que falta en 1977); «0,0» en una tabla que marca con «–» lo que no tiene dato |
+| **Navegador** | Error de JavaScript, fichero del propio sitio que no carga o scroll horizontal al abrir la pieza a 390 px | Sin Node o sin Playwright no se abre (aviso) |
+
+Los controles de redondeo, tablas y navegador (`src/controles_calidad.py` y `src/verificar_navegador.mjs`) salen de los fallos que el repaso diario encontró en piezas ya fusionadas. En una pieza ya publicada solo miran los párrafos y las tablas nuevos o cambiados. Una frase o una tabla que los dispara con motivo se declara en `"ignorar_calidad": [{"texto": "…", "motivo": "…"}]` (para una tabla, basta un trozo de su primera fila).
 
 Cuentan como cifras los números (también «once», «nueve»…) de los párrafos con `data-tipo`, el titular, la entradilla, los intertítulos y los pies de gráfico. No cuentan los años, las fechas, las horas, los ordinales ni códigos como KY-6. En una pieza ya publicada solo se exigen las cifras de los párrafos nuevos o cambiados.
 
@@ -67,5 +72,5 @@ Si el texto cambia y una frase declarada deja de aparecer, la comprobación fall
 1. Escribe la pieza y constrúyela como siempre.
 2. `python3 src/verificar_piezas.py --plantilla <slug>` crea o completa la declaración con cada cifra pendiente; rellena el `calculo` o pásala a `externas` o `ignorar`.
 3. `python3 src/verificar_piezas.py --slug <slug>` hasta que salga en verde; abre el PR.
-4. El hilo editor revisa la pieza y la lista de cifras externas del informe de la Action.
+4. El hilo editor revisa la pieza con la [lista fija del editor](EDITOR.md), incluida la lista de cifras externas del informe de la Action, y la pega marcada en un comentario del PR.
 5. Con la Action en verde y el visto bueno del editor, Nacho fusiona.
