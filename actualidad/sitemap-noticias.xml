@@ -17,14 +17,6 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-05</news:publication_date>
-      <news:title>PP y Vox pasarían de 18 a 20 de los 33 escaños valencianos con la media de encuestas; en Castellón, dos se los disputan cuatro candidatos</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/tres-semanas-29n-la-semana-en-el-mapa/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -46,6 +38,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-07</news:publication_date>
       <news:title>Los laboristas ganan el voto de partido por 3.650 votos, pero la coalición de Luxon suma 67 de los 131 escaños en el recuento provisional de Nueva Zelanda</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-08</news:publication_date>
+      <news:title>Si los barrios que menos votan fueran a las urnas como la media, cinco escaños de 2023 habrían cambiado de manos: cuatro, hacia el PSOE</news:title>
     </news:news>
   </url>
 </urlset>
