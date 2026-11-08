@@ -12,11 +12,18 @@ permissions:
 jobs:
   verificar:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar el navegador (control de errores de JavaScript y scroll a 390 px)
+        run: |
+          npm install --no-save --no-package-lock playwright@1.63.0
+          npx playwright install --with-deps chromium
       - name: Comprobar las piezas que cambia el PR
         run: |
           git fetch -q origin "${{ github.base_ref || 'main' }}"

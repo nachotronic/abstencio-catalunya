@@ -24,17 +24,24 @@ Qué comprueba en cada pieza que el PR crea o cambia:
    comunidades, fuentes (Interior, INE), enlaces a páginas de municipios o de las generales. Una mención
    justificada se declara en «permitir_espana» con su motivo.
 5. Actualización. Si una pieza ya publicada cambia de texto, su `actualizado` tiene que cambiar.
+6. Calidad (src/controles_calidad.py, 7-11-2026): el redondeo de las cifras frente a lo que ve el lector,
+   las sumas y diferencias de las tablas y, en el navegador a 390 px, los errores de JavaScript y el
+   scroll horizontal (src/verificar_navegador.mjs). En una pieza ya publicada solo cuentan los párrafos
+   y las tablas nuevos o cambiados.
 
 Uso, desde la raíz:
     python3 src/verificar_piezas.py                      # piezas cambiadas respecto a origin/main
     python3 src/verificar_piezas.py --slug <slug> ...    # piezas concretas (todas sus cifras)
     python3 src/verificar_piezas.py --plantilla <slug>   # escribe el esqueleto de la declaración
     --sin-red  no comprueba los enlaces externos (para trabajar sin conexión)
+    --sin-navegador  no abre las piezas en el navegador
 """
 import argparse, concurrent.futures, html, importlib.util, json, os, re, subprocess, sys, unicodedata
 import urllib.error, urllib.parse, urllib.request
 
 sys.dont_write_bytecode = True   # no ensuciar los __pycache__ del repositorio al importar construir.py
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import controles_calidad   # noqa: E402
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ACT = os.path.join(RAIZ, 'actualidad')
@@ -550,6 +557,7 @@ def principal():
     ap.add_argument('--slug', nargs='*')
     ap.add_argument('--plantilla')
     ap.add_argument('--sin-red', action='store_true')
+    ap.add_argument('--sin-navegador', action='store_true')
     ap.add_argument('--resumen', help='fichero Markdown donde escribir el informe (GITHUB_STEP_SUMMARY)')
     a = ap.parse_args()
     piezas = cargar_construir()
@@ -562,7 +570,7 @@ def principal():
         return 0
     codigo_base = git('show', f'{a.base}:actualidad/src/construir.py')
     base = cargar_construir(codigo_base) if codigo_base else {}
-    informes, externos = {}, set()
+    informes, externos, rutas = {}, set(), {}
     for slug in slugs:
         inf = informes[slug] = Informe(slug)
         if slug not in piezas:
@@ -599,6 +607,15 @@ def principal():
             inf.error('Falta la declaración de cifras', f'actualidad/verificacion/{slug}.json (créala con: python3 src/verificar_piezas.py --plantilla {slug})')
         if cambia_texto:
             comprobar_cifras(inf, p, main, decl, parrafos_base, completa or nueva)
+        # calidad: redondeo y tablas, solo en lo nuevo o cambiado de una pieza ya publicada
+        todo = completa or nueva
+        textos = [(d, x) for d, x in [('titular', p['titulo']), ('entradilla', p['descripcion'])] + bloques(main)
+                  if todo or norm(x) not in parrafos_base]
+        controles_calidad.comprobar_redondeo(inf, textos, main, decl)
+        tablas_base = set() if todo else set(re.findall(r'<table\b.*?</table>', mb.group(0) if mb else '', re.S))
+        main_tablas = re.sub(r'<table\b.*?</table>', lambda m: '' if m.group(0) in tablas_base else m.group(0), main, flags=re.S)
+        controles_calidad.comprobar_tablas(inf, main_tablas, decl)
+        rutas[slug] = os.path.relpath(ruta_pag, RAIZ)
         comprobar_enlaces_e_imagenes(inf, p, pagina, ruta_pag, externos)
         if p.get('serie') == 'internacional':
             comprobar_internacional(inf, p, main, script, decl)
@@ -606,6 +623,8 @@ def principal():
             comprobar_actualizado(inf, p, pb, parrafos, parrafos_base)
     if externos and not a.sin_red:
         comprobar_externos(externos, informes)
+    if rutas and not a.sin_navegador:
+        controles_calidad.comprobar_navegador(informes, rutas)
     # informe
     lineas = ['# Comprobación automática de las piezas', '']
     total = 0
