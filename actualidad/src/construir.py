@@ -3919,7 +3919,7 @@ PIEZAS += [
 
 PIEZAS += [
     dict(
-        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-04 08:42',
+        slug='eeuu-noche-electoral-guia-horarios', fecha='2026-11-01', actualizado='2026-11-08 07:27',
         titulo='De las 0.00 a las 7.00: la noche electoral de EE. UU., hora a hora desde España', serie='internacional',
         descripcion='Los colegios de Estados Unidos cierran entre las 0.00 y las 7.00 del miércoles 4 de noviembre, hora peninsular. Qué estados cierran a cada hora, qué carreras al Senado, a gobernador y a la Cámara conviene mirar y cuáles pueden tardar días en resolverse.',
         compara='La hora de cierre de los colegios en cada estado, pasada a hora peninsular española, con las carreras al Senado, a gobernador y a la Cámara que The Cook Political Report da como inciertas en cada franja.',
@@ -4135,7 +4135,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07', actualizado='2026-11-07 23:10',
+        slug='tres-semanas-29n-la-semana-en-el-mapa', fecha='2026-11-07', actualizado='2026-11-08 07:27',
         titulo='A tres semanas del 29N, PP y Vox llegan a la mayoría absoluta en el 91 % de nuestras simulaciones: la semana en que dimitió Puente y la UCO registró la casa de Ábalos', serie='29n', figura=0,
         descripcion='Crónica de la semana del 1 al 6 de noviembre desde los mapas: la dimisión de Puente, el registro a Ábalos, las encuestas tras Urda, las listas proclamadas, el cinturón rojo de Madrid, el empate a tres en Bizkaia y Estados Unidos. Diez de once encuestas con escaños dan mayoría a PP y Vox.',
         compara='Las cifras de las 19 piezas de Actualidad publicadas entre el 1 y el 6 de noviembre y la última encuesta de cada encuestadora con escaños en los últimos 30 días, con el escenario central del modelo de Mapa Electoral del 7 de noviembre.',
@@ -4210,7 +4210,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
 # Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
 # Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
 INTER_DESTACADAS = ['nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
-INTER_FUERA_CARRUSEL = {'nueva-zelanda-elecciones-mapa-circunscripciones'}   # coordinador, 7-11-2026: con los resultados publicados, la previa sale del carrusel Internacional de la portada (sigue en /internacional/)
+INTER_FUERA_CARRUSEL = {'nueva-zelanda-elecciones-mapa-circunscripciones', 'eeuu-noche-electoral-guia-horarios'}   # coordinador, 7-11-2026: con los resultados publicados, la previa sale del carrusel Internacional de la portada (sigue en /internacional/)
 INTER_EN_ACTUALIDAD = {'eeuu-resultados-medio-mandato-2026'}   # editor, 4-11-2026 8.20: la de la Cámara sale, para no repetir cifras distintas seguidas   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
 
