@@ -309,6 +309,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
+                 'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014'},   # Manzanares (Ciudad Real) y Amposta (Tarragona) salen del río y del barrio madrileño
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla
                  'cinturon-rojo-madrid-29n': {'31062', '11028'},   # Cabanillas y Puerto Real salen de «Cabanillas de la Sierra» y «Rozas de Puerto Real» en el mapa
                  'puente-valladolid-segundo-escano-29n': {'45177', '14001', '45200'},   # lugares del accidente, no de la pieza
