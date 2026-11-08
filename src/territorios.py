@@ -2505,7 +2505,7 @@ def tema_participacion_horas():
     h.append('<h2>Método y fuentes</h2>'
              '<p>Los avances salen de los ficheros por mesa del Ministerio del Interior, que dan para cada mesa los votantes del primer y del segundo avance, '
              'leídos por <a href="https://github.com/dadosdelaplace/pollspaindata">pollspaindata</a>. Se suman por municipio y se dividen por el censo de residentes en España; '
-             'el voto desde el extranjero (CERA) no entra, así que las cifras pueden diferir en una o dos centésimas de las que dio Interior aquella noche. '
+             'el voto desde el extranjero (CERA) no entra, así que las cifras pueden diferir hasta en una décima de las que dio Interior aquella noche. '
              'Datos por municipio y elección: <a href="https://github.com/nachotronic/abstencio-catalunya/blob/main/data/censo/avances_participacion.csv">avances_participacion.csv</a> (CC BY 4.0).</p>')
     h.append(PIE)
     return ruta, ''.join(h)

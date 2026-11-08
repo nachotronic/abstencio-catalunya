@@ -71,9 +71,33 @@
    "_donde": "patron"
   },
   {
-   "texto": "y el PSOE se quedó en el 26,5 %. Vox y Sumar apenas",
+   "texto": "y el PSOE se quedó en el 26,5 %. Vox y Sumar cambian",
    "cifra": "26,5",
    "calculo": "D['Q']['voto']['PSOE'][4]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "cambian menos: Vox va del 13,2 % al 11,9 % y Sumar,",
+   "cifra": "13,2",
+   "calculo": "D['Q']['voto']['VOX'][0]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "menos: Vox va del 13,2 % al 11,9 % y Sumar, del 12,8",
+   "cifra": "11,9",
+   "calculo": "D['Q']['voto']['VOX'][4]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "% al 11,9 % y Sumar, del 12,8 % al 11,0 %. Es una",
+   "cifra": "12,8",
+   "calculo": "D['Q']['voto']['SUMAR'][0]*100",
+   "_donde": "patron"
+  },
+  {
+   "texto": "% y Sumar, del 12,8 % al 11,0 %. Es una relación entre",
+   "cifra": "11,0",
+   "calculo": "D['Q']['voto']['SUMAR'][4]*100",
    "_donde": "patron"
   },
   {
@@ -121,20 +145,26 @@
   {
    "texto": "se decidieron por menos de 2.500 votos. Los cinco estaban",
    "calculo": "POR HACER (o pásala a «externas» con su fuente, o a «ignorar» con su motivo)",
-   "_donde": "patron",
+   "_donde": "hipotesis",
    "condicion": "all(D['margen'][p][2] < 2500 for p in set(x[0] for x in D['cambios_sube']))"
   },
   {
    "texto": "menos de 2.500 votos. Los cinco estaban así de ajustados:",
    "cifra": "cinco",
    "calculo": "len(set(x[0] for x in D['cambios_sube']))",
-   "_donde": "patron"
+   "_donde": "hipotesis"
   },
   {
    "texto": "Girona, al PP le faltaron 284 votos para quitarle",
    "cifra": "284",
    "calculo": "D['margen']['17'][2]",
-   "_donde": "patron"
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "revés que los demás. Allí el 92,7 % del censo vive en",
+   "cifra": "92,7",
+   "calculo": "D['girona_bajo_censo_pct']*100",
+   "_donde": "dato"
   },
   {
    "texto": "esas secciones Junts sacó el 19,0 % y el PP, el 9,9 %;",
@@ -159,6 +189,42 @@
    "cifra": "7,5",
    "calculo": "D['girona_resto']['pp']*100",
    "_donde": "dato"
+  },
+  {
+   "texto": "simulación, Junts gana en Girona 7.100 votos y el PP, 4.659.",
+   "cifra": "7.100",
+   "calculo": "D['girona_dh']['despues']['JXCAT - JUNTS']['votos']-D['girona_dh']['antes']['JXCAT - JUNTS']['votos']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "Girona 7.100 votos y el PP, 4.659. Aun así, Junts pierde",
+   "cifra": "4.659",
+   "calculo": "D['girona_dh']['despues']['PP']['votos']-D['girona_dh']['antes']['PP']['votos']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "cociente de Junts pasa de 31.626 a 35.176; el del PP,",
+   "cifra": "31.626",
+   "calculo": "round(D['girona_dh']['antes']['JXCAT - JUNTS']['votos']/2)",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "de Junts pasa de 31.626 a 35.176; el del PP, que no se",
+   "cifra": "35.176",
+   "calculo": "round(D['girona_dh']['despues']['JXCAT - JUNTS']['votos']/2)",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "PP, que no se divide, de 31.341 a 36.000, y lo adelanta.",
+   "cifra": "31.341",
+   "calculo": "D['girona_dh']['antes']['PP']['votos']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "no se divide, de 31.341 a 36.000, y lo adelanta. En Madrid,",
+   "cifra": "36.000",
+   "calculo": "D['girona_dh']['despues']['PP']['votos']",
+   "_donde": "hipotesis"
   },
   {
    "texto": "el mismo supuesto, serían 10.395.977 votos más, y cambiarían",
@@ -215,9 +281,15 @@
    "_donde": "dato"
   },
   {
-   "texto": "debajo del 3 %: le faltaban 12.759 votos.",
+   "texto": "Con los blancos le faltaron 12.759 votos para llegar al",
    "cifra": "12.759",
    "calculo": "int(0.03*D['validos_bcn'])+1-D['cup_bcn']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "llegar al 3 %; sin ellos, 12.127.",
+   "cifra": "12.127",
+   "calculo": "int(0.03*(D['validos_bcn']-D['blancos_bcn']))+1-D['cup_bcn']",
    "_donde": "dato"
   },
   {
@@ -260,7 +332,11 @@
    "motivo": "barrera legal del 3 % (LOREG, art. 163)"
   },
   {
-   "texto": "%, también por debajo del 3 %: le faltaban 12.759",
+   "texto": "%, también por debajo del 3 %. Con los blancos le",
+   "motivo": "barrera legal del 3 % (LOREG, art. 163)"
+  },
+  {
+   "texto": "12.759 votos para llegar al 3 %; sin ellos, 12.127.",
    "motivo": "barrera legal del 3 % (LOREG, art. 163)"
   }
  ],
