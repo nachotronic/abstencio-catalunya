@@ -24,7 +24,12 @@ En cada pieza de Actualidad o Internacional que el PR crea o cambia (su `<slug>.
 | **Imágenes** | `<img>`, foto de cabecera, Open Graph o `img/compartir/actualidad-<slug>.jpg` que falta, está vacía o no es una imagen | |
 | **Internacional** | Partidos, líderes o comunidades españolas (no basta «elecciones generales», que también las hay en otros países), «29N», fuentes españolas (Interior, INE) o enlaces a municipios, generales o encuestas españolas, en el texto o en los datos del mapa | |
 | **Actualización** | Pieza publicada que cambia de texto sin cambiar `actualizado` | |
+| **Redondeo** | | Diferencia en puntos a ±0,1 de la resta de las cifras que ve el lector en la misma frase, o en la fila de la tabla que la frase nombra («nov. 2019» ↔ «noviembre de 2019»). La cifra buena es la del dato sin redondear: «14,0 puntos» con 62,9 % y 77,0 % es correcto si sale de 76,992 − 62,946. Las diferencias se calculan siempre desde el dato bruto, nunca restando cifras mostradas; si la pieza la declara en `cifras`, la Action la comprueba contra el dato y no avisa. La misma cifra con distinto redondeo en el texto y en la fila de una tabla con ese nombre («88 %» y «87,8 %» para Nevada) |
+| **Tablas** | Columna «Diferencia» que se separa más de una décima de la resta de las dos de su izquierda (a una décima es aviso: puede venir del dato sin redondear); fila o columna «Total» (o «España», «Comunitat»…) que no es la suma de las demás | Filas de recuentos que suman distinto que la mayoría (un municipio que falta en 1977); «0,0» en una tabla que marca con «–» lo que no tiene dato |
+| **Navegador** | Error de JavaScript, fichero del propio sitio que no carga o scroll horizontal al abrir la pieza a 390 px | Sin Node o sin Playwright no se abre (aviso) |
 | **Modelo con fecha** | El texto cita «el modelo del 5 de noviembre» (o «del 5-11», «la media de encuestas del…») y no hay copia de ese día ni anterior en `previsiones/datos/publico/historico/` | Cifras de frases que hablan del modelo que se calculan solo con la copia que lleva la pieza |
+
+Los controles de redondeo, tablas y navegador (`src/controles_calidad.py` y `src/verificar_navegador.mjs`) salen de los fallos que el repaso diario encontró en piezas ya fusionadas. En una pieza ya publicada solo miran los párrafos y las tablas nuevos o cambiados. Una frase o una tabla que los dispara con motivo se declara en `"ignorar_calidad": [{"texto": "…", "motivo": "…"}]` (para una tabla, basta un trozo de su primera fila).
 
 El modelo de /encuestas/ se recalcula cada vez que entra una encuesta y se sobrescribe. Desde el 7-11-2026, `previsiones/src/motor.py` guarda cada versión en `previsiones/datos/publico/historico/AAAA-MM-DD-HHMM.json`, con la hora de Madrid en que se publicó (las anteriores, desde el 22-10, salen del historial de git con la hora de cada commit). Un día puede tener varias versiones: sin hora vale la última del día, y con `hora='HH:MM'` la que se veía a esa hora. Los días sin encuesta nueva vale la copia anterior, que es la que se veía en la web. En los cálculos de la declaración:
 
@@ -77,5 +82,5 @@ Si el texto cambia y una frase declarada deja de aparecer, la comprobación fall
 1. Escribe la pieza y constrúyela como siempre.
 2. `python3 src/verificar_piezas.py --plantilla <slug>` crea o completa la declaración con cada cifra pendiente; rellena el `calculo` o pásala a `externas` o `ignorar`.
 3. `python3 src/verificar_piezas.py --slug <slug>` hasta que salga en verde; abre el PR.
-4. El hilo editor revisa la pieza y la lista de cifras externas del informe de la Action.
+4. El hilo editor revisa la pieza con la [lista fija del editor](EDITOR.md), incluida la lista de cifras externas del informe de la Action, y la pega marcada en un comentario del PR.
 5. Con la Action en verde y el visto bueno del editor, Nacho fusiona.

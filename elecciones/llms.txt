@@ -49,7 +49,7 @@
 - [Barrios de Córdoba](https://mapaelectoral.es/municipio/cordoba/cordoba/#barrios): 7 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de A Coruña](https://mapaelectoral.es/municipio/a-coruna/a-coruna/#barrios): 22 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Granada](https://mapaelectoral.es/municipio/granada/granada/#barrios): 19 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
-- [Barrios de Donostia/San Sebastián](https://mapaelectoral.es/municipio/gipuzkoa/donostia-san-sebastian/#barrios): 16 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
+- [Barrios de Donostia/San Sebastián](https://mapaelectoral.es/municipio/gipuzkoa/donostia-san-sebastian/#barrios): 14 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Huesca](https://mapaelectoral.es/municipio/huesca/huesca/#barrios): 4 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de León](https://mapaelectoral.es/municipio/leon/leon/#barrios): 13 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.
 - [Barrios de Fuenlabrada](https://mapaelectoral.es/municipio/madrid/fuenlabrada/#barrios): 6 fichas de barrio con el voto de cada sección censal, renta, edad y población extranjera.

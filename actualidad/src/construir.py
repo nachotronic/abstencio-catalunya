@@ -3299,6 +3299,7 @@ PIEZAS += [
 # Antetítulo de cada pieza (portada, cabecera y «Sigue leyendo»): el tema o el gancho de actualidad de esa pieza,
 # no el nombre de la serie, que se repetiría en todas. Las que no tienen uno usan la comunidad o la serie.
 ANTETITULOS = {
+    'a-quien-beneficia-abstencion-29n': 'A quién beneficia la abstención',
     'me-ha-tocado-mesa-electoral-29n': 'La carta del sorteo',
     'quien-vota-barrios-renta-edad-inmigracion': 'Quién vota',
     'israel-elecciones-encuestas-knesset': 'Israel vota',
@@ -4184,6 +4185,19 @@ PIEZAS += [
                  ('https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/General_Electorates_2025/FeatureServer/0', 'Stats NZ / Comisión de Representación: contornos de las circunscripciones de 2025')],
         enlaces=[],
         lugar='Nueva Zelanda',
+    ),
+    dict(
+        slug='a-quien-beneficia-abstencion-29n', fecha='2026-11-08',
+        titulo='Si los barrios que menos votan fueran a las urnas como la media, cinco escaños de 2023 habrían cambiado de manos: cuatro, hacia el PSOE', serie='29n', figura=0,
+        descripcion='En la quinta parte del censo de cada provincia que menos votó en 2023, el PSOE sacó el 37,3 % y el PP el 27,4 %; en la que más votó, al revés. Una simulación con los resultados por mesa dice cuánto pesa eso en escaños. El voto en blanco, en cambio, no movió ninguno.',
+        compara='Las generales de julio de 2023 por sección censal: participación y voto por partido en cinco grupos de secciones de cada provincia, ordenadas de la que menos vota a la que más, y el reparto de escaños por D\'Hondt si las secciones por debajo de la media hubieran votado como la media de España.',
+        limites='Es una simulación mecánica, no una predicción: supone que quien no votó lo habría hecho como sus vecinos de sección que sí votaron, y la relación es entre barrios, no entre personas. El voto desde el extranjero (CERA) se deja como fue. Los grupos se hacen dentro de cada provincia para no comparar Cataluña con Castilla y León.',
+        calculo='Participación: votantes en las mesas (incluye el voto por correo) sobre el censo de residentes. Grupos: secciones de cada provincia ordenadas por participación y partidas en cinco tramos con el mismo censo. Voto válido: candidaturas más blancos. PSOE incluye al PSC y a sus federaciones; Sumar, a sus listas territoriales. Escaños: D\'Hondt por provincia con barrera del 3 % del voto válido, con el voto CERA; reproduce el reparto oficial de 2023.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.eldiario.es/politica/izquierda-gana-baja-abstencion_1_1621061.html', 'elDiario.es, «Cuando sube la participación, la izquierda (casi siempre) gana» (10-4-2019)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica del Régimen Electoral General, artículos 162 y 163 (reparto de escaños y barrera del 3 %)')],
+        enlaces=[],
+        lugar='España',
     ),
 ]
 
