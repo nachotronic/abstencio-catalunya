@@ -28,6 +28,11 @@ Qué comprueba en cada pieza que el PR crea o cambia:
    las sumas y diferencias de las tablas y, en el navegador a 390 px, los errores de JavaScript y el
    scroll horizontal (src/verificar_navegador.mjs). En una pieza ya publicada solo cuentan los párrafos
    y las tablas nuevos o cambiados.
+7. Modelo con fecha (7-11-2026). Si el texto cita «el modelo del 5 de noviembre», tiene que haber copia de ese
+   día o anterior en previsiones/datos/publico/historico/ (error si no). Las copias llevan fecha y hora de Madrid
+   (AAAA-MM-DD-HHMM); sin hora vale la última del día. Las cifras del modelo se recalculan con esa copia: en el
+   cálculo, modelo('2026-11-05') o provincia_modelo('2026-11-05', '46', 'PSOE'), con hora='HH:MM' si hace falta. Una cifra de una frase
+   que habla del modelo y se calcula solo con la copia que lleva la pieza da aviso.
 
 Uso, desde la raíz:
     python3 src/verificar_piezas.py                      # piezas cambiadas respecto a origin/main
@@ -38,6 +43,9 @@ Uso, desde la raíz:
 """
 import argparse, concurrent.futures, html, importlib.util, json, os, re, subprocess, sys, unicodedata
 import urllib.error, urllib.parse, urllib.request
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'previsiones', 'src'))
+import modelo_archivado   # noqa: E402
 
 sys.dont_write_bytecode = True   # no ensuciar los __pycache__ del repositorio al importar construir.py
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -245,7 +253,8 @@ def entorno(D):
                   set=set, list=list, dict=dict, tuple=tuple, zip=zip, range=range, enumerate=enumerate,
                   float=float, int=int, str=str, bool=bool, filter=filter, map=map, isinstance=isinstance,
                   mean=statistics.mean, median=statistics.median, True_=True)
-    return {'__builtins__': seguro, 'D': D, 'csv': leer_csv, 'json': leer_json, **D}
+    return {'__builtins__': seguro, 'D': D, 'csv': leer_csv, 'json': leer_json,
+            'modelo': modelo_archivado.modelo, 'provincia_modelo': modelo_archivado.provincia, **D}
 
 
 # ---------------------------------------------------------------- comprobaciones
@@ -510,6 +519,63 @@ def comprobar_internacional(inf, p, main, script, decl):
                 inf.error('Enlace o fuente española en una pieza internacional', h)
 
 
+MES_NUM = {m: i for i, m in enumerate(['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
+                                       'septiembre', 'octubre', 'noviembre', 'diciembre'], 1)}
+MES_NUM['setiembre'] = 9
+CITA_MODELO = [rf'modelo\b[^.]{{0,70}}?\bdel? (\d{{1,2}}) de ({MESES})\b',
+               r'modelo\b[^.]{0,70}?\bdel? (\d{1,2})-(\d{1,2})(?:-\d{2,4})?\b',
+               rf'media de (?:las )?encuestas\b[^.]{{0,40}}?\bdel? (\d{{1,2}}) de ({MESES})\b']
+
+
+def citas_modelo(texto, anio):
+    """Fechas AAAA-MM-DD de «el modelo del 5 de noviembre», «el modelo del 3-11», «la media de encuestas del 3 de noviembre»."""
+    out = []
+    for pat in CITA_MODELO:
+        for m in re.finditer(pat, texto, re.I):
+            d, mes = m.group(1), m.group(2)
+            mes = MES_NUM.get(mes.lower()) if not mes.isdigit() else int(mes)
+            if mes and 1 <= int(d) <= 31:
+                out.append((f'{anio}-{mes:02d}-{int(d):02d}', m.group(0)))
+    return out
+
+
+def comprobar_modelo(inf, p, main, decl, textos):
+    anio = (p.get('fecha') or '2026')[:4]
+    citadas = set()
+    for donde, t in textos:
+        for f, frase in citas_modelo(norm(t), anio):
+            citadas.add(f)
+            if not modelo_archivado.fecha_vigente(f):
+                inf.error('Modelo citado sin copia archivada', f'«{frase}» ({donde}): no hay copia del {f} ni anterior en previsiones/datos/publico/historico/')
+            elif modelo_archivado.fecha_vigente(f) != f:
+                inf.notas.append(f'◦ «{frase}»: ese día no hubo encuesta nueva; vale el modelo del {modelo_archivado.version_vigente(f)}')
+            else:
+                del_dia = [v for v in modelo_archivado.versiones() if v.startswith(f)]
+                if len(del_dia) > 1:
+                    inf.notas.append(f'◦ «{frase}»: el {f} hubo {len(del_dia)} versiones del modelo ({", ".join(v[11:13] + "." + v[13:] for v in del_dia)}); '
+                                     f'sin hora se usa la última. Si la pieza se escribió con otra, el cálculo lleva hora=\'HH:MM\'')
+    if not citadas:
+        return
+    cuerpo = norm(limpio(main))
+    solo_copia = []
+    for e in decl.get('cifras', []):
+        frase = norm(e.get('texto', ''))
+        calc = e.get('calculo', '') + e.get('condicion', '')
+        if not frase or 'modelo(' in calc:
+            continue
+        i = cuerpo.find(frase)
+        if i == -1:
+            continue
+        cerca = cuerpo[max(0, i - 80):i + len(frase) + 40].lower()
+        if re.search(r'\bmodelo\b|simulaciones|en la mediana', cerca):
+            solo_copia.append(f'«{e.get("texto")}» = {e.get("cifra")}')
+    if solo_copia:
+        f = sorted(citadas)[-1]
+        inf.aviso('Cifras del modelo comprobadas solo con la copia que lleva la pieza',
+                  f'{len(solo_copia)} cifras, como ' + '; '.join(solo_copia[:3]) +
+                  f". Recalcúlalas con el modelo archivado de la fecha que cita la pieza: modelo('{f}') o provincia_modelo('{f}', '<cód. provincia>', '<lista>').")
+
+
 def comprobar_actualizado(inf, p, pb, parrafos, parrafos_base):
     if pb is None:
         return
@@ -615,6 +681,7 @@ def principal():
         tablas_base = set() if todo else set(re.findall(r'<table\b.*?</table>', mb.group(0) if mb else '', re.S))
         main_tablas = re.sub(r'<table\b.*?</table>', lambda m: '' if m.group(0) in tablas_base else m.group(0), main, flags=re.S)
         controles_calidad.comprobar_tablas(inf, main_tablas, decl)
+        comprobar_modelo(inf, p, main, decl, [('titular', p['titulo']), ('entradilla', p['descripcion'])] + bloques(main))
         rutas[slug] = os.path.relpath(ruta_pag, RAIZ)
         comprobar_enlaces_e_imagenes(inf, p, pagina, ruta_pag, externos)
         if p.get('serie') == 'internacional':

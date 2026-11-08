@@ -11,7 +11,8 @@ Estimación publicable para /encuestas/ (solo escenario base, en previsiones/dat
 Escribe previsiones/datos/<VERSION>/: meta.json, base.json, provincias.json y un fichero por escenario.
 """
 import json, math, pathlib, sys
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 import numpy as np
 
@@ -412,7 +413,7 @@ def main_encuestas(fich_media, publico=False):
              f"típico de la media es de unos {c_err * math.sqrt(30):.0f} puntos para un partido del 30 %.") if publico else \
         'Estimación interna sin validar. No publicar sin el visto bueno de Nacho.'
     escrito('meta.json', {
-        'version': VERSION, 'ficticio': False, 'interno': not publico, 'generado': date.today().isoformat(), 'semilla': SEMILLA,
+        'version': VERSION, 'ficticio': False, 'interno': not publico, 'generado': ahora_madrid().date().isoformat(), 'semilla': SEMILLA,
         'simulaciones': N_SIM, 'aviso': aviso, 'metodo': '/encuestas/metodo-modelo.html',
         'media_encuestas': m['media'], 'encuestas_regionales': med_reg, 'beta_regional': BETA_REGIONAL, 'c_error': c_err, 'dias_a_eleccion': dias, 'sigma_nac': dict(zip(LISTAS, np.round(SIGMA_NAC, 3).tolist())),
         'voto_central': dict(zip(LISTAS, np.round(nac * 100, 2).tolist())),
@@ -423,7 +424,30 @@ def main_encuestas(fich_media, publico=False):
                    'circunscripciones': [{'cod': c[0], 'nombre': c[1], 'provincia': c[2], 'senadores': c[3], 'votos_elector': c[4]}
                                          for c in circ_sen]},
         'escenarios': [{'id': e[0], 'titulo': e[1], 'supuesto': e[2]} for e in ESCENARIOS if not publico or e[0] == 'base']})
+    if publico:
+        # copia con fecha y hora de Madrid: las piezas citan «el modelo del 5 de noviembre» y «Verificar piezas» lo
+        # recalcula con ella (previsiones/src/modelo_archivado.py). Un día puede tener varias versiones.
+        meta = json.loads((carpeta / 'meta.json').read_text())
+        hist = carpeta / 'historico'
+        hist.mkdir(exist_ok=True)
+        cuando = ahora_madrid().strftime('%Y-%m-%d-%H%M')
+        escenario = json.loads((carpeta / 'escenario-base.json').read_text())
+        previas = sorted(hist.glob('????-??-??-????.json'))
+        if previas and json.loads(previas[-1].read_text())['escenario'] == escenario:
+            print('Modelo igual que la última copia archivada', previas[-1].name, '(no se archiva otra)')
+            print('Escrito en', carpeta)
+            return
+        m_hist = {k: meta[k] for k in ('version', 'generado', 'simulaciones', 'aviso', 'media_encuestas')}
+        m_hist['publicado'] = cuando
+        (hist / f"{cuando}.json").write_text(json.dumps(
+            {'meta': m_hist, 'escenario': escenario},
+            ensure_ascii=False, separators=(',', ':')))
     print('Escrito en', carpeta)
+
+
+def ahora_madrid():
+    # la Action corre en UTC: a las 23.07 UTC ya es el día siguiente en Madrid
+    return datetime.now(ZoneInfo('Europe/Madrid'))
 
 
 def main():
@@ -441,7 +465,7 @@ def main():
         print(cod, {l['lista']: l['escanos'][2] for l in r['listas'] if l['escanos'][2]})
     escrito('observado-2023.json', observado_2023())
     escrito('meta.json', {
-        'version': VERSION, 'ficticio': True, 'generado': date.today().isoformat(), 'semilla': SEMILLA, 'simulaciones': N_SIM,
+        'version': VERSION, 'ficticio': True, 'generado': ahora_madrid().date().isoformat(), 'semilla': SEMILLA, 'simulaciones': N_SIM,
         'aviso': 'Datos ficticios para diseñar la web. No son una estimación ni una previsión electoral.',
         'listas': LISTAS, 'provincias': NOMBRES, 'ccaa': CCAA, 'escanos': ESCANOS_2026, 'mayoria': MAYORIA,
         'senado': {'elegidos': sum(c[3] for c in circ_sen), 'designados': sum(DESIGNADOS.values()),
