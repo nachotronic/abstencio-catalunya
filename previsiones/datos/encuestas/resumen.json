@@ -1,7 +1,7 @@
 {
- "descargado": "2026-11-08T13:23Z",
+ "descargado": "2026-11-08T22:03Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1066,
+ "encuestas_espana": 1068,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
@@ -10,9 +10,9 @@
   "cliente": "La Voz de Galicia"
  },
  "siglas_sin_equivalencia": {
-  "UPC": 3,
+  "UPC": 4,
+  "D21": 3,
   "Autonómicas - CUP": 2,
-  "D21": 2,
   "JxSí": 1,
   "CSQP": 1,
   "CeC": 1,
@@ -20,8 +20,8 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 596,
-  "ultima_fin_campo": "2026-11-06",
+  "encuestas": 598,
+  "ultima_fin_campo": "2026-11-08",
   "faltan_en_electografica_120_dias": 17
  }
 }
