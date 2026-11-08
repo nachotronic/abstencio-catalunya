@@ -13,6 +13,7 @@ const TIPOS = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '
   '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.webp': 'image/webp', '.geojson': 'application/json', '.topojson': 'application/json', '.woff2': 'font/woff2', '.csv': 'text/csv' };
 // Errores de fuera del sitio que no dicen nada de la pieza (la analítica de Cloudflare no responde en local)
+const CDN = /^https:\/\/(unpkg\.com|cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com)\//;
 const AJENOS = /cloudflareinsights|beacon\.min\.js|static\.cloudflareinsights|googletagmanager|net::ERR_(?:NAME_NOT_RESOLVED|INTERNET_DISCONNECTED|FAILED|BLOCKED|CONNECTION)|Failed to load resource|CORS policy/i;
 
 const servidor = http.createServer((req, res) => {
@@ -34,8 +35,9 @@ try {
     const d = { errores: [], scroll: 0 };
     salida.piezas[ruta] = d;
     const ctx = await nav.newContext({ viewport: { width: +ancho, height: 800 }, deviceScaleFactor: 1 });
-    // fuera de la red: solo se sirve el repositorio (las fuentes y la analítica no cuentan)
-    await ctx.route(u => !u.href.startsWith(base) && !u.href.startsWith('data:'), r => r.abort());
+    // solo se sirve el repositorio y las bibliotecas de los CDN que usa el sitio (deck.gl, scrollama...): sin ellas,
+    // «deck is not defined» sería un falso error. Las fuentes, la analítica y lo demás de fuera no cuentan.
+    await ctx.route(u => !u.href.startsWith(base) && !u.href.startsWith('data:') && !CDN.test(u.href), r => r.abort());
     const pag = await ctx.newPage();
     pag.on('pageerror', e => d.errores.push(String(e.message || e).slice(0, 300)));
     pag.on('console', m => { if (m.type() === 'error' && !AJENOS.test(m.text())) d.errores.push(m.text().slice(0, 300)); });
