@@ -17,14 +17,6 @@
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/comunitat-valenciana-escanos-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-05</news:publication_date>
-      <news:title>PP y Vox pasarían de 18 a 20 de los 33 escaños valencianos con la media de encuestas; en Castellón, dos se los disputan cuatro candidatos</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/tres-semanas-29n-la-semana-en-el-mapa/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -46,6 +38,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-07</news:publication_date>
       <news:title>Los laboristas ganan el voto de partido por 3.650 votos, pero la coalición de Luxon suma 67 de los 131 escaños en el recuento provisional de Nueva Zelanda</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/atletico-barca-metropolitano-camp-nou-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-08</news:publication_date>
+      <news:title>Del Calderón al Metropolitano: el Atlético se mudó a un distrito con un tercio menos de renta, siete puntos menos de participación y donde el PSOE gana en 57 de las 112 secciones</news:title>
     </news:news>
   </url>
 </urlset>
