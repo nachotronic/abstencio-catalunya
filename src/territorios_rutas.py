@@ -308,8 +308,9 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
+INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019')}   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
 EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
-                 'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014'},   # Manzanares (Ciudad Real) y Amposta (Tarragona) salen del río y del barrio madrileño
+                 'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014', '10901'},   # Manzanares (Ciudad Real), Amposta (Tarragona) y Rosalejo (Cáceres) salen del río y de los barrios madrileños de Amposta y Rosas
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla
                  'cinturon-rojo-madrid-29n': {'31062', '11028'},   # Cabanillas y Puerto Real salen de «Cabanillas de la Sierra» y «Rozas de Puerto Real» en el mapa
                  'puente-valladolid-segundo-escano-29n': {'45177', '14001', '45200'},   # lugares del accidente, no de la pieza
@@ -394,6 +395,10 @@ def municipios_citados(html, slug_pieza=None):
     if propio and propio in NOMBRES:
         cuenta[propio] = cuenta.get(propio, 0) + 100   # la ciudad de la pieza, siempre la primera
         primero.setdefault(propio, -1)
+    for i, c in enumerate(INCLUIR_PIEZA.get(slug_pieza, ())):   # las ciudades de la pieza, delante, aunque el texto las nombre de forma que no se detecta
+        if c in NOMBRES:
+            cuenta[c] = cuenta.get(c, 0) + 100
+            primero[c] = -10 + i
     return sorted(cuenta.items(), key=lambda x: (-x[1], primero[x[0]]))
 
 
