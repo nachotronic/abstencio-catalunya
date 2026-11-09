@@ -1894,10 +1894,23 @@ def tema_calle():
     h.append('<style>.buscacalle{display:flex;flex-wrap:wrap;gap:8px;margin:1.2rem 0 1.6rem}.buscacalle input{flex:1 1 16rem;font:inherit;padding:.6rem .8rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg)}'
              '.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.buscacalle button{font:600 1rem var(--sans);padding:.6rem 1.1rem;border:0;border-radius:6px;background:var(--fg);color:var(--bg);cursor:pointer}</style>'
              f'<form class="buscacalle" action="{raiz}#mapa" method="get" role="search"><label class="vh" for="q-calle">Calle y número, municipio</label>'
-             '<input id="q-calle" name="q" required placeholder="Calle Mayor 3, Soria" autocomplete="street-address"><button type="submit">Ver mi calle en el mapa</button></form>')
+             '<input id="q-calle" name="q" required placeholder="Calle Mayor 3, Soria" autocomplete="off" list="sug-calle"><datalist id="sug-calle"></datalist><button type="submit">Ver mi calle en el mapa</button></form>')
     h.append(f'<p class="resumen">{tipo("Dato")}El mapa tiene el voto de las generales en las {num(nsec)} secciones censales de España, la unidad más pequeña con resultado propio. '
              'Escribe tu calle y número y te lleva a la tuya: partido más votado, voto de cada candidatura con su nombre real y participación, y también su renta, su edad media y su población extranjera.</p>')
-    h.append(foto_html(ruta, raiz))
+    # El mapa, en la propia página (el de insertar/, que en móvil carga municipios-ligero). El buscador lo mueve a la dirección;
+    # sin JavaScript, el formulario sigue llevando a la portada. Sugerencias de calles: CartoCiudad (IGN), como el buscador del mapa.
+    h.append('<style>.mapa-calle{display:block;width:100%;height:min(72vh,520px);border:1px solid var(--rule);border-radius:6px;margin:0 0 1.4rem;background:var(--grid)}</style>'
+             f'<iframe id="mapa-calle" class="mapa-calle" src="{raiz}insertar/" data-src="{raiz}insertar/" title="Mapa electoral de España calle a calle, sección censal a sección censal"></iframe>'
+             '<script>(()=>{const f=document.querySelector(".buscacalle"),i=document.getElementById("q-calle"),dl=document.getElementById("sug-calle"),fr=document.getElementById("mapa-calle");'
+             'const CC="https://www.cartociudad.es/geocoder/api/geocoder/candidates?limit=8&no_process=municipio,poblacion,provincia,comunidad%20autonoma,toponimo,expendeduria,ngbe,codpost,refcatastral&q=";'
+             'const PEQ=new Set(["de","del","la","las","el","los","i","y","e","a","en","dels","les","els","do","da","dos","das"]);'
+             'const tit=t=>t.toLowerCase().replace(/[^\\s/-]+/g,(w,k)=>k&&PEQ.has(w.replace(/[()]/g,""))?w:w.replace(/^(\\(?)(d\'|l\')?(.)/,(m,p,a,b)=>p+(a||"")+b.toUpperCase()));'
+             'const esc=t=>t.replace(/[&<>"]/g,c=>"&#"+c.charCodeAt(0)+";");let tq,nq=0;'
+             'i.addEventListener("input",()=>{const v=i.value.trim();clearTimeout(tq);if(v.length<4)return;tq=setTimeout(async()=>{const k=++nq;try{'
+             'const cs=(await (await fetch(CC+encodeURIComponent(v))).json()).filter(c=>(c.type==="portal"||c.type==="callejero")&&c.muniCode);if(k!==nq)return;'
+             'dl.innerHTML=cs.map(c=>{const[a,m]=c.address.split(/,\\s*/);return\'<option value="\'+esc(tit(a)+", "+(m||c.muni))+\'">\'}).join("")}catch(e){}},300)});'
+             'f.addEventListener("submit",e=>{const v=i.value.trim();if(!v||!fr)return;e.preventDefault();fr.src=fr.dataset.src+"?q="+encodeURIComponent(v);'
+             'fr.scrollIntoView({behavior:"smooth",block:"center"})})})();</script>')
     filas = []
     for c, v in sorted(fichas.items(), key=lambda kv: -len(kv[1])):
         filas.append([f'<a href="{raiz}{CIUDADES[c]}#barrios">{escape(_nom(c))}</a>', num(len(v))])
@@ -2040,19 +2053,42 @@ def svg_deciles(q, fams):
 
 def tema_seccion(resumen):
     ruta = 'elecciones/mapa-electoral-seccion-censal/'
-    titulo = 'Mapa electoral de España por sección censal: resultados calle a calle y barrio a barrio desde 2004'
-    desc = ('Qué es una sección censal y cómo consultar los resultados de las generales, municipales y europeas en las 36.462 secciones de España, '
-            'con renta, edad y población extranjera. Datos abiertos.')
+    # Intención de búsqueda: «voto por secciones», «resultados por sección censal», «qué votó mi sección»
+    titulo = 'Voto por secciones censales en España: mapa de resultados sección a sección desde 2004'
+    desc = ('Mapa del voto por secciones censales: resultados de las generales, municipales y europeas en las 36.462 secciones de España. '
+            'Busca tu calle y mira qué votó tu sección, con su renta, edad y población extranjera. Datos abiertos.')
     y = T.ULTIMA
     sec = T.SEC
     gana = sec[[c for c in T.FAM if c != 'OTROS']].idxmax(axis=1)
     cuenta = gana.value_counts()
-    h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, ESPANA), 2, 'Mapa por sección censal', imagen_og(ruta))]
+    nsec = sec.tract_code.astype(str).str[:5].value_counts()
+    grandes = [c for c in nsec.index if c in CIUDADES][:12]
+    qs = [('¿Dónde puedo ver el voto por secciones censales?',
+           f'En el mapa de la portada de mapaelectoral.es: al acercarte a cualquier municipio aparecen sus secciones sobre el callejero, coloreadas por el partido más votado, '
+           f'y al pulsar en una se abre su resultado. Están las {num(len(sec))} secciones de España.'),
+          ('¿Cómo sé cuál es mi sección censal?',
+           'Escribe tu calle y número en el buscador de esta página: el mapa se acerca a tu portal y marca la sección a la que pertenece. '
+           'La sección también figura en la tarjeta censal que envía la Oficina del Censo Electoral antes de cada elección.'),
+          ('¿Qué votó mi sección?',
+           'Al pulsar en tu sección, su ficha muestra el voto de cada candidatura con su nombre real, el partido más votado y la participación, '
+           'y con el selector de elección se ve cómo ha cambiado desde 2004.'),
+          ('¿Qué elecciones hay por sección censal?',
+           'Las generales al Congreso desde 2004, las municipales desde 2011 y las europeas desde 2004. Las anteriores se ven por municipio, desde 1977.'),
+          ('¿Cuándo estará el voto por secciones del 29N?',
+           'La noche del 29 de noviembre el mapa mostrará el recuento en directo. El voto de cada sección censal llegará cuando el Ministerio del Interior publique los resultados por mesa.'),
+          ('¿Se pueden descargar los resultados por sección?',
+           f'Sí, en CSV y con licencia <a href="{LICENCIA}">CC BY 4.0</a>, desde la <a href="{RAIZ_REL}generales-2026/metodologia.html#descargas">metodología del mapa</a>.')]
+    faq_html, faq_ld = faq(qs)
+    h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, ESPANA), faq_ld], 2, 'Voto por secciones', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
-    h.append('<p class="kicker">Tema · Datos abiertos</p><h1 data-miga="Mapa por sección censal">Mapa electoral de España por sección censal</h1>')
-    h.append('<p class="subtitulo">Resultados de las elecciones barrio a barrio en las 36.462 secciones censales de España, cruzados con renta, edad y población extranjera</p>')
+    h.append('<p class="kicker">Tema · Datos abiertos</p><h1 data-miga="Voto por secciones">Voto por secciones censales: el mapa electoral de España sección a sección</h1>')
+    h.append(f'<p class="subtitulo">Resultados de las elecciones en las {num(len(sec))} secciones censales de España, barrio a barrio, cruzados con renta, edad y población extranjera</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append('<style>.buscacalle{display:flex;flex-wrap:wrap;gap:8px;margin:1.2rem 0 1.6rem}.buscacalle input{flex:1 1 16rem;font:inherit;padding:.6rem .8rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg)}'
+             '.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.buscacalle button{font:600 1rem var(--sans);padding:.6rem 1.1rem;border:0;border-radius:6px;background:var(--fg);color:var(--bg);cursor:pointer}</style>'
+             f'<form class="buscacalle" action="{raiz}#mapa" method="get" role="search"><label class="vh" for="q-seccion">Calle y número, municipio</label>'
+             '<input id="q-seccion" name="q" required placeholder="Calle Mayor 3, Soria" autocomplete="street-address"><button type="submit">Ver mi sección en el mapa</button></form>')
     h.append(foto_html(ruta, raiz))
     top = cuenta.index[:4]
     h.append(f'<p class="resumen">{tipo("Dato")}En las generales de 2023 el PP fue la lista más votada en {num(cuenta.get("PP", 0))} de las {num(len(sec))} secciones censales de España; '
@@ -2076,9 +2112,15 @@ def tema_seccion(resumen):
     filas = [fila_resumen(f'<a href="../{s}/">{escape(i["nombre"])}</a>', i['r']) for s, i in resumen.items()]
     h.append('<h2>Por comunidad y provincia</h2>' + tabla('Generales de 2023 por comunidad autónoma', ['Comunidad', 'Participación', 'Más votado', 'Segundo'], filas)
              + '<p>Cada comunidad tiene su página con sus provincias, la serie desde 1977 y el voto por renta de sus secciones: <a href="../">elecciones por comunidad y provincia</a>.</p>')
+    h.append('<h2>Voto por secciones en las grandes ciudades</h2>'
+             + p_('Dato', 'Cada municipio tiene su ficha con el resultado de las generales y el voto de sus secciones censales. Estas son las ciudades con más secciones:')
+             + tabla('Ciudades con más secciones censales', ['Ciudad', 'Secciones'],
+                     [[f'<a href="{raiz}{CIUDADES[c]}">{escape(_nom(c))}</a>', num(nsec[c])] for c in grandes], num_desde=1)
+             + f'<p class="leyenda">Todos los municipios, en el <a href="{raiz}municipio/">índice de municipios</a>; los barrios de las grandes ciudades, en el <a href="{raiz}municipio/barrios/">índice de barrios</a>.</p>')
     h.append('<h2>Piezas hechas con las secciones censales</h2>' + lista_piezas(TEMA_SECCION, 2)
              + f'<ul class="sigue"><li><a href="../voto-y-renta-por-barrios/"><span class="kicker">Tema</span><b>Voto y renta por barrios: cómo vota cada sección según su renta</b></a></li>'
                f'<li><a href="{raiz}abstencion.html"><span class="kicker">Reportaje</span><b>¿Quién no vota en Cataluña? La abstención en las 5.115 secciones censales catalanas</b></a></li></ul>')
+    h.append(faq_html)
     h.append('<h2>Datos abiertos</h2>'
              f'<p>Todas las tablas se descargan en CSV con licencia <a href="{LICENCIA}">CC BY 4.0</a>: se pueden reutilizar citando la fuente. '
              f'Columnas, fuentes y límites, en la <a href="{raiz}generales-2026/metodologia.html">metodología del mapa</a>; el código está en <a href="{atlas.REPO}">GitHub</a>.</p>')
