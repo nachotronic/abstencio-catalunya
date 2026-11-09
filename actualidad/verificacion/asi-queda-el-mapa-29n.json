@@ -63,6 +63,36 @@
    "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 332; Más País, 4)",
    "cifra": "4",
    "calculo": "D['MP19']"
+  },
+  {
+   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
+   "cifra": "40",
+   "calculo": "D['PROV']['PP']"
+  },
+  {
+   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
+   "cifra": "52",
+   "calculo": "sum(D['PROV'].values())"
+  },
+  {
+   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
+   "cifra": "18.407",
+   "calculo": "D['S23']['PP']"
+  },
+  {
+   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
+   "cifra": "10",
+   "calculo": "D['PROV']['PSOE']"
+  },
+  {
+   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
+   "cifra": "16.073",
+   "calculo": "D['S23']['PSOE']"
+  },
+  {
+   "texto": "En 2019 el PSOE ganaba en 19.699 secciones.",
+   "cifra": "19.699",
+   "calculo": "D['S19']['PSOE']"
   }
  ],
  "externas": [],
