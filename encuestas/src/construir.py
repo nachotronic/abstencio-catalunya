@@ -302,6 +302,7 @@ def lo_ultimo(desde23, casas):
     validas = [e for e in desde23 if not e['reest']]
     if not validas:
         return ''
+    graficos = []
     tope = (date.fromisoformat(pub(validas[0])) - timedelta(days=2)).isoformat()
     con_pagina = {r for r, *_ in casas}
     frases = []
@@ -324,11 +325,62 @@ def lo_ultimo(desde23, casas):
                     mov.append(f'{NOMBRE[k] if k != "VOX" else "Vox"} {"se queda igual" if dv == 0 else ("sube " if dv > 0 else "baja ") + (f"{abs(dv):g}".replace(".", ",")) + (" punto" if abs(dv) == 1 else " puntos")}')
             if mov:
                 cambio = f' Frente a su encuesta anterior, del {fecha_larga(pub(ant))}: ' + ', '.join(mov) + '.'
+        graficos.append((e, ant, f'{html.escape(e["casa"])}' + (f' · {html.escape(e["medio"])}' if e['medio'] else '') + f' · {dia(pub(e))}'))
         mismo = i and pub(e) == pub(validas[0])
         frases.append((f'La más reciente es la de {quien}, publicada el {cuando}' if i == 0 else
                        (('Y la de ' if i == 2 else 'Ese mismo día salió también la de ') if mismo else f'El {cuando} salió la de ') + quien)
                       + f': {cifras}{esc}{fuente}.{cambio}')
-    return '<p data-tipo="dato" class="ultimo"><b>Lo último.</b> ' + ' '.join(frases) + '</p>'
+    return ('<p data-tipo="dato" class="ultimo"><b>Lo último.</b> ' + ' '.join(frases) + '</p>\n'
+            + graficos_ultimo(graficos))
+
+
+# Avisos para el gráfico de «Lo último» cuando la comparación con la encuesta anterior no es homogénea.
+# Clave: (clave de la encuestadora, fecha de publicación). Cada uno, comprobado contra la fuente.
+AVISOS_ULTIMO = {
+    ('40db', '2026-11-09'): 'El 5,0 % de Sumar / Frente Amplio suma Frente Amplio (3,6), Compromís-Front Valencià (1,1) y '
+                            'Unidad del Pueblo Canario (0,3), que 40dB da por separado desde esta encuesta; en la anterior '
+                            'daba solo Sumar (5,3 %). El cambio de Sumar es, por tanto, aproximado.',
+}
+
+
+def graficos_ultimo(graficos):
+    """Barras de las encuestas de «Lo último», una por encuestadora, con el cambio frente a su encuesta anterior
+    (raya fina: valor anterior). HTML y CSS sin JavaScript; colores de partido con su variante oscura."""
+    if not graficos:
+        return ''
+    tope = max(e['voto'][k] for e, *_ in graficos for k, *_ in PRINCIPALES if k in e['voto'])
+    tope = max(tope, *[a['voto'][k] for _, a, _ in graficos if a for k, *_ in PRINCIPALES if k in a['voto']])
+    escala = lambda v: f'{v / tope * 100:.1f}%'
+    usados = [p for p in PRINCIPALES if any(p[0] in e['voto'] for e, *_ in graficos)]
+    leyenda = ''.join(f'<span><i class="sw" style="--c:{c};--cd:{cd}"></i>{n}</span>' for _, n, c, cd in usados)
+    bloques, avisos = [], []
+    for e, ant, titulo in graficos:
+        filas = []
+        for k, n, c, cd in usados:
+            if k not in e['voto']:
+                continue
+            v = e['voto'][k]
+            prev = ant['voto'].get(k) if ant else None
+            raya = f'<s style="left:{escala(prev)}" title="Anterior: {pc(prev)}"></s>' if prev is not None else ''
+            if prev is None:
+                dif = ''
+            else:
+                dv = round(v - prev, 1)
+                dif = '=' if dv == 0 else ('+' if dv > 0 else '−') + f'{abs(dv):.1f}'.replace('.', ',')
+            aviso = AVISOS_ULTIMO.get((clave(e['casa']), e.get('publicado') or e['fin'])) if k == 'SUMAR' else None
+            if aviso:
+                avisos.append(f'<sup>*</sup> {html.escape(e["casa"])}: {html.escape(aviso)}')
+            corto = 'Sumar' if k == 'SUMAR' else n
+            filas.append(f'<div class="bu-f"><span class="bu-n">{corto}{"<sup>*</sup>" if aviso else ""}</span>'
+                         f'<span class="bu-b"><i style="width:{escala(v)};--c:{c};--cd:{cd}"></i>{raya}</span>'
+                         f'<span class="bu-v">{f"{v:.1f}".replace(".", ",")}</span><span class="bu-d">{dif}</span></div>')
+        sub = (f'Cambio frente a su encuesta del {dia(ant.get("publicado") or ant["fin"])}' if ant else 'Sin encuesta anterior de esta casa')
+        bloques.append(f'<div class="bu"><p class="bu-t">{titulo}</p><p class="bu-s">{sub}</p>{"".join(filas)}</div>')
+    return (f'<figure class="ultimo-graf"><figcaption><span class="t">Las últimas encuestas, partido a partido</span>'
+            f'<span class="s">Voto estimado (%) en cada una. La raya fina marca lo que daba la encuesta anterior de la misma '
+            f'encuestadora; a la derecha, la diferencia en puntos.</span></figcaption>'
+            f'<div class="legend">{leyenda}</div><div class="bu-g">{"".join(bloques)}</div>'
+            + (f'<p class="src">{"<br>".join(avisos)}</p>' if avisos else '') + '</figure>')
 
 
 def fila_tabla(e):
@@ -387,6 +439,16 @@ a{color:var(--acc)}
 @media (max-width:520px){.prob{grid-template-columns:1fr}}
 .propio{font-family:var(--ui);font-size:.95rem;background:var(--grid);border-left:3px solid var(--acc);padding:.6rem .8rem;border-radius:4px}
 @media (max-width:520px){body{font-size:17px}table{font-size:.82rem}}
+.ultimo-graf .sw{background:var(--c)}
+.bu-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:1rem 1.4rem;margin-top:.8rem}
+.bu-t{font-weight:600;margin:0;line-height:1.3}.bu-s{color:var(--muted);font-size:.82rem;margin:0 0 .4rem}
+.bu-f{display:grid;grid-template-columns:4.2rem minmax(0,1fr) 2.3rem 2.7rem;align-items:center;gap:.4rem;font-size:.85rem;margin:.22rem 0;font-variant-numeric:tabular-nums}
+.bu-n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bu-v{text-align:right;font-weight:600}.bu-d{text-align:right;color:var(--muted)}
+.bu-b{position:relative;height:14px;background:var(--grid);border-radius:2px}
+.bu-b i{position:absolute;left:0;top:0;bottom:0;background:var(--c);border-radius:2px}
+.bu-b s{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--fg)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bu-b i,:root:not([data-theme="light"]) .ultimo-graf .sw{background:var(--cd)}}
+:root[data-theme="dark"] .bu-b i,:root[data-theme="dark"] .ultimo-graf .sw{background:var(--cd)}
 </style>"""
 
 SCRIPT = """<script>
