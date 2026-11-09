@@ -1,0 +1,283 @@
+{
+ "pieza": "encuestas-40db-psoe-podemos-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "40dB da al PSOE el 29,9 % y al PP el 31,9 %.",
+   "cifra": "29,9",
+   "calculo": "D['S40'][-1]['PSOE']"
+  },
+  {
+   "texto": "PSOE el 29,9 % y al PP el 31,9 %. Las otras tres encuestas",
+   "cifra": "31,9",
+   "calculo": "D['S40'][-1]['PP']"
+  },
+  {
+   "texto": "al PP el 31,9 %. Las otras tres encuestas publicadas",
+   "cifra": "tres",
+   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09' and c[0]!='40dB'])"
+  },
+  {
+   "texto": "publicadas este lunes ven entre seis y ocho puntos de distancia.",
+   "cifra": "seis",
+   "calculo": "round(min(c[5] for c in D['CASAS'] if c[2]=='2026-11-09' and c[0]!='40dB'))"
+  },
+  {
+   "texto": "este lunes ven entre seis y ocho puntos de distancia.",
+   "cifra": "ocho",
+   "calculo": "round(max(c[5] for c in D['CASAS'] if c[2]=='2026-11-09' and c[0]!='40dB'))"
+  },
+  {
+   "texto": "distancia. Podemos cae al 1,2 %, su mínimo en esta",
+   "cifra": "1,2",
+   "calculo": "D['S40'][-1]['POD']"
+  },
+  {
+   "texto": "SER, publicada este lunes: 29,9 % frente al 31,9 %.",
+   "cifra": "29,9",
+   "calculo": "D['S40'][-1]['PSOE']"
+  },
+  {
+   "texto": "este lunes: 29,9 % frente al 31,9 %. Hace un mes, en la",
+   "cifra": "31,9",
+   "calculo": "D['S40'][-1]['PP']"
+  },
+  {
+   "texto": "octubre, el PSOE tenía el 28,1 %: sube 1,8 puntos,",
+   "cifra": "28,1",
+   "calculo": "D['S40'][-2]['PSOE']"
+  },
+  {
+   "texto": "PSOE tenía el 28,1 %: sube 1,8 puntos, y el PP repite.",
+   "cifra": "1,8",
+   "calculo": "D['S40'][-1]['PSOE']-D['S40'][-2]['PSOE']"
+  },
+  {
+   "texto": "2024, cuando también marcó el 29,9 %, y la distancia más",
+   "cifra": "29,9",
+   "calculo": "D['S40'][-1]['PSOE'] if D['PSOE_ANT'].startswith('2024-12') else None"
+  },
+  {
+   "texto": "octubre de 2025, cuando fue de 1,1 puntos. Vox baja al",
+   "cifra": "1,1",
+   "calculo": "D['DIF_ANT']['dif']"
+  },
+  {
+   "texto": "de 1,1 puntos. Vox baja al 18,0 %. El trabajo de campo",
+   "cifra": "18,0",
+   "calculo": "D['S40'][-1]['VOX']"
+  },
+  {
+   "texto": "En escaños, 40dB da al PP 129, al PSOE 119 y a Vox",
+   "cifra": "129",
+   "calculo": "D['ESC']['PP']"
+  },
+  {
+   "texto": "40dB da al PP 129, al PSOE 119 y a Vox 61. PP y Vox",
+   "cifra": "119",
+   "calculo": "D['ESC']['PSOE']"
+  },
+  {
+   "texto": "129, al PSOE 119 y a Vox 61. PP y Vox suman 190,",
+   "cifra": "61",
+   "calculo": "D['ESC']['Vox']"
+  },
+  {
+   "texto": "a Vox 61. PP y Vox suman 190, por encima de la mayoría",
+   "cifra": "190",
+   "calculo": "D['ESC']['PP']+D['ESC']['Vox']"
+  },
+  {
+   "texto": "mayoría absoluta de 176, pero 8 menos que hace un mes,",
+   "cifra": "8",
+   "calculo": "D['ESC_OCT']['PP']+D['ESC_OCT']['Vox']-D['ESC']['PP']-D['ESC']['Vox']"
+  },
+  {
+   "texto": "hace un mes, cuando sumaban 198. El PSOE gana siete",
+   "cifra": "198",
+   "calculo": "D['ESC_OCT']['PP']+D['ESC_OCT']['Vox']"
+  },
+  {
+   "texto": "sumaban 198. El PSOE gana siete diputados respecto a",
+   "cifra": "siete",
+   "calculo": "D['ESC']['PSOE']-D['ESC_OCT']['PSOE']"
+  },
+  {
+   "texto": "lunes se han publicado otras tres encuestas con trabajo",
+   "cifra": "tres",
+   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09' and c[0]!='40dB'])"
+  },
+  {
+   "texto": "de la misma semana, y las tres dejan al PP mucho más",
+   "cifra": "tres",
+   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09' and c[0]!='40dB'])"
+  },
+  {
+   "texto": "más lejos: GAD3 para ABC, a 6,0 puntos; NC Report para",
+   "cifra": "6,0",
+   "calculo": "[c for c in D['CASAS'] if c[0]=='GAD3'][0][5]"
+  },
+  {
+   "texto": "NC Report para La Razón, a 7,4, y Data10 para OKDiario,",
+   "cifra": "7,4",
+   "calculo": "[c for c in D['CASAS'] if c[0]=='NC Report'][0][5]"
+  },
+  {
+   "texto": "y Data10 para OKDiario, a 8,0. De las 17 empresas",
+   "cifra": "8,0",
+   "calculo": "[c for c in D['CASAS'] if c[0]=='Data10'][0][5]"
+  },
+  {
+   "texto": "para OKDiario, a 8,0. De las 17 empresas con una encuesta",
+   "cifra": "17",
+   "calculo": "len(D['CASAS'])"
+  },
+  {
+   "texto": "desde el 10 de octubre, solo tres ponen al PSOE más cerca",
+   "cifra": "tres",
+   "calculo": "len(D['MAS_CERCA'])"
+  },
+  {
+   "texto": "More in Common, con el PP 0,7 puntos por delante.",
+   "cifra": "0,7",
+   "calculo": "[c for c in D['CASAS'] if c[0]=='More in Common'][0][5]"
+  },
+  {
+   "texto": "noviembre, deja al PP en el 31,1 % y al PSOE en el 27,1",
+   "cifra": "31,1",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "el 31,1 % y al PSOE en el 27,1 %: 4,0 puntos de distancia,",
+   "cifra": "27,1",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "% y al PSOE en el 27,1 %: 4,0 puntos de distancia,",
+   "cifra": "4,0",
+   "calculo": "D['MED']['PP']-D['MED']['PSOE']"
+  },
+  {
+   "texto": "del Frente Amplio: baja al 1,2 %, 1,1 puntos menos",
+   "cifra": "1,2",
+   "calculo": "D['S40'][-1]['POD']"
+  },
+  {
+   "texto": "Frente Amplio: baja al 1,2 %, 1,1 puntos menos que en",
+   "cifra": "1,1",
+   "calculo": "D['S40'][-2]['POD']-D['S40'][-1]['POD']"
+  },
+  {
+   "texto": "Hasta ahora, su mínimo era el 2,3 %. Con ese porcentaje,",
+   "cifra": "2,3",
+   "calculo": "D['POD_MIN_ANT']"
+  },
+  {
+   "texto": "del Pueblo Canario, saca el 5,0 % y 10 escaños.",
+   "cifra": "5,0",
+   "calculo": "sum(D['FA'].values())"
+  },
+  {
+   "texto": "Canario, saca el 5,0 % y 10 escaños.",
+   "cifra": "10",
+   "calculo": "D['ESC']['Frente Amplio']"
+  },
+  {
+   "texto": "Sumar en julio de 2023. El 37,4 % iría al Frente Amplio,",
+   "cifra": "37,4",
+   "calculo": "D['TR']['Frente Amplio']"
+  },
+  {
+   "texto": "iría al Frente Amplio, el 22,0 % al PSOE y el 7,9 %",
+   "cifra": "22,0",
+   "calculo": "D['TR']['PSOE']"
+  },
+  {
+   "texto": "Amplio, el 22,0 % al PSOE y el 7,9 % a Podemos; el 19,3",
+   "cifra": "7,9",
+   "calculo": "D['TR']['Podemos']"
+  },
+  {
+   "texto": "y el 7,9 % a Podemos; el 19,3 % se abstendría.",
+   "cifra": "19,3",
+   "calculo": "D['TR']['Abstención']"
+  },
+  {
+   "texto": "flash eran 46, y entonces el 25,6 % se iba a Podemos y",
+   "cifra": "25,6",
+   "calculo": "D['TR_OCT']['Podemos']"
+  },
+  {
+   "texto": "25,6 % se iba a Podemos y el 12,2 % al PSOE, según el",
+   "cifra": "12,2",
+   "calculo": "D['TR_OCT']['PSOE']"
+  },
+  {
+   "texto": "Del PSOE 11,8 puntos por delante al",
+   "cifra": "11,8",
+   "calculo": "-[c for c in D['CASAS'] if c[0]=='CIS'][0][5]"
+  },
+  {
+   "texto": "puntos por delante al PP 8 puntos por delanteVentaja",
+   "cifra": "8",
+   "calculo": "round(max(c[5] for c in D['CASAS']))"
+  },
+  {
+   "texto": "encuesta de cada una de las 17 empresas que han publicado",
+   "cifra": "17",
+   "calculo": "len(D['CASAS'])"
+  },
+  {
+   "texto": "Las otras tres encuestas de este lunes, partido a partido",
+   "cifra": "tres",
+   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09'])-1"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "2 al 4 de noviembre, con 2.000 entrevistas en línea",
+   "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf"
+  },
+  {
+   "texto": "línea y un error muestral de ±2,2 puntos, según el informe",
+   "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf"
+  },
+  {
+   "texto": "Esos 152 entrevistados son pocos,",
+   "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf"
+  },
+  {
+   "texto": "en la encuesta flash eran 46, y entonces el 25,6",
+   "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf"
+  },
+  {
+   "texto": "con margen de error. El ±2,2 que declara 40dB vale",
+   "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf"
+  },
+  {
+   "texto": "a Sumar en julio de 2023 (152 entrevistados). Solo",
+   "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "la más difícil de medir a tres semanas del 29N.",
+   "motivo": "«a tres semanas del 29N»: es tiempo, no un dato"
+  },
+  {
+   "texto": "las opciones por encima del 2 %",
+   "motivo": "umbral del gráfico del informe de 40dB, no es un dato"
+  },
+  {
+   "texto": "de la mayoría absoluta de 176, pero 8 menos que hace",
+   "motivo": "176: mayoría absoluta del Congreso (350 diputados), constante"
+  },
+  {
+   "texto": "mayoría absoluta está en 176",
+   "motivo": "176: mayoría absoluta del Congreso (350 diputados), constante"
+  }
+ ],
+ "permitir_espana": []
+}

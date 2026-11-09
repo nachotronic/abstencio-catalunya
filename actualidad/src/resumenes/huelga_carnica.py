@@ -83,7 +83,7 @@ TOP = TOP.assign(gana_pct=[r[f'2023_07_v{r.gana}'] / r.val * 100 for _, r in TOP
 g_gan = figura('Quién ganó en los municipios más industriales',
                'Porcentaje del partido más votado en las generales de 2023 en los doce municipios con más peso de la industria en el empleo (2.000 ocupados o más)',
                barras([(r.municipio, r.gana_pct, COLG[r.gana], f'{NOMG[r.gana]} {p(r.gana_pct)} %') for r in TOP.itertuples()], 70,
-                      'Porcentaje del partido más votado en cada municipio', W=420, ml=110, separar=True),
+                      'Porcentaje del partido más votado en cada municipio', W=440, ml=140, separar=True),
                'Fuente: Ministerio del Interior, generales de 2023; INE, Censo anual de población 2023. Porcentajes sobre votos a candidaturas.',
                sorted({(NOMG[g_], COLG[g_]) for g_ in TOP.gana}),
                (['Municipio', 'Industria (%)', 'PP (%)', 'PSOE (%)', 'Vox (%)', 'Participación (%)', 'Más votado'],
