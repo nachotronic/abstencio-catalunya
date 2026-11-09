@@ -75,6 +75,10 @@ def num(v):
         return None
 
 
+# Medio de las encuestadoras que Electográfica publica sin cliente (40dB trabaja para El País y la Cadena SER)
+CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER'}
+
+
 def carga():
     """Encuestas nacionales: las de Electográfica más las que solo están en Wikipedia; escaños de Wikipedia."""
     wp = list(csv.DictReader(open(DATOS / 'wikipedia_generales_espana.csv'))) if (DATOS / 'wikipedia_generales_espana.csv').exists() else []
@@ -94,7 +98,9 @@ def carga():
         w = wp[i] if i is not None else {}
         if i is not None:
             usadas.add(i)
-        out.append({'reest': False, 'casa': r['encuestadora'], 'medio': '' if r['cliente'] in ('', 'n/a') else r['cliente'],
+        cliente = '' if r['cliente'] in ('', 'n/a') else r['cliente']
+        cliente = cliente or CLIENTE_HABITUAL.get(clave(r['encuestadora']), '')
+        out.append({'reest': False, 'casa': r['encuestadora'], 'medio': cliente,
                     'inicio': r['campo_inicio'] or w.get('campo_inicio', ''), 'fin': fin.isoformat(), 'fin_aprox': not r['campo_fin'] and not w,
                     'publicado': r['publicado'], 'muestra': r['muestra'] or w.get('muestra', ''),
                     'voto': {k: num(r[k]) for k, *_ in PRINCIPALES if num(r[k]) is not None},
@@ -337,9 +343,11 @@ def lo_ultimo(desde23, casas):
 # Avisos para el gráfico de «Lo último» cuando la comparación con la encuesta anterior no es homogénea.
 # Clave: (clave de la encuestadora, fecha de publicación). Cada uno, comprobado contra la fuente.
 AVISOS_ULTIMO = {
-    ('40db', '2026-11-09'): 'El 5,0 % de Sumar / Frente Amplio suma Frente Amplio (3,6), Compromís-Front Valencià (1,1) y '
-                            'Unidad del Pueblo Canario (0,3), que 40dB da por separado desde esta encuesta; en la anterior '
-                            'daba solo Sumar (5,3 %). El cambio de Sumar es, por tanto, aproximado.',
+    ('40db', '2026-11-09'): 'En 40dB, el 5,0 % de Sumar / Frente Amplio suma Frente Amplio (3,6), Compromís-Front Valencià (1,1) '
+                            'y Unidad del Pueblo Canario (0,3), que esta encuesta da por separado. La anterior, del 9 de octubre, '
+                            'daba solo «Sumar», 5,3 %, sin desglose: su informe no dice si incluía a Compromís. El cambio es aproximado.',
+    ('gad3', '2026-11-09'): 'En GAD3, el 6,9 % es Frente Amplio con Compromís-Front Valencià y Unidad del Pueblo Canario; la '
+                            'anterior, del 12 de octubre, daba «Sumar», 7,4 %, sin desglose. El cambio es aproximado.',
 }
 
 
@@ -369,7 +377,7 @@ def graficos_ultimo(graficos):
                 dif = '=' if dv == 0 else ('+' if dv > 0 else '−') + f'{abs(dv):.1f}'.replace('.', ',')
             aviso = AVISOS_ULTIMO.get((clave(e['casa']), e.get('publicado') or e['fin'])) if k == 'SUMAR' else None
             if aviso:
-                avisos.append(f'<sup>*</sup> {html.escape(e["casa"])}: {html.escape(aviso)}')
+                avisos.append(f'<sup>*</sup> {html.escape(aviso)}')
             corto = 'Sumar' if k == 'SUMAR' else n
             filas.append(f'<div class="bu-f"><span class="bu-n">{corto}{"<sup>*</sup>" if aviso else ""}</span>'
                          f'<span class="bu-b"><i style="width:{escala(v)};--c:{c};--cd:{cd}"></i>{raya}</span>'
