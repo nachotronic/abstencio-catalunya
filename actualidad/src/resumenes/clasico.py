@@ -153,6 +153,9 @@ ERC_PSC = int(flip['BCN'].loc['ERC', 'PSOE'])
 PSOE_PP = int(flip['MAD'].loc['PSOE', 'PP'])
 assert ERC_PSC == 553 and PSOE_PP == 586
 G23 = {c: x[f'{E}_gana'].value_counts().to_dict() for c, x in d.groupby('city')}
+_dos = d[d['2019_11_gana'].notna() & d[f'{E}_gana'].notna()]
+CAMB = {c: float((x['2019_11_gana'] != x[f'{E}_gana']).mean()) for c, x in _dos.groupby('city')}
+assert CAMB['BCN'] > .5 and CAMB['MAD'] > .25, CAMB
 assert G23['BCN']['PSOE'] == 956 and G23['MAD']['PP'] == 1603
 
 # --- Gráficos ---
@@ -304,4 +307,5 @@ foot = ('Datos: Ministerio del Interior, generales de 1977 a 2023 (por municipio
 pieza('barcelona-madrid-clasico-del-voto-29n', 'El otro Clásico: Barcelona y Madrid, ciudad a ciudad',
       'El otro Clásico: en los barrios de renta media, el PP saca el triple de votos en Madrid que en Barcelona',
       f'Barcelona y Madrid, sección a sección, el día del Barça-Madrid: con la misma renta, el PP sacó en 2023 el {p(tm["PP"])} % en Madrid y el {p(tb["PP"])} % en Barcelona. El voto socialista cae igual en las dos; lo que cambia es quién recoge el de los barrios ricos. Y en 16 generales, el PP nunca ha ganado en Barcelona.',
-      '25 de octubre de 2026', cuerpo, preguntas, enlaces, foot)
+      '25 de octubre de 2026', cuerpo, preguntas, enlaces, foot,
+      scripts='<script>const D=' + json.dumps({'ERC_PSC': ERC_PSC, 'PSOE_PP': PSOE_PP, 'G23': {c: {k: int(v) for k, v in g.items()} for c, g in G23.items()}, 'NSEC': {c: int(v) for c, v in NSEC.items()}, 'CAMB': CAMB}, separators=(',', ':')) + ';</script>\n')

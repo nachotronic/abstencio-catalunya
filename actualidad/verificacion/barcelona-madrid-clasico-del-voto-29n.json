@@ -1,0 +1,45 @@
+{
+ "cifras": [
+  {
+   "texto": "En Barcelona, el PSC pasó a ganar en 553 secciones donde antes ganaba ERC, y acabó primero en 956 de las 1.068.",
+   "cifra": "553",
+   "calculo": "D['ERC_PSC']"
+  },
+  {
+   "texto": "En Barcelona, el PSC pasó a ganar en 553 secciones donde antes ganaba ERC, y acabó primero en 956 de las 1.068.",
+   "cifra": "956",
+   "calculo": "D['G23']['BCN']['PSOE']"
+  },
+  {
+   "texto": "En Barcelona, el PSC pasó a ganar en 553 secciones donde antes ganaba ERC, y acabó primero en 956 de las 1.068.",
+   "cifra": "1.068",
+   "calculo": "D['NSEC']['BCN']"
+  },
+  {
+   "texto": "En Madrid, el PP pasó a ganar en 586 secciones donde antes ganaba el PSOE y acabó primero en 1.603 de 2.450.",
+   "cifra": "586",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "En Madrid, el PP pasó a ganar en 586 secciones donde antes ganaba el PSOE y acabó primero en 1.603 de 2.450.",
+   "cifra": "1.603",
+   "calculo": "D['G23']['MAD']['PP']"
+  },
+  {
+   "texto": "En Madrid, el PP pasó a ganar en 586 secciones donde antes ganaba el PSOE y acabó primero en 1.603 de 2.450.",
+   "cifra": "2.450",
+   "calculo": "D['NSEC']['MAD']"
+  },
+  {
+   "texto": "cambió el ganador de más de la mitad de las secciones de Barcelona y de más de una de cada cuatro de Madrid",
+   "condicion": "D['CAMB']['BCN'] > 0.5 and D['CAMB']['MAD'] > 0.25"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "El PSOE solo resistió en cuatro distritos del sur",
+   "motivo": "distritos ganados en 2023 en Madrid; no cambia con esta corrección y se detalla en Madrid barrio a barrio"
+  }
+ ]
+}

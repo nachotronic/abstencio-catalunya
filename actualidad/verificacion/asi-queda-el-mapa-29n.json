@@ -1,0 +1,75 @@
+{
+ "cifras": [
+  {
+   "texto": "En noviembre de 2019, el PSOE fue el primero en 19.699 secciones y el PP en 9.713.",
+   "cifra": "19.699",
+   "calculo": "D['S19']['PSOE']"
+  },
+  {
+   "texto": "En noviembre de 2019, el PSOE fue el primero en 19.699 secciones y el PP en 9.713.",
+   "cifra": "9.713",
+   "calculo": "D['S19']['PP']"
+  },
+  {
+   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
+   "cifra": "2.456",
+   "calculo": "D['S19']['ERC']"
+  },
+  {
+   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
+   "cifra": "1.889",
+   "calculo": "D['S19']['VOX']"
+  },
+  {
+   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
+   "cifra": "332",
+   "calculo": "D['UP19']"
+  },
+  {
+   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
+   "cifra": "4",
+   "calculo": "D['MP19']"
+  },
+  {
+   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
+   "cifra": "1.889",
+   "calculo": "D['S19']['VOX']"
+  },
+  {
+   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
+   "cifra": "64",
+   "calculo": "D['S23']['VOX']"
+  },
+  {
+   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
+   "cifra": "2.456",
+   "calculo": "D['S19']['ERC']"
+  },
+  {
+   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
+   "cifra": "197",
+   "calculo": "D['S23']['ERC']"
+  },
+  {
+   "texto": "En 2023, el PP casi duplicó sus secciones",
+   "condicion": "1.8 < D['S23']['PP'] / D['S19']['PP'] < 2"
+  },
+  {
+   "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 332; Más País, 4)",
+   "cifra": "332",
+   "calculo": "D['UP19']"
+  },
+  {
+   "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 332; Más País, 4)",
+   "cifra": "4",
+   "calculo": "D['MP19']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "Cuatro años antes, el mapa era otro.",
+   "motivo": "periodo de tiempo (2019-2023)"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "cifras": [
+  {
+   "texto": "En 2023, 586 secciones censales de la capital pasaron del PSOE al PP.",
+   "cifra": "586",
+   "calculo": "len([e for e in P if e[3] == 'PSOE' and e[2] == 'PP'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": []
+}

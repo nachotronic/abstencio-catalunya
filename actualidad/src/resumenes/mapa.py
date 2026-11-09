@@ -175,4 +175,5 @@ foot = ('Datos: Ministerio del Interior, generales de 2019 y 2023 por mesa (con 
 pieza('asi-queda-el-mapa-29n', 'Así queda el mapa electoral de España antes del 29N',
       'Así queda el mapa electoral de España antes del 29N: el PP ganó en 40 provincias y el PSOE, en 10',
       'Del Dos Hermanas que siempre vota al PSOE al Madrid teñido de azul: el mapa de 2023 provincia a provincia y barrio a barrio, lo que no ha cambiado desde 1977 y lo que dicen hoy las encuestas.',
-      '24 de octubre de 2026', cuerpo, preguntas, enlaces, foot)
+      '24 de octubre de 2026', cuerpo, preguntas, enlaces, foot,
+      scripts='<script>const D=' + json.dumps({'S19': dict(S19), 'S23': dict(S23), 'UP19': UP19, 'MP19': MP19}, separators=(',', ':')) + ';</script>\n')
