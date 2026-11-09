@@ -343,8 +343,8 @@ def lo_ultimo(desde23, casas):
 # Avisos para el gráfico de «Lo último» cuando la comparación con la encuesta anterior no es homogénea.
 # Clave: (clave de la encuestadora, fecha de publicación). Cada uno, comprobado contra la fuente.
 AVISOS_ULTIMO = {
-    ('40db', '2026-11-09'): 'En 40dB, el 5,0 % de Sumar / Frente Amplio suma Frente Amplio (3,6), Compromís-Front Valencià (1,1) '
-                            'y Unidad del Pueblo Canario (0,3), que esta encuesta da por separado. La anterior, del 9 de octubre, '
+    ('40db', '2026-11-09'): 'En 40dB, el 5,0 % de Sumar / Frente Amplio suma Frente Amplio sin Podemos (3,4), Compromís-Front Valencià (1,1), '
+                            'Unidad del Pueblo Canario (0,3) y Ara Més (0,2), que esta encuesta da por separado (informe, pág. 6). La anterior, del 9 de octubre, '
                             'daba solo «Sumar», 5,3 %, sin desglose: su informe no dice si incluía a Compromís. El cambio es aproximado.',
     ('gad3', '2026-11-09'): 'En GAD3, el 6,9 % es Frente Amplio con Compromís-Front Valencià y Unidad del Pueblo Canario; la '
                             'anterior, del 12 de octubre, daba «Sumar», 7,4 %, sin desglose. El cambio es aproximado.',
