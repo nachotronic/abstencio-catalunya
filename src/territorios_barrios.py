@@ -28,6 +28,9 @@ def _carga():
     demo = pd.read_csv(T.D / 'secciones.csv', dtype={'tract_code': str, 'mun_code': str}, usecols=['tract_code'] + DEMO)
     lar = pd.read_csv(T.D / 'resultados_secciones_largo.csv', dtype={'tract_code': str, 'mun_code': str})
     lar = lar[lar.mun_code.isin(set(b.mun_code))]
+    if T.LS is not None:   # votos de la segunda lista de Sumar / Podemos / IU en 2015 y nov. 2019 (ver territorios_datos)
+        lar = lar.merge(T.LS, on=['tract_code', 'eleccion'], how='left')
+        lar['sumar_b'] = lar.sumar_b.fillna(0)
     return b, demo.set_index('tract_code'), lar
 
 
@@ -40,7 +43,9 @@ def resultado(lar):
     """Voto por familia sobre voto válido (candidaturas + blancos) y participación de un conjunto de secciones de una elección."""
     val = (lar.candidaturas + lar.blancos).sum()
     votos = {c: lar[c].sum() for c in T.FAM}
+    b = lar.sumar_b.sum() if 'sumar_b' in lar else 0
     return {'pct': {c: votos[c] / val if val else None for c in T.FAM}, 'votos': votos, 'validos': val,
+            'sumar_b': b / val if val and b else None,
             'part': lar.votantes.sum() / lar.censo.sum() if lar.censo.sum() else None,
             'censo': lar.censo.sum(), 'votantes': lar.votantes.sum(), 'secciones': len(lar)}
 
