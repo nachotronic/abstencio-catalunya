@@ -1,0 +1,16 @@
+{
+ "cifras": [
+  {
+   "texto": "València se tiñó de azul: el PP pasó de ganar en 224 secciones en 2019 a 335 en 2023",
+   "cifra": "224",
+   "calculo": "len([e for e in P if e[3] == 'PP'])"
+  },
+  {
+   "texto": "València se tiñó de azul: el PP pasó de ganar en 224 secciones en 2019 a 335 en 2023",
+   "cifra": "335",
+   "calculo": "len([e for e in P if e[2] == 'PP'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": []
+}
