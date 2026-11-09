@@ -85,7 +85,9 @@ for e in _hoy:
     _graf.append((e, ant, f'{esc(e["casa"])}' + (f' · {esc(e["medio"])}' if e['medio'] else '') + f' · {enc.dia(_pub(e))}'))
 CSS_ULTIMO = '<style>' + '\n'.join(l for l in enc.ESTILOS.split('\n') if l.startswith(('.ultimo-graf', '.bu-')) or ('.bu-b i' in l and 'prefers-color-scheme' in l or l.startswith(':root[data-theme="dark"] .bu-b'))) + '</style>'
 assert CSS_ULTIMO.count('.bu-') >= 8, CSS_ULTIMO
-g_hoy = enc.graficos_ultimo(_graf).replace('Las últimas encuestas, partido a partido', 'Las cuatro encuestas de este lunes, partido a partido')
+# 40dB sola, junto al primer párrafo (editor, 9-11-2026); las otras tres, en su apartado
+g_40 = enc.graficos_ultimo(_graf[:1]).replace('Las últimas encuestas, partido a partido', '40dB, partido a partido: noviembre frente a octubre')
+g_hoy = enc.graficos_ultimo(_graf[1:]).replace('Las últimas encuestas, partido a partido', 'Las otras tres encuestas de este lunes, partido a partido')
 
 # ---------- Gráficos ----------
 def serie_dif():
@@ -180,6 +182,8 @@ d_pod = OCT['POD'] - NOV['POD']
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">El PSOE se queda a dos puntos del PP en la encuesta preelectoral de 40dB para El País y la SER, publicada este lunes: <strong>{p(NOV['PSOE'])} %</strong> frente al <strong>{p(NOV['PP'])} %</strong>. Hace un mes, en la encuesta flash de octubre, el PSOE tenía el {p(OCT['PSOE'])} %: sube {p(d_psoe)} puntos, y el PP repite. Es el dato más alto del PSOE en 40dB desde diciembre de 2024, cuando también marcó el {p(NOV['PSOE'])} %, y la distancia más corta desde octubre de 2025, cuando fue de {p(DIF_ANT['dif'])} puntos. Vox baja al {p(NOV['VOX'])} %. El trabajo de campo se hizo del 2 al 4 de noviembre, con 2.000 entrevistas en línea y un error muestral de ±2,2 puntos, según el <a href="{PDF}">informe de 40dB</a>.</p>
+{CSS_ULTIMO}
+{g_40}
 {g_serie}
 <p data-tipo="dato">En escaños, 40dB da al PP <strong>{ESC['PP']}</strong>, al PSOE <strong>{ESC['PSOE']}</strong> y a Vox <strong>{ESC['Vox']}</strong>. PP y Vox suman {pp_vox}, por encima de la mayoría absoluta de 176, pero {pp_vox_oct - pp_vox} menos que hace un mes, cuando sumaban {pp_vox_oct}. El PSOE gana siete diputados respecto a octubre.</p>
 {g_esc}
@@ -188,7 +192,6 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <h2>Las demás encuestas no lo ven igual</h2>
 <p data-tipo="dato">Este lunes se han publicado otras tres encuestas con trabajo de campo de la misma semana, y las tres dejan al PP mucho más lejos: <a href="{GAD3}">GAD3 para ABC</a>, a {p(HOY[1][5])} puntos; <a href="{URL['NC Report']}">NC Report para La Razón</a>, a {p(HOY[2][5])}, y <a href="{URL['Data10']}">Data10 para OKDiario</a>, a {p(HOY[3][5])}. De las {NCASAS} empresas con una encuesta publicada desde el 10 de octubre, solo tres ponen al PSOE más cerca que 40dB, y dos de ellas, por delante: <a href="{URL['CIS']}">el CIS</a>, con el último barómetro del 14 de octubre, y <a href="{URL['SW Demoscopia']}">SW Demoscopia</a>. La tercera es <a href="{URL['More in Common']}">More in Common</a>, con el PP {p(CASAS[2][5])} puntos por delante.</p>
 {g_casas}
-{CSS_ULTIMO}
 {g_hoy}
 <p data-tipo="dato">La media de las encuestas que usa <a href="{BASE}encuestas/">nuestro modelo</a>, con los datos de las 10.53 del 9 de noviembre, deja al PP en el {p(MED['PP'])} % y al PSOE en el {p(MED['PSOE'])} %: {p(MED_DIF)} puntos de distancia, el doble que 40dB.</p>
 <p data-tipo="hipotesis">Las encuestas no se ponen de acuerdo porque cada empresa pregunta de una forma, pondera de otra y corrige el recuerdo de voto a su manera. Que 40dB vea al PSOE más cerca no dice que las otras se equivoquen, ni al revés: la distancia entre el PP y el PSOE es la cifra que más cambia de una encuesta a otra, y la más difícil de medir a tres semanas del 29N.</p>

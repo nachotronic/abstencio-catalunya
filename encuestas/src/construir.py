@@ -348,6 +348,8 @@ AVISOS_ULTIMO = {
                             'daba solo «Sumar», 5,3 %, sin desglose: su informe no dice si incluía a Compromís. El cambio es aproximado.',
     ('gad3', '2026-11-09'): 'En GAD3, el 6,9 % es Frente Amplio con Compromís-Front Valencià y Unidad del Pueblo Canario; la '
                             'anterior, del 12 de octubre, daba «Sumar», 7,4 %, sin desglose. El cambio es aproximado.',
+    ('data10', '2026-11-09'): 'En Data10, el 6,9 % es Frente Amplio con Compromís-Front Valencià y Unidad del Pueblo Canario; '
+                              'la anterior, del 5 de octubre, daba «Sumar», 5,2 %. El cambio es aproximado.',
 }
 
 

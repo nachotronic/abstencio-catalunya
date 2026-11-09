@@ -230,9 +230,9 @@
    "calculo": "len(D['CASAS'])"
   },
   {
-   "texto": "Las cuatro encuestas de este lunes, partido a partido",
-   "cifra": "cuatro",
-   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09'])"
+   "texto": "Las otras tres encuestas de este lunes, partido a partido",
+   "cifra": "tres",
+   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09'])-1"
   }
  ],
  "externas": [
