@@ -151,7 +151,7 @@ assert round(FA['PP'], 1) == 38.9 and round(FB['PSOE'], 1) == 37.2 and FA['renta
 flip = {c: pd.crosstab(x['2019_11_gana'], x[f'{E}_gana']) for c, x in d.groupby('city')}
 ERC_PSC = int(flip['BCN'].loc['ERC', 'PSOE'])
 PSOE_PP = int(flip['MAD'].loc['PSOE', 'PP'])
-assert ERC_PSC == 540 and PSOE_PP == 521
+assert ERC_PSC == 553 and PSOE_PP == 586
 G23 = {c: x[f'{E}_gana'].value_counts().to_dict() for c, x in d.groupby('city')}
 assert G23['BCN']['PSOE'] == 956 and G23['MAD']['PP'] == 1603
 

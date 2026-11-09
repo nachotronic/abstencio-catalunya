@@ -9,6 +9,7 @@ import collections
 import unicodedata
 import csv
 import json
+import pandas as pd
 
 from comun import BASE, COLOR, RAIZ, SRC, barras, esc, figura, mapa_provincias, n, pares, pieza
 
@@ -43,7 +44,15 @@ for fila in csv.DictReader(open(RAIZ / 'generales-2026/descargas/secciones.csv')
             sec[e][fila[f'{e}_gana']] += 1
 S23, S19 = sec['2023_07'], sec['2019_11']
 assert sum(S23.values()) == 36412 and S23['PP'] == 18407 and S23['PSOE'] == 16073, S23
-assert sum(S19.values()) == 36079 and S19['PSOE'] == 19107 and S19['PP'] == 9587, S19
+assert sum(S19.values()) == 36079 and S19['PSOE'] == 19699 and S19['PP'] == 9713 and S19['SUMAR'] == 336, S19
+# En 2019-N el espacio de Sumar fue en dos listas: de las 336 secciones «SUMAR», cuántas ganó Más País (lista B)
+_l = pd.read_csv(RAIZ / 'generales-2026/descargas/resultados_secciones_largo.csv', dtype={'tract_code': str}, usecols=['tract_code', 'eleccion', 'SUMAR'])
+_b = pd.read_csv(RAIZ / 'generales-2026/descargas/listas_separadas.csv', dtype={'tract_code': str})
+_s = {r['tract_code'] for r in csv.DictReader(open(RAIZ / 'generales-2026/descargas/secciones.csv')) if r['2019_11_gana'] == 'SUMAR'}
+_x = _l[(_l.eleccion == '2019_11') & _l.tract_code.isin(_s)].merge(_b[_b.eleccion == '2019_11'], on='tract_code', how='left').fillna({'sumar_b': 0})
+MP19 = int((_x.sumar_b > _x.SUMAR - _x.sumar_b).sum())
+UP19 = S19['SUMAR'] - MP19
+assert (UP19, MP19) == (332, 4), (UP19, MP19)
 
 # --- Deciles de renta (mapa de la portada) ---
 dec = json.load(open(RAIZ / 'generales-2026/data/resumen.json'))['variables']['renta_uc']['deciles']
@@ -66,7 +75,7 @@ fig_mapa = figura('El partido más votado en cada provincia en 2023',
 
 FAM = [('PP', 'PP'), ('PSOE', 'PSOE'), ('ERC', 'ERC'), ('VOX', 'Vox'), ('SUMAR', 'Sumar'), ('PNV', 'PNV'), ('BILDU', 'EH Bildu'), ('JUNTS', 'Junts')]
 fig_sec = figura('Secciones censales ganadas por cada partido, en 2019 y en 2023',
-                 'Número de secciones donde cada partido fue el más votado. Arriba, noviembre de 2019 (tono claro); abajo, julio de 2023. Sumar: en 2019, Unidas Podemos y sus confluencias',
+                 f'Número de secciones donde cada partido fue el más votado. Arriba, noviembre de 2019 (tono claro); abajo, julio de 2023. Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, {n(UP19)}; Más País, {n(MP19)})',
                  pares([(nom, S19[k], S23[k], COLOR[nom]) for k, nom in FAM], 20000,
                        'Secciones ganadas por partido en noviembre de 2019 y julio de 2023', ['2019', '2023']),
                  'Fuente: Ministerio del Interior, resultados por mesa sumados por sección censal (sin voto exterior). Familias de partidos del mapa de la portada.',
@@ -104,7 +113,7 @@ fig_renta = figura('El PSOE gana abajo y el PP, arriba',
 L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <li>En las generales de julio de 2023, el PP fue el más votado en 40 de las 52 circunscripciones; el PSOE, en 10; EH Bildu y el PNV, en una cada uno.</li>
-<li>Por secciones censales, el PP ganó en 18.407 y el PSOE en 16.073. En noviembre de 2019 había sido al revés: 19.107 para el PSOE y 9.587 para el PP.</li>
+<li>Por secciones censales, el PP ganó en 18.407 y el PSOE en 16.073. En noviembre de 2019 había sido al revés: 19.699 para el PSOE y 9.713 para el PP.</li>
 <li>En el 10 % de secciones más pobres, el PSOE sacó el {pc(d1["PSOE"])} % y votó el {pc(d1["part"])} %; en el 10 % más rico, el PP sacó el {pc(d10["PP"])} % y votó el {pc(d10["part"])} %.</li>
 <li>A 23 de octubre, 15 de las 16 encuestadoras con sondeo reciente dan ganador al PP; el CIS, al PSOE.</li>
 </ul></div>
@@ -119,7 +128,7 @@ cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <p data-tipo="contexto">El mapa de 2026 tendrá además una pieza cambiada antes de votar. El <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742">Real Decreto 806/2026</a> da a Madrid un diputado más, 38, y deja a Cádiz con 8. Con los votos de 2023, ese escaño nuevo habría sido del PSOE y el que pierde Cádiz, del PP.</p>
 <h2>Calle a calle, el mapa se parte</h2>
 <p data-tipo="dato">Si se baja de la provincia a las secciones censales, los trozos de barrio de unos cientos o pocos miles de electores en que se organiza el voto, el mapa se vuelve mucho más fino. De las 36.412 secciones con resultados en 2023, el PP fue el más votado en {n(S23["PP"])} y el PSOE en {n(S23["PSOE"])}. Después vienen EH Bildu ({n(S23["BILDU"])}), Junts ({n(S23["JUNTS"])}), el PNV ({n(S23["PNV"])}), ERC ({n(S23["ERC"])}), Sumar ({n(S23["SUMAR"])}), Vox ({n(S23["VOX"])}), Coalición Canaria ({n(S23["CC"])}) y el BNG, con una.</p>
-<p data-tipo="dato">Cuatro años antes, el mapa era otro. En noviembre de 2019, el PSOE fue el primero en {n(S19["PSOE"])} secciones y el PP en {n(S19["PP"])}. ERC ganaba en {n(S19["ERC"])}, Vox en {n(S19["VOX"])} y Unidas Podemos en {n(S19["SUMAR"])}. En 2023, el PP casi duplicó sus secciones, Vox pasó de {n(S19["VOX"])} a {n(S23["VOX"])} y ERC, de {n(S19["ERC"])} a {n(S23["ERC"])}.</p>
+<p data-tipo="dato">Cuatro años antes, el mapa era otro. En noviembre de 2019, el PSOE fue el primero en {n(S19["PSOE"])} secciones y el PP en {n(S19["PP"])}. ERC ganaba en {n(S19["ERC"])}, Vox en {n(S19["VOX"])} y Unidas Podemos en {n(UP19)} (Más País, en {n(MP19)}). En 2023, el PP casi duplicó sus secciones, Vox pasó de {n(S19["VOX"])} a {n(S23["VOX"])} y ERC, de {n(S19["ERC"])} a {n(S23["ERC"])}.</p>
 {fig_sec}
 <p data-tipo="contexto">A esa escala aparecen las fronteras que la provincia esconde. «Si bajamos al nivel de secciones censales —áreas de apenas 1.000 personas, a veces tan pequeñas como una manzana— aparecen contrastes y matices», escribían Borja Andrino, Luis Sevillano y Kiko Llaneras en <a href="https://elpais.com/espana/elecciones-generales/2023-07-24/el-mapa-con-los-resultados-de-las-elecciones-generales-del-23-j-calle-a-calle.html">El País</a> al publicar su mapa del 23J. En 2023, una de cada cuatro secciones eligió un ganador distinto del de su municipio, como explicamos en {L("como-voto-tu-calle", "cómo buscar tu calle en el mapa")}.</p>
 <p data-tipo="dato">Las grandes ciudades lo enseñan bien. En Barcelona, el PSC fue el más votado en nueve de cada diez secciones, y ERC, que ganaba en 563 en 2019, {L("barcelona-barrio-a-barrio-29n", "no ganó en ninguna")}. En Sevilla, el PP ganó en votos, pero el PSOE fue primero en {L("sevilla-barrio-a-barrio-29n", "286 de sus 521 secciones")}. En Zaragoza hubo {L("zaragoza-barrio-a-barrio-29n", "empate barrio a barrio")}: 250 secciones para el PSOE y 245 para el PP. Y en Murcia, Vox pasó de ganar en 164 secciones a {L("murcia-barrio-a-barrio-29n", "ganar en una")}.</p>
