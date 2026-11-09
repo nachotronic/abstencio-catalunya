@@ -74,7 +74,7 @@ ACTUALIDAD_MUNICIPIO = {
 # Piezas de cada página temática
 TEMA_RENTA = ['participacion-renta-municipios-madrid-29n', 'maricarmen-alquiler-y-voto', 'alquiler-ciudad-a-ciudad', 'psoe-barrios-de-alquiler', 'precio-del-alquiler-y-voto',
               'huelga-11n-paro-participacion', 'vox-poblacion-nacida-fuera', 'pisos-turisticos-y-votantes',
-              'pobreza-participacion-barrios', 'pensiones-barrios-envejecidos', 'malaga-barrio-a-barrio-29n']
+              'pobreza-participacion-barrios', 'pensiones-barrios-envejecidos', 'malaga-barrio-a-barrio-29n', 'huelga-carnica-pueblos-industria-29n']
 TEMA_SECCION = ['como-voto-tu-calle', 'calle-que-parte-el-voto', 'madrid-barrio-a-barrio-29n', 'barcelona-barrio-a-barrio-29n',
                 'valencia-barrio-a-barrio-29n', 'sevilla-barrio-a-barrio-29n', 'zaragoza-barrio-a-barrio-29n', 'malaga-barrio-a-barrio-29n',
                 'murcia-barrio-a-barrio-29n', 'palma-barrio-a-barrio-29n',
