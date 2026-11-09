@@ -4,6 +4,13 @@ Añadir una línea (fecha ISO, texto) cada vez que cambie un dato o una conclusi
 """
 
 CORRECCIONES = [
+    ('2026-11-09', 'Mapa de la portada (vista «Partido más votado»): tenía el mismo fallo que las fichas. Ahora el más votado se calcula '
+                   'lista a lista y cambia en 214 municipios y 2.783 secciones en 2015, 87 municipios y 447 secciones en abril de 2019 y '
+                   '87 municipios y 775 secciones en noviembre de 2019: por ejemplo, en Amurrio en 2015 ganó el PNV, por un voto (1.686 '
+                   'frente a 1.685 de Podemos). La ficha que se abre al pulsar un municipio o una sección enseña las dos listas por '
+                   'separado. Las descargas (municipios.csv y secciones.csv) llevan el ganador corregido. En «Resultados de las elecciones por municipio», '
+                   'los municipios donde cambió el más votado entre noviembre de 2019 y 2023 pasan de 2.558 a 2.516, y los que pasaron '
+                   'de PSOE a PP, de 1.420 a 1.438.'),
     ('2026-11-09', 'Fichas de municipio, barrio, provincia y comunidad: el partido más votado se calculaba con la suma de la familia '
                    'Sumar / Podemos / IU también cuando reunía dos listas que se presentaron por separado: Podemos e IU-Unidad Popular en 2015, '
                    'Unidas Podemos y Más País en noviembre de 2019 y, en la Comunitat Valenciana, EUPV y Compromís-Q en 2011 y Unides Podem '
