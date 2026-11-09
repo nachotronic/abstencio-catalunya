@@ -143,15 +143,15 @@ g_casas = figura('Del PSOE 11,8 puntos por delante al PP 8 puntos por delante',
 
 g_tr = figura('Qué votarían ahora los que votaron a Sumar en 2023',
               f'Porcentaje de quienes recuerdan haber votado a Sumar en julio de 2023 ({N_SUMAR} entrevistados). Solo se muestran las opciones por encima del 2 %',
-              barras([(t, v, c, p(v) + ' %') for t, v, c in TR], 40, 'Transferencia de voto de los votantes de Sumar en 2023 según 40dB', fmt=p),
+              barras([(t, v, c, p(v) + ' %') for t, v, c in TR], 45, 'Transferencia de voto de los votantes de Sumar en 2023 según 40dB', W=420, ml=100, fmt=p),
               f'Fuente: 40dB para El País y la SER, <a href="{PDF}">informe de noviembre</a>, pág. 10.',
               leyenda=[(t, c) for t, _, c in TR])
 
 g_esc = figura('Los escaños que da 40dB',
                'Estimación central de escaños, en noviembre y en la encuesta flash de octubre. La mayoría absoluta está en 176',
                barras([(k, ESC[k], COLOR.get(k, 'var(--sumar)' if k == 'Frente Amplio' else 'var(--otros)'), f'{ESC[k]} (oct.: {ESC_OCT[k]})') for k in ESC],
-                      140, 'Escaños de cada partido según 40dB, noviembre y octubre'),
-               f'Fuente: 40dB para El País y la SER, <a href="{PDF}">informe de noviembre</a>, pág. 8. «Otros»: ERC 10, EH Bildu 7, Junts 3, PNV 3, Aliança Catalana 3, BNG 2, UPN 2 y Coalición Canaria 1.',
+                      200, 'Escaños de cada partido según 40dB, noviembre y octubre', W=420, ml=100),
+               f'Fuente: 40dB para El País y la SER, <a href="{PDF}">informe de noviembre</a>, pág. 8. «Otros»: ERC 10, EH Bildu 7, Junts 3, PNV 3, Adelante Andalucía 3, BNG 2, UPN-PP 2 y Coalición Canaria 1.',
                leyenda=[('PP', 'var(--pp)'), ('PSOE', 'var(--psoe)'), ('Vox', 'var(--vox)'), ('Frente Amplio', 'var(--sumar)'), ('Podemos', 'var(--pod)'), ('Otros', 'var(--otros)')],
                tabla=(['Partido', 'Noviembre', 'Octubre'], [[k, str(ESC[k]), str(ESC_OCT[k])] for k in ESC]))
 
@@ -164,7 +164,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_serie}
 <p data-tipo="dato">En escaños, 40dB da al PP <strong>{ESC['PP']}</strong>, al PSOE <strong>{ESC['PSOE']}</strong> y a Vox <strong>{ESC['Vox']}</strong>. PP y Vox suman {pp_vox}, por encima de la mayoría absoluta de 176, pero {pp_vox_oct - pp_vox} menos que hace un mes, cuando sumaban {pp_vox_oct}. El PSOE gana siete diputados respecto a octubre.</p>
 {g_esc}
-<p data-tipo="contexto">La socialista Reyes Maroto, portavoz del PSOE en el Ayuntamiento de Madrid, lo leyó así este lunes, según Europa Press:</p>
+<p data-tipo="contexto">La socialista Reyes Maroto, portavoz del PSOE en el Ayuntamiento de Madrid, habló este lunes de las últimas encuestas, según Europa Press:</p>
 <blockquote class="cita"><p>«Hoy seguro que en Génova están preocupados, preocupados porque la remontada es una realidad»</p><footer>Reyes Maroto, portavoz del PSOE en el Ayuntamiento de Madrid, según <a href="{MAROTO}">Europa Press</a> (9 de noviembre de 2026).</footer></blockquote>
 <h2>Las demás encuestas no lo ven igual</h2>
 <p data-tipo="dato">Este lunes se han publicado otras tres encuestas con trabajo de campo de la misma semana, y las tres dejan al PP mucho más lejos: <a href="{GAD3}">GAD3 para ABC</a>, a {p(HOY[1][5])} puntos; <a href="{URL['NC Report']}">NC Report para La Razón</a>, a {p(HOY[2][5])}, y <a href="{URL['Data10']}">Data10 para OKDiario</a>, a {p(HOY[3][5])}. De las {NCASAS} empresas con una encuesta publicada desde el 10 de octubre, solo tres ponen al PSOE más cerca que 40dB, y dos de ellas, por delante: <a href="{URL['CIS']}">el CIS</a>, con el último barómetro del 14 de octubre, y <a href="{URL['SW Demoscopia']}">SW Demoscopia</a>. La tercera es <a href="{URL['More in Common']}">More in Common</a>, con el PP {p(CASAS[2][5])} puntos por delante.</p>
