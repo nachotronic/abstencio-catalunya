@@ -96,7 +96,8 @@ def pct_listas(r):
 def ganador(r):
     p = pct_listas(r)
     # en un empate exacto, el orden de FAM (no el del diccionario) decide, para que el resultado no cambie
-    return max(sorted(p, key=FAM.index), key=p.get) if p else None
+    # (redondeado: dos listas empatadas a votos no deben separarse por el error de coma flotante, Goñi 2015)
+    return max(sorted(p, key=FAM.index), key=lambda k: round(p[k], 9)) if p else None
 
 
 # Nombre de la lista de la familia Sumar / Podemos / IU en cada elección desde 2004, y el de la segunda lista

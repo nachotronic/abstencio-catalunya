@@ -105,7 +105,8 @@
     if (st.v === 'gana') {
       const g = d[st.y + '_gana'] ? d[st.y + '_gana'][i] : -1;
       if (g == null || g < 0) return NODATA();
-      const f = FAM[g], s = d[st.y + '_' + f.cod][i] || 0;
+      const f = FAM[g], b = f.cod === 'SUMAR' && d[st.y + '_SUMAR_B'] ? d[st.y + '_SUMAR_B'][i] || 0 : 0;
+      const t = d[st.y + '_' + f.cod][i] || 0, s = b ? Math.max(t - b, b) : t;   // dos listas: la de la más votada
       return mix(BG(), f.rgb, Math.max(.28, Math.min(1, (s - .15) / .35)));
     }
     const v = value(d, i);
@@ -370,17 +371,40 @@
   // ---------- ficha (tooltip)
   const tip = $('#tip'), CERRAR = '<button class="t-x" type="button" aria-label="Cerrar">×</button>';
   tip.addEventListener('click', e => { if (e.target.closest('.t-x')) { tip.hidden = true; hover = null; redraw(); } });
+  // 2011 y abril de 2019 (Comunitat Valenciana), 2015 y noviembre de 2019: el espacio de Sumar / Podemos / IU fue en dos
+  // listas. <elección>_SUMAR_B es el voto de la segunda (src/mapa_listas_separadas.py); la ficha enseña las dos filas.
+  const SEGUNDA = {
+    '2011_11': [/Compromís/, () => 'Compromís-Q'],
+    '2015_12': [/Unidad Popular|Unitat Popular|EUPV|Izquierda Unida|Esquerra Unida|Esquerda Unida|^IU$/, () => 'IU-Unidad Popular'],
+    '2019_04': [/Compromís/, () => 'Compromís'],
+    '2019_11': [/Más País|Més País|Compromís/, p => ['03', '12', '46'].includes(p) ? 'Més Compromís' : 'Más País'],
+  };
+  function dosListas(r, d, i, y, mi) {
+    const b = d[y + '_SUMAR_B'] ? d[y + '_SUMAR_B'][i] : null;
+    if (!b || r.v == null || !SEGUNDA[y]) return [r];
+    const [re, porDefecto] = SEGUNDA[y], partes = r.n.split(' + '), nb = partes.filter(x => re.test(x));
+    const na = partes.length > 1 && nb.length === 1 ? partes.filter(x => !re.test(x)).join(' + ') : r.n;
+    const A = { f: r.f, v: r.v - b, n: na }, B = { f: r.f, v: b, n: nb.length === 1 && partes.length > 1 ? nb[0] : porDefecto(MUN.cod[mi].slice(0, 2)), b: true, par: A };
+    A.a = B;   // cada fila sabe cuál es la otra lista, para saber cuál de las dos es la más votada
+    return [A, B];
+  }
   function ficha(d, i, isSec) {
-    const y = st.y, rows = FAM.map((f, k) => ({ f, v: d[y + '_' + f.cod] ? d[y + '_' + f.cod][i] : null }))
+    const y = st.y, mi = isSec ? MUN.cod.indexOf(d.cod[i].slice(0, 5)) : i;
+    const rows = FAM.map((f, k) => ({ f, v: d[y + '_' + f.cod] ? d[y + '_' + f.cod][i] : null, n: nomL(f, y, mi) }))
+      .flatMap(r => r.f.cod === 'SUMAR' ? dosListas(r, d, i, y, mi) : [r])
       .filter(r => r.v != null && r.v > 0.005).sort((a, b) => b.v - a.v).slice(0, 6);
+    // los porcentajes van redondeados a tres decimales: si el más votado (que se calcula con los votos) empata en la
+    // primera fila, va primero (Amurrio 2015: PNV 1.686 votos, Podemos 1.685)
+    const g = d[y + '_gana'] ? d[y + '_gana'][i] : -1, w = rows.findIndex(r => r.f === FAM[g] && !(r.a && r.a.v > r.v) && !(r.b && r.par.v > r.v));
+    if (w > 0 && rows[0].v - rows[w].v < .0015) rows.unshift(rows.splice(w, 1)[0]);
     const e = ELEC.find(x => x.cod === y).nombre;
-    const mi = isSec ? MUN.cod.indexOf(d.cod[i].slice(0, 5)) : i;
     const title = isSec ? `${MUN.nombre[mi]} · sección ${d.cod[i].slice(5, 7)}-${d.cod[i].slice(7)}` : MUN.nombre[i];
     const sub = isSec ? MUN.provs[MUN.prov[mi]] : MUN.provs[MUN.prov[i]];
     const max = rows.length ? rows[0].v : 1;
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
-    h += '<table class="t-bars">' + rows.map(r => `<tr><th${nomL(r.f, y, mi) !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${nomL(r.f, y, mi).length > 16 ? 'normal' : 'nowrap'}">${escH(nomL(r.f, y, mi))}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
+    h += '<table class="t-bars">' + rows.map(r => `<tr><th${r.n !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${r.n.length > 16 ? 'normal' : 'nowrap'}">${escH(r.n)}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
+    if (rows.some(r => r.b)) h += '<p class="t-na">En esta elección el espacio de Sumar / Podemos / IU fue en dos listas: van por separado, y el más votado se calcula lista a lista.</p>';
     if (REPUBLICA(y)) {
       const fus = !isSec && d[y + '_fus'] ? d[y + '_fus'][i] : null;
       h += `<p class="t-na">Listas abiertas: peso de cada bloque en los votos a candidatos.${fus ? ' Suma los municipios de entonces: ' + escH(fus) + '.' : ''}</p>`;
