@@ -84,7 +84,13 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <div class="chart" id="dist"></div>
 <div class="legend"><span><i class="sw" style="background:var(--psoe)"></i>PSC</span><span><i class="sw" style="background:var(--junts)"></i>Junts</span><span><i class="sw" style="background:var(--erc)"></i>ERC</span><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar (2019: UP)</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span></div>
 <div class="src">Font: Ministeri de l'Interior, resultats per mesa (via pollspaindata), agregats per secció censal; sense vot exterior. Percentatges sobre vot vàlid. Càlcul propi. Cada districte suma les seves seccions, ponderades per votants.</div>
-<details><summary>Veure la taula per districte</summary><div class="tbl" id="dist-tbl"></div></details>
+<details open><summary>Taula per districte</summary><div class="tbl" id="dist-tbl"></div></details>
+</figure>
+<figure>
+<figcaption><span class="t">La participació, districte a districte</span><span class="s">Percentatge del cens que va votar a les generals de juliol del 2023 a cada districte, de més a menys. A la dreta, la renda mediana per unitat de consum</span></figcaption>
+<div class="chart" id="part-dist"></div>
+<div class="legend"><span><i class="sw" style="background:var(--muted)"></i>Participació el 2023</span></div>
+<div class="src">Font: Ministeri de l'Interior, resultats per mesa (via pollspaindata), agregats per secció censal; INE, Atles de Distribució de Renda de les Llars. Càlcul propi. Les xifres, a la taula per districte.</div>
 </figure>
 
 <p data-tipo="dato">El Barri Vell, el de les postals, el de la Catedral i les cases de l'Onyar, té dues seccions i poc més de 1.400 electors. Hi va votar el 54,6%, menys que a la mitjana de la ciutat, i el PSC hi va guanyar amb el 24,9%, davant de Junts (17,1%) i Sumar (15,3%). El 2019 hi havia guanyat Junts. Les cases on el turista s'atura a fer fotos són, també, de les que menys voten.</p>
@@ -232,4 +238,21 @@ table('gan-tbl',['Partit','Seccions guanyades, nov. 2019','Seccions guanyades, 2
 })();
 {const KS=PS.filter(k=>DEC.some(r=>r[k]>=3));table('dec-tbl',['Tram de renda','Renda (€)','Participació'].concat(KS.map(k=>LB[k])),DEC.map(r=>[r.k==1?'1 (més pobre)':r.k==10?'10 (més ric)':r.k,(r.k==10?'des de '+N(r.rmin):N(r.rmin)+'–'+N(r.rmax)),c1(r.part)+'%'].concat(KS.map(k=>c1(r[k])+'%'))));}
 
+
+/* Nacho, 9-11-2026: gràfic de barres de participació per districte (nom a sobre de la barra: els noms són llargs) */
+(function(){const box=document.getElementById('part-dist');if(!box)return;const NSv='http://www.w3.org/2000/svg';
+ const mk=(n,a,p)=>{const e=document.createElementNS(NSv,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+ const f1=v=>v.toFixed(1).replace('.',','),fN=v=>Math.round(v).toLocaleString('ca-ES');
+ const rows=DI.filter(r=>r[9]>0).slice().sort((a,b)=>b[9]-a[9]);
+ const W=Math.max(300,box.clientWidth||640),n=W<500,fs=n?11:13,mr=n?78:100,rh=n?40:44,H=rows.length*rh+4;
+ const mx=Math.ceil(Math.max(...rows.map(r=>r[9]))/10)*10,x=v=>v/mx*(W-mr-48);
+ const svg=mk('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Participació a les generals del 2023 a cada districte, de més a menys'},box);
+ rows.forEach((r,i)=>{const y=2+i*rh,nm=r[1]||('Districte '+(+r[0])),mc=Math.floor(W/(fs*0.55));
+  mk('text',{x:0,y:y+fs+1,'font-size':fs,style:'fill:var(--fg)'},svg).textContent=nm.length>mc?nm.slice(0,mc-1)+'…':nm;
+  const by=y+fs+6,bh=rh-fs-12;
+  const b=mk('rect',{x:0,y:by,width:Math.max(1.5,x(r[9])),height:bh,rx:2,fill:'var(--muted)','fill-opacity':.75},svg);
+  mk('title',{},b).textContent=`${nm}: hi va votar el ${f1(r[9])}%`;
+  mk('text',{x:x(r[9])+5,y:by+bh/2+4,'font-size':fs,style:'fill:var(--fg)'},svg).textContent=f1(r[9])+'%';
+  mk('text',{x:W-2,y:by+bh/2+4,'text-anchor':'end','font-size':n?11:12},svg).textContent=r[10]?fN(r[10])+' €':'–';});
+})();
 </script>

@@ -2094,7 +2094,7 @@ INTERIOR_CA = (INTERIOR[0], "Ministeri de l'Interior, resultats electorals per m
 INE_CA = (INE[0], "INE, Atles de Distribució de Renda de les Llars (renda i edat per secció), via ineAtlas.data")
 PIEZAS += [
     dict(
-        slug='girona-barri-a-barri-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-10-23 22:54',
+        slug='girona-barri-a-barri-29n', fecha='2026-10-15', idioma='ca', actualizado='2026-11-09 13:07',
         correcciones="23-10-2026: s'hi afegeixen el vot de Vox a la Font de la Pólvora i a Vila-roja comptat sobre el cens i en vots, la relació entre renda i vot a Vox a les 62 seccions, la cita d'un estudi acadèmic sobre el perfil del votant de Vox i un apartat final sobre com pesen la ciutat, els barris i el vot de la CUP en el repartiment dels sis escons de la demarcació el 29N.",
         titulo='Girona, barri a barri: el 2019 Junts guanyava en 36 seccions i el PSC en 13; el 2023, el PSC en 43 i Junts en 19', serie='girona',
         descripcion='A la Font de la Pólvora va votar el 33,4% dels electors; a Montjuïc, el 74,9%. Les 62 seccions de Girona, de les generals de 2019 a les de 2023, abans del 29N.',
