@@ -81,7 +81,13 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <div class="chart" id="dist"></div>
 <div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar (2019: UP o Más País)</span></div>
 <div class="src">Fuente: Ministerio del Interior, resultados por mesa (vía pollspaindata), agregados por sección censal; sin voto exterior. Porcentajes sobre voto válido. Cálculo propio. Cada distrito suma sus secciones, ponderadas por votantes.</div>
-<details><summary>Ver la tabla por distrito</summary><div class="tbl" id="dist-tbl"></div></details>
+<details open><summary>Tabla por distrito</summary><div class="tbl" id="dist-tbl"></div></details>
+</figure>
+<figure>
+<figcaption><span class="t">La participación, distrito a distrito</span><span class="s">Porcentaje del censo que votó en las generales de julio de 2023 en cada distrito, de más a menos. Al lado, la renta mediana por unidad de consumo</span></figcaption>
+<div class="chart" id="part-dist"></div>
+<div class="legend"><span><i class="sw" style="background:var(--muted)"></i>Participación en 2023</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa (vía pollspaindata), agregados por sección censal; INE, Atlas de Distribución de Renta de los Hogares. Cálculo propio. Las cifras, en la tabla por distrito.</div>
 </figure>
 
 <p>En los extremos no hay duda. La sección donde más votó al PP, en Chamartín, le dio el 75,8%, y en los distritos de Salamanca y Chamartín sacó el 57,5% y el 59,0%. En Puente de Vallecas, el PSOE tuvo el 40,8% y el PP, el 23,5%. Vox no llegó al 16% en ningún distrito, y su mejor sección, en Fuencarral-El Pardo, le dio el 36,4%.</p>
@@ -208,4 +214,20 @@ table('gan-tbl',['Partido','Secciones ganadas, nov. 2019','Secciones ganadas, 20
 })();
 {const KS=PS.filter(k=>DEC.some(r=>r[k]>=3));table('dec-tbl',['Tramo de renta','Renta (€)','Participación'].concat(KS.map(k=>LB[k])),DEC.map(r=>[r.k==1?'1 (más pobre)':r.k==10?'10 (más rico)':r.k,(r.k==10?'desde '+N(r.rmin):N(r.rmin)+'–'+N(r.rmax)),c1(r.part)+'%'].concat(KS.map(k=>c1(r[k])+'%'))));}
 
+
+/* Nacho, 9-11-2026: gráfico de barras de participación por distrito */
+(function(){const box=document.getElementById('part-dist');if(!box)return;const NSv='http://www.w3.org/2000/svg';
+ const mk=(n,a,p)=>{const e=document.createElementNS(NSv,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+ const f1=v=>v.toFixed(1).replace('.',','),fN=v=>Math.round(v).toLocaleString('es-ES');
+ const rows=DI.filter(r=>r[9]>0).slice().sort((a,b)=>b[9]-a[9]);
+ const W=Math.max(300,box.clientWidth||640),n=W<500,ml=n?118:170,mr=n?92:120,rh=24,H=rows.length*rh+6;
+ const mx=Math.ceil(Math.max(...rows.map(r=>r[9]))/10)*10,x=v=>ml+v/mx*(W-ml-mr);
+ const svg=mk('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Participación en las generales de 2023 en cada distrito, de más a menos'},box);
+ rows.forEach((r,i)=>{const y=3+i*rh,nm=r[1]||('Distrito '+(+r[0]));
+  const t=mk('text',{x:ml-6,y:y+rh/2+4,'text-anchor':'end',style:'fill:var(--fg)','font-size':n?11:13},svg);t.textContent=nm.length>(n?17:26)?nm.slice(0,n?16:25)+'…':nm;
+  const b=mk('rect',{x:ml,y:y+4,width:Math.max(1.5,x(r[9])-ml),height:rh-9,rx:2,fill:'var(--muted)','fill-opacity':.75},svg);
+  mk('title',{},b).textContent=`${nm}: votó el ${f1(r[9])}%`;
+  mk('text',{x:x(r[9])+5,y:y+rh/2+4,'font-size':n?11:13,style:'fill:var(--fg)'},svg).textContent=f1(r[9])+'%';
+  mk('text',{x:W-2,y:y+rh/2+4,'text-anchor':'end','font-size':n?11:12},svg).textContent=r[10]?fN(r[10])+' €':'–';});
+})();
 </script>

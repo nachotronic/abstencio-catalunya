@@ -77,6 +77,19 @@ g_top = figura('Guissona, el municipio con más peso de la industria en el emple
                 [[esc(r.municipio), n(r.ocupados), f'{p(r.ind)} %', NOMG[gana[r.mun_code]]] for r in TOP.itertuples()]))
 
 
+# Nacho, 9-11-2026: más gráficos de barras y tablas en las piezas de municipios
+TOP = TOP.assign(gana=[gana[c] for c in TOP.mun_code])
+TOP = TOP.assign(gana_pct=[r[f'2023_07_v{r.gana}'] / r.val * 100 for _, r in TOP.iterrows()])
+g_gan = figura('Quién ganó en los municipios más industriales',
+               'Porcentaje del partido más votado en las generales de 2023 en los doce municipios con más peso de la industria en el empleo (2.000 ocupados o más)',
+               barras([(r.municipio, r.gana_pct, COLG[r.gana], f'{NOMG[r.gana]} {p(r.gana_pct)} %') for r in TOP.itertuples()], 70,
+                      'Porcentaje del partido más votado en cada municipio', W=440, ml=140, separar=True),
+               'Fuente: Ministerio del Interior, generales de 2023; INE, Censo anual de población 2023. Porcentajes sobre votos a candidaturas.',
+               sorted({(NOMG[g_], COLG[g_]) for g_ in TOP.gana}),
+               (['Municipio', 'Industria (%)', 'PP (%)', 'PSOE (%)', 'Vox (%)', 'Participación (%)', 'Más votado'],
+                [[esc(r.municipio), p(r.ind), p(r.PP), p(r.PSOE), p(r.VOX), p(r.part), NOMG[r.gana]] for r in TOP.itertuples()]))
+
+
 def grupos(W_=640, ml=150):
     """PP y PSOE: diferencia con la media de su provincia, en cada décima parte de municipios según el peso de la industria."""
     filas = [(f'{k}.ª' + (' (menos industria)' if k == 1 else ' (más industria)' if k == 10 else ''), DEC[k]['PP'], DEC[k]['PSOE']) for k in range(1, 11)]
@@ -123,6 +136,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <blockquote class="cita"><p>«La huelga de quienes alimentan el país ya está aquí, por más salario y por mejores condiciones laborales»</p><footer>CCOO de Industria, en su <a href="{CCOO}">convocatoria</a> del 6 de noviembre de 2026</footer></blockquote>
 <p data-tipo="dato">En España, el {p(IND_ES)} % de los ocupados trabaja en la industria, según el censo de 2023 del INE, que cuenta a cada trabajador en el municipio donde vive. Entre los municipios con al menos 2.000 ocupados, donde más pesa es en Guissona (Lleida), con el {p(gs.ind)} %. Allí tiene su sede la empresa alimentaria <a href="{BONAREA}">bonÀrea</a>. Guijuelo (Salamanca), con el {p(gj.ind)} %, es el sexto. El censo no separa la industria cárnica del resto de la industria, así que la lista mezcla la alimentación con otras ramas.</p>
 {g_top}
+{g_gan}
 <p data-tipo="dato">Para no confundir la industria con la geografía, la comparación se hace dentro de cada provincia. En la décima parte de municipios donde la industria pesa más que en el resto de su provincia, de media {p(D10["ind"])} puntos más, el PP sacó en las generales de 2023 {p(-D10["PP"])} puntos menos que la media provincial. En la décima parte con menos industria, {p(D1["PP"])} puntos más. El PSOE va al revés, aunque con menos distancia: {p(D1["PSOE"]).replace("-", "−")} puntos en los menos industriales y {"+" if D10["PSOE"] >= 0 else ""}{p(D10["PSOE"]).replace("-", "−")} en los más. El voto a Vox apenas cambia: {p(D1["VOX"]).replace("-", "−")} y {p(D10["VOX"]).replace("-", "−")} puntos, y en ninguna de las diez partes se separa un punto de la media de su provincia.</p>
 {g_dec}
 <p data-tipo="dato">En Guissona ganó el PSOE con el {p(gs.PSOE)} %, por delante de Junts ({p(gs.JUNTS)} %) y ERC ({p(gs.ERC)} %). El PP sacó el {p(gs.PP)} %. Votó el {p(gs.part)} % del censo, frente al {p(lle["part"])} % de la provincia de Lleida. En Guijuelo ganó el PP con el {p(gj.PP)} %, frente al {p(sal["PP"])} % de la provincia de Salamanca; el PSOE sacó el {p(gj.PSOE)} % y Vox, el {p(gj.VOX)} %.</p>
@@ -147,6 +161,8 @@ DATOS = {'IND_ES': IND_ES, 'NMUN': NMUN, 'DEC': DEC, 'POS_GUI': POS_GUI, 'MED_PR
          'G': {c: {k: float(G[c][k]) for k in ('ind', 'PP', 'PSOE', 'VOX', 'JUNTS', 'ERC', 'part')} for c in G},
          'TOP': [[r.municipio, int(r.ocupados), float(r.ind), gana[r.mun_code]] for r in TOP.itertuples()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
+
+cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')   # Nacho, 9-11-2026: tablas a la vista
 
 pieza('huelga-carnica-pueblos-industria-29n', 'La huelga cárnica y los pueblos de la industria',
       f'En los municipios donde más pesa la industria, el PP saca {p(-D10["PP"])} puntos menos que en el resto de su provincia, y el voto a Vox apenas cambia',

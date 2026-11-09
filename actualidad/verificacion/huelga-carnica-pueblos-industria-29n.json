@@ -123,6 +123,11 @@
    "texto": "la industria, el PP saca 1,9 puntos menos que en",
    "cifra": "1,9",
    "calculo": "-D['DEC']['10']['PP']"
+  },
+  {
+   "texto": "en las generales de 2023 en los doce municipios con más peso de la industria",
+   "cifra": "doce",
+   "calculo": "len(D['TOP'])"
   }
  ],
  "externas": [
@@ -171,6 +176,10 @@
   {
    "texto": "provincia y se reparten en diez partes con el mismo",
    "motivo": "número de partes en que se dividen los municipios (método)"
+  },
+  {
+   "texto": "en el empleo (2.000 ocupados o más)",
+   "motivo": "umbral de tamaño elegido para la lista, no es un dato"
   }
  ],
  "permitir_espana": []

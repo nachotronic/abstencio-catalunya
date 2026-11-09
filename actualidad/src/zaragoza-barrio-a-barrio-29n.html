@@ -56,7 +56,7 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <p style="margin-top:1.4rem">Zaragoza es la gran ciudad más igualada del mapa. En las generales de julio de 2023, el PSOE fue el partido más votado en 250 de sus 497 secciones censales y el PP, en 245. En 53 secciones, el primero sacó al segundo menos de dos puntos. Y en Delicias, el distrito con más secciones después de la Margen Izquierda, el PSOE ganó por dos décimas: el 34,7% frente al 34,5%.</p>
 <p>Una sección censal es un trozo de barrio de entre 500 y 2.000 electores, la unidad más pequeña con resultados electorales. Todos los datos de la ciudad, elección a elección desde 1977, están en los <a href="https://mapaelectoral.es/municipio/zaragoza/zaragoza/">resultados de Zaragoza barrio a barrio</a>, y cada sección puede buscarse por su dirección en el <a href="https://mapaelectoral.es/">mapa electoral calle a calle</a>. Esta pieza mira cómo llega Zaragoza al 29 de noviembre.</p>
 <h2>Empate en el mapa, no en las urnas</h2>
-<p>El empate es de secciones, no de votos. En el conjunto de la ciudad, sin contar el voto exterior, el PP sacó el 36,1% y el PSOE, el 30,2%. La diferencia está en dónde y cuánto se vota: en las secciones que ganó el PP votó, de media, el 76,1% del censo, y en las del PSOE, el 67,5%. El PP ganó las suyas, además, con más margen: unos 16 puntos de diferencia típica con el segundo, frente a unos 10 en las del PSOE.</p>
+<p>El empate es de secciones, no de votos. En el conjunto de la ciudad, sin contar el voto exterior, el PP sacó el 36,1% y el PSOE, el 30,2%: casi seis puntos más para el PP. La diferencia está en dónde y cuánto se vota: en las secciones que ganó el PP votó, de media, el 76,1% del censo, y en las del PSOE, el 67,5%. El PP ganó las suyas, además, con más margen: unos 16 puntos de diferencia típica con el segundo, frente a unos 10 en las del PSOE.</p>
 <figure>
 <figcaption><span class="t">Zaragoza, sección a sección</span><span class="s">Partido más votado en cada sección censal. En 2023, el color es más claro donde el primero ganó por menos de 5 puntos</span></figcaption>
 <div class="chart" id="mapa"></div>
@@ -79,7 +79,13 @@ a{color:var(--comuns)} a:focus-visible,summary:focus-visible{outline:2px solid v
 <div class="chart" id="dist"></div>
 <div class="legend"><span><i class="sw" style="background:var(--pp)"></i>PP</span><span><i class="sw" style="background:var(--psoe)"></i>PSOE</span><span><i class="sw" style="background:var(--vox)"></i>Vox</span><span><i class="sw" style="background:var(--sumar)"></i>Sumar (2019: UP o Más País)</span></div>
 <div class="src">Fuente: Ministerio del Interior, resultados por mesa (vía pollspaindata), agregados por sección censal; sin voto exterior. Porcentajes sobre voto válido. Cálculo propio. Cada distrito suma sus secciones, ponderadas por votantes.</div>
-<details><summary>Ver la tabla por distrito</summary><div class="tbl" id="dist-tbl"></div></details>
+<details open><summary>Tabla por distrito</summary><div class="tbl" id="dist-tbl"></div></details>
+</figure>
+<figure>
+<figcaption><span class="t">La participación, distrito a distrito</span><span class="s">Porcentaje del censo que votó en las generales de julio de 2023 en cada distrito, de más a menos. Al lado, la renta mediana por unidad de consumo</span></figcaption>
+<div class="chart" id="part-dist"></div>
+<div class="legend"><span><i class="sw" style="background:var(--muted)"></i>Participación en 2023</span></div>
+<div class="src">Fuente: Ministerio del Interior, resultados por mesa (vía pollspaindata), agregados por sección censal; INE, Atlas de Distribución de Renta de los Hogares. Cálculo propio. Las cifras, en la tabla por distrito.</div>
 </figure>
 
 <p>El Centro es el bastión del PP: el 54,4% de los votos, con una participación del 79,2%. Allí está su mejor sección, con el 72,3% y un 87,0% de participación. El PSOE tuvo su mejor distrito en Las Fuentes (37,6%), y su mejor sección, en Oliver-Valdefierro, le dio el 57,0% con la participación más baja de la ciudad, el 44,3%. Vox sacó su mejor resultado en los Barrios Rurales del Oeste, con el 20,5%.</p>
@@ -204,4 +210,20 @@ table('gan-tbl',['Partido','Secciones ganadas, nov. 2019','Secciones ganadas, 20
 })();
 {const KS=PS.filter(k=>DEC.some(r=>r[k]>=3));table('dec-tbl',['Tramo de renta','Renta (€)','Participación'].concat(KS.map(k=>LB[k])),DEC.map(r=>[r.k==1?'1 (más pobre)':r.k==10?'10 (más rico)':r.k,(r.k==10?'desde '+N(r.rmin):N(r.rmin)+'–'+N(r.rmax)),c1(r.part)+'%'].concat(KS.map(k=>c1(r[k])+'%'))));}
 
+
+/* Nacho, 9-11-2026: gráfico de barras de participación por distrito */
+(function(){const box=document.getElementById('part-dist');if(!box)return;const NSv='http://www.w3.org/2000/svg';
+ const mk=(n,a,p)=>{const e=document.createElementNS(NSv,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+ const f1=v=>v.toFixed(1).replace('.',','),fN=v=>Math.round(v).toLocaleString('es-ES');
+ const rows=DI.filter(r=>r[9]>0).slice().sort((a,b)=>b[9]-a[9]);
+ const W=Math.max(300,box.clientWidth||640),n=W<500,ml=n?118:170,mr=n?92:120,rh=24,H=rows.length*rh+6;
+ const mx=Math.ceil(Math.max(...rows.map(r=>r[9]))/10)*10,x=v=>ml+v/mx*(W-ml-mr);
+ const svg=mk('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Participación en las generales de 2023 en cada distrito, de más a menos'},box);
+ rows.forEach((r,i)=>{const y=3+i*rh,nm=r[1]||('Distrito '+(+r[0]));
+  const t=mk('text',{x:ml-6,y:y+rh/2+4,'text-anchor':'end',style:'fill:var(--fg)','font-size':n?11:13},svg);t.textContent=nm.length>(n?17:26)?nm.slice(0,n?16:25)+'…':nm;
+  const b=mk('rect',{x:ml,y:y+4,width:Math.max(1.5,x(r[9])-ml),height:rh-9,rx:2,fill:'var(--muted)','fill-opacity':.75},svg);
+  mk('title',{},b).textContent=`${nm}: votó el ${f1(r[9])}%`;
+  mk('text',{x:x(r[9])+5,y:y+rh/2+4,'font-size':n?11:13,style:'fill:var(--fg)'},svg).textContent=f1(r[9])+'%';
+  mk('text',{x:W-2,y:y+rh/2+4,'text-anchor':'end','font-size':n?11:12},svg).textContent=r[10]?fN(r[10])+' €':'–';});
+})();
 </script>
