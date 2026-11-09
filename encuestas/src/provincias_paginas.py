@@ -52,6 +52,8 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                       f'<td class="n">{pc(l["voto"][1])}<small>{str(l["voto"][0]).replace(".", ",")}-{str(l["voto"][2]).replace(".", ",")}</small></td>'
                       f'<td class="n">{esc}</td><td class="n">{pp(l["p_primera"]) if l["p_primera"] >= 0.005 else "–"}</td></tr>')
         cuad = ''.join(f'<i style="background:{c.color_lista(l["lista"])}" title="{html.escape(corto(l["lista"]))}"></i>' * rc[l['lista']] for l in con)
+        # Nacho, 9-11-2026: leyenda con la correspondencia color-partido debajo de los cuadrados
+        ley = ''.join(f'<span><i style="background:{c.color_lista(l["lista"])}"></i>{html.escape(corto(l["lista"]))} <b>{rc[l["lista"]]}</b></span>' for l in con if rc[l['lista']] > 0)
         vecinas = [(slug_provincia(p), nombres[p]) for p in meta['ccaa'][ccaa_de[cod]] if p != cod]
         faq = [(f'¿Cuántos diputados elige {nombre}?', f'{total}. Se reparten con la ley D\'Hondt entre las candidaturas que pasan del 3 % de los votos válidos de la provincia.'),
                (f'¿Quién gana en {nombre} según las encuestas?', p2 + ' ' + p1),
@@ -76,7 +78,8 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <p class="propio"><b>Modelo propio, no es una encuesta de {html.escape(nombre)}.</b> Las encuestadoras no publican sus datos por provincia. Estas cifras salen del modelo de Mapa Electoral, que reparte por provincia la media de las <a href="../">encuestas publicadas</a> y simula el resultado {sims} veces. <a href="../metodo-modelo.html">Cómo se calcula</a>.</p>
 <p data-tipo="dato">{html.escape(p1)}</p>
 <figure><figcaption><span class="t">Los {total} escaños de {html.escape(nombre)} en el reparto central</span><span class="s">Un cuadrado por escaño, con el color del partido que lo saca en el reparto central.</span></figcaption>
-<div class="esc grande" aria-hidden="true">{cuad}</div></figure>
+<div class="esc grande" aria-hidden="true">{cuad}</div>
+<div class="ley">{ley}</div></figure>
 <p data-tipo="dato">{html.escape(p2)}</p>
 <p data-tipo="dato">{html.escape(p3)}</p>
 <h2>Voto y escaños de cada partido en {html.escape(nombre)}</h2>
@@ -90,6 +93,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 </main>"""
         estilos = c.ESTILOS.replace('</style>', '.esc{display:flex;flex-wrap:wrap;gap:3px;margin:.6rem 0}.esc.grande i{width:18px;height:18px;border-radius:3px;display:block}'
                                     '.esc i.aire{background:var(--grid);outline:1px solid var(--rule);outline-offset:-1px}'
+                                    '.ley{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-family:var(--ui);font-size:.95rem;margin:.2rem 0 0}.ley span{display:inline-flex;align-items:center;gap:.35rem}.ley i{width:14px;height:14px;border-radius:3px;display:inline-block}'
                                     '.casas{columns:2;font-family:var(--ui);font-size:.95rem;padding-left:1.1rem}@media (max-width:520px){.casas{columns:1}}</style>')
         pagina = (c.cabecera(f'Encuesta {nombre} elecciones generales 2026: escaños según la media de encuestas', desc, url, imagen, jsonld)
                   .replace(f'<meta property="og:title" content="Encuesta {html.escape(nombre)} elecciones generales 2026: escaños según la media de encuestas">',
