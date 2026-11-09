@@ -105,8 +105,8 @@
     if (st.v === 'gana') {
       const g = d[st.y + '_gana'] ? d[st.y + '_gana'][i] : -1;
       if (g == null || g < 0) return NODATA();
-      const f = FAM[g], b = f.cod === 'SUMAR' && d[st.y + '_SUMAR_B'] ? d[st.y + '_SUMAR_B'][i] || 0 : 0;
-      const t = d[st.y + '_' + f.cod][i] || 0, s = b ? Math.max(t - b, b) : t;   // dos listas: la de la más votada
+      const f = FAM[g], b = f.cod === 'SUMAR' && d[st.y + '_SUMAR_B'] ? d[st.y + '_SUMAR_B'][i] : null;
+      const s = b ? Math.max(d[st.y + '_SUMAR_A'][i] || 0, b) : d[st.y + '_' + f.cod][i] || 0;   // dos listas: la de la más votada
       return mix(BG(), f.rgb, Math.max(.28, Math.min(1, (s - .15) / .35)));
     }
     const v = value(d, i);
@@ -380,11 +380,12 @@
     '2019_11': [/Más País|Més País|Compromís/, p => ['03', '12', '46'].includes(p) ? 'Més Compromís' : 'Más País'],
   };
   function dosListas(r, d, i, y, mi) {
-    const b = d[y + '_SUMAR_B'] ? d[y + '_SUMAR_B'][i] : null;
-    if (!b || r.v == null || !SEGUNDA[y]) return [r];
+    const b = d[y + '_SUMAR_B'] ? d[y + '_SUMAR_B'][i] : null, a = d[y + '_SUMAR_A'] ? d[y + '_SUMAR_A'][i] : null;
+    if (!b || a == null || r.v == null || !SEGUNDA[y]) return [r];
     const [re, porDefecto] = SEGUNDA[y], partes = r.n.split(' + '), nb = partes.filter(x => re.test(x));
     const na = partes.length > 1 && nb.length === 1 ? partes.filter(x => !re.test(x)).join(' + ') : r.n;
-    const A = { f: r.f, v: r.v - b, n: na }, B = { f: r.f, v: b, n: nb.length === 1 && partes.length > 1 ? nb[0] : porDefecto(MUN.cod[mi].slice(0, 2)), b: true, par: A };
+    const A = { f: r.f, v: a, n: na }, B = { f: r.f, v: b, n: nb.length === 1 && partes.length > 1 ? nb[0] : porDefecto(MUN.cod[mi].slice(0, 2)), b: true, par: A };
+    // A y B vienen ya de los votos (src/mapa_listas_separadas.py): restar dos redondeos daría 0,1 puntos de error
     A.a = B;   // cada fila sabe cuál es la otra lista, para saber cuál de las dos es la más votada
     return [A, B];
   }
@@ -404,7 +405,8 @@
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
     h += '<table class="t-bars">' + rows.map(r => `<tr><th${r.n !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${r.n.length > 16 ? 'normal' : 'nowrap'}">${escH(r.n)}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
-    if (rows.some(r => r.b)) h += '<p class="t-na">En esta elección el espacio de Sumar / Podemos / IU fue en dos listas: van por separado, y el más votado se calcula lista a lista.</p>';
+    if (d[y + '_SUMAR_B'] && d[y + '_SUMAR_B'][i] && SEGUNDA[y]) h +=   // aunque la segunda lista no quepa entre las seis filas
+      '<p class="t-na">En esta elección el espacio de Sumar / Podemos / IU fue en dos listas: van por separado, y el más votado se calcula lista a lista.</p>';
     if (REPUBLICA(y)) {
       const fus = !isSec && d[y + '_fus'] ? d[y + '_fus'][i] : null;
       h += `<p class="t-na">Listas abiertas: peso de cada bloque en los votos a candidatos.${fus ? ' Suma los municipios de entonces: ' + escH(fus) + '.' : ''}</p>`;
