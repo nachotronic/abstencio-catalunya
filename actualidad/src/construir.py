@@ -781,9 +781,9 @@ PIEZAS = [
     ),
     dict(
         slug='palma-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 10:30',
-        correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 168 secciones, no en 154; el PP, en 54, no en 50, y Unidas Podemos, en 17, no en 35.',
+        correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 168 secciones, no en 154; el PP, en 54, no en 50 (también en la entradilla), y Unidas Podemos, en 17, no en 35.',
         titulo='Palma, la gran ciudad que menos vota: el 62,5% en 2023, y menos del 35% en algunas secciones del este', serie='29n',
-        descripcion='El PP pasó de ganar en 50 secciones censales a ganar en 134, y el PSOE resiste en el este, donde menos se vota. En el norte, el PP ganó por una décima.',
+        descripcion='El PP pasó de ganar en 54 secciones censales a ganar en 134, y el PSOE resiste en el este, donde menos se vota. En el norte, el PP ganó por una décima.',
         compara='Las 253 secciones censales de Palma en las generales de noviembre de 2019 y julio de 2023, agrupadas por distrito censal del INE y por tramos de renta por unidad de consumo de 2023.',
         limites='Son datos de secciones, no de personas, y no explican por qué cada barrio vota como vota. Sin voto exterior, así que la participación sale más alta que la oficial. La comparación con noviembre de 2019 solo incluye las secciones que conservan el código. La renta de las secciones más ricas está topada en 58.752 euros. Los límites de sección están simplificados. Los distritos censales del INE no coinciden con los municipales; su descripción es un cálculo propio o sale de documentos que no están pensados para eso.',
         fuentes=[INTERIOR, INE,
