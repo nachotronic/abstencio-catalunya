@@ -642,7 +642,7 @@ PIEZAS = [
                   pie='Bloques antiguos, torres nuevas, un tren y un pueblo: un collage de contrastes.'),
     ),
     dict(
-        slug='madrid-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='madrid-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 1.401 secciones, no en 1.267, y el PP en 983, no en 960; 586 pasaron del PSOE al PP, no 521. En Centro ganó el PSOE, no Sumar, así que el PSOE ganó en once distritos, no en diez, y en Centro y Arganzuela no hubo secciones que pasaran de Sumar al PP. Se corrigen el mapa de 2019 y las cifras por distrito.',
         titulo='Madrid llega al 29N teñida de azul: el PP ganó en 1.603 de sus 2.450 secciones y el PSOE solo resiste en cuatro distritos del sur', serie='29n',
         descripcion='En 2023, 586 secciones censales de la capital pasaron del PSOE al PP. Doscientas se decidieron por menos de dos puntos, la mitad en Latina, Carabanchel, Ciudad Lineal y Centro.',
@@ -661,7 +661,7 @@ PIEZAS = [
                   pie='La Gran Vía y el edificio Metrópolis junto a un mapa de Madrid y un plano de calles, en collage.'),
     ),
     dict(
-        slug='barcelona-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='barcelona-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. ERC ganó en 579 secciones en 2019, no en 563 (también en el titular); el PSC, en 331, no en 319, y 553 pasaron de ERC al PSC, no 540. Se corrigen el mapa de 2019 y las cifras por distrito.',
         titulo='Barcelona pasó del amarillo al rojo: ERC ganó en 579 secciones en 2019 y en ninguna en 2023', serie='29n',
         descripcion='El PSC fue el más votado en nueve de cada diez secciones censales de la ciudad en las últimas generales. Solo Sarrià-Sant Gervasi se le resistió, y allí el que ganó fue el PP.',
@@ -680,7 +680,7 @@ PIEZAS = [
                   pie='Azoteas, árboles y una fuente: una ciudad mediterránea en collage.'),
     ),
     dict(
-        slug='valencia-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='valencia-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. El error cambiaba el sentido de la pieza: el espacio de Compromís y Podemos no ganaba en 101 secciones en 2019, sino Unidas Podemos en 8 y Més Compromís en ninguna, y Sumar ganó en 15 en 2023. Se cambia el titular («València borró a Compromís del mapa: ganaba en 101 secciones en 2019 y en 15 en 2023»). En 2019 el PSOE ganó en 350 secciones y el PP en 224, 105 secciones pasaron del PSOE al PP y el PSOE ganó doce distritos, Benimaclet incluido.',
         titulo='València se tiñó de azul: el PP pasó de ganar en 224 secciones en 2019 a 335 en 2023', serie='29n',
         descripcion='El PP pasó a ser el más votado en 335 de las 591 secciones censales de la ciudad. El PSOE resiste en un arco de barrios del norte, el oeste y el mar, y 64 secciones se decidieron por menos de dos puntos.',
@@ -700,7 +700,7 @@ PIEZAS = [
                   pie='Un mercado, monedas y un tique: la economía de cada día, en collage.'),
     ),
     dict(
-        slug='sevilla-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='sevilla-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 345 secciones, no en 342, y el PP en 166, no en 164; 64 pasaron del PSOE al PP, no 61.',
         titulo='Sevilla tiene dos mapas: el PP ganó en votos el 23J, pero el PSOE fue el primero en 286 de sus 521 secciones', serie='29n',
         descripcion='El PSOE ganó en todas las secciones de Cerro-Amate y Norte. Allí se vota mucho menos que en Los Remedios o Nervión, y la diferencia de participación entre barrios ricos y pobres es, con la de Málaga, la mayor de las grandes ciudades.',
@@ -718,7 +718,7 @@ PIEZAS = [
                   pie='Una persiana a medio subir, unas llaves y una tienda de barrio: un collage.'),
     ),
     dict(
-        slug='zaragoza-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='zaragoza-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 351 secciones, no en 344, y 103 pasaron del PSOE al PP, no 101.',
         titulo='Zaragoza, empate barrio a barrio: el PSOE ganó en 250 secciones y el PP en 245, y 53 se decidieron por menos de dos puntos', serie='29n',
         descripcion='El PP sacó seis puntos más en votos, pero el mapa de Zaragoza es el más igualado de las grandes ciudades. En Delicias, el PSOE ganó por dos décimas.',
@@ -739,7 +739,7 @@ PIEZAS = [
                   pie='Guantes, herramientas y un reloj de fichar: el turno de trabajo, en collage.'),
     ),
     dict(
-        slug='malaga-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='malaga-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         titulo='En Málaga, la renta decide quién vota: el 46,7% en los barrios más pobres y el 80,6% en los más ricos', serie='29n',
         descripcion='Es la mayor brecha de participación de las ocho grandes ciudades analizadas. En 2023, 116 secciones censales de Málaga pasaron del PSOE al PP, y el PP ganó en 223 de las 435.',
         compara='Las 435 secciones censales de Málaga en las generales de noviembre de 2019 y julio de 2023, agrupadas por distrito censal del INE y por tramos de renta por unidad de consumo de 2023.',
@@ -758,7 +758,7 @@ PIEZAS = [
                   pie='Redes, cajas de pescado y un puerto: un collage costero.'),
     ),
     dict(
-        slug='murcia-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='murcia-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PP ganó en 166 secciones, no en 165. Las conclusiones no cambian.',
         titulo='Murcia, de verde a azul: Vox ganó en 164 secciones en 2019 y en una en 2023', serie='29n',
         descripcion='El PP fue el más votado en 376 de las 387 secciones censales del municipio. Pero Vox sigue sacando en las pedanías de la huerta y el campo su mejor resultado, y el PSOE solo ganó en diez.',
@@ -780,7 +780,7 @@ PIEZAS = [
                   pie='Tierra seca, un embalse y un grifo: el agua en el paisaje, en collage.'),
     ),
     dict(
-        slug='palma-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:16',
+        slug='palma-barrio-a-barrio-29n', fecha='2026-10-15', actualizado='2026-11-09 12:26',
         correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 168 secciones, no en 154; el PP, en 54, no en 50 (también en la entradilla), y Unidas Podemos, en 17, no en 35.',
         titulo='Palma, la gran ciudad que menos vota: el 62,5% en 2023, y menos del 35% en algunas secciones del este', serie='29n',
         descripcion='El PP pasó de ganar en 54 secciones censales a ganar en 134, y el PSOE resiste en el este, donde menos se vota. En el norte, el PP ganó por una décima.',
@@ -4199,7 +4199,7 @@ PIEZAS += [
         lugar='Nueva Zelanda',
     ),
     dict(
-        slug='huelga-carnica-pueblos-industria-29n', fecha='2026-11-09',
+        slug='huelga-carnica-pueblos-industria-29n', fecha='2026-11-09', actualizado='2026-11-09 12:26',
         titulo='En los municipios donde más pesa la industria, el PP saca 1,9 puntos menos que en el resto de su provincia, y el voto a Vox apenas cambia', serie='29n', figura=0,
         descripcion='La industria cárnica está llamada a la huelga del 9 al 13 de noviembre. El 11,5 % de los ocupados de España trabaja en la industria; en Guissona, sede de bonÀrea, el 56,3 %. Dentro de cada provincia, los municipios más industriales votaron en 2023 algo menos al PP.',
         compara='El peso de la industria en el empleo de cada municipio, según el censo de 2023 del INE, frente a su voto en las generales de julio de 2023, comparando cada municipio con la media de su provincia.',
