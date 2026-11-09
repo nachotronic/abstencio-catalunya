@@ -12,6 +12,32 @@ def grp(dims,limit=5000,d1='2026-10-31',d2='2026-11-09',extra=''):
     f='{AND:[{siteTag:"%s"},{date_geq:"%s"},{date_leq:"%s"},{requestPath_notin:%s}%s]}'%(SITE,d1,d2,json.dumps(EXC),extra)
     q='{viewer{accounts(filter:{accountTag:"%s"}){g:rumPageloadEventsAdaptiveGroups(limit:%d,filter:%s,orderBy:[sum_visits_DESC]){count sum{visits} dimensions{%s}}}}}'%(ACC,limit,f,' '.join(dims))
     return gql(q)
+for r in sorted(grp(['date']),key=lambda r:r['dimensions']['date']): print('DIA',r['dimensions']['date'],r['sum']['visits'],r['count'])
 H='2026-11-09'
-for d in ['2026-11-09','2026-11-08','2026-11-07','2026-11-06']:
-    for r in grp(['refererHost','requestPath','datetimeHour','deviceType'],200,d1=d,d2=d,extra=',{refererHost_like:"%facebook%"}'): print('FB',d,r['sum']['visits'],r['count'],r['dimensions'])
+for d in ['2026-11-09','2026-11-08','2026-11-02']:
+    hh=collections.Counter()
+    for r in grp(['datetimeHour'],d1=d,d2=d): hh[r['dimensions']['datetimeHour'][11:13]]+=r['sum']['visits']
+    print('HORAS_UTC',d,sorted(hh.items()))
+for r in grp(['requestPath'],25,d1=H,d2=H): print('PATH',r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
+sec=collections.Counter()
+for r in grp(['requestPath'],5000,d1=H,d2=H):
+    p=r['dimensions']['requestPath']; s=p.strip('/').split('/')[0] or '(portada)'; sec[s]+=r['sum']['visits']
+print('SECCIONES',sec.most_common(15))
+for r in grp(['requestPath'],5000,d1=H,d2=H,extra=',{requestPath_like:"/actualidad/%"}'): print('ACT',r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
+for r in grp(['requestPath'],5000,d1=H,d2=H,extra=',{requestPath_like:"/internacional/%"}'): print('INT',r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
+for s in ['40db','huelga','mapa-electoral-seccion']:
+    hh=collections.Counter()
+    for r in grp(['requestPath','datetimeHour'],500,d1=H,d2=H,extra=',{requestPath_like:"%%%s%%"}'%s): hh[(r['dimensions']['requestPath'],r['dimensions']['datetimeHour'][11:13])]+=r['sum']['visits']
+    print('SLUGH',s,sorted(hh.items()))
+for d in [H,'2026-11-08','2026-11-02']:
+    ref=collections.Counter()
+    for r in grp(['refererHost'],d1=d,d2=d):
+        h=r['dimensions']['refererHost'] or '(directo)'; h='google' if 'google' in h else h; ref[h]+=r['sum']['visits']
+    print('REF',d,ref.most_common(12))
+dev=collections.Counter()
+for r in grp(['deviceType'],d1=H,d2=H): dev[r['dimensions']['deviceType']]+=r['sum']['visits']
+print('DEV',dev.most_common())
+
+for r in grp(['refererHost','refererPath'],60,d1=H,d2=H,extra=',{refererHost_notlike:"%google%"}'): print('REFP',r['sum']['visits'],r['dimensions']['refererHost'],r['dimensions']['refererPath'])
+
+for r in grp(['refererHost','requestPath'],30,d1=H,d2=H,extra=',{refererHost_notlike:"%google%"},{refererHost_notlike:"%mapaelectoral%"},{refererHost_neq:""}'): print('REFL',r['sum']['visits'],r['dimensions']['refererHost'],r['dimensions']['requestPath'])
