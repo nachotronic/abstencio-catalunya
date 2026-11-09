@@ -8,8 +8,8 @@ lo calculan ya lista a lista (#510, src/territorios_datos.py); este script hace 
 
 Toma los votos de la segunda lista por sección (descargas/listas_separadas.csv, de listas_separadas.py) y:
   - en data/municipios.json, data/e/<elección>.json y data/sec/<provincia>.json, cambia <elección>_gana donde la
-    familia ganaba sumando y no gana ninguna de sus dos listas, y añade <elección>_SUMAR_B, el porcentaje de la
-    segunda lista (la ficha del mapa la enseña como una fila aparte);
+    familia ganaba sumando y no gana ninguna de sus dos listas, y añade <elección>_SUMAR_A y <elección>_SUMAR_B, el
+    porcentaje de cada lista calculado desde los votos (la ficha del mapa las enseña como dos filas);
   - en descargas/municipios.csv y descargas/secciones.csv, cambia la columna <elección>_gana igual.
 Los porcentajes de la familia (<elección>_SUMAR) no cambian: son los de la familia.
 
@@ -45,7 +45,7 @@ def tablas(desc):
             sub['SUMAR'] = np.maximum(t.SUMAR - t.sumar_b, t.sumar_b)    # la más votada de las dos listas
             g = pd.Series(np.where(t.candidaturas > 0, sub.idxmax(axis=1), None), index=t.index)  # empate: orden de CODIGOS, como construir.py
             val = (t.candidaturas + t.blancos).where(lambda x: x > 0)
-            res.append(pd.DataFrame({'gana': g, 'b': (t.sumar_b / val).round(3)}))
+            res.append(pd.DataFrame({'gana': g, 'a': ((t.SUMAR - t.sumar_b) / val).round(3), 'b': (t.sumar_b / val).round(3)}))   # desde los votos: sin doble redondeo
         out[y] = res
     return out
 
@@ -65,7 +65,7 @@ def json_web(f, T, nivel):
         if k not in d:
             continue
         t = ts if nivel == 'sec' else tm
-        g, b = t.gana.reindex(cods), t.b.reindex(cods)
+        g, a, b = t.gana.reindex(cods), t.a.reindex(cods), t.b.reindex(cods)
         arr = []
         for i, (v, n) in enumerate(zip(d[k], g)):
             viejo = CODIGOS[v] if v >= 0 else None
@@ -73,7 +73,12 @@ def json_web(f, T, nivel):
             cambios += nv != viejo
             arr.append(CODIGOS.index(nv) if nv else -1)
         d[k] = arr
-        d[f'{y}_SUMAR_B'] = [None if pd.isna(x) or x == 0 else float(x) for x in b]
+        fam = d.get(f'{y}_SUMAR')
+        for x, s_, v in zip(a, b, fam or []):   # control: las dos listas suman la familia (con el redondeo de cada una)
+            assert pd.isna(s_) or s_ == 0 or v is None or abs(x + s_ - v) <= .0016, (f, y, x, s_, v)
+        sep = [not pd.isna(x) and x > 0 for x in b]   # solo donde hubo segunda lista
+        d[f'{y}_SUMAR_A'] = [float(x) if s and not pd.isna(x) else None for x, s in zip(a, sep)]
+        d[f'{y}_SUMAR_B'] = [float(x) if s else None for x, s in zip(b, sep)]
     json.dump(d, open(f, 'w'), separators=(',', ':'), ensure_ascii=False)
     return cambios
 
