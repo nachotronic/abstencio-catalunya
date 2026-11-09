@@ -228,6 +228,11 @@
    "texto": "encuesta de cada una de las 17 empresas que han publicado",
    "cifra": "17",
    "calculo": "len(D['CASAS'])"
+  },
+  {
+   "texto": "Las cuatro encuestas de este lunes, partido a partido",
+   "cifra": "cuatro",
+   "calculo": "len([c for c in D['CASAS'] if c[2]=='2026-11-09'])"
   }
  ],
  "externas": [
