@@ -35,7 +35,7 @@ from piezas3 import piezas3  # noqa: E402
 BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
-ACTUALIZADO = '2026-11-08'   # cámbiala a mano cuando cambien los datos o el texto
+ACTUALIZADO = '2026-11-09'   # cámbiala a mano cuando cambien los datos o el texto
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 # Noche del 29N: con True, el título, la descripción y la cabecera de cada ficha de municipio pasan a «Resultados del 29N en X».
 # Se cambia a True (y se reconstruye) cuando Interior publique los primeros datos; el escrutinio en directo de la ficha
@@ -258,22 +258,32 @@ def bloque_directo(nombre, cod, r):
             f'<script src="{raiz}generales-2026/directo-municipio.js" defer></script></section>')
 
 
-def bloque_serie(nombre, serie):
+def prov_lista(provs):
+    """La provincia que da nombre a las listas de Sumar / Podemos / IU (En Comú Podem, En Marea...) si todas las del
+    territorio comparten esos nombres; None (nombre estatal) si se mezclan, como en España entera."""
+    nombres = {tuple(T.nombre_ganador({'pct': {'SUMAR': 1}}, y, p) for y in T.LISTA_SUMAR) for p in provs}
+    return provs[0] if provs and len(nombres) == 1 else None
+
+
+def bloque_serie(nombre, serie, provs=()):
     fams = [c for c in T.FAM if c != 'OTROS' and max((serie[y]['pct'][c] or 0) for y in T.GENERALES) >= 0.05]
+    pl = prov_lista(list(provs))
     filas = []
     for y in T.GENERALES:
         r = serie[y]
         g = T.ganador(r)
-        filas.append([T.etiqueta(y), pct(r['part']), escape(T.nombre_familia(g, y)) if g else '—'] + [pct(r['pct'][c]) if r['pct'][c] else '—' for c in fams])
+        filas.append([T.etiqueta(y), pct(r['part']), escape(T.nombre_ganador(r, y, pl)) if g else '—'] + [pct(r['pct'][c]) if r['pct'][c] else '—' for c in fams])
     falta = [T.etiqueta(y) for y in T.GENERALES if serie[y]['sin_dato']]
     nota = (f' En {", ".join(falta)} faltan en los ficheros de Interior los resultados de algún municipio de {escape(nombre)}; se calcula con los que hay.' if falta else '')
     return ('<h2>De 1977 a 2023: las 16 elecciones generales</h2>'
             + p_('Dato', f'Voto de los partidos que han pasado alguna vez del 10 % en {escape(nombre)}. Las familias agrupan a cada partido con sus antecesores y coaliciones: '
                  'el PP incluye a AP (hasta 1986) y a UPN; «Sumar / Podemos / IU», al PCE y el PSUC, IU y Unidas Podemos; «Junts / CiU», a CiU. '
-                 'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, UPN y el PP en 2023), su porcentaje es la suma de las dos. '
+                 'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, Unidas Podemos y Más País en noviembre de 2019, Compromís y EUPV o Unides Podem en la Comunitat Valenciana en 2011 y abril de 2019, UPN y el PP en 2023), su porcentaje es la suma de las dos; '
+                 'el más votado, en cambio, se calcula con cada lista por separado y lleva el nombre de la candidatura de ese año. '
                  f'Detalle en la <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.{nota}')
             + f'<figure>{lineas(serie)}<figcaption>Porcentaje de voto válido en las elecciones al Congreso. Sin voto desde el extranjero (CERA).</figcaption></figure>'
-            + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}', ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas, num_desde=1))
+            + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}', ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas, num_desde=1)
+            + (f'<p class="leyenda">{escape(T.nota_separadas(serie, T.GENERALES, pl))}</p>' if 'SUMAR' in fams and T.nota_separadas(serie, T.GENERALES, pl) else ''))
 
 
 def bloque_renta(nombre, en, sec, ciudad=False):
@@ -565,7 +575,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
                                                 [hijo for hijo in hijos]))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
-    h.append(bloque_serie(nombre, serie))
+    h.append(bloque_serie(nombre, serie, provs))
     if len(provs) == 1 and provs[0] in MAPA_EVOLUCION:
         h.append(bloque_evolucion(nombre, provs))
     h.append(bloque_renta(nombre, en, sec))
@@ -797,7 +807,7 @@ def pagina_ciudad(cod):
     h.append(b_renta)
     h.append(bloque_ocupacion(nombre, cod, p, PROV_NOMBRE[p], RANKING_OCUP))
     h.append(bloque_municipales(nombre, m, r))
-    h.append(bloque_serie(nombre, serie))
+    h.append(bloque_serie(nombre, serie, [p]))
     h.append(faq_html)
     rel = actualidad_de([s for s, (c, _) in ACTUALIDAD_MUNICIPIO.items() if c == cod], raiz)
     rel += [(f'{raiz}atlas/{atlas.ruta_pieza(q).replace("index.html", "")}', atlas.titular(q), 'Atlas') for q in ATLAS if cod in q['_muns']]
@@ -1019,15 +1029,21 @@ def pagina_barrio(cod, b, todos):
     ys = [y for y in TB.ELEC if s[y]]
     if len(ys) >= 4:
         fams = [c for c in T.FAM if c != 'OTROS' and max((s[y]['pct'][c] or 0) for y in ys) >= 0.05]
-        filas = [[T.etiqueta(y), pct(s[y]['part']), escape(T.nombre_familia(T.ganador(s[y]), y))] + [pct(s[y]['pct'][c]) if s[y]['pct'][c] else '—' for c in fams] for y in ys]
-        ganadores = [T.ganador(s[y]) for y in ys]
-        cambios = sum(1 for i in range(1, len(ganadores)) if ganadores[i] != ganadores[i - 1])
-        if cambios == 0:
-            t = f'{art_partido(ganadores[0], ccaa)[0].upper() + art_partido(ganadores[0], ccaa)[1:]} ha ganado en {escape(nombre)} todas las generales desde {T.etiqueta(ys[0])}.'
+        filas = [[T.etiqueta(y), pct(s[y]['part']), escape(T.nombre_ganador(s[y], y, p))] + [pct(s[y]['pct'][c]) if s[y]['pct'][c] else '—' for c in fams] for y in ys]
+        # el más votado de cada elección, por su lista de ese año (Podemos en 2015 no es el Sumar de 2023)
+        ganadores = [T.nombre_ganador(s[y], y, p) for y in ys]
+        art = {T.nombre_ganador(s[y], y, p): art_partido(T.ganador(s[y]), ccaa) if T.ganador(s[y]) != 'SUMAR' else T.nombre_ganador(s[y], y, p) for y in ys}
+        fam_g = [T.ganador(s[y]) for y in ys]   # los cambios, por familia: de Podemos a Unidos Podemos no hay cambio
+        cambios = sum(1 for i in range(1, len(fam_g)) if fam_g[i] != fam_g[i - 1])
+        if cambios == 0 and len(set(ganadores)) > 1:   # la familia de Sumar, Podemos e IU, con un nombre en cada elección
+            t = (f'El espacio de Sumar, Podemos e IU ha sido el más votado en {escape(nombre)} en todas las generales desde {T.etiqueta(ys[0])}: '
+                 + ', '.join(f'{escape(n)} ({", ".join(T.etiqueta(y) for y in ys if T.nombre_ganador(s[y], y, p) == n)})' for n in dict.fromkeys(ganadores)) + '.')
+        elif cambios == 0:
+            t = f'{cap(art[ganadores[0]])} ha ganado en {escape(nombre)} todas las generales desde {T.etiqueta(ys[0])}.'
         else:
-            veces = {c: ganadores.count(c) for c in set(ganadores)}
+            veces = {c: ganadores.count(c) for c in dict.fromkeys(ganadores)}   # en orden de aparición: estable entre reconstrucciones
             t = (f'Desde {T.etiqueta(ys[0])}, el {tipo_b} ha cambiado de partido más votado {cambios} {"vez" if cambios == 1 else "veces"}: '
-                 + ', '.join(f'{art_partido(c, ccaa)} ganó en {k}' for c, k in sorted(veces.items(), key=lambda x: -x[1])) + f' de {len(ys)} elecciones.')
+                 + ', '.join(f'{escape(art[c])} ganó en {k}' for c, k in sorted(veces.items(), key=lambda x: -x[1])) + f' de {len(ys)} elecciones.')
         dp = s[ys[-1]]['part'] - s[ys[0]]['part']
         t += f' La participación ha pasado del {pct(s[ys[0]]["part"])} en {T.etiqueta(ys[0])} al {pct(s[ys[-1]]["part"])} en 2023.'
         falta = [T.etiqueta(y) for y in TB.ELEC if not s[y]]
@@ -1036,7 +1052,8 @@ def pagina_barrio(cod, b, todos):
                          ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas)
                  + '<p class="leyenda">Con las secciones censales de 2023: los resultados de cada elección son los de las secciones que ya existían con el mismo código. '
                  + (f'No se muestran {", ".join(falta)} porque entonces faltaba más del 20 % del censo actual (secciones creadas o renumeradas después). ' if falta else '')
-                 + 'Las familias agrupan a cada partido con sus antecesores y coaliciones (Podemos, IU y Sumar; Junts y CiU).</p>')
+                 + 'Las familias agrupan a cada partido con sus antecesores y coaliciones (Podemos, IU y Sumar; Junts y CiU). '
+                 + (escape(T.nota_separadas(s, ys, p)) if 'SUMAR' in fams else '') + '</p>')
 
     # quién vive: tabla
     filas = [['Habitantes (2023)', num(dm['poblacion']), num(dc['poblacion'])],
