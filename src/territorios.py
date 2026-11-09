@@ -1908,9 +1908,11 @@ def tema_calle():
              'const esc=t=>t.replace(/[&<>"]/g,c=>"&#"+c.charCodeAt(0)+";");let tq,nq=0;'
              'i.addEventListener("input",()=>{const v=i.value.trim();clearTimeout(tq);if(v.length<4)return;tq=setTimeout(async()=>{const k=++nq;try{'
              'const cs=(await (await fetch(CC+encodeURIComponent(v))).json()).filter(c=>(c.type==="portal"||c.type==="callejero")&&c.muniCode);if(k!==nq)return;'
-             'dl.innerHTML=cs.map(c=>{const[a,m]=c.address.split(/,\\s*/);return\'<option value="\'+esc(tit(a)+", "+(m||c.muni))+\'">\'}).join("")}catch(e){}},300)});'
+             'const sin=cs.filter(c=>!c.extension);'   # «CALLE MAYOR 1 3»: portal con extensión, confuso en la lista
+             'dl.innerHTML=(sin.length?sin:cs).map(c=>{const[a,m]=c.address.split(/,\\s*/);return\'<option value="\'+esc(tit(a)+", "+(m||c.muni))+\'">\'}).join("")}catch(e){}},300)});'
              'f.addEventListener("submit",e=>{const v=i.value.trim();if(!v||!fr)return;e.preventDefault();fr.src=fr.dataset.src+"?q="+encodeURIComponent(v);'
              'fr.scrollIntoView({behavior:"smooth",block:"center"})})})();</script>')
+    h.append(foto_html(ruta, raiz))
     filas = []
     for c, v in sorted(fichas.items(), key=lambda kv: -len(kv[1])):
         filas.append([f'<a href="{raiz}{CIUDADES[c]}#barrios">{escape(_nom(c))}</a>', num(len(v))])
@@ -2073,9 +2075,9 @@ def tema_seccion(resumen):
            'Al pulsar en tu sección, su ficha muestra el voto de cada candidatura con su nombre real, el partido más votado y la participación, '
            'y con el selector de elección se ve cómo ha cambiado desde 2004.'),
           ('¿Qué elecciones hay por sección censal?',
-           'Las generales al Congreso desde 2004, las municipales desde 2011 y las europeas desde 2004. Las anteriores se ven por municipio, desde 1977.'),
+           'Las generales al Congreso desde 2004, las municipales desde 2011 y las europeas desde 2004. Las anteriores se ven por municipio: generales desde 1977, municipales desde 1979 y europeas desde 1987.'),
           ('¿Cuándo estará el voto por secciones del 29N?',
-           'La noche del 29 de noviembre el mapa mostrará el recuento en directo. El voto de cada sección censal llegará cuando el Ministerio del Interior publique los resultados por mesa.'),
+           'Cuando el Ministerio del Interior publique los resultados por mesa, que no se difunden la noche electoral: entonces se añadirán al mapa sección a sección.'),
           ('¿Se pueden descargar los resultados por sección?',
            f'Sí, en CSV y con licencia <a href="{LICENCIA}">CC BY 4.0</a>, desde la <a href="{RAIZ_REL}generales-2026/metodologia.html#descargas">metodología del mapa</a>.')]
     faq_html, faq_ld = faq(qs)
