@@ -3343,6 +3343,7 @@ ANTETITULOS = {
     'listas-proclamadas-29n': 'Listas proclamadas',
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'bizkaia-pnv-bildu-encuestas-29n': 'El feudo del PNV',
+    'encuestas-40db-psoe-podemos-29n': 'La encuesta de El País',
     'cinturon-rojo-madrid-29n': 'El cinturón rojo',
     'participacion-renta-municipios-madrid-29n': 'Quién no vota en Madrid',
     'participacion-navarra-municipios-29n': 'Quién vota en Navarra',
@@ -4243,6 +4244,28 @@ PIEZAS += [
                  ('https://www.alimarket.es/construccion/noticia/323402/las-obras-de-las-1-312-viviendas-de-ribera-del-calderon-podrian-comenzar-este-ano', 'Alimarket, las 1.312 viviendas de Ribera del Calderón')],
         enlaces=[],
         lugar='Madrid y Barcelona',
+    ),
+]
+
+PIEZAS += [
+    dict(
+        slug='encuestas-40db-psoe-podemos-29n', fecha='2026-11-09',
+        titulo='El PSOE se queda a dos puntos del PP en la encuesta de El País, su mejor dato en 40dB desde 2024', serie='29n', figura=0,
+        descripcion='40dB da al PSOE el 29,9 % y al PP el 31,9 %. Las otras tres encuestas publicadas este lunes ven entre seis y ocho puntos de distancia. Podemos cae al 1,2 %, su mínimo en esta serie, y se quedaría sin escaño.',
+        compara='La encuesta preelectoral de 40dB para El País y la SER (campo del 2 al 4 de noviembre de 2026) con las anteriores de la misma empresa desde enero de 2025, con la última encuesta de cada empresa publicada desde el 10 de octubre y con la media de encuestas de nuestro modelo.',
+        limites='Una encuesta tiene un margen de error de ±2,2 puntos para cada porcentaje, y mayor para la distancia entre dos partidos. Las transferencias de voto salen de submuestras pequeñas (152 votantes de Sumar en 2023 en noviembre, 46 en octubre) y en octubre la opción se llamaba «Sumar/Frente Amplio». Los escaños son la estimación de 40dB, no la de nuestro modelo. Cada empresa tiene su método: comparar empresas distintas no dice cuál acierta.',
+        calculo='Ventaja del PP: estimación del PP menos la del PSOE en cada encuesta, en puntos. Última encuesta de cada empresa: la publicada más tarde desde el 10 de octubre de 2026. Media de encuestas: la del modelo de mapaelectoral.es/encuestas a las 10.53 del 9 de noviembre. Script: actualidad/src/resumenes/encuestas_40db.py.',
+        fuentes=[('https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf', '40dB para El País y la SER, encuesta preelectoral, noviembre de 2026 (informe)'),
+                 ('https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf', '40dB para El País y la SER, encuesta flash, octubre de 2026 (informe)'),
+                 ('https://www.abc.es/espana/accidente-urda-apenas-altera-bloques-29n-derecha-20261108023004-nt.html', 'GAD3 para ABC (9-11-2026)'),
+                 ('https://www.larazon.es/espana/gana-7-puntos-psoe-que-cae-100-escanos_202611096af1319903bbf30bb045239e.html', 'NC Report para La Razón (9-11-2026)'),
+                 ('https://okdiario.com/espana/psoe-paga-tragedia-urda-hunde-hasta-97-escanos-mientras-pp-vox-suman-203-20728358', 'Data10 para OKDiario (9-11-2026)'),
+                 ('https://www.europapress.es/madrid/noticia-psoe-asegura-remontada-realidad-avisa-feijoo-le-van-hacer-muy-largas-semanas-20261109111930.html', 'Europa Press, Reyes Maroto (PSOE): «la remontada es una realidad» (9-11-2026)'),
+                 ('https://www.europapress.es/nacional/noticia-montero-rufian-animan-votar-memoria-conciencia-obviando-voto-util-psoe-si-puede-te-come-20261107134413.html', 'Europa Press, Irene Montero y Gabriel Rufián en Madrid (7-11-2026)'),
+                 ('https://www.electografica.com/2026/11/encuesta-40db-261109.html', 'Electográfica, serie de encuestas de las generales'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
     ),
 ]
 
