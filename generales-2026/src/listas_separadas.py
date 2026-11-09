@@ -1,11 +1,13 @@
 """Votos de las listas que la familia SUMAR junta y que en 2015 y en noviembre de 2019 fueron por separado.
 
 La familia «Sumar / Podemos / IU» (partidos.py) agrupa a Podemos, IU, Sumar y sus coaliciones para seguir el
-espacio a lo largo del tiempo. Pero en dos generales ese espacio fue en dos listas:
+espacio a lo largo del tiempo. Pero en cuatro generales ese espacio fue en dos listas:
+  - 20N 2011, en la Comunitat Valenciana: EUPV (IU) y Compromís-Q.
+  - 28A 2019, en la Comunitat Valenciana: Unides Podem y Compromís.
   - 20D 2015: Podemos (y sus confluencias: En Comú Podem, Compromís-Podemos, En Marea) e IU-Unidad Popular.
   - 10N 2019: Unidas Podemos (y En Comú Podem) y Más País (Más País-Equo, Més Compromís...).
 Sumadas, la familia puede «ganar» donde ninguna de las dos listas ganó. Este script guarda, por sección y
-elección, los votos de la segunda lista (IU-UP en 2015, Más País en 2019), para que el ganador se calcule con
+elección, los votos de la segunda lista (Compromís en 2011 y abril de 2019, IU-UP en 2015, Más País en noviembre de 2019), para que el ganador se calcule con
 cada lista por separado (src/territorios_datos.py).
 
 Fuente: resultados por mesa del Ministerio del Interior, vía dadosdelaplace/pollspaindata, como construir.py.
@@ -23,7 +25,9 @@ CACHE = os.environ.get('GENERALES_CACHE', os.path.expanduser('~/.cache/generales
 E = os.path.join(CACHE, 'pollspaindata', 'inst', 'extdata')
 SALIDA = os.path.join(AQUI, '..', 'descargas', 'listas_separadas.csv')
 # la segunda lista de la familia en cada elección (por nombre o siglas de la candidatura)
-SEGUNDA = {'2015_12': r'IZQUIERDA UNIDA|ESQUERRA UNIDA|UNIDAD POPULAR|UNITAT POPULAR|^IU|^EUPV|^UPEC',
+SEGUNDA = {'2011_11': r'COMPROM',                       # Compromís-Q frente a EUPV (IU), en la Comunitat Valenciana
+           '2019_04': r'COMPROM',                       # Compromís frente a Unides Podem, en la Comunitat Valenciana
+           '2015_12': r'IZQUIERDA UNIDA|ESQUERRA UNIDA|UNIDAD POPULAR|UNITAT POPULAR|^IU|^EUPV|^UPEC',
            '2019_11': r'M[AÁ]S PA[IÍ]S|M[EÉ]S COMPROM|^M PA[IÍ]S'}
 
 

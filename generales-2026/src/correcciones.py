@@ -4,11 +4,13 @@ Añadir una línea (fecha ISO, texto) cada vez que cambie un dato o una conclusi
 """
 
 CORRECCIONES = [
-    ('2026-11-09', 'Fichas de municipio, barrio, provincia y comunidad: el partido más votado de 2015 y de noviembre de 2019 se calculaba '
-                   'con la suma de la familia Sumar / Podemos / IU, que en esas dos elecciones reunía dos listas que se presentaron por separado '
-                   '(Podemos e IU-Unidad Popular; Unidas Podemos y Más País). Ahora se compara lista con lista, y en 302 fichas cambia el más '
-                   'votado de alguno de esos dos años: por ejemplo, en la provincia de Bizkaia en 2015 ganó el PNV, no Podemos. La lista de '
-                   'ese espacio lleva además el nombre de la candidatura de cada año (Podemos, En Comú Podem, Unidos Podemos...). Los porcentajes de la familia no cambian.'),
+    ('2026-11-09', 'Fichas de municipio, barrio, provincia y comunidad: el partido más votado se calculaba con la suma de la familia '
+                   'Sumar / Podemos / IU también cuando reunía dos listas que se presentaron por separado: Podemos e IU-Unidad Popular en 2015, '
+                   'Unidas Podemos y Más País en noviembre de 2019 y, en la Comunitat Valenciana, EUPV y Compromís-Q en 2011 y Unides Podem '
+                   'y Compromís en abril de 2019. Ahora se compara lista con lista, y en 324 fichas cambia el más votado de alguna de esas '
+                   'elecciones: por ejemplo, en la provincia de Bizkaia en 2015 ganó el PNV, no Podemos. La lista de ese espacio lleva además '
+                   'el nombre de la candidatura de cada año (Podemos, En Comú Podem, Unidos Podemos...). Los porcentajes de la familia no '
+                   'cambian; una nota bajo cada tabla dice qué dos listas suma.'),
     ('2026-10-06', 'Agrupación de partidos revisada: UPN cuenta con el PP también cuando se presenta sola, y Compromís, Más País y Más Madrid con '
                    'Sumar / Podemos / IU también cuando van por separado. Se corrigen además una lista de Unidos Podemos de 2016 y la de C,S de 2008, '
                    'que estaban en Otros, y Esquerra Republicana del País Valencià, que pasa a ERC. El PP del 23J pasa del 33,1% al 33,3% '

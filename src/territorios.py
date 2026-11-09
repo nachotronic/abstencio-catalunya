@@ -278,11 +278,12 @@ def bloque_serie(nombre, serie, provs=()):
     return ('<h2>De 1977 a 2023: las 16 elecciones generales</h2>'
             + p_('Dato', f'Voto de los partidos que han pasado alguna vez del 10 % en {escape(nombre)}. Las familias agrupan a cada partido con sus antecesores y coaliciones: '
                  'el PP incluye a AP (hasta 1986) y a UPN; «Sumar / Podemos / IU», al PCE y el PSUC, IU y Unidas Podemos; «Junts / CiU», a CiU. '
-                 'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, Unidas Podemos y Más País en noviembre de 2019, UPN y el PP en 2023), su porcentaje es la suma de las dos; '
+                 'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, Unidas Podemos y Más País en noviembre de 2019, Compromís y EUPV o Unides Podem en la Comunitat Valenciana en 2011 y abril de 2019, UPN y el PP en 2023), su porcentaje es la suma de las dos; '
                  'el más votado, en cambio, se calcula con cada lista por separado y lleva el nombre de la candidatura de ese año. '
                  f'Detalle en la <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.{nota}')
             + f'<figure>{lineas(serie)}<figcaption>Porcentaje de voto válido en las elecciones al Congreso. Sin voto desde el extranjero (CERA).</figcaption></figure>'
-            + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}', ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas, num_desde=1))
+            + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}', ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas, num_desde=1)
+            + (f'<p class="leyenda">{escape(T.nota_separadas(serie, T.GENERALES, pl))}</p>' if 'SUMAR' in fams and T.nota_separadas(serie, T.GENERALES, pl) else ''))
 
 
 def bloque_renta(nombre, en, sec, ciudad=False):
@@ -1051,7 +1052,8 @@ def pagina_barrio(cod, b, todos):
                          ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas)
                  + '<p class="leyenda">Con las secciones censales de 2023: los resultados de cada elección son los de las secciones que ya existían con el mismo código. '
                  + (f'No se muestran {", ".join(falta)} porque entonces faltaba más del 20 % del censo actual (secciones creadas o renumeradas después). ' if falta else '')
-                 + 'Las familias agrupan a cada partido con sus antecesores y coaliciones (Podemos, IU y Sumar; Junts y CiU).</p>')
+                 + 'Las familias agrupan a cada partido con sus antecesores y coaliciones (Podemos, IU y Sumar; Junts y CiU). '
+                 + (escape(T.nota_separadas(s, ys, p)) if 'SUMAR' in fams else '') + '</p>')
 
     # quién vive: tabla
     filas = [['Habitantes (2023)', num(dm['poblacion']), num(dc['poblacion'])],

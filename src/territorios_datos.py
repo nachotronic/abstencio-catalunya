@@ -53,9 +53,10 @@ def _carga():
 MUN, SEC = _carga()
 
 # En 2015 y en noviembre de 2019 la familia «Sumar / Podemos / IU» reúne dos listas que fueron por separado
-# (Podemos e IU-Unidad Popular; Unidas Podemos y Más País). generales-2026/src/listas_separadas.py guarda los
+# (Podemos e IU-Unidad Popular; Unidas Podemos y Más País), y en 2011 y abril de 2019, en la Comunitat Valenciana
+# (EUPV y Compromís-Q; Unides Podem y Compromís). generales-2026/src/listas_separadas.py guarda los
 # votos de la segunda por sección: con ellos el más votado se calcula con cada lista, no con la suma.
-SEPARADAS = ('2015_12', '2019_11')
+SEPARADAS = ('2011_11', '2015_12', '2019_04', '2019_11')
 FUSIONES = {'36011': '36902', '36012': '36902', '15026': '15902', '15063': '15902'}   # las de construir.py
 LS = pd.read_csv(D / 'listas_separadas.csv', dtype={'tract_code': str}) if (D / 'listas_separadas.csv').exists() else None
 if LS is not None:
@@ -102,14 +103,28 @@ def ganador(r):
 # cuando fue en dos. Por provincia donde la candidatura tuvo otro nombre (Cataluña, Comunitat Valenciana, Galicia).
 _CAT, _VAL, _GAL = ('08', '17', '25', '43'), ('03', '12', '46'), ('15', '27', '32', '36')
 LISTA_SUMAR = {
-    '2004_03': ('IU', {_CAT: 'ICV-EUiA'}), '2008_03': ('IU', {_CAT: 'ICV-EUiA'}), '2011_11': ('IU', {_CAT: 'ICV-EUiA'}),
+    '2004_03': ('IU', {_CAT: 'ICV-EUiA'}), '2008_03': ('IU', {_CAT: 'ICV-EUiA'}), '2011_11': ('IU', {_CAT: 'ICV-EUiA', _VAL: 'EUPV'}),
     '2015_12': ('Podemos', {_CAT: 'En Comú Podem', _VAL: 'Compromís-Podemos', _GAL: 'En Marea'}),
     '2016_06': ('Unidos Podemos', {_CAT: 'En Comú Podem', _VAL: 'A la valenciana', _GAL: 'En Marea'}),
-    '2019_04': ('Unidas Podemos', {_CAT: 'En Comú Podem', _GAL: 'En Común-Unidas Podemos'}),
-    '2019_11': ('Unidas Podemos', {_CAT: 'En Comú Podem', _GAL: 'En Común-Unidas Podemos'}),
+    '2019_04': ('Unidas Podemos', {_CAT: 'En Comú Podem', _VAL: 'Unides Podem', _GAL: 'En Común-Unidas Podemos'}),
+    '2019_11': ('Unidas Podemos', {_CAT: 'En Comú Podem', _VAL: 'Unides Podem', _GAL: 'En Común-Unidas Podemos'}),
     '2023_07': ('Sumar', {}),
 }
-SEGUNDA_SUMAR = {'2015_12': ('IU-Unidad Popular', {}), '2019_11': ('Más País', {_VAL: 'Més Compromís'})}
+SEGUNDA_SUMAR = {'2011_11': ('Compromís-Q', {}), '2015_12': ('IU-Unidad Popular', {_VAL: 'EUPV-Unitat Popular'}),
+                 '2019_04': ('Compromís', {}), '2019_11': ('Más País', {_VAL: 'Més Compromís'})}
+
+
+def nota_separadas(serie, ys, prov=None):
+    """Nota bajo la tabla: en qué elecciones la columna «Sumar / Podemos / IU» suma dos listas, y cuáles."""
+    out = []
+    for y in ys:
+        r = serie.get(y)
+        if r and r.get('sumar_b') and y in SEGUNDA_SUMAR:
+            out.append(f'en {etiqueta(y)}, {_por_prov(LISTA_SUMAR, y, prov)} y {_por_prov(SEGUNDA_SUMAR, y, prov)}')
+    if not out:
+        return ''
+    return ('«Sumar / Podemos / IU» suma dos listas que se presentaron por separado (' + '; '.join(out)
+            + '); el más votado se calcula lista a lista.')
 
 
 def _por_prov(tabla, y, prov):
