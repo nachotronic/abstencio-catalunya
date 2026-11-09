@@ -1,0 +1,177 @@
+{
+ "pieza": "huelga-carnica-pueblos-industria-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "la industria, el PP saca 1,9 puntos menos que en",
+   "cifra": "1,9",
+   "calculo": "-D['DEC']['10']['PP']"
+  },
+  {
+   "texto": "9 al 13 de noviembre. El 11,5 % de los ocupados de",
+   "cifra": "11,5",
+   "calculo": "D[\"IND_ES\"]"
+  },
+  {
+   "texto": "Guissona, sede de bonÀrea, el 56,3 %. Dentro de cada provincia,",
+   "cifra": "56,3",
+   "calculo": "D['G']['25110']['ind']"
+  },
+  {
+   "texto": "En España, el 11,5 % de los ocupados trabaja",
+   "cifra": "11,5",
+   "calculo": "D[\"IND_ES\"]"
+  },
+  {
+   "texto": "Guissona (Lleida), con el 56,3 %. Allí tiene su sede",
+   "cifra": "56,3",
+   "calculo": "D['G']['25110']['ind']"
+  },
+  {
+   "texto": "Guijuelo (Salamanca), con el 46,7 %, es el sexto. El censo",
+   "cifra": "46,7",
+   "calculo": "D['G']['37156']['ind']"
+  },
+  {
+   "texto": "de su provincia, de media 12,1 puntos más, el PP sacó",
+   "cifra": "12,1",
+   "calculo": "D['DEC']['10']['ind']"
+  },
+  {
+   "texto": "en las generales de 2023 1,9 puntos menos que la",
+   "cifra": "1,9",
+   "calculo": "-D['DEC']['10']['PP']"
+  },
+  {
+   "texto": "parte con menos industria, 1,9 puntos más. El PSOE",
+   "cifra": "1,9",
+   "calculo": "D['DEC']['1']['PP']"
+  },
+  {
+   "texto": "aunque con menos distancia: −1,3 puntos en los menos",
+   "cifra": "1,3",
+   "calculo": "-D['DEC']['1']['PSOE']"
+  },
+  {
+   "texto": "los menos industriales y +0,2 en los más. El voto",
+   "cifra": "0,2",
+   "calculo": "D['DEC']['10']['PSOE']"
+  },
+  {
+   "texto": "voto a Vox apenas cambia: −0,7 y −0,2 puntos, y en",
+   "cifra": "0,7",
+   "calculo": "-D['DEC']['1']['VOX']"
+  },
+  {
+   "texto": "Vox apenas cambia: −0,7 y −0,2 puntos, y en ninguna",
+   "cifra": "0,2",
+   "calculo": "-D['DEC']['10']['VOX']"
+  },
+  {
+   "texto": "Guissona ganó el PSOE con el 29,7 %, por delante de Junts",
+   "cifra": "29,7",
+   "calculo": "D['G']['25110']['PSOE']"
+  },
+  {
+   "texto": "%, por delante de Junts (24,4 %) y ERC (20,4 %). El",
+   "cifra": "24,4",
+   "calculo": "D['G']['25110']['JUNTS']"
+  },
+  {
+   "texto": "de Junts (24,4 %) y ERC (20,4 %). El PP sacó el 8,0",
+   "cifra": "20,4",
+   "calculo": "D['G']['25110']['ERC']"
+  },
+  {
+   "texto": "ERC (20,4 %). El PP sacó el 8,0 %. Votó el 61,1 % del",
+   "cifra": "8,0",
+   "calculo": "D['G']['25110']['PP']"
+  },
+  {
+   "texto": "PP sacó el 8,0 %. Votó el 61,1 % del censo, frente",
+   "cifra": "61,1",
+   "calculo": "D['G']['25110']['part']"
+  },
+  {
+   "texto": "61,1 % del censo, frente al 61,9 % de la provincia de",
+   "cifra": "61,9",
+   "calculo": "D['MED_PROV']['25']['part']"
+  },
+  {
+   "texto": "Guijuelo ganó el PP con el 52,2 %, frente al 47,3 %",
+   "cifra": "52,2",
+   "calculo": "D['G']['37156']['PP']"
+  },
+  {
+   "texto": "con el 52,2 %, frente al 47,3 % de la provincia de",
+   "cifra": "47,3",
+   "calculo": "D['MED_PROV']['37']['PP']"
+  },
+  {
+   "texto": "Salamanca; el PSOE sacó el 24,3 % y Vox, el 19,1 %.",
+   "cifra": "24,3",
+   "calculo": "D['G']['37156']['PSOE']"
+  },
+  {
+   "texto": "sacó el 24,3 % y Vox, el 19,1 %.",
+   "cifra": "19,1",
+   "calculo": "D['G']['37156']['VOX']"
+  },
+  {
+   "texto": "la industria, el PP saca 1,9 puntos menos que en",
+   "cifra": "1,9",
+   "calculo": "-D['DEC']['10']['PP']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Castilla y León. CCOO cifra en 126.000 las personas llamadas",
+   "cifra": "126.000",
+   "fuente": "https://industria.ccoo.es/noticia:772073--Huelga_en_la_industria_carnica_del_9_al_13N_Neveras_vacias_hasta_que_las_patronales_entiendan_que_deben_transformar_sus_beneficios_en_mas_salario_y_en_mejores_condiciones&opc_id=7b0815797cd81939bb3cdca8b4b06f4d"
+  },
+  {
+   "texto": "subida salarial mínima del 4 % con revisión según",
+   "cifra": "4",
+   "fuente": "https://industria.ccoo.es/noticia:772073--Huelga_en_la_industria_carnica_del_9_al_13N_Neveras_vacias_hasta_que_las_patronales_entiendan_que_deben_transformar_sus_beneficios_en_mas_salario_y_en_mejores_condiciones&opc_id=7b0815797cd81939bb3cdca8b4b06f4d"
+  },
+  {
+   "texto": "la jornada anual, hoy de 1.748 horas, según su convocatoria.",
+   "cifra": "1.748",
+   "fuente": "https://industria.ccoo.es/noticia:772073--Huelga_en_la_industria_carnica_del_9_al_13N_Neveras_vacias_hasta_que_las_patronales_entiendan_que_deben_transformar_sus_beneficios_en_mas_salario_y_en_mejores_condiciones&opc_id=7b0815797cd81939bb3cdca8b4b06f4d"
+  },
+  {
+   "texto": "patronal Anafric ofrece un 3,8 % para 2026, según el mismo medio.",
+   "cifra": "3,8",
+   "fuente": "https://www.agronewscastillayleon.com/anafric-huelga-industria-carnica-noviembre-2026-salarios"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "llamada desde este lunes a cinco días de huelga, del",
+   "motivo": "días de huelga, del 9 al 13 de noviembre (fechas de la convocatoria)"
+  },
+  {
+   "texto": "los municipios con al menos 2.000 ocupados, donde más",
+   "motivo": "umbral de ocupados para la lista de municipios (método)"
+  },
+  {
+   "texto": "puntos, y en ninguna de las diez partes se separa un",
+   "motivo": "número de partes en que se dividen los municipios (método)"
+  },
+  {
+   "texto": "y su voto y la huelga del 11-N y el paro.",
+   "motivo": "nombre de la huelga general del 11 de noviembre, enlace a otra pieza"
+  },
+  {
+   "texto": "industria, en los municipios con 2.000 ocupados o más. El color",
+   "motivo": "umbral de ocupados para la lista de municipios (método)"
+  },
+  {
+   "texto": "provincia y se reparten en diez partes con el mismo",
+   "motivo": "número de partes en que se dividen los municipios (método)"
+  }
+ ],
+ "permitir_espana": []
+}
