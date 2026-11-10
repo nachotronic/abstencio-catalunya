@@ -3344,7 +3344,7 @@ ANTETITULOS = {
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'bizkaia-pnv-bildu-encuestas-29n': 'El feudo del PNV',
     'encuestas-40db-psoe-podemos-29n': 'La encuesta de El País',
-    'paraguay-pena-destituido-mapa-departamentos': 'Juicio político en Paraguay',
+    'paraguay-pena-destituido-mapa-departamentos': 'El juicio político a Peña',
     'vox-vuelve-tenerife-29n': 'Vox vuelve en Tenerife',
     'cinturon-rojo-madrid-29n': 'El cinturón rojo',
     'participacion-renta-municipios-madrid-29n': 'Quién no vota en Madrid',
@@ -4292,7 +4292,7 @@ PIEZAS += [
     dict(
         slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10',
         titulo='Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 17 de los 18 departamentos', serie='internacional',
-        descripcion='El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el 42,7 % de los votos; solo perdió en Alto Paraná.',
+        descripcion='El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el 42,7 % de los votos; de los 18 departamentos, solo perdió Alto Paraná.',
         compara='Las presidenciales de Paraguay del 30 de abril de 2023 en los 17 departamentos y Asunción, y las votaciones del Senado del 6 de noviembre de 2026.',
         limites='El cómputo definitivo del TSJE por departamento (Acuerdo y Sentencia 15/2023) no se puede descargar hoy de la web del tribunal: los votos por departamento son los de la tabla de Wikipedia, que cita al TSJE, y no incluyen el voto en el exterior. Las cifras de fondos del IPS son las que presentó la acusación en el juicio, no cifras auditadas.',
         calculo='Porcentajes sobre votos emitidos (candidatos, blancos y nulos), recalculados con la suma de las columnas de cada departamento; en Boquerón y Caazapá la columna de votos emitidos de la tabla no cuadra con esa suma. Tono del mapa según el porcentaje del más votado.',

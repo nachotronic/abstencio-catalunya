@@ -1,305 +1,306 @@
 {
-  "pieza": "paraguay-pena-destituido-mapa-departamentos",
-  "_datos_disponibles": {
-    "D": "dict"
+ "pieza": "paraguay-pena-destituido-mapa-departamentos",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "presidente que en 2023 ganó en 17 de los 18 departamentos",
+   "cifra": "17",
+   "calculo": "len(D['GANA']['pena'])",
+   "_donde": "titular"
   },
-  "cifras": [
-    {
-      "texto": "presidente que en 2023 ganó en 17 de los 18 departamentos",
-      "cifra": "17",
-      "calculo": "len(D['GANA']['pena'])",
-      "_donde": "titular"
-    },
-    {
-      "texto": "en 2023 ganó en 17 de los 18 departamentos",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
-      "_donde": "titular"
-    },
-    {
-      "texto": "Peña había ganado con el 42,7 % de los votos; solo",
-      "cifra": "42,7",
-      "calculo": "D['NAC_PCT']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "de pensiones pública: de 70.000 millones de guaraníes en septiembre",
-      "cifra": "70.000 millones",
-      "calculo": "D['IPS'][0][1] * 1e6",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Peña llegara al poder, a 2,15 billones en abril de",
-      "cifra": "2,15",
-      "calculo": "D['IPS'][-1][1] / 1e6",
-      "_donde": "dato"
-    },
-    {
-      "texto": "sacó 1.292.079 votos, el 42,7 % de los emitidos, frente",
-      "cifra": "42,7",
-      "calculo": "D['NAC_PCT']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Peña fue el más votado en 17 de los 18 departamentos,",
-      "cifra": "17",
-      "calculo": "len(D['GANA']['pena'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el más votado en 17 de los 18 departamentos, contando",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Argentina, donde Cubas sacó el 38,2 % y Peña, el 35,6 %.",
-      "cifra": "38,2",
-      "calculo": "D['DEP']['Alto Paraná']['%cubas']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "sacó el 38,2 % y Peña, el 35,6 %. Superó el 50 % en",
-      "cifra": "35,6",
-      "calculo": "D['DEP']['Alto Paraná']['%pena']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Peña, el 35,6 %. Superó el 50 % en 7 departamentos;",
-      "cifra": "50",
-      "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
-      "_donde": "dato"
-    },
-    {
-      "texto": "35,6 %. Superó el 50 % en 7 departamentos; su mejor",
-      "cifra": "7",
-      "calculo": "len(D['MAS50'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Paraguay, en el Chaco, con el 69,3 %. En Asunción, la capital,",
-      "cifra": "69,3",
-      "calculo": "max(v['%pena'] for v in D['DEP'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Asunción, la capital, sacó el 51,5 %. En Central, el departamento",
-      "cifra": "51,5",
-      "calculo": "D['DEP']['Asunción']['%pena']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "la capital, se quedó en el 37,0 %, frente al 28,9 %",
-      "cifra": "37,0",
-      "calculo": "D['DEP']['Central']['%pena']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "quedó en el 37,0 %, frente al 28,9 % de Alegre y el 26,4",
-      "cifra": "28,9",
-      "calculo": "D['DEP']['Central']['%alegre']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "al 28,9 % de Alegre y el 26,4 % de Cubas.",
-      "cifra": "26,4",
-      "calculo": "D['DEP']['Central']['%cubas']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Peña ganó en 17 de los 18 departamentos;",
-      "cifra": "17",
-      "calculo": "len(D['GANA']['pena'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Peña ganó en 17 de los 18 departamentos; Cubas,",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "se multiplicó por más de 30 con Peña en el Gobierno,",
-      "cifra": "30",
-      "calculo": "(D['IPS'][-1][1] / D['IPS'][0][1]) // 10 * 10",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Peña superó el 50 % en 7 departamentos;",
-      "cifra": "50",
-      "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Peña superó el 50 % en 7 departamentos; en Central,",
-      "cifra": "7",
-      "calculo": "len(D['MAS50'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "electores, se quedó en el 37,0 %Porcentaje de votos",
-      "cifra": "37,0",
-      "calculo": "D['DEP']['Central']['%pena']",
-      "_donde": "pie"
-    }
-  ],
-  "externas": [
-    {
-      "texto": "desempeño de funciones, con 44 votos de 45, por el",
-      "cifra": "44",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    },
-    {
-      "texto": "funciones, con 44 votos de 45, por el hundimiento",
-      "cifra": "45",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    },
-    {
-      "texto": "funciones. Votaron a favor 44 de los 45 senadores;",
-      "cifra": "44",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    },
-    {
-      "texto": "Votaron a favor 44 de los 45 senadores; el único",
-      "cifra": "45",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    },
-    {
-      "texto": "Hacían falta dos tercios, 30 votos, según La Tercera.",
-      "cifra": "30",
-      "fuente": "https://www.latercera.com/mundo/noticia/senado-de-paraguay-inicia-juicio-politico-contra-santiago-pena-tras-frustrarse-votacion-de-su-renuncia/"
-    },
-    {
-      "texto": "aprobado la acusación con sus 78 miembros en activo.",
-      "cifra": "78",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    },
-    {
-      "texto": "en cuatro días. El martes 3, el Banco Central del",
-      "cifra": "3",
-      "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
-    },
-    {
-      "texto": "había caído por debajo del 50 % del mínimo exigido.",
-      "cifra": "50",
-      "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
-    },
-    {
-      "texto": "dejaron de funcionar para casi tres millones de clientes,",
-      "cifra": "tres",
-      "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
-    },
-    {
-      "texto": "ABC Color, en un país de 6,1 millones de habitantes, según",
-      "cifra": "6,1 millones",
-      "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
-    },
-    {
-      "texto": "El jueves 5, Peña anunció su renuncia",
-      "cifra": "5",
-      "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
-    },
-    {
-      "texto": "culpables», como dice el artículo 189 de la Constitución que",
-      "cifra": "189",
-      "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
-    },
-    {
-      "texto": "tribunal. El viernes, Peña pidió 72 horas más para preparar",
-      "cifra": "72",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
-    },
-    {
-      "texto": "las negó a las 11.42, con 39 votos en contra, 3 a",
-      "cifra": "39",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
-    },
-    {
-      "texto": "11.42, con 39 votos en contra, 3 a favor y 2 abstenciones,",
-      "cifra": "3",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
-    },
-    {
-      "texto": "votos en contra, 3 a favor y 2 abstenciones, según",
-      "cifra": "2",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
-    },
-    {
-      "texto": "en el banco sumaban unos 3,6 billones de guaraníes,",
-      "cifra": "3,6",
-      "fuente": "https://www.semana.com/mundo/articulo/fiscalia-de-paraguay-toma-decision-final-sobre-el-caso-del-expresidente-santiago-pena/202611/"
-    },
-    {
-      "texto": "billones de guaraníes, casi 233 millones de dólares, según la",
-      "cifra": "233 millones",
-      "fuente": "https://www.semana.com/mundo/articulo/fiscalia-de-paraguay-toma-decision-final-sobre-el-caso-del-expresidente-santiago-pena/202611/"
-    },
-    {
-      "texto": "2026, según ABC Color. Unos 32.000 jubilados del IPS estaban",
-      "cifra": "32.000",
-      "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
-    },
-    {
-      "texto": "Peña «creó un agujero de 1.200 millones de dólares al pueblo",
-      "cifra": "1.200 millones",
-      "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
-    },
-    {
-      "texto": "asegurados hablaban de más de 860 millones de dólares de fondos",
-      "cifra": "860 millones",
-      "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
-    },
-    {
-      "texto": "según ABC Color. El sábado 7, el Ministerio Público",
-      "cifra": "7",
-      "fuente": "https://www.semana.com/mundo/articulo/fiscalia-de-paraguay-toma-decision-final-sobre-el-caso-del-expresidente-santiago-pena/202611/"
-    },
-    {
-      "texto": "elecciones del 30 de abril sacó 1.292.079 votos, el 42,7 % de",
-      "cifra": "1.292.079",
-      "fuente": "https://www.ultimahora.com/tsje-proclamara-esta-tarde-ganadores-las-elecciones-2023-n3064211"
-    },
-    {
-      "texto": "los emitidos, frente a los 830.842 de Efraín Alegre, de",
-      "cifra": "830.842",
-      "fuente": "https://www.ultimahora.com/tsje-proclamara-esta-tarde-ganadores-las-elecciones-2023-n3064211"
-    },
-    {
-      "texto": "El Senado lo destituyó con 44 de sus 45 votosVotación",
-      "cifra": "44",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    },
-    {
-      "texto": "lo destituyó con 44 de sus 45 votosVotación del Senado,",
-      "cifra": "45",
-      "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
-    }
-  ],
-  "ignorar": [
-    {
-      "texto": "Todo pasó en cuatro días. El martes 3, el",
-      "motivo": "Días del martes 3 al viernes 6 de noviembre (fechas)"
-    },
-    {
-      "texto": "Un banco y cuatro días",
-      "motivo": "Días del martes 3 al viernes 6 de noviembre (fechas)"
-    },
-    {
-      "texto": "2023. Tono claro: menos del 40 % de los votos; medio,",
-      "motivo": "Umbrales de la leyenda del mapa"
-    },
-    {
-      "texto": "de los votos; medio, del 40 % al 50 %; intenso,",
-      "motivo": "Umbrales de la leyenda del mapa"
-    },
-    {
-      "texto": "votos; medio, del 40 % al 50 %; intenso, más del",
-      "motivo": "Umbrales de la leyenda del mapa"
-    },
-    {
-      "texto": "al 50 %; intenso, más del 50 %",
-      "motivo": "Umbrales de la leyenda del mapa"
-    }
-  ],
-  "permitir_espana": []
+  {
+   "texto": "en 2023 ganó en 17 de los 18 departamentos",
+   "cifra": "18",
+   "calculo": "len(D['DEP'])",
+   "_donde": "titular"
+  },
+  {
+   "texto": "de pensiones pública: de 70.000 millones de guaraníes en septiembre",
+   "cifra": "70.000 millones",
+   "calculo": "D['IPS'][0][1] * 1e6",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Peña llegara al poder, a 2,15 billones en abril de",
+   "cifra": "2,15",
+   "calculo": "D['IPS'][-1][1] / 1e6",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó 1.292.079 votos, el 42,7 % de los emitidos, frente",
+   "cifra": "42,7",
+   "calculo": "D['NAC_PCT']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Peña fue el más votado en 17 de los 18 departamentos,",
+   "cifra": "17",
+   "calculo": "len(D['GANA']['pena'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el más votado en 17 de los 18 departamentos, contando",
+   "cifra": "18",
+   "calculo": "len(D['DEP'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Argentina, donde Cubas sacó el 38,2 % y Peña, el 35,6 %.",
+   "cifra": "38,2",
+   "calculo": "D['DEP']['Alto Paraná']['%cubas']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 38,2 % y Peña, el 35,6 %. Superó el 50 % en",
+   "cifra": "35,6",
+   "calculo": "D['DEP']['Alto Paraná']['%pena']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Peña, el 35,6 %. Superó el 50 % en 7 departamentos;",
+   "cifra": "50",
+   "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
+   "_donde": "dato"
+  },
+  {
+   "texto": "35,6 %. Superó el 50 % en 7 departamentos; su mejor",
+   "cifra": "7",
+   "calculo": "len(D['MAS50'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Paraguay, en el Chaco, con el 69,3 %. En Asunción, la capital,",
+   "cifra": "69,3",
+   "calculo": "max(v['%pena'] for v in D['DEP'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Asunción, la capital, sacó el 51,5 %. En Central, el departamento",
+   "cifra": "51,5",
+   "calculo": "D['DEP']['Asunción']['%pena']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la capital, se quedó en el 37,0 %, frente al 28,9 %",
+   "cifra": "37,0",
+   "calculo": "D['DEP']['Central']['%pena']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quedó en el 37,0 %, frente al 28,9 % de Alegre y el 26,4",
+   "cifra": "28,9",
+   "calculo": "D['DEP']['Central']['%alegre']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al 28,9 % de Alegre y el 26,4 % de Cubas.",
+   "cifra": "26,4",
+   "calculo": "D['DEP']['Central']['%cubas']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Peña ganó en 17 de los 18 departamentos;",
+   "cifra": "17",
+   "calculo": "len(D['GANA']['pena'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Peña ganó en 17 de los 18 departamentos; Cubas,",
+   "cifra": "18",
+   "calculo": "len(D['DEP'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "se multiplicó por más de 30 con Peña en el Gobierno,",
+   "cifra": "30",
+   "calculo": "(D['IPS'][-1][1] / D['IPS'][0][1]) // 10 * 10",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Peña superó el 50 % en 7 departamentos;",
+   "cifra": "50",
+   "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Peña superó el 50 % en 7 departamentos; en Central,",
+   "cifra": "7",
+   "calculo": "len(D['MAS50'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "electores, se quedó en el 37,0 %Porcentaje de votos",
+   "cifra": "37,0",
+   "calculo": "D['DEP']['Central']['%pena']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Peña había ganado con el 42,7 % de los votos; de los",
+   "cifra": "42,7",
+   "calculo": "D['NAC_PCT']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "42,7 % de los votos; de los 18 departamentos, solo",
+   "cifra": "18",
+   "calculo": "len(D['DEP'])",
+   "_donde": "entradilla"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "desempeño de funciones, con 44 votos de 45, por el",
+   "cifra": "44",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  },
+  {
+   "texto": "funciones, con 44 votos de 45, por el hundimiento",
+   "cifra": "45",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  },
+  {
+   "texto": "funciones. Votaron a favor 44 de los 45 senadores;",
+   "cifra": "44",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  },
+  {
+   "texto": "Votaron a favor 44 de los 45 senadores; el único",
+   "cifra": "45",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  },
+  {
+   "texto": "Hacían falta dos tercios, 30 votos, según La Tercera.",
+   "cifra": "30",
+   "fuente": "https://www.latercera.com/mundo/noticia/senado-de-paraguay-inicia-juicio-politico-contra-santiago-pena-tras-frustrarse-votacion-de-su-renuncia/"
+  },
+  {
+   "texto": "en cuatro días. El martes 3, el Banco Central del",
+   "cifra": "3",
+   "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
+  },
+  {
+   "texto": "había caído por debajo del 50 % del mínimo exigido.",
+   "cifra": "50",
+   "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
+  },
+  {
+   "texto": "dejaron de funcionar para casi tres millones de clientes,",
+   "cifra": "tres",
+   "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
+  },
+  {
+   "texto": "ABC Color, en un país de 6,1 millones de habitantes, según",
+   "cifra": "6,1 millones",
+   "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
+  },
+  {
+   "texto": "El jueves 5, Peña anunció su renuncia",
+   "cifra": "5",
+   "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
+  },
+  {
+   "texto": "culpables», como dice el artículo 189 de la Constitución que",
+   "cifra": "189",
+   "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
+  },
+  {
+   "texto": "tribunal. El viernes, Peña pidió 72 horas más para preparar",
+   "cifra": "72",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
+  },
+  {
+   "texto": "las negó a las 11.42, con 39 votos en contra, 3 a",
+   "cifra": "39",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
+  },
+  {
+   "texto": "11.42, con 39 votos en contra, 3 a favor y 2 abstenciones,",
+   "cifra": "3",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
+  },
+  {
+   "texto": "votos en contra, 3 a favor y 2 abstenciones, según",
+   "cifra": "2",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/"
+  },
+  {
+   "texto": "en el banco sumaban unos 3,6 billones de guaraníes,",
+   "cifra": "3,6",
+   "fuente": "https://www.semana.com/mundo/articulo/fiscalia-de-paraguay-toma-decision-final-sobre-el-caso-del-expresidente-santiago-pena/202611/"
+  },
+  {
+   "texto": "2026, según ABC Color. Unos 32.000 jubilados del IPS estaban",
+   "cifra": "32.000",
+   "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
+  },
+  {
+   "texto": "Peña «creó un agujero de 1.200 millones de dólares al pueblo",
+   "cifra": "1.200 millones",
+   "fuente": "https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html"
+  },
+  {
+   "texto": "asegurados hablaban de más de 860 millones de dólares de fondos",
+   "cifra": "860 millones",
+   "fuente": "https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/"
+  },
+  {
+   "texto": "según ABC Color. El sábado 7, el Ministerio Público",
+   "cifra": "7",
+   "fuente": "https://www.semana.com/mundo/articulo/fiscalia-de-paraguay-toma-decision-final-sobre-el-caso-del-expresidente-santiago-pena/202611/"
+  },
+  {
+   "texto": "elecciones del 30 de abril sacó 1.292.079 votos, el 42,7 % de",
+   "cifra": "1.292.079",
+   "fuente": "https://www.ultimahora.com/tsje-proclamara-esta-tarde-ganadores-las-elecciones-2023-n3064211"
+  },
+  {
+   "texto": "los emitidos, frente a los 830.842 de Efraín Alegre, de",
+   "cifra": "830.842",
+   "fuente": "https://www.ultimahora.com/tsje-proclamara-esta-tarde-ganadores-las-elecciones-2023-n3064211"
+  },
+  {
+   "texto": "El Senado lo destituyó con 44 de sus 45 votosVotación",
+   "cifra": "44",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  },
+  {
+   "texto": "lo destituyó con 44 de sus 45 votosVotación del Senado,",
+   "cifra": "45",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  },
+  {
+   "texto": "acusación con los votos de sus 78 diputados en activo,",
+   "cifra": "78",
+   "fuente": "https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Todo pasó en cuatro días. El martes 3, el",
+   "motivo": "Días del martes 3 al viernes 6 de noviembre (fechas)"
+  },
+  {
+   "texto": "Un banco y cuatro días",
+   "motivo": "Días del martes 3 al viernes 6 de noviembre (fechas)"
+  },
+  {
+   "texto": "2023. Tono claro: menos del 40 % de los votos; medio,",
+   "motivo": "Umbrales de la leyenda del mapa"
+  },
+  {
+   "texto": "de los votos; medio, del 40 % al 50 %; intenso,",
+   "motivo": "Umbrales de la leyenda del mapa"
+  },
+  {
+   "texto": "votos; medio, del 40 % al 50 %; intenso, más del",
+   "motivo": "Umbrales de la leyenda del mapa"
+  },
+  {
+   "texto": "al 50 %; intenso, más del 50 %",
+   "motivo": "Umbrales de la leyenda del mapa"
+  }
+ ],
+ "permitir_espana": []
 }
