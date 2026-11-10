@@ -28,11 +28,18 @@ assert NMUN == 785
 NOMM = dict(zip(m.mun_code, m.municipio))
 A19, A23 = agrega(m, Y19), agrega(m, Y23)
 GANA = {y: m[f'g{y[:4]}'].value_counts().to_dict() for y in (Y19, Y23)}
-assert GANA[Y19] == {'PSOE': 699, 'PP': 40, 'VOX': 33, 'UP': 12, 'CS': 1}, GANA[Y19]
-assert GANA[Y23] == {'PSOE': 467, 'PP': 307, 'SUMAR': 10, 'VOX': 1}, GANA[Y23]
+assert GANA[Y19] == {'PSOE': 699, 'PP': 37, 'VOX': 33, 'UP': 12, 'EMPATE': 3, 'CS': 1}, GANA[Y19]
+assert GANA[Y23] == {'PSOE': 466, 'PP': 307, 'SUMAR': 10, 'EMPATE': 1, 'VOX': 1}, GANA[Y23]
 PSOE_PP = int(((m.g2019 == 'PSOE') & (m.g2023 == 'PP')).sum())
 VOX_PP = int(((m.g2019 == 'VOX') & (m.g2023 == 'PP')).sum())
 assert PSOE_PP == 233 and VOX_PP == 33
+# Empates (mismo número de votos entre los dos primeros): gris en los mapas
+EMP = {y: m[m[f'g{y[:4]}'] == 'EMPATE'] for y in (Y19, Y23)}
+assert list(EMP[Y19].municipio) == ['Bayarque', 'Beires', 'Huécija'] and set(EMP[Y19].emp2019) == {'PP-PSOE'}
+assert list(EMP[Y23].municipio) == ['Doña Mencía'] and EMP[Y23].iloc[0].emp2023 == 'PSOE-SUMAR' and EMP[Y23].iloc[0].g2019 == 'PSOE'
+PSOE_PIERDE = int(((m.g2019 == 'PSOE') & (m.g2023 != 'PSOE')).sum())
+PSOE_GANA = int(((m.g2019 != 'PSOE') & (m.g2023 == 'PSOE')).sum())
+assert (PSOE_PIERDE, PSOE_GANA) == (237, 4) and PSOE_PIERDE - PSOE_GANA == GANA[Y19]['PSOE'] - GANA[Y23]['PSOE']
 PSOE_MENOS = GANA[Y19]['PSOE'] - GANA[Y23]['PSOE']
 DPSOE_VOTOS = A23['votos']['PSOE'] - A19['votos']['PSOE']
 DPP = A23['pct']['PP'] - A19['pct']['PP']
@@ -105,8 +112,6 @@ assert 'Adelante Andalucía' not in json.load(open(RAIZ / 'previsiones/datos/pub
 cam, H = caminos(list(PROV), W=640, lat=37.4)
 assert len(cam) == NMUN
 GNOM = {k: NOM[k] for k in NOM}
-LEY19 = [(NOM[f], COL[f]) for f in ('PSOE', 'PP', 'VOX', 'UP', 'CS')]
-LEY23 = [(NOM[f], COL[f]) for f in ('PSOE', 'PP', 'SUMAR', 'VOX')]
 g_mapgan = figura(f'El PSOE pasó de ganar en {GANA[Y19]["PSOE"]} municipios a ganar en {GANA[Y23]["PSOE"]}, y el PP, de {GANA[Y19]["PP"]} a {GANA[Y23]["PP"]}',
                   f'Partido más votado en cada uno de los {NMUN} municipios de Andalucía, en noviembre de 2019 y en julio de 2023',
                   mapa_svg(cam, H, lambda k: COL[m.set_index('mun_code').at[k, 'g2019']], lambda k: NOM[m.set_index('mun_code').at[k, 'g2019']],
@@ -114,20 +119,21 @@ g_mapgan = figura(f'El PSOE pasó de ganar en {GANA[Y19]["PSOE"]} municipios a g
                   + mapa_svg(cam, H, lambda k: COL[m.set_index('mun_code').at[k, 'g2023']], lambda k: NOM[m.set_index('mun_code').at[k, 'g2023']],
                              'Municipios de Andalucía por partido más votado en julio de 2023', NOMM, rotulo='Julio de 2023'),
                   'Fuente: Ministerio del Interior, resultados por municipio, sin voto exterior. Ganador según los votos de cada candidatura: '
-                  'en 2019, Unidas Podemos y Más País por separado (Más País no ganó en ninguno).',
-                  [(NOM[f], COL[f]) for f in ('PSOE', 'PP', 'VOX', 'UP', 'SUMAR', 'CS')],
+                  'en 2019, Unidas Podemos y Más País por separado (Más País no ganó en ninguno). En gris, los empates: en 2019, Bayarque, Beires y Huécija '
+                  '(PP y PSOE con los mismos votos); en 2023, Doña Mencía (PSOE y Sumar).',
+                  [(NOM[f], COL[f]) for f in ('PSOE', 'PP', 'VOX', 'UP', 'SUMAR', 'CS', 'EMPATE')],
                   (['Partido', 'Municipios en nov. 2019', 'Municipios en 2023'],
-                   [[NOM[f], str(GANA[Y19].get(f, 0)), str(GANA[Y23].get(f, 0))] for f in ('PSOE', 'PP', 'VOX', 'UP', 'SUMAR', 'CS')]
+                   [[NOM[f], str(GANA[Y19].get(f, 0)), str(GANA[Y23].get(f, 0))] for f in ('PSOE', 'PP', 'VOX', 'UP', 'SUMAR', 'CS', 'EMPATE')]
                    + [['Total', str(NMUN), str(NMUN)]]))
 
-ORDT = ['PSOE', 'PP', 'SUMAR', 'VOX']
+ORDT = ['PSOE', 'PP', 'SUMAR', 'VOX', 'EMPATE']
 g_tam = figura(f'El PSOE ganó en {PEQ} de los {NPEQ} municipios de menos de 5.000 habitantes; el PP, en 11 de las 13 ciudades de más de 100.000',
                'Municipios ganados por cada partido en julio de 2023, según su población',
                apiladas([(nom, [(t['g23'].get(f, 0), COL[f], NOM[f]) for f in ORDT if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=128),
                'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
                [(NOM[f], COL[f]) for f in ORDT],
-               (['Población', 'Municipios', 'Electores (2023)', 'Ganó el PSOE', 'Ganó el PP', 'Ganó Sumar', 'Ganó Vox'],
+               (['Población', 'Municipios', 'Electores (2023)', 'Ganó el PSOE', 'Ganó el PP', 'Ganó Sumar', 'Ganó Vox', 'Empate'],
                 [[nom, str(t['n']), n(t['censo'])] + [str(t['g23'].get(f, 0)) for f in ORDT] for nom, t in TT.items()]))
 
 g_tampct = figura('El PSOE saca más en los pueblos; el PP, en las ciudades',
@@ -231,9 +237,9 @@ BAR = AJG.iloc[0]
 cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">Andalucía elige el 29 de noviembre 60 de los 350 diputados del Congreso, uno menos que en 2023, y es la comunidad que más aporta. Pedro Sánchez empieza la campaña en Sevilla, «provincia en la que siempre han ganado los socialistas», y el PP «busca repetir» como la fuerza más votada en Andalucía en unas generales, algo que logró por primera vez en 2023, según <a href="{EFE}">EFE</a>. Serán seis meses después de las autonómicas del 17 de mayo, en las que el PP de Juanma Moreno perdió por poco la mayoría absoluta y pactó un gobierno con Vox.</p>
 <blockquote class="cita"><p>«Va a mejorar los resultados respecto a los que tenía»</p><footer>María Jesús Montero, secretaria general del PSOE de Andalucía, sobre el PSOE el 29N, el 5 de noviembre de 2026 en Sevilla, según <a href="{MIRA}">El Mira</a></footer></blockquote>
-<p data-tipo="dato">Para saber de dónde parte cada uno, el mapa municipio a municipio cuenta algo que el resultado global esconde. En noviembre de 2019, el PSOE fue el partido más votado en {GANA[Y19]["PSOE"]} de los {NMUN} municipios andaluces. En julio de 2023 ganó en {GANA[Y23]["PSOE"]}: {PSOE_MENOS} menos. Y sin embargo su voto no bajó: sacó el {p(A19["pct"]["PSOE"])} % en 2019 y el {p(A23["pct"]["PSOE"])} % en 2023, con {n(DPSOE_VOTOS)} votos más.</p>
+<p data-tipo="dato">Para saber de dónde parte cada uno, el mapa municipio a municipio cuenta algo que el resultado global esconde. En noviembre de 2019, el PSOE fue el partido más votado en {GANA[Y19]["PSOE"]} de los {NMUN} municipios andaluces. En julio de 2023 ganó en {GANA[Y23]["PSOE"]}, {PSOE_MENOS} menos, y en otro, Doña Mencía, empató a votos con Sumar. Y sin embargo su voto no bajó: sacó el {p(A19["pct"]["PSOE"])} % en 2019 y el {p(A23["pct"]["PSOE"])} % en 2023, con {n(DPSOE_VOTOS)} votos más.</p>
 {g_ins}
-<p data-tipo="dato">Lo que cambió fue el resto del tablero. El PP pasó del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} %, {p(DPP)} puntos más, y de ganar en {GANA[Y19]["PP"]} municipios a ganar en {GANA[Y23]["PP"]}. Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó en 2023, y Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. En {PSOE_PP} municipios el más votado pasó del PSOE al PP, y en los {VOX_PP} que había ganado Vox en 2019, sobre todo en Málaga y Almería, ganó el PP.</p>
+<p data-tipo="dato">Lo que cambió fue el resto del tablero. El PP pasó del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} %, {p(DPP)} puntos más, y de ganar en {GANA[Y19]["PP"]} municipios a ganar en {GANA[Y23]["PP"]}. Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó en 2023, y Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. De los {PSOE_PIERDE} municipios que el PSOE dejó de ganar, {PSOE_PP} fueron para el PP (a cambio, el PSOE ganó en {NW[PSOE_GANA]} que en 2019 habían sido de Unidas Podemos), y en los {VOX_PP} que había ganado Vox en 2019, sobre todo en Málaga y Almería, ganó el PP.</p>
 {g_mapgan}
 <p data-tipo="patron">Sumados, PP, Vox y Ciudadanos tenían en 2019 el {p(DER19)} % de los votos andaluces; PP y Vox, en 2023, el {p(DER23)} %. El bloque creció menos de tres puntos; lo que más cambió es que casi todo ese voto se concentró en una papeleta, y con eso el PP adelantó al PSOE en {PSOE_PP} municipios. El PP subió en {PP_SUBE} de los {NMUN} municipios, y en {PP_MAS20} lo hizo más de 20 puntos.</p>
 {g_mapdpp}
@@ -263,7 +269,7 @@ preguntas = [
     ('¿Quién ganó las elecciones generales de 2023 en Andalucía?',
      f'El PP, con el {p(A23["pct"]["PP"])} % de los votos a candidaturas (sin voto exterior), por delante del PSOE ({p(A23["pct"]["PSOE"])} %). Sacó {E23["PP"]} diputados, el PSOE {E23["PSOE"]}, Vox {E23["VOX"]} y Sumar {E23["SUMAR"]}.'),
     ('¿En cuántos municipios andaluces ganó el PSOE en 2023?',
-     f'En {GANA[Y23]["PSOE"]} de {NMUN}; el PP, en {GANA[Y23]["PP"]}; Sumar, en {GANA[Y23]["SUMAR"]}, y Vox, en {GANA[Y23]["VOX"]}. En noviembre de 2019, el PSOE había ganado en {GANA[Y19]["PSOE"]}.'),
+     f'En {GANA[Y23]["PSOE"]} de {NMUN}; el PP, en {GANA[Y23]["PP"]}; Sumar, en {GANA[Y23]["SUMAR"]}, y Vox, en {GANA[Y23]["VOX"]}. En otro, Doña Mencía, empataron el PSOE y Sumar. En noviembre de 2019, el PSOE había ganado en {GANA[Y19]["PSOE"]}.'),
     ('¿Cuántos diputados elige Andalucía el 29N?',
      f'60, uno menos que en 2023: Cádiz pasa de 9 a 8. Sevilla elige 12; Málaga, 11; Cádiz, 8; Granada, 7; Almería y Córdoba, 6, y Huelva y Jaén, 5.'),
     ('¿Qué dicen las encuestas en Andalucía?',
@@ -276,7 +282,7 @@ foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio 
 
 R = lambda v: round(float(v), 4)
 DATOS = {
-    'A19': A19, 'A23': A23, 'GANA': GANA, 'PSOE_PP': PSOE_PP, 'VOX_PP': VOX_PP, 'PP_SUBE': PP_SUBE, 'PP_MAS20': PP_MAS20, 'POB': POB,
+    'A19': A19, 'A23': A23, 'GANA': GANA, 'PSOE_PP': PSOE_PP, 'PSOE_PIERDE': PSOE_PIERDE, 'PSOE_GANA': PSOE_GANA, 'VOX_PP': VOX_PP, 'PP_SUBE': PP_SUBE, 'PP_MAS20': PP_MAS20, 'POB': POB,
     'TT': TT, 'NPSOE_MAS': NPSOE_MAS, 'DER19': DER19, 'DER23': DER23, 'PEQ': PEQ, 'NPEQ': NPEQ, 'AJ2': AJ2, 'AJ10': AJ10, 'NTR': NTR,
     'PR': {pr: {y: PR[pr][y]['pct'] for y in PR[pr]} for pr in PR}, 'PRG': PRG, 'PRN': PRN,
     'CAP': {k: {'nombre': NOMM[k], 'g19': CA.at[k, 'g2019'], 'g23': CA.at[k, 'g2023'], 'pp19': R(CA.at[k, f'{Y19}%PP']), 'pp23': R(CA.at[k, f'{Y23}%PP']),
@@ -289,7 +295,7 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 
 pieza(SLUG, 'El mapa electoral de Andalucía',
-      f'El mapa electoral de Andalucía: el PSOE perdió {PSOE_MENOS} municipios en 2023 sin perder votos',
+      f'El mapa electoral de Andalucía: el PSOE ganó en {PSOE_MENOS} municipios menos en 2023 sin perder votos',
       f'En noviembre de 2019 ganó en {GANA[Y19]["PSOE"]} de los {NMUN} municipios andaluces; en 2023, en {GANA[Y23]["PSOE"]}, con el mismo {p(A23["pct"]["PSOE"])} %. '
       f'El PP pasó de {GANA[Y19]["PP"]} a {GANA[Y23]["PP"]} y ganó en {NW[CAP_PP]} de las ocho capitales. Para el 29N, la media de encuestas le da {E29["PP"]} de los 60 diputados, y a Vox, {E29["VOX"]}.',
       '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

@@ -22,15 +22,16 @@ from comun import BASE, COLOR, RAIZ, esc, n
 Y19, Y23 = '2019_11', '2023_07'
 F = ['PP', 'PSOE', 'VOX', 'SUMAR', 'CS', 'UPYD', 'ERC', 'JUNTS', 'PNV', 'BILDU', 'BNG', 'CC', 'UCD', 'CDS', 'OTROS']
 # Listas que pueden ganar un municipio: en 2019, UP y Más País por separado
-L19 = ['PP', 'PSOE', 'VOX', 'UP', 'MP', 'CS', 'ERC', 'JUNTS', 'PNV', 'BILDU', 'BNG', 'CC']
-L23 = ['PP', 'PSOE', 'VOX', 'SUMAR', 'ERC', 'JUNTS', 'PNV', 'BILDU', 'BNG', 'CC']
+L19 = ['PP', 'PSOE', 'VOX', 'UP', 'MP', 'CS', 'ERC', 'JUNTS', 'CUP', 'PNV', 'BILDU', 'BNG', 'CC']
+L23 = ['PP', 'PSOE', 'VOX', 'SUMAR', 'ERC', 'JUNTS', 'CUP', 'PNV', 'BILDU', 'BNG', 'CC']
 NOM = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'UP': 'Unidas Podemos', 'MP': 'Más País', 'SUMAR': 'Sumar', 'CS': 'Ciudadanos',
-       'ERC': 'ERC', 'JUNTS': 'Junts', 'PNV': 'PNV', 'BILDU': 'EH Bildu', 'BNG': 'BNG', 'CC': 'CC'}
+       'ERC': 'ERC', 'JUNTS': 'Junts', 'CUP': 'CUP', 'PNV': 'PNV', 'BILDU': 'EH Bildu', 'BNG': 'BNG', 'CC': 'CC', 'EMPATE': 'Empate'}
 COL = {'PP': COLOR['PP'], 'PSOE': COLOR['PSOE'], 'VOX': COLOR['Vox'], 'UP': COLOR['Podemos'], 'MP': '#0fb5a8',
-       'SUMAR': COLOR['Sumar'], 'CS': '#eb6109', 'ERC': COLOR['ERC'], 'JUNTS': COLOR['Junts'], 'PNV': COLOR['PNV'],
-       'BILDU': COLOR['EH Bildu'], 'BNG': COLOR['BNG'], 'CC': COLOR['CC']}
+       'SUMAR': COLOR['Sumar'], 'CS': '#eb6109', 'ERC': COLOR['ERC'], 'JUNTS': COLOR['Junts'], 'CUP': '#ffe100', 'PNV': COLOR['PNV'],
+       'BILDU': COLOR['EH Bildu'], 'BNG': COLOR['BNG'], 'CC': COLOR['CC'], 'EMPATE': '#8a8486'}
 # Nombres de las listas del simulador y del modelo, a las claves de arriba
 SIM = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Unidas Podemos': 'UP', 'Más País': 'MP', 'Sumar': 'SUMAR', 'Cs': 'CS',
+       'ERC': 'ERC', 'Junts': 'JUNTS', 'CUP': 'CUP', 'ECP': 'UP', 'En Comú Podem': 'UP', 'JxCat': 'JUNTS',
        'Podemos': 'PODEMOS', 'SALF': 'SALF'}
 p = lambda v: n(v, 1)
 s1 = lambda v: f'{v:+.1f}'.replace('.', ',').replace('-', '−')
@@ -46,22 +47,32 @@ def municipios(provs):
     m[f'{Y19}_vMP'] = m.mun_code.map(mp).fillna(0)
     m[f'{Y19}_vUP'] = m[f'{Y19}_vSUMAR'] - m[f'{Y19}_vMP']
     assert (m[f'{Y19}_vUP'] >= 0).all()
+    # La CUP va en OTROS en las descargas del mapa: sus votos por municipio salen de los mismos datos por mesa
+    # (pollspaindata, Ministerio del Interior), en datos/cup_municipios_2019_2023.csv, y se restan de OTROS.
+    cup = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos/cup_municipios_2019_2023.csv', dtype={'mun_code': str}).set_index('mun_code')
     for y in (Y19, Y23):
-        m[f'{y}_val'] = m[[f'{y}_v{f}' for f in F]].sum(axis=1)
-        for f in F + (['UP', 'MP'] if y == Y19 else []):
+        m[f'{y}_vCUP'] = m.mun_code.map(cup[f'{y}_vCUP']).fillna(0)
+        m[f'{y}_vOTROS'] = m[f'{y}_vOTROS'] - m[f'{y}_vCUP']
+        assert (m[f'{y}_vOTROS'] >= 0).all()
+    for y in (Y19, Y23):
+        m[f'{y}_val'] = m[[f'{y}_v{f}' for f in F + ['CUP']]].sum(axis=1)
+        for f in F + ['CUP'] + (['UP', 'MP'] if y == Y19 else []):
             m[f'{y}%{f}'] = m[f'{y}_v{f}'] / m[f'{y}_val'] * 100
     for y, L in ((Y19, L19), (Y23, L23)):
         v = m[[f'{y}_v{f}' for f in L]]
-        m[f'g{y[:4]}'] = v.idxmax(axis=1).str.split('_v').str[1]
-        s = np.sort(v.values, axis=1)
-        m[f'marg{y[:4]}'] = (s[:, -1] - s[:, -2]) / m[f'{y}_val'] * 100       # ventaja del primero sobre el segundo, en puntos
-        m[f'margv{y[:4]}'] = s[:, -1] - s[:, -2]                               # en votos
-        m[f'seg{y[:4]}'] = [L[i] for i in np.argsort(v.values, axis=1)[:, -2]]
+        o = np.argsort(-v.values, axis=1, kind='stable')
+        s = np.take_along_axis(v.values, o, axis=1)
+        m[f'marg{y[:4]}'] = (s[:, 0] - s[:, 1]) / m[f'{y}_val'] * 100          # ventaja del primero sobre el segundo, en puntos
+        m[f'margv{y[:4]}'] = s[:, 0] - s[:, 1]                                 # en votos
+        # Empate a votos entre los dos primeros: no hay ganador (antes se le daba a la lista que iba antes en L19/L23)
+        m[f'g{y[:4]}'] = [L[i] if d > 0 else 'EMPATE' for i, d in zip(o[:, 0], s[:, 0] - s[:, 1])]
+        m[f'seg{y[:4]}'] = [L[i] for i in o[:, 1]]
+        m[f'emp{y[:4]}'] = [f'{L[i]}-{L[j]}' if d == 0 else '' for i, j, d in zip(o[:, 0], o[:, 1], s[:, 0] - s[:, 1])]
     m['prov'] = m.mun_code.str[:2]
     return m
 
 
-def agrega(g, y, listas=('PP', 'PSOE', 'VOX', 'SUMAR', 'CS')):
+def agrega(g, y, listas=('PP', 'PSOE', 'VOX', 'SUMAR', 'CS', 'ERC', 'JUNTS', 'CUP')):
     val, vot, cen = g[f'{y}_val'].sum(), g[f'{y}_votantes'].sum(), g[f'{y}_censo'].sum()
     return {'pct': {f: float(g[f'{y}_v{f}'].sum() / val * 100) for f in listas}, 'part': float(vot / cen * 100),
             'votos': {f: int(g[f'{y}_v{f}'].sum()) for f in listas}, 'censo': int(cen), 'votantes': int(vot)}

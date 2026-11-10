@@ -1,11 +1,9 @@
 {
  "pieza": "mapa-electoral-andalucia-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
  "cifras": [
-  {
-   "texto": "Andalucía: el PSOE perdió 232 municipios en 2023 sin",
-   "cifra": "232",
-   "calculo": "D['GANA']['2019_11']['PSOE']-D['GANA']['2023_07']['PSOE']"
-  },
   {
    "texto": "noviembre de 2019 ganó en 699 de los 785 municipios",
    "cifra": "699",
@@ -15,31 +13,6 @@
    "texto": "de 2019 ganó en 699 de los 785 municipios andaluces;",
    "cifra": "785",
    "calculo": "sum(D['GANA']['2023_07'].values())"
-  },
-  {
-   "texto": "municipios andaluces; en 2023, en 467, con el mismo 33,8 %.",
-   "cifra": "467",
-   "calculo": "D['GANA']['2023_07']['PSOE']"
-  },
-  {
-   "texto": "2023, en 467, con el mismo 33,8 %. El PP pasó de 40",
-   "cifra": "33,8",
-   "calculo": "D['A23']['pct']['PSOE']"
-  },
-  {
-   "texto": "mismo 33,8 %. El PP pasó de 40 a 307 y ganó en siete",
-   "cifra": "40",
-   "calculo": "D['GANA']['2019_11']['PP']"
-  },
-  {
-   "texto": "33,8 %. El PP pasó de 40 a 307 y ganó en siete de las",
-   "cifra": "307",
-   "calculo": "D['GANA']['2023_07']['PP']"
-  },
-  {
-   "texto": "pasó de 40 a 307 y ganó en siete de las ocho capitales.",
-   "cifra": "siete",
-   "calculo": "sum(c['g23']=='PP' for c in D['CAP'].values())"
   },
   {
    "texto": "307 y ganó en siete de las ocho capitales. Para el 29N,",
@@ -77,16 +50,6 @@
    "calculo": "sum(D['GANA']['2023_07'].values())"
   },
   {
-   "texto": "En julio de 2023 ganó en 467: 232 menos. Y sin embargo",
-   "cifra": "467",
-   "calculo": "D['GANA']['2023_07']['PSOE']"
-  },
-  {
-   "texto": "julio de 2023 ganó en 467: 232 menos. Y sin embargo",
-   "cifra": "232",
-   "calculo": "D['GANA']['2019_11']['PSOE']-D['GANA']['2023_07']['PSOE']"
-  },
-  {
    "texto": "su voto no bajó: sacó el 33,8 % en 2019 y el 33,8",
    "cifra": "33,8",
    "calculo": "D['A19']['pct']['PSOE']"
@@ -117,39 +80,9 @@
    "calculo": "D['A23']['pct']['PP']-D['A19']['pct']['PP']"
   },
   {
-   "texto": "puntos más, y de ganar en 40 municipios a ganar en",
-   "cifra": "40",
-   "calculo": "D['GANA']['2019_11']['PP']"
-  },
-  {
-   "texto": "40 municipios a ganar en 307. Ciudadanos, que había",
-   "cifra": "307",
-   "calculo": "D['GANA']['2023_07']['PP']"
-  },
-  {
    "texto": "Ciudadanos, que había sacado el 8,2 % en 2019, no se presentó",
    "cifra": "8,2",
    "calculo": "D['A19']['pct']['CS']"
-  },
-  {
-   "texto": "presentó en 2023, y Vox bajó del 20,6 % al 15,5 %. En 233",
-   "cifra": "20,6",
-   "calculo": "D['A19']['pct']['VOX']"
-  },
-  {
-   "texto": "y Vox bajó del 20,6 % al 15,5 %. En 233 municipios",
-   "cifra": "15,5",
-   "calculo": "D['A23']['pct']['VOX']"
-  },
-  {
-   "texto": "del 20,6 % al 15,5 %. En 233 municipios el más votado",
-   "cifra": "233",
-   "calculo": "D['PSOE_PP']"
-  },
-  {
-   "texto": "del PSOE al PP, y en los 33 que había ganado Vox",
-   "cifra": "33",
-   "calculo": "D['VOX_PP']"
   },
   {
    "texto": "Ciudadanos tenían en 2019 el 49,6 % de los votos andaluces;",
@@ -175,16 +108,6 @@
    "texto": "los 785 municipios, y en 65 lo hizo más de 20 puntos.",
    "cifra": "65",
    "calculo": "D['PP_MAS20']"
-  },
-  {
-   "texto": "geografías. El PSOE ganó en 347 de los 529 municipios",
-   "cifra": "347",
-   "calculo": "D['PEQ']"
-  },
-  {
-   "texto": "El PSOE ganó en 347 de los 529 municipios de menos",
-   "cifra": "529",
-   "calculo": "D['NPEQ']"
   },
   {
    "texto": "5.000 habitantes, y el PP, en 11 de las 13 ciudades de",
@@ -407,16 +330,6 @@
    "calculo": "D['GANA']['2019_11']['PSOE']"
   },
   {
-   "texto": "699 municipios a ganar en 467, y el PP, de 40 a 307Partido",
-   "cifra": "467",
-   "calculo": "D['GANA']['2023_07']['PSOE']"
-  },
-  {
-   "texto": "ganar en 467, y el PP, de 40 a 307Partido más votado",
-   "cifra": "40",
-   "calculo": "D['GANA']['2019_11']['PP']"
-  },
-  {
    "texto": "votado en cada uno de los 785 municipios de Andalucía,",
    "cifra": "785",
    "calculo": "sum(D['GANA']['2023_07'].values())"
@@ -430,16 +343,6 @@
    "texto": "El PP subió en 779 de los 785 municipiosCambio del",
    "cifra": "785",
    "calculo": "sum(D['GANA']['2023_07'].values())"
-  },
-  {
-   "texto": "El PSOE ganó en 347 de los 529 municipios",
-   "cifra": "347",
-   "calculo": "D['PEQ']"
-  },
-  {
-   "texto": "El PSOE ganó en 347 de los 529 municipios de menos",
-   "cifra": "529",
-   "calculo": "D['NPEQ']"
   },
   {
    "texto": "5.000 habitantes; el PP, en 11 de las 13 ciudades de",
@@ -514,6 +417,96 @@
    "texto": "andaluces; PP y Vox, en 2023, el 52,3 %.",
    "cifra": "52,3",
    "calculo": "D['DER23']"
+  },
+  {
+   "texto": "Andalucía: el PSOE ganó en 233 municipios menos en",
+   "cifra": "233",
+   "calculo": "D['GANA']['2019_11']['PSOE']-D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "municipios andaluces; en 2023, en 466, con el mismo 33,8 %.",
+   "cifra": "466",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "2023, en 466, con el mismo 33,8 %. El PP pasó de 37",
+   "cifra": "33,8",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "mismo 33,8 %. El PP pasó de 37 a 307 y ganó en siete",
+   "cifra": "37",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "En julio de 2023 ganó en 466, 233 menos, y en otro,",
+   "cifra": "466",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "julio de 2023 ganó en 466, 233 menos, y en otro, Doña",
+   "cifra": "233",
+   "calculo": "D['GANA']['2019_11']['PSOE']-D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "puntos más, y de ganar en 37 municipios a ganar en",
+   "cifra": "37",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "37 municipios a ganar en 307. Ciudadanos, que había",
+   "cifra": "307",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "presentó en 2023, y Vox bajó del 20,6 % al 15,5 %. De los",
+   "cifra": "20,6",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 20,6 % al 15,5 %. De los 237 municipios",
+   "cifra": "15,5",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "20,6 % al 15,5 %. De los 237 municipios que el PSOE",
+   "cifra": "237",
+   "calculo": "D['PSOE_PIERDE']"
+  },
+  {
+   "texto": "que el PSOE dejó de ganar, 233 fueron para el PP (a",
+   "cifra": "233",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "(a cambio, el PSOE ganó en cuatro que en 2019 habían sido",
+   "cifra": "cuatro",
+   "calculo": "D['PSOE_GANA']"
+  },
+  {
+   "texto": "Unidas Podemos), y en los 33 que había ganado Vox",
+   "cifra": "33",
+   "calculo": "D['VOX_PP']"
+  },
+  {
+   "texto": "geografías. El PSOE ganó en 346 de los 529 municipios",
+   "cifra": "346",
+   "calculo": "D['PEQ']"
+  },
+  {
+   "texto": "699 municipios a ganar en 466, y el PP, de 37 a 307Partido",
+   "cifra": "466",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganar en 466, y el PP, de 37 a 307Partido más votado",
+   "cifra": "37",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "El PSOE ganó en 346 de los 529 municipios",
+   "cifra": "346",
+   "calculo": "D['PEQ']"
   }
  ],
  "externas": [
