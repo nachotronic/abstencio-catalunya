@@ -4322,6 +4322,8 @@ PIEZAS += [
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
         enlaces=[],
         lugar='Andalucía',
+        foto=dict(src='img/actualidad/fotos/mapa-electoral-andalucia-29n.jpg', ancho=1280, alto=720, ia=True,
+                  pie='Un pueblo blanco entre olivares y una calle de bloques de pisos, con unos sobres de votación en medio: un collage.'),
     ),
     dict(
         slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10',
