@@ -4269,7 +4269,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='vox-vuelve-tenerife-29n', fecha='2026-11-10',
+        slug='vox-vuelve-tenerife-29n', fecha='2026-11-10', actualizado='2026-11-10 09:14',
         titulo='Vox vuelve a la papeleta en Tenerife: en 2023 no se presentó y el PP subió 15,4 puntos, frente a 4,4 en Las Palmas', serie='29n', figura=0,
         descripcion='Hace tres años, Vox no tuvo lista al Congreso en Santa Cruz de Tenerife y el PP ganó la provincia y un tercer escaño. Donde Vox era más fuerte, en el sur de Tenerife, más subió el PP. Con las encuestas, Vox recuperaría entre uno y dos de los siete diputados.',
         compara='Las generales de noviembre de 2019 y julio de 2023 en los 54 municipios de Santa Cruz de Tenerife, donde Vox no presentó lista al Congreso en 2023, y en los 34 de Las Palmas, donde sí lo hizo; y la media de encuestas del 29N.',
@@ -4287,6 +4287,7 @@ PIEZAS += [
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
         enlaces=[],
         lugar='Santa Cruz de Tenerife',
+        foto=dict(src='img/actualidad/fotos/vox-vuelve-tenerife-29n.jpg', ancho=1280, alto=720, ia=True, pie='Una mano mete una papeleta en una urna transparente, con el Teide y una calle de casas canarias al fondo: un collage.'),
     ),
 ]
 

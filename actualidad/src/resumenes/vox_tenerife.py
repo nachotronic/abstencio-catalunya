@@ -255,6 +255,147 @@ g_esc = figura('En 2023, Vox y Unidas Podemos perdieron su escaño; PP y PSOE sa
                (['', 'PP', 'PSOE', 'Vox', 'CC', 'Unidas Podemos / Sumar'],
                 [[nom] + [str(e.get(f, 0)) for f in ORD] for nom, e in FILAS_ESC]))
 
+
+# Cambio de cada partido entre noviembre de 2019 y 2023, en las dos provincias
+PARTIDOS = ['PP', 'PSOE', 'CC', 'SUMAR', 'CS', 'VOX']
+CAMB = {pr: {f: PROV[pr][Y23]['pct'][f] - PROV[pr][Y19]['pct'][f] for f in PARTIDOS} for pr in PROV}
+assert CAMB['38']['PSOE'] > 0 and CAMB['38']['SUMAR'] < 0
+
+
+def cambio_partidos(W_=440, ml=118):
+    alto, H = 40, 40 * len(PARTIDOS) + 8
+    k = (W_ - ml - 84) / 30
+    c0 = ml + 42 + 13 * k
+    out = [f'<svg viewBox="0 0 {W_} {H}" role="img" aria-label="Cambio de cada partido entre 2019 y 2023 en las dos provincias canarias">']
+    for i, f in enumerate(PARTIDOS):
+        y = 4 + i * alto
+        out.append(f'<text x="{ml - 8}" y="{y + 20}" text-anchor="end" class="lab">{esc(NOM[f] if f != "SUMAR" else "UP / Sumar")}</text>')
+        for j, (pr, op) in enumerate((('38', 1), ('35', .4))):
+            v = CAMB[pr][f]
+            yy = y + 3 + j * 16
+            x1, x2 = sorted((c0, c0 + v * k))
+            out.append(f'<rect x="{x1:.1f}" y="{yy}" width="{max(1.5, x2 - x1):.1f}" height="13" fill="{COL[f]}" fill-opacity="{op}" rx="2"><title>{NOM[f]}, {"Santa Cruz de Tenerife" if pr == "38" else "Las Palmas"}: {s1(v)} puntos</title></rect>')
+            xt = c0 + v * k + (5 if v >= 0 else -5)
+            out.append(f'<text x="{xt:.1f}" y="{yy + 11}"{" text-anchor=\"end\"" if v < 0 else ""}>{s1(v)}</text>')
+    out.append(f'<line x1="{c0:.1f}" x2="{c0:.1f}" y1="0" y2="{H}" stroke="var(--fg)" stroke-width=".6"/></svg>')
+    return ''.join(out)
+
+
+g_par = figura('Sin Vox, el PP subió 15 puntos y el PSOE, 5: así cambió cada partido',
+               'Diferencia en puntos entre noviembre de 2019 y julio de 2023. Barra oscura: Santa Cruz de Tenerife; clara: Las Palmas',
+               cambio_partidos(),
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Cálculo propio. CC: en noviembre de 2019 se presentó en coalición con Nueva Canarias en las dos provincias; en 2023, Nueva Canarias fue por separado.',
+               [(NOM[f] if f != 'SUMAR' else 'UP / Sumar', COL[f]) for f in PARTIDOS],
+               (['Partido', 'Sta. Cruz de Tenerife nov. 2019 (%)', 'Sta. Cruz de Tenerife 2023 (%)', 'Diferencia', 'Las Palmas nov. 2019 (%)', 'Las Palmas 2023 (%)', 'Diferencia'],
+                [[NOM[f]] + [x for pr in ('38', '35') for x in (p(PROV[pr][Y19]['pct'][f]), p(PROV[pr][Y23]['pct'][f]) if PROV[pr][Y23]['pct'][f] else 'no se presentó', s1(CAMB[pr][f]))] for f in PARTIDOS]))
+
+# Las cuatro islas de la provincia
+ISLA = {'El Hierro': ['38013', '38048', '38901'], 'La Gomera': ['38002', '38003', '38021', '38036', '38049', '38050'],
+        'La Palma': ['38007', '38008', '38009', '38014', '38016', '38024', '38027', '38029', '38030', '38033', '38037', '38045', '38047', '38053']}
+t38 = c[c.prov == '38']
+ISLA['Tenerife'] = sorted(set(t38.mun_code) - {x for v in ISLA.values() for x in v})
+assert len(ISLA['Tenerife']) == 31 and sum(len(v) for v in ISLA.values()) == 54
+IS = {}
+for isla, cods in ISLA.items():
+    t = t38[t38.mun_code.isin(cods)]
+    IS[isla] = {'n': len(t), 'censo': int(t[W].sum()), 'vox19': t[f'{Y19}_vVOX'].sum() / t[f'{Y19}_val'].sum() * 100,
+                'pp19': t[f'{Y19}_vPP'].sum() / t[f'{Y19}_val'].sum() * 100, 'pp23': t[f'{Y23}_vPP'].sum() / t[f'{Y23}_val'].sum() * 100}
+    IS[isla]['dpp'] = IS[isla]['pp23'] - IS[isla]['pp19']
+ORD_IS = sorted(IS, key=lambda k: -IS[k]['vox19'])
+assert ORD_IS[0] == 'Tenerife'
+assert min(IS[i]['dpp'] for i in IS if i != 'La Palma') > 15 and IS['La Palma']['dpp'] < 7
+g_isla = figura('El PP subió más de 15 puntos en tres islas y menos de 7 en La Palma',
+                'Subida del PP entre noviembre de 2019 y 2023, en puntos, en cada isla de la provincia; entre paréntesis, el voto a Vox en 2019',
+                barras([(f'{k} ({p(IS[k]["vox19"])})', IS[k]['dpp'], COL['PP'], f'+{p(IS[k]["dpp"])}') for k in ORD_IS], 20,
+                       'Subida del PP por isla', W=440, ml=140, separar=True),
+                'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Cálculo propio.',
+                [('PP', COL['PP'])],
+                (['Isla', 'Municipios', 'Electores (2023)', 'Vox nov. 2019 (%)', 'PP nov. 2019 (%)', 'PP 2023 (%)', 'Diferencia PP (puntos)'],
+                 [[k, str(IS[k]['n']), n(IS[k]['censo']), p(IS[k]['vox19']), p(IS[k]['pp19']), p(IS[k]['pp23']), s1(IS[k]['dpp'])] for k in ORD_IS]))
+
+
+# --- Mapas municipales de Santa Cruz de Tenerife ---
+import math
+GEO = json.load(open(RAIZ / 'generales-2026/data/municipios.json'))
+T38 = c[c.prov == '38'].copy()
+FG = [f for f in F if f != 'OTROS']
+for y in (Y19, Y23):        # ganador con los votos de cada lista, nunca con familias sumadas
+    T38[f'{y}g'] = T38[[f'{y}_v{f}' for f in FG]].idxmax(axis=1).str.split('_v').str[1]
+GANA = {y: T38[f'{y}g'].value_counts().to_dict() for y in (Y19, Y23)}
+assert GANA[Y19] == {'PSOE': 44, 'PP': 5, 'CC': 5} and GANA[Y23] == {'PP': 34, 'PSOE': 18, 'CC': 2}
+PASO_PP = int(((T38[f'{Y19}g'] == 'PSOE') & (T38[f'{Y23}g'] == 'PP')).sum())
+assert PASO_PP == 26
+NOMM = dict(zip(T38.mun_code, T38.municipio))
+DPPM = dict(zip(T38.mun_code, T38.dPP))
+GAM = {y: dict(zip(T38.mun_code, T38[f'{y}g'])) for y in (Y19, Y23)}
+TRAMOS = [(-99, 5, '#dbe9f6', 'menos de 5'), (5, 10, '#a9cbe8', '5 a 10'), (10, 15, '#6aa6d6', '10 a 15'),
+          (15, 20, '#2f7cc0', '15 a 20'), (20, 99, '#0d4a8a', '20 o más')]
+NTRAMO = {e: int(((T38.dPP > a) & (T38.dPP <= b)).sum()) for a, b, _, e in TRAMOS}
+MAS15 = int((T38.dPP > 15).sum())
+assert MAS15 == 28 and NTRAMO['menos de 5'] == 1
+TOP20 = list(T38[T38.dPP > 20].sort_values('dPP', ascending=False).municipio)
+MIN = T38.sort_values('dPP').iloc[0]
+assert len(TOP20) == 5 and MIN.municipio == 'El Paso'
+y_lista = lambda xs: ', '.join(xs[:-1]) + ' y ' + xs[-1]
+
+
+def caminos(W):
+    S, kx = GEO['S'], math.cos(math.radians(28.3))
+    AN = []
+    for cod, partes in zip(GEO['cod'], GEO['poly']):
+        if cod[:2] != '38':
+            continue
+        for f in partes:
+            x, y, pts = f[0], f[1], [(f[0], f[1])]
+            for k in range(2, len(f), 2):
+                x += f[k]; y += f[k + 1]; pts.append((x, y))
+            AN.append((cod, [(px / S * kx, -py / S) for px, py in pts]))
+    XS = [x for _, r in AN for x, _ in r]; YS = [y for _, r in AN for _, y in r]
+    s = W / (max(XS) - min(XS)); H = round((max(YS) - min(YS)) * s)
+    cam = {}
+    for cod, r in AN:
+        d = ''.join(('L' if i else 'M') + f'{(x - min(XS)) * s:.1f},{(y - min(YS)) * s:.1f}' for i, (x, y) in enumerate(r))
+        cam[cod] = cam.get(cod, '') + d + 'Z'
+    assert len(cam) == 54, len(cam)
+    return cam, H
+
+
+def mapa_svg(relleno, titulo, etiqueta, W=440, rotulo=''):
+    cam, H = caminos(W)
+    out = ''.join(f'<path d="{d}" fill="{relleno(k)}"><title>{esc(NOMM[k])}: {esc(titulo(k))}</title></path>' for k, d in cam.items())
+    rot = f'<p style="margin:.6em 0 .2em;font-weight:700;font-size:.95em">{esc(rotulo)}</p>' if rotulo else ''
+    return (f'{rot}<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(etiqueta)}" style="max-width:{W}px;margin:0 auto;display:block">'
+            f'<g stroke="var(--bg)" stroke-width=".5" stroke-linejoin="round">{out}</g></svg>')
+
+
+GNOM = {'PP': 'PP', 'PSOE': 'PSOE', 'CC': 'CC'}
+assert all(k in ISLA['Tenerife'] for k in T38[T38.dPP > 20].mun_code) and MIN.mun_code in ISLA['La Palma']
+g_mapgan = figura(f'El PP pasó de ganar en {GANA[Y19]["PP"]} municipios de la provincia a ganar en {GANA[Y23]["PP"]}',
+                  'Partido más votado en cada uno de los 54 municipios de Santa Cruz de Tenerife, en noviembre de 2019 y en julio de 2023',
+                  mapa_svg(lambda k: COL[GAM[Y19][k]], lambda k: GNOM[GAM[Y19][k]], 'Municipios de Santa Cruz de Tenerife por partido más votado en noviembre de 2019', rotulo='Noviembre de 2019')
+                  + mapa_svg(lambda k: COL[GAM[Y23][k]], lambda k: GNOM[GAM[Y23][k]], 'Municipios de Santa Cruz de Tenerife por partido más votado en julio de 2023', rotulo='Julio de 2023'),
+                  'Fuente: Ministerio del Interior, resultados por municipio, sin voto exterior. Ganador según los votos de cada candidatura. '
+                  'CC: en 2019, en coalición con Nueva Canarias.',
+                  [('PP', COL['PP']), ('PSOE', COL['PSOE']), ('CC', COL['CC'])],
+                  (['Partido', 'Municipios en nov. 2019', 'Municipios en 2023'],
+                   [[GNOM[f], str(GANA[Y19].get(f, 0)), str(GANA[Y23].get(f, 0))] for f in ('PP', 'PSOE', 'CC')]))
+
+
+def tramo(v):
+    for a, b, col, _ in TRAMOS:
+        if a < v <= b:
+            return col
+
+
+g_mapdpp = figura(f'El PP subió más de 15 puntos en {MAS15} de los 54 municipios',
+                  'Subida del voto al PP entre noviembre de 2019 y julio de 2023 en cada municipio de Santa Cruz de Tenerife, en puntos',
+                  mapa_svg(lambda k: tramo(DPPM[k]), lambda k: f'+{p(DPPM[k])} puntos', 'Subida del PP por municipio en Santa Cruz de Tenerife entre 2019 y 2023'),
+                  'Fuente: Ministerio del Interior, resultados por municipio, sin voto exterior. Porcentajes sobre votos a candidaturas. Cálculo propio.',
+                  [(f'{e} puntos', col) for _, _, col, e in TRAMOS],
+                  (['Municipio', 'Isla', 'PP nov. 2019 (%)', 'PP 2023 (%)', 'Subida (puntos)', 'Ganador 2019', 'Ganador 2023'],
+                   [[r.municipio, next(i for i, cs in ISLA.items() if r.mun_code in cs), p(r[f'{Y19}%PP']), p(r[f'{Y23}%PP']),
+                     s1(r.dPP), GNOM[r[f'{Y19}g']], GNOM[r[f'{Y23}g']]] for _, r in T38.sort_values('dPP', ascending=False).iterrows()]))
+
 # --- Texto ---
 EP_CAY = 'https://www.europapress.es/islas-canarias/noticia-arriban-11-cayucos-1158-migrantes-canarias-fin-semana-20261109092514.html'
 EP_SAN = 'https://www.europapress.es/epsocial/migracion/noticia-29n-sanchez-dice-llegada-mas-6600-migrantes-canarias-bastante-habitual-momento-ano-20261109224243.html'
@@ -276,8 +417,15 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_sube}
 <p data-tipo="patron">Si se suman PP, Vox y Ciudadanos, el bloque apenas se movió. En Santa Cruz de Tenerife pasó del {p(DER["38"][Y19])} % de noviembre de 2019 al {p(DER["38"][Y23])} % del PP solo en 2023. En Las Palmas, del {p(DER["35"][Y19])} % al {p(DER["35"][Y23])} %. Lo que cambió en Tenerife es el reparto: casi todo ese voto se concentró en una sola papeleta.</p>
 {g_der}
+<p data-tipo="dato">El resto del tablero también se movió. En Santa Cruz de Tenerife, el PSOE subió {p(CAMB["38"]["PSOE"])} puntos, hasta el {p(E("38", Y23, "PSOE"))} %, y Coalición Canaria, que en 2019 iba en coalición con Nueva Canarias, se quedó casi igual, en el {p(E("38", Y23, "CC"))} %. El espacio de Unidas Podemos, que en 2023 fue Sumar, cayó {p(-CAMB["38"]["SUMAR"])} puntos. En Las Palmas, el PSOE subió {p(CAMB["35"]["PSOE"])} y Vox, con lista propia, {p(CAMB["35"]["VOX"])}.</p>
+{g_par}
 <p data-tipo="patron">El mapa lo dibuja municipio a municipio. Si se reparten los 54 municipios de la provincia en tres grupos con el mismo censo según su voto a Vox en 2019, el PP subió {p(TT[3]["dpp"])} puntos en el tercio donde Vox era más fuerte y {p(TT[1]["dpp"])} en el que menos. El PP subió en los 54 municipios. En Las Palmas, con Vox en la papeleta, la subida fue de {p(TL[3]["dpp"])} y {p(TL[1]["dpp"])} puntos.</p>
 {g_ter}
+<p data-tipo="dato">Por islas, la subida no fue igual. En Tenerife, la más poblada, Vox había sacado el {p(IS["Tenerife"]["vox19"])} % en 2019 y el PP subió {p(IS["Tenerife"]["dpp"])} puntos en 2023. En La Gomera, con el {p(IS["La Gomera"]["vox19"])} % de Vox, el PP subió todavía algo más, {p(IS["La Gomera"]["dpp"])}. En La Palma, donde Vox se quedó en el {p(IS["La Palma"]["vox19"])} %, el PP subió {p(IS["La Palma"]["dpp"])}. En El Hierro, la isla donde llegan ahora la mayoría de los cayucos, Vox había sacado el {p(IS["El Hierro"]["vox19"])} % y el PP subió {p(IS["El Hierro"]["dpp"])} puntos.</p>
+{g_isla}
+<p data-tipo="dato">Municipio a municipio, el cambio se ve en el mapa. En noviembre de 2019, el PSOE fue el partido más votado en {GANA[Y19]["PSOE"]} de los 54 municipios de la provincia, el PP en {GANA[Y19]["PP"]} y Coalición Canaria en {GANA[Y19]["CC"]}. En 2023, el PP ganó en {GANA[Y23]["PP"]}, el PSOE en {GANA[Y23]["PSOE"]} y CC en {GANA[Y23]["CC"]}: en {PASO_PP} municipios, el más votado pasó del PSOE al PP. El PP subió más de 20 puntos en cinco municipios, todos en la isla de Tenerife: {y_lista(TOP20)}. La subida más pequeña fue la de {MIN.municipio}, en La Palma: {p(MIN.dPP)} puntos.</p>
+{g_mapgan}
+{g_mapdpp}
 <p data-tipo="dato">Los municipios con más voto a Vox en 2019 están sobre todo en el sur turístico de Tenerife. En Arona, Vox sacó el {p(ARONA[f"{Y19}%VOX"])} % en noviembre de 2019, y el PP pasó del {p(ARONA[f"{Y19}%PP"])} % al {p(ARONA[f"{Y23}%PP"])} %. En Santa Cruz de Tenerife, la capital, el PP subió {p(CAP.dPP)} puntos, y en La Laguna, donde Vox había sacado el {p(LAG[f"{Y19}%VOX"])} %, {p(LAG.dPP)}.</p>
 {g_mun}
 <p data-tipo="hipotesis">Estos datos no dicen qué hizo cada votante de Vox: algunos pudieron votar al PP, otros quedarse en casa, votar a otro partido o en blanco, y a la vez el PP ganó votos de Ciudadanos, que tampoco se presentó en 2023. El voto en blanco y nulo, por ejemplo, subió del {p(T[Y19]["bn"])} % al {p(T[Y23]["bn"])} % de los votantes en Santa Cruz de Tenerife, mientras en Las Palmas bajó del {p(LP[Y19]["bn"])} % al {p(LP[Y23]["bn"])} %. Además, el sur de Tenerife tiene más vecinos extranjeros y una población distinta de la del norte, así que la relación entre el voto a Vox de 2019 y la subida del PP es una correlación, no una prueba de trasvase.</p>
@@ -306,10 +454,11 @@ enlaces = (f'{L("canarias-unidad-pueblo-canario-29n", "La Unidad del Pueblo Cana
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); BOE-A-2026-23103, '
         'candidaturas proclamadas; media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/vox_tenerife.py.')
 
-DATOS = {'PROV': PROV, 'DER': DER, 'DPP': DPP, 'ES': ES, 'ES_DPP': ES_DPP, 'TER': TER, 'CT': CT, 'CL': CL, 'VOX26': VOX26, 'CORR': CORR,
-         'GR': [[r.municipio, int(r[W]), float(r[f'{Y19}%VOX']), float(r[f'{Y19}%PP']), float(r[f'{Y23}%PP']), float(r.dPP)] for _, r in GR.iterrows()]}
+DATOS = {'GANA': GANA, 'PASO_PP': PASO_PP, 'NTRAMO': NTRAMO, 'MUNDPP': {NOMM[k]: v for k, v in DPPM.items()}, 'PROV': PROV, 'DER': DER, 'DPP': DPP, 'ES': ES, 'ES_DPP': ES_DPP, 'TER': TER, 'CT': CT, 'CL': CL, 'VOX26': VOX26, 'CORR': CORR,
+         'CAMB': CAMB, 'IS': IS, 'GR': [[r.municipio, int(r[W]), float(r[f'{Y19}%VOX']), float(r[f'{Y19}%PP']), float(r[f'{Y23}%PP']), float(r.dPP)] for _, r in GR.iterrows()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
+cuerpo = cuerpo.replace(g_mapdpp, g_mapdpp.replace('Ver la tabla', 'Ver la tabla de los 54 municipios', 1))
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 
 pieza('vox-vuelve-tenerife-29n', 'Vox vuelve a la papeleta en Tenerife',
