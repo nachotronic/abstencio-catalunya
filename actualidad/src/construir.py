@@ -4309,7 +4309,7 @@ PIEZAS += [
                   pie='Pedro Sánchez y Santiago Abascal, cada uno en un extremo, con una cámara de televisión y un sobre de votación entre ellos: un collage.'),
     ),
     dict(
-        slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10',
+        slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10', actualizado='2026-11-10 14:57',
         titulo='Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 17 de los 18 departamentos', serie='internacional',
         descripcion='El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el 42,7 % de los votos; de los 18 departamentos, solo perdió Alto Paraná.',
         compara='Las presidenciales de Paraguay del 30 de abril de 2023 en los 17 departamentos y Asunción, y las votaciones del Senado del 6 de noviembre de 2026.',
