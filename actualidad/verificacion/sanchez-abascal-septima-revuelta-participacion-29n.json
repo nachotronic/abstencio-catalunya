@@ -5,21 +5,6 @@
   },
   "cifras": [
     {
-      "texto": "España y que no alcanzaron 17 provincias",
-      "cifra": "17",
-      "calculo": "D['N_BAJO70']"
-    },
-    {
-      "texto": "del 70 %. En 2023 votó el 70,4 % de los residentes",
-      "cifra": "70,4",
-      "calculo": "D['P23']"
-    },
-    {
-      "texto": "censo de 2026, el 70 % son 25,2 millones de votantes.",
-      "cifra": "25,2 millones",
-      "calculo": "D['V70']"
-    },
-    {
       "texto": "viven en España: votó el 70,4 % de ellos, 24.744.222",
       "cifra": "70,4",
       "calculo": "D['P23']"
@@ -253,14 +238,45 @@
       "texto": "h, en 2023 había votado el 53,1 %: el cierre lo cambió",
       "cifra": "53,1",
       "calculo": "D['AV']['2023_07']['a18']"
+    },
+    {
+      "texto": "Séptima pasar «de lejos» del 70 % de participación:",
+      "cifra": "70",
+      "calculo": "70 if D['V70'] > 0 else 0",
+      "_donde": "titular"
+    },
+    {
+      "texto": "participación: llegar al 75 % exigiría 2,2 millones",
+      "cifra": "75",
+      "calculo": "75 if D['V75'] > D['V70'] else 0",
+      "_donde": "titular"
+    },
+    {
+      "texto": "participación: llegar al 75 % exigiría 2,2 millones de votantes más que",
+      "cifra": "2,2 millones",
+      "calculo": "D['MAS75']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "la de 2023, cuando votó el 70,4 % de los residentes",
+      "cifra": "70,4",
+      "calculo": "D['P23']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "millones de votantes y el 75 %, 27,0 millones.",
+      "cifra": "75",
+      "calculo": "75 if D['V75'] > D['V70'] else 0",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "millones de votantes y el 75 %, 27,0 millones.",
+      "cifra": "27,0 millones",
+      "calculo": "D['V75']",
+      "_donde": "entradilla"
     }
   ],
   "externas": [
-    {
-      "texto": "residentes en España, el 66,6 % con el voto exterior.",
-      "cifra": "66,6",
-      "fuente": "https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/"
-    },
     {
       "texto": "participación oficial fue del 66,6 %. Con la primera cuenta,",
       "cifra": "66,6",
@@ -273,14 +289,6 @@
     }
   ],
   "ignorar": [
-    {
-      "texto": "promete superar «de lejos» el 70 % de participación de",
-      "motivo": "70 — umbral citado por Sánchez («el 70 % de participación»), no un dato calculado"
-    },
-    {
-      "texto": "participación muy por encima del 70 %. En 2023 votó el 70,4",
-      "motivo": "70 — umbral citado por Sánchez («el 70 % de participación»), no un dato calculado"
-    },
     {
       "texto": "Con el censo de 2026, el 70 % son 25,2 millones",
       "motivo": "70 — umbral citado por Sánchez («el 70 % de participación»), no un dato calculado"

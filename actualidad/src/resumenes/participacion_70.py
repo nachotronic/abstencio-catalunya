@@ -251,9 +251,9 @@ DATOS = {'PART': PART, 'P23': P23, 'SOBRE': SOBRE, 'BAJO': BAJO, 'N_BAJO70': N_B
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 
-pieza('sanchez-abascal-septima-revuelta-participacion-29n', 'Sánchez y el 70 % de participación',
-      f'Sánchez promete superar «de lejos» el 70 % de participación de 2023, una cifra que solo cuenta a los residentes en España y que no alcanzaron {N_BAJO70} provincias',
-      f'Mientras Abascal estaba en La Revuelta, Sánchez pronosticó en La Séptima una participación muy por encima del 70 %. En 2023 votó el {p(P23)} % de los residentes en España, el 66,6 % con el voto exterior. '
-      f'Con el censo de 2026, el 70 % son {mill(V70)} millones de votantes.',
+pieza('sanchez-abascal-septima-revuelta-participacion-29n', 'Sánchez, La Séptima y el 70 %',
+      f'Sánchez promete en La Séptima pasar «de lejos» del 70 % de participación: llegar al 75 % exigiría {mill(MAS75)} millones de votantes más que en 2023',
+      f'A la misma hora en que Abascal estaba en La Revuelta, Sánchez pronosticó una participación muy por encima de la de 2023, cuando votó el {p(P23)} % de los residentes en España. '
+      f'Con el censo de 2026, el 70 % son {mill(V70)} millones de votantes y el 75 %, {mill(V75)} millones. {N_BAJO70} provincias no llegaron al 70 % en 2023.',
       '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('P23', P23, 'SOBRE', len(SOBRE), 'BAJO70', N_BAJO70, 'SUBEN', SUBEN, 'CAT', CAT_TOT, 'CER26', CER26, 'MAS70', MAS70, 'MAS75', MAS75)
