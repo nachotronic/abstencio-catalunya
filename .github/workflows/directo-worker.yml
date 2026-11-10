@@ -1,0 +1,64 @@
+# Despliega el Worker del escrutinio en directo del 29N (generales-2026/src/directo/worker.js) en Cloudflare.
+# Se lanza a mano: Actions → «Directo 29N: desplegar el Worker» → Run workflow, con la FUENTE que toque:
+#   - antes de que Interior abra su web: https://mapaelectoral.es/generales-2026/data/simulacro.json (simulacro con el 23J);
+#   - en cuanto la abra: la raíz de su API, acabada en /backend-difu (se ve en la pestaña Red del navegador).
+# Necesita el plan de pago de Workers y el secreto CLOUDFLARE_WORKERS_TOKEN (plantilla «Edit Cloudflare Workers»).
+# No toca la web: la web solo empieza a leer el Worker cuando se pone su URL en generales-2026/data/meta.json.
+name: "Directo 29N: desplegar el Worker"
+on:
+  workflow_dispatch:
+    inputs:
+      fuente:
+        description: "FUENTE: JSON normalizado o raíz /backend-difu de la web de resultados de Interior"
+        required: true
+        default: "https://mapaelectoral.es/generales-2026/data/simulacro.json"
+      modo:
+        description: "MODO: provincias (por defecto) o municipios (plan B)"
+        required: false
+        default: "provincias"
+permissions:
+  contents: read
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKERS_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: dee996483598974c337d0777f5ef047c
+    defaults:
+      run:
+        working-directory: generales-2026/src/directo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Espacio KV RESULTADOS (lo crea la primera vez)
+        run: |
+          set -euo pipefail
+          npx -y wrangler@3.114.0 kv namespace list > kv.json
+          ID=$(node -e "const l=require('./kv.json');const k=l.find(x=>/RESULTADOS$/.test(x.title));console.log(k?k.id:'')")
+          if [ -z "$ID" ]; then
+            npx -y wrangler@3.114.0 kv namespace create RESULTADOS
+            npx -y wrangler@3.114.0 kv namespace list > kv.json
+            ID=$(node -e "const l=require('./kv.json');console.log(l.find(x=>/RESULTADOS$/.test(x.title)).id)")
+          fi
+          sed -i "s/PON_AQUI_EL_ID_DEL_KV/$ID/" wrangler.toml
+      - name: Desplegar
+        env:
+          FUENTE: ${{ github.event.inputs.fuente }}
+          MODO: ${{ github.event.inputs.modo }}
+        run: npx -y wrangler@3.114.0 deploy --var "FUENTE:$FUENTE" --var "MODO:$MODO"
+      - name: Clave para forzar una lectura a mano (CLAVE)
+        env:
+          CLAVE: ${{ secrets.DIRECTO_CLAVE }}
+        run: |
+          if [ -n "$CLAVE" ]; then printf '%s' "$CLAVE" | npx -y wrangler@3.114.0 secret put CLAVE; else echo "Sin DIRECTO_CLAVE: /actualiza queda desactivado"; fi
+      - name: Comprobar que responde
+        run: |
+          sleep 75   # el cron corre cada minuto
+          SUB=$(curl -sf -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).result.subdomain))")
+          URL="https://generales-directo.$SUB.workers.dev"
+          echo "URL del Worker: $URL/resultados.json"
+          curl -sf "$URL/resultados.json" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const j=JSON.parse(s);const m=Object.values(j.mun);console.log(j.actualizado, m.length+' municipios', m.filter(a=>a[1]>0).length+' con escrutinio')})"
+          curl -sf "$URL/provincia/28.json" | head -c 200; echo
+          echo "### URL del Worker: $URL/resultados.json" >> "$GITHUB_STEP_SUMMARY"
