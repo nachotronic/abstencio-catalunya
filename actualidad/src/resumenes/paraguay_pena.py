@@ -26,7 +26,7 @@ CAND = ['pena', 'alegre', 'cubas', 'acevedo', 'chilavert', 'otros']
 NOMC = {'pena': 'Santiago Peña (ANR)', 'alegre': 'Efraín Alegre (Concertación)', 'cubas': 'Paraguayo Cubas (Cruzada Nacional)'}
 CORTO = {'pena': 'Peña', 'alegre': 'Alegre', 'cubas': 'Cubas'}
 COLC = {'pena': 'var(--anr)', 'alegre': 'var(--conc)', 'cubas': 'var(--cn)'}
-EST = ('<style>:root{--anr:#d7191f;--conc:#2e3092;--cn:#2b2b2b}'
+EST = ('<style>#mapa-py path[data-dep]{cursor:pointer;outline:none}#mapa-py path.on{stroke:var(--fg);stroke-width:2}.pyinfo{font-family:var(--ui);border:1px solid var(--rule);border-radius:6px;padding:.6rem .8rem;margin-top:.6rem;min-height:5.5rem;font-size:.98rem}.pyinfo table{width:100%;margin-top:.3rem}.pyinfo td{border:0;padding:.15rem .3rem}.pyinfo .sw{margin-right:.4rem;vertical-align:-2px}.pyinfo .pie{color:var(--muted);font-size:.9rem}</style>' + '<style>:root{--anr:#d7191f;--conc:#2e3092;--cn:#2b2b2b}'
        '@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--anr:#f0474c;--conc:#7f83e0;--cn:#cfcfcf}}'
        ':root[data-theme="dark"]{--anr:#f0474c;--conc:#7f83e0;--cn:#cfcfcf}</style>')
 
@@ -76,7 +76,7 @@ def mapa(W=520):
     out = []
     for d in DEP:
         dd = ''.join('M' + 'L'.join(f'{f(x, y)[0]:.1f},{f(x, y)[1]:.1f}' for x, y in a) + 'Z' for a in d['anillos'])
-        out.append(f'<path d="{dd}" fill="{COLC[d["gana"]]}" fill-opacity="{tono(d)}"><title>{esc(d["nombre"])}: '
+        out.append(f'<path d="{dd}" data-dep="{esc(d["nombre"])}" tabindex="0" fill="{COLC[d["gana"]]}" fill-opacity="{tono(d)}"><title>{esc(d["nombre"])}: '
                    f'{CORTO[d["gana"]]}, {p(d["%" + d["gana"]])} %</title></path>')
     # Asunción, ampliada en un recuadro abajo a la izquierda
     a = D['Asunción']
@@ -91,12 +91,13 @@ def mapa(W=520):
     ins = ''.join('M' + 'L'.join(f'{bx + 10 + (g(x, y)[0] - ox) * k:.1f},{by + 24 + (g(x, y)[1] - oy) * k:.1f}' for x, y in r) + 'Z' for r in a['anillos'])
     caja = (f'<rect x="{bx}" y="{by}" width="{bw}" height="{bw + 14}" fill="none" stroke="var(--rule)"/>'
             f'<text x="{bx + 8}" y="{by + 16}" class="lab">Asunción</text>'
-            f'<path d="{ins}" fill="{COLC[a["gana"]]}" fill-opacity="{tono(a)}" stroke="var(--bg)"><title>Asunción: '
+            f'<path d="{ins}" data-dep="Asunción" tabindex="0" fill="{COLC[a["gana"]]}" fill-opacity="{tono(a)}" stroke="var(--bg)"><title>Asunción: '
             f'{CORTO[a["gana"]]}, {p(a["%" + a["gana"]])} %</title></path>'
-            f'<line x1="{bx + bw}" y1="{by + 10}" x2="{cx:.1f}" y2="{cy:.1f}" stroke="var(--muted)" stroke-width=".8"/>'
-            f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="3" fill="none" stroke="var(--fg)"/>')
-    return (f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Candidato más votado en cada departamento de Paraguay en las presidenciales de 2023" '
-            f'style="max-width:{W}px;margin:0 auto"><g stroke="var(--bg)" stroke-width=".8" stroke-linejoin="round">{"".join(out)}</g>{caja}</svg>')
+            f'<line x1="{bx + bw}" y1="{by + 10}" x2="{cx:.1f}" y2="{cy:.1f}" stroke="var(--muted)" stroke-width=".8" pointer-events="none"/>'
+            f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="3" fill="none" stroke="var(--fg)" pointer-events="none"/>')
+    return (f'<svg id="mapa-py" viewBox="0 0 {W} {H}" aria-label="Candidato más votado en cada departamento de Paraguay en las presidenciales de 2023" '
+            f'style="max-width:{W}px;margin:0 auto"><g stroke="var(--bg)" stroke-width=".8" stroke-linejoin="round">{"".join(out)}</g>{caja}</svg>'
+            '<div id="py-info" class="pyinfo" aria-live="polite">Toca o pasa el ratón por un departamento para ver sus votos.</div>')
 
 
 def apiladas(W=430, ml=112, alto=24):
@@ -126,7 +127,7 @@ FUENTE_V = ('Fuente: Tribunal Superior de Justicia Electoral (TSJE), resultados 
 
 g_mapa = figura(f'Peña ganó en {len(GANA["pena"])} de los 18 departamentos; Cubas, solo en Alto Paraná',
                 'Candidato más votado en cada departamento y en Asunción en las presidenciales del 30 de abril de 2023. '
-                'Tono claro: menos del 40 % de los votos; medio, del 40 % al 50 %; intenso, más del 50 %',
+                'Tono claro: menos del 40 % de los votos; medio, del 40 % al 50 %; intenso, más del 50 %. Toca un departamento para ver sus votos',
                 mapa(), FUENTE_V + ' Contornos: geoBoundaries (DGEEC), CC BY 4.0.',
                 [(NOMC[k], COLC[k]) for k in ('pena', 'alegre', 'cubas')], TABLA)
 g_apil = figura(f'Peña superó el 50 % en {len(MAS50)} departamentos; en Central, el de más electores, se quedó en el {p(CENTRAL["%pena"])} %',
@@ -212,5 +213,5 @@ foot = ('Datos: resultados de las presidenciales de 2023 del TSJE por departamen
         'La Tercera, Semana y Vozpópuli.')
 DATOS = {'DEP': {d['nombre']: {k: d[k] for k in ('pena', 'alegre', 'cubas', 'emitidos', '%pena', '%alegre', '%cubas', 'gana')} for d in DEP},
          'NAC': NAC, 'NAC_PCT': NAC_PCT, 'GANA': GANA, 'MAS50': MAS50, 'IPS': IPS}
-scripts = f'<script>const D={json.dumps(DATOS, ensure_ascii=False)};</script>\n'
+scripts = f'<script>const D={json.dumps(DATOS, ensure_ascii=False)};'+'\n(function(){\n  var info=document.getElementById(\'py-info\'); if(!info) return;\n  var nf=function(v,d){var t=(+v).toFixed(d||0).split(\'.\');return t[0].replace(/\\B(?=(\\d{3})+(?!\\d))/g,\'.\')+(t[1]?\',\'+t[1]:\'\');};\n  var C={pena:[\'Santiago Peña\',\'var(--anr)\'],alegre:[\'Efraín Alegre\',\'var(--conc)\'],cubas:[\'Paraguayo Cubas\',\'var(--cn)\']};\n  var act=null;\n  function show(el){\n    var n=el.getAttribute(\'data-dep\'), r=D.DEP[n]; if(!r) return;\n    if(act) act.classList.remove(\'on\'); act=el; el.classList.add(\'on\');\n    var h=\'<b>\'+n+\'</b><table>\';\n    [\'pena\',\'alegre\',\'cubas\'].forEach(function(k){\n      h+=\'<tr><td><i class="sw" style="background:\'+C[k][1]+\'"></i>\'+C[k][0]+\'</td><td class="n">\'+nf(r[k])+\'</td><td class="n">\'+nf(r[\'%\'+k],1)+\' %</td></tr>\';\n    });\n    h+=\'</table><span class="pie">Votos emitidos: \'+nf(r.emitidos)+\'</span>\';\n    info.innerHTML=h;\n  }\n  document.querySelectorAll(\'#mapa-py path[data-dep]\').forEach(function(el){\n    el.addEventListener(\'mouseenter\',function(){show(el);});\n    el.addEventListener(\'click\',function(){show(el);});\n    el.addEventListener(\'focus\',function(){show(el);});\n  });\n})();\n'+'</script>\n'
 pieza(SLUG, 'Paraguay destituye a Peña', H1, DEK, '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts)

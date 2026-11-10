@@ -2,6 +2,7 @@
 //
 // Lee el mismo JSON normalizado que el mapa de la portada (formato en src/actualizar_29n.py):
 //   - la URL sale de generales-2026/data/meta.json (directo.url), la misma que enciende el mapa la noche electoral;
+//   - si esa URL es la del Worker (…/resultados.json), pide solo su provincia: …/provincia/<pp>.json;
 //   - para ensayar sin datos reales: ?directo=data/simulacro.json (ruta relativa a generales-2026/) o una URL completa.
 // Sin URL no hace nada: la ficha solo muestra el aviso estático de que el escrutinio aparecerá ahí.
 // Refresca cada minuto. Muestra cada candidatura por separado (no por familias) y compara con 2023 solo la participación.
@@ -18,7 +19,9 @@
   fetch(new URL('data/meta.json', BASE)).then(r => r.json()).then(META => {
     const q = new URLSearchParams(location.search).get('directo') || (META.directo && META.directo.url);
     if (!q) return;
-    const url = /^(https?:)?\/\//.test(q) ? q : new URL(q.replace(/^\.?\//, ''), BASE).href;
+    let url = /^(https?:)?\/\//.test(q) ? q : new URL(q.replace(/^\.?\//, ''), BASE).href;
+    // Del Worker basta la provincia del municipio (unos 30 KB por minuto en vez del país entero, 1,4 MB)
+    if (/\/resultados\.json$/.test(url) && /^https?:/.test(url)) url = url.replace(/\/resultados\.json$/, `/provincia/${String(COD).padStart(5, '0').slice(0, 2)}.json`);
     const REG = (META.reglas || []).map(([c, p]) => [c, new RegExp(p)]);
     const FAM = {}; (META.familias || []).forEach(f => FAM[f.cod] = f);
     // Como familia() de partidos.py y famDe() de app.js: siglas tal cual y sin puntos.

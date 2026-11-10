@@ -1,7 +1,8 @@
 // Cloudflare Worker de resultados en directo para la pieza de generales.
 // Cada minuto (cron) lee el escrutinio provisional oficial, lo convierte al JSON normalizado que
 // entiende la pieza (formato en ../actualizar_29n.py) y lo guarda en KV. La pieza lo pide a
-// GET /resultados.json, con CORS abierto y caché de 30 s.
+// GET /resultados.json (el mapa, todo el país) y las fichas de municipio a GET /provincia/<pp>.json (solo su provincia,
+// unos 30 KB en vez de 1,4 MB cada minuto), con CORS abierto y caché de 30 s.
 //
 // Configuración (wrangler.toml / panel de Cloudflare):
 //   FUENTE  Una de dos:
@@ -15,6 +16,7 @@
 //   KV      espacio KV enlazado con el nombre RESULTADOS.
 //   CLAVE   secreto para forzar una actualización a mano: GET /actualiza?clave=...
 // Hace falta el plan de pago de Workers (5 $/mes): el gratuito corta a los 10 ms de CPU y 50 peticiones.
+// Cómo desplegarlo y encenderlo: DESPLIEGUE.md (y el workflow .github/workflows/directo-worker.yml).
 
 export default {
   async scheduled(event, env, ctx) {
@@ -26,8 +28,9 @@ export default {
     if (url.pathname === '/actualiza' && env.CLAVE && url.searchParams.get('clave') === env.CLAVE) {
       return new Response(await actualiza(env), { headers: cors });
     }
-    if (url.pathname !== '/resultados.json') return new Response('No encontrado', { status: 404 });
-    const json = await env.RESULTADOS.get('ultimo');
+    const pr = url.pathname.match(/^\/provincia\/(\d{2})\.json$/);
+    if (url.pathname !== '/resultados.json' && !pr) return new Response('No encontrado', { status: 404 });
+    const json = await env.RESULTADOS.get(pr ? 'prov:' + pr[1] : 'ultimo');
     if (!json) return new Response('{}', { status: 503, headers: { ...cors, 'Content-Type': 'application/json' } });
     return new Response(json, { headers: { ...cors, 'Content-Type': 'application/json; charset=utf-8' } });
   },
@@ -39,11 +42,26 @@ export async function actualiza(env) {
     if (!out || !out.mun || !Object.keys(out.mun).length) return 'sin datos';
     out.actualizado = out.actualizado || new Date().toISOString();
     await env.RESULTADOS.put('ultimo', JSON.stringify(out));
+    await Promise.all(Object.entries(porProvincia(out)).map(([p, o]) => env.RESULTADOS.put('prov:' + p, JSON.stringify(o))));
     const esc = Object.values(out.mun).filter(a => a[1] > 0).length;
     return `ok ${Object.keys(out.mun).length} municipios, ${esc} con mesas escrutadas`;
   } catch (e) {
     return 'error: ' + e.message;     // se conserva el último resultado bueno
   }
+}
+
+// El JSON normalizado partido por provincia (dos primeras cifras del código INE), con solo las siglas que tienen votos allí
+export function porProvincia(out) {
+  const grupos = {};
+  for (const [c, a] of Object.entries(out.mun)) (grupos[c.slice(0, 2)] ||= []).push([c, a]);
+  const res = {};
+  for (const [p, filas] of Object.entries(grupos)) {
+    const k = out.siglas.map((_, i) => i).filter(i => filas.some(([, a]) => a[5 + i]));
+    const mun = {};
+    for (const [c, a] of filas) mun[c] = [...a.slice(0, 5), ...k.map(i => a[5 + i])];
+    res[p] = { ...out, siglas: k.map(i => out.siglas[i]), mun };
+  }
+  return res;
 }
 
 async function leeFuente(env) {
