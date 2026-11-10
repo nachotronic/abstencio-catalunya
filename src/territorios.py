@@ -248,8 +248,8 @@ def bloque_directo(nombre, cod, r):
     raiz = RAIZ_REL
     n = escape(nombre)
     r23 = json.dumps({'part': round(r['part'], 6) if r['part'] else None}, separators=(',', ':'))
-    aviso = (f'Interior empieza a publicar el escrutinio la noche del domingo 29 de noviembre, después del cierre de los colegios. '
-             f'Desde entonces, aquí aparece el escrutinio de {n} actualizado cada minuto, junto al resultado de 2023. '
+    aviso = (f'Interior publica el escrutinio desde la noche del domingo 29 de noviembre, después del cierre de los colegios. '
+             f'Enlazaremos aquí los resultados de {n}; debajo, el resultado de 2023 para compararlos. '
              if not NOCHE_29N else f'El escrutinio de {n} aparece aquí en cuanto se cargan los datos de Interior. ')
     return (f'<style>{DIRECTO_CSS}</style><section class="directo29n" id="directo-mun" data-mun="{cod}" data-raiz="{raiz or "./"}" data-r23=\'{escape(r23)}\' aria-labelledby="resultados-29n">'
             f'<h2 id="resultados-29n">Resultados del 29N en {n}</h2>'
@@ -757,23 +757,23 @@ def pagina_ciudad(cod):
     b_censo, q_censo = bloque_censo(nombre, cod)
     b_mesas, q_mesas = bloque_mesas(nombre, cod)
     q_mesas = q_mesas + preguntas_mesa_lugar(nombre) + preguntas_correo_lugar(nombre, cod)
-    titulo = (f'Elecciones 29N 2026 en {nombre}: {"censo electoral y " if q_censo else ""}'
-              + ('cómo votó cada barrio' if b_sec else 'resultados desde 1977'))
-    desc = ((f'Censo electoral para el 29N en {nombre}: {num(censo_29n(cod)[2])} electores. ' if q_censo else '')
-            + f'Así votó en las generales de 1977 a 2023: en 2023, {T.NOMBRE[g]} {pct(r["pct"][g])} y participación del {pct(r["part"])}. '
-            + (f'Voto por renta de sus {num(len(sec))} secciones censales y municipales frente a generales.' if b_renta else
-               (f'Resultados de sus {num(len(sec))} secciones censales y municipales frente a generales.' if len(sec) > 1 else
-                'Resultados de la serie completa y municipales frente a generales.')))
-    if p in PIEZAS_EN_MUNICIPIOS:   # provincias en prueba: el título empieza por lo que se busca («elecciones <municipio>») y nombra la mesa
-        titulo = (f'Elecciones en {nombre} 29N 2026: ' + ('resultados por barrio' if b_sec else 'resultados desde 1977')
-                  + (', censo y mesas electorales' if q_censo else ' y mesas electorales'))
-        desc = (f'Elecciones en {nombre}: en las generales de 2023 ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
-                + (f'{num(censo_29n(cod)[2])} electores para el 29N. ' if q_censo else '')
-                + ('Resultados por barrio y sección censal, ' if b_sec else 'Resultados ')
-                + 'cómo saber si te ha tocado mesa y dónde votar, y cada elección desde 1977.')
-    if NOCHE_29N:   # noche electoral: lo que se busca es «resultados elecciones <municipio>»
-        titulo = f'Resultados de las elecciones del 29N en {nombre}: escrutinio en directo' + (' y voto por barrio' if b_sec else ' y voto desde 1977')
-        desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, mesa a mesa según avanza el escrutinio de Interior, '
+    # Lo que se busca antes y durante la noche electoral es «resultados elecciones generales 2026 <municipio>» (así titulan
+    # El Español o RTVE sus fichas). El título lo dice desde ya para que Google asocie la URL a esa búsqueda antes del 29N;
+    # la provincia entre paréntesis separa los homónimos (Villanueva, Castrillo...) salvo cuando coincide con el nombre.
+    # Sin provincia en las capitales y cuando el nombre ya contiene alguna de sus formas (Alacant/Alicante, València).
+    formas_prov = [slug(f) for f in re.split(r'/', PROV_NOMBRE[p] + '/' + ALIAS_PROV.get(p, '')) if f.strip()]
+    sin_prov = cod in CAPITALES or any(f'-{f}-' in f'-{slug(nombre)}-' for f in formas_prov)
+    en_x = nombre + ('' if sin_prov else f' ({PROV_NOMBRE[p]})')
+    titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023' + (' por barrio' if b_sec else '')
+    if len(titulo) > 72:   # Google corta hacia los 60-70 caracteres: se quita «por barrio», nunca «29N y 2023» (hoy solo hay 2023)
+        titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023'
+    desc = (f'Elecciones generales del 29N de 2026 en {nombre}. Resultados de 2023: '
+            f'ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
+            + (f'{num(censo_29n(cod)[2])} electores, ' if q_censo else '')
+            + 'dónde votar, mesas electorales' + (' y voto por barrio.' if b_sec else ' y cada elección desde 1977.'))
+    if NOCHE_29N:   # noche electoral: el mismo arranque, para que el cambio de título sea mínimo
+        titulo = f'Resultados elecciones generales 2026 en {en_x}: escrutinio del 29N en directo'
+        desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, según avanza el escrutinio de Interior, '
                 f'frente a 2023: entonces ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo.')
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
@@ -781,25 +781,22 @@ def pagina_ciudad(cod):
     h = [cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about), faq_ld], nivel, nombre)]
     raiz = RAIZ_REL
     h.append(migas_html([(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p])]))
-    h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales {"del 29N de 2026" if NOCHE_29N else "1977-2023"}</p>'
-             f'<h1 data-miga="{escape(nombre)}">{"Resultados de las elecciones" if NOCHE_29N else "Elecciones"} en {escape(nombre)}</h1>')
+    h.append(f'<p class="kicker">{"Capital de provincia" if cod in CAPITALES else "Municipio"} · Elecciones generales del 29N de 2026</p>'
+             f'<h1 data-miga="{escape(nombre)}">Resultados de las elecciones generales 2026 en {escape(nombre)}</h1>')
     h.append(f'<p class="subtitulo">{"Censo para el 29N, r" if b_censo else "R"}esultados por {"barrio y " if b_sec else ""}sección censal, {"voto por renta, " if b_renta else ""}municipales frente a generales y las 16 generales desde 1977</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
-    if NOCHE_29N:
-        h.append(bloque_directo(nombre, cod, r))
+    h.append(bloque_directo(nombre, cod, r))   # arriba: es lo que promete el título
+    h.append(bloque_resultado(nombre, r))       # y justo debajo, con qué se compara: 2023
     h.append(bloque_encuesta_prov(p, nombre))
     h.append(bloque_donde_votar(nombre, cod))
     h.append(bloque_te_toca_mesa(nombre, cod))
-    if not NOCHE_29N:
-        h.append(bloque_directo(nombre, cod, r))
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
                 f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
     h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"calle a calle " if b_sec else ""}en el mapa por sección censal</a></p>')
     h.append(enlace_listas([p], raiz))
-    h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
     h.append(b_mesas)
     h.append(b_sec)
@@ -826,7 +823,7 @@ def pagina_ciudad(cod):
     if not uni:
         li.append(f'<li><a href="{raiz}elecciones/{ccaa}/">Elecciones en {escape(CCAA[ccaa][0])}</a></li>')
     li.append(f'<li><a href="{raiz}municipio/{PROV_SLUG[p]}/">Todos los municipios de {escape(PROV_NOMBRE[p])} con página propia</a></li>')
-    li += [f'<li><a href="{raiz}{CIUDADES[c]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in otras]
+    li += [f'<li><a href="{raiz}{CIUDADES[c]}">Resultados en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in otras]
     li += [f'<li><a href="{raiz}elecciones/voto-y-renta-por-barrios/">Voto y renta por barrios en toda España</a></li>',
            f'<li><a href="{raiz}elecciones/mapa-electoral-seccion-censal/">Mapa electoral de España por sección censal</a></li>']
     h.append('<h2>Más datos</h2><ul>' + ''.join(li) + '</ul>')
@@ -1955,7 +1952,7 @@ def indice(resumen):
     cs = sorted((c for c in CIUDADES if c in CAPITALES or pob[c] >= GRANDE), key=lambda c: slug(T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]))
     h.append(f'<h2>Ciudades</h2><p>Las {len(cs)} capitales de provincia y municipios de más de 50.000 habitantes, con el voto barrio a barrio. '
              f'Los {num(len(CIUDADES) - len(cs))} municipios de entre 1.000 y 50.000 habitantes con página propia están en la página de su provincia.</p><ul class="cols">'
-             + ''.join(f'<li><a href="../{CIUDADES[c]}">Elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
+             + ''.join(f'<li><a href="../{CIUDADES[c]}">Resultados en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a></li>' for c in cs) + '</ul>')
     h.append('<p>Todos los municipios con página propia, provincia a provincia: <a href="../municipio/">elecciones por municipio</a>. '
              'Las piezas agrupadas por tema: <a href="../temas/">temas</a>.</p>')
     h.append('<h2>Por tema</h2><ul>'
@@ -3112,13 +3109,13 @@ def municipios_provincia(p):
     cs = sorted((c for c in CIUDADES if c[:2] == p), key=lambda c: -pob[c])
     nombre = PROV_NOMBRE[p]
     en = en_provincia_txt(p)
-    titulo = f'Elecciones por municipio {en}{" (" + ALIAS_PROV[p] + ")" if p in ALIAS_PROV else ""}: resultados de sus {num(len(cs))} municipios con página propia'
-    desc = (f'Resultados de las generales de 2023 y enlaces a la página de cada municipio de más de 1.000 habitantes {en}: '
-            'voto por sección censal, por renta y desde 1977.')
-    partes = [{'@type': 'WebPage', 'name': f'Elecciones en {_nom(c)}', 'url': BASE + CIUDADES[c]} for c in cs]
+    titulo = f'Resultados elecciones generales 2026 por municipio {en}{" (" + ALIAS_PROV[p] + ")" if p in ALIAS_PROV else ""}: 29N y 2023'
+    desc = (f'Elecciones generales del 29N de 2026: resultados de 2023 en cada municipio de más de 1.000 habitantes {en}: '
+            f'{num(len(cs))} páginas con dónde votar, mesas, voto por sección censal y por renta y la serie desde 1977.')
+    partes = [{'@type': 'WebPage', 'name': f'Resultados elecciones generales 2026 en {_nom(c)}', 'url': BASE + CIUDADES[c]} for c in cs]
     h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, lugar(nombre, ESPANA), partes), 2, nombre)]
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Municipios')]))
-    h.append(f'<p class="kicker">Municipios · Elecciones generales 1977-2023</p><h1 data-miga="{escape(nombre)}">Elecciones por municipio {escape(en)}</h1>')
+    h.append(f'<p class="kicker">Municipios · Elecciones generales del 29N de 2026</p><h1 data-miga="{escape(nombre)}">Resultados de las elecciones generales 2026 por municipio {escape(en)}</h1>')
     h.append(f'<p class="firma">Por <a href="../../sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     df = T.MUN[T.MUN.mun_code.isin(cs)]
     gana = df['2023_07_gana'].value_counts()
