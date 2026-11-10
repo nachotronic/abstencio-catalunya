@@ -1,16 +1,16 @@
 {
- "cifras": [
-  {
-   "texto": "El PP pasó de ganar en 54 secciones censales a ganar en 134, y el PSOE resiste en el este, donde menos se vota.",
-   "cifra": "54",
-   "calculo": "len([e for e in P if e[3] == 'PP'])"
-  },
-  {
-   "texto": "El PP pasó de ganar en 54 secciones censales a ganar en 134, y el PSOE resiste en el este, donde menos se vota.",
-   "cifra": "134",
-   "calculo": "len([e for e in P if e[2] == 'PP'])"
-  }
- ],
- "externas": [],
- "ignorar": []
+  "cifras": [
+    {
+      "texto": "El PP pasó de ganar en 52 secciones censales a ganar en 133, y el PSOE resiste en el este, donde menos se vota.",
+      "cifra": "52",
+      "calculo": "len([e for e in P if e[3] == 'PP'])"
+    },
+    {
+      "texto": "El PP pasó de ganar en 52 secciones censales a ganar en 133, y el PSOE resiste en el este, donde menos se vota.",
+      "cifra": "133",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    }
+  ],
+  "externas": [],
+  "ignorar": []
 }

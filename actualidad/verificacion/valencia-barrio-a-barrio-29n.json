@@ -1,16 +1,31 @@
 {
- "cifras": [
-  {
-   "texto": "València se tiñó de azul: el PP pasó de ganar en 224 secciones en 2019 a 335 en 2023",
-   "cifra": "224",
-   "calculo": "len([e for e in P if e[3] == 'PP'])"
-  },
-  {
-   "texto": "València se tiñó de azul: el PP pasó de ganar en 224 secciones en 2019 a 335 en 2023",
-   "cifra": "335",
-   "calculo": "len([e for e in P if e[2] == 'PP'])"
-  }
- ],
- "externas": [],
- "ignorar": []
+  "cifras": [
+    {
+      "texto": "València se tiñó de azul: el PP pasó de ganar en 222 secciones en 2019 a 332 en 2023",
+      "cifra": "222",
+      "calculo": "len([e for e in P if e[3] == 'PP'])"
+    },
+    {
+      "texto": "València se tiñó de azul: el PP pasó de ganar en 222 secciones en 2019 a 332 en 2023",
+      "cifra": "332",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    },
+    {
+      "texto": "El PP pasó a ser el más votado en 332 de las 591 secciones censales",
+      "cifra": "332",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    },
+    {
+      "texto": "El PP pasó a ser el más votado en 332 de las 591 secciones censales",
+      "cifra": "591",
+      "calculo": "len(P)"
+    },
+    {
+      "texto": "y 64 secciones se decidieron por menos de dos puntos",
+      "cifra": "64",
+      "calculo": "len([e for e in P if e[4] < 2])"
+    }
+  ],
+  "externas": [],
+  "ignorar": []
 }

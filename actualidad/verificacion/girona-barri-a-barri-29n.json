@@ -1,0 +1,121 @@
+{
+  "cifras": [
+    {
+      "texto": "el 2019 Junts guanyava en 36 seccions i el PSC en 12; el 2023, el PSC en 42 i Junts en 19",
+      "cifra": "36",
+      "calculo": "len([e for e in P if e[3] == 'JUNTS'])"
+    },
+    {
+      "texto": "el 2019 Junts guanyava en 36 seccions i el PSC en 12; el 2023, el PSC en 42 i Junts en 19",
+      "cifra": "12",
+      "calculo": "len([e for e in P if e[3] == 'PSOE'])"
+    },
+    {
+      "texto": "el 2019 Junts guanyava en 36 seccions i el PSC en 12; el 2023, el PSC en 42 i Junts en 19",
+      "cifra": "42",
+      "calculo": "len([e for e in P if e[2] == 'PSOE'])"
+    },
+    {
+      "texto": "el 2019 Junts guanyava en 36 seccions i el PSC en 12; el 2023, el PSC en 42 i Junts en 19",
+      "cifra": "19",
+      "calculo": "len([e for e in P if e[2] == 'JUNTS'])"
+    },
+    {
+      "texto": "Junts va ser el partit més votat en 36 de les 61 seccions que es poden comparar, ERC en 12 i el PSC en 12",
+      "cifra": "36",
+      "calculo": "len([e for e in P if e[3] == 'JUNTS'])"
+    },
+    {
+      "texto": "Junts va ser el partit més votat en 36 de les 61 seccions que es poden comparar, ERC en 12 i el PSC en 12",
+      "cifra": "61",
+      "calculo": "len([e for e in P if e[3]])"
+    },
+    {
+      "texto": "Junts va ser el partit més votat en 36 de les 61 seccions que es poden comparar, ERC en 12 i el PSC en 12",
+      "cifra": "12",
+      "calculo": "len([e for e in P if e[3] == 'ERC'])"
+    },
+    {
+      "texto": "ERC en 12 i el PSC en 12, i en una el PSC i Junts van empatar a vots",
+      "cifra": "12",
+      "calculo": "len([e for e in P if e[3] == 'PSOE'])"
+    },
+    {
+      "texto": "el PSC va guanyar en 42 seccions i Junts en 19, i en una van empatar el PSC i Sumar",
+      "cifra": "42",
+      "calculo": "len([e for e in P if e[2] == 'PSOE'])"
+    },
+    {
+      "texto": "el PSC va guanyar en 42 seccions i Junts en 19, i en una van empatar el PSC i Sumar",
+      "cifra": "19",
+      "calculo": "len([e for e in P if e[2] == 'JUNTS'])"
+    },
+    {
+      "texto": "Si s'ordenen les 62 seccions",
+      "cifra": "62",
+      "calculo": "len(P)"
+    },
+    {
+      "texto": "Les 42 seccions que va guanyar el PSC tenen una renda mediana de 22.220 euros i hi va votar, de mitjana, el 59,8%.",
+      "cifra": "42",
+      "calculo": "len([e for e in P if e[2] == 'PSOE'])"
+    },
+    {
+      "texto": "Les 42 seccions que va guanyar el PSC tenen una renda mediana de 22.220 euros i hi va votar, de mitjana, el 59,8%.",
+      "cifra": "22.220",
+      "calculo": "median([e[7] for e in P if e[2] == 'PSOE' and e[7]])"
+    },
+    {
+      "texto": "Les 42 seccions que va guanyar el PSC tenen una renda mediana de 22.220 euros i hi va votar, de mitjana, el 59,8%.",
+      "cifra": "59,8",
+      "calculo": "mean([e[6] for e in P if e[2] == 'PSOE'])"
+    },
+    {
+      "texto": "Les 19 de Junts, 32.741 euros i el 68,1%.",
+      "cifra": "19",
+      "calculo": "len([e for e in P if e[2] == 'JUNTS'])"
+    },
+    {
+      "texto": "Les 19 de Junts, 32.741 euros i el 68,1%.",
+      "cifra": "32.741",
+      "calculo": "median([e[7] for e in P if e[2] == 'JUNTS' and e[7]])"
+    },
+    {
+      "texto": "Les 19 de Junts, 32.741 euros i el 68,1%.",
+      "cifra": "68,1",
+      "calculo": "mean([e[6] for e in P if e[2] == 'JUNTS'])"
+    },
+    {
+      "texto": "del 49,0% en el grup més pobre al 70,7% en el més ric",
+      "cifra": "49,0",
+      "calculo": "DEC[0]['part']"
+    },
+    {
+      "texto": "del 49,0% en el grup més pobre al 70,7% en el més ric",
+      "cifra": "70,7",
+      "calculo": "DEC[-1]['part']"
+    },
+    {
+      "texto": "Al grup més pobre, el PSC va treure el 48,7% i Junts el 7,0%.",
+      "cifra": "48,7",
+      "calculo": "DEC[0]['PSOE']"
+    },
+    {
+      "texto": "Al grup més pobre, el PSC va treure el 48,7% i Junts el 7,0%.",
+      "cifra": "7,0",
+      "calculo": "DEC[0]['JUNTS']"
+    },
+    {
+      "texto": "Al més ric, Junts el 28,1% i el PSC el 21,1%.",
+      "cifra": "28,1",
+      "calculo": "DEC[-1]['JUNTS']"
+    },
+    {
+      "texto": "Al més ric, Junts el 28,1% i el PSC el 21,1%.",
+      "cifra": "21,1",
+      "calculo": "DEC[-1]['PSOE']"
+    }
+  ],
+  "externas": [],
+  "ignorar": []
+}

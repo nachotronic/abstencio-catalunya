@@ -1,21 +1,36 @@
 {
- "cifras": [
-  {
-   "texto": "En 2023, 586 secciones censales de la capital pasaron del PSOE al PP.",
-   "cifra": "586",
-   "calculo": "len([e for e in P if e[3] == 'PSOE' and e[2] == 'PP'])"
-  },
-  {
-   "texto": "Y 205 de las 2.450 se decidieron por menos de dos puntos",
-   "cifra": "205",
-   "calculo": "len([e for e in P if e[4] < 2])"
-  },
-  {
-   "texto": "de esas 586, fueron 96",
-   "cifra": "96",
-   "calculo": "len([e for e in P if e[4] < 2 and e[3] == 'PSOE' and e[2] == 'PP'])"
-  }
- ],
- "externas": [],
- "ignorar": []
+  "cifras": [
+    {
+      "texto": "En 2023, 578 secciones censales de la capital pasaron del PSOE al PP.",
+      "cifra": "578",
+      "calculo": "len([e for e in P if e[3] == 'PSOE' and e[2] == 'PP'])"
+    },
+    {
+      "texto": "Y 205 de las 2.450 se decidieron por menos de dos puntos",
+      "cifra": "205",
+      "calculo": "len([e for e in P if e[4] < 2])"
+    },
+    {
+      "texto": "el PP ganó en 1.595 de sus 2.450 secciones",
+      "cifra": "1.595",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    },
+    {
+      "texto": "el PP ganó en 1.595 de sus 2.450 secciones",
+      "cifra": "2.450",
+      "calculo": "len(P)"
+    },
+    {
+      "texto": "y el PSOE solo resiste en cuatro distritos del sur",
+      "cifra": "cuatro",
+      "calculo": "len([r for r in DI if r[4] == max(r[3:9])])"
+    }
+  ],
+  "externas": [],
+  "ignorar": [
+    {
+      "texto": "de esas 586, fueron 96",
+      "motivo": "nota de corrección del 10-11-2026 anterior a los empates: cifras con el recuento previo, corregidas en la nota siguiente (578 y 88)"
+    }
+  ]
 }

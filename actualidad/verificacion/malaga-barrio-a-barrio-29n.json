@@ -1,0 +1,31 @@
+{
+  "cifras": [
+    {
+      "texto": "En 2023, 114 secciones censales de Málaga pasaron del PSOE al PP, y el PP ganó en 221 de las 435.",
+      "cifra": "114",
+      "calculo": "len([e for e in P if e[3] == 'PSOE' and e[2] == 'PP'])"
+    },
+    {
+      "texto": "En 2023, 114 secciones censales de Málaga pasaron del PSOE al PP, y el PP ganó en 221 de las 435.",
+      "cifra": "221",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    },
+    {
+      "texto": "En 2023, 114 secciones censales de Málaga pasaron del PSOE al PP, y el PP ganó en 221 de las 435.",
+      "cifra": "435",
+      "calculo": "len(P)"
+    },
+    {
+      "texto": "Un vuelco de 114 secciones",
+      "cifra": "114",
+      "calculo": "len([e for e in P if e[3] == 'PSOE' and e[2] == 'PP'])"
+    }
+  ],
+  "externas": [],
+  "ignorar": [
+    {
+      "texto": "Es la mayor brecha de participación de las ocho grandes ciudades analizadas.",
+      "motivo": "comparación con las tablas por tramo de renta de las otras siete piezas de la serie barrio a barrio; frase sin cambios en esta corrección"
+    }
+  ]
+}

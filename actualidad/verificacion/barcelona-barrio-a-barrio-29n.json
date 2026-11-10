@@ -1,11 +1,11 @@
 {
- "cifras": [
-  {
-   "texto": "Barcelona pasó del amarillo al rojo: ERC ganó en 579 secciones en 2019 y en ninguna en 2023",
-   "cifra": "579",
-   "calculo": "len([e for e in P if e[3] == 'ERC'])"
-  }
- ],
- "externas": [],
- "ignorar": []
+  "cifras": [
+    {
+      "texto": "Barcelona pasó del amarillo al rojo: ERC ganó en 576 secciones en 2019 y en ninguna en 2023",
+      "cifra": "576",
+      "calculo": "len([e for e in P if e[3] == 'ERC'])"
+    }
+  ],
+  "externas": [],
+  "ignorar": []
 }

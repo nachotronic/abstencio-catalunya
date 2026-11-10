@@ -1,0 +1,21 @@
+{
+  "cifras": [
+    {
+      "texto": "El PP fue el más votado en 375 de las 387 secciones censales",
+      "cifra": "375",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    },
+    {
+      "texto": "El PP fue el más votado en 375 de las 387 secciones censales",
+      "cifra": "387",
+      "calculo": "len(P)"
+    },
+    {
+      "texto": "y el PSOE solo ganó en diez.",
+      "cifra": "diez",
+      "calculo": "len([e for e in P if e[2] == 'PSOE'])"
+    }
+  ],
+  "externas": [],
+  "ignorar": []
+}

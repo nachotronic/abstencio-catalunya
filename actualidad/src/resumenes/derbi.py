@@ -42,10 +42,10 @@ bar = pd.read_csv(RAIZ / 'data/barrios/secciones_barrio.csv', dtype=str)[['tract
 d = d.merge(bar, on='tract_code', how='left')
 NSEC = d.groupby('mun_code').size().to_dict()
 assert NSEC == {BIL: 273, DON: 144}, NSEC
-d['gana'] = d[[f'{E}_{k}' for k in P]].idxmax(axis=1).str[8:]
+d['gana'] = d[[f'{E}_{k}' for k in P]].idxmax(axis=1).str[8:].where(d[f'{E}_gana'] != 'EMPATE', 'EMPATE')   # empate a votos: no gana nadie
 GS = {c: g.gana.value_counts().to_dict() for c, g in d.groupby('mun_code')}
 assert GS[BIL] == {'PSOE': 147, 'PNV': 93, 'PP': 18, 'BILDU': 15}, GS[BIL]
-assert GS[DON] == {'PSOE': 63, 'BILDU': 39, 'PNV': 30, 'PP': 12}, GS[DON]
+assert GS[DON] == {'PSOE': 61, 'BILDU': 39, 'PNV': 29, 'PP': 12, 'EMPATE': 3}, GS[DON]
 
 # Cambio 2019-2023 en las secciones con las dos elecciones
 dd = d.dropna(subset=[f'{E0}_PSOE'])
