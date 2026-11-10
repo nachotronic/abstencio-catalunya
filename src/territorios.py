@@ -1710,9 +1710,9 @@ def tema_tarjeta():
 def tema_mesa():
     """Explicativo «Mesa electoral del 29N»: sorteo, notificación, excusas, horario, dieta y permisos, con la LOREG y el número de mesas por municipio."""
     ruta = 'elecciones/mesa-electoral-29n/'
-    titulo = 'Mesa electoral 29N: cómo saber si te ha tocado, excusas, horario y dieta de 75 euros'
+    titulo = 'Mesa electoral 29N: cómo saber si te ha tocado, alegaciones y excusas, horario y dieta de 75 euros'   # «alegaciones»: la búsqueda que más sale en Bing (10-11-2026)
     desc = ('Todo sobre las mesas electorales de las generales del 29 de noviembre de 2026: el sorteo del 31 de octubre al 4 de noviembre, la notificación, '
-            'los siete días para alegar una excusa, qué excusas valen, qué hacer si luego no puedes ir, a qué hora hay que estar, la dieta de 75 euros y los permisos. Con la LOREG.')
+            'los siete días para presentar alegaciones, qué excusas valen, qué hacer si luego no puedes ir, a qué hora hay que estar, la dieta de 75 euros y los permisos. Con la LOREG.')
     total23 = int(MESAS.mesas.sum())
     qs = [('¿Cuándo es el sorteo de las mesas electorales del 29N?',
            f'Entre el 31 de octubre y el 4 de noviembre de 2026: la ley lo fija entre los días 25 y 29 después de la convocatoria, publicada el 6 de octubre '

@@ -257,7 +257,7 @@ def textos(encs, hoy):
     gana = f'{art}{NOMBRE[primero]} gana en las {n} encuestas' if n1 == n else f'{art}{NOMBRE[primero]} gana en {n1} de {n} encuestas'
     rangos = {k: (min(e['voto'][k] for e in ultimas if k in e['voto']), max(e['voto'][k] for e in ultimas if k in e['voto']))
               for k in ('PP', 'PSOE', 'VOX')}
-    entradilla = (f'Últimas encuestas de las elecciones generales 2026: con la última de cada encuestadora en los últimos 30 días, el PP va del {pc(rangos["PP"][0])} al {pc(rangos["PP"][1])}, '
+    entradilla = (f'Últimas encuestas del 29N para las elecciones generales 2026: con la última de cada encuestadora en los últimos 30 días, el PP va del {pc(rangos["PP"][0])} al {pc(rangos["PP"][1])}, '
                   f'el PSOE del {pc(rangos["PSOE"][0])} al {pc(rangos["PSOE"][1])} y Vox del {pc(rangos["VOX"][0])} al {pc(rangos["VOX"][1])}. '
                   'Todas las encuestas publicadas, con su fuente, actualizadas cada día.')
     disidentes = [e for e in ultimas if lider(e) != primero]
@@ -997,8 +997,8 @@ def main():
     faq_html = '<div class="faq">' + ''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq) + '</div>'
     actual = fecha_larga(hoy.isoformat())
     descripcion = re.sub(r'\s+', ' ', entradilla)[:300]
-    # h1 con la búsqueda principal («encuestas elecciones generales 2026») sin perder la cifra del titular
-    h1 = 'Encuestas de las elecciones generales 2026: ' + (titular[0].lower() + titular[1:] if titular.startswith('El ') else titular).replace(' encuestas;', ';', 1)
+    # h1 con las búsquedas principales («encuestas 29N», «encuestas elecciones generales 2026») sin perder la cifra del titular
+    h1 = 'Encuestas del 29N, elecciones generales 2026: ' + (titular[0].lower() + titular[1:] if titular.startswith('El ') else titular).replace(' encuestas;', ';', 1)
     imagen = f'{BASE}/img/compartir/encuestas.jpg?v={hoy.isoformat()}'   # la tarjeta cambia: versión para que las redes no usen la vieja
     if tarjeta:
         tarjeta(RAIZ / 'img/compartir/encuestas.jpg', titular,
@@ -1032,7 +1032,7 @@ def main():
                                                    'contentUrl': f'{BASE}/previsiones/datos/encuestas/wikipedia_generales_espana.csv'}]},
               {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': URL + '#preguntas', 'inLanguage': 'es',
                'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
-    titulo = 'Encuestas elecciones generales 2026: sondeos y promedio del 29N'
+    titulo = 'Encuestas 29N: últimas encuestas elecciones generales 2026, sondeos y promedio'   # «encuestas 29n» delante, como los que nos superan (10-11-2026)
     main_html = f"""<main>
 <p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
