@@ -196,7 +196,7 @@ REGIONAL = {'cataluna': {'PSOE': 'PSC', 'JUNTS': 'Junts'}}
 def entradilla(nombre, en, r, serie, ccaa=None):
     g = T.ganador(r)
     resto = sorted((c for c in T.FAM if c not in (g, 'OTROS') and r['pct'][c]), key=lambda c: -r['pct'][c])
-    seg = resto[0]
+    seg = resto[0] if resto else None   # en algún pueblo solo puntúa una familia (más «otros»)
     veces = {}
     for y in T.GENERALES:
         gg = T.ganador(serie[y])
@@ -207,6 +207,9 @@ def entradilla(nombre, en, r, serie, ccaa=None):
     art = lambda c: reg[c] if c in reg and ' ' in reg[c] else ('el ' if c in ('PP', 'PSOE', 'PNV', 'BNG', 'CDS', 'PSC') or reg.get(c) == 'PSC' else '') + reg.get(c, T.NOMBRE[c].split(' /')[0])
     nom_top = {'SUMAR': 'el espacio a la izquierda del PSOE', 'BILDU': 'la izquierda abertzale', 'JUNTS': 'CiU y después Junts'}.get(top, art(top))
     comp = 'más que' if r['part'] > T.ESPANA['part'] + 0.005 else ('menos que' if r['part'] < T.ESPANA['part'] - 0.005 else 'casi lo mismo que')
+    if seg is None:
+        return (f'En las elecciones generales del 23 de julio de 2023, {art(g)} fue la fuerza más votada {en}, con el {pct(r["pct"][g])} del voto válido. '
+                f'Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}). ' + desde_1977(veces, nom_top, art))
     if ccaa == 'navarra' and g == 'PP':   # en 2023 UPN y PP fueron por separado: la familia suma las dos listas
         return (f'En las elecciones generales del 23 de julio de 2023, UPN y el PP, que se presentaron por separado, sumaron el {pct(r["pct"]["PP"])} del voto válido en Navarra '
                 f'(en el mapa cuentan juntos porque en otras elecciones fueron en coalición); la lista más votada fue la del {art(seg)[3:]} ({pct(r["pct"][seg])}). '
@@ -265,7 +268,7 @@ def prov_lista(provs):
     return provs[0] if provs and len(nombres) == 1 else None
 
 
-def bloque_serie(nombre, serie, provs=()):
+def bloque_serie(nombre, serie, provs=(), grafico=True):
     fams = [c for c in T.FAM if c != 'OTROS' and max((serie[y]['pct'][c] or 0) for y in T.GENERALES) >= 0.05]
     pl = prov_lista(list(provs))
     filas = []
@@ -281,7 +284,7 @@ def bloque_serie(nombre, serie, provs=()):
                  'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, Unidas Podemos y Más País en noviembre de 2019, Compromís y EUPV o Unides Podem en la Comunitat Valenciana en 2011 y abril de 2019, UPN y el PP en 2023), su porcentaje es la suma de las dos; '
                  'el más votado, en cambio, se calcula con cada lista por separado y lleva el nombre de la candidatura de ese año. '
                  f'Detalle en la <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.{nota}')
-            + f'<figure>{lineas(serie)}<figcaption>Porcentaje de voto válido en las elecciones al Congreso. Sin voto desde el extranjero (CERA).</figcaption></figure>'
+            + (f'<figure>{lineas(serie)}<figcaption>Porcentaje de voto válido en las elecciones al Congreso. Sin voto desde el extranjero (CERA).</figcaption></figure>' if grafico else '')
             + tabla(f'Participación, partido más votado y voto por partido en {escape(nombre)}', ['Elección', 'Participación', 'Más votado'] + [escape(T.NOMBRE[c]) for c in fams], filas, num_desde=1)
             + (f'<p class="leyenda">{escape(T.nota_separadas(serie, T.GENERALES, pl))}</p>' if 'SUMAR' in fams and T.nota_separadas(serie, T.GENERALES, pl) else ''))
 
@@ -513,7 +516,8 @@ def bloque_vecinos(nombre, cod, raiz):
         r = T.resultado(m, y)
         g = T.ganador(r)
         nom = escape(m.iloc[0].municipio)
-        enl = f'<a href="{raiz}{CIUDADES[c]}">{nom}</a>' if c in CIUDADES else f'<a href="{raiz}?m={c}">{nom}</a>'
+        ruta_c = CIUDADES.get(c) or PUEBLOS.get(c)
+        enl = f'<a href="{raiz}{ruta_c}">{nom}</a>' if ruta_c else f'<a href="{raiz}?m={c}">{nom}</a>'
         filas.append([enl, f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—', pct(r['part'])])
     if not filas:
         return ''
@@ -728,11 +732,81 @@ def _ciudades():
 
 
 CIUDADES = _ciudades()
+# Municipios de menos de 1.000 habitantes: ficha ligera (pagina_pueblo), con la hoja de estilos compartida en vez de en línea.
+# Van aparte de CIUDADES para que el detector de municipios citados en Actualidad no enlace topónimos cortos (Mora, Sort, Ea...).
+PUEBLOS = {r.mun_code: ruta_municipio(r.prov, r.municipio) for r in T.MUN[~T.MUN.mun_code.isin(list(CIUDADES)) & ~T.MUN.prov.isin(['51', '52'])].itertuples()}
+CSS_FICHA = 'municipio/ficha.css'
 BARRIOS = {c: TB.barrios(c) for c in sorted(set(TB.SB.mun_code)) if c in CIUDADES} if TB.SB is not None else {}
 
 
 def distrito_seccion(tc):
     return f'distrito {int(tc[5:7])}, sección {int(tc[7:10])}'
+
+
+def en_x_titulo(nombre, cod, p):
+    """«Paradas (Sevilla)»: sin provincia en las capitales y cuando el nombre ya contiene alguna de sus formas (Alacant/Alicante, València)."""
+    formas_prov = [slug(f) for f in re.split(r'/', PROV_NOMBRE[p] + '/' + ALIAS_PROV.get(p, '')) if f.strip()]
+    sin_prov = cod in CAPITALES or any(f'-{f}-' in f'-{slug(nombre)}-' for f in formas_prov)
+    return nombre + ('' if sin_prov else f' ({PROV_NOMBRE[p]})')
+
+
+def pagina_pueblo(cod):
+    """Ficha ligera de un municipio de menos de 1.000 habitantes: el recuadro del 29N, 2023, censo, la serie desde 1977 y sus vecinos.
+    Sin bloques por sección ni por renta (casi todos tienen una sola sección censal) y con el CSS en un fichero compartido."""
+    m = T.MUN[T.MUN.mun_code == cod]
+    fila = m.iloc[0]
+    nombre, p = fila.municipio, fila.prov
+    ccaa = PROV_CCAA[p]
+    ruta = PUEBLOS[cod]
+    nivel = ruta.count('/')
+    global RAIZ_REL
+    RAIZ_REL = '../' * nivel
+    raiz = RAIZ_REL
+    serie = T.serie(m)
+    r = serie[T.ULTIMA]
+    g = T.ganador(r)
+    if not g:
+        return None
+    uni = len(CCAA[ccaa][2]) == 1
+    nprov = CCAA[ccaa][0] if uni else PROV_NOMBRE[p]
+    b_censo, q_censo = bloque_censo(nombre, cod)
+    en_x = en_x_titulo(nombre, cod, p)
+    titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023'
+    desc = (f'Elecciones generales del 29N de 2026 en {nombre}. Resultados de 2023: ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} '
+            f'y votó el {pct(r["part"])} del censo. ' + (f'{num(censo_29n(cod)[2])} electores, ' if q_censo else '')
+            + 'dónde votar y cada elección desde 1977.')
+    if NOCHE_29N:
+        titulo = f'Resultados elecciones generales 2026 en {en_x}: escrutinio del 29N en directo'
+        desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, según avanza el escrutinio de Interior, '
+                f'frente a 2023: entonces ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo.')
+    about = lugar(nombre, lugar(nprov, ESPANA))
+    about['@type'] = 'City'
+    cab = cabeza(titulo, desc, ruta, [ld_pagina(titulo, desc, ruta, about)], nivel, nombre)   # sin FAQ: sería el mismo texto en 5.000 páginas
+    cab = re.sub(r'<style>.*?</style>', f'<link rel="stylesheet" href="{raiz}{CSS_FICHA}">', cab, count=1, flags=re.S)
+    h = [cab, migas_html([(raiz, 'Inicio'), (raiz + 'municipio/', 'Municipios'), (raiz + f'municipio/{PROV_SLUG[p]}/', PROV_NOMBRE[p])])]
+    h.append(f'<p class="kicker">Municipio · Elecciones generales del 29N de 2026</p>'
+             f'<h1 data-miga="{escape(nombre)}">Resultados de las elecciones generales 2026 en {escape(nombre)}</h1>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, f"en {nombre}", r, serie, ccaa)}</p>')
+    h.append(bloque_directo(nombre, cod, r))
+    h.append(bloque_resultado(nombre, r))
+    rp = T.resultado(T.MUN[T.MUN.prov == p], T.ULTIMA)
+    comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
+    conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
+    h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
+                f'Tiene {num(fila.poblacion)} habitantes y en 2023 votaron {num(r["votantes"])} personas, así que unos pocos votos mueven varios puntos los porcentajes.'))
+    h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} en el mapa</a> · '
+             f'<a href="{raiz}elecciones/mesa-electoral-29n/">Mesa electoral del 29N</a> · <a href="{raiz}elecciones/como-se-vota/">Cómo se vota</a></p>')
+    h.append(b_censo)
+    h.append(bloque_serie(nombre, serie, [p], grafico=False))   # la tabla con las 16 generales; el gráfico de líneas pesa 4 KB por página
+    h.append(bloque_vecinos(nombre, cod, raiz))
+    h.append('<h2>Más datos</h2><ul>'
+             f'<li><a href="{raiz}municipio/{PROV_SLUG[p]}/">Resultados en todos los municipios de {escape(PROV_NOMBRE[p])}</a></li>'
+             f'<li><a href="{raiz}{ruta_provincia(p)}">Elecciones en {"la provincia de " if not uni else ""}{escape(nprov)}</a></li>'
+             f'<li><a href="{raiz}elecciones/resultados-elecciones-generales-2026/">Resultados del 29N en toda España</a></li></ul>')
+    h.append(bloque_metodo())
+    h.append(PIE)
+    return ruta, ''.join(h)
 
 
 def pagina_ciudad(cod):
@@ -760,10 +834,7 @@ def pagina_ciudad(cod):
     # Lo que se busca antes y durante la noche electoral es «resultados elecciones generales 2026 <municipio>» (así titulan
     # El Español o RTVE sus fichas). El título lo dice desde ya para que Google asocie la URL a esa búsqueda antes del 29N;
     # la provincia entre paréntesis separa los homónimos (Villanueva, Castrillo...) salvo cuando coincide con el nombre.
-    # Sin provincia en las capitales y cuando el nombre ya contiene alguna de sus formas (Alacant/Alicante, València).
-    formas_prov = [slug(f) for f in re.split(r'/', PROV_NOMBRE[p] + '/' + ALIAS_PROV.get(p, '')) if f.strip()]
-    sin_prov = cod in CAPITALES or any(f'-{f}-' in f'-{slug(nombre)}-' for f in formas_prov)
-    en_x = nombre + ('' if sin_prov else f' ({PROV_NOMBRE[p]})')
+    en_x = en_x_titulo(nombre, cod, p)
     titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023' + (' por barrio' if b_sec else '')
     if len(titulo) > 72:   # Google corta hacia los 60-70 caracteres: se quita «por barrio», nunca «29N y 2023» (hoy solo hay 2023)
         titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023'
@@ -1957,7 +2028,7 @@ def indice(resumen):
              'Las piezas agrupadas por tema: <a href="../temas/">temas</a>.</p>')
     h.append('<h2>Por tema</h2><ul>'
              '<li><a href="elecciones-29n-2026/">Elecciones generales del 29N de 2026</a>: fecha, campaña y diputados por provincia</li>'
-             '<li><a href="resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026</a>: el escrutinio del 29N en directo y el resultado de 2023</li>'
+             '<li><a href="resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026</a>: los del 29N, en cuanto se conozcan, y el resultado de 2023</li>'
              '<li><a href="resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio</a>: quién ganó en cada pueblo y ciudad desde 1977</li>'
              '<li><a href="censo-electoral-2026/">Censo electoral de 2026</a>: cuántos electores votan el 29N en cada provincia y municipio</li>'
              '<li><a href="participacion-electoral-por-barrio/">Participación electoral por barrio</a>: dónde se vota más y dónde menos</li>'
@@ -2351,7 +2422,7 @@ def tema_29n(resumen):
     h.append('<h2>Por comunidad autónoma</h2>' + tabla('Generales de 2023 por comunidad autónoma', ['Comunidad', 'Participación', 'Más votado', 'Segundo'], filas))
     h.append(faq_html)
     h.append('<h2>Piezas sobre el 29N</h2>' + lista_piezas([s for s in slugs_actualidad() if es_29n(s)], 2))
-    h.append('<h2>Más datos</h2><ul><li><a href="../resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026, en directo la noche del 29N</a></li>'
+    h.append('<h2>Más datos</h2><ul><li><a href="../resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026: el 29N y 2023</a></li>'
              '<li><a href="../censo-electoral-2026/">Censo electoral de 2026 por provincia y municipio</a></li>'
              '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li>'
              '<li><a href="../resultados-elecciones-por-municipio/">Resultados de las elecciones por municipio desde 1977</a></li>'
@@ -2557,7 +2628,7 @@ def tema_participacion_horas():
                   f'donde menos, en {lm(d.head(5))}.')
              + '<p>Cada municipio de más de 1.000 habitantes tiene en su página sus avances de 2023, para compararlos con los del 29N. Búscalo en <a href="' + raiz + 'municipio/">el índice de municipios</a>.</p>')
     h.append('<h2>Más datos</h2><ul>'
-             '<li><a href="../resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026, en directo la noche del 29N</a></li>'
+             '<li><a href="../resultados-elecciones-generales-2026/">Resultados de las elecciones generales de 2026: el 29N y 2023</a></li>'
              '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio, sección a sección</a></li>'
              '<li><a href="../votar-29n/">Dónde y cómo votar el 29N</a></li></ul>')
     h.append('<h2>Método y fuentes</h2>'
@@ -2677,15 +2748,19 @@ def tema_resultados(resumen):
     """Página fija para «resultados elecciones generales 2026»: hoy, el resultado de 2023 como punto de partida;
     la noche del 29N, el escrutinio en directo (mapa insertado de insertar/, que lee el directo de la portada)."""
     ruta = 'elecciones/resultados-elecciones-generales-2026/'
-    titulo = 'Resultados de las elecciones generales 2026 (29N): escrutinio en directo y resultados de 2023 por provincia'
+    # Hasta que se encienda NOCHE_29N no se promete directo: depende del acceso a los datos de Interior (editor, 10-11-2026).
+    titulo = ('Resultados de las elecciones generales 2026 (29N): escrutinio en directo y resultados de 2023 por provincia' if NOCHE_29N else
+              'Resultados de las elecciones generales 2026 (29N) y de 2023 por provincia')
     desc = ('Resultados de las elecciones generales del 29 de noviembre de 2026: el escrutinio en directo en el mapa, provincia a provincia y barrio a barrio, '
-            'y el resultado de 2023, el punto de partida de cada partido.')
+            'y el resultado de 2023, el punto de partida de cada partido.' if NOCHE_29N else
+            'Resultados de las elecciones generales del 29 de noviembre de 2026: aquí publicaremos los resultados del 29N en cuanto se conozcan. '
+            'Hasta entonces, el resultado de 2023 por provincia, el punto de partida de cada partido.')
     pt = SIS['partidos']
     e = T.ESPANA
     pc = lambda v: f'{v:.1f}'.replace('.', ',') + ' %'   # % de Interior, con el voto CERA, como en la tabla de escaños
     qs = [('¿Cuándo se conocen los resultados de las elecciones del 29N?',
            'La noche del domingo 29 de noviembre de 2026. Los colegios cierran a las 20.00, hora de cada lugar (las 21.00 en la Península cuando cierran en Canarias), '
-           'y el Ministerio del Interior publica el escrutinio provisional a medida que se cuentan las mesas. Esta página y el mapa lo muestran en directo.'),
+           'y el Ministerio del Interior publica el escrutinio provisional a medida que se cuentan las mesas. En esta página publicaremos los resultados en cuanto se conozcan.'),
           ('¿Cuántos escaños hacen falta para gobernar?',
            'La mayoría absoluta del Congreso es de 176 de los 350 diputados. Es la que necesita un candidato en la primera votación de investidura; en la segunda le basta con más síes que noes.'),
           ('¿Quién ganó las elecciones generales de 2023?',
@@ -2712,7 +2787,7 @@ def tema_resultados(resumen):
            'La ley electoral prohíbe publicar o difundir sondeos electorales en los cinco días anteriores a la votación, del martes 24 al sábado 28 de noviembre. '
            'Mapa Electoral recoge las encuestas publicadas hasta el lunes 23 y en esos cinco días no las actualiza. En esta página solo hay resultados oficiales.'),
           ('¿Dónde veo los resultados de mi municipio o de mi barrio?',
-           'En el mapa de Mapa Electoral: escribe tu calle y número en el buscador. Cada provincia y cada municipio de más de 1.000 habitantes tiene además su página, '
+           'En el mapa de Mapa Electoral: escribe tu calle y número en el buscador. Cada provincia y cada municipio tiene además su página, '
            'con los resultados desde 1977, enlazada en la tabla de esta página.')]
     faq_html, faq_ld = faq(qs)
     ld = ld_pagina(titulo, desc, ruta, ESPANA)
@@ -2720,14 +2795,14 @@ def tema_resultados(resumen):
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
     h.append('<p class="kicker">Elecciones generales · 29 de noviembre de 2026</p><h1 data-miga="Resultados 29N">Resultados de las elecciones generales del 29N</h1>')
-    h.append('<p class="subtitulo">El escrutinio en directo la noche electoral y, hasta entonces, el resultado de 2023 provincia a provincia</p>')
+    h.append('<p class="subtitulo">' + ('El escrutinio en directo la noche electoral' if NOCHE_29N else 'Los resultados del 29N en cuanto se conozcan') + ' y, hasta entonces, el resultado de 2023 provincia a provincia</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(foto_html(ruta, raiz))
     h.append(f'<p class="resumen">{tipo("Dato")}Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Esa noche, en cuanto el Ministerio del Interior '
-             'empiece a publicar el escrutinio, esta página y el mapa mostrarán los votos y los escaños en directo, en toda España y en cada provincia, municipio y barrio. '
+             'empiece a publicar el escrutinio, publicaremos aquí los votos y los escaños, en toda España y en cada provincia, municipio y barrio. '
              f'Hasta entonces, recogen el resultado de las generales del 23 de julio de 2023: el PP fue el más votado, con el {pc(pt[0]["pct"])} del voto válido y {num(pt[0]["escanos"])} diputados, '
              f'y el PSOE el segundo, con el {pc(pt[1]["pct"])} y {num(pt[1]["escanos"])}. La mayoría absoluta es de 176 escaños.</p>')
-    h.append('<h2 id="directo">El mapa, en directo la noche del 29N</h2>'
+    h.append('<h2 id="directo">El mapa, la noche del 29N</h2>'
              + p_('Dato', 'El mapa muestra hoy el partido más votado en cada sección censal en 2023. La noche electoral cambiará al recuento del 29N a medida que llegue. '
                   'Busca tu calle o tu municipio, o elige otra elección en el desplegable.')
              + f'<iframe class="mapa-vivo" src="{raiz}insertar/" title="Mapa electoral de España: resultados por sección censal" loading="lazy" '
@@ -2873,7 +2948,7 @@ def llms(resumen):
 
 ## Temas
 - [Elecciones generales del 29N de 2026: fecha, campaña y diputados por provincia]({BASE}elecciones/elecciones-29n-2026/)
-- [Resultados de las elecciones generales de 2026 (29N): escrutinio en directo y resultados de 2023 por provincia]({BASE}elecciones/resultados-elecciones-generales-2026/)
+- [Resultados de las elecciones generales de 2026 (29N) y de 2023 por provincia]({BASE}elecciones/resultados-elecciones-generales-2026/)
 - [Resultados de las elecciones generales por municipio desde 1977]({BASE}elecciones/resultados-elecciones-por-municipio/)
 - [Censo electoral de las generales de 2026 por provincia y municipio]({BASE}elecciones/censo-electoral-2026/): cómo consultarlo, plazos y electores de cada municipio.
 - [Dónde y cómo votar el 29N]({BASE}elecciones/votar-29n/): colegio, documentos y permisos.
@@ -2981,6 +3056,10 @@ def portada():
 
 # ---------- índices de municipios (/municipio/) ----------
 def _nom(c):
+    return T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]
+
+
+def _nom_mun(c):
     return T.MUN.loc[T.MUN.mun_code == c, 'municipio'].iloc[0]
 
 
@@ -3123,10 +3202,14 @@ def municipios_provincia(p):
     h.append(f'<p class="resumen">{tipo("Dato")}{"Los " + num(len(cs)) + " municipios" if len(cs) > 1 else "El municipio"} {escape(en)} con página propia, '
              f'del más poblado al menos. En las generales de 2023 el más votado fue '
              + ', '.join(f'{T.NOMBRE[g]} en {num(n)}' for g, n in gana.items() if g in T.NOMBRE) + '. '
-             + (f'Los otros {num(resto)} municipios de la provincia, con menos de 1.000 habitantes, se consultan en el <a href="../../?m={cs[0]}">mapa</a>.' if resto > 0 else '')
+             + (f'Los otros {num(resto)} municipios de la provincia, con menos de 1.000 habitantes, tienen <a href="#pequenos">una ficha más breve</a>.' if resto > 0 else '')
              + '</p>')
     h.append(tabla(f'Generales de 2023 en cada municipio {escape(en)}', ['Municipio', 'Habitantes', 'Más votado', 'Participación'],
                    [fila_municipio(c, '../../') for c in cs]))
+    ps = sorted((c for c in PUEBLOS if c[:2] == p), key=lambda c: slug(_nom_mun(c)))
+    if ps:
+        h.append(f'<h2 id="pequenos">Municipios de menos de 1.000 habitantes</h2><p>{num(len(ps))} municipios, por orden alfabético.</p><ul class="cols">'
+                 + ''.join(f'<li><a href="../../{PUEBLOS[c]}">{escape(_nom_mun(c))}</a></li>' for c in ps) + '</ul>')
     h.append(f'<p>La provincia entera, con la serie desde 1977 y el voto por renta: <a href="../../{ruta_provincia(p)}">elecciones {escape(en)}</a>.</p>')
     h.append(bloque_metodo())
     h.append(PIE)
@@ -3246,6 +3329,9 @@ def temas_indice():
 def main():
     pags, resumen = territorios()
     pags += [pagina_ciudad(c) for c in CIUDADES]
+    pags += [x for x in (pagina_pueblo(c) for c in PUEBLOS) if x]
+    css = re.search(r'<style>(.*?)</style>', cabeza('', '', 'municipio/', [], 1, ''), re.S).group(1)
+    (ROOT / CSS_FICHA).write_text(css, encoding='utf-8')
     pags += [pagina_barrio(c, b, bs) for c, bs in BARRIOS.items() for b in bs if b['ficha']]
     rutas_b = [(b['nombre'], ruta_barrio(c, b)) for c, bs in BARRIOS.items() for b in bs if b['ficha']]
     idx = {r: k for k, (_, r) in enumerate(rutas_b)}
