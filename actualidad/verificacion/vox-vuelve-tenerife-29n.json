@@ -1,0 +1,270 @@
+{
+ "pieza": "vox-vuelve-tenerife-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "se presentó y el PP subió 15,4 puntos, frente a 4,4",
+   "cifra": "15,4",
+   "calculo": "D['DPP']['38']"
+  },
+  {
+   "texto": "subió 15,4 puntos, frente a 4,4 en Las Palmas",
+   "cifra": "4,4",
+   "calculo": "D['DPP']['35']"
+  },
+  {
+   "texto": "recuperaría entre uno y dos de los siete diputados.",
+   "cifra": "siete",
+   "calculo": "sum(D['CT'][k][0] for k in D['CT'])"
+  },
+  {
+   "texto": "había sacado en esa provincia 53.349 votos, el 11,6 %, y",
+   "cifra": "53.349",
+   "calculo": "D['PROV']['38']['2019_11']['votos']['VOX']"
+  },
+  {
+   "texto": "provincia 53.349 votos, el 11,6 %, y un diputado. En",
+   "cifra": "11,6",
+   "calculo": "D['PROV']['38']['2019_11']['pct']['VOX']"
+  },
+  {
+   "texto": "papeleta, el PP pasó del 20,3 % al 35,7 %: 80.066",
+   "cifra": "20,3",
+   "calculo": "D['PROV']['38']['2019_11']['pct']['PP']"
+  },
+  {
+   "texto": "el PP pasó del 20,3 % al 35,7 %: 80.066 votos más.",
+   "cifra": "35,7",
+   "calculo": "D['PROV']['38']['2023_07']['pct']['PP']"
+  },
+  {
+   "texto": "pasó del 20,3 % al 35,7 %: 80.066 votos más. Ganó la provincia,",
+   "cifra": "80.066",
+   "calculo": "D['PROV']['38']['2023_07']['votos']['PP']-D['PROV']['38']['2019_11']['votos']['PP']"
+  },
+  {
+   "texto": "se presentó, el PP subió 4,4 puntos, y en el conjunto",
+   "cifra": "4,4",
+   "calculo": "D['DPP']['35']"
+  },
+  {
+   "texto": "en el conjunto de España, 12,1.",
+   "cifra": "12,1",
+   "calculo": "D['ES_DPP']"
+  },
+  {
+   "texto": "Cruz de Tenerife pasó del 36,9 % de noviembre de 2019",
+   "cifra": "36,9",
+   "calculo": "D['DER']['38']['2019_11']"
+  },
+  {
+   "texto": "% de noviembre de 2019 al 35,7 % del PP solo en 2023.",
+   "cifra": "35,7",
+   "calculo": "D['DER']['38']['2023_07']"
+  },
+  {
+   "texto": "2023. En Las Palmas, del 40,8 % al 40,7 %. Lo que",
+   "cifra": "40,8",
+   "calculo": "D['DER']['35']['2019_11']"
+  },
+  {
+   "texto": "Las Palmas, del 40,8 % al 40,7 %. Lo que cambió en",
+   "cifra": "40,7",
+   "calculo": "D['DER']['35']['2023_07']"
+  },
+  {
+   "texto": "municipio. Si se reparten los 54 municipios de la provincia",
+   "cifra": "54",
+   "calculo": "sum(D['TER']['38'][t]['n'] for t in D['TER']['38'])"
+  },
+  {
+   "texto": "Vox en 2019, el PP subió 18,2 puntos en el tercio",
+   "cifra": "18,2",
+   "calculo": "D['TER']['38']['3']['dpp']"
+  },
+  {
+   "texto": "donde Vox era más fuerte y 11,4 en el que menos. El",
+   "cifra": "11,4",
+   "calculo": "D['TER']['38']['1']['dpp']"
+  },
+  {
+   "texto": "menos. El PP subió en los 54 municipios. En Las Palmas,",
+   "cifra": "54",
+   "calculo": "sum(D['TER']['38'][t]['n'] for t in D['TER']['38'])"
+  },
+  {
+   "texto": "papeleta, la subida fue de 4,4 y 0,4 puntos.",
+   "cifra": "4,4",
+   "calculo": "D['TER']['35']['3']['dpp']"
+  },
+  {
+   "texto": "papeleta, la subida fue de 4,4 y 0,4 puntos.",
+   "cifra": "0,4",
+   "calculo": "D['TER']['35']['1']['dpp']"
+  },
+  {
+   "texto": "Tenerife. En Arona, Vox sacó el 17,3 % en noviembre de 2019,",
+   "cifra": "17,3",
+   "calculo": "[r for r in D['GR'] if r[0]=='Arona'][0][2]"
+  },
+  {
+   "texto": "de 2019, y el PP pasó del 19,2 % al 39,8 %. En Santa",
+   "cifra": "19,2",
+   "calculo": "[r for r in D['GR'] if r[0]=='Arona'][0][3]"
+  },
+  {
+   "texto": "el PP pasó del 19,2 % al 39,8 %. En Santa Cruz de",
+   "cifra": "39,8",
+   "calculo": "[r for r in D['GR'] if r[0]=='Arona'][0][4]"
+  },
+  {
+   "texto": "Tenerife, la capital, el PP subió 16,6 puntos, y en La Laguna,",
+   "cifra": "16,6",
+   "calculo": "[r for r in D['GR'] if r[0]=='Santa Cruz de Tenerife'][0][5]"
+  },
+  {
+   "texto": "donde Vox había sacado el 9,9 %, 13,6.",
+   "cifra": "9,9",
+   "calculo": "[r for r in D['GR'] if r[0]=='San Cristóbal de La Laguna'][0][2]"
+  },
+  {
+   "texto": "Vox había sacado el 9,9 %, 13,6.",
+   "cifra": "13,6",
+   "calculo": "[r for r in D['GR'] if r[0]=='San Cristóbal de La Laguna'][0][5]"
+  },
+  {
+   "texto": "nulo, por ejemplo, subió del 1,7 % al 2,3 % de los votantes",
+   "cifra": "1,7",
+   "calculo": "D['PROV']['38']['2019_11']['bn']"
+  },
+  {
+   "texto": "ejemplo, subió del 1,7 % al 2,3 % de los votantes en",
+   "cifra": "2,3",
+   "calculo": "D['PROV']['38']['2023_07']['bn']"
+  },
+  {
+   "texto": "mientras en Las Palmas bajó del 1,9 % al 1,6 %. Además,",
+   "cifra": "1,9",
+   "calculo": "D['PROV']['35']['2019_11']['bn']"
+  },
+  {
+   "texto": "Palmas bajó del 1,9 % al 1,6 %. Además, el sur de",
+   "cifra": "1,6",
+   "calculo": "D['PROV']['35']['2023_07']['bn']"
+  },
+  {
+   "texto": "de Tenerife alrededor del 18,8 % (entre el 15,2 % y",
+   "cifra": "18,8",
+   "calculo": "D['VOX26'][1]"
+  },
+  {
+   "texto": "alrededor del 18,8 % (entre el 15,2 % y el 23,0 %), y entre",
+   "cifra": "15,2",
+   "calculo": "D['VOX26'][0]"
+  },
+  {
+   "texto": "18,8 % (entre el 15,2 % y el 23,0 %), y entre uno y dos",
+   "cifra": "23,0",
+   "calculo": "D['VOX26'][2]"
+  },
+  {
+   "texto": "y entre uno y dos de los siete diputados. En el reparto",
+   "cifra": "siete",
+   "calculo": "sum(D['CT'][k][0] for k in D['CT'])"
+  },
+  {
+   "texto": "reparto central, el PP baja de tres escaños a dos, el PSOE",
+   "cifra": "tres",
+   "calculo": "D['PROV']['38']['2023_07']['esc']['PP']"
+  },
+  {
+   "texto": "escaños a dos, el PSOE de tres a dos, y Vox se queda",
+   "cifra": "tres",
+   "calculo": "D['PROV']['38']['2023_07']['esc']['PSOE']"
+  },
+  {
+   "texto": "El PP subió 15,4 puntos en Santa Cruz",
+   "cifra": "15,4",
+   "calculo": "D['DPP']['38']"
+  },
+  {
+   "texto": "Santa Cruz de Tenerife, y 4,4 en Las PalmasDiferencia",
+   "cifra": "4,4",
+   "calculo": "D['DPP']['35']"
+  },
+  {
+   "texto": "y 2023, en puntos, en los 18 municipios de Santa",
+   "cifra": "18",
+   "calculo": "len(D['GR'])"
+  },
+  {
+   "texto": "lo ganó el PP en 2023Los siete diputados de Santa Cruz",
+   "cifra": "siete",
+   "calculo": "sum(D['CT'][k][0] for k in D['CT'])"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Once cayucos con unas 1.158",
+   "cifra": "Once",
+   "fuente": "https://www.europapress.es/islas-canarias/noticia-arriban-11-cayucos-1158-migrantes-canarias-fin-semana-20261109092514.html"
+  },
+  {
+   "texto": "Once cayucos con unas 1.158 personas llegaron a",
+   "cifra": "1.158",
+   "fuente": "https://www.europapress.es/islas-canarias/noticia-arriban-11-cayucos-1158-migrantes-canarias-fin-semana-20261109092514.html"
+  },
+  {
+   "texto": "por Europa Press. En los nueve primeros días de noviembre",
+   "cifra": "nueve",
+   "fuente": "https://www.europapress.es/epsocial/migracion/noticia-29n-sanchez-dice-llegada-mas-6600-migrantes-canarias-bastante-habitual-momento-ano-20261109224243.html"
+  },
+  {
+   "texto": "de noviembre ya son más de 6.665, una cifra que Pedro",
+   "cifra": "6.665",
+   "fuente": "https://www.europapress.es/epsocial/migracion/noticia-29n-sanchez-dice-llegada-mas-6600-migrantes-canarias-bastante-habitual-momento-ano-20261109224243.html"
+  },
+  {
+   "texto": "martes a La Moncloa un plan de ocho puntos que apoyaron",
+   "cifra": "ocho",
+   "fuente": "https://efe.com/canarias/2026-11-09/canarias-exige-al-estado-un-plan-extraordinario-de-contingencia-ante-el-repunte-migratorio/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Hace tres años, Vox no tuvo lista",
+   "motivo": "Años entre las generales de julio de 2023 y las de 2026 (fecha)"
+  },
+  {
+   "texto": "Salvamento Marítimo y del 112 recogidos por Europa",
+   "motivo": "Teléfono de emergencias 112 (nombre del servicio, no un dato)"
+  },
+  {
+   "texto": "Gomera y El Hierro. Hace tres años no la hubo porque",
+   "motivo": "Años entre las generales de julio de 2023 y las de 2026 (fecha)"
+  },
+  {
+   "texto": "municipios de la provincia en tres grupos con el mismo",
+   "motivo": "Método: número de grupos en que se reparten los municipios"
+  },
+  {
+   "texto": "matiz que ya señalaba hace cinco años el director del",
+   "motivo": "Años entre la declaración de abril de 2021 y hoy (fecha de la cita)"
+  },
+  {
+   "texto": "tienen un margen amplio a 19 días de la votación:",
+   "motivo": "Días entre el 10 y el 29 de noviembre de 2026 (calendario)"
+  },
+  {
+   "texto": "2019 y 2023, en puntos, en tres grupos de municipios",
+   "motivo": "Método: número de grupos en que se reparten los municipios"
+  },
+  {
+   "texto": "Santa Cruz de Tenerife con 10.000 electores o más, ordenados",
+   "motivo": "Umbral de tamaño elegido para el gráfico, no un dato"
+  }
+ ],
+ "permitir_espana": []
+}
