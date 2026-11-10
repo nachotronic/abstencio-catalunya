@@ -217,12 +217,18 @@ def entradilla(nombre, en, r, serie, ccaa=None):
     for y in T.GENERALES:
         gg = T.ganador(serie[y])
         if gg:   # municipios sin datos en alguna elección (creados después o huecos de 1982)
+            gg = 'EMPATE' if T.empate(serie[y]) else gg   # empate a votos: no cuenta para ninguno
             veces[gg] = veces.get(gg, 0) + 1
-    top = max(veces, key=veces.get)
+    top = max((c for c in veces if c != 'EMPATE'), key=veces.get)
     reg = REGIONAL.get(ccaa, {})
     art = lambda c: reg[c] if c in reg and ' ' in reg[c] else ('el ' if c in ('PP', 'PSOE', 'PNV', 'BNG', 'CDS', 'PSC') or reg.get(c) == 'PSC' else '') + reg.get(c, T.NOMBRE[c].split(' /')[0])
     nom_top = {'SUMAR': 'el espacio a la izquierda del PSOE', 'BILDU': 'la izquierda abertzale', 'JUNTS': 'CiU y después Junts'}.get(top, art(top))
     comp = 'más que' if r['part'] > T.ESPANA['part'] + 0.005 else ('menos que' if r['part'] < T.ESPANA['part'] - 0.005 else 'casi lo mismo que')
+    e = T.empate(r)
+    if e:
+        return (f'En las elecciones generales del 23 de julio de 2023, {art(e[0])} y {art(e[1])} empataron a votos como fuerza más votada {en}, '
+                f'con el {pct(T.pct_listas(r)[e[0]])} del voto válido cada uno. Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}). '
+                + desde_1977(veces, nom_top, art))
     if seg is None:
         return (f'En las elecciones generales del 23 de julio de 2023, {art(g)} fue la fuerza más votada {en}, con el {pct(r["pct"][g])} del voto válido. '
                 f'Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}). ' + desde_1977(veces, nom_top, art))
@@ -236,8 +242,9 @@ def entradilla(nombre, en, r, serie, ccaa=None):
 
 
 def desde_1977(veces, nom_top, art):
-    n = max(veces.values())
     total = sum(veces.values())
+    veces = {c: v for c, v in veces.items() if c != 'EMPATE'}
+    n = max(veces.values())
     de = f'de las {len(T.GENERALES)} elecciones generales' if total == len(T.GENERALES) else f'de las {total} elecciones generales con datos del municipio'
     empate = [c for c, v in veces.items() if v == n]
     if len(empate) > 1:
@@ -342,7 +349,7 @@ def bloque_municipios(nombre, df, nivel, n=15):
         nom = (f'<a href="{raiz}{CIUDADES[m.mun_code]}">{escape(m.municipio)}</a> · <a href="{raiz}?m={m.mun_code}">mapa</a>' if m.mun_code in CIUDADES
                else f'<a href="{raiz}?m={m.mun_code}">{escape(m.municipio)}</a>')
         filas.append([nom, num(m.poblacion), pct(m[f"{y}_part"]),
-                      f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—'])
+                      mas_votado_celda(r)])
     out = ('<h2>Municipios</h2>'
            + p_('Dato', f'Los {len(d)} municipios con más habitantes de {escape(nombre)} en las generales de 2023. Los municipios de más de 1.000 habitantes y las capitales tienen página propia; '
                 f'«mapa» abre el municipio en el <a href="{raiz}">mapa de resultados por sección censal</a>, donde se ve barrio a barrio y en cualquier elección desde 1977.')
@@ -533,7 +540,7 @@ def bloque_vecinos(nombre, cod, raiz):
         g = T.ganador(r)
         nom = escape(m.iloc[0].municipio)
         enl = f'<a href="{raiz}{CIUDADES[c]}">{nom}</a>' if c in CIUDADES else f'<a href="{raiz}?m={c}">{nom}</a>'
-        filas.append([enl, f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—', pct(r['part'])])
+        filas.append([enl, mas_votado_celda(r), pct(r['part'])])
     if not filas:
         return ''
     return ('<h2 id="alrededor">Cómo votaron los municipios de alrededor</h2>'
@@ -637,7 +644,7 @@ var fig=document.currentScript.parentNode,ps=fig.querySelectorAll('.evol-svg pat
 play=fig.querySelector('.evol-play'),tit=fig.querySelector('.evol-tit'),info=fig.querySelector('.evol-info'),ley=fig.querySelector('.evol-ley'),
 cur=D.y.length-1,sel=-1,t=null;
 function pc(x){return (x/10).toFixed(1).replace('.',',')+' %'}
-function txt(k){var v=D.d[cur][k];info.textContent=D.mun[k]+' · '+D.et[cur]+': '+(v?D.nom[cur][v[0]]+', '+pc(v[1]):'sin datos')}
+function txt(k){var v=D.d[cur][k];info.textContent=D.mun[k]+' · '+D.et[cur]+': '+(v?(D.nom[cur][v[0]]=='Empate'?'empate a votos entre los dos primeros, con el '+pc(v[1])+' cada uno':D.nom[cur][v[0]]+', '+pc(v[1])):'sin datos')}
 function pinta(i){cur=i;var n={},d=D.d[i],k;for(k=0;k<ps.length;k++){var v=d[k];ps[k].setAttribute('fill',v?D.col[v[0]]:'#e4e4e4');if(v)n[v[0]]=(n[v[0]]||0)+1}
 for(k=0;k<bs.length;k++)bs[k].setAttribute('aria-pressed',k==i?'true':'false');
 tit.textContent='Generales del '+D.f[i];
@@ -657,14 +664,15 @@ def bloque_evolucion(nombre, provs):
     df = T.MUN.set_index('mun_code')
     trazos = [(c, d) for c, d in trazos if c in df.index]
     cods = [c for c, _ in trazos]
-    fams = sorted({g for y in T.GENERALES for g in df.loc[cods, f'{y}_gana'].dropna()}, key=T.FAM.index)
+    fams = sorted({g for y in T.GENERALES for g in df.loc[cods, f'{y}_gana'].dropna()}, key=lambda g: T.FAM.index(g) if g in T.FAM else len(T.FAM))
     datos = []
     for y in T.GENERALES:
-        datos.append([[fams.index(v), round(float(df.at[c, f'{y}_{v}']) * 1000)] if isinstance(v, str) else None
+        # empate: el porcentaje de cada uno de los dos primeros
+        datos.append([[fams.index(v), round(float(df.at[c, f'{y}_{v}'] if v != 'EMPATE' else max(df.at[c, f'{y}_{k}'] for k in T.FAM if k != 'OTROS' and f'{y}_{k}' in df)) * 1000)] if isinstance(v, str) else None
                       for c, v in df.loc[cods, f'{y}_gana'].items()])
 
     def frase(y):
-        n = df.loc[cods, f'{y}_gana'].value_counts()
+        n = df.loc[cods, f'{y}_gana'].value_counts().drop('EMPATE', errors='ignore')
         return f'{escape(T.nombre_familia(n.index[0], y))} fue el más votado en {num(n.iloc[0])} de los {num(len(cods))} municipios'
     primera, ultima = T.GENERALES[0], T.ULTIMA
     js = {'y': T.GENERALES, 'et': [T.etiqueta(y) for y in T.GENERALES], 'f': [T.FECHA[y] for y in T.GENERALES], 'col': [T.COLOR[c] for c in fams],
@@ -791,13 +799,13 @@ def pagina_ciudad(cod):
     if len(titulo) > 72:   # Google corta hacia los 60-70 caracteres: se quita «por barrio», nunca «29N y 2023» (hoy solo hay 2023)
         titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023'
     desc = (f'Elecciones generales del 29N de 2026 en {nombre}. Resultados de 2023: '
-            f'ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
+            + (f'{gano_txt(r, ccaa)} y votó el {pct(r["part"])} del censo. ')
             + (f'{num(censo_29n(cod)[2])} electores, ' if q_censo else '')
             + 'dónde votar, mesas electorales' + (' y voto por barrio.' if b_sec else ' y cada elección desde 1977.'))
     if NOCHE_29N:   # noche electoral: el mismo arranque, para que el cambio de título sea mínimo
         titulo = f'Resultados elecciones generales 2026 en {en_x}: escrutinio del 29N en directo'
         desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, según avanza el escrutinio de Interior, '
-                f'frente a 2023: entonces ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo.')
+                f'frente a 2023: entonces {gano_txt(r, ccaa)[0].lower()}{gano_txt(r, ccaa)[1:]} y votó el {pct(r["part"])} del censo.')
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     faq_html, faq_ld = faq(([q_censo] if q_censo else []) + q_mesas)
@@ -864,6 +872,24 @@ def puesto(valor, todos, alto=True):
     """Puesto de `valor` entre `todos` (1 = el más alto si alto)."""
     vs = sorted((v for v in todos if v is not None), reverse=alto)
     return vs.index(valor) + 1 if valor in vs else None
+
+
+def gano_txt(r, ccaa):
+    """«ganó el PSOE con el 34,1 %», o, si los dos primeros empataron a votos, «empataron el PSOE y ERC, con el 23,4 % cada uno»."""
+    e = T.empate(r)
+    if e:
+        return f'empataron a votos {art_partido(e[0], ccaa)} y {art_partido(e[1], ccaa)}, con el {pct(T.pct_listas(r)[e[0]])} cada uno,'
+    g = T.ganador(r)
+    return f'ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])}'
+
+
+def mas_votado_celda(r):
+    """Celda «Más votado» de las tablas: «PSOE (34,1 %)» o «Empate: PSOE y ERC (23,4 %)»."""
+    e = T.empate(r)
+    if e:
+        return f'Empate: {escape(T.NOMBRE[e[0]])} y {escape(T.NOMBRE[e[1]])} ({pct(T.pct_listas(r)[e[0]])})'
+    g = T.ganador(r)
+    return f'{escape(T.NOMBRE[g])} ({pct(r["pct"][g])})' if g else '—'
 
 
 def art_partido(c, ccaa):
@@ -1013,7 +1039,9 @@ def pagina_barrio(cod, b, todos):
         cuenta = {}
         for s in secs:
             cuenta[s['gana']] = cuenta.get(s['gana'], 0) + 1
-        reparto = '; '.join(f'{art_partido(c, ccaa)}, en {num(k)}' for c, k in sorted(cuenta.items(), key=lambda x: -x[1]))
+        reparto = '; '.join(f'{art_partido(c, ccaa)}, en {num(k)}' for c, k in sorted(cuenta.items(), key=lambda x: -x[1]) if c != 'EMPATE')
+        if cuenta.get('EMPATE'):
+            reparto += f', y en {num(cuenta["EMPATE"])} empataron a votos los dos primeros'
         h.append('<h2>Sección a sección</h2>'
                  + p_('Dato', f'{escape(cap(nombre))} tiene {num(len(cods))} secciones censales, la unidad más pequeña con resultados electorales (entre 500 y 2.500 electores cada una). '
                       f'En 2023 ganó {reparto}.')
@@ -2220,8 +2248,8 @@ def figura(svg_o_img, pie, items=None):
 
 
 def leyenda_partidos(cods):
-    orden = [c for c in T.FAM if c in set(cods)]
-    return [(T.COLOR[c], T.NOMBRE[c]) for c in orden]
+    orden = [c for c in T.FAM + ['EMPATE'] if c in set(cods)]
+    return [(T.COLOR[c], T.NOMBRE[c] if c != 'EMPATE' else 'Empate a votos') for c in orden]
 
 
 SIS = json.loads((ROOT / 'actualidad' / 'src' / 'sistema' / 'cifras.json').read_text(encoding='utf-8'))['2023_07']   # escaños de 2023 (actualidad/src/sistema/calcular.py)
@@ -2817,7 +2845,7 @@ def tema_municipios(resumen):
     h.append('<p class="subtitulo">Quién ganó en cada pueblo y ciudad de España, cómo ha cambiado desde 1977 y dónde consultar el voto de cada barrio</p>')
     h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
     h.append(foto_html(ruta, raiz))
-    top = [c for c in cuenta.index if c not in ('PP', 'PSOE')][:3]
+    top = [c for c in cuenta.index if c not in ('PP', 'PSOE', 'EMPATE')][:3]
     h.append(f'<p class="resumen">{tipo("Dato")}En las generales de 2023 el PP fue la lista más votada en {num(cuenta.get("PP", 0))} de los {num(len(gana))} municipios de España, '
              f'y el PSOE, en {num(cuenta.get("PSOE", 0))}. ' + ', '.join(f'{T.NOMBRE[c]}, en {num(cuenta[c])}' for c in top) + '. '
              f'Los {num(len(CIUDADES))} municipios de más de 1.000 habitantes tienen página propia con las 16 generales desde 1977 y el voto de cada sección censal.</p>')
@@ -2831,7 +2859,7 @@ def tema_municipios(resumen):
              + figura(f'<img class="mapa" src="{img}" alt="Mapa de España con el partido más votado en cada uno de sus {num(len(gm))} municipios en las generales de 2023" width="800" loading="lazy">',
                       'Partido más votado en cada municipio, generales de 2023. Canarias, en el recuadro. Fuente: Ministerio del Interior.', leyenda_partidos(gm.unique())))
     g19 = T.MUN.set_index('mun_code')['2019_11_gana']
-    cambio = gm[(g19.reindex(gm.index) != gm) & g19.reindex(gm.index).notna()]
+    cambio = gm[(g19.reindex(gm.index) != gm) & g19.reindex(gm.index).notna() & (gm != 'EMPATE') & (g19.reindex(gm.index) != 'EMPATE')]   # un empate no es un cambio de ganador
     trans = cambio.groupby([g19.reindex(cambio.index), cambio]).size().sort_values(ascending=False)
     img2 = svg_fichero('cambio-ganador-2019-2023.svg', MS.mapa({c: T.COLOR[v] for c, v in cambio.items() if v in T.COLOR},
                                                               'Municipios donde cambió el partido más votado entre noviembre de 2019 y 2023', 'mun', xmlns=True))
@@ -2839,7 +2867,7 @@ def tema_municipios(resumen):
              + p_('Dato', f'En {num(len(cambio))} municipios el partido más votado en 2023 no fue el de noviembre de 2019. Los cambios más frecuentes: '
                   + '; '.join(f'de {T.NOMBRE[a]} a {T.NOMBRE[b]}, en {num(n)}' for (a, b), n in trans.head(4).items()) + '.')
              + figura(f'<img class="mapa" src="{img2}" alt="Mapa de España con los municipios donde cambió el partido más votado entre 2019 y 2023" width="800" loading="lazy">',
-                      'Municipios donde cambió el partido más votado entre las generales de noviembre de 2019 y las de 2023, del color del ganador de 2023; en gris, los que no cambiaron. Fuente: Ministerio del Interior.',
+                      'Municipios donde cambió el partido más votado entre las generales de noviembre de 2019 y las de 2023, del color del ganador de 2023; en gris, los que no cambiaron o empataron a votos en una de las dos elecciones. Fuente: Ministerio del Interior.',
                       leyenda_partidos(cambio.unique()) + [('#e4e4e4', 'Sin cambio')]))
     # siempre el mismo ganador
     cols = [f'{y}_gana' for y in T.GENERALES]
@@ -3014,6 +3042,10 @@ def _nom(c):
 def fila_municipio(c, raiz):
     m = T.MUN[T.MUN.mun_code == c].iloc[0]
     g = m['2023_07_gana']
+    if g == 'EMPATE':
+        return [f'<a href="{raiz}{CIUDADES[c]}">{escape(m.municipio)}</a>', num(m.poblacion),
+                f'<span style="color:{T.COLOR[g]}">■</span> ' + mas_votado_celda(T.resultado(T.MUN[T.MUN.mun_code == c], T.ULTIMA)),
+                pct(m['2023_07_part']) if pd.notna(m['2023_07_part']) else '—']
     gana = (f'<span style="color:{T.COLOR[g]}">■</span> {escape(T.NOMBRE[g])} ({pct(m[f"2023_07_{g}"])})'
             if isinstance(g, str) and g in T.COLOR and pd.notna(m.get(f'2023_07_{g}')) else '—')
     part = pct(m['2023_07_part']) if pd.notna(m['2023_07_part']) else '—'
@@ -3149,7 +3181,7 @@ def municipios_provincia(p):
     resto = len(T.MUN[T.MUN.prov == p]) - len(cs)
     h.append(f'<p class="resumen">{tipo("Dato")}{"Los " + num(len(cs)) + " municipios" if len(cs) > 1 else "El municipio"} {escape(en)} con página propia, '
              f'del más poblado al menos. En las generales de 2023 el más votado fue '
-             + ', '.join(f'{T.NOMBRE[g]} en {num(n)}' for g, n in gana.items() if g in T.NOMBRE) + '. '
+             + ', '.join(f'{T.NOMBRE[g]} en {num(n)}' if g != 'EMPATE' else f'empataron a votos los dos primeros en {num(n)}' for g, n in gana.items() if g in T.NOMBRE) + '. '
              + (f'Los otros {num(resto)} municipios de la provincia, con menos de 1.000 habitantes, se consultan en el <a href="../../?m={cs[0]}">mapa</a>.' if resto > 0 else '')
              + '</p>')
     h.append(tabla(f'Generales de 2023 en cada municipio {escape(en)}', ['Municipio', 'Habitantes', 'Más votado', 'Participación'],

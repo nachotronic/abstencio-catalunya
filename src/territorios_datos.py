@@ -15,6 +15,8 @@ from partidos import FAMILIAS, ALIAS  # noqa: E402
 FAM = [c for c, _, _ in FAMILIAS]
 NOMBRE = {c: n for c, n, _ in FAMILIAS}
 COLOR = {c: col for c, _, col in FAMILIAS}
+# Empate a votos entre los dos primeros (generales-2026/src/mapa_empates.py): «EMPATE» en la columna <elección>_gana
+NOMBRE['EMPATE'], COLOR['EMPATE'] = 'Empate', '#8a8486'
 GENERALES = ['1977_06', '1979_03', '1982_10', '1986_06', '1989_10', '1993_06', '1996_03', '2000_03',
              '2004_03', '2008_03', '2011_11', '2015_12', '2016_06', '2019_04', '2019_11', '2023_07']
 ETIQUETA = {'2019_04': 'abr. 2019', '2019_11': 'nov. 2019'}
@@ -93,6 +95,15 @@ def pct_listas(r):
     return p
 
 
+def empate(r):
+    """Las dos familias empatadas a votos en el primer puesto (por orden de FAM), o None."""
+    p = pct_listas(r)
+    if len(p) < 2:
+        return None
+    o = sorted(sorted(p, key=FAM.index), key=lambda k: -round(p[k], 9))
+    return tuple(sorted(o[:2], key=FAM.index)) if round(p[o[0]], 9) == round(p[o[1]], 9) and p[o[0]] > 0 else None
+
+
 def ganador(r):
     p = pct_listas(r)
     # en un empate exacto, el orden de FAM (no el del diccionario) decide, para que el resultado no cambie
@@ -138,6 +149,9 @@ def _por_prov(tabla, y, prov):
 def nombre_ganador(r, y, prov=None):
     """Nombre de la lista más votada en esa elección: el de la familia, salvo Sumar / Podemos / IU desde 2004, que
     lleva el de la candidatura de ese año (Podemos, En Comú Podem, Unidas Podemos, Más País...)."""
+    e = empate(r)
+    if e:
+        return 'Empate: ' + ' y '.join(nombre_familia(c, y) for c in e)
     g = ganador(r)
     if g != 'SUMAR' or y not in LISTA_SUMAR:
         return nombre_familia(g, y) if g else None
