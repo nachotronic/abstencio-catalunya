@@ -3344,6 +3344,7 @@ ANTETITULOS = {
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'bizkaia-pnv-bildu-encuestas-29n': 'El feudo del PNV',
     'encuestas-40db-psoe-podemos-29n': 'La encuesta de El País',
+    'paraguay-pena-destituido-mapa-departamentos': 'Juicio político en Paraguay',
     'vox-vuelve-tenerife-29n': 'Vox vuelve en Tenerife',
     'cinturon-rojo-madrid-29n': 'El cinturón rojo',
     'participacion-renta-municipios-madrid-29n': 'Quién no vota en Madrid',
@@ -4288,6 +4289,25 @@ PIEZAS += [
         enlaces=[],
         lugar='Santa Cruz de Tenerife',
     ),
+    dict(
+        slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10',
+        titulo='Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 17 de los 18 departamentos', serie='internacional',
+        descripcion='El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el 42,7 % de los votos; solo perdió en Alto Paraná.',
+        compara='Las presidenciales de Paraguay del 30 de abril de 2023 en los 17 departamentos y Asunción, y las votaciones del Senado del 6 de noviembre de 2026.',
+        limites='El cómputo definitivo del TSJE por departamento (Acuerdo y Sentencia 15/2023) no se puede descargar hoy de la web del tribunal: los votos por departamento son los de la tabla de Wikipedia, que cita al TSJE, y no incluyen el voto en el exterior. Las cifras de fondos del IPS son las que presentó la acusación en el juicio, no cifras auditadas.',
+        calculo='Porcentajes sobre votos emitidos (candidatos, blancos y nulos), recalculados con la suma de las columnas de cada departamento; en Boquerón y Caazapá la columna de votos emitidos de la tabla no cuadra con esa suma. Tono del mapa según el porcentaje del más votado.',
+        fuentes=[('https://es.wikipedia.org/wiki/Elecciones_generales_de_Paraguay_de_2023', 'Wikipedia, Elecciones generales de Paraguay de 2023: resultados por departamento (cita al TSJE)'),
+                 ('https://www.ultimahora.com/tsje-proclamara-esta-tarde-ganadores-las-elecciones-2023-n3064211', 'Última Hora, el TSJE proclama a los ganadores de 2023 (24-5-2023)'),
+                 ('https://www.abc.com.py/politica/2026/11/06/en-vivo-juicio-politico-a-pena-senado-retoma-proceso-en-medio-de-renuncia-trabada-y-pedido-de-prorroga/', 'ABC Color, directo del juicio político en el Senado (6-11-2026)'),
+                 ('https://www.abc.com.py/politica/2026/11/06/santiago-pena-destituido-el-segundo-presidente-echado-por-juicio-politico-y-el-primero-casi-por-unanimidad/', 'ABC Color, Santiago Peña destituido (6-11-2026)'),
+                 ('https://www.abc.com.py/politica/2026/11/05/renuncio-santiago-pena-la-caida-del-presidente-por-el-caso-ueno-bank/', 'ABC Color, renuncia de Peña (5-11-2026)'),
+                 ('https://www.latercera.com/mundo/noticia/senado-de-paraguay-inicia-juicio-politico-contra-santiago-pena-tras-frustrarse-votacion-de-su-renuncia/', 'La Tercera, el Senado inicia el juicio político (5-11-2026)'),
+                 ('https://www.semana.com/mundo/articulo/fiscalia-de-paraguay-toma-decision-final-sobre-el-caso-del-expresidente-santiago-pena/202611/', 'Semana, la Fiscalía imputa a Peña (7-11-2026)'),
+                 ('https://www.vozpopuli.com/internacional/santiago-pena-es-destituido-como-presidente-de-paraguay-y-detenido-pedro-alliana-asume-el-liderazgo-del-pais.html', 'Vozpópuli, Peña destituido y detenido; Alliana asume (7-11-2026)'),
+                 ('https://www.geoboundaries.org/', 'geoBoundaries, departamentos de Paraguay (DGEEC), CC BY 4.0')],
+        enlaces=[],
+        lugar='Paraguay',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
@@ -4312,7 +4332,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
 
 # Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
 # Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
-INTER_DESTACADAS = ['nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
+INTER_DESTACADAS = ['paraguay-pena-destituido-mapa-departamentos', 'nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
 INTER_FUERA_CARRUSEL = {'nueva-zelanda-elecciones-mapa-circunscripciones', 'eeuu-noche-electoral-guia-horarios'}   # coordinador, 7-11-2026: con los resultados publicados, la previa sale del carrusel Internacional de la portada (sigue en /internacional/)
 INTER_EN_ACTUALIDAD = {'eeuu-resultados-medio-mandato-2026'}   # editor, 4-11-2026 8.20: la de la Cámara sale, para no repetir cifras distintas seguidas   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
