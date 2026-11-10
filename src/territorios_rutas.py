@@ -313,7 +313,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019'),
                  'mapa-electoral-andalucia-29n': ('41091', '29067', '14021', '18087', '11012', '04013', '21041', '23050'),
-                 'mapa-electoral-cataluna-29n': ('08019', '17079', '25120', '43148')}   # las capitales, que cada pieza compara   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
+                 'mapa-electoral-cataluna-29n': ('08019', '17079', '25120', '43148', '08298')}   # las capitales, que cada pieza compara (y Vic en Cataluña)   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
 EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
                  'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014', '10901'},   # Manzanares (Ciudad Real), Amposta (Tarragona) y Rosalejo (Cáceres) salen del río y de los barrios madrileños de Amposta y Rosas
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla
@@ -323,7 +323,7 @@ EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia 
                  'lorca-fuente-vaqueros-viznar-1936': {'30024', '27012'}, 'pueblos-guerra-civil-voto-1936': {'30024', '48020'}, 'mujeres-1933-frente-popular-1936': {'17155'}, 'republica-mapa-1936-hoy': {'17155'},
                  'abstencion-anarquista-cnt-1933-1936': {'45071'}, 'asturias-1934-1936-revolucion-urnas': {'45071'},
                  'pueblos-bajo-el-agua-1936': {'23055', '48027'}, 'pueblos-colonizacion-franquismo-voto': {'23028', '50008'},
-                 'calle-que-parte-barcelona': {'14057'}, 'mapa-electoral-cataluna-29n': {'23025'},   # Castellar (Jaén) sale de «Castellar de la Ribera»
+                 'calle-que-parte-barcelona': {'14057'}, 'mapa-electoral-cataluna-29n': {'23025', '43161'},   # Castellar (Jaén) y Valls salen de «Castellar de la Ribera» y «Les Valls de Valira»
                  'feijoo-albiol-barcelona-disturbios-29n': {'45177'}}
 # Comunidades y provincias con el mismo nombre que su capital: solo cuentan como municipio con «ciudad de» delante
 # o si la pieza es de esa ciudad (ACTUALIDAD_MUNICIPIO). Así «la Comunidad de Madrid» o «la provincia de Sevilla» no enlazan la ciudad.
