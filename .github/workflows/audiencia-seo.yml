@@ -1,0 +1,15 @@
+# Temporal: datos para la lista SEO (Cloudflare + Bing). No se fusiona a main.
+name: Audiencia SEO
+on:
+  push:
+    branches: [claude/project-thread-nouiht]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-seo.yml']
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          BK: ${{ secrets.BING_WEBMASTER_KEY }}
+        run: python3 .github/audiencia/seo.py
