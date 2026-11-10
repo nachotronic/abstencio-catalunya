@@ -48,4 +48,12 @@
       <news:title>Sánchez promete superar «de lejos» el 70 % de participación de 2023, una cifra que solo cuenta a los residentes en España y que no alcanzaron 17 provincias</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/paraguay-pena-destituido-mapa-departamentos/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-10</news:publication_date>
+      <news:title>Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 17 de los 18 departamentos</news:title>
+    </news:news>
+  </url>
 </urlset>
