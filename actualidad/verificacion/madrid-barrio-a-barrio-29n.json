@@ -4,6 +4,20 @@
    "texto": "En 2023, 586 secciones censales de la capital pasaron del PSOE al PP.",
    "cifra": "586",
    "calculo": "len([e for e in P if e[3] == 'PSOE' and e[2] == 'PP'])"
+  },
+  {
+   "texto": "Y 205 de las 2.450 se decidieron por menos de dos puntos, la mitad en Latina, Carabanchel, Ciudad Lineal y Centro.",
+   "cifra": "205",
+   "calculo": "len([e for e in P if e[4] < 2])"
+  },
+  {
+   "texto": "Y 205 de las 2.450 se decidieron por menos de dos puntos, la mitad en Latina, Carabanchel, Ciudad Lineal y Centro.",
+   "cifra": "2.450",
+   "calculo": "len(P)"
+  },
+  {
+   "texto": "la mitad en Latina, Carabanchel, Ciudad Lineal y Centro",
+   "condicion": "0.45 < len([e for e in P if e[4] < 2 and e[0][:2] in ('10','11','15','01')]) / len([e for e in P if e[4] < 2]) < 0.55"
   }
  ],
  "externas": [],
