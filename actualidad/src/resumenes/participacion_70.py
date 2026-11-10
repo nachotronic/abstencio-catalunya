@@ -252,7 +252,7 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 
 pieza('sanchez-abascal-septima-revuelta-participacion-29n', 'Sánchez, La Séptima y el 70 %',
-      f'Sánchez promete en La Séptima pasar «de lejos» del 70 % de participación: llegar al 75 % exigiría {mill(MAS75)} millones de votantes más que en 2023',
+      f'Abascal con Broncano, Sánchez con Javier Ruiz: el presidente se juega el 29N a una participación que {N_BAJO70} provincias no alcanzaron en 2023',
       f'A la misma hora en que Abascal estaba en La Revuelta, Sánchez pronosticó una participación muy por encima de la de 2023, cuando votó el {p(P23)} % de los residentes en España. '
       f'Con el censo de 2026, el 70 % son {mill(V70)} millones de votantes y el 75 %, {mill(V75)} millones. {N_BAJO70} provincias no llegaron al 70 % en 2023.',
       '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

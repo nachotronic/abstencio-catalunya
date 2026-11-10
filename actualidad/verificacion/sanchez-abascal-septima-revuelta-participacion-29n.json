@@ -240,24 +240,6 @@
       "calculo": "D['AV']['2023_07']['a18']"
     },
     {
-      "texto": "Séptima pasar «de lejos» del 70 % de participación:",
-      "cifra": "70",
-      "calculo": "70 if D['V70'] > 0 else 0",
-      "_donde": "titular"
-    },
-    {
-      "texto": "participación: llegar al 75 % exigiría 2,2 millones",
-      "cifra": "75",
-      "calculo": "75 if D['V75'] > D['V70'] else 0",
-      "_donde": "titular"
-    },
-    {
-      "texto": "participación: llegar al 75 % exigiría 2,2 millones de votantes más que",
-      "cifra": "2,2 millones",
-      "calculo": "D['MAS75']",
-      "_donde": "titular"
-    },
-    {
       "texto": "la de 2023, cuando votó el 70,4 % de los residentes",
       "cifra": "70,4",
       "calculo": "D['P23']",
@@ -274,6 +256,12 @@
       "cifra": "27,0 millones",
       "calculo": "D['V75']",
       "_donde": "entradilla"
+    },
+    {
+      "texto": "29N a una participación que 17 provincias no alcanzaron",
+      "cifra": "17",
+      "calculo": "D['N_BAJO70']",
+      "_donde": "titular"
     }
   ],
   "externas": [
