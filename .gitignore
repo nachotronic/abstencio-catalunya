@@ -1,1 +1,3 @@
 video/comun/*.json
+__pycache__/
+*.pyc

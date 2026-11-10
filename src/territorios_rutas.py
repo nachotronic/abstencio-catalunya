@@ -276,6 +276,9 @@ def enlaces_actualidad(slug, raiz):
         out.append((f'{raiz}?m={cod}', f'{nombre} calle a calle en el mapa electoral'))
     if es_29n(slug):
         out.append((f'{raiz}elecciones/elecciones-29n-2026/', 'elecciones generales del 29N de 2026: fecha y escaños por provincia'))
+        # las guías que más se buscan antes y durante la noche electoral (lista SEO, 10-11-2026)
+        out.append((f'{raiz}elecciones/resultados-elecciones-generales-2026/', 'resultados de las elecciones generales 2026 (29N) y los de 2023'))
+        out.append((f'{raiz}elecciones/votar-29n/', 'dónde y cómo votar el 29N: colegio electoral, voto por correo y plazos'))
     if slug in TEMA_PARTICIPACION:
         out.append((f'{raiz}elecciones/participacion-electoral-por-barrio/', 'participación electoral por barrio en toda España'))
     if slug in TEMA_MUNICIPIOS:
