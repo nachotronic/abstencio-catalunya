@@ -246,7 +246,7 @@ def escanos(lado=24):
     return ''.join(out)
 
 
-g_esc = figura('El escaño que Vox tuvo en 2019 lo ganó el PP en 2023',
+g_esc = figura('En 2023, Vox y Unidas Podemos perdieron su escaño; PP y PSOE sacaron uno más cada uno',
                'Los siete diputados de Santa Cruz de Tenerife: un cuadrado por escaño',
                escanos(),
                f'Fuente: Ministerio del Interior (2019 y 2023); <a href="{BASE}encuestas/santa-cruz-de-tenerife/">media de encuestas de Mapa Electoral</a>, reparto central actualizado a las 2.31 del 10 de noviembre de 2026. '
@@ -268,11 +268,11 @@ L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 E = lambda pr, y, f: PROV[pr][y]['pct'][f]
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">Once cayucos con unas 1.158 personas llegaron a Canarias el fin de semana, la mayoría a La Restinga, en El Hierro, según los datos de Salvamento Marítimo y del 112 recogidos por <a href="{EP_CAY}">Europa Press</a>. En los nueve primeros días de noviembre ya son más de 6.665, una cifra que Pedro Sánchez considera «bastante habitual en este momento del año por la calma en el Atlántico», según la <a href="{EP_SAN}">misma agencia</a>. El presidente canario, Fernando Clavijo, lleva este martes a La Moncloa un plan de ocho puntos que apoyaron todos los grupos del Parlamento canario «salvo Vox», según <a href="{EFE_CLA}">EFE</a>.</p>
+<p data-tipo="contexto">Once cayucos con unas 1.158 personas llegaron a Canarias el fin de semana, la mayoría a El Hierro, según los datos de Salvamento Marítimo y del 112 recogidos por <a href="{EP_CAY}">Europa Press</a>. En los nueve primeros días de noviembre ya son más de 6.665, una cifra que Pedro Sánchez considera «bastante habitual en este momento del año por la calma en el Atlántico», según la <a href="{EP_SAN}">misma agencia</a>. El presidente canario, Fernando Clavijo, lleva este martes a La Moncloa un plan de ocho puntos que apoyaron todos los grupos del Parlamento canario «salvo Vox», según <a href="{EFE_CLA}">EFE</a>.</p>
 <blockquote class="cita"><p>«Este es el mandato que va a llevar mañana a La Moncloa no el presidente de la comunidad solamente, sino de la integridad de la sociedad canaria»</p><footer>Fernando Clavijo, presidente de Canarias, el 9 de noviembre de 2026, según <a href="{EFE_CLA}">EFE</a></footer></blockquote>
-<p data-tipo="dato">El 29N habrá algo que no hubo en 2023: una papeleta de Vox al Congreso en la provincia de Santa Cruz de Tenerife, la de Tenerife, La Palma, La Gomera y El Hierro. Hace tres años no la hubo porque varios candidatos renunciaron días antes de la proclamación y la Junta Electoral no admitió la lista, según contaron <a href="{RTVC_23}">RTVC</a> y, tras los recursos, la <a href="{RTVC_JEC}">propia televisión canaria</a>. Ahora la encabeza el concejal de Santa Cruz Alejandro Santiago Gómez, según <a href="{RTVC_26}">RTVC</a>, y está proclamada en el <a href="{BOE_26}">BOE del 3 de noviembre</a>.</p>
-<blockquote class="cita"><p>«No se puede privar a los de esta provincia de poder votar a Vox al Congreso. Porque el Senado sí salió bien, todas las listas, pero al Congreso no»</p><footer>Nicasio Galván, entonces diputado de Vox en el Parlamento de Canarias, el 27 de junio de 2023, según <a href="{RTVC_23}">RTVC</a></footer></blockquote>
-<p data-tipo="dato">En noviembre de 2019, Vox había sacado en esa provincia {n(T[Y19]["votos"]["VOX"])} votos, el {p(E("38", Y19, "VOX"))} %, y un diputado. En julio de 2023, sin Vox en la papeleta, el PP pasó del {p(E("38", Y19, "PP"))} % al {p(E("38", Y23, "PP"))} %: {n(PP_MAS)} votos más. Ganó la provincia, que no ganaba desde 2016, y se quedó el tercer escaño, el que había tenido Vox. En Las Palmas, donde Vox sí se presentó, el PP subió {p(DPP["35"])} puntos, y en el conjunto de España, {p(ES_DPP)}.</p>
+<p data-tipo="dato">El 29N habrá algo que no hubo en 2023: una papeleta de Vox al Congreso en la provincia de Santa Cruz de Tenerife, la de Tenerife, La Palma, La Gomera y El Hierro. Hace tres años no la hubo porque varios candidatos renunciaron días antes de la proclamación y la Junta Electoral no admitió la lista, según contaron <a href="{RTVC_23}">RTVC</a> y, tras los recursos, la <a href="{RTVC_JEC}">propia televisión canaria</a>. Ahora la encabeza el concejal de Santa Cruz Alejandro Santiago Gómez Rodríguez, según <a href="{RTVC_26}">RTVC</a>, y está proclamada en el <a href="{BOE_26}">BOE del 3 de noviembre</a>.</p>
+<blockquote class="cita"><p>«(…) no se puede privar a los de esta provincia de poder votar a Vox al Congreso. Porque el Senado sí salió bien, todas las listas, pero al Congreso no»</p><footer>Nicasio Galván, entonces diputado de Vox en el Parlamento de Canarias, el 27 de junio de 2023, según <a href="{RTVC_23}">RTVC</a></footer></blockquote>
+<p data-tipo="dato">En noviembre de 2019, Vox había sacado en esa provincia {n(T[Y19]["votos"]["VOX"])} votos, el {p(E("38", Y19, "VOX"))} %, y un diputado. En julio de 2023, sin Vox en la papeleta, el PP pasó del {p(E("38", Y19, "PP"))} % al {p(E("38", Y23, "PP"))} %: {n(PP_MAS)} votos más. Ganó la provincia, que no ganaba desde 2016. Vox y Unidas Podemos perdieron su escaño, y el PP y el PSOE sacaron uno más cada uno. En Las Palmas, donde Vox sí se presentó, el PP subió {p(DPP["35"])} puntos, y en el conjunto de España, {p(ES_DPP)}.</p>
 {g_sube}
 <p data-tipo="patron">Si se suman PP, Vox y Ciudadanos, el bloque apenas se movió. En Santa Cruz de Tenerife pasó del {p(DER["38"][Y19])} % de noviembre de 2019 al {p(DER["38"][Y23])} % del PP solo en 2023. En Las Palmas, del {p(DER["35"][Y19])} % al {p(DER["35"][Y23])} %. Lo que cambió en Tenerife es el reparto: casi todo ese voto se concentró en una sola papeleta.</p>
 {g_der}
@@ -295,9 +295,9 @@ preguntas = [
     ('¿Por qué Vox no se presentó al Congreso en Santa Cruz de Tenerife en 2023?',
      'Varios integrantes de su candidatura renunciaron días antes de la proclamación y la Junta Electoral no la admitió; la Junta Electoral Central rechazó después sus recursos. Sí se presentó al Senado.'),
     ('¿Se presenta Vox en Santa Cruz de Tenerife el 29N?',
-     'Sí. Su lista al Congreso, encabezada por Alejandro Santiago Gómez, está proclamada en el BOE del 3 de noviembre de 2026.'),
+     'Sí. Su lista al Congreso, encabezada por Alejandro Santiago Gómez Rodríguez, está proclamada en el BOE del 3 de noviembre de 2026.'),
     ('¿Cuánto subió el PP en Santa Cruz de Tenerife sin Vox?',
-     f'Del {p(E("38", Y19, "PP"))} % de noviembre de 2019 al {p(E("38", Y23, "PP"))} % de julio de 2023, {p(DPP["38"])} puntos, frente a {p(DPP["35"])} en Las Palmas. Ganó la provincia y el tercer escaño.'),
+     f'Del {p(E("38", Y19, "PP"))} % de noviembre de 2019 al {p(E("38", Y23, "PP"))} % de julio de 2023, {p(DPP["38"])} puntos, frente a {p(DPP["35"])} en Las Palmas. Ganó la provincia y un tercer escaño.'),
     ('¿Cuántos escaños puede sacar Vox en Santa Cruz de Tenerife?',
      f'Con la media de encuestas de Mapa Electoral, entre {CTw["Vox"][1]} y {CTw["Vox"][2]} de los siete; en el reparto central, {CTw["Vox"][0]}.'),
 ]
@@ -314,7 +314,7 @@ cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details op
 
 pieza('vox-vuelve-tenerife-29n', 'Vox vuelve a la papeleta en Tenerife',
       f'Vox vuelve a la papeleta en Tenerife: en 2023 no se presentó y el PP subió {p(DPP["38"])} puntos, frente a {p(DPP["35"])} en Las Palmas',
-      f'Hace tres años, Vox no tuvo lista al Congreso en Santa Cruz de Tenerife y el PP ganó la provincia con su tercer escaño. Donde Vox era más fuerte, en el sur de Tenerife, más subió el PP. '
+      f'Hace tres años, Vox no tuvo lista al Congreso en Santa Cruz de Tenerife y el PP ganó la provincia y un tercer escaño. Donde Vox era más fuerte, en el sur de Tenerife, más subió el PP. '
       f'Con las encuestas, Vox recuperaría entre {CTw["Vox"][1]} y {CTw["Vox"][2]} de los siete diputados.',
       '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print({k: round(v, 2) for k, v in DPP.items()}, 'ES', round(ES_DPP, 2), 'TT', {t: round(TT[t]['dpp'], 1) for t in TT}, 'TL', {t: round(TL[t]['dpp'], 1) for t in TL}, 'NGR', NGR, 'CORR', CORR)
