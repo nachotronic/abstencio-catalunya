@@ -1,0 +1,597 @@
+{
+ "pieza": "mapa-electoral-andalucia-29n",
+ "cifras": [
+  {
+   "texto": "Andalucía: el PSOE perdió 232 municipios en 2023 sin",
+   "cifra": "232",
+   "calculo": "D['GANA']['2019_11']['PSOE']-D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "noviembre de 2019 ganó en 699 de los 785 municipios",
+   "cifra": "699",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "de 2019 ganó en 699 de los 785 municipios andaluces;",
+   "cifra": "785",
+   "calculo": "sum(D['GANA']['2023_07'].values())"
+  },
+  {
+   "texto": "municipios andaluces; en 2023, en 467, con el mismo 33,8 %.",
+   "cifra": "467",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "2023, en 467, con el mismo 33,8 %. El PP pasó de 40",
+   "cifra": "33,8",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "mismo 33,8 %. El PP pasó de 40 a 307 y ganó en siete",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "33,8 %. El PP pasó de 40 a 307 y ganó en siete de las",
+   "cifra": "307",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "pasó de 40 a 307 y ganó en siete de las ocho capitales.",
+   "cifra": "siete",
+   "calculo": "sum(c['g23']=='PP' for c in D['CAP'].values())"
+  },
+  {
+   "texto": "307 y ganó en siete de las ocho capitales. Para el 29N,",
+   "cifra": "ocho",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "media de encuestas le da 25 de los 60 diputados,",
+   "cifra": "25",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas le da 25 de los 60 diputados, y a Vox,",
+   "cifra": "60",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "los 60 diputados, y a Vox, 15.",
+   "cifra": "15",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 60 de los 350 diputados",
+   "cifra": "60",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "el partido más votado en 699 de los 785 municipios",
+   "cifra": "699",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "más votado en 699 de los 785 municipios andaluces.",
+   "cifra": "785",
+   "calculo": "sum(D['GANA']['2023_07'].values())"
+  },
+  {
+   "texto": "En julio de 2023 ganó en 467: 232 menos. Y sin embargo",
+   "cifra": "467",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "julio de 2023 ganó en 467: 232 menos. Y sin embargo",
+   "cifra": "232",
+   "calculo": "D['GANA']['2019_11']['PSOE']-D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "su voto no bajó: sacó el 33,8 % en 2019 y el 33,8",
+   "cifra": "33,8",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "sacó el 33,8 % en 2019 y el 33,8 % en 2023, con 39.998",
+   "cifra": "33,8",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "y el 33,8 % en 2023, con 39.998 votos más.",
+   "cifra": "39.998",
+   "calculo": "D['A23']['votos']['PSOE']-D['A19']['votos']['PSOE']"
+  },
+  {
+   "texto": "del tablero. El PP pasó del 20,8 % al 36,8 %, 16,0 puntos",
+   "cifra": "20,8",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "El PP pasó del 20,8 % al 36,8 %, 16,0 puntos más,",
+   "cifra": "36,8",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "pasó del 20,8 % al 36,8 %, 16,0 puntos más, y de ganar",
+   "cifra": "16,0",
+   "calculo": "D['A23']['pct']['PP']-D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "puntos más, y de ganar en 40 municipios a ganar en",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "40 municipios a ganar en 307. Ciudadanos, que había",
+   "cifra": "307",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 8,2 % en 2019, no se presentó",
+   "cifra": "8,2",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "presentó en 2023, y Vox bajó del 20,6 % al 15,5 %. En 233",
+   "cifra": "20,6",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 20,6 % al 15,5 %. En 233 municipios",
+   "cifra": "15,5",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "del 20,6 % al 15,5 %. En 233 municipios el más votado",
+   "cifra": "233",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "del PSOE al PP, y en los 33 que había ganado Vox",
+   "cifra": "33",
+   "calculo": "D['VOX_PP']"
+  },
+  {
+   "texto": "Ciudadanos tenían en 2019 el 49,6 % de los votos andaluces;",
+   "cifra": "49,6",
+   "calculo": "D['DER19']"
+  },
+  {
+   "texto": "andaluces; PP y Vox, en 2023, el 52,3 %. El bloque creció",
+   "cifra": "52,3",
+   "calculo": "D['DER23']"
+  },
+  {
+   "texto": "52,3 %. El bloque creció 2,6 puntos; lo que más cambió",
+   "cifra": "2,6",
+   "calculo": "D['DER23']-D['DER19']"
+  },
+  {
+   "texto": "el PP adelantó al PSOE en 233 municipios. El PP subió",
+   "cifra": "233",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "municipios. El PP subió en 779 de los 785 municipios,",
+   "cifra": "779",
+   "calculo": "D['PP_SUBE']"
+  },
+  {
+   "texto": "El PP subió en 779 de los 785 municipios, y en 65",
+   "cifra": "785",
+   "calculo": "sum(D['GANA']['2023_07'].values())"
+  },
+  {
+   "texto": "los 785 municipios, y en 65 lo hizo más de 20 puntos.",
+   "cifra": "65",
+   "calculo": "D['PP_MAS20']"
+  },
+  {
+   "texto": "geografías. El PSOE ganó en 347 de los 529 municipios",
+   "cifra": "347",
+   "calculo": "D['PEQ']"
+  },
+  {
+   "texto": "El PSOE ganó en 347 de los 529 municipios de menos",
+   "cifra": "529",
+   "calculo": "D['NPEQ']"
+  },
+  {
+   "texto": "5.000 habitantes, y el PP, en 11 de las 13 ciudades de",
+   "cifra": "11",
+   "calculo": "D['TT']['Más de 100.000']['g23']['PP']"
+  },
+  {
+   "texto": "habitantes, y el PP, en 11 de las 13 ciudades de más de 100.000.",
+   "cifra": "13",
+   "calculo": "D['TT']['Más de 100.000']['n']"
+  },
+  {
+   "texto": "ganados por el PSOE suman el 29,2 % de la población andaluza,",
+   "cifra": "29,2",
+   "calculo": "D['POB']['PSOE']"
+  },
+  {
+   "texto": "los ganados por el PP, el 70,3 %: más rojo en el mapa",
+   "cifra": "70,3",
+   "calculo": "D['POB']['PP']"
+  },
+  {
+   "texto": "habitantes, el PSOE sacó el 41,2 % en 2023 y el PP, el",
+   "cifra": "41,2",
+   "calculo": "D['TT']['Menos de 1.000']['psoe23']"
+  },
+  {
+   "texto": "41,2 % en 2023 y el PP, el 35,1 %. En las ciudades de",
+   "cifra": "35,1",
+   "calculo": "D['TT']['Menos de 1.000']['pp23']"
+  },
+  {
+   "texto": "100.000 fue al revés: PP 38,7 %, PSOE 31,4 %. El PP",
+   "cifra": "38,7",
+   "calculo": "D['TT']['Más de 100.000']['pp23']"
+  },
+  {
+   "texto": "al revés: PP 38,7 %, PSOE 31,4 %. El PP subió en todos",
+   "cifra": "31,4",
+   "calculo": "D['TT']['Más de 100.000']['psoe23']"
+  },
+  {
+   "texto": "2019, el PSOE había ganado en siete de las ocho; solo Granada",
+   "cifra": "siete",
+   "calculo": "sum(c['g19']=='PSOE' for c in D['CAP'].values())"
+  },
+  {
+   "texto": "había ganado en siete de las ocho; solo Granada fue del",
+   "cifra": "ocho",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "PP. En 2023, el PP ganó en siete, todas salvo Cádiz,",
+   "cifra": "siete",
+   "calculo": "sum(c['g23']=='PP' for c in D['CAP'].values())"
+  },
+  {
+   "texto": "Cádiz, donde el PSOE sacó el 36,8 % y el PP, el 34,8 %.",
+   "cifra": "36,8",
+   "calculo": "D['CAP']['11012']['psoe23']"
+  },
+  {
+   "texto": "sacó el 36,8 % y el PP, el 34,8 %. Sevilla, la mayor,",
+   "cifra": "34,8",
+   "calculo": "D['CAP']['11012']['pp23']"
+  },
+  {
+   "texto": "pasó del PSOE al PP con un 37,6 % frente a un 34,0 %.",
+   "cifra": "37,6",
+   "calculo": "D['CAP']['41091']['pp23']"
+  },
+  {
+   "texto": "con un 37,6 % frente a un 34,0 %.",
+   "cifra": "34,0",
+   "calculo": "D['CAP']['41091']['psoe23']"
+  },
+  {
+   "texto": "el PP fue el más votado en siete y el PSOE en una, Sevilla,",
+   "cifra": "siete",
+   "calculo": "sum(D['PR'][p]['2023_07']['PP']>D['PR'][p]['2023_07']['PSOE'] for p in D['PR'])"
+  },
+  {
+   "texto": "una, Sevilla, donde sacó el 37,0 % frente al 33,8 % del",
+   "cifra": "37,0",
+   "calculo": "D['PR']['41']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "sacó el 37,0 % frente al 33,8 % del PP. La mayor ventaja",
+   "cifra": "33,8",
+   "calculo": "D['PR']['41']['2023_07']['PP']"
+  },
+  {
+   "texto": "fue la de Almería, con el 41,4 % frente al 29,2 % del",
+   "cifra": "41,4",
+   "calculo": "D['PR']['04']['2023_07']['PP']"
+  },
+  {
+   "texto": "Almería, con el 41,4 % frente al 29,2 % del PSOE y el 21,5",
+   "cifra": "29,2",
+   "calculo": "D['PR']['04']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "frente al 29,2 % del PSOE y el 21,5 % de Vox. Aun así, en",
+   "cifra": "21,5",
+   "calculo": "D['PR']['04']['2023_07']['VOX']"
+  },
+  {
+   "texto": "ganó en más que el PP en siete de las ocho provincias,",
+   "cifra": "siete",
+   "calculo": "D['NPSOE_MAS']"
+  },
+  {
+   "texto": "que el PP en siete de las ocho provincias, todas salvo",
+   "cifra": "ocho",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "salvo Almería: en Sevilla, en 84 de los 106; en Jaén,",
+   "cifra": "84",
+   "calculo": "D['PRG']['41']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "en Sevilla, en 84 de los 106; en Jaén, en 66 de los",
+   "cifra": "106",
+   "calculo": "D['PRN']['41']"
+  },
+  {
+   "texto": "84 de los 106; en Jaén, en 66 de los 97.",
+   "cifra": "66",
+   "calculo": "D['PRG']['23']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "106; en Jaén, en 66 de los 97.",
+   "cifra": "97",
+   "calculo": "D['PRN']['23']"
+  },
+  {
+   "texto": "En 89 municipios andaluces,",
+   "cifra": "89",
+   "calculo": "D['AJ2']"
+  },
+  {
+   "texto": "dos puntos en 2023, y en 47, menos de diez votos,",
+   "cifra": "47",
+   "calculo": "D['AJ10']"
+  },
+  {
+   "texto": "más de 20.000 habitantes, seis se decidieron por menos",
+   "cifra": "seis",
+   "calculo": "len(D['AJG'])"
+  },
+  {
+   "texto": "Barbate, el PSOE ganó al PP por 10 votos. En Puente de",
+   "cifra": "10",
+   "calculo": "D['AJG'][0][3]"
+  },
+  {
+   "texto": "andaluz que ganó en 2023, por 6 votos sobre el PSOE.",
+   "cifra": "6",
+   "calculo": "D['PUENTE'][1]"
+  },
+  {
+   "texto": "reparto central da al PP 25 de los 60 diputados",
+   "cifra": "25",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "central da al PP 25 de los 60 diputados andaluces,",
+   "cifra": "60",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "mismos que en 2023; al PSOE, 19, dos menos; a Vox, 15,",
+   "cifra": "19",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "PSOE, 19, dos menos; a Vox, 15, seis más, y a Sumar,",
+   "cifra": "15",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "19, dos menos; a Vox, 15, seis más, y a Sumar, 1. En",
+   "cifra": "seis",
+   "calculo": "D['E29']['VOX']-D['E23']['VOX']"
+  },
+  {
+   "texto": "15, seis más, y a Sumar, 1. En Sevilla, el modelo",
+   "cifra": "1",
+   "calculo": "D['E29']['SUMAR']"
+  },
+  {
+   "texto": "votado: el PP lo es en el 51 % de las simulaciones",
+   "cifra": "51",
+   "calculo": "D['SEV_P1']['PP']*100"
+  },
+  {
+   "texto": "simulaciones y el PSOE, en el 49 %. Cádiz elige ocho",
+   "cifra": "49",
+   "calculo": "D['SEV_P1']['PSOE']*100"
+  },
+  {
+   "texto": "PSOE, en el 49 %. Cádiz elige ocho diputados en lugar de",
+   "cifra": "ocho",
+   "calculo": "D['ESC26']['11']"
+  },
+  {
+   "texto": "ocho diputados en lugar de nueve, y con los votos de",
+   "cifra": "nueve",
+   "calculo": "sum(D['ESC23']['11'].values())"
+  },
+  {
+   "texto": "Ocho provincias: el PP gana",
+   "cifra": "Ocho",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 699 municipios a ganar en",
+   "cifra": "699",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "699 municipios a ganar en 467, y el PP, de 40 a 307Partido",
+   "cifra": "467",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganar en 467, y el PP, de 40 a 307Partido más votado",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 785 municipios de Andalucía,",
+   "cifra": "785",
+   "calculo": "sum(D['GANA']['2023_07'].values())"
+  },
+  {
+   "texto": "El PP subió en 779 de los 785 municipiosCambio",
+   "cifra": "779",
+   "calculo": "D['PP_SUBE']"
+  },
+  {
+   "texto": "El PP subió en 779 de los 785 municipiosCambio del",
+   "cifra": "785",
+   "calculo": "sum(D['GANA']['2023_07'].values())"
+  },
+  {
+   "texto": "El PSOE ganó en 347 de los 529 municipios",
+   "cifra": "347",
+   "calculo": "D['PEQ']"
+  },
+  {
+   "texto": "El PSOE ganó en 347 de los 529 municipios de menos",
+   "cifra": "529",
+   "calculo": "D['NPEQ']"
+  },
+  {
+   "texto": "5.000 habitantes; el PP, en 11 de las 13 ciudades de",
+   "cifra": "11",
+   "calculo": "D['TT']['Más de 100.000']['g23']['PP']"
+  },
+  {
+   "texto": "habitantes; el PP, en 11 de las 13 ciudades de más de 100.000Municipios",
+   "cifra": "13",
+   "calculo": "D['TT']['Más de 100.000']['n']"
+  },
+  {
+   "texto": "El PP ganó en siete de las ocho capitales;",
+   "cifra": "siete",
+   "calculo": "sum(c['g23']=='PP' for c in D['CAP'].values())"
+  },
+  {
+   "texto": "El PP ganó en siete de las ocho capitales; en 2019,",
+   "cifra": "ocho",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "El PP ganó en votos en siete provincias; el PSOE,",
+   "cifra": "siete",
+   "calculo": "sum(D['PR'][p]['2023_07']['PP']>D['PR'][p]['2023_07']['PSOE'] for p in D['PR'])"
+  },
+  {
+   "texto": "Seis municipios de más de",
+   "cifra": "Seis",
+   "calculo": "len(D['AJG'])"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de 9 a 15 diputados andaluces",
+   "cifra": "9",
+   "calculo": "D['E23']['VOX']"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de 9 a 15 diputados andaluces",
+   "cifra": "15",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "diputados andaluces y Sumar, de 6 a 1Los diputados de",
+   "cifra": "6",
+   "calculo": "D['E23']['SUMAR']"
+  },
+  {
+   "texto": "6 a 1Los diputados de las ocho provincias andaluzas:",
+   "cifra": "ocho",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "En 2026, Andalucía elige 60, uno menos: Cádiz pasa",
+   "cifra": "60",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "uno menos: Cádiz pasa de 9 a 8",
+   "cifra": "9",
+   "calculo": "sum(D['ESC23']['11'].values())"
+  },
+  {
+   "texto": "menos: Cádiz pasa de 9 a 8",
+   "cifra": "8",
+   "calculo": "D['ESC26']['11']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Andalucía, que en mayo sacó ocho diputados autonómicos,",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/10/el-pp-busca-su-segunda-victoria-en-andalucia-donde-adelante-podria-tener-representacion/"
+  },
+  {
+   "texto": "los oficiales que cita EFE (36,41 % para el PP y 33,5",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/10/el-pp-busca-su-segunda-victoria-en-andalucia-donde-adelante-podria-tener-representacion/"
+  },
+  {
+   "texto": "EFE (36,41 % para el PP y 33,5 % para el PSOE, con",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/10/el-pp-busca-su-segunda-victoria-en-andalucia-donde-adelante-podria-tener-representacion/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "29 de noviembre 60 de los 350 diputados del Congreso,",
+   "motivo": "tamaño fijo del Congreso"
+  },
+  {
+   "texto": "en 2023, según EFE. Serán seis meses después de las",
+   "motivo": "plazo entre el 17 de mayo y el 29N"
+  },
+  {
+   "texto": "municipios, y en 65 lo hizo más de 20 puntos.",
+   "motivo": "umbral"
+  },
+  {
+   "texto": "529 municipios de menos de 5.000 habitantes, y el PP,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "las 13 ciudades de más de 100.000. Como en los pueblos",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los municipios de menos de 1.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "En las ciudades de más de 100.000 fue al revés: PP 38,7",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "PSOE bajó en los de menos de 20.000 habitantes y subió algo",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "en 2023, y en 47, menos de diez votos, casi todos pueblos",
+   "motivo": "umbral"
+  },
+  {
+   "texto": "pequeños. Entre los de más de 20.000 habitantes, seis se",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "lo contamos en Uno de cada tres votantes de Adelante",
+   "motivo": "título de otra pieza"
+  },
+  {
+   "texto": "tienen un margen amplio a 19 días de la votación.",
+   "motivo": "días hasta la votación"
+  },
+  {
+   "texto": "529 municipios de menos de 5.000 habitantes; el PP, en",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "las 13 ciudades de más de 100.000Municipios ganados",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Seis municipios de más de 20.000 habitantes se decidieron",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
