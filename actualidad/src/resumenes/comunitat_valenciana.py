@@ -87,8 +87,8 @@ COLL = {'PP': COLOR['PP'], 'PSOE': COLOR['PSOE'], 'Vox': COLOR['Vox'], 'Sumar': 
 
 # --- Mapa de municipios de 2023 ---
 G = json.load(open(RAIZ / 'generales-2026/data/municipios.json'))
-COLM = {'PSOE': COLOR['PSOE'], 'PP': COLOR['PP'], 'VOX': COLOR['Vox'], 'SUMAR': COLOR['Sumar']}
-ETQ = {'PSOE': 'PSOE', 'PP': 'PP', 'VOX': 'Vox', 'SUMAR': 'Sumar'}
+COLM = {'PSOE': COLOR['PSOE'], 'PP': COLOR['PP'], 'VOX': COLOR['Vox'], 'SUMAR': COLOR['Sumar'], 'EMPATE': '#8a8486'}
+ETQ = {'PSOE': 'PSOE', 'PP': 'PP', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'EMPATE': 'Empate a votos'}   # empate: corrección del 10-11-2026
 gan = dict(zip(m.mun_code, m['2023_07_gana']))
 nom = dict(zip(m.mun_code, m.municipio))
 
@@ -120,8 +120,8 @@ def mapa(W=420):
 g_mapa = figura(f'El PP ganó en {GAN["PP"]} municipios valencianos en 2023 y el PSOE en {GAN["PSOE"]}',
                 f'Partido más votado en cada uno de los {NMUN} municipios de la Comunitat Valenciana en las generales de julio de 2023',
                 mapa(), 'Fuente: Ministerio del Interior, resultados por municipio, sin voto exterior (CERA).',
-                [(ETQ[k], COLM[k]) for k in ('PP', 'PSOE', 'VOX', 'SUMAR') if GAN.get(k)],
-                (['Partido', 'Municipios'], [[ETQ[k], str(GAN.get(k, 0))] for k in ('PP', 'PSOE', 'VOX', 'SUMAR')]))
+                [(ETQ[k], COLM[k]) for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'EMPATE') if GAN.get(k)],
+                (['Partido', 'Municipios'], [[ETQ[k], str(GAN.get(k, 0))] for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'EMPATE') if k != 'EMPATE' or GAN.get(k)]))
 
 
 def escanos_svg(W=640):
@@ -188,7 +188,7 @@ ppvox23 = E23['CV']['PP'] + E23['CV']['VOX']
 assert ppvox23 == 18 and PPVOX['med'] == 20
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="dato">La Comunitat Valenciana elige 33 de los 350 diputados del Congreso: 16 por Valencia, 12 por Alicante y 5 por Castellón. En las generales de julio de 2023, el PP sacó {E23["CV"]["PP"]}, el PSOE {E23["CV"]["PSOE"]}, Vox {E23["CV"]["VOX"]} y Sumar, que iba con Compromís, {E23["CV"]["SUMAR"]}. PP y Vox sumaron {ppvox23}, uno más de los 17 de la mayoría. El PP fue el más votado en {GAN["PP"]} de los {NMUN} municipios valencianos y el PSOE en {GAN["PSOE"]}.</p>
+<p data-tipo="dato">La Comunitat Valenciana elige 33 de los 350 diputados del Congreso: 16 por Valencia, 12 por Alicante y 5 por Castellón. En las generales de julio de 2023, el PP sacó {E23["CV"]["PP"]}, el PSOE {E23["CV"]["PSOE"]}, Vox {E23["CV"]["VOX"]} y Sumar, que iba con Compromís, {E23["CV"]["SUMAR"]}. PP y Vox sumaron {ppvox23}, uno más de los 17 de la mayoría. El PP fue el más votado en {GAN["PP"]} de los {NMUN} municipios valencianos y el PSOE en {GAN["PSOE"]}; en otros cuatro, los dos empataron a votos.</p>
 {g_mapa}
 <p data-tipo="dato">Con la media de encuestas del 3 de noviembre, nuestro modelo, que reparte el voto nacional por provincia y simula {n(SIMS)} resultados, da a PP y Vox {PPVOX["med"]:.0f} de los 33 escaños valencianos en la mediana, dos más que en 2023, y al PSOE y a Compromís-Front Valencià {PPVOX["izq"]:.0f}. En el {p(PPVOX["may"])} % de las simulaciones, PP y Vox llegan al menos a 17, la mitad más uno. Por partidos, el PP saca de media {p(MEDIA["CV"]["PP"])} escaños, el PSOE {p(MEDIA["CV"]["PSOE"])}, Vox {p(MEDIA["CV"]["Vox"])} y Compromís {p(MEDIA["CV"]["Sumar"])}.</p>
 {g_esc}

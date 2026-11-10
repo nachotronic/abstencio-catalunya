@@ -1663,10 +1663,10 @@ PIEZAS = [
                   pie='Una avenida arbolada de Barcelona partida en dos, con el cielo azul a un lado y rojo al otro: un collage.'),
     ),
     dict(
-        slug='asi-queda-el-mapa-29n', fecha='2026-10-24', actualizado='2026-11-09 10:30',
-        correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 19.699 secciones, no en 19.107; el PP, en 9.713, no en 9.587, y Unidas Podemos, en 332 (Más País, en 4), no en 1.111.',
+        slug='asi-queda-el-mapa-29n', fecha='2026-10-24', actualizado='2026-11-10 17:50',
+        correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 19.699 secciones, no en 19.107; el PP, en 9.713, no en 9.587, y Unidas Podemos, en 332 (Más País, en 4), no en 1.111. 10-11-2026: las secciones donde los dos primeros empataron a votos se daban al partido que iba antes en la lista; ahora cuentan aparte (201 en 2023 y 253 en 2019). En 2023 el PP ganó en 18.243 secciones, no en 18.407, y el PSOE en 16.044, no en 16.073; en 2019, el PSOE en 19.631, no en 19.699; el PP en 9.542, no en 9.713; ERC en 2.445, no en 2.456, y Unidas Podemos en 330, no en 332. También cambian el PNV (397), ERC (192) y Sumar (180) en 2023, y en Madrid capital el PP ganó en 1.595 secciones, no en 1.603.',
         titulo='Así queda el mapa electoral de España antes del 29N: el PP ganó en 40 provincias y el PSOE, en 10', serie='29n',
-        descripcion='Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073. En 2019 el PSOE ganaba en 19.699 secciones. La renta, los municipios que votan igual desde 1977 y lo que dicen hoy las encuestas.',
+        descripcion='Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones. La renta, los municipios que votan igual desde 1977 y lo que dicen hoy las encuestas.',
         compara='El partido más votado en cada provincia en las generales de julio de 2023 (con voto exterior) y en cada sección censal en noviembre de 2019 y julio de 2023 (sin él); el voto al PP y al PSOE y la participación por deciles de renta de la sección; y las cifras de piezas anteriores sobre municipios fieles, ciudades y encuestas.',
         limites='Es un resumen del resultado de 2023, no una previsión del 29 de noviembre. Las secciones no incluyen el voto exterior y sus límites cambian entre elecciones; se cuentan las que tienen resultados en cada una. Familias de partidos del mapa de la portada: Sumar incluye en 2019 a Unidas Podemos y sus confluencias; en Navarra, UPN se cuenta aparte del PP en las provincias. Los datos por sección describen lugares, no personas. Las cifras de encuestas y del modelo son las del 23 de octubre de 2026 y cambian cada día.',
         calculo='Partido más votado por provincia con los votos oficiales y el voto exterior (el mismo cálculo reproduce los 350 escaños de 2023); por sección, con los resultados por mesa sumados. Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Script: actualidad/src/resumenes/mapa.py.',
@@ -1732,7 +1732,8 @@ PIEZAS = [
                   pie='Un sillón vacío al borde de un acantilado de papel, entre una calle de ciudad y un pueblo de interior, con sobres y una lupa sobre una mesa: un collage.'),
     ),
     dict(
-        slug='cinturon-rojo-madrid-29n', fecha='2026-11-04', actualizado='2026-11-05 07:32',
+        slug='cinturon-rojo-madrid-29n', fecha='2026-11-04', actualizado='2026-11-10 17:50',
+        correcciones='10-11-2026: en noviembre de 2019 el PP fue el más votado en 46 municipios de la Comunidad de Madrid, no en 47. En Puebla de la Sierra, el PP y el PSOE empataron a votos (15 cada uno). Antes, un empate a votos entre los dos primeros se daba al partido que iba antes en la lista; ahora se cuenta como empate.',
         titulo='El PP ganó Coslada por siete votos: el PSOE pasó de ganar en 16 de los 24 grandes municipios de Madrid a 4, aunque subió en todos', serie='29n', figura=0,
         descripcion='Fuenlabrada, Parla, Leganés y Getafe son lo que queda del cinturón rojo en las generales. En los 16 municipios que el PSOE ganaba en 2019, subió del 31,1 % al 33,0 %; el PP, del 19,6 % al 35,3 %, tras la desaparición de Ciudadanos.',
         compara='El partido más votado en cada uno de los 179 municipios de la Comunidad de Madrid en las generales de noviembre de 2019 y de julio de 2023, el voto de los 24 municipios de más de 50.000 habitantes desde 1977 y la media de encuestas para el 29N en la provincia.',
@@ -1794,7 +1795,8 @@ PIEZAS = [
         lugar='Andalucía',
     ),
     dict(
-        slug='comunitat-valenciana-escanos-29n', fecha='2026-11-05',
+        slug='comunitat-valenciana-escanos-29n', fecha='2026-11-05', actualizado='2026-11-10 17:50',
+        correcciones='10-11-2026: el PP fue el más votado en 303 de los 542 municipios valencianos en 2023, no en 307. En otros cuatro (Castell de Cabres, San Rafael del Río, la Granja de la Costera y Sot de Chera), el PP y el PSOE empataron a votos. Antes, un empate a votos entre los dos primeros se daba al partido que iba antes en la lista; ahora se cuenta como empate.',
         titulo='PP y Vox pasarían de 18 a 20 de los 33 escaños valencianos con la media de encuestas; en Castellón, dos se los disputan cuatro candidatos', serie='29n', figura=0,
         descripcion='Con la media de encuestas del 3 de noviembre, Vox subiría de 5 a 8,0 escaños de media en la Comunitat Valenciana y el PSOE bajaría de 11 a 9,2. En Castellón, el segundo del PSOE sale en el 45,5 % de las simulaciones y el cabeza de lista de Compromís, en el 40,6 %.',
         compara='Los escaños de 2023 en Valencia, Alicante y Castellón, el partido más votado en cada uno de los 542 municipios valencianos en 2023 y el reparto que da el modelo de encuestas de Mapa Electoral del 3 de noviembre, con la probabilidad de cada puesto de las listas proclamadas.',
