@@ -22,7 +22,7 @@ d = d[d.mun_code.isin([MAD, BCN])].copy()
 bar = pd.read_csv(RAIZ / 'data/barrios/secciones_barrio.csv', dtype=str)[['tract_code', 'barrio', 'distrito']]
 d = d.merge(bar, on='tract_code', how='left')
 v = d.dropna(subset=[f'{E}_PP']).copy()
-v['gana'] = v[[f'{E}_{k}' for k in P]].idxmax(axis=1).str[8:]
+v['gana'] = v[[f'{E}_{k}' for k in P]].idxmax(axis=1).str[8:].where(v[f'{E}_gana'] != 'EMPATE', 'EMPATE')   # empate a votos: no gana nadie
 assert v.renta_uc.max() == 58752
 
 
@@ -43,7 +43,7 @@ def res(s):
 mad, bcn = v[v.mun_code == MAD], v[v.mun_code == BCN]
 DM = {k: res(s) for k, s in mad.groupby('distrito')}
 ARG, SB, CH = DM['Arganzuela'], DM['San Blas - Canillejas'], DM['Chamartín']
-assert ARG['n'] == 111 and ARG['gana'] == {'PP': 97, 'PSOE': 9, 'SUMAR': 5} and round(ARG['PP'], 1) == 38.4 and round(ARG['part'], 1) == 78.4 and ARG['renta'] == 31378
+assert ARG['n'] == 111 and ARG['gana'] == {'PP': 96, 'PSOE': 8, 'SUMAR': 5, 'EMPATE': 2} and round(ARG['PP'], 1) == 38.4 and round(ARG['part'], 1) == 78.4 and ARG['renta'] == 31378
 assert SB['n'] == 112 and SB['gana'] == {'PSOE': 57, 'PP': 55} and round(SB['PP'], 1) == 37.9 and round(SB['PSOE'], 1) == 30.9 and round(SB['part'], 1) == 71.2 and SB['renta'] == 21376.5
 assert round(ARG['SUMAR'], 1) == 22.9 and round(SB['VOX'], 1) == 11.9
 REN = (1 - SB['renta'] / ARG['renta']) * 100
@@ -122,7 +122,7 @@ g_ser = figura('Dos distritos que votaban distinto y en 2023 votaron casi igual'
                   p(SER['Arganzuela'][e]['part']), p(SER['San Blas - Canillejas'][e]['part'])] for e in NUEVAS]))
 
 filas = [('Calderón', ARG), ('Metropolitano', SB), ('Camp Nou', LC)]
-GS = lambda s: '<br>'.join(f'{({"PSOE": "PSC" if s is LC else "PSOE"}).get(k, k)} {c}' for k, c in s['gana'].items()) + f'<br>de {s["n"]}'
+GS = lambda s: '<br>'.join(f'{({"PSOE": "PSC" if s is LC else "PSOE", "EMPATE": "Empate a votos"}).get(k, k)} {c}' for k, c in s['gana'].items()) + f'<br>de {s["n"]}'
 METR = [('PP', lambda s: f'{p(s["PP"])} %'), ('PSOE / PSC', lambda s: f'{p(s["PSOE"])} %'), ('Sumar', lambda s: f'{p(s["SUMAR"])} %'), ('Vox', lambda s: f'{p(s["VOX"])} %'),
         ('Junts', lambda s: f'{p(s["JUNTS"])} %' if s is LC else '–'), ('ERC', lambda s: f'{p(s["ERC"])} %' if s is LC else '–'),
         ('Particip.', lambda s: f'{p(s["part"])} %'), ('Renta', lambda s: f'{n(s["renta"])} €'), ('Secciones', GS)]

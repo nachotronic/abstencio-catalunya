@@ -16,7 +16,7 @@ A = BASE + 'actualidad/'
 VLC, MAD = '46250', '28079'
 E, E0 = '2023_07', '2019_11'
 P = ['PP', 'PSOE', 'SUMAR', 'VOX']
-ETQ = {'PP': 'PP', 'PSOE': 'PSOE', 'SUMAR': 'Sumar', 'VOX': 'Vox'}
+ETQ = {'PP': 'PP', 'PSOE': 'PSOE', 'SUMAR': 'Sumar', 'VOX': 'Vox', 'EMPATE': 'Empate a votos'}
 p = lambda v: n(v, 1)
 
 # --- La ciudad ---
@@ -31,10 +31,10 @@ d = pd.read_csv(RAIZ / 'generales-2026/descargas/secciones.csv', dtype={'tract_c
 d = d[d.mun_code.isin([VLC, MAD])].dropna(subset=[f'{E}_PP']).copy()
 bar = pd.read_csv(RAIZ / 'data/barrios/secciones_barrio.csv', dtype=str)[['tract_code', 'barrio', 'distrito']]
 d = d.merge(bar, on='tract_code', how='left')
-d['gana'] = d[[f'{E}_{k}' for k in P]].idxmax(axis=1).str[8:]
+d['gana'] = d[[f'{E}_{k}' for k in P]].idxmax(axis=1).str[8:].where(d[f'{E}_gana'] != 'EMPATE', 'EMPATE')   # empate a votos: no gana nadie
 v = d[d.mun_code == VLC]
 mad = d[d.mun_code == MAD]
-assert len(v) == 591 and v.gana.value_counts().to_dict() == {'PP': 335, 'PSOE': 241, 'SUMAR': 15}
+assert len(v) == 591 and v.gana.value_counts().to_dict() == {'PP': 332, 'PSOE': 241, 'SUMAR': 15, 'EMPATE': 3}
 assert v.barrio.isna().sum() == 18
 
 
@@ -159,7 +159,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">En El Pla del Real, el PP sacó el {p(PLA['PP'])} % de los votos, {p(PLA['PP'] - pc(E, 'PP'))} puntos más que en el conjunto de {CV} ({p(pc(E, 'PP'))} %). Detrás quedaron Vox ({p(PLA['VOX'])} %), el PSOE ({p(PLA['PSOE'])} %) y Sumar ({p(PLA['SUMAR'])} %). Es el distrito de la ciudad donde más se votó, el {p(PLA['part'])} %, y el de más renta, con una mediana de {n(PLA['renta'])} € por unidad de consumo. En Chamartín, el PP sacó el {p(CH['PP'])} %, con una participación del {p(CH['part'])} % y una renta mediana de {n(CH['renta'])} €.</p>
 {g_tres}
 <h2>La ciudad: el PP subió en todas las secciones</h2>
-<p data-tipo="dato">En el conjunto de València, el PP fue primero en 2023 con el {p(pc(E, 'PP'))} %, por delante del PSOE ({p(pc(E, 'PSOE'))} %), Sumar ({p(pc(E, 'SUMAR'))} %) y Vox ({p(pc(E, 'VOX'))} %). En noviembre de 2019 había ganado el PSOE, con el {p(pc(E0, 'PSOE'))} % frente al {p(pc(E0, 'PP'))} % del PP. De las {N2} secciones que se pueden comparar entre las dos elecciones, el PP subió en las {SUBE_PP} y el PSOE en {SUBE_PSOE}. El PP ganó en {v.gana.value_counts()['PP']} de las {len(v)} secciones de la ciudad; el PSOE, en {v.gana.value_counts()['PSOE']}, y Sumar, en {v.gana.value_counts()['SUMAR']}.</p>
+<p data-tipo="dato">En el conjunto de València, el PP fue primero en 2023 con el {p(pc(E, 'PP'))} %, por delante del PSOE ({p(pc(E, 'PSOE'))} %), Sumar ({p(pc(E, 'SUMAR'))} %) y Vox ({p(pc(E, 'VOX'))} %). En noviembre de 2019 había ganado el PSOE, con el {p(pc(E0, 'PSOE'))} % frente al {p(pc(E0, 'PP'))} % del PP. De las {N2} secciones que se pueden comparar entre las dos elecciones, el PP subió en las {SUBE_PP} y el PSOE en {SUBE_PSOE}. El PP ganó en {v.gana.value_counts()['PP']} de las {len(v)} secciones de la ciudad; el PSOE, en {v.gana.value_counts()['PSOE']}, y Sumar, en {v.gana.value_counts()['SUMAR']}. En las otras {v.gana.value_counts()['EMPATE']}, los dos primeros empataron a votos.</p>
 <p data-tipo="patron">El mapa de distritos ordena el voto de forma muy clara. El PP saca más de la mitad en El Pla del Real y se queda cerca de ella en L'Eixample ({p(D["l'Eixample"]['PP'])} %), los dos distritos de más renta. En el otro extremo, en los Poblats Marítims, junto al mar, el PSOE ganó en {MAR['gana']['PSOE']} de las {MAR['n']} secciones, con el {p(MAR['PSOE'])} %, y se votó menos que en ningún otro distrito: el {p(MAR['part'])} %.</p>
 {g_dist}
 <p data-tipo="dato">Dentro de El Pla del Real, el barrio de {MV('mestalla', 'Mestalla')} es el menos conservador: el PP sacó el {p(B['Mestalla']['PP'])} % y el PSOE, el {p(B['Mestalla']['PSOE'])} %. En el vecino {MV('exposicio', 'Exposició')}, el PP llegó al {p(B['Exposició']['PP'])} %. El máximo de la ciudad está en {MV('el-pla-del-remei', 'el Pla del Remei')}, en L'Eixample: el PP sacó el {p(B['el Pla del Remei']['PP'])} % y el PSOE, el {p(B['el Pla del Remei']['PSOE'])} %. En {MV('els-orriols', 'els Orriols')}, al norte, el PSOE sacó el {p(B['els Orriols']['PSOE'])} % y votó el {p(B['els Orriols']['part'])} %.</p>

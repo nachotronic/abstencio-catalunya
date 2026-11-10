@@ -1,0 +1,21 @@
+{
+  "cifras": [
+    {
+      "texto": "el PSOE ganó en 250 secciones y el PP en 244, y 53 se decidieron por menos de dos puntos",
+      "cifra": "250",
+      "calculo": "len([e for e in P if e[2] == 'PSOE'])"
+    },
+    {
+      "texto": "el PSOE ganó en 250 secciones y el PP en 244, y 53 se decidieron por menos de dos puntos",
+      "cifra": "244",
+      "calculo": "len([e for e in P if e[2] == 'PP'])"
+    },
+    {
+      "texto": "el PSOE ganó en 250 secciones y el PP en 244, y 53 se decidieron por menos de dos puntos",
+      "cifra": "53",
+      "calculo": "len([e for e in P if e[4] < 2])"
+    }
+  ],
+  "externas": [],
+  "ignorar": []
+}
