@@ -123,9 +123,18 @@
   const narrow = () => window.innerWidth < 760;
   // Vista inicial: encaja la península, Baleares y el recuadro de Canarias con un 3 % de margen. Pantalla ancha:
   // lon −9,3 a 5,6 y lat 35,3 a 43,8; móvil: lon −9,3 a 4,4 y lat 33,2 a 43,8. El alto va en grados Mercator, no de latitud.
+  // ?b=<lon0>,<lat0>,<lon1>,<lat1>: vista inicial encajada en esa caja (la usan las piezas «El mapa electoral de…»
+  // para abrir el mapa insertado sobre una comunidad). Solo coordenadas de la península y Baleares, sin el recuadro de Canarias.
+  const CAJA = (() => {
+    const b = (new URLSearchParams(location.search).get('b') || '').split(',').map(Number);
+    if (b.length !== 4 || !b.every(Number.isFinite) || b[0] >= b[2] || b[1] >= b[3]) return null;
+    const mer = la => Math.log(Math.tan(Math.PI / 4 + la * Math.PI / 360)) * 180 / Math.PI;
+    const ym = (mer(b[1]) + mer(b[3])) / 2;
+    return [b[2] - b[0], mer(b[3]) - mer(b[1]), (b[0] + b[2]) / 2, Math.atan(Math.sinh(ym * Math.PI / 180)) * 180 / Math.PI];
+  })();
   const HOME = () => {
     const el = $('#map'), W = el.clientWidth || 800, H = el.clientHeight || 600;
-    const [ancho, alto, longitude, latitude] = ESTRECHO ? [13.7, 13.6, -2.49, 38.7] : [15, 11.1, -1.87, 39.68];
+    const [ancho, alto, longitude, latitude] = CAJA || (ESTRECHO ? [13.7, 13.6, -2.49, 38.7] : [15, 11.1, -1.87, 39.68]);
     const z = Math.min(Math.log2(W / (512 * ancho * 1.03 / 360)), Math.log2(H / (512 * alto * 1.03 / 360)));
     return { longitude, latitude, zoom: Math.round(z * 100) / 100, pitch: 0, bearing: 0 };
   };
