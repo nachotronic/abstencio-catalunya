@@ -157,16 +157,6 @@
    "calculo": "D['DER19']"
   },
   {
-   "texto": "andaluces; PP y Vox, en 2023, el 52,3 %. El bloque creció",
-   "cifra": "52,3",
-   "calculo": "D['DER23']"
-  },
-  {
-   "texto": "52,3 %. El bloque creció 2,6 puntos; lo que más cambió",
-   "cifra": "2,6",
-   "calculo": "D['DER23']-D['DER19']"
-  },
-  {
    "texto": "el PP adelantó al PSOE en 233 municipios. El PP subió",
    "cifra": "233",
    "calculo": "D['PSOE_PP']"
@@ -515,6 +505,15 @@
    "texto": "menos: Cádiz pasa de 9 a 8",
    "cifra": "8",
    "calculo": "D['ESC26']['11']"
+  },
+  {
+   "texto": "El bloque creció menos de tres puntos",
+   "condicion": "0 < D['DER23'] - D['DER19'] < 3"
+  },
+  {
+   "texto": "andaluces; PP y Vox, en 2023, el 52,3 %.",
+   "cifra": "52,3",
+   "calculo": "D['DER23']"
   }
  ],
  "externas": [

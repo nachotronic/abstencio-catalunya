@@ -654,8 +654,6 @@
     abre(qm);
     tipAbierta = [MUN, qm, false]; tip.innerHTML = CERRAR + ficha(MUN, qm, false); tip.hidden = false;
     tip.style.left = '8px'; tip.style.top = narrow() ? 'auto' : '8px'; tip.style.bottom = narrow() ? '8px' : 'auto';
-  } else if (!Q.get('q') && Q.get('e') && Q.get('e') !== st.y && ELEC.some(e => e.cod === Q.get('e'))) {   // ?e=<elección> sin municipio
-    selE.value = Q.get('e'); await elige(Q.get('e'));
   } else if (Q.get('q')) {      // ?q=<calle y número>: el buscador de «Qué votó tu calle» (elecciones/que-voto-tu-calle/)
     $('#q').value = Q.get('q').slice(0, 120);
     buscaDir({ q: Q.get('q').slice(0, 120) });

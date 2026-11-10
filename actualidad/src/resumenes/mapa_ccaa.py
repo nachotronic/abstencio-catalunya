@@ -188,8 +188,11 @@ def apiladas(filas, etiqueta, W=640, ml=130):
     return ''.join(out)
 
 
-def insertado(caja, titulo, eleccion=Y23, alto=620):
-    """El mapa interactivo de la portada, insertado y encajado en la caja (lon0, lat0, lon1, lat1)."""
+def insertado(caja, titulo, alto=620):
+    """El mapa interactivo de la portada, insertado y encajado en la caja (lon0, lat0, lon1, lat1). Debajo del iframe, un
+    enlace de respaldo: si el mapa no carga, no queda un hueco vacío."""
     b = ','.join(f'{v:g}' for v in caja)
-    return (f'<iframe src="{BASE}insertar/?b={b}&amp;e={eleccion}" width="100%" height="{alto}" '
-            f'style="border:0;max-width:100%;display:block" loading="lazy" title="{esc(titulo)}"></iframe>')
+    return (f'<div style="position:relative;min-height:{alto}px;background:color-mix(in srgb, var(--muted) 10%, var(--bg));border-radius:6px">'
+            f'<a href="{BASE}" style="position:absolute;top:50%;left:0;right:0;text-align:center;transform:translateY(-50%)">Abrir el mapa electoral</a>'
+            f'<iframe src="{BASE}insertar/?b={b}" width="100%" height="{alto}" '
+            f'style="position:relative;border:0;max-width:100%;display:block" loading="lazy" title="{esc(titulo)}"></iframe></div>')
