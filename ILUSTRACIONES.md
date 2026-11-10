@@ -20,11 +20,10 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (77)
+## Pendientes (76)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
-| 2026-11-10 | [`vox-vuelve-tenerife-29n`](https://mapaelectoral.es/actualidad/vox-vuelve-tenerife-29n/) | Vox vuelve a la papeleta en Tenerife: en 2023 no se presentó y el PP subió 15,4 puntos, frente a 4,4 en Las Palmas | primer gráfico de la pieza |
 | 2026-11-09 | [`huelga-carnica-pueblos-industria-29n`](https://mapaelectoral.es/actualidad/huelga-carnica-pueblos-industria-29n/) | En los municipios donde más pesa la industria, el PP saca 1,9 puntos menos que en el resto de su provincia, y el voto a Vox apenas cambia | primer gráfico de la pieza |
 | 2026-11-09 | [`encuestas-40db-psoe-podemos-29n`](https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/) | El PSOE se queda a dos puntos del PP en la encuesta de El País, su mejor dato en 40dB desde 2024 | primer gráfico de la pieza |
 | 2026-11-08 | [`a-quien-beneficia-abstencion-29n`](https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/) | Si los barrios que menos votan fueran a las urnas como la media, cinco escaños de 2023 habrían cambiado de manos: cuatro, hacia el PSOE | primer gráfico de la pieza |
