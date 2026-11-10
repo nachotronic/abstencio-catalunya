@@ -200,7 +200,7 @@
    "calculo": "len(D['GR'])"
   },
   {
-   "texto": "lo ganó el PP en 2023Los siete diputados de Santa Cruz",
+   "texto": "sacaron uno más cada unoLos siete diputados de Santa Cruz",
    "cifra": "siete",
    "calculo": "sum(D['CT'][k][0] for k in D['CT'])"
   }
