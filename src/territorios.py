@@ -248,8 +248,8 @@ def bloque_directo(nombre, cod, r):
     raiz = RAIZ_REL
     n = escape(nombre)
     r23 = json.dumps({'part': round(r['part'], 6) if r['part'] else None}, separators=(',', ':'))
-    aviso = (f'Interior empieza a publicar el escrutinio la noche del domingo 29 de noviembre, después del cierre de los colegios. '
-             f'Desde entonces, aquí aparece el escrutinio de {n} actualizado cada minuto, junto al resultado de 2023. '
+    aviso = (f'Interior publica el escrutinio desde la noche del domingo 29 de noviembre, después del cierre de los colegios. '
+             f'Enlazaremos aquí los resultados de {n}; debajo, el resultado de 2023 para compararlos. '
              if not NOCHE_29N else f'El escrutinio de {n} aparece aquí en cuanto se cargan los datos de Interior. ')
     return (f'<style>{DIRECTO_CSS}</style><section class="directo29n" id="directo-mun" data-mun="{cod}" data-raiz="{raiz or "./"}" data-r23=\'{escape(r23)}\' aria-labelledby="resultados-29n">'
             f'<h2 id="resultados-29n">Resultados del 29N en {n}</h2>'
@@ -760,11 +760,14 @@ def pagina_ciudad(cod):
     # Lo que se busca antes y durante la noche electoral es «resultados elecciones generales 2026 <municipio>» (así titulan
     # El Español o RTVE sus fichas). El título lo dice desde ya para que Google asocie la URL a esa búsqueda antes del 29N;
     # la provincia entre paréntesis separa los homónimos (Villanueva, Castrillo...) salvo cuando coincide con el nombre.
-    en_x = nombre + ('' if slug(nombre) == slug(PROV_NOMBRE[p]) else f' ({PROV_NOMBRE[p]})')
+    # Sin provincia en las capitales y cuando el nombre ya contiene alguna de sus formas (Alacant/Alicante, València).
+    formas_prov = [slug(f) for f in re.split(r'/', PROV_NOMBRE[p] + '/' + ALIAS_PROV.get(p, '')) if f.strip()]
+    sin_prov = cod in CAPITALES or any(f'-{f}-' in f'-{slug(nombre)}-' for f in formas_prov)
+    en_x = nombre + ('' if sin_prov else f' ({PROV_NOMBRE[p]})')
     titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023' + (' por barrio' if b_sec else '')
-    if len(titulo) > 72:   # Google corta hacia los 60-70 caracteres: lo que sobra se quita por el final, nunca el municipio
-        titulo = f'Resultados elecciones generales 2026 en {en_x}' + (': 29N y 2023' if len(en_x) <= 22 else '')
-    desc = (f'Resultados de las elecciones generales del 29N de 2026 en {nombre}, que aparecen aquí la noche electoral, y los de 2023: '
+    if len(titulo) > 72:   # Google corta hacia los 60-70 caracteres: se quita «por barrio», nunca «29N y 2023» (hoy solo hay 2023)
+        titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023'
+    desc = (f'Elecciones generales del 29N de 2026 en {nombre}. Resultados de 2023: '
             f'ganó {art_partido(g, ccaa)} con el {pct(r["pct"][g])} y votó el {pct(r["part"])} del censo. '
             + (f'{num(censo_29n(cod)[2])} electores, ' if q_censo else '')
             + 'dónde votar, mesas electorales' + (' y voto por barrio.' if b_sec else ' y cada elección desde 1977.'))
@@ -3107,7 +3110,7 @@ def municipios_provincia(p):
     nombre = PROV_NOMBRE[p]
     en = en_provincia_txt(p)
     titulo = f'Resultados elecciones generales 2026 por municipio {en}{" (" + ALIAS_PROV[p] + ")" if p in ALIAS_PROV else ""}: 29N y 2023'
-    desc = (f'Resultados de las generales del 29N de 2026, que aparecen la noche electoral, y de 2023 en cada municipio de más de 1.000 habitantes {en}: '
+    desc = (f'Elecciones generales del 29N de 2026: resultados de 2023 en cada municipio de más de 1.000 habitantes {en}: '
             f'{num(len(cs))} páginas con dónde votar, mesas, voto por sección censal y por renta y la serie desde 1977.')
     partes = [{'@type': 'WebPage', 'name': f'Resultados elecciones generales 2026 en {_nom(c)}', 'url': BASE + CIUDADES[c]} for c in cs]
     h = [cabeza(titulo, desc, ruta, ld_pagina(titulo, desc, ruta, lugar(nombre, ESPANA), partes), 2, nombre)]
