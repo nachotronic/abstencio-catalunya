@@ -1,0 +1,14 @@
+# Temporal: audiencia desde Cloudflare. No se fusiona a main.
+name: Audiencia martes
+on:
+  push:
+    branches: [claude/project-thread-1xqws3]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-martes.yml']
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/martes.py
