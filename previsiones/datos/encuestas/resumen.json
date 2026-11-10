@@ -1,13 +1,13 @@
 {
- "descargado": "2026-11-09T16:16Z",
+ "descargado": "2026-11-10T01:31Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1074,
+ "encuestas_espana": 1075,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-09",
-  "encuestadora": "NC Report",
-  "cliente": "La Razón"
+  "encuestadora": "SW Demoscopia",
+  "cliente": "La Séptima"
  },
  "siglas_sin_equivalencia": {
   "D21": 3,
@@ -16,10 +16,11 @@
   "CSQP": 1,
   "CeC": 1,
   "MÉS ESQUERRA": 1,
-  "PSOE (115/117) · VOX": 1
+  "PSOE (115/117) · VOX": 1,
+  "UPN-PP": 1
  },
  "wikipedia": {
-  "encuestas": 604,
+  "encuestas": 605,
   "ultima_fin_campo": "2026-11-08",
   "faltan_en_electografica_120_dias": 17
  }
