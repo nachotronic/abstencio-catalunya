@@ -112,22 +112,38 @@ def relacionadas(provs, nivel):
 
 
 # ---------- gráficos SVG (sin JavaScript), siempre con el color de cada partido ----------
+def blancos(r):
+    """Votos en blanco y su porcentaje sobre voto válido: lo que queda del voto válido tras las candidaturas."""
+    if not r.get('validos'):
+        return None, None
+    b = max(0, round(r['validos'] - sum(v or 0 for v in r['votos'].values())))
+    return b, b / r['validos']
+
+
+def fila_blancos(r, ref):
+    nb, pb = blancos(r)
+    return [] if nb is None else [['En blanco', pct(pb), num(nb), pct(blancos(ref)[1])]]
+
+
 def barras(r, ref=None):
     fams = [c for c in T.FAM if c != 'OTROS' and (r['pct'][c] or 0) >= 0.01]
     fams.sort(key=lambda c: -r['pct'][c])
     fams.append('OTROS')
+    if blancos(r)[0] is not None:
+        fams.append('BLANCO')   # el voto válido incluye los blancos: sin esta barra no suma 100
+    val = lambda x, c: (blancos(x)[1] if c == 'BLANCO' else x['pct'][c])
     alto, w0, w = 30, 150, 560
-    mx = max(r['pct'][c] or 0 for c in fams)
+    mx = max(val(r, c) or 0 for c in fams)
     filas = []
     for i, c in enumerate(fams):
-        v = r['pct'][c] or 0
+        v = val(r, c) or 0
         y = i * alto
         ancho = (w - w0 - 70) * v / mx
-        filas.append(f'<text x="{w0 - 8}" y="{y + 19}" text-anchor="end" class="et">{escape(T.NOMBRE[c])}</text>'
-                     f'<rect x="{w0}" y="{y + 6}" width="{ancho:.1f}" height="18" rx="2" fill="{T.COLOR[c]}"/>'
+        filas.append(f'<text x="{w0 - 8}" y="{y + 19}" text-anchor="end" class="et">{"En blanco" if c == "BLANCO" else escape(T.NOMBRE[c])}</text>'
+                     f'<rect x="{w0}" y="{y + 6}" width="{ancho:.1f}" height="18" rx="2" fill="{"#c8c8c8" if c == "BLANCO" else T.COLOR[c]}"/>'
                      f'<text x="{w0 + ancho + 6:.1f}" y="{y + 19}" class="va">{pct(v)}</text>')
-        if ref is not None and ref['pct'][c] is not None:
-            xr = w0 + (w - w0 - 70) * ref['pct'][c] / mx
+        if ref is not None and val(ref, c) is not None:
+            xr = w0 + (w - w0 - 70) * val(ref, c) / mx
             if xr <= w - 70:
                 filas.append(f'<line x1="{xr:.1f}" x2="{xr:.1f}" y1="{y + 3}" y2="{y + 27}" class="ref"/>')
     h = len(fams) * alto + 4
@@ -237,7 +253,7 @@ def bloque_resultado(nombre, r):
             + p_('Dato', f'Voto por partido sobre voto válido (candidaturas más blancos) en {escape(nombre)}. La línea discontinua marca el resultado del conjunto de España. '
                  f'Votaron {num(r["votantes"])} de {num(r["censo"])} electores residentes.')
             + f'<figure>{barras(r, T.ESPANA)}<figcaption>Elecciones generales del 23 de julio de 2023, sin voto desde el extranjero (CERA). Fuente: Ministerio del Interior.</figcaption></figure>'
-            + tabla(f'Voto por partido en {escape(nombre)}, 23J 2023', ['Partido', 'Voto', 'Votos', 'España'], filas))
+            + tabla(f'Voto por partido en {escape(nombre)}, 23J 2023', ['Partido', 'Voto', 'Votos', 'España'], filas + fila_blancos(r, T.ESPANA)))
 
 
 DIRECTO_CSS = ('.directo29n{border:1px solid var(--line,#ddd);border-left:4px solid var(--fg);padding:.6em 1em;margin:1.2em 0}'
@@ -1090,7 +1106,7 @@ def pagina_barrio(cod, b, todos):
              + p_('Dato', f'Voto por partido sobre voto válido (candidaturas más blancos) en las {num(len(cods))} secciones de {escape(nombre)}. '
                   f'La línea discontinua marca el resultado del conjunto de {escape(ciudad)}.')
              + f'<figure>{barras(r, rc)}<figcaption>Elecciones generales del 23 de julio de 2023, sin voto desde el extranjero (CERA). Fuente: Ministerio del Interior.</figcaption></figure>'
-             + tabla(f'Voto por partido en {escape(nombre)}, 23J 2023', ['Partido', 'Voto', 'Votos', escape(ciudad)], filas))
+             + tabla(f'Voto por partido en {escape(nombre)}, 23J 2023', ['Partido', 'Voto', 'Votos', escape(ciudad)], filas + fila_blancos(r, rc)))
 
     # serie desde 2004
     s = TB.serie(cods)
@@ -1243,7 +1259,7 @@ def bloque_censo(nombre, cods, ambito='el municipio', provincias=(), en=None):
            f'{num(cer)} viven en {ambito} y {num(cera)} están inscritos {en_el} pero viven en el extranjero (CERA).')
     if t23:
         d = total - t23
-        txt += (f' En las generales de 2023 eran {num(t23)}, así que el censo tiene {num(abs(d))} electores {"más" if d >= 0 else "menos"} ({variacion(total, t23)}).'
+        txt += (f' En las generales de 2023 eran {num(t23)}, así que el censo tiene {num(abs(d))} {"elector" if abs(d) == 1 else "electores"} {"más" if d >= 0 else "menos"} ({variacion(total, t23)}).'
                 if d else f' En las generales de 2023 eran los mismos, {num(t23)}.')
     tab = ''
     if provincias:
