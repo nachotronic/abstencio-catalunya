@@ -43,8 +43,9 @@ for fila in csv.DictReader(open(RAIZ / 'generales-2026/descargas/secciones.csv')
         if fila.get(f'{e}_gana'):
             sec[e][fila[f'{e}_gana']] += 1
 S23, S19 = sec['2023_07'], sec['2019_11']
-assert sum(S23.values()) == 36412 and S23['PP'] == 18407 and S23['PSOE'] == 16073, S23
-assert sum(S19.values()) == 36079 and S19['PSOE'] == 19699 and S19['PP'] == 9713 and S19['SUMAR'] == 336, S19
+# 10-11-2026: los empates a votos entre los dos primeros van aparte (EMPATE, generales-2026/src/mapa_empates.py)
+assert sum(S23.values()) == 36412 and S23['PP'] == 18243 and S23['PSOE'] == 16044 and S23['EMPATE'] == 201, S23
+assert sum(S19.values()) == 36079 and S19['PSOE'] == 19631 and S19['PP'] == 9542 and S19['SUMAR'] == 334 and S19['EMPATE'] == 253, S19
 # En 2019-N el espacio de Sumar fue en dos listas: de las 336 secciones «SUMAR», cuántas ganó Más País (lista B)
 _l = pd.read_csv(RAIZ / 'generales-2026/descargas/resultados_secciones_largo.csv', dtype={'tract_code': str}, usecols=['tract_code', 'eleccion', 'SUMAR'])
 _b = pd.read_csv(RAIZ / 'generales-2026/descargas/listas_separadas.csv', dtype={'tract_code': str})
@@ -52,7 +53,7 @@ _s = {r['tract_code'] for r in csv.DictReader(open(RAIZ / 'generales-2026/descar
 _x = _l[(_l.eleccion == '2019_11') & _l.tract_code.isin(_s)].merge(_b[_b.eleccion == '2019_11'], on='tract_code', how='left').fillna({'sumar_b': 0})
 MP19 = int((_x.sumar_b > _x.SUMAR - _x.sumar_b).sum())
 UP19 = S19['SUMAR'] - MP19
-assert (UP19, MP19) == (332, 4), (UP19, MP19)
+assert (UP19, MP19) == (330, 4), (UP19, MP19)
 
 # --- Deciles de renta (mapa de la portada) ---
 dec = json.load(open(RAIZ / 'generales-2026/data/resumen.json'))['variables']['renta_uc']['deciles']
@@ -79,7 +80,8 @@ fig_sec = figura('Secciones censales ganadas por cada partido, en 2019 y en 2023
                  pares([(nom, S19[k], S23[k], COLOR[nom]) for k, nom in FAM], 20000,
                        'Secciones ganadas por partido en noviembre de 2019 y julio de 2023', ['2019', '2023']),
                  'Fuente: Ministerio del Interior, resultados por mesa sumados por sección censal (sin voto exterior). Familias de partidos del mapa de la portada.',
-                 tabla=(['Partido', 'Noviembre de 2019', 'Julio de 2023'], [(nom, n(S19[k]), n(S23[k])) for k, nom in FAM]))
+                 tabla=(['Partido', 'Noviembre de 2019', 'Julio de 2023'], [(nom, n(S19[k]), n(S23[k])) for k, nom in FAM]
+                        + [('Empate a votos', n(S19['EMPATE']), n(S23['EMPATE']))]))
 
 
 def renta_svg():
@@ -113,12 +115,12 @@ fig_renta = figura('El PSOE gana abajo y el PP, arriba',
 L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <li>En las generales de julio de 2023, el PP fue el más votado en 40 de las 52 circunscripciones; el PSOE, en 10; EH Bildu y el PNV, en una cada uno.</li>
-<li>Por secciones censales, el PP ganó en 18.407 y el PSOE en 16.073. En noviembre de 2019 había sido al revés: 19.699 para el PSOE y 9.713 para el PP.</li>
+<li>Por secciones censales, el PP ganó en {n(S23["PP"])} y el PSOE en {n(S23["PSOE"])}. En noviembre de 2019 había sido al revés: {n(S19["PSOE"])} para el PSOE y {n(S19["PP"])} para el PP.</li>
 <li>En el 10 % de secciones más pobres, el PSOE sacó el {pc(d1["PSOE"])} % y votó el {pc(d1["part"])} %; en el 10 % más rico, el PP sacó el {pc(d10["PP"])} % y votó el {pc(d10["part"])} %.</li>
 <li>A 23 de octubre, 15 de las 16 encuestadoras con sondeo reciente dan ganador al PP; el CIS, al PSOE.</li>
 </ul></div>
 <p data-tipo="contexto">El sábado 10 de octubre, Pedro Sánchez abrió la precampaña en el auditorio Los del Río de Dos Hermanas, ante unas 5.000 personas, según el PSOE, que recogió <a href="https://es.euronews.com/2026/10/10/sanchez-abre-la-campana-electoral-del-29n-en-su-ciudad-talisman-con-la-vivienda-como-eje-p">Euronews</a>. No eligió el sitio al azar. En Dos Hermanas había anunciado en enero de 2017 que volvería a pelear por la secretaría general del PSOE, y allí lo recordó: «Nos dijeron "no se puede" y el resto ya es historia», según <a href="https://www.diariodeleon.es/nacional/261011/2099933/sanchez-talisman-dos-hermanas-maricarmen_amp.html">Diario de León</a>. Ese mismo día, Alberto Núñez Feijóo prometía en IFEMA, en Madrid, un «cambio sereno pero contundente», según <a href="https://www.la7tv.es/articulo/politica/feijoo-sanchez-abren-precampana-29n-promesas-cambio-llamamientos-movilizacion/20261010140623074323.html">La 7</a>.</p>
-<p data-tipo="dato">Los dos escenarios son dos mapas. Dos Hermanas, con 107.888 electores, es el mayor de los 190 municipios donde el PSOE ha sido el partido más votado en las 16 generales celebradas desde 1977, como contamos en {L("municipios-fieles", "los municipios que siempre votan igual")}. Madrid capital es casi lo contrario: en 2023, el PP ganó en 1.603 de sus 2.450 secciones censales y el PSOE {L("madrid-barrio-a-barrio-29n", "solo resistió en cuatro distritos del sur")}.</p>
+<p data-tipo="dato">Los dos escenarios son dos mapas. Dos Hermanas, con 107.888 electores, es el mayor de los 190 municipios donde el PSOE ha sido el partido más votado en las 16 generales celebradas desde 1977, como contamos en {L("municipios-fieles", "los municipios que siempre votan igual")}. Madrid capital es casi lo contrario: en 2023, el PP ganó en 1.595 de sus 2.450 secciones censales y el PSOE {L("madrid-barrio-a-barrio-29n", "solo resistió en cuatro distritos del sur")}.</p>
 <p data-tipo="contexto">A cinco semanas de las elecciones del 29 de noviembre, este texto recorre el mapa electoral de España tal como lo dejaron las generales de julio de 2023, de la provincia a la calle, y lo cose con lo que Mapa Electoral ha ido publicando estas semanas. No es una previsión. Es el punto de partida, la foto que las urnas tendrán que mover.</p>
 <h2>Cuarenta provincias azules</h2>
 <p data-tipo="dato">En julio de 2023, el PP fue la lista más votada en 40 de las 52 circunscripciones, con el voto exterior incluido. El PSOE ganó en diez: {", ".join(psoe[:-1])} y {psoe[-1]}. EH Bildu fue el primero en Gipuzkoa y el PNV, en Bizkaia. En Navarra, el PSOE quedó primero porque UPN y el PP se presentaron por separado.</p>
@@ -127,8 +129,8 @@ cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <p data-tipo="dato">En escaños, el resultado fue de 137 diputados para el PP, 121 para el PSOE, 33 para Vox y 31 para Sumar. El PP sacó el 33,1 % de los votos y el 39,1 % de los escaños; el PSOE, el 31,7 % de los votos y el 34,6 % de los escaños. La diferencia la explica el tamaño de las provincias, que contamos en {L("precio-del-escano-29n", "el precio del escaño, provincia a provincia")}.</p>
 <p data-tipo="contexto">El mapa de 2026 tendrá además una pieza cambiada antes de votar. El <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742">Real Decreto 806/2026</a> da a Madrid un diputado más, 38, y deja a Cádiz con 8. Con los votos de 2023, ese escaño nuevo habría sido del PSOE y el que pierde Cádiz, del PP.</p>
 <h2>Calle a calle, el mapa se parte</h2>
-<p data-tipo="dato">Si se baja de la provincia a las secciones censales, los trozos de barrio de unos cientos o pocos miles de electores en que se organiza el voto, el mapa se vuelve mucho más fino. De las 36.412 secciones con resultados en 2023, el PP fue el más votado en {n(S23["PP"])} y el PSOE en {n(S23["PSOE"])}. Después vienen EH Bildu ({n(S23["BILDU"])}), Junts ({n(S23["JUNTS"])}), el PNV ({n(S23["PNV"])}), ERC ({n(S23["ERC"])}), Sumar ({n(S23["SUMAR"])}), Vox ({n(S23["VOX"])}), Coalición Canaria ({n(S23["CC"])}) y el BNG, con una.</p>
-<p data-tipo="dato">Cuatro años antes, el mapa era otro. En noviembre de 2019, el PSOE fue el primero en {n(S19["PSOE"])} secciones y el PP en {n(S19["PP"])}. ERC ganaba en {n(S19["ERC"])}, Vox en {n(S19["VOX"])} y Unidas Podemos en {n(UP19)} (Más País, en {n(MP19)}). En 2023, el PP casi duplicó sus secciones, Vox pasó de {n(S19["VOX"])} a {n(S23["VOX"])} y ERC, de {n(S19["ERC"])} a {n(S23["ERC"])}.</p>
+<p data-tipo="dato">Si se baja de la provincia a las secciones censales, los trozos de barrio de unos cientos o pocos miles de electores en que se organiza el voto, el mapa se vuelve mucho más fino. De las 36.412 secciones con resultados en 2023, el PP fue el más votado en {n(S23["PP"])} y el PSOE en {n(S23["PSOE"])}. Después vienen EH Bildu ({n(S23["BILDU"])}), Junts ({n(S23["JUNTS"])}), el PNV ({n(S23["PNV"])}), ERC ({n(S23["ERC"])}), Sumar ({n(S23["SUMAR"])}), Vox ({n(S23["VOX"])}), Coalición Canaria ({n(S23["CC"])}) y el BNG, con una. En otras {n(S23["EMPATE"])}, los dos primeros empataron a votos.</p>
+<p data-tipo="dato">Cuatro años antes, el mapa era otro. En noviembre de 2019, el PSOE fue el primero en {n(S19["PSOE"])} secciones y el PP en {n(S19["PP"])}. ERC ganaba en {n(S19["ERC"])}, Vox en {n(S19["VOX"])} y Unidas Podemos en {n(UP19)} (Más País, en {n(MP19)}); en {n(S19["EMPATE"])} hubo empate a votos. En 2023, el PP casi duplicó sus secciones, Vox pasó de {n(S19["VOX"])} a {n(S23["VOX"])} y ERC, de {n(S19["ERC"])} a {n(S23["ERC"])}.</p>
 {fig_sec}
 <p data-tipo="contexto">A esa escala aparecen las fronteras que la provincia esconde. «Si bajamos al nivel de secciones censales —áreas de apenas 1.000 personas, a veces tan pequeñas como una manzana— aparecen contrastes y matices», escribían Borja Andrino, Luis Sevillano y Kiko Llaneras en <a href="https://elpais.com/espana/elecciones-generales/2023-07-24/el-mapa-con-los-resultados-de-las-elecciones-generales-del-23-j-calle-a-calle.html">El País</a> al publicar su mapa del 23J. En 2023, una de cada cuatro secciones eligió un ganador distinto del de su municipio, como explicamos en {L("como-voto-tu-calle", "cómo buscar tu calle en el mapa")}.</p>
 <p data-tipo="dato">Las grandes ciudades lo enseñan bien. En Barcelona, el PSC fue el más votado en nueve de cada diez secciones, y ERC, que ganaba en 563 en 2019, {L("barcelona-barrio-a-barrio-29n", "no ganó en ninguna")}. En Sevilla, el PP ganó en votos, pero el PSOE fue primero en {L("sevilla-barrio-a-barrio-29n", "286 de sus 521 secciones")}. En Zaragoza hubo {L("zaragoza-barrio-a-barrio-29n", "empate barrio a barrio")}: 250 secciones para el PSOE y 245 para el PP. Y en Murcia, Vox pasó de ganar en 164 secciones a {L("murcia-barrio-a-barrio-29n", "ganar en una")}.</p>
@@ -147,7 +149,7 @@ cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <p data-tipo="hipotesis">El modelo de Mapa Electoral, que reparte la media de esas encuestas por provincia y simula el resultado miles de veces, daba el 23 de octubre al PP como primero en 43 provincias, al PSOE en 7, a EH Bildu en una y a ERC en otra. Las más disputadas eran Bizkaia, Ceuta, Sevilla, Lleida, Las Palmas y Girona. Es una estimación, no un resultado, y a cinco semanas el error típico de la media de encuestas es de unos cinco puntos para un partido del 30 %. Está, provincia a provincia, en {f'<a href="{BASE}encuestas/provincias.html">la encuesta por provincias</a>'}.</p>
 <p data-tipo="contexto">Las encuestas también fallan. En las tres generales desde 2019, el CIS sobrestimó la ventaja del PSOE sobre el PP entre 1 y 6,9 puntos, como contamos en {L("cis-tezanos-estimacion-29n", "la pieza sobre el CIS de Tezanos")}. Los partidos lo saben. El jueves, en València, Feijóo pidió que «ningún voto del cambio se quede en casa», según Efe, que recogió <a href="https://www.infobae.com/espana/2026/10/23/elecciones-generales-en-espana-29-n-en-directo-ultima-hora-de-los-sondeos-los-debates-y-las-entrevistas-a-pedro-sanchez-y-feijoo/">Infobae</a>.</p>
 <p data-tipo="patron">Donde se decidirá de verdad no es en el color de cada provincia, sino en el último escaño de cada una. En 2023, 32 escaños habrían cambiado de partido con menos de 5.000 votantes, y el Frente Amplio y Podemos no compartirán papeleta en 47 provincias. Lo contamos en dos piezas de este fin de semana: {L("provincias-en-el-filo-29n", "las provincias que deciden el 29N")} y {L("coaliciones-quien-va-con-quien-29n", "quién va con quién")}.</p>
-<p data-tipo="dato">Para el 29N, el mapa de partida queda así: 40 provincias para el PP, 10 para el PSOE, una para EH Bildu y otra para el PNV; 18.407 secciones azules y 16.073 rojas. Y en Dos Hermanas, la cuenta de la serie va por 16 de 16.</p>
+<p data-tipo="dato">Para el 29N, el mapa de partida queda así: 40 provincias para el PP, 10 para el PSOE, una para EH Bildu y otra para el PNV; {n(S23["PP"])} secciones azules y {n(S23["PSOE"])} rojas. Y en Dos Hermanas, la cuenta de la serie va por 16 de 16.</p>
 '''
 
 preguntas = [

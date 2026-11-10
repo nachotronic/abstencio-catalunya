@@ -1,105 +1,212 @@
 {
- "cifras": [
-  {
-   "texto": "En noviembre de 2019, el PSOE fue el primero en 19.699 secciones y el PP en 9.713.",
-   "cifra": "19.699",
-   "calculo": "D['S19']['PSOE']"
-  },
-  {
-   "texto": "En noviembre de 2019, el PSOE fue el primero en 19.699 secciones y el PP en 9.713.",
-   "cifra": "9.713",
-   "calculo": "D['S19']['PP']"
-  },
-  {
-   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
-   "cifra": "2.456",
-   "calculo": "D['S19']['ERC']"
-  },
-  {
-   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
-   "cifra": "1.889",
-   "calculo": "D['S19']['VOX']"
-  },
-  {
-   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
-   "cifra": "332",
-   "calculo": "D['UP19']"
-  },
-  {
-   "texto": "ERC ganaba en 2.456, Vox en 1.889 y Unidas Podemos en 332 (Más País, en 4).",
-   "cifra": "4",
-   "calculo": "D['MP19']"
-  },
-  {
-   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
-   "cifra": "1.889",
-   "calculo": "D['S19']['VOX']"
-  },
-  {
-   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
-   "cifra": "64",
-   "calculo": "D['S23']['VOX']"
-  },
-  {
-   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
-   "cifra": "2.456",
-   "calculo": "D['S19']['ERC']"
-  },
-  {
-   "texto": "En 2023, el PP casi duplicó sus secciones, Vox pasó de 1.889 a 64 y ERC, de 2.456 a 197.",
-   "cifra": "197",
-   "calculo": "D['S23']['ERC']"
-  },
-  {
-   "texto": "En 2023, el PP casi duplicó sus secciones",
-   "condicion": "1.8 < D['S23']['PP'] / D['S19']['PP'] < 2"
-  },
-  {
-   "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 332; Más País, 4)",
-   "cifra": "332",
-   "calculo": "D['UP19']"
-  },
-  {
-   "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 332; Más País, 4)",
-   "cifra": "4",
-   "calculo": "D['MP19']"
-  },
-  {
-   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
-   "cifra": "40",
-   "calculo": "D['PROV']['PP']"
-  },
-  {
-   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
-   "cifra": "52",
-   "calculo": "sum(D['PROV'].values())"
-  },
-  {
-   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
-   "cifra": "18.407",
-   "calculo": "D['S23']['PP']"
-  },
-  {
-   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
-   "cifra": "10",
-   "calculo": "D['PROV']['PSOE']"
-  },
-  {
-   "texto": "Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.407 secciones censales; el PSOE, en 10 y en 16.073.",
-   "cifra": "16.073",
-   "calculo": "D['S23']['PSOE']"
-  },
-  {
-   "texto": "En 2019 el PSOE ganaba en 19.699 secciones.",
-   "cifra": "19.699",
-   "calculo": "D['S19']['PSOE']"
-  }
- ],
- "externas": [],
- "ignorar": [
-  {
-   "texto": "Cuatro años antes, el mapa era otro.",
-   "motivo": "periodo de tiempo (2019-2023)"
-  }
- ]
+  "cifras": [
+    {
+      "texto": "En 2023, el PP casi duplicó sus secciones",
+      "condicion": "1.8 < D['S23']['PP'] / D['S19']['PP'] < 2"
+    },
+    {
+      "texto": "De las 36.412 secciones con resultados en 2023, el PP fue el más votado en 18.243 y el PSOE en 16.044.",
+      "cifra": "36.412",
+      "calculo": "sum(D['S23'].values())"
+    },
+    {
+      "texto": "De las 36.412 secciones con resultados en 2023, el PP fue el más votado en 18.243 y el PSOE en 16.044.",
+      "cifra": "18.243",
+      "calculo": "D['S23']['PP']"
+    },
+    {
+      "texto": "De las 36.412 secciones con resultados en 2023, el PP fue el más votado en 18.243 y el PSOE en 16.044.",
+      "cifra": "16.044",
+      "calculo": "D['S23']['PSOE']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "593",
+      "calculo": "D['S23']['BILDU']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "465",
+      "calculo": "D['S23']['JUNTS']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "397",
+      "calculo": "D['S23']['PNV']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "192",
+      "calculo": "D['S23']['ERC']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "180",
+      "calculo": "D['S23']['SUMAR']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "64",
+      "calculo": "D['S23']['VOX']"
+    },
+    {
+      "texto": "Después vienen EH Bildu (593), Junts (465), el PNV (397), ERC (192), Sumar (180), Vox (64), Coalición Canaria (32) y el BNG, con una.",
+      "cifra": "32",
+      "calculo": "D['S23']['CC']"
+    },
+    {
+      "texto": "y el BNG, con una.",
+      "condicion": "D['S23']['BNG'] == 1"
+    },
+    {
+      "texto": "En otras 201, los dos primeros empataron a votos.",
+      "cifra": "201",
+      "calculo": "D['S23']['EMPATE']"
+    },
+    {
+      "texto": "En noviembre de 2019, el PSOE fue el primero en 19.631 secciones y el PP en 9.542.",
+      "cifra": "19.631",
+      "calculo": "D['S19']['PSOE']"
+    },
+    {
+      "texto": "En noviembre de 2019, el PSOE fue el primero en 19.631 secciones y el PP en 9.542.",
+      "cifra": "9.542",
+      "calculo": "D['S19']['PP']"
+    },
+    {
+      "texto": "ERC ganaba en 2.445, Vox en 1.889 y Unidas Podemos en 330 (Más País, en 4); en 253 hubo empate a votos.",
+      "cifra": "2.445",
+      "calculo": "D['S19']['ERC']"
+    },
+    {
+      "texto": "ERC ganaba en 2.445, Vox en 1.889 y Unidas Podemos en 330 (Más País, en 4); en 253 hubo empate a votos.",
+      "cifra": "1.889",
+      "calculo": "D['S19']['VOX']"
+    },
+    {
+      "texto": "ERC ganaba en 2.445, Vox en 1.889 y Unidas Podemos en 330 (Más País, en 4); en 253 hubo empate a votos.",
+      "cifra": "330",
+      "calculo": "D['UP19']"
+    },
+    {
+      "texto": "ERC ganaba en 2.445, Vox en 1.889 y Unidas Podemos en 330 (Más País, en 4); en 253 hubo empate a votos.",
+      "cifra": "4",
+      "calculo": "D['MP19']"
+    },
+    {
+      "texto": "ERC ganaba en 2.445, Vox en 1.889 y Unidas Podemos en 330 (Más País, en 4); en 253 hubo empate a votos.",
+      "cifra": "253",
+      "calculo": "D['S19']['EMPATE']"
+    },
+    {
+      "texto": "Vox pasó de 1.889 a 64 y ERC, de 2.445 a 192.",
+      "cifra": "1.889",
+      "calculo": "D['S19']['VOX']"
+    },
+    {
+      "texto": "Vox pasó de 1.889 a 64 y ERC, de 2.445 a 192.",
+      "cifra": "64",
+      "calculo": "D['S23']['VOX']"
+    },
+    {
+      "texto": "Vox pasó de 1.889 a 64 y ERC, de 2.445 a 192.",
+      "cifra": "2.445",
+      "calculo": "D['S19']['ERC']"
+    },
+    {
+      "texto": "Vox pasó de 1.889 a 64 y ERC, de 2.445 a 192.",
+      "cifra": "192",
+      "calculo": "D['S23']['ERC']"
+    },
+    {
+      "texto": "40 provincias para el PP, 10 para el PSOE, una para EH Bildu y otra para el PNV; 18.243 secciones azules y 16.044 rojas.",
+      "cifra": "40",
+      "calculo": "D['PROV']['PP']"
+    },
+    {
+      "texto": "40 provincias para el PP, 10 para el PSOE, una para EH Bildu y otra para el PNV; 18.243 secciones azules y 16.044 rojas.",
+      "cifra": "10",
+      "calculo": "D['PROV']['PSOE']"
+    },
+    {
+      "texto": "40 provincias para el PP, 10 para el PSOE, una para EH Bildu y otra para el PNV; 18.243 secciones azules y 16.044 rojas.",
+      "cifra": "18.243",
+      "calculo": "D['S23']['PP']"
+    },
+    {
+      "texto": "40 provincias para el PP, 10 para el PSOE, una para EH Bildu y otra para el PNV; 18.243 secciones azules y 16.044 rojas.",
+      "cifra": "16.044",
+      "calculo": "D['S23']['PSOE']"
+    },
+    {
+      "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 330; Más País, 4)",
+      "cifra": "330",
+      "calculo": "D['UP19']"
+    },
+    {
+      "texto": "Sumar: en 2019, la más votada de sus dos listas (Unidas Podemos, 330; Más País, 4)",
+      "cifra": "4",
+      "calculo": "D['MP19']"
+    },
+    {
+      "texto": "en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones.",
+      "cifra": "40",
+      "calculo": "D['PROV']['PP']"
+    },
+    {
+      "texto": "en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones.",
+      "cifra": "52",
+      "calculo": "sum(D['PROV'].values())"
+    },
+    {
+      "texto": "en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones.",
+      "cifra": "18.243",
+      "calculo": "D['S23']['PP']"
+    },
+    {
+      "texto": "en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones.",
+      "cifra": "10",
+      "calculo": "D['PROV']['PSOE']"
+    },
+    {
+      "texto": "en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones.",
+      "cifra": "16.044",
+      "calculo": "D['S23']['PSOE']"
+    },
+    {
+      "texto": "en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones.",
+      "cifra": "19.631",
+      "calculo": "D['S19']['PSOE']"
+    },
+    {
+      "texto": "Madrid capital es casi lo contrario: en 2023, el PP ganó en 1.595 de sus 2.450 secciones censales",
+      "cifra": "1.595",
+      "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if str(r['tract_code'])[:5] == '28079' and r['2023_07_gana'] == 'PP')"
+    },
+    {
+      "texto": "Madrid capital es casi lo contrario: en 2023, el PP ganó en 1.595 de sus 2.450 secciones censales",
+      "cifra": "2.450",
+      "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if str(r['tract_code'])[:5] == '28079')"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "Dos Hermanas, con 107.888 electores, es el mayor de los 190 municipios donde el PSOE ha sido el partido más votado en las 16 generales celebradas desde 1977",
+      "fuente": "https://mapaelectoral.es/actualidad/municipios-fieles/"
+    },
+    {
+      "texto": "Y en Dos Hermanas, la cuenta de la serie va por 16 de 16.",
+      "fuente": "https://mapaelectoral.es/actualidad/municipios-fieles/"
+    },
+    {
+      "texto": "el PSOE solo resistió en cuatro distritos del sur",
+      "fuente": "https://mapaelectoral.es/actualidad/madrid-barrio-a-barrio-29n/"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "Cuatro años antes, el mapa era otro.",
+      "motivo": "periodo de tiempo (2019-2023)"
+    }
+  ]
 }

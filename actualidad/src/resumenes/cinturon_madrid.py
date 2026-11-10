@@ -41,6 +41,9 @@ LIS = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos/madrid_congreso_2019_11
 psoe_l = LIS[LIS.lista == 'PSOE'].set_index('mun_code').votos
 assert (psoe_l.reindex(m.mun_code).fillna(0).values == m[f'{a}_vPSOE'].values).all()
 GAN19 = LIS.sort_values('votos').groupby('mun_code').tail(1).set_index('mun_code').lista.replace({'PODEMOS-IU': 'SUMAR'}).to_dict()
+# corrección del 10-11-2026: empate a votos entre los dos primeros (Puebla de la Sierra, PP y PSOE con 15)
+_t = LIS.sort_values('votos').groupby('mun_code').votos.apply(lambda v: len(v) > 1 and v.iloc[-1] == v.iloc[-2] and v.iloc[-1] > 0)
+GAN19.update({c: 'EMPATE' for c, e in _t.items() if e})
 assert all(GAN19[c] == g for c, g in zip(m.mun_code, m[f'{a}_gana']) if g != 'SUMAR')
 assert GAN19['28123'] == 'PSOE'   # Rivas: PSOE 13.812, Unidas Podemos 10.558, Más País 4.131
 m['g19'] = m.mun_code.map(GAN19)
@@ -101,7 +104,7 @@ COSLADA_OFICIAL = {'PP': 14437, 'PSOE': 14430}   # Público, escrutinio al 100 %
 # Toda la Comunidad: municipios ganados
 C19 = {k: int(v) for k, v in m.g19.value_counts().items()}
 C23 = {k: int(v) for k, v in m[f'{b}_gana'].value_counts().items()}
-assert C19 == {'PSOE': 68, 'VOX': 61, 'PP': 47, 'SUMAR': 3} and C23 == {'PP': 158, 'PSOE': 19, 'SUMAR': 2}, (C19, C23)
+assert C19 == {'PSOE': 68, 'VOX': 61, 'PP': 46, 'SUMAR': 3, 'EMPATE': 1} and C23 == {'PP': 158, 'PSOE': 19, 'SUMAR': 2}, (C19, C23)
 POB24 = int(GRANDES.poblacion.sum())
 POBT = int(m.poblacion.sum())
 POB4 = int(GRANDES[GRANDES[f'{b}_gana'] == 'PSOE'].poblacion.sum())
@@ -121,7 +124,7 @@ assert max(v for k, v in PSOE24.items() if k > '1986') == PSOE24['2019-A'] == 18
 
 # --- Mapa de municipios (geometría de generales-2026/data/municipios.json) ---
 G = json.load(open(RAIZ / 'generales-2026/data/municipios.json'))
-COLM = {'PSOE': COLOR['PSOE'], 'PP': COLOR['PP'], 'VOX': COLOR['Vox'], 'SUMAR': COLOR['Sumar']}
+COLM = {'PSOE': COLOR['PSOE'], 'PP': COLOR['PP'], 'VOX': COLOR['Vox'], 'SUMAR': COLOR['Sumar'], 'EMPATE': '#8a8486'}
 ETQ = {'PSOE': 'PSOE', 'PP': 'PP', 'VOX': 'Vox', 'SUMAR': 'Unidas Podemos (2019) / Sumar (2023)'}
 gan = {a: GAN19, b: dict(zip(m.mun_code, m[f'{b}_gana']))}
 nom = dict(zip(m.mun_code, m.municipio))
@@ -234,7 +237,7 @@ assert dcos == 7
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">En las generales de julio de 2023, el PP ganó en {MU("coslada", "Coslada")} por siete votos: {n(COSLADA_OFICIAL["PP"])} frente a {n(COSLADA_OFICIAL["PSOE"])} del PSOE, según los <a href="{PUB_COS}">resultados oficiales</a>. Cuatro años antes, en noviembre de 2019, el PSOE había sacado allí {n(U['Coslada']['PSOE19'] - U['Coslada']['PP19'])} puntos de ventaja. Coslada fue el más ajustado de los {PSOE24["2019-N"] - PSOE24["2023"]} municipios grandes que el PSOE perdió en la Comunidad de Madrid entre una elección y otra. De los 24 municipios madrileños de más de 50.000 habitantes, el PSOE fue el más votado en {PSOE24["2019-N"]} en 2019 y en {PSOE24["2023"]} en 2023: {MU("fuenlabrada", "Fuenlabrada")}, {MU("parla", "Parla")}, {MU("leganes", "Leganés")} y {MU("getafe", "Getafe")}.</p>
 {g_mapa}
-<p data-tipo="dato">El cambio se ve en toda la región. En noviembre de 2019, el PSOE ganó en {C19["PSOE"]} de los 179 municipios, Vox en {C19["VOX"]}, el PP en {C19["PP"]} y Unidas Podemos en {C19["SUMAR"]}. En 2023, el PP ganó en {C23["PP"]}, el PSOE en {C23["PSOE"]} y Sumar en {C23["SUMAR"]}. Los cuatro grandes que le quedan al PSOE suman {n(POB4)} habitantes, el {n(POB4 / POBT * 100)} % de la Comunidad.</p>
+<p data-tipo="dato">El cambio se ve en toda la región. En noviembre de 2019, el PSOE ganó en {C19["PSOE"]} de los 179 municipios, Vox en {C19["VOX"]}, el PP en {C19["PP"]} y Unidas Podemos en {C19["SUMAR"]}; en Puebla de la Sierra, el PP y el PSOE empataron a votos. En 2023, el PP ganó en {C23["PP"]}, el PSOE en {C23["PSOE"]} y Sumar en {C23["SUMAR"]}. Los cuatro grandes que le quedan al PSOE suman {n(POB4)} habitantes, el {n(POB4 / POBT * 100)} % de la Comunidad.</p>
 
 <h2>El PSOE no bajó</h2>
 <p data-tipo="dato">Lo llamativo es que el PSOE no perdió esos municipios porque bajara. En los {len(Q)} grandes que ganó en 2019, subió en los {SUBE_PSOE}: sumados, pasó del {p(BLOQUE[a]["PSOE"])} % al {p(BLOQUE[b]["PSOE"])} % de los votos a candidaturas. En Fuenlabrada llegó al {p(U["Fuenlabrada"]["PSOE23"])} %, desde el {p(U["Fuenlabrada"]["PSOE19"])} %. Lo que cambió fue el PP, que en esos mismos municipios pasó del {p(BLOQUE[a]["PP"])} % al {p(BLOQUE[b]["PP"])} %.</p>
