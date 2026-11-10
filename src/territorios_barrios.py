@@ -109,6 +109,10 @@ def secciones(cods):
     filas = []
     for x in lar.itertuples():
         g = max(fams, key=lambda c: getattr(x, c))
+        if getattr(x, g) > 0 and sum(getattr(x, c) == getattr(x, g) for c in fams) > 1:   # empate a votos (mapa_empates.py)
+            filas.append({'cod': x.tract_code, 'censo': x.censo, 'part': x.votantes / x.censo if x.censo else None,
+                          'gana': 'EMPATE', 'pct': getattr(x, g) / x.val if x.val else None, 'renta': DEMOS.renta_uc.get(x.tract_code)})
+            continue
         filas.append({'cod': x.tract_code, 'censo': x.censo, 'part': x.votantes / x.censo if x.censo else None,
                       'gana': g, 'pct': getattr(x, g) / x.val if x.val else None,
                       'renta': DEMOS.renta_uc.get(x.tract_code)})

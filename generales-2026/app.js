@@ -81,6 +81,8 @@
   Object.keys(RAMPS).forEach(k => RAMPS[k] = RAMPS[k].map(hex));
   const NODATA = () => hex(css('--nodata') || '#d9d6cf');
   const BG = () => hex(css('--map-bg') || '#f4f1ea');
+  // empate a votos entre los dos primeros (_gana = -2, src/mapa_empates.py): gris oscuro, distinto del «sin dato»
+  const EMPATE = -2, EMP = () => hex(css('--empate') || '#8a8486');
   const mix = (a, b, t) => [0, 1, 2].map(k => Math.round(a[k] + (b[k] - a[k]) * t));
   // En modo oscuro la rampa se invierte: el valor alto es el más claro, para que destaque sobre el fondo.
   const isDark = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
@@ -104,6 +106,7 @@
   function color(d, i) {
     if (st.v === 'gana') {
       const g = d[st.y + '_gana'] ? d[st.y + '_gana'][i] : -1;
+      if (g === EMPATE) return EMP();
       if (g == null || g < 0) return NODATA();
       const f = FAM[g], b = f.cod === 'SUMAR' && d[st.y + '_SUMAR_B'] ? d[st.y + '_SUMAR_B'][i] : null;
       const s = b ? Math.max(d[st.y + '_SUMAR_A'][i] || 0, b) : d[st.y + '_' + f.cod][i] || 0;   // dos listas: la de la más votada
@@ -412,6 +415,7 @@
     const sub = isSec ? MUN.provs[MUN.prov[mi]] : MUN.provs[MUN.prov[i]];
     const max = rows.length ? rows[0].v : 1;
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
+    if (g === EMPATE) h += '<p class="t-na">Empate: los dos primeros tuvieron los mismos votos.</p>';
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
     h += '<table class="t-bars">' + rows.map(r => `<tr><th${r.n !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${r.n.length > 16 ? 'normal' : 'nowrap'}">${escH(r.n)}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
     if (d[y + '_SUMAR_B'] && d[y + '_SUMAR_B'][i] && SEGUNDA[y]) h +=   // aunque la segunda lista no quepa entre las seis filas
@@ -466,6 +470,7 @@
       const y = st.y, used = new Set(MUN[y + '_gana']);
       el.innerHTML = `<div class="lg-t">Partido más votado · ${nomE(y)}</div><div class="lg-sw">` +
         FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${nomF(f, y)}</span>`).join('') +
+        (used.has(EMPATE) ? `<span><b style="background:rgb(${EMP()})"></b>Empate a votos</span>` : '') +
         `</div><div class="lg-n">Más intenso cuanto mayor es su porcentaje de voto${REPUBLICA(y) ? '. Listas abiertas: peso de cada bloque en los votos a candidatos (Atlas Electoral de la Segunda República, UPF)' : ''}</div>`;
       return;
     }
@@ -703,6 +708,7 @@
       if (!ce || !val) continue;
       col.part[i] = vot / ce;
       let g = -1; FCOD.forEach((c, k) => { col[c][i] = f[k] / val; if (c !== 'OTROS' && (g < 0 || f[k] > f[g])) g = k; });
+      if (g >= 0 && f[g] > 0 && FCOD.some((c, k) => c !== 'OTROS' && k !== g && f[k] === f[g])) g = EMPATE;   // empate a votos
       col.gana[i] = g;
     }
     Object.entries(col).forEach(([k, v]) => MUN[y + '_' + k] = v);

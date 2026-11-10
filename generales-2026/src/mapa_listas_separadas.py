@@ -71,7 +71,7 @@ def json_web(f, T, nivel):
             viejo = CODIGOS[v] if v >= 0 else None
             nv = nuevo(viejo, n)
             cambios += nv != viejo
-            arr.append(CODIGOS.index(nv) if nv else -1)
+            arr.append(CODIGOS.index(nv) if nv else (v if v is not None and v < 0 else -1))   # -2: empate (mapa_empates.py)
         d[k] = arr
         fam = d.get(f'{y}_SUMAR')
         for x, s_, v in zip(a, b, fam or []):   # control: las dos listas suman la familia (con el redondeo de cada una)
