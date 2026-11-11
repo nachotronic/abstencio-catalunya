@@ -1,0 +1,634 @@
+{
+  "pieza": "mapa-electoral-madrid-29n",
+  "_datos_disponibles": {
+    "D": "dict"
+  },
+  "cifras": [
+    {
+      "texto": "electoral de Madrid: Vox ganó en 61 municipios en 2019 y",
+      "cifra": "61",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "ninguno en 2023; el PP pasó de 46 a 158",
+      "cifra": "46",
+      "calculo": "D['GANA']['2019_11']['PP']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "2023; el PP pasó de 46 a 158",
+      "cifra": "158",
+      "calculo": "D['GANA']['2023_07']['PP']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "El PP ganó en 158 de los 179 municipios",
+      "cifra": "158",
+      "calculo": "D['GANA']['2023_07']['PP']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "El PP ganó en 158 de los 179 municipios madrileños",
+      "cifra": "179",
+      "calculo": "sum(D['GANA']['2023_07'].values())",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "media de encuestas da al PP 16 de los 38 diputados,",
+      "cifra": "16",
+      "calculo": "D['E29']['PP']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "encuestas da al PP 16 de los 38 diputados, y a Vox,",
+      "cifra": "38",
+      "calculo": "D['ESC26']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "los 38 diputados, y a Vox, 8.",
+      "cifra": "8",
+      "calculo": "D['E29']['VOX']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "elige el 29 de noviembre 38 diputados, uno más que",
+      "cifra": "38",
+      "calculo": "D['ESC26']",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "el partido más votado en 68 de los 179 municipios",
+      "cifra": "68",
+      "calculo": "D['GANA']['2019_11']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "partido más votado en 68 de los 179 municipios madrileños,",
+      "cifra": "179",
+      "calculo": "sum(D['GANA']['2023_07'].values())",
+      "_donde": "dato"
+    },
+    {
+      "texto": "municipios madrileños, Vox en 61, el PP en 46 y Unidas",
+      "cifra": "61",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "madrileños, Vox en 61, el PP en 46 y Unidas Podemos en",
+      "cifra": "46",
+      "calculo": "D['GANA']['2019_11']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "en 46 y Unidas Podemos en 3; en Puebla de la Sierra,",
+      "cifra": "3",
+      "calculo": "D['GANA']['2019_11']['UP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "julio de 2023, el PP ganó en 158, el PSOE en 19 y Sumar",
+      "cifra": "158",
+      "calculo": "D['GANA']['2023_07']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PP ganó en 158, el PSOE en 19 y Sumar en 2, Bustarviejo",
+      "cifra": "19",
+      "calculo": "D['GANA']['2023_07']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el PSOE en 19 y Sumar en 2, Bustarviejo y Torremocha",
+      "cifra": "2",
+      "calculo": "D['GANA']['2023_07']['SUMAR']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "El PP pasó del 25,1 % al 40,8 % de los votos,",
+      "cifra": "25,1",
+      "calculo": "D['A19']['pct']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "El PP pasó del 25,1 % al 40,8 % de los votos, 15,7",
+      "cifra": "40,8",
+      "calculo": "D['A23']['pct']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "% al 40,8 % de los votos, 15,7 puntos más, con 563.844",
+      "cifra": "15,7",
+      "calculo": "D['DPP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "votos, 15,7 puntos más, con 563.844 votos más. Ciudadanos,",
+      "cifra": "563.844",
+      "calculo": "D['DPP_VOTOS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Ciudadanos, que había sacado el 9,1 % en 2019, no se presentó",
+      "cifra": "9,1",
+      "calculo": "D['A19']['pct']['CS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "presentó en 2023. Vox bajó del 18,5 % al 14,1 %. El PSOE",
+      "cifra": "18,5",
+      "calculo": "D['A19']['pct']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "2023. Vox bajó del 18,5 % al 14,1 %. El PSOE subió algo,",
+      "cifra": "14,1",
+      "calculo": "D['A23']['pct']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "%. El PSOE subió algo, del 27,1 % al 28,1 %, y Sumar",
+      "cifra": "27,1",
+      "calculo": "D['A19']['pct']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "subió algo, del 27,1 % al 28,1 %, y Sumar sacó el 15,6",
+      "cifra": "28,1",
+      "calculo": "D['A23']['pct']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "al 28,1 %, y Sumar sacó el 15,6 %, por debajo de lo",
+      "cifra": "15,6",
+      "calculo": "D['A23']['pct']['SUMAR']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "sumaron en 2019 Unidas Podemos (13,1 %) y Más País (5,7 %).",
+      "cifra": "13,1",
+      "calculo": "D['A19L']['pct']['UP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Podemos (13,1 %) y Más País (5,7 %). La participación",
+      "cifra": "5,7",
+      "calculo": "D['A19L']['pct']['MP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "participación apenas cambió: del 74,5 % al 74,1 %.",
+      "cifra": "74,5",
+      "calculo": "D['A19']['part']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "apenas cambió: del 74,5 % al 74,1 %.",
+      "cifra": "74,1",
+      "calculo": "D['A23']['part']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Los 61 municipios de Vox pasaron",
+      "cifra": "61",
+      "calculo": "D['VOX_PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "pasaron todos al PP, y también 48 de los 68 del PSOE.",
+      "cifra": "48",
+      "calculo": "D['PSOE_PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "al PP, y también 48 de los 68 del PSOE. El PP conservó",
+      "cifra": "68",
+      "calculo": "D['GANA']['2019_11']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "PSOE. El PP conservó los 46 que ya tenía y subió",
+      "cifra": "46",
+      "calculo": "D['GANA']['2019_11']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "46 que ya tenía y subió en 176 de los 179 municipios;",
+      "cifra": "176",
+      "calculo": "D['PP_SUBE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "tenía y subió en 176 de los 179 municipios; en 18, más",
+      "cifra": "179",
+      "calculo": "sum(D['GANA']['2023_07'].values())",
+      "_donde": "patron"
+    },
+    {
+      "texto": "de los 179 municipios; en 18, más de 20 puntos.",
+      "cifra": "18",
+      "calculo": "D['PP_MAS20']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "municipios medianos y pequeños: 51 de sus 61 tenían entre",
+      "cifra": "51",
+      "calculo": "D['VX_5K']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "medianos y pequeños: 51 de sus 61 tenían entre 1.000 y",
+      "cifra": "61",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ajustadas: la mitad, por menos de 4,0 puntos, con el PP segundo",
+      "cifra": "4,0",
+      "calculo": "D['VX_MED']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "puntos, con el PP segundo en 32 y el PSOE en 29. Sumados,",
+      "cifra": "32",
+      "calculo": "D['VX_SEG']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "segundo en 32 y el PSOE en 29. Sumados, Vox sacó allí",
+      "cifra": "29",
+      "calculo": "D['VX_SEG']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Sumados, Vox sacó allí el 28,1 % en 2019 y el 20,9",
+      "cifra": "28,1",
+      "calculo": "D['VXS']['2019_11']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "allí el 28,1 % en 2019 y el 20,9 % en 2023; el PP pasó",
+      "cifra": "20,9",
+      "calculo": "D['VXS']['2023_07']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "% en 2023; el PP pasó del 21,9 % al 40,9 %.",
+      "cifra": "21,9",
+      "calculo": "D['VXS']['2019_11']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el PP pasó del 21,9 % al 40,9 %.",
+      "cifra": "40,9",
+      "calculo": "D['VXS']['2023_07']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "habitantes, Vox había ganado en 28 de 54 y el PP en 5;",
+      "cifra": "28",
+      "calculo": "D['TT']['De 1.000 a 5.000']['g19']['VOX']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "Vox había ganado en 28 de 54 y el PP en 5; en 2023,",
+      "cifra": "54",
+      "calculo": "D['TT']['De 1.000 a 5.000']['n']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "ganado en 28 de 54 y el PP en 5; en 2023, el PP ganó",
+      "cifra": "5",
+      "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "5; en 2023, el PP ganó en 47. En los de 5.000 a 20.000,",
+      "cifra": "47",
+      "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "20.000, Vox había ganado en 23 de 45; en 2023, el PP",
+      "cifra": "23",
+      "calculo": "D['TT']['De 5.000 a 20.000']['g19']['VOX']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "Vox había ganado en 23 de 45; en 2023, el PP ganó",
+      "cifra": "45",
+      "calculo": "D['TT']['De 5.000 a 20.000']['n']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "45; en 2023, el PP ganó en 44. El PP subió y Vox bajó",
+      "cifra": "44",
+      "calculo": "D['TT']['De 5.000 a 20.000']['g23']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "Madrid capital, donde vive el 48,8 % de la población de",
+      "cifra": "48,8",
+      "calculo": "D['POB_MAD']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "las dos elecciones, con el 27,6 % en 2019 y el 42,1",
+      "cifra": "27,6",
+      "calculo": "D['MAD']['pp19']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "con el 27,6 % en 2019 y el 42,1 % en 2023; el PSOE sacó",
+      "cifra": "42,1",
+      "calculo": "D['MAD']['pp23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "en 2023; el PSOE sacó el 27,6 %. Lo contamos sección",
+      "cifra": "27,6",
+      "calculo": "D['MAD']['psoe23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Madrid barrio a barrio. De las diez ciudades de más de 100.000",
+      "cifra": "diez",
+      "calculo": "len(D['CIU'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "habitantes, el PSOE ganó en ocho en 2019 y en cuatro",
+      "cifra": "ocho",
+      "calculo": "D['CIU_PSOE19']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ganó en ocho en 2019 y en cuatro en 2023: Leganés, Getafe,",
+      "cifra": "cuatro",
+      "calculo": "D['CIU_PSOE23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "municipios del PP vive el 88,6 % de la población madrileña.",
+      "cifra": "88,6",
+      "calculo": "D['POB']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "En 12 municipios madrileños,",
+      "cifra": "12",
+      "calculo": "D['AJ2']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "más de 20.000 habitantes, diez se decidieron por menos",
+      "cifra": "diez",
+      "calculo": "len(D['AJG'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Ciempozuelos, el PSOE ganó por 4 votos; en Coslada, el",
+      "cifra": "4",
+      "calculo": "D['CIEM']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "en Coslada, el PP ganó por siete, 14.437 frente a 14.430,",
+      "cifra": "siete",
+      "calculo": "D['COSLADA']['PP']-D['COSLADA']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Coslada, el PP ganó por siete, 14.437 frente a 14.430, según",
+      "cifra": "14.437",
+      "calculo": "D['COSLADA']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "por siete, 14.437 frente a 14.430, según los resultados",
+      "cifra": "14.430",
+      "calculo": "D['COSLADA']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el reparto central de los 38 escaños da al PP 16,",
+      "cifra": "38",
+      "calculo": "D['ESC26']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de los 38 escaños da al PP 16, los mismos que en 2023;",
+      "cifra": "16",
+      "calculo": "D['E29']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "mismos que en 2023; al PSOE, 10, también los mismos;",
+      "cifra": "10",
+      "calculo": "D['E29']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "también los mismos; a Vox, 8, tres más; a Frente",
+      "cifra": "8",
+      "calculo": "D['E29']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "también los mismos; a Vox, 8, tres más; a Frente Amplio,",
+      "cifra": "tres",
+      "calculo": "D['E29']['VOX']-D['E23']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "tres más; a Frente Amplio, 3, y a Podemos, 1. En",
+      "cifra": "3",
+      "calculo": "D['E29']['FA']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Frente Amplio, 3, y a Podemos, 1. En 2023, Sumar había",
+      "cifra": "1",
+      "calculo": "D['E29']['PODEMOS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "2023, Sumar había sacado 6 con las dos candidaturas",
+      "cifra": "6",
+      "calculo": "D['E23']['SUMAR']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PP es el más votado en el 98 % de las simulaciones.",
+      "cifra": "98",
+      "calculo": "D['P1']*100",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Vox ganó en 61 municipios madrileños",
+      "cifra": "61",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "ninguno en 2023; el PP pasó de 46 a 158Partido más votado",
+      "cifra": "46",
+      "calculo": "D['GANA']['2019_11']['PP']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "votado en cada uno de los 179 municipios de la Comunidad",
+      "cifra": "179",
+      "calculo": "sum(D['GANA']['2023_07'].values())",
+      "_donde": "pie"
+    },
+    {
+      "texto": "El PP subió en 176 de los 179 municipiosCambio",
+      "cifra": "176",
+      "calculo": "D['PP_SUBE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "El PP subió en 176 de los 179 municipiosCambio del",
+      "cifra": "179",
+      "calculo": "sum(D['GANA']['2023_07'].values())",
+      "_donde": "pie"
+    },
+    {
+      "texto": "En los 61 municipios que ganó",
+      "cifra": "61",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Vox en 2019, el PP sacó el 40,9 % en 2023Voto a Vox,",
+      "cifra": "40,9",
+      "calculo": "D['VXS']['2023_07']['PP']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "De las diez ciudades de más de 100.000",
+      "cifra": "diez",
+      "calculo": "len(D['CIU'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "habitantes, el PSOE ganó en ocho en 2019 y en cuatro",
+      "cifra": "ocho",
+      "calculo": "D['CIU_PSOE19']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "ganó en ocho en 2019 y en cuatro en 2023Voto al PP y",
+      "cifra": "cuatro",
+      "calculo": "D['CIU_PSOE23']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Diez municipios de más de",
+      "cifra": "Diez",
+      "calculo": "len(D['AJG'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "escaños y Vox pasaría de 5 a 8Los diputados de",
+      "cifra": "5",
+      "calculo": "D['E23']['VOX']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "escaño. En 2019 y 2023 eligió 37; el 29N elige 38",
+      "cifra": "37",
+      "calculo": "sum(D['E23'].values())",
+      "_donde": "pie"
+    },
+    {
+      "texto": "2023 eligió 37; el 29N elige 38",
+      "cifra": "38",
+      "calculo": "D['ESC26']",
+      "_donde": "pie"
+    }
+  ],
+  "externas": [],
+  "ignorar": [
+    {
+      "texto": "municipios; en 18, más de 20 puntos.",
+      "motivo": "umbral"
+    },
+    {
+      "texto": "51 de sus 61 tenían entre 1.000 y 20.000 habitantes.",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "sus 61 tenían entre 1.000 y 20.000 habitantes. Los más",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "tamaño. En los municipios de 1.000 a 5.000 habitantes,",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "los municipios de 1.000 a 5.000 habitantes, Vox había",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "PP ganó en 47. En los de 5.000 a 20.000, Vox había",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "en 47. En los de 5.000 a 20.000, Vox había ganado en",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "las diez ciudades de más de 100.000 habitantes, el PSOE",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "la serie desde 1977 de los 24 municipios de más de",
+      "motivo": "descripción de otra pieza (El cinturón rojo)"
+    },
+    {
+      "texto": "los 24 municipios de más de 50.000 habitantes, está en",
+      "motivo": "descripción de otra pieza (El cinturón rojo)"
+    },
+    {
+      "texto": "2023. Entre los de más de 20.000 habitantes, diez se",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "se decidieron por menos de cinco puntos, todos entre",
+      "motivo": "umbral"
+    },
+    {
+      "texto": "tienen un margen amplio a 18 días de la votación.",
+      "motivo": "días hasta la votación"
+    },
+    {
+      "texto": "todo en los municipios de 1.000 a 20.000 habitantes;",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "los municipios de 1.000 a 20.000 habitantes; en 2023,",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "las diez ciudades de más de 100.000 habitantes, el PSOE",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "los municipios de más de 100.000 habitantes",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "Diez municipios de más de 20.000 habitantes se decidieron",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "decidieron en 2023 por menos de cinco puntos, todos entre",
+      "motivo": "umbral"
+    }
+  ],
+  "permitir_espana": []
+}
