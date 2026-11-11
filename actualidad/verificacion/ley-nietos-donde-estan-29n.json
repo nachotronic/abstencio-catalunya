@@ -1,0 +1,33 @@
+{
+  "pieza": "ley-nietos-donde-estan-29n",
+  "_nota": "Pieza anterior a la verificación (3-11-2026): solo se declaran las cifras de la actualización del 11-11-2026.",
+  "cifras": [],
+  "externas": [
+    {
+      "texto": "el Supremo rechazó extender la suspensión a otros 189.678 nacionalizados",
+      "cifra": "189.678",
+      "fuente": "https://www.vozpopuli.com/espana/el-supremo-permitira-el-voto-a-los-hijos-de-los-nacionalizados-por-la-ley-de-nietos.html"
+    },
+    {
+      "texto": "Siguen sin poder votar 162.454 nacionalizados",
+      "cifra": "162.454",
+      "fuente": "https://www.que.es/2026/11/09/voto-ley-de-nietos-supremo-29n/"
+    },
+    {
+      "texto": "los 163.355 de la lista menos los 901",
+      "cifra": "163.355",
+      "fuente": "https://www.europapress.es/nacional/noticia-gobierno-entrega-ts-listado-mas-160000-afectados-suspension-voto-ley-nietos-20261028160130.html"
+    },
+    {
+      "texto": "menos los 901 con el exilio acreditado",
+      "cifra": "901",
+      "fuente": "https://www.europapress.es/nacional/noticia-gobierno-entrega-ts-listado-mas-160000-afectados-suspension-voto-ley-nietos-20261028160130.html"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "El lunes 9, el Supremo",
+      "motivo": "Fecha: lunes 9 de noviembre de 2026"
+    }
+  ]
+}
