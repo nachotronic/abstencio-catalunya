@@ -36,3 +36,4 @@ for lab,(a,b) in [('HOY',('2026-11-10T23:00:00Z',hoyfin)),('AYER',('2026-11-09T2
     dev=collections.Counter()
     for r in grp(['deviceType'],50,a,b): dev[r['dimensions']['deviceType']]+=r['sum']['visits']
     print('DEV',lab,dev.most_common())
+# corte 1633
