@@ -800,10 +800,6 @@
   "figura": 1
  },
  {
-  "slug": "mapa-electoral-comunitat-valenciana-29n",
-  "figura": 1
- },
- {
   "slug": "mapa-electoral-andalucia-29n",
   "figura": 1
  },
@@ -814,5 +810,9 @@
  {
   "slug": "renta-activacion-ingreso-minimo-vital-29n",
   "figura": 0
+ },
+ {
+  "slug": "mapa-electoral-comunitat-valenciana-29n",
+  "figura": 1
  }
 ]
