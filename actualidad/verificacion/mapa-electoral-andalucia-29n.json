@@ -507,6 +507,16 @@
    "texto": "El PSOE ganó en 346 de los 529 municipios",
    "cifra": "346",
    "calculo": "D['PEQ']"
+  },
+  {
+   "texto": "le da 3 de los 60 diputados andaluces",
+   "cifra": "3",
+   "calculo": "sum(provincia_modelo('2026-11-11', c, 'Adelante Andalucía', hora='11:30')['escanos'][1] for c in ('04','11','14','18','21','23','29','41'))"
+  },
+  {
+   "texto": "le da 3 de los 60 diputados andaluces",
+   "cifra": "60",
+   "calculo": "sum(modelo('2026-11-11', hora='11:30')['escenario']['provincias'][c]['escanos_total'] for c in ('04','11','14','18','21','23','29','41'))"
   }
  ],
  "externas": [
@@ -583,6 +593,14 @@
   {
    "texto": "Seis municipios de más de 20.000 habitantes se decidieron",
    "motivo": "umbral de población"
+  },
+  {
+   "texto": "el del modelo del 10 de noviembre, que todavía",
+   "motivo": "fecha de la versión del modelo que usa la pieza"
+  },
+  {
+   "texto": "Desde el 11 de noviembre la incluye",
+   "motivo": "fecha de la versión del modelo que incluye a Adelante Andalucía"
   }
  ],
  "permitir_espana": []

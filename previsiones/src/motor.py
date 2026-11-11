@@ -226,10 +226,14 @@ def observado_2023():
 # ---------------------------------------------------------------------------------------------------------
 # Aliança Catalana no se presenta a las generales del 29N (Nacho, 23-10-2026): fuera de las listas; las encuestas
 # que aún la miden no se usan para ella y su voto no se reparte a nadie.
+# Adelante Andalucía se presenta al 29N en las ocho provincias andaluzas (BOE de candidaturas proclamadas, 3-11-2026)
+# y las encuestas la miden aparte (1-2 % en España, con 2-4 escaños): antes caía en «Otros» y el modelo no le daba
+# ninguno.
 LISTAS_V1 = ['PP', 'PSOE', 'Vox', 'Sumar', 'Podemos', 'SALF', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC', 'UPN',
-             'CUP', 'Nueva Canarias', 'PACMA']
+             'Adelante Andalucía', 'CUP', 'Nueva Canarias', 'PACMA']
 DE_ENCUESTA = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'SALF': 'SALF',
-               'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN'}
+               'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN',
+               'AA': 'Adelante Andalucía'}
 BLOQUES_V1 = [
     ('PP + Vox', ['PP', 'Vox']),
     ('PP + Vox + SALF + UPN + CC', ['PP', 'Vox', 'SALF', 'UPN', 'CC']),
@@ -246,6 +250,10 @@ ELECCION = date(2026, 11, 29)
 # corra también en GitHub Actions
 BASE2026 = RAIZ / 'previsiones/datos/base/base2026_provincias.csv'
 EUROPEAS2024 = RAIZ / 'previsiones/datos/base/europeas2024_provincias.csv'
+# Voto de Adelante Andalucía y válidos por provincia en las autonómicas andaluzas de mayo de 2026 (Junta de Andalucía,
+# SIEL, suma de municipios; faltan 8 entidades locales menores sin datos). No fue a las generales de 2023 ni a las
+# europeas de 2024: esta es la única referencia de dónde vota. Solo da el reparto entre provincias, no el nivel.
+AA_ANDALUZAS2026 = RAIZ / 'previsiones/datos/base/aa_andaluzas2026_provincias.csv'
 # Señal de las europeas de 2024 (senal_local.py): en 2015 y 2019, corregir la base con la fuerza relativa de cada
 # provincia en las europeas intermedias frente a las generales anteriores, elevada a 0,5, redujo un tercio el error
 # del reparto entre provincias (2,9 → 1,9 y 2,8 → 1,9 puntos). Se aplica a los partidos de ámbito estatal.
@@ -309,13 +317,22 @@ def base_v1():
         if destino:
             cuotas[i, LISTAS_V1.index(destino)] += cuotas[i, LISTAS_V1.index('Podemos')]
             cuotas[i, LISTAS_V1.index('Podemos')] = 0
-    indices = {'SALF': np.array([ind_salf[p] for p in provs])}
+    indices = {'SALF': np.array([ind_salf[p] for p in provs]), 'Adelante Andalucía': indice_aa(provs, validos)}
     return provs, cuotas, validos, indices
+
+
+def indice_aa(provs, validos):
+    """Índice provincial de Adelante Andalucía (media de España = 1, ponderada por los válidos de 2023): su cuota en
+    las autonómicas andaluzas de 2026 en cada provincia; 0 fuera de Andalucía, donde no tiene lista."""
+    import pandas as pd
+    a = pd.read_csv(AA_ANDALUZAS2026, dtype={'prov': str}).set_index('prov')
+    cuota = (a.aa / a.validos).reindex(provs).fillna(0).values
+    return cuota * validos.sum() / (cuota * validos).sum()
 
 
 def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
     """Subida o bajada proporcional de cada lista en todas las provincias hasta clavar su voto nacional de la media.
-    SALF no tiene voto en 2023: parte de su índice provincial. Las listas sin encuesta (CUP, Nueva Canarias, PACMA)
+    SALF y Adelante Andalucía no tienen voto en 2023: parten de su índice provincial. Las listas sin encuesta (CUP, Nueva Canarias, PACMA)
     mantienen su voto de 2023."""
     c = cuotas.copy()
     peso = validos / validos.sum()
