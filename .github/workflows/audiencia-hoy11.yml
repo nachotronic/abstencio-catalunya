@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v4
       - env:
           CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          BK1: ${{ secrets.BING_WEBMATER_KEY }}
-          BK2: ${{ secrets.BING_WEBMASTER_KEY }}
-        run: python3 .github/audiencia/enlaces.py
+
+
+        run: python3 .github/audiencia/hoy11.py

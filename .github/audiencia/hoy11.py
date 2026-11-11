@@ -26,7 +26,7 @@ for lab,(a,b) in [('HOY',('2026-11-10T23:00:00Z',hoyfin)),('AYER',('2026-11-09T2
         p=r['dimensions']['requestPath']; s=p.strip('/').split('/')[0] or '(portada)'; sec[s]+=r['sum']['visits']
     print('SEC',lab,sec.most_common(12))
     for r in grp(['requestPath'],40,a,b,',{requestPath_like:"/actualidad/%"}'): print('ACT',lab,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
-    for s in ['mapa-electoral-','renta-activacion','paraguay','ley-nietos','tenerife','andalucia']:
+    for s in ['mapa-electoral-','ingreso-minimo','renta-activacion','paraguay','ley-nietos','tenerife','andalucia']:
         for r in grp(['requestPath'],10,a,b,',{requestPath_like:"%%%s%%"}'%s): print('SLUG',lab,s,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
     ref=collections.Counter()
     for r in grp(['refererHost'],5000,a,b):
