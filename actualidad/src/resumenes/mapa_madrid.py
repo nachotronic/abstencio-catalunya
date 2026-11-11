@@ -75,6 +75,7 @@ assert TT['De 1.000 a 5.000']['g19']['VOX'] == 28 and TT['De 5.000 a 20.000']['g
 # La capital y las diez ciudades de más de 100.000 habitantes
 MAD = m[m.mun_code == '28079'].iloc[0]
 assert MAD.g2019 == 'PP' and MAD.g2023 == 'PP'
+assert p(MAD[f'{Y23}%PSOE']) == p(MAD[f'{Y19}%PP'])   # «lo mismo que el PP en 2019», a un decimal
 CIU = m[m.poblacion >= 100000].sort_values('poblacion', ascending=False)
 assert len(CIU) == 10
 CIU_PSOE19, CIU_PSOE23 = int((CIU.g2019 == 'PSOE').sum()), int((CIU.g2023 == 'PSOE').sum())
@@ -246,8 +247,8 @@ TP = TT['De 1.000 a 5.000']
 TM5 = TT['De 5.000 a 20.000']
 
 cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">La Comunidad de Madrid elige el 29 de noviembre 38 diputados, uno más que en 2023, según el reparto del real decreto de convocatoria publicado en el BOE que recoge <a href="{TM}">Telemadrid</a>. Es la circunscripción que más elige. Óscar López, secretario general del PSOE de Madrid, lo resumió así en la presentación de la candidatura socialista, según <a href="{EFE_LOP}">EFE</a>: «Vamos a ganarles en España, pero vamos a ganarles también en Madrid».</p>
-<blockquote class="cita"><p>«Tiene que haber una reforma porque los partidos reformistas tienen que ir a la raíz de los temas y volver a encauzar las cosas»</p><footer>Isabel Díaz Ayuso, presidenta de la Comunidad de Madrid, sobre un Gobierno de Feijóo, en Telecinco el 6 de noviembre de 2026, según <a href="{EP_AY}">Europa Press</a></footer></blockquote>
+<p data-tipo="contexto">La Comunidad de Madrid elige el 29 de noviembre 38 diputados, uno más que en 2023, según el reparto del real decreto de convocatoria publicado en el BOE que recoge <a href="{TM}">Telemadrid</a>. Es la circunscripción que más elige. Óscar López, secretario general del PSOE de Madrid, unió en la presentación de la candidatura socialista las dos citas, el 29N y las autonómicas de mayo: «Vamos a ganarles en España, pero vamos a ganarles también en Madrid», según <a href="{EFE_LOP}">EFE</a>.</p>
+<blockquote class="cita"><p>«Tiene que haber una reforma porque los partidos reformistas tienen que ir a la raíz de los temas y volver a encauzar las cosas»</p><footer>Isabel Díaz Ayuso, presidenta de la Comunidad de Madrid, sobre lo que haría Feijóo si gobierna, en Telecinco el 6 de noviembre de 2026, según <a href="{EP_AY}">Europa Press</a></footer></blockquote>
 <p data-tipo="dato">El mapa municipio a municipio cuenta cómo llegó el PP a esa posición. En noviembre de 2019, el PSOE fue el partido más votado en {GANA[Y19]["PSOE"]} de los {NMUN} municipios madrileños, Vox en {GANA[Y19]["VOX"]}, el PP en {GANA[Y19]["PP"]} y Unidas Podemos en {GANA[Y19]["UP"]}; en Puebla de la Sierra, el PP y el PSOE empataron a votos. En julio de 2023, el PP ganó en {GANA[Y23]["PP"]}, el PSOE en {GANA[Y23]["PSOE"]} y Sumar en {GANA[Y23]["SUMAR"]}, Bustarviejo y Torremocha de Jarama. Vox no ganó en ninguno.</p>
 {g_ins}
 <p data-tipo="dato">El PP pasó del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} % de los votos, {p(DPP)} puntos más, con {n(DPP_VOTOS)} votos más. Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó en 2023. Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. El PSOE subió algo, del {p(A19["pct"]["PSOE"])} % al {p(A23["pct"]["PSOE"])} %, y Sumar sacó el {p(A23["pct"]["SUMAR"])} %, por debajo de lo que sumaron en 2019 Unidas Podemos ({p(A19L["pct"]["UP"])} %) y Más País ({p(A19L["pct"]["MP"])} %). La participación apenas cambió: del {p(A19["part"])} % al {p(A23["part"])} %.</p>
@@ -261,7 +262,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 {g_tam}
 {g_tampct}
 <h2>La capital y el sur</h2>
-<p data-tipo="dato">Madrid capital, donde vive el {p(POB_MAD)} % de la población de la Comunidad, la ganó el PP en las dos elecciones, con el {p(MAD[f"{Y19}%PP"])} % en 2019 y el {p(MAD[f"{Y23}%PP"])} % en 2023; el PSOE sacó el {p(MAD[f"{Y23}%PSOE"])} %. Lo contamos sección a sección en {L("madrid-barrio-a-barrio-29n", "Madrid barrio a barrio")}. De las diez ciudades de más de 100.000 habitantes, el PSOE ganó en {NW[CIU_PSOE19]} en 2019 y en {NW[CIU_PSOE23]} en 2023: Leganés, Getafe, Fuenlabrada y Parla. Móstoles, Alcalá de Henares, Alcorcón y Torrejón de Ardoz pasaron al PP. Con los municipios del PP vive el {p(POB["PP"])} % de la población madrileña.</p>
+<p data-tipo="dato">Madrid capital, donde vive el {p(POB_MAD)} % de la población de la Comunidad, la ganó el PP en las dos elecciones, con el {p(MAD[f"{Y19}%PP"])} % en 2019 y el {p(MAD[f"{Y23}%PP"])} % en 2023. El PSOE sacó en 2023 el {p(MAD[f"{Y23}%PSOE"])} %, lo mismo que el PP en 2019. Lo contamos sección a sección en {L("madrid-barrio-a-barrio-29n", "Madrid barrio a barrio")}. De las diez ciudades de más de 100.000 habitantes, el PSOE ganó en {NW[CIU_PSOE19]} en 2019 y en {NW[CIU_PSOE23]} en 2023: Leganés, Getafe, Fuenlabrada y Parla. Móstoles, Alcalá de Henares, Alcorcón y Torrejón de Ardoz pasaron al PP. Con los municipios del PP vive el {p(POB["PP"])} % de la población madrileña.</p>
 {g_ciu}
 <p data-tipo="contexto">Lo que queda del cinturón rojo, con la serie desde 1977 de los 24 municipios de más de 50.000 habitantes, está en {L("cinturon-rojo-madrid-29n", "El cinturón rojo")}.</p>
 <h2>Dónde se decide por unos pocos votos</h2>

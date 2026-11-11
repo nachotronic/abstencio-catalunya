@@ -341,13 +341,13 @@
       "_donde": "dato"
     },
     {
-      "texto": "con el 27,6 % en 2019 y el 42,1 % en 2023; el PSOE sacó",
+      "texto": "con el 27,6 % en 2019 y el 42,1 % en 2023. El PSOE sacó",
       "cifra": "42,1",
       "calculo": "D['MAD']['pp23']",
       "_donde": "dato"
     },
     {
-      "texto": "en 2023; el PSOE sacó el 27,6 %. Lo contamos sección",
+      "texto": "El PSOE sacó en 2023 el 27,6 %, lo mismo que el PP",
       "cifra": "27,6",
       "calculo": "D['MAD']['psoe23']",
       "_donde": "dato"
