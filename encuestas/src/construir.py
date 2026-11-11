@@ -203,7 +203,7 @@ def estimacion():
                   + (f' A los tres quintos de la Cámara, 210 escaños, llegan en el {prob(p_desde(pv, 210))}: es la mayoría que pide el Congreso para reformar la Constitución (el Senado también tiene que aprobarla por tres quintos), '
                      'para elegir a los diez vocales del CGPJ que le tocan y a cuatro magistrados del Constitucional.' if p_desde(pv, 210) is not None else ''))
     if izq:
-        frase += f' Los socios de la investidura de 2023 llegan a 176 en el {prob(izq["p_mayoria"])}.'
+        frase += f' Los socios de la investidura de 2023, con Adelante Andalucía, llegan a 176 en el {prob(izq["p_mayoria"])}.'
     color = lambda l: next((c, o) for kk, _, c, o in TODOS if kk == DEL_MODELO[l])
     r0 = lambda a: [round(x) for x in a]
     # horquillas: percentiles 2,5 / 10 / 50 / 90 / 97,5 de las simulaciones (motor.py)
@@ -219,7 +219,7 @@ def estimacion():
     html_b = f"""<h2>Estimación propia de Mapa Electoral</h2>
 <p class="propio"><b>Modelo propio, no es una encuesta.</b> Todo lo anterior son cifras publicadas por las encuestadoras. Esto es un cálculo de Mapa Electoral: junta esas encuestas, las reparte por provincia y simula el resultado miles de veces.</p>
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
-                          for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023', '#e30613')) if b)}{f'<div><b style="color:#1d84ce">{prob(p_desde(pv, 210))}</b><span>de las simulaciones: PP y Vox llegan a 210, los tres quintos</span></div>' if p_desde(pv, 210) is not None else ''}</div>
+                          for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023 y Adelante Andalucía', '#e30613')) if b)}{f'<div><b style="color:#1d84ce">{prob(p_desde(pv, 210))}</b><span>de las simulaciones: PP y Vox llegan a 210, los tres quintos</span></div>' if p_desde(pv, 210) is not None else ''}</div>
 <p>{frase}</p>
 <p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt. Y en el <a href="simulador-pactos/">simulador de pactos</a>, decide qué vota cada partido y mira quién sale investido.</p>
 <figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. Las líneas marcan la mayoría absoluta (176) y los tres quintos (210); en color intenso, la horquilla del 80 %.</span></figcaption>
