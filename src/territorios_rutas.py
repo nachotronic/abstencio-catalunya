@@ -53,7 +53,7 @@ ACTUALIDAD_LUGAR = {
     'colau-barcelona-comuns': ['08'], 'europeas-arona': ['38'], 'euskadi-empate-a-tres': ['01', '20', '48'], 'euskadi-29n-guia': ['01', '20', '48'], 'bizkaia-pnv-bildu-encuestas-29n': ['48'],
     'mont-roig-municipio-cambiante': ['43'], 'municipios-fieles': ['41'], 'pisos-turisticos-y-votantes': ['08'],
     'plasencia-acierta-siempre': ['10'], 'precio-del-alquiler-y-voto': ['46'], 'psa-andalucistas-1979': ['04', '11', '14', '18', '21', '23', '29', '41'],
-    'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'adelante-andalucia-psoe-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'], 'mapa-electoral-madrid-29n': ['28'], 'mapa-electoral-comunitat-valenciana-29n': ['03', '12', '46'],
+    'psoe-andalucia-generales-autonomicas': ['04', '11', '14', '18', '21', '23', '29', '41'], 'adelante-andalucia-psoe-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'psoe-madrid-municipales-generales': ['28'], 'mapa-electoral-madrid-29n': ['28'], 'mapa-electoral-comunitat-valenciana-29n': ['03', '12', '46'], 'mapa-electoral-castilla-y-leon-29n': ['05', '09', '24', '34', '37', '40', '42', '47', '49'],
     'puigdemont-junts-congreso-parlament': ['08', '17', '25', '43'], 'rufian-erc-comuns': ['08', '17', '25', '43'], 'trebujena-pce-sumar': ['11'],
     'acampada-sol-distrito-centro': ['28'], 'acampada-sol-alquiler-madrid-distritos-29n': ['28'], 'aceituna-de-mesa-pueblos': ['41'], 'alianca-catalana-ceo-mapa': ['08', '17', '25', '43'],
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
@@ -201,7 +201,7 @@ TEMAS = {
         titulo='Escaños y sistema electoral: el precio de un diputado, los restos y las coaliciones',
         intro='Cómo se convierten los votos en escaños: los diputados que se decidieron por unos cientos de votos, '
               'lo que cuesta un escaño en cada provincia, el Senado y lo que habrían sacado las coaliciones.',
-        piezas=['mapa-electoral-comunitat-valenciana-29n', 'mapa-electoral-madrid-29n', 'mapa-electoral-cataluna-29n', 'mapa-electoral-andalucia-29n', 'euskadi-29n-guia', 'feijoo-albiol-barcelona-disturbios-29n', 'rufian-montero-la-revuelta-29n', 'escanos-en-el-filo-29n', 'tres-semanas-29n-la-semana-en-el-mapa', 'cuatro-semanas-29n-la-semana-en-el-mapa', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
+        piezas=['mapa-electoral-castilla-y-leon-29n', 'mapa-electoral-comunitat-valenciana-29n', 'mapa-electoral-madrid-29n', 'mapa-electoral-cataluna-29n', 'mapa-electoral-andalucia-29n', 'euskadi-29n-guia', 'feijoo-albiol-barcelona-disturbios-29n', 'rufian-montero-la-revuelta-29n', 'escanos-en-el-filo-29n', 'tres-semanas-29n-la-semana-en-el-mapa', 'cuatro-semanas-29n-la-semana-en-el-mapa', 'cinco-semanas-29n-la-semana-en-el-mapa', 'precio-del-escano-29n', 'ultimo-escano-29n', 'votos-sin-escano-29n', 'girona-esco-285-vots-29n',
                 'senado-29n', 'senado-psoe-frente-amplio-29n', 'vox-pp-senado-pacto-29n', 'pacto-pp-vox-senado-provincias-29n', 'comuns-psc-senado-girona-lleida-tarragona-29n', 'izquierda-dividida-29n', 'pactos-izquierda-mapa-final-29n',
                 'mapa-coaliciones-izquierda-29n', 'rufian-fracaso-lista-unitaria-29n', 'rufian-erc-comuns', 'canarias-unidad-pueblo-canario-29n', 'vox-vuelve-tenerife-29n',
                 'frente-amplio-podemos-madrid-escanos-29n', 'ministros-listas-29n', 'teruel-cha-izquierda-escano-29n', 'ivan-redondo-12-millones-derecha-29n', 'psoe-primera-fuerza-29n', 'encuestas-semana-29n', 'encuestas-antes-despues-urda-29n', 'encuestas-40db-psoe-podemos-29n', 'banez-huelva-pp-29n', 'listas-29n-quien-encabeza',
@@ -315,7 +315,8 @@ INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019')
                  'mapa-electoral-andalucia-29n': ('41091', '29067', '14021', '18087', '11012', '04013', '21041', '23050'),
                  'mapa-electoral-cataluna-29n': ('08019', '17079', '25120', '43148', '08298'),
                  'mapa-electoral-madrid-29n': ('28079', '28074', '28065', '28058', '28106'),
-                 'mapa-electoral-comunitat-valenciana-29n': ('46250', '03014', '03065', '12040')}   # las capitales, que cada pieza compara (y Vic en Cataluña)   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
+                 'mapa-electoral-comunitat-valenciana-29n': ('46250', '03014', '03065', '12040'),
+                 'mapa-electoral-castilla-y-leon-29n': ('47186', '09059', '37274', '24089', '34120', '42173', '49275', '05019', '40194')}   # las capitales, que cada pieza compara (y Vic en Cataluña)   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
 EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
                  'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014', '10901'},   # Manzanares (Ciudad Real), Amposta (Tarragona) y Rosalejo (Cáceres) salen del río y de los barrios madrileños de Amposta y Rosas
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla

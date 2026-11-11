@@ -1,0 +1,688 @@
+{
+  "pieza": "mapa-electoral-castilla-y-leon-29n",
+  "_datos_disponibles": {
+    "D": "dict"
+  },
+  "cifras": [
+    {
+      "texto": "Castilla y León: el PSOE ganó en seis de las nueve capitales",
+      "cifra": "seis",
+      "calculo": "D['NCAP19']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "PSOE ganó en seis de las nueve capitales en 2019 y",
+      "cifra": "nueve",
+      "calculo": "len(D['CAP'])",
+      "_donde": "titular"
+    },
+    {
+      "texto": "El PSOE sumó 26.886 votos, pero pasó de",
+      "cifra": "26.886",
+      "calculo": "D['DPSOE_VOTOS']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "26.886 votos, pero pasó de 592 a 307 de los 2.248 municipios,",
+      "cifra": "592",
+      "calculo": "D['GANA']['2019_11']['PSOE']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "votos, pero pasó de 592 a 307 de los 2.248 municipios,",
+      "cifra": "307",
+      "calculo": "D['GANA']['2023_07']['PSOE']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "pasó de 592 a 307 de los 2.248 municipios, y los que",
+      "cifra": "2.248",
+      "calculo": "D['NMUN']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "ganó pasaron de reunir el 61,6 % de la población al",
+      "cifra": "61,6",
+      "calculo": "D['POB']['2019_11']['PSOE']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "61,6 % de la población al 15,1 %. Soria ¡Ya! y Por",
+      "cifra": "15,1",
+      "calculo": "D['POB']['2023_07']['PSOE']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "¡Ya! y Por Ávila ganaron en siete pueblos. Para el 29N,",
+      "cifra": "siete",
+      "calculo": "D['GANA']['2023_07']['SY']+D['GANA']['2023_07']['XAV']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "media de encuestas da al PP 16 de los 31 diputados,",
+      "cifra": "16",
+      "calculo": "D['E29']['PP']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "encuestas da al PP 16 de los 31 diputados, y a Vox,",
+      "cifra": "31",
+      "calculo": "sum(D['ESC26'].values())",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "los 31 diputados, y a Vox, 5.",
+      "cifra": "5",
+      "calculo": "D['E29']['VOX']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "Castilla y León tiene 2.248 municipios, más que",
+      "cifra": "2.248",
+      "calculo": "D['NMUN']",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "elige el 29 de noviembre 31 diputados en sus nueve",
+      "cifra": "31",
+      "calculo": "sum(D['ESC26'].values())",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "noviembre 31 diputados en sus nueve provincias. Alfonso",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "allí, dijo, «van a salir nueve caravanas provinciales",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "caravanas provinciales y 2.248 caravanas locales en",
+      "cifra": "2.248",
+      "calculo": "D['NMUN']",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "el partido más votado en 1.546 de los 2.248 municipios,",
+      "cifra": "1.546",
+      "calculo": "D['GANA']['2019_11']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "más votado en 1.546 de los 2.248 municipios, el PSOE",
+      "cifra": "2.248",
+      "calculo": "D['NMUN']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "2.248 municipios, el PSOE en 592 y Vox en 52; en otros",
+      "cifra": "592",
+      "calculo": "D['GANA']['2019_11']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "municipios, el PSOE en 592 y Vox en 52; en otros 45, los dos",
+      "cifra": "52",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "592 y Vox en 52; en otros 45, los dos primeros empataron",
+      "cifra": "45",
+      "calculo": "D['GANA']['2019_11']['EMPATE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "julio de 2023, el PP ganó en 1.886, el PSOE en 307 y Vox",
+      "cifra": "1.886",
+      "calculo": "D['GANA']['2023_07']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ganó en 1.886, el PSOE en 307 y Vox en 14, y hubo",
+      "cifra": "307",
+      "calculo": "D['GANA']['2023_07']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "1.886, el PSOE en 307 y Vox en 14, y hubo 33 empates.",
+      "cifra": "14",
+      "calculo": "D['GANA']['2023_07']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "en 307 y Vox en 14, y hubo 33 empates. Pero el cambio",
+      "cifra": "33",
+      "calculo": "D['GANA']['2023_07']['EMPATE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ciudades: el PSOE ganó en 2019 en seis de las nueve capitales,",
+      "cifra": "seis",
+      "calculo": "D['NCAP19']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ganó en 2019 en seis de las nueve capitales, Burgos, León,",
+      "cifra": "nueve",
+      "calculo": "len(D['CAP'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "no perdió votos: pasó del 31,6 % al 32,6 %, con 26.886",
+      "cifra": "31,6",
+      "calculo": "D['A19']['pct']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "votos: pasó del 31,6 % al 32,6 %, con 26.886 votos",
+      "cifra": "32,6",
+      "calculo": "D['A23']['pct']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "del 31,6 % al 32,6 %, con 26.886 votos más. El PP sumó",
+      "cifra": "26.886",
+      "calculo": "D['DPSOE_VOTOS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "26.886 votos más. El PP sumó 152.770 y subió del 32,0 % al",
+      "cifra": "152.770",
+      "calculo": "D['DPP_VOTOS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "sumó 152.770 y subió del 32,0 % al 42,0 %, en un año",
+      "cifra": "32,0",
+      "calculo": "D['A19']['pct']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "152.770 y subió del 32,0 % al 42,0 %, en un año en que",
+      "cifra": "42,0",
+      "calculo": "D['A23']['pct']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Ciudadanos, que había sacado el 7,6 % en 2019, no se presentó",
+      "cifra": "7,6",
+      "calculo": "D['A19']['pct']['CS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "se presentó y Vox bajó del 16,8 % al 13,9 %. La participación",
+      "cifra": "16,8",
+      "calculo": "D['A19']['pct']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "y Vox bajó del 16,8 % al 13,9 %. La participación",
+      "cifra": "13,9",
+      "calculo": "D['A23']['pct']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "La participación subió del 71,4 % al 74,4 %. En 2019",
+      "cifra": "71,4",
+      "calculo": "D['A19']['part']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "participación subió del 71,4 % al 74,4 %. En 2019 el PP ya",
+      "cifra": "74,4",
+      "calculo": "D['A23']['part']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "conjunto de la comunidad, por 0,4 puntos; el PSOE lo había",
+      "cifra": "0,4",
+      "calculo": "D['A19']['pct']['PP']-D['A19']['pct']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el PSOE lo había sido en cuatro provincias, Burgos,",
+      "cifra": "cuatro",
+      "calculo": "sum(1 for pr in D['PR'] if max(D['PR'][pr]['2019_11'], key=D['PR'][pr]['2019_11'].get)=='PSOE')",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PP fue el primero en las nueve.",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "De los 592 municipios del PSOE",
+      "cifra": "592",
+      "calculo": "D['GANA']['2019_11']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "municipios del PSOE en 2019, 311 pasaron al PP. En ellos,",
+      "cifra": "311",
+      "calculo": "D['PSOE_PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "ellos, el PSOE subió del 32,6 % al 34,0 %, y el PP,",
+      "cifra": "32,6",
+      "calculo": "D['FLS']['2019_11']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "PSOE subió del 32,6 % al 34,0 %, y el PP, del 29,8",
+      "cifra": "34,0",
+      "calculo": "D['FLS']['2023_07']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "% al 34,0 %, y el PP, del 29,8 % al 40,3 %, mientras",
+      "cifra": "29,8",
+      "calculo": "D['FLS']['2019_11']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "%, y el PP, del 29,8 % al 40,3 %, mientras desaparecía",
+      "cifra": "40,3",
+      "calculo": "D['FLS']['2023_07']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "que allí había sacado el 8,1 %. De los 52 pueblos",
+      "cifra": "8,1",
+      "calculo": "D['FLS']['2019_11']['CS']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "había sacado el 8,1 %. De los 52 pueblos que había ganado",
+      "cifra": "52",
+      "calculo": "D['GANA']['2019_11']['VOX']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "menos de 100 habitantes), 43 pasaron al PP. Como",
+      "cifra": "43",
+      "calculo": "D['VOX_PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "ganó pasaron de sumar el 61,6 % de la población de",
+      "cifra": "61,6",
+      "calculo": "D['POB']['2019_11']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "población de la comunidad al 15,1 %.",
+      "cifra": "15,1",
+      "calculo": "D['POB']['2023_07']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "de pueblos muy pequeños: 746 de los 2.248 municipios",
+      "cifra": "746",
+      "calculo": "D['TT']['Menos de 100']['n']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "muy pequeños: 746 de los 2.248 municipios tienen menos",
+      "cifra": "2.248",
+      "calculo": "D['NMUN']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "habitantes, y entre todos suman 40.443 electores, menos que",
+      "cifra": "40.443",
+      "calculo": "D['TT']['Menos de 100']['censo']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "la ciudad de Ávila sola (44.647). En esos pueblos el",
+      "cifra": "44.647",
+      "calculo": "D['CAP']['Ávila']['censo23']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "el PP ya ganaba en 2019 (563 de 746). El vuelco llegó",
+      "cifra": "563",
+      "calculo": "D['TT']['Menos de 100']['g19']['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "ya ganaba en 2019 (563 de 746). El vuelco llegó en",
+      "cifra": "746",
+      "calculo": "D['TT']['Menos de 100']['n']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "habitantes, el PSOE ganó en 11 de 15 en 2019 y en 4",
+      "cifra": "11",
+      "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "habitantes, el PSOE ganó en 11 de 15 en 2019 y en 4 en 2023,",
+      "cifra": "15",
+      "calculo": "D['TT']['Más de 20.000']['n']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "en 11 de 15 en 2019 y en 4 en 2023, Ponferrada,",
+      "cifra": "4",
+      "calculo": "D['TT']['Más de 20.000']['g23']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "a 5.000, el PSOE pasó de 93 a 41 de 178. El PP subió",
+      "cifra": "93",
+      "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "5.000, el PSOE pasó de 93 a 41 de 178. El PP subió",
+      "cifra": "41",
+      "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "el PSOE pasó de 93 a 41 de 178. El PP subió en todos",
+      "cifra": "178",
+      "calculo": "D['TT']['De 1.000 a 5.000']['n']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "Palencia, que ganó el PP por 2,4 puntos tras haberla",
+      "cifra": "2,4",
+      "calculo": "D['CAP']['Palencia']['marg23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "conservó el PSOE, con el 33,6 % frente al 31,2 % del",
+      "cifra": "33,6",
+      "calculo": "D['CAP']['Soria']['psoe23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PSOE, con el 33,6 % frente al 31,2 % del PP. En Valladolid,",
+      "cifra": "31,2",
+      "calculo": "D['CAP']['Soria']['pp23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Valladolid, la mayor, el PP sacó el 40,7 % y el PSOE el 34,8",
+      "cifra": "40,7",
+      "calculo": "D['CAP']['Valladolid']['pp23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "sacó el 40,7 % y el PSOE el 34,8 %; en 2019 había ganado",
+      "cifra": "34,8",
+      "calculo": "D['CAP']['Valladolid']['psoe23']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "había ganado el PSOE con el 31,7 %, por delante del PP",
+      "cifra": "31,7",
+      "calculo": "D['CAP']['Valladolid']['psoe19']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "31,7 %, por delante del PP (30,2 %).",
+      "cifra": "30,2",
+      "calculo": "D['CAP']['Valladolid']['pp19']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "número de municipios en las nueve provincias, ya en 2019.",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "2023, Soria ¡Ya! obtuvo el 19,3 % en la provincia de",
+      "cifra": "19,3",
+      "calculo": "D['SY_SORIA']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "provincia de Soria y ganó en cuatro pueblos, Aliud, Blacos,",
+      "cifra": "cuatro",
+      "calculo": "D['NSY']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "del Campo; Por Ávila, el 7,6 % en Ávila y ganó en",
+      "cifra": "7,6",
+      "calculo": "D['XAV_AVILA']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "7,6 % en Ávila y ganó en tres, Chamartín, Niharra",
+      "cifra": "tres",
+      "calculo": "D['NXAV']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "mismos que en 2019; la UPL, el 8,3 % en León, sin ganar",
+      "cifra": "8,3",
+      "calculo": "D['UPL_LEON']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "por casi nada. En 2023, en 53 el primero sacó un solo",
+      "cifra": "53",
+      "calculo": "D['UNVOTO']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "solo voto al segundo, y en 33 los dos primeros empataron.",
+      "cifra": "33",
+      "calculo": "D['GANA']['2023_07']['EMPATE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "dos primeros empataron. En 117 la ventaja fue de menos",
+      "cifra": "117",
+      "calculo": "D['AJ2']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Duero, que ganó el PSOE por 40 votos.",
+      "cifra": "40",
+      "calculo": "D['AJG'][0][4]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el reparto central de los 31 escaños da al PP 16,",
+      "cifra": "31",
+      "calculo": "sum(D['ESC26'].values())",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de los 31 escaños da al PP 16, dos menos que en 2023;",
+      "cifra": "16",
+      "calculo": "D['E29']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "menos que en 2023; al PSOE, 10, dos menos, y a Vox,",
+      "cifra": "10",
+      "calculo": "D['E29']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PSOE, 10, dos menos, y a Vox, 5, frente al uno que sacó",
+      "cifra": "5",
+      "calculo": "D['E29']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de las simulaciones en las nueve provincias. El modelo",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Nueve provincias y tres listas",
+      "cifra": "Nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "intertítulo"
+    },
+    {
+      "texto": "Nueve provincias y tres listas provinciales",
+      "cifra": "tres",
+      "calculo": "sum(1 for k in ('XAV_AVILA','UPL_LEON','SY_SORIA') if D[k] > 0)",
+      "_donde": "intertítulo"
+    },
+    {
+      "texto": "El PSOE pasó de ganar en 592 municipios a ganar en",
+      "cifra": "592",
+      "calculo": "D['GANA']['2019_11']['PSOE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "592 municipios a ganar en 307; el PP, de 1.546 a 1.886Partido",
+      "cifra": "307",
+      "calculo": "D['GANA']['2023_07']['PSOE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "a ganar en 307; el PP, de 1.546 a 1.886Partido más votado",
+      "cifra": "1.546",
+      "calculo": "D['GANA']['2019_11']['PP']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "votado en cada uno de los 2.248 municipios de Castilla",
+      "cifra": "2.248",
+      "calculo": "D['NMUN']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "En los 311 municipios que pasaron",
+      "cifra": "311",
+      "calculo": "D['PSOE_PP']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "al PP, el PSOE subió del 32,6 % al 34,0 %Voto al PP,",
+      "cifra": "32,6",
+      "calculo": "D['FLS']['2019_11']['PSOE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "PSOE subió del 32,6 % al 34,0 %Voto al PP, al PSOE,",
+      "cifra": "34,0",
+      "calculo": "D['FLS']['2023_07']['PSOE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "El PSOE ganó en seis de las nueve capitales",
+      "cifra": "seis",
+      "calculo": "D['NCAP19']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "PSOE ganó en seis de las nueve capitales en 2019; en",
+      "cifra": "nueve",
+      "calculo": "len(D['CAP'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "PSOE en julio de 2023 en las nueve capitales de provincia,",
+      "cifra": "nueve",
+      "calculo": "len(D['CAP'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "número de municipios en las nueve provincias, también",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "53 municipios se decidieron",
+      "cifra": "53",
+      "calculo": "D['UNVOTO']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "2023 por un solo voto, y en 33 hubo empateVentaja del",
+      "cifra": "33",
+      "calculo": "D['GANA']['2023_07']['EMPATE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "segundo en julio de 2023 en los diez municipios de más de",
+      "cifra": "diez",
+      "calculo": "len(D['AJG'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "encuestas, Vox pasaría de uno a cinco diputados en Castilla",
+      "cifra": "cinco",
+      "calculo": "D['E29']['VOX']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "PSOE perderían escañosLos 31 diputados de las nueve",
+      "cifra": "31",
+      "calculo": "sum(D['ESC26'].values())",
+      "_donde": "pie"
+    },
+    {
+      "texto": "escañosLos 31 diputados de las nueve provincias: un cuadrado",
+      "cifra": "nueve",
+      "calculo": "len(D['PRN'])",
+      "_donde": "pie"
+    }
+  ],
+  "externas": [],
+  "ignorar": [
+    {
+      "texto": "(la mitad tenían menos de 100 habitantes), 43 pasaron",
+      "motivo": "umbral (mediana de población por debajo de 100, comprobada en el script)"
+    },
+    {
+      "texto": "municipios tienen menos de 100 habitantes, y entre",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "grandes: en los de más de 20.000 habitantes, el PSOE",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "Rabanedo y Soria. En los de 1.000 a 5.000, el PSOE pasó",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "Soria. En los de 1.000 a 5.000, el PSOE pasó de 93",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "puntos. Entre los de más de 5.000 habitantes, el más ajustado",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "tienen un margen amplio a 18 días de la votación.",
+      "motivo": "días hasta la votación"
+    },
+    {
+      "texto": "en 307; el PP, de 1.546 a 1.886Partido más votado",
+      "motivo": "el extractor corta «1.886» pegado al título de la tabla; la cifra 1.886 está declarada en el texto"
+    },
+    {
+      "texto": "En los pueblos de menos de 100 habitantes, el PP ya",
+      "motivo": "umbral de población"
+    },
+    {
+      "texto": "diez municipios de más de 5.000 habitantes más ajustados,",
+      "motivo": "umbral de población"
+    }
+  ],
+  "permitir_espana": []
+}

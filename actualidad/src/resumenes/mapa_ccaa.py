@@ -37,8 +37,12 @@ p = lambda v: n(v, 1)
 s1 = lambda v: f'{v:+.1f}'.replace('.', ',').replace('-', '−')
 
 
-def municipios(provs):
-    """Tabla de municipios de las provincias dadas, con votos por lista, porcentajes y ganador."""
+def municipios(provs, regionales=None):
+    """Tabla de municipios de las provincias dadas, con votos por lista, porcentajes y ganador.
+
+    regionales: CSV de datos/ con votos por municipio de listas que en las descargas van en OTROS (columnas
+    <año>_v<LISTA>, de los mismos datos por mesa de pollspaindata/Interior); se restan de OTROS y pueden ganar municipios.
+    """
     m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
     m = m[m.mun_code.str[:2].isin(provs)].copy()
     b = pd.read_csv(RAIZ / 'generales-2026/descargas/listas_separadas.csv', dtype={'tract_code': str})
@@ -54,11 +58,24 @@ def municipios(provs):
         m[f'{y}_vCUP'] = m.mun_code.map(cup[f'{y}_vCUP']).fillna(0)
         m[f'{y}_vOTROS'] = m[f'{y}_vOTROS'] - m[f'{y}_vCUP']
         assert (m[f'{y}_vOTROS'] >= 0).all()
+    REG = {Y19: [], Y23: []}
+    if regionales:
+        rg = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos' / regionales, dtype={'mun_code': str}).set_index('mun_code')
+        for col in rg.columns:
+            y, k = col.split('_v')
+            REG[y].append(k)
+            m[col] = m.mun_code.map(rg[col]).fillna(0)
+            m[f'{y}_vOTROS'] = m[f'{y}_vOTROS'] - m[col]
+        for y in (Y19, Y23):
+            assert (m[f'{y}_vOTROS'] >= 0).all()
+            for k in REG[Y19] + REG[Y23]:
+                if f'{y}_v{k}' not in m:
+                    m[f'{y}_v{k}'] = 0
     for y in (Y19, Y23):
-        m[f'{y}_val'] = m[[f'{y}_v{f}' for f in F + ['CUP']]].sum(axis=1)
-        for f in F + ['CUP'] + (['UP', 'MP'] if y == Y19 else []):
+        m[f'{y}_val'] = m[[f'{y}_v{f}' for f in F + ['CUP'] + REG[y]]].sum(axis=1)
+        for f in F + ['CUP'] + REG[y] + (['UP', 'MP'] if y == Y19 else []):
             m[f'{y}%{f}'] = m[f'{y}_v{f}'] / m[f'{y}_val'] * 100
-    for y, L in ((Y19, L19), (Y23, L23)):
+    for y, L in ((Y19, L19 + REG[Y19]), (Y23, L23 + REG[Y23])):
         v = m[[f'{y}_v{f}' for f in L]]
         o = np.argsort(-v.values, axis=1, kind='stable')
         s = np.take_along_axis(v.values, o, axis=1)
