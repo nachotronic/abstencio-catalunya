@@ -161,7 +161,7 @@ def grupos():
 g_voto = figura(f'Donde más pesa el IMV, PP y Vox sumaron el {p(DER1)} % en 2023; donde menos, el {p(DER4)} %',
                 'Voto en las generales de julio de 2023 en cada cuarto de las 52 provincias, ordenadas por beneficiarios del IMV por habitante. '
                 'Porcentaje sobre votos válidos',
-                grupos(), f'Fuente: Ministerio del Interior, resultados de 2023 por provincia; <a href="{SS_XLSX}">INSS</a>; <a href="{INE}">INE</a>. Cálculo propio.',
+                grupos(), f'Fuente: Ministerio del Interior, resultados de 2023 por provincia; <a href="{SS_XLSX}">INSS</a>; <a href="{INE}">INE</a>. Cálculo propio. Las sumas se calculan con los votos, antes de redondear.',
                 [(k, c) for k, c in PARTIDOS],
                 (['Grupo', 'IMV por cada 100 hab.', 'PP', 'PSOE', 'Vox', 'Sumar'],
                  [[str(i + 1) + 'º', p(cu['tasa']), p(cu['PP']), p(cu['PSOE']), p(cu['Vox']), p(cu['Sumar'])] for i, cu in enumerate(CUARTOS)]))
@@ -178,7 +178,7 @@ PV = cc.loc['País Vasco']
 cuerpo = f"""
 {g_mapa}
 <h2>Lo que propone el PP</h2>
-<p data-tipo="contexto">Alberto Núñez Feijóo presentó el martes en Madrid el programa del PP para el 29N y anunció que, si gobierna, creará «una renta de activación que reúna el ingreso mínimo vital y los diferentes subsidios en un solo camino hacia el empleo», según <a href="{EP}">Europa Press</a>. La haría con las comunidades autónomas y sería compatible con un trabajo desde el primer día, «de tal modo que aceptar un empleo siempre mejore la situación familiar».</p>
+<p data-tipo="contexto">Alberto Núñez Feijóo presentó el martes en Madrid el programa del PP para el 29N y anunció que, si gobierna, creará «una renta de activación que reúna el ingreso mínimo vital y los diferentes subsidios en un solo camino hacia el empleo», según <a href="{EP}">Europa Press</a>. La haría con las comunidades autónomas y sería compatible con un trabajo desde el primer día, para que aceptar un empleo siempre mejore la situación de la familia, según Europa Press.</p>
 <blockquote class="cita"><p>«Cada beneficiario firmará un acuerdo de formación y búsqueda de empleo, con seguimiento verificable. Rechazar empleos adecuados de forma reiterada y sin causa justificada supondrá la pérdida graduada de las ayudas»</p><footer>Alberto Núñez Feijóo, presidente del PP, en la presentación del programa electoral, según <a href="{EP}">Europa Press</a> (10-11-2026)</footer></blockquote>
 <p data-tipo="contexto">Feijóo resumió la idea en una frase: «trabajar tiene que compensar más que no hacerlo». Europa Press señala que la medida no figura en el documento de 249 propuestas que el PP difundió a los medios, y que ese programa deja huecos que el partido prevé ir llenando durante la campaña. Por eso aún no se sabe qué subsidios entrarían ni cuánto cobraría cada hogar.</p>
 
@@ -192,7 +192,7 @@ cuerpo = f"""
 <p data-tipo="dato">El número de beneficiarios creció en todas las comunidades menos en el País Vasco, que gestiona el IMV desde 2022: allí bajó un {p(-PV["var"])} % en un año. La variación por comunidad es la de la nómina de cada entidad gestora, no la de los hogares que se mudan de una a otra.</p>
 
 <h2>Cómo votaron las provincias donde más pesa</h2>
-<p data-tipo="patron">Si se ordenan las 52 provincias por beneficiarios del IMV por habitante y se reparten en cuatro grupos de 13, en el grupo donde más pesa el IMV el PP sacó el {p(Q1["PP"])} % de los votos en 2023, el PSOE el {p(Q1["PSOE"])} % y Vox el {p(Q1["Vox"])} %. En el grupo donde menos pesa, el PP sacó el {p(Q4["PP"])} %, el PSOE el {p(Q4["PSOE"])} % y Vox el {p(Q4["Vox"])} %. PP y Vox suman {p(DER1)} % en el primero y {p(DER4)} % en el último; PSOE y Sumar, {p(IZQ1)} % y {p(IZQ4)} %. El primer grupo lo forman {lista(Q1['provs'])}; el último, {lista(Q4['provs'])}.</p>
+<p data-tipo="patron">Si se ordenan las 52 provincias por beneficiarios del IMV por habitante y se reparten en cuatro grupos de 13, en el grupo donde más pesa el IMV el PP sacó el {p(Q1["PP"])} % de los votos en 2023, el PSOE el {p(Q1["PSOE"])} % y Vox el {p(Q1["Vox"])} %. En el grupo donde menos pesa, el PP sacó el {p(Q4["PP"])} %, el PSOE el {p(Q4["PSOE"])} % y Vox el {p(Q4["Vox"])} %. PP y Vox suman {p(DER1)} % en el primero y {p(DER4)} % en el último; PSOE y Sumar, {p(IZQ1)} % y {p(IZQ4)} %. Las sumas se calculan con los votos, antes de redondear. El primer grupo lo forman {lista(Q1['provs'])}; el último, {lista(Q4['provs'])}.</p>
 {g_voto}
 <p data-tipo="hipotesis">Buena parte de esa diferencia es geografía. En el grupo donde menos pesa el IMV están Barcelona, Bizkaia y Gipuzkoa, donde el PP y Vox son débiles y votan mucho a partidos que no se presentan en el resto de España. Y las provincias con más IMV son también las de menos renta. Si se descuenta la renta de cada provincia, la relación entre el peso del IMV y el voto al PP desaparece (correlación de {pr(RP["PP"])}); con Vox se mantiene, más débil ({pr(RP["Vox"])}, frente a {pr(R["Vox"])} sin descontarla). Son datos de provincias, no de personas: no dicen qué votan quienes cobran el IMV.</p>
 

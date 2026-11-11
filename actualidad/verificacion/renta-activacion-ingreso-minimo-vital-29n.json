@@ -269,18 +269,6 @@
       "_donde": "patron"
     },
     {
-      "texto": "el último; PSOE y Sumar, 44,1 % y 44,3 %. El primer",
-      "cifra": "44,1",
-      "calculo": "D['IZQ1']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "último; PSOE y Sumar, 44,1 % y 44,3 %. El primer grupo lo",
-      "cifra": "44,3",
-      "calculo": "D['IZQ4']",
-      "_donde": "patron"
-    },
-    {
       "texto": "desaparece (correlación de -0,01); con Vox se mantiene,",
       "cifra": "0,01",
       "calculo": "abs(D['RP']['PP'])",
@@ -333,6 +321,18 @@
       "cifra": "52",
       "calculo": "len(D['PROV'])",
       "_donde": "pie"
+    },
+    {
+      "texto": "el último; PSOE y Sumar, 44,1 % y 44,3 %. Las sumas",
+      "cifra": "44,1",
+      "calculo": "D['IZQ1']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "último; PSOE y Sumar, 44,1 % y 44,3 %. Las sumas se calculan",
+      "cifra": "44,3",
+      "calculo": "D['IZQ4']",
+      "_donde": "patron"
     }
   ],
   "externas": [
