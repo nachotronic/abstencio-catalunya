@@ -29,7 +29,7 @@ EQUIV = RAIZ / 'previsiones/datos/partidos_encuestas.csv'
 FEED = 'https://www.electografica.com/feeds/posts/default/-/{}?alt=json&max-results=150&start-index={}'
 UA = 'mapaelectoral.es (descarga diaria de encuestas; https://mapaelectoral.es)'
 PARTIDOS = ['PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS', 'SALF', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC', 'UPN',
-            'ALIANCA', 'CS', 'OTROS']
+            'ALIANCA', 'CS', 'AA', 'OTROS']   # AA = Adelante Andalucía
 
 
 def descarga(etiqueta):

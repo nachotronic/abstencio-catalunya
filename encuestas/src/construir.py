@@ -38,18 +38,20 @@ import sigue  # noqa: E402  (cards con imagen en «Sigue leyendo»)
 DATOS = RAIZ / 'previsiones/datos/encuestas'
 SALIDA = RAIZ / 'encuestas'
 URL = BASE + '/encuestas/'
-# los seis partidos de ámbito estatal que miden todas las encuestas, con su color (claro, oscuro)
+# los partidos que miden casi todas las encuestas, con su color (claro, oscuro): los seis de ámbito estatal y Adelante
+# Andalucía, que solo se presenta en Andalucía pero las encuestas estiman aparte (antes caía en «Otros» y no se veía)
 PRINCIPALES = [('PP', 'PP', '#1d84ce', '#4fa8ea'), ('PSOE', 'PSOE', '#e30613', '#ff5a5f'), ('VOX', 'Vox', '#5ac035', '#74d651'),
                ('SUMAR', 'Sumar / Frente Amplio', '#a2275f', '#d0679a'), ('PODEMOS', 'Podemos', '#5a3c8f', '#8a6fe0'),
-               ('SALF', 'SALF', '#785a46', '#a9876f')]
+               ('SALF', 'SALF', '#785a46', '#a9876f'), ('AA', 'Adelante Andalucía', '#1fb07a', '#3fcf98')]
 # el resto de partidos con escaño, para el hemiciclo
 OTROS_ESC = [('ERC', 'ERC', '#f5b324', '#f7c454'), ('JUNTS', 'Junts', '#20c0b2', '#2fd0c2'), ('BILDU', 'EH Bildu', '#a5c400', '#b9d630'),
              ('PNV', 'PNV', '#2b8a3e', '#4caf63'), ('BNG', 'BNG', '#4a9fdc', '#7ab8e6'), ('CC', 'CC', '#f7d417', '#f9e04a'),
              ('UPN', 'UPN', '#0b3d91', '#5b7fd0'), ('ALIANCA', 'Aliança Catalana', '#064a81', '#4a86c0'), ('CS', 'Ciudadanos', '#eb6109', '#f28a45'),
              ('NC', 'Nueva Canarias', '#e08a2e', '#f0a050'), ('CUP', 'CUP', '#d4b200', '#f0d000')]
 TODOS = PRINCIPALES + OTROS_ESC
+CORTO = {'SUMAR': 'Sumar', 'AA': 'Adelante'}   # etiquetas de las barras estrechas (la leyenda lleva el nombre entero)
 # orden aproximado de izquierda a derecha en el hemiciclo
-ORDEN_HEMI = ['BILDU', 'CUP', 'BNG', 'PODEMOS', 'SUMAR', 'ERC', 'NC', 'PSOE', 'PNV', 'JUNTS', 'CC', 'CS', 'UPN', 'PP', 'ALIANCA', 'SALF', 'VOX']
+ORDEN_HEMI = ['BILDU', 'CUP', 'BNG', 'PODEMOS', 'AA', 'SUMAR', 'ERC', 'NC', 'PSOE', 'PNV', 'JUNTS', 'CC', 'CS', 'UPN', 'PP', 'ALIANCA', 'SALF', 'VOX']
 NOMBRE = {k: n for k, n, _, _ in TODOS}
 NO_ENCUESTAS = {'keydata', 'sumar', 'psoe', 'pp', 'vox', 'podemos'}   # medias de otros medios y sondeos internos de partido
 DESDE_GRAFICO = 365   # días que enseña el gráfico
@@ -59,7 +61,7 @@ VISIBLES = 10
 ESTIMACION = pathlib.Path(os.environ.get('ESTIMACION_DIR', RAIZ / 'previsiones/datos/publico'))
 DEL_MODELO = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'Podemos': 'PODEMOS', 'SALF': 'SALF', 'ERC': 'ERC',
               'Junts': 'JUNTS', 'EH Bildu': 'BILDU', 'PNV': 'PNV', 'BNG': 'BNG', 'CC': 'CC', 'UPN': 'UPN', 'Aliança': 'ALIANCA',
-              'Nueva Canarias': 'NC', 'CUP': 'CUP'}
+              'Nueva Canarias': 'NC', 'CUP': 'CUP', 'Adelante Andalucía': 'AA'}
 VENTANA_MEDIANA = 21
 
 
@@ -380,8 +382,8 @@ def graficos_ultimo(graficos):
             aviso = AVISOS_ULTIMO.get((clave(e['casa']), e.get('publicado') or e['fin'])) if k == 'SUMAR' else None
             if aviso:
                 avisos.append(f'<sup>*</sup> {html.escape(aviso)}')
-            corto = 'Sumar' if k == 'SUMAR' else n
-            filas.append(f'<div class="bu-f"><span class="bu-n">{corto}{"<sup>*</sup>" if aviso else ""}</span>'
+            corto = CORTO.get(k, n)
+            filas.append(f'<div class="bu-f"><span class="bu-n" title="{n}">{corto}{"<sup>*</sup>" if aviso else ""}</span>'
                          f'<span class="bu-b"><i style="width:{escala(v)};--c:{c};--cd:{cd}"></i>{raya}</span>'
                          f'<span class="bu-v">{f"{v:.1f}".replace(".", ",")}</span><span class="bu-d">{dif}</span></div>')
         sub = (f'Cambio frente a su encuesta del {dia(ant.get("publicado") or ant["fin"])}' if ant else 'Sin encuesta anterior de esta casa')
@@ -639,7 +641,7 @@ def svg_hemiciclo(hemi):
 def insertable(h1, med, hemi, n_hemi, actual, hoy):
     """encuestas/insertar.html: resumen para poner en otra web con un iframe. noindex, con canonical a /encuestas/."""
     maxv = max(med[k] for k, *_ in PRINCIPALES if k in med)
-    barras = ''.join(f'<li><span class="n">{"Sumar" if k == "SUMAR" else n}</span><span class="b"><i style="width:{med[k] / maxv * 100:.1f}%;background:{c}"></i></span>'
+    barras = ''.join(f'<li><span class="n">{CORTO.get(k, n)}</span><span class="b"><i style="width:{med[k] / maxv * 100:.1f}%;background:{c}"></i></span>'
                      f'<b>{pc(med[k])}</b></li>' for k, n, c, _ in PRINCIPALES if k in med)
     bloque = ''
     if hemi:

@@ -26,8 +26,10 @@ MESES = {m: i + 1 for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun
 # cabecera de Wikipedia -> partido del modelo (los mismos códigos que partidos_encuestas.csv)
 PARTIDOS = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'FA': 'SUMAR', 'FV': 'SUMAR', 'Compromís': 'SUMAR',
             'Podemos': 'PODEMOS', 'SALF': 'SALF', 'ERC': 'ERC', 'Junts': 'JUNTS', 'EH Bildu': 'BILDU', 'PNV': 'PNV',
-            'BNG': 'BNG', 'CCa': 'CC', 'UPN': 'UPN', 'Aliança.cat': 'ALIANCA', 'CS': 'CS', "Cs": 'CS'}
-ORDEN = ['PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS', 'SALF', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC', 'UPN', 'ALIANCA', 'CS', 'OTROS']
+            'BNG': 'BNG', 'CCa': 'CC', 'UPN': 'UPN', 'Aliança.cat': 'ALIANCA', 'CS': 'CS', "Cs": 'CS',
+            # la cabecera de Adelante Andalucía es solo el logo, sin sigla: llega como «Adelante Andalucía (2021)»
+            'Adelante Andalucía (2021)': 'AA', 'Adelante Andalucía': 'AA', 'AA': 'AA'}
+ORDEN = ['PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS', 'SALF', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC', 'UPN', 'ALIANCA', 'CS', 'AA', 'OTROS']
 # KeyData (Público) es una media de encuestas, no una encuesta: no cuenta como falta. Tampoco los sondeos internos
 # que un partido filtra a la prensa (Wikipedia los apunta con el partido como encuestadora)
 AGREGADORES = {'keydata'}
@@ -83,7 +85,8 @@ def cabecera(tabla):
     for linea in tabla.split('|-')[1].split('\n'):
         if linea.startswith('!'):
             m = re.findall(r'\[\[[^]]*\|([^]|]+)\]\]', linea)
-            nombres.append(m[-1].strip() if m else re.sub(r'.*\|', '', linea).strip())
+            n = m[-1].strip() if m else re.sub(r'.*\|', '', linea).strip()
+            nombres.append(re.sub(r'^link=', '', n))   # logo sin sigla: «[[File:…|link=Adelante Andalucía (2021)]]»
     return nombres
 
 
