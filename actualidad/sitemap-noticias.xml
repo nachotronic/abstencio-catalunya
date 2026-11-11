@@ -49,6 +49,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-comunitat-valenciana-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-11</news:publication_date>
+      <news:title>El mapa electoral de la Comunitat Valenciana: el PSOE sumó 148.135 votos y aun así pasó de ganar en 353 municipios a ganar en 224</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
