@@ -4316,7 +4316,7 @@ PIEZAS += [
                   pie='Pedro Sánchez y Santiago Abascal, cada uno en un extremo, con una cámara de televisión y un sobre de votación entre ellos: un collage.'),
     ),
     dict(
-        slug='mapa-electoral-cataluna-29n', fecha='2026-11-10',
+        slug='mapa-electoral-cataluna-29n', fecha='2026-11-11',
         titulo='El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462', serie='29n', figura=1,
         descripcion='En 2023, el PSC ganó en 66 de los 68 municipios de más de 20.000 habitantes y en las cuatro capitales; Junts, en 295 pueblos, sobre todo de Girona y Lleida. Para el 29N, la media de encuestas da al PSC 17 de los 48 diputados, y a ERC, 11.',
         compara='Las generales de noviembre de 2019 y julio de 2023 en los 947 municipios de Cataluña: el partido más votado en cada uno, el cambio del PSC, el voto según el tamaño del municipio, las capitales, las provincias y los municipios más ajustados; y el reparto central de la media de encuestas del 29N en las cuatro provincias.',

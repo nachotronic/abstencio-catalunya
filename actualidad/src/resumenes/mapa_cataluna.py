@@ -262,7 +262,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 {g_esc}
 <p data-tipo="contexto">Junts discute al PSC el centro político. Míriam Nogueras, de Junts, respondió a Illa en un acto de presentación de sus candidatos: «Quizás lo que le molesta al señor Illa no es que estemos en medio, quizás lo que le molesta es que los del medio cada día somos más», según <a href="{ELN}">ElNacional.cat</a>. Y Oriol Junqueras presentó a ERC en Badalona como «el único partido político que siempre ha plantado cara a la extrema derecha y la derecha extrema», según <a href="{EFE}">EFE</a>.</p>
 <h2>Lo que estos datos no dicen</h2>
-<p data-tipo="hipotesis">Estos datos son por municipio, no de personas: no dicen qué hizo cada votante de ERC en 2023. Que el PSC subiera mientras bajaban ERC y la participación encaja con un trasvase, pero también con votantes independentistas que se quedaron en casa y otros que votaron por primera vez. Los porcentajes son sobre votos a candidaturas y sin el voto exterior, por eso no coinciden con los oficiales. Las encuestas tienen un margen amplio a 19 días de la votación.</p>
+<p data-tipo="hipotesis">Estos datos son por municipio, no de personas: no dicen qué hizo cada votante de ERC en 2023. Que el PSC subiera mientras bajaban ERC y la participación encaja con un trasvase, pero también con votantes independentistas que se quedaron en casa y otros que votaron por primera vez. Los porcentajes son sobre votos a candidaturas y sin el voto exterior, por eso no coinciden con los oficiales. Las encuestas tienen un margen amplio a 18 días de la votación.</p>
 <p data-tipo="contexto">La historia electoral de Cataluña desde 1977, con las autonómicas, está en {L("cataluna-historia-electoral", "Cataluña en las urnas")}. Los datos de cada municipio, su censo y su serie desde 1977 están en <a href="{BASE}elecciones/cataluna/">la ficha de Cataluña</a>.</p>'''
 
 preguntas = [
@@ -300,5 +300,5 @@ pieza(SLUG, 'El mapa electoral de Cataluña',
       f'El mapa electoral de Cataluña: ERC pasó de ganar en {GANA[Y19]["ERC"]} municipios a ganar en {GANA[Y23]["ERC"]}, y el PSC, de {GANA[Y19]["PSOE"]} a {GANA[Y23]["PSOE"]}',
       f'En 2023, el PSC ganó en {GRANDES_PSC} de los {GRANDES} municipios de más de 20.000 habitantes y en las cuatro capitales; Junts, en {GANA[Y23]["JUNTS"]} pueblos, sobre todo de Girona y Lleida. '
       f'Para el 29N, la media de encuestas da al PSC {E29["PSOE"]} de los 48 diputados, y a ERC, {E29["ERC"]}.',
-      '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
+      '11 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('GANA', GANA, 'TR', ERC_PSC, ERC_JUNTS, JUNTS_PSC, 'IND', IND, 'POB', POB, 'E29', E29, 'AJ', AJ2, AJ10, list(AJG.municipio), 'EMP23', EMP23, 'NTR', NTR, PSC_SUBE, PSC_MAS20)
