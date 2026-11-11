@@ -5,18 +5,6 @@
   },
   "cifras": [
     {
-      "texto": "presidente que en 2023 ganó en 17 de los 18 departamentos",
-      "cifra": "17",
-      "calculo": "len(D['GANA']['pena'])",
-      "_donde": "titular"
-    },
-    {
-      "texto": "en 2023 ganó en 17 de los 18 departamentos",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
-      "_donde": "titular"
-    },
-    {
       "texto": "de pensiones pública: de 70.000 millones de guaraníes en septiembre",
       "cifra": "70.000 millones",
       "calculo": "D['IPS'][0][1] * 1e6",
@@ -35,18 +23,6 @@
       "_donde": "dato"
     },
     {
-      "texto": "Peña fue el más votado en 17 de los 18 departamentos,",
-      "cifra": "17",
-      "calculo": "len(D['GANA']['pena'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el más votado en 17 de los 18 departamentos, contando",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
-      "_donde": "dato"
-    },
-    {
       "texto": "Argentina, donde Cubas sacó el 38,2 % y Peña, el 35,6 %.",
       "cifra": "38,2",
       "calculo": "D['DEP']['Alto Paraná']['%cubas']",
@@ -56,30 +32,6 @@
       "texto": "sacó el 38,2 % y Peña, el 35,6 %. Superó el 50 % en",
       "cifra": "35,6",
       "calculo": "D['DEP']['Alto Paraná']['%pena']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Peña, el 35,6 %. Superó el 50 % en 7 departamentos;",
-      "cifra": "50",
-      "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
-      "_donde": "dato"
-    },
-    {
-      "texto": "35,6 %. Superó el 50 % en 7 departamentos; su mejor",
-      "cifra": "7",
-      "calculo": "len(D['MAS50'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Paraguay, en el Chaco, con el 69,3 %. En Asunción, la capital,",
-      "cifra": "69,3",
-      "calculo": "max(v['%pena'] for v in D['DEP'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Asunción, la capital, sacó el 51,5 %. En Central, el departamento",
-      "cifra": "51,5",
-      "calculo": "D['DEP']['Asunción']['%pena']",
       "_donde": "dato"
     },
     {
@@ -101,39 +53,9 @@
       "_donde": "dato"
     },
     {
-      "texto": "Peña ganó en 17 de los 18 departamentos;",
-      "cifra": "17",
-      "calculo": "len(D['GANA']['pena'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Peña ganó en 17 de los 18 departamentos; Cubas,",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
-      "_donde": "pie"
-    },
-    {
       "texto": "se multiplicó por más de 30 con Peña en el Gobierno,",
       "cifra": "30",
       "calculo": "(D['IPS'][-1][1] / D['IPS'][0][1]) // 10 * 10",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Peña superó el 50 % en 7 departamentos;",
-      "cifra": "50",
-      "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Peña superó el 50 % en 7 departamentos; en Central,",
-      "cifra": "7",
-      "calculo": "len(D['MAS50'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "electores, se quedó en el 37,0 %Porcentaje de votos",
-      "cifra": "37,0",
-      "calculo": "D['DEP']['Central']['%pena']",
       "_donde": "pie"
     },
     {
@@ -143,10 +65,82 @@
       "_donde": "entradilla"
     },
     {
-      "texto": "42,7 % de los votos; de los 18 departamentos, solo",
-      "cifra": "18",
-      "calculo": "len(D['DEP'])",
+      "texto": "presidente que en 2023 ganó en 16 de los 17 departamentos",
+      "cifra": "16",
+      "calculo": "len(D['GANA_DEP'])",
+      "_donde": "titular"
+    },
+    {
+      "texto": "en 2023 ganó en 16 de los 17 departamentos y en Asunción",
+      "cifra": "17",
+      "calculo": "D['N_DEP']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "42,7 % de los votos; de los 17 departamentos, solo",
+      "cifra": "17",
+      "calculo": "D['N_DEP']",
       "_donde": "entradilla"
+    },
+    {
+      "texto": "Peña fue el más votado en 16 de los 17 departamentos",
+      "cifra": "16",
+      "calculo": "len(D['GANA_DEP'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el más votado en 16 de los 17 departamentos y en Asunción,",
+      "cifra": "17",
+      "calculo": "D['N_DEP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "35,6 %. Superó el 50 % en 6 departamentos y en Asunción;",
+      "cifra": "6",
+      "calculo": "len(D['MAS50_DEP'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Paraguay, en el Chaco, con el 69,3 %. En Asunción sacó",
+      "cifra": "69,3",
+      "calculo": "max(v['%pena'] for v in D['DEP'].values())",
+      "_donde": "dato"
+    },
+    {
+      "texto": "69,3 %. En Asunción sacó el 51,5 %. En Central, el departamento",
+      "cifra": "51,5",
+      "calculo": "D['DEP']['Asunción']['%pena']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Peña ganó en 16 de los 17 departamentos",
+      "cifra": "16",
+      "calculo": "len(D['GANA_DEP'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Peña ganó en 16 de los 17 departamentos y en Asunción;",
+      "cifra": "17",
+      "calculo": "D['N_DEP']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Peña superó el 50 % en 6 departamentos",
+      "cifra": "50",
+      "calculo": "50 if all(D['DEP'][k]['%pena'] > 50 for k in D['MAS50']) else 0",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Peña superó el 50 % en 6 departamentos y en Asunción;",
+      "cifra": "6",
+      "calculo": "len(D['MAS50_DEP'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "electores, se quedó en el 37,0 %Porcentaje de votos",
+      "cifra": "37,0",
+      "calculo": "D['DEP']['Central']['%pena']",
+      "_donde": "pie"
     }
   ],
   "externas": [

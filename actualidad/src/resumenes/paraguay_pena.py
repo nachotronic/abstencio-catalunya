@@ -51,6 +51,12 @@ assert round(NAC_PCT, 2) == 42.74
 ORD = sorted(DEP, key=lambda d: -d['%pena'])
 MAS50 = [d['nombre'] for d in DEP if d['%pena'] > 50]
 CENTRAL, ALTO = D['Central'], D['Alto Paraná']
+# Paraguay tiene 17 departamentos y el distrito capital, Asunción, que no es departamento (corrección del 11-11-2026)
+assert 'Asunción' in GANA['pena'] and 'Asunción' in MAS50
+N_DEP = len(DEP) - 1
+GANA_DEP = [x for x in GANA['pena'] if x != 'Asunción']
+MAS50_DEP = [x for x in MAS50 if x != 'Asunción']
+assert N_DEP == 17 and len(GANA_DEP) == 16 and len(MAS50_DEP) == 6
 print('gana', {k: len(v) for k, v in GANA.items()}, 'mas50', len(MAS50), MAS50, 'pena central', round(CENTRAL['%pena'], 1),
       'max', ORD[0]['nombre'], round(ORD[0]['%pena'], 1), 'part', round(TOT['emitidos'] / TOT['electores'] * 100, 1))
 
@@ -119,19 +125,19 @@ def apiladas(W=430, ml=112, alto=24):
     return ''.join(out)
 
 
-TABLA = (['Departamento', 'Peña (%)', 'Alegre (%)', 'Cubas (%)', 'Más votado', 'Votos emitidos'],
+TABLA = (['Departamento o capital', 'Peña (%)', 'Alegre (%)', 'Cubas (%)', 'Más votado', 'Votos emitidos'],
          [[d['nombre'], p(d['%pena']), p(d['%alegre']), p(d['%cubas']), CORTO[d['gana']], n(d['emitidos'])] for d in ORD])
 FUENTE_V = ('Fuente: Tribunal Superior de Justicia Electoral (TSJE), resultados de 2023 por departamento según la tabla de '
             '<a href="https://es.wikipedia.org/wiki/Elecciones_generales_de_Paraguay_de_2023">Wikipedia</a>; sin el voto en el exterior. '
             'Porcentajes sobre votos emitidos (incluidos blancos y nulos), como los da el TSJE. Cálculo propio.')
 
-g_mapa = figura(f'Peña ganó en {len(GANA["pena"])} de los 18 departamentos; Cubas, solo en Alto Paraná',
+g_mapa = figura(f'Peña ganó en {len(GANA_DEP)} de los {N_DEP} departamentos y en Asunción; Cubas, solo en Alto Paraná',
                 'Candidato más votado en cada departamento y en Asunción en las presidenciales del 30 de abril de 2023. '
                 'Tono claro: menos del 40 % de los votos; medio, del 40 % al 50 %; intenso, más del 50 %. Toca un departamento para ver sus votos',
                 mapa(), FUENTE_V + ' Contornos: geoBoundaries (DGEEC), CC BY 4.0.',
                 [(NOMC[k], COLC[k]) for k in ('pena', 'alegre', 'cubas')], TABLA)
-g_apil = figura(f'Peña superó el 50 % en {len(MAS50)} departamentos; en Central, el de más electores, se quedó en el {p(CENTRAL["%pena"])} %',
-                'Porcentaje de votos de Santiago Peña, Efraín Alegre y Paraguayo Cubas en cada departamento en 2023, ordenados por el voto a Peña',
+g_apil = figura(f'Peña superó el 50 % en {len(MAS50_DEP)} departamentos y en Asunción; en Central, el de más electores, se quedó en el {p(CENTRAL["%pena"])} %',
+                'Porcentaje de votos de Santiago Peña, Efraín Alegre y Paraguayo Cubas en cada departamento y en Asunción en 2023, ordenados por el voto a Peña',
                 apiladas(), FUENTE_V, [(NOMC[k], COLC[k]) for k in ('pena', 'alegre', 'cubas')], TABLA)
 
 # --- Las votaciones del Congreso ---
@@ -172,10 +178,10 @@ WIKI = 'https://es.wikipedia.org/wiki/Elecciones_generales_de_Paraguay_de_2023'
 g_votos = g_votos.replace('__ABC__', ABC_VIVO)
 g_ips = g_ips.replace('__ABC__', ABC_VIVO)
 
-H1 = ('Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 17 de los 18 departamentos')
+H1 = ('Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 16 de los 17 departamentos y en Asunción')
 DEK = ('El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, '
        'un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el '
-       f'{p(NAC_PCT)} % de los votos; de los 18 departamentos, solo perdió Alto Paraná.')
+       f'{p(NAC_PCT)} % de los votos; de los 17 departamentos, solo perdió Alto Paraná.')
 cuerpo = f"""{EST}
 {g_mapa}
 <p data-tipo="dato">El Senado de Paraguay destituyó el viernes 6 de noviembre al presidente Santiago Peña por mal desempeño de funciones. Votaron a favor 44 de los 45 senadores; el único ausente fue Enrique Riera, que no llegó a ocupar su escaño tras haber renunciado como ministro del Interior de Peña, según <a href="{ABC_DEST}">ABC Color</a>. Hacían falta dos tercios, 30 votos, según <a href="{LT}">La Tercera</a>. El día antes, la Cámara de Diputados había aprobado la acusación con los votos de sus 78 diputados en activo, según <a href="{ABC_DEST}">ABC Color</a>. Pedro Alliana, vicepresidente desde 2023, juró el cargo esa misma noche en una sesión extraordinaria del Congreso y gobernará hasta agosto de 2028, cuando acaba el mandato, según <a href="{VOZ}">Vozpópuli</a>.</p>
@@ -194,7 +200,7 @@ cuerpo = f"""{EST}
 <blockquote class="cita"><p>«Ante la continuidad del juicio político, me presentaré y ejerceré mi derecho a la defensa. Lo haré con argumentos y pruebas, con respeto a la Constitución y a las instituciones de la República»</p><footer>Santiago Peña, el 5 de noviembre. Recogido por <a href="{LT}">La Tercera</a></footer></blockquote>
 <h2>El mapa que ganó en 2023</h2>
 <p data-tipo="dato">Peña llegó a la presidencia en agosto de 2023 con una victoria amplia. En las elecciones del 30 de abril sacó {n(NAC["pena"])} votos, el {p(NAC_PCT)} % de los emitidos, frente a los {n(NAC["alegre"])} de Efraín Alegre, de la Concertación opositora, según el cómputo que proclamó el Tribunal Superior de Justicia Electoral (TSJE) y recogió <a href="{UH}">Última Hora</a>. Paraguayo Cubas, de Cruzada Nacional, quedó tercero. En Paraguay no hay segunda vuelta: gana el más votado.</p>
-<p data-tipo="dato">Peña fue el más votado en {len(GANA["pena"])} de los 18 departamentos, contando Asunción. Solo perdió en Alto Paraná, en la frontera con Brasil y Argentina, donde Cubas sacó el {p(ALTO["%cubas"])} % y Peña, el {p(ALTO["%pena"])} %. Superó el 50 % en {len(MAS50)} departamentos; su mejor resultado fue Alto Paraguay, en el Chaco, con el {p(D["Alto Paraguay"]["%pena"])} %. En Asunción, la capital, sacó el {p(D["Asunción"]["%pena"])} %. En Central, el departamento con más votantes, que rodea la capital, se quedó en el {p(CENTRAL["%pena"])} %, frente al {p(CENTRAL["%alegre"])} % de Alegre y el {p(CENTRAL["%cubas"])} % de Cubas.</p>
+<p data-tipo="dato">Peña fue el más votado en {len(GANA_DEP)} de los {N_DEP} departamentos y en Asunción, la capital, que es un distrito aparte. Solo perdió en Alto Paraná, en la frontera con Brasil y Argentina, donde Cubas sacó el {p(ALTO["%cubas"])} % y Peña, el {p(ALTO["%pena"])} %. Superó el 50 % en {len(MAS50_DEP)} departamentos y en Asunción; su mejor resultado fue Alto Paraguay, en el Chaco, con el {p(D["Alto Paraguay"]["%pena"])} %. En Asunción sacó el {p(D["Asunción"]["%pena"])} %. En Central, el departamento con más votantes, que rodea la capital, se quedó en el {p(CENTRAL["%pena"])} %, frente al {p(CENTRAL["%alegre"])} % de Alegre y el {p(CENTRAL["%cubas"])} % de Cubas.</p>
 {g_apil}
 <p data-tipo="hipotesis">Ese mapa no dice nada de cómo votarían hoy los paraguayos: las próximas generales son en 2028. Lo que sí muestra es que Peña no ganó con un país partido en dos regiones, sino con un voto repartido por casi todo el territorio. La única excepción, Alto Paraná, es también el departamento donde Cubas logró su mejor resultado.</p>
 <p data-tipo="contexto">Alliana prometió compensar a los afectados en su primer discurso.</p>
@@ -205,13 +211,13 @@ preguntas = [
     ('¿Por qué destituyeron a Santiago Peña?', 'El Senado lo condenó por mal desempeño de funciones por el caso Ueno Bank, un banco del que había sido accionista y en el que se depositaron fondos públicos y de pensiones. El BCP dispuso su resolución el 3 de noviembre de 2026.'),
     ('¿Quién gobierna ahora Paraguay?', 'Pedro Alliana, que era vicepresidente. Juró el 6 de noviembre de 2026 y gobernará hasta agosto de 2028.'),
     ('¿Por qué no aceptaron su renuncia?', 'El Congreso no llegó a votarla porque la sesión se quedó sin quórum. Con la destitución, Peña no será senador vitalicio y no tendrá fueros.'),
-    ('¿Cuánto votó Paraguay a Peña en 2023?', f'El {p(NAC_PCT)} % de los votos emitidos: {n(NAC["pena"])}. Ganó en {len(GANA["pena"])} de los 18 departamentos; de ellos, solo perdió Alto Paraná, frente a Paraguayo Cubas.'),
+    ('¿Cuánto votó Paraguay a Peña en 2023?', f'El {p(NAC_PCT)} % de los votos emitidos: {n(NAC["pena"])}. Ganó en {len(GANA_DEP)} de los {N_DEP} departamentos y en Asunción, la capital; solo perdió Alto Paraná, frente a Paraguayo Cubas.'),
 ]
 enlaces = ('Más mapas electorales del mundo en <a href="../../temas/internacional/">Internacional</a>.')
 foot = ('Datos: resultados de las presidenciales de 2023 del TSJE por departamento, según la tabla de Wikipedia; el cómputo definitivo '
         '(Acuerdo y Sentencia 15/2023) no se puede descargar hoy de la web del TSJE. Sin el voto en el exterior. Cronología: ABC Color, '
         'La Tercera, Semana y Vozpópuli.')
 DATOS = {'DEP': {d['nombre']: {k: d[k] for k in ('pena', 'alegre', 'cubas', 'emitidos', '%pena', '%alegre', '%cubas', 'gana')} for d in DEP},
-         'NAC': NAC, 'NAC_PCT': NAC_PCT, 'GANA': GANA, 'MAS50': MAS50, 'IPS': IPS}
+         'N_DEP': N_DEP, 'GANA_DEP': GANA_DEP, 'MAS50_DEP': MAS50_DEP, 'NAC': NAC, 'NAC_PCT': NAC_PCT, 'GANA': GANA, 'MAS50': MAS50, 'IPS': IPS}
 scripts = f'<script>const D={json.dumps(DATOS, ensure_ascii=False)};'+'\n(function(){\n  var info=document.getElementById(\'py-info\'); if(!info) return;\n  var nf=function(v,d){var t=(+v).toFixed(d||0).split(\'.\');return t[0].replace(/\\B(?=(\\d{3})+(?!\\d))/g,\'.\')+(t[1]?\',\'+t[1]:\'\');};\n  var C={pena:[\'Santiago Peña\',\'var(--anr)\'],alegre:[\'Efraín Alegre\',\'var(--conc)\'],cubas:[\'Paraguayo Cubas\',\'var(--cn)\']};\n  var act=null;\n  function show(el){\n    var n=el.getAttribute(\'data-dep\'), r=D.DEP[n]; if(!r) return;\n    if(act) act.classList.remove(\'on\'); act=el; el.classList.add(\'on\');\n    var h=\'<b>\'+n+\'</b><table>\';\n    [\'pena\',\'alegre\',\'cubas\'].forEach(function(k){\n      h+=\'<tr><td><i class="sw" style="background:\'+C[k][1]+\'"></i>\'+C[k][0]+\'</td><td class="n">\'+nf(r[k])+\'</td><td class="n">\'+nf(r[\'%\'+k],1)+\' %</td></tr>\';\n    });\n    h+=\'</table><span class="pie">Votos emitidos: \'+nf(r.emitidos)+\'</span>\';\n    info.innerHTML=h;\n  }\n  document.querySelectorAll(\'#mapa-py path[data-dep]\').forEach(function(el){\n    el.addEventListener(\'mouseenter\',function(){show(el);});\n    el.addEventListener(\'click\',function(){show(el);});\n    el.addEventListener(\'focus\',function(){show(el);});\n  });\n})();\n'+'</script>\n'
 pieza(SLUG, 'Paraguay destituye a Peña', H1, DEK, '10 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts)

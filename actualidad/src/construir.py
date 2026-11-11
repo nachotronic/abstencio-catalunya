@@ -4347,9 +4347,10 @@ PIEZAS += [
                   pie='Un pueblo blanco entre olivares y una calle de bloques de pisos, con unos sobres de votación en medio: un collage.'),
     ),
     dict(
-        slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10', actualizado='2026-11-10 14:57',
-        titulo='Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 17 de los 18 departamentos', serie='internacional',
-        descripcion='El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el 42,7 % de los votos; de los 18 departamentos, solo perdió Alto Paraná.',
+        slug='paraguay-pena-destituido-mapa-departamentos', fecha='2026-11-10', actualizado='2026-11-11 07:45',
+        correcciones='11-11-2026: Paraguay tiene 17 departamentos y el distrito capital, Asunción, que no es un departamento. Peña ganó en 16 de los 17 departamentos y en Asunción, no «en 17 de los 18 departamentos», y superó el 50 % en 6 departamentos y en Asunción, no «en 7 departamentos». Corregidos el titular, la entradilla, los títulos de los gráficos, el texto y las preguntas.',
+        titulo='Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 16 de los 17 departamentos y en Asunción', serie='internacional',
+        descripcion='El Senado lo condenó el viernes por mal desempeño de funciones, con 44 votos de 45, por el hundimiento de Ueno Bank, un banco del que fue accionista. Pedro Alliana, su vicepresidente, gobernará hasta 2028. Peña había ganado con el 42,7 % de los votos; de los 17 departamentos, solo perdió Alto Paraná.',
         compara='Las presidenciales de Paraguay del 30 de abril de 2023 en los 17 departamentos y Asunción, y las votaciones del Senado del 6 de noviembre de 2026.',
         limites='El cómputo definitivo del TSJE por departamento (Acuerdo y Sentencia 15/2023) no se puede descargar hoy de la web del tribunal: los votos por departamento son los de la tabla de Wikipedia, que cita al TSJE, y no incluyen el voto en el exterior. Las cifras de fondos del IPS son las que presentó la acusación en el juicio, no cifras auditadas.',
         calculo='Porcentajes sobre votos emitidos (candidatos, blancos y nulos), recalculados con la suma de las columnas de cada departamento; en Boquerón y Caazapá la columna de votos emitidos de la tabla no cuadra con esa suma. Tono del mapa según el porcentaje del más votado.',
