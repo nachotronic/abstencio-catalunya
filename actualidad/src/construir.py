@@ -884,9 +884,12 @@ PIEZAS = [
                  ('https://recyt.fecyt.es/index.php/recp/article/download/37589/21106', 'Penadés y Santiuste, La desigualdad en el sistema electoral español y el premio a la localización del voto, Revista Española de Ciencia Política 32 (2013)'),
                  ('https://www.ehu.eus/es/web/campusa/-/el-reparto-de-los-escanos-en-el-congreso', 'Annick Laruelle, El reparto de los escaños en el Congreso, Campusa UPV/EHU (24-5-2019)'),
                  ('https://www.lamarea.com/2015/12/21/garzon-se-desploma-pero-mantiene-con-vida-a-iu/', 'La Marea, Garzón se desploma pero mantiene con vida a IU (21-12-2015)'),
-                 ('https://www.eldiario.es/politica/alberto-garzon-pedro-sanchez-manifesto_1_2804718.html', 'elDiario.es, entrevista a Alberto Garzón (Aitor Riveiro, 8-2-2018)')],
+                 ('https://www.eldiario.es/politica/alberto-garzon-pedro-sanchez-manifesto_1_2804718.html', 'elDiario.es, entrevista a Alberto Garzón (Aitor Riveiro, 8-2-2018)'),
+                 ('https://www.utilinutilestupido.es/guia-visual/', 'Eneko Sanz, guía visual de «Voto útil, inútil y estúpido» (simulaciones con los resultados de 2023)')],
         enlaces=[],
         lugar='España',
+        actualizado='2026-11-11 11:40',
+        correcciones='11-11-2026: se añade un enlace a la guía visual de Eneko Sanz sobre el voto útil, con simulaciones provincia a provincia. Sus votos y escaños de 2023 coinciden con los oficiales en las provincias comprobadas (Albacete, Granada, Pontevedra y Barcelona). Las cifras de la pieza no cambian.',
     ),
     dict(
         slug='votos-sin-escano-29n', fecha='2026-10-15',
