@@ -3355,6 +3355,7 @@ ANTETITULOS = {
     'participacion-renta-municipios-madrid-29n': 'Quién no vota en Madrid',
     'participacion-navarra-municipios-29n': 'Quién vota en Navarra',
     'huelga-carnica-pueblos-industria-29n': 'La huelga cárnica',
+    'renta-activacion-ingreso-minimo-vital-29n': 'La renta de activación del PP',
     'pp-andalucia-autonomicas-generales-29n': 'Moreno y Feijóo en Andalucía',
     'valencia-madrid-mestalla-barrios-29n': 'Valencia-Real Madrid',
     'atletico-barca-metropolitano-camp-nou-29n': 'Atlético-Barça',
@@ -4349,6 +4350,20 @@ PIEZAS += [
                  ('https://www.geoboundaries.org/', 'geoBoundaries, departamentos de Paraguay (DGEEC), CC BY 4.0')],
         enlaces=[],
         lugar='Paraguay',
+    ),
+    dict(
+        slug='renta-activacion-ingreso-minimo-vital-29n', fecha='2026-11-11',
+        titulo='El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa', serie='29n', figura=0,
+        descripcion='En octubre lo cobraban 2.781.679 personas, un 17,7 % más que hace un año. Andalucía reúne el 31,3 % de los beneficiarios con el 17,7 % de la población. En las provincias donde más pesa, PP y Vox sumaron el 53,2 % de los votos en 2023; donde menos, el 40,4 %.',
+        compara='Los beneficiarios del ingreso mínimo vital de octubre de 2026 por provincia, frente a su población a 1 de enero de 2025, a los de octubre de 2025 y al voto de cada provincia en las generales de julio de 2023.',
+        limites='Son datos de provincias, no de personas: no dicen qué votan quienes cobran el IMV. Los beneficiarios incluyen a los menores y se cuentan en la provincia de la entidad gestora. La «renta de activación» no tiene aún cuantías ni requisitos publicados.',
+        calculo='Beneficiarios por cada 100 habitantes: beneficiarios del IMV (todas las modalidades) entre población a 1 de enero de 2025. Cuartos: las 52 provincias ordenadas por esa tasa, en cuatro grupos de 13; voto sobre votos válidos, sumando los votos de las provincias de cada grupo. Correlaciones de Pearson entre provincias, sin ponderar; la parcial descuenta la renta media por unidad de consumo (ADRH 2023, media de los municipios ponderada por población). Script: actualidad/src/resumenes/renta_activacion.py.',
+        fuentes=[INTERIOR,
+                 ('https://revista.seg-social.es/-/el-ingreso-m%C3%ADnimo-vital-protege-en-octubre-a-cerca-de-2-8-millones-de-personas-que-viven-en-911.274-hogares', 'Seguridad Social, el IMV en octubre de 2026 y dossier por comunidad y provincia (INSS)'),
+                 ('https://www.ine.es/jaxiT3/Tabla.htm?t=56945', 'INE, Estadística Continua de Población, población por provincia a 1 de enero de 2025'),
+                 ('https://www.europapress.es/nacional/noticia-feijoo-reunira-ingreso-minimo-vital-subsidios-renta-activacion-vinculada-busqueda-empleo-20261110143401.html', 'Europa Press, Feijóo reunirá el IMV y los subsidios en una «renta de activación» (10-11-2026)')],
+        enlaces=[],
+        lugar='España',
     ),
 ]
 
