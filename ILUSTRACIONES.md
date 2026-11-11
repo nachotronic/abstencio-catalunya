@@ -20,12 +20,13 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (79)
+## Pendientes (80)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-11 | [`mapa-electoral-cataluna-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/) | El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462 | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-madrid-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/) | El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158 | primer gráfico de la pieza |
+| 2026-11-11 | [`renta-activacion-ingreso-minimo-vital-29n`](https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/) | El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa | primer gráfico de la pieza |
 | 2026-11-10 | [`paraguay-pena-destituido-mapa-departamentos`](https://mapaelectoral.es/actualidad/paraguay-pena-destituido-mapa-departamentos/) | Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 16 de los 17 departamentos y en Asunción | primer gráfico de la pieza |
 | 2026-11-09 | [`huelga-carnica-pueblos-industria-29n`](https://mapaelectoral.es/actualidad/huelga-carnica-pueblos-industria-29n/) | En los municipios donde más pesa la industria, el PP saca 1,9 puntos menos que en el resto de su provincia, y el voto a Vox apenas cambia | primer gráfico de la pieza |
 | 2026-11-09 | [`encuestas-40db-psoe-podemos-29n`](https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/) | El PSOE se queda a dos puntos del PP en la encuesta de El País, su mejor dato en 40dB desde 2024 | primer gráfico de la pieza |

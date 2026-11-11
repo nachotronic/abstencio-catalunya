@@ -1,0 +1,387 @@
+{
+  "pieza": "renta-activacion-ingreso-minimo-vital-29n",
+  "_datos_disponibles": {
+    "D": "dict"
+  },
+  "cifras": [
+    {
+      "texto": "activación» llega a uno de cada 8 habitantes de Jaén y",
+      "cifra": "8",
+      "calculo": "D['UNO_JAEN']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "habitantes de Jaén y a uno de cada 40 de Gipuzkoa",
+      "cifra": "40",
+      "calculo": "D['UNO_GIPU']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "En octubre lo cobraban 2.781.679 personas, un 17,7 %",
+      "cifra": "2.781.679",
+      "calculo": "D['BEN']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "cobraban 2.781.679 personas, un 17,7 % más que hace un año.",
+      "cifra": "17,7",
+      "calculo": "D['VAR_ES']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "un año. Andalucía reúne el 31,3 % de los beneficiarios",
+      "cifra": "31,3",
+      "calculo": "D['P_AND_BEN']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "los beneficiarios con el 17,7 % de la población. En",
+      "cifra": "17,7",
+      "calculo": "D['P_AND_POB']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "pesa, PP y Vox sumaron el 53,2 % de los votos en 2023;",
+      "cifra": "53,2",
+      "calculo": "D['DER1']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "en 2023; donde menos, el 40,4 %.",
+      "cifra": "40,4",
+      "calculo": "D['DER4']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "ingreso mínimo vital llegó a 911.274 hogares en los que viven",
+      "cifra": "911.274",
+      "calculo": "D['HOG']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "hogares en los que viven 2.781.679 personas, según la Seguridad",
+      "cifra": "2.781.679",
+      "calculo": "D['BEN']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Social. La cuantía media fue de 524,6 euros al mes por hogar,",
+      "cifra": "524,6",
+      "calculo": "D['CUANT']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "nómina del mes superó los 748,2 millones de euros. Son 418.125",
+      "cifra": "748,2 millones",
+      "calculo": "D['NOMINA']*1e6",
+      "_donde": "dato"
+    },
+    {
+      "texto": "748,2 millones de euros. Son 418.125 beneficiarios más que",
+      "cifra": "418.125",
+      "calculo": "D['NUEVOS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "que en octubre de 2025, un 17,7 % más. 1.120.877 de",
+      "cifra": "17,7",
+      "calculo": "D['VAR_ES']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "octubre de 2025, un 17,7 % más. 1.120.877 de ellos son menores,",
+      "cifra": "1.120.877",
+      "calculo": "D['MEN']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de ellos son menores, el 40,3 %.",
+      "cifra": "40,3",
+      "calculo": "D['PMEN']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "mitad de los beneficiarios, 1.389.715, están en la modalidad",
+      "cifra": "1.389.715",
+      "calculo": "D['CAPI']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "toda España, el IMV llega a 5,7 de cada 100 habitantes,",
+      "cifra": "5,7",
+      "calculo": "D['TASA_ES']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "100 habitantes, uno de cada 18. En Jaén, a 12,6, uno",
+      "cifra": "18",
+      "calculo": "D['UNO_ES']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "uno de cada 18. En Jaén, a 12,6, uno de cada 8, y en",
+      "cifra": "12,6",
+      "calculo": "D['PROV']['Jaén']['tasa']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Jaén, a 12,6, uno de cada 8, y en Melilla, a 17,5.",
+      "cifra": "8",
+      "calculo": "D['UNO_JAEN']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de cada 8, y en Melilla, a 17,5. En Gipuzkoa, a 2,5,",
+      "cifra": "17,5",
+      "calculo": "D['PROV']['Melilla']['tasa']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Melilla, a 17,5. En Gipuzkoa, a 2,5, uno de cada 40: en",
+      "cifra": "2,5",
+      "calculo": "D['PROV']['Gipuzkoa']['tasa']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Gipuzkoa, a 2,5, uno de cada 40: en Jaén pesa 5,1 veces",
+      "cifra": "40",
+      "calculo": "D['UNO_GIPU']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de cada 40: en Jaén pesa 5,1 veces más. Supera el",
+      "cifra": "5,1",
+      "calculo": "D['VECES']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "veces más. Supera el 10 % en 7 provincias, todas de",
+      "cifra": "7",
+      "calculo": "D['MAS10_PROV']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Andalucía tiene el 17,7 % de la población de",
+      "cifra": "17,7",
+      "calculo": "D['P_AND_POB']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "población de España y el 31,3 % de los beneficiarios",
+      "cifra": "31,3",
+      "calculo": "D['P_AND_BEN']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "Barcelona, juntas, tienen el 26,6 % de la población y",
+      "cifra": "26,6",
+      "calculo": "D['P_MB_POB']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "26,6 % de la población y el 15,0 % de los beneficiarios.",
+      "cifra": "15,0",
+      "calculo": "D['P_MB_BEN']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "habitante (correlación de -0,53), y la relación con",
+      "cifra": "0,53",
+      "calculo": "abs(D['R_RENTA'])",
+      "_donde": "patron"
+    },
+    {
+      "texto": "2021 es aún más estrecha (0,72).",
+      "cifra": "0,72",
+      "calculo": "D['R_PARO']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "desde 2022: allí bajó un 0,5 % en un año. La variación",
+      "cifra": "0,5",
+      "calculo": "abs(D['PV_VAR'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Si se ordenan las 52 provincias por beneficiarios",
+      "cifra": "52",
+      "calculo": "len(D['PROV'])",
+      "_donde": "patron"
+    },
+    {
+      "texto": "habitante y se reparten en cuatro grupos de 13, en el",
+      "cifra": "cuatro",
+      "calculo": "len(D['Q'])",
+      "_donde": "patron"
+    },
+    {
+      "texto": "reparten en cuatro grupos de 13, en el grupo donde más",
+      "cifra": "13",
+      "calculo": "len(D['PROV'])/4",
+      "_donde": "patron"
+    },
+    {
+      "texto": "pesa el IMV el PP sacó el 37,2 % de los votos en 2023,",
+      "cifra": "37,2",
+      "calculo": "D['Q'][0]['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "votos en 2023, el PSOE el 33,5 % y Vox el 16,0 %. En",
+      "cifra": "33,5",
+      "calculo": "D['Q'][0]['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "el PSOE el 33,5 % y Vox el 16,0 %. En el grupo donde",
+      "cifra": "16,0",
+      "calculo": "D['Q'][0]['Vox']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "menos pesa, el PP sacó el 30,2 %, el PSOE el 30,6 %",
+      "cifra": "30,2",
+      "calculo": "D['Q'][3]['PP']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "sacó el 30,2 %, el PSOE el 30,6 % y Vox el 10,1 %. PP",
+      "cifra": "30,6",
+      "calculo": "D['Q'][3]['PSOE']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "el PSOE el 30,6 % y Vox el 10,1 %. PP y Vox suman 53,2",
+      "cifra": "10,1",
+      "calculo": "D['Q'][3]['Vox']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "el 10,1 %. PP y Vox suman 53,2 % en el primero y 40,4",
+      "cifra": "53,2",
+      "calculo": "D['DER1']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "suman 53,2 % en el primero y 40,4 % en el último; PSOE",
+      "cifra": "40,4",
+      "calculo": "D['DER4']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "desaparece (correlación de -0,01); con Vox se mantiene,",
+      "cifra": "0,01",
+      "calculo": "abs(D['RP']['PP'])",
+      "_donde": "hipotesis"
+    },
+    {
+      "texto": "Vox se mantiene, más débil (0,34, frente a 0,50 sin descontarla).",
+      "cifra": "0,34",
+      "calculo": "D['RP']['Vox']",
+      "_donde": "hipotesis"
+    },
+    {
+      "texto": "más débil (0,34, frente a 0,50 sin descontarla). Son",
+      "cifra": "0,50",
+      "calculo": "D['R']['Vox']",
+      "_donde": "hipotesis"
+    },
+    {
+      "texto": "del 10 % de la población en 7 provincias andaluzas",
+      "cifra": "7",
+      "calculo": "D['MAS10_PROV']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "En Jaén, 12,6 de cada 100 habitantes;",
+      "cifra": "12,6",
+      "calculo": "D['PROV']['Jaén']['tasa']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "El IMV llega a un 17,7 % más de personas que",
+      "cifra": "17,7",
+      "calculo": "D['VAR_ES']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "IMV, PP y Vox sumaron el 53,2 % en 2023; donde menos,",
+      "cifra": "53,2",
+      "calculo": "D['DER1']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "en 2023; donde menos, el 40,4 %Voto en las generales",
+      "cifra": "40,4",
+      "calculo": "D['DER4']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "2023 en cada cuarto de las 52 provincias, ordenadas",
+      "cifra": "52",
+      "calculo": "len(D['PROV'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "el último; PSOE y Sumar, 44,1 % y 44,3 %. Las sumas",
+      "cifra": "44,1",
+      "calculo": "D['IZQ1']",
+      "_donde": "patron"
+    },
+    {
+      "texto": "último; PSOE y Sumar, 44,1 % y 44,3 %. Las sumas se calculan",
+      "cifra": "44,3",
+      "calculo": "D['IZQ4']",
+      "_donde": "patron"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "figura en el documento de 249 propuestas que el PP",
+      "cifra": "249",
+      "fuente": "https://www.europapress.es/nacional/noticia-feijoo-reunira-ingreso-minimo-vital-subsidios-renta-activacion-vinculada-busqueda-empleo-20261110143401.html"
+    },
+    {
+      "texto": "una cuantía media de unos 32 euros al mes por persona.",
+      "cifra": "32",
+      "fuente": "https://revista.seg-social.es/documents/39386/0/202610+COMPLETO+Dossier+comunidad+aut%C3%B3noma+y+provincia.xlsx/e51fe86b-d3f1-8ea2-cc5d-4f74a1d12eda?t=1794301241117"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "el IMV llega a 5,7 de cada 100 habitantes, uno de cada",
+      "motivo": "«por cada 100 habitantes» y «más del 10 %»: unidad y umbral, no un resultado"
+    },
+    {
+      "texto": "5,1 veces más. Supera el 10 % en 7 provincias, todas",
+      "motivo": "«por cada 100 habitantes» y «más del 10 %»: unidad y umbral, no un resultado"
+    },
+    {
+      "texto": "El IMV llega a más del 10 % de la población en",
+      "motivo": "«por cada 100 habitantes» y «más del 10 %»: unidad y umbral, no un resultado"
+    },
+    {
+      "texto": "octubre de 2026 por cada 100 habitantes, por provincia",
+      "motivo": "«por cada 100 habitantes» y «más del 10 %»: unidad y umbral, no un resultado"
+    },
+    {
+      "texto": "En Jaén, 12,6 de cada 100 habitantes; en Gipuzkoa,",
+      "motivo": "«por cada 100 habitantes» y «más del 10 %»: unidad y umbral, no un resultado"
+    },
+    {
+      "texto": "habitantes; en Gipuzkoa, 2,5Beneficiarios del ingreso",
+      "motivo": "Es el 2,5 de Gipuzkoa del título del gráfico (pegado al subtítulo); declarado en el texto"
+    },
+    {
+      "texto": "ingreso mínimo vital por cada 100 habitantes, de más a",
+      "motivo": "«por cada 100 habitantes» y «más del 10 %»: unidad y umbral, no un resultado"
+    }
+  ],
+  "permitir_espana": [],
+  "ignorar_calidad": [
+    {
+      "texto": "Castilla-La Mancha 113.034 139.655 23,6",
+      "motivo": "Tabla por comunidades: Andalucía, Comunitat Valenciana y País Vasco son filas de comunidad, no totales"
+    }
+  ]
+}
