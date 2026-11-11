@@ -33,6 +33,22 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-11</news:publication_date>
+      <news:title>El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-11</news:publication_date>
+      <news:title>El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
