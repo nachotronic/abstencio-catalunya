@@ -140,7 +140,11 @@ def normaliza(o, ruta):
     if o.get('@type') == 'Dataset' and isinstance(o.get('creator'), dict) and o['creator'].get('@type') not in ('Person', 'Organization'):
         # Google solo acepta Person u Organization en el creator de un Dataset (no subtipos como NewsMediaOrganization)
         o['creator'] = {**o['creator'], '@type': 'Organization'}
-    if o.get('@type') == 'AnalysisNewsArticle' and ruta.startswith('actualidad/') and ruta != 'actualidad/' and 'isBasedOn' not in o:
+    # las piezas de Internacional no se basan en las generales de España: sin ese Dataset (repaso del 11-11-2026)
+    intl = isinstance(o.get('isPartOf'), dict) and o['isPartOf'].get('name') == 'Internacional'
+    if intl and isinstance(o.get('isBasedOn'), dict) and o['isBasedOn'].get('@id') == DATASET_ID:
+        del o['isBasedOn']
+    if o.get('@type') == 'AnalysisNewsArticle' and ruta.startswith('actualidad/') and ruta != 'actualidad/' and 'isBasedOn' not in o and not intl:
         o['isBasedOn'] = dict(DATASET_REF)
     if isinstance(o.get('isBasedOn'), dict) and o['isBasedOn'].get('@id') == DATASET_ID:
         o['isBasedOn'] = dict(DATASET_REF)   # las citas incompletas de páginas anteriores también
