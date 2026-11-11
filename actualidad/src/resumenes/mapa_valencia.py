@@ -21,7 +21,7 @@ PSLUG = {'46': 'valencia', '03': 'alicante', '12': 'castellon'}
 CAJA = (-1.55, 37.83, 0.75, 40.82)
 COMP = '#e8850c'   # Compromís, naranja (como en comunitat_valenciana.py)
 # En la Comunitat, Más País se presentó en 2019 como Más Compromís; en 2023, Compromís fue con Sumar; el 29N, la lista
-# «Sumar» del modelo es Compromís-Front Valencià (Compromís, Podem, EUPV y ERPV), según EFE
+# «Sumar» del modelo es Compromís-Front Valencià: según EFE, Frente Amplio y Podemos juntos con marca valenciana
 COL = dict(COL, MP=COMP, CFV=COMP)
 NOMC = dict(NOM, MP='Más Compromís', SUMAR='Sumar-Compromís', CFV='Compromís-Front Valencià', EMPATE='Empate a votos')
 
@@ -274,7 +274,7 @@ L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 TPQ = TT['De 1.000 a 5.000']
 
 cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">La Comunitat Valenciana elige el 29 de noviembre 33 diputados: 16 por Valencia, 12 por Alicante y 5 por Castellón. Según <a href="{EFE}">EFE</a>, el PP ha ganado en la Comunitat todas las elecciones generales desde 1993 salvo las dos de 2019, en las que ganaron los socialistas. Para el 29N, el PP aspira a ampliar sus votos de 2023 para «echar al sanchismo», y Compromís-Front Valencià, la candidatura de Compromís con Podem, EUPV y ERPV, se ofrece para «no resignarse a votar con miedo o con la nariz tapada», según la misma agencia.</p>
+<p data-tipo="contexto">La Comunitat Valenciana elige el 29 de noviembre 33 diputados: 16 por Valencia, 12 por Alicante y 5 por Castellón. Según <a href="{EFE}">EFE</a>, el PP ha ganado en la Comunitat todas las elecciones generales desde 1993 salvo las dos de 2019, en las que ganaron los socialistas. Para el 29N, el PP aspira a ampliar sus votos de 2023 para «echar al sanchismo», y Compromís-Front Valencià, la candidatura con la que concurren juntos Frente Amplio y Podemos con marca valenciana, se ofrece para «no resignarse a votar con miedo o con la nariz tapada», según la misma agencia.</p>
 <p data-tipo="dato">El mapa municipio a municipio muestra lo que cambió entre una victoria y otra. En noviembre de 2019, el PSOE fue el partido más votado en {GANA[Y19]["PSOE"]} de los {NMUN} municipios valencianos, el PP en {GANA[Y19]["PP"]} y Vox en {GANA[Y19]["VOX"]}; en otros {GANA[Y19]["EMPATE"]}, los dos primeros empataron a votos. En julio de 2023, el PP ganó en {GANA[Y23]["PP"]}, el PSOE en {GANA[Y23]["PSOE"]}, Sumar-Compromís en {GANA[Y23]["SUMAR"]} y Vox en {NW[len(VOX23)]}, Vilar de Canes; en {NW[GANA[Y23]["EMPATE"]]} hubo empate entre el PP y el PSOE.</p>
 {g_ins}
 <p data-tipo="dato">El PSOE no perdió votos: pasó del {p(A19["pct"]["PSOE"])} % al {p(A23["pct"]["PSOE"])} %, con {n(DPSOE_VOTOS)} votos más, y subió en {PSOE_SUBE} de los {NMUN} municipios. Pero el PP subió más, del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} %, {p(DPP)} puntos, en un año en que Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó y Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. Sumar-Compromís sacó el {p(A23["pct"]["SUMAR"])} %, menos de lo que sumaron en 2019 Unidas Podemos ({p(A19L["pct"]["UP"])} %) y Más Compromís ({p(A19L["pct"]["MP"])} %). La participación subió del {p(A19["part"])} % al {p(A23["part"])} %.</p>
