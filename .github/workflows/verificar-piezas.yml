@@ -28,3 +28,7 @@ jobs:
         run: |
           git fetch -q origin "${{ github.base_ref || 'main' }}"
           python3 src/verificar_piezas.py --base "origin/${{ github.base_ref || 'main' }}" --resumen "$GITHUB_STEP_SUMMARY"
+      - name: Ganador de cada municipio y sección, lista a lista (auditoría del 11-11-2026)
+        # El ganador de las descargas (<elección>_gana) frente a la lista más votada según los votos oficiales
+        # (descargas/ganador_lista.csv.gz, de src/auditoria_ganadores.py --referencia). Falla si no cuadra.
+        run: python3 src/auditoria_ganadores.py --comprobar
