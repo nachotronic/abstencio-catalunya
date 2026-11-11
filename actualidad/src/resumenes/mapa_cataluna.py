@@ -103,6 +103,12 @@ RC = {pr: reparto_central(PSLUG[pr]) for pr in PROV}
 E29 = {f: sum(RC[pr].get(f, (0,))[0] for pr in PROV) for f in F23}
 assert sum(E29.values()) == 48, E29
 MOD = json.load(open(RAIZ / 'previsiones/datos/publico/escenario-base.json'))
+# versión del modelo que se usa: la última archivada, que es la misma que escenario-base.json
+HIST = sorted((RAIZ / 'previsiones/datos/publico/historico').glob('*.json'))[-1]
+assert json.load(open(HIST))['escenario'] == MOD
+_a, _m, _d, _hm = HIST.stem.split('-')
+MESES = {'10': 'octubre', '11': 'noviembre', '12': 'diciembre'}
+VERSION = f'a las {int(_hm[:2])}.{_hm[2:]} del {int(_d)} de {MESES[_m]} de {_a}'
 CC = {l['lista']: l for l in MOD['ccaa']['Cataluña']['listas']}
 assert MOD['ccaa']['Cataluña']['escanos_total'] == 48
 P1 = {pr: {l['lista']: l['p_primera'] for l in MOD['provincias'][pr]['listas']} for pr in PROV}
@@ -212,7 +218,7 @@ g_esc = figura(f'Con las encuestas, ERC pasaría de {E23["ERC"]} a {E29["ERC"]} 
                'Los 48 diputados de las cuatro provincias catalanas: un cuadrado por escaño',
                hemi(),
                f'Fuente: Ministerio del Interior (2019 y 2023, con voto exterior); media de encuestas de Mapa Electoral, reparto central de cada provincia '
-               f'(<a href="{BASE}encuestas/barcelona/">/encuestas/</a>) a las 2.31 del 10 de noviembre de 2026. En 2019, En Comú Podem; en 2023, Sumar.',
+               f'(<a href="{BASE}encuestas/barcelona/">/encuestas/</a>) {VERSION}. En 2019, En Comú Podem; en 2023, Sumar.',
                [(NOMC[f], COL[f]) for f in ORDE],
                (['Provincia'] + [f'{NOMC[f]} 2023' for f in FT] + [f'{NOMC[f]} 29N' for f in FT],
                 [[f'{PROV[pr]} ({ESC["2026"][pr]})'] + [str(ESC[Y23][pr].get(f, 0)) for f in FT]
