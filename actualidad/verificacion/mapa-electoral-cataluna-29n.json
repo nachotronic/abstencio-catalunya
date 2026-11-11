@@ -599,8 +599,8 @@
       "_donde": "dato"
     },
     {
-      "texto": "el 94 %; en Lleida, en el 61 %.",
-      "cifra": "61",
+      "texto": "el 94 %; en Lleida, en el 62 %.",
+      "cifra": "62",
       "calculo": "D['P1']['25']*100",
       "_donde": "dato"
     },
@@ -760,7 +760,7 @@
       "motivo": "umbral"
     },
     {
-      "texto": "tienen un margen amplio a 19 días de la votación.",
+      "texto": "tienen un margen amplio a 18 días de la votación.",
       "motivo": "días hasta la votación"
     },
     {
