@@ -45,6 +45,18 @@ def municipios(provs, regionales=None):
     """
     m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
     m = m[m.mun_code.str[:2].isin(provs)].copy()
+    # Desde el arreglo de los ganadores (generales-2026/src/mapa_listas_propias.py), municipios.csv trae columnas propias
+    # en 2019-N y 2023 (CUP, Por Ávila, Soria ¡Ya!, UPN...), ya restadas de OTROS (UPN, del PP). Esta tabla las saca de
+    # sus propios ficheros: se devuelven a OTROS (y UPN al PP) para no restarlas dos veces y que las piezas no cambien.
+    import sys
+    sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+    from partidos import PROPIAS
+    for y in (Y19, Y23):
+        for k, _, _ in PROPIAS:
+            if f'{y}_v{k}' in m:
+                m[f'{y}_v{"PP" if k == "UPN" else "OTROS"}'] += m.pop(f'{y}_v{k}').fillna(0)
+                if f'{y}_{k}' in m:
+                    m.pop(f'{y}_{k}')
     b = pd.read_csv(RAIZ / 'generales-2026/descargas/listas_separadas.csv', dtype={'tract_code': str})
     b = b[b.eleccion == Y19]
     mp = b.groupby(b.tract_code.str[:5]).sumar_b.sum()

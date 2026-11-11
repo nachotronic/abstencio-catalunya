@@ -55,8 +55,54 @@ FAMILIAS = [  # código, etiqueta, color
     ('OTROS', 'Otros', '#9a9a9a'),
 ]
 CODIGOS = [f[0] for f in FAMILIAS]
+# Listas sin familia (o que partidos.py suma a una) que ganan algún municipio o sección en las generales de noviembre de
+# 2019 o de 2023: mapa_listas_propias.py les da código propio en esas dos elecciones, detrás de OTROS en data/meta.json.
+# No entran en CODIGOS: construir.py sigue con las familias, y mapa_listas_propias.py corrige después.
+PROPIAS = [  # código, etiqueta, color (los de «Las comunidades en las urnas», actualidad/src/comunidades/datos.py)
+    ('UPN', 'UPN', '#0f4c8a'),
+    ('CUP', 'CUP', '#e8c400'),
+    ('TE', 'Existe', '#0d7f8a'),
+    ('PRC', 'PRC', '#a8c11c'),
+    ('NC', 'Nueva Canarias', '#7cad2d'),
+    ('GBAI', 'Geroa Bai', '#e05b2b'),
+    ('PAR', 'PAR', '#e2b80c'),
+    ('XAV', 'Por Ávila', '#2e6d4f'),
+    ('SY', 'Soria ¡Ya!', '#2f9e62'),
+    ('UPL', 'UPL', '#b0124a'),
+    ('PPSO', 'Plataforma del Pueblo Soriano', '#9c7a3c'),
+    ('CPM', 'Coalición por Melilla', '#3f9a5a'),
+    ('MES', 'Més-Esquerra', '#d6a21c'),
+    ('AA', 'Adelante Andalucía', '#00843d'),
+    ('AVANT', 'Avant-Adelante Los Verdes', '#6aa84f'),
+    ('PACMA', 'PACMA', '#8fbf3f'),
+    ('RC', 'Recortes Cero', '#6d6d9e'),
+    ('AXSI', 'AxSí', '#e4572e'),
+    ('PCOE', 'PCOE', '#b71c1c'),
+    ('FO', 'Frente Obrero', '#c62828'),
+    ('FE', 'FE de las JONS', '#3a3a3a'),
+]
+# Siglas de cada candidatura en los ficheros de Interior → código propio, por elección (10N 2019 y 23J)
+SIGLAS_PROPIAS = {
+    '2019_11': {'¡TERUEL EXI': 'TE', 'PRC': 'PRC', 'CPM': 'CPM', 'CUP-PR': 'CUP', 'XAV': 'XAV', 'GBAI': 'GBAI', 'PPSO': 'PPSO',
+                'AVANT ADELANTE LOS VERDES': 'AVANT', 'MÉS-ESQUERR': 'MES', 'RECORTES CERO-GV': 'RC', 'AXSÍ': 'AXSI', 'PCOE': 'PCOE',
+                'PACMA': 'PACMA'},
+    '2023_07': {'U.P.N.': 'UPN', 'NC-BC': 'NC', 'EXISTE': 'TE', 'CUP-PR': 'CUP', 'SY': 'SY', 'XAV': 'XAV', 'FO': 'FO',
+                'ADELANTE ANDALUCÍA': 'AA', 'FE DE LAS JONS': 'FE', 'PAR': 'PAR', 'U.P.L.': 'UPL'},
+}
+# Para la noche del 29N (famDe en app.js y directo-municipio.js, con las siglas tal cual y sin puntos): mapa_listas_propias.py
+# las pone delante de las reglas de data/meta.json, así UPN no se suma al PP ni la CUP o Existe a «Otros».
+REGLAS_PROPIAS = [
+    ['UPN', '^UPN$'], ['CUP', '^CUP\\b'], ['TE', '^¡?TERUEL EXI|^EXISTE'], ['PRC', '^PRC$'],
+    ['NC', '^NC(-|$)|NUEVA CANARIAS'], ['GBAI', '^GBAI$|^GEROA'], ['PAR', '^PAR$'], ['XAV', '^XAV$|POR ÁVILA'],
+    ['SY', '^SY$|SORIA ¡?YA'], ['UPL', '^UPL$'], ['PPSO', '^PPSO$'], ['CPM', '^CPM$'], ['MES', '^MÉS-ESQUERR'],
+    ['AA', '^ADELANTE ANDALUC'], ['AVANT', '^AVANT\\b'], ['PACMA', '^PACMA$'], ['RC', '^RECORTES CERO'], ['AXSI', '^AXSÍ$'],
+    ['PCOE', '^PCOE$'], ['FO', '^FO$|FRENTE OBRERO'], ['FE', '^FE DE LAS JONS|^FE-JONS'],
+]
+# Y las siglas de Coalición Canaria (CCa), que familia() reconoce con el nombre (_AMBIGUAS) y el directo, que solo tiene
+# las siglas, mandaba a «Otros»: van delante de NC, por NC-CCa (2019).
+REGLAS_DIRECTO = [['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA']] + REGLAS_PROPIAS
 # Nombre de la familia en las elecciones anteriores a un año (la pieza lo usa en leyenda y fichas)
-ALIAS = {'PP': [['1989', 'AP']], 'SUMAR': [['1977', 'PCE y otros obreros'], ['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
+ALIAS = {'TE': [['2020', '¡Teruel Existe!']], 'PP': [['1989', 'AP']], 'SUMAR': [['1977', 'PCE y otros obreros'], ['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
 
 _REGLAS = [
     ('PP', r"^(PP\b|PP-|P\.P\.|UPN-PP|UPN$|NA\+)|^AP-PDP|^AP-PL"),

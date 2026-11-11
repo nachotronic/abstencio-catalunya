@@ -42,7 +42,7 @@ FUENTES = json.loads((D / 'fuentes.json').read_text()) if (D / 'fuentes.json').e
 def resultado(lar):
     """Voto por familia sobre voto válido (candidaturas + blancos) y participación de un conjunto de secciones de una elección."""
     val = (lar.candidaturas + lar.blancos).sum()
-    votos = {c: lar[c].sum() for c in T.FAM}
+    votos = T.a_otros({c: lar[c].sum() for c in T.FAM}, val)   # las listas propias de menos del 0,5 %, en «Otros»
     b = lar.sumar_b.sum() if 'sumar_b' in lar else 0
     return {'pct': {c: votos[c] / val if val else None for c in T.FAM}, 'votos': votos, 'validos': val,
             'sumar_b': b / val if val and b else None,
@@ -106,6 +106,7 @@ def secciones(cods):
     lar = LARGO[(LARGO.eleccion == T.ULTIMA) & LARGO.tract_code.isin(cods)].copy()
     lar['val'] = lar.candidaturas + lar.blancos
     fams = [c for c in T.FAM if c != 'OTROS']
+    lar[fams] = lar[fams].fillna(0)   # las listas propias solo tienen votos donde se presentaron
     filas = []
     for x in lar.itertuples():
         g = max(fams, key=lambda c: getattr(x, c))

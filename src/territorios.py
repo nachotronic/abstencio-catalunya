@@ -232,10 +232,6 @@ def entradilla(nombre, en, r, serie, ccaa=None):
     if seg is None:
         return (f'En las elecciones generales del 23 de julio de 2023, {art(g)} fue la fuerza más votada {en}, con el {pct(r["pct"][g])} del voto válido. '
                 f'Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}). ' + desde_1977(veces, nom_top, art))
-    if ccaa == 'navarra' and g == 'PP':   # en 2023 UPN y PP fueron por separado: la familia suma las dos listas
-        return (f'En las elecciones generales del 23 de julio de 2023, UPN y el PP, que se presentaron por separado, sumaron el {pct(r["pct"]["PP"])} del voto válido en Navarra '
-                f'(en el mapa cuentan juntos porque en otras elecciones fueron en coalición); la lista más votada fue la del {art(seg)[3:]} ({pct(r["pct"][seg])}). '
-                f'Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}).')
     return (f'En las elecciones generales del 23 de julio de 2023, {art(g)} fue la fuerza más votada {en}, con el {pct(r["pct"][g])} del voto válido, '
             f'seguido {"del " + art(seg)[3:] if art(seg).startswith("el ") else "de " + art(seg)} ({pct(r["pct"][seg])}). Votó el {pct(r["part"])} del censo, {comp} en el conjunto de España ({pct(T.ESPANA["part"])}). '
             + desde_1977(veces, nom_top, art))
@@ -303,8 +299,8 @@ def bloque_serie(nombre, serie, provs=()):
     nota = (f' En {", ".join(falta)} faltan en los ficheros de Interior los resultados de algún municipio de {escape(nombre)}; se calcula con los que hay.' if falta else '')
     return ('<h2>De 1977 a 2023: las 16 elecciones generales</h2>'
             + p_('Dato', f'Voto de los partidos que han pasado alguna vez del 10 % en {escape(nombre)}. Las familias agrupan a cada partido con sus antecesores y coaliciones: '
-                 'el PP incluye a AP (hasta 1986) y a UPN; «Sumar / Podemos / IU», al PCE y el PSUC, IU y Unidas Podemos; «Junts / CiU», a CiU. '
-                 'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, Unidas Podemos y Más País en noviembre de 2019, Compromís y EUPV o Unides Podem en la Comunitat Valenciana en 2011 y abril de 2019, UPN y el PP en 2023), su porcentaje es la suma de las dos; '
+                 'el PP incluye a AP (hasta 1986) y a UPN cuando fue en coalición con él (en 2023, UPN y el PP fueron por separado y cuentan aparte); las listas provinciales que ganaron algún municipio en noviembre de 2019 o en 2023 (¡Teruel Existe!, PRC, CUP, Soria ¡Ya!, Por Ávila…) cuentan aparte en esas dos elecciones; «Sumar / Podemos / IU», al PCE y el PSUC, IU y Unidas Podemos; «Junts / CiU», a CiU. '
+                 'Cuando una familia reúne listas que se presentaron por separado (Podemos e IU en 2015, Unidas Podemos y Más País en noviembre de 2019, Compromís y EUPV o Unides Podem en la Comunitat Valenciana en 2011 y abril de 2019), su porcentaje es la suma de las dos; '
                  'el más votado, en cambio, se calcula con cada lista por separado y lleva el nombre de la candidatura de ese año. '
                  f'Detalle en la <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.{nota}')
             + f'<figure>{lineas(serie)}<figcaption>Porcentaje de voto válido en las elecciones al Congreso. Sin voto desde el extranjero (CERA).</figcaption></figure>'
@@ -1300,10 +1296,10 @@ def bloque_secciones(nombre, sec):
     if len(s) < 6:
         return ''
     s['part'] = s.votantes / s.censo
-    gana = s[[c for c in T.FAM if c != 'OTROS']].idxmax(axis=1).value_counts()
+    gana = s.gana.dropna().value_counts()   # el de secciones.csv: lista a lista y con los empates (mapa_empates.py)
     alto, bajo = s.nlargest(3, 'part'), s.nsmallest(3, 'part')
     lista = lambda g: ', '.join(f'{distrito_seccion(x.tract_code)} ({pct(x.part)})' for x in g.itertuples())
-    reparto = '; '.join(f'{T.NOMBRE[c].split(" /")[0]}, en {num(n)}' for c, n in gana.items())
+    reparto = '; '.join(f'{T.NOMBRE[c].split(" /")[0] if c != "EMPATE" else "empate a votos"}, en {num(n)}' for c, n in gana.items())
     return ('<h2>Barrio a barrio</h2>'
             + p_('Dato', f'En las generales de 2023, partido más votado en cada una de las {num(len(s))} secciones censales de {escape(nombre)}: {reparto}.')
             + p_('Dato', f'La participación fue más alta en {lista(alto)} y más baja en {lista(bajo)}. '
@@ -2109,7 +2105,7 @@ def tema_seccion(resumen):
             'Busca tu calle y mira qué votó tu sección, con su renta, edad y población extranjera. Datos abiertos.')
     y = T.ULTIMA
     sec = T.SEC
-    gana = sec[[c for c in T.FAM if c != 'OTROS']].idxmax(axis=1)
+    gana = sec.gana.dropna()   # el de secciones.csv: lista a lista y con los empates
     cuenta = gana.value_counts()
     nsec = sec.tract_code.astype(str).str[:5].value_counts()
     grandes = [c for c in nsec.index if c in CIUDADES][:12]
@@ -2142,7 +2138,7 @@ def tema_seccion(resumen):
     h.append(foto_html(ruta, raiz))
     top = cuenta.index[:4]
     h.append(f'<p class="resumen">{tipo("Dato")}En las generales de 2023 el PP fue la lista más votada en {num(cuenta.get("PP", 0))} de las {num(len(sec))} secciones censales de España; '
-             f'el PSOE, en {num(cuenta.get("PSOE", 0))}. ' + ', '.join(f'{T.NOMBRE[c]}, en {num(cuenta[c])}' for c in top if c not in ('PP', 'PSOE')) + '.</p>')
+             f'el PSOE, en {num(cuenta.get("PSOE", 0))}. ' + ', '.join(f'{T.NOMBRE[c]}, en {num(cuenta[c])}' for c in top if c not in ('PP', 'PSOE', 'EMPATE')) + '.</p>')
     h.append(f'<p><a class="vermapa" href="{raiz}">Abrir el mapa electoral calle a calle</a> <a class="vermapa" href="{raiz}generales-2026/metodologia.html#descargas">Descargar los datos</a></p>')
     h.append('<h2>Qué es una sección censal</h2>'
              '<p>Es la unidad más pequeña en la que se organiza el censo electoral: cada municipio se divide en distritos y cada distrito en secciones, de entre unas 500 y 2.500 personas con derecho a voto. '

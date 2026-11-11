@@ -84,3 +84,17 @@ Si el texto cambia y una frase declarada deja de aparecer, la comprobación fall
 3. `python3 src/verificar_piezas.py --slug <slug>` hasta que salga en verde; abre el PR.
 4. El hilo editor revisa la pieza con la [lista fija del editor](EDITOR.md), incluida la lista de cifras externas del informe de la Action, y la pega marcada en un comentario del PR.
 5. Con la Action en verde y el visto bueno del editor, Nacho fusiona.
+
+## El ganador del mapa (11-11-2026)
+
+Además de las piezas, la Action pasa `generales-2026/src/control_ganadores.py`. Vuelve a calcular el ganador de cada
+municipio, sección y provincia en noviembre de 2019 y en 2023, sin agrupar familias. Lo hace candidatura a candidatura,
+con los votos por mesa de Interior sumados por sección (`generales-2026/control/`). Después lo compara con
+`<elección>_gana` de `municipios.csv` y `secciones.csv`, con los JSON del mapa y con el ganador de las fichas de provincia.
+
+El control falla en dos casos:
+- cualquier diferencia entre ese cálculo y el del site;
+- una candidatura que gana y que en el mapa iría a «Otros».
+
+Si una lista nueva gana algo, hay que darle código propio en `partidos.PROPIAS` y `partidos.SIGLAS_PROPIAS`, y volver a
+ejecutar `generales-2026/src/mapa_listas_propias.py`.

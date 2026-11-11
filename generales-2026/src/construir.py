@@ -393,6 +393,7 @@ def web(geo, sec, mun):
     json.dump(meta, open(os.path.join(WEB, 'meta.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
     import mapa_listas_separadas; mapa_listas_separadas.main(WEB, DATOS)   # 2011-2019: el más votado, lista a lista
     import mapa_empates; mapa_empates.main(WEB, DATOS)   # empates a votos en el primer puesto: -2 / EMPATE, en gris
+    import mapa_listas_propias; mapa_listas_propias.main(WEB, DATOS)   # 10N 2019 y 23J: listas sin familia y UPN, lista a lista
     import ligero; ligero.DATA = WEB; ligero.main()   # copia ligera para la carga inicial del mapa
     print('web: municipios', os.path.getsize(os.path.join(WEB, 'municipios.json')) // 1024, 'KB; secciones', tam // 1024, 'KB')
 
