@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/huelga-carnica-pueblos-industria-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-09</news:publication_date>
-      <news:title>En los municipios donde más pesa la industria, el PP saca 1,9 puntos menos que en el resto de su provincia, y el voto a Vox apenas cambia</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-09</news:publication_date>
-      <news:title>El PSOE se queda a dos puntos del PP en la encuesta de El País, su mejor dato en 40dB desde 2024</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/vox-vuelve-tenerife-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -62,6 +46,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-10</news:publication_date>
       <news:title>Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 16 de los 17 departamentos y en Asunción</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>Neves evitó la segunda vuelta en Cabo Verde por 3.311 votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno</news:title>
     </news:news>
   </url>
   <url>

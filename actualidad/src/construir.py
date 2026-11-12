@@ -3355,6 +3355,7 @@ ANTETITULOS = {
     'derbi-vasco-bilbao-donostia-29n': 'El derbi vasco',
     'bizkaia-pnv-bildu-encuestas-29n': 'El feudo del PNV',
     'encuestas-40db-psoe-podemos-29n': 'La encuesta de El País',
+    'cabo-verde-presidenciales-neves-rosa-mapa': 'Presidenciales en Cabo Verde',
     'paraguay-pena-destituido-mapa-departamentos': 'El juicio político a Peña',
     'vox-vuelve-tenerife-29n': 'Vox vuelve en Tenerife',
     'mapa-electoral-andalucia-29n': 'El mapa electoral de…',
@@ -4397,6 +4398,26 @@ PIEZAS += [
         lugar='Paraguay',
     ),
     dict(
+        slug='cabo-verde-presidenciales-neves-rosa-mapa', fecha='2026-11-12',
+        titulo='Neves evitó la segunda vuelta en Cabo Verde por 3.311 votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno', serie='internacional',
+        descripcion='Seis candidatos se disputan el domingo 15 de noviembre la presidencia de Cabo Verde, entre ellos el presidente, José Maria Neves, apoyado por el PAICV, y Joana Rosa, apoyada por el MpD. En 2021, Neves sacó el 51,8 % de los válidos y ganó en 9 de los 13 círculos; la diáspora es hoy el 18,2 % del censo.',
+        compara='Las presidenciales de Cabo Verde del 17 de octubre de 2021 en los 13 círculos electorales (10 del país y 3 de la diáspora), los inscritos para el 15 de noviembre de 2026 y las legislativas del 17 de mayo de 2026.',
+        limites='La CNE publica los resultados de 2021 por círculo, no por concelho: el mapa pinta cada concelho con el resultado de su círculo. Los resultados de las legislativas de 2026 son los del edital de la CNE según Wikipedia. Las cifras de inscritos de 2026 son las de la web oficial de resultados el 11-11-2026; Lusa daba en septiembre 426.531.',
+        calculo='Porcentajes sobre votos válidos (sin blancos ni nulos), como los da la CNE. La tabla del edital de 2021 se copió a mano y cada fila cuadra: votantes = blancos + nulos + válidos y válidos = suma de los candidatos; la suma de los 13 círculos da los totales del edital.',
+        fuentes=[('https://dgape.cv/wp-content/uploads/2023/11/B.O_Eleicao-Presidencial-2021-R.pdf', 'CNE, Edital n.º 01/Eleições Presidenciais/2021, Boletim Oficial I Série n.º 108 (30-10-2021)'),
+                 ('https://eleicoes.cv/', 'CNE, web oficial de resultados: inscritos por círculo (11-11-2026)'),
+                 ('https://macaubusiness.com/cabo-verde-four-presidential-candidates-without-party-backing/', 'Lusa (Macau Business), cuatro candidatos sin apoyo de partido'),
+                 ('https://e-global.pt/noticias/lusofonia/cabo-verde/cabo-verde-tribunal-constitucional-admite-cinco-candidaturas-as-eleicoes-presidenciais-de-2026/', 'e-Global, el Constitucional admite cinco candidaturas'),
+                 ('https://e-global.pt/noticias/lusofonia/cabo-verde/cabo-verde-eleicoes-presidenciais-passam-a-ter-seis-candidaturas-aceites/', 'e-Global, las presidenciales pasan a tener seis candidaturas'),
+                 ('https://expressodasilhas.cv/politica/2026/10/03/joana-rosa-candidata-a-presidencia-da-republica-cabo-verde-precisa-de-uma-presidente-da-republica-independente-e-util/104906', 'Expresso das Ilhas, entrevista a Joana Rosa (3-10-2026)'),
+                 ('https://www.balai.cv/noticias/atualidade/presidenciais-2026-jose-maria-neves-diz-que-cabo-verde-precisa-de-um-presidente-sereno-experiente-e-com-sabedoria/', 'Balai, Neves en Porto Novo (1-11-2026)'),
+                 ('https://www.rtp.pt/noticias/mundo/paigc-da-guine-bissau-felicita-francisco-carvalho-por-maioria-absoluta_n1742133', 'RTP (Lusa), mayoría absoluta del PAICV en las legislativas de 2026'),
+                 ('https://en.wikipedia.org/wiki/2026_Cape_Verdean_parliamentary_election', 'Wikipedia, legislativas de Cabo Verde de 2026 (cita el edital de la CNE)'),
+                 ('https://www.geoboundaries.org/', 'geoBoundaries, concelhos de Cabo Verde (OpenStreetMap, ODbL)')],
+        enlaces=[],
+        lugar='Cabo Verde',
+    ),
+    dict(
         slug='renta-activacion-ingreso-minimo-vital-29n', fecha='2026-11-11',
         titulo='El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa', serie='29n', figura=0,
         descripcion='En octubre lo cobraban 2.781.679 personas, un 17,7 % más que hace un año. Andalucía reúne el 31,3 % de los beneficiarios con el 17,7 % de la población. En las provincias donde más pesa, PP y Vox sumaron el 53,2 % de los votos en 2023; donde menos, el 40,4 %.',
@@ -4467,7 +4488,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
 
 # Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
 # Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
-INTER_DESTACADAS = ['paraguay-pena-destituido-mapa-departamentos', 'nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
+INTER_DESTACADAS = ['cabo-verde-presidenciales-neves-rosa-mapa', 'paraguay-pena-destituido-mapa-departamentos', 'nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
 INTER_FUERA_CARRUSEL = {'nueva-zelanda-elecciones-mapa-circunscripciones', 'eeuu-noche-electoral-guia-horarios'}   # coordinador, 7-11-2026: con los resultados publicados, la previa sale del carrusel Internacional de la portada (sigue en /internacional/)
 INTER_EN_ACTUALIDAD = {'eeuu-resultados-medio-mandato-2026'}   # editor, 4-11-2026 8.20: la de la Cámara sale, para no repetir cifras distintas seguidas   # Nacho, 4-11-2026 6.18: la guía fuera del carrusel de Actualidad   # internacionales que sí van en el carrusel de Actualidad mientras estén fijas (Nacho, 3-11-2026)
 
