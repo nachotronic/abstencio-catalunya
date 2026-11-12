@@ -9,6 +9,8 @@ Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_cantabria.py
 """
 import json
 
+import pandas as pd
+
 from comun import BASE, RAIZ, esc, figura, n, barras, pieza
 from mapa_ccaa import (COL, NOM, Y19, Y23, agrega, caminos, escanos_oficiales, grupos, insertado, mapa_svg,
                        municipios, p, reparto_central, trazados)
@@ -24,6 +26,11 @@ NOMC = dict(NOM, PRC='PRC', EMPATE='Empate a votos')
 m = municipios([PR])
 NMUN = len(m)
 assert NMUN == 102
+# Población: padrón municipal a 1 de enero de 2023 (INE, tabla 2893), no la del Atlas de renta de las descargas, que en los
+# pueblos más pequeños no cuadra (Tresviso: 5 en el Atlas, 58 en el padrón). datos/padron_2023_cantabria.csv.
+PAD = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos/padron_2023_cantabria.csv', dtype={'mun_code': str}).set_index('mun_code').padron_2023
+assert PAD.sum() == 588419 and set(PAD.index) == set(m.mun_code)
+m['poblacion'] = m.mun_code.map(PAD).astype(float)
 NOMM = dict(zip(m.mun_code, m.municipio))
 assert NOMM['39075'] == 'Santander' and NOMM['39087'] == 'Torrelavega' and NOMM['39008'] == 'El Astillero'
 assert m[f'{Y19}_vMP'].sum() == 0 and m.get(f'{Y23}_vPRC', m[f'{Y23}_vCS'] * 0).sum() == 0 and m[f'{Y23}_vCS'].sum() == 0
@@ -44,7 +51,7 @@ PP_SUBE = int((m[f'{Y23}%PP'] > m[f'{Y19}%PP']).sum())
 PSOE_SUBE = int((m[f'{Y23}%PSOE'] > m[f'{Y19}%PSOE']).sum())
 assert PP_SUBE == NMUN and PSOE_SUBE == NMUN - 1
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PP', 'PSOE', 'PRC')} for y in (Y19, Y23)}
-assert [round(POB[y][f], 1) for y in (Y19, Y23) for f in ('PP', 'PSOE', 'PRC')] == [62.8, 25.7, 11.4, 79.3, 20.7, 0.0], POB
+assert [round(POB[y][f], 1) for y in (Y19, Y23) for f in ('PP', 'PSOE', 'PRC')] == [62.7, 25.6, 11.5, 79.3, 20.7, 0.0], POB
 
 # Los municipios del PRC
 PRM = m[m.g2019 == 'PRC']
