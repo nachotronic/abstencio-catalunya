@@ -47,6 +47,12 @@ assert VOX_BAJA == NMUN and PSOE_SUBE == 22 and PP_SUBE == NMUN
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('VOX', 'PP', 'PSOE')} for y in (Y19, Y23)}
 assert [round(POB[Y19][f], 1) for f in ('VOX', 'PP', 'PSOE')] == [41.6, 39.6, 18.8] and round(POB[Y23]['PP'], 1) == 98.0, POB
 
+# Circunscripciones en las que Vox fue el más votado en noviembre de 2019 (sin voto exterior)
+ES = municipios([f'{i:02d}' for i in range(1, 53)])
+VOX1 = sorted(pr for pr, g in ES.groupby(ES.mun_code.str[:2]) if (lambda a: max(a, key=a.get))(agrega(g, Y19, L19)['pct']) == 'VOX')
+assert VOX1 == ['30', '51'], VOX1
+del ES
+
 # Los 16 municipios de Vox en 2019
 VX = m[m.g2019 == 'VOX']
 FLS = {y: agrega(VX, y, L19 if y == Y19 else L23)['pct'] for y in (Y19, Y23)}
