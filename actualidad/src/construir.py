@@ -4600,6 +4600,19 @@ PIEZAS += [
         enlaces=[],
         lugar='Illes Balears',
     ),
+    dict(
+        slug='mapa-electoral-asturias-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Asturias: el PSOE ganó Oviedo por 42 votos en 2019 y lo perdió por 15.256 en 2023; Gijón lo retuvo por 622', serie='29n', figura=1,
+        descripcion='El PSOE pasó de ganar en 70 de los 78 concejos a ganar en 40, aunque subió en votos; en las cuencas mineras ganó en nueve de diez. Para el 29N, la media de encuestas da al PP tres de los 7 diputados, al PSOE tres y a Vox uno.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 78 concejos de Asturias: el partido más votado en cada uno, los 30 que pasaron del PSOE al PP, Oviedo, Gijón y los siete concejos de más de 20.000 habitantes, las cuencas del Nalón y del Caudal, el voto según el tamaño del concejo y los más ajustados; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por concejo, no de personas: no dicen qué hizo cada votante de Ciudadanos o de Vox en 2023. Un concejo pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas trata el Frente Ampliu como Sumar y tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada concejo con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado); ningún concejo terminó en empate. Cuencas: Aller, Caso, Langreo, Laviana, Lena, Mieres, Morcín, Riosa, San Martín del Rey Aurelio y Sobrescobio. Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_asturias.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.eldiario.es/asturias/once-candidaturas-congreso-siete-senado-concurriran-elecciones-generales-asturias_1_13621582.html', 'elDiario.es Asturias, las candidaturas del 29N (28-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Asturias',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
