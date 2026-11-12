@@ -11,7 +11,9 @@ que sus municipios salían con la familia que quedó segunda. Este control lo vu
      el ganador es la candidatura con más votos; si las dos primeras tienen los mismos votos, «EMPATE».
   3. Traduce esa candidatura al código del mapa (partidos.familia y, para las listas con código propio,
      partidos.SIGLAS_PROPIAS). Si gana una candidatura que en el mapa sería «Otros», es error: no tendría color propio.
-  4. Lo compara con <elección>_gana de descargas/municipios.csv y descargas/secciones.csv, y con el índice del ganador
+  4. Comprueba que los votos de cada código del mapa en descargas/resultados_secciones_largo.csv son la suma de sus
+     candidaturas en las mesas.
+  5. Lo compara con <elección>_gana de descargas/municipios.csv y descargas/secciones.csv, y con el índice del ganador
      en data/municipios.json, data/municipios-ligero.json, data/e/<elección>.json y data/sec/<provincia>.json; y,
      por provincia, con el que dan las fichas (la suma de los votos de cada código del mapa en municipios.csv).
 
@@ -147,13 +149,42 @@ def json_gana(inf, ruta, E, cods_de):
             inf.compara(nombre, y, c, a, e)
 
 
+def largo(inf, S_votos):
+    """descargas/resultados_secciones_largo.csv: los votos de cada código del mapa en cada sección, iguales a la suma de
+    sus candidaturas en las mesas (así no se cuela una lista en «Otros» o en otra familia)."""
+    with open(os.path.join(BASE, 'descargas', 'resultados_secciones_largo.csv'), newline='', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            y = r['eleccion']
+            if y not in S_votos:
+                continue
+            esp = S_votos[y].get(r['tract_code'], {})
+            inf.vistos['resultados_secciones_largo.csv'] += 1
+            for k in set(esp) | {c for c in r if c in CODIGOS_MAPA}:
+                a = float(r.get(k) or 0)
+                if abs(a - esp.get(k, 0)) > .5:
+                    inf.errores['resultados_secciones_largo.csv'].append(
+                        f'{y} {r["tract_code"]} {k}: la descarga dice {a:.0f} votos, las mesas {esp.get(k, 0)}')
+                    break
+
+
 def main():
     global FAMILIAS
     FAMILIAS = [f['cod'] for f in json.load(open(os.path.join(BASE, 'data', 'meta.json')))['familias']]
+    global CODIGOS_MAPA
+    CODIGOS_MAPA = set(FAMILIAS)
     S, M, P = {}, {}, {}
     for y in ELECCIONES:
         S[y], M[y], P[y] = esperados(y)
     inf = Informe()
+    SV = {}
+    for y in ELECCIONES:
+        sec, cand = mesas(y)
+        SV[y] = {}
+        for t, vs in sec.items():
+            d = SV[y][t] = defaultdict(int)
+            for c, v in vs.items():
+                d[cand[c]] += v
+    largo(inf, SV)
     ps = provincias_site()
     for y in ELECCIONES:
         for p in sorted(P[y]):

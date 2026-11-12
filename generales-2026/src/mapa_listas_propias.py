@@ -242,7 +242,6 @@ def largo(f, N):
     """resultados_secciones_largo.csv: votos de cada lista propia, restados de OTROS o del PP."""
     filas = leer_csv(f)
     cab, cuerpo = filas[0], filas[1:]
-    it, ie = cab.index('tract_code'), cab.index('eleccion')
     for k in sorted({k for n in N.values() for k in n.codigos}, key=PROPIAS.index):
         if k not in cab:
             j = cab.index('OTROS') + 1
@@ -251,6 +250,7 @@ def largo(f, N):
             cab.insert(j, k)
             for fila in cuerpo:
                 fila.insert(j, '')
+    it, ie = cab.index('tract_code'), cab.index('eleccion')   # después de añadir las columnas
     for fila in cuerpo:
         y = fila[ie]
         if y not in N:
@@ -263,6 +263,24 @@ def largo(f, N):
         for k in n.codigos + ['PP', 'OTROS']:
             fila[cab.index(k)] = fmt(r[k], 0)
     escribir_csv(f, [cab] + cuerpo)
+
+
+def nombres(web):
+    """data/nombres/2023_07.json (nombres.py) llamaba a la familia PP «PP + UPN», «UPN + PP» o «UPN» en Navarra: con UPN
+    aparte, el PP vuelve a ser el PP (se quita la etiqueta y la ficha usa la de la familia)."""
+    f = os.path.join(web, 'nombres', '2023_07.json')
+    if not os.path.exists(f):
+        return 0
+    d = json.load(open(f))
+    malos = {i for i, x in enumerate(d['n']) if 'UPN' in x}
+    n = 0
+    for k in ('p', 'm'):
+        pp = d[k].get('PP', {})
+        for c in [c for c, i in pp.items() if i in malos]:
+            del pp[c]
+            n += 1
+    json.dump(d, open(f, 'w'), separators=(',', ':'), ensure_ascii=False)
+    return n
 
 
 def main(web=os.path.join(BASE, 'data'), desc=os.path.join(BASE, 'descargas')):
@@ -296,6 +314,7 @@ def main(web=os.path.join(BASE, 'data'), desc=os.path.join(BASE, 'descargas')):
         for k in NM[y].codigos + ['PP', 'OTROS']:
             r[k] = float(t[k] / t.validos)
     json.dump(rs, open(os.path.join(web, 'resumen.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
+    n['nombres PP sin UPN'] = nombres(web)
     print('ganadores cambiados', n)
     for y in ELECCIONES:
         g = pd.Series(NM[y].gana).value_counts()

@@ -89,6 +89,17 @@ SIGLAS_PROPIAS = {
     '2023_07': {'U.P.N.': 'UPN', 'NC-BC': 'NC', 'EXISTE': 'TE', 'CUP-PR': 'CUP', 'SY': 'SY', 'XAV': 'XAV', 'FO': 'FO',
                 'ADELANTE ANDALUCÍA': 'AA', 'FE DE LAS JONS': 'FE', 'PAR': 'PAR', 'U.P.L.': 'UPL'},
 }
+def sin_listas_propias(df, pre=''):
+    """Devuelve las listas propias a donde estaban antes de mapa_listas_propias.py: UPN al PP, las demás a «Otros».
+    Para los cálculos que suman una lista fija de familias de las descargas (modelo de encuestas, piezas antiguas) y
+    deben seguir dando lo mismo. `pre`: prefijo de las columnas («2023_07_v» en municipios.csv; «» en el formato largo)."""
+    for k, _, _ in PROPIAS:
+        if pre + k in df:
+            de = pre + ('PP' if k == 'UPN' else 'OTROS')
+            df[de] = df[de].fillna(0) + df.pop(pre + k).fillna(0)
+    return df
+
+
 # Para la noche del 29N (famDe en app.js y directo-municipio.js, con las siglas tal cual y sin puntos): mapa_listas_propias.py
 # las pone delante de las reglas de data/meta.json, así UPN no se suma al PP ni la CUP o Existe a «Otros».
 REGLAS_PROPIAS = [
