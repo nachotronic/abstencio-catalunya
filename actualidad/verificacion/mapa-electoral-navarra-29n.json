@@ -20,12 +20,12 @@
    "calculo": "D['SUM23V'] - D['A19']['votos']['NAS']"
   },
   {
-   "texto": "PSOE ganó Pamplona y los once municipios de más de",
+   "texto": "Suma, pero el PSOE ganó los once municipios de más de",
    "cifra": "once",
    "calculo": "len(D['GC'])"
   },
   {
-   "texto": "10.000 habitantes, y EH Bildu, 121 pueblos. Para el 29N,",
+   "texto": "Pamplona incluida, y EH Bildu, 121 pueblos. Para el 29N,",
    "cifra": "121",
    "calculo": "D['GANA']['2023_07']['BILDU']"
   },
@@ -50,12 +50,12 @@
    "calculo": "D['GANA']['2019_11']['NAS']"
   },
   {
-   "texto": "29,9 %, y ganó en 106 de los 272 municipios, entre ellos",
+   "texto": "29,9 %, y ganó en 106 de los 272 municipios, que reunían",
    "cifra": "272",
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "y Tudela, que reunían el 64,7 % de la población. En",
+   "texto": "municipios, que reunían el 64,7 % de la población, entre",
    "cifra": "64,7",
    "calculo": "D['POB']['2019_11']['NAS']"
   },
@@ -418,7 +418,7 @@
  "externas": [],
  "ignorar": [
   {
-   "texto": "once municipios de más de 10.000 habitantes, y EH Bildu,",
+   "texto": "once municipios de más de 10.000 habitantes, Pamplona",
    "motivo": "umbral de población"
   },
   {
