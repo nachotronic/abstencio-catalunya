@@ -265,18 +265,18 @@
    "calculo": "D['TT']['Menos de 500']['g23']['PSOE']"
   },
   {
-   "texto": "decidieron por muy poco: diez se ganaron por un solo",
+   "texto": "decidieron por muy poco. En 2023, diez se ganaron por un solo",
    "cifra": "diez",
    "calculo": "len(D['UNO'])"
   },
   {
-   "texto": "ganaron por un solo voto, 5 para el PP, 4 para el",
-   "cifra": "5",
+   "texto": "ganaron por un solo voto: cinco para el PP, cuatro para",
+   "cifra": "cinco",
    "calculo": "sum(1 for x in D['UNO'] if x[1] == 'PP')"
   },
   {
-   "texto": "solo voto, 5 para el PP, 4 para el PSOE y uno,",
-   "cifra": "4",
+   "texto": "solo voto: cinco para el PP, cuatro para el PSOE y uno,",
+   "cifra": "cuatro",
    "calculo": "sum(1 for x in D['UNO'] if x[1] == 'PSOE')"
   },
   {

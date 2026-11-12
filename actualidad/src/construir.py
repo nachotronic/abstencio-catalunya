@@ -4683,6 +4683,8 @@ PIEZAS += [
         fuentes=[INTERIOR,
                  ('https://www.cope.es/emisoras/la-rioja/la-rioja-provincia/logrono/noticias/candidaturas-29n-rioja-pp-incorpora-galiana-psoe-cambia-lista-senado-20261026_3462835.html', 'COPE La Rioja, candidaturas del 29N (26-10-2026)'),
                  ('https://www.eldiario.es/la-rioja/angel-alda-sera-numero-lista-vox-elecciones-generales-rioja_1_13604417.html', 'Europa Press en elDiario.es, Ángel Alda encabeza la lista de Vox (21-10-2026)'),
+                 ('https://www.europapress.tv/politica/1132071/1/gamarra-pp-29-noviembre-vamos-decir-fin-fin-sanchismo', 'Europa Press, Gamarra en Logroño (8-11-2026)'),
+                 ('https://mapaelectoral.es/listas-electorales-29n/la-rioja/', 'Mapa Electoral, listas proclamadas en La Rioja (BOE)'),
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
         enlaces=[],
         lugar='La Rioja',

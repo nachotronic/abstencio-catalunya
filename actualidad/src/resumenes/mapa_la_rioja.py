@@ -4,7 +4,7 @@ Los 174 municipios de La Rioja en las generales de noviembre de 2019 y julio de 
 (Unidas Podemos en 2019 y Sumar en 2023; Más País no se presentó en La Rioja en 2019 y no hubo listas regionales con votos
 apreciables), Logroño y las ciudades, el tamaño de los municipios, los más ajustados y el reparto central del modelo de
 /encuestas/ para el 29N.
-Contexto: listas del 29N según COPE La Rioja (26-10-2026) y Europa Press en elDiario.es (21-10-2026). Sin citas literales.
+Contexto: listas del 29N según COPE La Rioja (26-10-2026), Europa Press en elDiario.es (21-10-2026) y el BOE (Frente Amplio); cita de Gamarra en Europa Press (8-11-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_la_rioja.py
 """
 import json
@@ -202,11 +202,12 @@ g_ins = ('<figure>\n<figcaption><span class="t">El mapa: cómo votó cada munici
 
 # --- Texto ---
 COPE = 'https://www.cope.es/emisoras/la-rioja/la-rioja-provincia/logrono/noticias/candidaturas-29n-rioja-pp-incorpora-galiana-psoe-cambia-lista-senado-20261026_3462835.html'
+EPG = 'https://www.europapress.tv/politica/1132071/1/gamarra-pp-29-noviembre-vamos-decir-fin-fin-sanchismo'
 EP = 'https://www.eldiario.es/la-rioja/angel-alda-sera-numero-lista-vox-elecciones-generales-rioja_1_13604417.html'
 L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 
 cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">La Rioja elige el 29 de noviembre 4 diputados. El PP presenta a Cuca Gamarra, con Alberto Galiana de número dos; el PSOE, a Elisa Garrido; Vox, a Ángel Alda, y Podemos, que va por separado del PSOE y del Frente Amplio, a Arantxa Carrero, según <a href="{COPE}">COPE La Rioja</a> y <a href="{EP}">Europa Press</a>. No hemos encontrado en esas notas declaraciones de los candidatos.</p>
+<p data-tipo="contexto">La Rioja elige el 29 de noviembre 4 diputados. El PP presenta a Cuca Gamarra, con Alberto Galiana de número dos; el PSOE, a Elisa Garrido; Vox, a Ángel Alda; el Frente Amplio, a Alba Díez Arrea, y Podemos, que va por separado del PSOE y del Frente Amplio, a Arantxa Carrero, según <a href="{COPE}">COPE La Rioja</a>, <a href="{EP}">Europa Press</a> y la <a href="{BASE}listas-electorales-29n/la-rioja/">lista proclamada en el BOE</a>. En un acto en Logroño el 8 de noviembre, Gamarra dijo que «el 29 de noviembre, La Rioja va a votar cambio», según <a href="{EPG}">Europa Press</a>.</p>
 <p data-tipo="dato">En noviembre de 2019, el PSOE fue el partido más votado en La Rioja, con {n(V19)} votos más que el PP (sin el voto exterior), y ganó Logroño por {n(int(LOG.margv2019))}. Los {GANA[Y19]["PSOE"]} municipios que ganó reunían el {p(POB[Y19]["PSOE"])} % de la población; los {GANA[Y19]["PP"]} del PP, el {p(POB[Y19]["PP"])} %. En julio de 2023, el PP subió del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} % y ganó en {GANA[Y23]["PP"]} municipios, con el {p(POB[Y23]["PP"])} % de la población. Logroño pasó al PP por {n(int(LOG.margv2023))} votos. El PSOE también subió, del {p(A19["pct"]["PSOE"])} % al {p(A23["pct"]["PSOE"])} %, pero se quedó en {GANA[Y23]["PSOE"]} municipios.</p>
 {g_ins}
 <p data-tipo="dato">Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó en 2023, y Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. Sumar sacó el {p(A23["pct"]["SUMAR"])} %, frente al {p(A19["pct"]["UP"])} % de Unidas Podemos. La participación subió del {p(A19["part"])} % al {p(A23["part"])} %. Los dos partidos grandes quedaron igual en escaños: dos cada uno, en 2019 y en 2023.</p>
@@ -217,7 +218,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">Logroño, con {n(LOGP)} habitantes, reúne el {p(LOGS)} % de la población de La Rioja. En 2019, el PSOE sacó allí el {p(LOG[f"{Y19}%PSOE"])} % y el PP, el {p(LOG[f"{Y19}%PP"])} %; en 2023, el PP subió al {p(LOG[f"{Y23}%PP"])} % y el PSOE, al {p(LOG[f"{Y23}%PSOE"])} %. De los nueve municipios de más de 5.000 habitantes, el PSOE había ganado cinco en 2019; en 2023 solo conservó Haro, por {int(HAR.margv2023)} votos. Arnedo, Alfaro y Villamediana de Iregua pasaron al PP, como Logroño.</p>
 {g_cap}
 <h2>Los pueblos</h2>
-<p data-tipo="patron">En los {TM["n"]} municipios de 500 a 5.000 habitantes, el PSOE pasó de ganar en {TM["g19"]["PSOE"]} a ganar en {TM["g23"]["PSOE"]}. En los {TT["Menos de 500"]["n"]} de menos de 500, donde el PSOE conservó más, ganó en {TT["Menos de 500"]["g23"]["PSOE"]}. Muchos se decidieron por muy poco: {NW[len(UNO)]} se ganaron por un solo voto, {UNO.g2023.value_counts()["PP"]} para el PP, {UNO.g2023.value_counts()["PSOE"]} para el PSOE y uno, Torremontalbo, de {int(TOM.poblacion)} habitantes, para Vox, el único municipio riojano que ganó. Los pueblos que se ganaron por un voto en toda España están en {L("ganar-por-un-voto-29n", "esta pieza")}.</p>
+<p data-tipo="patron">En los {TM["n"]} municipios de 500 a 5.000 habitantes, el PSOE pasó de ganar en {TM["g19"]["PSOE"]} a ganar en {TM["g23"]["PSOE"]}. En los {TT["Menos de 500"]["n"]} de menos de 500, donde el PSOE conservó más, ganó en {TT["Menos de 500"]["g23"]["PSOE"]}. Muchos se decidieron por muy poco. En 2023, {NW[len(UNO)]} se ganaron por un solo voto: {NW[UNO.g2023.value_counts()["PP"]]} para el PP, {NW[UNO.g2023.value_counts()["PSOE"]]} para el PSOE y uno, Torremontalbo, de {int(TOM.poblacion)} habitantes, para Vox, el único municipio riojano que ganó. Los pueblos que se ganaron por un voto en toda España están en {L("ganar-por-un-voto-29n", "esta pieza")}.</p>
 {g_tam}
 {g_aj}
 <h2>Lo que puede cambiar el 29N</h2>
