@@ -328,7 +328,8 @@ EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia 
                  'pueblos-bajo-el-agua-1936': {'23055', '48027'}, 'pueblos-colonizacion-franquismo-voto': {'23028', '50008'},
                  'calle-que-parte-barcelona': {'14057'}, 'mapa-electoral-cataluna-29n': {'23025', '43161'},   # Castellar (Jaén) y Valls salen de «Castellar de la Ribera» y «Les Valls de Valira»
                  'feijoo-albiol-barcelona-disturbios-29n': {'45177'},
-                 'mapa-electoral-comunitat-valenciana-29n': {'12140'}}   # Viver sale de «Villanueva de Viver», en la lista de empates
+                 'mapa-electoral-comunitat-valenciana-29n': {'12140'},   # Viver sale de «Villanueva de Viver», en la lista de empates
+                 'mapa-electoral-la-rioja-29n': {'50094'}}   # Daroca (Zaragoza) sale de «Daroca de Rioja» (editor, 12-11-2026)
 # Comunidades y provincias con el mismo nombre que su capital: solo cuentan como municipio con «ciudad de» delante
 # o si la pieza es de esa ciudad (ACTUALIDAD_MUNICIPIO). Así «la Comunidad de Madrid» o «la provincia de Sevilla» no enlazan la ciudad.
 AMBIGUOS = {slug(x) for n in PROV_NOMBRE.values() for x in n.split('/')} | {'valencia', 'castellon', 'alicante'}
