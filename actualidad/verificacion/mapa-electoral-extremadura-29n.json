@@ -1,0 +1,546 @@
+{
+ "pieza": "mapa-electoral-extremadura-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Extremadura: el PSOE ganó en 276 de los 388 municipios",
+   "cifra": "276",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "el PSOE ganó en 276 de los 388 municipios en 2023,",
+   "cifra": "388",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "2023, pero el PP ganó en ocho de las 13 ciudades de",
+   "cifra": "ocho",
+   "calculo": "D['TT']['Más de 10.000']['g23']['PP']"
+  },
+  {
+   "texto": "el PP ganó en ocho de las 13 ciudades de más de 10.000",
+   "cifra": "13",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 82,4 % de la población al",
+   "cifra": "82,4",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "82,4 % de la población al 47,8 %. Miajadas y Zafra",
+   "cifra": "47,8",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "y Zafra se decidieron por cuatro votos. Para el 29N,",
+   "cifra": "cuatro",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "media de encuestas da al PP cuatro de los 9 diputados,",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas da al PP cuatro de los 9 diputados, al PSOE tres",
+   "cifra": "9",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "los 9 diputados, al PSOE tres y a Vox dos.",
+   "cifra": "tres",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 9 diputados: 5 en Badajoz",
+   "cifra": "9",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de noviembre 9 diputados: 5 en Badajoz y 4 en Cáceres.",
+   "cifra": "5",
+   "calculo": "D['ESC26']['06']"
+  },
+  {
+   "texto": "diputados: 5 en Badajoz y 4 en Cáceres. El PSOE",
+   "cifra": "4",
+   "calculo": "D['ESC26']['10']"
+  },
+  {
+   "texto": "y el País Vasco): sacó el 39,4 % de los votos a candidaturas,",
+   "cifra": "39,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "a candidaturas, frente al 38,2 % del PP, y fue el primero",
+   "cifra": "38,2",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "las dos provincias. Ganó en 276 de los 388 municipios.",
+   "cifra": "276",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "provincias. Ganó en 276 de los 388 municipios. Pero el",
+   "cifra": "388",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "ganó en las ciudades: de las 13 de más de 10.000 habitantes,",
+   "cifra": "13",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en 12 en noviembre de 2019",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 10.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "en noviembre de 2019 y en cinco en julio de 2023. Por",
+   "cifra": "cinco",
+   "calculo": "D['TT']['Más de 10.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "municipios que ganó el PP, 110, reúnen el 51,9 % de",
+   "cifra": "110",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "ganó el PP, 110, reúnen el 51,9 % de la población extremeña,",
+   "cifra": "51,9",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "extremeña, y los del PSOE, el 47,8 %.",
+   "cifra": "47,8",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "2019, el PSOE había ganado en 344 municipios, el PP en",
+   "cifra": "344",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "344 municipios, el PP en 39 y Vox en tres, con dos",
+   "cifra": "39",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "municipios, el PP en 39 y Vox en tres, con dos empates. Entre",
+   "cifra": "tres",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "y otra, el PSOE pasó del 38,7 % al 39,4 %, con 17.313",
+   "cifra": "38,7",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "el PSOE pasó del 38,7 % al 39,4 %, con 17.313 votos",
+   "cifra": "39,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "del 38,7 % al 39,4 %, con 17.313 votos más, y subió en",
+   "cifra": "17.313",
+   "calculo": "D['DV']['PSOE']"
+  },
+  {
+   "texto": "17.313 votos más, y subió en 160 municipios. El PP sumó",
+   "cifra": "160",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "160 municipios. El PP sumó 82.970 votos y pasó del 26,3",
+   "cifra": "82.970",
+   "calculo": "D['DV']['PP']"
+  },
+  {
+   "texto": "sumó 82.970 votos y pasó del 26,3 % al 38,2 %, en un año",
+   "cifra": "26,3",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "votos y pasó del 26,3 % al 38,2 %, en un año en que",
+   "cifra": "38,2",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 7,7 %, no se presentó y",
+   "cifra": "7,7",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "se presentó y Vox bajó del 17,0 % al 13,7 %. La participación",
+   "cifra": "17,0",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 17,0 % al 13,7 %. La participación",
+   "cifra": "13,7",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "La participación subió del 69,1 % al 73,7 %.",
+   "cifra": "69,1",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 69,1 % al 73,7 %.",
+   "cifra": "73,7",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "71 municipios pasaron del",
+   "cifra": "71",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "camino contrario. En esos 71, el PSOE no bajó: pasó",
+   "cifra": "71",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "el PSOE no bajó: pasó del 34,0 % al 35,2 %. El PP subió",
+   "cifra": "34,0",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "bajó: pasó del 34,0 % al 35,2 %. El PP subió más,",
+   "cifra": "35,2",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "35,2 %. El PP subió más, del 28,9 % al 41,3 %, mientras",
+   "cifra": "28,9",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "subió más, del 28,9 % al 41,3 %, mientras desaparecía",
+   "cifra": "41,3",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 8,4 %, y Vox bajaba del",
+   "cifra": "8,4",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 8,4 %, y Vox bajaba del 18,0 % al 14,5 %.",
+   "cifra": "18,0",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox bajaba del 18,0 % al 14,5 %.",
+   "cifra": "14,5",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "cada tramo de tamaño. En los 173 de 500 a 2.000 habitantes,",
+   "cifra": "173",
+   "calculo": "D['TT']['De 500 a 2.000']['n']"
+  },
+  {
+   "texto": "2.000 habitantes, ganó en 132. En las 13 ciudades",
+   "cifra": "132",
+   "calculo": "D['TT']['De 500 a 2.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "habitantes, ganó en 132. En las 13 ciudades de más de 10.000,",
+   "cifra": "13",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "votado en conjunto, con el 40,5 % frente al 34,6 %,",
+   "cifra": "40,5",
+   "calculo": "D['TT']['Más de 10.000']['pp23']"
+  },
+  {
+   "texto": "conjunto, con el 40,5 % frente al 34,6 %, y ganó en ocho. El",
+   "cifra": "34,6",
+   "calculo": "D['TT']['Más de 10.000']['psoe23']"
+  },
+  {
+   "texto": "frente al 34,6 %, y ganó en ocho. El PSOE conservó Mérida,",
+   "cifra": "ocho",
+   "calculo": "D['TT']['Más de 10.000']['g23']['PP']"
+  },
+  {
+   "texto": "la capital autonómica, por 548 votos. Plasencia, Don",
+   "cifra": "548",
+   "calculo": "D['GC']['Mérida']['margv23']"
+  },
+  {
+   "texto": "PSOE al PP; Don Benito, por 89 votos. Plasencia, que",
+   "cifra": "89",
+   "calculo": "D['GC']['Don Benito']['margv23']"
+  },
+  {
+   "texto": "2023: en Badajoz, con el 39,5 % frente al 38,2 % del",
+   "cifra": "39,5",
+   "calculo": "D['PR']['06']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "Badajoz, con el 39,5 % frente al 38,2 % del PP, y en Cáceres,",
+   "cifra": "38,2",
+   "calculo": "D['PR']['06']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP, y en Cáceres, con el 39,1 % frente al 38,4 %.",
+   "cifra": "39,1",
+   "calculo": "D['PR']['10']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "Cáceres, con el 39,1 % frente al 38,4 %. Pero el PP ganó en",
+   "cifra": "38,4",
+   "calculo": "D['PR']['10']['2023_07']['PP']"
+  },
+  {
+   "texto": "las dos: en Badajoz pasó de 11 a 35, de 165, y en Cáceres,",
+   "cifra": "11",
+   "calculo": "D['PRG']['06']['2019_11']['PP']"
+  },
+  {
+   "texto": "dos: en Badajoz pasó de 11 a 35, de 165, y en Cáceres,",
+   "cifra": "35",
+   "calculo": "D['PRG']['06']['2023_07']['PP']"
+  },
+  {
+   "texto": "Badajoz pasó de 11 a 35, de 165, y en Cáceres, de 28",
+   "cifra": "165",
+   "calculo": "D['PRN']['06']"
+  },
+  {
+   "texto": "de 165, y en Cáceres, de 28 a 75, de 223. Vox, que",
+   "cifra": "28",
+   "calculo": "D['PRG']['10']['2019_11']['PP']"
+  },
+  {
+   "texto": "165, y en Cáceres, de 28 a 75, de 223. Vox, que en",
+   "cifra": "75",
+   "calculo": "D['PRG']['10']['2023_07']['PP']"
+  },
+  {
+   "texto": "en Cáceres, de 28 a 75, de 223. Vox, que en 2019 ganó",
+   "cifra": "223",
+   "calculo": "D['PRN']['10']"
+  },
+  {
+   "texto": "Vox, que en 2019 ganó en tres municipios de Cáceres,",
+   "cifra": "tres",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "más de 5.000 habitantes, tres se decidieron en 2023",
+   "cifra": "tres",
+   "calculo": "sum(1 for r in D['AJ'] if r[4] < 10)"
+  },
+  {
+   "texto": "(Badajoz) fueron para el PSOE por 4 votos cada uno, y Villafranca",
+   "cifra": "4",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "(Badajoz), para el PP por 5. En los pueblos pequeños,",
+   "cifra": "5",
+   "calculo": "D['AJ'][2][4]"
+  },
+  {
+   "texto": "En los pueblos pequeños, tres municipios se decidieron",
+   "cifra": "tres",
+   "calculo": "D['UNVOTO']"
+  },
+  {
+   "texto": "el reparto central de los 9 escaños da al PP cuatro,",
+   "cifra": "9",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de los 9 escaños da al PP cuatro, los mismos que en 2023;",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "mismos que en 2023; al PSOE, tres, uno menos, y a Vox,",
+   "cifra": "tres",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "el modelo da al PSOE entre 1 y 2 diputados y a Vox",
+   "cifra": "1",
+   "calculo": "D['RC']['10']['PSOE'][1]"
+  },
+  {
+   "texto": "modelo da al PSOE entre 1 y 2 diputados y a Vox entre",
+   "cifra": "2",
+   "calculo": "D['RC']['10']['PSOE'][2]"
+  },
+  {
+   "texto": "2 diputados y a Vox entre 0 y 1.",
+   "cifra": "0",
+   "calculo": "D['RC']['10']['VOX'][1]"
+  },
+  {
+   "texto": "diputados y a Vox entre 0 y 1.",
+   "cifra": "1",
+   "calculo": "D['RC']['10']['PSOE'][1]"
+  },
+  {
+   "texto": "Dónde se decidió por cuatro votos",
+   "cifra": "cuatro",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 344 municipios a ganar en",
+   "cifra": "344",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "344 municipios a ganar en 276; el PP, de 39 a 110Partido",
+   "cifra": "276",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "a ganar en 276; el PP, de 39 a 110Partido más votado",
+   "cifra": "39",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 388 municipios de Extremadura,",
+   "cifra": "388",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 71 municipios que pasaron",
+   "cifra": "71",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP, el PSOE subió: del 34,0 % al 35,2 %Voto al PP,",
+   "cifra": "34,0",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió: del 34,0 % al 35,2 %Voto al PP, al PSOE,",
+   "cifra": "35,2",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "En las 13 ciudades de más de 10.000",
+   "cifra": "13",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 12 a ganar en cincoMunicipios",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 10.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "provincias, pero el PP pasó de 39 a 110 municipiosMunicipios",
+   "cifra": "39",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "provincias, pero el PP pasó de 39 a 110 municipiosMunicipios",
+   "cifra": "110",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "Zafra fueron para el PSOE por 4 votos, y Villafranca",
+   "cifra": "4",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los ocho municipios de más de",
+   "cifra": "ocho",
+   "calculo": "D['TT']['Más de 10.000']['g23']['PP']"
+  },
+  {
+   "texto": "encuestas, el PSOE pasaría de cuatro a tres diputados en",
+   "cifra": "cuatro",
+   "calculo": "D['E23']['PSOE']"
+  },
+  {
+   "texto": "PSOE pasaría de cuatro a tres diputados en Extremadura",
+   "cifra": "tres",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "Extremadura y Vox, de uno a dosLos 9 diputados de las dos",
+   "cifra": "9",
+   "calculo": "sum(D['ESC26'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "las 13 ciudades de más de 10.000 habitantes",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Extremadura es una de las cinco comunidades en las que",
+   "motivo": "comunidades en las que el PSOE sacó más votos que el PP en 2023, comprobado en el script (CC_PSOE)"
+  },
+  {
+   "texto": "ciudades: de las 13 de más de 10.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los municipios de menos de 10.000 habitantes sacó más",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "de tamaño. En los 173 de 500 a 2.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tamaño. En los 173 de 500 a 2.000 habitantes, ganó en",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "las 13 ciudades de más de 10.000, en cambio, el PP fue",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "De las tres ciudades más pobladas,",
+   "motivo": "Badajoz, Cáceres y Mérida"
+  },
+  {
+   "texto": "Valdehúncar, de menos de 200 habitantes.",
+   "motivo": "umbral de población, comprobado en el script (VX23)"
+  },
+  {
+   "texto": "los municipios de más de 5.000 habitantes, tres se",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "decidieron en 2023 por menos de diez votos. Miajadas (Cáceres)",
+   "motivo": "umbral de votos"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "las 13 ciudades de más de 10.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Vox en julio de 2023 en los siete municipios de más de",
+   "motivo": "filas del gráfico, comprobado en el script (GC, 7 municipios de más de 20.000)"
+  },
+  {
+   "texto": "siete municipios de más de 20.000 habitantes, en %. Barra",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "ocho municipios de más de 5.000 habitantes más ajustados,",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}

@@ -4570,6 +4570,20 @@ PIEZAS += [
         enlaces=[],
         lugar='Región de Murcia',
     ),
+    dict(
+        slug='mapa-electoral-extremadura-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Extremadura: el PSOE ganó en 276 de los 388 municipios en 2023, pero el PP ganó en ocho de las 13 ciudades de más de 10.000 habitantes', serie='29n', figura=1,
+        descripcion='El PSOE fue el más votado y subió en votos, pero los municipios que ganó pasaron de reunir el 82,4 % de la población al 47,8 %. Miajadas y Zafra se decidieron por cuatro votos. Para el 29N, la media de encuestas da al PP cuatro de los 9 diputados, al PSOE tres y a Vox dos.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 388 municipios de Extremadura: el partido más votado en cada uno, los 71 que pasaron del PSOE al PP, el voto según el tamaño del municipio, las siete ciudades de más de 20.000 habitantes, las dos provincias, los municipios más ajustados y el empate de Guadiana; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Ciudadanos o de Vox en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado); con los mismos votos entre los dos primeros, empate (dos casos en 2019 y uno en 2023). Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_extremadura.py.',
+        fuentes=[INTERIOR,
+                 ('https://ondacerosur.es/2026/10/aprobada-la-lista-del-psoe-del-29n-que-encabeza-yolanda-garcia-seco-al-congreso-por-badajoz-e-irene-pozas-por-caceres/', 'Onda Cero Sur Extremadura, las listas del PSOE (18-10-2026)'),
+                 ('https://ondacerosur.es/2026/10/cristina-teniente-y-teresa-tortonda-encabezaran-las-listas-del-pp-al-congreso-por-caceres-y-badajoz-para-el-29n/', 'Onda Cero Sur Extremadura / Europa Press, las listas del PP (21-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Extremadura',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
