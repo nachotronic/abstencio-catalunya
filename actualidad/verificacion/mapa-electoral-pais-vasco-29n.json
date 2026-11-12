@@ -25,17 +25,17 @@
    "calculo": "D['GANA']['2023_07']['BILDU']"
   },
   {
-   "texto": "El PNV bajó en 247 de los 251 municipios.",
-   "cifra": "247",
+   "texto": "El PNV bajó en 246 de los 251 municipios",
+   "cifra": "246",
    "calculo": "D['PNV_BAJA']"
   },
   {
-   "texto": "El PNV bajó en 247 de los 251 municipios. EH Bildu",
+   "texto": "El PNV bajó en 246 de los 251 municipios (en uno repitió).",
    "cifra": "251",
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "municipios. EH Bildu le quitó 60 y el PSOE, más votado",
+   "texto": "repitió). EH Bildu le quitó 60 y el PSOE, más votado",
    "cifra": "60",
    "calculo": "D['PNV_BILDU']"
   },
@@ -80,7 +80,7 @@
    "calculo": "D['ESC26']['20']"
   },
   {
-   "texto": "Bizkaia, 6 en Gipuzkoa y 4 en Álava. El PNV presentó",
+   "texto": "Bizkaia, 6 en Gipuzkoa y 4 en Álava. El PNV ratificó",
    "cifra": "4",
    "calculo": "D['ESC26']['01']"
   },
@@ -165,22 +165,22 @@
    "calculo": "D['A19']['pct']['PSOE']"
   },
   {
-   "texto": "el 19,3 %. El PNV perdió 101.643 votos y bajó en 247",
+   "texto": "el 19,3 %. El PNV perdió 101.643 votos y bajó en 246",
    "cifra": "101.643",
    "calculo": "D['DPNV_VOTOS']"
   },
   {
-   "texto": "perdió 101.643 votos y bajó en 247 de los 251 municipios;",
-   "cifra": "247",
+   "texto": "perdió 101.643 votos y bajó en 246 de los 251 municipios",
+   "cifra": "246",
    "calculo": "D['PNV_BAJA']"
   },
   {
-   "texto": "votos y bajó en 247 de los 251 municipios; EH Bildu",
+   "texto": "votos y bajó en 246 de los 251 municipios (en uno,",
    "cifra": "251",
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "municipios; EH Bildu ganó 54.482 y subió en 245. El PP",
+   "texto": "porcentaje); EH Bildu ganó 54.482 y subió en 245. El PP",
    "cifra": "54.482",
    "calculo": "D['DBILDU_VOTOS']"
   },

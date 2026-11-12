@@ -42,7 +42,9 @@ assert (PNV_BILDU, PNV_PSOE, PNV_PP, PNV_PNV, BILDU_BILDU) == (60, 14, 3, 75, 79
 assert A23['pct']['PSOE'] > A23['pct']['PNV'] > A23['pct']['BILDU'] and A19['pct']['PNV'] > A19['pct']['PSOE']
 PNV_SUBE = int((m[f'{Y23}%PNV'] > m[f'{Y19}%PNV']).sum())
 BILDU_SUBE = int((m[f'{Y23}%BILDU'] > m[f'{Y19}%BILDU']).sum())
-assert PNV_SUBE == 4 and BILDU_SUBE == 245
+PNV_BAJA = int((m[f'{Y23}%PNV'] < m[f'{Y19}%PNV']).sum())
+PNV_IGUAL = m[(m[f'{Y23}_vPNV'] * m[f'{Y19}_val'] == m[f'{Y19}_vPNV'] * m[f'{Y23}_val'])]
+assert PNV_SUBE == 4 and BILDU_SUBE == 245 and PNV_BAJA == 246 and list(PNV_IGUAL.mun_code) == ['48033'] and PNV_SUBE + PNV_BAJA + 1 == NMUN
 DPNV_VOTOS = A19['votos']['PNV'] - A23['votos']['PNV']
 DBILDU_VOTOS = A23['votos']['BILDU'] - A19['votos']['BILDU']
 assert DPNV_VOTOS > 0 and DBILDU_VOTOS > 0
@@ -250,10 +252,10 @@ EHBP = 'https://www.moncloa.com/2026/10/19/eh-bildu-elecciones-generales-29n-2-3
 L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 
 cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">El País Vasco elige el 29 de noviembre 18 diputados: {ESC["2026"]["48"]} en Bizkaia, {ESC["2026"]["20"]} en Gipuzkoa y {ESC["2026"]["01"]} en Álava. El PNV presentó el 17 de octubre a sus cabezas de lista, Idoia Sagastizabal en Bizkaia, Maribel Vaquero en Gipuzkoa y Gorka Urtaran en Álava, y su presidente, Aitor Esteban, defendió que había que enviarlos a Madrid «porque hay mucho en juego hoy en Madrid», según <a href="{PNVL}">Moncloa.com</a>. EH Bildu va con Oskar Matute en Bizkaia, Oihana Etxebarrieta en Gipuzkoa y Mikel Otero en Álava, según <a href="{EHBC}">Moncloa.com</a>, y Arnaldo Otegi la presentó como «la izquierda kilómetro cero», según el mismo <a href="{EHBP}">medio</a>.</p>
+<p data-tipo="contexto">El País Vasco elige el 29 de noviembre 18 diputados: {ESC["2026"]["48"]} en Bizkaia, {ESC["2026"]["20"]} en Gipuzkoa y {ESC["2026"]["01"]} en Álava. El PNV ratificó el 17 de octubre a sus cabezas de lista, Idoia Sagastizabal en Bizkaia, Maribel Vaquero en Gipuzkoa y Gorka Urtaran en Álava, y su presidente, Aitor Esteban, defendió que había que enviarlos a Madrid «porque hay mucho en juego hoy en Madrid», según <a href="{PNVL}">Moncloa.com</a>. EH Bildu propuso a Oskar Matute en Bizkaia, Oihana Etxebarrieta en Gipuzkoa y Mikel Otero en Álava, según <a href="{EHBC}">Moncloa.com</a>, y Arnaldo Otegi la presentó como «la izquierda kilómetro cero», según el mismo <a href="{EHBP}">medio</a>.</p>
 <p data-tipo="dato">El mapa municipio a municipio cambió de color. En noviembre de 2019, el PNV fue el partido más votado en {GANA[Y19]["PNV"]} de los {NMUN} municipios vascos, EH Bildu en {GANA[Y19]["BILDU"]}, el PSOE en {GANA[Y19]["PSOE"]}, el PP en {NW[GANA[Y19]["PP"]]} y Unidas Podemos en {NW[GANA[Y19]["UP"]]}; en Gaintza, el PNV y EH Bildu empataron a votos. En julio de 2023, EH Bildu ganó en {GANA[Y23]["BILDU"]}, el PNV en {GANA[Y23]["PNV"]}, el PSOE en {GANA[Y23]["PSOE"]} y el PP en {NW[GANA[Y23]["PP"]]}. Y el PSOE ganó en las tres capitales: en 2019 solo había ganado en Vitoria-Gasteiz.</p>
 {g_ins}
-<p data-tipo="dato">El más votado en el conjunto del País Vasco en 2023 fue el PSOE, con el {p(A23["pct"]["PSOE"])} % de los votos a candidaturas (sin voto exterior), por delante del PNV ({p(A23["pct"]["PNV"])} %) y de EH Bildu ({p(A23["pct"]["BILDU"])} %). En 2019, el PNV había sacado el {p(A19["pct"]["PNV"])} %, EH Bildu el {p(A19["pct"]["BILDU"])} % y el PSOE el {p(A19["pct"]["PSOE"])} %. El PNV perdió {n(DPNV_VOTOS)} votos y bajó en {NMUN - PNV_SUBE} de los {NMUN} municipios; EH Bildu ganó {n(DBILDU_VOTOS)} y subió en {BILDU_SUBE}. El PP pasó del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} %, y Sumar sacó el {p(A23["pct"]["SUMAR"])} %, frente al {p(A19["pct"]["UP"])} % de Unidas Podemos en 2019. La participación bajó del {p(A19["part"])} % al {p(A23["part"])} %.</p>
+<p data-tipo="dato">El más votado en el conjunto del País Vasco en 2023 fue el PSOE, con el {p(A23["pct"]["PSOE"])} % de los votos a candidaturas (sin voto exterior), por delante del PNV ({p(A23["pct"]["PNV"])} %) y de EH Bildu ({p(A23["pct"]["BILDU"])} %). En 2019, el PNV había sacado el {p(A19["pct"]["PNV"])} %, EH Bildu el {p(A19["pct"]["BILDU"])} % y el PSOE el {p(A19["pct"]["PSOE"])} %. El PNV perdió {n(DPNV_VOTOS)} votos y bajó en {PNV_BAJA} de los {NMUN} municipios (en uno, Ibarrangelu, repitió el mismo porcentaje); EH Bildu ganó {n(DBILDU_VOTOS)} y subió en {BILDU_SUBE}. El PP pasó del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} %, y Sumar sacó el {p(A23["pct"]["SUMAR"])} %, frente al {p(A19["pct"]["UP"])} % de Unidas Podemos en 2019. La participación bajó del {p(A19["part"])} % al {p(A23["part"])} %.</p>
 {g_mapgan}
 <p data-tipo="patron">De los {GANA[Y19]["PNV"]} municipios del PNV en 2019, {PNV_BILDU} pasaron a EH Bildu, {PNV_PSOE} al PSOE y {NW[PNV_PP]} al PP; conservó {PNV_PNV}. EH Bildu mantuvo los {BILDU_BILDU} que había ganado en 2019. En los {PNV_BILDU} que pasaron del PNV a EH Bildu, el PNV bajó del {p(FLS[Y19]["PNV"])} % al {p(FLS[Y23]["PNV"])} % y EH Bildu subió del {p(FLS[Y19]["BILDU"])} % al {p(FLS[Y23]["BILDU"])} %. Como el PSOE ganó las ciudades, los municipios que ganó pasaron de reunir el {p(POB[Y19]["PSOE"])} % de la población al {p(POB[Y23]["PSOE"])} %, y los del PNV, del {p(POB[Y19]["PNV"])} % al {p(POB[Y23]["PNV"])} %.</p>
 {g_flip}
@@ -300,7 +302,7 @@ foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio 
 R = lambda v: round(float(v), 4)
 DATOS = {
     'A19': A19, 'A23': A23, 'GANA': GANA, 'PNV_BILDU': PNV_BILDU, 'PNV_PSOE': PNV_PSOE, 'PNV_PP': PNV_PP, 'PNV_PNV': PNV_PNV, 'BILDU_BILDU': BILDU_BILDU,
-    'DPNV_VOTOS': DPNV_VOTOS, 'DBILDU_VOTOS': DBILDU_VOTOS, 'PNV_SUBE': PNV_SUBE, 'PNV_BAJA': NMUN - PNV_SUBE, 'BILDU_SUBE': BILDU_SUBE,
+    'DPNV_VOTOS': DPNV_VOTOS, 'DBILDU_VOTOS': DBILDU_VOTOS, 'PNV_SUBE': PNV_SUBE, 'PNV_BAJA': PNV_BAJA, 'BILDU_SUBE': BILDU_SUBE,
     'POB': POB, 'FLS': FLS, 'TT': TT, 'NMUN': NMUN, 'CAP_POB': CAP_POB,
     'PR': {pr: {y: PRS[pr][y]['pct'] for y in PRS[pr]} for pr in PRS}, 'PRG': PRG, 'PRN': PRN,
     'CAP': {CAPITAL[r.mun_code]: {'g19': r.g2019, 'g23': r.g2023, 'seg23': r.seg2023, 'marg23': R(r.marg2023), 'psoe23': R(r[f'{Y23}%PSOE']),
@@ -314,7 +316,7 @@ cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details op
 
 pieza(SLUG, 'El mapa electoral del País Vasco',
       f'El mapa electoral del País Vasco: el PNV pasó de ganar en {GANA[Y19]["PNV"]} municipios a {GANA[Y23]["PNV"]}, y EH Bildu, de {GANA[Y19]["BILDU"]} a {GANA[Y23]["BILDU"]}',
-      f'El PNV bajó en {NMUN - PNV_SUBE} de los {NMUN} municipios. EH Bildu le quitó {PNV_BILDU} y el PSOE, más votado en 2023, ganó en las tres capitales. '
+      f'El PNV bajó en {PNV_BAJA} de los {NMUN} municipios (en uno repitió). EH Bildu le quitó {PNV_BILDU} y el PSOE, más votado en 2023, ganó en las tres capitales. '
       f'Para el 29N, la media de encuestas da al PSOE {E29["PSOE"]} de los 18 diputados, a EH Bildu {E29["BILDU"]} y al PNV {E29["PNV"]}.',
       '12 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('GANA', GANA, 'E29', E29, 'FLS', {y: {k: round(v, 1) for k, v in FLS[y].items()} for y in FLS}, 'AJG', [(r.municipio, round(r.marg2023, 2), int(r.margv2023), r.g2023) for _, r in AJG.iterrows()])
