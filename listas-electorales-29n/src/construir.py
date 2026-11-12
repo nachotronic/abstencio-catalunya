@@ -13,7 +13,7 @@ Escribe index.html, <provincia>/index.html (52), candidatos.json (para el buscad
 
 Uso, desde la raíz:  python3 listas-electorales-29n/src/construir.py
 """
-import csv, html, importlib.util, json, pathlib, re, sys, unicodedata
+import csv, html, importlib.util, json, math, pathlib, re, sys, unicodedata
 from collections import Counter, defaultdict
 from datetime import date
 
@@ -87,10 +87,13 @@ OTRO = ('OTROS', '', 'Otros', '#8a8589', '#a9a4a8', None)
 
 
 def familia(siglas, denominacion):
+    # primero las siglas y después la denominación: en «EH BILDU-ERC» (Navarra y Senado vasco) manda EH Bildu,
+    # aunque la denominación diga «ESQUERRA REPUBLICANA» (corrección del 12-11-2026)
     s, d = siglas.upper(), denominacion.upper()
-    for p in PARTIDOS:
-        if re.search(p[1], s) or re.search(p[1], d):
-            return p
+    for texto in (s, d):
+        for p in PARTIDOS:
+            if re.search(p[1], texto):
+                return p
     return OTRO
 
 
@@ -149,7 +152,8 @@ def pct(p):
         return 'más del 99\u00a0%'
     if p < 0.005:
         return 'menos del 1\u00a0%'
-    return f'{round(p * 100)}\u00a0%'
+    # redondeo hacia arriba desde ,5, como Math.round en el navegador (round() de Python da 0 para 0,005)
+    return f'{max(1, math.floor(p * 100 + 0.5))}\u00a0%'
 
 
 def en_pct(p):
