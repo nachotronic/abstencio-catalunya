@@ -100,7 +100,7 @@ UNVOTO = int((m.margv2023 == 1).sum())
 UNV = m[m.margv2023 == 1]
 UNVG = UNV.g2023.value_counts().to_dict()
 UNV_MED = float(UNV.poblacion.median())
-assert UNVOTO == 37 and UNVG['PP'] == UNVG['PSOE'] == 17 and UNV_MED < 100
+assert UNVOTO == 37 and UNVG == {'PP': 17, 'PSOE': 17, 'SUMAR': 2, 'VOX': 1} and UNV_MED < 100
 MOTA = m[m.municipio == 'Mota del Cuervo'].iloc[0]
 MOTA_V = int(MOTA[f'{Y23}_vPP'])
 assert m[m.g2023 == 'EMPATE'].poblacion.idxmax() == MOTA.name and MOTA.g2023 == 'EMPATE' and MOTA_V == int(MOTA[f'{Y23}_vPSOE']) == 1243 and MOTA.poblacion > 6000
@@ -266,7 +266,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">En 2023, el PP fue el más votado en las cinco provincias, pero en número de municipios el reparto fue más igualado: en Albacete, el PP y el PSOE ganaron en {PRG["02"][Y23]["PP"]} cada uno; en Ciudad Real, el PP en {PRG["13"][Y23]["PP"]} y el PSOE en {PRG["13"][Y23]["PSOE"]}. En Guadalajara, la provincia con más municipios ({PRN["19"]}), el PP ganó en {PRG["19"][Y23]["PP"]} y el PSOE en {PRG["19"][Y23]["PSOE"]}.</p>
 {g_prov}
 <h2>Dónde se decide por un voto</h2>
-<p data-tipo="dato">Con tantos pueblos pequeños, muchos municipios se deciden por casi nada. En 2023, en {UNVOTO} el primero sacó un solo voto al segundo ({UNVG["PP"]} para el PP y {UNVG["PSOE"]} para el PSOE), y en {GANA[Y23]["EMPATE"]} los dos primeros empataron. El municipio más grande con empate fue Mota del Cuervo (Cuenca), de más de 6.000 habitantes: {n(MOTA_V)} votos para el PP y {n(MOTA_V)} para el PSOE. Entre los de más de 5.000 habitantes con ganador, el más ajustado fue Méntrida (Toledo), que ganó el PP por {int(AJG.iloc[0].margv2023)} votos. Los pueblos que se ganaron por un voto en toda España están en {L("ganar-por-un-voto-29n", "esta pieza")}.</p>
+<p data-tipo="dato">Con tantos pueblos pequeños, muchos municipios se deciden por casi nada. En 2023, en {UNVOTO} el primero sacó un solo voto al segundo ({UNVG["PP"]} para el PP, {UNVG["PSOE"]} para el PSOE, {NW[UNVG["SUMAR"]]} para Sumar y {NW[UNVG["VOX"]]} para Vox), y en {GANA[Y23]["EMPATE"]} los dos primeros empataron. El municipio más grande con empate fue Mota del Cuervo (Cuenca), de más de 6.000 habitantes: {n(MOTA_V)} votos para el PP y {n(MOTA_V)} para el PSOE. Entre los de más de 5.000 habitantes con ganador, el más ajustado fue Méntrida (Toledo), que ganó el PP por {int(AJG.iloc[0].margv2023)} votos. Los pueblos que se ganaron por un voto en toda España están en {L("ganar-por-un-voto-29n", "esta pieza")}.</p>
 {g_aj}
 <h2>Lo que puede cambiar el 29N</h2>
 <p data-tipo="dato">Con la media de encuestas de Mapa Electoral, el reparto central de los 21 escaños da al PP {E29["PP"]}, {NW[E23["PP"] - E29["PP"]]} menos que en 2023; al PSOE, {E29["PSOE"]}, uno menos, y a Vox, {E29["VOX"]}, el doble que los {NW[E23["VOX"]]} de 2023. El PP es el más votado en la mayoría de las simulaciones en las cinco provincias.</p>

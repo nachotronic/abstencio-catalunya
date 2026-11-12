@@ -420,17 +420,7 @@
    "calculo": "D['UNVOTO']"
   },
   {
-   "texto": "un solo voto al segundo (17 para el PP y 17 para",
-   "cifra": "17",
-   "calculo": "D['UNVG']['PP']"
-  },
-  {
-   "texto": "segundo (17 para el PP y 17 para el PSOE), y en",
-   "cifra": "17",
-   "calculo": "D['UNVG']['PSOE']"
-  },
-  {
-   "texto": "y 17 para el PSOE), y en 19 los dos primeros empataron.",
+   "texto": "para Vox), y en 19 los dos primeros empataron.",
    "cifra": "19",
    "calculo": "D['GANA']['2023_07']['EMPATE']"
   },
@@ -598,6 +588,11 @@
    "texto": "unoLos 21 diputados de las cinco provincias: un cuadrado",
    "cifra": "cinco",
    "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "(17 para el PP, 17 para el PSOE, dos para Sumar y uno para Vox)",
+   "cifra": "17",
+   "calculo": "D['UNVG']['PP']"
   }
  ],
  "externas": [],
