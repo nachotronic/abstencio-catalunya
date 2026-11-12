@@ -275,37 +275,37 @@
    "calculo": "D['FLS']['2023_07']['BILDU']"
   },
   {
-   "texto": "ganó pasaron de reunir el 26,4 % de la población al",
-   "cifra": "26,4",
+   "texto": "ganó pasaron de reunir el 26,3 % de la población al",
+   "cifra": "26,3",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "26,4 % de la población al 59,7 %, y los del PNV, del",
-   "cifra": "59,7",
+   "texto": "26,3 % de la población al 59,6 %, y los del PNV, del",
+   "cifra": "59,6",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "59,7 %, y los del PNV, del 63,4 % al 17,0 %.",
-   "cifra": "63,4",
+   "texto": "59,6 %, y los del PNV, del 63,5 % al 17,1 %.",
+   "cifra": "63,5",
    "calculo": "D['POB']['2019_11']['PNV']"
   },
   {
-   "texto": "los del PNV, del 63,4 % al 17,0 %.",
-   "cifra": "17,0",
+   "texto": "los del PNV, del 63,5 % al 17,1 %.",
+   "cifra": "17,1",
    "calculo": "D['POB']['2023_07']['PNV']"
   },
   {
-   "texto": "En los 19 municipios de más de",
-   "cifra": "19",
+   "texto": "En los 20 municipios de más de",
+   "cifra": "20",
    "calculo": "D['TT']['Más de 20.000']['n']"
   },
   {
-   "texto": "habitantes, el PNV ganó en 12 en 2019 y en tres en",
-   "cifra": "12",
+   "texto": "habitantes, el PNV ganó en 13 en 2019 y en tres en",
+   "cifra": "13",
    "calculo": "D['TT']['Más de 20.000']['g19']['PNV']"
   },
   {
-   "texto": "PNV ganó en 12 en 2019 y en tres en 2023: Getxo, Leioa",
+   "texto": "PNV ganó en 13 en 2019 y en tres en 2023: Getxo, Leioa",
    "cifra": "tres",
    "calculo": "D['TT']['Más de 20.000']['g23']['PNV']"
   },
@@ -320,23 +320,23 @@
    "calculo": "D['TT']['Más de 20.000']['g23']['PSOE']"
   },
   {
-   "texto": "mapa es de EH Bildu: en los 98 de menos de 1.000 habitantes,",
-   "cifra": "98",
+   "texto": "mapa es de EH Bildu: en los 99 de menos de 1.000 habitantes,",
+   "cifra": "99",
    "calculo": "D['TT']['Menos de 1.000']['n']"
   },
   {
-   "texto": "1.000 habitantes, ganó en 59 en 2023; el PNV había",
-   "cifra": "59",
+   "texto": "1.000 habitantes, ganó en 60 en 2023; el PNV había",
+   "cifra": "60",
    "calculo": "D['TT']['Menos de 1.000']['g23']['BILDU']"
   },
   {
-   "texto": "2023; el PNV había ganado en 53 en 2019. El PNV bajó",
-   "cifra": "53",
+   "texto": "2023; el PNV había ganado en 54 en 2019. El PNV bajó",
+   "cifra": "54",
    "calculo": "D['TT']['Menos de 1.000']['g19']['PNV']"
   },
   {
-   "texto": "capitales, que reúnen el 35,5 % de la población vasca,",
-   "cifra": "35,5",
+   "texto": "capitales, que reúnen el 35,6 % de la población vasca,",
+   "cifra": "35,6",
    "calculo": "D['CAP_POB']"
   },
   {
@@ -500,23 +500,23 @@
    "calculo": "D['FLS']['2023_07']['PNV']"
   },
   {
-   "texto": "el PSOE pasó de ganar en seis de 19 a ganar en 12,",
+   "texto": "el PSOE pasó de ganar en seis de 20 a ganar en 12,",
    "cifra": "seis",
    "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
   },
   {
-   "texto": "pasó de ganar en seis de 19 a ganar en 12, y el",
-   "cifra": "19",
+   "texto": "pasó de ganar en seis de 20 a ganar en 12, y el",
+   "cifra": "20",
    "calculo": "D['TT']['Más de 20.000']['n']"
   },
   {
-   "texto": "en seis de 19 a ganar en 12, y el PNV, de 12 a tresMunicipios",
-   "cifra": "12",
+   "texto": "en seis de 20 a ganar en 12, y el PNV, de 13 a tresMunicipios",
+   "cifra": "13",
    "calculo": "D['TT']['Más de 20.000']['g19']['PNV']"
   },
   {
-   "texto": "ganar en 12, y el PNV, de 12 a tresMunicipios ganados",
-   "cifra": "12",
+   "texto": "ganar en 12, y el PNV, de 13 a tresMunicipios ganados",
+   "cifra": "13",
    "calculo": "D['TT']['Más de 20.000']['g19']['PNV']"
   },
   {
@@ -578,11 +578,11 @@
  "externas": [],
  "ignorar": [
   {
-   "texto": "los 19 municipios de más de 20.000 habitantes, el PNV ganó",
+   "texto": "los 20 municipios de más de 20.000 habitantes, el PNV ganó",
    "motivo": "umbral de población"
   },
   {
-   "texto": "Bildu: en los 98 de menos de 1.000 habitantes, ganó en",
+   "texto": "Bildu: en los 99 de menos de 1.000 habitantes, ganó en",
    "motivo": "umbral de población"
   },
   {

@@ -3,7 +3,7 @@
 Los 2.248 municipios de Castilla y León en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno
 (listas por separado: en 2019, Unidas Podemos y Más País; y las listas provinciales, Por Ávila, UPL, Soria ¡Ya! y la
 Plataforma del Pueblo Soriano, que en las descargas del mapa van en «otros»: datos/regionalistas_cyl_2019_2023.csv, de los
-mismos datos por mesa de pollspaindata/Interior), el tamaño de los municipios (población del Atlas de renta del INE, 2023), las nueve capitales, las
+mismos datos por mesa de pollspaindata/Interior), el tamaño de los municipios (padrón municipal del INE, 2023), las nueve capitales, las
 provincias, los municipios decididos por un voto y el reparto central del modelo de /encuestas/ para el 29N.
 Contexto: El Debate (Mañueco, 25-10-2026; Carlos Martínez, 5-10-2026, con Ical), EFE (Soria ¡Ya!, 5-10-2026), BOE y
 El Español (candidaturas proclamadas, 3-11-2026).
@@ -67,9 +67,9 @@ m['dPSOE'] = m[f'{Y23}%PSOE'] - m[f'{Y19}%PSOE']
 m['dPP'] = m[f'{Y23}%PP'] - m[f'{Y19}%PP']
 PSOE_SUBE, PP_SUBE = int((m.dPSOE > 0).sum()), int((m.dPP > 0).sum())
 assert (PSOE_SUBE, PP_SUBE) == (1070, 1927)
-# Población de los municipios que ganó cada partido (población del Atlas de renta del INE, 2023)
+# Población de los municipios que ganó cada partido (padrón municipal del INE, 2023)
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PP', 'PSOE')} for y in (Y19, Y23)}
-assert round(POB[Y19]['PSOE'], 1) == 61.6 and round(POB[Y23]['PSOE'], 1) == 15.1 and round(POB[Y23]['PP'], 1) == 84.7
+assert round(POB[Y19]['PSOE'], 1) == 61.5 and round(POB[Y23]['PSOE'], 1) == 15.2 and round(POB[Y23]['PP'], 1) == 84.6
 FL = m[(m.g2019 == 'PSOE') & (m.g2023 == 'PP')]
 FLS = {y: agrega(FL, y)['pct'] for y in (Y19, Y23)}
 assert FLS[Y23]['PSOE'] > FLS[Y19]['PSOE'] and FLS[Y23]['PP'] > FLS[Y19]['PP'] + 10
@@ -99,7 +99,7 @@ assert all(v == 'PP' for v in PRIM[Y23].values())
 P19PSOE = [PROV[pr] for pr in PROV if PRIM[Y19][pr] == 'PSOE']
 assert P19PSOE == ['Burgos', 'León', 'Soria', 'Valladolid'], P19PSOE
 
-# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
+# Tamaño de municipio (padrón municipal del INE, 2023)
 TAM = [('Menos de 100', 0, 100), ('De 100 a 1.000', 100, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000),
        ('Más de 20.000', 20000, 10 ** 9)]
 assert m.poblacion.notna().all()
@@ -112,11 +112,11 @@ for nom, a, b in TAM:
 assert sum(t['n'] for t in TT.values()) == NMUN
 assert all(t['pp23'] > t['pp19'] and t['vox23'] < t['vox19'] for t in TT.values())
 T100 = TT['Menos de 100']
-assert T100['n'] == 746 and T100['censo'] == 40443
+assert T100['n'] == 714 and T100['censo'] == 37356   # padrón 2023 (con el Atlas eran 746 y 40.443)
 CAPV = m[m.mun_code == '05019'].iloc[0]
-assert T100['censo'] < CAPV[f'{Y23}_censo']   # los 746 pueblos de menos de 100 habitantes tienen menos electores que la ciudad de Ávila
+assert T100['censo'] < CAPV[f'{Y23}_censo']   # los 714 pueblos de menos de 100 habitantes tienen menos electores que la ciudad de Ávila
 TG = TT['Más de 20.000']
-assert TG['n'] == 15 and TG['g19'] == {'PSOE': 11, 'PP': 4} and TG['g23'] == {'PP': 11, 'PSOE': 4}
+assert TG['n'] == 16 and TG['g19'] == {'PSOE': 12, 'PP': 4} and TG['g23'] == {'PP': 12, 'PSOE': 4}   # padrón: Medina del Campo pasa de 20.000
 
 # Las nueve capitales
 CAP = m[m.mun_code.isin(CAPITAL)].sort_values('poblacion', ascending=False)
@@ -219,7 +219,7 @@ g_tam = figura(f'En los pueblos de menos de 100 habitantes, el PP ya ganaba; el 
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDT19 if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDT if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ['PP', 'PSOE', 'VOX', 'UP', 'SUMAR', 'XAV', 'SY', 'PPSO', 'EMPATE']],
                (['Población', 'Municipios', 'Electores (2023)', 'PP 2019', 'PSOE 2019', 'PP 2023', 'PSOE 2023'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PP', 'PSOE')] + [n(t['g23'].get(f, 0)) for f in ('PP', 'PSOE')]
@@ -358,7 +358,7 @@ assert ESC['2026'] == {'05': 3, '09': 4, '24': 4, '34': 3, '37': 4, '40': 3, '42
 enlaces = (f'{L("castilla-y-leon-historia-electoral", "Historia electoral de Castilla y León")} · <a href="{BASE}elecciones/castilla-y-leon/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/valladolid/">Encuesta en Valladolid</a> · <a href="{BASE}encuestas/leon/">Encuesta en León</a> · <a href="{BASE}encuestas/soria/">Encuesta en Soria</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_cyl.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_cyl.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

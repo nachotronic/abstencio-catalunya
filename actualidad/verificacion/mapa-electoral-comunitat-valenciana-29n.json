@@ -1,688 +1,688 @@
 {
-  "pieza": "mapa-electoral-comunitat-valenciana-29n",
-  "_datos_disponibles": {
-    "D": "dict"
+ "pieza": "mapa-electoral-comunitat-valenciana-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Valenciana: el PSOE sumó 148.135 votos y aun así pasó",
+   "cifra": "148.135",
+   "calculo": "D['DPSOE_VOTOS']",
+   "_donde": "titular"
   },
-  "cifras": [
-    {
-      "texto": "Valenciana: el PSOE sumó 148.135 votos y aun así pasó",
-      "cifra": "148.135",
-      "calculo": "D['DPSOE_VOTOS']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "aun así pasó de ganar en 353 municipios a ganar en",
-      "cifra": "353",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "353 municipios a ganar en 224",
-      "cifra": "224",
-      "calculo": "D['GANA']['2023_07']['PSOE']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "El PP pasó de 148 a 303 de los 542 municipios",
-      "cifra": "148",
-      "calculo": "D['GANA']['2019_11']['PP']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "El PP pasó de 148 a 303 de los 542 municipios",
-      "cifra": "303",
-      "calculo": "D['GANA']['2023_07']['PP']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "pasó de 148 a 303 de los 542 municipios valencianos",
-      "cifra": "542",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "valencianos y ganó en las cuatro ciudades de más de 100.000",
-      "cifra": "cuatro",
-      "calculo": "len(D['CIU'])",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "Joiosa se decidieron por 28 votos. Para el 29N,",
-      "cifra": "28",
-      "calculo": "D['GANDIA'][0]-D['GANDIA'][1]",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "encuestas da al PP y al PSOE 11 de los 33 diputados",
-      "cifra": "11",
-      "calculo": "D['E29']['PP']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "al PP y al PSOE 11 de los 33 diputados cada uno,",
-      "cifra": "33",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "diputados cada uno, y a Vox, 8.",
-      "cifra": "8",
-      "calculo": "D['E29']['VOX']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "elige el 29 de noviembre 33 diputados: 16 por Valencia,",
-      "cifra": "33",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "de noviembre 33 diputados: 16 por Valencia, 12 por",
-      "cifra": "16",
-      "calculo": "D['ESC26']['46']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "diputados: 16 por Valencia, 12 por Alicante y 5 por",
-      "cifra": "12",
-      "calculo": "D['ESC26']['03']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "Valencia, 12 por Alicante y 5 por Castellón. Según",
-      "cifra": "5",
-      "calculo": "D['ESC26']['12']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "el partido más votado en 353 de los 542 municipios",
-      "cifra": "353",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más votado en 353 de los 542 municipios valencianos,",
-      "cifra": "542",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "municipios valencianos, el PP en 148 y Vox en 24; en otros",
-      "cifra": "148",
-      "calculo": "D['GANA']['2019_11']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "valencianos, el PP en 148 y Vox en 24; en otros 9, los dos",
-      "cifra": "24",
-      "calculo": "D['GANA']['2019_11']['VOX']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "148 y Vox en 24; en otros 9, los dos primeros empataron",
-      "cifra": "9",
-      "calculo": "D['GANA']['2019_11']['EMPATE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "julio de 2023, el PP ganó en 303, el PSOE en 224, Sumar-Compromís",
-      "cifra": "303",
-      "calculo": "D['GANA']['2023_07']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "PP ganó en 303, el PSOE en 224, Sumar-Compromís en",
-      "cifra": "224",
-      "calculo": "D['GANA']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "en 224, Sumar-Compromís en 10 y Vox en uno, Vilar",
-      "cifra": "10",
-      "calculo": "D['GANA']['2023_07']['SUMAR']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "en uno, Vilar de Canes; en cuatro hubo empate entre el",
-      "cifra": "cuatro",
-      "calculo": "D['GANA']['2023_07']['EMPATE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "no perdió votos: pasó del 27,8 % al 32,4 %, con 148.135",
-      "cifra": "27,8",
-      "calculo": "D['A19']['pct']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "votos: pasó del 27,8 % al 32,4 %, con 148.135 votos",
-      "cifra": "32,4",
-      "calculo": "D['A23']['pct']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "del 27,8 % al 32,4 %, con 148.135 votos más, y subió en",
-      "cifra": "148.135",
-      "calculo": "D['DPSOE_VOTOS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "148.135 votos más, y subió en 459 de los 542 municipios.",
-      "cifra": "459",
-      "calculo": "D['PSOE_SUBE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más, y subió en 459 de los 542 municipios. Pero el",
-      "cifra": "542",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Pero el PP subió más, del 23,3 % al 35,2 %, 11,9 puntos,",
-      "cifra": "23,3",
-      "calculo": "D['A19']['pct']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "subió más, del 23,3 % al 35,2 %, 11,9 puntos, en un",
-      "cifra": "35,2",
-      "calculo": "D['A23']['pct']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más, del 23,3 % al 35,2 %, 11,9 puntos, en un año en",
-      "cifra": "11,9",
-      "calculo": "D['DPP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Ciudadanos, que había sacado el 7,8 % en 2019, no se presentó",
-      "cifra": "7,8",
-      "calculo": "D['A19']['pct']['CS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "se presentó y Vox bajó del 18,6 % al 15,8 %. Sumar-Compromís",
-      "cifra": "18,6",
-      "calculo": "D['A19']['pct']['VOX']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "y Vox bajó del 18,6 % al 15,8 %. Sumar-Compromís sacó",
-      "cifra": "15,8",
-      "calculo": "D['A23']['pct']['VOX']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "%. Sumar-Compromís sacó el 15,3 %, menos de lo que sumaron",
-      "cifra": "15,3",
-      "calculo": "D['A23']['pct']['SUMAR']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "sumaron en 2019 Unidas Podemos (13,5 %) y Más Compromís (7,0",
-      "cifra": "13,5",
-      "calculo": "D['A19L']['pct']['UP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "(13,5 %) y Más Compromís (7,0 %). La participación",
-      "cifra": "7,0",
-      "calculo": "D['A19L']['pct']['MP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "La participación subió del 71,7 % al 73,6 %.",
-      "cifra": "71,7",
-      "calculo": "D['A19']['part']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "participación subió del 71,7 % al 73,6 %.",
-      "cifra": "73,6",
-      "calculo": "D['A23']['part']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "De los 353 municipios del PSOE",
-      "cifra": "353",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "municipios del PSOE en 2019, 138 pasaron al PP; los 24",
-      "cifra": "138",
-      "calculo": "D['PSOE_PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "2019, 138 pasaron al PP; los 24 de Vox, también. En",
-      "cifra": "24",
-      "calculo": "D['VOX_PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "24 de Vox, también. En los 138 que el PSOE perdió frente",
-      "cifra": "138",
-      "calculo": "D['PSOE_PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "al PP, el PSOE subió del 27,2 % al 31,3 %, y el PP,",
-      "cifra": "27,2",
-      "calculo": "D['FLS']['2019_11']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "PSOE subió del 27,2 % al 31,3 %, y el PP, del 24,2",
-      "cifra": "31,3",
-      "calculo": "D['FLS']['2023_07']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "% al 31,3 %, y el PP, del 24,2 % al 36,6 %, mientras",
-      "cifra": "24,2",
-      "calculo": "D['FLS']['2019_11']['PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "%, y el PP, del 24,2 % al 36,6 %, mientras desaparecía",
-      "cifra": "36,6",
-      "calculo": "D['FLS']['2023_07']['PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "que allí había sacado el 8,2 %.",
-      "cifra": "8,2",
-      "calculo": "D['FLS']['2019_11']['CS']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "habitantes, el PSOE había ganado en 57 de 67 en 2019 y ganó",
-      "cifra": "57",
-      "calculo": "D['G20G']['2019_11']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "PSOE había ganado en 57 de 67 en 2019 y ganó en 28",
-      "cifra": "67",
-      "calculo": "D['G20']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "57 de 67 en 2019 y ganó en 28 en 2023; el PP pasó",
-      "cifra": "28",
-      "calculo": "D['G20G']['2023_07']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "28 en 2023; el PP pasó de 5 a 39. En los de 1.000",
-      "cifra": "5",
-      "calculo": "D['G20G']['2019_11']['PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "en 2023; el PP pasó de 5 a 39. En los de 1.000 a 5.000,",
-      "cifra": "39",
-      "calculo": "D['G20G']['2023_07']['PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "a 5.000, el PSOE ganó en 83 de 165 y el PP en 81,",
-      "cifra": "83",
-      "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "5.000, el PSOE ganó en 83 de 165 y el PP en 81, casi",
-      "cifra": "165",
-      "calculo": "D['TT']['De 1.000 a 5.000']['n']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "ganó en 83 de 165 y el PP en 81, casi un empate. El",
-      "cifra": "81",
-      "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "por el PP en 2023 suman el 70,4 % de los habitantes.",
-      "cifra": "70,4",
-      "calculo": "D['POB']['PP']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "Las cuatro ciudades de más de 100.000",
-      "cifra": "cuatro",
-      "calculo": "len(D['CIU'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "En Valencia, el PP sacó el 36,8 % y el PSOE el 29,7",
-      "cifra": "36,8",
-      "calculo": "D['VLC']['pp23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "sacó el 36,8 % y el PSOE el 29,7 %; en 2019, el PSOE",
-      "cifra": "29,7",
-      "calculo": "D['VLC']['psoe23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "PSOE había ganado con el 25,0 %, por delante del PP",
-      "cifra": "25,0",
-      "calculo": "D['VLC']['psoe19']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "25,0 %, por delante del PP (24,6 %). Lo contamos barrio",
-      "cifra": "24,6",
-      "calculo": "D['VLC']['pp19']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "fue el más votado en las tres provincias; en 2023,",
-      "cifra": "tres",
-      "calculo": "len(D['PRN'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "ganó en más en Alicante (90 de 141) y en Castellón",
-      "cifra": "90",
-      "calculo": "D['PRG']['03']['2023_07']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "en más en Alicante (90 de 141) y en Castellón (85",
-      "cifra": "141",
-      "calculo": "D['PRN']['03']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "(90 de 141) y en Castellón (85 de 135). En la provincia",
-      "cifra": "85",
-      "calculo": "D['PRG']['12']['2023_07']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "141) y en Castellón (85 de 135). En la provincia de",
-      "cifra": "135",
-      "calculo": "D['PRN']['12']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más municipios que el PP: 134 frente a 128 de 266.",
-      "cifra": "134",
-      "calculo": "D['PRG']['46']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "municipios que el PP: 134 frente a 128 de 266.",
-      "cifra": "128",
-      "calculo": "D['PRG']['46']['2023_07']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el PP: 134 frente a 128 de 266.",
-      "cifra": "266",
-      "calculo": "D['PRN']['46']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "En 75 municipios valencianos,",
-      "cifra": "75",
-      "calculo": "D['AJ2']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "20.000 habitantes fueron 14, todos entre el PP y",
-      "cifra": "14",
-      "calculo": "len(D['AJG'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "ajustados se decidieron por 28 votos cada uno, y los",
-      "cifra": "28",
-      "calculo": "D['GANDIA'][0]-D['GANDIA'][1]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "dos a favor del PP: Gandia, 12.834 a 12.806, y La Vila",
-      "cifra": "12.834",
-      "calculo": "D['GANDIA'][0]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "del PP: Gandia, 12.834 a 12.806, y La Vila Joiosa, 5.406",
-      "cifra": "12.806",
-      "calculo": "D['GANDIA'][1]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "12.806, y La Vila Joiosa, 5.406 a 5.378, las mismas",
-      "cifra": "5.406",
-      "calculo": "D['VILAJOIOSA'][0]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "y La Vila Joiosa, 5.406 a 5.378, las mismas cifras que",
-      "cifra": "5.378",
-      "calculo": "D['VILAJOIOSA'][1]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el reparto central de los 33 escaños da al PP 11,",
-      "cifra": "33",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "de los 33 escaños da al PP 11, dos menos que en 2023;",
-      "cifra": "11",
-      "calculo": "D['E29']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "menos que en 2023; al PSOE, 11, los mismos; a Vox,",
-      "cifra": "11",
-      "calculo": "D['E29']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "PSOE, 11, los mismos; a Vox, 8, tres más, y a Compromís-Front",
-      "cifra": "8",
-      "calculo": "D['E29']['VOX']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "11, los mismos; a Vox, 8, tres más, y a Compromís-Front",
-      "cifra": "tres",
-      "calculo": "D['E29']['VOX']-D['E23']['VOX']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Compromís-Front Valencià, 3, uno menos de los 4",
-      "cifra": "3",
-      "calculo": "D['E29']['CFV']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Valencià, 3, uno menos de los 4 que sacó Sumar con Compromís.",
-      "cifra": "4",
-      "calculo": "D['E23']['SUMAR']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "de las simulaciones en las tres provincias. El reparto",
-      "cifra": "tres",
-      "calculo": "len(D['PRN'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "está en la pieza sobre los 33 escaños valencianos.",
-      "cifra": "33",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Tres provincias: el PP gana",
-      "cifra": "Tres",
-      "calculo": "len(D['PRN'])",
-      "_donde": "intertítulo"
-    },
-    {
-      "texto": "El PSOE pasó de ganar en 353 municipios a ganar en",
-      "cifra": "353",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "353 municipios a ganar en 224; el PP, de 148 a 303Partido",
-      "cifra": "224",
-      "calculo": "D['GANA']['2023_07']['PSOE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "a ganar en 224; el PP, de 148 a 303Partido más votado",
-      "cifra": "148",
-      "calculo": "D['GANA']['2019_11']['PP']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "votado en cada uno de los 542 municipios de la Comunitat",
-      "cifra": "542",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "pie"
-    },
-    {
-      "texto": "En los 138 municipios que pasaron",
-      "cifra": "138",
-      "calculo": "D['PSOE_PP']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "al PP, el PSOE subió del 27,2 % al 31,3 %Voto al PP,",
-      "cifra": "27,2",
-      "calculo": "D['FLS']['2019_11']['PSOE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "PSOE subió del 27,2 % al 31,3 %Voto al PP, al PSOE,",
-      "cifra": "31,3",
-      "calculo": "D['FLS']['2023_07']['PSOE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PSOE subió en 459 de los 542 municipios,",
-      "cifra": "459",
-      "calculo": "D['PSOE_SUBE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "PSOE subió en 459 de los 542 municipios, también",
-      "cifra": "542",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "pie"
-    },
-    {
-      "texto": "el PSOE pasó de ganar en 57 a ganar en 28Municipios",
-      "cifra": "57",
-      "calculo": "D['G20G']['2019_11']['PSOE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "PSOE ganó en 2019 en las cuatro ciudades de más de 100.000",
-      "cifra": "cuatro",
-      "calculo": "len(D['CIU'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PP ganó en votos en las tres provincias; en número",
-      "cifra": "tres",
-      "calculo": "len(D['PRN'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "14 municipios de más de",
-      "cifra": "14",
-      "calculo": "len(D['AJG'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "encuestas, el PP pasaría de 13 a 11 diputados valencianos",
-      "cifra": "13",
-      "calculo": "D['E23']['PP']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "encuestas, el PP pasaría de 13 a 11 diputados valencianos",
-      "cifra": "11",
-      "calculo": "D['E29']['PP']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "diputados valencianos y Vox, de 5 a 8Los 33 diputados",
-      "cifra": "5",
-      "calculo": "D['E23']['VOX']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "valencianos y Vox, de 5 a 8Los 33 diputados de las tres",
-      "cifra": "33",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "pie"
-    },
-    {
-      "texto": "8Los 33 diputados de las tres provincias valencianas:",
-      "cifra": "tres",
-      "calculo": "len(D['PRN'])",
-      "_donde": "pie"
-    }
-  ],
-  "externas": [],
-  "ignorar": [
-    {
-      "texto": "cuatro ciudades de más de 100.000 habitantes; Gandia y",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "municipio. En los de más de 20.000 habitantes, el PSOE",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "pasó de 5 a 39. En los de 1.000 a 5.000, el PSOE ganó",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "5 a 39. En los de 1.000 a 5.000, el PSOE ganó en 83",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "cuatro ciudades de más de 100.000 habitantes, Valencia,",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "2023. Entre los de más de 20.000 habitantes fueron 14,",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "tienen un margen amplio a 18 días de la votación.",
-      "motivo": "días hasta la votación"
-    },
-    {
-      "texto": "los municipios de más de 20.000 habitantes, el PSOE",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "cuatro ciudades de más de 100.000 habitantes; el PP, en",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "14 municipios de más de 20.000 habitantes se decidieron",
-      "motivo": "umbral de población"
-    }
-  ],
-  "permitir_espana": []
+  {
+   "texto": "aun así pasó de ganar en 353 municipios a ganar en",
+   "cifra": "353",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "353 municipios a ganar en 224",
+   "cifra": "224",
+   "calculo": "D['GANA']['2023_07']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "El PP pasó de 148 a 303 de los 542 municipios",
+   "cifra": "148",
+   "calculo": "D['GANA']['2019_11']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "El PP pasó de 148 a 303 de los 542 municipios",
+   "cifra": "303",
+   "calculo": "D['GANA']['2023_07']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "pasó de 148 a 303 de los 542 municipios valencianos",
+   "cifra": "542",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "valencianos y ganó en las cuatro ciudades de más de 100.000",
+   "cifra": "cuatro",
+   "calculo": "len(D['CIU'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Joiosa se decidieron por 28 votos. Para el 29N,",
+   "cifra": "28",
+   "calculo": "D['GANDIA'][0]-D['GANDIA'][1]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "encuestas da al PP y al PSOE 11 de los 33 diputados",
+   "cifra": "11",
+   "calculo": "D['E29']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "al PP y al PSOE 11 de los 33 diputados cada uno,",
+   "cifra": "33",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "diputados cada uno, y a Vox, 8.",
+   "cifra": "8",
+   "calculo": "D['E29']['VOX']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "elige el 29 de noviembre 33 diputados: 16 por Valencia,",
+   "cifra": "33",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "de noviembre 33 diputados: 16 por Valencia, 12 por",
+   "cifra": "16",
+   "calculo": "D['ESC26']['46']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "diputados: 16 por Valencia, 12 por Alicante y 5 por",
+   "cifra": "12",
+   "calculo": "D['ESC26']['03']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Valencia, 12 por Alicante y 5 por Castellón. Según",
+   "cifra": "5",
+   "calculo": "D['ESC26']['12']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "el partido más votado en 353 de los 542 municipios",
+   "cifra": "353",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más votado en 353 de los 542 municipios valencianos,",
+   "cifra": "542",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "municipios valencianos, el PP en 148 y Vox en 24; en otros",
+   "cifra": "148",
+   "calculo": "D['GANA']['2019_11']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "valencianos, el PP en 148 y Vox en 24; en otros 9, los dos",
+   "cifra": "24",
+   "calculo": "D['GANA']['2019_11']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "148 y Vox en 24; en otros 9, los dos primeros empataron",
+   "cifra": "9",
+   "calculo": "D['GANA']['2019_11']['EMPATE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "julio de 2023, el PP ganó en 303, el PSOE en 224, Sumar-Compromís",
+   "cifra": "303",
+   "calculo": "D['GANA']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP ganó en 303, el PSOE en 224, Sumar-Compromís en",
+   "cifra": "224",
+   "calculo": "D['GANA']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en 224, Sumar-Compromís en 10 y Vox en uno, Vilar",
+   "cifra": "10",
+   "calculo": "D['GANA']['2023_07']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en uno, Vilar de Canes; en cuatro hubo empate entre el",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['EMPATE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "no perdió votos: pasó del 27,8 % al 32,4 %, con 148.135",
+   "cifra": "27,8",
+   "calculo": "D['A19']['pct']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "votos: pasó del 27,8 % al 32,4 %, con 148.135 votos",
+   "cifra": "32,4",
+   "calculo": "D['A23']['pct']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del 27,8 % al 32,4 %, con 148.135 votos más, y subió en",
+   "cifra": "148.135",
+   "calculo": "D['DPSOE_VOTOS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "148.135 votos más, y subió en 459 de los 542 municipios.",
+   "cifra": "459",
+   "calculo": "D['PSOE_SUBE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más, y subió en 459 de los 542 municipios. Pero el",
+   "cifra": "542",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Pero el PP subió más, del 23,3 % al 35,2 %, 11,9 puntos,",
+   "cifra": "23,3",
+   "calculo": "D['A19']['pct']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "subió más, del 23,3 % al 35,2 %, 11,9 puntos, en un",
+   "cifra": "35,2",
+   "calculo": "D['A23']['pct']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más, del 23,3 % al 35,2 %, 11,9 puntos, en un año en",
+   "cifra": "11,9",
+   "calculo": "D['DPP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 7,8 % en 2019, no se presentó",
+   "cifra": "7,8",
+   "calculo": "D['A19']['pct']['CS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "se presentó y Vox bajó del 18,6 % al 15,8 %. Sumar-Compromís",
+   "cifra": "18,6",
+   "calculo": "D['A19']['pct']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y Vox bajó del 18,6 % al 15,8 %. Sumar-Compromís sacó",
+   "cifra": "15,8",
+   "calculo": "D['A23']['pct']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%. Sumar-Compromís sacó el 15,3 %, menos de lo que sumaron",
+   "cifra": "15,3",
+   "calculo": "D['A23']['pct']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sumaron en 2019 Unidas Podemos (13,5 %) y Más Compromís (7,0",
+   "cifra": "13,5",
+   "calculo": "D['A19L']['pct']['UP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(13,5 %) y Más Compromís (7,0 %). La participación",
+   "cifra": "7,0",
+   "calculo": "D['A19L']['pct']['MP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "La participación subió del 71,7 % al 73,6 %.",
+   "cifra": "71,7",
+   "calculo": "D['A19']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "participación subió del 71,7 % al 73,6 %.",
+   "cifra": "73,6",
+   "calculo": "D['A23']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "De los 353 municipios del PSOE",
+   "cifra": "353",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "municipios del PSOE en 2019, 138 pasaron al PP; los 24",
+   "cifra": "138",
+   "calculo": "D['PSOE_PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "2019, 138 pasaron al PP; los 24 de Vox, también. En",
+   "cifra": "24",
+   "calculo": "D['VOX_PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "24 de Vox, también. En los 138 que el PSOE perdió frente",
+   "cifra": "138",
+   "calculo": "D['PSOE_PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "al PP, el PSOE subió del 27,2 % al 31,3 %, y el PP,",
+   "cifra": "27,2",
+   "calculo": "D['FLS']['2019_11']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "PSOE subió del 27,2 % al 31,3 %, y el PP, del 24,2",
+   "cifra": "31,3",
+   "calculo": "D['FLS']['2023_07']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "% al 31,3 %, y el PP, del 24,2 % al 36,6 %, mientras",
+   "cifra": "24,2",
+   "calculo": "D['FLS']['2019_11']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "%, y el PP, del 24,2 % al 36,6 %, mientras desaparecía",
+   "cifra": "36,6",
+   "calculo": "D['FLS']['2023_07']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "que allí había sacado el 8,2 %.",
+   "cifra": "8,2",
+   "calculo": "D['FLS']['2019_11']['CS']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "habitantes, el PSOE había ganado en 57 de 66 en 2019 y ganó",
+   "cifra": "57",
+   "calculo": "D['G20G']['2019_11']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "PSOE había ganado en 57 de 66 en 2019 y ganó en 28",
+   "cifra": "66",
+   "calculo": "D['G20']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "57 de 66 en 2019 y ganó en 28 en 2023; el PP pasó",
+   "cifra": "28",
+   "calculo": "D['G20G']['2023_07']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "28 en 2023; el PP pasó de 4 a 38. En los de 1.000",
+   "cifra": "4",
+   "calculo": "D['G20G']['2019_11']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "en 2023; el PP pasó de 4 a 38. En los de 1.000 a 5.000,",
+   "cifra": "38",
+   "calculo": "D['G20G']['2023_07']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "a 5.000, el PSOE ganó en 83 de 165 y el PP en 81,",
+   "cifra": "83",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "5.000, el PSOE ganó en 83 de 165 y el PP en 81, casi",
+   "cifra": "165",
+   "calculo": "D['TT']['De 1.000 a 5.000']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "ganó en 83 de 165 y el PP en 81, casi un empate. El",
+   "cifra": "81",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "por el PP en 2023 suman el 70,3 % de los habitantes.",
+   "cifra": "70,3",
+   "calculo": "D['POB']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Las cuatro ciudades de más de 100.000",
+   "cifra": "cuatro",
+   "calculo": "len(D['CIU'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En Valencia, el PP sacó el 36,8 % y el PSOE el 29,7",
+   "cifra": "36,8",
+   "calculo": "D['VLC']['pp23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 36,8 % y el PSOE el 29,7 %; en 2019, el PSOE",
+   "cifra": "29,7",
+   "calculo": "D['VLC']['psoe23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE había ganado con el 25,0 %, por delante del PP",
+   "cifra": "25,0",
+   "calculo": "D['VLC']['psoe19']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "25,0 %, por delante del PP (24,6 %). Lo contamos barrio",
+   "cifra": "24,6",
+   "calculo": "D['VLC']['pp19']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue el más votado en las tres provincias; en 2023,",
+   "cifra": "tres",
+   "calculo": "len(D['PRN'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó en más en Alicante (90 de 141) y en Castellón",
+   "cifra": "90",
+   "calculo": "D['PRG']['03']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en más en Alicante (90 de 141) y en Castellón (85",
+   "cifra": "141",
+   "calculo": "D['PRN']['03']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(90 de 141) y en Castellón (85 de 135). En la provincia",
+   "cifra": "85",
+   "calculo": "D['PRG']['12']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "141) y en Castellón (85 de 135). En la provincia de",
+   "cifra": "135",
+   "calculo": "D['PRN']['12']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más municipios que el PP: 134 frente a 128 de 266.",
+   "cifra": "134",
+   "calculo": "D['PRG']['46']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "municipios que el PP: 134 frente a 128 de 266.",
+   "cifra": "128",
+   "calculo": "D['PRG']['46']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PP: 134 frente a 128 de 266.",
+   "cifra": "266",
+   "calculo": "D['PRN']['46']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En 75 municipios valencianos,",
+   "cifra": "75",
+   "calculo": "D['AJ2']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "20.000 habitantes fueron 14, todos entre el PP y",
+   "cifra": "14",
+   "calculo": "len(D['AJG'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ajustados se decidieron por 28 votos cada uno, y los",
+   "cifra": "28",
+   "calculo": "D['GANDIA'][0]-D['GANDIA'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "dos a favor del PP: Gandia, 12.834 a 12.806, y La Vila",
+   "cifra": "12.834",
+   "calculo": "D['GANDIA'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del PP: Gandia, 12.834 a 12.806, y La Vila Joiosa, 5.406",
+   "cifra": "12.806",
+   "calculo": "D['GANDIA'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "12.806, y La Vila Joiosa, 5.406 a 5.378, las mismas",
+   "cifra": "5.406",
+   "calculo": "D['VILAJOIOSA'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y La Vila Joiosa, 5.406 a 5.378, las mismas cifras que",
+   "cifra": "5.378",
+   "calculo": "D['VILAJOIOSA'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el reparto central de los 33 escaños da al PP 11,",
+   "cifra": "33",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de los 33 escaños da al PP 11, dos menos que en 2023;",
+   "cifra": "11",
+   "calculo": "D['E29']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "menos que en 2023; al PSOE, 11, los mismos; a Vox,",
+   "cifra": "11",
+   "calculo": "D['E29']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE, 11, los mismos; a Vox, 8, tres más, y a Compromís-Front",
+   "cifra": "8",
+   "calculo": "D['E29']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "11, los mismos; a Vox, 8, tres más, y a Compromís-Front",
+   "cifra": "tres",
+   "calculo": "D['E29']['VOX']-D['E23']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Compromís-Front Valencià, 3, uno menos de los 4",
+   "cifra": "3",
+   "calculo": "D['E29']['CFV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Valencià, 3, uno menos de los 4 que sacó Sumar con Compromís.",
+   "cifra": "4",
+   "calculo": "D['E23']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de las simulaciones en las tres provincias. El reparto",
+   "cifra": "tres",
+   "calculo": "len(D['PRN'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "está en la pieza sobre los 33 escaños valencianos.",
+   "cifra": "33",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Tres provincias: el PP gana",
+   "cifra": "Tres",
+   "calculo": "len(D['PRN'])",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 353 municipios a ganar en",
+   "cifra": "353",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "353 municipios a ganar en 224; el PP, de 148 a 303Partido",
+   "cifra": "224",
+   "calculo": "D['GANA']['2023_07']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "a ganar en 224; el PP, de 148 a 303Partido más votado",
+   "cifra": "148",
+   "calculo": "D['GANA']['2019_11']['PP']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "votado en cada uno de los 542 municipios de la Comunitat",
+   "cifra": "542",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "pie"
+  },
+  {
+   "texto": "En los 138 municipios que pasaron",
+   "cifra": "138",
+   "calculo": "D['PSOE_PP']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "al PP, el PSOE subió del 27,2 % al 31,3 %Voto al PP,",
+   "cifra": "27,2",
+   "calculo": "D['FLS']['2019_11']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "PSOE subió del 27,2 % al 31,3 %Voto al PP, al PSOE,",
+   "cifra": "31,3",
+   "calculo": "D['FLS']['2023_07']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSOE subió en 459 de los 542 municipios,",
+   "cifra": "459",
+   "calculo": "D['PSOE_SUBE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "PSOE subió en 459 de los 542 municipios, también",
+   "cifra": "542",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "pie"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 57 a ganar en 28Municipios",
+   "cifra": "57",
+   "calculo": "D['G20G']['2019_11']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "PSOE ganó en 2019 en las cuatro ciudades de más de 100.000",
+   "cifra": "cuatro",
+   "calculo": "len(D['CIU'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PP ganó en votos en las tres provincias; en número",
+   "cifra": "tres",
+   "calculo": "len(D['PRN'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "14 municipios de más de",
+   "cifra": "14",
+   "calculo": "len(D['AJG'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "encuestas, el PP pasaría de 13 a 11 diputados valencianos",
+   "cifra": "13",
+   "calculo": "D['E23']['PP']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "encuestas, el PP pasaría de 13 a 11 diputados valencianos",
+   "cifra": "11",
+   "calculo": "D['E29']['PP']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "diputados valencianos y Vox, de 5 a 8Los 33 diputados",
+   "cifra": "5",
+   "calculo": "D['E23']['VOX']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "valencianos y Vox, de 5 a 8Los 33 diputados de las tres",
+   "cifra": "33",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "pie"
+  },
+  {
+   "texto": "8Los 33 diputados de las tres provincias valencianas:",
+   "cifra": "tres",
+   "calculo": "len(D['PRN'])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "cuatro ciudades de más de 100.000 habitantes; Gandia y",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "municipio. En los de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "pasó de 4 a 38. En los de 1.000 a 5.000, el PSOE ganó",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "4 a 38. En los de 1.000 a 5.000, el PSOE ganó en 83",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "cuatro ciudades de más de 100.000 habitantes, Valencia,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "2023. Entre los de más de 20.000 habitantes fueron 14,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 18 días de la votación.",
+   "motivo": "días hasta la votación"
+  },
+  {
+   "texto": "los municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "cuatro ciudades de más de 100.000 habitantes; el PP, en",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "14 municipios de más de 20.000 habitantes se decidieron",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
 }

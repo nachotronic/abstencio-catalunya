@@ -1,7 +1,7 @@
 """«El mapa electoral de Castilla-La Mancha» (2026-11), séptima pieza de la serie «El mapa electoral de…» (mapa_ccaa.py).
 
 Los 919 municipios de Castilla-La Mancha en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno
-(listas por separado), el tamaño de los municipios (población del Atlas de renta del INE, 2023), las cinco capitales, las provincias, Vox (65
+(listas por separado), el tamaño de los municipios (padrón municipal del INE, 2023), las cinco capitales, las provincias, Vox (65
 municipios en 2019, 10 en 2023), los municipios decididos por un voto y el reparto central del modelo de /encuestas/.
 Contexto: EFE vía Diario de León (García-Page, 9-10-2026) y ESdiario (Paco Núñez, 5-10-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_clm.py
@@ -41,7 +41,7 @@ assert A23['pct']['PSOE'] > A19['pct']['PSOE'] and A19['pct']['PSOE'] > A19['pct
 PSOE_SUBE = int((m[f'{Y23}%PSOE'] > m[f'{Y19}%PSOE']).sum())
 assert PSOE_SUBE == 476
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PP', 'PSOE', 'VOX')} for y in (Y19, Y23)}
-assert round(POB[Y19]['PSOE'], 1) == 72.9 and round(POB[Y23]['PSOE'], 1) == 24.5 and round(POB[Y23]['PP'], 1) == 74.5
+assert round(POB[Y19]['PSOE'], 1) == 73.2 and round(POB[Y23]['PSOE'], 1) == 24.5 and round(POB[Y23]['PP'], 1) == 74.5
 FL = m[(m.g2019 == 'PSOE') & (m.g2023 == 'PP')]
 FLS = {y: agrega(FL, y, L19 if y == Y19 else L23)['pct'] for y in (Y19, Y23)}
 assert FLS[Y23]['PSOE'] > FLS[Y19]['PSOE'] and FLS[Y23]['PP'] > FLS[Y19]['PP'] + 10, FLS
@@ -71,7 +71,7 @@ assert sum(t['n'] for t in TT.values()) == NMUN
 assert all(t['pp23'] > t['pp19'] and t['vox23'] < t['vox19'] for t in TT.values())
 TG, T5K = TT['Más de 20.000'], TT['De 5.000 a 20.000']
 assert TG['n'] == 16 and TG['g19'] == {'PSOE': 12, 'PP': 2, 'VOX': 2} and TG['g23'] == {'PP': 12, 'PSOE': 4}
-assert T5K['g19']['VOX'] == 16 and T5K['g23'].get('VOX') == 1
+assert T5K['g19']['VOX'] == 15 and T5K['g23'].get('VOX') == 1
 G20 = m[m.poblacion >= 20000]
 G20PSOE23 = sorted(G20[G20.g2023 == 'PSOE'].municipio)
 assert G20PSOE23 == ['Alcázar de San Juan', 'Almansa', 'Azuqueca de Henares', 'Puertollano'], G20PSOE23
@@ -159,7 +159,7 @@ g_tam = figura(f'En los municipios de más de 20.000 habitantes, el PSOE pasó d
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'Vox 2019', 'PSOE 2023', 'PP 2023', 'Vox 2023'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PSOE', 'PP', 'VOX')] + [n(t['g23'].get(f, 0)) for f in ('PSOE', 'PP', 'VOX')]
@@ -293,7 +293,7 @@ enlaces = (f'{L("castilla-la-mancha-historia-electoral", "Historia electoral de 
            f'<a href="{BASE}encuestas/toledo/">Encuesta en Toledo</a> · <a href="{BASE}encuestas/ciudad-real/">Encuesta en Ciudad Real</a> · '
            f'<a href="{BASE}encuestas/albacete/">Encuesta en Albacete</a> · <a href="{BASE}encuestas/guadalajara/">Encuesta en Guadalajara</a> · <a href="{BASE}encuestas/cuenca/">Encuesta en Cuenca</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_clm.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_clm.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

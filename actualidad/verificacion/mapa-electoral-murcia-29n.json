@@ -150,12 +150,12 @@
    "calculo": "D['A23']['part']"
   },
   {
-   "texto": "el PP pasaron de reunir el 39,6 % de la población al",
-   "cifra": "39,6",
+   "texto": "el PP pasaron de reunir el 39,7 % de la población al",
+   "cifra": "39,7",
    "calculo": "D['POB']['2019_11']['PP']"
   },
   {
-   "texto": "39,6 % de la población al 98,0 %.",
+   "texto": "39,7 % de la población al 98,0 %.",
    "cifra": "98,0",
    "calculo": "D['POB']['2023_07']['PP']"
   },

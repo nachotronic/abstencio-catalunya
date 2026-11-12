@@ -1,8 +1,8 @@
 """«El mapa electoral de la Comunitat Valenciana» (11-11-2026), cuarta pieza de la serie «El mapa electoral de…» (mapa_ccaa.py).
 
 Los 542 municipios valencianos en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas por
-separado: en 2019, Unidas Podemos y Más Compromís), el cambio del PSOE y del PP, el tamaño de los municipios (población del Atlas de renta del INE, 2023,
-INE vía ineAtlas), las cuatro ciudades de más de 100.000 habitantes, las provincias, los municipios más ajustados y el reparto
+separado: en 2019, Unidas Podemos y Más Compromís), el cambio del PSOE y del PP, el tamaño de los municipios (padrón municipal del INE,
+2023), las cuatro ciudades de más de 100.000 habitantes, las provincias, los municipios más ajustados y el reparto
 central del modelo de /encuestas/ para el 29N. Contexto: EFE (11-11-2026). El reparto de escaños por provincia, con detalle,
 está en comunitat-valenciana-escanos-29n (comunitat_valenciana.py); aquí solo se resume.
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_valencia.py
@@ -82,7 +82,7 @@ assert PRG['46'][Y23]['PSOE'] == 134 and PRG['46'][Y23]['PP'] == 128
 assert all(max(PR[pr][Y23]['pct'], key=PR[pr][Y23]['pct'].get) == 'PP' for pr in PROV)
 assert all(max(PR[pr][Y19]['pct'], key=PR[pr][Y19]['pct'].get) == 'PSOE' for pr in PROV)
 
-# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
+# Tamaño de municipio (padrón municipal del INE, 2023)
 TAM = [('Menos de 1.000', 0, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000),
        ('De 20.000 a 100.000', 20000, 100000), ('Más de 100.000', 100000, 10 ** 9)]
 assert m.poblacion.notna().all()
@@ -96,7 +96,7 @@ assert sum(t['n'] for t in TT.values()) == NMUN
 assert all(t['pp23'] > t['pp19'] and t['psoe23'] > t['psoe19'] and t['vox23'] < t['vox19'] for t in TT.values())
 G20 = m[m.poblacion >= 20000]
 G20G = {y: G20[f'g{y[:4]}'].value_counts().to_dict() for y in (Y19, Y23)}
-assert G20G == {Y19: {'PSOE': 57, 'PP': 5, 'VOX': 5}, Y23: {'PP': 39, 'PSOE': 28}}, G20G
+assert G20G == {Y19: {'PSOE': 57, 'PP': 4, 'VOX': 5}, Y23: {'PP': 38, 'PSOE': 28}}, G20G   # padrón 2023: Benicàssim baja de 20.000
 
 # Las cuatro ciudades de más de 100.000 habitantes (las tres capitales y Elche)
 CIU = m[m.poblacion >= 100000].sort_values('poblacion', ascending=False)
@@ -186,7 +186,7 @@ g_tam = figura(f'En los municipios de más de 20.000 habitantes, el PSOE pasó d
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDT19 if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDT if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ['PP', 'PSOE', 'VOX', 'UP', 'MP', 'SUMAR', 'EMPATE']],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'Vox 2019', 'PP 2023', 'PSOE 2023', 'Sumar-Compromís 2023'],
                 [[nom, str(t['n']), n(t['censo'])] + [str(t['g19'].get(f, 0)) for f in ('PSOE', 'PP', 'VOX')] + [str(t['g23'].get(f, 0)) for f in ('PP', 'PSOE', 'SUMAR')]
@@ -316,7 +316,7 @@ preguntas = [
 enlaces = (f'{L("comunidad-valenciana-historia-electoral", "Historia electoral de la Comunitat Valenciana")} · {L("comunitat-valenciana-escanos-29n", "Los 33 escaños valencianos")} · '
            f'{L("valencia-barrio-a-barrio-29n", "Valencia barrio a barrio")} · <a href="{BASE}elecciones/comunidad-valenciana/">Datos de cada municipio</a> · <a href="{BASE}encuestas/valencia/">Encuesta en Valencia</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_valencia.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_valencia.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {
