@@ -4628,6 +4628,19 @@ PIEZAS += [
         enlaces=[],
         lugar='Navarra',
     ),
+    dict(
+        slug='mapa-electoral-cantabria-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Cantabria: sin el PRC en la papeleta, el PP pasó de 55 a 85 municipios y ganó El Astillero por 5 votos', serie='29n', figura=1,
+        descripcion='El PRC ganó en 31 municipios en 2019 y no se presentó en 2023: 25 fueron al PP y 6 al PSOE. Tampoco está en las listas del 29N. La media de encuestas da al PP dos de los 5 diputados, al PSOE dos y a Vox uno.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 102 municipios de Cantabria: el partido más votado en cada uno, a quién fueron los 31 municipios que ganó el PRC, el voto en los municipios donde el PRC era más fuerte, Santander, Torrelavega, El Astillero y los diez municipios de más de 10.000 habitantes, y los más ajustados; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por municipio, no de personas: no dicen a quién votó en 2023 cada votante del PRC o de Ciudadanos. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, el PRC con sus propios votos; Más País no se presentó en Cantabria). Empate: Rionansa en 2019, con los mismos votos el PP y el PSOE. Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_cantabria.py.',
+        fuentes=[INTERIOR,
+                 ('https://eldiariocantabria.publico.es/cantabria/politica/siete-partidos-presentan-candidaturas-cantabria-elecciones-generales/20261028201515200693.html', 'elDiario Cantabria, las siete candidaturas del 29N (28-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Cantabria',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
