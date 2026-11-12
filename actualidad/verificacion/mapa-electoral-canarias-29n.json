@@ -1,0 +1,459 @@
+{
+ "pieza": "mapa-electoral-canarias-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "municipios de Tenerife a 23, y el PSOE resistió",
+   "cifra": "23",
+   "calculo": "D['IS']['Tenerife']['g23']['PP']"
+  },
+  {
+   "texto": "subió en votos, pero pasó de 69 a 41 de los 88 municipios",
+   "cifra": "69",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "votos, pero pasó de 69 a 41 de los 88 municipios",
+   "cifra": "41",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "pero pasó de 69 a 41 de los 88 municipios canarios,",
+   "cifra": "88",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "media de encuestas da al PSOE 5 de los 15 diputados,",
+   "cifra": "5",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "encuestas da al PSOE 5 de los 15 diputados, al PP 4 y",
+   "cifra": "15",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de los 15 diputados, al PP 4 y a Vox 4, que vuelve",
+   "cifra": "4",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "diputados, al PP 4 y a Vox 4, que vuelve a tener",
+   "cifra": "4",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 15 diputados: 8 en Las",
+   "cifra": "15",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de noviembre 15 diputados: 8 en Las Palmas y 7 en",
+   "cifra": "8",
+   "calculo": "D['ESC26']['35']"
+  },
+  {
+   "texto": "diputados: 8 en Las Palmas y 7 en Santa Cruz de Tenerife.",
+   "cifra": "7",
+   "calculo": "D['ESC26']['38']"
+  },
+  {
+   "texto": "el partido más votado en 69 de los 88 municipios",
+   "cifra": "69",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "partido más votado en 69 de los 88 municipios canarios,",
+   "cifra": "88",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios canarios, el PP en 12 y Coalición Canaria,",
+   "cifra": "12",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "iba con Nueva Canarias, en siete. En julio de 2023, el",
+   "cifra": "siete",
+   "calculo": "D['GANA']['2019_11']['CC']"
+  },
+  {
+   "texto": "julio de 2023, el PP ganó en 42, el PSOE en 41, Coalición",
+   "cifra": "42",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP ganó en 42, el PSOE en 41, Coalición Canaria en",
+   "cifra": "41",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "41, Coalición Canaria en tres y Nueva Canarias en",
+   "cifra": "tres",
+   "calculo": "D['GANA']['2023_07']['CC']"
+  },
+  {
+   "texto": "pasó de ganar en dos de sus 31 municipios a ganar en",
+   "cifra": "31",
+   "calculo": "D['IS']['Tenerife']['n']"
+  },
+  {
+   "texto": "31 municipios a ganar en 23, incluida la capital,",
+   "cifra": "23",
+   "calculo": "D['IS']['Tenerife']['g23']['PP']"
+  },
+  {
+   "texto": "El PSOE no bajó: pasó del 29,1 % al 33,6 %, con 66.510",
+   "cifra": "29,1",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "bajó: pasó del 29,1 % al 33,6 %, con 66.510 votos",
+   "cifra": "33,6",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "del 29,1 % al 33,6 %, con 66.510 votos más, y subió en",
+   "cifra": "66.510",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "66.510 votos más, y subió en 71 de los 88 municipios.",
+   "cifra": "71",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "más, y subió en 71 de los 88 municipios. Pero el",
+   "cifra": "88",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios. Pero el PP sumó 113.041 votos y pasó del 20,9",
+   "cifra": "113.041",
+   "calculo": "D['DPP_VOTOS']"
+  },
+  {
+   "texto": "113.041 votos y pasó del 20,9 % al 30,7 %. Vox bajó",
+   "cifra": "20,9",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "votos y pasó del 20,9 % al 30,7 %. Vox bajó del 12,6",
+   "cifra": "30,7",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "% al 30,7 %. Vox bajó del 12,6 % al 7,6 % en el conjunto",
+   "cifra": "12,6",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "%. Vox bajó del 12,6 % al 7,6 % en el conjunto de",
+   "cifra": "7,6",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 5,4 % en 2019, no se presentó.",
+   "cifra": "5,4",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "La participación subió del 60,5 % al 63,6 %.",
+   "cifra": "60,5",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 60,5 % al 63,6 %.",
+   "cifra": "63,6",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "Tenerife, el PSOE pasó de 26 municipios a ocho, y",
+   "cifra": "26",
+   "calculo": "D['IS']['Tenerife']['g19']['PSOE']"
+  },
+  {
+   "texto": "PSOE pasó de 26 municipios a ocho, y Coalición Canaria",
+   "cifra": "ocho",
+   "calculo": "D['IS']['Tenerife']['g23']['PSOE']"
+  },
+  {
+   "texto": "Coalición Canaria perdió los tres que tenía. En Gran Canaria,",
+   "cifra": "tres",
+   "calculo": "D['IS']['Tenerife']['g19']['CC']"
+  },
+  {
+   "texto": "cambio, el PSOE conservó 13 de los 21 municipios",
+   "cifra": "13",
+   "calculo": "D['IS']['Gran Canaria']['g23']['PSOE']"
+  },
+  {
+   "texto": "el PSOE conservó 13 de los 21 municipios y el PP se",
+   "cifra": "21",
+   "calculo": "D['IS']['Gran Canaria']['n']"
+  },
+  {
+   "texto": "PP se quedó en los mismos seis. En Lanzarote, el PSOE",
+   "cifra": "seis",
+   "calculo": "D['IS']['Gran Canaria']['g23']['PP']"
+  },
+  {
+   "texto": "Lanzarote, el PSOE ganó en los siete. En La Palma, el PP",
+   "cifra": "siete",
+   "calculo": "D['IS']['Lanzarote']['n']"
+  },
+  {
+   "texto": "En La Palma, el PP pasó de tres a siete municipios,",
+   "cifra": "tres",
+   "calculo": "D['IS']['La Palma']['g19']['PP']"
+  },
+  {
+   "texto": "Palma, el PP pasó de tres a siete municipios, y en La",
+   "cifra": "siete",
+   "calculo": "D['IS']['La Palma']['g23']['PP']"
+  },
+  {
+   "texto": "De los 69 municipios del PSOE",
+   "cifra": "69",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios del PSOE en 2019, 28 pasaron al PP, 18 de",
+   "cifra": "28",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "en 2019, 28 pasaron al PP, 18 de ellos en Tenerife;",
+   "cifra": "18",
+   "calculo": "D['FL_TF']"
+  },
+  {
+   "texto": "camino contrario. En esos 28, el PSOE subió del 28,2",
+   "cifra": "28",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "esos 28, el PSOE subió del 28,2 % al 33,1 %, pero el",
+   "cifra": "28,2",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 28,2 % al 33,1 %, pero el PP lo hizo",
+   "cifra": "33,1",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "%, pero el PP lo hizo del 20,7 % al 37,5 %, mientras",
+   "cifra": "20,7",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "PP lo hizo del 20,7 % al 37,5 %, mientras desaparecían",
+   "cifra": "37,5",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 91,6 % de la población de",
+   "cifra": "91,6",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "población de Canarias al 59,0 %, y los del PP, del",
+   "cifra": "59,0",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "59,0 %, y los del PP, del 5,1 % al 38,8 %.",
+   "cifra": "5,1",
+   "calculo": "D['POB']['2019_11']['PP']"
+  },
+  {
+   "texto": "los del PP, del 5,1 % al 38,8 %.",
+   "cifra": "38,8",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "En los 30 municipios de más de",
+   "cifra": "30",
+   "calculo": "D['G20N']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en 28 en 2019 y en 15 en 2023;",
+   "cifra": "28",
+   "calculo": "D['G20G']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE ganó en 28 en 2019 y en 15 en 2023; el PP, en uno",
+   "cifra": "15",
+   "calculo": "D['G20G']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "2023; el PP, en uno y en 14. De las cuatro ciudades",
+   "cifra": "14",
+   "calculo": "D['G20G']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP, en uno y en 14. De las cuatro ciudades de más de 100.000,",
+   "cifra": "cuatro",
+   "calculo": "D['TT']['Más de 100.000']['n']"
+  },
+  {
+   "texto": "Tenerife, que ganó el PP por 3,38 puntos. En Las Palmas",
+   "cifra": "3,38",
+   "calculo": "D['CAP']['Santa Cruz de Tenerife']['marg23']"
+  },
+  {
+   "texto": "Gran Canaria, el PSOE sacó 6,87 puntos al PP, y en La",
+   "cifra": "6,87",
+   "calculo": "D['CAP']['Las Palmas de Gran Canaria']['marg23']"
+  },
+  {
+   "texto": "puntos al PP, y en La Laguna, 3,77.",
+   "cifra": "3,77",
+   "calculo": "D['CAP']['San Cristóbal de La Laguna']['marg23']"
+  },
+  {
+   "texto": "ganó el PSOE, los dos por 17 votos. La Orotava, que",
+   "cifra": "17",
+   "calculo": "D['AJG'][0][4]"
+  },
+  {
+   "texto": "Canaria, la ganó el PP por 118 votos sobre el PSOE.",
+   "cifra": "118",
+   "calculo": "D['ORO_V']"
+  },
+  {
+   "texto": "el reparto central de los 15 escaños da al PSOE 5,",
+   "cifra": "15",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "los 15 escaños da al PSOE 5, uno menos que en 2023;",
+   "cifra": "5",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "menos que en 2023; al PP, 4, dos menos; a Vox, 4,",
+   "cifra": "4",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "PP, 4, dos menos; a Vox, 4, dos en cada provincia,",
+   "cifra": "4",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 69 municipios a ganar en",
+   "cifra": "69",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "69 municipios a ganar en 41, y el PP, de 12 a 42Partido",
+   "cifra": "41",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganar en 41, y el PP, de 12 a 42Partido más votado",
+   "cifra": "12",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 88 municipios de Canarias,",
+   "cifra": "88",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "dos municipios a ganar en 23; en Gran Canaria, el",
+   "cifra": "23",
+   "calculo": "D['IS']['Tenerife']['g23']['PP']"
+  },
+  {
+   "texto": "Canaria, el PSOE conservó 13 de 21Municipios ganados",
+   "cifra": "13",
+   "calculo": "D['IS']['Gran Canaria']['g23']['PSOE']"
+  },
+  {
+   "texto": "En los 28 municipios que pasaron",
+   "cifra": "28",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP, el PSOE subió: del 28,2 % al 33,1 %Voto al PSOE,",
+   "cifra": "28,2",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió: del 28,2 % al 33,1 %Voto al PSOE, al PP,",
+   "cifra": "33,1",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "En los 30 municipios de más de",
+   "cifra": "30",
+   "calculo": "D['G20N']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 28 a ganar en 15Municipios",
+   "cifra": "28",
+   "calculo": "D['G20G']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PP en julio de 2023 en las tres ciudades más pobladas,",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "Valsequillo se decidieron por 17 votos cada unoVentaja",
+   "cifra": "17",
+   "calculo": "D['AJG'][0][4]"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de uno a cuatro diputados en Canarias,",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "Santa Cruz de TenerifeLos 15 diputados de las dos",
+   "cifra": "15",
+   "calculo": "sum(D['ESC26'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "los 30 municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "cuatro ciudades de más de 100.000, el PSOE conservó Las",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los municipios de más de 5.000 habitantes, los más",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "Siete islas",
+   "motivo": "intertítulo: las siete islas"
+  },
+  {
+   "texto": "los 30 municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los diez municipios de más de",
+   "motivo": "número de filas del gráfico"
+  },
+  {
+   "texto": "diez municipios de más de 5.000 habitantes más ajustados,",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
