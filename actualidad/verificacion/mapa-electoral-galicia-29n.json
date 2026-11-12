@@ -1,0 +1,579 @@
+{
+ "pieza": "mapa-electoral-galicia-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Galicia: el PSOE ganó en 18 de las 22 ciudades y",
+   "cifra": "18",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "el PSOE ganó en 18 de las 22 ciudades y villas de",
+   "cifra": "22",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "El PSOE sumó 19.392 votos, pero pasó de",
+   "cifra": "19.392",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "19.392 votos, pero pasó de 83 a 15 de los 313 municipios,",
+   "cifra": "83",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "votos, pero pasó de 83 a 15 de los 313 municipios,",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "pero pasó de 83 a 15 de los 313 municipios, y los que",
+   "cifra": "313",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 60,9 % de la población al",
+   "cifra": "60,9",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "60,9 % de la población al 13,0 %. El BNG subió y no",
+   "cifra": "13,0",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "media de encuestas da al PP 14 de los 23 diputados",
+   "cifra": "14",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas da al PP 14 de los 23 diputados y al BNG dos.",
+   "cifra": "23",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "elige el 29 de noviembre 23 diputados: 8 en A Coruña,",
+   "cifra": "23",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de noviembre 23 diputados: 8 en A Coruña, 7 en Pontevedra",
+   "cifra": "8",
+   "calculo": "D['ESC26']['15']"
+  },
+  {
+   "texto": "diputados: 8 en A Coruña, 7 en Pontevedra y 4 en",
+   "cifra": "7",
+   "calculo": "D['ESC26']['36']"
+  },
+  {
+   "texto": "Coruña, 7 en Pontevedra y 4 en Lugo y en Ourense.",
+   "cifra": "4",
+   "calculo": "D['ESC26']['27']"
+  },
+  {
+   "texto": "el partido más votado en 229 de los 313 municipios",
+   "cifra": "229",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "más votado en 229 de los 313 municipios gallegos,",
+   "cifra": "313",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios gallegos, el PSOE en 83 y el BNG en uno, Allariz.",
+   "cifra": "83",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "julio de 2023, el PP ganó en 298 y el PSOE en 15. Ningún",
+   "cifra": "298",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "ganó en 298 y el PSOE en 15. Ningún municipio pasó",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ciudades: el PSOE ganó en 2019 en seis de las siete, todas",
+   "cifra": "seis",
+   "calculo": "D['NCIU19']"
+  },
+  {
+   "texto": "ganó en 2019 en seis de las siete, todas menos Santiago",
+   "cifra": "siete",
+   "calculo": "len(D['CIU'])"
+  },
+  {
+   "texto": "PSOE no perdió votos: sumó 19.392 más que en 2019, aunque",
+   "cifra": "19.392",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "en 2019, aunque bajó del 31,6 % al 30,1 % porque votó",
+   "cifra": "31,6",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "aunque bajó del 31,6 % al 30,1 % porque votó más gente:",
+   "cifra": "30,1",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "la participación subió del 66,6 % al 73,1 %. El PP sumó",
+   "cifra": "66,6",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 66,6 % al 73,1 %. El PP sumó 229.532",
+   "cifra": "73,1",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "66,6 % al 73,1 %. El PP sumó 229.532 votos y pasó del 32,3",
+   "cifra": "229.532",
+   "calculo": "D['DPP_VOTOS']"
+  },
+  {
+   "texto": "229.532 votos y pasó del 32,3 % al 43,9 %, en un año",
+   "cifra": "32,3",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "votos y pasó del 32,3 % al 43,9 %, en un año en que",
+   "cifra": "43,9",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 4,4 % en 2019, no se presentó",
+   "cifra": "4,4",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "se presentó y Vox bajó del 7,9 % al 4,8 %. En 2019",
+   "cifra": "7,9",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "presentó y Vox bajó del 7,9 % al 4,8 %. En 2019 el PSOE había",
+   "cifra": "4,8",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "PP fue el primero en las cuatro.",
+   "cifra": "cuatro",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "De los 83 municipios del PSOE",
+   "cifra": "83",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios del PSOE en 2019, 68 pasaron al PP. En ellos,",
+   "cifra": "68",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "se quedó casi igual, del 32,9 % al 31,5 %, y el PP",
+   "cifra": "32,9",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "casi igual, del 32,9 % al 31,5 %, y el PP subió del",
+   "cifra": "31,5",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "31,5 %, y el PP subió del 28,9 % al 41,2 %, mientras",
+   "cifra": "28,9",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "el PP subió del 28,9 % al 41,2 %, mientras desaparecía",
+   "cifra": "41,2",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 4,7 %, y Vox bajaba del",
+   "cifra": "4,7",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 4,7 %, y Vox bajaba del 8,2 % al 4,9 %. Como el",
+   "cifra": "8,2",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "y Vox bajaba del 8,2 % al 4,9 %. Como el PSOE perdió",
+   "cifra": "4,9",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "ganó pasaron de sumar el 60,9 % de la población de",
+   "cifra": "60,9",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "la población de Galicia al 13,0 %.",
+   "cifra": "13,0",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "En los 22 municipios de más de",
+   "cifra": "22",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en 18 en 2019 y en dos en",
+   "cifra": "18",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "el PP solo había ganado en cuatro de ellos: Santiago de",
+   "cifra": "cuatro",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PP']"
+  },
+  {
+   "texto": "a 20.000, el PSOE pasó de 29 a uno, O Grove. En los",
+   "cifra": "29",
+   "calculo": "D['TT']['De 5.000 a 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "1.000 habitantes, que son 41, el PP ya ganaba en",
+   "cifra": "41",
+   "calculo": "D['TT']['Menos de 1.000']['n']"
+  },
+  {
+   "texto": "son 41, el PP ya ganaba en 28 en 2019 y en 36 en 2023.",
+   "cifra": "28",
+   "calculo": "D['TT']['Menos de 1.000']['g19']['PP']"
+  },
+  {
+   "texto": "ganaba en 28 en 2019 y en 36 en 2023. El PP subió",
+   "cifra": "36",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['PP']"
+  },
+  {
+   "texto": "Las siete ciudades reúnen el 36,7",
+   "cifra": "siete",
+   "calculo": "len(D['CIU'])"
+  },
+  {
+   "texto": "siete ciudades reúnen el 36,7 % de la población gallega.",
+   "cifra": "36,7",
+   "calculo": "D['CIUP']"
+  },
+  {
+   "texto": "la mayor, el PSOE sacó el 37,6 % y el PP el 31,6 %.",
+   "cifra": "37,6",
+   "calculo": "D['CIU']['Vigo']['psoe23']"
+  },
+  {
+   "texto": "sacó el 37,6 % y el PP el 31,6 %. En A Coruña, que",
+   "cifra": "31,6",
+   "calculo": "D['CIU']['Vigo']['pp23']"
+  },
+  {
+   "texto": "había ganado en 2019 con el 32,1 %, el PP fue el primero",
+   "cifra": "32,1",
+   "calculo": "D['CIU']['A Coruña']['psoe19']"
+  },
+  {
+   "texto": "el primero en 2023 con el 40,2 %, por delante del PSOE",
+   "cifra": "40,2",
+   "calculo": "D['CIU']['A Coruña']['pp23']"
+  },
+  {
+   "texto": "%, por delante del PSOE (31,3 %). Santiago fue la",
+   "cifra": "31,3",
+   "calculo": "D['CIU']['A Coruña']['psoe23']"
+  },
+  {
+   "texto": "y en 2023 lo hizo con el 42,2 %; allí el BNG sacó",
+   "cifra": "42,2",
+   "calculo": "D['CIU']['Santiago de Compostela']['pp23']"
+  },
+  {
+   "texto": "42,2 %; allí el BNG sacó el 13,2 %, su mejor resultado",
+   "cifra": "13,2",
+   "calculo": "D['CIU']['Santiago de Compostela']['bng23']"
+  },
+  {
+   "texto": "El BNG subió del 8,2 % al 9,5 % en Galicia,",
+   "cifra": "8,2",
+   "calculo": "D['A19']['pct']['BNG']"
+  },
+  {
+   "texto": "El BNG subió del 8,2 % al 9,5 % en Galicia, y lo hizo",
+   "cifra": "9,5",
+   "calculo": "D['A23']['pct']['BNG']"
+  },
+  {
+   "texto": "en Galicia, y lo hizo en 260 de los 313 municipios,",
+   "cifra": "260",
+   "calculo": "D['BNG_SUBE']"
+  },
+  {
+   "texto": "Galicia, y lo hizo en 260 de los 313 municipios, pero no",
+   "cifra": "313",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "Allariz (Ourense), con el 31,6 %; en 2023 sacó allí",
+   "cifra": "31,6",
+   "calculo": "D['ALL']['bng19']"
+  },
+  {
+   "texto": "31,6 %; en 2023 sacó allí el 25,0 % y ganó el PP, con",
+   "cifra": "25,0",
+   "calculo": "D['ALL']['bng23']"
+  },
+  {
+   "texto": "25,0 % y ganó el PP, con el 35,5 %. Su mejor resultado",
+   "cifra": "35,5",
+   "calculo": "D['ALL']['pp23']"
+  },
+  {
+   "texto": "también en Ourense, con el 35,3 %, y solo fue segundo",
+   "cifra": "35,3",
+   "calculo": "D['BTOP'][0][1]"
+  },
+  {
+   "texto": "%, y solo fue segundo en tres municipios. Mantuvo",
+   "cifra": "tres",
+   "calculo": "D['BSEG23']"
+  },
+  {
+   "texto": "número de municipios en las cuatro provincias, ya en 2019.",
+   "cifra": "cuatro",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "2023, el PSOE solo ganó en 5 municipios de Pontevedra,",
+   "cifra": "5",
+   "calculo": "D['P23PSOE']['Pontevedra']"
+  },
+  {
+   "texto": "municipios de Pontevedra, 4 de Ourense, 4 de Lugo",
+   "cifra": "4",
+   "calculo": "D['P23PSOE']['Ourense']"
+  },
+  {
+   "texto": "Pontevedra, 4 de Ourense, 4 de Lugo y 2 de A Coruña.",
+   "cifra": "4",
+   "calculo": "D['P23PSOE']['Ourense']"
+  },
+  {
+   "texto": "4 de Ourense, 4 de Lugo y 2 de A Coruña. La provincia",
+   "cifra": "2",
+   "calculo": "D['P23PSOE']['A Coruña']"
+  },
+  {
+   "texto": "ganó el PP en 2023 con el 39,9 %, frente al 31,7 %",
+   "cifra": "39,9",
+   "calculo": "D['PR']['36']['2023_07']['PP']"
+  },
+  {
+   "texto": "con el 39,9 %, frente al 31,7 % del PSOE.",
+   "cifra": "31,7",
+   "calculo": "D['PR']['36']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "decididos por un voto, y solo en cinco la ventaja fue de menos",
+   "cifra": "cinco",
+   "calculo": "D['AJ2']"
+  },
+  {
+   "texto": "Rodríguez, que ganó el PP por 22 votos; después, A Fonsagrada,",
+   "cifra": "22",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "Fonsagrada, que ganó el PSOE por 9, y Parada de Sil, también",
+   "cifra": "9",
+   "calculo": "D['AJ'][1][4]"
+  },
+  {
+   "texto": "también para el PSOE, por 2.",
+   "cifra": "2",
+   "calculo": "D['AJ'][2][4]"
+  },
+  {
+   "texto": "el reparto central de los 23 escaños da al PP 14,",
+   "cifra": "23",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de los 23 escaños da al PP 14, uno más que en 2023;",
+   "cifra": "14",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "más que en 2023; al PSOE, 6, uno menos; al BNG,",
+   "cifra": "6",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "de las simulaciones en las cuatro provincias. Vox no ha",
+   "cifra": "cuatro",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 83 municipios gallegos",
+   "cifra": "83",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios gallegos a ganar en 15; el PP, de 229 a 298Partido",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "a ganar en 15; el PP, de 229 a 298Partido más votado",
+   "cifra": "229",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 313 municipios de Galicia,",
+   "cifra": "313",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 68 municipios que pasaron",
+   "cifra": "68",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "el PSOE apenas bajó: del 32,9 % al 31,5 %Voto al PP,",
+   "cifra": "32,9",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "apenas bajó: del 32,9 % al 31,5 %Voto al PP, al PSOE,",
+   "cifra": "31,5",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 18 de 22 a ganar en dosMunicipios",
+   "cifra": "18",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "PSOE pasó de ganar en 18 de 22 a ganar en dosMunicipios",
+   "cifra": "22",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "El PSOE ganó en seis de las siete ciudades",
+   "cifra": "seis",
+   "calculo": "D['NCIU19']"
+  },
+  {
+   "texto": "PSOE ganó en seis de las siete ciudades gallegas en",
+   "cifra": "siete",
+   "calculo": "len(D['CIU'])"
+  },
+  {
+   "texto": "PSOE en julio de 2023 en las siete ciudades de Galicia,",
+   "cifra": "siete",
+   "calculo": "len(D['CIU'])"
+  },
+  {
+   "texto": "El BNG pasó del 8,2 % al 9,5 % y no ganó",
+   "cifra": "8,2",
+   "calculo": "D['A19']['pct']['BNG']"
+  },
+  {
+   "texto": "El BNG pasó del 8,2 % al 9,5 % y no ganó en ningún",
+   "cifra": "9,5",
+   "calculo": "D['A23']['pct']['BNG']"
+  },
+  {
+   "texto": "número de municipios en las cuatro provincias, también",
+   "cifra": "cuatro",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "As Pontes se decidió por 22 votos; Parada de Sil,",
+   "cifra": "22",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "se quedaría sin ningunoLos 23 diputados de las cuatro",
+   "cifra": "23",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "ningunoLos 23 diputados de las cuatro provincias: un cuadrado",
+   "cifra": "cuatro",
+   "calculo": "len(D['PR'])"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "donde el PP saca más del 80 % están en Los 5 pueblos",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-cinco-pueblos-galicia/"
+  },
+  {
+   "texto": "más del 80 % están en Los 5 pueblos de España donde",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-cinco-pueblos-galicia/"
+  },
+  {
+   "texto": "donde el PP saca hasta el 81,5 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/pp-cinco-pueblos-galicia/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "ciudades y villas de más de 20.000 habitantes en 2019 y",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los 22 municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Marín y A Estrada. En los de 5.000 a 20.000, el PSOE pasó",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Estrada. En los de 5.000 a 20.000, el PSOE pasó de 29",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Grove. En los de menos de 1.000 habitantes, que son",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "los municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "campaña empieza el viernes 13. El presidente de la",
+   "motivo": "fecha (viernes 13 de noviembre, inicio de la campaña)"
+  },
+  {
+   "texto": "Cuatro provincias",
+   "motivo": "intertítulo: las cuatro provincias de Galicia"
+  },
+  {
+   "texto": "ningún municipio en 2023Los diez municipios con más voto",
+   "motivo": "número de filas del gráfico"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los diez municipios más ajustados,",
+   "motivo": "número de filas del gráfico"
+  }
+ ],
+ "permitir_espana": []
+}
