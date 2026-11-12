@@ -4527,6 +4527,20 @@ PIEZAS += [
         enlaces=[],
         lugar='País Vasco',
     ),
+    dict(
+        slug='mapa-electoral-canarias-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Canarias: el PP pasó de ganar en dos municipios de Tenerife a 23, y el PSOE resistió en Gran Canaria', serie='29n', figura=1,
+        descripcion='El PSOE subió en votos, pero pasó de 69 a 41 de los 88 municipios canarios, y perdió Santa Cruz de Tenerife. Para el 29N, la media de encuestas da al PSOE 5 de los 15 diputados, al PP 4 y a Vox 4, que vuelve a tener lista en Tenerife.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 88 municipios de Canarias: el partido más votado en cada uno, las siete islas, los 28 que pasaron del PSOE al PP, el tamaño del municipio, las tres ciudades más pobladas y los municipios más ajustados; y el reparto central de la media de encuestas del 29N en Las Palmas y Santa Cruz de Tenerife.',
+        limites='Son datos por municipio, no de personas. En 2023, Vox no tuvo lista en Santa Cruz de Tenerife, y Coalición Canaria y Nueva Canarias, que fueron juntas en 2019, se presentaron por separado. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado; Coalición Canaria, con Nueva Canarias); no hubo empates a votos. Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_canarias.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.canarias7.es/elecciones/generales/valido-unica-mision-unica-causa-canarias-izquierda-20261023170635-nt.html', 'Canarias7, Cristina Valido (CC-Primero Canarias) registra su candidatura (23-10-2026)'),
+                 ('https://www.eldiario.es/canariasahora/politica/cc-canarias-presenta-candidaturas-29n-objetivo-recuperar-grupo-propio-congreso_1_13646935.html', 'Canarias Ahora (elDiario.es), Teodoro Sosa presenta la candidatura de Las Palmas (7-11-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Canarias',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada

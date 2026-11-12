@@ -112,4 +112,12 @@
       <news:title>El mapa electoral del País Vasco: el PNV pasó de ganar en 152 municipios a 76, y EH Bildu, de 79 a 140</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-canarias-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Canarias: el PP pasó de ganar en dos municipios de Tenerife a 23, y el PSOE resistió en Gran Canaria</news:title>
+    </news:news>
+  </url>
 </urlset>
