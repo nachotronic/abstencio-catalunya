@@ -4556,6 +4556,20 @@ PIEZAS += [
         enlaces=[],
         lugar='Aragón',
     ),
+    dict(
+        slug='mapa-electoral-murcia-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de la Región de Murcia: Vox ganó en 16 municipios en 2019, Cartagena incluida, y en ninguno en 2023', serie='29n', figura=1,
+        descripcion='Los 16 pasaron al PP, que subió en los 45 municipios y ganó en 41; el PSOE se quedó con cuatro. Para el 29N, la media de encuestas da a Vox cuatro de los 10 diputados, tantos como al PP, y al PSOE dos.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 45 municipios de la Región de Murcia: el partido más votado en cada uno, los 16 que ganó Vox en 2019 y pasaron al PP, el voto según el tamaño del municipio, las ocho ciudades más pobladas, los municipios más ajustados; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Vox o de Ciudadanos en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado); ningún municipio terminó en empate. Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_murcia.py.',
+        fuentes=[INTERIOR,
+                 ('https://murciaplaza.com/murciaplaza/region/vox-anuncia-en-murcia-a-los-candidatos-murcianos-para-el-29n-arropados-por-centenares-de-fieles', 'Murcia Plaza, Vox presenta sus candidatos para el 29N (30-10-2026)'),
+                 ('https://murciaplaza.com/murciaplaza/region/la-lista-completa-del-pp-por-murcia-al-29n-estos-son-los-10-candidatos-al-congreso-y-los-3-aspirantes-al-senado', 'Murcia Plaza, la lista del PP por Murcia (27-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Región de Murcia',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada

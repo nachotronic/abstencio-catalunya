@@ -1,0 +1,512 @@
+{
+ "pieza": "mapa-electoral-murcia-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Región de Murcia: Vox ganó en 16 municipios en 2019,",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Los 16 pasaron al PP, que subió",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "pasaron al PP, que subió en los 45 municipios y ganó en",
+   "cifra": "45",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "los 45 municipios y ganó en 41; el PSOE se quedó con",
+   "cifra": "41",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "41; el PSOE se quedó con cuatro. Para el 29N, la media",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "media de encuestas da a Vox cuatro de los 10 diputados,",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "encuestas da a Vox cuatro de los 10 diputados, tantos como",
+   "cifra": "10",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "elige el 29 de noviembre 10 diputados, los mismos",
+   "cifra": "10",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "partido más votado, con el 28,2 %. Ganó en 16 de sus",
+   "cifra": "28,2",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "votado, con el 28,2 %. Ganó en 16 de sus 45 municipios,",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "28,2 %. Ganó en 16 de sus 45 municipios, entre ellos",
+   "cifra": "45",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "Alcantarilla; el PSOE ganó en 15 y el PP en 14, entre",
+   "cifra": "15",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE ganó en 15 y el PP en 14, entre ellos la capital.",
+   "cifra": "14",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "julio de 2023, el PP ganó en 41 y el PSOE en cuatro:",
+   "cifra": "41",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP ganó en 41 y el PSOE en cuatro: Bullas, Calasparra,",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "El PP pasó del 26,7 % al 41,5 %, con 117.933",
+   "cifra": "26,7",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "El PP pasó del 26,7 % al 41,5 %, con 117.933 votos",
+   "cifra": "41,5",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "del 26,7 % al 41,5 %, con 117.933 votos más, y subió en",
+   "cifra": "117.933",
+   "calculo": "D['DV']['PP']"
+  },
+  {
+   "texto": "votos más, y subió en los 45 municipios. Vox bajó",
+   "cifra": "45",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios. Vox bajó del 28,2 % al 22,0 %, con 36.844",
+   "cifra": "28,2",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "municipios. Vox bajó del 28,2 % al 22,0 %, con 36.844 votos",
+   "cifra": "22,0",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "del 28,2 % al 22,0 %, con 36.844 votos menos, y bajó",
+   "cifra": "36.844",
+   "calculo": "-D['DV']['VOX']"
+  },
+  {
+   "texto": "menos, y bajó también en los 45. Ciudadanos, que había",
+   "cifra": "45",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 7,5 % en 2019, no se presentó.",
+   "cifra": "7,5",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "PSOE apenas se movió, del 24,9 % al 25,4 %, y subió",
+   "cifra": "24,9",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "apenas se movió, del 24,9 % al 25,4 %, y subió en 22 municipios.",
+   "cifra": "25,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "24,9 % al 25,4 %, y subió en 22 municipios. La participación",
+   "cifra": "22",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "La participación pasó del 70,0 % al 70,8 %. Los municipios",
+   "cifra": "70,0",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación pasó del 70,0 % al 70,8 %. Los municipios que",
+   "cifra": "70,8",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "el PP pasaron de reunir el 39,6 % de la población al",
+   "cifra": "39,6",
+   "calculo": "D['POB']['2019_11']['PP']"
+  },
+  {
+   "texto": "39,6 % de la población al 98,0 %.",
+   "cifra": "98,0",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "Los 16 municipios de Vox en",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "de Vox en 2019 pasaron los 16 al PP. En ellos, Vox",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "PP. En ellos, Vox bajó del 31,1 % al 23,9 % y el PP",
+   "cifra": "31,1",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "ellos, Vox bajó del 31,1 % al 23,9 % y el PP subió del",
+   "cifra": "23,9",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "23,9 % y el PP subió del 25,4 % al 40,7 %, mientras",
+   "cifra": "25,4",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "el PP subió del 25,4 % al 40,7 %, mientras desaparecía",
+   "cifra": "40,7",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 7,6 %; el PSOE pasó del",
+   "cifra": "7,6",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 7,6 %; el PSOE pasó del 23,2 % al 24,5 %. En 2019,",
+   "cifra": "23,2",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "el PSOE pasó del 23,2 % al 24,5 %. En 2019, el municipio",
+   "cifra": "24,5",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "fue Torre-Pacheco, con el 38,3 %; en 2023, Fuente Álamo",
+   "cifra": "38,3",
+   "calculo": "D['VXMAX19']"
+  },
+  {
+   "texto": "Fuente Álamo de Murcia, con el 31,7 %. De los 15 municipios",
+   "cifra": "31,7",
+   "calculo": "D['VXMAX23']"
+  },
+  {
+   "texto": "Murcia, con el 31,7 %. De los 15 municipios del PSOE,",
+   "cifra": "15",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "los 15 municipios del PSOE, 11 pasaron al PP y cuatro",
+   "cifra": "11",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "PSOE, 11 pasaron al PP y cuatro siguieron con el PSOE.",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "siguieron con el PSOE. Los 14 del PP siguieron todos",
+   "cifra": "14",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "municipios medianos y grandes: en 9 de los 15 de 20.000",
+   "cifra": "9",
+   "calculo": "D['TT']['De 20.000 a 50.000']['g19']['VOX']"
+  },
+  {
+   "texto": "medianos y grandes: en 9 de los 15 de 20.000 a 50.000 habitantes",
+   "cifra": "15",
+   "calculo": "D['TT']['De 20.000 a 50.000']['n']"
+  },
+  {
+   "texto": "habitantes y en dos de los cuatro de más de 50.000, Cartagena",
+   "cifra": "cuatro",
+   "calculo": "D['TT']['Más de 50.000']['n']"
+  },
+  {
+   "texto": "más a menudo el PSOE: en 9 de 18. En 2023, el PP",
+   "cifra": "9",
+   "calculo": "D['TT']['De 5.000 a 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "a menudo el PSOE: en 9 de 18. En 2023, el PP ganó",
+   "cifra": "18",
+   "calculo": "D['TT']['De 5.000 a 20.000']['n']"
+  },
+  {
+   "texto": "20.000 habitantes, y los cuatro del PSOE tienen menos",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "segunda ciudad, Vox pasó del 31,3 % al 23,5 % y el PP,",
+   "cifra": "31,3",
+   "calculo": "D['GR']['Cartagena']['vox19']"
+  },
+  {
+   "texto": "ciudad, Vox pasó del 31,3 % al 23,5 % y el PP, del 23,4",
+   "cifra": "23,5",
+   "calculo": "D['GR']['Cartagena']['vox23']"
+  },
+  {
+   "texto": "% al 23,5 % y el PP, del 23,4 % al 39,9 %. En Murcia,",
+   "cifra": "23,4",
+   "calculo": "D['GR']['Cartagena']['pp19']"
+  },
+  {
+   "texto": "% y el PP, del 23,4 % al 39,9 %. En Murcia, la capital,",
+   "cifra": "39,9",
+   "calculo": "D['GR']['Cartagena']['pp23']"
+  },
+  {
+   "texto": "elecciones y en 2023 sacó 20,18 puntos al segundo. Lorca",
+   "cifra": "20,18",
+   "calculo": "D['GR']['Murcia']['marg23']"
+  },
+  {
+   "texto": "Albudeite, que ganó el PP por 5 votos al PSOE. Moratalla,",
+   "cifra": "5",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "Joaquín Robles y uno de los cuatro que ganó el PSOE, se",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganó el PSOE, se decidió por 104. Entre los de más de",
+   "cifra": "104",
+   "calculo": "D['AJ'][3][4]"
+  },
+  {
+   "texto": "que pasó del PSOE al PP por 270 votos. Los pueblos que",
+   "cifra": "270",
+   "calculo": "D['LAL_V']"
+  },
+  {
+   "texto": "el reparto central de los 10 escaños da al PP cuatro,",
+   "cifra": "10",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "de los 10 escaños da al PP cuatro, los mismos que en 2023;",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "mismos que en 2023; a Vox, cuatro, frente a dos, y al",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "ninguno. Las horquillas van de 4 a 5 escaños para el",
+   "cifra": "4",
+   "calculo": "D['RC']['PP'][1]"
+  },
+  {
+   "texto": "Las horquillas van de 4 a 5 escaños para el PP,",
+   "cifra": "5",
+   "calculo": "D['RC']['PP'][2]"
+  },
+  {
+   "texto": "5 escaños para el PP, de 3 a 4 para Vox y de 2",
+   "cifra": "3",
+   "calculo": "D['RC']['VOX'][1]"
+  },
+  {
+   "texto": "escaños para el PP, de 3 a 4 para Vox y de 2 a 3",
+   "cifra": "4",
+   "calculo": "D['RC']['PP'][1]"
+  },
+  {
+   "texto": "PP, de 3 a 4 para Vox y de 2 a 3 para el PSOE.",
+   "cifra": "2",
+   "calculo": "D['RC']['PSOE'][1]"
+  },
+  {
+   "texto": "de 3 a 4 para Vox y de 2 a 3 para el PSOE.",
+   "cifra": "3",
+   "calculo": "D['RC']['PSOE'][2]"
+  },
+  {
+   "texto": "Vox ganó en 16 municipios en 2019 y",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "ninguno en 2023; el PP, de 14 a 41Partido más votado",
+   "cifra": "14",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 45 municipios de la Región",
+   "cifra": "45",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 16 municipios de Vox en",
+   "cifra": "16",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox en 2019, Vox bajó del 31,1 % al 23,9 % y el PP",
+   "cifra": "31,1",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "2019, Vox bajó del 31,1 % al 23,9 % y el PP subió del",
+   "cifra": "23,9",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "23,9 % y el PP subió del 25,4 % al 40,7 %Voto a Vox,",
+   "cifra": "25,4",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "el PP subió del 25,4 % al 40,7 %Voto a Vox, al PP,",
+   "cifra": "40,7",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "En los 15 municipios de 20.000",
+   "cifra": "15",
+   "calculo": "D['TT']['De 20.000 a 50.000']['n']"
+  },
+  {
+   "texto": "50.000 habitantes, Vox ganó en 9 en 2019; en 2023, el",
+   "cifra": "9",
+   "calculo": "D['TT']['De 20.000 a 50.000']['g19']['VOX']"
+  },
+  {
+   "texto": "El PP ganó en 2023 en las ocho ciudades más pobladas;",
+   "cifra": "ocho",
+   "calculo": "len(D['GR'])"
+  },
+  {
+   "texto": "2019, Vox había ganado en cuatro de ellasVoto al PP,",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for v in D['GR'].values() if v['g19'] == 'VOX')"
+  },
+  {
+   "texto": "Vox en julio de 2023 en los ocho municipios más poblados,",
+   "cifra": "ocho",
+   "calculo": "len(D['GR'])"
+  },
+  {
+   "texto": "Albudeite se decidió en 2023 por 5 votos, y Moratalla,",
+   "cifra": "5",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "votos, y Moratalla, uno de los cuatro municipios del PSOE,",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los ocho municipios más ajustados,",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de dos a cuatro diputados en la Región",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "y empataría con el PPLos 10 diputados de la Región",
+   "cifra": "10",
+   "calculo": "sum(D['E29'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "como cabeza de lista tras ocho años como diputado:",
+   "motivo": "años de Joaquín Robles como diputado, según Murcia Plaza (cita de la fuente)"
+  },
+  {
+   "texto": "grandes: en 9 de los 15 de 20.000 a 50.000 habitantes",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "en 9 de los 15 de 20.000 a 50.000 habitantes y en dos",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "dos de los cuatro de más de 50.000, Cartagena y Molina",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Molina de Segura. En los de 5.000 a 20.000, el más votado",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Segura. En los de 5.000 a 20.000, el más votado fue más",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los municipios de más de 20.000 habitantes, y los cuatro",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "del PSOE tienen menos de 12.000: Bullas, Calasparra",
+   "motivo": "umbral de población, comprobado en el script (PS)"
+  },
+  {
+   "texto": "Calasparra y Moratalla, entre 7.000 y 12.000, y Campos del",
+   "motivo": "umbral de población, comprobado en el script (PS)"
+  },
+  {
+   "texto": "Moratalla, entre 7.000 y 12.000, y Campos del Río, unos",
+   "motivo": "umbral de población, comprobado en el script (PS)"
+  },
+  {
+   "texto": "12.000, y Campos del Río, unos 2.100.",
+   "motivo": "población de Campos del Río redondeada, comprobada en el script (PS)"
+  },
+  {
+   "texto": "104. Entre los de más de 10.000 habitantes, el más ajustado",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "En los 15 municipios de 20.000 a 50.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "15 municipios de 20.000 a 50.000 habitantes, Vox ganó",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
