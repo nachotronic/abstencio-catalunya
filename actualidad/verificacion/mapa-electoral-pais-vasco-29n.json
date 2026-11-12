@@ -1,0 +1,618 @@
+{
+ "pieza": "mapa-electoral-pais-vasco-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Vasco: el PNV pasó de ganar en 152 municipios a 76, y EH",
+   "cifra": "152",
+   "calculo": "D['GANA']['2019_11']['PNV']"
+  },
+  {
+   "texto": "ganar en 152 municipios a 76, y EH Bildu, de 79 a",
+   "cifra": "76",
+   "calculo": "D['GANA']['2023_07']['PNV']"
+  },
+  {
+   "texto": "municipios a 76, y EH Bildu, de 79 a 140",
+   "cifra": "79",
+   "calculo": "D['GANA']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "a 76, y EH Bildu, de 79 a 140",
+   "cifra": "140",
+   "calculo": "D['GANA']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "El PNV bajó en 247 de los 251 municipios.",
+   "cifra": "247",
+   "calculo": "D['PNV_BAJA']"
+  },
+  {
+   "texto": "El PNV bajó en 247 de los 251 municipios. EH Bildu",
+   "cifra": "251",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios. EH Bildu le quitó 60 y el PSOE, más votado",
+   "cifra": "60",
+   "calculo": "D['PNV_BILDU']"
+  },
+  {
+   "texto": "votado en 2023, ganó en las tres capitales. Para el 29N,",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "media de encuestas da al PSOE 7 de los 18 diputados,",
+   "cifra": "7",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "encuestas da al PSOE 7 de los 18 diputados, a EH Bildu",
+   "cifra": "18",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "18 diputados, a EH Bildu 6 y al PNV 3.",
+   "cifra": "6",
+   "calculo": "D['E29']['BILDU']"
+  },
+  {
+   "texto": "diputados, a EH Bildu 6 y al PNV 3.",
+   "cifra": "3",
+   "calculo": "D['E29']['PNV']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 18 diputados: 8 en Bizkaia,",
+   "cifra": "18",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de noviembre 18 diputados: 8 en Bizkaia, 6 en Gipuzkoa",
+   "cifra": "8",
+   "calculo": "D['ESC26']['48']"
+  },
+  {
+   "texto": "diputados: 8 en Bizkaia, 6 en Gipuzkoa y 4 en Álava.",
+   "cifra": "6",
+   "calculo": "D['ESC26']['20']"
+  },
+  {
+   "texto": "Bizkaia, 6 en Gipuzkoa y 4 en Álava. El PNV presentó",
+   "cifra": "4",
+   "calculo": "D['ESC26']['01']"
+  },
+  {
+   "texto": "el partido más votado en 152 de los 251 municipios",
+   "cifra": "152",
+   "calculo": "D['GANA']['2019_11']['PNV']"
+  },
+  {
+   "texto": "más votado en 152 de los 251 municipios vascos, EH",
+   "cifra": "251",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios vascos, EH Bildu en 79, el PSOE en 13, el PP",
+   "cifra": "79",
+   "calculo": "D['GANA']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "EH Bildu en 79, el PSOE en 13, el PP en cuatro y Unidas",
+   "cifra": "13",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "79, el PSOE en 13, el PP en cuatro y Unidas Podemos en",
+   "cifra": "cuatro",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "de 2023, EH Bildu ganó en 140, el PNV en 76, el PSOE",
+   "cifra": "140",
+   "calculo": "D['GANA']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "Bildu ganó en 140, el PNV en 76, el PSOE en 29 y el",
+   "cifra": "76",
+   "calculo": "D['GANA']['2023_07']['PNV']"
+  },
+  {
+   "texto": "el PNV en 76, el PSOE en 29 y el PP en seis. Y el",
+   "cifra": "29",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "el PSOE en 29 y el PP en seis. Y el PSOE ganó en las",
+   "cifra": "seis",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "seis. Y el PSOE ganó en las tres capitales: en 2019 solo",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "2023 fue el PSOE, con el 25,4 % de los votos a candidaturas",
+   "cifra": "25,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "exterior), por delante del PNV (24,2 %) y de EH Bildu (24,1",
+   "cifra": "24,2",
+   "calculo": "D['A23']['pct']['PNV']"
+  },
+  {
+   "texto": "PNV (24,2 %) y de EH Bildu (24,1 %). En 2019, el PNV",
+   "cifra": "24,1",
+   "calculo": "D['A23']['pct']['BILDU']"
+  },
+  {
+   "texto": "2019, el PNV había sacado el 32,2 %, EH Bildu el 18,8",
+   "cifra": "32,2",
+   "calculo": "D['A19']['pct']['PNV']"
+  },
+  {
+   "texto": "sacado el 32,2 %, EH Bildu el 18,8 % y el PSOE el 19,3",
+   "cifra": "18,8",
+   "calculo": "D['A19']['pct']['BILDU']"
+  },
+  {
+   "texto": "Bildu el 18,8 % y el PSOE el 19,3 %. El PNV perdió 101.643",
+   "cifra": "19,3",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "el 19,3 %. El PNV perdió 101.643 votos y bajó en 247",
+   "cifra": "101.643",
+   "calculo": "D['DPNV_VOTOS']"
+  },
+  {
+   "texto": "perdió 101.643 votos y bajó en 247 de los 251 municipios;",
+   "cifra": "247",
+   "calculo": "D['PNV_BAJA']"
+  },
+  {
+   "texto": "votos y bajó en 247 de los 251 municipios; EH Bildu",
+   "cifra": "251",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios; EH Bildu ganó 54.482 y subió en 245. El PP",
+   "cifra": "54.482",
+   "calculo": "D['DBILDU_VOTOS']"
+  },
+  {
+   "texto": "Bildu ganó 54.482 y subió en 245. El PP pasó del 8,9",
+   "cifra": "245",
+   "calculo": "D['BILDU_SUBE']"
+  },
+  {
+   "texto": "subió en 245. El PP pasó del 8,9 % al 11,6 %, y Sumar",
+   "cifra": "8,9",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "245. El PP pasó del 8,9 % al 11,6 %, y Sumar sacó el 11,1",
+   "cifra": "11,6",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "al 11,6 %, y Sumar sacó el 11,1 %, frente al 15,5 %",
+   "cifra": "11,1",
+   "calculo": "D['A23']['pct']['SUMAR']"
+  },
+  {
+   "texto": "sacó el 11,1 %, frente al 15,5 % de Unidas Podemos",
+   "cifra": "15,5",
+   "calculo": "D['A19']['pct']['UP']"
+  },
+  {
+   "texto": "La participación bajó del 68,9 % al 67,6 %.",
+   "cifra": "68,9",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación bajó del 68,9 % al 67,6 %.",
+   "cifra": "67,6",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "De los 152 municipios del PNV en",
+   "cifra": "152",
+   "calculo": "D['GANA']['2019_11']['PNV']"
+  },
+  {
+   "texto": "municipios del PNV en 2019, 60 pasaron a EH Bildu,",
+   "cifra": "60",
+   "calculo": "D['PNV_BILDU']"
+  },
+  {
+   "texto": "2019, 60 pasaron a EH Bildu, 14 al PSOE y tres al PP;",
+   "cifra": "14",
+   "calculo": "D['PNV_PSOE']"
+  },
+  {
+   "texto": "a EH Bildu, 14 al PSOE y tres al PP; conservó 75.",
+   "cifra": "tres",
+   "calculo": "D['PNV_PP']"
+  },
+  {
+   "texto": "PSOE y tres al PP; conservó 75. EH Bildu mantuvo los",
+   "cifra": "75",
+   "calculo": "D['PNV_PNV']"
+  },
+  {
+   "texto": "75. EH Bildu mantuvo los 79 que había ganado en",
+   "cifra": "79",
+   "calculo": "D['GANA']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "había ganado en 2019. En los 60 que pasaron del PNV",
+   "cifra": "60",
+   "calculo": "D['PNV_BILDU']"
+  },
+  {
+   "texto": "EH Bildu, el PNV bajó del 37,1 % al 29,0 % y EH Bildu",
+   "cifra": "37,1",
+   "calculo": "D['FLS']['2019_11']['PNV']"
+  },
+  {
+   "texto": "el PNV bajó del 37,1 % al 29,0 % y EH Bildu subió del",
+   "cifra": "29,0",
+   "calculo": "D['FLS']['2023_07']['PNV']"
+  },
+  {
+   "texto": "29,0 % y EH Bildu subió del 29,4 % al 36,4 %. Como el",
+   "cifra": "29,4",
+   "calculo": "D['FLS']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "Bildu subió del 29,4 % al 36,4 %. Como el PSOE ganó",
+   "cifra": "36,4",
+   "calculo": "D['FLS']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 26,4 % de la población al",
+   "cifra": "26,4",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "26,4 % de la población al 59,7 %, y los del PNV, del",
+   "cifra": "59,7",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "59,7 %, y los del PNV, del 63,4 % al 17,0 %.",
+   "cifra": "63,4",
+   "calculo": "D['POB']['2019_11']['PNV']"
+  },
+  {
+   "texto": "los del PNV, del 63,4 % al 17,0 %.",
+   "cifra": "17,0",
+   "calculo": "D['POB']['2023_07']['PNV']"
+  },
+  {
+   "texto": "En los 19 municipios de más de",
+   "cifra": "19",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PNV ganó en 12 en 2019 y en tres en",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PNV']"
+  },
+  {
+   "texto": "PNV ganó en 12 en 2019 y en tres en 2023: Getxo, Leioa",
+   "cifra": "tres",
+   "calculo": "D['TT']['Más de 20.000']['g23']['PNV']"
+  },
+  {
+   "texto": "Galdakao. El PSOE pasó de seis a 12, y EH Bildu, que",
+   "cifra": "seis",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "Galdakao. El PSOE pasó de seis a 12, y EH Bildu, que en",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 20.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "mapa es de EH Bildu: en los 98 de menos de 1.000 habitantes,",
+   "cifra": "98",
+   "calculo": "D['TT']['Menos de 1.000']['n']"
+  },
+  {
+   "texto": "1.000 habitantes, ganó en 59 en 2023; el PNV había",
+   "cifra": "59",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['BILDU']"
+  },
+  {
+   "texto": "2023; el PNV había ganado en 53 en 2019. El PNV bajó",
+   "cifra": "53",
+   "calculo": "D['TT']['Menos de 1.000']['g19']['PNV']"
+  },
+  {
+   "texto": "capitales, que reúnen el 35,5 % de la población vasca,",
+   "cifra": "35,5",
+   "calculo": "D['CAP_POB']"
+  },
+  {
+   "texto": "ganó en 2023 en Bilbao por 0,83 puntos sobre el PNV;",
+   "cifra": "0,83",
+   "calculo": "D['CAP']['Bilbao']['marg23']"
+  },
+  {
+   "texto": "Donostia/San Sebastián, por 3,27 sobre EH Bildu, y en",
+   "cifra": "3,27",
+   "calculo": "D['CAP']['Donostia/San Sebastián']['marg23']"
+  },
+  {
+   "texto": "y en Vitoria-Gasteiz, por 9,96 sobre el PP. Bilbao",
+   "cifra": "9,96",
+   "calculo": "D['CAP']['Vitoria-Gasteiz']['marg23']"
+  },
+  {
+   "texto": "fue el más votado en los tres territorios; en 2023,",
+   "cifra": "tres",
+   "calculo": "len(D['PR'])"
+  },
+  {
+   "texto": "EH Bildu pasó de ganar en 53 de los 88 municipios",
+   "cifra": "53",
+   "calculo": "D['PRG']['20']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "pasó de ganar en 53 de los 88 municipios a ganar en",
+   "cifra": "88",
+   "calculo": "D['PRN']['20']"
+  },
+  {
+   "texto": "88 municipios a ganar en 77. En Bizkaia, el PNV",
+   "cifra": "77",
+   "calculo": "D['PRG']['20']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "En Bizkaia, el PNV pasó de 92 a 55, como se cuenta",
+   "cifra": "92",
+   "calculo": "D['PRG']['48']['2019_11']['PNV']"
+  },
+  {
+   "texto": "Bizkaia, el PNV pasó de 92 a 55, como se cuenta en esta",
+   "cifra": "55",
+   "calculo": "D['PRG']['48']['2023_07']['PNV']"
+  },
+  {
+   "texto": "2023 quedó repartido entre cuatro: EH Bildu ganó en 20",
+   "cifra": "cuatro",
+   "calculo": "len(D['PRG']['01']['2023_07'])"
+  },
+  {
+   "texto": "cuatro: EH Bildu ganó en 20 municipios, el PNV en",
+   "cifra": "20",
+   "calculo": "D['PRG']['01']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "20 municipios, el PNV en 16, el PSOE en nueve y",
+   "cifra": "16",
+   "calculo": "D['PRG']['01']['2023_07']['PNV']"
+  },
+  {
+   "texto": "el PNV en 16, el PSOE en nueve y el PP en seis; en",
+   "cifra": "nueve",
+   "calculo": "D['PRG']['01']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "PSOE en nueve y el PP en seis; en 2019, el PNV había",
+   "cifra": "seis",
+   "calculo": "D['PRG']['01']['2023_07']['PP']"
+  },
+  {
+   "texto": "2019, el PNV había ganado en 30 de los 51.",
+   "cifra": "30",
+   "calculo": "D['PRG']['01']['2019_11']['PNV']"
+  },
+  {
+   "texto": "había ganado en 30 de los 51.",
+   "cifra": "51",
+   "calculo": "D['PRN']['01']"
+  },
+  {
+   "texto": "(Bizkaia), que ganó el PSOE por tres votos sobre el PNV.",
+   "cifra": "tres",
+   "calculo": "D['AJG'][0][4]"
+  },
+  {
+   "texto": "Bildu por menos de uno. En tres municipios pequeños,",
+   "cifra": "tres",
+   "calculo": "D['UNVOTO']"
+  },
+  {
+   "texto": "el reparto central de los 18 escaños da al PSOE 7,",
+   "cifra": "18",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "los 18 escaños da al PSOE 7, dos más que en 2023;",
+   "cifra": "7",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "que en 2023; a EH Bildu, 6, uno más; al PNV, 3,",
+   "cifra": "6",
+   "calculo": "D['E29']['BILDU']"
+  },
+  {
+   "texto": "Bildu, 6, uno más; al PNV, 3, dos menos, y al PP,",
+   "cifra": "3",
+   "calculo": "D['E29']['PNV']"
+  },
+  {
+   "texto": "PNV, 3, dos menos, y al PP, 2, los mismos. Sumar,",
+   "cifra": "2",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "El PNV pasó de ganar en 152 municipios a ganar en",
+   "cifra": "152",
+   "calculo": "D['GANA']['2019_11']['PNV']"
+  },
+  {
+   "texto": "152 municipios a ganar en 76; EH Bildu, de 79 a 140,",
+   "cifra": "76",
+   "calculo": "D['GANA']['2023_07']['PNV']"
+  },
+  {
+   "texto": "ganar en 76; EH Bildu, de 79 a 140, y el PSOE, de",
+   "cifra": "79",
+   "calculo": "D['GANA']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "en 76; EH Bildu, de 79 a 140, y el PSOE, de 13 a",
+   "cifra": "140",
+   "calculo": "D['GANA']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "de 79 a 140, y el PSOE, de 13 a 29Partido más votado",
+   "cifra": "13",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "votado en cada uno de los 251 municipios del País",
+   "cifra": "251",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 60 municipios que pasaron",
+   "cifra": "60",
+   "calculo": "D['PNV_BILDU']"
+  },
+  {
+   "texto": "EH Bildu, el PNV bajó del 37,1 % al 29,0 %Voto al PNV,",
+   "cifra": "37,1",
+   "calculo": "D['FLS']['2019_11']['PNV']"
+  },
+  {
+   "texto": "el PNV bajó del 37,1 % al 29,0 %Voto al PNV, a EH Bildu,",
+   "cifra": "29,0",
+   "calculo": "D['FLS']['2023_07']['PNV']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en seis de 19 a ganar en 12,",
+   "cifra": "seis",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "pasó de ganar en seis de 19 a ganar en 12, y el",
+   "cifra": "19",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "en seis de 19 a ganar en 12, y el PNV, de 12 a tresMunicipios",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PNV']"
+  },
+  {
+   "texto": "ganar en 12, y el PNV, de 12 a tresMunicipios ganados",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PNV']"
+  },
+  {
+   "texto": "El PSOE ganó en las tres capitales en 2023; en",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "PP en julio de 2023 en las tres capitales, en %",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "Gipuzkoa, EH Bildu ganó en 77 de los 88 municipios",
+   "cifra": "77",
+   "calculo": "D['PRG']['20']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "EH Bildu ganó en 77 de los 88 municipios en 2023Municipios",
+   "cifra": "88",
+   "calculo": "D['PRN']['20']"
+  },
+  {
+   "texto": "Arrigorriaga se decidió por tres votos; Bilbao, por 0,83",
+   "cifra": "tres",
+   "calculo": "D['AJG'][0][4]"
+  },
+  {
+   "texto": "por tres votos; Bilbao, por 0,83 puntosVentaja del partido",
+   "cifra": "0,83",
+   "calculo": "D['CAP']['Bilbao']['marg23']"
+  },
+  {
+   "texto": "encuestas, el PSOE pasaría de cinco a siete diputados en",
+   "cifra": "cinco",
+   "calculo": "D['E23']['PSOE']"
+  },
+  {
+   "texto": "el PSOE pasaría de cinco a siete diputados en el País",
+   "cifra": "siete",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "País Vasco, y el PNV, de cinco a tresLos 18 diputados",
+   "cifra": "cinco",
+   "calculo": "D['E23']['PNV']"
+  },
+  {
+   "texto": "el PNV, de cinco a tresLos 18 diputados de los tres",
+   "cifra": "18",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "tresLos 18 diputados de los tres territorios: un cuadrado",
+   "cifra": "tres",
+   "calculo": "len(D['PR'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "los 19 municipios de más de 20.000 habitantes, el PNV ganó",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Bildu: en los 98 de menos de 1.000 habitantes, ganó en",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los municipios de más de 5.000 habitantes, el más ajustado",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "retuvo el PNV por menos de tres puntos, y Zarautz y",
+   "motivo": "umbral redondo, comprobado en el script (assert < 3)"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "Tres territorios",
+   "motivo": "intertítulo: los tres territorios"
+  },
+  {
+   "texto": "los municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los diez municipios de más de",
+   "motivo": "número de filas del gráfico"
+  },
+  {
+   "texto": "diez municipios de más de 5.000 habitantes más ajustados,",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
