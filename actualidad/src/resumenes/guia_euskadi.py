@@ -5,6 +5,7 @@ Cifras: censo de consulta del INE para el 29N (data/censo/censo_municipios_2023_
 votos a candidaturas sin CERA) y modelo de encuestas del 3-11-2026 (previsiones/datos/publico/), congelado en la pieza.
 Uso, desde la raíz: python3 actualidad/src/resumenes/guia_euskadi.py
 """
+import sys
 import json
 
 import pandas as pd
@@ -28,6 +29,11 @@ assert CT['total'] == 1824886, CT
 
 # Generales de 2023
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
+# Esta pieza suma una lista fija de familias: las listas propias de 2019-N y 2023 (mapa_listas_propias.py) vuelven a
+# «Otros», como cuando se publicó (en estos municipios no gana ninguna).
+sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+from partidos import sin_listas_propias_mun  # noqa: E402
+m = sin_listas_propias_mun(m)
 m = m[m.mun_code.str[:2].isin(PROV)]
 R23 = {}
 for k, g in list(m.groupby(m.mun_code.str[:2])) + [('PV', m)]:

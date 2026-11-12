@@ -1670,10 +1670,10 @@ PIEZAS = [
                   pie='Una avenida arbolada de Barcelona partida en dos, con el cielo azul a un lado y rojo al otro: un collage.'),
     ),
     dict(
-        slug='asi-queda-el-mapa-29n', fecha='2026-10-24', actualizado='2026-11-10 17:50',
-        correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 19.699 secciones, no en 19.107; el PP, en 9.713, no en 9.587, y Unidas Podemos, en 332 (Más País, en 4), no en 1.111. 10-11-2026: las secciones donde los dos primeros empataron a votos se daban al partido que iba antes en la lista; ahora cuentan aparte (201 en 2023 y 253 en 2019). En 2023 el PP ganó en 18.243 secciones, no en 18.407, y el PSOE en 16.044, no en 16.073; en 2019, el PSOE en 19.631, no en 19.699; el PP en 9.542, no en 9.713; ERC en 2.445, no en 2.456, y Unidas Podemos en 330, no en 332. También cambian el PNV (397), ERC (192) y Sumar (180) en 2023, y en Madrid capital el PP ganó en 1.595 secciones, no en 1.603.',
+        slug='asi-queda-el-mapa-29n', fecha='2026-10-24', actualizado='2026-11-12 08:15',
+        correcciones='9-11-2026: en noviembre de 2019, Unidas Podemos y Más País se presentaron por separado, pero el recuento de secciones las sumaba y daba ganadora a esa suma en secciones donde no ganó ninguna de las dos listas. Ahora cada sección se asigna a la lista más votada. En 2019 el PSOE ganó en 19.699 secciones, no en 19.107; el PP, en 9.713, no en 9.587, y Unidas Podemos, en 332 (Más País, en 4), no en 1.111. 10-11-2026: las secciones donde los dos primeros empataron a votos se daban al partido que iba antes en la lista; ahora cuentan aparte (201 en 2023 y 253 en 2019). En 2023 el PP ganó en 18.243 secciones, no en 18.407, y el PSOE en 16.044, no en 16.073; en 2019, el PSOE en 19.631, no en 19.699; el PP en 9.542, no en 9.713; ERC en 2.445, no en 2.456, y Unidas Podemos en 330, no en 332. También cambian el PNV (397), ERC (192) y Sumar (180) en 2023, y en Madrid capital el PP ganó en 1.595 secciones, no en 1.603. 12-11-2026: el más votado de cada sección se calcula ahora lista a lista también con UPN, que en Navarra se presentó separada del PP en 2023, y con las listas que el mapa contaba en «otros» (Teruel Existe, Soria ¡Ya!, Nueva Canarias, la CUP...). En 2023 el PP ganó en 18.008 secciones, no en 18.243; el PSOE, en 16.157, no en 16.044; EH Bildu, en 620, no en 593, y UPN, en 48; hubo 208 empates, no 201. En 2019, el PSOE ganó en 19.556, no en 19.631; el PP, en 9.468, no en 9.542; ERC, en 2.439; Vox, en 1.883, y hubo 256 empates. Las provincias no cambian.',
         titulo='Así queda el mapa electoral de España antes del 29N: el PP ganó en 40 provincias y el PSOE, en 10', serie='29n',
-        descripcion='Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.243 secciones censales; el PSOE, en 10 y en 16.044. En 2019 el PSOE ganaba en 19.631 secciones. La renta, los municipios que votan igual desde 1977 y lo que dicen hoy las encuestas.',
+        descripcion='Resumen del mapa de partida del 29N: en 2023 el PP fue el más votado en 40 de las 52 circunscripciones y en 18.008 secciones censales; el PSOE, en 10 y en 16.157. En 2019 el PSOE ganaba en 19.556 secciones. La renta, los municipios que votan igual desde 1977 y lo que dicen hoy las encuestas.',
         compara='El partido más votado en cada provincia en las generales de julio de 2023 (con voto exterior) y en cada sección censal en noviembre de 2019 y julio de 2023 (sin él); el voto al PP y al PSOE y la participación por deciles de renta de la sección; y las cifras de piezas anteriores sobre municipios fieles, ciudades y encuestas.',
         limites='Es un resumen del resultado de 2023, no una previsión del 29 de noviembre. Las secciones no incluyen el voto exterior y sus límites cambian entre elecciones; se cuentan las que tienen resultados en cada una. Familias de partidos del mapa de la portada: Sumar incluye en 2019 a Unidas Podemos y sus confluencias; en Navarra, UPN se cuenta aparte del PP en las provincias. Los datos por sección describen lugares, no personas. Las cifras de encuestas y del modelo son las del 23 de octubre de 2026 y cambian cada día.',
         calculo='Partido más votado por provincia con los votos oficiales y el voto exterior (el mismo cálculo reproduce los 350 escaños de 2023); por sección, con los resultados por mesa sumados. Porcentajes sobre votos a candidaturas, salvo la participación, que es sobre el censo. Script: actualidad/src/resumenes/mapa.py.',
@@ -3221,6 +3221,8 @@ PIEZAS += [
     ),
     dict(
         slug='quien-vota-barrios-renta-edad-inmigracion', fecha='2026-10-28',
+        actualizado='2026-11-12 08:15',
+        correcciones='12-11-2026: el recuento de secciones y municipios ganados en 2023 sumaba UPN al PP y daba a la segunda fuerza las secciones donde ganaron listas sin código propio en el mapa (Teruel Existe, Nueva Canarias, la CUP…). Ahora cuenta cada lista por separado: el PP ganó en 18.008 secciones, no 18.243, y en 4.445 municipios, no 4.553; el PSOE, en 16.157 secciones, no 16.044, y en 2.667 municipios, no 2.624; UPN, en 48 secciones y 15 municipios. Vox había ganado en 1.883 secciones en 2019, no 1.868, y 1.724 pasaron al PP, no 1.711.',
         titulo='En los barrios ricos se vota 15 puntos más que en los pobres, y en las europeas, 22: quién vota en España según la renta, la edad y la inmigración', serie='29n',
         descripcion='En el 10% de secciones censales con más renta votó el 77,8% en las generales de 2023; en el 10% más pobre, el 62,6%. La distancia era de 7,9 puntos en 2004. Vox saca más en los barrios jóvenes y la inmigración baja la participación, pero no sube el voto a Vox.',
         compara='La participación y el voto en las elecciones al Congreso de 2004 a 2023, y en las municipales y europeas recientes, en las 36.462 secciones censales de España, agrupadas en diez tramos con el mismo censo según la renta, la pobreza, la edad media, la población extranjera, los estudios y el paro que el INE mide en cada sección.',
@@ -4219,7 +4221,7 @@ PIEZAS += [
         lugar='Nueva Zelanda',
     ),
     dict(
-        slug='huelga-carnica-pueblos-industria-29n', fecha='2026-11-09', actualizado='2026-11-09 12:26',
+        slug='huelga-carnica-pueblos-industria-29n', fecha='2026-11-09', actualizado='2026-11-12 08:15',
         titulo='En los municipios donde más pesa la industria, el PP saca 1,9 puntos menos que en el resto de su provincia, y el voto a Vox apenas cambia', serie='29n', figura=0,
         descripcion='La industria cárnica está llamada a la huelga del 9 al 13 de noviembre. El 11,5 % de los ocupados de España trabaja en la industria; en Guissona, sede de bonÀrea, el 56,3 %. Dentro de cada provincia, los municipios más industriales votaron en 2023 algo menos al PP.',
         compara='El peso de la industria en el empleo de cada municipio, según el censo de 2023 del INE, frente a su voto en las generales de julio de 2023, comparando cada municipio con la media de su provincia.',
@@ -4230,6 +4232,7 @@ PIEZAS += [
                  ('https://www.agronewscastillayleon.com/anafric-huelga-industria-carnica-noviembre-2026-salarios', 'Agronews Castilla y León, Anafric rechaza la huelga y ofrece un 3,8 % para 2026; la mediación en el SIMA acabó sin acuerdo (19-10-2026)'),
                  ('https://www.bonarea.com', 'bonÀrea, sede en Guissona (Lleida)'),
                  ('https://www.eldiario.es/opinion/tribuna-abierta/vota-clase-trabajadora-espana_129_1401496.html', 'Alberto Garzón, economista y entonces coordinador federal de IU, «¿A quién vota la clase trabajadora en España?», eldiario.es (9-8-2019)')],
+        correcciones='12-11-2026: en Navarra, el PP sumaba los votos de UPN, que en 2023 se presentó por separado. Ahora el PP es solo su lista. Peralta/Azkoien y San Adrián, entre los municipios con más industria, los ganó el PSOE (31,9 % y 36,3 %), no el PP (42,6 % y 40,3 %, con UPN). En la décima parte con menos industria, el PP saca 1,8 puntos más que en el resto de su provincia, no 1,9; en la tercera y la cuarta, 1,4 y 1,2, no 1,3 y 1,1. El titular no cambia.',
         enlaces=[],
         lugar='España',
     ),
@@ -4423,12 +4426,12 @@ PIEZAS += [
         lugar='Comunitat Valenciana',
     ),
     dict(
-        slug='mapa-electoral-castilla-y-leon-29n', fecha='2026-11-11',
+        slug='mapa-electoral-castilla-y-leon-29n', fecha='2026-11-11', actualizado='2026-11-12 08:15',
         titulo='El mapa electoral de Castilla y León: el PSOE ganó en seis de las nueve capitales en 2019 y solo en Soria en 2023', serie='29n', figura=1,
-        descripcion='El PSOE sumó 26.886 votos, pero pasó de 592 a 307 de los 2.248 municipios, y los que ganó pasaron de reunir el 61,6 % de la población al 15,1 %. Soria ¡Ya! y Por Ávila ganaron en siete pueblos. Para el 29N, la media de encuestas da al PP 16 de los 31 diputados, y a Vox, 5.',
+        descripcion='El PSOE sumó 26.886 votos, pero pasó de 592 a 306 de los 2.248 municipios, y los que ganó pasaron de reunir el 61,6 % de la población al 15,1 %. Soria ¡Ya! y Por Ávila ganaron en siete pueblos. Para el 29N, la media de encuestas da al PP 16 de los 31 diputados, y a Vox, 5.',
         compara='Las generales de noviembre de 2019 y julio de 2023 en los 2.248 municipios de Castilla y León: el partido más votado en cada uno, los 311 que pasaron del PSOE al PP, el voto según el tamaño del municipio, las nueve capitales, las provincias y las listas provinciales, los municipios decididos por un voto; y el reparto central de la media de encuestas del 29N en las nueve provincias.',
         limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Ciudadanos o de Vox en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad: 746 tienen menos de 100 habitantes. Sin voto exterior. El modelo de encuestas no incluye a Soria ¡Ya! como lista propia y tiene un margen amplio a 18 días de la votación.',
-        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura: en 2019, Unidas Podemos y Más País por separado; Por Ávila, UPL, Soria ¡Ya! y la Plataforma del Pueblo Soriano con sus votos por municipio, sumados de los resultados por mesa del Ministerio del Interior (vía pollspaindata), porque en las descargas del mapa van en «otros»; con los mismos votos entre los dos primeros, empate (45 casos en 2019 y 33 en 2023). Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_cyl.py.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura: en 2019, Unidas Podemos y Más País por separado; Por Ávila, UPL, Soria ¡Ya!, la Plataforma del Pueblo Soriano y Frente Obrero con sus votos por municipio, sumados de los resultados por mesa del Ministerio del Interior (vía pollspaindata), porque en las descargas del mapa van en «otros»; con los mismos votos entre los dos primeros, empate (45 casos en 2019 y 33 en 2023). Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_cyl.py.',
         fuentes=[INTERIOR,
                  ('https://www.eldebate.com/espana/castilla-y-leon/20261025/manueco-asegura-elecciones-29n-pondran-fin-ocho-anos-mentiras-corrupcion_473577.html', 'El Debate, Alfonso Fernández Mañueco en Salamanca con Feijóo (25-10-2026)'),
                  ('https://www.eldebate.com/espana/castilla-y-leon/20261005/lider-psoe-castilla-leon-respalda-adelanto-electoral-acusa-pp-ejercer-antipolitica_466209.html', 'El Debate, con Ical, Carlos Martínez sobre el adelanto electoral (5-10-2026)'),
@@ -4436,6 +4439,7 @@ PIEZAS += [
                  ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23103', 'BOE, candidaturas proclamadas al Congreso y al Senado (3-11-2026)'),
                  ('https://www.elespanol.com/castilla-y-leon/region/20261103/partidos-concurren-elecciones-castilla-leon-oscar-puente-sigue-candidaturas-eliminadas/1003744443810_0.html', 'El Español, las candidaturas del 29N en Castilla y León (3-11-2026)'),
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        correcciones='12-11-2026: en 2023 el PSOE ganó en 306 municipios, no en 307. Monforte de la Sierra (Salamanca) lo ganó Frente Obrero, con 26 votos frente a 12 del PSOE; el mapa lo contaba en «otros» y lo daba al segundo. Cambian el mapa, los gráficos por tamaño y por provincia y las cifras del texto; el resto, no.',
         enlaces=[],
         lugar='Castilla y León',
     ),
@@ -4478,10 +4482,11 @@ def franja_portada(todas, pre=''):
     # Fijas delante, en este orden, hasta el día indicado (Nacho, 28-10-2026: Albiol, Broncano y Feijóo las primeras)
     hoy = datetime.datetime.now(ZoneInfo('Europe/Madrid')).date().isoformat()   # hora de Madrid, no UTC
     # La pieza nueva del día, siempre la primera, delante de las fijas, sin que haya que pedirlo (Nacho, 5-11-2026)
-    del_dia = [q['slug'] for q in recientes if q['fecha'] == hoy and q['serie'] not in ('historia', 'internacional')]
+    # La serie «El mapa electoral de…» tampoco va en el de Actualidad: tiene su propio carrusel debajo (Nacho, 12-11-2026)
+    del_dia = [q['slug'] for q in recientes if q['fecha'] == hoy and q['serie'] not in ('historia', 'internacional') and not es_mapa_ccaa(q)]
     fijas = del_dia + [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta and s not in del_dia]
     recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
-    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and (q['serie'] not in ('historia', 'internacional') or q['slug'] in fijas and q['slug'] in INTER_EN_ACTUALIDAD)][:10]
+    ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and not es_mapa_ccaa(q) and (q['serie'] not in ('historia', 'internacional') or q['slug'] in fijas and q['slug'] in INTER_EN_ACTUALIDAD)][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
@@ -4493,15 +4498,23 @@ def franja_portada(todas, pre=''):
             's.querySelector(".da-prev").onclick=m(-1);s.querySelector(".da-next").onclick=m(1)})</script></section>')
 
 
-FRANJAS = (('internacional', 'Internacional', 'Elecciones en el resto del mundo'),   # Nacho, 1-11-2026: sección propia, justo debajo de Actualidad
+def es_mapa_ccaa(q):
+    """Una pieza de la serie «El mapa electoral de…» (una por comunidad, de más a menos escaños)."""
+    return q['slug'].startswith('mapa-electoral-') and q['slug'].endswith('-29n')
+
+
+FRANJAS = (('mapa', 'El mapa electoral de…', 'Comunidad a comunidad, municipio a municipio'),   # Nacho, 12-11-2026: fuera del de Actualidad
+           ('internacional', 'Internacional', 'Elecciones en el resto del mundo'),   # Nacho, 1-11-2026: sección propia, justo debajo de Actualidad
            ('historia', 'Historia electoral · desde 1977', 'Todas las elecciones generales desde 1977'),
            ('comunidades', 'Las comunidades en las urnas', 'Un reportaje por comunidad, con su mapa municipal'))
 
 
 def franja_serie(todas, clave, cabecera, sub, pre=''):
     """Carrusel de una serie en la portada, debajo del de Actualidad: la serie entera, en su orden."""
-    todas_url = f'{pre}internacional/' if clave == 'internacional' else f'{pre}actualidad/#{clave}'   # Internacional tiene página propia (Nacho, 2-11-2026)
-    serie = [q for q in todas if q['serie'] == clave]
+    todas_url = f'{pre}internacional/' if clave == 'internacional' else f'{pre}actualidad/#{"29n" if clave == "mapa" else clave}'   # Internacional tiene página propia (Nacho, 2-11-2026)
+    serie = [q for q in todas if (es_mapa_ccaa(q) if clave == 'mapa' else q['serie'] == clave)]
+    if clave == 'mapa':   # la última publicada delante
+        serie = sorted(serie[::-1], key=lambda q: q['fecha'], reverse=True)
     if clave in ('historia', 'internacional'):   # las más nuevas delante: al final del carrusel no se veían (Nacho, 23-10-2026)
         serie = sorted(serie[::-1], key=lambda q: q['fecha'], reverse=True)
     if clave == 'internacional':

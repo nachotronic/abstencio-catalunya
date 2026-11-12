@@ -23,19 +23,19 @@
       "_donde": "entradilla"
     },
     {
-      "texto": "26.886 votos, pero pasó de 592 a 307 de los 2.248 municipios,",
+      "texto": "26.886 votos, pero pasó de 592 a 306 de los 2.248 municipios,",
       "cifra": "592",
       "calculo": "D['GANA']['2019_11']['PSOE']",
       "_donde": "entradilla"
     },
     {
-      "texto": "votos, pero pasó de 592 a 307 de los 2.248 municipios,",
-      "cifra": "307",
+      "texto": "votos, pero pasó de 592 a 306 de los 2.248 municipios,",
+      "cifra": "306",
       "calculo": "D['GANA']['2023_07']['PSOE']",
       "_donde": "entradilla"
     },
     {
-      "texto": "pasó de 592 a 307 de los 2.248 municipios, y los que",
+      "texto": "pasó de 592 a 306 de los 2.248 municipios, y los que",
       "cifra": "2.248",
       "calculo": "D['NMUN']",
       "_donde": "entradilla"
@@ -137,25 +137,25 @@
       "_donde": "dato"
     },
     {
-      "texto": "julio de 2023, el PP ganó en 1.886, el PSOE en 307 y Vox",
+      "texto": "julio de 2023, el PP ganó en 1.886, el PSOE en 306 y Vox",
       "cifra": "1.886",
       "calculo": "D['GANA']['2023_07']['PP']",
       "_donde": "dato"
     },
     {
-      "texto": "ganó en 1.886, el PSOE en 307 y Vox en 14, y hubo",
-      "cifra": "307",
+      "texto": "ganó en 1.886, el PSOE en 306 y Vox en 14, y hubo",
+      "cifra": "306",
       "calculo": "D['GANA']['2023_07']['PSOE']",
       "_donde": "dato"
     },
     {
-      "texto": "1.886, el PSOE en 307 y Vox en 14, y hubo 33 empates.",
+      "texto": "1.886, el PSOE en 306 y Vox en 14, y hubo 33 empates.",
       "cifra": "14",
       "calculo": "D['GANA']['2023_07']['VOX']",
       "_donde": "dato"
     },
     {
-      "texto": "en 307 y Vox en 14, y hubo 33 empates. Pero el cambio",
+      "texto": "en 306 y Vox en 14, y hubo 33 empates. Pero el cambio",
       "cifra": "33",
       "calculo": "D['GANA']['2023_07']['EMPATE']",
       "_donde": "dato"
@@ -545,13 +545,13 @@
       "_donde": "pie"
     },
     {
-      "texto": "592 municipios a ganar en 307; el PP, de 1.546 a 1.886Partido",
-      "cifra": "307",
+      "texto": "592 municipios a ganar en 306; el PP, de 1.546 a 1.886Partido",
+      "cifra": "306",
       "calculo": "D['GANA']['2023_07']['PSOE']",
       "_donde": "pie"
     },
     {
-      "texto": "a ganar en 307; el PP, de 1.546 a 1.886Partido más votado",
+      "texto": "a ganar en 306; el PP, de 1.546 a 1.886Partido más votado",
       "cifra": "1.546",
       "calculo": "D['GANA']['2019_11']['PP']",
       "_donde": "pie"
@@ -639,6 +639,18 @@
       "cifra": "nueve",
       "calculo": "len(D['PRN'])",
       "_donde": "pie"
+    },
+    {
+      "texto": "Frente Obrero, con 26 votos, frente a 12 del PSOE.",
+      "cifra": "26",
+      "calculo": "D['FO_V']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "con 26 votos, frente a 12 del PSOE. Para el 29N",
+      "cifra": "12",
+      "calculo": "D['FO_PSOE']",
+      "_donde": "dato"
     }
   ],
   "externas": [],
@@ -672,7 +684,7 @@
       "motivo": "días hasta la votación"
     },
     {
-      "texto": "en 307; el PP, de 1.546 a 1.886Partido más votado",
+      "texto": "en 306; el PP, de 1.546 a 1.886Partido más votado",
       "motivo": "el extractor corta «1.886» pegado al título de la tabla; la cifra 1.886 está declarada en el texto"
     },
     {

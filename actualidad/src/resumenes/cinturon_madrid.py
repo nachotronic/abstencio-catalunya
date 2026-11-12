@@ -13,6 +13,7 @@ siete votos, y es el que da el texto (externa, Público).
 Modelo de encuestas: previsiones/datos/publico/escenario-base.json del 3-11-2026, congelado en la pieza.
 Uso, desde la raíz: python3 actualidad/src/resumenes/cinturon_madrid.py
 """
+import sys
 import json
 import math
 
@@ -31,6 +32,11 @@ COLOR_CS = '#eb6109'
 
 h = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios_historico.csv', dtype={'mun_code': str})
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
+# Esta pieza suma una lista fija de familias: las listas propias de 2019-N y 2023 (mapa_listas_propias.py) vuelven a
+# «Otros», como cuando se publicó (en estos municipios no gana ninguna).
+sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+from partidos import sin_listas_propias_mun  # noqa: E402
+m = sin_listas_propias_mun(m)
 h, m = h[h.mun_code.str[:2] == '28'], m[m.mun_code.str[:2] == '28'].copy()
 assert len(m) == 179
 a, b = '2019_11', '2023_07'

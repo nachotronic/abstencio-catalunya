@@ -26,8 +26,8 @@ CAPITAL = {'05019': 'Ávila', '09059': 'Burgos', '24089': 'León', '34120': 'Pal
            '42173': 'Soria', '47186': 'Valladolid', '49275': 'Zamora'}
 CAJA = (-7.1, 40.05, -1.75, 43.25)
 # Colores de las listas provinciales, los mismos que en «Castilla y León en las urnas» (comunidades/datos.py)
-COL = dict(COL, XAV='#2e6d4f', UPL='#b0124a', SY='#2f9e62', PPSO='#9c7a3c')
-NOMC = dict(NOM, XAV='Por Ávila', UPL='UPL', SY='Soria ¡Ya!', PPSO='Plataforma del Pueblo Soriano', EMPATE='Empate a votos')
+COL = dict(COL, XAV='#2e6d4f', UPL='#b0124a', SY='#2f9e62', PPSO='#9c7a3c', FO='#c62828')
+NOMC = dict(NOM, XAV='Por Ávila', UPL='UPL', SY='Soria ¡Ya!', PPSO='Plataforma del Pueblo Soriano', FO='Frente Obrero', EMPATE='Empate a votos')
 
 
 def bonito(nombre):
@@ -47,7 +47,12 @@ NOMM = {k: bonito(v) for k, v in zip(m.mun_code, m.municipio)}
 A19, A23 = agrega(m, Y19, ('PP', 'PSOE', 'VOX', 'SUMAR', 'CS', 'XAV', 'UPL', 'PPSO')), agrega(m, Y23, ('PP', 'PSOE', 'VOX', 'SUMAR', 'XAV', 'UPL', 'SY'))
 GANA = {y: m[f'g{y[:4]}'].value_counts().to_dict() for y in (Y19, Y23)}
 assert GANA[Y19] == {'PP': 1546, 'PSOE': 592, 'VOX': 52, 'EMPATE': 45, 'UP': 9, 'XAV': 3, 'PPSO': 1}, GANA[Y19]
-assert GANA[Y23] == {'PP': 1886, 'PSOE': 307, 'EMPATE': 33, 'VOX': 14, 'SY': 4, 'XAV': 3, 'SUMAR': 1}, GANA[Y23]
+# Corrección del 12-11-2026: Monforte de la Sierra (Salamanca) lo ganó Frente Obrero (26 votos, 12 el PSOE), que antes iba
+# en «otros» (generales-2026/src/mapa_listas_propias.py): el PSOE ganó en 306, no en 307.
+assert GANA[Y23] == {'PP': 1886, 'PSOE': 306, 'EMPATE': 33, 'VOX': 14, 'SY': 4, 'XAV': 3, 'SUMAR': 1, 'FO': 1}, GANA[Y23]
+FO1 = m[m.g2023 == 'FO']
+FO_V, FO_PSOE = int(FO1[f'{Y23}_vFO'].iloc[0]), int(FO1[f'{Y23}_vPSOE'].iloc[0])
+assert list(FO1.mun_code) == ['37196'] and (FO_V, FO_PSOE) == (26, 12)
 assert GANA[Y23].get('UPL', 0) == 0 and GANA[Y19].get('UPL', 0) == 0
 TR = lambda a, b: int(((m.g2019 == a) & (m.g2023 == b)).sum())
 PSOE_PP, VOX_PP, PSOE_PSOE = TR('PSOE', 'PP'), TR('VOX', 'PP'), TR('PSOE', 'PSOE')
@@ -151,13 +156,24 @@ assert E19 == {'PP': 13, 'PSOE': 12, 'VOX': 6}, E19
 assert E23 == {'PP': 18, 'PSOE': 12, 'VOX': 1}, E23
 assert ESC[Y23]['47'].get('VOX') == 1   # el único escaño de Vox en 2023, por Valladolid
 assert sum(ESC['2026'].values()) == 31 and sum(E19.values()) == 31 and sum(E23.values()) == 31
-RC = {pr: reparto_central(PSLUG[pr]) for pr in PROV}
+# Las encuestas, como se publicaron el 11-11 (la corrección del 12-11 solo cambia el ganador de Monforte de la Sierra)
+PUBLICADA = '9a63a7c6ce'
+
+
+def reparto_publicado(slug):
+    import re, subprocess
+    from mapa_ccaa import SIM
+    t = subprocess.check_output(['git', '-C', str(RAIZ), 'show', f'{PUBLICADA}:encuestas/{slug}/index.html']).decode()
+    dsc = re.search(r'"description": "Escaños de [^:]+: ([^"]+?)\. Modelo', t).group(1)
+    return {SIM.get(a, a): (int(b), int(c or b), int(d or b)) for a, b, c, d in re.findall(r'\s*([^,]+?) (\d+)(?: \(entre (\d+) y (\d+)\))?(?:,|$)', dsc)}
+
+
+RC = {pr: reparto_publicado(PSLUG[pr]) for pr in PROV}
 E29 = {f: sum(RC[pr].get(f, (0,))[0] for pr in PROV) for f in ('PP', 'PSOE', 'VOX')}
 assert sum(E29.values()) == 31 and set().union(*RC.values()) <= {'PP', 'PSOE', 'VOX'}, (E29, RC)
 assert E29['PP'] < E23['PP'] and E29['PSOE'] < E23['PSOE'] and E29['VOX'] > E23['VOX'], E29
-MOD = json.load(open(RAIZ / 'previsiones/datos/publico/escenario-base.json'))
-HIST = sorted((RAIZ / 'previsiones/datos/publico/historico').glob('*.json'))[-1]
-assert json.load(open(HIST))['escenario'] == MOD
+HIST = RAIZ / 'previsiones/datos/publico/historico/2026-11-11-0020.json'   # el modelo con el que se publicó
+MOD = json.load(open(HIST))['escenario']
 _a, _m, _d, _hm = HIST.stem.split('-')
 MESES = {'10': 'octubre', '11': 'noviembre', '12': 'diciembre'}
 VERSION = f'a las {int(_hm[:2])}.{_hm[2:]} del {int(_d)} de {MESES[_m]} de {_a}'
@@ -169,7 +185,7 @@ assert not any(l['lista'] in ('Soria ¡Ya!', 'UPL', 'Por Ávila') for pr in PROV
 # --- Gráficos ---
 cam, H = caminos(list(PROV), W=640, lat=41.7, umbral=1.8)
 assert len(cam) == NMUN
-ORDG = ['PP', 'PSOE', 'VOX', 'UP', 'SUMAR', 'XAV', 'SY', 'PPSO', 'EMPATE']
+ORDG = ['PP', 'PSOE', 'VOX', 'UP', 'SUMAR', 'XAV', 'SY', 'PPSO', 'FO', 'EMPATE']
 MI = m.set_index('mun_code')
 g_mapgan = figura(f'El PSOE pasó de ganar en {GANA[Y19]["PSOE"]} municipios a ganar en {GANA[Y23]["PSOE"]}; el PP, de {n(GANA[Y19]["PP"])} a {n(GANA[Y23]["PP"])}',
                   f'Partido más votado en cada uno de los {n(NMUN)} municipios de Castilla y León, en noviembre de 2019 y en julio de 2023',
@@ -196,7 +212,7 @@ g_flip = figura(f'En los {PSOE_PP} municipios que pasaron del PSOE al PP, el PSO
                 [(NOMC[f], COL[f]) for f in FF] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                 (['Partido', 'Nov. 2019 (%)', '2023 (%)'], [[NOMC[f], p(FLS[Y19][f]), p(FLS[Y23][f]) if f != 'CS' else '—'] for f in FF]))
 
-ORDT = ['PP', 'PSOE', 'VOX', 'SUMAR', 'XAV', 'SY', 'EMPATE']
+ORDT = ['PP', 'PSOE', 'VOX', 'SUMAR', 'XAV', 'SY', 'FO', 'EMPATE']
 ORDT19 = ['PP', 'PSOE', 'VOX', 'UP', 'XAV', 'PPSO', 'EMPATE']
 g_tam = figura(f'En los pueblos de menos de 100 habitantes, el PP ya ganaba; el vuelco llegó en los municipios grandes',
                'Municipios ganados por cada partido en noviembre de 2019 y en julio de 2023, según su población',
@@ -311,7 +327,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">En las capitales, la más ajustada de 2023 fue Palencia, que ganó el PP por {p(PAL.marg2023)} puntos tras haberla ganado el PSOE en 2019. Le siguió Soria, la única que conservó el PSOE, con el {p(SOR[f"{Y23}%PSOE"])} % frente al {p(SOR[f"{Y23}%PP"])} % del PP. En Valladolid, la mayor, el PP sacó el {p(VLL[f"{Y23}%PP"])} % y el PSOE el {p(VLL[f"{Y23}%PSOE"])} %; en 2019 había ganado el PSOE con el {p(VLL[f"{Y19}%PSOE"])} %, por delante del PP ({p(VLL[f"{Y19}%PP"])} %).</p>
 {g_cap}
 <h2>Nueve provincias y tres listas provinciales</h2>
-<p data-tipo="dato">El PP ganó en número de municipios en las nueve provincias, ya en 2019. Las listas provinciales sacaron votos, pero apenas municipios: en 2023, Soria ¡Ya! obtuvo el {p(SY_SORIA)} % en la provincia de Soria y ganó en {NW[len(SY4)]} pueblos, {", ".join(SY4[:-1])} y {SY4[-1]}; Por Ávila, el {p(XAV_AVILA)} % en Ávila y ganó en {NW[len(XAV3)]}, {", ".join(XAV3[:-1])} y {XAV3[-1]}, los mismos que en 2019; la UPL, el {p(UPL_LEON)} % en León, sin ganar en ninguno. Ninguna sacó escaño. Para el 29N, Soria ¡Ya! vuelve a presentarse al Congreso por Soria, según <a href="{ESP}">El Español</a>; la UPL y Por Ávila no figuran entre las candidaturas proclamadas en León y Ávila que publicó el <a href="{BOE}">BOE</a> el 3 de noviembre.</p>
+<p data-tipo="dato">El PP ganó en número de municipios en las nueve provincias, ya en 2019. Las listas provinciales sacaron votos, pero apenas municipios: en 2023, Soria ¡Ya! obtuvo el {p(SY_SORIA)} % en la provincia de Soria y ganó en {NW[len(SY4)]} pueblos, {", ".join(SY4[:-1])} y {SY4[-1]}; Por Ávila, el {p(XAV_AVILA)} % en Ávila y ganó en {NW[len(XAV3)]}, {", ".join(XAV3[:-1])} y {XAV3[-1]}, los mismos que en 2019; la UPL, el {p(UPL_LEON)} % en León, sin ganar en ninguno. Ninguna sacó escaño. Y en Monforte de la Sierra (Salamanca) el más votado fue Frente Obrero, con {FO_V} votos, frente a {FO_PSOE} del PSOE. Para el 29N, Soria ¡Ya! vuelve a presentarse al Congreso por Soria, según <a href="{ESP}">El Español</a>; la UPL y Por Ávila no figuran entre las candidaturas proclamadas en León y Ávila que publicó el <a href="{BOE}">BOE</a> el 3 de noviembre.</p>
 {g_prov}
 <p data-tipo="contexto">Soria ¡Ya! calificó la legislatura que termina como «una de las peores para la provincia» y anunció que concurriría para tener más capacidad de presión por Soria, según <a href="{SYA}">EFE</a>.</p>
 <h2>Dónde se decide por un voto</h2>
@@ -329,7 +345,7 @@ preguntas = [
      f'El PP, con el {p(A23["pct"]["PP"])} % de los votos a candidaturas (sin voto exterior), por delante del PSOE ({p(A23["pct"]["PSOE"])} %), Vox ({p(A23["pct"]["VOX"])} %) y Sumar ({p(A23["pct"]["SUMAR"])} %). '
      f'Sacó {E23["PP"]} de los 31 diputados; el PSOE, {E23["PSOE"]}, y Vox, {NW[E23["VOX"]]}. El PP fue el más votado en las nueve provincias.'),
     ('¿En cuántos municipios de Castilla y León ganó el PSOE en 2023?',
-     f'En {GANA[Y23]["PSOE"]} de {n(NMUN)}; el PP, en {n(GANA[Y23]["PP"])}; Vox, en {GANA[Y23]["VOX"]}; Soria ¡Ya!, en {NW[GANA[Y23]["SY"]]}; Por Ávila, en {NW[GANA[Y23]["XAV"]]}, y Sumar, en {NW[GANA[Y23]["SUMAR"]]}. En otros {GANA[Y23]["EMPATE"]} hubo empate a votos. '
+     f'En {GANA[Y23]["PSOE"]} de {n(NMUN)}; el PP, en {n(GANA[Y23]["PP"])}; Vox, en {GANA[Y23]["VOX"]}; Soria ¡Ya!, en {NW[GANA[Y23]["SY"]]}; Por Ávila, en {NW[GANA[Y23]["XAV"]]}; Sumar, en {NW[GANA[Y23]["SUMAR"]]}, y Frente Obrero, en {NW[GANA[Y23]["FO"]]}. En otros {GANA[Y23]["EMPATE"]} hubo empate a votos. '
      f'En noviembre de 2019, el PSOE había ganado en {GANA[Y19]["PSOE"]} y el PP en {n(GANA[Y19]["PP"])}.'),
     ('¿En qué capitales ganó el PSOE?',
      'En noviembre de 2019, en seis de las nueve: Burgos, León, Palencia, Soria, Valladolid y Zamora. En julio de 2023, solo en Soria.'),
@@ -347,7 +363,7 @@ foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio 
 R = lambda v: round(float(v), 4)
 DATOS = {
     'A19': A19, 'A23': A23, 'GANA': GANA, 'PSOE_PP': PSOE_PP, 'VOX_PP': VOX_PP, 'PSOE_PSOE': PSOE_PSOE,
-    'DPSOE': DPSOE, 'DPP': DPP, 'DPSOE_VOTOS': DPSOE_VOTOS, 'DPP_VOTOS': DPP_VOTOS, 'PSOE_SUBE': PSOE_SUBE, 'PP_SUBE': PP_SUBE, 'POB': POB,
+    'DPSOE': DPSOE, 'DPP': DPP, 'DPSOE_VOTOS': DPSOE_VOTOS, 'FO_V': FO_V, 'FO_PSOE': FO_PSOE, 'DPP_VOTOS': DPP_VOTOS, 'PSOE_SUBE': PSOE_SUBE, 'PP_SUBE': PP_SUBE, 'POB': POB,
     'FLS': FLS, 'TT': TT, 'VX19_MED': VX19_MED, 'NMUN': NMUN,
     'PR': {pr: {y: PRS[pr][y]['pct'] for y in PRS[pr]} for pr in PRS}, 'PRG': PRG, 'PRN': PRN,
     'SY_SORIA': SY_SORIA, 'UPL_LEON': UPL_LEON, 'XAV_AVILA': XAV_AVILA, 'NSY': len(SY4), 'NXAV': len(XAV3),
