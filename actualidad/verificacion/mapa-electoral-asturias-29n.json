@@ -1,0 +1,513 @@
+{
+ "pieza": "mapa-electoral-asturias-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Asturias: el PSOE ganó Oviedo por 42 votos en 2019 y lo perdió",
+   "cifra": "42",
+   "calculo": "D['OVI19']"
+  },
+  {
+   "texto": "votos en 2019 y lo perdió por 15.256 en 2023; Gijón lo retuvo",
+   "cifra": "15.256",
+   "calculo": "D['GC']['Oviedo']['margv23']"
+  },
+  {
+   "texto": "2023; Gijón lo retuvo por 622",
+   "cifra": "622",
+   "calculo": "D['GC']['Gijón']['margv23']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 70 de los 78 concejos a",
+   "cifra": "70",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "pasó de ganar en 70 de los 78 concejos a ganar en",
+   "cifra": "78",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "los 78 concejos a ganar en 40, aunque subió en votos;",
+   "cifra": "40",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "las cuencas mineras ganó en nueve de diez. Para el 29N,",
+   "cifra": "nueve",
+   "calculo": "D['NCU_PSOE']"
+  },
+  {
+   "texto": "mineras ganó en nueve de diez. Para el 29N, la media",
+   "cifra": "diez",
+   "calculo": "D['NCU']"
+  },
+  {
+   "texto": "media de encuestas da al PP tres de los 7 diputados,",
+   "cifra": "tres",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas da al PP tres de los 7 diputados, al PSOE tres",
+   "cifra": "7",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "los 7 diputados, al PSOE tres y a Vox uno.",
+   "cifra": "tres",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 7 diputados entre once",
+   "cifra": "7",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "votado en noviembre de 2019 en 70 de los 78 concejos asturianos,",
+   "cifra": "70",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "noviembre de 2019 en 70 de los 78 concejos asturianos,",
+   "cifra": "78",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "asturianos, incluidos los siete de más de 20.000 habitantes.",
+   "cifra": "siete",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "habitantes. Oviedo lo ganó por 42 votos sobre el PP. En",
+   "cifra": "42",
+   "calculo": "D['OVI19']"
+  },
+  {
+   "texto": "2023, el PSOE se quedó con 40 concejos y el PP subió",
+   "cifra": "40",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "concejos y el PP subió a 38: Oviedo pasó al PP por",
+   "cifra": "38",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "38: Oviedo pasó al PP por 15.256 votos y Gijón siguió",
+   "cifra": "15.256",
+   "calculo": "D['GC']['Oviedo']['margv23']"
+  },
+  {
+   "texto": "Gijón siguió con el PSOE por 622. El PSOE no bajó en",
+   "cifra": "622",
+   "calculo": "D['GC']['Gijón']['margv23']"
+  },
+  {
+   "texto": "no bajó en votos: pasó del 33,7 % al 34,7 %, con 18.220",
+   "cifra": "33,7",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "votos: pasó del 33,7 % al 34,7 %, con 18.220 votos",
+   "cifra": "34,7",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "del 33,7 % al 34,7 %, con 18.220 votos más, pero el PP",
+   "cifra": "18.220",
+   "calculo": "D['DV']['PSOE']"
+  },
+  {
+   "texto": "más, pero el PP pasó del 23,5 % al 36,0 %, con 80.872",
+   "cifra": "23,5",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "el PP pasó del 23,5 % al 36,0 %, con 80.872 más, y",
+   "cifra": "36,0",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "del 23,5 % al 36,0 %, con 80.872 más, y fue el más votado",
+   "cifra": "80.872",
+   "calculo": "D['DV']['PP']"
+  },
+  {
+   "texto": "El PP subió en los 78 concejos, en un año",
+   "cifra": "78",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 6,7 % en 2019, no se presentó",
+   "cifra": "6,7",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "se presentó y Vox bajó del 16,1 % al 12,6 %. La participación",
+   "cifra": "16,1",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 16,1 % al 12,6 %. La participación",
+   "cifra": "12,6",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "La participación subió del 65,5 % al 71,1 %. Los concejos",
+   "cifra": "65,5",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 65,5 % al 71,1 %. Los concejos que",
+   "cifra": "71,1",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "PSOE pasaron de reunir el 97,3 % de la población al",
+   "cifra": "97,3",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "97,3 % de la población al 54,9 %, y los del PP, del",
+   "cifra": "54,9",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "54,9 %, y los del PP, del 2,7 % al 45,1 %.",
+   "cifra": "2,7",
+   "calculo": "D['POB']['2019_11']['PP']"
+  },
+  {
+   "texto": "los del PP, del 2,7 % al 45,1 %.",
+   "cifra": "45,1",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "30 concejos pasaron del",
+   "cifra": "30",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "camino contrario. En esos 30, el PSOE subió del 30,8",
+   "cifra": "30",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "esos 30, el PSOE subió del 30,8 % al 31,5 %, pero el",
+   "cifra": "30,8",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 30,8 % al 31,5 %, pero el PP subió",
+   "cifra": "31,5",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "pero el PP subió más, del 26,8 % al 40,7 %, mientras",
+   "cifra": "26,8",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "subió más, del 26,8 % al 40,7 %, mientras desaparecía",
+   "cifra": "40,7",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 7,4 %, y Vox bajaba del",
+   "cifra": "7,4",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 7,4 %, y Vox bajaba del 18,0 % al 13,4 %.",
+   "cifra": "18,0",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox bajaba del 18,0 % al 13,4 %.",
+   "cifra": "13,4",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "De los siete concejos de más de 20.000",
+   "cifra": "siete",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "el PSOE sacaron en 2019 el 28,1 % cada uno, con 42 votos",
+   "cifra": "28,1",
+   "calculo": "D['GC']['Oviedo']['pp19']"
+  },
+  {
+   "texto": "2019 el 28,1 % cada uno, con 42 votos de diferencia;",
+   "cifra": "42",
+   "calculo": "D['OVI19']"
+  },
+  {
+   "texto": "diferencia; en 2023, el PP subió al 42,0 % y el PSOE, al 29,6",
+   "cifra": "42,0",
+   "calculo": "D['GC']['Oviedo']['pp23']"
+  },
+  {
+   "texto": "subió al 42,0 % y el PSOE, al 29,6 %. En Gijón, el PSOE",
+   "cifra": "29,6",
+   "calculo": "D['GC']['Oviedo']['psoe23']"
+  },
+  {
+   "texto": "En Gijón, el PSOE sacó el 34,7 % y el PP, el 34,3 %.",
+   "cifra": "34,7",
+   "calculo": "D['GC']['Gijón']['psoe23']"
+  },
+  {
+   "texto": "sacó el 34,7 % y el PP, el 34,3 %.",
+   "cifra": "34,3",
+   "calculo": "D['GC']['Gijón']['pp23']"
+  },
+  {
+   "texto": "En los 10 concejos de las cuencas",
+   "cifra": "10",
+   "calculo": "D['NCU']"
+  },
+  {
+   "texto": "Caudal, el PSOE sacó en 2023 el 42,2 %, más que en 2019 (39,9",
+   "cifra": "42,2",
+   "calculo": "D['CUS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "42,2 %, más que en 2019 (39,9 %), y ganó en nueve.",
+   "cifra": "39,9",
+   "calculo": "D['CUS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "2019 (39,9 %), y ganó en nueve. El único que pasó al",
+   "cifra": "nueve",
+   "calculo": "D['NCU_PSOE']"
+  },
+  {
+   "texto": "pasó al PP fue Caso, por 14 votos. Sumar sacó allí",
+   "cifra": "14",
+   "calculo": "D['CASO']"
+  },
+  {
+   "texto": "votos. Sumar sacó allí el 20,6 %, frente al 15,0 %",
+   "cifra": "20,6",
+   "calculo": "D['CUS']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "allí el 20,6 %, frente al 15,0 % de toda Asturias,",
+   "cifra": "15,0",
+   "calculo": "D['A23']['pct']['SUMAR']"
+  },
+  {
+   "texto": "toda Asturias, y el PP, el 24,7 %. Cómo votaron las",
+   "cifra": "24,7",
+   "calculo": "D['CUS']['2023_07']['PP']"
+  },
+  {
+   "texto": "medianos y pequeños. En los 31 de 1.000 a 5.000 habitantes,",
+   "cifra": "31",
+   "calculo": "D['TT']['De 1.000 a 5.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE pasó de 27 a 15 y el PP, de 4 a",
+   "cifra": "27",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "habitantes, el PSOE pasó de 27 a 15 y el PP, de 4 a 16.",
+   "cifra": "15",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "pasó de 27 a 15 y el PP, de 4 a 16. Algunos se decidieron",
+   "cifra": "4",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PP']"
+  },
+  {
+   "texto": "de 27 a 15 y el PP, de 4 a 16. Algunos se decidieron",
+   "cifra": "16",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PP']"
+  },
+  {
+   "texto": "Pesoz y Yernes y Tameza, por 4 y 5 votos para el PP;",
+   "cifra": "4",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "Yernes y Tameza, por 4 y 5 votos para el PP; Tapia",
+   "cifra": "5",
+   "calculo": "D['AJ'][1][4]"
+  },
+  {
+   "texto": "PP; Tapia de Casariego, por 6, también para el PP,",
+   "cifra": "6",
+   "calculo": "D['AJ'][2][4]"
+  },
+  {
+   "texto": "para el PP, y Ponga, por 6 para el PSOE. Los pueblos",
+   "cifra": "6",
+   "calculo": "D['AJ'][3][4]"
+  },
+  {
+   "texto": "el reparto central de los 7 escaños da al PP tres,",
+   "cifra": "7",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "de los 7 escaños da al PP tres, los mismos que en 2023;",
+   "cifra": "tres",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "mismos que en 2023; al PSOE, tres, uno más, y a Vox, uno.",
+   "cifra": "tres",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 70 concejos a ganar en",
+   "cifra": "70",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "en 70 concejos a ganar en 40; el PP, de 8 a 38Partido",
+   "cifra": "40",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "a ganar en 40; el PP, de 8 a 38Partido más votado",
+   "cifra": "8",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 78 concejos de Asturias,",
+   "cifra": "78",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 30 concejos que pasaron",
+   "cifra": "30",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP, el PSOE subió del 30,8 % al 31,5 %; el PP,",
+   "cifra": "30,8",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 30,8 % al 31,5 %; el PP, del 26,8 %",
+   "cifra": "31,5",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "30,8 % al 31,5 %; el PP, del 26,8 % al 40,7 %Voto al PP,",
+   "cifra": "26,8",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "31,5 %; el PP, del 26,8 % al 40,7 %Voto al PP, al PSOE,",
+   "cifra": "40,7",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "El PSOE ganó Oviedo por 42 votos en 2019 y el PP,",
+   "cifra": "42",
+   "calculo": "D['OVI19']"
+  },
+  {
+   "texto": "votos en 2019 y el PP, por 15.256 en 2023; Gijón siguió",
+   "cifra": "15.256",
+   "calculo": "D['GC']['Oviedo']['margv23']"
+  },
+  {
+   "texto": "Vox en julio de 2023 en los siete concejos de más de 20.000",
+   "cifra": "siete",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "mineras, el PSOE sacó el 42,2 % en 2023 y ganó en",
+   "cifra": "42,2",
+   "calculo": "D['CUS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "42,2 % en 2023 y ganó en nueve de los 10 concejosVoto",
+   "cifra": "nueve",
+   "calculo": "D['NCU_PSOE']"
+  },
+  {
+   "texto": "2023 y ganó en nueve de los 10 concejosVoto en julio",
+   "cifra": "10",
+   "calculo": "D['NCU']"
+  },
+  {
+   "texto": "concejosVoto en julio de 2023 en los diez concejos de las cuencas",
+   "cifra": "diez",
+   "calculo": "D['NCU']"
+  },
+  {
+   "texto": "En los 31 concejos de 1.000 a",
+   "cifra": "31",
+   "calculo": "D['TT']['De 1.000 a 5.000']['n']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 27 a ganar en 15Concejos",
+   "cifra": "27",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "Pesoz fue para el PP por 4 votos, y Ponga, para",
+   "cifra": "4",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los ocho concejos más ajustados,",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])"
+  },
+  {
+   "texto": "se quedaría sin escañoLos 7 diputados de Asturias:",
+   "cifra": "7",
+   "calculo": "sum(D['E29'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "noviembre 7 diputados entre once candidaturas. El PSOE",
+   "motivo": "candidaturas al Congreso en Asturias, según elDiario.es"
+  },
+  {
+   "texto": "incluidos los siete de más de 20.000 habitantes. Oviedo lo",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "siete concejos de más de 20.000 habitantes, que el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "y pequeños. En los 31 de 1.000 a 5.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "pequeños. En los 31 de 1.000 a 5.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "siete concejos de más de 20.000 habitantes, en %. Barra",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "En los 31 concejos de 1.000 a 5.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los 31 concejos de 1.000 a 5.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
