@@ -236,7 +236,8 @@ DE_ENCUESTA = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'PODE
                'AA': 'Adelante Andalucía'}
 BLOQUES_V1 = [
     ('PP + Vox', ['PP', 'Vox']),
-    ('PP + Vox + SALF + UPN + CC', ['PP', 'Vox', 'SALF', 'UPN', 'CC']),
+    # UPN va dentro de la lista UPN-PP de Navarra (columna del PP, une_upn_pp), así que «PP + Vox» ya la cuenta
+    ('PP + Vox + SALF + CC', ['PP', 'Vox', 'SALF', 'CC']),
     ('PSOE + Sumar + Podemos', ['PSOE', 'Sumar', 'Podemos']),
     # Adelante Andalucía, en el bloque grande desde el 11-11-2026 (decisión de Nacho)
     ('PSOE + Sumar + Podemos + ERC + Junts + EH Bildu + PNV + BNG + CC + Adelante Andalucía',
@@ -283,6 +284,12 @@ def senal_europeas(provs, alfa=ALFA_EUROPEAS):
 
 
 PODEMOS_CON_FA = {'03', '12', '46', '35', '38'}
+# En Navarra, UPN y PP van juntos al 29N en una sola lista, «Unión del Pueblo Navarro en coalición con el Partido Popular
+# (UPN-PP)», al Congreso y al Senado (candidaturas proclamadas, BOE de 3-11-2026; cabeza Leticia San Martín, UPN; n.º 2
+# Sergio Sayas, PP). Las encuestas siguen midiendo a UPN aparte, así que el voto se estima por separado y se suma
+# antes del reparto: D'Hondt ve una sola candidatura. Va en la columna del PP, como en 2011 y 2015-2016 (UPN en las
+# listas del PP): la lista cuenta en el bloque del PP y el lector la ve como «UPN-PP» en Navarra.
+UPN_PP = {'31'}
 PODEMOS_CON_ERC = {'08', '17', '25', '43'}
 
 
@@ -329,6 +336,18 @@ def indice_aa(provs, validos):
     a = pd.read_csv(AA_ANDALUZAS2026, dtype={'prov': str}).set_index('prov')
     cuota = (a.aa / a.validos).reindex(provs).fillna(0).values
     return cuota * validos.sum() / (cuota * validos).sum()
+
+
+def une_upn_pp(cuotas, provs):
+    """Suma el voto estimado de UPN al del PP en Navarra (lista conjunta UPN-PP) y deja UPN a cero: así el reparto
+    D'Hondt del Congreso y el del Senado ven una sola candidatura."""
+    c = cuotas.copy()
+    pp, upn = LISTAS_V1.index('PP'), LISTAS_V1.index('UPN')
+    for i, p in enumerate(provs):
+        if p in UPN_PP:
+            c[i, pp] += c[i, upn]
+            c[i, upn] = 0
+    return c
 
 
 def ajusta_a_encuestas(cuotas, validos, indices, objetivo, iter=50):
@@ -409,6 +428,7 @@ def main_encuestas(fich_media, publico=False):
     objetivo = {DE_ENCUESTA[k]: v / 100 for k, v in m['media'].items() if k in DE_ENCUESTA}
     central = ajusta_a_encuestas(cuotas, validos, indices, objetivo)
     central, med_reg = senal_regional(central, provs, validos, m['fecha'])
+    central = une_upn_pp(central, provs)
     nac = (central * validos[:, None]).sum(0) / validos.sum()
     SIGMA_NAC = sigma_v1(nac, c_err)
     circ_sen = circunscripciones_senado(NOMBRES)
