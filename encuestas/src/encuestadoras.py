@@ -164,6 +164,9 @@ def genera(encs, salida, c):
             a = propias[1]
             cambios = []
             for p, *_ in PRIN[:4]:
+                # sin comparar a Sumar cuando la encuesta cambia el desglose del espacio (avisos de «Lo último»)
+                if p == 'SUMAR' and (c.clave(u['casa']), u.get('publicado') or u['fin']) in c.AVISOS_ULTIMO:
+                    continue
                 if p in u['voto'] and p in a['voto']:
                     dlt = round(u['voto'][p] - a['voto'][p], 1)
                     cambios.append(f'{nom(p)} se queda igual' if dlt == 0 else f'{nom(p)} {"sube" if dlt > 0 else "baja"} {pc(abs(dlt)).replace(chr(160) + "%", "")} puntos')
