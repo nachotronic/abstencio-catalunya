@@ -4673,6 +4673,20 @@ PIEZAS += [
         enlaces=[],
         lugar='Cantabria',
     ),
+    dict(
+        slug='mapa-electoral-la-rioja-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de La Rioja: el PP pasó de 108 a 138 municipios y ganó Logroño por 6.822 votos; con las encuestas, Vox le quitaría un diputado al PSOE', serie='29n', figura=1,
+        descripcion='En 2019 el PSOE fue el más votado en La Rioja y ganó Logroño; en 2023 solo conservó Haro entre las nueve ciudades. Diez pueblos se decidieron por un voto. Para el 29N, la media de encuestas da al PP dos de los 4 diputados, al PSOE uno y a Vox uno.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 174 municipios de La Rioja: el partido más votado en cada uno, Logroño y las ciudades, el tamaño de los municipios, los decididos por un voto y los empates; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por municipio, no de personas: no dicen a quién votó en 2023 cada votante de Ciudadanos. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (Más País no se presentó en La Rioja en 2019). Empates (mismos votos los dos primeros): cinco municipios en 2019 y dos en 2023, Baños de Rioja y Cuzcurrita de Río Tirón, entre el PP y el PSOE. Población: padrón municipal de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_la_rioja.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.cope.es/emisoras/la-rioja/la-rioja-provincia/logrono/noticias/candidaturas-29n-rioja-pp-incorpora-galiana-psoe-cambia-lista-senado-20261026_3462835.html', 'COPE La Rioja, candidaturas del 29N (26-10-2026)'),
+                 ('https://www.eldiario.es/la-rioja/angel-alda-sera-numero-lista-vox-elecciones-generales-rioja_1_13604417.html', 'Europa Press en elDiario.es, Ángel Alda encabeza la lista de Vox (21-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='La Rioja',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada

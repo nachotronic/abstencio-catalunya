@@ -1,0 +1,434 @@
+{
+ "pieza": "mapa-electoral-la-rioja-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "de La Rioja: el PP pasó de 108 a 138 municipios y ganó",
+   "cifra": "108",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "Rioja: el PP pasó de 108 a 138 municipios y ganó Logroño",
+   "cifra": "138",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "municipios y ganó Logroño por 6.822 votos; con las encuestas,",
+   "cifra": "6.822",
+   "calculo": "D['GC']['Logroño']['margv23']"
+  },
+  {
+   "texto": "solo conservó Haro entre las nueve ciudades. Diez pueblos",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 5.000']['n']"
+  },
+  {
+   "texto": "entre las nueve ciudades. Diez pueblos se decidieron",
+   "cifra": "Diez",
+   "calculo": "len(D['UNO'])"
+  },
+  {
+   "texto": "encuestas da al PP dos de los 4 diputados, al PSOE uno",
+   "cifra": "4",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "elige el 29 de noviembre 4 diputados. El PP presenta",
+   "cifra": "4",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "más votado en La Rioja, con 985 votos más que el PP",
+   "cifra": "985",
+   "calculo": "D['V19']"
+  },
+  {
+   "texto": "exterior), y ganó Logroño por 1.568. Los 61 municipios que",
+   "cifra": "1.568",
+   "calculo": "D['GC']['Logroño']['margv19']"
+  },
+  {
+   "texto": "ganó Logroño por 1.568. Los 61 municipios que ganó",
+   "cifra": "61",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios que ganó reunían el 71,6 % de la población; los",
+   "cifra": "71,6",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "71,6 % de la población; los 108 del PP, el 28,3 %. En",
+   "cifra": "108",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "población; los 108 del PP, el 28,3 %. En julio de 2023,",
+   "cifra": "28,3",
+   "calculo": "D['POB']['2019_11']['PP']"
+  },
+  {
+   "texto": "de 2023, el PP subió del 34,6 % al 46,1 % y ganó en",
+   "cifra": "34,6",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "el PP subió del 34,6 % al 46,1 % y ganó en 138 municipios,",
+   "cifra": "46,1",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "34,6 % al 46,1 % y ganó en 138 municipios, con el 94,3",
+   "cifra": "138",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "en 138 municipios, con el 94,3 % de la población. Logroño",
+   "cifra": "94,3",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "población. Logroño pasó al PP por 6.822 votos. El PSOE también",
+   "cifra": "6.822",
+   "calculo": "D['GC']['Logroño']['margv23']"
+  },
+  {
+   "texto": "El PSOE también subió, del 35,3 % al 36,1 %, pero se",
+   "cifra": "35,3",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "también subió, del 35,3 % al 36,1 %, pero se quedó en",
+   "cifra": "36,1",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "36,1 %, pero se quedó en 33 municipios.",
+   "cifra": "33",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 7,1 % en 2019, no se presentó",
+   "cifra": "7,1",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "presentó en 2023, y Vox bajó del 11,6 % al 9,8 %. Sumar sacó",
+   "cifra": "11,6",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 11,6 % al 9,8 %. Sumar sacó el 6,6",
+   "cifra": "9,8",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "% al 9,8 %. Sumar sacó el 6,6 %, frente al 9,9 % de",
+   "cifra": "6,6",
+   "calculo": "D['A23']['pct']['SUMAR']"
+  },
+  {
+   "texto": "sacó el 6,6 %, frente al 9,9 % de Unidas Podemos.",
+   "cifra": "9,9",
+   "calculo": "D['A19']['pct']['UP']"
+  },
+  {
+   "texto": "La participación subió del 71,3 % al 74,9 %. Los dos",
+   "cifra": "71,3",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 71,3 % al 74,9 %. Los dos partidos",
+   "cifra": "74,9",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "31 municipios pasaron del",
+   "cifra": "31",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "pasaron del PSOE al PP, y tres hicieron el camino contrario.",
+   "cifra": "tres",
+   "calculo": "D['PP_PSOE']"
+  },
+  {
+   "texto": "camino contrario. En esos 31, el PSOE subió del 36,1",
+   "cifra": "31",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "esos 31, el PSOE subió del 36,1 % al 37,0 %, pero el",
+   "cifra": "36,1",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 36,1 % al 37,0 %, pero el PP subió",
+   "cifra": "37,0",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "pero el PP subió más, del 33,1 % al 45,4 %, mientras",
+   "cifra": "33,1",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "subió más, del 33,1 % al 45,4 %, mientras desaparecía",
+   "cifra": "45,4",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 7,5 %, y Vox bajaba del",
+   "cifra": "7,5",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 7,5 %, y Vox bajaba del 11,1 % al 9,2 %.",
+   "cifra": "11,1",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox bajaba del 11,1 % al 9,2 %.",
+   "cifra": "9,2",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "Logroño, con 150.583 habitantes, reúne el",
+   "cifra": "150.583",
+   "calculo": "D['LOGP']"
+  },
+  {
+   "texto": "150.583 habitantes, reúne el 46,7 % de la población de",
+   "cifra": "46,7",
+   "calculo": "D['LOGS']"
+  },
+  {
+   "texto": "2019, el PSOE sacó allí el 35,1 % y el PP, el 33,1 %;",
+   "cifra": "35,1",
+   "calculo": "D['GC']['Logroño']['psoe19']"
+  },
+  {
+   "texto": "allí el 35,1 % y el PP, el 33,1 %; en 2023, el PP subió",
+   "cifra": "33,1",
+   "calculo": "D['GC']['Logroño']['pp19']"
+  },
+  {
+   "texto": "%; en 2023, el PP subió al 45,3 % y el PSOE, al 36,9",
+   "cifra": "45,3",
+   "calculo": "D['GC']['Logroño']['pp23']"
+  },
+  {
+   "texto": "subió al 45,3 % y el PSOE, al 36,9 %. De los nueve municipios",
+   "cifra": "36,9",
+   "calculo": "D['GC']['Logroño']['psoe23']"
+  },
+  {
+   "texto": "el PSOE, al 36,9 %. De los nueve municipios de más de",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 5.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE había ganado cinco en 2019; en 2023 solo",
+   "cifra": "cinco",
+   "calculo": "D['TT']['Más de 5.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "2023 solo conservó Haro, por 139 votos. Arnedo, Alfaro",
+   "cifra": "139",
+   "calculo": "D['GC']['Haro']['margv23']"
+  },
+  {
+   "texto": "En los 31 municipios de 500 a",
+   "cifra": "31",
+   "calculo": "D['TT']['De 500 a 5.000']['n']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 12 a ganar en 2. En los",
+   "cifra": "12",
+   "calculo": "D['TT']['De 500 a 5.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "de ganar en 12 a ganar en 2. En los 134 de menos",
+   "cifra": "2",
+   "calculo": "D['TT']['De 500 a 5.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "en 12 a ganar en 2. En los 134 de menos de 500, donde",
+   "cifra": "134",
+   "calculo": "D['TT']['Menos de 500']['n']"
+  },
+  {
+   "texto": "PSOE conservó más, ganó en 30. Muchos se decidieron",
+   "cifra": "30",
+   "calculo": "D['TT']['Menos de 500']['g23']['PSOE']"
+  },
+  {
+   "texto": "decidieron por muy poco: diez se ganaron por un solo",
+   "cifra": "diez",
+   "calculo": "len(D['UNO'])"
+  },
+  {
+   "texto": "ganaron por un solo voto, 5 para el PP, 4 para el",
+   "cifra": "5",
+   "calculo": "sum(1 for x in D['UNO'] if x[1] == 'PP')"
+  },
+  {
+   "texto": "solo voto, 5 para el PP, 4 para el PSOE y uno,",
+   "cifra": "4",
+   "calculo": "sum(1 for x in D['UNO'] if x[1] == 'PSOE')"
+  },
+  {
+   "texto": "y uno, Torremontalbo, de 8 habitantes, para Vox,",
+   "cifra": "8",
+   "calculo": "D['UNO'][-1][3]"
+  },
+  {
+   "texto": "el reparto central de los 4 escaños da al PP dos,",
+   "cifra": "4",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "baja a ninguno: con solo 4 escaños, el último se",
+   "cifra": "4",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "2023. Que el PP subiera en 149 de los 174 municipios",
+   "cifra": "149",
+   "calculo": "D['PP_SUBE']"
+  },
+  {
+   "texto": "PP subiera en 149 de los 174 municipios a la vez",
+   "cifra": "174",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "El PP pasó de ganar en 108 municipios a ganar en",
+   "cifra": "108",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "108 municipios a ganar en 138; el PSOE, de 61 a 33Partido",
+   "cifra": "138",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "ganar en 138; el PSOE, de 61 a 33Partido más votado",
+   "cifra": "61",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "votado en cada uno de los 174 municipios de La Rioja,",
+   "cifra": "174",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 31 municipios que pasaron",
+   "cifra": "31",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP, el PSOE subió del 36,1 % al 37,0 %; el PP,",
+   "cifra": "36,1",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 36,1 % al 37,0 %; el PP, del 33,1 %",
+   "cifra": "37,0",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "36,1 % al 37,0 %; el PP, del 33,1 % al 45,4 %Voto al PP,",
+   "cifra": "33,1",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "37,0 %; el PP, del 33,1 % al 45,4 %Voto al PP, al PSOE,",
+   "cifra": "45,4",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "El PSOE ganó Logroño por 1.568 votos en 2019 y el PP,",
+   "cifra": "1.568",
+   "calculo": "D['GC']['Logroño']['margv19']"
+  },
+  {
+   "texto": "votos en 2019 y el PP, por 6.822 en 2023; de las nueve",
+   "cifra": "6.822",
+   "calculo": "D['GC']['Logroño']['margv23']"
+  },
+  {
+   "texto": "por 6.822 en 2023; de las nueve ciudades, el PSOE solo",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 5.000']['n']"
+  },
+  {
+   "texto": "PP, al PSOE y a Vox en los nueve municipios de más de",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 5.000']['n']"
+  },
+  {
+   "texto": "En los 31 municipios de 500 a",
+   "cifra": "31",
+   "calculo": "D['TT']['De 500 a 5.000']['n']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 12 a ganar en 2Municipios",
+   "cifra": "12",
+   "calculo": "D['TT']['De 500 a 5.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "Diez municipios se decidieron",
+   "cifra": "Diez",
+   "calculo": "len(D['UNO'])"
+  },
+  {
+   "texto": "2023; Torremontalbo, con 8 habitantes, fue el único",
+   "cifra": "8",
+   "calculo": "D['UNO'][-1][3]"
+  },
+  {
+   "texto": "diputado por La RiojaLos 4 diputados de La Rioja:",
+   "cifra": "4",
+   "calculo": "sum(D['E29'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "nueve municipios de más de 5.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "En los 31 municipios de 500 a 5.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los 31 municipios de 500 a 5.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "2. En los 134 de menos de 500, donde el PSOE conservó",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "nueve municipios de más de 5.000 habitantes, en %. Barra",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "En los 31 municipios de 500 a 5.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los 31 municipios de 500 a 5.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
