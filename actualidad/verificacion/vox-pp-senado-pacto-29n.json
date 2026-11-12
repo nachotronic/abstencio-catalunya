@@ -1,0 +1,17 @@
+{
+ "pieza": "vox-pp-senado-pacto-29n",
+ "cifras": [],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "en las 39 provincias de cuatro senadores donde hay lista conjunta",
+   "cifra": "39",
+   "motivo": "frase ya publicada el 21-10; solo cambia el paréntesis de Navarra (corrección del 12-11)"
+  },
+  {
+   "texto": "en las 39 provincias de cuatro senadores donde hay lista conjunta",
+   "cifra": "cuatro",
+   "motivo": "provincias de cuatro senadores: dato del sistema, frase sin cambios salvo el paréntesis"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "pieza": "listas-29n-quien-encabeza",
+ "cifras": [],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "le daba un 26% de opciones de un escaño en Barcelona",
+   "cifra": "26",
+   "motivo": "cifra ya publicada el 26-10 con el modelo de ese día (puestos de la CUP); el párrafo solo cambia por la aclaración de UPN-PP del 12-11"
+  }
+ ]
+}
