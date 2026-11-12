@@ -4476,6 +4476,20 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='mapa-electoral-castilla-la-mancha-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Castilla-La Mancha: el PSOE ganó en cuatro de las cinco capitales en 2019 y en ninguna en 2023, aunque subió en votos', serie='29n', figura=1,
+        descripcion='El PSOE sumó 30.889 votos, pero pasó de 575 a 384 de los 919 municipios, y los que ganó pasaron de reunir el 72,9 % de la población al 24,5 %. Vox, de 65 a diez. Para el 29N, la media de encuestas da al PP 8 de los 21 diputados, al PSOE 7 y a Vox 6.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 919 municipios de Castilla-La Mancha: el partido más votado en cada uno, los 203 que pasaron del PSOE al PP, los 65 que había ganado Vox, el voto según el tamaño del municipio, las cinco capitales, las provincias, los municipios decididos por un voto y los empates; y el reparto central de la media de encuestas del 29N en las cinco provincias.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Ciudadanos o de Vox en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos; Más País no se presentó); con los mismos votos entre los dos primeros, empate (19 casos en 2019 y 19 en 2023). Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_clm.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.diariodeleon.es/nacional/261009/2099769/page-admite-mala-relacion-sanchez-dice-psoe-dirigen.html', 'EFE vía Diario de León, García-Page sobre su relación con Sánchez y el 29N (9-10-2026)'),
+                 ('https://www.esdiario.com/nacional/261005/199495/nunez-cuestiona-rivalidad-page-sanchez-le-pide-decida-campana-electoral.html', 'ESdiario, Paco Núñez sobre García-Page y el 29N (5-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Castilla-La Mancha',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
