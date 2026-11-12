@@ -6,6 +6,13 @@ provincia, y cada página lo dice arriba, antes de cualquier cifra.
 """
 import html
 
+UPN_PP = {'31'}   # provincias donde el PP concurre dentro de la lista UPN-PP (previsiones/src/motor.py, UPN_PP)
+NOTA_UPN_PP = ('<p data-tipo="contexto">UPN y el PP van juntos el 29N en una sola candidatura, «Unión del Pueblo Navarro en coalición con el Partido Popular (UPN-PP)», '
+               'al Congreso y al Senado: la encabeza Leticia San Martín (UPN) y el número dos es Sergio Sayas (PP), según las '
+               '<a href="https://www.boe.es/boe/dias/2026/11/03/pdfs/BOE-A-2026-23103.pdf">candidaturas proclamadas en el BOE del 3 de noviembre</a>. '
+               'Las encuestas siguen midiendo a UPN aparte del PP; el modelo suma las dos estimaciones en Navarra y reparte los escaños como una sola lista. '
+               'En 2023 fueron por separado y sacaron un diputado cada uno.</p>')
+
 
 def genera(d, meta, c, ruta_provincia, slug_provincia):
     """Escribe encuestas/<slug>/index.html de cada provincia. c es el módulo construir (formato y cabecera comunes).
@@ -25,9 +32,11 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         con = [l for l in listas if l['escanos'][2] > 0 or rc[l['lista']] > 0]
         primero = max(v['listas'], key=lambda l: l['p_primera'])
         segundo = sorted(v['listas'], key=lambda l: -l['p_primera'])[1]
-        n = c.nombre_lista
+        # en Navarra el PP va con UPN en una sola lista, UPN-PP (motor.une_upn_pp): el lector la ve con su nombre
+        upn_pp = cod in UPN_PP
+        n = lambda l: 'UPN-PP' if upn_pp and l == 'PP' else c.nombre_lista(l)
         corto = lambda l: n(l).replace(' / Frente Amplio', '')
-        art = lambda l: 'el ' if l in ('PP', 'PSOE', 'PNV', 'BNG') else ''
+        art = lambda l: 'el ' if l in ('PP', 'PSOE', 'PNV', 'BNG') and not (upn_pp and l == 'PP') else ''
         pp = lambda x: f'{round(x * 100)} %' if 0.01 <= x <= 0.99 else ('menos del 1 %' if x < 0.01 else 'más del 99 %')
         titular = f'Encuesta en {nombre}: {art(primero["lista"])}{corto(primero["lista"])} saldría primero en el {pp(primero["p_primera"])} de las simulaciones'
         reparto = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
@@ -82,6 +91,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <div class="ley">{ley}</div></figure>
 <p data-tipo="dato">{html.escape(p2)}</p>
 <p data-tipo="dato">{html.escape(p3)}</p>
+{NOTA_UPN_PP if upn_pp else ''}
 <h2>Voto y escaños de cada partido en {html.escape(nombre)}</h2>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto (80 %)</th><th class="n">Escaños (80 %)</th><th class="n">Primero</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">Cifra grande: reparto central, la mediana de las simulaciones ajustada para que sume los escaños de la provincia; debajo, el intervalo del 80 %. {html.escape(meta.get('aviso', ''))} <a href="../../{ruta_provincia(cod)}">Resultados de 2023 en {html.escape(nombre)}, sección a sección →</a></p>
