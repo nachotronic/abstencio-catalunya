@@ -10,9 +10,34 @@
    "calculo": "D['GS']['51']['2019_11']['VOX']"
   },
   {
+   "texto": "secciones de Ceuta a ninguna, y 13 de las 17 de Coalición",
+   "cifra": "13",
+   "calculo": "D['TRN']['52']['CPM>PSOE']"
+  },
+  {
+   "texto": "Ceuta a ninguna, y 13 de las 17 de Coalición por Melilla",
+   "cifra": "17",
+   "calculo": "D['GS']['52']['2019_11']['CPM']"
+  },
+  {
    "texto": "Coalición por Melilla se quedó a 178 votos del de Melilla.",
    "cifra": "178",
    "calculo": "D['M19']['52']"
+  },
+  {
+   "texto": "tiene Melilla casi segura (97,4 % de las simulaciones)",
+   "cifra": "97,4",
+   "calculo": "D['PRIM']['52']['PP']"
+  },
+  {
+   "texto": "prácticamente empatado con Vox (32,6 % frente a 32,3 %).",
+   "cifra": "32,6",
+   "calculo": "D['VC']['51']['PP']"
+  },
+  {
+   "texto": "con Vox (32,6 % frente a 32,3 %).",
+   "cifra": "32,3",
+   "calculo": "D['VC']['51']['VOX']"
   },
   {
    "texto": "más votado en Ceuta, con 1.329 votos más que el PSOE",
@@ -185,6 +210,36 @@
    "calculo": "D['TER']['52']['Renta baja']['2019_11']['pct']['CPM']"
   },
   {
+   "texto": "segura: queda primero en el 97,4 % de las simulaciones.",
+   "cifra": "97,4",
+   "calculo": "D['PRIM']['52']['PP']"
+  },
+  {
+   "texto": "empatados: el voto central es del 32,6 % para el PP y del 32,3",
+   "cifra": "32,6",
+   "calculo": "D['VC']['51']['PP']"
+  },
+  {
+   "texto": "del 32,6 % para el PP y del 32,3 % para Vox, y el PP",
+   "cifra": "32,3",
+   "calculo": "D['VC']['51']['VOX']"
+  },
+  {
+   "texto": "el PP queda primero en el 46,7 % de las simulaciones,",
+   "cifra": "46,7",
+   "calculo": "D['PRIM']['51']['PP']"
+  },
+  {
+   "texto": "las simulaciones, Vox en el 42,7 % y el PSOE en el 10,5",
+   "cifra": "42,7",
+   "calculo": "D['PRIM']['51']['VOX']"
+  },
+  {
+   "texto": "el 42,7 % y el PSOE en el 10,5 %. Con un solo escaño",
+   "cifra": "10,5",
+   "calculo": "D['PRIM']['51']['PSOE']"
+  },
+  {
    "texto": "por pocos votos, como los 178 con que el PP ganó Melilla",
    "cifra": "178",
    "calculo": "D['M19']['52']"
@@ -273,6 +328,16 @@
    "texto": "sección: cada ciudad, partida en tres grupos con el mismo",
    "cifra": "tres",
    "calculo": "len(D['TER']['51'])"
+  },
+  {
+   "texto": "el PP queda primero en el 46,7 % de las simulaciones",
+   "cifra": "46,7",
+   "calculo": "D['PRIM']['51']['PP']"
+  },
+  {
+   "texto": "simulaciones y Vox, en el 42,7 %",
+   "cifra": "42,7",
+   "calculo": "D['PRIM']['51']['VOX']"
   }
  ],
  "externas": [],

@@ -113,6 +113,10 @@ MOD = json.load(open(RAIZ / 'previsiones/datos/publico/escenario-base.json'))
 HIST = sorted((RAIZ / 'previsiones/datos/publico/historico').glob('*.json'))[-1]
 assert json.load(open(HIST))['escenario'] == MOD
 _a, _m, _d, _hm = HIST.stem.split('-')
+SIMK = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX'}
+PRIM = {pr: {SIMK[x['lista']]: x['p_primera'] * 100 for x in MOD['provincias'][pr]['listas'] if x['lista'] in SIMK} for pr in CIU}
+VC = {pr: {SIMK[x['lista']]: x['voto'][1] for x in MOD['provincias'][pr]['listas'] if x['lista'] in SIMK} for pr in CIU}
+assert abs(VC['51']['PP'] - VC['51']['VOX']) < 1 and 40 < PRIM['51']['PP'] < 55 and 35 < PRIM['51']['VOX'] < 50 and PRIM['52']['PP'] > 90, (PRIM, VC)
 MESES = {'10': 'octubre', '11': 'noviembre', '12': 'diciembre'}
 VERSION = f'a las {int(_hm[:2])}.{_hm[2:]} del {int(_d)} de {MESES[_m]} de {_a}'
 
@@ -215,26 +219,32 @@ FE = [('Noviembre de 2019', {pr: ESC[Y19][pr] for pr in CIU}), ('Julio de 2023',
 
 def cuadros(lado=22):
     out, y = [], 0
-    for nom, e in FE:
+    for j, (nom, e) in enumerate(FE):
         out.append(f'<text x="0" y="{y + 14}" class="lab">{esc(nom)}</text>')
         y += 22
         for i, pr in enumerate(CIU):
             f = list(e[pr])[0]
+            if j == 2 and pr == '51':   # Ceuta, 29N: empate técnico entre el PP y Vox, medio cuadrado cada uno
+                out.append(f'<rect x="0" y="{y}" width="{lado / 2}" height="{lado}" fill="{COLC["PP"]}"><title>Ceuta, 29N: PP, primero en el {p(PRIM["51"]["PP"])} % de las simulaciones</title></rect>'
+                           f'<rect x="{lado / 2}" y="{y}" width="{lado / 2}" height="{lado}" fill="{COLC["VOX"]}"><title>Ceuta, 29N: Vox, primero en el {p(PRIM["51"]["VOX"])} % de las simulaciones</title></rect>'
+                           f'<text x="{lado + 8}" y="{y + 16}" class="lab">Ceuta: PP o Vox</text>')
+                continue
             out.append(f'<rect x="{i * 150}" y="{y}" width="{lado}" height="{lado}" rx="2" fill="{COLC[f]}"><title>{CIU[pr]}, {esc(nom)}: {NOMC[f]}</title></rect>'
                        f'<text x="{i * 150 + lado + 8}" y="{y + 16}" class="lab">{CIU[pr]}: {NOMC[f]}</text>')
         y += lado + 14
     return f'<svg viewBox="0 0 320 {y}" style="max-width:640px" role="img" aria-label="Diputado de Ceuta y de Melilla en 2019, 2023 y según la media de encuestas">' + ''.join(out) + '</svg>'
 
 
-g_esc = figura('Con las encuestas, el PP retendría los dos diputados; en Ceuta, la horquilla deja abierto el escaño a Vox y al PSOE',
-               'El diputado de Ceuta y el de Melilla: un cuadrado por escaño',
+g_esc = figura(f'Con las encuestas, el PP tiene Melilla casi segura; en Ceuta, el PP y Vox están prácticamente empatados',
+               f'El diputado de Ceuta y el de Melilla: un cuadrado por escaño. En Ceuta, el PP queda primero en el {p(PRIM["51"]["PP"])} % de las simulaciones y Vox, en el {p(PRIM["51"]["VOX"])} %',
                cuadros(),
-               f'Fuente: Ministerio del Interior (2019 y 2023, con voto exterior); media de encuestas de Mapa Electoral, reparto central '
+               f'Fuente: Ministerio del Interior (2019 y 2023, con voto exterior); media de encuestas de Mapa Electoral, voto central y 2.000 simulaciones '
                f'(<a href="{BASE}encuestas/ceuta/">/encuestas/ceuta/</a> y <a href="{BASE}encuestas/melilla/">/encuestas/melilla/</a>) {VERSION}.',
                [(NOMC[f], COLC[f]) for f in FR],
-               (['Ciudad', 'Nov. 2019', '2023', '29N (reparto central)', '29N (horquilla)'],
-                [[CIU[pr], NOMC[list(ESC[Y19][pr])[0]], NOMC[list(ESC[Y23][pr])[0]], NOMC[list(FE[2][1][pr])[0]],
-                  ', '.join(f'{NOMC[f]} {a}-{b}' for f, (_, a, b) in RC[pr].items())] for pr in CIU]))
+               (['Ciudad', 'Nov. 2019', '2023', '29N: voto central (%)', '29N: primero en las simulaciones (%)'],
+                [[CIU[pr], NOMC[list(ESC[Y19][pr])[0]], NOMC[list(ESC[Y23][pr])[0]],
+                  ', '.join(f'{NOMC[f]} {p(VC[pr][f])}' for f in ('PP', 'VOX', 'PSOE')),
+                  ', '.join(f'{NOMC[f]} {p(PRIM[pr][f])}' for f in ('PP', 'VOX', 'PSOE'))] for pr in CIU]))
 
 CAJA = {'51': (-5.38, 35.86, -5.27, 35.92), '52': (-2.98, 35.26, -2.92, 35.32)}
 g_ins = ('<figure>\n<figcaption><span class="t">El mapa: cómo votó cada sección censal de Ceuta y de Melilla</span>'
@@ -262,7 +272,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="patron">En las dos ciudades, las secciones que ganó el PSOE en 2023 tienen mucha menos renta que las del PP. En Ceuta, la renta mediana por unidad de consumo de las secciones del PSOE era de {n(RM["51"]["g23"]["PSOE"])} euros y la de las del PP, de {n(RM["51"]["g23"]["PP"])}; en Melilla, de {n(RM["52"]["g23"]["PSOE"])} y {n(RM["52"]["g23"]["PP"])}. En el tercio de secciones con menos renta de Ceuta, el PSOE sacó el {p(TB["PSOE"])} %; en el de más renta, el PP sacó el {p(TA["PP"])} % y Vox, el {p(TA["VOX"])} %. En Melilla, el PSOE sacó el {p(TM["Renta baja"][Y23]["pct"]["PSOE"])} % en el tercio de menos renta, donde en 2019 Coalición por Melilla había sacado el {p(TM["Renta baja"][Y19]["pct"]["CPM"])} %. Cuánto vota cada barrio de las dos ciudades está en {L("ceuta-melilla-participacion-29n", "esta pieza")}.</p>
 {g_ren}
 <h2>Lo que puede cambiar el 29N</h2>
-<p data-tipo="dato">Con la media de encuestas de Mapa Electoral, el reparto central da los dos escaños al PP, como en 2023. En Melilla, la horquilla del PP no baja de uno. En Ceuta, la horquilla deja el escaño abierto: el PP puede perderlo, y Vox y el PSOE pueden ganarlo. Con un solo escaño no hay reparto: se lo lleva la lista más votada, aunque sea por pocos votos, como los {n(M19["52"])} con que el PP ganó Melilla en 2019.</p>
+<p data-tipo="dato">Con la media de encuestas de Mapa Electoral, el PP tiene Melilla casi segura: queda primero en el {p(PRIM["52"]["PP"])} % de las simulaciones. En Ceuta, el PP y Vox están prácticamente empatados: el voto central es del {p(VC["51"]["PP"])} % para el PP y del {p(VC["51"]["VOX"])} % para Vox, y el PP queda primero en el {p(PRIM["51"]["PP"])} % de las simulaciones, Vox en el {p(PRIM["51"]["VOX"])} % y el PSOE en el {p(PRIM["51"]["PSOE"])} %. Con un solo escaño no hay reparto: se lo lleva la lista más votada, aunque sea por pocos votos, como los {n(M19["52"])} con que el PP ganó Melilla en 2019.</p>
 {g_esc}
 <h2>Lo que estos datos no dicen</h2>
 <p data-tipo="hipotesis">Estos datos son por sección, no de personas: no dicen qué hizo en 2023 cada votante de Vox en Ceuta o de Coalición por Melilla en Melilla. Que el PSOE ganara en 2023 las secciones donde Coalición por Melilla había sido la más votada encaja con que recogiera parte de sus votos, pero el mapa no permite separarlo de otros movimientos, como la participación, que en Melilla bajó. La relación entre renta y voto es entre secciones, no entre personas. Los porcentajes son sobre votos a candidaturas y sin el voto exterior, por eso no coinciden con los oficiales. Las encuestas tienen un margen amplio a 17 días de la votación.</p>
@@ -279,7 +289,7 @@ preguntas = [
     ('¿Se presenta Coalición por Melilla el 29N?',
      'No. Ha pedido el voto para Pedro Sánchez, según COPE Melilla.'),
     ('¿Qué dicen las encuestas en Ceuta y Melilla?',
-     'Con la media de encuestas de Mapa Electoral, el reparto central da los dos escaños al PP; en Ceuta, la horquilla deja abierta la posibilidad de que lo gane Vox o el PSOE.'),
+     f'Con la media de encuestas de Mapa Electoral, el PP queda primero en Melilla en el {p(PRIM["52"]["PP"])} % de las simulaciones. En Ceuta, el PP y Vox están prácticamente empatados: el PP queda primero en el {p(PRIM["51"]["PP"])} % y Vox, en el {p(PRIM["51"]["VOX"])} %.'),
 ]
 enlaces = (f'{L("ceuta-historia-electoral", "Historia electoral de Ceuta")} · {L("melilla-historia-electoral", "Historia electoral de Melilla")} · '
            f'<a href="{BASE}encuestas/ceuta/">Encuesta en Ceuta</a> · <a href="{BASE}encuestas/melilla/">Encuesta en Melilla</a>')
@@ -288,14 +298,14 @@ foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio 
 
 R = lambda v: round(float(v), 4)
 DATOS = {'AG': AG, 'M19': M19, 'M23': M23, 'GS': GS, 'TRN': TRN, 'RM': {pr: {y: {f: R(v) for f, v in d.items()} for y, d in x.items()} for pr, x in RM.items()},
-         'TER': TER, 'RC': RC, 'ESC': {y: ESC[y] for y in (Y19, Y23)},
+         'TER': TER, 'RC': RC, 'PRIM': PRIM, 'VC': VC, 'ESC': {y: ESC[y] for y in (Y19, Y23)},
          'AJ': [[x.tract_code, x.g, x.seg, int(x.marg)] for _, x in AJ.iterrows()]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 
 pieza(SLUG, 'El mapa electoral de Ceuta y Melilla',
-      f'El mapa electoral de Ceuta y Melilla: Vox pasó de ganar {GS["51"][Y19]["VOX"]} secciones de Ceuta a ninguna, y las de Coalición por Melilla fueron al PSOE',
+      f'El mapa electoral de Ceuta y Melilla: Vox pasó de ganar {GS["51"][Y19]["VOX"]} secciones de Ceuta a ninguna, y {TRN["52"]["CPM>PSOE"]} de las {GS["52"][Y19]["CPM"]} de Coalición por Melilla fueron al PSOE',
       f'En 2019, Vox ganó el escaño de Ceuta y Coalición por Melilla se quedó a {n(M19["52"])} votos del de Melilla. En 2023, el PP ganó los dos. '
-      f'Para el 29N, la media de encuestas le da al PP los dos escaños, pero en Ceuta la horquilla lo deja abierto.',
+      f'Para el 29N, con la media de encuestas, el PP tiene Melilla casi segura ({p(PRIM["52"]["PP"])} % de las simulaciones) y en Ceuta está prácticamente empatado con Vox ({p(VC["51"]["PP"])} % frente a {p(VC["51"]["VOX"])} %).',
       '12 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('ok')
