@@ -192,4 +192,12 @@
       <news:title>El mapa electoral de La Rioja: el PP pasó de 108 a 138 municipios y ganó Logroño por 6.822 votos; con las encuestas, Vox le quitaría un diputado al PSOE</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-ceuta-melilla-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Ceuta y Melilla: Vox pasó de ganar 32 secciones de Ceuta a ninguna, y las de Coalición por Melilla fueron al PSOE</news:title>
+    </news:news>
+  </url>
 </urlset>

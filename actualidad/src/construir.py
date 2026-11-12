@@ -4689,6 +4689,22 @@ PIEZAS += [
         enlaces=[],
         lugar='La Rioja',
     ),
+    dict(
+        slug='mapa-electoral-ceuta-melilla-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Ceuta y Melilla: Vox pasó de ganar 32 secciones de Ceuta a ninguna, y las de Coalición por Melilla fueron al PSOE', serie='29n', figura=1,
+        descripcion='En 2019, Vox ganó el escaño de Ceuta y Coalición por Melilla se quedó a 178 votos del de Melilla. En 2023, el PP ganó los dos. Para el 29N, la media de encuestas le da al PP los dos escaños, pero en Ceuta la horquilla lo deja abierto.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en las 56 secciones censales de Ceuta y las 44 de Melilla: el partido más votado en cada una, a quién fueron las secciones de Vox en Ceuta y las de Coalición por Melilla, el voto en cada ciudad y según la renta de la sección; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por sección censal, no de personas: no dicen a quién votó en 2023 cada votante de Vox o de Coalición por Melilla. La relación entre renta y voto es entre secciones. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada sección con los votos de cada candidatura: Coalición por Melilla (2019 y 2023) y el MDyC de Ceuta (2019) con sus propios votos por sección, de los datos por mesa; ninguna sección terminó en empate. Renta: renta por unidad de consumo del Atlas de Distribución de Renta de los Hogares del INE (2023); los tercios tienen el mismo número de secciones. Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_ceuta_melilla.py.',
+        fuentes=[INTERIOR,
+                 ('https://mapaelectoral.es/listas-electorales-29n/', 'Mapa Electoral, listas proclamadas del 29N (BOE)'),
+                 ('https://www.ceutatv.com/politica/vox-presenta-candidatos-situa-soberania-seguridad-centro-29n/20261106185851259905.html', 'Ceuta TV, Vox presenta sus candidatos en Ceuta (6-11-2026)'),
+                 ('https://copemelilla.com/actualidad/coalicion-por-melilla-cpm-ha-anunciado-que-no-concurrira-a-las-elecciones-generales-y-ha-pedido-a-los-melillenses-que-respalden-la-candidatura-de-pedro-sanchez/224198', 'COPE Melilla, Coalición por Melilla no concurrirá el 29N (26-10-2026)'),
+                 INE,
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Ceuta y Melilla',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada

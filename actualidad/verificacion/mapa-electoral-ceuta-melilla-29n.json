@@ -1,0 +1,286 @@
+{
+ "pieza": "mapa-electoral-ceuta-melilla-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Melilla: Vox pasó de ganar 32 secciones de Ceuta a",
+   "cifra": "32",
+   "calculo": "D['GS']['51']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Coalición por Melilla se quedó a 178 votos del de Melilla.",
+   "cifra": "178",
+   "calculo": "D['M19']['52']"
+  },
+  {
+   "texto": "más votado en Ceuta, con 1.329 votos más que el PSOE",
+   "cifra": "1.329",
+   "calculo": "D['M19']['51']"
+  },
+  {
+   "texto": "voto exterior), y ganó en 32 de sus 56 secciones",
+   "cifra": "32",
+   "calculo": "D['GS']['51']['2019_11']['VOX']"
+  },
+  {
+   "texto": "exterior), y ganó en 32 de sus 56 secciones censales.",
+   "cifra": "56",
+   "calculo": "sum(D['GS']['51']['2019_11'].values())"
+  },
+  {
+   "texto": "En julio de 2023 bajó del 35,6 % al 23,5 % y no ganó",
+   "cifra": "35,6",
+   "calculo": "D['AG']['51']['2019_11']['pct']['VOX']"
+  },
+  {
+   "texto": "de 2023 bajó del 35,6 % al 23,5 % y no ganó en ninguna:",
+   "cifra": "23,5",
+   "calculo": "D['AG']['51']['2023_07']['pct']['VOX']"
+  },
+  {
+   "texto": "23,5 % y no ganó en ninguna: 28 pasaron al PP y cuatro",
+   "cifra": "28",
+   "calculo": "D['TRN']['51']['VOX>PP']"
+  },
+  {
+   "texto": "ninguna: 28 pasaron al PP y cuatro al PSOE. El PP, que",
+   "cifra": "cuatro",
+   "calculo": "D['TRN']['51']['VOX>PSOE']"
+  },
+  {
+   "texto": "que en 2019 había sacado el 22,5 %, subió al 39,2 % y",
+   "cifra": "22,5",
+   "calculo": "D['AG']['51']['2019_11']['pct']['PP']"
+  },
+  {
+   "texto": "sacado el 22,5 %, subió al 39,2 % y ganó el escaño por",
+   "cifra": "39,2",
+   "calculo": "D['AG']['51']['2023_07']['pct']['PP']"
+  },
+  {
+   "texto": "39,2 % y ganó el escaño por 1.588 votos sobre el PSOE.",
+   "cifra": "1.588",
+   "calculo": "D['M23']['51']"
+  },
+  {
+   "texto": "Melilla, el PP ganó en 2019 por 178 votos a Coalición por",
+   "cifra": "178",
+   "calculo": "D['M19']['52']"
+  },
+  {
+   "texto": "por Melilla, que sacó el 29,2 % y fue la más votada",
+   "cifra": "29,2",
+   "calculo": "D['AG']['52']['2019_11']['pct']['CPM']"
+  },
+  {
+   "texto": "% y fue la más votada en 17 de las 44 secciones.",
+   "cifra": "17",
+   "calculo": "D['GS']['52']['2019_11']['CPM']"
+  },
+  {
+   "texto": "la más votada en 17 de las 44 secciones. En 2023,",
+   "cifra": "44",
+   "calculo": "sum(D['GS']['52']['2019_11'].values())"
+  },
+  {
+   "texto": "Coalición por Melilla bajó al 4,8 % y no ganó ninguna.",
+   "cifra": "4,8",
+   "calculo": "D['AG']['52']['2023_07']['pct']['CPM']"
+  },
+  {
+   "texto": "y no ganó ninguna. De sus 17 secciones, 13 fueron",
+   "cifra": "17",
+   "calculo": "D['GS']['52']['2019_11']['CPM']"
+  },
+  {
+   "texto": "ninguna. De sus 17 secciones, 13 fueron al PSOE y cuatro",
+   "cifra": "13",
+   "calculo": "D['TRN']['52']['CPM>PSOE']"
+  },
+  {
+   "texto": "secciones, 13 fueron al PSOE y cuatro al PP. El PSOE subió",
+   "cifra": "cuatro",
+   "calculo": "D['TRN']['52']['CPM>PP']"
+  },
+  {
+   "texto": "al PP. El PSOE subió del 16,5 % al 25,6 %, y el PP,",
+   "cifra": "16,5",
+   "calculo": "D['AG']['52']['2019_11']['pct']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 16,5 % al 25,6 %, y el PP, del 29,8",
+   "cifra": "25,6",
+   "calculo": "D['AG']['52']['2023_07']['pct']['PSOE']"
+  },
+  {
+   "texto": "% al 25,6 %, y el PP, del 29,8 % al 49,7 %, que le",
+   "cifra": "29,8",
+   "calculo": "D['AG']['52']['2019_11']['pct']['PP']"
+  },
+  {
+   "texto": "%, y el PP, del 29,8 % al 49,7 %, que le dio el escaño",
+   "cifra": "49,7",
+   "calculo": "D['AG']['52']['2023_07']['pct']['PP']"
+  },
+  {
+   "texto": "que le dio el escaño por 6.479 votos. La participación",
+   "cifra": "6.479",
+   "calculo": "D['M23']['52']"
+  },
+  {
+   "texto": "La participación bajó del 57,1 % al 49,8 %.",
+   "cifra": "57,1",
+   "calculo": "D['AG']['52']['2019_11']['part']"
+  },
+  {
+   "texto": "participación bajó del 57,1 % al 49,8 %.",
+   "cifra": "49,8",
+   "calculo": "D['AG']['52']['2023_07']['part']"
+  },
+  {
+   "texto": "secciones del PSOE era de 14.318 euros y la de las del",
+   "cifra": "14.318",
+   "calculo": "D['RM']['51']['g23']['PSOE']"
+  },
+  {
+   "texto": "euros y la de las del PP, de 29.727; en Melilla, de 12.749",
+   "cifra": "29.727",
+   "calculo": "D['RM']['51']['g23']['PP']"
+  },
+  {
+   "texto": "de 29.727; en Melilla, de 12.749 y 24.657. En el tercio",
+   "cifra": "12.749",
+   "calculo": "D['RM']['52']['g23']['PSOE']"
+  },
+  {
+   "texto": "29.727; en Melilla, de 12.749 y 24.657. En el tercio de secciones",
+   "cifra": "24.657",
+   "calculo": "D['RM']['52']['g23']['PP']"
+  },
+  {
+   "texto": "de Ceuta, el PSOE sacó el 64,6 %; en el de más renta,",
+   "cifra": "64,6",
+   "calculo": "D['TER']['51']['Renta baja']['2023_07']['pct']['PSOE']"
+  },
+  {
+   "texto": "más renta, el PP sacó el 51,9 % y Vox, el 26,8 %.",
+   "cifra": "51,9",
+   "calculo": "D['TER']['51']['Renta alta']['2023_07']['pct']['PP']"
+  },
+  {
+   "texto": "sacó el 51,9 % y Vox, el 26,8 %. En Melilla, el PSOE",
+   "cifra": "26,8",
+   "calculo": "D['TER']['51']['Renta alta']['2023_07']['pct']['VOX']"
+  },
+  {
+   "texto": "Melilla, el PSOE sacó el 43,9 % en el tercio de menos",
+   "cifra": "43,9",
+   "calculo": "D['TER']['52']['Renta baja']['2023_07']['pct']['PSOE']"
+  },
+  {
+   "texto": "por Melilla había sacado el 62,8 %. Cuánto vota cada",
+   "cifra": "62,8",
+   "calculo": "D['TER']['52']['Renta baja']['2019_11']['pct']['CPM']"
+  },
+  {
+   "texto": "por pocos votos, como los 178 con que el PP ganó Melilla",
+   "cifra": "178",
+   "calculo": "D['M19']['52']"
+  },
+  {
+   "texto": "Vox ganó 32 de las 56 secciones",
+   "cifra": "32",
+   "calculo": "D['GS']['51']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox ganó 32 de las 56 secciones de Ceuta en",
+   "cifra": "56",
+   "calculo": "sum(D['GS']['51']['2019_11'].values())"
+  },
+  {
+   "texto": "en 2019 y ninguna en 2023: 28 pasaron al PP y cuatro",
+   "cifra": "28",
+   "calculo": "D['TRN']['51']['VOX>PP']"
+  },
+  {
+   "texto": "2023: 28 pasaron al PP y cuatro al PSOEPartido más votado",
+   "cifra": "cuatro",
+   "calculo": "D['TRN']['51']['VOX>PSOE']"
+  },
+  {
+   "texto": "votado en cada una de las 56 secciones censales de",
+   "cifra": "56",
+   "calculo": "sum(D['GS']['51']['2019_11'].values())"
+  },
+  {
+   "texto": "Coalición por Melilla ganó 17 de las 44 secciones",
+   "cifra": "17",
+   "calculo": "D['GS']['52']['2019_11']['CPM']"
+  },
+  {
+   "texto": "por Melilla ganó 17 de las 44 secciones de Melilla",
+   "cifra": "44",
+   "calculo": "sum(D['GS']['52']['2019_11'].values())"
+  },
+  {
+   "texto": "Melilla en 2019; en 2023, 13 de ellas fueron del",
+   "cifra": "13",
+   "calculo": "D['TRN']['52']['CPM>PSOE']"
+  },
+  {
+   "texto": "votado en cada una de las 44 secciones censales de",
+   "cifra": "44",
+   "calculo": "sum(D['GS']['52']['2019_11'].values())"
+  },
+  {
+   "texto": "En Ceuta, Vox bajó del 35,6 % al 23,5 %; en Melilla,",
+   "cifra": "35,6",
+   "calculo": "D['AG']['51']['2019_11']['pct']['VOX']"
+  },
+  {
+   "texto": "Ceuta, Vox bajó del 35,6 % al 23,5 %; en Melilla, el PSOE",
+   "cifra": "23,5",
+   "calculo": "D['AG']['51']['2023_07']['pct']['VOX']"
+  },
+  {
+   "texto": "Melilla, el PSOE subió del 16,5 % al 25,6 %, con Coalición",
+   "cifra": "16,5",
+   "calculo": "D['AG']['52']['2019_11']['pct']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 16,5 % al 25,6 %, con Coalición por",
+   "cifra": "25,6",
+   "calculo": "D['AG']['52']['2023_07']['pct']['PSOE']"
+  },
+  {
+   "texto": "Coalición por Melilla en el 4,8 %Voto a cada partido",
+   "cifra": "4,8",
+   "calculo": "D['AG']['52']['2023_07']['pct']['CPM']"
+  },
+  {
+   "texto": "de Ceuta, el PSOE sacó el 64,6 % en 2023; en el de",
+   "cifra": "64,6",
+   "calculo": "D['TER']['51']['Renta baja']['2023_07']['pct']['PSOE']"
+  },
+  {
+   "texto": "el de más renta, el PP, el 51,9 %Voto al PP, al PSOE",
+   "cifra": "51,9",
+   "calculo": "D['TER']['51']['Renta alta']['2023_07']['pct']['PP']"
+  },
+  {
+   "texto": "sección: cada ciudad, partida en tres grupos con el mismo",
+   "cifra": "tres",
+   "calculo": "len(D['TER']['51'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  }
+ ],
+ "permitir_espana": []
+}

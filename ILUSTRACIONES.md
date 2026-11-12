@@ -20,7 +20,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (97)
+## Pendientes (98)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
@@ -39,6 +39,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 | 2026-11-12 | [`cis-preelectoral-29n`](https://mapaelectoral.es/actualidad/cis-preelectoral-29n/) | El CIS preelectoral da al PSOE 7,8 puntos de ventaja; la media de las demás encuestas, 3,6 al PP | primer gráfico de la pieza |
 | 2026-11-12 | [`mapa-electoral-cantabria-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-cantabria-29n/) | El mapa electoral de Cantabria: sin el PRC en la papeleta, el PP pasó de 55 a 85 municipios y ganó El Astillero por 5 votos | primer gráfico de la pieza |
 | 2026-11-12 | [`mapa-electoral-la-rioja-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-la-rioja-29n/) | El mapa electoral de La Rioja: el PP pasó de 108 a 138 municipios y ganó Logroño por 6.822 votos; con las encuestas, Vox le quitaría un diputado al PSOE | primer gráfico de la pieza |
+| 2026-11-12 | [`mapa-electoral-ceuta-melilla-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-ceuta-melilla-29n/) | El mapa electoral de Ceuta y Melilla: Vox pasó de ganar 32 secciones de Ceuta a ninguna, y las de Coalición por Melilla fueron al PSOE | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-cataluna-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/) | El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462 | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-madrid-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/) | El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158 | primer gráfico de la pieza |
 | 2026-11-11 | [`renta-activacion-ingreso-minimo-vital-29n`](https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/) | El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa | primer gráfico de la pieza |
