@@ -1,0 +1,425 @@
+{
+ "pieza": "mapa-electoral-cantabria-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "la papeleta, el PP pasó de 55 a 85 municipios y ganó",
+   "cifra": "55",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "papeleta, el PP pasó de 55 a 85 municipios y ganó El",
+   "cifra": "85",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "municipios y ganó El Astillero por 5 votos",
+   "cifra": "5",
+   "calculo": "D['GC']['El Astillero']['margv23']"
+  },
+  {
+   "texto": "El PRC ganó en 31 municipios en 2019 y",
+   "cifra": "31",
+   "calculo": "D['GANA']['2019_11']['PRC']"
+  },
+  {
+   "texto": "y no se presentó en 2023: 25 fueron al PP y 6 al",
+   "cifra": "25",
+   "calculo": "D['PRC_PP']"
+  },
+  {
+   "texto": "en 2023: 25 fueron al PP y 6 al PSOE. Tampoco está",
+   "cifra": "6",
+   "calculo": "D['PRC_PSOE']"
+  },
+  {
+   "texto": "encuestas da al PP dos de los 5 diputados, al PSOE dos",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "elige el 29 de noviembre 5 diputados entre siete",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "noviembre de 2019, el PRC sacó el 21,2 % de los votos a candidaturas",
+   "cifra": "21,2",
+   "calculo": "D['A19']['pct']['PRC']"
+  },
+  {
+   "texto": "candidaturas y fue el más votado en 31 de los 102 municipios.",
+   "cifra": "31",
+   "calculo": "D['GANA']['2019_11']['PRC']"
+  },
+  {
+   "texto": "el más votado en 31 de los 102 municipios. El PP ganó",
+   "cifra": "102",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios. El PP ganó en 55, entre ellos Santander,",
+   "cifra": "55",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "Santander, y el PSOE, en 15, entre ellos Torrelavega.",
+   "cifra": "15",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "papeleta, el PP subió del 26,0 % al 42,5 % y ganó en",
+   "cifra": "26,0",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "el PP subió del 26,0 % al 42,5 % y ganó en 85 municipios;",
+   "cifra": "42,5",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "26,0 % al 42,5 % y ganó en 85 municipios; el PSOE,",
+   "cifra": "85",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "municipios; el PSOE, del 23,3 % al 33,6 %, y ganó",
+   "cifra": "23,3",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "municipios; el PSOE, del 23,3 % al 33,6 %, y ganó en 17. Vox",
+   "cifra": "33,6",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "23,3 % al 33,6 %, y ganó en 17. Vox se quedó casi igual,",
+   "cifra": "17",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "se quedó casi igual, del 15,0 % al 14,2 %.",
+   "cifra": "15,0",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "casi igual, del 15,0 % al 14,2 %.",
+   "cifra": "14,2",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "El PP subió en los 102 municipios y el PSOE,",
+   "cifra": "102",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios y el PSOE, en 101. La participación pasó",
+   "cifra": "101",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "La participación pasó del 70,8 % al 75,4 %. Ciudadanos,",
+   "cifra": "70,8",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación pasó del 70,8 % al 75,4 %. Ciudadanos, que había",
+   "cifra": "75,4",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 4,8 % en 2019, tampoco se",
+   "cifra": "4,8",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "presentó, y Sumar sacó el 8,5 %, frente al 8,7 % de",
+   "cifra": "8,5",
+   "calculo": "D['A23']['pct']['SUMAR']"
+  },
+  {
+   "texto": "sacó el 8,5 %, frente al 8,7 % de Unidas Podemos.",
+   "cifra": "8,7",
+   "calculo": "D['A19']['pct']['UP']"
+  },
+  {
+   "texto": "ganó el PP en 2023 reúnen el 79,3 % de la población.",
+   "cifra": "79,3",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "De los 31 municipios que ganó",
+   "cifra": "31",
+   "calculo": "D['GANA']['2019_11']['PRC']"
+  },
+  {
+   "texto": "que ganó el PRC en 2019, 25 fueron al PP en 2023",
+   "cifra": "25",
+   "calculo": "D['PRC_PP']"
+  },
+  {
+   "texto": "25 fueron al PP en 2023 y 6 al PSOE. En esos 31,",
+   "cifra": "6",
+   "calculo": "D['PRC_PSOE']"
+  },
+  {
+   "texto": "2023 y 6 al PSOE. En esos 31, donde el PRC había",
+   "cifra": "31",
+   "calculo": "D['GANA']['2019_11']['PRC']"
+  },
+  {
+   "texto": "donde el PRC había sacado el 29,3 %, el PP subió del 22,5",
+   "cifra": "29,3",
+   "calculo": "D['PRS']['2019_11']['PRC']"
+  },
+  {
+   "texto": "el 29,3 %, el PP subió del 22,5 % al 40,9 % y el PSOE,",
+   "cifra": "22,5",
+   "calculo": "D['PRS']['2019_11']['PP']"
+  },
+  {
+   "texto": "el PP subió del 22,5 % al 40,9 % y el PSOE, del 21,4",
+   "cifra": "40,9",
+   "calculo": "D['PRS']['2023_07']['PP']"
+  },
+  {
+   "texto": "al 40,9 % y el PSOE, del 21,4 % al 34,4 %. De los",
+   "cifra": "21,4",
+   "calculo": "D['PRS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "y el PSOE, del 21,4 % al 34,4 %. De los diez donde",
+   "cifra": "34,4",
+   "calculo": "D['PRS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "21,4 % al 34,4 %. De los diez donde más votó al PRC,",
+   "cifra": "diez",
+   "calculo": "len(D['FUE'])"
+  },
+  {
+   "texto": "PRC, como Valderredible (43,5 %) y Soba (42,9 %),",
+   "cifra": "43,5",
+   "calculo": "D['FUE'][0][1]"
+  },
+  {
+   "texto": "Valderredible (43,5 %) y Soba (42,9 %), siete fueron al",
+   "cifra": "42,9",
+   "calculo": "D['FUE'][1][1]"
+  },
+  {
+   "texto": "(43,5 %) y Soba (42,9 %), siete fueron al PP.",
+   "cifra": "siete",
+   "calculo": "sum(1 for x in D['FUE'] if x[2] == 'PP')"
+  },
+  {
+   "texto": "Santander las dos veces: por 6.512 votos sobre el PSOE",
+   "cifra": "6.512",
+   "calculo": "D['GC']['Santander']['margv19']"
+  },
+  {
+   "texto": "sobre el PSOE en 2019 y por 13.259 en 2023, con el 45,5",
+   "cifra": "13.259",
+   "calculo": "D['GC']['Santander']['margv23']"
+  },
+  {
+   "texto": "por 13.259 en 2023, con el 45,5 %. El PSOE ganó Torrelavega",
+   "cifra": "45,5",
+   "calculo": "D['GC']['Santander']['pp23']"
+  },
+  {
+   "texto": "las dos veces, en 2019 por 1.414 votos sobre el PRC,",
+   "cifra": "1.414",
+   "calculo": "D['GC']['Torrelavega']['margv19']"
+  },
+  {
+   "texto": "el PRC, que sacó allí el 23,6 %, y en 2023 por 1.590",
+   "cifra": "23,6",
+   "calculo": "D['GC']['Torrelavega']['prc19']"
+  },
+  {
+   "texto": "el 23,6 %, y en 2023 por 1.590 sobre el PP. De los",
+   "cifra": "1.590",
+   "calculo": "D['GC']['Torrelavega']['margv23']"
+  },
+  {
+   "texto": "1.590 sobre el PP. De los diez municipios de más de",
+   "cifra": "diez",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "de Buelna, este último por 64 votos. El Astillero,",
+   "cifra": "64",
+   "calculo": "D['GC']['Los Corrales de Buelna']['margv23']"
+  },
+  {
+   "texto": "del PSOE, pasó al PP por 5 votos, y Laredo, que",
+   "cifra": "5",
+   "calculo": "D['GC']['El Astillero']['margv23']"
+  },
+  {
+   "texto": "que el PRC había ganado por 69, también fue al PP.",
+   "cifra": "69",
+   "calculo": "D['GC']['Laredo']['margv19']"
+  },
+  {
+   "texto": "en 2023: Peñarrubia, por 2 votos para el PSOE,",
+   "cifra": "2",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "votos para el PSOE, y, de los ocho más ajustados, cuatro",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])"
+  },
+  {
+   "texto": "de los ocho más ajustados, cuatro habían sido del PRC",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for x in D['AJ'] if x[5] == 'PRC')"
+  },
+  {
+   "texto": "el reparto central de los 5 escaños da al PP dos,",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "horquilla del PP llega a tres y la del PSOE baja a",
+   "cifra": "tres",
+   "calculo": "D['RC']['PP'][2]"
+  },
+  {
+   "texto": "El PP pasó de ganar en 55 municipios a ganar en",
+   "cifra": "55",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "55 municipios a ganar en 85; los 31 del PRC, que",
+   "cifra": "85",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "municipios a ganar en 85; los 31 del PRC, que no se presentó",
+   "cifra": "31",
+   "calculo": "D['GANA']['2019_11']['PRC']"
+  },
+  {
+   "texto": "presentó en 2023, fueron 25 al PP y 6 al PSOEPartido",
+   "cifra": "25",
+   "calculo": "D['PRC_PP']"
+  },
+  {
+   "texto": "en 2023, fueron 25 al PP y 6 al PSOEPartido más votado",
+   "cifra": "6",
+   "calculo": "D['PRC_PSOE']"
+  },
+  {
+   "texto": "votado en cada uno de los 102 municipios de Cantabria,",
+   "cifra": "102",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 31 municipios que ganó",
+   "cifra": "31",
+   "calculo": "D['GANA']['2019_11']['PRC']"
+  },
+  {
+   "texto": "en 2019, el PP subió del 22,5 % al 40,9 %; el PSOE,",
+   "cifra": "22,5",
+   "calculo": "D['PRS']['2019_11']['PP']"
+  },
+  {
+   "texto": "el PP subió del 22,5 % al 40,9 %; el PSOE, del 21,4",
+   "cifra": "40,9",
+   "calculo": "D['PRS']['2023_07']['PP']"
+  },
+  {
+   "texto": "% al 40,9 %; el PSOE, del 21,4 % al 34,4 %Voto al PP,",
+   "cifra": "21,4",
+   "calculo": "D['PRS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "%; el PSOE, del 21,4 % al 34,4 %Voto al PP, al PSOE,",
+   "cifra": "34,4",
+   "calculo": "D['PRS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "De los diez municipios donde más",
+   "cifra": "diez",
+   "calculo": "len(D['FUE'])"
+  },
+  {
+   "texto": "más votó al PRC en 2019, siete fueron al PP en 2023Voto",
+   "cifra": "siete",
+   "calculo": "sum(1 for x in D['FUE'] if x[2] == 'PP')"
+  },
+  {
+   "texto": "noviembre de 2019 en los diez municipios donde más",
+   "cifra": "diez",
+   "calculo": "len(D['FUE'])"
+  },
+  {
+   "texto": "PP ganó El Astillero por 5 votos en 2023; Santander,",
+   "cifra": "5",
+   "calculo": "D['GC']['El Astillero']['margv23']"
+  },
+  {
+   "texto": "votos en 2023; Santander, por 13.259, y el PSOE retuvo Torrelavega",
+   "cifra": "13.259",
+   "calculo": "D['GC']['Santander']['margv23']"
+  },
+  {
+   "texto": "PP, al PSOE y al PRC en los diez municipios de más de",
+   "cifra": "diez",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "Peñarrubia fue para el PSOE por 2 votos, y El Astillero,",
+   "cifra": "2",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los ocho municipios más ajustados,",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])"
+  },
+  {
+   "texto": "el PSOE y uno para VoxLos 5 diputados de Cantabria:",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "noviembre 5 diputados entre siete candidaturas, dos menos",
+   "motivo": "candidaturas al Congreso en Cantabria, según elDiario Cantabria"
+  },
+  {
+   "texto": "elDiario Cantabria. Entre las siete no está el PRC, que",
+   "motivo": "candidaturas al Congreso en Cantabria, según elDiario Cantabria"
+  },
+  {
+   "texto": "diez municipios de más de 10.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "PSOE retuvo Torrelavega por 1.590Voto al PP, al PSOE",
+   "motivo": "fragmento de «1.590» (título del gráfico pegado al subtítulo), ya comprobado"
+  },
+  {
+   "texto": "diez municipios de más de 10.000 habitantes, en %. Barra",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "El Astillero, con más de 18.000 habitantes, para el",
+   "motivo": "redondeo de la población de El Astillero (18.298, padrón 2023, en la tabla)"
+  }
+ ],
+ "permitir_espana": []
+}
