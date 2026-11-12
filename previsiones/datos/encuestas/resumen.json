@@ -1,5 +1,5 @@
 {
- "descargado": "2026-11-12T19:21Z",
+ "descargado": "2026-11-12T19:38Z",
  "fuente": "https://www.electografica.com",
  "encuestas_espana": 1078,
  "encuestas_infraestatales": 139,
@@ -18,5 +18,10 @@
   "CeC": 1,
   "MÉS ESQUERRA": 1,
   "PSOE (115/117) · VOX": 1
+ },
+ "wikipedia": {
+  "encuestas": 609,
+  "ultima_fin_campo": "2026-11-10",
+  "faltan_en_electografica_120_dias": 18
  }
 }
