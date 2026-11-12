@@ -87,10 +87,13 @@ OTRO = ('OTROS', '', 'Otros', '#8a8589', '#a9a4a8', None)
 
 
 def familia(siglas, denominacion):
+    # primero las siglas y después la denominación: en «EH BILDU-ERC» (Navarra y Senado vasco) manda EH Bildu,
+    # aunque la denominación diga «ESQUERRA REPUBLICANA» (corrección del 12-11-2026)
     s, d = siglas.upper(), denominacion.upper()
-    for p in PARTIDOS:
-        if re.search(p[1], s) or re.search(p[1], d):
-            return p
+    for texto in (s, d):
+        for p in PARTIDOS:
+            if re.search(p[1], texto):
+                return p
     return OTRO
 
 
