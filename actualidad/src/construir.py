@@ -4443,6 +4443,21 @@ PIEZAS += [
         enlaces=[],
         lugar='Castilla y León',
     ),
+    dict(
+        slug='mapa-electoral-galicia-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Galicia: el PSOE ganó en 18 de las 22 ciudades y villas de más de 20.000 habitantes en 2019 y solo en dos en 2023', serie='29n', figura=1,
+        descripcion='El PSOE sumó 19.392 votos, pero pasó de 83 a 15 de los 313 municipios, y los que ganó pasaron de reunir el 60,9 % de la población al 13,0 %. El BNG subió y no ganó en ninguno. Para el 29N, la media de encuestas da al PP 14 de los 23 diputados y al BNG dos.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 313 municipios de Galicia: el partido más votado en cada uno, los 68 que pasaron del PSOE al PP, el voto según el tamaño del municipio, las siete ciudades, el BNG, las cuatro provincias, los municipios más ajustados; y el reparto central de la media de encuestas del 29N en las cuatro provincias.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Ciudadanos o de Vox en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado); no hubo empates a votos. Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_galicia.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.elespanol.com/quincemil/actualidad/galicia/20261112/campana-arranca-viernes-galicia-semana-marcada-huelga-general/1003744450971_0.html', 'El Español (Quincemil), la campaña del 29N en Galicia (12-11-2026)'),
+                 ('https://www.esdiario.com/galicia/261005/199513/rueda-senala-interes-personal-sanchez-convocar-elecciones-destapa-motivo-ve-detras-movimiento.html', 'ESdiario, Alfonso Rueda sobre el adelanto electoral (5-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/25/bng-listas-29n-olalla-rodil-lugo-3455123/', 'Moncloa.com, las listas del BNG al Congreso (25-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Galicia',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
