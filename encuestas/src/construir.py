@@ -221,6 +221,7 @@ def estimacion():
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
                           for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023 y Adelante Andalucía', '#e30613')) if b)}{f'<div><b style="color:#1d84ce">{prob(p_desde(pv, 210))}</b><span>de las simulaciones: PP y Vox llegan a 210, los tres quintos</span></div>' if p_desde(pv, 210) is not None else ''}</div>
 <p>{frase}</p>
+<p class="src">En Navarra, UPN y el PP van juntos el 29N en una sola lista, <a href="navarra/">UPN-PP</a> (BOE del 3-11-2026): el modelo la reparte como una candidatura y sus escaños cuentan en la fila del PP y en el bloque PP + Vox.</p>
 <p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt. Y en el <a href="simulador-pactos/">simulador de pactos</a>, decide qué vota cada partido y mira quién sale investido.</p>
 <figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. Las líneas marcan la mayoría absoluta (176) y los tres quintos (210); en color intenso, la horquilla del 80 %.</span></figcaption>
 <div class="chart" id="dist-bloques"></div></figure>

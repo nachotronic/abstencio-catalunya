@@ -1,0 +1,154 @@
+{
+ "pieza": "pacto-pp-vox-senado-provincias-29n",
+ "cifras": [
+  {
+   "texto": "con las encuestas sumarían entre 159 y 164 senadores, alrededor de los 160",
+   "cifra": "159",
+   "calculo": "ESC[1][2]+28"
+  },
+  {
+   "texto": "con las encuestas sumarían entre 159 y 164 senadores, alrededor de los 160",
+   "cifra": "164",
+   "calculo": "ESC[3][2]+28"
+  },
+  {
+   "texto": "Con las encuestas, PP y Vox sacarían 123 senadores elegidos sin pacto y entre 131 y 136 con el acuerdo.",
+   "cifra": "123",
+   "calculo": "ESC[0][2]"
+  },
+  {
+   "texto": "Con las encuestas, PP y Vox sacarían 123 senadores elegidos sin pacto y entre 131 y 136 con el acuerdo.",
+   "cifra": "131",
+   "calculo": "ESC[1][2]"
+  },
+  {
+   "texto": "Con las encuestas, PP y Vox sacarían 123 senadores elegidos sin pacto y entre 131 y 136 con el acuerdo.",
+   "cifra": "136",
+   "calculo": "max(e[2] for e in ESC[1:4])"
+  },
+  {
+   "texto": "Con sus 28 designados, se quedarían entre 159 y 164, a ambos lados de los 160 de los tres quintos. Sin el pacto, 151.",
+   "cifra": "159",
+   "calculo": "ESC[1][2]+28"
+  },
+  {
+   "texto": "Con sus 28 designados, se quedarían entre 159 y 164, a ambos lados de los 160 de los tres quintos. Sin el pacto, 151.",
+   "cifra": "164",
+   "calculo": "ESC[3][2]+28"
+  },
+  {
+   "texto": "Con sus 28 designados, se quedarían entre 159 y 164, a ambos lados de los 160 de los tres quintos. Sin el pacto, 151.",
+   "cifra": "151",
+   "calculo": "ESC[0][2]+28"
+  },
+  {
+   "texto": "que con las encuestas sacaría tres de los cuatro senadores",
+   "cifra": "tres",
+   "calculo": "NAV[0][2]"
+  },
+  {
+   "texto": "que con las encuestas sacaría tres de los cuatro senadores",
+   "cifra": "cuatro",
+   "calculo": "sum(n[2] for n in NAV)"
+  },
+  {
+   "texto": "Con ellos, entre 161 y 166.",
+   "cifra": "161",
+   "calculo": "ESC[1][2]+28+NAV[0][2]-NAV[0][3]"
+  },
+  {
+   "texto": "Con ellos, entre 161 y 166.",
+   "cifra": "166",
+   "calculo": "ESC[3][2]+28+NAV[0][2]-NAV[0][3]"
+  },
+  {
+   "texto": "Con los votos de 2023 la cuenta queda lejos: 80 senadores elegidos sin pacto y entre 90 y 107 con él.",
+   "cifra": "80",
+   "calculo": "ESC[0][1]"
+  },
+  {
+   "texto": "Con los votos de 2023 la cuenta queda lejos: 80 senadores elegidos sin pacto y entre 90 y 107 con él.",
+   "cifra": "90",
+   "calculo": "ESC[1][1]"
+  },
+  {
+   "texto": "Con los votos de 2023 la cuenta queda lejos: 80 senadores elegidos sin pacto y entre 90 y 107 con él.",
+   "cifra": "107",
+   "calculo": "ESC[3][1]"
+  },
+  {
+   "texto": "Si PP y Vox hubieran ido juntos en todas partes, 127.",
+   "cifra": "127",
+   "calculo": "ESC[4][1]"
+  },
+  {
+   "texto": "Con las encuestas, la lista única llegaría a 136",
+   "cifra": "136",
+   "calculo": "ESC[4][2]"
+  },
+  {
+   "texto": "En las 14 provincias de un solo candidato de Vox, el acuerdo apenas cambia nada con las encuestas, salvo en tres. En diez, el PP ya ganaría solo",
+   "cifra": "14",
+   "calculo": "len([r for r in PR if r[0]=='Vox presenta un solo candidato'])"
+  },
+  {
+   "texto": "En las 14 provincias de un solo candidato de Vox, el acuerdo apenas cambia nada con las encuestas, salvo en tres. En diez, el PP ya ganaría solo",
+   "cifra": "tres",
+   "calculo": "sum(r[4]!=r[5] for r in [r for r in PR if r[0]=='Vox presenta un solo candidato'])"
+  },
+  {
+   "texto": "En las 14 provincias de un solo candidato de Vox, el acuerdo apenas cambia nada con las encuestas, salvo en tres. En diez, el PP ya ganaría solo",
+   "cifra": "diez",
+   "calculo": "sum(r[4]=='3' for r in [r for r in PR if r[0]=='Vox presenta un solo candidato'])"
+  },
+  {
+   "texto": "esa lista se llevaría tres senadores con o sin acuerdo. Las tres que quedan son Sevilla",
+   "cifra": "tres",
+   "calculo": "NAV[0][2]"
+  },
+  {
+   "texto": "esos votos decidirían once provincias",
+   "cifra": "once",
+   "calculo": "sum(r[2]!=r[3] for r in [r for r in PR if r[0]=='Vox presenta un solo candidato'])"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "con las encuestas sumarían entre 159 y 164 senadores, alrededor de los 160",
+   "cifra": "160",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a159"
+  },
+  {
+   "texto": "Con sus 28 designados, se quedarían entre 159 y 164, a ambos lados de los 160 de los tres quintos. Sin el pacto, 151.",
+   "cifra": "28",
+   "fuente": "https://www.europapress.es/nacional/noticia-senado-tiene-casi-60-escanos-asignados-margen-elecciones-23-pp-19-psoe-vox-20261026175641.html"
+  },
+  {
+   "texto": "Con sus 28 designados, se quedarían entre 159 y 164, a ambos lados de los 160 de los tres quintos. Sin el pacto, 151.",
+   "cifra": "160",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a159"
+  },
+  {
+   "texto": "porque con Vox en el 18,9% el PP ya gana solo",
+   "cifra": "18,9",
+   "fuente": "https://mapaelectoral.es/encuestas/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Con sus 28 designados, se quedarían entre 159 y 164, a ambos lados de los 160 de los tres quintos. Sin el pacto, 151.",
+   "cifra": "tres",
+   "motivo": "«tres quintos», la mayoría, no un dato"
+  },
+  {
+   "texto": "esa lista se llevaría tres senadores con o sin acuerdo. Las tres que quedan son Sevilla",
+   "cifra": "tres",
+   "motivo": "«las tres que quedan» repite el «salvo en tres» declarado antes (Sevilla, Asturias y Álava)"
+  },
+  {
+   "texto": "el PP pasaría de uno a tres senadores en las dos primeras",
+   "cifra": "tres",
+   "motivo": "tres senadores del PP en Sevilla y Asturias: PR, columna Encuestas-Acuerdo «1 / 3», sin cambios en esta corrección"
+  }
+ ]
+}

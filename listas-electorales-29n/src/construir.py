@@ -68,8 +68,9 @@ PARTIDOS = [
     ('CUP', r'^CUP', 'CUP', '#d4b200', '#f0d000', 'CUP'),
 ]
 # Coaliciones que el modelo no simula como una sola lista: sin probabilidad por puesto (el modelo da por separado
-# PP y UPN en Navarra, y Nueva Canarias y Sumar/Podemos en Canarias)
-SIN_MODELO = r'UPN-PP|UNIDAD DEL PUEBLO CANARIO'
+# Nueva Canarias y Sumar/Podemos en Canarias). UPN-PP (Navarra) sí: desde el 12-11-2026 el modelo suma UPN al PP en
+# Navarra (previsiones/src/motor.py, une_upn_pp) y la lista toma las probabilidades de la columna del PP.
+SIN_MODELO = r'UNIDAD DEL PUEBLO CANARIO'
 # Titulares que renuncian después de la proclamación: su nombre sigue en la papeleta (LOREG art. 48.1), pero no ocupan
 # el escaño si sale; lo cubre el siguiente de la lista (art. 48.2). Sin probabilidad propia: los puestos de debajo
 # suben uno. Clave: (provincia, nombre según clave_nombre).
@@ -202,6 +203,8 @@ def prepara(datos, avance):
             continue
         f = familia(c['siglas'], c['denominacion'])
         corto = f[2] if f[0] != 'OTROS' else (c['siglas'] or c['denominacion'])
+        if c['siglas'] == 'UPN-PP':   # la lista conjunta de Navarra, con su nombre (cuenta como PP en el modelo)
+            corto = 'UPN-PP'
         if avance and f[0] == 'SUMAR':   # en 2023 no existía el Frente Amplio
             corto = 'Sumar'
         c = dict(c, fam=f[0], corto=corto, color=f[3], oscuro=f[4])
