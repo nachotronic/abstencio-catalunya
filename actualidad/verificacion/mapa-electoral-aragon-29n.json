@@ -1,0 +1,641 @@
+{
+ "pieza": "mapa-electoral-aragon-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "de Aragón: el PSOE ganó en 12 de las 15 ciudades de",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 10.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "el PSOE ganó en 12 de las 15 ciudades de más de 10.000",
+   "cifra": "15",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "El PSOE sumó 6.554 votos, pero pasó de",
+   "cifra": "6.554",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "6.554 votos, pero pasó de 379 a 232 municipios, y",
+   "cifra": "379",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "votos, pero pasó de 379 a 232 municipios, y los que",
+   "cifra": "232",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 85,0 % de la población al",
+   "cifra": "85,0",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "85,0 % de la población al 11,3 %. Teruel Existe, de",
+   "cifra": "11,3",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "11,3 %. Teruel Existe, de 40 a cinco. Para el 29N,",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['TE']"
+  },
+  {
+   "texto": "%. Teruel Existe, de 40 a cinco. Para el 29N, la media",
+   "cifra": "cinco",
+   "calculo": "D['GANA']['2023_07']['TE']"
+  },
+  {
+   "texto": "media de encuestas da al PP 5 de los 13 diputados,",
+   "cifra": "5",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas da al PP 5 de los 13 diputados, al PSOE 4",
+   "cifra": "13",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "los 13 diputados, al PSOE 4 y a Vox 4.",
+   "cifra": "4",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "diputados, al PSOE 4 y a Vox 4.",
+   "cifra": "4",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 13 diputados: 7 en Zaragoza",
+   "cifra": "13",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de noviembre 13 diputados: 7 en Zaragoza y 3 en Huesca",
+   "cifra": "7",
+   "calculo": "D['ESC26']['50']"
+  },
+  {
+   "texto": "diputados: 7 en Zaragoza y 3 en Huesca y en Teruel.",
+   "cifra": "3",
+   "calculo": "D['ESC26']['22']"
+  },
+  {
+   "texto": "el partido más votado en 379 de los 731 municipios",
+   "cifra": "379",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "más votado en 379 de los 731 municipios aragoneses,",
+   "cifra": "731",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios aragoneses, el PP en 259, Teruel Existe en 40",
+   "cifra": "259",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "en 259, Teruel Existe en 40 y Vox en 22; en otros",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['TE']"
+  },
+  {
+   "texto": "Teruel Existe en 40 y Vox en 22; en otros 19, los dos",
+   "cifra": "22",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "40 y Vox en 22; en otros 19, los dos primeros empataron",
+   "cifra": "19",
+   "calculo": "D['GANA']['2019_11']['EMPATE']"
+  },
+  {
+   "texto": "julio de 2023, el PP ganó en 455, el PSOE en 232, Sumar",
+   "cifra": "455",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP ganó en 455, el PSOE en 232, Sumar en ocho, Vox",
+   "cifra": "232",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "el PSOE en 232, Sumar en ocho, Vox en siete y Teruel",
+   "cifra": "ocho",
+   "calculo": "D['GANA']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "232, Sumar en ocho, Vox en siete y Teruel Existe en cinco,",
+   "cifra": "siete",
+   "calculo": "D['GANA']['2023_07']['VOX']"
+  },
+  {
+   "texto": "siete y Teruel Existe en cinco, con 23 empates. Y en",
+   "cifra": "cinco",
+   "calculo": "D['GANA']['2023_07']['TE']"
+  },
+  {
+   "texto": "Teruel Existe en cinco, con 23 empates. Y en las ciudades",
+   "cifra": "23",
+   "calculo": "D['GANA']['2023_07']['EMPATE']"
+  },
+  {
+   "texto": "vuelco fue completo: de las 15 de más de 10.000 habitantes,",
+   "cifra": "15",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en 12 en 2019 y en 2023 solo",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 10.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "El PSOE no bajó: pasó del 31,0 % al 31,4 %, con 6.554",
+   "cifra": "31,0",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "bajó: pasó del 31,0 % al 31,4 %, con 6.554 votos más,",
+   "cifra": "31,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "del 31,0 % al 31,4 %, con 6.554 votos más, y subió en",
+   "cifra": "6.554",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "6.554 votos más, y subió en 338 de los 731 municipios.",
+   "cifra": "338",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "más, y subió en 338 de los 731 municipios. Pero el",
+   "cifra": "731",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios. Pero el PP sumó 91.042 votos y pasó del 24,1",
+   "cifra": "91.042",
+   "calculo": "D['DPP_VOTOS']"
+  },
+  {
+   "texto": "sumó 91.042 votos y pasó del 24,1 % al 36,7 %, en un año",
+   "cifra": "24,1",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "votos y pasó del 24,1 % al 36,7 %, en un año en que",
+   "cifra": "36,7",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 8,6 % en 2019, no se presentó",
+   "cifra": "8,6",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "se presentó y Vox bajó del 17,2 % al 14,8 %. La participación",
+   "cifra": "17,2",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 17,2 % al 14,8 %. La participación",
+   "cifra": "14,8",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "La participación subió del 71,5 % al 73,0 %. En 2019,",
+   "cifra": "71,5",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 71,5 % al 73,0 %. En 2019, el PSOE",
+   "cifra": "73,0",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "2023, el PP lo fue en las tres.",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "De los 379 municipios del PSOE",
+   "cifra": "379",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios del PSOE en 2019, 151 pasaron al PP. En ellos,",
+   "cifra": "151",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "se quedó casi igual, del 31,0 % al 31,1 %, pero el",
+   "cifra": "31,0",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "casi igual, del 31,0 % al 31,1 %, pero el PP pasó del",
+   "cifra": "31,1",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "31,1 %, pero el PP pasó del 24,0 % al 36,9 %, mientras",
+   "cifra": "24,0",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "el PP pasó del 24,0 % al 36,9 %, mientras desaparecía",
+   "cifra": "36,9",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 9,3 %, y Vox bajaba del",
+   "cifra": "9,3",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 9,3 %, y Vox bajaba del 17,4 % al 14,7 %. En sentido",
+   "cifra": "17,4",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox bajaba del 17,4 % al 14,7 %. En sentido contrario,",
+   "cifra": "14,7",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "%. En sentido contrario, 13 municipios pasaron del",
+   "cifra": "13",
+   "calculo": "D['PP_PSOE']"
+  },
+  {
+   "texto": "ganó pasaron de sumar el 85,0 % de la población aragonesa",
+   "cifra": "85,0",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "la población aragonesa al 11,3 %; los del PP, del 6,6",
+   "cifra": "11,3",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "al 11,3 %; los del PP, del 6,6 % al 88,2 %.",
+   "cifra": "6,6",
+   "calculo": "D['POB']['2019_11']['PP']"
+  },
+  {
+   "texto": "los del PP, del 6,6 % al 88,2 %.",
+   "cifra": "88,2",
+   "calculo": "D['POB']['2023_07']['PP']"
+  },
+  {
+   "texto": "En 2019, de las 15 ciudades de más de 10.000",
+   "cifra": "15",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en 12; el PP, solo en Fraga;",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 10.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "Huerva. En 2023, el PP ganó en 14 y el PSOE solo conservó",
+   "cifra": "14",
+   "calculo": "D['TT']['Más de 10.000']['g23']['PP']"
+  },
+  {
+   "texto": "cambio fue menor: en los 421 de 100 a 1.000 habitantes,",
+   "cifra": "421",
+   "calculo": "D['TT']['De 100 a 1.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE pasó de 235 a 144, y el PP, de 138",
+   "cifra": "235",
+   "calculo": "D['TT']['De 100 a 1.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "habitantes, el PSOE pasó de 235 a 144, y el PP, de 138 a 256.",
+   "cifra": "144",
+   "calculo": "D['TT']['De 100 a 1.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "de 235 a 144, y el PP, de 138 a 256. El PP subió en",
+   "cifra": "138",
+   "calculo": "D['TT']['De 100 a 1.000']['g19']['PP']"
+  },
+  {
+   "texto": "a 144, y el PP, de 138 a 256. El PP subió en todos",
+   "cifra": "256",
+   "calculo": "D['TT']['De 100 a 1.000']['g23']['PP']"
+  },
+  {
+   "texto": "El PP ganó en 2023 las tres capitales, y en las",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "tres capitales, y en las tres el PSOE quedó segundo.",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "Zaragoza, la mayor, sacó 5,89 puntos al PSOE; en Huesca,",
+   "cifra": "5,89",
+   "calculo": "D['CAP']['Zaragoza']['marg23']"
+  },
+  {
+   "texto": "puntos al PSOE; en Huesca, 2,58, y en Teruel, 15,25.",
+   "cifra": "2,58",
+   "calculo": "D['CAP']['Huesca']['marg23']"
+  },
+  {
+   "texto": "Huesca, 2,58, y en Teruel, 15,25. En 2019, Zaragoza y",
+   "cifra": "15,25",
+   "calculo": "D['CAP']['Teruel']['marg23']"
+  },
+  {
+   "texto": "Teruel, Teruel Existe, con el 42,8 %; en 2023, Teruel Existe",
+   "cifra": "42,8",
+   "calculo": "D['CAP']['Teruel']['te19']"
+  },
+  {
+   "texto": "Teruel Existe bajó allí al 20,3 %. Cómo votó Zaragoza",
+   "cifra": "20,3",
+   "calculo": "D['CAP']['Teruel']['te23']"
+  },
+  {
+   "texto": "Existe fue el más votado en 40 municipios, todos de",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['TE']"
+  },
+  {
+   "texto": "conjunto de la provincia, con el 26,9 %. En 2023 bajó al 15,0",
+   "cifra": "26,9",
+   "calculo": "D['TEP']['2019_11']"
+  },
+  {
+   "texto": "el 26,9 %. En 2023 bajó al 15,0 % y ganó en cinco municipios,",
+   "cifra": "15,0",
+   "calculo": "D['TEP']['2023_07']"
+  },
+  {
+   "texto": "bajó al 15,0 % y ganó en cinco municipios, todos de",
+   "cifra": "cinco",
+   "calculo": "D['GANA']['2023_07']['TE']"
+  },
+  {
+   "texto": "de 100 habitantes. De sus 40 municipios de 2019,",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['TE']"
+  },
+  {
+   "texto": "sus 40 municipios de 2019, 30 pasaron al PP. Vox,",
+   "cifra": "30",
+   "calculo": "D['TE_PP']"
+  },
+  {
+   "texto": "Vox, que en 2019 ganó en 22 municipios, entre ellos",
+   "cifra": "22",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "seis frente al PP: en total, 19 de sus 22 pasaron al",
+   "cifra": "19",
+   "calculo": "D['VOX_PP']"
+  },
+  {
+   "texto": "al PP: en total, 19 de sus 22 pasaron al PP.",
+   "cifra": "22",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "por casi nada. En 2023, en 31 el primero sacó un solo",
+   "cifra": "31",
+   "calculo": "D['UNVOTO']"
+  },
+  {
+   "texto": "un solo voto al segundo (15 para el PSOE, 11 para",
+   "cifra": "15",
+   "calculo": "D['UNVG']['PSOE']"
+  },
+  {
+   "texto": "segundo (15 para el PSOE, 11 para el PP y el resto",
+   "cifra": "11",
+   "calculo": "D['UNVG']['PP']"
+  },
+  {
+   "texto": "Vox, Sumar y el PAR), y en 23 los dos primeros empataron;",
+   "cifra": "23",
+   "calculo": "D['GANA']['2023_07']['EMPATE']"
+  },
+  {
+   "texto": "(Teruel), que ganó el PP por 6 votos, y Calatorao (Zaragoza),",
+   "cifra": "6",
+   "calculo": "D['AJG'][0][4]"
+  },
+  {
+   "texto": "Calatorao (Zaragoza), por 5. Jaca pasó del PSOE",
+   "cifra": "5",
+   "calculo": "D['AJG'][1][4]"
+  },
+  {
+   "texto": "Jaca pasó del PSOE al PP por 64 votos. Los pueblos que",
+   "cifra": "64",
+   "calculo": "D['JACA_V']"
+  },
+  {
+   "texto": "el reparto central de los 13 escaños da al PP 5,",
+   "cifra": "13",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de los 13 escaños da al PP 5, dos menos que en 2023;",
+   "cifra": "5",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "menos que en 2023; al PSOE, 4, los mismos, y a Vox,",
+   "cifra": "4",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "PSOE, 4, los mismos, y a Vox, 4, frente a uno en 2023.",
+   "cifra": "4",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 379 municipios a ganar en",
+   "cifra": "379",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "379 municipios a ganar en 232; el PP, de 259 a 455,",
+   "cifra": "232",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "a ganar en 232; el PP, de 259 a 455, y Teruel Existe,",
+   "cifra": "259",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "ganar en 232; el PP, de 259 a 455, y Teruel Existe, de",
+   "cifra": "455",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "455, y Teruel Existe, de 40 a cincoPartido más votado",
+   "cifra": "40",
+   "calculo": "D['GANA']['2019_11']['TE']"
+  },
+  {
+   "texto": "votado en cada uno de los 731 municipios de Aragón,",
+   "cifra": "731",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 151 municipios que pasaron",
+   "cifra": "151",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "PSOE se quedó igual: del 31,0 % al 31,1 %Voto al PP,",
+   "cifra": "31,0",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "quedó igual: del 31,0 % al 31,1 %Voto al PP, al PSOE,",
+   "cifra": "31,1",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "En las 15 ciudades de más de 10.000",
+   "cifra": "15",
+   "calculo": "D['TT']['Más de 10.000']['n']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 12 a ganar en una, Ejea",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 10.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "El PP ganó en las tres capitales en 2023; en",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "Existe en julio de 2023 en las tres capitales, en %. Barra",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "Teruel en 2019, pasó del 26,9 % al 15,0 % en la provinciaMunicipios",
+   "cifra": "26,9",
+   "calculo": "D['TEP']['2019_11']"
+  },
+  {
+   "texto": "2019, pasó del 26,9 % al 15,0 % en la provinciaMunicipios",
+   "cifra": "15,0",
+   "calculo": "D['TEP']['2023_07']"
+  },
+  {
+   "texto": "31 municipios se decidieron",
+   "cifra": "31",
+   "calculo": "D['UNVOTO']"
+  },
+  {
+   "texto": "2023 por un solo voto, y en 23 hubo empateVentaja del",
+   "cifra": "23",
+   "calculo": "D['GANA']['2023_07']['EMPATE']"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de uno a cuatro diputados en Aragón:",
+   "cifra": "cuatro",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "Teruel y dos en ZaragozaLos 13 diputados de las tres",
+   "cifra": "13",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "ZaragozaLos 13 diputados de las tres provincias: un cuadrado",
+   "cifra": "tres",
+   "calculo": "len(D['CAP'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "las 15 ciudades de más de 10.000 habitantes en 2019 y",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "completo: de las 15 de más de 10.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "las 15 ciudades de más de 10.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "fue menor: en los 421 de 100 a 1.000 habitantes,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "menor: en los 421 de 100 a 1.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "municipios, todos de menos de 100 habitantes. De sus 40",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "22 municipios, entre ellos seis del entorno de Zaragoza",
+   "motivo": "los seis municipios de Vox de más de 3.000 habitantes, comprobado en el script (VXZ)"
+  },
+  {
+   "texto": "entorno de Zaragoza de más de 3.000 habitantes, como Cuarte",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "María de Huerva, perdió los seis frente al PP: en total,",
+   "motivo": "los seis municipios de Vox de más de 3.000 habitantes, comprobado en el script (VXZ)"
+  },
+  {
+   "texto": "Maluenda (Zaragoza), de menos de 1.000 habitantes. Entre los",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "habitantes. Entre los de más de 2.000 habitantes, los más",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "que recogiera votos de los tres, pero el mapa no permite",
+   "motivo": "los tres partidos (Cs, Vox y Teruel Existe)"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "las 15 ciudades de más de 10.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los diez municipios de más de",
+   "motivo": "número de filas del gráfico"
+  },
+  {
+   "texto": "diez municipios de más de 2.000 habitantes más ajustados,",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}

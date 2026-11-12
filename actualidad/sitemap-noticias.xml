@@ -112,4 +112,12 @@
       <news:title>El mapa electoral de Canarias: el PP pasó de ganar en dos municipios de Tenerife a 23, y el PSOE resistió en Gran Canaria</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-aragon-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Aragón: el PSOE ganó en 12 de las 15 ciudades de más de 10.000 habitantes en 2019 y solo en Ejea en 2023, aunque subió en votos</news:title>
+    </news:news>
+  </url>
 </urlset>
