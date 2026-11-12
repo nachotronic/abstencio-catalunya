@@ -80,4 +80,12 @@
       <news:title>El mapa electoral de Galicia: el PSOE ganó en 18 de las 22 ciudades y villas de más de 20.000 habitantes en 2019 y solo en dos en 2023</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-castilla-la-mancha-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Castilla-La Mancha: el PSOE ganó en cuatro de las cinco capitales en 2019 y en ninguna en 2023, aunque subió en votos</news:title>
+    </news:news>
+  </url>
 </urlset>

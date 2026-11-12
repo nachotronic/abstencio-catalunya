@@ -1,0 +1,651 @@
+{
+ "pieza": "mapa-electoral-castilla-la-mancha-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Castilla-La Mancha: el PSOE ganó en cuatro de las cinco capitales",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for v in D['CAP'].values() if v['g19'] == 'PSOE')"
+  },
+  {
+   "texto": "PSOE ganó en cuatro de las cinco capitales en 2019 y",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "El PSOE sumó 30.889 votos, pero pasó de",
+   "cifra": "30.889",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "30.889 votos, pero pasó de 575 a 384 de los 919 municipios,",
+   "cifra": "575",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "votos, pero pasó de 575 a 384 de los 919 municipios,",
+   "cifra": "384",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "pasó de 575 a 384 de los 919 municipios, y los que",
+   "cifra": "919",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 72,9 % de la población al",
+   "cifra": "72,9",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "72,9 % de la población al 24,5 %. Vox, de 65 a diez.",
+   "cifra": "24,5",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "población al 24,5 %. Vox, de 65 a diez. Para el 29N,",
+   "cifra": "65",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "población al 24,5 %. Vox, de 65 a diez. Para el 29N, la media",
+   "cifra": "diez",
+   "calculo": "D['GANA']['2023_07']['VOX']"
+  },
+  {
+   "texto": "media de encuestas da al PP 8 de los 21 diputados,",
+   "cifra": "8",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas da al PP 8 de los 21 diputados, al PSOE 7",
+   "cifra": "21",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "los 21 diputados, al PSOE 7 y a Vox 6.",
+   "cifra": "7",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "diputados, al PSOE 7 y a Vox 6.",
+   "cifra": "6",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "elige el 29 de noviembre 21 diputados: 6 en Toledo,",
+   "cifra": "21",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de noviembre 21 diputados: 6 en Toledo, 5 en Ciudad",
+   "cifra": "6",
+   "calculo": "D['ESC26']['45']"
+  },
+  {
+   "texto": "21 diputados: 6 en Toledo, 5 en Ciudad Real, 4 en",
+   "cifra": "5",
+   "calculo": "D['ESC26']['13']"
+  },
+  {
+   "texto": "Toledo, 5 en Ciudad Real, 4 en Albacete y 3 en Cuenca",
+   "cifra": "4",
+   "calculo": "D['ESC26']['02']"
+  },
+  {
+   "texto": "Ciudad Real, 4 en Albacete y 3 en Cuenca y en Guadalajara.",
+   "cifra": "3",
+   "calculo": "D['ESC26']['16']"
+  },
+  {
+   "texto": "el partido más votado en 575 de los 919 municipios,",
+   "cifra": "575",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "más votado en 575 de los 919 municipios, el PP en",
+   "cifra": "919",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "919 municipios, el PP en 253 y Vox en 65; en otros",
+   "cifra": "253",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "municipios, el PP en 253 y Vox en 65; en otros 19, los dos",
+   "cifra": "65",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "253 y Vox en 65; en otros 19, los dos primeros empataron",
+   "cifra": "19",
+   "calculo": "D['GANA']['2019_11']['EMPATE']"
+  },
+  {
+   "texto": "julio de 2023, el PP ganó en 502, el PSOE en 384 y Vox",
+   "cifra": "502",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP ganó en 502, el PSOE en 384 y Vox en diez, con 19",
+   "cifra": "384",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "502, el PSOE en 384 y Vox en diez, con 19 empates. Y en",
+   "cifra": "diez",
+   "calculo": "D['GANA']['2023_07']['VOX']"
+  },
+  {
+   "texto": "en 384 y Vox en diez, con 19 empates. Y en las ciudades",
+   "cifra": "19",
+   "calculo": "D['GANA']['2023_07']['EMPATE']"
+  },
+  {
+   "texto": "completo: el PSOE ganó en 2019 en cuatro de las cinco capitales,",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for v in D['CAP'].values() if v['g19'] == 'PSOE')"
+  },
+  {
+   "texto": "en 2019 en cuatro de las cinco capitales, todas menos",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "El PSOE no bajó: pasó del 33,4 % al 34,4 %, con 30.889",
+   "cifra": "33,4",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "bajó: pasó del 33,4 % al 34,4 %, con 30.889 votos",
+   "cifra": "34,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "del 33,4 % al 34,4 %, con 30.889 votos más, y subió en",
+   "cifra": "30.889",
+   "calculo": "D['DPSOE_VOTOS']"
+  },
+  {
+   "texto": "30.889 votos más, y subió en 476 de los 919 municipios.",
+   "cifra": "476",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "más, y subió en 476 de los 919 municipios. Pero el",
+   "cifra": "919",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios. Pero el PP sumó 153.271 votos y pasó del 27,1",
+   "cifra": "153.271",
+   "calculo": "D['DPP_VOTOS']"
+  },
+  {
+   "texto": "153.271 votos y pasó del 27,1 % al 39,3 %, en un año",
+   "cifra": "27,1",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "votos y pasó del 27,1 % al 39,3 %, en un año en que",
+   "cifra": "39,3",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 6,9 % en 2019, no se presentó",
+   "cifra": "6,9",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "se presentó y Vox bajó del 22,1 % al 17,9 %. La participación",
+   "cifra": "22,1",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "y Vox bajó del 22,1 % al 17,9 %. La participación",
+   "cifra": "17,9",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "La participación subió del 71,4 % al 74,4 %. En 2019,",
+   "cifra": "71,4",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 71,4 % al 74,4 %. En 2019, el PSOE",
+   "cifra": "74,4",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "sido el más votado en las cinco provincias; en 2023,",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "De los 575 municipios del PSOE",
+   "cifra": "575",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios del PSOE en 2019, 203 pasaron al PP. En ellos,",
+   "cifra": "203",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "ellos, el PSOE subió del 32,9 % al 33,6 %, pero el",
+   "cifra": "32,9",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 32,9 % al 33,6 %, pero el PP lo hizo",
+   "cifra": "33,6",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "%, pero el PP lo hizo del 27,6 % al 40,5 %, mientras",
+   "cifra": "27,6",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "PP lo hizo del 27,6 % al 40,5 %, mientras desaparecía",
+   "cifra": "40,5",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 7,3 %, y Vox bajaba del",
+   "cifra": "7,3",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "el 7,3 %, y Vox bajaba del 21,9 % al 17,6 %. En sentido",
+   "cifra": "21,9",
+   "calculo": "D['FLS']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox bajaba del 21,9 % al 17,6 %. En sentido contrario,",
+   "cifra": "17,6",
+   "calculo": "D['FLS']['2023_07']['VOX']"
+  },
+  {
+   "texto": "%. En sentido contrario, 15 municipios pasaron del",
+   "cifra": "15",
+   "calculo": "D['PP_PSOE']"
+  },
+  {
+   "texto": "ganó pasaron de sumar el 72,9 % de la población de",
+   "cifra": "72,9",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "población de la comunidad al 24,5 %.",
+   "cifra": "24,5",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "Vox fue el más votado en 65 municipios de Castilla-La",
+   "cifra": "65",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "municipios de Castilla-La Mancha, 31 en Guadalajara y 22",
+   "cifra": "31",
+   "calculo": "D['VXPROV']['19']"
+  },
+  {
+   "texto": "Mancha, 31 en Guadalajara y 22 en Toledo, y entre ellos",
+   "cifra": "22",
+   "calculo": "D['VXPROV']['45']"
+  },
+  {
+   "texto": "pequeños: la mitad tenía más de 1.275 habitantes. En 2023,",
+   "cifra": "1.275",
+   "calculo": "D['VX19_MED']"
+  },
+  {
+   "texto": "1.275 habitantes. En 2023, 50 de esos 65 pasaron al",
+   "cifra": "50",
+   "calculo": "D['VOX_PP']"
+  },
+  {
+   "texto": "habitantes. En 2023, 50 de esos 65 pasaron al PP y Vox",
+   "cifra": "65",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "al PP y Vox solo conservó ocho. Ganó en diez en total;",
+   "cifra": "ocho",
+   "calculo": "D['VOX_VOX']"
+  },
+  {
+   "texto": "solo conservó ocho. Ganó en diez en total; el mayor,",
+   "cifra": "diez",
+   "calculo": "D['GANA']['2023_07']['VOX']"
+  },
+  {
+   "texto": "mayor, Pioz (Guadalajara), con 5.314 habitantes.",
+   "cifra": "5.314",
+   "calculo": "D['VX23_MAX']"
+  },
+  {
+   "texto": "En los 16 municipios de más de",
+   "cifra": "16",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en 12 en 2019 y en cuatro",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "PSOE ganó en 12 en 2019 y en cuatro en 2023: Puertollano,",
+   "cifra": "cuatro",
+   "calculo": "D['TT']['Más de 20.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "20.000, Vox había ganado en 16 en 2019 y en 2023 en",
+   "cifra": "16",
+   "calculo": "D['TT']['De 5.000 a 20.000']['g19']['VOX']"
+  },
+  {
+   "texto": "Cuenca, que ganó el PP por 3,1 puntos, con el 40,6",
+   "cifra": "3,1",
+   "calculo": "D['CAP']['Cuenca']['marg23']"
+  },
+  {
+   "texto": "PP por 3,1 puntos, con el 40,6 % frente al 37,5 % del",
+   "cifra": "40,6",
+   "calculo": "D['CAP']['Cuenca']['pp23']"
+  },
+  {
+   "texto": "puntos, con el 40,6 % frente al 37,5 % del PSOE. En Albacete,",
+   "cifra": "37,5",
+   "calculo": "D['CAP']['Cuenca']['psoe23']"
+  },
+  {
+   "texto": "Albacete, la mayor, el PP sacó el 41,8 % y el PSOE el 31,1",
+   "cifra": "41,8",
+   "calculo": "D['CAP']['Albacete']['pp23']"
+  },
+  {
+   "texto": "sacó el 41,8 % y el PSOE el 31,1 %; en 2019 había ganado",
+   "cifra": "31,1",
+   "calculo": "D['CAP']['Albacete']['psoe23']"
+  },
+  {
+   "texto": "había ganado el PSOE, con el 28,6 %. Talavera de la Reina,",
+   "cifra": "28,6",
+   "calculo": "D['CAP']['Albacete']['psoe19']"
+  },
+  {
+   "texto": "fue el más votado en las cinco provincias, pero en",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "el PP y el PSOE ganaron en 43 cada uno; en Ciudad",
+   "cifra": "43",
+   "calculo": "D['PRG']['02']['2023_07']['PP']"
+  },
+  {
+   "texto": "en Ciudad Real, el PP en 54 y el PSOE en 48. En",
+   "cifra": "54",
+   "calculo": "D['PRG']['13']['2023_07']['PP']"
+  },
+  {
+   "texto": "el PP en 54 y el PSOE en 48. En Guadalajara, la",
+   "cifra": "48",
+   "calculo": "D['PRG']['13']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "provincia con más municipios (288), el PP ganó en 153",
+   "cifra": "288",
+   "calculo": "D['PRN']['19']"
+  },
+  {
+   "texto": "municipios (288), el PP ganó en 153 y el PSOE en 116.",
+   "cifra": "153",
+   "calculo": "D['PRG']['19']['2023_07']['PP']"
+  },
+  {
+   "texto": "ganó en 153 y el PSOE en 116.",
+   "cifra": "116",
+   "calculo": "D['PRG']['19']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "por casi nada. En 2023, en 37 el primero sacó un solo",
+   "cifra": "37",
+   "calculo": "D['UNVOTO']"
+  },
+  {
+   "texto": "un solo voto al segundo (17 para el PP y 17 para",
+   "cifra": "17",
+   "calculo": "D['UNVG']['PP']"
+  },
+  {
+   "texto": "segundo (17 para el PP y 17 para el PSOE), y en",
+   "cifra": "17",
+   "calculo": "D['UNVG']['PSOE']"
+  },
+  {
+   "texto": "y 17 para el PSOE), y en 19 los dos primeros empataron.",
+   "cifra": "19",
+   "calculo": "D['GANA']['2023_07']['EMPATE']"
+  },
+  {
+   "texto": "más de 6.000 habitantes: 1.243 votos para el PP y 1.243",
+   "cifra": "1.243",
+   "calculo": "D['MOTA_V']"
+  },
+  {
+   "texto": "1.243 votos para el PP y 1.243 para el PSOE. Entre",
+   "cifra": "1.243",
+   "calculo": "D['MOTA_V']"
+  },
+  {
+   "texto": "(Toledo), que ganó el PP por 4 votos. Los pueblos que",
+   "cifra": "4",
+   "calculo": "D['AJG'][0][4]"
+  },
+  {
+   "texto": "el reparto central de los 21 escaños da al PP 8,",
+   "cifra": "21",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "de los 21 escaños da al PP 8, dos menos que en 2023;",
+   "cifra": "8",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "menos que en 2023; al PSOE, 7, uno menos, y a Vox,",
+   "cifra": "7",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "PSOE, 7, uno menos, y a Vox, 6, el doble que los tres",
+   "cifra": "6",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "Vox, 6, el doble que los tres de 2023. El PP es el",
+   "cifra": "tres",
+   "calculo": "D['E23']['VOX']"
+  },
+  {
+   "texto": "de las simulaciones en las cinco provincias.",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "Vox: de 65 municipios a diez",
+   "cifra": "65",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "Vox: de 65 municipios a diez",
+   "cifra": "diez",
+   "calculo": "D['GANA']['2023_07']['VOX']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 575 municipios a ganar en",
+   "cifra": "575",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "575 municipios a ganar en 384; el PP, de 253 a 502,",
+   "cifra": "384",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "a ganar en 384; el PP, de 253 a 502, y Vox, de 65",
+   "cifra": "253",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "ganar en 384; el PP, de 253 a 502, y Vox, de 65 a diezPartido",
+   "cifra": "502",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "PP, de 253 a 502, y Vox, de 65 a diezPartido más votado",
+   "cifra": "65",
+   "calculo": "D['GANA']['2019_11']['VOX']"
+  },
+  {
+   "texto": "votado en cada uno de los 919 municipios de Castilla-La",
+   "cifra": "919",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 203 municipios que pasaron",
+   "cifra": "203",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP, el PSOE subió: del 32,9 % al 33,6 %Voto al PP,",
+   "cifra": "32,9",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió: del 32,9 % al 33,6 %Voto al PP, al PSOE,",
+   "cifra": "33,6",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 12 de 16 a ganar en cuatroMunicipios",
+   "cifra": "12",
+   "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "PSOE pasó de ganar en 12 de 16 a ganar en cuatroMunicipios",
+   "cifra": "16",
+   "calculo": "D['TT']['Más de 20.000']['n']"
+  },
+  {
+   "texto": "El PSOE ganó en cuatro de las cinco capitales",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for v in D['CAP'].values() if v['g19'] == 'PSOE')"
+  },
+  {
+   "texto": "PSOE ganó en cuatro de las cinco capitales en 2019; en",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "PSOE en julio de 2023 en las cinco capitales de provincia,",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  },
+  {
+   "texto": "repartió a partes iguales: 43 municipios para el PP",
+   "cifra": "43",
+   "calculo": "D['PRG']['02']['2023_07']['PP']"
+  },
+  {
+   "texto": "43 municipios para el PP y 43 para el PSOEMunicipios",
+   "cifra": "43",
+   "calculo": "D['PRG']['02']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "37 municipios se decidieron",
+   "cifra": "37",
+   "calculo": "D['UNVOTO']"
+  },
+  {
+   "texto": "2023 por un solo voto, y en 19 hubo empateVentaja del",
+   "cifra": "19",
+   "calculo": "D['GANA']['2023_07']['EMPATE']"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de tres a seis diputados en",
+   "cifra": "tres",
+   "calculo": "D['E23']['VOX']"
+  },
+  {
+   "texto": "encuestas, Vox pasaría de tres a seis diputados en Castilla-La",
+   "cifra": "seis",
+   "calculo": "D['E29']['VOX']"
+  },
+  {
+   "texto": "perdería dos y el PSOE, unoLos 21 diputados de las cinco",
+   "cifra": "21",
+   "calculo": "sum(D['ESC26'].values())"
+  },
+  {
+   "texto": "unoLos 21 diputados de las cinco provincias: un cuadrado",
+   "cifra": "cinco",
+   "calculo": "len(D['CAP'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "entre ellos dos de más de 20.000 habitantes, Illescas",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los 16 municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Juan y Almansa. En los de 5.000 a 20.000, Vox había",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Almansa. En los de 5.000 a 20.000, Vox había ganado en",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Cuervo (Cuenca), de más de 6.000 habitantes: 1.243 votos",
+   "motivo": "umbral de población (Mota del Cuervo, 6.017 habitantes en el padrón de 2023)"
+  },
+  {
+   "texto": "PSOE. Entre los de más de 5.000 habitantes con ganador,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "Cinco provincias",
+   "motivo": "intertítulo: las cinco provincias"
+  },
+  {
+   "texto": "los municipios de más de 20.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los diez municipios de más de",
+   "motivo": "número de filas del gráfico"
+  },
+  {
+   "texto": "diez municipios de más de 5.000 habitantes más ajustados,",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}
