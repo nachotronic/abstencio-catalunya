@@ -10,6 +10,7 @@ Comparación dentro de cada provincia: a cada municipio se le resta la media de 
 peso de la industria y en voto; luego se agrupan en diez partes con el mismo censo según esa diferencia de industria.
 Uso, desde la raíz: python3 actualidad/src/resumenes/huelga_carnica.py
 """
+import sys
 import json
 
 import numpy as np
@@ -24,6 +25,11 @@ F = ['PP', 'PSOE', 'VOX', 'SUMAR', 'CS', 'UPYD', 'ERC', 'JUNTS', 'PNV', 'BILDU',
 e = pd.read_csv(RAIZ / 'data/empleo/empleo_sector_municipios.csv', dtype={'mun_code': str})
 e = e[e.anyo == 2023][['mun_code', 'municipio', 'ocupados', 'industria']]
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
+# Esta pieza suma una lista fija de familias: las listas propias de 2023 (mapa_listas_propias.py) van a «Otros»; UPN también,
+# como un partido más: el PP es solo la lista del PP (corrección del 12-11-2026; antes, en Navarra, sumaba UPN).
+sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+from partidos import sin_listas_propias_mun  # noqa: E402
+m = sin_listas_propias_mun(m, upn='OTROS')
 cols = ['mun_code', '2023_07_censo', '2023_07_votantes', '2023_07_gana'] + [f'2023_07_v{f}' for f in F]
 d = e.merge(m[cols], on='mun_code', how='inner')
 d = d[d.ocupados > 0].copy()

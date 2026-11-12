@@ -89,14 +89,22 @@ SIGLAS_PROPIAS = {
     '2023_07': {'U.P.N.': 'UPN', 'NC-BC': 'NC', 'EXISTE': 'TE', 'CUP-PR': 'CUP', 'SY': 'SY', 'XAV': 'XAV', 'FO': 'FO',
                 'ADELANTE ANDALUCÍA': 'AA', 'FE DE LAS JONS': 'FE', 'PAR': 'PAR', 'U.P.L.': 'UPL'},
 }
-def sin_listas_propias(df, pre=''):
+def sin_listas_propias(df, pre='', upn='PP'):
     """Devuelve las listas propias a donde estaban antes de mapa_listas_propias.py: UPN al PP, las demás a «Otros».
     Para los cálculos que suman una lista fija de familias de las descargas (modelo de encuestas, piezas antiguas) y
-    deben seguir dando lo mismo. `pre`: prefijo de las columnas («2023_07_v» en municipios.csv; «» en el formato largo)."""
+    deben seguir dando lo mismo; con upn='OTROS', UPN cuenta como un partido más y el PP es solo el PP. `pre`: prefijo de las columnas («2023_07_v» en municipios.csv; «» en el formato largo)."""
     for k, _, _ in PROPIAS:
         if pre + k in df:
-            de = pre + ('PP' if k == 'UPN' else 'OTROS')
+            de = pre + (upn if k == 'UPN' else 'OTROS')
             df[de] = df[de].fillna(0) + df.pop(pre + k).fillna(0)
+    return df
+
+
+def sin_listas_propias_mun(df, elecciones=('2019_11', '2023_07'), upn='PP'):
+    """Lo mismo para municipios.csv o secciones.csv (votos <elección>_v<código> y porcentajes <elección>_<código>)."""
+    for y in elecciones:
+        sin_listas_propias(df, f'{y}_v', upn)
+        sin_listas_propias(df, f'{y}_', upn)
     return df
 
 

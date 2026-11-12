@@ -1,0 +1,60 @@
+{
+ "pieza": "quien-vota-barrios-renta-edad-inmigracion",
+ "_datos_disponibles": {},
+ "cifras": [
+  {
+   "texto": "El 23 de julio de 2023 el PP fue la fuerza más votada en 18.008 secciones censales y el PSOE en 16.157; UPN, que en Navarra se presentó por separado, en 48.",
+   "cifra": "23",
+   "calculo": "23"
+  },
+  {
+   "texto": "El 23 de julio de 2023 el PP fue la fuerza más votada en 18.008 secciones censales y el PSOE en 16.157; UPN, que en Navarra se presentó por separado, en 48.",
+   "cifra": "18.008",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if r['2023_07_gana'] == 'PP')"
+  },
+  {
+   "texto": "El 23 de julio de 2023 el PP fue la fuerza más votada en 18.008 secciones censales y el PSOE en 16.157; UPN, que en Navarra se presentó por separado, en 48.",
+   "cifra": "16.157",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if r['2023_07_gana'] == 'PSOE')"
+  },
+  {
+   "texto": "El 23 de julio de 2023 el PP fue la fuerza más votada en 18.008 secciones censales y el PSOE en 16.157; UPN, que en Navarra se presentó por separado, en 48.",
+   "cifra": "48",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if r['2023_07_gana'] == 'UPN')"
+  },
+  {
+   "texto": "Por municipios, de los 8.131, el PP ganó en 4.445, el PSOE en 2.667 y UPN en 15.",
+   "cifra": "8.131",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/municipios.csv'))"
+  },
+  {
+   "texto": "Por municipios, de los 8.131, el PP ganó en 4.445, el PSOE en 2.667 y UPN en 15.",
+   "cifra": "4.445",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/municipios.csv') if r['2023_07_gana'] == 'PP')"
+  },
+  {
+   "texto": "Por municipios, de los 8.131, el PP ganó en 4.445, el PSOE en 2.667 y UPN en 15.",
+   "cifra": "2.667",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/municipios.csv') if r['2023_07_gana'] == 'PSOE')"
+  },
+  {
+   "texto": "Por municipios, de los 8.131, el PP ganó en 4.445, el PSOE en 2.667 y UPN en 15.",
+   "cifra": "15",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/municipios.csv') if r['2023_07_gana'] == 'UPN')"
+  },
+  {
+   "texto": "Vox, que había ganado en 1.883 secciones en noviembre de 2019, perdió casi todas: 1.724 pasaron al PP.",
+   "cifra": "1.883",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if r['2019_11_gana'] == 'VOX')"
+  },
+  {
+   "texto": "Vox, que había ganado en 1.883 secciones en noviembre de 2019, perdió casi todas: 1.724 pasaron al PP.",
+   "cifra": "1.724",
+   "calculo": "sum(1 for r in csv('generales-2026/descargas/secciones.csv') if r['2019_11_gana'] == 'VOX' and r['2023_07_gana'] == 'PP')"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": [],
+ "_nota": "Solo declara el párrafo corregido el 12-11-2026; la pieza es anterior a la regla de verificación (las demás cifras no han cambiado)."
+}
