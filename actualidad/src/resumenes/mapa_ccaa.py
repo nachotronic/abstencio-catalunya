@@ -13,6 +13,7 @@ oficiales. Escaños del 29N: reparto central publicado en /encuestas/<provincia>
 import json
 import math
 import re
+import sys
 
 import numpy as np
 import pandas as pd
@@ -53,16 +54,34 @@ def municipios(provs, regionales=None):
     assert (m[f'{Y19}_vUP'] >= 0).all()
     # La CUP va en OTROS en las descargas del mapa: sus votos por municipio salen de los mismos datos por mesa
     # (pollspaindata, Ministerio del Interior), en datos/cup_municipios_2019_2023.csv, y se restan de OTROS.
+    # Desde el arreglo de los ganadores (generales-2026/src/mapa_listas_propias.py, 11-11-2026), municipios.csv ya trae
+    # esas listas con columna propia en 2019-N y 2023 (CUP, Por Ávila, Soria ¡Ya!, Frente Obrero...), restadas de OTROS:
+    # se usan tal cual (y se comprueba que cuadran con los ficheros de datos/), y cualquier otra lista propia con votos en
+    # estas provincias entra también en el cálculo del ganador. UPN (Navarra 2023) va aparte del PP.
+    sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+    from partidos import PROPIAS
     cup = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos/cup_municipios_2019_2023.csv', dtype={'mun_code': str}).set_index('mun_code')
     for y in (Y19, Y23):
-        m[f'{y}_vCUP'] = m.mun_code.map(cup[f'{y}_vCUP']).fillna(0)
-        m[f'{y}_vOTROS'] = m[f'{y}_vOTROS'] - m[f'{y}_vCUP']
+        if f'{y}_vCUP' in m:
+            m[f'{y}_vCUP'] = m[f'{y}_vCUP'].fillna(0)
+            assert (m[f'{y}_vCUP'] - m.mun_code.map(cup[f'{y}_vCUP']).fillna(0)).abs().max() < .5, y
+        else:
+            m[f'{y}_vCUP'] = m.mun_code.map(cup[f'{y}_vCUP']).fillna(0)
+            m[f'{y}_vOTROS'] = m[f'{y}_vOTROS'] - m[f'{y}_vCUP']
         assert (m[f'{y}_vOTROS'] >= 0).all()
     REG = {Y19: [], Y23: []}
+    for y in (Y19, Y23):
+        for k in [k for k, _, _ in PROPIAS if k != 'CUP']:
+            if f'{y}_v{k}' in m and m[f'{y}_v{k}'].fillna(0).sum() > 0:
+                m[f'{y}_v{k}'] = m[f'{y}_v{k}'].fillna(0)
+                REG[y].append(k)
     if regionales:
         rg = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos' / regionales, dtype={'mun_code': str}).set_index('mun_code')
         for col in rg.columns:
             y, k = col.split('_v')
+            if k in REG[y]:   # ya en las descargas: tienen que ser los mismos votos
+                assert (m[col] - m.mun_code.map(rg[col]).fillna(0)).abs().max() < .5, col
+                continue
             REG[y].append(k)
             m[col] = m.mun_code.map(rg[col]).fillna(0)
             m[f'{y}_vOTROS'] = m[f'{y}_vOTROS'] - m[col]

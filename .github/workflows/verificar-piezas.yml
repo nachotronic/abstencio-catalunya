@@ -28,3 +28,7 @@ jobs:
         run: |
           git fetch -q origin "${{ github.base_ref || 'main' }}"
           python3 src/verificar_piezas.py --base "origin/${{ github.base_ref || 'main' }}" --resumen "$GITHUB_STEP_SUMMARY"
+      - name: Comprobar el ganador del mapa, lista a lista (generales-2026/src/control_ganadores.py)
+        # El ganador de cada municipio, sección y provincia, recalculado desde los votos por mesa de Interior sin agrupar
+        # familias, frente al del mapa y las descargas (10N 2019 y 23J). Cualquier diferencia deja el PR en rojo.
+        run: python3 generales-2026/src/control_ganadores.py --resumen "$GITHUB_STEP_SUMMARY"

@@ -112,6 +112,9 @@ def valida():
     partido en España, y solo se mide cómo se reparte el voto entre secciones (desagregación condicionada a esos
     márgenes). La especificación de 2026 (sin comunidad autónoma) se fija de antemano, no por este resultado."""
     g = pd.read_csv(RAIZ / 'generales-2026/descargas/resultados_secciones_largo.csv', dtype={'tract_code': str})
+    import sys; sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+    from partidos import sin_listas_propias
+    g = sin_listas_propias(g)   # UPN con el PP y las listas provinciales en «Otros», como antes de mapa_listas_propias.py
     fam = ['PP', 'PSOE', 'VOX', 'SUMAR', 'CS']
     resto = ['ERC', 'JUNTS', 'PNV', 'BILDU', 'BNG', 'CC', 'OTROS', 'UPYD', 'UCD', 'CDS']
     a = g[g.eleccion == '2019_11'].set_index('tract_code'); b = g[g.eleccion == '2023_07'].set_index('tract_code')

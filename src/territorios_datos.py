@@ -10,11 +10,14 @@ import pandas as pd
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 D = ROOT / 'generales-2026' / 'descargas'
 sys.path.insert(0, str(ROOT / 'generales-2026' / 'src'))
-from partidos import FAMILIAS, ALIAS  # noqa: E402
+from partidos import FAMILIAS, ALIAS, PROPIAS  # noqa: E402
 
-FAM = [c for c, _, _ in FAMILIAS]
-NOMBRE = {c: n for c, n, _ in FAMILIAS}
-COLOR = {c: col for c, _, col in FAMILIAS}
+# Las listas con código propio en noviembre de 2019 y 2023 (generales-2026/src/mapa_listas_propias.py: UPN, ¡Teruel
+# Existe!, PRC, CUP, Soria ¡Ya!...) van detrás de las familias: solo tienen columnas en esas dos elecciones.
+FAM = [c for c, _, _ in FAMILIAS] + [c for c, _, _ in PROPIAS]
+_PROPIAS = [c for c, _, _ in PROPIAS]
+NOMBRE = {c: n for c, n, _ in FAMILIAS + PROPIAS}
+COLOR = {c: col for c, _, col in FAMILIAS + PROPIAS}
 # Empate a votos entre los dos primeros (generales-2026/src/mapa_empates.py): «EMPATE» en la columna <elección>_gana
 NOMBRE['EMPATE'], COLOR['EMPATE'] = 'Empate', '#8a8486'
 GENERALES = ['1977_06', '1979_03', '1982_10', '1986_06', '1989_10', '1993_06', '1996_03', '2000_03',
@@ -45,9 +48,9 @@ def _carga():
     mun = m.merge(h.drop(columns=['municipio', 'provincia']), on='mun_code', how='left')
     mun = mun.copy()
     mun['prov'] = mun.mun_code.str[:2]
-    s = pd.read_csv(D / 'secciones.csv', dtype={'tract_code': str, 'mun_code': str}, usecols=['tract_code', 'mun_code', 'renta_uc'])
+    s = pd.read_csv(D / 'secciones.csv', dtype={'tract_code': str, 'mun_code': str}, usecols=['tract_code', 'mun_code', 'renta_uc', f'{ULTIMA}_gana'])
     lar = pd.read_csv(D / 'resultados_secciones_largo.csv', dtype={'tract_code': str, 'mun_code': str})
-    lar = lar[lar.eleccion == ULTIMA].merge(s[['tract_code', 'renta_uc']], on='tract_code', how='left')
+    lar = lar[lar.eleccion == ULTIMA].merge(s[['tract_code', 'renta_uc', f'{ULTIMA}_gana']].rename(columns={f'{ULTIMA}_gana': 'gana'}), on='tract_code', how='left')
     lar['prov'] = lar.tract_code.str[:2]
     return mun, lar
 
@@ -66,16 +69,19 @@ if LS is not None:
     for _y in SEPARADAS:
         MUN[f'{_y}_vSUMAR_B'] = MUN.mun_code.map(_m.loc[_y]).fillna(0) if _y in _m.index.get_level_values(0) else 0
 # las familias que solo existen en 1933-1936 (Segunda República) no están en las descargas desde 1977
-FAM = [c for c in FAM if f'{ULTIMA}_v{c}' in MUN.columns]
+FAM = [c for c in FAM if any(f'{y}_v{c}' in MUN.columns for y in GENERALES)]
 
 
 def resultado(df, y):
     """Voto por familia sobre voto válido, participación, votantes y censo de un conjunto de municipios."""
-    v = df[[f'{y}_v{c}' for c in FAM]].fillna(0)
-    pct = df[[f'{y}_{c}' for c in FAM]].fillna(0).sum(axis=1)
+    v = df.reindex(columns=[f'{y}_v{c}' for c in FAM]).fillna(0)   # una lista propia no tiene columna en las demás elecciones
+    pct = df.reindex(columns=[f'{y}_{c}' for c in FAM]).fillna(0).sum(axis=1)
     ok = pct > 0
     validos = (v[ok].sum(axis=1) / pct[ok]).sum()   # voto válido = votos a candidaturas + blancos
     votos = {c: v[f'{y}_v{c}'][ok].sum() for c in FAM}
+    # una lista propia con menos del 0,5 % del voto en el territorio vuelve a «Otros» (las tablas y gráficos solo muestran
+    # lo que llega al 0,5 %): así la suma de lo que se ve sigue siendo el 100 % y «Otros» no pierde votos
+    a_otros(votos, validos)
     con_part = df[df[f'{y}_part'].notna()]
     censo, votantes = con_part[f'{y}_censo'].sum(), con_part[f'{y}_votantes'].sum()
     b = df[f'{y}_vSUMAR_B'][ok].sum() if f'{y}_vSUMAR_B' in df else 0
@@ -83,6 +89,15 @@ def resultado(df, y):
             'sumar_b': b / validos if validos and b else None,
             'part': votantes / censo if censo else None, 'censo': censo, 'votantes': votantes,
             'municipios': int(ok.sum()), 'sin_dato': int((~ok & df[f'{y}_censo'].fillna(0).gt(0)).sum())}
+
+
+def a_otros(votos, validos):
+    """Las listas propias con menos del 0,5 % del voto del territorio, de vuelta en «Otros»."""
+    for c in [c for c in _PROPIAS if c in votos]:
+        if validos and votos[c] and votos[c] / validos < 0.005:
+            votos['OTROS'] += votos[c]
+            votos[c] = 0
+    return votos
 
 
 def pct_listas(r):

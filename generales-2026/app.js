@@ -707,8 +707,12 @@
       col.esc[i] = ct ? ce / ct : null;
       if (!ce || !val) continue;
       col.part[i] = vot / ce;
-      let g = -1; FCOD.forEach((c, k) => { col[c][i] = f[k] / val; if (c !== 'OTROS' && (g < 0 || f[k] > f[g])) g = k; });
-      if (g >= 0 && f[g] > 0 && FCOD.some((c, k) => c !== 'OTROS' && k !== g && f[k] === f[g])) g = EMPATE;   // empate a votos
+      FCOD.forEach((c, k) => { col[c][i] = f[k] / val; });
+      // el ganador, lista a lista (no la suma de la familia: PP y UPN, o dos listas del espacio de Sumar, van aparte);
+      // una lista sin familia que gana se pinta como «Otros», nunca como la familia que quedó segunda
+      let m = -1; v.forEach((x, k) => { if (m < 0 || x > v[m]) m = k; });
+      let g = m >= 0 && v[m] > 0 ? fk[m] : -1;
+      if (g >= 0 && v.some((x, k) => k !== m && x === v[m])) g = EMPATE;   // empate a votos
       col.gana[i] = g;
     }
     Object.entries(col).forEach(([k, v]) => MUN[y + '_' + k] = v);
