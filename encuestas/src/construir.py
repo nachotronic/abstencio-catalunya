@@ -79,6 +79,9 @@ def num(v):
 
 # Medio de las encuestadoras que Electográfica publica sin cliente (40dB trabaja para El País y la Cadena SER)
 CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER'}
+# Fecha de publicación de encuestas que solo trae Wikipedia (sin fecha de publicación), por (casa, fin del campo).
+# Sin ella, la página usaría el fin del campo como si fuera la publicación.
+PUBLICADO_WP = {('cis', '2026-10-30'): '2026-11-12'}   # CIS 3584, preelectoral: avance de cis.es del 12-11-2026
 
 
 def carga():
@@ -114,7 +117,8 @@ def carga():
         if w.get('reestimacion'):   # datos brutos del CIS recalculados por otra empresa: solo en la tabla, con su nombre
             w = dict(w, encuestadora=f'{w["encuestadora"]} reestimado por {w["reestimacion"]}')
         out.append({'reest': bool(w.get('reestimacion')), 'casa': w['encuestadora'], 'medio': w['cliente'], 'inicio': w['campo_inicio'], 'fin': w['campo_fin'], 'fin_aprox': False,
-                    'publicado': '', 'muestra': w['muestra'], 'voto': {k: num(w[k]) for k, *_ in PRINCIPALES if num(w[k]) is not None},
+                    'publicado': '' if w.get('reestimacion') else PUBLICADO_WP.get((clave(w['encuestadora']), w['campo_fin']), ''),
+                    'muestra': w['muestra'], 'voto': {k: num(w[k]) for k, *_ in PRINCIPALES if num(w[k]) is not None},
                     'esc': {k: w[f'esc_{k}'] for k, *_ in TODOS if w.get(f'esc_{k}')}, 'url': w['fuente_original']})
     out = [e for e in out if clave(e['casa']) not in NO_ENCUESTAS and 'PP' in e['voto'] and 'PSOE' in e['voto']]
     return sorted(out, key=lambda e: (e['fin'], e['casa']), reverse=True)
@@ -353,6 +357,9 @@ AVISOS_ULTIMO = {
                             'anterior, del 12 de octubre, daba «Sumar», 7,4 %, sin desglose. El cambio es aproximado.',
     ('data10', '2026-11-09'): 'En Data10, el 6,9 % es Frente Amplio con Compromís-Front Valencià y Unidad del Pueblo Canario; '
                               'la anterior, del 5 de octubre, daba «Sumar», 5,2 %. El cambio es aproximado.',
+    ('cis', '2026-11-12'): 'En el preelectoral del CIS (estudio 3584), el 6,9 % suma Frente Amplio (4,7), Compromís: Front Valencià (1,6), '
+                           'Unidad del Pueblo Canario (0,4) y Ara Més-Front Ampli (0,2), que el CIS da por separado; además, cuenta juntos a ERC y '
+                           'Podemos en Cataluña. Por eso el cambio de Sumar con otras encuestas del CIS no es directamente comparable.',
 }
 
 
@@ -971,7 +978,8 @@ def main():
             'La mediana de la última encuesta de cada encuestadora en las tres últimas semanas da: '
             + ', '.join(f'{n} {pc(med[k])}' for k, n, *_ in PRINCIPALES if k in med) + '. Es un resumen de las encuestas, no una previsión.'),
            ('¿Qué dice la última encuesta del CIS?',
-            f'El CIS publicó su última estimación el {fecha_larga(cis["publicado"] or cis["fin"])}: '
+            (f'El CIS publicó su última estimación el {fecha_larga(cis["publicado"])}: ' if cis['publicado'] else
+             f'La última estimación del CIS, con trabajo de campo hasta el {fecha_larga(cis["fin"])}, da: ')
             + ', '.join(f'{n} {pc(cis["voto"][k])}' for k, n, *_ in PRINCIPALES[:4] if k in cis['voto'])
             + '. Su estimación suele apartarse del resto de encuestadoras, sobre todo en el PSOE.') if cis else None,
            ('¿Qué estima el modelo de Mapa Electoral?',

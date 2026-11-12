@@ -41,7 +41,7 @@ li a,li code,p code{overflow-wrap:anywhere}
 <h2>Fuentes</h2>
 <ul>
 <li><b>Resultados por mesa</b>: Ministerio del Interior, <a href="https://infoelectoral.interior.gob.es/opencms/es/elecciones-celebradas/area-de-descargas/">área de descargas de Infoelectoral</a>, en la versión ordenada del paquete <a href="https://github.com/dadosdelaplace/pollspaindata">pollspaindata</a> (generales desde 1986) y en los ficheros originales por mesa (municipales y europeas) y por municipio (municipales de 2007).</li>
-<li><b>Renta, pobreza, edad y nacionalidad</b>: INE, <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a>, datos de 2023 (renta) y padrón de 2023 (edad y nacionalidad), por sección censal, vía <a href="https://github.com/pablogguz/ineAtlas.data">ineAtlas.data</a>.</li>
+<li><b>Renta, pobreza, edad y nacionalidad</b>: INE, <a href="https://www.ine.es/experimental/atlas/experimental_atlas.htm">Atlas de Distribución de Renta de los Hogares</a>, datos de 2023 (renta, población, edad y nacionalidad), por sección censal y municipio, vía <a href="https://github.com/pablogguz/ineAtlas.data">ineAtlas.data</a>. La población del Atlas no es la cifra oficial del padrón municipal: en la mitad de los municipios difiere menos de un 2 %, pero en algunos muy pequeños mucho más (Tresviso, en Cantabria, tiene 5 habitantes en el Atlas y 58 en el padrón de 2023).</li>
 <li><b>Estudios y paro</b>: INE, <a href="https://www.ine.es/censos2021/">Censo de Población y Viviendas 2021</a>, por sección.</li>
 <li><b>Contornos</b>: secciones censales del INE de 2023.</li>
 <li><b>Segunda República</b>: Rodon, T., Vall-Prat, P. y Martín Álvarez, D. (2026), <a href="https://doi.org/10.34810/data3274">Electoral Atlas of the Spanish Second Republic (1931-1936)</a>, v2.0, Universitat Pompeu Fabra, licencia CC BY-NC-SA 4.0. Municipios desaparecidos: INE, <a href="https://www.ine.es/intercensal/">Alteraciones de los municipios en los Censos de Población desde 1842</a>.</li>
@@ -52,7 +52,7 @@ li a,li code,p code{overflow-wrap:anywhere}
 <tr><th>Variable</th><th>Definición</th></tr>
 <tr><td>Renta por unidad de consumo</td><td>Renta neta media por unidad de consumo (escala OCDE modificada), 2023.</td></tr>
 <tr><td>Riesgo de pobreza</td><td>Población con renta por unidad de consumo inferior al 60% de la mediana estatal, 2023.</td></tr>
-<tr><td>Población extranjera</td><td>Residentes sin nacionalidad española según el padrón, 2023.</td></tr>
+<tr><td>Población extranjera</td><td>Residentes sin nacionalidad española según el Atlas de Distribución de Renta de los Hogares, 2023.</td></tr>
 <tr><td>Adultos sin derecho a voto</td><td>Adultos residentes (población por el porcentaje de mayores de 18) menos el censo electoral del 23J. En unas generales solo votan los españoles.</td></tr>
 <tr><td>Partido más votado</td><td>La familia con más votos en la sección o el municipio, sin contar «Otros». Si los dos primeros tienen los mismos votos, la sección o el municipio sale como empate, en gris oscuro (en las descargas, <code>_gana</code> = <code>EMPATE</code>), y no cuenta para ningún partido. Hasta el 10 de noviembre de 2026 el mapa resolvía el empate por el orden de la leyenda.</td></tr>
 <tr><td>Deciles</td><td>Las secciones se ordenan por la variable y se agrupan en diez partes con el mismo censo electoral. Los resultados de cada decil suman los votos de todas sus secciones.</td></tr>
@@ -70,7 +70,7 @@ li a,li code,p code{overflow-wrap:anywhere}
 <li>En municipales no todos los partidos se presentan en todos los municipios, así que su porcentaje por decil depende también de dónde hubo candidatura.</li>
 <li>Entre 0 y 16 mesas por elección figuran en los ficheros de Interior con censo y ningún voto, aunque el avance de participación de las 18.00 sí contaba votantes: es un resultado que falta en el origen. Esas mesas se excluyen, y si eran las únicas de su sección, la sección queda «sin dato» en lugar de con un 0% de participación.</li>
 <li>Los municipios creados por segregación (Balanegra, Guadiana, El Palmar de Troya, San Martín del Tesorillo…) o por fusión (Oza-Cesuras, Cerdedo-Cotobade) no tienen datos antes de existir; hasta entonces su territorio cuenta en el municipio de origen.</li>
-<li>El censo del 23J (julio) y el padrón (enero) no son la misma foto, y la estimación de adultos usa el porcentaje de menores del Atlas.</li>
+<li>El censo del 23J (julio) y la población del Atlas de renta (2023) no son la misma foto, y la estimación de adultos usa el porcentaje de menores del Atlas.</li>
 <li>En las elecciones de la Segunda República el porcentaje de cada bloque depende también de cuántos candidatos presentó: un bloque con menos candidatos que puestos a elegir aparece con menos peso del que tenía entre los electores. Comparar 1933 con 1936, o con elecciones posteriores, es comparar bloques, no partidos.</li>
 <li>Estudios y paro son del censo de 2021.</li>
 </ul>
