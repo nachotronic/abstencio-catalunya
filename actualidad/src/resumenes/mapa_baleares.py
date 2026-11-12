@@ -2,7 +2,7 @@
 
 Los 67 municipios de Baleares en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas
 por separado: en 2019, Unidas Podemos y Más País), las islas (Mallorca, Menorca, Eivissa y Formentera), el tamaño de
-los municipios (padrón de 2023), las 11 ciudades de más de 30.000 habitantes, los municipios de Sumar y los más
+los municipios (población del Atlas de renta del INE, 2023), las 11 ciudades de más de 30.000 habitantes, los municipios de Sumar y los más
 ajustados, y el reparto central del modelo de /encuestas/ para el 29N.
 Contexto: EFE vía Última Hora (12-11-2026) y Última Hora (26-10-2026), cabezas de lista. Sin citas literales en esas notas.
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_baleares.py
@@ -157,7 +157,7 @@ g_tam = figura(f'De las {TG["n"]} ciudades de más de 30.000 habitantes, el PSOE
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=180),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'PSOE 2023', 'PP 2023', 'PSOE 2023 (%)', 'PP 2023 (%)'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PSOE', 'PP')] + [n(t['g23'].get(f, 0)) for f in ('PSOE', 'PP')]
@@ -169,7 +169,7 @@ g_cap = figura(f'Palma pasó del PSOE al PP por {n(int(PAL.margv2023))} votos',
                'Voto al PP, al PSOE y a Vox en julio de 2023 en los ocho municipios más poblados, en %. Barra clara: noviembre de 2019',
                grupos([(r.municipio, [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
                        for _, r in G8.iterrows()], 45, 'Voto en los ocho municipios más poblados', W=440, ml=175),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in FC] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Isla', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Ventaja 2023 (votos)'] + [f'{NOMC[f]} {y} (%)' for f in FC for y in ('2019', '2023')],
                 [[r.municipio, r.isla, n(r.poblacion), NOMC[r.g2019], NOMC[r.g2023], n(r.margv2023)] + [p(r[f'{y}%{f}']) for f in FC for y in (Y19, Y23)] for _, r in G8.iterrows()]))
@@ -261,7 +261,7 @@ preguntas = [
 enlaces = (f'{L("baleares-historia-electoral", "Historia electoral de Baleares")} · <a href="{BASE}elecciones/baleares/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/illes-balears/">Encuesta en Baleares</a> · {L("palma-barrio-a-barrio-29n", "Palma, barrio a barrio")}')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_baleares.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_baleares.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

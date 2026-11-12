@@ -1,7 +1,7 @@
 """«El mapa electoral de Castilla-La Mancha» (2026-11), séptima pieza de la serie «El mapa electoral de…» (mapa_ccaa.py).
 
 Los 919 municipios de Castilla-La Mancha en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno
-(listas por separado), el tamaño de los municipios (padrón de 2023), las cinco capitales, las provincias, Vox (65
+(listas por separado), el tamaño de los municipios (población del Atlas de renta del INE, 2023), las cinco capitales, las provincias, Vox (65
 municipios en 2019, 10 en 2023), los municipios decididos por un voto y el reparto central del modelo de /encuestas/.
 Contexto: EFE vía Diario de León (García-Page, 9-10-2026) y ESdiario (Paco Núñez, 5-10-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_clm.py
@@ -159,7 +159,7 @@ g_tam = figura(f'En los municipios de más de 20.000 habitantes, el PSOE pasó d
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'Vox 2019', 'PSOE 2023', 'PP 2023', 'Vox 2023'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PSOE', 'PP', 'VOX')] + [n(t['g23'].get(f, 0)) for f in ('PSOE', 'PP', 'VOX')]
@@ -293,7 +293,7 @@ enlaces = (f'{L("castilla-la-mancha-historia-electoral", "Historia electoral de 
            f'<a href="{BASE}encuestas/toledo/">Encuesta en Toledo</a> · <a href="{BASE}encuestas/ciudad-real/">Encuesta en Ciudad Real</a> · '
            f'<a href="{BASE}encuestas/albacete/">Encuesta en Albacete</a> · <a href="{BASE}encuestas/guadalajara/">Encuesta en Guadalajara</a> · <a href="{BASE}encuestas/cuenca/">Encuesta en Cuenca</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_clm.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_clm.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

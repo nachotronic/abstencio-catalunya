@@ -182,7 +182,7 @@ g_cap = figura(f'El PSOE ganó en 2023 los once municipios de más de 10.000 hab
                grupos([(r.municipio.split('/')[0], [(r[f'{Y19}%NAS'], COLC['NAS'], .38, 'Navarra Suma, nov. 2019'), (r[f'{Y23}%PP'] + r[f'{Y23}%UPN'], COLC['UPNPP'], 1, 'UPN y PP sumados, 2023')]
                         + [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
                        for _, r in GC.iterrows()], 45, 'Voto en los once municipios de más de 10.000 habitantes', W=440, ml=110),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC['NAS'], COLC['NAS']), (NOMC['UPNPP'], COLC['UPNPP'])] + [(NOMC[f], COLC[f]) for f in FC]
                + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Segundo 2023', 'Ventaja 2023 (votos)', 'Navarra Suma 2019 (%)', 'PP 2023 (%)', 'UPN 2023 (%)',
@@ -195,7 +195,7 @@ g_tam = figura(f'EH Bildu ganó en {TP["g23"]["BILDU"]} de los {TP["n"]} municip
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORD19 if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORD23 if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)'] + [f'{NOMC[f]} 2019' for f in ('NAS', 'PSOE', 'BILDU')] + [f'{NOMC[f]} 2023' for f in ('PSOE', 'BILDU', 'PP', 'UPN')]
                 + ['EH Bildu 2023 (%)', 'PSOE 2023 (%)'],
@@ -299,7 +299,7 @@ preguntas = [
 enlaces = (f'{L("navarra-historia-electoral", "Historia electoral de Navarra")} · <a href="{BASE}elecciones/navarra/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/navarra/">Encuesta en Navarra</a> · {L("participacion-navarra-municipios-29n", "La participación en Navarra, pueblo a pueblo")}')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_navarra.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_navarra.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

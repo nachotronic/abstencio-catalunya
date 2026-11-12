@@ -3,7 +3,7 @@
 
 Cifras: generales por municipio (generales-2026/descargas/municipios_historico.csv hasta 2000 y municipios.csv desde 2004),
 porcentaje sobre votos a candidaturas y sin voto exterior (CERA), como los resultados oficiales por municipio de Público.
-Población: padrón más reciente de la descarga (la misma lista de 24 municipios en todas las elecciones).
+Población: la de la descarga (Atlas de distribución de renta de los hogares del INE, 2023, no el padrón) (la misma lista de 24 municipios en todas las elecciones).
 En 2015 la familia «Sumar / Podemos / IU» suma Podemos e IU, que fueron por separado: esa elección no entra en el recuento
 de municipios ganados (el ganador de la familia no es el de ninguna lista). En noviembre de 2019 pasa lo mismo: la familia
 suma Unidas Podemos y Más País, que también fueron por separado, así que el ganador de 2019-N sale de los votos de cada lista

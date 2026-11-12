@@ -1011,7 +1011,7 @@ def pagina_barrio(cod, b, todos):
         h.append(p_('Dato', f'Donde más se separa {escape(nombre)} del resto de {escape(ciudad)} es en el voto {con_de(art_partido(lejos, ccaa))}: '
                     f'{pct(r["pct"][lejos])}, frente al {pct(rc["pct"][lejos])} de la ciudad, {puntos(dif[lejos])} puntos {"más" if dif[lejos] > 0 else "menos"}.'))
     # quién vive
-    frases = [f'Viven en {escape(nombre)} {num(dm["poblacion"])} personas (padrón de 2023)']
+    frases = [f'Viven en {escape(nombre)} {num(dm["poblacion"])} personas (Atlas de distribución de renta de los hogares del INE, 2023)']
     if dm['edad_media']:
         frases.append(f'con una edad media de {dm["edad_media"]:.1f} años ({dc["edad_media"]:.1f} en {escape(ciudad)})'.replace('.', ','))
     txt = ', '.join(frases) + '. '
@@ -1113,7 +1113,7 @@ def pagina_barrio(cod, b, todos):
              ['Bajo el umbral de pobreza relativa', dato_demo(dm['pobreza'], pct), dato_demo(dc['pobreza'], pct)]]
     h.append('<h2>Quién vive en el ' + tipo_b + '</h2>'
              + tabla(f'Población, edad, origen, estudios y renta de {escape(nombre)} y de {escape(ciudad)}', ['', escape(nombre), escape(ciudad)], filas)
-             + '<p class="leyenda">Medias de las secciones del barrio ponderadas por su población. Padrón y Atlas de Distribución de Renta de los Hogares del INE (2023); '
+             + '<p class="leyenda">Medias de las secciones del barrio ponderadas por su población. Atlas de Distribución de Renta de los Hogares del INE (2023); '
                'estudios, paro y lugar de nacimiento, del censo de población de 2021. La relación entre estas cifras y el voto es entre barrios, no entre personas.</p>')
 
     # otros barrios
@@ -1152,7 +1152,7 @@ def bloque_metodo_barrio(tipo_b, cod=None):
             'Cada sección censal del INE se asigna al barrio con el que comparte más superficie; las que caen menos de la mitad dentro de un barrio no se asignan. '
             'Como las secciones no siempre siguen los límites de los barrios, alguna manzana del borde puede quedar en el barrio vecino.</dd>'
             '<dt>Datos</dt><dd>Resultados oficiales por mesa del Ministerio del Interior (Infoelectoral) agregados por sección censal, sin el voto de los residentes en el extranjero (CERA). '
-            'Renta y población: Atlas de Distribución de Renta de los Hogares y padrón del INE (2023); estudios, paro y lugar de nacimiento: censo de población de 2021.</dd>'
+            'Renta y población: Atlas de Distribución de Renta de los Hogares del INE (2023); estudios, paro y lugar de nacimiento: censo de población de 2021.</dd>'
             '<dt>Cómo se calcula</dt><dd>Porcentajes sobre voto válido (candidaturas más votos en blanco), sumando votos de las secciones, no promediando porcentajes. '
             f'Participación: votantes entre censo. Agrupación de partidos y límites: <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.</dd>'
             f'<dt>Datos abiertos</dt><dd>Las cifras salen de las <a href="{RAIZ_REL}generales-2026/metodologia.html#descargas">descargas del mapa</a> (CSV, licencia <a href="{LICENCIA}">CC BY 4.0</a>); '
