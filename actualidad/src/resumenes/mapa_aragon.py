@@ -181,12 +181,12 @@ g_tam = figura(f'En las {TG["n"]} ciudades de más de 10.000 habitantes, el PSOE
 FC = ('PP', 'PSOE', 'VOX', 'TE')
 g_cap = figura('El PP ganó en las tres capitales en 2023; en 2019, ninguna',
                'Voto al PP, al PSOE, a Vox y a Teruel Existe en julio de 2023 en las tres capitales, en %. Barra clara: noviembre de 2019',
-               grupos([(CAPITAL[r.mun_code], [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
+               grupos([(CAPITAL[r.mun_code], [x for f in FC for x in (((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'),) if r[f'{Y19}_v{f}'] else ()) + ((r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'),)])
                        for _, r in CAP.iterrows()], 45, 'Voto en las tres capitales', W=440, ml=80),
                'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. En 2019, Teruel Existe solo se presentó en Teruel. Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in FC] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Capital', 'Ganador nov. 2019', 'Ganador 2023', 'Ventaja 2023 (puntos)'] + [f'{NOMC[f]} {y} (%)' for f in FC for y in ('2019', '2023')],
-                [[CAPITAL[r.mun_code], NOMC[r.g2019], NOMC[r.g2023], n(r.marg2023, 2)] + [p(r[f'{y}%{f}']) for f in FC for y in (Y19, Y23)] for _, r in CAP.iterrows()]))
+                [[CAPITAL[r.mun_code], NOMC[r.g2019], NOMC[r.g2023], n(r.marg2023, 2)] + [p(r[f'{y}%{f}']) if r[f'{y}_v{f}'] else '—' for f in FC for y in (Y19, Y23)] for _, r in CAP.iterrows()]))
 
 g_prov = figura(f'Teruel Existe, el más votado en Teruel en 2019, pasó del {p(TEP[Y19])} % al {p(TEP[Y23])} % en la provincia',
                 'Municipios ganados por cada partido en noviembre de 2019 y en julio de 2023, por provincia',
