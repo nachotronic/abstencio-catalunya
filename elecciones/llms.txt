@@ -30,7 +30,7 @@
 - [Elecciones en Galicia](https://mapaelectoral.es/elecciones/galicia/): en 2023, PP 43,6 %; participación 73,1 %.
 - [Elecciones en Comunidad de Madrid](https://mapaelectoral.es/elecciones/madrid/): en 2023, PP 40,5 %; participación 74,1 %.
 - [Elecciones en Región de Murcia](https://mapaelectoral.es/elecciones/murcia/): en 2023, PP 41,2 %; participación 70,8 %.
-- [Elecciones en Navarra](https://mapaelectoral.es/elecciones/navarra/): en 2023, PP 31,9 %; participación 69,9 %.
+- [Elecciones en Navarra](https://mapaelectoral.es/elecciones/navarra/): en 2023, PSOE 27,4 %; participación 69,9 %.
 - [Elecciones en País Vasco](https://mapaelectoral.es/elecciones/pais-vasco/): en 2023, PSOE 25,3 %; participación 67,6 %.
 - [Elecciones en La Rioja](https://mapaelectoral.es/elecciones/la-rioja/): en 2023, PP 45,7 %; participación 74,9 %.
 - [Elecciones en Ceuta](https://mapaelectoral.es/elecciones/ceuta/): en 2023, PP 38,8 %; participación 55,7 %.

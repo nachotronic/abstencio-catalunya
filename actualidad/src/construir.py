@@ -4451,6 +4451,7 @@ PIEZAS += [
                  ('https://www.diariosigloxxi.com/texto-ep/mostrar/20261111174026/sanchez-abre-campana-jueves-sevilla-feijoo-hara-badalona-mientras-abascal-colau-eligen-madrid', 'Europa Press, Sánchez abre campaña en Sevilla, Feijóo en Badalona y Abascal y Colau en Madrid (11-11-2026)'),
                  ('https://www.democrata.es/politica/sanchez-inicia-hoy-la-campana-en-sevilla-feijoo-en-badalona-y-abascal-colau-y-montero-optan-por-madrid/', 'Demócrata, así arrancan Sánchez, Feijóo, Abascal, Colau y Montero (12-11-2026)'),
                  ('https://es.ara.cat/politica/feijoo-elige-catalunya-albiol-inicio-campana-29-n_1_5902176.html', 'Ara, Feijóo elige Catalunya y Albiol para el inicio de la campaña (6-11-2026)'),
+                 ('https://www.democrata.es/politica/ampliacion-feijoo-apuesta-por-el-cambio-necesario-como-lema-de-su-campana-que-se-inicia-el-jueves-12-en-badalona/', 'Demócrata, Feijóo apuesta por «El cambio necesario» como lema de campaña (6-11-2026)'),
                  ('https://www.esdiario.com/andalucia/261109/202467/sanchez-arranca-campana-sevilla-montero-psoe-esperan-desborde.html', 'ESdiario, Sánchez arranca la campaña en Sevilla con Montero (9-11-2026)'),
                  ('https://www.eldebate.com/espana/andalucia/20230724/sevilla-feudo-inexpugnable-psoe-victoria-socialista-80-provincia-fetiche_130224.html', 'El Debate, Sevilla, el feudo del PSOE (24-7-2023)')],
         enlaces=[],

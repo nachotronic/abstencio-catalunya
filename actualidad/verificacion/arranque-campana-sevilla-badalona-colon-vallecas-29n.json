@@ -201,12 +201,12 @@
       "calculo": "D['ESC26']['08']"
     },
     {
-      "texto": "reparte 32 escaños; el PP sacó 5 en 2023. Vox, que no",
+      "texto": "reparte 32 escaños; el PP sacó 5 en 2023.",
       "cifra": "5",
       "calculo": "D['ESC']['08']['PP']"
     },
     {
-      "texto": "allí en las generales el 8,0 %, algo más que en la",
+      "texto": "Vox sacó en las generales el 8,0 %, algo más que en la",
       "cifra": "8,0",
       "calculo": "D['U']['badalona']['2023_07']['VOX']"
     },

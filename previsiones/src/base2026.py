@@ -49,6 +49,10 @@ def main():
 
     g = pd.read_csv(RAIZ / 'generales-2026/descargas/resultados_secciones_largo.csv', dtype={'tract_code': str, 'mun_code': str})
     g = g[g.eleccion == '2023_07'].set_index('tract_code')
+    # el modelo parte de las familias de siempre: UPN con el PP y las listas provinciales en «Otros» (mapa_listas_propias.py)
+    import sys; sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+    from partidos import sin_listas_propias
+    g = sin_listas_propias(g.copy())
     out = g[['censo', 'votantes', 'blancos', 'nulos'] + FAM23].copy()
     out['validos'] = out[FAM23].sum(axis=1) + out.blancos
     e = e.set_index('tract_code')
