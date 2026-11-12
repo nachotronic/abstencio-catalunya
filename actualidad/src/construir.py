@@ -4490,6 +4490,21 @@ PIEZAS += [
         enlaces=[],
         lugar='Castilla-La Mancha',
     ),
+    dict(
+        slug='mapa-electoral-pais-vasco-29n', fecha='2026-11-12',
+        titulo='El mapa electoral del País Vasco: el PNV pasó de ganar en 152 municipios a 76, y EH Bildu, de 79 a 140', serie='29n', figura=1,
+        descripcion='El PNV bajó en 246 de los 251 municipios (en uno repitió). EH Bildu le quitó 60 y el PSOE, más votado en 2023, ganó en las tres capitales. Para el 29N, la media de encuestas da al PSOE 7 de los 18 diputados, a EH Bildu 6 y al PNV 3.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 251 municipios del País Vasco: el partido más votado en cada uno, los 60 que pasaron del PNV a EH Bildu, el voto según el tamaño del municipio, las tres capitales, los tres territorios y los municipios más ajustados; y el reparto central de la media de encuestas del 29N en Bizkaia, Gipuzkoa y Álava.',
+        limites='Son datos por municipio, no de personas: no dicen cuántos votantes del PNV de 2019 votaron a EH Bildu o al PSOE en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado; Más País solo se presentó en Bizkaia); con los mismos votos entre los dos primeros, empate (Gaintza en 2019). Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_pais_vasco.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.moncloa.com/2026/10/17/listas-pnv-congreso-29n-3450355/', 'Moncloa.com, las listas del PNV al Congreso (17-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/16/eh-bildu-candidatos-generales-29n-3449751/', 'Moncloa.com, los candidatos de EH Bildu (16-10-2026)'),
+                 ('https://www.moncloa.com/2026/10/19/eh-bildu-elecciones-generales-29n-2-3451602/', 'Moncloa.com, Otegi presenta la candidatura de EH Bildu (19-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='País Vasco',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
