@@ -2,7 +2,7 @@
 
 Los 251 municipios del País Vasco en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno
 (listas por separado: en 2019, Unidas Podemos y Más País, que solo se presentó en Bizkaia), el tamaño de los municipios
-(población del Atlas de renta del INE, 2023), las tres capitales, los tres territorios, los 60 municipios que pasaron del PNV a EH Bildu, los más
+(padrón municipal del INE, 2023), las tres capitales, los tres territorios, los 60 municipios que pasaron del PNV a EH Bildu, los más
 ajustados y el reparto central del modelo de /encuestas/ para el 29N.
 Contexto: Moncloa.com (listas del PNV, 17-10-2026; candidatura de EH Bildu, 16-10 y 19-10-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_pais_vasco.py
@@ -49,13 +49,13 @@ DPNV_VOTOS = A19['votos']['PNV'] - A23['votos']['PNV']
 DBILDU_VOTOS = A23['votos']['BILDU'] - A19['votos']['BILDU']
 assert DPNV_VOTOS > 0 and DBILDU_VOTOS > 0
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PNV', 'BILDU', 'PSOE')} for y in (Y19, Y23)}
-assert round(POB[Y19]['PNV'], 1) == 63.4 and round(POB[Y23]['PNV'], 1) == 17.0 and round(POB[Y23]['PSOE'], 1) == 59.7
+assert round(POB[Y19]['PNV'], 1) == 63.5 and round(POB[Y23]['PNV'], 1) == 17.1 and round(POB[Y23]['PSOE'], 1) == 59.6
 FL = m[(m.g2019 == 'PNV') & (m.g2023 == 'BILDU')]
 FLS = {y: agrega(FL, y, L19 if y == Y19 else L23)['pct'] for y in (Y19, Y23)}
 assert FLS[Y23]['PNV'] < FLS[Y19]['PNV'] and FLS[Y23]['BILDU'] > FLS[Y19]['BILDU'], FLS
 FL_MED = float(FL.poblacion.median())
 
-# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
+# Tamaño de municipio (padrón municipal del INE, 2023)
 TAM = [('Menos de 1.000', 0, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000), ('Más de 20.000', 20000, 10 ** 9)]
 assert m.poblacion.notna().all()
 TT = {}
@@ -67,14 +67,14 @@ for nom, a, b in TAM:
 assert sum(t['n'] for t in TT.values()) == NMUN
 assert all(t['pnv23'] < t['pnv19'] and t['bildu23'] > t['bildu19'] and t['psoe23'] > t['psoe19'] for t in TT.values())
 TG = TT['Más de 20.000']
-assert TG['n'] == 19 and TG['g19'] == {'PNV': 12, 'PSOE': 6, 'BILDU': 1} and TG['g23'] == {'PSOE': 12, 'BILDU': 4, 'PNV': 3}, TG
+assert TG['n'] == 20 and TG['g19'] == {'PNV': 13, 'PSOE': 6, 'BILDU': 1} and TG['g23'] == {'PSOE': 12, 'BILDU': 5, 'PNV': 3}, TG   # padrón 2023: Tolosa pasa de 20.000
 TP = TT['Menos de 1.000']
-assert TP['n'] == 98 and TP['g23']['BILDU'] == 59 and TP['g19']['PNV'] == 53
+assert TP['n'] == 99 and TP['g23']['BILDU'] == 60 and TP['g19']['PNV'] == 54
 G20 = m[m.poblacion >= 20000]
 G20B19 = sorted(G20[G20.g2019 == 'BILDU'].municipio)
 G20B23 = sorted(G20[G20.g2023 == 'BILDU'].municipio)
 G20P23 = sorted(G20[G20.g2023 == 'PNV'].municipio)
-assert G20B19 == ['Hernani'] and G20B23 == ['Arrasate/Mondragón', 'Durango', 'Hernani', 'Zarautz'] and G20P23 == ['Galdakao', 'Getxo', 'Leioa'], (G20B23, G20P23)
+assert G20B19 == ['Hernani'] and G20B23 == ['Arrasate/Mondragón', 'Durango', 'Hernani', 'Tolosa', 'Zarautz'] and G20P23 == ['Galdakao', 'Getxo', 'Leioa'], (G20B23, G20P23)
 
 # Las tres capitales
 CAP = m[m.mun_code.isin(CAPITAL)].sort_values('poblacion', ascending=False)
@@ -162,7 +162,7 @@ g_tam = figura(f'En los municipios de más de 20.000 habitantes, el PSOE pasó d
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PNV 2019', 'EH Bildu 2019', 'PSOE 2019', 'PNV 2023', 'EH Bildu 2023', 'PSOE 2023'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PNV', 'BILDU', 'PSOE')] + [n(t['g23'].get(f, 0)) for f in ('PNV', 'BILDU', 'PSOE')]
@@ -260,7 +260,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 <p data-tipo="patron">De los {GANA[Y19]["PNV"]} municipios del PNV en 2019, {PNV_BILDU} pasaron a EH Bildu, {PNV_PSOE} al PSOE y {NW[PNV_PP]} al PP; conservó {PNV_PNV}. EH Bildu mantuvo los {BILDU_BILDU} que había ganado en 2019. En los {PNV_BILDU} que pasaron del PNV a EH Bildu, el PNV bajó del {p(FLS[Y19]["PNV"])} % al {p(FLS[Y23]["PNV"])} % y EH Bildu subió del {p(FLS[Y19]["BILDU"])} % al {p(FLS[Y23]["BILDU"])} %. Como el PSOE ganó las ciudades, los municipios que ganó pasaron de reunir el {p(POB[Y19]["PSOE"])} % de la población al {p(POB[Y23]["PSOE"])} %, y los del PNV, del {p(POB[Y19]["PNV"])} % al {p(POB[Y23]["PNV"])} %.</p>
 {g_flip}
 <h2>Las ciudades y los pueblos</h2>
-<p data-tipo="patron">En los {TG["n"]} municipios de más de 20.000 habitantes, el PNV ganó en {TG["g19"]["PNV"]} en 2019 y en {NW[TG["g23"]["PNV"]]} en 2023: Getxo, Leioa y Galdakao. El PSOE pasó de {NW[TG["g19"]["PSOE"]]} a {TG["g23"]["PSOE"]}, y EH Bildu, que en 2019 solo ganó en Hernani, sumó en 2023 Durango, Zarautz y Arrasate/Mondragón. En los pueblos, el mapa es de EH Bildu: en los {TP["n"]} de menos de 1.000 habitantes, ganó en {TP["g23"]["BILDU"]} en 2023; el PNV había ganado en {TP["g19"]["PNV"]} en 2019. El PNV bajó en todos los tamaños de municipio, y EH Bildu y el PSOE subieron en todos.</p>
+<p data-tipo="patron">En los {TG["n"]} municipios de más de 20.000 habitantes, el PNV ganó en {TG["g19"]["PNV"]} en 2019 y en {NW[TG["g23"]["PNV"]]} en 2023: Getxo, Leioa y Galdakao. El PSOE pasó de {NW[TG["g19"]["PSOE"]]} a {TG["g23"]["PSOE"]}, y EH Bildu, que en 2019 solo ganó en Hernani, sumó en 2023 Durango, Zarautz, Arrasate/Mondragón y Tolosa. En los pueblos, el mapa es de EH Bildu: en los {TP["n"]} de menos de 1.000 habitantes, ganó en {TP["g23"]["BILDU"]} en 2023; el PNV había ganado en {TP["g19"]["PNV"]} en 2019. El PNV bajó en todos los tamaños de municipio, y EH Bildu y el PSOE subieron en todos.</p>
 {g_tam}
 {g_tampct}
 <p data-tipo="dato">En las capitales, que reúnen el {p(CAP_POB)} % de la población vasca, el PSOE ganó en 2023 en Bilbao por {n(BIL.marg2023, 2)} puntos sobre el PNV; en Donostia/San Sebastián, por {n(DON.marg2023, 2)} sobre EH Bildu, y en Vitoria-Gasteiz, por {n(VIT.marg2023, 2)} sobre el PP. Bilbao y Donostia/San Sebastián las había ganado el PNV en 2019. Cómo cambiaron las dos ciudades sección a sección está en {L("derbi-vasco-bilbao-donostia-29n", "El derbi en las urnas")}.</p>
@@ -297,7 +297,7 @@ enlaces = (f'{L("pais-vasco-historia-electoral", "Historia electoral del País V
            f'<a href="{BASE}encuestas/bizkaia/">Encuesta en Bizkaia</a> · <a href="{BASE}encuestas/gipuzkoa/">Encuesta en Gipuzkoa</a> · '
            f'<a href="{BASE}encuestas/alava/">Encuesta en Álava</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_pais_vasco.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_pais_vasco.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

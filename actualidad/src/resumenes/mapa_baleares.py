@@ -2,7 +2,7 @@
 
 Los 67 municipios de Baleares en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas
 por separado: en 2019, Unidas Podemos y Más País), las islas (Mallorca, Menorca, Eivissa y Formentera), el tamaño de
-los municipios (población del Atlas de renta del INE, 2023), las 11 ciudades de más de 30.000 habitantes, los municipios de Sumar y los más
+los municipios (padrón municipal del INE, 2023), las nueve ciudades de más de 30.000 habitantes, los municipios de Sumar y los más
 ajustados, y el reparto central del modelo de /encuestas/ para el 29N.
 Contexto: EFE vía Última Hora (12-11-2026) y Última Hora (26-10-2026), cabezas de lista. Sin citas literales en esas notas.
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_baleares.py
@@ -50,7 +50,7 @@ PSOE_SUBE = int((m[f'{Y23}%PSOE'] > m[f'{Y19}%PSOE']).sum())
 PP_SUBE = int((m[f'{Y23}%PP'] > m[f'{Y19}%PP']).sum())
 assert PSOE_SUBE == 64 and PP_SUBE == NMUN
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PP', 'PSOE')} for y in (Y19, Y23)}
-assert [round(POB[y][f], 1) for y in (Y19, Y23) for f in ('PSOE', 'PP')] == [78.3, 20.1, 9.2, 90.1], POB
+assert [round(POB[y][f], 1) for y in (Y19, Y23) for f in ('PSOE', 'PP')] == [78.2, 20.2, 9.1, 90.2], POB
 FL = m[(m.g2019 == 'PSOE') & (m.g2023 == 'PP')]
 IZQ19 = A19['pct']['UP'] + A19['pct']['MP'] + A19['pct']['MES']
 assert round(A19['pct']['MES'], 1) == 4.1 and round(IZQ19, 1) == 24.7, IZQ19   # de votos brutos (18,3 + 2,4 + 4,1 redondeados darían 24,8)
@@ -78,11 +78,12 @@ for nom, a, b in TAM:
                **{f'{f.lower()}19': a19[f] for f in ('PP', 'PSOE', 'VOX', 'UP')}, **{f'{f.lower()}23': a23[f] for f in ('PP', 'PSOE', 'VOX', 'SUMAR')}}
 assert sum(t['n'] for t in TT.values()) == NMUN
 TG = TT['Más de 30.000']
-assert TG['n'] == 11 and TG['g19'] == {'PSOE': 9, 'PP': 2} and TG['g23'] == {'PP': 10, 'PSOE': 1}, TG
+assert TG['n'] == 9 and TG['g19'] == {'PSOE': 7, 'PP': 2} and TG['g23'] == {'PP': 9}, TG   # padrón 2023 (Atlas: 11, con Maó y Sant Josep)
 GC = m[m.poblacion >= 30000].sort_values('poblacion', ascending=False)
-assert list(GC[GC.g2023 == 'PSOE'].municipio) == ['Maó'] and set(GC[GC.g2019 == 'PP'].municipio) == {'Santa Eulària des Riu', 'Ciutadella de Menorca'}
+assert not (GC.g2023 == 'PSOE').any() and set(GC[GC.g2019 == 'PP'].municipio) == {'Santa Eulària des Riu', 'Ciutadella de Menorca'}
 GI = GC.set_index('municipio')
-PAL, MAO = GI.loc['Palma'], GI.loc['Maó']
+PAL, MAO = GI.loc['Palma'], m.set_index('municipio').loc['Maó']   # Maó se queda justo por debajo de 30.000 en el padrón
+assert int(MAO.poblacion) == 29902 and MAO.g2019 == 'PSOE' and MAO.g2023 == 'PSOE'
 assert PAL.g2019 == 'PSOE' and PAL.g2023 == 'PP' and int(PAL.margv2023) == 7658 and int(MAO.margv2023) == 170
 
 # Sumar y ajustados
@@ -152,12 +153,12 @@ g_isla = figura('En 2019, el PSOE fue el más votado en las cuatro islas; en 202
                 (['Isla', 'Municipios', 'PSOE 2019 (%)', 'PP 2019 (%)', 'PP 2023 (%)', 'PSOE 2023 (%)', 'Sumar 2023 (%)', 'Vox 2023 (%)'],
                  [[i, n(len(ISLA[i])), p(IS[i][Y19]['pct']['PSOE']), p(IS[i][Y19]['pct']['PP'])] + [p(IS[i][Y23]['pct'][f]) for f in ('PP', 'PSOE', 'SUMAR', 'VOX')] for i in ORDI]))
 
-g_tam = figura(f'De las {TG["n"]} ciudades de más de 30.000 habitantes, el PSOE ganó en {NW[TG["g19"]["PSOE"]]} en 2019 y solo en Maó en 2023',
+g_tam = figura(f'De las {NW[TG["n"]]} ciudades de más de 30.000 habitantes, el PSOE ganó en {NW[TG["g19"]["PSOE"]]} en 2019 y en ninguna en 2023',
                'Municipios ganados por cada partido en noviembre de 2019 y en julio de 2023, según su población',
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=180),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'PSOE 2023', 'PP 2023', 'PSOE 2023 (%)', 'PP 2023 (%)'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PSOE', 'PP')] + [n(t['g23'].get(f, 0)) for f in ('PSOE', 'PP')]
@@ -169,7 +170,7 @@ g_cap = figura(f'Palma pasó del PSOE al PP por {n(int(PAL.margv2023))} votos',
                'Voto al PP, al PSOE y a Vox en julio de 2023 en los ocho municipios más poblados, en %. Barra clara: noviembre de 2019',
                grupos([(r.municipio, [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
                        for _, r in G8.iterrows()], 45, 'Voto en los ocho municipios más poblados', W=440, ml=175),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in FC] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Isla', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Ventaja 2023 (votos)'] + [f'{NOMC[f]} {y} (%)' for f in FC for y in ('2019', '2023')],
                 [[r.municipio, r.isla, n(r.poblacion), NOMC[r.g2019], NOMC[r.g2023], n(r.margv2023)] + [p(r[f'{y}%{f}']) for f in FC for y in (Y19, Y23)] for _, r in G8.iterrows()]))
@@ -232,7 +233,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">En 2019, el PSOE fue el más votado en las cuatro islas; en 2023, el PP. En Eivissa, el PP ganó en 2023 los {len(ISLA["Eivissa"])} municipios, y también en Formentera. En Menorca, el PP pasó de {ISG["Menorca"][Y19]["PP"]} a {ISG["Menorca"][Y23]["PP"]} de los {len(ISLA["Menorca"])} municipios, y el PSOE conservó {NW[ISG["Menorca"][Y23]["PSOE"]]}, entre ellos Maó; es la isla en la que más votó a Sumar, con el {p(IS["Menorca"][Y23]["pct"]["SUMAR"])} %. En Mallorca, el PP pasó de {ISG["Mallorca"][Y19]["PP"]} municipios a {ISG["Mallorca"][Y23]["PP"]}, de {len(ISLA["Mallorca"])}.</p>
 {g_isla}
 <h2>Las ciudades y los pueblos</h2>
-<p data-tipo="patron">El cambio fue mayor en las ciudades. De las {TG["n"]} de más de 30.000 habitantes, el PSOE ganó en {NW[TG["g19"]["PSOE"]]} en 2019 y solo en Maó en 2023, por {int(MAO.margv2023)} votos. Palma pasó del PSOE al PP por {n(int(PAL.margv2023))} votos: el PP sacó allí el {p(PAL[f"{Y23}%PP"])} % y el PSOE, el {p(PAL[f"{Y23}%PSOE"])} %. Calvià, Eivissa, Manacor, Marratxí, Llucmajor, Inca y Sant Josep de sa Talaia también pasaron del PSOE al PP. Cómo votó Palma barrio a barrio está en {L("palma-barrio-a-barrio-29n", "esta pieza")}.</p>
+<p data-tipo="patron">El cambio fue mayor en las ciudades. De las {NW[TG["n"]]} de más de 30.000 habitantes, el PSOE ganó en {NW[TG["g19"]["PSOE"]]} en 2019 y en ninguna en 2023. Conservó Maó, que se queda justo por debajo, con {n(int(MAO.poblacion))} habitantes, por {int(MAO.margv2023)} votos. Palma pasó del PSOE al PP por {n(int(PAL.margv2023))} votos: el PP sacó allí el {p(PAL[f"{Y23}%PP"])} % y el PSOE, el {p(PAL[f"{Y23}%PSOE"])} %. Calvià, Eivissa, Manacor, Marratxí, Llucmajor, Inca y Sant Josep de sa Talaia también pasaron del PSOE al PP. Cómo votó Palma barrio a barrio está en {L("palma-barrio-a-barrio-29n", "esta pieza")}.</p>
 {g_tam}
 {g_cap}
 <h2>Los tres municipios de Sumar</h2>
@@ -261,7 +262,7 @@ preguntas = [
 enlaces = (f'{L("baleares-historia-electoral", "Historia electoral de Baleares")} · <a href="{BASE}elecciones/baleares/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/illes-balears/">Encuesta en Baleares</a> · {L("palma-barrio-a-barrio-29n", "Palma, barrio a barrio")}')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_baleares.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_baleares.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {
@@ -276,7 +277,7 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 
 pieza(SLUG, 'El mapa electoral de las Illes Balears',
-      f'El mapa electoral de Baleares: el PSOE subió en {PSOE_SUBE} de los {NMUN} municipios, pero pasó de ganar en {NW[TG["g19"]["PSOE"]]} de las {NW[TG["n"]]} ciudades de más de 30.000 habitantes a ganar solo en Maó',
+      f'El mapa electoral de Baleares: el PSOE subió en {PSOE_SUBE} de los {NMUN} municipios, pero pasó de ganar en {NW[TG["g19"]["PSOE"]]} de las {NW[TG["n"]]} ciudades de más de 30.000 habitantes a no ganar en ninguna',
       f'El PSOE sumó {n(DV["PSOE"])} votos, pero los municipios que ganó pasaron de reunir el {p(POB[Y19]["PSOE"])} % de la población al {p(POB[Y23]["PSOE"])} %; Palma pasó al PP. '
       f'Para el 29N, la media de encuestas da al PP {NW[E29["PP"]]} de los 8 diputados, al PSOE {NW[E29["PSOE"]]} y a Vox {NW[E29["VOX"]]}.',
       '12 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

@@ -48,7 +48,7 @@ DE_NAS = {b: TR('NAS', b) for b in ('PSOE', 'BILDU', 'PP', 'UPN', 'EMPATE', 'SUM
 assert DE_NAS == {'PSOE': 48, 'BILDU': 21, 'PP': 16, 'UPN': 15, 'EMPATE': 5, 'SUMAR': 1} and sum(DE_NAS.values()) == GANA[Y19]['NAS'], DE_NAS
 assert TR('BILDU', 'BILDU') == 95 and TR('PSOE', 'PSOE') == 52
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in set(m[f'g{y[:4]}'])} for y in (Y19, Y23)}
-assert round(POB[Y19]['NAS'], 1) == 64.7 and round(POB[Y23]['PSOE'], 1) == 83.0 and round(POB[Y23]['BILDU'], 1) == 14.9, POB
+assert round(POB[Y19]['NAS'], 1) == 64.7 and round(POB[Y23]['PSOE'], 1) == 82.9 and round(POB[Y23]['BILDU'], 1) == 15.0, POB
 
 # Sumados: UPN y PP con sus votos de 2023 en una lista (cálculo, no resultado)
 OTR = m[[f'{Y23}_v{f}' for f in ('PSOE', 'BILDU', 'SUMAR', 'VOX', 'GBAI')]]
@@ -72,7 +72,8 @@ PAMSUM = PAM[f'{Y23}%PP'] + PAM[f'{Y23}%UPN']
 PAMSUMV = int(PAM.vsum23 - PAM[f'{Y23}_vPSOE'])
 assert PAMSUMV == 10450 and round(PAMSUM, 1) == 34.8
 GC = m[m.poblacion >= 10000].sort_values('poblacion', ascending=False)
-assert len(GC) == 11 and set(GC.g2023) == {'PSOE'} and (GC.g2019 == 'NAS').sum() == 7
+assert len(GC) == 12 and (GC.g2023 == 'PSOE').sum() == 11 and (GC.g2019 == 'NAS').sum() == 7   # padrón 2023: Villava (10.067) pasa de 10.000
+assert list(GC[GC.g2023 != 'PSOE'].municipio) == ['Villava/Atarrabia'] and GC.set_index('municipio').loc['Villava/Atarrabia'].g2023 == 'BILDU'
 assert int(MI_.loc['Valle de Egüés/Eguesibar'].margv2023) == 25 and int(MI_.loc['Aranguren'].margv2023) == 23
 assert MI_.loc['Valle de Egüés/Eguesibar'].seg2023 == MI_.loc['Aranguren'].seg2023 == 'PP'
 GCSUM = int((GC.gsum23 == 'UPNPP').sum())
@@ -87,8 +88,8 @@ for nom, a, b in TAM:
                'bildu23': agrega(g, Y23, L23)['pct']['BILDU'], 'psoe23': agrega(g, Y23, L23)['pct']['PSOE']}
 assert sum(t['n'] for t in TT.values()) == NMUN
 TP = TT['Menos de 1.000']
-assert TP['n'] == 186 and TP['g23']['BILDU'] == 98 and TP['g19']['BILDU'] == 83
-assert TT['De 1.000 a 5.000']['g23'] == {'PSOE': 43, 'BILDU': 19, 'PP': 2, 'UPN': 1}
+assert TP['n'] == 188 and TP['g23']['BILDU'] == 99 and TP['g19']['BILDU'] == 84
+assert TT['De 1.000 a 5.000']['g23'] == {'PSOE': 42, 'BILDU': 18, 'PP': 2, 'UPN': 1}
 
 # Ajustados (de más de 1.000 habitantes; en los pequeños hubo siete empates a votos)
 AJ = m[m.poblacion >= 1000].sort_values(['margv2023', 'poblacion'], ascending=[True, False]).head(8)
@@ -177,12 +178,12 @@ g_sum = figura(f'Con sus votos de 2023 sumados, UPN y el PP habrían sido los m�
                 + [[NOMC[f], n(GANA[Y23].get(f, 0)), n(GSUM.get(f, 0))] for f in ('PSOE', 'BILDU', 'SUMAR', 'EMPATE')]))
 
 FC = ('PSOE', 'BILDU')
-g_cap = figura(f'El PSOE ganó en 2023 los once municipios de más de 10.000 habitantes; Pamplona, por {n(int(PAM.margv2023))} votos, y el valle de Egüés, por {int(MI_.loc["Valle de Egüés/Eguesibar"].margv2023)}',
-               'Voto a Navarra Suma (2019), a UPN y PP sumados (2023), al PSOE y a EH Bildu en los once municipios de más de 10.000 habitantes, en %. Barra clara: noviembre de 2019',
+g_cap = figura(f'El PSOE ganó en 2023 once de los doce municipios de más de 10.000 habitantes, todos salvo Villava; Pamplona, por {n(int(PAM.margv2023))} votos, y el valle de Egüés, por {int(MI_.loc["Valle de Egüés/Eguesibar"].margv2023)}',
+               'Voto a Navarra Suma (2019), a UPN y PP sumados (2023), al PSOE y a EH Bildu en los doce municipios de más de 10.000 habitantes, en %. Barra clara: noviembre de 2019',
                grupos([(r.municipio.split('/')[0], [(r[f'{Y19}%NAS'], COLC['NAS'], .38, 'Navarra Suma, nov. 2019'), (r[f'{Y23}%PP'] + r[f'{Y23}%UPN'], COLC['UPNPP'], 1, 'UPN y PP sumados, 2023')]
                         + [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
-                       for _, r in GC.iterrows()], 45, 'Voto en los once municipios de más de 10.000 habitantes', W=440, ml=110),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+                       for _, r in GC.iterrows()], 45, 'Voto en los doce municipios de más de 10.000 habitantes', W=440, ml=110),
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC['NAS'], COLC['NAS']), (NOMC['UPNPP'], COLC['UPNPP'])] + [(NOMC[f], COLC[f]) for f in FC]
                + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Segundo 2023', 'Ventaja 2023 (votos)', 'Navarra Suma 2019 (%)', 'PP 2023 (%)', 'UPN 2023 (%)',
@@ -195,7 +196,7 @@ g_tam = figura(f'EH Bildu ganó en {TP["g23"]["BILDU"]} de los {TP["n"]} municip
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORD19 if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORD23 if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)'] + [f'{NOMC[f]} 2019' for f in ('NAS', 'PSOE', 'BILDU')] + [f'{NOMC[f]} 2023' for f in ('PSOE', 'BILDU', 'PP', 'UPN')]
                 + ['EH Bildu 2023 (%)', 'PSOE 2023 (%)'],
@@ -299,7 +300,7 @@ preguntas = [
 enlaces = (f'{L("navarra-historia-electoral", "Historia electoral de Navarra")} · <a href="{BASE}elecciones/navarra/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/navarra/">Encuesta en Navarra</a> · {L("participacion-navarra-municipios-29n", "La participación en Navarra, pueblo a pueblo")}')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_navarra.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_navarra.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {
@@ -316,7 +317,7 @@ cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details op
 
 pieza(SLUG, 'El mapa electoral de Navarra',
       f'El mapa electoral de Navarra: juntos, UPN y PP ganaron en {GANA[Y19]["NAS"]} municipios en 2019; separados, en {GANA[Y23]["PP"] + GANA[Y23]["UPN"]}, y el 29N vuelven a ir juntos',
-      f'En 2023 sumaron {n(SUM23V - A19["votos"]["NAS"])} votos más que Navarra Suma, pero el PSOE ganó los once municipios de más de 10.000 habitantes, Pamplona incluida, y EH Bildu, {GANA[Y23]["BILDU"]} pueblos. '
+      f'En 2023 sumaron {n(SUM23V - A19["votos"]["NAS"])} votos más que Navarra Suma, pero el PSOE ganó once de los doce municipios de más de 10.000 habitantes, Pamplona incluida, y EH Bildu, {GANA[Y23]["BILDU"]} pueblos. '
       f'Para el 29N, la media de encuestas da {ESC29}.',
       '12 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('ok')

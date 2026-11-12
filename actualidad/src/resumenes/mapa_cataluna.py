@@ -2,7 +2,7 @@
 
 Los 947 municipios catalanes en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas por
 separado: en 2019, En Comú Podem/Unidas Podemos y Más País; la CUP, con sus votos por municipio), el cambio del PSC, el
-tamaño de los municipios (población del Atlas de distribución de renta de los hogares del INE, 2023, vía ineAtlas), las capitales, los municipios más ajustados y el reparto
+tamaño de los municipios (padrón municipal del INE, 2023), las capitales, los municipios más ajustados y el reparto
 central del modelo de /encuestas/ para el 29N. Contexto: EFE (8-11-2026), Crónica Global (9-11-2026) y ElNacional.cat.
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_cataluna.py
 """
@@ -63,7 +63,7 @@ assert [max(PR[pr][Y19]['pct'], key=PR[pr][Y19]['pct'].get) for pr in PROV] == [
 CA = m[m.mun_code.isin(CAP)].set_index('mun_code')
 assert (CA.g2023 == 'PSOE').all() and list(CA.g2019) == ['ERC', 'JUNTS', 'ERC', 'PSOE']
 
-# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
+# Tamaño de municipio (padrón municipal del INE, 2023)
 TAM = [('Menos de 1.000', 0, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000),
        ('De 20.000 a 100.000', 20000, 100000), ('Más de 100.000', 100000, 10 ** 9)]
 assert m.poblacion.notna().all()
@@ -75,11 +75,11 @@ for nom, a, b in TAM:
                'psc19': a19['PSOE'], 'psc23': a23['PSOE'], 'ind19': a19['ERC'] + a19['JUNTS'] + a19['CUP'], 'ind23': a23['ERC'] + a23['JUNTS'] + a23['CUP'],
                'erc23': a23['ERC'], 'junts23': a23['JUNTS'], 'pp23': a23['PP']}
 assert sum(t['n'] for t in TT.values()) == NMUN
-assert TT['Más de 100.000']['g23'] == {'PSOE': 11} and TT['De 20.000 a 100.000']['g23'] == {'PSOE': 55, 'JUNTS': 2}
-assert TT['Menos de 1.000']['g23']['JUNTS'] == 218 and TT['Menos de 1.000']['g23']['PSOE'] == 110
+assert TT['Más de 100.000']['g23'] == {'PSOE': 11} and TT['De 20.000 a 100.000']['g23'] == {'PSOE': 56, 'JUNTS': 2}
+assert TT['Menos de 1.000']['g23']['JUNTS'] == 217 and TT['Menos de 1.000']['g23']['PSOE'] == 109
 GRANDES = TT['Más de 100.000']['n'] + TT['De 20.000 a 100.000']['n']
 GRANDES_PSC = TT['Más de 100.000']['g23'].get('PSOE', 0) + TT['De 20.000 a 100.000']['g23'].get('PSOE', 0)
-assert (GRANDES, GRANDES_PSC) == (68, 66)
+assert (GRANDES, GRANDES_PSC) == (69, 67)   # padrón 2023: Sant Quirze del Vallès pasa de 20.000
 GJ = m[(m.poblacion >= 20000) & (m.g2023 != 'PSOE')]
 assert sorted(GJ.municipio) == ['Banyoles', 'Vic'], list(GJ.municipio)
 
@@ -139,7 +139,7 @@ g_tam = figura(f'El PSC ganó en {GRANDES_PSC} de los {GRANDES} municipios de m�
                'Municipios ganados por cada partido en julio de 2023, según su población',
                apiladas([(nom, [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDT if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=128),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ORDT],
                (['Población', 'Municipios', 'Electores (2023)'] + [f'Ganó {NOMC[f]}' if f != 'EMPATE' else 'Empate' for f in ORDT],
                 [[nom, str(t['n']), n(t['censo'])] + [str(t['g23'].get(f, 0)) for f in ORDT] for nom, t in TT.items()]))
@@ -283,7 +283,7 @@ preguntas = [
 ]
 enlaces = (f'{L("cataluna-historia-electoral", "Historia electoral de Cataluña")} · {L("barcelona-barrio-a-barrio-29n", "Barcelona barrio a barrio")} · '
            f'<a href="{BASE}elecciones/cataluna/">Datos de cada municipio</a> · <a href="{BASE}encuestas/barcelona/">Encuesta en Barcelona</a>')
-foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); población del Atlas de distribución de renta de los hogares del INE (2023); '
+foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); población del padrón municipal del INE (2023); '
         'media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_cataluna.py.')
 
 R = lambda v: round(float(v), 4)
