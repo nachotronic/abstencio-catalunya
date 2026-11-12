@@ -1,0 +1,113 @@
+[{
+  "code" : "global",
+  "name" : "GLOBAL",
+  "parent_code" : "",
+  "codigo" : "global",
+  "nr_inscritos" : 419448,
+  "nr_vaga" : 0
+}, {
+  "code" : "nacional",
+  "name" : "NACIONAL",
+  "parent_code" : "",
+  "codigo" : "nacional",
+  "nr_inscritos" : 343065,
+  "nr_vaga" : 0
+}, {
+  "code" : "sa",
+  "name" : "SANTO ANT\u00C3O",
+  "parent_code" : "nacional",
+  "codigo" : "sa",
+  "nr_inscritos" : 31404,
+  "nr_vaga" : 0
+}, {
+  "code" : "sv",
+  "name" : "S\u00C3O VICENTE",
+  "parent_code" : "nacional",
+  "codigo" : "sv",
+  "nr_inscritos" : 55467,
+  "nr_vaga" : 0
+}, {
+  "code" : "sn",
+  "name" : "S\u00C3O NICOLAU",
+  "parent_code" : "nacional",
+  "codigo" : "sn",
+  "nr_inscritos" : 9631,
+  "nr_vaga" : 0
+}, {
+  "code" : "sl",
+  "name" : "SAL",
+  "parent_code" : "nacional",
+  "codigo" : "sl",
+  "nr_inscritos" : 20996,
+  "nr_vaga" : 0
+}, {
+  "code" : "bv",
+  "name" : "BOA VISTA",
+  "parent_code" : "nacional",
+  "codigo" : "bv",
+  "nr_inscritos" : 8545,
+  "nr_vaga" : 0
+}, {
+  "code" : "ma",
+  "name" : "MAIO",
+  "parent_code" : "nacional",
+  "codigo" : "ma",
+  "nr_inscritos" : 4854,
+  "nr_vaga" : 0
+}, {
+  "code" : "stn",
+  "name" : "SANTIAGO NORTE",
+  "parent_code" : "nacional",
+  "codigo" : "stn",
+  "nr_inscritos" : 74063,
+  "nr_vaga" : 0
+}, {
+  "code" : "sts",
+  "name" : "SANTIAGO SUL",
+  "parent_code" : "nacional",
+  "codigo" : "sts",
+  "nr_inscritos" : 107511,
+  "nr_vaga" : 0
+}, {
+  "code" : "fg",
+  "name" : "FOGO",
+  "parent_code" : "nacional",
+  "codigo" : "fg",
+  "nr_inscritos" : 26164,
+  "nr_vaga" : 0
+}, {
+  "code" : "br",
+  "name" : "BRAVA",
+  "parent_code" : "nacional",
+  "codigo" : "br",
+  "nr_inscritos" : 4430,
+  "nr_vaga" : 0
+}, {
+  "code" : "diaspora",
+  "name" : "DI\u00C1SPORA",
+  "parent_code" : "",
+  "codigo" : "diaspora",
+  "nr_inscritos" : 76383,
+  "nr_vaga" : 0
+}, {
+  "code" : "erm",
+  "name" : "EUROPA E RESTO DO MUNDO",
+  "parent_code" : "diaspora",
+  "codigo" : "erm",
+  "nr_inscritos" : 51734,
+  "nr_vaga" : 0
+}, {
+  "code" : "am",
+  "name" : "AM\u00C9RICAS",
+  "parent_code" : "diaspora",
+  "codigo" : "am",
+  "nr_inscritos" : 14926,
+  "nr_vaga" : 0
+}, {
+  "code" : "af",
+  "name" : "\u00C1FRICA",
+  "parent_code" : "diaspora",
+  "codigo" : "af",
+  "nr_inscritos" : 9723,
+  "nr_vaga" : 0
+}]
