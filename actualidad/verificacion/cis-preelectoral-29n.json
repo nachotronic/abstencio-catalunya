@@ -1,0 +1,362 @@
+{
+  "pieza": "cis-preelectoral-29n",
+  "_datos_disponibles": {
+    "D": "dict"
+  },
+  "cifras": [
+    {
+      "texto": "CIS preelectoral da al PSOE 7,8 puntos de ventaja; la",
+      "cifra": "7,8",
+      "calculo": "D['DIF']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "media de las demás encuestas, 3,6 al PP",
+      "cifra": "3,6",
+      "calculo": "D['MED_DIF']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "mayoría absoluta según el CIS: 171 escaños. Ninguna otra",
+      "cifra": "171",
+      "calculo": "D['PPVOX'][1]",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "El CIS da al PSOE el 33,3 % de los votos y al",
+      "cifra": "33,3",
+      "calculo": "D['CIS']['PSOE']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "% de los votos y al PP el 25,5 % en su encuesta preelectoral",
+      "cifra": "25,5",
+      "calculo": "D['CIS']['PP']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "del inicio de la campaña: 7,8 puntos de ventaja socialista.",
+      "cifra": "7,8",
+      "calculo": "D['DIF']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "socialista. Vox queda en el 18,4 % y el Frente Amplio,",
+      "cifra": "18,4",
+      "calculo": "D['CIS']['Vox']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "y el Frente Amplio, en el 4,7 %. Es el estudio 3584,",
+      "cifra": "4,7",
+      "calculo": "D['CIS']['Frente Amplio']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "3584, con 45.074 entrevistas",
+      "cifra": "45.074",
+      "calculo": "D['N']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "escaños, el CIS da al PSOE entre 134 y 143; al PP, entre",
+      "cifra": "134",
+      "calculo": "D['CIS']['PSOE']['min']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "CIS da al PSOE entre 134 y 143; al PP, entre 98 y 106,",
+      "cifra": "143",
+      "calculo": "D['CIS']['PSOE']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "entre 134 y 143; al PP, entre 98 y 106, y a Vox, entre",
+      "cifra": "98",
+      "calculo": "D['CIS']['PP']['min']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "y 143; al PP, entre 98 y 106, y a Vox, entre 57 y",
+      "cifra": "106",
+      "calculo": "D['CIS']['PP']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "98 y 106, y a Vox, entre 57 y 65. Ni sumando el",
+      "cifra": "57",
+      "calculo": "D['CIS']['Vox']['min']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "106, y a Vox, entre 57 y 65. Ni sumando el máximo",
+      "cifra": "65",
+      "calculo": "D['CIS']['Vox']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "las horquillas de los dos, 106 y 65, PP y Vox llegan",
+      "cifra": "106",
+      "calculo": "D['CIS']['PP']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "horquillas de los dos, 106 y 65, PP y Vox llegan a los",
+      "cifra": "65",
+      "calculo": "D['CIS']['Vox']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "mayoría absoluta: se quedan en 171.",
+      "cifra": "171",
+      "calculo": "D['PPVOX'][1]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "De las 16 empresas que han publicado",
+      "cifra": "16",
+      "calculo": "D['NCASAS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PSOE: SW Demoscopia, con 3,3 puntos de ventaja, menos",
+      "cifra": "3,3",
+      "calculo": "D['SEGUNDO'][5]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "este estudio, deja al PP 3,6 puntos por delante:",
+      "cifra": "3,6",
+      "calculo": "D['MED_DIF']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "3,6 puntos por delante: PP 31,0 %, PSOE 27,3 %.",
+      "cifra": "31,0",
+      "calculo": "D['MED']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "delante: PP 31,0 %, PSOE 27,3 %.",
+      "cifra": "27,3",
+      "calculo": "D['MED']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "PP: entonces daba al PSOE 11,8 puntos de ventaja, con",
+      "cifra": "11,8",
+      "calculo": "D['OCT_DIF']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ventaja, con el PP en el 22,2 %. En el preelectoral,",
+      "cifra": "22,2",
+      "calculo": "D['SERIE'][-2][1]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "preelectoral, el PP sube 3,3 puntos y el PSOE baja",
+      "cifra": "3,3",
+      "calculo": "D['CIS']['PP']['est'] - D['SERIE'][-2][1]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "3,3 puntos y el PSOE baja 0,7.",
+      "cifra": "0,7",
+      "calculo": "D['SERIE'][-2][2] - D['CIS']['PSOE']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el censo, el PSOE tiene el 28,7 % y el PP, el 17,2 %;",
+      "cifra": "28,7",
+      "calculo": "D['CIS']['PSOE']['directo']",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "tiene el 28,7 % y el PP, el 17,2 %; el 15,8 % dice que",
+      "cifra": "17,2",
+      "calculo": "D['CIS']['PP']['directo']",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "% y el PP, el 17,2 %; el 15,8 % dice que no sabe a",
+      "cifra": "15,8",
+      "calculo": "D['NS']",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "esta pieza. El desvío fue de 1,0 puntos en abril de 2019,",
+      "cifra": "1,0",
+      "calculo": "D['HIST'][0][1] - D['HIST'][0][2]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "puntos en abril de 2019, de 6,9 en noviembre de 2019",
+      "cifra": "6,9",
+      "calculo": "D['HIST'][1][1] - D['HIST'][1][2]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "en noviembre de 2019 y de 2,8 en la encuesta flash",
+      "cifra": "2,8",
+      "calculo": "D['HIST'][3][1] - D['HIST'][3][2]",
+      "_donde": "dato"
+    },
+    {
+      "texto": "la ventaja socialista de 7,8 puntos quedaría entre",
+      "cifra": "7,8",
+      "calculo": "D['DIF']",
+      "_donde": "hipotesis"
+    },
+    {
+      "texto": "7,8 puntos quedaría entre 0,9 y 6,8; no hay forma",
+      "cifra": "0,9",
+      "calculo": "D['DIF'] - (D['HIST'][1][1] - D['HIST'][1][2])",
+      "_donde": "hipotesis"
+    },
+    {
+      "texto": "puntos quedaría entre 0,9 y 6,8; no hay forma de saber",
+      "cifra": "6,8",
+      "calculo": "D['DIF'] - (D['HIST'][0][1] - D['HIST'][0][2])",
+      "_donde": "hipotesis"
+    },
+    {
+      "texto": "separado al Frente Amplio (4,7 %), a Compromís (1,6",
+      "cifra": "4,7",
+      "calculo": "D['CIS']['Frente Amplio']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Amplio (4,7 %), a Compromís (1,6 %), a la Unidad del",
+      "cifra": "1,6",
+      "calculo": "D['CIS']['Compromís']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Unidad del Pueblo Canario (0,4 %) y a Ara Més-Front",
+      "cifra": "0,4",
+      "calculo": "D['CIS']['UPC']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "y a Ara Més-Front Ampli (0,2 %): juntos, el 6,9 %.",
+      "cifra": "0,2",
+      "calculo": "D['CIS']['Ara Més-Front Ampli']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Ampli (0,2 %): juntos, el 6,9 %. A ERC y Podemos los",
+      "cifra": "6,9",
+      "calculo": "D['FA_ESPACIO']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "aunque no van en coalición: 3,1 % y entre 10 y 14 escaños.",
+      "cifra": "3,1",
+      "calculo": "D['CIS']['ERC-Podemos']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "coalición: 3,1 % y entre 10 y 14 escaños. Aparte,",
+      "cifra": "10",
+      "calculo": "D['CIS']['ERC-Podemos']['min']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "coalición: 3,1 % y entre 10 y 14 escaños. Aparte, Podemos",
+      "cifra": "14",
+      "calculo": "D['CIS']['ERC-Podemos']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Aparte, Podemos tiene el 1,1 % y entre 0 y 1 escaños.",
+      "cifra": "1,1",
+      "calculo": "D['CIS']['Podemos']['est']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Podemos tiene el 1,1 % y entre 0 y 1 escaños. Por eso,",
+      "cifra": "0",
+      "calculo": "D['CIS']['Podemos']['min']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "tiene el 1,1 % y entre 0 y 1 escaños. Por eso, el",
+      "cifra": "1",
+      "calculo": "D['CIS']['Podemos']['max']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "mes que da al PSOE más de 3,3 puntos de ventajaVentaja",
+      "cifra": "3,3",
+      "calculo": "D['SEGUNDO'][5]",
+      "_donde": "pie"
+    },
+    {
+      "texto": "encuesta de cada una de las 16 empresas que han publicado",
+      "cifra": "16",
+      "calculo": "D['NCASAS']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "octubre, el CIS daba al PSOE 11,8 puntos de ventaja; ahora,",
+      "cifra": "11,8",
+      "calculo": "D['OCT_DIF']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "puntos de ventaja; ahora, 7,8Ventaja del PSOE sobre",
+      "cifra": "7,8",
+      "calculo": "D['DIF']"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "Es el estudio 3584, con",
+      "cifra": "3584",
+      "fuente": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf"
+    },
+    {
+      "texto": "entrevistas hechas entre el 7 y el 30 de octubre,",
+      "cifra": "7",
+      "fuente": "https://www.cis.es/es/w/avance-de-resultados-del-estudio-3584-preelectoral-elecciones-generales-2026-"
+    },
+    {
+      "texto": "Cada horquilla deja fuera el 5 % de los escenarios",
+      "cifra": "5",
+      "fuente": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf"
+    },
+    {
+      "texto": "escenarios más bajos y el 5 % de los más altos del",
+      "cifra": "5",
+      "fuente": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "PSOE tanta ventaja. En las tres generales desde 2019,",
+      "motivo": "Número de elecciones generales desde 2019 (abril y noviembre de 2019 y julio de 2023)"
+    },
+    {
+      "texto": "65, PP y Vox llegan a los 176 de la mayoría absoluta:",
+      "motivo": "Mayoría absoluta del Congreso (350 escaños)"
+    },
+    {
+      "texto": "En las tres generales celebradas",
+      "motivo": "Número de elecciones generales desde 2019 (abril y noviembre de 2019 y julio de 2023)"
+    },
+    {
+      "texto": "Tres elecciones son pocas",
+      "motivo": "Número de elecciones generales desde 2019 (abril y noviembre de 2019 y julio de 2023)"
+    },
+    {
+      "texto": "el martes 24 de noviembre, cinco días antes de la votación.",
+      "motivo": "Plazo legal de la veda de encuestas (LOREG art. 69.7)"
+    },
+    {
+      "texto": "horquillas suman PP y Vox 176 escaños: 171Horquilla",
+      "motivo": "Mayoría absoluta del Congreso (350 escaños)"
+    }
+  ],
+  "permitir_espana": []
+}

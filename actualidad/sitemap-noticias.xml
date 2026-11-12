@@ -160,4 +160,12 @@
       <news:title>El mapa electoral de Asturias: el PSOE ganó Oviedo por 42 votos en 2019 y lo perdió por 15.256 en 2023; Gijón lo retuvo por 622</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/cis-preelectoral-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El CIS preelectoral da al PSOE 7,8 puntos de ventaja; la media de las demás encuestas, 3,6 al PP</news:title>
+    </news:news>
+  </url>
 </urlset>
