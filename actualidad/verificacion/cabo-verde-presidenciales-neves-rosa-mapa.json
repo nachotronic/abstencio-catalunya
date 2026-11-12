@@ -185,12 +185,6 @@
       "_donde": "dato"
     },
     {
-      "texto": "el resto del mundo, con un 41,3 % más. La agencia Lusa",
-      "cifra": "41,3",
-      "calculo": "D['VAR_EUR']",
-      "_donde": "dato"
-    },
-    {
       "texto": "legislativas, con mayoría absoluta: 37 de los 72 diputados,",
       "cifra": "37",
       "calculo": "D['LEG']['PAICV'][1]",
@@ -297,31 +291,23 @@
       "cifra": "4",
       "calculo": "len(D['GANA_V'])",
       "_donde": "dato"
+    },
+    {
+      "texto": "el resto del mundo, con un 41,3 % más.",
+      "cifra": "41,3",
+      "calculo": "D['VAR_EUR']"
     }
   ],
   "externas": [
     {
-      "texto": "septiembre una cifra algo mayor, 426.531 inscritos; aquí se usa",
-      "fuente": "https://macaubusiness.com/cabo-verde-four-presidential-candidates-without-party-backing/",
-      "cifra": "426.531"
-    },
-    {
-      "texto": "2024 las municipales, en 14 concelhos, incluida",
-      "fuente": "https://en.wikipedia.org/wiki/2026_Cape_Verdean_parliamentary_election",
-      "cifra": "14"
+      "texto": "Hay seis candidatos, según e-Global:",
+      "cifra": "seis",
+      "fuente": "https://e-global.pt/noticias/lusofonia/cabo-verde/cabo-verde-eleicoes-presidenciais-passam-a-ter-seis-candidaturas-aceites/"
     }
   ],
   "ignorar": [
     {
       "texto": "Seis candidatos se disputan",
-      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
-    },
-    {
-      "texto": "domingo 15 de noviembre. Hay seis candidatos: el presidente,",
-      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
-    },
-    {
-      "texto": "Joana Rosa, con el del MpD, y cuatro más sin el respaldo",
       "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
     },
     {
@@ -379,6 +365,14 @@
     {
       "texto": "ganó en 9, entre ellos los tres de la diáspora, y Veiga,",
       "motivo": "Recuento descriptivo de los círculos (diez del país, tres de la diáspora)"
+    },
+    {
+      "texto": "según Inforpress, y cuatro más: el juez",
+      "motivo": "Los cuatro candidatos restantes de los seis, nombrados a continuación"
+    },
+    {
+      "texto": "(Edital n.º 3/Eleição/2026)",
+      "motivo": "Número del edital, no una cifra"
     }
   ],
   "permitir_espana": []
