@@ -1260,7 +1260,7 @@ PIEZAS = [
                   pie='Una empleada pública ante su ordenador, de espaldas, junto a pilas de expedientes y de monedas.'),
     ),
     dict(
-        slug='ley-nietos-donde-estan-29n', fecha='2026-10-22', actualizado='2026-11-11 09:50',
+        slug='ley-nietos-donde-estan-29n', fecha='2026-10-22', actualizado='2026-11-12 22:45',
         titulo='El Constitucional deja sin voto a los nietos: los españoles adultos de América Latina crecen casi cinco veces más rápido y uno de cada tres está inscrito en Madrid', serie='29n',
         descripcion='Desde 2023 hay 259.711 españoles más en América nacidos allí. México manda a Madrid el 58% de los suyos; Cuba, a Canarias la mitad; Uruguay, a Galicia. En Ourense, el 31% del censo ya vive fuera.',
         compara='Los españoles residentes en el extranjero nacidos en su país de residencia, por país, entre el 1 de enero de 2021 y el de 2026, y los de 16 años o más residentes en 19 países de América Latina por provincia de inscripción, entre 2019 y 2026. Con el censo electoral de residentes en el extranjero de las generales del 29N por provincia.',
