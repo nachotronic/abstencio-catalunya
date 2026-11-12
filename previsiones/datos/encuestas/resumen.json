@@ -1,13 +1,13 @@
 {
- "descargado": "2026-11-12T19:38Z",
+ "descargado": "2026-11-12T23:38Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1078,
+ "encuestas_espana": 1080,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-11",
-  "encuestadora": "SW Demoscopia",
-  "cliente": "La Séptima"
+  "publicado": "2026-11-13",
+  "encuestadora": "Sigma Dos",
+  "cliente": "El Mundo"
  },
  "siglas_sin_equivalencia": {
   "UPN-PP": 16,
@@ -20,8 +20,8 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 609,
-  "ultima_fin_campo": "2026-11-10",
-  "faltan_en_electografica_120_dias": 18
+  "encuestas": 611,
+  "ultima_fin_campo": "2026-11-11",
+  "faltan_en_electografica_120_dias": 17
  }
 }
