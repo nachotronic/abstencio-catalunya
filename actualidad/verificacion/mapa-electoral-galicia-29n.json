@@ -5,13 +5,13 @@
  },
  "cifras": [
   {
-   "texto": "Galicia: el PSOE ganó en 18 de las 22 ciudades y",
+   "texto": "Galicia: el PSOE ganó en 18 de las 23 ciudades y",
    "cifra": "18",
    "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
   },
   {
-   "texto": "el PSOE ganó en 18 de las 22 ciudades y villas de",
-   "cifra": "22",
+   "texto": "el PSOE ganó en 18 de las 23 ciudades y villas de",
+   "cifra": "23",
    "calculo": "D['TT']['Más de 20.000']['n']"
   },
   {
@@ -35,12 +35,12 @@
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "ganó pasaron de reunir el 60,9 % de la población al",
-   "cifra": "60,9",
+   "texto": "ganó pasaron de reunir el 60,8 % de la población al",
+   "cifra": "60,8",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "60,9 % de la población al 13,0 %. El BNG subió y no",
+   "texto": "60,8 % de la población al 13,0 %. El BNG subió y no",
    "cifra": "13,0",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
@@ -215,8 +215,8 @@
    "calculo": "D['FLS']['2023_07']['VOX']"
   },
   {
-   "texto": "ganó pasaron de sumar el 60,9 % de la población de",
-   "cifra": "60,9",
+   "texto": "ganó pasaron de sumar el 60,8 % de la población de",
+   "cifra": "60,8",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
@@ -225,8 +225,8 @@
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "En los 22 municipios de más de",
-   "cifra": "22",
+   "texto": "En los 23 municipios de más de",
+   "cifra": "23",
    "calculo": "D['TT']['Más de 20.000']['n']"
   },
   {
@@ -235,8 +235,8 @@
    "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
   },
   {
-   "texto": "el PP solo había ganado en cuatro de ellos: Santiago de",
-   "cifra": "cuatro",
+   "texto": "el PP solo había ganado en cinco de ellos: Santiago de",
+   "cifra": "cinco",
    "calculo": "D['TT']['Más de 20.000']['g19']['PP']"
   },
   {
@@ -245,18 +245,18 @@
    "calculo": "D['TT']['De 5.000 a 20.000']['g19']['PSOE']"
   },
   {
-   "texto": "1.000 habitantes, que son 41, el PP ya ganaba en",
-   "cifra": "41",
+   "texto": "1.000 habitantes, que son 36, el PP ya ganaba en",
+   "cifra": "36",
    "calculo": "D['TT']['Menos de 1.000']['n']"
   },
   {
-   "texto": "son 41, el PP ya ganaba en 28 en 2019 y en 36 en 2023.",
-   "cifra": "28",
+   "texto": "son 36, el PP ya ganaba en 24 en 2019 y en 31 en 2023.",
+   "cifra": "24",
    "calculo": "D['TT']['Menos de 1.000']['g19']['PP']"
   },
   {
-   "texto": "ganaba en 28 en 2019 y en 36 en 2023. El PP subió",
-   "cifra": "36",
+   "texto": "ganaba en 24 en 2019 y en 31 en 2023. El PP subió",
+   "cifra": "31",
    "calculo": "D['TT']['Menos de 1.000']['g23']['PP']"
   },
   {
@@ -460,13 +460,13 @@
    "calculo": "D['FLS']['2023_07']['PSOE']"
   },
   {
-   "texto": "el PSOE pasó de ganar en 18 de 22 a ganar en dosMunicipios",
+   "texto": "el PSOE pasó de ganar en 18 de 23 a ganar en dosMunicipios",
    "cifra": "18",
    "calculo": "D['TT']['Más de 20.000']['g19']['PSOE']"
   },
   {
-   "texto": "PSOE pasó de ganar en 18 de 22 a ganar en dosMunicipios",
-   "cifra": "22",
+   "texto": "PSOE pasó de ganar en 18 de 23 a ganar en dosMunicipios",
+   "cifra": "23",
    "calculo": "D['TT']['Más de 20.000']['n']"
   },
   {
@@ -535,11 +535,11 @@
    "motivo": "umbral de población"
   },
   {
-   "texto": "los 22 municipios de más de 20.000 habitantes, el PSOE",
+   "texto": "los 23 municipios de más de 20.000 habitantes, el PSOE",
    "motivo": "umbral de población"
   },
   {
-   "texto": "Marín y A Estrada. En los de 5.000 a 20.000, el PSOE pasó",
+   "texto": "Marín, Lalín y A Estrada. En los de 5.000 a 20.000, el PSOE pasó",
    "motivo": "umbral de población"
   },
   {

@@ -2,7 +2,7 @@
 
 Los 179 municipios madrileños en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas por
 separado: en 2019, Unidas Podemos y Más País), el cambio del PP, lo que pasó en los 61 municipios que ganó Vox en 2019, el
-tamaño de los municipios (población del Atlas de distribución de renta de los hogares del INE, 2023, vía ineAtlas), las diez ciudades de más de 100.000 habitantes, los municipios
+tamaño de los municipios (padrón municipal del INE, 2023), las once ciudades de más de 100.000 habitantes, los municipios
 más ajustados y el reparto central del modelo de /encuestas/ para el 29N. Contexto: EFE (8 y 10-11-2026), Europa Press
 (6-11-2026) y Telemadrid (reparto de escaños del BOE).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_madrid.py
@@ -14,7 +14,7 @@ from mapa_ccaa import (COL, NOM, Y19, Y23, agrega, apiladas, caminos, escanos_of
                        municipios, p, reparto_central, s1, trazados)
 
 A = BASE + 'actualidad/'
-NW = {1: 'uno', 2: 'dos', 3: 'tres', 4: 'cuatro', 5: 'cinco', 6: 'seis', 7: 'siete', 8: 'ocho', 9: 'nueve', 10: 'diez'}
+NW = {1: 'uno', 2: 'dos', 3: 'tres', 4: 'cuatro', 5: 'cinco', 6: 'seis', 7: 'siete', 8: 'ocho', 9: 'nueve', 10: 'diez', 11: 'once'}
 SLUG = 'mapa-electoral-madrid-29n'
 CAJA = (-4.62, 39.86, -3.03, 41.18)
 COL = dict(COL, FA=COL['SUMAR'], PODEMOS=COLOR['Podemos'])
@@ -58,7 +58,7 @@ VX_5K = int(((VX.poblacion >= 1000) & (VX.poblacion < 20000)).sum())
 assert VX_5K == 51
 assert (VX.g2023 == 'PP').all()
 
-# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
+# Tamaño de municipio (padrón municipal del INE, 2023)
 TAM = [('Menos de 1.000', 0, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000),
        ('De 20.000 a 100.000', 20000, 100000), ('Más de 100.000', 100000, 10 ** 9)]
 assert m.poblacion.notna().all()
@@ -72,16 +72,16 @@ assert sum(t['n'] for t in TT.values()) == NMUN
 assert all(t['pp23'] > t['pp19'] and t['vox23'] < t['vox19'] and abs(t['psoe23'] - t['psoe19']) < 2 for t in TT.values())
 assert TT['De 1.000 a 5.000']['g19']['VOX'] == 28 and TT['De 5.000 a 20.000']['g19']['VOX'] == 23
 
-# La capital y las diez ciudades de más de 100.000 habitantes
+# La capital y las once ciudades de más de 100.000 habitantes
 MAD = m[m.mun_code == '28079'].iloc[0]
 assert MAD.g2019 == 'PP' and MAD.g2023 == 'PP'
 assert p(MAD[f'{Y23}%PSOE']) == p(MAD[f'{Y19}%PP'])   # «lo mismo que el PP en 2019», a un decimal
 CIU = m[m.poblacion >= 100000].sort_values('poblacion', ascending=False)
-assert len(CIU) == 10
+assert len(CIU) == 11   # padrón 2023: Rivas-Vaciamadrid pasa de 100.000 (en el Atlas, no)
 CIU_PSOE19, CIU_PSOE23 = int((CIU.g2019 == 'PSOE').sum()), int((CIU.g2023 == 'PSOE').sum())
-assert (CIU_PSOE19, CIU_PSOE23) == (8, 4)
+assert (CIU_PSOE19, CIU_PSOE23) == (9, 4)
 assert sorted(CIU[CIU.g2023 == 'PSOE'].municipio) == ['Fuenlabrada', 'Getafe', 'Leganés', 'Parla']
-assert sorted(CIU[(CIU.g2019 == 'PSOE') & (CIU.g2023 == 'PP')].municipio) == ['Alcalá de Henares', 'Alcorcón', 'Móstoles', 'Torrejón de Ardoz']
+assert sorted(CIU[(CIU.g2019 == 'PSOE') & (CIU.g2023 == 'PP')].municipio) == ['Alcalá de Henares', 'Alcorcón', 'Móstoles', 'Rivas-Vaciamadrid', 'Torrejón de Ardoz']
 PSOE_GRANDES = sorted(m[(m.g2023 == 'PSOE') & (m.poblacion >= 20000)].municipio)
 assert PSOE_GRANDES == ['Ciempozuelos', 'Fuenlabrada', 'Getafe', 'Leganés', 'Parla', 'San Fernando de Henares']
 
@@ -165,7 +165,7 @@ g_tam = figura('Vox había ganado sobre todo en los municipios de 1.000 a 20.000
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDT19 if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDT if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ['PP', 'PSOE', 'VOX', 'UP', 'SUMAR', 'EMPATE']],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'Vox 2019', 'PP 2019', 'PP 2023', 'PSOE 2023', 'Sumar 2023'],
                 [[nom, str(t['n']), n(t['censo'])] + [str(t['g19'].get(f, 0)) for f in ('PSOE', 'VOX', 'PP')] + [str(t['g23'].get(f, 0)) for f in ('PP', 'PSOE', 'SUMAR')]
@@ -182,7 +182,7 @@ g_tampct = figura('El PP subió y Vox bajó en todos los tamaños de municipio; 
                   (['Población', 'PP nov. 2019 (%)', 'PP 2023 (%)', 'PSOE nov. 2019 (%)', 'PSOE 2023 (%)', 'Vox nov. 2019 (%)', 'Vox 2023 (%)', 'Sumar 2023 (%)'],
                    [[nom, p(t['pp19']), p(t['pp23']), p(t['psoe19']), p(t['psoe23']), p(t['vox19']), p(t['vox23']), p(t['sumar23'])] for nom, t in TT.items()]))
 
-g_ciu = figura(f'De las diez ciudades de más de 100.000 habitantes, el PSOE ganó en {NW[CIU_PSOE19]} en 2019 y en {NW[CIU_PSOE23]} en 2023',
+g_ciu = figura(f'De las {NW[len(CIU)]} ciudades de más de 100.000 habitantes, el PSOE ganó en {NW[CIU_PSOE19]} en 2019 y en {NW[CIU_PSOE23]} en 2023',
                'Voto al PP y al PSOE en julio de 2023, en %, en los municipios de más de 100.000 habitantes',
                grupos([(r.municipio, [(r[f'{Y23}%{f}'], COL[f], 1, NOMC[f]) for f in ('PP', 'PSOE')]) for _, r in CIU.iterrows()],
                       50, 'Voto al PP y al PSOE en las ciudades de más de 100.000 habitantes en 2023', W=440, ml=118),
@@ -262,7 +262,7 @@ cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
 {g_tam}
 {g_tampct}
 <h2>La capital y el sur</h2>
-<p data-tipo="dato">Madrid capital, donde vive el {p(POB_MAD)} % de la población de la Comunidad, la ganó el PP en las dos elecciones, con el {p(MAD[f"{Y19}%PP"])} % en 2019 y el {p(MAD[f"{Y23}%PP"])} % en 2023. El PSOE sacó en 2023 el {p(MAD[f"{Y23}%PSOE"])} %, lo mismo que el PP en 2019. Lo contamos sección a sección en {L("madrid-barrio-a-barrio-29n", "Madrid barrio a barrio")}. De las diez ciudades de más de 100.000 habitantes, el PSOE ganó en {NW[CIU_PSOE19]} en 2019 y en {NW[CIU_PSOE23]} en 2023: Leganés, Getafe, Fuenlabrada y Parla. Móstoles, Alcalá de Henares, Alcorcón y Torrejón de Ardoz pasaron al PP. Con los municipios del PP vive el {p(POB["PP"])} % de la población madrileña.</p>
+<p data-tipo="dato">Madrid capital, donde vive el {p(POB_MAD)} % de la población de la Comunidad, la ganó el PP en las dos elecciones, con el {p(MAD[f"{Y19}%PP"])} % en 2019 y el {p(MAD[f"{Y23}%PP"])} % en 2023. El PSOE sacó en 2023 el {p(MAD[f"{Y23}%PSOE"])} %, lo mismo que el PP en 2019. Lo contamos sección a sección en {L("madrid-barrio-a-barrio-29n", "Madrid barrio a barrio")}. De las {NW[len(CIU)]} ciudades de más de 100.000 habitantes, el PSOE ganó en {NW[CIU_PSOE19]} en 2019 y en {NW[CIU_PSOE23]} en 2023: Leganés, Getafe, Fuenlabrada y Parla. Móstoles, Alcalá de Henares, Alcorcón, Torrejón de Ardoz y Rivas-Vaciamadrid pasaron al PP. Con los municipios del PP vive el {p(POB["PP"])} % de la población madrileña.</p>
 {g_ciu}
 <p data-tipo="contexto">Lo que queda del cinturón rojo, con la serie desde 1977 de los 24 municipios de más de 50.000 habitantes, está en {L("cinturon-rojo-madrid-29n", "El cinturón rojo")}.</p>
 <h2>Dónde se decide por unos pocos votos</h2>
@@ -290,7 +290,7 @@ preguntas = [
 enlaces = (f'{L("madrid-historia-electoral", "Historia electoral de Madrid")} · {L("madrid-barrio-a-barrio-29n", "Madrid barrio a barrio")} · '
            f'{L("cinturon-rojo-madrid-29n", "El cinturón rojo")} · <a href="{BASE}elecciones/madrid/">Datos de cada municipio</a> · <a href="{BASE}encuestas/madrid/">Encuesta en Madrid</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); resultado oficial de Coslada en 2023 (Público); '
-        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_madrid.py.')
+        'población del padrón municipal del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_madrid.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

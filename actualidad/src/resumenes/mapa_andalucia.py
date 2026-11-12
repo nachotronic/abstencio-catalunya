@@ -1,8 +1,8 @@
 """«El mapa electoral de Andalucía» (10-11-2026), primera pieza de la serie «El mapa electoral de…» (mapa_ccaa.py).
 
 Los 785 municipios andaluces en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas por
-separado: en 2019, Unidas Podemos y Más País), el cambio del PP, el tamaño de los municipios (población del Atlas de renta del INE de
-2023, INE vía ineAtlas), las capitales, los municipios más ajustados y el reparto central del modelo de /encuestas/ para
+separado: en 2019, Unidas Podemos y Más País), el cambio del PP, el tamaño de los municipios (padrón municipal del INE de
+2023), las capitales, los municipios más ajustados y el reparto central del modelo de /encuestas/ para
 el 29N. Contexto: EFE (10-11-2026) y El Mira (6-11-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_andalucia.py
 """
@@ -66,7 +66,7 @@ CA = m[m.mun_code.isin(CAP)].set_index('mun_code')
 CAP_PP = int((CA.g2023 == 'PP').sum())
 assert CAP_PP == 7 and CA.loc['11012', 'g2023'] == 'PSOE' and (CA.g2019 == 'PSOE').sum() == 7
 
-# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
+# Tamaño de municipio (padrón municipal del INE, 2023)
 TAM = [('Menos de 1.000', 0, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000),
        ('De 20.000 a 100.000', 20000, 100000), ('Más de 100.000', 100000, 10 ** 9)]
 assert m.poblacion.notna().all()
@@ -132,7 +132,7 @@ g_tam = figura(f'El PSOE ganó en {PEQ} de los {NPEQ} municipios de menos de 5.0
                'Municipios ganados por cada partido en julio de 2023, según su población',
                apiladas([(nom, [(t['g23'].get(f, 0), COL[f], NOM[f]) for f in ORDT if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=128),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón municipal del INE (2023). Cálculo propio.',
                [(NOM[f], COL[f]) for f in ORDT],
                (['Población', 'Municipios', 'Electores (2023)', 'Ganó el PSOE', 'Ganó el PP', 'Ganó Sumar', 'Ganó Vox', 'Empate'],
                 [[nom, str(t['n']), n(t['censo'])] + [str(t['g23'].get(f, 0)) for f in ORDT] for nom, t in TT.items()]))
@@ -278,7 +278,7 @@ preguntas = [
 ]
 enlaces = (f'{L("andalucia-historia-electoral", "Historia electoral de Andalucía")} · {L("adelante-andalucia-psoe-29n", "Adelante y el PSOE")} · '
            f'<a href="{BASE}elecciones/andalucia/">Datos de cada municipio</a> · <a href="{BASE}encuestas/sevilla/">Encuesta en Sevilla</a>')
-foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); población del Atlas de distribución de renta de los hogares del INE (2023); '
+foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por municipio (sin voto exterior); población del padrón municipal del INE (2023); '
         'media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_andalucia.py.')
 
 R = lambda v: round(float(v), 4)

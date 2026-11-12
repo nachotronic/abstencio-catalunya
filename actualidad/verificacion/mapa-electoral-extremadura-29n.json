@@ -30,8 +30,8 @@
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "82,4 % de la población al 47,8 %. Miajadas y Zafra",
-   "cifra": "47,8",
+   "texto": "82,4 % de la población al 47,9 %. Miajadas y Zafra",
+   "cifra": "47,9",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
@@ -115,8 +115,8 @@
    "calculo": "D['POB']['2023_07']['PP']"
   },
   {
-   "texto": "extremeña, y los del PSOE, el 47,8 %.",
-   "cifra": "47,8",
+   "texto": "extremeña, y los del PSOE, el 47,9 %.",
+   "cifra": "47,9",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
@@ -240,17 +240,17 @@
    "calculo": "D['FLS']['2023_07']['VOX']"
   },
   {
-   "texto": "cada tramo de tamaño. En los 173 de 500 a 2.000 habitantes,",
-   "cifra": "173",
+   "texto": "cada tramo de tamaño. En los 172 de 500 a 2.000 habitantes,",
+   "cifra": "172",
    "calculo": "D['TT']['De 500 a 2.000']['n']"
   },
   {
-   "texto": "2.000 habitantes, ganó en 132. En las 13 ciudades",
-   "cifra": "132",
+   "texto": "2.000 habitantes, ganó en 131. En las 13 ciudades",
+   "cifra": "131",
    "calculo": "D['TT']['De 500 a 2.000']['g23']['PSOE']"
   },
   {
-   "texto": "habitantes, ganó en 132. En las 13 ciudades de más de 10.000,",
+   "texto": "habitantes, ganó en 131. En las 13 ciudades de más de 10.000,",
    "cifra": "13",
    "calculo": "D['TT']['Más de 10.000']['n']"
   },
@@ -494,11 +494,11 @@
    "motivo": "umbral de población"
   },
   {
-   "texto": "de tamaño. En los 173 de 500 a 2.000 habitantes,",
+   "texto": "de tamaño. En los 172 de 500 a 2.000 habitantes,",
    "motivo": "umbral de población"
   },
   {
-   "texto": "tamaño. En los 173 de 500 a 2.000 habitantes, ganó en",
+   "texto": "tamaño. En los 172 de 500 a 2.000 habitantes, ganó en",
    "motivo": "umbral de población"
   },
   {

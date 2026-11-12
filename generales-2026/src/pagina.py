@@ -264,7 +264,7 @@ def descargas():
     open(os.path.join(d, 'LICENCIA.txt'), 'w').write(
         'Datos derivados publicados con licencia CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).\n'
         'Cita: "Elecciones generales 2004-2023 por sección censal (con municipales y europeas)", ' + AUTOR + ', ' + HOY + ', ' + URL + '\n'
-        'Fuentes originales: Ministerio del Interior (resultados electorales) e INE (Atlas de Distribución de Renta de los Hogares 2023; Censo 2021), '
+        'Fuentes originales: Ministerio del Interior (resultados electorales) e INE (Atlas de Distribución de Renta de los Hogares 2023; padrón municipal a 1-1-2023; Censo 2021), '
         'reutilizables citando la fuente.\n'
         'Excepción: municipios_republica.csv (generales de 1933 y 1936) tiene licencia CC BY-NC-SA 4.0; ver LICENCIA-republica.txt.\n')
 

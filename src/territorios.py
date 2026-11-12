@@ -374,7 +374,7 @@ def bloque_metodo():
     return (f'<h2>Método y fuentes</h2><dl class="ficha">'
             '<dt>Datos</dt><dd>Resultados oficiales por mesa y por municipio del Ministerio del Interior (Infoelectoral) para las elecciones al Congreso de 1977 a 2023, '
             'sin el voto de los residentes en el extranjero (CERA), que no se asigna a ningún municipio. Renta neta por unidad de consumo de cada sección censal: '
-            'Atlas de Distribución de Renta de los Hogares del INE (2023).</dd>'
+            'Atlas de Distribución de Renta de los Hogares del INE (2023). Habitantes de cada municipio: padrón municipal del INE a 1 de enero de 2023.</dd>'
             '<dt>Cómo se calcula</dt><dd>Porcentajes sobre voto válido (candidaturas más votos en blanco), sumando votos, no promediando porcentajes. '
             'Participación: votantes entre censo. Los grupos de renta reúnen secciones con el mismo censo electoral cada uno. '
             f'Agrupación de partidos y límites: <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.</dd>'
@@ -821,7 +821,7 @@ def pagina_ciudad(cod):
     comp = 'más' if r['part'] > rp['part'] + 0.005 else ('menos' if r['part'] < rp['part'] - 0.005 else 'casi lo mismo')
     conjunto = CCAA[ccaa][1][3:] if uni else f'la provincia de {con_alias(nprov, ALIAS_PROV.get(p))}'
     h.append(p_('Dato', f'{escape(nombre)} votó {comp} que el conjunto de {escape(conjunto)} ({pct(rp["part"])}). '
-                f'Tiene {num(fila.poblacion)} habitantes y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
+                f'Tiene {num(fila.poblacion)} habitantes (padrón municipal del INE, 2023) y {num(len(sec)) + " secciones censales" if len(sec) > 1 else "una sola sección censal"}.'))
     h.append(f'<p><a class="vermapa" href="{raiz}?m={cod}">Ver {escape(nombre)} {"calle a calle " if b_sec else ""}en el mapa por sección censal</a></p>')
     h.append(enlace_listas([p], raiz))
     h.append(b_censo)
@@ -3210,6 +3210,12 @@ REDIRECCION = """<!doctype html>
 """
 
 
+# Municipios que tenían página cuando la población era la del Atlas de renta del INE y que en el padrón municipal de 2023
+# no llegan a 1.000 habitantes (cambio de fuente del 12-11-2026): sus dos direcciones llevan a la página de su provincia.
+BAJAS_PADRON = {'10183', '18024', '18908', '25121', '25151', '31012', '31025', '39100', '41100', '43049', '45116', '48009',
+                '49023', '49085', '50147'}
+
+
 def redirecciones():
     """Páginas en las rutas antiguas de cada municipio que llevan a la nueva."""
     out = []
@@ -3218,6 +3224,12 @@ def redirecciones():
         vieja = ruta_municipio_antigua(m.prov, m.municipio)
         rel = '../' * vieja.count('/') + nueva
         out.append((vieja, REDIRECCION.format(nombre=escape(m.municipio), url=BASE + nueva, rel=rel, rel_js=json.dumps(rel))))
+    for c in sorted(BAJAS_PADRON - set(CIUDADES)):
+        m = T.MUN[T.MUN.mun_code == c].iloc[0]
+        nueva = f'municipio/{PROV_SLUG[m.prov]}/'
+        for vieja in (ruta_municipio(m.prov, m.municipio), ruta_municipio_antigua(m.prov, m.municipio)):
+            rel = '../' * vieja.count('/') + nueva
+            out.append((vieja, REDIRECCION.format(nombre=escape(m.municipio), url=BASE + nueva, rel=rel, rel_js=json.dumps(rel))))
     return out
 
 

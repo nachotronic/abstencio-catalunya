@@ -9,6 +9,8 @@ Fuentes
 - Renta, pobreza, edad y nacionalidad por sección: INE, Atlas de Distribución de Renta de los
   Hogares (ADRH) 2023, vía pablogguz/ineAtlas.data.
 - Estudios y paro por sección: INE, Censo 2021, vía pablogguz/ineAtlas.data.
+- Población de cada municipio: cifras oficiales del padrón municipal del INE a 1-1-2023 (padron.py,
+  padron_2023_municipios.csv). Las secciones siguen con la población del Atlas (el padrón oficial no baja a sección).
 - Geometría: secciones censales INE 2023 (ineAtlas.data).
 - Municipales 1979-2023, europeas 1987-2024 y Congreso 1977 y 1979: ficheros de Infoelectoral importados con
   otras_elecciones.py (datos/extra/raw_*_M2023.parquet, M2007_municipios.csv...). Congreso 1982-2000: pollspaindata,
@@ -192,7 +194,7 @@ def covariables(unz, nivel):
                           'unemployment_rate': 'paro_2021', 'pct_over64': 'mayores65_2021'})
     for c in ('pct_under18', 'pct_over65', 'pct_spanish', 'pobreza'):
         d[c] = d[c] / 100
-    d['extranjeros'] = 1 - d.pct_spanish   # padrón 2023 (ADRH): población sin nacionalidad española
+    d['extranjeros'] = 1 - d.pct_spanish   # Atlas de renta (ADRH 2023): población sin nacionalidad española
     d = d.rename(columns={'pct_under18': 'menores18', 'pct_over65': 'mayores65'}).drop(columns='pct_spanish')
     d['adultos'] = d.poblacion * (1 - d.menores18)
     return d
@@ -248,6 +250,9 @@ def main():
 
     # --- municipios: suma de secciones (fronteras municipales estables), así no se pierde nada
     cm = covariables(unz, 'municipality')
+    # población: la oficial del padrón a 1-1-2023, no la del Atlas (que en los pueblos muy pequeños se aparta mucho).
+    # Los adultos (para los adultos sin derecho a voto) siguen saliendo del Atlas, como en las secciones.
+    import padron; cm['poblacion'] = cm.mun_code.map(padron.padron())
     mun = nombres.reset_index().merge(cm, on='mun_code', how='left')
     for y in TODAS:
         if y in ELECCIONES:

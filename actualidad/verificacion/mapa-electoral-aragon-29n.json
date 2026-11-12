@@ -280,18 +280,18 @@
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "la población aragonesa al 11,3 %; los del PP, del 6,6",
+   "texto": "la población aragonesa al 11,3 %; los del PP, del 6,7",
    "cifra": "11,3",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "al 11,3 %; los del PP, del 6,6 % al 88,2 %.",
-   "cifra": "6,6",
+   "texto": "al 11,3 %; los del PP, del 6,7 % al 88,1 %.",
+   "cifra": "6,7",
    "calculo": "D['POB']['2019_11']['PP']"
   },
   {
-   "texto": "los del PP, del 6,6 % al 88,2 %.",
-   "cifra": "88,2",
+   "texto": "los del PP, del 6,7 % al 88,1 %.",
+   "cifra": "88,1",
    "calculo": "D['POB']['2023_07']['PP']"
   },
   {
@@ -310,8 +310,8 @@
    "calculo": "D['TT']['Más de 10.000']['g23']['PP']"
   },
   {
-   "texto": "cambio fue menor: en los 421 de 100 a 1.000 habitantes,",
-   "cifra": "421",
+   "texto": "cambio fue menor: en los 420 de 100 a 1.000 habitantes,",
+   "cifra": "420",
    "calculo": "D['TT']['De 100 a 1.000']['n']"
   },
   {
@@ -585,11 +585,11 @@
    "motivo": "umbral de población"
   },
   {
-   "texto": "fue menor: en los 421 de 100 a 1.000 habitantes,",
+   "texto": "fue menor: en los 420 de 100 a 1.000 habitantes,",
    "motivo": "umbral de población"
   },
   {
-   "texto": "menor: en los 421 de 100 a 1.000 habitantes, el PSOE",
+   "texto": "menor: en los 420 de 100 a 1.000 habitantes, el PSOE",
    "motivo": "umbral de población"
   },
   {
