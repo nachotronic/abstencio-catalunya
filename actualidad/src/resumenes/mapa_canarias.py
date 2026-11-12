@@ -2,7 +2,7 @@
 
 Los 88 municipios de Canarias en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas
 por separado: en 2019, Unidas Podemos y Más País; Coalición Canaria fue con Nueva Canarias en 2019 y por separado en
-2023), las siete islas, el tamaño de los municipios (padrón de 2023), las dos capitales, los más ajustados y el reparto
+2023), las siete islas, el tamaño de los municipios (población del Atlas de renta del INE, 2023), las dos capitales, los más ajustados y el reparto
 central del modelo de /encuestas/ para el 29N. En 2023, Vox no tuvo lista en Santa Cruz de Tenerife (vox_tenerife.py).
 Contexto: Canarias7 (Cristina Valido, 23-10-2026) y elDiario.es / Canarias Ahora (Teodoro Sosa, 7-11-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_canarias.py
@@ -192,7 +192,7 @@ g_tam = figura(f'En los {G20N} municipios de más de 20.000 habitantes, el PSOE 
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=180),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'CC 2019', 'PSOE 2023', 'PP 2023', 'CC 2023', 'NC 2023',
                  'PSOE 2023 (%)', 'PP 2023 (%)'],
@@ -307,7 +307,7 @@ preguntas = [
 enlaces = (f'{L("canarias-historia-electoral", "Historia electoral de Canarias")} · <a href="{BASE}elecciones/canarias/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/las-palmas/">Encuesta en Las Palmas</a> · <a href="{BASE}encuestas/santa-cruz-de-tenerife/">Encuesta en Santa Cruz de Tenerife</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_canarias.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_canarias.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

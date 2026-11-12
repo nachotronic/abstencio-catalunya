@@ -1,7 +1,7 @@
 """«El mapa electoral de Extremadura» (2026-11), duodécima pieza de la serie «El mapa electoral de…» (mapa_ccaa.py).
 
 Los 388 municipios de Extremadura en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno
-(listas por separado: en 2019, Unidas Podemos y Más País), el tamaño de los municipios (padrón de 2023), las 13 ciudades
+(listas por separado: en 2019, Unidas Podemos y Más País), el tamaño de los municipios (población del Atlas de renta del INE, 2023), las 13 ciudades
 de más de 10.000 habitantes, las dos provincias, los municipios decididos por menos de diez votos y el reparto central del
 modelo de /encuestas/ para el 29N.
 Contexto: Onda Cero Sur Extremadura (listas del PSOE, 18-10-2026, y del PP, 21-10-2026, esta según Europa Press).
@@ -157,7 +157,7 @@ g_tam = figura(f'En las {TG["n"]} ciudades de más de 10.000 habitantes, el PSOE
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PSOE 2019', 'PP 2019', 'PSOE 2023', 'PP 2023', 'PSOE 2023 (%)', 'PP 2023 (%)'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PSOE', 'PP')] + [n(t['g23'].get(f, 0)) for f in ('PSOE', 'PP')]
@@ -169,7 +169,7 @@ g_cap = figura('El PP ganó en 2023 en Badajoz, Cáceres, Plasencia, Don Benito 
                'Voto al PP, al PSOE y a Vox en julio de 2023 en los siete municipios de más de 20.000 habitantes, en %. Barra clara: noviembre de 2019',
                grupos([(r.municipio, [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
                        for _, r in GC.iterrows()], 50, 'Voto en los siete municipios de más de 20.000 habitantes', W=440, ml=175),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in FC] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Ventaja 2023 (votos)'] + [f'{NOMC[f]} {y} (%)' for f in FC for y in ('2019', '2023')],
                 [[r.municipio, n(r.poblacion), NOMC[r.g2019], NOMC[r.g2023], n(r.margv2023)] + [p(r[f'{y}%{f}']) for f in FC for y in (Y19, Y23)] for _, r in GC.iterrows()]))
@@ -278,7 +278,7 @@ preguntas = [
 enlaces = (f'{L("extremadura-historia-electoral", "Historia electoral de Extremadura")} · <a href="{BASE}elecciones/extremadura/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/badajoz/">Encuesta en Badajoz</a> · <a href="{BASE}encuestas/caceres/">Encuesta en Cáceres</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_extremadura.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_extremadura.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

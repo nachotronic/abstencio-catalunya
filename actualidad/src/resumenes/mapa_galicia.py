@@ -1,7 +1,7 @@
 """«El mapa electoral de Galicia» (2026-11), sexta pieza de la serie «El mapa electoral de…» (mapa_ccaa.py).
 
 Los 313 municipios de Galicia en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno (listas
-por separado: en 2019, Unidas Podemos y Más País), el tamaño de los municipios (padrón de 2023), las siete ciudades, las
+por separado: en 2019, Unidas Podemos y Más País), el tamaño de los municipios (población del Atlas de renta del INE, 2023), las siete ciudades, las
 cuatro provincias, el BNG, los municipios más ajustados y el reparto central del modelo de /encuestas/ para el 29N.
 Contexto: El Español (Quincemil, 12-11-2026), ESdiario (Rueda, 5-10-2026) y Moncloa.com (listas del BNG, 25-10-2026).
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_galicia.py
@@ -40,14 +40,14 @@ DPSOE_VOTOS = A23['votos']['PSOE'] - A19['votos']['PSOE']
 DPP_VOTOS = A23['votos']['PP'] - A19['votos']['PP']
 assert DPSOE_VOTOS == 19392 and DPP_VOTOS == 229532
 assert A23['pct']['PSOE'] < A19['pct']['PSOE'] and A23['part'] > A19['part'] and A23['pct']['VOX'] < A19['pct']['VOX']
-# Población de los municipios que ganó cada partido (padrón de 2023)
+# Población de los municipios que ganó cada partido (población del Atlas de renta del INE, 2023)
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PP', 'PSOE')} for y in (Y19, Y23)}
 assert round(POB[Y19]['PSOE'], 1) == 60.9 and round(POB[Y23]['PSOE'], 1) == 13.0
 FL = m[(m.g2019 == 'PSOE') & (m.g2023 == 'PP')]
 FLS = {y: agrega(FL, y, L19 if y == Y19 else L23)['pct'] for y in (Y19, Y23)}
 assert FLS[Y23]['PP'] > FLS[Y19]['PP'] + 10 and abs(FLS[Y23]['PSOE'] - FLS[Y19]['PSOE']) < 3, FLS
 
-# Tamaño de municipio (población del padrón de 2023)
+# Tamaño de municipio (población del Atlas de renta del INE, 2023; no es la cifra del padrón)
 TAM = [('Menos de 1.000', 0, 1000), ('De 1.000 a 5.000', 1000, 5000), ('De 5.000 a 20.000', 5000, 20000), ('Más de 20.000', 20000, 10 ** 9)]
 assert m.poblacion.notna().all()
 TT = {}
@@ -161,7 +161,7 @@ g_tam = figura(f'En los municipios de más de 20.000 habitantes, el PSOE pasó d
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COL[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=170),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COL[f]) for f in ORDG],
                (['Población', 'Municipios', 'Electores (2023)', 'PP 2019', 'PSOE 2019', 'PP 2023', 'PSOE 2023'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('PP', 'PSOE')] + [n(t['g23'].get(f, 0)) for f in ('PP', 'PSOE')]
@@ -308,7 +308,7 @@ enlaces = (f'{L("galicia-historia-electoral", "Historia electoral de Galicia")} 
            f'<a href="{BASE}encuestas/a-coruna/">Encuesta en A Coruña</a> · <a href="{BASE}encuestas/pontevedra/">Encuesta en Pontevedra</a> · '
            f'<a href="{BASE}encuestas/lugo/">Encuesta en Lugo</a> · <a href="{BASE}encuestas/ourense/">Encuesta en Ourense</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_galicia.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_galicia.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {

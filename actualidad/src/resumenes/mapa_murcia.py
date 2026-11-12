@@ -2,7 +2,7 @@
 
 Los 45 municipios de la Región de Murcia en las generales de noviembre de 2019 y julio de 2023, con el ganador de cada uno
 (listas por separado: en 2019, Unidas Podemos y Más País), los 16 municipios que ganó Vox en 2019 (todos al PP en 2023),
-el tamaño de los municipios (padrón de 2023), las ciudades grandes, los municipios más ajustados y el reparto central del
+el tamaño de los municipios (población del Atlas de renta del INE, 2023), las ciudades grandes, los municipios más ajustados y el reparto central del
 modelo de /encuestas/ para el 29N.
 Contexto: Murcia Plaza (listas de Vox, 30-10-2026, y del PP, 27-10-2026). No hay nota de agencia con citas sobre las listas.
 Uso, desde la raíz: python3 actualidad/src/resumenes/mapa_murcia.py
@@ -149,7 +149,7 @@ g_tam = figura(f'En los {TT["De 20.000 a 50.000"]["n"]} municipios de 20.000 a 5
                apiladas([(f'{nom} · 2019', [(t['g19'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g19'].get(f, 0)]) for nom, t in TT.items()]
                         + [(f'{nom} · 2023', [(t['g23'].get(f, 0), COLC[f], NOMC[f]) for f in ORDG if t['g23'].get(f, 0)]) for nom, t in TT.items()],
                         'Municipios ganados por cada partido según su tamaño', W=440, ml=180),
-               'Fuente: Ministerio del Interior, sin voto exterior; población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior; población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in ORDG[:3]],
                (['Población', 'Municipios', 'Electores (2023)', 'Vox 2019', 'PP 2019', 'PSOE 2019', 'PP 2023', 'PSOE 2023', 'Vox 2019 (%)', 'Vox 2023 (%)', 'PP 2023 (%)'],
                 [[nom, n(t['n']), n(t['censo'])] + [n(t['g19'].get(f, 0)) for f in ('VOX', 'PP', 'PSOE')] + [n(t['g23'].get(f, 0)) for f in ('PP', 'PSOE')]
@@ -160,7 +160,7 @@ g_cap = figura('El PP ganó en 2023 en las ocho ciudades más pobladas; en 2019,
                'Voto al PP, al PSOE y a Vox en julio de 2023 en los ocho municipios más poblados, en %. Barra clara: noviembre de 2019',
                grupos([(r.municipio, [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'), (r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'))])
                        for _, r in GR.iterrows()], 50, 'Voto en los ocho municipios más poblados', W=440, ml=120),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. Población del Atlas de distribución de renta de los hogares del INE (2023). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in FC] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Ventaja 2023 (puntos)'] + [f'{NOMC[f]} {y} (%)' for f in FC for y in ('2019', '2023')],
                 [[r.municipio, n(r.poblacion), NOMC[r.g2019], NOMC[r.g2023], n(r.marg2023, 2)] + [p(r[f'{y}%{f}']) for f in FC for y in (Y19, Y23)] for _, r in GR.iterrows()]))
@@ -250,7 +250,7 @@ preguntas = [
 enlaces = (f'{L("murcia-historia-electoral", "Historia electoral de la Región de Murcia")} · <a href="{BASE}elecciones/murcia/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/murcia/">Encuesta en la Región de Murcia</a> · {L("murcia-barrio-a-barrio-29n", "Murcia, barrio a barrio")}')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_murcia.py.')
+        'población del Atlas de distribución de renta de los hogares del INE (2023); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_murcia.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {
