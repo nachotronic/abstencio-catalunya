@@ -55,7 +55,7 @@
    "calculo": "D['E29']['PSOE']"
   },
   {
-   "texto": "eligen el 29 de noviembre 8 diputados. El PP repite",
+   "texto": "eligen el 29 de noviembre 8 diputados. El PP presenta",
    "cifra": "8",
    "calculo": "sum(D['E29'].values())"
   },
@@ -150,12 +150,17 @@
    "calculo": "D['A23']['pct']['VOX']"
   },
   {
-   "texto": "Más País habían sumado el 20,7 % en 2019; Sumar sacó",
-   "cifra": "20,7",
-   "calculo": "D['A19']['pct']['UP'] + D['A19']['pct']['MP']"
+   "texto": "presentó por su cuenta y sacó el 4,1 %, habían sumado el",
+   "cifra": "4,1",
+   "calculo": "D['A19']['pct']['MES']"
   },
   {
-   "texto": "% en 2019; Sumar sacó el 16,7 % en 2023. La participación",
+   "texto": "el 4,1 %, habían sumado el 24,7 % en 2019; en 2023,",
+   "cifra": "24,7",
+   "calculo": "D['A19']['pct']['UP'] + D['A19']['pct']['MP'] + D['A19']['pct']['MES']"
+  },
+  {
+   "texto": "Sumar, con Més dentro, sacó el 16,7 %. La participación",
    "cifra": "16,7",
    "calculo": "D['A23']['pct']['SUMAR']"
   },

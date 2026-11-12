@@ -35,7 +35,7 @@ ISLA['Mallorca'] = sorted(set(m.mun_code) - {x for v in ISLA.values() if v for x
 m['isla'] = m.mun_code.map({x: k for k, v in ISLA.items() for x in v})
 assert m.isla.value_counts().to_dict() == {'Mallorca': 53, 'Menorca': 8, 'Eivissa': 5, 'Formentera': 1}
 
-L19, L23 = ('PSOE', 'PP', 'VOX', 'UP', 'MP', 'CS'), ('PP', 'PSOE', 'VOX', 'SUMAR')
+L19, L23 = ('PSOE', 'PP', 'VOX', 'UP', 'MP', 'MES', 'CS'), ('PP', 'PSOE', 'VOX', 'SUMAR')   # 2019: Més-Esquerra fue por su cuenta (en 2023, dentro de Sumar)
 A19, A23 = agrega(m, Y19, L19), agrega(m, Y23, L23)
 GANA = {y: m[f'g{y[:4]}'].value_counts().to_dict() for y in (Y19, Y23)}
 assert GANA[Y19] == {'PSOE': 32, 'PP': 30, 'UP': 4, 'EMPATE': 1}, GANA[Y19]
@@ -52,6 +52,9 @@ assert PSOE_SUBE == 64 and PP_SUBE == NMUN
 POB = {y: {f: float(m[m[f'g{y[:4]}'] == f].poblacion.sum() / m.poblacion.sum() * 100) for f in ('PP', 'PSOE')} for y in (Y19, Y23)}
 assert [round(POB[y][f], 1) for y in (Y19, Y23) for f in ('PSOE', 'PP')] == [78.3, 20.1, 9.2, 90.1], POB
 FL = m[(m.g2019 == 'PSOE') & (m.g2023 == 'PP')]
+IZQ19 = A19['pct']['UP'] + A19['pct']['MP'] + A19['pct']['MES']
+assert round(A19['pct']['MES'], 1) == 4.1 and round(IZQ19, 1) == 24.7, IZQ19   # de votos brutos (18,3 + 2,4 + 4,1 redondeados darían 24,8)
+assert 'MES' not in set(m.g2019)
 FLS = {y: agrega(FL, y, L19 if y == Y19 else L23)['pct'] for y in (Y19, Y23)}
 assert FLS[Y23]['PSOE'] > FLS[Y19]['PSOE'] and FLS[Y23]['PP'] > FLS[Y19]['PP'] + 10, FLS
 
@@ -134,10 +137,10 @@ g_flip = figura(f'En los {PSOE_PP} municipios que pasaron del PSOE al PP, el PSO
                 grupos([(NOMC[f], [(FLS[Y19][f], COLC[f], .38, 'nov. 2019')] + ([(FLS[Y23][f], COLC[f], 1, '2023')] if f != 'CS' else [])) for f in FF],
                        45, 'Voto en los municipios que pasaron del PSOE al PP', W=440, ml=80),
                 'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas, con todos los municipios sumados. '
-                'Ciudadanos no se presentó en 2023. Cálculo propio.',
+                'Ciudadanos no se presentó en 2023. En 2019, Més-Esquerra fue por su cuenta; en 2023, dentro de Sumar. Cálculo propio.',
                 [(NOMC[f], COLC[f]) for f in FF] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                 (['Partido', 'Nov. 2019 (%)', '2023 (%)'], [[NOMC[f], p(FLS[Y19][f]), p(FLS[Y23][f]) if f != 'CS' else '—'] for f in FF]
-                 + [['Unidas Podemos y Más País (2019) / Sumar (2023)', p(FLS[Y19]['UP'] + FLS[Y19]['MP']), p(FLS[Y23]['SUMAR'])]]))
+                 + [['Unidas Podemos, Más País y Més-Esquerra (2019) / Sumar (2023)', p(FLS[Y19]['UP'] + FLS[Y19]['MP'] + FLS[Y19]['MES']), p(FLS[Y23]['SUMAR'])]]))
 
 ORDI = list(ISLA)
 g_isla = figura('En 2019, el PSOE fue el más votado en las cuatro islas; en 2023, el PP',
@@ -218,10 +221,10 @@ UH = 'https://www.ultimahora.es/noticias/elecciones-29n/2026/10/26/2736393/balea
 L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 
 cuerpo = f'''{trazados(cam)}<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">Las Illes Balears eligen el 29 de noviembre 8 diputados. El PP repite con José Vicente Marí Bosó; el PSOE, con Francina Armengol, presidenta del Congreso en la legislatura que acaba; Vox presenta a María Isabel Cerezo, y Carme Gomila encabeza Ara Més-Front Ampli, que reúne a Més per Mallorca, Més per Menorca, Sumar, Podemos y Esquerra Unida, según <a href="{EFE}">EFE</a>. Podemos se sumó a esa lista al final, con Lucía Muñoz de número tres, según <a href="{UH}">Última Hora</a>. No hemos encontrado en esas notas declaraciones literales de los candidatos.</p>
+<p data-tipo="contexto">Las Illes Balears eligen el 29 de noviembre 8 diputados. El PP presenta a José Vicente Marí Bosó; el PSOE repite con Francina Armengol, presidenta del Congreso en la legislatura que acaba; Vox presenta a María Isabel Cerezo, y Carme Gomila encabeza Ara Més-Front Ampli, que reúne a Més per Mallorca, Més per Menorca, Sumar, Podemos y Esquerra Unida, según <a href="{EFE}">EFE</a>. Podemos se sumó a esa lista al final, con Lucía Muñoz de número tres, según <a href="{UH}">Última Hora</a>. No hemos encontrado en esas notas declaraciones literales de los candidatos.</p>
 <p data-tipo="dato">El PSOE subió en Baleares entre noviembre de 2019 y julio de 2023: pasó del {p(A19["pct"]["PSOE"])} % al {p(A23["pct"]["PSOE"])} % de los votos a candidaturas, con {n(DV["PSOE"])} votos más, y subió en {PSOE_SUBE} de los {NMUN} municipios. Pero el mapa se le volvió azul. En 2019 fue el más votado en {GANA[Y19]["PSOE"]} municipios, entre ellos Palma; en 2023, en {GANA[Y23]["PSOE"]}. Los municipios que ganó pasaron de reunir el {p(POB[Y19]["PSOE"])} % de la población de las islas al {p(POB[Y23]["PSOE"])} %. El PP pasó de {GANA[Y19]["PP"]} municipios a {GANA[Y23]["PP"]}, y del {p(A19["pct"]["PP"])} % al {p(A23["pct"]["PP"])} %, con {n(DV["PP"])} votos más.</p>
 {g_ins}
-<p data-tipo="dato">El PP subió en los {NMUN} municipios, en un año en que Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó. Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. A la izquierda del PSOE, Unidas Podemos y Más País habían sumado el {p(A19["pct"]["UP"] + A19["pct"]["MP"])} % en 2019; Sumar sacó el {p(A23["pct"]["SUMAR"])} % en 2023. La participación subió del {p(A19["part"])} % al {p(A23["part"])} %.</p>
+<p data-tipo="dato">El PP subió en los {NMUN} municipios, en un año en que Ciudadanos, que había sacado el {p(A19["pct"]["CS"])} % en 2019, no se presentó. Vox bajó del {p(A19["pct"]["VOX"])} % al {p(A23["pct"]["VOX"])} %. A la izquierda del PSOE, Unidas Podemos, Más País y Més-Esquerra, que se presentó por su cuenta y sacó el {p(A19["pct"]["MES"])} %, habían sumado el {p(IZQ19)} % en 2019; en 2023, Sumar, con Més dentro, sacó el {p(A23["pct"]["SUMAR"])} %. La participación subió del {p(A19["part"])} % al {p(A23["part"])} %.</p>
 {g_mapgan}
 <p data-tipo="patron">De los {GANA[Y19]["PSOE"]} municipios del PSOE en 2019, {PSOE_PP} pasaron al PP, y ninguno hizo el camino contrario. En esos {PSOE_PP}, el PSOE subió del {p(FLS[Y19]["PSOE"])} % al {p(FLS[Y23]["PSOE"])} %, pero el PP subió más, del {p(FLS[Y19]["PP"])} % al {p(FLS[Y23]["PP"])} %, mientras desaparecía Ciudadanos, que allí había sacado el {p(FLS[Y19]["CS"])} %. De los {GANA[Y19]["UP"]} municipios de Unidas Podemos en 2019, {NW[UP_PP]} pasaron al PP y Esporles, a Sumar.</p>
 {g_flip}
