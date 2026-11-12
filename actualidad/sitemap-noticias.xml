@@ -160,4 +160,12 @@
       <news:title>El mapa electoral de Asturias: el PSOE ganó Oviedo por 42 votos en 2019 y lo perdió por 15.256 en 2023; Gijón lo retuvo por 622</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-navarra-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Navarra: juntos, UPN y PP ganaron en 106 municipios en 2019; separados, en 32, y el 29N vuelven a ir juntos</news:title>
+    </news:news>
+  </url>
 </urlset>
