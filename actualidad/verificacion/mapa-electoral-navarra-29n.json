@@ -1,0 +1,474 @@
+{
+ "pieza": "mapa-electoral-navarra-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "juntos, UPN y PP ganaron en 106 municipios en 2019;",
+   "cifra": "106",
+   "calculo": "D['GANA']['2019_11']['NAS']"
+  },
+  {
+   "texto": "municipios en 2019; separados, en 32, y el 29N vuelven a",
+   "cifra": "32",
+   "calculo": "D['GANA']['2023_07']['PP'] + D['GANA']['2023_07']['UPN']"
+  },
+  {
+   "texto": "En 2023 sumaron 9.817 votos más que Navarra",
+   "cifra": "9.817",
+   "calculo": "D['SUM23V'] - D['A19']['votos']['NAS']"
+  },
+  {
+   "texto": "Suma, pero el PSOE ganó los once municipios de más de",
+   "cifra": "once",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "Pamplona incluida, y EH Bildu, 121 pueblos. Para el 29N,",
+   "cifra": "121",
+   "calculo": "D['GANA']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "encuestas da al PSOE dos de los 5 diputados, a la lista",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "elige el 29 de noviembre 5 diputados. UPN y el",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "votada de Navarra, con el 29,9 %, y ganó en 106 de",
+   "cifra": "29,9",
+   "calculo": "D['A19']['pct']['NAS']"
+  },
+  {
+   "texto": "con el 29,9 %, y ganó en 106 de los 272 municipios,",
+   "cifra": "106",
+   "calculo": "D['GANA']['2019_11']['NAS']"
+  },
+  {
+   "texto": "29,9 %, y ganó en 106 de los 272 municipios, que reunían",
+   "cifra": "272",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios, que reunían el 64,7 % de la población, entre",
+   "cifra": "64,7",
+   "calculo": "D['POB']['2019_11']['NAS']"
+  },
+  {
+   "texto": "por separado, el PP sacó el 16,8 % y UPN, el 15,4 %:",
+   "cifra": "16,8",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "sacó el 16,8 % y UPN, el 15,4 %: entre los dos, 108.267",
+   "cifra": "15,4",
+   "calculo": "D['A23']['pct']['UPN']"
+  },
+  {
+   "texto": "el 15,4 %: entre los dos, 108.267 votos, 9.817 más que",
+   "cifra": "108.267",
+   "calculo": "D['SUM23V']"
+  },
+  {
+   "texto": "entre los dos, 108.267 votos, 9.817 más que Navarra Suma.",
+   "cifra": "9.817",
+   "calculo": "D['SUM23V'] - D['A19']['votos']['NAS']"
+  },
+  {
+   "texto": "votado fue el PSOE, con el 27,6 %, y el PP solo ganó",
+   "cifra": "27,6",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "27,6 %, y el PP solo ganó en 17 municipios y UPN, en",
+   "cifra": "17",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "en 17 municipios y UPN, en 15.",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['UPN']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 55 municipios a ganar en",
+   "cifra": "55",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "55 municipios a ganar en 109, que suman el 83,0 %",
+   "cifra": "109",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganar en 109, que suman el 83,0 % de la población. EH",
+   "cifra": "83,0",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "que ganó en más municipios, 121, casi todos pequeños,",
+   "cifra": "121",
+   "calculo": "D['GANA']['2023_07']['BILDU']"
+  },
+  {
+   "texto": "todos pequeños, frente a 101 en 2019, y subió del",
+   "cifra": "101",
+   "calculo": "D['GANA']['2019_11']['BILDU']"
+  },
+  {
+   "texto": "101 en 2019, y subió del 17,1 % al 17,5 %. Sumar sacó",
+   "cifra": "17,1",
+   "calculo": "D['A19']['pct']['BILDU']"
+  },
+  {
+   "texto": "2019, y subió del 17,1 % al 17,5 %. Sumar sacó el 13,0",
+   "cifra": "17,5",
+   "calculo": "D['A23']['pct']['BILDU']"
+  },
+  {
+   "texto": "al 17,5 %. Sumar sacó el 13,0 %, frente al 16,7 %",
+   "cifra": "13,0",
+   "calculo": "D['A23']['pct']['SUMAR']"
+  },
+  {
+   "texto": "sacó el 13,0 %, frente al 16,7 % de Unidas Podemos",
+   "cifra": "16,7",
+   "calculo": "D['A19']['pct']['UP']"
+  },
+  {
+   "texto": "sola las dos veces, bajó del 3,8 % al 2,9 %, y Vox se",
+   "cifra": "3,8",
+   "calculo": "D['A19']['pct']['GBAI']"
+  },
+  {
+   "texto": "veces, bajó del 3,8 % al 2,9 %, y Vox se quedó en",
+   "cifra": "2,9",
+   "calculo": "D['A23']['pct']['GBAI']"
+  },
+  {
+   "texto": "2,9 %, y Vox se quedó en el 5,7 %. La participación",
+   "cifra": "5,7",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "La participación subió del 69,3 % al 69,9 %. Siete municipios",
+   "cifra": "69,3",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 69,3 % al 69,9 %. Siete municipios",
+   "cifra": "69,9",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "subió del 69,3 % al 69,9 %. Siete municipios de menos",
+   "cifra": "Siete",
+   "calculo": "len(D['EMP23'])"
+  },
+  {
+   "texto": "De los 106 municipios que ganó",
+   "cifra": "106",
+   "calculo": "D['GANA']['2019_11']['NAS']"
+  },
+  {
+   "texto": "ganó Navarra Suma en 2019, 48 fueron al PSOE en 2023,",
+   "cifra": "48",
+   "calculo": "D['DE_NAS']['PSOE']"
+  },
+  {
+   "texto": "48 fueron al PSOE en 2023, 21 a EH Bildu, 16 al PP",
+   "cifra": "21",
+   "calculo": "D['DE_NAS']['BILDU']"
+  },
+  {
+   "texto": "PSOE en 2023, 21 a EH Bildu, 16 al PP y 15 a UPN. Con",
+   "cifra": "16",
+   "calculo": "D['DE_NAS']['PP']"
+  },
+  {
+   "texto": "21 a EH Bildu, 16 al PP y 15 a UPN. Con los votos",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['UPN']"
+  },
+  {
+   "texto": "sido la lista más votada en 111 municipios, y no en",
+   "cifra": "111",
+   "calculo": "D['GSUM']['UPNPP']"
+  },
+  {
+   "texto": "en 111 municipios, y no en 32. Es un cálculo: no dice",
+   "cifra": "32",
+   "calculo": "D['GANA']['2023_07']['PP'] + D['GANA']['2023_07']['UPN']"
+  },
+  {
+   "texto": "Suma ganó en 2019 con el 33,3 %, 11.019 votos más",
+   "cifra": "33,3",
+   "calculo": "D['PAM']['nas19']"
+  },
+  {
+   "texto": "ganó en 2019 con el 33,3 %, 11.019 votos más que el PSOE.",
+   "cifra": "11.019",
+   "calculo": "D['PAM']['margv19']"
+  },
+  {
+   "texto": "2023 ganó el PSOE, con el 24,9 %, 7.487 votos por delante",
+   "cifra": "24,9",
+   "calculo": "D['PAM']['psoe23']"
+  },
+  {
+   "texto": "ganó el PSOE, con el 24,9 %, 7.487 votos por delante de",
+   "cifra": "7.487",
+   "calculo": "D['PAM']['margv23']"
+  },
+  {
+   "texto": "por delante de EH Bildu (17,8 %); el PP sacó el 17,6",
+   "cifra": "17,8",
+   "calculo": "D['PAM']['bildu23']"
+  },
+  {
+   "texto": "Bildu (17,8 %); el PP sacó el 17,6 % y UPN, el 17,2 %.",
+   "cifra": "17,6",
+   "calculo": "D['PAM']['pp23']"
+  },
+  {
+   "texto": "sacó el 17,6 % y UPN, el 17,2 %. Sumados, el 34,8",
+   "cifra": "17,2",
+   "calculo": "D['PAM']['upn23']"
+  },
+  {
+   "texto": "UPN, el 17,2 %. Sumados, el 34,8 %, 10.450 votos más",
+   "cifra": "34,8",
+   "calculo": "D['PAM']['sum23']"
+  },
+  {
+   "texto": "17,2 %. Sumados, el 34,8 %, 10.450 votos más que el PSOE.",
+   "cifra": "10.450",
+   "calculo": "D['PAM']['sumv23']"
+  },
+  {
+   "texto": "El PSOE ganó en 2023 los once municipios de más de",
+   "cifra": "once",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "más de 10.000 habitantes; siete habían sido de Navarra",
+   "cifra": "siete",
+   "calculo": "sum(1 for v in D['GC'].values() if v['g19'] == 'NAS')"
+  },
+  {
+   "texto": "Suma. En Tudela ganó por 894 votos sobre el PP; en",
+   "cifra": "894",
+   "calculo": "D['GC']['Tudela']['margv23']"
+  },
+  {
+   "texto": "en el valle de Egüés, por 25, y en Aranguren, por",
+   "cifra": "25",
+   "calculo": "D['GC']['Valle de Egüés/Eguesibar']['margv23']"
+  },
+  {
+   "texto": "por 25, y en Aranguren, por 23, también sobre el PP.",
+   "cifra": "23",
+   "calculo": "D['GC']['Aranguren']['margv23']"
+  },
+  {
+   "texto": "habrían sido los más votados en seis de esos once.",
+   "cifra": "seis",
+   "calculo": "sum(1 for v in D['GC'].values() if v['gsum23'] == 'UPNPP')"
+  },
+  {
+   "texto": "más votados en seis de esos once.",
+   "cifra": "once",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "EH Bildu ganó en 98 de los 186 municipios",
+   "cifra": "98",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['BILDU']"
+  },
+  {
+   "texto": "EH Bildu ganó en 98 de los 186 municipios de menos",
+   "cifra": "186",
+   "calculo": "D['TT']['Menos de 1.000']['n']"
+  },
+  {
+   "texto": "a 5.000, el PSOE pasó de 26 a 43, y Navarra Suma",
+   "cifra": "26",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "5.000, el PSOE pasó de 26 a 43, y Navarra Suma había",
+   "cifra": "43",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "Navarra Suma había ganado en 24; en 2023, el PP ganó",
+   "cifra": "24",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g19']['NAS']"
+  },
+  {
+   "texto": "Galar, para EH Bildu por 14 votos. Cómo vota cada",
+   "cifra": "14",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "el reparto central de los 5 escaños da al PSOE dos,",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "Navarra Suma ganó en 106 municipios en 2019;",
+   "cifra": "106",
+   "calculo": "D['GANA']['2019_11']['NAS']"
+  },
+  {
+   "texto": "separado, en 2023, el PP ganó en 17 y UPN, en 15Partido",
+   "cifra": "17",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 272 municipios de Navarra,",
+   "cifra": "272",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "De los 106 municipios de Navarra",
+   "cifra": "106",
+   "calculo": "D['GANA']['2019_11']['NAS']"
+  },
+  {
+   "texto": "municipios de Navarra Suma, 48 fueron al PSOE en 2023",
+   "cifra": "48",
+   "calculo": "D['DE_NAS']['PSOE']"
+  },
+  {
+   "texto": "fueron al PSOE en 2023 y 21 a EH BilduGanador en",
+   "cifra": "21",
+   "calculo": "D['DE_NAS']['BILDU']"
+  },
+  {
+   "texto": "habrían sido los más votados en 111 municipios, y no en",
+   "cifra": "111",
+   "calculo": "D['GSUM']['UPNPP']"
+  },
+  {
+   "texto": "El PSOE ganó en 2023 los once municipios de más de",
+   "cifra": "once",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "habitantes; Pamplona, por 7.487 votos, y el valle de",
+   "cifra": "7.487",
+   "calculo": "D['PAM']['margv23']"
+  },
+  {
+   "texto": "PSOE y a EH Bildu en los once municipios de más de",
+   "cifra": "once",
+   "calculo": "len(D['GC'])"
+  },
+  {
+   "texto": "EH Bildu ganó en 98 de los 186 municipios",
+   "cifra": "98",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['BILDU']"
+  },
+  {
+   "texto": "EH Bildu ganó en 98 de los 186 municipios de menos",
+   "cifra": "186",
+   "calculo": "D['TT']['Menos de 1.000']['n']"
+  },
+  {
+   "texto": "1.000 habitantes; el PSOE, en 43 de los 65 de 1.000 a",
+   "cifra": "43",
+   "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']"
+  },
+  {
+   "texto": "habitantes; el PSOE, en 43 de los 65 de 1.000 a 5.000Municipios",
+   "cifra": "65",
+   "calculo": "D['TT']['De 1.000 a 5.000']['n']"
+  },
+  {
+   "texto": "en 43 de los 65 de 1.000 a 5.000Municipios ganados",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "Galar fue para EH Bildu por 14 votos, y Aranguren y",
+   "cifra": "14",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "de Egüés, para el PSOE por 23 y 25Ventaja del partido",
+   "cifra": "23",
+   "calculo": "D['GC']['Aranguren']['margv23']"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los ocho municipios de más de",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])"
+  },
+  {
+   "texto": "escaños que por separadoLos 5 diputados de Navarra:",
+   "cifra": "5",
+   "calculo": "sum(D['E29'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "once municipios de más de 10.000 habitantes, Pamplona",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Siete municipios de menos de 100 habitantes terminaron",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "once municipios de más de 10.000 habitantes; siete habían",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "186 municipios de menos de 1.000 habitantes. En los de",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "1.000 habitantes. En los de 1.000 a 5.000, el PSOE pasó",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "habitantes. En los de 1.000 a 5.000, el PSOE pasó de 26",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "uno. Entre los de más de 1.000 habitantes, el más ajustado",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "once municipios de más de 10.000 habitantes; Pamplona,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "once municipios de más de 10.000 habitantes, en %. Barra",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "186 municipios de menos de 1.000 habitantes; el PSOE,",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "PSOE, en 43 de los 65 de 1.000 a 5.000Municipios ganados",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "ocho municipios de más de 1.000 habitantes más ajustados,",
+   "motivo": "umbral de población"
+  }
+ ],
+ "permitir_espana": []
+}

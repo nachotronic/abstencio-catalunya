@@ -4613,6 +4613,21 @@ PIEZAS += [
         enlaces=[],
         lugar='Asturias',
     ),
+    dict(
+        slug='mapa-electoral-navarra-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Navarra: juntos, UPN y PP ganaron en 106 municipios en 2019; separados, en 32, y el 29N vuelven a ir juntos', serie='29n', figura=1,
+        descripcion='En 2023 sumaron 9.817 votos más que Navarra Suma, pero el PSOE ganó los once municipios de más de 10.000 habitantes, Pamplona incluida, y EH Bildu, 121 pueblos. Para el 29N, la media de encuestas da al PSOE dos de los 5 diputados, a la lista conjunta de UPN y PP dos y a EH Bildu uno.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 272 municipios de Navarra: el partido más votado en cada uno, a quién fueron los 106 municipios de Navarra Suma, cuántos habrían ganado UPN y PP con sus votos de 2023 sumados, Pamplona y los once municipios de más de 10.000 habitantes, el voto según el tamaño del municipio y los más ajustados; y el reparto central de la media de encuestas del 29N, con UPN-PP como una lista.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Navarra Suma o de Ciudadanos en 2023. Sumar los votos de UPN y del PP de 2023 es un cálculo, no una predicción. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura; Navarra Suma (UPN, PP y Ciudadanos) en 2019; Geroa Bai con sus propios votos las dos veces (2023: de los resultados por mesa). Empate: los dos primeros con los mismos votos (4 municipios en 2019 y 7 en 2023). «Sumados»: votos de UPN y PP de 2023 en una lista, sin cambiar los demás. Escaños de 2019 y 2023, los oficiales; «2023 sumados», D\'Hondt con los votos oficiales. Población: padrón de 2023 (INE). Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_navarra.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23103', 'BOE, candidaturas proclamadas para el 29N (3-11-2026)'),
+                 ('https://orain.eus/es/politica/elecciones/elecciones-generales/2026/11/03/candidaturas-nafarroa-al-congreso-senado/', 'EITB, candidaturas de Navarra al Congreso y al Senado (3-11-2026)'),
+                 ('https://navarra.okdiario.com/articulo/politica/todas-listas-electorales-navarra-29-n-candidatos-cada-partido-congreso-senado/20261028085307665743.html', 'Navarra.com, las listas del 29N en Navarra (28-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Navarra',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
