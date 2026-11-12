@@ -140,7 +140,7 @@ g_cap = figura(f'El PP ganó El Astillero por {int(AST.margv2023)} votos en 2023
                'Voto al PP, al PSOE y al PRC en los diez municipios de más de 10.000 habitantes, en %. Barra clara: noviembre de 2019',
                grupos([(r.municipio, [x for f in FC for x in ((r[f'{Y19}%{f}'], COLC[f], .38, f'{NOMC[f]}, nov. 2019'),) + (((r[f'{Y23}%{f}'], COLC[f], 1, f'{NOMC[f]}, 2023'),) if f != 'PRC' else ())])
                        for _, r in GC.iterrows()], 50, 'Voto en los diez municipios de más de 10.000 habitantes', W=440, ml=150),
-               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. El PRC no se presentó en 2023. Población del padrón de 2023 (INE). Cálculo propio.',
+               'Fuente: Ministerio del Interior, sin voto exterior. Porcentajes sobre votos a candidaturas. El PRC no se presentó en 2023. Población del padrón municipal de 2023 (INE). Cálculo propio.',
                [(NOMC[f], COLC[f]) for f in FC] + [('Barra clara: noviembre de 2019', 'color-mix(in srgb, var(--muted) 40%, var(--bg))')],
                (['Municipio', 'Habitantes', 'Ganador nov. 2019', 'Ganador 2023', 'Ventaja 2023 (votos)', 'PP 2019 (%)', 'PP 2023 (%)', 'PSOE 2019 (%)', 'PSOE 2023 (%)', 'PRC 2019 (%)'],
                 [[r.municipio, n(r.poblacion), NOMC[r.g2019], NOMC[r.g2023], n(r.margv2023), p(r[f'{Y19}%PP']), p(r[f'{Y23}%PP']), p(r[f'{Y19}%PSOE']), p(r[f'{Y23}%PSOE']),
@@ -229,7 +229,7 @@ preguntas = [
 enlaces = (f'{L("cantabria-historia-electoral", "Historia electoral de Cantabria")} · <a href="{BASE}elecciones/cantabria/">Datos de cada municipio</a> · '
            f'<a href="{BASE}encuestas/cantabria/">Encuesta en Cantabria</a>')
 foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio de 2023 por mesa (vía pollspaindata) y por municipio (sin voto exterior); '
-        'padrón de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_cantabria.py.')
+        'padrón municipal de 2023 (INE); media de encuestas de Mapa Electoral. Cálculo: actualidad/src/resumenes/mapa_cantabria.py.')
 
 R = lambda v: round(float(v), 4)
 DATOS = {
