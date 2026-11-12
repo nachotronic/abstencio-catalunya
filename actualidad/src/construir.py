@@ -4542,6 +4542,20 @@ PIEZAS += [
         enlaces=[],
         lugar='Canarias',
     ),
+    dict(
+        slug='mapa-electoral-aragon-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Aragón: el PSOE ganó en 12 de las 15 ciudades de más de 10.000 habitantes en 2019 y solo en Ejea en 2023, aunque subió en votos', serie='29n', figura=1,
+        descripcion='El PSOE sumó 6.554 votos, pero pasó de 379 a 232 municipios, y los que ganó pasaron de reunir el 85,0 % de la población al 11,3 %. Teruel Existe, de 40 a cinco. Para el 29N, la media de encuestas da al PP 5 de los 13 diputados, al PSOE 4 y a Vox 4.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 731 municipios de Aragón: el partido más votado en cada uno, los 151 que pasaron del PSOE al PP, Teruel Existe y Vox, el voto según el tamaño del municipio, las tres capitales, las provincias, los municipios decididos por un voto y los empates; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Ciudadanos, de Vox o de Teruel Existe en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas no incluye a Teruel Existe y tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado; Teruel Existe y el PAR, con sus votos); con los mismos votos entre los dos primeros, empate (19 casos en 2019 y 23 en 2023). Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_aragon.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.ondaaragonesa.com/noticias/teruel-existe-afronta-29n-objetivo-recuperar-voz-propia-madrid/20261005182703011631.html', 'Onda Aragonesa, Teruel Existe afronta el 29N (5-10-2026)'),
+                 ('https://www.ondaaragonesa.com/noticias/pilar-alegria-presenta-candidatura-psoe-zaragoza/20261025194546012211.html', 'Onda Aragonesa, la candidatura del PSOE de Zaragoza (25-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Aragón',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
