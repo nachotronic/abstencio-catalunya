@@ -1,0 +1,593 @@
+{
+  "pieza": "arranque-campana-sevilla-badalona-colon-vallecas-29n",
+  "cifras": [
+    {
+      "texto": "PP no ganó ni una de sus 149 secciones en 2023, y",
+      "cifra": "149",
+      "calculo": "sum(D['G_BDN'].values())"
+    },
+    {
+      "texto": "barrios donde el PP sacó del 44,4 al 67,7 %; Colau pega",
+      "cifra": "44,4",
+      "calculo": "D['U']['justicia']['2023_07']['PP']"
+    },
+    {
+      "texto": "donde el PP sacó del 44,4 al 67,7 %; Colau pega carteles",
+      "cifra": "67,7",
+      "calculo": "D['U']['recoletos']['2023_07']['PP']"
+    },
+    {
+      "texto": "donde Sumar quedó tercera a 166 votos del PP. Así votaron",
+      "cifra": "166",
+      "calculo": "D['VAL_PP_SUM']"
+    },
+    {
+      "texto": "capital que ganó el PP, por 3,6 puntos, aunque el PSOE",
+      "cifra": "3,6",
+      "calculo": "D['DIF_SEV']"
+    },
+    {
+      "texto": "ciudad donde el PSC le sacó 24,0 puntos al PP en las",
+      "cifra": "24,0",
+      "calculo": "D['DIF_BDN']"
+    },
+    {
+      "texto": "votado en ninguna de sus 149 secciones. Abascal abre",
+      "cifra": "149",
+      "calculo": "sum(D['G_BDN'].values())"
+    },
+    {
+      "texto": "donde el PP sacó entre el 44,4 % y el 67,7 %. Y Colau",
+      "cifra": "44,4",
+      "calculo": "D['U']['justicia']['2023_07']['PP']"
+    },
+    {
+      "texto": "sacó entre el 44,4 % y el 67,7 %. Y Colau abre en un",
+      "cifra": "67,7",
+      "calculo": "D['U']['recoletos']['2023_07']['PP']"
+    },
+    {
+      "texto": "donde Sumar quedó tercera, a 166 votos del PP.",
+      "cifra": "166",
+      "calculo": "D['VAL_PP_SUM']"
+    },
+    {
+      "texto": "ciudad de Sevilla, con el 32,7 % y el 31,8 %. En julio",
+      "cifra": "32,7",
+      "calculo": "D['U']['sevilla']['2019_04']['PSOE']"
+    },
+    {
+      "texto": "Sevilla, con el 32,7 % y el 31,8 %. En julio de 2023",
+      "cifra": "31,8",
+      "calculo": "D['U']['sevilla']['2019_11']['PSOE']"
+    },
+    {
+      "texto": "julio de 2023 ganó el PP: 37,3 % frente a 33,6 %. Aun",
+      "cifra": "37,3",
+      "calculo": "D['U']['sevilla']['2023_07']['PP']"
+    },
+    {
+      "texto": "ganó el PP: 37,3 % frente a 33,6 %. Aun así, el PSOE",
+      "cifra": "33,6",
+      "calculo": "D['U']['sevilla']['2023_07']['PSOE']"
+    },
+    {
+      "texto": "votado en más secciones: 286, frente a 234 del PP.",
+      "cifra": "286",
+      "calculo": "D['G_SEV']['PSOE']"
+    },
+    {
+      "texto": "secciones: 286, frente a 234 del PP. En el distrito",
+      "cifra": "234",
+      "calculo": "D['G_SEV']['PP']"
+    },
+    {
+      "texto": "está Fibes, el PSOE sacó el 38,8 % y el PP, el 30,3 %:",
+      "cifra": "38,8",
+      "calculo": "D['U']['este']['2023_07']['PSOE']"
+    },
+    {
+      "texto": "sacó el 38,8 % y el PP, el 30,3 %: 8,5 puntos de ventaja.",
+      "cifra": "30,3",
+      "calculo": "D['U']['este']['2023_07']['PP']"
+    },
+    {
+      "texto": "38,8 % y el PP, el 30,3 %: 8,5 puntos de ventaja.",
+      "cifra": "8,5",
+      "calculo": "D['DIF_EST']"
+    },
+    {
+      "texto": "provincia la ganó el PSOE, con el 36,6 % frente al 33,4 % del",
+      "cifra": "36,6",
+      "calculo": "D['U']['p_sev']['2023_07']['PSOE']"
+    },
+    {
+      "texto": "PSOE, con el 36,6 % frente al 33,4 % del PP, y se llevó",
+      "cifra": "33,4",
+      "calculo": "D['U']['p_sev']['2023_07']['PP']"
+    },
+    {
+      "texto": "33,4 % del PP, y se llevó 5 de sus 12 escaños; el",
+      "cifra": "5",
+      "calculo": "D['ESC']['41']['PSOE']"
+    },
+    {
+      "texto": "del PP, y se llevó 5 de sus 12 escaños; el PP, 4. Fue",
+      "cifra": "12",
+      "calculo": "D['ESC26']['41']"
+    },
+    {
+      "texto": "de sus 12 escaños; el PP, 4. Fue la única provincia",
+      "cifra": "4",
+      "calculo": "D['ESC']['41']['PP']"
+    },
+    {
+      "texto": "escrutinio. La ciudad es el 34,7 % del censo de la provincia;",
+      "cifra": "34,7",
+      "calculo": "D['PESO']['sevilla']"
+    },
+    {
+      "texto": "capital, el PSOE sacó el 38,3 % y el PP, el 31,3 %.",
+      "cifra": "38,3",
+      "calculo": "D['FUERA']['PSOE']"
+    },
+    {
+      "texto": "sacó el 38,3 % y el PP, el 31,3 %. Sánchez abrió la",
+      "cifra": "31,3",
+      "calculo": "D['FUERA']['PP']"
+    },
+    {
+      "texto": "el PSC sacó en Badalona el 40,7 % y el PP, el 16,6 %.",
+      "cifra": "40,7",
+      "calculo": "D['U']['badalona']['2023_07']['PSOE']"
+    },
+    {
+      "texto": "Badalona el 40,7 % y el PP, el 16,6 %. El PSC fue el más",
+      "cifra": "16,6",
+      "calculo": "D['U']['badalona']['2023_07']['PP']"
+    },
+    {
+      "texto": "PSC fue el más votado en 146 de las 149 secciones;",
+      "cifra": "146",
+      "calculo": "D['G_BDN']['PSOE']"
+    },
+    {
+      "texto": "más votado en 146 de las 149 secciones; Junts, en",
+      "cifra": "149",
+      "calculo": "sum(D['G_BDN'].values())"
+    },
+    {
+      "texto": "149 secciones; Junts, en 2, y ERC, en 1. El PP,",
+      "cifra": "2",
+      "calculo": "D['G_BDN']['JUNTS']"
+    },
+    {
+      "texto": "secciones; Junts, en 2, y ERC, en 1. El PP, en ninguna.",
+      "cifra": "1",
+      "calculo": "D['G_BDN']['ERC']"
+    },
+    {
+      "texto": "PP, en ninguna. Aun así, el 16,6 % de Badalona supera",
+      "cifra": "16,6",
+      "calculo": "D['U']['badalona']['2023_07']['PP']"
+    },
+    {
+      "texto": "16,6 % de Badalona supera el 13,8 % del PP en toda la",
+      "cifra": "13,8",
+      "calculo": "D['U']['p_bcn']['2023_07']['PP']"
+    },
+    {
+      "texto": "Barcelona, y es más del doble del 6,5 % que sacó allí en abril",
+      "cifra": "6,5",
+      "calculo": "D['U']['badalona']['2019_04']['PP']"
+    },
+    {
+      "texto": "meses después el PP sacó 16.405 votos, como contamos",
+      "cifra": "16.405",
+      "calculo": "D['U']['badalona']['2023_07']['votos']['PP']"
+    },
+    {
+      "texto": "en Albiol saca en Badalona tres veces los votos del",
+      "condicion": "round(50163 / D['U']['badalona']['2023_07']['votos']['PP']) == 3"
+    },
+    {
+      "texto": "votos del PP. Badalona es el 3,9 % del censo de la provincia,",
+      "cifra": "3,9",
+      "calculo": "D['PESO']['badalona']"
+    },
+    {
+      "texto": "la provincia, que reparte 32 escaños; el PP sacó",
+      "cifra": "32",
+      "calculo": "D['ESC26']['08']"
+    },
+    {
+      "texto": "reparte 32 escaños; el PP sacó 5 en 2023.",
+      "cifra": "5",
+      "calculo": "D['ESC']['08']['PP']"
+    },
+    {
+      "texto": "Vox sacó en las generales el 8,0 %, algo más que en la",
+      "cifra": "8,0",
+      "calculo": "D['U']['badalona']['2023_07']['VOX']"
+    },
+    {
+      "texto": "más que en la provincia (7,6 %).",
+      "cifra": "7,6",
+      "calculo": "D['U']['p_bcn']['2023_07']['VOX']"
+    },
+    {
+      "texto": "fue el más votado en las 44 secciones de esos tres",
+      "cifra": "44",
+      "calculo": "sum(D['G_COL'].values())"
+    },
+    {
+      "texto": "esos tres barrios: sacó el 67,7 % en Recoletos, el 62,3",
+      "cifra": "67,7",
+      "calculo": "D['U']['recoletos']['2023_07']['PP']"
+    },
+    {
+      "texto": "el 67,7 % en Recoletos, el 62,3 % en Almagro y el 44,4",
+      "cifra": "62,3",
+      "calculo": "D['U']['almagro']['2023_07']['PP']"
+    },
+    {
+      "texto": "el 62,3 % en Almagro y el 44,4 % en Justicia. Vox sacó",
+      "cifra": "44,4",
+      "calculo": "D['U']['justicia']['2023_07']['PP']"
+    },
+    {
+      "texto": "en Justicia. Vox sacó el 19,0 % en Recoletos, el 16,1",
+      "cifra": "19,0",
+      "calculo": "D['U']['recoletos']['2023_07']['VOX']"
+    },
+    {
+      "texto": "el 19,0 % en Recoletos, el 16,1 % en Almagro y el 10,1",
+      "cifra": "16,1",
+      "calculo": "D['U']['almagro']['2023_07']['VOX']"
+    },
+    {
+      "texto": "el 16,1 % en Almagro y el 10,1 % en Justicia. En todo",
+      "cifra": "10,1",
+      "calculo": "D['U']['justicia']['2023_07']['VOX']"
+    },
+    {
+      "texto": "Salamanca, el PP sacó el 57,5 % y Vox el 15,7 %, por",
+      "cifra": "57,5",
+      "calculo": "D['U']['salamanca']['2023_07']['PP']"
+    },
+    {
+      "texto": "PP sacó el 57,5 % y Vox el 15,7 %, por encima del 14,0",
+      "cifra": "15,7",
+      "calculo": "D['U']['salamanca']['2023_07']['VOX']"
+    },
+    {
+      "texto": "el 15,7 %, por encima del 14,0 % de Vox en la provincia.",
+      "cifra": "14,0",
+      "calculo": "D['U']['p_mad']['2023_07']['VOX']"
+    },
+    {
+      "texto": "En Recoletos, Vox llegó al 24,0 % en noviembre de 2019",
+      "cifra": "24,0",
+      "calculo": "D['U']['recoletos']['2019_11']['VOX']"
+    },
+    {
+      "texto": "noviembre de 2019 y bajó al 19,0 % en 2023, mientras",
+      "cifra": "19,0",
+      "calculo": "D['U']['recoletos']['2023_07']['VOX']"
+    },
+    {
+      "texto": "mientras el PP subía del 51,9 % al 67,7 % en unas",
+      "cifra": "51,9",
+      "calculo": "D['U']['recoletos']['2019_11']['PP']"
+    },
+    {
+      "texto": "el PP subía del 51,9 % al 67,7 % en unas generales",
+      "cifra": "67,7",
+      "calculo": "D['U']['recoletos']['2023_07']['PP']"
+    },
+    {
+      "texto": "que allí había sacado el 8,2 % en 2019, ya no se",
+      "cifra": "8,2",
+      "calculo": "D['U']['recoletos']['2019_11']['CS']"
+    },
+    {
+      "texto": "Puente de Vallecas con el 40,8 %. El PP quedó segundo,",
+      "cifra": "40,8",
+      "calculo": "D['U']['vallecas']['2023_07']['PSOE']"
+    },
+    {
+      "texto": "El PP quedó segundo, con 24.191 votos (23,5 %), y Sumar",
+      "cifra": "24.191",
+      "calculo": "D['U']['vallecas']['2023_07']['votos']['PP']"
+    },
+    {
+      "texto": "segundo, con 24.191 votos (23,5 %), y Sumar tercero,",
+      "cifra": "23,5",
+      "calculo": "D['U']['vallecas']['2023_07']['PP']"
+    },
+    {
+      "texto": "%), y Sumar tercero, con 24.025 (23,4 %): 166 votos",
+      "cifra": "24.025",
+      "calculo": "D['U']['vallecas']['2023_07']['votos']['SUMAR']"
+    },
+    {
+      "texto": "Sumar tercero, con 24.025 (23,4 %): 166 votos menos.",
+      "cifra": "23,4",
+      "calculo": "D['U']['vallecas']['2023_07']['SUMAR']"
+    },
+    {
+      "texto": "tercero, con 24.025 (23,4 %): 166 votos menos. Sumar fue",
+      "cifra": "166",
+      "calculo": "D['VAL_PP_SUM']"
+    },
+    {
+      "texto": "Sumar fue el más votado en 1 de las 174 secciones",
+      "cifra": "1",
+      "calculo": "D['G_VAL']['SUMAR']"
+    },
+    {
+      "texto": "el más votado en 1 de las 174 secciones del distrito;",
+      "cifra": "174",
+      "calculo": "sum(D['G_VAL'].values())"
+    },
+    {
+      "texto": "del distrito; el PSOE, en 163. La participación fue",
+      "cifra": "163",
+      "calculo": "D['G_VAL']['PSOE']"
+    },
+    {
+      "texto": "La participación fue del 64,3 %, 9 puntos menos que",
+      "cifra": "64,3",
+      "calculo": "D['U']['vallecas']['2023_07']['part']"
+    },
+    {
+      "texto": "participación fue del 64,3 %, 9 puntos menos que en",
+      "cifra": "9",
+      "calculo": "D['U']['madrid']['2023_07']['part'] - D['U']['vallecas']['2023_07']['part']"
+    },
+    {
+      "texto": "el conjunto de la ciudad (73,4 %).",
+      "cifra": "73,4",
+      "calculo": "D['U']['madrid']['2023_07']['part']"
+    },
+    {
+      "texto": "2019, Unidas Podemos sacó el 21,7 % en el distrito y Más",
+      "cifra": "21,7",
+      "calculo": "D['U']['vallecas']['2019_11']['UP']"
+    },
+    {
+      "texto": "que fue en lista aparte, el 6,7 %. En 2023, Sumar los",
+      "cifra": "6,7",
+      "calculo": "D['U']['vallecas']['2019_11']['SUMAR_B']"
+    },
+    {
+      "texto": "sola candidatura, y sacó el 23,4 %. El 29N, Podemos se",
+      "cifra": "23,4",
+      "calculo": "D['U']['vallecas']['2023_07']['SUMAR']"
+    },
+    {
+      "texto": "La ciudad de Sevilla es el 34,7 % del censo de su provincia",
+      "cifra": "34,7",
+      "calculo": "D['PESO']['sevilla']"
+    },
+    {
+      "texto": "el distrito de Fibes, el 5,4 %. Badalona es el 3,9",
+      "cifra": "5,4",
+      "calculo": "D['PESO']['este']"
+    },
+    {
+      "texto": "el 5,4 %. Badalona es el 3,9 % del de Barcelona.",
+      "cifra": "3,9",
+      "calculo": "D['PESO']['badalona']"
+    },
+    {
+      "texto": "distrito de Salamanca es el 2,2 % del de Madrid y Puente",
+      "cifra": "2,2",
+      "calculo": "D['PESO']['salamanca']"
+    },
+    {
+      "texto": "y Puente de Vallecas, el 3,3 %. Madrid reparte 38",
+      "cifra": "3,3",
+      "calculo": "D['PESO']['vallecas']"
+    },
+    {
+      "texto": "el 3,3 %. Madrid reparte 38 escaños el 29N, uno",
+      "cifra": "38",
+      "calculo": "D['ESC26']['28']"
+    },
+    {
+      "texto": "que saca en las municipales tres veces los votos del",
+      "condicion": "round(50163 / D['U']['badalona']['2023_07']['votos']['PP']) == 3"
+    },
+    {
+      "texto": "Vallecas: Sumar quedó tercera, a 166 votos del PP",
+      "cifra": "166",
+      "calculo": "D['VAL_PP_SUM']"
+    },
+    {
+      "texto": "El PSOE ganó en 49 de las 70 secciones",
+      "cifra": "49",
+      "calculo": "D['G_EST']['PSOE']"
+    },
+    {
+      "texto": "El PSOE ganó en 49 de las 70 secciones del distrito",
+      "cifra": "70",
+      "calculo": "sum(D['G_EST'].values())"
+    },
+    {
+      "texto": "Fibes. En toda la ciudad: PSOE 286, PP 234, Sumar 1",
+      "cifra": "286",
+      "calculo": "D['G_SEV']['PSOE']"
+    },
+    {
+      "texto": "toda la ciudad: PSOE 286, PP 234, Sumar 1",
+      "cifra": "234",
+      "calculo": "D['G_SEV']['PP']"
+    },
+    {
+      "texto": "ciudad: PSOE 286, PP 234, Sumar 1",
+      "cifra": "1",
+      "calculo": "D['G_SEV']['SUMAR']"
+    },
+    {
+      "texto": "Badalona: el PSC ganó en 146 de las 149 secciones",
+      "cifra": "146",
+      "calculo": "D['G_BDN']['PSOE']"
+    },
+    {
+      "texto": "el PSC ganó en 146 de las 149 secciones y el PP, en",
+      "cifra": "149",
+      "calculo": "sum(D['G_BDN'].values())"
+    },
+    {
+      "texto": "Badalona en julio de 2023: PSOE 146, Junts 2, ERC 1. El",
+      "cifra": "146",
+      "calculo": "D['G_BDN']['PSOE']"
+    },
+    {
+      "texto": "de 2023: PSOE 146, Junts 2, ERC 1. El PSC figura",
+      "cifra": "2",
+      "calculo": "D['G_BDN']['JUNTS']"
+    },
+    {
+      "texto": "2023: PSOE 146, Junts 2, ERC 1. El PSC figura como",
+      "cifra": "1",
+      "calculo": "D['G_BDN']['ERC']"
+    },
+    {
+      "texto": "Colón, el PP ganó en las 44 seccionesPartido más",
+      "cifra": "44",
+      "calculo": "sum(D['G_COL'].values())"
+    },
+    {
+      "texto": "Vallecas: el PSOE ganó en 163 de las 174 secciones",
+      "cifra": "163",
+      "calculo": "D['G_VAL']['PSOE']"
+    },
+    {
+      "texto": "el PSOE ganó en 163 de las 174 secciones y Sumar, en",
+      "cifra": "174",
+      "calculo": "sum(D['G_VAL'].values())"
+    },
+    {
+      "texto": "Vallecas en julio de 2023: PSOE 163, PP 10, Sumar 1. En",
+      "cifra": "163",
+      "calculo": "D['G_VAL']['PSOE']"
+    },
+    {
+      "texto": "julio de 2023: PSOE 163, PP 10, Sumar 1. En gris, las",
+      "cifra": "10",
+      "calculo": "D['G_VAL']['PP']"
+    },
+    {
+      "texto": "2023: PSOE 163, PP 10, Sumar 1. En gris, las secciones",
+      "cifra": "1",
+      "calculo": "D['G_VAL']['SUMAR']"
+    },
+    {
+      "texto": "El PP pasó del 6,5 % al 16,6 % en Badalona;",
+      "cifra": "6,5",
+      "calculo": "D['U']['badalona']['2019_04']['PP']"
+    },
+    {
+      "texto": "El PP pasó del 6,5 % al 16,6 % en Badalona; Vox bajó",
+      "cifra": "16,6",
+      "calculo": "D['U']['badalona']['2023_07']['PP']"
+    },
+    {
+      "texto": "su provincia; Badalona, el 4 % del de BarcelonaCenso",
+      "cifra": "4",
+      "calculo": "D['PESO']['badalona']"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "desborde» en un auditorio de unas 3.300 a 3.500 plazas. El secretario",
+      "cifra": "3.300",
+      "fuente": "https://www.esdiario.com/andalucia/261109/202467/sanchez-arranca-campana-sevilla-montero-psoe-esperan-desborde.html"
+    },
+    {
+      "texto": "auditorio de unas 3.300 a 3.500 plazas. El secretario",
+      "cifra": "3.500",
+      "fuente": "https://www.esdiario.com/andalucia/261109/202467/sanchez-arranca-campana-sevilla-montero-psoe-esperan-desborde.html"
+    },
+    {
+      "texto": "al PP en 2023, y ganó en 84 de sus 106 municipios;",
+      "cifra": "84",
+      "fuente": "https://www.eldebate.com/espana/andalucia/20230724/sevilla-feudo-inexpugnable-psoe-victoria-socialista-80-provincia-fetiche_130224.html"
+    },
+    {
+      "texto": "2023, y ganó en 84 de sus 106 municipios; el PP ganó",
+      "cifra": "106",
+      "fuente": "https://www.eldebate.com/espana/andalucia/20230724/sevilla-feudo-inexpugnable-psoe-victoria-socialista-80-provincia-fetiche_130224.html"
+    },
+    {
+      "texto": "municipios; el PP ganó en 18, «entre ellos la capital»,",
+      "cifra": "18",
+      "fuente": "https://www.eldebate.com/espana/andalucia/20230724/sevilla-feudo-inexpugnable-psoe-victoria-socialista-80-provincia-fetiche_130224.html"
+    },
+    {
+      "texto": "número de escaños que reparte (48 de 350)», escribe Europa",
+      "cifra": "48",
+      "fuente": "https://www.diariosigloxxi.com/texto-ep/mostrar/20261111174026/sanchez-abre-campana-jueves-sevilla-feijoo-hara-badalona-mientras-abascal-colau-eligen-madrid"
+    },
+    {
+      "texto": "escaños que reparte (48 de 350)», escribe Europa Press.",
+      "cifra": "350",
+      "fuente": "https://www.diariosigloxxi.com/texto-ep/mostrar/20261111174026/sanchez-abre-campana-jueves-sevilla-feijoo-hara-badalona-mientras-abascal-colau-eligen-madrid"
+    },
+    {
+      "texto": "dirección del PP cree que los cuatro escaños que le faltaron",
+      "cifra": "cuatro",
+      "fuente": "https://es.ara.cat/politica/feijoo-elige-catalunya-albiol-inicio-campana-29-n_1_5902176.html"
+    },
+    {
+      "texto": "en mayo de 2023 le votaron 50.163 vecinos y dos meses",
+      "cifra": "50.163",
+      "fuente": "https://mapaelectoral.es/actualidad/albiol-badalona-pp-29n/"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "Abascal arranca en Colón, entre tres barrios donde el PP",
+      "motivo": "número de barrios que se describen (Recoletos, Almagro y Justicia)"
+    },
+    {
+      "texto": "votaron en 2019 y 2023 los cuatro lugares donde empieza",
+      "motivo": "número de lugares que se describen"
+    },
+    {
+      "texto": "Los cuatro lugares votaron de forma",
+      "motivo": "número de lugares que se describen"
+    },
+    {
+      "texto": "secciones. Abascal abre entre tres barrios donde el PP",
+      "motivo": "número de barrios que se describen"
+    },
+    {
+      "texto": "asistentes». Está donde se tocan tres distritos de Madrid,",
+      "motivo": "número de distritos que se tocan en Colón (Wikipedia)"
+    },
+    {
+      "texto": "las 44 secciones de esos tres barrios: sacó el 67,7",
+      "motivo": "número de barrios que se describen"
+    },
+    {
+      "texto": "Cuatro arranques, cuatro mapas",
+      "motivo": "número de lugares que se describen"
+    },
+    {
+      "texto": "Cuatro arranques, cuatro mapas muy distintosVoto",
+      "motivo": "número de lugares que se describen"
+    },
+    {
+      "texto": "y Justicia (Centro), los tres barrios que se tocan",
+      "motivo": "número de barrios que se describen"
+    },
+    {
+      "texto": "donde abre la campaña, en las tres últimas generales. Porcentaje",
+      "motivo": "número de elecciones del gráfico (abril y noviembre de 2019 y julio de 2023)"
+    }
+  ],
+  "permitir_espana": []
+}
