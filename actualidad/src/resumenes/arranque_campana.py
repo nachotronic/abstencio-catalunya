@@ -375,8 +375,7 @@ DATOS = {'U': {k: {e: plano(v) for e, v in u.items()} for k, u in U.items()},
          'ESC': ESC, 'ESC26': ESC26, 'FUERA': plano(FUERA)}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
-H1 = (f'Feijóo abre la campaña en Badalona, donde el PP no ganó ni una de sus {N_BDN} secciones en 2023, '
-      f'y Sánchez en Sevilla, una capital que ganó el PP')
+H1 = 'Feijóo abre la campaña en Badalona, donde Albiol arrasa en las municipales pero el PP no ganó ni una sección en las generales'
 DEK = (f'Abascal arranca en Colón, entre tres barrios donde el PP sacó del {p(JU["PP"])} al {p(RE["PP"])} %; Colau pega carteles en Puente de Vallecas, '
        f'donde Sumar quedó tercera a {VAL_PP_SUM} votos del PP. Así votaron en 2019 y 2023 los cuatro lugares donde empieza la campaña.')
 if __name__ == '__main__':

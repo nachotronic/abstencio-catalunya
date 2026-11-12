@@ -4482,8 +4482,9 @@ PIEZAS += [
         lugar='Galicia',
     ),
     dict(
-        slug='arranque-campana-sevilla-badalona-colon-vallecas-29n', fecha='2026-11-12',
-        titulo='Feijóo abre la campaña en Badalona, donde el PP no ganó ni una de sus 149 secciones en 2023, y Sánchez en Sevilla, una capital que ganó el PP', serie='29n', figura=2,
+        slug='arranque-campana-sevilla-badalona-colon-vallecas-29n', fecha='2026-11-12', actualizado='2026-11-12 11:45',
+        correcciones='12-11-2026: cambia el titular para dejar claro que el PP de Albiol arrasa en Badalona en las municipales (55,7 % en mayo de 2023) aunque en las generales no ganó ninguna sección. Los datos no cambian.',
+        titulo='Feijóo abre la campaña en Badalona, donde Albiol arrasa en las municipales pero el PP no ganó ni una sección en las generales', serie='29n', figura=2,
         descripcion='Abascal arranca en Colón, entre tres barrios donde el PP sacó del 44,4 al 67,7 %; Colau pega carteles en Puente de Vallecas, donde Sumar quedó tercera a 166 votos del PP. Así votaron en 2019 y 2023 los cuatro lugares donde empieza la campaña.',
         compara='El voto en las generales de abril y noviembre de 2019 y julio de 2023 en los lugares donde abren la campaña del 29N Sánchez (Sevilla y el distrito de Fibes), Feijóo (Badalona), Abascal (los barrios de la plaza de Colón) y Colau (Puente de Vallecas), sección a sección y frente a su provincia.',
         limites='Son datos de secciones y barrios, no de personas. Sin voto exterior, que no se asigna a secciones. El voto de Sumar en 2023 incluía a Podemos, que el 29N se presenta aparte, así que no es el punto de partida de Frente Amplio. Elegir un lugar de arranque es una decisión de campaña: los datos de 2023 no dicen si funcionará.',

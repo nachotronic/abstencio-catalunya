@@ -2,11 +2,6 @@
   "pieza": "arranque-campana-sevilla-badalona-colon-vallecas-29n",
   "cifras": [
     {
-      "texto": "PP no ganó ni una de sus 149 secciones en 2023, y",
-      "cifra": "149",
-      "calculo": "sum(D['G_BDN'].values())"
-    },
-    {
       "texto": "barrios donde el PP sacó del 44,4 al 67,7 %; Colau pega",
       "cifra": "44,4",
       "calculo": "D['U']['justicia']['2023_07']['PP']"
