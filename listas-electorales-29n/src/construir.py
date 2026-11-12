@@ -13,7 +13,7 @@ Escribe index.html, <provincia>/index.html (52), candidatos.json (para el buscad
 
 Uso, desde la raíz:  python3 listas-electorales-29n/src/construir.py
 """
-import csv, html, importlib.util, json, pathlib, re, sys, unicodedata
+import csv, html, importlib.util, json, math, pathlib, re, sys, unicodedata
 from collections import Counter, defaultdict
 from datetime import date
 
@@ -152,7 +152,8 @@ def pct(p):
         return 'más del 99\u00a0%'
     if p < 0.005:
         return 'menos del 1\u00a0%'
-    return f'{round(p * 100)}\u00a0%'
+    # redondeo hacia arriba desde ,5, como Math.round en el navegador (round() de Python da 0 para 0,005)
+    return f'{max(1, math.floor(p * 100 + 0.5))}\u00a0%'
 
 
 def en_pct(p):
