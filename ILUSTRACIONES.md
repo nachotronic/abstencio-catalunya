@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (83)
+## Pendientes (84)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-12 | [`mapa-electoral-galicia-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-galicia-29n/) | El mapa electoral de Galicia: el PSOE ganó en 18 de las 22 ciudades y villas de más de 20.000 habitantes en 2019 y solo en dos en 2023 | primer gráfico de la pieza |
+| 2026-11-12 | [`arranque-campana-sevilla-badalona-colon-vallecas-29n`](https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/) | Feijóo abre la campaña en Badalona, donde el PP no ganó ni una de sus 149 secciones en 2023, y Sánchez en Sevilla, una capital que ganó el PP | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-cataluna-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/) | El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462 | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-madrid-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/) | El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158 | primer gráfico de la pieza |
 | 2026-11-11 | [`renta-activacion-ingreso-minimo-vital-29n`](https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/) | El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa | primer gráfico de la pieza |
