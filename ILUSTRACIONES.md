@@ -24,6 +24,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-12 | [`cabo-verde-presidenciales-neves-rosa-mapa`](https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/) | Neves evitó la segunda vuelta en Cabo Verde por 3.311 votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno | primer gráfico de la pieza |
 | 2026-11-12 | [`mapa-electoral-galicia-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-galicia-29n/) | El mapa electoral de Galicia: el PSOE ganó en 18 de las 22 ciudades y villas de más de 20.000 habitantes en 2019 y solo en dos en 2023 | primer gráfico de la pieza |
 | 2026-11-12 | [`arranque-campana-sevilla-badalona-colon-vallecas-29n`](https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/) | Feijóo abre la campaña en Badalona, donde el PP no ganó ni una de sus 149 secciones en 2023, y Sánchez en Sevilla, una capital que ganó el PP | primer gráfico de la pieza |
 | 2026-11-12 | [`mapa-electoral-castilla-la-mancha-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-castilla-la-mancha-29n/) | El mapa electoral de Castilla-La Mancha: el PSOE ganó en cuatro de las cinco capitales en 2019 y en ninguna en 2023, aunque subió en votos | primer gráfico de la pieza |

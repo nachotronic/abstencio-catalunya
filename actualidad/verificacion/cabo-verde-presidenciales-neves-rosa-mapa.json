@@ -1,0 +1,379 @@
+{
+  "pieza": "cabo-verde-presidenciales-neves-rosa-mapa",
+  "_datos_disponibles": {
+    "D": "dict"
+  },
+  "cifras": [
+    {
+      "texto": "vuelta en Cabo Verde por 3.311 votos en 2021; el domingo",
+      "cifra": "3.311",
+      "calculo": "D['MARGEN']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "MpD. En 2021, Neves sacó el 51,8 % de los válidos y ganó",
+      "cifra": "51,8",
+      "calculo": "D['PCT']['neves']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "de los válidos y ganó en 9 de los 13 círculos;",
+      "cifra": "9",
+      "calculo": "len(D['GANA_N'])",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "válidos y ganó en 9 de los 13 círculos; la diáspora",
+      "cifra": "13",
+      "calculo": "len(D['CIRC'])",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "círculos; la diáspora es hoy el 18,2 % del censo.",
+      "cifra": "18,2",
+      "calculo": "D['P_DIAS26']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "presentaron en 2021 y sacaron el 1,8 % y el 0,8 %.",
+      "cifra": "1,8",
+      "calculo": "D['PCT']['pina']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "2021 y sacaron el 1,8 % y el 0,8 %.",
+      "cifra": "0,8",
+      "calculo": "D['PCT']['alves']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "segunda. En 2021, Neves sacó 96.035 votos, el 51,8 % de",
+      "cifra": "96.035",
+      "calculo": "D['T']['neves']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Neves sacó 96.035 votos, el 51,8 % de los válidos, según",
+      "cifra": "51,8",
+      "calculo": "D['PCT']['neves']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "mitad de los válidos eran 92.724: Neves la superó por",
+      "cifra": "92.724",
+      "calculo": "D['MITAD']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "92.724: Neves la superó por 3.311 votos. Carlos Veiga,",
+      "cifra": "3.311",
+      "calculo": "D['MARGEN']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Veiga, del MpD, se quedó en el 42,4 %. Votó el 48,0 % de",
+      "cifra": "42,4",
+      "calculo": "D['PCT']['veiga']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "quedó en el 42,4 %. Votó el 48,0 % de los inscritos.",
+      "cifra": "48,0",
+      "calculo": "D['PART']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "capital, Praia, que dio el 50,3 % de los votos válidos:",
+      "cifra": "50,3",
+      "calculo": "D['SANT_PCT']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "válidos: allí Neves sacó 11.239 votos más que Veiga,",
+      "cifra": "11.239",
+      "calculo": "D['VENT_SANT']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "votos más que Veiga, de los 17.432 de ventaja que tuvo",
+      "cifra": "17.432",
+      "calculo": "D['VENT_TOTAL']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "país. En la diáspora sacó 2.792 más.",
+      "cifra": "2.792",
+      "calculo": "D['DIAS_NEVES']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "diáspora, Neves pasó del 53 %: 61,7 % en África,",
+      "cifra": "53",
+      "calculo": "int(min(D['CIRC'][c]['%neves'] for c in ['África','Américas','Europa e Resto do Mundo']))",
+      "_donde": "dato"
+    },
+    {
+      "texto": "diáspora, Neves pasó del 53 %: 61,7 % en África, 61,5 %",
+      "cifra": "61,7",
+      "calculo": "D['CIRC']['África']['%neves']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "del 53 %: 61,7 % en África, 61,5 % en América y 53,8",
+      "cifra": "61,5",
+      "calculo": "D['CIRC']['Américas']['%neves']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "África, 61,5 % en América y 53,8 % en Europa y el resto",
+      "cifra": "53,8",
+      "calculo": "D['CIRC']['Europa e Resto do Mundo']['%neves']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "allí votó muy poca gente: el 27,0 % de los inscritos,",
+      "cifra": "27,0",
+      "calculo": "D['PART_DIA']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "los inscritos, frente al 51,4 % en el país. En Europa,",
+      "cifra": "51,4",
+      "calculo": "D['PART_NAC']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "país. En Europa, solo el 20,8 %.",
+      "cifra": "20,8",
+      "calculo": "D['CIRC']['Europa e Resto do Mundo']['part']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Para el domingo hay 419.448 inscritos, según la",
+      "cifra": "419.448",
+      "calculo": "D['INS26']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "resultados de la CNE, un 5,2 % más que en 2021. 76.383",
+      "cifra": "5,2",
+      "calculo": "D['VAR_TOT']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "un 5,2 % más que en 2021. 76.383 viven fuera, el 18,2",
+      "cifra": "76.383",
+      "calculo": "D['DIAS26']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "2021. 76.383 viven fuera, el 18,2 %. Los de la diáspora",
+      "cifra": "18,2",
+      "calculo": "D['P_DIAS26']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "la diáspora han crecido un 36,2 % y los del país, un",
+      "cifra": "36,2",
+      "calculo": "D['VAR_DIAS']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "36,2 % y los del país, un 0,1 %. El mayor aumento",
+      "cifra": "0,1",
+      "calculo": "D['VAR_NAC']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "legislativas, con mayoría absoluta: 37 de los 72 diputados,",
+      "cifra": "37",
+      "calculo": "D['LEG']['PAICV'][1]",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "mayoría absoluta: 37 de los 72 diputados, según RTP.",
+      "cifra": "72",
+      "calculo": "sum(v[1] for v in D['LEG'].values())",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "de mayo, el PAICV sacó el 48,0 % de los votos a candidaturas",
+      "cifra": "48,0",
+      "calculo": "D['LEG_PCT']['PAICV']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "candidaturas y el MpD, el 44,8 %, según el edital de",
+      "cifra": "44,8",
+      "calculo": "D['LEG_PCT']['MpD']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "recoge Wikipedia. Votó el 46,5 % de los inscritos.",
+      "cifra": "46,5",
+      "calculo": "D['LEG_PART']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Neves ganó en 9 de los 13 círculos;",
+      "cifra": "9",
+      "calculo": "len(D['GANA_N'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Neves ganó en 9 de los 13 círculos; Veiga, en",
+      "cifra": "13",
+      "calculo": "len(D['CIRC'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "los 13 círculos; Veiga, en 4: São Nicolau, Sal, Maio",
+      "cifra": "4",
+      "calculo": "len(D['GANA_V'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "y América, Neves pasó del 61 %; en Maio, Veiga sacó",
+      "cifra": "61",
+      "calculo": "min(D['CIRC']['África']['%neves'], D['CIRC']['Américas']['%neves'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "%; en Maio, Veiga sacó el 57,1 %Porcentaje de votos",
+      "cifra": "57,1",
+      "calculo": "D['CIRC']['Maio']['%veiga']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "y resto del mundo hay un 41,3 % más de inscritos que",
+      "cifra": "41,3",
+      "calculo": "D['VAR_EUR']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "que en 2021; en el país, un 0,1 % másVariación de los",
+      "cifra": "0,1",
+      "calculo": "D['VAR_NAC']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "ganó las legislativas con el 48,0 % y mayoría absolutaLegislativas",
+      "cifra": "48,0",
+      "calculo": "D['LEG_PCT']['PAICV']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "a candidaturas y escaños (72 en total, mayoría con",
+      "cifra": "72",
+      "calculo": "sum(v[1] for v in D['LEG'].values())",
+      "_donde": "pie"
+    },
+    {
+      "texto": "(72 en total, mayoría con 37)",
+      "cifra": "37",
+      "calculo": "sum(v[1] for v in D['LEG'].values()) // 2 + 1",
+      "_donde": "pie"
+    },
+    {
+      "texto": "Cabo Verde vota en 13 círculos: diez en el",
+      "cifra": "13",
+      "calculo": "len(D['CIRC'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "la diáspora. Neves ganó en 9, entre ellos los tres",
+      "cifra": "9",
+      "calculo": "len(D['GANA_N'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "la diáspora, y Veiga, en 4: São Nicolau, Sal, Maio",
+      "cifra": "4",
+      "calculo": "len(D['GANA_V'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el resto del mundo, con un 41,3 % más.",
+      "cifra": "41,3",
+      "calculo": "D['VAR_EUR']"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "Hay seis candidatos, según e-Global:",
+      "cifra": "seis",
+      "fuente": "https://e-global.pt/noticias/lusofonia/cabo-verde/cabo-verde-eleicoes-presidenciais-passam-a-ter-seis-candidaturas-aceites/"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "Seis candidatos se disputan",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "Tribunal Constitucional admitió cinco candidaturas el 21 de",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "septiembre y rechazó otras cinco, entre ellas la de Sousa,",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "sus firmas, según e-Global. Tres días después, tras su",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "tribunal comprobó que las cinco firmas que le faltaban,",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "En los tres círculos de la diáspora,",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "Neves pero que vota poco. Con seis candidatos, la clave",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "porcentaje. Tono claro: menos del 50 %; medio, del 50 % al",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "menos del 50 %; medio, del 50 % al 55 %; intenso,",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "50 %; medio, del 50 % al 55 %; intenso, más del",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "al 55 %; intenso, más del 55 %",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "Neves. La línea marca el 50 %",
+      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
+    },
+    {
+      "texto": "Verde vota en 13 círculos: diez en el país, que siguen",
+      "motivo": "Recuento descriptivo de los círculos (diez del país, tres de la diáspora)"
+    },
+    {
+      "texto": "parte en dos, Norte y Sur), y tres en la diáspora. Neves",
+      "motivo": "Recuento descriptivo de los círculos (diez del país, tres de la diáspora)"
+    },
+    {
+      "texto": "ganó en 9, entre ellos los tres de la diáspora, y Veiga,",
+      "motivo": "Recuento descriptivo de los círculos (diez del país, tres de la diáspora)"
+    },
+    {
+      "texto": "según Inforpress, y cuatro más: el juez",
+      "motivo": "Los cuatro candidatos restantes de los seis, nombrados a continuación"
+    },
+    {
+      "texto": "(Edital n.º 3/Eleição/2026)",
+      "motivo": "Número del edital, no una cifra"
+    }
+  ],
+  "permitir_espana": []
+}
