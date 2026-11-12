@@ -238,8 +238,9 @@ BLOQUES_V1 = [
     ('PP + Vox', ['PP', 'Vox']),
     ('PP + Vox + SALF + UPN + CC', ['PP', 'Vox', 'SALF', 'UPN', 'CC']),
     ('PSOE + Sumar + Podemos', ['PSOE', 'Sumar', 'Podemos']),
-    ('PSOE + Sumar + Podemos + ERC + Junts + EH Bildu + PNV + BNG + CC',
-     ['PSOE', 'Sumar', 'Podemos', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC']),
+    # Adelante Andalucía, en el bloque grande desde el 11-11-2026 (decisión de Nacho)
+    ('PSOE + Sumar + Podemos + ERC + Junts + EH Bildu + PNV + BNG + CC + Adelante Andalucía',
+     ['PSOE', 'Sumar', 'Podemos', 'ERC', 'Junts', 'EH Bildu', 'PNV', 'BNG', 'CC', 'Adelante Andalucía']),
 ]
 SIGMA_MAX = 0.30   # tope del error relativo de las listas pequeñas (con c·raíz(voto) saldría ±50-100 %)
 # Error de la media según la distancia a la elección (error_encuestas.py): a 38 días, c = 0,85 en España (generales y

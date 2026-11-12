@@ -1,16 +1,16 @@
 {
- "descargado": "2026-11-11T10:37Z",
+ "descargado": "2026-11-12T00:42Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1077,
+ "encuestas_espana": 1078,
  "encuestas_infraestatales": 139,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-10",
+  "publicado": "2026-11-11",
   "encuestadora": "SW Demoscopia",
   "cliente": "La Séptima"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 15,
+  "UPN-PP": 16,
   "D21": 3,
   "Autonómicas - CUP": 2,
   "JxSí": 1,
@@ -20,8 +20,8 @@
   "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 607,
-  "ultima_fin_campo": "2026-11-09",
+  "encuestas": 608,
+  "ultima_fin_campo": "2026-11-10",
   "faltan_en_electografica_120_dias": 17
  }
 }
