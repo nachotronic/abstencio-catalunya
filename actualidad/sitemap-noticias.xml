@@ -96,4 +96,20 @@
       <news:title>Feijóo abre la campaña en Badalona, donde el PP no ganó ni una de sus 149 secciones en 2023, y Sánchez en Sevilla, una capital que ganó el PP</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-castilla-la-mancha-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Castilla-La Mancha: el PSOE ganó en cuatro de las cinco capitales en 2019 y en ninguna en 2023, aunque subió en votos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-pais-vasco-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral del País Vasco: el PNV pasó de ganar en 152 municipios a 76, y EH Bildu, de 79 a 140</news:title>
+    </news:news>
+  </url>
 </urlset>
