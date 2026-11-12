@@ -359,7 +359,7 @@ AVISOS_ULTIMO = {
                               'la anterior, del 5 de octubre, daba «Sumar», 5,2 %. El cambio es aproximado.',
     ('cis', '2026-11-12'): 'En el preelectoral del CIS (estudio 3584), el 6,9 % suma Frente Amplio (4,7), Compromís: Front Valencià (1,6), '
                            'Unidad del Pueblo Canario (0,4) y Ara Més-Front Ampli (0,2), que el CIS da por separado; además, cuenta juntos a ERC y '
-                           'Podemos en Cataluña. El barómetro de octubre no tenía ese desglose: el cambio no es comparable.',
+                           'Podemos en Cataluña. Por eso el cambio de Sumar con otras encuestas del CIS no es directamente comparable.',
 }
 
 
