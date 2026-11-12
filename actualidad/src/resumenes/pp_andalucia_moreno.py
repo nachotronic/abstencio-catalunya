@@ -9,6 +9,7 @@ Generales de 2023: generales-2026/descargas/municipios.csv, sin voto exterior (C
 XV legislatura elegidos en julio de 2023. Modelo: escenario base publicado del 5-11-2026.
 Uso, desde la raíz: python3 actualidad/src/resumenes/pp_andalucia_moreno.py
 """
+import sys
 import collections
 import json
 import math
@@ -25,6 +26,11 @@ CIRC = {'04': 'Almería', '11': 'Cádiz', '14': 'Córdoba', '18': 'Granada', '21
 
 aut = pd.read_csv(RAIZ / 'actualidad/src/resumenes/datos/andalucia_autonomicas_2026.csv', dtype={'mun_code': str})
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
+# Esta pieza suma una lista fija de familias: las listas propias de 2019-N y 2023 (mapa_listas_propias.py) vuelven a
+# «Otros», como cuando se publicó (en estos municipios no gana ninguna).
+sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+from partidos import sin_listas_propias_mun  # noqa: E402
+m = sin_listas_propias_mun(m)
 m = m[m.mun_code.str[:2].isin(PROV)].copy()
 NMUN = len(m)
 assert NMUN == len(aut) == 785, (NMUN, len(aut))

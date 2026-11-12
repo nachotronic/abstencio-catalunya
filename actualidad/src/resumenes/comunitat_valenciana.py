@@ -12,6 +12,7 @@ En la Comunitat, la lista «Sumar» del modelo es Compromís-Front Valencià (Co
 da la cuota de Sumar más la de Podemos (previsiones/src/motor.py, PODEMOS_CON_FA).
 Uso, desde la raíz: python3 actualidad/src/resumenes/comunitat_valenciana.py
 """
+import sys
 import collections
 import json
 import math
@@ -29,6 +30,11 @@ CIRC = {'46': 'Valencia/València', '03': 'Alicante/Alacant', '12': 'Castellón/
 ESC = {'46': 16, '03': 12, '12': 5}
 
 m = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str})
+# Esta pieza suma una lista fija de familias: las listas propias de 2019-N y 2023 (mapa_listas_propias.py) vuelven a
+# «Otros», como cuando se publicó (en estos municipios no gana ninguna).
+sys.path.insert(0, str(RAIZ / 'generales-2026' / 'src'))
+from partidos import sin_listas_propias_mun  # noqa: E402
+m = sin_listas_propias_mun(m)
 m = m[m.mun_code.str[:2].isin(PROV)].copy()
 m['prov'] = m.mun_code.str[:2]
 NMUN = len(m)
