@@ -35,12 +35,12 @@
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "ganó pasaron de reunir el 72,9 % de la población al",
-   "cifra": "72,9",
+   "texto": "ganó pasaron de reunir el 73,2 % de la población al",
+   "cifra": "73,2",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "72,9 % de la población al 24,5 %. Vox, de 65 a diez.",
+   "texto": "73,2 % de la población al 24,5 %. Vox, de 65 a diez.",
    "cifra": "24,5",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
@@ -275,8 +275,8 @@
    "calculo": "D['PP_PSOE']"
   },
   {
-   "texto": "ganó pasaron de sumar el 72,9 % de la población de",
-   "cifra": "72,9",
+   "texto": "ganó pasaron de sumar el 73,2 % de la población de",
+   "cifra": "73,2",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
@@ -300,12 +300,12 @@
    "calculo": "D['VXPROV']['45']"
   },
   {
-   "texto": "pequeños: la mitad tenía más de 1.275 habitantes. En 2023,",
-   "cifra": "1.275",
+   "texto": "pequeños: la mitad tenía más de 1.206 habitantes. En 2023,",
+   "cifra": "1.206",
    "calculo": "D['VX19_MED']"
   },
   {
-   "texto": "1.275 habitantes. En 2023, 50 de esos 65 pasaron al",
+   "texto": "1.206 habitantes. En 2023, 50 de esos 65 pasaron al",
    "cifra": "50",
    "calculo": "D['VOX_PP']"
   },
@@ -325,8 +325,8 @@
    "calculo": "D['GANA']['2023_07']['VOX']"
   },
   {
-   "texto": "mayor, Pioz (Guadalajara), con 5.314 habitantes.",
-   "cifra": "5.314",
+   "texto": "mayor, Pioz (Guadalajara), con 5.131 habitantes.",
+   "cifra": "5.131",
    "calculo": "D['VX23_MAX']"
   },
   {
@@ -345,8 +345,8 @@
    "calculo": "D['TT']['Más de 20.000']['g23']['PSOE']"
   },
   {
-   "texto": "20.000, Vox había ganado en 16 en 2019 y en 2023 en",
-   "cifra": "16",
+   "texto": "20.000, Vox había ganado en 15 en 2019 y en 2023 en",
+   "cifra": "15",
    "calculo": "D['TT']['De 5.000 a 20.000']['g19']['VOX']"
   },
   {

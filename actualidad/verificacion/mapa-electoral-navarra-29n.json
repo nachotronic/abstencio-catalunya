@@ -20,8 +20,8 @@
    "calculo": "D['SUM23V'] - D['A19']['votos']['NAS']"
   },
   {
-   "texto": "Suma, pero el PSOE ganó los once municipios de más de",
-   "cifra": "once",
+   "texto": "Suma, pero el PSOE ganó once de los doce municipios de más de",
+   "cifra": "doce",
    "calculo": "len(D['GC'])"
   },
   {
@@ -100,13 +100,13 @@
    "calculo": "D['GANA']['2019_11']['PSOE']"
   },
   {
-   "texto": "55 municipios a ganar en 109, que suman el 83,0 %",
+   "texto": "55 municipios a ganar en 109, que suman el 82,9 %",
    "cifra": "109",
    "calculo": "D['GANA']['2023_07']['PSOE']"
   },
   {
-   "texto": "ganar en 109, que suman el 83,0 % de la población. EH",
-   "cifra": "83,0",
+   "texto": "ganar en 109, que suman el 82,9 % de la población. EH",
+   "cifra": "82,9",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
@@ -250,12 +250,12 @@
    "calculo": "D['PAM']['sumv23']"
   },
   {
-   "texto": "El PSOE ganó en 2023 los once municipios de más de",
-   "cifra": "once",
+   "texto": "El PSOE ganó en 2023 once de los doce municipios de más de",
+   "cifra": "doce",
    "calculo": "len(D['GC'])"
   },
   {
-   "texto": "más de 10.000 habitantes; siete habían sido de Navarra",
+   "texto": "más de 10.000 habitantes, todos salvo Villava, que fue de EH Bildu; siete habían sido de Navarra",
    "cifra": "siete",
    "calculo": "sum(1 for v in D['GC'].values() if v['g19'] == 'NAS')"
   },
@@ -275,33 +275,33 @@
    "calculo": "D['GC']['Aranguren']['margv23']"
   },
   {
-   "texto": "habrían sido los más votados en seis de esos once.",
+   "texto": "habrían sido los más votados en seis de esos doce.",
    "cifra": "seis",
    "calculo": "sum(1 for v in D['GC'].values() if v['gsum23'] == 'UPNPP')"
   },
   {
-   "texto": "más votados en seis de esos once.",
-   "cifra": "once",
+   "texto": "más votados en seis de esos doce.",
+   "cifra": "doce",
    "calculo": "len(D['GC'])"
   },
   {
-   "texto": "EH Bildu ganó en 98 de los 186 municipios",
-   "cifra": "98",
+   "texto": "EH Bildu ganó en 99 de los 188 municipios",
+   "cifra": "99",
    "calculo": "D['TT']['Menos de 1.000']['g23']['BILDU']"
   },
   {
-   "texto": "EH Bildu ganó en 98 de los 186 municipios de menos",
-   "cifra": "186",
+   "texto": "EH Bildu ganó en 99 de los 188 municipios de menos",
+   "cifra": "188",
    "calculo": "D['TT']['Menos de 1.000']['n']"
   },
   {
-   "texto": "a 5.000, el PSOE pasó de 26 a 43, y Navarra Suma",
-   "cifra": "26",
+   "texto": "a 5.000, el PSOE pasó de 25 a 42, y Navarra Suma",
+   "cifra": "25",
    "calculo": "D['TT']['De 1.000 a 5.000']['g19']['PSOE']"
   },
   {
-   "texto": "5.000, el PSOE pasó de 26 a 43, y Navarra Suma había",
-   "cifra": "43",
+   "texto": "5.000, el PSOE pasó de 25 a 42, y Navarra Suma había",
+   "cifra": "42",
    "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']"
   },
   {
@@ -355,42 +355,42 @@
    "calculo": "D['GSUM']['UPNPP']"
   },
   {
-   "texto": "El PSOE ganó en 2023 los once municipios de más de",
-   "cifra": "once",
+   "texto": "El PSOE ganó en 2023 once de los doce municipios de más de",
+   "cifra": "doce",
    "calculo": "len(D['GC'])"
   },
   {
-   "texto": "habitantes; Pamplona, por 7.487 votos, y el valle de",
+   "texto": "habitantes, todos salvo Villava; Pamplona, por 7.487 votos, y el valle de",
    "cifra": "7.487",
    "calculo": "D['PAM']['margv23']"
   },
   {
-   "texto": "PSOE y a EH Bildu en los once municipios de más de",
-   "cifra": "once",
+   "texto": "PSOE y a EH Bildu en los doce municipios de más de",
+   "cifra": "doce",
    "calculo": "len(D['GC'])"
   },
   {
-   "texto": "EH Bildu ganó en 98 de los 186 municipios",
-   "cifra": "98",
+   "texto": "EH Bildu ganó en 99 de los 188 municipios",
+   "cifra": "99",
    "calculo": "D['TT']['Menos de 1.000']['g23']['BILDU']"
   },
   {
-   "texto": "EH Bildu ganó en 98 de los 186 municipios de menos",
-   "cifra": "186",
+   "texto": "EH Bildu ganó en 99 de los 188 municipios de menos",
+   "cifra": "188",
    "calculo": "D['TT']['Menos de 1.000']['n']"
   },
   {
-   "texto": "1.000 habitantes; el PSOE, en 43 de los 65 de 1.000 a",
-   "cifra": "43",
+   "texto": "1.000 habitantes; el PSOE, en 42 de los 63 de 1.000 a",
+   "cifra": "42",
    "calculo": "D['TT']['De 1.000 a 5.000']['g23']['PSOE']"
   },
   {
-   "texto": "habitantes; el PSOE, en 43 de los 65 de 1.000 a 5.000Municipios",
-   "cifra": "65",
+   "texto": "habitantes; el PSOE, en 42 de los 63 de 1.000 a 5.000Municipios",
+   "cifra": "63",
    "calculo": "D['TT']['De 1.000 a 5.000']['n']"
   },
   {
-   "texto": "en 43 de los 65 de 1.000 a 5.000Municipios ganados",
+   "texto": "en 42 de los 63 de 1.000 a 5.000Municipios ganados",
    "cifra": "5",
    "calculo": "sum(D['E29'].values())"
   },
@@ -413,12 +413,27 @@
    "texto": "escaños que por separadoLos 5 diputados de Navarra:",
    "cifra": "5",
    "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "Suma, pero el PSOE ganó once de los doce municipios de más de",
+   "cifra": "once",
+   "calculo": "sum(1 for v in D['GC'].values() if v['g23'] == 'PSOE')"
+  },
+  {
+   "texto": "El PSOE ganó en 2023 once de los doce municipios de más de",
+   "cifra": "once",
+   "calculo": "sum(1 for v in D['GC'].values() if v['g23'] == 'PSOE')"
+  },
+  {
+   "texto": "El PSOE ganó en 2023 once de los doce municipios de más de",
+   "cifra": "once",
+   "calculo": "sum(1 for v in D['GC'].values() if v['g23'] == 'PSOE')"
   }
  ],
  "externas": [],
  "ignorar": [
   {
-   "texto": "once municipios de más de 10.000 habitantes, Pamplona",
+   "texto": "doce municipios de más de 10.000 habitantes, Pamplona",
    "motivo": "umbral de población"
   },
   {
@@ -426,11 +441,11 @@
    "motivo": "umbral de población"
   },
   {
-   "texto": "once municipios de más de 10.000 habitantes; siete habían",
+   "texto": "doce municipios de más de 10.000 habitantes, todos salvo Villava, que fue de EH Bildu; siete habían",
    "motivo": "umbral de población"
   },
   {
-   "texto": "186 municipios de menos de 1.000 habitantes. En los de",
+   "texto": "188 municipios de menos de 1.000 habitantes. En los de",
    "motivo": "umbral de población"
   },
   {
@@ -438,7 +453,7 @@
    "motivo": "umbral de población"
   },
   {
-   "texto": "habitantes. En los de 1.000 a 5.000, el PSOE pasó de 26",
+   "texto": "habitantes. En los de 1.000 a 5.000, el PSOE pasó de 25",
    "motivo": "umbral de población"
   },
   {
@@ -450,19 +465,19 @@
    "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
-   "texto": "once municipios de más de 10.000 habitantes; Pamplona,",
+   "texto": "doce municipios de más de 10.000 habitantes, todos salvo Villava; Pamplona,",
    "motivo": "umbral de población"
   },
   {
-   "texto": "once municipios de más de 10.000 habitantes, en %. Barra",
+   "texto": "doce municipios de más de 10.000 habitantes, en %. Barra",
    "motivo": "umbral de población"
   },
   {
-   "texto": "186 municipios de menos de 1.000 habitantes; el PSOE,",
+   "texto": "188 municipios de menos de 1.000 habitantes; el PSOE,",
    "motivo": "umbral de población"
   },
   {
-   "texto": "PSOE, en 43 de los 65 de 1.000 a 5.000Municipios ganados",
+   "texto": "PSOE, en 42 de los 63 de 1.000 a 5.000Municipios ganados",
    "motivo": "umbral de población"
   },
   {

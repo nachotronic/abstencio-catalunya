@@ -130,13 +130,13 @@
    "calculo": "D['POB']['PP']"
   },
   {
-   "texto": "habitantes, el PSOE sacó el 41,2 % en 2023 y el PP, el",
-   "cifra": "41,2",
+   "texto": "habitantes, el PSOE sacó el 41,4 % en 2023 y el PP, el",
+   "cifra": "41,4",
    "calculo": "D['TT']['Menos de 1.000']['psoe23']"
   },
   {
-   "texto": "41,2 % en 2023 y el PP, el 35,1 %. En las ciudades de",
-   "cifra": "35,1",
+   "texto": "41,4 % en 2023 y el PP, el 34,9 %. En las ciudades de",
+   "cifra": "34,9",
    "calculo": "D['TT']['Menos de 1.000']['pp23']"
   },
   {
@@ -489,8 +489,8 @@
    "calculo": "D['VOX_PP']"
   },
   {
-   "texto": "geografías. El PSOE ganó en 346 de los 529 municipios",
-   "cifra": "346",
+   "texto": "geografías. El PSOE ganó en 347 de los 529 municipios",
+   "cifra": "347",
    "calculo": "D['PEQ']"
   },
   {
@@ -504,8 +504,8 @@
    "calculo": "D['GANA']['2019_11']['PP']"
   },
   {
-   "texto": "El PSOE ganó en 346 de los 529 municipios",
-   "cifra": "346",
+   "texto": "El PSOE ganó en 347 de los 529 municipios",
+   "cifra": "347",
    "calculo": "D['PEQ']"
   },
   {

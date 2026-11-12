@@ -15,13 +15,13 @@
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "municipios, pero pasó de ganar en nueve de las once ciudades",
-   "cifra": "nueve",
+   "texto": "municipios, pero pasó de ganar en siete de las nueve ciudades",
+   "cifra": "siete",
    "calculo": "D['TT']['Más de 30.000']['g19']['PSOE']"
   },
   {
-   "texto": "de ganar en nueve de las once ciudades de más de 30.000",
-   "cifra": "once",
+   "texto": "de ganar en siete de las nueve ciudades de más de 30.000",
+   "cifra": "nueve",
    "calculo": "D['TT']['Más de 30.000']['n']"
   },
   {
@@ -30,13 +30,13 @@
    "calculo": "D['DV']['PSOE']"
   },
   {
-   "texto": "ganó pasaron de reunir el 78,3 % de la población al",
-   "cifra": "78,3",
+   "texto": "ganó pasaron de reunir el 78,2 % de la población al",
+   "cifra": "78,2",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "78,3 % de la población al 9,2 %; Palma pasó al PP.",
-   "cifra": "9,2",
+   "texto": "78,2 % de la población al 9,1 %; Palma pasó al PP.",
+   "cifra": "9,1",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
@@ -95,17 +95,17 @@
    "calculo": "D['GANA']['2023_07']['PSOE']"
   },
   {
-   "texto": "ganó pasaron de reunir el 78,3 % de la población de",
-   "cifra": "78,3",
+   "texto": "ganó pasaron de reunir el 78,2 % de la población de",
+   "cifra": "78,2",
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "población de las islas al 9,2 %. El PP pasó de 30",
-   "cifra": "9,2",
+   "texto": "población de las islas al 9,1 %. El PP pasó de 30",
+   "cifra": "9,1",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "islas al 9,2 %. El PP pasó de 30 municipios a 54, y del",
+   "texto": "islas al 9,1 %. El PP pasó de 30 municipios a 54, y del",
    "cifra": "30",
    "calculo": "D['GANA']['2019_11']['PP']"
   },
@@ -275,19 +275,19 @@
    "calculo": "D['ISN']['Mallorca']"
   },
   {
-   "texto": "mayor en las ciudades. De las 11 de más de 30.000 habitantes,",
-   "cifra": "11",
+   "texto": "mayor en las ciudades. De las nueve de más de 30.000 habitantes,",
+   "cifra": "nueve",
    "calculo": "D['TT']['Más de 30.000']['n']"
   },
   {
-   "texto": "habitantes, el PSOE ganó en nueve en 2019 y solo en Maó",
-   "cifra": "nueve",
+   "texto": "habitantes, el PSOE ganó en siete en 2019 y en ninguna",
+   "cifra": "siete",
    "calculo": "D['TT']['Más de 30.000']['g19']['PSOE']"
   },
   {
-   "texto": "solo en Maó en 2023, por 170 votos. Palma pasó del",
+   "texto": "en ninguna en 2023. Conservó Maó, que se queda justo por debajo, con 29.902 habitantes, por 170 votos. Palma pasó del",
    "cifra": "170",
-   "calculo": "D['GC']['Maó']['margv23']"
+   "calculo": "D['MAO']['margv23']"
   },
   {
    "texto": "Palma pasó del PSOE al PP por 7.658 votos: el PP sacó allí",
@@ -385,13 +385,13 @@
    "calculo": "len(D['ISN'])"
   },
   {
-   "texto": "De las 11 ciudades de más de 30.000",
-   "cifra": "11",
+   "texto": "De las nueve ciudades de más de 30.000",
+   "cifra": "nueve",
    "calculo": "D['TT']['Más de 30.000']['n']"
   },
   {
-   "texto": "habitantes, el PSOE ganó en nueve en 2019 y solo en Maó",
-   "cifra": "nueve",
+   "texto": "habitantes, el PSOE ganó en siete en 2019 y en ninguna",
+   "cifra": "siete",
    "calculo": "D['TT']['Más de 30.000']['g19']['PSOE']"
   },
   {
@@ -413,12 +413,17 @@
    "texto": "se quedaría sin escañoLos 8 diputados de las Illes",
    "cifra": "8",
    "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "que se queda justo por debajo, con 29.902 habitantes",
+   "cifra": "29.902",
+   "calculo": "D['MAO']['pob']"
   }
  ],
  "externas": [],
  "ignorar": [
   {
-   "texto": "las once ciudades de más de 30.000 habitantes a ganar solo",
+   "texto": "las nueve ciudades de más de 30.000 habitantes a no ganar",
    "motivo": "umbral de población"
   },
   {
@@ -426,7 +431,7 @@
    "motivo": "puesto en la lista (Última Hora)"
   },
   {
-   "texto": "ciudades. De las 11 de más de 30.000 habitantes, el PSOE",
+   "texto": "ciudades. De las nueve de más de 30.000 habitantes, el PSOE",
    "motivo": "umbral de población"
   },
   {
@@ -434,7 +439,7 @@
    "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
-   "texto": "las 11 ciudades de más de 30.000 habitantes, el PSOE",
+   "texto": "las nueve ciudades de más de 30.000 habitantes, el PSOE",
    "motivo": "umbral de población"
   },
   {

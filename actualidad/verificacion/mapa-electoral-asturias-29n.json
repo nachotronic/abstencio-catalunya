@@ -170,18 +170,18 @@
    "calculo": "D['POB']['2019_11']['PSOE']"
   },
   {
-   "texto": "97,3 % de la población al 54,9 %, y los del PP, del",
-   "cifra": "54,9",
+   "texto": "97,3 % de la población al 55,0 %, y los del PP, del",
+   "cifra": "55,0",
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "54,9 %, y los del PP, del 2,7 % al 45,1 %.",
+   "texto": "55,0 %, y los del PP, del 2,7 % al 45,0 %.",
    "cifra": "2,7",
    "calculo": "D['POB']['2019_11']['PP']"
   },
   {
-   "texto": "los del PP, del 2,7 % al 45,1 %.",
-   "cifra": "45,1",
+   "texto": "los del PP, del 2,7 % al 45,0 %.",
+   "cifra": "45,0",
    "calculo": "D['POB']['2023_07']['PP']"
   },
   {

@@ -1,784 +1,784 @@
 {
-  "pieza": "mapa-electoral-cataluna-29n",
-  "_datos_disponibles": {
-    "D": "dict"
+ "pieza": "mapa-electoral-cataluna-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Cataluña: ERC pasó de ganar en 619 municipios a ganar en",
+   "cifra": "619",
+   "calculo": "D['GANA']['2019_11']['ERC']",
+   "_donde": "titular"
   },
-  "cifras": [
-    {
-      "texto": "Cataluña: ERC pasó de ganar en 619 municipios a ganar en",
-      "cifra": "619",
-      "calculo": "D['GANA']['2019_11']['ERC']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "619 municipios a ganar en 159, y el PSC, de 75 a 462",
-      "cifra": "159",
-      "calculo": "D['GANA']['2023_07']['ERC']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "ganar en 159, y el PSC, de 75 a 462",
-      "cifra": "75",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "en 159, y el PSC, de 75 a 462",
-      "cifra": "462",
-      "calculo": "D['GANA']['2023_07']['PSOE']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "En 2023, el PSC ganó en 66 de los 68 municipios",
-      "cifra": "66",
-      "calculo": "D['GRANDES_PSC']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "el PSC ganó en 66 de los 68 municipios de más de",
-      "cifra": "68",
-      "calculo": "D['GRANDES']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "20.000 habitantes y en las cuatro capitales; Junts, en",
-      "cifra": "cuatro",
-      "calculo": "len(D['CAP'])",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "cuatro capitales; Junts, en 295 pueblos, sobre todo",
-      "cifra": "295",
-      "calculo": "D['GANA']['2023_07']['JUNTS']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "media de encuestas da al PSC 17 de los 48 diputados,",
-      "cifra": "17",
-      "calculo": "D['E29']['PSOE']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "encuestas da al PSC 17 de los 48 diputados, y a ERC,",
-      "cifra": "48",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "los 48 diputados, y a ERC, 11.",
-      "cifra": "11",
-      "calculo": "D['E29']['ERC']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "elige el 29 de noviembre 48 de los 350 diputados",
-      "cifra": "48",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "Congreso, los mismos que en 2023: 32 en Barcelona, 6 en Girona,",
-      "cifra": "32",
-      "calculo": "D['ESC26']['08']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "en 2023: 32 en Barcelona, 6 en Girona, 4 en Lleida",
-      "cifra": "6",
-      "calculo": "D['ESC26']['17']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "en Barcelona, 6 en Girona, 4 en Lleida y 6 en Tarragona.",
-      "cifra": "4",
-      "calculo": "D['ESC26']['25']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "en Girona, 4 en Lleida y 6 en Tarragona. La campaña",
-      "cifra": "6",
-      "calculo": "D['ESC26']['43']",
-      "_donde": "contexto"
-    },
-    {
-      "texto": "el partido más votado en 619 de los 947 municipios",
-      "cifra": "619",
-      "calculo": "D['GANA']['2019_11']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más votado en 619 de los 947 municipios catalanes,",
-      "cifra": "947",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "municipios catalanes, Junts en 241 y el PSC en 75. En julio",
-      "cifra": "241",
-      "calculo": "D['GANA']['2019_11']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Junts en 241 y el PSC en 75. En julio de 2023, el",
-      "cifra": "75",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "julio de 2023, el PSC ganó en 462, Junts en 295 y ERC",
-      "cifra": "462",
-      "calculo": "D['GANA']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "PSC ganó en 462, Junts en 295 y ERC en 159. En otros",
-      "cifra": "295",
-      "calculo": "D['GANA']['2023_07']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "462, Junts en 295 y ERC en 159. En otros 15, los dos",
-      "cifra": "159",
-      "calculo": "D['GANA']['2023_07']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "295 y ERC en 159. En otros 15, los dos primeros empataron",
-      "cifra": "15",
-      "calculo": "D['GANA']['2023_07']['EMPATE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "El PSC pasó del 20,7 % al 34,8 % de los votos,",
-      "cifra": "20,7",
-      "calculo": "D['A19']['pct']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "El PSC pasó del 20,7 % al 34,8 % de los votos, 14,1",
-      "cifra": "34,8",
-      "calculo": "D['A23']['pct']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "% al 34,8 % de los votos, 14,1 puntos más, con 422.546",
-      "cifra": "14,1",
-      "calculo": "D['DPSC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "votos, 14,1 puntos más, con 422.546 votos más pese a que",
-      "cifra": "422.546",
-      "calculo": "D['DPSC_VOTOS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "la participación bajó del 72,1 % al 65,4 %. ERC cayó",
-      "cifra": "72,1",
-      "calculo": "D['A19']['part']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "participación bajó del 72,1 % al 65,4 %. ERC cayó del 22,7",
-      "cifra": "65,4",
-      "calculo": "D['A23']['part']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "% al 65,4 %. ERC cayó del 22,7 % al 13,3 %, Junts del",
-      "cifra": "22,7",
-      "calculo": "D['A19']['pct']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "%. ERC cayó del 22,7 % al 13,3 %, Junts del 13,8 %",
-      "cifra": "13,3",
-      "calculo": "D['A23']['pct']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "22,7 % al 13,3 %, Junts del 13,8 % al 11,3 % y la CUP",
-      "cifra": "13,8",
-      "calculo": "D['A19']['pct']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "13,3 %, Junts del 13,8 % al 11,3 % y la CUP del 6,4 %",
-      "cifra": "11,3",
-      "calculo": "D['A23']['pct']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "% al 11,3 % y la CUP del 6,4 % al 2,8 %. De los 477",
-      "cifra": "6,4",
-      "calculo": "D['A19']['pct']['CUP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "11,3 % y la CUP del 6,4 % al 2,8 %. De los 477 municipios",
-      "cifra": "2,8",
-      "calculo": "D['A23']['pct']['CUP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "del 6,4 % al 2,8 %. De los 477 municipios que ERC dejó",
-      "cifra": "477",
-      "calculo": "D['ERC_PIERDE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "municipios que ERC dejó de ganar, 351 fueron para el PSC y",
-      "cifra": "351",
-      "calculo": "D['ERC_PSC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "351 fueron para el PSC y 105 para Junts. El PSC conservó",
-      "cifra": "105",
-      "calculo": "D['ERC_JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Junts. El PSC conservó los 75 que ya tenía.",
-      "cifra": "75",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "la CUP tenían en 2019 el 42,9 % de los votos catalanes;",
-      "cifra": "42,9",
-      "calculo": "D['IND']['2019_11']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "votos catalanes; en 2023, el 27,4 %. El PSC subió en 942",
-      "cifra": "27,4",
-      "calculo": "D['IND']['2023_07']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "el 27,4 %. El PSC subió en 942 de los 947 municipios,",
-      "cifra": "942",
-      "calculo": "D['PSC_SUBE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "El PSC subió en 942 de los 947 municipios, y en 43",
-      "cifra": "947",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "patron"
-    },
-    {
-      "texto": "los 947 municipios, y en 43 lo hizo más de 20 puntos.",
-      "cifra": "43",
-      "calculo": "D['PSC_MAS20']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "geografías. El PSC ganó en 66 de los 68 municipios",
-      "cifra": "66",
-      "calculo": "D['GRANDES_PSC']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "El PSC ganó en 66 de los 68 municipios de más de",
-      "cifra": "68",
-      "calculo": "D['GRANDES']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "en cambio, Junts ganó en 218 de 481, ERC en 124 y",
-      "cifra": "218",
-      "calculo": "D['TT']['Menos de 1.000']['g23']['JUNTS']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "cambio, Junts ganó en 218 de 481, ERC en 124 y el PSC",
-      "cifra": "481",
-      "calculo": "D['TT']['Menos de 1.000']['n']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "ganó en 218 de 481, ERC en 124 y el PSC en 110. Como",
-      "cifra": "124",
-      "calculo": "D['TT']['Menos de 1.000']['g23']['ERC']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "481, ERC en 124 y el PSC en 110. Como en los pueblos",
-      "cifra": "110",
-      "calculo": "D['TT']['Menos de 1.000']['g23']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "ganados por el PSC suman el 93,7 % de la población catalana,",
-      "cifra": "93,7",
-      "calculo": "D['POB']['PSOE']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "catalana, y los de Junts, el 4,4 %: más superficie en",
-      "cifra": "4,4",
-      "calculo": "D['POB']['JUNTS']",
-      "_donde": "patron"
-    },
-    {
-      "texto": "Junts y la CUP sumaron el 52,7 % en 2023, frente al",
-      "cifra": "52,7",
-      "calculo": "D['TT']['Menos de 1.000']['ind23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "52,7 % en 2023, frente al 73,8 % de 2019, y el PSC",
-      "cifra": "73,8",
-      "calculo": "D['TT']['Menos de 1.000']['ind19']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "de 2019, y el PSC sacó el 22,0 %. En las ciudades de",
-      "cifra": "22,0",
-      "calculo": "D['TT']['Menos de 1.000']['psc23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "100.000, el PSC llegó al 36,2 % y los tres partidos",
-      "cifra": "36,2",
-      "calculo": "D['TT']['Más de 100.000']['psc23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "independentistas se quedaron en el 23,0 %. El PSC subió y los",
-      "cifra": "23,0",
-      "calculo": "D['TT']['Más de 100.000']['ind23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "2023, el PSC ganó en las cuatro. En Barcelona sacó el",
-      "cifra": "cuatro",
-      "calculo": "sum(1 for c in D['CAP'].values() if c['g23']=='PSOE')",
-      "_donde": "dato"
-    },
-    {
-      "texto": "cuatro. En Barcelona sacó el 33,4 %, frente al 17,0 %",
-      "cifra": "33,4",
-      "calculo": "D['CAP']['08019']['psoe23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "sacó el 33,4 %, frente al 17,0 % de Sumar y el 16,0",
-      "cifra": "17,0",
-      "calculo": "D['CAP']['08019']['sumar23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "frente al 17,0 % de Sumar y el 16,0 % del PP; ERC, que había",
-      "cifra": "16,0",
-      "calculo": "D['CAP']['08019']['pp23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "ERC, que había ganado con el 21,1 % en 2019, se quedó",
-      "cifra": "21,1",
-      "calculo": "D['CAP']['08019']['erc19']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "% en 2019, se quedó en el 12,3 %. En Girona, el PSC",
-      "cifra": "12,3",
-      "calculo": "D['CAP']['08019']['erc23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Girona, el PSC ganó con el 29,6 % y Junts sacó el 19,2",
-      "cifra": "29,6",
-      "calculo": "D['CAP']['17079']['psoe23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el 29,6 % y Junts sacó el 19,2 %. Lo contamos barrio",
-      "cifra": "19,2",
-      "calculo": "D['CAP']['17079']['junts23']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "fue el más votado en las cuatro. En 2019 había ganado",
-      "cifra": "cuatro",
-      "calculo": "sum(1 for v in D['PR'].values() if max(v['2023_07'],key=v['2023_07'].get)=='PSOE')",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Tarragona, y el PSC, por 0,7 puntos, en Barcelona.",
-      "cifra": "0,7",
-      "calculo": "D['PR']['08']['2019_11']['PSOE']-D['PR']['08']['2019_11']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más que nadie en Barcelona (197 de 311) y en Tarragona",
-      "cifra": "197",
-      "calculo": "D['PRG']['08']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "nadie en Barcelona (197 de 311) y en Tarragona (109",
-      "cifra": "311",
-      "calculo": "D['PRN']['08']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "(197 de 311) y en Tarragona (109 de 184). En Girona ganó",
-      "cifra": "109",
-      "calculo": "D['PRG']['43']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "311) y en Tarragona (109 de 184). En Girona ganó en",
-      "cifra": "184",
-      "calculo": "D['PRN']['43']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Girona ganó en más Junts: en 110 de 221, frente a 81",
-      "cifra": "110",
-      "calculo": "D['PRG']['17']['2023_07']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "ganó en más Junts: en 110 de 221, frente a 81 del PSC.",
-      "cifra": "221",
-      "calculo": "D['PRN']['17']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Junts: en 110 de 221, frente a 81 del PSC. Y en Lleida,",
-      "cifra": "81",
-      "calculo": "D['PRG']['17']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "en Lleida, también Junts: 87 de 231, frente a 75",
-      "cifra": "87",
-      "calculo": "D['PRG']['25']['2023_07']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Lleida, también Junts: 87 de 231, frente a 75 del PSC",
-      "cifra": "231",
-      "calculo": "D['PRN']['25']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Junts: 87 de 231, frente a 75 del PSC y 61 de ERC.",
-      "cifra": "75",
-      "calculo": "D['PRG']['25']['2023_07']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "231, frente a 75 del PSC y 61 de ERC.",
-      "cifra": "61",
-      "calculo": "D['PRG']['25']['2023_07']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "En 129 municipios catalanes,",
-      "cifra": "129",
-      "calculo": "D['AJ2']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "dos puntos en 2023, y en 232, menos de diez votos,",
-      "cifra": "232",
-      "calculo": "D['AJ10']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "todos pueblos pequeños. En 15, los dos primeros sacaron",
-      "cifra": "15",
-      "calculo": "D['GANA']['2023_07']['EMPATE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "exactamente los mismos votos: en siete, el PSC y ERC, como",
-      "cifra": "siete",
-      "calculo": "D['EMP23']['PSOE-ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Bràfim, en Tarragona; en cuatro, ERC y Junts, y en otros",
-      "cifra": "cuatro",
-      "calculo": "D['EMP23']['ERC-JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "cuatro, ERC y Junts, y en otros cuatro, Junts y el PSC o Sumar.",
-      "cifra": "cuatro",
-      "calculo": "D['EMP23']['SUMAR-JUNTS']+D['EMP23']['PSOE-JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Vic: Junts ganó al PSC por 289 votos, 1,8 puntos. De",
-      "cifra": "289",
-      "calculo": "D['VIC'][1]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "ganó al PSC por 289 votos, 1,8 puntos. De los municipios",
-      "cifra": "1,8",
-      "calculo": "D['VIC'][2]",
-      "_donde": "dato"
-    },
-    {
-      "texto": "más de 10.000 habitantes, seis se decidieron por menos",
-      "cifra": "seis",
-      "calculo": "len(D['AJG'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "reparto central da al PSC 17 de los 48 diputados",
-      "cifra": "17",
-      "calculo": "D['E29']['PSOE']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "central da al PSC 17 de los 48 diputados catalanes,",
-      "cifra": "48",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "dato"
-    },
-    {
-      "texto": "menos que en 2023; a ERC, 11, 4 más; a Junts, 6;",
-      "cifra": "11",
-      "calculo": "D['E29']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "menos que en 2023; a ERC, 11, 4 más; a Junts, 6; al",
-      "cifra": "4",
-      "calculo": "D['E29']['ERC']-D['E23']['ERC']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "ERC, 11, 4 más; a Junts, 6; al PP, 6; a Vox, 6,",
-      "cifra": "6",
-      "calculo": "D['E29']['JUNTS']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "4 más; a Junts, 6; al PP, 6; a Vox, 6, y a Sumar,",
-      "cifra": "6",
-      "calculo": "D['E29']['PP']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Junts, 6; al PP, 6; a Vox, 6, y a Sumar, 2, cinco",
-      "cifra": "6",
-      "calculo": "D['E29']['VOX']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "PP, 6; a Vox, 6, y a Sumar, 2, cinco menos. La CUP",
-      "cifra": "2",
-      "calculo": "D['E29']['SUMAR']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "6; a Vox, 6, y a Sumar, 2, cinco menos. La CUP no tiene",
-      "cifra": "cinco",
-      "calculo": "D['E23']['SUMAR']-D['E29']['SUMAR']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el reparto central. En las cuatro provincias, el PSC es",
-      "cifra": "cuatro",
-      "calculo": "len(D['PRN'])",
-      "_donde": "dato"
-    },
-    {
-      "texto": "simulaciones: en Barcelona, en el 94 %; en Lleida, en el",
-      "cifra": "94",
-      "calculo": "D['P1']['08']*100",
-      "_donde": "dato"
-    },
-    {
-      "texto": "el 94 %; en Lleida, en el 62 %.",
-      "cifra": "62",
-      "calculo": "D['P1']['25']*100",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Cuatro provincias: el PSC gana",
-      "cifra": "Cuatro",
-      "calculo": "len(D['PRN'])",
-      "_donde": "intertítulo"
-    },
-    {
-      "texto": "ERC pasó de ganar en 619 municipios a ganar en",
-      "cifra": "619",
-      "calculo": "D['GANA']['2019_11']['ERC']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "619 municipios a ganar en 159; el PSC, de 75 a 462Partido",
-      "cifra": "159",
-      "calculo": "D['GANA']['2023_07']['ERC']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "ganar en 159; el PSC, de 75 a 462Partido más votado",
-      "cifra": "75",
-      "calculo": "D['GANA']['2019_11']['PSOE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "votado en cada uno de los 947 municipios de Cataluña,",
-      "cifra": "947",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PSC subió en 942 de los 947 municipiosCambio",
-      "cifra": "942",
-      "calculo": "D['PSC_SUBE']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PSC subió en 942 de los 947 municipiosCambio del",
-      "cifra": "947",
-      "calculo": "sum(D['GANA']['2023_07'].values())",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PSC ganó en 66 de los 68 municipios",
-      "cifra": "66",
-      "calculo": "D['GRANDES_PSC']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PSC ganó en 66 de los 68 municipios de más de",
-      "cifra": "68",
-      "calculo": "D['GRANDES']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "20.000 habitantes; Junts, en 218 de los pueblos de menos",
-      "cifra": "218",
-      "calculo": "D['TT']['Menos de 1.000']['g23']['JUNTS']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "El PSC ganó en las cuatro capitales; en 2019 solo",
-      "cifra": "cuatro",
-      "calculo": "sum(1 for c in D['CAP'].values() if c['g23']=='PSOE')",
-      "_donde": "pie"
-    },
-    {
-      "texto": "PSC ganó en votos en las cuatro provincias, pero Junts",
-      "cifra": "cuatro",
-      "calculo": "sum(1 for v in D['PR'].values() if max(v['2023_07'],key=v['2023_07'].get)=='PSOE')",
-      "_donde": "pie"
-    },
-    {
-      "texto": "Seis municipios de más de",
-      "cifra": "Seis",
-      "calculo": "len(D['AJG'])",
-      "_donde": "pie"
-    },
-    {
-      "texto": "encuestas, ERC pasaría de 7 a 11 diputados catalanes",
-      "cifra": "7",
-      "calculo": "D['E23']['ERC']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "encuestas, ERC pasaría de 7 a 11 diputados catalanes",
-      "cifra": "11",
-      "calculo": "D['E29']['ERC']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "diputados catalanes y Vox, de 2 a 6Los 48 diputados",
-      "cifra": "2",
-      "calculo": "D['E23']['VOX']",
-      "_donde": "pie"
-    },
-    {
-      "texto": "catalanes y Vox, de 2 a 6Los 48 diputados de las cuatro",
-      "cifra": "48",
-      "calculo": "sum(D['ESC26'].values())",
-      "_donde": "pie"
-    },
-    {
-      "texto": "6Los 48 diputados de las cuatro provincias catalanas:",
-      "cifra": "cuatro",
-      "calculo": "len(D['PRN'])",
-      "_donde": "pie"
-    }
-  ],
-  "externas": [],
-  "ignorar": [
-    {
-      "texto": "los 68 municipios de más de 20.000 habitantes y en las",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "29 de noviembre 48 de los 350 diputados del Congreso,",
-      "motivo": "tamaño fijo del Congreso"
-    },
-    {
-      "texto": "municipios, y en 43 lo hizo más de 20 puntos.",
-      "motivo": "umbral"
-    },
-    {
-      "texto": "los 68 municipios de más de 20.000 habitantes, todos salvo",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "Junts. En los de menos de 1.000, en cambio, Junts ganó",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "los municipios de menos de 1.000 habitantes, ERC, Junts",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "En las ciudades de más de 100.000, el PSC llegó al 36,2",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "PSC llegó al 36,2 % y los tres partidos independentistas",
-      "motivo": "número de partidos independentistas (ERC, Junts y la CUP)"
-    },
-    {
-      "texto": "2023, y en 232, menos de diez votos, casi todos pueblos",
-      "motivo": "umbral"
-    },
-    {
-      "texto": "los municipios de más de 10.000 habitantes, seis se",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "se decidieron por menos de cinco puntos, y en todos el",
-      "motivo": "umbral"
-    },
-    {
-      "texto": "tienen un margen amplio a 18 días de la votación.",
-      "motivo": "días hasta la votación"
-    },
-    {
-      "texto": "los 68 municipios de más de 20.000 habitantes; Junts, en",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "de los pueblos de menos de 1.000Municipios ganados",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "Seis municipios de más de 10.000 habitantes se decidieron",
-      "motivo": "umbral de población"
-    },
-    {
-      "texto": "decidieron en 2023 por menos de cinco puntos, todos entre",
-      "motivo": "umbral"
-    }
-  ],
-  "permitir_espana": []
+  {
+   "texto": "619 municipios a ganar en 159, y el PSC, de 75 a 462",
+   "cifra": "159",
+   "calculo": "D['GANA']['2023_07']['ERC']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "ganar en 159, y el PSC, de 75 a 462",
+   "cifra": "75",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "en 159, y el PSC, de 75 a 462",
+   "cifra": "462",
+   "calculo": "D['GANA']['2023_07']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "En 2023, el PSC ganó en 67 de los 69 municipios",
+   "cifra": "67",
+   "calculo": "D['GRANDES_PSC']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "el PSC ganó en 67 de los 69 municipios de más de",
+   "cifra": "69",
+   "calculo": "D['GRANDES']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "20.000 habitantes y en las cuatro capitales; Junts, en",
+   "cifra": "cuatro",
+   "calculo": "len(D['CAP'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "cuatro capitales; Junts, en 295 pueblos, sobre todo",
+   "cifra": "295",
+   "calculo": "D['GANA']['2023_07']['JUNTS']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "media de encuestas da al PSC 17 de los 48 diputados,",
+   "cifra": "17",
+   "calculo": "D['E29']['PSOE']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "encuestas da al PSC 17 de los 48 diputados, y a ERC,",
+   "cifra": "48",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "los 48 diputados, y a ERC, 11.",
+   "cifra": "11",
+   "calculo": "D['E29']['ERC']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "elige el 29 de noviembre 48 de los 350 diputados",
+   "cifra": "48",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Congreso, los mismos que en 2023: 32 en Barcelona, 6 en Girona,",
+   "cifra": "32",
+   "calculo": "D['ESC26']['08']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "en 2023: 32 en Barcelona, 6 en Girona, 4 en Lleida",
+   "cifra": "6",
+   "calculo": "D['ESC26']['17']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "en Barcelona, 6 en Girona, 4 en Lleida y 6 en Tarragona.",
+   "cifra": "4",
+   "calculo": "D['ESC26']['25']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "en Girona, 4 en Lleida y 6 en Tarragona. La campaña",
+   "cifra": "6",
+   "calculo": "D['ESC26']['43']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "el partido más votado en 619 de los 947 municipios",
+   "cifra": "619",
+   "calculo": "D['GANA']['2019_11']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más votado en 619 de los 947 municipios catalanes,",
+   "cifra": "947",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "municipios catalanes, Junts en 241 y el PSC en 75. En julio",
+   "cifra": "241",
+   "calculo": "D['GANA']['2019_11']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Junts en 241 y el PSC en 75. En julio de 2023, el",
+   "cifra": "75",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "julio de 2023, el PSC ganó en 462, Junts en 295 y ERC",
+   "cifra": "462",
+   "calculo": "D['GANA']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSC ganó en 462, Junts en 295 y ERC en 159. En otros",
+   "cifra": "295",
+   "calculo": "D['GANA']['2023_07']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "462, Junts en 295 y ERC en 159. En otros 15, los dos",
+   "cifra": "159",
+   "calculo": "D['GANA']['2023_07']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "295 y ERC en 159. En otros 15, los dos primeros empataron",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['EMPATE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El PSC pasó del 20,7 % al 34,8 % de los votos,",
+   "cifra": "20,7",
+   "calculo": "D['A19']['pct']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El PSC pasó del 20,7 % al 34,8 % de los votos, 14,1",
+   "cifra": "34,8",
+   "calculo": "D['A23']['pct']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% al 34,8 % de los votos, 14,1 puntos más, con 422.546",
+   "cifra": "14,1",
+   "calculo": "D['DPSC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "votos, 14,1 puntos más, con 422.546 votos más pese a que",
+   "cifra": "422.546",
+   "calculo": "D['DPSC_VOTOS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la participación bajó del 72,1 % al 65,4 %. ERC cayó",
+   "cifra": "72,1",
+   "calculo": "D['A19']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "participación bajó del 72,1 % al 65,4 %. ERC cayó del 22,7",
+   "cifra": "65,4",
+   "calculo": "D['A23']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% al 65,4 %. ERC cayó del 22,7 % al 13,3 %, Junts del",
+   "cifra": "22,7",
+   "calculo": "D['A19']['pct']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%. ERC cayó del 22,7 % al 13,3 %, Junts del 13,8 %",
+   "cifra": "13,3",
+   "calculo": "D['A23']['pct']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "22,7 % al 13,3 %, Junts del 13,8 % al 11,3 % y la CUP",
+   "cifra": "13,8",
+   "calculo": "D['A19']['pct']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "13,3 %, Junts del 13,8 % al 11,3 % y la CUP del 6,4 %",
+   "cifra": "11,3",
+   "calculo": "D['A23']['pct']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% al 11,3 % y la CUP del 6,4 % al 2,8 %. De los 477",
+   "cifra": "6,4",
+   "calculo": "D['A19']['pct']['CUP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "11,3 % y la CUP del 6,4 % al 2,8 %. De los 477 municipios",
+   "cifra": "2,8",
+   "calculo": "D['A23']['pct']['CUP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del 6,4 % al 2,8 %. De los 477 municipios que ERC dejó",
+   "cifra": "477",
+   "calculo": "D['ERC_PIERDE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "municipios que ERC dejó de ganar, 351 fueron para el PSC y",
+   "cifra": "351",
+   "calculo": "D['ERC_PSC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "351 fueron para el PSC y 105 para Junts. El PSC conservó",
+   "cifra": "105",
+   "calculo": "D['ERC_JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Junts. El PSC conservó los 75 que ya tenía.",
+   "cifra": "75",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la CUP tenían en 2019 el 42,9 % de los votos catalanes;",
+   "cifra": "42,9",
+   "calculo": "D['IND']['2019_11']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "votos catalanes; en 2023, el 27,4 %. El PSC subió en 942",
+   "cifra": "27,4",
+   "calculo": "D['IND']['2023_07']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "el 27,4 %. El PSC subió en 942 de los 947 municipios,",
+   "cifra": "942",
+   "calculo": "D['PSC_SUBE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "El PSC subió en 942 de los 947 municipios, y en 43",
+   "cifra": "947",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "patron"
+  },
+  {
+   "texto": "los 947 municipios, y en 43 lo hizo más de 20 puntos.",
+   "cifra": "43",
+   "calculo": "D['PSC_MAS20']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "geografías. El PSC ganó en 67 de los 69 municipios",
+   "cifra": "67",
+   "calculo": "D['GRANDES_PSC']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "El PSC ganó en 67 de los 69 municipios de más de",
+   "cifra": "69",
+   "calculo": "D['GRANDES']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "en cambio, Junts ganó en 217 de 480, ERC en 125 y",
+   "cifra": "217",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['JUNTS']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "cambio, Junts ganó en 217 de 480, ERC en 125 y el PSC",
+   "cifra": "480",
+   "calculo": "D['TT']['Menos de 1.000']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "ganó en 217 de 480, ERC en 125 y el PSC en 109. Como",
+   "cifra": "125",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['ERC']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "480, ERC en 125 y el PSC en 109. Como en los pueblos",
+   "cifra": "109",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "ganados por el PSC suman el 93,7 % de la población catalana,",
+   "cifra": "93,7",
+   "calculo": "D['POB']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "catalana, y los de Junts, el 4,4 %: más superficie en",
+   "cifra": "4,4",
+   "calculo": "D['POB']['JUNTS']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Junts y la CUP sumaron el 52,7 % en 2023, frente al",
+   "cifra": "52,7",
+   "calculo": "D['TT']['Menos de 1.000']['ind23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "52,7 % en 2023, frente al 73,8 % de 2019, y el PSC",
+   "cifra": "73,8",
+   "calculo": "D['TT']['Menos de 1.000']['ind19']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de 2019, y el PSC sacó el 22,1 %. En las ciudades de",
+   "cifra": "22,1",
+   "calculo": "D['TT']['Menos de 1.000']['psc23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "100.000, el PSC llegó al 36,2 % y los tres partidos",
+   "cifra": "36,2",
+   "calculo": "D['TT']['Más de 100.000']['psc23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "independentistas se quedaron en el 23,0 %. El PSC subió y los",
+   "cifra": "23,0",
+   "calculo": "D['TT']['Más de 100.000']['ind23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "2023, el PSC ganó en las cuatro. En Barcelona sacó el",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for c in D['CAP'].values() if c['g23']=='PSOE')",
+   "_donde": "dato"
+  },
+  {
+   "texto": "cuatro. En Barcelona sacó el 33,4 %, frente al 17,0 %",
+   "cifra": "33,4",
+   "calculo": "D['CAP']['08019']['psoe23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 33,4 %, frente al 17,0 % de Sumar y el 16,0",
+   "cifra": "17,0",
+   "calculo": "D['CAP']['08019']['sumar23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "frente al 17,0 % de Sumar y el 16,0 % del PP; ERC, que había",
+   "cifra": "16,0",
+   "calculo": "D['CAP']['08019']['pp23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ERC, que había ganado con el 21,1 % en 2019, se quedó",
+   "cifra": "21,1",
+   "calculo": "D['CAP']['08019']['erc19']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% en 2019, se quedó en el 12,3 %. En Girona, el PSC",
+   "cifra": "12,3",
+   "calculo": "D['CAP']['08019']['erc23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Girona, el PSC ganó con el 29,6 % y Junts sacó el 19,2",
+   "cifra": "29,6",
+   "calculo": "D['CAP']['17079']['psoe23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 29,6 % y Junts sacó el 19,2 %. Lo contamos barrio",
+   "cifra": "19,2",
+   "calculo": "D['CAP']['17079']['junts23']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue el más votado en las cuatro. En 2019 había ganado",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for v in D['PR'].values() if max(v['2023_07'],key=v['2023_07'].get)=='PSOE')",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Tarragona, y el PSC, por 0,7 puntos, en Barcelona.",
+   "cifra": "0,7",
+   "calculo": "D['PR']['08']['2019_11']['PSOE']-D['PR']['08']['2019_11']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más que nadie en Barcelona (197 de 311) y en Tarragona",
+   "cifra": "197",
+   "calculo": "D['PRG']['08']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "nadie en Barcelona (197 de 311) y en Tarragona (109",
+   "cifra": "311",
+   "calculo": "D['PRN']['08']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(197 de 311) y en Tarragona (109 de 184). En Girona ganó",
+   "cifra": "109",
+   "calculo": "D['PRG']['43']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "311) y en Tarragona (109 de 184). En Girona ganó en",
+   "cifra": "184",
+   "calculo": "D['PRN']['43']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Girona ganó en más Junts: en 110 de 221, frente a 81",
+   "cifra": "110",
+   "calculo": "D['PRG']['17']['2023_07']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó en más Junts: en 110 de 221, frente a 81 del PSC.",
+   "cifra": "221",
+   "calculo": "D['PRN']['17']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Junts: en 110 de 221, frente a 81 del PSC. Y en Lleida,",
+   "cifra": "81",
+   "calculo": "D['PRG']['17']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en Lleida, también Junts: 87 de 231, frente a 75",
+   "cifra": "87",
+   "calculo": "D['PRG']['25']['2023_07']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Lleida, también Junts: 87 de 231, frente a 75 del PSC",
+   "cifra": "231",
+   "calculo": "D['PRN']['25']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Junts: 87 de 231, frente a 75 del PSC y 61 de ERC.",
+   "cifra": "75",
+   "calculo": "D['PRG']['25']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "231, frente a 75 del PSC y 61 de ERC.",
+   "cifra": "61",
+   "calculo": "D['PRG']['25']['2023_07']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En 129 municipios catalanes,",
+   "cifra": "129",
+   "calculo": "D['AJ2']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "dos puntos en 2023, y en 232, menos de diez votos,",
+   "cifra": "232",
+   "calculo": "D['AJ10']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "todos pueblos pequeños. En 15, los dos primeros sacaron",
+   "cifra": "15",
+   "calculo": "D['GANA']['2023_07']['EMPATE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "exactamente los mismos votos: en siete, el PSC y ERC, como",
+   "cifra": "siete",
+   "calculo": "D['EMP23']['PSOE-ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Bràfim, en Tarragona; en cuatro, ERC y Junts, y en otros",
+   "cifra": "cuatro",
+   "calculo": "D['EMP23']['ERC-JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "cuatro, ERC y Junts, y en otros cuatro, Junts y el PSC o Sumar.",
+   "cifra": "cuatro",
+   "calculo": "D['EMP23']['SUMAR-JUNTS']+D['EMP23']['PSOE-JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Vic: Junts ganó al PSC por 289 votos, 1,8 puntos. De",
+   "cifra": "289",
+   "calculo": "D['VIC'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó al PSC por 289 votos, 1,8 puntos. De los municipios",
+   "cifra": "1,8",
+   "calculo": "D['VIC'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más de 10.000 habitantes, seis se decidieron por menos",
+   "cifra": "seis",
+   "calculo": "len(D['AJG'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "reparto central da al PSC 17 de los 48 diputados",
+   "cifra": "17",
+   "calculo": "D['E29']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "central da al PSC 17 de los 48 diputados catalanes,",
+   "cifra": "48",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "dato"
+  },
+  {
+   "texto": "menos que en 2023; a ERC, 11, 4 más; a Junts, 6;",
+   "cifra": "11",
+   "calculo": "D['E29']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "menos que en 2023; a ERC, 11, 4 más; a Junts, 6; al",
+   "cifra": "4",
+   "calculo": "D['E29']['ERC']-D['E23']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ERC, 11, 4 más; a Junts, 6; al PP, 6; a Vox, 6,",
+   "cifra": "6",
+   "calculo": "D['E29']['JUNTS']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "4 más; a Junts, 6; al PP, 6; a Vox, 6, y a Sumar,",
+   "cifra": "6",
+   "calculo": "D['E29']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Junts, 6; al PP, 6; a Vox, 6, y a Sumar, 2, cinco",
+   "cifra": "6",
+   "calculo": "D['E29']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP, 6; a Vox, 6, y a Sumar, 2, cinco menos. La CUP",
+   "cifra": "2",
+   "calculo": "D['E29']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "6; a Vox, 6, y a Sumar, 2, cinco menos. La CUP no tiene",
+   "cifra": "cinco",
+   "calculo": "D['E23']['SUMAR']-D['E29']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el reparto central. En las cuatro provincias, el PSC es",
+   "cifra": "cuatro",
+   "calculo": "len(D['PRN'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "simulaciones: en Barcelona, en el 94 %; en Lleida, en el",
+   "cifra": "94",
+   "calculo": "D['P1']['08']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 94 %; en Lleida, en el 62 %.",
+   "cifra": "62",
+   "calculo": "D['P1']['25']*100",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Cuatro provincias: el PSC gana",
+   "cifra": "Cuatro",
+   "calculo": "len(D['PRN'])",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "ERC pasó de ganar en 619 municipios a ganar en",
+   "cifra": "619",
+   "calculo": "D['GANA']['2019_11']['ERC']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "619 municipios a ganar en 159; el PSC, de 75 a 462Partido",
+   "cifra": "159",
+   "calculo": "D['GANA']['2023_07']['ERC']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "ganar en 159; el PSC, de 75 a 462Partido más votado",
+   "cifra": "75",
+   "calculo": "D['GANA']['2019_11']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "votado en cada uno de los 947 municipios de Cataluña,",
+   "cifra": "947",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSC subió en 942 de los 947 municipiosCambio",
+   "cifra": "942",
+   "calculo": "D['PSC_SUBE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSC subió en 942 de los 947 municipiosCambio del",
+   "cifra": "947",
+   "calculo": "sum(D['GANA']['2023_07'].values())",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSC ganó en 67 de los 69 municipios",
+   "cifra": "67",
+   "calculo": "D['GRANDES_PSC']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSC ganó en 67 de los 69 municipios de más de",
+   "cifra": "69",
+   "calculo": "D['GRANDES']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "20.000 habitantes; Junts, en 217 de los pueblos de menos",
+   "cifra": "217",
+   "calculo": "D['TT']['Menos de 1.000']['g23']['JUNTS']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSC ganó en las cuatro capitales; en 2019 solo",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for c in D['CAP'].values() if c['g23']=='PSOE')",
+   "_donde": "pie"
+  },
+  {
+   "texto": "PSC ganó en votos en las cuatro provincias, pero Junts",
+   "cifra": "cuatro",
+   "calculo": "sum(1 for v in D['PR'].values() if max(v['2023_07'],key=v['2023_07'].get)=='PSOE')",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Seis municipios de más de",
+   "cifra": "Seis",
+   "calculo": "len(D['AJG'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "encuestas, ERC pasaría de 7 a 11 diputados catalanes",
+   "cifra": "7",
+   "calculo": "D['E23']['ERC']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "encuestas, ERC pasaría de 7 a 11 diputados catalanes",
+   "cifra": "11",
+   "calculo": "D['E29']['ERC']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "diputados catalanes y Vox, de 2 a 6Los 48 diputados",
+   "cifra": "2",
+   "calculo": "D['E23']['VOX']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "catalanes y Vox, de 2 a 6Los 48 diputados de las cuatro",
+   "cifra": "48",
+   "calculo": "sum(D['ESC26'].values())",
+   "_donde": "pie"
+  },
+  {
+   "texto": "6Los 48 diputados de las cuatro provincias catalanas:",
+   "cifra": "cuatro",
+   "calculo": "len(D['PRN'])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "los 69 municipios de más de 20.000 habitantes y en las",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "29 de noviembre 48 de los 350 diputados del Congreso,",
+   "motivo": "tamaño fijo del Congreso"
+  },
+  {
+   "texto": "municipios, y en 43 lo hizo más de 20 puntos.",
+   "motivo": "umbral"
+  },
+  {
+   "texto": "los 69 municipios de más de 20.000 habitantes, todos salvo",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Junts. En los de menos de 1.000, en cambio, Junts ganó",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "los municipios de menos de 1.000 habitantes, ERC, Junts",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "En las ciudades de más de 100.000, el PSC llegó al 36,2",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "PSC llegó al 36,2 % y los tres partidos independentistas",
+   "motivo": "número de partidos independentistas (ERC, Junts y la CUP)"
+  },
+  {
+   "texto": "2023, y en 232, menos de diez votos, casi todos pueblos",
+   "motivo": "umbral"
+  },
+  {
+   "texto": "los municipios de más de 10.000 habitantes, seis se",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "se decidieron por menos de cinco puntos, y en todos el",
+   "motivo": "umbral"
+  },
+  {
+   "texto": "tienen un margen amplio a 18 días de la votación.",
+   "motivo": "días hasta la votación"
+  },
+  {
+   "texto": "los 69 municipios de más de 20.000 habitantes; Junts, en",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "de los pueblos de menos de 1.000Municipios ganados",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Seis municipios de más de 10.000 habitantes se decidieron",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "decidieron en 2023 por menos de cinco puntos, todos entre",
+   "motivo": "umbral"
+  }
+ ],
+ "permitir_espana": []
 }

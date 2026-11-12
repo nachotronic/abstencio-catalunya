@@ -269,6 +269,7 @@ DATOS = {
     'A19': A19, 'A23': A23, 'GANA': GANA, 'PSOE_PP': PSOE_PP, 'UP_PP': UP_PP, 'DV': DV, 'PSOE_SUBE': PSOE_SUBE, 'PP_SUBE': PP_SUBE,
     'POB': POB, 'FLS': FLS, 'TT': TT, 'NMUN': NMUN,
     'IS': {i: {y: IS[i][y]['pct'] for y in IS[i]} for i in IS}, 'ISG': ISG, 'ISN': {i: len(v) for i, v in ISLA.items()},
+    'MAO': {'pob': int(MAO.poblacion), 'margv23': int(MAO.margv2023)},
     'GC': {r.municipio: {'g19': r.g2019, 'g23': r.g2023, 'margv23': int(r.margv2023), 'pp23': R(r[f'{Y23}%PP']), 'psoe23': R(r[f'{Y23}%PSOE'])} for _, r in GC.iterrows()},
     'AJ': [[r.municipio, r.g2023, r.seg2023, R(r.marg2023), int(r.margv2023)] for _, r in AJ.iterrows()],
     'E19': E19, 'E23': E23, 'E29': E29, 'RC': RC,
