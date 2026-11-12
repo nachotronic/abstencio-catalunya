@@ -4584,6 +4584,20 @@ PIEZAS += [
         enlaces=[],
         lugar='Extremadura',
     ),
+    dict(
+        slug='mapa-electoral-baleares-29n', fecha='2026-11-12',
+        titulo='El mapa electoral de Baleares: el PSOE subió en 64 de los 67 municipios, pero pasó de ganar en nueve de las once ciudades de más de 30.000 habitantes a ganar solo en Maó', serie='29n', figura=1,
+        descripcion='El PSOE sumó 35.756 votos, pero los municipios que ganó pasaron de reunir el 78,3 % de la población al 9,2 %; Palma pasó al PP. Para el 29N, la media de encuestas da al PP tres de los 8 diputados, al PSOE tres y a Vox dos.',
+        compara='Las generales de noviembre de 2019 y julio de 2023 en los 67 municipios de las Illes Balears: el partido más votado en cada uno, los 21 que pasaron del PSOE al PP, las cuatro islas, el voto según el tamaño del municipio, las ocho ciudades más pobladas, los tres municipios de Sumar y los más ajustados; y el reparto central de la media de encuestas del 29N.',
+        limites='Son datos por municipio, no de personas: no dicen qué hizo cada votante de Ciudadanos en 2023. Un municipio pequeño pesa en el mapa lo mismo que una ciudad. Sin voto exterior. El modelo de encuestas trata Ara Més-Front Ampli como Sumar y tiene un margen amplio a 17 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas, sin voto exterior. Ganador de cada municipio con los votos de cada candidatura (en 2019, Unidas Podemos y Más País por separado); con los mismos votos entre los dos primeros, empate (Deià en 2019). Islas según el código de municipio. Población: padrón de 2023 (INE). Escaños de 2019 y 2023, los oficiales. Encuestas: reparto central del modelo de mapaelectoral.es/encuestas (la versión se indica en el gráfico). Script: actualidad/src/resumenes/mapa_baleares.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/11/12/2748183/29n-primer-asalto-pugna-entre-derecha-izquierda-por-govern-balear-2027.html', 'EFE en Última Hora, los cabezas de lista en Baleares (12-11-2026)'),
+                 ('https://www.ultimahora.es/noticias/elecciones-29n/2026/10/26/2736393/baleares-pone-nombre-batalla-electoral-del-29n.html', 'Última Hora, las candidaturas en Baleares (26-10-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Illes Balears',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada

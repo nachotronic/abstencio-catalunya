@@ -144,4 +144,12 @@
       <news:title>El mapa electoral de Extremadura: el PSOE ganó en 276 de los 388 municipios en 2023, pero el PP ganó en ocho de las 13 ciudades de más de 10.000 habitantes</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-baleares-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>El mapa electoral de Baleares: el PSOE subió en 64 de los 67 municipios, pero pasó de ganar en nueve de las once ciudades de más de 30.000 habitantes a ganar solo en Maó</news:title>
+    </news:news>
+  </url>
 </urlset>

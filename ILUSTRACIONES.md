@@ -20,7 +20,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (91)
+## Pendientes (92)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
@@ -33,6 +33,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 | 2026-11-12 | [`mapa-electoral-aragon-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-aragon-29n/) | El mapa electoral de Aragón: el PSOE ganó en 12 de las 15 ciudades de más de 10.000 habitantes en 2019 y solo en Ejea en 2023, aunque subió en votos | primer gráfico de la pieza |
 | 2026-11-12 | [`mapa-electoral-murcia-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-murcia-29n/) | El mapa electoral de la Región de Murcia: Vox ganó en 16 municipios en 2019, Cartagena incluida, y en ninguno en 2023 | primer gráfico de la pieza |
 | 2026-11-12 | [`mapa-electoral-extremadura-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-extremadura-29n/) | El mapa electoral de Extremadura: el PSOE ganó en 276 de los 388 municipios en 2023, pero el PP ganó en ocho de las 13 ciudades de más de 10.000 habitantes | primer gráfico de la pieza |
+| 2026-11-12 | [`mapa-electoral-baleares-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-baleares-29n/) | El mapa electoral de Baleares: el PSOE subió en 64 de los 67 municipios, pero pasó de ganar en nueve de las once ciudades de más de 30.000 habitantes a ganar solo en Maó | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-cataluna-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/) | El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462 | primer gráfico de la pieza |
 | 2026-11-11 | [`mapa-electoral-madrid-29n`](https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/) | El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158 | primer gráfico de la pieza |
 | 2026-11-11 | [`renta-activacion-ingreso-minimo-vital-29n`](https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/) | El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa | primer gráfico de la pieza |

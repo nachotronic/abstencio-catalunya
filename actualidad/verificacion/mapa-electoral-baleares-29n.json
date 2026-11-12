@@ -1,0 +1,441 @@
+{
+ "pieza": "mapa-electoral-baleares-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Baleares: el PSOE subió en 64 de los 67 municipios,",
+   "cifra": "64",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "el PSOE subió en 64 de los 67 municipios, pero pasó",
+   "cifra": "67",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "municipios, pero pasó de ganar en nueve de las once ciudades",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 30.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "de ganar en nueve de las once ciudades de más de 30.000",
+   "cifra": "once",
+   "calculo": "D['TT']['Más de 30.000']['n']"
+  },
+  {
+   "texto": "El PSOE sumó 35.756 votos, pero los municipios",
+   "cifra": "35.756",
+   "calculo": "D['DV']['PSOE']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 78,3 % de la población al",
+   "cifra": "78,3",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "78,3 % de la población al 9,2 %; Palma pasó al PP.",
+   "cifra": "9,2",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "media de encuestas da al PP tres de los 8 diputados,",
+   "cifra": "tres",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "encuestas da al PP tres de los 8 diputados, al PSOE tres",
+   "cifra": "8",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "los 8 diputados, al PSOE tres y a Vox dos.",
+   "cifra": "tres",
+   "calculo": "D['E29']['PSOE']"
+  },
+  {
+   "texto": "eligen el 29 de noviembre 8 diputados. El PP repite",
+   "cifra": "8",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "y julio de 2023: pasó del 25,7 % al 30,4 % de los votos",
+   "cifra": "25,7",
+   "calculo": "D['A19']['pct']['PSOE']"
+  },
+  {
+   "texto": "2023: pasó del 25,7 % al 30,4 % de los votos a candidaturas,",
+   "cifra": "30,4",
+   "calculo": "D['A23']['pct']['PSOE']"
+  },
+  {
+   "texto": "votos a candidaturas, con 35.756 votos más, y subió en",
+   "cifra": "35.756",
+   "calculo": "D['DV']['PSOE']"
+  },
+  {
+   "texto": "35.756 votos más, y subió en 64 de los 67 municipios.",
+   "cifra": "64",
+   "calculo": "D['PSOE_SUBE']"
+  },
+  {
+   "texto": "más, y subió en 64 de los 67 municipios. Pero el",
+   "cifra": "67",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "2019 fue el más votado en 32 municipios, entre ellos",
+   "cifra": "32",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "ellos Palma; en 2023, en 10. Los municipios que",
+   "cifra": "10",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "ganó pasaron de reunir el 78,3 % de la población de",
+   "cifra": "78,3",
+   "calculo": "D['POB']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "población de las islas al 9,2 %. El PP pasó de 30",
+   "cifra": "9,2",
+   "calculo": "D['POB']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "islas al 9,2 %. El PP pasó de 30 municipios a 54, y del",
+   "cifra": "30",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "PP pasó de 30 municipios a 54, y del 23,1 % al 36,0",
+   "cifra": "54",
+   "calculo": "D['GANA']['2023_07']['PP']"
+  },
+  {
+   "texto": "30 municipios a 54, y del 23,1 % al 36,0 %, con 75.101",
+   "cifra": "23,1",
+   "calculo": "D['A19']['pct']['PP']"
+  },
+  {
+   "texto": "municipios a 54, y del 23,1 % al 36,0 %, con 75.101 votos",
+   "cifra": "36,0",
+   "calculo": "D['A23']['pct']['PP']"
+  },
+  {
+   "texto": "del 23,1 % al 36,0 %, con 75.101 votos más.",
+   "cifra": "75.101",
+   "calculo": "D['DV']['PP']"
+  },
+  {
+   "texto": "El PP subió en los 67 municipios, en un año",
+   "cifra": "67",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "Ciudadanos, que había sacado el 7,4 % en 2019, no se presentó.",
+   "cifra": "7,4",
+   "calculo": "D['A19']['pct']['CS']"
+  },
+  {
+   "texto": "se presentó. Vox bajó del 17,3 % al 15,4 %. A la izquierda",
+   "cifra": "17,3",
+   "calculo": "D['A19']['pct']['VOX']"
+  },
+  {
+   "texto": "presentó. Vox bajó del 17,3 % al 15,4 %. A la izquierda del",
+   "cifra": "15,4",
+   "calculo": "D['A23']['pct']['VOX']"
+  },
+  {
+   "texto": "Más País habían sumado el 20,7 % en 2019; Sumar sacó",
+   "cifra": "20,7",
+   "calculo": "D['A19']['pct']['UP'] + D['A19']['pct']['MP']"
+  },
+  {
+   "texto": "% en 2019; Sumar sacó el 16,7 % en 2023. La participación",
+   "cifra": "16,7",
+   "calculo": "D['A23']['pct']['SUMAR']"
+  },
+  {
+   "texto": "La participación subió del 58,7 % al 63,6 %.",
+   "cifra": "58,7",
+   "calculo": "D['A19']['part']"
+  },
+  {
+   "texto": "participación subió del 58,7 % al 63,6 %.",
+   "cifra": "63,6",
+   "calculo": "D['A23']['part']"
+  },
+  {
+   "texto": "De los 32 municipios del PSOE",
+   "cifra": "32",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "municipios del PSOE en 2019, 21 pasaron al PP, y ninguno",
+   "cifra": "21",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "camino contrario. En esos 21, el PSOE subió del 26,4",
+   "cifra": "21",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "esos 21, el PSOE subió del 26,4 % al 30,8 %, pero el",
+   "cifra": "26,4",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió del 26,4 % al 30,8 %, pero el PP subió",
+   "cifra": "30,8",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "pero el PP subió más, del 21,6 % al 35,4 %, mientras",
+   "cifra": "21,6",
+   "calculo": "D['FLS']['2019_11']['PP']"
+  },
+  {
+   "texto": "subió más, del 21,6 % al 35,4 %, mientras desaparecía",
+   "cifra": "35,4",
+   "calculo": "D['FLS']['2023_07']['PP']"
+  },
+  {
+   "texto": "que allí había sacado el 8,0 %. De los 4 municipios",
+   "cifra": "8,0",
+   "calculo": "D['FLS']['2019_11']['CS']"
+  },
+  {
+   "texto": "había sacado el 8,0 %. De los 4 municipios de Unidas",
+   "cifra": "4",
+   "calculo": "D['GANA']['2019_11']['UP']"
+  },
+  {
+   "texto": "de Unidas Podemos en 2019, tres pasaron al PP y Esporles,",
+   "cifra": "tres",
+   "calculo": "D['UP_PP']"
+  },
+  {
+   "texto": "fue el más votado en las cuatro islas; en 2023, el PP.",
+   "cifra": "cuatro",
+   "calculo": "len(D['ISN'])"
+  },
+  {
+   "texto": "Eivissa, el PP ganó en 2023 los 5 municipios, y también",
+   "cifra": "5",
+   "calculo": "D['ISN']['Eivissa']"
+  },
+  {
+   "texto": "En Menorca, el PP pasó de 4 a 5 de los 8 municipios,",
+   "cifra": "4",
+   "calculo": "D['ISG']['Menorca']['2019_11']['PP']"
+  },
+  {
+   "texto": "Menorca, el PP pasó de 4 a 5 de los 8 municipios,",
+   "cifra": "5",
+   "calculo": "D['ISG']['Menorca']['2023_07']['PP']"
+  },
+  {
+   "texto": "el PP pasó de 4 a 5 de los 8 municipios, y el PSOE",
+   "cifra": "8",
+   "calculo": "D['ISN']['Menorca']"
+  },
+  {
+   "texto": "municipios, y el PSOE conservó tres, entre ellos Maó; es",
+   "cifra": "tres",
+   "calculo": "D['ISG']['Menorca']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "más votó a Sumar, con el 21,0 %. En Mallorca, el PP",
+   "cifra": "21,0",
+   "calculo": "D['IS']['Menorca']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "En Mallorca, el PP pasó de 24 municipios a 43, de",
+   "cifra": "24",
+   "calculo": "D['ISG']['Mallorca']['2019_11']['PP']"
+  },
+  {
+   "texto": "PP pasó de 24 municipios a 43, de 53.",
+   "cifra": "43",
+   "calculo": "D['ISG']['Mallorca']['2023_07']['PP']"
+  },
+  {
+   "texto": "de 24 municipios a 43, de 53.",
+   "cifra": "53",
+   "calculo": "D['ISN']['Mallorca']"
+  },
+  {
+   "texto": "mayor en las ciudades. De las 11 de más de 30.000 habitantes,",
+   "cifra": "11",
+   "calculo": "D['TT']['Más de 30.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en nueve en 2019 y solo en Maó",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 30.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "solo en Maó en 2023, por 170 votos. Palma pasó del",
+   "cifra": "170",
+   "calculo": "D['GC']['Maó']['margv23']"
+  },
+  {
+   "texto": "Palma pasó del PSOE al PP por 7.658 votos: el PP sacó allí",
+   "cifra": "7.658",
+   "calculo": "D['GC']['Palma']['margv23']"
+  },
+  {
+   "texto": "votos: el PP sacó allí el 34,8 % y el PSOE, el 30,5",
+   "cifra": "34,8",
+   "calculo": "D['GC']['Palma']['pp23']"
+  },
+  {
+   "texto": "allí el 34,8 % y el PSOE, el 30,5 %. Calvià, Eivissa,",
+   "cifra": "30,5",
+   "calculo": "D['GC']['Palma']['psoe23']"
+  },
+  {
+   "texto": "el más votado en 2023 en tres municipios, los tres",
+   "cifra": "tres",
+   "calculo": "D['GANA']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "2023 en tres municipios, los tres de Mallorca: Esporles,",
+   "cifra": "tres",
+   "calculo": "D['GANA']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "Baleares en 2023: Sumar sacó 12 votos al PP. En Es Migjorn",
+   "cifra": "12",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "(Menorca), el PP ganó por 13. Los pueblos que se",
+   "cifra": "13",
+   "calculo": "D['AJ'][1][4]"
+  },
+  {
+   "texto": "el reparto central de los 8 escaños da al PP tres",
+   "cifra": "8",
+   "calculo": "sum(D['E29'].values())"
+  },
+  {
+   "texto": "de los 8 escaños da al PP tres y al PSOE tres, los",
+   "cifra": "tres",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "escaños da al PP tres y al PSOE tres, los mismos que en 2023,",
+   "cifra": "tres",
+   "calculo": "D['E29']['PP']"
+  },
+  {
+   "texto": "Los tres municipios de Sumar",
+   "cifra": "tres",
+   "calculo": "D['GANA']['2023_07']['SUMAR']"
+  },
+  {
+   "texto": "El PSOE pasó de ganar en 32 municipios a ganar en",
+   "cifra": "32",
+   "calculo": "D['GANA']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "32 municipios a ganar en 10; el PP, de 30 a 54Partido",
+   "cifra": "10",
+   "calculo": "D['GANA']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "a ganar en 10; el PP, de 30 a 54Partido más votado",
+   "cifra": "30",
+   "calculo": "D['GANA']['2019_11']['PP']"
+  },
+  {
+   "texto": "votado en cada uno de los 67 municipios de las Illes",
+   "cifra": "67",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "En los 21 municipios que pasaron",
+   "cifra": "21",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP, el PSOE subió: del 26,4 % al 30,8 %Voto al PP,",
+   "cifra": "26,4",
+   "calculo": "D['FLS']['2019_11']['PSOE']"
+  },
+  {
+   "texto": "PSOE subió: del 26,4 % al 30,8 %Voto al PP, al PSOE,",
+   "cifra": "30,8",
+   "calculo": "D['FLS']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "fue el más votado en las cuatro islas; en 2023, el PPMunicipios",
+   "cifra": "cuatro",
+   "calculo": "len(D['ISN'])"
+  },
+  {
+   "texto": "De las 11 ciudades de más de 30.000",
+   "cifra": "11",
+   "calculo": "D['TT']['Más de 30.000']['n']"
+  },
+  {
+   "texto": "habitantes, el PSOE ganó en nueve en 2019 y solo en Maó",
+   "cifra": "nueve",
+   "calculo": "D['TT']['Más de 30.000']['g19']['PSOE']"
+  },
+  {
+   "texto": "Palma pasó del PSOE al PP por 7.658 votosVoto al PP, al",
+   "cifra": "7.658",
+   "calculo": "D['GC']['Palma']['margv23']"
+  },
+  {
+   "texto": "Deià fue para Sumar por 12 votos y Es Migjorn Gran,",
+   "cifra": "12",
+   "calculo": "D['AJ'][0][4]"
+  },
+  {
+   "texto": "segundo en julio de 2023 en los ocho municipios más ajustados,",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])"
+  },
+  {
+   "texto": "se quedaría sin escañoLos 8 diputados de las Illes",
+   "cifra": "8",
+   "calculo": "sum(D['E29'].values())"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "las once ciudades de más de 30.000 habitantes a ganar solo",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "con Lucía Muñoz de número tres, según Última Hora.",
+   "motivo": "puesto en la lista (Última Hora)"
+  },
+  {
+   "texto": "ciudades. De las 11 de más de 30.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "tienen un margen amplio a 17 días de la votación.",
+   "motivo": "días hasta la votación (12 al 29 de noviembre)"
+  },
+  {
+   "texto": "las 11 ciudades de más de 30.000 habitantes, el PSOE",
+   "motivo": "umbral de población"
+  },
+  {
+   "texto": "Vox en julio de 2023 en los ocho municipios más poblados,",
+   "motivo": "filas del gráfico (los ocho más poblados)"
+  }
+ ],
+ "permitir_espana": []
+}
