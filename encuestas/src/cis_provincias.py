@@ -116,9 +116,10 @@ def _clave_cis(cod, lista):
 def titular(cod, lista_primera):
     """Coletilla del titular de /encuestas/<provincia>/ con el CIS (Nacho, 13-11-2026: «¿en el titular?»).
     Nombra a la lista que el modelo pone primera y a la que el CIS pone por delante de ella o, si es la misma, a la
-    siguiente del CIS, con sus horquillas P5-P95. Con un solo escaño, a quién se lo da el CIS. '' si no hay datos."""
+    siguiente del CIS. Devuelve (coletilla corta para el h1, frase con las horquillas P5-P95 para el subtítulo); con un
+    solo escaño, a quién se lo da el CIS. Nacho, 13-11-2026: «Recorta titulares» (las horquillas, al subtítulo)."""
     if not CIS or cod not in CIS:
-        return ''
+        return '', ''
     esc = CIS[cod]['escanos']
     inv = {}
     for p in esc:
@@ -133,16 +134,24 @@ def titular(cod, lista_primera):
     # orden del CIS: punto medio de la horquilla; a igualdad, primero la lista que el modelo pone primera
     orden = sorted((p for p in inv if esc[p][1] > 0),
                    key=lambda p: (-(esc[p][0] + esc[p][1]), p != _clave_cis(cod, lista_primera), -esc[p][1]))
+    mia = _clave_cis(cod, lista_primera)
     if len(orden) == 1:   # Ceuta y Melilla: un escaño, una sola lista con opciones en el CIS
         p = orden[0]
-        return f'el CIS da el escaño {a_(inv[p])}{etq(p)}'
-    mia = _clave_cis(cod, lista_primera)
+        if p == mia:
+            return 'el CIS también le da el escaño', f'El CIS preelectoral también da el escaño {a_(inv[p])}{etq(p)}'
+        return f'el CIS da el escaño {a_(inv[p])}{etq(p)}', f'El CIS preelectoral da el escaño {a_(inv[p])}{etq(p)}'
     otra = next(p for p in orden if p != mia)
-    if mia not in orden or (esc[otra][0] + esc[otra][1]) > (esc[mia][0] + esc[mia][1]):
+    pm = lambda q: esc[q][0] + esc[q][1] if q in esc else 0
+    if mia not in orden or pm(otra) > pm(mia):
         x, y = otra, mia
+        corta = f'el CIS da más escaños {a_(inv[otra])}{etq(otra)}'
+    elif pm(otra) == pm(mia):
+        x, y = mia, otra
+        corta = f'el CIS lo empata con {"el " if inv[otra] in ("PP", "PSOE", "PNV", "BNG") else ""}{etq(otra)}'
     else:
         x, y = mia, otra
-    return f'el CIS da {a_(inv[x])}{etq(x)} {n_esc(esc[x])} y {a_(inv[y])}{etq(y)}, {tramo(*esc[y])}'
+        corta = 'el CIS también lo pone primero'
+    return corta, f'El CIS preelectoral da {a_(inv[x])}{etq(x)} {n_esc(esc[x])} y {a_(inv[y])}{etq(y)}, {tramo(*esc[y])}'
 
 
 NOMBRE_CORTO = {'UPC': 'la Unidad del Pueblo Canario'}

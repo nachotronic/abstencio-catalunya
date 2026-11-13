@@ -41,13 +41,13 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         art = lambda l: 'el ' if l in ('PP', 'PSOE', 'PNV', 'BNG') and not (upn_pp and l == 'PP') else ''
         pp = lambda x: f'{round(x * 100)} %' if 0.01 <= x <= 0.99 else ('menos del 1 %' if x < 0.01 else 'más del 99 %')
         en_el = lambda x: 'en ' + pp(x) if x > 0.99 or x < 0.01 else 'en el ' + pp(x)   # «en más del 99 %», no «en el más del 99 %»
-        titular = f'Encuesta en {nombre}: {art(primero["lista"])}{corto(primero["lista"])} saldría primero {en_el(primero["p_primera"])} de las simulaciones'
-        cis_tit = cis_provincias.titular(cod, primero['lista'])
-        if cis_tit:   # Nacho, 13-11-2026: el CIS preelectoral también en el titular
+        titular = f'{nombre}: {art(primero["lista"])}{corto(primero["lista"])}, primero {en_el(primero["p_primera"])} de las simulaciones'
+        cis_tit, cis_det = cis_provincias.titular(cod, primero['lista'])
+        if cis_tit:   # Nacho, 13-11-2026: el CIS preelectoral también en el titular; «Recorta titulares»: horquillas al subtítulo
             titular += '; ' + cis_tit
         ent = cis_provincias.entrevistas(cod)
         cis_dek = ('' if not ent else
-                   f' Y la horquilla del CIS preelectoral, con {"solo " if ent < 300 else ""}{cis_provincias.miles(ent)} entrevistas en {nombre}'
+                   f' {cis_det}, con {"solo " if ent < 300 else ""}{cis_provincias.miles(ent)} entrevistas en {nombre}'
                    + (', una muestra muy pequeña.' if ent < 300 else '.'))
         titulo_seo = f'Encuesta {nombre} elecciones generales 2026: escaños según la media de encuestas' + (' y el CIS' if ent else '')
         reparto = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
