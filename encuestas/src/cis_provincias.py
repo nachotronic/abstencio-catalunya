@@ -142,15 +142,22 @@ def titular(cod, lista_primera):
         return f'el CIS da el escaño {a_(inv[p])}{etq(p)}', f'El CIS preelectoral da el escaño {a_(inv[p])}{etq(p)}'
     otra = next(p for p in orden if p != mia)
     pm = lambda q: esc[q][0] + esc[q][1] if q in esc else 0
+    # Editor, 13-11-2026: el CIS da horquillas, no un orden. Solo «da más» si no se solapan; idénticas, empate;
+    # solapadas pero distintas, «horquilla más alta» (por el punto medio)
     if mia not in orden or pm(otra) > pm(mia):
         x, y = otra, mia
-        corta = f'el CIS da más escaños {a_(inv[otra])}{etq(otra)}'
-    elif pm(otra) == pm(mia):
-        x, y = mia, otra
-        corta = f'el CIS lo empata con {"el " if inv[otra] in ("PP", "PSOE", "PNV", "BNG") else ""}{etq(otra)}'
     else:
         x, y = mia, otra
-        corta = 'el CIS también lo pone primero'
+    ax, ay = esc[x], esc.get(y, [0, 0])
+    art_o = 'el ' if inv[otra] in ('PP', 'PSOE', 'PNV', 'BNG') else ''
+    if ax == ay:
+        corta = f'el CIS lo empata con {art_o}{etq(otra)}'
+    elif pm(x) == pm(y):
+        corta = f'el CIS les da horquillas parecidas a él y a {art_o}{etq(otra)}'
+    elif ax[0] > ay[1]:
+        corta = 'el CIS también lo pone primero' if x == mia else f'el CIS da más escaños {a_(inv[x])}{etq(x)}'
+    else:
+        corta = 'el CIS también le da la horquilla más alta' if x == mia else f'el CIS da una horquilla más alta {a_(inv[x])}{etq(x)}'
     return corta, f'El CIS preelectoral da {a_(inv[x])}{etq(x)} {n_esc(esc[x])} y {a_(inv[y])}{etq(y)}, {tramo(*esc[y])}'
 
 
