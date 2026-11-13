@@ -170,6 +170,12 @@ def parsea(texto):
             if not firma or 'background' in vals[0]:
                 continue
             url = re.search(r'url\s*=\s*([^\s|}]+)', vals[0])
+            # fecha de la primera referencia («|date=13 November 2026»): es la de publicación del medio
+            fp = re.search(r'\|\s*date\s*=\s*(\d{1,2})\s+([A-Z][a-z]{2})[a-z]*\s+(\d{4})', vals[0])
+            try:
+                publicado = date(int(fp.group(3)), MESES[fp.group(2)], int(fp.group(1))).isoformat() if fp else ''
+            except (KeyError, ValueError):
+                publicado = ''
             casa, _, medio = firma.partition('/')
             ci, cf = fechas(vals[1], anio)
             n = re.sub(r'[^\d]', '', re.sub(r'<ref.*?(</ref>|/>)', '', vals[2]))
@@ -191,7 +197,7 @@ def parsea(texto):
                               # escaños que publica la propia encuestadora: «134» o un intervalo «132-137»
                               **{f'esc_{p}': ('' if p not in escanos else str(escanos[p][0]) if escanos[p][0] == escanos[p][1]
                                               else f'{escanos[p][0]}-{escanos[p][1]}') for p in ORDEN if p != 'OTROS'},
-                              'fuente_original': url.group(1) if url else ''})
+                              'fuente_original': url.group(1) if url else '', 'publicado': publicado})
     return filas_out
 
 
@@ -204,10 +210,11 @@ def main():
     with open(SALIDA / 'wikipedia_generales_espana.csv', 'w', newline='') as fh:
         w = csv.DictWriter(fh, fieldnames=list(wp[0])); w.writeheader(); w.writerows(wp)
     eg = [r for r in csv.DictReader(open(SALIDA / 'encuestas_limpias.csv')) if r['ambito'] == 'ESPAÑA']
-    casas = {}
+    casas, muestras = {}, {}
     for r in eg:
         f = r['campo_fin'] or (date.fromisoformat(r['publicado']) - timedelta(days=3)).isoformat()
         casas.setdefault(clave(r['encuestadora']), []).append(date.fromisoformat(f))
+        muestras.setdefault(clave(r['encuestadora']), set()).add(r['muestra'])
     desde = date.today() - timedelta(days=120)
     faltan = []
     for r in wp:
@@ -215,7 +222,10 @@ def main():
         c = clave(r['encuestadora'])
         # «IMOP» en Wikipedia es «IMOP Insights» en Electográfica: basta con que un nombre empiece por el otro
         fechas_eg = [g for k, v in casas.items() if k.startswith(c) or c.startswith(k) for g in v]
-        if f >= desde and c not in AGREGADORES | PARTIDOS_COMO_CASA and not r['reestimacion'] and not any(abs((f - g).days) <= 4 for g in fechas_eg):
+        # un «tracking» diario (SW Demoscopia, 40dB…) sale cada día con el campo un día más largo y otra muestra: la entrega
+        # que Wikipedia ya tiene y Electográfica aún no, más reciente que todas las de esa casa, falta aunque haya otra a <=4 días
+        nueva = fechas_eg and f > max(fechas_eg) and r['muestra'] and r['muestra'] not in {m for k, v in muestras.items() if k.startswith(c) or c.startswith(k) for m in v}
+        if f >= desde and c not in AGREGADORES | PARTIDOS_COMO_CASA and not r['reestimacion'] and (nueva or not any(abs((f - g).days) <= 4 for g in fechas_eg)):
             faltan.append(r)
     with open(SALIDA / 'faltan_en_electografica.csv', 'w', newline='') as fh:
         w = csv.DictWriter(fh, fieldnames=list(wp[0])); w.writeheader(); w.writerows(faltan)
