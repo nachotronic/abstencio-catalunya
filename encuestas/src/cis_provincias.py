@@ -45,6 +45,7 @@ def _carga():
 CIS, E23 = _carga()
 f1 = lambda x: f'{x:.1f}'.replace('.', ',')
 miles = lambda v: f'{v:,}'.replace(',', '.')
+tramo = lambda a, b: str(a) if a == b else f'{a}–{b}'
 
 
 def bloque(cod, nombre, rc, total, c, nom_lista):
@@ -75,23 +76,29 @@ def bloque(cod, nombre, rc, total, c, nom_lista):
         m = rc.get(s, 0)
         marca = ''
         if m < a:
-            marca = ' <small>(el CIS, más)</small>'; fuera.append((etq, a, b, m))
+            marca = ' ▲'; fuera.append((etq, a, b, m))
         elif m > b:
-            marca = ' <small>(el CIS, menos)</small>'; fuera.append((etq, a, b, m))
+            marca = ' ▼'; fuera.append((etq, a, b, m))
+        v23 = '–' if s in ('Sumar', 'Podemos') else e23.get(s, 0)   # en 2023, Podemos fue dentro de Sumar
         tr += (f'<tr><td><i class="pt" style="background:{c.color_lista(s)}"></i>{html.escape(etq)}</td>'
-               f'<td class="n">{a if a == b else f"{a}-{b}"}{marca}</td><td class="n">{m}</td><td class="n">{e23.get(s, 0)}</td></tr>')
+               f'<td class="n">{tramo(a, b)}{marca}</td><td class="n">{m}</td><td class="n">{v23}</td></tr>')
     if fuera:
         resumen = ('La horquilla del CIS no incluye el reparto central del modelo para ' + '; '.join(
-            f'{html.escape(e)} (CIS {a if a == b else f"{a}-{b}"}, modelo {m})' for e, a, b, m in fuera) + '.')
+            f'{html.escape(e)} (CIS {tramo(a, b)}, media {m})' for e, a, b, m in fuera) + '.')
     else:
         resumen = 'El reparto central del modelo cae dentro de la horquilla del CIS para todos los partidos.'
     pequena = ent < 300
     aviso = (f'<p class="propio"><b>Muestra muy pequeña: {ent} entrevistas.</b> El CIS fijó un mínimo de 50 entrevistas en Ceuta y Melilla; '
              f'con una muestra así, el error teórico es de ±{f1(err)} puntos. Es una indicación, no una medida fiable de la ciudad.</p>' if pequena else '')
+    s23 = e23.get('Sumar', 0)
+    leyenda = ('CIS: tramo del percentil 5 al 95 de escaños; ▲, el CIS da más que la media de encuestas (reparto central del modelo); ▼, menos. '
+               + (f'2023: en julio de 2023, Podemos se presentó dentro de Sumar, que sacó {s23} escaño{"" if s23 == 1 else "s"} en {html.escape(nombre)}; por eso no se comparan por separado. '
+                  if any(f[1] in ('Sumar', 'Podemos') for f in filas) else ''))
+    navarra = '; en Navarra, el PP del CIS se compara con UPN-PP del modelo y, en 2023, con UPN + PP' if cod == '31' else ''
     cambio = (f' En 2023, {html.escape(nombre)} elegía {k23} diputado{"s" if k23 > 1 else ""}; el 29N, {total}.' if k23 != total else '')
     return f"""<h2>El CIS preelectoral en {html.escape(nombre)}</h2>
 <p data-tipo="contexto">El CIS publicó el 12 de noviembre su encuesta preelectoral (estudio 3584), con una horquilla de escaños para cada partido en cada provincia: el tramo que va del percentil 5 al 95 de sus simulaciones. En {html.escape(nombre)} hizo <b>{miles(ent)} entrevistas</b>, de las 45.074 del estudio; con esa muestra, el error teórico es de ±{f1(err)} puntos. El CIS no publica el porcentaje de voto estimado por provincia.</p>
 {aviso}<p data-tipo="dato">{resumen}{cambio}</p>
-<div class="tbl"><table><thead><tr><th>Partido (nombre en el CIS)</th><th class="n">CIS (P5-P95)</th><th class="n">Modelo, central</th><th class="n">2023</th></tr></thead><tbody>{tr}</tbody></table></div>
-<p class="src">Fuente: CIS, estudio 3584, <a href="{PDF}">estimación de escaños por provincias</a> y <a href="{XLSX}">entrevistas por provincia</a>; 2023, Ministerio del Interior (D'Hondt sobre los votos oficiales). El Frente Amplio, Compromís, Ara Més-Front Ampli y la Unidad del Pueblo Canario se comparan con Sumar / Frente Amplio del modelo; ERC-Podemos, con ERC. Error teórico: la fórmula del CIS (95,5 %, p = q) con las entrevistas de la provincia. <a href="{PIEZA}">Las 52 provincias, comparadas</a>.</p>
+<div class="tbl"><table><thead><tr><th>Partido</th><th class="n">CIS</th><th class="n">Media</th><th class="n">2023</th></tr></thead><tbody>{tr}</tbody></table></div>
+<p class="src">{leyenda}Fuente: CIS, estudio 3584, <a href="{PDF}">estimación de escaños por provincias</a> y <a href="{XLSX}">entrevistas por provincia</a>; 2023, Ministerio del Interior (D'Hondt sobre los votos oficiales). El Frente Amplio, Compromís, Ara Més-Front Ampli y la Unidad del Pueblo Canario se comparan con Sumar / Frente Amplio del modelo; ERC-Podemos, con ERC{navarra}. Los partidos llevan el nombre con el que los mide el CIS. Error teórico: la fórmula del CIS (95,5 %, p = q) con las entrevistas de la provincia. <a href="{PIEZA}">Las 52 provincias, comparadas</a>.</p>
 """
