@@ -1,0 +1,231 @@
+{
+ "pieza": "debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "la media de encuestas da 4 escaños al PP y 4 al",
+   "cifra": "4",
+   "calculo": "D['M']['41']['PP']['escanos'][1]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "encuestas da 4 escaños al PP y 4 al PSOE y casi la misma",
+   "cifra": "4",
+   "calculo": "D['M']['41']['PSOE']['escanos'][1]",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "PSOE ganó en Sevilla con el 36,6 % y el PP sacó el 33,4",
+   "cifra": "36,6",
+   "calculo": "D['R']['41']['2023_07']['pct']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 36,6 % y el PP sacó el 33,4 %, casi el doble que",
+   "cifra": "33,4",
+   "calculo": "D['R']['41']['2023_07']['pct']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "que en noviembre de 2019 (17,9 %). Los escaños quedaron",
+   "cifra": "17,9",
+   "calculo": "D['R']['41']['2019_11']['pct']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%). Los escaños quedaron en 5 para el PSOE, 4 para",
+   "cifra": "5",
+   "calculo": "D['R']['41']['2023_07']['esc']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quedaron en 5 para el PSOE, 4 para el PP, 2 para Sumar",
+   "cifra": "4",
+   "calculo": "D['R']['41']['2023_07']['esc']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "para el PSOE, 4 para el PP, 2 para Sumar y 1 para",
+   "cifra": "2",
+   "calculo": "D['R']['41']['2023_07']['esc']['Sumar']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "para el PP, 2 para Sumar y 1 para Vox. La media de",
+   "cifra": "1",
+   "calculo": "D['R']['41']['2023_07']['esc']['Vox']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "media de encuestas da ahora 4 escaños al PP y 4 al",
+   "cifra": "4",
+   "calculo": "D['M']['41']['PP']['escanos'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "da ahora 4 escaños al PP y 4 al PSOE, con el mismo",
+   "cifra": "4",
+   "calculo": "D['M']['41']['PSOE']['escanos'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con el mismo voto central (27,9 %), y les da casi la",
+   "cifra": "27,9",
+   "calculo": "D['M']['41']['PP']['voto'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "probabilidad de quedar primeros: el 50,1 % de las simulaciones",
+   "cifra": "50,1",
+   "calculo": "D['M']['41']['PSOE']['p1']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "simulaciones al PSOE y el 49,5 % al PP.",
+   "cifra": "49,5",
+   "calculo": "D['M']['41']['PP']['p1']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "lista propia; la media le da 1 escaño en Sevilla.",
+   "cifra": "1",
+   "calculo": "D['M']['41']['Adelante Andalucía']['escanos'][1]",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "el PP ganó en 2023 con el 35,6 %, por delante del PSOE",
+   "cifra": "35,6",
+   "calculo": "D['R']['33']['2023_07']['pct']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%, por delante del PSOE (34,3 %), y sacó 3 de los",
+   "cifra": "34,3",
+   "calculo": "D['R']['33']['2023_07']['pct']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del PSOE (34,3 %), y sacó 3 de los 7 escaños; el",
+   "cifra": "3",
+   "calculo": "D['R']['33']['2023_07']['esc']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(34,3 %), y sacó 3 de los 7 escaños; el PSOE, 2;",
+   "cifra": "7",
+   "calculo": "D['R']['33']['2023_07']['total']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de los 7 escaños; el PSOE, 2; Sumar y Vox, uno cada",
+   "cifra": "2",
+   "calculo": "D['R']['33']['2023_07']['esc']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "uno cada uno. Vox bajó del 15,9 % de noviembre de 2019",
+   "cifra": "15,9",
+   "calculo": "D['R']['33']['2019_11']['pct']['Vox']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% de noviembre de 2019 al 12,5 %, pero mantuvo su escaño.",
+   "cifra": "12,5",
+   "calculo": "D['R']['33']['2023_07']['pct']['Vox']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de encuestas sube a Vox al 19,6 % y le da 1 escaño (entre",
+   "cifra": "19,6",
+   "calculo": "D['M']['33']['Vox']['voto'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sube a Vox al 19,6 % y le da 1 escaño (entre 1 y 2);",
+   "cifra": "1",
+   "calculo": "D['M']['33']['Vox']['escanos'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% y le da 1 escaño (entre 1 y 2); al PSOE le da",
+   "cifra": "1",
+   "calculo": "D['M']['33']['Vox']['escanos'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "le da 1 escaño (entre 1 y 2); al PSOE le da 3 y",
+   "cifra": "2",
+   "calculo": "D['M']['33']['Vox']['escanos'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(entre 1 y 2); al PSOE le da 3 y a Sumar, 0.",
+   "cifra": "3",
+   "calculo": "D['M']['33']['PSOE']['escanos'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al PSOE le da 3 y a Sumar, 0.",
+   "cifra": "0",
+   "calculo": "D['M']['33']['Sumar']['escanos'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la media de encuestas da 4 escaños al PP y 4 al",
+   "cifra": "4",
+   "calculo": "D['M']['41']['PP']['escanos'][1]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "encuestas da 4 escaños al PP y 4 al PSOE, con un 49,5",
+   "cifra": "4",
+   "calculo": "D['M']['41']['PSOE']['escanos'][1]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "al PP y 4 al PSOE, con un 49,5 % y un 50,1 % de quedar",
+   "cifra": "49,5",
+   "calculo": "D['M']['41']['PP']['p1']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "PSOE, con un 49,5 % y un 50,1 % de quedar primeroVoto",
+   "cifra": "50,1",
+   "calculo": "D['M']['41']['PSOE']['p1']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Asturias: Vox, 1 de 7 escaños, como en",
+   "cifra": "1",
+   "calculo": "D['M']['33']['Vox']['escanos'][1]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Asturias: Vox, 1 de 7 escaños, como en 2023;",
+   "cifra": "7",
+   "calculo": "D['R']['33']['2023_07']['total']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "primero es el porcentaje de las 2.000 simulaciones en que",
+   "cifra": "2.000",
+   "fuente": "https://mapaelectoral.es/encuestas/metodo-modelo.html"
+  },
+  {
+   "texto": "Dos de los cuatro no se presentan el 29N.",
+   "cifra": "cuatro",
+   "fuente": "https://www.formulatv.com/noticias/ana-pastor-debate-electoral-lasexta-psoe-pp-vox-fa-138735/"
+  },
+  {
+   "texto": "Dos de los cuatro del debate de laSexta",
+   "cifra": "cuatro",
+   "fuente": "https://www.formulatv.com/noticias/ana-pastor-debate-electoral-lasexta-psoe-pp-vox-fa-138735/"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}

@@ -131,6 +131,9 @@ def pares(filas, maximo, etiqueta, nombres, W=640, ml=110):
         out.append(f'<text x="{ml - 8}" y="{y + 22}" text-anchor="end" class="lab">{esc(nom)}</text>')
         for k, (v, op) in enumerate(((a, .38), (b, 1))):
             yy = y + 4 + k * 16
+            if v is None:   # sin dato (p. ej., no se presentó): ni barra ni cero
+                out.append(f'<text x="{ml + 2}" y="{yy + 11}">sin lista{" (" + nombres[k] + ")" if i == 0 else ""}</text>')
+                continue
             out.append(f'<rect x="{ml}" y="{yy}" width="{max(1.5, x(v) - ml):.1f}" height="13" fill="{col}" fill-opacity="{op}" rx="2">'
                        f'<title>{esc(nom)}, {esc(nombres[k])}: {n(v)}</title></rect>')
             out.append(f'<text x="{x(v) + 6:.1f}" y="{yy + 11}">{n(v)}{" (" + nombres[k] + ")" if i == 0 else ""}</text>')
