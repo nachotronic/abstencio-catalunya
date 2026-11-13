@@ -1,0 +1,3229 @@
+{
+ "fuente": "CIS, estudio 3584 (preelectoral de las generales de 2026, 7-30 de octubre de 2026). Horquillas de escaños P5-P95 por provincia: PDF 3584_estimacion (https://www.cis.es/documents/d/guest/3584_estimacion-pdf). Entrevistas por provincia: (N) de la hoja «Provincia» del Excel 3584-multi_A (https://www.cis.es/documents/d/guest/3584-multi_A-xlsx). Copiado el 13-11-2026.",
+ "provincias": {
+  "01": {
+   "nombre_cis": "Araba/Álava",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     0,
+     1
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     1
+    ],
+    "EH Bildu": [
+     1,
+     2
+    ]
+   },
+   "entrevistas": 506
+  },
+  "02": {
+   "nombre_cis": "Albacete",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 530
+  },
+  "03": {
+   "nombre_cis": "Alicante/Alacant",
+   "escanos": {
+    "PSOE": [
+     4,
+     5
+    ],
+    "PP": [
+     3,
+     4
+    ],
+    "Vox": [
+     2,
+     3
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     1,
+     2
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1358
+  },
+  "04": {
+   "nombre_cis": "Almería",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     1,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 678
+  },
+  "05": {
+   "nombre_cis": "Ávila",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 468
+  },
+  "06": {
+   "nombre_cis": "Badajoz",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 709
+  },
+  "07": {
+   "nombre_cis": "Illes Balears",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     1,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     1
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 981
+  },
+  "08": {
+   "nombre_cis": "Barcelona",
+   "escanos": {
+    "PSOE": [
+     11,
+     13
+    ],
+    "PP": [
+     3,
+     4
+    ],
+    "Vox": [
+     4,
+     5
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     2,
+     3
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     7,
+     9
+    ],
+    "Junts": [
+     1,
+     3
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 3662
+  },
+  "09": {
+   "nombre_cis": "Burgos",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 518
+  },
+  "10": {
+   "nombre_cis": "Cáceres",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 531
+  },
+  "11": {
+   "nombre_cis": "Cádiz",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     2,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     1,
+     1
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1140
+  },
+  "12": {
+   "nombre_cis": "Castellón/Castelló",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     1
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 675
+  },
+  "13": {
+   "nombre_cis": "Ciudad Real",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 594
+  },
+  "14": {
+   "nombre_cis": "Córdoba",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     1,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     1
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 780
+  },
+  "15": {
+   "nombre_cis": "A Coruña",
+   "escanos": {
+    "PSOE": [
+     2,
+     4
+    ],
+    "PP": [
+     3,
+     4
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     1,
+     2
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1097
+  },
+  "16": {
+   "nombre_cis": "Cuenca",
+   "escanos": {
+    "PSOE": [
+     1,
+     1
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 512
+  },
+  "17": {
+   "nombre_cis": "Girona",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     0,
+     1
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     1,
+     2
+    ],
+    "Junts": [
+     0,
+     1
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 691
+  },
+  "18": {
+   "nombre_cis": "Granada",
+   "escanos": {
+    "PSOE": [
+     3,
+     3
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     2,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 861
+  },
+  "19": {
+   "nombre_cis": "Guadalajara",
+   "escanos": {
+    "PSOE": [
+     1,
+     1
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 462
+  },
+  "20": {
+   "nombre_cis": "Gipuzkoa",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     0,
+     0
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     1,
+     1
+    ],
+    "EH Bildu": [
+     3,
+     3
+    ]
+   },
+   "entrevistas": 999
+  },
+  "21": {
+   "nombre_cis": "Huelva",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 600
+  },
+  "22": {
+   "nombre_cis": "Huesca",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 557
+  },
+  "23": {
+   "nombre_cis": "Jaén",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 705
+  },
+  "24": {
+   "nombre_cis": "León",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 565
+  },
+  "25": {
+   "nombre_cis": "Lleida",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     0,
+     0
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     1,
+     2
+    ],
+    "Junts": [
+     0,
+     1
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 501
+  },
+  "26": {
+   "nombre_cis": "La Rioja",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 477
+  },
+  "27": {
+   "nombre_cis": "Lugo",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 689
+  },
+  "28": {
+   "nombre_cis": "Madrid",
+   "escanos": {
+    "PSOE": [
+     12,
+     14
+    ],
+    "PP": [
+     12,
+     14
+    ],
+    "Vox": [
+     6,
+     8
+    ],
+    "Podemos": [
+     0,
+     1
+    ],
+    "Frente Amplio": [
+     4,
+     5
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 4744
+  },
+  "29": {
+   "nombre_cis": "Málaga",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     4,
+     4
+    ],
+    "Vox": [
+     2,
+     3
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     1,
+     1
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1297
+  },
+  "30": {
+   "nombre_cis": "Murcia",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     3,
+     4
+    ],
+    "Vox": [
+     2,
+     3
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     1
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1216
+  },
+  "31": {
+   "nombre_cis": "Navarra",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     1,
+     2
+    ]
+   },
+   "entrevistas": 659
+  },
+  "32": {
+   "nombre_cis": "Ourense",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 471
+  },
+  "33": {
+   "nombre_cis": "Asturias",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     1
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 999
+  },
+  "34": {
+   "nombre_cis": "Palencia",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 494
+  },
+  "35": {
+   "nombre_cis": "Las Palmas",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     2,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     1
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1033
+  },
+  "36": {
+   "nombre_cis": "Pontevedra",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     1,
+     1
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 945
+  },
+  "37": {
+   "nombre_cis": "Salamanca",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 504
+  },
+  "38": {
+   "nombre_cis": "Santa Cruz de Tenerife",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     1,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     1
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 977
+  },
+  "39": {
+   "nombre_cis": "Cantabria",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 675
+  },
+  "40": {
+   "nombre_cis": "Segovia",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 478
+  },
+  "41": {
+   "nombre_cis": "Sevilla",
+   "escanos": {
+    "PSOE": [
+     4,
+     5
+    ],
+    "PP": [
+     3,
+     4
+    ],
+    "Vox": [
+     2,
+     3
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     1
+    ],
+    "Adelante Andalucía": [
+     1,
+     2
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1548
+  },
+  "42": {
+   "nombre_cis": "Soria",
+   "escanos": {
+    "PSOE": [
+     1,
+     1
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 357
+  },
+  "43": {
+   "nombre_cis": "Tarragona",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     0,
+     1
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     1,
+     2
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 742
+  },
+  "44": {
+   "nombre_cis": "Teruel",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 422
+  },
+  "45": {
+   "nombre_cis": "Toledo",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     1,
+     2
+    ],
+    "Vox": [
+     1,
+     2
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 728
+  },
+  "46": {
+   "nombre_cis": "Valencia/València",
+   "escanos": {
+    "PSOE": [
+     5,
+     6
+    ],
+    "PP": [
+     3,
+     5
+    ],
+    "Vox": [
+     3,
+     4
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     3,
+     4
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 1948
+  },
+  "47": {
+   "nombre_cis": "Valladolid",
+   "escanos": {
+    "PSOE": [
+     2,
+     2
+    ],
+    "PP": [
+     2,
+     2
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 674
+  },
+  "48": {
+   "nombre_cis": "Bizkaia",
+   "escanos": {
+    "PSOE": [
+     3,
+     4
+    ],
+    "PP": [
+     0,
+     1
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     1,
+     2
+    ],
+    "EH Bildu": [
+     2,
+     3
+    ]
+   },
+   "entrevistas": 739
+  },
+  "49": {
+   "nombre_cis": "Zamora",
+   "escanos": {
+    "PSOE": [
+     1,
+     2
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 492
+  },
+  "50": {
+   "nombre_cis": "Zaragoza",
+   "escanos": {
+    "PSOE": [
+     2,
+     3
+    ],
+    "PP": [
+     2,
+     3
+    ],
+    "Vox": [
+     1,
+     1
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     1,
+     1
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 905
+  },
+  "51": {
+   "nombre_cis": "Ceuta",
+   "escanos": {
+    "PSOE": [
+     0,
+     0
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 93
+  },
+  "52": {
+   "nombre_cis": "Melilla",
+   "escanos": {
+    "PSOE": [
+     0,
+     0
+    ],
+    "PP": [
+     1,
+     1
+    ],
+    "Vox": [
+     0,
+     0
+    ],
+    "Podemos": [
+     0,
+     0
+    ],
+    "Frente Amplio": [
+     0,
+     0
+    ],
+    "Adelante Andalucía": [
+     0,
+     0
+    ],
+    "Ara Més-Front Ampli": [
+     0,
+     0
+    ],
+    "UPC": [
+     0,
+     0
+    ],
+    "ERC-Podemos": [
+     0,
+     0
+    ],
+    "Junts": [
+     0,
+     0
+    ],
+    "Compromís": [
+     0,
+     0
+    ],
+    "BNG": [
+     0,
+     0
+    ],
+    "PNV": [
+     0,
+     0
+    ],
+    "EH Bildu": [
+     0,
+     0
+    ]
+   },
+   "entrevistas": 88
+  }
+ }
+}
