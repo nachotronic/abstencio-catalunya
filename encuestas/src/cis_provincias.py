@@ -102,3 +102,51 @@ def bloque(cod, nombre, rc, total, c, nom_lista):
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">CIS</th><th class="n">Media</th><th class="n">2023</th></tr></thead><tbody>{tr}</tbody></table></div>
 <p class="src">{leyenda}Fuente: CIS, estudio 3584, <a href="{PDF}">estimación de escaños por provincias</a> y <a href="{XLSX}">entrevistas por provincia</a>; 2023, Ministerio del Interior (D'Hondt sobre los votos oficiales). El Frente Amplio, Compromís, Ara Més-Front Ampli y la Unidad del Pueblo Canario se comparan con Sumar / Frente Amplio del modelo; ERC-Podemos, con ERC{navarra}. Los partidos llevan el nombre con el que los mide el CIS. Error teórico: la fórmula del CIS (95,5 %, p = q) con las entrevistas de la provincia. <a href="{PIEZA}">Las 52 provincias, comparadas</a>.</p>
 """
+
+
+def _clave_cis(cod, lista):
+    """Candidatura del CIS que corresponde a una lista del modelo en la provincia (la misma equivalencia que la tabla)."""
+    if lista == 'Sumar':
+        return SUMAR_CIS.get(cod, 'Frente Amplio')
+    if lista == 'ERC':
+        return 'ERC-Podemos'
+    return lista
+
+
+def titular(cod, lista_primera):
+    """Coletilla del titular de /encuestas/<provincia>/ con el CIS (Nacho, 13-11-2026: «¿en el titular?»).
+    Nombra a la lista que el modelo pone primera y a la que el CIS pone por delante de ella o, si es la misma, a la
+    siguiente del CIS, con sus horquillas P5-P95. Con un solo escaño, a quién se lo da el CIS. '' si no hay datos."""
+    if not CIS or cod not in CIS:
+        return ''
+    esc = CIS[cod]['escanos']
+    inv = {}
+    for p in esc:
+        s = ESP[p]
+        if s == 'Sumar' and p != SUMAR_CIS.get(cod, 'Frente Amplio'):
+            continue
+        inv[p] = s
+    # con el nombre con el que mide cada candidatura el CIS, como en la tabla (en Navarra, PP; en Cataluña, ERC-Podemos)
+    a_ = lambda s: 'al ' if s in ('PP', 'PSOE', 'PNV', 'BNG') else 'a '
+    etq = lambda p: NOMBRE_CORTO.get(p, p)
+    n_esc = lambda ab: tramo(*ab) + (' escaño' if ab[1] == 1 else ' escaños')
+    # orden del CIS: punto medio de la horquilla; a igualdad, primero la lista que el modelo pone primera
+    orden = sorted((p for p in inv if esc[p][1] > 0),
+                   key=lambda p: (-(esc[p][0] + esc[p][1]), p != _clave_cis(cod, lista_primera), -esc[p][1]))
+    if len(orden) == 1:   # Ceuta y Melilla: un escaño, una sola lista con opciones en el CIS
+        p = orden[0]
+        return f'el CIS da el escaño {a_(inv[p])}{etq(p)}'
+    mia = _clave_cis(cod, lista_primera)
+    otra = next(p for p in orden if p != mia)
+    if mia not in orden or (esc[otra][0] + esc[otra][1]) > (esc[mia][0] + esc[mia][1]):
+        x, y = otra, mia
+    else:
+        x, y = mia, otra
+    return f'el CIS da {a_(inv[x])}{etq(x)} {n_esc(esc[x])} y {a_(inv[y])}{etq(y)}, {tramo(*esc[y])}'
+
+
+NOMBRE_CORTO = {'UPC': 'la Unidad del Pueblo Canario'}
+
+
+def entrevistas(cod):
+    return CIS[cod]['entrevistas'] if CIS and cod in CIS else None

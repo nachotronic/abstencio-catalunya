@@ -40,13 +40,22 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         corto = lambda l: n(l).replace(' / Frente Amplio', '')
         art = lambda l: 'el ' if l in ('PP', 'PSOE', 'PNV', 'BNG') and not (upn_pp and l == 'PP') else ''
         pp = lambda x: f'{round(x * 100)} %' if 0.01 <= x <= 0.99 else ('menos del 1 %' if x < 0.01 else 'más del 99 %')
-        titular = f'Encuesta en {nombre}: {art(primero["lista"])}{corto(primero["lista"])} saldría primero en el {pp(primero["p_primera"])} de las simulaciones'
+        en_el = lambda x: 'en ' + pp(x) if x > 0.99 or x < 0.01 else 'en el ' + pp(x)   # «en más del 99 %», no «en el más del 99 %»
+        titular = f'Encuesta en {nombre}: {art(primero["lista"])}{corto(primero["lista"])} saldría primero {en_el(primero["p_primera"])} de las simulaciones'
+        cis_tit = cis_provincias.titular(cod, primero['lista'])
+        if cis_tit:   # Nacho, 13-11-2026: el CIS preelectoral también en el titular
+            titular += '; ' + cis_tit
+        ent = cis_provincias.entrevistas(cod)
+        cis_dek = ('' if not ent else
+                   f' Y la horquilla del CIS preelectoral, con {"solo " if ent < 300 else ""}{cis_provincias.miles(ent)} entrevistas en {nombre}'
+                   + (', una muestra muy pequeña.' if ent < 300 else '.'))
+        titulo_seo = f'Encuesta {nombre} elecciones generales 2026: escaños según la media de encuestas' + (' y el CIS' if ent else '')
         reparto = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
                             for l in con)
         p1 = (f'{nombre} elige {total} diputado{"s" if total > 1 else ""} el 29 de noviembre. Con la media de las encuestas nacionales repartida por provincia, '
               f'el reparto central es {reparto}. Entre paréntesis, el intervalo del 80 % de las simulaciones.')
-        p2 = (f'{art(primero["lista"]).capitalize()}{corto(primero["lista"])} queda primero en el {pp(primero["p_primera"])} de las {sims} simulaciones, '
-              f'y {art(segundo["lista"])}{corto(segundo["lista"])}, en el {pp(segundo["p_primera"])}.')
+        p2 = (f'{art(primero["lista"]).capitalize()}{corto(primero["lista"])} queda primero {en_el(primero["p_primera"])} de las {sims} simulaciones, '
+              f'y {art(segundo["lista"])}{corto(segundo["lista"])}, {en_el(segundo["p_primera"])}.')
         en_aire = [l for l in con if l['escanos'][2] > l['escanos'][0]]
         p3 = ''
         if en_aire:
@@ -84,7 +93,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         cuerpo = f"""<main>
 <p class="kicker"><a href="../">Encuestas elecciones generales 2026</a> · <a href="../provincias.html">Por provincias</a> · {html.escape(ccaa_de[cod])}</p>
 <h1 data-miga="{html.escape(nombre)}">{html.escape(titular)}</h1>
-<p class="dek">{"El escaño" if total == 1 else f"Los {total} escaños"} de {html.escape(nombre)} con la media de las encuestas de las generales del 29N: reparto central, horquilla y probabilidad de quedar primero.</p>
+<p class="dek">{"El escaño" if total == 1 else f"Los {total} escaños"} de {html.escape(nombre)} con la media de las encuestas de las generales del 29N: reparto central, horquilla y probabilidad de quedar primero.{html.escape(cis_dek)}</p>
 <p class="firma">Por <a href="../../sobre-mi.html">{c.AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
 <p class="propio"><b>Modelo propio, no es una encuesta de {html.escape(nombre)}.</b> Las encuestadoras no publican sus datos por provincia. Estas cifras salen del modelo de Mapa Electoral, que reparte por provincia la media de las <a href="../">encuestas publicadas</a> y simula el resultado {sims} veces. <a href="../metodo-modelo.html">Cómo se calcula</a>.</p>
 <p data-tipo="dato">{html.escape(p1)}</p>
@@ -107,8 +116,8 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                                     '.esc i.aire{background:var(--grid);outline:1px solid var(--rule);outline-offset:-1px}'
                                     '.ley{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-family:var(--ui);font-size:.95rem;margin:.2rem 0 0}.ley span{display:inline-flex;align-items:center;gap:.35rem}.ley i{width:14px;height:14px;border-radius:3px;display:inline-block}'
                                     '.casas{columns:2;font-family:var(--ui);font-size:.95rem;padding-left:1.1rem}@media (max-width:520px){.casas{columns:1}}</style>')
-        pagina = (c.cabecera(f'Encuesta {nombre} elecciones generales 2026: escaños según la media de encuestas', desc, url, imagen, jsonld)
-                  .replace(f'<meta property="og:title" content="Encuesta {html.escape(nombre)} elecciones generales 2026: escaños según la media de encuestas">',
+        pagina = (c.cabecera(titulo_seo, desc, url, imagen, jsonld)
+                  .replace(f'<meta property="og:title" content="{html.escape(titulo_seo)}">',
                            f'<meta property="og:title" content="{html.escape(titular)}">')
                   + estilos + c.CSS_SITIO + '\n</head>\n<body>\n' + c.nav('../../', 'Encuestas') + '\n' + cuerpo + '\n</body>\n</html>\n')
         pagina = c.fechas_meta(pagina, '2026-10-26', max(meta['generado'][:10], '2026-10-26'))
