@@ -6,6 +6,7 @@ descargados a mano (como la primera extracción, /mnt/project-files/previsiones/
     python3 previsiones/src/extraer_electografica.py <carpeta>      # escribe encuestas.json y encuestas_generales_espana.csv
 """
 import collections, csv, glob, html, json, re, sys
+from datetime import date, timedelta
 
 COLUMNAS = ['publicado', 'encuestadora', 'cliente', 'trabajo_campo', 'muestra', 'metodo', 'partido', 'voto',
             'url_electografica', 'fuente_original']
@@ -14,6 +15,16 @@ COLUMNAS = ['publicado', 'encuestadora', 'cliente', 'trabajo_campo', 'muestra', 
 def parsea(e):
     """Una entrada del feed -> dict con ámbito, ficha y {partido: voto}; None si no trae estimación."""
     t = html.unescape(e['title']['$t']); c = e['content']['$t']; pub = e['published']['$t'][:10]
+    # entrada subida pasada la medianoche (antes de las 3) con la fecha del día anterior en el título («Encuesta Sigma Dos
+    # 12/11/2026», subida el 13-11 a las 0.22): la encuesta se publicó ese día anterior, no el de la entrada
+    m = re.search(r'(\d{1,2})/(\d{1,2})/(20\d\d)', t)
+    if m and int(e['published']['$t'][11:13]) < 3:
+        try:
+            d = date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        except ValueError:
+            d = None
+        if d and d == date.fromisoformat(pub) - timedelta(days=1):
+            pub = d.isoformat()
     amb = re.sub(r'^\[[^]]*\]\s*', '', t.split('·')[0]).strip()
     # panel de estimación: hasta el siguiente tab-panel
     i = c.find('tab-panel'); j = c.find('tab-panel', i + 20)
