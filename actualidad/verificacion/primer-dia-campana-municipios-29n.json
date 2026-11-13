@@ -53,7 +53,7 @@
    "_donde": "dato"
   },
   {
-   "texto": "7 y el PSOE, en los otros 4. El partido del candidato",
+   "texto": "7 y el PSOE, en los otros 4. En 2023, el partido del candidato",
    "cifra": "4",
    "calculo": "D['G23']['PSOE']",
    "_donde": "dato"
@@ -529,7 +529,7 @@
  ],
  "externas": [
   {
-   "texto": "Carme Gomila, y su número tres, Lucía Muñoz, de Podemos,",
+   "texto": "Carme Gomila, y su número tres, Lucía Muñoz, que va como independiente",
    "cifra": "tres",
    "fuente": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23103"
   }
