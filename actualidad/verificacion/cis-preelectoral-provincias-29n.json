@@ -1,0 +1,359 @@
+{
+ "pieza": "cis-preelectoral-provincias-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "la media de encuestas en 13 provincias y menos en",
+   "cifra": "13",
+   "calculo": "len(D['PSOE_MAS'])",
+   "_donde": "titular"
+  },
+  {
+   "texto": "ninguna; en Madrid, entre 12 y 14 frente a 10",
+   "cifra": "12",
+   "calculo": "D['F']['28|PSOE'][0]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "ninguna; en Madrid, entre 12 y 14 frente a 10",
+   "cifra": "14",
+   "calculo": "D['F']['28|PSOE'][1]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "Madrid, entre 12 y 14 frente a 10",
+   "cifra": "10",
+   "calculo": "D['F']['28|PSOE'][2]",
+   "_donde": "titular"
+  },
+  {
+   "texto": "menos escaños que en 2023 en 20 provincias. Las horquillas",
+   "cifra": "20",
+   "calculo": "len(D['PP_BAJO23'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "salen de muestras que van de 88 entrevistas en Melilla",
+   "cifra": "88",
+   "calculo": "D['ENT']['52']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "entrevistas en Melilla a 4.744 en Madrid.",
+   "cifra": "4.744",
+   "calculo": "D['ENT']['28']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "escaños de cada partido en las 52 provincias, el tramo",
+   "cifra": "52",
+   "calculo": "len(D['ENT'])",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "dan al PSOE más escaños en 13 de las 52 provincias",
+   "cifra": "13",
+   "calculo": "len(D['PSOE_MAS'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más escaños en 13 de las 52 provincias y menos en",
+   "cifra": "52",
+   "calculo": "len(D['ENT'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ninguna. Al PP le dan menos en 9 y más en ninguna.",
+   "cifra": "9",
+   "calculo": "len(D['PP_MENOS'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "A Vox le dan menos en 3: La Rioja, Murcia y Zaragoza.",
+   "cifra": "3",
+   "calculo": "len(D['VOX_MENOS'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "separan. El CIS da al PSOE entre 12 y 14 escaños, los mismos",
+   "cifra": "12",
+   "calculo": "D['F']['28|PSOE'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "CIS da al PSOE entre 12 y 14 escaños, los mismos",
+   "cifra": "14",
+   "calculo": "D['F']['28|PSOE'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "escaños, los mismos que al PP (12–14); la media de encuestas,",
+   "cifra": "12",
+   "calculo": "D['F']['28|PP'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "los mismos que al PP (12–14); la media de encuestas,",
+   "cifra": "14",
+   "calculo": "D['F']['28|PP'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(12–14); la media de encuestas, 10 al PSOE y 16 al PP,",
+   "cifra": "10",
+   "calculo": "D['F']['28|PSOE'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de encuestas, 10 al PSOE y 16 al PP, los mismos que",
+   "cifra": "16",
+   "calculo": "D['F']['28|PP'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "A Vox, el CIS le da entre 6 y 8 (la media, 8), y",
+   "cifra": "6",
+   "calculo": "D['F']['28|Vox'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Vox, el CIS le da entre 6 y 8 (la media, 8), y al",
+   "cifra": "8",
+   "calculo": "D['F']['28|Vox'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "da entre 6 y 8 (la media, 8), y al Frente Amplio,",
+   "cifra": "8",
+   "calculo": "D['F']['28|Vox'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y al Frente Amplio, entre 4 y 5 (la media, 3). En",
+   "cifra": "4",
+   "calculo": "D['F']['28|Sumar'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Frente Amplio, entre 4 y 5 (la media, 3). En Barcelona,",
+   "cifra": "5",
+   "calculo": "D['F']['28|Sumar'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Amplio, entre 4 y 5 (la media, 3). En Barcelona, ERC,",
+   "cifra": "3",
+   "calculo": "D['F']['28|Sumar'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "juntos en Cataluña, saca entre 7 y 9 en el CIS; la media",
+   "cifra": "7",
+   "calculo": "D['F']['08|ERC'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Cataluña, saca entre 7 y 9 en el CIS; la media",
+   "cifra": "9",
+   "calculo": "D['F']['08|ERC'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en el CIS; la media le da 6 y en 2023 tuvo 4.",
+   "cifra": "6",
+   "calculo": "D['F']['08|ERC'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "media le da 6 y en 2023 tuvo 4.",
+   "cifra": "4",
+   "calculo": "D['F']['08|ERC'][3]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP sale peor en el CIS en 20 provincias, en las que",
+   "cifra": "20",
+   "calculo": "len(D['PP_BAJO23'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ninguna. El PSOE mejora en 7 y no empeora en ninguna.",
+   "cifra": "7",
+   "calculo": "len(D['PSOE_SOBRE23'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en ninguna. Vox mejora en 12. Dos provincias reparten",
+   "cifra": "12",
+   "calculo": "len(D['VOX_SOBRE23'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "que en 2023: Madrid elige 38, uno más, y Cádiz, 8,",
+   "cifra": "38",
+   "calculo": "D['TOT']['28']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "elige 38, uno más, y Cádiz, 8, uno menos.",
+   "cifra": "8",
+   "calculo": "D['TOT']['11']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "delante del PP en escaños en 11 provincias, en las que",
+   "cifra": "11",
+   "calculo": "len(D['PSOE_DELANTE'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "diputado cada una. En las otras 39, las horquillas de los",
+   "cifra": "39",
+   "calculo": "D['SOLAPAN']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más escaños que el PSOE en 21 provincias y el PSOE",
+   "cifra": "21",
+   "calculo": "len(D['MOD_PP'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE más que el PP en 9.",
+   "cifra": "9",
+   "calculo": "len(D['MOD_PSOE'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El CIS hizo 45.074 entrevistas del 7 al",
+   "cifra": "45.074",
+   "calculo": "D['N']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "al menos 50. Madrid tiene 4.744 y Barcelona, 3.662;",
+   "cifra": "4.744",
+   "calculo": "D['ENT']['28']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "tiene 4.744 y Barcelona, 3.662; Soria, 357; Ceuta,",
+   "cifra": "3.662",
+   "calculo": "D['ENT']['08']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Barcelona, 3.662; Soria, 357; Ceuta, 93, y Melilla,",
+   "cifra": "357",
+   "calculo": "D['ENT']['42']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "3.662; Soria, 357; Ceuta, 93, y Melilla, 88. Con",
+   "cifra": "93",
+   "calculo": "D['ENT']['51']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "357; Ceuta, 93, y Melilla, 88. Con la fórmula del",
+   "cifra": "88",
+   "calculo": "D['ENT']['52']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "muestra, el error teórico va de ±1,5 puntos en Madrid a ±5,3",
+   "cifra": "1,5",
+   "calculo": "D['ERR']['28']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "±1,5 puntos en Madrid a ±5,3 en Soria y ±10,7 en",
+   "cifra": "5,3",
+   "calculo": "D['ERR']['42']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Madrid a ±5,3 en Soria y ±10,7 en Melilla.",
+   "cifra": "10,7",
+   "calculo": "D['ERR']['52']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "la media de encuestas en 13 provincias, y menos",
+   "cifra": "13",
+   "calculo": "len(D['PSOE_MAS'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "En Madrid, el CIS da 12–14 escaños al PSOE y",
+   "cifra": "12",
+   "calculo": "D['F']['28|PSOE'][0]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "En Madrid, el CIS da 12–14 escaños al PSOE y otros",
+   "cifra": "14",
+   "calculo": "D['F']['28|PSOE'][1]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "PP; la media de encuestas, 10 y 16Las diez provincias",
+   "cifra": "10",
+   "calculo": "D['F']['28|PSOE'][2]",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Las 52 provincias: el CIS,",
+   "cifra": "52",
+   "calculo": "len(D['ENT'])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "tramo que va del percentil 5 al 95 de sus simulaciones.",
+   "cifra": "5",
+   "fuente": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf"
+  },
+  {
+   "texto": "que va del percentil 5 al 95 de sus simulaciones.",
+   "cifra": "95",
+   "fuente": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf"
+  },
+  {
+   "texto": "el total nacional le da el 0,2 % sin escaños.",
+   "cifra": "0,2",
+   "fuente": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf"
+  },
+  {
+   "texto": "provincia tuviera al menos 300 entrevistas, y Ceuta",
+   "cifra": "300",
+   "fuente": "https://www.cis.es/documents/d/guest/3584-multi_A-xlsx"
+  },
+  {
+   "texto": "Ceuta y Melilla, al menos 50. Madrid tiene 4.744",
+   "cifra": "50",
+   "fuente": "https://www.cis.es/documents/d/guest/3584-multi_A-xlsx"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "una provincia que reparte tres o cuatro escaños, un",
+   "cifra": "tres",
+   "motivo": "ejemplo genérico de provincia pequeña"
+  },
+  {
+   "texto": "provincia que reparte tres o cuatro escaños, un punto de",
+   "cifra": "cuatro",
+   "motivo": "ejemplo genérico de provincia pequeña"
+  },
+  {
+   "texto": "de encuestas, 10 y 16Las diez provincias con más escaños:",
+   "cifra": "diez",
+   "motivo": "número de provincias del gráfico (las diez con más escaños), fijado en el código"
+  }
+ ],
+ "permitir_espana": []
+}
