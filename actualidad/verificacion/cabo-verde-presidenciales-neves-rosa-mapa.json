@@ -203,13 +203,13 @@
       "_donde": "dato"
     },
     {
-      "texto": "candidaturas y el MpD, el 44,8 %, según el edital de",
+      "texto": "candidaturas y el MpD, el 44,8 %, según los resultados definitivos",
       "cifra": "44,8",
       "calculo": "D['LEG_PCT']['MpD']",
       "_donde": "dato"
     },
     {
-      "texto": "recoge Wikipedia. Votó el 46,5 % de los inscritos.",
+      "texto": "en el Boletim Oficial. Votó el 46,5 % de los inscritos.",
       "cifra": "46,5",
       "calculo": "D['LEG_PART']",
       "_donde": "dato"
@@ -369,10 +369,6 @@
     {
       "texto": "según Inforpress, y cuatro más: el juez",
       "motivo": "Los cuatro candidatos restantes de los seis, nombrados a continuación"
-    },
-    {
-      "texto": "(Edital n.º 3/Eleição/2026)",
-      "motivo": "Número del edital, no una cifra"
     }
   ],
   "permitir_espana": []
