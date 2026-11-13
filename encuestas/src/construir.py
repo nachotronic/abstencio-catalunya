@@ -940,11 +940,12 @@ def main():
                  f'<th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
                  f'<tbody>{"".join(fila_tabla(e) for e in anteriores)}</tbody></table></div></details>')
     filas_esc = ''
-    for e in sorted(con_esc, key=lambda e: -rango_esc(e['esc']['PP'])[0]):
+    # por fecha de publicación, la más reciente primero (sin publicación conocida, el final del campo); a igual fecha, la que terminó el campo después
+    for e in sorted(con_esc, key=lambda e: (e.get('publicado') or e['fin'], e['fin'], e['casa']), reverse=True):
         lo, hi = suma_pv(e)
         suma = str(lo) if lo == hi else f'{lo}-{hi}'
         nombre = (html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
-                  + f'<span class="medio">Publicada el {fechas_celda(e)}</span>')
+                  + (f'<span class="medio">Publicada el {fechas_celda(e)}</span>' if e.get('publicado') else f'<span class="medio">Campo hasta el {fechas_celda(e)}</span>'))
         # PP + Vox justo después del nombre, para que se vea en el móvil sin desplazar la tabla
         filas_esc += (f'<tr{" class=mayoria" if lo >= 176 else ""}><td>{nombre}</td><td class="n suma">{suma}</td>'
                       + ''.join(f'<td class="n">{e["esc"].get(k, "–")}</td>' for k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS')) + '</tr>')
@@ -1079,7 +1080,7 @@ def main():
 <h2>Promedio de escaños: lo que da cada encuestadora</h2>
 {bloque_hemi}
 {'<figure><figcaption><span class="t">PP + Vox en cada encuesta</span><span class="s">Escaños que dan juntos en la última encuesta de cada encuestadora del último mes; la barra es la horquilla de la propia encuestadora. La línea marca la mayoría absoluta (176).</span></figcaption><div class="chart" id="horq-encuestas"></div></figure>' if pv_casas else ''}
-<p>Última encuesta de cada una en los últimos 30 días, con los escaños que publica. Un intervalo («132-137») es la horquilla de la propia encuestadora; la mayoría absoluta está en 176.</p>
+<p>Última encuesta de cada una en los últimos 30 días, de la publicada más recientemente a la más antigua, con los escaños que publica. Un intervalo («132-137») es la horquilla de la propia encuestadora; la mayoría absoluta está en 176.</p>
 {tabla_esc}
 {bloque_modelo or ''}
 <h2>Últimas encuestas de las elecciones generales 2026</h2>
