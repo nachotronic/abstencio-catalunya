@@ -42,4 +42,4 @@ for lab,(a,b) in [('HOY',('2026-11-12T23:00:00Z',hoyfin)),('AYER',('2026-11-11T2
     h=collections.Counter()
     for r in grp(['datetimeHour'],100,a,b): h[r['dimensions']['datetimeHour']]+=r['sum']['visits']
     print('HORA',lab,sorted(h.items()))
-# corte 13-11
+# corte 13-11 tarde

@@ -2,7 +2,7 @@
 name: Audiencia hoy 13-11
 on:
   push:
-    branches: [claude/project-thread-1icsxf]
+    branches: [claude/project-thread-n7wcz5]
     paths: ['.github/audiencia/**','.github/workflows/audiencia-hoy13.yml']
 jobs:
   leer:
