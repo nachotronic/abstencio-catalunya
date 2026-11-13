@@ -1,9 +1,9 @@
 # Temporal: audiencia y enlaces. No se fusiona a main.
-name: Audiencia hoy 12-11
+name: Audiencia hoy 13-11
 on:
   push:
-    branches: [claude/project-thread-j8n4gj]
-    paths: ['.github/audiencia/**','.github/workflows/audiencia-hoy11.yml']
+    branches: [claude/project-thread-1icsxf]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-hoy13.yml']
 jobs:
   leer:
     runs-on: ubuntu-latest
@@ -13,4 +13,4 @@ jobs:
           CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
 
-        run: python3 .github/audiencia/hoy12.py
+        run: python3 .github/audiencia/hoy13.py

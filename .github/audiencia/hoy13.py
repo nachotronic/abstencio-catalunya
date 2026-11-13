@@ -16,7 +16,7 @@ import datetime
 now=datetime.datetime.utcnow().replace(minute=0,second=0,microsecond=0)
 hoyfin=now.strftime('%Y-%m-%dT%H:00:00Z'); ayerfin=(now-datetime.timedelta(days=1)).strftime('%Y-%m-%dT%H:00:00Z')
 print('CORTE',hoyfin)
-for lab,(a,b) in [('HOY',('2026-11-11T23:00:00Z',hoyfin)),('AYER',('2026-11-10T23:00:00Z',ayerfin))]:
+for lab,(a,b) in [('HOY',('2026-11-12T23:00:00Z',hoyfin)),('AYER',('2026-11-11T23:00:00Z',ayerfin)),('AYERCOMPLETO',('2026-11-11T23:00:00Z','2026-11-12T23:00:00Z'))]:
     tot=sum(r['sum']['visits'] for r in grp(['date'],10,a,b)); vw=sum(r['count'] for r in grp(['date'],10,a,b)); print('TOT',lab,tot,vw)
     for r in grp(['requestPath'],25,a,b): print('PATH',lab,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
     sec=collections.Counter()
@@ -24,7 +24,7 @@ for lab,(a,b) in [('HOY',('2026-11-11T23:00:00Z',hoyfin)),('AYER',('2026-11-10T2
         p=r['dimensions']['requestPath']; s=p.strip('/').split('/')[0] or '(portada)'; sec[s]+=r['sum']['visits']
     print('SEC',lab,sec.most_common(12))
     for r in grp(['requestPath'],40,a,b,',{requestPath_like:"/actualidad/%"}'): print('ACT',lab,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
-    for s in ['mapa-electoral-','arranque-campana','cabo-verde']:
+    for s in ['mapa-electoral-','primer-dia-campana','debate-lasexta','cis-preelectoral','cabo-verde','/encuestas/cis']:
         for r in grp(['requestPath'],10,a,b,',{requestPath_like:"%%%s%%"}'%s): print('SLUG',lab,s,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
     ref=collections.Counter()
     for r in grp(['refererHost'],5000,a,b):
@@ -34,6 +34,12 @@ for lab,(a,b) in [('HOY',('2026-11-11T23:00:00Z',hoyfin)),('AYER',('2026-11-10T2
     dev=collections.Counter()
     for r in grp(['deviceType'],50,a,b): dev[r['dimensions']['deviceType']]+=r['sum']['visits']
     print('DEV',lab,dev.most_common())
-for lab,(a,b) in [('HOY',('2026-11-11T23:00:00Z',hoyfin))]:
+for lab,(a,b) in [('HOY',('2026-11-12T23:00:00Z',hoyfin))]:
     for r in grp(['requestPath'],30,a,b,',{requestPath_like:"/internacional/%"}'): print('INT',lab,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
-# corte 12-11
+for d0,d1 in [('2026-11-08T23:00:00Z','2026-11-09T23:00:00Z'),('2026-11-09T23:00:00Z','2026-11-10T23:00:00Z'),('2026-11-10T23:00:00Z','2026-11-11T23:00:00Z')]:
+    print('DIA',d0,sum(r['sum']['visits'] for r in grp(['date'],10,d0,d1)))
+for lab,(a,b) in [('HOY',('2026-11-12T23:00:00Z',hoyfin)),('AYER',('2026-11-11T23:00:00Z','2026-11-12T23:00:00Z'))]:
+    h=collections.Counter()
+    for r in grp(['datetimeHour'],100,a,b): h[r['dimensions']['datetimeHour']]+=r['sum']['visits']
+    print('HORA',lab,sorted(h.items()))
+# corte 13-11
