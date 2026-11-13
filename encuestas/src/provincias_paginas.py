@@ -6,6 +6,8 @@ provincia, y cada página lo dice arriba, antes de cualquier cifra.
 """
 import html
 
+import cis_provincias
+
 UPN_PP = {'31'}   # provincias donde el PP concurre dentro de la lista UPN-PP (previsiones/src/motor.py, UPN_PP)
 NOTA_UPN_PP = ('<p data-tipo="contexto">UPN y el PP van juntos el 29N en una sola candidatura, «Unión del Pueblo Navarro en coalición con el Partido Popular (UPN-PP)», '
                'al Congreso y al Senado: la encabeza Leticia San Martín (UPN) y el número dos es Sergio Sayas (PP), según las '
@@ -95,7 +97,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <h2>Voto y escaños de cada partido en {html.escape(nombre)}</h2>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto (80 %)</th><th class="n">Escaños (80 %)</th><th class="n">Primero</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">Cifra grande: reparto central, la mediana de las simulaciones ajustada para que sume los escaños de la provincia; debajo, el intervalo del 80 %. {html.escape(meta.get('aviso', ''))} <a href="../../{ruta_provincia(cod)}">Resultados de 2023 en {html.escape(nombre)}, sección a sección →</a></p>
-<h2>Preguntas frecuentes</h2>
+{cis_provincias.bloque(cod, nombre, rc, total, c, n)}<h2>Preguntas frecuentes</h2>
 <div class="faq">{''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq)}</div>
 {f'<h2>Otras provincias de {html.escape(ccaa_de[cod])}</h2><ul class="casas">' + ''.join(f'<li><a href="../{s}/">{html.escape(nm)}</a></li>' for s, nm in vecinas) + '</ul>' if vecinas else ''}
 <h2>Sigue leyendo</h2><ul class="sigue"><li><a href="../../listas-electorales-29n/{slug}/"><span class="kicker">Listas</span><b>Los candidatos del 29N en {html.escape(nombre)}, puesto a puesto</b></a></li><li><a href="../provincias.html"><span class="kicker">Por provincias</span><b>Las 52 provincias y las más disputadas</b></a></li><li><a href="../"><span class="kicker">Encuestas</span><b>Todas las encuestas de las elecciones generales 2026 y su promedio</b></a></li><li><a href="../../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
