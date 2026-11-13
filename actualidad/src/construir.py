@@ -4711,7 +4711,7 @@ PIEZAS += [
         titulo='Dos de los cuatro del debate de laSexta no se presentan el 29N: ni Cuerpo ni Bustinduy están en ninguna lista', serie='29n', figura=1,
         descripcion='Bravo encabeza al PP en Sevilla, donde la media de encuestas da 4 escaños al PP y 4 al PSOE y casi la misma probabilidad de quedar primero; Figaredo, a Vox en Asturias, donde repetiría su escaño.',
         compara='Los cuatro participantes del debate de laSexta del 13 de noviembre (Carlos Cuerpo, Juan Bravo, José María Figaredo y Pablo Bustinduy) en las candidaturas proclamadas de 2023 y 2026, y el voto y los escaños de Sevilla y Asturias en 2019, 2023 y en la media de encuestas para el 29N.',
-        limites='Las candidaturas son las del BOE; un participante puede hacer campaña sin ser candidato. El modelo de encuestas tiene un margen amplio a 16 días de la votación. El contenido del debate se añadirá después de emitirse.',
+        limites='Las candidaturas son las del BOE; un participante puede hacer campaña sin ser candidato. El modelo de encuestas tiene un margen amplio a 16 días de la votación.',
         calculo="Porcentajes sobre votos válidos con los votos oficiales por provincia. Escaños de 2019 y 2023: D'Hondt con barrera del 3 %. Escaños del 29N: escenario central del modelo de mapaelectoral.es/encuestas (la versión se indica en cada gráfico); probabilidad de quedar primero, porcentaje de las 2.000 simulaciones en que la lista es la más votada.",
         fuentes=[INTERIOR,
                  ('https://www.formulatv.com/noticias/ana-pastor-debate-electoral-lasexta-psoe-pp-vox-fa-138735/', 'FormulaTV, Ana Pastor modera el debate de laSexta con PSOE, PP, Vox y Frente Amplio (10-11-2026)'),

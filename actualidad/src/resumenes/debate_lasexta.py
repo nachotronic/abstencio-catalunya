@@ -132,7 +132,7 @@ cuerpo = f"""
 {g_ast}
 
 <h2>Los temas del debate, en nuestras piezas</h2>
-<p data-tipo="contexto">Sobre vivienda, hemos contado cómo vota cada barrio según cuánto se alquila en {L("alquiler-ciudad-a-ciudad", "las grandes ciudades")} y {L("precio-del-alquiler-y-voto", "según el precio del alquiler")}, {L("acampada-sol-alquiler-madrid-distritos-29n", "en los distritos de Madrid")}, y a quién votan quienes ponen la vivienda entre sus preocupaciones en {L("vivienda-preocupa-voto-sumar-29n", "las encuestas del CIS")}. Mañana añadiremos lo que se diga en el debate.</p>
+<p data-tipo="contexto">Sobre vivienda, hemos contado cómo vota cada barrio según cuánto se alquila en {L("alquiler-ciudad-a-ciudad", "las grandes ciudades")} y {L("precio-del-alquiler-y-voto", "según el precio del alquiler")}, {L("acampada-sol-alquiler-madrid-distritos-29n", "en los distritos de Madrid")}, y a quién votan quienes ponen la vivienda entre sus preocupaciones en {L("vivienda-preocupa-voto-sumar-29n", "las encuestas del CIS")}.</p>
 
 <h2>Cómo se ha hecho</h2>
 <p data-tipo="contexto">Las candidaturas son las proclamadas en el <a href="{BOE}">BOE</a> del 3 de noviembre de 2026, al Congreso y al Senado, con titulares y suplentes; las de 2023, las del <a href="{BOE23}">BOE</a> de 2023. Los votos son los oficiales del Ministerio del Interior por provincia, sobre votos válidos, y los escaños de 2019 y 2023 se calculan con la ley D'Hondt. Los del 29N son el escenario central del <a href="{BASE}encuestas/">modelo de encuestas</a> (versión de las {VERSION}); la probabilidad de quedar primero es el porcentaje de las 2.000 simulaciones en que esa lista es la más votada.</p>
