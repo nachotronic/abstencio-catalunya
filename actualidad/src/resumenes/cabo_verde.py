@@ -7,7 +7,8 @@ cada fila cuadra (votantes = blancos + nulos + válidos; válidos = suma de cand
 totales del edital. Porcentajes sobre votos válidos (sin blancos ni nulos), como los da la CNE.
 Inscritos de 2026: web oficial de resultados de la CNE, eleicoes.cv (/data/regions.json, versión del 11-11-2026),
 copiada en datos/cabo_verde_inscritos_2026.json.
-Legislativas del 17-5-2026: resultado nacional del Edital n.º 3/Eleição/2026 de la CNE según Wikipedia.
+Legislativas del 17-5-2026: resultado nacional definitivo de la CNE (comunicado del 29-5-2026 sobre el mapa de resultados
+publicado en el Boletim Oficial, II Série n.º 99, y Edital n.º 3/Eleições 2026).
 Contornos: geoBoundaries (CPV ADM1, OpenStreetMap, ODbL), 22 concelhos agrupados en los 10 círculos del país.
 Uso, desde la raíz: python3 actualidad/src/resumenes/cabo_verde.py
 """
@@ -71,12 +72,14 @@ VAR_NAC = (R['NACIONAL'] / NAC.inscritos.sum() - 1) * 100
 VAR_EUR = float(d.set_index('circulo').loc['Europa e Resto do Mundo', 'var_ins'])
 assert round(VAR_EUR) == 41
 
-# --- Legislativas del 17-5-2026 (CNE, Edital n.º 3/Eleição/2026, según Wikipedia) ---
+# --- Legislativas del 17-5-2026 (CNE, comunicado del 29-5-2026; Boletim Oficial II Série n.º 99) ---
 LEG = {'PAICV': (90660, 37), 'MpD': (84458, 33), 'UCID': (9812, 2), 'PTS': (3268, 0), 'Partido Popular': (529, 0)}
 LEG_VAL = sum(v for v, _ in LEG.values())
 LEG_PCT = {k: v / LEG_VAL * 100 for k, (v, _) in LEG.items()}
 assert round(LEG_PCT['PAICV'], 2) == 48.04 and round(LEG_PCT['MpD'], 2) == 44.75 and sum(s for _, s in LEG.values()) == 72
-LEG_PART = (LEG_VAL + 2709 + 1893) / 416096 * 100
+LEG_VOTANTES, LEG_INSCRITOS = 193335, 416096   # comunicado de la CNE
+LEG_PART = LEG_VOTANTES / LEG_INSCRITOS * 100
+assert round(LEG_PART, 1) == 46.5
 
 # --- Colores: los de cada candidatura en la web oficial de resultados de la CNE (eleicoes.cv) ---
 EST = ('<style>:root{--neves:#184690;--rosa:#14b5ea}'
@@ -188,7 +191,7 @@ g_leg = figura(f'En mayo, el PAICV de Neves ganó las legislativas con el {p(LEG
                'Legislativas del 17 de mayo de 2026: porcentaje de los votos a candidaturas y escaños (72 en total, mayoría con 37)',
                barras([(f'{"P. Popular" if k == "Partido Popular" else k} ({s} esc.)', LEG_PCT[k], {'PAICV': 'var(--neves)', 'MpD': 'var(--rosa)'}.get(k, 'var(--otros)'), p(LEG_PCT[k]) + ' %')
                        for k, (_, s) in LEG.items()], 60, 'Legislativas de Cabo Verde, mayo de 2026', W=360, ml=118, alto=26),
-               'Fuente: CNE, Edital n.º 3/Eleição/2026, de resultados (29-5-2026), según <a href="https://en.wikipedia.org/wiki/2026_Cape_Verdean_parliamentary_election">Wikipedia</a>; '
+               'Fuente: CNE, <a href="https://cne.cv/sala_de_imprensa_/cne-declara-paicv-vencedor-das-legislativas-de-2026-com-eleicao-de-37-dos-72-deputados/">resultados definitivos</a> (29-5-2026), publicados en el <a href="https://cne.cv/ano_resultado_eleicao/2026/">Boletim Oficial</a> (II Série n.º 99); '
                'mayoría absoluta del PAICV según <a href="https://www.rtp.pt/noticias/mundo/paigc-da-guine-bissau-felicita-francisco-carvalho-por-maioria-absoluta_n1742133">RTP (Lusa)</a>. Cálculo propio.',
                [('PAICV', 'var(--neves)'), ('MpD', 'var(--rosa)'), ('Otros', 'var(--otros)')],
                (['Partido', 'Votos', '%', 'Escaños'], [[k, n(v), p(LEG_PCT[k]), str(s)] for k, (v, s) in LEG.items()]))
@@ -202,7 +205,8 @@ ANTERO = 'https://e-global.pt/noticias/exclusivo/reportagem/cabo-verde-antero-ta
 AF24 = 'https://africa24tv.com/cap-vert-le-parti-paicv-vainqueur-des-elections-locales/'
 EXP = 'https://expressodasilhas.cv/politica/2026/10/03/joana-rosa-candidata-a-presidencia-da-republica-cabo-verde-precisa-de-uma-presidente-da-republica-independente-e-util/104906'
 RTP = 'https://www.rtp.pt/noticias/mundo/paigc-da-guine-bissau-felicita-francisco-carvalho-por-maioria-absoluta_n1742133'
-WLEG = 'https://en.wikipedia.org/wiki/2026_Cape_Verdean_parliamentary_election'
+WLEG = 'https://cne.cv/sala_de_imprensa_/cne-declara-paicv-vencedor-das-legislativas-de-2026-com-eleicao-de-37-dos-72-deputados/'
+BOLEG = 'https://cne.cv/ano_resultado_eleicao/2026/'
 WEB = 'https://eleicoes.cv/'
 
 H1 = f'Neves evitó la segunda vuelta en Cabo Verde por {n(MARGEN)} votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno'
@@ -226,7 +230,7 @@ cuerpo = f"""{EST}
 <h2>Un presidente cuyo partido ya gobierna</h2>
 <p data-tipo="contexto">En 2021, Neves llegó a la presidencia con un Gobierno del MpD. Eso cambió después: el PAICV ganó en diciembre de 2024 las municipales, según <a href="{AF24}">Africa24</a>, y en mayo de 2026 las legislativas, con mayoría absoluta: {LEG["PAICV"][1]} de los 72 diputados, según <a href="{RTP}">RTP</a>. Francisco Carvalho, exalcalde de Praia, es primer ministro.</p>
 {g_leg}
-<p data-tipo="dato">En las legislativas del 17 de mayo, el PAICV sacó el {p(LEG_PCT["PAICV"])} % de los votos a candidaturas y el MpD, el {p(LEG_PCT["MpD"])} %, según el edital de resultados de la CNE del 29 de mayo (Edital n.º 3/Eleição/2026), que recoge <a href="{WLEG}">Wikipedia</a>. Votó el {p(LEG_PART)} % de los inscritos.</p>
+<p data-tipo="dato">En las legislativas del 17 de mayo, el PAICV sacó el {p(LEG_PCT["PAICV"])} % de los votos a candidaturas y el MpD, el {p(LEG_PCT["MpD"])} %, según los <a href="{WLEG}">resultados definitivos de la CNE</a> del 29 de mayo, publicados en el <a href="{BOLEG}">Boletim Oficial</a>. Votó el {p(LEG_PART)} % de los inscritos.</p>
 <p data-tipo="contexto">Joana Rosa ha usado esa mayoría como argumento de campaña.</p>
 <blockquote class="cita"><p>«Neste momento temos uma força política no governo e que domina o poder local e o parlamento. [...] A ideia defendida por muitos, de que não se deve pôr os ovos todos num mesmo cesto, mostra-se perfeitamente necessária na actual conjuntura política»</p><footer>Joana Rosa, candidata apoyada por el MpD, en una entrevista con <a href="{EXP}">Expresso das Ilhas</a> (3-10-2026). «Ahora mismo tenemos una fuerza política en el Gobierno que domina el poder local y el parlamento. [...] La idea que defienden muchos de que no hay que poner todos los huevos en la misma cesta es perfectamente necesaria en la coyuntura política actual» (traducción propia)</footer></blockquote>
 <p data-tipo="hipotesis">El mapa de 2021 no dice cómo votará Cabo Verde el domingo: la elección es otra, con otra rival y con el PAICV en el Gobierno. Lo que sí muestra es dónde se decidió la última: en Santiago, que dio la mitad de los votos válidos, y en una diáspora que vota a Neves pero que vota poco. Con seis candidatos, la clave para evitar la segunda vuelta vuelve a estar en pasar de la mitad de los válidos.</p>
