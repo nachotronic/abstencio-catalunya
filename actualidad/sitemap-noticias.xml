@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/vox-vuelve-tenerife-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-10</news:publication_date>
-      <news:title>Vox vuelve a la papeleta en Tenerife: en 2023 no se presentó y el PP subió 15,4 puntos, frente a 4,4 en Las Palmas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-10</news:publication_date>
-      <news:title>Abascal con Broncano, Sánchez con Javier Ruiz: el presidente se juega el 29N a una participación que 17 provincias no alcanzaron en 2023</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -30,22 +14,6 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-11</news:publication_date>
       <news:title>El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-10</news:publication_date>
-      <news:title>El mapa electoral de Andalucía: el PSOE ganó en 233 municipios menos en 2023 sin perder votos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/paraguay-pena-destituido-mapa-departamentos/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-10</news:publication_date>
-      <news:title>Paraguay destituye a Santiago Peña, el presidente que en 2023 ganó en 16 de los 17 departamentos y en Asunción</news:title>
     </news:news>
   </url>
   <url>
@@ -198,6 +166,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-12</news:publication_date>
       <news:title>El mapa electoral de Ceuta y Melilla: Vox pasó de ganar 32 secciones de Ceuta a ninguna, y 13 de las 17 de Coalición por Melilla fueron al PSOE</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-13</news:publication_date>
+      <news:title>Los once municipios que visitan los candidatos el primer día de campaña cambiaron de ganador entre 2019 y 2023</news:title>
     </news:news>
   </url>
 </urlset>
