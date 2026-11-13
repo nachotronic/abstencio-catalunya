@@ -84,22 +84,32 @@ CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER'}
 PUBLICADO_WP = {('cis', '2026-10-30'): '2026-11-12'}   # CIS 3584, preelectoral: avance de cis.es del 12-11-2026
 
 
+def publicado_wp(w):
+    """Fecha de la referencia de Wikipedia, si es plausible (entre el fin del campo y 30 días después); si no, nada."""
+    p = w.get('publicado', '')
+    return p if p and 0 <= (date.fromisoformat(p) - date.fromisoformat(w['campo_fin'])).days <= 30 else ''
+
+
 def carga():
     """Encuestas nacionales: las de Electográfica más las que solo están en Wikipedia; escaños de Wikipedia."""
     wp = list(csv.DictReader(open(DATOS / 'wikipedia_generales_espana.csv'))) if (DATOS / 'wikipedia_generales_espana.csv').exists() else []
     eg = [r for r in csv.DictReader(open(DATOS / 'encuestas_limpias.csv')) if r['ambito'] == 'ESPAÑA']
     usadas, out = set(), []
 
-    def pareja(casa, fin):
+    def pareja(casa, fin, muestra=''):
+        # la más parecida: misma muestra y, después, el fin de campo más cercano (en un tracking diario la primera a <=4 días
+        # podía ser la entrega del día siguiente, que se quedaba sin pareja propia y salía repetida)
+        cand = []
         for i, w in enumerate(wp):
             c = clave(w['encuestadora'])
-            if i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and abs((date.fromisoformat(w['campo_fin']) - fin).days) <= 4:
-                return i
-        return None
+            dias = abs((date.fromisoformat(w['campo_fin']) - fin).days)
+            if i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and dias <= 4:
+                cand.append((not (muestra and w['muestra'] == muestra), dias, i))
+        return min(cand)[2] if cand else None
 
     for r in eg:
         fin = date.fromisoformat(r['campo_fin']) if r['campo_fin'] else date.fromisoformat(r['publicado']) - timedelta(days=3)
-        i = pareja(clave(r['encuestadora']), fin)
+        i = pareja(clave(r['encuestadora']), fin, r['muestra'])
         w = wp[i] if i is not None else {}
         if i is not None:
             usadas.add(i)
@@ -116,8 +126,10 @@ def carga():
             continue
         if w.get('reestimacion'):   # datos brutos del CIS recalculados por otra empresa: solo en la tabla, con su nombre
             w = dict(w, encuestadora=f'{w["encuestadora"]} reestimado por {w["reestimacion"]}')
-        out.append({'reest': bool(w.get('reestimacion')), 'casa': w['encuestadora'], 'medio': w['cliente'], 'inicio': w['campo_inicio'], 'fin': w['campo_fin'], 'fin_aprox': False,
-                    'publicado': '' if w.get('reestimacion') else PUBLICADO_WP.get((clave(w['encuestadora']), w['campo_fin']), ''),
+        # el mismo medio que en las de Electográfica (Wikipedia pone «Prisa» a 40dB)
+        medio = w['cliente'] if w.get('reestimacion') else CLIENTE_HABITUAL.get(clave(w['encuestadora']), w['cliente'])
+        out.append({'reest': bool(w.get('reestimacion')), 'casa': w['encuestadora'], 'medio': medio, 'inicio': w['campo_inicio'], 'fin': w['campo_fin'], 'fin_aprox': False,
+                    'publicado': '' if w.get('reestimacion') else PUBLICADO_WP.get((clave(w['encuestadora']), w['campo_fin'])) or publicado_wp(w),
                     'muestra': w['muestra'], 'voto': {k: num(w[k]) for k, *_ in PRINCIPALES if num(w[k]) is not None},
                     'esc': {k: w[f'esc_{k}'] for k, *_ in TODOS if w.get(f'esc_{k}')}, 'url': w['fuente_original']})
     out = [e for e in out if clave(e['casa']) not in NO_ENCUESTAS and 'PP' in e['voto'] and 'PSOE' in e['voto']]
