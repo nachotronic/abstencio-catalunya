@@ -36,28 +36,31 @@ VENTAJA = round(MODELO['media_pp'] - MODELO['media_psoe'], 4)
 VENTAJA_ANT = round(MODELO['media_pp_ant'] - MODELO['media_psoe_ant'], 4)
 assert f'{VENTAJA:.1f}' == '3.2' and f'{VENTAJA_ANT:.1f}' == '3.6'
 
-PP_CLARO = 'color-mix(in srgb, var(--pp) 45%, var(--bg))'
-filas = [(e[0], (e[3] + e[4]) / 2, 'var(--pp)' if e[3] >= 176 else PP_CLARO, f'{e[3]}-{e[4]}' if e[3] != e[4] else f'{e[3]}')
+PP_CLARO = 'color-mix(in srgb, var(--pp) 45%, #fff)'   # más claro también en modo oscuro
+CORTO = lambda e: e[0].split(' · ')[0]   # en el gráfico, solo la encuestadora; el medio va en la tabla
+filas = [(CORTO(e), (e[3] + e[4]) / 2, 'var(--pp)' if e[3] >= 176 else PP_CLARO, f'{e[3]}-{e[4]}' if e[3] != e[4] else f'{e[3]}')
          for e in sorted(CON_ESC, key=lambda r: -(r[3] + r[4]))]
 g_enc = figura(f'{MAYORIA} de {len(CON_ESC)} encuestas dan a PP y Vox la mayoría absoluta',
                'Escaños de PP y Vox juntos en la última encuesta de cada encuestadora que publica escaños. Si la encuesta da una horquilla, la barra llega a su centro y la cifra es la horquilla',
-               barras(filas, 230, 'Escaños de PP y Vox en cada encuesta', ml=200, linea=(176, 'Mayoría: 176'), separar=True),
+               barras(filas, 230, 'Escaños de PP y Vox en cada encuesta', W=380, ml=112, linea=(176, 'Mayoría: 176'), separar=True),
                f'Fuente: <a href="{BASE}encuestas/">página de encuestas</a> de Mapa Electoral, 14 de noviembre de 2026, con el enlace a cada encuesta. Última encuesta de cada encuestadora con trabajo de campo terminado en los últimos 30 días. Color claro: la horquilla empieza por debajo de 176.',
                None,
                (['Encuestadora y medio', 'PP + Vox', 'Publicada'], [[e[0], f'{e[3]}-{e[4]}' if e[3] != e[4] else str(e[3]), e[5]] for e in CON_ESC]))
 
 dif = lambda e: round(e[1] - e[2], 1)
-filas2 = [(e[0], abs(dif(e)), 'var(--pp)' if dif(e) > 0 else 'var(--psoe)', f'{"PP" if dif(e) > 0 else "PSOE"} +{n(abs(dif(e)), 1)}')
+filas2 = [(CORTO(e), abs(dif(e)), 'var(--pp)' if dif(e) > 0 else 'var(--psoe)', f'{"PP" if dif(e) > 0 else "PSOE"} +{n(abs(dif(e)), 1)}')
           for e in sorted(ENC, key=lambda r: -dif(r))]
 g_dif = figura('El CIS y SW Demoscopia, los dos únicos que ponen por delante al PSOE',
                'Ventaja en puntos del primero sobre el segundo, PP o PSOE, en la última encuesta de cada encuestadora',
-               barras(filas2, 9, 'Ventaja del PP o del PSOE en cada encuesta', ml=200, separar=True),
+               barras(filas2, 9, 'Ventaja del PP o del PSOE en cada encuesta', W=380, ml=112, separar=True),
                f'Fuente: <a href="{BASE}encuestas/">página de encuestas</a> de Mapa Electoral, 14 de noviembre de 2026. Diferencia entre el voto estimado del PP y el del PSOE en cada encuesta.',
                [('Por delante, el PP', 'var(--pp)'), ('Por delante, el PSOE', 'var(--psoe)')],
                (['Encuestadora y medio', 'PP (%)', 'PSOE (%)', 'Publicada'], [[e[0], n(e[1], 1), n(e[2], 1), e[5]] for e in ENC]))
 
 SANCHEZ_SEPTIMA = 'https://www.infobae.com/espana/2026/11/09/elecciones-generales-29-n-en-directo-feijoo-confia-en-que-los-sindicatos-acepten-el-resultado-electoral-si-hay-cambio-de-gobierno/'
 ARNEDO = 'https://actualidadriojabaja.com/sanchez-pide-en-arnedo-una-participacion-del-75-el-29n-para-alcanzar-una-mayoria-progresista/'
+ARNEDO_EFE = 'https://www.infobae.com/espana/agencias/2026/11/13/sanchez-anima-a-la-participacion-un-75-por-ciento-para-una-mayoria-absoluta-progresista/'
+ARNEDO_COPE = 'https://www.cope.es/actualidad/espana/noticias/pedro-sanchez-echa-cuentas-29n-quedaros-dos-cifras-75-176-participacion-75-ciento-lograr-mayoria-absoluta-escanos-progresistas-20261113_3475212.html'
 FEIJOO_IMV = 'https://www.europapress.es/nacional/noticia-feijoo-reunira-ingreso-minimo-vital-subsidios-renta-activacion-vinculada-busqueda-empleo-20261110143401.html'
 MAROTO = 'https://www.europapress.es/madrid/noticia-psoe-asegura-remontada-realidad-avisa-feijoo-le-van-hacer-muy-largas-semanas-20261109111930.html'
 CCOO = ('https://industria.ccoo.es/noticia:772073--Huelga_en_la_industria_carnica_del_9_al_13N_Neveras_vacias_hasta_que_las_patronales_entiendan_'
@@ -65,7 +68,9 @@ CCOO = ('https://industria.ccoo.es/noticia:772073--Huelga_en_la_industria_carnic
 CIS_NOTA = 'https://www.cis.es/documents/d/guest/3584_estimacion-pdf'
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">La campaña del 29N empezó en la medianoche del jueves al viernes. {L('arranque-campana-sevilla-badalona-colon-vallecas-29n', 'Cada candidato eligió dónde abrirla')}: Pedro Sánchez, en Sevilla; Alberto Núñez Feijóo, en Badalona, con Xavier García Albiol; Santiago Abascal, en la plaza de Colón de Madrid, y Ada Colau, en Puente de Vallecas. El viernes por la mañana, Sánchez fue a Arnedo, en La Rioja, y allí pidió una participación del 75 % para reunir una mayoría progresista de 176 diputados, según <a href="{ARNEDO}">Actualidad Rioja Baja</a>. Cuatro días antes, en La Séptima, había puesto el listón algo más abajo:</p>
+<p data-tipo="contexto">La campaña del 29N empezó en la medianoche del jueves al viernes. {L('arranque-campana-sevilla-badalona-colon-vallecas-29n', 'Cada candidato eligió dónde abrirla')}: Pedro Sánchez, en Sevilla; Alberto Núñez Feijóo, en Badalona, con Xavier García Albiol; Santiago Abascal, en la plaza de Colón de Madrid, y Ada Colau, en Puente de Vallecas. El viernes por la mañana, Sánchez fue a Arnedo, en La Rioja, y allí pidió una participación del 75 % para lograr una mayoría absoluta progresista, según <a href="{ARNEDO_EFE}">EFE</a> y <a href="{ARNEDO}">Actualidad Rioja Baja</a>:</p>
+<blockquote class="cita"><p>«Os pido que nos quedemos con dos cifras, que es nuestro objetivo de aquí al próximo 29 de noviembre, 75 y 176»</p><footer>Pedro Sánchez, en Arnedo, el 13 de noviembre de 2026, según <a href="{ARNEDO_COPE}">COPE</a>.</footer></blockquote>
+<p data-tipo="contexto">Cuatro días antes, en La Séptima, había puesto el listón algo más abajo:</p>
 <blockquote class="cita"><p>«De lejos va a superar el 70 % de participación que tuvimos en las elecciones de 2023 y, por tanto, al igual que ocurrió en Estados Unidos, en Brasil y también en España en 2023, volveremos a reeditar una mayoría de progreso en el Parlamento»</p><footer>Pedro Sánchez, en La Séptima, el 9 de noviembre de 2026, según el directo de <a href="{SANCHEZ_SEPTIMA}">Infobae</a>.</footer></blockquote>
 <p data-tipo="contexto">Fue también la semana del CIS preelectoral, el jueves, y del primer debate de la campaña, el viernes en laSexta. Del domingo 8 al viernes 13 publicamos 32 piezas en esta sección, 18 de ellas en la serie «El mapa electoral de…», una por comunidad. Esta es la semana del 8 al 13 de noviembre contada desde los mapas.</p>
 
@@ -150,7 +155,7 @@ foot = ('Datos: piezas de Mapa Electoral de la semana del 8 al 13 de noviembre d
         'encuestas publicadas y modelo de Mapa Electoral a 14 de noviembre de 2026. Cálculo: actualidad/src/resumenes/dos_semanas.py.')
 
 TIT = (f'A dos semanas del 29N, {MAYORIA} de las {len(CON_ESC)} encuestas con escaños dan mayoría absoluta a PP y Vox; '
-       'solo el CIS y SW Demoscopia ponen por delante al PSOE: la primera semana de campaña en el mapa')
+       'solo el CIS y SW Demoscopia ponen por delante al PSOE')
 DEK = ('Arrancó la campaña, el CIS dio al PSOE 7,8 puntos de ventaja y Sánchez pidió una participación del 75 %. Las demás encuestas, '
        'salvo SW Demoscopia, siguen dando ganador al PP. Esta es la semana del 8 al 13 de noviembre contada desde los mapas.')
 datos_js = '<script>const D=' + json.dumps({'SEMANA': [s for s, _ in semana], 'ENC': ENC, 'MODELO': MODELO, 'VENTAJA': VENTAJA, 'VENTAJA_ANT': VENTAJA_ANT},

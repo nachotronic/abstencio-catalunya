@@ -181,10 +181,6 @@
  ],
  "externas": [
   {
-   "texto": "pidió una participación del 75 % para reunir una mayoría",
-   "fuente": "https://actualidadriojabaja.com/sanchez-pide-en-arnedo-una-participacion-del-75-el-29n-para-alcanzar-una-mayoria-progresista/"
-  },
-  {
    "texto": "preelectoral: el PSOE, con el 33,3 %, saca 7,8 puntos al",
    "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-29n/"
   },
@@ -439,17 +435,13 @@
   {
    "texto": "votos. La diáspora es hoy el 18,2 % del censo.",
    "fuente": "https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/"
+  },
+  {
+   "texto": "pidió una participación del 75 % para lograr una mayoría",
+   "fuente": "https://www.infobae.com/espana/agencias/2026/11/13/sanchez-anima-a-la-participacion-un-75-por-ciento-para-una-mayoria-absoluta-progresista/"
   }
  ],
  "ignorar": [
-  {
-   "texto": "una mayoría progresista de 176 diputados, según Actualidad",
-   "motivo": "umbral de la mayoría absoluta del Congreso"
-  },
-  {
-   "texto": "según Actualidad Rioja Baja. Cuatro días antes, en La Séptima,",
-   "motivo": "del 9 al 13 de noviembre: cuatro días (calendario)"
-  },
   {
    "texto": "viernes en laSexta. Del domingo 8 al viernes 13 publicamos",
    "motivo": "fecha del calendario"
@@ -513,6 +505,10 @@
   {
    "texto": "Cuatro arranques y once pueblos",
    "motivo": "intertítulo: cuatro candidatos y los once municipios, cifras del texto"
+  },
+  {
+   "texto": "Cuatro días antes, en La Séptima,",
+   "motivo": "del 9 al 13 de noviembre: cuatro días (calendario)"
   }
  ],
  "permitir_espana": []

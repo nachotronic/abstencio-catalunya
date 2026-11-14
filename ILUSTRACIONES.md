@@ -24,7 +24,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
-| 2026-11-14 | [`dos-semanas-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/dos-semanas-29n-la-semana-en-el-mapa/) | A dos semanas del 29N, 14 de las 16 encuestas con escaños dan mayoría absoluta a PP y Vox; solo el CIS y SW Demoscopia ponen por delante al PSOE: la primera semana de campaña en el mapa | primer gráfico de la pieza |
+| 2026-11-14 | [`dos-semanas-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/dos-semanas-29n-la-semana-en-el-mapa/) | A dos semanas del 29N, 14 de las 16 encuestas con escaños dan mayoría absoluta a PP y Vox; solo el CIS y SW Demoscopia ponen por delante al PSOE | primer gráfico de la pieza |
 | 2026-11-13 | [`primer-dia-campana-municipios-29n`](https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/) | Los once municipios que visitan los candidatos el primer día de campaña, fuera de Madrid y Barcelona, cambiaron de ganador entre 2019 y 2023 | primer gráfico de la pieza |
 | 2026-11-13 | [`debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n`](https://mapaelectoral.es/actualidad/debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n/) | Dos de los cuatro del debate de laSexta no se presentan el 29N: ni Cuerpo ni Bustinduy están en ninguna lista | primer gráfico de la pieza |
 | 2026-11-13 | [`cis-preelectoral-provincias-29n`](https://mapaelectoral.es/actualidad/cis-preelectoral-provincias-29n/) | El CIS da al PSOE más escaños que la media de encuestas en 13 provincias y menos en ninguna; en Madrid, entre 12 y 14 frente a 10 | primer gráfico de la pieza |
