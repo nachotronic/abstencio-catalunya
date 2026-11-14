@@ -1,16 +1,16 @@
 {
- "descargado": "2026-11-14T13:30Z",
+ "descargado": "2026-11-14T22:23Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1086,
+ "encuestas_espana": 1088,
  "encuestas_infraestatales": 140,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-14",
-  "encuestadora": "40dB.",
-  "cliente": ""
+  "encuestadora": "YouGov",
+  "cliente": "Ara"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 18,
+  "UPN-PP": 20,
   "D21": 3,
   "Autonómicas - CUP": 2,
   "JxSí": 1,
@@ -21,8 +21,8 @@
   "COMUNS-FA": 1
  },
  "wikipedia": {
-  "encuestas": 621,
+  "encuestas": 626,
   "ultima_fin_campo": "2026-11-13",
-  "faltan_en_electografica_120_dias": 20
+  "faltan_en_electografica_120_dias": 22
  }
 }
