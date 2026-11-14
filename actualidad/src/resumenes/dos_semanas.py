@@ -15,7 +15,7 @@ L = lambda slug, t: f'<a href="{A}{slug}/">{t}</a>'
 # Última encuesta de cada encuestadora con trabajo de campo terminado en los últimos 30 días (encuestas/index.html, 14-11-2026).
 # (encuestadora · medio, PP %, PSOE %, escaños PP+Vox bajo, alto (None si no publica escaños), publicada)
 ENC = [('Sigma Dos · El Mundo', 31.0, 25.4, 188, 201, '13 nov'), ('SW Demoscopia · La Séptima', 28.5, 31.6, 169, 182, '13 nov'),
-       ('EM-Analytics · Electomanía', 30.4, 26.1, 190, 190, '13 nov'), ('40dB · El País / SER', 31.5, 29.4, 185, 207, '13 nov'),
+       ('EM-Analytics · Electomanía', 30.4, 26.1, 190, 190, '13 nov'), ('40dB · El País / SER', 31.1, 29.8, 184, 201, '14 nov'),
        ('Winston · Artículo14', 31.1, 26.4, 198, 198, '13 nov'), ('SocioMétrica · El Español', 32.0, 27.7, 202, 202, '8 nov'),
        ('IMOP · El Confidencial', 29.8, 25.9, 196, 196, '8 nov'), ('DYM · 20minutos', 33.1, 27.3, 198, 205, '10 nov'),
        ('NC Report · La Razón', 32.6, 25.6, 205, 209, '9 nov'), ('GAD3 · Vocento', 31.9, 25.9, 199, 199, '9 nov'),
