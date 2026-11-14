@@ -1,0 +1,519 @@
+{
+ "pieza": "dos-semanas-29n-la-semana-en-el-mapa",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "A dos semanas del 29N, 14 de las 16 encuestas",
+   "cifra": "14",
+   "calculo": "sum(e[3] is not None and e[3] >= 176 for e in D['ENC'])",
+   "_donde": "titular"
+  },
+  {
+   "texto": "semanas del 29N, 14 de las 16 encuestas con escaños",
+   "cifra": "16",
+   "calculo": "sum(e[3] is not None for e in D['ENC'])",
+   "_donde": "titular"
+  },
+  {
+   "texto": "«El mapa electoral de…». 16 de 18 encuestas dan",
+   "cifra": "16",
+   "calculo": "sum(e[1] > e[2] for e in D['ENC'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "mapa electoral de…». 16 de 18 encuestas dan ganador",
+   "cifra": "18",
+   "calculo": "len(D['ENC'])",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "al viernes 13 publicamos 32 piezas en esta sección,",
+   "cifra": "32",
+   "calculo": "len(D['SEMANA'])",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "32 piezas en esta sección, 18 de ellas en la serie",
+   "cifra": "18",
+   "calculo": "sum(s.startswith('mapa-electoral-') for s in D['SEMANA'])",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "encuesta de cada una de las 18 encuestadoras que han",
+   "cifra": "18",
+   "calculo": "len(D['ENC'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "campo en los últimos 30 días, 16 dan ganador al PP. Las",
+   "cifra": "16",
+   "calculo": "sum(e[1] > e[2] for e in D['ENC'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "que el viernes le daba el 31,6 % frente al 28,5 % del",
+   "cifra": "31,6",
+   "calculo": "D['ENC'][1][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "daba el 31,6 % frente al 28,5 % del PP. De las 16",
+   "cifra": "28,5",
+   "calculo": "D['ENC'][1][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al 28,5 % del PP. De las 16 que publican escaños,",
+   "cifra": "16",
+   "calculo": "sum(e[3] is not None for e in D['ENC'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "16 que publican escaños, 14 dan a PP y Vox juntos",
+   "cifra": "14",
+   "calculo": "sum(e[3] is not None and e[3] >= 176 for e in D['ENC'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "hasta el viernes, da al PP el 30,7 % y al PSOE el 27,5",
+   "cifra": "30,7",
+   "calculo": "D['MODELO']['media_pp']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP el 30,7 % y al PSOE el 27,5 %: 3,2 puntos de ventaja.",
+   "cifra": "27,5",
+   "calculo": "D['MODELO']['media_psoe']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "30,7 % y al PSOE el 27,5 %: 3,2 puntos de ventaja. Hace",
+   "cifra": "3,2",
+   "calculo": "D['VENTAJA']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ventaja. Hace una semana eran 3,6. En su escenario central,",
+   "cifra": "3,6",
+   "calculo": "D['VENTAJA_ANT']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "noviembre, el modelo daba PP 126, PSOE 109, Vox 67, Sumar",
+   "cifra": "126",
+   "calculo": "D['MODELO']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "modelo daba PP 126, PSOE 109, Vox 67, Sumar y el",
+   "cifra": "109",
+   "calculo": "D['MODELO']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "daba PP 126, PSOE 109, Vox 67, Sumar y el Frente Amplio",
+   "cifra": "67",
+   "calculo": "D['MODELO']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Sumar y el Frente Amplio 13 y ERC 10. PP y Vox sumarían",
+   "cifra": "13",
+   "calculo": "D['MODELO']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el Frente Amplio 13 y ERC 10. PP y Vox sumarían 193,",
+   "cifra": "10",
+   "calculo": "D['MODELO']['ERC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ERC 10. PP y Vox sumarían 193, entre 176 y 210 en",
+   "cifra": "193",
+   "calculo": "D['MODELO']['ppvox']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y Vox sumarían 193, entre 176 y 210 en ocho de cada",
+   "cifra": "176",
+   "calculo": "D['MODELO']['lo']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sumarían 193, entre 176 y 210 en ocho de cada diez",
+   "cifra": "210",
+   "calculo": "D['MODELO']['hi']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "la mayoría absoluta en el 91 % de ellas; a los tres",
+   "cifra": "91",
+   "calculo": "D['MODELO']['p176']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "a los tres quintos, en el 10 %. Las cifras de cada",
+   "cifra": "10",
+   "calculo": "D['MODELO']['p210']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al jueves publicamos las 18 piezas de la serie «El",
+   "cifra": "18",
+   "calculo": "sum(s.startswith('mapa-electoral-') for s in D['SEMANA'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "14 de 16 encuestas dan",
+   "cifra": "14",
+   "calculo": "sum(e[3] is not None and e[3] >= 176 for e in D['ENC'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "14 de 16 encuestas dan a PP y",
+   "cifra": "16",
+   "calculo": "sum(e[3] is not None for e in D['ENC'])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "pidió una participación del 75 % para reunir una mayoría",
+   "fuente": "https://actualidadriojabaja.com/sanchez-pide-en-arnedo-una-participacion-del-75-el-29n-para-alcanzar-una-mayoria-progresista/"
+  },
+  {
+   "texto": "preelectoral: el PSOE, con el 33,3 %, saca 7,8 puntos al",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-29n/"
+  },
+  {
+   "texto": "PSOE, con el 33,3 %, saca 7,8 puntos al PP, que se",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-29n/"
+  },
+  {
+   "texto": "al PP, que se queda en el 25,5 %. Ni sumando el máximo",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-29n/"
+  },
+  {
+   "texto": "mayoría absoluta: se quedan en 171 escaños. Ninguna otra",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-29n/"
+  },
+  {
+   "texto": "la media de encuestas en 13 provincias y menos en",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-provincias-29n/"
+  },
+  {
+   "texto": "ninguna; en Madrid, entre 12 y 14 frente a 10. El",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-provincias-29n/"
+  },
+  {
+   "texto": "ninguna; en Madrid, entre 12 y 14 frente a 10. El propio",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-provincias-29n/"
+  },
+  {
+   "texto": "Madrid, entre 12 y 14 frente a 10. El propio CIS avisa",
+   "fuente": "https://mapaelectoral.es/actualidad/cis-preelectoral-provincias-29n/"
+  },
+  {
+   "texto": "encuesta de El País y la SER: 29,9 % frente a 31,9 %, su",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/"
+  },
+  {
+   "texto": "y la SER: 29,9 % frente a 31,9 %, su mejor dato en",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/"
+  },
+  {
+   "texto": "diciembre de 2024. Las otras tres encuestas publicadas",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/"
+  },
+  {
+   "texto": "publicadas ese día veían entre seis y ocho puntos de distancia.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/"
+  },
+  {
+   "texto": "ese día veían entre seis y ocho puntos de distancia.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-40db-psoe-podemos-29n/"
+  },
+  {
+   "texto": "votado en ninguna de las 149 secciones censales:",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "censales: el PSC ganó en 146 y le sacó 24,0 puntos.",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "PSC ganó en 146 y le sacó 24,0 puntos. Abascal, en",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "en cambio, arrancó entre tres barrios donde el PP",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "donde el PP sacó entre el 44,4 % y el 67,7 %, y Colau,",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "sacó entre el 44,4 % y el 67,7 %, y Colau, en un distrito",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "donde Sumar quedó tercera, a 166 votos del PP.",
+   "fuente": "https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/"
+  },
+  {
+   "texto": "fuera de Madrid y Barcelona once municipios, y los once",
+   "fuente": "https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/"
+  },
+  {
+   "texto": "Barcelona once municipios, y los once cambiaron de ganador",
+   "fuente": "https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/"
+  },
+  {
+   "texto": "Sánchez, lo ganó el PSOE por 11,0 puntos en 2019 y lo",
+   "fuente": "https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/"
+  },
+  {
+   "texto": "puntos en 2019 y lo perdió por 4,4 en 2023. Solo en uno,",
+   "fuente": "https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/"
+  },
+  {
+   "texto": "debate de laSexta, dos de los cuatro participantes no se",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n/"
+  },
+  {
+   "texto": "la media de encuestas da cuatro escaños al PP y cuatro",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n/"
+  },
+  {
+   "texto": "da cuatro escaños al PP y cuatro al PSOE, y José María",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n/"
+  },
+  {
+   "texto": "En 2023 votó el 70,4 % de los residentes",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "los residentes en España, y 17 provincias no llegaron",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "provincias no llegaron al 70 %. Con el censo de 2026,",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "Con el censo de 2026, el 75 % que pide Sánchez son",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "75 % que pide Sánchez son 27,0 millones de votantes, 2,2 millones",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "27,0 millones de votantes, 2,2 millones más que en 2023. ¿A",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "las urnas como la media, cinco escaños de 2023 habrían",
+   "fuente": "https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/"
+  },
+  {
+   "texto": "habrían cambiado de manos, cuatro de ellos hacia el PSOE.",
+   "fuente": "https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/"
+  },
+  {
+   "texto": "menos votó, el PSOE sacó el 37,3 % y el PP el 27,4 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/"
+  },
+  {
+   "texto": "sacó el 37,3 % y el PP el 27,4 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/"
+  },
+  {
+   "texto": "activación». En octubre lo cobraban 2.781.679 personas, un 17,7 %",
+   "fuente": "https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/"
+  },
+  {
+   "texto": "cobraban 2.781.679 personas, un 17,7 % más que un año antes:",
+   "fuente": "https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/"
+  },
+  {
+   "texto": "un año antes: uno de cada 8 habitantes de Jaén y",
+   "fuente": "https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/"
+  },
+  {
+   "texto": "habitantes de Jaén y uno de cada 40 de Gipuzkoa. Feijóo",
+   "fuente": "https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/"
+  },
+  {
+   "texto": "estuvo llamada a la huelga. El 11,5 % de los ocupados de",
+   "fuente": "https://mapaelectoral.es/actualidad/huelga-carnica-pueblos-industria-29n/"
+  },
+  {
+   "texto": "Guissona, sede de bonÀrea, el 56,3 %. En los municipios",
+   "fuente": "https://mapaelectoral.es/actualidad/huelga-carnica-pueblos-industria-29n/"
+  },
+  {
+   "texto": "industria, el PP sacó en 2023 1,9 puntos menos que en",
+   "fuente": "https://mapaelectoral.es/actualidad/huelga-carnica-pueblos-industria-29n/"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 699 de los 785 municipios",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/"
+  },
+  {
+   "texto": "pasó de ganar en 699 de los 785 municipios a ganar en",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/"
+  },
+  {
+   "texto": "785 municipios a ganar en 466, con el mismo 33,8 %",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/"
+  },
+  {
+   "texto": "ganar en 466, con el mismo 33,8 % de los votos. En Cataluña,",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-andalucia-29n/"
+  },
+  {
+   "texto": "En Cataluña, ERC pasó de 619 a 159, y el PSC, de",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/"
+  },
+  {
+   "texto": "Cataluña, ERC pasó de 619 a 159, y el PSC, de 75 a 462.",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/"
+  },
+  {
+   "texto": "de 619 a 159, y el PSC, de 75 a 462. En Madrid, Vox",
+   "fuente": "https://mapaelectoral.es/actualidad/sanchez-abascal-septima-revuelta-participacion-29n/"
+  },
+  {
+   "texto": "a 159, y el PSC, de 75 a 462. En Madrid, Vox ganó",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/"
+  },
+  {
+   "texto": "462. En Madrid, Vox ganó en 61 municipios en 2019 y",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/"
+  },
+  {
+   "texto": "en la Región de Murcia los 16 que había ganado pasaron",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-murcia-29n/"
+  },
+  {
+   "texto": "prácticamente empatados: el 32,6 % de los votos para",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-ceuta-melilla-29n/"
+  },
+  {
+   "texto": "los votos para el PP y el 32,3 % para Vox.",
+   "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-ceuta-melilla-29n/"
+  },
+  {
+   "texto": "Aquel año, el PP subió allí 15,4 puntos, frente a 4,4",
+   "fuente": "https://mapaelectoral.es/actualidad/vox-vuelve-tenerife-29n/"
+  },
+  {
+   "texto": "allí 15,4 puntos, frente a 4,4 en Las Palmas. Con las",
+   "fuente": "https://mapaelectoral.es/actualidad/vox-vuelve-tenerife-29n/"
+  },
+  {
+   "texto": "recuperaría entre uno y dos de los siete diputados de la provincia.",
+   "fuente": "https://mapaelectoral.es/actualidad/vox-vuelve-tenerife-29n/"
+  },
+  {
+   "texto": "presidente Santiago Peña con 44 de sus 45 votos, por",
+   "fuente": "https://mapaelectoral.es/actualidad/paraguay-pena-destituido-mapa-departamentos/"
+  },
+  {
+   "texto": "Santiago Peña con 44 de sus 45 votos, por mal desempeño",
+   "fuente": "https://mapaelectoral.es/actualidad/paraguay-pena-destituido-mapa-departamentos/"
+  },
+  {
+   "texto": "domingo vota Cabo Verde: seis candidatos se disputan",
+   "fuente": "https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/"
+  },
+  {
+   "texto": "evitó la segunda vuelta por 3.311 votos. La diáspora es",
+   "fuente": "https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/"
+  },
+  {
+   "texto": "votos. La diáspora es hoy el 18,2 % del censo.",
+   "fuente": "https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "una mayoría progresista de 176 diputados, según Actualidad",
+   "motivo": "umbral de la mayoría absoluta del Congreso"
+  },
+  {
+   "texto": "según Actualidad Rioja Baja. Cuatro días antes, en La Séptima,",
+   "motivo": "del 9 al 13 de noviembre: cuatro días (calendario)"
+  },
+  {
+   "texto": "viernes en laSexta. Del domingo 8 al viernes 13 publicamos",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "Del domingo 8 al viernes 13 publicamos 32 piezas",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "trabajo de campo en los últimos 30 días, 16 dan ganador",
+   "motivo": "criterio de la página de encuestas: últimos 30 días"
+  },
+  {
+   "texto": "14 dan a PP y Vox juntos 176 o más, contando el extremo",
+   "motivo": "umbral de la mayoría absoluta del Congreso"
+  },
+  {
+   "texto": "horquilla; ninguna les da los tres quintos, 210.",
+   "motivo": "tres quintos del Congreso, umbral constitucional"
+  },
+  {
+   "texto": "les da los tres quintos, 210.",
+   "motivo": "tres quintos de 350 escaños"
+  },
+  {
+   "texto": "sumarían 193, entre 176 y 210 en ocho de cada diez simulaciones,",
+   "motivo": "percentiles 10 y 90 del modelo: ocho de cada diez simulaciones"
+  },
+  {
+   "texto": "176 y 210 en ocho de cada diez simulaciones, y llegan",
+   "motivo": "percentiles 10 y 90 del modelo: ocho de cada diez simulaciones"
+  },
+  {
+   "texto": "en el 91 % de ellas; a los tres quintos, en el 10 %.",
+   "motivo": "tres quintos del Congreso, umbral constitucional"
+  },
+  {
+   "texto": "Del lunes 9 al viernes 13, la industria",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "Del lunes 9 al viernes 13, la industria cárnica",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "campaña. A partir del martes 24 no se podrán publicar",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "electoral lo prohíbe en los cinco días anteriores a la",
+   "motivo": "plazo legal de la LOREG (artículo 69.7)"
+  },
+  {
+   "texto": "actualizan cada día. El sábado 28 es la jornada de reflexión.",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "Cuatro arranques y once pueblos",
+   "motivo": "intertítulo: cuatro candidatos y los once municipios, cifras del texto"
+  },
+  {
+   "texto": "Cuatro arranques y once pueblos",
+   "motivo": "intertítulo: cuatro candidatos y los once municipios, cifras del texto"
+  }
+ ],
+ "permitir_espana": []
+}

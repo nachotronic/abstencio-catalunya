@@ -1,51 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-11</news:publication_date>
-      <news:title>El mapa electoral de Cataluña: ERC pasó de ganar en 619 municipios a ganar en 159, y el PSC, de 75 a 462</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-madrid-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-11</news:publication_date>
-      <news:title>El mapa electoral de Madrid: Vox ganó en 61 municipios en 2019 y en ninguno en 2023; el PP pasó de 46 a 158</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-12</news:publication_date>
       <news:title>Neves evitó la segunda vuelta en Cabo Verde por 3.311 votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/renta-activacion-ingreso-minimo-vital-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-11</news:publication_date>
-      <news:title>El ingreso mínimo vital que Feijóo quiere convertir en «renta de activación» llega a uno de cada 8 habitantes de Jaén y a uno de cada 40 de Gipuzkoa</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-comunitat-valenciana-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-11</news:publication_date>
-      <news:title>El mapa electoral de la Comunitat Valenciana: el PSOE sumó 148.135 votos y aun así pasó de ganar en 353 municipios a ganar en 224</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-castilla-y-leon-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-11</news:publication_date>
-      <news:title>El mapa electoral de Castilla y León: el PSOE ganó en seis de las nueve capitales en 2019 y solo en Soria en 2023</news:title>
     </news:news>
   </url>
   <url>
@@ -190,6 +150,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-13</news:publication_date>
       <news:title>El CIS da al PSOE más escaños que la media de encuestas en 13 provincias y menos en ninguna; en Madrid, entre 12 y 14 frente a 10</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/dos-semanas-29n-la-semana-en-el-mapa/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-14</news:publication_date>
+      <news:title>A dos semanas del 29N, 14 de las 16 encuestas con escaños dan mayoría absoluta a PP y Vox; solo el CIS y SW Demoscopia ponen por delante al PSOE: la primera semana de campaña en el mapa</news:title>
     </news:news>
   </url>
 </urlset>
