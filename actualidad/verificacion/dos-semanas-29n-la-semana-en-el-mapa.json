@@ -79,85 +79,85 @@
   {
    "texto": "hasta el viernes, da al PP el 30,7 % y al PSOE el 27,5",
    "cifra": "30,7",
-   "calculo": "D['MODELO']['media_pp']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['meta']['media_encuestas']['PP']",
    "_donde": "dato"
   },
   {
    "texto": "PP el 30,7 % y al PSOE el 27,5 %: 3,2 puntos de ventaja.",
    "cifra": "27,5",
-   "calculo": "D['MODELO']['media_psoe']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['meta']['media_encuestas']['PSOE']",
    "_donde": "dato"
   },
   {
    "texto": "30,7 % y al PSOE el 27,5 %: 3,2 puntos de ventaja. Hace",
    "cifra": "3,2",
-   "calculo": "D['VENTAJA']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['meta']['media_encuestas']['PP'] - modelo('2026-11-14', hora='07:00')['meta']['media_encuestas']['PSOE']",
    "_donde": "dato"
   },
   {
    "texto": "ventaja. Hace una semana eran 3,6. En su escenario central,",
    "cifra": "3,6",
-   "calculo": "D['VENTAJA_ANT']",
+   "calculo": "modelo('2026-11-07', hora='07:00')['meta']['media_encuestas']['PP'] - modelo('2026-11-07', hora='07:00')['meta']['media_encuestas']['PSOE']",
    "_donde": "dato"
   },
   {
    "texto": "noviembre, el modelo daba PP 126, PSOE 109, Vox 67, Sumar",
    "cifra": "126",
-   "calculo": "D['MODELO']['PP']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['hemiciclo']['congreso']['PP']",
    "_donde": "dato"
   },
   {
    "texto": "modelo daba PP 126, PSOE 109, Vox 67, Sumar y el",
    "cifra": "109",
-   "calculo": "D['MODELO']['PSOE']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['hemiciclo']['congreso']['PSOE']",
    "_donde": "dato"
   },
   {
    "texto": "daba PP 126, PSOE 109, Vox 67, Sumar y el Frente Amplio",
    "cifra": "67",
-   "calculo": "D['MODELO']['VOX']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['hemiciclo']['congreso']['Vox']",
    "_donde": "dato"
   },
   {
    "texto": "Sumar y el Frente Amplio 13 y ERC 10. PP y Vox sumarían",
    "cifra": "13",
-   "calculo": "D['MODELO']['SUMAR']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['hemiciclo']['congreso']['Sumar']",
    "_donde": "dato"
   },
   {
    "texto": "el Frente Amplio 13 y ERC 10. PP y Vox sumarían 193,",
    "cifra": "10",
-   "calculo": "D['MODELO']['ERC']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['hemiciclo']['congreso']['ERC']",
    "_donde": "dato"
   },
   {
    "texto": "ERC 10. PP y Vox sumarían 193, entre 176 y 210 en",
    "cifra": "193",
-   "calculo": "D['MODELO']['ppvox']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['bloques'][0]['escanos'][2]",
    "_donde": "dato"
   },
   {
    "texto": "y Vox sumarían 193, entre 176 y 210 en ocho de cada",
    "cifra": "176",
-   "calculo": "D['MODELO']['lo']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['bloques'][0]['escanos'][1]",
    "_donde": "dato"
   },
   {
    "texto": "sumarían 193, entre 176 y 210 en ocho de cada diez",
    "cifra": "210",
-   "calculo": "D['MODELO']['hi']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['bloques'][0]['escanos'][3]",
    "_donde": "dato"
   },
   {
    "texto": "la mayoría absoluta en el 91 % de ellas; a los tres",
    "cifra": "91",
-   "calculo": "D['MODELO']['p176']",
+   "calculo": "modelo('2026-11-14', hora='07:00')['escenario']['bloques'][0]['p_mayoria'] * 100",
    "_donde": "dato"
   },
   {
    "texto": "a los tres quintos, en el 10 %. Las cifras de cada",
    "cifra": "10",
-   "calculo": "D['MODELO']['p210']",
+   "calculo": "100 * sum(v for i, v in enumerate(modelo('2026-11-14', hora='07:00')['escenario']['bloques'][0]['escanos_dist']['p']) if modelo('2026-11-14', hora='07:00')['escenario']['bloques'][0]['escanos_dist']['desde'] + i >= 210)",
    "_donde": "dato"
   },
   {
