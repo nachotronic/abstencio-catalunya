@@ -20,6 +20,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Comprobar que no hay marcadores de conflicto de Git (src/control_conflictos.py)
+        # Repaso del 14-11-2026, a raíz de #581: la portada se publicó con «<<<<<<<», «=======» y «>>>>>>>».
+        run: python3 src/control_conflictos.py --resumen "$GITHUB_STEP_SUMMARY"
       - name: Instalar el navegador (control de errores de JavaScript y scroll a 390 px)
         run: |
           npm install --no-save --no-package-lock playwright@1.63.0
