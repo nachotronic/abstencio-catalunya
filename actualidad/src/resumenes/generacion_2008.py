@@ -367,7 +367,7 @@ preguntas = [
     ('¿Pueden votar el 29N los nacidos en 2008?',
      f'Sí, los que cumplan 18 años como tarde el día de la votación: los nacidos hasta el 29 de noviembre de 2008. Los nacidos en diciembre de 2008 ({n(DIC08)}) y el 30 de noviembre no podrán.'),
     ('¿Por qué se habla de la generación de 2008?',
-     f'Porque 2008 fue el año con más nacimientos en España desde 1981: {n(NAC[2008])}. Hoy viven en España {n(GEN08)} personas nacidas ese año, {n(ESP08)} con nacionalidad española.'),
+     f'Porque 2008 fue el año con más nacimientos en España desde 1981: {n(NAC[2008])}. A 1 de enero de 2025 vivían en España {n(GEN08)} personas nacidas ese año, {n(ESP08)} con nacionalidad española.'),
     ('¿A quién votan los jóvenes según el CIS?',
      f'En el preelectoral del CIS, entre los de 18 a 24 años, Vox es el primero en voto más simpatía ({p(VOX_J)} %), seguido del PSOE ({p(PSOE_J)} %) y del PP ({p(PP_J)} %). No es estimación de voto y el CIS solo pregunta a mayores de edad.'),
 ]
