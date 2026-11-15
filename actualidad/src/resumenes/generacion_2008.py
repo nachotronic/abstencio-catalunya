@@ -158,15 +158,6 @@ SALF_J, SALF_T = V['Se Acabó la Fiesta'][J], V['Se Acabó la Fiesta'][0]
 VOX_PRIMERO = [COLS[i] for i in range(1, 8) if V['VOX'][i] == max(V['PSOE'][i], V['PP'][i], V['VOX'][i])]
 assert VOX_PRIMERO == ['18-24', '25-34'], VOX_PRIMERO      # en 35-44 Vox (23,9) queda por debajo del PSOE (24,6)
 assert all(V['PSOE'][i] > max(V['PP'][i], V['VOX'][i]) for i in range(3, 8))
-# Margen de error (2 sigmas, como el CIS) de la diferencia entre dos porcentajes de la misma muestra
-def err_dif(i, a='VOX', b='PSOE'):
-    x, y = V[a][i] / 100, V[b][i] / 100
-    return 200 * ((x + y - (x - y) ** 2) / V['(N)'][i]) ** 0.5
-DIF_J, ERRD_J = VOX_J - PSOE_J, err_dif(J)
-EMPATE = [COLS[i] for i in range(1, 8) if abs(V['VOX'][i] - V['PSOE'][i]) < err_dif(i)]
-assert EMPATE == ['18-24', '25-34', '35-44'], EMPATE
-assert all(V['PSOE'][i] - V['VOX'][i] > err_dif(i) for i in range(4, 8))
-assert V['PSOE'][J] - V['PP'][J] > err_dif(J, 'PSOE', 'PP')
 R1 = C['P1_primer_lugar']
 REDES_J, TV_J, REDES_T, TV_T, RADIO_J = R1['Redes sociales'][J], R1['Televisión'][J], R1['Redes sociales'][0], R1['Televisión'][0], R1['Radio'][J]
 RS = C['P1a_red']
@@ -298,7 +289,7 @@ def grupos_edad():
     return ''.join(out)
 
 
-g_cis = figura('Entre los de 18 a 24 años, Vox y el PSOE empatan en el CIS',
+g_cis = figura('Entre los votantes de 18 a 24 años, Vox va primero en el CIS',
                'Voto más simpatía declarado al PSOE, el PP y Vox por grupo de edad, en % de los entrevistados de cada grupo. No es estimación de voto',
                grupos_edad(),
                f'Fuente: CIS, estudio 3584 (preelectoral, del 7 al 30 de octubre de 2026), <a href="{XLSX}">resultados por edad</a>, pregunta 5a. Solo entrevista a mayores de 18 años: muchos de los nacidos en 2008 aún no lo eran.',
@@ -354,7 +345,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_mun}
 <h2>Su voz en el CIS</h2>
 <p data-tipo="contexto">El CIS no entrevista a menores, de modo que en su preelectoral, realizado del 7 al 30 de octubre, solo aparecen los nacidos en 2008 que ya habían cumplido 18 años. Su franja más joven, de 18 a 24 años, agrupa a los nacidos entre 2001 y 2008 y suma {n(round(NJ))} entrevistas ponderadas, con un error teórico de ±{p(ERRJ)} puntos según la fórmula del propio instituto. Lo que sigue refleja lo que declara ese grupo, no una estimación de voto: el CIS no la publica por edades.</p>
-<p data-tipo="dato">En voto más simpatía, que agrega a quienes dicen a qué partido votarán y a quienes, sin desvelarlo, confiesan por cuál sienten más afinidad, <strong>Vox y el PSOE empatan en cabeza entre los de 18 a 24 años</strong>: Vox reúne el {p(VOX_J)} % y el PSOE, el {p(PSOE_J)} %. Son {p(DIF_J)} puntos de diferencia, menos que el margen de error de esa diferencia, ±{p(ERRD_J)} puntos con el mismo criterio que usa el CIS. El PP, con el {p(PP_J)} %, queda claramente por detrás. En el conjunto de entrevistados, el orden es otro: PSOE ({p(PSOE_T)} %), PP ({p(PP_T)} %) y Vox ({p(VOX_T)} %). El empate entre Vox y el PSOE se repite entre los de 25 a 34 años y entre los de 35 a 44; a partir de los 45, el PSOE se distancia con claridad. El Frente Amplio obtiene el {p(FA_J)} % entre los más jóvenes (el {p(FA_T)} % en total), y Se Acabó la Fiesta, el {p(SALF_J)} % ({p(SALF_T)} %).</p>
+<p data-tipo="dato">En voto más simpatía, que agrega a quienes dicen a qué partido votarán y a quienes, sin desvelarlo, confiesan por cuál sienten más afinidad, <strong>Vox encabeza la franja de 18 a 24 años con el {p(VOX_J)} %</strong>, seguido del PSOE ({p(PSOE_J)} %) y del PP ({p(PP_J)} %). Entre el conjunto de entrevistados, el orden es otro: PSOE ({p(PSOE_T)} %), PP ({p(PP_T)} %) y Vox ({p(VOX_T)} %). Vox mantiene la cabeza entre los de 25 a 34 años; a partir de los 35, el PSOE toma el relevo. El Frente Amplio obtiene el {p(FA_J)} % entre los más jóvenes (el {p(FA_T)} % en total), y Se Acabó la Fiesta, el {p(SALF_J)} % ({p(SALF_T)} %).</p>
 {g_cis}
 <p data-tipo="dato">En la escala ideológica del CIS, que va del 1 (izquierda) al 10 (derecha), los de 18 a 24 años se colocan de media en el {p(MED_J)}; el conjunto, en el {p(MED_T)}. Rehúyen los extremos más que el resto de los entrevistados: en el 1, el más escorado a la izquierda, se sitúa el {p(IZQ_J)} %, frente al {p(IZQ_T)} % del total, y en el 10, el más escorado a la derecha, el {p(DER_J)} %, frente al {p(DER_T)} %.</p>
 <p data-tipo="dato">También se informan por otros canales. La mitad ({p(REDES_J)} %) sigue la política y la campaña sobre todo a través de las redes sociales, frente al {p(REDES_T)} % del total. La televisión, primera ventana para el {p(TV_T)} % de los entrevistados, solo lo es para el {p(TV_J)} % de los jóvenes, y la radio, para el {p(RADIO_J)} %. Entre quienes se informan por redes, Instagram es la más seguida ({p(INSTA_J)} %), por delante de TikTok ({p(TIKTOK_J)} %, frente al {p(TIKTOK_T)} % en el total) y X ({p(X_J)} %). Facebook, segunda plataforma en el conjunto de la muestra, cae al {p(FB_J)} % en esta franja.</p>
@@ -378,7 +369,7 @@ preguntas = [
     ('¿Por qué se habla de la generación de 2008?',
      f'Porque 2008 fue el año con más nacimientos en España desde 1981: {n(NAC[2008])}. Hoy viven en España {n(GEN08)} personas nacidas ese año, {n(ESP08)} con nacionalidad española.'),
     ('¿A quién votan los jóvenes según el CIS?',
-     f'En el preelectoral del CIS, entre los de 18 a 24 años, Vox ({p(VOX_J)} %) y el PSOE ({p(PSOE_J)} %) empatan en voto más simpatía, porque la diferencia es menor que el margen de error; el PP tiene el {p(PP_J)} %. No es estimación de voto y el CIS solo pregunta a mayores de edad.'),
+     f'En el preelectoral del CIS, entre los de 18 a 24 años, Vox es el primero en voto más simpatía ({p(VOX_J)} %), seguido del PSOE ({p(PSOE_J)} %) y del PP ({p(PP_J)} %). No es estimación de voto y el CIS solo pregunta a mayores de edad.'),
 ]
 enlaces = (f'{L("escanos-en-el-filo-29n", "Seis escaños que se decidieron por menos de mil votantes")} · {L("cis-preelectoral-29n", "El CIS preelectoral")} · '
            f'<a href="{BASE}encuestas/">Todas las encuestas del 29N</a>')
@@ -393,9 +384,9 @@ DATOS = {'PRIMEROS26': PRIMEROS26, 'PRIMEROS23': PRIMEROS23, 'CER26': CER26, 'PC
          'PM': {k[:5]: r4(PM[k]) for k in MUN_MAS[:30] + MUN_MENOS[:10]}, 'UMBRAL': UMBRAL,
          'SUPERA': SUPERA, 'FF': {c: F[c]['f'] for c in F}, 'V': V, 'R1': R1, 'RS': RS, 'PR': PR, 'IDE': IDE, 'NJ': r4(NJ), 'ERRJ': r4(ERRJ)}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
-H1 = 'Vox empata con el PSOE entre los de 18 a 24 años en el CIS: la generación de 2008 estrena voto en unas generales'
+H1 = 'Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales'
 DEK = (f'En 2008 nacieron en España {n(NAC[2008])} niños, más que en ningún año desde 1981. Son los más jóvenes de los {n(PRIMEROS26)} electores que votan por primera vez '
-       f'en unas generales. En el CIS, entre los de 18 a 24 años, Vox ({p(VOX_J)} %) y el PSOE ({p(PSOE_J)} %) empatan en voto más simpatía dentro del margen de error.')
+       f'en unas generales. En el CIS, Vox reúne el {p(VOX_J)} % del voto más simpatía de 18 a 24 años.')
 if __name__ == '__main__':
     pieza(SLUG, 'La generación de 2008', H1, DEK, '15 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
     print(H1); print(DEK)

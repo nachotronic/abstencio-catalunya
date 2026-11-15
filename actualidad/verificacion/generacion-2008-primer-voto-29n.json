@@ -419,9 +419,39 @@
    "_donde": "contexto"
   },
   {
+   "texto": "franja de 18 a 24 años con el 23,2 %, seguido del PSOE (22,0 %)",
+   "cifra": "23,2",
+   "calculo": "D['V']['VOX'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 23,2 %, seguido del PSOE (22,0 %) y del PP (14,5 %). Entre",
+   "cifra": "22,0",
+   "calculo": "D['V']['PSOE'][1]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del PSOE (22,0 %) y del PP (14,5 %). Entre el conjunto de entrevistados,",
+   "cifra": "14,5",
+   "calculo": "D['V']['PP'][1]",
+   "_donde": "dato"
+  },
+  {
    "texto": "entrevistados, el orden es otro: PSOE (32,0 %), PP (19,2 %) y Vox (15,8",
    "cifra": "32,0",
    "calculo": "D['V']['PSOE'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "es otro: PSOE (32,0 %), PP (19,2 %) y Vox (15,8 %). Vox mantiene",
+   "cifra": "19,2",
+   "calculo": "D['V']['PP'][0]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(32,0 %), PP (19,2 %) y Vox (15,8 %). Vox mantiene la cabeza entre",
+   "cifra": "15,8",
+   "calculo": "D['V']['VOX'][0]",
    "_donde": "dato"
   },
   {
@@ -623,64 +653,10 @@
    "_donde": "dato"
   },
   {
-   "texto": "Vox (23,2 %) y el PSOE",
+   "texto": "En el CIS, Vox reúne el 23,2 % del voto más simpatía",
    "cifra": "23,2",
    "calculo": "D['V']['VOX'][1]",
    "_donde": "entradilla"
-  },
-  {
-   "texto": "y el PSOE (22,0 %) empatan en voto",
-   "cifra": "22,0",
-   "calculo": "D['V']['PSOE'][1]",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "Vox reúne el 23,2 % y el PSOE",
-   "cifra": "23,2",
-   "calculo": "D['V']['VOX'][1]",
-   "_donde": "dato"
-  },
-  {
-   "texto": "y el PSOE, el 22,0 %. Son",
-   "cifra": "22,0",
-   "calculo": "D['V']['PSOE'][1]",
-   "_donde": "dato"
-  },
-  {
-   "texto": "Son 1,2 puntos de diferencia",
-   "cifra": "1,2",
-   "calculo": "D['V']['VOX'][1]-D['V']['PSOE'][1]",
-   "_donde": "dato"
-  },
-  {
-   "texto": "esa diferencia, ±2,1 puntos",
-   "cifra": "2,1",
-   "calculo": "200*(((D['V']['VOX'][1]+D['V']['PSOE'][1])/100-((D['V']['VOX'][1]-D['V']['PSOE'][1])/100)**2)/D['NJ'])**0.5",
-   "_donde": "dato"
-  },
-  {
-   "texto": "El PP, con el 14,5 %, queda",
-   "cifra": "14,5",
-   "calculo": "D['V']['PP'][1]",
-   "_donde": "dato"
-  },
-  {
-   "texto": "es otro: PSOE (32,0 %)",
-   "cifra": "32,0",
-   "calculo": "D['V']['PSOE'][0]",
-   "_donde": "dato"
-  },
-  {
-   "texto": "PP (19,2 %) y Vox",
-   "cifra": "19,2",
-   "calculo": "D['V']['PP'][0]",
-   "_donde": "dato"
-  },
-  {
-   "texto": "y Vox (15,8 %). El empate",
-   "cifra": "15,8",
-   "calculo": "D['V']['VOX'][0]",
-   "_donde": "dato"
   }
  ],
  "externas": [
@@ -757,6 +733,31 @@
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
+   "texto": "afinidad, Vox encabeza la franja de 18 a 24 años con el 23,2 %, seguido",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "Vox encabeza la franja de 18 a 24 años con el 23,2 %, seguido",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "mantiene la cabeza entre los de 25 a 34 años; a partir de los 35,",
+   "cifra": "25",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "la cabeza entre los de 25 a 34 años; a partir de los 35, el",
+   "cifra": "34",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "25 a 34 años; a partir de los 35, el PSOE toma el relevo. El",
+   "cifra": "35",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
    "texto": "(izquierda) al 10 (derecha), los de 18 a 24 años se colocan de media",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
@@ -820,6 +821,16 @@
    "texto": "generación de 2008Personas de 13 años sobre la población,",
    "cifra": "13",
    "motivo": "edad en 2022 de los nacidos en 2008"
+  },
+  {
+   "texto": "Entre los votantes de 18 a 24 años, Vox va primero",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "Entre los votantes de 18 a 24 años, Vox va primero",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
    "texto": "informan de política los de 18 a 24 añosPrimer medio",
@@ -892,67 +903,12 @@
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "PSOE entre los de 18 a 24 años en el CIS",
+   "texto": "voto más simpatía de 18 a 24 años.",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "PSOE entre los de 18 a 24 años en el CIS",
-   "cifra": "24",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "En el CIS, entre los de 18 a 24 años, Vox",
-   "cifra": "18",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "En el CIS, entre los de 18 a 24 años, Vox",
-   "cifra": "24",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "empatan en cabeza entre los de 18 a 24 años:",
-   "cifra": "18",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "empatan en cabeza entre los de 18 a 24 años:",
-   "cifra": "24",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "se repite entre los de 25 a 34 años y entre los de 35 a 44; a partir de los 45,",
-   "cifra": "25",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "se repite entre los de 25 a 34 años y entre los de 35 a 44; a partir de los 45,",
-   "cifra": "34",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "se repite entre los de 25 a 34 años y entre los de 35 a 44; a partir de los 45,",
-   "cifra": "35",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "se repite entre los de 25 a 34 años y entre los de 35 a 44; a partir de los 45,",
-   "cifra": "44",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "se repite entre los de 25 a 34 años y entre los de 35 a 44; a partir de los 45,",
-   "cifra": "45",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "Entre los de 18 a 24 años, Vox y el PSOE empatan en el CIS",
-   "cifra": "18",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "Entre los de 18 a 24 años, Vox y el PSOE empatan en el CIS",
+   "texto": "voto más simpatía de 18 a 24 años.",
    "cifra": "24",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   }
