@@ -5,7 +5,7 @@
  },
  "cifras": [
   {
-   "texto": "En 2008 nacieron en España 519.779 niños. Son los más jóvenes",
+   "texto": "En 2008 nacieron en España 519.779 niños, más que en ningún",
    "cifra": "519.779",
    "calculo": "D['NAC']['2008']",
    "_donde": "entradilla"
@@ -651,6 +651,12 @@
    "cifra": "10,4",
    "calculo": "D['IDE']['10 Derecha'][0]",
    "_donde": "dato"
+  },
+  {
+   "texto": "En el CIS, Vox reúne el 23,2 % del voto más simpatía",
+   "cifra": "23,2",
+   "calculo": "D['V']['VOX'][1]",
+   "_donde": "entradilla"
   }
  ],
  "externas": [
@@ -671,16 +677,6 @@
   }
  ],
  "ignorar": [
-  {
-   "texto": "el INE. En el CIS, los de 18 a 24 años ponen a Vox",
-   "cifra": "18",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "INE. En el CIS, los de 18 a 24 años ponen a Vox primero.",
-   "cifra": "24",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
   {
    "texto": "el INE: los que han cumplido 18 años desde las generales del",
    "cifra": "18",
@@ -895,6 +891,26 @@
    "texto": "nacimientos desde principios de los ochenta.",
    "cifra": "ochenta",
    "motivo": "década de 1980 (1981, el año con más nacimientos que 2008)"
+  },
+  {
+   "texto": "primero en el CIS entre los de 18 a 24 años",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "primero en el CIS entre los de 18 a 24 años",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "voto más simpatía de 18 a 24 años.",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "voto más simpatía de 18 a 24 años.",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   }
  ],
  "permitir_espana": []

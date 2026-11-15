@@ -384,9 +384,9 @@ DATOS = {'PRIMEROS26': PRIMEROS26, 'PRIMEROS23': PRIMEROS23, 'CER26': CER26, 'PC
          'PM': {k[:5]: r4(PM[k]) for k in MUN_MAS[:30] + MUN_MENOS[:10]}, 'UMBRAL': UMBRAL,
          'SUPERA': SUPERA, 'FF': {c: F[c]['f'] for c in F}, 'V': V, 'R1': R1, 'RS': RS, 'PR': PR, 'IDE': IDE, 'NJ': r4(NJ), 'ERRJ': r4(ERRJ)}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
-H1 = 'La generación de 2008, la de más nacimientos desde 1981, estrena su voto en unas generales el 29N'
-DEK = (f'En 2008 nacieron en España {n(NAC[2008])} niños. Son los más jóvenes de los {n(PRIMEROS26)} electores que votan por primera vez '
-       f'en unas generales, según el INE. En el CIS, los de 18 a 24 años ponen a Vox primero.')
+H1 = 'Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales'
+DEK = (f'En 2008 nacieron en España {n(NAC[2008])} niños, más que en ningún año desde 1981. Son los más jóvenes de los {n(PRIMEROS26)} electores que votan por primera vez '
+       f'en unas generales. En el CIS, Vox reúne el {p(VOX_J)} % del voto más simpatía de 18 a 24 años.')
 if __name__ == '__main__':
     pieza(SLUG, 'La generación de 2008', H1, DEK, '15 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
     print(H1); print(DEK)
