@@ -107,7 +107,7 @@ TEMAS = {
         titulo='Renta y voto: cómo votan los barrios ricos y los pobres de España',
         intro='Las piezas que cruzan el voto de cada sección censal con la renta de sus hogares, el paro, las pensiones, '
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
-        piezas=TEMA_RENTA + ['atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
+        piezas=TEMA_RENTA + ['seleccion-convocados-pueblos-29n', 'atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
                              'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n', 'quien-vota-barrios-renta-edad-inmigracion', 'barrios-caseros-inquilinos-voto-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
@@ -312,6 +312,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Humilladero', 'Nalda', 'Los Corrales'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019'),
+                 'seleccion-convocados-pueblos-29n': ('01063', '08019', '08191', '41081', '06044', '17020', '08279', '28079', '08003', '46250', '20069', '38046', '41069', '31201', '21018', '04079', '08305', '20030', '08077', '46126', '14056', '35016'),   # los 22 municipios de nacimiento de los convocados
                  'mapa-electoral-andalucia-29n': ('41091', '29067', '14021', '18087', '11012', '04013', '21041', '23050'),
                  'mapa-electoral-cataluna-29n': ('08019', '17079', '25120', '43148', '08298'),
                  'mapa-electoral-madrid-29n': ('28079', '28074', '28065', '28058', '28106'),

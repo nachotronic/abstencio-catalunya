@@ -1,134 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>Neves evitó la segunda vuelta en Cabo Verde por 3.311 votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-galicia-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Galicia: el PSOE ganó en 18 de las 23 ciudades y villas de más de 20.000 habitantes en 2019 y solo en dos en 2023</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/arranque-campana-sevilla-badalona-colon-vallecas-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>Feijóo abre la campaña en Badalona, donde Albiol arrasa en las municipales pero el PP no ganó ni una sección en las generales</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-castilla-la-mancha-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Castilla-La Mancha: el PSOE ganó en cuatro de las cinco capitales en 2019 y en ninguna en 2023, aunque subió en votos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-pais-vasco-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral del País Vasco: el PNV pasó de ganar en 152 municipios a 76, y EH Bildu, de 79 a 140</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-canarias-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Canarias: el PP pasó de ganar en dos municipios de Tenerife a 23, y el PSOE resistió en Gran Canaria</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-aragon-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Aragón: el PSOE ganó en 12 de las 15 ciudades de más de 10.000 habitantes en 2019 y solo en Ejea en 2023, aunque subió en votos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-murcia-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de la Región de Murcia: Vox ganó en 16 municipios en 2019, Cartagena incluida, y en ninguno en 2023</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-extremadura-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Extremadura: el PSOE ganó en 276 de los 388 municipios en 2023, pero el PP ganó en ocho de las 13 ciudades de más de 10.000 habitantes</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-baleares-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Baleares: el PSOE subió en 64 de los 67 municipios, pero pasó de ganar en siete de las nueve ciudades de más de 30.000 habitantes a no ganar en ninguna</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-asturias-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Asturias: el PSOE ganó Oviedo por 42 votos en 2019 y lo perdió por 15.256 en 2023; Gijón lo retuvo por 622</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-navarra-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Navarra: juntos, UPN y PP ganaron en 106 municipios en 2019; separados, en 32, y el 29N vuelven a ir juntos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/cis-preelectoral-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El CIS preelectoral da al PSOE 7,8 puntos de ventaja; la media de las demás encuestas, 3,6 al PP</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-cantabria-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Cantabria: sin el PRC en la papeleta, el PP pasó de 55 a 85 municipios y ganó El Astillero por 5 votos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-la-rioja-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de La Rioja: el PP pasó de 108 a 138 municipios y ganó Logroño por 6.822 votos; con las encuestas, Vox le quitaría un diputado al PSOE</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/mapa-electoral-ceuta-melilla-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-12</news:publication_date>
-      <news:title>El mapa electoral de Ceuta y Melilla: Vox pasó de ganar 32 secciones de Ceuta a ninguna, y 13 de las 17 de Coalición por Melilla fueron al PSOE</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://mapaelectoral.es/actualidad/primer-dia-campana-municipios-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
@@ -158,6 +30,14 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-14</news:publication_date>
       <news:title>A dos semanas del 29N, 14 de las 16 encuestas con escaños dan mayoría absoluta a PP y Vox; solo el CIS y SW Demoscopia ponen por delante al PSOE</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-15</news:publication_date>
+      <news:title>De los 25 convocados de De la Fuente nacidos en España, 15 nacieron donde ganó el PSOE en 2023 y 8 donde ganó el PP; en Puente Genil, el PP ganó por 31 votos</news:title>
     </news:news>
   </url>
 </urlset>
