@@ -4781,7 +4781,8 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='seleccion-convocados-pueblos-29n', fecha='2026-11-15',
+        slug='seleccion-convocados-pueblos-29n', fecha='2026-11-15', actualizado='2026-11-15 10:45',
+        correcciones='15-11-2026: el texto decía que Ander Barrenetxea no tiene ficha en la web de la RFEF; la tiene, y da San Sebastián, el mismo lugar. También decía que Wikipedia da Bajamar para Pedri: la ficha de Wikipedia da Tegueste y solo su biografía, Bajamar. La entradilla decía «ERC perdió los cuatro catalanes»; son los cuatro municipios catalanes que había ganado, de siete. Las cifras no cambian.',
         titulo='De los 25 convocados de De la Fuente nacidos en España, 15 nacieron donde ganó el PSOE en 2023 y 8 donde ganó el PP; en Puente Genil, el PP ganó por 31 votos', serie='29n', figura=0,
         descripcion='El día del España-Inglaterra, los 22 municipios donde nacieron los convocados de De la Fuente. En 2023, el PSOE ganó en 13 y el PP en 7; 14 cambiaron de ganador desde 2019, y en Puente Genil, Don Benito, Foios, Tegueste y Zuia se decidió por menos de 110 votos.',
         compara='Los votos de las generales de noviembre de 2019 y julio de 2023 en el municipio de nacimiento de cada uno de los 25 convocados nacidos en España.',
