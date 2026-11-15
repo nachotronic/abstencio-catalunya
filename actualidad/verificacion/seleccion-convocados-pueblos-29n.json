@@ -1,0 +1,315 @@
+{
+  "pieza": "seleccion-convocados-pueblos-29n",
+  "_datos_disponibles": {
+    "D": "dict"
+  },
+  "cifras": [
+    {
+      "texto": "De los 25 convocados de De la",
+      "cifra": "25",
+      "calculo": "len(D['J'])",
+      "_donde": "titular"
+    },
+    {
+      "texto": "Fuente nacidos en España, 15 nacieron donde ganó",
+      "cifra": "15",
+      "calculo": "D['POR_JUG']['PSOE']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "donde ganó el PSOE en 2023 y 8 donde ganó el PP; en",
+      "cifra": "8",
+      "calculo": "D['POR_JUG']['PP']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "Puente Genil, el PP ganó por 31 votos",
+      "cifra": "31",
+      "calculo": "D['MUN']['14056']['j23']['dif']",
+      "_donde": "titular"
+    },
+    {
+      "texto": "del España-Inglaterra, los 22 municipios donde nacieron",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "En 2023, el PSOE ganó en 13 y el PP en 7; 14 cambiaron",
+      "cifra": "13",
+      "calculo": "D['POR_MUN']['PSOE']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "PSOE ganó en 13 y el PP en 7; 14 cambiaron de ganador",
+      "cifra": "7",
+      "calculo": "D['POR_MUN']['PP']",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "ganó en 13 y el PP en 7; 14 cambiaron de ganador",
+      "cifra": "14",
+      "calculo": "len(D['CAMBIAN'])",
+      "_donde": "entradilla"
+    },
+    {
+      "texto": "Huijsen, en Ámsterdam. Los otros 25 nacieron en 22 municipios",
+      "cifra": "25",
+      "calculo": "len(D['J'])",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "Los otros 25 nacieron en 22 municipios españoles,",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "pieza mira cómo votaron esos 22 municipios en las dos",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "PSOE fue el más votado en 13 de los 22 municipios,",
+      "cifra": "13",
+      "calculo": "D['POR_MUN']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el más votado en 13 de los 22 municipios, y el PP,",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "22 municipios, y el PP, en 7. Contados por jugadores,",
+      "cifra": "7",
+      "calculo": "D['POR_MUN']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "7. Contados por jugadores, 15 convocados nacieron",
+      "cifra": "15",
+      "calculo": "D['POR_JUG']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "municipio donde ganó el PSOE y 8 en uno donde ganó el",
+      "cifra": "8",
+      "calculo": "D['POR_JUG']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "habitantes: el PSOE sacó el 55,1 % y el PP, el 26,5 %.",
+      "cifra": "55,1",
+      "calculo": "D['MUN']['21018']['j23']['PSOE']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "sacó el 55,1 % y el PP, el 26,5 %. En La Rinconada,",
+      "cifra": "26,5",
+      "calculo": "D['MUN']['21018']['j23']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Álvaro Valles, el PSOE le sacó 24,3 puntos al PP. Del lado",
+      "cifra": "24,3",
+      "calculo": "D['MUN']['41081']['j23']['pts']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Mar, donde nació Álex Baena: 17,8 puntos, con el 42,6",
+      "cifra": "17,8",
+      "calculo": "D['MUN']['04079']['j23']['pts']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Baena: 17,8 puntos, con el 42,6 % de los votos. En Madrid,",
+      "cifra": "42,6",
+      "calculo": "D['MUN']['04079']['j23']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Pablo Barrios, el PP sacó el 42,1 %.",
+      "cifra": "42,1",
+      "calculo": "D['MUN']['28079']['j23']['PP']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Fernández: el PP ganó por 31 votos, 5.692 frente",
+      "cifra": "31",
+      "calculo": "D['MUN']['14056']['j23']['dif']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el PP ganó por 31 votos, 5.692 frente a 5.661 del PSOE.",
+      "cifra": "5.692",
+      "calculo": "D['MUN']['14056']['j23']['v1']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "31 votos, 5.692 frente a 5.661 del PSOE. En Don Benito,",
+      "cifra": "5.661",
+      "calculo": "D['MUN']['14056']['j23']['v2']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Pedro Porro, el PP ganó por 89. En Foios, el pueblo",
+      "cifra": "89",
+      "calculo": "D['MUN']['06044']['j23']['dif']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "revés: el PSOE ganó al PP por 88. Y en Tegueste, el de",
+      "cifra": "88",
+      "calculo": "D['MUN']['46126']['j23']['dif']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "de Pedri, el PP ganó por 106 votos un año en que",
+      "cifra": "106",
+      "calculo": "D['MUN']['38046']['j23']['dif']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "Bildu le ganó al PNV por 63 votos: 422 frente a",
+      "cifra": "63",
+      "calculo": "D['MUN']['01063']['j23']['dif']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "ganó al PNV por 63 votos: 422 frente a 359.",
+      "cifra": "422",
+      "calculo": "D['MUN']['01063']['j23']['v1']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "por 63 votos: 422 frente a 359.",
+      "cifra": "359",
+      "calculo": "D['MUN']['01063']['j23']['v2']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "reparto era otro. De los 22 municipios, 14 tuvieron",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "otro. De los 22 municipios, 14 tuvieron un ganador",
+      "cifra": "14",
+      "calculo": "len(D['CAMBIAN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "distinto en 2023. ERC perdió los cuatro catalanes que había",
+      "cifra": "cuatro",
+      "calculo": "sum(D['MUN'][c]['n19']['gana']=='ERC' and D['MUN'][c]['j23']['gana']!='ERC' for c in D['MUN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "EH Bildu. El PSOE perdió cinco a manos del PP: Don",
+      "cifra": "cinco",
+      "calculo": "sum(D['MUN'][c]['n19']['gana']=='PSOE' and D['MUN'][c]['j23']['gana']=='PP' for c in D['MUN'])",
+      "_donde": "dato"
+    },
+    {
+      "texto": "más votado en 2019, con el 31,1 %, al PP.",
+      "cifra": "31,1",
+      "calculo": "D['MUN']['04079']['n19']['VOX']",
+      "_donde": "dato"
+    },
+    {
+      "texto": "el 29 de noviembre, esos 22 municipios vuelven a",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "contexto"
+    },
+    {
+      "texto": "Quince del PSOE, ocho del PP",
+      "cifra": "Quince",
+      "calculo": "D['POR_JUG']['PSOE']",
+      "_donde": "intertítulo"
+    },
+    {
+      "texto": "Quince del PSOE, ocho del PP",
+      "cifra": "ocho",
+      "calculo": "D['POR_JUG']['PP']",
+      "_donde": "intertítulo"
+    },
+    {
+      "texto": "Cinco pueblos decididos por",
+      "cifra": "Cinco",
+      "calculo": "sum(D['MUN'][c]['j23']['dif']<110 for c in D['MUN'])",
+      "_donde": "intertítulo"
+    },
+    {
+      "texto": "Catorce de veintidós cambiaron",
+      "cifra": "Catorce",
+      "calculo": "len(D['CAMBIAN'])",
+      "_donde": "intertítulo"
+    },
+    {
+      "texto": "15 convocados nacieron",
+      "cifra": "15",
+      "calculo": "D['POR_JUG']['PSOE']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "donde ganó el PSOE en 2023; 8, donde ganó el PPPartido",
+      "cifra": "8",
+      "calculo": "D['POR_JUG']['PP']",
+      "_donde": "pie"
+    },
+    {
+      "texto": "14 de los 22 municipios",
+      "cifra": "14",
+      "calculo": "len(D['CAMBIAN'])",
+      "_donde": "pie"
+    },
+    {
+      "texto": "14 de los 22 municipios cambiaron",
+      "cifra": "22",
+      "calculo": "len(D['MUN'])",
+      "_donde": "pie"
+    }
+  ],
+  "externas": [
+    {
+      "texto": "Luis de la Fuente convocó a 27 jugadores el 6 de noviembre.",
+      "fuente": "https://rfef.es/es/noticias/esta-es-la-lista-para-cerrar-la-fase-de-grupos-de-la-uefa-nations-lague"
+    },
+    {
+      "texto": "Cataluña, ERC pasó de ganar en 619 municipios a ganar en",
+      "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/"
+    },
+    {
+      "texto": "619 municipios a ganar en 159, y en el País Vasco,",
+      "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-cataluna-29n/"
+    },
+    {
+      "texto": "País Vasco, el PNV bajó en 246 de los 251.",
+      "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-pais-vasco-29n/"
+    },
+    {
+      "texto": "el PNV bajó en 246 de los 251.",
+      "fuente": "https://mapaelectoral.es/actualidad/mapa-electoral-pais-vasco-29n/"
+    }
+  ],
+  "ignorar": [
+    {
+      "texto": "de Fermín López, con unos 2.000 habitantes: el PSOE",
+      "motivo": "redondeo de 2.015 habitantes (padrón municipal de 2023, INE)"
+    },
+    {
+      "texto": "pueblos decididos por menos de 110 votos",
+      "motivo": "umbral redondo del intertítulo; el mayor margen de los cinco es 106 votos (Tegueste)"
+    },
+    {
+      "texto": "Zuia se decidió por menos de 110 votos.",
+      "motivo": "umbral redondo; el mayor margen de los cinco es 106 votos (Tegueste)"
+    }
+  ],
+  "permitir_espana": []
+}
