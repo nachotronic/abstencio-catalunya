@@ -41,13 +41,13 @@
    "_donde": "contexto"
   },
   {
-   "texto": "1999; en 2009 ya nacieron 494.997, y desde entonces la",
+   "texto": "1999; en 2009 ya nacieron 494.997, y desde entonces ha",
    "cifra": "494.997",
    "calculo": "D['NAC']['2009']",
    "_donde": "contexto"
   },
   {
-   "texto": "dejado de bajar hasta los 318.005 de 2024, el mínimo de",
+   "texto": "salvo en 2014, hasta los 318.005 de 2024, el mínimo de",
    "cifra": "318.005",
    "calculo": "D['NAC']['2024']",
    "_donde": "contexto"
@@ -875,6 +875,16 @@
    "texto": "del total, y en el 10, lo más a la derecha",
    "cifra": "10",
    "motivo": "extremo de la escala ideológica del CIS"
+  },
+  {
+   "texto": "en % de los de 18 a 24 años. En la tabla",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "en % de los de 18 a 24 años. En la tabla",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   }
  ],
  "permitir_espana": []

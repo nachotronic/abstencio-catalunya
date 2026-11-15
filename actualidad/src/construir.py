@@ -4794,7 +4794,7 @@ PIEZAS += [
                  ('https://www.ine.es/jaxiT3/Tabla.htm?t=33575', 'INE, Estadística del Padrón Continuo: población por municipio y edad año a año'),
                  ('https://www.cis.es/documents/d/guest/3584-multi_A-xlsx', 'CIS, estudio 3584, resultados por edad (12-11-2026)'),
                  ('https://www.infobae.com/espana/agencias/2026/10/09/mas-de-387-millones-de-electores-estan-llamados-a-votar-en-las-elecciones-del-29n/', 'EFE vía Infobae, el censo del 29N (9-10-2026)'),
-                 INTERIOR],
+                 (INTERIOR[0], 'Ministerio del Interior, resultados definitivos de las generales de julio de 2023 por provincia, con voto exterior (CERA), vía pollspaindata')],
         enlaces=[],
         lugar='España',
     ),

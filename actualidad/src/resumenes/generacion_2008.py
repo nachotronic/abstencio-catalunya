@@ -19,7 +19,7 @@ import sys
 import unicodedata
 from datetime import date
 
-from comun import BASE, RAIZ, SRC, barras, pares, esc, figura, mapa_provincias, n, pieza
+from comun import BASE, RAIZ, SRC, barras, esc, figura, mapa_provincias, n, pieza
 
 sys.path.insert(0, str(RAIZ / 'src'))
 from territorios_rutas import PROV_NOMBRE, PROV_SLUG, slug as slug_t  # noqa: E402
@@ -68,6 +68,7 @@ DIC08 = MES[12]
 SUBE_2008 = 100 * (NAC[2008] / NAC[2007] - 1)
 VS_2024 = 100 * (NAC[2008] / NAC[2024] - 1)
 assert all(NAC[y] > NAC[y - 1] for y in range(1999, 2009)) and NAC[1998] < NAC[1997]
+assert [y for y in range(2009, 2025) if NAC[y] >= NAC[y - 1]] == [2014]
 MIN = min(NAC.items(), key=lambda kv: kv[1])
 assert MIN[0] == 2024
 
@@ -174,11 +175,29 @@ IZQ_J, IZQ_T, MED_J, MED_T = IDE['1 Izquierda'][J], IDE['1 Izquierda'][0], IDE['
 ERRJ = 2 * (0.25 / NJ) ** .5 * 100
 
 # ---------- Gráficos ----------
+ROJO, NARANJA, GRIS, MARRON = '#d62728', '#f08c3a', '#a9a9a9', '#8f4410'   # fijos: se leen igual en modo claro y oscuro
+
+
+def dobles(filas, maximo, W=400, ml=125, alto=38):
+    """Dos barras por provincia con colores fijos: votos que faltaban (gris) y nacidos en 2008 (marrón)."""
+    H = alto * len(filas) + 6
+    x = lambda v: ml + v / maximo * (W - ml - 52)
+    out = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Votos que faltaron para el último escaño frente a nacidos en 2008">']
+    for i, (nm, a, b) in enumerate(filas):
+        y = 4 + i * alto
+        out.append(f'<text x="{ml - 6}" y="{y + 20}" text-anchor="end" class="lab">{esc(nm)}</text>')
+        for k, (v, col, t) in enumerate(((a, GRIS, 'votos que faltaban'), (b, MARRON, 'nacidos en 2008'))):
+            yy = y + 2 + k * 16
+            out.append(f'<rect x="{ml}" y="{yy}" width="{max(1.5, x(v) - ml):.1f}" height="13" fill="{col}" rx="2"><title>{esc(nm)}, {t}: {n(v)}</title></rect>'
+                       f'<text x="{x(v) + 4:.1f}" y="{yy + 11}">{n(v)}</text>')
+    out.append('</svg>')
+    return ''.join(out)
+
 FUENTE_NAC = f'Fuente: INE, <a href="{NACIM}">Estadística de Nacimientos</a> (por residencia de la madre). Cálculo propio.'
 
 
 def columnas_nacimientos():
-    W, H, ml, mb, mt = 640, 230, 70, 26, 14
+    W, H, ml, mb, mt = 400, 210, 52, 24, 16
     ys = sorted(NAC)
     bw = (W - ml - 6) / len(ys)
     top = 700000
@@ -189,10 +208,10 @@ def columnas_nacimientos():
                    f'<text x="{ml - 6}" y="{y(t) + 4:.1f}" text-anchor="end" class="lab">{n(t // 1000)} mil</text>' if t else f'<text x="{ml - 6}" y="{y(t) + 4:.1f}" text-anchor="end" class="lab">0</text>')
     for i, a in enumerate(ys):
         x = ml + i * bw
-        col = 'var(--psoe)' if a == 2008 else ('var(--fg)' if a in (2005, 2006, 2007) else 'var(--otros)')
+        col = ROJO if a == 2008 else (NARANJA if a in (2005, 2006, 2007) else GRIS)
         op = '1' if a >= 2005 and a <= 2008 else '.55'
         out.append(f'<rect x="{x + 1:.1f}" y="{y(NAC[a]):.1f}" width="{bw - 2:.1f}" height="{y(0) - y(NAC[a]):.1f}" fill="{col}" fill-opacity="{op}"><title>{a}: {n(NAC[a])} nacimientos</title></rect>')
-        if a % 5 == 0:
+        if a % 10 == 0:
             out.append(f'<text x="{x + bw / 2:.1f}" y="{H - 8}" text-anchor="middle" class="lab">{a}</text>')
     x8 = ml + ys.index(2008) * bw + bw / 2
     out.append(f'<text x="{x8:.1f}" y="{y(NAC[2008]) - 6:.1f}" text-anchor="middle">2008: {n(NAC[2008])}</text>')
@@ -201,9 +220,9 @@ def columnas_nacimientos():
 
 
 g_nac = figura('2008, el año con más nacimientos desde 1981',
-               'Nacimientos en España por año, de 1975 a 2024. En rojo, 2008; en negro, 2005, 2006 y 2007, los otros años de nacimiento de quienes votan por primera vez en unas generales el 29N',
+               'Nacimientos en España por año, de 1975 a 2024. En rojo, 2008; en naranja, 2005, 2006 y 2007, los otros años de nacimiento de quienes votan por primera vez en unas generales el 29N',
                columnas_nacimientos(), FUENTE_NAC,
-               leyenda=[('2008', 'var(--psoe)'), ('2005 a 2007', 'var(--fg)'), ('Resto de años', 'var(--otros)')],
+               leyenda=[('2008', ROJO), ('2005 a 2007', NARANJA), ('Resto de años', GRIS)],
                tabla=(['Año', 'Nacimientos'], [(a, n(NAC[a])) for a in sorted(NAC, reverse=True)]))
 
 COLS_MAPA = ['#f2e4d4', '#e8c39b', '#dc9a5c', '#c86b2a', '#8f4410']
@@ -229,7 +248,7 @@ filas_var = [(nom(c), VAR[c], '#8f4410', ('+' if VAR[c] > 0 else '') + p(VAR[c])
 filas_var += [(nom(c), max(VAR[c], 0.0001), '#e8c39b', ('+' if VAR[c] > 0 else '') + p(VAR[c]) + ' %') for c in GANA[-6:]]
 g_var = figura('Las provincias que han ganado y las que han perdido generación de 2008',
                'Diferencia entre los nacidos en 2008 que viven en cada provincia a 1 de enero de 2025 y los niños que nacieron allí en 2008 (por residencia de la madre). Las diez que más ganan y las seis que menos',
-               barras(filas_var, 20, 'Diferencia entre nacidos en 2008 que viven en la provincia y nacimientos de 2008', ml=130),
+               barras(filas_var, 20, 'Diferencia entre nacidos en 2008 que viven en la provincia y nacimientos de 2008', W=400, ml=110),
                f'Fuente: INE, <a href="{ECP}">Estadística Continua de Población</a> (1-1-2025) y <a href="{NACIM}">Estadística de Nacimientos</a> (2008). La diferencia suma la llegada y la salida de personas, del extranjero y de otras provincias, y los fallecimientos. Cálculo propio.',
                leyenda=[('Diez que más ganan', '#8f4410'), ('Seis que menos', '#e8c39b')])
 
@@ -237,15 +256,14 @@ filas_mun = [(MUN[k], k) for k in MUN_MAS[:15]]
 g_mun = figura('Los municipios con más chicos de la generación de 2008',
                f'Personas de 13 años sobre la población, a 1 de enero de 2022, en los municipios de más de {n(UMBRAL)} habitantes (en España, el {p(PESO13)} %)',
                barras([(corto_mun(k), PM[k], '#c86b2a', p(PM[k]) + ' %') for k in MUN_MAS[:15]], 2.4,
-                      'Municipios con más peso de las personas de 13 años en 2022', ml=190),
+                      'Municipios con más peso de las personas de 13 años en 2022', W=400, ml=160),
                f'Fuente: INE, <a href="{PADRON}">Estadística del Padrón Continuo</a>, población a 1 de enero de 2022 por edad año a año y municipio (la última con ese detalle). Quien tenía 13 años ese día nació entre el 2 de enero de 2008 y el 1 de enero de 2009. Cálculo propio.',
                tabla=(['Municipio', 'Provincia', 'Personas de 13 años', 'Población', '%'],
                       [(nombre_mun(k), nom(k[:2]), n(MUN[k][0]), n(MUN[k][1]), p(PM[k])) for k in MUN_MAS[:30]]))
 
 g_filo = figura(f'En {len(SUPERA)} provincias viven más nacidos en 2008 que votos le faltaron al último escaño',
-                'Las diez provincias más ajustadas: votos nuevos que habría necesitado en 2023 el partido que se quedó a las puertas del último escaño, con los escaños de 2026 (barra clara), y nacidos en 2008 que viven en la provincia (barra oscura)',
-                pares([(nom(c), F[c]['f'], GP[c], '#8f4410') for c in CERCA], max(GP[c] for c in CERCA),
-                      'Votos que faltaron para el último escaño frente a nacidos en 2008', ['votos que faltaban', 'nacidos en 2008'], ml=130),
+                'Las diez provincias más ajustadas: votos nuevos que habría necesitado en 2023 el partido que se quedó a las puertas del último escaño, con los escaños de 2026 (gris), y nacidos en 2008 que viven en la provincia (marrón)',
+                dobles([(nom(c), F[c]['f'], GP[c]) for c in CERCA], max(GP[c] for c in CERCA)),
                 f'Fuente: Ministerio del Interior, resultados de julio de 2023 con voto exterior, y escaños de 2026 (cálculo de {L("escanos-en-el-filo-29n", "«Seis escaños que se decidieron por menos de mil votantes»")}); INE, <a href="{ECP}">Estadística Continua de Población</a> (1-1-2025). Los nacidos en 2008 incluyen a los extranjeros, que no votan en las generales. Cálculo propio.',
                 tabla=(['Provincia', 'Último escaño', 'A las puertas', 'Votos nuevos que faltaban', 'Nacidos en 2008 que viven allí'],
                        [(NOM[c], F[c]['u'], F[c]['a'], n(F[c]['f']), n(GP[c])) for c in SUPERA]))
@@ -254,10 +272,10 @@ EDADES = ['18–24', '25–34', '35–44', '45–54', '55–64', '65–74', '75 
 
 
 def grupos_edad():
-    W, H, ml, mt = 640, 250, 70, 10
+    W, H, ml, mt = 400, 300, 62, 6
     partidos = [('PSOE', 'var(--psoe)'), ('PP', 'var(--pp)'), ('VOX', 'var(--vox)')]
     gh = (H - mt) / 7
-    x = lambda v: ml + v / 50 * (W - ml - 50)
+    x = lambda v: ml + v / 50 * (W - ml - 40)
     out = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Voto más simpatía al PSOE, el PP y Vox por edad, CIS 3584">']
     for i, e in enumerate(EDADES):
         y0 = mt + i * gh
@@ -266,7 +284,7 @@ def grupos_edad():
             v = V[pt][i + 1]
             yy = y0 + 3 + k * (gh - 6) / 3
             out.append(f'<rect x="{ml}" y="{yy:.1f}" width="{x(v) - ml:.1f}" height="{(gh - 6) / 3 - 1.5:.1f}" fill="{col}" rx="1.5"><title>{e}: {pt.title() if pt == "VOX" else pt} {p(v)} %</title></rect>'
-                       f'<text x="{x(v) + 4:.1f}" y="{yy + (gh - 6) / 3 - 3:.1f}" font-size="11">{p(v)}</text>')
+                       f'<text x="{x(v) + 4:.1f}" y="{yy + (gh - 6) / 3 - 2:.1f}">{p(v)}</text>')
     out.append('</svg>')
     return ''.join(out)
 
@@ -282,20 +300,21 @@ g_cis = figura('Entre los votantes de 18 a 24 años, Vox va primero en el CIS',
                          for i in range(8)]))
 
 g_info = figura('Cómo se informan de política los de 18 a 24 años',
-                'Primer medio por el que se informan de política y de la campaña, en % de cada grupo',
-                barras([(t, R1[k][J], '#c86b2a', f'{p(R1[k][J])} % (total, {p(R1[k][0])} %)') for t, k in
+                'Primer medio por el que se informan de política y de la campaña, en % de los de 18 a 24 años. En la tabla, frente al total',
+                barras([(t, R1[k][J], '#c86b2a', f'{p(R1[k][J])} %') for t, k in
                         [('Redes sociales', 'Redes sociales'), ('Televisión', 'Televisión'), ('Prensa', 'Prensa, en formato impreso o digital'),
                          ('Contactos personales', 'Contactos personales, reuniones, mítines, etc.'), ('Radio', 'Radio')]], 60,
-                       'Primer medio de información política de los jóvenes de 18 a 24 años', ml=160),
+                       'Primer medio de información política de los jóvenes de 18 a 24 años', W=400, ml=150),
                 f'Fuente: CIS, estudio 3584, <a href="{XLSX}">resultados por edad</a>, pregunta 1 (primer lugar).',
-                tabla=(['Red social que más sigue para informarse (solo quien se informa por redes)', '18–24', 'Total'],
-                       [(k, p(RS[k][J]), p(RS[k][0])) for k in ('Instagram', 'TikTok', 'Twitter/X', 'YouTube', 'Facebook')]))
+                tabla=(['Medio o red social', '18–24', 'Total'],
+                       [(f'Primer medio: {t}', p(R1[k][J]), p(R1[k][0])) for t, k in [('redes sociales', 'Redes sociales'), ('televisión', 'Televisión'), ('prensa', 'Prensa, en formato impreso o digital'), ('radio', 'Radio')]]
+                       + [(f'Red que más sigue (quien se informa por redes): {k}', p(RS[k][J]), p(RS[k][0])) for k in ('Instagram', 'TikTok', 'Twitter/X', 'YouTube', 'Facebook')]))
 
 SEGS = [PR['10 Con toda seguridad, iría a votar'][i] for i in range(1, 8)]
 g_part = figura('Los más jóvenes, los menos seguros de ir a votar',
                 '«Con toda seguridad iría a votar» (10 en una escala de 0 a 10), en % de cada grupo de edad',
-                barras([(e, v, 'var(--fg)' if i == 0 else 'var(--otros)', p(v) + ' %') for i, (e, v) in enumerate(zip(EDADES, SEGS))], 100,
-                       'Porcentaje que irá a votar con toda seguridad, por edad', ml=90, linea=(SEG_T, f'Total, {p(SEG_T)} %'), separar=True),
+                barras([(e, v, NARANJA if i == 0 else GRIS, p(v) + ' %') for i, (e, v) in enumerate(zip(EDADES, SEGS))], 100,
+                       'Porcentaje que irá a votar con toda seguridad, por edad', W=400, ml=70, linea=(SEG_T, f'Total, {p(SEG_T)} %'), separar=True),
                 f'Fuente: CIS, estudio 3584, <a href="{XLSX}">resultados por edad</a>, pregunta 2.')
 
 g_mapa_viejo = g_mapa
@@ -306,7 +325,7 @@ cita_ine = (f'De los electores residentes en España, {n(PRIMEROS26)} podrán pa
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">El 29 de noviembre, {n(PRIMEROS26)} españoles que viven en España votarán por primera vez en unas elecciones generales: los que han cumplido 18 años desde las del 23 de julio de 2023. Son el {p(PCT_PRIMEROS)} % de los {n(CER26)} electores residentes en España. Lo dio el Instituto Nacional de Estadística el 9 de octubre en su nota sobre el censo electoral, que <a href="{EFE}">recogió EFE</a>:</p>
 <blockquote class="cita"><p>«{cita_ine}»</p><footer>INE, <a href="{INE_NOTA}">nota de prensa de las elecciones a Cortes Generales del 29 de noviembre de 2026</a> (9-10-2026).</footer></blockquote>
-<p data-tipo="contexto">Son, por fecha de nacimiento, los nacidos entre el 24 de julio de 2005 y el 29 de noviembre de 2008. Los más jóvenes de ese grupo, la generación de 2008, son también los más numerosos: en 2008 nacieron en España <strong>{n(NAC[2008])} niños</strong>, más que en ningún otro año desde 1981, según la Estadística de Nacimientos del INE. Fue el final de una subida que había empezado en 1999; en 2009 ya nacieron {n(NAC[2009])}, y desde entonces la cifra no ha dejado de bajar hasta los {n(NAC[2024])} de 2024, el mínimo de la serie que empieza en 1975. En 2008 nacieron un {p(VS_2024)} % más niños que en 2024.</p>
+<p data-tipo="contexto">Son, por fecha de nacimiento, los nacidos entre el 24 de julio de 2005 y el 29 de noviembre de 2008. Los más jóvenes de ese grupo, la generación de 2008, son también los más numerosos: en 2008 nacieron en España <strong>{n(NAC[2008])} niños</strong>, más que en ningún otro año desde 1981, según la Estadística de Nacimientos del INE. Fue el final de una subida que había empezado en 1999; en 2009 ya nacieron {n(NAC[2009])}, y desde entonces ha bajado todos los años salvo en 2014, hasta los {n(NAC[2024])} de 2024, el mínimo de la serie que empieza en 1975. En 2008 nacieron un {p(VS_2024)} % más niños que en 2024.</p>
 {g_nac}
 <p data-tipo="dato">No toda la generación de 2008 podrá votar: quien nació el 30 de noviembre de 2008 o después cumplirá los 18 años al día siguiente de las elecciones o más tarde. En diciembre de 2008 nacieron {n(DIC08)} niños, el {p(100 * DIC08 / NAC[2008])} % de los de ese año. A ellos se suman los nacidos el 30 de noviembre, de los que el INE no da la cifra por día.</p>
 <h2>Cuántos son hoy</h2>
