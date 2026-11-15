@@ -38,7 +38,7 @@ J = [('Unai Simón', 'portero', 'unai-simon-absoluta', '01063', 'alava/zuia', 'Z
      ('Lamine Yamal', 'delantero', 'lamine-yamal-absoluta', '08077', 'barcelona/esplugues-de-llobregat', 'Esplugues de Llobregat'),
      ('Ferran Torres', 'delantero', 'ferran-torres-garcia-ficha-absoluta', '46126', 'valencia/foios', 'Foios'),
      ('Roberto Fernández', 'delantero', 'roberto-fernandez-ficha-absoluta', '14056', 'cordoba/puente-genil', 'Puente Genil'),
-     ('Ander Barrenetxea', 'delantero', None, '20069', 'gipuzkoa/donostia-san-sebastian', 'Donostia'),
+     ('Ander Barrenetxea', 'delantero', 'ander-barrenetxea-absoluta', '20069', 'gipuzkoa/donostia-san-sebastian', 'Donostia'),
      ('Nico Williams', 'delantero', 'nico-williams-absoluta', '31201', 'navarra/pamplona-iruna', 'Pamplona'),
      ('Yeremy Pino', 'delantero', 'yeremy-pino', '35016', 'las-palmas/las-palmas-de-gran-canaria', 'Las Palmas de Gran Canaria')]
 FUERA = [('Aymeric Laporte', 'Agen (Francia)', 'aymeric-laporte-0'), ('Dean Huijsen', 'Ámsterdam (Países Bajos)', 'dean-huijsen-absoluta')]
@@ -151,7 +151,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">Es el mismo movimiento que contamos en la serie {L('mapa-electoral-cataluna-29n', '«El mapa electoral de…»')}: en Cataluña, ERC pasó de ganar en 619 municipios a ganar en 159, y en el {L('mapa-electoral-pais-vasco-29n', 'País Vasco')}, el PNV bajó en 246 de los 251.</p>
 
 <h2>Dónde nacieron y dónde crecieron</h2>
-<p data-tipo="contexto">El lugar de nacimiento no siempre es el pueblo del jugador, y las fuentes no siempre coinciden. Esta pieza usa el de la ficha de la RFEF. La RFEF da València para Alejandro Grimaldo, que es natural de La Pobla de Vallbona, según <a href="{DEBATE_GRIMALDO}">El Debate</a>; allí también ganó el PP en 2023. Para Marc Roca, la RFEF da Vilafranca del Penedès y <a href="{WIKI_ROCA}">Wikipedia</a>, La Granada, el pueblo de al lado; en los dos ganó el PSC. La RFEF y la <a href="{FCB_PEDRI}">ficha del Barça</a> dan Tegueste para Pedri, y <a href="{WIKI_PEDRI}">Wikipedia</a>, Bajamar, en La Laguna, donde ganó el PSOE. Para Unai Simón, la RFEF da Murgia y <a href="{LALIGA_SIMON}">LaLiga</a>, Vitoria, donde también ganó el PSOE. Para Ander Barrenetxea, que no tiene ficha en la web de la RFEF, el lugar de nacimiento es el de <a href="{BARRENETXEA}">la Real Sociedad</a>, Donostia.</p>
+<p data-tipo="contexto">El lugar de nacimiento no siempre es el pueblo del jugador, y las fuentes no siempre coinciden. Esta pieza usa el de la ficha de la RFEF. La RFEF da València para Alejandro Grimaldo, que es natural de La Pobla de Vallbona, según <a href="{DEBATE_GRIMALDO}">El Debate</a>; allí también ganó el PP en 2023. Para Marc Roca, la RFEF da Vilafranca del Penedès y <a href="{WIKI_ROCA}">Wikipedia</a>, La Granada, el pueblo de al lado; en los dos ganó el PSC. La RFEF y la <a href="{FCB_PEDRI}">ficha del Barça</a> dan Tegueste para Pedri, y la ficha de <a href="{WIKI_PEDRI}">Wikipedia</a> también, aunque su biografía dice que nació en Bajamar, en La Laguna, donde ganó el PSOE. Para Unai Simón, la RFEF da Murgia y <a href="{LALIGA_SIMON}">LaLiga</a>, Vitoria, donde también ganó el PSOE. Para Ander Barrenetxea, la ficha de la RFEF y la de <a href="{BARRENETXEA}">la Real Sociedad</a> coinciden: Donostia.</p>
 <p data-tipo="contexto">Nada de esto dice a quién votan los jugadores ni sus familias. Es el mapa de los sitios de donde salen: muchos se fueron de niños a las canteras, y cada municipio vota por razones que no tienen que ver con el fútbol.</p>
 
 <h2>El 29N</h2>
@@ -172,7 +172,7 @@ foot = ('Datos: Ministerio del Interior, generales de noviembre de 2019 y julio 
 TIT = (f'De los {len(J)} convocados de De la Fuente nacidos en España, {POR_JUG["PSOE"]} nacieron donde ganó el PSOE en 2023 y {POR_JUG["PP"]} donde ganó el PP; '
        f'en Puente Genil, el PP ganó por {n(dif("14056"))} votos')
 DEK = (f'España recibe a Inglaterra en el Metropolitano. Los pueblos de sus convocados votan como el mapa: {len(CAMBIAN)} de los {len(MUN)} cambiaron de ganador '
-       'entre 2019 y 2023, ERC perdió los cuatro catalanes y el PNV los tres vascos.')
+       'entre 2019 y 2023, ERC perdió los cuatro municipios catalanes que había ganado y el PNV, los tres vascos.')
 
 D = {'J': [[j, c] for j, _, _, c, _, _ in J], 'FUERA': [f[0] for f in FUERA], 'MUN': MUN, 'POR_JUG': POR_JUG, 'POR_MUN': POR_MUN, 'CAMBIAN': CAMBIAN}
 datos_js = '<script>const D=' + json.dumps(D, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
