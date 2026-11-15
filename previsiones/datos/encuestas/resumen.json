@@ -1,13 +1,13 @@
 {
- "descargado": "2026-11-15T02:36Z",
+ "descargado": "2026-11-15T13:55Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1088,
+ "encuestas_espana": 1090,
  "encuestas_infraestatales": 140,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-14",
-  "encuestadora": "YouGov",
-  "cliente": "Ara"
+  "publicado": "2026-11-15",
+  "encuestadora": "Sigma Dos",
+  "cliente": "El Mundo"
  },
  "siglas_sin_equivalencia": {
   "UPN-PP": 20,
@@ -18,11 +18,13 @@
   "CeC": 1,
   "MÉS ESQUERRA": 1,
   "PSOE (115/117) · VOX": 1,
-  "COMUNS-FA": 1
+  "COMUNS-FA": 1,
+  "ARA MÉS-FA": 1,
+  "SY": 1
  },
  "wikipedia": {
-  "encuestas": 627,
-  "ultima_fin_campo": "2026-11-13",
-  "faltan_en_electografica_120_dias": 22
+  "encuestas": 628,
+  "ultima_fin_campo": "2026-11-14",
+  "faltan_en_electografica_120_dias": 21
  }
 }
