@@ -4794,7 +4794,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15',
+        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-15 10:00',
         titulo='La generación de 2008, la de más nacimientos desde 1981, estrena su voto en unas generales el 29N', serie='29n', figura=0,
         descripcion='En 2008 nacieron en España 519.779 niños. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales, según el INE. En el CIS, los de 18 a 24 años ponen a Vox primero.',
         compara='Los nacidos en 2008 que viven en cada provincia a 1 de enero de 2025 frente a los nacimientos de 2008 y a la población; los electores que votan por primera vez en unas generales en 2026 y en 2023; el peso de los chicos de 13 años en cada municipio en 2022; lo que declaran los entrevistados de 18 a 24 años en el preelectoral del CIS frente al total, y los votos que faltaron en 2023 para el último escaño de cada provincia.',
