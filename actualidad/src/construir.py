@@ -4794,9 +4794,9 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15',
-        titulo='La generación de 2008, la de más nacimientos desde 1981, estrena su voto en unas generales el 29N', serie='29n', figura=0,
-        descripcion='En 2008 nacieron en España 519.779 niños. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales, según el INE. En el CIS, los de 18 a 24 años ponen a Vox primero.',
+        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-15 10:05',
+        titulo='Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales', serie='29n', figura=0,
+        descripcion='En 2008 nacieron en España 519.779 niños, más que en ningún año desde 1981. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales. En el CIS, Vox reúne el 23,2 % del voto más simpatía de 18 a 24 años.',
         compara='Los nacidos en 2008 que viven en cada provincia a 1 de enero de 2025 frente a los nacimientos de 2008 y a la población; los electores que votan por primera vez en unas generales en 2026 y en 2023; el peso de los chicos de 13 años en cada municipio en 2022; lo que declaran los entrevistados de 18 a 24 años en el preelectoral del CIS frente al total, y los votos que faltaron en 2023 para el último escaño de cada provincia.',
         limites='La población por año de nacimiento incluye a los extranjeros, que no votan en las generales, y a los nacidos en diciembre de 2008, que no podrán votar; la nacionalidad solo se publica para el total de España. El último dato municipal por edad es de 2022. El CIS solo entrevista a mayores de edad y su grupo más joven, de 18 a 24 años, abarca a los nacidos de 2001 a 2008; el voto más simpatía no es estimación de voto.',
         calculo='Nacidos en 2008: generación de 16 años a 1-1-2025 en la Estadística Continua de Población (edad a 31 de diciembre). Peso: nacidos en 2008 sobre la población de la provincia. Diferencia: nacidos en 2008 que viven en la provincia sobre nacimientos de 2008 por residencia de la madre. Municipios: personas de 13 años a 1-1-2022 sobre la población, en los de más de 5.000 habitantes. Electores nuevos por día: los del INE entre los días transcurridos desde las generales anteriores. Error teórico del CIS: 2·√(0,25/n). Script: actualidad/src/resumenes/generacion_2008.py.',

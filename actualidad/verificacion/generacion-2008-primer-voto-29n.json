@@ -5,7 +5,7 @@
  },
  "cifras": [
   {
-   "texto": "En 2008 nacieron en España 519.779 niños. Son los más jóvenes",
+   "texto": "En 2008 nacieron en España 519.779 niños, más que en ningún",
    "cifra": "519.779",
    "calculo": "D['NAC']['2008']",
    "_donde": "entradilla"
@@ -17,109 +17,109 @@
    "_donde": "entradilla"
   },
   {
-   "texto": "El 29 de noviembre, 1.615.127 españoles que viven",
+   "texto": "estrenarán su voto en unas generales 1.615.127 españoles que viven en España,",
    "cifra": "1.615.127",
    "calculo": "D['PRIMEROS26']",
    "_donde": "dato"
   },
   {
-   "texto": "de julio de 2023. Son el 4,5 % de los 35.958.711",
+   "texto": "del 23 de julio de 2023: el 4,5 % de los 35.958.711 electores",
    "cifra": "4,5",
    "calculo": "D['PCT_PRIMEROS']",
    "_donde": "dato"
   },
   {
-   "texto": "2023. Son el 4,5 % de los 35.958.711 electores residentes",
+   "texto": "julio de 2023: el 4,5 % de los 35.958.711 electores residentes en el país.",
    "cifra": "35.958.711",
    "calculo": "D['CER26']",
    "_donde": "dato"
   },
   {
-   "texto": "en 2008 nacieron en España 519.779 niños, más que en ningún",
+   "texto": "vinieron al mundo en España 519.779 niños, una cifra que ningún",
    "cifra": "519.779",
    "calculo": "D['NAC']['2008']",
    "_donde": "contexto"
   },
   {
-   "texto": "1999; en 2009 ya nacieron 494.997, y desde entonces ha",
+   "texto": "alumbramientos ya habían caído a 494.997, y desde entonces solo repuntaron",
    "cifra": "494.997",
    "calculo": "D['NAC']['2009']",
    "_donde": "contexto"
   },
   {
-   "texto": "salvo en 2014, hasta los 318.005 de 2024, el mínimo de",
+   "texto": "2014: en 2024 se registraron 318.005, el mínimo desde que arranca",
    "cifra": "318.005",
    "calculo": "D['NAC']['2024']",
    "_donde": "contexto"
   },
   {
-   "texto": "1975. En 2008 nacieron un 63,4 % más niños que en 2024.",
+   "texto": "bebés de 2008 superan en un 63,4 % a los de 2024.",
    "cifra": "63,4",
    "calculo": "D['VS_2024']",
    "_donde": "contexto"
   },
   {
-   "texto": "diciembre de 2008 nacieron 43.162 niños, el 8,3 % de los",
+   "texto": "diciembre de aquel año nacieron 43.162 niños, el 8,3 % del total anual;",
    "cifra": "43.162",
    "calculo": "D['MES']['12']",
    "_donde": "dato"
   },
   {
-   "texto": "nacieron 43.162 niños, el 8,3 % de los de ese año.",
+   "texto": "año nacieron 43.162 niños, el 8,3 % del total anual; a ellos se",
    "cifra": "8,3",
    "calculo": "100*D['MES']['12']/D['NAC']['2008']",
    "_donde": "dato"
   },
   {
-   "texto": "del INE, en España vivían 551.743 personas nacidas en",
+   "texto": "del INE, residían en España 551.743 personas nacidas en 2008 (285.192",
    "cifra": "551.743",
    "calculo": "D['GEN08']",
    "_donde": "dato"
   },
   {
-   "texto": "personas nacidas en 2008: 285.192 hombres y 266.551 mujeres.",
+   "texto": "551.743 personas nacidas en 2008 (285.192 hombres y 266.551 mujeres),",
    "cifra": "285.192",
    "calculo": "D['H08']",
    "_donde": "dato"
   },
   {
-   "texto": "en 2008: 285.192 hombres y 266.551 mujeres. Son un 6,1",
+   "texto": "nacidas en 2008 (285.192 hombres y 266.551 mujeres), un 6,1 % más que los",
    "cifra": "266.551",
    "calculo": "D['M08']",
    "_donde": "dato"
   },
   {
-   "texto": "y 266.551 mujeres. Son un 6,1 % más que los niños",
+   "texto": "hombres y 266.551 mujeres), un 6,1 % más que los bebés registrados",
    "cifra": "6,1",
    "calculo": "D['CREC_NAC']",
    "_donde": "dato"
   },
   {
-   "texto": "ido o han muerto. De ellas, 64.655 nacieron en el extranjero.",
+   "texto": "a las defunciones. De ellas, 64.655 vinieron al mundo en el extranjero.",
    "cifra": "64.655",
    "calculo": "D['NACIDOS_FUERA']",
    "_donde": "dato"
   },
   {
-   "texto": "nacionalidad española. La tienen 485.891 de los nacidos en 2008",
+   "texto": "nacionalidad española, y la tienen 485.891; los 65.852 restantes son extranjeros.",
    "cifra": "485.891",
    "calculo": "D['ESP08']",
    "_donde": "dato"
   },
   {
-   "texto": "viven en España; los otros 65.852 son extranjeros. Aun",
+   "texto": "española, y la tienen 485.891; los 65.852 restantes son extranjeros. Ni",
    "cifra": "65.852",
    "calculo": "D['EXTR08']",
    "_donde": "dato"
   },
   {
-   "texto": "2007 que viven en España son 469.726; los de 2006, 470.235,",
+   "texto": "que residen en España suman 469.726; los de 2006, 470.235, y los",
    "cifra": "469.726",
    "calculo": "D['ESP_COH']['2007']",
    "_donde": "dato"
   },
   {
-   "texto": "son 469.726; los de 2006, 470.235, y los de 2005, 462.014,",
+   "texto": "suman 469.726; los de 2006, 470.235, y los de 2005, 462.014, siempre",
    "cifra": "470.235",
    "calculo": "D['ESP_COH']['2006']",
    "_donde": "dato"
@@ -131,55 +131,55 @@
    "_donde": "dato"
   },
   {
-   "texto": "tiempo. Entonces, el INE contó 1.639.179 españoles residentes",
+   "texto": "aquellas generales, el INE cifró en 1.639.179 los españoles residentes que",
    "cifra": "1.639.179",
    "calculo": "D['PRIMEROS23']",
    "_donde": "dato"
   },
   {
-   "texto": "de julio de 2023 pasaron 1.351 días; entre las de julio",
+   "texto": "Entre una cita y otra mediaron 1.351 días; esta vez han sido 1.225.",
    "cifra": "1.351",
    "calculo": "D['DIAS23']",
    "_donde": "dato"
   },
   {
-   "texto": "de julio de 2023 y el 29N, 1.225. Dividido entre esos",
+   "texto": "1.351 días; esta vez han sido 1.225. El ritmo medio pasa así de",
    "cifra": "1.225",
    "calculo": "D['DIAS26']",
    "_donde": "dato"
   },
   {
-   "texto": "Dividido entre esos días, son 1.213 electores nuevos por",
+   "texto": "1.225. El ritmo medio pasa así de 1.213 nuevos electores diarios a 1.318.",
    "cifra": "1.213",
    "calculo": "D['DIA23']",
    "_donde": "dato"
   },
   {
-   "texto": "por día de media en 2023 y 1.318 en 2026.",
+   "texto": "1.213 nuevos electores diarios a 1.318.",
    "cifra": "1.318",
    "calculo": "D['DIA26']",
    "_donde": "dato"
   },
   {
-   "texto": "Los nacidos en 2008 son el 1,1 % de la población de",
+   "texto": "En el conjunto del país representan el 1,1 % de la población.",
    "cifra": "1,1",
    "calculo": "D['PESO_ESP']",
    "_donde": "dato"
   },
   {
-   "texto": "España. Pesan más en Melilla (1,5 %), Ceuta (1,5 %), Sevilla",
+   "texto": "ciudades autónomas, Melilla (1,5 %) y Ceuta (1,5 %), y en Sevilla",
    "cifra": "1,5",
    "calculo": "D['PESO']['52']",
    "_donde": "dato"
   },
   {
-   "texto": "en Melilla (1,5 %), Ceuta (1,5 %), Sevilla (1,3 %),",
+   "texto": "ciudades autónomas, Melilla (1,5 %) y Ceuta (1,5 %), y en Sevilla",
    "cifra": "1,5",
    "calculo": "D['PESO']['51']",
    "_donde": "dato"
   },
   {
-   "texto": "%), Ceuta (1,5 %), Sevilla (1,3 %), Murcia (1,3 %),",
+   "texto": "Ceuta (1,5 %), y en Sevilla (1,3 %), Murcia (1,3 %), Toledo (1,3",
    "cifra": "1,3",
    "calculo": "D['PESO']['41']",
    "_donde": "dato"
@@ -197,19 +197,19 @@
    "_donde": "dato"
   },
   {
-   "texto": "Toledo (1,3 %) y Guadalajara (1,3 %). Pesan menos en el",
+   "texto": "%), Murcia (1,3 %), Toledo (1,3 %) y Guadalajara (1,3 %). En",
    "cifra": "1,3",
    "calculo": "D['PESO']['19']",
    "_donde": "dato"
   },
   {
-   "texto": "menos en el noroeste: Zamora (0,8 %), Lugo (0,8 %), Ourense",
+   "texto": "cambio, se diluyen: Zamora (0,8 %), Lugo (0,8 %), Ourense (0,8",
    "cifra": "0,8",
    "calculo": "D['PESO']['49']",
    "_donde": "dato"
   },
   {
-   "texto": "noroeste: Zamora (0,8 %), Lugo (0,8 %), Ourense (0,8 %),",
+   "texto": "cambio, se diluyen: Zamora (0,8 %), Lugo (0,8 %), Ourense (0,8",
    "cifra": "0,8",
    "calculo": "D['PESO']['27']",
    "_donde": "dato"
@@ -233,13 +233,13 @@
    "_donde": "dato"
   },
   {
-   "texto": "provincia donde más viven, 79.402, seguida de Barcelona",
+   "texto": "Madrid encabeza la lista con 79.402, por delante de Barcelona (67.869),",
    "cifra": "79.402",
    "calculo": "D['GP']['28']",
    "_donde": "dato"
   },
   {
-   "texto": "79.402, seguida de Barcelona (67.869), Valencia (31.721),",
+   "texto": "79.402, por delante de Barcelona (67.869), Valencia (31.721), Sevilla",
    "cifra": "67.869",
    "calculo": "D['GP']['08']",
    "_donde": "dato"
@@ -257,19 +257,19 @@
    "_donde": "dato"
   },
   {
-   "texto": "Sevilla (25.659) y Alicante (23.625). En casi todas viven",
+   "texto": "Sevilla (25.659) y Alicante (23.625). Casi todas las provincias",
    "cifra": "23.625",
    "calculo": "D['GP']['03']",
    "_donde": "dato"
   },
   {
-   "texto": "aquel año. Ourense gana un 18,3 %; Alicante, un 16,9",
+   "texto": "nacer aquel año. Ourense suma un 18,3 %; Alicante, un 16,9 %; Lugo,",
    "cifra": "18,3",
    "calculo": "D['VAR']['32']",
    "_donde": "dato"
   },
   {
-   "texto": "gana un 18,3 %; Alicante, un 16,9 %; Lugo, un 16,5 %;",
+   "texto": "suma un 18,3 %; Alicante, un 16,9 %; Lugo, un 16,5 %; Santa Cruz",
    "cifra": "16,9",
    "calculo": "D['VAR']['03']",
    "_donde": "dato"
@@ -287,73 +287,73 @@
    "_donde": "dato"
   },
   {
-   "texto": "Tenerife, un 15,7 %, y Toledo, un 15,6 %. Solo en Ciudad Real",
+   "texto": "Tenerife, un 15,7 %, y Toledo, un 15,6 %. Únicamente Ciudad Real (-2,0",
    "cifra": "15,6",
    "calculo": "D['VAR']['45']",
    "_donde": "dato"
   },
   {
-   "texto": "%. Solo en Ciudad Real (-2,0 %) y Jaén (-0,7 %) viven",
+   "texto": "%. Únicamente Ciudad Real (-2,0 %) y Jaén (-0,7 %) conservan",
    "cifra": "2,0",
    "calculo": "-D['VAR']['13']",
    "_donde": "dato"
   },
   {
-   "texto": "Ciudad Real (-2,0 %) y Jaén (-0,7 %) viven menos de los",
+   "texto": "Ciudad Real (-2,0 %) y Jaén (-0,7 %) conservan menos de los que",
    "cifra": "0,7",
    "calculo": "-D['VAR']['23']",
    "_donde": "dato"
   },
   {
-   "texto": "nacieron. Madrid apenas cambia: +0,8 %.",
+   "texto": "queda prácticamente igual: +0,8 %.",
    "cifra": "0,8",
    "calculo": "D['VAR']['28']",
    "_donde": "dato"
   },
   {
-   "texto": "nacieron pocos niños en 2008 (2.156 en Ourense y 2.208 en",
+   "texto": "poco: allí nacieron aquel año 2.156 y 2.208 niños, respectivamente,",
    "cifra": "2.156",
    "calculo": "D['NP']['32']",
    "_donde": "contexto"
   },
   {
-   "texto": "2008 (2.156 en Ourense y 2.208 en Lugo, según la residencia",
+   "texto": "allí nacieron aquel año 2.156 y 2.208 niños, respectivamente, según",
    "cifra": "2.208",
    "calculo": "D['NP']['27']",
    "_donde": "contexto"
   },
   {
-   "texto": "años. Ese día había en España 526.664 personas de 13 años,",
+   "texto": "Ese día se contaban en España 526.664 personas de esa edad, el 1,1",
    "cifra": "526.664",
    "calculo": "D['TOTAL13']",
    "_donde": "contexto"
   },
   {
-   "texto": "526.664 personas de 13 años, el 1,1 % de la población; Madrid",
+   "texto": "526.664 personas de esa edad, el 1,1 % de la población: 30.761 en",
    "cifra": "1,1",
    "calculo": "D['PESO13']",
    "_donde": "contexto"
   },
   {
-   "texto": "la población; Madrid tenía 30.761 y Barcelona, 14.353.",
+   "texto": "edad, el 1,1 % de la población: 30.761 en el municipio de Madrid y",
    "cifra": "30.761",
    "calculo": "D['MAD13']",
    "_donde": "contexto"
   },
   {
-   "texto": "tenía 30.761 y Barcelona, 14.353.",
+   "texto": "en el municipio de Madrid y 14.353 en el de Barcelona.",
    "cifra": "14.353",
    "calculo": "D['BCN13']",
    "_donde": "contexto"
   },
   {
-   "texto": "los municipios de más de 5.000 habitantes, donde más",
+   "texto": "Entre las localidades de más de 5.000 habitantes, la mayor proporción",
    "cifra": "5.000",
    "calculo": "D['UMBRAL']",
    "_donde": "dato"
   },
   {
-   "texto": "Villanueva del Pardillo (2,2 %, el único por encima",
+   "texto": "Zaragoza: Villanueva del Pardillo (2,2 %, la única por encima del 2",
    "cifra": "2,2",
    "calculo": "D['PM']['28177']",
    "_donde": "dato"
@@ -377,7 +377,7 @@
    "_donde": "dato"
   },
   {
-   "texto": "y La Puebla de Alfindén (1,9 %). Donde menos: Malpica",
+   "texto": "%) y La Puebla de Alfindén (1,9 %). En el extremo opuesto figuraban",
    "cifra": "1,9",
    "calculo": "D['PM']['50219']",
    "_donde": "dato"
@@ -407,61 +407,61 @@
    "_donde": "dato"
   },
   {
-   "texto": "nacidos entre 2001 y 2008, con 3.934 entrevistas ponderadas",
+   "texto": "nacidos entre 2001 y 2008 y suma 3.934 entrevistas ponderadas, con",
    "cifra": "3.934",
    "calculo": "D['NJ']",
    "_donde": "contexto"
   },
   {
-   "texto": "ponderadas (error teórico de ±1,6 puntos con la fórmula",
+   "texto": "ponderadas, con un error teórico de ±1,6 puntos según la fórmula del",
    "cifra": "1,6",
    "calculo": "D['ERRJ']",
    "_donde": "contexto"
   },
   {
-   "texto": "los de 18 a 24 años, con el 23,2 %, por delante del PSOE",
+   "texto": "franja de 18 a 24 años con el 23,2 %, seguido del PSOE (22,0 %)",
    "cifra": "23,2",
    "calculo": "D['V']['VOX'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "%, por delante del PSOE (22,0 %) y del PP (14,5 %).",
+   "texto": "el 23,2 %, seguido del PSOE (22,0 %) y del PP (14,5 %). Entre",
    "cifra": "22,0",
    "calculo": "D['V']['PSOE'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "del PSOE (22,0 %) y del PP (14,5 %). En el total de entrevistados,",
+   "texto": "del PSOE (22,0 %) y del PP (14,5 %). Entre el conjunto de entrevistados,",
    "cifra": "14,5",
    "calculo": "D['V']['PP'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "entrevistados, el orden es PSOE (32,0 %), PP (19,2 %) y Vox",
+   "texto": "entrevistados, el orden es otro: PSOE (32,0 %), PP (19,2 %) y Vox (15,8",
    "cifra": "32,0",
    "calculo": "D['V']['PSOE'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "orden es PSOE (32,0 %), PP (19,2 %) y Vox (15,8 %). Vox",
+   "texto": "es otro: PSOE (32,0 %), PP (19,2 %) y Vox (15,8 %). Vox mantiene",
    "cifra": "19,2",
    "calculo": "D['V']['PP'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "(32,0 %), PP (19,2 %) y Vox (15,8 %). Vox también va primero",
+   "texto": "(32,0 %), PP (19,2 %) y Vox (15,8 %). Vox mantiene la cabeza entre",
    "cifra": "15,8",
    "calculo": "D['V']['VOX'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "El Frente Amplio saca el 5,5 % entre los más jóvenes",
+   "texto": "El Frente Amplio obtiene el 5,5 % entre los más jóvenes (el",
    "cifra": "5,5",
    "calculo": "D['V']['Frente Amplio (CHA-FA en Aragón y Comuns-FA en Cataluña)'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "entre los más jóvenes (el 4,4 % en total) y Se Acabó",
+   "texto": "% entre los más jóvenes (el 4,4 % en total), y Se Acabó la Fiesta,",
    "cifra": "4,4",
    "calculo": "D['V']['Frente Amplio (CHA-FA en Aragón y Comuns-FA en Cataluña)'][0]",
    "_donde": "dato"
@@ -479,67 +479,67 @@
    "_donde": "dato"
   },
   {
-   "texto": "se sitúan, de media, en el 4,9 de la escala ideológica",
+   "texto": "años se colocan de media en el 4,9; el conjunto, en el 4,6. Rehúyen",
    "cifra": "4,9",
    "calculo": "D['IDE']['Media'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "(derecha); el total de entrevistados, en el 4,6.",
+   "texto": "en el 4,9; el conjunto, en el 4,6. Rehúyen los extremos más que",
    "cifra": "4,6",
    "calculo": "D['IDE']['Media'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "lo más a la izquierda, el 13,6 %, frente al 22,0 %",
+   "texto": "a la izquierda, se sitúa el 13,6 %, frente al 22,0 % del total,",
    "cifra": "13,6",
    "calculo": "D['IDE']['1 Izquierda'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "izquierda, el 13,6 %, frente al 22,0 % del total, y en el 10",
+   "texto": "se sitúa el 13,6 %, frente al 22,0 % del total, y en el 10, el",
    "cifra": "22,0",
    "calculo": "D['IDE']['1 Izquierda'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "manera. Para la mitad de ellos (49,6 %), las redes sociales",
+   "texto": "por otros canales. La mitad (49,6 %) sigue la política y la campaña",
    "cifra": "49,6",
    "calculo": "D['R1']['Redes sociales'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "política y la campaña, frente al 20,2 % del total; la televisión,",
+   "texto": "las redes sociales, frente al 20,2 % del total. La televisión,",
    "cifra": "20,2",
    "calculo": "D['R1']['Redes sociales'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "la primera fuente para el 45,2 % de los entrevistados,",
+   "texto": "televisión, primera ventana para el 45,2 % de los entrevistados, solo",
    "cifra": "45,2",
    "calculo": "D['R1']['Televisión'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "entrevistados, lo es para el 26,8 % de los jóvenes, y",
+   "texto": "entrevistados, solo lo es para el 26,8 % de los jóvenes, y la radio,",
    "cifra": "26,8",
    "calculo": "D['R1']['Televisión'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "jóvenes, y la radio, para el 1,4 %. Entre los que se",
+   "texto": "jóvenes, y la radio, para el 1,4 %. Entre quienes se informan",
    "cifra": "1,4",
    "calculo": "D['R1']['Radio'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "más siguen es Instagram (38,2 %), seguida de TikTok",
+   "texto": "Instagram es la más seguida (38,2 %), por delante de TikTok (30,9",
    "cifra": "38,2",
    "calculo": "D['RS']['Instagram'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "(38,2 %), seguida de TikTok (30,9 %, frente al 14,2 %",
+   "texto": "(38,2 %), por delante de TikTok (30,9 %, frente al 14,2 % en el total)",
    "cifra": "30,9",
    "calculo": "D['RS']['TikTok'][1]",
    "_donde": "dato"
@@ -551,67 +551,67 @@
    "_donde": "dato"
   },
   {
-   "texto": "14,2 % en el total) y X (20,5 %). Facebook, la segunda",
+   "texto": "al 14,2 % en el total) y X (20,5 %). Facebook, segunda plataforma",
    "cifra": "20,5",
    "calculo": "D['RS']['Twitter/X'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "entrevistados, se queda en el 1,3 % entre los jóvenes.",
+   "texto": "conjunto de la muestra, cae al 1,3 % en esta franja.",
    "cifra": "1,3",
    "calculo": "D['RS']['Facebook'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "seguros están de ir a votar. El 70,3 % de los de 18 a 24",
+   "texto": "convencidos de acudir a las urnas. El 70,3 % de los de 18 a 24 años se",
    "cifra": "70,3",
    "calculo": "D['PR']['10 Con toda seguridad, iría a votar'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "grupos de edad, frente al 83,1 % del total.",
+   "texto": "todas las edades, frente al 83,1 % del total.",
    "cifra": "83,1",
    "calculo": "D['PR']['10 Con toda seguridad, iría a votar'][0]",
    "_donde": "dato"
   },
   {
-   "texto": "que se reparten el 29N. En 21 de las 52 provincias,",
+   "texto": "reparto de diputados del 29N. En 21 de las 52 provincias, esa distancia",
    "cifra": "21",
    "calculo": "len(D['SUPERA'])",
    "_donde": "dato"
   },
   {
-   "texto": "allí. En Girona hacían falta 285 votos y viven 10.128",
+   "texto": "residen allí. En Girona faltaban 285 votos y viven 10.128 jóvenes",
    "cifra": "285",
    "calculo": "D['FF']['17']",
    "_donde": "dato"
   },
   {
-   "texto": "hacían falta 285 votos y viven 10.128 nacidos en 2008; en",
+   "texto": "Girona faltaban 285 votos y viven 10.128 jóvenes de esa generación; en",
    "cifra": "10.128",
    "calculo": "D['GP']['17']",
    "_donde": "dato"
   },
   {
-   "texto": "nacidos en 2008; en Cantabria, 404 y 6.356; en Tarragona,",
+   "texto": "esa generación; en Cantabria, 404 frente a 6.356; en Tarragona,",
    "cifra": "404",
    "calculo": "D['FF']['39']",
    "_donde": "dato"
   },
   {
-   "texto": "2008; en Cantabria, 404 y 6.356; en Tarragona, 1.248",
+   "texto": "generación; en Cantabria, 404 frente a 6.356; en Tarragona, 1.248 frente",
    "cifra": "6.356",
    "calculo": "D['GP']['39']",
    "_donde": "dato"
   },
   {
-   "texto": "404 y 6.356; en Tarragona, 1.248 y 10.666.",
+   "texto": "frente a 6.356; en Tarragona, 1.248 frente a 10.666.",
    "cifra": "1.248",
    "calculo": "D['FF']['43']",
    "_donde": "dato"
   },
   {
-   "texto": "6.356; en Tarragona, 1.248 y 10.666.",
+   "texto": "en Tarragona, 1.248 frente a 10.666.",
    "cifra": "10.666",
    "calculo": "D['GP']['43']",
    "_donde": "dato"
@@ -641,158 +641,154 @@
    "_donde": "pie"
   },
   {
-   "texto": "lo más a la derecha, el 7,0 %, frente al 10,4 %.",
+   "texto": "más escorado a la derecha, el 7,0 %, frente al 10,4 %.",
    "cifra": "7,0",
    "calculo": "D['IDE']['10 Derecha'][1]",
    "_donde": "dato"
   },
   {
-   "texto": "lo más a la derecha, el 7,0 %, frente al 10,4 %.",
+   "texto": "derecha, el 7,0 %, frente al 10,4 %.",
    "cifra": "10,4",
    "calculo": "D['IDE']['10 Derecha'][0]",
    "_donde": "dato"
+  },
+  {
+   "texto": "En el CIS, Vox reúne el 23,2 % del voto más simpatía",
+   "cifra": "23,2",
+   "calculo": "D['V']['VOX'][1]",
+   "_donde": "entradilla"
   }
  ],
  "externas": [
   {
-   "texto": "El 29 de noviembre, 1.615.127 españoles que viven",
+   "texto": "estrenarán su voto en unas generales 1.615.127 españoles que viven en España,",
    "cifra": "1.615.127",
    "fuente": "https://www.ine.es/dyngs/Prensa/es/EG2026.htm"
   },
   {
-   "texto": "tiempo. Entonces, el INE contó 1.639.179 españoles residentes",
+   "texto": "aquellas generales, el INE cifró en 1.639.179 los españoles residentes que",
    "cifra": "1.639.179",
    "fuente": "https://www.ine.es/prensa/elecgral_jul2023.pdf"
   },
   {
-   "texto": "2023. Son el 4,5 % de los 35.958.711 electores residentes",
+   "texto": "julio de 2023: el 4,5 % de los 35.958.711 electores residentes en el país.",
    "cifra": "35.958.711",
    "fuente": "https://www.ine.es/dyngs/Prensa/es/EG2026.htm"
   }
  ],
  "ignorar": [
   {
-   "texto": "el INE. En el CIS, los de 18 a 24 años ponen a Vox",
+   "texto": "el INE: los que han cumplido 18 años desde las generales del",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "INE. En el CIS, los de 18 a 24 años ponen a Vox primero.",
-   "cifra": "24",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "generales: los que han cumplido 18 años desde las del 23",
+   "texto": "noviembre de 2008 cumplirá los 18 años al día siguiente de la",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "2008 o después cumplirá los 18 años al día siguiente",
-   "cifra": "18",
-   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
-  },
-  {
-   "texto": "españoles más grande de las cuatro que estrenan voto en",
+   "texto": "pierden el primer puesto: de las cuatro cohortes que se estrenan, es",
    "cifra": "cuatro",
    "motivo": "número de cohortes (2005 a 2008)"
   },
   {
-   "texto": "generales, los que habían cumplido 18 años desde el 10 de",
+   "texto": "vez, quienes habían cumplido 18 años desde el 10 de noviembre",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "generación de 2008 tenía 13 años. Ese día había",
+   "texto": "2022, cuando estos chicos tenían 13 años. Ese día se contaban en",
    "cifra": "13",
    "motivo": "edad en 2022 de los nacidos en 2008"
   },
   {
-   "texto": "España 526.664 personas de 13 años, el 1,1 % de la",
+   "texto": "2022, cuando estos chicos tenían 13 años. Ese día se contaban en",
    "cifra": "13",
    "motivo": "edad en 2022 de los nacidos en 2008"
   },
   {
-   "texto": "más pesaban los chicos de 13 años es en municipios",
+   "texto": "mayor proporción de chicos de 13 años aparecía en el entorno",
    "cifra": "13",
    "motivo": "edad en 2022 de los nacidos en 2008"
   },
   {
-   "texto": "%, el único por encima del 2 %), Espartinas (2,0",
+   "texto": "(2,2 %, la única por encima del 2 %), Espartinas (2,0 %), Carbajosa",
    "cifra": "2",
    "motivo": "umbral redondo del texto (2 %)"
   },
   {
-   "texto": "2008 que ya habían cumplido 18 años. Su grupo más joven",
+   "texto": "2008 que ya habían cumplido 18 años. Su franja más joven, de",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "Su grupo más joven va de 18 a 24 años, es decir,",
+   "texto": "años. Su franja más joven, de 18 a 24 años, agrupa a los nacidos",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "grupo más joven va de 18 a 24 años, es decir, los",
+   "texto": "Su franja más joven, de 18 a 24 años, agrupa a los nacidos entre",
    "cifra": "24",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "es el primero entre los de 18 a 24 años, con el 23,2",
+   "texto": "afinidad, Vox encabeza la franja de 18 a 24 años con el 23,2 %, seguido",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "primero entre los de 18 a 24 años, con el 23,2 %,",
+   "texto": "Vox encabeza la franja de 18 a 24 años con el 23,2 %, seguido",
    "cifra": "24",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "también va primero entre los de 25 a 34 años, y desde los",
+   "texto": "mantiene la cabeza entre los de 25 a 34 años; a partir de los 35,",
    "cifra": "25",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "primero entre los de 25 a 34 años, y desde los 35",
+   "texto": "la cabeza entre los de 25 a 34 años; a partir de los 35, el",
    "cifra": "34",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "25 a 34 años, y desde los 35 el PSOE pasa delante.",
+   "texto": "25 a 34 años; a partir de los 35, el PSOE toma el relevo. El",
    "cifra": "35",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "Los de 18 a 24 años se sitúan,",
+   "texto": "(izquierda) al 10 (derecha), los de 18 a 24 años se colocan de media",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "Los de 18 a 24 años se sitúan, de media,",
+   "texto": "al 10 (derecha), los de 18 a 24 años se colocan de media en",
    "cifra": "24",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "ideológica del CIS, que va del 1 (izquierda) al 10 (derecha);",
+   "texto": "ideológica del CIS, que va del 1 (izquierda) al 10 (derecha),",
    "cifra": "1",
    "motivo": "extremo de la escala ideológica del CIS"
   },
   {
-   "texto": "que va del 1 (izquierda) al 10 (derecha); el total",
+   "texto": "que va del 1 (izquierda) al 10 (derecha), los de 18 a 24 años",
    "cifra": "10",
    "motivo": "extremo de la escala ideológica del CIS"
   },
   {
-   "texto": "votar. El 70,3 % de los de 18 a 24 años se pone un",
+   "texto": "las urnas. El 70,3 % de los de 18 a 24 años se otorga un 10 («con",
    "cifra": "18",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "El 70,3 % de los de 18 a 24 años se pone un 10 («con",
+   "texto": "urnas. El 70,3 % de los de 18 a 24 años se otorga un 10 («con toda",
    "cifra": "24",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   },
   {
-   "texto": "de 18 a 24 años se pone un 10 («con toda seguridad",
+   "texto": "de 18 a 24 años se otorga un 10 («con toda seguridad iría a",
    "cifra": "10",
    "motivo": "punto de la escala de probabilidad del CIS"
   },
@@ -802,7 +798,7 @@
    "motivo": "título de otra pieza"
   },
   {
-   "texto": "reparten el 29N. En 21 de las 52 provincias, esa cifra",
+   "texto": "diputados del 29N. En 21 de las 52 provincias, esa distancia es",
    "cifra": "52",
    "motivo": "número de provincias"
   },
@@ -867,12 +863,12 @@
    "motivo": "número de provincias mostradas"
   },
   {
-   "texto": "menos que el resto: en el 1, lo más a la izquierda",
+   "texto": "de los entrevistados: en el 1, el más escorado a la izquierda,",
    "cifra": "1",
    "motivo": "extremo de la escala ideológica del CIS"
   },
   {
-   "texto": "del total, y en el 10, lo más a la derecha",
+   "texto": "al 22,0 % del total, y en el 10, el más escorado a la derecha,",
    "cifra": "10",
    "motivo": "extremo de la escala ideológica del CIS"
   },
@@ -883,6 +879,36 @@
   },
   {
    "texto": "en % de los de 18 a 24 años. En la tabla",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "Dieciocho años después, esa generación llega a las urnas.",
+   "cifra": "Dieciocho",
+   "motivo": "años de 2008 a 2026"
+  },
+  {
+   "texto": "nacimientos desde principios de los ochenta.",
+   "cifra": "ochenta",
+   "motivo": "década de 1980 (1981, el año con más nacimientos que 2008)"
+  },
+  {
+   "texto": "primero en el CIS entre los de 18 a 24 años",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "primero en el CIS entre los de 18 a 24 años",
+   "cifra": "24",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "voto más simpatía de 18 a 24 años.",
+   "cifra": "18",
+   "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
+  },
+  {
+   "texto": "voto más simpatía de 18 a 24 años.",
    "cifra": "24",
    "motivo": "tramo de edad del CIS (18 a 24, etc.) o edad legal de voto"
   }
