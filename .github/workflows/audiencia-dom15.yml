@@ -1,0 +1,14 @@
+# Temporal: audiencia domingo 15-11. No se fusiona a main.
+name: Audiencia domingo 15-11
+on:
+  push:
+    branches: [claude/project-thread-ypy3qd]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-dom15.yml']
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/dom15.py
