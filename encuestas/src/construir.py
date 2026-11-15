@@ -21,6 +21,10 @@ import csv, html, json, math, os, pathlib, re, statistics, sys, unicodedata
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
+# nombre con que se muestra cada casa en las tablas: Electográfica y Wikipedia no escriben igual algunas
+NOMBRE_CASA = {'40dB': '40dB.'}
+nombre_casa = lambda c: NOMBRE_CASA.get(c.strip(), c)
+
 sys.dont_write_bytecode = True   # no ensuciar los .pyc que hay en el repositorio
 RAIZ = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RAIZ / 'actualidad' / 'src'))
@@ -416,7 +420,7 @@ def graficos_ultimo(graficos):
 
 
 def fila_tabla(e):
-    casa = html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
+    casa = html.escape(nombre_casa(e['casa'])) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
     enlace = f'<a href="{html.escape(e["url"])}">{casa}</a>' if e['url'] else casa
     campo = fechas_celda(e)
     muestra = f'{int(e["muestra"]):,}'.replace(',', '.') if str(e['muestra']).isdigit() else '–'
@@ -944,7 +948,7 @@ def main():
     for e in sorted(con_esc, key=lambda e: (e.get('publicado') or e['fin'], e['fin'], e['casa']), reverse=True):
         lo, hi = suma_pv(e)
         suma = str(lo) if lo == hi else f'{lo}-{hi}'
-        nombre = (html.escape(e['casa']) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
+        nombre = (html.escape(nombre_casa(e['casa'])) + (f'<span class="medio">{html.escape(e["medio"])}</span>' if e['medio'] else '')
                   + (f'<span class="medio">Publicada el {fechas_celda(e)}</span>' if e.get('publicado') else f'<span class="medio">Campo hasta el {fechas_celda(e)}</span>'))
         # PP + Vox justo después del nombre, para que se vea en el móvil sin desplazar la tabla
         filas_esc += (f'<tr{" class=mayoria" if lo >= 176 else ""}><td>{nombre}</td><td class="n suma">{suma}</td>'
