@@ -15,7 +15,7 @@ def grp(dims,limit,t1,t2,extra=''):
 Z=lambda d:d.strftime('%Y-%m-%dT%H:%M:00Z')
 now=datetime.datetime.utcnow().replace(second=0,microsecond=0)
 D0=datetime.datetime(2026,11,15,23); corte=now-D0
-print('RUN',3);print('CORTE',Z(now),corte)
+print('RUN',4);print('CORTE',Z(now),corte)
 def tot(a,b):
     g=grp(['date'],10,Z(a),Z(b)); return sum(r['sum']['visits'] for r in g),sum(r['count'] for r in g)
 for k in [0,1,7,8]:
@@ -38,9 +38,18 @@ def desglose(lab,a,b):
 desglose('HOY',D0,now)
 desglose('DOM',D0-datetime.timedelta(days=1),D0-datetime.timedelta(days=1)+corte)
 print('AYER',tot(D0-datetime.timedelta(days=1),D0))
-for s in ['encuestas-primera-semana-campana','feijoo-pamplona','cabo-verde','generacion-2008']:
+for s in ['encuestas-primera-semana-campana','feijoo-pamplona','cabo-verde']:
     for r in grp(['requestPath'],10,Z(datetime.datetime(2026,11,15,23)),Z(now),',{requestPath_like:"%%%s%%"}'%s): print('SLUG',s,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
     for r in grp(['refererHost'],10,Z(datetime.datetime(2026,11,15,23)),Z(now),',{requestPath_like:"%%%s%%"}'%s): print('SLUGREF',s,r['sum']['visits'],r['dimensions']['refererHost'])
 h=collections.Counter()
 for r in grp(['datetimeHour'],50,Z(D0),Z(now)): h[r['dimensions']['datetimeHour']]+=r['sum']['visits']
 print('HORA UTC',sorted(h.items()))
+
+X=['t.co','x.com','twitter.com','mobile.twitter.com']
+xh=collections.Counter();xp=collections.Counter()
+for r in grp(['datetimeHour','refererHost','requestPath'],2000,Z(D0),Z(now),',{refererHost_in:%s}'%json.dumps(X)):
+    xh[r['dimensions']['datetimeHour']]+=r['sum']['visits']; xp[r['dimensions']['requestPath']]+=r['sum']['visits']
+print('XHORA UTC',sorted(xh.items())); print('XPATH',xp.most_common(10))
+m=collections.Counter()
+for r in grp(['datetimeMinute'],200,Z(now-datetime.timedelta(hours=1)),Z(now),',{refererHost_in:%s}'%json.dumps(X)): m[r['dimensions']['datetimeMinute'][11:16]]+=r['sum']['visits']
+print('XMIN',sorted(m.items()))
