@@ -17,6 +17,7 @@ También escribe encuestas/insertar.html (resumen para iframe) y, con Pillow, la
 
 Uso, desde la raíz:  python3 encuestas/src/construir.py
 """
+from collections import Counter
 import csv, html, json, math, os, pathlib, re, statistics, sys, unicodedata
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -164,6 +165,17 @@ def carga():
                     'publicado': '' if w.get('reestimacion') else PUBLICADO_WP.get((clave(w['encuestadora']), w['campo_fin'])) or publicado_wp(w),
                     'muestra': w['muestra'], 'voto': {k: num(w[k]) for k, *_ in PRINCIPALES if num(w[k]) is not None},
                     'esc': {k: w[f'esc_{k}'] for k, *_ in TODOS if w.get(f'esc_{k}')}, 'url': w['fuente_original']})
+    # Un solo nombre por casa: el que más usa Wikipedia («CIS», «Sigma Dos», «Simple Lógica»), no las variantes de
+    # Electográfica («Cis», «SigmaDos», «Simple Logica»); y 40dB, siempre para El País y la Cadena SER
+    nombres = {}
+    for w in wp:
+        nombres.setdefault(clave(w['encuestadora']), Counter())[w['encuestadora'].strip()] += 1
+    canon = {c: n.most_common(1)[0][0] for c, n in nombres.items()}
+    for e in out:
+        if not e['reest']:
+            e['casa'] = nombre_casa(canon.get(clave(e['casa']), e['casa'].strip()))
+        if clave(e['casa']) == '40db' and e['medio'] in ('El País', 'El País y', 'Prisa'):
+            e['medio'] = CLIENTE_HABITUAL['40db']
     out = [e for e in out if clave(e['casa']) not in NO_ENCUESTAS and 'PP' in e['voto'] and 'PSOE' in e['voto']]
     return sorted(out, key=lambda e: (e['fin'], e['casa']), reverse=True)
 
