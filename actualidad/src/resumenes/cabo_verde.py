@@ -208,15 +208,16 @@ RTP = 'https://www.rtp.pt/noticias/mundo/paigc-da-guine-bissau-felicita-francisc
 WLEG = 'https://cne.cv/sala_de_imprensa_/cne-declara-paicv-vencedor-das-legislativas-de-2026-com-eleicao-de-37-dos-72-deputados/'
 BOLEG = 'https://cne.cv/ano_resultado_eleicao/2026/'
 WEB = 'https://eleicoes.cv/'
+INF = 'https://www.inforpress.cv/pt/jose-maria-neves-dedica-vitoria-ao-povo-cabo-verdiano-e-promete-continuar-a-ser-presidente-de-todos'
 JE = 'https://jornaleconomico.sapo.pt/noticias/jose-maria-neves-lidera-contagem-com-637-dos-votos-nas-presidenciais-de-cabo-verde/'
 OBS = 'https://observador.pt/2026/11/15/joana-rosa-reconhece-derrota-eleitoral-nas-presidenciais-de-cabo-verde/'
 
-H1 = f'Neves, reelegido en Cabo Verde con el 63,7 % provisional; en 2021 evitó la segunda vuelta por {n(MARGEN)} votos'
-DEK = (f'José Maria Neves ganó el domingo las presidenciales de Cabo Verde en primera vuelta: el 63,7 % con el 93 % de las mesas escrutadas, según los datos provisionales recogidos por Lusa. '
+H1 = f'Neves, reelegido en Cabo Verde con el 63,8 % provisional; en 2021 evitó la segunda vuelta por {n(MARGEN)} votos'
+DEK = (f'José Maria Neves ganó el domingo las presidenciales de Cabo Verde en primera vuelta, con el 63,8 % de los votos según los resultados preliminares de la CNE. '
        f'Joana Rosa, apoyada por el MpD, sacó el 31,6 % y reconoció la derrota. En 2021, Neves ganó en {len(GANA_N)} de los 13 círculos.')
 cuerpo = f"""{EST}
 <h2>El resultado provisional</h2>
-<p data-tipo="dato">José Maria Neves ha sido reelegido presidente de Cabo Verde en la primera vuelta. Con 1.106 de las 1.197 mesas escrutadas, el 93 %, sacaba el 63,7 % de los votos y Joana Rosa, el 31,6 %: 78.254 votos frente a 38.835, según los datos oficiales provisionales que recogió Lusa (<a href="{JE}">Jornal Económico</a>, 15-11, 22.14 en Lisboa). Los otros cuatro candidatos no llegaban al 1,5 % cada uno. La abstención era del 67,9 %, frente al 52 % de 2021.</p>
+<p data-tipo="dato">José Maria Neves ha sido reelegido presidente de Cabo Verde en la primera vuelta, con el 63,8 % de los votos según los resultados preliminares de la Comissão Nacional de Eleições que recogió la agencia caboverdiana <a href="{INF}">Inforpress</a>. Con el 96,8 % de las mesas escrutadas, Neves sumaba 80.018 votos y Joana Rosa, 39.660, el 31,6 %, según Lusa (<a href="{OBS}">Observador</a>, actualizado el 16-11 a las 7.53 en Lisboa). Con el 93 % escrutado, ninguno de los otros cuatro candidatos llegaba al 1,5 %, según Lusa (<a href="{JE}">Jornal Económico</a>). La abstención rondó el 68 %, frente al 52 % de 2021.</p>
 <blockquote class="cita"><p>«Ganhámos com perto de 64% o que é a todos os títulos uma excelente vitória nestas eleições presidenciais»</p><footer>José Maria Neves, en su sede de campaña en Praia, según Lusa (<a href="{OBS}">Observador</a>, 15-11-2026). «Hemos ganado con cerca del 64 %, lo que es a todas luces una excelente victoria en estas presidenciales» (traducción propia)</footer></blockquote>
 <p data-tipo="dato">Joana Rosa reconoció la derrota esa misma noche: «Já oportunamente apresentei ao Presidente reeleito as felicitações» («Ya he presentado oportunamente mis felicitaciones al presidente reelegido»), según Lusa (<a href="{OBS}">Observador</a>).</p>
 <p data-tipo="contexto">Son datos provisionales. La web oficial de resultados de la CNE, <a href="{WEB}">eleicoes.cv</a>, no respondía la mañana del lunes; cuando vuelva, añadiremos el mapa de 2026 por círculos. El mapa de abajo es el de 2021.</p>
@@ -240,11 +241,11 @@ cuerpo = f"""{EST}
 <p data-tipo="dato">En las legislativas del 17 de mayo, el PAICV sacó el {p(LEG_PCT["PAICV"])} % de los votos a candidaturas y el MpD, el {p(LEG_PCT["MpD"])} %, según los <a href="{WLEG}">resultados definitivos de la CNE</a> del 29 de mayo, publicados en el <a href="{BOLEG}">Boletim Oficial</a>. Votó el {p(LEG_PART)} % de los inscritos.</p>
 <p data-tipo="contexto">Joana Rosa usó esa mayoría como argumento de campaña.</p>
 <blockquote class="cita"><p>«Neste momento temos uma força política no governo e que domina o poder local e o parlamento. [...] A ideia defendida por muitos, de que não se deve pôr os ovos todos num mesmo cesto, mostra-se perfeitamente necessária na actual conjuntura política»</p><footer>Joana Rosa, candidata apoyada por el MpD, en una entrevista con <a href="{EXP}">Expresso das Ilhas</a> (3-10-2026). «Ahora mismo tenemos una fuerza política en el Gobierno que domina el poder local y el parlamento. [...] La idea que defienden muchos de que no hay que poner todos los huevos en la misma cesta es perfectamente necesaria en la coyuntura política actual» (traducción propia)</footer></blockquote>
-<p data-tipo="contexto">Esta pieza se publicó el 12 de noviembre, antes de la votación, y se actualizó el 16 con el resultado provisional. En 2021, Neves pasó de la mitad de los válidos por {n(MARGEN)} votos; esta vez, con los datos provisionales, sacó el 63,7 %.</p>
+<p data-tipo="contexto">Esta pieza se publicó el 12 de noviembre, antes de la votación, y se actualizó el 16 con el resultado provisional. En 2021, Neves pasó de la mitad de los válidos por {n(MARGEN)} votos; esta vez, con los datos provisionales, sacó el 63,8 %.</p>
 """
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 preguntas = [
-    ('¿Quién ganó las presidenciales de Cabo Verde de 2026?', 'José Maria Neves, reelegido en la primera vuelta del 15 de noviembre: el 63,7 % con el 93 % de las mesas escrutadas, según los datos provisionales recogidos por Lusa. Joana Rosa sacó el 31,6 %.'),
+    ('¿Quién ganó las presidenciales de Cabo Verde de 2026?', 'José Maria Neves, reelegido en la primera vuelta del 15 de noviembre con el 63,8 % de los votos, según los resultados preliminares de la CNE. Joana Rosa sacó el 31,6 %.'),
     ('¿Quiénes son los candidatos?', 'Seis: José Maria Neves (apoyado por el PAICV), Joana Rosa (apoyada por el MpD), Antero Tavares, Casimiro de Pina, Gilson Alves y Loisito Sousa.'),
     ('¿Cuánto sacó Neves en 2021?', f'El {p(PCT["neves"])} % de los votos válidos, {n(T.neves)} votos: {n(MARGEN)} más de la mitad. Ganó en {len(GANA_N)} de los 13 círculos.'),
 ]
