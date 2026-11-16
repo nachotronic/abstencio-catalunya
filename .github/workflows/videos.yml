@@ -1,0 +1,93 @@
+# Graba solo, sin guion, el vídeo para X de cada pieza nueva de Actualidad y el de «Encuestas, hoy» tras cada
+# actualización de /encuestas/. Los MP4 van a la release «videos» (no a la web: no cuentan para el límite de Pages).
+# NO publica nada: un vídeo sale en X solo cuando Nacho lo aprueba y se apunta en redes/cola.json con "video"
+# (decisión de Nacho, 16-11-2026). Explicación: video/README.md, apartado «Vídeos automáticos».
+name: Vídeos para X
+on:
+  push:
+    branches: [main]
+    paths: ['actualidad/feed.xml']
+  workflow_run:
+    workflows: ['Encuestas']
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      ruta:
+        description: 'Ruta de una pieza (p. ej. /actualidad/<slug>/) o «encuestas». Vacío: las piezas nuevas del feed.'
+        required: false
+permissions:
+  contents: write
+concurrency:
+  group: videos
+  cancel-in-progress: false
+jobs:
+  grabar:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main   # tras «Encuestas», la versión con su commit, no la anterior
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Qué hay que grabar
+        id: que
+        env:
+          RUTA: ${{ inputs.ruta }}
+          EVENTO: ${{ github.event_name }}
+        run: |
+          gh release view videos >/dev/null 2>&1 || gh release create videos --target main --latest=false \
+            --title "Vídeos para X" --notes "Vídeos que graba solo .github/workflows/videos.yml. Ninguno se publica en X sin el OK de Nacho."
+          gh release view videos --json assets -q '.assets[].name' > /tmp/subidos.txt
+          : > /tmp/piezas.txt
+          encuestas=0
+          if [[ "$EVENTO" == workflow_run || "$RUTA" == encuestas ]]; then
+            encuestas=1
+          elif [[ "$RUTA" =~ ^/[a-z0-9/-]+/$ ]]; then
+            echo "$RUTA x-$(basename "$RUTA").mp4" > /tmp/piezas.txt
+          elif [[ -n "$RUTA" ]]; then
+            echo "::error::Ruta no válida: $RUTA (tiene que ser /actualidad/<slug>/)"; exit 1
+          else
+            python3 video/pendientes.py /tmp/subidos.txt > /tmp/piezas.txt
+          fi
+          # art. 69.7 LOREG: nada de encuestas en los cinco días anteriores al 29N, tampoco en vídeo
+          d=$(TZ=Europe/Madrid date +%F)
+          if [[ "$d" > "2026-11-23" && "$d" < "2026-11-29" ]]; then encuestas=0; fi
+          echo "encuestas=$encuestas" >> "$GITHUB_OUTPUT"
+          echo "piezas=$(wc -l < /tmp/piezas.txt)" >> "$GITHUB_OUTPUT"
+          cat /tmp/piezas.txt
+      - name: Herramientas (Chromium y ffmpeg)
+        if: steps.que.outputs.piezas != '0' || steps.que.outputs.encuestas == '1'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          npm install --no-save --silent playwright@1.49.1
+          npx playwright install --with-deps chromium > /dev/null
+          pip install --quiet numpy pandas
+          mkdir -p video/comun && python3 video/prep_provincias.py video/comun/provincias.json
+      - name: Vídeos de las piezas nuevas
+        if: steps.que.outputs.piezas != '0'
+        run: |
+          echo "## Vídeos para X" >> "$GITHUB_STEP_SUMMARY"
+          while read -r ruta nombre; do
+            [[ -z "$ruta" ]] && continue
+            if node video/auto.js "$ruta" "/tmp/$nombre"; then
+              gh release upload videos "/tmp/$nombre" --clobber
+              echo "- \`$nombre\` ($ruta): https://github.com/${{ github.repository }}/releases/download/videos/$nombre" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- ERROR al grabar $ruta" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done < /tmp/piezas.txt
+      - name: Vídeo «Encuestas, hoy»
+        if: steps.que.outputs.encuestas == '1'
+        run: |
+          d=$(TZ=Europe/Madrid date +%F)
+          python3 video/prep_encuestas.py "$d"
+          node video/render.js encuestas-hoy /tmp/short.mp4
+          ffmpeg -y -loglevel error -i /tmp/short.mp4 -vf scale=1066:1896:flags=lanczos -c:v libx264 -crf 24 -preset slow \
+            -pix_fmt yuv420p -movflags +faststart -an "/tmp/x-encuestas-$d.mp4"
+          gh release upload videos "/tmp/x-encuestas-$d.mp4" --clobber
+          echo "- \`x-encuestas-$d.mp4\`: https://github.com/${{ github.repository }}/releases/download/videos/x-encuestas-$d.mp4" >> "$GITHUB_STEP_SUMMARY"
