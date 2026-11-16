@@ -32,4 +32,12 @@
       <news:title>El PSOE sube en siete de las nueve encuestas de la primera semana de campaña; el PP baja en cuatro y sube en otras cuatro</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/feijoo-pamplona-upn-pp-secciones-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-16</news:publication_date>
+      <news:title>Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, habría ganado 49</news:title>
+    </news:news>
+  </url>
 </urlset>

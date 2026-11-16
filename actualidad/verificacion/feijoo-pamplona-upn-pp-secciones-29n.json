@@ -1,0 +1,238 @@
+{
+ "pieza": "feijoo-pamplona-upn-pp-secciones-29n",
+ "cifras": [
+  {
+   "texto": "el PSOE ganó 77 de las 151 secciones en 2023",
+   "cifra": "77",
+   "calculo": "D['G23']['PSOE']"
+  },
+  {
+   "texto": "el PSOE ganó 77 de las 151 secciones en 2023",
+   "cifra": "151",
+   "calculo": "sum(D['G23'].values())"
+  },
+  {
+   "texto": "con UPN y PP sumados, habría ganado 49",
+   "cifra": "49",
+   "calculo": "D['GS']['PSOE']"
+  },
+  {
+   "texto": "fueron los más votados en 50 secciones",
+   "cifra": "50",
+   "calculo": "D['SEP']"
+  },
+  {
+   "texto": "juntos, habrían quedado primeros en 80",
+   "cifra": "80",
+   "calculo": "D['GS']['SUM']"
+  },
+  {
+   "texto": "Su voto sube con la renta: del 20,5 %",
+   "cifra": "20,5",
+   "calculo": "D['Q'][0]['sum']"
+  },
+  {
+   "texto": "con menos renta al 57,1 % en la de más",
+   "cifra": "57,1",
+   "calculo": "D['Q'][4]['sum']"
+  },
+  {
+   "texto": "el PSOE fue el más votado en 77 de las 151",
+   "cifra": "77",
+   "calculo": "D['G23']['PSOE']"
+  },
+  {
+   "texto": "el PSOE fue el más votado en 77 de las 151",
+   "cifra": "151",
+   "calculo": "sum(D['G23'].values())"
+  },
+  {
+   "texto": "Pamplona; UPN, en 28;",
+   "cifra": "28",
+   "calculo": "D['G23']['UPN']"
+  },
+  {
+   "texto": "EH Bildu, en 24, y el PP",
+   "cifra": "24",
+   "calculo": "D['G23']['BILDU']"
+  },
+  {
+   "texto": "y el PP, en 22.",
+   "cifra": "22",
+   "calculo": "D['G23']['PP']"
+  },
+  {
+   "texto": "habría quedado primera en 80:",
+   "cifra": "80",
+   "calculo": "D['GS']['SUM']"
+  },
+  {
+   "texto": "las 50 que ya ganaban por separado",
+   "cifra": "50",
+   "calculo": "D['SEP']"
+  },
+  {
+   "texto": "por separado, 28 del PSOE",
+   "cifra": "28",
+   "calculo": "D['DE_PSOE']"
+  },
+  {
+   "texto": "UPN y PP sacaron juntos 36.746 votos",
+   "cifra": "36.746",
+   "calculo": "D['SUMV']"
+  },
+  {
+   "texto": "36.746 votos, el 34,8 %",
+   "cifra": "34,8",
+   "calculo": "D['PSUM23']"
+  },
+  {
+   "texto": "10.450 más que el PSOE",
+   "cifra": "10.450",
+   "calculo": "D['SUMV']-D['T']['2023_07']['PSOE']"
+  },
+  {
+   "texto": "que ganó con el 24,9 %",
+   "cifra": "24,9",
+   "calculo": "D['T']['2023_07']['PSOE']/D['T']['2023_07']['candidaturas']*100"
+  },
+  {
+   "texto": "Son más que los 34.638 de Navarra Suma",
+   "cifra": "34.638",
+   "calculo": "D['T']['2019_11']['PP']"
+  },
+  {
+   "texto": "ganó entonces 74 de las 137",
+   "cifra": "74",
+   "calculo": "D['G19']['NAS']"
+  },
+  {
+   "texto": "ganó entonces 74 de las 137",
+   "cifra": "137",
+   "calculo": "sum(D['G19'].values())"
+  },
+  {
+   "texto": "en esas 28, UPN y PP sumados",
+   "cifra": "28",
+   "calculo": "D['DE_PSOE']"
+  },
+  {
+   "texto": "una mediana de 45 votos",
+   "cifra": "45",
+   "calculo": "D['MARG_PAS']"
+  },
+  {
+   "texto": "de 13.680 a 20.854 euros",
+   "cifra": "13.680",
+   "calculo": "D['Q'][0]['rmin']"
+  },
+  {
+   "texto": "de 13.680 a 20.854 euros",
+   "cifra": "20.854",
+   "calculo": "D['Q'][0]['rmax']"
+  },
+  {
+   "texto": "sumaron el 20,5 %; en la quinta",
+   "cifra": "20,5",
+   "calculo": "D['Q'][0]['sum']"
+  },
+  {
+   "texto": "por encima de 30.551 euros",
+   "cifra": "30.551",
+   "calculo": "D['Q'][4]['rmin']"
+  },
+  {
+   "texto": "30.551 euros, el 57,1 %",
+   "cifra": "57,1",
+   "calculo": "D['Q'][4]['sum']"
+  },
+  {
+   "texto": "baja del 33,7 % al 16,6 %",
+   "cifra": "33,7",
+   "calculo": "D['Q'][0]['psoe']"
+  },
+  {
+   "texto": "baja del 33,7 % al 16,6 %",
+   "cifra": "16,6",
+   "calculo": "D['Q'][4]['psoe']"
+  },
+  {
+   "texto": "y cae al 7,9 % en la de más",
+   "cifra": "7,9",
+   "calculo": "D['Q'][4]['bildu']"
+  },
+  {
+   "texto": "UPN y PP ganaron 50 de las 151 secciones de Pamplona",
+   "cifra": "50",
+   "calculo": "D['SEP']"
+  },
+  {
+   "texto": "UPN y PP ganaron 50 de las 151 secciones de Pamplona",
+   "cifra": "151",
+   "calculo": "sum(D['G23'].values())"
+  },
+  {
+   "texto": "(%) en las 151 secciones de Pamplona",
+   "cifra": "151",
+   "calculo": "sum(D['G23'].values())"
+  },
+  {
+   "texto": "en cinco grupos de unas 30 secciones",
+   "cifra": "cinco",
+   "calculo": "len(D['Q'])"
+  },
+  {
+   "texto": "en cinco grupos de unas 30 secciones",
+   "cifra": "30",
+   "calculo": "D['Q'][1]['n']"
+  },
+  {
+   "texto": "EH Bildu pasa del 20 % en las tres quintas partes",
+   "condicion": "min(D['Q'][i]['bildu'] for i in range(3))>20"
+  },
+  {
+   "texto": "pasa del 20 % en las tres quintas partes con menos renta",
+   "condicion": "len([q for q in D['Q'][:3] if q['bildu']>20])==3"
+  },
+  {
+   "texto": "28 del PSOE y dos de EH Bildu",
+   "condicion": "D['DE_BILDU']==2"
+  },
+  {
+   "texto": "da en Navarra dos escaños al PSOE y uno a UPN-PP, otro a EH Bildu y otro a Vox",
+   "condicion": "D['RC']['PSOE'][0]==2 and D['RC']['UPNPP'][0]==1 and D['RC']['BILDU'][0]==1 and D['RC']['VOX'][0]==1"
+  },
+  {
+   "texto": "UPN-PP saca entre uno y dos",
+   "condicion": "D['RC']['UPNPP'][1]==1 and D['RC']['UPNPP'][2]==2"
+  },
+  {
+   "texto": "El voto a UPN y PP sube con la renta de cada sección",
+   "condicion": "all(D['Q'][i]['sum']<D['Q'][i+1]['sum'] for i in range(4))"
+  },
+  {
+   "texto": "El PSOE hace el camino inverso",
+   "condicion": "all(D['Q'][i]['psoe']>D['Q'][i+1]['psoe'] for i in range(4))"
+  },
+  {
+   "texto": "Son más que los 34.638 de Navarra Suma",
+   "condicion": "D['SUMV']>D['T']['2019_11']['PP']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "El mitin empieza a las siete de la tarde",
+   "fuente": "https://navarra.okdiario.com/navarra/politica/upn-pp-llama-movilizarse-pamplona-visita-feijoo-senala-pactos-psoe-bildu/20261116070010667727.html"
+  },
+  {
+   "texto": "a las siete de la tarde del 16 de noviembre de 2026",
+   "fuente": "https://navarra.okdiario.com/navarra/politica/upn-pp-llama-movilizarse-pamplona-visita-feijoo-senala-pactos-psoe-bildu/20261116070010667727.html"
+  },
+  {
+   "texto": "con 15 votos a favor y 11 en contra",
+   "fuente": "https://www.pamplona.es/node/63977"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}
