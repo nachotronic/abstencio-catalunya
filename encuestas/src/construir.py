@@ -173,7 +173,7 @@ def carga():
     canon = {c: n.most_common(1)[0][0] for c, n in nombres.items()}
     for e in out:
         if not e['reest']:
-            e['casa'] = canon.get(clave(e['casa']), e['casa'].strip())
+            e['casa'] = nombre_casa(canon.get(clave(e['casa']), e['casa'].strip()))
         if clave(e['casa']) == '40db' and e['medio'] in ('El País', 'El País y', 'Prisa'):
             e['medio'] = CLIENTE_HABITUAL['40db']
     out = [e for e in out if clave(e['casa']) not in NO_ENCUESTAS and 'PP' in e['voto'] and 'PSOE' in e['voto']]
