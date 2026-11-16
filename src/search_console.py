@@ -101,6 +101,31 @@ def main():
     print("### Dispositivo\n")
     tabla(consulta(s, sitio, ini, fn, ["device"], 5), "Dispositivo")
 
+    corte = os.environ.get("GSC_CORTE")
+    if corte:
+        comparar(s, sitio, date.fromisoformat(corte), fin, host)
+
+
+def comparar(s, sitio, corte, fin, host):
+    """Mismo número de días antes y después de un cambio (p. ej. títulos nuevos)."""
+    n = max((fin - corte).days, 1)
+    a0, a1 = (corte - timedelta(days=n)).isoformat(), (corte - timedelta(days=1)).isoformat()
+    d0, d1 = corte.isoformat(), (corte + timedelta(days=n - 1)).isoformat()
+    print(f"## Antes ({a0} a {a1}) y después ({d0} a {d1}) del cambio\n")
+    for dim, nombre in (("page", "Página"), ("query", "Búsqueda")):
+        antes = {f["keys"][0]: f for f in consulta(s, sitio, a0, a1, [dim], 1000)}
+        despues = consulta(s, sitio, d0, d1, [dim], 1000)
+        despues.sort(key=lambda f: -f["impressions"])
+        print(f"| {nombre} | Impr. antes | Impr. después | CTR antes | CTR después | Pos. antes | Pos. después |")
+        print("|---|---:|---:|---:|---:|---:|---:|")
+        for f in despues[:FILAS]:
+            k = f["keys"][0]
+            b = antes.get(k)
+            print(f"| {k.replace(host, '') or '/'} | {num(b['impressions']) if b else '–'} | "
+                  f"{num(f['impressions'])} | {pct(b['ctr']) if b else '–'} | {pct(f['ctr'])} | "
+                  f"{pos(b['position']) if b else '–'} | {pos(f['position'])} |")
+        print()
+
 
 if __name__ == "__main__":
     main()

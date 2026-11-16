@@ -8,6 +8,9 @@ on:
       dias:
         description: 'Días hacia atrás'
         default: '28'
+      corte:
+        description: 'Fecha de un cambio para comparar antes y después (AAAA-MM-DD, opcional)'
+        default: ''
   push:
     branches: [claude/project-thread-g04hlf]
     paths: [src/search_console.py, .github/workflows/search-console.yml]
@@ -23,4 +26,5 @@ jobs:
         env:
           GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
           GSC_DIAS: ${{ inputs.dias || '28' }}
+          GSC_CORTE: ${{ inputs.corte || '2026-11-16' }}
         run: python3 src/search_console.py | tee -a "$GITHUB_STEP_SUMMARY"
