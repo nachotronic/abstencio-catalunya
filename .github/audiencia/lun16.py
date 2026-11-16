@@ -15,7 +15,7 @@ def grp(dims,limit,t1,t2,extra=''):
 Z=lambda d:d.strftime('%Y-%m-%dT%H:%M:00Z')
 now=datetime.datetime.utcnow().replace(second=0,microsecond=0)
 D0=datetime.datetime(2026,11,15,23); corte=now-D0
-print('CORTE',Z(now),corte)
+print('RUN',2);print('CORTE',Z(now),corte)
 def tot(a,b):
     g=grp(['date'],10,Z(a),Z(b)); return sum(r['sum']['visits'] for r in g),sum(r['count'] for r in g)
 for k in [0,1,7,8]:
@@ -38,7 +38,7 @@ def desglose(lab,a,b):
 desglose('HOY',D0,now)
 desglose('DOM',D0-datetime.timedelta(days=1),D0-datetime.timedelta(days=1)+corte)
 print('AYER',tot(D0-datetime.timedelta(days=1),D0))
-for s in ['encuestas-primera-semana-campana','generacion-2008','seleccion-convocados']:
+for s in ['encuestas-primera-semana-campana','feijoo-pamplona','cabo-verde','generacion-2008']:
     for r in grp(['requestPath'],10,Z(datetime.datetime(2026,11,15,23)),Z(now),',{requestPath_like:"%%%s%%"}'%s): print('SLUG',s,r['sum']['visits'],r['count'],r['dimensions']['requestPath'])
     for r in grp(['refererHost'],10,Z(datetime.datetime(2026,11,15,23)),Z(now),',{requestPath_like:"%%%s%%"}'%s): print('SLUGREF',s,r['sum']['visits'],r['dimensions']['refererHost'])
 h=collections.Counter()
