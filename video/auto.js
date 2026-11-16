@@ -48,7 +48,7 @@ function lineasCierre(titulo) {
 }
 
 function ff(args) {
-  const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', ...args], { stdio: 'inherit' });
+  const r = spawnSync('ffmpeg', ['-nostdin', '-y', '-loglevel', 'error', ...args], { stdio: 'inherit' });
   if (r.status !== 0) throw new Error('ffmpeg falló');
 }
 

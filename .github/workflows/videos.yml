@@ -74,8 +74,9 @@ jobs:
           echo "## Vídeos para X" >> "$GITHUB_STEP_SUMMARY"
           while read -r ruta nombre; do
             [[ -z "$ruta" ]] && continue
-            if node video/auto.js "$ruta" "/tmp/$nombre"; then
-              gh release upload videos "/tmp/$nombre" --clobber
+            # < /dev/null: si no, ffmpeg o gh se comen el resto de la lista y solo sale el primer vídeo (16-11-2026)
+            if node video/auto.js "$ruta" "/tmp/$nombre" < /dev/null; then
+              gh release upload videos "/tmp/$nombre" --clobber < /dev/null
               echo "- \`$nombre\` ($ruta): https://github.com/${{ github.repository }}/releases/download/videos/$nombre" >> "$GITHUB_STEP_SUMMARY"
             else
               echo "- ERROR al grabar $ruta" >> "$GITHUB_STEP_SUMMARY"
