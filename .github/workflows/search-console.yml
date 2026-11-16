@@ -1,0 +1,26 @@
+# Informe de Google Search Console (clics, impresiones, CTR y posición por día, página y búsqueda).
+# Necesita el secreto GSC_CREDENTIALS (clave JSON de la cuenta de servicio). El informe sale en el
+# resumen de la ejecución; la clave nunca se imprime.
+name: Search Console
+on:
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: 'Días hacia atrás'
+        default: '28'
+  push:
+    branches: [claude/project-thread-g04hlf]
+    paths: [src/search_console.py, .github/workflows/search-console.yml]
+permissions:
+  contents: read
+jobs:
+  informe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q google-auth requests
+      - name: Informe
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+          GSC_DIAS: ${{ inputs.dias || '28' }}
+        run: python3 src/search_console.py | tee -a "$GITHUB_STEP_SUMMARY"
