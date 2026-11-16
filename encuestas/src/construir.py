@@ -629,19 +629,132 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',todo)})();
 </script>"""
 
 
-def franja_portada(titular, med, actual, pre, ultima=''):
-    """Franja «Encuestas» de la portada, entre <!--encuestas:portada-->, justo debajo del mapa: titular y mediana de cada partido."""
-    cifras = ''.join(f'<li><i style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n} <b>{pc(med[k])}</b></li>'
-                     for k, n, c, _ in PRINCIPALES if k in med)
-    return (f'<section class="wide del-atlas del-encuestas" aria-labelledby="h-del-encuestas"><div class="da-cab"><h2 id="h-del-encuestas">'
-            f'<a href="{pre}encuestas/">Encuestas de las elecciones generales</a></h2><span class="de-act">Actualizado el {actual}</span></div>'
-            f'<a class="de-tit" href="{pre}encuestas/">{html.escape(titular)}</a><ul class="de-med">{cifras}</ul>'
-            + (f'<p class="de-ult">{ultima}</p>' if ultima else '') +
-            f'<p class="de-pie">Mediana de la última encuesta de cada encuestadora en las tres últimas semanas. '
-            f'<a href="{pre}encuestas/">Todas las encuestas, los escaños y nuestra estimación →</a> · <a href="{pre}encuestas/simulador-pactos/">¿Quién puede gobernar? Simulador de pactos →</a></p>'
-            '<style>.del-encuestas .de-act{font:13px var(--sans);color:var(--muted)}.del-encuestas .de-tit{display:block;font:700 clamp(19px,2.4vw,24px)/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:2px 0 8px}'
-            '.del-encuestas .de-tit:hover{text-decoration:underline}.del-encuestas .de-med{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;font:14px var(--sans)}'
-            '.del-encuestas .de-med i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}.del-encuestas .de-pie{font:13px/1.4 var(--sans);color:var(--muted);margin:8px 0 0}.del-encuestas .de-ult{font:14px/1.4 var(--sans);margin:8px 0 0}</style></section>')
+DESDE_PORTADA = 120   # días de la evolución que enseña la portada
+EN_PORTADA = 5        # últimas encuestas en la lista de la portada
+
+
+def _num(v, signo=False):
+    t = f'{v:+.1f}' if signo else f'{v:.1f}'
+    return t.replace('.', ',').replace('-', '−')
+
+
+def svg_evolucion(serie, partidos):
+    """Evolución de la mediana (la misma línea del gráfico de /encuestas/) en SVG estático para la portada:
+    sin JavaScript y con viewBox fijo, así ocupa su sitio desde el primer pintado (sin CLS)."""
+    serie = serie[-DESDE_PORTADA:]
+    W, H, iz, de, ar, ab = 380, 168, 24, 62, 8, 20
+    vals = [f[k] for f in serie for k, *_ in partidos if k in f]
+    lo, hi = math.floor(min(vals) / 5) * 5, math.ceil(max(vals) / 5) * 5
+    x = lambda i: iz + (W - iz - de) * i / (len(serie) - 1)
+    y = lambda v: ar + (H - ar - ab) * (hi - v) / (hi - lo)
+    out = []
+    for v in range(lo, hi + 1, 5):
+        out.append(f'<line x1="{iz}" x2="{W - de + 4}" y1="{y(v):.1f}" y2="{y(v):.1f}" class="ev-g"/>'
+                   f'<text x="{iz - 4}" y="{y(v) + 3.5:.1f}" text-anchor="end">{v}</text>')
+    for i, f in enumerate(serie):   # primer día de cada mes
+        if f['d'].endswith('-01'):
+            out.append(f'<text x="{x(i):.1f}" y="{H - 5}" text-anchor="middle">{MESES[int(f["d"][5:7]) - 1]}</text>'
+                       f'<line x1="{x(i):.1f}" x2="{x(i):.1f}" y1="{H - ab}" y2="{H - ab + 3}" class="ev-g"/>')
+    etiquetas = []
+    for k, n, *_ in partidos:
+        pts = [(x(i), y(f[k])) for i, f in enumerate(serie) if k in f]
+        if len(pts) < 2:
+            continue
+        out.append(f'<polyline class="ev-l" style="stroke:var(--c-{k})" points="{" ".join(f"{a:.1f},{b:.1f}" for a, b in pts)}"/>'
+                   f'<circle cx="{pts[-1][0]:.1f}" cy="{pts[-1][1]:.1f}" r="3" style="fill:var(--c-{k})"/>')
+        etiquetas.append([pts[-1][1], k, CORTO.get(k, n), serie[-1].get(k)])
+    etiquetas.sort()   # que no se pisen: al menos 13 px entre etiquetas
+    for j in range(1, len(etiquetas)):
+        etiquetas[j][0] = max(etiquetas[j][0], etiquetas[j - 1][0] + 13)
+    for yy, k, n, v in etiquetas:
+        out.append(f'<text x="{W - de + 8}" y="{yy + 4:.1f}" class="ev-e" style="fill:var(--c-{k})">{n} {_num(v) if v is not None else ""}</text>')
+    nombres = ', '.join(f'{CORTO.get(k, n)} {_num(serie[-1][k])} %' for k, n, *_ in partidos if k in serie[-1])
+    return (f'<svg class="ev" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Evolución de la mediana de las encuestas en los últimos '
+            f'{DESDE_PORTADA} días. Hoy: {nombres}.">{"".join(out)}</svg>')
+
+
+def franja_portada(titular, med, actual, pre, serie, recientes, ruta_casa, hemi=None):
+    """Bloque «Encuestas» de la portada, entre <!--encuestas:portada-->, encima del mapa (Nacho, 16-11-2026: «subirlo en
+    portada, más fácil y visual»): mediana de PP, PSOE y Vox con la distancia entre los dos primeros, la evolución de la
+    mediana y las últimas encuestas publicadas. Todo sale de los mismos datos que /encuestas/, nada escrito a mano."""
+    nom = lambda k: {'SUMAR': 'Sumar', 'VOX': 'Vox'}.get(k, NOMBRE[k])
+    colores = ''.join(f'--c-{k}:{c};' for k, _, c, _ in PRINCIPALES)
+    oscuros = ''.join(f'--c-{k}:{o};' for k, _, _, o in PRINCIPALES)
+    # distancia entre PP y PSOE: resta de las dos medianas que se ven (redondeadas a un decimal, como en /encuestas/)
+    a, b = ('PP', 'PSOE') if med['PP'] >= med['PSOE'] else ('PSOE', 'PP')
+    dist = round(med[a] - med[b], 1)
+    semana = next((f for f in reversed(serie) if f['d'] <= (date.fromisoformat(serie[-1]['d']) - timedelta(days=7)).isoformat()), None)
+    cambio = ''
+    if semana and 'PP' in semana and 'PSOE' in semana:
+        d0 = round(semana['PP'] - semana['PSOE'], 1)   # con signo: a favor del PP si es positiva
+        a0 = 'PP' if d0 > 0 else 'PSOE'
+        cambio = ('hace una semana, empatados' if d0 == 0 else
+                  'igual que hace una semana' if d0 == round(med['PP'] - med['PSOE'], 1) else
+                  f'hace una semana, {_num(abs(d0))} puntos' if a0 == a else f'hace una semana, el {a0} sacaba {_num(abs(d0))}')
+    lema = (f'<b>PP y PSOE, empatados en la mediana</b>' if dist == 0 else
+            f'<b style="color:var(--c-{a})">El {a} saca {_num(dist)} puntos al {b}</b>')
+    kpis = ''.join(f'<li style="--c:var(--c-{k})"><span>{nom(k)}</span><b>{_num(med[k])}<small> %</small></b></li>'
+                   for k in ('PP', 'PSOE', 'VOX') if k in med)
+    resto = ' · '.join(f'{nom(k)} {_num(med[k])} %' for k in sorted((k for k, *_ in PRINCIPALES[3:] if k in med), key=lambda k: -med[k]))
+    pv = (f'<p class="ep-pv">PP + Vox: <b>{hemi["PP"] + hemi.get("VOX", 0)}</b> escaños de media en las encuestas que los publican; la mayoría absoluta, 176.</p>'
+          if hemi and 'PP' in hemi else '')
+    filas = ''
+    for e in recientes[:EN_PORTADA]:
+        iso = e.get('publicado') or e['fin']
+        r = ruta_casa(e['casa'])
+        casa = html.escape(e['casa'])
+        nombre = f'<a href="{pre}encuestas/{r}/">{casa}</a>' if r else casa
+        v = e['voto']
+        x1, x2 = ('PP', 'PSOE') if v['PP'] >= v['PSOE'] else ('PSOE', 'PP')
+        dv = round(v[x1] - v[x2], 1)
+        filas += (f'<tr{" class=ep-m" if len(filas.split("<tr")) > 3 else ""}><td>{nombre}<small>{dia(iso)}{"" if e.get("publicado") else "*"}</small></td>'
+                  + ''.join(f'<td class="n" style="color:var(--c-{k})">{_num(v[k]) if k in v else "–"}</td>' for k in ('PP', 'PSOE', 'VOX'))
+                  + (f'<td class="n"><span class="ep-v" style="--c:var(--c-{x1})">{x1} +{_num(dv)}</span></td>' if dv else '<td class="n"><span class="ep-v">Empate</span></td>')
+                  + '</tr>')
+    return (f'<section class="wide ep" aria-labelledby="h-ep" style="{colores}">'
+            '<style>'
+            f'@media (prefers-color-scheme:dark){{:root:not([data-theme="light"]) .ep{{{oscuros}}}}}:root[data-theme="dark"] .ep{{{oscuros}}}'
+            '.ep{margin-top:10px;margin-bottom:14px}.ep-cab{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-top:2px solid var(--ink);padding-top:8px}'
+            '.ep h2{font:700 13px/17px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:0}.ep h2 a{color:var(--ink);text-decoration:none}'
+            '.ep-cab span{font:12px/16px var(--sans);color:var(--muted);text-align:right}'
+            '.ep-cuerpo{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:8px 36px}'
+            '.ep-tit{display:block;font:700 clamp(18px,2.2vw,23px)/1.22 var(--serif);color:var(--ink);text-decoration:none;margin:6px 0 10px}.ep-tit:hover{text-decoration:underline}'
+            '.ep-kpi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}'
+            '.ep-kpi li{border-top:5px solid var(--c);padding-top:4px}.ep-kpi span{display:block;font:600 13px/18px var(--sans);color:var(--ink2)}'
+            '.ep-kpi b{display:block;height:1.1em;font:700 clamp(28px,3.4vw,40px)/1.1 var(--sans);color:var(--c);font-variant-numeric:tabular-nums}.ep-kpi small{font-size:.5em}'
+            '.ep-dist{font:15px/20px var(--sans);margin:10px 0 2px}.ep-dist span{color:var(--muted);font-size:13px;line-height:20px}'
+            '.ep-resto{font:13px/18px var(--sans);color:var(--muted);margin:0 0 8px}'
+            '.ep-fig{margin:0}.ep-fig figcaption{font:600 12px/16px var(--sans);color:var(--ink2);margin-bottom:2px}'
+            'svg.ev{display:block;width:100%;max-width:470px;height:auto;aspect-ratio:380/168;font:10px var(--sans);fill:var(--muted);overflow:visible}'
+            '.ev-g{stroke:var(--line);stroke-width:1}.ev-l{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}.ev-e{font-weight:700;font-size:11px}'
+            '.ep h3{font:600 12px/16px var(--sans);color:var(--ink2);margin:8px 0 4px}'
+            '.ep table{width:100%;border-collapse:collapse;font:14px/20px var(--sans);font-variant-numeric:tabular-nums}'
+            '.ep th{font:600 11px/16px var(--sans);color:var(--muted);text-align:left;border-bottom:1px solid var(--line);padding:2px 4px}'
+            '.ep td{border-bottom:1px solid var(--line);padding:6px 4px;font-weight:600;white-space:nowrap}.ep td:first-child{white-space:normal}'
+            '.ep th.n,.ep td.n{text-align:right}.ep td a{color:var(--ink)}.ep td small{display:block;font:12px/16px var(--sans);color:var(--muted)}'
+            '.ep-v{display:inline-block;padding:1px 6px;border-radius:4px;font-size:12px;line-height:18px;border:1px solid var(--c,var(--line));color:var(--c,var(--muted))}'
+            '.ep-pv{font:14px/20px var(--sans);margin:8px 0 0}'
+            '.ep-boton{display:block;margin:10px 0 6px;padding:10px 12px;border-radius:6px;background:var(--ink);color:var(--bg);font:600 15px/20px var(--sans);text-align:left;text-decoration:none}'
+            '.ep-boton:hover{opacity:.9}.ep-pie{font:12px/17px var(--sans);color:var(--muted);margin:4px 0 0}'
+            '@media (max-width:760px){.ep-cuerpo{grid-template-columns:1fr}.ep-tit{font-size:18px;margin:4px 0 8px}.ep-kpi b{font-size:30px}'
+            '.ep table{font-size:13.5px;line-height:19px}.ep td{padding:4px 3px}.ep th{padding:2px 3px}.ep tr.ep-m{display:none}.ep-kpi li{border-top-width:4px}.ep-kpi b{font-size:28px}'
+            '.ep-cab span{font-size:11px;line-height:15px}.ep-dist{font-size:14px;line-height:19px;margin-top:6px}.ep-resto{font-size:12px;line-height:17px;margin-bottom:4px}.ep-pv{font-size:13px;line-height:18px;margin-top:6px}.ep-boton{padding:9px 10px;font-size:14px;margin:8px 0 4px}.ep h3{margin-top:4px}}'
+            '</style>'
+            f'<div class="ep-cab"><h2 id="h-ep"><a href="{pre}encuestas/">Encuestas del 29N</a></h2>'
+            f'<span>Actualizado el {actual}</span></div>'
+            f'<div class="ep-cuerpo"><div class="ep-a">'
+            f'<a class="ep-tit" href="{pre}encuestas/">{html.escape(titular)}</a>'
+            f'<ul class="ep-kpi">{kpis}</ul>'
+            f'<p class="ep-dist">{lema}' + (f' <span>({cambio})</span>' if cambio else '') + '</p>'
+            f'<p class="ep-resto">{resto}</p>'
+            f'<figure class="ep-fig"><figcaption>Mediana de las encuestas, últimos {DESDE_PORTADA // 30} meses (%)</figcaption>{svg_evolucion(serie, PRINCIPALES[:4])}</figure>'
+            f'</div><div class="ep-b"><h3>Últimas encuestas publicadas</h3>'
+            f'<table><thead><tr><th>Encuestadora</th><th class="n">PP</th><th class="n">PSOE</th><th class="n">Vox</th><th class="n">Ventaja</th></tr></thead><tbody>{filas}</tbody></table>'
+            f'{pv}'
+            f'<a class="ep-boton" href="{pre}encuestas/">Ver todas las encuestas, los escaños y nuestro modelo →</a>'
+            f'<p class="ep-pie">Mediana de la última encuesta de cada encuestadora en las tres últimas semanas: un resumen, no una previsión. '
+            f'<a href="{pre}encuestas/simulador-pactos/">¿Quién puede gobernar? Simulador de pactos →</a></p></div></div>'
+            '</section>')
 
 
 def post_x(titular, med, hoy):
@@ -658,15 +771,19 @@ def post_x(titular, med, hoy):
     return texto, URL, etiquetas
 
 
-def portada(titular, med, actual, ultima='', hoy=''):
+def portada(titular, med, actual, hoy='', **datos):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
             continue
         t = f.read_text(encoding='utf-8')
-        if '<!--encuestas:portada-->' not in t:   # la franja va justo encima de la de Actualidad
-            t = t.replace('<!--actualidad:ultimas-->', '<!--encuestas:portada--><!--/encuestas:portada-->\n<!--actualidad:ultimas-->', 1)
-        t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->',
-                   lambda m: '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, ultima) + '<!--/encuestas:portada-->', t, flags=re.S)
+        # el bloque va justo encima del mapa (antes, debajo, tras «Votar el 29N» y las listas): se quita de donde esté y se pone ahí
+        t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->\n?', '', t, flags=re.S)
+        bloque = '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, **datos) + '<!--/encuestas:portada-->\n'
+        m = re.search(r'<section class="wide" id="mapa"', t)
+        if not m:
+            print(f'encuestas: no encuentro el mapa en {f.name}; la portada se queda sin el bloque de encuestas')
+            continue
+        t = t[:m.start()] + bloque + t[m.start():]
         if hoy and f.name == 'index.html':
             # la portada cambia cada día con esta franja: la fecha que lee Google (JSON-LD) tiene que cambiar con ella,
             # no quedarse en la del último build completo del mapa (Nacho, 7-11-2026: Google veía el 13 de octubre)
@@ -1174,11 +1291,10 @@ def main():
                                         + (f'  <url><loc>{URL}simulador-pactos/</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n' if hay_pactos else '')
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{f}</lastmod></url>\n' for r, _, _, f in casas)
                                         + ''.join(f'  <url><loc>{URL}{r}/</loc><lastmod>{FECHA_MODELO[0]}</lastmod></url>\n' for r, _ in PROV_PAGINAS) + '</urlset>\n', encoding='utf-8')
-    d_ult = date.fromisoformat(ult.get('publicado') or ult['fin'])
-    portada(titular, med, actual, f'Última encuesta: <b>{html.escape(ult["casa"])}</b>' + (f' para {html.escape(ult["medio"])}' if ult['medio'] else '')
-            + f', publicada el {DIAS_SEMANA[d_ult.weekday()]} {d_ult.day} de {fecha_larga(d_ult.isoformat()).split(" de ")[1]}: '
-            + ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(ult["voto"][k])}' for k, n, *_ in PRINCIPALES[:3] if k in ult['voto']) + '.',
-            datetime.now(ZoneInfo('Europe/Madrid')).date().isoformat())   # fecha de Madrid, no la UTC de la descarga
+    con_pagina = {r for r, *_ in casas}
+    ruta_casa = lambda n: (lambda r: r if r in con_pagina else '')(encuestadoras.ruta_de(clave(n)))
+    portada(titular, med, actual, datetime.now(ZoneInfo('Europe/Madrid')).date().isoformat(),   # fecha de Madrid, no la UTC de la descarga
+            serie=serie, recientes=[e for e in desde23 if not e['reest']], ruta_casa=ruta_casa, hemi=hemi)
     # post para redes de esta actualización: el workflow solo vuelve a escribirlo cuando entra una encuesta nueva
     texto, enlace, etiquetas = post_x(titular, med, hoy.isoformat())
     (SALIDA / 'post-redes.txt').write_text(f'{texto}\n{enlace}\n\n{etiquetas}\n', encoding='utf-8')
