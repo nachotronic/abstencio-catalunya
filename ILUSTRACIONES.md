@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (105)
+## Pendientes (106)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-16 | [`encuestas-primera-semana-campana-29n`](https://mapaelectoral.es/actualidad/encuestas-primera-semana-campana-29n/) | El PSOE sube en siete de las nueve encuestas de la primera semana de campaña; el PP baja en cuatro y sube en otras cuatro | primer gráfico de la pieza |
+| 2026-11-16 | [`feijoo-pamplona-upn-pp-secciones-29n`](https://mapaelectoral.es/actualidad/feijoo-pamplona-upn-pp-secciones-29n/) | Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, se habría quedado en 49 | primer gráfico de la pieza |
 | 2026-11-15 | [`seleccion-convocados-pueblos-29n`](https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/) | De los 25 convocados de De la Fuente nacidos en España, 15 nacieron donde ganó el PSOE en 2023 y 8 donde ganó el PP; en Puente Genil, el PP ganó por 31 votos | primer gráfico de la pieza |
 | 2026-11-15 | [`generacion-2008-primer-voto-29n`](https://mapaelectoral.es/actualidad/generacion-2008-primer-voto-29n/) | Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales | primer gráfico de la pieza |
 | 2026-11-14 | [`dos-semanas-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/dos-semanas-29n-la-semana-en-el-mapa/) | A dos semanas del 29N, 14 de las 16 encuestas con escaños dan mayoría absoluta a PP y Vox; solo el CIS y SW Demoscopia ponen por delante al PSOE | primer gráfico de la pieza |
