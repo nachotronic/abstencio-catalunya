@@ -5,36 +5,6 @@
   },
   "cifras": [
     {
-      "texto": "vuelta en Cabo Verde por 3.311 votos en 2021; el domingo",
-      "cifra": "3.311",
-      "calculo": "D['MARGEN']",
-      "_donde": "titular"
-    },
-    {
-      "texto": "MpD. En 2021, Neves sacó el 51,8 % de los válidos y ganó",
-      "cifra": "51,8",
-      "calculo": "D['PCT']['neves']",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "de los válidos y ganó en 9 de los 13 círculos;",
-      "cifra": "9",
-      "calculo": "len(D['GANA_N'])",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "válidos y ganó en 9 de los 13 círculos; la diáspora",
-      "cifra": "13",
-      "calculo": "len(D['CIRC'])",
-      "_donde": "entradilla"
-    },
-    {
-      "texto": "círculos; la diáspora es hoy el 18,2 % del censo.",
-      "cifra": "18,2",
-      "calculo": "D['P_DIAS26']",
-      "_donde": "entradilla"
-    },
-    {
       "texto": "presentaron en 2021 y sacaron el 1,8 % y el 0,8 %.",
       "cifra": "1,8",
       "calculo": "D['PCT']['pina']",
@@ -146,12 +116,6 @@
       "texto": "país. En Europa, solo el 20,8 %.",
       "cifra": "20,8",
       "calculo": "D['CIRC']['Europa e Resto do Mundo']['part']",
-      "_donde": "dato"
-    },
-    {
-      "texto": "Para el domingo hay 419.448 inscritos, según la",
-      "cifra": "419.448",
-      "calculo": "D['INS26']",
       "_donde": "dato"
     },
     {
@@ -336,11 +300,6 @@
   ],
   "externas": [
     {
-      "texto": "Hay seis candidatos, según e-Global:",
-      "cifra": "seis",
-      "fuente": "https://e-global.pt/noticias/lusofonia/cabo-verde/cabo-verde-eleicoes-presidenciais-passam-a-ter-seis-candidaturas-aceites/"
-    },
-    {
       "texto": "reelegido en Cabo Verde con el 63,7 % provisional; en 2021",
       "cifra": "63,7",
       "fuente": "https://jornaleconomico.sapo.pt/noticias/jose-maria-neves-lidera-contagem-com-637-dos-votos-nas-presidenciais-de-cabo-verde/"
@@ -428,10 +387,6 @@
   ],
   "ignorar": [
     {
-      "texto": "Seis candidatos se disputan",
-      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
-    },
-    {
       "texto": "Tribunal Constitucional admitió cinco candidaturas el 21 de",
       "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
     },
@@ -449,10 +404,6 @@
     },
     {
       "texto": "En los tres círculos de la diáspora,",
-      "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
-    },
-    {
-      "texto": "Neves pero que vota poco. Con seis candidatos, la clave",
       "motivo": "Recuento descriptivo o umbral de la escala, no un dato calculado"
     },
     {
