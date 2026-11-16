@@ -370,7 +370,7 @@ def bloque_relacionadas(provs, nivel, extra=()):
     return '<h2>Piezas sobre este territorio</h2><ul class="sigue">' + ''.join(li) + '</ul>'
 
 
-def bloque_metodo():
+def bloque_metodo(act=None):
     return (f'<h2>Método y fuentes</h2><dl class="ficha">'
             '<dt>Datos</dt><dd>Resultados oficiales por mesa y por municipio del Ministerio del Interior (Infoelectoral) para las elecciones al Congreso de 1977 a 2023, '
             'sin el voto de los residentes en el extranjero (CERA), que no se asigna a ningún municipio. Renta neta por unidad de consumo de cada sección censal: '
@@ -380,7 +380,7 @@ def bloque_metodo():
             f'Agrupación de partidos y límites: <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.</dd>'
             f'<dt>Datos abiertos</dt><dd>Todas las cifras de esta página salen de las <a href="{RAIZ_REL}generales-2026/metodologia.html#descargas">descargas del mapa</a> '
             f'(CSV, licencia <a href="{LICENCIA}">CC BY 4.0</a>).</dd>'
-            f'<dt>Autoría y revisión</dt><dd><a href="{RAIZ_REL}sobre-mi.html">{esquema.FIRMA}</a>. Publicado el {fecha(PUBLICADO)}; actualizado el {fecha(ACTUALIZADO)}. '
+            f'<dt>Autoría y revisión</dt><dd><a href="{RAIZ_REL}sobre-mi.html">{esquema.FIRMA}</a>. Publicado el {fecha(PUBLICADO)}; actualizado el {fecha(act or ACTUALIZADO)}. '
             f'<a href="{RAIZ_REL}atlas/politica-editorial/">Política editorial</a> · <a href="{RAIZ_REL}atlas/correcciones/">Correcciones</a></dd></dl>')
 
 
@@ -2728,8 +2728,9 @@ def tema_resultados(resumen):
     la noche del 29N, el escrutinio en directo (mapa insertado de insertar/, que lee el directo de la portada)."""
     ruta = 'elecciones/resultados-elecciones-generales-2026/'
     # Hasta que se encienda NOCHE_29N no se promete directo: depende del acceso a los datos de Interior (editor, 10-11-2026).
-    titulo = ('Resultados de las elecciones generales 2026 (29N): escrutinio en directo y resultados de 2023 por provincia' if NOCHE_29N else
-              'Resultados de las elecciones generales 2026 (29N) y de 2023 por provincia')
+    # «Resultados elecciones generales 2026» delante, que es la búsqueda (Search Console, 16-11-2026); «en directo» solo con datos.
+    titulo = ('Resultados elecciones generales 2026 (29N): escrutinio en directo, votos y escaños' if NOCHE_29N else
+              'Resultados elecciones generales 2026 (29N): votos y escaños, y los de 2023 por provincia')
     desc = ('Resultados de las elecciones generales del 29 de noviembre de 2026: el escrutinio en directo en el mapa, provincia a provincia y barrio a barrio, '
             'y el resultado de 2023, el punto de partida de cada partido.' if NOCHE_29N else
             'Resultados de las elecciones generales del 29 de noviembre de 2026: aquí publicaremos los resultados del 29N en cuanto se conozcan. '
@@ -2739,15 +2740,15 @@ def tema_resultados(resumen):
     pc = lambda v: f'{v:.1f}'.replace('.', ',') + ' %'   # % de Interior, con el voto CERA, como en la tabla de escaños
     qs = [('¿Cuándo se conocen los resultados de las elecciones del 29N?',
            'La noche del domingo 29 de noviembre de 2026. Los colegios cierran a las 20.00, hora de cada lugar (las 21.00 en la Península cuando cierran en Canarias), '
-           'y el Ministerio del Interior publica el escrutinio provisional a medida que se cuentan las mesas. En esta página publicaremos los resultados en cuanto se conozcan.'),
+           'y el Ministerio del Interior empieza a publicar el escrutinio provisional a las 21.00, hora peninsular, según su documentación para los medios. En esta página publicaremos los resultados en cuanto se conozcan.'),
           ('¿Cuántos escaños hacen falta para gobernar?',
            'La mayoría absoluta del Congreso es de 176 de los 350 diputados. Es la que necesita un candidato en la primera votación de investidura; en la segunda le basta con más síes que noes.'),
           ('¿Quién ganó las elecciones generales de 2023?',
            f'El PP fue el partido más votado el 23 de julio de 2023, con {num(pt[0]["escanos"])} diputados; el PSOE obtuvo {num(pt[1]["escanos"])}. '
            'Pedro Sánchez (PSOE) fue investido presidente en noviembre de 2023 con el apoyo de Sumar, ERC, Junts, EH Bildu, PNV, BNG y Coalición Canaria.'),
           ('¿A qué hora se sabe quién ha ganado?',
-           'Depende de lo ajustado que sea. Los primeros datos del escrutinio llegan poco después del cierre de los colegios y, en las últimas generales, el reparto de escaños '
-           'estaba claro antes de medianoche. Durante el día, el Ministerio del Interior publica avances de participación, habitualmente a las 14.00 y a las 18.00.'),
+           'Depende de lo ajustado que sea. El Ministerio del Interior empieza a publicar el escrutinio a las 21.00, hora peninsular, y en las últimas generales el reparto de escaños '
+           'estaba claro antes de medianoche. Durante el día publica dos avances de participación, a las 14.00 y a las 18.00.'),
           ('¿Cuántos electores pueden votar el 29N?',
            f'{num(38728356)}, según el censo de consulta del INE: los residentes en España y los españoles que viven en el extranjero. '
            'Por provincia y municipio, en el <a href="../censo-electoral-2026/">censo electoral de 2026</a>.'),
@@ -2770,17 +2771,30 @@ def tema_resultados(resumen):
            'con los resultados desde 1977, enlazada en la tabla de esta página.')]
     faq_html, faq_ld = faq(qs)
     ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    act = ld['dateModified'] = max(ACTUALIZADO, '2026-11-16')   # título, H1 y bloque del escrutinio
     h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Resultados 29N', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
-    h.append('<p class="kicker">Elecciones generales · 29 de noviembre de 2026</p><h1 data-miga="Resultados 29N">Resultados de las elecciones generales del 29N</h1>')
+    h.append('<p class="kicker">Elecciones generales · 29 de noviembre de 2026</p><h1 data-miga="Resultados 29N">Resultados elecciones generales 2026</h1>')
     h.append('<p class="subtitulo">' + ('El escrutinio en directo la noche electoral' if NOCHE_29N else 'Los resultados del 29N en cuanto se conozcan') + ' y, hasta entonces, el resultado de 2023 provincia a provincia</p>')
-    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
     h.append(foto_html(ruta, raiz))
     h.append(f'<p class="resumen">{tipo("Dato")}Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Esa noche, en cuanto el Ministerio del Interior '
              'empiece a publicar el escrutinio, publicaremos aquí los votos y los escaños, en toda España y en cada provincia, municipio y barrio. '
-             f'Hasta entonces, recogen el resultado de las generales del 23 de julio de 2023: el PP fue el más votado, con el {pc(pt[0]["pct"])} del voto válido y {num(pt[0]["escanos"])} diputados, '
+             f'Hasta entonces, aquí está el resultado de las generales del 23 de julio de 2023: el PP fue el más votado, con el {pc(pt[0]["pct"])} del voto válido y {num(pt[0]["escanos"])} diputados, '
              f'y el PSOE el segundo, con el {pc(pt[1]["pct"])} y {num(pt[1]["escanos"])}. La mayoría absoluta es de 176 escaños.</p>')
+    # Escrutinio de toda España: lo pinta generales-2026/directo-resultados.js con el JSON del directo (sin URL en meta.json, solo el aviso)
+    h.append(f'<style>{DIRECTO_CSS}.d-tabla{{width:100%;border-collapse:collapse;font:14px var(--sans);margin:.8em 0}}.d-tabla th,.d-tabla td{{text-align:right;padding:.25em .4em;border-bottom:1px solid var(--line,#ddd)}}'
+             '.d-tabla th:first-child,.d-tabla td:first-child{text-align:left}.d-pt{display:inline-block;width:.7em;height:.7em;border-radius:2px;margin-right:.4em;vertical-align:baseline}</style>'
+             f'<section class="directo29n" id="directo-esp" data-raiz="{raiz or "./"}" aria-labelledby="escrutinio-29n">'
+             '<h2 id="escrutinio-29n">Escrutinio del 29N en España</h2>'
+             '<div class="d-aviso">' + p_('Dato', 'El domingo 29 de noviembre el Ministerio del Interior publica dos avances de participación, a las 14.00 y a las 18.00. '
+                  'Los colegios cierran a las 20.00 y el escrutinio empieza a publicarse a las 21.00, hora peninsular, cuando cierran los de Canarias. '
+                  'Desde ese momento, aquí irán los votos de cada candidatura en toda España y los escaños en cuanto Interior los publique.')
+             + f'<p>Mientras tanto: <a href="#provincias">resultados de 2023 por provincia</a> · <a href="../resultados-elecciones-por-municipio/">resultados por municipio</a> · '
+               f'<a href="{raiz}municipio/">fichas de los municipios</a> · <a href="{raiz}{RUTA_HORAS}">participación hora a hora</a></p></div>'
+             '<div class="d-cuerpo" aria-live="polite"></div>'
+             f'<script src="{raiz}generales-2026/directo-resultados.js" defer></script></section>')
     h.append('<h2 id="directo">El mapa, la noche del 29N</h2>'
              + p_('Dato', 'El mapa muestra hoy el partido más votado en cada sección censal en 2023. La noche electoral cambiará al recuento del 29N a medida que llegue. '
                   'Busca tu calle o tu municipio, o elige otra elección en el desplegable.')
@@ -2825,7 +2839,7 @@ def tema_resultados(resumen):
              '<li><a href="../votar-29n/">Dónde y cómo votar el 29N: colegio, voto por correo y plazos</a></li>'
              '<li><a href="../como-se-vota/">Cómo se vota: el precio de un escaño</a></li>'
              '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li></ul>')
-    h.append(bloque_metodo())
+    h.append(bloque_metodo(act))
     h.append(PIE)
     return ruta, ''.join(h)
 

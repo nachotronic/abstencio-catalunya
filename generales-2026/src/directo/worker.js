@@ -144,15 +144,20 @@ async function enParalelo(lista, k, fn) {
 }
 
 async function porProvincias(base, env) {
-  const A = await ambitos(base, env), filas = [], fallos = [];
+  const A = await ambitos(base, env), filas = [], fallos = [], escanos = {};
   await enParalelo(A.prov, 8, async c => {
     try {
       const d = await pide(`${base}/scope/data/getScopeData/${c}/${A.grupo}/${A.elec}/1/1/90`);
+      // Si la provincia trae los diputados provisionales de cada candidatura («cargos», sin confirmar con datos reales:
+      // la muestra del 23J es de un municipio), se guardan; el código de provincia sale de sus municipios.
+      const pe = d.scope && d.scope.escrutinio, m0 = (d.mapa || [])[0];
+      if (pe && pe.partidos && m0) { const e = {}; for (const p of pe.partidos) if (n(p.cargos)) e[p.siglas.trim()] = n(p.cargos); if (Object.keys(e).length) escanos[String(m0.codigo).padStart(5, '0').slice(0, 2)] = e; }
       for (const m of d.mapa || []) if (m.nivel === 90 || String(m.codigo).length === 5) filas.push(fila(m));
     } catch (e) { fallos.push(c); }
   });
   if (!filas.length) throw new Error(`ninguna provincia trajo municipios (${fallos.length} fallos): prueba MODO=municipios`);
-  return normaliza(filas, await env.RESULTADOS.get('ultimo', 'json'));
+  const out = normaliza(filas, await env.RESULTADOS.get('ultimo', 'json'));
+  return Object.keys(escanos).length ? { ...out, escanos } : out;
 }
 
 async function porMunicipios(base, env) {
