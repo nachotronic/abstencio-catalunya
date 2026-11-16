@@ -100,7 +100,16 @@ def carga():
     eg = [r for r in csv.DictReader(open(DATOS / 'encuestas_limpias.csv')) if r['ambito'] == 'ESPAÑA']
     usadas, out = set(), []
 
-    def pareja(casa, fin, muestra=''):
+    # Wikipedia repite a veces la misma fila (SocioMétrica, 7-12-2025): fuera las copias exactas
+    vistas, unicas = set(), []
+    for w in wp:
+        k = tuple(sorted(w.items()))
+        if k not in vistas:
+            vistas.add(k)
+            unicas.append(w)
+    wp = unicas
+
+    def pareja(casa, fin, muestra='', r=None):
         # la más parecida: misma muestra y, después, el fin de campo más cercano (en un tracking diario la primera a <=4 días
         # podía ser la entrega del día siguiente, que se quedaba sin pareja propia y salía repetida)
         cand = []
@@ -109,14 +118,28 @@ def carga():
             dias = abs((date.fromisoformat(w['campo_fin']) - fin).days)
             if i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and dias <= 4:
                 cand.append((not (muestra and w['muestra'] == muestra), dias, i))
-        return min(cand)[2] if cand else None
+        if cand or r is None or r['campo_fin']:
+            return min(cand)[2] if cand else None
+        # Electográfica sin fin de campo (el fin se supone 3 días antes de publicar): la del CIS o la de 40dB suelen
+        # cerrar el campo una o dos semanas antes. Se acepta la de Wikipedia de la misma casa con fin de campo en las
+        # tres semanas anteriores a la publicación y las mismas cifras de PP, PSOE y Vox; si no, salía dos veces.
+        pub = date.fromisoformat(r['publicado'])
+        for i, w in enumerate(wp):
+            c = clave(w['encuestadora'])
+            dias = (pub - date.fromisoformat(w['campo_fin'])).days
+            if (i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and 0 <= dias <= 21
+                    and all(num(w[k]) is not None and num(w[k]) == num(r[k]) for k in ('PP', 'PSOE', 'VOX'))):
+                cand.append((dias, i))
+        return min(cand)[1] if cand else None
 
     for r in eg:
         fin = date.fromisoformat(r['campo_fin']) if r['campo_fin'] else date.fromisoformat(r['publicado']) - timedelta(days=3)
-        i = pareja(clave(r['encuestadora']), fin, r['muestra'])
+        i = pareja(clave(r['encuestadora']), fin, r['muestra'], r)
         w = wp[i] if i is not None else {}
         if i is not None:
             usadas.add(i)
+            if not r['campo_fin']:   # el fin de campo real, no el supuesto
+                fin = date.fromisoformat(w['campo_fin'])
         cliente = '' if r['cliente'] in ('', 'n/a') else r['cliente']
         cliente = cliente or CLIENTE_HABITUAL.get(clave(r['encuestadora']), '')
         out.append({'reest': False, 'casa': r['encuestadora'], 'medio': cliente,
@@ -125,8 +148,13 @@ def carga():
                     'voto': {k: num(r[k]) for k, *_ in PRINCIPALES if num(r[k]) is not None},
                     'esc': {k: w.get(f'esc_{k}', '') for k, *_ in TODOS if w.get(f'esc_{k}')},
                     'url': r['fuente_original'] or w.get('fuente_original', '') or r['url_agregador']})
+    # Wikipedia parte a veces una misma encuesta en dos filas (SocioMétrica, 8-12-2025: Sumar con y sin socios):
+    # fuera la que repite fuente y cifras de una ya puesta
+    puestas = {(clave(e['casa'])[:5], e['url'], e['voto'].get('PP'), e['voto'].get('PSOE'), e['voto'].get('VOX')) for e in out if e['url']}
     for i, w in enumerate(wp):
         if i in usadas:
+            continue
+        if w['fuente_original'] and (clave(w['encuestadora'])[:5], w['fuente_original'], num(w['PP']), num(w['PSOE']), num(w['VOX'])) in puestas:
             continue
         if w.get('reestimacion'):   # datos brutos del CIS recalculados por otra empresa: solo en la tabla, con su nombre
             w = dict(w, encuestadora=f'{w["encuestadora"]} reestimado por {w["reestimacion"]}')
@@ -940,7 +968,9 @@ def main():
     cab_partidos = ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES)
     tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
              f'<tbody>{"".join(fila_tabla(e) for e in recientes)}</tbody></table></div>')
-    tabla_ant = (f'<details><summary>Ver las {len(anteriores)} encuestas anteriores, desde las generales de 2023</summary><div class="tbl"><table><thead><tr>'
+    n_reest_ant = sum(1 for e in anteriores if e['reest'])
+    tabla_ant = (f'<details><summary>Ver las {len(anteriores)} encuestas anteriores, desde las generales de 2023'
+                 f'{f" ({n_reest_ant} de ellas, reestimaciones del CIS hechas por otras empresas)" if n_reest_ant else ""}</summary><div class="tbl"><table><thead><tr>'
                  f'<th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
                  f'<tbody>{"".join(fila_tabla(e) for e in anteriores)}</tbody></table></div></details>')
     filas_esc = ''
@@ -1100,6 +1130,7 @@ def main():
 <dl class="ficha">
 <dt>Qué se recoge</dt><dd>Todas las encuestas de ámbito estatal con estimación de voto para el Congreso publicadas desde las generales de julio de 2023, tal como las publicó cada encuestadora. No se recogen medias de otros medios ni sondeos internos de los partidos.</dd>
 <dt>Límites</dt><dd>Las encuestas no son resultados. Cada encuestadora usa su método (teléfono, internet, panel), su muestra y su forma de estimar, y en las generales de 2019 y 2023 la media de las encuestas se equivocó hasta en 3,4 puntos en un partido. La estimación del CIS se aparta del resto (<a href="../actualidad/cis-tezanos-estimacion-29n/">así le fue en elecciones anteriores</a>). La mediana del gráfico es un resumen, no una previsión.</dd>
+<dt>Correcciones</dt><dd>16-11-2026: 49 encuestas publicadas entre 2023 y abril de 2026 salían dos veces en la tabla histórica. En casi todos los casos, una fila venía de Electográfica y otra de Wikipedia, sobre todo del CIS y de 40dB; en uno, Wikipedia partía en dos filas una de SocioMétrica. Ya salen una sola vez, y el total pasa de 600 a 551 encuestas. La mediana y los recuentos de las encuestas recientes no cambian, porque ninguna de las repetidas era posterior a abril.</dd>
 <dt>Fuentes</dt><dd><ul><li>Cada encuesta enlaza a su publicación original (medio o encuestadora).</li><li><a href="https://www.electografica.com/">Electográfica</a>, para localizar las encuestas y su ficha técnica.</li><li><a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election">Wikipedia, «Opinion polling for the 2026 Spanish general election»</a> (CC BY-SA 4.0), para los escaños y los sondeos que no recoge Electográfica.</li></ul></dd>
 <dt>Actualización</dt><dd>Automática, una vez al día (código en <a href="https://github.com/nachotronic/abstencio-catalunya/tree/main/previsiones/src">previsiones/src</a>). Última: {actual}.</dd>
 <dt>Autoría</dt><dd>{AUTOR}</dd>
