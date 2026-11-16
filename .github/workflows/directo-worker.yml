@@ -1,7 +1,9 @@
 # Despliega el Worker del escrutinio en directo del 29N (generales-2026/src/directo/worker.js) en Cloudflare.
 # Se lanza a mano: Actions → «Directo 29N: desplegar el Worker» → Run workflow, con la FUENTE que toque:
 #   - antes de que Interior abra su web: https://mapaelectoral.es/generales-2026/data/simulacro.json (simulacro con el 23J);
-#   - en cuanto la abra: la raíz de su API, acabada en /backend-difu (se ve en la pestaña Red del navegador).
+#   - en cuanto la abra: la raíz de su API, acabada en /backend-difu (se ve en la pestaña Red del navegador);
+#   - con acceso de medios: la raíz de la API de descargas, acabada en /descargas/csv, con MODO = medios y los
+#     secretos MEDIOS_USUARIO y MEDIOS_CLAVE (el usuario y la clave que Interior manda a cada medio).
 # Necesita el plan de pago de Workers y el secreto CLOUDFLARE_WORKERS_TOKEN (plantilla «Edit Cloudflare Workers»).
 # No toca la web: la web solo empieza a leer el Worker cuando se pone su URL en generales-2026/data/meta.json.
 name: "Directo 29N: desplegar el Worker"
@@ -9,11 +11,11 @@ on:
   workflow_dispatch:
     inputs:
       fuente:
-        description: "FUENTE: JSON normalizado o raíz /backend-difu de la web de resultados de Interior"
+        description: "FUENTE: JSON normalizado, raíz /backend-difu de la web de resultados o raíz /descargas/csv de la API de medios"
         required: true
         default: "https://mapaelectoral.es/generales-2026/data/simulacro.json"
       modo:
-        description: "MODO: provincias (por defecto) o municipios (plan B)"
+        description: "MODO: provincias (web pública), municipios (plan B) o medios (API de descargas con usuario y clave)"
         required: false
         default: "provincias"
 permissions:
@@ -53,6 +55,15 @@ jobs:
           CLAVE: ${{ secrets.DIRECTO_CLAVE }}
         run: |
           if [ -n "$CLAVE" ]; then printf '%s' "$CLAVE" | npx -y wrangler@3.114.0 secret put CLAVE; else echo "Sin DIRECTO_CLAVE: /actualiza queda desactivado"; fi
+      - name: Usuario y clave de la API de medios
+        if: github.event.inputs.modo == 'medios'
+        env:
+          MEDIOS_USUARIO: ${{ secrets.MEDIOS_USUARIO }}
+          MEDIOS_CLAVE: ${{ secrets.MEDIOS_CLAVE }}
+        run: |
+          if [ -z "$MEDIOS_USUARIO" ]; then echo "Faltan los secretos MEDIOS_USUARIO y MEDIOS_CLAVE"; exit 1; fi
+          printf '%s' "$MEDIOS_USUARIO" | npx -y wrangler@3.114.0 secret put MEDIOS_USUARIO
+          printf '%s' "$MEDIOS_CLAVE" | npx -y wrangler@3.114.0 secret put MEDIOS_CLAVE
       - name: Comprobar que responde
         run: |
           sleep 75   # el cron corre cada minuto

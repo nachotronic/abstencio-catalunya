@@ -2,7 +2,13 @@
 
 El escrutinio en directo no necesita el acceso de medios de Interior. Lo lee de la web pública de resultados: en el 23J
 esa web la hizo Indra y servía JSON públicos por provincia y municipio en `<web>/backend-difu`, que es lo que lee
-`worker.js`. Si Interior concede el acceso de medios (las claves llegan el 17-11), se añade como segunda fuente.
+`worker.js`.
+
+**Con acceso de medios** (manual «API de descargas · Elecciones Generales 29N 2026»): Interior da a cada medio un usuario
+y una clave para un repositorio de ficheros CSV, `…/descargas/csv/data/getEnvio/2` (número de envío) y
+`…/getEscrutinioMunicipios/2/<pp>/<envío>` (municipios por provincia). `worker.js` lo lee con MODO = `medios`: una
+petición por minuto mientras no hay envío nuevo, y 53 cuando lo hay (52 provincias y el total con los escaños). Es la
+fuente preferente; la web pública queda de reserva. El manual pide no usar servicios cloud gratuitos: Workers Paid lo cumple.
 
 Cadena: web de Interior → Worker de Cloudflare (cada minuto, 52 peticiones) → `resultados.json` (mapa) y
 `provincia/<pp>.json` (fichas de municipio, unos 25 KB en vez de 2 MB) → la web.
@@ -16,6 +22,8 @@ Cadena: web de Interior → Worker de Cloudflare (cada minuto, 52 peticiones) �
 3. Guardarlo en GitHub como secreto del repositorio: Settings → Secrets and variables → Actions → New repository secret,
    nombre **`CLOUDFLARE_WORKERS_TOKEN`**. Opcional: otro secreto **`DIRECTO_CLAVE`** con una palabra cualquiera, para
    poder forzar una lectura a mano (`/actualiza?clave=…`).
+   Con acceso de medios, otros dos secretos: **`MEDIOS_USUARIO`** y **`MEDIOS_CLAVE`**, tal como vienen en el correo de
+   Interior. No se pegan en el chat.
 4. Decir en el hilo «ya está». No hace falta pasar el token por el chat.
 
 ## 2. Despliegue (lo lanzo yo, o Nacho con un clic)
@@ -25,6 +33,8 @@ Actions → **«Directo 29N: desplegar el Worker»** → Run workflow:
 - **Ahora (ensayo):** FUENTE = `https://mapaelectoral.es/generales-2026/data/simulacro.json` (simulacro con el 23J; las
   fichas dicen «Simulacro con datos del 23J»).
 - **Cuando Interior abra su web:** FUENTE = la raíz de su API, acabada en `/backend-difu` (ver punto 4).
+- **Con acceso de medios (simulacro del 18-11 desde las 15:00 y la noche del 29N):** FUENTE = dominio del correo de
+  Interior + `/descargas/csv`, MODO = `medios`.
 
 El resumen de la ejecución da la URL del Worker (`https://generales-directo.<subdominio>.workers.dev/resultados.json`).
 Desplegar no cambia la web.
@@ -65,6 +75,16 @@ bash generales-2026/src/directo/ensayo/simulacro.sh
 Arranca una imitación de la web de Interior con respuestas reales del 23J, pasa el escrutinio del 0 % al 30 % y al 100 %
 y comprueba que el Worker sirve el total y la provincia y que cuadran. Con la web real abierta:
 `FUENTE=https://…/backend-difu bash generales-2026/src/directo/ensayo/simulacro.sh`.
+
+Para la API de medios, con su imitación (CSV con el formato del manual):
+`MODO=medios bash generales-2026/src/directo/ensayo/simulacro.sh`; y contra la de verdad, el 18-11:
+`MODO=medios FUENTE=https://<dominio>/descargas/csv MEDIOS_USUARIO=… MEDIOS_CLAVE=… bash …/simulacro.sh`
+(desde un ordenador que llegue a Interior; mi contenedor no llega). Hasta las 15:00 del 18 ya se puede comprobar el acceso
+con los ficheros fijos de 2023: `…/descargas/csv/fijos/getEscrutinioTotales/ANT/2/07-23`.
+
+Lo que el manual no dice y hay que confirmar con el correo de acceso: cómo se autentica (el Worker manda usuario y clave
+como autenticación básica HTTP; si es otra cosa, se cambia en `pideTexto`), el dominio, y la codificación de los ficheros
+(UTF-8 por defecto; si las tildes salen mal, variable `MEDIOS_CODIFICACION = "latin1"`).
 
 ## 6. Plan B
 
