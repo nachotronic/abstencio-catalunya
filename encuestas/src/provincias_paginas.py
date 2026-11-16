@@ -83,16 +83,18 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva. En los cinco días anteriores a la votación del 29N no cambia: la ley electoral prohíbe publicar sondeos esos días.')]
         url = f'{c.URL}{slug}/'
         desc = (f'Escaños de {nombre} en las generales del 29N según la media de encuestas: {reparto}. Modelo de Mapa Electoral, actualizado el {actual}.')[:300]
-        # Google: el gancho del titular, el reparto y qué hay dentro, en 160 caracteres; si no cabe, se quitan partidos del final
-        cuerpo_desc = lambda ps, t=titular: (f'{t}. Escaños: ' + ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' for l in ps)
-                                  + f'. Mira la horquilla de cada partido; actualizado el {c.dia(meta["generado"][:10])}.')
+        # Google: el gancho del titular y el reparto COMPLETO (todos los que sacan escaño; editor, 16-11-2026), en 160 caracteres
+        con_esc = [l for l in con if rc[l['lista']] > 0]
+        reparto_d = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' for l in con_esc)
+        fecha_d = c.dia(meta['generado'][:10])
         desc_seo = None
         for t in (titular, titular.split('; ')[0]):   # sin la frase del CIS si no cabe
-            ps = [l for l in con if rc[l['lista']] > 0]
-            while len(ps) > 2 and len(cuerpo_desc(ps, t)) > 160:
-                ps = ps[:-1]
-            if len(cuerpo_desc(ps, t)) <= 160:
-                desc_seo = cuerpo_desc(ps, t)
+            for cola in (f'. Mira la horquilla de cada partido; actualizado el {fecha_d}.', f'. Horquillas al {fecha_d}.', '.'):
+                d = f'{t}. Escaños: {reparto_d}{cola}'
+                if len(d) <= 160:
+                    desc_seo = d
+                    break
+            if desc_seo:
                 break
         imagen = f'{c.BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}'
         jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': url + '#articulo', 'headline': titular, 'description': desc,

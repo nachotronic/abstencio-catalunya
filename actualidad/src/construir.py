@@ -66,6 +66,7 @@ GRAFICO_PRINCIPAL = {s: dict(src=f'img/actualidad/fotos/{s}-grafico.jpg', ancho=
 PIEZAS = [
     dict(
         slug='beiras-nacionalismo-gallego', fecha='2026-10-08',
+        titulo_seo='El nacionalismo gallego que deja Beiras: del 12 % al 2,9 % y al 9,5 %',   # Google (16-11-2026)
         titulo='Del 12% al 2,9% y de vuelta al 9,5%: el nacionalismo gallego que deja Beiras', serie='29n',
         descripcion='El BNG pasó del 12,0 % en Galicia en 2004 al 2,9 % en 2016, cuando En Marea sacó el 22,4 %, y en 2023 volvió al 9,5 %. Mapas por municipio y sección.',
         compara='La lista nacionalista (BNG; NÓS en 2015) y la gran lista a su izquierda en cada elección general en Galicia, de 2004 a 2023, candidatura a candidatura. Voto por municipio y por sección, cruzado con edad, estudios y renta.',
@@ -2854,6 +2855,7 @@ PIEZAS += [
     ),
     dict(
         slug='psoe-primera-fuerza-29n', fecha='2026-10-25',
+        titulo_seo='¿Puede el PSOE dar el sorpasso que anuncia Iván Redondo?',   # Google (16-11-2026)
         foto=dict(src='img/actualidad/fotos/psoe-primera-fuerza-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una urna llena de sobres con uno rojo delante, entre los escaños del Congreso y el sillón de la presidencia: un collage.'),
         titulo='El PP saca 6 puntos al PSOE en las encuestas: ni el mayor fallo de la última década, el de 2023, daría el sorpasso que anuncia Iván Redondo', serie='29n', figura=0,
@@ -4846,7 +4848,7 @@ PIEZAS += [
     ),
     dict(
         slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-15 18:00',
-        titulo_seo='Generación 2008: Vox, primero en el CIS entre los de 18 a 24 años', descripcion_seo='1.615.127 electores votan por primera vez en unas generales el 29N. Mira qué votan los de 18 a 24 años según el CIS y dónde viven los nacidos en 2008.',   # Google (Nacho, 16-11-2026)
+        titulo_seo='Generación 2008: Vox, primero en el CIS entre los de 18 a 24 años', descripcion_seo='1.615.127 electores votan por primera vez en unas generales el 29N. Mira qué votan los de 18 a 24 años según el CIS: Vox reúne el 23,2 % de voto más simpatía.',   # Google (Nacho, 16-11-2026)
         titulo='Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales', serie='29n', figura=0,
         descripcion='En 2008 nacieron en España 519.779 niños, más que en ningún año desde 1981. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales. En el CIS, Vox reúne el 23,2 % del voto más simpatía de 18 a 24 años.',
         compara='Los nacidos en 2008 que viven en cada provincia a 1 de enero de 2025 frente a los nacimientos de 2008 y a la población; los electores que votan por primera vez en unas generales en 2026 y en 2023; el peso de los chicos de 13 años en cada municipio en 2022; lo que declaran los entrevistados de 18 a 24 años en el preelectoral del CIS frente al total, y los votos que faltaron en 2023 para el último escaño de cada provincia.',
@@ -4887,7 +4889,7 @@ PIEZAS += [
     ),
     dict(
         slug='feijoo-pamplona-upn-pp-secciones-29n', fecha='2026-11-16',
-        titulo_seo='Feijóo en Pamplona: mira quién ganó cada una de sus 151 secciones', descripcion_seo='El PSOE fue el más votado en 77 de las 151 secciones de Pamplona en 2023; UPN y PP juntos habrían sido primeros en 80. Mira el mapa, barrio a barrio.',   # Google (Nacho, 16-11-2026)
+        titulo_seo='Feijóo en Pamplona: mira quién ganó cada una de sus 151 secciones', descripcion_seo='El PSOE fue el más votado en 77 de las 151 secciones de Pamplona en 2023; UPN y PP juntos habrían sido primeros en 80. Mira el mapa, sección a sección.',   # Google (Nacho, 16-11-2026)
         titulo='Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, se habría quedado en 49', serie='29n', figura=0,
         descripcion='Por separado, UPN y PP fueron los más votados en 50 secciones de Pamplona en 2023; juntos, habrían quedado primeros en 80. Su voto sube con la renta: del 20,5 % en la quinta parte de secciones con menos renta al 57,1 % en la de más.',
         compara='Las generales de noviembre de 2019, cuando UPN, PP y Ciudadanos fueron juntos en Navarra Suma, y de julio de 2023, cuando UPN y PP fueron por separado, en las secciones censales de Pamplona; el voto de 2023 por renta de cada sección, y el reparto del modelo de encuestas en Navarra para el 29N.',
