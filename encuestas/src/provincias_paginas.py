@@ -49,7 +49,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         cis_dek = ('' if not ent else
                    f' {cis_det}, con {"solo " if ent < 300 else ""}{cis_provincias.miles(ent)} entrevistas en {nombre}'
                    + (', una muestra muy pequeña.' if ent < 300 else '.'))
-        titulo_seo = f'Encuesta {nombre} elecciones generales 2026: escaños según la media de encuestas' + (' y el CIS' if ent else '')
+        titulo_seo = f'Encuesta {nombre} 29N: ¿cuántos escaños saca cada partido?'   # 16-11-2026: ~55 caracteres, con la búsqueda delante
         reparto = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
                             for l in con)
         p1 = (f'{nombre} elige {total} diputado{"s" if total > 1 else ""} el 29 de noviembre. Con la media de las encuestas nacionales repartida por provincia, '
@@ -83,6 +83,17 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                ('¿Cada cuánto se actualiza?', 'Cada vez que entra una encuesta nueva. En los cinco días anteriores a la votación del 29N no cambia: la ley electoral prohíbe publicar sondeos esos días.')]
         url = f'{c.URL}{slug}/'
         desc = (f'Escaños de {nombre} en las generales del 29N según la media de encuestas: {reparto}. Modelo de Mapa Electoral, actualizado el {actual}.')[:300]
+        # Google: el gancho del titular, el reparto y qué hay dentro, en 160 caracteres; si no cabe, se quitan partidos del final
+        cuerpo_desc = lambda ps, t=titular: (f'{t}. Escaños: ' + ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' for l in ps)
+                                  + f'. Mira la horquilla de cada partido; actualizado el {c.dia(meta["generado"][:10])}.')
+        desc_seo = None
+        for t in (titular, titular.split('; ')[0]):   # sin la frase del CIS si no cabe
+            ps = [l for l in con if rc[l['lista']] > 0]
+            while len(ps) > 2 and len(cuerpo_desc(ps, t)) > 160:
+                ps = ps[:-1]
+            if len(cuerpo_desc(ps, t)) <= 160:
+                desc_seo = cuerpo_desc(ps, t)
+                break
         imagen = f'{c.BASE}/img/compartir/encuestas.jpg?v={meta["generado"]}'
         jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': url + '#articulo', 'headline': titular, 'description': desc,
                    'url': url, 'mainEntityOfPage': url, 'inLanguage': 'es', 'datePublished': '2026-10-26', 'dateModified': max(meta['generado'][:10], '2026-10-26'),
@@ -116,7 +127,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
                                     '.esc i.aire{background:var(--grid);outline:1px solid var(--rule);outline-offset:-1px}'
                                     '.ley{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-family:var(--ui);font-size:.95rem;margin:.2rem 0 0}.ley span{display:inline-flex;align-items:center;gap:.35rem}.ley i{width:14px;height:14px;border-radius:3px;display:inline-block}'
                                     '.casas{columns:2;font-family:var(--ui);font-size:.95rem;padding-left:1.1rem}@media (max-width:520px){.casas{columns:1}}</style>')
-        pagina = (c.cabecera(titulo_seo, desc, url, imagen, jsonld)
+        pagina = (c.cabecera(titulo_seo, desc, url, imagen, jsonld, desc_seo=desc_seo)
                   .replace(f'<meta property="og:title" content="{html.escape(titulo_seo)}">',
                            f'<meta property="og:title" content="{html.escape(titular)}">')
                   + estilos + c.CSS_SITIO + '\n</head>\n<body>\n' + c.nav('../../', 'Encuestas') + '\n' + cuerpo + '\n</body>\n</html>\n')
