@@ -370,7 +370,7 @@ def bloque_relacionadas(provs, nivel, extra=()):
     return '<h2>Piezas sobre este territorio</h2><ul class="sigue">' + ''.join(li) + '</ul>'
 
 
-def bloque_metodo():
+def bloque_metodo(act=None):
     return (f'<h2>Método y fuentes</h2><dl class="ficha">'
             '<dt>Datos</dt><dd>Resultados oficiales por mesa y por municipio del Ministerio del Interior (Infoelectoral) para las elecciones al Congreso de 1977 a 2023, '
             'sin el voto de los residentes en el extranjero (CERA), que no se asigna a ningún municipio. Renta neta por unidad de consumo de cada sección censal: '
@@ -380,7 +380,7 @@ def bloque_metodo():
             f'Agrupación de partidos y límites: <a href="{RAIZ_REL}generales-2026/metodologia.html">metodología del mapa</a>.</dd>'
             f'<dt>Datos abiertos</dt><dd>Todas las cifras de esta página salen de las <a href="{RAIZ_REL}generales-2026/metodologia.html#descargas">descargas del mapa</a> '
             f'(CSV, licencia <a href="{LICENCIA}">CC BY 4.0</a>).</dd>'
-            f'<dt>Autoría y revisión</dt><dd><a href="{RAIZ_REL}sobre-mi.html">{esquema.FIRMA}</a>. Publicado el {fecha(PUBLICADO)}; actualizado el {fecha(ACTUALIZADO)}. '
+            f'<dt>Autoría y revisión</dt><dd><a href="{RAIZ_REL}sobre-mi.html">{esquema.FIRMA}</a>. Publicado el {fecha(PUBLICADO)}; actualizado el {fecha(act or ACTUALIZADO)}. '
             f'<a href="{RAIZ_REL}atlas/politica-editorial/">Política editorial</a> · <a href="{RAIZ_REL}atlas/correcciones/">Correcciones</a></dd></dl>')
 
 
@@ -2771,16 +2771,17 @@ def tema_resultados(resumen):
            'con los resultados desde 1977, enlazada en la tabla de esta página.')]
     faq_html, faq_ld = faq(qs)
     ld = ld_pagina(titulo, desc, ruta, ESPANA)
+    act = ld['dateModified'] = max(ACTUALIZADO, '2026-11-16')   # título, H1 y bloque del escrutinio
     h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Resultados 29N', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
     h.append('<p class="kicker">Elecciones generales · 29 de noviembre de 2026</p><h1 data-miga="Resultados 29N">Resultados elecciones generales 2026</h1>')
     h.append('<p class="subtitulo">' + ('El escrutinio en directo la noche electoral' if NOCHE_29N else 'Los resultados del 29N en cuanto se conozcan') + ' y, hasta entonces, el resultado de 2023 provincia a provincia</p>')
-    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
     h.append(foto_html(ruta, raiz))
     h.append(f'<p class="resumen">{tipo("Dato")}Las elecciones generales se celebran el domingo 29 de noviembre de 2026. Esa noche, en cuanto el Ministerio del Interior '
              'empiece a publicar el escrutinio, publicaremos aquí los votos y los escaños, en toda España y en cada provincia, municipio y barrio. '
-             f'Hasta entonces, recogen el resultado de las generales del 23 de julio de 2023: el PP fue el más votado, con el {pc(pt[0]["pct"])} del voto válido y {num(pt[0]["escanos"])} diputados, '
+             f'Hasta entonces, aquí está el resultado de las generales del 23 de julio de 2023: el PP fue el más votado, con el {pc(pt[0]["pct"])} del voto válido y {num(pt[0]["escanos"])} diputados, '
              f'y el PSOE el segundo, con el {pc(pt[1]["pct"])} y {num(pt[1]["escanos"])}. La mayoría absoluta es de 176 escaños.</p>')
     # Escrutinio de toda España: lo pinta generales-2026/directo-resultados.js con el JSON del directo (sin URL en meta.json, solo el aviso)
     h.append(f'<style>{DIRECTO_CSS}.d-tabla{{width:100%;border-collapse:collapse;font:14px var(--sans);margin:.8em 0}}.d-tabla th,.d-tabla td{{text-align:right;padding:.25em .4em;border-bottom:1px solid var(--line,#ddd)}}'
@@ -2838,7 +2839,7 @@ def tema_resultados(resumen):
              '<li><a href="../votar-29n/">Dónde y cómo votar el 29N: colegio, voto por correo y plazos</a></li>'
              '<li><a href="../como-se-vota/">Cómo se vota: el precio de un escaño</a></li>'
              '<li><a href="../participacion-electoral-por-barrio/">Participación electoral por barrio</a></li></ul>')
-    h.append(bloque_metodo())
+    h.append(bloque_metodo(act))
     h.append(PIE)
     return ruta, ''.join(h)
 
