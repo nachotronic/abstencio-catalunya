@@ -5,49 +5,54 @@
  },
  "cifras": [
   {
-   "texto": "El PSOE sube en cinco de las siete encuestas",
-   "cifra": "cinco",
+   "texto": "El PSOE sube en siete de las nueve encuestas",
+   "cifra": "siete",
    "calculo": "len([c for c in D['CASAS'] if c['dPSOE']>0])"
   },
   {
-   "texto": "cinco de las siete encuestas de la primera",
-   "cifra": "siete",
+   "texto": "siete de las nueve encuestas de la primera",
+   "cifra": "nueve",
    "calculo": "len(D['CASAS'])"
   },
   {
-   "texto": "el PP sigue primero en 17 de 19 encuestas",
+   "texto": "el PP baja en cuatro y sube en otras cuatro",
+   "cifra": "cuatro",
+   "calculo": "len([c for c in D['CASAS'] if c['dPP']<0])"
+  },
+  {
+   "texto": "baja en cuatro y sube en otras cuatro",
+   "cifra": "cuatro",
+   "calculo": "len([c for c in D['CASAS'] if c['dPP']>0])"
+  },
+  {
+   "texto": "El PP sigue primero en 17 de 19 encuestas",
    "cifra": "17",
    "calculo": "D['G'][2]"
   },
   {
-   "texto": "primero en 17 de 19 encuestas y la distancia",
+   "texto": "primero en 17 de 19 encuestas y la media",
    "cifra": "19",
    "calculo": "D['G'][3]"
   },
   {
-   "texto": "nuestro modelo baja de 3,2 a 3,0 puntos",
-   "cifra": "3,2",
-   "calculo": "D['MED0']['PP']-D['MED0']['PSOE']"
-  },
-  {
-   "texto": "baja de 3,2 a 3,0 puntos",
-   "cifra": "3,0",
-   "calculo": "D['MED1']['PP']-D['MED1']['PSOE']"
-  },
-  {
-   "texto": "Ocho empresas han publicado encuestas",
-   "cifra": "Ocho",
+   "texto": "Diez empresas han publicado encuestas",
+   "cifra": "Diez",
    "calculo": "D['NCAMP']"
   },
   {
-   "texto": "y siete de ellas tenían una anterior",
-   "cifra": "siete",
+   "texto": "y nueve de ellas tenían una anterior",
+   "cifra": "nueve",
    "calculo": "len(D['CASAS'])"
   },
   {
-   "texto": "En cinco, el PSOE sube",
-   "cifra": "cinco",
+   "texto": "En siete, el PSOE sube",
+   "cifra": "siete",
    "calculo": "len([c for c in D['CASAS'] if c['dPSOE']>0])"
+  },
+  {
+   "texto": "El PP retrocede en cuatro, 40dB",
+   "cifra": "cuatro",
+   "calculo": "len([c for c in D['CASAS'] if c['dPP']<0])"
   },
   {
    "texto": "mejora en las otras cuatro",
@@ -55,32 +60,37 @@
    "calculo": "len([c for c in D['CASAS'] if c['dPP']>0])"
   },
   {
+   "texto": "solo aparecen en esas cuatro",
+   "cifra": "cuatro",
+   "calculo": "len([c for c in D['CASAS'] if c['dPP']<0 and c['dPSOE']>0])"
+  },
+  {
    "texto": "da al PP 1,7 puntos más",
    "cifra": "1,7",
    "calculo": "[c['dPP'] for c in D['CASAS'] if c['casa']=='Winston'][0]"
   },
   {
-   "texto": "Sondaxe para La Voz de Galicia, 1,1 más",
-   "cifra": "1,1",
-   "calculo": "[c['dPP'] for c in D['CASAS'] if c['casa']=='Sondaxe'][0]"
-  },
-  {
-   "texto": "hasta 4,7 y 4,4 puntos",
+   "texto": "amplía su ventaja hasta 4,7 puntos",
    "cifra": "4,7",
    "calculo": "[c['gap'] for c in D['CASAS'] if c['casa']=='Winston'][0]"
   },
   {
-   "texto": "hasta 4,7 y 4,4 puntos",
-   "cifra": "4,4",
+   "texto": "la ensancha, de 2,4 a 3,5",
+   "cifra": "2,4",
+   "calculo": "[c['agap'] for c in D['CASAS'] if c['casa']=='Sondaxe'][0]"
+  },
+  {
+   "texto": "la ensancha, de 2,4 a 3,5",
+   "cifra": "3,5",
    "calculo": "[c['gap'] for c in D['CASAS'] if c['casa']=='Sondaxe'][0]"
   },
   {
-   "texto": "deja al PSOE en el 30,3 %",
+   "texto": "con el PSOE en el 30,3 %",
    "cifra": "30,3",
    "calculo": "[c['PSOE'] for c in D['CASAS'] if c['casa']=='40dB'][0]"
   },
   {
-   "texto": "y la distancia en 1,2 puntos, la más corta",
+   "texto": "SER: 1,2 puntos, con el PSOE",
    "cifra": "1,2",
    "calculo": "[c['gap'] for c in D['CASAS'] if c['casa']=='40dB'][0]"
   },
@@ -88,6 +98,11 @@
    "texto": "el del PP en Winston, se queda en 1,7",
    "cifra": "1,7",
    "calculo": "max(abs(c[k]) for c in D['CASAS'] for k in ('dPP','dPSOE'))"
+  },
+  {
+   "texto": "ninguno supera el margen de error en las cinco comparaciones",
+   "cifra": "cinco",
+   "calculo": "len(D['INDEP'])"
   },
   {
    "texto": "con las 1.200 y 1.501 entrevistas de Winston",
@@ -105,42 +120,37 @@
    "calculo": "[c['mPP'] for c in D['CASAS'] if c['casa']=='Winston'][0]"
   },
   {
-   "texto": "con las 1.200 y 1.000 de Sondaxe",
-   "cifra": "1.200",
-   "calculo": "[c['ant_n'] for c in D['CASAS'] if c['casa']=='Sondaxe'][0]"
-  },
-  {
-   "texto": "con las 1.200 y 1.000 de Sondaxe",
+   "texto": "con las 1.000 y 1.000 de NC Report",
    "cifra": "1.000",
-   "calculo": "[c['n'] for c in D['CASAS'] if c['casa']=='Sondaxe'][0]"
+   "calculo": "[c['n'] for c in D['CASAS'] if c['casa']=='NC Report'][0]"
   },
   {
-   "texto": "1.000 de Sondaxe, de ±3,9",
+   "texto": "de NC Report, de ±3,9 para el PSOE",
    "cifra": "3,9",
-   "calculo": "[c['mPP'] for c in D['CASAS'] if c['casa']=='Sondaxe'][0]"
+   "calculo": "[c['mPSOE'] for c in D['CASAS'] if c['casa']=='NC Report'][0]"
   },
   {
-   "texto": "con las 2.000 y 2.500 de 40dB",
-   "cifra": "2.000",
-   "calculo": "[c['ant_n'] for c in D['CASAS'] if c['casa']=='40dB'][0]"
+   "texto": "para el PSOE, que sube 0,5",
+   "cifra": "0,5",
+   "calculo": "[c['dPSOE'] for c in D['CASAS'] if c['casa']=='NC Report'][0]"
   },
   {
-   "texto": "con las 2.000 y 2.500 de 40dB",
-   "cifra": "2.500",
-   "calculo": "[c['n'] for c in D['CASAS'] if c['casa']=='40dB'][0]"
+   "texto": "con las 1.500 y 1.500 de Data10",
+   "cifra": "1.500",
+   "calculo": "[c['n'] for c in D['CASAS'] if c['casa']=='Data10'][0]"
   },
   {
-   "texto": "de ±2,8 para el PSOE",
-   "cifra": "2,8",
-   "calculo": "[c['mPSOE'] for c in D['CASAS'] if c['casa']=='40dB'][0]"
+   "texto": "de Data10, de ±3,2 para un PSOE",
+   "cifra": "3,2",
+   "calculo": "[c['mPSOE'] for c in D['CASAS'] if c['casa']=='Data10'][0]"
   },
   {
-   "texto": "para el PSOE, que sube 0,4",
-   "cifra": "0,4",
-   "calculo": "[c['dPSOE'] for c in D['CASAS'] if c['casa']=='40dB'][0]"
+   "texto": "para un PSOE que gana 0,8",
+   "cifra": "0,8",
+   "calculo": "[c['dPSOE'] for c in D['CASAS'] if c['casa']=='Data10'][0]"
   },
   {
-   "texto": "Cuatro empresas publican ya un tracking",
+   "texto": "Cuatro empresas publican un tracking",
    "cifra": "Cuatro",
    "calculo": "len(D['TRACK'])"
   },
@@ -260,38 +270,28 @@
    "calculo": "D['MED0']['PSOE']"
   },
   {
-   "texto": "a las 07.40, el 30,8 %",
-   "cifra": "30,8",
+   "texto": "a las 08.13, el 30,9 %",
+   "cifra": "30,9",
    "calculo": "D['MED1']['PP']"
   },
   {
-   "texto": "el 30,8 % y el 27,8 %",
-   "cifra": "27,8",
+   "texto": "el 30,9 % y el 27,7 %",
+   "cifra": "27,7",
    "calculo": "D['MED1']['PSOE']"
   },
   {
-   "texto": "La distancia baja de 3,2 a 3,0 puntos",
-   "cifra": "3,2",
-   "calculo": "D['MED0']['PP']-D['MED0']['PSOE']"
-  },
-  {
-   "texto": "La distancia baja de 3,2 a 3,0 puntos",
-   "cifra": "3,0",
-   "calculo": "D['MED1']['PP']-D['MED1']['PSOE']"
-  },
-  {
-   "texto": "sigue dando a PP y Vox 193",
-   "cifra": "193",
+   "texto": "da a PP y Vox 194, uno más",
+   "cifra": "194",
    "calculo": "D['HE1']['PP']+D['HE1']['Vox']"
   },
   {
-   "texto": "de otra forma (127 y 66",
+   "texto": "que el viernes (127 y 67",
    "cifra": "127",
    "calculo": "D['HE1']['PP']"
   },
   {
-   "texto": "de otra forma (127 y 66",
-   "cifra": "66",
+   "texto": "que el viernes (127 y 67",
+   "cifra": "67",
    "calculo": "D['HE1']['Vox']"
   },
   {
@@ -305,18 +305,28 @@
    "calculo": "D['HE0']['Vox']"
   },
   {
-   "texto": "En el 92 % de las simulaciones",
-   "cifra": "92",
+   "texto": "En el 93 % de las simulaciones",
+   "cifra": "93",
    "calculo": "100*D['PR1']"
   },
   {
-   "texto": "El PSOE sube en cinco encuestas; el PP baja en dos",
-   "cifra": "cinco",
+   "texto": "el viernes, en el 92 %",
+   "cifra": "92",
+   "calculo": "100*D['PR0']"
+  },
+  {
+   "texto": "El PSOE sube en siete encuestas; el PP baja en cuatro",
+   "cifra": "siete",
    "calculo": "len([c for c in D['CASAS'] if c['dPSOE']>0])"
   },
   {
-   "texto": "Las siete encuestas de campaña",
-   "cifra": "siete",
+   "texto": "El PSOE sube en siete encuestas; el PP baja en cuatro",
+   "cifra": "cuatro",
+   "calculo": "len([c for c in D['CASAS'] if c['dPP']<0])"
+  },
+  {
+   "texto": "Las nueve encuestas de campaña",
+   "cifra": "nueve",
    "calculo": "len(D['CASAS'])"
   },
   {
@@ -325,29 +335,27 @@
    "calculo": "len(D['TRACK'])"
   },
   {
-   "texto": "solo se calculan para las cuatro encuestas sueltas",
-   "cifra": "cuatro",
-   "calculo": "4"
-  },
-  {
-   "texto": "Y en las cuatro encuestas sueltas o semanales",
-   "cifra": "cuatro",
-   "calculo": "4"
+   "texto": "194, uno más que el viernes",
+   "condicion": "D['HE1']['PP']+D['HE1']['Vox']-D['HE0']['PP']-D['HE0']['Vox'] == 1"
   },
   {
    "texto": "el PSOE sube; en dos, Sondaxe y Winston, baja",
    "condicion": "{c['casa'] for c in D['CASAS'] if c['dPSOE']<0}=={'Sondaxe','Winston'}"
   },
   {
-   "texto": "solo retrocede en dos, 40dB y SocioMétrica",
-   "condicion": "{c['casa'] for c in D['CASAS'] if c['dPP']<0}=={'40dB','SocioMétrica'}"
+   "texto": "La distancia sigue algo por encima de los tres puntos",
+   "condicion": "3 < D['GAP1'] < 3.5"
   },
   {
-   "texto": "el PP baja en dos",
-   "condicion": "len([c for c in D['CASAS'] if c['dPP']<0])==2"
+   "texto": "recortan la distancia, pero la dejan por encima de los seis puntos",
+   "condicion": "all(c['gap'] > 6 and c['gap'] < c['agap'] for c in D['CASAS'] if c['casa'] in ('Data10', 'NC Report'))"
   }
  ],
  "externas": [
+  {
+   "texto": "lo hizo entre el 6 y el 12",
+   "fuente": "https://www.larazon.es/espana/mayoria-vox-resiste-arranque-campana-205-diputados_202611166afa6889ea8d89799786d4d1.html"
+  },
   {
    "texto": "terminó su trabajo de campo el 8 de noviembre",
    "fuente": "https://www.electografica.com/2026/11/encuesta-winston-261113.html"
@@ -371,7 +379,7 @@
    "motivo": "fechas del periodo comparado"
   },
   {
-   "texto": "del 13 de noviembre, barra de arriba) y este lunes (07.40 del 16",
+   "texto": "del 13 de noviembre, barra de arriba) y este lunes (08.13 del 16",
    "motivo": "hora y fecha de las publicaciones del modelo"
   },
   {
@@ -381,6 +389,14 @@
   {
    "texto": "en estos cuatro días",
    "motivo": "duración del periodo, no un dato"
+  },
+  {
+   "texto": "Al cuarto día de campaña",
+   "motivo": "día de la campaña, no un dato"
+  },
+  {
+   "texto": "Sondaxe se ha sumado este fin de semana",
+   "motivo": "sin cifra"
   },
   {
    "texto": "de los últimos 30 días",

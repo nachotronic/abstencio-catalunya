@@ -2,10 +2,10 @@
 
 Cada encuesta publicada desde el arranque de la campaña frente a la anterior de la misma empresa, publicada antes del 13;
 los cuatro trackings diarios; el recuento de encuestas que dan ganador al PP y mayoría absoluta a PP y Vox, y la media
-de encuestas del modelo de /encuestas/ al empezar la campaña (00.38 del 13 de noviembre) y hoy (07.40 del 16).
+de encuestas del modelo de /encuestas/ al empezar la campaña (00.38 del 13 de noviembre) y hoy (08.13 del 16).
 
 Datos: encuestas/src/construir.py, carga() (Electográfica y Wikipedia, las mismas filas que la tabla de /encuestas/).
-Modelo: previsiones/datos/publico/historico/2026-11-13-0038.json y 2026-11-16-0740.json.
+Modelo: previsiones/datos/publico/historico/2026-11-13-0038.json y 2026-11-16-0813.json.
 Uso, desde la raíz: python3 actualidad/src/resumenes/semana_campana.py
 """
 import importlib.util
@@ -38,7 +38,7 @@ camp = {}
 for e in V:
     if INICIO <= pub(e) <= HOY:
         camp.setdefault(K(e), e)
-assert sorted(camp) == ['40db', 'emanalytics', 'sigmados', 'sociometrica', 'sondaxe', 'swdemoscopia', 'winston', 'yougov'], sorted(camp)
+assert sorted(camp) == ['40db', 'data10', 'emanalytics', 'ncreport', 'sigmados', 'sociometrica', 'sondaxe', 'swdemoscopia', 'winston', 'yougov'], sorted(camp)
 CASAS = []
 for k, e in camp.items():
     ant = next((x for x in V if K(x) == k and pub(x) < INICIO), None)
@@ -68,14 +68,18 @@ DOS = [c['casa'] for c in CASAS if c['dPSOE'] > 0 and c['dPP'] < 0]   # las que 
 ACERCA = [c['casa'] for c in CASAS if c['gap'] < c['agap']]
 ALEJA = [c['casa'] for c in CASAS if c['gap'] > c['agap']]
 IGUAL = [c['casa'] for c in CASAS if c['gap'] == c['agap']]
-assert (NC, len(PSOE_SUBE), PSOE_BAJA, PP_BAJA, PP_IGUAL, len(PP_SUBE)) == (7, 5, ['Sondaxe', 'Winston'], ['40dB', 'SocioMétrica'], ['SW Demoscopia'], 4), \
+assert (NC, len(PSOE_SUBE), PSOE_BAJA, len(PP_BAJA), PP_IGUAL, len(PP_SUBE)) == (9, 7, ['Sondaxe', 'Winston'], 4, ['SW Demoscopia'], 4), \
     (NC, PSOE_SUBE, PSOE_BAJA, PP_BAJA, PP_IGUAL, PP_SUBE)
-assert DOS == ['40dB', 'SocioMétrica'] and sorted(ALEJA) == ['Sondaxe', 'Winston'] and IGUAL == ['EM-Analytics'], (DOS, ALEJA, IGUAL)
+assert sorted(DOS) == sorted(PP_BAJA) == ['40dB', 'Data10', 'NC Report', 'SocioMétrica'] and sorted(ALEJA) == ['Sondaxe', 'Winston'] and IGUAL == ['EM-Analytics'], (DOS, ALEJA, IGUAL)
 C = {c['casa']: c for c in CASAS}
-W, SX, D40 = C['Winston'], C['Sondaxe'], C['40dB']
+W, SX, D40, NCR, D10 = C['Winston'], C['Sondaxe'], C['40dB'], C['NC Report'], C['Data10']
+assert min(NCR['gap'], C['Data10']['gap']) > 6 and NCR['gap'] < NCR['agap'] and C['Data10']['gap'] < C['Data10']['agap']
+assert NCR['fin'] == '2026-11-12' and NCR['e']['inicio'] == '2026-11-06', NCR['fin']   # La Razón: «elaborado entre el 6 y el 12 de noviembre»
 assert W['fin'] == '2026-11-08' and W['pub'] == '2026-11-13', W['fin']
 # ningún cambio del PP ni del PSOE supera su margen entre dos encuestas independientes
-INDEP = ['40dB', 'SocioMétrica', 'Sondaxe', 'Winston']   # encuestas sueltas o semanales, con muestras distintas
+# márgenes solo cuando las dos encuestas comparadas no comparten días de trabajo de campo
+INDEP = [c['casa'] for c in CASAS if c['ant_fin'] < c['e']['inicio']]
+assert sorted(INDEP) == ['40dB', 'Data10', 'NC Report', 'Sondaxe', 'Winston'], INDEP
 assert all(abs(C[k]['d' + par]) < C[k]['m' + par] for k in INDEP for par in ('PP', 'PSOE')), [(k, C[k]['dPP'], C[k]['mPP']) for k in INDEP]
 MAX_D = max(abs(c['d' + par]) for c in CASAS for par in ('PP', 'PSOE'))
 assert MAX_D == W['dPP'] == 1.7, MAX_D
@@ -126,10 +130,10 @@ assert K(MIN_PP) == '40db' and pub(MIN_PP) == HOY, nombre(MIN_PP)
 
 # ---------- La media del modelo, al empezar la campaña y hoy ----------
 H0 = json.load(open(RAIZ / 'previsiones/datos/publico/historico/2026-11-13-0038.json'))
-H1 = json.load(open(RAIZ / 'previsiones/datos/publico/historico/2026-11-16-0740.json'))
+H1 = json.load(open(RAIZ / 'previsiones/datos/publico/historico/2026-11-16-0813.json'))
 MED0, MED1 = H0['meta']['media_encuestas'], H1['meta']['media_encuestas']
 GAP0, GAP1 = MED0['PP'] - MED0['PSOE'], MED1['PP'] - MED1['PSOE']
-assert (round(GAP0, 1), round(GAP1, 1)) == (3.2, 3.0), (GAP0, GAP1)
+assert round(GAP0, 1) == 3.2 and 3.1 <= GAP1 <= 3.2, (GAP0, GAP1)   # hoy, 3,15: con los porcentajes redondeados (30,9 y 27,7) saldría 3,2; el texto no da la cifra
 
 
 def bloque(h):
@@ -142,7 +146,7 @@ def bloque(h):
 
 PV0, PR0, HE0 = bloque(H0)
 PV1, PR1, HE1 = bloque(H1)
-assert (PV0, PV1) == (193, 193), (PV0, PV1)
+assert (PV0, PV1) == (193, 194), (PV0, PV1)
 pct = lambda v: f'{round(v * 100)}'
 
 # ---------- Gráficos ----------
@@ -208,18 +212,19 @@ _pv = lambda e: f'{esc(nombre(e))}' + (f' · {esc(e["medio"])}' if e['medio'] el
 CSS_ULTIMO = '<style>' + '\n'.join(l for l in enc.ESTILOS.split('\n') if l.startswith(('.ultimo-graf', '.bu-')) or ('.bu-b i' in l and 'prefers-color-scheme' in l or l.startswith(':root[data-theme="dark"] .bu-b'))) + '</style>'
 assert CSS_ULTIMO.count('.bu-') >= 8, CSS_ULTIMO
 g_ultimo = (enc.graficos_ultimo([(c['e'], c['ant'], _pv(c['e'])) for c in CASAS])
-            .replace('Las últimas encuestas, partido a partido', 'Las siete encuestas de campaña, partido a partido')
+            .replace('Las últimas encuestas, partido a partido', f'Las {NUM[NC]} encuestas de campaña, partido a partido')
             .replace('lo que daba la encuesta anterior de la misma encuestadora', 'lo que daba la última encuesta de la misma empresa publicada antes del 13 de noviembre'))
-assert 'Las siete encuestas de campaña' in g_ultimo and 'antes del 13 de noviembre' in g_ultimo
+assert f'Las {NUM[NC]} encuestas de campaña' in g_ultimo and 'antes del 13 de noviembre' in g_ultimo
 
+mn = lambda v: ('−' if v < 0 else '') + p(abs(v))
 sg = lambda v: ('+' if v > 0 else '−' if v < 0 else '') + p(abs(v))
-g_cambios = figura('El PSOE sube en cinco encuestas; el PP baja en dos',
+g_cambios = figura(f'El PSOE sube en {NUM[len(PSOE_SUBE)]} encuestas; el PP baja en {NUM[len(PP_BAJA)]}',
                    'Cambio de la estimación de voto, en puntos, en la última encuesta de cada empresa publicada entre el 13 y el 16 de noviembre frente a la anterior de la misma empresa',
                    cambios(), 'Fuente: encuestas publicadas, recogidas por Electográfica y Wikipedia (tabla de <a href="' + BASE + 'encuestas/">/encuestas/</a>). Cálculo propio.',
                    leyenda=[('PP', 'var(--pp)'), ('PSOE', 'var(--psoe)')],
                    tabla=(['Empresa (anterior)', 'PP', 'PSOE', 'Ventaja PP'],
                           [[f'{c["casa"]}, {fecha(c["pub"])} ({fecha(c["ant_pub"])})', f'{p(c["PP"])} ({sg(c["dPP"])})',
-                            f'{p(c["PSOE"])} ({sg(c["dPSOE"])})', f'{p(c["gap"])} ({p(c["agap"])})'] for c in CASAS]))
+                            f'{p(c["PSOE"])} ({sg(c["dPSOE"])})', f'{mn(c["gap"])} ({mn(c["agap"])})'] for c in CASAS]))
 
 paneles = ''.join(f'<p class="lab" style="font-family:var(--ui);font-weight:600;margin:.8rem 0 0">{esc(t["casa"])} · {esc(t["medio"])}</p>{tracking(t)}' for t in TRACK)
 g_track = figura('Los cuatro trackings, día a día',
@@ -249,7 +254,7 @@ def media():
 
 
 g_media = figura('La media de las encuestas apenas se mueve',
-                 'Media de encuestas del modelo de Mapa Electoral (%), al empezar la campaña (00.38 del 13 de noviembre, barra de arriba) y este lunes (07.40 del 16, barra de abajo)',
+                 'Media de encuestas del modelo de Mapa Electoral (%), al empezar la campaña (00.38 del 13 de noviembre, barra de arriba) y este lunes (08.13 del 16, barra de abajo)',
                  media(), f'Fuente: <a href="{BASE}encuestas/">modelo de Mapa Electoral</a>, publicaciones del 13 y el 16 de noviembre de 2026.',
                  leyenda=[(nom, col) for _, nom, col in PARTIDOS],
                  tabla=(['Partido', '13 nov', '16 nov', 'Cambio'], [[nom, p(MED0[k]), p(MED1[k]), sg(round(MED1[k] - MED0[k], 1))] for k, nom, _ in PARTIDOS]))
@@ -263,29 +268,29 @@ sube_psoe = [c for c in CASAS if c['dPSOE'] > 0]
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">El sábado, en Zamora, el portavoz socialista en el Congreso, Patxi López, se mostró convencido de que el PSOE ganará el 29N con una lectura de las encuestas que no admitía excepciones, según la agencia EFE:</p>
 <blockquote class="cita"><p>«Todas las encuestas marcan dos tendencias, el alza del Partido Socialista y el descenso del Partido Popular»</p><footer>Patxi López, portavoz del PSOE en el Congreso, según <a href="{LOPEZ}">EFE</a> (14 de noviembre de 2026).</footer></blockquote>
-<p data-tipo="dato">Al cuarto día de campaña, la frase se cumple a medias. {NUM[len(camp)].capitalize()} empresas han publicado encuestas de las generales entre el viernes 13 y este lunes 16, y {NUM[NC]} de ellas tenían una anterior con la que compararse. En <strong>{NUM[len(PSOE_SUBE)]}</strong>, el PSOE sube; en {NUM[len(PSOE_BAJA)]}, {lista(PSOE_BAJA)}, baja. El PP, en cambio, solo retrocede en <strong>{NUM[len(PP_BAJA)]}</strong>, {lista(PP_BAJA)}; se queda igual en {PP_IGUAL[0]} y mejora en las otras {NUM[len(PP_SUBE)]}. Las dos tendencias a la vez, que el PSOE suba y el PP baje, solo aparecen en {lista(DOS)}.</p>
+<p data-tipo="dato">Al cuarto día de campaña, la frase se cumple a medias. {NUM[len(camp)].capitalize()} empresas han publicado encuestas de las generales entre el viernes 13 y este lunes 16, y {NUM[NC]} de ellas tenían una anterior con la que compararse. En <strong>{NUM[len(PSOE_SUBE)]}</strong>, el PSOE sube; en {NUM[len(PSOE_BAJA)]}, {lista(PSOE_BAJA)}, baja. El PP retrocede en <strong>{NUM[len(PP_BAJA)]}</strong>, {lista(sorted(PP_BAJA))}; se queda igual en {PP_IGUAL[0]} y mejora en las otras {NUM[len(PP_SUBE)]}. Las dos tendencias a la vez, que el PSOE suba y el PP baje, solo aparecen en esas {NUM[len(DOS)]}.</p>
 {g_cambios}
-<p data-tipo="dato">Los saltos más grandes van en dirección contraria a la que describía López. <a href="{W['url']}">Winston para Artículo14</a> da al PP {p(W['dPP'])} puntos más que en su encuesta de finales de octubre, y <a href="{SX['url']}">Sondaxe para La Voz de Galicia</a>, {p(SX['dPP'])} más; las dos ensanchan la ventaja del PP, hasta {p(W['gap'])} y {p(SX['gap'])} puntos. Winston, eso sí, <a href="{WURL}">terminó su trabajo de campo el 8 de noviembre</a>, antes de que empezara la campaña. En el otro extremo, el <a href="{D40['url']}">tracking de 40dB para El País y la SER</a> deja al PSOE en el {p(D40['PSOE'])} % y la distancia en {p(D40['gap'])} puntos, la más corta entre las encuestas de esta semana que dan ganador al PP.</p>
+<p data-tipo="dato">El salto más grande va en dirección contraria a la que describía López: <a href="{W['url']}">Winston para Artículo14</a> da al PP {p(W['dPP'])} puntos más que en su encuesta de finales de octubre y amplía su ventaja hasta {p(W['gap'])} puntos. <a href="{SX['url']}">Sondaxe para La Voz de Galicia</a> también la ensancha, de {p(SX['agap'])} a {p(SX['gap'])}. Del otro lado, <a href="{D10['url']}">Data10 para OKDiario</a> y <a href="{NCR['url']}">NC Report para La Razón</a> recortan la distancia, pero la dejan por encima de los seis puntos. Varias de estas encuestas se publican ya en campaña con entrevistas anteriores: Winston <a href="{WURL}">terminó su trabajo de campo el 8 de noviembre</a> y NC Report <a href="{NCR['url']}">lo hizo entre el 6 y el 12</a>, antes del arranque. La distancia más corta entre las encuestas de esta semana que dan ganador al PP es la del <a href="{D40['url']}">tracking de 40dB para El País y la SER</a>: {p(D40['gap'])} puntos, con el PSOE en el {p(D40['PSOE'])} %.</p>
 {CSS_ULTIMO}
 {g_ultimo}
 <h2>Décimas dentro del margen</h2>
-<p data-tipo="dato">Ningún cambio llega a dos puntos: el mayor, el del PP en Winston, se queda en {p(MAX_D)}. Y en las cuatro encuestas sueltas o semanales, ninguno supera el margen de error. Entre dos encuestas así, el cambio de un partido necesita superar el error de las dos muestras juntas para ser algo más que ruido: con las 1.200 y 1.501 entrevistas de Winston, ese margen es de ±{p(W['mPP'])} puntos para el PP; con las 1.200 y 1.000 de Sondaxe, de ±{p(SX['mPP'])}, y con las 2.000 y 2.500 de 40dB, de ±{p(D40['mPSOE'])} para el PSOE, que sube {p(D40['dPSOE'])}.</p>
-<p data-tipo="dato">La campaña ha traído, sobre todo, encuestas diarias. Cuatro empresas publican ya un tracking cada mañana o casi: 40dB, Sigma Dos, SW Demoscopia y EM-Analytics. Desde su primera entrega de campaña, la ventaja del PP se estrecha en 40dB, de {p(T['40dB']['g0'])} a {p(T['40dB']['g1'])} puntos, y apenas varía en Sigma Dos, de {p(T['Sigma Dos']['g0'])} a {p(T['Sigma Dos']['g1'])}, y en EM-Analytics, de {p(T['EM-Analytics']['g0'])} a {p(T['EM-Analytics']['g1'])}. SW Demoscopia es la única que pone por delante al PSOE: su ventaja pasa de {p(-T['SW Demoscopia']['g0'])} a {p(-T['SW Demoscopia']['g1'])} puntos.</p>
+<p data-tipo="dato">Ningún cambio llega a dos puntos: el mayor, el del PP en Winston, se queda en {p(MAX_D)}. Y ninguno supera el margen de error en las {NUM[len(INDEP)]} comparaciones en que las dos encuestas no comparten ni un día de trabajo de campo. Entre dos muestras distintas, el cambio de un partido necesita superar el error de las dos juntas para ser algo más que ruido: con las 1.200 y 1.501 entrevistas de Winston, ese margen es de ±{p(W['mPP'])} puntos para el PP; con las 1.000 y 1.000 de NC Report, de ±{p(NCR['mPSOE'])} para el PSOE, que sube {p(NCR['dPSOE'])}, y con las 1.500 y 1.500 de Data10, de ±{p(D10['mPSOE'])} para un PSOE que gana {p(D10['dPSOE'])}.</p>
+<p data-tipo="dato">La campaña ha traído, sobre todo, encuestas diarias. Cuatro empresas publican un tracking casi cada mañana: 40dB, Sigma Dos, SW Demoscopia y EM-Analytics; Sondaxe se ha sumado este fin de semana. Desde su primera entrega de campaña, la ventaja del PP se estrecha en 40dB, de {p(T['40dB']['g0'])} a {p(T['40dB']['g1'])} puntos, y apenas varía en Sigma Dos, de {p(T['Sigma Dos']['g0'])} a {p(T['Sigma Dos']['g1'])}, y en EM-Analytics, de {p(T['EM-Analytics']['g0'])} a {p(T['EM-Analytics']['g1'])}. SW Demoscopia es la única que pone por delante al PSOE: su ventaja pasa de {p(-T['SW Demoscopia']['g0'])} a {p(-T['SW Demoscopia']['g1'])} puntos.</p>
 {g_track}
 <p data-tipo="hipotesis">Las cuatro líneas dibujan cuatro campañas distintas: la distancia entre el PP y el PSOE va de los {p(T['Sigma Dos']['g1'])} puntos de Sigma Dos a los {p(-T['SW Demoscopia']['g1'])} a favor del PSOE de SW Demoscopia. Esa diferencia entre empresas, de {p(ABANICO)} puntos, pesa mucho más que cualquier movimiento de una sola de ellas en estos cuatro días.</p>
 <h2>Lo que no cambia: el PP primero y la mayoría con Vox</h2>
 <p data-tipo="dato">Con la última encuesta de cada empresa de los últimos 30 días, como cuenta la página de <a href="{BASE}encuestas/">encuestas</a>, el PP es el más votado en <strong>{G1} de {len(U1)}</strong>; el jueves, antes de la campaña, lo era en {G0} de {len(U0)}. Solo el {lista(PSOE_GANA)} ponen por delante al PSOE. Y de las {len(E1)} que publican escaños, <strong>{M1}</strong> dan a PP y Vox juntos 176 o más, la mayoría absoluta; el jueves eran {M0} de {len(E0)}. Las dos que no, otra vez, el CIS y SW Demoscopia.</p>
-<p data-tipo="dato">La media que usa <a href="{BASE}encuestas/">nuestro modelo</a> se ha movido todavía menos. Al empezar la campaña, en la publicación de las 00.38 del viernes 13, daba al PP el {p(MED0['PP'])} % y al PSOE el {p(MED0['PSOE'])} %; este lunes, a las 07.40, el {p(MED1['PP'])} % y el {p(MED1['PSOE'])} %. La distancia baja de {p(GAP0)} a {p(GAP1)} puntos. En escaños, el escenario central sigue dando a PP y Vox {PV1}, los mismos que el viernes, aunque repartidos de otra forma ({HE1['PP']} y {HE1['Vox']}, frente a {HE0['PP']} y {HE0['Vox']}). En el {pct(PR1)} % de las simulaciones llegan a 176{', como el viernes' if pct(PR0) == pct(PR1) else f'; el viernes, en el {pct(PR0)} %'}.</p>
+<p data-tipo="dato">La media que usa <a href="{BASE}encuestas/">nuestro modelo</a> se ha movido todavía menos. Al empezar la campaña, en la publicación de las 00.38 del viernes 13, daba al PP el {p(MED0['PP'])} % y al PSOE el {p(MED0['PSOE'])} %; este lunes, a las 08.13, el {p(MED1['PP'])} % y el {p(MED1['PSOE'])} %. La distancia sigue algo por encima de los tres puntos. En escaños, el escenario central da a PP y Vox {PV1}, uno más que el viernes ({HE1['PP']} y {HE1['Vox']}, frente a {HE0['PP']} y {HE0['Vox']}). En el {pct(PR1)} % de las simulaciones llegan a 176; el viernes, en el {pct(PR0)} %.</p>
 {g_media}
 <p data-tipo="contexto">Alberto Núñez Feijóo leyó el marcador en clave de fútbol el domingo, después de ver a la selección en el Metropolitano. En El Partidazo de COPE dijo que el PP va ganando «claramente», pero pidió no relajarse, según Europa Press:</p>
 <blockquote class="cita"><p>«Queda lo más importante, que son los últimos días de liga donde te juegas todo»</p><footer>Alberto Núñez Feijóo, candidato del PP, según <a href="{FEIJOO}">Europa Press</a> (15 de noviembre de 2026).</footer></blockquote>
 <h2>Lo que estas encuestas no dicen</h2>
-<p data-tipo="contexto">Comparar una encuesta con la anterior de la misma empresa evita mezclar métodos distintos, pero no borra el error de muestreo. Los márgenes de esta pieza suponen muestreo aleatorio simple, como las fichas técnicas; las encuestas en línea y los trackings, que acumulan entrevistas de varios días, tienen su propio diseño, y por eso solo se calculan para las cuatro encuestas sueltas o semanales. La <a href="{YG['url']}">encuesta de YouGov para el Ara</a>, publicada el sábado con trabajo de campo hasta el 2 de noviembre, no tiene otra anterior en la tabla y queda fuera de la comparación. La ley prohíbe publicar encuestas desde el martes 24 de noviembre.</p>
+<p data-tipo="contexto">Comparar una encuesta con la anterior de la misma empresa evita mezclar métodos distintos, pero no borra el error de muestreo. Los márgenes de esta pieza suponen muestreo aleatorio simple, como las fichas técnicas, y solo se calculan cuando las dos encuestas comparadas tienen muestras distintas: los trackings suman entrevistas de varios días y una entrega comparte buena parte de ellas con la del día anterior. La <a href="{YG['url']}">encuesta de YouGov para el Ara</a>, publicada el sábado con trabajo de campo hasta el 2 de noviembre, no tiene otra anterior en la tabla y queda fuera de la comparación. La ley prohíbe publicar encuestas desde el martes 24 de noviembre.</p>
 '''
 
 preguntas = [
     ('¿Sube el PSOE en las encuestas de la campaña del 29N?',
-     f'En {NUM[len(PSOE_SUBE)]} de las {NUM[NC]} empresas que han publicado una encuesta entre el 13 y el 16 de noviembre y tenían una anterior, sí, entre {rng([c["dPSOE"] for c in sube_psoe])} puntos. En Sondaxe y Winston baja. El PP baja en dos, 40dB y SocioMétrica.'),
+     f'En {NUM[len(PSOE_SUBE)]} de las {NUM[NC]} empresas que han publicado una encuesta entre el 13 y el 16 de noviembre y tenían una anterior, sí, entre {rng([c["dPSOE"] for c in sube_psoe])} puntos. En {lista(PSOE_BAJA)} baja. El PP baja en {NUM[len(PP_BAJA)]}: {lista(sorted(PP_BAJA))}.'),
     ('¿Cuántas encuestas dan mayoría absoluta a PP y Vox?',
      f'{M1} de las {len(E1)} que publican escaños, con la última de cada empresa de los últimos 30 días a 16 de noviembre de 2026. No la dan el CIS ni SW Demoscopia.'),
     ('¿Qué dice la media de las encuestas al empezar la campaña?',
@@ -297,13 +302,13 @@ foot = ('Datos: encuestas nacionales publicadas hasta el 16 de noviembre de 2026
         'central de mapaelectoral.es/encuestas del 13 y el 16 de noviembre. Cálculo: actualidad/src/resumenes/semana_campana.py.')
 
 DATOS = {'CASAS': [{k: v for k, v in c.items() if k not in ('e', 'ant')} for c in CASAS], 'TRACK': TRACK, 'MED0': MED0, 'MED1': MED1,
-         'PV0': PV0, 'PV1': PV1, 'PR0': PR0, 'PR1': PR1, 'HE0': HE0, 'HE1': HE1, 'NCAMP': len(camp), 'YG': [nombre(YG), YG['fin'], pub(YG)], 'PSOE_GANA': PSOE_GANA, 'NO_MAY': NO_MAY, 'G': [G0, len(U0), G1, len(U1)], 'M': [M0, len(E0), M1, len(E1)]}
+         'PV0': PV0, 'PV1': PV1, 'PR0': PR0, 'PR1': PR1, 'HE0': HE0, 'HE1': HE1, 'NCAMP': len(camp), 'YG': [nombre(YG), YG['fin'], pub(YG)], 'INDEP': INDEP, 'GAP1': GAP1, 'PSOE_GANA': PSOE_GANA, 'NO_MAY': NO_MAY, 'G': [G0, len(U0), G1, len(U1)], 'M': [M0, len(E0), M1, len(E1)]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza('encuestas-primera-semana-campana-29n', 'Las encuestas, semana a semana',
-      'El PSOE sube en cinco de las siete encuestas de la primera semana de campaña, pero el PP solo baja en dos',
-      f'Patxi López dijo el sábado que todas las encuestas marcan el alza del PSOE y el descenso del PP. Desde el arranque de la campaña, los cambios son de décimas, '
-      f'el PP sigue primero en {G1} de {len(U1)} encuestas y la distancia en la media de nuestro modelo baja de {p(GAP0)} a {p(GAP1)} puntos.',
+      f'El PSOE sube en {NUM[len(PSOE_SUBE)]} de las {NUM[NC]} encuestas de la primera semana de campaña; el PP baja en {NUM[len(PP_BAJA)]} y sube en otras {NUM[len(PP_SUBE)]}',
+      f'Patxi López dijo el sábado que todas las encuestas marcan el alza del PSOE y el descenso del PP. Desde el arranque de la campaña, los cambios son de décimas '
+      f'y ninguno supera el margen de error. El PP sigue primero en {G1} de {len(U1)} encuestas y la media de nuestro modelo apenas se mueve.',
       '16 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('CASAS', [(c['casa'], c['dPP'], c['dPSOE'], round(c['mPP'], 1), round(c['mPSOE'], 1)) for c in CASAS])
 print('G', G0, len(U0), G1, len(U1), 'M', M0, len(E0), M1, len(E1), 'PR', PR0, PR1, 'HE', HE0['PP'], HE0['Vox'], HE1['PP'], HE1['Vox'])
