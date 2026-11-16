@@ -11,9 +11,6 @@ on:
       corte:
         description: 'Fecha de un cambio para comparar antes y después (AAAA-MM-DD, opcional)'
         default: ''
-  push:
-    branches: [claude/project-thread-g04hlf]
-    paths: [src/search_console.py, .github/workflows/search-console.yml]
 permissions:
   contents: read
 jobs:
