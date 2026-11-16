@@ -208,13 +208,20 @@ RTP = 'https://www.rtp.pt/noticias/mundo/paigc-da-guine-bissau-felicita-francisc
 WLEG = 'https://cne.cv/sala_de_imprensa_/cne-declara-paicv-vencedor-das-legislativas-de-2026-com-eleicao-de-37-dos-72-deputados/'
 BOLEG = 'https://cne.cv/ano_resultado_eleicao/2026/'
 WEB = 'https://eleicoes.cv/'
+JE = 'https://jornaleconomico.sapo.pt/noticias/jose-maria-neves-lidera-contagem-com-637-dos-votos-nas-presidenciais-de-cabo-verde/'
+OBS = 'https://observador.pt/2026/11/15/joana-rosa-reconhece-derrota-eleitoral-nas-presidenciais-de-cabo-verde/'
 
-H1 = f'Neves evitó la segunda vuelta en Cabo Verde por {n(MARGEN)} votos en 2021; el domingo busca la reelección con su partido ya en el Gobierno'
-DEK = (f'Seis candidatos se disputan el domingo la presidencia de Cabo Verde, entre ellos el presidente, José Maria Neves, y Joana Rosa, apoyada por el MpD. '
-       f'En 2021, Neves ganó en {len(GANA_N)} de los 13 círculos. La diáspora es hoy el {p(P_DIAS26)} % del censo.')
+H1 = f'Neves, reelegido en Cabo Verde con el 63,7 % provisional; en 2021 evitó la segunda vuelta por {n(MARGEN)} votos'
+DEK = (f'José Maria Neves ganó el domingo las presidenciales de Cabo Verde en primera vuelta: el 63,7 % con el 93 % de las mesas escrutadas, según los datos provisionales recogidos por Lusa. '
+       f'Joana Rosa, apoyada por el MpD, sacó el 31,6 % y reconoció la derrota. En 2021, Neves ganó en {len(GANA_N)} de los 13 círculos.')
 cuerpo = f"""{EST}
+<h2>El resultado provisional</h2>
+<p data-tipo="dato">José Maria Neves ha sido reelegido presidente de Cabo Verde en la primera vuelta. Con 1.106 de las 1.197 mesas escrutadas, el 93 %, sacaba el 63,7 % de los votos y Joana Rosa, el 31,6 %: 78.254 votos frente a 38.835, según los datos oficiales provisionales que recogió Lusa (<a href="{JE}">Jornal Económico</a>, 15-11, 22.14 en Lisboa). Los otros cuatro candidatos no llegaban al 1,5 % cada uno. La abstención era del 67,9 %, frente al 52 % de 2021.</p>
+<blockquote class="cita"><p>«Ganhámos com perto de 64% o que é a todos os títulos uma excelente vitória nestas eleições presidenciais»</p><footer>José Maria Neves, en su sede de campaña en Praia, según Lusa (<a href="{OBS}">Observador</a>, 15-11-2026). «Hemos ganado con cerca del 64 %, lo que es a todas luces una excelente victoria en estas presidenciales» (traducción propia)</footer></blockquote>
+<p data-tipo="dato">Joana Rosa reconoció la derrota esa misma noche: «Já oportunamente apresentei ao Presidente reeleito as felicitações» («Ya he presentado oportunamente mis felicitaciones al presidente reelegido»), según Lusa (<a href="{OBS}">Observador</a>).</p>
+<p data-tipo="contexto">Son datos provisionales. La web oficial de resultados de la CNE, <a href="{WEB}">eleicoes.cv</a>, no respondía la mañana del lunes; cuando vuelva, añadiremos el mapa de 2026 por círculos. El mapa de abajo es el de 2021.</p>
 {g_mapa}
-<p data-tipo="dato">Cabo Verde elige presidente el domingo 15 de noviembre. Hay seis candidatos, según <a href="{TC6}">e-Global</a>: el presidente, José Maria Neves, que busca un segundo mandato con el apoyo del PAICV; la exministra de Justicia Joana Rosa, con el del MpD, según <a href="{INFOR}">Inforpress</a>, y cuatro más: el juez <a href="{ANTERO}">Antero Tavares</a>, Casimiro de Pina, Gilson Alves y Loisito Sousa. Pina y Alves ya se presentaron en 2021 y sacaron el {p(PCT["pina"])} % y el {p(PCT["alves"])} %.</p>
+<p data-tipo="dato">Cabo Verde eligió presidente el domingo 15 de noviembre. Había seis candidatos, según <a href="{TC6}">e-Global</a>: el presidente, José Maria Neves, que buscaba un segundo mandato con el apoyo del PAICV; la exministra de Justicia Joana Rosa, con el del MpD, según <a href="{INFOR}">Inforpress</a>, y cuatro más: el juez <a href="{ANTERO}">Antero Tavares</a>, Casimiro de Pina, Gilson Alves y Loisito Sousa. Pina y Alves ya se presentaron en 2021 y sacaron el {p(PCT["pina"])} % y el {p(PCT["alves"])} %.</p>
 <p data-tipo="contexto">El Tribunal Constitucional admitió cinco candidaturas el 21 de septiembre y rechazó otras cinco, entre ellas la de Sousa, por la distribución territorial de sus firmas, según <a href="{TC5}">e-Global</a>. Tres días después, tras su recurso, el tribunal comprobó que las cinco firmas que le faltaban, las del concelho de Ribeira Brava, en São Nicolau, habían llegado a tiempo y lo admitió, según <a href="{TC6}">e-Global</a>.</p>
 <p data-tipo="dato">Para ganar en la primera vuelta hace falta más de la mitad de los votos válidos; si nadie la consigue, los dos primeros van a una segunda. En 2021, Neves sacó {n(T.neves)} votos, el {p(PCT["neves"])} % de los válidos, según el edital de la <a href="{EDITAL}">Comissão Nacional de Eleições</a>. La mitad de los válidos eran {n(MITAD)}: Neves la superó por {n(MARGEN)} votos. Carlos Veiga, del MpD, se quedó en el {p(PCT["veiga"])} %. Votó el {p(PART)} % de los inscritos.</p>
 
@@ -224,21 +231,20 @@ cuerpo = f"""{EST}
 <p data-tipo="dato">En los tres círculos de la diáspora, Neves pasó del 53 %: {p(D.loc["África", "%neves"])} % en África, {p(D.loc["Américas", "%neves"])} % en América y {p(D.loc["Europa e Resto do Mundo", "%neves"])} % en Europa y el resto del mundo. Pero allí votó muy poca gente: el {p(PART_DIA)} % de los inscritos, frente al {p(PART_NAC)} % en el país. En Europa, solo el {p(EUR.part)} %.</p>
 
 <h2>Más electores fuera</h2>
-<p data-tipo="dato">Para el domingo hay {n(INS26)} inscritos, según la web oficial de resultados de la <a href="{WEB}">CNE</a>, un {p(VAR_TOT)} % más que en 2021. {n(DIAS26)} viven fuera, el {p(P_DIAS26)} %. Los de la diáspora han crecido un {p(VAR_DIAS)} % y los del país, un {p(VAR_NAC)} %. El mayor aumento está en el círculo de Europa y el resto del mundo, con un {p(VAR_EUR)} % más.</p>
+<p data-tipo="dato">Para el domingo había {n(INS26)} inscritos, según la web oficial de resultados de la <a href="{WEB}">CNE</a>, un {p(VAR_TOT)} % más que en 2021. {n(DIAS26)} viven fuera, el {p(P_DIAS26)} %. Los de la diáspora han crecido un {p(VAR_DIAS)} % y los del país, un {p(VAR_NAC)} %. El mayor aumento está en el círculo de Europa y el resto del mundo, con un {p(VAR_EUR)} % más.</p>
 {g_ins}
 
 <h2>Un presidente cuyo partido ya gobierna</h2>
 <p data-tipo="contexto">En 2021, Neves llegó a la presidencia con un Gobierno del MpD. Eso cambió después: el PAICV ganó en diciembre de 2024 las municipales, según <a href="{AF24}">Africa24</a>, y en mayo de 2026 las legislativas, con mayoría absoluta: {LEG["PAICV"][1]} de los 72 diputados, según <a href="{RTP}">RTP</a>. Francisco Carvalho, exalcalde de Praia, es primer ministro.</p>
 {g_leg}
 <p data-tipo="dato">En las legislativas del 17 de mayo, el PAICV sacó el {p(LEG_PCT["PAICV"])} % de los votos a candidaturas y el MpD, el {p(LEG_PCT["MpD"])} %, según los <a href="{WLEG}">resultados definitivos de la CNE</a> del 29 de mayo, publicados en el <a href="{BOLEG}">Boletim Oficial</a>. Votó el {p(LEG_PART)} % de los inscritos.</p>
-<p data-tipo="contexto">Joana Rosa ha usado esa mayoría como argumento de campaña.</p>
+<p data-tipo="contexto">Joana Rosa usó esa mayoría como argumento de campaña.</p>
 <blockquote class="cita"><p>«Neste momento temos uma força política no governo e que domina o poder local e o parlamento. [...] A ideia defendida por muitos, de que não se deve pôr os ovos todos num mesmo cesto, mostra-se perfeitamente necessária na actual conjuntura política»</p><footer>Joana Rosa, candidata apoyada por el MpD, en una entrevista con <a href="{EXP}">Expresso das Ilhas</a> (3-10-2026). «Ahora mismo tenemos una fuerza política en el Gobierno que domina el poder local y el parlamento. [...] La idea que defienden muchos de que no hay que poner todos los huevos en la misma cesta es perfectamente necesaria en la coyuntura política actual» (traducción propia)</footer></blockquote>
-<p data-tipo="hipotesis">El mapa de 2021 no dice cómo votará Cabo Verde el domingo: la elección es otra, con otra rival y con el PAICV en el Gobierno. Lo que sí muestra es dónde se decidió la última: en Santiago, que dio la mitad de los votos válidos, y en una diáspora que vota a Neves pero que vota poco. Con seis candidatos, la clave para evitar la segunda vuelta vuelve a estar en pasar de la mitad de los válidos.</p>
-<p data-tipo="contexto">La CNE publicará los resultados provisionales en su web, <a href="{WEB}">eleicoes.cv</a>, la noche del domingo.</p>
+<p data-tipo="contexto">Esta pieza se publicó el 12 de noviembre, antes de la votación, y se actualizó el 16 con el resultado provisional. En 2021, Neves pasó de la mitad de los válidos por {n(MARGEN)} votos; esta vez, con los datos provisionales, sacó el 63,7 %.</p>
 """
 cuerpo = cuerpo.replace('<details><summary>Ver la tabla</summary>', '<details open><summary>Tabla</summary>')
 preguntas = [
-    ('¿Cuándo son las presidenciales de Cabo Verde?', 'El domingo 15 de noviembre de 2026. Si ningún candidato pasa de la mitad de los votos válidos, los dos primeros van a una segunda vuelta.'),
+    ('¿Quién ganó las presidenciales de Cabo Verde de 2026?', 'José Maria Neves, reelegido en la primera vuelta del 15 de noviembre: el 63,7 % con el 93 % de las mesas escrutadas, según los datos provisionales recogidos por Lusa. Joana Rosa sacó el 31,6 %.'),
     ('¿Quiénes son los candidatos?', 'Seis: José Maria Neves (apoyado por el PAICV), Joana Rosa (apoyada por el MpD), Antero Tavares, Casimiro de Pina, Gilson Alves y Loisito Sousa.'),
     ('¿Cuánto sacó Neves en 2021?', f'El {p(PCT["neves"])} % de los votos válidos, {n(T.neves)} votos: {n(MARGEN)} más de la mitad. Ganó en {len(GANA_N)} de los 13 círculos.'),
 ]
@@ -257,7 +263,7 @@ DATOS = {'CIRC': {r.circulo: {'neves': int(r.neves), 'veiga': int(r.veiga), 'val
          'LEG': {k: [v, s] for k, (v, s) in LEG.items()}, 'LEG_PCT': {k: r4(v) for k, v in LEG_PCT.items()}, 'LEG_PART': r4(LEG_PART)}
 scripts = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 if __name__ == '__main__':
-    pieza(SLUG, 'Cabo Verde elige presidente', H1, DEK, '12 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts)
+    pieza(SLUG, 'Presidenciales en Cabo Verde', H1, DEK, '12 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts)
     print(H1)
     print(DEK)
     print('margen', MARGEN, 'gana', GANA_N, GANA_V, 'part', p(PART), p(PART_NAC), p(PART_DIA), 'sant', VENT_SANT, VENT_TOTAL, DIAS_NEVES,
