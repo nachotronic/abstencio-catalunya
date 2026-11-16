@@ -66,6 +66,7 @@ GRAFICO_PRINCIPAL = {s: dict(src=f'img/actualidad/fotos/{s}-grafico.jpg', ancho=
 PIEZAS = [
     dict(
         slug='beiras-nacionalismo-gallego', fecha='2026-10-08',
+        titulo_seo='El nacionalismo gallego que deja Beiras: del 12 % al 2,9 % y al 9,5 %',   # Google (16-11-2026)
         titulo='Del 12% al 2,9% y de vuelta al 9,5%: el nacionalismo gallego que deja Beiras', serie='29n',
         descripcion='El BNG pasó del 12,0 % en Galicia en 2004 al 2,9 % en 2016, cuando En Marea sacó el 22,4 %, y en 2023 volvió al 9,5 %. Mapas por municipio y sección.',
         compara='La lista nacionalista (BNG; NÓS en 2015) y la gran lista a su izquierda en cada elección general en Galicia, de 2004 a 2023, candidatura a candidatura. Voto por municipio y por sección, cruzado con edad, estudios y renta.',
@@ -2854,6 +2855,7 @@ PIEZAS += [
     ),
     dict(
         slug='psoe-primera-fuerza-29n', fecha='2026-10-25',
+        titulo_seo='¿Puede el PSOE dar el sorpasso que anuncia Iván Redondo?',   # Google (16-11-2026)
         foto=dict(src='img/actualidad/fotos/psoe-primera-fuerza-29n.jpg', ancho=1280, alto=720, ia=True,
                   pie='Una urna llena de sobres con uno rojo delante, entre los escaños del Congreso y el sillón de la presidencia: un collage.'),
         titulo='El PP saca 6 puntos al PSOE en las encuestas: ni el mayor fallo de la última década, el de 2023, daría el sorpasso que anuncia Iván Redondo', serie='29n', figura=0,
@@ -3587,15 +3589,57 @@ def nav(prefijo, actual):
     return out + '</nav>'
 
 
-def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, max-image-preview:large'):
+MARCA = ' · Mapa Electoral'
+MAX_TITULO, MAX_DESC = 65, 160   # lo que enseña Google antes de cortar (Nacho, 16-11-2026: textos de Google más cortos y que inviten a entrar)
+
+
+def titulo_google(titulo):
+    """<title>: la marca solo si cabe entera en ~60 caracteres; Google ya enseña el nombre del sitio encima del título."""
+    return titulo + MARCA if len(titulo + MARCA) <= 60 else titulo
+
+
+def titulo_corto(titulo):
+    """Titular largo sin título SEO propio: la primera parte, si es una frase completa (antes de «;» o «:») de 35 a 65 caracteres."""
+    if len(titulo) <= MAX_TITULO:
+        return titulo
+    for sep in ('; ', ': '):
+        if sep in titulo:
+            pre = titulo.split(sep, 1)[0]
+            if 35 <= len(pre) <= MAX_TITULO and not pre.startswith(('Tras ', 'Después ', 'Antes ')):   # «Tras el saludo…» no es una frase completa
+                return pre
+    return titulo
+
+
+def desc_google(desc):
+    """Meta description de 160 caracteres como mucho, cortada al final de una frase; si la primera frase ya es larga, en una coma."""
+    desc = re.sub(r'\s+', ' ', desc).strip()
+    if len(desc) <= MAX_DESC:
+        return desc
+    frases = re.split(r'(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡«0-9])', desc)
+    out = ''
+    for f in frases:
+        if len((out + ' ' + f).strip()) > MAX_DESC:
+            break
+        out = (out + ' ' + f).strip()
+    if len(out) >= 80:
+        return out
+    corte = desc[:MAX_DESC - 1]
+    for sep in ('; ', ', ', ' '):
+        i = corte.rfind(sep)
+        if i >= 80:
+            return corte[:i].rstrip(',;:') + '…'
+    return corte + '…'
+
+
+def cabecera(titulo, descripcion, url, imagen, jsonld, robots='index, follow, max-image-preview:large', desc_seo=None):
     e = html.escape
     return f"""<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(titulo)} · Mapa Electoral</title>
-<meta name="description" content="{e(descripcion)}">
+<title>{e(titulo_google(titulo))}</title>
+<meta name="description" content="{e(desc_seo or desc_google(descripcion))}">
 <meta name="author" content="{AUTOR}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{url}">
@@ -3775,9 +3819,10 @@ def pieza(p, todas):
                            'isPartOf': {'@id': url + '#articulo'},
                            'mainEntity': [{'@type': 'Question', 'name': html.unescape(q), 'acceptedAnswer': {'@type': 'Answer', 'text': html.unescape(r)}}
                                           for q, r in qs]}]
-    cab = cabecera(p.get('titulo_seo') or p['titulo'], p['descripcion'], url, imagen, jsonld)
-    if p.get('titulo_seo'):   # el título SEO solo va en <title>; en redes, el titular
-        cab = cab.replace(f'<meta property="og:title" content="{html.escape(p["titulo_seo"])}">', f'<meta property="og:title" content="{html.escape(p["titulo"])}">', 1)
+    tseo = p.get('titulo_seo') or titulo_corto(p['titulo'])   # Nacho, 16-11-2026: en Google, títulos de ~60 caracteres
+    cab = cabecera(tseo, p['descripcion'], url, imagen, jsonld, desc_seo=p.get('descripcion_seo'))
+    if tseo != p['titulo']:   # el título SEO solo va en <title>; en redes, el titular
+        cab = cab.replace(f'<meta property="og:title" content="{html.escape(tseo)}">', f'<meta property="og:title" content="{html.escape(p["titulo"])}">', 1)
     out = (cab + estilos + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../../', 'Internacional' if intl else 'Actualidad') + '\n' + main + '\n' + script + '\n</body>\n</html>\n')
     if p.get('idioma') == 'ca':
@@ -3796,7 +3841,7 @@ def indice(todas, sitemap=None):
     todas_es = todas
     todas = [p for p in todas if p['serie'] != 'internacional']   # las internacionales tienen su propia página (Nacho, 2-11-2026)
     url = BASE + '/actualidad/'
-    desc = 'Piezas cortas que cruzan la actualidad del día con los datos electorales por sección censal. Cada cifra, con su fuente.'
+    desc = 'Lee cada día la campaña del 29N con datos: cómo votó cada barrio, qué dicen las encuestas y qué escaños están en juego. Cada cifra, con su fuente.'
     jsonld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Actualidad', 'url': url, 'description': desc,
               'hasPart': [{'@type': 'AnalysisNewsArticle', 'headline': p['titulo'], 'url': f"{url}{p['slug']}/", 'datePublished': p['fecha']} for p in todas]}
     def bloque(serie):
@@ -3834,7 +3879,7 @@ a{color:var(--fg)}
 .tarjetas img.graf{object-fit:contain;background:#fff}
 @media (max-width:560px){.sigue.tarjetas a{grid-template-columns:1fr;gap:10px}}
 </style>"""
-    out = (cabecera('Actualidad', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
+    out = (cabecera('Elecciones 29N: la campaña contada con el mapa de cada barrio', desc, url, BASE + '/img/compartir/atlas.jpg', jsonld) + css + CSS_SITIO + '\n</head>\n<body>\n'
            + nav('../', 'Actualidad')
            + f'\n<main><p class="kicker">Mapa Electoral</p><h1>Actualidad</h1><p>{desc} Para las piezas de fondo, el <a href="../atlas/index.html">Atlas de las anomalías electorales</a>; para seguir la campaña, <a href="../encuestas/">todas las encuestas de las elecciones generales</a>, actualizadas cada día. Las elecciones de otros países están en <a href="../internacional/">Internacional</a>.</p>'
            + f'{items}<footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>'
@@ -4656,6 +4701,7 @@ PIEZAS += [
         lugar='Navarra',    ),
     dict(
         slug='cis-preelectoral-29n', fecha='2026-11-12',
+        titulo_seo='CIS preelectoral: PSOE 33,3 %, PP 25,5 %. ¿Y las demás encuestas?', descripcion_seo='El CIS da al PSOE 7,8 puntos de ventaja; la media de las demás encuestas, 3,6 al PP. Compara su estimación con cada una y mira cuánto se alejó en 2019 y 2023.',   # Google (Nacho, 16-11-2026)
         titulo='El CIS preelectoral da al PSOE 7,8 puntos de ventaja; la media de las demás encuestas, 3,6 al PP', serie='29n', figura=2,
         descripcion='Ni con el máximo de sus horquillas suman PP y Vox mayoría absoluta según el CIS: 171 escaños. Ninguna otra encuesta del último mes da al PSOE tanta ventaja. En las tres generales desde 2019, el CIS sobrestimó la del PSOE.',
         compara='La estimación de voto y de escaños del preelectoral del CIS (estudio 3584, campo del 7 al 30 de octubre de 2026) frente a la última encuesta de cada empresa publicada desde el 13 de octubre, a la media de encuestas de /encuestas/ y a los barómetros del CIS de 2026; y, como hemeroteca, el último gran estudio del CIS antes de las generales de 2019 y 2023 frente al resultado.',
@@ -4787,6 +4833,7 @@ PIEZAS += [
     ),
     dict(
         slug='seleccion-convocados-pueblos-29n', fecha='2026-11-15', actualizado='2026-11-15 10:45',
+        titulo_seo='Selección: 15 convocados nacieron donde ganó el PSOE, 8 donde el PP', descripcion_seo='Mira en el mapa dónde nacieron los convocados de De la Fuente: de los 25 nacidos en España, 15 son de municipios donde ganó el PSOE en 2023 y 8, del PP.',   # Google (Nacho, 16-11-2026)
         correcciones='15-11-2026: el texto decía que Ander Barrenetxea no tiene ficha en la web de la RFEF; la tiene, y da San Sebastián, el mismo lugar. También decía que Wikipedia da Bajamar para Pedri: la ficha de Wikipedia da Tegueste y solo su biografía, Bajamar. La entradilla decía «ERC perdió los cuatro catalanes»; son los cuatro municipios catalanes que había ganado, de siete. Las cifras no cambian.',
         titulo='De los 25 convocados de De la Fuente nacidos en España, 15 nacieron donde ganó el PSOE en 2023 y 8 donde ganó el PP; en Puente Genil, el PP ganó por 31 votos', serie='29n', figura=0,
         descripcion='El día del España-Inglaterra, los 22 municipios donde nacieron los convocados de De la Fuente. En 2023, el PSOE ganó en 13 y el PP en 7; 14 cambiaron de ganador desde 2019, y en Puente Genil, Don Benito, Foios, Tegueste y Zuia se decidió por menos de 110 votos.',
@@ -4801,6 +4848,7 @@ PIEZAS += [
     ),
     dict(
         slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-15 18:00',
+        titulo_seo='Generación 2008: Vox, primero en el CIS entre los de 18 a 24 años', descripcion_seo='1.615.127 electores votan por primera vez en unas generales el 29N. Mira qué votan los de 18 a 24 años según el CIS: Vox reúne el 23,2 % de voto más simpatía.',   # Google (Nacho, 16-11-2026)
         titulo='Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales', serie='29n', figura=0,
         descripcion='En 2008 nacieron en España 519.779 niños, más que en ningún año desde 1981. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales. En el CIS, Vox reúne el 23,2 % del voto más simpatía de 18 a 24 años.',
         compara='Los nacidos en 2008 que viven en cada provincia a 1 de enero de 2025 frente a los nacimientos de 2008 y a la población; los electores que votan por primera vez en unas generales en 2026 y en 2023; el peso de los chicos de 13 años en cada municipio en 2022; lo que declaran los entrevistados de 18 a 24 años en el preelectoral del CIS frente al total, y los votos que faltaron en 2023 para el último escaño de cada provincia.',
@@ -4820,6 +4868,7 @@ PIEZAS += [
     ),
     dict(
         slug='encuestas-primera-semana-campana-29n', fecha='2026-11-16', actualizado='2026-11-16 09:00',
+        titulo_seo='¿Sube el PSOE en campaña? En 7 de 9 encuestas, dentro del margen', descripcion_seo='El PSOE sube en siete de las nueve encuestas de la primera semana de campaña, pero ningún cambio supera el margen de error. Mira qué cambia en cada una.',   # Google (Nacho, 16-11-2026)
         titulo='El PSOE sube en siete de las nueve encuestas de la primera semana de campaña; el PP baja en cuatro y sube en otras cuatro', serie='29n', figura=0,
         descripcion='Patxi López dijo el sábado que todas las encuestas marcan el alza del PSOE y el descenso del PP. Desde el arranque de la campaña, los cambios son de décimas y ninguno supera el margen de error. El PP sigue primero en 17 de 19 encuestas y la media de nuestro modelo apenas se mueve.',
         compara='La última encuesta de cada empresa publicada entre el 13 y el 16 de noviembre de 2026 frente a la última de la misma empresa publicada antes del 13; los cuatro trackings diarios del 9 al 16 de noviembre; el recuento de encuestas de /encuestas/ y la media del modelo al empezar la campaña y este lunes.',
@@ -4840,6 +4889,7 @@ PIEZAS += [
     ),
     dict(
         slug='feijoo-pamplona-upn-pp-secciones-29n', fecha='2026-11-16',
+        titulo_seo='Feijóo en Pamplona: mira quién ganó cada una de sus 151 secciones', descripcion_seo='El PSOE fue el más votado en 77 de las 151 secciones de Pamplona en 2023; UPN y PP juntos habrían sido primeros en 80. Mira el mapa, sección a sección.',   # Google (Nacho, 16-11-2026)
         titulo='Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, se habría quedado en 49', serie='29n', figura=0,
         descripcion='Por separado, UPN y PP fueron los más votados en 50 secciones de Pamplona en 2023; juntos, habrían quedado primeros en 80. Su voto sube con la renta: del 20,5 % en la quinta parte de secciones con menos renta al 57,1 % en la de más.',
         compara='Las generales de noviembre de 2019, cuando UPN, PP y Ciudadanos fueron juntos en Navarra Suma, y de julio de 2023, cuando UPN y PP fueron por separado, en las secciones censales de Pamplona; el voto de 2023 por renta de cada sección, y el reparto del modelo de encuestas en Navarra para el 29N.',

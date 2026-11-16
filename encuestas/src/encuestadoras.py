@@ -150,8 +150,14 @@ def genera(encs, salida, c):
         nom = lambda p: 'Sumar' if p == 'SUMAR' else c.NOMBRE[p]
         cifras = lambda e, ps: ', '.join(f'{nom(p)} {pc(e["voto"][p])}' + (f' ({e["esc"][p]} escaño{"" if e["esc"][p] == "1" else "s"})' if p in e['esc'] else '') for p in ps if p in e['voto'])
         h1 = f'Última encuesta {del_(nombre)}: ' + ', '.join(f'{nom(p)} {pc(u["voto"][p])}' for p in orden[:3])
+        # 16-11-2026 (Nacho): en Google, título de ~60 caracteres con la fecha y las cifras, que es lo que invita a entrar
+        # y sin perder las búsquedas de siempre: «encuesta cis noviembre», «electopanel hoy»
         mes = f'{MESES_L[date.fromisoformat(pub).month - 1]} {date.fromisoformat(pub).year}'
-        titulo = (CASAS.get(k, (0, 0, 0, None))[3] or 'Encuesta {nombre} {mes}: última estimación para las generales del 29N').format(nombre=nombre, mes=mes)
+        prefijo = {'emanalytics': f'ElectoPanel de Electomanía hoy ({c.dia(pub)})'}.get(k, f'Encuesta {nombre} {mes}')
+        tres = lambda n: ', '.join(f'{nom(p)} {pc(u["voto"][p])}' for p in orden[:n - 1]) + f' y {nom(orden[n - 1])} {pc(u["voto"][orden[n - 1]])}'
+        titulo = f'{prefijo}: {tres(3)}'
+        if len(titulo) > 68:
+            titulo = f'{prefijo}: {tres(2)}'
         muestra = f'{int(u["muestra"]):,}'.replace(',', '.') if str(u['muestra']).isdigit() else ''
         p1 = (f'{el(nombre, True)} publicó su última encuesta de las elecciones generales el {c.fecha_larga(pub)}'
               + (f', para {medio}' if medio else '') + (f', con {muestra} entrevistas' if muestra else '') + '. '
@@ -198,6 +204,15 @@ def genera(encs, salida, c):
         dek = (f'Todas las encuestas {del_(nombre)} para las elecciones generales desde 2023, con su fuente: la última, cómo cambia y cómo se compara con las demás encuestadoras.')
         descripcion = (f'Última encuesta {del_(nombre)} ({c.dia(pub, True)}): ' + cifras(u, orden[:4]).replace(' escaños)', ')')
                        + '. Cambio respecto a la anterior, comparación con las demás y todas sus encuestas desde 2023.')[:300]
+        desc_seo = None
+        solo_voto = lambda ps: ', '.join(f'{nom(p)} {pc(u["voto"][p])}' for p in ps)
+        for n, f in ((4, 1), (3, 1), (4, 0), (3, 0), (2, 0)):   # con escaños si caben; si no, solo el voto
+            d = (f'Mira la última encuesta {del_(nombre)} para el 29N ({c.dia(pub)}): '
+                 + (cifras(u, orden[:n]).replace(' escaños)', ')') if f else solo_voto(orden[:n]))
+                 + '. Compárala con la anterior y con las demás.')
+            if len(d) <= 160:
+                desc_seo = d
+                break
         faq = [(f'¿Qué dice la última encuesta {del_(nombre)}?', p1),
                (f'¿Cómo ha cambiado respecto a su encuesta anterior?', p2) if p2 else None,
                (f'¿{el(nombre, True)} da más o menos voto que las demás encuestas?', p3) if p3 else None,
@@ -246,7 +261,7 @@ def genera(encs, salida, c):
 <p class="src">Fuentes: cada encuesta enlaza a su publicación original; <a href="https://www.electografica.com/">Electográfica</a> y <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election">Wikipedia</a> (CC BY-SA 4.0) para localizarlas. Resultado de 2023: Ministerio del Interior. Se actualiza sola cuando entra una encuesta nueva.</p>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="../../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
-        pagina = (c.cabecera(titulo, descripcion, url, imagen, jsonld) + c.ESTILOS + css_partidos(PRIN) + c.CSS_SITIO
+        pagina = (c.cabecera(titulo, descripcion, url, imagen, jsonld, desc_seo=desc_seo) + c.ESTILOS + css_partidos(PRIN) + c.CSS_SITIO
                   + '\n</head>\n<body>\n' + c.nav('../../', 'Encuestas') + '\n' + cuerpo + '\n</body>\n</html>\n')
         (salida / ruta).mkdir(exist_ok=True)
         (salida / ruta / 'index.html').write_text(pagina, encoding='utf-8')

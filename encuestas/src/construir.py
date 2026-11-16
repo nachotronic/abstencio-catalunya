@@ -1184,6 +1184,10 @@ def main():
     faq_html = '<div class="faq">' + ''.join(f'<details><summary><h3>{html.escape(q)}</h3></summary><p>{html.escape(a)}</p></details>' for q, a in faq) + '</div>'
     actual = fecha_larga(hoy.isoformat())
     descripcion = re.sub(r'\s+', ' ', entradilla)[:300]
+    # meta description (Google): las cifras de la mediana y qué se encuentra al entrar, en 160 caracteres (Nacho, 16-11-2026)
+    top = sorted(((k, n) for k, n, *_ in PRINCIPALES if k in med), key=lambda x: -med[x[0]])[:3]
+    desc_seo = (', '.join(f'{n} {pc(med[k])}' for k, n in top[:-1]) + f' y {top[-1][1]} {pc(med[top[-1][0]])}'
+                + ' en la mediana de las últimas encuestas del 29N. Compara todas, con fuente y fecha, y mira los escaños de tu provincia.') if len(top) == 3 else None
     # h1 con las búsquedas principales («encuestas 29N», «encuestas elecciones generales 2026») sin perder la cifra del titular
     h1 = 'Encuestas del 29N, elecciones generales 2026: ' + (titular[0].lower() + titular[1:] if titular.startswith('El ') else titular).replace(' encuestas;', ';', 1)
     imagen = f'{BASE}/img/compartir/encuestas.jpg?v={hoy.isoformat()}'   # la tarjeta cambia: versión para que las redes no usen la vieja
@@ -1219,7 +1223,7 @@ def main():
                                                    'contentUrl': f'{BASE}/previsiones/datos/encuestas/wikipedia_generales_espana.csv'}]},
               {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': URL + '#preguntas', 'inLanguage': 'es',
                'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
-    titulo = 'Encuestas 29N: últimas encuestas elecciones generales 2026, sondeos y promedio'   # «encuestas 29n» delante, como los que nos superan (10-11-2026)
+    titulo = 'Encuestas 29N: últimas encuestas de las elecciones generales 2026'   # 16-11-2026: corto, para que Google no lo corte   # «encuestas 29n» delante, como los que nos superan (10-11-2026)
     main_html = f"""<main>
 <p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
@@ -1271,7 +1275,7 @@ def main():
 <h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}{'<li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños con tus porcentajes</b></a></li>' if hay_calculadora else ''}{'<li><a href="simulador-pactos/"><span class="kicker">Simulador</span><b>¿Quién suma 176? Haz tú los pactos del 29N</b></a></li>' if hay_pactos else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
-    pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld)
+    pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld, desc_seo=desc_seo)
               .replace('<meta property="og:title" content="' + html.escape(titulo) + '">', '<meta property="og:title" content="' + html.escape(titular) + '">')
               + ESTILOS + encuestadoras.css_partidos(PRINCIPALES) + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
               + SCRIPT.replace('__DATOS__', json.dumps(datos, ensure_ascii=False, separators=(',', ':'))) + '\n</body>\n</html>\n')
