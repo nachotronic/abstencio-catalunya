@@ -255,7 +255,7 @@ def media():
 
 g_media = figura('La media de las encuestas apenas se mueve',
                  'Media de encuestas del modelo de Mapa Electoral (%), al empezar la campaña (00.38 del 13 de noviembre, barra de arriba) y este lunes (08.13 del 16, barra de abajo)',
-                 media(), f'Fuente: <a href="{BASE}encuestas/">modelo de Mapa Electoral</a>, publicaciones del 13 y el 16 de noviembre de 2026.',
+                 media(), f'Fuente: <a href="{BASE}encuestas/">modelo de Mapa Electoral</a>, publicaciones del 13 y el 16 de noviembre de 2026. En la tabla, el cambio se calcula con las cifras sin redondear.',
                  leyenda=[(nom, col) for _, nom, col in PARTIDOS],
                  tabla=(['Partido', '13 nov', '16 nov', 'Cambio'], [[nom, p(MED0[k]), p(MED1[k]), sg(round(MED1[k] - MED0[k], 1))] for k, nom, _ in PARTIDOS]))
 
