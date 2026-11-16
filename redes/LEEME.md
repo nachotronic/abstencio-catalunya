@@ -39,6 +39,15 @@ cada pasada sale en la pestaña Actions.
 
 `id` no se puede repetir. Sin `redes` sale en todas. Instagram solo publica entradas con `imagen`.
 
+**Vídeos.** Una entrada con `"video": "x-<slug>.mp4"` sube ese vídeo de la release `videos` (lo graba solo
+`.github/workflows/videos.yml`) y sale **solo en X**. Los vídeos nunca se publican por su cuenta: se apuntan aquí cuando
+Nacho da el OK a cada uno (decisión del 16-11-2026). Ejemplo:
+
+```json
+{"id": "video-cis-preelectoral-29n", "cuando": "2026-11-16 13:30", "video": "x-cis-preelectoral-29n.mp4",
+ "texto": "Titular de la pieza, tal cual", "enlace": "https://mapaelectoral.es/actualidad/cis-preelectoral-29n/"}
+```
+
 ## Claves que hay que sacar (una vez)
 
 Todas van en **Settings → Secrets and variables → Actions → New repository secret**. Nadie más las ve.

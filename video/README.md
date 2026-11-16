@@ -1,4 +1,22 @@
-# Vídeos para YouTube Shorts
+# Vídeos para YouTube Shorts y X
+
+## Vídeos automáticos (desde el 16-11-2026)
+
+La Action **Vídeos para X** (`.github/workflows/videos.yml`) graba sola, sin guion:
+
+- **Cada pieza nueva de Actualidad** (al cambiar `actualidad/feed.xml` en main): `node video/auto.js /actualidad/<slug>/ x-<slug>.mp4`.
+  La pieza baja en el móvil, se para 2,4 s en el titular y 2,6 s en cada mapa o gráfico (hasta cuatro) y acaba con el
+  cierre de la plantilla `guia` y la ruta. Sale a 1066x1896 (el máximo vertical de X), 30 fps, sin sonido y por debajo
+  de 9,5 MB. Sin voz no hacen falta subtítulos: todo el texto está en la imagen. `<meta name="redes" content="no">` la salta.
+- **«Encuestas, hoy»** tras cada pasada correcta de la Action «Encuestas»: `prep_encuestas.py` + `render.js encuestas-hoy`
+  → `x-encuestas-AAAA-MM-DD.mp4` (se rehace con cada actualización del día). No graba nada del 24 al 28 de noviembre (veda, LOREG 69.7).
+
+Los MP4 se suben a la release [`videos`](https://github.com/nachotronic/abstencio-catalunya/releases/tag/videos), no a la web.
+También se puede lanzar a mano (Actions → Vídeos para X → Run workflow, con una ruta o `encuestas`).
+**No se publica nada**: un vídeo sale en X solo cuando Nacho lo aprueba y se apunta en `redes/cola.json` con `"video"` (ver `redes/LEEME.md`).
+Después, como siempre, se añade al carrusel de la portada con `src/videos.py`.
+
+## Shorts con guion
 
 Plantilla HTML en canvas (`plantilla/short.html`) que se graba fotograma a fotograma con Chromium y se codifica con ffmpeg.
 Cada Short es un guion en `shorts/<nombre>.json`: gancho, métrica del mapa, región y etiquetas, foco, bloque final
