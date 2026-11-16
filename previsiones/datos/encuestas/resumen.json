@@ -1,19 +1,19 @@
 {
- "descargado": "2026-11-16T07:13Z",
+ "descargado": "2026-11-16T15:44Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1094,
- "encuestas_infraestatales": 141,
+ "encuestas_espana": 1100,
+ "encuestas_infraestatales": 143,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-16",
-  "encuestadora": "40dB.",
-  "cliente": ""
+  "encuestadora": "Target Point",
+  "cliente": "El Debate"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 22,
+  "UPN-PP": 24,
+  "COMPROMÍS-EUPV-PODEM-ERPV": 5,
+  "NC-BC, PODEMOS, IU, SUMAR": 5,
   "D21": 4,
-  "COMPROMÍS-EUPV-PODEM-ERPV": 3,
-  "NC-BC, PODEMOS, IU, SUMAR": 3,
   "ARAMÉS-EU-MS": 3,
   "Autonómicas - CUP": 2,
   "JxSí": 1,
@@ -25,8 +25,8 @@
   "SY": 1
  },
  "wikipedia": {
-  "encuestas": 637,
+  "encuestas": 640,
   "ultima_fin_campo": "2026-11-15",
-  "faltan_en_electografica_120_dias": 24
+  "faltan_en_electografica_120_dias": 22
  }
 }
