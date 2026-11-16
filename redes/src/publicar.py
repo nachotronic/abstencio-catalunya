@@ -28,6 +28,7 @@ VENTANA_PIEZAS = datetime.timedelta(hours=36)
 VENTANA_COLA = datetime.timedelta(hours=6)
 REDES = ('x', 'bluesky', 'mastodon', 'telegram', 'threads', 'instagram')
 URL_X = 23  # X cuenta cualquier enlace como 23 caracteres
+VIDEOS = 'https://github.com/nachotronic/abstencio-catalunya/releases/download/videos/'
 
 
 def ahora():
@@ -138,7 +139,9 @@ def publicar_x(texto, p):
     auth = OAuth1(os.environ['X_API_KEY'], os.environ['X_API_SECRET'],
                   os.environ['X_ACCESS_TOKEN'], os.environ['X_ACCESS_SECRET'])
     cuerpo = {'text': texto}
-    if p.get('imagen_bytes') and 'texto' in p and not p.get('enlace'):
+    if p.get('video_bytes'):
+        cuerpo['media'] = {'media_ids': [subir_video_x(p['video_bytes'], auth)]}
+    elif p.get('imagen_bytes') and 'texto' in p and not p.get('enlace'):
         # solo subimos imagen en entradas de la cola sin enlace; con enlace X ya pinta la tarjeta del og:image
         m = requests.post('https://upload.twitter.com/1.1/media/upload.json', auth=auth, timeout=60,
                           files={'media': p['imagen_bytes']})
@@ -148,6 +151,35 @@ def publicar_x(texto, p):
     if r.status_code >= 300:
         raise RuntimeError(f'X {r.status_code}: {r.text[:300]}')
     return 'https://x.com/_mapaelectoral/status/' + r.json()['data']['id']
+
+
+def subir_video_x(datos, auth):
+    """Subida por trozos de la API v2 de X (initialize → append → finalize → esperar al procesado). Devuelve el media_id."""
+    base = 'https://api.x.com/2/media/upload'
+    r = requests.post(base + '/initialize', auth=auth, timeout=60,
+                      json={'media_type': 'video/mp4', 'total_bytes': len(datos), 'media_category': 'tweet_video'})
+    if r.status_code >= 300:
+        raise RuntimeError(f'X vídeo (initialize) {r.status_code}: {r.text[:300]}')
+    mid = r.json()['data']['id']
+    trozo = 4 * 1024 * 1024
+    for i in range(0, len(datos), trozo):
+        a = requests.post(f'{base}/{mid}/append', auth=auth, timeout=120,
+                          data={'segment_index': i // trozo}, files={'media': ('video.mp4', datos[i:i + trozo], 'video/mp4')})
+        if a.status_code >= 300:
+            raise RuntimeError(f'X vídeo (append {i // trozo}) {a.status_code}: {a.text[:300]}')
+    f = requests.post(f'{base}/{mid}/finalize', auth=auth, timeout=60)
+    if f.status_code >= 300:
+        raise RuntimeError(f'X vídeo (finalize) {f.status_code}: {f.text[:300]}')
+    info = f.json().get('data', {}).get('processing_info')
+    for _ in range(40):  # hasta unos 3 minutos de procesado
+        if not info or info.get('state') == 'succeeded':
+            return mid
+        if info.get('state') == 'failed':
+            raise RuntimeError(f'X no pudo procesar el vídeo: {info}')
+        time.sleep(info.get('check_after_secs', 5))
+        s = requests.get(base, auth=auth, timeout=30, params={'command': 'STATUS', 'media_id': mid})
+        info = s.json().get('data', {}).get('processing_info') if s.ok else info
+    raise RuntimeError('X tarda demasiado en procesar el vídeo; se reintentará en la siguiente pasada')
 
 
 def publicar_bluesky(texto, p):
@@ -362,6 +394,17 @@ def main():
                 continue
             p['imagen_bytes'], p['imagen_tipo'] = ri.content, ri.headers['content-type'].split(';')[0]
             p['imagen_url'] = img
+        if 'texto' in p and p.get('video'):
+            # vídeo grabado por videos.yml (release «videos»); solo se sube a X, y solo desde la cola, con el OK de Nacho
+            faltan = [r for r in faltan if r == 'x']
+            if not faltan:
+                continue
+            vurl = p['video'] if p['video'].startswith('http') else VIDEOS + p['video']
+            rv = get(vurl)
+            if rv.status_code != 200:
+                di(f'Cola {p["id"]}: el vídeo {vurl} da {rv.status_code}; no sale.')
+                continue
+            p['video_bytes'] = rv.content
         tx = textos(p)
         for red in faltan:
             if ensayo:
