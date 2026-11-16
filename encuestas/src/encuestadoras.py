@@ -151,11 +151,13 @@ def genera(encs, salida, c):
         cifras = lambda e, ps: ', '.join(f'{nom(p)} {pc(e["voto"][p])}' + (f' ({e["esc"][p]} escaño{"" if e["esc"][p] == "1" else "s"})' if p in e['esc'] else '') for p in ps if p in e['voto'])
         h1 = f'Última encuesta {del_(nombre)}: ' + ', '.join(f'{nom(p)} {pc(u["voto"][p])}' for p in orden[:3])
         # 16-11-2026 (Nacho): en Google, título de ~60 caracteres con la fecha y las cifras, que es lo que invita a entrar
-        prefijo = {'cis': 'Encuesta del CIS', 'emanalytics': 'ElectoPanel'}.get(k, f'Encuesta {nombre}')
+        # y sin perder las búsquedas de siempre: «encuesta cis noviembre», «electopanel hoy»
+        mes = f'{MESES_L[date.fromisoformat(pub).month - 1]} {date.fromisoformat(pub).year}'
+        prefijo = {'emanalytics': f'ElectoPanel de Electomanía hoy ({c.dia(pub)})'}.get(k, f'Encuesta {nombre} {mes}')
         tres = lambda n: ', '.join(f'{nom(p)} {pc(u["voto"][p])}' for p in orden[:n - 1]) + f' y {nom(orden[n - 1])} {pc(u["voto"][orden[n - 1]])}'
-        titulo = f'{prefijo} ({c.dia(pub)}): {tres(3)}'
-        if len(titulo) > 65:
-            titulo = f'{prefijo} ({c.dia(pub)}): {tres(2)}'
+        titulo = f'{prefijo}: {tres(3)}'
+        if len(titulo) > 68:
+            titulo = f'{prefijo}: {tres(2)}'
         muestra = f'{int(u["muestra"]):,}'.replace(',', '.') if str(u['muestra']).isdigit() else ''
         p1 = (f'{el(nombre, True)} publicó su última encuesta de las elecciones generales el {c.fecha_larga(pub)}'
               + (f', para {medio}' if medio else '') + (f', con {muestra} entrevistas' if muestra else '') + '. '

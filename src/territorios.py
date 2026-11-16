@@ -571,7 +571,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     r = serie[T.ULTIMA]
     g = T.ganador(r)
     nombre_t = con_alias(nombre, ALIAS_PROV.get(provs[0]) if tipo_txt == 'Provincia' else ALIAS_CCAA.get(ccaa))
-    titulo = f'Elecciones 29N en {nombre_t}: mapa de cómo votó cada municipio'   # 16-11-2026: corto y con lo que hay dentro
+    titulo = f'Elecciones 29N 2026 en {nombre_t}: censo y cómo votó cada municipio'   # 16-11-2026: más corto, sin perder «2026» ni «censo»
     ambito = 'la ciudad' if provs[0] in ('51', '52') else ('la comunidad' if tipo_txt == 'Comunidad' else 'la provincia')
     cods = CENSO.index[CENSO.index.str[:2].isin(provs)]   # del INE, con los municipios nuevos que aún no tienen resultados
     b_censo, q_censo = bloque_censo(nombre, cods, ambito,
@@ -792,11 +792,9 @@ def pagina_ciudad(cod):
     # El Español o RTVE sus fichas). El título lo dice desde ya para que Google asocie la URL a esa búsqueda antes del 29N;
     # la provincia entre paréntesis separa los homónimos (Villanueva, Castrillo...) salvo cuando coincide con el nombre.
     en_x = en_x_titulo(nombre, cod, p)
-    # 16-11-2026 (Nacho, «tiene que haber algo que invite a pinchar»): el municipio delante, y en la descripción lo que se
-    # encuentra al entrar. «Resultados elecciones generales 2026 en X» sigue en el H1; la noche del 29N el título vuelve a «Resultados…».
-    titulo = f'Elecciones 29N en {en_x}: resultados de 2023 y dónde votar'
-    if len(titulo) > 70:
-        titulo = f'Elecciones 29N en {en_x}: resultados de 2023'
+    # 16-11-2026 (Nacho, «tiene que haber algo que invite a pinchar»): en la descripción, lo que se encuentra al entrar.
+    # Nacho, 16-11-2026 («¿No joderemos el SEO?»): el título conserva la búsqueda principal; el gancho va en la descripción
+    titulo = f'Resultados elecciones generales 2026 en {en_x}: 29N y 2023'
     g23 = gano_txt(r, ccaa).rstrip(',')
     desc = (f'Consulta dónde votar el 29N en {nombre} y cómo votó ' + ('cada barrio' if b_sec else 'en cada elección desde 1977') + '. '
             + f'En 2023, {g23} y votó el {pct(r["part"])} del censo.')
@@ -1759,7 +1757,7 @@ def tema_mesa():
     """Explicativo «Mesa electoral del 29N»: sorteo, notificación, excusas, horario, dieta y permisos, con la LOREG y el número de mesas por municipio."""
     ruta = 'elecciones/mesa-electoral-29n/'
     # «alegaciones»: la búsqueda que más sale en Bing (10-11-2026). 16-11-2026: el sorteo ya pasó; ahora se busca «me ha tocado, ¿qué hago?»
-    titulo = 'Me ha tocado mesa el 29N: qué hacer, alegaciones, excusas y dieta'
+    titulo = 'Mesa electoral 29N: me ha tocado, ¿qué hago? Alegaciones y dieta'
     desc = ('¿Te ha tocado mesa el 29N? Mira qué excusas valen en las alegaciones, qué pasa si no vas, a qué hora ir, '
             'la dieta de 75 euros y los permisos. Con la LOREG.')
     total23 = int(MESAS.mesas.sum())

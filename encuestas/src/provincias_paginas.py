@@ -49,7 +49,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         cis_dek = ('' if not ent else
                    f' {cis_det}, con {"solo " if ent < 300 else ""}{cis_provincias.miles(ent)} entrevistas en {nombre}'
                    + (', una muestra muy pequeña.' if ent < 300 else '.'))
-        titulo_seo = f'Encuesta {nombre} 29N: ¿cuántos escaños saca cada partido?'   # 16-11-2026: ~55 caracteres, con la búsqueda delante
+        titulo_seo = f'Encuesta {nombre} elecciones generales 2026: escaños de cada partido'   # 16-11-2026: corto, con la búsqueda delante
         reparto = ', '.join(f'{corto(l["lista"])} {rc[l["lista"]]}' + (f' (entre {l["escanos"][0]} y {l["escanos"][2]})' if l['escanos'][0] != l['escanos'][2] else '')
                             for l in con)
         p1 = (f'{nombre} elige {total} diputado{"s" if total > 1 else ""} el 29 de noviembre. Con la media de las encuestas nacionales repartida por provincia, '
