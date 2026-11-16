@@ -1,42 +1,14 @@
-import json,collections,urllib.request,urllib.parse,os,datetime
-raw=os.environ.get('CF','')
-tok=next((p.strip().strip('"\'') for p in raw.split() if p.strip().strip('"\'').startswith('cfut_')), raw.strip().strip('"\''))
-ACC='dee996483598974c337d0777f5ef047c'; SITE='532b57a6348a4babba29020993949dd7'
-EXC=['/encuestas/calculadora-escanos/','/encuestas/simulador-pactos/']
-def gql(q):
-    r=urllib.request.Request('https://api.cloudflare.com/client/v4/graphql',json.dumps({'query':q}).encode(),{'Authorization':'Bearer '+tok,'Content-Type':'application/json'})
-    d=json.load(urllib.request.urlopen(r))
-    if d.get('errors'): print('ERR',d['errors']); return []
-    return d['data']['viewer']['accounts'][0]['g']
-def grp(dims,limit,t1,t2,extra=''):
-    f='{AND:[{siteTag:"%s"},{datetime_geq:"%s"},{datetime_lt:"%s"},{requestPath_notin:%s}%s]}'%(SITE,t1,t2,json.dumps(EXC),extra)
-    q='{viewer{accounts(filter:{accountTag:"%s"}){g:rumPageloadEventsAdaptiveGroups(limit:%d,filter:%s,orderBy:[sum_visits_DESC]){count sum{visits} dimensions{%s}}}}}'%(ACC,limit,f,' '.join(dims))
-    return gql(q)
-BUSC=['google','bing','yahoo','duckduckgo','ecosia','brave','yandex','baidu','qwant','startpage','mapaelectoral','localhost','127.0.0.1','msn.com','search']
-now=datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-A='2026-11-09T23:00:00Z'
-host=collections.Counter(); hd=collections.Counter(); hp=collections.Counter(); hrp=collections.Counter(); first={}
-for r in grp(['refererHost','refererPath','requestPath','date'],9999,A,now,',{refererHost_neq:""}'):
-    dm=r['dimensions']; h=dm['refererHost']
-    if any(x in h for x in BUSC): continue
-    v=r['sum']['visits']; host[h]+=v; hp[(h,dm['requestPath'])]+=v; hd[(h,dm['date'])]+=v; hrp[(h,dm['refererPath'])]+=v
-    first[h]=min(first.get(h,dm['date']),dm['date'])
-print('VENTANA',A,now)
-for h,v in host.most_common(): print('CFHOST',v,first[h],h)
-for (h,d),v in sorted(hd.items()): print('CFHD',h,d,v)
-for (h,p),v in hp.most_common(120): print('CFHP',v,h,p)
-for (h,p),v in hrp.most_common(120): print('CFRP',v,h,p)
-K=os.environ.get('BK1') or os.environ.get('BK2')
-API='https://ssl.bing.com/webmaster/api.svc/json/'
-def bing(m,**kw):
-    kw.update(siteUrl='https://mapaelectoral.es/',apikey=K)
-    try: return json.loads(urllib.request.urlopen(API+m+'?'+urllib.parse.urlencode(kw),timeout=60).read().decode())
-    except Exception as e: return {'ERR':str(e)}
-for pg in range(3):
-    d=bing('GetLinkCounts',page=pg); print('BLC',pg,json.dumps(d)[:2000])
-    links=(d.get('d') or {}).get('Links') or []
-    if not links: break
-    for l in links:
-        u=l.get('Url'); print('BURL',l.get('Count'),u)
-        e=bing('GetUrlLinks',link=u,page=0)
-        for x in (e.get('d') or {}).get('Details') or []: print('BSRC',u,x.get('Url'),x.get('AnchorText'))
+import json,urllib.request,urllib.parse
+for q in ['mapaelectoral.es','mapaelectoral','"mapa electoral" 29N','"Mapa Electoral" encuestas']:
+    for base in ['https://public.api.bsky.app','https://api.bsky.app']:
+        try:
+            u=base+'/xrpc/app.bsky.feed.searchPosts?'+urllib.parse.urlencode({'q':q,'limit':60,'sort':'latest','since':'2026-11-01T00:00:00Z'})
+            d=json.load(urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0'}),timeout=30))
+            print('Q',q,base,len(d.get('posts',[])))
+            for p in d.get('posts',[]):
+                r=p['record']; t=r.get('text','').replace('\n',' ')
+                emb=json.dumps(p.get('embed',{}))
+                hit='LINK' if 'mapaelectoral' in emb or 'mapaelectoral' in json.dumps(r) else ''
+                print('BS',r.get('createdAt','')[:16],p['author']['handle'],'L%s R%s'%(p.get('likeCount'),p.get('repostCount')),hit,'|',t[:220],'| https://bsky.app/profile/%s/post/%s'%(p['author']['handle'],p['uri'].split('/')[-1]))
+            break
+        except Exception as e: print('ERR',q,base,e)
