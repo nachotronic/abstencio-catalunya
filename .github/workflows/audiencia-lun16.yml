@@ -1,0 +1,14 @@
+# Temporal: audiencia lunes 16-11. No se fusiona a main.
+name: Audiencia lunes 16-11
+on:
+  push:
+    branches: [claude/project-thread-wlexz4]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-lun16.yml']
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/lun16.py
