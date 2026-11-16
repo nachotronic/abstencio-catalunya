@@ -1,16 +1,18 @@
-# Temporal: audiencia y enlaces. No se fusiona a main.
-name: Audiencia hoy 11-11
+# Temporal: referentes 10-11 a 16-11. No se fusiona a main.
+name: Referentes 16-11
 on:
   push:
-    branches: [claude/project-thread-tgwrze]
+    branches: [claude/project-thread-72ogdg]
     paths: ['.github/audiencia/**','.github/workflows/audiencia-hoy11.yml']
 jobs:
   leer:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github
       - env:
           CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-
-        run: python3 .github/audiencia/hoy11.py
+          BK1: ${{ secrets.BING_WEBMATER_KEY }}
+          BK2: ${{ secrets.BING_WEBMASTER_KEY }}
+        run: python3 .github/audiencia/enlaces16.py
