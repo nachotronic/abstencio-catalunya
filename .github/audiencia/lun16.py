@@ -15,7 +15,7 @@ def grp(dims,limit,t1,t2,extra=''):
 Z=lambda d:d.strftime('%Y-%m-%dT%H:%M:00Z')
 now=datetime.datetime.utcnow().replace(second=0,microsecond=0)
 D0=datetime.datetime(2026,11,15,23); corte=now-D0
-print('RUN',2);print('CORTE',Z(now),corte)
+print('RUN',3);print('CORTE',Z(now),corte)
 def tot(a,b):
     g=grp(['date'],10,Z(a),Z(b)); return sum(r['sum']['visits'] for r in g),sum(r['count'] for r in g)
 for k in [0,1,7,8]:
