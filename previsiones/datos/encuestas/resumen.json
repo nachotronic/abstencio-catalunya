@@ -1,5 +1,5 @@
 {
- "descargado": "2026-11-16T06:40Z",
+ "descargado": "2026-11-16T07:13Z",
  "fuente": "https://www.electografica.com",
  "encuestas_espana": 1094,
  "encuestas_infraestatales": 141,
@@ -25,8 +25,8 @@
   "SY": 1
  },
  "wikipedia": {
-  "encuestas": 634,
+  "encuestas": 637,
   "ultima_fin_campo": "2026-11-15",
-  "faltan_en_electografica_120_dias": 22
+  "faltan_en_electografica_120_dias": 24
  }
 }
