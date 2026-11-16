@@ -44,6 +44,8 @@ export async function actualiza(env) {
     const out = await leeFuente(env);
     if (!out || !out.mun || !Object.keys(out.mun).length) return 'sin datos';
     out.actualizado = out.actualizado || new Date().toISOString();
+    const previo = await env.RESULTADOS.get('ultimo', 'json');
+    out.hitos = hitos(out, (previo && previo.hitos) || []);
     await env.RESULTADOS.put('ultimo', JSON.stringify(out));
     await Promise.all(Object.entries(porProvincia(out)).map(([p, o]) => env.RESULTADOS.put('prov:' + p, JSON.stringify(o))));
     const esc = Object.values(out.mun).filter(a => a[1] > 0).length;
@@ -62,10 +64,46 @@ export function porProvincia(out) {
     const k = out.siglas.map((_, i) => i).filter(i => filas.some(([, a]) => a[5 + i]));
     const mun = {};
     for (const [c, a] of filas) mun[c] = [...a.slice(0, 5), ...k.map(i => a[5 + i])];
-    const { escanos, ...resto } = out;
+    const { escanos, hitos: _h, ...resto } = out;   // los hitos solo van en el total de España
     res[p] = { ...resto, siglas: k.map(i => out.siglas[i]), mun, ...(escanos && escanos[p] ? { escanos: { [p]: escanos[p] } } : {}) };
   }
   return res;
+}
+
+// ---- Hitos del directo: frases que se añaden solas cuando el escrutinio cruza un umbral o cambia el primero.
+// Van en resultados.json («hitos», el más reciente al final) y la página de resultados las enseña como entradas del directo.
+// Solo describen datos (escrutado, porcentajes sobre voto válido sin CERA y escaños si los da Interior); nada de proyecciones.
+const UMBRALES = [5, 10, 25, 50, 75, 90, 95, 99];
+const fmt = x => x.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+// PP y PSOE con sus listas territoriales (PSC, PSE-EE, UPN-PP…), como en la página; el resto, cada candidatura con sus siglas
+const MISMO = [['PP', /^(PP\b|PP-|P\.P\.|UPN-PP)/], ['PSOE', /PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/]];
+const NOMBRE = { 'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria',
+    'U.P.N.': 'UPN', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'CUP-PR': 'CUP', 'SALF': 'Se Acabó la Fiesta' };
+export const grupoSiglas = s => { const a = (s || '').toUpperCase().trim(); for (const [g, r] of MISMO) if (r.test(a)) return g; return NOMBRE[a] || s; };
+export function resumenEspana(out) {
+  let ct = 0, ce = 0, bl = 0; const v = out.siglas.map(() => 0);
+  for (const a of Object.values(out.mun)) { ct += a[0]; ce += a[1]; bl += a[3]; for (let k = 0; k < v.length; k++) v[k] += a[5 + k] || 0; }
+  const val = v.reduce((t, x) => t + x, 0) + bl;
+  const g = {}; out.siglas.forEach((s, k) => { if (v[k]) g[grupoSiglas(s)] = (g[grupoSiglas(s)] || 0) + v[k]; });
+  const orden = Object.entries(g).sort((a, b) => b[1] - a[1]);
+  const esc = {};
+  if (out.escanos) for (const d of Object.values(out.escanos)) for (const [s, n] of Object.entries(d)) esc[grupoSiglas(s)] = (esc[grupoSiglas(s)] || 0) + n;
+  return { esc: ct ? ce / ct * 100 : 0, val, orden, escanos: Object.entries(esc).filter(x => x[1]).sort((a, b) => b[1] - a[1]) };
+}
+export function hitos(out, previos) {
+  const H = previos.slice(), R = resumenEspana(out);
+  if (!R.val || !R.orden.length) return H;
+  const hora = out.actualizado, ult = H[H.length - 1];
+  const top = R.orden.slice(0, 3).map(([s, n]) => `${s}, ${fmt(n / R.val * 100)} %`).join('; ');
+  const asientos = R.escanos.length ? ` Escaños provisionales de Interior: ${R.escanos.slice(0, 5).map(([s, n]) => `${s} ${n}`).join(', ')}.` : '';
+  const nuevo = (tipo, texto) => H.push({ t: hora, tipo, esc: Math.round(R.esc * 10) / 10, primero: R.orden[0][0], texto });
+  if (!ult) nuevo('inicio', `Primeros datos del escrutinio: escrutado el ${fmt(R.esc)} % del censo. ${top}.${asientos}`);
+  else {
+    if (ult.primero !== R.orden[0][0]) nuevo('lider', `Con el ${fmt(R.esc)} % escrutado, ${R.orden[0][0]} pasa a ser la candidatura más votada. ${top}.${asientos}`);
+    const u = UMBRALES.filter(x => (ult.esc || 0) < x && R.esc >= x).pop();
+    if (u) nuevo('umbral', `Escrutado el ${fmt(R.esc)} % del censo. ${top}.${asientos}`);
+  }
+  return H.slice(-60);
 }
 
 async function leeFuente(env) {

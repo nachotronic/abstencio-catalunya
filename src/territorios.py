@@ -2785,7 +2785,10 @@ def tema_resultados(resumen):
              f'y el PSOE el segundo, con el {pc(pt[1]["pct"])} y {num(pt[1]["escanos"])}. La mayoría absoluta es de 176 escaños.</p>')
     # Escrutinio de toda España: lo pinta generales-2026/directo-resultados.js con el JSON del directo (sin URL en meta.json, solo el aviso)
     h.append(f'<style>{DIRECTO_CSS}.d-tabla{{width:100%;border-collapse:collapse;font:14px var(--sans);margin:.8em 0}}.d-tabla th,.d-tabla td{{text-align:right;padding:.25em .4em;border-bottom:1px solid var(--line,#ddd)}}'
-             '.d-tabla th:first-child,.d-tabla td:first-child{text-align:left}.d-pt{display:inline-block;width:.7em;height:.7em;border-radius:2px;margin-right:.4em;vertical-align:baseline}</style>'
+             '.d-tabla th:first-child,.d-tabla td:first-child{text-align:left}.d-pt{display:inline-block;width:.7em;height:.7em;border-radius:2px;margin-right:.4em;vertical-align:baseline}'
+             '.d-vivo{font:700 13px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:#c8102e;margin:.2em 0}.d-punto{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#c8102e;margin-right:.45em;animation:dlat 1.6s infinite}'
+             '@keyframes dlat{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.d-punto{animation:none}}'
+             '.d-h3{font:700 15px var(--sans);margin:1.2em 0 .4em}.d-hitos{list-style:none;padding:0;margin:0;font:14px/1.45 var(--sans)}.d-hitos li{border-left:2px solid var(--line,#ddd);padding:.1em 0 .6em .8em}.d-hitos time{font-weight:700;margin-right:.3em}</style>'
              f'<section class="directo29n" id="directo-esp" data-raiz="{raiz or "./"}" aria-labelledby="escrutinio-29n">'
              '<h2 id="escrutinio-29n">Escrutinio del 29N en España</h2>'
              '<div class="d-aviso">' + p_('Dato', 'El domingo 29 de noviembre el Ministerio del Interior publica dos avances de participación, a las 14.00 y a las 18.00. '

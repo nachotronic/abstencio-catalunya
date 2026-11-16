@@ -715,6 +715,8 @@
       if (g >= 0 && v.some((x, k) => k !== m && x === v[m])) g = EMPATE;   // empate a votos
       col.gana[i] = g;
     }
+    // sin ninguna mesa escrutada (el Worker ya encendido antes del cierre) el mapa sigue en 2023: no se cambia a un 29N vacío
+    if (!nat.ce) return;
     Object.entries(col).forEach(([k, v]) => MUN[y + '_' + k] = v);
     delete partyMax[y + '_' + st.party]; Object.keys(partyMax).forEach(k => k.startsWith(y) && delete partyMax[k]);
     // escaños: D'Hondt por provincia con barrera del 3% del voto válido de la circunscripción
@@ -723,6 +725,11 @@
       const val = P.v.reduce((s, x) => s + x, 0) + P.bl;
       const s = dhondt(P.v.map(x => x >= .03 * val ? x : 0), E[p] || 0);
       s.forEach((x, k) => seats[fk[k]] += x);
+    }
+    // si Interior da los escaños provisionales (campo «escanos» del Worker), mandan esos: el cálculo de arriba no lleva el voto CERA
+    if (F.escanos && Object.keys(F.escanos).length) {
+      seats.fill(0);
+      for (const d of Object.values(F.escanos)) for (const [s, x] of Object.entries(d)) { const k = FCOD.indexOf(famDe(s)); if (k >= 0) seats[k] += x; }
     }
     if (!ELEC.some(e => e.cod === y)) {
       ELEC.push({ cod: y, nombre: META.directo.nombre || y, tipo: 'generales', secciones: false });
