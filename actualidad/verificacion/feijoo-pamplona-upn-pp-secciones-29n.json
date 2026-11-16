@@ -12,7 +12,7 @@
    "calculo": "sum(D['G23'].values())"
   },
   {
-   "texto": "con UPN y PP sumados, habría ganado 49",
+   "texto": "con UPN y PP sumados, se habría quedado en 49",
    "cifra": "49",
    "calculo": "D['GS']['PSOE']"
   },

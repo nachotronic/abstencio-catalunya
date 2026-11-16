@@ -208,7 +208,7 @@ DATOS = {'G19': G19, 'G23': G23, 'GS': GS, 'SEP': SEP, 'DE_PSOE': DE_PSOE, 'DE_B
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Feijóo en Pamplona',
-      f'Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó {G23["PSOE"]} de las 151 secciones en 2023; con UPN y PP sumados, habría ganado {GS["PSOE"]}',
+      f'Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó {G23["PSOE"]} de las 151 secciones en 2023; con UPN y PP sumados, se habría quedado en {GS["PSOE"]}',
       f'Por separado, UPN y PP fueron los más votados en {SEP} secciones de la ciudad; juntos, habrían quedado primeros en {GS["SUM"]}. '
       f'Su voto sube con la renta: del {p(Q[0]["sum"])} % en las secciones con menos renta al {p(Q[4]["sum"])} % en las que más tienen.',
       '16 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

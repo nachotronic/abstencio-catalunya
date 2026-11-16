@@ -4837,7 +4837,7 @@ PIEZAS += [
     ),
     dict(
         slug='feijoo-pamplona-upn-pp-secciones-29n', fecha='2026-11-16',
-        titulo='Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, habría ganado 49', serie='29n', figura=0,
+        titulo='Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, se habría quedado en 49', serie='29n', figura=0,
         descripcion='Por separado, UPN y PP fueron los más votados en 50 secciones de Pamplona en 2023; juntos, habrían quedado primeros en 80. Su voto sube con la renta: del 20,5 % en la quinta parte de secciones con menos renta al 57,1 % en la de más.',
         compara='Las generales de noviembre de 2019, cuando UPN, PP y Ciudadanos fueron juntos en Navarra Suma, y de julio de 2023, cuando UPN y PP fueron por separado, en las secciones censales de Pamplona; el voto de 2023 por renta de cada sección, y el reparto del modelo de encuestas en Navarra para el 29N.',
         limites='Sumar los votos de dos listas es una cuenta, no un resultado: no todos los votantes de UPN habrían votado una lista con el PP, ni al revés. Las secciones de 2019 y 2023 no son las mismas (137 y 151). La relación con la renta es entre secciones, no entre personas. Sin voto exterior. Las encuestas tienen un margen amplio a 13 días de la votación.',
