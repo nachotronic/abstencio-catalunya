@@ -1,0 +1,30 @@
+# TEMPORAL (no fusionar): posición por horas de /encuestas/ y último rastreo de Google.
+name: Diagnóstico temporal
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: src}
+      - run: pip install -q google-auth requests
+      - env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
+          import sys; sys.path.insert(0,'src'); import seo_comun as sc
+          from datetime import date, timedelta
+          s=sc.sesion(); hoy=date.today(); U="https://mapaelectoral.es/encuestas/"
+          f=[{"dimension":"page","operator":"equals","expression":U},{"dimension":"query","operator":"equals","expression":"encuestas elecciones generales 2026"}]
+          r=sc.consulta(s,(hoy-timedelta(days=3)).isoformat(),hoy.isoformat(),["hour"],500,f,estado="hourly_all")
+          print("| Hora (PT) | Impr. | Clics | Pos. |\n|---|---:|---:|---:|")
+          for x in r: print(f"| {x['keys'][0]} | {x['impressions']:.0f} | {x['clicks']:.0f} | {x['position']:.1f} |")
+          r=s.post("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",json={"inspectionUrl":U,"siteUrl":sc.SITIO,"languageCode":"es"})
+          print("\nInspección:", r.status_code)
+          j=r.json().get("inspectionResult",{}).get("indexStatusResult",{})
+          for k in ["verdict","coverageState","lastCrawlTime","pageFetchState","googleCanonical","userCanonical","crawledAs","robotsTxtState","indexingState"]: print(f"- {k}: {j.get(k)}")
+          PY
