@@ -1,8 +1,8 @@
 # Temporal, solo lectura: audiencia 17-11 a media jornada. No se fusiona a main.
-name: Audiencia martes 17-11 d
+name: Audiencia martes 17-11 noche
 on:
   push:
-    branches: [claude/project-thread-tzey6d]
+    branches: [claude/project-thread-26va3r]
     paths: ['.github/audiencia/**','.github/workflows/audiencia-mar17d.yml']
 permissions:
   contents: read
@@ -14,7 +14,3 @@ jobs:
       - env:
           CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python3 .github/audiencia/mar17d.py
-      - run: pip install -q google-auth requests
-      - env:
-          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
-        run: python3 .github/audiencia/gsc17d.py

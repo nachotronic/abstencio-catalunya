@@ -35,3 +35,4 @@ for k in [0,1,7]:
         for r in grp(['datetimeHour'],50,Z(a),Z(a+corte),ex):
             t=datetime.datetime.strptime(r['dimensions']['datetimeHour'][:13],'%Y-%m-%dT%H')+datetime.timedelta(hours=1); h[t.hour]+=r['sum']['visits']
         print('ENC_HORA_MADRID',nm,(a+datetime.timedelta(hours=1)).date(),sorted(h.items()))
+# noche 21:41
