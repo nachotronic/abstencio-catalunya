@@ -1,0 +1,955 @@
+[{"Nombre":"Total, TOTAL", "Data":[{"Valor":2604386.0, "Secreto":false}
+]
+}
+,{"Nombre":"Total, Hasta el 01/06", "Data":[{"Valor":167883.0, "Secreto":false}
+]
+}
+,{"Nombre":"Total, De 02/06 a 15/06", "Data":[{"Valor":886354.0, "Secreto":false}
+]
+}
+,{"Nombre":"Total, De 16/06 a 29/06", "Data":[{"Valor":573084.0, "Secreto":false}
+]
+}
+,{"Nombre":"Total, De 30/06 a 13/07", "Data":[{"Valor":854275.0, "Secreto":false}
+]
+}
+,{"Nombre":"Total, Posterior a 13/07/2023", "Data":[{"Valor":122790.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, TOTAL", "Data":[{"Valor":21872.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, Hasta el 01/06", "Data":[{"Valor":924.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, De 02/06 a 15/06", "Data":[{"Valor":7117.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, De 16/06 a 29/06", "Data":[{"Valor":4916.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, De 30/06 a 13/07", "Data":[{"Valor":7729.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, Posterior a 13/07/2023", "Data":[{"Valor":1186.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante/Alacant, TOTAL", "Data":[{"Valor":48882.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante/Alacant, Hasta el 01/06", "Data":[{"Valor":3990.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante/Alacant, De 02/06 a 15/06", "Data":[{"Valor":15863.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante/Alacant, De 16/06 a 29/06", "Data":[{"Valor":9766.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante/Alacant, De 30/06 a 13/07", "Data":[{"Valor":16707.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante/Alacant, Posterior a 13/07/2023", "Data":[{"Valor":2556.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, TOTAL", "Data":[{"Valor":23758.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, Hasta el 01/06", "Data":[{"Valor":2123.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, De 02/06 a 15/06", "Data":[{"Valor":6994.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, De 16/06 a 29/06", "Data":[{"Valor":4832.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, De 30/06 a 13/07", "Data":[{"Valor":8651.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, Posterior a 13/07/2023", "Data":[{"Valor":1158.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, TOTAL", "Data":[{"Valor":30792.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, Hasta el 01/06", "Data":[{"Valor":1533.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, De 02/06 a 15/06", "Data":[{"Valor":10797.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, De 16/06 a 29/06", "Data":[{"Valor":7223.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, De 30/06 a 13/07", "Data":[{"Valor":9368.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, Posterior a 13/07/2023", "Data":[{"Valor":1871.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, TOTAL", "Data":[{"Valor":55679.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, Hasta el 01/06", "Data":[{"Valor":4094.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, De 02/06 a 15/06", "Data":[{"Valor":21215.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, De 16/06 a 29/06", "Data":[{"Valor":11799.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, De 30/06 a 13/07", "Data":[{"Valor":15928.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, Posterior a 13/07/2023", "Data":[{"Valor":2643.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, TOTAL", "Data":[{"Valor":8792.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, Hasta el 01/06", "Data":[{"Valor":606.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, De 02/06 a 15/06", "Data":[{"Valor":2815.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, De 16/06 a 29/06", "Data":[{"Valor":2003.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, De 30/06 a 13/07", "Data":[{"Valor":2934.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, Posterior a 13/07/2023", "Data":[{"Valor":434.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, TOTAL", "Data":[{"Valor":37365.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, Hasta el 01/06", "Data":[{"Valor":2669.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, De 02/06 a 15/06", "Data":[{"Valor":11634.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, De 16/06 a 29/06", "Data":[{"Valor":7402.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, De 30/06 a 13/07", "Data":[{"Valor":13590.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, Posterior a 13/07/2023", "Data":[{"Valor":2070.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, TOTAL", "Data":[{"Valor":36545.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, Hasta el 01/06", "Data":[{"Valor":2126.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, De 02/06 a 15/06", "Data":[{"Valor":10586.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, De 16/06 a 29/06", "Data":[{"Valor":7532.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, De 30/06 a 13/07", "Data":[{"Valor":13252.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, Posterior a 13/07/2023", "Data":[{"Valor":3049.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, TOTAL", "Data":[{"Valor":225692.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, Hasta el 01/06", "Data":[{"Valor":9813.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, De 02/06 a 15/06", "Data":[{"Valor":66465.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, De 16/06 a 29/06", "Data":[{"Valor":49600.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, De 30/06 a 13/07", "Data":[{"Valor":87525.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, Posterior a 13/07/2023", "Data":[{"Valor":12289.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, TOTAL", "Data":[{"Valor":126049.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, Hasta el 01/06", "Data":[{"Valor":7067.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, De 02/06 a 15/06", "Data":[{"Valor":48990.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, De 16/06 a 29/06", "Data":[{"Valor":28625.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, De 30/06 a 13/07", "Data":[{"Valor":35126.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, Posterior a 13/07/2023", "Data":[{"Valor":6241.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, TOTAL", "Data":[{"Valor":29164.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, Hasta el 01/06", "Data":[{"Valor":1987.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, De 02/06 a 15/06", "Data":[{"Valor":10180.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, De 16/06 a 29/06", "Data":[{"Valor":5404.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, De 30/06 a 13/07", "Data":[{"Valor":10095.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, Posterior a 13/07/2023", "Data":[{"Valor":1498.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, TOTAL", "Data":[{"Valor":23793.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, Hasta el 01/06", "Data":[{"Valor":1652.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, De 02/06 a 15/06", "Data":[{"Valor":8001.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, De 16/06 a 29/06", "Data":[{"Valor":4840.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, De 30/06 a 13/07", "Data":[{"Valor":8030.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, Posterior a 13/07/2023", "Data":[{"Valor":1270.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, TOTAL", "Data":[{"Valor":34619.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, Hasta el 01/06", "Data":[{"Valor":3104.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, De 02/06 a 15/06", "Data":[{"Valor":10608.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, De 16/06 a 29/06", "Data":[{"Valor":6913.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, De 30/06 a 13/07", "Data":[{"Valor":12047.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, Posterior a 13/07/2023", "Data":[{"Valor":1947.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, TOTAL", "Data":[{"Valor":23096.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, Hasta el 01/06", "Data":[{"Valor":2757.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, De 02/06 a 15/06", "Data":[{"Valor":7645.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, De 16/06 a 29/06", "Data":[{"Valor":4468.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, De 30/06 a 13/07", "Data":[{"Valor":6977.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, Posterior a 13/07/2023", "Data":[{"Valor":1249.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón/Castelló, TOTAL", "Data":[{"Valor":17347.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón/Castelló, Hasta el 01/06", "Data":[{"Valor":1293.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón/Castelló, De 02/06 a 15/06", "Data":[{"Valor":5590.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón/Castelló, De 16/06 a 29/06", "Data":[{"Valor":3280.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón/Castelló, De 30/06 a 13/07", "Data":[{"Valor":6196.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón/Castelló, Posterior a 13/07/2023", "Data":[{"Valor":988.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad real, TOTAL", "Data":[{"Valor":25376.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad real, Hasta el 01/06", "Data":[{"Valor":987.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad real, De 02/06 a 15/06", "Data":[{"Valor":8236.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad real, De 16/06 a 29/06", "Data":[{"Valor":5499.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad real, De 30/06 a 13/07", "Data":[{"Valor":9182.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad real, Posterior a 13/07/2023", "Data":[{"Valor":1472.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, TOTAL", "Data":[{"Valor":44493.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, Hasta el 01/06", "Data":[{"Valor":4063.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, De 02/06 a 15/06", "Data":[{"Valor":14200.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, De 16/06 a 29/06", "Data":[{"Valor":9084.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, De 30/06 a 13/07", "Data":[{"Valor":15368.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, Posterior a 13/07/2023", "Data":[{"Valor":1778.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, TOTAL", "Data":[{"Valor":58302.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, Hasta el 01/06", "Data":[{"Valor":4348.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, De 02/06 a 15/06", "Data":[{"Valor":18054.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, De 16/06 a 29/06", "Data":[{"Valor":11339.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, De 30/06 a 13/07", "Data":[{"Valor":20888.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, Posterior a 13/07/2023", "Data":[{"Valor":3673.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, TOTAL", "Data":[{"Valor":10187.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, Hasta el 01/06", "Data":[{"Valor":217.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, De 02/06 a 15/06", "Data":[{"Valor":3381.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, De 16/06 a 29/06", "Data":[{"Valor":2325.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, De 30/06 a 13/07", "Data":[{"Valor":3652.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, Posterior a 13/07/2023", "Data":[{"Valor":612.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, TOTAL", "Data":[{"Valor":57433.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, Hasta el 01/06", "Data":[{"Valor":2460.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, De 02/06 a 15/06", "Data":[{"Valor":18820.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, De 16/06 a 29/06", "Data":[{"Valor":12836.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, De 30/06 a 13/07", "Data":[{"Valor":19517.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, Posterior a 13/07/2023", "Data":[{"Valor":3800.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, TOTAL", "Data":[{"Valor":16323.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, Hasta el 01/06", "Data":[{"Valor":656.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, De 02/06 a 15/06", "Data":[{"Valor":4105.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, De 16/06 a 29/06", "Data":[{"Valor":3239.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, De 30/06 a 13/07", "Data":[{"Valor":7013.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, Posterior a 13/07/2023", "Data":[{"Valor":1310.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, TOTAL", "Data":[{"Valor":49190.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, Hasta el 01/06", "Data":[{"Valor":3800.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, De 02/06 a 15/06", "Data":[{"Valor":14489.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, De 16/06 a 29/06", "Data":[{"Valor":10602.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, De 30/06 a 13/07", "Data":[{"Valor":18145.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, Posterior a 13/07/2023", "Data":[{"Valor":2154.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, TOTAL", "Data":[{"Valor":15896.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, Hasta el 01/06", "Data":[{"Valor":724.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, De 02/06 a 15/06", "Data":[{"Valor":5621.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, De 16/06 a 29/06", "Data":[{"Valor":3676.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, De 30/06 a 13/07", "Data":[{"Valor":5100.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, Posterior a 13/07/2023", "Data":[{"Valor":775.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, TOTAL", "Data":[{"Valor":22726.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, Hasta el 01/06", "Data":[{"Valor":1788.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, De 02/06 a 15/06", "Data":[{"Valor":6794.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, De 16/06 a 29/06", "Data":[{"Valor":4527.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, De 30/06 a 13/07", "Data":[{"Valor":8421.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, Posterior a 13/07/2023", "Data":[{"Valor":1196.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, TOTAL", "Data":[{"Valor":13209.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, Hasta el 01/06", "Data":[{"Valor":879.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, De 02/06 a 15/06", "Data":[{"Valor":4189.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, De 16/06 a 29/06", "Data":[{"Valor":2674.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, De 30/06 a 13/07", "Data":[{"Valor":4665.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, Posterior a 13/07/2023", "Data":[{"Valor":802.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, TOTAL", "Data":[{"Valor":41820.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, Hasta el 01/06", "Data":[{"Valor":3124.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, De 02/06 a 15/06", "Data":[{"Valor":12624.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, De 16/06 a 29/06", "Data":[{"Valor":8501.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, De 30/06 a 13/07", "Data":[{"Valor":15670.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, Posterior a 13/07/2023", "Data":[{"Valor":1901.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, TOTAL", "Data":[{"Valor":30688.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, Hasta el 01/06", "Data":[{"Valor":2056.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, De 02/06 a 15/06", "Data":[{"Valor":10023.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, De 16/06 a 29/06", "Data":[{"Valor":6571.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, De 30/06 a 13/07", "Data":[{"Valor":10247.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, Posterior a 13/07/2023", "Data":[{"Valor":1791.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, TOTAL", "Data":[{"Valor":13542.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, Hasta el 01/06", "Data":[{"Valor":475.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, De 02/06 a 15/06", "Data":[{"Valor":3148.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, De 16/06 a 29/06", "Data":[{"Valor":2704.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, De 30/06 a 13/07", "Data":[{"Valor":6037.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, Posterior a 13/07/2023", "Data":[{"Valor":1178.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, TOTAL", "Data":[{"Valor":20802.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, Hasta el 01/06", "Data":[{"Valor":1352.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, De 02/06 a 15/06", "Data":[{"Valor":6300.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, De 16/06 a 29/06", "Data":[{"Valor":4168.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, De 30/06 a 13/07", "Data":[{"Valor":7644.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, Posterior a 13/07/2023", "Data":[{"Valor":1338.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, TOTAL", "Data":[{"Valor":625725.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, Hasta el 01/06", "Data":[{"Valor":32995.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, De 02/06 a 15/06", "Data":[{"Valor":243565.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, De 16/06 a 29/06", "Data":[{"Valor":155576.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, De 30/06 a 13/07", "Data":[{"Valor":175353.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, Posterior a 13/07/2023", "Data":[{"Valor":18236.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, TOTAL", "Data":[{"Valor":50617.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, Hasta el 01/06", "Data":[{"Valor":4537.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, De 02/06 a 15/06", "Data":[{"Valor":15687.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, De 16/06 a 29/06", "Data":[{"Valor":10203.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, De 30/06 a 13/07", "Data":[{"Valor":17555.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, Posterior a 13/07/2023", "Data":[{"Valor":2635.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, TOTAL", "Data":[{"Valor":51738.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, Hasta el 01/06", "Data":[{"Valor":3936.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, De 02/06 a 15/06", "Data":[{"Valor":15383.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, De 16/06 a 29/06", "Data":[{"Valor":10982.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, De 30/06 a 13/07", "Data":[{"Valor":18504.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, Posterior a 13/07/2023", "Data":[{"Valor":2933.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, TOTAL", "Data":[{"Valor":47206.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, Hasta el 01/06", "Data":[{"Valor":3090.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, De 02/06 a 15/06", "Data":[{"Valor":17464.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, De 16/06 a 29/06", "Data":[{"Valor":10888.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, De 30/06 a 13/07", "Data":[{"Valor":13600.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, Posterior a 13/07/2023", "Data":[{"Valor":2164.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, TOTAL", "Data":[{"Valor":20924.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, Hasta el 01/06", "Data":[{"Valor":1247.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, De 02/06 a 15/06", "Data":[{"Valor":6312.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, De 16/06 a 29/06", "Data":[{"Valor":4395.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, De 30/06 a 13/07", "Data":[{"Valor":7763.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, Posterior a 13/07/2023", "Data":[{"Valor":1207.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, TOTAL", "Data":[{"Valor":12397.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, Hasta el 01/06", "Data":[{"Valor":810.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, De 02/06 a 15/06", "Data":[{"Valor":4176.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, De 16/06 a 29/06", "Data":[{"Valor":2686.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, De 30/06 a 13/07", "Data":[{"Valor":4069.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, Posterior a 13/07/2023", "Data":[{"Valor":656.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, TOTAL", "Data":[{"Valor":46289.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, Hasta el 01/06", "Data":[{"Valor":3440.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, De 02/06 a 15/06", "Data":[{"Valor":15317.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, De 16/06 a 29/06", "Data":[{"Valor":9459.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, De 30/06 a 13/07", "Data":[{"Valor":15065.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, Posterior a 13/07/2023", "Data":[{"Valor":3008.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, TOTAL", "Data":[{"Valor":43131.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, Hasta el 01/06", "Data":[{"Valor":2836.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, De 02/06 a 15/06", "Data":[{"Valor":13149.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, De 16/06 a 29/06", "Data":[{"Valor":8360.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, De 30/06 a 13/07", "Data":[{"Valor":15626.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, Posterior a 13/07/2023", "Data":[{"Valor":3160.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, TOTAL", "Data":[{"Valor":20831.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, Hasta el 01/06", "Data":[{"Valor":1866.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, De 02/06 a 15/06", "Data":[{"Valor":6707.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, De 16/06 a 29/06", "Data":[{"Valor":4764.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, De 30/06 a 13/07", "Data":[{"Valor":6601.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, Posterior a 13/07/2023", "Data":[{"Valor":893.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, TOTAL", "Data":[{"Valor":24296.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, Hasta el 01/06", "Data":[{"Valor":1664.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, De 02/06 a 15/06", "Data":[{"Valor":7634.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, De 16/06 a 29/06", "Data":[{"Valor":5431.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, De 30/06 a 13/07", "Data":[{"Valor":8421.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, Posterior a 13/07/2023", "Data":[{"Valor":1146.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, TOTAL", "Data":[{"Valor":39950.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, Hasta el 01/06", "Data":[{"Valor":3083.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, De 02/06 a 15/06", "Data":[{"Valor":12806.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, De 16/06 a 29/06", "Data":[{"Valor":8109.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, De 30/06 a 13/07", "Data":[{"Valor":13462.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, Posterior a 13/07/2023", "Data":[{"Valor":2490.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, TOTAL", "Data":[{"Valor":9122.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, Hasta el 01/06", "Data":[{"Valor":609.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, De 02/06 a 15/06", "Data":[{"Valor":2958.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, De 16/06 a 29/06", "Data":[{"Valor":1887.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, De 30/06 a 13/07", "Data":[{"Valor":3239.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, Posterior a 13/07/2023", "Data":[{"Valor":429.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, TOTAL", "Data":[{"Valor":130898.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, Hasta el 01/06", "Data":[{"Valor":11910.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, De 02/06 a 15/06", "Data":[{"Valor":41275.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, De 16/06 a 29/06", "Data":[{"Valor":27192.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, De 30/06 a 13/07", "Data":[{"Valor":46231.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, Posterior a 13/07/2023", "Data":[{"Valor":4290.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, TOTAL", "Data":[{"Valor":6467.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, Hasta el 01/06", "Data":[{"Valor":409.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, De 02/06 a 15/06", "Data":[{"Valor":2104.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, De 16/06 a 29/06", "Data":[{"Valor":1289.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, De 30/06 a 13/07", "Data":[{"Valor":2312.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, Posterior a 13/07/2023", "Data":[{"Valor":353.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, TOTAL", "Data":[{"Valor":18007.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, Hasta el 01/06", "Data":[{"Valor":869.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, De 02/06 a 15/06", "Data":[{"Valor":5126.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, De 16/06 a 29/06", "Data":[{"Valor":3629.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, De 30/06 a 13/07", "Data":[{"Valor":7012.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, Posterior a 13/07/2023", "Data":[{"Valor":1371.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, TOTAL", "Data":[{"Valor":7635.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, Hasta el 01/06", "Data":[{"Valor":433.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, De 02/06 a 15/06", "Data":[{"Valor":2517.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, De 16/06 a 29/06", "Data":[{"Valor":1701.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, De 30/06 a 13/07", "Data":[{"Valor":2489.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, Posterior a 13/07/2023", "Data":[{"Valor":495.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, TOTAL", "Data":[{"Valor":33712.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, Hasta el 01/06", "Data":[{"Valor":1371.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, De 02/06 a 15/06", "Data":[{"Valor":11437.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, De 16/06 a 29/06", "Data":[{"Valor":7668.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, De 30/06 a 13/07", "Data":[{"Valor":11520.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, Posterior a 13/07/2023", "Data":[{"Valor":1716.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia/València, TOTAL", "Data":[{"Valor":113501.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia/València, Hasta el 01/06", "Data":[{"Valor":10343.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia/València, De 02/06 a 15/06", "Data":[{"Valor":39312.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia/València, De 16/06 a 29/06", "Data":[{"Valor":23497.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia/València, De 30/06 a 13/07", "Data":[{"Valor":35590.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia/València, Posterior a 13/07/2023", "Data":[{"Valor":4759.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, TOTAL", "Data":[{"Valor":45535.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, Hasta el 01/06", "Data":[{"Valor":3255.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, De 02/06 a 15/06", "Data":[{"Valor":15437.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, De 16/06 a 29/06", "Data":[{"Valor":10172.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, De 30/06 a 13/07", "Data":[{"Valor":14685.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, Posterior a 13/07/2023", "Data":[{"Valor":1986.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, TOTAL", "Data":[{"Valor":10528.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, Hasta el 01/06", "Data":[{"Valor":645.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, De 02/06 a 15/06", "Data":[{"Valor":3584.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, De 16/06 a 29/06", "Data":[{"Valor":1930.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, De 30/06 a 13/07", "Data":[{"Valor":3839.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, Posterior a 13/07/2023", "Data":[{"Valor":530.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, TOTAL", "Data":[{"Valor":71401.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, Hasta el 01/06", "Data":[{"Valor":4732.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, De 02/06 a 15/06", "Data":[{"Valor":26424.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, De 16/06 a 29/06", "Data":[{"Valor":14767.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, De 30/06 a 13/07", "Data":[{"Valor":21948.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, Posterior a 13/07/2023", "Data":[{"Valor":3530.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, TOTAL", "Data":[{"Valor":5623.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, Hasta el 01/06", "Data":[{"Valor":523.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, De 02/06 a 15/06", "Data":[{"Valor":1764.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, De 16/06 a 29/06", "Data":[{"Valor":1179.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, De 30/06 a 13/07", "Data":[{"Valor":1914.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, Posterior a 13/07/2023", "Data":[{"Valor":243.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, TOTAL", "Data":[{"Valor":5421.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, Hasta el 01/06", "Data":[{"Valor":613.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, De 02/06 a 15/06", "Data":[{"Valor":1732.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, De 16/06 a 29/06", "Data":[{"Valor":972.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, De 30/06 a 13/07", "Data":[{"Valor":1773.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, Posterior a 13/07/2023", "Data":[{"Valor":331.0, "Secreto":false}
+]
+}
+]

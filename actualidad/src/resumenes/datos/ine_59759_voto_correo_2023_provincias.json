@@ -1,0 +1,478 @@
+[{"Nombre":"TOTAL, Aceptadas", "Data":[{"Valor":2604386.0, "Secreto":false}
+]
+}
+,{"Nombre":"TOTAL, Porcentaje sobre electores", "Data":[{"Valor":7.41, "Secreto":false}
+]
+}
+,{"Nombre":"TOTAL, Porcentaje sobre presentadas", "Data":[{"Valor":99.53, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, Aceptadas", "Data":[{"Valor":21872.0, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, Porcentaje sobre electores", "Data":[{"Valor":7.29, "Secreto":false}
+]
+}
+,{"Nombre":"Albacete, Porcentaje sobre presentadas", "Data":[{"Valor":99.65, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante / Alacant, Aceptadas", "Data":[{"Valor":48882.0, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante / Alacant, Porcentaje sobre electores", "Data":[{"Valor":3.88, "Secreto":false}
+]
+}
+,{"Nombre":"Alicante / Alacant, Porcentaje sobre presentadas", "Data":[{"Valor":99.56, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, Aceptadas", "Data":[{"Valor":23758.0, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, Porcentaje sobre electores", "Data":[{"Valor":5.04, "Secreto":false}
+]
+}
+,{"Nombre":"Almería, Porcentaje sobre presentadas", "Data":[{"Valor":99.76, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, Aceptadas", "Data":[{"Valor":30792.0, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, Porcentaje sobre electores", "Data":[{"Valor":12.22, "Secreto":false}
+]
+}
+,{"Nombre":"Araba/Álava, Porcentaje sobre presentadas", "Data":[{"Valor":99.52, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, Aceptadas", "Data":[{"Valor":55679.0, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, Porcentaje sobre electores", "Data":[{"Valor":6.66, "Secreto":false}
+]
+}
+,{"Nombre":"Asturias, Porcentaje sobre presentadas", "Data":[{"Valor":99.84, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, Aceptadas", "Data":[{"Valor":8792.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, Porcentaje sobre electores", "Data":[{"Valor":6.85, "Secreto":false}
+]
+}
+,{"Nombre":"Ávila, Porcentaje sobre presentadas", "Data":[{"Valor":99.83, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, Aceptadas", "Data":[{"Valor":37365.0, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, Porcentaje sobre electores", "Data":[{"Valor":6.94, "Secreto":false}
+]
+}
+,{"Nombre":"Badajoz, Porcentaje sobre presentadas", "Data":[{"Valor":99.62, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, Aceptadas", "Data":[{"Valor":36545.0, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, Porcentaje sobre electores", "Data":[{"Valor":4.59, "Secreto":false}
+]
+}
+,{"Nombre":"Balears, Illes, Porcentaje sobre presentadas", "Data":[{"Valor":99.45, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, Aceptadas", "Data":[{"Valor":225692.0, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, Porcentaje sobre electores", "Data":[{"Valor":5.61, "Secreto":false}
+]
+}
+,{"Nombre":"Barcelona, Porcentaje sobre presentadas", "Data":[{"Valor":98.99, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, Aceptadas", "Data":[{"Valor":126049.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, Porcentaje sobre electores", "Data":[{"Valor":14.0, "Secreto":false}
+]
+}
+,{"Nombre":"Bizkaia, Porcentaje sobre presentadas", "Data":[{"Valor":99.56, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, Aceptadas", "Data":[{"Valor":29164.0, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, Porcentaje sobre electores", "Data":[{"Valor":10.51, "Secreto":false}
+]
+}
+,{"Nombre":"Burgos, Porcentaje sobre presentadas", "Data":[{"Valor":99.87, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, Aceptadas", "Data":[{"Valor":23793.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, Porcentaje sobre electores", "Data":[{"Valor":7.37, "Secreto":false}
+]
+}
+,{"Nombre":"Cáceres, Porcentaje sobre presentadas", "Data":[{"Valor":99.69, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, Aceptadas", "Data":[{"Valor":34619.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, Porcentaje sobre electores", "Data":[{"Valor":3.51, "Secreto":false}
+]
+}
+,{"Nombre":"Cádiz, Porcentaje sobre presentadas", "Data":[{"Valor":99.5, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, Aceptadas", "Data":[{"Valor":23096.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, Porcentaje sobre electores", "Data":[{"Valor":4.95, "Secreto":false}
+]
+}
+,{"Nombre":"Cantabria, Porcentaje sobre presentadas", "Data":[{"Valor":99.57, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón / Castelló, Aceptadas", "Data":[{"Valor":17347.0, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón / Castelló, Porcentaje sobre electores", "Data":[{"Valor":4.13, "Secreto":false}
+]
+}
+,{"Nombre":"Castellón / Castelló, Porcentaje sobre presentadas", "Data":[{"Valor":99.51, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad Real, Aceptadas", "Data":[{"Valor":25376.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad Real, Porcentaje sobre electores", "Data":[{"Valor":6.6, "Secreto":false}
+]
+}
+,{"Nombre":"Ciudad Real, Porcentaje sobre presentadas", "Data":[{"Valor":99.42, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, Aceptadas", "Data":[{"Valor":44493.0, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, Porcentaje sobre electores", "Data":[{"Valor":7.11, "Secreto":false}
+]
+}
+,{"Nombre":"Córdoba, Porcentaje sobre presentadas", "Data":[{"Valor":99.59, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, Aceptadas", "Data":[{"Valor":58302.0, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, Porcentaje sobre electores", "Data":[{"Valor":6.32, "Secreto":false}
+]
+}
+,{"Nombre":"Coruña, A, Porcentaje sobre presentadas", "Data":[{"Valor":99.52, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, Aceptadas", "Data":[{"Valor":10187.0, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, Porcentaje sobre electores", "Data":[{"Valor":6.82, "Secreto":false}
+]
+}
+,{"Nombre":"Cuenca, Porcentaje sobre presentadas", "Data":[{"Valor":99.57, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, Aceptadas", "Data":[{"Valor":57433.0, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, Porcentaje sobre electores", "Data":[{"Valor":10.33, "Secreto":false}
+]
+}
+,{"Nombre":"Gipuzkoa, Porcentaje sobre presentadas", "Data":[{"Valor":99.61, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, Aceptadas", "Data":[{"Valor":16323.0, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, Porcentaje sobre electores", "Data":[{"Valor":3.12, "Secreto":false}
+]
+}
+,{"Nombre":"Girona, Porcentaje sobre presentadas", "Data":[{"Valor":99.34, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, Aceptadas", "Data":[{"Valor":49190.0, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, Porcentaje sobre electores", "Data":[{"Valor":6.91, "Secreto":false}
+]
+}
+,{"Nombre":"Granada, Porcentaje sobre presentadas", "Data":[{"Valor":99.29, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, Aceptadas", "Data":[{"Valor":15896.0, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, Porcentaje sobre electores", "Data":[{"Valor":8.29, "Secreto":false}
+]
+}
+,{"Nombre":"Guadalajara, Porcentaje sobre presentadas", "Data":[{"Valor":99.72, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, Aceptadas", "Data":[{"Valor":22726.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, Porcentaje sobre electores", "Data":[{"Valor":5.76, "Secreto":false}
+]
+}
+,{"Nombre":"Huelva, Porcentaje sobre presentadas", "Data":[{"Valor":99.38, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, Aceptadas", "Data":[{"Valor":13209.0, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, Porcentaje sobre electores", "Data":[{"Valor":7.99, "Secreto":false}
+]
+}
+,{"Nombre":"Huesca, Porcentaje sobre presentadas", "Data":[{"Valor":99.67, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, Aceptadas", "Data":[{"Valor":41820.0, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, Porcentaje sobre electores", "Data":[{"Valor":8.28, "Secreto":false}
+]
+}
+,{"Nombre":"Jaén, Porcentaje sobre presentadas", "Data":[{"Valor":99.59, "Secreto":false}
+]
+}
+,{"Nombre":"León, Aceptadas", "Data":[{"Valor":30688.0, "Secreto":false}
+]
+}
+,{"Nombre":"León, Porcentaje sobre electores", "Data":[{"Valor":8.2, "Secreto":false}
+]
+}
+,{"Nombre":"León, Porcentaje sobre presentadas", "Data":[{"Valor":99.64, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, Aceptadas", "Data":[{"Valor":13542.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, Porcentaje sobre electores", "Data":[{"Valor":4.53, "Secreto":false}
+]
+}
+,{"Nombre":"Lleida, Porcentaje sobre presentadas", "Data":[{"Valor":99.73, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, Aceptadas", "Data":[{"Valor":20802.0, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, Porcentaje sobre electores", "Data":[{"Valor":7.74, "Secreto":false}
+]
+}
+,{"Nombre":"Lugo, Porcentaje sobre presentadas", "Data":[{"Valor":99.66, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, Aceptadas", "Data":[{"Valor":625725.0, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, Porcentaje sobre electores", "Data":[{"Valor":12.91, "Secreto":false}
+]
+}
+,{"Nombre":"Madrid, Porcentaje sobre presentadas", "Data":[{"Valor":99.62, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, Aceptadas", "Data":[{"Valor":50617.0, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, Porcentaje sobre electores", "Data":[{"Valor":4.29, "Secreto":false}
+]
+}
+,{"Nombre":"Málaga, Porcentaje sobre presentadas", "Data":[{"Valor":99.51, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, Aceptadas", "Data":[{"Valor":51738.0, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, Porcentaje sobre electores", "Data":[{"Valor":4.87, "Secreto":false}
+]
+}
+,{"Nombre":"Murcia, Porcentaje sobre presentadas", "Data":[{"Valor":99.68, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, Aceptadas", "Data":[{"Valor":47206.0, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, Porcentaje sobre electores", "Data":[{"Valor":9.63, "Secreto":false}
+]
+}
+,{"Nombre":"Navarra, Porcentaje sobre presentadas", "Data":[{"Valor":99.61, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, Aceptadas", "Data":[{"Valor":20924.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, Porcentaje sobre electores", "Data":[{"Valor":8.28, "Secreto":false}
+]
+}
+,{"Nombre":"Ourense, Porcentaje sobre presentadas", "Data":[{"Valor":99.61, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, Aceptadas", "Data":[{"Valor":12397.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, Porcentaje sobre electores", "Data":[{"Valor":9.53, "Secreto":false}
+]
+}
+,{"Nombre":"Palencia, Porcentaje sobre presentadas", "Data":[{"Valor":99.81, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, Aceptadas", "Data":[{"Valor":46289.0, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, Porcentaje sobre electores", "Data":[{"Valor":5.49, "Secreto":false}
+]
+}
+,{"Nombre":"Palmas, Las, Porcentaje sobre presentadas", "Data":[{"Valor":99.62, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, Aceptadas", "Data":[{"Valor":43131.0, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, Porcentaje sobre electores", "Data":[{"Valor":5.58, "Secreto":false}
+]
+}
+,{"Nombre":"Pontevedra, Porcentaje sobre presentadas", "Data":[{"Valor":99.71, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, Aceptadas", "Data":[{"Valor":20831.0, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, Porcentaje sobre electores", "Data":[{"Valor":8.89, "Secreto":false}
+]
+}
+,{"Nombre":"Rioja, La, Porcentaje sobre presentadas", "Data":[{"Valor":99.75, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, Aceptadas", "Data":[{"Valor":24296.0, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, Porcentaje sobre electores", "Data":[{"Valor":9.04, "Secreto":false}
+]
+}
+,{"Nombre":"Salamanca, Porcentaje sobre presentadas", "Data":[{"Valor":99.41, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, Aceptadas", "Data":[{"Valor":39950.0, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, Porcentaje sobre electores", "Data":[{"Valor":5.16, "Secreto":false}
+]
+}
+,{"Nombre":"Santa Cruz de Tenerife, Porcentaje sobre presentadas", "Data":[{"Valor":99.24, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, Aceptadas", "Data":[{"Valor":9122.0, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, Porcentaje sobre electores", "Data":[{"Valor":7.88, "Secreto":false}
+]
+}
+,{"Nombre":"Segovia, Porcentaje sobre presentadas", "Data":[{"Valor":99.84, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, Aceptadas", "Data":[{"Valor":130898.0, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, Porcentaje sobre electores", "Data":[{"Valor":8.58, "Secreto":false}
+]
+}
+,{"Nombre":"Sevilla, Porcentaje sobre presentadas", "Data":[{"Valor":99.37, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, Aceptadas", "Data":[{"Valor":6467.0, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, Porcentaje sobre electores", "Data":[{"Valor":9.45, "Secreto":false}
+]
+}
+,{"Nombre":"Soria, Porcentaje sobre presentadas", "Data":[{"Valor":99.66, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, Aceptadas", "Data":[{"Valor":18007.0, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, Porcentaje sobre electores", "Data":[{"Valor":3.13, "Secreto":false}
+]
+}
+,{"Nombre":"Tarragona, Porcentaje sobre presentadas", "Data":[{"Valor":99.46, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, Aceptadas", "Data":[{"Valor":7635.0, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, Porcentaje sobre electores", "Data":[{"Valor":7.54, "Secreto":false}
+]
+}
+,{"Nombre":"Teruel, Porcentaje sobre presentadas", "Data":[{"Valor":99.44, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, Aceptadas", "Data":[{"Valor":33712.0, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, Porcentaje sobre electores", "Data":[{"Valor":6.37, "Secreto":false}
+]
+}
+,{"Nombre":"Toledo, Porcentaje sobre presentadas", "Data":[{"Valor":99.64, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia / València, Aceptadas", "Data":[{"Valor":113501.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia / València, Porcentaje sobre electores", "Data":[{"Valor":5.88, "Secreto":false}
+]
+}
+,{"Nombre":"Valencia / València, Porcentaje sobre presentadas", "Data":[{"Valor":99.49, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, Aceptadas", "Data":[{"Valor":45535.0, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, Porcentaje sobre electores", "Data":[{"Valor":10.93, "Secreto":false}
+]
+}
+,{"Nombre":"Valladolid, Porcentaje sobre presentadas", "Data":[{"Valor":99.8, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, Aceptadas", "Data":[{"Valor":10528.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, Porcentaje sobre electores", "Data":[{"Valor":7.41, "Secreto":false}
+]
+}
+,{"Nombre":"Zamora, Porcentaje sobre presentadas", "Data":[{"Valor":99.64, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, Aceptadas", "Data":[{"Valor":71401.0, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, Porcentaje sobre electores", "Data":[{"Valor":10.01, "Secreto":false}
+]
+}
+,{"Nombre":"Zaragoza, Porcentaje sobre presentadas", "Data":[{"Valor":99.67, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, Aceptadas", "Data":[{"Valor":5623.0, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, Porcentaje sobre electores", "Data":[{"Valor":9.32, "Secreto":false}
+]
+}
+,{"Nombre":"Ceuta, Porcentaje sobre presentadas", "Data":[{"Valor":99.65, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, Aceptadas", "Data":[{"Valor":5421.0, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, Porcentaje sobre electores", "Data":[{"Valor":9.83, "Secreto":false}
+]
+}
+,{"Nombre":"Melilla, Porcentaje sobre presentadas", "Data":[{"Valor":99.19, "Secreto":false}
+]
+}
+]

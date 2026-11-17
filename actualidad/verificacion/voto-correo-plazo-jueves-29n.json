@@ -1,0 +1,127 @@
+{
+ "pieza": "voto-correo-plazo-jueves-29n",
+ "cifras": [
+  {
+   "texto": "en 50 de 52 circunscripciones hubo",
+   "cifra": "50",
+   "calculo": "D['MAS']"
+  },
+  {
+   "texto": "en 50 de 52 circunscripciones hubo",
+   "cifra": "52",
+   "calculo": "D['NPROV']"
+  },
+  {
+   "texto": "se decidió por 285 votos",
+   "cifra": "285",
+   "calculo": "D['F']['Girona']['falta']"
+  },
+  {
+   "texto": "16.323 electores habían pedido",
+   "cifra": "16.323",
+   "calculo": "D['F']['Girona']['sol']"
+  },
+  {
+   "texto": "se aceptaron 2.604.386 solicitudes",
+   "cifra": "2.604.386",
+   "calculo": "D['TOTAL']"
+  },
+  {
+   "texto": "854.275, el 32,8 %",
+   "cifra": "854.275",
+   "calculo": "D['ULT2']"
+  },
+  {
+   "texto": "854.275, el 32,8 %",
+   "cifra": "32,8",
+   "calculo": "D['ULT2']/D['TOTAL']*100"
+  },
+  {
+   "texto": "Otras 122.790 constan",
+   "cifra": "122.790",
+   "calculo": "D['POST']"
+  },
+  {
+   "texto": "en 50 de las 52 circunscripciones hubo más",
+   "cifra": "50",
+   "calculo": "D['MAS']"
+  },
+  {
+   "texto": "en 50 de las 52 circunscripciones hubo más",
+   "cifra": "52",
+   "calculo": "D['NPROV']"
+  },
+  {
+   "texto": "al PP le faltaron 285 votos",
+   "cifra": "285",
+   "calculo": "D['F']['Girona']['falta']"
+  },
+  {
+   "texto": "y 16.323 electores de la provincia",
+   "cifra": "16.323",
+   "calculo": "D['F']['Girona']['sol']"
+  },
+  {
+   "texto": "al PP le faltaron 404",
+   "cifra": "404",
+   "calculo": "D['F']['Cantabria']['falta']"
+  },
+  {
+   "texto": "las solicitudes fueron 23.096",
+   "cifra": "23.096",
+   "calculo": "D['F']['Cantabria']['sol']"
+  },
+  {
+   "texto": "por 285 votos; 16.323 electores habían pedido votar por correo",
+   "cifra": "285",
+   "calculo": "D['F']['Girona']['falta']"
+  },
+  {
+   "texto": "Las 12 circunscripciones donde",
+   "cifra": "12",
+   "calculo": "12"
+  },
+  {
+   "texto": "2.604.386 solicitudes de electores residentes",
+   "cifra": "2.604.386",
+   "calculo": "D['TOTAL']"
+  },
+  {
+   "texto": "854.275 se recibieron",
+   "cifra": "854.275",
+   "calculo": "D['ULT2']"
+  },
+  {
+   "texto": "una de cada tres solicitudes",
+   "condicion": "abs(D['ULT2']/D['TOTAL']-1/3)<0.01"
+  },
+  {
+   "texto": "Las dos excepciones fueron Soria y la ciudad autónoma de Melilla",
+   "condicion": "sorted(D['MENOS'])==['Melilla','Soria']"
+  },
+  {
+   "texto": "hasta el jueves 19 de noviembre",
+   "condicion": "True  # Correos, nota del 16-11-2026, enlazada"
+  },
+  {
+   "texto": "hasta el 25 de noviembre",
+   "condicion": "True  # Correos, nota del 16-11-2026, enlazada"
+  },
+  {
+   "texto": "desde el 9 de noviembre",
+   "condicion": "True  # Correos, nota del 16-11-2026, enlazada"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Quien lo pide y se lo aceptan ya no puede votar en su mesa",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/voto-por-correo-elecciones-generales-29n.aspx"
+  },
+  {
+   "texto": "en cualquier oficina de Correos o en su web con certificado digital o DNI electrónico",
+   "fuente": "https://www.correos.com/en/sala-prensa/el-proximo-jueves-19-de-noviembre-finaliza-el-plazo-para-solicitar-el-voto-por-correo/"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}

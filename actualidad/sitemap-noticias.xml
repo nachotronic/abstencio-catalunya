@@ -56,4 +56,12 @@
       <news:title>Si la abstención fuera un partido, en 2023 habría quedado por delante del ganador en más de la mitad de las grandes ciudades y en la mitad de las secciones de España</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/voto-correo-plazo-jueves-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-17</news:publication_date>
+      <news:title>Voto por correo: el plazo para pedirlo acaba el jueves; en 2023, en 50 de 52 circunscripciones hubo más solicitudes que votos de diferencia en el último escaño</news:title>
+    </news:news>
+  </url>
 </urlset>
