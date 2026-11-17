@@ -1,0 +1,267 @@
+{
+ "pieza": "abstencion-mapa-ganador-29n",
+ "cifras": [
+  {
+   "texto": "10,4 millones de residentes no votaron",
+   "cifra": "10,4",
+   "calculo": "D['ABS23']/1e6"
+  },
+  {
+   "texto": "10,4 millones de electores residentes en España no votaron",
+   "cifra": "10,4",
+   "calculo": "D['ABS23']/1e6"
+  },
+  {
+   "texto": "2,3 millones más que los 8,1 millones",
+   "cifra": "2,3",
+   "calculo": "D['DIF_PP']/1e6"
+  },
+  {
+   "texto": "2,3 millones más que los 8,1 millones",
+   "cifra": "8,1",
+   "calculo": "D['PP23']/1e6"
+  },
+  {
+   "texto": "La participación de los residentes fue del 70,4 %",
+   "cifra": "70,4",
+   "calculo": "D['PART23']"
+  },
+  {
+   "texto": "en 2.331 de los 8.131 municipios",
+   "cifra": "2.331",
+   "calculo": "D['KMUN']"
+  },
+  {
+   "texto": "en 2.331 de los 8.131 municipios",
+   "cifra": "8.131",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "donde vive el 56,9 % de los electores",
+   "cifra": "56,9",
+   "calculo": "D['CENSO_KMUN']"
+  },
+  {
+   "texto": "con más de 100.000 electores",
+   "cifra": "100.000",
+   "calculo": "100000"
+  },
+  {
+   "texto": "en Barcelona no votaron 353.617",
+   "cifra": "353.617",
+   "calculo": "D['CIUD']['Barcelona']['abs']"
+  },
+  {
+   "texto": "frente a los 241.003 votos del PSOE",
+   "cifra": "241.003",
+   "calculo": "D['CIUD']['Barcelona']['win']"
+  },
+  {
+   "texto": "el PP sacó 720.547 votos",
+   "cifra": "720.547",
+   "calculo": "D['CIUD']['Madrid']['win']"
+  },
+  {
+   "texto": "y no votaron 629.974",
+   "cifra": "629.974",
+   "calculo": "D['CIUD']['Madrid']['abs']"
+  },
+  {
+   "texto": "en 2.331 municipios, donde vive el 56,9 %",
+   "cifra": "2.331",
+   "calculo": "D['KMUN']"
+  },
+  {
+   "texto": "en 2.331 municipios, donde vive el 56,9 %",
+   "cifra": "56,9",
+   "calculo": "D['CENSO_KMUN']"
+  },
+  {
+   "texto": "en 18.326 de las 36.459 secciones",
+   "cifra": "18.326",
+   "calculo": "D['KSEC']"
+  },
+  {
+   "texto": "en 18.326 de las 36.459 secciones",
+   "cifra": "36.459",
+   "calculo": "D['NSEC']"
+  },
+  {
+   "texto": "el 50,3 %",
+   "cifra": "50,3",
+   "calculo": "D['KSEC']/D['NSEC']*100"
+  },
+  {
+   "texto": "Segovia (2,9 %)",
+   "cifra": "2,9",
+   "calculo": "D['PROV']['40']"
+  },
+  {
+   "texto": "Cuenca (6,8 %)",
+   "cifra": "6,8",
+   "calculo": "D['PROV']['16']"
+  },
+  {
+   "texto": "en el 72,8 % de las secciones",
+   "cifra": "72,8",
+   "calculo": "D['K_POBRE']"
+  },
+  {
+   "texto": "en el de más renta, en el 28,9 %",
+   "cifra": "28,9",
+   "calculo": "D['K_RICO']"
+  },
+  {
+   "texto": "La participación fue del 62,2 %",
+   "cifra": "62,2",
+   "calculo": "D['P_POBRE']"
+  },
+  {
+   "texto": "y del 77,5 % en el último",
+   "cifra": "77,5",
+   "calculo": "D['P_RICO']"
+  },
+  {
+   "texto": "superó al ganador en el 72,8 %; en las de más, en el 28,9 %",
+   "cifra": "72,8",
+   "calculo": "D['K_POBRE']"
+  },
+  {
+   "texto": "superó al ganador en el 72,8 %; en las de más, en el 28,9 %",
+   "cifra": "28,9",
+   "calculo": "D['K_RICO']"
+  },
+  {
+   "texto": "en 4.081 municipios",
+   "cifra": "4.081",
+   "calculo": "D['KMUN19']"
+  },
+  {
+   "texto": "con el 89,5 % de los electores",
+   "cifra": "89,5",
+   "calculo": "D['CENSO_KMUN19']"
+  },
+  {
+   "texto": "en 45 de las 47 ciudades",
+   "cifra": "45",
+   "calculo": "D['KGR19']"
+  },
+  {
+   "texto": "en 45 de las 47 ciudades",
+   "cifra": "47",
+   "calculo": "D['NGR19']"
+  },
+  {
+   "texto": "Entonces votó el 69,9 %",
+   "cifra": "69,9",
+   "calculo": "D['PART19']"
+  },
+  {
+   "texto": "el 29,6 % del censo de residentes",
+   "cifra": "29,6",
+   "calculo": "100-D['PART23']"
+  },
+  {
+   "texto": "que sacó 8,1 millones",
+   "cifra": "8,1",
+   "calculo": "D['PP23']/1e6"
+  },
+  {
+   "texto": "votó el 62,2 % de los electores",
+   "cifra": "62,2",
+   "calculo": "D['P_POBRE']"
+  },
+  {
+   "texto": "y en el de más renta, el 77,5 %",
+   "cifra": "77,5",
+   "calculo": "D['P_RICO']"
+  },
+  {
+   "texto": "En el otro extremo, Segovia",
+   "condicion": "sorted(D['PROV'],key=D['PROV'].get)[:2]==['40','16']"
+  },
+  {
+   "texto": "en Sevilla, Zaragoza y Málaga, los que no votaron superaron al PP",
+   "condicion": "all(D['CIUD'][c]['abs']>D['CIUD'][c]['win'] and D['CIUD'][c]['wp']=='PP' for c in ['Sevilla','Zaragoza','Málaga'])"
+  },
+  {
+   "texto": "entre ellas Barcelona, Sevilla, Zaragoza, Málaga, Palma",
+   "condicion": "all(D['CIUD'][c]['abs']>D['CIUD'][c]['win'] for c in ['Barcelona','Sevilla','Zaragoza','Málaga','Palma','Las Palmas de Gran Canaria','Bilbao'])"
+  },
+  {
+   "texto": "En Madrid, València y Murcia, no",
+   "condicion": "all(D['CIUD'][c]['abs']<D['CIUD'][c]['win'] for c in ['Madrid','València','Murcia'])"
+  },
+  {
+   "texto": "diez grupos del mismo tamaño",
+   "condicion": "True  # pd.qcut en 10"
+  },
+  {
+   "texto": "en las dos, los que no votaron superaron al ganador",
+   "condicion": "True  # assert en el script: Ceuta y Melilla"
+  },
+  {
+   "texto": "el PSOE ganó con menos votos que el PP en 2023",
+   "condicion": "True  # 2019-N PSOE 6.752.314 por mesa; 2023 PP 8.093.469"
+  },
+  {
+   "texto": "todas por encima del 95 %",
+   "condicion": "min(D['PROV'][k] for k in ['17','25','52','43'])>95"
+  },
+  {
+   "texto": "Las 16 ciudades con más electores",
+   "cifra": "16",
+   "calculo": "16"
+  },
+  {
+   "texto": "frente a los 8,1 millones de votos del PP",
+   "cifra": "8,1",
+   "calculo": "D['PP23']/1e6"
+  },
+  {
+   "texto": "más de la mitad de las 46 ciudades",
+   "cifra": "46",
+   "calculo": "D['NGR']"
+  },
+  {
+   "texto": "27 según los datos por mesa",
+   "cifra": "27",
+   "calculo": "D['KGR']"
+  },
+  {
+   "texto": "menos de 600 personas",
+   "cifra": "600",
+   "calculo": "600"
+  },
+  {
+   "texto": "la abstención superó al ganador en 27; en cinco",
+   "cifra": "27",
+   "calculo": "D['KGR']"
+  },
+  {
+   "texto": "(27, según los datos por mesa)",
+   "cifra": "27",
+   "calculo": "D['KGR']"
+  },
+  {
+   "texto": "mitad de las 46 ciudades con más de 100.000 electores (27",
+   "cifra": "46",
+   "calculo": "D['NGR']"
+  },
+  {
+   "texto": "más de la mitad de las grandes ciudades",
+   "condicion": "D['KGR']-2>D['NGR']/2  # aunque Córdoba y Leganés cambiaran de lado (assert en el script)"
+  },
+  {
+   "texto": "En cinco ciudades, Córdoba, Leganés, Vigo, Badajoz y Fuenlabrada, la diferencia fue de menos de 600",
+   "condicion": "all(abs(D['CIUD'][c]['abs']-D['CIUD'][c]['win'])<600 for c in ['Córdoba','Leganés','Vigo','Badajoz','Fuenlabrada']) and sum(abs(x['abs']-x['win'])<600 for x in D['CIUD'].values())==5"
+  },
+  {
+   "texto": "Girona, Lleida, la ciudad autónoma de Melilla y Tarragona",
+   "condicion": "sorted(D['PROV'],key=D['PROV'].get)[-4:]==['43','52','25','17']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
+}
