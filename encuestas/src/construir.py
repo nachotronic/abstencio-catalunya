@@ -1239,16 +1239,16 @@ def main():
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
 <p class="dek">{html.escape(entradilla)}</p>
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy.isoformat()}">{actual}</time></p>
-{lo_ultimo(desde23, casas)}
-<p data-tipo="dato">{html.escape(p1)}</p>
-<p data-tipo="dato">{html.escape(p2)}</p>
-<p data-tipo="contexto">Las elecciones generales de 2026 se celebran el domingo 29 de noviembre: se eligen los 350 diputados del Congreso, y la mayoría absoluta está en 176. Esta página reúne todas las encuestas de las elecciones generales publicadas desde julio de 2023 ({f'{n_desde23:,}'.replace(',', '.')} hasta hoy), con su encuestadora, su medio y el enlace a la original, y las resume en una mediana y un promedio de escaños.{' Para ver tu circunscripción están las <a href="provincias.html">encuestas por provincias</a>.' if hay_provincias else ''}{' Con la <a href="calculadora-escanos/">calculadora de escaños</a> repartes los diputados con tus propios porcentajes.' if hay_calculadora else ''}{' Y con el <a href="simulador-pactos/">simulador de pactos</a> ves quién suma 176.' if hay_pactos else ''}</p>
 <figure>
 <figcaption><span class="t">Voto estimado en cada encuesta, último año</span><span class="s">Cada punto es una encuesta; la línea es la mediana de la última encuesta de cada encuestadora en los {VENTANA_MEDIANA} días anteriores (con tres o más). Porcentaje sobre voto válido. Sumar incluye el Frente Amplio y sus socios.</span></figcaption>
 <div class="chart" id="graf"></div>
 <div class="legend">{''.join(f'<span><i class="sw" style="background:{c}"></i>{n}</span>' for _, n, c, _ in PRINCIPALES)}</div>
 <p class="src">Encuestas publicadas, vía Electográfica y Wikipedia. La mediana resume las encuestas: no es una previsión de Mapa Electoral.</p>
 </figure>
+{lo_ultimo(desde23, casas)}
+<p data-tipo="dato">{html.escape(p1)}</p>
+<p data-tipo="dato">{html.escape(p2)}</p>
+<p data-tipo="contexto">Las elecciones generales de 2026 se celebran el domingo 29 de noviembre: se eligen los 350 diputados del Congreso, y la mayoría absoluta está en 176. Esta página reúne todas las encuestas de las elecciones generales publicadas desde julio de 2023 ({f'{n_desde23:,}'.replace(',', '.')} hasta hoy), con su encuestadora, su medio y el enlace a la original, y las resume en una mediana y un promedio de escaños.{' Para ver tu circunscripción están las <a href="provincias.html">encuestas por provincias</a>.' if hay_provincias else ''}{' Con la <a href="calculadora-escanos/">calculadora de escaños</a> repartes los diputados con tus propios porcentajes.' if hay_calculadora else ''}{' Y con el <a href="simulador-pactos/">simulador de pactos</a> ves quién suma 176.' if hay_pactos else ''}</p>
 <details class="caja"><summary>Cómo se hace la media: qué pesa más y qué hemos descartado</summary><ul>
 <li><b>En el gráfico y las cifras de arriba</b>, la línea es la mediana de la última encuesta de cada encuestadora en las tres últimas semanas. Es un resumen descriptivo: cada encuestadora cuenta igual.</li>
 <li><b>En nuestro modelo</b>, la media es ponderada. Entra la última encuesta de cada encuestadora de los últimos 28 días, y pesa más cuanto más reciente es y cuanto mayor es su muestra: una encuesta de hace diez días pesa algo más de un tercio que una de hoy, y una de 3.000 entrevistas, 1,7 veces una de 1.000.</li>
