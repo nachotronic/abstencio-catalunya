@@ -1,0 +1,220 @@
+{
+ "pieza": "encuestas-error-2023-2019-29n",
+ "cifras": [
+  {
+   "texto": "daban al PP 5,7 puntos de ventaja",
+   "cifra": "5,7",
+   "calculo": "D['MGAP23']"
+  },
+  {
+   "texto": "y ganó por 1,4",
+   "cifra": "1,4",
+   "calculo": "D['GAP23']"
+  },
+  {
+   "texto": "se quedaron 3,3 puntos cortas con el PSOE",
+   "cifra": "3,3",
+   "calculo": "-D['ERR23']['PSOE']"
+  },
+  {
+   "texto": "en 2019, 3,1 con Vox",
+   "cifra": "3,1",
+   "calculo": "-D['ERR19']['VOX']"
+  },
+  {
+   "texto": "cada una de las 21 empresas",
+   "cifra": "21",
+   "calculo": "D['N23']"
+  },
+  {
+   "texto": "daba al PP el 34,1 %",
+   "cifra": "34,1",
+   "calculo": "D['M23']['PP']"
+  },
+  {
+   "texto": "y al PSOE el 28,4 %",
+   "cifra": "28,4",
+   "calculo": "D['M23']['PSOE']"
+  },
+  {
+   "texto": "el PP sacó el 33,1 %",
+   "cifra": "33,1",
+   "calculo": "D['RES23']['PP']"
+  },
+  {
+   "texto": "y el PSOE el 31,7 %",
+   "cifra": "31,7",
+   "calculo": "D['RES23']['PSOE']"
+  },
+  {
+   "texto": "dieron al PP 1,0 de más",
+   "cifra": "1,0",
+   "calculo": "D['ERR23']['PP']"
+  },
+  {
+   "texto": "De las 21, 20 dieron al PSOE menos",
+   "cifra": "20",
+   "calculo": "D['PSOE_POR_DEBAJO']"
+  },
+  {
+   "texto": "de entre el 26,3 %",
+   "cifra": "26,3",
+   "calculo": "D['PSOE_MIN']"
+  },
+  {
+   "texto": "y el 29,4 %",
+   "cifra": "29,4",
+   "calculo": "D['PSOE_MAX_SIN_CIS']"
+  },
+  {
+   "texto": "con el 32,2 %",
+   "cifra": "32,2",
+   "calculo": "D['CIS_PSOE']"
+  },
+  {
+   "texto": "al que dio el 30,8 %",
+   "cifra": "30,8",
+   "calculo": "D['CIS_PP']"
+  },
+  {
+   "texto": "Las otras 20 exageraron",
+   "cifra": "20",
+   "calculo": "D['GAP_MAYOR']"
+  },
+  {
+   "texto": "le dio 1,4 puntos",
+   "cifra": "1,4",
+   "calculo": "D['ATLAS_GAP']"
+  },
+  {
+   "texto": "15 empresas",
+   "cifra": "15",
+   "calculo": "D['N19']"
+  },
+  {
+   "texto": "(27,4 %, frente al 28,0 %",
+   "cifra": "27,4",
+   "calculo": "D['M19']['PSOE']"
+  },
+  {
+   "texto": "(27,4 %, frente al 28,0 %",
+   "cifra": "28,0",
+   "calculo": "D['RES19']['PSOE']"
+  },
+  {
+   "texto": "(21,1 %, frente al 20,8 %",
+   "cifra": "21,1",
+   "calculo": "D['M19']['PP']"
+  },
+  {
+   "texto": "(21,1 %, frente al 20,8 %",
+   "cifra": "20,8",
+   "calculo": "D['RES19']['PP']"
+  },
+  {
+   "texto": "de media el 12,0 %",
+   "cifra": "12,0",
+   "calculo": "D['M19']['VOX']"
+  },
+  {
+   "texto": "y sacó el 15,1 %",
+   "cifra": "15,1",
+   "calculo": "D['RES19']['VOX']"
+  },
+  {
+   "texto": "un 14,2 %",
+   "cifra": "14,2",
+   "calculo": "D['VOX19_MAX']"
+  },
+  {
+   "texto": "da al PP el 30,9 %",
+   "cifra": "30,9",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "y al PSOE el 27,8 %",
+   "cifra": "27,8",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "3,0 puntos de ventaja para el PP",
+   "cifra": "3,0",
+   "calculo": "D['HOY']"
+  },
+  {
+   "texto": "exageraron esa ventaja en 4,3 puntos",
+   "cifra": "4,3",
+   "calculo": "D['SOBRE23']"
+  },
+  {
+   "texto": "frente al PSOE en 0,9 puntos",
+   "cifra": "0,9",
+   "calculo": "D['SOBRE19']"
+  },
+  {
+   "texto": "el PSOE iría 1,3 puntos por delante",
+   "cifra": "1,3",
+   "calculo": "-D['CON23']"
+  },
+  {
+   "texto": "con 2,1 puntos de ventaja",
+   "cifra": "2,1",
+   "calculo": "D['CON19']"
+  },
+  {
+   "texto": "Desde el martes 24 de noviembre",
+   "condicion": "True  # 29-11-2026 domingo; veda art. 69.7 LOREG: cinco días anteriores = 24 a 28"
+  },
+  {
+   "texto": "en los cinco días anteriores a la votación",
+   "condicion": "True  # art. 69.7 LOREG"
+  },
+  {
+   "texto": "Hasta el lunes 23 de noviembre",
+   "condicion": "True  # día anterior a la veda"
+  },
+  {
+   "texto": "una ventaja de 5,7 puntos",
+   "cifra": "5,7",
+   "calculo": "D['MGAP23']"
+  },
+  {
+   "texto": "La ventaja real fue de 1,4 puntos",
+   "cifra": "1,4",
+   "calculo": "D['GAP23']"
+  },
+  {
+   "texto": "y sacó el 15,1 %, 3,1 puntos más",
+   "cifra": "3,1",
+   "calculo": "D['RES19']['VOX']-D['M19']['VOX']"
+  },
+  {
+   "texto": "28,4 % de media frente al 31,7 % que sacó",
+   "cifra": "28,4",
+   "calculo": "D['M23']['PSOE']"
+  },
+  {
+   "texto": "28,4 % de media frente al 31,7 % que sacó",
+   "cifra": "31,7",
+   "calculo": "D['RES23']['PSOE']"
+  },
+  {
+   "texto": "De 21 empresas, solo el CIS",
+   "cifra": "21",
+   "calculo": "D['N23']"
+  },
+  {
+   "texto": "la línea, su resultado (31,7 %)",
+   "cifra": "31,7",
+   "calculo": "D['RES23']['PSOE']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "la ley electoral lo prohíbe",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a69"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}

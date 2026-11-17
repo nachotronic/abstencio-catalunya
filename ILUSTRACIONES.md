@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (107)
+## Pendientes (108)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-17 | [`feijoo-gipuzkoa-hernani-pp-29n`](https://mapaelectoral.es/actualidad/feijoo-gipuzkoa-hernani-pp-29n/) | Al PP le faltaron 9.793 votos en 2023 para recuperar un diputado en Gipuzkoa; Feijóo arropa hoy a su candidato, atacado en Hernani | primer gráfico de la pieza |
+| 2026-11-17 | [`encuestas-error-2023-2019-29n`](https://mapaelectoral.es/actualidad/encuestas-error-2023-2019-29n/) | En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4: si hoy fallaran igual, el PSOE iría primero | primer gráfico de la pieza |
 | 2026-11-16 | [`encuestas-primera-semana-campana-29n`](https://mapaelectoral.es/actualidad/encuestas-primera-semana-campana-29n/) | El PSOE sube en siete de las nueve encuestas de la primera semana de campaña; el PP baja en cuatro y sube en otras cuatro | primer gráfico de la pieza |
 | 2026-11-16 | [`feijoo-pamplona-upn-pp-secciones-29n`](https://mapaelectoral.es/actualidad/feijoo-pamplona-upn-pp-secciones-29n/) | Feijóo hace campaña con UPN en Pamplona, donde el PSOE ganó 77 de las 151 secciones en 2023; con UPN y PP sumados, se habría quedado en 49 | primer gráfico de la pieza |
 | 2026-11-15 | [`seleccion-convocados-pueblos-29n`](https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/) | De los 25 convocados de De la Fuente nacidos en España, 15 nacieron donde ganó el PSOE en 2023 y 8 donde ganó el PP; en Puente Genil, el PP ganó por 31 votos | primer gráfico de la pieza |
