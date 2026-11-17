@@ -91,7 +91,7 @@ def principal():
                 continue
             hasta = datetime.fromisoformat(c["fecha"]) + timedelta(hours=VENTANA_H)
             txt = (f"Otro cambio de SEO sigue en vigilancia hasta el {hora_es(hasta)}: {c['sha'][:7]} «{c['asunto']}» "
-                   f"({', '.join(pags[:5])}{'…' if len(pags) > 5 else ''}). Los cambios de SEO van de uno en uno.")
+                   f"({', '.join(pags[:5])}{'…' if len(pags) > 5 else ''}). Los cambios de SEO van de uno en uno. Si este PR solo corrige un hecho (por ejemplo, un dato equivocado en un titular), el editor puede fusionarlo con este aviso.")
             if nacho:
                 avisos.append(txt + f" Se deja pasar por la etiqueta «{sc.ETIQUETA_NACHO}».")
             else:
