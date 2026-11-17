@@ -95,6 +95,16 @@ def publicado_wp(w):
     return p if p and 0 <= (date.fromisoformat(p) - date.fromisoformat(w['campo_fin'])).days <= 30 else ''
 
 
+# Escaños que da el informe original y Wikipedia aún no recoge (el automático cargaba la encuesta sin escaños).
+# Clave: fuente original. Mismo criterio que Wikipedia: horquilla del informe; SUMAR = Frente Amplio + otras
+# coaliciones territoriales de izquierdas. En cuanto Wikipedia tenga la fila, mandan sus escaños.
+ESC_MANUAL = {
+    # 40dB. para El País y la SER, tracking día 5 (17-11-2026), página 8, «Estimación de escaños»
+    'https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia05.pdf':
+        {'PP': '124-135', 'PSOE': '118-126', 'VOX': '55-62', 'SUMAR': '8-11', 'PODEMOS': '0-1', 'SALF': '0'},
+}
+
+
 def carga():
     """Encuestas nacionales: las de Electográfica más las que solo están en Wikipedia; escaños de Wikipedia."""
     wp = list(csv.DictReader(open(DATOS / 'wikipedia_generales_espana.csv'))) if (DATOS / 'wikipedia_generales_espana.csv').exists() else []
@@ -147,7 +157,7 @@ def carga():
                     'inicio': r['campo_inicio'] or w.get('campo_inicio', ''), 'fin': fin.isoformat(), 'fin_aprox': not r['campo_fin'] and not w,
                     'publicado': r['publicado'], 'muestra': r['muestra'] or w.get('muestra', ''),
                     'voto': {k: num(r[k]) for k, *_ in PRINCIPALES if num(r[k]) is not None},
-                    'esc': {k: w.get(f'esc_{k}', '') for k, *_ in TODOS if w.get(f'esc_{k}')},
+                    'esc': {k: w.get(f'esc_{k}', '') for k, *_ in TODOS if w.get(f'esc_{k}')} if w else dict(ESC_MANUAL.get(r['fuente_original'], {})),
                     'url': r['fuente_original'] or w.get('fuente_original', '') or r['url_agregador']})
     # Wikipedia parte a veces una misma encuesta en dos filas (SocioMétrica, 8-12-2025: Sumar con y sin socios):
     # fuera la que repite fuente y cifras de una ya puesta
