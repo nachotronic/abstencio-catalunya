@@ -44,29 +44,23 @@ TRAMOS = [('Hasta el 1 de junio', FECHAS['Hasta el 01/06']), ('Del 2 al 15 de ju
 assert abs(sum(v for _, v in TRAMOS) - TOTAL) < 1
 
 # --- Último escaño de 2023 ---
-SIM = json.load(open(RAIZ / 'actualidad/src/sistema/simulador.json'))
-E, ESC, NOMP = SIM['elecciones']['2023_07'], SIM['escanos']['2023_07'], SIM['provincias']
-NOMBRE = {'Sumar': 'Sumar', 'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'Vox', 'Junts': 'Junts', 'PNV': 'PNV', 'EH Bildu': 'EH Bildu', 'ERC': 'ERC'}
+# Margen del último escaño con todas las candidaturas y el voto exterior (actualidad/src/sistema/cifras.json, calculado por
+# sistema/calcular.py desde los datos de Interior por candidatura): simulador.json agrupa en «Otros» listas que pasaron del 3 %,
+# como Teruel Existe, Soria ¡Ya!, Por Ávila o UPL (editor, 17-11-2026).
+CIF = json.load(open(RAIZ / 'actualidad/src/sistema/cifras.json'))['2023_07']['provincias']
 FILAS = []
-for c, x in E.items():
-    S = ESC[c]
-    v = {k: m for k, m in x['v'].items() if k != 'Otros' and m >= .03 * x['validos']}
-    q = sorted(((m / d, k) for k, m in v.items() for d in range(1, S + 1)), reverse=True)
-    sea = {}
-    for _, k in q[:S]:
-        sea[k] = sea.get(k, 0) + 1
-    assert sum(sea.values()) == S
-    ultq, ulp = q[S - 1]
-    falta, cerca = min(((ultq * (sea.get(k, 0) + 1) - m, k) for k, m in v.items() if k != ulp))
-    nm = clave(NOMP[c])
-    FILAS.append(dict(cod=c, nom=NOMP[c], esc=S, ultimo=ulp, cerca=cerca, falta=int(falta) + 1, sol=ACEP[ALIAS.get(nm, nm)], pct=PCT[ALIAS.get(nm, nm)]))
+for c, x in CIF.items():
+    nm = clave(x['nombre'])
+    FILAS.append(dict(cod=c, nom=x['nombre'], esc=x['escanos'], ultimo=x['ultimo'], cerca=x['aspirante'], falta=x['votos_faltan'],
+                      sol=ACEP[ALIAS.get(nm, nm)], pct=PCT[ALIAS.get(nm, nm)]))
 FILAS.sort(key=lambda f: f['falta'])
 NPROV = len(FILAS)
 MAS = [f for f in FILAS if f['sol'] > f['falta']]
 MENOS = [f['nom'] for f in FILAS if f['sol'] <= f['falta']]
-assert NPROV == 52 and len(MAS) == 50 and sorted(MENOS) == ['Melilla', 'Soria'], MENOS
+assert NPROV == 52 and len(MAS) == 51 and MENOS == ['Melilla'], MENOS
 F = {f['nom']: f for f in FILAS}
 GIR, CANT = F['Girona'], F['Cantabria']
+assert (F['Teruel']['falta'], F['Teruel']['cerca']) == (1946, 'Teruel Existe')
 assert (GIR['falta'], GIR['ultimo'], GIR['cerca']) == (285, 'Junts', 'PP') and (CANT['falta'], CANT['ultimo'], CANT['cerca']) == (404, 'Vox', 'PP')
 MIL = [f for f in FILAS if f['falta'] < 1000]
 DIEZ = FILAS[:12]
@@ -94,7 +88,7 @@ cuerpo = f'''
 <p data-tipo="contexto">El voto por correo para las elecciones generales del 29N se puede pedir hasta el jueves 19 de noviembre, incluido, en cualquier oficina de Correos o en su web con certificado digital o DNI electrónico, según <a href="{CORREOS}">Correos</a>. La documentación llega a casa desde el 9 de noviembre y el voto se puede depositar hasta el 25 de noviembre. Quien lo pide y se lo aceptan ya no puede votar en su mesa el 29 de noviembre, recuerda el <a href="{MONCLOA}">Ministerio del Interior</a>. Ni Correos ni el Censo Electoral han publicado todavía cuántas solicitudes llevan.</p>
 <p data-tipo="dato">En las generales de julio de 2023 se aceptaron {n(TOTAL)} solicitudes de electores residentes en España, según el <a href="{INE}">INE</a>, y buena parte llegó al final: {n(ULT2)}, el {p(ULT2 / TOTAL * 100)} %, se recibieron en las dos últimas semanas del plazo, del 30 de junio al 13 de julio. Otras {n(POST)} constan como recibidas después.</p>
 {g_tramos}
-<p data-tipo="dato">Son votos que pesan donde los escaños se deciden por poco. En 2023, en {len(MAS)} de las {NPROV} circunscripciones hubo más solicitudes de voto por correo que votos le faltaron a la lista que se quedó más cerca del último escaño. En Girona, al PP le faltaron {n(GIR["falta"])} votos para quitarle el último diputado a Junts, y {n(GIR["sol"])} electores de la provincia habían pedido votar por correo. En Cantabria, al PP le faltaron {n(CANT["falta"])} para quitárselo a Vox; las solicitudes fueron {n(CANT["sol"])}. Las dos excepciones fueron Soria y la ciudad autónoma de Melilla, donde la diferencia fue mayor que las solicitudes.</p>
+<p data-tipo="dato">Hay escaños que se deciden por poco. En 2023, en {len(MAS)} de las {NPROV} circunscripciones hubo más solicitudes de voto por correo que votos le faltaron a la lista que se quedó más cerca del último escaño. En Girona, al PP le faltaron {n(GIR["falta"])} votos para quitarle el último diputado a Junts, y {n(GIR["sol"])} electores de la provincia habían pedido votar por correo. En Cantabria, al PP le faltaron {n(CANT["falta"])} para quitárselo a Vox; las solicitudes fueron {n(CANT["sol"])}. La única excepción fue la ciudad autónoma de Melilla, donde la diferencia fue mayor que las solicitudes. En Teruel, a Teruel Existe le faltaron {n(F["Teruel"]["falta"])} votos para recuperar el diputado que había perdido; hubo {n(F["Teruel"]["sol"])} solicitudes de voto por correo.</p>
 {g_escano}
 <p data-tipo="contexto">La cuenta no dice que el voto por correo cambiara ningún escaño, porque no se sabe a quién se votó por correo. Dice que en casi todas las circunscripciones el último diputado se decidió por menos votos de los que se pidieron por correo. Hay más datos sobre quién lo pide y dónde en {L("voto-correo-29n", "esta pieza sobre el voto por correo desde 2004")}.</p>
 '''
@@ -116,8 +110,8 @@ DATOS = {'TOTAL': TOTAL, 'ULT2': ULT2, 'POST': POST, 'TRAMOS': TRAMOS, 'NPROV': 
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Voto por correo',
-      f'Voto por correo: el plazo para pedirlo acaba el jueves; en 2023, en {len(MAS)} de {NPROV} circunscripciones hubo más solicitudes que votos de diferencia en el último escaño',
-      f'Se puede pedir hasta el 19 de noviembre para las elecciones generales del 29N. En 2023, una de cada tres solicitudes llegó en las dos últimas semanas. '
+      'Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas',
+      f'El voto se puede depositar hasta el 25 de noviembre. En 2023, en {len(MAS)} de las {NPROV} circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. '
       f'En Girona, el último diputado se decidió por {n(GIR["falta"])} votos; {n(GIR["sol"])} electores habían pedido votar por correo.',
       '17 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('TOTAL', TOTAL, 'ULT2', ULT2, round(ULT2 / TOTAL * 100, 1), 'POST', POST, 'MAS', len(MAS), NPROV, MENOS, [(f['nom'], f['falta'], f['sol']) for f in MIL])
