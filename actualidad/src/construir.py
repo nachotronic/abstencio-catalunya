@@ -4969,8 +4969,8 @@ PIEZAS += [
     ),
     dict(
         slug='abstencion-mapa-ganador-29n', fecha='2026-11-17',
-        titulo='Si la abstención fuera un partido, en 2023 habría quedado por delante del ganador en 27 de las 46 grandes ciudades y en la mitad de las secciones de España', serie='29n', figura=0,
-        descripcion='El mapa que nadie te enseña antes de las elecciones generales del 29N: 10,4 millones de residentes no votaron en 2023, 2,3 millones más que los votos del PP. En Córdoba, la abstención superó al PP por 44.',
+        titulo='Si la abstención fuera un partido, en 2023 habría quedado por delante del ganador en más de la mitad de las grandes ciudades y en la mitad de las secciones de España', serie='29n', figura=0,
+        descripcion='El mapa que nadie te enseña antes de las elecciones generales del 29N: 10,4 millones de residentes no votaron en 2023, frente a los 8,1 millones de votos del PP, el partido más votado.',
         compara='Los electores residentes que no votaron en las generales de julio de 2023 frente a los votos del partido más votado, en España, en los 8.131 municipios y en las 36.459 secciones censales; las secciones por renta, y la misma cuenta en noviembre de 2019.',
         limites='No incluye el voto exterior, que no se asigna a ningún municipio: la abstención es la de los residentes en España y los votos del PP, los emitidos en España. La abstención no es un bloque: incluye a quien no puede votar. La relación con la renta es entre secciones, no entre personas.',
         calculo='Abstención: censo de residentes menos votantes, por mesa, sumado por sección y por municipio. Se compara con los votos de la candidatura más votada en el mismo territorio. Grandes ciudades: municipios con más de 100.000 electores. Renta: renta por unidad de consumo del Atlas de Distribución de Renta de los Hogares (2023), en diez grupos con el mismo número de secciones. Script: actualidad/src/resumenes/abstencion_mapa.py.',

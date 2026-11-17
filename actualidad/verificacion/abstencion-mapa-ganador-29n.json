@@ -2,29 +2,9 @@
  "pieza": "abstencion-mapa-ganador-29n",
  "cifras": [
   {
-   "texto": "del ganador en 27 de las 46 grandes ciudades",
-   "cifra": "27",
-   "calculo": "D['KGR']"
-  },
-  {
-   "texto": "del ganador en 27 de las 46 grandes ciudades",
-   "cifra": "46",
-   "calculo": "D['NGR']"
-  },
-  {
    "texto": "10,4 millones de residentes no votaron",
    "cifra": "10,4",
    "calculo": "D['ABS23']/1e6"
-  },
-  {
-   "texto": "2,3 millones más que los votos del PP",
-   "cifra": "2,3",
-   "calculo": "D['DIF_PP']/1e6"
-  },
-  {
-   "texto": "la abstención superó al PP por 44",
-   "cifra": "44",
-   "calculo": "D['CIUD']['Córdoba']['abs']-D['CIUD']['Córdoba']['win']"
   },
   {
    "texto": "10,4 millones de electores residentes en España no votaron",
@@ -62,16 +42,6 @@
    "calculo": "D['CENSO_KMUN']"
   },
   {
-   "texto": "Pasó en 27 de las 46 ciudades",
-   "cifra": "27",
-   "calculo": "D['KGR']"
-  },
-  {
-   "texto": "Pasó en 27 de las 46 ciudades",
-   "cifra": "46",
-   "calculo": "D['NGR']"
-  },
-  {
    "texto": "con más de 100.000 electores",
    "cifra": "100.000",
    "calculo": "100000"
@@ -85,21 +55,6 @@
    "texto": "frente a los 241.003 votos del PSOE",
    "cifra": "241.003",
    "calculo": "D['CIUD']['Barcelona']['win']"
-  },
-  {
-   "texto": "la diferencia fue de 44 personas",
-   "cifra": "44",
-   "calculo": "D['CIUD']['Córdoba']['abs']-D['CIUD']['Córdoba']['win']"
-  },
-  {
-   "texto": "en Leganés, de 97",
-   "cifra": "97",
-   "calculo": "D['CIUD']['Leganés']['abs']-D['CIUD']['Leganés']['win']"
-  },
-  {
-   "texto": "por 174 votos",
-   "cifra": "174",
-   "calculo": "D['CIUD']['Vigo']['win']-D['CIUD']['Vigo']['abs']"
   },
   {
    "texto": "el PP sacó 720.547 votos",
@@ -212,16 +167,6 @@
    "calculo": "D['PP23']/1e6"
   },
   {
-   "texto": "En 27 de las 46 ciudades con más de 100.000",
-   "cifra": "27",
-   "calculo": "D['KGR']"
-  },
-  {
-   "texto": "En 27 de las 46 ciudades con más de 100.000",
-   "cifra": "46",
-   "calculo": "D['NGR']"
-  },
-  {
    "texto": "votó el 62,2 % de los electores",
    "cifra": "62,2",
    "calculo": "D['P_POBRE']"
@@ -230,10 +175,6 @@
    "texto": "y en el de más renta, el 77,5 %",
    "cifra": "77,5",
    "calculo": "D['P_RICO']"
-  },
-  {
-   "texto": "Las provincias con más secciones así fueron Girona, Lleida, Melilla y Tarragona",
-   "condicion": "sorted(D['PROV'],key=D['PROV'].get)[-4:]==['43','52','25','17']"
   },
   {
    "texto": "En el otro extremo, Segovia",
@@ -268,19 +209,56 @@
    "condicion": "min(D['PROV'][k] for k in ['17','25','52','43'])>95"
   },
   {
-   "texto": "superó al ganador en 27 de las 46 ciudades",
-   "cifra": "27",
-   "calculo": "D['KGR']"
+   "texto": "Las 16 ciudades con más electores",
+   "cifra": "16",
+   "calculo": "16"
   },
   {
-   "texto": "superó al ganador en 27 de las 46 ciudades",
+   "texto": "frente a los 8,1 millones de votos del PP",
+   "cifra": "8,1",
+   "calculo": "D['PP23']/1e6"
+  },
+  {
+   "texto": "más de la mitad de las 46 ciudades",
    "cifra": "46",
    "calculo": "D['NGR']"
   },
   {
-   "texto": "Las 16 ciudades con más electores",
-   "cifra": "16",
-   "calculo": "16"
+   "texto": "27 según los datos por mesa",
+   "cifra": "27",
+   "calculo": "D['KGR']"
+  },
+  {
+   "texto": "menos de 600 personas",
+   "cifra": "600",
+   "calculo": "600"
+  },
+  {
+   "texto": "la abstención superó al ganador en 27; en cinco",
+   "cifra": "27",
+   "calculo": "D['KGR']"
+  },
+  {
+   "texto": "(27, según los datos por mesa)",
+   "cifra": "27",
+   "calculo": "D['KGR']"
+  },
+  {
+   "texto": "mitad de las 46 ciudades con más de 100.000 electores (27",
+   "cifra": "46",
+   "calculo": "D['NGR']"
+  },
+  {
+   "texto": "más de la mitad de las grandes ciudades",
+   "condicion": "D['KGR']-2>D['NGR']/2  # aunque Córdoba y Leganés cambiaran de lado (assert en el script)"
+  },
+  {
+   "texto": "En cinco ciudades, Córdoba, Leganés, Vigo, Badajoz y Fuenlabrada, la diferencia fue de menos de 600",
+   "condicion": "all(abs(D['CIUD'][c]['abs']-D['CIUD'][c]['win'])<600 for c in ['Córdoba','Leganés','Vigo','Badajoz','Fuenlabrada']) and sum(abs(x['abs']-x['win'])<600 for x in D['CIUD'].values())==5"
+  },
+  {
+   "texto": "Girona, Lleida, la ciudad autónoma de Melilla y Tarragona",
+   "condicion": "sorted(D['PROV'],key=D['PROV'].get)[-4:]==['43','52','25','17']"
   }
  ],
  "externas": [],

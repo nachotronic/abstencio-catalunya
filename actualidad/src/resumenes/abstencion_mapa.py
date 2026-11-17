@@ -78,6 +78,11 @@ COR, LEG, VIG, MAD = mun('Córdoba'), mun('Leganés'), mun('Vigo'), mun('Madrid'
 assert COR.k and COR.wp == 'PP' and COR['abs'] - COR.win == 44
 assert LEG.k and LEG.wp == 'PSOE' and LEG['abs'] - LEG.win == 97
 assert not VIG.k and VIG.wp == 'PSOE' and VIG.win - VIG['abs'] == 174
+# Editor, 17-11-2026: en cinco grandes ciudades la diferencia es menor que lo que cambia entre el recuento de la noche y el definitivo
+AJUST = GR[(GR['abs'] - GR.win).abs() < 600]
+assert set(AJUST.nom) == {'Córdoba', 'Leganés', 'Vigo', 'Badajoz', 'Fuenlabrada'} and ((AJUST['abs'] - AJUST.win).abs() / AJUST.censo).max() < .005, AJUST
+KGR_MIN, KGR_MAX = KGR - int(AJUST.k.sum()), KGR + int((~AJUST.k).sum())
+assert KGR_MIN > NGR / 2, (KGR_MIN, KGR_MAX)   # «más de la mitad» se sostiene aunque las cinco cambiaran de lado
 assert not MAD.k and MAD.wp == 'PP'
 assert BCN.k and BCN.wp == 'PSOE' and SEV.k and ZGZ.k and MLG.k and SEV.wp == ZGZ.wp == MLG.wp == 'PP'
 # Las diez grandes ciudades en que menos se vota, por abstención sobre el ganador
@@ -151,16 +156,16 @@ g_mapa = figura(f'Los que no votaron superaron al partido más votado en {n(KMUN
                 'Generales de julio de 2023. Cada municipio lleva el color del partido más votado, salvo donde los que no votaron fueron más: esos van con el tono de «No votaron» de la leyenda',
                 mapa_colores(CAM, HMAP, 'Mapa municipal de la abstención frente al partido más votado en 2023')
                 + mapa_colores(CAMC, HMAPC, 'Canarias', rotulo='Canarias'),
-                'Fuente: Ministerio del Interior, resultados por mesa (sin voto exterior). Abstención: electores residentes en España que no votaron. Ceuta y Melilla no se dibujan: en las dos, los que no votaron superaron al ganador. Cálculo propio.',
+                'Fuente: Ministerio del Interior, resultados por mesa (sin voto exterior). Abstención: electores residentes en España que no votaron. Las ciudades autónomas de Ceuta y Melilla no se dibujan: en las dos, los que no votaron superaron al ganador. Cálculo propio.',
                 LEY_MAPA)
 
 TOP = GR.head(16)
 CORTO = {'Las Palmas de Gran Canaria': 'Las Palmas', 'Alacant/Alicante': 'Alicante'}
-g_ciudades = figura(f'La abstención superó al ganador en {KGR} de las {NGR} ciudades con más de 100.000 electores',
+g_ciudades = figura(f'La abstención superó al ganador en más de la mitad de las {NGR} ciudades con más de 100.000 electores',
                     'Las 16 ciudades con más electores en 2023: electores que no votaron (primera barra) y votos del partido más votado (segunda barra)',
                     grupos([(CORTO.get(f.nom, f.nom.split('/')[0]), [(f['abs'], ABS, 1, 'no votaron'), (f.win, COL.get(f.wp, 'var(--other)'), 1, NOM.get(f.wp, f.wp))]) for _, f in TOP.iterrows()],
                            float(TOP[['abs', 'win']].max().max()), 'Abstención y votos del ganador en las 16 ciudades con más electores', W=400, ml=96, fmt=n),
-                    'Fuente: Ministerio del Interior, resultados por mesa (sin voto exterior). Cálculo propio.',
+                    f'Fuente: Ministerio del Interior, resultados por mesa (sin voto exterior). Con esos datos, la abstención superó al ganador en {KGR}; en cinco (Córdoba, Leganés, Vigo, Badajoz y Fuenlabrada) la diferencia fue de menos de 600 personas, menos de lo que cambia entre el recuento de la noche y el definitivo. Cálculo propio.',
                     [('No votaron', ABS), ('PP', COL['PP']), ('PSOE', COL['PSOE'])],
                     (['Municipio', 'Electores', 'No votaron', 'Más votado', 'Sus votos', 'Diferencia'],
                      [[f.nom, n(f.censo), n(f['abs']), NOM.get(f.wp, f.wp), n(f.win), ('+' if f['abs'] > f.win else '−') + n(abs(f['abs'] - f.win))] for _, f in GR.iterrows()]))
@@ -177,21 +182,21 @@ g_renta = figura(f'En las secciones con menos renta, la abstención superó al g
 # --- Texto ---
 cuerpo = f'''
 <p data-tipo="contexto">El mapa electoral que se ve cada noche de elecciones pinta cada municipio del color del partido más votado. No enseña a los que no fueron a votar. Antes de las elecciones generales del 29N, este mapa los cuenta: en las generales de julio de 2023, {n(ABS23 / 1e6, 1)} millones de electores residentes en España no votaron, {n(DIF_PP / 1e6, 1)} millones más que los {n(PP23 / 1e6, 1)} millones que votaron al PP, el partido más votado. La participación de los residentes fue del {p(PART23)} %; el voto exterior queda fuera de esta cuenta porque no se asigna a ningún municipio.</p>
-<p data-tipo="dato">Si la abstención fuera un partido, habría quedado por delante del ganador en {n(KMUN)} de los {n(NMUN)} municipios, donde vive el {p(CENSO_KMUN)} % de los electores. Pasó en {KGR} de las {NGR} ciudades con más de 100.000 electores: en Barcelona no votaron {n(BCN["abs"])}, frente a los {n(BCN.win)} votos del PSOE; en Sevilla, Zaragoza y Málaga, los que no votaron superaron al PP. En Córdoba, la diferencia fue de {n(COR["abs"] - COR.win)} personas; en Leganés, de {n(LEG["abs"] - LEG.win)} frente al PSOE. En Vigo fue al revés: el PSOE superó a la abstención por {n(VIG.win - VIG["abs"])} votos. En Madrid, el PP sacó {n(MAD.win)} votos y no votaron {n(MAD["abs"])}.</p>
+<p data-tipo="dato">Si la abstención fuera un partido, habría quedado por delante del ganador en {n(KMUN)} de los {n(NMUN)} municipios, donde vive el {p(CENSO_KMUN)} % de los electores. Pasó en más de la mitad de las {NGR} ciudades con más de 100.000 electores, {KGR} según los datos por mesa: en Barcelona no votaron {n(BCN["abs"])}, frente a los {n(BCN.win)} votos del PSOE; en Sevilla, Zaragoza y Málaga, los que no votaron superaron al PP. En cinco ciudades, Córdoba, Leganés, Vigo, Badajoz y Fuenlabrada, la diferencia fue de menos de 600 personas, menos de lo que cambia entre el recuento de la noche y el definitivo. En Madrid, el PP sacó {n(MAD.win)} votos y no votaron {n(MAD["abs"])}.</p>
 {g_mapa}
 {g_ciudades}
-<p data-tipo="dato">Por secciones censales, el dibujo es parecido: en {n(KSEC)} de las {n(NSEC)} secciones de España, el {p(KSEC / NSEC * 100)} %, los que no votaron superaron al partido más votado. Las provincias con más secciones así fueron Girona, Lleida, Melilla y Tarragona, todas por encima del 95 %. En el otro extremo, Segovia ({p(PROV["40"])} %) y Cuenca ({p(PROV["16"])} %).</p>
+<p data-tipo="dato">Por secciones censales, el dibujo es parecido: en {n(KSEC)} de las {n(NSEC)} secciones de España, el {p(KSEC / NSEC * 100)} %, los que no votaron superaron al partido más votado. Donde más secciones así hubo fue en Girona, Lleida, la ciudad autónoma de Melilla y Tarragona, todas por encima del 95 %. En el otro extremo, Segovia ({p(PROV["40"])} %) y Cuenca ({p(PROV["16"])} %).</p>
 <p data-tipo="patron">La abstención sigue a la renta. En el grupo de secciones con menos renta por unidad de consumo, los que no votaron superaron al ganador en el {p(K_POBRE)} % de las secciones; en el de más renta, en el {p(K_RICO)} %. La participación fue del {p(P_POBRE)} % en el primer grupo y del {p(P_RICO)} % en el último. Es una relación entre secciones, no entre personas: no dice quién dejó de votar dentro de cada barrio.</p>
 {g_renta}
 <p data-tipo="dato">En noviembre de 2019 fue más: la abstención superó al ganador en {n(KMUN19)} municipios, con el {p(CENSO_KMUN19)} % de los electores, y en {KGR19} de las {NGR19} ciudades con más de 100.000 electores. Entonces votó el {p(float(S19.votantes.sum() / S19.censo.sum() * 100))} % de los residentes, y el voto estaba más repartido: el PSOE ganó con menos votos que el PP en 2023.</p>
-<p data-tipo="contexto">La abstención no es un bloque. Incluye a quien decide no votar y a quien no puede: enfermos, personas que trabajan ese día o que cambiaron de casa sin cambiar de censo. Por eso este mapa no dice qué votarían, solo cuántos son.</p>
+<p data-tipo="contexto">La abstención no es un bloque. Incluye a quien decide no votar y a quien no pudo ir a votar. Por eso este mapa no dice qué votarían, solo cuántos son.</p>
 '''
 
 preguntas = [
     ('¿Cuántas personas no votaron en las elecciones generales de 2023?',
      f'{n(ABS23 / 1e6, 1)} millones de electores residentes en España, el {p(100 - PART23)} % del censo de residentes. Son más que los votos del PP, el partido más votado, que sacó {n(PP23 / 1e6, 1)} millones sin contar el voto exterior.'),
     ('¿En qué grandes ciudades superó la abstención al partido más votado?',
-     f'En {KGR} de las {NGR} ciudades con más de 100.000 electores, entre ellas Barcelona, Sevilla, Zaragoza, Málaga, Palma, Las Palmas de Gran Canaria y Bilbao. En Madrid, València y Murcia, no.'),
+     f'En más de la mitad de las {NGR} ciudades con más de 100.000 electores ({KGR}, según los datos por mesa), entre ellas Barcelona, Sevilla, Zaragoza, Málaga, Palma, Las Palmas de Gran Canaria y Bilbao. En Madrid, València y Murcia, no.'),
     ('¿Dónde se vota menos?',
      f'En las secciones con menos renta: en el grupo con menos renta votó el {p(P_POBRE)} % de los electores, y en el de más renta, el {p(P_RICO)} %.'),
 ]
@@ -207,9 +212,9 @@ DATOS = {'ABS23': ABS23, 'PP23': PP23, 'DIF_PP': DIF_PP, 'PART23': PART23, 'NMUN
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'El mapa que nadie te enseña',
-      f'Si la abstención fuera un partido, en 2023 habría quedado por delante del ganador en {KGR} de las {NGR} grandes ciudades y en la mitad de las secciones de España',
+      f'Si la abstención fuera un partido, en 2023 habría quedado por delante del ganador en más de la mitad de las grandes ciudades y en la mitad de las secciones de España',
       f'El mapa que nadie te enseña antes de las elecciones generales del 29N: {n(ABS23 / 1e6, 1)} millones de residentes no votaron en 2023, '
-      f'{n(DIF_PP / 1e6, 1)} millones más que los votos del PP. En Córdoba, la abstención superó al PP por {n(COR["abs"] - COR.win)}.',
+      f'frente a los {n(PP23 / 1e6, 1)} millones de votos del PP, el partido más votado.',
       '17 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('ABS', ABS23, 'PP', PP23, 'DIF', DIF_PP, 'PART', round(PART23, 2), 'MUN', KMUN, NMUN, round(CENSO_KMUN, 1), 'GR', KGR, NGR,
       'SEC', KSEC, NSEC, 'DEC', round(K_POBRE, 1), round(K_RICO, 1), 'PROV', PROV.tail(4).round(1).to_dict(), PROV.head(2).round(1).to_dict(),
