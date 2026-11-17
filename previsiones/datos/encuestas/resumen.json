@@ -1,18 +1,18 @@
 {
- "descargado": "2026-11-17T05:04Z",
+ "descargado": "2026-11-17T15:59Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1103,
- "encuestas_infraestatales": 143,
+ "encuestas_espana": 1104,
+ "encuestas_infraestatales": 144,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-17",
-  "encuestadora": "40dB.",
-  "cliente": ""
+  "encuestadora": "Sondaxe",
+  "cliente": "La Voz de Galicia"
  },
  "siglas_sin_equivalencia": {
   "UPN-PP": 25,
-  "COMPROMÍS-EUPV-PODEM-ERPV": 6,
-  "NC-BC, PODEMOS, IU, SUMAR": 6,
+  "COMPROMÍS-EUPV-PODEM-ERPV": 7,
+  "NC-BC, PODEMOS, IU, SUMAR": 7,
   "D21": 4,
   "ARAMÉS-EU-MS": 4,
   "Autonómicas - CUP": 2,
@@ -25,8 +25,8 @@
   "COMUNS-FA": 1
  },
  "wikipedia": {
-  "encuestas": 406,
-  "ultima_fin_campo": "2026-11-15",
-  "faltan_en_electografica_120_dias": 23
+  "encuestas": 409,
+  "ultima_fin_campo": "2026-11-16",
+  "faltan_en_electografica_120_dias": 24
  }
 }
