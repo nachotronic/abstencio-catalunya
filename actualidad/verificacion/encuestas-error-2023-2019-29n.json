@@ -12,8 +12,8 @@
    "calculo": "D['GAP23']"
   },
   {
-   "texto": "se quedaron 3,4 puntos cortas con el PSOE",
-   "cifra": "3,4",
+   "texto": "se quedaron 3,3 puntos cortas con el PSOE",
+   "cifra": "3,3",
    "calculo": "-D['ERR23']['PSOE']"
   },
   {
@@ -27,13 +27,13 @@
    "calculo": "D['N23']"
   },
   {
-   "texto": "daba al PP el 34,0 %",
-   "cifra": "34,0",
+   "texto": "daba al PP el 34,1 %",
+   "cifra": "34,1",
    "calculo": "D['M23']['PP']"
   },
   {
-   "texto": "y al PSOE el 28,3 %",
-   "cifra": "28,3",
+   "texto": "y al PSOE el 28,4 %",
+   "cifra": "28,4",
    "calculo": "D['M23']['PSOE']"
   },
   {
@@ -142,12 +142,12 @@
    "calculo": "D['HOY']"
   },
   {
-   "texto": "exageraron esa ventaja en 4,4 puntos",
-   "cifra": "4,4",
+   "texto": "exageraron esa ventaja en 4,3 puntos",
+   "cifra": "4,3",
    "calculo": "D['SOBRE23']"
   },
   {
-   "texto": "en 2019, en 0,9",
+   "texto": "frente al PSOE en 0,9 puntos",
    "cifra": "0,9",
    "calculo": "D['SOBRE19']"
   },
@@ -189,12 +189,12 @@
    "calculo": "D['RES19']['VOX']-D['M19']['VOX']"
   },
   {
-   "texto": "28,3 % de media frente al 31,7 % que sacó",
-   "cifra": "28,3",
+   "texto": "28,4 % de media frente al 31,7 % que sacó",
+   "cifra": "28,4",
    "calculo": "D['M23']['PSOE']"
   },
   {
-   "texto": "28,3 % de media frente al 31,7 % que sacó",
+   "texto": "28,4 % de media frente al 31,7 % que sacó",
    "cifra": "31,7",
    "calculo": "D['RES23']['PSOE']"
   },

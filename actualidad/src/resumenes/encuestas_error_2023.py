@@ -8,6 +8,7 @@ Media de hoy: modelo de mapaelectoral.es/encuestas (previsiones/datos/publico/hi
 Uso, desde la raíz: python3 actualidad/src/resumenes/encuestas_error_2023.py
 """
 import json
+import re
 
 import pandas as pd
 
@@ -47,8 +48,17 @@ e = pd.read_csv(RAIZ / 'previsiones/datos/encuestas/encuestas_limpias.csv')
 e = e[e.ambito == 'ESPAÑA']
 
 
+def orden_url(u):
+    """Desempate de encuestas del mismo día y empresa: la ficha de Electográfica …-AAMMDD.html va antes que …-AAMMDD-2.html
+    (editor, 17-11-2026: Data10 y Sondaxe publicaron dos el 17-7-2023)."""
+    m = re.search(r'(\d{6})(?:-(\d+))?\.html$', str(u))
+    return (m.group(1), int(m.group(2) or 1)) if m else ('', 0)
+
+
 def ultimas(ini, fin):
-    f = e[(e.publicado >= ini) & (e.publicado <= fin)].sort_values(['publicado', 'encuestadora'])
+    f = e[(e.publicado >= ini) & (e.publicado <= fin)].copy()
+    f['_ord'] = f.url_agregador.map(orden_url)
+    f = f.sort_values(['publicado', '_ord'], kind='stable')
     return f.groupby('encuestadora').tail(1).copy()
 
 
@@ -63,7 +73,8 @@ ERR19 = {k: M19[k] - RES19[k] for k in M19}
 MGAP23, MGAP19 = M23['PP'] - M23['PSOE'], M19['PP'] - M19['PSOE']
 SOBRE23 = MGAP23 - GAP23           # cuánto exageraron la ventaja del PP sobre el PSOE
 SOBRE19 = MGAP19 - GAP19
-assert round(ERR23['PSOE'], 1) == -3.4 and round(ERR19['VOX'], 1) == -3.1 and SOBRE23 > 4 and 0 < SOBRE19 < 1, (ERR23, ERR19, SOBRE23, SOBRE19)
+assert GAP19 < 0 and MGAP19 < 0       # en 2019 el PP no tenía ventaja: el texto habla de sobrevalorarlo frente al PSOE
+assert round(ERR23['PSOE'], 1) == -3.3 and round(ERR19['VOX'], 1) == -3.1 and SOBRE23 > 4 and 0 < SOBRE19 < 1, (ERR23, ERR19, SOBRE23, SOBRE19)
 U23['gap'] = U23.PP - U23.PSOE
 U23['nom'] = U23.encuestadora.replace({'Cis': 'CIS', 'SigmaDos': 'Sigma Dos', 'InvyMark': 'Invymark', 'Atlasintel': 'AtlasIntel',
                                       'Yougov': 'YouGov', 'Data10 - Demoscopia y Servicios': 'Data10', 'SocioMétrica': 'SocioMétrica'})
@@ -132,7 +143,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <h2>En 2019, el que faltó fue Vox</h2>
 <p data-tipo="dato">El error no siempre va en la misma dirección. En noviembre de 2019, la media de las últimas encuestas de {len(U19)} empresas acertó casi con el PSOE ({p(M19["PSOE"])} %, frente al {p(RES19["PSOE"])} % que sacó) y con el PP ({p(M19["PP"])} %, frente al {p(RES19["PP"])} %). El que se escapó fue Vox: las encuestas le daban de media el {p(M19["VOX"])} % y sacó el <strong>{p(RES19["VOX"])} %</strong>, {p(abs(ERR19["VOX"]))} puntos más. Ninguna empresa llegó a ese dato: la que más le daba, un {p(VOX19_MAX)} %.</p>
 <h2>Qué pasaría hoy con el mismo error</h2>
-<p data-tipo="dato">Con los datos {VERSION}, la media de encuestas de <a href="{BASE}encuestas/">nuestro modelo</a> da al PP el {p(MED["PP"])} % y al PSOE el {p(MED["PSOE"])} %: {p(HOY)} puntos de ventaja para el PP. En 2023, las encuestas exageraron esa ventaja en {p(SOBRE23)} puntos; en 2019, en {p(SOBRE19)}.</p>
+<p data-tipo="dato">Con los datos {VERSION}, la media de encuestas de <a href="{BASE}encuestas/">nuestro modelo</a> da al PP el {p(MED["PP"])} % y al PSOE el {p(MED["PSOE"])} %: {p(HOY)} puntos de ventaja para el PP. En 2023, las encuestas exageraron esa ventaja en {p(SOBRE23)} puntos. En 2019, cuando ganó el PSOE, sobrevaloraron al PP frente al PSOE en {p(SOBRE19)} puntos.</p>
 {g_hoy}
 <p data-tipo="hipotesis">Si las encuestas de hoy fallaran igual que en 2023, el PSOE iría {p(abs(CON23))} puntos por delante del PP. Si fallaran como en 2019, el PP seguiría primero, con {p(CON19)} puntos de ventaja. Es una cuenta, no una previsión: nada dice que el error de esta vez vaya a parecerse al de las anteriores, y las empresas cambian sus métodos después de cada elección.</p>
 '''
