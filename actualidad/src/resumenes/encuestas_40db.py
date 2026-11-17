@@ -215,7 +215,7 @@ preguntas = [
      f'Con el {p(NOV["POD"])} % de los votos, 40dB le da cero escaños, con un margen de cero a uno.'),
 ]
 enlaces = (f'{L("encuestas-antes-despues-urda-29n", "Las encuestas tras el choque de Urda")} · {L("psoe-primera-fuerza-29n", "El sorpasso que no sale")} · '
-           f'{L("frente-amplio-podemos-madrid-escanos-29n", "Frente Amplio y Podemos en Madrid")} · <a href="{BASE}encuestas/">Todas las encuestas del 29N</a> · '
+           f'{L("frente-amplio-podemos-madrid-escanos-29n", "Frente Amplio y Podemos en Madrid")} · <a href="{BASE}encuestas/">Encuestas elecciones generales 2026</a> · '
            f'<a href="{BASE}encuestas/40db/">Las encuestas de 40dB</a>')
 foot = ('Datos: 40dB para El País y la SER, informes de noviembre y octubre de 2026; encuestas nacionales publicadas desde el 10 de octubre de 2026, '
         'recogidas por Electográfica y Wikipedia; media de encuestas de mapaelectoral.es/encuestas. Cálculo: actualidad/src/resumenes/encuestas_40db.py.')

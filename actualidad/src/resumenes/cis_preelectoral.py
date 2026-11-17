@@ -249,7 +249,7 @@ preguntas = [
      f'No. Es la única del último mes que da al PSOE más de {p(SEGUNDO[5])} puntos de ventaja; la media de las encuestas pone al PP {p(MED_DIF)} puntos por delante.'),
 ]
 enlaces = (f'{L("cis-tezanos-estimacion-29n", "El CIS frente a los resultados")} · {L("encuestas-40db-psoe-podemos-29n", "La encuesta de El País")} · '
-           f'<a href="{BASE}encuestas/">Todas las encuestas del 29N</a> · <a href="{BASE}encuestas/cis/">Las encuestas del CIS</a>')
+           f'<a href="{BASE}encuestas/">Encuestas elecciones generales 2026</a> · <a href="{BASE}encuestas/cis/">Las encuestas del CIS</a>')
 foot = ('Datos: CIS, estudio 3584 (estimación de voto, total nacional); encuestas nacionales publicadas desde el 13 de octubre de 2026, recogidas por '
         'Electográfica y Wikipedia; media de encuestas de mapaelectoral.es/encuestas; estudios del CIS de 2019 y 2023 y resultados de Interior. '
         'Cálculo: actualidad/src/resumenes/cis_preelectoral.py.')

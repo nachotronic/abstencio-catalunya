@@ -750,7 +750,7 @@ def franja_portada(titular, med, actual, pre, serie, recientes, ruta_casa, hemi=
             '.ep table{font-size:13.5px;line-height:19px}.ep td{padding:4px 3px}.ep th{padding:2px 3px}.ep tr.ep-m{display:none}.ep-kpi li{border-top-width:4px}.ep-kpi b{font-size:28px}'
             '.ep-cab span{font-size:11px;line-height:15px}.ep-dist{font-size:14px;line-height:19px;margin-top:6px}.ep-resto{font-size:12px;line-height:17px;margin-bottom:4px}.ep-pv{font-size:13px;line-height:18px;margin-top:6px}.ep-boton{padding:9px 10px;font-size:14px;margin:8px 0 4px}.ep h3{margin-top:4px}}'
             '</style>'
-            f'<div class="ep-cab"><h2 id="h-ep"><a href="{pre}encuestas/">Encuestas del 29N</a></h2>'
+            f'<div class="ep-cab"><h2 id="h-ep"><a href="{pre}encuestas/">Encuestas elecciones generales 2026</a></h2>'
             f'<span>Actualizado el {actual}</span></div>'
             f'<div class="ep-cuerpo"><div class="ep-a">'
             f'<a class="ep-tit" href="{pre}encuestas/">{html.escape(titular)}</a>'
