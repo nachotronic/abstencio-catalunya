@@ -1,0 +1,32 @@
+# Control de SEO antes de fusionar (reglas de Nacho del 17-11-2026, tras la caída de /encuestas/ por #609).
+# Si el PR cambia el título, el H1 o la descripción de una página con tráfico, comprueba en Search Console
+# que no pierde ninguna de sus 10 búsquedas principales tal cual; que no hay otro cambio de SEO en vigilancia
+# (de uno en uno), y que las páginas clave llevan la etiqueta «seo-fusiona-nacho» (solo tras el «Fusiona» de
+# Nacho). Si falla, el PR queda en rojo. Detalle: src/control_seo.py
+name: Control de SEO
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+permissions:
+  contents: read
+concurrency:
+  group: control-seo-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 200
+          filter: blob:none
+          sparse-checkout: src
+      - run: pip install -q google-auth requests
+      - name: Títulos, H1 y descripciones frente a las búsquedas de Search Console
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+          ETIQUETAS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        # HEAD es la fusión de prueba del PR con main; HEAD^1 es main.
+        run: python3 src/control_seo.py --base HEAD^1 --cabeza HEAD --etiquetas "$ETIQUETAS" --resumen "$GITHUB_STEP_SUMMARY"

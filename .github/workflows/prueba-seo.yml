@@ -1,0 +1,52 @@
+# TEMPORAL: simulacros con datos reales de Search Console antes de fusionar. Se borra antes de la revisión.
+name: Prueba SEO (temporal)
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 200
+          filter: blob:none
+          sparse-checkout: src
+      - run: pip install -q google-auth requests
+      - name: Simulacros
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          set +e
+          echo "# 1. Control antes de fusionar #609 (como si fuera el 16-11 a las 12:00 UTC)" >> $GITHUB_STEP_SUMMARY
+          python3 src/control_seo.py --base d85b5b5a~1 --cabeza d85b5b5a --ahora 2026-11-16T11:00:00+00:00 --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
+          echo "# 2. Control antes de fusionar #616" >> $GITHUB_STEP_SUMMARY
+          python3 src/control_seo.py --base 73cf3af8~1 --cabeza 73cf3af8 --ahora 2026-11-17T08:30:00+00:00 --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
+          echo "# 3. Control antes de fusionar #611" >> $GITHUB_STEP_SUMMARY
+          python3 src/control_seo.py --base 5bbe78e4~1 --cabeza 5bbe78e4 --ahora 2026-11-16T15:30:00+00:00 --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
+          echo "# 4. Vigilancia de #609 con los datos de ahora" >> $GITHUB_STEP_SUMMARY
+          python3 src/vigilar_seo.py --simulacro d85b5b5a --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
+          for h in 2026-11-16T17:00:00+00:00 2026-11-16T20:00:00+00:00; do
+            echo "# 5. Vigilancia de #609 como si fuera $h" >> $GITHUB_STEP_SUMMARY
+            python3 src/vigilar_seo.py --simulacro d85b5b5a --ahora $h --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "# 6. Vigilancia normal (sin simulacro)" >> $GITHUB_STEP_SUMMARY
+          python3 src/vigilar_seo.py --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
+      - name: Retraso de los datos por horas
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          python3 - <<'PY' >> $GITHUB_STEP_SUMMARY
+          import sys; sys.path.insert(0,'src'); import seo_comun as sc
+          from datetime import date, timedelta
+          s=sc.sesion(); hoy=date.today()
+          f=sc.consulta(s,(hoy-timedelta(days=2)).isoformat(),hoy.isoformat(),["hour"],1000,estado="hourly_all")
+          print("# Últimas horas del sitio (impresiones)\n"); print("| Hora | Impr. |\n|---|---:|")
+          for r in f[-30:]: print(f"| {r['keys'][0]} | {r['impressions']:.0f} |")
+          f=sc.consulta(s,(hoy-timedelta(days=9)).isoformat(),hoy.isoformat(),["hour"],1000,sc.filtro_pagina("https://mapaelectoral.es/encuestas/"),estado="hourly_all")
+          print("\n# /encuestas/ por horas\n"); print("| Hora | Impr. |\n|---|---:|")
+          for r in f: print(f"| {r['keys'][0]} | {r['impressions']:.0f} |")
+          PY

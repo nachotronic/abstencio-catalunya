@@ -1,0 +1,38 @@
+# Vigilancia de 48 horas tras cada cambio de SEO fusionado (regla de Nacho del 17-11-2026, tras #609).
+# Cada hora compara en Search Console las impresiones de las páginas a las que se ha cambiado el título, el H1
+# o la descripción con las mismas horas del día anterior y de la semana anterior. Si caen más de un 30 %, abre
+# una PR de reversión (no se fusiona sin el editor) y un issue de aviso. Detalle: src/vigilar_seo.py
+name: Vigilancia de SEO
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+    inputs:
+      simulacro:
+        description: 'Commit que analizar de prueba (no abre PR ni issue)'
+        default: ''
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+concurrency:
+  group: vigilancia-seo
+  cancel-in-progress: false
+jobs:
+  vigilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 200
+          filter: blob:none
+          sparse-checkout: src
+      - run: pip install -q google-auth requests
+      - name: Vigilar
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+          GH_TOKEN: ${{ github.token }}
+          SIMULACRO: ${{ inputs.simulacro }}
+        run: python3 src/vigilar_seo.py ${SIMULACRO:+--simulacro "$SIMULACRO"} --resumen "$GITHUB_STEP_SUMMARY"
