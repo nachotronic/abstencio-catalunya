@@ -1,0 +1,243 @@
+{
+ "pieza": "feijoo-gipuzkoa-hernani-pp-29n",
+ "cifras": [
+  {
+   "texto": "Al PP le faltaron 9.793 votos en 2023",
+   "cifra": "9.793",
+   "calculo": "D['FALTA']"
+  },
+  {
+   "texto": "en Hernani sacó 486, el 4,7 %",
+   "cifra": "486",
+   "calculo": "D['HV']"
+  },
+  {
+   "texto": "en Hernani sacó 486, el 4,7 %",
+   "cifra": "4,7",
+   "calculo": "D['H_PCT']"
+  },
+  {
+   "texto": "el PP sacó en Gipuzkoa 32.721 votos",
+   "cifra": "32.721",
+   "calculo": "D['PP23']"
+  },
+  {
+   "texto": "el PP habría necesitado 9.793 votos más",
+   "cifra": "9.793",
+   "calculo": "D['FALTA']"
+  },
+  {
+   "texto": "Sumar se quedó más cerca: a 2.433",
+   "cifra": "2.433",
+   "calculo": "int(D['ULTQ']-D['SUMAR23'])+1"
+  },
+  {
+   "texto": "cuando sacó el 13,9 % de los votos",
+   "cifra": "13,9",
+   "calculo": "D['H']['2011_11']['pp']"
+  },
+  {
+   "texto": "En 2015 cayó al 8,8 %",
+   "cifra": "8,8",
+   "calculo": "D['H']['2015_12']['pp']"
+  },
+  {
+   "texto": "abril de 2019, el 5,1 %",
+   "cifra": "5,1",
+   "calculo": "D['H']['2019_04']['pp']"
+  },
+  {
+   "texto": "En 2023 subió al 8,6 %",
+   "cifra": "8,6",
+   "calculo": "D['H']['2023_07']['pp']"
+  },
+  {
+   "texto": "lejos todavía del 15,4 % de 2004",
+   "cifra": "15,4",
+   "calculo": "D['H']['2004_03']['pp']"
+  },
+  {
+   "texto": "salen de San Sebastián: 15.646 de 32.024",
+   "cifra": "15.646",
+   "calculo": "D['SS_V']"
+  },
+  {
+   "texto": "salen de San Sebastián: 15.646 de 32.024",
+   "cifra": "32.024",
+   "calculo": "D['PPT']"
+  },
+  {
+   "texto": "15.646 de 32.024, el 48,9 %",
+   "cifra": "48,9",
+   "calculo": "D['PESO_SS']"
+  },
+  {
+   "texto": "Con Irun, llegan al 60,9 %",
+   "cifra": "60,9",
+   "calculo": "D['PESO_SS_IRUN']"
+  },
+  {
+   "texto": "De los 31 municipios con más de 3.000",
+   "cifra": "31",
+   "calculo": "D['N_GR']"
+  },
+  {
+   "texto": "solo en tres pasó del 10 %",
+   "cifra": "tres",
+   "calculo": "D['SOBRE10']"
+  },
+  {
+   "texto": "San Sebastián (15,4 %), Irun",
+   "cifra": "15,4",
+   "calculo": "D['SS_PCT']"
+  },
+  {
+   "texto": "Irun (12,7 %)",
+   "cifra": "12,7",
+   "calculo": "D['IRUN_PCT']"
+  },
+  {
+   "texto": "Lasarte-Oria (10,4 %)",
+   "cifra": "10,4",
+   "calculo": "D['LAS_PCT']"
+  },
+  {
+   "texto": "En 7 municipios pequeños no tuvo ni un voto",
+   "cifra": "7",
+   "calculo": "D['CERO']"
+  },
+  {
+   "texto": "En Hernani, el PP sacó 486 votos en 2023",
+   "cifra": "486",
+   "calculo": "D['HV']"
+  },
+  {
+   "texto": "486 votos en 2023, el 4,7 %",
+   "cifra": "4,7",
+   "calculo": "D['H_PCT']"
+  },
+  {
+   "texto": "frente al 44,1 % de EH Bildu",
+   "cifra": "44,1",
+   "calculo": "D['HB_PCT']"
+  },
+  {
+   "texto": "En una de sus 16 secciones censales",
+   "cifra": "16",
+   "calculo": "D['HSEC']"
+  },
+  {
+   "texto": "con 313 votos a candidaturas",
+   "cifra": "313",
+   "calculo": "D['H0_C']"
+  },
+  {
+   "texto": "y EH Bildu en el 71,9 %",
+   "cifra": "71,9",
+   "calculo": "D['H0_BI']"
+  },
+  {
+   "texto": "en la que mejor le fue, el 7,4 %",
+   "cifra": "7,4",
+   "calculo": "D['HMAX']"
+  },
+  {
+   "texto": "el PP había sacado 942 votos en el municipio",
+   "cifra": "942",
+   "calculo": "D['H_HIST']['2011_11'][0]"
+  },
+  {
+   "texto": "entre el 6,8 % y el 10,9 %",
+   "cifra": "6,8",
+   "calculo": "D['PPM_V'][0]"
+  },
+  {
+   "texto": "entre el 6,8 % y el 10,9 %",
+   "cifra": "10,9",
+   "calculo": "D['PPM_V'][2]"
+  },
+  {
+   "texto": "con un valor central del 8,6 %",
+   "cifra": "8,6",
+   "calculo": "D['PPM_V'][1]"
+  },
+  {
+   "texto": "EH Bildu saca tres, el PSOE dos",
+   "cifra": "tres",
+   "calculo": "D['RC']['BILDU'][0]"
+  },
+  {
+   "texto": "faltaron 9.793 votos para el sexto diputado",
+   "cifra": "9.793",
+   "calculo": "D['FALTA']"
+  },
+  {
+   "texto": "la del segundo escaño del PNV (42.513 votos",
+   "cifra": "42.513",
+   "calculo": "D['ULTQ']"
+  },
+  {
+   "texto": "su último diputado por Gipuzkoa en 2011, con el 13,9 %",
+   "cifra": "13,9",
+   "calculo": "D['H']['2011_11']['pp']"
+  },
+  {
+   "texto": "del 15,4 % de San Sebastián a ningún voto en 7",
+   "cifra": "15,4",
+   "calculo": "D['SS_PCT']"
+  },
+  {
+   "texto": "del 15,4 % de San Sebastián a ningún voto en 7",
+   "cifra": "7",
+   "calculo": "D['CERO']"
+  },
+  {
+   "texto": "desde hace cinco elecciones generales",
+   "condicion": "len([y for y in D['H'] if y>'2011_11' and D['H'][y]['pp_esc']==0])==5"
+  },
+  {
+   "texto": "los seis diputados se repartieron a dos entre EH Bildu, el PSOE y el PNV",
+   "condicion": "D['ESC23']=={'EH Bildu':2,'PSOE':2,'PNV':2}"
+  },
+  {
+   "texto": "su segundo escaño, el último de los seis",
+   "condicion": "D['ESC23']['PNV']==2"
+  },
+  {
+   "texto": "se llevó tres de los seis escaños",
+   "condicion": "D['H']['2011_11']['esc']['BILDU']==3 and sum(D['H']['2011_11']['esc'].values())==6"
+  },
+  {
+   "texto": "diputados del PP (de seis) desde 2011",
+   "condicion": "sum(D['H']['2023_07']['esc'].values())==6"
+  },
+  {
+   "texto": "con más de 3.000 votos a candidaturas",
+   "condicion": "D['N_GR']==31"
+  },
+  {
+   "texto": "solo en tres pasó del 10 %: San Sebastián",
+   "condicion": "D['SOBRE10']==3"
+  },
+  {
+   "texto": "en La Rioja, dos de cuatro, y quizá un tercero",
+   "condicion": "D['RR_PP']==[2,2,3]"
+  },
+  {
+   "texto": "el modelo le da al PP un diputado",
+   "condicion": "D['RB_PP']==[1,1,1]"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Echeverría, de 22 años y número uno del PP",
+   "fuente": "https://www.cope.es/programas/la-tarde/noticias/jon-echeverria-candidato-pp-pais-vasco-centenar-violentos-abalanzo-sobre-petardos-huevos-piedras-defender-pp-implica-correr-riesgo-20261116_3476190.html"
+  },
+  {
+   "texto": "el sábado a las once de la mañana",
+   "fuente": "https://www.cope.es/programas/la-tarde/noticias/jon-echeverria-candidato-pp-pais-vasco-centenar-violentos-abalanzo-sobre-petardos-huevos-piedras-defender-pp-implica-correr-riesgo-20261116_3476190.html"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}
