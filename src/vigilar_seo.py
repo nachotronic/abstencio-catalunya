@@ -31,7 +31,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import seo_comun as sc  # noqa: E402
 
 VENTANA_H = 48
-RETRASO_H = 5           # horas más recientes que no se cuentan: Search Console aún no las tiene completas
+RETRASO_H = 7           # horas más recientes que no se cuentan: el 17-11 a las 10:35 los datos por horas llegaban
+                        # hasta las 6:00 (4,5 h de retraso) y las últimas salen incompletas
 MIN_HORAS = 3           # horas cerradas después del cambio antes de poder dar la alarma
 MIN_BASE = 150          # impresiones mínimas en la referencia (página) para que la comparación valga
 MIN_BASE_BUSQ = 100     # ídem para una búsqueda
@@ -113,11 +114,11 @@ def evalua(ser, antes, horas, minimo, umbral):
     return a, esp, caidas, all(c > umbral for c in caidas.values()), ""
 
 
-REF = {24: "día antes", 168: "semana antes"}
+REF = {24: "el día antes", 168: "la semana antes"}
 
 
 def texto_caidas(caidas):
-    return ", ".join(f"{pct_signo(-c)} frente a lo esperado por el {REF[d]}" for d, c in caidas.items())
+    return ", ".join(f"{pct_signo(-c)} frente a lo esperado por {REF[d]}" for d, c in caidas.items())
 
 
 def analiza_pagina(s, c, t0, ahora):
@@ -142,7 +143,7 @@ def analiza_pagina(s, c, t0, ahora):
     res["estado"] = motivo or texto_caidas(caidas)
     if al:
         res["alarma"].append(f"{c['ruta']}: {sc.num(a)} impresiones en {len(horas)} horas; se esperaban "
-                             + " o ".join(f"{sc.num(e)} (por el {REF[d]})" for d, e in esp.items())
+                             + " o ".join(f"{sc.num(e)} (por {REF[d]})" for d, e in esp.items())
                              + f" ({texto_caidas(caidas)})")
     # Búsquedas principales de la página antes del cambio
     bq = serie(s, url, desde, ["hour", "query"])
@@ -156,7 +157,7 @@ def analiza_pagina(s, c, t0, ahora):
         res["busq"].append((q, qa, qesp))
         if qal:
             res["alarma"].append(f"{c['ruta']}, búsqueda «{q}»: {sc.num(qa)} impresiones; se esperaban "
-                                 + " o ".join(f"{sc.num(e)} (por el {REF[d]})" for d, e in qesp.items())
+                                 + " o ".join(f"{sc.num(e)} (por {REF[d]})" for d, e in qesp.items())
                                  + f" ({texto_caidas(qc)})")
     return res
 
@@ -206,8 +207,9 @@ def principal():
 
     p(f"Horas cerradas hasta las {hora_es(ahora - timedelta(hours=RETRASO_H))} (hora de Madrid): Search Console "
       f"tarda horas en dar los datos y las {RETRASO_H} más recientes no se cuentan. Alarma si una página cae más "
-      f"de un {CAIDA_PAGINA * 100:.0f} % (o una búsqueda principal, más de un {CAIDA_BUSQ * 100:.0f} %) frente al "
-      "día antes y frente a la semana antes a la vez.\n")
+      f"de un {CAIDA_PAGINA * 100:.0f} % por debajo de lo esperado (o una búsqueda principal, más de un "
+      f"{CAIDA_BUSQ * 100:.0f} %). Lo esperado sale del nivel de las {HORAS_ANTES} horas antes del cambio y de cómo "
+      "variaron esas horas el día antes y la semana antes; tiene que caer con las dos referencias.\n")
     s = sc.sesion()
     hoy = ahora.date()
     trafico = {f["keys"][0]: f["impressions"] for f in
