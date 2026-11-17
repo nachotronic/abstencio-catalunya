@@ -1,4 +1,4 @@
-"""Debate Sánchez-Feijóo del 19-11-2026: qué hicieron las encuestas tras el cara a cara de 2023 (10 de julio).
+"""Qué hicieron las encuestas tras el cara a cara Sánchez-Feijóo de 2023 (10 de julio), ante el debate del 19-11-2026.
 
 Encuestas: previsiones/datos/encuestas/encuestas_limpias.csv (Electográfica). Para cada empresa, su última encuesta nacional
 publicada del 26 de junio al 10 de julio de 2023 (antes del debate, que fue esa noche) y su última del 11 al 17 de julio
@@ -16,7 +16,10 @@ from mapa_ccaa import COL, grupos, p
 
 A = BASE + 'actualidad/'
 L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
-SLUG = 'debate-sanchez-feijoo-encuestas-29n'
+SLUG = 'encuestas-tras-el-debate-2023-29n'
+# Pieza de servicio del debate (pendiente de publicar). Cuando exista, poner aquí su slug para enlazarla con el ancla
+# «debate Sánchez Feijóo», como pidió el hilo de SEO: esta pieza no debe competir por esa búsqueda.
+SERVICIO = None
 ELDIARIO = 'https://www.eldiario.es/vertele/noticias/debate-cara-a-cara-sanchez-feijoo-sera-jueves-19-noviembre-academia-tv_1_13662406.html'
 INFOBAE = 'https://www.infobae.com/espana/2026/11/16/rtve-atresmedia-y-la-septima-emitiran-el-cara-a-cara-de-sanchez-y-feijoo-en-directo-donde-y-cuando-ver-el-debate-electoral/'
 AUD23 = 'https://www.eldebate.com/cine-tv-series/20230711/el-debate-entre-feijoo-y-pedro-sanchez-lidera-la-audiencia-pero-es-el-menos-visto-de-la-historia_127320.html'
@@ -86,19 +89,21 @@ g_media = figura(f'La media de esas {N} empresas pasó de {p(MA)} a {p(MD)} punt
                  None,
                  (['Momento', 'PP menos PSOE (puntos)'], [[t, p(v)] for t, v in ESC]))
 
+SERV = f'<p data-tipo="contexto">La hora, dónde verlo y qué pasó en el {L(SERVICIO, "debate Sánchez Feijóo")} de este jueves, en nuestra pieza de servicio.</p>' if SERVICIO else ''
 cuerpo = f'''
-<p data-tipo="contexto">Pedro Sánchez y Alberto Núñez Feijóo se verán en el cara a cara de las elecciones generales del 29N el jueves 19 de noviembre a las 22.00, en un debate organizado por la Academia de Televisión y moderado por su presidenta, María Casado, según <a href="{ELDIARIO}">elDiario.es</a>. RTVE, Atresmedia y La Séptima lo emitirán, según la información de EFE que recoge <a href="{INFOBAE}">Infobae</a>. Quedarán diez días para votar.</p>
+<p data-tipo="contexto">Pedro Sánchez y Alberto Núñez Feijóo se verán en el cara a cara de las elecciones generales del 29N el jueves 19 de noviembre a las 22.00, en un debate organizado por la Academia de Televisión y moderado por su presidenta, María Casado, según <a href="{ELDIARIO}">elDiario.es</a>. RTVE, Atresmedia, Mediaset y La Séptima lo emitirán, según la información de EFE que recoge <a href="{INFOBAE}">Infobae</a>. Quedarán diez días para votar.</p>
 <p data-tipo="contexto">El último cara a cara entre los dos fue el 10 de julio de 2023, trece días antes de las elecciones. Lo vieron 5,9 millones de personas, según los datos de Barlovento Comunicación que publicaron <a href="{AUD23}">El Debate y Europa Press</a>: el cara a cara menos visto de los celebrados desde 1993.</p>
 <p data-tipo="dato">Las encuestas que se publicaron después se movieron hacia el PP. De las {N} empresas que publicaron encuesta antes y después del debate, {SUBE} ampliaron la ventaja del PP sobre el PSOE y {BAJA} la redujeron. La media de esas {N} pasó de {p(MA)} a {p(MD)} puntos: el PP subió {p(DPP)} puntos de media y el PSOE, {p(DPS)}. El 23 de julio, el PP ganó por {p(GAP23)}.</p>
 {g_cambio}
 {g_media}
 <p data-tipo="contexto">Las encuestas no dicen por qué se movieron, y no es seguro que fuera por el debate: hubo más campaña entre una encuesta y otra, y en las publicadas justo después parte del trabajo de campo pudo ser anterior al 10 de julio. Lo que sí se sabe es cómo acabó: {L("encuestas-error-2023-2019-29n", "las últimas encuestas de 2023 exageraron la ventaja del PP")}.</p>
 <p data-tipo="dato">Con los datos {VERSION}, la media de encuestas de <a href="{BASE}encuestas/">nuestro modelo</a> da al PP {p(HOY)} puntos de ventaja sobre el PSOE antes del debate de este jueves.</p>
+{SERV}
 '''
 
 preguntas = [
-    ('¿Cuándo es el debate entre Sánchez y Feijóo?',
-     f'El jueves 19 de noviembre de 2026 a las 22.00, organizado por la Academia de Televisión y moderado por María Casado, según <a href="{ELDIARIO}">elDiario.es</a>.'),
+    ('¿Las encuestas suelen moverse después de un cara a cara?',
+     f'En 2023, sí: de las {N} empresas que publicaron antes y después del debate del 10 de julio, {SUBE} cambiaron hacia el PP. Las encuestas no dicen si fue por el debate o por el resto de la campaña.'),
     ('¿Qué pasó con las encuestas tras el debate de 2023?',
      f'De las {N} empresas que publicaron antes y después del cara a cara del 10 de julio, {SUBE} ampliaron la ventaja del PP. La media pasó de {p(MA)} a {p(MD)} puntos; el PP ganó por {p(GAP23)}.'),
 ]
@@ -110,7 +115,7 @@ DATOS = {'N': N, 'SUBE': SUBE, 'BAJA': BAJA, 'MA': MA, 'MD': MD, 'DPP': DPP, 'DP
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'El debate',
-      f'Debate Sánchez-Feijóo: tras el cara a cara de 2023, {SUBE} de {N} encuestadoras ampliaron la ventaja del PP; trece días después ganó por {p(GAP23)} puntos',
+      f'Encuestas y debate: tras el cara a cara de 2023, {SUBE} de {N} encuestadoras ampliaron la ventaja del PP; trece días después ganó por {p(GAP23)} puntos',
       f'El debate de las elecciones generales del 29N es este jueves a las 22.00. En 2023, la media de las encuestas pasó de {p(MA)} a {p(MD)} puntos de ventaja para el PP tras el cara a cara; las urnas le dieron {p(GAP23)}.',
       '17 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('N', N, SUBE, BAJA, round(MA, 2), round(MD, 2), round(DPP, 2), round(DPS, 2), round(GAP23, 2), round(HOY, 2))
