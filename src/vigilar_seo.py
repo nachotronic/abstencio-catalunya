@@ -206,10 +206,10 @@ def principal():
           + (f" y {len(fijas)} páginas clave vigiladas hasta el 30-11" if fijas else "") + "\n")
 
     p(f"Horas cerradas hasta las {hora_es(ahora - timedelta(hours=RETRASO_H))} (hora de Madrid): Search Console "
-      f"tarda horas en dar los datos y las {RETRASO_H} más recientes no se cuentan. Alarma si una página cae más "
+      f"tarda horas en dar los datos y las {RETRASO_H} más recientes no se cuentan. Alarma si una página queda más "
       f"de un {CAIDA_PAGINA * 100:.0f} % por debajo de lo esperado (o una búsqueda principal, más de un "
       f"{CAIDA_BUSQ * 100:.0f} %). Lo esperado sale del nivel de las {HORAS_ANTES} horas antes del cambio y de cómo "
-      "variaron esas horas el día antes y la semana antes; tiene que caer con las dos referencias.\n")
+      "variaron esas horas el día antes y la semana antes; tiene que caer con todas las referencias que tienen datos.\n")
     s = sc.sesion()
     hoy = ahora.date()
     trafico = {f["keys"][0]: f["impressions"] for f in
