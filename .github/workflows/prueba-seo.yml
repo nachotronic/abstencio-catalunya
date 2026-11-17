@@ -50,3 +50,25 @@ jobs:
           print("\n# /encuestas/ por horas\n"); print("| Hora | Impr. |\n|---|---:|")
           for r in f: print(f"| {r['keys'][0]} | {r['impressions']:.0f} |")
           PY
+      - name: Búsquedas de la página de resultados
+        env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          python3 - <<'PY' >> $GITHUB_STEP_SUMMARY
+          import sys; sys.path.insert(0,'src'); import seo_comun as sc
+          from datetime import date, timedelta
+          s=sc.sesion(); hoy=date.today(); ini=(hoy-timedelta(days=28)).isoformat(); fn=hoy.isoformat()
+          R="https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/"
+          def t(rows, cab):
+              print(f"| {cab} | Clics | Impr. | Pos. |\n|---|---:|---:|---:|")
+              for r in rows: print(f"| {' · '.join(k.replace(sc.HOST,'') for k in r['keys'])} | {r['clicks']:.0f} | {r['impressions']:.0f} | {r['position']:.1f} |")
+              print()
+          print("# Página de resultados: búsquedas, 28 días\n")
+          t(sorted(sc.consulta(s,ini,fn,["query"],200,sc.filtro_pagina(R)),key=lambda r:-r["impressions"])[:40],"Búsqueda")
+          print("# Página de resultados: por día\n")
+          t(sc.consulta(s,ini,fn,["date"],100,sc.filtro_pagina(R)),"Día")
+          for pal in ["resultado","escrutinio","29n","29 de noviembre","elecciones generales","quien gana","recuento"]:
+              f=[{"dimension":"query","operator":"contains","expression":pal}]
+              print(f"# Búsquedas del sitio con «{pal}» y página que sale, 28 días\n")
+              t(sorted(sc.consulta(s,ini,fn,["query","page"],500,f),key=lambda r:-r["impressions"])[:25],"Búsqueda · página")
+          PY

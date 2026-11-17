@@ -39,6 +39,10 @@ MAX_PAGINAS = 15        # páginas por commit, las de más impresiones
 TOP_BUSQ = 10
 MIN_IMPR = 100          # impresiones en 7 días para que una página cuente como «con tráfico»
 ETIQUETA = "vigilancia-seo"
+# Páginas que se vigilan cada hora aunque no cambien, hasta el final del 30-11 (Nacho, 17-11: «con resultados
+# será crítico»). Sin commit que revertir: si caen, solo abren un issue (uno al día por página).
+SIEMPRE = {"/encuestas/": "2026-11-30T23:59:00+01:00",
+           "/elecciones/resultados-elecciones-generales-2026/": "2026-11-30T23:59:00+01:00"}
 MADRID = ZoneInfo("Europe/Madrid")
 ORIGEN = "HEAD"   # main al empezar (la reversión cambia de rama)
 
@@ -153,10 +157,12 @@ def principal():
         limite = inicio_vigilancia()
         desde = (ahora - timedelta(hours=VENTANA_H)).isoformat()
         commits = [c for c in sc.commits_seo(ORIGEN, desde, sc.CAMPOS) if not es_anterior(c["sha"], limite)]
-        if not commits:
+        fijas = [r for r, h in SIEMPRE.items() if ahora <= datetime.fromisoformat(h)]
+        if not commits and not fijas:
             p("## Vigilancia de SEO: ningún cambio de título, H1 ni descripción en las últimas 48 h\n")
             return fin(out, a.resumen)
-        p(f"## Vigilancia de SEO: {len(commits)} cambios en las últimas 48 h\n")
+        p(f"## Vigilancia de SEO: {len(commits)} cambios en las últimas 48 h"
+          + (f" y {len(fijas)} páginas clave vigiladas hasta el 30-11" if fijas else "") + "\n")
 
     p(f"Horas cerradas hasta las {hora_es(ahora - timedelta(hours=RETRASO_H))} (hora de Madrid): Search Console "
       f"tarda horas en dar los datos y las {RETRASO_H} más recientes no se cuentan. Alarma si una página cae más "
@@ -211,7 +217,46 @@ def principal():
                 p(alarma(c, alarmas, filas, t0) + "\n")
         else:
             p("Sin alarma.\n")
+    if not a.simulacro:
+        vigila_fijas(s, ahora, p)
     return fin(out, a.resumen)
+
+
+def vigila_fijas(s, ahora, p):
+    """Últimas 24 horas cerradas de las páginas clave frente al día antes y la semana antes."""
+    fijas = [r for r, h in SIEMPRE.items() if ahora <= datetime.fromisoformat(h)]
+    if not fijas:
+        return
+    t0 = ahora - timedelta(hours=RETRASO_H + 25)
+    p("### Páginas clave, últimas 24 horas cerradas (vigilancia fija hasta el 30-11)\n")
+    p("| Página | Horas | Impr. | Día antes | Semana antes | Estado |\n|---|---:|---:|---:|---:|---|")
+    alarmas = []
+    for r in fijas:
+        x = analiza_pagina(s, {"url": sc.HOST + r, "ruta": r}, t0, ahora)
+        p(f"| {r} | {x['horas']} | {sc.num(x.get('post', 0))} | {sc.num(x.get('b1', 0))} | "
+          f"{sc.num(x.get('b7', 0))} | {x['estado']} |")
+        alarmas += x["alarma"]
+    p("")
+    if not alarmas:
+        p("Sin alarma.\n")
+        return
+    p("**Alarma:**\n" + "\n".join(f"- {x}" for x in alarmas) + "\n")
+    dia = ahora.astimezone(MADRID).strftime("%d-%m")
+    titulo = f"Vigilancia SEO: caída en las páginas clave el {dia}"
+    previa = gh("issue", "list", "--label", ETIQUETA, "--state", "all", "--search", f'"{titulo}" in:title',
+                "--json", "number")
+    if previa.returncode == 0 and previa.stdout.strip() not in ("", "[]"):
+        p("Ya hay un aviso de hoy: no se repite.\n")
+        return
+    gh("label", "create", ETIQUETA, "--color", "B60205", "--description", "Alarma de la vigilancia de SEO", "--force")
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    cuerpo = ("@nachotronic La vigilancia de SEO ve una caída en las páginas clave sin un cambio de título que la "
+              "explique (no hay nada que revertir):\n\n" + "\n".join(f"- {x}" for x in alarmas)
+              + "\n\nSearch Console da los datos por horas con varias horas de retraso: hay que mirarlo hora a hora "
+                "antes de sacar conclusiones.\n\n"
+                f"Detalle: https://github.com/{repo}/actions/runs/{os.environ.get('GITHUB_RUN_ID', '')}")
+    iss = gh("issue", "create", "--title", titulo, "--body", cuerpo, "--label", ETIQUETA)
+    p(f"Aviso: {iss.stdout.strip() or iss.stderr.strip()[-200:]}\n")
 
 
 def gh(*args):
