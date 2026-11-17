@@ -1233,7 +1233,7 @@ def main():
                                                    'contentUrl': f'{BASE}/previsiones/datos/encuestas/wikipedia_generales_espana.csv'}]},
               {'@context': 'https://schema.org', '@type': 'FAQPage', '@id': URL + '#preguntas', 'inLanguage': 'es',
                'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq]}]
-    titulo = 'Encuestas 29N: últimas encuestas de las elecciones generales 2026'   # 16-11-2026: corto, para que Google no lo corte   # «encuestas 29n» delante, como los que nos superan (10-11-2026)
+    titulo = 'Encuestas 29N: últimas encuestas elecciones generales 2026, sondeos y promedio'   # 17-11-2026: vuelve la búsqueda exacta; con «de las» (#609) Google dejó de mostrarnos para «encuestas elecciones generales 2026»   # «encuestas 29n» delante, como los que nos superan (10-11-2026)
     main_html = f"""<main>
 <p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
