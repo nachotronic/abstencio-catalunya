@@ -3372,6 +3372,7 @@ ANTETITULOS = {
     'generacion-2008-primer-voto-29n': 'Primer voto',
     'encuestas-primera-semana-campana-29n': 'Las encuestas, semana a semana',
     'feijoo-pamplona-upn-pp-secciones-29n': 'Feijóo en Pamplona',
+    'feijoo-gipuzkoa-hernani-pp-29n': 'Feijóo en Gipuzkoa',
     'mapa-electoral-cataluna-29n': 'El mapa electoral de…',
     'mapa-electoral-comunitat-valenciana-29n': 'El mapa electoral de…',
     'mapa-electoral-castilla-y-leon-29n': 'El mapa electoral de…',
@@ -4904,6 +4905,20 @@ PIEZAS += [
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
         enlaces=[],
         lugar='Pamplona',
+    ),
+    dict(
+        slug='feijoo-gipuzkoa-hernani-pp-29n', fecha='2026-11-17',
+        titulo='Al PP le faltaron 9.793 votos en 2023 para recuperar un diputado en Gipuzkoa; Feijóo arropa hoy a su candidato, atacado en Hernani', serie='29n', figura=0,
+        descripcion='El PP no saca diputado por Gipuzkoa desde 2011. Casi la mitad de sus votos en la provincia salen de San Sebastián; en Hernani sacó 486, el 4,7 %. Las encuestas no le dan escaño en el reparto central.',
+        compara='El voto al PP en Gipuzkoa en las ocho elecciones generales desde 2004 y sus diputados desde 2011; el reparto de los seis escaños de 2023 con voto exterior; el voto al PP en los 88 municipios y en las 16 secciones de Hernani en 2023, y el modelo de encuestas del 29N.',
+        limites='Los porcentajes por municipio y sección no incluyen el voto exterior, que no se asigna a ningún municipio. Los diputados de 2011 a 2019 se calculan con D\'Hondt sobre los datos por mesa; en 2004 y 2008 no se calculan porque varias listas que repartían escaño van juntas en «otros». Los votos que le faltaron al PP suponen que no se los quita a nadie. Las encuestas tienen un margen amplio a 12 días de la votación.',
+        calculo='Porcentajes sobre votos a candidaturas. Diputados: D\'Hondt con barrera del 3 % de los votos válidos, seis escaños. Votos que faltaban en 2023: cociente del sexto escaño (el segundo del PNV, la mitad de sus votos) menos los votos del PP, más uno, con los resultados definitivos con voto exterior. Escaños de 2026: reparto central del modelo de mapaelectoral.es/encuestas a las 6.04 del 17 de noviembre. Script: actualidad/src/resumenes/gipuzkoa_pp_hernani.py.',
+        fuentes=[INTERIOR, INTERIOR_CERA,
+                 ('https://www.infobae.com/espana/agencias/2026/11/17/quinto-dia-de-campana-de-la-crisis-migratoria-en-canarias-al-podcast-irreverente-y-lgtbi/', 'EFE vía Infobae, quinto día de campaña: Feijóo en Gipuzkoa, Bilbao y Logroño (17-11-2026)'),
+                 ('https://www.cope.es/programas/la-tarde/noticias/jon-echeverria-candidato-pp-pais-vasco-centenar-violentos-abalanzo-sobre-petardos-huevos-piedras-defender-pp-implica-correr-riesgo-20261116_3476190.html', 'COPE, Jon Echeverría, candidato del PP por Gipuzkoa, tras la agresión en Hernani (16-11-2026)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='Gipuzkoa',
     ),
 ]
 
