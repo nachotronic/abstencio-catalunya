@@ -146,7 +146,7 @@ enlaces = f'{L("encuestas-error-2023-2019-29n", "Lo que las encuestas no dicen")
 foot = ('Datos: Ministerio del Interior, resultados por mesa de las generales de noviembre de 2019 y julio de 2023, agregados por sección censal. '
         'Cálculo: actualidad/src/resumenes/secciones_cambian_ganador.py.')
 H1 = 'Elecciones generales: una de cada tres secciones cambió de ganador entre 2019 y 2023'
-DEK = f'En {n(PSOE_PP)} pasó del PSOE al PP; al revés, solo en {n(PP_PSOE)}. Otras {n(NCER)} se decidieron por menos de {MARGEN} puntos.'
+DEK = f'En {n(PSOE_PP)} secciones el ganador pasó del PSOE al PP; al revés, solo en {n(PP_PSOE)}. Otras {n(NCER)} se decidieron por menos de {MARGEN} puntos.'
 pieza(SLUG, 'El mapa que nadie te enseña', H1, DEK, '18 de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
 print('EMP', EMP, 'NS', NS, 'NB', NB, 'NCH', NCH, round(PCH, 2), round(PCEN, 2), 'flujos', PSOE_PP, PP_PSOE, ERC_PSOE, VOX_PP, 'cerca', NCER, round(PCER, 2),
       CER_PP_PSOE, CER_PSOE_PP, CER_CH, CENSO_CER, 'prov', NOMP[MAXP], round(TP.loc[MAXP, 'mean'], 3), NOMP[MINP], round(TP.loc[MINP, 'mean'], 3), MAS_MITAD)
