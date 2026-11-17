@@ -262,121 +262,6 @@
    "calculo": "D['NAC']['1936']['el']"
   },
   {
-   "texto": "y sus aliados sacaron el 48,2 % de los votos a candidatos",
-   "cifra": "48,2",
-   "calculo": "[f[1] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
-  },
-  {
-   "texto": "los votos a candidatos y 264 de los 456 escaños que",
-   "cifra": "264",
-   "calculo": "[f[2] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
-  },
-  {
-   "texto": "a candidatos y 264 de los 456 escaños que se decidieron",
-   "cifra": "456",
-   "calculo": "D['NAC']['1931']['e1']"
-  },
-  {
-   "texto": "en la primera vuelta, el 57,9 %.",
-   "cifra": "57,9",
-   "calculo": "[f[3] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
-  },
-  {
-   "texto": "Esquerra y comunistas, sacó el 33,1 % de los votos y 56",
-   "cifra": "33,1",
-   "calculo": "sum(f[1] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
-  },
-  {
-   "texto": "el 33,1 % de los votos y 56 de los 376 escaños de",
-   "cifra": "56",
-   "calculo": "sum(f[2] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
-  },
-  {
-   "texto": "de los votos y 56 de los 376 escaños de la primera",
-   "cifra": "376",
-   "calculo": "D['NAC']['1933']['e1']"
-  },
-  {
-   "texto": "con la Lliga, sacaron el 45,4 % y 234 escaños. Los",
-   "cifra": "45,4",
-   "calculo": "[f[1] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "Lliga, sacaron el 45,4 % y 234 escaños. Los radicales",
-   "cifra": "234",
-   "calculo": "[f[2] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "radicales y el centro, el 19,3 % y 74.",
-   "cifra": "19,3",
-   "calculo": "[f[1] for f in D['NAC']['1933']['f'] if f[0]=='CENTRO'][0]"
-  },
-  {
-   "texto": "y el centro, el 19,3 % y 74.",
-   "cifra": "74",
-   "calculo": "[f[2] for f in D['NAC']['1933']['f'] if f[0]=='CENTRO'][0]"
-  },
-  {
-   "texto": "el Frente Popular. Sacó el 46,2 % de los votos y las",
-   "cifra": "46,2",
-   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
-  },
-  {
-   "texto": "votos y las derechas, el 46,0 %: casi lo mismo. En",
-   "cifra": "46,0",
-   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "el Frente Popular se llevó 256 escaños y las derechas,",
-   "cifra": "256",
-   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
-  },
-  {
-   "texto": "256 escaños y las derechas, 182. El centro se quedó",
-   "cifra": "182",
-   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "182. El centro se quedó en 13.",
-   "cifra": "13",
-   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='CENTRO'][0]"
-  },
-  {
-   "texto": "derechas apenas cambió, del 45,4 % al 46,0 %, y su parte",
-   "cifra": "45,4",
-   "calculo": "[f[1] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "apenas cambió, del 45,4 % al 46,0 %, y su parte de los",
-   "cifra": "46,0",
-   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "de primera vuelta bajó del 62 % al 40 %. El voto de",
-   "cifra": "62",
-   "calculo": "[f[3] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "primera vuelta bajó del 62 % al 40 %. El voto de la izquierda",
-   "cifra": "40",
-   "calculo": "[f[3] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
-  },
-  {
-   "texto": "voto de la izquierda subió 13 puntos y su parte de",
-   "cifra": "13",
-   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]-sum(f[1] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
-  },
-  {
-   "texto": "parte de los escaños pasó del 15 % al 57 %.",
-   "cifra": "15",
-   "calculo": "sum(f[2] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))/D['NAC']['1933']['e1']*100"
-  },
-  {
-   "texto": "escaños pasó del 15 % al 57 %.",
-   "cifra": "57",
-   "calculo": "[f[3] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
-  },
-  {
    "texto": "como los votos. En 1933, en 4 circunscripciones (Barcelona",
    "cifra": "4",
    "calculo": "len([c for c in D['CIRC']['1933'] if c['w'] not in (None,'EMP','PSOE','IZQREP','ERC','PCE') and sum(c['pct'].get(k,0) for k in ('PSOE','IZQREP','ERC','PCE'))>c['pct'].get(c['w'],0)])"
@@ -391,11 +276,6 @@
    "cifra": "cinco",
    "calculo": "5",
    "nota": "umbral de la comparación, no un dato"
-  },
-  {
-   "texto": "(provincia)) y las derechas, 1 (Zaragoza (provincia)).",
-   "cifra": "1",
-   "calculo": "len([c for c in D['CIRC']['1936'] if c['w']=='DER' and c['pct']['DER']-max(v for k,v in c['pct'].items() if k!='DER')<5])"
   },
   {
    "texto": "Hemos mirado las 90 circunscripciones de",
@@ -457,6 +337,196 @@
   {
    "texto": "entre dos tercios y cuatro quintos de los escaños en casi todas las circunscripciones",
    "condicion": "all(2/3-1e-9<=m/s<=4/5 for s,m in D['ESCALA'] if s>=3) and len([c for y in D['CIRC'] for c in D['CIRC'][y] if c['S']<3])/sum(len(v) for v in D['CIRC'].values())<0.1"
+  },
+  {
+   "texto": "más. La provincia elegía 7 diputados y cada elector",
+   "cifra": "7",
+   "calculo": "D['CASOS']['nav33']['S']"
+  },
+  {
+   "texto": "diputados y cada elector votaba a 5: 5 escaños para la mayoría",
+   "cifra": "5",
+   "calculo": "D['CASOS']['nav33']['M']"
+  },
+  {
+   "texto": "cada elector votaba a 5: 5 escaños para la mayoría",
+   "cifra": "5",
+   "calculo": "D['CASOS']['nav33']['M']"
+  },
+  {
+   "texto": "escaños para la mayoría y 2 para la minoría. En",
+   "cifra": "2",
+   "calculo": "D['CASOS']['nav33']['S']-D['CASOS']['nav33']['M']"
+  },
+  {
+   "texto": "independientes) presentaron 7 candidatos, dos más",
+   "cifra": "7",
+   "calculo": "len([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "cabían en cada papeleta. Los 7 de las derechas sacaron",
+   "cifra": "7",
+   "calculo": "len([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "las derechas sacaron entre 89.901 y 65.287 votos. El socialista",
+   "cifra": "89.901",
+   "calculo": "max([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "derechas sacaron entre 89.901 y 65.287 votos. El socialista",
+   "cifra": "65.287",
+   "calculo": "min([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "votado, Ricardo Zabalza, 21.223.",
+   "cifra": "21.223",
+   "calculo": "[c[3] for c in D['CASOS']['nav33']['cand'] if c[0].startswith('Ricardo Zabalza')][0]"
+  },
+  {
+   "texto": "derechas, José Gafo, llegó al 42,7 % de los 152.881 votantes.",
+   "cifra": "42,7",
+   "calculo": "min([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])/D['CASOS']['nav33']['vo']*100"
+  },
+  {
+   "texto": "Gafo, llegó al 42,7 % de los 152.881 votantes. Para entrar",
+   "cifra": "152.881",
+   "calculo": "D['CASOS']['nav33']['vo']"
+  },
+  {
+   "texto": "y Zabalza se quedó en el 13,9 %. Las derechas se llevaron",
+   "cifra": "13,9",
+   "calculo": "[c[3] for c in D['CASOS']['nav33']['cand'] if c[0].startswith('Ricardo Zabalza')][0]/D['CASOS']['nav33']['vo']*100"
+  },
+  {
+   "texto": "derechas se llevaron los siete escaños; los socialistas",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav33']['esc']['DER']"
+  },
+  {
+   "texto": "febrero de 1936 volvió a pasar: siete de siete para las derechas,",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav36']['esc']['DER']"
+  },
+  {
+   "texto": "volvió a pasar: siete de siete para las derechas, con",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav36']['S']"
+  },
+  {
+   "texto": "para las derechas, con el 75,3 % de los votos a candidatos,",
+   "cifra": "75,3",
+   "calculo": "D['CASOS']['nav36']['sv']['DER']/D['CASOS']['nav36']['tv']*100"
+  },
+  {
+   "texto": "el Frente Popular, con el 22,7 %. Su candidato más",
+   "cifra": "22,7",
+   "calculo": "D['CASOS']['nav36']['sv']['FP']/D['CASOS']['nav36']['tv']*100"
+  },
+  {
+   "texto": "Nacionalista Vasca, sacó el 22,5 % de los votantes: pasaba",
+   "cifra": "22,5",
+   "calculo": "[c[3] for c in D['CASOS']['nav36']['cand'] if c[0].startswith('Juan Carlos Basterra')][0]/D['CASOS']['nav36']['vo']*100"
+  },
+  {
+   "texto": "pasaba del 20 %, pero los siete de las derechas tenían",
+   "cifra": "siete",
+   "calculo": "len([c[3] for c in D['CASOS']['nav36']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "republicano-socialista y sus aliados: con el 48,2 % de los votos a candidatos",
+   "cifra": "48,2",
+   "calculo": "[f[1] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
+  },
+  {
+   "texto": "a candidatos se llevaron 264 de los 456 escaños de",
+   "cifra": "264",
+   "calculo": "[f[2] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
+  },
+  {
+   "texto": "candidatos se llevaron 264 de los 456 escaños de la primera",
+   "cifra": "456",
+   "calculo": "D['NAC']['1931']['e1']"
+  },
+  {
+   "texto": "Esquerra y comunistas sumaron el 33,1 % de los votos, pero",
+   "cifra": "33,1",
+   "calculo": "sum(f[1] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
+  },
+  {
+   "texto": "% de los votos, pero solo 56 de los 376 escaños de",
+   "cifra": "56",
+   "calculo": "sum(f[2] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
+  },
+  {
+   "texto": "votos, pero solo 56 de los 376 escaños de la primera",
+   "cifra": "376",
+   "calculo": "D['NAC']['1933']['e1']"
+  },
+  {
+   "texto": "vuelta. Las derechas, con el 45,4 %, se llevaron 234.",
+   "cifra": "45,4",
+   "calculo": "[f[1] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "con el 45,4 %, se llevaron 234.",
+   "cifra": "234",
+   "calculo": "[f[2] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "lo mismo que en 1933, el 46,0 %, y el Frente Popular,",
+   "cifra": "46,0",
+   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "%, y el Frente Popular, el 46,2 %. Con esa ventaja mínima,",
+   "cifra": "46,2",
+   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
+  },
+  {
+   "texto": "el Frente Popular se llevó 256 escaños de primera vuelta",
+   "cifra": "256",
+   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
+  },
+  {
+   "texto": "primera vuelta y las derechas, 182. La parte de los escaños",
+   "cifra": "182",
+   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "de las derechas cayó del 62 % al 40 %. Los radicales",
+   "cifra": "62",
+   "calculo": "[f[3] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "derechas cayó del 62 % al 40 %. Los radicales y el",
+   "cifra": "40",
+   "calculo": "[f[3] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "que en 1933 habían sacado 74, se quedaron en 13.",
+   "cifra": "74",
+   "calculo": "[f[2] for f in D['NAC']['1933']['f'] if f[0]=='CENTRO'][0]"
+  },
+  {
+   "texto": "sacado 74, se quedaron en 13.",
+   "cifra": "13",
+   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='CENTRO'][0]"
+  },
+  {
+   "texto": "Valencia) y las derechas, 1 (la provincia de Zaragoza).",
+   "cifra": "1",
+   "calculo": "len([c for c in D['CIRC']['1936'] if c['w']=='DER' and c['pct']['DER']-max(v for k,v in c['pct'].items() if k!='DER')<5])"
+  },
+  {
+   "texto": "Siete de siete en Navarra",
+   "cifra": "Siete",
+   "calculo": "D['CASOS']['nav36']['esc']['DER']"
+  },
+  {
+   "texto": "Siete de siete en Navarra",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav36']['S']"
   }
  ],
  "externas": [
@@ -549,6 +619,21 @@
    "texto": "de las nuevas Cortes anuló 32 actas de la primera",
    "fuente": "https://doi.org/10.34810/data3274",
    "nota": "Atlas: candidatos de 1936 con elected_status «invalidated» en primera vuelta: 32"
+  },
+  {
+   "texto": "entraba quien pasara del 40 % de los votos, y el",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "ley de 27-7-1933, art. único d: 40 % para ser proclamado"
+  },
+  {
+   "texto": "minoría hacía falta al menos el 20 %, y Zabalza se quedó",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "ley de 1933: 20 % para los demás puestos"
+  },
+  {
+   "texto": "los votantes: pasaba del 20 %, pero los siete de",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "ley de 1933: umbral del 20 %"
   }
  ],
  "ignorar": [

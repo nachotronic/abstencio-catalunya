@@ -2843,7 +2843,7 @@ PIEZAS += [
                   url='https://commons.wikimedia.org/wiki/File:Rosalejo_02.jpg', credito='19Tarrestnom65, CC BY-SA 4.0, vía Wikimedia Commons'),
     ),
     dict(
-        slug='ley-electoral-segunda-republica', fecha='2026-11-17',
+        slug='ley-electoral-segunda-republica', fecha='2026-11-17', actualizado='2026-11-18 00:12',
         titulo='Ganar por 1,6 puntos valía 10 de 13 diputados: así era la ley electoral de la Segunda República', serie='historia',
         descripcion='En las elecciones generales de febrero de 1936, el Frente Popular sacó en Jaén el 50,5 % de los votos y las derechas, el 48,9 %; la izquierda se llevó diez escaños y la derecha, tres. Así funcionaba la ley electoral de la República: circunscripciones provinciales, listas abiertas, voto restringido y casi todos los puestos para la candidatura más votada. La reforma de 1933 la endureció, y en las dos elecciones siguientes ganó primero un bloque y después el otro.',
         compara='Las 63 circunscripciones de las generales del 28 de junio de 1931 y las 60 del 19 de noviembre de 1933 y del 16 de febrero de 1936, con el decreto de 8 de mayo de 1931 y la ley de 27 de julio de 1933. Votos y escaños de la primera vuelta, por candidaturas agrupadas en bloques.',
