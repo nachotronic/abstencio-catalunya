@@ -3,15 +3,17 @@
 Cada hora (.github/workflows/vigilancia-seo.yml) busca en main los commits de las últimas 48 h que cambian el
 título, el H1 o la descripción de páginas con tráfico (sin contar las actualizaciones automáticas del bot ni
 los cambios de solo cifras). Para cada uno compara, en Search Console por horas, las impresiones de las páginas
-afectadas en las horas posteriores al cambio con las mismas horas del día anterior y de una semana antes.
+afectadas en las horas posteriores al cambio con las que cabía esperar: el nivel de las 6 horas justo antes del
+cambio, con la forma que tuvieron esas mismas horas el día anterior y la semana anterior.
 
 Retraso de Search Console: los datos por horas llegan con varias horas de retraso y las últimas horas salen
 incompletas. Por eso solo se cuentan las horas cerradas hace al menos RETRASO_H horas, hace falta un mínimo de
-horas y de impresiones, y la caída tiene que darse a la vez frente al día anterior y frente a la semana anterior
-(así un pico de noticias en uno de los dos no da una falsa alarma).
+horas y de impresiones, y la caída tiene que darse a la vez con las dos referencias (así un pico de noticias o una
+semana con mucho menos tráfico no dan una falsa alarma; comparar a secas con la semana anterior no habría
+detectado #609, porque /encuestas/ casi no salía en Google esa semana).
 
-Alarma: una página cae más de un 30 % (o una de sus búsquedas principales, más de un 50 %) frente a las dos
-referencias. Entonces abre una PR que revierte el commit (git revert) y un issue que avisa a Nacho. La PR de
+Alarma: una página queda más de un 30 % por debajo de lo esperado (o una de sus búsquedas principales, más de
+un 50 %) con las dos referencias. Entonces abre una PR que revierte el commit (git revert) y un issue que avisa a Nacho. La PR de
 reversión no se fusiona sola: necesita la revisión del editor. Solo una alarma por commit.
 Las páginas que ya han vuelto al texto de antes (por ejemplo, porque otro PR lo ha arreglado) no se vigilan.
 
@@ -33,6 +35,8 @@ RETRASO_H = 5           # horas más recientes que no se cuentan: Search Console
 MIN_HORAS = 3           # horas cerradas después del cambio antes de poder dar la alarma
 MIN_BASE = 150          # impresiones mínimas en la referencia (página) para que la comparación valga
 MIN_BASE_BUSQ = 100     # ídem para una búsqueda
+MIN_REF = 30            # impresiones mínimas en cada tramo de referencia (antes del cambio, día antes, semana antes)
+HORAS_ANTES = 6         # horas justo antes del cambio que dan el nivel de partida
 CAIDA_PAGINA = 0.30
 CAIDA_BUSQ = 0.50
 MAX_PAGINAS = 15        # páginas por commit, las de más impresiones
@@ -68,8 +72,9 @@ def hora_es(d):
     return d.astimezone(MADRID).strftime("%d-%m %H:%M")
 
 
-def serie(s, url, desde, hasta, dims):
+def serie(s, url, desde, dims):
     """Impresiones por hora (UTC) de una página: {hora: impr} o {(hora, búsqueda): impr}."""
+    hasta = datetime.now(timezone.utc) + timedelta(days=1)  # fechas de Search Console en hora del Pacífico
     filas = sc.consulta(s, desde.date().isoformat(), hasta.date().isoformat(), dims, 25000,
                         sc.filtro_pagina(url), estado="hourly_all")
     out = {}
@@ -80,11 +85,39 @@ def serie(s, url, desde, hasta, dims):
     return out
 
 
-def comparar(post, ref, horas):
-    """Suma de las horas post frente a la misma hora desplazada (ref: horas de desfase)."""
-    a = sum(post.get(h, 0) for h in horas)
-    b = sum(post.get(h - timedelta(hours=ref), 0) for h in horas)
-    return a, b
+def esperado(ser, antes, horas):
+    """Impresiones esperadas después del cambio si nada hubiera cambiado.
+
+    Parte del nivel de las horas justo antes del cambio (mismo día) y le aplica la forma del día: cuánto
+    sube o baja ese tramo de horas el día antes y la semana antes. Así no da alarma ni por la hora del día
+    ni porque la página venga de un pico de noticias o de una semana con mucho menos tráfico.
+    Devuelve {desfase: esperado} solo con las referencias que tienen datos suficientes.
+    """
+    bt = sum(ser.get(h, 0) for h in antes)
+    out = {}
+    for d in (24, 168):
+        bs = sum(ser.get(h - timedelta(hours=d), 0) for h in antes)
+        as_ = sum(ser.get(h - timedelta(hours=d), 0) for h in horas)
+        if bs >= MIN_REF and as_ >= MIN_REF:
+            out[d] = bt * as_ / bs
+    return bt, out
+
+
+def evalua(ser, antes, horas, minimo, umbral):
+    """(después, esperado por referencia, caídas, alarma, motivo si no se puede comparar)."""
+    a = sum(ser.get(h, 0) for h in horas)
+    bt, esp = esperado(ser, antes, horas)
+    if bt < MIN_REF or not esp or min(esp.values()) < minimo:
+        return a, esp, {}, False, "poco tráfico para comparar"
+    caidas = {d: 1 - a / e for d, e in esp.items()}
+    return a, esp, caidas, all(c > umbral for c in caidas.values()), ""
+
+
+REF = {24: "día antes", 168: "semana antes"}
+
+
+def texto_caidas(caidas):
+    return ", ".join(f"{pct_signo(-c)} frente a lo esperado por el {REF[d]}" for d, c in caidas.items())
 
 
 def analiza_pagina(s, c, t0, ahora):
@@ -96,39 +129,46 @@ def analiza_pagina(s, c, t0, ahora):
     while h + timedelta(hours=1) <= ultima and h < t0 + timedelta(hours=VENTANA_H):
         horas.append(h)
         h += timedelta(hours=1)
-    res = {"ruta": c["ruta"], "horas": len(horas), "desde": primera, "hasta": ultima, "alarma": [], "busq": []}
+    base0 = t0.replace(minute=0, second=0, microsecond=0)
+    antes = [base0 - timedelta(hours=i) for i in range(HORAS_ANTES, 0, -1)]
+    res = {"ruta": c["ruta"], "horas": len(horas), "alarma": [], "busq": []}
     if len(horas) < MIN_HORAS:
         res["estado"] = f"esperando datos ({len(horas)} de {MIN_HORAS} horas cerradas)"
         return res
-    desde = primera - timedelta(days=8)
-    pag = serie(s, url, desde, ahora, ["hour"])
-    a, b1 = comparar(pag, 24, horas)
-    _, b7 = comparar(pag, 168, horas)
-    res.update(post=a, b1=b1, b7=b7)
-    caida = lambda x, y: 1 - x / y if y else 0.0  # noqa: E731
-    if min(b1, b7) < MIN_BASE:
-        res["estado"] = "poco tráfico para comparar"
-    else:
-        c1, c7 = caida(a, b1), caida(a, b7)
-        res["estado"] = f"{pct_signo(-c1)} frente al día antes, {pct_signo(-c7)} frente a la semana antes"
-        if c1 > CAIDA_PAGINA and c7 > CAIDA_PAGINA:
-            res["alarma"].append(f"{c['ruta']}: impresiones {sc.num(a)} frente a {sc.num(b1)} el día antes "
-                                 f"({pct_signo(-c1)}) y {sc.num(b7)} la semana antes ({pct_signo(-c7)})")
+    desde = antes[0] - timedelta(days=8)
+    pag = serie(s, url, desde, ["hour"])
+    a, esp, caidas, al, motivo = evalua(pag, antes, horas, MIN_BASE, CAIDA_PAGINA)
+    res.update(post=a, esp=esp)
+    res["estado"] = motivo or texto_caidas(caidas)
+    if al:
+        res["alarma"].append(f"{c['ruta']}: {sc.num(a)} impresiones en {len(horas)} horas; se esperaban "
+                             + " o ".join(f"{sc.num(e)} (por el {REF[d]})" for d, e in esp.items())
+                             + f" ({texto_caidas(caidas)})")
     # Búsquedas principales de la página antes del cambio
-    bq = serie(s, url, desde, ahora, ["hour", "query"])
+    bq = serie(s, url, desde, ["hour", "query"])
     base_q = {}
     for (h, q), v in bq.items():
         if t0 - timedelta(days=7) <= h < t0:
             base_q[q] = base_q.get(q, 0) + v
     for q in sorted(base_q, key=lambda q: -base_q[q])[:TOP_BUSQ]:
         sq = {h: v for (h, qq), v in bq.items() if qq == q}
-        qa, q1 = comparar(sq, 24, horas)
-        _, q7 = comparar(sq, 168, horas)
-        res["busq"].append((q, qa, q1, q7))
-        if min(q1, q7) >= MIN_BASE_BUSQ and caida(qa, q1) > CAIDA_BUSQ and caida(qa, q7) > CAIDA_BUSQ:
-            res["alarma"].append(f"{c['ruta']}, búsqueda «{q}»: {sc.num(qa)} impresiones frente a {sc.num(q1)} el "
-                                 f"día antes y {sc.num(q7)} la semana antes")
+        qa, qesp, qc, qal, _ = evalua(sq, antes, horas, MIN_BASE_BUSQ, CAIDA_BUSQ)
+        res["busq"].append((q, qa, qesp))
+        if qal:
+            res["alarma"].append(f"{c['ruta']}, búsqueda «{q}»: {sc.num(qa)} impresiones; se esperaban "
+                                 + " o ".join(f"{sc.num(e)} (por el {REF[d]})" for d, e in qesp.items())
+                                 + f" ({texto_caidas(qc)})")
     return res
+
+
+def esp_txt(esp, d):
+    return sc.num(esp[d]) if d in esp else "–"
+
+
+def fila(r):
+    e = r.get("esp", {})
+    return (f"| {r['ruta']} | {r['horas']} | {sc.num(r.get('post', 0))} | {esp_txt(e, 24)} | {esp_txt(e, 168)} | "
+            f"{r['estado']} |")
 
 
 def pct_signo(x):
@@ -199,16 +239,16 @@ def principal():
             r = analiza_pagina(s, x, t0, ahora)
             alarmas += r["alarma"]
             filas.append(r)
-        p("| Página | Horas | Impr. después | Día antes | Semana antes | Estado |\n|---|---:|---:|---:|---:|---|")
+        p("| Página | Horas | Impr. después | Esperadas (día antes) | Esperadas (semana antes) | Estado |\n"
+          "|---|---:|---:|---:|---:|---|")
         for r in filas:
-            p(f"| {r['ruta']} | {r['horas']} | {sc.num(r.get('post', 0))} | {sc.num(r.get('b1', 0))} | "
-              f"{sc.num(r.get('b7', 0))} | {r['estado']} |")
+            p(fila(r))
         p("")
         for r in filas[:3]:
             if r["busq"]:
                 p(f"Búsquedas principales de {r['ruta']}: " + "; ".join(
-                    f"«{q}» {sc.num(qa)} / {sc.num(q1)} / {sc.num(q7)}" for q, qa, q1, q7 in r["busq"][:5])
-                  + " (después / día antes / semana antes)\n")
+                    f"«{q}» {sc.num(qa)} / {esp_txt(qe, 24)} / {esp_txt(qe, 168)}" for q, qa, qe in r["busq"][:5])
+                  + " (después / esperadas por el día antes / por la semana antes)\n")
         if alarmas:
             p("**Alarma:**\n" + "\n".join(f"- {x}" for x in alarmas) + "\n")
             if a.simulacro:
@@ -229,12 +269,11 @@ def vigila_fijas(s, ahora, p):
         return
     t0 = ahora - timedelta(hours=RETRASO_H + 25)
     p("### Páginas clave, últimas 24 horas cerradas (vigilancia fija hasta el 30-11)\n")
-    p("| Página | Horas | Impr. | Día antes | Semana antes | Estado |\n|---|---:|---:|---:|---:|---|")
+    p("| Página | Horas | Impr. | Esperadas (día antes) | Esperadas (semana antes) | Estado |\n|---|---:|---:|---:|---:|---|")
     alarmas = []
     for r in fijas:
         x = analiza_pagina(s, {"url": sc.HOST + r, "ruta": r}, t0, ahora)
-        p(f"| {r} | {x['horas']} | {sc.num(x.get('post', 0))} | {sc.num(x.get('b1', 0))} | "
-          f"{sc.num(x.get('b7', 0))} | {x['estado']} |")
+        p(fila(x))
         alarmas += x["alarma"]
     p("")
     if not alarmas:

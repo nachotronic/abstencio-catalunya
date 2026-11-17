@@ -26,7 +26,7 @@ import seo_comun as sc  # noqa: E402
 MIN_IMPR = 100       # impresiones en 28 días para que una página cuente como «con tráfico»
 MIN_IMPR_BUSQ = 10   # una búsqueda con menos impresiones en 28 días no se exige
 TOP = 10
-MAX_PAGINAS = 400    # consultas a GSC por ejecución; si hay más páginas con tráfico, se revisan las de más impresiones
+MAX_PAGINAS = 1500   # si hay más páginas con tráfico, se revisan las de más impresiones
 VENTANA_H = 48
 
 
@@ -103,19 +103,35 @@ def principal():
         avisos.append(f"Hay {len(con)} páginas con tráfico que cambian; se han revisado las {MAX_PAGINAS} con más "
                       "impresiones. Un cambio así de grande conviene partirlo.")
     filas_tabla = []
+    # Búsquedas de cada página: una sola consulta de todo el sitio (búsqueda × página), por tandas de 25.000 filas;
+    # una consulta por página tardaba 2 s cada una (13 minutos con las 400 de #609). Si son pocas páginas, una a una.
+    por_pagina = {}
+    if len(revisar) > 20:
+        quiero = {c["url"] for c in revisar}
+        fila = 0
+        while fila < 250000:
+            filas = sc.consulta(s, ini, fn, ["page", "query"], 25000, inicio_fila=fila)
+            for f in filas:
+                if f["keys"][0] in quiero:
+                    por_pagina.setdefault(f["keys"][0], []).append({"keys": [f["keys"][1]], **{
+                        k: f[k] for k in ("clicks", "impressions")}})
+            if len(filas) < 25000:
+                break
+            fila += 25000
     for c in revisar:
-        busq = sc.consulta(s, ini, fn, ["query"], 100, sc.filtro_pagina(c["url"]))
+        busq = (por_pagina.get(c["url"], []) if len(revisar) > 20
+                else sc.consulta(s, ini, fn, ["query"], 100, sc.filtro_pagina(c["url"])))
         busq = sorted((b for b in busq if b["impressions"] >= MIN_IMPR_BUSQ), key=lambda b: -b["impressions"])[:TOP]
         for b in busq:
             q = b["keys"][0]
             for campo in c["campos"]:
                 viejo, nuevo = c["antes"].get(campo, ""), c["despues"].get(campo, "")
                 if sc.contiene_exacta(viejo, q) and not sc.contiene_exacta(nuevo, q):
-                    fallos.append(f"{c['ruta']}: el {sc.NOMBRES[campo]} nuevo pierde la búsqueda exacta «{q}» "
+                    fallos.append(f"{c['ruta']}: {sc.CON_ARTICULO[campo]} pierde la búsqueda exacta «{q}» "
                                   f"({sc.num(b['impressions'])} impresiones en 28 días).")
                     filas_tabla.append((c["ruta"], q, b, campo, "se pierde tal cual"))
                 elif sc.contiene_palabras(viejo, q) and not sc.contiene_palabras(nuevo, q):
-                    avisos.append(f"{c['ruta']}: el {sc.NOMBRES[campo]} nuevo deja fuera alguna palabra de «{q}» "
+                    avisos.append(f"{c['ruta']}: {sc.CON_ARTICULO[campo]} deja fuera alguna palabra de «{q}» "
                                   f"({sc.num(b['impressions'])} impresiones en 28 días).")
                     filas_tabla.append((c["ruta"], q, b, campo, "faltan palabras"))
 
@@ -124,7 +140,8 @@ def principal():
         p("\n".join(f"- {x}" for x in fallos) + "\n")
     if avisos:
         p(f"### Avisos ({len(avisos)})\n")
-        p("\n".join(f"- {x}" for x in avisos) + "\n")
+        p("\n".join(f"- {x}" for x in avisos[:40]) + (f"\n- … y {len(avisos) - 40} más." if len(avisos) > 40 else "")
+          + "\n")
     if not fallos:
         p("Ninguna página con tráfico pierde ninguna de sus 10 búsquedas principales.\n")
 

@@ -21,6 +21,7 @@ HOST = "https://mapaelectoral.es"
 API = "https://searchconsole.googleapis.com/webmasters/v3"
 CAMPOS = ("title", "h1", "description")
 NOMBRES = {"title": "título", "h1": "H1", "description": "descripción"}
+CON_ARTICULO = {"title": "el título nuevo", "h1": "el H1 nuevo", "description": "la descripción nueva"}
 # Páginas clave (regla 3): ningún cambio de SEO en ellas sin el «Fusiona» de Nacho.
 CLAVE = {"/", "/encuestas/", "/elecciones/resultados-elecciones-generales-2026/"}
 # Etiqueta que se pone en el PR solo cuando Nacho ha dicho «Fusiona» para ese cambio de SEO.

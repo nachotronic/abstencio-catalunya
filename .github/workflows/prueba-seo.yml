@@ -29,7 +29,7 @@ jobs:
           python3 src/control_seo.py --base 5bbe78e4~1 --cabeza 5bbe78e4 --ahora 2026-11-16T15:30:00+00:00 --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
           echo "# 4. Vigilancia de #609 con los datos de ahora" >> $GITHUB_STEP_SUMMARY
           python3 src/vigilar_seo.py --simulacro d85b5b5a --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
-          for h in 2026-11-16T17:00:00+00:00 2026-11-16T20:00:00+00:00; do
+          for h in 2026-11-16T17:30:00+00:00 2026-11-16T20:30:00+00:00 2026-11-17T02:00:00+00:00; do
             echo "# 5. Vigilancia de #609 como si fuera $h" >> $GITHUB_STEP_SUMMARY
             python3 src/vigilar_seo.py --simulacro d85b5b5a --ahora $h --resumen $GITHUB_STEP_SUMMARY; echo "salida: $?" >> $GITHUB_STEP_SUMMARY
           done
@@ -39,13 +39,13 @@ jobs:
         env:
           GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
         run: |
-          python3 - <<'PY' >> $GITHUB_STEP_SUMMARY
+          python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
           import sys; sys.path.insert(0,'src'); import seo_comun as sc
           from datetime import date, timedelta
           s=sc.sesion(); hoy=date.today()
           f=sc.consulta(s,(hoy-timedelta(days=2)).isoformat(),hoy.isoformat(),["hour"],1000,estado="hourly_all")
           print("# Últimas horas del sitio (impresiones)\n"); print("| Hora | Impr. |\n|---|---:|")
-          for r in f[-30:]: print(f"| {r['keys'][0]} | {r['impressions']:.0f} |")
+          for r in f[-40:]: print(f"| {r['keys'][0]} | {r['impressions']:.0f} |")
           f=sc.consulta(s,(hoy-timedelta(days=9)).isoformat(),hoy.isoformat(),["hour"],1000,sc.filtro_pagina("https://mapaelectoral.es/encuestas/"),estado="hourly_all")
           print("\n# /encuestas/ por horas\n"); print("| Hora | Impr. |\n|---|---:|")
           for r in f: print(f"| {r['keys'][0]} | {r['impressions']:.0f} |")
@@ -54,7 +54,7 @@ jobs:
         env:
           GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
         run: |
-          python3 - <<'PY' >> $GITHUB_STEP_SUMMARY
+          python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
           import sys; sys.path.insert(0,'src'); import seo_comun as sc
           from datetime import date, timedelta
           s=sc.sesion(); hoy=date.today(); ini=(hoy-timedelta(days=28)).isoformat(); fn=hoy.isoformat()
