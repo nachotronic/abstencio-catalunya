@@ -1,0 +1,32 @@
+# TEMPORAL (no fusionar): inspección de URL en Search Console y búsquedas de «debate».
+name: Diagnóstico temporal
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: src}
+      - run: pip install -q google-auth requests
+      - env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
+          import sys; sys.path.insert(0,'src'); import seo_comun as sc
+          from datetime import date, timedelta
+          s=sc.sesion(); hoy=date.today()
+          for u in ["elecciones/resultados-elecciones-generales-2026/","encuestas/","actualidad/debate-lasexta-cuerpo-bravo-figaredo-bustinduy-29n/"]:
+              U=sc.HOST+"/"+u
+              r=s.post("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",json={"inspectionUrl":U,"siteUrl":sc.SITIO,"languageCode":"es"})
+              j=r.json().get("inspectionResult",{}).get("indexStatusResult",{})
+              print(f"\n## {u} ({r.status_code})")
+              for k in ["verdict","coverageState","lastCrawlTime","pageFetchState","googleCanonical","indexingState","sitemap","referringUrls"]: print(f"- {k}: {j.get(k)}")
+          f=[{"dimension":"query","operator":"contains","expression":"debate"}]
+          rows=sorted(sc.consulta(s,(hoy-timedelta(days=28)).isoformat(),hoy.isoformat(),["query","page"],500,f),key=lambda r:-r["impressions"])[:30]
+          print("\n## Búsquedas con «debate», 28 días\n\n| Búsqueda · página | Clics | Impr. | Pos. |\n|---|---:|---:|---:|")
+          for r in rows: print(f"| {r['keys'][0]} · {r['keys'][1].replace(sc.HOST,'')} | {r['clicks']:.0f} | {r['impressions']:.0f} | {r['position']:.1f} |")
+          PY
