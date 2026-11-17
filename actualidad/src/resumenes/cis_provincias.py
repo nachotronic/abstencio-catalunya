@@ -240,7 +240,7 @@ preguntas = [
      f'Al menos 300 por provincia y 50 en Ceuta y Melilla, según su ficha técnica. Van de {n(ENT["52"])} en Melilla a {n(ENT["28"])} en Madrid.'),
 ]
 enlaces = (f'{L("cis-preelectoral-29n", "El CIS preelectoral")} · {L("cis-tezanos-estimacion-29n", "El CIS frente a los resultados")} · '
-           f'<a href="{BASE}encuestas/">Todas las encuestas del 29N</a> · <a href="{BASE}encuestas/cis/">Las encuestas del CIS</a>')
+           f'<a href="{BASE}encuestas/">Encuestas elecciones generales 2026</a> · <a href="{BASE}encuestas/cis/">Las encuestas del CIS</a>')
 foot = ('Datos: CIS, estudio 3584 (estimación de escaños por provincias y resultados por provincia); media de encuestas de mapaelectoral.es/encuestas; '
         'resultados de julio de 2023 del Ministerio del Interior. Cálculo: actualidad/src/resumenes/cis_provincias.py.')
 r4 = lambda x: round(float(x), 4)

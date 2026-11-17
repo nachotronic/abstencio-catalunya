@@ -297,7 +297,7 @@ preguntas = [
      f'La media del modelo de Mapa Electoral da al PP el {p(MED1["PP"])} %, al PSOE el {p(MED1["PSOE"])} % y a Vox el {p(MED1["VOX"])} % el 16 de noviembre, frente al {p(MED0["PP"])}, el {p(MED0["PSOE"])} y el {p(MED0["VOX"])} % del 13.'),
 ]
 enlaces = (f'{L("encuestas-40db-psoe-podemos-29n", "La encuesta de El País del 9 de noviembre")} · {L("cis-preelectoral-29n", "El CIS preelectoral")} · '
-           f'{L("dos-semanas-29n-la-semana-en-el-mapa", "A dos semanas del 29N")} · <a href="{BASE}encuestas/">Todas las encuestas del 29N</a>')
+           f'{L("dos-semanas-29n-la-semana-en-el-mapa", "A dos semanas del 29N")} · <a href="{BASE}encuestas/">Encuestas elecciones generales 2026</a>')
 foot = ('Datos: encuestas nacionales publicadas hasta el 16 de noviembre de 2026, recogidas por Electográfica y Wikipedia; media de encuestas y escenario '
         'central de mapaelectoral.es/encuestas del 13 y el 16 de noviembre. Cálculo: actualidad/src/resumenes/semana_campana.py.')
 
