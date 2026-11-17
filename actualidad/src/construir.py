@@ -3377,6 +3377,7 @@ ANTETITULOS = {
     'encuestas-primera-semana-campana-29n': 'Las encuestas, semana a semana',
     'feijoo-pamplona-upn-pp-secciones-29n': 'Feijóo en Pamplona',
     'feijoo-gipuzkoa-hernani-pp-29n': 'Feijóo en Gipuzkoa',
+    'encuestas-error-2023-2019-29n': 'Lo que las encuestas no dicen',
     'mapa-electoral-cataluna-29n': 'El mapa electoral de…',
     'mapa-electoral-comunitat-valenciana-29n': 'El mapa electoral de…',
     'mapa-electoral-castilla-y-leon-29n': 'El mapa electoral de…',
@@ -4950,6 +4951,20 @@ PIEZAS += [
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
         enlaces=[],
         lugar='Gipuzkoa',
+    ),
+    dict(
+        slug='encuestas-error-2023-2019-29n', fecha='2026-11-17',
+        titulo='En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4: si hoy fallaran igual, el PSOE iría primero', serie='29n', figura=0,
+        descripcion='Lo que las encuestas de las elecciones generales del 29N no dicen: cuánto se equivocaron la última vez. En 2023 se quedaron 3,4 puntos cortas con el PSOE; en 2019, 3,1 con Vox.',
+        compara='La media de la última encuesta de cada empresa publicada antes de la veda en julio de 2023 (21 empresas) y en noviembre de 2019 (15), frente al resultado con voto exterior; y la media de encuestas de hoy corregida con esos errores.',
+        limites='Es una cuenta, no una previsión: el error de una elección no tiene por qué repetirse, y las empresas cambian sus métodos. La media de 2019 y 2023 es simple, una encuesta por empresa; la de hoy es la del modelo de mapaelectoral.es/encuestas. Solo se cuentan las encuestas de ámbito nacional recopiladas por Electográfica.',
+        calculo='Para cada elección, la última encuesta nacional de cada empresa publicada en las dos semanas anteriores a la veda (del 3 al 17 de julio de 2023 y del 20 de octubre al 3 de noviembre de 2019). Error: media de las encuestas menos resultado, en puntos de los votos válidos, con los resultados definitivos con voto exterior. Escenarios de hoy: ventaja del PP en la media del modelo a las 6.04 del 17 de noviembre menos lo que se exageró esa ventaja en cada elección. Script: actualidad/src/resumenes/encuestas_error_2023.py.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.electografica.com/', 'Electográfica, encuestas de las generales de noviembre de 2019 y julio de 2023'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a69', 'BOE, Ley Orgánica del Régimen Electoral General, art. 69.7 (veda de encuestas)'),
+                 ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
+        enlaces=[],
+        lugar='España',
     ),
 ]
 
