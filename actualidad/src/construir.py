@@ -14,6 +14,10 @@ from zoneinfo import ZoneInfo
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(RAIZ, 'src'))
 from territorios_rutas import enlaces_actualidad, bloque_municipios_pieza  # noqa: E402  páginas por territorio, municipio y tema
+try:
+    import movil  # noqa: E402  copias WebP de 640 px para las cards de «Sigue leyendo»
+except ImportError:   # sin Pillow: cards con la imagen original
+    movil = None
 SRC = os.path.join(RAIZ, 'actualidad', 'src')
 BASE = 'https://mapaelectoral.es'
 # Editor de todo el sitio: el mismo objeto que atlas/src/paginas.py y src/seo.py
@@ -3543,6 +3547,15 @@ nav.site a.marca{color:var(--fg);font-weight:700;letter-spacing:.06em;text-trans
 .sigue{list-style:none;padding:0;display:grid;gap:12px}
 .sigue a{display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--fg);font-family:var(--ui)}
 .sigue .kicker{display:block;margin-bottom:2px}
+.sigue.seis{grid-template-columns:repeat(3,1fr)}
+.sigue.seis a{padding:0;overflow:hidden;height:100%}
+.sigue.seis img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-bottom:1px solid var(--rule)}
+.sigue.seis img.ilu{object-fit:cover}
+.sigue.seis img.graf{object-fit:contain;background:#fff}
+.sigue.seis .txt{display:block;padding:10px 14px 12px}
+.sigue.seis b{display:block;font-size:.98rem;line-height:1.3}
+@media (max-width:760px){.sigue.seis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.sigue.seis{grid-template-columns:1fr}}
 figure.foto{margin:1.4rem 0 0}figure.foto img{display:block;width:100%;height:auto;border-radius:6px}
 figure.foto figcaption{font-family:var(--ui);font-size:.85rem;color:var(--muted);margin-top:6px}figure.foto a{color:var(--muted)}
 ol.serie{padding-left:1.6rem;font-family:var(--ui);display:grid;gap:8px}
@@ -3716,6 +3729,16 @@ def en_catala(out, p):
     return out
 
 
+def imagen_sigue(q):
+    # imagen de la card de «Sigue leyendo»: la ilustración de la pieza (o la de su serie) en la copia WebP de 640 px
+    # de img/movil/ (src/movil.py), para que pese poco; si no tiene, la miniatura de su primer gráfico (600x400)
+    fo = q.get('foto') or SERIES_FOTO.get(q['serie'])
+    if fo:
+        src = (movil.miniatura(fo['src']) if movil else None) or fo['src']
+        return f'<img class="ilu" src="../../{src}" alt="" width="640" height="360" loading="lazy">'
+    return f'<img class="graf" src="../../img/actualidad/{q["slug"]}.jpg" alt="" width="600" height="400" loading="lazy">'
+
+
 ENCUESTAS_SIGUE = ('<li><a href="../../encuestas/"><span class="kicker">Encuestas</span>'
                    '<b>Encuestas de las elecciones generales del 29N: todas, con sus escaños, actualizadas cada día</b></a></li>'
                    '<li><a href="../../encuestas/simulador-pactos/"><span class="kicker">Pactos</span>'
@@ -3777,14 +3800,19 @@ def pieza(p, todas):
                     f'<li><a href="../{q["slug"]}/"><b>{html.escape(q["titulo"])}</b></a></li>' for q in ventana)
     if len(serie) > len(ventana):
         lista += f'<li class="todas"><a href="{"../../internacional/" if intl else "../index.html#" + p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
-    otras = [q for q in todas if q['serie'] != p['serie'] and (intl or q['serie'] != 'internacional')][::-1][:3]   # las piezas españolas no recomiendan las internacionales
-    sigue = ''.join(f'<li><a href="../{q["slug"]}/"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in otras)
+    # «Sigue leyendo»: seis cards con imagen, las seis piezas más recientes menos la actual (Nacho, 17-11-2026)
+    otras = [q for q in todas if q is not p and (intl or q['serie'] != 'internacional')]   # las piezas españolas no recomiendan las internacionales
+    otras = [q for _, q in sorted(enumerate(otras), key=lambda iq: (iq[1]['fecha'], iq[0]), reverse=True)][:6]
+    cards = ''.join(f'<li><a href="../{q["slug"]}/">{imagen_sigue(q)}<span class="txt"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></span></a></li>' for q in otras)
+    sigue = ''
     if p['serie'] == '29n':   # las piezas del 29N enlazan primero a la página de encuestas, que se actualiza sola
         sigue = ENCUESTAS_SIGUE + sigue
     terr = enlaces_actualidad(p['slug'], '../../')
     # Las piezas internacionales no enlazan municipios españoles: «Nevada» o «El Paso» son estados y ciudades de EE. UU. (fallo del 1-11-2026)
     municipios = '' if p.get('serie') == 'internacional' else bloque_municipios_pieza(main, p['slug'], '../../')   # «Ver datos de estos municipios en el mapa», con los que nombra la pieza
     mas = ('<p class="mas-datos">Más datos: ' + ' · '.join(f'<a href="{u}">{html.escape(t)}</a>' for u, t in terr) + '.</p>') if terr else ''
+    bloque_sigue = f"""<h2>Sigue leyendo</h2><ul class="sigue seis">{cards}</ul>
+<ul class="sigue">{sigue}{TODAS_INTL if intl else ''}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>"""
     ficha = f"""{municipios}
 <h2>Método y fuentes</h2>
 <dl class="ficha">
@@ -3799,11 +3827,12 @@ def pieza(p, todas):
 </dl>
 <h2>Serie «{SERIES[p['serie']]}»: {len(serie)} piezas</h2><ol class="serie">{lista}</ol>
 {mas}
-<h2>Sigue leyendo</h2><ul class="sigue">{sigue}{TODAS_INTL if intl else ''}<li><a href="../index.html"><span class="kicker">Actualidad</span><b>Todas las piezas de actualidad</b></a></li><li><a href="../../atlas/index.html"><span class="kicker">Atlas</span><b>Atlas de las anomalías electorales</b></a></li></ul>
+{bloque_sigue}
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a>{POLITICA}</footer>"""
     main = re.sub(r'<div class="foot">.*?</div>', ficha, main, flags=re.S)
     if '<dl class="ficha">' not in main:   # piezas sin bloque «Método y fuentes»: al menos, el enlace a la metodología general
-        main = main.replace('</main>', '<p class="etiquetas">Cómo se hacen estas piezas: <a href="../metodologia.html">Metodología de Actualidad</a></p>\n</main>', 1)
+        main = main.replace('</main>', '<p class="etiquetas">Cómo se hacen estas piezas: <a href="../metodologia.html">Metodología de Actualidad</a></p>\n'
+                            + ('' if 'class="sigue' in main else bloque_sigue + '\n') + '</main>', 1)   # y las seis cards de «Sigue leyendo»
 
     jsonld = {'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': url + '#articulo',
               'headline': p['titulo'], 'alternativeHeadline': re.sub('<[^>]+>', '', h1), 'description': p['descripcion'],
