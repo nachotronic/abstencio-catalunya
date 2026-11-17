@@ -1,4 +1,4 @@
-# Temporal, solo lectura: audiencia 17-11 a media jornada. No se fusiona a main.
+# Temporal, solo lectura: audiencia 17-11 a media jornada. No se fusiona a main. (2)
 import json,collections,urllib.request,os,datetime
 raw=os.environ.get('CF','')
 tok=next((p.strip().strip('"\'') for p in raw.split() if p.strip().strip('"\'').startswith('cfut_')), raw.strip().strip('"\''))
