@@ -1,0 +1,14 @@
+# Temporal: audiencia martes 17-11 mediodía. No se fusiona a main.
+name: Audiencia martes 17-11 mediodia
+on:
+  push:
+    branches: [claude/project-thread-2n0szg]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-mar17b.yml']
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/mar17b.py
