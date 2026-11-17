@@ -1,0 +1,48 @@
+# TEMPORAL (no fusionar): por qué Google no indexa las fichas sin impresiones.
+name: Diagnóstico temporal
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: "src\nmunicipio/sitemap.xml", sparse-checkout-cone-mode: false}
+      - run: pip install -q google-auth requests
+      - env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
+          import sys, re, random, collections, time; sys.path.insert(0,'src'); import seo_comun as sc
+          from datetime import date, timedelta
+          s=sc.sesion(); hoy=date.today()
+          locs=re.findall(r'<loc>([^<]+)</loc>',open('municipio/sitemap.xml').read())
+          fichas=[u for u in locs if u.count('/')==6]  # https://mapaelectoral.es/municipio/<prov>/<mun>/
+          con=set(); fila=0
+          while True:
+              r=sc.consulta(s,(hoy-timedelta(days=90)).isoformat(),hoy.isoformat(),["page"],25000,inicio_fila=fila)
+              con|={x["keys"][0] for x in r}
+              if len(r)<25000: break
+              fila+=25000
+          sin=[u for u in fichas if u not in con]
+          print(f"Fichas en el sitemap: {len(fichas)}; sin ninguna impresión en 90 días: {len(sin)}; barrios y otras URL en el mismo sitemap: {len(locs)-len(fichas)}\n")
+          random.seed(1); muestra=random.sample(sin,min(150,len(sin)))
+          estados=collections.Counter(); crawl=collections.Counter(); refs=collections.Counter(); ej={}
+          for u in muestra:
+              r=s.post("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",json={"inspectionUrl":u,"siteUrl":sc.SITIO,"languageCode":"es"})
+              j=r.json().get("inspectionResult",{}).get("indexStatusResult",{})
+              e=j.get("coverageState",f"error {r.status_code}"); estados[e]+=1; ej.setdefault(e,u)
+              lc=j.get("lastCrawlTime"); crawl["nunca rastreada" if not lc else ("rastreada desde el 1-11" if lc>="2026-11-01" else "rastreada antes del 1-11")]+=1
+              refs["con páginas que la enlazan (según Google)" if j.get("referringUrls") else "sin páginas que la enlacen (según Google)"]+=1
+          print(f"## Muestra al azar de {len(muestra)} fichas sin impresiones\n")
+          for k,v in estados.most_common(): print(f"- {k}: {v} (p. ej. {ej[k].replace(sc.HOST,'')})")
+          print(); [print(f"- {k}: {v}") for k,v in crawl.most_common()]
+          print(); [print(f"- {k}: {v}") for k,v in refs.most_common()]
+          # Fichas con impresiones, por fecha de alta: ¿avanza la indexación?
+          r=sc.consulta(s,(hoy-timedelta(days=28)).isoformat(),hoy.isoformat(),["date"],100,[{"dimension":"page","operator":"contains","expression":"/municipio/"}])
+          print("\n## Impresiones diarias de /municipio/ (28 días)\n"); print(", ".join(f"{x['keys'][0][5:]}: {x['impressions']:.0f}" for x in r))
+          PY
