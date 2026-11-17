@@ -156,9 +156,8 @@ preguntas = [
 enlaces = f'{L("encuestas-error-2023-2019-29n", "Lo que las encuestas no dicen")} · <a href="{BASE}encuestas/">Las encuestas de las elecciones generales del 29N</a>'
 foot = ('Datos: encuestas publicadas por cada encuestadora, recopiladas por Electográfica y Wikipedia. '
         'Cálculo: actualidad/src/resumenes/encuestas_discrepan.py.')
-H1 = (f'Encuestas de las elecciones generales del 29N: según quién pregunte, el PSOE tiene del {p(R["PSOE"]["min"])} al {p(R["PSOE"]["max"])} %; '
-      f'en Vox casi coinciden')
-DEK = (f'Las {NE} encuestadoras de las últimas tres semanas discrepan en el PSOE y en Sumar más de lo que explicaría el tamaño de sus muestras; en el PP y en Vox, no.')
+H1 = f'Elecciones generales: las encuestas dan al PSOE entre el {p(R["PSOE"]["min"])} y el {p(R["PSOE"]["max"])} %'
+DEK = f'Las {NE} encuestadoras de las últimas tres semanas casi coinciden en Vox. En el PSOE y en Sumar se separan más de lo que explicaría el azar.'
 pieza(SLUG, 'Lo que las encuestas no dicen', H1, DEK, f'{HOY.day} de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
 print('NE', NE, 'PSOE', R['PSOE']['min'], R['PSOE']['max'], 'sin CIS', RS['PSOE']['min'], RS['PSOE']['max'], 'PP', RS['PP']['min'], RS['PP']['max'],
       'VOX', R['VOX']['min'], R['VOX']['max'], 'gap', G_MIN[:2], G_MIN_S[:2], G_MAX[:2], 'PPdel', PP_DELANTE, {k: round(v, 2) for k, v in RAT.items()},
