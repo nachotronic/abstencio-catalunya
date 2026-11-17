@@ -9,12 +9,15 @@ import xml.etree.ElementTree as ET
 
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 VENTANA = datetime.timedelta(hours=36)
+ADELANTO = datetime.timedelta(hours=12)
 
 subidos = set(open(sys.argv[1]).read().split()) if len(sys.argv) > 1 and os.path.exists(sys.argv[1]) else set()
 ahora = datetime.datetime.now(datetime.timezone.utc)
 for item in ET.parse(os.path.join(RAIZ, 'actualidad', 'feed.xml')).getroot().iter('item'):
     fecha = datetime.datetime.strptime(item.findtext('pubDate'), '%a, %d %b %Y %H:%M:%S %z')
-    if not (datetime.timedelta(0) <= ahora - fecha <= VENTANA):
+    # El feed fecha cada pieza a las 8.00 UTC de su día, aunque se fusione antes (17-11-2026: la de Gipuzkoa, fusionada a
+    # las 7.30 UTC, quedaba «en el futuro» y se saltaba): se aceptan hasta 12 horas por delante
+    if not (-ADELANTO <= ahora - fecha <= VENTANA):
         continue
     ruta = urllib.parse.urlparse(item.findtext('link').strip()).path
     if not ruta.endswith('/'):
