@@ -3039,8 +3039,10 @@ def portada():
         franja = re.sub(r'href="(?!https?:)', 'href="' + pre, franja_portada())
         guias = rel(guias_portada())
         votar = rel(votar_portada())
-        if '<!--votar:portada-->' not in t:   # debajo del mapa, antes de las listas
-            t = t.replace('<!--listas:portada-->', '<!--votar:portada--><!--/votar:portada-->\n<!--listas:portada-->', 1)
+        # Las guías prácticas (correo, mesa, tarjeta censal) van debajo del carrusel de guías, no pegadas al mapa
+        # (Nacho, 17-11-2026: «lo podemos bajar»). Mismos enlaces y mismas URL; solo cambia el sitio en la portada.
+        t = re.sub(r'<!--votar:portada-->.*?<!--/votar:portada-->\n?', '', t, flags=re.S)
+        t = t.replace('<!--/elecciones:guias-->', '<!--/elecciones:guias-->\n<!--votar:portada--><!--/votar:portada-->', 1)
         t = re.sub(r'<!--votar:portada-->.*?<!--/votar:portada-->', lambda m: '<!--votar:portada-->' + votar + '<!--/votar:portada-->', t, flags=re.S)
         t = re.sub(r'<!--territorios-->.*?<!--/territorios-->', lambda m: '<!--territorios-->' + franja + '<!--/territorios-->', t, flags=re.S)
         t = re.sub(r'<!--elecciones:guias-->.*?<!--/elecciones:guias-->', lambda m: '<!--elecciones:guias-->' + guias + '<!--/elecciones:guias-->', t, flags=re.S)
