@@ -112,7 +112,7 @@
    "condicion": "D['MENOS']==['Melilla']"
   },
   {
-   "texto": "el diputado que había perdido",
+   "texto": "el diputado que tenía desde 2019",
    "condicion": "True  # Teruel Existe sacó un diputado en noviembre de 2019 y ninguno en 2023 (cifras.json 2019_11)"
   },
   {
