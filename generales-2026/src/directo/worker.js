@@ -46,11 +46,11 @@ export default {
     if (url.pathname === '/vista') {
       const v = /^[0-9a-f]{7,40}$/.test(url.searchParams.get('v') || '') ? url.searchParams.get('v') : null;
       if (!v) return new Response('Falta ?v=<commit>', { status: 400 });
+      if (!url.searchParams.get('directo')) return Response.redirect(`${url.origin}/vista?v=${v}&directo=${url.origin}/resultados.json`, 302);
       const cdn = `${url.origin}/vista/gh/${v}/generales-2026/app.js`;
       const html = (await (await fetch('https://mapaelectoral.es/', { cf: { cacheTtl: 60 } })).text())
         .replace('<head>', '<head><base href="https://mapaelectoral.es/"><meta name="robots" content="noindex">')
-        .replace('src="generales-2026/app.js"', `src="${cdn}"`)
-        .replace('</body>', `<script>if(!/directo=/.test(location.search))location.search='?v=${v}&directo=${url.origin}/resultados.json'</script></body>`);
+        .replace('src="generales-2026/app.js"', `src="${cdn}"`);
       return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
     }
     if (url.pathname === '/estado') return new Response((await env.RESULTADOS.get('estado')) || '{}', { headers: { ...cors, 'Cache-Control': 'no-store', 'Content-Type': 'application/json' } });
