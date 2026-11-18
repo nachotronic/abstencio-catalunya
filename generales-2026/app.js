@@ -829,7 +829,7 @@
     const pp = A[PROVE] ? PROVE : '28', X = A[pp], LP = LISTAS[pp] || {};
     const col = s => (FAM[FCOD.indexOf(famDe(s))] || { color: '#999' }).color;
     const lista = s => { const k = Object.keys(LP).find(x => nor(x) === nor(s)); if (k) return LP[k];
-      const f = famDe(s), m = Object.keys(LP).filter(x => famDe(x) === f); return m.length === 1 ? LP[m[0]] : null; };
+      const f = famDe(s), m = f === 'OTROS' ? [] : Object.keys(LP).filter(x => famDe(x) === f); return m.length === 1 ? LP[m[0]] : null; };
     const dip = X.c.filter(x => x[2]).sort((a, b) => b[2] - a[2] || b[1] - a[1]);
     const S = F.senado && F.senado.CI ? Object.entries(F.senado.CI).filter(([k]) => k.startsWith(pp)) : [];
     const sel = 'font:15px var(--sans);padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);max-width:100%';

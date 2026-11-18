@@ -18,7 +18,7 @@ for r in filas:
 prov = {p: c.most_common(1)[0][0] for p, c in prov.items()}
 out = collections.defaultdict(lambda: collections.defaultdict(list))
 for r in sorted(filas, key=lambda r: int(r['puesto'])):
-    out[prov[r['provincia']]][r['siglas']].append(r['nombre'])
+    out[prov[r['provincia']]][r['siglas'].strip() or r['candidatura'].strip()].append(r['nombre'])   # sin siglas en el BOE, la denominación
 assert len(out) == 52, f'{len(out)} provincias'
 (RAIZ / 'generales-2026/data/candidatos-congreso-29n.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':'), sort_keys=True), encoding='utf-8')
 print(len(out), 'provincias,', sum(len(v) for v in out.values()), 'listas')
