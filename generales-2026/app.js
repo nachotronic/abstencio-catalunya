@@ -746,10 +746,12 @@
     const R = Math.max(1, Math.min(12, Math.round(Math.sqrt(N / 2.4)))), r0 = R === 1 ? 1 : .38;
     const radios = Array.from({ length: R }, (_, k) => R === 1 ? 1 : r0 + (1 - r0) * k / (R - 1)), sr = radios.reduce((a, b) => a + b, 0);
     const n = radios.map(r => Math.max(1, Math.round(N * r / sr))); n[R - 1] += N - n.reduce((a, b) => a + b, 0);
-    const P = []; radios.forEach((r, k) => { for (let j = 0; j < n[k]; j++) { const a = n[k] === 1 ? Math.PI / 2 : Math.PI * (1 - j / (n[k] - 1)); P.push([a, r]); } });
+    // con una sola fila (pocos escaños), los puntos van repartidos por el arco sin tocar los extremos
+    const P = []; radios.forEach((r, k) => { for (let j = 0; j < n[k]; j++) { const a = R === 1 ? Math.PI * (1 - (j + .5) / n[k]) : Math.PI * (1 - j / (n[k] - 1)); P.push([a, r]); } });
     P.sort((p, q) => (q[0] - p[0]) || (p[1] - q[1]));
-    const W = 400, H = 215, cx = 200, cy = 205, Rm = 190;
-    const dot = Math.min(R > 1 ? Rm * (1 - r0) / (R - 1) * .42 : 99, Math.PI * Rm / Math.max(1, n[R - 1] - 1) * .42, 18);
+    const W = 400, H = 215, R0 = 188;
+    const dot = Math.min(R > 1 ? R0 * (1 - r0) / (R - 1) * .42 : 99, Math.PI * R0 / Math.max(2, n[R - 1] - (R === 1 ? 0 : 1)) * .42, 14);
+    const Rm = R0 - dot, cx = 200, cy = H - dot - 2;
     let k = 0, svg = '';
     for (const [col, m, nom] of L) for (let j = 0; j < m; j++, k++) {
       const [a, r] = P[k]; svg += `<circle cx="${(cx + Math.cos(a) * r * Rm).toFixed(1)}" cy="${(cy - Math.sin(a) * r * Rm).toFixed(1)}" r="${dot.toFixed(1)}" fill="${col}"><title>${escH(nom)}</title></circle>`;
