@@ -743,34 +743,76 @@
   const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
   function hemiciclo(L) {   // L: [[color, n, nombre]] en orden; devuelve un SVG
     const N = L.reduce((t, x) => t + x[1], 0); if (!N) return '';
-    const R = 12, r0 = .38, radios = Array.from({ length: R }, (_, k) => r0 + (1 - r0) * k / (R - 1)), sr = radios.reduce((a, b) => a + b, 0);
-    const n = radios.map(r => Math.round(N * r / sr)); n[R - 1] += N - n.reduce((a, b) => a + b, 0);
-    const P = []; radios.forEach((r, k) => { for (let j = 0; j < n[k]; j++) { const a = Math.PI * (1 - j / Math.max(1, n[k] - 1)); P.push([a, r]); } });
+    const R = Math.max(1, Math.min(12, Math.round(Math.sqrt(N / 2.4)))), r0 = R === 1 ? 1 : .38;
+    const radios = Array.from({ length: R }, (_, k) => R === 1 ? 1 : r0 + (1 - r0) * k / (R - 1)), sr = radios.reduce((a, b) => a + b, 0);
+    const n = radios.map(r => Math.max(1, Math.round(N * r / sr))); n[R - 1] += N - n.reduce((a, b) => a + b, 0);
+    const P = []; radios.forEach((r, k) => { for (let j = 0; j < n[k]; j++) { const a = n[k] === 1 ? Math.PI / 2 : Math.PI * (1 - j / (n[k] - 1)); P.push([a, r]); } });
     P.sort((p, q) => (q[0] - p[0]) || (p[1] - q[1]));
-    const W = 400, H = 215, cx = 200, cy = 205, Rm = 190, dot = Rm * (1 - r0) / (R - 1) * .42;
+    const W = 400, H = 215, cx = 200, cy = 205, Rm = 190;
+    const dot = Math.min(R > 1 ? Rm * (1 - r0) / (R - 1) * .42 : 99, Math.PI * Rm / Math.max(1, n[R - 1] - 1) * .42, 18);
     let k = 0, svg = '';
     for (const [col, m, nom] of L) for (let j = 0; j < m; j++, k++) {
       const [a, r] = P[k]; svg += `<circle cx="${(cx + Math.cos(a) * r * Rm).toFixed(1)}" cy="${(cy - Math.sin(a) * r * Rm).toFixed(1)}" r="${dot.toFixed(1)}" fill="${col}"><title>${escH(nom)}</title></circle>`;
     }
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Hemiciclo del Congreso: ${L.map(x => x[2] + ' ' + x[1]).join(', ')}" style="width:100%;max-width:520px;display:block;margin:0 auto">${svg}`
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Hemiciclo: ${L.map(x => x[2] + ' ' + x[1]).join(', ')}" style="width:100%;max-width:520px;display:block;margin:0 auto">${svg}`
       + `<text x="${cx}" y="${cy - 8}" text-anchor="middle" style="font:700 30px var(--sans);fill:currentColor">${N}</text></svg>`;
   }
-  function resultados(y, ord, seats, nat, esc, deInterior) {
+  const ordIzq = (a, b) => { const i = x => { const p = IZQDER.indexOf(FCOD[x]); return p < 0 ? IZQDER.indexOf('OTROS') : p; }; return i(a) - i(b); };
+  const SELR = { cam: 'C', amb: 'TO' }; let RESF = null;
+  // filas [familia, votos, escaños] de una lista de candidaturas de Interior: [siglas, votos, escaños]
+  const porFamilia = c => { const v = {}, e = {}; for (const [s, x, n] of c) { const k = FCOD.indexOf(famDe(s)); if (k < 0) continue; v[k] = (v[k] || 0) + (x || 0); e[k] = (e[k] || 0) + (n || 0); }
+    return Object.keys(v).map(Number).map(k => [k, v[k], e[k]]); };
+  function tablaRes(y, filas, val, conVotos) {   // filas: [k, votos, escaños]
+    filas = filas.filter(([k, v, e]) => e || (conVotos && v / val >= .005))
+      .sort((a, b) => (FCOD[a[0]] === 'OTROS') - (FCOD[b[0]] === 'OTROS') || (conVotos ? b[1] - a[1] : b[2] - a[2]));
+    const mx = Math.max(...filas.map(f => conVotos ? f[1] : f[2]), 1);
+    return '<table style="width:100%;border-collapse:collapse;font:15px/1.3 var(--sans);margin-top:10px"><thead><tr style="color:var(--muted);font-size:13px;text-align:left"><th style="font-weight:500;padding:4px 0">Partido</th><th></th>'
+      + (conVotos ? '<th style="font-weight:500;text-align:right">% voto</th>' : '') + '<th style="font-weight:500;text-align:right;padding-left:8px">Escaños</th></tr></thead><tbody>'
+      + filas.map(([k, v, e]) => `<tr style="border-top:1px solid var(--line)"><td style="padding:5px 8px 5px 0;white-space:nowrap">${escH(nomF(FAM[k], y))}</td>`
+        + `<td style="width:55%"><span style="display:block;height:12px;border-radius:0 3px 3px 0;width:${Math.max(1, (conVotos ? v : e) / mx * 100).toFixed(1)}%;background:${FAM[k].color}"></span></td>`
+        + (conVotos ? `<td style="text-align:right;font-family:var(--mono);font-size:13px">${pct(v / val)}</td>` : '') + `<td style="text-align:right;font-weight:700;padding-left:8px">${e}</td></tr>`).join('')
+      + '</tbody></table>';
+  }
+  function resultados(y, ord, seats, nat, esc, deInterior, F) {
     const sec = $('#resultados-29n'), c = $('#resultados-cuerpo'); if (!sec || !c) return;
+    if (F) RESF = { y, ord, seats, nat, esc, deInterior, F };
+    ({ y, ord, seats, nat, esc, deInterior, F } = RESF);
     const tot = seats.reduce((a, b) => a + b, 0);
     if (!nat.val || !tot) { sec.hidden = true; return; }
     sec.hidden = false;
-    const hem = ord.filter(k => seats[k]).sort((a, b) => { const i = x => { const p = IZQDER.indexOf(FCOD[x]); return p < 0 ? IZQDER.indexOf('OTROS') : p; }; return i(a) - i(b); })
-      .map(k => [FAM[k].color, seats[k], nomF(FAM[k], y)]);
-    const filas = FCOD.map((c, k) => k).filter(k => nat.f[k] / nat.val >= .005 || seats[k]).sort((a, b) => (FCOD[a] === 'OTROS') - (FCOD[b] === 'OTROS') || nat.f[b] - nat.f[a]);
-    const mx = Math.max(...filas.map(k => nat.f[k]));
-    c.innerHTML = `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">Con el ${pct(esc)} escrutado. ${deInterior ? 'Escaños provisionales de Interior' : 'Escaños calculados con el voto escrutado (sin el voto desde el extranjero)'}; la mayoría absoluta, 176.</p>`
-      + hemiciclo(hem)
-      + '<table style="width:100%;border-collapse:collapse;font:15px/1.3 var(--sans);margin-top:10px"><thead><tr style="color:var(--muted);font-size:13px;text-align:left"><th style="font-weight:500;padding:4px 0">Partido</th><th></th><th style="font-weight:500;text-align:right">% voto</th><th style="font-weight:500;text-align:right;padding-left:8px">Escaños</th></tr></thead><tbody>'
-      + filas.map(k => `<tr style="border-top:1px solid var(--line)"><td style="padding:5px 8px 5px 0;white-space:nowrap">${escH(nomF(FAM[k], y))}</td>`
-        + `<td style="width:55%"><span style="display:block;height:12px;border-radius:0 3px 3px 0;width:${Math.max(1, nat.f[k] / mx * 100).toFixed(1)}%;background:${FAM[k].color}"></span></td>`
-        + `<td style="text-align:right;font-family:var(--mono);font-size:13px">${pct(nat.f[k] / nat.val)}</td><td style="text-align:right;font-weight:700;padding-left:8px">${seats[k]}</td></tr>`).join('')
-      + '</tbody></table>';
+    const A = F.ambitos, S = F.senado, cam = SELR.cam === 'S' && S ? 'S' : 'C', D = cam === 'S' ? S : A;
+    const opt = (v, t) => `<option value="${v}"${SELR.amb === v ? ' selected' : ''}>${escH(t)}</option>`;
+    const grupo = (t, O, pre) => O && Object.keys(O).length ? `<optgroup label="${t}">` + Object.entries(O).sort((a, b) => a[1].n.localeCompare(b[1].n, 'es')).map(([k, o]) => opt(pre + k, o.n)).join('') + '</optgroup>' : '';
+    if (!D || !(SELR.amb === 'TO' || (SELR.amb.slice(0, 2) in { CM: 1, PR: 1, CI: 1 } && D[SELR.amb.slice(0, 2)] && D[SELR.amb.slice(0, 2)][SELR.amb.slice(2)]))) SELR.amb = 'TO';
+    const sel = 'font:15px var(--sans);padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);max-width:100%';
+    let h = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px"><select id="r-cam" aria-label="Cámara" style="${sel}"><option value="C">Congreso</option><option value="S"${cam === 'S' ? ' selected' : ''}${S ? '' : ' disabled'}>Senado${S ? '' : ' (aún sin datos)'}</option></select>`
+      + (D ? `<select id="r-amb" aria-label="Territorio" style="${sel};flex:1">${opt('TO', 'España')}${grupo('Comunidades', D.CM, 'CM')}${grupo(cam === 'S' ? 'Circunscripciones' : 'Provincias', cam === 'S' ? D.CI : D.PR, cam === 'S' ? 'CI' : 'PR')}</select>` : '') + '</div>';
+    const X = SELR.amb === 'TO' ? D && D.TO : D && D[SELR.amb.slice(0, 2)][SELR.amb.slice(2)];
+    if (cam === 'C' && !X) {   // sin los totales de Interior: lo calculado con los municipios
+      const hem = ord.filter(k => seats[k]).sort(ordIzq).map(k => [FAM[k].color, seats[k], nomF(FAM[k], y)]);
+      h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">Con el ${pct(esc)} escrutado. ${deInterior ? 'Escaños provisionales de Interior' : 'Escaños calculados con el voto escrutado (sin el voto desde el extranjero)'}; la mayoría absoluta, 176.</p>`
+        + hemiciclo(hem) + tablaRes(y, FCOD.map((_, k) => [k, nat.f[k], seats[k]]), nat.val, true);
+    } else if (cam === 'C') {
+      const fil = porFamilia(X.c), val = fil.reduce((t, f) => t + f[1], 0) + (X.bl || 0);
+      h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">${escH(X.n)}: ${pct(X.esc / 100)} escrutado. Escaños provisionales de Interior${SELR.amb === 'TO' ? '; la mayoría absoluta, 176' : ` (${X.el} en juego)`}.</p>`
+        + hemiciclo(fil.filter(f => f[2]).sort((a, b) => ordIzq(a[0], b[0])).map(([k, , e]) => [FAM[k].color, e, nomF(FAM[k], y)])) + tablaRes(y, fil, val, true);
+    } else if (SELR.amb.startsWith('CI')) {   // una circunscripción del Senado: candidatos, votos y electos
+      const C = X.c.slice().sort((a, b) => b[2] - a[2]), mx = Math.max(...C.map(x => x[2]), 1);
+      const col = s => FAM[FCOD.indexOf(famDe(s))] ? FAM[FCOD.indexOf(famDe(s))].color : '#999';
+      h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">${escH(X.n)}: ${pct(X.esc / 100)} escrutado. ${X.el} senadores en juego; en negrita, los elegidos según Interior.</p>`
+        + hemiciclo(C.filter(x => x[3]).sort((a, b) => ordIzq(FCOD.indexOf(famDe(a[0])), FCOD.indexOf(famDe(b[0])))).map(x => [col(x[0]), 1, x[1]]))
+        + '<table style="width:100%;border-collapse:collapse;font:14px/1.3 var(--sans);margin-top:10px"><tbody>' + C.slice(0, 16).map(x => `<tr style="border-top:1px solid var(--line)${x[3] ? ';font-weight:700' : ''}">`
+          + `<td style="padding:5px 8px 5px 0">${escH(x[1])}<br><span class="mut" style="font-weight:400;font-size:12px">${escH(x[0])}</span></td><td style="width:35%"><span style="display:block;height:10px;border-radius:0 3px 3px 0;width:${Math.max(1, x[2] / mx * 100).toFixed(1)}%;background:${col(x[0])}"></span></td>`
+          + `<td style="text-align:right;font-family:var(--mono);font-size:13px">${num(x[2])}</td></tr>`).join('') + '</tbody></table>';
+    } else {
+      const fil = porFamilia(X.c.map(([s, e]) => [s, 0, e]));
+      h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">${escH(X.n)}: ${pct(X.esc / 100)} escrutado. Senadores elegidos en las urnas según Interior${SELR.amb === 'TO' ? ` (${X.el}); faltan los que designan los parlamentos autonómicos` : ''}.</p>`
+        + hemiciclo(fil.filter(f => f[2]).sort((a, b) => ordIzq(a[0], b[0])).map(([k, , e]) => [FAM[k].color, e, nomF(FAM[k], y)])) + tablaRes(y, fil, 1, false);
+    }
+    c.innerHTML = h;
+    const rc = $('#r-cam'), ra = $('#r-amb');
+    if (rc) rc.onchange = () => { SELR.cam = rc.value; SELR.amb = 'TO'; resultados(); };
+    if (ra) ra.onchange = () => { SELR.amb = ra.value; resultados(); };
   }
   function pactos(F, esc) {
     const c = $('#pactos-cuerpo'); if (!c || !F.escanos) return;
@@ -925,7 +967,7 @@
       .sort((a, b) => (seats[b] - seats[a]) || (nat.f[b] - nat.f[a]));
     const tot = seats.reduce((s, x) => s + x, 0) || 1;
     pactos(F, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
-    resultados(y, ord, seats, nat, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0), !!(F.escanos && Object.keys(F.escanos).length));
+    resultados(y, ord, seats, nat, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0), !!(F.escanos && Object.keys(F.escanos).length), F);
     $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${nomF(FAM[k], y)}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
     $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${nomF(FAM[k], y)} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
