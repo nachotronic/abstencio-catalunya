@@ -24,7 +24,7 @@
 export default {
   async scheduled(event, env, ctx) {
     // el resultado de cada lectura (ok o el error) queda en KV para verlo en GET /estado, sin datos ni claves
-    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m })); }));
+    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV })); }));
   },
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -284,6 +284,7 @@ export function avancesMedios(texto) {
 }
 const horaMedios = f => /^\d{10}$/.test(f) ? `20${f.slice(0, 2)}-${f.slice(2, 4)}-${f.slice(4, 6)}T${f.slice(6, 8)}:${f.slice(8, 10)}:00+01:00` : null;
 
+let MUESTRA_AV = '';   // primera línea TO de los avances, para /estado (diagnóstico)
 const PROVINCIAS = Array.from({ length: 52 }, (_, i) => String(i + 1).padStart(2, '0'));
 
 async function porMedios(base, env) {
@@ -299,7 +300,8 @@ async function porMedios(base, env) {
   if (!filas.length) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
   let escanos = null, avances = null;
   try { escanos = escanosMedios(await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env)); } catch (e) { /* sin escaños esta vez */ }
-  try { avances = avancesMedios(await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env)); } catch (e) { /* sin avances esta vez */ }
+  try { const t = await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env); MUESTRA_AV = (lineas(t).find(l => /^\d{10};?TO/.test(l)) || lineas(t)[0] || '').slice(0, 200); avances = avancesMedios(t); }
+  catch (e) { MUESTRA_AV = 'error: ' + e.message; }
   const out = normaliza(filas, previo);
   // Hora: la del último registro con mesas escrutadas; sin escrutinio, la de los avances; sin nada, la de la lectura.
   const conVotos = filas.filter(x => x.a[1] > 0).map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (UTC+1)
