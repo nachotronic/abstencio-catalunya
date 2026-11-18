@@ -795,7 +795,7 @@
       + (D ? `<select id="r-amb" aria-label="Territorio" style="${sel};flex:1">${opt('TO', 'España')}${grupo('Comunidades', D.CM, 'CM')}${grupo(cam === 'S' ? 'Circunscripciones' : 'Provincias', cam === 'S' ? D.CI : D.PR, cam === 'S' ? 'CI' : 'PR')}</select>` : '') + '</div>';
     const X = SELR.amb === 'TO' ? D && D.TO : D && D[SELR.amb.slice(0, 2)][SELR.amb.slice(2)];
     const T = F.ant23 && F.ant23[cam === 'S' ? 'senado' : 'ambitos'], X23 = T && (SELR.amb === 'TO' ? T.TO : T[SELR.amb.slice(0, 2)] && T[SELR.amb.slice(0, 2)][SELR.amb.slice(2)]);
-    const e23 = !X23 ? null : cam === 'S' ? porFamilia(SELR.amb.startsWith('CI') ? X23.c.filter(x => x[3]).map(x => [x[0], 0, 1]) : X23.c.map(([s, e]) => [s, 0, e])).map(([k, , e]) => [k, e])
+    const e23 = !X23 ? null : cam === 'S' ? porFamilia(X23.c.map(([s, e]) => [s, 0, e])).map(([k, , e]) => [k, e])
       : porFamilia(X23.c).map(([k, , e]) => [k, e]);
     const E23 = e23 ? Object.fromEntries(e23) : null;
     if (cam === 'C' && !X) {   // sin los totales de Interior: lo calculado con los municipios

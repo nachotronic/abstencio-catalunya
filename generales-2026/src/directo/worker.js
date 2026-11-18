@@ -320,6 +320,19 @@ export function senadoMedios(texto) {
   }
   return R;
 }
+// Senado 2023 (fijos/…/ANT/3/07-23): cada elemento es código, siglas y senadores electos, en todos los niveles
+export function senado23Medios(texto) {
+  const R = { TO: null, CM: {}, CI: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_SEN, [4, 55, 3]), t = c[1];
+    if (!['TO', 'CM', 'CI'].includes(t)) continue;
+    const cand = [];
+    for (let k = ANCHO_SEN.length; k + 2 < c.length; k += 3) if (c[k + 1] && ent(c[k + 2])) cand.push([c[k + 1], ent(c[k + 2])]);
+    const o = { n: c[5], el: ent(c[18]), c: cand };
+    if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.CI[c[3].padStart(2, '0') + c[4]] = o;
+  }
+  return R;
+}
 let MUESTRA_SEN = '';
 
 async function pideTexto(url, env) {
@@ -401,12 +414,11 @@ async function porMedios(base, env) {
   }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
   // 2023 (ficheros fijos de Interior), para comparar: se leen una vez y se guardan aparte
-  let ant = await env.RESULTADOS.get('ant23', 'json');
+  let ant = await env.RESULTADOS.get('ant23b', 'json');
   if (!ant) try {
     ant = { ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
-      senado: senadoMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
-    for (const k of ['ambitos', 'senado']) for (const t of ['CM', 'PR', 'CI']) if (ant[k][t]) for (const o of Object.values(ant[k][t])) if (k === 'senado' && t === 'CI') o.c = o.c.filter(x => x[3]);
-    if (ant.ambitos.TO) await env.RESULTADOS.put('ant23', JSON.stringify(ant)); else ant = null;
+      senado: senado23Medios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
+    if (ant.ambitos.TO) await env.RESULTADOS.put('ant23b', JSON.stringify(ant)); else ant = null;
   } catch (e) { ant = null; }
   return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}), ...(ant ? { ant23: ant } : {}) };
 }
