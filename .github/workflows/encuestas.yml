@@ -39,7 +39,7 @@ jobs:
             nuevas=0
             # sin encuestas nuevas, la página y la card de portada se rehacen igual una vez al día (Nacho, 28-10-2026),
             # para que la fecha de «Actualizado» sea la de hoy
-            if grep -q "datetime=\"$d\"" encuestas/index.html; then echo "Sin encuestas nuevas; ya actualizada hoy"; exit 0; fi
+            if grep -q "datetime=\"$d" encuestas/index.html; then echo "Sin encuestas nuevas; ya actualizada hoy"; exit 0; fi
           fi
           # estimación del modelo con la media nueva (Nacho eligió la actualización automática el 22-10-2026); si
           # falla, se publica igual la página de encuestas con la estimación anterior

@@ -1092,6 +1092,16 @@ def main():
     encs = carga()
     resumen = json.load(open(DATOS / 'resumen.json'))
     hoy = date.fromisoformat(resumen['descargado'][:10])
+    # 18-11-2026: fecha Y hora de la actualización (Madrid) en dateModified, article:modified_time y la firma visible.
+    # Los que nos superan en «encuestas elecciones generales 2026» salen con «hace 15 horas»; con solo la fecha, Google no puede.
+    try:
+        from zoneinfo import ZoneInfo
+        _m = datetime.fromisoformat(resumen['descargado'].replace('Z', '+00:00')).astimezone(ZoneInfo('Europe/Madrid'))
+        momento, hora = _m.replace(second=0, microsecond=0).isoformat(), f'{_m.hour}:{_m.minute:02d}'
+        if _m.date() != hoy:
+            momento, hora = hoy.isoformat(), ''
+    except (ValueError, KeyError, ImportError):
+        momento, hora = hoy.isoformat(), ''
     ultima = date.fromisoformat(encs[0]['fin'])
     serie = medianas(encs, max(ultima, hoy))
     titular, entradilla, p1, p2, ultimas, con_esc, mayoria = textos(encs, hoy)
@@ -1142,6 +1152,17 @@ def main():
     cis = next((e for e in encs if e['casa'] == 'CIS' and not e['reest']), None)
     med = serie[-1]
     n_desde23 = sum(1 for e in desde23 if not e['reest'])
+    # 18-11-2026: la entradilla visible empieza por la última encuesta, con su día y sus cifras (lo que enseñan en el
+    # snippet los que nos superan en Google). Solo el párrafo visible: title, H1, meta description y URL no cambian.
+    ultima_dek = ''
+    _u = next((e for e in desde23 if not e['reest']), None)
+    if _u:
+        _d = date.fromisoformat(_u.get('publicado') or _u['fin'])
+        _cuando = f'{DIAS_SEMANA[_d.weekday()]} {_d.day} de {fecha_larga(_d.isoformat()).split(" de ")[1]}'
+        _cifras = ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(_u["voto"][k])}' for k, n, *_ in PRINCIPALES[:3] if k in _u['voto'])
+        _cifras = ' y '.join(_cifras.rsplit(', ', 1))
+        ultima_dek = (f'La última encuesta, de {_u["casa"]}' + (f' para {_u["medio"]}' if _u['medio'] else '')
+                      + (f', publicada el {_cuando}' if _u.get('publicado') else f', con trabajo de campo hasta el {_cuando}') + f', da {_cifras}. ')
     faq = [('¿Quién gana las elecciones generales según las encuestas?', p1.strip()),
            ('¿Cuál es la última encuesta de las generales?',
             f'La última publicada es la de {ult["casa"]}{" para " + ult["medio"] if ult["medio"] else ""}'
@@ -1213,7 +1234,7 @@ def main():
     insertable(h1, med, hemi, n_hemi, actual, hoy)
     jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': URL + '#articulo', 'headline': h1,
                'description': descripcion, 'url': URL, 'mainEntityOfPage': URL, 'inLanguage': 'es',
-               'datePublished': '2026-10-22', 'dateModified': hoy.isoformat(), 'image': [imagen],
+               'datePublished': '2026-10-22', 'dateModified': momento, 'image': [imagen],
                'about': {'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'},   # no Event: Search Console lo marca (PR #52)
                'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO,
                'isAccessibleForFree': True},
@@ -1224,7 +1245,7 @@ def main():
                                f'({n_desde23} encuestas a {actual}), con encuestadora, medio, fechas de trabajo de campo, tamaño de la muestra y '
                                'enlace a la publicación original. Se actualiza cada día con Electográfica y la tabla de Wikipedia.'),
                'url': URL, 'license': 'https://creativecommons.org/licenses/by-sa/4.0/', 'isAccessibleForFree': True,
-               'inLanguage': 'es', 'datePublished': '2026-10-22', 'dateModified': hoy.isoformat(),
+               'inLanguage': 'es', 'datePublished': '2026-10-22', 'dateModified': momento,
                'temporalCoverage': f'2023-07-24/{hoy.isoformat()}', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
                'keywords': ['encuestas', 'sondeos', 'elecciones generales', 'España', '29N', 'estimación de voto', 'escaños', 'Congreso'],
                'measurementTechnique': 'Encuestas de opinión publicadas por cada encuestadora (teléfono, internet o panel), recogidas tal como se publicaron',
@@ -1241,8 +1262,8 @@ def main():
     main_html = f"""<main>
 <p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
-<p class="dek">{html.escape(entradilla)}</p>
-<p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy.isoformat()}">{actual}</time></p>
+<p class="dek">{html.escape(ultima_dek + entradilla)}</p>
+<p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{momento}">{actual}{', a las ' + hora if hora else ''}</time></p>
 <figure>
 <figcaption><span class="t">Voto estimado en cada encuesta, último año</span><span class="s">Cada punto es una encuesta; la línea es la mediana de la última encuesta de cada encuestadora en los {VENTANA_MEDIANA} días anteriores (con tres o más). Porcentaje sobre voto válido. Sumar incluye el Frente Amplio y sus socios.</span></figcaption>
 <div class="chart" id="graf"></div>
@@ -1300,7 +1321,7 @@ def main():
     bsky = f'https://bsky.app/intent/compose?text={quote(texto + " " + enlace + chr(10) + chr(10) + etiquetas)}'
     pagina = pagina.replace('<!--compartir-->', f'<p class="descargas">Compartir el resumen de hoy: <a href="{html.escape(intento)}" target="_blank" rel="noopener">en X</a> · '
                             f'<a href="{html.escape(bsky)}" target="_blank" rel="noopener">en Bluesky</a></p>', 1)
-    pagina = fechas_meta(pagina, '2026-10-22', hoy.isoformat())
+    pagina = fechas_meta(pagina, '2026-10-22', momento)
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'
