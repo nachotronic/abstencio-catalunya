@@ -1,4 +1,4 @@
-# Temporal, solo lectura: audiencia 17-11 a media jornada. No se fusiona a main. (2)
+# Temporal, solo lectura: audiencia 17-11 a media jornada. No se fusiona a main. (3)
 import json,collections,urllib.request,os,datetime
 raw=os.environ.get('CF','')
 tok=next((p.strip().strip('"\'') for p in raw.split() if p.strip().strip('"\'').startswith('cfut_')), raw.strip().strip('"\''))
@@ -15,7 +15,7 @@ def grp(dims,limit,t1,t2,extra=''):
     return gql(q)
 Z=lambda d:d.strftime('%Y-%m-%dT%H:%M:00Z')
 now=datetime.datetime.utcnow().replace(second=0,microsecond=0)
-D0=datetime.datetime(2026,11,16,23); corte=now-D0
+D0=datetime.datetime(2026,11,17,23); corte=now-D0
 print('CORTE',Z(now),corte)
 def tot(a,b,extra=''):
     g=grp(['date'],10,Z(a),Z(b),extra); return sum(r['sum']['visits'] for r in g),sum(r['count'] for r in g)
