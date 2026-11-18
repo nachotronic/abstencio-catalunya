@@ -36,6 +36,7 @@ assert all(c.startswith('08') for c in P['mun']) and '08019' in P['mun'], 'la pr
 b = dict(zip(P['siglas'], P['mun']['08019'][5:])); bt = dict(zip(T['siglas'], T['mun']['08019'][5:]))
 assert all(bt.get(s, 0) == v for s, v in b.items()) and sum(b.values()) == sum(bt.values()), 'provincia y total no cuadran'
 f = sys.argv[1]
+if 'avances' in T: print('  avances:', T['avances']['es'], '· provincia 08:', P.get('avances', {}).get('pr'))
 print(f"  {T['actualizado']}: {len(mun)} municipios, {esc} con escrutinio ({esc/len(mun):.0%}); provincia 08 {len(json.dumps(P))//1024} KB, total {len(json.dumps(T))//1024} KB")
 if f == '1':   # con todo escrutado, Madrid tiene que salir igual que en el simulacro de origen
     S = json.load(open('../../../data/simulacro.json')); a = S['mun']['28079']; m = T['mun']['28079']
