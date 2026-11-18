@@ -750,7 +750,7 @@
     for (const [col, m, nom] of L) {
       const a1 = a0 - Math.PI * m / N, big = (a0 - a1) > Math.PI ? 1 : 0;
       svg += `<path d="M${pto(a0, R)} A${R},${R} 0 ${big} 1 ${pto(a1, R)} L${pto(a1, r)} A${r},${r} 0 ${big} 0 ${pto(a0, r)}Z" fill="${col}" stroke="var(--bg)" stroke-width="${chico ? 1 : 1.5}"${chico ? ' opacity=".5"' : ''}><title>${escH(nom)}: ${m}</title></path>`;
-      if (!chico && m / N >= .045) { const am = (a0 + a1) / 2; svg += `<text x="${(cx + Math.cos(am) * (R + r) / 2).toFixed(1)}" y="${(cy - Math.sin(am) * (R + r) / 2 + 6).toFixed(1)}" text-anchor="middle" style="font:700 17px var(--sans);fill:#fff">${m}</text>`; }
+      if (m / N >= (chico ? .06 : .045)) { const am = (a0 + a1) / 2; svg += `<text x="${(cx + Math.cos(am) * (R + r) / 2).toFixed(1)}" y="${(cy - Math.sin(am) * (R + r) / 2 + (chico ? 4 : 6)).toFixed(1)}" text-anchor="middle" style="font:700 ${chico ? 12 : 17}px var(--sans);fill:${chico ? 'var(--ink)' : '#fff'}">${m}</text>`; }
       a0 = a1;
     }
     const may = Math.floor(N / 2) + 1;
@@ -775,7 +775,7 @@
     return '<table style="width:100%;border-collapse:collapse;font:15px/1.3 var(--sans);margin-top:10px"><thead><tr style="color:var(--muted);font-size:13px;text-align:left"><th style="font-weight:500;padding:4px 0">Partido</th><th></th>'
       + (conVotos ? '<th style="font-weight:500;text-align:right">% voto</th>' : '') + '<th style="font-weight:500;text-align:right;padding-left:8px">Escaños</th>' + (E23 ? '<th style="font-weight:500;text-align:right;padding-left:8px">2023</th>' : '') + '</tr></thead><tbody>'
       + filas.map(([k, v, e]) => `<tr style="border-top:1px solid var(--line)"><td style="padding:5px 8px 5px 0;white-space:nowrap">${escH(nomF(FAM[k], y))}</td>`
-        + `<td style="width:55%"><span style="display:block;height:12px;border-radius:0 3px 3px 0;width:${Math.max(1, (conVotos ? v : e) / mx * 100).toFixed(1)}%;background:${FAM[k].color}"></span></td>`
+        + `<td style="width:55%"><span style="display:block;height:12px;border-radius:0 3px 3px 0;width:${Math.max(1, (conVotos ? v : e) / mx * 100).toFixed(1)}%;background:${FAM[k].color}"></span>${conVotos ? `<span class="mut" style="display:block;font-size:11px;line-height:1.2">${num(Math.round(v))} votos</span>` : ''}</td>`
         + (conVotos ? `<td style="text-align:right;font-family:var(--mono);font-size:13px">${pct(v / val)}</td>` : '') + `<td style="text-align:right;font-weight:700;padding-left:8px">${e}</td>${E23 ? `<td class="mut" style="text-align:right;padding-left:8px">${E23[k] || 0}</td>` : ''}</tr>`).join('')
       + '</tbody></table>';
   }
