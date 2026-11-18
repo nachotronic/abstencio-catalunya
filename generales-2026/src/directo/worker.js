@@ -80,8 +80,9 @@ export function porProvincia(out) {
 const UMBRALES = [5, 10, 25, 50, 75, 90, 95, 99];
 const fmt = x => x.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 // PP y PSOE con sus listas territoriales (PSC, PSE-EE, UPN-PP…), como en la página; el resto, cada candidatura con sus siglas
-const MISMO = [['PP', /^(PP\b|PP-|P\.P\.|UPN-PP)/], ['PSOE', /PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/]];
-const NOMBRE = { 'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria',
+// Frente Amplio (Sumar, IU y otros; en Canarias, con Podemos y NC-BC) va con nombres distintos en cada comunidad: se suman
+const MISMO = [['Frente Amplio', /FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|PODEMOS, IU, SUMAR/], ['PP', /^(PP\b|PP-|P\.P\.|UPN-PP)/], ['PSOE', /PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/]];
+const NOMBRE = { 'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'JXCAT': 'Junts', 'TERUEL EXISTE': 'Teruel Existe', 'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria',
     'U.P.N.': 'UPN', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'CUP-PR': 'CUP', 'SALF': 'Se Acabó la Fiesta' };
 export const grupoSiglas = s => { const a = (s || '').toUpperCase().trim(); for (const [g, r] of MISMO) if (r.test(a)) return g; return NOMBRE[a] || s; };
 export function resumenEspana(out) {

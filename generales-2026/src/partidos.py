@@ -119,7 +119,8 @@ REGLAS_PROPIAS = [
 ]
 # Y las siglas de Coalición Canaria (CCa), que familia() reconoce con el nombre (_AMBIGUAS) y el directo, que solo tiene
 # las siglas, mandaba a «Otros»: van delante de NC, por NC-CCa (2019).
-REGLAS_DIRECTO = [['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA']] + REGLAS_PROPIAS
+# 29N: la lista conjunta de Canarias (NC-BC, Podemos, IU y Sumar) va con el Frente Amplio, no con Nueva Canarias
+REGLAS_DIRECTO = [['SUMAR', 'PODEMOS, IU, SUMAR'], ['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA']] + REGLAS_PROPIAS
 # Nombre de la familia en las elecciones anteriores a un año (la pieza lo usa en leyenda y fichas)
 ALIAS = {'TE': [['2020', '¡Teruel Existe!']], 'PP': [['1989', 'AP']], 'SUMAR': [['1977', 'PCE y otros obreros'], ['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
 
@@ -131,7 +132,7 @@ _REGLAS = [
     ('VOX', r"^VOX$"),
     ('CS', r"^(C'S|C´S|CS)$|-CS$"),
     ('UPYD', r"^UPYD$"),
-    ('SUMAR', r"^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^UNIDAS\b|^IU\b|^IULV|^IU-|^EUPV-UPEC|^PCE$|^PCE-|^PCA-PCE|^PSUC|^IC-EV$|^IC-?V\b|^ICV\b|^EUIA$|^EU-PV$|^EUPV$"),
+    ('SUMAR', r"FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^UNIDAS\b|^IU\b|^IULV|^IU-|^EUPV-UPEC|^PCE$|^PCE-|^PCA-PCE|^PSUC|^IC-EV$|^IC-?V\b|^ICV\b|^EUIA$|^EU-PV$|^EUPV$"),
     ('ERC', r"^ERC|^ESQUERRA$"),
     ('JUNTS', r"^JXCAT|^JUNTS|[- ]JUNTS$"),
     ('PNV', r"EAJ-PNV|^E\.A\.J\.-P\.N\.V\.|^PNV"),

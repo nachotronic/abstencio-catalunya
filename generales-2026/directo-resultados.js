@@ -27,9 +27,11 @@
     // (solo las listas del mismo partido: UPN, que en 2023 fue por su cuenta, sale aparte aunque el mapa la sume al PP)
     const MISMO = { PP: /^(PP\b|PP-|P\.P\.|UPN-PP)/, PSOE: /PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/ };
     // siglas de Interior -> nombre de lectura (las que no están aquí salen tal cual; revisar con getCandidaturas antes del 29N)
-    const NOMBRE = { 'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria',
+    const NOMBRE = { 'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'JXCAT': 'Junts', 'TERUEL EXISTE': 'Teruel Existe', 'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria',
     'U.P.N.': 'UPN', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'CUP-PR': 'CUP', 'SALF': 'Se Acabó la Fiesta' };
+    const FA = /FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|PODEMOS, IU, SUMAR/;   // Frente Amplio: un nombre distinto en cada comunidad, se suman
     const grupo = s => { const f = famDe(s), a = (s || '').toUpperCase().trim();
+      if (FA.test(a)) return { k: 'FA', n: 'Frente Amplio', col: (FAM.SUMAR || {}).color || '#999' };
       return MISMO[f] && MISMO[f].test(a) ? { k: f, n: FAM[f].nombre, col: FAM[f].color } : { k: 's:' + s, n: NOMBRE[a] || s, col: (FAM[f] || {}).color || '#999' }; };
     const nombre = (META.directo && META.directo.nombre) || '29N';
     const tick = () => fetch(url + (url.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' })

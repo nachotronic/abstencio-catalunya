@@ -712,9 +712,9 @@
   let jornadaHecha = false;
   // siglas de Interior -> partido del simulador de pactos (encuestas/simulador-pactos/); UPN-PP, lista conjunta, cuenta como PP
   const SIMK = [[/^(PP\b|PP-|P\.P\.|UPN-PP)/, 'PP'], [/PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/, 'PSOE'], [/^VOX/, 'VOX'],
-    [/SUMAR/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
+    [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
     [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
-  const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Sumar', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
+  const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Frente Amplio', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
   function pactos(F, esc) {
     const c = $('#pactos-cuerpo'); if (!c || !F.escanos) return;
     const E = {}; let tot = 0;
@@ -724,7 +724,7 @@
     }
     if (!tot) return;
     const suma = ks => ks.reduce((t, k) => t + (E[k] || 0), 0);
-    const P = [['PP y Vox', ['PP', 'VOX', 'UPN']], ['PSOE, Sumar y sus socios de 2023', ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC']],
+    const P = [['PP y Vox', ['PP', 'VOX', 'UPN']], ['PSOE, Frente Amplio y los socios de 2023', ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC']],
       ['PP y PSOE', ['PP', 'PSOE']]].map(([n, ks]) => [n, suma(ks)]);
     const link = (RAIZ ? new URL('../encuestas/simulador-pactos/', RAIZ).href : 'encuestas/simulador-pactos/') + '#e='
       + Object.entries(E).filter(([k, n]) => k !== 'OTROS' && n).map(([k, n]) => k + '.' + n).join(',');
