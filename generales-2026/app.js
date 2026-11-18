@@ -403,8 +403,22 @@
     A.a = B;   // cada fila sabe cuál es la otra lista, para saber cuál de las dos es la más votada
     return [A, B];
   }
-  function ficha(d, i, isSec) {
-    const y = st.y, mi = isSec ? MUN.cod.indexOf(d.cod[i].slice(0, 5)) : i;
+  // avances del 23J por municipio ([% a las 14.00, % a las 18.00] del censo), de data/censo/avances_participacion.csv;
+  // se cargan al llegar el primer avance del 29N, para comparar en la ficha
+  let AV23 = null;
+  function ficha(d, i, isSec, yo) {
+    const eAv = !yo && !isSec && ELEC.find(x => x.cod === st.y && x.avance);
+    if (eAv) {   // un avance del 29N: participación a esa hora, la del 23J a la misma hora y, debajo, el resultado de 2023
+      const k = /a2$/.test(eAv.cod) ? 1 : 0, ahora = d[eAv.cod + '_part'] ? d[eAv.cod + '_part'][i] : null;
+      const antes = AV23 && AV23[MUN.cod[i]] ? AV23[MUN.cod[i]][k] / 100 : null, hora = k ? '18.00' : '14.00';
+      const dif = ahora != null && antes != null ? (ahora - antes) * 100 : null;
+      let h = `<div class="t-h">${MUN.nombre[i]}</div><div class="t-s">${MUN.provs[MUN.prov[i]] || ''} · ${eAv.nombre}</div>`
+        + `<dl class="t-kv"><dt>Participación ahora</dt><dd>${ahora != null ? pct(ahora) : 'sin dato'}</dd>`
+        + `<dt>En 2023 a las ${hora}</dt><dd>${pct(antes)}</dd>`
+        + (dif != null ? `<dt>Diferencia</dt><dd>${(dif > 0 ? '+' : dif < 0 ? '−' : '') + Math.abs(dif).toFixed(1).replace('.', ',')} puntos</dd>` : '') + '</dl>';
+      return h + '<div class="t-s" style="margin-top:10px">Resultado en las generales de 2023</div>' + ficha(d, i, false, '2023_07').replace(/^<div class="t-h">.*?<\/div><div class="t-s">.*?<\/div>/, '');
+    }
+    const y = yo || st.y, mi = isSec ? MUN.cod.indexOf(d.cod[i].slice(0, 5)) : i;
     const rows = FAM.map((f, k) => ({ f, v: d[y + '_' + f.cod] ? d[y + '_' + f.cod][i] : null, n: nomL(f, y, mi) }))
       .flatMap(r => r.f.cod === 'SUMAR' ? dosListas(r, d, i, y, mi) : [r])
       .filter(r => r.v != null && r.v > 0.005).sort((a, b) => b.v - a.v).slice(0, 6);
@@ -756,6 +770,7 @@
           disp.push(cod);
         });
         if (disp.length) {
+          if (!AV23) { AV23 = {}; fetch(RAIZ + 'data/avances_2023.json').then(r => r.json()).then(j => { AV23 = j; }).catch(() => {}); }
           opciones();
           // al llegar un avance nuevo, el mapa pasa a él
           if (!modoAvance || disp.length > avVisto) { st.y = disp[disp.length - 1]; st.v = 'part'; selV.value = 'part'; }
