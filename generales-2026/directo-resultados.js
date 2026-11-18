@@ -47,7 +47,11 @@
       ct += a[0]; ce += a[1]; vot += a[2]; bl += a[3];
       for (let k = 0; k < F.siglas.length; k++) votos[k] += a[5 + k] || 0;
     }
-    if (!ce) { caja.querySelector('.d-cuerpo').innerHTML = `<p class="d-estado">${esc(nombre)} · todavía no hay mesas escrutadas.</p>`; return; }
+    // Avances de participación de Interior (en %): España en el total; la provincia, en su fichero
+    const AV = F.avances && F.avances.es;
+    const avTxt = AV && AV.some(x => x != null) ? '<p data-tipo="dato">Participación según los avances de Interior: '
+      + AV.map((x, i) => x == null ? '' : `${i ? '2.º' : '1.er'} avance, ${pct(x / 100)}`).filter(Boolean).join(' · ') + '.</p>' : '';
+    if (!ce) { caja.querySelector('.d-cuerpo').innerHTML = `<p class="d-estado">${esc(nombre)} · todavía no hay mesas escrutadas.</p>` + avTxt; return; }
     const G = {};
     F.siglas.forEach((s, k) => { if (!votos[k]) return; const g = grupo(s); (G[g.k] ||= { ...g, v: 0, e: 0 }).v += votos[k]; });
     let conEsc = false;

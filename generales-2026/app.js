@@ -716,7 +716,16 @@
       col.gana[i] = g;
     }
     // sin ninguna mesa escrutada (el Worker ya encendido antes del cierre) el mapa sigue en 2023: no se cambia a un 29N vacío
-    if (!nat.ce) return;
+    if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
+      const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [];
+      if (!av.length || !$('#directo')) return;
+      $('#directo').hidden = false;
+      $('#d-nombre').textContent = META.directo.nombre || y;
+      $('#d-esc').textContent = pct(0);
+      $('#d-estado').textContent = `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`;
+      $('#d-seats').innerHTML = ''; $('#d-leg').innerHTML = '';
+      return;
+    }
     Object.entries(col).forEach(([k, v]) => MUN[y + '_' + k] = v);
     delete partyMax[y + '_' + st.party]; Object.keys(partyMax).forEach(k => k.startsWith(y) && delete partyMax[k]);
     // escaños: D'Hondt por provincia con barrera del 3% del voto válido de la circunscripción
@@ -744,7 +753,7 @@
     $('#d-nombre').textContent = (F.simulacro ? 'Simulacro con datos del 23J · ' : '') + (META.directo.nombre || y);
     $('#d-esc').textContent = pct(F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
     const t = F.actualizado ? new Date(F.actualizado) : new Date();
-    $('#d-estado').textContent = 'actualizado a las ' + t.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+    $('#d-estado').textContent = 'actualizado a las ' + t.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
     const ord = FCOD.map((c, k) => k).filter(k => seats[k] > 0 || nat.f[k] / nat.val > .01)
       .sort((a, b) => (seats[b] - seats[a]) || (nat.f[b] - nat.f[a]));
     const tot = seats.reduce((s, x) => s + x, 0) || 1;
