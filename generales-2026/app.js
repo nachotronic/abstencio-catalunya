@@ -453,6 +453,12 @@
       <dt>Edad media</dt><dd>${VARS.edad_media.fmt(d.edad_media[i])}</dd>
       <dt>Población extranjera</dt><dd>${pct(d.extranjeros[i])}</dd>
       <dt>Habitantes</dt><dd>${num(d.poblacion[i])}</dd></dl>`;
+    // el 29N, en cada municipio, el resultado de 2023 debajo para comparar
+    if (!yo && !isSec && META.directo && y === META.directo.eleccion && d['2023_07_part']) {
+      const v = ficha(d, i, false, '2023_07'), tb = v.match(/<table class="t-bars">[\s\S]*?<\/table>/);
+      h += '<div class="t-s" style="margin-top:10px">En las generales de 2023</div>' + (tb ? tb[0] : '<p class="t-na">Sin resultados.</p>')
+        + `<dl class="t-kv"><dt>Participación en 2023</dt><dd>${pct(d['2023_07_part'][i])}</dd></dl>`;
+    }
     const b = isSec && BAR ? BAR.r[BAR.s[d.cod[i]]] : null;
     if (b) h += `<p class="t-bar"><a href="${new URL('../' + b[1], RAIZ || location.href).href}">Ver el barrio: ${escH(b[0])} →</a></p>`;
     return h;
@@ -720,6 +726,39 @@
     [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^COMPROM/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
     [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
   const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Frente Amplio', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
+  // Debajo del mapa: hemiciclo (350 escaños, de izquierda a derecha) y barras de voto válido por partido
+  const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
+  function hemiciclo(L) {   // L: [[color, n, nombre]] en orden; devuelve un SVG
+    const N = L.reduce((t, x) => t + x[1], 0); if (!N) return '';
+    const R = 12, r0 = .38, radios = Array.from({ length: R }, (_, k) => r0 + (1 - r0) * k / (R - 1)), sr = radios.reduce((a, b) => a + b, 0);
+    const n = radios.map(r => Math.round(N * r / sr)); n[R - 1] += N - n.reduce((a, b) => a + b, 0);
+    const P = []; radios.forEach((r, k) => { for (let j = 0; j < n[k]; j++) { const a = Math.PI * (1 - j / Math.max(1, n[k] - 1)); P.push([a, r]); } });
+    P.sort((p, q) => (q[0] - p[0]) || (p[1] - q[1]));
+    const W = 400, H = 215, cx = 200, cy = 205, Rm = 190, dot = Rm * (1 - r0) / (R - 1) * .42;
+    let k = 0, svg = '';
+    for (const [col, m, nom] of L) for (let j = 0; j < m; j++, k++) {
+      const [a, r] = P[k]; svg += `<circle cx="${(cx + Math.cos(a) * r * Rm).toFixed(1)}" cy="${(cy - Math.sin(a) * r * Rm).toFixed(1)}" r="${dot.toFixed(1)}" fill="${col}"><title>${escH(nom)}</title></circle>`;
+    }
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Hemiciclo del Congreso: ${L.map(x => x[2] + ' ' + x[1]).join(', ')}" style="width:100%;max-width:520px;display:block;margin:0 auto">${svg}`
+      + `<text x="${cx}" y="${cy - 8}" text-anchor="middle" style="font:700 30px var(--sans);fill:currentColor">${N}</text></svg>`;
+  }
+  function resultados(y, ord, seats, nat, esc, deInterior) {
+    const sec = $('#resultados-29n'), c = $('#resultados-cuerpo'); if (!sec || !c) return;
+    const tot = seats.reduce((a, b) => a + b, 0);
+    if (!nat.val || !tot) { sec.hidden = true; return; }
+    sec.hidden = false;
+    const hem = ord.filter(k => seats[k]).sort((a, b) => { const i = x => { const p = IZQDER.indexOf(FCOD[x]); return p < 0 ? IZQDER.indexOf('OTROS') : p; }; return i(a) - i(b); })
+      .map(k => [FAM[k].color, seats[k], nomF(FAM[k], y)]);
+    const filas = FCOD.map((c, k) => k).filter(k => nat.f[k] / nat.val >= .005 || seats[k]).sort((a, b) => nat.f[b] - nat.f[a]);
+    const mx = Math.max(...filas.map(k => nat.f[k]));
+    c.innerHTML = `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">Con el ${pct(esc)} escrutado. ${deInterior ? 'Escaños provisionales de Interior' : 'Escaños calculados con el voto escrutado (sin el voto desde el extranjero)'}; la mayoría absoluta, 176.</p>`
+      + hemiciclo(hem)
+      + '<table style="width:100%;border-collapse:collapse;font:15px/1.3 var(--sans);margin-top:10px"><thead><tr style="color:var(--muted);font-size:13px;text-align:left"><th style="font-weight:500;padding:4px 0">Partido</th><th></th><th style="font-weight:500;text-align:right">% voto</th><th style="font-weight:500;text-align:right;padding-left:8px">Escaños</th></tr></thead><tbody>'
+      + filas.map(k => `<tr style="border-top:1px solid var(--line)"><td style="padding:5px 8px 5px 0;white-space:nowrap">${escH(nomF(FAM[k], y))}</td>`
+        + `<td style="width:55%"><span style="display:block;height:12px;border-radius:0 3px 3px 0;width:${Math.max(1, nat.f[k] / mx * 100).toFixed(1)}%;background:${FAM[k].color}"></span></td>`
+        + `<td style="text-align:right;font-family:var(--mono);font-size:13px">${pct(nat.f[k] / nat.val)}</td><td style="text-align:right;font-weight:700;padding-left:8px">${seats[k]}</td></tr>`).join('')
+      + '</tbody></table>';
+  }
   function pactos(F, esc) {
     const c = $('#pactos-cuerpo'); if (!c || !F.escanos) return;
     const E = {}; let tot = 0;
@@ -753,7 +792,10 @@
     pac.className = 'wide'; pac.id = 'pactos-29n';
     pac.innerHTML = '<h2 style="font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px">Posibles pactos</h2><div id="pactos-cuerpo">'
       + '<p>Cuando empiece el escrutinio, aquí verás qué pactos suman los 176 escaños de la mayoría absoluta con los escaños del recuento de Interior.</p></div>';
-    mapa.after(pac);
+    const res = document.createElement('section');   // gráfico de votos y hemiciclo, con el escrutinio
+    res.className = 'wide'; res.id = 'resultados-29n'; res.hidden = true;
+    res.innerHTML = '<h2 style="font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px">Resultados del 29N</h2><div id="resultados-cuerpo"></div>';
+    mapa.after(res); res.after(pac);
     // y ninguna pieza ni tarjeta de encuestas en la portada ese día (veda hasta las 21:00 y, después, ya no tocan)
     document.querySelectorAll('section.del-atlas a, section.del-atlas li, section.del-atlas article').forEach(a => {
       if (/encuesta|sondeo|40dB|\bCIS\b|simulador de pactos/i.test(a.textContent)) (a.closest('li') || a).hidden = true;
@@ -870,6 +912,7 @@
       .sort((a, b) => (seats[b] - seats[a]) || (nat.f[b] - nat.f[a]));
     const tot = seats.reduce((s, x) => s + x, 0) || 1;
     pactos(F, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
+    resultados(y, ord, seats, nat, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0), !!(F.escanos && Object.keys(F.escanos).length));
     $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${nomF(FAM[k], y)}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
     $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${nomF(FAM[k], y)} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
