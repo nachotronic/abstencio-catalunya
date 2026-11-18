@@ -8,6 +8,7 @@ Esa comparación se hace sin el CIS, que tiene un método propio y una muestra m
 Uso, desde la raíz: python3 actualidad/src/resumenes/encuestas_discrepan.py
 """
 import importlib.util
+import json
 import statistics
 from datetime import date, timedelta
 from math import sqrt
@@ -19,7 +20,7 @@ A = BASE + 'actualidad/'
 L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
 p = lambda v: n(v, 1)
 SLUG = 'cuanto-discrepan-encuestas-29n'
-HOY = date(2026, 11, 17)
+HOY = date(2026, 11, 18)
 VENTANA = 21
 
 _spec = importlib.util.spec_from_file_location('enc_construir', RAIZ / 'encuestas/src/construir.py')
@@ -42,7 +43,8 @@ NE, NS = len(E), len(SIN)
 assert all(e['voto']['SUMAR'] >= 5 for e in E if enc.clave(e['casa']) == '40db'), 'Sumar de 40dB sin coaliciones: falta #630'
 
 PARTIDOS = [('PP', 'PP'), ('PSOE', 'PSOE'), ('VOX', 'Vox'), ('SUMAR', 'Sumar')]
-muestra = lambda e: min(max(int(str(e.get('muestra') or 1000).replace('.', '') or 1000), 500), 3000)
+n_decl = lambda e: int(str(e.get('muestra') or 1000).replace('.', '') or 1000)
+muestra = lambda e: min(max(n_decl(e), 500), 3000)
 
 
 def resumen(k, grupo):
@@ -64,6 +66,11 @@ G_MIN, G_MAX = GAP[0], GAP[-1]
 G_MIN_S = min((g for g in GAP if not es_cis(g[2])), key=lambda t: t[0])
 PP_DELANTE = sum(g > 0 for g, *_ in GAP)
 RAT = {k: RS[k]['sd'] / RS[k]['azar'] for k in RS}
+N_TOPE = sum(n_decl(e) > 3000 for e in SIN)
+N_BAJO = sum(n_decl(e) < 500 for e in SIN)
+assert N_BAJO == 0
+_ini = {nom(e): e['inicio'] for e in E}
+assert _ini['SW Demoscopia'] == '2026-10-26' and _ini['SocioMétrica'] == '2026-09-01', _ini
 CIS = next(e for e in E if es_cis(e))
 
 # Cifras que sostienen el texto: si cambian, hay que releerlo
@@ -118,7 +125,7 @@ for k, et in PARTIDOS:
 g_azar = figura(f'En el PSOE y en Sumar las encuestadoras discrepan más de lo que explicaría el tamaño de sus muestras; en el PP y en Vox, no',
                 f'Desviación típica entre las {NS} encuestadoras sin el CIS, en puntos: la real y la que darían solo sus muestras si todas midieran lo mismo',
                 barras(filas2, max(r['sd'] for r in RS.values()) * 1.25, 'Discrepancia real y por azar entre encuestadoras', W=400, ml=110, fmt=p),
-                'Fuente: encuestas recopiladas por Electográfica y Wikipedia. Azar: √(media de p·(1 − p)/n), con n las entrevistas declaradas, entre 500 y 3.000. Cálculo propio.',
+                f'Fuente: encuestas recopiladas por Electográfica y Wikipedia. Azar: √(media de p·(1 − p)/n), con n las entrevistas declaradas, con un mínimo de 500 y un tope de 3.000 ({N_TOPE} declaran más). Cálculo propio.',
                 [('Lo que daría el azar', 'var(--muted)')],
                 (['Partido', 'Mínimo', 'Máximo', 'Desviación real', 'Por azar', 'Real / azar'],
                  [[et, f'{p(RS[k]["min"])} ({RS[k]["qmin"]})', f'{p(RS[k]["max"])} ({RS[k]["qmax"]})', p(RS[k]['sd']), p(RS[k]['azar']), p(RAT[k])]
@@ -143,7 +150,7 @@ cuerpo = f'''
 {g_gap}
 <p data-tipo="patron">Toda encuesta tiene un margen de error, y dos encuestas bien hechas pueden diferir solo por azar. En el PP y en Vox, sin contar el CIS, las encuestadoras no se separan más de lo que daría ese azar: sus diferencias son {p(RAT["PP"])} y {p(RAT["VOX"])} veces lo que explicaría el tamaño de sus muestras. En el PSOE son {p(RAT["PSOE"])} veces, y en Sumar, {p(RAT["SUMAR"])}. Ahí ya no es solo la muestra.</p>
 {g_azar}
-<p data-tipo="contexto">Lo que separa a unas de otras no es solo la muestra. Cada encuestadora decide a quién entrevista, por teléfono o por internet, y cómo pasa de las respuestas a una estimación de voto. En Sumar pesa también qué se cuenta: 40dB, por ejemplo, publica aparte a Frente Amplio y a Compromís, Ara Més y Unidad del Pueblo Canario, y aquí se suman, como en las demás.</p>
+<p data-tipo="contexto">Lo que separa a unas de otras no es solo la muestra. Cada encuestadora decide a quién entrevista, por teléfono o por internet, y cómo pasa de las respuestas a una estimación de voto. Tampoco preguntaron a la vez: cada una terminó su trabajo de campo un día distinto de estas tres semanas, y algunas acumulan entrevistas de antes, como SW Demoscopia, desde el 26 de octubre, y SocioMétrica, desde el 1 de septiembre. En Sumar pesa también qué se cuenta: 40dB, por ejemplo, publica aparte a Frente Amplio y a Compromís, Ara Més y Unidad del Pueblo Canario, y aquí se suman, como en las demás.</p>
 <p data-tipo="contexto">Una cifra sola no dice cuál acierta. En 2023, {L("encuestas-error-2023-2019-29n", "las últimas encuestas exageraron la ventaja del PP")}. Por eso en {L_ENC} enseñamos la mediana, que no se mueve por una encuesta que se sale del grupo, y la tabla con cada una.</p>
 '''
 
@@ -158,7 +165,14 @@ foot = ('Datos: encuestas publicadas por cada encuestadora, recopiladas por Elec
         'Cálculo: actualidad/src/resumenes/encuestas_discrepan.py.')
 H1 = f'Elecciones generales: las encuestas dan al PSOE entre el {p(R["PSOE"]["min"])} y el {p(R["PSOE"]["max"])} %'
 DEK = f'Las {NE} encuestadoras de las últimas tres semanas casi coinciden en Vox. En el PSOE y en Sumar se separan más de lo que explicaría el azar.'
-pieza(SLUG, 'Lo que las encuestas no dicen', H1, DEK, f'{HOY.day} de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+DATOS = {'NE': NE, 'NS': NS, 'N_TOPE': N_TOPE, 'VENTANA': VENTANA, 'PP_DELANTE': PP_DELANTE,
+         'R': {k: {x: (float(v) if isinstance(v, (int, float)) else v) for x, v in R[k].items()} for k in R},
+         'RS': {k: {x: (float(v) if isinstance(v, (int, float)) else v) for x, v in RS[k].items()} for k in RS},
+         'RAT': {k: float(v) for k, v in RAT.items()},
+         'GAP': [[float(g), nm] for g, nm, _ in GAP],
+         'E': [{'casa': nom(e), 'medio': e.get('medio') or '', 'fin': e['fin'], 'muestra': muestra(e), **{k: e['voto'][k] for k, _ in PARTIDOS}} for e in E]}
+datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
+pieza(SLUG, 'Lo que las encuestas no dicen', H1, DEK, f'{HOY.day} de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('NE', NE, 'PSOE', R['PSOE']['min'], R['PSOE']['max'], 'sin CIS', RS['PSOE']['min'], RS['PSOE']['max'], 'PP', RS['PP']['min'], RS['PP']['max'],
       'VOX', R['VOX']['min'], R['VOX']['max'], 'gap', G_MIN[:2], G_MIN_S[:2], G_MAX[:2], 'PPdel', PP_DELANTE, {k: round(v, 2) for k, v in RAT.items()},
       {k: (round(RS[k]['sd'], 2), round(RS[k]['azar'], 2)) for k in RS})
