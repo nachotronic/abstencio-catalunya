@@ -61,7 +61,7 @@
   // participación: la escala depende del tipo de elección (en europeas vota mucha menos gente)
   const PARTDOM = { generales: [.55, .85], municipales: [.45, .85], europeas: [.30, .75] };
   // el 29N antes del escrutinio pinta la participación de un avance de Interior, con su propia escala (ver aplica)
-  const domPart = y => PARTDOM[(ELEC.find(e => e.cod === y) || {}).avance ? 'avance' : tipoDe(y)];
+  const domPart = y => (ELEC.find(e => e.cod === y) || {}).dom || PARTDOM[tipoDe(y)];
   const VARS = {
     gana: { name: 'Partido más votado' },
     party: { name: 'Voto a un partido' },
@@ -692,7 +692,19 @@
     q.sort((a, b) => b[0] - a[0]); const out = new Array(votos.length).fill(0);
     q.slice(0, n).forEach(([v, k]) => { if (v > 0) out[k]++; }); return out;
   }
-  let modoAvance = false;
+  let modoAvance = false, avVisto = 0;
+  // botones de participación del recuadro del directo: 1.er avance, 2.º avance y final (esta, solo con escrutinio)
+  function botonesAvance(y, disp, final) {
+    const B = [[y + 'a1', '1.er avance'], [y + 'a2', '2.º avance'], [y, 'Participación final']];
+    $('#d-leg').innerHTML = '<span class="mut" style="width:100%">Participación en el mapa:</span>' + B.map(([c, t]) => {
+      const ok = c === y ? final : disp.includes(c), on = st.v === 'part' && st.y === c;
+      return `<button type="button" data-av="${c}"${ok ? '' : ' disabled'} style="font:inherit;padding:4px 10px;border-radius:6px;border:1px solid currentColor;`
+        + `background:${on ? 'var(--ink, #222)' : 'transparent'};color:${on ? 'var(--bg, #fff)' : 'inherit'};opacity:${ok ? 1 : .4};cursor:${ok ? 'pointer' : 'default'}">${t}</button>`;
+    }).join('');
+    $('#d-leg').querySelectorAll('button[data-av]').forEach(b => b.onclick = () => {
+      st.y = b.dataset.av; st.v = 'part'; selV.value = 'part'; selE.value = st.y; sync(); botonesAvance(y, disp, final);
+    });
+  }
   function aplica(F, first) {
     const y = F.eleccion || META.directo.eleccion, fam = F.siglas.map(famDe), fk = fam.map(c => FCOD.indexOf(c));
     const n = MUN.cod.length, idx = {}; MUN.cod.forEach((c, i) => idx[c] = i);
@@ -728,26 +740,35 @@
       $('#d-estado').textContent = av.length ? `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`
         : `mesas constituidas: ${me.constituidas.toLocaleString('es-ES')} de ${me.total.toLocaleString('es-ES')}`;
       $('#d-seats').innerHTML = ''; $('#d-leg').innerHTML = '';
-      // con la participación del avance municipio a municipio, el mapa la pinta (vista «Participación» del 29N)
+      // con los avances municipio a municipio, el mapa pinta la participación: un botón por avance (y la final, con el escrutinio)
       if (F.avmun && av.length) {
-        const ya = av[av.length - 1] / 100;
-        col.part = new Array(n).fill(null);
-        for (const [c, p] of Object.entries(F.avmun)) { const i = idx[c.padStart(5, '0')]; if (i != null) col.part[i] = p / 100; }
-        Object.entries(col).forEach(([k, v]) => MUN[y + '_' + k] = v);
-        PARTDOM.avance = [Math.max(0, ya - .15), Math.min(1, ya + .15)];   // escala centrada en el dato de España
-        const nomAv = (META.directo.nombre || y) + ` · ${av.length > 1 ? '2.º' : '1.er'} avance`;
-        const e = ELEC.find(e => e.cod === y);
-        if (e) Object.assign(e, { nombre: nomAv, avance: true }); else { ELEC.push({ cod: y, nombre: nomAv, tipo: 'generales', avance: true, secciones: false }); }
-        opciones();
-        if (!modoAvance) { modoAvance = true; st.y = y; st.v = 'part'; selV.value = 'part'; }
-        selE.value = st.y;
-        sync();
+        const disp = [];
+        [0, 1].forEach(k => {
+          const part = new Array(n).fill(null); let hay = false;
+          for (const [c, p] of Object.entries(F.avmun)) { const i = idx[c.padStart(5, '0')], x = Array.isArray(p) ? p[k] : (k ? null : p); if (i != null && x != null) { part[i] = x / 100; hay = true; } }
+          if (!hay) return;
+          const ya = F.avances.es[k] != null ? F.avances.es[k] / 100 : .4, cod = y + 'a' + (k + 1);
+          const vacio = Object.fromEntries(Object.entries(col).map(([c, v]) => [c, v.slice()]));
+          Object.entries({ ...vacio, part }).forEach(([c, v]) => MUN[cod + '_' + c] = v);
+          const e = { cod, nombre: (META.directo.nombre || y) + (k ? ' · 2.º avance' : ' · 1.er avance'), tipo: 'generales', avance: true, secciones: false,
+            dom: [Math.max(0, ya - .15), Math.min(1, ya + .15)] };   // escala centrada en el dato de España de ese avance
+          const i = ELEC.findIndex(x => x.cod === cod); if (i >= 0) ELEC[i] = e; else ELEC.push(e);
+          disp.push(cod);
+        });
+        if (disp.length) {
+          opciones();
+          // al llegar un avance nuevo, el mapa pasa a él
+          if (!modoAvance || disp.length > avVisto) { st.y = disp[disp.length - 1]; st.v = 'part'; selV.value = 'part'; }
+          modoAvance = true; avVisto = disp.length;
+          botonesAvance(y, disp, false);
+          selE.value = st.y;
+          sync();
+        }
       }
       return;
     }
-    // primer escrutinio después de los avances: el 29N vuelve a ser unas generales y el mapa pasa a «Partido más votado»
-    const eAv = ELEC.find(e => e.cod === y && e.avance);
-    if (eAv) { Object.assign(eAv, { nombre: META.directo.nombre || y, avance: false }); opciones(); if (modoAvance) { first = true; modoAvance = false; st.v = 'gana'; } }
+    // primer escrutinio después de los avances: el mapa pasa a «Partido más votado» del 29N; los avances siguen en el selector
+    if (modoAvance) { modoAvance = false; first = true; st.v = 'gana'; }
     Object.entries(col).forEach(([k, v]) => MUN[y + '_' + k] = v);
     delete partyMax[y + '_' + st.party]; Object.keys(partyMax).forEach(k => k.startsWith(y) && delete partyMax[k]);
     // escaños: D'Hondt por provincia con barrera del 3% del voto válido de la circunscripción

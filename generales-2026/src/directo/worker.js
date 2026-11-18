@@ -284,14 +284,15 @@ export function avancesMedios(texto) {
   }
   return out;
 }
-// Avances por municipio (getAvancesMunicipios/2/<pp>/<envío>), distrito 99 -> {cod5: participación del último avance, en %}
+// Avances por municipio (getAvancesMunicipios/2/<pp>/<envío>), distrito 99 -> {cod5: [1.er avance, 2.º avance]}, en % (null si falta)
 const ANCHO_AVM = [10, 2, 2, 1, 3, 2, 50, 2, 2, 5, 5, 5, 8, 8, 8];
 export function avancesMunicipios(texto) {
   const out = {};
   for (const l of lineas(texto)) {
     const c = campos(l, ANCHO_AVM, CAND_AV);
     if (c[5] !== '99') continue;
-    for (const i of [1, 0]) if (ent(c[15 + 3 * i])) { out[c[2].padStart(2, '0') + c[4].padStart(3, '0')] = ent(c[17 + 3 * i]) / 100; break; }
+    const av = [0, 1].map(i => ent(c[15 + 3 * i]) ? ent(c[17 + 3 * i]) / 100 : null);
+    if (av.some(x => x != null)) out[c[2].padStart(2, '0') + c[4].padStart(3, '0')] = av;
   }
   return out;
 }
