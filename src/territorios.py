@@ -800,10 +800,7 @@ def pagina_ciudad(cod):
             + f'En 2023, {g23} y votó el {pct(r["part"])} del censo.')
     if q_censo and len(desc) + len(num(censo_29n(cod)[2])) + 12 <= 160:
         desc += f' {num(censo_29n(cod)[2])} electores.'
-    if NOCHE_29N:   # noche electoral: el mismo arranque, para que el cambio de título sea mínimo
-        titulo = f'Resultados elecciones generales 2026 en {en_x}: escrutinio del 29N en directo'
-        desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, según avanza el escrutinio de Interior, '
-                f'frente a 2023: entonces {gano_txt(r, ccaa)[0].lower()}{gano_txt(r, ccaa)[1:]} y votó el {pct(r["part"])} del censo.')
+    # NOCHE_29N no toca title, description, H1 ni canonical: Nacho, 18-11-2026, «no cambiaremos urls ni títulos».
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     faq_html, faq_ld = faq(([q_censo] if q_censo else []) + q_mesas)
@@ -2729,11 +2726,9 @@ def tema_resultados(resumen):
     ruta = 'elecciones/resultados-elecciones-generales-2026/'
     # Hasta que se encienda NOCHE_29N no se promete directo: depende del acceso a los datos de Interior (editor, 10-11-2026).
     # «Resultados elecciones generales 2026» delante, que es la búsqueda (Search Console, 16-11-2026); «en directo» solo con datos.
-    titulo = ('Resultados elecciones generales 2026 (29N): escrutinio en directo, votos y escaños' if NOCHE_29N else
-              'Resultados elecciones generales 2026 (29N): votos y escaños, y los de 2023 por provincia')
-    desc = ('Resultados de las elecciones generales del 29 de noviembre de 2026: el escrutinio en directo en el mapa, provincia a provincia y barrio a barrio, '
-            'y el resultado de 2023, el punto de partida de cada partido.' if NOCHE_29N else
-            'Resultados de las elecciones generales del 29 de noviembre de 2026: aquí publicaremos los resultados del 29N en cuanto se conozcan. '
+    # Title y description fijos también con NOCHE_29N (Nacho, 18-11-2026: «no cambiaremos urls ni títulos»).
+    titulo = 'Resultados elecciones generales 2026 (29N): votos y escaños, y los de 2023 por provincia'
+    desc = ('Resultados de las elecciones generales del 29 de noviembre de 2026: aquí publicaremos los resultados del 29N en cuanto se conozcan. '
             'Hasta entonces, el resultado de 2023 por provincia, el punto de partida de cada partido.')
     pt = SIS['partidos']
     e = T.ESPANA
