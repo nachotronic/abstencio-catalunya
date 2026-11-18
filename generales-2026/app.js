@@ -476,7 +476,8 @@
   // ---------- leyenda
   // elecciones sin resultados por sección (anteriores a 2004, municipales de 2007, directo): se avisa en la leyenda
   // nombre de una familia en una elección: antes de 1989 el PP era AP; antes de 2011, la izquierda abertzale era HB / EH
-  const nomF = (f, y) => { const a = (META.alias || {})[f.cod] || [], yr = y.replace(/^\D/, '').slice(0, 4), m = a.find(([hasta]) => yr < hasta); return m ? m[1] : f.nombre; };
+  // el 29N, la familia de Sumar es el Frente Amplio (Podemos va aparte, con su propia familia): META.directo.nombres
+  const nomF = (f, y) => { const dn = (META.directo || {}).nombres; if (dn && dn[f.cod] && y.startsWith((META.directo || {}).eleccion || '-')) return dn[f.cod]; const a = (META.alias || {})[f.cod] || [], yr = y.replace(/^\D/, '').slice(0, 4), m = a.find(([hasta]) => yr < hasta); return m ? m[1] : f.nombre; };
   // Segunda República (1933 y 1936): se votaba a candidatos en listas abiertas, con varios votos por elector
   const REPUBLICA = y => /^19[23]\d_/.test(y);
   const nomE = y => { const e = ELEC.find(e => e.cod === y); return e.nombre + (e.secciones === false ? ' (solo por municipio)' : ''); };
@@ -712,7 +713,7 @@
   let jornadaHecha = false;
   // siglas de Interior -> partido del simulador de pactos (encuestas/simulador-pactos/); UPN-PP, lista conjunta, cuenta como PP
   const SIMK = [[/^(PP\b|PP-|P\.P\.|UPN-PP)/, 'PP'], [/PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/, 'PSOE'], [/^VOX/, 'VOX'],
-    [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
+    [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^COMPROM/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
     [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
   const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Frente Amplio', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
   function pactos(F, esc) {
@@ -724,7 +725,7 @@
     }
     if (!tot) return;
     const suma = ks => ks.reduce((t, k) => t + (E[k] || 0), 0);
-    const P = [['PP y Vox', ['PP', 'VOX', 'UPN']], ['PSOE, Frente Amplio y los socios de 2023', ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC']],
+    const P = [['PP y Vox', ['PP', 'VOX', 'UPN']], ['PSOE, Frente Amplio, Podemos y los socios de 2023', ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC']],
       ['PP y PSOE', ['PP', 'PSOE']]].map(([n, ks]) => [n, suma(ks)]);
     const link = (RAIZ ? new URL('../encuestas/simulador-pactos/', RAIZ).href : 'encuestas/simulador-pactos/') + '#e='
       + Object.entries(E).filter(([k, n]) => k !== 'OTROS' && n).map(([k, n]) => k + '.' + n).join(',');
@@ -745,6 +746,10 @@
     pac.innerHTML = '<h2 style="font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px">Posibles pactos</h2><div id="pactos-cuerpo">'
       + '<p>Cuando empiece el escrutinio, aquí verás qué pactos suman los 176 escaños de la mayoría absoluta con los escaños del recuento de Interior.</p></div>';
     mapa.after(pac);
+    // y ninguna pieza ni tarjeta de encuestas en la portada ese día (veda hasta las 21:00 y, después, ya no tocan)
+    document.querySelectorAll('section.del-atlas a, section.del-atlas li, section.del-atlas article').forEach(a => {
+      if (/encuesta|sondeo|40dB|\bCIS\b|simulador de pactos/i.test(a.textContent)) (a.closest('li') || a).hidden = true;
+    });
     let tras = pac;
     ['h-del-actualidad', 'h-del-listas', 'h-del-mapa'].map(sec).forEach(x => { if (x) { tras.after(x); tras = x; } });
   }
