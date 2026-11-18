@@ -134,8 +134,8 @@ def evolucion():
                    f'<text x="{ml - 5}" y="{y(v) + 4:.1f}" text-anchor="end">{v}</text>')
     for i, s in enumerate(T):
         et = '2-4 nov.' if i == 0 else f'día {i}'
-        out.append(f'<text x="{x(i):.1f}" y="{H - 22}" text-anchor="middle">{et}</text>')
-    out.append(f'<text x="{x(0):.1f}" y="{H - 6}" text-anchor="middle">preelectoral</text>'
+        out.append(f'<text x="{x(i) - 18 if i == 0 else x(i):.1f}" y="{H - 22}" text-anchor="{"start" if i == 0 else "middle"}">{et}</text>')
+    out.append(f'<text x="{x(0) - 18:.1f}" y="{H - 6}" text-anchor="start">preelectoral</text>'
                f'<text x="{(x(1) + x(N - 1)) / 2:.1f}" y="{H - 6}" text-anchor="middle">tracking de campaña</text>')
     for k, nom, col in (('PP', 'PP', 'var(--pp)'), ('PSOE', 'PSOE', 'var(--psoe)'), ('VOX', 'Vox', 'var(--vox)')):
         pts = ' '.join(f'{x(i):.1f},{y(s[k]):.1f}' for i, s in enumerate(T))
@@ -162,7 +162,7 @@ _dif = lambda k: (lambda d: 'igual que ayer' if d == 0 else f'{"+" if d > 0 else
 g_esc = figura('Los escaños que da 40dB.',
                'Estimación central de escaños de cada partido en la entrega de hoy y cambio frente a la de ayer. La mayoría absoluta está en 176',
                barras([(k.replace('Compromís, Ara Més y UPC', 'Compromís y otros'), ESC[k], _col(k), f'{ESC[k]} ({_dif(k)})') for k in ESC],
-                      200, 'Escaños de cada partido según el tracking de 40dB. del 18 de noviembre', W=400, ml=118),
+                      200, 'Escaños de cada partido según el tracking de 40dB. del 18 de noviembre', W=400, ml=135),
                f'Fuente: 40dB. para El País y la SER, <a href="{PDF}">informe del día 6</a>, págs. 8 y 9. «Compromís y otros»: Compromís 3, Ara Més 1 y Unidad del Pueblo Canario 0. '
                '«Otros»: ERC 10, EH Bildu 7, Junts 4, PNV 3, Adelante Andalucía 3, BNG 2, UPN-PP 2 y Coalición Canaria 1.',
                leyenda=[('PP', 'var(--pp)'), ('PSOE', 'var(--psoe)'), ('Vox', 'var(--vox)'), ('Frente Amplio y socios', 'var(--sumar)'), ('Podemos', 'var(--pod)'), ('Otros', 'var(--otros)')],
