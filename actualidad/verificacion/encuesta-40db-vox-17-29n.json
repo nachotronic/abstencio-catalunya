@@ -1,0 +1,267 @@
+{
+ "pieza": "encuesta-40db-vox-17-29n",
+ "cifras": [
+  {
+   "texto": "Elecciones generales: Vox baja al 17 % en la encuesta diaria",
+   "cifra": "17",
+   "calculo": "round(D['T'][6]['VOX'])"
+  },
+  {
+   "texto": "y la SER deja al PP en el 32,2 % y al PSOE en el 30,7",
+   "cifra": "32,2",
+   "calculo": "D['T'][6]['PP']"
+  },
+  {
+   "texto": "el 32,2 % y al PSOE en el 30,7 %. PP y Vox suman 186",
+   "cifra": "30,7",
+   "calculo": "D['T'][6]['PSOE']"
+  },
+  {
+   "texto": "el 30,7 %. PP y Vox suman 186 escaños, su cifra más",
+   "cifra": "186",
+   "calculo": "D['ESC']['PP']+D['ESC']['Vox']"
+  },
+  {
+   "texto": "Vox baja al 17,0 % en el tracking de",
+   "cifra": "17,0",
+   "calculo": "D['T'][6]['VOX']"
+  },
+  {
+   "texto": "publicado este miércoles, 0,5 puntos menos que ayer.",
+   "cifra": "0,5",
+   "calculo": "round(D['T'][5]['VOX']-D['T'][6]['VOX'],1)"
+  },
+  {
+   "texto": "puntos menos que ayer. Lleva cinco bajadas seguidas, una",
+   "condicion": "all(D['T'][i]['VOX']>D['T'][i+1]['VOX'] for i in range(1,6))  # cinco bajadas, entregas 2 a 6"
+  },
+  {
+   "texto": "primera, cuando tenía el 18,8 %, y es su dato más",
+   "cifra": "18,8",
+   "calculo": "D['T'][1]['VOX']"
+  },
+  {
+   "texto": "de 2025, cuando marcó el 16,7 %. El PP sube al 32,2",
+   "cifra": "16,7",
+   "calculo": "D['VOX_ANT']['VOX']"
+  },
+  {
+   "texto": "el 16,7 %. El PP sube al 32,2 % y el PSOE, al 30,7",
+   "cifra": "32,2",
+   "calculo": "D['T'][6]['PP']"
+  },
+  {
+   "texto": "sube al 32,2 % y el PSOE, al 30,7 %: 1,5 puntos de distancia",
+   "cifra": "30,7",
+   "calculo": "D['T'][6]['PSOE']"
+  },
+  {
+   "texto": "32,2 % y el PSOE, al 30,7 %: 1,5 puntos de distancia",
+   "cifra": "1,5",
+   "calculo": "round(D['T'][6]['PP']-D['T'][6]['PSOE'],1)"
+  },
+  {
+   "texto": "distancia entre los dos, a once días de las elecciones",
+   "condicion": "D['T'][6]['pub'] == '2026-11-18'  # once días hasta el 29 de noviembre"
+  },
+  {
+   "texto": "13 al 17 de noviembre, con 2.000 entrevistas en línea",
+   "cifra": "2.000",
+   "calculo": "D['T'][6]['n']"
+  },
+  {
+   "texto": "En escaños, 40dB. da al PP 131, al PSOE 122 y a Vox",
+   "cifra": "131",
+   "calculo": "D['ESC']['PP']"
+  },
+  {
+   "texto": "40dB. da al PP 131, al PSOE 122 y a Vox 55. PP y Vox",
+   "cifra": "122",
+   "calculo": "D['ESC']['PSOE']"
+  },
+  {
+   "texto": "131, al PSOE 122 y a Vox 55. PP y Vox suman 186,",
+   "cifra": "55",
+   "calculo": "D['ESC']['Vox']"
+  },
+  {
+   "texto": "a Vox 55. PP y Vox suman 186, por encima de la mayoría",
+   "cifra": "186",
+   "calculo": "D['ESC']['PP']+D['ESC']['Vox']"
+  },
+  {
+   "texto": "de la mayoría absoluta de 176, pero es la cifra más",
+   "condicion": "sum(D['ESC'].values()) == 350  # mayoría absoluta: 176"
+  },
+  {
+   "texto": "40dB. en noviembre: ayer eran 189 y en la preelectoral,",
+   "cifra": "189",
+   "calculo": "D['PV_SERIE'][5][1]"
+  },
+  {
+   "texto": "189 y en la preelectoral, 190. Vox pierde 3 diputados",
+   "cifra": "190",
+   "calculo": "D['PV_SERIE'][0][1]"
+  },
+  {
+   "texto": "preelectoral, 190. Vox pierde 3 diputados en un día",
+   "cifra": "3",
+   "calculo": "D['ESC_AYER']['Vox']-D['ESC']['Vox']"
+  },
+  {
+   "texto": "en un día y el PSOE gana 2. Podemos vuelve a sacar",
+   "cifra": "2",
+   "calculo": "D['ESC']['PSOE']-D['ESC_AYER']['PSOE']"
+  },
+  {
+   "texto": "encuesta de cada una de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas, la",
+   "condicion": "D['NCASAS'] == 18  # tres semanas: VENTANA_MEDIANA = 21 días"
+  },
+  {
+   "texto": "elecciones generales, da al PP el 31,4 %, al PSOE el 26,9 %",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "PP el 31,4 %, al PSOE el 26,9 % y a Vox el 18,8 %:",
+   "cifra": "26,9",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "PSOE el 26,9 % y a Vox el 18,8 %: 4,5 puntos entre",
+   "cifra": "18,8",
+   "calculo": "D['MED']['VOX']"
+  },
+  {
+   "texto": "26,9 % y a Vox el 18,8 %: 4,5 puntos entre PP y PSOE,",
+   "cifra": "4,5",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "4,5 puntos entre PP y PSOE, tres más que 40dB. Solo el",
+   "cifra": "tres",
+   "calculo": "round(D['MED_DIF']-(D['T'][6]['PP']-D['T'][6]['PSOE']))"
+  },
+  {
+   "texto": "El tracking suma cinco días de entrevistas",
+   "condicion": "D['T'][6]['ini']=='2026-11-13' and D['T'][6]['fin']=='2026-11-17'  # cinco días de campo"
+  },
+  {
+   "texto": "la entrega de hoy comparte cuatro días de campo con la",
+   "condicion": "D['T'][5]['ini']=='2026-11-12' and D['T'][5]['fin']=='2026-11-16'  # comparten del 13 al 16: cuatro días"
+  },
+  {
+   "texto": "noviembre, Vox ha perdido 1,8 puntos; frente a la",
+   "cifra": "1,8",
+   "calculo": "round(D['T'][1]['VOX']-D['T'][6]['VOX'],1)"
+  },
+  {
+   "texto": "frente a la preelectoral, del 2 al 4, 1,0. Las dos bajadas",
+   "condicion": "D['T'][0]['ini']=='2026-11-02'"
+  },
+  {
+   "texto": "la preelectoral, del 2 al 4, 1,0. Las dos bajadas",
+   "condicion": "D['T'][0]['fin']=='2026-11-04'"
+  },
+  {
+   "texto": "preelectoral, del 2 al 4, 1,0. Las dos bajadas quedan",
+   "cifra": "1,0",
+   "calculo": "round(D['T'][0]['VOX']-D['T'][6]['VOX'],1)"
+  },
+  {
+   "texto": "de la diferencia, de unos ±3,0 y ±2,4 puntos. Lo que",
+   "cifra": "3,0",
+   "calculo": "D['M_VOX_D1']"
+  },
+  {
+   "texto": "diferencia, de unos ±3,0 y ±2,4 puntos. Lo que sí se",
+   "cifra": "2,4",
+   "calculo": "D['M_VOX_PRE']"
+  },
+  {
+   "texto": "Pedro Sánchez lo es para el 32,4 % y Alberto Núñez Feijóo,",
+   "cifra": "32,4",
+   "calculo": "D['PRES'][0][1]"
+  },
+  {
+   "texto": "Alberto Núñez Feijóo, para el 22,5 %; los dos suben algo",
+   "cifra": "22,5",
+   "calculo": "D['PRES'][1][1]"
+  },
+  {
+   "texto": "Santiago Abascal baja del 19,8 al 16,6 %, el único",
+   "cifra": "19,8",
+   "calculo": "D['PRES'][2][2]"
+  },
+  {
+   "texto": "Abascal baja del 19,8 al 16,6 %, el único de los tres",
+   "cifra": "16,6",
+   "calculo": "D['PRES'][2][1]"
+  },
+  {
+   "texto": "al 16,6 %, el único de los tres cambios que supera el",
+   "condicion": "len(D['PRES']) == 3"
+  },
+  {
+   "texto": "coalición del PP con Vox, con el 23,3 % (el 25,4 % en la preelectoral),",
+   "cifra": "23,3",
+   "calculo": "D['GOB'][0][1]"
+  },
+  {
+   "texto": "con Vox, con el 23,3 % (el 25,4 % en la preelectoral),",
+   "cifra": "25,4",
+   "calculo": "D['GOB'][0][2]"
+  },
+  {
+   "texto": "el Frente Amplio, con el 22,2 %, están prácticamente",
+   "cifra": "22,2",
+   "calculo": "D['GOB'][1][1]"
+  },
+  {
+   "texto": "en solitario, que pasa del 13,8 al 16,6 %.",
+   "cifra": "13,8",
+   "calculo": "D['GOB'][2][2]"
+  },
+  {
+   "texto": "solitario, que pasa del 13,8 al 16,6 %.",
+   "cifra": "16,6",
+   "calculo": "D['GOB'][2][1]"
+  },
+  {
+   "texto": "la de 40dB. es una de las 18: la mayoría ven todavía",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "preelectoral y en cada una de las seis entregas del tracking",
+   "condicion": "len(D['T']) - 1 == 6"
+  },
+  {
+   "texto": "mayoría absoluta está en 176",
+   "condicion": "sum(D['ESC'].values()) == 350  # mayoría absoluta: 176"
+  },
+  {
+   "texto": "encuesta de cada una de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas; a la",
+   "condicion": "D['NCASAS'] == 18  # tres semanas: 21 días"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "línea y un error muestral de ±2,2 puntos, según el informe",
+   "cifra": "2,2",
+   "fuente": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia06.pdf"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}
