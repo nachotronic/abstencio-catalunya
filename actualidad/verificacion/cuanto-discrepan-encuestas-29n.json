@@ -169,6 +169,10 @@
    "texto": "noDesviación típica entre las 17 encuestadoras sin el",
    "cifra": "17",
    "calculo": "D['NS']"
+  },
+  {
+   "texto": "un día distinto de estas tres semanas",
+   "condicion": "D['VENTANA'] == 21  # tres semanas"
   }
  ],
  "externas": [],
