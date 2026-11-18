@@ -34,11 +34,17 @@ export default {
     }
     const pr = url.pathname.match(/^\/provincia\/(\d{2})\.json$/);
     // Vista previa (solo para revisar antes de fusionar; se quita después del 29N): la portada publicada con el app.js de un
-    // commit de la rama, servido por jsDelivr. /vista?v=<sha> ; el directo es este mismo Worker.
+    // commit de la rama, servido por este Worker desde GitHub. /vista?v=<sha> ; el directo es este mismo Worker.
+    const gh = url.pathname.match(/^\/vista\/gh\/([0-9a-f]{7,40})\/(generales-2026\/[\w\/.-]+\.(js|json))$/);
+    if (gh) {   // ficheros de la rama, sin el 403 que da jsDelivr a algunos navegadores
+      const r = await fetch(`https://raw.githubusercontent.com/nachotronic/abstencio-catalunya/${gh[1]}/${gh[2]}`, { cf: { cacheTtl: 300 } });
+      return new Response(r.body, { status: r.status, headers: { ...cors, 'Cache-Control': 'public, max-age=300',
+        'Content-Type': gh[3] === 'js' ? 'text/javascript; charset=utf-8' : 'application/json; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
+    }
     if (url.pathname === '/vista') {
       const v = /^[0-9a-f]{7,40}$/.test(url.searchParams.get('v') || '') ? url.searchParams.get('v') : null;
       if (!v) return new Response('Falta ?v=<commit>', { status: 400 });
-      const cdn = `https://cdn.jsdelivr.net/gh/nachotronic/abstencio-catalunya@${v}/generales-2026/app.js`;
+      const cdn = `${url.origin}/vista/gh/${v}/generales-2026/app.js`;
       const html = (await (await fetch('https://mapaelectoral.es/', { cf: { cacheTtl: 60 } })).text())
         .replace('<head>', '<head><base href="https://mapaelectoral.es/"><meta name="robots" content="noindex">')
         .replace('src="generales-2026/app.js"', `src="${cdn}"`)
