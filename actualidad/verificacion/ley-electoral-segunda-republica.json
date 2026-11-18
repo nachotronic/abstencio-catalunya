@@ -1,0 +1,666 @@
+{
+ "pieza": "ley-electoral-segunda-republica",
+ "cifras": [
+  {
+   "texto": "Ganar por 1,6 puntos valía 10 de 13",
+   "cifra": "1,6",
+   "calculo": "(D['CASOS']['jaen36']['sv']['FP']-D['CASOS']['jaen36']['sv']['DER'])/D['CASOS']['jaen36']['tv']*100"
+  },
+  {
+   "texto": "Ganar por 1,6 puntos valía 10 de 13 diputados: así",
+   "cifra": "10",
+   "calculo": "D['CASOS']['jaen36']['esc']['FP']"
+  },
+  {
+   "texto": "por 1,6 puntos valía 10 de 13 diputados: así era la",
+   "cifra": "13",
+   "calculo": "D['CASOS']['jaen36']['S']"
+  },
+  {
+   "texto": "Frente Popular sacó en Jaén el 50,5 % de los votos y las",
+   "cifra": "50,5",
+   "calculo": "D['CASOS']['jaen36']['sv']['FP']/D['CASOS']['jaen36']['tv']*100"
+  },
+  {
+   "texto": "votos y las derechas, el 48,9 %; la izquierda se llevó",
+   "cifra": "48,9",
+   "calculo": "D['CASOS']['jaen36']['sv']['DER']/D['CASOS']['jaen36']['tv']*100"
+  },
+  {
+   "texto": "%; la izquierda se llevó diez escaños y la derecha,",
+   "cifra": "diez",
+   "calculo": "D['CASOS']['jaen36']['esc']['FP']"
+  },
+  {
+   "texto": "diez escaños y la derecha, tres. Así funcionaba la ley",
+   "cifra": "tres",
+   "calculo": "D['CASOS']['jaen36']['esc']['DER']"
+  },
+  {
+   "texto": "El último de los diez candidatos del Frente",
+   "cifra": "diez",
+   "calculo": "D['CASOS']['jaen36']['esc']['FP']"
+  },
+  {
+   "texto": "Antonio Pasagali Lobo, sacó 136.854 votos el 16 de febrero",
+   "cifra": "136.854",
+   "calculo": "[c[3] for c in D['CASOS']['jaen36']['cand'] if c[0].startswith('Antonio Pasagali')][0]"
+  },
+  {
+   "texto": "Acuña Gómez de la Torre, 135.774. En una provincia donde",
+   "cifra": "135.774",
+   "calculo": "[c[3] for c in D['CASOS']['jaen36']['cand'] if c[0].startswith('José Acuña')][0]"
+  },
+  {
+   "texto": "una provincia donde votaron 274.114 personas, esos 1.080",
+   "cifra": "274.114",
+   "calculo": "D['CASOS']['jaen36']['vo']"
+  },
+  {
+   "texto": "votaron 274.114 personas, esos 1.080 votos separaron a los",
+   "cifra": "1.080",
+   "calculo": "[c[3] for c in D['CASOS']['jaen36']['cand'] if c[0].startswith('Antonio Pasagali')][0]-[c[3] for c in D['CASOS']['jaen36']['cand'] if c[0].startswith('José Acuña')][0]"
+  },
+  {
+   "texto": "1.080 votos separaron a los diez de la mayoría de los",
+   "cifra": "diez",
+   "calculo": "D['CASOS']['jaen36']['esc']['FP']"
+  },
+  {
+   "texto": "diez de la mayoría de los tres de la minoría. Entre",
+   "cifra": "tres",
+   "calculo": "D['CASOS']['jaen36']['esc']['DER']"
+  },
+  {
+   "texto": "de la minoría. Entre los diez estaba Victoria Kent,",
+   "cifra": "diez",
+   "calculo": "D['CASOS']['jaen36']['esc']['FP']"
+  },
+  {
+   "texto": "estaba Victoria Kent, que sacó 137.558.",
+   "cifra": "137.558",
+   "calculo": "[c[3] for c in D['CASOS']['jaen36']['cand'] if c[0].startswith('Victoria Kent')][0]"
+  },
+  {
+   "texto": "Las derechas, con el 48,9 % de los votos a candidatos,",
+   "cifra": "48,9",
+   "calculo": "D['CASOS']['jaen36']['sv']['DER']/D['CASOS']['jaen36']['tv']*100"
+  },
+  {
+   "texto": "candidatos, se llevaron los otros tres. El Frente Popular había",
+   "cifra": "tres",
+   "calculo": "D['CASOS']['jaen36']['esc']['DER']"
+  },
+  {
+   "texto": "Frente Popular había sacado el 50,5 %. Son los datos del",
+   "cifra": "50,5",
+   "calculo": "D['CASOS']['jaen36']['sv']['FP']/D['CASOS']['jaen36']['tv']*100"
+  },
+  {
+   "texto": "reunido los resultados de las tres elecciones generales",
+   "cifra": "tres",
+   "calculo": "len(D['CIRC'])"
+  },
+  {
+   "texto": "avances del censo de 1930: 63 circunscripciones y",
+   "cifra": "63",
+   "calculo": "D['NAC']['1931']['n']"
+  },
+  {
+   "texto": "1930: 63 circunscripciones y 470 diputados. Además de",
+   "cifra": "470",
+   "calculo": "D['NAC']['1931']['S']"
+  },
+  {
+   "texto": "provincia de Madrid, con 68.470 y 65.254 votos, según",
+   "cifra": "68.470",
+   "calculo": "[c[3] for c in D['CASOS']['mprov31']['cand'] if c[0].startswith('Clara Campoamor')][0]"
+  },
+  {
+   "texto": "provincia de Madrid, con 68.470 y 65.254 votos, según el Atlas.",
+   "cifra": "65.254",
+   "calculo": "[c[3] for c in D['CASOS']['mprov31']['cand'] if c[0].startswith('Victoria Kent')][0]"
+  },
+  {
+   "texto": "escala: donde se elegían 20 diputados, cada elector",
+   "cifra": "20",
+   "calculo": "max(s for s,m in D['ESCALA'])"
+  },
+  {
+   "texto": "diputados, cada elector votaba 16; donde 13, 10; donde",
+   "cifra": "16",
+   "calculo": "dict(D['ESCALA'])[20]"
+  },
+  {
+   "texto": "elector votaba 16; donde 13, 10; donde 4, 3, y donde",
+   "cifra": "13",
+   "calculo": "13"
+  },
+  {
+   "texto": "elector votaba 16; donde 13, 10; donde 4, 3, y donde",
+   "cifra": "10",
+   "calculo": "dict(D['ESCALA'])[13]"
+  },
+  {
+   "texto": "votaba 16; donde 13, 10; donde 4, 3, y donde 2, uno.",
+   "cifra": "4",
+   "calculo": "4"
+  },
+  {
+   "texto": "16; donde 13, 10; donde 4, 3, y donde 2, uno. Los",
+   "cifra": "3",
+   "calculo": "dict(D['ESCALA'])[4]"
+  },
+  {
+   "texto": "13, 10; donde 4, 3, y donde 2, uno. Los más votados",
+   "cifra": "2",
+   "calculo": "2"
+  },
+  {
+   "texto": "circunscripciones pasaron a ser 60. Los diputados eran",
+   "cifra": "60",
+   "calculo": "D['NAC']['1933']['n']"
+  },
+  {
+   "texto": "ser 60. Los diputados eran 473.",
+   "cifra": "473",
+   "calculo": "D['NAC']['1933']['S']"
+  },
+  {
+   "texto": "en Madrid capital votaron 388.969 personas. El candidato",
+   "cifra": "388.969",
+   "calculo": "D['CASOS']['mad33']['vo']"
+  },
+  {
+   "texto": "socialista Julián Besteiro, con 151.905 votos: el 39,1 % de",
+   "cifra": "151.905",
+   "calculo": "[c[3] for c in D['CASOS']['mad33']['cand'] if c[0].startswith('Julián Besteiro')][0]"
+  },
+  {
+   "texto": "Besteiro, con 151.905 votos: el 39,1 % de los votantes. Nadie",
+   "cifra": "39,1",
+   "calculo": "[c[3] for c in D['CASOS']['mad33']['cand'] if c[0].startswith('Julián Besteiro')][0]/D['CASOS']['mad33']['vo']*100"
+  },
+  {
+   "texto": "Nadie llegó al 40 %, y los 17 escaños de Madrid se",
+   "cifra": "17",
+   "calculo": "D['CASOS']['mad33']['S']"
+  },
+  {
+   "texto": "quedaron para esa segunda vuelta 97 escaños de 18 circunscripciones.",
+   "cifra": "97",
+   "calculo": "sum(c['S']-c['e1'] for c in D['CIRC']['1933'])"
+  },
+  {
+   "texto": "segunda vuelta 97 escaños de 18 circunscripciones.",
+   "cifra": "18",
+   "calculo": "len([c for c in D['CIRC']['1933'] if c['e1']<c['S']])"
+  },
+  {
+   "texto": "sin los socialistas, sacó 46.027 votos en la primera",
+   "cifra": "46.027",
+   "calculo": "[c[3] for c in D['CASOS']['mad33']['cand'] if c[0].startswith('Manuel Azaña')][0]"
+  },
+  {
+   "texto": "puestos de la minoría, con 50.979 y 51.190 votos. Los",
+   "cifra": "50.979",
+   "calculo": "[c[3] for c in D['CASOS']['viz33']['cand'] if c[0].startswith('Manuel Azaña')][0]"
+  },
+  {
+   "texto": "la minoría, con 50.979 y 51.190 votos. Los cuatro de",
+   "cifra": "51.190",
+   "calculo": "[c[3] for c in D['CASOS']['viz33']['cand'] if c[0].startswith('Indalecio Prieto')][0]"
+  },
+  {
+   "texto": "50.979 y 51.190 votos. Los cuatro de la mayoría fueron",
+   "cifra": "cuatro",
+   "calculo": "D['CASOS']['viz33']['esc']['PNV']"
+  },
+  {
+   "texto": "conservadores y la CEDA sacó el 50,2 % de los votos a candidatos",
+   "cifra": "50,2",
+   "calculo": "D['CASOS']['bad33']['sv']['DER']/D['CASOS']['bad33']['tv']*100"
+  },
+  {
+   "texto": "el PSOE, que fue solo, el 48,5 %. La primera se llevó",
+   "cifra": "48,5",
+   "calculo": "D['CASOS']['bad33']['sv']['PSOE']/D['CASOS']['bad33']['tv']*100"
+  },
+  {
+   "texto": "48,5 %. La primera se llevó 11 de los 14 escaños. Como",
+   "cifra": "11",
+   "calculo": "D['CASOS']['bad33']['esc']['DER']"
+  },
+  {
+   "texto": "primera se llevó 11 de los 14 escaños. Como cada elector",
+   "cifra": "14",
+   "calculo": "D['CASOS']['bad33']['S']"
+  },
+  {
+   "texto": "entró por la minoría con 137.928 y Francisco Largo Caballero",
+   "cifra": "137.928",
+   "calculo": "[c[3] for c in D['CASOS']['bad33']['cand'] if c[0].startswith('Margarita Nelken')][0]"
+  },
+  {
+   "texto": "Caballero se quedó fuera con 136.960. Se presentaba también",
+   "cifra": "136.960",
+   "calculo": "[c[3] for c in D['CASOS']['bad33']['cand'] if c[0].startswith('Francisco Largo')][0]"
+  },
+  {
+   "texto": "Con ellas, el censo pasó de 6,2 millones de electores en 1931",
+   "cifra": "6,2 millones",
+   "calculo": "D['NAC']['1931']['el']"
+  },
+  {
+   "texto": "millones de electores en 1931 a 13,1 millones en 1933, según la suma",
+   "cifra": "13,1 millones",
+   "calculo": "D['NAC']['1933']['el']"
+  },
+  {
+   "texto": "circunscripciones del Atlas. En 1936 eran 13,5 millones.",
+   "cifra": "13,5 millones",
+   "calculo": "D['NAC']['1936']['el']"
+  },
+  {
+   "texto": "como los votos. En 1933, en 4 circunscripciones (Barcelona",
+   "cifra": "4",
+   "calculo": "len([c for c in D['CIRC']['1933'] if c['w'] not in (None,'EMP','PSOE','IZQREP','ERC','PCE') and sum(c['pct'].get(k,0) for k in ('PSOE','IZQREP','ERC','PCE'))>c['pct'].get(c['w'],0)])"
+  },
+  {
+   "texto": "1936, el Frente Popular ganó 5 circunscripciones por",
+   "cifra": "5",
+   "calculo": "len([c for c in D['CIRC']['1936'] if c['w']=='FP' and c['pct']['FP']-max(v for k,v in c['pct'].items() if k!='FP')<5])"
+  },
+  {
+   "texto": "circunscripciones por menos de cinco puntos (Cáceres, Jaén,",
+   "cifra": "cinco",
+   "calculo": "5",
+   "nota": "umbral de la comparación, no un dato"
+  },
+  {
+   "texto": "Hemos mirado las 90 circunscripciones de",
+   "cifra": "90",
+   "calculo": "len(D['DISP'])"
+  },
+  {
+   "texto": "llevó la mayoría. En las 13 en las que el ganador",
+   "cifra": "13",
+   "calculo": "len([d for d in D['DISP'] if 0<=d[3]<5])"
+  },
+  {
+   "texto": "el ganador sacó menos de cinco puntos de ventaja, se",
+   "cifra": "cinco",
+   "calculo": "5",
+   "nota": "umbral de la comparación, no un dato"
+  },
+  {
+   "texto": "ventaja, se llevó de media el 71 % de los escaños. En",
+   "cifra": "71",
+   "calculo": "mean(d[4]/d[5]*100 for d in [d for d in D['DISP'] if 0<=d[3]<5])"
+  },
+  {
+   "texto": "% de los escaños. En las 35 en las que ganó por",
+   "cifra": "35",
+   "calculo": "len([d for d in D['DISP'] if 20<=d[3]<101])"
+  },
+  {
+   "texto": "en las que ganó por más de veinte, el 81 %.",
+   "cifra": "veinte",
+   "calculo": "20",
+   "nota": "umbral de la comparación, no un dato"
+  },
+  {
+   "texto": "ganó por más de veinte, el 81 %.",
+   "cifra": "81",
+   "calculo": "mean(d[4]/d[5]*100 for d in [d for d in D['DISP'] if 20<=d[3]<101])"
+  },
+  {
+   "texto": "Faltan los de la segunda (14 en 1931, 97 en 1933",
+   "cifra": "14",
+   "calculo": "sum(c['S']-c['e1'] for c in D['CIRC']['1931'])"
+  },
+  {
+   "texto": "de la segunda (14 en 1931, 97 en 1933 y 20 en 1936)",
+   "cifra": "97",
+   "calculo": "sum(c['S']-c['e1'] for c in D['CIRC']['1933'])"
+  },
+  {
+   "texto": "(14 en 1931, 97 en 1933 y 20 en 1936) y los cambios",
+   "cifra": "20",
+   "calculo": "sum(c['S']-c['e1'] for c in D['CIRC']['1936'])"
+  },
+  {
+   "texto": "Victoria Kent la votaron 137.558 personas. Casi cinco",
+   "cifra": "137.558",
+   "calculo": "[c[3] for c in D['CASOS']['jaen36']['cand'] if c[0].startswith('Victoria Kent')][0]"
+  },
+  {
+   "texto": "entre dos tercios y cuatro quintos de los escaños en casi todas las circunscripciones",
+   "condicion": "all(2/3-1e-9<=m/s<=4/5 for s,m in D['ESCALA'] if s>=3) and len([c for y in D['CIRC'] for c in D['CIRC'][y] if c['S']<3])/sum(len(v) for v in D['CIRC'].values())<0.1"
+  },
+  {
+   "texto": "más. La provincia elegía 7 diputados y cada elector",
+   "cifra": "7",
+   "calculo": "D['CASOS']['nav33']['S']"
+  },
+  {
+   "texto": "diputados y cada elector votaba a 5: 5 escaños para la mayoría",
+   "cifra": "5",
+   "calculo": "D['CASOS']['nav33']['M']"
+  },
+  {
+   "texto": "cada elector votaba a 5: 5 escaños para la mayoría",
+   "cifra": "5",
+   "calculo": "D['CASOS']['nav33']['M']"
+  },
+  {
+   "texto": "escaños para la mayoría y 2 para la minoría. En",
+   "cifra": "2",
+   "calculo": "D['CASOS']['nav33']['S']-D['CASOS']['nav33']['M']"
+  },
+  {
+   "texto": "independientes) presentaron 7 candidatos, dos más",
+   "cifra": "7",
+   "calculo": "len([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "cabían en cada papeleta. Los 7 de las derechas sacaron",
+   "cifra": "7",
+   "calculo": "len([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "las derechas sacaron entre 89.901 y 65.287 votos. El socialista",
+   "cifra": "89.901",
+   "calculo": "max([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "derechas sacaron entre 89.901 y 65.287 votos. El socialista",
+   "cifra": "65.287",
+   "calculo": "min([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "votado, Ricardo Zabalza, 21.223.",
+   "cifra": "21.223",
+   "calculo": "[c[3] for c in D['CASOS']['nav33']['cand'] if c[0].startswith('Ricardo Zabalza')][0]"
+  },
+  {
+   "texto": "derechas, José Gafo, llegó al 42,7 % de los 152.881 votantes.",
+   "cifra": "42,7",
+   "calculo": "min([c[3] for c in D['CASOS']['nav33']['cand'] if c[2]=='DER'])/D['CASOS']['nav33']['vo']*100"
+  },
+  {
+   "texto": "Gafo, llegó al 42,7 % de los 152.881 votantes. Para entrar",
+   "cifra": "152.881",
+   "calculo": "D['CASOS']['nav33']['vo']"
+  },
+  {
+   "texto": "y Zabalza se quedó en el 13,9 %. Las derechas se llevaron",
+   "cifra": "13,9",
+   "calculo": "[c[3] for c in D['CASOS']['nav33']['cand'] if c[0].startswith('Ricardo Zabalza')][0]/D['CASOS']['nav33']['vo']*100"
+  },
+  {
+   "texto": "derechas se llevaron los siete escaños; los socialistas",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav33']['esc']['DER']"
+  },
+  {
+   "texto": "febrero de 1936 volvió a pasar: siete de siete para las derechas,",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav36']['esc']['DER']"
+  },
+  {
+   "texto": "volvió a pasar: siete de siete para las derechas, con",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav36']['S']"
+  },
+  {
+   "texto": "para las derechas, con el 75,3 % de los votos a candidatos,",
+   "cifra": "75,3",
+   "calculo": "D['CASOS']['nav36']['sv']['DER']/D['CASOS']['nav36']['tv']*100"
+  },
+  {
+   "texto": "el Frente Popular, con el 22,7 %. Su candidato más",
+   "cifra": "22,7",
+   "calculo": "D['CASOS']['nav36']['sv']['FP']/D['CASOS']['nav36']['tv']*100"
+  },
+  {
+   "texto": "Nacionalista Vasca, sacó el 22,5 % de los votantes: pasaba",
+   "cifra": "22,5",
+   "calculo": "[c[3] for c in D['CASOS']['nav36']['cand'] if c[0].startswith('Juan Carlos Basterra')][0]/D['CASOS']['nav36']['vo']*100"
+  },
+  {
+   "texto": "pasaba del 20 %, pero los siete de las derechas tenían",
+   "cifra": "siete",
+   "calculo": "len([c[3] for c in D['CASOS']['nav36']['cand'] if c[2]=='DER'])"
+  },
+  {
+   "texto": "republicano-socialista y sus aliados: con el 48,2 % de los votos a candidatos",
+   "cifra": "48,2",
+   "calculo": "[f[1] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
+  },
+  {
+   "texto": "a candidatos se llevaron 264 de los 456 escaños de",
+   "cifra": "264",
+   "calculo": "[f[2] for f in D['NAC']['1931']['f'] if f[0]=='CONJ'][0]"
+  },
+  {
+   "texto": "candidatos se llevaron 264 de los 456 escaños de la primera",
+   "cifra": "456",
+   "calculo": "D['NAC']['1931']['e1']"
+  },
+  {
+   "texto": "Esquerra y comunistas sumaron el 33,1 % de los votos, pero",
+   "cifra": "33,1",
+   "calculo": "sum(f[1] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
+  },
+  {
+   "texto": "% de los votos, pero solo 56 de los 376 escaños de",
+   "cifra": "56",
+   "calculo": "sum(f[2] for f in D['NAC']['1933']['f'] if f[0] in ('PSOE','IZQREP','ERC','PCE'))"
+  },
+  {
+   "texto": "votos, pero solo 56 de los 376 escaños de la primera",
+   "cifra": "376",
+   "calculo": "D['NAC']['1933']['e1']"
+  },
+  {
+   "texto": "vuelta. Las derechas, con el 45,4 %, se llevaron 234.",
+   "cifra": "45,4",
+   "calculo": "[f[1] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "con el 45,4 %, se llevaron 234.",
+   "cifra": "234",
+   "calculo": "[f[2] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "lo mismo que en 1933, el 46,0 %, y el Frente Popular,",
+   "cifra": "46,0",
+   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "%, y el Frente Popular, el 46,2 %. Con esa ventaja mínima,",
+   "cifra": "46,2",
+   "calculo": "[f[1] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
+  },
+  {
+   "texto": "el Frente Popular se llevó 256 escaños de primera vuelta",
+   "cifra": "256",
+   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='FP'][0]"
+  },
+  {
+   "texto": "primera vuelta y las derechas, 182. La parte de los escaños",
+   "cifra": "182",
+   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "de las derechas cayó del 62 % al 40 %. Los radicales",
+   "cifra": "62",
+   "calculo": "[f[3] for f in D['NAC']['1933']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "derechas cayó del 62 % al 40 %. Los radicales y el",
+   "cifra": "40",
+   "calculo": "[f[3] for f in D['NAC']['1936']['f'] if f[0]=='DER'][0]"
+  },
+  {
+   "texto": "que en 1933 habían sacado 74, se quedaron en 13.",
+   "cifra": "74",
+   "calculo": "[f[2] for f in D['NAC']['1933']['f'] if f[0]=='CENTRO'][0]"
+  },
+  {
+   "texto": "sacado 74, se quedaron en 13.",
+   "cifra": "13",
+   "calculo": "[f[2] for f in D['NAC']['1936']['f'] if f[0]=='CENTRO'][0]"
+  },
+  {
+   "texto": "Valencia) y las derechas, 1 (la provincia de Zaragoza).",
+   "cifra": "1",
+   "calculo": "len([c for c in D['CIRC']['1936'] if c['w']=='DER' and c['pct']['DER']-max(v for k,v in c['pct'].items() if k!='DER')<5])"
+  },
+  {
+   "texto": "Siete de siete en Navarra",
+   "cifra": "Siete",
+   "calculo": "D['CASOS']['nav36']['esc']['DER']"
+  },
+  {
+   "texto": "Siete de siete en Navarra",
+   "cifra": "siete",
+   "calculo": "D['CASOS']['nav36']['S']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "provisional llevaba poco más de tres semanas cuando firmó",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/344/A01578-01588.pdf",
+   "nota": "Del 14 de abril (proclamación) al 8 de mayo de 1931, fecha del decreto: 24 días"
+  },
+  {
+   "texto": "elegía un diputado por cada 50.000 habitantes, y uno más",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "Decreto de 8-5-1931, art. 6"
+  },
+  {
+   "texto": "uno más si sobraban más de 30.000. Madrid y Barcelona",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "art. 6"
+  },
+  {
+   "texto": "demás capitales de más de 100.000 habitantes, con los",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "art. 6"
+  },
+  {
+   "texto": "La edad para votar bajó de 25 a 23 años, y las mujeres",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "art. 2"
+  },
+  {
+   "texto": "edad para votar bajó de 25 a 23 años, y las mujeres",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "art. 2"
+  },
+  {
+   "texto": "escaños había. El artículo 7 del decreto fijaba la",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "art. 7"
+  },
+  {
+   "texto": "había que sacar al menos el 20 % de los votos emitidos;",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/130/A00639-00641.pdf",
+   "nota": "art. 11"
+  },
+  {
+   "texto": "publicada en la Gaceta del 28, exigía que algún candidato",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "Gaceta núm. 209, 28-7-1933"
+  },
+  {
+   "texto": "algún candidato llegara al 40 % de los votos válidos;",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "art. único, d"
+  },
+  {
+   "texto": "también los que pasaran del 20 %, siempre que entre",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "art. único, d"
+  },
+  {
+   "texto": "hubieran sacado al menos el 8 % en la primera vuelta.",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "art. único, d"
+  },
+  {
+   "texto": "Solo las capitales de más de 150.000 habitantes votarían",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "art. único, a"
+  },
+  {
+   "texto": "(Diario de Sesiones núm. 364, en Documentación Administrativa",
+   "fuente": "https://revistasonline.inap.es/index.php/DA/article/download/4177/4231/4409",
+   "nota": "Diario de Sesiones núm. 364, reproducido en DA 171"
+  },
+  {
+   "texto": "Documentación Administrativa núm. 171, 1976).",
+   "fuente": "https://revistasonline.inap.es/index.php/DA/article/download/4177/4231/4409",
+   "nota": "Documentación Administrativa núm. 171"
+  },
+  {
+   "texto": "votantes. Nadie llegó al 40 %, y los 17 escaños",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "umbral del 40 % de la ley de 1933"
+  },
+  {
+   "texto": "Lo establecía el artículo 36 de la Constitución de",
+   "fuente": "https://www.boe.es/datos/pdfs/BOE//1931/344/A01578-01588.pdf",
+   "nota": "Constitución de 1931, art. 36"
+  },
+  {
+   "texto": "de las nuevas Cortes anuló 32 actas de la primera",
+   "fuente": "https://doi.org/10.34810/data3274",
+   "nota": "Atlas: candidatos de 1936 con elected_status «invalidated» en primera vuelta: 32"
+  },
+  {
+   "texto": "entraba quien pasara del 40 % de los votos, y el",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "ley de 27-7-1933, art. único d: 40 % para ser proclamado"
+  },
+  {
+   "texto": "minoría hacía falta al menos el 20 %, y Zabalza se quedó",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "ley de 1933: 20 % para los demás puestos"
+  },
+  {
+   "texto": "los votantes: pasaba del 20 %, pero los siete de",
+   "fuente": "https://www.boe.es/gazeta/dias/1933/07/28/pdfs/GMD-1933-209.pdf",
+   "nota": "ley de 1933: umbral del 20 %"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "mayoría, entre dos tercios y cuatro quintos de los escaños",
+   "motivo": "Fracción del texto («dos tercios y cuatro quintos»): comprobada abajo con una condición sobre ESCALA"
+  },
+  {
+   "texto": "votaron 137.558 personas. Casi cinco años antes había entrado",
+   "motivo": "De junio de 1931 a febrero de 1936: 4 años y 8 meses"
+  },
+  {
+   "texto": "El 40 % en Madrid",
+   "motivo": "Intertítulo: el umbral del 40 % de la ley de 1933, declarado en el cuerpo"
+  },
+  {
+   "texto": "Tres elecciones, tres mayorías",
+   "motivo": "Intertítulo: las tres elecciones (1931, 1933, 1936)"
+  },
+  {
+   "texto": "Tres elecciones, tres mayorías",
+   "motivo": "Intertítulo"
+  },
+  {
+   "texto": "Votos y escaños en las tres eleccionesPorcentaje",
+   "motivo": "Pie de gráfico: las tres elecciones"
+  }
+ ],
+ "permitir_espana": []
+}

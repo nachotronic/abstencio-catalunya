@@ -102,6 +102,10 @@ ESC_MANUAL = {
     # 40dB. para El País y la SER, tracking día 5 (17-11-2026), página 8, «Estimación de escaños»
     'https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia05.pdf':
         {'PP': '124-135', 'PSOE': '118-126', 'VOX': '55-62', 'SUMAR': '8-11', 'PODEMOS': '0-1', 'SALF': '0'},
+    # 40dB. para El País y la SER, tracking día 6 (18-11-2026), página 8. PP con los 2 de UPN-PP (126-137 + 2), con el
+    # mismo criterio que Wikipedia en la fila del día 5; Sumar: Frente Amplio 5 (4-6) + Compromís 3 + Ara Més 0-1 + UPC 0-1
+    'https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia06.pdf':
+        {'PP': '128-139', 'PSOE': '118-127', 'VOX': '51-60', 'SUMAR': '7-11', 'PODEMOS': '0-1', 'SALF': '0'},
 }
 
 

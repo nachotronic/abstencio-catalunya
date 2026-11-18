@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/</loc>
+    <loc>https://mapaelectoral.es/actualidad/ley-electoral-segunda-republica/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-15</news:publication_date>
-      <news:title>De los 25 convocados de De la Fuente nacidos en España, 15 nacieron donde ganó el PSOE en 2023 y 8 donde ganó el PP; en Puente Genil, el PP ganó por 31 votos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/generacion-2008-primer-voto-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-15</news:publication_date>
-      <news:title>Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales</news:title>
+      <news:publication_date>2026-11-17</news:publication_date>
+      <news:title>Ganar por 1,6 puntos valía 10 de 13 diputados: así era la ley electoral de la Segunda República</news:title>
     </news:news>
   </url>
   <url>
@@ -62,6 +54,30 @@
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
       <news:publication_date>2026-11-17</news:publication_date>
       <news:title>Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-17</news:publication_date>
+      <news:title>Encuestas y debate: tras el cara a cara de 2023, 10 de 14 encuestadoras ampliaron la ventaja del PP; trece días después ganó por 1,4 puntos</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-18</news:publication_date>
+      <news:title>Elecciones generales: una de cada tres secciones cambió de ganador entre 2019 y 2023</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/cuanto-discrepan-encuestas-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-18</news:publication_date>
+      <news:title>Elecciones generales: las encuestas dan al PSOE entre el 25,5 y el 33,3 %</news:title>
     </news:news>
   </url>
 </urlset>
