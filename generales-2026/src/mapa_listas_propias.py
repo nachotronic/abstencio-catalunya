@@ -157,8 +157,7 @@ def familias_meta(meta):
             meta['familias'].append({'cod': cod, 'nombre': nombre, 'color': color})
     meta.setdefault('alias', {}).update({c: a for c, a in PROPIAS_ALIAS.items()})
     # 29N: Podemos se presenta aparte del Frente Amplio (que el directo llama así en lugar de «Sumar / Podemos / IU»)
-    for cod, nombre, color in [('PODEMOS', 'Podemos', '#5a3c8f'), ('SALF', 'Se Acabó la Fiesta', '#c0392b'),
-                                ('UPC', 'NC-BC, Podemos, IU y Sumar', '#2a9d8f'), ('COMPROMIS', 'Compromís-EUPV-Podem', '#e2731a')]:   # 29N, sin familia antes
+    for cod, nombre, color in [('PODEMOS', 'Podemos', '#5a3c8f'), ('SALF', 'Se Acabó la Fiesta', '#c0392b')]:   # 29N, sin familia antes
         if cod not in [f['cod'] for f in meta['familias']]:
             meta['familias'].append({'cod': cod, 'nombre': nombre, 'color': color})
     meta.setdefault('directo', {}).setdefault('nombres', {'SUMAR': 'Frente Amplio', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu'})
