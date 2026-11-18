@@ -80,4 +80,12 @@
       <news:title>Elecciones generales: las encuestas dan al PSOE entre el 25,5 y el 33,3 %</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/encuesta-40db-vox-17-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-18</news:publication_date>
+      <news:title>Elecciones generales: Vox baja al 17 % en la encuesta diaria de El País</news:title>
+    </news:news>
+  </url>
 </urlset>
