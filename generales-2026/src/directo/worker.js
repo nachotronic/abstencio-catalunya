@@ -24,7 +24,7 @@
 export default {
   async scheduled(event, env, ctx) {
     // el resultado de cada lectura (ok o el error) queda en KV para verlo en GET /estado, sin datos ni claves
-    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV })); }));
+    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV, sen: MUESTRA_SEN })); }));
   },
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -94,7 +94,7 @@ export function porProvincia(out) {
     const k = out.siglas.map((_, i) => i).filter(i => filas.some(([, a]) => a[5 + i]));
     const mun = {};
     for (const [c, a] of filas) mun[c] = [...a.slice(0, 5), ...k.map(i => a[5 + i])];
-    const { escanos, avances, avmun, hitos: _h, ...resto } = out;   // los hitos solo van en el total de España
+    const { escanos, avances, avmun, hitos: _h, ambitos: _a, senado: _s, ...resto } = out;   // los hitos solo van en el total de España
     res[p] = { ...resto, siglas: k.map(i => out.siglas[i]), mun, ...(escanos && escanos[p] ? { escanos: { [p]: escanos[p] } } : {}),
       ...(avances ? { avances: { es: avances.es, pr: avances.pr && avances.pr[p] ? { [p]: avances.pr[p] } : {} } } : {}),
       ...(avmun ? { avmun: Object.fromEntries(Object.entries(avmun).filter(([c]) => c.startsWith(p))) } : {}) };
@@ -289,6 +289,39 @@ export function escanosMedios(texto) {
   return esc;
 }
 
+// Fichero de totales del Congreso -> {TO, CM: {cc}, PR: {pp}}: nombre, % escrutado, a elegir y [siglas, votos, escaños]
+export function ambitosMedios(texto) {
+  const R = { TO: null, CM: {}, PR: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_TOT, CAND_TOT), t = c[1];
+    if (!['TO', 'CM', 'PR'].includes(t)) continue;
+    const cand = [];
+    for (let k = ANCHO_TOT.length; k + 4 < c.length; k += CAND_TOT.length) if (c[k + 1] && (ent(c[k + 2]) || ent(c[k + 4]))) cand.push([c[k + 1], ent(c[k + 2]), ent(c[k + 4])]);
+    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), bl: ent(c[14]), c: cand };
+    if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.PR[c[3].padStart(2, '0')] = o;
+  }
+  return R;
+}
+// Senado (getEscrutinioTotales/3): TO y CM, senadores electos por candidatura; CI (circunscripción), cada candidato con sus
+// votos y si sale elegido. Elemento: código, siglas, orden, nombre, votos, %, electo(s).
+const ANCHO_SEN = [10, 2, 2, 2, 1, 50, 5, 8, 8, 5, 8, 5, 8, 5, 8, 5, 8, 5, 3], CAND_SEN = [4, 55, 3, 90, 8, 5, 3];
+export function senadoMedios(texto) {
+  const R = { TO: null, CM: {}, CI: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_SEN, CAND_SEN), t = c[1];
+    if (!['TO', 'CM', 'CI'].includes(t)) continue;
+    const cand = [];
+    for (let k = ANCHO_SEN.length; k + 6 < c.length; k += CAND_SEN.length) if (c[k + 1]) {
+      if (t === 'CI') cand.push([c[k + 1], c[k + 3], ent(c[k + 4]), ent(c[k + 6])]);
+      else if (ent(c[k + 6])) cand.push([c[k + 1], ent(c[k + 6])]);
+    }
+    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), c: cand };
+    if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.CI[c[3].padStart(2, '0') + c[4]] = o;
+  }
+  return R;
+}
+let MUESTRA_SEN = '';
+
 async function pideTexto(url, env) {
   const h = { 'User-Agent': 'mapaelectoral.es (prensa)' };
   if (env.MEDIOS_USUARIO) h.Authorization = 'Basic ' + btoa(`${env.MEDIOS_USUARIO}:${env.MEDIOS_CLAVE || ''}`);
@@ -335,7 +368,8 @@ async function porMedios(base, env) {
   const envio = (await pideTexto(`${base}/data/getEnvio/2`, env)).trim().split(/[;\s]/)[0];
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
-  if (previo && previo.envio === envio && previo.mun) return previo;    // nada nuevo desde la última lectura
+  let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
+  if (previo && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) return previo;    // nada nuevo
   const filas = [], fallos = [];
   await enParalelo(PROVINCIAS, 8, async p => {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
@@ -343,7 +377,13 @@ async function porMedios(base, env) {
   });
   if (!filas.length) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
   let escanos = null, avances = null;
-  try { escanos = escanosMedios(await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env)); } catch (e) { /* sin escaños esta vez */ }
+  let ambitos = null, senado = null;
+  try { const t = await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env); escanos = escanosMedios(t); ambitos = ambitosMedios(t); } catch (e) { /* sin escaños esta vez */ }
+  try {
+    if (!/^\d+$/.test(e3 || '')) throw new Error('getEnvio/3: ' + String(e3).slice(0, 40));
+    const t = await pideTexto(`${base}/data/getEscrutinioTotales/3/${e3}`, env);
+    MUESTRA_SEN = e3 + ' · ' + (lineas(t)[0] || '').slice(0, 160); senado = { envio: e3, ...senadoMedios(t) };
+  } catch (e) { MUESTRA_SEN = 'error: ' + e.message; }
   try { const t = await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env); MUESTRA_AV = (lineas(t).find(l => /^\d{10};?TO/.test(l)) || lineas(t)[0] || '').slice(0, 200); avances = avancesMedios(t); }
   catch (e) { MUESTRA_AV = 'error: ' + e.message; }
   const out = normaliza(filas, previo);
@@ -360,5 +400,5 @@ async function porMedios(base, env) {
     if (Object.keys(avmun).length) out.avmun = avmun;
   }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
-  return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}) };
+  return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}) };
 }
