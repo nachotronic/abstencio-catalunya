@@ -1,8 +1,8 @@
 # Temporal, solo lectura: audiencia 18-11. No se fusiona a main.
-name: Audiencia miercoles 18-11 tarde
+name: Audiencia miercoles 18-11 noche
 on:
   push:
-    branches: [claude/project-thread-lm49yi]
+    branches: [claude/project-thread-bck203]
     paths: ['.github/audiencia/**','.github/workflows/audiencia-mie18b.yml']
 permissions:
   contents: read
