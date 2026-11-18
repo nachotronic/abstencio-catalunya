@@ -816,6 +816,38 @@
     if (rc) rc.onchange = () => { SELR.cam = rc.value; SELR.amb = 'TO'; resultados(); };
     if (ra) ra.onchange = () => { SELR.amb = ra.value; resultados(); };
   }
+  // Diputados y senadores que salen por provincia. Interior da los escaños de cada lista, no los nombres: los diputados son
+  // los primeros de cada lista del BOE (data/candidatos-congreso-29n.json, src/candidatos_directo.py) según esos escaños.
+  // Los senadores sí los da Interior (candidato a candidato, en las circunscripciones del Senado).
+  let LISTAS = null, LISTASP = null, PROVE = '28';
+  function electos(F) {
+    const sec = $('#electos-29n'), c = $('#electos-cuerpo'); if (!sec || !c) return;
+    const A = F && F.ambitos && F.ambitos.PR; if (!A || !Object.values(A).some(o => o.c.some(x => x[2]))) { sec.hidden = true; return; }
+    if (!LISTAS) { LISTASP = LISTASP || get('candidatos-congreso-29n.json').then(j => { LISTAS = j; electos(F); }).catch(() => {}); return; }
+    sec.hidden = false;
+    const nor = t => String(t || '').normalize('NFD').replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+    const pp = A[PROVE] ? PROVE : '28', X = A[pp], LP = LISTAS[pp] || {};
+    const col = s => (FAM[FCOD.indexOf(famDe(s))] || { color: '#999' }).color;
+    const lista = s => { const k = Object.keys(LP).find(x => nor(x) === nor(s)); if (k) return LP[k];
+      const f = famDe(s), m = Object.keys(LP).filter(x => famDe(x) === f); return m.length === 1 ? LP[m[0]] : null; };
+    const dip = X.c.filter(x => x[2]).sort((a, b) => b[2] - a[2] || b[1] - a[1]);
+    const S = F.senado && F.senado.CI ? Object.entries(F.senado.CI).filter(([k]) => k.startsWith(pp)) : [];
+    const sel = 'font:15px var(--sans);padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);max-width:100%';
+    let h = `<select id="e-prov" aria-label="Provincia" style="${sel}">` + Object.entries(A).sort((a, b) => a[1].n.localeCompare(b[1].n, 'es'))
+      .map(([k, o]) => `<option value="${k}"${k === pp ? ' selected' : ''}>${escH(o.n)}</option>`).join('') + '</select>';
+    h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:8px 0">${escH(X.n)}, ${pct(X.esc / 100)} escrutado. Congreso: los primeros de cada lista según los escaños provisionales de Interior; pueden cambiar hasta el final del recuento.</p>`;
+    const fila = (s, nombres) => `<div style="display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line);font:15px/1.35 var(--sans)"><b style="flex:0 0 auto;min-width:3.5em"><i style="display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:${col(s)}"></i>${escH(NOMBRE_CORTO(s))}</b><span>${nombres}</span></div>`;
+    h += '<h3 style="font:700 14px var(--sans);margin:12px 0 4px">Diputados (' + dip.reduce((t, x) => t + x[2], 0) + ')</h3>'
+      + dip.map(([s, , e]) => { const L = lista(s); return fila(s, L ? L.slice(0, e).map(escH).join(', ') : `${e} escaño${e > 1 ? 's' : ''} (no encuentro la lista en el BOE)`); }).join('');
+    if (S.length) {
+      const sen = S.flatMap(([, o]) => o.c.filter(x => x[3]).map(x => [x[0], x[1], o.n]));
+      const g = {}; sen.forEach(([s, nom, ci]) => (g[s] ||= []).push(escH(nom) + (S.length > 1 ? ` <span class="mut">(${escH(ci)})</span>` : '')));
+      h += `<h3 style="font:700 14px var(--sans);margin:14px 0 4px">Senadores (${sen.length})</h3>` + Object.entries(g).map(([s, L]) => fila(s, L.join(', '))).join('');
+    }
+    c.innerHTML = h;
+    $('#e-prov').onchange = e => { PROVE = e.target.value; electos(F); };
+  }
+  const NOMBRE_CORTO = s => { const k = FCOD.indexOf(famDe(s)); return k >= 0 && FCOD[k] !== 'OTROS' && /^(PP|PSOE|VOX)$/.test(FCOD[k]) ? nomF(FAM[k], META.directo.eleccion) : s; };
   function pactos(F, esc) {
     const c = $('#pactos-cuerpo'); if (!c || !F.escanos) return;
     const E = {}; let tot = 0;
@@ -858,7 +890,13 @@
       if (/encuesta|sondeo|40dB|\bCIS\b|simulador de pactos/i.test(a.textContent)) (a.closest('li') || a).hidden = true;
     });
     let tras = pac;
-    ['h-del-actualidad', 'h-del-listas', 'h-del-mapa'].map(sec).forEach(x => { if (x) { tras.after(x); tras = x; } });
+    // las listas, fuera: en su sitio, quién sale elegido en cada provincia (con el escrutinio)
+    const lis = sec('h-del-listas'); if (lis) lis.hidden = true;
+    const ele = document.createElement('section');
+    ele.className = 'wide'; ele.id = 'electos-29n'; ele.hidden = true;
+    ele.innerHTML = '<h2 style="font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px">Quién sale elegido</h2><div id="electos-cuerpo"></div>';
+    pac.after(ele); tras = ele;
+    ['h-del-actualidad', 'h-del-mapa'].map(sec).forEach(x => { if (x) { tras.after(x); tras = x; } });
   }
   // botones de participación del recuadro del directo: 1.er avance, 2.º avance y final (esta, solo con escrutinio)
   function botonesAvance(y, disp, final) {
@@ -969,6 +1007,7 @@
       .sort((a, b) => (seats[b] - seats[a]) || (nat.f[b] - nat.f[a]));
     const tot = seats.reduce((s, x) => s + x, 0) || 1;
     pactos(F, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
+    electos(F);
     resultados(y, ord, seats, nat, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0), !!(F.escanos && Object.keys(F.escanos).length), F);
     $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${nomF(FAM[k], y)}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
