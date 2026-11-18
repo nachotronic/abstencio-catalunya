@@ -99,7 +99,7 @@ g_flujos = figura(f'En {n(PSOE_PP)} secciones ganó el PSOE en 2019 y el PP en 2
                   f'Secciones que cambiaron de ganador entre las generales de noviembre de 2019 y las de julio de 2023, según quién ganó en cada una: los {len(TOP)} cambios más frecuentes',
                   barras([(f'{NOM19.get(x, x)} → {NOM.get(y, y)}', v, col(y), n(v)) for (x, y), v in TOP.items()],
                          TOP.iloc[0] * 1.15, 'Secciones que cambiaron de ganador, por partido', W=400, ml=178),
-                  'Fuente: Ministerio del Interior, resultados por mesa agregados por sección censal, sin voto exterior. Cálculo propio.',
+                  'Fuente: Ministerio del Interior, resultados por mesa agregados por sección censal, sin voto exterior. En Navarra, Navarra Suma de 2019 se compara con PP y UPN sumados en 2023, que el 29N vuelven a ir juntos. Cálculo propio.',
                   None,
                   (['Ganó en 2019', 'Ganó en 2023', 'Secciones'], [[NOM19.get(x, x), NOM.get(y, y), n(v)] for (x, y), v in FLU.items()]))
 
