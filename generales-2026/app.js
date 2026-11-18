@@ -411,17 +411,29 @@
   // avances del 23J por municipio ([% a las 14.00, % a las 18.00] del censo), de data/censo/avances_participacion.csv;
   // se cargan al llegar el primer avance del 29N, para comparar en la ficha
   let AV23 = null;
+  // El 29N, una fila por partido con su barra de ahora y, debajo, la de 2023 (más fina y clara): compacto para el móvil
+  function compara(d, i, y) {
+    const v = (yy, f) => d[yy + '_' + f.cod] ? d[yy + '_' + f.cod][i] : null, ya = y ? [y, '2023_07'] : ['2023_07'];
+    const rows = FAM.map(f => ({ f, a: y ? v(y, f) : null, b: v('2023_07', f) }))
+      .filter(r => (r.a || 0) > .005 || (r.b || 0) > .005).sort((p, q) => ((q.a ?? q.b) || 0) - ((p.a ?? p.b) || 0)).slice(0, 7);
+    if (!rows.length) return '<p class="t-na">Sin resultados.</p>';
+    const max = Math.max(...rows.map(r => Math.max(r.a || 0, r.b || 0)));
+    const bar = (x, col, alto, op) => `<span style="display:block;height:${alto}px;margin:1px 0;border-radius:0 3px 3px 0;width:${x ? Math.max(1.5, x / max * 100) : 0}%;background:${col};opacity:${op}"></span>`;
+    return (y ? '<p class="t-na" style="margin:4px 0 2px">Barra gruesa, 29N; fina, 2023</p>' : '')
+      + '<table class="t-bars">' + rows.map(r => `<tr><th><span style="display:inline-block;max-width:120px;line-height:1.15;white-space:normal">${escH(nomL(r.f, ya[0], i))}</span></th>`
+      + `<td>${y ? bar(r.a, r.f.color, 9, 1) : ''}${bar(r.b, r.f.color, y ? 4 : 9, y ? .45 : 1)}</td>`
+      + `<td class="n" style="line-height:1.1">${y ? `${pct(r.a)}<br><span class="mut" style="font-size:11px">${pct(r.b)}</span>` : pct(r.b)}</td></tr>`).join('') + '</table>';
+  }
   function ficha(d, i, isSec, yo) {
     const eAv = !yo && !isSec && ELEC.find(x => x.cod === st.y && x.avance);
     if (eAv) {   // un avance del 29N: participación a esa hora, la del 23J a la misma hora y, debajo, el resultado de 2023
       const k = /a2$/.test(eAv.cod) ? 1 : 0, ahora = d[eAv.cod + '_part'] ? d[eAv.cod + '_part'][i] : null;
       const antes = AV23 && AV23[MUN.cod[i]] ? AV23[MUN.cod[i]][k] / 100 : null, hora = k ? '18.00' : '14.00';
       const dif = ahora != null && antes != null ? (ahora - antes) * 100 : null;
-      let h = `<div class="t-h">${MUN.nombre[i]}</div><div class="t-s">${MUN.provs[MUN.prov[i]] || ''} · ${eAv.nombre}</div>`
-        + `<dl class="t-kv"><dt>Participación ahora</dt><dd>${ahora != null ? pct(ahora) : 'sin dato'}</dd>`
-        + `<dt>En 2023 a las ${hora}</dt><dd>${pct(antes)}</dd>`
-        + (dif != null ? `<dt>Diferencia</dt><dd>${(dif > 0 ? '+' : dif < 0 ? '−' : '') + Math.abs(dif).toFixed(1).replace('.', ',')} puntos</dd>` : '') + '</dl>';
-      return h + '<div class="t-s" style="margin-top:10px">Resultado en las generales de 2023</div>' + ficha(d, i, false, '2023_07').replace(/^<div class="t-h">.*?<\/div><div class="t-s">.*?<\/div>/, '');
+      return `<div class="t-h">${MUN.nombre[i]}</div><div class="t-s">${MUN.provs[MUN.prov[i]] || ''} · ${eAv.nombre}</div>`
+        + `<table class="t-bars" style="font-size:13px;text-align:center"><tr class="mut"><td>Ahora</td><td>2023, ${hora} h</td><td>Diferencia, puntos</td></tr>`
+        + `<tr style="font:700 17px var(--sans)"><td>${ahora != null ? pct(ahora) : '–'}</td><td>${pct(antes)}</td><td>${dif != null ? (dif > 0 ? '+' : dif < 0 ? '−' : '') + Math.abs(dif).toFixed(1).replace('.', ',') : '–'}</td></tr></table>`
+        + '<div class="t-s" style="margin-top:8px">Resultado de 2023</div>' + compara(d, i, null);
     }
     const y = yo || st.y, mi = isSec ? MUN.cod.indexOf(d.cod[i].slice(0, 5)) : i;
     const rows = FAM.map((f, k) => ({ f, v: d[y + '_' + f.cod] ? d[y + '_' + f.cod][i] : null, n: nomL(f, y, mi) }))
@@ -436,6 +448,13 @@
     const sub = isSec ? MUN.provs[MUN.prov[mi]] : MUN.provs[MUN.prov[i]];
     const max = rows.length ? rows[0].v : 1;
     let h = `<div class="t-h">${title}</div><div class="t-s">${sub || ''} · ${e}</div>`;
+    const vivo = !yo && !isSec && META.directo && y === META.directo.eleccion && d['2023_07_part'];
+    if (vivo) {
+      const part = d[y + '_part'] ? d[y + '_part'][i] : null, esc = d[y + '_esc'] ? d[y + '_esc'][i] : null;
+      return h + compara(d, i, y) + `<dl class="t-kv">${esc != null ? `<dt>Escrutado</dt><dd>${pct(esc)}</dd>` : ''}`
+        + `<dt>Participación</dt><dd>${pct(part)} <span class="mut" style="font-size:11px">(2023: ${pct(d['2023_07_part'][i])})</span></dd>`
+        + `<dt>Habitantes</dt><dd>${num(d.poblacion[i])}</dd></dl>`;
+    }
     if (g === EMPATE) h += '<p class="t-na">Empate: los dos primeros tuvieron los mismos votos.</p>';
     if (!rows.length) h += `<p class="t-na">Sin resultados para esta elección con estos límites${isSec ? ' de sección' : ''}.</p>`;
     h += '<table class="t-bars">' + rows.map(r => `<tr><th${r.n !== nomF(r.f, y) ? ` title="${escH(nomF(r.f, y))}"` : ''}><span style="display:inline-block;max-width:150px;line-height:1.2;white-space:${r.n.length > 16 ? 'normal' : 'nowrap'}">${escH(r.n)}</span></th><td><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.f.color}"></span></td><td class="n">${pct(r.v)}</td></tr>`).join('') + '</table>';
@@ -444,12 +463,6 @@
     if (REPUBLICA(y)) {
       const fus = !isSec && d[y + '_fus'] ? d[y + '_fus'][i] : null;
       h += `<p class="t-na">Listas abiertas: peso de cada bloque en los votos a candidatos.${fus ? ' Suma los municipios de entonces: ' + escH(fus) + '.' : ''}</p>`;
-    }
-    // el 29N, en cada municipio, el resultado de 2023 debajo para comparar
-    if (!yo && !isSec && META.directo && y === META.directo.eleccion && d['2023_07_part']) {
-      const v = ficha(d, i, false, '2023_07'), tb = v.match(/<table class="t-bars">[\s\S]*?<\/table>/);
-      h += '<div class="t-s" style="margin-top:10px">En las generales de 2023</div>' + (tb ? tb[0] : '<p class="t-na">Sin resultados.</p>')
-        + `<dl class="t-kv"><dt>Participación en 2023</dt><dd>${pct(d['2023_07_part'][i])}</dd></dl>`;
     }
     const part = d[y + '_part'] ? d[y + '_part'][i] : null;
     const esc = d[y + '_esc'] ? d[y + '_esc'][i] : null;
