@@ -878,7 +878,7 @@
   function soloElectorales() {
     const E = ['gana', 'party', 'part'];
     [...selV.options].forEach(o => { if (!E.includes(o.value)) o.remove(); });
-    if (!E.includes(st.v)) { st.v = 'gana'; selV.value = 'gana'; }
+    if (!E.includes(st.v)) { st.v = 'gana'; selV.value = 'gana'; sync(); }
   }
   function jornada() {
     if (jornadaHecha) return; jornadaHecha = true;
