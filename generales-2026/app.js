@@ -862,9 +862,9 @@
       .sort((a, b) => (seats[b] - seats[a]) || (nat.f[b] - nat.f[a]));
     const tot = seats.reduce((s, x) => s + x, 0) || 1;
     pactos(F, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
-    $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${FAM[k].nombre}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
+    $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${nomF(FAM[k], y)}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
-    $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${FAM[k].nombre} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
+    $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${nomF(FAM[k], y)} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
     sync();
   }
 

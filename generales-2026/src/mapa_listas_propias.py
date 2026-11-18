@@ -160,7 +160,7 @@ def familias_meta(meta):
     for cod, nombre, color in [('PODEMOS', 'Podemos', '#5a3c8f'), ('SALF', 'Se Acabó la Fiesta', '#c0392b')]:   # 29N, sin familia antes
         if cod not in [f['cod'] for f in meta['familias']]:
             meta['familias'].append({'cod': cod, 'nombre': nombre, 'color': color})
-    meta.setdefault('directo', {}).setdefault('nombres', {'SUMAR': 'Frente Amplio'})
+    meta.setdefault('directo', {}).setdefault('nombres', {'SUMAR': 'Frente Amplio', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu'})
     # directo del 29N: las reglas de las listas propias, delante de las de las familias (la primera que casa gana)
     meta['reglas'] = REGLAS_DIRECTO + [r for r in meta.get('reglas', []) if r not in REGLAS_DIRECTO and r[0] not in PROPIAS]
 
