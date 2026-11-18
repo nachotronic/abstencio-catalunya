@@ -745,6 +745,9 @@
     [document.querySelector('section.ep'), document.querySelector('section.votar-29n'), sec('h-del-internacional'), sec('h-del-videos')]
       .forEach(x => { if (x) x.hidden = true; });
     document.querySelectorAll('nav.site a[href$="encuestas/"]').forEach(a => { a.hidden = true; });   // y el enlace del menú
+    // bajo el titular, solo el enlace a los resultados del 29N (el de la guía previa habla de 2023)
+    document.querySelectorAll('p.al29n a[href$="elecciones-29n-2026/"]').forEach(a => {
+      if (a.nextElementSibling && a.nextElementSibling.tagName === 'BR') a.nextElementSibling.remove(); a.remove(); });
     // «Posibles pactos» justo debajo del mapa: con el escrutinio, los escaños provisionales de Interior; antes, solo el aviso
     const pac = document.createElement('section');
     pac.className = 'wide'; pac.id = 'pactos-29n';
