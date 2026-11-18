@@ -541,8 +541,13 @@
   opciones();
   selV.innerHTML = Object.entries(VARS).map(([k, v]) => `<option value="${k}">${v.name}</option>`).join('');
   // partidos: solo las familias con voto en la elección elegida (las de la República solo existen en 1933 y 1936)
+  // ordenadas de más a menos votadas en esa elección (cuota de cada municipio por su población: orden aproximado)
+  const PESO = {};
+  const peso = (y, c) => { const k = y + '_' + c, a = MUN[k]; if (!a) return 0;
+    if (PESO[k] == null || y === (META.directo && META.directo.eleccion)) { let t = 0; for (let i = 0; i < a.length; i++) if (a[i] > 0) t += a[i] * (MUN.poblacion[i] || 0); PESO[k] = t; }
+    return PESO[k]; };
   const partidos = () => {
-    const fs = FAM.filter(f => f.cod !== 'OTROS' && MUN[st.y + '_' + f.cod]);
+    const fs = FAM.filter(f => f.cod !== 'OTROS' && peso(st.y, f.cod) > 0).sort((a, b) => peso(st.y, b.cod) - peso(st.y, a.cod));
     if (fs.length && !fs.some(f => f.cod === st.party)) st.party = fs[0].cod;
     selP.innerHTML = fs.map(f => `<option value="${f.cod}">${nomF(f, st.y)}</option>`).join('');
     selP.value = st.party;
