@@ -874,6 +874,12 @@
       + `<span style="white-space:nowrap"><b>${x}</b> · ${x >= 176 ? '<b>mayoría absoluta</b>' : `le faltan ${176 - x}`}</span></div>`).join('')
       + `<p style="margin:10px 0 0"><a href="${link}">Prueba otros pactos con estos escaños en el simulador →</a></p></div>`;
   }
+  // la noche del 29N, en el desplegable del mapa solo las variables electorales (se llama con el directo ya cargado)
+  function soloElectorales() {
+    const E = ['gana', 'party', 'part'];
+    [...selV.options].forEach(o => { if (!E.includes(o.value)) o.remove(); });
+    if (!E.includes(st.v)) { st.v = 'gana'; selV.value = 'gana'; }
+  }
   function jornada() {
     if (jornadaHecha) return; jornadaHecha = true;
     const mapa = document.getElementById('mapa'); if (!mapa || !mapa.parentNode || !document.querySelector('section.votar-29n')) return;
@@ -947,7 +953,7 @@
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
       if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;
-      $('#directo').hidden = false; jornada();
+      $('#directo').hidden = false; jornada(); soloElectorales();
       $('#d-nombre').textContent = META.directo.nombre || y;
       $('#d-esc').textContent = pct(0);
       $('#d-estado').textContent = av.length ? `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`
@@ -1005,7 +1011,7 @@
     selE.value = st.y;
     // Si el mapa sigue en la vista inicial, se reencaja después de mostrar el recuadro, que le quita alto
     const h0 = HOME(), enCasa = Math.abs(view.zoom - h0.zoom) < .01 && Math.abs(view.longitude - h0.longitude) < 1e-6;
-    const box = $('#directo'); box.hidden = false; jornada();
+    const box = $('#directo'); box.hidden = false; jornada(); soloElectorales();
     const h1 = HOME(); if (enCasa && h1.zoom !== view.zoom) { view = { ...view, ...h1 }; dk.setProps({ initialViewState: view }); }
     $('#d-nombre').textContent = (F.simulacro ? 'Simulacro con datos del 23J · ' : '') + (META.directo.nombre || y);
     $('#d-esc').textContent = pct(F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
