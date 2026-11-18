@@ -269,7 +269,8 @@ async function pideTexto(url, env) {
 }
 
 // Avances de participación (getAvancesTotales/2/<envío>): registros TO, CM y PR con dos avances
-// (mesas, censo y participación con dos decimales implícitos). -> {fecha, es: [p1, p2], pr: {pp: [p1, p2]}}, en %.
+// (mesas, censo y participación con dos decimales implícitos). -> {fecha, es: [p1, p2], pr: {pp: [p1, p2]}, mesas}, en %;
+// mesas: total, constituidas y suspendidas de España (constitución de mesas, a las 9:30 el 29N).
 const ANCHO_AV = [10, 2, 2, 2, 1, 50, 5, 5, 5, 8, 8, 8], CAND_AV = [5, 8, 5];
 export function avancesMedios(texto) {
   const out = { fecha: '', es: null, pr: {} };
@@ -277,7 +278,7 @@ export function avancesMedios(texto) {
     const c = campos(l, ANCHO_AV, CAND_AV);
     const av = [0, 1].map(i => { const m = ent(c[12 + 3 * i]), p = ent(c[14 + 3 * i]); return m ? p / 100 : null; });
     if (c[0] > out.fecha) out.fecha = c[0];
-    if (c[1] === 'TO') out.es = av;
+    if (c[1] === 'TO') { out.es = av; out.mesas = { total: ent(c[6]), constituidas: ent(c[7]), suspendidas: ent(c[8]) }; }
     else if (c[1] === 'PR') out.pr[c[3].padStart(2, '0')] = av;
   }
   return out;
@@ -306,7 +307,7 @@ async function porMedios(base, env) {
   // Hora: la del último registro con mesas escrutadas; sin escrutinio, la de los avances; sin nada, la de la lectura.
   const conVotos = filas.filter(x => x.a[1] > 0).map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (UTC+1)
   out.actualizado = horaMedios(conVotos) || (avances && avances.es && avances.es.some(x => x != null) && horaMedios(avances.fecha)) || new Date().toISOString();
-  if (avances) out.avances = { es: avances.es, pr: avances.pr };
+  if (avances) out.avances = { es: avances.es, pr: avances.pr, mesas: avances.mesas };
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
   return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}) };
 }

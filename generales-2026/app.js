@@ -717,12 +717,13 @@
     }
     // sin ninguna mesa escrutada (el Worker ya encendido antes del cierre) el mapa sigue en 2023: no se cambia a un 29N vacío
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
-      const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [];
-      if (!av.length || !$('#directo')) return;
+      const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
+      if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;
       $('#directo').hidden = false;
       $('#d-nombre').textContent = META.directo.nombre || y;
       $('#d-esc').textContent = pct(0);
-      $('#d-estado').textContent = `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`;
+      $('#d-estado').textContent = av.length ? `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`
+        : `mesas constituidas: ${me.constituidas.toLocaleString('es-ES')} de ${me.total.toLocaleString('es-ES')}`;
       $('#d-seats').innerHTML = ''; $('#d-leg').innerHTML = '';
       return;
     }
