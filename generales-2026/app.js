@@ -707,6 +707,47 @@
     q.slice(0, n).forEach(([v, k]) => { if (v > 0) out[k]++; }); return out;
   }
   let modoAvance = false, avVisto = 0;
+  // Portada del día de la votación (con el directo encendido y datos): el mapa arriba, Actualidad debajo y fuera lo caducado
+  // (encuestas, «Votar el 29N, estos días», Internacional y vídeos). Solo en la portada; no toca títulos, H1 ni URL.
+  let jornadaHecha = false;
+  // siglas de Interior -> partido del simulador de pactos (encuestas/simulador-pactos/); UPN-PP, lista conjunta, cuenta como PP
+  const SIMK = [[/^(PP\b|PP-|P\.P\.|UPN-PP)/, 'PP'], [/PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/, 'PSOE'], [/^VOX/, 'VOX'],
+    [/SUMAR/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
+    [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
+  const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Sumar', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
+  function pactos(F, esc) {
+    const c = $('#pactos-cuerpo'); if (!c || !F.escanos) return;
+    const E = {}; let tot = 0;
+    for (const d of Object.values(F.escanos)) for (const [s, n] of Object.entries(d)) {
+      const a = (s || '').toUpperCase().trim(), m = SIMK.find(([r]) => r.test(a)), k = m ? m[1] : 'OTROS';
+      E[k] = (E[k] || 0) + n; tot += n;
+    }
+    if (!tot) return;
+    const suma = ks => ks.reduce((t, k) => t + (E[k] || 0), 0);
+    const P = [['PP y Vox', ['PP', 'VOX', 'UPN']], ['PSOE, Sumar y sus socios de 2023', ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'BILDU', 'PNV', 'BNG', 'CC']],
+      ['PP y PSOE', ['PP', 'PSOE']]].map(([n, ks]) => [n, suma(ks)]);
+    const link = (RAIZ ? new URL('../encuestas/simulador-pactos/', RAIZ).href : 'encuestas/simulador-pactos/') + '#e='
+      + Object.entries(E).filter(([k, n]) => k !== 'OTROS' && n).map(([k, n]) => k + '.' + n).join(',');
+    c.innerHTML = `<div style="font:15px/1.4 var(--sans)"><p class="mut" style="margin:0 0 8px">Escaños provisionales de Interior con el ${pct(esc)} escrutado: pueden cambiar hasta el final del recuento.</p>`
+      + P.map(([n, x]) => `<div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line)"><span>${n}</span>`
+      + `<span style="white-space:nowrap"><b>${x}</b> · ${x >= 176 ? '<b>mayoría absoluta</b>' : `le faltan ${176 - x}`}</span></div>`).join('')
+      + `<p style="margin:10px 0 0"><a href="${link}">Prueba otros pactos con estos escaños en el simulador →</a></p></div>`;
+  }
+  function jornada() {
+    if (jornadaHecha) return; jornadaHecha = true;
+    const mapa = document.getElementById('mapa'); if (!mapa || !mapa.parentNode || !document.querySelector('section.votar-29n')) return;
+    const sec = id => { const h = document.getElementById(id); return h && h.closest('section'); };
+    [document.querySelector('section.ep'), document.querySelector('section.votar-29n'), sec('h-del-internacional'), sec('h-del-videos')]
+      .forEach(x => { if (x) x.hidden = true; });
+    // «Posibles pactos» justo debajo del mapa: con el escrutinio, los escaños provisionales de Interior; antes, solo el aviso
+    const pac = document.createElement('section');
+    pac.className = 'wide'; pac.id = 'pactos-29n';
+    pac.innerHTML = '<h2 style="font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px">Posibles pactos</h2><div id="pactos-cuerpo">'
+      + '<p>Cuando empiece el escrutinio, aquí verás qué pactos suman los 176 escaños de la mayoría absoluta con los escaños del recuento de Interior.</p></div>';
+    mapa.after(pac);
+    let tras = pac;
+    ['h-del-actualidad', 'h-del-listas', 'h-del-mapa'].map(sec).forEach(x => { if (x) { tras.after(x); tras = x; } });
+  }
   // botones de participación del recuadro del directo: 1.er avance, 2.º avance y final (esta, solo con escrutinio)
   function botonesAvance(y, disp, final) {
     const B = [[y + 'a1', '1.er avance'], [y + 'a2', '2.º avance'], [y, 'Participación final']];
@@ -748,12 +789,12 @@
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
       if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;
-      $('#directo').hidden = false;
+      $('#directo').hidden = false; jornada();
       $('#d-nombre').textContent = META.directo.nombre || y;
       $('#d-esc').textContent = pct(0);
       $('#d-estado').textContent = av.length ? `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`
         : `mesas constituidas: ${me.constituidas.toLocaleString('es-ES')} de ${me.total.toLocaleString('es-ES')}`;
-      $('#d-seats').innerHTML = ''; $('#d-leg').innerHTML = '';
+      $('#d-seats').innerHTML = ''; $('#d-seats').style.display = 'none'; $('#d-leg').innerHTML = '';
       // con los avances municipio a municipio, el mapa pinta la participación: un botón por avance (y la final, con el escrutinio)
       if (F.avmun && av.length) {
         const disp = [];
@@ -806,7 +847,7 @@
     selE.value = st.y;
     // Si el mapa sigue en la vista inicial, se reencaja después de mostrar el recuadro, que le quita alto
     const h0 = HOME(), enCasa = Math.abs(view.zoom - h0.zoom) < .01 && Math.abs(view.longitude - h0.longitude) < 1e-6;
-    const box = $('#directo'); box.hidden = false;
+    const box = $('#directo'); box.hidden = false; jornada();
     const h1 = HOME(); if (enCasa && h1.zoom !== view.zoom) { view = { ...view, ...h1 }; dk.setProps({ initialViewState: view }); }
     $('#d-nombre').textContent = (F.simulacro ? 'Simulacro con datos del 23J · ' : '') + (META.directo.nombre || y);
     $('#d-esc').textContent = pct(F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
@@ -815,7 +856,8 @@
     const ord = FCOD.map((c, k) => k).filter(k => seats[k] > 0 || nat.f[k] / nat.val > .01)
       .sort((a, b) => (seats[b] - seats[a]) || (nat.f[b] - nat.f[a]));
     const tot = seats.reduce((s, x) => s + x, 0) || 1;
-    $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${FAM[k].nombre}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
+    pactos(F, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0));
+    $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${FAM[k].nombre}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
     $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${FAM[k].nombre} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
     sync();
