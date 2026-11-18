@@ -847,7 +847,7 @@
     c.innerHTML = h;
     $('#e-prov').onchange = e => { PROVE = e.target.value; electos(F); };
   }
-  const NOMBRE_CORTO = s => { const k = FCOD.indexOf(famDe(s)); return k >= 0 && FCOD[k] !== 'OTROS' && /^(PP|PSOE|VOX)$/.test(FCOD[k]) ? nomF(FAM[k], META.directo.eleccion) : s; };
+  const NOMBRE_CORTO = s => { const k = FCOD.indexOf(famDe(s)); return k >= 0 && FCOD[k] !== 'OTROS' ? nomF(FAM[k], META.directo.eleccion) : s; };
   function pactos(F, esc) {
     const c = $('#pactos-cuerpo'); if (!c || !F.escanos) return;
     const E = {}; let tot = 0;
