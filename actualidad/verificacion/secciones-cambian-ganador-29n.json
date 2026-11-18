@@ -1,0 +1,172 @@
+{
+ "pieza": "secciones-cambian-ganador-29n",
+ "cifras": [
+  {
+   "texto": "Elecciones generales: una de cada tres secciones cambió de",
+   "condicion": "30 < D['PCH'] < 37  # una de cada tres"
+  },
+  {
+   "texto": "En 5.970 secciones el ganador",
+   "cifra": "5.970",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "al PP; al revés, solo en 100. Otras 2.752 se decidieron",
+   "cifra": "100",
+   "calculo": "D['PP_PSOE']"
+  },
+  {
+   "texto": "revés, solo en 100. Otras 2.752 se decidieron por menos",
+   "cifra": "2.752",
+   "calculo": "D['NCER']"
+  },
+  {
+   "texto": "se decidieron por menos de 2 puntos.",
+   "cifra": "2",
+   "calculo": "D['MARGEN']"
+  },
+  {
+   "texto": "siguiente. Hemos comparado las 34.126 secciones censales que",
+   "cifra": "34.126",
+   "calculo": "D['NS']"
+  },
+  {
+   "texto": "las de julio de 2023. En 392 de ellas los dos primeros",
+   "cifra": "392",
+   "calculo": "D['EMP']"
+  },
+  {
+   "texto": "En 11.717 de ellas, el 34,3 %,",
+   "cifra": "11.717",
+   "calculo": "D['NCH']"
+  },
+  {
+   "texto": "En 11.717 de ellas, el 34,3 %, ganó en 2023 un partido",
+   "cifra": "34,3",
+   "calculo": "D['PCH']"
+  },
+  {
+   "texto": "en 2019. Viven en ellas el 37,9 % de los electores de",
+   "cifra": "37,9",
+   "calculo": "D['PCEN']"
+  },
+  {
+   "texto": "frecuente fue del PSOE al PP: 5.970 secciones. Al revés,",
+   "cifra": "5.970",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "revés, del PP al PSOE, solo 100.",
+   "cifra": "100",
+   "calculo": "D['PP_PSOE']"
+  },
+  {
+   "texto": "Cataluña, el PSOE ganó en 2023 en 1.952 secciones donde en 2019",
+   "cifra": "1.952",
+   "calculo": "D['ERC_PSOE']"
+  },
+  {
+   "texto": "ganado ERC. Y el PP recuperó 1.454 secciones donde en 2019",
+   "cifra": "1.454",
+   "calculo": "D['VOX_PP']"
+  },
+  {
+   "texto": "en 2019 había ganado Vox; 473 de ellas, en la Región",
+   "cifra": "473",
+   "calculo": "D['VP_MUR']"
+  },
+  {
+   "texto": "cambió fue en Lleida, con el 61,2 % de sus secciones,",
+   "cifra": "61,2",
+   "calculo": "max(v['pct'] for v in D['PROV'].values())"
+  },
+  {
+   "texto": "menos, en Palencia, con el 10,0 %. En 6 provincias cambió",
+   "cifra": "10,0",
+   "calculo": "min(v['pct'] for v in D['PROV'].values())"
+  },
+  {
+   "texto": "Palencia, con el 10,0 %. En 6 provincias cambió de",
+   "cifra": "6",
+   "calculo": "D['MAS_MITAD']"
+  },
+  {
+   "texto": "punto de cambiar. En 2023, 2.752 secciones, el 8,1 %,",
+   "cifra": "2.752",
+   "calculo": "D['NCER']"
+  },
+  {
+   "texto": "2023, 2.752 secciones, el 8,1 %, se decidieron por",
+   "cifra": "8,1",
+   "calculo": "D['PCER']"
+  },
+  {
+   "texto": "se decidieron por menos de 2 puntos; en ellas votan",
+   "cifra": "2",
+   "calculo": "D['MARGEN']"
+  },
+  {
+   "texto": "2 puntos; en ellas votan 2.831.991 electores. En 1.138,",
+   "cifra": "2.831.991",
+   "calculo": "D['CENSO_CER']"
+  },
+  {
+   "texto": "votan 2.831.991 electores. En 1.138, el PP quedó por delante",
+   "cifra": "1.138",
+   "calculo": "D['CER_PP_PSOE']"
+  },
+  {
+   "texto": "delante del PSOE por menos de 2 puntos, y en 1.082,",
+   "cifra": "2",
+   "calculo": "D['MARGEN']"
+  },
+  {
+   "texto": "por menos de 2 puntos, y en 1.082, al revés. 1.550 de",
+   "cifra": "1.082",
+   "calculo": "D['CER_PSOE_PP']"
+  },
+  {
+   "texto": "puntos, y en 1.082, al revés. 1.550 de esas secciones ya",
+   "cifra": "1.550",
+   "calculo": "D['CER_CH']"
+  },
+  {
+   "texto": "En 5.970 secciones ganó el PSOE",
+   "cifra": "5.970",
+   "calculo": "D['PSOE_PP']"
+  },
+  {
+   "texto": "quién ganó en cada una: los 8 cambios más frecuentes",
+   "cifra": "8",
+   "calculo": "D['TOP']"
+  },
+  {
+   "texto": "Lleida cambió de ganador el 61,2 % de las secciones;",
+   "cifra": "61,2",
+   "calculo": "max(v['pct'] for v in D['PROV'].values())"
+  },
+  {
+   "texto": "secciones; en Palencia, el 10,0 %Porcentaje de secciones",
+   "cifra": "10,0",
+   "calculo": "min(v['pct'] for v in D['PROV'].values())"
+  },
+  {
+   "texto": "2.752 secciones se decidieron",
+   "cifra": "2.752",
+   "calculo": "D['NCER']"
+  },
+  {
+   "texto": "decidieron en 2023 por menos de 2 puntosSecciones donde",
+   "cifra": "2",
+   "calculo": "D['MARGEN']"
+  },
+  {
+   "texto": "sacó al segundo menos de 2 puntos en las generales",
+   "cifra": "2",
+   "calculo": "D['MARGEN']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
+}

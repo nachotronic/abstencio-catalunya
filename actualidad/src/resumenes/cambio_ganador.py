@@ -7,7 +7,7 @@ de un 15 %, para que sean el mismo territorio. Ganador: candidatura con más vot
 Navarra: en 2019 Navarra Suma (UPN, PP y Cs) va en la columna PP; en 2023 se suman PP y UPN, que fueron por separado,
 para comparar el mismo espacio, como la lista conjunta UPN-PP del 29N.
 Margen: votos del primero menos los del segundo, sobre votos válidos (candidaturas más blanco).
-Uso, desde la raíz: python3 actualidad/src/resumenes/secciones_cambian_ganador.py
+Uso, desde la raíz: python3 actualidad/src/resumenes/cambio_ganador.py
 """
 import json
 
@@ -98,7 +98,7 @@ TOP = FLU.head(8)
 g_flujos = figura(f'En {n(PSOE_PP)} secciones ganó el PSOE en 2019 y el PP en 2023; al revés, solo en {n(PP_PSOE)}',
                   f'Secciones que cambiaron de ganador entre las generales de noviembre de 2019 y las de julio de 2023, según quién ganó en cada una: los {len(TOP)} cambios más frecuentes',
                   barras([(f'{NOM19.get(x, x)} → {NOM.get(y, y)}', v, col(y), n(v)) for (x, y), v in TOP.items()],
-                         TOP.iloc[0] * 1.15, 'Secciones que cambiaron de ganador, por partido', W=400, ml=150),
+                         TOP.iloc[0] * 1.15, 'Secciones que cambiaron de ganador, por partido', W=400, ml=178),
                   'Fuente: Ministerio del Interior, resultados por mesa agregados por sección censal, sin voto exterior. Cálculo propio.',
                   None,
                   (['Ganó en 2019', 'Ganó en 2023', 'Secciones'], [[NOM19.get(x, x), NOM.get(y, y), n(v)] for (x, y), v in FLU.items()]))
@@ -144,9 +144,15 @@ preguntas = [
 ]
 enlaces = f'{L("encuestas-error-2023-2019-29n", "Lo que las encuestas no dicen")} · <a href="{BASE}">Busca tu sección en el mapa</a>'
 foot = ('Datos: Ministerio del Interior, resultados por mesa de las generales de noviembre de 2019 y julio de 2023, agregados por sección censal. '
-        'Cálculo: actualidad/src/resumenes/secciones_cambian_ganador.py.')
+        'Cálculo: actualidad/src/resumenes/cambio_ganador.py.')
 H1 = 'Elecciones generales: una de cada tres secciones cambió de ganador entre 2019 y 2023'
 DEK = f'En {n(PSOE_PP)} secciones el ganador pasó del PSOE al PP; al revés, solo en {n(PP_PSOE)}. Otras {n(NCER)} se decidieron por menos de {MARGEN} puntos.'
-pieza(SLUG, 'El mapa que nadie te enseña', H1, DEK, '18 de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+DATOS = {'NS': NS, 'NCH': NCH, 'PCH': PCH, 'PCEN': PCEN, 'EMP': EMP, 'PSOE_PP': PSOE_PP, 'PP_PSOE': PP_PSOE, 'ERC_PSOE': ERC_PSOE, 'VOX_PP': VOX_PP,
+         'VP_MUR': VP_MUR, 'NCER': NCER, 'PCER': PCER, 'CER_PP_PSOE': CER_PP_PSOE, 'CER_PSOE_PP': CER_PSOE_PP, 'CER_CH': CER_CH, 'CENSO_CER': CENSO_CER,
+         'MARGEN': MARGEN, 'MAS_MITAD': MAS_MITAD, 'TOP': len(TOP),
+         'FLU': {f'{x}>{y}': int(v) for (x, y), v in FLU.items()}, 'PAR': {f'{x}>{y}': int(v) for (x, y), v in PAR.items()},
+         'PROV': {NOMP.get(pr, pr): {'pct': float(r['mean'] * 100), 'n': int(r['size']), 'cambian': int(r['sum'])} for pr, r in TP.iterrows()}}
+datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
+pieza(SLUG, 'El mapa que nadie te enseña', H1, DEK, '18 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('EMP', EMP, 'NS', NS, 'NB', NB, 'NCH', NCH, round(PCH, 2), round(PCEN, 2), 'flujos', PSOE_PP, PP_PSOE, ERC_PSOE, VOX_PP, 'cerca', NCER, round(PCER, 2),
       CER_PP_PSOE, CER_PSOE_PP, CER_CH, CENSO_CER, 'prov', NOMP[MAXP], round(TP.loc[MAXP, 'mean'], 3), NOMP[MINP], round(TP.loc[MINP, 'mean'], 3), MAS_MITAD)
