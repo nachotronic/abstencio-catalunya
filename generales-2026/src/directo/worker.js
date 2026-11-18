@@ -50,7 +50,15 @@ export default {
       const cdn = `${url.origin}/vista/gh/${v}/generales-2026/app.js`;
       const html = (await (await fetch('https://mapaelectoral.es/', { cf: { cacheTtl: 60 } })).text())
         .replace('<head>', '<head><base href="https://mapaelectoral.es/"><meta name="robots" content="noindex">')
-        .replace('src="generales-2026/app.js"', `src="${cdn}"`);
+        .replace('src="generales-2026/app.js"', `src="${cdn}"`)
+        // como quedará la portada servida en la veda (src/quitar_encuestas_portada.py, hilo de /encuestas/): sin el bloque
+        // de encuestas ni las tarjetas de encuestas de los carruseles, ya en el HTML
+        .replace(/<!--encuestas:portada-->[\s\S]*?<!--\/encuestas:portada-->\n?/, '')
+        // (y, como se ha propuesto en ese hilo, la tarjeta del simulador de pactos con encuestas y el enlace del menú)
+        .replace(/<!--(actualidad:ultimas|actualidad:mapa|videos:portada|atlas:ultimas)-->[\s\S]*?<!--\/\1-->/g, b =>
+          b.replace(/<li><a href="[^"]*"[^>]*>[\s\S]*?<\/li>/g, li => /encuesta|sondeo/i.test(li.replace(/<img[^>]*>|<source[^>]*>/g, '')) ? '' : li))
+        .replace('<a href="encuestas/">Encuestas</a>', '')
+        .replace(/<a class="atlas" href="encuestas\/simulador-pactos\/">[\s\S]*?<\/a>/, '');
       return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
     }
     if (url.pathname === '/estado') return new Response((await env.RESULTADOS.get('estado')) || '{}', { headers: { ...cors, 'Cache-Control': 'no-store', 'Content-Type': 'application/json' } });
