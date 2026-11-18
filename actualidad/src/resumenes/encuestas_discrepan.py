@@ -8,6 +8,7 @@ Esa comparación se hace sin el CIS, que tiene un método propio y una muestra m
 Uso, desde la raíz: python3 actualidad/src/resumenes/encuestas_discrepan.py
 """
 import importlib.util
+import json
 import statistics
 from datetime import date, timedelta
 from math import sqrt
@@ -19,7 +20,7 @@ A = BASE + 'actualidad/'
 L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
 p = lambda v: n(v, 1)
 SLUG = 'cuanto-discrepan-encuestas-29n'
-HOY = date(2026, 11, 17)
+HOY = date(2026, 11, 18)
 VENTANA = 21
 
 _spec = importlib.util.spec_from_file_location('enc_construir', RAIZ / 'encuestas/src/construir.py')
@@ -158,7 +159,14 @@ foot = ('Datos: encuestas publicadas por cada encuestadora, recopiladas por Elec
         'Cálculo: actualidad/src/resumenes/encuestas_discrepan.py.')
 H1 = f'Elecciones generales: las encuestas dan al PSOE entre el {p(R["PSOE"]["min"])} y el {p(R["PSOE"]["max"])} %'
 DEK = f'Las {NE} encuestadoras de las últimas tres semanas casi coinciden en Vox. En el PSOE y en Sumar se separan más de lo que explicaría el azar.'
-pieza(SLUG, 'Lo que las encuestas no dicen', H1, DEK, f'{HOY.day} de noviembre de 2026', cuerpo, preguntas, enlaces, foot)
+DATOS = {'NE': NE, 'NS': NS, 'VENTANA': VENTANA, 'PP_DELANTE': PP_DELANTE,
+         'R': {k: {x: (float(v) if isinstance(v, (int, float)) else v) for x, v in R[k].items()} for k in R},
+         'RS': {k: {x: (float(v) if isinstance(v, (int, float)) else v) for x, v in RS[k].items()} for k in RS},
+         'RAT': {k: float(v) for k, v in RAT.items()},
+         'GAP': [[float(g), nm] for g, nm, _ in GAP],
+         'E': [{'casa': nom(e), 'medio': e.get('medio') or '', 'fin': e['fin'], 'muestra': muestra(e), **{k: e['voto'][k] for k, _ in PARTIDOS}} for e in E]}
+datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
+pieza(SLUG, 'Lo que las encuestas no dicen', H1, DEK, f'{HOY.day} de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('NE', NE, 'PSOE', R['PSOE']['min'], R['PSOE']['max'], 'sin CIS', RS['PSOE']['min'], RS['PSOE']['max'], 'PP', RS['PP']['min'], RS['PP']['max'],
       'VOX', R['VOX']['min'], R['VOX']['max'], 'gap', G_MIN[:2], G_MIN_S[:2], G_MAX[:2], 'PPdel', PP_DELANTE, {k: round(v, 2) for k, v in RAT.items()},
       {k: (round(RS[k]['sd'], 2), round(RS[k]['azar'], 2)) for k in RS})

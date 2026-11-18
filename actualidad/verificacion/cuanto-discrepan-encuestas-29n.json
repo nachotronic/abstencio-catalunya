@@ -1,0 +1,177 @@
+{
+ "pieza": "cuanto-discrepan-encuestas-29n",
+ "cifras": [
+  {
+   "texto": "encuestas dan al PSOE entre el 25,5 y el 33,3 %",
+   "cifra": "25,5",
+   "calculo": "D['R']['PSOE']['min']"
+  },
+  {
+   "texto": "al PSOE entre el 25,5 y el 33,3 %",
+   "cifra": "33,3",
+   "calculo": "D['R']['PSOE']['max']"
+  },
+  {
+   "texto": "Las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NE']"
+  },
+  {
+   "texto": "encuestadoras de las últimas tres semanas casi coinciden",
+   "condicion": "D['VENTANA'] == 21  # tres semanas"
+  },
+  {
+   "texto": "esconde. Hemos tomado las 18 encuestadoras que han",
+   "cifra": "18",
+   "calculo": "D['NE']"
+  },
+  {
+   "texto": "trabajo de campo en los últimos 21 días, la misma selección",
+   "cifra": "21",
+   "calculo": "D['VENTANA']"
+  },
+  {
+   "texto": "discrepan es en el PSOE: del 25,5 % de Data10 al 33,3",
+   "cifra": "25,5",
+   "calculo": "D['R']['PSOE']['min']"
+  },
+  {
+   "texto": "PSOE: del 25,5 % de Data10 al 33,3 % del CIS. Sin el CIS,",
+   "cifra": "33,3",
+   "calculo": "D['R']['PSOE']['max']"
+  },
+  {
+   "texto": "el abanico sigue siendo de 6,4 puntos, del 25,5 al",
+   "cifra": "6,4",
+   "calculo": "D['RS']['PSOE']['rango']"
+  },
+  {
+   "texto": "siendo de 6,4 puntos, del 25,5 al 31,9 % de SW Demoscopia.",
+   "cifra": "25,5",
+   "calculo": "D['RS']['PSOE']['min']"
+  },
+  {
+   "texto": "de 6,4 puntos, del 25,5 al 31,9 % de SW Demoscopia.",
+   "cifra": "31,9",
+   "calculo": "D['RS']['PSOE']['max']"
+  },
+  {
+   "texto": "el PP, sin el CIS, van del 29,1 % de SW Demoscopia al",
+   "cifra": "29,1",
+   "calculo": "D['RS']['PP']['min']"
+  },
+  {
+   "texto": "29,1 % de SW Demoscopia al 33,1 % de DYM. En Vox casi",
+   "cifra": "33,1",
+   "calculo": "D['RS']['PP']['max']"
+  },
+  {
+   "texto": "coinciden: todas lo ponen entre el 16,5 y el 20,4 %.",
+   "cifra": "16,5",
+   "calculo": "D['R']['VOX']['min']"
+  },
+  {
+   "texto": "ponen entre el 16,5 y el 20,4 %.",
+   "cifra": "20,4",
+   "calculo": "D['R']['VOX']['max']"
+  },
+  {
+   "texto": "Eso cambia quién gana. 16 de las 18 encuestadoras",
+   "cifra": "16",
+   "calculo": "D['PP_DELANTE']"
+  },
+  {
+   "texto": "cambia quién gana. 16 de las 18 encuestadoras dan más",
+   "cifra": "18",
+   "calculo": "D['NE']"
+  },
+  {
+   "texto": "La ventaja del PP va de +6,2 puntos en Data10 a −2,8",
+   "cifra": "6,2",
+   "calculo": "D['GAP'][-1][0]"
+  },
+  {
+   "texto": "+6,2 puntos en Data10 a −2,8 en SW Demoscopia, que",
+   "cifra": "2,8",
+   "calculo": "-min(g for g,n in D['GAP'] if n!='CIS')"
+  },
+  {
+   "texto": "PSOE, igual que el CIS (−7,8).",
+   "cifra": "7,8",
+   "calculo": "-D['GAP'][0][0]"
+  },
+  {
+   "texto": "azar: sus diferencias son 0,8 y 0,9 veces lo que explicaría",
+   "cifra": "0,8",
+   "calculo": "D['RAT']['PP']"
+  },
+  {
+   "texto": "sus diferencias son 0,8 y 0,9 veces lo que explicaría",
+   "cifra": "0,9",
+   "calculo": "D['RAT']['VOX']"
+  },
+  {
+   "texto": "muestras. En el PSOE son 1,5 veces, y en Sumar, 1,5.",
+   "cifra": "1,5",
+   "calculo": "D['RAT']['PSOE']"
+  },
+  {
+   "texto": "son 1,5 veces, y en Sumar, 1,5. Ahí ya no es solo la",
+   "cifra": "1,5",
+   "calculo": "D['RAT']['SUMAR']"
+  },
+  {
+   "texto": "El PSOE va del 25,5 al 33,3 % según la encuestadora;",
+   "cifra": "25,5",
+   "calculo": "D['R']['PSOE']['min']"
+  },
+  {
+   "texto": "El PSOE va del 25,5 al 33,3 % según la encuestadora;",
+   "cifra": "33,3",
+   "calculo": "D['R']['PSOE']['max']"
+  },
+  {
+   "texto": "la encuestadora; Vox, del 16,5 al 20,4 %Estimación",
+   "cifra": "16,5",
+   "calculo": "D['R']['VOX']['min']"
+  },
+  {
+   "texto": "encuestadora; Vox, del 16,5 al 20,4 %Estimación de voto",
+   "cifra": "20,4",
+   "calculo": "D['R']['VOX']['max']"
+  },
+  {
+   "texto": "%Estimación de voto de las 18 encuestadoras con trabajo",
+   "cifra": "18",
+   "calculo": "D['NE']"
+  },
+  {
+   "texto": "trabajo de campo en los últimos 21 días: un punto por encuestadora;",
+   "cifra": "21",
+   "calculo": "D['VENTANA']"
+  },
+  {
+   "texto": "De −7,8 a +6,2: la ventaja del",
+   "cifra": "7,8",
+   "calculo": "-D['GAP'][0][0]"
+  },
+  {
+   "texto": "De −7,8 a +6,2: la ventaja del PP sobre",
+   "cifra": "6,2",
+   "calculo": "D['GAP'][-1][0]"
+  },
+  {
+   "texto": "del PP sobre el PSOE cambia 14,0 puntos según quién preguntePP",
+   "cifra": "14,0",
+   "calculo": "D['GAP'][-1][0]-D['GAP'][0][0]"
+  },
+  {
+   "texto": "noDesviación típica entre las 17 encuestadoras sin el",
+   "cifra": "17",
+   "calculo": "D['NS']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
+}
