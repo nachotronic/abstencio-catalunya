@@ -1,7 +1,7 @@
 {
- "descargado": "2026-11-17T15:59Z",
+ "descargado": "2026-11-18T00:58Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1104,
+ "encuestas_espana": 1105,
  "encuestas_infraestatales": 144,
  "desde": "2018-08-10",
  "ultima": {
@@ -11,22 +11,18 @@
  },
  "siglas_sin_equivalencia": {
   "UPN-PP": 25,
-  "COMPROMÍS-EUPV-PODEM-ERPV": 7,
-  "NC-BC, PODEMOS, IU, SUMAR": 7,
   "D21": 4,
-  "ARAMÉS-EU-MS": 4,
+  "SY": 3,
   "Autonómicas - CUP": 2,
-  "SY": 2,
   "JxSí": 1,
   "CSQP": 1,
   "CeC": 1,
   "MÉS ESQUERRA": 1,
-  "PSOE (115/117) · VOX": 1,
-  "COMUNS-FA": 1
+  "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 409,
+  "encuestas": 411,
   "ultima_fin_campo": "2026-11-16",
-  "faltan_en_electografica_120_dias": 24
+  "faltan_en_electografica_120_dias": 25
  }
 }
