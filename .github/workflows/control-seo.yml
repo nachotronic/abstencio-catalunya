@@ -2,7 +2,8 @@
 # Si el PR cambia el título, el H1 o la descripción de una página con tráfico, comprueba en Search Console
 # que no pierde ninguna de sus 10 búsquedas principales tal cual; que no hay otro cambio de SEO en vigilancia
 # (de uno en uno), y que las páginas clave llevan la etiqueta «seo-fusiona-nacho» (solo tras el «Fusiona» de
-# Nacho). Si falla, el PR queda en rojo. Detalle: src/control_seo.py
+# Nacho). Antes, src/control_cabeceras.py: ningún title, description, H1, canonical ni URL de página publicada
+# puede cambiar (Nacho, 18-11-2026). Si falla, el PR queda en rojo. Detalle: src/control_seo.py
 name: Control de SEO
 on:
   pull_request:
@@ -24,7 +25,13 @@ jobs:
           filter: blob:none
           sparse-checkout: src
       - run: pip install -q google-auth requests
+      - name: Ningún title, description, H1, canonical ni URL de página publicada cambia
+        # regla de Nacho del 18-11-2026: si cambia uno solo, rojo, salvo la etiqueta «cabeceras-fusiona-nacho»
+        env:
+          ETIQUETAS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: python3 src/control_cabeceras.py --base HEAD^1 --cabeza HEAD --etiquetas "$ETIQUETAS" --resumen "$GITHUB_STEP_SUMMARY"
       - name: Títulos, H1 y descripciones frente a las búsquedas de Search Console
+        if: ${{ !cancelled() }}
         env:
           GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
           ETIQUETAS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
