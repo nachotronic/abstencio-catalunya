@@ -1155,6 +1155,9 @@ def main():
     # 18-11-2026: la entradilla visible empieza por la última encuesta, con su día y sus cifras (lo que enseñan en el
     # snippet los que nos superan en Google). Solo el párrafo visible: title, H1, meta description y URL no cambian.
     ultima_dek = ''
+    # 18-11-2026 (Nacho, «Al final. Entonces la b)»): solo en el párrafo visible; JSON-LD y og:description siguen igual
+    FRASE_FUENTES = 'Todas las encuestas publicadas, con su fuente, actualizadas cada día.'
+    INDEPENDIENTE = 'Mapa Electoral es independiente: no encarga encuestas ni trabaja para ningún partido ni medio.'
     _u = next((e for e in desde23 if not e['reest']), None)
     if _u:
         _d = date.fromisoformat(_u.get('publicado') or _u['fin'])
@@ -1262,7 +1265,7 @@ def main():
     main_html = f"""<main>
 <p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
-<p class="dek">{html.escape(ultima_dek + entradilla)}</p>
+<p class="dek">{html.escape(ultima_dek + (entradilla.replace(FRASE_FUENTES, INDEPENDIENTE) if FRASE_FUENTES in entradilla else entradilla + ' ' + INDEPENDIENTE))}</p>
 <p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{momento}">{actual}{', a las ' + hora if hora else ''}</time></p>
 <figure>
 <figcaption><span class="t">Voto estimado en cada encuesta, último año</span><span class="s">Cada punto es una encuesta; la línea es la mediana de la última encuesta de cada encuestadora en los {VENTANA_MEDIANA} días anteriores (con tres o más). Porcentaje sobre voto válido. Sumar incluye el Frente Amplio y sus socios.</span></figcaption>
