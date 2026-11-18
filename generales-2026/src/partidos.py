@@ -119,9 +119,9 @@ REGLAS_PROPIAS = [
 ]
 # Y las siglas de Coalición Canaria (CCa), que familia() reconoce con el nombre (_AMBIGUAS) y el directo, que solo tiene
 # las siglas, mandaba a «Otros»: van delante de NC, por NC-CCa (2019).
-# 29N: Podemos va solo (familia propia, PODEMOS); las listas conjuntas de Canarias (NC-BC, Podemos, IU y Sumar) y de la
-# Comunitat Valenciana (Compromís, EUPV y Podem) van con el Frente Amplio (familia SUMAR, que el 29N se llama «Frente Amplio»)
-REGLAS_DIRECTO = [['PODEMOS', '^PODEMOS$'], ['SALF', '^SALF$|SE ACAB[OÓ] LA FIESTA'], ['SUMAR', 'PODEMOS, IU, SUMAR|^COMPROM'], ['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA']] + REGLAS_PROPIAS
+# 29N: Podemos, el Frente Amplio (familia SUMAR, que el 29N se llama así) y las listas conjuntas de Canarias (NC-BC, Podemos, IU y
+# Sumar) y de la Comunitat Valenciana (Compromís, EUPV y Podem) van cada uno aparte (Nacho, 18-11-2026)
+REGLAS_DIRECTO = [['PODEMOS', '^PODEMOS$'], ['SALF', '^SALF$|SE ACAB[OÓ] LA FIESTA'], ['UPC', 'PODEMOS, IU, SUMAR'], ['COMPROMIS', '^COMPROM'], ['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA']] + REGLAS_PROPIAS
 # Nombre de la familia en las elecciones anteriores a un año (la pieza lo usa en leyenda y fichas)
 ALIAS = {'TE': [['2020', '¡Teruel Existe!']], 'PP': [['1989', 'AP']], 'SUMAR': [['1977', 'PCE y otros obreros'], ['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
 
