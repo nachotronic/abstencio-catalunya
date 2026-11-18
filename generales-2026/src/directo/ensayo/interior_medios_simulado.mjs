@@ -60,6 +60,10 @@ http.createServer((q, res) => {
     if (+m[2] !== envio) { res.writeHead(404); return res.end(); }   // envío caducado
     return txt(Object.keys(SIM.mun).filter(c => c.startsWith(m[1])).map(c => municipio(c, f)));
   }
+  m = p.match(/^\/data\/getAvancesMunicipios\/2\/(\d{2})\/(\d+)$/);   // 1.er avance: entre el 20 y el 60 %, según el código
+  if (m) return txt(Object.keys(SIM.mun).filter(c => c.startsWith(m[1])).map(c =>
+    [fecha(), '00', c.slice(0, 2), '9', c.slice(2), '99', izq('Municipio ' + c, 50), '99', '99', '00010', '00010', '00000', '00001000', '00001000', '00000000',
+      '00010', '00001000', String(2000 + (+c.slice(2) * 37) % 4000).padStart(5, '0'), '00000', '00000000', '00000'].join(';')));
   m = p.match(/^\/data\/getAvancesTotales\/2\/(\d+)$/);   // dos avances fijos: 25,00 % y 50,00 %
   if (m) return txt(['TO;99;99', ...Object.keys(META.escanos['2026_11']).map(pp => 'PR;00;' + pp)].map(t =>
     [fecha(), t, '9', izq('Ámbito', 50), '01000', '01000', '00000', '01000000', '01000000', '00000000', '01000', '01000000', '02500', '01000', '01000000', '05000'].join(';')));

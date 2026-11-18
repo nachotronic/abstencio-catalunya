@@ -66,9 +66,10 @@ export function porProvincia(out) {
     const k = out.siglas.map((_, i) => i).filter(i => filas.some(([, a]) => a[5 + i]));
     const mun = {};
     for (const [c, a] of filas) mun[c] = [...a.slice(0, 5), ...k.map(i => a[5 + i])];
-    const { escanos, avances, hitos: _h, ...resto } = out;   // los hitos solo van en el total de España
+    const { escanos, avances, avmun, hitos: _h, ...resto } = out;   // los hitos solo van en el total de España
     res[p] = { ...resto, siglas: k.map(i => out.siglas[i]), mun, ...(escanos && escanos[p] ? { escanos: { [p]: escanos[p] } } : {}),
-      ...(avances ? { avances: { es: avances.es, pr: avances.pr && avances.pr[p] ? { [p]: avances.pr[p] } : {} } } : {}) };
+      ...(avances ? { avances: { es: avances.es, pr: avances.pr && avances.pr[p] ? { [p]: avances.pr[p] } : {} } } : {}),
+      ...(avmun ? { avmun: Object.fromEntries(Object.entries(avmun).filter(([c]) => c.startsWith(p))) } : {}) };
   }
   return res;
 }
@@ -283,6 +284,17 @@ export function avancesMedios(texto) {
   }
   return out;
 }
+// Avances por municipio (getAvancesMunicipios/2/<pp>/<envío>), distrito 99 -> {cod5: participación del último avance, en %}
+const ANCHO_AVM = [10, 2, 2, 1, 3, 2, 50, 2, 2, 5, 5, 5, 8, 8, 8];
+export function avancesMunicipios(texto) {
+  const out = {};
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_AVM, CAND_AV);
+    if (c[5] !== '99') continue;
+    for (const i of [1, 0]) if (ent(c[15 + 3 * i])) { out[c[2].padStart(2, '0') + c[4].padStart(3, '0')] = ent(c[17 + 3 * i]) / 100; break; }
+  }
+  return out;
+}
 const horaMedios = f => /^\d{10}$/.test(f) ? `20${f.slice(0, 2)}-${f.slice(2, 4)}-${f.slice(4, 6)}T${f.slice(6, 8)}:${f.slice(8, 10)}:00+01:00` : null;
 
 let MUESTRA_AV = '';   // primera línea TO de los avances, para /estado (diagnóstico)
@@ -308,6 +320,14 @@ async function porMedios(base, env) {
   const conVotos = filas.filter(x => x.a[1] > 0).map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (UTC+1)
   out.actualizado = horaMedios(conVotos) || (avances && avances.es && avances.es.some(x => x != null) && horaMedios(avances.fecha)) || new Date().toISOString();
   if (avances) out.avances = { es: avances.es, pr: avances.pr, mesas: avances.mesas };
+  // Antes del escrutinio, la participación del último avance municipio a municipio, para pintar el mapa (52 peticiones más)
+  if (avances && avances.es && avances.es.some(x => x != null) && !filas.some(x => x.a[1] > 0)) {
+    const avmun = {};
+    await enParalelo(PROVINCIAS, 8, async p => {
+      try { Object.assign(avmun, avancesMunicipios(await pideTexto(`${base}/data/getAvancesMunicipios/2/${p}/${envio}`, env))); } catch (e) { /* sigue */ }
+    });
+    if (Object.keys(avmun).length) out.avmun = avmun;
+  }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
   return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}) };
 }
