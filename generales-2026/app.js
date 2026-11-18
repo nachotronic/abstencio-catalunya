@@ -445,6 +445,12 @@
       const fus = !isSec && d[y + '_fus'] ? d[y + '_fus'][i] : null;
       h += `<p class="t-na">Listas abiertas: peso de cada bloque en los votos a candidatos.${fus ? ' Suma los municipios de entonces: ' + escH(fus) + '.' : ''}</p>`;
     }
+    // el 29N, en cada municipio, el resultado de 2023 debajo para comparar
+    if (!yo && !isSec && META.directo && y === META.directo.eleccion && d['2023_07_part']) {
+      const v = ficha(d, i, false, '2023_07'), tb = v.match(/<table class="t-bars">[\s\S]*?<\/table>/);
+      h += '<div class="t-s" style="margin-top:10px">En las generales de 2023</div>' + (tb ? tb[0] : '<p class="t-na">Sin resultados.</p>')
+        + `<dl class="t-kv"><dt>Participación en 2023</dt><dd>${pct(d['2023_07_part'][i])}</dd></dl>`;
+    }
     const part = d[y + '_part'] ? d[y + '_part'][i] : null;
     const esc = d[y + '_esc'] ? d[y + '_esc'][i] : null;
     h += `<dl class="t-kv">${esc != null ? `<dt>Escrutado</dt><dd>${pct(esc)}</dd>` : ''}<dt>Participación</dt><dd>${pct(part)}</dd>
@@ -453,12 +459,6 @@
       <dt>Edad media</dt><dd>${VARS.edad_media.fmt(d.edad_media[i])}</dd>
       <dt>Población extranjera</dt><dd>${pct(d.extranjeros[i])}</dd>
       <dt>Habitantes</dt><dd>${num(d.poblacion[i])}</dd></dl>`;
-    // el 29N, en cada municipio, el resultado de 2023 debajo para comparar
-    if (!yo && !isSec && META.directo && y === META.directo.eleccion && d['2023_07_part']) {
-      const v = ficha(d, i, false, '2023_07'), tb = v.match(/<table class="t-bars">[\s\S]*?<\/table>/);
-      h += '<div class="t-s" style="margin-top:10px">En las generales de 2023</div>' + (tb ? tb[0] : '<p class="t-na">Sin resultados.</p>')
-        + `<dl class="t-kv"><dt>Participación en 2023</dt><dd>${pct(d['2023_07_part'][i])}</dd></dl>`;
-    }
     const b = isSec && BAR ? BAR.r[BAR.s[d.cod[i]]] : null;
     if (b) h += `<p class="t-bar"><a href="${new URL('../' + b[1], RAIZ || location.href).href}">Ver el barrio: ${escH(b[0])} →</a></p>`;
     return h;
@@ -749,7 +749,7 @@
     sec.hidden = false;
     const hem = ord.filter(k => seats[k]).sort((a, b) => { const i = x => { const p = IZQDER.indexOf(FCOD[x]); return p < 0 ? IZQDER.indexOf('OTROS') : p; }; return i(a) - i(b); })
       .map(k => [FAM[k].color, seats[k], nomF(FAM[k], y)]);
-    const filas = FCOD.map((c, k) => k).filter(k => nat.f[k] / nat.val >= .005 || seats[k]).sort((a, b) => nat.f[b] - nat.f[a]);
+    const filas = FCOD.map((c, k) => k).filter(k => nat.f[k] / nat.val >= .005 || seats[k]).sort((a, b) => (FCOD[a] === 'OTROS') - (FCOD[b] === 'OTROS') || nat.f[b] - nat.f[a]);
     const mx = Math.max(...filas.map(k => nat.f[k]));
     c.innerHTML = `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">Con el ${pct(esc)} escrutado. ${deInterior ? 'Escaños provisionales de Interior' : 'Escaños calculados con el voto escrutado (sin el voto desde el extranjero)'}; la mayoría absoluta, 176.</p>`
       + hemiciclo(hem)
