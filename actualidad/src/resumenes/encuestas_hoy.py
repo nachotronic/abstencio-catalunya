@@ -75,7 +75,8 @@ D40, SX = F
 assert (D40['casa'], SX['casa']) == ('40dB.', 'Sondaxe') and (D40['dif'], SX['dif']) == (1.5, 2.0), F
 assert (SX['dPP'], SX['dPSOE'], SX['dVOX'], SX['pv'], SX['pv_ant']) == (-0.7, 0.3, 1.4, 192, 191), SX
 # 40dB. da intervalos: PP 128-139, Vox 51-60 → centro 133,5 + 55,5 = 189; su informe da 131 y 55 (186) como estimación central
-ESC40 = {'PP': 131, 'PSOE': 122, 'VOX': 55, 'PP_AYER': 131, 'VOX_AYER': 58}
+ESC40 = {'PP': 131, 'PSOE': 122, 'VOX': 55, 'UPNPP': 2, 'PP_AYER': 131, 'VOX_AYER': 58}   # UPN-PP, aparte en el informe (pág. 8)
+PV40 = ESC40['PP'] + ESC40['UPNPP'] + ESC40['VOX']   # como Sondaxe, que incluye UPN-PP en el PP
 # Sondaxe: la distancia más corta entre PP y PSOE de esta campaña y la menor desde que hace encuestas de esta legislatura
 SX_SERIE = [dict(pub=_pub(e), dif=round(e['voto']['PP'] - e['voto']['PSOE'], 1), VOX=e['voto']['VOX'])
             for e in sorted((x for x in _val if enc.clave(x['casa']) == 'sondaxe'), key=_pub)] + [dict(pub=HOY, dif=SX['dif'], VOX=SX['VOX'])]
@@ -134,11 +135,11 @@ g_med = figura('Las dos de hoy, más ajustadas que la mediana',
                                                                     ['Mediana', p(MED['PP']), p(MED['PSOE']), p(MED['VOX']), p(MED_DIF)]]))
 
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="dato">Las dos encuestas de las elecciones generales publicadas este miércoles, 18 de noviembre, dejan al PSOE a dos puntos o menos del PP. El <a href="{URL40}">tracking de 40dB. para El País y la SER</a> da al PP el <strong>{p(D40['PP'])} %</strong> y al PSOE el <strong>{p(D40['PSOE'])} %</strong>, {p(D40['dif'])} puntos de distancia; el de <a href="{EXTRA[0]['url']}">Sondaxe para La Voz de Galicia</a>, el <strong>{p(SX['PP'])} %</strong> y el <strong>{p(SX['PSOE'])} %</strong>, {p(SX['dif'])} puntos. Vox va en direcciones opuestas: baja al {p(D40['VOX'])} % en 40dB. y sube al {p(SX['VOX'])} % en Sondaxe. En escaños, PP y Vox suman {ESC40['PP'] + ESC40['VOX']} en 40dB. y {SX['pv']:.0f} en Sondaxe, por encima de la mayoría absoluta de 176.</p>
+<p data-tipo="dato">Las dos encuestas de las elecciones generales fechadas este miércoles, 18 de noviembre, dejan al PSOE a dos puntos o menos del PP. El <a href="{URL40}">tracking de 40dB. para El País y la SER</a> da al PP el <strong>{p(D40['PP'])} %</strong> y al PSOE el <strong>{p(D40['PSOE'])} %</strong>, {p(D40['dif'])} puntos de distancia; el de <a href="{EXTRA[0]['url']}">Sondaxe para La Voz de Galicia</a>, el <strong>{p(SX['PP'])} %</strong> y el <strong>{p(SX['PSOE'])} %</strong>, {p(SX['dif'])} puntos. Vox va en direcciones opuestas: baja al {p(D40['VOX'])} % en 40dB. y sube al {p(SX['VOX'])} % en Sondaxe. En escaños, PP y Vox suman {PV40} en 40dB., contando los {ESC40['UPNPP']} de UPN-PP como hace Sondaxe, y {SX['pv']:.0f} en Sondaxe, por encima de la mayoría absoluta de 176.</p>
 {CSS_ULTIMO}
 {g_dia}
 <p data-tipo="dato">En Sondaxe, el PP baja {p(-SX['dPP'])} puntos respecto a su entrega anterior y el PSOE sube {p(SX['dPSOE'])}: la distancia entre los dos pasa de {p(SX['dif_ant'])} a {p(SX['dif'])} puntos, la más corta que ha dado Sondaxe desde las generales de 2023. Vox sube {p(SX['dVOX'])} puntos, hasta su dato más alto en la misma serie. Sondaxe da al PP {SX['escPP']} escaños, al PSOE {SX['escPSOE']} y a Vox {SX['escVOX']}. El trabajo de campo se hizo del 12 al 16 de noviembre, con 1.000 entrevistas por teléfono y en línea, según la <a href="{EXTRA[0]['electografica']}">ficha que recoge Electográfica</a>. La Voz de Galicia lo adelantó en su web el martes por la noche.</p>
-<p data-tipo="dato">40dB., con 2.000 entrevistas en línea del 13 al 17 de noviembre, da al PP {ESC40['PP']} escaños, al PSOE {ESC40['PSOE']} y a Vox {ESC40['VOX']}, según su <a href="{PDF40}">informe</a>. Vox baja por quinta entrega seguida y pierde {ESC40['VOX_AYER'] - ESC40['VOX']} diputados en un día. Lo contamos con más detalle en {L("encuesta-40db-vox-17-29n", "la pieza sobre el tracking de 40dB. de hoy")}.</p>
+<p data-tipo="dato">40dB., con 2.000 entrevistas en línea del 13 al 17 de noviembre, da al PP {ESC40['PP']} escaños, al PSOE {ESC40['PSOE']} y a Vox {ESC40['VOX']}, según su <a href="{PDF40}">informe</a>, que da aparte los {ESC40['UPNPP']} de UPN-PP. Vox baja por quinta entrega seguida y pierde {ESC40['VOX_AYER'] - ESC40['VOX']} diputados en un día. Lo contamos con más detalle en {L("encuesta-40db-vox-17-29n", "la pieza sobre el tracking de 40dB. de hoy")}.</p>
 <h2>Frente a la mediana de las encuestas</h2>
 <p data-tipo="dato">Las dos ven la carrera más ajustada que la mayoría. La mediana de la última encuesta de cada una de las {NCASAS} encuestadoras de las tres últimas semanas, la que resume <a href="{BASE}encuestas/">nuestra página de encuestas de las elecciones generales 2026</a>, da al PP el {p(MED['PP'])} %, al PSOE el {p(MED['PSOE'])} % y a Vox el {p(MED['VOX'])} %: {p(MED_DIF)} puntos entre PP y PSOE. Esa mediana es la de la última actualización automática de la página, de primera hora de este miércoles, y todavía no incluye la Sondaxe de hoy.</p>
 {g_med}
@@ -148,11 +149,11 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 '''
 
 preguntas = [
-    ('¿Qué encuestas de las elecciones generales se han publicado hoy, 18 de noviembre?',
+    ('¿Qué encuestas de las elecciones generales hay hoy, 18 de noviembre?',
      f'Dos: el tracking de 40dB. para El País y la SER (PP {p(D40["PP"])} %, PSOE {p(D40["PSOE"])} %, Vox {p(D40["VOX"])} %) y el de Sondaxe para La Voz de Galicia '
      f'(PP {p(SX["PP"])} %, PSOE {p(SX["PSOE"])} %, Vox {p(SX["VOX"])} %), hasta las {HORA}.'),
     ('¿Quién gana las elecciones generales según las encuestas de hoy?',
-     f'El PP, en las dos, por {p(D40["dif"])} puntos en 40dB. y por {p(SX["dif"])} en Sondaxe. PP y Vox suman mayoría absoluta en las dos: {ESC40["PP"] + ESC40["VOX"]} y {SX["pv"]:.0f} escaños.'),
+     f'El PP, en las dos, por {p(D40["dif"])} puntos en 40dB. y por {p(SX["dif"])} en Sondaxe. PP y Vox suman mayoría absoluta en las dos: {PV40} escaños en 40dB. y {SX["pv"]:.0f} en Sondaxe, con UPN-PP incluido.'),
     ('¿Qué dice la mediana de las encuestas?',
      f'La mediana de las {NCASAS} encuestadoras de las tres últimas semanas da al PP el {p(MED["PP"])} %, al PSOE el {p(MED["PSOE"])} % y a Vox el {p(MED["VOX"])} %. Está en mapaelectoral.es/encuestas.'),
 ]
@@ -161,7 +162,7 @@ enlaces = (f'<a href="{BASE}encuestas/">Encuestas elecciones generales 2026</a> 
 foot = ('Datos: 40dB. para El País y la SER; Sondaxe para La Voz de Galicia; encuestas recogidas por Electográfica y Wikipedia; mediana de mapaelectoral.es/encuestas. '
         'Cálculo: actualidad/src/resumenes/encuestas_hoy.py.')
 
-DATOS = {'F': F, 'ESC40': ESC40, 'MED': MED, 'MED_DIF': MED_DIF, 'NCASAS': NCASAS, 'SX_MIN': SX_MIN, 'SX_VOX_MAX': SX_VOX_MAX, 'SX_DESDE': SX_DESDE,
+DATOS = {'F': F, 'ESC40': ESC40, 'PV40': PV40, 'MED': MED, 'MED_DIF': MED_DIF, 'NCASAS': NCASAS, 'SX_MIN': SX_MIN, 'SX_VOX_MAX': SX_VOX_MAX, 'SX_DESDE': SX_DESDE,
          'SX_dVOX_L': SX_dVOX_L, 'MAS_LEJOS': MAS_LEJOS, 'SX_M_VOX': round(SX_M_VOX, 1), 'SX_LIMPIA': {k: SX_LIMPIA[k] for k in ('inicio', 'fin', 'muestra')}}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 

@@ -1,5 +1,8 @@
 {
  "pieza": "encuestas-elecciones-generales-2026-18-noviembre",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
  "cifras": [
   {
    "texto": "40dB. da al PP el 32,2 % y al PSOE el 30,7",
@@ -67,16 +70,6 @@
    "calculo": "D['F'][1]['VOX']"
   },
   {
-   "texto": "En escaños, PP y Vox suman 186 en 40dB. y 192 en Sondaxe,",
-   "cifra": "186",
-   "calculo": "D['ESC40']['PP']+D['ESC40']['VOX']"
-  },
-  {
-   "texto": "Vox suman 186 en 40dB. y 192 en Sondaxe, por encima",
-   "cifra": "192",
-   "calculo": "D['F'][1]['pv']"
-  },
-  {
    "texto": "de la mayoría absoluta de 176.",
    "condicion": "True  # mayoría absoluta: 176 de 350"
   },
@@ -141,7 +134,7 @@
    "calculo": "D['ESC40']['PSOE']"
   },
   {
-   "texto": "escaños, al PSOE 122 y a Vox 55, según su informe. Vox",
+   "texto": "escaños, al PSOE 122 y a Vox 55, según su informe, que",
    "cifra": "55",
    "calculo": "D['ESC40']['VOX']"
   },
@@ -206,6 +199,26 @@
   {
    "texto": "las 18 encuestadoras de las tres últimas semanas",
    "condicion": "D['NCASAS'] == 18  # tres semanas"
+  },
+  {
+   "texto": "En escaños, PP y Vox suman 188 en 40dB., contando los",
+   "cifra": "188",
+   "calculo": "D['PV40']"
+  },
+  {
+   "texto": "188 en 40dB., contando los 2 de UPN-PP como hace",
+   "cifra": "2",
+   "calculo": "D['ESC40']['UPNPP']"
+  },
+  {
+   "texto": "UPN-PP como hace Sondaxe, y 192 en Sondaxe, por encima",
+   "cifra": "192",
+   "calculo": "D['F'][1]['pv']"
+  },
+  {
+   "texto": "informe, que da aparte los 2 de UPN-PP. Vox baja",
+   "cifra": "2",
+   "calculo": "D['ESC40']['UPNPP']"
   }
  ],
  "externas": [
