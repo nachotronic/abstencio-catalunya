@@ -20,13 +20,14 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (115)
+## Pendientes (116)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-18 | [`secciones-cambian-ganador-29n`](https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/) | Elecciones generales: una de cada tres secciones cambió de ganador entre 2019 y 2023 | primer gráfico de la pieza |
 | 2026-11-18 | [`cuanto-discrepan-encuestas-29n`](https://mapaelectoral.es/actualidad/cuanto-discrepan-encuestas-29n/) | Elecciones generales: las encuestas dan al PSOE entre el 25,5 y el 33,3 % | primer gráfico de la pieza |
 | 2026-11-18 | [`encuesta-40db-vox-17-29n`](https://mapaelectoral.es/actualidad/encuesta-40db-vox-17-29n/) | Elecciones generales: Vox baja al 17 % en la encuesta diaria de El País | primer gráfico de la pieza |
+| 2026-11-18 | [`encuestas-elecciones-generales-2026-18-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-18-noviembre/) | Encuestas elecciones generales 2026, hoy 18 de noviembre: el PSOE, a dos puntos o menos del PP | primer gráfico de la pieza |
 | 2026-11-17 | [`ley-electoral-segunda-republica`](https://mapaelectoral.es/actualidad/ley-electoral-segunda-republica/) | Ganar por 1,6 puntos valía 10 de 13 diputados: así era la ley electoral de la Segunda República | primer gráfico de la pieza |
 | 2026-11-17 | [`feijoo-gipuzkoa-hernani-pp-29n`](https://mapaelectoral.es/actualidad/feijoo-gipuzkoa-hernani-pp-29n/) | Al PP le faltaron 9.793 votos en 2023 para recuperar un diputado en Gipuzkoa; Feijóo arropa hoy a su candidato, atacado en Hernani | primer gráfico de la pieza |
 | 2026-11-17 | [`encuestas-error-2023-2019-29n`](https://mapaelectoral.es/actualidad/encuestas-error-2023-2019-29n/) | En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4: si hoy fallaran igual, el PSOE iría primero | primer gráfico de la pieza |
