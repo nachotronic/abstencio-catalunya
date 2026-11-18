@@ -3545,6 +3545,13 @@ ANTETITULOS = {
 }
 
 
+def titulo_carrusel(titulo):
+    """Texto de la tarjeta del carrusel de Actualidad de la portada: sin el «Elecciones generales:» del principio, para
+    que no empiecen todas igual (Nacho, 18-11-2026). Solo la tarjeta: el title, el H1 y la URL de la pieza no cambian."""
+    resto = re.sub(r'^Elecciones generales(?: (?:de )?2026| del 29N)?:\s+', '', titulo)
+    return resto[:1].upper() + resto[1:] if resto != titulo else titulo
+
+
 def antetitulo(q):
     return ANTETITULOS.get(q['slug']) or (q['lugar'] if q['serie'] == 'comunidades' else SERIES[q['serie']])
 
@@ -5122,7 +5129,7 @@ def franja_portada(todas, pre=''):
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
-                    f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></a></li>' for q in ult) +
+                    f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(titulo_carrusel(q["titulo"]))}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="{pre}actualidad/"><b>Todas las piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES and k != 'internacional')}</span></a></li></ul>'
             '<style>.del-actualidad .carrusel img{object-fit:contain;background:#fff}.del-actualidad .carrusel img.ilu{background:none}</style>'
             '<script>document.querySelectorAll(".del-actualidad").forEach(s=>{const u=s.querySelector(".carrusel"),m=d=>()=>u.scrollBy({left:d*u.querySelector("li").offsetWidth*1.05,behavior:"smooth"});'
