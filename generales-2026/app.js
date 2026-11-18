@@ -6,10 +6,15 @@
   // Ruta de los datos relativa a este script, para que la página funcione también como portada en la raíz.
   const RAIZ = ((document.currentScript && document.currentScript.src) || '').replace(/[^/]*$/, '');
   const get = f => fetch(RAIZ + 'data/' + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
+  // Día de elecciones (hay directo): la portada de la jornada se monta en cuanto llega meta.json, sin esperar al resto de
+  // datos, para que no se vean las encuestas ni los bloques viejos mientras carga el mapa.
+  let jornadaHecha = false;
+  const pMeta = get('meta.json');
+  pMeta.then(m => { if (new URLSearchParams(location.search).get('directo') || (m.directo && m.directo.url)) jornada(); }).catch(() => {});
   // Barrio de cada sección de las grandes ciudades (src/territorios.py): se pide al acercarse a las secciones
   let BAR = null, BARP = null;
   const pideBar = () => BARP || (BARP = get('barrios.json').then(j => { BAR = j; }).catch(() => { BAR = { r: [], s: {} }; }));
-  const [META, MUN, PROV, RES] = await Promise.all([get('meta.json'), get('municipios-ligero.json'), get('provincias.json'), get('resumen.json')]);
+  const [META, MUN, PROV, RES] = await Promise.all([pMeta, get('municipios-ligero.json'), get('provincias.json'), get('resumen.json')]);
   const FAM = META.familias, FCOD = FAM.map(f => f.cod);
   const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
   FAM.forEach(f => f.rgb = hex(f.color));
@@ -710,7 +715,6 @@
   let modoAvance = false, avVisto = 0;
   // Portada del día de la votación (con el directo encendido y datos): el mapa arriba, Actualidad debajo y fuera lo caducado
   // (encuestas, «Votar el 29N, estos días», Internacional y vídeos). Solo en la portada; no toca títulos, H1 ni URL.
-  let jornadaHecha = false;
   // siglas de Interior -> partido del simulador de pactos (encuestas/simulador-pactos/); UPN-PP, lista conjunta, cuenta como PP
   const SIMK = [[/^(PP\b|PP-|P\.P\.|UPN-PP)/, 'PP'], [/PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/, 'PSOE'], [/^VOX/, 'VOX'],
     [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^COMPROM/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
@@ -740,6 +744,7 @@
     const sec = id => { const h = document.getElementById(id); return h && h.closest('section'); };
     [document.querySelector('section.ep'), document.querySelector('section.votar-29n'), sec('h-del-internacional'), sec('h-del-videos')]
       .forEach(x => { if (x) x.hidden = true; });
+    document.querySelectorAll('nav.site a[href$="encuestas/"]').forEach(a => { a.hidden = true; });   // y el enlace del menú
     // «Posibles pactos» justo debajo del mapa: con el escrutinio, los escaños provisionales de Interior; antes, solo el aviso
     const pac = document.createElement('section');
     pac.className = 'wide'; pac.id = 'pactos-29n';

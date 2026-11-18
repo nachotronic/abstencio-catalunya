@@ -41,6 +41,8 @@ export default {
       return new Response(r.body, { status: r.status, headers: { ...cors, 'Cache-Control': 'public, max-age=300',
         'Content-Type': gh[3] === 'js' ? 'text/javascript; charset=utf-8' : 'application/json; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
     }
+    const fuera = url.pathname.match(/^\/vista\/gh\/[0-9a-f]{7,40}\/(.*)$/);   // el resto de enlaces, a la web publicada
+    if (fuera && !gh) return Response.redirect('https://mapaelectoral.es/' + fuera[1] + url.search + url.hash, 302);
     if (url.pathname === '/vista') {
       const v = /^[0-9a-f]{7,40}$/.test(url.searchParams.get('v') || '') ? url.searchParams.get('v') : null;
       if (!v) return new Response('Falta ?v=<commit>', { status: 400 });
