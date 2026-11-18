@@ -94,7 +94,7 @@ export function porProvincia(out) {
     const k = out.siglas.map((_, i) => i).filter(i => filas.some(([, a]) => a[5 + i]));
     const mun = {};
     for (const [c, a] of filas) mun[c] = [...a.slice(0, 5), ...k.map(i => a[5 + i])];
-    const { escanos, avances, avmun, hitos: _h, ambitos: _a, senado: _s, ...resto } = out;   // los hitos solo van en el total de España
+    const { escanos, avances, avmun, hitos: _h, ambitos: _a, senado: _s, ant23: _t, ...resto } = out;   // los hitos solo van en el total de España
     res[p] = { ...resto, siglas: k.map(i => out.siglas[i]), mun, ...(escanos && escanos[p] ? { escanos: { [p]: escanos[p] } } : {}),
       ...(avances ? { avances: { es: avances.es, pr: avances.pr && avances.pr[p] ? { [p]: avances.pr[p] } : {} } } : {}),
       ...(avmun ? { avmun: Object.fromEntries(Object.entries(avmun).filter(([c]) => c.startsWith(p))) } : {}) };
@@ -369,7 +369,7 @@ async function porMedios(base, env) {
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
   let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
-  if (previo && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) return previo;    // nada nuevo
+  if (previo && previo.envio === envio && previo.mun && previo.ambitos && previo.ant23 && (!e3 || (previo.senado && previo.senado.envio === e3))) return previo;    // nada nuevo
   const filas = [], fallos = [];
   await enParalelo(PROVINCIAS, 8, async p => {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
@@ -400,5 +400,13 @@ async function porMedios(base, env) {
     if (Object.keys(avmun).length) out.avmun = avmun;
   }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
-  return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}) };
+  // 2023 (ficheros fijos de Interior), para comparar: se leen una vez y se guardan aparte
+  let ant = await env.RESULTADOS.get('ant23', 'json');
+  if (!ant) try {
+    ant = { ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
+      senado: senadoMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
+    for (const k of ['ambitos', 'senado']) for (const t of ['CM', 'PR', 'CI']) if (ant[k][t]) for (const o of Object.values(ant[k][t])) if (k === 'senado' && t === 'CI') o.c = o.c.filter(x => x[3]);
+    if (ant.ambitos.TO) await env.RESULTADOS.put('ant23', JSON.stringify(ant)); else ant = null;
+  } catch (e) { ant = null; }
+  return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}), ...(ant ? { ant23: ant } : {}) };
 }

@@ -739,40 +739,44 @@
     [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^COMPROM/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
     [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
   const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Frente Amplio', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
-  // Debajo del mapa: hemiciclo (350 escaños, de izquierda a derecha) y barras de voto válido por partido
+  // Debajo del mapa: medio dónut de escaños (y el de 2023, más pequeño) y barras de voto válido por partido
   const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
-  function hemiciclo(L) {   // L: [[color, n, nombre]] en orden; devuelve un SVG
+  // Medio dónut de escaños: L [[color, n, nombre]] de izquierda a derecha; grande y con el total, o pequeño y claro (2023)
+  function semidonut(L, chico) {
     const N = L.reduce((t, x) => t + x[1], 0); if (!N) return '';
-    const R = Math.max(1, Math.min(12, Math.round(Math.sqrt(N / 2.4)))), r0 = R === 1 ? 1 : .38;
-    const radios = Array.from({ length: R }, (_, k) => R === 1 ? 1 : r0 + (1 - r0) * k / (R - 1)), sr = radios.reduce((a, b) => a + b, 0);
-    const n = radios.map(r => Math.max(1, Math.round(N * r / sr))); n[R - 1] += N - n.reduce((a, b) => a + b, 0);
-    // con una sola fila (pocos escaños), los puntos van repartidos por el arco sin tocar los extremos
-    const P = []; radios.forEach((r, k) => { for (let j = 0; j < n[k]; j++) { const a = R === 1 ? Math.PI * (1 - (j + .5) / n[k]) : Math.PI * (1 - j / (n[k] - 1)); P.push([a, r]); } });
-    P.sort((p, q) => (q[0] - p[0]) || (p[1] - q[1]));
-    const W = 400, H = 215, R0 = 188;
-    const dot = Math.min(R > 1 ? R0 * (1 - r0) / (R - 1) * .42 : 99, Math.PI * R0 / Math.max(2, n[R - 1] - (R === 1 ? 0 : 1)) * .42, 14);
-    const Rm = R0 - dot, cx = 200, cy = H - dot - 2;
-    let k = 0, svg = '';
-    for (const [col, m, nom] of L) for (let j = 0; j < m; j++, k++) {
-      const [a, r] = P[k]; svg += `<circle cx="${(cx + Math.cos(a) * r * Rm).toFixed(1)}" cy="${(cy - Math.sin(a) * r * Rm).toFixed(1)}" r="${dot.toFixed(1)}" fill="${col}"><title>${escH(nom)}</title></circle>`;
+    const W = 400, H = chico ? 120 : 210, R = chico ? 105 : 190, r = R * .58, cx = 200, cy = H - 4;
+    let a0 = Math.PI, svg = '';
+    const pto = (a, rr) => `${(cx + Math.cos(a) * rr).toFixed(1)},${(cy - Math.sin(a) * rr).toFixed(1)}`;
+    for (const [col, m, nom] of L) {
+      const a1 = a0 - Math.PI * m / N, big = (a0 - a1) > Math.PI ? 1 : 0;
+      svg += `<path d="M${pto(a0, R)} A${R},${R} 0 ${big} 1 ${pto(a1, R)} L${pto(a1, r)} A${r},${r} 0 ${big} 0 ${pto(a0, r)}Z" fill="${col}" stroke="var(--bg)" stroke-width="${chico ? 1 : 1.5}"${chico ? ' opacity=".5"' : ''}><title>${escH(nom)}: ${m}</title></path>`;
+      if (!chico && m / N >= .045) { const am = (a0 + a1) / 2; svg += `<text x="${(cx + Math.cos(am) * (R + r) / 2).toFixed(1)}" y="${(cy - Math.sin(am) * (R + r) / 2 + 6).toFixed(1)}" text-anchor="middle" style="font:700 17px var(--sans);fill:#fff">${m}</text>`; }
+      a0 = a1;
     }
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Hemiciclo: ${L.map(x => x[2] + ' ' + x[1]).join(', ')}" style="width:100%;max-width:520px;display:block;margin:0 auto">${svg}`
-      + `<text x="${cx}" y="${cy - 8}" text-anchor="middle" style="font:700 30px var(--sans);fill:currentColor">${N}</text></svg>`;
+    const may = Math.floor(N / 2) + 1;
+    if (!chico && N >= 10) svg += `<line x1="${cx}" y1="${cy - r + 8}" x2="${cx}" y2="${cy - R - 4}" stroke="currentColor" stroke-width="2"/>`;
+    return `<svg viewBox="0 0 ${W} ${H + (chico ? 0 : 8)}" role="img" aria-label="${chico ? 'Escaños en 2023' : 'Escaños'}: ${L.map(x => x[2] + ' ' + x[1]).join(', ')}" style="width:100%;max-width:${chico ? 300 : 520}px;display:block;margin:${chico ? '4px' : '0'} auto 0">${svg}`
+      + `<text x="${cx}" y="${cy - (chico ? 6 : 10)}" text-anchor="middle" style="font:700 ${chico ? 18 : 34}px var(--sans);fill:currentColor">${chico ? '2023' : N}</text>`
+      + (!chico && N >= 10 ? `<text x="${cx}" y="${cy + 6}" text-anchor="middle" style="font:12px var(--sans);fill:var(--muted)">mayoría: ${may}</text>` : '') + '</svg>';
   }
+  const donuts = (y, ahora, antes) => {   // ahora/antes: [[k, escaños]] por familia
+    const L = A => A.filter(x => x[1]).sort((a, b) => ordIzq(a[0], b[0])).map(([k, e]) => [FAM[k].color, e, nomF(FAM[k], y)]);
+    return semidonut(L(ahora), false) + (antes && antes.some(x => x[1]) ? semidonut(L(antes), true) : '');
+  };
   const ordIzq = (a, b) => { const i = x => { const p = IZQDER.indexOf(FCOD[x]); return p < 0 ? IZQDER.indexOf('OTROS') : p; }; return i(a) - i(b); };
   const SELR = { cam: 'C', amb: 'TO' }; let RESF = null;
   // filas [familia, votos, escaños] de una lista de candidaturas de Interior: [siglas, votos, escaños]
   const porFamilia = c => { const v = {}, e = {}; for (const [s, x, n] of c) { const k = FCOD.indexOf(famDe(s)); if (k < 0) continue; v[k] = (v[k] || 0) + (x || 0); e[k] = (e[k] || 0) + (n || 0); }
     return Object.keys(v).map(Number).map(k => [k, v[k], e[k]]); };
-  function tablaRes(y, filas, val, conVotos) {   // filas: [k, votos, escaños]
+  function tablaRes(y, filas, val, conVotos, E23) {   // filas: [k, votos, escaños]; E23: escaños de 2023 por familia
     filas = filas.filter(([k, v, e]) => e || (conVotos && v / val >= .005))
       .sort((a, b) => (FCOD[a[0]] === 'OTROS') - (FCOD[b[0]] === 'OTROS') || (conVotos ? b[1] - a[1] : b[2] - a[2]));
     const mx = Math.max(...filas.map(f => conVotos ? f[1] : f[2]), 1);
     return '<table style="width:100%;border-collapse:collapse;font:15px/1.3 var(--sans);margin-top:10px"><thead><tr style="color:var(--muted);font-size:13px;text-align:left"><th style="font-weight:500;padding:4px 0">Partido</th><th></th>'
-      + (conVotos ? '<th style="font-weight:500;text-align:right">% voto</th>' : '') + '<th style="font-weight:500;text-align:right;padding-left:8px">Escaños</th></tr></thead><tbody>'
+      + (conVotos ? '<th style="font-weight:500;text-align:right">% voto</th>' : '') + '<th style="font-weight:500;text-align:right;padding-left:8px">Escaños</th>' + (E23 ? '<th style="font-weight:500;text-align:right;padding-left:8px">2023</th>' : '') + '</tr></thead><tbody>'
       + filas.map(([k, v, e]) => `<tr style="border-top:1px solid var(--line)"><td style="padding:5px 8px 5px 0;white-space:nowrap">${escH(nomF(FAM[k], y))}</td>`
         + `<td style="width:55%"><span style="display:block;height:12px;border-radius:0 3px 3px 0;width:${Math.max(1, (conVotos ? v : e) / mx * 100).toFixed(1)}%;background:${FAM[k].color}"></span></td>`
-        + (conVotos ? `<td style="text-align:right;font-family:var(--mono);font-size:13px">${pct(v / val)}</td>` : '') + `<td style="text-align:right;font-weight:700;padding-left:8px">${e}</td></tr>`).join('')
+        + (conVotos ? `<td style="text-align:right;font-family:var(--mono);font-size:13px">${pct(v / val)}</td>` : '') + `<td style="text-align:right;font-weight:700;padding-left:8px">${e}</td>${E23 ? `<td class="mut" style="text-align:right;padding-left:8px">${E23[k] || 0}</td>` : ''}</tr>`).join('')
       + '</tbody></table>';
   }
   function resultados(y, ord, seats, nat, esc, deInterior, F) {
@@ -790,26 +794,30 @@
     let h = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px"><select id="r-cam" aria-label="Cámara" style="${sel}"><option value="C">Congreso</option><option value="S"${cam === 'S' ? ' selected' : ''}${S ? '' : ' disabled'}>Senado${S ? '' : ' (aún sin datos)'}</option></select>`
       + (D ? `<select id="r-amb" aria-label="Territorio" style="${sel};flex:1">${opt('TO', 'España')}${grupo('Comunidades', D.CM, 'CM')}${grupo(cam === 'S' ? 'Circunscripciones' : 'Provincias', cam === 'S' ? D.CI : D.PR, cam === 'S' ? 'CI' : 'PR')}</select>` : '') + '</div>';
     const X = SELR.amb === 'TO' ? D && D.TO : D && D[SELR.amb.slice(0, 2)][SELR.amb.slice(2)];
+    const T = F.ant23 && F.ant23[cam === 'S' ? 'senado' : 'ambitos'], X23 = T && (SELR.amb === 'TO' ? T.TO : T[SELR.amb.slice(0, 2)] && T[SELR.amb.slice(0, 2)][SELR.amb.slice(2)]);
+    const e23 = !X23 ? null : cam === 'S' ? porFamilia(SELR.amb.startsWith('CI') ? X23.c.filter(x => x[3]).map(x => [x[0], 0, 1]) : X23.c.map(([s, e]) => [s, 0, e])).map(([k, , e]) => [k, e])
+      : porFamilia(X23.c).map(([k, , e]) => [k, e]);
+    const E23 = e23 ? Object.fromEntries(e23) : null;
     if (cam === 'C' && !X) {   // sin los totales de Interior: lo calculado con los municipios
       const hem = ord.filter(k => seats[k]).sort(ordIzq).map(k => [FAM[k].color, seats[k], nomF(FAM[k], y)]);
       h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">Con el ${pct(esc)} escrutado. ${deInterior ? 'Escaños provisionales de Interior' : 'Escaños calculados con el voto escrutado (sin el voto desde el extranjero)'}; la mayoría absoluta, 176.</p>`
-        + hemiciclo(hem) + tablaRes(y, FCOD.map((_, k) => [k, nat.f[k], seats[k]]), nat.val, true);
+        + donuts(y, ord.filter(k => seats[k]).map(k => [k, seats[k]]), e23) + tablaRes(y, FCOD.map((_, k) => [k, nat.f[k], seats[k]]), nat.val, true, E23);
     } else if (cam === 'C') {
       const fil = porFamilia(X.c), val = fil.reduce((t, f) => t + f[1], 0) + (X.bl || 0);
       h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">${escH(X.n)}: ${pct(X.esc / 100)} escrutado. Escaños provisionales de Interior${SELR.amb === 'TO' ? '; la mayoría absoluta, 176' : ` (${X.el} en juego)`}.</p>`
-        + hemiciclo(fil.filter(f => f[2]).sort((a, b) => ordIzq(a[0], b[0])).map(([k, , e]) => [FAM[k].color, e, nomF(FAM[k], y)])) + tablaRes(y, fil, val, true);
+        + donuts(y, fil.map(([k, , e]) => [k, e]), e23) + tablaRes(y, fil, val, true, E23);
     } else if (SELR.amb.startsWith('CI')) {   // una circunscripción del Senado: candidatos, votos y electos
       const C = X.c.slice().sort((a, b) => b[2] - a[2]), mx = Math.max(...C.map(x => x[2]), 1);
       const col = s => FAM[FCOD.indexOf(famDe(s))] ? FAM[FCOD.indexOf(famDe(s))].color : '#999';
       h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">${escH(X.n)}: ${pct(X.esc / 100)} escrutado. ${X.el} senadores en juego; en negrita, los elegidos según Interior.</p>`
-        + hemiciclo(C.filter(x => x[3]).sort((a, b) => ordIzq(FCOD.indexOf(famDe(a[0])), FCOD.indexOf(famDe(b[0])))).map(x => [col(x[0]), 1, x[1]]))
+        + donuts(y, porFamilia(C.filter(x => x[3]).map(x => [x[0], 0, 1])).map(([k, , e]) => [k, e]), e23)
         + '<table style="width:100%;border-collapse:collapse;font:14px/1.3 var(--sans);margin-top:10px"><tbody>' + C.slice(0, 16).map(x => `<tr style="border-top:1px solid var(--line)${x[3] ? ';font-weight:700' : ''}">`
           + `<td style="padding:5px 8px 5px 0">${escH(x[1])}<br><span class="mut" style="font-weight:400;font-size:12px">${escH(x[0])}</span></td><td style="width:35%"><span style="display:block;height:10px;border-radius:0 3px 3px 0;width:${Math.max(1, x[2] / mx * 100).toFixed(1)}%;background:${col(x[0])}"></span></td>`
           + `<td style="text-align:right;font-family:var(--mono);font-size:13px">${num(x[2])}</td></tr>`).join('') + '</tbody></table>';
     } else {
       const fil = porFamilia(X.c.map(([s, e]) => [s, 0, e]));
       h += `<p class="mut" style="font:14px/1.4 var(--sans);margin:0 0 6px">${escH(X.n)}: ${pct(X.esc / 100)} escrutado. Senadores elegidos en las urnas según Interior${SELR.amb === 'TO' ? ` (${X.el}); faltan los que designan los parlamentos autonómicos` : ''}.</p>`
-        + hemiciclo(fil.filter(f => f[2]).sort((a, b) => ordIzq(a[0], b[0])).map(([k, , e]) => [FAM[k].color, e, nomF(FAM[k], y)])) + tablaRes(y, fil, 1, false);
+        + donuts(y, fil.map(([k, , e]) => [k, e]), e23) + tablaRes(y, fil, 1, false, E23);
     }
     c.innerHTML = h;
     const rc = $('#r-cam'), ra = $('#r-amb');
