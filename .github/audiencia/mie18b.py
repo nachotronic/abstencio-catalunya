@@ -46,6 +46,13 @@ def informe(lab,a,b):
     for r in grp(['datetimeHour'],50,Z(a),Z(b),',{requestPath:"/encuestas/"},{refererHost_like:"%google%"}'): g[hora(r)]+=r['sum']['visits']
     print('ENC_GOOGLE_HORA',lab,sum(g.values()),sorted(g.items()))
 D=datetime.timedelta
-for lab,k in [('HOY',0),('MISMA_MAR17',1),('MISMA_LUN16',2),('MISMA_MIE11',7)]:
-    a=HOY-D(days=k); informe(lab,a,a+corte)
-# noche
+SKIP=('google','bing','yahoo','duckduckgo','ecosia','mapaelectoral','qwant','brave','yandex','startpage')
+for lab,k in [('HOY',0),('MAR17',1),('LUN16',2)]:
+    a=HOY-D(days=k); b=a+corte if k==0 else a+D(days=1)
+    ref=collections.Counter()
+    for r in grp(['refererHost','refererPath','requestPath'],5000,Z(a),Z(b)):
+        h=r['dimensions']['refererHost'] or ''
+        if not h or any(x in h for x in SKIP): continue
+        ref[(h,r['dimensions']['refererPath'],r['dimensions']['requestPath'])]+=r['sum']['visits']
+    print('EXT',lab,sum(ref.values()))
+    for kk,v in ref.most_common(60): print('EXT',lab,v,kk)
