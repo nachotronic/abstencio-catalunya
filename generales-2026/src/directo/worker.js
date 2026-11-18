@@ -382,7 +382,7 @@ async function porMedios(base, env) {
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
   let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
-  if (previo && previo.envio === envio && previo.mun && previo.ambitos && previo.ant23 && (!e3 || (previo.senado && previo.senado.envio === e3))) return previo;    // nada nuevo
+  if (previo && previo.envio === envio && previo.mun && previo.ambitos && previo.ant23 && previo.ant23.v === 2 && (!e3 || (previo.senado && previo.senado.envio === e3))) return previo;    // nada nuevo
   const filas = [], fallos = [];
   await enParalelo(PROVINCIAS, 8, async p => {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
@@ -416,7 +416,7 @@ async function porMedios(base, env) {
   // 2023 (ficheros fijos de Interior), para comparar: se leen una vez y se guardan aparte
   let ant = await env.RESULTADOS.get('ant23b', 'json');
   if (!ant) try {
-    ant = { ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
+    ant = { v: 2, ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
       senado: senado23Medios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
     if (ant.ambitos.TO) await env.RESULTADOS.put('ant23b', JSON.stringify(ant)); else ant = null;
   } catch (e) { ant = null; }
