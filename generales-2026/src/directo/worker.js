@@ -23,7 +23,8 @@
 
 export default {
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(actualiza(env));
+    // el resultado de cada lectura (ok o el error) queda en KV para verlo en GET /estado, sin datos ni claves
+    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m })); }));
   },
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -32,6 +33,7 @@ export default {
       return new Response(await actualiza(env), { headers: cors });
     }
     const pr = url.pathname.match(/^\/provincia\/(\d{2})\.json$/);
+    if (url.pathname === '/estado') return new Response((await env.RESULTADOS.get('estado')) || '{}', { headers: { ...cors, 'Cache-Control': 'no-store', 'Content-Type': 'application/json' } });
     if (url.pathname !== '/resultados.json' && !pr) return new Response('No encontrado', { status: 404 });
     const json = await env.RESULTADOS.get(pr ? 'prov:' + pr[1] : 'ultimo');
     if (!json) return new Response('{}', { status: 503, headers: { ...cors, 'Content-Type': 'application/json' } });
