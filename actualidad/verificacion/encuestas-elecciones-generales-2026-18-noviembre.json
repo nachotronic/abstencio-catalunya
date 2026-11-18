@@ -1,0 +1,225 @@
+{
+ "pieza": "encuestas-elecciones-generales-2026-18-noviembre",
+ "cifras": [
+  {
+   "texto": "40dB. da al PP el 32,2 % y al PSOE el 30,7",
+   "cifra": "32,2",
+   "calculo": "D['F'][0]['PP']"
+  },
+  {
+   "texto": "PP el 32,2 % y al PSOE el 30,7 %; Sondaxe, el 29,0",
+   "cifra": "30,7",
+   "calculo": "D['F'][0]['PSOE']"
+  },
+  {
+   "texto": "PSOE el 30,7 %; Sondaxe, el 29,0 % y el 27,0 %. La mediana",
+   "cifra": "29,0",
+   "calculo": "D['F'][1]['PP']"
+  },
+  {
+   "texto": "%; Sondaxe, el 29,0 % y el 27,0 %. La mediana de las",
+   "cifra": "27,0",
+   "calculo": "D['F'][1]['PSOE']"
+  },
+  {
+   "texto": "las encuestas los separa 4,5 puntos.",
+   "cifra": "4,5",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "País y la SER da al PP el 32,2 % y al PSOE el 30,7",
+   "cifra": "32,2",
+   "calculo": "D['F'][0]['PP']"
+  },
+  {
+   "texto": "PP el 32,2 % y al PSOE el 30,7 %, 1,5 puntos de distancia;",
+   "cifra": "30,7",
+   "calculo": "D['F'][0]['PSOE']"
+  },
+  {
+   "texto": "32,2 % y al PSOE el 30,7 %, 1,5 puntos de distancia;",
+   "cifra": "1,5",
+   "calculo": "D['F'][0]['dif']"
+  },
+  {
+   "texto": "para La Voz de Galicia, el 29,0 % y el 27,0 %, 2,0 puntos.",
+   "cifra": "29,0",
+   "calculo": "D['F'][1]['PP']"
+  },
+  {
+   "texto": "de Galicia, el 29,0 % y el 27,0 %, 2,0 puntos. Vox va",
+   "cifra": "27,0",
+   "calculo": "D['F'][1]['PSOE']"
+  },
+  {
+   "texto": "Galicia, el 29,0 % y el 27,0 %, 2,0 puntos. Vox va en direcciones",
+   "cifra": "2,0",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "direcciones opuestas: baja al 17,0 % en 40dB. y sube al",
+   "cifra": "17,0",
+   "calculo": "D['F'][0]['VOX']"
+  },
+  {
+   "texto": "17,0 % en 40dB. y sube al 19,4 % en Sondaxe. En escaños,",
+   "cifra": "19,4",
+   "calculo": "D['F'][1]['VOX']"
+  },
+  {
+   "texto": "En escaños, PP y Vox suman 186 en 40dB. y 192 en Sondaxe,",
+   "cifra": "186",
+   "calculo": "D['ESC40']['PP']+D['ESC40']['VOX']"
+  },
+  {
+   "texto": "Vox suman 186 en 40dB. y 192 en Sondaxe, por encima",
+   "cifra": "192",
+   "calculo": "D['F'][1]['pv']"
+  },
+  {
+   "texto": "de la mayoría absoluta de 176.",
+   "condicion": "True  # mayoría absoluta: 176 de 350"
+  },
+  {
+   "texto": "En Sondaxe, el PP baja 0,7 puntos respecto a su",
+   "cifra": "0,7",
+   "calculo": "-D['F'][1]['dPP']"
+  },
+  {
+   "texto": "entrega anterior y el PSOE sube 0,3: la distancia entre",
+   "cifra": "0,3",
+   "calculo": "D['F'][1]['dPSOE']"
+  },
+  {
+   "texto": "distancia entre los dos pasa de 3,0 a 2,0 puntos, la más",
+   "cifra": "3,0",
+   "calculo": "D['F'][1]['dif_ant']"
+  },
+  {
+   "texto": "entre los dos pasa de 3,0 a 2,0 puntos, la más corta",
+   "cifra": "2,0",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "generales de 2023. Vox sube 1,4 puntos, hasta su dato",
+   "cifra": "1,4",
+   "calculo": "D['F'][1]['dVOX']"
+  },
+  {
+   "texto": "serie. Sondaxe da al PP 121 escaños, al PSOE 111",
+   "cifra": "121",
+   "calculo": "int(D['F'][1]['escPP'])"
+  },
+  {
+   "texto": "al PP 121 escaños, al PSOE 111 y a Vox 71. El trabajo",
+   "cifra": "111",
+   "calculo": "int(D['F'][1]['escPSOE'])"
+  },
+  {
+   "texto": "escaños, al PSOE 111 y a Vox 71. El trabajo de campo",
+   "cifra": "71",
+   "calculo": "int(D['F'][1]['escVOX'])"
+  },
+  {
+   "texto": "12 al 16 de noviembre, con 1.000 entrevistas por teléfono",
+   "cifra": "1.000",
+   "calculo": "D['F'][1]['n']"
+  },
+  {
+   "texto": "40dB., con 2.000 entrevistas en línea",
+   "cifra": "2.000",
+   "calculo": "D['F'][0]['n']"
+  },
+  {
+   "texto": "17 de noviembre, da al PP 131 escaños, al PSOE 122",
+   "cifra": "131",
+   "calculo": "D['ESC40']['PP']"
+  },
+  {
+   "texto": "al PP 131 escaños, al PSOE 122 y a Vox 55, según su",
+   "cifra": "122",
+   "calculo": "D['ESC40']['PSOE']"
+  },
+  {
+   "texto": "escaños, al PSOE 122 y a Vox 55, según su informe. Vox",
+   "cifra": "55",
+   "calculo": "D['ESC40']['VOX']"
+  },
+  {
+   "texto": "entrega seguida y pierde 3 diputados en un día.",
+   "cifra": "3",
+   "calculo": "D['ESC40']['VOX_AYER']-D['ESC40']['VOX']"
+  },
+  {
+   "texto": "encuesta de cada una de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas, la",
+   "condicion": "D['NCASAS'] == 18  # tres semanas: 21 días"
+  },
+  {
+   "texto": "generales 2026, da al PP el 31,4 %, al PSOE el 26,9 %",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "PP el 31,4 %, al PSOE el 26,9 % y a Vox el 18,8 %:",
+   "cifra": "26,9",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "PSOE el 26,9 % y a Vox el 18,8 %: 4,5 puntos entre",
+   "cifra": "18,8",
+   "calculo": "D['MED']['VOX']"
+  },
+  {
+   "texto": "26,9 % y a Vox el 18,8 %: 4,5 puntos entre PP y PSOE.",
+   "cifra": "4,5",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "entrevistas de los últimos cinco días y cambian la más",
+   "condicion": "D['F'][1]['ini']=='2026-11-12' and D['F'][1]['fin']=='2026-11-16' and D['F'][0]['ini']=='2026-11-13' and D['F'][0]['fin']=='2026-11-17'  # cinco días"
+  },
+  {
+   "texto": "noviembre, Sondaxe da a Vox 0,8 puntos más, dentro del",
+   "cifra": "0,8",
+   "calculo": "D['SX_dVOX_L']"
+  },
+  {
+   "texto": "de la diferencia, de unos ±3,4 puntos. Con 1.000 entrevistas,",
+   "cifra": "3,4",
+   "calculo": "D['SX_M_VOX']"
+  },
+  {
+   "texto": "de unos ±3,4 puntos. Con 1.000 entrevistas, el margen",
+   "cifra": "1.000",
+   "calculo": "D['F'][1]['n']"
+  },
+  {
+   "texto": "de hoy y la mediana de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas",
+   "condicion": "D['NCASAS'] == 18  # tres semanas"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "porcentaje de Sondaxe es de ±3,1 puntos; el de 40dB.,",
+   "cifra": "3,1",
+   "fuente": "https://www.electografica.com/2026/11/encuesta-sondaxe-261118.html"
+  },
+  {
+   "texto": "puntos; el de 40dB., de ±2,2.",
+   "cifra": "2,2",
+   "fuente": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia06.pdf"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}
