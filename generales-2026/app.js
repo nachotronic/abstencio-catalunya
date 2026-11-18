@@ -344,15 +344,19 @@
   // (municipios-ligero.json solo trae la última generales; las de 2004-2019 también llegan de e/<elección>.json, ver src/ligero.py)
   const aparte = y => (ELEC.find(e => e.cod === y) || {}).aparte;
   const pedido = {}, fuera = new Set(META.elecciones.filter(e => !MUN[e.cod + '_part']).map(e => e.cod));
+  // Si la descarga falla (GitHub Pages devuelve a veces un 503, o el móvil pierde la conexión), se reintenta dos veces
+  // y no se guarda la promesa fallida: al volver a elegir el año se pide otra vez.
+  const espera = ms => new Promise(r => setTimeout(r, ms));
+  const getR = async (f, n = 3) => { for (let k = 0; ; k++) { try { return await get(f); } catch (e) { if (k >= n - 1) throw e; await espera(800 * 2 ** k); } } };
   function asegura(y) {
     if (!fuera.has(y) || MUN[y + '_part']) return Promise.resolve();
-    return pedido[y] || (pedido[y] = get('e/' + y + '.json').then(d => { Object.assign(MUN, d); }));
+    return pedido[y] || (pedido[y] = getR('e/' + y + '.json').then(d => { Object.assign(MUN, d); }).catch(e => { delete pedido[y]; throw e; }));
   }
   function aseguraSec(p, y) {
     const e = ELEC.find(e => e.cod === y);
     if (!e || !e.aparte || !e.secciones || !SEC[p] || SEC[p].d[y + '_part']) return;
     const k = p + '_' + y; if (pedido[k]) return;
-    pedido[k] = get('sec/' + k + '.json').then(d => { Object.assign(SEC[p].d, d); redraw(); }).catch(() => delete pedido[k]);
+    pedido[k] = getR('sec/' + k + '.json').then(d => { Object.assign(SEC[p].d, d); redraw(); }).catch(() => delete pedido[k]);
   }
   async function loadVisible() {
     if (!secVisible()) return;
@@ -508,9 +512,15 @@
   };
   partidos();
   const sync = () => { partidos(); selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
+  // El año nuevo solo se pinta cuando sus datos han llegado: mientras tanto (y si la descarga falla) el mapa sigue en el
+  // año anterior. Antes st.y cambiaba antes de descargar, y cualquier redibujo (zoom, «Qué ver») pintaba todo de gris.
+  let pide = 0;
   const elige = async y => {
-    st.y = y; selE.disabled = true;
-    try { await Promise.all([asegura(y), pideNombres(y)]); } finally { selE.disabled = false; }
+    const k = ++pide; selE.disabled = true;
+    try { await Promise.all([asegura(y), pideNombres(y)]); }
+    catch (e) { if (k === pide) { selE.value = st.y; selE.disabled = false; } return; }
+    if (k !== pide) return;
+    selE.disabled = false; st.y = y; selE.value = y;
     Object.keys(SEC).forEach(p => aseguraSec(p, y)); sync();
   };
   selE.onchange = () => elige(selE.value);
