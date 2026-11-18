@@ -46,7 +46,5 @@ def informe(lab,a,b):
     for r in grp(['datetimeHour'],50,Z(a),Z(b),',{requestPath:"/encuestas/"},{refererHost_like:"%google%"}'): g[hora(r)]+=r['sum']['visits']
     print('ENC_GOOGLE_HORA',lab,sum(g.values()),sorted(g.items()))
 D=datetime.timedelta
-for lab,k in [('COMPLETO_LUN16',2),('COMPLETO_MAR17',1),('COMPLETO_MIE11',7)]:
-    a=HOY-D(days=k); informe(lab,a,a+D(days=1))
 for lab,k in [('HOY',0),('MISMA_MAR17',1),('MISMA_MIE11',7)]:
     a=HOY-D(days=k); informe(lab,a,a+corte)
