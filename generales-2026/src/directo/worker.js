@@ -377,12 +377,27 @@ const horaMedios = f => /^\d{10}$/.test(f) ? `20${f.slice(0, 2)}-${f.slice(2, 4)
 let MUESTRA_AV = '';   // primera línea TO de los avances, para /estado (diagnóstico)
 const PROVINCIAS = Array.from({ length: 52 }, (_, i) => String(i + 1).padStart(2, '0'));
 
+// 2023 (ficheros fijos de Interior), para comparar: se leen una vez y se guardan en KV; si fallan, no se reintenta en 10 minutos
+async function ant23(base, env) {
+  const g = await env.RESULTADOS.get('ant23b', 'json'); if (g) return g;
+  if (await env.RESULTADOS.get('ant23_fallo')) return null;
+  try {
+    const ant = { v: 2, ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
+      senado: senado23Medios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
+    if (!ant.ambitos.TO) throw new Error('sin TO');
+    await env.RESULTADOS.put('ant23b', JSON.stringify(ant)); return ant;
+  } catch (e) { await env.RESULTADOS.put('ant23_fallo', e.message.slice(0, 100), { expirationTtl: 600 }); return null; }
+}
+
 async function porMedios(base, env) {
   const envio = (await pideTexto(`${base}/data/getEnvio/2`, env)).trim().split(/[;\s]/)[0];
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
   let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
-  if (previo && previo.envio === envio && previo.mun && previo.ambitos && previo.ant23 && previo.ant23.v === 2 && (!e3 || (previo.senado && previo.senado.envio === e3))) return previo;    // nada nuevo
+  if (previo && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) {   // nada nuevo
+    if (previo.ant23 && previo.ant23.v === 2) return previo;
+    const a = await ant23(base, env); return a ? { ...previo, ant23: a } : previo;
+  }
   const filas = [], fallos = [];
   await enParalelo(PROVINCIAS, 8, async p => {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
@@ -413,12 +428,6 @@ async function porMedios(base, env) {
     if (Object.keys(avmun).length) out.avmun = avmun;
   }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
-  // 2023 (ficheros fijos de Interior), para comparar: se leen una vez y se guardan aparte
-  let ant = await env.RESULTADOS.get('ant23b', 'json');
-  if (!ant) try {
-    ant = { v: 2, ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
-      senado: senado23Medios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
-    if (ant.ambitos.TO) await env.RESULTADOS.put('ant23b', JSON.stringify(ant)); else ant = null;
-  } catch (e) { ant = null; }
+  const ant = await ant23(base, env);
   return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}), ...(ant ? { ant23: ant } : {}) };
 }
