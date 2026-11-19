@@ -5120,7 +5120,7 @@ PIEZAS += [
     ),
     dict(
         slug='vox-gijon-barrios-abascal-29n', fecha='2026-11-19', actualizado='2026-11-19 13:00',
-        titulo='Elecciones generales: en Gijón, Vox saca su mejor resultado en Somió, el barrio más rico: 17,0 %', serie='29n', figura=0,
+        titulo='Elecciones generales: en Gijón, Vox sacó en 2023 su mejor resultado en Somió, el barrio más rico: 17,0 %', serie='29n', figura=0,
         descripcion='Abascal da un mitin en la ciudad este jueves. Vox bajó en los 18 barrios entre 2019 y 2023; en toda Gijón, del 15,8 % al 12,7 %.',
         compara='El voto a Vox en las generales de noviembre de 2019 y julio de 2023 en Gijón, por barrio (18 barrios con tres secciones o más) y por sección censal agrupada por renta.',
         limites='Son datos por barrio y por sección, no por persona: no dicen quién vota a Vox ni por qué. Las secciones que cambiaron de código entre 2019 y 2023 quedan fuera de la comparación por barrio. Sin voto exterior.',

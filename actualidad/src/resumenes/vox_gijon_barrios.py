@@ -63,7 +63,7 @@ for b in T.index:
     assert (RAIZ / f'municipio/asturias/gijon/{SLUGB[b]}/index.html').exists(), b
 FB = lambda b: f'<a href="{FICHA(SLUGB[b])}">{esc(b)}</a>'
 
-g_b = figura(f'Vox bajó en los {NB} barrios de Gijón entre 2019 y 2023; donde más votos saca es en Somió',
+g_b = figura(f'Vox bajó en los {NB} barrios de Gijón entre 2019 y 2023; su mejor porcentaje, en Somió',
              'Voto a Vox en las elecciones generales de noviembre de 2019 y de julio de 2023 por barrio de Gijón, en % del voto válido',
              grupos([(b, [(r.v19, COL['VOX'], .45, f'2019: {p(r.v19)} %'), (r.v23, COL['VOX'], 1, f'2023: {p(r.v23)} %')]) for b, r in T.iterrows()],
                     T.v19.max() * 1.12, 'Voto a Vox por barrio de Gijón, 2019 y 2023', W=400, ml=130),
@@ -95,7 +95,7 @@ DATOS = {'CIU': CIU, 'T': {b: {k: float(v) for k, v in r.items()} for b, r in T.
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Vox en Gijón',
-      f'Elecciones generales: en Gijón, Vox saca su mejor resultado en Somió, el barrio más rico: {p(T.loc[TOP, "v23"])} %',
+      f'Elecciones generales: en Gijón, Vox sacó en 2023 su mejor resultado en Somió, el barrio más rico: {p(T.loc[TOP, "v23"])} %',
       f'Abascal da un mitin en la ciudad este jueves. Vox bajó en los {NB} barrios entre 2019 y 2023; en toda Gijón, del {p(CIU["2019_11"]["vox"])} % al {p(CIU["2023_07"]["vox"])} %.',
       '19 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(CIU, NB, BAJAN, TOP, ULT, round(Q5, 1), [round(x, 1) for x in QRESTO], NSEC)
