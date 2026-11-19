@@ -88,4 +88,12 @@
       <news:title>Encuestas elecciones generales 2026, hoy 19 de noviembre: Sondaxe deja al PSOE a 0,7 puntos del PP</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-19</news:publication_date>
+      <news:title>Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara</news:title>
+    </news:news>
+  </url>
 </urlset>
