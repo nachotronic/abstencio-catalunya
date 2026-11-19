@@ -20,12 +20,13 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (120)
+## Pendientes (121)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-19 | [`encuestas-elecciones-generales-2026-19-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-19-noviembre/) | Encuestas elecciones generales 2026, hoy 19 de noviembre: Sondaxe deja al PSOE a 0,7 puntos del PP | primer gráfico de la pieza |
 | 2026-11-19 | [`debate-sanchez-feijoo-29n`](https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/) | Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara | primer gráfico de la pieza |
+| 2026-11-19 | [`programa-electoral-29n`](https://mapaelectoral.es/actualidad/programa-electoral-29n/) | Programa electoral de PP, PSOE, Vox y Frente Amplio: qué propone cada uno el 29N | primer gráfico de la pieza |
 | 2026-11-19 | [`frente-amplio-17-provincias-29n`](https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/) | Elecciones generales: el modelo de encuestas da escaño al Frente Amplio en 5 de sus 17 provincias | primer gráfico de la pieza |
 | 2026-11-19 | [`vox-gijon-barrios-abascal-29n`](https://mapaelectoral.es/actualidad/vox-gijon-barrios-abascal-29n/) | Elecciones generales: en Gijón, Vox sacó en 2023 su mejor resultado en Somió, el barrio más rico: 17,0 % | primer gráfico de la pieza |
 | 2026-11-18 | [`secciones-cambian-ganador-29n`](https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/) | Elecciones generales: una de cada tres secciones cambió de ganador entre 2019 y 2023 | primer gráfico de la pieza |
