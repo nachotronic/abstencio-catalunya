@@ -1,0 +1,274 @@
+{
+ "pieza": "programa-electoral-29n",
+ "cifras": [
+  {
+   "texto": "nacional», 249 medidas en 64 páginas; el del PSOE,",
+   "cifra": "64",
+   "calculo": "D['paginas']['PP']"
+  },
+  {
+   "texto": "avanzando», 500 compromisos en 114 páginas; el de Vox,",
+   "cifra": "114",
+   "calculo": "D['paginas']['PSOE']"
+  },
+  {
+   "texto": "común», 115 propuestas en 55 páginas, y el del Frente",
+   "cifra": "55",
+   "calculo": "D['paginas']['VOX']"
+  },
+  {
+   "texto": "Frente Amplio, 18 bloques en 151 páginas. El del PP está",
+   "cifra": "151",
+   "calculo": "D['paginas']['FA']"
+  },
+  {
+   "texto": "nombra la inmigración unas 6 veces más que el del",
+   "cifra": "6",
+   "calculo": "D['RAZON_INM']"
+  },
+  {
+   "texto": "proporción a su longitud: 24,2 veces por cada 10.000",
+   "cifra": "24,2",
+   "calculo": "D['tasa']['Inmigración']['VOX']"
+  },
+  {
+   "texto": "10.000 palabras, frente a 4,0. El del PSOE es el que",
+   "cifra": "4,0",
+   "calculo": "D['tasa']['Inmigración']['PSOE']"
+  },
+  {
+   "texto": "que más habla de vivienda (44,6), de igualdad (31,1)",
+   "cifra": "44,6",
+   "calculo": "D['tasa']['Vivienda']['PSOE']"
+  },
+  {
+   "texto": "vivienda (44,6), de igualdad (31,1) y de clima y energía",
+   "cifra": "31,1",
+   "calculo": "D['tasa']['Igualdad y violencia machista']['PSOE']"
+  },
+  {
+   "texto": "(31,1) y de clima y energía (37,8). El de Vox es el más",
+   "cifra": "37,8",
+   "calculo": "D['tasa']['Clima y energía']['PSOE']"
+  },
+  {
+   "texto": "Pensiones: tres de los cuatro las atan",
+   "condicion": "True  # PP (p. 34), PSOE (p. 40) y FA (p. 57) citan el IPC; Vox no lo nombra (comprobado en el PDF)"
+  },
+  {
+   "texto": "con unas 6.200 palabras, según nuestro recuento",
+   "cifra": "6.200",
+   "calculo": "round(D['palabras']['VOX'],-2)"
+  },
+  {
+   "texto": "frente a unas 44.700 del Frente Amplio",
+   "cifra": "44.700",
+   "calculo": "round(D['palabras']['FA'],-2)"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "millón de viviendas; el PSOE, 100.000 públicas, y el Frente",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "reconstrucción nacional», 249 medidas en 64 páginas;",
+   "fuente": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf"
+  },
+  {
+   "texto": "fuerza de seguir avanzando», 500 compromisos en 114 páginas;",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "Vox, «Es sentido común», 115 propuestas en 55 páginas,",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/programa-elecct-vox.pdf"
+  },
+  {
+   "texto": "páginas, y el del Frente Amplio, 18 bloques en 151 páginas.",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "parque público estatal de 100.000 viviendas mediante la",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "Ley de Vivienda y un «Tipo 0% de IVA para la compra",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/programa-elecct-vox.pdf"
+  },
+  {
+   "texto": "con el que «se incorporarán 1,5 millones de viviendas públicas",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "de viviendas públicas en 12 años» (programa del",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "página 10), pagado con el 1 % del PIB cada año,",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "alquileres «vinculándolas al 25 % de los ingresos del",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "progresivamente a un tipo máximo del 35% para rentas del capital",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "del capital superiores a 300.000€» (programa del PSOE,",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "Plantea un tipo mínimo real del 20 % en Sociedades y un",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "ultrarricos a un máximo de 10 millones de euros por heredero»",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "edad de jubilación a los 65 años» (programa del",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  },
+  {
+   "texto": "un plan de integración de 500 millones de euros.",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "más. Después de recibir a 5 millones de personas en 5 años",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/programa-elecct-vox.pdf"
+  },
+  {
+   "texto": "5 millones de personas en 5 años España no puede",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/programa-elecct-vox.pdf"
+  },
+  {
+   "texto": "Vivienda: un millón, 100.000 o 1,5 millones",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "Vivienda: un millón, 100.000 o 1,5 millones",
+   "fuente": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf"
+  },
+  {
+   "texto": "y el Frente Amplio, 1,5 millones. Vox no da cifra.",
+   "fuente": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Los cuatro partidos con más intención",
+   "motivo": "unidad de la tasa (por cada 10.000 palabras) o recuento de partidos/temas de la pieza"
+  },
+  {
+   "texto": "que dice cada uno sobre los cuatro temas que más se discuten",
+   "motivo": "unidad de la tasa (por cada 10.000 palabras) o recuento de partidos/temas de la pieza"
+  },
+  {
+   "texto": "PP. Su medida 144 se titula «Construiremos",
+   "motivo": "número de la medida en el programa (comprobado en el PDF)"
+  },
+  {
+   "texto": "(programa del PP, página 41) y una nueva Ley del",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "PSOE. Su compromiso 42 es «Constituir un parque",
+   "motivo": "número de la medida en el programa (comprobado en el PDF)"
+  },
+  {
+   "texto": "(programa del PSOE, página 28), que se sumarían a",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa de Vox, página 19), la derogación de la",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa de Vox, página 20) si es nueva.",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "del Frente Amplio, página 10), pagado con el 1 %",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "del Frente Amplio, página 7).",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa del PP, página 47), y además promete deflactar",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa del PSOE, página 48), sin tocar los dos",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa de Vox, página 7), con un tipo más bajo",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "del Frente Amplio, página 46).",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa del PP, página 34).",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa del PSOE, página 40).",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa de Vox, página 8), que fía al crecimiento",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "del Frente Amplio, página 57), con una pensión mínima",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "del Frente Amplio, página 57).",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa del PP, página 19), y reformar la Ley",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "(programa del PSOE, página 92). Propone un plan de",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "Vox. Su medida 9: «Ni uno más. Después",
+   "motivo": "número de la medida en el programa (comprobado en el PDF)"
+  },
+  {
+   "texto": "(programa de Vox, página 13). Incluye también la",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "del Frente Amplio, página 126) y un procedimiento",
+   "motivo": "número de página del PDF del programa (comprobado)"
+  },
+  {
+   "texto": "longitud: 24,2 veces por cada 10.000 palabras, frente a 4,0.",
+   "motivo": "unidad de la tasa (por cada 10.000 palabras) o recuento de partidos/temas de la pieza"
+  },
+  {
+   "texto": "Los cuatro programas",
+   "motivo": "unidad de la tasa (por cada 10.000 palabras) o recuento de partidos/temas de la pieza"
+  },
+  {
+   "texto": "Pensiones: tres de los cuatro las atan al IPC",
+   "motivo": "unidad de la tasa (por cada 10.000 palabras) o recuento de partidos/temas de la pieza"
+  },
+  {
+   "texto": "aparece cada tema por cada 10.000 palabras del programa",
+   "motivo": "unidad de la tasa (por cada 10.000 palabras) o recuento de partidos/temas de la pieza"
+  }
+ ],
+ "permitir_espana": []
+}
