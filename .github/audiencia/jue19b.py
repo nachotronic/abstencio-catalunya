@@ -49,10 +49,17 @@ D=datetime.timedelta
 HOY=datetime.datetime(2026,11,18,23)  # 19-11 00:00 Madrid
 corte=now-HOY
 print('CORTE_HOY',corte)
-for lab,k in [('MIE18',1),('MAR17',2),('LUN16',3)]:
-    a=HOY-D(days=k); informe('DIA_'+lab,a,a+D(days=1))
+def xref(lab,a,b):
+    x=collections.Counter()
+    for r in grp(['refererHost','requestPath'],5000,Z(a),Z(b)):
+        h=r['dimensions']['refererHost'] or ''
+        if h in ('t.co','x.com','twitter.com','mobile.twitter.com') or h.endswith('.x.com'): x[r['dimensions']['requestPath']]+=r['sum']['visits']
+    print('X',lab,sum(x.values()),x.most_common(10))
+    e=collections.Counter()
+    for r in grp(['datetimeHour'],50,Z(a),Z(b),',{requestPath:"/encuestas/"}'): e[hora(r)]+=r['sum']['visits']
+    print('ENC_TOTAL_HORA',lab,sum(e.values()),sorted(e.items()))
 for lab,k in [('HOY19',0),('MIE18',1),('LUN16',3)]:
-    a=HOY-D(days=k); informe('MISMAHORA_'+lab,a,a+corte)
+    a=HOY-D(days=k); informe('MISMAHORA_'+lab,a,a+corte); xref(lab,a,a+corte)
     act=collections.Counter()
     for r in grp(['requestPath'],5000,Z(a),Z(a+corte)):
         p=r['dimensions']['requestPath']
