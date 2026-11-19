@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (116)
+## Pendientes (117)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-19 | [`encuestas-elecciones-generales-2026-19-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-19-noviembre/) | Encuestas elecciones generales 2026, hoy 19 de noviembre: Sondaxe deja al PSOE a 0,7 puntos del PP | primer gráfico de la pieza |
 | 2026-11-18 | [`secciones-cambian-ganador-29n`](https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/) | Elecciones generales: una de cada tres secciones cambió de ganador entre 2019 y 2023 | primer gráfico de la pieza |
 | 2026-11-18 | [`cuanto-discrepan-encuestas-29n`](https://mapaelectoral.es/actualidad/cuanto-discrepan-encuestas-29n/) | Elecciones generales: las encuestas dan al PSOE entre el 25,5 y el 33,3 % | primer gráfico de la pieza |
 | 2026-11-18 | [`encuesta-40db-vox-17-29n`](https://mapaelectoral.es/actualidad/encuesta-40db-vox-17-29n/) | Elecciones generales: Vox baja al 17 % en la encuesta diaria de El País | primer gráfico de la pieza |

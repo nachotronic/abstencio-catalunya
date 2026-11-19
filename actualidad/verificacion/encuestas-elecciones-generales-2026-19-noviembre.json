@@ -1,0 +1,268 @@
+{
+ "pieza": "encuestas-elecciones-generales-2026-19-noviembre",
+ "cifras": [
+  {
+   "texto": "noviembre: Sondaxe deja al PSOE a 0,7 puntos del PP",
+   "cifra": "0,7",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "desde 2023. 40dB. la deja en 2,0 puntos y Sigma Dos,",
+   "cifra": "2,0",
+   "calculo": "D['F'][2]['dif']"
+  },
+  {
+   "texto": "2,0 puntos y Sigma Dos, en 4,0; SW Demoscopia pone",
+   "cifra": "4,0",
+   "calculo": "D['F'][4]['dif']"
+  },
+  {
+   "texto": "mediana de las encuestas, en 4,4 a favor del PP.",
+   "cifra": "4,4",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "Sondaxe deja al PSOE a 0,7 puntos del PP, la distancia",
+   "cifra": "0,7",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "de noviembre, da al PP el 28,5 % y al PSOE el 27,8",
+   "cifra": "28,5",
+   "calculo": "D['F'][1]['PP']"
+  },
+  {
+   "texto": "PP el 28,5 % y al PSOE el 27,8 %; en la entrega anterior",
+   "cifra": "27,8",
+   "calculo": "D['F'][1]['PSOE']"
+  },
+  {
+   "texto": "anterior la distancia era de 2,0 puntos. Es una de las",
+   "cifra": "2,0",
+   "calculo": "D['F'][1]['dif_ant']"
+  },
+  {
+   "texto": "2,0 puntos. Es una de las cinco encuestas de las elecciones",
+   "condicion": "len(D['F']) == 5"
+  },
+  {
+   "texto": "jueves deja la distancia en 2,0 puntos (PP 32,4 %, PSOE",
+   "cifra": "2,0",
+   "calculo": "D['F'][2]['dif']"
+  },
+  {
+   "texto": "distancia en 2,0 puntos (PP 32,4 %, PSOE 30,4 %); EM-Analytics",
+   "cifra": "32,4",
+   "calculo": "D['F'][2]['PP']"
+  },
+  {
+   "texto": "2,0 puntos (PP 32,4 %, PSOE 30,4 %); EM-Analytics para",
+   "cifra": "30,4",
+   "calculo": "D['F'][2]['PSOE']"
+  },
+  {
+   "texto": "EM-Analytics para Electomanía, en 3,8, y Sigma Dos para El",
+   "cifra": "3,8",
+   "calculo": "D['F'][3]['dif']"
+  },
+  {
+   "texto": "Sigma Dos para El Mundo, en 4,0. SW Demoscopia para",
+   "cifra": "4,0",
+   "calculo": "D['F'][4]['dif']"
+  },
+  {
+   "texto": "por delante al PSOE, con 2,8 puntos de ventaja.",
+   "cifra": "2,8",
+   "calculo": "-D['F'][0]['dif']"
+  },
+  {
+   "texto": "que empezó su tracking: del 17,0 al 17,2 %, tras bajar",
+   "cifra": "17,0",
+   "calculo": "D['VOX40'][-1]"
+  },
+  {
+   "texto": "su tracking: del 17,0 al 17,2 %, tras bajar en cada",
+   "cifra": "17,2",
+   "calculo": "D['F'][2]['VOX']"
+  },
+  {
+   "texto": "bajar en cada una de las cinco entregas anteriores.",
+   "condicion": "len(D['VOX40'][1:]) == 5 and all(a > b for a, b in zip(D['VOX40'], D['VOX40'][1:]))"
+  },
+  {
+   "texto": "anteriores. En Sondaxe sube 0,2 puntos, hasta el 19,6",
+   "cifra": "0,2",
+   "calculo": "D['F'][1]['dVOX']"
+  },
+  {
+   "texto": "sube 0,2 puntos, hasta el 19,6 %; en Sigma Dos baja",
+   "cifra": "19,6",
+   "calculo": "D['F'][1]['VOX']"
+  },
+  {
+   "texto": "19,6 %; en Sigma Dos baja 0,1, hasta el 19,7 %, y",
+   "cifra": "0,1",
+   "calculo": "-D['F'][4]['dVOX']"
+  },
+  {
+   "texto": "Sigma Dos baja 0,1, hasta el 19,7 %, y en EM-Analytics",
+   "cifra": "19,7",
+   "calculo": "D['F'][4]['VOX']"
+  },
+  {
+   "texto": "%, y en EM-Analytics sube 0,1, hasta el 18,9 %. En",
+   "cifra": "0,1",
+   "calculo": "D['F'][3]['dVOX']"
+  },
+  {
+   "texto": "EM-Analytics sube 0,1, hasta el 18,9 %. En SW Demoscopia",
+   "cifra": "18,9",
+   "calculo": "D['F'][3]['VOX']"
+  },
+  {
+   "texto": "%. En SW Demoscopia baja 0,1, hasta el 16,4 %.",
+   "cifra": "0,1",
+   "calculo": "-D['F'][0]['dVOX']"
+  },
+  {
+   "texto": "Demoscopia baja 0,1, hasta el 16,4 %.",
+   "cifra": "16,4",
+   "calculo": "D['F'][0]['VOX']"
+  },
+  {
+   "texto": "en todas, PP y Vox suman 192 en 40dB. (133 del PP,",
+   "cifra": "192",
+   "calculo": "D['PV40']"
+  },
+  {
+   "texto": "y Vox suman 192 en 40dB. (133 del PP, 2 de UPN-PP",
+   "cifra": "133",
+   "calculo": "D['ESC40']['PP']"
+  },
+  {
+   "texto": "192 en 40dB. (133 del PP, 2 de UPN-PP y 57 de Vox,",
+   "cifra": "2",
+   "calculo": "D['ESC40']['UPNPP']"
+  },
+  {
+   "texto": "(133 del PP, 2 de UPN-PP y 57 de Vox, según su informe),",
+   "cifra": "57",
+   "calculo": "D['ESC40']['VOX']"
+  },
+  {
+   "texto": "de Vox, según su informe), 190 en Sondaxe, 188 en EM-Analytics",
+   "cifra": "190",
+   "calculo": "D['F'][1]['pv_lo']"
+  },
+  {
+   "texto": "informe), 190 en Sondaxe, 188 en EM-Analytics y entre",
+   "cifra": "188",
+   "calculo": "D['F'][3]['pv_lo']"
+  },
+  {
+   "texto": "188 en EM-Analytics y entre 185 y 196 en Sigma Dos:",
+   "cifra": "185",
+   "calculo": "D['F'][4]['pv_lo']"
+  },
+  {
+   "texto": "EM-Analytics y entre 185 y 196 en Sigma Dos: por encima",
+   "cifra": "196",
+   "calculo": "D['F'][4]['pv_hi']"
+  },
+  {
+   "texto": "de la mayoría absoluta de 176 en las cuatro. SW Demoscopia",
+   "condicion": "True  # mayoría absoluta: 176 de 350"
+  },
+  {
+   "texto": "mayoría absoluta de 176 en las cuatro. SW Demoscopia les da",
+   "condicion": "min(D['PV40'], D['F'][1]['pv_lo'], D['F'][3]['pv_lo'], D['F'][4]['pv_lo']) > 176  # las cuatro"
+  },
+  {
+   "texto": "SW Demoscopia les da entre 168 y 182, un intervalo",
+   "cifra": "168",
+   "calculo": "D['F'][0]['pv_lo']"
+  },
+  {
+   "texto": "Demoscopia les da entre 168 y 182, un intervalo que deja",
+   "cifra": "182",
+   "calculo": "D['F'][0]['pv_hi']"
+  },
+  {
+   "texto": "encuesta de cada una de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas, la",
+   "condicion": "D['NCASAS'] == 18  # tres semanas: 21 días"
+  },
+  {
+   "texto": "generales 2026, da al PP el 31,4 %, al PSOE el 27,0 %",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "PP el 31,4 %, al PSOE el 27,0 % y a Vox el 18,9 %:",
+   "cifra": "27,0",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "PSOE el 27,0 % y a Vox el 18,9 %: 4,4 puntos entre",
+   "cifra": "18,9",
+   "calculo": "D['MED']['VOX']"
+  },
+  {
+   "texto": "27,0 % y a Vox el 18,9 %: 4,4 puntos entre PP y PSOE.",
+   "cifra": "4,4",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "puntos entre PP y PSOE. Las cinco encuestas de hoy ven",
+   "condicion": "len(D['MAS_CERCA']) == 5"
+  },
+  {
+   "texto": "ajustada; Sigma Dos, con 4,0 puntos a favor del PP,",
+   "cifra": "4,0",
+   "calculo": "D['F'][4]['dif']"
+  },
+  {
+   "texto": "Con 1.000 entrevistas, los 0,7",
+   "cifra": "1.000",
+   "calculo": "D['F'][1]['n']"
+  },
+  {
+   "texto": "Con 1.000 entrevistas, los 0,7 puntos entre PP y PSOE",
+   "cifra": "0,7",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "de esa distancia, de unos ±4,7 puntos: es un empate",
+   "cifra": "4,7",
+   "calculo": "D['M_SX']"
+  },
+  {
+   "texto": "de producirse. Además, las cinco son trackings o encuestas",
+   "condicion": "len(D['F']) == 5"
+  },
+  {
+   "texto": "noviembre, así que quedan cinco días de encuestas.",
+   "condicion": "True  # del 19 al 23 de noviembre, ambos incluidos: cinco días"
+  },
+  {
+   "texto": "Las cinco, más ajustadas que la",
+   "condicion": "len(D['MAS_CERCA']) == 5"
+  },
+  {
+   "texto": "encuesta y en la mediana de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas",
+   "condicion": "D['NCASAS'] == 18"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
+}
