@@ -113,6 +113,6 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 
 pieza(SLUG, 'Debate Sánchez Feijóo',
       'Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara',
-      f'Es este jueves a las 22.00, en La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima. El último, en 2023, fue el menos visto desde 1993: {p(M23)} millones.',
+      f'El cara a cara de las elecciones generales del 29N es este jueves a las 22.00, en La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima. El último, en 2023, fue el menos visto desde 1993: {p(M23)} millones.',
       '19 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(MED, MED_DIF, round(CAIDA, 1))

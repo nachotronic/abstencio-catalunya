@@ -5030,7 +5030,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-tras-el-debate-2023-29n', fecha='2026-11-17',
+        slug='encuestas-tras-el-debate-2023-29n', fecha='2026-11-17', actualizado='2026-11-19 09:30',
         titulo='Encuestas y debate: tras el cara a cara de 2023, 10 de 14 encuestadoras ampliaron la ventaja del PP; trece días después ganó por 1,4 puntos', serie='29n', figura=0,
         descripcion='El debate de las elecciones generales del 29N es este jueves a las 22.00. En 2023, la media de las encuestas pasó de 5,1 a 6,0 puntos de ventaja para el PP tras el cara a cara; las urnas le dieron 1,4.',
         compara='La última encuesta nacional de cada empresa publicada antes del cara a cara del 10 de julio de 2023 y la última publicada después, hasta la veda, para las 14 empresas con encuesta en los dos tramos; el resultado del 23 de julio, y la media de encuestas de hoy.',
@@ -5121,7 +5121,7 @@ PIEZAS += [
     dict(
         slug='debate-sanchez-feijoo-29n', fecha='2026-11-19', actualizado='2026-11-19 09:30',
         titulo='Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara', serie='29n', figura=0,
-        descripcion='Es este jueves a las 22.00, en La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima. El último, en 2023, fue el menos visto desde 1993: 5,9 millones.',
+        descripcion='El cara a cara de las elecciones generales del 29N es este jueves a las 22.00, en La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima. El último, en 2023, fue el menos visto desde 1993: 5,9 millones.',
         compara='La audiencia media de los siete cara a cara entre los candidatos del PSOE y del PP en las elecciones generales desde 1993, las encuestas de 2023 sobre quién ganó el debate y la mediana de las encuestas de hoy.',
         limites='Las audiencias son solo de televisión (Kantar), sin internet. Las encuestas sobre quién gana un debate miden una impresión del día siguiente, no el voto. Hora, cadenas y bloques, según la información publicada por los medios antes del debate.',
         calculo='Audiencias: tabla de Barlovento Comunicación con datos de Kantar, solo los cara a cara PSOE-PP. Encuestas de hoy: mediana de las encuestas de mapaelectoral.es/encuestas, no la media del modelo. Script: actualidad/src/resumenes/debate_servicio.py.',
