@@ -1,0 +1,97 @@
+{
+ "pieza": "debate-sanchez-feijoo-29n",
+ "cifras": [
+  {
+   "texto": "el menos visto desde 1993: 5,9 millones.",
+   "cifra": "5,9 millones",
+   "calculo": "round(D['M23'],1)*1e6"
+  },
+  {
+   "texto": "informó FormulaTV. Quedarán diez días para votar.",
+   "condicion": "29 - 19 == 10  # del jueves 19 al domingo 29 de noviembre"
+  },
+  {
+   "texto": "2023, lo vieron de media 5,9 millones de personas: el menos",
+   "cifra": "5,9 millones",
+   "calculo": "round(D['M23'],1)*1e6"
+  },
+  {
+   "texto": "personas: el menos visto de los siete celebrados desde 1993.",
+   "cifra": "siete",
+   "calculo": "len(D['CARAS'])"
+  },
+  {
+   "texto": "25 de febrero de 2008, con 13,0 millones, más del doble que el",
+   "cifra": "13,0 millones",
+   "calculo": "round(D['MMAX'],1)*1e6"
+  },
+  {
+   "texto": "NC Report y La Razón, el 57 % de los encuestados",
+   "cifra": "57",
+   "calculo": "D['NC_F']"
+  },
+  {
+   "texto": "le vio ganador, frente al 39 % que eligió a Sánchez;",
+   "cifra": "39",
+   "calculo": "D['NC_S']"
+  },
+  {
+   "texto": "Sigma Dos para El Mundo, el 54,2 % creía que Feijóo se",
+   "cifra": "54,2",
+   "calculo": "D['SIGMA_F']"
+  },
+  {
+   "texto": "elecciones generales da al PP 31,4 % y al PSOE 27,0 %:",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "da al PP 31,4 % y al PSOE 27,0 %: 4,4 puntos de diferencia.",
+   "cifra": "27,0",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "31,4 % y al PSOE 27,0 %: 4,4 puntos de diferencia.",
+   "cifra": "4,4",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "2023, fue el menos visto: 5,9 millones de espectadoresAudiencia",
+   "cifra": "5,9 millones",
+   "calculo": "round(D['M23'],1)*1e6"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "dos pausas publicitarias de tres minutos, según El Plural.",
+   "fuente": "https://www.elplural.com/politica/espana/todo-sabemos-cara-cara-entre-sanchez-feijoo-temas-tiempos-perspectivas_804551102"
+  },
+  {
+   "texto": "El debate tiene cinco bloques, en este orden.",
+   "fuente": "https://www.elplural.com/politica/espana/todo-sabemos-cara-cara-entre-sanchez-feijoo-temas-tiempos-perspectivas_804551102"
+  },
+  {
+   "texto": "las urnas se la dejaron en 1,4 puntos.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "jueves a las 22.00, en La 1, Antena 3, Telecinco,",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "las 22.00, en La 1, Antena 3, Telecinco, Cuatro,",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima.",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "de Madrid Content City, en Tres Cantos (Madrid).",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  }
+ ],
+ "permitir_espana": []
+}
