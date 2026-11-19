@@ -81,7 +81,7 @@ cuerpo = f'''
 <p data-tipo="contexto"><strong>Frente Amplio.</strong> Quiere {cita('FA', 126, 'Culminar la regularización extraordinaria de 2026')} y un procedimiento estable de regularización.</p>
 
 <h2>De qué habla más cada programa</h2>
-<p data-tipo="dato">Contando palabras, el programa de Vox nombra la inmigración unas <strong>{n(RAZON_INM)} veces más</strong> que el del PSOE en proporción a su longitud: {p(INM['VOX'])} veces por cada 10.000 palabras, frente a {p(INM['PSOE'])}. El del PSOE es el que más habla de vivienda ({p(T['Vivienda']['PSOE'])}), de igualdad ({p(T['Igualdad y violencia machista']['PSOE'])}) y de clima y energía ({p(T['Clima y energía']['PSOE'])}). El de Vox es el más corto, con {n(M['palabras']['VOX'])} palabras, frente a las {n(M['palabras']['FA'])} del Frente Amplio, así que en él cada mención pesa más.</p>
+<p data-tipo="dato">Contando palabras, el programa de Vox nombra la inmigración unas <strong>{n(RAZON_INM)} veces más</strong> que el del PSOE en proporción a su longitud: {p(INM['VOX'])} veces por cada 10.000 palabras, frente a {p(INM['PSOE'])}. El del PSOE es el que más habla de vivienda ({p(T['Vivienda']['PSOE'])}), de igualdad ({p(T['Igualdad y violencia machista']['PSOE'])}) y de clima y energía ({p(T['Clima y energía']['PSOE'])}). El de Vox es el más corto, con unas {n(round(M['palabras']['VOX'], -2))} palabras, según nuestro recuento, frente a unas {n(round(M['palabras']['FA'], -2))} del Frente Amplio, así que en él cada mención pesa más.</p>
 {g_temas}
 '''
 
@@ -104,6 +104,6 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 
 pieza(SLUG, 'Programa electoral 29N',
       'Programa electoral de PP, PSOE, Vox y Frente Amplio: qué propone cada uno el 29N',
-      'El PP promete construir un millón de viviendas; el PSOE, un parque público de 100.000, y el Frente Amplio, 1,5 millones de viviendas públicas en 12 años. Vox no da cifra y pide «prioridad nacional». Lo que dicen los cuatro programas sobre vivienda, impuestos, pensiones e inmigración, con sus palabras.',
+      'El PP promete construir un millón de viviendas; el PSOE, un parque público de 100.000, y el Frente Amplio, 1,5 millones de viviendas públicas en 12 años. Vox no da cifra y pide «prioridad nacional». Lo que dicen los cuatro programas de las elecciones generales del 29N sobre vivienda, impuestos, pensiones e inmigración, con sus palabras.',
       '19 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(round(RAZON_INM, 2))

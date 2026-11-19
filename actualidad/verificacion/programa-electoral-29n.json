@@ -52,18 +52,18 @@
    "calculo": "D['tasa']['Clima y energía']['PSOE']"
   },
   {
-   "texto": "Vox es el más corto, con 6.199 palabras, frente a las",
-   "cifra": "6.199",
-   "calculo": "D['palabras']['VOX']"
-  },
-  {
-   "texto": "6.199 palabras, frente a las 44.726 del Frente Amplio, así",
-   "cifra": "44.726",
-   "calculo": "D['palabras']['FA']"
-  },
-  {
    "texto": "Pensiones: tres de los cuatro las atan",
    "condicion": "True  # PP (p. 34), PSOE (p. 40) y FA (p. 57) citan el IPC; Vox no lo nombra (comprobado en el PDF)"
+  },
+  {
+   "texto": "con unas 6.200 palabras, según nuestro recuento",
+   "cifra": "6.200",
+   "calculo": "round(D['palabras']['VOX'],-2)"
+  },
+  {
+   "texto": "frente a unas 44.700 del Frente Amplio",
+   "cifra": "44.700",
+   "calculo": "round(D['palabras']['FA'],-2)"
   }
  ],
  "externas": [
