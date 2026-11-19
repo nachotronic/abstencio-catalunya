@@ -1,0 +1,143 @@
+{
+ "pieza": "frente-amplio-17-provincias-29n",
+ "cifras": [
+  {
+   "texto": "escaño al Frente Amplio en 5 de sus 17 provincias",
+   "cifra": "5",
+   "calculo": "D['CON']"
+  },
+  {
+   "texto": "Frente Amplio en 5 de sus 17 provincias",
+   "cifra": "17",
+   "calculo": "len(D['O'])"
+  },
+  {
+   "texto": "En otras 5 se queda a las puertas.",
+   "cifra": "5",
+   "calculo": "D['PUERTAS']"
+  },
+  {
+   "texto": "a las puertas. En total, 10 diputados frente a los",
+   "cifra": "10",
+   "calculo": "D['TOT']"
+  },
+  {
+   "texto": "10 diputados frente a los 31 de Sumar en 2023.",
+   "cifra": "31",
+   "calculo": "D['TOT23']"
+  },
+  {
+   "texto": "aspira a sacar diputados en 17 provincias en las elecciones",
+   "cifra": "17",
+   "calculo": "len(D['O'])"
+  },
+  {
+   "texto": "Tarragona y Zaragoza. Son las 16 en las que, según elDiario.es,",
+   "cifra": "16",
+   "calculo": "len(D['O']) - 1  # las de elDiario.es, sin Bizkaia"
+  },
+  {
+   "texto": "mapaelectoral.es le da escaño en 5 de esas 17 en su reparto",
+   "cifra": "5",
+   "calculo": "D['CON']"
+  },
+  {
+   "texto": "le da escaño en 5 de esas 17 en su reparto central:",
+   "cifra": "17",
+   "calculo": "len(D['O'])"
+  },
+  {
+   "texto": "reparto central: Madrid (3), Barcelona (2), Alicante",
+   "cifra": "3",
+   "calculo": "[f['central'] for f in D['O'] if f['nom']=='Madrid'][0]"
+  },
+  {
+   "texto": "central: Madrid (3), Barcelona (2), Alicante (1), Las",
+   "cifra": "2",
+   "calculo": "[f['central'] for f in D['O'] if f['nom']=='Barcelona'][0]"
+  },
+  {
+   "texto": "Barcelona (2), Alicante (1), Las Palmas (1) y Sevilla",
+   "cifra": "1",
+   "calculo": "[f['central'] for f in D['O'] if f['nom']=='Alicante'][0]"
+  },
+  {
+   "texto": "Alicante (1), Las Palmas (1) y Sevilla (1), 8 diputados",
+   "cifra": "1",
+   "calculo": "[f['central'] for f in D['O'] if f['nom']=='Alicante'][0]"
+  },
+  {
+   "texto": "Las Palmas (1) y Sevilla (1), 8 diputados en total.",
+   "cifra": "1",
+   "calculo": "[f['central'] for f in D['O'] if f['nom']=='Las Palmas'][0]"
+  },
+  {
+   "texto": "Palmas (1) y Sevilla (1), 8 diputados en total.",
+   "cifra": "8",
+   "calculo": "D['ESC_CON']"
+  },
+  {
+   "texto": "total. En 2023, Sumar sacó 25 en esas mismas 17 provincias.",
+   "cifra": "25",
+   "calculo": "D['E23_OBJ']"
+  },
+  {
+   "texto": "Sumar sacó 25 en esas mismas 17 provincias.",
+   "cifra": "17",
+   "calculo": "len(D['O'])"
+  },
+  {
+   "texto": "En otras 5, Santa Cruz de Tenerife,",
+   "cifra": "5",
+   "calculo": "D['PUERTAS']"
+  },
+  {
+   "texto": "pero sí la horquilla del 80 % del modelo. En las",
+   "calculo": "POR HACER (o pásala a «externas» con su fuente, o a «ignorar» con su motivo)",
+   "condicion": "True  # horquilla del 80 %: percentiles 10 y 90 del modelo"
+  },
+  {
+   "texto": "del 80 % del modelo. En las 7 restantes (Zaragoza,",
+   "cifra": "7",
+   "calculo": "D['FUERA']"
+  },
+  {
+   "texto": "Sumar lo sacó en 2023 en 6 de ellas.",
+   "cifra": "6",
+   "calculo": "D['FUERA23']"
+  },
+  {
+   "texto": "le da escaño en Valencia (2). En total, el reparto",
+   "cifra": "2",
+   "calculo": "[f['central'] for f in D['OTRAS'] if f['nom']=='Valencia'][0]"
+  },
+  {
+   "texto": "provincia a provincia le da 10 diputados, frente a",
+   "cifra": "10",
+   "calculo": "D['TOT']"
+  },
+  {
+   "texto": "10 diputados, frente a los 31 de Sumar en 2023.",
+   "cifra": "31",
+   "calculo": "D['TOT23']"
+  },
+  {
+   "texto": "De las 17 provincias en las que",
+   "cifra": "17",
+   "calculo": "len(D['O'])"
+  },
+  {
+   "texto": "el modelo le da escaño en 5 y lo deja a las puertas",
+   "cifra": "5",
+   "calculo": "D['PUERTAS']"
+  },
+  {
+   "texto": "modelo de encuestas, en las 17 provincias en las que",
+   "cifra": "17",
+   "calculo": "len(D['O'])"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
+}
