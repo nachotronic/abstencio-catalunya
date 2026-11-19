@@ -1313,10 +1313,7 @@ def main():
 <h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}{'<li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños con tus porcentajes</b></a></li>' if hay_calculadora else ''}{'<li><a href="simulador-pactos/"><span class="kicker">Simulador</span><b>¿Quién suma 176? Haz tú los pactos del 29N</b></a></li>' if hay_pactos else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
-    # 19-11-2026 (Nacho): <title> y meta description como el 15-11, cuando la página estaba en el puesto 7 (deshace #609 aquí)
-    desc_seo = descripcion
     pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld, desc_seo=desc_seo)
-              .replace('<title>' + html.escape(titulo) + '</title>', '<title>' + html.escape(titulo + ' · Mapa Electoral') + '</title>', 1)
               .replace('<meta property="og:title" content="' + html.escape(titulo) + '">', '<meta property="og:title" content="' + html.escape(titular) + '">')
               + ESTILOS + encuestadoras.css_partidos(PRINCIPALES) + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
               + SCRIPT.replace('__DATOS__', json.dumps(datos, ensure_ascii=False, separators=(',', ':'))) + '\n</body>\n</html>\n')
