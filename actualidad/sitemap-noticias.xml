@@ -89,6 +89,22 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-19</news:publication_date>
+      <news:title>Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-19</news:publication_date>
+      <news:title>Elecciones generales: el modelo de encuestas da escaño al Frente Amplio en 5 de sus 17 provincias</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/vox-gijon-barrios-abascal-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
