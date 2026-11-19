@@ -1,0 +1,16 @@
+# Temporal, solo lectura: audiencia 19-11. No se fusiona a main.
+name: Audiencia jueves 19-11
+on:
+  push:
+    branches: [claude/project-thread-lavo6l]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-jue19.yml']
+permissions:
+  contents: read
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/jue19.py
