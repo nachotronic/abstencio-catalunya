@@ -1,0 +1,103 @@
+{
+ "pieza": "vox-gijon-barrios-abascal-29n",
+ "cifras": [
+  {
+   "texto": "Somió, el barrio más rico: 17,0 %",
+   "cifra": "17,0",
+   "calculo": "D['T']['Somió']['v23']"
+  },
+  {
+   "texto": "este jueves. Vox bajó en los 18 barrios entre 2019 y",
+   "cifra": "18",
+   "calculo": "D['BAJAN']"
+  },
+  {
+   "texto": "2023; en toda Gijón, del 15,8 % al 12,7 %.",
+   "cifra": "15,8",
+   "calculo": "D['CIU']['2019_11']['vox']"
+  },
+  {
+   "texto": "toda Gijón, del 15,8 % al 12,7 %.",
+   "cifra": "12,7",
+   "calculo": "D['CIU']['2023_07']['vox']"
+  },
+  {
+   "texto": "En Gijón, Vox sacó el 12,7 % del voto válido en",
+   "cifra": "12,7",
+   "calculo": "D['CIU']['2023_07']['vox']"
+  },
+  {
+   "texto": "en las generales de 2023, 20.126 votos, frente al 15,8",
+   "cifra": "20.126",
+   "calculo": "D['CIU']['2023_07']['votos']"
+  },
+  {
+   "texto": "2023, 20.126 votos, frente al 15,8 % de noviembre de 2019.",
+   "cifra": "15,8",
+   "calculo": "D['CIU']['2019_11']['vox']"
+  },
+  {
+   "texto": "noviembre de 2019. Bajó en los 18 barrios de la ciudad",
+   "cifra": "18",
+   "calculo": "D['BAJAN']"
+  },
+  {
+   "texto": "barrio con más renta de los 18: el 17,0 % en 2023,",
+   "cifra": "18",
+   "calculo": "D['NB']"
+  },
+  {
+   "texto": "con más renta de los 18: el 17,0 % en 2023, después del",
+   "cifra": "17,0",
+   "calculo": "D['T']['Somió']['v23']"
+  },
+  {
+   "texto": "17,0 % en 2023, después del 24,1 % de 2019. Le siguen",
+   "cifra": "24,1",
+   "calculo": "D['T']['Somió']['v19']"
+  },
+  {
+   "texto": "2019. Le siguen Roces Urbano (15,4 %) y Viesques (15,2",
+   "cifra": "15,4",
+   "calculo": "D['T']['Roces Urbano']['v23']"
+  },
+  {
+   "texto": "Urbano (15,4 %) y Viesques (15,2 %). Donde menos, El",
+   "cifra": "15,2",
+   "calculo": "D['T']['Viesques']['v23']"
+  },
+  {
+   "texto": "menos, El Polígono, con el 10,0 %, y Cimavilla, con",
+   "cifra": "10,0",
+   "calculo": "D['T']['El Polígono']['v23']"
+  },
+  {
+   "texto": "10,0 %, y Cimavilla, con el 10,8 %.",
+   "cifra": "10,8",
+   "calculo": "D['T']['Cimavilla']['v23']"
+  },
+  {
+   "texto": "Vox bajó en los 18 barrios de Gijón entre",
+   "cifra": "18",
+   "calculo": "D['BAJAN']"
+  },
+  {
+   "texto": "Vox sacó el 14,4 % en 2023; en las otras",
+   "cifra": "14,4",
+   "calculo": "D['Q5']"
+  },
+  {
+   "texto": "en las otras, entre el 11,8 y el 12,5 %",
+   "cifra": "11,8",
+   "calculo": "D['QRESTO'][0]"
+  },
+  {
+   "texto": "entre el 11,8 y el 12,5 %. Es una relación",
+   "cifra": "12,5",
+   "calculo": "D['QRESTO'][1]"
+  }
+ ],
+ "externas": [],
+ "ignorar": [],
+ "permitir_espana": []
+}
