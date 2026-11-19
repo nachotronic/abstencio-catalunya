@@ -309,7 +309,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Lerma', 'Ibarra', 'Rueda', 'Valdés', 'Cifuentes', 'Simancas', 'Noblejas', 'Arcos', 'San Isidro', 'Almenara', 'Águilas', 'Los Silos',
                 'Valmojado', 'Palmera', 'La Alberca', 'Guadalupe', 'Los Barrios', 'Quinto', 'Selva', 'Santa Eugènia', 'Sant Jordi', 'San Jorge',
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
-                'Humilladero', 'Nalda', 'Los Corrales'}
+                'Humilladero', 'Nalda', 'Los Corrales', 'Barlovento'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019'),
                  'seleccion-convocados-pueblos-29n': ('01063', '08019', '08191', '41081', '06044', '17020', '08279', '28079', '08003', '46250', '20069', '38046', '41069', '31201', '21018', '04079', '08305', '20030', '08077', '46126', '14056', '35016'),   # los 22 municipios de nacimiento de los convocados
