@@ -889,7 +889,8 @@
     if (jornadaHecha) return; jornadaHecha = true;
     const mapa = document.getElementById('mapa'); if (!mapa || !mapa.parentNode || !document.querySelector('section.votar-29n')) return;
     const sec = id => { const h = document.getElementById(id); return h && h.closest('section'); };
-    [document.querySelector('section.ep'), document.querySelector('section.votar-29n'), sec('h-del-internacional'), sec('h-del-videos')]
+    [document.querySelector('section.ep'), document.querySelector('section.votar-29n'), sec('h-del-internacional'), sec('h-del-videos'),
+     sec('h-del-historia'), sec('h-del-comunidades'), sec('h-del-atlas')]   // la noche del 29N, solo los carruseles del día
       .forEach(x => { if (x) x.hidden = true; });
     document.querySelectorAll('nav.site a[href$="encuestas/"]').forEach(a => { a.hidden = true; });   // y el enlace del menú
     // bajo el titular, solo el enlace a los resultados del 29N (el de la guía previa habla de 2023)
@@ -915,7 +916,7 @@
     ele.className = 'wide'; ele.id = 'electos-29n'; ele.hidden = true;
     ele.innerHTML = '<h2 style="font:700 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px">Quién sale elegido</h2><div id="electos-cuerpo"></div>';
     pac.after(ele); tras = ele;
-    ['h-del-actualidad', 'h-del-mapa'].map(sec).forEach(x => { if (x) { tras.after(x); tras = x; } });
+    ['h-del-actualidad', 'h-del-mapa', 'h-del-guias'].map(sec).forEach(x => { if (x) { tras.after(x); tras = x; } });
   }
   // botones de participación del recuadro del directo: 1.er avance, 2.º avance y final (esta, solo con escrutinio)
   function botonesAvance(y, disp, final) {
