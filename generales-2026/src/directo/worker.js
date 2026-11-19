@@ -23,7 +23,8 @@
 
 export default {
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(actualiza(env));
+    // el resultado de cada lectura (ok o el error) queda en KV para verlo en GET /estado, sin datos ni claves
+    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV, sen: MUESTRA_SEN })); }));
   },
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -32,6 +33,35 @@ export default {
       return new Response(await actualiza(env), { headers: cors });
     }
     const pr = url.pathname.match(/^\/provincia\/(\d{2})\.json$/);
+    // Vista previa (solo para revisar antes de fusionar; se quita después del 29N): la portada publicada con el app.js de un
+    // commit de la rama, servido por este Worker desde GitHub. /vista?v=<sha> ; el directo es este mismo Worker.
+    const gh = url.pathname.match(/^\/vista\/gh\/([0-9a-f]{7,40})\/(generales-2026\/[\w\/.-]+\.(js|json))$/);
+    if (gh) {   // ficheros de la rama, sin el 403 que da jsDelivr a algunos navegadores
+      const r = await fetch(`https://raw.githubusercontent.com/nachotronic/abstencio-catalunya/${gh[1]}/${gh[2]}`, { cf: { cacheTtl: 300 } });
+      return new Response(r.body, { status: r.status, headers: { ...cors, 'Cache-Control': 'public, max-age=300',
+        'Content-Type': gh[3] === 'js' ? 'text/javascript; charset=utf-8' : 'application/json; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
+    }
+    const fuera = url.pathname.match(/^\/vista\/gh\/[0-9a-f]{7,40}\/(.*)$/);   // el resto de enlaces, a la web publicada
+    if (fuera && !gh) return Response.redirect('https://mapaelectoral.es/' + fuera[1] + url.search + url.hash, 302);
+    if (url.pathname === '/vista') {
+      const v = /^[0-9a-f]{7,40}$/.test(url.searchParams.get('v') || '') ? url.searchParams.get('v') : null;
+      if (!v) return new Response('Falta ?v=<commit>', { status: 400 });
+      if (!url.searchParams.get('directo')) return Response.redirect(`${url.origin}/vista?v=${v}&directo=${url.origin}/resultados.json`, 302);
+      const cdn = `${url.origin}/vista/gh/${v}/generales-2026/app.js`;
+      const html = (await (await fetch('https://mapaelectoral.es/', { cf: { cacheTtl: 60 } })).text())
+        .replace('<head>', '<head><base href="https://mapaelectoral.es/"><meta name="robots" content="noindex">')
+        .replace('src="generales-2026/app.js"', `src="${cdn}"`)
+        // como quedará la portada servida en la veda (src/quitar_encuestas_portada.py, hilo de /encuestas/): sin el bloque
+        // de encuestas ni las tarjetas de encuestas de los carruseles, ya en el HTML
+        .replace(/<!--encuestas:portada-->[\s\S]*?<!--\/encuestas:portada-->\n?/, '')
+        // (y, como se ha propuesto en ese hilo, la tarjeta del simulador de pactos con encuestas y el enlace del menú)
+        .replace(/<!--(actualidad:ultimas|actualidad:mapa|videos:portada|atlas:ultimas)-->[\s\S]*?<!--\/\1-->/g, b =>
+          b.replace(/<li><a href="[^"]*"[^>]*>[\s\S]*?<\/li>/g, li => /encuesta|sondeo/i.test(li.replace(/<img[^>]*>|<source[^>]*>/g, '')) ? '' : li))
+        .replace('<a href="encuestas/">Encuestas</a>', '')
+        .replace(/<a class="atlas" href="encuestas\/simulador-pactos\/">[\s\S]*?<\/a>/, '');
+      return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
+    }
+    if (url.pathname === '/estado') return new Response((await env.RESULTADOS.get('estado')) || '{}', { headers: { ...cors, 'Cache-Control': 'no-store', 'Content-Type': 'application/json' } });
     if (url.pathname !== '/resultados.json' && !pr) return new Response('No encontrado', { status: 404 });
     const json = await env.RESULTADOS.get(pr ? 'prov:' + pr[1] : 'ultimo');
     if (!json) return new Response('{}', { status: 503, headers: { ...cors, 'Content-Type': 'application/json' } });
@@ -44,6 +74,8 @@ export async function actualiza(env) {
     const out = await leeFuente(env);
     if (!out || !out.mun || !Object.keys(out.mun).length) return 'sin datos';
     out.actualizado = out.actualizado || new Date().toISOString();
+    const previo = await env.RESULTADOS.get('ultimo', 'json');
+    out.hitos = hitos(out, (previo && previo.hitos) || []);
     await env.RESULTADOS.put('ultimo', JSON.stringify(out));
     await Promise.all(Object.entries(porProvincia(out)).map(([p, o]) => env.RESULTADOS.put('prov:' + p, JSON.stringify(o))));
     const esc = Object.values(out.mun).filter(a => a[1] > 0).length;
@@ -62,10 +94,50 @@ export function porProvincia(out) {
     const k = out.siglas.map((_, i) => i).filter(i => filas.some(([, a]) => a[5 + i]));
     const mun = {};
     for (const [c, a] of filas) mun[c] = [...a.slice(0, 5), ...k.map(i => a[5 + i])];
-    const { escanos, ...resto } = out;
-    res[p] = { ...resto, siglas: k.map(i => out.siglas[i]), mun, ...(escanos && escanos[p] ? { escanos: { [p]: escanos[p] } } : {}) };
+    const { escanos, avances, avmun, hitos: _h, ambitos: _a, senado: _s, ant23: _t, ...resto } = out;   // los hitos solo van en el total de España
+    res[p] = { ...resto, siglas: k.map(i => out.siglas[i]), mun, ...(escanos && escanos[p] ? { escanos: { [p]: escanos[p] } } : {}),
+      ...(avances ? { avances: { es: avances.es, pr: avances.pr && avances.pr[p] ? { [p]: avances.pr[p] } : {} } } : {}),
+      ...(avmun ? { avmun: Object.fromEntries(Object.entries(avmun).filter(([c]) => c.startsWith(p))) } : {}) };
   }
   return res;
+}
+
+// ---- Hitos del directo: frases que se añaden solas cuando el escrutinio cruza un umbral o cambia el primero.
+// Van en resultados.json («hitos», el más reciente al final) y la página de resultados las enseña como entradas del directo.
+// Solo describen datos (escrutado, porcentajes sobre voto válido sin CERA y escaños si los da Interior); nada de proyecciones.
+const UMBRALES = [5, 10, 25, 50, 75, 90, 95, 99];
+const fmt = x => x.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+// PP y PSOE con sus listas territoriales (PSC, PSE-EE, UPN-PP…), como en la página; el resto, cada candidatura con sus siglas
+// Frente Amplio (Sumar, IU y otros) va con nombres distintos en cada comunidad: se suman. Podemos va aparte, salvo en las listas
+// conjuntas de Canarias (NC-BC, Podemos, IU y Sumar) y la Comunitat Valenciana (Compromís, EUPV y Podem), que van con el Frente Amplio
+const MISMO = [['Frente Amplio', /FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|PODEMOS, IU, SUMAR|^COMPROM/], ['PP', /^(PP\b|PP-|P\.P\.|UPN-PP)/], ['PSOE', /PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/]];
+const NOMBRE = { 'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'JXCAT': 'Junts', 'TERUEL EXISTE': 'Teruel Existe', 'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria',
+    'U.P.N.': 'UPN', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'CUP-PR': 'CUP', 'SALF': 'Se Acabó la Fiesta' };
+export const grupoSiglas = s => { const a = (s || '').toUpperCase().trim(); for (const [g, r] of MISMO) if (r.test(a)) return g; return NOMBRE[a] || s; };
+export function resumenEspana(out) {
+  let ct = 0, ce = 0, bl = 0; const v = out.siglas.map(() => 0);
+  for (const a of Object.values(out.mun)) { ct += a[0]; ce += a[1]; bl += a[3]; for (let k = 0; k < v.length; k++) v[k] += a[5 + k] || 0; }
+  const val = v.reduce((t, x) => t + x, 0) + bl;
+  const g = {}; out.siglas.forEach((s, k) => { if (v[k]) g[grupoSiglas(s)] = (g[grupoSiglas(s)] || 0) + v[k]; });
+  const orden = Object.entries(g).sort((a, b) => b[1] - a[1]);
+  const esc = {};
+  if (out.escanos) for (const d of Object.values(out.escanos)) for (const [s, n] of Object.entries(d)) esc[grupoSiglas(s)] = (esc[grupoSiglas(s)] || 0) + n;
+  return { esc: ct ? ce / ct * 100 : 0, val, orden, escanos: Object.entries(esc).filter(x => x[1]).sort((a, b) => b[1] - a[1]) };
+}
+export function hitos(out, previos) {
+  const H = previos.slice(), R = resumenEspana(out);
+  if (!R.val || !R.orden.length) return H;
+  const hora = out.actualizado, ult = H[H.length - 1];
+  const top = R.orden.slice(0, 3).map(([s, n]) => `${s}, ${fmt(n / R.val * 100)} %`).join('; ');
+  const asientos = R.escanos.length ? ` Escaños provisionales de Interior: ${R.escanos.slice(0, 5).map(([s, n]) => `${s} ${n}`).join(', ')}.` : '';
+  const nuevo = (tipo, texto) => H.push({ t: hora, tipo, esc: Math.round(R.esc * 10) / 10, primero: R.orden[0][0], texto });
+  if (!ult) nuevo('inicio', `Primeros datos del escrutinio: escrutado el ${fmt(R.esc)} % del censo. ${top}.${asientos}`);
+  else {
+    if (ult.primero !== R.orden[0][0]) nuevo('lider', `Con el ${fmt(R.esc)} % escrutado, ${R.orden[0][0]} pasa a ser la candidatura más votada. ${top}.${asientos}`);
+    const u = UMBRALES.filter(x => (ult.esc || 0) < x && R.esc >= x).pop();
+    if (u) nuevo('umbral', `Escrutado el ${fmt(R.esc)} % del censo. ${top}.${asientos}`);
+  }
+  return H.slice(-60);
 }
 
 async function leeFuente(env) {
@@ -217,6 +289,52 @@ export function escanosMedios(texto) {
   return esc;
 }
 
+// Fichero de totales del Congreso -> {TO, CM: {cc}, PR: {pp}}: nombre, % escrutado, a elegir y [siglas, votos, escaños]
+export function ambitosMedios(texto) {
+  const R = { TO: null, CM: {}, PR: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_TOT, CAND_TOT), t = c[1];
+    if (!['TO', 'CM', 'PR'].includes(t)) continue;
+    const cand = [];
+    for (let k = ANCHO_TOT.length; k + 4 < c.length; k += CAND_TOT.length) if (c[k + 1] && (ent(c[k + 2]) || ent(c[k + 4]))) cand.push([c[k + 1], ent(c[k + 2]), ent(c[k + 4])]);
+    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), bl: ent(c[14]), c: cand };
+    if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.PR[c[3].padStart(2, '0')] = o;
+  }
+  return R;
+}
+// Senado (getEscrutinioTotales/3): TO y CM, senadores electos por candidatura; CI (circunscripción), cada candidato con sus
+// votos y si sale elegido. Elemento: código, siglas, orden, nombre, votos, %, electo(s).
+const ANCHO_SEN = [10, 2, 2, 2, 1, 50, 5, 8, 8, 5, 8, 5, 8, 5, 8, 5, 8, 5, 3], CAND_SEN = [4, 55, 3, 90, 8, 5, 3];
+export function senadoMedios(texto) {
+  const R = { TO: null, CM: {}, CI: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_SEN, CAND_SEN), t = c[1];
+    if (!['TO', 'CM', 'CI'].includes(t)) continue;
+    const cand = [];
+    for (let k = ANCHO_SEN.length; k + 6 < c.length; k += CAND_SEN.length) if (c[k + 1]) {
+      if (t === 'CI') cand.push([c[k + 1], c[k + 3], ent(c[k + 4]), ent(c[k + 6])]);
+      else if (ent(c[k + 6])) cand.push([c[k + 1], ent(c[k + 6])]);
+    }
+    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), c: cand };
+    if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.CI[c[3].padStart(2, '0') + c[4]] = o;
+  }
+  return R;
+}
+// Senado 2023 (fijos/…/ANT/3/07-23): cada elemento es código, siglas y senadores electos, en todos los niveles
+export function senado23Medios(texto) {
+  const R = { TO: null, CM: {}, CI: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_SEN, [4, 55, 3]), t = c[1];
+    if (!['TO', 'CM', 'CI'].includes(t)) continue;
+    const cand = [];
+    for (let k = ANCHO_SEN.length; k + 2 < c.length; k += 3) if (c[k + 1] && ent(c[k + 2])) cand.push([c[k + 1], ent(c[k + 2])]);
+    const o = { n: c[5], el: ent(c[18]), c: cand };
+    if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.CI[c[3].padStart(2, '0') + c[4]] = o;
+  }
+  return R;
+}
+let MUESTRA_SEN = '';
+
 async function pideTexto(url, env) {
   const h = { 'User-Agent': 'mapaelectoral.es (prensa)' };
   if (env.MEDIOS_USUARIO) h.Authorization = 'Basic ' + btoa(`${env.MEDIOS_USUARIO}:${env.MEDIOS_CLAVE || ''}`);
@@ -227,24 +345,89 @@ async function pideTexto(url, env) {
   return new TextDecoder().decode(b);
 }
 
+// Avances de participación (getAvancesTotales/2/<envío>): registros TO, CM y PR con dos avances
+// (mesas, censo y participación con dos decimales implícitos). -> {fecha, es: [p1, p2], pr: {pp: [p1, p2]}, mesas}, en %;
+// mesas: total, constituidas y suspendidas de España (constitución de mesas, a las 9:30 el 29N).
+const ANCHO_AV = [10, 2, 2, 2, 1, 50, 5, 5, 5, 8, 8, 8], CAND_AV = [5, 8, 5];
+export function avancesMedios(texto) {
+  const out = { fecha: '', es: null, pr: {} };
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_AV, CAND_AV);
+    const av = [0, 1].map(i => { const m = ent(c[12 + 3 * i]), p = ent(c[14 + 3 * i]); return m ? p / 100 : null; });
+    if (c[0] > out.fecha) out.fecha = c[0];
+    if (c[1] === 'TO') { out.es = av; out.mesas = { total: ent(c[6]), constituidas: ent(c[7]), suspendidas: ent(c[8]) }; }
+    else if (c[1] === 'PR') out.pr[c[3].padStart(2, '0')] = av;
+  }
+  return out;
+}
+// Avances por municipio (getAvancesMunicipios/2/<pp>/<envío>), distrito 99 -> {cod5: [1.er avance, 2.º avance]}, en % (null si falta)
+const ANCHO_AVM = [10, 2, 2, 1, 3, 2, 50, 2, 2, 5, 5, 5, 8, 8, 8];
+export function avancesMunicipios(texto) {
+  const out = {};
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_AVM, CAND_AV);
+    if (c[5] !== '99') continue;
+    const av = [0, 1].map(i => ent(c[15 + 3 * i]) ? ent(c[17 + 3 * i]) / 100 : null);
+    if (av.some(x => x != null)) out[c[2].padStart(2, '0') + c[4].padStart(3, '0')] = av;
+  }
+  return out;
+}
+const horaMedios = f => /^\d{10}$/.test(f) ? `20${f.slice(0, 2)}-${f.slice(2, 4)}-${f.slice(4, 6)}T${f.slice(6, 8)}:${f.slice(8, 10)}:00+01:00` : null;
+
+let MUESTRA_AV = '';   // primera línea TO de los avances, para /estado (diagnóstico)
 const PROVINCIAS = Array.from({ length: 52 }, (_, i) => String(i + 1).padStart(2, '0'));
+
+// 2023 (ficheros fijos de Interior), para comparar: se leen una vez y se guardan en KV; si fallan, no se reintenta en 10 minutos
+async function ant23(base, env) {
+  const g = await env.RESULTADOS.get('ant23b', 'json'); if (g) return g;
+  if (await env.RESULTADOS.get('ant23_fallo')) return null;
+  try {
+    const ant = { v: 2, ambitos: ambitosMedios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/2/07-23`, env)),
+      senado: senado23Medios(await pideTexto(`${base}/fijos/getEscrutinioTotales/ANT/3/07-23`, env)) };
+    if (!ant.ambitos.TO) throw new Error('sin TO');
+    await env.RESULTADOS.put('ant23b', JSON.stringify(ant)); return ant;
+  } catch (e) { await env.RESULTADOS.put('ant23_fallo', e.message.slice(0, 100), { expirationTtl: 600 }); return null; }
+}
 
 async function porMedios(base, env) {
   const envio = (await pideTexto(`${base}/data/getEnvio/2`, env)).trim().split(/[;\s]/)[0];
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
-  if (previo && previo.envio === envio && previo.mun) return previo;    // nada nuevo desde la última lectura
+  let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
+  if (previo && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) {   // nada nuevo
+    if (previo.ant23 && previo.ant23.v === 2) return previo;
+    const a = await ant23(base, env); return a ? { ...previo, ant23: a } : previo;
+  }
   const filas = [], fallos = [];
   await enParalelo(PROVINCIAS, 8, async p => {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
     catch (e) { fallos.push(p); }
   });
   if (!filas.length) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
-  let escanos = null;
-  try { escanos = escanosMedios(await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env)); } catch (e) { /* sin escaños esta vez */ }
+  let escanos = null, avances = null;
+  let ambitos = null, senado = null;
+  try { const t = await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env); escanos = escanosMedios(t); ambitos = ambitosMedios(t); } catch (e) { /* sin escaños esta vez */ }
+  try {
+    if (!/^\d+$/.test(e3 || '')) throw new Error('getEnvio/3: ' + String(e3).slice(0, 40));
+    const t = await pideTexto(`${base}/data/getEscrutinioTotales/3/${e3}`, env);
+    MUESTRA_SEN = e3 + ' · ' + (lineas(t)[0] || '').slice(0, 160); senado = { envio: e3, ...senadoMedios(t) };
+  } catch (e) { MUESTRA_SEN = 'error: ' + e.message; }
+  try { const t = await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env); MUESTRA_AV = (lineas(t).find(l => /^\d{10};?TO/.test(l)) || lineas(t)[0] || '').slice(0, 200); avances = avancesMedios(t); }
+  catch (e) { MUESTRA_AV = 'error: ' + e.message; }
   const out = normaliza(filas, previo);
-  const f = filas.map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (en noviembre, UTC+1)
-  if (/^\d{10}$/.test(f)) out.actualizado = `20${f.slice(0, 2)}-${f.slice(2, 4)}-${f.slice(4, 6)}T${f.slice(6, 8)}:${f.slice(8, 10)}:00+01:00`;
+  // Hora: la del último registro con mesas escrutadas; sin escrutinio, la de los avances; sin nada, la de la lectura.
+  const conVotos = filas.filter(x => x.a[1] > 0).map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (UTC+1)
+  out.actualizado = horaMedios(conVotos) || (avances && avances.es && avances.es.some(x => x != null) && horaMedios(avances.fecha)) || new Date().toISOString();
+  if (avances) out.avances = { es: avances.es, pr: avances.pr, mesas: avances.mesas };
+  // Antes del escrutinio, la participación del último avance municipio a municipio, para pintar el mapa (52 peticiones más)
+  if (avances && avances.es && avances.es.some(x => x != null) && !filas.some(x => x.a[1] > 0)) {
+    const avmun = {};
+    await enParalelo(PROVINCIAS, 8, async p => {
+      try { Object.assign(avmun, avancesMunicipios(await pideTexto(`${base}/data/getAvancesMunicipios/2/${p}/${envio}`, env))); } catch (e) { /* sigue */ }
+    });
+    if (Object.keys(avmun).length) out.avmun = avmun;
+  }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
-  return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}) };
+  const ant = await ant23(base, env);
+  return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}), ...(ant ? { ant23: ant } : {}) };
 }
