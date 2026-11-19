@@ -1,4 +1,4 @@
-"""Vox en Gijón, barrio a barrio, el día del mitin de Abascal en la ciudad (pieza del 19-11-2026).
+"""Vox en Gijón, barrio a barrio, el día del mitin de Abascal en la ciudad (pieza del 19-11-2026). Mitin: agencia Atlas, 19-11-2026, 21.09 (el directo de El Español que se citaba antes dejó de estar disponible).
 
 Votos por sección: generales-2026/descargas/resultados_secciones_largo.csv (Ministerio del Interior, mesas agregadas por sección).
 Barrios: data/barrios/secciones_barrio.csv (los de las fichas /municipio/asturias/gijon/<barrio>/). Renta: renta media por unidad
@@ -17,7 +17,7 @@ A = BASE + 'actualidad/'
 L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
 SLUG = 'vox-gijon-barrios-abascal-29n'
 GIJ = '33024'
-ESP = 'https://www.elespanol.com/espana/20261119/elecciones-generales-directo-ultima-hora-pedro-sanchez-sondeos-actos-campana-psoe-pp-vox-partidos-voto-correo-2026-encuestas/1003744463824_10.html'
+ATLAS = 'https://www.atlas-news.com/politica/j058-gijon-mitin-santiago-abascal_4_02240080.html'
 FICHA = lambda b: f'{BASE}municipio/asturias/gijon/{b}/'
 
 d = pd.read_csv(RAIZ / 'generales-2026/descargas/resultados_secciones_largo.csv', dtype={'tract_code': str, 'mun_code': str}, low_memory=False)
@@ -73,7 +73,7 @@ g_b = figura(f'Vox bajó en los {NB} barrios de Gijón entre 2019 y 2023; su mej
               [[b, p(r.v19), p(r.v23), n(r.renta), n(r.n)] for b, r in T.iterrows()]))
 
 cuerpo = f'''
-<p data-tipo="contexto">Santiago Abascal da este jueves un mitin en Gijón a las 19.30, según la agenda de la campaña de las elecciones generales del 29N que publica <a href="{ESP}">El Español</a>.</p>
+<p data-tipo="contexto">Santiago Abascal dio este jueves por la tarde un mitin en la plaza de toros de Gijón, en la campaña de las elecciones generales del 29N, según la agencia <a href="{ATLAS}">Atlas</a>.</p>
 <p data-tipo="dato">En Gijón, Vox sacó el <strong>{p(CIU['2023_07']['vox'])} %</strong> del voto válido en las generales de 2023, {n(CIU['2023_07']['votos'])} votos, frente al {p(CIU['2019_11']['vox'])} % de noviembre de 2019. Bajó en los {BAJAN} barrios de la ciudad con datos suficientes.</p>
 <p data-tipo="dato">Donde más votó a Vox fue {FB(TOP)}, el barrio con más renta de los {NB}: el <strong>{p(T.loc[TOP, 'v23'])} %</strong> en 2023, después del {p(T.loc[TOP, 'v19'])} % de 2019. Le siguen {FB(T.index[1])} ({p(T.iloc[1].v23)} %) y {FB(T.index[2])} ({p(T.iloc[2].v23)} %). Donde menos, {FB(ULT)}, con el {p(T.loc[ULT, 'v23'])} %, y {FB(T.index[-2])}, con el {p(T.iloc[-2].v23)} %.</p>
 {g_b}
