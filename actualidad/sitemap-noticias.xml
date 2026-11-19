@@ -104,4 +104,12 @@
       <news:title>Elecciones generales: el modelo de encuestas da escaño al Frente Amplio en 5 de sus 17 provincias</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/vox-gijon-barrios-abascal-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-19</news:publication_date>
+      <news:title>Elecciones generales: en Gijón, Vox sacó en 2023 su mejor resultado en Somió, el barrio más rico: 17,0 %</news:title>
+    </news:news>
+  </url>
 </urlset>

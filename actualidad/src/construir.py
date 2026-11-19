@@ -3407,6 +3407,7 @@ ANTETITULOS = {
     'encuestas-elecciones-generales-2026-19-noviembre': 'Encuestas de hoy',
     'debate-sanchez-feijoo-29n': 'El debate',
     'frente-amplio-17-provincias-29n': 'Frente Amplio',
+    'vox-gijon-barrios-abascal-29n': 'Vox en Gijón',
     'mapa-electoral-cataluna-29n': 'El mapa electoral de…',
     'mapa-electoral-comunitat-valenciana-29n': 'El mapa electoral de…',
     'mapa-electoral-castilla-y-leon-29n': 'El mapa electoral de…',
@@ -5150,6 +5151,19 @@ PIEZAS += [
                  ('https://mapaelectoral.es/encuestas/metodo-modelo.html', 'Mapa Electoral, método del modelo de escaños')],
         enlaces=[],
         lugar='España',
+    ),
+    dict(
+        slug='vox-gijon-barrios-abascal-29n', fecha='2026-11-19', actualizado='2026-11-19 13:00',
+        titulo='Elecciones generales: en Gijón, Vox sacó en 2023 su mejor resultado en Somió, el barrio más rico: 17,0 %', serie='29n', figura=0,
+        descripcion='Abascal da un mitin en la ciudad este jueves. Vox bajó en los 18 barrios entre 2019 y 2023; en toda Gijón, del 15,8 % al 12,7 %.',
+        compara='El voto a Vox en las generales de noviembre de 2019 y julio de 2023 en Gijón, por barrio (18 barrios con tres secciones o más) y por sección censal agrupada por renta.',
+        limites='Son datos por barrio y por sección, no por persona: no dicen quién vota a Vox ni por qué. Las secciones que cambiaron de código entre 2019 y 2023 quedan fuera de la comparación por barrio. Sin voto exterior.',
+        calculo='Voto válido: candidaturas más blanco, como en las fichas de barrio. Barrio: suma de sus secciones (asignación de las fichas, data/barrios/secciones_barrio.csv). Renta: renta media por unidad de consumo del INE, ponderada por población. Quintiles: secciones de Gijón ordenadas por renta en cinco grupos iguales. Script: actualidad/src/resumenes/vox_gijon_barrios.py.',
+        fuentes=[INTERIOR,
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares'),
+                 ('https://www.elespanol.com/espana/20261119/elecciones-generales-directo-ultima-hora-pedro-sanchez-sondeos-actos-campana-psoe-pp-vox-partidos-voto-correo-2026-encuestas/1003744463824_10.html', 'El Español, agenda de la campaña del 19 de noviembre (directo)')],
+        enlaces=[],
+        lugar='Gijón',
     ),
 ]
 
