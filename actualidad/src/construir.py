@@ -5141,7 +5141,7 @@ PIEZAS += [
     dict(
         slug='programa-electoral-29n', fecha='2026-11-19', actualizado='2026-11-19 16:00',
         titulo='Programa electoral de PP, PSOE, Vox y Frente Amplio: qué propone cada uno el 29N', serie='29n', figura=0,
-        descripcion='El PP promete un millón de viviendas; el PSOE, 100.000 públicas, y el Frente Amplio, 1,5 millones en 12 años. Vox no da cifra. Qué dicen los programas de las elecciones generales del 29N sobre vivienda, impuestos, pensiones e inmigración.',
+        descripcion='Programas de las elecciones generales del 29N: el PP promete un millón de viviendas; el PSOE, 100.000 públicas, y el Frente Amplio, 1,5 millones. Vox no da cifra. Qué dicen sobre vivienda, impuestos, pensiones e inmigración.',
         compara='Los programas electorales del 29N del PP, el PSOE, Vox y el Frente Amplio: lo que dice cada uno sobre vivienda, impuestos, pensiones e inmigración, con citas literales, y cuántas veces nombra cada tema por cada 10.000 palabras.',
         limites='Solo los cuatro partidos con más intención de voto en las encuestas; no están ERC, Junts, PNV, EH Bildu, BNG ni Coalición Canaria. Podemos no ha publicado programa. Contar palabras mide de qué habla un programa, no lo que hará un gobierno. Los programas del PSOE, Vox y Frente Amplio se leen en copias publicadas por medios (El Independiente y Demócrata), no en la web del partido.',
         calculo='Texto de cada PDF con pdftotext, en minúsculas y sin tildes; apariciones de cada patrón por cada 10.000 palabras. Scripts programas_29n_menciones.py (recuento) y programas_29n.py (página), en actualidad/src/resumenes/. Las citas se comprueban literalmente en la página del PDF que se indica.',
