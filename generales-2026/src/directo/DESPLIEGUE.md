@@ -33,8 +33,9 @@ Actions → **«Directo 29N: desplegar el Worker»** → Run workflow:
 - **Ahora (ensayo):** FUENTE = `https://mapaelectoral.es/generales-2026/data/simulacro.json` (simulacro con el 23J; las
   fichas dicen «Simulacro con datos del 23J»).
 - **Cuando Interior abra su web:** FUENTE = la raíz de su API, acabada en `/backend-difu` (ver punto 4).
-- **Con acceso de medios (simulacro del 18-11 desde las 15:00 y la noche del 29N):** FUENTE = dominio del correo de
-  Interior + `/descargas/csv`, MODO = `medios`.
+- **Con acceso de medios (simulacro del 18-11 de 15:00 a 20:00 y la noche del 29N):**
+  FUENTE = `https://prensa.29neleccionesgenerales.es/descargas/csv`, MODO = `medios`. Autenticación básica HTTP
+  (comprobado el 18-11 a las 00:40 con las credenciales de prueba: UTF-8, `getEnvio/2` devuelve solo el número).
 
 El resumen de la ejecución da la URL del Worker (`https://generales-directo.<subdominio>.workers.dev/resultados.json`).
 Desplegar no cambia la web.
