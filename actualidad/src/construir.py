@@ -5121,9 +5121,9 @@ PIEZAS += [
     dict(
         slug='frente-amplio-17-provincias-29n', fecha='2026-11-19', actualizado='2026-11-19 12:00',
         titulo='Elecciones generales: el modelo de encuestas da escaño al Frente Amplio en 5 de sus 17 provincias', serie='29n', figura=0,
-        descripcion='En otras 5 se queda a las puertas. En total, 10 diputados frente a los 31 de Sumar en 2023.',
+        descripcion='En otras 5 se queda a las puertas. En toda España, el modelo le da 12 diputados; Sumar sacó 31 en 2023, con Podemos dentro.',
         compara='Las 17 provincias en las que el Frente Amplio aspira a sacar diputados, según Público, con los escaños que le da el modelo de encuestas de mapaelectoral.es en cada una (reparto central y horquilla del 80 %) y los que sacó Sumar en 2023.',
-        limites='Es un modelo: mezcla encuestas nacionales y resultados anteriores para estimar cada provincia, y en las que reparten pocos escaños un punto cambia el último diputado. El reparto central provincia a provincia puede no coincidir con la mediana nacional de escaños. Sumar en 2023 incluía a Podemos, que en 2026 se presenta por separado.',
+        limites='Es un modelo: mezcla encuestas nacionales y resultados anteriores para estimar cada provincia, y en las que reparten pocos escaños un punto cambia el último diputado. El reparto central de cada provincia es la mediana de las simulaciones; el hemiciclo de /encuestas/ es la media, por eso la suma de las provincias (10) no coincide con su total (12). Sumar en 2023 incluía a Podemos, que en 2026 se presenta por separado.',
         calculo='Reparto central: medianas provinciales del modelo ajustadas para que sumen los escaños de cada provincia (el mismo que la página de cada provincia en /encuestas/). Horquilla: percentiles 10 y 90 de las simulaciones. Script: frente_amplio_provincias.py, en actualidad/src/resumenes.',
         fuentes=[('https://www.publico.es/politica/ultima-hora-campana-electoral-29n-directo-2_1149.html', 'Público, Frente Amplio se erige como voto clave en 17 provincias (directo, 18-11-2026)'),
                  ('https://www.eldiario.es/1_d04a08', 'elDiario.es, el Frente Amplio centrará su campaña en 16 provincias para pelear por el último escaño (9-11-2026)'),

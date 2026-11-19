@@ -17,16 +17,6 @@
    "calculo": "D['PUERTAS']"
   },
   {
-   "texto": "a las puertas. En total, 10 diputados frente a los",
-   "cifra": "10",
-   "calculo": "D['TOT']"
-  },
-  {
-   "texto": "10 diputados frente a los 31 de Sumar en 2023.",
-   "cifra": "31",
-   "calculo": "D['TOT23']"
-  },
-  {
    "texto": "aspira a sacar diputados en 17 provincias en las elecciones",
    "cifra": "17",
    "calculo": "len(D['O'])"
@@ -107,21 +97,6 @@
    "calculo": "D['FUERA23']"
   },
   {
-   "texto": "le da escaño en Valencia (2). En total, el reparto",
-   "cifra": "2",
-   "calculo": "[f['central'] for f in D['OTRAS'] if f['nom']=='Valencia'][0]"
-  },
-  {
-   "texto": "provincia a provincia le da 10 diputados, frente a",
-   "cifra": "10",
-   "calculo": "D['TOT']"
-  },
-  {
-   "texto": "10 diputados, frente a los 31 de Sumar en 2023.",
-   "cifra": "31",
-   "calculo": "D['TOT23']"
-  },
-  {
    "texto": "De las 17 provincias en las que",
    "cifra": "17",
    "calculo": "len(D['O'])"
@@ -135,6 +110,36 @@
    "texto": "modelo de encuestas, en las 17 provincias en las que",
    "cifra": "17",
    "calculo": "len(D['O'])"
+  },
+  {
+   "texto": "En toda España, el modelo le da 12 diputados;",
+   "cifra": "12",
+   "calculo": "D['HEMI']"
+  },
+  {
+   "texto": "le da 12 diputados; Sumar sacó 31 en 2023",
+   "cifra": "31",
+   "calculo": "D['TOT23']"
+  },
+  {
+   "texto": "le da escaño en Valencia (2). En toda España",
+   "cifra": "2",
+   "calculo": "[f['central'] for f in D['OTRAS'] if f['nom']=='Valencia'][0]"
+  },
+  {
+   "texto": "/encuestas/ le da 12 diputados, frente a los",
+   "cifra": "12",
+   "calculo": "D['HEMI']"
+  },
+  {
+   "texto": "12 diputados, frente a los 31 de Sumar en 2023, con Podemos",
+   "cifra": "31",
+   "calculo": "D['TOT23']"
+  },
+  {
+   "texto": "el reparto central de cada provincia salen 10.",
+   "cifra": "10",
+   "calculo": "D['TOT']"
   }
  ],
  "externas": [],

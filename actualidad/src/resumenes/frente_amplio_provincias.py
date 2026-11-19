@@ -51,6 +51,7 @@ TOT = sum(f['central'] for f in F)
 TOT23 = sum(f['e23'] for f in F)
 OTRAS = sorted((f for f in F if not f['obj'] and f['central'] > 0), key=lambda f: -f['central'])
 MED_NAC = next(l for l in ESC['listas'] if l['lista'] == 'Sumar')['escanos'][2]
+HEMI = ESC['hemiciclo']['congreso']['Sumar']   # el que publica /encuestas/ (media de las simulaciones)
 VERSION = META['generado']
 
 y = lambda xs: ', '.join(x for x in xs[:-1]) + ' y ' + xs[-1] if len(xs) > 1 else xs[0]
@@ -66,11 +67,11 @@ g = figura(f'De las 17 provincias en las que aspira a diputado, el modelo le da 
             [[f['nom'], n(f['e23']), n(f['central']), f'{f["lo"]}–{f["hi"]}', p(f['voto'])] for f in O]))
 
 cuerpo = f'''
-<p data-tipo="contexto">El Frente Amplio aspira a sacar diputados en 17 provincias en las elecciones generales del 29N, según publicó <a href="{PUBLICO}">Público</a> el 18 de noviembre: {nl(sorted(O, key=lambda f: f['nom']))}. Son las 16 en las que, según <a href="{ELDIARIO}">elDiario.es</a>, centra su campaña para pelear por el último escaño, más Bizkaia. «En esas provincias, en la mayoría de ellas, el escaño que se va a jugar el Frente Amplio se lo juega con el PP y con Vox», dijo su portavoz de campaña, Pablo Bustinduy, a elDiario.es.</p>
+<p data-tipo="contexto">El Frente Amplio aspira a sacar diputados en 17 provincias en las elecciones generales del 29N, según publicó <a href="{PUBLICO}">Público</a> el 18 de noviembre: {nl(sorted(O, key=lambda f: f['nom']))}. Son las 16 en las que, según <a href="{ELDIARIO}">elDiario.es</a>, centra su campaña para pelear por el último escaño, más Bizkaia. «En esas provincias, en la mayoría de ellas, el escaño que se va a jugar el Frente Amplio se lo juega con el PP y con Vox», dijo el 9 de noviembre su portavoz de campaña, Pablo Bustinduy, según elDiario.es. En la Comunidad Valenciana y en Canarias se presenta en coalición con Podemos, Compromís y Nueva Canarias, recuerda Público.</p>
 <p data-tipo="dato">El <a href="{BASE}encuestas/">modelo de encuestas de mapaelectoral.es</a> le da escaño en <strong>{len(CON)} de esas 17</strong> en su reparto central: {y([f"{f['nom']} ({f['central']})" for f in CON])}, {ESC_CON} diputados en total. En 2023, Sumar sacó {E23_OBJ} en esas mismas 17 provincias.</p>
 <p data-tipo="dato">En otras {len(PUERTAS)}, {nl(PUERTAS)}, se queda a las puertas: el reparto central no le da escaño, pero sí la horquilla del 80 % del modelo. En las {len(FUERA)} restantes ({nl(FUERA)}), ni siquiera la horquilla le da diputado, aunque Sumar lo sacó en 2023 en {len(FUERA23)} de ellas.</p>
 {g}
-<p data-tipo="dato">Fuera de su lista, el modelo le da escaño en {y([f"{f['nom']} ({f['central']})" for f in OTRAS])}. En total, el reparto central provincia a provincia le da {TOT} diputados, frente a los {TOT23} de Sumar en 2023.</p>
+<p data-tipo="dato">Fuera de su lista, el modelo le da escaño en {y([f"{f['nom']} ({f['central']})" for f in OTRAS])}. En toda España, <a href="{BASE}encuestas/">el hemiciclo de /encuestas/</a> le da <strong>{HEMI} diputados</strong>, frente a los {TOT23} de Sumar en 2023, con Podemos dentro. El hemiciclo es la media de escaños de todas las simulaciones del modelo, así que cuenta también los escaños que gana solo en parte de ellas, como los de las provincias en las que se queda a las puertas; sumando el reparto central de cada provincia salen {TOT}.</p>
 <p data-tipo="contexto">El modelo mezcla encuestas nacionales y resultados anteriores para estimar cada provincia, y en las que reparten pocos escaños un punto arriba o abajo cambia el último diputado. Por eso las horquillas son anchas: son las provincias en las que una campaña puede mover un escaño.</p>
 '''
 
@@ -78,17 +79,17 @@ preguntas = [
     ('¿En qué provincias aspira a sacar diputados el Frente Amplio?',
      f'En 17, según Público: {nl(sorted(O, key=lambda f: f["nom"]))}.'),
     ('¿Cuántos diputados le dan las encuestas al Frente Amplio?',
-     f'El reparto central del modelo de mapaelectoral.es, provincia a provincia, le da {TOT}. Sumar sacó {TOT23} en 2023.'),
+     f'El hemiciclo del modelo de mapaelectoral.es le da {HEMI} en toda España. Sumar, con Podemos dentro, sacó {TOT23} en 2023.'),
 ]
 enlaces = f'<a href="{BASE}encuestas/">Las encuestas de las elecciones generales del 29N</a> · {L("provincias-en-el-filo-29n", "Las provincias en el filo")}'
 foot = ('Datos: modelo de mapaelectoral.es/encuestas (reparto central y horquilla del 80 %); Ministerio del Interior, resultados de 2023. '
         'Cálculo: actualidad/src/resumenes/frente_amplio_provincias.py.')
 DATOS = {'O': O, 'CON': len(CON), 'PUERTAS': len(PUERTAS), 'FUERA': len(FUERA), 'FUERA23': len(FUERA23), 'ESC_CON': ESC_CON,
-         'E23_OBJ': E23_OBJ, 'TOT': TOT, 'TOT23': TOT23, 'OTRAS': OTRAS, 'VERSION': VERSION}
+         'E23_OBJ': E23_OBJ, 'TOT': TOT, 'HEMI': HEMI, 'TOT23': TOT23, 'OTRAS': OTRAS, 'VERSION': VERSION}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Frente Amplio',
       f'Elecciones generales: el modelo de encuestas da escaño al Frente Amplio en {len(CON)} de sus 17 provincias',
-      f'En otras {len(PUERTAS)} se queda a las puertas. En total, {TOT} diputados frente a los {TOT23} de Sumar en 2023.',
+      f'En otras {len(PUERTAS)} se queda a las puertas. En toda España, el modelo le da {HEMI} diputados; Sumar sacó {TOT23} en 2023, con Podemos dentro.',
       '19 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(len(CON), [f['nom'] for f in CON], ESC_CON, E23_OBJ, len(PUERTAS), [f['nom'] for f in PUERTAS], len(FUERA), len(FUERA23), TOT, TOT23, [f['nom'] for f in OTRAS], MED_NAC, VERSION)
