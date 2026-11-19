@@ -129,13 +129,16 @@ def dv(x):
     return 'repite' if x == 0 else (f'sube {p(x)}' if x > 0 else f'baja {p(-x)}')
 
 
+# SW n.º 14, pág. 4, «Bloques y mayorías»: PP + Vox + PP–UPN, reparto central y P(≥176)
+SW_BLOQUE, SW_P176 = 173, 43
+PDF_SW = 'https://laseptima.com/wp-content/uploads/2026/11/barometro-n14-17nov2026.pdf'
 pv_txt = lambda f: f'{f["pv_lo"]}' if f['pv_lo'] == f['pv_hi'] else f'entre {f["pv_lo"]} y {f["pv_hi"]}'
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">Sondaxe deja al PSOE a <strong>{p(SX['dif'])} puntos</strong> del PP, la distancia más corta que le ha dado desde las generales de 2023. Su tracking para <a href="{SX['url']}">La Voz de Galicia</a>, con entrevistas del 13 al 17 de noviembre, da al PP el {p(SX['PP'])} % y al PSOE el {p(SX['PSOE'])} %; en la entrega anterior la distancia era de {p(SX['dif_ant'])} puntos. Es una de las cinco encuestas de las elecciones generales publicadas desde ayer por la tarde. El <a href="{PDF40}">tracking de 40dB. para El País y la SER</a> de este jueves deja la distancia en {p(D40['dif'])} puntos (PP {p(D40['PP'])} %, PSOE {p(D40['PSOE'])} %); <a href="{EM['url']}">EM-Analytics para Electomanía</a>, en {p(EM['dif'])}, y <a href="{SG['url']}">Sigma Dos para El Mundo</a>, en {p(SG['dif'])}. <a href="{SW['url']}">SW Demoscopia para La Séptima</a> sigue siendo la única que pone por delante al PSOE, con {p(-SW['dif'])} puntos de ventaja.</p>
 {CSS_ULTIMO}
 {g_dia}
 <p data-tipo="dato">Vox sube en 40dB. por primera vez desde que empezó su tracking: del {p(VOX40[-1])} al <strong>{p(D40['VOX'])} %</strong>, tras bajar en cada una de las cinco entregas anteriores. En Sondaxe {dv(SX['dVOX'])} puntos, hasta el {p(SX['VOX'])} %; en Sigma Dos {dv(SG['dVOX'])}, hasta el {p(SG['VOX'])} %, y en EM-Analytics {dv(EM['dVOX'])}, hasta el {p(EM['VOX'])} %. En SW Demoscopia {dv(SW['dVOX'])}, hasta el {p(SW['VOX'])} %.</p>
-<p data-tipo="dato">En escaños, contando los de UPN-PP con el PP en todas, PP y Vox suman {PV40} en 40dB. ({ESC40['PP']} del PP, {ESC40['UPNPP']} de UPN-PP y {ESC40['VOX']} de Vox, según su informe), {pv_txt(SX)} en Sondaxe, {pv_txt(EM)} en EM-Analytics y {pv_txt(SG)} en Sigma Dos: por encima de la mayoría absoluta de 176 en las cuatro. SW Demoscopia les da {pv_txt(SW)}, un intervalo que deja la mayoría en el aire.</p>
+<p data-tipo="dato">En escaños, contando los de UPN-PP con el PP en todas, PP y Vox suman {PV40} en 40dB. ({ESC40['PP']} del PP, {ESC40['UPNPP']} de UPN-PP y {ESC40['VOX']} de Vox, según su informe), {pv_txt(SX)} en Sondaxe, {pv_txt(EM)} en EM-Analytics y {pv_txt(SG)} en Sigma Dos, sumando sus horquillas: por encima de la mayoría absoluta de 176 en las cuatro. <a href="{PDF_SW}">SW Demoscopia</a> les da {SW_BLOQUE} en su reparto central, por debajo de 176, y alcanzan la mayoría en el {SW_P176} % de sus simulaciones.</p>
 <h2>Frente a la mediana de las encuestas</h2>
 <p data-tipo="dato">La mediana de la última encuesta de cada una de las {NCASAS} encuestadoras de las tres últimas semanas, la que resume <a href="{BASE}encuestas/">nuestra página de encuestas de las elecciones generales 2026</a>, da al PP el {p(MED['PP'])} %, al PSOE el {p(MED['PSOE'])} % y a Vox el {p(MED['VOX'])} %: {p(MED_DIF)} puntos entre PP y PSOE. Las cinco encuestas de hoy ven la carrera más ajustada; Sigma Dos, con {p(SG['dif'])} puntos a favor del PP, es la que más se acerca a esa mediana. La mediana es la de la última actualización automática de la página y todavía no incluye la 40dB. de esta mañana.</p>
 {g_med}

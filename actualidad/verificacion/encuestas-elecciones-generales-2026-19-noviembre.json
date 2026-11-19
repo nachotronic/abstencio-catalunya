@@ -160,32 +160,22 @@
    "calculo": "D['F'][3]['pv_lo']"
   },
   {
-   "texto": "188 en EM-Analytics y entre 185 y 196 en Sigma Dos:",
+   "texto": "y entre 185 y 196 en Sigma Dos, sumando",
    "cifra": "185",
    "calculo": "D['F'][4]['pv_lo']"
   },
   {
-   "texto": "EM-Analytics y entre 185 y 196 en Sigma Dos: por encima",
+   "texto": "entre 185 y 196 en Sigma Dos, sumando sus",
    "cifra": "196",
    "calculo": "D['F'][4]['pv_hi']"
   },
   {
-   "texto": "de la mayoría absoluta de 176 en las cuatro. SW Demoscopia",
+   "texto": "de la mayoría absoluta de 176 en las cuatro. SW",
    "condicion": "True  # mayoría absoluta: 176 de 350"
   },
   {
-   "texto": "mayoría absoluta de 176 en las cuatro. SW Demoscopia les da",
+   "texto": "mayoría absoluta de 176 en las cuatro.",
    "condicion": "min(D['PV40'], D['F'][1]['pv_lo'], D['F'][3]['pv_lo'], D['F'][4]['pv_lo']) > 176  # las cuatro"
-  },
-  {
-   "texto": "SW Demoscopia les da entre 168 y 182, un intervalo",
-   "cifra": "168",
-   "calculo": "D['F'][0]['pv_lo']"
-  },
-  {
-   "texto": "Demoscopia les da entre 168 y 182, un intervalo que deja",
-   "cifra": "182",
-   "calculo": "D['F'][0]['pv_hi']"
   },
   {
    "texto": "encuesta de cada una de las 18 encuestadoras de las",
@@ -260,9 +250,22 @@
   {
    "texto": "las 18 encuestadoras de las tres últimas semanas",
    "condicion": "D['NCASAS'] == 18"
+  },
+  {
+   "texto": "les da 173 en su reparto central, por debajo de 176",
+   "condicion": "173 < 176  # mayoría absoluta: 176 de 350"
   }
  ],
- "externas": [],
+ "externas": [
+  {
+   "texto": "SW Demoscopia les da 173 en su reparto central",
+   "fuente": "https://laseptima.com/wp-content/uploads/2026/11/barometro-n14-17nov2026.pdf"
+  },
+  {
+   "texto": "alcanzan la mayoría en el 43 % de sus simulaciones",
+   "fuente": "https://laseptima.com/wp-content/uploads/2026/11/barometro-n14-17nov2026.pdf"
+  }
+ ],
  "ignorar": [],
  "permitir_espana": []
 }
