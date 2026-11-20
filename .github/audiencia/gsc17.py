@@ -13,10 +13,10 @@ f=lambda r:f"{r['clicks']:.0f}c {r['impressions']:.0f}i ctr {r['ctr']*100:.1f} p
 pf=lambda p:{"dimension":"page","operator":"equals","expression":p}
 qf=lambda e:{"dimension":"query","operator":"equals","expression":e}
 Q=qf("encuestas elecciones generales 2026")
-D={"dimension":"device","operator":"equals","expression":"DESKTOP"}
 for lab,flt in [('QH',[Q]),('PH',[pf(P)])]:
-    for r in q({"startDate":"2026-11-18","endDate":"2026-11-19","dimensions":["hour","device"],"dataState":"hourly_all","rowLimit":500,"dimensionFilterGroups":[{"filters":flt}]}):
+    for r in q({"startDate":"2026-11-18","endDate":"2026-11-20","dimensions":["hour","device"],"dataState":"hourly_all","rowLimit":1000,"dimensionFilterGroups":[{"filters":flt}]}):
         if r['keys'][1]!='TABLET': print(lab,*r['keys'],f(r))
-for r in q({"startDate":"2026-11-19","endDate":"2026-11-19","dimensions":["hour","page"],"dataState":"hourly_all","rowLimit":300,"dimensionFilterGroups":[{"filters":[Q]}]}): print('QPAGE19',*r['keys'],f(r))
+    for r in q({"startDate":"2026-11-15","endDate":"2026-11-20","dimensions":["date","device"],"dataState":"all","dimensionFilterGroups":[{"filters":flt}]}):
+        if r['keys'][1]!='TABLET': print('D'+lab,*r['keys'],f(r))
 r=s.post("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",json={"inspectionUrl":P,"siteUrl":SITE,"languageCode":"es"})
 x=r.json().get('inspectionResult',{}).get('indexStatusResult',{}); print('INSP',x.get('lastCrawlTime'),x.get('coverageState'),x.get('googleCanonical'))

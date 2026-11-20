@@ -19,7 +19,7 @@ D0=datetime.datetime(2026,11,18,23); corte=now-D0
 ENC=',{requestPath:"/encuestas/"}'
 GO=',{refererHost_like:"%google%"}'
 print('CORTE',Z(now))
-for k in [0,1,2,8]:
+for k in [0,1,2,3]:
     a=D0-datetime.timedelta(days=k); h=collections.Counter()
     for r in grp(['datetimeHour'],50,Z(a),Z(a+corte),ENC+GO):
         t=datetime.datetime.strptime(r['dimensions']['datetimeHour'][:13],'%Y-%m-%dT%H')+datetime.timedelta(hours=1); h[t.hour]+=r['sum']['visits']
