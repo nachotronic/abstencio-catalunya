@@ -1,0 +1,176 @@
+{
+ "pieza": "como-votar-elecciones-generales-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "no. Están llamados a votar 38.728.356 electores, 1.615.127",
+   "cifra": "38.728.356",
+   "calculo": "D['TOTAL']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "80). Están llamados a votar 38.728.356 electores: 35.958.711",
+   "cifra": "38.728.356",
+   "calculo": "D['TOTAL']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "votar 38.728.356 electores: 35.958.711 viven en España y 2.769.645",
+   "cifra": "35.958.711",
+   "calculo": "D['CER']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "35.958.711 viven en España y 2.769.645 en el extranjero, según",
+   "cifra": "2.769.645",
+   "calculo": "D['CERA']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Uno de cada 14 electores de las generales",
+   "cifra": "14",
+   "calculo": "D['TOTAL']/D['CERA']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "a otra. En Ourense es el 30,8 % del censo, y en Lugo,",
+   "cifra": "30,8",
+   "calculo": "D['PROV']['Ourense'][3]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del censo, y en Lugo, el 22,6 %; las cuatro primeras",
+   "cifra": "22,6",
+   "calculo": "D['PROV']['Lugo'][3]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y en Lugo, el 22,6 %; las cuatro primeras son las provincias",
+   "cifra": "cuatro",
+   "_donde": "dato",
+   "condicion": "sorted(sorted(D['PROV'], key=lambda p: -D['PROV'][p][3])[:4]) == sorted(['Ourense','Lugo','Pontevedra','A Coruña'])"
+  },
+  {
+   "texto": "que más tiene en número, 498.874, pero son el 9,0 % de",
+   "cifra": "498.874",
+   "calculo": "D['PROV']['Madrid'][2]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "número, 498.874, pero son el 9,0 % de sus electores.",
+   "cifra": "9,0",
+   "calculo": "D['PROV']['Madrid'][3]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el de Ciudad Real, con el 2,0 %.",
+   "cifra": "2,0",
+   "calculo": "D['PROV']['Ciudad Real'][3]",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Ourense, casi uno de cada tres electores vive fuera",
+   "cifra": "tres",
+   "_donde": "pie",
+   "condicion": "30 <= D['PROV']['Ourense'][3] < 33.4"
+  },
+  {
+   "texto": "mayor. En toda España, el 7,2 %",
+   "cifra": "7,2",
+   "calculo": "D['PCT_CERA']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "votar 38.728.356 electores, 1.615.127 por primera vez en unas",
+   "cifra": "1.615.127",
+   "fuente": "https://www.ine.es/dyngs/Prensa/es/EG2026.htm"
+  },
+  {
+   "texto": "los residentes en España, 1.615.127 votarán por primera",
+   "cifra": "1.615.127",
+   "fuente": "https://www.ine.es/dyngs/Prensa/es/EG2026.htm"
+  },
+  {
+   "texto": "la urna del consulado del 21 al 26. Su peso cambia",
+   "cifra": "21",
+   "fuente": "https://www.ine.es/dyngs/CEL/index.htm?cid=1702"
+  },
+  {
+   "texto": "urna del consulado del 21 al 26. Su peso cambia mucho",
+   "cifra": "26",
+   "fuente": "https://www.ine.es/dyngs/CEL/index.htm?cid=1702"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "20.00, según el artículo 84 de la ley electoral",
+   "cifra": "84",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "para constituirla (artículo 80). Están llamados a votar",
+   "cifra": "80",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "generales, porque han cumplido 18 años desde las de julio",
+   "cifra": "18",
+   "motivo": "edad legal de voto"
+  },
+  {
+   "texto": "le corresponden (artículo 86); el mismo domingo,",
+   "cifra": "86",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "fotografía, en original (artículo 85). La tarjeta de residencia",
+   "cifra": "85",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "nombres anula el voto (artículo 96). La del Senado es de",
+   "cifra": "96",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "sepia, según el Real Decreto 605/1999, y es una sola",
+   "cifra": "605",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "voto en blanco (artículo 96). Cada sobre es del",
+   "cifra": "96",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "Fuente: artículo 166 de la LOREG. Cómo se",
+   "cifra": "166",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "metes en las urnas (artículo 86). Las papeletas se pueden",
+   "cifra": "86",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "de su confianza (artículo 87), que la ley completa",
+   "cifra": "87",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "hecho, y a nadie más (artículo 88). Quien pidió el voto",
+   "cifra": "88",
+   "motivo": "número de artículo o de norma"
+  },
+  {
+   "texto": "en el extranjero, en las 12 circunscripciones donde",
+   "cifra": "12",
+   "motivo": "número de circunscripciones mostradas en el gráfico"
+  }
+ ],
+ "permitir_espana": []
+}
