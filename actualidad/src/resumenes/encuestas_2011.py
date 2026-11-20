@@ -124,8 +124,13 @@ CSS_ULTIMO = '<style>' + '\n'.join(l for l in enc.ESTILOS.split('\n') if l.start
 assert CSS_ULTIMO.count('.bu-') >= 8
 _orden = {f['clave']: i for i, f in enumerate(F)}
 _con_ant = [e for e in NUEVAS if anterior(e)]
-_graf = [(e, anterior(e), f'{esc(nombre(e))} · {esc(e["medio"])} · {enc.dia(_pub(e))}') for e in sorted(_con_ant, key=lambda e: _orden[enc.clave(e['casa'])])]
+_graf = [(e, anterior(e), f'{esc(nombre(e))} · {esc(e["medio"])} · campo hasta el {enc.dia(e["fin"])}') for e in sorted(_con_ant, key=lambda e: _orden[enc.clave(e['casa'])])]
 g_dia = enc.graficos_ultimo(_graf).replace('Las últimas encuestas, partido a partido', f'Las encuestas de hoy, {DIA}, partido a partido')
+# 40dB. publica dos entregas con la misma fecha (19): el subtítulo de cada tarjeta compara por fin de campo, no por publicación
+import re as _re
+_subs = iter(f'Cambio frente a su entrega anterior, con campo hasta el {enc.dia(a["fin"])}' for _, a, _ in _graf)
+g_dia = _re.sub(r'Cambio frente a su encuesta del [^<]+', lambda m: next(_subs), g_dia)
+assert g_dia.count('Cambio frente a su entrega anterior') == 4
 assert g_dia.count('class="bu"') == 4
 
 _fila = lambda f: (f['casa'], f['dif'], 'var(--pp)', 'PP +' + p(f['dif']))
@@ -156,7 +161,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">La mediana de la última encuesta de cada una de las {NCASAS} encuestadoras de las tres últimas semanas, la que resume <a href="{BASE}encuestas/">nuestra página de encuestas de las elecciones generales 2026</a>, da al PP el {p(MED['PP'])} %, al PSOE el {p(MED['PSOE'])} % y a Vox el {p(MED['VOX'])} %: {p(MED_DIF)} puntos entre PP y PSOE. Cuatro de las cinco encuestas de hoy ven la carrera más ajustada que esa mediana; solo Data10 la ve más abierta.</p>
 {g_med}
 <h2>Lo que estas encuestas no dicen</h2>
-<p data-tipo="contexto">Ninguna mide todavía el efecto del debate: la de campo más reciente, la de 40dB., cerró sus entrevistas el jueves 19. Con 2.000 entrevistas, sus {p(D40['dif'])} puntos entre PP y PSOE quedan dentro del margen de error de esa distancia, de unos ±{p(M40)} puntos: es un empate técnico, aunque el PP vaya por delante. Public First, con {p(PF['dif'])} puntos, también habla de empate estadístico.</p>
+<p data-tipo="contexto">Ninguna mide todavía el efecto del debate: la de campo más reciente, la de 40dB., cerró sus entrevistas el jueves 19. Con 2.000 entrevistas, sus {p(D40['dif'])} puntos entre PP y PSOE quedan dentro del margen de error de esa distancia, de unos ±{p(M40)} puntos: es un empate técnico, aunque el PP vaya por delante. Electográfica, que recoge la de Public First, califica también de empate estadístico sus {p(PF['dif'])} puntos.</p>
 <p data-tipo="contexto">Esta pieza recoge las encuestas publicadas hasta las {HORA} de este viernes. La ley prohíbe publicar encuestas desde el martes 24 de noviembre, así que el lunes 23 es el último día. Quién ganó el debate según los sondeos se cuenta en {L("debate-sanchez-feijoo-29n", "la pieza del debate Sánchez Feijóo")}.</p>
 '''
 

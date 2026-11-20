@@ -247,7 +247,7 @@
    "calculo": "D['M40']"
   },
   {
-   "texto": "delante. Public First, con 2,3 puntos, también habla",
+   "texto": "empate estadístico sus 2,3 puntos.",
    "cifra": "2,3",
    "calculo": "D['F'][1]['dif']"
   },
@@ -285,7 +285,7 @@
    "fuente": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf"
   },
   {
-   "texto": "Public First, con 2,3 puntos, también habla de empate estadístico",
+   "texto": "Electográfica, que recoge la de Public First, califica también de empate estadístico",
    "fuente": "https://www.electografica.com/2026/11/encuesta-public-first-261119.html"
   }
  ],
