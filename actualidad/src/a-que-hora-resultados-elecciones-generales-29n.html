@@ -1,0 +1,77 @@
+<title>A qué hora los resultados</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#fbfaf8; --fg:#1d1a1c; --muted:#5d585b; --rule:#e2dddf; --grid:#ebe7e8; --acc:#a2275f;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --pp:#1d84ce;--psoe:#e30613;--vox:#5ac035;--sumar:#a2275f;--pod:#6a3d9a;--erc:#f5b324;--junts:#20c0b2;--pnv:#2b8a3e;
+  --bildu:#a5c400;--bng:#7ab8e6;--cc:#f7d417;--otros:#b7b1b4;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e; --acc:#d0679a;
+  --pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--pod:#9a72c9;--otros:#5a5458; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18161a; --fg:#f1edef; --muted:#b5aeb2; --rule:#343036; --grid:#2c282e; --acc:#d0679a;
+  --pp:#4fa8ea;--psoe:#ff5a5f;--vox:#74d651;--sumar:#d0679a;--pod:#9a72c9;--otros:#5a5458; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:18px;line-height:1.62}
+main{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem;padding-inline:16px}
+.draft{font-family:var(--ui);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);display:inline-block;padding:.15rem .5rem;border-radius:3px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:800;text-wrap:balance;margin:.8rem 0 .9rem}
+.dek{font-size:1.15rem;line-height:1.5;color:var(--muted);margin:0 0 1rem}
+.byline{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.6rem}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;text-wrap:balance}
+p{margin:0 0 1rem}
+figure{margin:1.8rem 0 2rem;font-family:var(--ui)}
+figcaption .t{font-weight:600;font-size:1.1rem;display:block;line-height:1.25}
+figcaption .s{color:var(--muted);font-size:.98rem;display:block;margin-top:.15rem}
+.src{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.chart{margin-top:.7rem}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--ui);fill:var(--muted);font-size:13px}
+svg .lab{fill:var(--fg);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.95rem;color:var(--fg);margin-top:.4rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.tbl{overflow-x:auto} table{border-collapse:collapse;font-family:var(--ui);font-size:.98rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--rule)} td.n,th.n{text-align:right}
+details{font-family:var(--ui);margin-top:.5rem} summary{cursor:pointer;color:var(--muted)}
+a{color:var(--acc)} a:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+blockquote.cita{margin:1.8rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule)}
+blockquote.cita p{font-size:1.12rem;line-height:1.5;margin:0 0 .4rem}
+blockquote.cita footer{font-family:var(--ui);font-size:.95rem;color:var(--muted)}
+.faq h3{font-size:1.05rem;margin:1.2rem 0 .3rem}
+.resumen{font-family:var(--ui);border:1px solid var(--rule);border-radius:6px;padding:.8rem 1rem;margin:1.6rem 0}
+.resumen b{display:block;margin-bottom:.3rem}
+.resumen ul{margin:0;padding-left:1.1rem} .resumen li{margin-bottom:.25rem}
+.foot{font-family:var(--ui);font-size:.95rem;color:var(--muted);border-top:1px solid var(--rule);margin-top:2.5rem;padding-top:.8rem}
+@media (max-width:520px){body{font-size:17px}}
+</style>
+<main>
+<span class="draft">Borrador para revisión · no publicado</span>
+<h1>A qué hora se sabrán los resultados de las elecciones generales del 29N</h1>
+<p class="dek">Los colegios cierran a las 20.00, pero en 2023 los primeros resultados llegaron a las 21.00, al cerrar Canarias. Antes, dos avances de participación, a las 14.00 y a las 18.00. El voto de fuera se cuenta el viernes 4 de diciembre.</p>
+<div class="byline">Nacho G. del Álamo · 20 de noviembre de 2026</div>
+
+<p data-tipo="contexto">Los colegios de las elecciones generales del 29N cierran a las 20.00 del domingo 29 de noviembre, pero los primeros resultados no llegarán hasta las 21.00 si el Ministerio del Interior repite el horario de 2023. Entonces empezó a publicarlos «desde las 21 horas, tras el cierre de los colegios electorales en Canarias», que votan con una hora menos, según su <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/2023/200723-seguimiento-resultados-elecciones-generales-23j.aspx">nota de aquella campaña</a>. Antes habrá dos datos de participación, a las 14.00 y a las 18.00. Y el resultado de la noche todavía no será el definitivo: el voto de los españoles que viven fuera se cuenta el viernes 4 de diciembre.</p>
+<h2>La jornada, hora a hora</h2>
+<div class="tbl"><table><thead><tr><th>Hora (peninsular)</th><th>Qué pasa</th></tr></thead><tbody><tr><td><strong>8.00</strong></td><td><strong>Se constituyen las mesas</strong>. El presidente y los dos vocales se reúnen en el colegio (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#aochenta">artículo 80 de la LOREG</a>).</td></tr><tr><td><strong>9.00</strong></td><td><strong>Empieza la votación</strong>. Sigue sin interrupción hasta las 20.00 (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#aochentaycuatro">artículo 84</a>).</td></tr><tr><td><strong>14.00</strong></td><td><strong>Primer avance de participación</strong>. Votantes que han pasado por las mesas hasta esa hora. En 2023, Interior lo dio en rueda de prensa a las 14.30.</td></tr><tr><td><strong>18.00</strong></td><td><strong>Segundo avance</strong>. En 2023, a las 18.30. En Canarias, los avances se toman a las 13.00 y a las 17.00, hora local.</td></tr><tr><td><strong>20.00</strong></td><td><strong>Cierran los colegios en la Península, Baleares, Ceuta y Melilla</strong>. Empieza el recuento en cada mesa. En Canarias queda una hora.</td></tr><tr><td><strong>21.00</strong></td><td><strong>Cierran en Canarias y empiezan los resultados</strong>. En 2023, Interior empezó a publicar los resultados provisionales a esa hora, tras el cierre en Canarias.</td></tr><tr><td><strong>22.30</strong></td><td><strong>Comparecencia del Gobierno</strong>. En 2023, la comparecencia con los resultados provisionales fue hacia esa hora.</td></tr><tr><td><strong>Viernes 4 de diciembre</strong></td><td><strong>Escrutinio general</strong>. Las juntas electorales cuentan el voto de los residentes en el extranjero y lo suman (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asetentaycinco">artículo 75</a> y <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientotres">artículo 103</a>).</td></tr></tbody></table></div>
+<p data-tipo="contexto">Horas de la Península. Las de 2023 son las de la nota de Interior; el horario de la votación y el del escrutinio general los fija la ley.</p>
+<h2>Los avances de participación</h2>
+<p data-tipo="dato">Los dos avances cuentan a los electores que han votado en persona en las mesas, sobre el censo de residentes en España. En julio de 2023, a las 14.00 había votado el 40,5 % y a las 18.00, el 53,1 %. La participación final fue del 70,4 %: subió 17,3 puntos entre las 18.00 y el cierre, porque el voto por correo, que aquel verano batió récords, se suma al final. En noviembre de 2019 subió 13,0 puntos. Los avances de cada provincia y de cada municipio, y los del 29N cuando se conozcan, en <a href="https://mapaelectoral.es/elecciones/participacion-29n-hora-a-hora/">la participación del 29N hora a hora</a>.</p>
+<figure>
+<figcaption><span class="t">En 2023, a las 18.00 había votado el 53,1 % del censo; al final, el 70,4 %</span><span class="s">Participación sobre el censo residente en España en los avances de las 14.00 y las 18.00 y al cierre, en las generales de julio de 2023 y de noviembre de 2019. Los avances no cuentan el voto por correo</span></figcaption>
+<div class="chart"><svg viewBox="0 0 380 164" role="img" aria-label="Avances de participación en 2023 y 2019"><text x="122" y="21.0" text-anchor="end" class="lab">2023 · 14.00</text><rect x="130" y="8" width="91.1" height="17" fill="var(--acc)" rx="2"><title>2023 · 14.00: 40,5 %</title></rect><text x="227.1" y="21.0">40,5 %</text><text x="122" y="47.0" text-anchor="end" class="lab">2023 · 18.00</text><rect x="130" y="34" width="119.6" height="17" fill="var(--acc)" rx="2"><title>2023 · 18.00: 53,1 %</title></rect><text x="255.6" y="47.0">53,1 %</text><text x="122" y="73.0" text-anchor="end" class="lab">2023 · Final</text><rect x="130" y="60" width="158.4" height="17" fill="var(--acc)" rx="2"><title>2023 · Final: 70,4 %</title></rect><text x="294.4" y="73.0">70,4 %</text><text x="122" y="99.0" text-anchor="end" class="lab">Nov. 2019 · 14.00</text><rect x="130" y="86" width="85.3" height="17" fill="var(--muted)" rx="2"><title>Nov. 2019 · 14.00: 37,9 %</title></rect><text x="221.3" y="99.0">37,9 %</text><text x="122" y="125.0" text-anchor="end" class="lab">Nov. 2019 · 18.00</text><rect x="130" y="112" width="127.9" height="17" fill="var(--muted)" rx="2"><title>Nov. 2019 · 18.00: 56,9 %</title></rect><text x="263.9" y="125.0">56,9 %</text><text x="122" y="151.0" text-anchor="end" class="lab">Nov. 2019 · Final</text><rect x="130" y="138" width="157.2" height="17" fill="var(--muted)" rx="2"><title>Nov. 2019 · Final: 69,9 %</title></rect><text x="293.2" y="151.0">69,9 %</text></svg></div>
+
+<div class="src">Fuente: Ministerio del Interior, avances de participación por mesa (recogidos en <a href="https://mapaelectoral.es/elecciones/participacion-29n-hora-a-hora/">la participación del 29N hora a hora</a>). Cálculo propio.</div>
+</figure>
+
+<h2>Por qué el resultado de la noche no es el definitivo</h2>
+<p data-tipo="contexto">Lo que se publica el domingo es el escrutinio provisional: el recuento de cada mesa, sin el voto de los residentes en el extranjero. Esos votos llegan a las juntas electorales y se cuentan el día del escrutinio general, el quinto día después de la votación, que este año cae en viernes 4 de diciembre (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientotres">artículo 103</a> y <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asetentaycinco">artículo 75</a>). No es un trámite: en 2023, el voto de fuera cambió el último diputado de Madrid, del PSOE al PP (<a href="https://mapaelectoral.es/actualidad/ley-nietos-voto-exterior-29n/">el voto de fuera que le dio un escaño al PP</a>).</p>
+<p data-tipo="contexto">Desde las 21.00, el mapa de esta web irá mostrando el recuento de cada municipio, y <a href="https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/">la página de resultados de las elecciones generales 2026</a>, el reparto de escaños. Cómo votar y qué llevar, en <a href="https://mapaelectoral.es/actualidad/como-votar-elecciones-generales-29n/">la guía para votar el 29N</a>.</p>
+<h2>Preguntas frecuentes</h2>
+<div class="faq"><h3>¿A qué hora se sabrán los resultados de las elecciones generales del 29N?</h3><p>Los colegios cierran a las 20.00. En 2023, Interior empezó a publicar los resultados provisionales a las 21.00, tras el cierre en Canarias, según su <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/2023/200723-seguimiento-resultados-elecciones-generales-23j.aspx">nota de prensa</a>.</p><h3>¿A qué hora se dan los datos de participación?</h3><p>Interior da dos avances, con los votantes hasta las 14.00 y hasta las 18.00. En 2023 los anunció a las 14.30 y a las 18.30.</p><h3>¿Cuándo es definitivo el resultado?</h3><p>Tras el escrutinio general, el viernes 4 de diciembre, cuando se cuenta el voto de los residentes en el extranjero (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientotres">artículo 103 de la LOREG</a>).</p><h3>¿Por qué Canarias retrasa los resultados?</h3><p>Porque vota con una hora menos: sus colegios cierran a las 20.00 hora canaria, las 21.00 en la Península, y en 2023 Interior esperó a ese cierre para publicar resultados.</p></div>
+<p><a href="https://mapaelectoral.es/elecciones/participacion-29n-hora-a-hora/">Participación del 29N hora a hora</a> · <a href="https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/">Resultados de las elecciones generales 2026</a> · <a href="https://mapaelectoral.es/actualidad/como-votar-elecciones-generales-29n/">Cómo votar el 29N</a></p><div class="foot">Datos: Ley Orgánica del Régimen Electoral General, artículos 75, 80, 84 y 103; Ministerio del Interior, nota sobre el seguimiento de los resultados del 23J (20-7-2023) y avances de participación por mesa de 2019 y 2023. Cálculo: actualidad/src/resumenes/resultados_hora_29n.py.</div>
+</main>
+<script>const D={"P23":{"14":40.485,"18":53.134,"final":70.414},"P19":{"14":37.919,"18":56.854,"final":69.864},"SALTO23":17.281,"SALTO19":13.01};</script>
+<script>/* Gráficos en SVG estático: sin interacción */</script>
