@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (122)
+## Pendientes (123)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-20 | [`encuestas-elecciones-generales-2026-20-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-20-noviembre/) | Encuestas elecciones generales 2026, hoy 20 de noviembre: el PP gana en las cinco, por entre 2,0 y 4,6 puntos | primer gráfico de la pieza |
+| 2026-11-20 | [`a-que-hora-resultados-elecciones-generales-29n`](https://mapaelectoral.es/actualidad/a-que-hora-resultados-elecciones-generales-29n/) | A qué hora se sabrán los resultados de las elecciones generales del 29N | primer gráfico de la pieza |
 | 2026-11-19 | [`encuestas-elecciones-generales-2026-19-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-19-noviembre/) | Encuestas elecciones generales 2026, hoy 19 de noviembre: Sondaxe deja al PSOE a 0,7 puntos del PP | primer gráfico de la pieza |
 | 2026-11-19 | [`debate-sanchez-feijoo-29n`](https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/) | Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara | primer gráfico de la pieza |
 | 2026-11-19 | [`frente-amplio-17-provincias-29n`](https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/) | Elecciones generales: el modelo de encuestas da escaño al Frente Amplio en 5 de sus 17 provincias | primer gráfico de la pieza |
