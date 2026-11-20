@@ -40,7 +40,8 @@ RESULTADOS = {
 def clave(nombre):
     """Nombre de encuestadora comparable: sin tildes, mayúsculas ni signos («Sigma Dos» = «SigmaDos»)."""
     s = unicodedata.normalize('NFKD', str(nombre)).encode('ascii', 'ignore').decode().lower()
-    return re.sub(r'[^a-z0-9]', '', s)
+    s = re.sub(r'[^a-z0-9]', '', s)
+    return {'pfglobal': 'publicfirst'}.get(s, s)   # Electográfica llama «PF Global» a Public First (Politico, 15-17-11-2026)
 
 
 def _fin_campo(txt, publicado):
