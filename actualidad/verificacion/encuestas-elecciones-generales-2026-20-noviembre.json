@@ -1,0 +1,294 @@
+{
+ "pieza": "encuestas-elecciones-generales-2026-20-noviembre",
+ "cifras": [
+  {
+   "texto": "noviembre: el PP gana en las cinco, por entre 2,0 y 4,6",
+   "condicion": "len(D['F']) == 5"
+  },
+  {
+   "texto": "gana en las cinco, por entre 2,0 y 4,6 puntos",
+   "cifra": "2,0",
+   "calculo": "D['DMIN']"
+  },
+  {
+   "texto": "las cinco, por entre 2,0 y 4,6 puntos",
+   "cifra": "4,6",
+   "calculo": "D['DMAX']"
+  },
+  {
+   "texto": "distancia y 40dB. la mantiene en 2,0. La mediana de las encuestas,",
+   "cifra": "2,0",
+   "calculo": "D['F'][0]['dif']"
+  },
+  {
+   "texto": "mediana de las encuestas, en 4,3 a favor del PP.",
+   "cifra": "4,3",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "Las cinco encuestas de las elecciones",
+   "condicion": "len(D['F']) == 5"
+  },
+  {
+   "texto": "ganador al PP, con entre 2,0 y 4,6 puntos de ventaja",
+   "cifra": "2,0",
+   "calculo": "D['DMIN']"
+  },
+  {
+   "texto": "ganador al PP, con entre 2,0 y 4,6 puntos de ventaja sobre",
+   "cifra": "4,6",
+   "calculo": "D['DMAX']"
+  },
+  {
+   "texto": "EM-Analytics para Electomanía: de 3,8 a 2,8 puntos (PP 30,4",
+   "cifra": "3,8",
+   "calculo": "D['F'][2]['dif_ant']"
+  },
+  {
+   "texto": "para Electomanía: de 3,8 a 2,8 puntos (PP 30,4 %, PSOE",
+   "cifra": "2,8",
+   "calculo": "D['F'][2]['dif']"
+  },
+  {
+   "texto": "Electomanía: de 3,8 a 2,8 puntos (PP 30,4 %, PSOE 27,6 %). El",
+   "cifra": "30,4",
+   "calculo": "D['F'][2]['PP']"
+  },
+  {
+   "texto": "2,8 puntos (PP 30,4 %, PSOE 27,6 %). El tracking de 40dB.",
+   "cifra": "27,6",
+   "calculo": "D['F'][2]['PSOE']"
+  },
+  {
+   "texto": "País y la SER la mantiene en 2,0 (PP 32,2 %, PSOE 30,2",
+   "cifra": "2,0",
+   "calculo": "D['F'][0]['dif']"
+  },
+  {
+   "texto": "SER la mantiene en 2,0 (PP 32,2 %, PSOE 30,2 %); Sigma",
+   "cifra": "32,2",
+   "calculo": "D['F'][0]['PP']"
+  },
+  {
+   "texto": "mantiene en 2,0 (PP 32,2 %, PSOE 30,2 %); Sigma Dos para El",
+   "cifra": "30,2",
+   "calculo": "D['F'][0]['PSOE']"
+  },
+  {
+   "texto": "para El Mundo la deja en 3,9, y Data10 para OKDiario,",
+   "cifra": "3,9",
+   "calculo": "D['F'][3]['dif']"
+  },
+  {
+   "texto": "Data10 para OKDiario, en 4,6, la más amplia de las",
+   "cifra": "4,6",
+   "calculo": "D['F'][4]['dif']"
+  },
+  {
+   "texto": "4,6, la más amplia de las cinco.",
+   "condicion": "D['F'][4]['dif'] == D['DMAX'] and len(D['F']) == 5"
+  },
+  {
+   "texto": "15 al 17 de noviembre: PP 29,5 %, PSOE 27,2 % y Vox",
+   "cifra": "29,5",
+   "calculo": "D['F'][1]['PP']"
+  },
+  {
+   "texto": "noviembre: PP 29,5 %, PSOE 27,2 % y Vox 19,6 %, 2,3",
+   "cifra": "27,2",
+   "calculo": "D['F'][1]['PSOE']"
+  },
+  {
+   "texto": "29,5 %, PSOE 27,2 % y Vox 19,6 %, 2,3 puntos entre",
+   "cifra": "19,6",
+   "calculo": "D['F'][1]['VOX']"
+  },
+  {
+   "texto": "PSOE 27,2 % y Vox 19,6 %, 2,3 puntos entre los dos",
+   "cifra": "2,3",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "segunda entrega seguida, del 17,2 al 17,6 %, después de",
+   "cifra": "17,2",
+   "calculo": "D['VOX40'][-2]"
+  },
+  {
+   "texto": "entrega seguida, del 17,2 al 17,6 %, después de bajar",
+   "cifra": "17,6",
+   "calculo": "D['F'][0]['VOX']"
+  },
+  {
+   "texto": "%, después de bajar en las cinco anteriores. En Sigma",
+   "condicion": "D['VOX40'][-2] > D['VOX40'][-3] and len(D['VOX40'][:-2]) == 6 and all(a > b for a, b in zip(D['VOX40'][:-2], D['VOX40'][1:-2]))  # cinco bajadas seguidas"
+  },
+  {
+   "texto": "anteriores. En Sigma Dos baja 0,3 puntos, hasta el 19,4",
+   "cifra": "0,3",
+   "calculo": "-D['F'][3]['dVOX']"
+  },
+  {
+   "texto": "baja 0,3 puntos, hasta el 19,4 %; en EM-Analytics baja",
+   "cifra": "19,4",
+   "calculo": "D['F'][3]['VOX']"
+  },
+  {
+   "texto": "19,4 %; en EM-Analytics baja 0,2, hasta el 18,7 %, y",
+   "cifra": "0,2",
+   "calculo": "-D['F'][2]['dVOX']"
+  },
+  {
+   "texto": "EM-Analytics baja 0,2, hasta el 18,7 %, y en Data10 repite,",
+   "cifra": "18,7",
+   "calculo": "D['F'][2]['VOX']"
+  },
+  {
+   "texto": "y en Data10 repite, en el 19,4 %.",
+   "cifra": "19,4",
+   "calculo": "D['F'][4]['VOX']"
+  },
+  {
+   "texto": "con el PP, PP y Vox suman 192 en 40dB. (132 del PP,",
+   "cifra": "192",
+   "calculo": "D['PV40']"
+  },
+  {
+   "texto": "y Vox suman 192 en 40dB. (132 del PP, 2 de UPN-PP",
+   "cifra": "132",
+   "calculo": "D['ESC40']['PP']"
+  },
+  {
+   "texto": "192 en 40dB. (132 del PP, 2 de UPN-PP y 58 de Vox,",
+   "cifra": "2",
+   "calculo": "D['ESC40']['UPNPP']"
+  },
+  {
+   "texto": "(132 del PP, 2 de UPN-PP y 58 de Vox, según su informe),",
+   "cifra": "58",
+   "calculo": "D['ESC40']['VOX']"
+  },
+  {
+   "texto": "informe), los mismos que ayer; 187 en EM-Analytics y entre",
+   "cifra": "187",
+   "calculo": "D['F'][2]['pv'][0]"
+  },
+  {
+   "texto": "187 en EM-Analytics y entre 184 y 195 en Sigma Dos,",
+   "cifra": "184",
+   "calculo": "D['F'][3]['pv'][0]"
+  },
+  {
+   "texto": "EM-Analytics y entre 184 y 195 en Sigma Dos, sumando",
+   "cifra": "195",
+   "calculo": "D['F'][3]['pv'][1]"
+  },
+  {
+   "texto": "sumando sus horquillas. Las tres, por encima de la mayoría",
+   "condicion": "min(D['PV40'], D['F'][2]['pv'][0], D['F'][3]['pv'][0]) > 176  # las tres"
+  },
+  {
+   "texto": "de la mayoría absoluta de 176.",
+   "condicion": "True  # mayoría absoluta: 176 de 350"
+  },
+  {
+   "texto": "encuesta de cada una de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas, la",
+   "condicion": "D['NCASAS'] == 18  # tres semanas: 21 días"
+  },
+  {
+   "texto": "generales 2026, da al PP el 31,4 %, al PSOE el 27,1 %",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "PP el 31,4 %, al PSOE el 27,1 % y a Vox el 19,0 %:",
+   "cifra": "27,1",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "PSOE el 27,1 % y a Vox el 19,0 %: 4,3 puntos entre",
+   "cifra": "19,0",
+   "calculo": "D['MED']['VOX']"
+  },
+  {
+   "texto": "27,1 % y a Vox el 19,0 %: 4,3 puntos entre PP y PSOE.",
+   "cifra": "4,3",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "4,3 puntos entre PP y PSOE. Cuatro de las cinco encuestas",
+   "condicion": "len(D['MAS_CERCA']) == 4"
+  },
+  {
+   "texto": "PP y PSOE. Cuatro de las cinco encuestas de hoy ven",
+   "condicion": "len(D['F']) == 5"
+  },
+  {
+   "texto": "sus entrevistas el jueves 19. Con 2.000 entrevistas,",
+   "condicion": "D['F'][0]['fin'] == '2026-11-19'"
+  },
+  {
+   "texto": "entrevistas el jueves 19. Con 2.000 entrevistas, sus 2,0",
+   "cifra": "2.000",
+   "calculo": "D['F'][0]['n']"
+  },
+  {
+   "texto": "Con 2.000 entrevistas, sus 2,0 puntos entre PP y PSOE",
+   "cifra": "2,0",
+   "calculo": "D['F'][0]['dif']"
+  },
+  {
+   "texto": "de esa distancia, de unos ±3,5 puntos: es un empate",
+   "cifra": "3,5",
+   "calculo": "D['M40']"
+  },
+  {
+   "texto": "delante. Public First, con 2,3 puntos, también habla",
+   "cifra": "2,3",
+   "calculo": "D['F'][1]['dif']"
+  },
+  {
+   "texto": "noviembre, así que el lunes 23 es el último día. Quién",
+   "condicion": "True  # veda desde el martes 24: el lunes 23 es el último día (LOREG 69.7)"
+  },
+  {
+   "texto": "El PP, por delante en las cinco: entre 2,0 y 4,6 puntosVentaja",
+   "condicion": "len(D['F']) == 5"
+  },
+  {
+   "texto": "delante en las cinco: entre 2,0 y 4,6 puntosVentaja",
+   "cifra": "2,0",
+   "calculo": "D['DMIN']"
+  },
+  {
+   "texto": "en las cinco: entre 2,0 y 4,6 puntosVentaja del PP",
+   "cifra": "4,6",
+   "calculo": "D['DMAX']"
+  },
+  {
+   "texto": "encuesta y en la mediana de las 18 encuestadoras de las",
+   "cifra": "18",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "las 18 encuestadoras de las tres últimas semanas",
+   "condicion": "D['NCASAS'] == 18"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "suman 192 en 40dB. (132 del PP, 2 de UPN-PP y 58 de Vox, según su informe)",
+   "fuente": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf"
+  },
+  {
+   "texto": "Public First, con 2,3 puntos, también habla de empate estadístico",
+   "fuente": "https://www.electografica.com/2026/11/encuesta-public-first-261119.html"
+  }
+ ],
+ "ignorar": [],
+ "permitir_espana": []
+}
