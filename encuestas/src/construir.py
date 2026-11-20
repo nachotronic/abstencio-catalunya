@@ -70,9 +70,24 @@ DEL_MODELO = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'Podem
 VENTANA_MEDIANA = 21
 
 
+# La misma casa con dos nombres según la fuente: Electográfica pone «PF Global» a la encuesta de Public First para
+# Politico (15-17 de noviembre de 2026) que Wikipedia llama «Public First»; sin el alias entraba dos veces.
+ALIAS_CASA = {'pfglobal': 'publicfirst'}
+
+
 def clave(nombre):
     s = unicodedata.normalize('NFKD', str(nombre)).encode('ascii', 'ignore').decode().lower()
-    return re.sub(r'[^a-z0-9]', '', s)
+    s = re.sub(r'[^a-z0-9]', '', s)
+    return ALIAS_CASA.get(s, s)
+
+
+# Filas de las fuentes que no son encuestas, por la URL que citan. Fuera de la tabla, del gráfico y de la mediana.
+# (cotejar_wikipedia.py ya las quita al leer Wikipedia; esto cubre también Electográfica y los CSV anteriores)
+NO_SON_ENCUESTAS = {
+    # «Metroscopia 19-11, PP 30 / PSOE 30 / Vox 19» en Wikipedia: es el ejemplo hipotético de Ignacio Urquizu en Al Rojo
+    # Vivo («que no hay ninguna encuesta ahora mismo que lo diga»), no una estimación publicada
+    'https://www.lasexta.com/programas/al-rojo-vivo/ignacio-urquizu-experto-demoscopia-cara-elecciones-29n-bloque-derecha-esta-muy-consolidado-esta-torno-49_202611196afef28f21e74551e81f5586.html',
+}
 
 
 def num(v):
@@ -113,6 +128,8 @@ def carga():
     """Encuestas nacionales: las de Electográfica más las que solo están en Wikipedia; escaños de Wikipedia."""
     wp = list(csv.DictReader(open(DATOS / 'wikipedia_generales_espana.csv'))) if (DATOS / 'wikipedia_generales_espana.csv').exists() else []
     eg = [r for r in csv.DictReader(open(DATOS / 'encuestas_limpias.csv')) if r['ambito'] == 'ESPAÑA']
+    wp = [w for w in wp if w['fuente_original'].strip() not in NO_SON_ENCUESTAS]
+    eg = [r for r in eg if r['fuente_original'].strip() not in NO_SON_ENCUESTAS]
     usadas, out = set(), []
 
     # Wikipedia repite a veces la misma fila (SocioMétrica, 7-12-2025): fuera las copias exactas
