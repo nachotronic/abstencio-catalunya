@@ -79,7 +79,8 @@ def calendario():
             fill, op, txt = 'var(--fg)', '0.85', 'votación'
         out.append(f'<rect x="{x}" y="20" width="{w - 4}" height="44" rx="4" fill="{fill}" fill-opacity="{op}"><title>{dia.day} de noviembre: {txt}</title></rect>')
         out.append(f'<text x="{x + (w - 4) / 2:.1f}" y="14" text-anchor="middle" class="lab">{DIAS[dia.weekday()]}</text>')
-        out.append(f'<text x="{x + (w - 4) / 2:.1f}" y="49" text-anchor="middle" class="lab" style="font-size:16px">{dia.day}</text>')
+        num = ';fill:var(--bg)' if dia == VOTO else ''
+        out.append(f'<text x="{x + (w - 4) / 2:.1f}" y="49" text-anchor="middle" class="lab" style="font-size:16px{num}">{dia.day}</text>')
         out.append(f'<text x="{x + (w - 4) / 2:.1f}" y="82" text-anchor="middle" class="lab" style="font-weight:400">{txt}</text>')
     out.append('</svg>')
     return ''.join(out)
