@@ -1,0 +1,477 @@
+{
+ "pieza": "derbi-sevillano-nervion-heliopolis-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Sánchez-Pizjuán, ganó en 37 de 41 secciones; en",
+   "cifra": "37",
+   "calculo": "D['DIST']['Nervión']['gana']['PP']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "Sánchez-Pizjuán, ganó en 37 de 41 secciones; en la ciudad,",
+   "cifra": "41",
+   "calculo": "D['DIST']['Nervión']['n']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "ciudad, el PSOE fue primero en 286 de 521",
+   "cifra": "286",
+   "calculo": "D['GANA']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "PSOE fue primero en 286 de 521",
+   "cifra": "521",
+   "calculo": "D['NSEC']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "Villamarín, el PP ganó en 18 de 28 secciones; en",
+   "cifra": "18",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['gana']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Villamarín, el PP ganó en 18 de 28 secciones; en la quinta",
+   "cifra": "28",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['n']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "2023, el PSOE fue primero en 286 de las 521 secciones",
+   "cifra": "286",
+   "calculo": "D['GANA']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue primero en 286 de las 521 secciones censales de",
+   "cifra": "521",
+   "calculo": "D['NSEC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "censales de Sevilla; el PP, en 234, y Sumar, en 1. En votos",
+   "cifra": "234",
+   "calculo": "D['GANA']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PP, en 234, y Sumar, en 1. En votos ganó el PP,",
+   "cifra": "1",
+   "calculo": "D['GANA']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "votos ganó el PP, con el 37,3 %, por delante del PSOE",
+   "cifra": "37,3",
+   "calculo": "D['CIU']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%, por delante del PSOE (33,6 %), Sumar (14,2 %) y",
+   "cifra": "33,6",
+   "calculo": "D['CIU']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del PSOE (33,6 %), Sumar (14,2 %) y Vox (12,3 %). Es",
+   "cifra": "14,2",
+   "calculo": "D['CIU']['2023_07']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%), Sumar (14,2 %) y Vox (12,3 %). Es lo que contamos",
+   "cifra": "12,3",
+   "calculo": "D['CIU']['2023_07']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de Nervión, el PP ganó en 37 de las 41 secciones",
+   "cifra": "37",
+   "calculo": "D['DIST']['Nervión']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Nervión, el PP ganó en 37 de las 41 secciones y sacó el",
+   "cifra": "41",
+   "calculo": "D['DIST']['Nervión']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "las 41 secciones y sacó el 55,9 % de los votos, 18,6",
+   "cifra": "55,9",
+   "calculo": "D['DIST']['Nervión']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 55,9 % de los votos, 18,6 puntos más que en el",
+   "cifra": "18,6",
+   "calculo": "D['DIST']['Nervión']['PP']-D['CIU']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ciudad. El PSOE se quedó en el 19,4 %, Vox en el 13,3 %",
+   "cifra": "19,4",
+   "calculo": "D['DIST']['Nervión']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quedó en el 19,4 %, Vox en el 13,3 % y Sumar en el 9,3",
+   "cifra": "13,3",
+   "calculo": "D['DIST']['Nervión']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en el 13,3 % y Sumar en el 9,3 %. Votó el 80,0 % del",
+   "cifra": "9,3",
+   "calculo": "D['DIST']['Nervión']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Sumar en el 9,3 %. Votó el 80,0 % del censo, y la renta",
+   "cifra": "80,0",
+   "calculo": "D['DIST']['Nervión']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "mediana de sus secciones es de 30.519 € por unidad de consumo.",
+   "cifra": "30.519",
+   "calculo": "D['DIST']['Nervión']['renta']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del río, votó más al PP: el 65,3 %.",
+   "cifra": "65,3",
+   "calculo": "D['DIST']['Los Remedios']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "del estadio, el PP ganó en 13 de las 14 secciones,",
+   "cifra": "13",
+   "calculo": "D['BARR']['Nervión']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "estadio, el PP ganó en 13 de las 14 secciones, con el 52,9",
+   "cifra": "14",
+   "calculo": "D['BARR']['Nervión']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "las 14 secciones, con el 52,9 %, y el PSOE sacó el",
+   "cifra": "52,9",
+   "calculo": "D['BARR']['Nervión']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "52,9 %, y el PSOE sacó el 22,1 %. En el vecino La Buhaira,",
+   "cifra": "22,1",
+   "calculo": "D['BARR']['Nervión']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "La Buhaira, el PP ganó las 7 secciones con el 65,4",
+   "cifra": "7",
+   "calculo": "D['BARR']['La Buhaira']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó las 7 secciones con el 65,4 %. En noviembre de 2019,",
+   "cifra": "65,4",
+   "calculo": "D['BARR']['La Buhaira']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el distrito, pero con el 37,2 %: entre una elección",
+   "cifra": "37,2",
+   "calculo": "D['DIST']['Nervión']['PP0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "una elección y otra subió 18,7 puntos, mientras Vox",
+   "cifra": "18,7",
+   "calculo": "D['DIST']['Nervión']['PP']-D['DIST']['Nervión']['PP0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "puntos, mientras Vox bajaba del 20,3 % al 13,3 % y el PSOE",
+   "cifra": "20,3",
+   "calculo": "D['DIST']['Nervión']['VOX0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Vox bajaba del 20,3 % al 13,3 % y el PSOE se quedaba",
+   "cifra": "13,3",
+   "calculo": "D['DIST']['Nervión']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE se quedaba casi igual (19,0 % y 19,4 %).",
+   "cifra": "19,0",
+   "calculo": "D['DIST']['Nervión']['PSOE0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quedaba casi igual (19,0 % y 19,4 %).",
+   "cifra": "19,4",
+   "calculo": "D['DIST']['Nervión']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Bellavista-La Palmera, el PP ganó en 18 de las 28 secciones",
+   "cifra": "18",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Palmera, el PP ganó en 18 de las 28 secciones y el PSOE,",
+   "cifra": "28",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "28 secciones y el PSOE, en 10. El PP sacó el 43,7",
+   "cifra": "10",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE, en 10. El PP sacó el 43,7 % y el PSOE, el 26,4",
+   "cifra": "43,7",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 43,7 % y el PSOE, el 26,4 %; votó el 76,3 %. En",
+   "cifra": "26,4",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE, el 26,4 %; votó el 76,3 %. En noviembre de 2019,",
+   "cifra": "76,3",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE había sacado allí el 26,4 % y el PP, el 25,3 %:",
+   "cifra": "26,4",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['PSOE0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "allí el 26,4 % y el PP, el 25,3 %: el distrito pasó",
+   "cifra": "25,3",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['PP0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "exacto a una ventaja del PP de 17,3 puntos.",
+   "cifra": "17,3",
+   "calculo": "D['DIST']['Bellavista-La Palmera']['PP']-D['DIST']['Bellavista-La Palmera']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sección censal: el PP sacó el 63,4 %, Vox el 20,9 % y el",
+   "cifra": "63,4",
+   "calculo": "D['BARR']['Heliópolis']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP sacó el 63,4 %, Vox el 20,9 % y el PSOE el 8,0 %,",
+   "cifra": "20,9",
+   "calculo": "D['BARR']['Heliópolis']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Vox el 20,9 % y el PSOE el 8,0 %, con una renta mediana",
+   "cifra": "8,0",
+   "calculo": "D['BARR']['Heliópolis']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con una renta mediana de 39.187 €. En Bellavista, al",
+   "cifra": "39.187",
+   "calculo": "D['BARR']['Heliópolis']['renta']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "avenida, el PSOE ganó en 8 de las 11 secciones",
+   "cifra": "8",
+   "calculo": "D['BARR']['Bellavista']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE ganó en 8 de las 11 secciones con el 38,0",
+   "cifra": "11",
+   "calculo": "D['BARR']['Bellavista']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de las 11 secciones con el 38,0 %, frente al 29,7 %",
+   "cifra": "38,0",
+   "calculo": "D['BARR']['Bellavista']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con el 38,0 %, frente al 29,7 % del PP, y la renta",
+   "cifra": "29,7",
+   "calculo": "D['BARR']['Bellavista']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y la renta mediana es de 17.085 €, menos de la mitad.",
+   "cifra": "17.085",
+   "calculo": "D['BARR']['Bellavista']['renta']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "total. El PSOE ganó en las 105 secciones de la quinta",
+   "cifra": "105",
+   "calculo": "D['Q']['0']['gana']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "quinta parte más pobre, con el 55,0 %, frente al 16,6 %",
+   "cifra": "55,0",
+   "calculo": "D['Q']['0']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "con el 55,0 %, frente al 16,6 % del PP. El PP ganó",
+   "cifra": "16,6",
+   "calculo": "D['Q']['0']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "del PP. El PP ganó en las 104 de la quinta parte más",
+   "cifra": "104",
+   "calculo": "D['Q']['4']['gana']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "quinta parte más rica, con el 59,9 %, frente al 15,2 %",
+   "cifra": "59,9",
+   "calculo": "D['Q']['4']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "con el 59,9 %, frente al 15,2 % del PSOE. La participación",
+   "cifra": "15,2",
+   "calculo": "D['Q']['4']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "PSOE. La participación va del 56,0 % al 82,2 %.",
+   "cifra": "56,0",
+   "calculo": "D['Q']['0']['part']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "participación va del 56,0 % al 82,2 %.",
+   "cifra": "82,2",
+   "calculo": "D['Q']['4']['part']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "con una renta mediana de 30.519 €, está en la parte",
+   "cifra": "30.519",
+   "calculo": "D['DIST']['Nervión']['renta']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "las secciones, Cerro-Amate (66) y Norte (46), están",
+   "cifra": "66",
+   "calculo": "D['DIST']['Cerro-Amate']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Cerro-Amate (66) y Norte (46), están en la baja.",
+   "cifra": "46",
+   "calculo": "D['DIST']['Norte']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Cerro-Amate, el PSOE sacó el 49,7 % y votó el 61,4 %,",
+   "cifra": "49,7",
+   "calculo": "D['DIST']['Cerro-Amate']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "sacó el 49,7 % y votó el 61,4 %, casi veinte puntos",
+   "cifra": "61,4",
+   "calculo": "D['DIST']['Cerro-Amate']['part']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "no el efecto de la renta. 21 secciones no tienen",
+   "cifra": "21",
+   "calculo": "D['SINBARRIO']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "Nervión: el PP, en todas menos cuatro",
+   "cifra": "cuatro",
+   "calculo": "D['DIST']['Nervión']['gana']['PSOE']",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "El PP subió 18,7 puntos en Nervión entre",
+   "cifra": "18,7",
+   "calculo": "D['DIST']['Nervión']['PP']-D['DIST']['Nervión']['PP0']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "Sánchez-Pizjuán, en la jornada 13 de LaLiga, según el",
+   "fuente": "https://www.laliga.com/noticias/horarios-de-la-decimotercera-jornada-de-laliga-ea-sports-2026-27"
+  },
+  {
+   "texto": "deja al PSOE primero en el 56 % de las simulaciones",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  },
+  {
+   "texto": "con un reparto central de 4 de los 12 escaños para",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  },
+  {
+   "texto": "reparto central de 4 de los 12 escaños para el PSOE,",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  },
+  {
+   "texto": "12 escaños para el PSOE, 4 para el PP, 2 para Vox,",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  },
+  {
+   "texto": "para el PSOE, 4 para el PP, 2 para Vox, 1 para Adelante",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  },
+  {
+   "texto": "4 para el PP, 2 para Vox, 1 para Adelante Andalucía",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  },
+  {
+   "texto": "para Adelante Andalucía y 1 para Sumar, según la",
+   "fuente": "https://mapaelectoral.es/encuestas/sevilla/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Bellavista-La Palmera. A ocho días de las elecciones",
+   "motivo": "del 21 al 29 de noviembre hay ocho días (cuenta de calendario)"
+  },
+  {
+   "texto": "por renta y se parten en cinco grupos iguales, el reparto",
+   "motivo": "definición de quintiles: cinco grupos iguales"
+  },
+  {
+   "texto": "% y votó el 61,4 %, casi veinte puntos menos que en",
+   "motivo": "redondeo de 80,0 − 61,4 = 18,6 puntos (participación de Nervión menos la de Cerro-Amate), comprobados arriba"
+  }
+ ],
+ "permitir_espana": []
+}
