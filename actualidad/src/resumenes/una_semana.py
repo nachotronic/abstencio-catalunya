@@ -60,6 +60,11 @@ for k, e in U30.items():
         pass
 MAYORIA = sum(a >= 176 for a, _ in PV.values())
 
+# Escaños de Sumar / Frente Amplio en el hemiciclo del modelo de /encuestas/ (misma actualización)
+_h = open(RAIZ / 'encuestas/index.html').read()
+_D = json.JSONDecoder().raw_decode(_h[_h.find('window.__ENC=') + len('window.__ENC='):])[0]
+SUMAR_MOD = next(a[1] for a in _D['hemi_modelo'] if a[0] == 'SUMAR')
+assert SUMAR_MOD == 11, SUMAR_MOD
 D40 = next(e for e in TRAS if enc.clave(e['casa']) == '40db')
 D40_DIF = round(D40['voto']['PP'] - D40['voto']['PSOE'], 1)
 # la distancia más corta de su tracking de campaña (entregas publicadas desde el 13-11, día 1)
@@ -110,14 +115,15 @@ g_ven = figura(f'{GANA_PP} de {len(ULT)} encuestadoras ponen por delante al PP',
 INFOBAE = 'https://www.infobae.com/espana/2026/11/19/los-8-momentos-del-debate-cara-a-cara-entre-sanchez-y-feijoo-del-que-pongan-los-dos-rombos-al-no-me-deja-hablar/'
 PAIS40 = 'https://elpais.com/espana/elecciones-generales/2026-11-20/la-distancia-entre-el-pp-y-el-psoe-se-estrecha-al-minimo-pese-a-la-victoria-de-feijoo-en-el-debate.html'
 OKD = 'https://okdiario.com/espana/debate-impulsa-pp-hasta-135-escanos-costa-vox-psoe-que-retrocede-4-diputados-21236645'
+RTVE = 'https://x.com/rtvenoticias/status/2123546350360961071'
 OBJ = 'https://theobjective.com/espana/politica/2026-11-20/debate-sanchez-feijoo-directo/directo/'
 
 nom_tras = ', '.join(f'{enc.nombre_casa(e["casa"])}' for e in TRAS[:-1]) + f' y {enc.nombre_casa(TRAS[-1]["casa"])}'
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">El jueves por la noche, Pedro Sánchez y Alberto Núñez Feijóo se vieron en el único cara a cara de las elecciones generales del 29N. {L('debate-sanchez-feijoo-29n', 'Lo vieron de media 10.152.000 personas')}, con un 70,8 % de cuota de pantalla, según Barlovento Comunicación: un 72 % más que el de 2023 y el más visto desde 2011. En su último minuto, Feijóo pidió el voto así, según <a href="{INFOBAE}">Infobae</a>:</p>
-<blockquote class="cita"><p>«Yo no soy un candidato de manual, no bailo en los mítines y no me gusta la política espectáculo, pero tampoco robo ni miento ni me voy de vacaciones cuando se invade nuestro país»</p><footer>Alberto Núñez Feijóo, en el minuto final del debate, el 19 de noviembre de 2026, según <a href="{INFOBAE}">Infobae</a>.</footer></blockquote>
-<p data-tipo="contexto">Sánchez cerró el debate, por sorteo, y se dirigió a quien duda si ir a votar:</p>
-<blockquote class="cita"><p>«Yo lo que te pido es quien pueda votar, que vote. Vota con toda tu alma, vota con toda tu fuerza al Partido Socialista»</p><footer>Pedro Sánchez, en el minuto final del debate, el 19 de noviembre de 2026, según <a href="{INFOBAE}">Infobae</a>. <a href="{OBJ}">The Objective</a> recoge la misma frase con «al PSOE» al final.</footer></blockquote>
+<p data-tipo="contexto">El jueves por la noche, Pedro Sánchez y Alberto Núñez Feijóo se vieron en el único cara a cara de las elecciones generales del 29N. {L('debate-sanchez-feijoo-29n', 'Lo vieron de media 10.152.000 personas')}, con un 70,8 % de cuota de pantalla, según Barlovento Comunicación: un 72 % más que el de 2023 y el más visto desde 2011. En su último minuto, Feijóo pidió el voto así, según el vídeo que publicó <a href="{RTVE}">RTVE Noticias</a>:</p>
+<blockquote class="cita"><p>«No bailo en los mítines y no me gusta la política espectáculo, pero tampoco robo, ni miento, ni me voy de vacaciones cuando se invade nuestro país. Creo en la política como servicio»</p><footer>Alberto Núñez Feijóo, en el minuto final del debate, el 19 de noviembre de 2026, según <a href="{RTVE}">RTVE Noticias</a>.</footer></blockquote>
+<p data-tipo="contexto">Sánchez cerró el debate, por sorteo, y pidió el voto para el PSOE a quien duda si ir a votar:</p>
+<blockquote class="cita"><p>«Quien pueda votar, que vote. Vota con toda tu alma, vota con toda tu fuerza»</p><footer>Pedro Sánchez, en el minuto final del debate, el 19 de noviembre de 2026, según <a href="{INFOBAE}">Infobae</a> y <a href="{OBJ}">The Objective</a>.</footer></blockquote>
 <p data-tipo="contexto">Fue también la semana en que acabó el plazo para pedir el voto por correo, la de los programas electorales y la última con encuestas: la ley prohíbe publicarlas desde el martes 24, así que el lunes 23 es el último día. Del domingo 15 al viernes 20 publicamos 23 piezas en esta sección. Esta es la semana contada desde los mapas.</p>
 
 <h2>Las encuestas: el PP, delante, y la distancia, a la baja</h2>
@@ -131,7 +137,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 
 <h2>Lo que las encuestas no dicen</h2>
 <p data-tipo="dato">Una cifra resumen esconde cuánto discrepan las encuestadoras. {L('cuanto-discrepan-encuestas-29n', 'En el PSOE van del 25,5 % al 33,3 %')}; en Vox casi coinciden. Y la última vez fallaron en la misma dirección: {L('encuestas-error-2023-2019-29n', 'en 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja y ganó por 1,4')}. Tras el cara a cara de aquel año, {L('encuestas-tras-el-debate-2023-29n', '10 de 14 encuestadoras ampliaron la ventaja del PP')}, y trece días después la distancia fue mucho menor. Cuánto pesa el debate de este jueves lo dirán las encuestas del fin de semana y del lunes.</p>
-<p data-tipo="dato">En la izquierda del PSOE, {L('frente-amplio-17-provincias-29n', 'el modelo de encuestas da escaño al Frente Amplio en 5 de las 17 provincias')} donde aspira a sacarlo, y 12 diputados en toda España; Sumar sacó 31 en 2023, con Podemos dentro.</p>
+<p data-tipo="dato">En la izquierda del PSOE, el jueves {L('frente-amplio-17-provincias-29n', 'el modelo de encuestas daba escaño al Frente Amplio en 5 de las 17 provincias')} donde aspira a sacarlo. Hoy, el modelo da {SUMAR_MOD} diputados a Sumar y el Frente Amplio en toda España; Sumar sacó 31 en 2023, con Podemos dentro.</p>
 
 <h2>Los mapas de la campaña</h2>
 <p data-tipo="dato">El lunes, Feijóo hizo campaña con UPN en Pamplona, donde {L('feijoo-pamplona-upn-pp-secciones-29n', 'el PSOE fue el más votado en 77 de las 151 secciones')} en 2023. El martes estuvo en Gipuzkoa, donde {L('feijoo-gipuzkoa-hernani-pp-29n', 'al PP le faltaron 9.793 votos en 2023')} para recuperar el diputado que no saca desde 2011. Y el jueves, el día del debate, Santiago Abascal dio un mitin en Gijón, donde {L('vox-gijon-barrios-abascal-29n', 'Vox sacó su mejor resultado en Somió, el barrio más rico: el 17,0 %')}.</p>
@@ -147,7 +153,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">En la serie de historia electoral explicamos {L('ley-electoral-segunda-republica', 'la ley electoral de la Segunda República')}: en Jaén, en 1936, ganar por 1,6 puntos valía 10 de los 13 diputados. Y en Cabo Verde, {L('cabo-verde-presidenciales-neves-rosa-mapa', 'José Maria Neves fue reelegido en primera vuelta')} con el 63,8 % de los votos, según los resultados provisionales.</p>
 
 <h2>Lo que viene</h2>
-<p data-tipo="contexto">Queda una semana. Las encuestas se pueden publicar hasta el lunes 23; del martes 24 al domingo 29, la ley lo prohíbe, como contamos en {L('veda-encuestas-29n', 'la pieza de la veda')}. La <a href="{BASE}encuestas/">página de encuestas</a> se actualiza hasta entonces. El sábado 28 es la jornada de reflexión, y el domingo 29, desde las 20.00, los resultados de cada municipio estarán en el mapa. Esta crónica no atribuye a ningún hecho de la semana un efecto en el voto: las encuestas recogen cambios, pero no sus causas.</p>
+<p data-tipo="contexto">Queda una semana. Las encuestas se pueden publicar hasta el lunes 23; del martes 24 al domingo 29, la ley lo prohíbe, como contamos en {L('veda-encuestas-29n', 'la pieza de la veda')}. La <a href="{BASE}encuestas/">página de encuestas</a> se actualiza hasta entonces. El sábado 28 es la jornada de reflexión, y el domingo 29 los resultados de cada municipio estarán en el mapa en cuanto Interior empiece a darlos, hacia las 21.00. Esta crónica no atribuye a ningún hecho de la semana un efecto en el voto: las encuestas recogen cambios, pero no sus causas.</p>
 '''
 
 semana = [('seleccion-convocados-pueblos-29n', 'Los convocados de la selección y sus pueblos'),
@@ -198,7 +204,7 @@ DEK = (f'La semana del debate de las elecciones generales: 10,2 millones de pers
 _r = lambda e: {'casa': enc.nombre_casa(e['casa']), 'fin': e['fin'], 'PP': e['voto']['PP'], 'PSOE': e['voto']['PSOE'], 'VOX': e['voto']['VOX']}
 DATOS = {'MED': MED, 'MED0': MED0, 'DIF': DIF, 'DIF0': DIF0, 'BAJA': BAJA, 'DIAS': DIAS, 'MIN_DIF': MIN_DIF, 'NSEM': len(SEM), 'NCASAS_SEM': len(CASAS_SEM),
          'ULT': [_r(e) for e in _ord], 'NULT': len(ULT), 'GANA_PP': GANA_PP, 'NPV': len(PV), 'MAYORIA': MAYORIA, 'TRAS': [_r(e) for e in TRAS],
-         'D40': _r(D40), 'D40_DIF': D40_DIF, 'SEMANA': [s for s, _ in semana]}
+         'D40': _r(D40), 'SUMAR_MOD': SUMAR_MOD, 'D40_DIF': D40_DIF, 'SEMANA': [s for s, _ in semana]}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 if __name__ == '__main__':
     print(TIT)

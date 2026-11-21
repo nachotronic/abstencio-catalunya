@@ -5283,6 +5283,7 @@ PIEZAS += [
                  ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election', 'Wikipedia, Opinion polling for the 2026 Spanish general election (CC BY-SA 4.0)'),
                  ('https://elpais.com/espana/elecciones-generales/2026-11-20/la-distancia-entre-el-pp-y-el-psoe-se-estrecha-al-minimo-pese-a-la-victoria-de-feijoo-en-el-debate.html', 'El País, tracking de 40dB., día 9 (20-11-2026)'),
                  ('https://okdiario.com/espana/debate-impulsa-pp-hasta-135-escanos-costa-vox-psoe-que-retrocede-4-diputados-21236645', 'OKDiario, encuesta de Data10 (21-11-2026)'),
+                 ('https://x.com/rtvenoticias/status/2123546350360961071', 'RTVE Noticias, el minuto final de Feijóo en el debate (19-11-2026)'),
                  ('https://www.infobae.com/espana/2026/11/19/los-8-momentos-del-debate-cara-a-cara-entre-sanchez-y-feijoo-del-que-pongan-los-dos-rombos-al-no-me-deja-hablar/', 'Infobae, los minutos finales del debate (19-11-2026)'),
                  ('https://theobjective.com/espana/politica/2026-11-20/debate-sanchez-feijoo-directo/directo/', 'The Objective, directo del debate (20-11-2026)')],
         enlaces=[],

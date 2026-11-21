@@ -159,6 +159,12 @@
    "cifra": "19",
    "calculo": "D['NULT']",
    "_donde": "pie"
+  },
+  {
+   "texto": "sacarlo. Hoy, el modelo da 11 diputados a Sumar y",
+   "cifra": "11",
+   "calculo": "D['SUMAR_MOD']",
+   "_donde": "dato"
   }
  ],
  "externas": [
@@ -423,6 +429,10 @@
   {
    "texto": "cada encuestadora de las tres últimas semanas",
    "motivo": "criterio de la mediana: 21 días"
+  },
+  {
+   "texto": "de reflexión, y el domingo 29 los resultados de cada",
+   "motivo": "fecha de la votación"
   }
  ],
  "permitir_espana": []
