@@ -1,16 +1,16 @@
 {
- "descargado": "2026-11-21T03:56Z",
+ "descargado": "2026-11-21T14:38Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1124,
- "encuestas_infraestatales": 148,
+ "encuestas_espana": 1126,
+ "encuestas_infraestatales": 150,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-20",
+  "publicado": "2026-11-21",
   "encuestadora": "Sondaxe",
   "cliente": "La Voz de Galicia"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 32,
+  "UPN-PP": 33,
   "SY": 6,
   "D21": 4,
   "Autonómicas - CUP": 2,
@@ -18,7 +18,8 @@
   "CSQP": 1,
   "CeC": 1,
   "MÉS ESQUERRA": 1,
-  "PSOE (115/117) · VOX": 1
+  "PSOE (115/117) · VOX": 1,
+  "DVC": 1
  },
  "wikipedia": {
   "encuestas": 433,
