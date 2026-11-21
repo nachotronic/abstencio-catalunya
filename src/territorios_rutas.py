@@ -59,14 +59,14 @@ ACTUALIDAD_LUGAR = {
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'frente-amplio-podemos-madrid-escanos-29n': ['28'], 'calle-que-parte-madrid': ['28'], 'cinturon-rojo-madrid-29n': ['28'], 'participacion-renta-municipios-madrid-29n': ['28'], 'participacion-navarra-municipios-29n': ['31'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
-    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-andalucia-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-cataluna-29n': ['08', '17', '25', '43'], 'zaragoza-barrio-a-barrio-29n': ['50'],
+    'sevilla-barrio-a-barrio-29n': ['41'], 'derbi-sevillano-nervion-heliopolis-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-andalucia-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-cataluna-29n': ['08', '17', '25', '43'], 'zaragoza-barrio-a-barrio-29n': ['50'],
 }
 # Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
 ACTUALIDAD_MUNICIPIO = {
     'acampada-sol-distrito-centro': ('28079', 'Madrid'), 'acampada-sol-alquiler-madrid-distritos-29n': ('28079', 'Madrid'), 'almeida-feijoo-madrid': ('28079', 'Madrid'),
     'barcelona-barrio-a-barrio-29n': ('08019', 'Barcelona'), 'madrid-barrio-a-barrio-29n': ('28079', 'Madrid'),
     'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
-    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'),
+    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'), 'derbi-sevillano-nervion-heliopolis-29n': ('41091', 'Sevilla'),
     'valencia-barrio-a-barrio-29n': ('46250', 'València'), 'zaragoza-barrio-a-barrio-29n': ('50297', 'Zaragoza'),
     'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'), 'calle-que-parte-barcelona': ('08019', 'Barcelona'),
     'girona-barri-a-barri-29n': ('17079', 'Girona'),
@@ -107,7 +107,7 @@ TEMAS = {
         titulo='Renta y voto: cómo votan los barrios ricos y los pobres de España',
         intro='Las piezas que cruzan el voto de cada sección censal con la renta de sus hogares, el paro, las pensiones, '
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
-        piezas=TEMA_RENTA + ['seleccion-convocados-pueblos-29n', 'atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
+        piezas=TEMA_RENTA + ['derbi-sevillano-nervion-heliopolis-29n', 'seleccion-convocados-pueblos-29n', 'atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
                              'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n', 'quien-vota-barrios-renta-edad-inmigracion', 'barrios-caseros-inquilinos-voto-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
