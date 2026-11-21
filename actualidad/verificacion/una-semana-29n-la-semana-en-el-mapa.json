@@ -1,0 +1,429 @@
+{
+ "pieza": "una-semana-29n-la-semana-en-el-mapa",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "de las encuestas da al PP 4,1 puntos de ventaja, 0,5",
+   "cifra": "4,1",
+   "calculo": "D['DIF']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "PP 4,1 puntos de ventaja, 0,5 menos que hace siete",
+   "cifra": "0,5",
+   "calculo": "D['BAJA']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "personas vieron el cara a cara, 18 de 19 encuestadoras",
+   "cifra": "18",
+   "calculo": "D['GANA_PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "vieron el cara a cara, 18 de 19 encuestadoras siguen",
+   "cifra": "19",
+   "calculo": "D['NULT']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "al viernes 20 publicamos 23 piezas en esta sección.",
+   "cifra": "23",
+   "calculo": "len(D['SEMANA'])",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "encuesta de cada una de las 19 encuestadoras de las",
+   "cifra": "19",
+   "calculo": "D['NULT']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "generales 2026, da hoy al PP el 31,4 %, al PSOE el 27,3 %",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP el 31,4 %, al PSOE el 27,3 % y a Vox el 18,9 %:",
+   "cifra": "27,3",
+   "calculo": "D['MED']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE el 27,3 % y a Vox el 18,9 %: 4,1 puntos de ventaja",
+   "cifra": "18,9",
+   "calculo": "D['MED']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "27,3 % y a Vox el 18,9 %: 4,1 puntos de ventaja para",
+   "cifra": "4,1",
+   "calculo": "D['DIF']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP. El sábado pasado eran 4,6. La distancia más corta",
+   "cifra": "4,6",
+   "calculo": "D['DIF0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "semana fue la del jueves 19, 3,8 puntos.",
+   "cifra": "3,8",
+   "calculo": "D['MIN_DIF']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "viernes 20 se publicaron 44 encuestas de 13 encuestadoras,",
+   "cifra": "44",
+   "calculo": "D['NSEM']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "publicaron 44 encuestas de 13 encuestadoras, muchas",
+   "cifra": "13",
+   "calculo": "D['NCASAS_SEM']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "diarias de un mismo tracking. 18 de las 19 encuestadoras",
+   "cifra": "18",
+   "calculo": "D['GANA_PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "mismo tracking. 18 de las 19 encuestadoras de la",
+   "cifra": "19",
+   "calculo": "D['NULT']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "da ganador al PSOE. De las 17 que publican escaños",
+   "cifra": "17",
+   "calculo": "D['NPV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "escaños en el último mes, 15 dan a PP y Vox juntos",
+   "cifra": "15",
+   "calculo": "D['MAYORIA']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Tres de las encuestas del",
+   "cifra": "Tres",
+   "calculo": "len(D['TRAS'])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y la SER deja al PP en el 31,9 % y al PSOE en el 31,2",
+   "cifra": "31,9",
+   "calculo": "D['D40']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el 31,9 % y al PSOE en el 31,2 %: 0,7 puntos, la distancia",
+   "cifra": "31,2",
+   "calculo": "D['D40']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "% y al PSOE en el 31,2 %: 0,7 puntos, la distancia",
+   "cifra": "0,7",
+   "calculo": "D['D40_DIF']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "distancia en la mediana, de 4,6 a 4,1 puntos en una",
+   "cifra": "4,6",
+   "calculo": "D['DIF0']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "distancia en la mediana, de 4,6 a 4,1 puntos en una semanaVentaja",
+   "cifra": "4,1",
+   "calculo": "D['DIF']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "18 de 19 encuestadoras",
+   "cifra": "18",
+   "calculo": "D['GANA_PP']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "18 de 19 encuestadoras ponen",
+   "cifra": "19",
+   "calculo": "D['NULT']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "las elecciones generales: 10,2 millones de personas vieron el",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/"
+  },
+  {
+   "texto": "del 29N. Lo vieron de media 10.152.000 personas, con un 70,8",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/"
+  },
+  {
+   "texto": "10.152.000 personas, con un 70,8 % de cuota de pantalla,",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/"
+  },
+  {
+   "texto": "Barlovento Comunicación: un 72 % más que el de 2023",
+   "fuente": "https://mapaelectoral.es/actualidad/debate-sanchez-feijoo-29n/"
+  },
+  {
+   "texto": "OKDiario, con entrevistas del 17 al 20, da al PP el 32,3",
+   "fuente": "https://okdiario.com/espana/debate-impulsa-pp-hasta-135-escanos-costa-vox-psoe-que-retrocede-4-diputados-21236645"
+  },
+  {
+   "texto": "con entrevistas del 17 al 20, da al PP el 32,3 %",
+   "fuente": "https://okdiario.com/espana/debate-impulsa-pp-hasta-135-escanos-costa-vox-psoe-que-retrocede-4-diputados-21236645"
+  },
+  {
+   "texto": "del 17 al 20, da al PP el 32,3 % y al PSOE el 26,6",
+   "fuente": "https://okdiario.com/espana/debate-impulsa-pp-hasta-135-escanos-costa-vox-psoe-que-retrocede-4-diputados-21236645"
+  },
+  {
+   "texto": "PP el 32,3 % y al PSOE el 26,6 %. El jueves por la",
+   "fuente": "https://okdiario.com/espana/debate-impulsa-pp-hasta-135-escanos-costa-vox-psoe-que-retrocede-4-diputados-21236645"
+  },
+  {
+   "texto": "Sondaxe había dejado al PSOE a 0,7 puntos del PP, y el",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-19-noviembre/"
+  },
+  {
+   "texto": "el miércoles Vox bajó al 17 % en 40dB.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuesta-40db-vox-17-29n/"
+  },
+  {
+   "texto": "encuestadoras. En el PSOE van del 25,5 % al 33,3 %; en Vox",
+   "fuente": "https://mapaelectoral.es/actualidad/cuanto-discrepan-encuestas-29n/"
+  },
+  {
+   "texto": "el PSOE van del 25,5 % al 33,3 %; en Vox casi coinciden.",
+   "fuente": "https://mapaelectoral.es/actualidad/cuanto-discrepan-encuestas-29n/"
+  },
+  {
+   "texto": "últimas encuestas daban al PP 5,7 puntos de ventaja y",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-error-2023-2019-29n/"
+  },
+  {
+   "texto": "puntos de ventaja y ganó por 1,4. Tras el cara a cara",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-error-2023-2019-29n/"
+  },
+  {
+   "texto": "cara a cara de aquel año, 10 de 14 encuestadoras",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/"
+  },
+  {
+   "texto": "cara de aquel año, 10 de 14 encuestadoras ampliaron",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/"
+  },
+  {
+   "texto": "ampliaron la ventaja del PP, y trece días después la distancia",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/"
+  },
+  {
+   "texto": "escaño al Frente Amplio en 5 de las 17 provincias",
+   "fuente": "https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/"
+  },
+  {
+   "texto": "Frente Amplio en 5 de las 17 provincias donde aspira",
+   "fuente": "https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/"
+  },
+  {
+   "texto": "donde aspira a sacarlo, y 12 diputados en toda España;",
+   "fuente": "https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/"
+  },
+  {
+   "texto": "en toda España; Sumar sacó 31 en 2023, con Podemos",
+   "fuente": "https://mapaelectoral.es/actualidad/frente-amplio-17-provincias-29n/"
+  },
+  {
+   "texto": "PSOE fue el más votado en 77 de las 151 secciones",
+   "fuente": "https://mapaelectoral.es/actualidad/feijoo-pamplona-upn-pp-secciones-29n/"
+  },
+  {
+   "texto": "el más votado en 77 de las 151 secciones en 2023. El",
+   "fuente": "https://mapaelectoral.es/actualidad/feijoo-pamplona-upn-pp-secciones-29n/"
+  },
+  {
+   "texto": "Gipuzkoa, donde al PP le faltaron 9.793 votos en 2023 para recuperar",
+   "fuente": "https://mapaelectoral.es/actualidad/feijoo-gipuzkoa-hernani-pp-29n/"
+  },
+  {
+   "texto": "Somió, el barrio más rico: el 17,0 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/vox-gijon-barrios-abascal-29n/"
+  },
+  {
+   "texto": "abstención. En 2023 no votaron 10,4 millones de residentes, y si",
+   "fuente": "https://mapaelectoral.es/actualidad/abstencion-mapa-ganador-29n/"
+  },
+  {
+   "texto": "miércoles, que una de cada tres secciones cambió de",
+   "fuente": "https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/"
+  },
+  {
+   "texto": "ganador entre 2019 y 2023: en 5.970 pasó del PSOE al PP,",
+   "fuente": "https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/"
+  },
+  {
+   "texto": "al PP, y al revés solo en 100.",
+   "fuente": "https://mapaelectoral.es/actualidad/secciones-cambian-ganador-29n/"
+  },
+  {
+   "texto": "19. En 2023 se aceptaron 2.604.386 solicitudes de residentes",
+   "fuente": "https://mapaelectoral.es/actualidad/voto-correo-plazo-jueves-29n/"
+  },
+  {
+   "texto": "residentes en España, y en 51 de las 52 circunscripciones",
+   "fuente": "https://mapaelectoral.es/actualidad/voto-correo-plazo-jueves-29n/"
+  },
+  {
+   "texto": "en España, y en 51 de las 52 circunscripciones hubo",
+   "fuente": "https://mapaelectoral.es/actualidad/voto-correo-plazo-jueves-29n/"
+  },
+  {
+   "texto": "depositar hasta el miércoles 25.",
+   "fuente": "https://mapaelectoral.es/actualidad/voto-correo-plazo-jueves-29n/"
+  },
+  {
+   "texto": "electores residentes en España, 1.615.127 votan por primera vez",
+   "fuente": "https://mapaelectoral.es/actualidad/generacion-2008-primer-voto-29n/"
+  },
+  {
+   "texto": "PSOE, un parque público de 100.000, y el Frente Amplio,",
+   "fuente": "https://mapaelectoral.es/actualidad/programa-electoral-29n/"
+  },
+  {
+   "texto": "100.000, y el Frente Amplio, 1,5 millones de viviendas públicas",
+   "fuente": "https://mapaelectoral.es/actualidad/programa-electoral-29n/"
+  },
+  {
+   "texto": "de viviendas públicas en 12 años. Vox no da una",
+   "fuente": "https://mapaelectoral.es/actualidad/programa-electoral-29n/"
+  },
+  {
+   "texto": "Metropolitano, contamos que de los 25 convocados de De la",
+   "fuente": "https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/"
+  },
+  {
+   "texto": "Fuente nacidos en España, 15 nacieron donde ganó",
+   "fuente": "https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/"
+  },
+  {
+   "texto": "donde ganó el PSOE en 2023 y 8 donde ganó el PP. Esta",
+   "fuente": "https://mapaelectoral.es/actualidad/seleccion-convocados-pueblos-29n/"
+  },
+  {
+   "texto": "Jaén, en 1936, ganar por 1,6 puntos valía 10 de los",
+   "fuente": "https://mapaelectoral.es/actualidad/ley-electoral-segunda-republica/"
+  },
+  {
+   "texto": "ganar por 1,6 puntos valía 10 de los 13 diputados.",
+   "fuente": "https://mapaelectoral.es/actualidad/ley-electoral-segunda-republica/"
+  },
+  {
+   "texto": "1,6 puntos valía 10 de los 13 diputados. Y en Cabo",
+   "fuente": "https://mapaelectoral.es/actualidad/ley-electoral-segunda-republica/"
+  },
+  {
+   "texto": "en primera vuelta con el 63,8 % de los votos, según",
+   "fuente": "https://mapaelectoral.es/actualidad/cabo-verde-presidenciales-neves-rosa-mapa/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "ventaja, 0,5 menos que hace siete días; el lunes 23 es",
+   "motivo": "del 14 al 21 de noviembre (cuenta de calendario)"
+  },
+  {
+   "texto": "hace siete días; el lunes 23 es el último día para",
+   "motivo": "fecha del calendario (último día legal para publicar encuestas, LOREG 69.7)"
+  },
+  {
+   "texto": "publicarlas desde el martes 24, así que el lunes 23",
+   "motivo": "fecha del calendario (veda, LOREG 69.7)"
+  },
+  {
+   "texto": "martes 24, así que el lunes 23 es el último día. Del",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "el último día. Del domingo 15 al viernes 20 publicamos",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "Del domingo 15 al viernes 20 publicamos 23 piezas",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "las 19 encuestadoras de las tres últimas semanas, la",
+   "motivo": "criterio de la mediana: 21 días"
+  },
+  {
+   "texto": "semana fue la del jueves 19, 3,8 puntos.",
+   "motivo": "fecha del calendario (jueves 19)"
+  },
+  {
+   "texto": "Del domingo 15 al viernes 20 se publicaron",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "Del domingo 15 al viernes 20 se publicaron 44 encuestas",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "15 dan a PP y Vox juntos 176 o más, contando el extremo",
+   "motivo": "mayoría absoluta del Congreso"
+  },
+  {
+   "texto": "por correo acabó el jueves 19. En 2023 se aceptaron",
+   "motivo": "fecha del calendario (plazo del voto por correo)"
+  },
+  {
+   "texto": "El domingo 29, los colegios abren",
+   "motivo": "fecha de la votación"
+  },
+  {
+   "texto": "pueden publicar hasta el lunes 23; del martes 24 al domingo",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "hasta el lunes 23; del martes 24 al domingo 29, la ley",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "del martes 24 al domingo 29, la ley lo prohíbe,",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "hasta entonces. El sábado 28 es la jornada de reflexión,",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "de reflexión, y el domingo 29, desde las 20.00, los",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "cada encuestadora de las tres últimas semanas. La",
+   "motivo": "criterio de la mediana: 21 días"
+  },
+  {
+   "texto": "marca la mediana del sábado 14; a la derecha, la diferencia",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "cada encuestadora de las tres últimas semanas",
+   "motivo": "criterio de la mediana: 21 días"
+  }
+ ],
+ "permitir_espana": []
+}

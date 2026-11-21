@@ -80,4 +80,12 @@
       <news:title>El derbi sevillano se juega en barrios del PP: en Nervión, el del Sánchez-Pizjuán, ganó en 37 de 41 secciones; en la ciudad, el PSOE fue primero en 286 de 521</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/una-semana-29n-la-semana-en-el-mapa/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-21</news:publication_date>
+      <news:title>A una semana del 29N, la mediana de las encuestas da al PP 4,1 puntos de ventaja, 0,5 menos que hace siete días; el lunes 23 es el último día para publicarlas</news:title>
+    </news:news>
+  </url>
 </urlset>
