@@ -192,7 +192,7 @@ def prepara(datos, avance):
     repiten de 2023."""
     dips, _ = diputados()
     pu = json.loads((DATOS / 'puestos-29n.json').read_text())
-    prev = {}
+    prev, fam23 = {}, {}
     if not avance and (DATOS / '2023-proclamadas.json').exists():   # quién ya fue candidato el 23J
         cuenta = Counter()
         for c in json.loads((DATOS / '2023-proclamadas.json').read_text())['candidaturas']:
@@ -200,7 +200,11 @@ def prepara(datos, avance):
                 k = clave_nombre(p['nombre'])
                 cuenta[k] += 1
                 prev.setdefault(k, (c['prov'], c['camara'], c['siglas'], p['n']))
+                fam23.setdefault(k, familia(c['siglas'], c['denominacion'])[0])
         prev = {k: v for k, v in prev.items() if cuenta[k] == 1}   # un nombre repetido en 2023 no se sabe a quién corresponde
+        # ni uno repetido en 2026
+        cuenta26 = Counter(clave_nombre(p['nombre']) for c in datos['candidaturas'] if not c.get('no_proclamada') for p in c['titulares'])
+        prev = {k: v for k, v in prev.items() if cuenta26[k] <= 1}
     cands = []
     for c in datos['candidaturas']:
         if c.get('no_proclamada') or not c['titulares']:
@@ -231,7 +235,10 @@ def prepara(datos, avance):
                 p['dip'] = d['formacion'] + (' (de baja)' if d['baja'] and not d['baja'].startswith('06/10/2026') else '')
             if prev:
                 k = clave_nombre(p['nombre'])
-                if k in prev and (prev[k][0] == c['prov'] or len(k.split()) >= 3):
+                # Solo con la misma provincia o el mismo partido: con nombre y dos apellidos también hay homónimos
+                # (21-11-2026, aviso de un lector: María Gómez García, n.º 3 del PP por Alicante y alcaldesa de Almoradí,
+                # salía como la n.º 6 de Recortes Cero por Madrid en 2023, que es otra persona)
+                if k in prev and (prev[k][0] == c['prov'] or fam23[k] == f[0]):
                     p['en23'] = prev[k]
         cands.append(c)
     return cands
