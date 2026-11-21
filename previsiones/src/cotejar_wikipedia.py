@@ -44,7 +44,9 @@ NO_SON_ENCUESTAS = {
     'https://www.lasexta.com/programas/al-rojo-vivo/ignacio-urquizu-experto-demoscopia-cara-elecciones-29n-bloque-derecha-esta-muy-consolidado-esta-torno-49_202611196afef28f21e74551e81f5586.html',
 }
 # la misma casa con dos nombres: Electográfica llama «PF Global» a Public First (encuesta para Politico, 15-17-11-2026)
-ALIAS_CASA = {'pfglobal': 'publicfirst'}
+# Y «Mediaflows Uv Odec» (Electográfica) es la encuesta de ODEC para Mediaflows–UV del 9-7-2026 (Wikipedia):
+# sin el alias salía dos veces, una sin escaños.
+ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec'}
 PARTIDOS_COMO_CASA = {'pp', 'psoe', 'vox', 'sumar', 'podemos', 'erc', 'junts', 'pnv', 'bildu', 'ehbildu', 'bng'}
 
 

@@ -72,7 +72,9 @@ VENTANA_MEDIANA = 21
 
 # La misma casa con dos nombres según la fuente: Electográfica pone «PF Global» a la encuesta de Public First para
 # Politico (15-17 de noviembre de 2026) que Wikipedia llama «Public First»; sin el alias entraba dos veces.
-ALIAS_CASA = {'pfglobal': 'publicfirst'}
+# Y «Mediaflows Uv Odec» (Electográfica) es la encuesta de ODEC para Mediaflows–UV del 9-7-2026 (Wikipedia):
+# sin el alias salía dos veces, una sin escaños.
+ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec'}
 
 
 def clave(nombre):
