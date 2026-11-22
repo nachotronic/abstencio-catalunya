@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (126)
+## Pendientes (127)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-22 | [`getafe-atletico-sur-madrid-29n`](https://mapaelectoral.es/actualidad/getafe-atletico-sur-madrid-29n/) | Getafe-Atlético: en la ciudad del Coliseum, el PSOE pasó de ganar en 112 de las 122 secciones a ganar en 74, y el PP se quedó a 2.182 votos | primer gráfico de la pieza |
 | 2026-11-21 | [`derbi-sevillano-nervion-heliopolis-29n`](https://mapaelectoral.es/actualidad/derbi-sevillano-nervion-heliopolis-29n/) | El derbi sevillano se juega en barrios del PP: en Nervión, el del Sánchez-Pizjuán, ganó en 37 de 41 secciones; en la ciudad, el PSOE fue primero en 286 de 521 | primer gráfico de la pieza |
 | 2026-11-20 | [`encuestas-elecciones-generales-2026-20-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-20-noviembre/) | Encuestas elecciones generales 2026, hoy 20 de noviembre: el PP gana en las cinco, por entre 2,0 y 4,6 puntos | primer gráfico de la pieza |
 | 2026-11-20 | [`veda-encuestas-29n`](https://mapaelectoral.es/actualidad/veda-encuestas-29n/) | Veda de encuestas: hasta cuándo se pueden publicar las del 29N | primer gráfico de la pieza |

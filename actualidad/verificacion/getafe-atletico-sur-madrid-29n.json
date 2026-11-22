@@ -1,0 +1,539 @@
+{
+ "pieza": "getafe-atletico-sur-madrid-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "el PSOE pasó de ganar en 112 de las 122 secciones",
+   "cifra": "112",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "pasó de ganar en 112 de las 122 secciones a ganar en",
+   "cifra": "122",
+   "calculo": "D['NSEC']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "122 secciones a ganar en 74, y el PP se quedó a",
+   "cifra": "74",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "en 74, y el PP se quedó a 2.182 votos",
+   "cifra": "2.182",
+   "calculo": "D['DIFV']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "generales. El PP pasó del 18,2 % al 32,2 % entre 2019",
+   "cifra": "18,2",
+   "calculo": "D['H']['2019_11']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "El PP pasó del 18,2 % al 32,2 % entre 2019 y 2023;",
+   "cifra": "32,2",
+   "calculo": "D['H']['2023_07']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "estadio, el PSOE ganó en 7 de 9 secciones.",
+   "cifra": "7",
+   "calculo": "D['BARR']['Getafe Norte']['gana']['PSOE']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "estadio, el PSOE ganó en 7 de 9 secciones.",
+   "cifra": "9",
+   "calculo": "D['BARR']['Getafe Norte']['n']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "ciudad del sur de Madrid de 185.899 habitantes, según el",
+   "cifra": "185.899",
+   "calculo": "D['POB']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "el PSOE sacó en Getafe el 34,4 % y el PP, el 32,2 %:",
+   "cifra": "34,4",
+   "calculo": "D['H']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Getafe el 34,4 % y el PP, el 32,2 %: 34.222 votos frente",
+   "cifra": "32,2",
+   "calculo": "D['H']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "34,4 % y el PP, el 32,2 %: 34.222 votos frente a 32.040,",
+   "cifra": "34.222",
+   "calculo": "D['H']['2023_07']['vPSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "%: 34.222 votos frente a 32.040, una diferencia de 2.182",
+   "cifra": "32.040",
+   "calculo": "D['H']['2023_07']['vPP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "32.040, una diferencia de 2.182 votos. Cuatro años antes,",
+   "cifra": "2.182",
+   "calculo": "D['DIFV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP se había quedado en el 18,2 %, con Ciudadanos todavía",
+   "cifra": "18,2",
+   "calculo": "D['H']['2019_11']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "El PSOE apenas cambió: del 32,1 % al 34,4 %.",
+   "cifra": "32,1",
+   "calculo": "D['H']['2019_11']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "apenas cambió: del 32,1 % al 34,4 %.",
+   "cifra": "34,4",
+   "calculo": "D['H']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "2011, el PP sacó en Getafe el 42,4 %, y volvió a ser el",
+   "cifra": "42,4",
+   "calculo": "D['H']['2011_11']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE fue el más votado en 112 de las 122 secciones",
+   "cifra": "112",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más votado en 112 de las 122 secciones censales de",
+   "cifra": "122",
+   "calculo": "D['NSEC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "censales de Getafe, y el PP, en 7. En 2023, el PSOE ganó",
+   "cifra": "7",
+   "calculo": "D['G19']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En 2023, el PSOE ganó en 74 y el PP, en 45; Sumar",
+   "cifra": "74",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE ganó en 74 y el PP, en 45; Sumar fue primero en",
+   "cifra": "45",
+   "calculo": "D['G23']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "45; Sumar fue primero en 2 y en otra hubo empate",
+   "cifra": "2",
+   "calculo": "D['G23']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En las 15 secciones del barrio",
+   "cifra": "15",
+   "calculo": "D['BARR']['La Alhóndiga']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Alhóndiga, el PSOE ganó en 14, con el 38,7 %.",
+   "cifra": "14",
+   "calculo": "D['BARR']['La Alhóndiga']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE ganó en 14, con el 38,7 %.",
+   "cifra": "38,7",
+   "calculo": "D['BARR']['La Alhóndiga']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "estadio, el PSOE ganó en 7 de las 9 secciones en",
+   "cifra": "7",
+   "calculo": "D['BARR']['Getafe Norte']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE ganó en 7 de las 9 secciones en 2023, con",
+   "cifra": "9",
+   "calculo": "D['BARR']['Getafe Norte']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "secciones en 2023, con el 36,0 % frente al 31,2 % del",
+   "cifra": "36,0",
+   "calculo": "D['BARR']['Getafe Norte']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "2023, con el 36,0 % frente al 31,2 % del PP. En 2019 había",
+   "cifra": "31,2",
+   "calculo": "D['BARR']['Getafe Norte']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En 2019 había ganado las 9, y el PP se había quedado",
+   "cifra": "9",
+   "calculo": "D['BARR']['Getafe Norte']['gana0']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP se había quedado en el 16,7 %. La renta mediana",
+   "cifra": "16,7",
+   "calculo": "D['BARR']['Getafe Norte']['PP0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "mediana del barrio es de 24.816 € por unidad de consumo,",
+   "cifra": "24.816",
+   "calculo": "D['BARR']['Getafe Norte']['renta']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "encima de la de la ciudad (21.799 €).",
+   "cifra": "21.799",
+   "calculo": "D['CIU']['renta']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el Sector III, el PP ganó 13 de las 20 secciones,",
+   "cifra": "13",
+   "calculo": "D['BARR']['Sector III']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "III, el PP ganó 13 de las 20 secciones, con el 33,9",
+   "cifra": "20",
+   "calculo": "D['BARR']['Sector III']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "las 20 secciones, con el 33,9 %; votó el 81,0 % y",
+   "cifra": "33,9",
+   "calculo": "D['BARR']['Sector III']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "secciones, con el 33,9 %; votó el 81,0 % y la renta mediana",
+   "cifra": "81,0",
+   "calculo": "D['BARR']['Sector III']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "y la renta mediana es de 28.547 €. En El Bercial, el",
+   "cifra": "28.547",
+   "calculo": "D['BARR']['Sector III']['renta']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganar ninguna sección a ganar 5 de 9, y del 17,8 % al",
+   "cifra": "5",
+   "calculo": "D['BARR']['El Bercial']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ninguna sección a ganar 5 de 9, y del 17,8 % al 36,1",
+   "cifra": "9",
+   "calculo": "D['BARR']['El Bercial']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sección a ganar 5 de 9, y del 17,8 % al 36,1 %. En el Centro,",
+   "cifra": "17,8",
+   "calculo": "D['BARR']['El Bercial']['PP0']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganar 5 de 9, y del 17,8 % al 36,1 %. En el Centro, donde",
+   "cifra": "36,1",
+   "calculo": "D['BARR']['El Bercial']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "donde más votó al PP, ganó 13 de 19 con el 36,8 %.",
+   "cifra": "13",
+   "calculo": "D['BARR']['Centro']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "más votó al PP, ganó 13 de 19 con el 36,8 %. Al otro",
+   "cifra": "19",
+   "calculo": "D['BARR']['Centro']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PP, ganó 13 de 19 con el 36,8 %. Al otro lado, en",
+   "cifra": "36,8",
+   "calculo": "D['BARR']['Centro']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de la Cierva, el PSOE ganó 19 de las 21 secciones",
+   "cifra": "19",
+   "calculo": "D['BARR']['Juan de la Cierva']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Cierva, el PSOE ganó 19 de las 21 secciones con el 43,1",
+   "cifra": "21",
+   "calculo": "D['BARR']['Juan de la Cierva']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de las 21 secciones con el 43,1 %, y votó el 68,1 %.",
+   "cifra": "43,1",
+   "calculo": "D['BARR']['Juan de la Cierva']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con el 43,1 %, y votó el 68,1 %.",
+   "cifra": "68,1",
+   "calculo": "D['BARR']['Juan de la Cierva']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "iguales, el PSOE gana en las 25 de la quinta parte más",
+   "cifra": "25",
+   "calculo": "D['Q']['0']['gana']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "quinta parte más pobre, con el 43,5 %, frente al 26,8 %",
+   "cifra": "43,5",
+   "calculo": "D['Q']['0']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "con el 43,5 %, frente al 26,8 % del PP. En la quinta",
+   "cifra": "26,8",
+   "calculo": "D['Q']['0']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "parte más rica, el PP gana en 21 de 25, con el 36,2 %,",
+   "cifra": "21",
+   "calculo": "D['Q']['4']['gana']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "rica, el PP gana en 21 de 25, con el 36,2 %, frente",
+   "cifra": "25",
+   "calculo": "D['Q']['4']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "gana en 21 de 25, con el 36,2 %, frente al 29,8 %",
+   "cifra": "36,2",
+   "calculo": "D['Q']['4']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "con el 36,2 %, frente al 29,8 % del PSOE. La participación",
+   "cifra": "29,8",
+   "calculo": "D['Q']['4']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "PSOE. La participación va del 66,0 % al 81,7 %.",
+   "cifra": "66,0",
+   "calculo": "D['Q']['0']['part']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "participación va del 66,0 % al 81,7 %.",
+   "cifra": "81,7",
+   "calculo": "D['Q']['4']['part']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "Getafe, el PP saca de media el 36,2 %; en la de Sevilla,",
+   "cifra": "36,2",
+   "calculo": "D['Q']['4']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "al este de Madrid. En sus 17 secciones, el PP ganó",
+   "cifra": "17",
+   "calculo": "D['ROSAS']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "secciones, el PP ganó en 16 en 2023, con el 39,3",
+   "cifra": "16",
+   "calculo": "D['ROSAS']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó en 16 en 2023, con el 39,3 %, frente al 29,7 %",
+   "cifra": "39,3",
+   "calculo": "D['ROSAS']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con el 39,3 %, frente al 29,7 % del PSOE. En toda",
+   "cifra": "29,7",
+   "calculo": "D['ROSAS']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "de Madrid, el PP sacó el 41,8 % y el PSOE, el 27,4",
+   "cifra": "41,8",
+   "calculo": "D['MADRID']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 41,8 % y el PSOE, el 27,4 %. Cómo vota el distrito",
+   "cifra": "27,4",
+   "calculo": "D['MADRID']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "provincia de Madrid, que elige 38 diputados. Nuestro modelo,",
+   "cifra": "38",
+   "calculo": "D['MODELO']['escanos']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "no el efecto de la renta. 16 secciones no tienen",
+   "cifra": "16",
+   "calculo": "D['SINBARRIO']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "ciudad que el PSOE ganó por 2.182 votos y en un barrio",
+   "cifra": "2.182",
+   "calculo": "D['DIFV']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "barrio donde el PP subió casi quince puntos. Las calles de",
+   "cifra": "quince",
+   "calculo": "D['BARR']['Getafe Norte']['PP']-D['BARR']['Getafe Norte']['PP0']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "De 112 secciones a 74",
+   "cifra": "112",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "De 112 secciones a 74",
+   "cifra": "74",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "El PSOE pasó de 112 a 74 secciones; el PP,",
+   "cifra": "112",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSOE pasó de 112 a 74 secciones; el PP, de",
+   "cifra": "74",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "a 74 secciones; el PP, de 7 a 45Secciones censales",
+   "cifra": "7",
+   "calculo": "D['G19']['PP']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "2019 y en julio de 2023 (de 122)",
+   "cifra": "122",
+   "calculo": "D['NSEC']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Norte, donde el PSOE ganó 7 de las 9 seccionesVentaja",
+   "cifra": "7",
+   "calculo": "D['BARR']['Getafe Norte']['gana']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "donde el PSOE ganó 7 de las 9 seccionesVentaja del",
+   "cifra": "9",
+   "calculo": "D['BARR']['Getafe Norte']['n']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "el Coliseum, en la jornada 13 de LaLiga, según El",
+   "fuente": "https://www.eldebate.com/deportes/futbol/la-liga/20261121/getafe-atletico-madrid-horario-donde-ver-tv-jornada-13-laliga_483606.html"
+  },
+  {
+   "texto": "29N, Getafe es uno de los cuatro municipios grandes de",
+   "fuente": "https://mapaelectoral.es/actualidad/cinturon-rojo-madrid-29n/"
+  },
+  {
+   "texto": "el 21 de julio, ante unas 4.500 personas, según Infobae:",
+   "fuente": "https://www.infobae.com/espana/2023/07/21/el-extasis-se-apodera-del-psoe-en-el-cierre-de-campana-del-23-j-nos-caimos-nos-levantamos-y-pedaleamos-a-contrarreloj/"
+  },
+  {
+   "texto": "de Sevilla, sacó casi el 60 %, como contamos en",
+   "fuente": "https://mapaelectoral.es/actualidad/derbi-sevillano-nervion-heliopolis-29n/"
+  },
+  {
+   "texto": "deja al PP primero en el 98 % de las simulaciones,",
+   "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  },
+  {
+   "texto": "con un reparto central de 16 escaños para el PP,",
+   "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  },
+  {
+   "texto": "de 16 escaños para el PP, 10 para el PSOE, 8 para",
+   "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  },
+  {
+   "texto": "para el PP, 10 para el PSOE, 8 para Vox, 3 para Sumar",
+   "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  },
+  {
+   "texto": "para el PSOE, 8 para Vox, 3 para Sumar y 1 para",
+   "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  },
+  {
+   "texto": "para Vox, 3 para Sumar y 1 para Podemos, según",
+   "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "municipal de 2023 (INE). A siete días de las elecciones",
+   "motivo": "del 22 al 29 de noviembre (cuenta de calendario)"
+  },
+  {
+   "texto": "diferencia de 2.182 votos. Cuatro años antes, en noviembre",
+   "motivo": "de 2019 a 2023 (cuenta de calendario)"
+  },
+  {
+   "texto": "por renta y se parten en cinco grupos iguales, el PSOE",
+   "motivo": "definición de quintiles: cinco grupos iguales"
+  }
+ ],
+ "permitir_espana": []
+}
