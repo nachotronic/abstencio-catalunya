@@ -477,6 +477,24 @@
    "cifra": "14,5",
    "calculo": "D['BARR']['Getafe Norte']['PP']-D['BARR']['Getafe Norte']['PP0']",
    "_donde": "hipotesis"
+  },
+  {
+   "texto": "de 16 escaños para el PP, 11 para el PSOE, 8 para",
+   "cifra": "11",
+   "calculo": "D['MODELO']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "para el PP, 11 para el PSOE, 8 para Vox y 3 para Sumar,",
+   "cifra": "8",
+   "calculo": "D['MODELO']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "para el PSOE, 8 para Vox y 3 para Sumar, según la",
+   "cifra": "3",
+   "calculo": "D['MODELO']['SUMAR']",
+   "_donde": "dato"
   }
  ],
  "externas": [

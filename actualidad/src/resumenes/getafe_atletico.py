@@ -95,8 +95,18 @@ assert RO['n'] == 17 and RO['gana'] == {'PP': 16, 'PSOE': 1} and round(RO['PP'],
 assert round(MADC['PP'], 1) == 41.8 and round(MADC['PSOE'], 1) == 27.4
 
 # Modelo de encuestas para la provincia de Madrid (mapaelectoral.es/encuestas/madrid/, actualización del 22-11-2026)
-MODELO = {'PP': 16, 'PSOE': 10, 'VOX': 8, 'SUMAR': 3, 'PODEMOS': 1, 'pp_primero': 98, 'escanos': 38}
-assert sum(v for k, v in MODELO.items() if k in ('PP', 'PSOE', 'VOX', 'SUMAR', 'PODEMOS')) == MODELO['escanos']
+import html as _html
+import re as _re
+_t = _html.unescape(_re.sub(r'\s+', ' ', _re.sub(r'<[^>]+>', ' ', open(RAIZ / 'encuestas/madrid/index.html').read())))
+_rep = _re.search(r'el reparto central es (.*?)\. Entre paréntesis', _t).group(1)
+_NOM = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'Podemos': 'PODEMOS', 'SALF': 'SALF'}
+REPARTO = [(_NOM[k], int(v)) for k, v in _re.findall(r'(PP|PSOE|Vox|Sumar|Podemos|SALF) (\d+) \(entre', _rep)]
+MODELO = {**{k: v for k, v in REPARTO if v > 0}, 'escanos': int(_re.search(r'Madrid elige (\d+) diputados', _t).group(1)),
+          'pp_primero': int(_re.search(r'El PP queda primero en el (\d+) %', _t).group(1))}
+assert sum(v for k, v in REPARTO) == MODELO['escanos'] == 38, (REPARTO, MODELO)
+_ETQM = {'PP': 'el PP', 'PSOE': 'el PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos', 'SALF': 'SALF'}
+_conp = [(k, v) for k, v in REPARTO if v > 0]
+REP_TXT = ', '.join(f'{v} para {_ETQM[k]}' if i else f'{v} escaños para {_ETQM[k]}' for i, (k, v) in enumerate(_conp[:-1])) + f' y {_conp[-1][1]} para {_ETQM[_conp[-1][0]]}'
 
 # --- Gráficos ---
 FUENTE_S = (f'Fuente: Ministerio del Interior (generales por sección censal) e INE (renta por unidad de consumo). '
@@ -195,7 +205,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 
 <h2>Y el Metropolitano</h2>
 <p data-tipo="dato">El estadio del Atlético está en Rosas, en el distrito de San Blas-Canillejas, al este de Madrid. En sus {RO['n']} secciones, el PP ganó en {RO['gana']['PP']} en 2023, con el {p(RO['PP'])} %, frente al {p(RO['PSOE'])} % del PSOE. En toda la ciudad de Madrid, el PP sacó el {p(MADC['PP'])} % y el PSOE, el {p(MADC['PSOE'])} %. Cómo vota el distrito del Metropolitano frente al del viejo Calderón lo contamos en {L('atletico-barca-metropolitano-camp-nou-29n', 'el Atlético-Barça en las urnas')}.</p>
-<p data-tipo="dato">Getafe y Madrid votan en la misma circunscripción, la provincia de Madrid, que elige {MODELO['escanos']} diputados. Nuestro modelo, que reparte por provincia la media de las encuestas nacionales, deja al PP primero en el {MODELO['pp_primero']} % de las simulaciones, con un reparto central de {MODELO['PP']} escaños para el PP, {MODELO['PSOE']} para el PSOE, {MODELO['VOX']} para Vox, {MODELO['SUMAR']} para Sumar y {MODELO['PODEMOS']} para Podemos, según la página de <a href="{BASE}encuestas/madrid/">encuestas de Madrid</a>, que se actualiza cada día.</p>
+<p data-tipo="dato">Getafe y Madrid votan en la misma circunscripción, la provincia de Madrid, que elige {MODELO['escanos']} diputados. Nuestro modelo, que reparte por provincia la media de las encuestas nacionales, deja al PP primero en el {MODELO['pp_primero']} % de las simulaciones, con un reparto central de {REP_TXT}, según la página de <a href="{BASE}encuestas/madrid/">encuestas de Madrid</a>, que se actualiza cada día.</p>
 
 <h2>Lo que estos datos no dicen</h2>
 <p data-tipo="contexto">Las cifras de sección son de las generales de 2023 y de 2019. Las encuestas del 29N no miden ciudades ni barrios, solo provincias, y nuestro modelo no estima el voto dentro de Getafe. En 2019 no comparamos a Sumar, porque Unidas Podemos y Más País fueron por separado. Los quintiles comparan secciones de la misma ciudad: describen dónde se vota qué, no el efecto de la renta. {SINB} secciones no tienen barrio asignado en nuestro mapa y solo cuentan en los totales.</p>
