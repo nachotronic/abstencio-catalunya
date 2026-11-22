@@ -314,7 +314,7 @@ def estimacion():
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
                           for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023 y Adelante Andalucía', '#e30613')) if b)}{f'<div><b style="color:#1d84ce">{prob(p_desde(pv, 210))}</b><span>de las simulaciones: PP y Vox llegan a 210, los tres quintos</span></div>' if p_desde(pv, 210) is not None else ''}</div>
 <p>{frase}</p>
-<p class="src">En Navarra, UPN y el PP van juntos el 29N en una sola lista, <a href="navarra/">UPN-PP</a> (BOE del 3-11-2026): el modelo la reparte como una candidatura y sus escaños cuentan en la fila del PP y en el bloque PP + Vox.</p>
+<p class="src">En Navarra, UPN y el PP van juntos el 29N en una sola lista, <a href="navarra/">UPN-PP</a> (BOE del 3-11-2026): el modelo la reparte como una candidatura y sus escaños cuentan en la fila del PP y en el bloque PP + Vox. En Canarias, Nueva Canarias, Podemos, IU y Sumar van juntos en <a href="las-palmas/">Unidad del Pueblo Canario</a>: el modelo la reparte como una sola lista y sus escaños cuentan en la fila de Sumar, como hacen las encuestadoras.</p>
 <p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt. Y en el <a href="simulador-pactos/">simulador de pactos</a>, decide qué vota cada partido y mira quién sale investido.</p>
 <figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. Las líneas marcan la mayoría absoluta (176) y los tres quintos (210); en color intenso, la horquilla del 80 %.</span></figcaption>
 <div class="chart" id="dist-bloques"></div></figure>
@@ -1037,7 +1037,9 @@ def provincias():
             v = prov[c]
             rc = reparto_provincia(v)
             con = [l for l in sorted(v['listas'], key=lambda l: (-rc[l['lista']], -l['voto'][1])) if l['escanos'][2] > 0 or rc[l['lista']] > 0]
-            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nombre_lista(l["lista"]).replace(" / Frente Amplio", ""))} <b>{rc[l["lista"]]}</b>'
+            # en Canarias, Sumar va dentro de Unidad del Pueblo Canario (provincias_paginas.UPC)
+            nom_c = lambda l: provincias_paginas.NOMBRE_UPC if c in provincias_paginas.UPC and l == 'Sumar' else nombre_lista(l).replace(' / Frente Amplio', '')
+            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nom_c(l["lista"]))} <b>{rc[l["lista"]]}</b>'
                             + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '') + '</span>' for l in con)
             # un cuadrado por escaño con el reparto central, que suma los escaños de la provincia
             cuad = ''.join(f'<i style="background:{color_lista(l["lista"])}"></i>' * rc[l['lista']] for l in con)

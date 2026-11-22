@@ -291,6 +291,35 @@ PODEMOS_CON_FA = {'03', '12', '46', '35', '38'}
 # listas del PP): la lista cuenta en el bloque del PP y el lector la ve como «UPN-PP» en Navarra.
 UPN_PP = {'31'}
 PODEMOS_CON_ERC = {'08', '17', '25', '43'}
+# En Canarias, Nueva Canarias, Podemos, IU Canaria y los partidos de Sumar van juntos al 29N en una sola lista, «Unidad
+# del Pueblo Canario UPC (NC-BC, PODEMOS, IU, SUMAR)», al Congreso y al Senado en las dos provincias (candidaturas
+# proclamadas, BOE de 3-11-2026; cabezas Luis Alberto Campos en Las Palmas y María Soledad Collado en Santa Cruz de
+# Tenerife). Nueva Canarias no tiene papeleta propia. Las encuestas cuentan a UPC dentro de Sumar / Frente Amplio
+# (partidos_encuestas.csv), así que el voto de NC-BC de 2023 se suma al de Sumar ANTES de ajustar a la media nacional:
+# D'Hondt ve una sola candidatura y el voto de NC no se cuenta dos veces. El lector la ve como «Unidad del Pueblo Canario».
+UPC = {'35', '38'}
+# Una lista del modelo solo tiene voto en las provincias donde está en la papeleta del Congreso (candidaturas
+# proclamadas, BOE de 3-11-2026; Nacho, 22-11-2026: quitar las que no se presentan). Sin esto, la CUP, que no va
+# al 29N, salía con un 5,7 % en Girona, y Sumar en Teruel, Ceuta y Melilla. Se quitan antes de ajustar a la media de
+# encuestas: la lista nacional recupera ese voto en las provincias donde sí se presenta.
+PROCLAMADAS = RAIZ / 'listas-electorales-29n/datos/2026-proclamadas.json'
+PAPELETA = {   # lista del modelo → expresión sobre «denominación + siglas» en mayúsculas
+    'PP': r'PARTIDO POPULAR|\(PP\)|UPN-PP', 'PSOE': r'PSOE', 'Vox': r'\bVOX\b',
+    'Sumar': r'FRENTE AMPLI|FRONT AMPLI|FRONTE AMPL|COMPROM|ARAM.S|UNIDAD DEL PUEBLO CANARIO|CHA-IU',
+    'Podemos': r'\bPODEMOS\b|\bPODEM\b', 'SALF': r'\bSALF\b', 'ERC': r'ESQUERRA REPUBLICANA|\bERC\b', 'Junts': r'\bJUNTS\b',
+    'EH Bildu': r'\bBILDU\b', 'PNV': r'\bPNV\b', 'BNG': r'\bB\.?N\.?G\.?', 'CC': r'COALICI.N CANARIA|\bCCA\b', 'UPN': r'\bUPN\b',
+    'Adelante Andalucía': r'ADELANTE ANDALUC', 'CUP': r'\bCUP\b|UNITAT POPULAR', 'Nueva Canarias': r'NUEVA CANARIAS|NC-BC',
+    'PACMA': r'\bPACMA\b'}
+
+
+def en_papeleta(provs):
+    """Matriz provincias × LISTAS_V1: 1 si la lista se presenta al Congreso en la provincia, 0 si no."""
+    import re
+    c = json.load(open(PROCLAMADAS, encoding='utf-8'))['candidaturas']
+    txt = {p: ' || '.join((x['denominacion'] + ' ' + x['siglas']).upper() for x in c if x['camara'] == 'congreso' and x['prov'] == p)
+           for p in provs}
+    assert all(txt.values()), 'faltan provincias en ' + str(PROCLAMADAS)
+    return np.array([[1.0 if re.search(PAPELETA[k], txt[p]) else 0.0 for k in LISTAS_V1] for p in provs])
 
 
 def base_v1():
@@ -325,7 +354,16 @@ def base_v1():
         if destino:
             cuotas[i, LISTAS_V1.index(destino)] += cuotas[i, LISTAS_V1.index('Podemos')]
             cuotas[i, LISTAS_V1.index('Podemos')] = 0
+        if p in UPC:
+            cuotas[i, LISTAS_V1.index('Sumar')] += cuotas[i, LISTAS_V1.index('Nueva Canarias')]
+            cuotas[i, LISTAS_V1.index('Nueva Canarias')] = 0
     indices = {'SALF': np.array([ind_salf[p] for p in provs]), 'Adelante Andalucía': indice_aa(provs, validos)}
+    # fuera las listas que no están en la papeleta de la provincia (también en el índice de SALF y AA, que sustituye
+    # a su cuota de 2023 en ajusta_a_encuestas)
+    papeleta = en_papeleta(provs)
+    cuotas *= papeleta
+    for k in indices:
+        indices[k] = indices[k] * papeleta[:, LISTAS_V1.index(k)]
     return provs, cuotas, validos, indices
 
 
