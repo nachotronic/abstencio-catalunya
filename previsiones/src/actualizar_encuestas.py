@@ -92,6 +92,13 @@ CORRECCIONES = {
     'https://www.electografica.com/2026/11/encuesta-hamalgama-metrica-261102.html': {'UPN': None},
 }
 
+# Enlaces a la fuente original mal puestos en Electográfica (url de Electográfica -> url correcta, comprobada).
+FUENTES = {
+    # SocioMétrica 21-11 (6.842 entrevistas): Electográfica enlazaba la del 15-11; la del 21-11 da PP 31,8, PSOE 28,5, Vox 18,8
+    'https://www.electografica.com/2026/11/encuesta-sociometrica-261121.html':
+        'https://www.elespanol.com/espana/politica/20261121/tracking-semana-feijoo-sanchez-ganan-escanos-costa-aliados-oposicion-mantiene-debate/1003744467538_0.html',
+}
+
 
 def ambito(a):
     """«GALICIA (Congreso)», «GALICIA» y «GALICIA ▪ Elecciones generales ▪ Sondeo…» (2017-18) son lo mismo."""
@@ -116,7 +123,7 @@ def limpias(rows, equiv):
         out.append({'ambito': r['ambito'], 'publicado': r['publicado'], 'encuestadora': f.get('Encuestadora') or slug_casa(r['url']),
                     'cliente': f.get('Cliente', ''), 'campo_inicio': ini, 'campo_fin': fin, 'muestra': muestra(f.get('Muestra')),
                     'metodo': f.get('Método', ''), **{p: round(votos[p], 2) if p in votos else '' for p in PARTIDOS},
-                    'fuente_original': f.get('Fuente original', ''), 'url_agregador': r['url']})
+                    'fuente_original': FUENTES.get(r['url'], f.get('Fuente original', '')), 'url_agregador': r['url']})
     return out, dict(sin)
 
 
