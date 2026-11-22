@@ -5283,6 +5283,7 @@ PIEZAS += [
         fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de 2011 a 2023 por municipio y sección censal'),
                  ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (renta por unidad de consumo por sección)'),
                  ('https://www.eldebate.com/deportes/futbol/la-liga/20261121/getafe-atletico-madrid-horario-donde-ver-tv-jornada-13-laliga_483606.html', 'El Debate, horario del Getafe-Atlético (21-11-2026)'),
+                 ('https://www.cope.es/programas/tiempo-de-juego/cronica/directo-getafe-atletico-madrid-primera-division-jornada-13-22-20261122_3479847.html', 'COPE, crónica del Getafe-Atlético (22-11-2026)'),
                  ('https://www.infobae.com/espana/2023/07/21/el-extasis-se-apodera-del-psoe-en-el-cierre-de-campana-del-23-j-nos-caimos-nos-levantamos-y-pedaleamos-a-contrarreloj/', 'Infobae, cierre de campaña del PSOE en Getafe (21-7-2023)'),
                  ('https://mapaelectoral.es/encuestas/madrid/', 'Mapa Electoral, encuesta de la provincia de Madrid')],
         enlaces=[],

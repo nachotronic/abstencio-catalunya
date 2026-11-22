@@ -499,10 +499,6 @@
  ],
  "externas": [
   {
-   "texto": "el Coliseum, en la jornada 13 de LaLiga, según El",
-   "fuente": "https://www.eldebate.com/deportes/futbol/la-liga/20261121/getafe-atletico-madrid-horario-donde-ver-tv-jornada-13-laliga_483606.html"
-  },
-  {
    "texto": "29N, Getafe es uno de los cuatro municipios grandes de",
    "fuente": "https://mapaelectoral.es/actualidad/cinturon-rojo-madrid-29n/"
   },
@@ -521,6 +517,18 @@
   {
    "texto": "con un reparto central de 16 escaños para el PP,",
    "fuente": "https://mapaelectoral.es/encuestas/madrid/"
+  },
+  {
+   "texto": "el Coliseum, en la jornada 13 de LaLiga, según el",
+   "fuente": "https://www.eldebate.com/deportes/futbol/la-liga/20261121/getafe-atletico-madrid-horario-donde-ver-tv-jornada-13-laliga_483606.html"
+  },
+  {
+   "texto": "Debate. El Atlético ganó por 0-3, según la crónica",
+   "fuente": "https://www.cope.es/programas/tiempo-de-juego/cronica/directo-getafe-atletico-madrid-primera-division-jornada-13-22-20261122_3479847.html"
+  },
+  {
+   "texto": "Debate. El Atlético ganó por 0-3, según la crónica de",
+   "fuente": "https://www.cope.es/programas/tiempo-de-juego/cronica/directo-getafe-atletico-madrid-primera-division-jornada-13-22-20261122_3479847.html"
   }
  ],
  "ignorar": [
