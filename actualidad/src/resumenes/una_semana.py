@@ -120,6 +120,8 @@ g_ven = figura(f'{GANA_PP} de {len(ULT)} encuestadoras ponen por delante al PP',
 
 # Citas del debate (19-11-2026)
 INFOBAE = 'https://www.infobae.com/espana/2026/11/19/los-8-momentos-del-debate-cara-a-cara-entre-sanchez-y-feijoo-del-que-pongan-los-dos-rombos-al-no-me-deja-hablar/'
+# El informe en PDF del día 10 que enlaza Electográfica da 404; la noticia de El País, la que cita Wikipedia
+PAIS40 = 'https://elpais.com/espana/elecciones-generales/2026-11-21/el-psoe-acaricia-el-empate-con-el-pp-segun-el-tracking-de-40db.html'
 RTVE = 'https://x.com/rtvenoticias/status/2123546350360961071'
 OBJ = 'https://theobjective.com/espana/politica/2026-11-20/debate-sanchez-feijoo-directo/directo/'
 
@@ -137,7 +139,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_med}
 <p data-tipo="dato">Del domingo 15 a este domingo 22 se publicaron {len(SEM)} encuestas de {len(CASAS_SEM)} encuestadoras, muchas de ellas entregas diarias de un mismo tracking. {GANA_PP} de las {len(ULT)} encuestadoras de la mediana ponen por delante al PP; solo {DELANTE_PSOE[0]} da ganador al PSOE. De las {len(PV)} que publican escaños en el último mes, {MAYORIA} dan a PP y Vox juntos 176 o más, contando el extremo bajo de su horquilla.</p>
 {g_dif}
-<p data-tipo="dato">Desde el viernes, {len(TRAS)} encuestas de {len(CASAS_TRAS)} encuestadoras incluyen ya entrevistas posteriores al debate, aunque mezcladas con otras de días anteriores. La última entrega del tracking de <a href="{D40['url']}">40dB. para El País y la SER</a>, la del sábado, deja al PP en el {p(D40['voto']['PP'])} % y al PSOE en el {p(D40['voto']['PSOE'])} %: {p(D40_DIF)} puntos, la distancia más corta de su tracking de campaña. Este domingo, <a href="{HOY_IPSOS['url']}">Ipsos para La Vanguardia</a> da al PP el {p(HOY_IPSOS['voto']['PP'])} % y al PSOE el {p(HOY_IPSOS['voto']['PSOE'])} %, y <a href="{HOY_D10['url']}">Data10 para OKDiario</a>, el {p(HOY_D10['voto']['PP'])} % y el {p(HOY_D10['voto']['PSOE'])} %. El jueves por la mañana, {L('encuestas-elecciones-generales-2026-19-noviembre', 'Sondaxe había dejado al PSOE a 0,7 puntos del PP')}, y el miércoles {L('encuesta-40db-vox-17-29n', 'Vox bajó al 17 % en 40dB.')}</p>
+<p data-tipo="dato">Desde el viernes, {len(TRAS)} encuestas de {len(CASAS_TRAS)} encuestadoras incluyen ya entrevistas posteriores al debate, aunque mezcladas con otras de días anteriores. La última entrega del tracking de <a href="{PAIS40}">40dB. para El País y la SER</a>, la del sábado, deja al PP en el {p(D40['voto']['PP'])} % y al PSOE en el {p(D40['voto']['PSOE'])} %: {p(D40_DIF)} puntos, la distancia más corta de su tracking de campaña. Este domingo, <a href="{HOY_IPSOS['url']}">Ipsos para La Vanguardia</a> da al PP el {p(HOY_IPSOS['voto']['PP'])} % y al PSOE el {p(HOY_IPSOS['voto']['PSOE'])} %, y <a href="{HOY_D10['url']}">Data10 para OKDiario</a>, el {p(HOY_D10['voto']['PP'])} % y el {p(HOY_D10['voto']['PSOE'])} %. El jueves por la mañana, {L('encuestas-elecciones-generales-2026-19-noviembre', 'Sondaxe había dejado al PSOE a 0,7 puntos del PP')}, y el miércoles {L('encuesta-40db-vox-17-29n', 'Vox bajó al 17 % en 40dB.')}</p>
 {g_ven}
 
 <h2>Lo que las encuestas no dicen</h2>

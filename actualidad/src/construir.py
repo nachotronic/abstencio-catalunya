@@ -5281,7 +5281,7 @@ PIEZAS += [
         calculo='Mediana: mapaelectoral.es/encuestas (encuestas/src/construir.py, medianas()), última encuesta de cada encuestadora con campo terminado en los 21 días anteriores. Escaños de PP y Vox: última de cada encuestadora de los últimos 30 días que los publica, extremo bajo de la horquilla. El resto, como se explica en su pieza de origen. Script: actualidad/src/resumenes/una_semana.py.',
         fuentes=[('https://mapaelectoral.es/encuestas/', 'Mapa Electoral, encuestas de las elecciones generales 2026 (22-11-2026)'),
                  ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election', 'Wikipedia, Opinion polling for the 2026 Spanish general election (CC BY-SA 4.0)'),
-                 ('https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia10.pdf', 'El País, tracking de 40dB., día 10 (21-11-2026)'),
+                 ('https://elpais.com/espana/elecciones-generales/2026-11-21/el-psoe-acaricia-el-empate-con-el-pp-segun-el-tracking-de-40db.html', 'El País, tracking de 40dB., día 10 (21-11-2026)'),
                  ('https://www.lavanguardia.com/politica/20261122/11689982/derecha-suma-mayoria-absoluta-psoe-acerca-pp.html', 'La Vanguardia, encuesta de Ipsos (22-11-2026)'),
                  ('https://okdiario.com/espana/psoe-recorta-distancias-pero-pp-sigue-cinco-puntos-delante-socialistas-suma-vox-roza-200-escanos-21240493', 'OKDiario, encuesta de Data10 (22-11-2026)'),
                  ('https://x.com/rtvenoticias/status/2123546350360961071', 'RTVE Noticias, el minuto final de Feijóo en el debate (19-11-2026)'),
