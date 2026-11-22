@@ -425,12 +425,6 @@
    "_donde": "hipotesis"
   },
   {
-   "texto": "barrio donde el PP subió casi quince puntos. Las calles de",
-   "cifra": "quince",
-   "calculo": "D['BARR']['Getafe Norte']['PP']-D['BARR']['Getafe Norte']['PP0']",
-   "_donde": "hipotesis"
-  },
-  {
    "texto": "De 112 secciones a 74",
    "cifra": "112",
    "calculo": "D['G19']['PSOE']",
@@ -477,6 +471,12 @@
    "cifra": "9",
    "calculo": "D['BARR']['Getafe Norte']['n']",
    "_donde": "pie"
+  },
+  {
+   "texto": "barrio donde el PP subió 14,5 puntos en cuatro años.",
+   "cifra": "14,5",
+   "calculo": "D['BARR']['Getafe Norte']['PP']-D['BARR']['Getafe Norte']['PP0']",
+   "_donde": "hipotesis"
   }
  ],
  "externas": [
@@ -533,6 +533,10 @@
   {
    "texto": "por renta y se parten en cinco grupos iguales, el PSOE",
    "motivo": "definición de quintiles: cinco grupos iguales"
+  },
+  {
+   "texto": "el PP subió 14,5 puntos en cuatro años. Las calles de",
+   "motivo": "de 2019 a 2023 (cuenta de calendario)"
   }
  ],
  "permitir_espana": []

@@ -199,7 +199,7 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 
 <h2>Lo que estos datos no dicen</h2>
 <p data-tipo="contexto">Las cifras de sección son de las generales de 2023 y de 2019. Las encuestas del 29N no miden ciudades ni barrios, solo provincias, y nuestro modelo no estima el voto dentro de Getafe. En 2019 no comparamos a Sumar, porque Unidas Podemos y Más País fueron por separado. Los quintiles comparan secciones de la misma ciudad: describen dónde se vota qué, no el efecto de la renta. {SINB} secciones no tienen barrio asignado en nuestro mapa y solo cuentan en los totales.</p>
-<p data-tipo="hipotesis">Y el fútbol no vota. La afición del Getafe y la del Atlético no viven solo junto a sus estadios, y nada de esto dice cómo vota cada una. Lo que sí muestra el mapa es que el Coliseum está en una ciudad que el PSOE ganó por {n(DIFV)} votos y en un barrio donde el PP subió casi quince puntos. Las calles de cada sección están en {L('como-voto-tu-calle', 'cómo votó tu calle')}.</p>
+<p data-tipo="hipotesis">Y el fútbol no vota. La afición del Getafe y la del Atlético no viven solo junto a sus estadios, y nada de esto dice cómo vota cada una. Lo que sí muestra el mapa es que el Coliseum está en una ciudad que el PSOE ganó por {n(DIFV)} votos y en un barrio donde el PP subió {p(GN['PP'] - GN['PP0'])} puntos en cuatro años. Las calles de cada sección están en {L('como-voto-tu-calle', 'cómo votó tu calle')}.</p>
 '''
 
 preguntas = [
