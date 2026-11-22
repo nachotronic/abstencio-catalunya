@@ -1,29 +1,29 @@
 {
- "descargado": "2026-11-22T06:25Z",
+ "descargado": "2026-11-22T14:33Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1131,
- "encuestas_infraestatales": 150,
+ "encuestas_espana": 1137,
+ "encuestas_infraestatales": 152,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-21",
-  "encuestadora": "SW Demoscopia",
-  "cliente": "La Séptima"
+  "publicado": "2026-11-22",
+  "encuestadora": "Sondaxe",
+  "cliente": "La Voz de Galicia"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 36,
+  "UPN-PP": 38,
   "SY": 7,
   "D21": 5,
   "Autonómicas - CUP": 2,
+  "DVC": 2,
   "JxSí": 1,
   "CSQP": 1,
   "CeC": 1,
   "MÉS ESQUERRA": 1,
-  "PSOE (115/117) · VOX": 1,
-  "DVC": 1
+  "PSOE (115/117) · VOX": 1
  },
  "wikipedia": {
-  "encuestas": 440,
+  "encuestas": 445,
   "ultima_fin_campo": "2026-11-21",
-  "faltan_en_electografica_120_dias": 29
+  "faltan_en_electografica_120_dias": 28
  }
 }
