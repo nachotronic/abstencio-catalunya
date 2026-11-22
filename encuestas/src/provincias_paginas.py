@@ -14,6 +14,14 @@ NOTA_UPN_PP = ('<p data-tipo="contexto">UPN y el PP van juntos el 29N en una sol
                '<a href="https://www.boe.es/boe/dias/2026/11/03/pdfs/BOE-A-2026-23103.pdf">candidaturas proclamadas en el BOE del 3 de noviembre</a>. '
                'Las encuestas siguen midiendo a UPN aparte del PP; el modelo suma las dos estimaciones en Navarra y reparte los escaños como una sola lista. '
                'En 2023 fueron por separado y sacaron un diputado cada uno.</p>')
+UPC = {'35', '38'}   # provincias donde Sumar concurre dentro de Unidad del Pueblo Canario (previsiones/src/motor.py, UPC)
+NOMBRE_UPC = 'Unidad del Pueblo Canario'
+CABEZA_UPC = {'35': 'Luis Alberto Campos', '38': 'María Soledad Collado'}
+NOTA_UPC = ('<p data-tipo="contexto">Nueva Canarias, Podemos, Izquierda Unida Canaria y los partidos de Sumar van juntos el 29N en una sola candidatura, '
+            '«Unidad del Pueblo Canario UPC (NC-BC, Podemos, IU, Sumar)», al Congreso y al Senado en las dos provincias canarias: en {nombre} la encabeza {cabeza}, según las '
+            '<a href="https://www.boe.es/boe/dias/2026/11/03/pdfs/BOE-A-2026-23103.pdf">candidaturas proclamadas en el BOE del 3 de noviembre</a>. '
+            'Las encuestas la cuentan dentro de Sumar / Frente Amplio; el modelo suma en Canarias el voto de 2023 de Sumar y el de Nueva Canarias '
+            'y reparte los escaños como una sola lista. En 2023 fueron por separado.</p>')
 
 
 def genera(d, meta, c, ruta_provincia, slug_provincia):
@@ -36,7 +44,9 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
         segundo = sorted(v['listas'], key=lambda l: -l['p_primera'])[1]
         # en Navarra el PP va con UPN en una sola lista, UPN-PP (motor.une_upn_pp): el lector la ve con su nombre
         upn_pp = cod in UPN_PP
-        n = lambda l: 'UPN-PP' if upn_pp and l == 'PP' else c.nombre_lista(l)
+        # en Canarias, Sumar va dentro de Unidad del Pueblo Canario con Nueva Canarias y Podemos (motor.py, UPC)
+        upc = cod in UPC
+        n = lambda l: 'UPN-PP' if upn_pp and l == 'PP' else NOMBRE_UPC if upc and l == 'Sumar' else c.nombre_lista(l)
         corto = lambda l: n(l).replace(' / Frente Amplio', '')
         art = lambda l: 'el ' if l in ('PP', 'PSOE', 'PNV', 'BNG') and not (upn_pp and l == 'PP') else ''
         pp = lambda x: f'{round(x * 100)} %' if 0.01 <= x <= 0.99 else ('menos del 1 %' if x < 0.01 else 'más del 99 %')
@@ -115,7 +125,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <div class="ley">{ley}</div></figure>
 <p data-tipo="dato">{html.escape(p2)}</p>
 <p data-tipo="dato">{html.escape(p3)}</p>
-{NOTA_UPN_PP if upn_pp else ''}
+{NOTA_UPN_PP if upn_pp else ''}{NOTA_UPC.format(nombre=html.escape(nombre), cabeza=CABEZA_UPC[cod]) if upc else ''}
 <h2>Voto y escaños de cada partido en {html.escape(nombre)}</h2>
 <div class="tbl"><table><thead><tr><th>Partido</th><th class="n">Voto (80 %)</th><th class="n">Escaños (80 %)</th><th class="n">Primero</th></tr></thead><tbody>{filas}</tbody></table></div>
 <p class="src">Cifra grande: reparto central, la mediana de las simulaciones ajustada para que sume los escaños de la provincia; debajo, el intervalo del 80 %. {html.escape(meta.get('aviso', ''))} <a href="../../{ruta_provincia(cod)}">Resultados de 2023 en {html.escape(nombre)}, sección a sección →</a></p>

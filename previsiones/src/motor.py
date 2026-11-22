@@ -291,6 +291,13 @@ PODEMOS_CON_FA = {'03', '12', '46', '35', '38'}
 # listas del PP): la lista cuenta en el bloque del PP y el lector la ve como «UPN-PP» en Navarra.
 UPN_PP = {'31'}
 PODEMOS_CON_ERC = {'08', '17', '25', '43'}
+# En Canarias, Nueva Canarias, Podemos, IU Canaria y los partidos de Sumar van juntos al 29N en una sola lista, «Unidad
+# del Pueblo Canario UPC (NC-BC, PODEMOS, IU, SUMAR)», al Congreso y al Senado en las dos provincias (candidaturas
+# proclamadas, BOE de 3-11-2026; cabezas Luis Alberto Campos en Las Palmas y María Soledad Collado en Santa Cruz de
+# Tenerife). Nueva Canarias no tiene papeleta propia. Las encuestas cuentan a UPC dentro de Sumar / Frente Amplio
+# (partidos_encuestas.csv), así que el voto de NC-BC de 2023 se suma al de Sumar ANTES de ajustar a la media nacional:
+# D'Hondt ve una sola candidatura y el voto de NC no se cuenta dos veces. El lector la ve como «Unidad del Pueblo Canario».
+UPC = {'35', '38'}
 
 
 def base_v1():
@@ -325,6 +332,9 @@ def base_v1():
         if destino:
             cuotas[i, LISTAS_V1.index(destino)] += cuotas[i, LISTAS_V1.index('Podemos')]
             cuotas[i, LISTAS_V1.index('Podemos')] = 0
+        if p in UPC:
+            cuotas[i, LISTAS_V1.index('Sumar')] += cuotas[i, LISTAS_V1.index('Nueva Canarias')]
+            cuotas[i, LISTAS_V1.index('Nueva Canarias')] = 0
     indices = {'SALF': np.array([ind_salf[p] for p in provs]), 'Adelante Andalucía': indice_aa(provs, validos)}
     return provs, cuotas, validos, indices
 
