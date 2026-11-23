@@ -12,6 +12,19 @@
    }
   ]
  },
+ "alava/ana-lopez-de-uralde-gomez": {
+  "nombre": "Ana López de Uralde Gómez",
+  "prov": "01",
+  "siglas": "PSOE",
+  "n": 2,
+  "texto": "Es concejala en el Ayuntamiento de Vitoria-Gasteiz.",
+  "fuentes": [
+   {
+    "medio": "PSE-EE",
+    "url": "https://socialistasvascos.com/patxi-lopez-rafaela-romero-y-javier-hurtado-encabezaran-las-candidaturas-del-pse-ee-en-las-elecciones-generales-del-29n.htm"
+   }
+  ]
+ },
  "alava/gorka-urtaran-agirre": {
   "nombre": "Gorka Urtaran Agirre",
   "prov": "01",
@@ -22,6 +35,36 @@
    {
     "medio": "Demócrata",
     "url": "https://www.democrata.es/elecciones-generales-espana/quienes-encabezaran-listas-pnv-congreso-nombres-con-aitor-esteban-afronta-29n/"
+   }
+  ]
+ },
+ "alava/javier-hurtado-dominguez": {
+  "nombre": "Javier Hurtado Domínguez",
+  "prov": "01",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Es secretario general del PSE-EE de Álava y fue durante seis años consejero de Turismo, Comercio y Consumo del Gobierno Vasco.",
+  "fuentes": [
+   {
+    "medio": "PSE-EE",
+    "url": "https://socialistasvascos.com/patxi-lopez-rafaela-romero-y-javier-hurtado-encabezaran-las-candidaturas-del-pse-ee-en-las-elecciones-generales-del-29n.htm"
+   }
+  ]
+ },
+ "albacete/ruben-herrero-de-castro": {
+  "nombre": "Rubén Herrero de Castro",
+  "prov": "02",
+  "siglas": "VOX",
+  "n": 1,
+  "texto": "Es profesor de la Facultad de Ciencias Políticas de la Universidad Complutense de Madrid.",
+  "fuentes": [
+   {
+    "medio": "El Español",
+    "url": "https://www.elespanol.com/eldigitalcastillalamancha/region/20261021/cabezas-lista-vox-congreso-provincias-castilla-la-mancha-cara/1003744429981_0.html"
+   },
+   {
+    "medio": "El Plural",
+    "url": "https://www.elplural.com/autonomias/castilla-la-mancha/todas-listas-congreso-castilla-la-mancha-29n-44-candidatos-encabezan-papeletas_802602102"
    }
   ]
  },
@@ -125,11 +168,11 @@
   "prov": "05",
   "siglas": "VOX",
   "n": 1,
-  "texto": "Es portavoz nacional de Seguridad, Inmigración e Interior de Vox.",
+  "texto": "Es el portavoz nacional de Vox de Seguridad, Inmigración y Asuntos de Interior.",
   "fuentes": [
    {
-    "medio": "El Debate, 21 de octubre de 2026",
-    "url": "https://www.eldebate.com/espana/20261021/estos-son-cabezas-lista-vox-29n_472379_amp.html"
+    "medio": "El Debate",
+    "url": "https://www.eldebate.com/espana/castilla-y-leon/20261021/estos-son-cabezas-lista-vox-castilla-leon-29n_472386.html"
    }
   ]
  },
@@ -143,6 +186,36 @@
    {
     "medio": "El Debate, 21 de octubre de 2026",
     "url": "https://www.eldebate.com/espana/20261021/estos-son-cabezas-lista-vox-29n_472379_amp.html"
+   }
+  ]
+ },
+ "badajoz/maria-teresa-tortonda-gordillo": {
+  "nombre": "María Teresa Tortonda Gordillo",
+  "prov": "06",
+  "siglas": "PP",
+  "n": 1,
+  "texto": "Es diputada del PP en la Asamblea de Extremadura y fue senadora por Badajoz en la XII legislatura.",
+  "fuentes": [
+   {
+    "medio": "elDiario.es",
+    "url": "https://www.eldiario.es/extremadura/politica/exvicepresidenta-junta-diputada-autonomica-lideran-listas-pp-extremeno-congreso_1_13604078.html"
+   },
+   {
+    "medio": "Canal Extremadura",
+    "url": "https://www.canalextremadura.es/noticias/nacional/cristina-teniente-y-teresa-tortonda-encabezaran-las-listas-del-pp-de-extremadura"
+   }
+  ]
+ },
+ "badajoz/maria-yolanda-garcia-seco": {
+  "nombre": "María Yolanda García Seco",
+  "prov": "06",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Fue delegada del Gobierno en Extremadura.",
+  "fuentes": [
+   {
+    "medio": "Onda Cero",
+    "url": "https://ondacerosur.es/2026/10/176954/"
    }
   ]
  },
@@ -250,6 +323,45 @@
    }
   ]
  },
+ "bizkaia/esther-martinez-fernandez": {
+  "nombre": "Esther Martínez Fernández",
+  "prov": "48",
+  "siglas": "PP",
+  "n": 1,
+  "texto": "Es secretaria general del PP vasco y portavoz del grupo popular en el Ayuntamiento de Bilbao. Antes fue parlamentaria vasca y concejala en Barakaldo.",
+  "fuentes": [
+   {
+    "medio": "El Español",
+    "url": "https://www.elespanol.com/reportajes/20260721/esther-martinez-concejal-pp-bilbao-desafio-abanico-radicales-plena-final-llevan-delante/1003744327990_0.html"
+   }
+  ]
+ },
+ "bizkaia/gabriel-blanco-arrue": {
+  "nombre": "Gabriel Blanco Arrue",
+  "prov": "48",
+  "siglas": "PSOE",
+  "n": 3,
+  "texto": "Es secretario general de Juventudes Socialistas de Euskadi.",
+  "fuentes": [
+   {
+    "medio": "PSE-EE",
+    "url": "https://socialistasvascos.com/patxi-lopez-rafaela-romero-y-javier-hurtado-encabezaran-las-candidaturas-del-pse-ee-en-las-elecciones-generales-del-29n.htm"
+   }
+  ]
+ },
+ "bizkaia/maria-guijarro-ceballos": {
+  "nombre": "Maria Guijarro Ceballos",
+  "prov": "48",
+  "siglas": "PSOE",
+  "n": 2,
+  "texto": "Es secretaria de Estado de Igualdad y para la Erradicación de la Violencia contra las Mujeres.",
+  "fuentes": [
+   {
+    "medio": "PSE-EE",
+    "url": "https://socialistasvascos.com/patxi-lopez-rafaela-romero-y-javier-hurtado-encabezaran-las-candidaturas-del-pse-ee-en-las-elecciones-generales-del-29n.htm"
+   }
+  ]
+ },
  "bizkaia/patxi-lopez-alvarez": {
   "nombre": "Patxi López Alvarez",
   "prov": "48",
@@ -260,6 +372,32 @@
    {
     "medio": "Vozpópuli, 1 de noviembre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/purga-a-medias-en-ferraz-sanchez-recupera-en-las-listas-para-el-29-n-al-entorno-de-cerdan-y-fulmina-a-narbona.html"
+   }
+  ]
+ },
+ "burgos/andrea-ballesteros-palacios": {
+  "nombre": "Andrea Ballesteros Palacios",
+  "prov": "09",
+  "siglas": "PP",
+  "n": 2,
+  "texto": "Es concejala y presidenta autonómica de Nuevas Generaciones del PP.",
+  "fuentes": [
+   {
+    "medio": "El Debate",
+    "url": "https://www.eldebate.com/espana/castilla-y-leon/20261023/estos-son-candidatos-pp-castilla-leon-elecciones-29n_473281.html"
+   }
+  ]
+ },
+ "caceres/irene-pozas-garcia": {
+  "nombre": "Irene Pozas García",
+  "prov": "10",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Fue secretaria general de Juventudes Socialistas en la provincia de Cáceres.",
+  "fuentes": [
+   {
+    "medio": "Onda Cero",
+    "url": "https://ondacerosur.es/2026/10/176954/"
    }
   ]
  },
@@ -349,6 +487,45 @@
    }
   ]
  },
+ "gipuzkoa/eneko-goia-laso": {
+  "nombre": "Eneko Goia Laso",
+  "prov": "20",
+  "siglas": "EAJ-PNV",
+  "n": 2,
+  "texto": "Fue alcalde de Donostia-San Sebastián.",
+  "fuentes": [
+   {
+    "medio": "Moncloa.com",
+    "url": "https://www.moncloa.com/2026/10/17/listas-pnv-congreso-29n-3450355"
+   }
+  ]
+ },
+ "gipuzkoa/jose-ignacio-asensio-bazterra": {
+  "nombre": "José Ignacio Asensio Bazterra",
+  "prov": "20",
+  "siglas": "PSOE",
+  "n": 2,
+  "texto": "Es secretario general del PSE-EE de Gipuzkoa, primer teniente de diputado general y diputado foral de Sostenibilidad de Gipuzkoa.",
+  "fuentes": [
+   {
+    "medio": "PSE-EE",
+    "url": "https://socialistasvascos.com/patxi-lopez-rafaela-romero-y-javier-hurtado-encabezaran-las-candidaturas-del-pse-ee-en-las-elecciones-generales-del-29n.htm"
+   }
+  ]
+ },
+ "gipuzkoa/maribel-vaquero-montero": {
+  "nombre": "Maribel Vaquero Montero",
+  "prov": "20",
+  "siglas": "EAJ-PNV",
+  "n": 1,
+  "texto": "Es la portavoz del grupo vasco (PNV) en el Congreso.",
+  "fuentes": [
+   {
+    "medio": "Moncloa.com",
+    "url": "https://www.moncloa.com/2026/10/17/listas-pnv-congreso-29n-3450355"
+   }
+  ]
+ },
  "granada/jorge-saavedra-requena": {
   "nombre": "Jorge Saavedra Requena",
   "prov": "18",
@@ -359,6 +536,32 @@
    {
     "medio": "elDiario.es, 23 de octubre de 2026",
     "url": "https://www.eldiario.es/1_cfac3f"
+   }
+  ]
+ },
+ "granada/maria-jose-sanchez-sanchez": {
+  "nombre": "María José Sánchez Sánchez",
+  "prov": "18",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Es alcaldesa de Albuñol.",
+  "fuentes": [
+   {
+    "medio": "101TV",
+    "url": "https://101tvsevilla.es/los-candidatos-andaluces-al-congreso-las-listas-del-29n-en-las-ocho-provincias/"
+   }
+  ]
+ },
+ "guadalajara/maria-jesus-merino-poyo": {
+  "nombre": "María Jesús Merino Poyo",
+  "prov": "19",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Es alcaldesa de Sigüenza.",
+  "fuentes": [
+   {
+    "medio": "El Plural",
+    "url": "https://www.elplural.com/autonomias/castilla-la-mancha/todas-listas-congreso-castilla-la-mancha-29n-44-candidatos-encabezan-papeletas_802602102"
    }
   ]
  },
@@ -375,6 +578,23 @@
    }
   ]
  },
+ "illes-balears/antonia-roca-bellinfante": {
+  "nombre": "Antònia Roca Bellinfante",
+  "prov": "07",
+  "siglas": "PP",
+  "n": 2,
+  "texto": "Es vicepresidenta primera del Consell de Mallorca.",
+  "fuentes": [
+   {
+    "medio": "La Voz de Ibiza",
+    "url": "https://lavozdeibiza.com/baleares/elecciones-del-29n-en-baleares-quienes-son-los-candidatos-al-congreso-y-al-senado-y-las-sorpresas-de-las-listas/"
+   },
+   {
+    "medio": "Menorca.info",
+    "url": "https://www.menorca.info/actualidad/elecciones-29n/2026/10/26/2736393/baleares-pone-nombre-batalla-electoral-del-29n.html"
+   }
+  ]
+ },
  "illes-balears/francesca-lluch-armengol-socias": {
   "nombre": "Francesca Lluch Armengol Socias",
   "prov": "07",
@@ -385,6 +605,45 @@
    {
     "medio": "Vozpópuli, 1 de noviembre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/purga-a-medias-en-ferraz-sanchez-recupera-en-las-listas-para-el-29-n-al-entorno-de-cerdan-y-fulmina-a-narbona.html"
+   }
+  ]
+ },
+ "illes-balears/marc-isaac-pons-pons": {
+  "nombre": "Marc Isaac Pons Pons",
+  "prov": "07",
+  "siglas": "PSIB-PSOE",
+  "n": 2,
+  "texto": "Es diputado en el Parlament balear.",
+  "fuentes": [
+   {
+    "medio": "La Voz de Ibiza",
+    "url": "https://lavozdeibiza.com/baleares/elecciones-del-29n-en-baleares-quienes-son-los-candidatos-al-congreso-y-al-senado-y-las-sorpresas-de-las-listas/"
+   }
+  ]
+ },
+ "illes-balears/maria-isabel-cerezo-sanchez": {
+  "nombre": "María Isabel Cerezo Sánchez",
+  "prov": "07",
+  "siglas": "VOX",
+  "n": 1,
+  "texto": "Doctora en Ciencia y Tecnología y licenciada en Ciencias del Mar, es militante de Vox desde 2019 y fue concejala en La Pobla de Vallbona entre 2023 y 2024.",
+  "fuentes": [
+   {
+    "medio": "Menorca.info",
+    "url": "https://www.menorca.info/actualidad/elecciones-29n/2026/10/26/2736393/baleares-pone-nombre-batalla-electoral-del-29n.html"
+   }
+  ]
+ },
+ "jaen/isabel-uceda-cantero": {
+  "nombre": "Isabel Uceda Cantero",
+  "prov": "23",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Es alcaldesa de Lopera.",
+  "fuentes": [
+   {
+    "medio": "101TV",
+    "url": "https://101tvsevilla.es/los-candidatos-andaluces-al-congreso-las-listas-del-29n-en-las-ocho-provincias/"
    }
   ]
  },
@@ -411,6 +670,19 @@
    {
     "medio": "El Debate, 21 de octubre de 2026",
     "url": "https://www.eldebate.com/espana/20261021/estos-son-cabezas-lista-vox-29n_472379_amp.html"
+   }
+  ]
+ },
+ "leon/ricardo-gavilanes-fernandez-llamazares": {
+  "nombre": "Ricardo Gavilanes Fernández Llamazares",
+  "prov": "24",
+  "siglas": "PP",
+  "n": 2,
+  "texto": "Ha sido procurador del PP en las Cortes de Castilla y León.",
+  "fuentes": [
+   {
+    "medio": "El Debate",
+    "url": "https://www.eldebate.com/espana/castilla-y-leon/20261023/estos-son-candidatos-pp-castilla-leon-elecciones-29n_473281.html"
    }
   ]
  },
@@ -789,6 +1061,19 @@
    }
   ]
  },
+ "malaga/jose-bernal-gutierrez": {
+  "nombre": "José Bernal Gutiérrez",
+  "prov": "29",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Es secretario de Organización del PSOE de Málaga, diputado provincial y concejal en Marbella.",
+  "fuentes": [
+   {
+    "medio": "101TV",
+    "url": "https://101tvsevilla.es/los-candidatos-andaluces-al-congreso-las-listas-del-29n-en-las-ocho-provincias/"
+   }
+  ]
+ },
  "murcia/carmen-maria-conesa-nieto": {
   "nombre": "Carmen María Conesa Nieto",
   "prov": "30",
@@ -799,6 +1084,19 @@
    {
     "medio": "Vozpópuli, 28 de octubre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/feijoo-recurre-a-candidatos-autonomicos-con-talento-y-gestion-para-rearmar-su-proyecto-politico.html"
+   }
+  ]
+ },
+ "murcia/diego-aviles-correas": {
+  "nombre": "Diego Avilés Correas",
+  "prov": "30",
+  "siglas": "PP",
+  "n": 2,
+  "texto": "Es concejal de Cultura e Identidad del Ayuntamiento de Murcia y portavoz del grupo popular municipal.",
+  "fuentes": [
+   {
+    "medio": "Murcia Plaza",
+    "url": "https://murciaplaza.com/murciaplaza/region/la-lista-del-pp-al-29n-por-murcia-diego-aviles-juan-luis-pedreno-y-patricia-martinez-copete"
    }
   ]
  },
@@ -828,6 +1126,45 @@
    }
   ]
  },
+ "navarra/leticia-san-martin-rodriguez-upn": {
+  "nombre": "Leticia San Martín Rodríguez (UPN)",
+  "prov": "31",
+  "siglas": "UPN-PP",
+  "n": 1,
+  "texto": "Enfermera, fue elegida parlamentaria foral de UPN en 2023, donde ha sido portavoz de Salud del grupo. Entre 2018 y 2023 fue vicepresidenta del Colegio Oficial de Enfermeras de Navarra.",
+  "fuentes": [
+   {
+    "medio": "Redacción Médica",
+    "url": "https://www.redaccionmedica.com/autonomias/20241009/debemos-incentivar-al-profesional-sanitario-en-funcion-del-rendimiento/226594_0.html"
+   }
+  ]
+ },
+ "ourense/maria-del-carmen-rodriguez-dacosta": {
+  "nombre": "María del Carmen Rodríguez Dacosta",
+  "prov": "32",
+  "siglas": "PSdeG-PSOE",
+  "n": 1,
+  "texto": "Es diputada en el Parlamento de Galicia.",
+  "fuentes": [
+   {
+    "medio": "El Español (Quincemil)",
+    "url": "https://www.elespanol.com/quincemil/actualidad/galicia/20261017/psoe-confirma-cabezas-lista-galicia-elecciones-generales/1003744424078_0.html"
+   }
+  ]
+ },
+ "pontevedra/abel-fermin-losada-alvarez": {
+  "nombre": "Abel Fermín Losada Álvarez",
+  "prov": "36",
+  "siglas": "PSdeG-PSOE",
+  "n": 1,
+  "texto": "Ha sido subdelegado del Gobierno en Pontevedra.",
+  "fuentes": [
+   {
+    "medio": "El Español (Quincemil)",
+    "url": "https://www.elespanol.com/quincemil/actualidad/galicia/20261017/psoe-confirma-cabezas-lista-galicia-elecciones-generales/1003744424078_0.html"
+   }
+  ]
+ },
  "pontevedra/maria-carme-da-silva-mendez": {
   "nombre": "María Carme da Silva Méndez",
   "prov": "36",
@@ -838,6 +1175,32 @@
    {
     "medio": "Moncloa.com, 25 de octubre de 2026",
     "url": "https://www.moncloa.com/2026/10/25/bng-listas-29n-olalla-rodil-lugo-3455123/"
+   }
+  ]
+ },
+ "salamanca/maria-del-carmen-seguin-kattan": {
+  "nombre": "María del Carmen Seguín Kattán",
+  "prov": "37",
+  "siglas": "PP",
+  "n": 1,
+  "texto": "Periodista, es teniente de alcalde del Ayuntamiento de Salamanca, al que llegó como directora de Comunicación.",
+  "fuentes": [
+   {
+    "medio": "El Debate",
+    "url": "https://www.eldebate.com/espana/castilla-y-leon/20261023/estos-son-candidatos-pp-castilla-leon-elecciones-29n_473281.html"
+   }
+  ]
+ },
+ "santa-cruz-de-tenerife/jose-antonio-valbuena-alonso": {
+  "nombre": "José Antonio Valbuena Alonso",
+  "prov": "38",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Es senador designado por el Parlamento de Canarias y profesor titular de la Universidad de La Laguna. Fue consejero de Transición Ecológica del Gobierno de Canarias entre 2019 y 2023 y vicepresidente del Cabildo de Tenerife.",
+  "fuentes": [
+   {
+    "medio": "RTVC",
+    "url": "https://rtvc.es/jose-antonio-valbuena-candidato-del-psoe-al-congreso-13-noviembre-2026/"
    }
   ]
  },
@@ -901,8 +1264,21 @@
   "texto": "Es alcalde de Toledo.",
   "fuentes": [
    {
-    "medio": "Vozpópuli, 28 de octubre de 2026",
-    "url": "https://www.vozpopuli.com/espana/politica/feijoo-recurre-a-candidatos-autonomicos-con-talento-y-gestion-para-rearmar-su-proyecto-politico.html"
+    "medio": "El Plural",
+    "url": "https://www.elplural.com/autonomias/castilla-la-mancha/todas-listas-congreso-castilla-la-mancha-29n-44-candidatos-encabezan-papeletas_802602102"
+   }
+  ]
+ },
+ "toledo/carolina-agudo-alonso": {
+  "nombre": "Carolina Agudo Alonso",
+  "prov": "45",
+  "siglas": "PP",
+  "n": 2,
+  "texto": "Es secretaria general del PP de Castilla-La Mancha.",
+  "fuentes": [
+   {
+    "medio": "El Plural",
+    "url": "https://www.elplural.com/autonomias/castilla-la-mancha/todas-listas-congreso-castilla-la-mancha-29n-44-candidatos-encabezan-papeletas_802602102"
    }
   ]
  },
@@ -1019,11 +1395,50 @@
   "prov": "47",
   "siglas": "PP",
   "n": 1,
-  "texto": "Ha sido consejera de Educación de la Junta de Castilla y León.",
+  "texto": "Ha sido consejera de Educación de la Junta de Castilla y León y es procuradora en las Cortes.",
   "fuentes": [
    {
-    "medio": "Vozpópuli, 28 de octubre de 2026",
-    "url": "https://www.vozpopuli.com/espana/politica/feijoo-recurre-a-candidatos-autonomicos-con-talento-y-gestion-para-rearmar-su-proyecto-politico.html"
+    "medio": "El Debate",
+    "url": "https://www.eldebate.com/espana/castilla-y-leon/20261023/estos-son-candidatos-pp-castilla-leon-elecciones-29n_473281.html"
+   }
+  ]
+ },
+ "zamora/miguel-suarez-arca": {
+  "nombre": "Miguel Suárez Arca",
+  "prov": "49",
+  "siglas": "VOX",
+  "n": 1,
+  "texto": "Fue procurador de Vox por León en las Cortes de Castilla y León en la pasada legislatura.",
+  "fuentes": [
+   {
+    "medio": "El Debate",
+    "url": "https://www.eldebate.com/espana/castilla-y-leon/20261021/estos-son-cabezas-lista-vox-castilla-leon-29n_472386.html"
+   }
+  ]
+ },
+ "zaragoza/fernando-angel-beltran-blazquez": {
+  "nombre": "Fernando Ángel Beltrán Blázquez",
+  "prov": "50",
+  "siglas": "PSOE",
+  "n": 1,
+  "texto": "Ha sido delegado del Gobierno en Aragón, cargo que deja para encabezar la lista socialista al Congreso por Zaragoza.",
+  "fuentes": [
+   {
+    "medio": "Aragón Digital",
+    "url": "https://www.aragondigital.es/articulo/politica/son-candidatos-aragon-congreso-elecciones-generales-29n/202610301108441018904.html"
+   }
+  ]
+ },
+ "zaragoza/maria-carmen-rouco-laliena": {
+  "nombre": "María Carmen Rouco Laliena",
+  "prov": "50",
+  "siglas": "VOX",
+  "n": 1,
+  "texto": "Es vicepresidenta primera de las Cortes de Aragón.",
+  "fuentes": [
+   {
+    "medio": "Aragón Digital",
+    "url": "https://www.aragondigital.es/articulo/politica/son-candidatos-aragon-congreso-elecciones-generales-29n/202610301108441018904.html"
    }
   ]
  }
