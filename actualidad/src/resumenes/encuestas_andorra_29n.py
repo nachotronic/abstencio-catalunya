@@ -49,7 +49,7 @@ g_tr = figura('En 2023, «encuestas andorra» solo se buscó la semana de la ved
               (['Día', '«encuestas andorra»', '«encuestas prohibidas»'], [[f'{d.day} de julio de 2023', str(AND[d]), str(PRO[d])] for d in T.index]))
 
 cuerpo = f'''
-<p data-tipo="contexto">Las «encuestas de Andorra» son encuestas de las elecciones españolas publicadas por medios de fuera de España durante la veda, los cinco días antes de votar en los que la ley lo prohíbe aquí. Las más conocidas son las de El Periòdic d'Andorra, que publicó sondeos así en varias elecciones. Para el 29N, la veda va del martes 24 al sábado 28 de noviembre. En mapaelectoral.es no publicamos cifras de ninguna encuesta en esos días, tampoco de las de fuera, ni enlazamos a ellas.</p>
+<p data-tipo="contexto">Las «encuestas de Andorra» son encuestas de las elecciones españolas publicadas por medios de fuera de España durante la veda, los cinco días antes de votar en los que la ley lo prohíbe aquí. Las más conocidas son las de El Periòdic d'Andorra, que publicó sondeos así en varias elecciones. Para el 29N, la veda empieza el martes 24 de noviembre y dura hasta que cierren los colegios el domingo 29. En mapaelectoral.es no publicamos cifras de ninguna encuesta hasta las 21.00 del domingo, cuando cierran los últimos colegios, en Canarias; tampoco de las de fuera, ni enlazamos a ellas.</p>
 <h2>Qué dice la ley</h2>
 <p data-tipo="dato">«Durante los cinco días anteriores al de la votación queda prohibida la publicación y difusión o reproducción de sondeos electorales por cualquier medio de comunicación» (<a href="{L69}">artículo 69.7 de la LOREG</a>). Las infracciones en materia de encuestas se castigan con multa «de 3.000 a 30.000 de euros» (<a href="{L153}">artículo 153</a>), y el <a href="{L145}">artículo 145</a> castiga como delito, con «prisión de tres meses a un año», a «quienes infrinjan la normativa vigente en materia de encuestas electorales». La ley prohíbe publicarlas, difundirlas y reproducirlas; no prohíbe hacerlas, y los partidos siguen encargando las suyas. Cómo se aplica al 29N, día a día, en {L("veda-encuestas-29n", "la pieza sobre la veda de encuestas")}.</p>
 <h2>De Andorra a Australia</h2>
@@ -58,14 +58,14 @@ cuerpo = f'''
 {g_tr}
 <h2>Las encuestas encubiertas</h2>
 <p data-tipo="dato">La Junta Electoral Central también ha actuado contra encuestas disfrazadas. En las autonómicas de Castilla y León de 2022, abrió expediente por los «Emojipanel» de Electomanía, publicados en la recta final con productos gastronómicos en lugar de partidos. La Junta escribió que «con estas prácticas se intenta eludir la prohibición» del artículo 69.7, según <a href="{DEBATE}">El Debate</a>. Para la Junta, que no apareciera el nombre de los partidos no cambiaba nada, porque «quién viese esos paneles de manera sencilla podría asociar su resultado con la intención de voto de cada formación política».</p>
-<p data-tipo="contexto">Las encuestas publicadas hasta el lunes 23 siguen en <a href="{BASE}encuestas/">la página de encuestas de las elecciones generales 2026</a>, que no añade ninguna durante la veda. Desde las 20.00 del domingo, cuando cierren los colegios, el mapa irá mostrando el recuento: {L("a-que-hora-resultados-elecciones-generales-29n", "a qué hora llegan los resultados")}.</p>
+<p data-tipo="contexto">Las encuestas publicadas hasta el lunes 23 siguen en <a href="{BASE}encuestas/">la página de encuestas de las elecciones generales 2026</a>, que no añade ninguna durante la veda. Desde las 21.00 del domingo, cuando cierren los últimos colegios, en Canarias, el mapa irá mostrando el recuento: {L("a-que-hora-resultados-elecciones-generales-29n", "a qué hora llegan los resultados")}.</p>
 '''
 
 preguntas = [
     ('¿Qué son las encuestas de Andorra?',
      'Encuestas de las elecciones españolas publicadas durante la veda por medios de fuera de España, a los que no alcanza la ley española. Las más conocidas son las de El Periòdic d\'Andorra, que las publicó en varias elecciones desde 2008.'),
     ('¿Cuándo empieza la veda de encuestas del 29N?',
-     f'El martes 24 de noviembre. Del 24 al sábado 28 está prohibido publicar, difundir o reproducir encuestas electorales en España (<a href="{L69}">artículo 69.7 de la LOREG</a>).'),
+     f'El martes 24 de noviembre. La ley prohíbe publicar, difundir o reproducir encuestas electorales en España los cinco días anteriores a la votación (<a href="{L69}">artículo 69.7 de la LOREG</a>), y el domingo tampoco se publican hasta que cierran los colegios. En mapaelectoral.es no publicamos cifras de encuestas hasta las 21.00 del domingo 29.'),
     ('¿Qué multa hay por publicar encuestas prohibidas?',
      f'De 3.000 a 30.000 euros (<a href="{L153}">artículo 153</a>). El <a href="{L145}">artículo 145</a> castiga además como delito, con prisión de tres meses a un año, infringir la normativa de encuestas.'),
     ('¿Se pueden hacer encuestas durante la veda?',
@@ -80,7 +80,7 @@ DATOS = {'RATIO': round(RATIO, 3), 'AND': {d.strftime('%Y-%m-%d'): int(v) for d,
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 TITULO = 'Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley'
-DEK = ('Son encuestas publicadas fuera de España durante la veda, del 24 al 28 de noviembre. En 2023, «encuestas andorra» solo se buscó la semana de la veda, '
+DEK = ('Son encuestas publicadas fuera de España durante la veda, que va del martes 24 hasta que cierren los colegios el domingo 29. En 2023, «encuestas andorra» solo se buscó la semana de la veda, '
        'con el máximo en la jornada de reflexión.')
 pieza(SLUG, 'Encuestas de Andorra', TITULO, DEK, '23 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(TITULO); print(DEK); print(RATIO)

@@ -5271,7 +5271,7 @@ PIEZAS += [
     dict(
         slug='encuestas-andorra-29n', fecha='2026-11-23',
         titulo='Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley', serie='29n', figura=0,
-        descripcion='Son encuestas publicadas fuera de España durante la veda, del 24 al 28 de noviembre. En 2023, «encuestas andorra» solo se buscó la semana de la veda, con el máximo en la jornada de reflexión.',
+        descripcion='Son encuestas publicadas fuera de España durante la veda, que va del martes 24 hasta que cierren los colegios el domingo 29. En 2023, «encuestas andorra» solo se buscó la semana de la veda, con el máximo en la jornada de reflexión.',
         compara='Lo que dice la ley electoral sobre la publicación de encuestas en los cinco días antes de votar, los casos de encuestas publicadas fuera de España durante la veda desde 2008, la resolución de la Junta Electoral Central sobre encuestas encubiertas y las búsquedas en Google de «encuestas andorra» y «encuestas prohibidas» en la semana de las generales de 2023.',
         limites='No incluye cifras de ninguna encuesta ni enlaces a encuestas publicadas durante la veda. Los casos de Andorra y Australia son los que han contado medios y empresas, no una lista completa. Google Trends da un índice relativo, no el número de búsquedas.',
         calculo='Índice de Google Trends (0-100) de «encuestas andorra», «encuestas prohibidas» y «veda electoral» en la misma consulta, España, del 10 al 25 de julio de 2023 (datos/trends_encuestas_andorra_2023.csv); veces más: suma del índice de «encuestas andorra» del 18 al 22 de julio entre la de «encuestas prohibidas» en esos días. Script: encuestas_andorra_29n.py, en actualidad/src/resumenes.',
