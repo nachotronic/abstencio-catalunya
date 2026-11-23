@@ -178,9 +178,23 @@ def carga():
                 cand.append((dias, i))
         return min(cand)[1] if cand else None
 
-    for r in eg:
+    # Primero las parejas seguras: misma noticia y misma muestra. En un tracking diario (Data10, 17 a 22-11) una entrega
+    # sin pareja propia se llevaba la fila de Wikipedia de la siguiente y los escaños salían corridos un día.
+    fijas = {}
+    for j, r in enumerate(eg):
+        url = r['fuente_original'].strip()
+        if not url or not r['muestra']:
+            continue
+        for i, w in enumerate(wp):
+            if (i not in usadas and not w.get('reestimacion') and w['fuente_original'].strip() == url
+                    and w['muestra'] == r['muestra']):
+                fijas[j] = i
+                usadas.add(i)
+                break
+
+    for j, r in enumerate(eg):
         fin = date.fromisoformat(r['campo_fin']) if r['campo_fin'] else date.fromisoformat(r['publicado']) - timedelta(days=3)
-        i = pareja(clave(r['encuestadora']), fin, r['muestra'], r)
+        i = fijas[j] if j in fijas else pareja(clave(r['encuestadora']), fin, r['muestra'], r)
         w = wp[i] if i is not None else {}
         if i is not None:
             usadas.add(i)
