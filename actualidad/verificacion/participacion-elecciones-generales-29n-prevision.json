@@ -1,0 +1,209 @@
+{
+ "pieza": "participacion-elecciones-generales-29n-prevision",
+ "cifras": [
+  {
+   "texto": "29N: las encuestas prevén un 73,1 %, 2,7 puntos más que",
+   "cifra": "73,1",
+   "calculo": "D['MED']"
+  },
+  {
+   "texto": "encuestas prevén un 73,1 %, 2,7 puntos más que en 2023",
+   "cifra": "2,7",
+   "calculo": "D['SUBE_MED']"
+  },
+  {
+   "texto": "Las cuatro veces que la participación",
+   "condicion": "sum(1 for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) == 4"
+  },
+  {
+   "texto": "participación subió más de cinco puntos desde 1977, el",
+   "condicion": "min(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) > 5 >= max(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] <= 5)"
+  },
+  {
+   "texto": "el PSOE quedó primero; las tres que subió poco, el PP.",
+   "condicion": "sum(1 for r in D['H'] if r['dpart'] is not None and 0 < r['dpart'] <= 5) == 3"
+  },
+  {
+   "texto": "Diez encuestadoras han publicado",
+   "condicion": "len(D['E']) == 10"
+  },
+  {
+   "texto": "última de cada una está en el 73,1 %, 2,7 puntos más que",
+   "cifra": "73,1",
+   "calculo": "D['MED']"
+  },
+  {
+   "texto": "cada una está en el 73,1 %, 2,7 puntos más que el 70,4",
+   "cifra": "2,7",
+   "calculo": "D['SUBE_MED']"
+  },
+  {
+   "texto": "%, 2,7 puntos más que el 70,4 % de los residentes",
+   "cifra": "70,4",
+   "calculo": "D['P23']"
+  },
+  {
+   "texto": "que votó en julio de 2023. Ocho de las diez prevén más",
+   "cifra": "Ocho",
+   "calculo": "D['SOBRE']"
+  },
+  {
+   "texto": "julio de 2023. Ocho de las diez prevén más participación",
+   "condicion": "len(D['E']) == 10"
+  },
+  {
+   "texto": "entonces. La horquilla va del 65,5 % de Celeste-Tel al",
+   "cifra": "65,5",
+   "calculo": "D['MIN']"
+  },
+  {
+   "texto": "65,5 % de Celeste-Tel al 77,3 % de Sigma Dos. Es el",
+   "cifra": "77,3",
+   "calculo": "D['MAX']"
+  },
+  {
+   "texto": "En las 16 elecciones generales",
+   "cifra": "16",
+   "calculo": "len(D['H'])"
+  },
+  {
+   "texto": "en España ha subido más de cinco puntos frente a la anterior",
+   "condicion": "min(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) > 5 >= max(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] <= 5)"
+  },
+  {
+   "texto": "puntos frente a la anterior en cuatro ocasiones: 1982 (+12,6),",
+   "condicion": "sum(1 for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) == 4"
+  },
+  {
+   "texto": "cuatro ocasiones: 1982 (+12,6), 1993 (+7,1), 2004",
+   "cifra": "12,6",
+   "calculo": "[r for r in D['H'] if r['y'] == '1982_10'][0]['dpart']"
+  },
+  {
+   "texto": "ocasiones: 1982 (+12,6), 1993 (+7,1), 2004 (+7,2) y abril",
+   "cifra": "7,1",
+   "calculo": "[r for r in D['H'] if r['y'] == '1993_06'][0]['dpart']"
+  },
+  {
+   "texto": "(+12,6), 1993 (+7,1), 2004 (+7,2) y abril de 2019 (+5,9).",
+   "cifra": "7,2",
+   "calculo": "[r for r in D['H'] if r['y'] == '2004_03'][0]['dpart']"
+  },
+  {
+   "texto": "(+7,2) y abril de 2019 (+5,9). Las cuatro veces quedó",
+   "cifra": "5,9",
+   "calculo": "[r for r in D['H'] if r['y'] == '2019_04'][0]['dpart']"
+  },
+  {
+   "texto": "abril de 2019 (+5,9). Las cuatro veces quedó primero",
+   "condicion": "sum(1 for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) == 4"
+  },
+  {
+   "texto": "quedó primero el PSOE. Las tres veces que subió poco,",
+   "condicion": "sum(1 for r in D['H'] if r['dpart'] is not None and 0 < r['dpart'] <= 5) == 3"
+  },
+  {
+   "texto": "la participación llegó al 80,2 %, la más alta de la",
+   "cifra": "80,2",
+   "calculo": "[r for r in D['H'] if r['y'] == '1982_10'][0]['part']"
+  },
+  {
+   "texto": "IU, Podemos y Sumar) subió 11,1 puntos. En 2004 subió",
+   "cifra": "11,1",
+   "calculo": "[r for r in D['H'] if r['y'] == '1982_10'][0]['dizq']"
+  },
+  {
+   "texto": "11,1 puntos. En 2004 subió 7,2 puntos y ese voto, 7,8.",
+   "cifra": "7,2",
+   "calculo": "[r for r in D['H'] if r['y'] == '2004_03'][0]['dpart']"
+  },
+  {
+   "texto": "subió 7,2 puntos y ese voto, 7,8. Al revés, las dos mayorías",
+   "cifra": "7,8",
+   "calculo": "[r for r in D['H'] if r['y'] == '2004_03'][0]['dizq']"
+  },
+  {
+   "texto": "participación: en 2000 bajó 8,1 puntos, y en 2011, 3,6;",
+   "cifra": "8,1",
+   "calculo": "-[r for r in D['H'] if r['y'] == '2000_03'][0]['dpart']"
+  },
+  {
+   "texto": "bajó 8,1 puntos, y en 2011, 3,6; el voto al PSOE y su",
+   "cifra": "3,6",
+   "calculo": "-[r for r in D['H'] if r['y'] == '2011_11'][0]['dpart']"
+  },
+  {
+   "texto": "PSOE y su izquierda cayó 7,8 y 11,3 puntos.",
+   "cifra": "7,8",
+   "calculo": "-[r for r in D['H'] if r['y'] == '2000_03'][0]['dizq']"
+  },
+  {
+   "texto": "y su izquierda cayó 7,8 y 11,3 puntos.",
+   "cifra": "11,3",
+   "calculo": "-[r for r in D['H'] if r['y'] == '2011_11'][0]['dizq']"
+  },
+  {
+   "texto": "elecciones, no una ley: son 16 casos y en cada uno",
+   "cifra": "16",
+   "calculo": "len(D['H'])"
+  },
+  {
+   "texto": "excepciones claras. En 1996 votó el 78,1 %, una de las participaciones",
+   "cifra": "78,1",
+   "calculo": "[r for r in D['H'] if r['y'] == '1996_03'][0]['part']"
+  },
+  {
+   "texto": "participación subió más de cinco puntos y el voto conjunto",
+   "condicion": "min(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) > 5 >= max(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] <= 5)"
+  },
+  {
+   "texto": "izquierda apenas se movió (−0,3 y −0,1 puntos): el PSOE",
+   "cifra": "0,3",
+   "calculo": "-[r for r in D['H'] if r['y'] == '1993_06'][0]['dizq']"
+  },
+  {
+   "texto": "apenas se movió (−0,3 y −0,1 puntos): el PSOE quedó",
+   "cifra": "0,1",
+   "calculo": "-[r for r in D['H'] if r['y'] == '2019_04'][0]['dizq']"
+  },
+  {
+   "texto": "bloque. Y la previsión de 2,7 puntos de subida para",
+   "cifra": "2,7",
+   "calculo": "D['SUBE_MED']"
+  },
+  {
+   "texto": "2015 y 2023, menos que las cuatro grandes.",
+   "condicion": "sum(1 for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) == 4"
+  },
+  {
+   "texto": "mediana de las encuestas, en el 73,1 %Participación que estima",
+   "cifra": "73,1",
+   "calculo": "D['MED']"
+  },
+  {
+   "texto": "participación subió más de cinco puntos, el PSOE quedó",
+   "condicion": "min(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] > 5) > 5 >= max(r['dpart'] for r in D['H'] if r['dpart'] is not None and r['dpart'] <= 5)"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "en 2023, las secciones que menos votaron dieron más voto al PSOE que al PP, y lo contrario las que más",
+   "fuente": "https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "encuestadoras han publicado en las tres últimas semanas una",
+   "motivo": "Ventana de la previsión: encuestas con campo terminado desde el 2 de noviembre (tres semanas)."
+  },
+  {
+   "texto": "encuestas: desde mañana, martes 24, la ley lo prohíbe hasta",
+   "motivo": "Fecha de la veda (LOREG, art. 69.7)."
+  },
+  {
+   "texto": "con campo terminado en las tres últimas semanas, y la",
+   "motivo": "Ventana de la previsión: encuestas con campo terminado desde el 2 de noviembre (tres semanas)."
+  }
+ ],
+ "permitir_espana": []
+}

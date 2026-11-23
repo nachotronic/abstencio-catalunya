@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (128)
+## Pendientes (129)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-23 | [`participacion-elecciones-generales-29n-prevision`](https://mapaelectoral.es/actualidad/participacion-elecciones-generales-29n-prevision/) | Participación en las elecciones generales del 29N: las encuestas prevén un 73,1 %, 2,7 puntos más que en 2023 | primer gráfico de la pieza |
 | 2026-11-22 | [`getafe-atletico-sur-madrid-29n`](https://mapaelectoral.es/actualidad/getafe-atletico-sur-madrid-29n/) | Getafe-Atlético: en la ciudad del Coliseum, el PSOE pasó de ganar en 112 de las 122 secciones a ganar en 74, y el PP se quedó a 2.182 votos | primer gráfico de la pieza |
 | 2026-11-22 | [`una-semana-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/una-semana-29n-la-semana-en-el-mapa/) | A una semana del 29N, la mediana de las encuestas da al PP 3,4 puntos de ventaja, 1,2 menos que hace siete días; el lunes 23 es el último día para publicarlas | primer gráfico de la pieza |
 | 2026-11-21 | [`derbi-sevillano-nervion-heliopolis-29n`](https://mapaelectoral.es/actualidad/derbi-sevillano-nervion-heliopolis-29n/) | El derbi sevillano se juega en barrios del PP: en Nervión, el del Sánchez-Pizjuán, ganó en 37 de 41 secciones; en la ciudad, el PSOE fue primero en 286 de 521 | primer gráfico de la pieza |
