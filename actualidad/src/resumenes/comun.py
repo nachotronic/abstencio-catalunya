@@ -159,8 +159,9 @@ def cuadrados(grupos, etiqueta, por_fila=16, lado=22):
     return ''.join(out)
 
 
-def mapa_provincias(colores, titulos, etiqueta, opacidad=None):
-    """Mapa de provincias (geometría de la portada, generales-2026/data/provincias.json; Canarias en recuadro)."""
+def mapa_provincias(colores, titulos, etiqueta, opacidad=None, claves=False):
+    """Mapa de provincias (geometría de la portada, generales-2026/data/provincias.json; Canarias en recuadro).
+    claves=True: cada provincia lleva data-k con su código, para la ventana emergente de la pieza, en vez de <title>."""
     g = json.load(open(RAIZ / 'generales-2026/data/provincias.json'))
     S, kx = g['S'], math.cos(math.radians(39.5))
     anillos = []
@@ -184,7 +185,10 @@ def mapa_provincias(colores, titulos, etiqueta, opacidad=None):
     out = ''
     for c, d in caminos.items():
         op = (opacidad or {}).get(c, 1)
-        out += f'<path d="{d}" fill="{colores.get(c, "var(--otros)")}" fill-opacity="{op}"><title>{esc(titulos.get(c, ""))}</title></path>'
+        if claves:
+            out += f'<path data-k="{c}" d="{d}" fill="{colores.get(c, "var(--otros)")}" fill-opacity="{op}"/>'
+        else:
+            out += f'<path d="{d}" fill="{colores.get(c, "var(--otros)")}" fill-opacity="{op}"><title>{esc(titulos.get(c, ""))}</title></path>'
     cx = [(x - min(xs)) * e for c, r in anillos if c in ('35', '38') for x, _ in r]
     cy = [(y - min(ys)) * e for c, r in anillos if c in ('35', '38') for _, y in r]
     marco = f'<rect x="{min(cx) - 8:.0f}" y="{min(cy) - 8:.0f}" width="{max(cx) - min(cx) + 16:.0f}" height="{max(cy) - min(cy) + 16:.0f}" fill="none" stroke="var(--rule)"/>'

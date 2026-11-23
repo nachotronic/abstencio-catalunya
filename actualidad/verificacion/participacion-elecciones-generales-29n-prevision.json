@@ -275,12 +275,215 @@
    "texto": "la participación subió en 41 provincias; en Cataluña",
    "cifra": "41",
    "calculo": "D['SUBEN']"
+  },
+  {
+   "texto": "residentes de 2023, 35,1 millones de electores",
+   "cifra": "35,1",
+   "calculo": "D['CENSO23']/1e6"
+  },
+  {
+   "texto": "equivale a unos 350.000 votantes",
+   "cifra": "350.000",
+   "calculo": "round(D['CENSO23']/100,-4)"
+  },
+  {
+   "texto": "votarían unas 940.000 personas más",
+   "cifra": "940.000",
+   "calculo": "round(D['MAS_VOT'],-4)"
+  },
+  {
+   "texto": "los 331.000 votos de residentes",
+   "cifra": "331.000",
+   "calculo": "round(D['DIF23'],-3)"
+  },
+  {
+   "texto": "con 71,7 % de participación",
+   "cifra": "71,7",
+   "calculo": "[r for r in D['H'] if r['y']=='2011_11'][0]['part']"
+  },
+  {
+   "texto": "participación, 3,6 puntos menos que en 2008",
+   "cifra": "3,6",
+   "calculo": "-[r for r in D['H'] if r['y']=='2011_11'][0]['dpart']"
+  },
+  {
+   "texto": "en los 5.302 municipios con menos",
+   "cifra": "5.302",
+   "calculo": "D['T'][0]['n']"
+  },
+  {
+   "texto": "menos de 1.000 electores votó el 75,7",
+   "cifra": "75,7",
+   "calculo": "D['T'][0]['p23']"
+  },
+  {
+   "texto": "el tramo que menos votó, el 68,8",
+   "cifra": "68,8",
+   "calculo": "D['T'][3]['p23']"
+  },
+  {
+   "texto": "de más de medio millón, el 72,1",
+   "cifra": "72,1",
+   "calculo": "D['T'][5]['p23']"
+  },
+  {
+   "texto": "participación: +3,3 puntos",
+   "cifra": "3,3",
+   "calculo": "D['T'][0]['d']"
+  },
+  {
+   "texto": "+2,1 en los de 1.000 a 5.000",
+   "cifra": "2,1",
+   "calculo": "D['T'][1]['d']"
+  },
+  {
+   "texto": "y +0,3 en los de 20.000 a 100.000",
+   "cifra": "0,3",
+   "calculo": "D['T'][3]['d']"
+  },
+  {
+   "texto": "grandes ciudades, bajó 1,6 puntos",
+   "cifra": "1,6",
+   "calculo": "-D['T'][5]['d']"
+  },
+  {
+   "texto": "el PP sacó entre el 32,1",
+   "cifra": "32,1",
+   "calculo": "min(t['pp'] for t in D['T'])"
+  },
+  {
+   "texto": "y el 35,2 % del voto en todos",
+   "cifra": "35,2",
+   "calculo": "max(t['pp'] for t in D['T'])"
+  },
+  {
+   "texto": "y el PSOE, entre el 29,9",
+   "cifra": "29,9",
+   "calculo": "min(t['psoe'] for t in D['T'])"
+  },
+  {
+   "texto": "y el 33,1 %.",
+   "cifra": "33,1",
+   "calculo": "max(t['psoe'] for t in D['T'])"
+  },
+  {
+   "texto": "subió en 8 y bajó en 7",
+   "cifra": "8",
+   "calculo": "D['GR_SUBE']"
+  },
+  {
+   "texto": "subió en 8 y bajó en 7",
+   "cifra": "7",
+   "calculo": "len(D['GR'])-D['GR_SUBE']"
+  },
+  {
+   "texto": "Más subió en Gijón (+4,9",
+   "cifra": "4,9",
+   "calculo": "[r for r in D['GR'] if r['municipio']=='Gijón'][0]['d']"
+  },
+  {
+   "texto": "y en Palma (+4,0)",
+   "cifra": "4,0",
+   "calculo": "[r for r in D['GR'] if r['municipio']=='Palma'][0]['d']"
+  },
+  {
+   "texto": "en Barcelona (−6,0)",
+   "cifra": "6,0",
+   "calculo": "-[r for r in D['GR'] if r['municipio']=='Barcelona'][0]['d']"
+  },
+  {
+   "texto": "se movió poco: del 74,0",
+   "cifra": "74,0",
+   "calculo": "[r for r in D['GR'] if r['municipio']=='Madrid'][0]['p19']"
+  },
+  {
+   "texto": "al 73,4 %. València",
+   "cifra": "73,4",
+   "calculo": "[r for r in D['GR'] if r['municipio']=='Madrid'][0]['p23']"
+  },
+  {
+   "texto": "de todas, con el 76,1",
+   "cifra": "76,1",
+   "calculo": "[r for r in D['GR'] if r['municipio']=='València'][0]['p23']"
+  },
+  {
+   "texto": "subió en 6.150 de los 8.131 municipios, donde",
+   "cifra": "6.150",
+   "calculo": "D['MSUBE']"
+  },
+  {
+   "texto": "subió en 6.150 de los 8.131 municipios, donde",
+   "cifra": "8.131",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "donde vive el 59,8 % de los electores",
+   "cifra": "59,8",
+   "calculo": "D['CENSO_SUBE']"
+  },
+  {
+   "texto": "La participación subió en 6.150 de los 8.131 municipios entre",
+   "cifra": "6.150",
+   "calculo": "D['MSUBE']"
+  },
+  {
+   "texto": "La participación subió en 6.150 de los 8.131 municipios entre",
+   "cifra": "8.131",
+   "calculo": "D['NMUN']"
+  },
+  {
+   "texto": "Entre las 15 ciudades con más de 200.000",
+   "condicion": "len(D['GR'])==15"
+  },
+  {
+   "texto": "En las 15 ciudades con más de 200.000 electores",
+   "condicion": "len(D['GR'])==15 and D['GR_SUBE']==8"
+  },
+  {
+   "texto": "en Córdoba, Málaga y Zaragoza se movió menos de una décima",
+   "condicion": "sorted(r['municipio'] for r in D['GR'] if abs(r['d'])<.1)==['Córdoba','Málaga','Zaragoza']"
+  },
+  {
+   "texto": "subió en muchos más pueblos que electores",
+   "condicion": "D['MSUBE']/D['NMUN']*100 > D['CENSO_SUBE']"
+  },
+  {
+   "texto": "cuanto más pequeño era el municipio, más subió",
+   "condicion": "all(D['T'][i]['d']>D['T'][i+1]['d'] for i in range(3))"
+  },
+  {
+   "texto": "Es más que los 331.000 votos",
+   "condicion": "D['MAS_VOT']>D['DIF23']"
   }
  ],
  "externas": [
   {
    "texto": "en 2023, las secciones que menos votaron dieron más voto al PSOE que al PP, y lo contrario las que más",
    "fuente": "https://mapaelectoral.es/actualidad/a-quien-beneficia-abstencion-29n/"
+  },
+  {
+   "texto": "sacó 202 diputados",
+   "fuente": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a"
+  },
+  {
+   "texto": "llegó a 164 escaños",
+   "fuente": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a"
+  },
+  {
+   "texto": "1996 con 156 escaños",
+   "fuente": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a"
+  },
+  {
+   "texto": "Rajoy llegó a 186 en 2011",
+   "fuente": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a"
+  },
+  {
+   "texto": "«Históricamente, una participación alta suele beneficiar a la izquierda en unas elecciones generales»",
+   "fuente": "https://maldita.es/malditodato/20210506/participacion-izquierda-derecha-elecciones-madrilenas/"
+  },
+  {
+   "texto": "«Lo importante no es saber la participación total, sino quién sale a votar»",
+   "fuente": "https://www.eldiario.es/politica/izquierda-gana-baja-abstencion_1_1621061.html"
   }
  ],
  "ignorar": [
@@ -327,6 +530,38 @@
   {
    "texto": "provincias y menos de un 65 % en 8Participación",
    "motivo": "Umbral de referencia."
+  },
+  {
+   "texto": "escaños tres días después de los atentados",
+   "motivo": "Fecha: 14-3-2004, tres días después del 11-3-2004."
+  },
+  {
+   "texto": "menos de 1.000 electores, +2,1",
+   "motivo": "Límite de tramo de tamaño."
+  },
+  {
+   "texto": "en los de 20.000 a 100.000, el tramo",
+   "motivo": "Límites de tramo de tamaño."
+  },
+  {
+   "texto": "los de 1.000 a 5.000 y",
+   "motivo": "Límites de tramo de tamaño."
+  },
+  {
+   "texto": "las cinco ciudades de más de medio millón",
+   "motivo": "Son cinco: Madrid, Barcelona, Valencia, Sevilla y Zaragoza (pie del gráfico, T[5]['n'] == 5)."
+  },
+  {
+   "texto": "En las cinco grandes ciudades",
+   "motivo": "Las mismas cinco (T[5]['n'] == 5)."
+  },
+  {
+   "texto": "electores, cada punto de participación",
+   "motivo": "Un punto."
+  },
+  {
+   "texto": "con más de 200.000 electores",
+   "motivo": "Umbral de la selección de ciudades."
   }
  ],
  "permitir_espana": []
