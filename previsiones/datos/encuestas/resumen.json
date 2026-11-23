@@ -1,8 +1,8 @@
 {
- "descargado": "2026-11-23T15:02Z",
+ "descargado": "2026-11-23T18:05Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1152,
- "encuestas_infraestatales": 153,
+ "encuestas_espana": 1153,
+ "encuestas_infraestatales": 157,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-23",
@@ -23,8 +23,8 @@
   "CHA-IU-MS-FA": 1
  },
  "wikipedia": {
-  "encuestas": 464,
+  "encuestas": 465,
   "ultima_fin_campo": "2026-11-23",
-  "faltan_en_electografica_120_dias": 31
+  "faltan_en_electografica_120_dias": 30
  }
 }
