@@ -1,0 +1,81 @@
+{
+ "pieza": "encuestas-andorra-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "hasta su máximo el sábado 22, la jornada de reflexión,",
+   "condicion": "max(D['AND'], key=D['AND'].get) == '2023-07-22'"
+  },
+  {
+   "texto": "Durante la veda se buscó unas 3,2 veces más que «encuestas",
+   "cifra": "3,2",
+   "calculo": "sum(v for k,v in D['AND'].items() if '2023-07-18'<=k<='2023-07-22')/sum(v for k,v in D['PRO'].items() if '2023-07-18'<=k<='2023-07-22')"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "España durante la veda, los cinco días antes de votar",
+   "motivo": "Texto literal de la LOREG (artículos 69.7, 145 y 153.2)."
+  },
+  {
+   "texto": "29N, la veda va del martes 24 al sábado 28 de noviembre.",
+   "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+  },
+  {
+   "texto": "«Durante los cinco días anteriores al de",
+   "motivo": "Texto literal de la LOREG (artículos 69.7, 145 y 153.2)."
+  },
+  {
+   "texto": "de comunicación» (artículo 69.7 de la LOREG). Las",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "se castigan con multa «de 3.000 a 30.000 de euros» (artículo",
+   "motivo": "Texto literal de la LOREG (artículos 69.7, 145 y 153.2)."
+  },
+  {
+   "texto": "castigan con multa «de 3.000 a 30.000 de euros» (artículo",
+   "motivo": "Texto literal de la LOREG (artículos 69.7, 145 y 153.2)."
+  },
+  {
+   "texto": "30.000 de euros» (artículo 153), y el artículo 145",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "(artículo 153), y el artículo 145 castiga como delito,",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "como delito, con «prisión de tres meses a un año», a «quienes",
+   "motivo": "Texto literal de la LOREG (artículos 69.7, 145 y 153.2)."
+  },
+  {
+   "texto": "prohibición» del artículo 69.7, según El Debate.",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "publicadas hasta el lunes 23 siguen en la página",
+   "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+  },
+  {
+   "texto": "16 al 24 de julio de 2023 (100 = el día con más búsquedas).",
+   "motivo": "Escala de Google Trends: 100 es el día con más búsquedas."
+  },
+  {
+   "texto": "búsquedas). La veda fue del 18 al 22; las elecciones,",
+   "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+  },
+  {
+   "texto": "búsquedas). La veda fue del 18 al 22; las elecciones, el",
+   "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+  },
+  {
+   "texto": "al 22; las elecciones, el 23",
+   "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+  }
+ ],
+ "permitir_espana": []
+}
