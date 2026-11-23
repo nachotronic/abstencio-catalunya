@@ -16,6 +16,8 @@ concurrency:
   group: foto29n
 jobs:
   foto:
+    # interruptor: Settings → Secrets and variables → Actions → Variables → FOTO_29N = no la apaga al momento
+    if: vars.FOTO_29N != 'no'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +27,9 @@ jobs:
         id: subir
         run: |
           if git diff --quiet; then echo "Sin cambios"; exit 0; fi
+          # seguro: solo la página de resultados y llms.txt; cualquier otro fichero tocado para la subida
+          if git diff --name-only | grep -vxE 'elecciones/resultados-elecciones-generales-2026/index.html|llms.txt'; then
+            echo "::error::La foto ha tocado otros ficheros: no se sube nada"; exit 1; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -qam "Foto del escrutinio del 29N (cuerpo de la página de resultados y llms.txt)"

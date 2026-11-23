@@ -10,7 +10,7 @@ No toca title, description, H1, canonical, URL ni la fecha de la firma. Solo esc
 simulacro, ni retenidos antes de las 21:00, ni sin mesas escrutadas); si no, no hace nada.
 Uso: python3 src/foto_29n.py [URL de resultados.json]   (por defecto, la de generales-2026/data/meta.json → directo.url)
 """
-import datetime, html, json, pathlib, re, sys, urllib.request
+import datetime, html, json, os, pathlib, re, sys, urllib.request
 from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -35,13 +35,28 @@ def miles(n):
     return f'{round(n):,}'.replace(',', '.')
 
 
+DIAS = (datetime.date(2026, 11, 29), datetime.date(2026, 11, 30))
+HORA = 21   # el primer día, nada antes de las 21:00 (cierre de Canarias)
+CABECERAS = {'title': r'<title>(.*?)</title>', 'description': r'<meta name="description" content="([^"]*)"', 'h1': r'<h1[^>]*>(.*?)</h1>',
+             'canonical': r'<link rel="canonical" href="([^"]*)"', 'og': r'<meta property="og:[^"]*" content="([^"]*)"',
+             'robots': r'<meta name="robots" content="([^"]*)"'}
+
+
+def cabeceras(t):
+    return {k: re.findall(p, t, re.S) for k, p in CABECERAS.items()}
+
+
+def fuera_de_marcas(t):
+    return re.sub(r'<!--foto29n-->.*?<!--/foto29n-->', '', t, flags=re.S)
+
+
 def resumen(F, meta):
     """-> dict con escrutado, hora, filas [(nombre, votos, %, escaños)], blancos, o None si no hay datos que publicar."""
     if F.get('simulacro') or F.get('retenido') or not F.get('mun') or not F.get('siglas'):
         return None
     act = F.get('actualizado') or ''
     t = datetime.datetime.fromisoformat(act.replace('Z', '+00:00')).astimezone(MADRID) if act else None
-    if not t or t.date() not in (datetime.date(2026, 11, 29), datetime.date(2026, 11, 30)) or (t.date() == datetime.date(2026, 11, 29) and t.hour < 21):
+    if not t or t.date() not in DIAS or (t.date() == DIAS[0] and t.hour < HORA):
         return None
     reglas = [(c, re.compile(p)) for c, p in meta.get('reglas', [])]
     fam = {f['cod']: f for f in meta.get('familias', [])}
@@ -79,6 +94,9 @@ def resumen(F, meta):
         for s, n in d.items():
             k, nom = grupo(s); G.setdefault(k, [nom, 0, 0])[2] += n; con_esc = con_esc or n > 0
     val = sum(x[1] for x in G.values()) + bl
+    # comprobaciones de cordura: si algo no cuadra, no se publica nada (se queda la foto anterior)
+    if not (0 < ce <= ct) or not val or vot > ce or sum(x[2] for x in G.values()) > 350:
+        print(f'Datos que no cuadran (escrutado {ce}/{ct}, votantes {vot}, escaños {sum(x[2] for x in G.values())}): no se publica'); return None
     L = sorted(G.values(), key=lambda x: (-x[2], -x[1]))
     filas = [x for x in L if x[1] / val >= 0.005 or x[2]]
     return {'esc': ce / ct, 'hora': t.strftime('%H:%M'), 'fecha': t, 'filas': filas, 'otras': sum(x[1] for x in L if x not in filas),
@@ -115,6 +133,9 @@ def linea_llms(R):
 def escribe(R):
     cambios = []
     t = PAGINA.read_text(encoding='utf-8')
+    previo = re.search(r'<!--foto29n--><p class="d-estado">Escrutado el ([\d,]+) %', t)
+    if previo and R['esc'] * 100 < float(previo.group(1).replace(',', '.')) - 0.1:   # nunca hacia atrás (dato viejo o caché)
+        print(f'El escrutado baja de {previo.group(1)} % a {pct(R["esc"])}: no se publica'); return []
     b = bloque_html(R)
     if '<!--foto29n-->' in t:
         n = re.sub(r'<!--foto29n-->.*?<!--/foto29n-->', lambda m: b, t, count=1, flags=re.S)
@@ -123,6 +144,9 @@ def escribe(R):
         if not m:
             sys.exit('No encuentro la caja .d-cuerpo en la página de resultados')
         n = t[:m.end()] + b + t[m.end():]
+    # seguro: fuera del bloque marcado, la página tiene que quedar igual byte a byte, y las cabeceras, idénticas
+    if fuera_de_marcas(n) != fuera_de_marcas(t) or cabeceras(n) != cabeceras(t):
+        sys.exit('La foto cambiaría algo fuera de su bloque o en las cabeceras: no se escribe nada')
     if n != t:
         PAGINA.write_text(n, encoding='utf-8'); cambios.append(str(PAGINA.relative_to(RAIZ)))
     t = LLMS.read_text(encoding='utf-8')
@@ -132,14 +156,21 @@ def escribe(R):
     else:   # justo antes de la línea de la portada, en «Secciones del sitio»
         i = t.index('- [Mapa de resultados de España (portada)]')
         n = t[:i] + l + '\n' + t[i:]
+    if fuera_de_marcas(n).replace('\n', '') != fuera_de_marcas(t).replace('\n', ''):
+        sys.exit('La línea de llms.txt cambiaría algo más: no se escribe nada')
     if n != t:
         LLMS.write_text(n, encoding='utf-8'); cambios.append('llms.txt')
     return cambios
 
 
 def main():
+    if os.environ.get('FOTO_29N', '').lower() == 'no':   # interruptor: variable del repositorio FOTO_29N = no
+        print('FOTO_29N = no: apagada'); return
+    args = sys.argv[1:]
+    if '--ensayo' in args:   # solo para probar en local con datos de otro día (la prueba de medios del 25-11); nunca en la Action
+        i = args.index('--ensayo'); global DIAS, HORA; HORA = 0; d = datetime.date.fromisoformat(args[i + 1]); DIAS = (d, d + datetime.timedelta(days=1)); del args[i:i + 2]
     meta = json.loads((RAIZ / 'generales-2026/data/meta.json').read_text(encoding='utf-8'))
-    url = sys.argv[1] if len(sys.argv) > 1 else (meta.get('directo') or {}).get('url')
+    url = args[0] if args else (meta.get('directo') or {}).get('url')
     if not url:
         print('Sin directo.url en meta.json: nada que hacer'); return
     if url.startswith('http'):
