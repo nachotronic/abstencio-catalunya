@@ -69,6 +69,11 @@ export default {
       const j = await env.RESULTADOS.get('secc:' + sc[1]);
       return new Response(j || '{}', { status: j ? 200 : 404, headers: { ...cors, 'Cache-Control': 'public, max-age=60', 'Content-Type': 'application/json; charset=utf-8' } });
     }
+    // titular del sondeo a pie de urna (lo pone a mano el workflow directo-pieurna.yml): nunca antes de PIEURNA_DESDE
+    if (url.pathname === '/pieurna.json') {
+      const j = Date.now() >= Date.parse(env.PIEURNA_DESDE || PIEURNA_DESDE) ? await env.RESULTADOS.get('pieurna') : null;
+      return new Response(j || '{}', { status: j ? 200 : 404, headers: { ...cors, 'Cache-Control': 'public, max-age=30', 'Content-Type': 'application/json; charset=utf-8' } });
+    }
     if (url.pathname === '/estado') return new Response((await env.RESULTADOS.get('estado')) || '{}', { headers: { ...cors, 'Cache-Control': 'no-store', 'Content-Type': 'application/json' } });
     if (url.pathname !== '/resultados.json' && !pr) return new Response('No encontrado', { status: 404 });
     const json = await env.RESULTADOS.get(pr ? 'prov:' + pr[1] : 'ultimo');
@@ -76,6 +81,9 @@ export default {
     return new Response(json, { headers: { ...cors, 'Content-Type': 'application/json; charset=utf-8' } });
   },
 };
+
+// el cierre de los colegios de la Península, el 29N (20:00 en Madrid); las pruebas lo adelantan con la variable PIEURNA_DESDE
+const PIEURNA_DESDE = '2026-11-29T19:00:00Z';
 
 export async function actualiza(env) {
   try {

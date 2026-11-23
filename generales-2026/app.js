@@ -743,6 +743,34 @@
     };
     await tick(); setInterval(tick, 60000);
   }
+  // ---------- sondeo a pie de urna, la noche del 29N, del cierre de los colegios a los primeros datos de Interior. El titular lo
+  // pone a mano el workflow «Directo 29N: sondeo a pie de urna» en el Worker, que no lo sirve antes de su hora (PIEURNA_DESDE);
+  // aquí se quita solo en cuanto el escrutinio pasa del 30 % (o cuando se borra). Nunca toca el H1 ni el título.
+  let ESCNAT = 0;
+  const PUURL = new URLSearchParams(location.search).get('pieurna') || (DIRURL && /\/resultados\.json(\?|$)/.test(DIRURL) ? DIRURL.replace(/\/resultados\.json.*$/, '/pieurna.json') : null);
+  if (PUURL) {
+    const pu = async () => {
+      try { const r = await fetch(PUURL + (PUURL.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); pieUrna(r.ok ? await r.json() : null); } catch (e) { /* sin red: se queda como está */ }
+    };
+    pu(); setInterval(pu, 60000);
+  }
+  function pieUrna(P) {
+    let b = document.getElementById('pie-urna');
+    if (!(P && P.titular && P.medio) || ESCNAT >= 0.3) { if (b) b.hidden = true; return; }
+    const mapa = document.getElementById('mapa'); if (!mapa) return;
+    if (!b) {
+      b = document.createElement('div'); b.id = 'pie-urna'; b.setAttribute('aria-live', 'polite');
+      b.style.cssText = 'font-family:var(--sans);border:1px solid var(--line);border-left:4px solid var(--ink);background:var(--surface);border-radius:8px;padding:12px 14px;margin:6px 0 4px';
+      mapa.insertBefore(b, document.getElementById('directo') || mapa.firstChild);
+    }
+    const fil = Array.isArray(P.filas) ? P.filas.filter(f => Array.isArray(f) && f[0] && f[1]) : [];
+    const enl = /^https:\/\//.test(P.enlace || '') ? ` (<a href="${escH(P.enlace)}" rel="noopener" target="_blank">fuente</a>)` : '';
+    b.innerHTML = `<div style="font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase">Sondeo a pie de urna${P.hora ? ' · ' + escH(P.hora) : ''}</div>`
+      + `<p style="font:700 19px/1.25 var(--sans);margin:6px 0">${escH(P.titular)}</p>`
+      + (fil.length ? `<p style="font:15px/1.5 var(--sans);margin:0 0 6px">${fil.map(([p, r]) => `${escH(p)} <b>${escH(r)}</b>`).join(' · ')}</p>` : '')
+      + `<p class="mut" style="font:13px/1.4 var(--sans);margin:0">Sondeo de ${escH(P.medio)}${enl}. Es una estimación, no son resultados: los primeros datos del recuento de Interior llegan a partir de las 21:00.</p>`;
+    b.hidden = false;
+  }
   function dhondt(votos, n) {
     const q = []; votos.forEach((v, k) => { for (let d = 1; d <= n; d++) q.push([v / d, k]); });
     q.sort((a, b) => b[0] - a[0]); const out = new Array(votos.length).fill(0);
@@ -754,10 +782,10 @@
   // siglas de Interior -> partido del simulador de pactos (encuestas/simulador-pactos/); UPN-PP, lista conjunta, cuenta como PP
   const SIMK = [[/^(PP\b|PP-|P\.P\.|UPN-PP)/, 'PP'], [/PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/, 'PSOE'], [/^VOX/, 'VOX'],
     [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^COMPROM/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
-    [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
+    [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA|^1\.?ºCAN/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
   const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Frente Amplio', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
   // Debajo del mapa: medio dónut de escaños (y el de 2023, más pequeño) y barras de voto válido por partido
-  const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
+  const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'AA', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
   // Medio dónut de escaños: L [[color, n, nombre]] de izquierda a derecha; grande y con el total, o pequeño y claro (2023)
   function semidonut(L, chico) {
     const N = L.reduce((t, x) => t + x[1], 0); if (!N) return '';
@@ -1012,6 +1040,8 @@
       TO.c.forEach(([s, v]) => { const k = FCOD.indexOf(famDe(s)); if (k >= 0) nat.f[k] += v; });
       nat.val = TO.c.reduce((t, x) => t + x[1], 0) + TO.bl;
     }
+    ESCNAT = nat.ct ? nat.ce / nat.ct : 0;
+    if (ESCNAT >= 0.3 && document.getElementById('pie-urna')) document.getElementById('pie-urna').hidden = true;   // el sondeo, fuera con el recuento
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
       if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;

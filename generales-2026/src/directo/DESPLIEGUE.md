@@ -114,3 +114,15 @@ vale, se fija con la variable `MESAS`.
 4. Con el «Fusiona» de Nacho: PR con la URL del Worker en `generales-2026/data/meta.json` → `directo.url`. GitHub Pages y
    el navegador guardan meta.json y app.js hasta 10 minutos: contar con ese margen.
 5. Apagar si algo va mal: PR que vacía `directo.url` (vuelve todo a como estaba, en 10 minutos como mucho).
+
+## 9. Sondeo a pie de urna (la noche del 29N, de las 20:00 a los primeros datos)
+
+Nacho, 23-11: titular del sondeo a pie de urna desde el cierre de los colegios hasta los primeros datos, de cualquier medio y
+citándolo; hora elegida, las 20:00 (como las teles).
+
+1. A las 20:00, en cuanto un medio publique su sondeo: Actions → «Directo 29N: sondeo a pie de urna» → titular, medio,
+   enlace https, hora y, si los da, los escaños por partido («PP 130-135; PSOE 100-105»).
+2. El Worker no lo sirve antes del 29-11 a las 20:00 en Madrid (PIEURNA_DESDE; para probarlo antes, la entrada
+   pieurna_desde del despliegue). La portada lo pone encima del recuadro del directo y lo quita sola cuando el escrutinio
+   pasa del 30 %. Para quitarlo antes: el mismo workflow con borrar = si.
+3. Desplegar con limpiar = si borra también el titular: se pone después del despliegue de la noche.

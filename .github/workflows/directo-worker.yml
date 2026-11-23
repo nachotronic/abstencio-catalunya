@@ -26,6 +26,10 @@ on:
         description: "PUBLICA (hora ISO): antes no se guarda ningún voto; la noche, 2026-11-29T20:00:00Z (21:00 en Madrid). Vacío en las pruebas"
         required: false
         default: ""
+      pieurna_desde:
+        description: "PIEURNA_DESDE (hora ISO): antes no se sirve el titular del sondeo a pie de urna; vacío = 2026-11-29T19:00:00Z (20:00 en Madrid). Solo para probarlo antes"
+        required: false
+        default: ""
       limpiar:
         description: "Borrar lo guardado (último resultado, provincias, secciones y estado de las mesas) antes de la prueba de medios y antes de la noche: si / no"
         required: false
@@ -71,10 +75,12 @@ jobs:
           MODO: ${{ github.event.inputs.modo }}
           DIA: ${{ github.event.inputs.dia }}
           PUBLICA: ${{ github.event.inputs.publica }}
+          PIEURNA_DESDE: ${{ github.event.inputs.pieurna_desde }}
         run: |
           V=(--var "FUENTE:$FUENTE" --var "MODO:$MODO")
           if [ -n "$DIA" ]; then V+=(--var "DIA:$DIA"); fi
           if [ -n "$PUBLICA" ]; then V+=(--var "PUBLICA:$PUBLICA"); fi
+          if [ -n "$PIEURNA_DESDE" ]; then V+=(--var "PIEURNA_DESDE:$PIEURNA_DESDE"); fi
           npx -y wrangler@3.114.0 deploy "${V[@]}"
       - name: Clave para forzar una lectura a mano (CLAVE)
         env:

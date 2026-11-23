@@ -24,6 +24,11 @@ MISMO = {'PP': re.compile(r'^(PP\b|PP-|P\.P\.|UPN-PP)'), 'PSOE': re.compile(r'PS
 NOMBRE = {'B.N.G.': 'BNG', 'EAJ-PNV': 'PNV', 'JXCAT - JUNTS': 'Junts', 'JXCAT-JUNTS': 'Junts', 'JXCAT': 'Junts', 'TERUEL EXISTE': 'Teruel Existe',
           'EH BILDU': 'EH Bildu', 'VOX': 'Vox', 'CCA': 'Coalición Canaria', 'U.P.N.': 'UPN', 'SUMAR': 'Sumar', 'PODEMOS': 'Podemos',
           'CUP-PR': 'CUP', 'SALF': 'Se Acabó la Fiesta', 'FO': 'Frente Obrero'}
+# Coalición Canaria sale «CCa-1ºCAN» en Tenerife y «1.ºCAN-CCa» en Las Palmas, y EH Bildu va con ERC en Navarra
+# («EH BILDU-ERC»): una sola fila para cada una (datos de prueba de Interior del 23-11)
+CC = re.compile(r'^CCA\b|^1\.?ºCAN')
+BILDU = re.compile(r'^EH ?BILDU')
+NOMBRE.update({'ADELANTE ANDALUCÍA': 'Adelante Andalucía', 'GBAI': 'Geroa Bai', 'SY': 'Soria ¡Ya!', 'PSE-EE (PSOE)': 'PSOE'})
 FA = re.compile(r'FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|PODEMOS, IU, SUMAR|^COMPROM')
 
 
@@ -73,6 +78,10 @@ def resumen(F, meta):
         a, f = (s or '').upper().strip(), familia(s)
         if FA.search(a):
             return 'FA', 'Frente Amplio'
+        if CC.search(a):
+            return 'CC', 'Coalición Canaria'
+        if BILDU.search(a):
+            return 'BILDU', 'EH Bildu'
         if f in MISMO and MISMO[f].search(a):
             return f, fam[f]['nombre']
         return 's:' + NOMBRE.get(a, a), NOMBRE.get(a, s)
