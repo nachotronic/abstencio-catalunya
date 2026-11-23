@@ -38,17 +38,17 @@
    "condicion": "sum(f['dif'] > 0 for f in D['F']) == 6"
   },
   {
-   "texto": "NC Report para La Razón, 5,1 puntos sobre el PSOE",
-   "cifra": "5,1",
+   "texto": "NC Report para La Razón, 4,7 puntos sobre el PSOE",
+   "cifra": "4,7",
    "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
   },
   {
-   "texto": "puntos sobre el PSOE (PP 32,3 %, PSOE 27,2 %). Le",
-   "cifra": "32,3",
+   "texto": "puntos sobre el PSOE (PP 31,9 %, PSOE 27,2 %). Le",
+   "cifra": "31,9",
    "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['PP']"
   },
   {
-   "texto": "el PSOE (PP 32,3 %, PSOE 27,2 %). Le siguen Data10",
+   "texto": "el PSOE (PP 31,9 %, PSOE 27,2 %). Le siguen Data10",
    "cifra": "27,2",
    "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['PSOE']"
   },
@@ -131,17 +131,17 @@
    "condicion": "len(D['F']) == 7"
   },
   {
-   "texto": "las siete: en NC Report, de 6,0 a 5,1 puntos; en Data10,",
+   "texto": "las siete: en NC Report, de 6,0 a 4,7 puntos; en Data10,",
    "cifra": "6,0",
    "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif_ant']"
   },
   {
-   "texto": "siete: en NC Report, de 6,0 a 5,1 puntos; en Data10, de",
-   "cifra": "5,1",
+   "texto": "siete: en NC Report, de 6,0 a 4,7 puntos; en Data10, de",
+   "cifra": "4,7",
    "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
   },
   {
-   "texto": "5,1 puntos; en Data10, de 5,1 a 4,4; en IMOP Insights,",
+   "texto": "4,7 puntos; en Data10, de 5,1 a 4,4; en IMOP Insights,",
    "cifra": "5,1",
    "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['dif_ant']"
   },
@@ -321,34 +321,34 @@
    "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['dif']"
   },
   {
-   "texto": "los 4,3 de IMOP Insights (±4,4). Solo lo superan la",
+   "texto": "los 4,3 de IMOP Insights (±4,4). Lo mismo, por poco,",
    "cifra": "4,4",
    "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['marg']"
   },
   {
-   "texto": "superan la ventaja de Data10, 4,4 puntos con un margen",
+   "texto": "mismo, por poco, con los 4,7 de NC Report (±4,9).",
+   "cifra": "4,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
+  },
+  {
+   "texto": "con los 4,7 de NC Report (±4,9). Solo la ventaja de",
+   "cifra": "4,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['marg']"
+  },
+  {
+   "texto": "ventaja de Data10 lo supera: 4,4 puntos, con un margen",
    "cifra": "4,4",
    "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['dif']"
   },
   {
-   "texto": "puntos con un margen de ±2,8 por sus 3.000 entrevistas,",
+   "texto": "puntos, con un margen de ±2,8 por sus 3.000 entrevistas.",
    "cifra": "2,8",
    "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['marg']"
   },
   {
-   "texto": "un margen de ±2,8 por sus 3.000 entrevistas, y la de",
+   "texto": "un margen de ±2,8 por sus 3.000 entrevistas.",
    "cifra": "3.000",
    "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['n']"
-  },
-  {
-   "texto": "entrevistas, y la de NC Report, 5,1 con ±4,9, por poco.",
-   "cifra": "5,1",
-   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
-  },
-  {
-   "texto": "la de NC Report, 5,1 con ±4,9, por poco.",
-   "cifra": "4,9",
-   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['marg']"
   },
   {
    "texto": "El PP, por delante en seis de las siete; Cluster17",
