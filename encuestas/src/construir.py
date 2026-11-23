@@ -157,9 +157,12 @@ def carga():
 
     def otra_encuesta(w, r):
         # distinta muestra y distinta noticia: es otra entrega (Data10 del 20-11, n=750, se llevaba la del 23-11)
+        # Con las mismas cifras sí es la misma, aunque la cite otra noticia con otra muestra (Public First, 19-11: el
+        # artículo de POLITICO y su newsletter en español)
         return (r is not None and r['muestra'] and w['muestra'] and r['muestra'] != w['muestra']
                 and r['fuente_original'].strip() and w['fuente_original'].strip()
-                and r['fuente_original'].strip() != w['fuente_original'].strip())
+                and r['fuente_original'].strip() != w['fuente_original'].strip()
+                and any(num(r[k]) != num(w[k]) for k in ('PP', 'PSOE', 'VOX')))
 
     def pareja(casa, fin, muestra='', r=None):
         # la más parecida: misma muestra y, después, el fin de campo más cercano (en un tracking diario la primera a <=4 días
@@ -837,6 +840,13 @@ def post_x(titular, med, hoy):
     return texto, URL, etiquetas
 
 
+def despues_de_la_veda():
+    """Desde el comienzo de la veda (src/veda.py, 23-11-2026 a las 23:30) la portada se queda sin el bloque de encuestas."""
+    sys.path.insert(0, str(RAIZ / 'src'))
+    from veda import DESDE, MADRID
+    return datetime.now(MADRID) >= DESDE
+
+
 def portada(titular, med, actual, hoy='', **datos):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
@@ -844,6 +854,10 @@ def portada(titular, med, actual, hoy='', **datos):
         t = f.read_text(encoding='utf-8')
         # el bloque va justo encima del mapa (antes, debajo, tras «Votar el 29N» y las listas): se quita de donde esté y se pone ahí
         t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->\n?', '', t, flags=re.S)
+        if despues_de_la_veda():
+            # Nacho, 23-11-2026: desde la veda del 29N las encuestas no vuelven a la portada (ni después del 29)
+            f.write_text(t, encoding='utf-8')
+            continue
         bloque = '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, **datos) + '<!--/encuestas:portada-->\n'
         m = re.search(r'<section class="wide" id="mapa"', t)
         if not m:

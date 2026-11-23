@@ -1,0 +1,40 @@
+# Veda de encuestas del 29N (art. 69.7 LOREG; src/veda.py). A las 23:30 del lunes 23-11 (hora de Madrid) quita de la
+# portada el bloque de encuestas y las piezas de encuestas del carrusel de Actualidad. Nacho, 18-11-2026.
+# No cambia title, H1, description, canonical ni URL; /encuestas/ no se toca (encuestas.yml ya no publica en la veda).
+name: Veda de encuestas
+on:
+  schedule:
+    - cron: '30 22 23 11 *'   # 23:30 del 23-11 en Madrid
+    - cron: '50 22 23 11 *'   # repaso por si la primera se retrasa o choca
+    - cron: '20 23 23 11 *'   # 0:20 del 24-11: otro repaso
+    - cron: '10 20 29 11 *'   # 21:10 del 29-11: acaba la veda, vuelven el menú y el simulador (el bloque de encuestas, no)
+  workflow_dispatch:
+permissions:
+  contents: write
+  statuses: write
+concurrency:
+  group: encuestas   # la misma que encuestas.yml: nunca a la vez
+jobs:
+  quitar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Quitar los sondeos de la portada (o devolver el menú y el simulador al acabar la veda)
+        run: |
+          if [[ "$(TZ=Europe/Madrid date +%F)" == "2026-11-29" && "$(TZ=Europe/Madrid date +%H)" -ge 21 ]]; then
+            python3 src/quitar_encuestas_portada.py --restaurar
+          else
+            python3 src/quitar_encuestas_portada.py
+          fi
+      - name: Subir a main
+        run: |
+          if git diff --quiet; then echo "Nada que quitar"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "Veda de encuestas (LOREG 69.7): portada sin encuestas (o, al acabar, vuelven el menú y el simulador)"
+          GITHUB_TOKEN="${{ github.token }}" src/subir_a_main.sh
+      - name: Avisar a IndexNow
+        continue-on-error: true
+        run: |
+          sleep 120
+          python3 src/indexnow.py index.html || true

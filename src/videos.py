@@ -12,6 +12,7 @@ ponlo al principio de VIDEOS (los más nuevos delante) y lanza
     python3 src/movil.py             # (lo hace también src/seo.py)
 """
 import html, pathlib, re, subprocess
+from veda import en_veda   # veda de encuestas del 29N
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 VIDEOS_DIR = pathlib.Path('/mnt/project-files/videos')
@@ -75,7 +76,7 @@ def franja(pre=''):
         f'<li><a href="{html.escape(v["tuit"] or PERFIL + "/media")}" target="_blank" rel="noopener">'
         f'<span class="dv-img"><img src="{pre}img/videos/{v["nombre"]}.jpg" alt="Fotograma del vídeo «{html.escape(v["titulo"])}»" loading="lazy" width="360" height="480"><i aria-hidden="true"></i></span>'
         f'<span class="atlas-k">{html.escape(v["k"])}</span><b>{html.escape(v["titulo"])}</b></a></li>'
-        for v in VIDEOS if fotograma(v))
+        for v in VIDEOS if fotograma(v) and not (en_veda() and v['k'] == 'Encuestas'))   # veda de encuestas (src/veda.py)
     return ('<section class="wide del-atlas del-videos" aria-labelledby="h-del-videos"><div class="da-cab"><h2 id="h-del-videos">'
             f'<a href="{PERFIL}" target="_blank" rel="noopener">Vídeos en X</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Vídeos anteriores">←</button><button type="button" class="da-next" aria-label="Más vídeos">→</button></span></div>'
