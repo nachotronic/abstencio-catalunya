@@ -784,7 +784,16 @@
       + (fil.length ? `<p style="font:15px/1.5 var(--sans);margin:0 0 6px">${fil.map(([p, r]) => `${escH(p)} <b>${escH(r)}</b>`).join(' · ')}</p>` : '')
       + `<p class="mut" style="font:13px/1.4 var(--sans);margin:0">Sondeo de ${escH(P.medio)}${enl}. Es una estimación, no son resultados: los primeros datos del recuento de Interior llegan a partir de las 21:00.</p>`;
     b.hidden = false;
-    mapaEnEspera(ESCNAT === 0);
+    mapaEnEspera(ESCNAT === 0); colocaPU();
+  }
+  // antes del escrutinio, el sondeo arriba; con los primeros datos, el mapa arriba con los escaños debajo, y el sondeo
+  // baja detrás de ellos hasta que el escrutinio pasa del 30 % (Nacho, 23-11: «luego ya el mapa por municipios y debajo
+  // el semicírculo con escaños»)
+  function colocaPU() {
+    const b = document.getElementById('pie-urna'); if (!b) return;
+    const r = document.getElementById('resultados-29n'), d = document.getElementById('directo');
+    if (ESCNAT > 0 && r) { if (b.previousElementSibling !== r) { r.after(b); b.classList.add('wide'); } }
+    else if (ESCNAT === 0 && d && b.nextElementSibling !== d) { d.before(b); b.classList.remove('wide'); }
   }
   // nombres de partido del sondeo (como los escribe el medio) -> familia del mapa
   const famPU = p => { const a = String(p).toUpperCase().trim();
@@ -1071,6 +1080,7 @@
     ESCNAT = nat.ct ? nat.ce / nat.ct : 0;
     if (ESCNAT >= 0.3 && document.getElementById('pie-urna')) document.getElementById('pie-urna').hidden = true;   // el sondeo, fuera con el recuento
     if (ESCNAT > 0) mapaEnEspera(false);   // con los primeros datos, vuelve el mapa
+    colocaPU();
     if (!PUF && F.ant23 && PUP) { PUF = F; pieUrna(PUP); } else PUF = F;   // el hemiciclo de 2023 del sondeo, en cuanto llega
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
