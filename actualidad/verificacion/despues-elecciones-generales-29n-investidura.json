@@ -1,0 +1,112 @@
+{
+ "pieza": "despues-elecciones-generales-29n-investidura",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "ha sido investido antes de 58 días.",
+   "cifra": "58",
+   "calculo": "min(x['a_inv'] for x in D['H'] if x['a_inv'] is not None and x['año']>=2015)"
+  },
+  {
+   "texto": "68.6). El 23 de diciembre son 24 días después del 29N;",
+   "cifra": "24",
+   "calculo": "D['DIAS']"
+  },
+  {
+   "texto": "constituido siempre entre 19 y 25 días después de",
+   "cifra": "19",
+   "calculo": "min(x['a_cortes'] for x in D['H'])"
+  },
+  {
+   "texto": "constituido siempre entre 19 y 25 días después de las",
+   "cifra": "25",
+   "calculo": "max(x['a_cortes'] for x in D['H'])"
+  },
+  {
+   "texto": "la investidura llegó entre 30 y 62 días después de",
+   "cifra": "30",
+   "calculo": "min(x['a_inv'] for x in D['H'] if x['a_inv'] is not None)"
+  },
+  {
+   "texto": "investidura llegó entre 30 y 62 días después de las",
+   "cifra": "62",
+   "calculo": "max(x['a_inv'] for x in D['H'] if x['a_inv'] is not None and x['año']<2015)"
+  },
+  {
+   "texto": "Mariano Rajoy en 2011, a los 30 días, según los datos",
+   "cifra": "30",
+   "calculo": "min(x['a_inv'] for x in D['H'] if x['a_inv'] is not None)"
+  },
+  {
+   "texto": "investido en octubre de 2016, 125 días después de las",
+   "cifra": "125",
+   "calculo": "[x['a_inv'] for x in D['H'] if x['año']==2016][0]"
+  },
+  {
+   "texto": "las elecciones de junio y 314 después de las de diciembre",
+   "cifra": "314",
+   "calculo": "D['SIN_GOB']"
+  },
+  {
+   "texto": "Sánchez lo fue en 2020, a los 58 días, y en 2023, a los",
+   "cifra": "58",
+   "calculo": "min(x['a_inv'] for x in D['H'] if x['a_inv'] is not None and x['año']>=2015)"
+  },
+  {
+   "texto": "58 días, y en 2023, a los 116, después de que Alberto",
+   "cifra": "116",
+   "calculo": "[x['a_inv'] for x in D['H'] if x['año']==2023][0]"
+  },
+  {
+   "texto": "ha sido investido antes de 58 díasDías entre las elecciones",
+   "cifra": "58",
+   "calculo": "min(x['a_inv'] for x in D['H'] if x['a_inv'] is not None and x['año']>=2015)"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "Interior para el 29N y artículos 68 y 99 de la Constitución.",
+   "motivo": "Número de artículo de la Constitución."
+  },
+  {
+   "texto": "para el 29N y artículos 68 y 99 de la Constitución.",
+   "motivo": "Número de artículo de la Constitución."
+  },
+  {
+   "texto": "las elecciones» (artículo 68.6). El 23 de diciembre",
+   "motivo": "Número de artículo de la Constitución."
+  },
+  {
+   "texto": "Presidencia del Gobierno» (artículo 99). El candidato expone",
+   "motivo": "Número de artículo de la Constitución."
+  },
+  {
+   "texto": "absoluta de sus miembros», 176 de 350 diputados. Si",
+   "motivo": "Mayoría absoluta de 350 diputados (Constitución, artículo 99.3)."
+  },
+  {
+   "texto": "de sus miembros», 176 de 350 diputados. Si no la",
+   "motivo": "Diputados del Congreso (Real Decreto 806/2026)."
+  },
+  {
+   "texto": "consigue, se vota otra vez «cuarenta y ocho horas después»",
+   "motivo": "Texto literal del artículo 99.3: «cuarenta y ocho horas»."
+  },
+  {
+   "texto": "vota otra vez «cuarenta y ocho horas después» y basta",
+   "motivo": "Texto literal del artículo 99.3: «cuarenta y ocho horas»."
+  },
+  {
+   "texto": "nuevo Gobierno» (artículo 101). Mientras no haya investidura,",
+   "motivo": "Número de artículo de la Constitución."
+  },
+  {
+   "texto": "el del Gobierno (artículo 167 de la LOREG).",
+   "motivo": "Número de artículo de la LOREG."
+  }
+ ],
+ "permitir_espana": []
+}
