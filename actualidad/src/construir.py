@@ -5432,6 +5432,8 @@ PIEZAS += [
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
+    # 23-11-2026: la de las encuestas de Andorra, delante durante la veda, detrás solo de la pieza nueva de cada día (pendiente del OK de Nacho)
+    'encuestas-andorra-29n': '2026-11-29',
     # Nacho, 4-11-2026: Puente, tras su dimisión, la primera
     'puente-valladolid-segundo-escano-29n': '2026-11-06',
     # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después

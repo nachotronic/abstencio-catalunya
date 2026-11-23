@@ -8,7 +8,7 @@ Uso: python3 src/quitar_encuestas_portada.py [--forzar]   (sin --forzar, fuera d
 """
 import pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-from veda import en_veda, es_pieza_de_encuestas  # noqa: E402
+from veda import en_veda, es_pieza_de_encuestas, NO_SON_ENCUESTAS  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 FICHEROS = [RAIZ / 'index.html', RAIZ / 'generales-2026/src/plantilla.html']
@@ -47,6 +47,8 @@ def limpiar(t):
         li = x.group(0)
         slug = re.match(r'<li><a href="(?:\.\./)?actualidad/([^/"]+)/"', li)
         texto = ' '.join(a or b for a, b in re.findall(r'<b>([^<]*)</b>|<span class="atlas-k">([^<]*)</span>', li))
+        if slug and slug.group(1) in NO_SON_ENCUESTAS:
+            return li
         if (slug and es_pieza_de_encuestas(slug.group(1))) or CON_ENCUESTAS.search(texto):
             quitadas.append(slug.group(1) if slug else texto[:60])
             return ''
