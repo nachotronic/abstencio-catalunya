@@ -19,7 +19,7 @@ HASTA = datetime.datetime(2026, 11, 29, 21, 0, tzinfo=MADRID)
 # su URL y en /actualidad/). Por el slug; si alguna con encuestas no lo lleva, se añade a mano en PIEZAS_ENCUESTAS.
 PATRON_ENCUESTAS = re.compile(r'encuesta|sondeo|^cis-')
 PIEZAS_ENCUESTAS = set()
-# Piezas que hablan de encuestas pero no dan cifras de ninguna: siguen en el carrusel durante la veda (pendiente del OK de Nacho, 23-11-2026)
+# Piezas que hablan de encuestas pero no dan cifras de ninguna: siguen en el carrusel durante la veda (Nacho, 23-11-2026: «Sí, primera»)
 NO_SON_ENCUESTAS = {'encuestas-andorra-29n'}
 
 
