@@ -21,8 +21,8 @@
    "motivo": "Texto literal de la LOREG (artículos 69.7, 145 y 153.2)."
   },
   {
-   "texto": "29N, la veda va del martes 24 al sábado 28 de noviembre.",
-   "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+   "texto": "la veda empieza el martes 24 de noviembre y dura hasta que cierren los colegios el domingo 29.",
+   "motivo": "Fecha del calendario electoral: la veda del 29N empieza el martes 24 de noviembre; las elecciones son el domingo 29 y los últimos colegios (Canarias) cierran a las 21.00 peninsulares."
   },
   {
    "texto": "«Durante los cinco días anteriores al de",
@@ -75,6 +75,10 @@
   {
    "texto": "al 22; las elecciones, el 23",
    "motivo": "Fecha del calendario electoral (veda de 2023 del 18 al 22 de julio, elecciones el 23; veda del 29N del 24 al 28, último día de publicación el 23)."
+  },
+  {
+   "texto": "que va del martes 24 hasta que cierren los colegios el domingo 29.",
+   "motivo": "Fecha del calendario electoral: la veda del 29N empieza el martes 24 de noviembre; las elecciones son el domingo 29 y los últimos colegios (Canarias) cierran a las 21.00 peninsulares."
   }
  ],
  "permitir_espana": []

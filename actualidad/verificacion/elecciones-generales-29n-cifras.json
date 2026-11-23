@@ -1,0 +1,185 @@
+{
+ "pieza": "elecciones-generales-29n-cifras",
+ "cifras": [
+  {
+   "texto": "Pueden votar 38.728.356 personas, 1.261.924",
+   "cifra": "38.728.356",
+   "calculo": "D['ELEC']"
+  },
+  {
+   "texto": "votar 38.728.356 personas, 1.261.924 más que en 2023. Madrid",
+   "cifra": "1.261.924",
+   "calculo": "D['SUBE']"
+  },
+  {
+   "texto": "pierde. En Madrid hacen falta 4,1 veces más electores",
+   "cifra": "4,1",
+   "calculo": "D['RAT']"
+  },
+  {
+   "texto": "las elecciones generales 38.728.356 personas: 35.958.711",
+   "cifra": "38.728.356",
+   "calculo": "D['ELEC']"
+  },
+  {
+   "texto": "generales 38.728.356 personas: 35.958.711 viven en España y 2.769.645,",
+   "cifra": "35.958.711",
+   "calculo": "D['RESID']"
+  },
+  {
+   "texto": "35.958.711 viven en España y 2.769.645, en el extranjero. Son",
+   "cifra": "2.769.645",
+   "calculo": "D['FUERA']"
+  },
+  {
+   "texto": "2.769.645, en el extranjero. Son 1.261.924 más que en julio de",
+   "cifra": "1.261.924",
+   "calculo": "D['SUBE']"
+  },
+  {
+   "texto": "Interior para el 29N. Eligen 350 diputados y 209 senadores;",
+   "cifra": "350",
+   "calculo": "sum(r['esc'] for r in D['PROV'])"
+  },
+  {
+   "texto": "provincia con más electores, 5.536.913, y Soria la que menos",
+   "cifra": "5.536.913",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Madrid'][0]['electores']"
+  },
+  {
+   "texto": "menos entre las provincias, 77.069. El censo de cada provincia,",
+   "cifra": "77.069",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Soria'][0]['electores']"
+  },
+  {
+   "texto": "más a Madrid, que pasa a 38, y uno menos a Cádiz,",
+   "cifra": "38",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Madrid'][0]['esc']"
+  },
+  {
+   "texto": "a Cádiz, que se queda en 8. El resto, igual que",
+   "cifra": "8",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Cádiz'][0]['esc']"
+  },
+  {
+   "texto": "viven fuera, en Madrid hay 146.000 electores por cada diputado;",
+   "cifra": "146.000",
+   "calculo": "round([r for r in D['PROV'] if r['nombre']=='Madrid'][0]['por_esc'],-3)"
+  },
+  {
+   "texto": "cada diputado; en Teruel, 35.000: 4,1 veces menos. La",
+   "cifra": "35.000",
+   "calculo": "round([r for r in D['PROV'] if r['nombre']=='Teruel'][0]['por_esc'],-3)"
+  },
+  {
+   "texto": "diputado; en Teruel, 35.000: 4,1 veces menos. La media",
+   "cifra": "4,1",
+   "calculo": "D['RAT']"
+  },
+  {
+   "texto": "La media de España es de 111.000. Cuánto cuesta un escaño",
+   "cifra": "111.000",
+   "calculo": "round(D['MEDIA'],-3)"
+  },
+  {
+   "texto": "Se presentan 534 candidaturas al Congreso",
+   "cifra": "534",
+   "calculo": "D['NCAND']"
+  },
+  {
+   "texto": "candidaturas al Congreso en las 52 circunscripciones, las",
+   "cifra": "52",
+   "calculo": "len(D['PROV'])"
+  },
+  {
+   "texto": "Madrid son las que más tienen, 14 cada una; Melilla, la",
+   "cifra": "14",
+   "calculo": "max(r['cand'] for r in D['PROV'])"
+  },
+  {
+   "texto": "una; Melilla, la que menos, 5. Quién va en cada lista,",
+   "cifra": "5",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Melilla'][0]['cand']"
+  },
+  {
+   "texto": "generales de julio de 2023 hubo 60.314 mesas electorales en",
+   "cifra": "60.314",
+   "calculo": "D['MESAS23']"
+  },
+  {
+   "texto": "60.314 mesas electorales en 36.460 secciones censales,",
+   "cifra": "36.460",
+   "calculo": "D['SECC23']"
+  },
+  {
+   "texto": "En Madrid hacen falta 4,1 veces más electores",
+   "cifra": "4,1",
+   "calculo": "D['RAT']"
+  },
+  {
+   "texto": "y Soria la que menos entre las provincias",
+   "condicion": "min((r for r in D['PROV'] if r['nombre'] not in ('Ceuta','Melilla')),key=lambda r:r['electores'])['nombre']=='Soria'"
+  },
+  {
+   "texto": "Madrid es la provincia con más electores",
+   "condicion": "max(D['PROV'],key=lambda r:r['electores'])['nombre']=='Madrid'"
+  },
+  {
+   "texto": "da un diputado más a Madrid",
+   "condicion": "sorted((r['nombre'],r['esc']-r['esc23']) for r in D['PROV'] if r['esc']!=r['esc23'])==[('Cádiz',-1),('Madrid',1)]"
+  },
+  {
+   "texto": "Álava, Las Palmas y Madrid son las que más tienen",
+   "condicion": "sorted(r['nombre'] for r in D['PROV'] if r['cand']==max(x['cand'] for x in D['PROV']))==['Las Palmas','Madrid','Álava']"
+  },
+  {
+   "texto": "Melilla, la que menos",
+   "condicion": "min(D['PROV'],key=lambda r:r['cand'])['nombre']=='Melilla'"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "los residentes en España, 1.615.127 votarán por primera",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/guia-dudas-elecciones-generales-29n.aspx"
+  },
+  {
+   "texto": "29N. Eligen 350 diputados y 209 senadores; el resto",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/guia-dudas-elecciones-generales-29n.aspx"
+  },
+  {
+   "texto": "Melilla uno cada una, y los 248 restantes se reparten",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/guia-dudas-elecciones-generales-29n.aspx"
+  },
+  {
+   "texto": "Las del 29N se sortearon entre el 31 de octubre y el 4 de noviembre",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/guia-dudas-elecciones-generales-29n.aspx"
+  },
+  {
+   "texto": "escrutinio definitivo es del 4 al 7 de diciembre",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/guia-dudas-elecciones-generales-29n.aspx"
+  },
+  {
+   "texto": "da un diputado más a Madrid, que pasa a",
+   "fuente": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "generales, porque han cumplido 18 años desde entonces,",
+   "motivo": "Mayoría de edad."
+  },
+  {
+   "texto": "cierran a las 20.00 del domingo 29. El escrutinio definitivo",
+   "motivo": "Fecha: domingo 29 de noviembre."
+  },
+  {
+   "texto": "la provincia el 29N. Las 10 provincias con más y",
+   "motivo": "Número de barras del gráfico."
+  },
+  {
+   "texto": "provincias con más y las 10 con menos",
+   "motivo": "Número de barras del gráfico."
+  }
+ ],
+ "permitir_espana": []
+}

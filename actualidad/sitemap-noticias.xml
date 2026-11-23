@@ -17,6 +17,22 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/despues-elecciones-generales-29n-investidura/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>Después de las elecciones generales del 29N: cuándo se constituyen las Cortes y los plazos de la investidura</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>Elecciones generales del 29N en cifras: electores, escaños, candidaturas y mesas de cada provincia</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/escrutinio-elecciones-generales-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
