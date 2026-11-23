@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-20-noviembre/</loc>
+    <loc>https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-23-noviembre/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-20</news:publication_date>
-      <news:title>Encuestas elecciones generales 2026, hoy 20 de noviembre: el PP gana en las cinco, por entre 2,0 y 4,6 puntos</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/veda-encuestas-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-20</news:publication_date>
-      <news:title>Veda de encuestas: hasta cuándo se pueden publicar las del 29N</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/como-votar-elecciones-generales-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-20</news:publication_date>
-      <news:title>Cómo votar en las elecciones generales del 29N: horario, qué llevar y cómo saber tu colegio</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/a-que-hora-resultados-elecciones-generales-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-20</news:publication_date>
-      <news:title>A qué hora se sabrán los resultados de las elecciones generales del 29N</news:title>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>Encuestas elecciones generales 2026, hoy 23 de noviembre: PP y Vox suman mayoría absoluta en las siete</news:title>
     </news:news>
   </url>
   <url>
