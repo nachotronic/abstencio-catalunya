@@ -8,6 +8,7 @@ on:
     - cron: '50 22 23 11 *'   # repaso por si la primera se retrasa o choca
     - cron: '20 23 23 11 *'   # 0:20 del 24-11: otro repaso
     - cron: '10 20 29 11 *'   # 21:10 del 29-11: acaba la veda, vuelven el menú y el simulador (el bloque de encuestas, no)
+    - cron: '15 * 24-29 11 *' # y cada hora, por si otra publicación devolviera algo a la portada (no hace nada si ya está limpia)
   workflow_dispatch:
 permissions:
   contents: write
@@ -27,13 +28,16 @@ jobs:
             python3 src/quitar_encuestas_portada.py
           fi
       - name: Subir a main
+        id: subir
         run: |
           if git diff --quiet; then echo "Nada que quitar"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
           git commit -qam "Veda de encuestas (LOREG 69.7): portada sin encuestas (o, al acabar, vuelven el menú y el simulador)"
           GITHUB_TOKEN="${{ github.token }}" src/subir_a_main.sh
+          echo "cambio=1" >> "$GITHUB_OUTPUT"
       - name: Avisar a IndexNow
+        if: steps.subir.outputs.cambio == '1'
         continue-on-error: true
         run: |
           sleep 120

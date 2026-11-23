@@ -46,8 +46,9 @@ Desplegar no cambia la web.
    `https://mapaelectoral.es/municipio/madrid/madrid/?directo=<URL del Worker>`.
 2. PR con `generales-2026/data/meta.json` → `"directo": {"url": "<URL del Worker>", …}`. Con eso el mapa y las fichas
    empiezan a leer el Worker cada minuto.
-3. El mismo día de la noche: `NOCHE_29N = True` en `src/territorios.py` y reconstruir (construir.py → territorios.py →
-   seo.py) para cambiar títulos y textos de las fichas a modo resultados.
+3. `NOCHE_29N` en `src/territorios.py` se queda en `False`. Comprobado el 23-11: con `True` no cambia ningún title,
+   description, H1, canonical ni og de las 7.324 páginas, pero solo cambia una frase de las fichas y obliga a reconstruir
+   todo (construir.py → territorios.py → seo.py; territorios.py solo deja las páginas sin favicons). No compensa.
 4. Mientras FUENTE sea el simulacro, **no** se pone la URL en meta.json: la web enseñaría datos del 23J como del 29N.
 
 ## 4. Lo que tiene que mirar Nacho en su navegador
@@ -93,3 +94,22 @@ como autenticación básica HTTP; si es otra cosa, se cambia en `pideTexto`), el
 - Si el Worker falla del todo: actualizar a mano provincias y CCAA cada 10-15 minutos desde la web pública.
 - Fuente que se cita: «Ministerio del Interior, escrutinio provisional». Es información pública reutilizable
   (Ley 37/2007); una lectura por minuto no carga su web.
+
+## 7. Secciones (ficheros por mesa, manual final del 23-11)
+
+`/mesas/getAvances/2/<pp>.csv` (al acabar cada avance) y `/mesas/getEscrutinio/2/<pp>.csv` (al acabar el recuento
+provisional). El Worker los suma por sección (código INE de 10 cifras) y los sirve en `/secciones/<pp>.json`; el mapa pinta
+las secciones del 29N con ellos. Mientras no estén, el mapa sigue por municipio: no hay que hacer nada. La raíz de `/mesas`
+no la da el manual: el Worker prueba varias y apunta en `/estado` («mesas.prueba») qué respondió cada una. Si ninguna
+vale, se fija con la variable `MESAS`.
+
+## 8. Noche del 29N, paso a paso
+
+1. Antes: Nacho pide a Interior una clave nueva (la anterior se pegó en el chat) y la guarda en el secreto `MEDIOS_CLAVE`.
+2. Domingo 29 por la mañana: Actions → «Directo 29N: desplegar el Worker» con FUENTE `…/descargas/csv`, MODO `medios`,
+   DIA `261129` y limpiar `si`. DIA descarta cualquier registro que no sea del 29 (si Interior aún sirve la prueba del 25,
+   no entra) y limpiar borra lo guardado de la prueba.
+3. Mirar `/estado`: «ok … municipios» con datos del día, o «ninguna provincia trajo municipios» si aún no hay nada del 29.
+4. Con el «Fusiona» de Nacho: PR con la URL del Worker en `generales-2026/data/meta.json` → `directo.url`. GitHub Pages y
+   el navegador guardan meta.json y app.js hasta 10 minutos: contar con ese margen.
+5. Apagar si algo va mal: PR que vacía `directo.url` (vuelve todo a como estaba, en 10 minutos como mucho).

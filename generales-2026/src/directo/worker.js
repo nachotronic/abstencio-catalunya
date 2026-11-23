@@ -17,6 +17,8 @@
 //           'municipios': una petición por municipio, por tandas de LOTE (por defecto 900) en cada
 //           minuto. Es el plan B si la API no devuelve los municipios dentro de la provincia.
 //   KV      espacio KV enlazado con el nombre RESULTADOS.
+//   DIA     (opcional) AAMMDD del día que vale, 261129 la noche electoral: descarta registros de otros días (pruebas).
+//   MESAS   (opcional) raíz de los ficheros por mesa si no es ninguna de las que se prueban (ver mesas()).
 //   CLAVE   secreto para forzar una actualización a mano: GET /actualiza?clave=...
 // Hace falta el plan de pago de Workers (5 $/mes): el gratuito corta a los 10 ms de CPU y 50 peticiones.
 // Cómo desplegarlo y encenderlo: DESPLIEGUE.md (y el workflow .github/workflows/directo-worker.yml).
@@ -344,8 +346,12 @@ async function pideTexto(url, env) {
   const r = await fetch(url, { headers: cabeceras(env), cf: { cacheTtl: 0 } });
   if (!r.ok) throw new Error(`${r.status} en ${url}`);
   const b = new Uint8Array(await r.arrayBuffer());
-  if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { let t = ''; for (const x of b) t += String.fromCharCode(x); return t; }
-  return new TextDecoder().decode(b);
+  let t;
+  if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { t = ''; for (const x of b) t += String.fromCharCode(x); } else t = new TextDecoder().decode(b);
+  // DIA (AAMMDD, por ejemplo 261129): solo valen los registros totalizados ese día. Así, si Interior aún sirve los datos de una
+  // prueba anterior, el Worker no los toma por los de la noche electoral (se quedan fuera y la web sigue como estaba).
+  if (env.DIA && !/getEnvio|\/fijos\//.test(url)) t = t.split(/\r?\n/).filter(l => l.trim() && l.startsWith(env.DIA)).join('\n');
+  return t;
 }
 
 // Avances de participación (getAvancesTotales/2/<envío>): registros TO, CM y PR con dos avances

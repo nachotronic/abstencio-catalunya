@@ -18,6 +18,10 @@ on:
         description: "MODO: provincias (web pública), municipios (plan B) o medios (API de descargas con usuario y clave)"
         required: false
         default: "provincias"
+      dia:
+        description: "DIA (AAMMDD): solo datos de ese día; 261129 la noche electoral, vacío en las pruebas"
+        required: false
+        default: ""
       limpiar:
         description: "Borrar lo guardado (último resultado, provincias, secciones y estado de las mesas) antes de la prueba de medios y antes de la noche: si / no"
         required: false
@@ -61,7 +65,10 @@ jobs:
         env:
           FUENTE: ${{ github.event.inputs.fuente }}
           MODO: ${{ github.event.inputs.modo }}
-        run: npx -y wrangler@3.114.0 deploy --var "FUENTE:$FUENTE" --var "MODO:$MODO"
+          DIA: ${{ github.event.inputs.dia }}
+        run: |
+          if [ -n "$DIA" ]; then npx -y wrangler@3.114.0 deploy --var "FUENTE:$FUENTE" --var "MODO:$MODO" --var "DIA:$DIA"
+          else npx -y wrangler@3.114.0 deploy --var "FUENTE:$FUENTE" --var "MODO:$MODO"; fi
       - name: Clave para forzar una lectura a mano (CLAVE)
         env:
           CLAVE: ${{ secrets.DIRECTO_CLAVE }}
