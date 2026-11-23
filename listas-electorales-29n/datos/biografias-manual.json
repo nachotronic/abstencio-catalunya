@@ -465,6 +465,10 @@
   "texto": "Es presidenta de las Corts Valencianes.",
   "fuentes": [
    {
+    "medio": "El Español, 21 de octubre de 2026",
+    "url": "https://www.elespanol.com/alicante/20261021/cabezas-lista-vox-alicante-elecciones-apuesta-continuidad/1003744429798_0.html"
+   },
+   {
     "medio": "Vozpópuli, 22 de octubre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/vox-elige-a-sus-cabezas-de-lista-para-el-29-n-estos-son-los-lideres-por-cada-provincia.html"
    }
@@ -782,8 +786,12 @@
   "prov": "28",
   "siglas": "VOX",
   "n": 5,
-  "texto": "Es portavoz nacional de Deportes de Vox y concejal en el Ayuntamiento de Madrid.",
+  "texto": "Es portavoz de Deportes de Vox.",
   "fuentes": [
+   {
+    "medio": "El Debate, 21 de octubre de 2026",
+    "url": "https://www.eldebate.com/espana/20261021/estos-son-cabezas-lista-vox-29n_472379.html"
+   },
    {
     "medio": "Vozpópuli, 22 de octubre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/vox-elige-a-sus-cabezas-de-lista-para-el-29-n-estos-son-los-lideres-por-cada-provincia.html"
@@ -898,8 +906,12 @@
   "prov": "28",
   "siglas": "VOX",
   "n": 4,
-  "texto": "Es la portavoz de Vox en el Congreso.",
+  "texto": "Es la portavoz parlamentaria de Vox en el Congreso.",
   "fuentes": [
+   {
+    "medio": "El Debate, 21 de octubre de 2026",
+    "url": "https://www.eldebate.com/espana/20261021/estos-son-cabezas-lista-vox-29n_472379.html"
+   },
    {
     "medio": "Vozpópuli, 22 de octubre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/vox-elige-a-sus-cabezas-de-lista-para-el-29-n-estos-son-los-lideres-por-cada-provincia.html"
@@ -1248,8 +1260,16 @@
   "prov": "43",
   "siglas": "VOX",
   "n": 1,
-  "texto": "Es secretario general del sindicato Solidaridad y concejal en Sant Adrià de Besòs.",
+  "texto": "Es secretario general del sindicato Solidaridad, vinculado a Vox, y concejal en Sant Adrià de Besòs.",
   "fuentes": [
+   {
+    "medio": "Diari de Tarragona, 21 de octubre de 2026",
+    "url": "https://www.diaridetarragona.com/tarragona/273660/vox-elige-jordi-fuente-candidato-29-n-tarragona.html"
+   },
+   {
+    "medio": "Diario de Avisos, 22 de octubre de 2026",
+    "url": "https://diariodeavisos.elespanol.com/2026/10/vox-candidato-neonazi-tarragona-jordi-fuente/"
+   },
    {
     "medio": "Vozpópuli, 22 de octubre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/vox-elige-a-sus-cabezas-de-lista-para-el-29-n-estos-son-los-lideres-por-cada-provincia.html"
@@ -1287,8 +1307,12 @@
   "prov": "45",
   "siglas": "VOX",
   "n": 3,
-  "texto": "Es presidente regional de Vox.",
+  "texto": "Es presidente provincial de Vox en Toledo.",
   "fuentes": [
+   {
+    "medio": "El Español, 21 de octubre de 2026",
+    "url": "https://www.elespanol.com/eldigitalcastillalamancha/region/20261021/cabezas-lista-vox-congreso-provincias-castilla-la-mancha-cara/1003744429981_0.html"
+   },
    {
     "medio": "Vozpópuli, 22 de octubre de 2026",
     "url": "https://www.vozpopuli.com/espana/politica/vox-elige-a-sus-cabezas-de-lista-para-el-29-n-estos-son-los-lideres-por-cada-provincia.html"
