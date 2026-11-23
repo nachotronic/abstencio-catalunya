@@ -837,6 +837,13 @@ def post_x(titular, med, hoy):
     return texto, URL, etiquetas
 
 
+def despues_de_la_veda():
+    """Desde el comienzo de la veda (src/veda.py, 23-11-2026 a las 23:30) la portada se queda sin el bloque de encuestas."""
+    sys.path.insert(0, str(RAIZ / 'src'))
+    from veda import DESDE, MADRID
+    return datetime.now(MADRID) >= DESDE
+
+
 def portada(titular, med, actual, hoy='', **datos):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
@@ -844,6 +851,10 @@ def portada(titular, med, actual, hoy='', **datos):
         t = f.read_text(encoding='utf-8')
         # el bloque va justo encima del mapa (antes, debajo, tras «Votar el 29N» y las listas): se quita de donde esté y se pone ahí
         t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->\n?', '', t, flags=re.S)
+        if despues_de_la_veda():
+            # Nacho, 23-11-2026: desde la veda del 29N las encuestas no vuelven a la portada (ni después del 29)
+            f.write_text(t, encoding='utf-8')
+            continue
         bloque = '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, **datos) + '<!--/encuestas:portada-->\n'
         m = re.search(r'<section class="wide" id="mapa"', t)
         if not m:
