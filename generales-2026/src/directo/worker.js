@@ -91,13 +91,16 @@ export default {
 // el cierre de los colegios de la Península, el 29N (20:00 en Madrid); las pruebas lo adelantan con la variable PIEURNA_DESDE
 const PIEURNA_DESDE = '2026-11-29T19:00:00Z';
 
-export async function actualiza(env) {
-  PARADO = null; REGISTRO = [];
+export async function actualiza(env0) {
+  // estado de esta lectura (pausa y registro): va dentro de env, que llega a todas las funciones, y no en variables del módulo,
+  // para que dos lecturas que coincidan en el mismo isolate no se pisen
+  const env = { ...env0, LECTURA: { parado: null, registro: [] } };
   const pausa = await env.RESULTADOS.get('parado', 'json');
   if (pausa && Date.now() < Date.parse(pausa.hasta)) return `en pausa por el ${pausa.codigo} de Interior hasta ${pausa.hasta} (${pausa.url}); avisar a soporte: 900 601 462, prensa@infoelecciones.es`;
   try {
     return await actualiza1(env);
   } finally {
+    const PARADO = env.LECTURA.parado, REGISTRO = env.LECTURA.registro;
     if (PARADO) await env.RESULTADOS.put('parado', JSON.stringify({ ...PARADO, hasta: new Date(Date.now() + 10 * 60e3).toISOString() }));
     if (env.ARCHIVO && REGISTRO.length) {   // registro de cada descarga de esta lectura (hora, URL sin credenciales, código, bytes, ms)
       const t = new Date().toISOString();
@@ -373,17 +376,17 @@ export function senado23Medios(texto) {
 let MUESTRA_SEN = '';
 
 // Recomendaciones de Interior (manual, pág. 23): ante un 401 o un 403, nada de reintentos continuos. Al primero, esta lectura
-// deja de pedir nada (PARADO) y actualiza() apunta una pausa de 10 minutos en KV ('parado', se ve en /estado) con lo que
+// deja de pedir nada (env.LECTURA.parado) y actualiza() apunta una pausa de 10 minutos en KV ('parado', se ve en /estado) con lo que
 // pide soporte: hora con zona, método, URL sin credenciales y código.
-let PARADO = null, REGISTRO = [];
 const sinCred = u => u.replace(/\/\/[^/@]*@/, '//');
 async function pideTexto(url, env) {
-  if (PARADO) throw new Error(`en pausa por el ${PARADO.codigo} de Interior`);
+  const L = env.LECTURA || { parado: null, registro: [] }, REGISTRO = L.registro;
+  if (L.parado) throw new Error(`en pausa por el ${L.parado.codigo} de Interior`);
   const t0 = Date.now();
   const r = await fetch(url, { headers: cabeceras(env), cf: { cacheTtl: 0 } });
   if (!r.ok) {
     REGISTRO.push({ t: new Date(t0).toISOString(), url: sinCred(url), codigo: r.status, ms: Date.now() - t0 });
-    if (r.status === 401 || r.status === 403) PARADO = PARADO || { codigo: r.status, t: new Date(t0).toISOString(), metodo: 'GET', url: sinCred(url) };
+    if (r.status === 401 || r.status === 403) L.parado = L.parado || { codigo: r.status, t: new Date(t0).toISOString(), metodo: 'GET', url: sinCred(url) };
     throw new Error(`${r.status} en ${url}`);
   }
   const b = new Uint8Array(await r.arrayBuffer());
@@ -477,9 +480,9 @@ async function mesas(base, env, F) {
     // web»: <dominio>/mesas/…); Interior pide usar «únicamente las rutas documentadas», así que no se prueban otras
     const o = new URL(base).origin, prueba = [];
     for (const b of env.MESAS ? [env.MESAS] : [o + '/mesas']) {
-      if (PARADO) break;
+      if (env.LECTURA && env.LECTURA.parado) break;
       const r = await fetch(`${b}/${quiereAv.length ? 'getAvances' : 'getEscrutinio'}/2/28.csv`, { headers: cabeceras(env), cf: { cacheTtl: 0 } }).catch(() => null);
-      if (r && (r.status === 401 || r.status === 403)) PARADO = { codigo: r.status, t: new Date().toISOString(), metodo: 'GET', url: `${b}/…/2/28.csv` };
+      if (r && (r.status === 401 || r.status === 403) && env.LECTURA) env.LECTURA.parado = { codigo: r.status, t: new Date().toISOString(), metodo: 'GET', url: `${b}/…/2/28.csv` };
       const t = r && !r.ok ? (await r.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 60) : '';
       prueba.push((r ? r.status : 'x') + ' ' + b.replace(o, '') + (t ? ' «' + t + '»' : ''));
       if (r && r.ok) { st.base = b; break; }
