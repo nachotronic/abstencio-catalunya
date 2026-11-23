@@ -8,6 +8,8 @@ on:
     - cron: '50 22 23 11 *'   # repaso por si la primera se retrasa o choca
     - cron: '20 23 23 11 *'   # 0:20 del 24-11: otro repaso
     - cron: '10 20 29 11 *'   # 21:10 del 29-11: acaba la veda, vuelven el menú y el simulador (el bloque de encuestas, no)
+    - cron: '30 20 29 11 *'   # 21:30 y 22:10: repasos de la vuelta (el 23-11 el de las 23:30 no llegó a correr a su hora)
+    - cron: '10 21 29 11 *'
     - cron: '15 * 24-29 11 *' # y cada hora, por si otra publicación devolviera algo a la portada (no hace nada si ya está limpia)
   workflow_dispatch:
 permissions:
