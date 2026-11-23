@@ -20,11 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (130)
+## Pendientes (131)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
 | 2026-11-23 | [`participacion-elecciones-generales-29n-prevision`](https://mapaelectoral.es/actualidad/participacion-elecciones-generales-29n-prevision/) | Participación en las elecciones generales del 29N: las encuestas prevén un 73,1 %, 2,7 puntos más que en 2023 | primer gráfico de la pieza |
+| 2026-11-23 | [`voto-blanco-nulo-elecciones-generales-29n`](https://mapaelectoral.es/actualidad/voto-blanco-nulo-elecciones-generales-29n/) | Voto en blanco y voto nulo en las elecciones generales del 29N: qué cuenta y a quién afecta | primer gráfico de la pieza |
 | 2026-11-23 | [`encuestas-elecciones-generales-2026-23-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-23-noviembre/) | Encuestas elecciones generales 2026, hoy 23 de noviembre: PP y Vox suman mayoría absoluta en las siete | primer gráfico de la pieza |
 | 2026-11-22 | [`getafe-atletico-sur-madrid-29n`](https://mapaelectoral.es/actualidad/getafe-atletico-sur-madrid-29n/) | Getafe-Atlético: en la ciudad del Coliseum, el PSOE pasó de ganar en 112 de las 122 secciones a ganar en 74, y el PP se quedó a 2.182 votos | primer gráfico de la pieza |
 | 2026-11-22 | [`una-semana-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/una-semana-29n-la-semana-en-el-mapa/) | A una semana del 29N, la mediana de las encuestas da al PP 3,4 puntos de ventaja, 1,2 menos que hace siete días; el lunes 23 es el último día para publicarlas | primer gráfico de la pieza |
