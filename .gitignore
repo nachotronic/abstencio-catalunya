@@ -1,3 +1,4 @@
 video/comun/*.json
 __pycache__/
 *.pyc
+listas-electorales-29n/datos/.cache-congreso/
