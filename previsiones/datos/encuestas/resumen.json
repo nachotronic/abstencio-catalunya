@@ -1,8 +1,8 @@
 {
- "descargado": "2026-11-23T10:33Z",
+ "descargado": "2026-11-23T18:05Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1142,
- "encuestas_infraestatales": 153,
+ "encuestas_espana": 1153,
+ "encuestas_infraestatales": 157,
  "desde": "2018-08-10",
  "ultima": {
   "publicado": "2026-11-23",
@@ -10,9 +10,9 @@
   "cliente": "Artículo14"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 40,
+  "UPN-PP": 43,
   "SY": 8,
-  "D21": 6,
+  "D21": 7,
   "Autonómicas - CUP": 2,
   "DVC": 2,
   "JxSí": 1,
@@ -23,8 +23,8 @@
   "CHA-IU-MS-FA": 1
  },
  "wikipedia": {
-  "encuestas": 457,
-  "ultima_fin_campo": "2026-11-22",
-  "faltan_en_electografica_120_dias": 32
+  "encuestas": 465,
+  "ultima_fin_campo": "2026-11-23",
+  "faltan_en_electografica_120_dias": 30
  }
 }
