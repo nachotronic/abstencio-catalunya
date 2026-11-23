@@ -50,14 +50,15 @@ def informe(lab,a,b):
     print('TOP',lab,paths.most_common(12))
     print('PIEZAS',lab,[(p,paths[p]) for p in PIEZAS])
     act=collections.Counter({p:v for p,v in paths.items() if p.startswith('/actualidad/')})
-    print('ACT',lab,sum(act.values()),act.most_common(8))
+    print('ACT',lab,sum(act.values()),act.most_common(40))
+    print('KEY',lab,[(p,v) for p,v in paths.items() if any(k in p for k in ('escrutinio','blanco','nulo','cifras','investidura','participacion','23-nov'))])
     ref=collections.Counter()
     for r in grp(['refererHost'],5000,Z(a),Z(b)): ref[refn(r['dimensions']['refererHost'])]+=r['sum']['visits']
     print('REF',lab,sum(ref.values()),ref.most_common(8))
     pr=collections.defaultdict(collections.Counter)
     for r in grp(['refererHost','requestPath'],5000,Z(a),Z(b)):
         p=r['dimensions']['requestPath']; k=refn(r['dimensions']['refererHost'])
-        if p in PIEZAS or p=='/encuestas/': pr[p][k]+=r['sum']['visits']
+        if p in PIEZAS or p=='/encuestas/' or (p.startswith('/actualidad/') and any(k in p for k in ('escrutinio','blanco','cifras','investidura','participacion','23-nov'))): pr[p][k]+=r['sum']['visits']
         if k=='x': pr['X_por_ruta'][p]+=r['sum']['visits']
     for p,c in pr.items(): print('REFPAG',lab,p,sum(c.values()),c.most_common(6))
 for lab,k in [('HOY23',0),('DOM22',1),('LUN16',7)]:
