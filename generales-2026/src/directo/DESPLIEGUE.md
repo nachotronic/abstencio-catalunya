@@ -107,7 +107,8 @@ vale, se fija con la variable `MESAS`.
 
 1. Antes: Nacho pide a Interior una clave nueva (la anterior se pegó en el chat) y la guarda en el secreto `MEDIOS_CLAVE`.
 2. Domingo 29 por la mañana: Actions → «Directo 29N: desplegar el Worker» con FUENTE `…/descargas/csv`, MODO `medios`,
-   DIA `261129` y limpiar `si`. DIA descarta cualquier registro que no sea del 29 (si Interior aún sirve la prueba del 25,
+   DIA `261129`, PUBLICA `2026-11-29T20:00:00Z` y limpiar `si`. PUBLICA: antes de las 21:00 (cierre de Canarias) no se guarda
+   ningún voto ni escaño aunque la API los diera; la participación sí. DIA descarta cualquier registro que no sea del 29 (si Interior aún sirve la prueba del 25,
    no entra) y limpiar borra lo guardado de la prueba.
 3. Mirar `/estado`: «ok … municipios» con datos del día, o «ninguna provincia trajo municipios» si aún no hay nada del 29.
 4. Con el «Fusiona» de Nacho: PR con la URL del Worker en `generales-2026/data/meta.json` → `directo.url`. GitHub Pages y

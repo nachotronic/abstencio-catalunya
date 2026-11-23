@@ -18,6 +18,7 @@
 //           minuto. Es el plan B si la API no devuelve los municipios dentro de la provincia.
 //   KV      espacio KV enlazado con el nombre RESULTADOS.
 //   DIA     (opcional) AAMMDD del día que vale, 261129 la noche electoral: descarta registros de otros días (pruebas).
+//   PUBLICA (opcional) hora ISO antes de la cual no se guarda ningún voto ni escaño (2026-11-29T20:00:00Z, las 21:00).
 //   MESAS   (opcional) raíz de los ficheros por mesa si no es ninguna de las que se prueban (ver mesas()).
 //   CLAVE   secreto para forzar una actualización a mano: GET /actualiza?clave=...
 // Hace falta el plan de pago de Workers (5 $/mes): el gratuito corta a los 10 ms de CPU y 50 peticiones.
@@ -478,7 +479,7 @@ async function porMedios(base, env) {
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
   let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
-  if (previo && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) {   // nada nuevo
+  if (previo && !previo.retenido && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) {   // nada nuevo
     const a = previo.ant23 && previo.ant23.v === 2 ? previo.ant23 : await ant23(base, env);
     return { ...previo, ...(a ? { ant23: a } : {}), secc: await mesas(base, env, previo).catch(e => ({ error: e.message })) };
   }
@@ -498,7 +499,13 @@ async function porMedios(base, env) {
   } catch (e) { MUESTRA_SEN = 'error: ' + e.message; }
   try { const t = await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env); MUESTRA_AV = (lineas(t).find(l => /^\d{10};?TO/.test(l)) || lineas(t)[0] || '').slice(0, 200); avances = avancesMedios(t); }
   catch (e) { MUESTRA_AV = 'error: ' + e.message; }
+  // PUBLICA (hora ISO; la noche, 2026-11-29T20:00:00Z = 21:00 en Madrid, cierre de Canarias): antes de esa hora no se
+  // guarda ningún voto ni escaño, aunque la API ya los diera; la participación de los avances sí (Interior la publica a las
+  // 14:00 y a las 18:00). Es un seguro: el manual dice que Interior publica los resultados a las 21:00, hora peninsular.
+  const retenido = !!(env.PUBLICA && Date.now() < Date.parse(env.PUBLICA));
+  if (retenido) { for (const f of filas) { f.a = [f.a[0], 0, 0, 0, 0]; f.votos = {}; } escanos = ambitos = senado = null; }
   const out = normaliza(filas, previo);
+  if (retenido) out.retenido = true;
   // Hora: la del último registro con mesas escrutadas; sin escrutinio, la de los avances; sin nada, la de la lectura.
   const conVotos = filas.filter(x => x.a[1] > 0).map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (UTC+1)
   out.actualizado = horaMedios(conVotos) || (avances && avances.es && avances.es.some(x => x != null) && horaMedios(avances.fecha)) || new Date().toISOString();
