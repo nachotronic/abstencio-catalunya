@@ -100,7 +100,7 @@ def num(v):
 
 
 # Medio de las encuestadoras que Electográfica publica sin cliente (40dB trabaja para El País y la Cadena SER)
-CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER'}
+CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER', 'data10': 'OKDiario'}
 # Fecha de publicación de encuestas que solo trae Wikipedia (sin fecha de publicación), por (casa, fin del campo).
 # Sin ella, la página usaría el fin del campo como si fuera la publicación.
 PUBLICADO_WP = {('cis', '2026-10-30'): '2026-11-12'}   # CIS 3584, preelectoral: avance de cis.es del 12-11-2026
@@ -155,6 +155,12 @@ def carga():
             unicas.append(w)
     wp = unicas
 
+    def otra_encuesta(w, r):
+        # distinta muestra y distinta noticia: es otra entrega (Data10 del 20-11, n=750, se llevaba la del 23-11)
+        return (r is not None and r['muestra'] and w['muestra'] and r['muestra'] != w['muestra']
+                and r['fuente_original'].strip() and w['fuente_original'].strip()
+                and r['fuente_original'].strip() != w['fuente_original'].strip())
+
     def pareja(casa, fin, muestra='', r=None):
         # la más parecida: misma muestra y, después, el fin de campo más cercano (en un tracking diario la primera a <=4 días
         # podía ser la entrega del día siguiente, que se quedaba sin pareja propia y salía repetida)
@@ -162,7 +168,8 @@ def carga():
         for i, w in enumerate(wp):
             c = clave(w['encuestadora'])
             dias = abs((date.fromisoformat(w['campo_fin']) - fin).days)
-            if i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and dias <= 4:
+            if (i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and dias <= 4
+                    and not otra_encuesta(w, r)):
                 cand.append((not (muestra and w['muestra'] == muestra), dias, i))
         if cand or r is None or r['campo_fin']:
             return min(cand)[2] if cand else None
