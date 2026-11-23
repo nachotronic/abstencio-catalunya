@@ -205,3 +205,19 @@ def pieza(slug, titulo_corto, h1, dek, fecha_larga, cuerpo, preguntas, enlaces, 
              + '<script>/* Gráficos en SVG estático: sin interacción */</script>\n')
     (SRC / f'{slug}.html').write_text(htmlp, encoding='utf-8')
     print('escrito', slug, len(htmlp))
+
+
+# Ventana emergente genérica para mapas: el contenedor lleva data-pop="<clave>" y cada forma data-k="<código>";
+# D.POP[<clave>][<código>] es el HTML de la ventana. Va dentro del <script> de datos de la pieza, después de «const D=...;».
+POP_ESTILO = ('<style>\n.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font-family:var(--ui);font-size:.9rem;'
+              'line-height:1.3;padding:.35rem .55rem;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-115%)}\n'
+              '[data-pop] [data-k]{cursor:pointer}\n</style>\n')
+POP_JS = """
+(()=>{document.querySelectorAll('[data-pop]').forEach(box=>{box.style.position='relative';const t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t);
+ const ver=ev=>{const e=ev.target.closest&&ev.target.closest('[data-k]'),h=e&&(D.POP[box.dataset.pop]||{})[e.dataset.k];if(!h){t.hidden=true;return}
+  const r=box.getBoundingClientRect(),q=ev.touches?ev.touches[0]:ev;t.innerHTML=h;t.hidden=false;const x=q.clientX-r.left,y=q.clientY-r.top,w=t.offsetWidth;
+  t.style.left=Math.min(Math.max(x,w/2),box.clientWidth-w/2)+'px';t.style.top=Math.max(y,t.offsetHeight*1.15)+'px'};
+ let toque=0;box.addEventListener('mousemove',ver);box.addEventListener('click',ver);box.addEventListener('touchstart',ev=>{toque=Date.now();ver(ev)},{passive:true});
+ box.addEventListener('mouseleave',()=>{if(Date.now()-toque>1000)t.hidden=true})});
+document.addEventListener('touchstart',ev=>{if(!ev.target.closest('[data-pop]'))document.querySelectorAll('[data-pop]>.tip').forEach(t=>{t.hidden=true})},{passive:true})})();
+"""
