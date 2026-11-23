@@ -41,7 +41,7 @@
       .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(F => pinta(F, grupo, nombre))
       .catch(() => { const e = caja.querySelector('.d-estado'); if (e) e.textContent = 'Sin conexión con los resultados, reintentando…'; });
-    tick(); setInterval(tick, 60000);
+    tick(); setInterval(tick, 30000);   // cada 30 s: los primeros datos, lo antes posible (Nacho, 24-11)
   }).catch(() => {});
 
   function pinta(F, grupo, nombre) {

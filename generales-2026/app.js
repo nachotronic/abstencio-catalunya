@@ -741,7 +741,7 @@
         aplica(await r.json(), first); first = false;
       } catch (e) { $('#d-estado').textContent = 'sin conexión con los resultados, reintentando…'; }
     };
-    await tick(); setInterval(tick, 60000);
+    await tick(); setInterval(tick, 30000);   // cada 30 s: los primeros datos, lo antes posible (Nacho, 24-11)
   }
   // ---------- sondeo a pie de urna, la noche del 29N, del cierre de los colegios a los primeros datos de Interior. El titular lo
   // pone a mano el workflow «Directo 29N: sondeo a pie de urna» en el Worker, que no lo sirve antes de su hora (PIEURNA_DESDE);
