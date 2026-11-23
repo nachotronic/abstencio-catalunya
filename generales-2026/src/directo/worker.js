@@ -351,7 +351,7 @@ async function pideTexto(url, env) {
   if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { t = ''; for (const x of b) t += String.fromCharCode(x); } else t = new TextDecoder().decode(b);
   // DIA (AAMMDD, por ejemplo 261129): solo valen los registros totalizados ese día. Así, si Interior aún sirve los datos de una
   // prueba anterior, el Worker no los toma por los de la noche electoral (se quedan fuera y la web sigue como estaba).
-  if (env.DIA && !/getEnvio|\/fijos\//.test(url)) t = t.split(/\r?\n/).filter(l => l.trim() && l.startsWith(env.DIA)).join('\n');
+  if (env.DIA && !/getEnvio|\/fijos\//.test(url)) t = t.split(/\r?\n/).filter(l => l.trim() && (!/^\d{6}/.test(l) || l.startsWith(env.DIA))).join('\n');   // fuera solo lo fechado otro día
   return t;
 }
 
