@@ -19,12 +19,13 @@ ENCUESTAS = RAIZ / 'encuestas/index.html'
 AVISO = ('<!--aviso-veda--><p class="veda-aviso" role="note" style="font:15px/1.45 var(--sans);border-left:4px solid currentColor;'
          'padding:8px 12px;margin:12px 0 18px;background:var(--bg-2,transparent)"><b>Veda electoral.</b> Desde el martes 24 de noviembre '
          'y hasta el cierre de los colegios del 29N no se publican encuestas nuevas (artículo 69.7 de la LOREG). Esta página se '
-         'quedó con las publicadas hasta el lunes 23 de noviembre.</p><!--/aviso-veda-->')
+         'quedó con las publicadas hasta el lunes 23 de noviembre. <a href="../actualidad/encuestas-andorra-29n/">Qué son las encuestas de Andorra y qué dice la ley</a>.</p><!--/aviso-veda-->')
 
 
 def poner_aviso(t):
-    if '<!--aviso-veda-->' in t:
+    if AVISO in t:
         return t
+    t = quitar_aviso(t)   # si el texto del aviso cambia, se cambia también en la página
     return re.sub(r'(<p class="firma">.*?</p>\n?)', lambda m: m.group(1) + AVISO + '\n', t, count=1, flags=re.S)
 
 
