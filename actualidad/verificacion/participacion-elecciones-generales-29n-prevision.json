@@ -454,6 +454,41 @@
   {
    "texto": "Es más que los 331.000 votos",
    "condicion": "D['MAS_VOT']>D['DIF23']"
+  },
+  {
+   "texto": "residentes bajó del 72,1 % al 65,4",
+   "cifra": "72,1",
+   "calculo": "D['CATP']['p19']"
+  },
+  {
+   "texto": "bajó del 72,1 % al 65,4 %, 6,7 puntos",
+   "cifra": "65,4",
+   "calculo": "D['CATP']['p23']"
+  },
+  {
+   "texto": "al 65,4 %, 6,7 puntos",
+   "cifra": "6,7",
+   "calculo": "-D['CATP']['d']"
+  },
+  {
+   "texto": "sumaron en Cataluña 954.000 votos",
+   "cifra": "954.000",
+   "calculo": "round(D['CATP']['ind23'],-3)"
+  },
+  {
+   "texto": "954.000 votos, 687.000 menos",
+   "cifra": "687.000",
+   "calculo": "round(D['CATP']['ind19']-D['CATP']['ind23'],-3)"
+  },
+  {
+   "texto": "y el PSC ganó 423.000",
+   "cifra": "423.000",
+   "calculo": "round(D['CATP']['psc23']-D['CATP']['psc19'],-3)"
+  },
+  {
+   "texto": "la que se usa aquí, fue de 6,7",
+   "cifra": "6,7",
+   "calculo": "-D['CATP']['d']"
   }
  ],
  "externas": [
@@ -484,6 +519,14 @@
   {
    "texto": "«Lo importante no es saber la participación total, sino quién sale a votar»",
    "fuente": "https://www.eldiario.es/politica/izquierda-gana-baja-abstencion_1_1621061.html"
+  },
+  {
+   "texto": "se habló de una bajada de unos cuatro puntos en Cataluña",
+   "fuente": "https://www.3cat.cat/3catinfo/23j-la-participacio-puja-mes-de-dos-punts-a-espanya-i-en-baixa-gairebe-quatre-a-catalunya/noticia/3242506/"
+  },
+  {
+   "texto": "la sentencia del Tribunal Supremo sobre los líderes del procés, del 14 de octubre",
+   "fuente": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/El-Tribunal-Supremo-condena-a-nueve-de-los-procesados-en-la-causa-especial-20907-2017-por-delito-de-sedicion"
   }
  ],
  "ignorar": [
@@ -562,6 +605,10 @@
   {
    "texto": "con más de 200.000 electores",
    "motivo": "Umbral de la selección de ciudades."
+  },
+  {
+   "texto": "llegaron cuatro semanas después de la sentencia",
+   "motivo": "Sentencia del 14-10-2019; elecciones del 10-11-2019: cuatro semanas."
   }
  ],
  "permitir_espana": []
