@@ -318,7 +318,8 @@ INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019')
                  'mapa-electoral-madrid-29n': ('28079', '28074', '28065', '28058', '28106'),
                  'mapa-electoral-comunitat-valenciana-29n': ('46250', '03014', '03065', '12040'),
                  'mapa-electoral-castilla-y-leon-29n': ('47186', '09059', '37274', '24089', '34120', '42173', '49275', '05019', '40194')}   # las capitales, que cada pieza compara (y Vic en Cataluña)   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
-EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
+EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},
+                 'encuestas-elecciones-generales-2026-23-noviembre': {'44025'},   # Andorra (Teruel) sale de «las encuestas de Andorra» (el país)   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
                  'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014', '10901'},   # Manzanares (Ciudad Real), Amposta (Tarragona) y Rosalejo (Cáceres) salen del río y de los barrios madrileños de Amposta y Rosas
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla
                  'cinturon-rojo-madrid-29n': {'31062', '11028'},   # Cabanillas y Puerto Real salen de «Cabanillas de la Sierra» y «Rozas de Puerto Real» en el mapa
