@@ -58,8 +58,9 @@ def limpiar(t):
                    lambda m: re.sub(r'<li><a href="[^"]*"[^>]*>.*?</li>', tarjeta, m.group(0), flags=re.S), t, flags=re.S)
     # «No es legal que asomen» (Nacho, 18-11-2026): tampoco el enlace «Encuestas» del menú ni la tarjeta del simulador
     # de pactos. Se guardan como comentario <!--veda:…--> para devolverlos al acabar la veda (--restaurar).
-    for patron, nombre in ((r'<a href="(?:\.\./)?encuestas/">Encuestas</a>', 'menú'),
-                           (r'<a class="atlas" href="(?:\.\./)?encuestas/simulador-pactos/">.*?</a>', 'simulador de pactos')):
+    # (?<!<!--veda:): si ya está comentado, no se vuelve a comentar (las ejecuciones de repaso lo envolvían dos veces, 23-11-2026)
+    for patron, nombre in ((r'(?<!<!--veda:)<a href="(?:\.\./)?encuestas/">Encuestas</a>', 'menú'),
+                           (r'(?<!<!--veda:)<a class="atlas" href="(?:\.\./)?encuestas/simulador-pactos/">.*?</a>', 'simulador de pactos')):
         t, n = re.subn(patron, lambda m: '<!--veda:' + m.group(0) + '-->', t, count=1, flags=re.S)
         if n:
             quitadas.append(nombre)
