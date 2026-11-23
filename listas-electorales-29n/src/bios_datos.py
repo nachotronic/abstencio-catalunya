@@ -34,6 +34,19 @@ NOMBRES_COMUNES = {'maria', 'jose', 'de', 'del', 'la', 'las', 'los', 'y', 'i', '
                    'francisco', 'angel', 'jesus', 'miguel', 'pilar', 'dolores', 'mar'}
 
 
+# Exdiputados de otra provincia que no se pueden atar por la fecha de nacimiento: comprobados uno a uno, con la fuente
+CONFIRMADOS = {}
+
+
+# nombres antiguos de circunscripción en el buscador del Congreso
+ALIAS_CIRC = {'Vizcaya': '48', 'Guipúzcoa': '20', 'Álava': '01', 'Gerona': '17', 'Lérida': '25', 'Orense': '32', 'La Coruña': '15',
+              'Baleares': '07', 'Navarra': '31', 'Valencia': '46', 'Alicante': '03', 'Castellón': '12', 'Las Palmas': '35'}
+
+
+def prov(m, circ):
+    return m.prov_de_circ(circ) or ALIAS_CIRC.get(circ.strip())
+
+
 def construir():
     spec = importlib.util.spec_from_file_location('listas_construir', RAIZ / 'listas-electorales-29n/src/construir.py')
     m = importlib.util.module_from_spec(spec)
@@ -133,18 +146,36 @@ def main():
             for i in range(1, len(w)):
                 nom = set(w[:i]) - NOMBRES_COMUNES
                 for leg, e in por_apellidos.get(' '.join(w[i:]), []):
-                    if (set(k(e['nombre']).split()) - NOMBRES_COMUNES) & nom or k(e['nombre']) == ' '.join(w[:i]):
+                    en = k(e['nombre'])
+                    if (set(en.split()) - NOMBRES_COMUNES) & nom or en == ' '.join(w[:i]):
+                        candidatas.append((leg, e, False))
+                    elif en[:4] == w[0][:4] and prov(m, e['nombreCircunscripcion']) == c['prov'] and familia(e['formacion']) == fam:
+                        # el BOE da el nombre de pila completo y el Congreso el de uso (Francesca Lluch → Francina):
+                        # mismos apellidos, mismo comienzo del nombre, misma provincia y mismo partido
                         candidatas.append((leg, e, False))
         congreso, ultima = [], None
+        prov_ref = prov(m, cod15[cod]['nombreCircunscripcion']) if d and d.get('ficha') and cod in cod15 else c['prov']
         for leg, e, seguro in candidatas:
             fila = {'leg': leg, 'circ': e['nombreCircunscripcion'], 'formacion': e['formacion'], 'alta': e['fchAlta'], 'baja': e.get('fchBaja', '')}
-            if seguro or familia(e['formacion']) == fam or m.prov_de_circ(e['nombreCircunscripcion']) == c['prov']:
-                congreso.append(fila)
-                if ultima is None or leg > ultima[0]:
-                    ultima = (leg, e['codParlamentario'])
-                x.setdefault('genero', 'f' if e['genero'] == 2 else 'm')
-            else:
-                dudosos.append({'clave': clave, 'motivo': 'congreso: otra formación y otra circunscripción', **fila, 'nombre_congreso': e['apellidosNombre']})
+            misma_prov = prov(m, e['nombreCircunscripcion']) == prov_ref
+            motivo = None
+            if not seguro and not misma_prov:
+                # otra provincia: solo si la ficha de esa legislatura da la misma fecha de nacimiento que la de la XV,
+                # o si se ha comprobado a mano (CONFIRMADOS, con su fuente)
+                if x.get('nacimiento'):
+                    if ficha_personal(e['codParlamentario'], leg).get('nacimiento') != x['nacimiento']:
+                        motivo = 'congreso: otra provincia y otra fecha de nacimiento (o ninguna)'
+                elif clave not in CONFIRMADOS:
+                    motivo = 'congreso: otra provincia y sin fecha de nacimiento con la que comparar'
+            elif not seguro and familia(e['formacion']) != fam and not misma_prov:
+                motivo = 'congreso: otra formación y otra provincia'
+            if motivo:
+                dudosos.append({'clave': clave, 'motivo': motivo, **fila, 'nombre_congreso': e['apellidosNombre']})
+                continue
+            congreso.append(fila)
+            if ultima is None or leg > ultima[0]:
+                ultima = (leg, e['codParlamentario'])
+            x.setdefault('genero', 'f' if e['genero'] == 2 else 'm')
         if congreso and 'nacimiento' not in x:   # exdiputado: nacimiento de la ficha de su última legislatura
             ficha = ficha_personal(ultima[1], ultima[0])
             if ficha.get('nacimiento'):

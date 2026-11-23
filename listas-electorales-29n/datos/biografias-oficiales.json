@@ -391,6 +391,25 @@
     }
    ]
   },
+  "almeria/maria-isabel-sanchez-torregrosa": {
+   "nombre": "María Isabel Sánchez Torregrosa",
+   "prov": "04",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1979-08-05",
+   "lugar": "Vélez-Rubio (Almería)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=177&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
   "alava/mikel-otero-gabirondo": {
    "nombre": "Mikel Otero Gabirondo",
    "prov": "01",
@@ -674,6 +693,25 @@
      "baja": "06/10/2026",
      "circ": "Badajoz",
      "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "illes-balears/francesca-lluch-armengol-socias": {
+   "nombre": "Francesca Lluch Armengol Socias",
+   "prov": "07",
+   "siglas": "PSIB-PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1971-08-11",
+   "lugar": "Inca, Mallorca (Illes Balears)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=185&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Balears (Illes)",
+     "formacion": "PSIB-PSOE",
      "leg": 15
     }
    ]
@@ -1667,25 +1705,6 @@
      "baja": "",
      "circ": "Cáceres",
      "formacion": "PP",
-     "leg": 15
-    }
-   ]
-  },
-  "cadiz/jose-manuel-albares-bueno": {
-   "nombre": "José Manuel Albares Bueno",
-   "prov": "11",
-   "siglas": "PSOE",
-   "n": 1,
-   "genero": "m",
-   "nacimiento": "1972-03-22",
-   "lugar": "Madrid",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=275&idLegislatura=XV&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "14/08/2023",
-     "baja": "06/12/2023",
-     "circ": "Madrid",
-     "formacion": "PSOE",
      "leg": 15
     }
    ]
@@ -3403,39 +3422,6 @@
     }
    ]
   },
-  "madrid/fernando-grande-marlaska-gomez": {
-   "nombre": "Fernando Grande-Marlaska Gómez",
-   "prov": "28",
-   "siglas": "PSOE",
-   "n": 5,
-   "genero": "m",
-   "nacimiento": "1962-07-26",
-   "lugar": "Bilbao",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=286&idLegislatura=XV&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "16/05/2019",
-     "baja": "24/09/2019",
-     "circ": "Cádiz",
-     "formacion": "PSOE",
-     "leg": 13
-    },
-    {
-     "alta": "26/11/2019",
-     "baja": "21/02/2020",
-     "circ": "Cádiz",
-     "formacion": "PSOE",
-     "leg": 14
-    },
-    {
-     "alta": "14/08/2023",
-     "baja": "06/12/2023",
-     "circ": "Cádiz",
-     "formacion": "PSOE",
-     "leg": 15
-    }
-   ]
-  },
   "madrid/rafael-simancas-simancas": {
    "nombre": "Rafael Simancas Simancas",
    "prov": "28",
@@ -3634,25 +3620,6 @@
     }
    ]
   },
-  "madrid/julio-utrilla-cano": {
-   "nombre": "Julio Utrilla Cano",
-   "prov": "28",
-   "siglas": "VOX",
-   "n": 7,
-   "genero": "m",
-   "nacimiento": "1967-03-05",
-   "lugar": "Madrid",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=328&idLegislatura=XIV&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "29/11/2019",
-     "baja": "30/05/2023",
-     "circ": "Valencia/València",
-     "formacion": "Vox",
-     "leg": 14
-    }
-   ]
-  },
   "madrid/rocio-aguirre-gil-de-biedma": {
    "nombre": "Rocío Aguirre Gil de Biedma",
    "prov": "28",
@@ -3823,24 +3790,6 @@
    },
    "genero": "f"
   },
-  "madrid/maria-martin-revuelta": {
-   "nombre": "María Martín Revuelta",
-   "prov": "28",
-   "siglas": "PP",
-   "n": 12,
-   "genero": "f",
-   "nacimiento": "1985-03-18",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=406&idLegislatura=X&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "10/12/2014",
-     "baja": "27/10/2015",
-     "circ": "Valencia",
-     "formacion": "PP",
-     "leg": 10
-    }
-   ]
-  },
   "madrid/jose-enrique-nunez-guijarro": {
    "nombre": "José Enrique Núñez Guijarro",
    "prov": "28",
@@ -3906,6 +3855,13 @@
    "nacimiento": "1987-05-16",
    "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=348&idLegislatura=XV&mostrarAgenda=false",
    "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Burgos",
+     "formacion": "Cs",
+     "leg": 13
+    },
     {
      "alta": "16/08/2023",
      "baja": "06/10/2026",
@@ -3985,42 +3941,6 @@
      "alta": "16/08/2023",
      "baja": "",
      "circ": "Madrid",
-     "formacion": "SUMAR",
-     "leg": 15
-    }
-   ]
-  },
-  "madrid/juan-antonio-valero-morales": {
-   "nombre": "Juan Antonio Valero Morales",
-   "prov": "28",
-   "siglas": "FA",
-   "n": 3,
-   "genero": "m",
-   "nacimiento": "1981-03-13",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=78&idLegislatura=XV&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "03/08/2023",
-     "baja": "",
-     "circ": "Málaga",
-     "formacion": "SUMAR",
-     "leg": 15
-    }
-   ]
-  },
-  "madrid/veronica-martinez-barbero": {
-   "nombre": "Verónica Martínez Barbero",
-   "prov": "28",
-   "siglas": "FA",
-   "n": 4,
-   "genero": "f",
-   "nacimiento": "1980-02-02",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=310&idLegislatura=XV&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "16/08/2023",
-     "baja": "",
-     "circ": "Pontevedra",
      "formacion": "SUMAR",
      "leg": 15
     }
@@ -5333,38 +5253,6 @@
     }
    ]
   },
-  "sevilla/enrique-fernando-santiago-romero": {
-   "nombre": "Enrique Fernando Santiago Romero",
-   "prov": "41",
-   "siglas": "FA",
-   "n": 1,
-   "genero": "m",
-   "nacimiento": "1964-07-18",
-   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=125&idLegislatura=XV&mostrarAgenda=false",
-   "congreso": [
-    {
-     "alta": "07/05/2019",
-     "baja": "24/09/2019",
-     "circ": "Madrid",
-     "formacion": "UP",
-     "leg": 13
-    },
-    {
-     "alta": "20/11/2019",
-     "baja": "17/08/2023",
-     "circ": "Madrid",
-     "formacion": "UP",
-     "leg": 14
-    },
-    {
-     "alta": "07/08/2023",
-     "baja": "",
-     "circ": "Córdoba",
-     "formacion": "SUMAR",
-     "leg": 15
-    }
-   ]
-  },
   "sevilla/engracia-rivera-arias": {
    "nombre": "Engracia Rivera Arias",
    "prov": "41",
@@ -6199,12 +6087,31 @@
    "prov": "46",
    "siglas": "PP",
    "n": 6,
+   "genero": "m",
+   "nacimiento": "1969-04-24",
+   "lugar": "Albuixech (Valencia)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=269&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 14
+    }
+   ],
    "senado_2023": {
     "prov": "46",
     "distrito": "9",
     "siglas": "PP"
-   },
-   "genero": "m"
+   }
   },
   "valencia/evarist-aznar-teruel": {
    "nombre": "Evarist Aznar Teruel",
@@ -6426,14 +6333,114 @@
  },
  "dudosos": [
   {
-   "clave": "madrid/aurora-nacarino-brabo-jimenez",
-   "motivo": "congreso: otra formación y otra circunscripción",
+   "clave": "cadiz/jose-manuel-albares-bueno",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Madrid",
+   "formacion": "PSOE",
+   "alta": "14/08/2023",
+   "baja": "06/12/2023",
+   "nombre_congreso": "Albares Bueno, José Manuel"
+  },
+  {
+   "clave": "madrid/fernando-grande-marlaska-gomez",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
    "leg": 13,
-   "circ": "Burgos",
-   "formacion": "Cs",
-   "alta": "13/05/2019",
+   "circ": "Cádiz",
+   "formacion": "PSOE",
+   "alta": "16/05/2019",
    "baja": "24/09/2019",
-   "nombre_congreso": "Nacarino-Brabo Jiménez, Aurora"
+   "nombre_congreso": "Grande-Marlaska Gómez, Fernando"
+  },
+  {
+   "clave": "madrid/fernando-grande-marlaska-gomez",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 14,
+   "circ": "Cádiz",
+   "formacion": "PSOE",
+   "alta": "26/11/2019",
+   "baja": "21/02/2020",
+   "nombre_congreso": "Grande-Marlaska Gómez, Fernando"
+  },
+  {
+   "clave": "madrid/fernando-grande-marlaska-gomez",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Cádiz",
+   "formacion": "PSOE",
+   "alta": "14/08/2023",
+   "baja": "06/12/2023",
+   "nombre_congreso": "Grande-Marlaska Gómez, Fernando"
+  },
+  {
+   "clave": "madrid/julio-utrilla-cano",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 14,
+   "circ": "Valencia/València",
+   "formacion": "Vox",
+   "alta": "29/11/2019",
+   "baja": "30/05/2023",
+   "nombre_congreso": "Utrilla Cano, Julio"
+  },
+  {
+   "clave": "madrid/maria-martin-revuelta",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 10,
+   "circ": "Valencia",
+   "formacion": "PP",
+   "alta": "10/12/2014",
+   "baja": "27/10/2015",
+   "nombre_congreso": "Martín Revuelta, María"
+  },
+  {
+   "clave": "madrid/juan-antonio-valero-morales",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Málaga",
+   "formacion": "SUMAR",
+   "alta": "03/08/2023",
+   "baja": "",
+   "nombre_congreso": "Valero Morales, Juan Antonio"
+  },
+  {
+   "clave": "madrid/veronica-martinez-barbero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Pontevedra",
+   "formacion": "SUMAR",
+   "alta": "16/08/2023",
+   "baja": "",
+   "nombre_congreso": "Martínez Barbero, Verónica"
+  },
+  {
+   "clave": "sevilla/enrique-fernando-santiago-romero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 13,
+   "circ": "Madrid",
+   "formacion": "UP",
+   "alta": "07/05/2019",
+   "baja": "24/09/2019",
+   "nombre_congreso": "Santiago Romero, Enrique Fernando"
+  },
+  {
+   "clave": "sevilla/enrique-fernando-santiago-romero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 14,
+   "circ": "Madrid",
+   "formacion": "UP",
+   "alta": "20/11/2019",
+   "baja": "17/08/2023",
+   "nombre_congreso": "Santiago Romero, Enrique Fernando"
+  },
+  {
+   "clave": "sevilla/enrique-fernando-santiago-romero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Córdoba",
+   "formacion": "SUMAR",
+   "alta": "07/08/2023",
+   "baja": "",
+   "nombre_congreso": "Santiago Romero, Enrique Fernando"
   },
   {
    "clave": "zaragoza/javier-campoy-monreal",

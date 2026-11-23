@@ -75,7 +75,7 @@ def texto_oficial(x, m, fam_lista):
     cong = x.get('congreso', [])
     if cong:
         import bios_datos
-        circ = lambda c: m.PROV_NOMBRE.get(m.prov_de_circ(c['circ']) or '', c['circ']).split('/')[0]
+        circ = lambda c: m.PROV_NOMBRE.get(bios_datos.prov(m, c['circ']) or '', c['circ']).split('/')[0]
         forms = list(dict.fromkeys(FORMACION.get(c['formacion'], c['formacion']) for c in cong if bios_datos.familia(c['formacion']) != fam_lista))
         listas = (' en las listas ' + lista_y([('del ' if f_ in ('PP', 'PSOE') else 'de ') + f_ for f_ in forms])) if forms else ''
         legs = [c['leg'] for c in cong]
@@ -99,7 +99,8 @@ def texto_oficial(x, m, fam_lista):
             ro = [ROMANOS[c['leg']] for c in cong]
             pl = 's' if len(ro) > 1 else ''
             años = cong[0]['alta'][-4:] + ('' if not cong[-1]['baja'] or cong[-1]['baja'][-4:] == cong[0]['alta'][-4:] else '-' + cong[-1]['baja'][-4:])
-            frases.append(f'Fue diputad{o} por {lista_y(circs)} en la{pl} legislatura{pl} {lista_y(ro)} ({años}){"," if listas else ""}{listas}.')
+            cuales = f'la {ro[0]} legislatura' if len(ro) == 1 else f'las legislaturas {lista_y(ro)}'
+            frases.append(f'Fue diputad{o} por {lista_y(circs)} en {cuales} ({años}){"," if listas else ""}{listas}.')
         fuentes.append(('Congreso de los Diputados', x.get('ficha_congreso') or BUSCADOR_CONGRESO))
     elif x.get('ficha_congreso'):
         fuentes.append(('Congreso de los Diputados', x['ficha_congreso']))
