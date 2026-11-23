@@ -33,7 +33,9 @@ ENCS = enc.carga()
 # Data10 para OKDiario, campo hasta el 22: carga() la fecha el 22 (fin de campo), pero OKDiario la publica hoy,
 # «a seis días del 29-N» (titular y URL de la noticia).
 _d10 = lambda e: enc.clave(e['casa']) == 'data10' and e['fin'] == '2026-11-22' and 'seis-dias-del-29-n' in e['url']
-HOYS = [e for e in ENCS if (_pub(e) == HOY or _d10(e)) and not e['reest'] and e['voto']]
+# Las publicadas hasta las 10.00, que son las de esta pieza (las que entraron después, como Sigma Dos y Winston, quedan fuera)
+PIEZA = {'40db', 'cluster17', 'data10', 'gesop', 'imop', 'ncreport', 'targetpoint'}
+HOYS = [e for e in ENCS if (_pub(e) == HOY or _d10(e)) and not e['reest'] and e['voto'] and enc.clave(e['casa']) in PIEZA]
 assert sorted(enc.clave(e['casa']) for e in HOYS) == ['40db', 'cluster17', 'data10', 'gesop', 'imop', 'ncreport', 'targetpoint'], [e['casa'] for e in HOYS]
 _val = sorted((e for e in ENCS if not e['reest'] and e['voto'] and e['fin'] >= '2023-07-24'), key=lambda e: (_pub(e), e['fin']), reverse=True)
 
@@ -82,7 +84,7 @@ assert PVMIN == 178 and PVMIN == D40['pv'][0] and CL['pv'] == (180, 180)
 PVMAX = max(f['pv'][1] for f in F)
 assert PVMAX == 201 and NC['pv'] == (196, 201)
 DMAX = max(f['dif'] for f in F)
-assert DMAX == 5.1 and NC['dif'] == DMAX and NC['dif'] > NC['marg']
+assert DMAX == 4.7 and NC['dif'] == DMAX and NC['dif'] < NC['marg']   # 23-11, 11.00: PP 31,9 % (sin UPN), no 32,3
 # PP y PSOE: frente a su entrega anterior, la distancia baja en cinco de las siete y sube en dos
 BAJA = sorted(f['casa'] for f in F if f['dif'] < f['dif_ant'])
 SUBE = sorted(f['casa'] for f in F if f['dif'] > f['dif_ant'])
@@ -131,11 +133,11 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="dato">La mediana de la última encuesta de cada una de las {NCASAS} encuestadoras de las tres últimas semanas, la que resume <a href="{BASE}encuestas/">nuestra página de encuestas de las elecciones generales 2026</a>, da al PP el {p(MED['PP'])} %, al PSOE el {p(MED['PSOE'])} % y a Vox el {p(MED['VOX'])} %: {p(MED_DIF)} puntos entre PP y PSOE. 40dB. y Target Point ven la carrera más ajustada que esa mediana, y Cluster17 la da la vuelta; NC Report, Data10, IMOP Insights y GESOP la ven más abierta.</p>
 {g_med}
 <h2>Lo que estas encuestas no dicen</h2>
-<p data-tipo="contexto">Con {n(D40['n'])} entrevistas, los {p(D40['dif'])} puntos de 40dB. quedan dentro del margen de error de esa distancia, de unos ±{p(D40['marg'])} puntos: es un empate técnico. Lo mismo pasa con los {p(abs(CL['dif']))} puntos del PSOE en Cluster17 (±{p(CL['marg'])}), con los {p(TP['dif'])} de Target Point (±{p(TP['marg'])}), con los {p(GE['dif'])} de GESOP (±{p(GE['marg'])}) y con los {p(IM['dif'])} de IMOP Insights (±{p(IM['marg'])}). Solo lo superan la ventaja de Data10, {p(D10['dif'])} puntos con un margen de ±{p(D10['marg'])} por sus {n(D10['n'])} entrevistas, y la de NC Report, {p(NC['dif'])} con ±{p(NC['marg'])}, por poco.</p>
+<p data-tipo="contexto">Con {n(D40['n'])} entrevistas, los {p(D40['dif'])} puntos de 40dB. quedan dentro del margen de error de esa distancia, de unos ±{p(D40['marg'])} puntos: es un empate técnico. Lo mismo pasa con los {p(abs(CL['dif']))} puntos del PSOE en Cluster17 (±{p(CL['marg'])}), con los {p(TP['dif'])} de Target Point (±{p(TP['marg'])}), con los {p(GE['dif'])} de GESOP (±{p(GE['marg'])}) y con los {p(IM['dif'])} de IMOP Insights (±{p(IM['marg'])}). Lo mismo, por poco, con los {p(NC['dif'])} de NC Report (±{p(NC['marg'])}). Solo la ventaja de Data10 lo supera: {p(D10['dif'])} puntos, con un margen de ±{p(D10['marg'])} por sus {n(D10['n'])} entrevistas.</p>
 <p data-tipo="contexto">Esta pieza recoge las encuestas publicadas hasta las {HORA} de este lunes. Desde mañana, martes 24, y hasta el cierre de los colegios el domingo 29, la ley prohíbe publicar encuestas: por qué, y qué son las «encuestas de Andorra», en {L("veda-encuestas-29n", "la pieza de la veda de encuestas")}.</p>
 '''
 assert sorted(MAS_AJUSTADA) == ['40dB.', 'Cluster17', 'Target Point'], MAS_AJUSTADA
-assert [f['casa'] for f in F if abs(f['dif']) >= f['marg']] == ['NC Report', 'Data10']
+assert [f['casa'] for f in F if abs(f['dif']) >= f['marg']] == ['Data10']
 assert sorted(f['casa'] for f in F if f['dif'] > MED_DIF) == ['Data10', 'GESOP', 'IMOP Insights', 'NC Report']
 
 preguntas = [
@@ -159,6 +161,6 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 TITULO = f'Encuestas elecciones generales 2026, hoy {DIA}: PP y Vox suman mayoría absoluta en las siete'
 DEK = (f'Es el último día en que se pueden publicar. El PP va primero en seis; Cluster17 da más voto al PSOE. '
        f'La encuesta final de 40dB. deja la distancia en {p(D40["dif"])} puntos.')
-pieza(SLUG, 'Encuestas de hoy', TITULO, DEK, f'23 de noviembre de 2026 · actualizado a las {HORA}', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
+pieza(SLUG, 'Encuestas de hoy', TITULO, DEK, '23 de noviembre de 2026 · actualizado a las 11.00', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(TITULO); print(DEK); print('MED', MED, NCASAS, DESCARGA, 'MAS_AJUSTADA', MAS_AJUSTADA)
 for f in F: print({k: f[k] for k in ('casa', 'fin', 'n', 'PP', 'PSOE', 'VOX', 'dif', 'dif_ant', 'marg', 'pv', 'ant_fin')})

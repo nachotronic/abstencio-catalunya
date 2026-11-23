@@ -5244,7 +5244,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-elecciones-generales-2026-23-noviembre', fecha='2026-11-23', actualizado='2026-11-23 10:00',
+        slug='encuestas-elecciones-generales-2026-23-noviembre', fecha='2026-11-23', actualizado='2026-11-23 11:00',
         titulo='Encuestas elecciones generales 2026, hoy 23 de noviembre: PP y Vox suman mayoría absoluta en las siete', serie='29n', figura=0,
         descripcion='Es el último día en que se pueden publicar. El PP va primero en seis; Cluster17 da más voto al PSOE. La encuesta final de 40dB. deja la distancia en 0,9 puntos.',
         compara='Las encuestas de las elecciones generales publicadas el lunes 23 de noviembre hasta las 10.00, último día antes de la veda (Target Point, GESOP, Cluster17, 40dB., NC Report, IMOP Insights y Data10), cada una frente a su entrega anterior y frente a la mediana de la última encuesta de cada encuestadora de las tres últimas semanas, la de mapaelectoral.es/encuestas.',
@@ -5260,6 +5260,7 @@ PIEZAS += [
                  ('https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Spanish_general_election', 'Wikipedia, Opinion polling for the 2026 Spanish general election (CC BY-SA 4.0)'),
                  ('https://mapaelectoral.es/encuestas/', 'Mapa Electoral, encuestas de las elecciones generales 2026')],
         enlaces=[],
+        correcciones='23-11-2026: NC Report da al PP el 31,9 %, sin UPN, no el 32,3 %, que sumaba los dos. Su ventaja sobre el PSOE es de 4,7 puntos, no de 5,1, y queda dentro del margen de error. Sigue siendo la que más ventaja da al PP.',
         lugar='España',
     ),
     dict(
