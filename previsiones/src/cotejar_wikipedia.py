@@ -46,7 +46,7 @@ NO_SON_ENCUESTAS = {
 # la misma casa con dos nombres: Electográfica llama «PF Global» a Public First (encuesta para Politico, 15-17-11-2026)
 # Y «Mediaflows Uv Odec» (Electográfica) es la encuesta de ODEC para Mediaflows–UV del 9-7-2026 (Wikipedia):
 # sin el alias salía dos veces, una sin escaños.
-ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec'}
+ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec', 'imopinsights': 'imop'}
 PARTIDOS_COMO_CASA = {'pp', 'psoe', 'vox', 'sumar', 'podemos', 'erc', 'junts', 'pnv', 'bildu', 'ehbildu', 'bng'}
 
 

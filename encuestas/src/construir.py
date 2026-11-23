@@ -74,7 +74,7 @@ VENTANA_MEDIANA = 21
 # Politico (15-17 de noviembre de 2026) que Wikipedia llama «Public First»; sin el alias entraba dos veces.
 # Y «Mediaflows Uv Odec» (Electográfica) es la encuesta de ODEC para Mediaflows–UV del 9-7-2026 (Wikipedia):
 # sin el alias salía dos veces, una sin escaños.
-ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec'}
+ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec', 'imopinsights': 'imop'}
 
 
 def clave(nombre):
