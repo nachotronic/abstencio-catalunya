@@ -534,6 +534,16 @@ def tarjeta(destino, titular, sub, barras):
     im.save(destino, quality=88)
 
 
+
+def tarjeta_simulador(pre):
+    """Card del simulador de pactos en la franja de la portada. En la veda de encuestas (src/veda.py) sale comentada
+    (<!--veda:…-->), como la deja src/quitar_encuestas_portada.py, para que --restaurar la devuelva al acabar."""
+    from veda import en_veda
+    card = (f'<a class="atlas" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
+            '<span>Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura, a partir de la media de encuestas.</span>'
+            '<span class="atlas-go">Simulador de pactos del 29N →</span></a>')
+    return f'<!--veda:{card}-->' if en_veda() else card
+
 def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_boe):
     """Franja «Listas del 29N» de la portada, justo debajo del mapa: titular, cifras y buscador."""
     e = html.escape
@@ -549,9 +559,7 @@ def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_b
             # elegir provincia lleva a su página de listas (sin JavaScript, el botón abre la página general)
             f'<form class="li-bus" action="{pre}listas-electorales-29n/" method="get" onsubmit="var v=this.p.value;if(v){{location.href=this.action+v;return false}}">'
             f'<select name="p" aria-label="Provincia"><option value="">Elige tu provincia</option>{opts}</select><button>Ver las listas</button></form></div>'
-            f'<a class="atlas" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
-            '<span>Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura, a partir de la media de encuestas.</span>'
-            '<span class="atlas-go">Simulador de pactos del 29N →</span></a></div>'
+            + tarjeta_simulador(pre) + '</div>'
             '<style>.del-listas .li-act{font:13px var(--sans);color:var(--muted)}.del-listas .li-tit{display:block;font:600 21px/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:0 0 6px}'
             '.del-listas .li-tit:hover{text-decoration:underline}.del-listas .li-cif{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:2px 14px;font:13.5px var(--sans);color:var(--muted)}'
             '.del-listas .li-cif b{color:var(--ink);font-size:15px}.del-listas .li-bus{display:flex;flex-wrap:wrap;gap:8px;font:15px var(--sans)}'

@@ -5350,6 +5350,10 @@ def franja_portada(todas, pre=''):
     del_dia = [q['slug'] for q in recientes if q['fecha'] == hoy and q['serie'] not in ('historia', 'internacional') and not es_mapa_ccaa(q)]
     fijas = del_dia + [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta and s not in del_dia]
     recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
+    # veda de encuestas (art. 69.7 LOREG, src/veda.py): sin piezas de encuestas en el carrusel (Nacho, 18-11-2026)
+    from veda import en_veda, es_pieza_de_encuestas
+    if en_veda():
+        recientes = [q for q in recientes if not es_pieza_de_encuestas(q['slug'], q['titulo'])]
     ult = [q for q in recientes if not q['slug'].endswith(('-barrio-a-barrio-29n', '-barri-a-barri-29n')) and not es_mapa_ccaa(q) and (q['serie'] not in ('historia', 'internacional') or q['slug'] in fijas and q['slug'] in INTER_EN_ACTUALIDAD)][:10]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
@@ -5384,6 +5388,9 @@ def franja_serie(todas, clave, cabecera, sub, pre=''):
     if clave == 'internacional':
         serie = sorted(serie, key=lambda q: INTER_DESTACADAS.index(q['slug']) if q['slug'] in INTER_DESTACADAS else len(INTER_DESTACADAS))
         serie = [q for q in serie if q['slug'] not in INTER_FUERA_CARRUSEL]
+    from veda import en_veda, es_pieza_de_encuestas
+    if en_veda() and clave != 'internacional':   # veda de encuestas del 29N (src/veda.py): fuera las que hablan de encuestas
+        serie = [q for q in serie if not es_pieza_de_encuestas(q['slug'], q['titulo'])]
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-{clave}"><div class="da-cab"><h2 id="h-del-{clave}"><a href="{todas_url}">{cabecera}</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
