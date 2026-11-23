@@ -19,6 +19,8 @@ HASTA = datetime.datetime(2026, 11, 29, 21, 0, tzinfo=MADRID)
 # su URL y en /actualidad/). Por el slug; si alguna con encuestas no lo lleva, se añade a mano en PIEZAS_ENCUESTAS.
 PATRON_ENCUESTAS = re.compile(r'encuesta|sondeo|^cis-')
 PIEZAS_ENCUESTAS = set()
+# Piezas que hablan de encuestas pero no dan cifras de ninguna: siguen en el carrusel durante la veda (Nacho, 23-11-2026: «Sí, primera»)
+NO_SON_ENCUESTAS = {'encuestas-andorra-29n'}
 
 
 def en_veda(ahora=None):
@@ -28,4 +30,6 @@ def en_veda(ahora=None):
 
 def es_pieza_de_encuestas(slug, titulo=''):
     """Por el slug, por la lista a mano o porque el titular habla de encuestas o sondeos."""
+    if slug in NO_SON_ENCUESTAS:
+        return False
     return bool(PATRON_ENCUESTAS.search(slug)) or slug in PIEZAS_ENCUESTAS or bool(re.search(r'encuesta|sondeo', titulo, re.I))
