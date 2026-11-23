@@ -51,10 +51,10 @@ assert 70.3 < P23 < 70.5
 # Subidas de más de cinco puntos: las cuatro, el PSOE primero
 SUBE5 = [r for r in H if r['dpart'] is not None and r['dpart'] > 5]
 assert [r['y'] for r in SUBE5] == ['1982_10', '1993_06', '2004_03', '2019_04'] and all(r['gana'] == 'PSOE' for r in SUBE5)
-# Subidas pequeñas (hasta 1,4 puntos): las tres, el PP primero
+# Subidas pequeñas (menos de dos puntos): las tres, el PP primero
 SUBE_POCO = [r for r in H if r['dpart'] is not None and 0 < r['dpart'] <= 5]
 assert [r['y'] for r in SUBE_POCO] == ['1996_03', '2015_12', '2023_07'] and all(r['gana'] == 'PP' for r in SUBE_POCO)
-assert max(r['dpart'] for r in SUBE_POCO) < 1.5
+assert max(r['dpart'] for r in SUBE_POCO) < 1.5 < 2  # 2015: +1,4 con los datos por mesa; con el avance de la noche, +1,5: el texto dice «menos de dos»
 BAJA = [r for r in H if r['dpart'] is not None and r['dpart'] < 0]
 assert len(BAJA) == 8
 BAJA_PSOE = [r['nombre'] for r in BAJA if r['gana'] == 'PSOE']
@@ -119,7 +119,7 @@ cuerpo = f'''
 <p data-tipo="dato">Diez encuestadoras han publicado en las tres últimas semanas una estimación de la participación en las elecciones generales del 29N. La mediana de la última de cada una está en el <strong>{p(MED)} %</strong>, {p(SUBE_MED)} puntos más que el {p(P23)} % de los residentes en España que votó en julio de 2023. Ocho de las diez prevén más participación que entonces. La horquilla va del {p(MIN)} % de {esc(CASA_MIN)} al {p(MAX)} % de {esc(CASA_MAX)}. Es el último día en que se pueden publicar encuestas: desde mañana, martes 24, la ley lo prohíbe hasta el cierre de los colegios.</p>
 {g_enc}
 <h2>Lo que pasó otras veces</h2>
-<p data-tipo="patron">En las 16 elecciones generales desde 1977, la participación de los residentes en España ha subido más de cinco puntos frente a la anterior en cuatro ocasiones: 1982 ({s1(R82['dpart'])}), 1993 ({s1(R93['dpart'])}), 2004 ({s1(R04['dpart'])}) y abril de 2019 ({s1(R19A['dpart'])}). Las cuatro veces quedó primero el PSOE. Las tres veces que subió poco, menos de un punto y medio (1996, 2015 y 2023), el más votado fue el PP. Cuando bajó, quedaron primeros uno y otro: el PSOE en {", ".join(BAJA_PSOE[:-1])} y {BAJA_PSOE[-1]}; el PP en {", ".join(BAJA_PP[:-1])} y {BAJA_PP[-1]}, y la UCD en 1979.</p>
+<p data-tipo="patron">En las 16 elecciones generales desde 1977, la participación de los residentes en España ha subido más de cinco puntos frente a la anterior en cuatro ocasiones: 1982 ({s1(R82['dpart'])}), 1993 ({s1(R93['dpart'])}), 2004 ({s1(R04['dpart'])}) y abril de 2019 ({s1(R19A['dpart'])}). Las cuatro veces quedó primero el PSOE. Las tres veces que subió poco, menos de dos puntos (1996, 2015 y 2023), el más votado fue el PP. Cuando bajó, quedaron primeros uno y otro: el PSOE en {", ".join(BAJA_PSOE[:-1])} y {BAJA_PSOE[-1]}; el PP en {", ".join(BAJA_PP[:-1])} y {BAJA_PP[-1]}, y la UCD en 1979.</p>
 {g_cambio}
 <p data-tipo="patron">Las dos mayores subidas coincidieron con un cambio de gobierno a favor del PSOE. En 1982, la participación llegó al {p(R82['part'])} %, la más alta de la serie, y el voto al PSOE y a los partidos a su izquierda (la familia del PCE, IU, Podemos y Sumar) subió {p(R82['dizq'])} puntos. En 2004 subió {p(R04['dpart'])} puntos y ese voto, {p(R04['dizq'])}. Al revés, las dos mayorías absolutas del PP llegaron con menos participación: en 2000 bajó {p(-R00['dpart'])} puntos, y en 2011, {p(-R11['dpart'])}; el voto al PSOE y su izquierda cayó {p(-R00['dizq'])} y {p(-R11['dizq'])} puntos.</p>
 {g_hist}
