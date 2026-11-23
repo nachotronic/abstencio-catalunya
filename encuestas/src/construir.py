@@ -157,9 +157,12 @@ def carga():
 
     def otra_encuesta(w, r):
         # distinta muestra y distinta noticia: es otra entrega (Data10 del 20-11, n=750, se llevaba la del 23-11)
+        # Con las mismas cifras sí es la misma, aunque la cite otra noticia con otra muestra (Public First, 19-11: el
+        # artículo de POLITICO y su newsletter en español)
         return (r is not None and r['muestra'] and w['muestra'] and r['muestra'] != w['muestra']
                 and r['fuente_original'].strip() and w['fuente_original'].strip()
-                and r['fuente_original'].strip() != w['fuente_original'].strip())
+                and r['fuente_original'].strip() != w['fuente_original'].strip()
+                and any(num(r[k]) != num(w[k]) for k in ('PP', 'PSOE', 'VOX')))
 
     def pareja(casa, fin, muestra='', r=None):
         # la más parecida: misma muestra y, después, el fin de campo más cercano (en un tracking diario la primera a <=4 días
