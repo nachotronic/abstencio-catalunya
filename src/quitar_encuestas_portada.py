@@ -16,7 +16,7 @@ ENCUESTAS = RAIZ / 'encuestas/index.html'
 
 # Aviso visible en /encuestas/ durante la veda (Nacho, 23-11-2026, «vale»). Va debajo de la firma: no toca title, H1,
 # description, canonical ni URL. Marca propia (no <!--veda:…-->, que es lo que --restaurar descomenta).
-AVISO = ('<!--aviso-veda--><p class="veda-aviso" role="note" style="font:15px/1.45 var(--sans);border-left:4px solid var(--ink);'
+AVISO = ('<!--aviso-veda--><p class="veda-aviso" role="note" style="font:15px/1.45 var(--sans);border-left:4px solid currentColor;'
          'padding:8px 12px;margin:12px 0 18px;background:var(--bg-2,transparent)"><b>Veda electoral.</b> Desde el martes 24 de noviembre '
          'y hasta el cierre de los colegios del 29N no se publican encuestas nuevas (artículo 69.7 de la LOREG). Esta página se '
          'quedó con las publicadas hasta el lunes 23 de noviembre.</p><!--/aviso-veda-->')
