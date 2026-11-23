@@ -57,6 +57,7 @@
     p.polygon.forEach(([x, y]) => { b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); });
   });
   const SEC = {};           // prov -> {d, polys}
+  let SECC = null, VERD = 0; const SECCV = {};   // secciones del directo (ver seccDirecto) y versión de los datos del directo
   const loading = new Set();
 
   // ---------- estado
@@ -286,7 +287,7 @@
 
   function layers() {
     const L = [];
-    const trig = [st.y, st.v, st.party, document.documentElement.dataset.theme || ''];
+    const trig = [st.y, st.v, st.party, document.documentElement.dataset.theme || '', VERD];   // VERD: datos nuevos del directo
     L.push(new deck.SolidPolygonLayer({
       id: 'mun', data: MUNP, getPolygon: o => o.polygon, getFillColor: o => color(MUN, o.i),
       pickable: true, updateTriggers: { getFillColor: trig },
@@ -360,6 +361,7 @@
     return pedido[y] || (pedido[y] = getR('e/' + y + '.json').then(d => { Object.assign(MUN, d); }).catch(e => { delete pedido[y]; throw e; }));
   }
   function aseguraSec(p, y) {
+    if (SECC && SEC[p] && META.directo && (y === META.directo.eleccion || y.startsWith(META.directo.eleccion + 'a'))) return seccDirecto(p);
     const e = ELEC.find(e => e.cod === y);
     if (!e || !e.aparte || !e.secciones || !SEC[p] || SEC[p].d[y + '_part']) return;
     const k = p + '_' + y; if (pedido[k]) return;
@@ -741,6 +743,71 @@
     };
     await tick(); setInterval(tick, 60000);
   }
+  // ---------- sondeo a pie de urna, la noche del 29N, del cierre de los colegios a los primeros datos de Interior. El titular lo
+  // pone a mano el workflow «Directo 29N: sondeo a pie de urna» en el Worker, que no lo sirve antes de su hora (PIEURNA_DESDE);
+  // aquí se quita solo en cuanto el escrutinio pasa del 30 % (o cuando se borra). Nunca toca el H1 ni el título.
+  let ESCNAT = 0, PUP = null;
+  const PUURL = new URLSearchParams(location.search).get('pieurna') || (DIRURL && /\/resultados\.json(\?|$)/.test(DIRURL) ? DIRURL.replace(/\/resultados\.json.*$/, '/pieurna.json') : null);
+  if (PUURL) {
+    const pu = async () => {
+      try { const r = await fetch(PUURL + (PUURL.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); pieUrna(r.ok ? await r.json() : null); } catch (e) { /* sin red: se queda como está */ }
+    };
+    pu(); setInterval(pu, 60000);
+  }
+  function pieUrna(P) {
+    let b = document.getElementById('pie-urna');
+    PUP = P;
+    if (!(P && P.titular && P.medio) || ESCNAT >= 0.3) { if (b) b.hidden = true; mapaEnEspera(false); return; }
+    const mapa = document.getElementById('mapa'); if (!mapa) return;
+    if (!b) {
+      b = document.createElement('div'); b.id = 'pie-urna'; b.setAttribute('aria-live', 'polite');
+      b.style.cssText = 'font-family:var(--sans);border:1px solid var(--line);border-left:4px solid var(--ink);background:var(--surface);border-radius:8px;padding:12px 14px;margin:6px 0 4px';
+      mapa.insertBefore(b, document.getElementById('directo') || mapa.firstChild);
+    }
+    const fil = Array.isArray(P.filas) ? P.filas.filter(f => Array.isArray(f) && f[0] && f[1]) : [];
+    const enl = /^https:\/\//.test(P.enlace || '') ? ` (<a href="${escH(P.enlace)}" rel="noopener" target="_blank">fuente</a>)` : '';
+    // hemiciclo con el punto medio de cada horquilla (el resto hasta 350, en gris) y, debajo, el de 2023 (Nacho, 23-11)
+    const pf = fil.map(([p, r]) => { const m = String(r).match(/(\d+)(?:\D+(\d+))?/); return [famPU(p), m ? (+m[1] + +(m[2] || m[1])) / 2 : 0]; });
+    const E = {}; pf.forEach(([k, e]) => { if (k >= 0) E[k] = (E[k] || 0) + e; });
+    const ahora = Object.entries(E).map(([k, e]) => [+k, Math.round(e)]), suma = ahora.reduce((t, x) => t + x[1], 0);
+    let hemi = '';
+    if (ahora.length && suma <= 350 && suma >= 300) {
+      if (suma < 350) { const ko = FCOD.indexOf('OTROS'); const o = ahora.find(x => x[0] === ko); if (o) o[1] += 350 - suma; else ahora.push([ko, 350 - suma]); }
+      const T = PUF && PUF.ant23 && PUF.ant23.ambitos && PUF.ant23.ambitos.TO;
+      const y = (META.directo && META.directo.eleccion) || '2026_11';
+      hemi = donuts(y, ahora, T ? porFamilia(T.c).map(([k, , e]) => [k, e]) : null)
+        + `<p class="mut" style="font:12px/1.4 var(--sans);margin:4px 0 6px;text-align:center">Punto medio de cada horquilla del sondeo${suma < 350 ? '; en gris, el resto de escaños' : ''}${T ? '. Debajo, los escaños de 2023' : ''}.</p>`;
+    }
+    b.innerHTML = `<div style="font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase">Sondeo a pie de urna${P.hora ? ' · ' + escH(P.hora) : ''}</div>`
+      + `<p style="font:700 19px/1.25 var(--sans);margin:6px 0">${escH(P.titular)}</p>`
+      + hemi
+      + (fil.length ? `<p style="font:15px/1.5 var(--sans);margin:0 0 6px">${fil.map(([p, r]) => `${escH(p)} <b>${escH(r)}</b>`).join(' · ')}</p>` : '')
+      + `<p class="mut" style="font:13px/1.4 var(--sans);margin:0">Sondeo de ${escH(P.medio)}${enl}. Es una estimación, no son resultados: los primeros datos del recuento de Interior llegan a partir de las 21:00.</p>`;
+    b.hidden = false;
+    mapaEnEspera(ESCNAT === 0); colocaPU();
+  }
+  // antes del escrutinio, el sondeo arriba; con los primeros datos, el mapa arriba con los escaños debajo, y el sondeo
+  // baja detrás de ellos hasta que el escrutinio pasa del 30 % (Nacho, 23-11: «luego ya el mapa por municipios y debajo
+  // el semicírculo con escaños»)
+  function colocaPU() {
+    const b = document.getElementById('pie-urna'); if (!b) return;
+    const r = document.getElementById('resultados-29n'), d = document.getElementById('directo');
+    if (ESCNAT > 0 && r) { if (b.previousElementSibling !== r) { r.after(b); b.classList.add('wide'); } }
+    else if (ESCNAT === 0 && d && b.nextElementSibling !== d) { d.before(b); b.classList.remove('wide'); }
+  }
+  // nombres de partido del sondeo (como los escribe el medio) -> familia del mapa
+  const famPU = p => { const a = String(p).toUpperCase().trim();
+    const k = /^CC$|COALICI.N CANARIA/.test(a) ? 'CC' : /^SUMAR$|FRENTE AMPLIO|^FA$/.test(a) ? 'SUMAR' : /SE ACAB|^SALF$/.test(a) ? 'SALF' : /^ADELANTE/.test(a) ? 'AA'
+      : /^JUNTS$|^JXCAT/.test(a) ? 'JUNTS' : /^EH ?BILDU$|^BILDU$/.test(a) ? 'BILDU' : famDe(a);
+    return FCOD.indexOf(k); };
+  // mientras está el sondeo y aún no hay escrutinio, el mapa espera (sin selectores ni mapa) hasta los primeros datos (Nacho, 23-11)
+  let PUF = null, enEspera = false;
+  function mapaEnEspera(si) {
+    if (si === enEspera) return; enEspera = si;
+    const m = document.getElementById('mapa'); if (!m) return;
+    m.querySelectorAll(':scope > .controls, :scope > .mapwrap, :scope > details.hint').forEach(x => { x.hidden = si; });
+    if (!si) setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+  }
   function dhondt(votos, n) {
     const q = []; votos.forEach((v, k) => { for (let d = 1; d <= n; d++) q.push([v / d, k]); });
     q.sort((a, b) => b[0] - a[0]); const out = new Array(votos.length).fill(0);
@@ -752,10 +819,10 @@
   // siglas de Interior -> partido del simulador de pactos (encuestas/simulador-pactos/); UPN-PP, lista conjunta, cuenta como PP
   const SIMK = [[/^(PP\b|PP-|P\.P\.|UPN-PP)/, 'PP'], [/PSOE(?! ?\(?H)|^PSC\b|^PSC-|^PSE-EE|^PSDEG|^PSIB|^PSN/, 'PSOE'], [/^VOX/, 'VOX'],
     [/SUMAR|FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^COMPROM/, 'SUMAR'], [/PODEMOS/, 'PODEMOS'], [/^ERC|ESQUERRA/, 'ERC'], [/JUNTS|^JXCAT/, 'JUNTS'], [/BILDU/, 'BILDU'], [/PNV/, 'PNV'],
-    [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
+    [/^B\.?N\.?G/, 'BNG'], [/^CCA?\b|COALICI.N CANARIA|^1\.?ºCAN/, 'CC'], [/^U\.?P\.?N\.?$/, 'UPN'], [/SALF|SE ACAB/, 'SALF'], [/ADELANTE/, 'AA']];
   const NOMSIM = { PP: 'PP', PSOE: 'PSOE', VOX: 'Vox', SUMAR: 'Frente Amplio', PODEMOS: 'Podemos', ERC: 'ERC', JUNTS: 'Junts', BILDU: 'EH Bildu', PNV: 'PNV', BNG: 'BNG', CC: 'CC', UPN: 'UPN', SALF: 'SALF', AA: 'Adelante Andalucía' };
   // Debajo del mapa: medio dónut de escaños (y el de 2023, más pequeño) y barras de voto válido por partido
-  const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
+  const IZQDER = ['BILDU', 'BNG', 'CUP', 'ERC', 'PODEMOS', 'AA', 'SUMAR', 'NC', 'PSOE', 'GBAI', 'PRC', 'TE', 'SY', 'CC', 'PNV', 'JUNTS', 'UPL', 'OTROS', 'CS', 'UPN', 'PP', 'VOX', 'SALF'];
   // Medio dónut de escaños: L [[color, n, nombre]] de izquierda a derecha; grande y con el total, o pequeño y claro (2023)
   function semidonut(L, chico) {
     const N = L.reduce((t, x) => t + x[1], 0); if (!N) return '';
@@ -940,7 +1007,44 @@
       st.y = b.dataset.av; st.v = 'part'; selV.value = 'part'; selE.value = st.y; sync(); botonesAvance(y, disp, final);
     });
   }
+  // ---------- secciones del directo: el Worker suma por sección los ficheros por mesa de Interior (participación al acabar cada
+  // avance; votos, al acabar el recuento provisional) y los sirve por provincia en /secciones/<pp>.json. Sin ellos, municipios.
+  function seccDirecto(p) {
+    const v = SECC.t || '';
+    if (SECCV[p] === v || !DIRURL || (!(SECC.av || []).length && !(SECC.esc || []).includes(p))) return; SECCV[p] = v;
+    fetch(DIRURL.replace(/resultados\.json.*$/, 'secciones/' + p + '.json') + '?t=' + encodeURIComponent(v), { cache: 'no-store' })
+      .then(r => r.status === 404 ? null : r.ok ? r.json() : Promise.reject(r.status))   // 404: esa provincia aún no tiene mesas
+      .then(D => { if (!D) return; llenaSecc(p, D); VERD++; redraw(); })
+      .catch(() => { delete SECCV[p]; });   // fallo de red: se reintenta al mover el mapa
+  }
+  function llenaSecc(p, D) {
+    const y = META.directo.eleccion, S = SEC[p], n = S.d.cod.length, idx = {}; S.d.cod.forEach((c, i) => idx[c] = i);
+    const vacio = () => { const o = { part: new Array(n).fill(null), gana: new Array(n).fill(-1) }; FCOD.forEach(c => o[c] = new Array(n).fill(null)); return o; };
+    if (D.av) [0, 1].forEach(k => {
+      const o = vacio(); let hay = false;
+      for (const [c, a] of Object.entries(D.av)) { const i = idx[c]; if (i != null && a[k] && a[k][0]) { o.part[i] = a[k][1] / a[k][0]; hay = true; } }
+      if (hay) Object.entries(o).forEach(([c, v]) => S.d[y + 'a' + (k + 1) + '_' + c] = v);
+    });
+    if (D.s && D.siglas) {
+      const fk = D.siglas.map(x => FCOD.indexOf(famDe(x))), o = vacio();
+      for (const [c, a] of Object.entries(D.s)) {
+        const i = idx[c]; if (i == null) continue;
+        const [ce, vot, bl, , ...v] = a, val = v.reduce((s, x) => s + x, 0) + bl;
+        if (!ce || !val) continue;
+        o.part[i] = vot / ce;
+        const f = new Array(FCOD.length).fill(0); v.forEach((x, k) => { if (fk[k] >= 0) f[fk[k]] += x; });
+        FCOD.forEach((cc, k) => { o[cc][i] = f[k] / val; });
+        let m = -1; v.forEach((x, k) => { if (m < 0 || x > v[m]) m = k; });
+        let g = m >= 0 && v[m] > 0 ? fk[m] : -1;
+        if (g >= 0 && v.some((x, k) => k !== m && x === v[m])) g = EMPATE;
+        o.gana[i] = g;
+      }
+      Object.entries(o).forEach(([c, v]) => S.d[y + '_' + c] = v);
+    }
+  }
   function aplica(F, first) {
+    VERD++;
+    if (F.secc && (F.secc.av || []).length + (F.secc.esc || []).length) { const nuevo = !SECC || SECC.t !== F.secc.t; SECC = F.secc; if (nuevo) setTimeout(loadVisible, 0); }
     const y = F.eleccion || META.directo.eleccion, fam = F.siglas.map(famDe), fk = fam.map(c => FCOD.indexOf(c));
     const n = MUN.cod.length, idx = {}; MUN.cod.forEach((c, i) => idx[c] = i);
     const col = { part: new Array(n).fill(null), gana: new Array(n).fill(-1), esc: new Array(n).fill(null) };
@@ -966,6 +1070,18 @@
       col.gana[i] = g;
     }
     // sin ninguna mesa escrutada (el Worker ya encendido antes del cierre) el mapa sigue en 2023: no se cambia a un 29N vacío
+    // España con el fichero de totales de Interior (mismo envío), no con la suma de municipios, si lo trae
+    const TO = F.ambitos && F.ambitos.TO;
+    if (TO && TO.ce && TO.c && TO.c.length) {
+      nat.ct = TO.ct; nat.ce = TO.ce; nat.f.fill(0);
+      TO.c.forEach(([s, v]) => { const k = FCOD.indexOf(famDe(s)); if (k >= 0) nat.f[k] += v; });
+      nat.val = TO.c.reduce((t, x) => t + x[1], 0) + TO.bl;
+    }
+    ESCNAT = nat.ct ? nat.ce / nat.ct : 0;
+    if (ESCNAT >= 0.3 && document.getElementById('pie-urna')) document.getElementById('pie-urna').hidden = true;   // el sondeo, fuera con el recuento
+    if (ESCNAT > 0) mapaEnEspera(false);   // con los primeros datos, vuelve el mapa
+    colocaPU();
+    if (!PUF && F.ant23 && PUP) { PUF = F; pieUrna(PUP); } else PUF = F;   // el hemiciclo de 2023 del sondeo, en cuanto llega
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
       if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;
@@ -985,7 +1101,7 @@
           const ya = F.avances.es[k] != null ? F.avances.es[k] / 100 : .4, cod = y + 'a' + (k + 1);
           const vacio = Object.fromEntries(Object.entries(col).map(([c, v]) => [c, v.slice()]));
           Object.entries({ ...vacio, part }).forEach(([c, v]) => MUN[cod + '_' + c] = v);
-          const e = { cod, nombre: (META.directo.nombre || y) + (k ? ' · 2.º avance' : ' · 1.er avance'), tipo: 'generales', avance: true, secciones: false,
+          const e = { cod, nombre: (META.directo.nombre || y) + (k ? ' · 2.º avance' : ' · 1.er avance'), tipo: 'generales', avance: true, secciones: !!(SECC && (SECC.av || []).includes(k + 1)),
             dom: [Math.max(0, ya - .15), Math.min(1, ya + .15)] };   // escala centrada en el dato de España de ese avance
           const i = ELEC.findIndex(x => x.cod === cod); if (i >= 0) ELEC[i] = e; else ELEC.push(e);
           disp.push(cod);
@@ -1019,10 +1135,11 @@
       seats.fill(0);
       for (const d of Object.values(F.escanos)) for (const [s, x] of Object.entries(d)) { const k = FCOD.indexOf(famDe(s)); if (k >= 0) seats[k] += x; }
     }
-    if (!ELEC.some(e => e.cod === y)) {
-      ELEC.push({ cod: y, nombre: META.directo.nombre || y, tipo: 'generales', secciones: false });
+    const conSec = !!(SECC && (SECC.esc || []).length), e0 = ELEC.find(e => e.cod === y);
+    if (!e0) {
+      ELEC.push({ cod: y, nombre: META.directo.nombre || y, tipo: 'generales', secciones: conSec });
       opciones();
-    }
+    } else if (e0.secciones !== conSec) { e0.secciones = conSec; opciones(); }
     if (first) { st.y = y; if (!['gana', 'party', 'part'].includes(st.v)) st.v = 'gana'; selV.value = st.v; }
     selE.value = st.y;
     // Si el mapa sigue en la vista inicial, se reencaja después de mostrar el recuadro, que le quita alto

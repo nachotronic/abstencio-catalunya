@@ -17,6 +17,9 @@
 //           'municipios': una petición por municipio, por tandas de LOTE (por defecto 900) en cada
 //           minuto. Es el plan B si la API no devuelve los municipios dentro de la provincia.
 //   KV      espacio KV enlazado con el nombre RESULTADOS.
+//   DIA     (opcional) AAMMDD del día que vale, 261129 la noche electoral: descarta registros de otros días (pruebas).
+//   PUBLICA (opcional) hora ISO antes de la cual no se guarda ningún voto ni escaño (2026-11-29T20:00:00Z, las 21:00).
+//   MESAS   (opcional) raíz de los ficheros por mesa si no es ninguna de las que se prueban (ver mesas()).
 //   CLAVE   secreto para forzar una actualización a mano: GET /actualiza?clave=...
 // Hace falta el plan de pago de Workers (5 $/mes): el gratuito corta a los 10 ms de CPU y 50 peticiones.
 // Cómo desplegarlo y encenderlo: DESPLIEGUE.md (y el workflow .github/workflows/directo-worker.yml).
@@ -24,7 +27,7 @@
 export default {
   async scheduled(event, env, ctx) {
     // el resultado de cada lectura (ok o el error) queda en KV para verlo en GET /estado, sin datos ni claves
-    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV, sen: MUESTRA_SEN })); }));
+    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.get('mesas').then(ms => env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV, sen: MUESTRA_SEN, mesas: ms ? JSON.parse(ms) : null }))); }));
   },
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -61,6 +64,16 @@ export default {
         .replace(/<a class="atlas" href="encuestas\/simulador-pactos\/">[\s\S]*?<\/a>/, '');
       return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' } });
     }
+    const sc = url.pathname.match(/^\/secciones\/(\d{2})\.json$/);
+    if (sc) {
+      const j = await env.RESULTADOS.get('secc:' + sc[1]);
+      return new Response(j || '{}', { status: j ? 200 : 404, headers: { ...cors, 'Cache-Control': 'public, max-age=60', 'Content-Type': 'application/json; charset=utf-8' } });
+    }
+    // titular del sondeo a pie de urna (lo pone a mano el workflow directo-pieurna.yml): nunca antes de PIEURNA_DESDE
+    if (url.pathname === '/pieurna.json') {
+      const j = Date.now() >= Date.parse(env.PIEURNA_DESDE || PIEURNA_DESDE) ? await env.RESULTADOS.get('pieurna') : null;
+      return new Response(j || '{}', { status: j ? 200 : 404, headers: { ...cors, 'Cache-Control': 'public, max-age=30', 'Content-Type': 'application/json; charset=utf-8' } });
+    }
     if (url.pathname === '/estado') return new Response((await env.RESULTADOS.get('estado')) || '{}', { headers: { ...cors, 'Cache-Control': 'no-store', 'Content-Type': 'application/json' } });
     if (url.pathname !== '/resultados.json' && !pr) return new Response('No encontrado', { status: 404 });
     const json = await env.RESULTADOS.get(pr ? 'prov:' + pr[1] : 'ultimo');
@@ -68,6 +81,9 @@ export default {
     return new Response(json, { headers: { ...cors, 'Content-Type': 'application/json; charset=utf-8' } });
   },
 };
+
+// el cierre de los colegios de la Península, el 29N (20:00 en Madrid); las pruebas lo adelantan con la variable PIEURNA_DESDE
+const PIEURNA_DESDE = '2026-11-29T19:00:00Z';
 
 export async function actualiza(env) {
   try {
@@ -297,7 +313,8 @@ export function ambitosMedios(texto) {
     if (!['TO', 'CM', 'PR'].includes(t)) continue;
     const cand = [];
     for (let k = ANCHO_TOT.length; k + 4 < c.length; k += CAND_TOT.length) if (c[k + 1] && (ent(c[k + 2]) || ent(c[k + 4]))) cand.push([c[k + 1], ent(c[k + 2]), ent(c[k + 4])]);
-    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), bl: ent(c[14]), c: cand };
+    // ct: censo, ce: censo de las mesas escrutadas, vo: votantes, nu: nulos (para la participación con el total de Interior)
+    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), bl: ent(c[14]), ct: ent(c[7]), ce: ent(c[8]), vo: ent(c[10]), nu: ent(c[16]), c: cand };
     if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.PR[c[3].padStart(2, '0')] = o;
   }
   return R;
@@ -336,13 +353,15 @@ export function senado23Medios(texto) {
 let MUESTRA_SEN = '';
 
 async function pideTexto(url, env) {
-  const h = { 'User-Agent': 'mapaelectoral.es (prensa)' };
-  if (env.MEDIOS_USUARIO) h.Authorization = 'Basic ' + btoa(`${env.MEDIOS_USUARIO}:${env.MEDIOS_CLAVE || ''}`);
-  const r = await fetch(url, { headers: h, cf: { cacheTtl: 0 } });
+  const r = await fetch(url, { headers: cabeceras(env), cf: { cacheTtl: 0 } });
   if (!r.ok) throw new Error(`${r.status} en ${url}`);
   const b = new Uint8Array(await r.arrayBuffer());
-  if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { let t = ''; for (const x of b) t += String.fromCharCode(x); return t; }
-  return new TextDecoder().decode(b);
+  let t;
+  if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { t = ''; for (const x of b) t += String.fromCharCode(x); } else t = new TextDecoder().decode(b);
+  // DIA (AAMMDD, por ejemplo 261129): solo valen los registros totalizados ese día. Así, si Interior aún sirve los datos de una
+  // prueba anterior, el Worker no los toma por los de la noche electoral (se quedan fuera y la web sigue como estaba).
+  if (env.DIA && !/getEnvio|\/fijos\//.test(url)) t = t.split(/\r?\n/).filter(l => l.trim() && (!/^\d{6}/.test(l) || l.startsWith(env.DIA))).join('\n');   // fuera solo lo fechado otro día
+  return t;
 }
 
 // Avances de participación (getAvancesTotales/2/<envío>): registros TO, CM y PR con dos avances
@@ -372,6 +391,81 @@ export function avancesMunicipios(texto) {
   }
   return out;
 }
+// ---- Mesas (manual final del 23-11): /mesas/getAvances/2/<pp>.csv al acabar cada avance y /mesas/getEscrutinio/2/<pp>.csv
+// al acabar el recuento provisional. Cada mesa trae distrito y sección: se suman por sección censal, con el código INE de 10
+// cifras (provincia, municipio, distrito, sección) que usan las secciones del mapa.
+const ANCHO_MESA = [10, 2, 2, 1, 3, 2, 3, 1, 50, 2, 2];
+const ANCHO_AVMESA = [...ANCHO_MESA, 5, 5, 5, 8, 8, 8];
+const ANCHO_ESCMESA = [...ANCHO_MESA, 5, 8, 8, 5, 8, 5, 8, 5, 8, 5, 8, 5];
+const secDe = c => c[2].padStart(2, '0') + c[4].padStart(3, '0') + c[5].padStart(2, '0') + c[6].padStart(3, '0');
+// -> {cod10: [[censo de las mesas que dieron el 1.er avance, votantes], [lo mismo del 2.º]]}
+export function avancesMesas(texto) {
+  const out = {};
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_AVMESA, CAND_AV); if (!/^\d+$/.test(c[6] || '') || !/^\d+$/.test(c[2] || '')) continue;
+    const s = out[secDe(c)] ||= [[0, 0], [0, 0]];
+    [0, 1].forEach(k => { const m = ent(c[17 + 3 * k]), ce = ent(c[18 + 3 * k]), p = ent(c[19 + 3 * k]); if (m && ce) { s[k][0] += ce; s[k][1] += Math.round(ce * p / 10000); } });
+  }
+  return out;
+}
+// -> {siglas: [...], s: {cod10: [censo de las mesas totalizadas, votantes, blancos, nulos, votos de cada sigla]}, completa}
+export function escrutinioMesas(texto) {
+  const sec = {}, sig = new Map(); let total = 0, hecho = 0;
+  for (const l of lineas(texto)) {
+    const c = campos(l, ANCHO_ESCMESA, CAND_MUN); if (!/^\d+$/.test(c[6] || '') || !/^\d+$/.test(c[2] || '')) continue;
+    total += ent(c[12]); hecho += ent(c[13]);
+    if (!ent(c[13])) continue;   // mesa aún sin totalizar
+    const s = sec[secDe(c)] ||= [0, 0, 0, 0, {}];
+    s[0] += ent(c[13]); s[1] += ent(c[15]); s[2] += ent(c[19]); s[3] += ent(c[21]);
+    for (let k = ANCHO_ESCMESA.length; k + 2 < c.length; k += CAND_MUN.length) {
+      const g = c[k + 1], v = ent(c[k + 2]); if (!g || !v) continue;
+      s[4][g] = (s[4][g] || 0) + v; sig.set(g, (sig.get(g) || 0) + v);
+    }
+  }
+  const siglas = [...sig.keys()].sort((a, b) => sig.get(b) - sig.get(a));
+  const s = Object.fromEntries(Object.entries(sec).map(([k, [ce, vo, bl, nu, v]]) => [k, [ce, vo, bl, nu, ...siglas.map(g => v[g] || 0)]]));
+  return { siglas, s, completa: total > 0 && hecho >= total, mesas: total > 0 };
+}
+// Cada 5 minutos como mucho, y solo lo que falta: los avances de mesa cuando Interior ya ha dado ese avance y el escrutinio
+// de mesa de las provincias que aún no lo tienen completo. Guarda 'secc:<pp>' en KV y devuelve el resumen para resultados.json.
+async function mesas(base, env, F) {
+  const st = (await env.RESULTADOS.get('mesas', 'json')) || { av: [], esc: {}, base: null, t: 0 };
+  const res = () => ({ t: st.ver || '', av: st.av, esc: Object.keys(st.esc).sort(), base: st.base ? 'ok' : (st.prueba || '') });
+  const quiereAv = [1, 2].filter(k => F.avances && F.avances.es && F.avances.es[k - 1] != null && !st.av.includes(k));
+  const quiereEsc = !!(F.mun && Object.values(F.mun).some(a => a[1] > 0)) && PROVINCIAS.some(p => st.esc[p] !== 'completa');
+  if ((!quiereAv.length && !quiereEsc) || Date.now() - st.t < 5 * 60e3) return res();
+  st.t = Date.now();
+  if (!st.base) {   // el manual da la ruta /mesas/… sin decir la raíz: se prueba con las tres posibles y se apunta la que responde
+    const o = new URL(base).origin, prueba = [];
+    for (const b of env.MESAS ? [env.MESAS] : [o + '/mesas', base + '/mesas', o + '/descargas/mesas', base + '/data/mesas']) {
+      const r = await fetch(`${b}/${quiereAv.length ? 'getAvances' : 'getEscrutinio'}/2/28.csv`, { headers: cabeceras(env), cf: { cacheTtl: 0 } }).catch(() => null);
+      const t = r && !r.ok ? (await r.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 60) : '';
+      prueba.push((r ? r.status : 'x') + ' ' + b.replace(o, '') + (t ? ' «' + t + '»' : ''));
+      if (r && r.ok) { st.base = b; break; }
+    }
+    st.prueba = prueba.join(' · ');
+    if (!st.base) { await env.RESULTADOS.put('mesas', JSON.stringify(st)); return res(); }
+  }
+  let cambio = false;
+  await enParalelo(PROVINCIAS, 6, async p => {
+    const viejo = (await env.RESULTADOS.get('secc:' + p, 'json')) || {};
+    let nuevo = null;
+    if (quiereAv.length) try { const av = avancesMesas(await pideTexto(`${st.base}/getAvances/2/${p}.csv`, env)); if (Object.keys(av).length) nuevo = { ...(nuevo || viejo), av }; } catch (e) { /* sigue */ }
+    if (quiereEsc && st.esc[p] !== 'completa') try {
+      const e = escrutinioMesas(await pideTexto(`${st.base}/getEscrutinio/2/${p}.csv`, env));
+      if (Object.keys(e.s).length) { nuevo = { ...(nuevo || viejo), siglas: e.siglas, s: e.s }; st.esc[p] = e.completa ? 'completa' : 'parcial'; }
+    } catch (e) { /* aún no está */ }
+    if (nuevo) { cambio = true; await env.RESULTADOS.put('secc:' + p, JSON.stringify({ ...nuevo, eleccion: F.eleccion || '2026_11' })); }
+  });
+  if (quiereAv.length && cambio) {   // un avance se da por leído cuando alguna sección lo trae
+    const m = await env.RESULTADOS.get('secc:28', 'json');
+    for (const k of quiereAv) if (m && m.av && Object.values(m.av).some(a => a[k - 1][0] > 0)) st.av.push(k);
+  }
+  if (cambio) st.ver = new Date().toISOString();
+  await env.RESULTADOS.put('mesas', JSON.stringify(st));
+  return res();
+}
+const cabeceras = env => { const h = { 'User-Agent': 'mapaelectoral.es (prensa)' }; if (env.MEDIOS_USUARIO) h.Authorization = 'Basic ' + btoa(`${env.MEDIOS_USUARIO}:${env.MEDIOS_CLAVE || ''}`); return h; };
 const horaMedios = f => /^\d{10}$/.test(f) ? `20${f.slice(0, 2)}-${f.slice(2, 4)}-${f.slice(4, 6)}T${f.slice(6, 8)}:${f.slice(8, 10)}:00+01:00` : null;
 
 let MUESTRA_AV = '';   // primera línea TO de los avances, para /estado (diagnóstico)
@@ -394,9 +488,9 @@ async function porMedios(base, env) {
   if (!/^\d+$/.test(envio)) throw new Error('getEnvio no devolvió un número: ' + envio.slice(0, 40));
   const previo = await env.RESULTADOS.get('ultimo', 'json');
   let e3 = null; try { e3 = (await pideTexto(`${base}/data/getEnvio/3`, env)).trim().split(/[;\s]/)[0]; } catch (e) { /* sin Senado */ }
-  if (previo && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) {   // nada nuevo
-    if (previo.ant23 && previo.ant23.v === 2) return previo;
-    const a = await ant23(base, env); return a ? { ...previo, ant23: a } : previo;
+  if (previo && !previo.retenido && previo.envio === envio && previo.mun && previo.ambitos && (!e3 || (previo.senado && previo.senado.envio === e3))) {   // nada nuevo
+    const a = previo.ant23 && previo.ant23.v === 2 ? previo.ant23 : await ant23(base, env);
+    return { ...previo, ...(a ? { ant23: a } : {}), secc: await mesas(base, env, previo).catch(e => ({ error: e.message })) };
   }
   const filas = [], fallos = [];
   await enParalelo(PROVINCIAS, 8, async p => {
@@ -414,7 +508,13 @@ async function porMedios(base, env) {
   } catch (e) { MUESTRA_SEN = 'error: ' + e.message; }
   try { const t = await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env); MUESTRA_AV = (lineas(t).find(l => /^\d{10};?TO/.test(l)) || lineas(t)[0] || '').slice(0, 200); avances = avancesMedios(t); }
   catch (e) { MUESTRA_AV = 'error: ' + e.message; }
+  // PUBLICA (hora ISO; la noche, 2026-11-29T20:00:00Z = 21:00 en Madrid, cierre de Canarias): antes de esa hora no se
+  // guarda ningún voto ni escaño, aunque la API ya los diera; la participación de los avances sí (Interior la publica a las
+  // 14:00 y a las 18:00). Es un seguro: el manual dice que Interior publica los resultados a las 21:00, hora peninsular.
+  const retenido = !!(env.PUBLICA && Date.now() < Date.parse(env.PUBLICA));
+  if (retenido) { for (const f of filas) { f.a = [f.a[0], 0, 0, 0, 0]; f.votos = {}; } escanos = ambitos = senado = null; }
   const out = normaliza(filas, previo);
+  if (retenido) out.retenido = true;
   // Hora: la del último registro con mesas escrutadas; sin escrutinio, la de los avances; sin nada, la de la lectura.
   const conVotos = filas.filter(x => x.a[1] > 0).map(x => x.fecha || '').sort().pop();   // YYMMddHHmm, hora peninsular (UTC+1)
   out.actualizado = horaMedios(conVotos) || (avances && avances.es && avances.es.some(x => x != null) && horaMedios(avances.fecha)) || new Date().toISOString();
@@ -429,5 +529,6 @@ async function porMedios(base, env) {
   }
   // si falló alguna provincia, no se marca el envío como leído: el minuto siguiente se vuelve a intentar
   const ant = await ant23(base, env);
+  out.secc = await mesas(base, env, { ...out, avances }).catch(e => ({ error: e.message }));
   return { ...out, envio: fallos.length ? 'incompleto-' + envio : envio, ...(escanos ? { escanos } : {}), ...(ambitos && ambitos.TO ? { ambitos } : {}), ...(senado && senado.TO ? { senado } : {}), ...(ant ? { ant23: ant } : {}) };
 }
