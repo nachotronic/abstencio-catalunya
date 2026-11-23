@@ -87,9 +87,10 @@ def resumen(F, meta):
 
 def bloque_html(R):
     e = html.escape
+    mas = max(R['filas'], key=lambda x: x[1])   # la más votada (las filas van por escaños)
     p = (f'<p class="d-estado">Escrutado el {pct(R["esc"])} del censo · datos de las {R["hora"]}</p>'
-         f'<p data-tipo="dato">Con el {pct(R["esc"])} del censo escrutado, {e(R["filas"][0][0])} es la candidatura más votada, '
-         f'con el {pct(R["filas"][0][1] / R["val"])} del voto válido. Participación en las mesas escrutadas: {pct(R["part"])}.</p>')
+         f'<p data-tipo="dato">Con el {pct(R["esc"])} del censo escrutado, {e(mas[0])} es la candidatura más votada, '
+         f'con el {pct(mas[1] / R["val"])} del voto válido. Participación en las mesas escrutadas: {pct(R["part"])}.</p>')
     cab = '<th>Escaños</th>' if R['con_esc'] else ''
     t = (f'<table class="d-tabla"><caption>Votos{" y escaños" if R["con_esc"] else ""} del 29N en España ({pct(R["esc"])} escrutado)</caption>'
          f'<thead><tr><th>Candidatura</th><th>Votos</th><th>% voto válido</th>{cab}</tr></thead><tbody>')

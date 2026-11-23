@@ -70,7 +70,8 @@
     const vivo = !F.simulacro && ce < ct * 0.999;   // la banda «En directo» solo con datos reales y mientras falte escrutar
     let h = (vivo ? `<p class="d-vivo"><span class="d-punto"></span>En directo · última actualización a las ${hora}</p>` : '')
       + `<p class="d-estado">${F.simulacro ? '<b>Simulacro con datos del 23J.</b> ' : ''}${esc(nombre)} · escrutado el ${pct(ce / ct)} del censo · actualizado a las ${hora}</p>`;
-    h += `<p data-tipo="dato">Con el ${pct(ce / ct)} del censo escrutado, ${esc(ord[0].n)} es la candidatura más votada, con el ${pct(ord[0].v / val)} del voto válido. `
+    const mas = ord.reduce((m, x) => x.v > m.v ? x : m, ord[0]);   // la más votada (ord va por escaños)
+    h += `<p data-tipo="dato">Con el ${pct(ce / ct)} del censo escrutado, ${esc(mas.n)} es la candidatura más votada, con el ${pct(mas.v / val)} del voto válido. `
       + `Participación en las mesas escrutadas: ${pct(vot / ce)}.</p>`;
     const mx = Math.max(...ord.map(x => x.v));
     h += '<div class="d-barras">' + ord.slice(0, 12).map(x => `<div class="d-fila"><span class="d-et">${esc(x.n)}</span>`
