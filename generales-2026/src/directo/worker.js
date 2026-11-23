@@ -305,7 +305,8 @@ export function ambitosMedios(texto) {
     if (!['TO', 'CM', 'PR'].includes(t)) continue;
     const cand = [];
     for (let k = ANCHO_TOT.length; k + 4 < c.length; k += CAND_TOT.length) if (c[k + 1] && (ent(c[k + 2]) || ent(c[k + 4]))) cand.push([c[k + 1], ent(c[k + 2]), ent(c[k + 4])]);
-    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), bl: ent(c[14]), c: cand };
+    // ct: censo, ce: censo de las mesas escrutadas, vo: votantes, nu: nulos (para la participación con el total de Interior)
+    const o = { n: c[5], esc: ent(c[9]) / 100, el: ent(c[18]), bl: ent(c[14]), ct: ent(c[7]), ce: ent(c[8]), vo: ent(c[10]), nu: ent(c[16]), c: cand };
     if (t === 'TO') R.TO = o; else if (t === 'CM') R.CM[c[2].padStart(2, '0')] = o; else R.PR[c[3].padStart(2, '0')] = o;
   }
   return R;

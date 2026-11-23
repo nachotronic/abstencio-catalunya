@@ -83,16 +83,26 @@ def resumen(F, meta):
         ct += a[0]; ce += a[1]; vot += a[2]; bl += a[3]
         for k in range(len(F['siglas'])):
             votos[k] += a[5 + k] if 5 + k < len(a) else 0
+    TO = (F.get('ambitos') or {}).get('TO')
+    sig, tot_esc = F['siglas'], None
+    if TO and TO.get('c') and TO.get('ce'):   # España con el fichero de totales de Interior, como directo-resultados.js
+        sig = [x[0] for x in TO['c']]; votos = [x[1] for x in TO['c']]; tot_esc = [x[2] for x in TO['c']]
+        ct, ce, vot, bl = TO['ct'], TO['ce'], TO['vo'], TO['bl']
     if not ce or not ct:
         return None
     G = {}
-    for s, v in zip(F['siglas'], votos):
-        if v:
-            k, n = grupo(s); G.setdefault(k, [n, 0, 0])[1] += v
+    for k, (s, v) in enumerate(zip(sig, votos)):
+        if v or (tot_esc and tot_esc[k]):
+            g, n = grupo(s); G.setdefault(g, [n, 0, 0])[1] += v
     con_esc = False
-    for d in (F.get('escanos') or {}).values():
-        for s, n in d.items():
-            k, nom = grupo(s); G.setdefault(k, [nom, 0, 0])[2] += n; con_esc = con_esc or n > 0
+    if tot_esc:
+        for s, n in zip(sig, tot_esc):
+            if n:
+                G[grupo(s)[0]][2] += n; con_esc = True
+    else:
+        for d in (F.get('escanos') or {}).values():
+            for s, n in d.items():
+                k, nom = grupo(s); G.setdefault(k, [nom, 0, 0])[2] += n; con_esc = con_esc or n > 0
     val = sum(x[1] for x in G.values()) + bl
     # comprobaciones de cordura: si algo no cuadra, no se publica nada (se queda la foto anterior)
     if not (0 < ce <= ct) or not val or vot > ce or sum(x[2] for x in G.values()) > 350:

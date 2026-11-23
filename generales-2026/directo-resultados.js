@@ -49,6 +49,13 @@
       ct += a[0]; ce += a[1]; vot += a[2]; bl += a[3];
       for (let k = 0; k < F.siglas.length; k++) votos[k] += a[5 + k] || 0;
     }
+    // España: con el fichero de totales de Interior si lo trae (mismo envío; no depende de que lleguen las 52 provincias)
+    const TO = F.ambitos && F.ambitos.TO;
+    let sig = F.siglas, totEsc = null;
+    if (TO && TO.c && TO.c.length && TO.ce) {
+      sig = TO.c.map(x => x[0]); votos.length = 0; TO.c.forEach(x => votos.push(x[1])); totEsc = TO.c.map(x => x[2]);
+      ct = TO.ct; ce = TO.ce; vot = TO.vo; bl = TO.bl;
+    }
     // Avances de participación de Interior (en %): España en el total; la provincia, en su fichero
     const AV = F.avances && F.avances.es;
     const ME = F.avances && F.avances.mesas;
@@ -58,9 +65,10 @@
       + AV.map((x, i) => x == null ? '' : `${i ? '2.º' : '1.er'} avance, ${pct(x / 100)}`).filter(Boolean).join(' · ') + '.</p>' : '');
     if (!ce) { caja.querySelector('.d-cuerpo').innerHTML = `<p class="d-estado">${esc(nombre)} · todavía no hay mesas escrutadas.</p>` + avTxt; return; }
     const G = {};
-    F.siglas.forEach((s, k) => { if (!votos[k]) return; const g = grupo(s); (G[g.k] ||= { ...g, v: 0, e: 0 }).v += votos[k]; });
+    sig.forEach((s, k) => { if (!votos[k] && !(totEsc && totEsc[k])) return; const g = grupo(s); (G[g.k] ||= { ...g, v: 0, e: 0 }).v += votos[k]; });
     let conEsc = false;
-    if (F.escanos) for (const d of Object.values(F.escanos)) for (const [s, n] of Object.entries(d)) { const g = grupo(s); (G[g.k] ||= { ...g, v: 0, e: 0 }).e += n; conEsc = conEsc || n > 0; }
+    if (totEsc) sig.forEach((s, k) => { if (totEsc[k]) { G[grupo(s).k].e += totEsc[k]; conEsc = true; } });
+    else if (F.escanos) for (const d of Object.values(F.escanos)) for (const [s, n] of Object.entries(d)) { const g = grupo(s); (G[g.k] ||= { ...g, v: 0, e: 0 }).e += n; conEsc = conEsc || n > 0; }
     const val = Object.values(G).reduce((t, x) => t + x.v, 0) + bl;
     const L = Object.values(G).sort((x, y) => (y.e - x.e) || (y.v - x.v));
     const ord = L.filter(x => x.v / val >= 0.005 || x.e), resto = L.filter(x => !ord.includes(x)).reduce((t, x) => t + x.v, 0);

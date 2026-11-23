@@ -1005,6 +1005,13 @@
       col.gana[i] = g;
     }
     // sin ninguna mesa escrutada (el Worker ya encendido antes del cierre) el mapa sigue en 2023: no se cambia a un 29N vacío
+    // España con el fichero de totales de Interior (mismo envío), no con la suma de municipios, si lo trae
+    const TO = F.ambitos && F.ambitos.TO;
+    if (TO && TO.ce && TO.c && TO.c.length) {
+      nat.ct = TO.ct; nat.ce = TO.ce; nat.f.fill(0);
+      TO.c.forEach(([s, v]) => { const k = FCOD.indexOf(famDe(s)); if (k >= 0) nat.f[k] += v; });
+      nat.val = TO.c.reduce((t, x) => t + x[1], 0) + TO.bl;
+    }
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
       if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;
