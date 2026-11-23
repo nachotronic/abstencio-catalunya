@@ -47,7 +47,7 @@ SUBE_CERA = (CERA26 / CERA23 - 1) * 100
 assert round(PCERA, 1) == 7.2 and round(SUBE_CERA) == 19
 
 M = pd.read_csv(RAIZ / 'generales-2026/descargas/municipios.csv', dtype={'mun_code': str}, usecols=['mun_code', 'provincia'])
-NOMP = dict(zip(M.mun_code.str[:2], M.provincia.str.split('/').str[0]))
+NOMP = dict(zip(M.mun_code.str[:2], M.provincia.str.split('/').str[0].replace({'Araba': 'Álava'})))
 G = C.groupby('prov')[['cer_2026', 'cera_2026', 'cer_2023', 'cera_2023']].sum().reset_index()
 G['pct'] = G.cera_2026 / (G.cer_2026 + G.cera_2026) * 100
 G['sube'] = (G.cera_2026 / G.cera_2023 - 1) * 100
@@ -119,7 +119,7 @@ cuerpo = f'''
 {g_bar}
 {g_mapa}
 <h2>Lo que pasó en 2023</h2>
-<p data-tipo="contexto">En julio de 2023, el PP sacó {M23["pp_noche"]} escaños la noche electoral y el PSOE, {M23["psoe_noche"]}. En Madrid, el último diputado quedó para el PSOE por unos {n(M23["dif_noche"])} votos. En el escrutinio general, el voto de fuera de Madrid dio al PP {n(M23["cera_pp"])} votos y al PSOE {n(M23["cera_psoe"])}, y el escaño cambió de manos: el PP pasó de {M23["mad_pp"][0]} a {M23["mad_pp"][1]} diputados en Madrid y el PSOE, de {M23["mad_psoe"][0]} a {M23["mad_psoe"][1]}. En el conjunto de España, {M23["pp_def"]} y {M23["psoe_def"]}, según <a href="{MALDITA}">Maldita.es</a>, que publicó el acta del voto exterior de la Junta Electoral Provincial.</p>
+<p data-tipo="contexto">En julio de 2023, el PP sacó {M23["pp_noche"]} escaños la noche electoral y el PSOE, {M23["psoe_noche"]}. En Madrid, el último diputado quedó para el PSOE por unos {n(M23["dif_noche"])} votos. En el escrutinio general, el voto de los electores de Madrid que viven en el extranjero dio al PP {n(M23["cera_pp"])} votos y al PSOE {n(M23["cera_psoe"])}, y el escaño cambió de manos: el PP pasó de {M23["mad_pp"][0]} a {M23["mad_pp"][1]} diputados en Madrid y el PSOE, de {M23["mad_psoe"][0]} a {M23["mad_psoe"][1]}. En el conjunto de España, {M23["pp_def"]} y {M23["psoe_def"]}, según <a href="{MALDITA}">Maldita.es</a>, que publicó el acta del voto exterior de la Junta Electoral Provincial.</p>
 <p data-tipo="contexto">El PSOE pidió revisar los {n(M23["nulos"])} votos nulos de Madrid, con una diferencia final de {n(M23["dif_def"])} votos. La junta provincial lo rechazó, y después también la Junta Electoral Central, el Tribunal Supremo y el Tribunal Constitucional. El resultado de Madrid no cambió. Es el camino que tiene cualquier partido que no esté de acuerdo con el escrutinio.</p>
 <h2>Qué mirar la noche del 29N</h2>
 <p data-tipo="contexto">Si el último escaño de una provincia se decide por pocos votos, sobre todo en las que tienen mucho censo en el extranjero, puede cambiar del 4 al 7 de diciembre. Lo mismo vale para el Senado, que se cuenta a la vez. Los votos por correo de los residentes en España sí entran en el recuento de la noche: se entregan en las mesas y se cuentan con el resto, como se explica en {L("voto-correo-29n", "la pieza del voto por correo")}.</p>
