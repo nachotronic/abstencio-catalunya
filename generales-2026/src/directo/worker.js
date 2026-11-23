@@ -421,9 +421,10 @@ async function mesas(base, env, F) {
   st.t = Date.now();
   if (!st.base) {   // el manual da la ruta /mesas/… sin decir la raíz: se prueba con las tres posibles y se apunta la que responde
     const o = new URL(base).origin, prueba = [];
-    for (const b of env.MESAS ? [env.MESAS] : [o + '/mesas', base + '/mesas', o + '/descargas/mesas']) {
+    for (const b of env.MESAS ? [env.MESAS] : [o + '/mesas', base + '/mesas', o + '/descargas/mesas', base + '/data/mesas']) {
       const r = await fetch(`${b}/${quiereAv.length ? 'getAvances' : 'getEscrutinio'}/2/28.csv`, { headers: cabeceras(env), cf: { cacheTtl: 0 } }).catch(() => null);
-      prueba.push((r ? r.status : 'x') + ' ' + b.replace(o, ''));
+      const t = r && !r.ok ? (await r.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 60) : '';
+      prueba.push((r ? r.status : 'x') + ' ' + b.replace(o, '') + (t ? ' «' + t + '»' : ''));
       if (r && r.ok) { st.base = b; break; }
     }
     st.prueba = prueba.join(' · ');
