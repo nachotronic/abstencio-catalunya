@@ -208,6 +208,13 @@ CAT = G[G.prov.isin(['08', '17', '25', '43'])]
 assert (CAT.d < -4.9).all()
 SUBE_MAS = G.sort_values('d').iloc[::-1].head(4)
 assert list(SUBE_MAS.nombre) == ['Lugo', 'A Coruña', 'Soria', 'Ourense']
+_mc = m[m.prov.isin(['08', '17', '25', '43'])]
+CATP = {'p19': _mc['2019_11_votantes'].sum() / _mc['2019_11_censo'].sum() * 100, 'p23': _mc['2023_07_votantes'].sum() / _mc['2023_07_censo'].sum() * 100,
+        'ind19': sum(_mc[f'2019_11_v{k}'].sum() for k in ('ERC', 'JUNTS', 'CUP')), 'ind23': sum(_mc[f'2023_07_v{k}'].sum() for k in ('ERC', 'JUNTS', 'CUP')),
+        'psc19': _mc['2019_11_vPSOE'].sum(), 'psc23': _mc['2023_07_vPSOE'].sum()}
+CATP['d'] = CATP['p23'] - CATP['p19']
+assert round(CATP['p19'], 1) == 72.1 and round(CATP['p23'], 1) == 65.4 and CATP['ind23'] < CATP['ind19'] and CATP['psc23'] > CATP['psc19']
+CATP = {k: float(v) for k, v in CATP.items()}
 GAL = G[G.prov.isin(['15', '27', '32', '36'])]
 assert (GAL.d > 5.7).all()
 opd = {r.prov: min(1, .3 + abs(r.d) / 9) for r in G.itertuples()}
@@ -352,6 +359,7 @@ cuerpo = f'''
 {g_mapa23}
 <p data-tipo="dato">Frente a noviembre de 2019, la participación subió en {SUBEN} de las 52 provincias. Las mayores subidas fueron gallegas: Lugo ({s1(LUG.d)} puntos), A Coruña, Soria y Ourense. Las mayores bajadas, en Cataluña: Girona ({s1(GIR.d)}), Lleida ({s1(LLE.d)}) y Barcelona ({s1(BCN.d)}), además de Melilla ({s1(MEL.d)}).</p>
 {g_mapad}
+<p data-tipo="contexto">En el conjunto de Cataluña, la participación de los residentes bajó del {p(CATP['p19'])} % al {p(CATP['p23'])} %, {p(-CATP['d'])} puntos. Las elecciones de noviembre de 2019 llegaron cuatro semanas después de <a href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/El-Tribunal-Supremo-condena-a-nueve-de-los-procesados-en-la-causa-especial-20907-2017-por-delito-de-sedicion">la sentencia del Tribunal Supremo</a> sobre los líderes del procés, del 14 de octubre. En 2023, ERC, Junts y la CUP sumaron en Cataluña {n(round(CATP['ind23'], -3))} votos, {n(round(CATP['ind19'] - CATP['ind23'], -3))} menos que entonces, y el PSC ganó {n(round(CATP['psc23'] - CATP['psc19'], -3))}. Los datos por municipio no dicen quién dejó de votar, pero la bajada de la participación coincide con la del voto independentista. La noche electoral de 2023 se habló de una bajada de <a href="https://www.3cat.cat/3catinfo/23j-la-participacio-puja-mes-de-dos-punts-a-espanya-i-en-baixa-gairebe-quatre-a-catalunya/noticia/3242506/">unos cuatro puntos</a> en Cataluña: era la comparación con la cifra final de 2019, que incluía el voto exterior. Entre residentes, la que se usa aquí, fue de {p(-CATP['d'])}.</p>
 <h2>Pueblos y ciudades</h2>
 <p data-tipo="dato">Quién sale a votar también depende de dónde vive. En julio de 2023, en los {n(T[0]['n'])} municipios con menos de 1.000 electores votó el {p(T[0]['p23'])} %; en los de 20.000 a 100.000, el tramo que menos votó, el {p(T[3]['p23'])} %, y en las cinco ciudades de más de medio millón, el {p(T[-1]['p23'])} %. Y entre 2019 y 2023, cuanto más pequeño era el municipio, más subió la participación: {s1(T[0]['d'])} puntos en los pueblos de menos de 1.000 electores, {s1(T[1]['d'])} en los de 1.000 a 5.000 y {s1(T[3]['d'])} en los de 20.000 a 100.000. En las cinco grandes ciudades, bajó {p(-T[-1]['d'])} puntos.</p>
 {g_tam}
@@ -387,7 +395,7 @@ DATOS = {'H': [{k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.it
 DATOS.update({'T': [{k: (round(v, 3) if isinstance(v, float) else v) for k, v in t.items()} for t in T],
               'GR': [{'municipio': r.municipio, 'p19': round(r.p19, 3), 'p23': round(r.p23, 3), 'd': round(r.d, 3)} for r in GR.itertuples()],
               'MSUBE': MSUBE, 'NMUN': len(M), 'CENSO_SUBE': round(CENSO_SUBE, 3), 'CENSO23': int(CENSO23), 'MAS_VOT': round(MAS_VOT), 'DIF23': int(DIF23),
-              'V96': round(V96, 3), 'GR_SUBE': GR_SUBE, 'SEATS': SEATS,
+              'V96': round(V96, 3), 'CATP': CATP, 'GR_SUBE': GR_SUBE, 'SEATS': SEATS,
               'POP_PROV': D_PROV, 'POP_MUN': D_M, 'POP_GN': GN, 'POP_PN': D_PN})
 POPUP = """
 (()=>{const f1=v=>v.toFixed(1).replace('.',','),sg=v=>(v>0?'+':v<0?'\u2212':'')+f1(Math.abs(v));

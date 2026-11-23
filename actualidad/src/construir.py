@@ -5245,7 +5245,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='participacion-elecciones-generales-29n-prevision', fecha='2026-11-23', actualizado='2026-11-23 13:30',
+        slug='participacion-elecciones-generales-29n-prevision', fecha='2026-11-23', actualizado='2026-11-23 13:15',
         titulo='Participación en las elecciones generales del 29N: las encuestas prevén un 73,1 %, 2,7 puntos más que en 2023', serie='29n', figura=0,
         descripcion='Las cuatro veces que la participación subió más de cinco puntos desde 1977, el PSOE quedó primero; las tres que subió poco, el PP. Una relación entre elecciones, con excepciones, no una regla.',
         compara='La participación que estiman las encuestas para el 29N (la última estimación de cada encuestadora en las tres últimas semanas) frente a la de 2023, y la participación de los residentes en España en las 16 elecciones generales desde 1977, su cambio frente a la anterior, el partido más votado y el voto al PSOE y a los partidos a su izquierda.',
