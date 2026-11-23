@@ -125,4 +125,7 @@ citándolo; hora elegida, las 20:00 (como las teles).
 2. El Worker no lo sirve antes del 29-11 a las 20:00 en Madrid (PIEURNA_DESDE; para probarlo antes, la entrada
    pieurna_desde del despliegue). La portada lo pone encima del recuadro del directo y lo quita sola cuando el escrutinio
    pasa del 30 %. Para quitarlo antes: el mismo workflow con borrar = si.
+   Con escaños, pinta el hemiciclo (punto medio de cada horquilla, el resto hasta 350 en gris) y el de 2023 debajo; los
+   nombres de partido como los escribe el medio (PP, PSOE, Vox, Sumar o Frente Amplio, ERC, Junts, EH Bildu, PNV, BNG, CC, UPN).
+   Mientras está el sondeo y no hay escrutinio, el mapa y sus selectores esperan ocultos; vuelven con los primeros datos.
 3. Desplegar con limpiar = si borra también el titular: se pone después del despliegue de la noche.

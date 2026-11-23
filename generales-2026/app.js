@@ -746,7 +746,7 @@
   // ---------- sondeo a pie de urna, la noche del 29N, del cierre de los colegios a los primeros datos de Interior. El titular lo
   // pone a mano el workflow «Directo 29N: sondeo a pie de urna» en el Worker, que no lo sirve antes de su hora (PIEURNA_DESDE);
   // aquí se quita solo en cuanto el escrutinio pasa del 30 % (o cuando se borra). Nunca toca el H1 ni el título.
-  let ESCNAT = 0;
+  let ESCNAT = 0, PUP = null;
   const PUURL = new URLSearchParams(location.search).get('pieurna') || (DIRURL && /\/resultados\.json(\?|$)/.test(DIRURL) ? DIRURL.replace(/\/resultados\.json.*$/, '/pieurna.json') : null);
   if (PUURL) {
     const pu = async () => {
@@ -756,7 +756,8 @@
   }
   function pieUrna(P) {
     let b = document.getElementById('pie-urna');
-    if (!(P && P.titular && P.medio) || ESCNAT >= 0.3) { if (b) b.hidden = true; return; }
+    PUP = P;
+    if (!(P && P.titular && P.medio) || ESCNAT >= 0.3) { if (b) b.hidden = true; mapaEnEspera(false); return; }
     const mapa = document.getElementById('mapa'); if (!mapa) return;
     if (!b) {
       b = document.createElement('div'); b.id = 'pie-urna'; b.setAttribute('aria-live', 'polite');
@@ -765,11 +766,38 @@
     }
     const fil = Array.isArray(P.filas) ? P.filas.filter(f => Array.isArray(f) && f[0] && f[1]) : [];
     const enl = /^https:\/\//.test(P.enlace || '') ? ` (<a href="${escH(P.enlace)}" rel="noopener" target="_blank">fuente</a>)` : '';
+    // hemiciclo con el punto medio de cada horquilla (el resto hasta 350, en gris) y, debajo, el de 2023 (Nacho, 23-11)
+    const pf = fil.map(([p, r]) => { const m = String(r).match(/(\d+)(?:\D+(\d+))?/); return [famPU(p), m ? (+m[1] + +(m[2] || m[1])) / 2 : 0]; });
+    const E = {}; pf.forEach(([k, e]) => { if (k >= 0) E[k] = (E[k] || 0) + e; });
+    const ahora = Object.entries(E).map(([k, e]) => [+k, Math.round(e)]), suma = ahora.reduce((t, x) => t + x[1], 0);
+    let hemi = '';
+    if (ahora.length && suma <= 350 && suma >= 300) {
+      if (suma < 350) { const ko = FCOD.indexOf('OTROS'); const o = ahora.find(x => x[0] === ko); if (o) o[1] += 350 - suma; else ahora.push([ko, 350 - suma]); }
+      const T = PUF && PUF.ant23 && PUF.ant23.ambitos && PUF.ant23.ambitos.TO;
+      const y = (META.directo && META.directo.eleccion) || '2026_11';
+      hemi = donuts(y, ahora, T ? porFamilia(T.c).map(([k, , e]) => [k, e]) : null)
+        + `<p class="mut" style="font:12px/1.4 var(--sans);margin:4px 0 6px;text-align:center">Punto medio de cada horquilla del sondeo${suma < 350 ? '; en gris, el resto de escaños' : ''}${T ? '. Debajo, los escaños de 2023' : ''}.</p>`;
+    }
     b.innerHTML = `<div style="font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase">Sondeo a pie de urna${P.hora ? ' · ' + escH(P.hora) : ''}</div>`
       + `<p style="font:700 19px/1.25 var(--sans);margin:6px 0">${escH(P.titular)}</p>`
+      + hemi
       + (fil.length ? `<p style="font:15px/1.5 var(--sans);margin:0 0 6px">${fil.map(([p, r]) => `${escH(p)} <b>${escH(r)}</b>`).join(' · ')}</p>` : '')
       + `<p class="mut" style="font:13px/1.4 var(--sans);margin:0">Sondeo de ${escH(P.medio)}${enl}. Es una estimación, no son resultados: los primeros datos del recuento de Interior llegan a partir de las 21:00.</p>`;
     b.hidden = false;
+    mapaEnEspera(ESCNAT === 0);
+  }
+  // nombres de partido del sondeo (como los escribe el medio) -> familia del mapa
+  const famPU = p => { const a = String(p).toUpperCase().trim();
+    const k = /^CC$|COALICI.N CANARIA/.test(a) ? 'CC' : /^SUMAR$|FRENTE AMPLIO|^FA$/.test(a) ? 'SUMAR' : /SE ACAB|^SALF$/.test(a) ? 'SALF' : /^ADELANTE/.test(a) ? 'AA'
+      : /^JUNTS$|^JXCAT/.test(a) ? 'JUNTS' : /^EH ?BILDU$|^BILDU$/.test(a) ? 'BILDU' : famDe(a);
+    return FCOD.indexOf(k); };
+  // mientras está el sondeo y aún no hay escrutinio, el mapa espera (sin selectores ni mapa) hasta los primeros datos (Nacho, 23-11)
+  let PUF = null, enEspera = false;
+  function mapaEnEspera(si) {
+    if (si === enEspera) return; enEspera = si;
+    const m = document.getElementById('mapa'); if (!m) return;
+    m.querySelectorAll(':scope > .controls, :scope > .mapwrap, :scope > details.hint').forEach(x => { x.hidden = si; });
+    if (!si) setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
   }
   function dhondt(votos, n) {
     const q = []; votos.forEach((v, k) => { for (let d = 1; d <= n; d++) q.push([v / d, k]); });
@@ -1042,6 +1070,8 @@
     }
     ESCNAT = nat.ct ? nat.ce / nat.ct : 0;
     if (ESCNAT >= 0.3 && document.getElementById('pie-urna')) document.getElementById('pie-urna').hidden = true;   // el sondeo, fuera con el recuento
+    if (ESCNAT > 0) mapaEnEspera(false);   // con los primeros datos, vuelve el mapa
+    if (!PUF && F.ant23 && PUP) { PUF = F; pieUrna(PUP); } else PUF = F;   // el hemiciclo de 2023 del sondeo, en cuanto llega
     if (!nat.ce) {   // antes del escrutinio, el recuadro solo enseña los avances de participación, si los hay
       const av = F.avances && F.avances.es ? F.avances.es.filter(x => x != null) : [], me = F.avances && F.avances.mesas;
       if ((!av.length && !(me && me.constituidas)) || !$('#directo')) return;
