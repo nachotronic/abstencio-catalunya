@@ -1,0 +1,157 @@
+{
+ "pieza": "escrutinio-elecciones-generales-29n",
+ "cifras": [
+  {
+   "texto": "diciembre, con el voto de 2.769.645 electores que viven",
+   "cifra": "2.769.645",
+   "calculo": "D['CERA26']"
+  },
+  {
+   "texto": "quedan por contar los votos de 2.769.645 electores que viven",
+   "cifra": "2.769.645",
+   "calculo": "D['CERA26']"
+  },
+  {
+   "texto": "extranjero. Para el 29N son 2.769.645 electores, el 7,2 %",
+   "cifra": "2.769.645",
+   "calculo": "D['CERA26']"
+  },
+  {
+   "texto": "son 2.769.645 electores, el 7,2 % del censo, un 19,1",
+   "cifra": "7,2",
+   "calculo": "D['PCERA']"
+  },
+  {
+   "texto": "electores, el 7,2 % del censo, un 19,1 % más que en 2023. Su",
+   "cifra": "19,1",
+   "calculo": "D['SUBE_CERA']"
+  },
+  {
+   "texto": "todas partes. En Ourense, el 30,8 % de los electores vive",
+   "cifra": "30,8",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Ourense'][0]['pct']"
+  },
+  {
+   "texto": "electores vive fuera; en Lugo, el 22,6 %. En 11 provincias",
+   "cifra": "22,6",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Lugo'][0]['pct']"
+  },
+  {
+   "texto": "fuera; en Lugo, el 22,6 %. En 11 provincias pasa del",
+   "cifra": "11",
+   "calculo": "D['N10']"
+  },
+  {
+   "texto": "provincias pasa del 10 %: las cuatro gallegas, Asturias,",
+   "condicion": "sum(1 for r in D['PROV'] if r['pct']>10 and r['nombre'] in ('Ourense','Lugo','Pontevedra','A Coruña'))==4"
+  },
+  {
+   "texto": "Melilla. En Madrid es el 9,0 %, pero es donde más",
+   "cifra": "9,0",
+   "calculo": "D['MAD']['pct']"
+  },
+  {
+   "texto": "ha crecido desde 2023, un 32,8 %. En Ciudad Real, la",
+   "cifra": "32,8",
+   "calculo": "D['MAD']['sube']"
+  },
+  {
+   "texto": "Real, la que menos, es el 2,0 %. Cuánta de esa gente",
+   "cifra": "2,0",
+   "calculo": "[r for r in D['PROV'] if r['nombre']=='Ciudad Real'][0]['pct']"
+  },
+  {
+   "texto": "Ourense, casi uno de cada tres electores vive en el",
+   "condicion": "[r for r in D['PROV'] if r['nombre']=='Ourense'][0]['pct']>30 and [r for r in D['PROV'] if r['nombre']=='Ourense'][0]['pct']<34"
+  },
+  {
+   "texto": "Madrid es el 9,0 %, pero es donde más ha crecido",
+   "condicion": "max(r['sube'] for r in D['PROV'])==D['MAD']['sube']"
+  },
+  {
+   "texto": "En Ciudad Real, la que menos",
+   "condicion": "min(r['pct'] for r in D['PROV'])==[r for r in D['PROV'] if r['nombre']=='Ciudad Real'][0]['pct']"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "En 2023 empezó «desde las 21 horas, tras el cierre",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/2023/200723-seguimiento-resultados-elecciones-generales-23j.aspx"
+  },
+  {
+   "texto": "julio de 2023, el PP sacó 136 escaños la noche electoral",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "noche electoral y el PSOE, 122. En Madrid, el último",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "quedó para el PSOE por unos 1.700 votos. En el escrutinio",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "en el extranjero dio al PP 19.006 votos y al PSOE 10.411,",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "PP 19.006 votos y al PSOE 10.411, y el escaño cambió",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "cambió de manos: el PP pasó de 15 a 16 diputados en Madrid",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "manos: el PP pasó de 15 a 16 diputados en Madrid",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "diputados en Madrid y el PSOE, de 11 a 10. En el conjunto",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "Madrid y el PSOE, de 11 a 10. En el conjunto de España,",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "En el conjunto de España, 137 y 121, según Maldita.es,",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "conjunto de España, 137 y 121, según Maldita.es, que",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "El PSOE pidió revisar los 30.241 votos nulos de Madrid,",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "con una diferencia final de 1.323 votos. La junta provincial",
+   "fuente": "https://maldita.es/malditateexplica/20230801/elecciones-madrid-psoe-voto-nulo/"
+  },
+  {
+   "texto": "se realizará del 4 al 7 de diciembre por las Juntas Electorales Provinciales",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/guia-dudas-elecciones-generales-29n.aspx"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "4 de diciembre (artículo 75 y artículo 103 de la",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "diciembre (artículo 75 y artículo 103 de la LOREG).",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "En 11 provincias pasa del 10 %: las cuatro gallegas,",
+   "motivo": "Umbral elegido: más del 10 %."
+  },
+  {
+   "texto": "el 29N, en porcentaje. Las 15 provincias con más",
+   "motivo": "Número de barras del gráfico."
+  }
+ ],
+ "permitir_espana": []
+}

@@ -17,6 +17,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/escrutinio-elecciones-generales-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>Escrutinio de las elecciones generales del 29N: cómo seguirlo en directo y cuándo es definitivo</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/voto-blanco-nulo-elecciones-generales-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
