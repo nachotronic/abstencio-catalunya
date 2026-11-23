@@ -61,6 +61,19 @@ jobs:
             ID=$(node -e "const l=require('./kv.json');console.log(l.find(x=>/RESULTADOS$/.test(x.title)).id)")
           fi
           sed -i "s/PON_AQUI_EL_ID_DEL_KV/$ID/" wrangler.toml
+      - name: Cubo R2 del archivo de descargas (lo crea la primera vez; sin permiso de R2, el Worker sigue sin archivo)
+        run: |
+          set +e
+          npx -y wrangler@3.114.0 r2 bucket list > r2.txt 2>&1
+          grep -q "generales-29n-descargas" r2.txt || npx -y wrangler@3.114.0 r2 bucket create generales-29n-descargas >> r2.txt 2>&1
+          npx -y wrangler@3.114.0 r2 bucket list > r2.txt 2>&1
+          if grep -q "generales-29n-descargas" r2.txt; then
+            printf '\n[[r2_buckets]]\nbinding = "ARCHIVO"\nbucket_name = "generales-29n-descargas"\n' >> wrangler.toml
+            echo "Archivo de descargas: activado (cubo privado generales-29n-descargas)"
+          else
+            echo "::warning::Sin cubo R2 (¿R2 sin activar o el token sin permiso de R2?): el Worker funciona, pero sin archivo de descargas"
+            tail -5 r2.txt
+          fi
       - name: Borrar lo guardado (no los datos de 2023)
         if: github.event.inputs.limpiar == 'si'
         run: |

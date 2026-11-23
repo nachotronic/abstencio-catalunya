@@ -105,13 +105,15 @@ vale, se fija con la variable `MESAS`.
 
 ## 8. Noche del 29N, paso a paso
 
-1. Antes: Nacho pide a Interior una clave nueva (la anterior se pegó en el chat) y la guarda en el secreto `MEDIOS_CLAVE`.
-2. Domingo 29 por la mañana: Actions → «Directo 29N: desplegar el Worker» con FUENTE `…/descargas/csv`, MODO `medios`,
+1. Clave: se queda la actual de `MEDIOS_CLAVE` (Nacho, 24-11: no se puede pedir otra); se comprueba en la prueba del 25.
+2. Sábado 28 por la noche (antes de las 9:30 del domingo, la constitución de mesas): Actions → «Directo 29N: desplegar el Worker» con FUENTE `…/descargas/csv`, MODO `medios`,
    DIA `261129`, PUBLICA `2026-11-29T20:00:00Z` y limpiar `si`. PUBLICA: antes de las 21:00 (cierre de Canarias) no se guarda
    ningún voto ni escaño aunque la API los diera; la participación sí. DIA descarta cualquier registro que no sea del 29 (si Interior aún sirve la prueba del 25,
    no entra) y limpiar borra lo guardado de la prueba.
 3. Mirar `/estado`: «ok … municipios» con datos del día, o «ninguna provincia trajo municipios» si aún no hay nada del 29.
-4. Con el «Fusiona» de Nacho: PR con la URL del Worker en `generales-2026/data/meta.json` → `directo.url`. GitHub Pages y
+4. Con el «Fusiona» de Nacho, también el sábado por la noche: PR con la URL del Worker en `generales-2026/data/meta.json` → `directo.url`.
+   Sin datos del día el Worker no sirve nada y la portada no cambia; a las 9:30 sale sola la constitución de mesas, a las
+   14:00 y 18:00 los avances (mapa de participación), a las 20:00 el sondeo a pie de urna y a las 21:00 los resultados. GitHub Pages y
    el navegador guardan meta.json y app.js hasta 10 minutos: contar con ese margen.
 5. Apagar si algo va mal: PR que vacía `directo.url` (vuelve todo a como estaba, en 10 minutos como mucho).
 
@@ -129,3 +131,15 @@ citándolo; hora elegida, las 20:00 (como las teles).
    nombres de partido como los escribe el medio (PP, PSOE, Vox, Sumar o Frente Amplio, ERC, Junts, EH Bildu, PNV, BNG, CC, UPN).
    Mientras está el sondeo y no hay escrutinio, el mapa y sus selectores esperan ocultos; vuelven con los primeros datos.
 3. Desplegar con limpiar = si borra también el titular: se pone después del despliegue de la noche.
+
+## 10. Archivo de descargas y precauciones de Interior
+
+- Archivo (Nacho, 23-11: «guardar las descargas para luego ver cómo y dónde avanza el resultado»): con el cubo R2 privado
+  `generales-29n-descargas` (binding ARCHIVO, lo crea el despliegue), cada fichero descargado se guarda tal cual en
+  `descargas/<AAAA-MM-DD>/<HHMMSS>Z_<ruta>` (hora UTC) y cada lectura deja su registro en `registro/<AAAA-MM-DD>/<HHMMSS>Z.json`
+  (hora, URL sin credenciales, código HTTP, bytes, ms). No va al repositorio (es público). `limpiar = si` no lo toca.
+- Recomendaciones del manual (pág. 23): solo rutas documentadas (los ficheros de mesa, solo en `<dominio>/mesas/…`);
+  User-Agent «mapaelectoral.es (prensa)»; ante un 401 o 403, el Worker no pide nada más durante 10 minutos (KV `parado`,
+  se ve en /estado) con hora, URL y código, que es lo que pide soporte (900 601 462, prensa@infoelecciones.es).
+- Primeros datos: la web pide el JSON cada 30 s, y en la primera media hora tras PUBLICA el Worker lee también a los 30 s
+  de cada minuto (si no hay envío nuevo, solo las dos peticiones de getEnvio).

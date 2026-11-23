@@ -19,7 +19,8 @@
 //   KV      espacio KV enlazado con el nombre RESULTADOS.
 //   DIA     (opcional) AAMMDD del día que vale, 261129 la noche electoral: descarta registros de otros días (pruebas).
 //   PUBLICA (opcional) hora ISO antes de la cual no se guarda ningún voto ni escaño (2026-11-29T20:00:00Z, las 21:00).
-//   MESAS   (opcional) raíz de los ficheros por mesa si no es ninguna de las que se prueban (ver mesas()).
+//   MESAS   (opcional) raíz de los ficheros por mesa si no es <dominio>/mesas, la del manual (ver mesas()).
+//   ARCHIVO (opcional) cubo R2 privado: cada fichero descargado y el registro de descargas de cada lectura.
 //   CLAVE   secreto para forzar una actualización a mano: GET /actualiza?clave=...
 // Hace falta el plan de pago de Workers (5 $/mes): el gratuito corta a los 10 ms de CPU y 50 peticiones.
 // Cómo desplegarlo y encenderlo: DESPLIEGUE.md (y el workflow .github/workflows/directo-worker.yml).
@@ -27,7 +28,12 @@
 export default {
   async scheduled(event, env, ctx) {
     // el resultado de cada lectura (ok o el error) queda en KV para verlo en GET /estado, sin datos ni claves
-    ctx.waitUntil(actualiza(env).then(m => { console.log(m); return env.RESULTADOS.get('mesas').then(ms => env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV, sen: MUESTRA_SEN, mesas: ms ? JSON.parse(ms) : null }))); }));
+    const lee = () => actualiza(env).then(m => { console.log(m); return env.RESULTADOS.get('mesas').then(ms => env.RESULTADOS.put('estado', JSON.stringify({ t: new Date().toISOString(), m, av: MUESTRA_AV, sen: MUESTRA_SEN, mesas: ms ? JSON.parse(ms) : null }))); });
+    // en la primera media hora tras PUBLICA (21:00), otra lectura a los 30 s de cada minuto para no esperar al siguiente:
+    // si no hay envío nuevo son solo las dos peticiones de getEnvio (sin ráfagas, como pide Interior); y solo si la
+    // primera acabó en menos de 25 s, para no pisar la del minuto siguiente
+    const p = env.PUBLICA ? Date.parse(env.PUBLICA) : NaN, ahora = Date.now();
+    ctx.waitUntil(lee().then(() => ahora >= p - 60e3 && ahora < p + 30 * 60e3 && Date.now() - ahora < 25e3 ? new Promise(r => setTimeout(r, Math.max(0, 30e3 - (Date.now() - ahora)))).then(lee) : null));
   },
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -85,7 +91,24 @@ export default {
 // el cierre de los colegios de la Península, el 29N (20:00 en Madrid); las pruebas lo adelantan con la variable PIEURNA_DESDE
 const PIEURNA_DESDE = '2026-11-29T19:00:00Z';
 
-export async function actualiza(env) {
+export async function actualiza(env0) {
+  // estado de esta lectura (pausa y registro): va dentro de env, que llega a todas las funciones, y no en variables del módulo,
+  // para que dos lecturas que coincidan en el mismo isolate no se pisen
+  const env = { ...env0, LECTURA: { parado: null, registro: [] } };
+  const pausa = await env.RESULTADOS.get('parado', 'json');
+  if (pausa && Date.now() < Date.parse(pausa.hasta)) return `en pausa por el ${pausa.codigo} de Interior hasta ${pausa.hasta} (${pausa.url}); avisar a soporte: 900 601 462, prensa@infoelecciones.es`;
+  try {
+    return await actualiza1(env);
+  } finally {
+    const PARADO = env.LECTURA.parado, REGISTRO = env.LECTURA.registro;
+    if (PARADO) await env.RESULTADOS.put('parado', JSON.stringify({ ...PARADO, hasta: new Date(Date.now() + 10 * 60e3).toISOString() }));
+    if (env.ARCHIVO && REGISTRO.length) {   // registro de cada descarga de esta lectura (hora, URL sin credenciales, código, bytes, ms)
+      const t = new Date().toISOString();
+      try { await env.ARCHIVO.put(`registro/${t.slice(0, 10)}/${t.slice(11, 19).replace(/:/g, '')}Z.json`, JSON.stringify(REGISTRO)); } catch (e) { /* sigue */ }
+    }
+  }
+}
+async function actualiza1(env) {
   try {
     const out = await leeFuente(env);
     if (!out || !out.mun || !Object.keys(out.mun).length) return 'sin datos';
@@ -352,10 +375,28 @@ export function senado23Medios(texto) {
 }
 let MUESTRA_SEN = '';
 
+// Recomendaciones de Interior (manual, pág. 23): ante un 401 o un 403, nada de reintentos continuos. Al primero, esta lectura
+// deja de pedir nada (env.LECTURA.parado) y actualiza() apunta una pausa de 10 minutos en KV ('parado', se ve en /estado) con lo que
+// pide soporte: hora con zona, método, URL sin credenciales y código.
+const sinCred = u => u.replace(/\/\/[^/@]*@/, '//');
 async function pideTexto(url, env) {
+  const L = env.LECTURA || { parado: null, registro: [] }, REGISTRO = L.registro;
+  if (L.parado) throw new Error(`en pausa por el ${L.parado.codigo} de Interior`);
+  const t0 = Date.now();
   const r = await fetch(url, { headers: cabeceras(env), cf: { cacheTtl: 0 } });
-  if (!r.ok) throw new Error(`${r.status} en ${url}`);
+  if (!r.ok) {
+    REGISTRO.push({ t: new Date(t0).toISOString(), url: sinCred(url), codigo: r.status, ms: Date.now() - t0 });
+    if (r.status === 401 || r.status === 403) L.parado = L.parado || { codigo: r.status, t: new Date(t0).toISOString(), metodo: 'GET', url: sinCred(url) };
+    throw new Error(`${r.status} en ${url}`);
+  }
   const b = new Uint8Array(await r.arrayBuffer());
+  REGISTRO.push({ t: new Date(t0).toISOString(), url: sinCred(url), codigo: r.status, bytes: b.length, ms: Date.now() - t0 });
+  // archivo de descargas (Nacho, 23-11: «guardar las descargas para luego ver cómo y dónde avanza el resultado»): cada
+  // fichero tal cual llega, en el R2 privado ARCHIVO, con la hora UTC de la descarga. getEnvio solo queda en el registro.
+  if (env.ARCHIVO && !/getEnvio/.test(url)) {
+    const k = `descargas/${new Date(t0).toISOString().slice(0, 10)}/${new Date(t0).toISOString().slice(11, 19).replace(/:/g, '')}Z_${new URL(url).pathname.replace(/^\/+/, '').replace(/[^\w.-]+/g, '_')}`;
+    try { await env.ARCHIVO.put(k, b); } catch (e) { /* el archivo nunca para la lectura */ }
+  }
   let t;
   if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { t = ''; for (const x of b) t += String.fromCharCode(x); } else t = new TextDecoder().decode(b);
   // DIA (AAMMDD, por ejemplo 261129): solo valen los registros totalizados ese día. Así, si Interior aún sirve los datos de una
@@ -435,10 +476,13 @@ async function mesas(base, env, F) {
   const quiereEsc = !!(F.mun && Object.values(F.mun).some(a => a[1] > 0)) && PROVINCIAS.some(p => st.esc[p] !== 'completa');
   if ((!quiereAv.length && !quiereEsc) || Date.now() - st.t < 5 * 60e3) return res();
   st.t = Date.now();
-  if (!st.base) {   // el manual da la ruta /mesas/… sin decir la raíz: se prueba con las tres posibles y se apunta la que responde
+  if (!st.base) {   // solo la ruta documentada (manual: «cada fichero se puede descargar mediante una petición GET al dominio de la
+    // web»: <dominio>/mesas/…); Interior pide usar «únicamente las rutas documentadas», así que no se prueban otras
     const o = new URL(base).origin, prueba = [];
-    for (const b of env.MESAS ? [env.MESAS] : [o + '/mesas', base + '/mesas', o + '/descargas/mesas', base + '/data/mesas']) {
+    for (const b of env.MESAS ? [env.MESAS] : [o + '/mesas']) {
+      if (env.LECTURA && env.LECTURA.parado) break;
       const r = await fetch(`${b}/${quiereAv.length ? 'getAvances' : 'getEscrutinio'}/2/28.csv`, { headers: cabeceras(env), cf: { cacheTtl: 0 } }).catch(() => null);
+      if (r && (r.status === 401 || r.status === 403) && env.LECTURA) env.LECTURA.parado = { codigo: r.status, t: new Date().toISOString(), metodo: 'GET', url: `${b}/…/2/28.csv` };
       const t = r && !r.ok ? (await r.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 60) : '';
       prueba.push((r ? r.status : 'x') + ' ' + b.replace(o, '') + (t ? ' «' + t + '»' : ''));
       if (r && r.ok) { st.base = b; break; }
