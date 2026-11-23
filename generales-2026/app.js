@@ -57,6 +57,7 @@
     p.polygon.forEach(([x, y]) => { b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); });
   });
   const SEC = {};           // prov -> {d, polys}
+  let SECC = null, VERD = 0; const SECCV = {};   // secciones del directo (ver seccDirecto) y versión de los datos del directo
   const loading = new Set();
 
   // ---------- estado
@@ -286,7 +287,7 @@
 
   function layers() {
     const L = [];
-    const trig = [st.y, st.v, st.party, document.documentElement.dataset.theme || ''];
+    const trig = [st.y, st.v, st.party, document.documentElement.dataset.theme || '', VERD];   // VERD: datos nuevos del directo
     L.push(new deck.SolidPolygonLayer({
       id: 'mun', data: MUNP, getPolygon: o => o.polygon, getFillColor: o => color(MUN, o.i),
       pickable: true, updateTriggers: { getFillColor: trig },
@@ -360,6 +361,7 @@
     return pedido[y] || (pedido[y] = getR('e/' + y + '.json').then(d => { Object.assign(MUN, d); }).catch(e => { delete pedido[y]; throw e; }));
   }
   function aseguraSec(p, y) {
+    if (SECC && SEC[p] && META.directo && (y === META.directo.eleccion || y.startsWith(META.directo.eleccion + 'a'))) return seccDirecto(p);
     const e = ELEC.find(e => e.cod === y);
     if (!e || !e.aparte || !e.secciones || !SEC[p] || SEC[p].d[y + '_part']) return;
     const k = p + '_' + y; if (pedido[k]) return;
@@ -940,7 +942,44 @@
       st.y = b.dataset.av; st.v = 'part'; selV.value = 'part'; selE.value = st.y; sync(); botonesAvance(y, disp, final);
     });
   }
+  // ---------- secciones del directo: el Worker suma por sección los ficheros por mesa de Interior (participación al acabar cada
+  // avance; votos, al acabar el recuento provisional) y los sirve por provincia en /secciones/<pp>.json. Sin ellos, municipios.
+  function seccDirecto(p) {
+    const v = SECC.t || '';
+    if (SECCV[p] === v || !DIRURL || (!(SECC.av || []).length && !(SECC.esc || []).includes(p))) return; SECCV[p] = v;
+    fetch(DIRURL.replace(/resultados\.json.*$/, 'secciones/' + p + '.json') + '?t=' + encodeURIComponent(v), { cache: 'no-store' })
+      .then(r => r.status === 404 ? null : r.ok ? r.json() : Promise.reject(r.status))   // 404: esa provincia aún no tiene mesas
+      .then(D => { if (!D) return; llenaSecc(p, D); VERD++; redraw(); })
+      .catch(() => { delete SECCV[p]; });   // fallo de red: se reintenta al mover el mapa
+  }
+  function llenaSecc(p, D) {
+    const y = META.directo.eleccion, S = SEC[p], n = S.d.cod.length, idx = {}; S.d.cod.forEach((c, i) => idx[c] = i);
+    const vacio = () => { const o = { part: new Array(n).fill(null), gana: new Array(n).fill(-1) }; FCOD.forEach(c => o[c] = new Array(n).fill(null)); return o; };
+    if (D.av) [0, 1].forEach(k => {
+      const o = vacio(); let hay = false;
+      for (const [c, a] of Object.entries(D.av)) { const i = idx[c]; if (i != null && a[k] && a[k][0]) { o.part[i] = a[k][1] / a[k][0]; hay = true; } }
+      if (hay) Object.entries(o).forEach(([c, v]) => S.d[y + 'a' + (k + 1) + '_' + c] = v);
+    });
+    if (D.s && D.siglas) {
+      const fk = D.siglas.map(x => FCOD.indexOf(famDe(x))), o = vacio();
+      for (const [c, a] of Object.entries(D.s)) {
+        const i = idx[c]; if (i == null) continue;
+        const [ce, vot, bl, , ...v] = a, val = v.reduce((s, x) => s + x, 0) + bl;
+        if (!ce || !val) continue;
+        o.part[i] = vot / ce;
+        const f = new Array(FCOD.length).fill(0); v.forEach((x, k) => { if (fk[k] >= 0) f[fk[k]] += x; });
+        FCOD.forEach((cc, k) => { o[cc][i] = f[k] / val; });
+        let m = -1; v.forEach((x, k) => { if (m < 0 || x > v[m]) m = k; });
+        let g = m >= 0 && v[m] > 0 ? fk[m] : -1;
+        if (g >= 0 && v.some((x, k) => k !== m && x === v[m])) g = EMPATE;
+        o.gana[i] = g;
+      }
+      Object.entries(o).forEach(([c, v]) => S.d[y + '_' + c] = v);
+    }
+  }
   function aplica(F, first) {
+    VERD++;
+    if (F.secc && (F.secc.av || []).length + (F.secc.esc || []).length) { const nuevo = !SECC || SECC.t !== F.secc.t; SECC = F.secc; if (nuevo) setTimeout(loadVisible, 0); }
     const y = F.eleccion || META.directo.eleccion, fam = F.siglas.map(famDe), fk = fam.map(c => FCOD.indexOf(c));
     const n = MUN.cod.length, idx = {}; MUN.cod.forEach((c, i) => idx[c] = i);
     const col = { part: new Array(n).fill(null), gana: new Array(n).fill(-1), esc: new Array(n).fill(null) };
@@ -985,7 +1024,7 @@
           const ya = F.avances.es[k] != null ? F.avances.es[k] / 100 : .4, cod = y + 'a' + (k + 1);
           const vacio = Object.fromEntries(Object.entries(col).map(([c, v]) => [c, v.slice()]));
           Object.entries({ ...vacio, part }).forEach(([c, v]) => MUN[cod + '_' + c] = v);
-          const e = { cod, nombre: (META.directo.nombre || y) + (k ? ' · 2.º avance' : ' · 1.er avance'), tipo: 'generales', avance: true, secciones: false,
+          const e = { cod, nombre: (META.directo.nombre || y) + (k ? ' · 2.º avance' : ' · 1.er avance'), tipo: 'generales', avance: true, secciones: !!(SECC && (SECC.av || []).includes(k + 1)),
             dom: [Math.max(0, ya - .15), Math.min(1, ya + .15)] };   // escala centrada en el dato de España de ese avance
           const i = ELEC.findIndex(x => x.cod === cod); if (i >= 0) ELEC[i] = e; else ELEC.push(e);
           disp.push(cod);
@@ -1019,10 +1058,11 @@
       seats.fill(0);
       for (const d of Object.values(F.escanos)) for (const [s, x] of Object.entries(d)) { const k = FCOD.indexOf(famDe(s)); if (k >= 0) seats[k] += x; }
     }
-    if (!ELEC.some(e => e.cod === y)) {
-      ELEC.push({ cod: y, nombre: META.directo.nombre || y, tipo: 'generales', secciones: false });
+    const conSec = !!(SECC && (SECC.esc || []).length), e0 = ELEC.find(e => e.cod === y);
+    if (!e0) {
+      ELEC.push({ cod: y, nombre: META.directo.nombre || y, tipo: 'generales', secciones: conSec });
       opciones();
-    }
+    } else if (e0.secciones !== conSec) { e0.secciones = conSec; opciones(); }
     if (first) { st.y = y; if (!['gana', 'party', 'part'].includes(st.v)) st.v = 'gana'; selV.value = st.v; }
     selE.value = st.y;
     // Si el mapa sigue en la vista inicial, se reencaja después de mostrar el recuadro, que le quita alto
