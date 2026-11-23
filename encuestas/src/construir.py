@@ -126,6 +126,18 @@ ESC_MANUAL = {
 }
 
 
+# Encuestas que solo publican escaños, sin estimación de voto: van en la tabla de las últimas encuestas con «–» en el voto,
+# y fuera de la mediana, los gráficos, los recuentos del titular, el promedio de escaños y las páginas de encuestadora.
+SOLO_ESCANOS = [
+    # Infortécnica para La Región, 22-11-2026: 1.910 entrevistas en toda España, campo del 26 de octubre al 16 de noviembre.
+    # Solo da horquillas de escaños (Frente Amplio, en la columna de Sumar) e intención directa, no estimación de voto.
+    {'reest': False, 'casa': 'Infortécnica', 'medio': 'La Región · solo escaños', 'inicio': '2026-10-26', 'fin': '2026-11-16', 'fin_aprox': False,
+     'publicado': '2026-11-22', 'muestra': '1910', 'voto': {},
+     'esc': {'PP': '134-140', 'PSOE': '110-116', 'VOX': '56-60', 'SUMAR': '9-11'},
+     'url': 'https://www.laregion.es/espana/encuesta-29n-pp-psoe-vox-bng_1_20261122-4503029.html'},
+]
+
+
 def carga():
     """Encuestas nacionales: las de Electográfica más las que solo están en Wikipedia; escaños de Wikipedia."""
     wp = list(csv.DictReader(open(DATOS / 'wikipedia_generales_espana.csv'))) if (DATOS / 'wikipedia_generales_espana.csv').exists() else []
@@ -1138,7 +1150,8 @@ def main():
     datos = {'modelo': MODELO_JS, 'pv': pv_casas, 'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
     desde23 = sorted((e for e in encs if e['fin'] >= '2023-07-24'), key=lambda e: e.get('publicado') or e['fin'], reverse=True)
-    recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
+    en_tabla = sorted(desde23 + SOLO_ESCANOS, key=lambda e: e.get('publicado') or e['fin'], reverse=True)   # solo la tabla
+    recientes, anteriores = en_tabla[:VISIBLES], en_tabla[VISIBLES:]   # las últimas a la vista; el resto, plegado
     cab_partidos = ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES)
     tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
              f'<tbody>{"".join(fila_tabla(e) for e in recientes)}</tbody></table></div>')
