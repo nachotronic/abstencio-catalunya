@@ -1709,6 +1709,25 @@
     }
    ]
   },
+  "cadiz/jose-manuel-albares-bueno": {
+   "nombre": "José Manuel Albares Bueno",
+   "prov": "11",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1972-03-22",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=275&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "06/12/2023",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
   "cadiz/maria-del-carmen-sanchez-diaz": {
    "nombre": "María del Carmen Sánchez Díaz",
    "prov": "11",
@@ -3422,6 +3441,39 @@
     }
    ]
   },
+  "madrid/fernando-grande-marlaska-gomez": {
+   "nombre": "Fernando Grande-Marlaska Gómez",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 5,
+   "genero": "m",
+   "nacimiento": "1962-07-26",
+   "lugar": "Bilbao",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=286&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "21/02/2020",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "06/12/2023",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
   "madrid/rafael-simancas-simancas": {
    "nombre": "Rafael Simancas Simancas",
    "prov": "28",
@@ -3941,6 +3993,24 @@
      "alta": "16/08/2023",
      "baja": "",
      "circ": "Madrid",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/juan-antonio-valero-morales": {
+   "nombre": "Juan Antonio Valero Morales",
+   "prov": "28",
+   "siglas": "FA",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1981-03-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=78&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Málaga",
      "formacion": "SUMAR",
      "leg": 15
     }
@@ -6333,46 +6403,6 @@
  },
  "dudosos": [
   {
-   "clave": "cadiz/jose-manuel-albares-bueno",
-   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
-   "leg": 15,
-   "circ": "Madrid",
-   "formacion": "PSOE",
-   "alta": "14/08/2023",
-   "baja": "06/12/2023",
-   "nombre_congreso": "Albares Bueno, José Manuel"
-  },
-  {
-   "clave": "madrid/fernando-grande-marlaska-gomez",
-   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
-   "leg": 13,
-   "circ": "Cádiz",
-   "formacion": "PSOE",
-   "alta": "16/05/2019",
-   "baja": "24/09/2019",
-   "nombre_congreso": "Grande-Marlaska Gómez, Fernando"
-  },
-  {
-   "clave": "madrid/fernando-grande-marlaska-gomez",
-   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
-   "leg": 14,
-   "circ": "Cádiz",
-   "formacion": "PSOE",
-   "alta": "26/11/2019",
-   "baja": "21/02/2020",
-   "nombre_congreso": "Grande-Marlaska Gómez, Fernando"
-  },
-  {
-   "clave": "madrid/fernando-grande-marlaska-gomez",
-   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
-   "leg": 15,
-   "circ": "Cádiz",
-   "formacion": "PSOE",
-   "alta": "14/08/2023",
-   "baja": "06/12/2023",
-   "nombre_congreso": "Grande-Marlaska Gómez, Fernando"
-  },
-  {
    "clave": "madrid/julio-utrilla-cano",
    "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
    "leg": 14,
@@ -6391,16 +6421,6 @@
    "alta": "10/12/2014",
    "baja": "27/10/2015",
    "nombre_congreso": "Martín Revuelta, María"
-  },
-  {
-   "clave": "madrid/juan-antonio-valero-morales",
-   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
-   "leg": 15,
-   "circ": "Málaga",
-   "formacion": "SUMAR",
-   "alta": "03/08/2023",
-   "baja": "",
-   "nombre_congreso": "Valero Morales, Juan Antonio"
   },
   {
    "clave": "madrid/veronica-martinez-barbero",

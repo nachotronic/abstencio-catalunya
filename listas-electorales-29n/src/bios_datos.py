@@ -35,7 +35,11 @@ NOMBRES_COMUNES = {'maria', 'jose', 'de', 'del', 'la', 'las', 'los', 'y', 'i', '
 
 
 # Exdiputados de otra provincia que no se pueden atar por la fecha de nacimiento: comprobados uno a uno, con la fuente
-CONFIRMADOS = {}
+CONFIRMADOS = {
+    'cadiz/jose-manuel-albares-bueno': 'https://www.esdiario.com/nacional/261014/200286/sanchez-coloca-margarita-robles-numero-dos-psoe-madrid-deja-bolanos-tercer-puesto.html',
+    'madrid/fernando-grande-marlaska-gomez': 'https://www.esdiario.com/nacional/261014/200286/sanchez-coloca-margarita-robles-numero-dos-psoe-madrid-deja-bolanos-tercer-puesto.html',
+    'madrid/juan-antonio-valero-morales': 'https://www.vozpopuli.com/espana/andalucia/frente-comun-para-recortar-senadores-al-pp-pugna-a-cuatro-por-el-congreso-la-doble-cara-de-la-izquierda-andaluza.html',
+}
 
 
 # nombres antiguos de circunscripción en el buscador del Congreso
