@@ -4,7 +4,7 @@ import http from 'http';
 const W = (await import(process.argv[2])).default, { actualiza } = await import(process.argv[2]);
 const mem = new Map();
 const env = { FUENTE: process.argv[3], MODO: process.argv[4] || 'provincias', LOTE: process.argv[5], CLAVE: 'k',
-  MEDIOS_USUARIO: process.env.MEDIOS_USUARIO, MEDIOS_CLAVE: process.env.MEDIOS_CLAVE,
+  MEDIOS_USUARIO: process.env.MEDIOS_USUARIO, MEDIOS_CLAVE: process.env.MEDIOS_CLAVE, DIA: process.env.DIA, PUBLICA: process.env.PUBLICA,
   RESULTADOS: { get: async (k, t) => { const v = mem.get(k); return v == null ? null : t === 'json' ? JSON.parse(v) : v; }, put: async (k, v) => mem.set(k, v) } };
 const run = async () => { const t = Date.now(); console.log(new Date().toISOString().slice(11, 19), await actualiza(env), (Date.now() - t) + ' ms'); };
 await run(); setInterval(run, +process.env.CADA || 60000);
