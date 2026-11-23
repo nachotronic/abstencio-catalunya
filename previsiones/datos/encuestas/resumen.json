@@ -1,17 +1,17 @@
 {
- "descargado": "2026-11-23T07:28Z",
+ "descargado": "2026-11-23T10:33Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1138,
+ "encuestas_espana": 1142,
  "encuestas_infraestatales": 153,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-22",
-  "encuestadora": "Sondaxe",
-  "cliente": "La Voz de Galicia"
+  "publicado": "2026-11-23",
+  "encuestadora": "Winston",
+  "cliente": "Artículo14"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 39,
-  "SY": 7,
+  "UPN-PP": 40,
+  "SY": 8,
   "D21": 6,
   "Autonómicas - CUP": 2,
   "DVC": 2,
@@ -25,6 +25,6 @@
  "wikipedia": {
   "encuestas": 457,
   "ultima_fin_campo": "2026-11-22",
-  "faltan_en_electografica_120_dias": 36
+  "faltan_en_electografica_120_dias": 32
  }
 }
