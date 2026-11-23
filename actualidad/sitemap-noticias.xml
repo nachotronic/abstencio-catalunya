@@ -9,6 +9,14 @@
     </news:news>
   </url>
   <url>
+    <loc>https://mapaelectoral.es/actualidad/voto-blanco-nulo-elecciones-generales-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>Voto en blanco y voto nulo en las elecciones generales del 29N: qué cuenta y a quién afecta</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-23-noviembre/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
