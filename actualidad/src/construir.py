@@ -5197,7 +5197,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='veda-encuestas-29n', fecha='2026-11-20',
+        slug='veda-encuestas-29n', fecha='2026-11-20', actualizado='2026-11-24 00:40',
         titulo='Veda de encuestas: hasta cuándo se pueden publicar las del 29N', serie='29n', figura=0,
         descripcion='Las encuestas de las elecciones generales se pueden publicar hasta el lunes 23 de noviembre; del 24 al 28, la ley lo prohíbe. En 2023, el último día permitido fue el de más encuestas: 12 empresas publicaron la suya.',
         compara='Lo que dice la ley electoral sobre la publicación de encuestas en los cinco días anteriores a la votación, el calendario de la veda del 29N y las empresas que publicaron encuesta cada día en las dos últimas semanas antes de la veda de 2023.',
