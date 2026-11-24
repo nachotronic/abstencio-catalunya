@@ -1,5 +1,6 @@
 # Foto fija del escrutinio del 29N en el HTML (src/foto_29n.py), para los buscadores que no ejecutan JavaScript.
-# La noche del 29N, cada 15 minutos de 21:15 a 2:00 (hora de Madrid): cuerpo de la página de resultados y llms.txt.
+# La noche del 29N, cada 15 minutos de 21:15 a 2:00 (hora de Madrid): cuerpo y fecha de la página de resultados, su lastmod
+# en elecciones/sitemap.xml y llms.txt.
 # No toca title, description, H1, canonical ni URL. Sin directo.url en meta.json, o sin datos reales del 29N, no hace nada.
 name: Foto del escrutinio del 29N
 on:
@@ -27,12 +28,12 @@ jobs:
         id: subir
         run: |
           if git diff --quiet; then echo "Sin cambios"; exit 0; fi
-          # seguro: solo la página de resultados y llms.txt; cualquier otro fichero tocado para la subida
-          if git diff --name-only | grep -vxE 'elecciones/resultados-elecciones-generales-2026/index.html|llms.txt'; then
+          # seguro: solo la página de resultados, elecciones/sitemap.xml y llms.txt; cualquier otro fichero tocado para la subida
+          if git diff --name-only | grep -vxE 'elecciones/resultados-elecciones-generales-2026/index.html|elecciones/sitemap.xml|llms.txt'; then
             echo "::error::La foto ha tocado otros ficheros: no se sube nada"; exit 1; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
-          git commit -qam "Foto del escrutinio del 29N (cuerpo de la página de resultados y llms.txt)"
+          git commit -qam "Foto del escrutinio del 29N (página de resultados, su lastmod en el sitemap y llms.txt)"
           GITHUB_TOKEN="${{ github.token }}" src/subir_a_main.sh --theirs
           echo "cambio=1" >> "$GITHUB_OUTPUT"
       - name: Avisar a IndexNow (solo a las 21:15, 23:15 y 1:15, no en cada foto)

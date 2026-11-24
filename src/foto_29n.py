@@ -4,9 +4,11 @@ PerplexityBot; Google sí lo ejecuta, pero más tarde). La noche del 29N, cada 1
 - en la página de resultados, dentro de la caja del escrutinio (.d-cuerpo, entre <!--foto29n--> y <!--/foto29n-->), el
   mismo resumen que pinta directo-resultados.js: escrutado, candidatura más votada, votos, % y escaños. El JavaScript lo
   sustituye por el dato al minuto en cuanto carga;
-- en llms.txt, una línea con lo mismo (entre <!--foto29n--> y <!--/foto29n-->).
+- en llms.txt, una línea con lo mismo (entre <!--foto29n--> y <!--/foto29n-->);
+- la fecha de actualización de la página de resultados con la hora de la foto: dateModified del JSON-LD, «Actualizado el …»
+  de la firma y el lastmod de esa URL en elecciones/sitemap.xml. Nada más cambia en esos ficheros (se comprueba antes de escribir).
 
-No toca title, description, H1, canonical, URL ni la fecha de la firma. Solo escribe con datos reales del 29 o 30-11 (ni
+No toca title, description, H1, canonical ni URL. Solo escribe con datos reales del 29 o 30-11 (ni
 simulacro, ni retenidos antes de las 21:00, ni sin mesas escrutadas); si no, no hace nada.
 Uso: python3 src/foto_29n.py [URL de resultados.json]   (por defecto, la de generales-2026/data/meta.json → directo.url)
 """
@@ -16,6 +18,7 @@ from zoneinfo import ZoneInfo
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 PAGINA = RAIZ / 'elecciones/resultados-elecciones-generales-2026/index.html'
 LLMS = RAIZ / 'llms.txt'
+SITEMAP = RAIZ / 'elecciones/sitemap.xml'
 URL_PAGINA = 'https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/'
 MADRID = ZoneInfo('Europe/Madrid')
 
@@ -53,6 +56,28 @@ def cabeceras(t):
 
 def fuera_de_marcas(t):
     return re.sub(r'<!--foto29n-->.*?<!--/foto29n-->', '', t, flags=re.S)
+
+
+# Las dos fechas de la página que la foto pone al día; fuera del bloque, solo pueden cambiar ellas
+MODIFICADA = re.compile(r'"dateModified": "[^"]*"')
+FIRMA = re.compile(r'Actualizado el <time datetime="[^"]*">[^<]*</time>')
+LASTMOD = re.compile(r'(<loc>' + re.escape(URL_PAGINA) + r'</loc><lastmod>)[^<]*(</lastmod>)')
+MESES = ('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre')
+
+
+def sin_fechas(t):
+    return FIRMA.sub('', MODIFICADA.sub('', fuera_de_marcas(t)))
+
+
+def con_fechas(t, R):
+    f = R['fecha'].replace(second=0, microsecond=0)
+    iso = f.isoformat(timespec='minutes')
+    visible = f'{f.day} de {MESES[f.month - 1]} de {f.year}, a las {f.hour}.{f.minute:02d}'
+    n, a = MODIFICADA.subn(f'"dateModified": "{iso}"', t)
+    n, b = FIRMA.subn(f'Actualizado el <time datetime="{iso}">{visible}</time>', n)
+    if (a, b) != (1, 1):
+        sys.exit(f'Esperaba un dateModified y una firma en la página de resultados y hay {a} y {b}: no se escribe nada')
+    return n
 
 
 def resumen(F, meta):
@@ -163,11 +188,24 @@ def escribe(R):
         if not m:
             sys.exit('No encuentro la caja .d-cuerpo en la página de resultados')
         n = t[:m.end()] + b + t[m.end():]
-    # seguro: fuera del bloque marcado, la página tiene que quedar igual byte a byte, y las cabeceras, idénticas
-    if fuera_de_marcas(n) != fuera_de_marcas(t) or cabeceras(n) != cabeceras(t):
+    if n == t:   # mismas cifras que la foto anterior: ni fechas ni sitemap (que no cambie la fecha sin dato nuevo)
+        print('Mismas cifras que la foto anterior: no se toca nada'); return []
+    n = con_fechas(n, R)
+    # seguro: fuera del bloque marcado y de las dos fechas, la página tiene que quedar igual byte a byte, y las cabeceras, idénticas
+    if sin_fechas(n) != sin_fechas(t) or cabeceras(n) != cabeceras(t):
         sys.exit('La foto cambiaría algo fuera de su bloque o en las cabeceras: no se escribe nada')
     if n != t:
         PAGINA.write_text(n, encoding='utf-8'); cambios.append(str(PAGINA.relative_to(RAIZ)))
+    # lastmod de la página de resultados en el sitemap: solo esa línea
+    t = SITEMAP.read_text(encoding='utf-8')
+    iso = R['fecha'].replace(second=0, microsecond=0).isoformat(timespec='minutes')
+    n, k = LASTMOD.subn(lambda m: m.group(1) + iso + m.group(2), t)
+    if k != 1:
+        sys.exit(f'Esperaba una entrada de la página de resultados en el sitemap y hay {k}: no se escribe nada')
+    if LASTMOD.sub('', n) != LASTMOD.sub('', t):
+        sys.exit('El sitemap cambiaría algo más: no se escribe nada')
+    if n != t:
+        SITEMAP.write_text(n, encoding='utf-8'); cambios.append(str(SITEMAP.relative_to(RAIZ)))
     t = LLMS.read_text(encoding='utf-8')
     l = linea_llms(R)
     if '<!--foto29n-->' in t:
