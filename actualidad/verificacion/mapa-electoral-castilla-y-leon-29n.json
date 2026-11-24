@@ -53,27 +53,9 @@
    "_donde": "entradilla"
   },
   {
-   "texto": "¡Ya! y Por Ávila ganaron en siete pueblos. Para el 29N,",
+   "texto": "¡Ya! y Por Ávila ganaron en siete pueblos.",
    "cifra": "siete",
    "calculo": "D['GANA']['2023_07']['SY']+D['GANA']['2023_07']['XAV']",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "media de encuestas da al PP 16 de los 31 diputados,",
-   "cifra": "16",
-   "calculo": "D['E29']['PP']",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "encuestas da al PP 16 de los 31 diputados, y a Vox,",
-   "cifra": "31",
-   "calculo": "sum(D['ESC26'].values())",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "los 31 diputados, y a Vox, 5.",
-   "cifra": "5",
-   "calculo": "D['E29']['VOX']",
    "_donde": "entradilla"
   },
   {
@@ -497,36 +479,6 @@
    "_donde": "dato"
   },
   {
-   "texto": "el reparto central de los 31 escaños da al PP 16,",
-   "cifra": "31",
-   "calculo": "sum(D['ESC26'].values())",
-   "_donde": "dato"
-  },
-  {
-   "texto": "de los 31 escaños da al PP 16, dos menos que en 2023;",
-   "cifra": "16",
-   "calculo": "D['E29']['PP']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "menos que en 2023; al PSOE, 10, dos menos, y a Vox,",
-   "cifra": "10",
-   "calculo": "D['E29']['PSOE']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "PSOE, 10, dos menos, y a Vox, 5, frente al uno que sacó",
-   "cifra": "5",
-   "calculo": "D['E29']['VOX']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "de las simulaciones en las nueve provincias. El modelo",
-   "cifra": "nueve",
-   "calculo": "len(D['PRN'])",
-   "_donde": "dato"
-  },
-  {
    "texto": "Nueve provincias y tres listas",
    "cifra": "Nueve",
    "calculo": "len(D['PRN'])",
@@ -623,24 +575,6 @@
    "_donde": "pie"
   },
   {
-   "texto": "encuestas, Vox pasaría de uno a cinco diputados en Castilla",
-   "cifra": "cinco",
-   "calculo": "D['E29']['VOX']",
-   "_donde": "pie"
-  },
-  {
-   "texto": "PSOE perderían escañosLos 31 diputados de las nueve",
-   "cifra": "31",
-   "calculo": "sum(D['ESC26'].values())",
-   "_donde": "pie"
-  },
-  {
-   "texto": "escañosLos 31 diputados de las nueve provincias: un cuadrado",
-   "cifra": "nueve",
-   "calculo": "len(D['PRN'])",
-   "_donde": "pie"
-  },
-  {
    "texto": "Frente Obrero, con 26 votos, frente a 12 del PSOE.",
    "cifra": "26",
    "calculo": "D['FO_V']",
@@ -678,10 +612,6 @@
   {
    "texto": "puntos. Entre los de más de 5.000 habitantes, el más ajustado",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 18 días de la votación.",
-   "motivo": "días hasta la votación"
   },
   {
    "texto": "en 306; el PP, de 1.546 a 1.886Partido más votado",

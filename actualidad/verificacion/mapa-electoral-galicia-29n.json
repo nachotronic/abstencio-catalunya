@@ -45,16 +45,6 @@
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "media de encuestas da al PP 14 de los 23 diputados",
-   "cifra": "14",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas da al PP 14 de los 23 diputados y al BNG dos.",
-   "cifra": "23",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
    "texto": "elige el 29 de noviembre 23 diputados: 8 en A Coruña,",
    "cifra": "23",
    "calculo": "sum(D['ESC26'].values())"
@@ -405,26 +395,6 @@
    "calculo": "D['AJ'][2][4]"
   },
   {
-   "texto": "el reparto central de los 23 escaños da al PP 14,",
-   "cifra": "23",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "de los 23 escaños da al PP 14, uno más que en 2023;",
-   "cifra": "14",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "más que en 2023; al PSOE, 6, uno menos; al BNG,",
-   "cifra": "6",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "de las simulaciones en las cuatro provincias. Vox no ha",
-   "cifra": "cuatro",
-   "calculo": "len(D['PR'])"
-  },
-  {
    "texto": "El PSOE pasó de ganar en 83 municipios gallegos",
    "cifra": "83",
    "calculo": "D['GANA']['2019_11']['PSOE']"
@@ -503,16 +473,6 @@
    "texto": "As Pontes se decidió por 22 votos; Parada de Sil,",
    "cifra": "22",
    "calculo": "D['AJ'][0][4]"
-  },
-  {
-   "texto": "se quedaría sin ningunoLos 23 diputados de las cuatro",
-   "cifra": "23",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "ningunoLos 23 diputados de las cuatro provincias: un cuadrado",
-   "cifra": "cuatro",
-   "calculo": "len(D['PR'])"
   }
  ],
  "externas": [
@@ -549,10 +509,6 @@
   {
    "texto": "Grove. En los de menos de 1.000 habitantes, que son",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "los municipios de más de 20.000 habitantes, el PSOE",
