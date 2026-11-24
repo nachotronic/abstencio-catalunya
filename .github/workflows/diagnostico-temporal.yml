@@ -1,0 +1,47 @@
+# TEMPORAL (no fusionar): datos de Search Console de la portada y la página de resultados.
+name: Diagnóstico temporal
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: "src", sparse-checkout-cone-mode: false}
+      - run: pip install -q google-auth requests
+      - env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: |
+          python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
+          import sys, re, collections; sys.path.insert(0,'src'); import seo_comun as sc
+          from datetime import date, timedelta
+          s=sc.sesion(); hoy=date.today(); ini=(hoy-timedelta(days=35)).isoformat(); fn=hoy.isoformat()
+          PAGS=["https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/","https://mapaelectoral.es/"]
+          for u in PAGS:
+              print(f"\n## {u}\n")
+              r=sc.consulta(s,ini,fn,["date"],100,sc.filtro_pagina(u))
+              print("Por día (impr/clics/pos): "+", ".join(f"{x['keys'][0][5:]}: {x['impressions']:.0f}/{x['clicks']:.0f}/{x['position']:.1f}" for x in r))
+              q=sc.consulta(s,ini,fn,["query"],25,sc.filtro_pagina(u))
+              print("\n| Búsqueda | Impr. | Clics | Pos. |\n|---|---:|---:|---:|")
+              for x in q: print(f"| {x['keys'][0]} | {x['impressions']:.0f} | {x['clicks']:.0f} | {x['position']:.1f} |")
+              r=s.post("https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",json={"inspectionUrl":u,"siteUrl":sc.SITIO,"languageCode":"es"}).json().get("inspectionResult",{})
+              i=r.get("indexStatusResult",{}); ri=r.get("richResultsResult",{})
+              print(f"\nInspección: {i.get('coverageState')} · último rastreo {i.get('lastCrawlTime')} · canónica Google {i.get('googleCanonical')} · rich results {ri.get('verdict')} {[d.get('richResultType') for d in ri.get('detectedItems',[])]}")
+          print("\n## Todo el sitio: búsquedas con resultados, escrutinio, mapa electoral, quién ganó, elecciones generales\n")
+          agg=collections.defaultdict(lambda:[0,0,0.0,collections.Counter()]); fila=0
+          while fila<100000:
+              q=sc.consulta(s,ini,fn,["query","page"],25000,inicio_fila=fila)
+              for x in q:
+                  k=x["keys"][0]
+                  if re.search(r"resultad|escrutinio|quien gan|como van|elecciones generales 2026$|^elecciones 2026|elecciones 29|^elecciones generales$|^elecciones$",k) and not re.search(r"encuesta|sondeo",k):
+                      a=agg[k]; a[0]+=x["impressions"]; a[1]+=x["clicks"]; a[2]+=x["position"]*x["impressions"]; a[3][x["keys"][1].replace(sc.HOST,"")]+=x["impressions"]
+              if len(q)<25000: break
+              fila+=25000
+          print("| Búsqueda | Impr. | Clics | Pos. | Página con más impr. |\n|---|---:|---:|---:|---|")
+          for k,a in sorted(agg.items(),key=lambda z:-z[1][0])[:40]:
+              print(f"| {k} | {a[0]:.0f} | {a[1]:.0f} | {a[2]/a[0]:.1f} | {a[3].most_common(1)[0][0]} |")
+          PY
