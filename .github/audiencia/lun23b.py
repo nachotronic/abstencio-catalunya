@@ -19,7 +19,7 @@ now=datetime.datetime.utcnow().replace(second=0,microsecond=0)
 HOY=datetime.datetime(2026,11,23,23)  # 24-11 00:00 Madrid (UTC+1)
 corte=now-HOY
 print('CORTE',Z(now),'madrid',(now+D(hours=1)).strftime('%H:%M'),corte)
-PIEZAS=[]
+PIEZAS=['/actualidad/encuestas-andorra-29n/']
 def tipo(p):
     if p=='/': return 'portada'
     if p=='/encuestas/': return 'encuestas_portada'
@@ -61,7 +61,13 @@ def informe(lab,a,b):
         if p in PIEZAS or p=='/encuestas/' or (p.startswith('/actualidad/') and any(k in p for k in ('escrutinio','blanco','cifras','investidura','veda'))): pr[p][k]+=r['sum']['visits']
         if k=='x': pr['X_por_ruta'][p]+=r['sum']['visits']
     for p,c in pr.items(): print('REFPAG',lab,p,sum(c.values()),c.most_common(6))
-for lab,k in [('HOY24',0),('LUN23',1),('MAR17',7)]:
+for lab,k in [('HOY24',0)]:
     a=HOY-D(days=k); informe('MISMAHORA_'+lab,a,a+corte)
-for lab,k in [('LUN23',1),('MAR17',7)]:
+for lab,k in []:
     a=HOY-D(days=k); informe('DIA_'+lab,a,a+D(days=1))
+
+pa=collections.Counter()
+for r in grp(['datetimeHour'],50,Z(HOY),Z(now),',{requestPath:"/actualidad/encuestas-andorra-29n/"}'): pa[hora(r)]+=r['sum']['visits']
+print('ANDORRA_HORA',sorted(pa.items()))
+for r in grp(['refererHost','refererPath'],30,Z(HOY),Z(now),',{requestPath:"/actualidad/encuestas-andorra-29n/"}'): print('ANDORRA_REF',r['dimensions'],r['sum']['visits'])
+for r in grp(['deviceType','countryName'],10,Z(HOY),Z(now),',{requestPath:"/actualidad/encuestas-andorra-29n/"}'): print('ANDORRA_DEV',r['dimensions'],r['sum']['visits'])
