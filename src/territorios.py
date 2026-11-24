@@ -36,6 +36,7 @@ BASE = esquema.BASE
 OUT = ROOT / 'elecciones'
 PUBLICADO = '2026-10-13'
 ACTUALIZADO = '2026-11-09'   # cámbiala a mano cuando cambien los datos o el texto
+LASTMOD = {}   # fecha propia en el sitemap de las páginas que cambian más a menudo que ACTUALIZADO
 BARRIOS_PUBLICADO = '2026-10-22'   # fichas de barrio
 # Noche del 29N: con True, el título, la descripción y la cabecera de cada ficha de municipio pasan a «Resultados del 29N en X».
 # Se cambia a True (y se reconstruye) cuando Interior publique los primeros datos; el escrutinio en directo de la ficha
@@ -1591,7 +1592,7 @@ def tema_votar():
              + '<p>El sorteo, las excusas y la dieta, en <a href="../mesa-electoral-29n/">la mesa electoral del 29N</a>.</p>')
 
     h.append('<h2>Y por la noche</h2>'
-             f'<p>Desde las 20.00, el <a href="{raiz}">mapa de resultados</a> irá mostrando el recuento en directo, y la página de <a href="../resultados-elecciones-generales-2026/">resultados de las generales de 2026</a> el reparto de escaños. '
+             f'<p>Los colegios cierran a las 20.00 y, desde las 21.00, hora peninsular, cuando Interior empieza a publicar el escrutinio, el <a href="{raiz}">mapa de resultados</a> irá mostrando el recuento en directo, y la página de <a href="../resultados-elecciones-generales-2026/">resultados de las generales de 2026</a> el reparto de escaños. '
              f'El calendario de campaña y los diputados de cada provincia están en <a href="../elecciones-29n-2026/">la guía del 29N</a>; cómo se convierten los votos en escaños, en <a href="../como-se-vota/">Cómo se vota</a>.</p>')
     h.append(faq_html)
     h.append('<h2>Fuentes</h2><ul>'
@@ -2736,6 +2737,13 @@ def tema_resultados(resumen):
     qs = [('¿Cuándo se conocen los resultados de las elecciones del 29N?',
            'La noche del domingo 29 de noviembre de 2026. Los colegios cierran a las 20.00, hora de cada lugar (las 21.00 en la Península cuando cierran en Canarias), '
            'y el Ministerio del Interior empieza a publicar el escrutinio provisional a las 21.00, hora peninsular, según su documentación para los medios. En esta página publicaremos los resultados en cuanto se conozcan.'),
+          ('¿Quién ha ganado las elecciones generales de 2026?',
+           'Se sabrá la noche del domingo 29 de noviembre. Desde las 21.00, hora peninsular, en esta página irán los votos de cada candidatura y, en cuanto Interior los publique, '
+           'los escaños, con el porcentaje escrutado. Hasta entonces, el último resultado es el de 2023, en la tabla de escaños de esta página.'),
+          ('¿Cómo van los votos el 29N?',
+           'El escrutinio provisional se publica a partir de las 21.00, hora peninsular. Esta página lo recoge con los votos y el porcentaje de cada candidatura en toda España, '
+           'y el <a href="../../">mapa</a> lo enseña provincia a provincia, municipio a municipio y barrio a barrio. Durante el día solo hay avances de participación, a las 14.00 y a las 18.00, '
+           'en <a href="../participacion-29n-hora-a-hora/">la participación hora a hora</a>.'),
           ('¿Cuántos escaños hacen falta para gobernar?',
            'La mayoría absoluta del Congreso es de 176 de los 350 diputados. Es la que necesita un candidato en la primera votación de investidura; en la segunda le basta con más síes que noes.'),
           ('¿Quién ganó las elecciones generales de 2023?',
@@ -2766,7 +2774,8 @@ def tema_resultados(resumen):
            'con los resultados desde 1977, enlazada en la tabla de esta página.')]
     faq_html, faq_ld = faq(qs)
     ld = ld_pagina(titulo, desc, ruta, ESPANA)
-    act = ld['dateModified'] = max(ACTUALIZADO, '2026-11-16')   # título, H1 y bloque del escrutinio
+    act = ld['dateModified'] = max(ACTUALIZADO, '2026-11-24')   # 24-11: preguntas «quién ha ganado» y «cómo van los votos»
+    LASTMOD[ruta] = act
     h = [cabeza(titulo, desc, ruta, [ld, faq_ld], 2, 'Resultados 29N', imagen_og(ruta))]
     raiz = RAIZ_REL
     h.append(migas_html([('../../', 'Inicio'), ('../', 'Elecciones')]))
@@ -2925,7 +2934,7 @@ def tema_municipios(resumen):
 # ---------- sitemap y llms.txt ----------
 def sitemap(rutas):
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-            + ''.join(f'  <url><loc>{BASE}{r}</loc><lastmod>{ACTUALIZADO}</lastmod></url>\n' for r in rutas) + '</urlset>\n')
+            + ''.join(f'  <url><loc>{BASE}{r}</loc><lastmod>{LASTMOD.get(r, ACTUALIZADO)}</lastmod></url>\n' for r in rutas) + '</urlset>\n')
 
 
 def llms(resumen):
