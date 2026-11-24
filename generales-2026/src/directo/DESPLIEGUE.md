@@ -152,3 +152,9 @@ y al tocar, votos y escaños. Es una capa aparte encima del mapa de municipios, 
 Interior da las 52 provincias y las 19 comunidades y cuadran (provincias = su comunidad, con un margen del 0,1 %; municipios
 = su provincia, 0,5 %); si no, `window.__agregados` dice por qué (para la prueba del 25). Apagarlo: `"agregados": false` en
 `data/meta.json` → `directo`.
+
+Desde el 24-11 el mismo nivel se elige también con «Ver por» junto a «Elección» (Municipios y secciones · Provincias ·
+Comunidades), y vale para las generales de 1982 a 2023: `data/agregados.json`, de `src/agregados_historicos.py` (votos mesa
+a mesa de Interior vía pollspaindata, con el voto CERA; 2023 cuadra con Interior en 70 de 71 ámbitos, Toledo +175 votos por
+ser el escrutinio definitivo). Se descarga solo cuando alguien elige provincias o comunidades. La noche del 29N el mapa abre
+por provincias hasta el 10 % escrutado (#703); en otra fecha, solo si el lector lo elige.

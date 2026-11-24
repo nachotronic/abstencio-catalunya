@@ -58,7 +58,7 @@
   });
   const SEC = {};           // prov -> {d, polys}
   let SECC = null, VERD = 0; const SECCV = {};
-  let AGREG = '', AGD = null, AGMANO = false; const AGUMBRAL = 0.10;   // mapa por provincias ('PR') o comunidades ('CM') del directo (ver agregados)   // secciones del directo (ver seccDirecto) y versión de los datos del directo
+  let AGREG = '', AGD = null, AGMANO = false, HAG = null, HAGP = null; const AGUMBRAL = 0.10, HAGN = {};   // mapa por provincias ('PR') o comunidades ('CM') del directo (ver agregados)   // secciones del directo (ver seccDirecto) y versión de los datos del directo
   const loading = new Set();
 
   // ---------- estado
@@ -529,9 +529,9 @@
   function legend() {
     const el = $('#legend');
     if (st.v === 'gana') {
-      const y = st.y, ag = agActivo(), used = new Set(ag ? Object.values(AGD[AGREG]).map(o => o.gana) : MUN[y + '_gana']);
+      const y = st.y, ag = agActivo(), used = new Set(ag ? Object.values(agDatos()[AGREG]).map(o => o.gana) : MUN[y + '_gana']);
       const dir = META.directo && y === META.directo.eleccion;   // el 29N: en gris, lo que aún no tiene mesas escrutadas
-      el.innerHTML = `<div class="lg-t">Partido más votado · ${ag ? `${(ELEC.find(e => e.cod === y) || {}).nombre || y} · por ${AGREG === 'PR' ? 'provincia' : 'comunidad'} (datos de Interior)` : nomE(y)}</div><div class="lg-sw">` +
+      el.innerHTML = `<div class="lg-t">Partido más votado · ${ag ? `${(ELEC.find(e => e.cod === y) || {}).nombre || y} · por ${AGREG === 'PR' ? 'provincia' : 'comunidad'} (${agDatos() === AGD ? 'datos de Interior' : 'votos de Interior, con el extranjero'})` : nomE(y)}</div><div class="lg-sw">` +
         FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${nomF(f, y)}</span>`).join('') +
         (used.has(EMPATE) ? `<span><b style="background:rgb(${EMP()})"></b>Empate a votos</span>` : '') +
         (dir && !ag ? `<span><b style="background:rgb(${NODATA()})"></b>Aún sin escrutar</span>` : '') +
@@ -576,7 +576,7 @@
     selP.value = st.party;
   };
   partidos();
-  const sync = () => { partidos(); selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
+  const sync = () => { partidos(); verPor(); selP.parentElement.hidden = st.v !== 'party'; selE.disabled = !['gana', 'party', 'part'].includes(st.v); legend(); redraw(); tip.hidden = true; };
   // El año nuevo solo se pinta cuando sus datos han llegado: mientras tanto (y si la descarga falla) el mapa sigue en el
   // año anterior. Antes st.y cambiaba antes de descargar, y cualquier redibujo (zoom, «Qué ver») pintaba todo de gris.
   let pide = 0;
@@ -1189,24 +1189,31 @@
     '10': ['06', '10'], '11': ['15', '27', '32', '36'], '12': ['28'], '13': ['31'], '14': ['01', '20', '48'], '15': ['30'], '16': ['26'],
     '17': ['03', '12', '46'], '18': ['51'], '19': ['52'] };   // comunidades con el código de Interior -> provincias (INE)
   const PR2CM = {}; Object.entries(CMPR).forEach(([c, L]) => L.forEach(p => { PR2CM[p] = c; }));
-  function agActivo() { return !!(AGREG && AGD && AGD[AGREG] && st.v === 'gana' && META.directo && st.y === META.directo.eleccion); }   // (funciones: layers() las usa antes de llegar aquí)
+  function agDatos() {   // el 29N, las cifras de Interior (AGD); otras generales, las históricas de data/agregados.json
+    if (META.directo && st.y === META.directo.eleccion) return AGD;
+    if (!HAG || !HAG[st.y]) return null;
+    return HAGN[st.y] || (HAGN[st.y] = { PR: agNivel(HAG[st.y].PR), CM: agNivel(HAG[st.y].CM) });
+  }
+  // la vista por provincias automática de los primeros minutos (#703) es solo del 29N: en otra fecha, solo si la elige el lector
+  function agNivelVisto() { return AGMANO || (META.directo && st.y === META.directo.eleccion) ? AGREG : ''; }
+  function agActivo() { const D = agNivelVisto() && st.v === 'gana' ? agDatos() : null; return !!(D && D[AGREG]); }   // (funciones: layers() las usa antes de llegar aquí)
   function agKey(o) { const p = PROV.cod[o.i]; return AGREG === 'CM' ? PR2CM[p] : p; }
   function agColor(p) {
     try {
-      const o = AGD[AGREG][AGREG === 'CM' ? PR2CM[p] : p];
+      const o = agDatos()[AGREG][AGREG === 'CM' ? PR2CM[p] : p];
       if (!o || o.gana == null || o.gana === -1) return NODATA();
       if (o.gana === EMPATE) return EMP();
       return mix(BG(), FAM[o.gana].rgb, Math.max(.28, Math.min(1, (o.s - .15) / .35)));
     } catch (e) { return NODATA(); }
   }
   function agFicha(k) {
-    const o = AGD && AGD[AGREG] && AGD[AGREG][k]; if (!o) return '';
-    const val = o.c.reduce((t, x) => t + x[1], 0) + (o.bl || 0);
+    const D = agDatos(), o = D && D[AGREG] && D[AGREG][k]; if (!o) return '';
+    const val = o.c.reduce((t, x) => t + x[1], 0) + (o.bl || 0), hist = D !== AGD;
     const fil = o.c.slice().sort((a, b) => b[1] - a[1]).filter((x, i) => i < 8 && (x[1] || x[2]));
-    return `<b>${escH(o.n)}</b><br><span class="mut">${pct(o.esc / 100)} escrutado · ${o.el} escaños · datos de Interior</span>`
-      + '<table style="border-collapse:collapse;margin-top:6px;font-size:13px">' + fil.map(([s, v, e]) => {
-        const k2 = FCOD.indexOf(famDe(s)), col = FAM[k2] ? FAM[k2].color : '#999';
-        return `<tr><td style="padding:2px 8px 2px 0"><span style="color:${col}">●</span> ${escH(NOMBRE_CORTO(s))}</td><td style="text-align:right;font-family:var(--mono)">${pct(val ? v / val : 0)}</td><td style="text-align:right;padding-left:8px;font-weight:700">${e || 0}</td></tr>`;
+    return `<b>${escH(o.n)}</b><br><span class="mut">${hist ? `${(ELEC.find(e => e.cod === st.y) || {}).nombre || st.y} · votos de cada lista, con el voto desde el extranjero (Interior)` : `${pct(o.esc / 100)} escrutado · ${o.el} escaños · datos de Interior`}</span>`
+      + '<table style="border-collapse:collapse;margin-top:6px;font-size:13px">' + fil.map(([s, v, e, fm]) => {
+        const k2 = FCOD.indexOf(hist ? fm || 'OTROS' : famDe(s)), col = FAM[k2] ? FAM[k2].color : '#999';
+        return `<tr><td style="padding:2px 8px 2px 0"><span style="color:${col}">●</span> ${escH(hist ? s : NOMBRE_CORTO(s))}</td><td style="text-align:right;font-family:var(--mono)">${pct(val ? v / val : 0)}</td>${hist ? '' : `<td style="text-align:right;padding-left:8px;font-weight:700">${e || 0}</td>`}</tr>`;
       }).join('') + '</table>';
   }
   function agNivel(O) {   // {cod: {n, esc, el, bl, c: [[siglas, votos, escaños]]}} -> con el ganador lista a lista y su porcentaje
@@ -1214,7 +1221,7 @@
     for (const [k, o] of Object.entries(O)) {
       const c = o.c || [], val = c.reduce((t, x) => t + x[1], 0) + (o.bl || 0);
       let m = -1; c.forEach((x, i) => { if (m < 0 || x[1] > c[m][1]) m = i; });
-      let g = m >= 0 && c[m][1] > 0 ? FCOD.indexOf(famDe(c[m][0])) : -1;
+      let g = m >= 0 && c[m][1] > 0 ? FCOD.indexOf(c[m][3] || famDe(c[m][0])) : -1;   // históricos: la familia viene en el dato
       if (g >= 0 && c.some((x, i) => i !== m && x[1] === c[m][1])) g = EMPATE;
       out[k] = { ...o, gana: g, s: val && m >= 0 ? c[m][1] / val : 0 };
     }
@@ -1236,6 +1243,30 @@
     }
     return '';
   }
+  // «Ver por» junto a «Elección»: comunidades, provincias o municipios y secciones, en el 29N (si cuadra con Interior) y en
+  // las generales de 1982 a 2023 (data/agregados.json, que se descarga la primera vez que se pide). Nacho, 24-11.
+  function verPor() {
+    let w = document.getElementById('ver-por');
+    if (!w) {
+      const ctl = selE.closest('label'); if (!ctl) return;
+      w = document.createElement('label'); w.id = 'ver-por';
+      w.innerHTML = 'Ver por <select id="sel-nivel"><option value="">Municipios y secciones</option><option value="PR">Provincias</option><option value="CM">Comunidades</option></select>';
+      ctl.after(w);
+      w.querySelector('select').onchange = async e => {
+        const v = e.target.value; AGMANO = true;
+        if (v && !HAG) { try { await cargaHAG(); } catch (x) { e.target.value = ''; return; } }
+        AGREG = v; tip.hidden = true; hover = null;
+        document.querySelectorAll('#d-ver button[data-ag]').forEach(x => { const on = x.dataset.ag === AGREG;
+          x.style.background = on ? 'var(--ink, #222)' : 'transparent'; x.style.color = on ? 'var(--bg, #fff)' : 'inherit'; });
+        legend(); redraw();
+      };
+    }
+    const dir = META.directo && st.y === META.directo.eleccion;
+    const hay = st.v === 'gana' && (dir ? !!AGD : /^\d{4}_\d{2}$/.test(st.y) && st.y >= '1982' && st.y <= '2023_12');
+    w.hidden = !hay; w.querySelector('select').value = agNivelVisto();
+    if (hay && !dir && AGREG && !HAG) cargaHAG().then(() => { legend(); redraw(); }, () => {});
+  }
+  function cargaHAG() { return HAGP || (HAGP = get('agregados.json').then(d => { HAG = d; }, e => { HAGP = null; throw e; })); }
   function agregados(F, y) {
     let motivo = 'apagado en meta.json';
     try {
@@ -1248,9 +1279,9 @@
     if (AGD && !AGMANO) AGREG = ESCNAT < AGUMBRAL ? 'PR' : '';
     if (!AGD && AGREG) AGREG = '';
     let b = document.getElementById('d-ver');
-    if (!AGD) { if (b) b.hidden = true; legend(); redraw(); return; }
+    if (!AGD) { if (b) b.hidden = true; legend(); verPor(); redraw(); return; }
     if (!b) { b = document.createElement('div'); b.id = 'd-ver'; b.className = 'd-leg'; $('#d-leg').after(b); }
-    const B = [['', 'Municipios'], ['PR', 'Provincias'], ['CM', 'Comunidades']];
+    const B = [['', 'Municipios y secciones'], ['PR', 'Provincias'], ['CM', 'Comunidades']];
     b.innerHTML = '<span class="mut" style="width:100%">Ver por:</span>' + B.map(([c, t]) => { const on = AGREG === c;
       return `<button type="button" data-ag="${c}" style="font:inherit;padding:4px 10px;border-radius:6px;border:1px solid currentColor;background:${on ? 'var(--ink, #222)' : 'transparent'};color:${on ? 'var(--bg, #fff)' : 'inherit'};cursor:pointer">${t}</button>`; }).join('');
     b.hidden = false;
@@ -1259,7 +1290,7 @@
       if (AGREG) { st.y = y; st.v = 'gana'; selV.value = 'gana'; selE.value = y; sync(); }
       agregados(F, y);
     });
-    legend(); redraw();
+    legend(); verPor(); redraw();
   }
 
   // ---------- gráficos: voto por decil
