@@ -19,8 +19,8 @@ jobs:
           python3 - <<'PY' | tee -a $GITHUB_STEP_SUMMARY
           import sys, re, collections; sys.path.insert(0,'src'); import seo_comun as sc
           from datetime import date, timedelta
-          s=sc.sesion(); hoy=date.today(); ini=(hoy-timedelta(days=28)).isoformat(); fn=hoy.isoformat()
-          PAGS=["https://mapaelectoral.es/","https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/","https://mapaelectoral.es/elecciones/mapa-electoral-seccion-censal/","https://mapaelectoral.es/elecciones/resultados-elecciones-por-municipio/"]
+          s=sc.sesion(); hoy=date.today(); ini=(hoy-timedelta(days=35)).isoformat(); fn=hoy.isoformat()
+          PAGS=["https://mapaelectoral.es/elecciones/resultados-elecciones-generales-2026/","https://mapaelectoral.es/"]
           for u in PAGS:
               print(f"\n## {u}\n")
               r=sc.consulta(s,ini,fn,["date"],100,sc.filtro_pagina(u))
@@ -37,7 +37,7 @@ jobs:
               q=sc.consulta(s,ini,fn,["query","page"],25000,inicio_fila=fila)
               for x in q:
                   k=x["keys"][0]
-                  if re.search(r"resultad|escrutinio|mapa electoral|quien gan|elecciones generales|elecciones 2026|elecciones 29",k):
+                  if re.search(r"resultad|escrutinio|quien gan|como van|elecciones generales 2026$|^elecciones 2026|elecciones 29|^elecciones generales$|^elecciones$",k) and not re.search(r"encuesta|sondeo",k):
                       a=agg[k]; a[0]+=x["impressions"]; a[1]+=x["clicks"]; a[2]+=x["position"]*x["impressions"]; a[3][x["keys"][1].replace(sc.HOST,"")]+=x["impressions"]
               if len(q)<25000: break
               fila+=25000
