@@ -58,7 +58,7 @@
   });
   const SEC = {};           // prov -> {d, polys}
   let SECC = null, VERD = 0; const SECCV = {};
-  let AGREG = '', AGD = null;   // mapa por provincias ('PR') o comunidades ('CM') del directo (ver agregados)   // secciones del directo (ver seccDirecto) y versión de los datos del directo
+  let AGREG = '', AGD = null, AGMANO = false; const AGUMBRAL = 0.10;   // mapa por provincias ('PR') o comunidades ('CM') del directo (ver agregados)   // secciones del directo (ver seccDirecto) y versión de los datos del directo
   const loading = new Set();
 
   // ---------- estado
@@ -1243,6 +1243,9 @@
       AGD = motivo ? null : { PR: agNivel(F.ambitos.PR), CM: agNivel(F.ambitos.CM) };
     } catch (e) { AGD = null; motivo = 'error: ' + e.message; }
     window.__agregados = motivo || 'ok';   // para las pruebas
+    // los primeros minutos del escrutinio, el mapa abre por provincias (Nacho, 24-11), que se ven enteras desde la primera
+    // mesa; al pasar del 10 % escrutado vuelve solo a municipios. Si el lector ya ha tocado un botón, se respeta lo suyo
+    if (AGD && !AGMANO) AGREG = ESCNAT < AGUMBRAL ? 'PR' : '';
     if (!AGD && AGREG) AGREG = '';
     let b = document.getElementById('d-ver');
     if (!AGD) { if (b) b.hidden = true; legend(); redraw(); return; }
@@ -1252,7 +1255,7 @@
       return `<button type="button" data-ag="${c}" style="font:inherit;padding:4px 10px;border-radius:6px;border:1px solid currentColor;background:${on ? 'var(--ink, #222)' : 'transparent'};color:${on ? 'var(--bg, #fff)' : 'inherit'};cursor:pointer">${t}</button>`; }).join('');
     b.hidden = false;
     b.querySelectorAll('button[data-ag]').forEach(x => x.onclick = () => {
-      AGREG = x.dataset.ag; tip.hidden = true; hover = null;
+      AGREG = x.dataset.ag; AGMANO = true; tip.hidden = true; hover = null;
       if (AGREG) { st.y = y; st.v = 'gana'; selV.value = 'gana'; selE.value = y; sync(); }
       agregados(F, y);
     });
