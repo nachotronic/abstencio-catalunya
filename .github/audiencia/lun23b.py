@@ -16,10 +16,10 @@ def grp(dims,limit,t1,t2,extra=''):
 Z=lambda d:d.strftime('%Y-%m-%dT%H:%M:00Z')
 D=datetime.timedelta
 now=datetime.datetime.utcnow().replace(second=0,microsecond=0)
-HOY=datetime.datetime(2026,11,22,23)  # 23-11 00:00 Madrid (UTC+1)
+HOY=datetime.datetime(2026,11,23,23)  # 24-11 00:00 Madrid (UTC+1)
 corte=now-HOY
 print('CORTE',Z(now),'madrid',(now+D(hours=1)).strftime('%H:%M'),corte)
-PIEZAS=['/actualidad/encuestas-elecciones-generales-2026-23-noviembre/','/actualidad/participacion-elecciones-generales-29n-prevision/']
+PIEZAS=[]
 def tipo(p):
     if p=='/': return 'portada'
     if p=='/encuestas/': return 'encuestas_portada'
@@ -51,17 +51,17 @@ def informe(lab,a,b):
     print('PIEZAS',lab,[(p,paths[p]) for p in PIEZAS])
     act=collections.Counter({p:v for p,v in paths.items() if p.startswith('/actualidad/')})
     print('ACT',lab,sum(act.values()),act.most_common(40))
-    print('KEY',lab,[(p,v) for p,v in paths.items() if any(k in p for k in ('escrutinio','blanco','nulo','cifras','investidura','participacion','23-nov'))])
+    print('KEY',lab,[(p,v) for p,v in paths.items() if any(k in p for k in ('escrutinio','blanco','nulo','cifras','investidura','participacion','veda','24-nov'))])
     ref=collections.Counter()
     for r in grp(['refererHost'],5000,Z(a),Z(b)): ref[refn(r['dimensions']['refererHost'])]+=r['sum']['visits']
     print('REF',lab,sum(ref.values()),ref.most_common(8))
     pr=collections.defaultdict(collections.Counter)
     for r in grp(['refererHost','requestPath'],5000,Z(a),Z(b)):
         p=r['dimensions']['requestPath']; k=refn(r['dimensions']['refererHost'])
-        if p in PIEZAS or p=='/encuestas/' or (p.startswith('/actualidad/') and any(k in p for k in ('escrutinio','blanco','cifras','investidura','participacion','23-nov'))): pr[p][k]+=r['sum']['visits']
+        if p in PIEZAS or p=='/encuestas/' or (p.startswith('/actualidad/') and any(k in p for k in ('escrutinio','blanco','cifras','investidura','veda'))): pr[p][k]+=r['sum']['visits']
         if k=='x': pr['X_por_ruta'][p]+=r['sum']['visits']
     for p,c in pr.items(): print('REFPAG',lab,p,sum(c.values()),c.most_common(6))
-for lab,k in [('HOY23',0),('DOM22',1),('LUN16',7)]:
+for lab,k in [('HOY24',0),('LUN23',1),('MAR17',7)]:
     a=HOY-D(days=k); informe('MISMAHORA_'+lab,a,a+corte)
-for lab,k in [('DOM22',1),('LUN16',7)]:
+for lab,k in [('LUN23',1),('MAR17',7)]:
     a=HOY-D(days=k); informe('DIA_'+lab,a,a+D(days=1))
