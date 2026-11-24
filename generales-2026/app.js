@@ -57,7 +57,8 @@
     p.polygon.forEach(([x, y]) => { b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); });
   });
   const SEC = {};           // prov -> {d, polys}
-  let SECC = null, VERD = 0; const SECCV = {};   // secciones del directo (ver seccDirecto) y versión de los datos del directo
+  let SECC = null, VERD = 0; const SECCV = {};
+  let AGREG = '', AGD = null;   // mapa por provincias ('PR') o comunidades ('CM') del directo (ver agregados)   // secciones del directo (ver seccDirecto) y versión de los datos del directo
   const loading = new Set();
 
   // ---------- estado
@@ -292,7 +293,12 @@
       id: 'mun', data: MUNP, getPolygon: o => o.polygon, getFillColor: o => color(MUN, o.i),
       pickable: true, updateTriggers: { getFillColor: trig },
     }));
-    if (secVisible()) {
+    const conAg = agActivo();
+    if (conAg) L.push(new deck.SolidPolygonLayer({   // provincias o comunidades del directo, encima de los municipios
+      id: 'agreg', data: PROVP, getPolygon: o => o.polygon, getFillColor: o => agColor(PROV.cod[o.i]),
+      pickable: true, updateTriggers: { getFillColor: [...trig, AGREG] },
+    }));
+    if (!conAg && secVisible()) {
       Object.keys(SEC).forEach(p => {
         if (!secHas(p)) return;
         const S = SEC[p];
@@ -486,6 +492,7 @@
     if (!tip.hidden) return;   // con una ficha abierta se mantiene su contorno
     const o = info.object, id = o && info.layer.id;
     if (!o) { if (hover) { hover = null; redraw(); } return; }
+    if (id === 'agreg') { const k = agKey(o); if (!hover || hover.key !== 'agreg' + k) { hover = { key: 'agreg' + k, polys: PROVP.filter(p => agKey(p) === k) }; redraw(); } return; }
     const all = id.startsWith('sec') ? SEC[id.slice(3)].polys : MUNP;
     if (!hover || hover.key !== id + o.i) { hover = { key: id + o.i, polys: all.filter(p => p.i === o.i) }; redraw(); }
   }
@@ -493,14 +500,22 @@
     const o = info.object;
     if (!o) { tip.hidden = true; hover = null; redraw(); return; }   // clic fuera: se cierra la ficha
     const id = info.layer.id, isSec = id.startsWith('sec');
+    if (id === 'agreg') {   // ficha de la provincia o comunidad, con las cifras de Interior de ese nivel
+      const k = agKey(o); tipAbierta = null; tip.innerHTML = CERRAR + agFicha(k); tip.hidden = false; colocaTip(info);
+      if (!hover || hover.key !== 'agreg' + k) { hover = { key: 'agreg' + k, polys: PROVP.filter(p => agKey(p) === k) }; redraw(); }
+      return;
+    }
     const d = isSec ? SEC[id.slice(3)].d : MUN, all = isSec ? SEC[id.slice(3)].polys : MUNP;
     tipAbierta = [d, o.i, isSec]; tip.innerHTML = CERRAR + ficha(d, o.i, isSec); tip.hidden = false;
+    colocaTip(info);
+    if (!hover || hover.key !== id + o.i) { hover = { key: id + o.i, polys: all.filter(p => p.i === o.i) }; redraw(); }
+  }
+  function colocaTip(info) {
     const W = $('#map').clientWidth, H = $('#map').clientHeight, tw = tip.offsetWidth, th = tip.offsetHeight;
     let x = info.x + 14, y = info.y + 14;
     if (x + tw > W - 8) x = info.x - tw - 14; if (y + th > H - 8) y = Math.max(8, H - th - 8);
     if (narrow()) { tip.style.left = '8px'; tip.style.top = 'auto'; tip.style.bottom = '8px'; }
     else { tip.style.left = Math.max(8, x) + 'px'; tip.style.top = y + 'px'; tip.style.bottom = 'auto'; }
-    if (!hover || hover.key !== id + o.i) { hover = { key: id + o.i, polys: all.filter(p => p.i === o.i) }; redraw(); }
   }
 
   // ---------- leyenda
@@ -1158,8 +1173,88 @@
     resultados(y, ord, seats, nat, F.escrutado ?? (nat.ct ? nat.ce / nat.ct : 0), !!(F.escanos && Object.keys(F.escanos).length), F);
     $('#d-seats').style.display = ''; $('#d-seats').innerHTML = ord.filter(k => seats[k]).map(k => `<span title="${nomF(FAM[k], y)}: ${seats[k]}" style="flex:${seats[k]};background:${FAM[k].color}"></span>`).join('') +
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
+    agregados(F, y);
     $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${nomF(FAM[k], y)} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
     sync();
+  }
+
+  // ---------- mapas por provincia y por comunidad (Nacho, 24-11), con las cifras de Interior de cada nivel (ámbitos PR y CM).
+  // Para que no se rompa nada: es una capa aparte encima del mapa de municipios, que no cambia; el selector solo sale si
+  // Interior da todas las provincias y comunidades y cuadran (las provincias suman su comunidad y los municipios su
+  // provincia); cualquier error o descuadre lo quita y deja municipios. Se apaga del todo con meta.json directo.agregados=false.
+  const CMPR = { '01': ['04', '11', '14', '18', '21', '23', '29', '41'], '02': ['22', '44', '50'], '03': ['33'], '04': ['07'], '05': ['35', '38'],
+    '06': ['39'], '07': ['02', '13', '16', '19', '45'], '08': ['05', '09', '24', '34', '37', '40', '42', '47', '49'], '09': ['08', '17', '25', '43'],
+    '10': ['06', '10'], '11': ['15', '27', '32', '36'], '12': ['28'], '13': ['31'], '14': ['01', '20', '48'], '15': ['30'], '16': ['26'],
+    '17': ['03', '12', '46'], '18': ['51'], '19': ['52'] };   // comunidades con el código de Interior -> provincias (INE)
+  const PR2CM = {}; Object.entries(CMPR).forEach(([c, L]) => L.forEach(p => { PR2CM[p] = c; }));
+  function agActivo() { return !!(AGREG && AGD && AGD[AGREG] && st.v === 'gana' && META.directo && st.y === META.directo.eleccion); }   // (funciones: layers() las usa antes de llegar aquí)
+  function agKey(o) { const p = PROV.cod[o.i]; return AGREG === 'CM' ? PR2CM[p] : p; }
+  function agColor(p) {
+    try {
+      const o = AGD[AGREG][AGREG === 'CM' ? PR2CM[p] : p];
+      if (!o || o.gana == null || o.gana === -1) return NODATA();
+      if (o.gana === EMPATE) return EMP();
+      return mix(BG(), FAM[o.gana].rgb, Math.max(.28, Math.min(1, (o.s - .15) / .35)));
+    } catch (e) { return NODATA(); }
+  }
+  function agFicha(k) {
+    const o = AGD && AGD[AGREG] && AGD[AGREG][k]; if (!o) return '';
+    const val = o.c.reduce((t, x) => t + x[1], 0) + (o.bl || 0);
+    const fil = o.c.slice().sort((a, b) => b[1] - a[1]).filter((x, i) => i < 8 && (x[1] || x[2]));
+    return `<b>${escH(o.n)}</b><br><span class="mut">${pct(o.esc / 100)} escrutado · ${o.el} escaños · datos de Interior</span>`
+      + '<table style="border-collapse:collapse;margin-top:6px;font-size:13px">' + fil.map(([s, v, e]) => {
+        const k2 = FCOD.indexOf(famDe(s)), col = FAM[k2] ? FAM[k2].color : '#999';
+        return `<tr><td style="padding:2px 8px 2px 0"><span style="color:${col}">●</span> ${escH(NOMBRE_CORTO(s))}</td><td style="text-align:right;font-family:var(--mono)">${pct(val ? v / val : 0)}</td><td style="text-align:right;padding-left:8px;font-weight:700">${e || 0}</td></tr>`;
+      }).join('') + '</table>';
+  }
+  function agNivel(O) {   // {cod: {n, esc, el, bl, c: [[siglas, votos, escaños]]}} -> con el ganador lista a lista y su porcentaje
+    const out = {};
+    for (const [k, o] of Object.entries(O)) {
+      const c = o.c || [], val = c.reduce((t, x) => t + x[1], 0) + (o.bl || 0);
+      let m = -1; c.forEach((x, i) => { if (m < 0 || x[1] > c[m][1]) m = i; });
+      let g = m >= 0 && c[m][1] > 0 ? FCOD.indexOf(famDe(c[m][0])) : -1;
+      if (g >= 0 && c.some((x, i) => i !== m && x[1] === c[m][1])) g = EMPATE;
+      out[k] = { ...o, gana: g, s: val && m >= 0 ? c[m][1] / val : 0 };
+    }
+    return out;
+  }
+  function agComprueba(F) {   // -> '' si todo cuadra; si no, el motivo (y el selector no sale)
+    const A = F.ambitos, tv = o => (o.c || []).reduce((t, x) => t + (x[1] || 0), 0);
+    if (!A || !A.PR || !A.CM) return 'sin ámbitos de Interior';
+    if (Object.keys(PR2CM).some(p => !A.PR[p])) return 'faltan provincias';
+    if (Object.keys(CMPR).some(c => !A.CM[c])) return 'faltan comunidades';
+    for (const [c, L] of Object.entries(CMPR)) {
+      const a = tv(A.CM[c]), b = L.reduce((t, p) => t + tv(A.PR[p]), 0);
+      if (Math.abs(a - b) > Math.max(10, a * .001)) return `la comunidad ${c} no cuadra con sus provincias (${a} y ${b})`;
+    }
+    const mp = {}; for (const [m, a] of Object.entries(F.mun || {})) { const p = m.padStart(5, '0').slice(0, 2); mp[p] = (mp[p] || 0) + a.slice(5).reduce((t, x) => t + (x || 0), 0); }
+    for (const p of Object.keys(PR2CM)) {
+      const a = tv(A.PR[p]), b = mp[p] || 0;
+      if (Math.abs(a - b) > Math.max(50, a * .005)) return `la provincia ${p} no cuadra con sus municipios (${a} y ${b})`;
+    }
+    return '';
+  }
+  function agregados(F, y) {
+    let motivo = 'apagado en meta.json';
+    try {
+      if (META.directo.agregados !== false) motivo = agComprueba(F);
+      AGD = motivo ? null : { PR: agNivel(F.ambitos.PR), CM: agNivel(F.ambitos.CM) };
+    } catch (e) { AGD = null; motivo = 'error: ' + e.message; }
+    window.__agregados = motivo || 'ok';   // para las pruebas
+    if (!AGD && AGREG) AGREG = '';
+    let b = document.getElementById('d-ver');
+    if (!AGD) { if (b) b.hidden = true; redraw(); return; }
+    if (!b) { b = document.createElement('div'); b.id = 'd-ver'; b.className = 'd-leg'; $('#d-leg').after(b); }
+    const B = [['', 'Municipios'], ['PR', 'Provincias'], ['CM', 'Comunidades']];
+    b.innerHTML = '<span class="mut" style="width:100%">Ver por:</span>' + B.map(([c, t]) => { const on = AGREG === c;
+      return `<button type="button" data-ag="${c}" style="font:inherit;padding:4px 10px;border-radius:6px;border:1px solid currentColor;background:${on ? 'var(--ink, #222)' : 'transparent'};color:${on ? 'var(--bg, #fff)' : 'inherit'};cursor:pointer">${t}</button>`; }).join('');
+    b.hidden = false;
+    b.querySelectorAll('button[data-ag]').forEach(x => x.onclick = () => {
+      AGREG = x.dataset.ag; tip.hidden = true; hover = null;
+      if (AGREG) { st.y = y; st.v = 'gana'; selV.value = 'gana'; selE.value = y; sync(); }
+      agregados(F, y);
+    });
+    redraw();
   }
 
   // ---------- gráficos: voto por decil

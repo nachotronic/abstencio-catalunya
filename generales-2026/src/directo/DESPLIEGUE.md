@@ -143,3 +143,12 @@ citándolo; hora elegida, las 20:00 (como las teles).
   se ve en /estado) con hora, URL y código, que es lo que pide soporte (900 601 462, prensa@infoelecciones.es).
 - Primeros datos: la web pide el JSON cada 30 s, y en la primera media hora tras PUBLICA el Worker lee también a los 30 s
   de cada minuto (si no hay envío nuevo, solo las dos peticiones de getEnvio).
+
+## 11. Mapas por provincia y por comunidad
+
+Con el escrutinio, el recuadro del directo ofrece «Ver por: Municipios · Provincias · Comunidades» (app.js, agregados()).
+Provincias y comunidades se pintan con las cifras de Interior de ese nivel (ámbitos PR y CM): color del partido más votado,
+y al tocar, votos y escaños. Es una capa aparte encima del mapa de municipios, que no cambia. El selector solo sale si
+Interior da las 52 provincias y las 19 comunidades y cuadran (provincias = su comunidad, con un margen del 0,1 %; municipios
+= su provincia, 0,5 %); si no, `window.__agregados` dice por qué (para la prueba del 25). Apagarlo: `"agregados": false` en
+`data/meta.json` → `directo`.
