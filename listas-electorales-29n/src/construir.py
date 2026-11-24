@@ -1202,6 +1202,8 @@ def main():
         biografias.main()
         import sin_probabilidades   # veda 29N: fuera la probabilidad de salir elegido (Nacho, 24-11-2026)
         sin_probabilidades.main(descripcion=True)
+        import bienes   # bienes declarados al Congreso en 2019 y 2023 (Nacho, 24-11-2026)
+        bienes.main()
     print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados, {len(fichas)} fichas, Senado {n_senadores} escaños en {n_circ} circunscripciones; {titular}')
 
 
