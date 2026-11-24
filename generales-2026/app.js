@@ -1284,7 +1284,7 @@
     const B = [['', 'Municipios y secciones'], ['PR', 'Provincias'], ['CM', 'Comunidades']];
     b.innerHTML = '<span class="mut" style="width:100%">Ver por:</span>' + B.map(([c, t]) => { const on = AGREG === c;
       return `<button type="button" data-ag="${c}" style="font:inherit;padding:4px 10px;border-radius:6px;border:1px solid currentColor;background:${on ? 'var(--ink, #222)' : 'transparent'};color:${on ? 'var(--bg, #fff)' : 'inherit'};cursor:pointer">${t}</button>`; }).join('');
-    b.hidden = false;
+    b.hidden = !!document.getElementById('ver-por');   // con «Ver por» junto a «Elección» (#704), sin botones repetidos en el recuadro
     b.querySelectorAll('button[data-ag]').forEach(x => x.onclick = () => {
       AGREG = x.dataset.ag; AGMANO = true; tip.hidden = true; hover = null;
       if (AGREG) { st.y = y; st.v = 'gana'; selV.value = 'gana'; selE.value = y; sync(); }
