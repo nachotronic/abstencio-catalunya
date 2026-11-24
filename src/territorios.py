@@ -565,6 +565,21 @@ def enlace_listas(provs, raiz):
             + ' · '.join(f'<a href="{raiz}encuestas/{PROV_SLUG[p]}/">encuesta de {escape(PROV_NOMBRE[p])}</a>' for p in orden) + '.</p>')
 
 
+def bloque_29n_territorio(nombre):
+    """Comunidades y provincias: qué se publica la noche del 29N y a qué hora, con el enlace a la página de resultados de toda España
+    (24-11-2026, para las búsquedas «resultados elecciones generales 2026 <territorio>»). Solo HTML: el escrutinio de cada territorio
+    lo pinta esa noche el recuadro del mapa (bloque_mapa)."""
+    raiz = RAIZ_REL
+    n = escape(nombre)
+    return (f'<h2 id="resultados-29n">Resultados de las elecciones generales 2026 en {n}</h2>'
+            + p_('Dato', 'El domingo 29 de noviembre el Ministerio del Interior publica dos avances de participación, a las 14.00 y a las 18.00. '
+                 'Los colegios cierran a las 20.00 y el escrutinio empieza a publicarse a las 21.00, hora peninsular, cuando cierran los de Canarias. '
+                 f'Desde ese momento, el recuento de {n} se puede seguir municipio a municipio en el <a href="{raiz}">mapa de resultados</a>. '
+                 f'Hasta entonces, debajo está el resultado de 2023 en {n}.')
+            + f'<p><a href="{raiz}elecciones/resultados-elecciones-generales-2026/">Resultados de las elecciones generales 2026 en toda España</a> · '
+              f'<a href="{raiz}elecciones/participacion-29n-hora-a-hora/">participación del 29N hora a hora</a></p>')
+
+
 def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(), tipo_txt='Comunidad', contenido=None, ccaa=None):
     df = T.MUN[T.MUN.prov.isin(provs)]
     sec = T.SEC[T.SEC.prov.isin(provs)]
@@ -584,12 +599,13 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     about = lugar(nombre, contenido or ESPANA)
     faq_html, faq_ld = faq([q_censo]) if q_censo else ('', None)
     ld = ld_pagina(titulo, desc, ruta, about)
+    act = ld['dateModified'] = LASTMOD[ruta] = max(ACTUALIZADO, '2026-11-24')   # 24-11: «Resultados de las elecciones generales 2026 en …»
     h = [cabeza(titulo, desc, ruta, [ld, faq_ld] if faq_ld else ld, nivel, nombre)]
     raiz = RAIZ_REL
     h.append(migas_html(pasos))
     h.append(f'<p class="kicker">{tipo_txt} · Elecciones generales 1977-2023</p><h1 data-miga="{escape(nombre)}">Elecciones en {escape(nombre)}</h1>')
     h.append(f'<p class="subtitulo">Resultados por municipio y por sección censal, voto por renta de los barrios y las 16 generales desde 1977</p>')
-    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADO}">{fecha(ACTUALIZADO)}</time></p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{esquema.FIRMA}</a> · Actualizado el <time datetime="{act}">{fecha(act)}</time></p>')
     h.append(f'<p class="resumen">{tipo("Dato")}{entradilla(nombre, en, r, serie, ccaa)}</p>')
     mayor = df.sort_values('poblacion', ascending=False).iloc[0]
     h.append(f'<p><a class="vermapa" href="{raiz}?m={mayor.mun_code}">Ver {escape(mayor.municipio)} y el resto de {escape(nombre)} en el mapa por sección censal</a></p>')
@@ -597,6 +613,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     if hijos:
         h.append('<h2>Provincias</h2>' + tabla(f'Generales de 2023 {en}, por provincia', ['Provincia', 'Participación', 'Más votado', 'Segundo'],
                                                 [hijo for hijo in hijos]))
+    h.append(bloque_29n_territorio(nombre))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
     h.append(bloque_serie(nombre, serie, provs))
