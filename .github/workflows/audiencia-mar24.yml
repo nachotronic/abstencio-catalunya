@@ -1,0 +1,33 @@
+# Temporal, solo lectura: audiencia y Search Console 24-11. No se fusiona a main.
+name: Audiencia martes 24-11
+on:
+  push:
+    branches: [claude/project-thread-s6i9m7]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-mar24.yml']
+permissions:
+  contents: read
+jobs:
+  trends:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q pytrends
+      - run: python3 .github/audiencia/trends24.py
+  leer:
+    if: false
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/mar24.py
+  gsc:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q google-auth requests
+      - env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        run: python3 .github/audiencia/gsc24.py
