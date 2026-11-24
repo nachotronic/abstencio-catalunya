@@ -15,9 +15,7 @@ DESC = re.compile(r'(<meta\s+(?:name="description"|property="og:description"|nam
 def limpia_texto(s):
     """Frases con la probabilidad dentro de una descripción."""
     s = re.sub(rf': (?:más del |menos del )?\d+{NB}% de opciones de conseguir escaño según la media de encuestas\.', '.', s)
-    s = re.sub(r',? y quién tiene opciones de salir', '', s)
-    s = re.sub(r' y qué candidatos tienen opciones de salir elegidos según las encuestas', '', s)
-    s = re.sub(r',? con (?:el BOE y )?las opciones de salir elegido de cada uno', lambda m: ', con el BOE' if 'BOE' in m.group(0) else '', s)
+    # solo la frase con la cifra (Nacho eligió quitarla de la descripción de las fichas); el resto no lleva cifras
     return s
 
 
