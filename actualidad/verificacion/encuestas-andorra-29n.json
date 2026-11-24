@@ -14,7 +14,23 @@
    "calculo": "sum(v for k,v in D['AND'].items() if '2023-07-18'<=k<='2023-07-22')/sum(v for k,v in D['PRO'].items() if '2023-07-18'<=k<='2023-07-22')"
   }
  ],
- "externas": [],
+ "externas": [
+  {
+   "texto": "«una mitjana d'uns 800 votants diaris, el doble de l'habitual»",
+   "cifra": "800",
+   "fuente": "https://www.diariandorra.ad/nacional/261124/eleccions-espanya-amb-afluencia-record_209473.html"
+  },
+  {
+   "texto": "cuando votaron 3.691 residentes",
+   "cifra": "3.691",
+   "fuente": "https://www.diariandorra.ad/nacional/261124/eleccions-espanya-amb-afluencia-record_209473.html"
+  },
+  {
+   "texto": "Las urnas del consulado están abiertas hasta el jueves 26.",
+   "cifra": "26",
+   "fuente": "https://www.diariandorra.ad/nacional/261124/eleccions-espanya-amb-afluencia-record_209473.html"
+  }
+ ],
  "ignorar": [
   {
    "texto": "España durante la veda, los cinco días antes de votar",

@@ -5269,7 +5269,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-24 09:50',
+        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-24 18:45',
         titulo='Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley', serie='29n', figura=0,
         descripcion='Son encuestas publicadas fuera de España durante la veda, que va del martes 24 hasta que cierren los colegios el domingo 29. En 2023, «encuestas andorra» solo se buscó la semana de la veda, con el máximo en la jornada de reflexión.',
         compara='Lo que dice la ley electoral sobre la publicación de encuestas en los cinco días antes de votar, los casos de encuestas publicadas fuera de España durante la veda desde 2008, la resolución de la Junta Electoral Central sobre encuestas encubiertas y las búsquedas en Google de «encuestas andorra» y «encuestas prohibidas» en la semana de las generales de 2023.',
@@ -5281,6 +5281,8 @@ PIEZAS += [
                  ('https://www.lamarea.com/?p=79733', 'La Marea, las encuestas de Andorra (15-12-2015)'),
                  ('https://gesop.net/es/2023/07/25/el-sondeo-de-gesop-del-23j-de-los-mas-acertados/', 'GESOP, el sondeo del 23J (25-7-2023)'),
                  ('https://www.diarimes.com/es/actualidad/cataluna/240507/primer-sondeo-prohibido-diario-andorra-12-m-votos-escanos_144339.html', 'Diari Més, el sondeo prohibido del Diari d\'Andorra (7-5-2024)'),
+                 ('https://www.estrelladigital.es/espana/cinco-dias-encuestas-que-prohibe-ley-hoy-que-pueden-hacer-medios-donde-seguira-viendo-voto/20261124113128453841.html', 'Estrella Digital, cinco días sin encuestas (24-11-2026)'),
+                 ('https://www.diariandorra.ad/nacional/261124/eleccions-espanya-amb-afluencia-record_209473.html', 'Diari d’Andorra, el voto en el consulado de España (24-11-2026)'),
                  ('https://www.eldebate.com/espana/20220401/jec-insiste-sancionar-difusion-sondeos-electorales-encubiertos-fuera-plazo-legal.html', 'El Debate, la JEC y los sondeos encubiertos (1-4-2022)')],
         enlaces=[],
         lugar='España',
