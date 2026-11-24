@@ -40,34 +40,14 @@
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "11,3 %. Teruel Existe, de 40 a cinco. Para el 29N,",
+   "texto": "11,3 %. Teruel Existe, de 40 a cinco.",
    "cifra": "40",
    "calculo": "D['GANA']['2019_11']['TE']"
   },
   {
-   "texto": "%. Teruel Existe, de 40 a cinco. Para el 29N, la media",
+   "texto": "%. Teruel Existe, de 40 a cinco.",
    "cifra": "cinco",
    "calculo": "D['GANA']['2023_07']['TE']"
-  },
-  {
-   "texto": "media de encuestas da al PP 5 de los 13 diputados,",
-   "cifra": "5",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas da al PP 5 de los 13 diputados, al PSOE 4",
-   "cifra": "13",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "los 13 diputados, al PSOE 4 y a Vox 4.",
-   "cifra": "4",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "diputados, al PSOE 4 y a Vox 4.",
-   "cifra": "4",
-   "calculo": "D['E29']['PSOE']"
   },
   {
    "texto": "elige el 29 de noviembre 13 diputados: 7 en Zaragoza",
@@ -450,26 +430,6 @@
    "calculo": "D['JACA_V']"
   },
   {
-   "texto": "el reparto central de los 13 escaños da al PP 5,",
-   "cifra": "13",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "de los 13 escaños da al PP 5, dos menos que en 2023;",
-   "cifra": "5",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "menos que en 2023; al PSOE, 4, los mismos, y a Vox,",
-   "cifra": "4",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "PSOE, 4, los mismos, y a Vox, 4, frente a uno en 2023.",
-   "cifra": "4",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
    "texto": "El PSOE pasó de ganar en 379 municipios a ganar en",
    "cifra": "379",
    "calculo": "D['GANA']['2019_11']['PSOE']"
@@ -553,21 +513,6 @@
    "texto": "2023 por un solo voto, y en 23 hubo empateVentaja del",
    "cifra": "23",
    "calculo": "D['GANA']['2023_07']['EMPATE']"
-  },
-  {
-   "texto": "encuestas, Vox pasaría de uno a cuatro diputados en Aragón:",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "Teruel y dos en ZaragozaLos 13 diputados de las tres",
-   "cifra": "13",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "ZaragozaLos 13 diputados de las tres provincias: un cuadrado",
-   "cifra": "tres",
-   "calculo": "len(D['CAP'])"
   }
  ],
  "externas": [],
@@ -619,10 +564,6 @@
   {
    "texto": "que recogiera votos de los tres, pero el mapa no permite",
    "motivo": "los tres partidos (Cs, Vox y Teruel Existe)"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "las 15 ciudades de más de 10.000 habitantes, el PSOE",

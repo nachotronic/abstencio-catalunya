@@ -25,26 +25,6 @@
    "calculo": "D['NMUN']"
   },
   {
-   "texto": "media de encuestas da al PSOE 5 de los 15 diputados,",
-   "cifra": "5",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "encuestas da al PSOE 5 de los 15 diputados, al PP 4 y",
-   "cifra": "15",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "de los 15 diputados, al PP 4 y a Vox 4, que vuelve",
-   "cifra": "4",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "diputados, al PP 4 y a Vox 4, que vuelve a tener",
-   "cifra": "4",
-   "calculo": "D['E29']['PP']"
-  },
-  {
    "texto": "elige el 29 de noviembre 15 diputados: 8 en Las",
    "cifra": "15",
    "calculo": "sum(D['ESC26'].values())"
@@ -325,26 +305,6 @@
    "calculo": "D['ORO_V']"
   },
   {
-   "texto": "el reparto central de los 15 escaños da al PSOE 5,",
-   "cifra": "15",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "los 15 escaños da al PSOE 5, uno menos que en 2023;",
-   "cifra": "5",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "menos que en 2023; al PP, 4, dos menos; a Vox, 4,",
-   "cifra": "4",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "PP, 4, dos menos; a Vox, 4, dos en cada provincia,",
-   "cifra": "4",
-   "calculo": "D['E29']['PP']"
-  },
-  {
    "texto": "El PSOE pasó de ganar en 69 municipios a ganar en",
    "cifra": "69",
    "calculo": "D['GANA']['2019_11']['PSOE']"
@@ -408,16 +368,6 @@
    "texto": "Valsequillo se decidieron por 17 votos cada unoVentaja",
    "cifra": "17",
    "calculo": "D['AJG'][0][4]"
-  },
-  {
-   "texto": "encuestas, Vox pasaría de uno a cuatro diputados en Canarias,",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "Santa Cruz de TenerifeLos 15 diputados de las dos",
-   "cifra": "15",
-   "calculo": "sum(D['ESC26'].values())"
   }
  ],
  "externas": [],
@@ -433,10 +383,6 @@
   {
    "texto": "los municipios de más de 5.000 habitantes, los más",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "Siete islas",

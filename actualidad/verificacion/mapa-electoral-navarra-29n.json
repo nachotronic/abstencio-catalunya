@@ -25,19 +25,9 @@
    "calculo": "len(D['GC'])"
   },
   {
-   "texto": "Pamplona incluida, y EH Bildu, 121 pueblos. Para el 29N,",
+   "texto": "Pamplona incluida, y EH Bildu, 121 pueblos.",
    "cifra": "121",
    "calculo": "D['GANA']['2023_07']['BILDU']"
-  },
-  {
-   "texto": "encuestas da al PSOE dos de los 5 diputados, a la lista",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "elige el 29 de noviembre 5 diputados. UPN y el",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
   },
   {
    "texto": "votada de Navarra, con el 29,9 %, y ganó en 106 de",
@@ -315,11 +305,6 @@
    "calculo": "D['AJ'][0][4]"
   },
   {
-   "texto": "el reparto central de los 5 escaños da al PSOE dos,",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
    "texto": "Navarra Suma ganó en 106 municipios en 2019;",
    "cifra": "106",
    "calculo": "D['GANA']['2019_11']['NAS']"
@@ -390,11 +375,6 @@
    "calculo": "D['TT']['De 1.000 a 5.000']['n']"
   },
   {
-   "texto": "en 42 de los 63 de 1.000 a 5.000Municipios ganados",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
    "texto": "Galar fue para EH Bildu por 14 votos, y Aranguren y",
    "cifra": "14",
    "calculo": "D['AJ'][0][4]"
@@ -408,11 +388,6 @@
    "texto": "segundo en julio de 2023 en los ocho municipios de más de",
    "cifra": "ocho",
    "calculo": "len(D['AJ'])"
-  },
-  {
-   "texto": "escaños que por separadoLos 5 diputados de Navarra:",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
   },
   {
    "texto": "Suma, pero el PSOE ganó once de los doce municipios de más de",
@@ -459,10 +434,6 @@
   {
    "texto": "uno. Entre los de más de 1.000 habitantes, el más ajustado",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "doce municipios de más de 10.000 habitantes, todos salvo Villava; Pamplona,",

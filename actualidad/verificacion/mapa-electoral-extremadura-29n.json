@@ -35,24 +35,9 @@
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "y Zafra se decidieron por cuatro votos. Para el 29N,",
+   "texto": "y Zafra se decidieron por cuatro votos.",
    "cifra": "cuatro",
    "calculo": "D['AJ'][0][4]"
-  },
-  {
-   "texto": "media de encuestas da al PP cuatro de los 9 diputados,",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas da al PP cuatro de los 9 diputados, al PSOE tres",
-   "cifra": "9",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "los 9 diputados, al PSOE tres y a Vox dos.",
-   "cifra": "tres",
-   "calculo": "D['E29']['PSOE']"
   },
   {
    "texto": "elige el 29 de noviembre 9 diputados: 5 en Badajoz",
@@ -355,41 +340,6 @@
    "calculo": "D['UNVOTO']"
   },
   {
-   "texto": "el reparto central de los 9 escaños da al PP cuatro,",
-   "cifra": "9",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "de los 9 escaños da al PP cuatro, los mismos que en 2023;",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "mismos que en 2023; al PSOE, tres, uno menos, y a Vox,",
-   "cifra": "tres",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "el modelo da al PSOE entre 1 y 2 diputados y a Vox",
-   "cifra": "1",
-   "calculo": "D['RC']['10']['PSOE'][1]"
-  },
-  {
-   "texto": "modelo da al PSOE entre 1 y 2 diputados y a Vox entre",
-   "cifra": "2",
-   "calculo": "D['RC']['10']['PSOE'][2]"
-  },
-  {
-   "texto": "2 diputados y a Vox entre 0 y 1.",
-   "cifra": "0",
-   "calculo": "D['RC']['10']['VOX'][1]"
-  },
-  {
-   "texto": "diputados y a Vox entre 0 y 1.",
-   "cifra": "1",
-   "calculo": "D['RC']['10']['PSOE'][1]"
-  },
-  {
    "texto": "Dónde se decidió por cuatro votos",
    "cifra": "cuatro",
    "calculo": "D['AJ'][0][4]"
@@ -458,21 +408,6 @@
    "texto": "segundo en julio de 2023 en los ocho municipios de más de",
    "cifra": "ocho",
    "calculo": "D['TT']['Más de 10.000']['g23']['PP']"
-  },
-  {
-   "texto": "encuestas, el PSOE pasaría de cuatro a tres diputados en",
-   "cifra": "cuatro",
-   "calculo": "D['E23']['PSOE']"
-  },
-  {
-   "texto": "PSOE pasaría de cuatro a tres diputados en Extremadura",
-   "cifra": "tres",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "Extremadura y Vox, de uno a dosLos 9 diputados de las dos",
-   "cifra": "9",
-   "calculo": "sum(D['ESC26'].values())"
   }
  ],
  "externas": [],
@@ -520,10 +455,6 @@
   {
    "texto": "decidieron en 2023 por menos de diez votos. Miajadas (Cáceres)",
    "motivo": "umbral de votos"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "las 13 ciudades de más de 10.000 habitantes, el PSOE",
