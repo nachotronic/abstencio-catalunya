@@ -58,6 +58,20 @@ def una(src, y):
             g = v.groupby([col, 'abbrev_candidacies', 'fam']).ballots.sum().reset_index()
         else:   # por candidatura de Interior; siglas y familia, las de su provincia más votada
             pv = v.groupby([col, 'grp', 'cod_INE_prov', 'abbrev_candidacies', 'fam']).ballots.sum().reset_index()
+            # el mismo partido con otro nombre de coalición en otra provincia (PP-C de G en Ourense 1989, PP-PAR en Aragón)
+            # es la misma candidatura en la comunidad: se suman las listas de una familia que NUNCA compiten en la misma
+            # provincia. Si coinciden en alguna (PSOE y PS en Andalucía 1982), siguen separadas. «Otros» nunca se junta.
+            une = {}
+            for (t, f), s in pv[(pv.ballots > 0) & (pv.fam != 'OTROS')].groupby([col, 'fam']):
+                orden = s.groupby('grp').ballots.sum().sort_values(ascending=False).index
+                provs = {gr: set(s[s.grp == gr].cod_INE_prov) for gr in orden}
+                base, ya = orden[0], set(provs[orden[0]])
+                for gr in orden[1:]:
+                    if not (provs[gr] & ya):
+                        une[(t, gr)] = base; ya |= provs[gr]
+                        print('  junta', y, NOMBRE['CM'][t], f, s[s.grp == gr].abbrev_candidacies.unique().tolist(), '->',
+                              s[s.grp == base].abbrev_candidacies.unique().tolist())
+            pv['grp'] = [une.get((t, gr), gr) for t, gr in zip(pv[col], pv.grp)]
             mix = pv[pv.ballots > 0].groupby([col, 'grp']).fam.nunique()
             for (t, gr) in mix[mix > 1].index:
                 print('  aviso', y, t, gr, pv[(pv[col] == t) & (pv.grp == gr)][['abbrev_candidacies', 'fam', 'ballots']].values.tolist())
