@@ -119,11 +119,12 @@ def bios(m):
     fichas = m.elige_fichas(cands, avance)
     of = json.loads((DATOS / 'biografias-oficiales.json').read_text())['personas']
     ma = json.loads((DATOS / 'biografias-manual.json').read_text()) if (DATOS / 'biografias-manual.json').exists() else {}
+    fotos = json.loads((DATOS / 'fotos.json').read_text()) if (DATOS / 'fotos.json').exists() else {}
     out, avisos = {}, []
     for c, p in fichas:
         clave = f"{m.PROV_SLUG[c['prov']]}/{p['ficha']}"
         ident = {'nombre': p['nombre'], 'prov': c['prov'], 'siglas': c['siglas'], 'n': p['n']}
-        frases, fuentes, extra = [], [], {}
+        frases, fuentes, extra, foto = [], [], {}, None
         man = ma.get(clave)
         if man:
             if all(man.get(k_) == v for k_, v in ident.items()):
@@ -141,10 +142,14 @@ def bios(m):
                     extra['birthDate'] = x['nacimiento']
                 if x.get('lugar'):
                     extra['birthPlace'] = {'@type': 'Place', 'name': x['lugar']}
+                # foto de su ficha del Congreso de la XV, del mismo codParlamentario (fotos.py)
+                fo = fotos.get(clave)
+                if fo and fo['nombre'] == x['nombre'] and (CARPETA / 'fotos' / fo['archivo']).exists():
+                    foto = fo
             else:
                 avisos.append(f'{clave}: los datos oficiales no coinciden con el BOE; fuera')
         if frases:
-            out[clave] = dict(texto=' '.join(frases), fuentes=fuentes, extra=extra, c=c, p=p)
+            out[clave] = dict(texto=' '.join(frases), fuentes=fuentes, extra=extra, foto=foto, c=c, p=p)
     return out, avisos
 
 
@@ -156,10 +161,17 @@ def en_ficha(t, b):
     e = html.escape
     t = quita(t, '<!--bio-->', '<!--/bio-->')
     t = quita(t, '<!--bio:fuente-->', '<!--/bio:fuente-->')
-    parrafo = f'<!--bio--><p data-tipo="bio" class="bio">{e(b["texto"])}</p><!--/bio-->'
+    t = quita(t, '<!--bio:css-->', '<!--/bio:css-->')
+    fo = b.get('foto')
+    figura = (f'<figure class="foto-oficial"><img src="../../fotos/{fo["archivo"]}" width="124" height="165" alt="{e(b["p"]["nombre"])}, foto oficial del Congreso">'
+              f'<figcaption>Foto: Congreso de los Diputados</figcaption></figure>') if fo else ''
+    parrafo = f'<!--bio-->{figura}<p data-tipo="bio" class="bio">{e(b["texto"])}</p><!--/bio-->'
     i = t.index('<p data-tipo="dato">')
     t = t[:i] + parrafo + t[i:]
     fu = ', '.join(f'<a href="{e(u)}">{e(n)}</a>' for n, u in dict.fromkeys(b['fuentes']))
+    if fo:
+        fu += (f'. Foto: <a href="{e(fo["ficha"])}">Congreso de los Diputados</a>, ficha de la XV legislatura, '
+               f'sin modificar (consultada el {larga(fo["consultada"])})')
     dd = (f'<!--bio:fuente--><dt>Quién es</dt><dd>{fu}. La persona se identifica por su provincia, su lista y su puesto en el BOE; '
           f'si un dato no se puede atar a ella sin duda, no se pone.</dd><!--/bio:fuente-->')
     i = t.index('<dt>Autoría</dt>')
@@ -171,17 +183,33 @@ def en_ficha(t, b):
     for nodo in ld:
         if nodo.get('@type') == 'ProfilePage':
             per = nodo['mainEntity']
-            for k_ in ('description', 'birthDate', 'birthPlace'):
+            for k_ in ('description', 'birthDate', 'birthPlace', 'image'):
                 per.pop(k_, None)
             per['description'] = b['texto']
             per.update(b['extra'])
+            if fo:
+                per['image'] = f'{URL}fotos/{fo["archivo"]}'
     t = t[:mt.start(2)] + json.dumps(ld, ensure_ascii=False, indent=1) + t[mt.end(2):]
+    if fo:
+        i = t.index('</head>')
+        t = t[:i] + ESTILO_FICHA + t[i:]
     return t
+
+
+ESTILO_FICHA = ('<!--bio:css--><style>.foto-oficial{float:right;margin:.2rem 0 .6rem 1rem;width:124px}.foto-oficial img{display:block;width:124px;height:auto;'
+                'border-radius:4px}.foto-oficial figcaption{font-family:var(--ui);font-size:.7rem;color:var(--muted);margin-top:.2rem;line-height:1.2}'
+                '@media (max-width:420px){.foto-oficial{width:96px}.foto-oficial img{width:96px}}</style><!--/bio:css-->')
 
 
 ESTILO = ('<!--bio:css--><style>.bio{font-size:1.02rem}.quien{margin:.5rem 0 1.5rem}.quien h3{font-family:var(--ui);font-size:.95rem;margin:1.1rem 0 .3rem;'
           'border-left:4px solid var(--c);padding-left:.5rem}.quien dl{margin:0}.quien dt{font-family:var(--ui);font-weight:700;margin-top:.6rem}'
-          '.quien dt small{font-weight:400;color:var(--muted)}.quien dd{margin:.1rem 0 0;font-size:.95rem;line-height:1.45}</style><!--/bio:css-->')
+          '.quien dt small{font-weight:400;color:var(--muted)}.quien dt img{width:36px;height:48px;object-fit:cover;border-radius:3px;vertical-align:middle;margin-right:.45rem}.quien dd{margin:.1rem 0 0;font-size:.95rem;line-height:1.45}</style><!--/bio:css-->')
+
+
+def mini(b):
+    fo = b.get('foto')
+    return (f'<img src="../fotos/{fo["archivo"]}" width="36" height="48" loading="lazy" alt="{html.escape(b["p"]["nombre"])}, foto oficial del Congreso">'
+            if fo else '')
 
 
 def en_provincia(t, cod, bs, m):
@@ -201,18 +229,20 @@ def en_provincia(t, cod, bs, m):
         g = sorted(grupos[ancla], key=lambda b: b['p']['n'])
         c = g[0]['c']
         cuerpo += f'<h3 style="--c:{c["color"]}">{e(c["corto"] if c["fam"] != "OTROS" else (c["siglas"] or c["denominacion"]))}</h3><dl>'
-        cuerpo += ''.join(f'<dt><a href="{b["p"]["ficha"]}/">{e(b["p"]["nombre"])}</a> <small>n.º {b["p"]["n"]}</small></dt><dd>{e(b["texto"])}</dd>' for b in g)
+        cuerpo += ''.join(f'<dt>{mini(b)}<a href="{b["p"]["ficha"]}/">{e(b["p"]["nombre"])}</a> <small>n.º {b["p"]["n"]}</small></dt><dd>{e(b["texto"])}</dd>' for b in g)
         cuerpo += '</dl>'
     seccion = (f'<!--bio--><h2 id="quien-es-quien">Quién es quién entre los candidatos al Congreso por {e(corto)}</h2>'
                f'<p>Los candidatos con ficha propia (los que tienen opciones de escaño y los diputados de la legislatura que acaba), en una o dos frases. '
-               f'Fuentes: Congreso de los Diputados, Ministerio del Interior y, para los cargos, el partido o la prensa, enlazados en cada ficha.</p>'
+               f'Fuentes: Congreso de los Diputados, Ministerio del Interior y, para los cargos, el partido o la prensa, enlazados en cada ficha. '
+               f'Las fotos son las oficiales del Congreso de los diputados de la legislatura que acaba.</p>'
                f'<div class="quien">{cuerpo}</div><!--/bio-->')
     i = t.index('<h2 id="senado">')
     t = t[:i] + seccion + t[i:]
     ld = {'@context': 'https://schema.org', '@type': 'ItemList', '@id': f'{URL}{m.PROV_SLUG[cod]}/#quien-es-quien',
           'name': f'Quién es quién entre los candidatos al Congreso por {corto} el 29N', 'itemListElement': [
               {'@type': 'ListItem', 'position': i_ + 1, 'item': {'@type': 'Person', '@id': f'{URL}{m.PROV_SLUG[cod]}/{b["p"]["ficha"]}/#persona',
-                                                               'name': b['p']['nombre'], 'description': b['texto'], 'url': f'{URL}{m.PROV_SLUG[cod]}/{b["p"]["ficha"]}/'}}
+                                                               'name': b['p']['nombre'], 'description': b['texto'], 'url': f'{URL}{m.PROV_SLUG[cod]}/{b["p"]["ficha"]}/',
+                                                               **({'image': f'{URL}fotos/{b["foto"]["archivo"]}'} if b.get('foto') else {})}}
               for i_, b in enumerate(sorted(bs, key=lambda b: (b['c']['orden'], b['p']['n'])))]}
     bloque = f'<!--bio:ld--><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script><!--/bio:ld-->'
     i = t.index('</head>')
