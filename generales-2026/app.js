@@ -255,13 +255,18 @@
   function capaRotulos() {
     const tinta = hex(css('--ink') || '#111'), fondo = hex(css('--surface') || '#fff');
     return new deck.TextLayer({ id: 'rotulos', data: rotulos(), pickable: false, getPosition: r => r.pos, getText: r => r.t, getSize: r => r.s,
-      getAngle: r => r.a || 0, getColor: r => r.s > 11 ? tinta : [...tinta, 210], fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600,
-      characterSet: 'auto', fontSettings: { sdf: true }, outlineWidth: 3, outlineColor: [...fondo, 230], parameters: { depthCompare: 'always' } });
+      getAngle: r => r.a || 0, getColor: r => r.s > 11 ? tinta : [...tinta, 220], ...LETRA, outlineColor: [...fondo, 245] });
   }
 
   // Nombres de municipio (desde la vista de España): de más a menos habitantes, con un mínimo que baja con el zoom, sin que se pisen
   const ORDM = MUN.nombre.map((n, i) => i).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
   const MINPOB = z => z < 6 ? 150000 : z < 7 ? 50000 : z < 8 ? 15000 : z < 9 ? 5000 : z < 10 ? 1500 : z < 11 ? 300 : 0;
+  // Nombres más legibles al acercarse (Nacho, 24-11: «cuando acercas el zoom los nombres se ven regular»): crecen hasta 3 px
+  // desde el zoom 8, el atlas de letras se dibuja a más resolución y el halo es más ancho y opaco, para que se lean sobre
+  // cualquier color (también los nombres de calles y barrios del callejero)
+  const MASZ = z => Math.max(0, Math.min(3, (z - 8) * 1.2));
+  const LETRA = { fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600, characterSet: 'auto',
+    fontSettings: { sdf: true, fontSize: 96, buffer: 16, radius: 32, cutoff: .25 }, outlineWidth: 14, parameters: { depthCompare: 'always' } };
   function capaMunicipios() {
     let vp = null; const out = [];
     try { vp = dk.getViewports()[0]; } catch (e) { pideRedraw(); }   // la primera vez, antes de que deck.gl tenga el mapa montado
@@ -273,8 +278,8 @@
         const q = MUN.c[i]; if (!q) continue;
         const [sx, sy] = vp.project(q);
         if (sx < 0 || sy < 0 || sx > W || sy > H) continue;
-        const pob = MUN.poblacion[i] || 0, grande = pob >= 100000, s = grande ? 13 : pob >= 20000 ? 11.5 : 10.5;
-        const w = MUN.nombre[i].length * s * .56 + 6, h = s + 4, c = [sx - w / 2, sy - h / 2, sx + w / 2, sy + h / 2];
+        const pob = MUN.poblacion[i] || 0, grande = pob >= 100000, s = (grande ? 13 : pob >= 20000 ? 11.5 : 10.5) + MASZ(view.zoom);
+        const w = MUN.nombre[i].length * s * .58 + 10, h = s + 7, c = [sx - w / 2, sy - h / 2, sx + w / 2, sy + h / 2];
         if (cajas.some(o => c[0] < o[2] && c[2] > o[0] && c[1] < o[3] && c[3] > o[1])) continue;
         cajas.push(c); out.push({ t: MUN.nombre[i], p: q, s, g: grande });
         if (out.length > 300) break;
@@ -282,8 +287,7 @@
     }
     const tinta = hex(css('--ink') || '#111'), fondo = hex(css('--surface') || '#fff');
     return new deck.TextLayer({ id: 'munlab', data: out, pickable: false, getPosition: o => o.p, getText: o => o.t, getSize: o => o.s,
-      getColor: o => o.g ? tinta : [...tinta, 220], fontFamily: 'IBM Plex Sans, system-ui, sans-serif', fontWeight: 600, characterSet: 'auto',
-      fontSettings: { sdf: true }, outlineWidth: 3, outlineColor: [...fondo, 230], parameters: { depthCompare: 'always' } });
+      getColor: o => o.g ? tinta : [...tinta, 235], ...LETRA, outlineColor: [...fondo, 255] });
   }
 
   function layers() {
