@@ -3799,6 +3799,18 @@ ENCUESTAS_SIGUE = ('<li><a href="../../encuestas/"><span class="kicker">Encuesta
 TODAS_INTL = '<li><a href="../../internacional/"><span class="kicker">Internacional</span><b>Todas las elecciones en el resto del mundo</b></a></li>'
 
 
+# Veda de encuestas del 29N (LOREG 69.7, 24-11 a 29-11 21:00): las seis cards de «Sigue leyendo» dejan fuera las piezas de
+# encuestas, cuyo titular lleva cifras. Se apaga (False) y se reconstruye después de las 21:00 del 29-11.
+VEDA_SIGUE = True
+SIN_CIFRAS_DE_ENCUESTAS = {'encuestas-andorra-29n', 'veda-encuestas-29n'}   # hablan de encuestas, pero sin cifras
+
+
+def es_de_encuestas(q):
+    if q['slug'] in SIN_CIFRAS_DE_ENCUESTAS:
+        return False
+    return antetitulo(q) == 'Encuestas de hoy' or bool(re.search(r'encuesta|sondeo|\bCIS\b|40dB|mediana', q['titulo'], re.I))
+
+
 def pieza(p, todas):
     src = open(os.path.join(SRC, p['slug'] + '.html'), encoding='utf-8').read()
     estilos = ''.join(re.findall(r'<style>.*?</style>', src, re.S))
@@ -3844,7 +3856,7 @@ def pieza(p, todas):
         main = re.sub(ancla, lambda m: m.group(1) + '\n' + nota, main, count=1, flags=re.S)
     fuentes = ''.join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for u, t in p['fuentes'])
     # la serie entera, en orden, con la pieza actual marcada; después, las últimas de otras series
-    serie = [q for q in todas if q['serie'] == p['serie']]
+    serie = [q for q in todas if q['serie'] == p['serie'] and (q is p or not (VEDA_SIGUE and es_de_encuestas(q)))]   # veda: sin las de encuestas
     # como mucho 20 piezas de la serie alrededor de la actual (Nacho, 25-10-2026: la del 29N pasaba de 80)
     i = serie.index(p); ini = max(0, min(i - 10, len(serie) - 20)); ventana = serie[ini:ini + 20]
     lista = ''.join(f'<li aria-current="page"><span class="kicker">Estás aquí</span><b>{html.escape(q["titulo"])}</b></li>' if q is p else
@@ -3853,6 +3865,8 @@ def pieza(p, todas):
         lista += f'<li class="todas"><a href="{"../../internacional/" if intl else "../index.html#" + p["serie"]}"><b>Ver las {len(serie)} piezas de la serie</b></a></li>'
     # «Sigue leyendo»: seis cards con imagen, las seis piezas más recientes menos la actual (Nacho, 17-11-2026)
     otras = [q for q in todas if q is not p and (intl or q['serie'] != 'internacional')]   # las piezas españolas no recomiendan las internacionales
+    if VEDA_SIGUE:   # veda (LOREG 69.7): las cards no enseñan titulares con cifras de encuestas
+        otras = [q for q in otras if not es_de_encuestas(q)]
     otras = [q for _, q in sorted(enumerate(otras), key=lambda iq: (iq[1]['fecha'], iq[0]), reverse=True)][:6]
     cards = ''.join(f'<li><a href="../{q["slug"]}/">{imagen_sigue(q)}<span class="txt"><span class="kicker">{antetitulo(q)}</span><b>{html.escape(q["titulo"])}</b></span></a></li>' for q in otras)
     sigue = ''
