@@ -1197,6 +1197,9 @@ def main():
     import esquema
     for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html', SENADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()] + [f for f, _ in fichas]:
         esquema.procesa(f)
+    if not avance:   # biografías breves de las fichas y «Quién es quién» de cada provincia (biografias.py)
+        import biografias
+        biografias.main()
     print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados, {len(fichas)} fichas, Senado {n_senadores} escaños en {n_circ} circunscripciones; {titular}')
 
 
