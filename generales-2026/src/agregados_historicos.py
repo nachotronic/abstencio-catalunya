@@ -66,11 +66,34 @@ def main():
         assert sorted(o['PR']) == sorted(PR2CM) and sorted(o['CM']) == sorted(CMPR), y
         for c, L in CMPR.items():   # cada comunidad, la suma exacta de sus provincias
             assert sum(x[1] for x in o['CM'][c]['c']) == sum(x[1] for p in L for x in o['PR'][p]['c']), (y, c)
-    for o in R.values():   # en el mapa caben 8 filas: las 10 primeras listas y el resto sumado en «Otras» (los totales no cambian)
+    # en el mapa caben 8 filas: las 10 primeras listas y el resto sumado POR FAMILIA (una fila por familia, con las siglas
+    # de su lista más votada; las de «Otros», en «Otras»), para que cada familia sume lo mismo en la comunidad que en sus
+    # provincias (antes, ~1.500 votos del PSOE andaluz de 1982 caían en «Otras» al recortar)
+    def fam_tot(filas):
+        t = {}
+        for x in filas:
+            t[x[3]] = t.get(x[3], 0) + x[1]
+        return t
+    antes = {y: {n: {k: fam_tot(t['c']) for k, t in o[n].items()} for n in ('PR', 'CM')} for y, o in R.items()}
+    for o in R.values():
         for d in (o['PR'], o['CM']):
             for t in d.values():
                 if len(t['c']) > 10:
-                    t['c'] = t['c'][:10] + [['Otras', sum(x[1] for x in t['c'][10:]), 0, 'OTROS']]
+                    resto = {}
+                    for x in t['c'][10:]:
+                        r = resto.setdefault(x[3], ['Otras' if x[3] == 'OTROS' else x[0], 0, 0, x[3]])
+                        r[1] += x[1]
+                    t['c'] = t['c'][:10] + sorted(resto.values(), key=lambda r: -r[1])
+    for y, o in R.items():   # comprobación: ninguna familia cambia al recortar, y cada comunidad suma sus provincias familia a familia
+        for n in ('PR', 'CM'):
+            for k, t in o[n].items():
+                assert fam_tot(t['c']) == antes[y][n][k], (y, n, k)
+        for c, L in CMPR.items():
+            suma = {}
+            for p in L:
+                for f, v in fam_tot(o['PR'][p]['c']).items():
+                    suma[f] = suma.get(f, 0) + v
+            assert fam_tot(o['CM'][c]['c']) == suma, (y, c)
     with open(SALIDA, 'w') as f:
         json.dump(R, f, ensure_ascii=False, separators=(',', ':'))
     print('->', SALIDA, os.path.getsize(SALIDA) // 1024, 'KB')
