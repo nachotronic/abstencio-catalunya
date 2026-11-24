@@ -565,17 +565,17 @@ def enlace_listas(provs, raiz):
             + ' · '.join(f'<a href="{raiz}encuestas/{PROV_SLUG[p]}/">encuesta de {escape(PROV_NOMBRE[p])}</a>' for p in orden) + '.</p>')
 
 
-def bloque_29n_territorio(nombre):
+def bloque_29n_territorio(nombre, en):
     """Comunidades y provincias: qué se publica la noche del 29N y a qué hora, con el enlace a la página de resultados de toda España
     (24-11-2026, para las búsquedas «resultados elecciones generales 2026 <territorio>»). Solo HTML: el escrutinio de cada territorio
     lo pinta esa noche el recuadro del mapa (bloque_mapa)."""
     raiz = RAIZ_REL
-    n = escape(nombre)
+    n, e = escape(nombre), escape(en)
     return (f'<h2 id="resultados-29n">Resultados de las elecciones generales 2026 en {n}</h2>'
             + p_('Dato', 'El domingo 29 de noviembre el Ministerio del Interior publica dos avances de participación, a las 14.00 y a las 18.00. '
                  'Los colegios cierran a las 20.00 y el escrutinio empieza a publicarse a las 21.00, hora peninsular, cuando cierran los de Canarias. '
-                 f'Desde ese momento, el recuento de {n} se puede seguir municipio a municipio en el <a href="{raiz}">mapa de resultados</a>. '
-                 f'Hasta entonces, debajo está el resultado de 2023 en {n}.')
+                 f'Desde ese momento, el recuento {e} se puede seguir municipio a municipio en el <a href="{raiz}">mapa de resultados</a>. '
+                 f'Hasta entonces, debajo está el resultado de 2023 {e}.')
             + f'<p><a href="{raiz}elecciones/resultados-elecciones-generales-2026/">Resultados de las elecciones generales 2026 en toda España</a> · '
               f'<a href="{raiz}elecciones/participacion-29n-hora-a-hora/">participación del 29N hora a hora</a></p>')
 
@@ -613,7 +613,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
     if hijos:
         h.append('<h2>Provincias</h2>' + tabla(f'Generales de 2023 {en}, por provincia', ['Provincia', 'Participación', 'Más votado', 'Segundo'],
                                                 [hijo for hijo in hijos]))
-    h.append(bloque_29n_territorio(nombre))
+    h.append(bloque_29n_territorio(nombre, en))
     h.append(bloque_resultado(nombre, r))
     h.append(b_censo)
     h.append(bloque_serie(nombre, serie, provs))
