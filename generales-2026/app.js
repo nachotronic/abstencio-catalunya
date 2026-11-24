@@ -529,10 +529,12 @@
   function legend() {
     const el = $('#legend');
     if (st.v === 'gana') {
-      const y = st.y, used = new Set(MUN[y + '_gana']);
-      el.innerHTML = `<div class="lg-t">Partido más votado · ${nomE(y)}</div><div class="lg-sw">` +
+      const y = st.y, ag = agActivo(), used = new Set(ag ? Object.values(AGD[AGREG]).map(o => o.gana) : MUN[y + '_gana']);
+      const dir = META.directo && y === META.directo.eleccion;   // el 29N: en gris, lo que aún no tiene mesas escrutadas
+      el.innerHTML = `<div class="lg-t">Partido más votado · ${ag ? `${(ELEC.find(e => e.cod === y) || {}).nombre || y} · por ${AGREG === 'PR' ? 'provincia' : 'comunidad'} (datos de Interior)` : nomE(y)}</div><div class="lg-sw">` +
         FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${nomF(f, y)}</span>`).join('') +
         (used.has(EMPATE) ? `<span><b style="background:rgb(${EMP()})"></b>Empate a votos</span>` : '') +
+        (dir && !ag ? `<span><b style="background:rgb(${NODATA()})"></b>Aún sin escrutar</span>` : '') +
         `</div><div class="lg-n">Más intenso cuanto mayor es su porcentaje de voto${REPUBLICA(y) ? '. Listas abiertas: peso de cada bloque en los votos a candidatos (Atlas Electoral de la Segunda República, UPF)' : ''}</div>`;
       return;
     }
@@ -1243,7 +1245,7 @@
     window.__agregados = motivo || 'ok';   // para las pruebas
     if (!AGD && AGREG) AGREG = '';
     let b = document.getElementById('d-ver');
-    if (!AGD) { if (b) b.hidden = true; redraw(); return; }
+    if (!AGD) { if (b) b.hidden = true; legend(); redraw(); return; }
     if (!b) { b = document.createElement('div'); b.id = 'd-ver'; b.className = 'd-leg'; $('#d-leg').after(b); }
     const B = [['', 'Municipios'], ['PR', 'Provincias'], ['CM', 'Comunidades']];
     b.innerHTML = '<span class="mut" style="width:100%">Ver por:</span>' + B.map(([c, t]) => { const on = AGREG === c;
@@ -1254,7 +1256,7 @@
       if (AGREG) { st.y = y; st.v = 'gana'; selV.value = 'gana'; selE.value = y; sync(); }
       agregados(F, y);
     });
-    redraw();
+    legend(); redraw();
   }
 
   // ---------- gráficos: voto por decil
