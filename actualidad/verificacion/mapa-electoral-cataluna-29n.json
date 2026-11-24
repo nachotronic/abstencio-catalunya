@@ -53,24 +53,6 @@
    "_donde": "entradilla"
   },
   {
-   "texto": "media de encuestas da al PSC 17 de los 48 diputados,",
-   "cifra": "17",
-   "calculo": "D['E29']['PSOE']",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "encuestas da al PSC 17 de los 48 diputados, y a ERC,",
-   "cifra": "48",
-   "calculo": "sum(D['ESC26'].values())",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "los 48 diputados, y a ERC, 11.",
-   "cifra": "11",
-   "calculo": "D['E29']['ERC']",
-   "_donde": "entradilla"
-  },
-  {
    "texto": "elige el 29 de noviembre 48 de los 350 diputados",
    "cifra": "48",
    "calculo": "sum(D['ESC26'].values())",
@@ -533,78 +515,6 @@
    "_donde": "dato"
   },
   {
-   "texto": "reparto central da al PSC 17 de los 48 diputados",
-   "cifra": "17",
-   "calculo": "D['E29']['PSOE']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "central da al PSC 17 de los 48 diputados catalanes,",
-   "cifra": "48",
-   "calculo": "sum(D['ESC26'].values())",
-   "_donde": "dato"
-  },
-  {
-   "texto": "menos que en 2023; a ERC, 11, 4 más; a Junts, 6;",
-   "cifra": "11",
-   "calculo": "D['E29']['ERC']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "menos que en 2023; a ERC, 11, 4 más; a Junts, 6; al",
-   "cifra": "4",
-   "calculo": "D['E29']['ERC']-D['E23']['ERC']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "ERC, 11, 4 más; a Junts, 6; al PP, 6; a Vox, 6,",
-   "cifra": "6",
-   "calculo": "D['E29']['JUNTS']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "4 más; a Junts, 6; al PP, 6; a Vox, 6, y a Sumar,",
-   "cifra": "6",
-   "calculo": "D['E29']['PP']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "Junts, 6; al PP, 6; a Vox, 6, y a Sumar, 2, cinco",
-   "cifra": "6",
-   "calculo": "D['E29']['VOX']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "PP, 6; a Vox, 6, y a Sumar, 2, cinco menos. La CUP",
-   "cifra": "2",
-   "calculo": "D['E29']['SUMAR']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "6; a Vox, 6, y a Sumar, 2, cinco menos. La CUP no tiene",
-   "cifra": "cinco",
-   "calculo": "D['E23']['SUMAR']-D['E29']['SUMAR']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "el reparto central. En las cuatro provincias, el PSC es",
-   "cifra": "cuatro",
-   "calculo": "len(D['PRN'])",
-   "_donde": "dato"
-  },
-  {
-   "texto": "simulaciones: en Barcelona, en el 94 %; en Lleida, en el",
-   "cifra": "94",
-   "calculo": "D['P1']['08']*100",
-   "_donde": "dato"
-  },
-  {
-   "texto": "el 94 %; en Lleida, en el 62 %.",
-   "cifra": "62",
-   "calculo": "D['P1']['25']*100",
-   "_donde": "dato"
-  },
-  {
    "texto": "Cuatro provincias: el PSC gana",
    "cifra": "Cuatro",
    "calculo": "len(D['PRN'])",
@@ -680,36 +590,6 @@
    "texto": "Seis municipios de más de",
    "cifra": "Seis",
    "calculo": "len(D['AJG'])",
-   "_donde": "pie"
-  },
-  {
-   "texto": "encuestas, ERC pasaría de 7 a 11 diputados catalanes",
-   "cifra": "7",
-   "calculo": "D['E23']['ERC']",
-   "_donde": "pie"
-  },
-  {
-   "texto": "encuestas, ERC pasaría de 7 a 11 diputados catalanes",
-   "cifra": "11",
-   "calculo": "D['E29']['ERC']",
-   "_donde": "pie"
-  },
-  {
-   "texto": "diputados catalanes y Vox, de 2 a 6Los 48 diputados",
-   "cifra": "2",
-   "calculo": "D['E23']['VOX']",
-   "_donde": "pie"
-  },
-  {
-   "texto": "catalanes y Vox, de 2 a 6Los 48 diputados de las cuatro",
-   "cifra": "48",
-   "calculo": "sum(D['ESC26'].values())",
-   "_donde": "pie"
-  },
-  {
-   "texto": "6Los 48 diputados de las cuatro provincias catalanas:",
-   "cifra": "cuatro",
-   "calculo": "len(D['PRN'])",
    "_donde": "pie"
   }
  ],

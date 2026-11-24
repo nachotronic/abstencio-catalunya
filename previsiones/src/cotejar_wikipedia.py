@@ -37,13 +37,24 @@ AGREGADORES = {'keydata'}
 SONDEOS_INTERNOS = {
     'https://theobjective.com/espana/2026-11-01/sondeo-vox-71-escanos/',   # sondeo interno de Vox, desmentido por Vox
 }
+# filas que no son encuestas publicadas (url de la fuente): ejemplos hipotéticos de un analista en televisión, etc.
+NO_SON_ENCUESTAS = {
+    # «Metroscopia 19-11: PP 30, PSOE 30, Vox 19»: ejemplo hipotético de Ignacio Urquizu en Al Rojo Vivo (laSexta), que
+    # añade «no hay ninguna encuesta ahora mismo que lo diga»
+    'https://www.lasexta.com/programas/al-rojo-vivo/ignacio-urquizu-experto-demoscopia-cara-elecciones-29n-bloque-derecha-esta-muy-consolidado-esta-torno-49_202611196afef28f21e74551e81f5586.html',
+}
+# la misma casa con dos nombres: Electográfica llama «PF Global» a Public First (encuesta para Politico, 15-17-11-2026)
+# Y «Mediaflows Uv Odec» (Electográfica) es la encuesta de ODEC para Mediaflows–UV del 9-7-2026 (Wikipedia):
+# sin el alias salía dos veces, una sin escaños.
+ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec', 'imopinsights': 'imop'}
 PARTIDOS_COMO_CASA = {'pp', 'psoe', 'vox', 'sumar', 'podemos', 'erc', 'junts', 'pnv', 'bildu', 'ehbildu', 'bng'}
 
 
 def clave(nombre):
     """Nombre de encuestadora comparable (la misma regla que encuestas.py, sin depender de pandas)."""
     s = unicodedata.normalize('NFKD', str(nombre)).encode('ascii', 'ignore').decode().lower()
-    return re.sub(r'[^a-z0-9]', '', s)
+    s = re.sub(r'[^a-z0-9]', '', s)
+    return ALIAS_CASA.get(s, s)
 
 
 def descarga():
@@ -189,7 +200,7 @@ def parsea(texto):
                     if e and mod != 'OTROS':
                         a, b = escanos.get(mod, (0, 0))
                         escanos[mod] = (a + e[0], b + e[1])
-            if not votos or not cf or (url and url.group(1) in SONDEOS_INTERNOS):
+            if not votos or not cf or (url and url.group(1) in SONDEOS_INTERNOS | NO_SON_ENCUESTAS):
                 continue
             filas_out.append({'encuestadora': casa.strip(), 'cliente': medio.strip(), 'reestimacion': reest.group(1) if reest else '',
                               'campo_inicio': ci, 'campo_fin': cf,

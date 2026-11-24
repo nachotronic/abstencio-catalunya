@@ -1,0 +1,2186 @@
+{
+ "a-coruna/nestor-rego-candamil": {
+  "nombre": "Néstor Rego Candamil",
+  "siglas": "B.N.G.",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 6,
+   "cuentas": 19250.11,
+   "valores": 1000.0,
+   "otros": 27340.67,
+   "vehiculos": 4,
+   "deudas": 69264.48,
+   "url": "https://www.congreso.es/docbienes/leg14/000035/000035_000_e_0000924_20191128.pdf",
+   "fecha": "20191128"
+  },
+  "xv": {
+   "inmuebles": 6,
+   "cuentas": 27136.68,
+   "valores": 2500.0,
+   "otros": 34935.51,
+   "vehiculos": 3,
+   "deudas": 184062.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000224/000224_000_e_0000944_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "alicante/macarena-montesinos-de-miguel": {
+  "nombre": "Macarena Montesinos De Miguel",
+  "siglas": "PP",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 35520.0,
+   "valores": 0.0,
+   "otros": 76490.0,
+   "vehiculos": 1,
+   "deudas": 91972.07,
+   "url": "https://www.congreso.es/docbienes/leg14/000330/000330_000_e_0001066_20191202.pdf",
+   "fecha": "20191202"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 43238.51,
+   "valores": 0.0,
+   "otros": 202795.58,
+   "vehiculos": 1,
+   "deudas": 61735.41,
+   "url": "https://www.congreso.es/docbienes/leg15/000203/000203_000_e_0000864_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "almeria/rocio-de-meer-mendez": {
+  "nombre": "Rocío de Meer Méndez",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 3952.07,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 45841.48,
+   "url": "https://www.congreso.es/docbienes/leg14/000349/000349_000_e_0003683_20191226.pdf",
+   "fecha": "20191226"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 17612.45,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 30460.38,
+   "url": "https://www.congreso.es/docbienes/leg15/000278/000278_000_e_0001171_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "asturias/adriana-lastra-fernandez": {
+  "nombre": "Adriana Lastra Fernández",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 175072.48,
+   "valores": 0.0,
+   "otros": 10000.0,
+   "vehiculos": 0,
+   "deudas": 6353.15,
+   "url": "https://www.congreso.es/docbienes/leg14/000096/000096_000_e_0000323_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 71679.89,
+   "valores": 0.0,
+   "otros": 11000.0,
+   "vehiculos": 0,
+   "deudas": 36022.9,
+   "url": "https://www.congreso.es/docbienes/leg15/000141/000141_000_e_0000606_20230808.pdf",
+   "fecha": "20230808"
+  }
+ },
+ "asturias/jose-maria-figaredo-alvarez-sala": {
+  "nombre": "José María Figaredo Álvarez-Sala",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 111928.91,
+   "valores": 2985.22,
+   "otros": 0.0,
+   "vehiculos": 3,
+   "deudas": 287864.89,
+   "url": "https://www.congreso.es/docbienes/leg14/000304/000304_000_e_0000980_20191128.pdf",
+   "fecha": "20191128"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 17935.43,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 4,
+   "deudas": 616565.87,
+   "url": "https://www.congreso.es/docbienes/leg15/000186/000186_000_e_0000798_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "avila/manuel-arribas-maroto": {
+  "nombre": "Manuel Arribas Maroto",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 9000.0,
+   "valores": 1160.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000368/000368_000_e_0012783_20200224.pdf",
+   "fecha": "20200224"
+  },
+  "xv": {
+   "inmuebles": 0,
+   "cuentas": 15698.35,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000082/000082_000_e_0000356_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "barcelona/gabriel-rufian-romero": {
+  "nombre": "Gabriel Rufián Romero",
+  "siglas": "ERC",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 7.15,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 272947.32,
+   "url": "https://www.congreso.es/docbienes/leg14/000182/000182_000_e_0000604_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 22000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 242000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000299/000299_000_e_0001249_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "barcelona/juan-jose-aizcorbe-torra": {
+  "nombre": "Juan José Aizcorbe Torra",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 10066.18,
+   "valores": 41171.4,
+   "otros": 0.0,
+   "vehiculos": 3,
+   "deudas": 235727.59,
+   "url": "https://www.congreso.es/docbienes/leg14/000142/000142_000_e_0000471_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 8131.86,
+   "valores": 63826.88,
+   "otros": 11126.41,
+   "vehiculos": 3,
+   "deudas": 187284.72,
+   "url": "https://www.congreso.es/docbienes/leg15/000046/000046_000_e_0000200_20230802.pdf",
+   "fecha": "20230802"
+  }
+ },
+ "barcelona/miriam-nogueras-i-camero": {
+  "nombre": "Míriam Nogueras i Camero",
+  "siglas": "JxCat",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 256245.0,
+   "valores": 150.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000021/000021_000_e_0000078_20191119.pdf",
+   "fecha": "20191119"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 158189.53,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000228/000228_000_e_0000971_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "bizkaia/idoia-sagastizabal-unzetabarrenetxea": {
+  "nombre": "Idoia Sagastizabal Unzetabarrenetxea",
+  "siglas": "EAJ-PNV",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 5,
+   "cuentas": 15200.0,
+   "valores": 0.0,
+   "otros": 38984.43,
+   "vehiculos": 0,
+   "deudas": 142540.27,
+   "url": "https://www.congreso.es/docbienes/leg14/000097/000097_000_e_0000325_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 5,
+   "cuentas": 87689.2,
+   "valores": 0.0,
+   "otros": 54318.19,
+   "vehiculos": 0,
+   "deudas": 113050.44,
+   "url": "https://www.congreso.es/docbienes/leg15/000298/000298_000_e_0001246_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "bizkaia/oskar-matute-garcia-de-jalon": {
+  "nombre": "Oskar Matute Garcia de Jalón",
+  "siglas": "EH Bildu",
+  "n": 1,
+  "nota": "En la declaración de 2019 una partida de valores figura como «2.2263,30 €», una cifra que no se puede leer sin duda; no se suma.",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 29724.87,
+   "valores": 8744.63,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 72409.47,
+   "url": "https://www.congreso.es/docbienes/leg14/000063/000063_000_e_0000211_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 39892.0,
+   "valores": 11877.75,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 42683.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000282/000282_000_e_0001187_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "bizkaia/patxi-lopez-alvarez": {
+  "nombre": "Patxi López Alvarez",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 97251.46,
+   "valores": 28453.0,
+   "otros": 32401.1,
+   "vehiculos": 1,
+   "deudas": 93460.92,
+   "url": "https://www.congreso.es/docbienes/leg14/000052/000052_000_e_0000176_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 84297.5,
+   "valores": 35000.0,
+   "otros": 48943.28,
+   "vehiculos": 2,
+   "deudas": 42748.57,
+   "url": "https://www.congreso.es/docbienes/leg15/000344/000344_000_e_0001454_20230817.pdf",
+   "fecha": "20230817"
+  }
+ },
+ "burgos/esther-pena-camarero": {
+  "nombre": "Esther Peña Camarero",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 26184.15,
+   "valores": 0.0,
+   "otros": 5043.5,
+   "vehiculos": 1,
+   "deudas": 184232.07,
+   "url": "https://www.congreso.es/docbienes/leg14/000017/000017_000_e_0000054_20191119.pdf",
+   "fecha": "20191119"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 61217.0,
+   "valores": 0.0,
+   "otros": 3000.0,
+   "vehiculos": 1,
+   "deudas": 101985.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000079/000079_000_e_0000347_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "cantabria/emilio-jesus-del-valle-rodriguez": {
+  "nombre": "Emilio Jesús Del Valle Rodríguez",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 6000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 67977.75,
+   "url": "https://www.congreso.es/docbienes/leg14/000167/000167_000_e_0000549_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 14000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 35675.49,
+   "url": "https://www.congreso.es/docbienes/leg15/000115/000115_000_e_0000495_20230807.pdf",
+   "fecha": "20230807"
+  }
+ },
+ "castellon/alberto-teofilo-asarta-cuevas": {
+  "nombre": "Alberto Teófilo Asarta Cuevas",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "En 2023 se remite a la declaración de 2019 para inmuebles y vehículos, y añade una casa comprada en 2022. Su saldo bancario figura en «otros bienes».",
+  "xiv": {
+   "inmuebles": 6,
+   "cuentas": 193282.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000121/000121_000_e_0000399_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 7,
+   "cuentas": 89808.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000349/000349_000_e_0001697_20230914.pdf",
+   "fecha": "20230914"
+  }
+ },
+ "ciudad-real/ricardo-chamorro-delmo": {
+  "nombre": "Ricardo Chamorro Delmo",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "En la declaración de 2019 el saldo de un préstamo figura como «32.7522.66»; se toma como 32.752,66 €.",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 2672.95,
+   "valores": 0.0,
+   "otros": 13978.58,
+   "vehiculos": 0,
+   "deudas": 42719.3,
+   "url": "https://www.congreso.es/docbienes/leg14/000115/000115_000_e_0000374_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 0,
+   "cuentas": 40072.83,
+   "valores": 0.0,
+   "otros": 19491.5,
+   "vehiculos": 1,
+   "deudas": 29555.05,
+   "url": "https://www.congreso.es/docbienes/leg15/000287/000287_000_e_0001201_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "cordoba/jose-ramirez-del-rio": {
+  "nombre": "José Ramírez del Río",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 4632.96,
+   "valores": 0.0,
+   "otros": 5544.33,
+   "vehiculos": 0,
+   "deudas": 149354.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000087/000087_000_e_0000291_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 15588.83,
+   "valores": 0.0,
+   "otros": 12086.0,
+   "vehiculos": 1,
+   "deudas": 125020.27,
+   "url": "https://www.congreso.es/docbienes/leg15/000061/000061_000_e_0000271_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "cuenca/luis-carlos-sahuquillo-garcia": {
+  "nombre": "Luis Carlos Sahuquillo García",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "El plan de pensiones figura en observaciones; en 2023 da las aportaciones (15.726,26 y 8.000 €), no el saldo.",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 77397.3,
+   "valores": 0.0,
+   "otros": 23726.26,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000001/000001_000_e_0000004_20191118.pdf",
+   "fecha": "20191118"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 14280.19,
+   "valores": 0.0,
+   "otros": 23726.26,
+   "vehiculos": 1,
+   "deudas": 6243.28,
+   "url": "https://www.congreso.es/docbienes/leg15/000009/000009_000_e_0000038_20230801.pdf",
+   "fecha": "20230801"
+  }
+ },
+ "girona/marc-lamua-estanol": {
+  "nombre": "Marc Lamuà Estañol",
+  "siglas": "PSC",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 28049.3,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 153233.02,
+   "url": "https://www.congreso.es/docbienes/leg14/000186/000186_000_e_0000618_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 38625.67,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 141393.6,
+   "url": "https://www.congreso.es/docbienes/leg15/000102/000102_000_e_0000432_20230804.pdf",
+   "fecha": "20230804"
+  }
+ },
+ "guadalajara/angel-lopez-maraver": {
+  "nombre": "Ángel López Maraver",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "Una de las líneas de vehículos agrupa seis motocicletas.",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 26817.9,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 4,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000299/000299_000_e_0000967_20191128.pdf",
+   "fecha": "20191128"
+  },
+  "xv": {
+   "inmuebles": 0,
+   "cuentas": 18300.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 4,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000062/000062_000_e_0000276_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "huelva/tomas-fernandez-rios": {
+  "nombre": "Tomás Fernández Ríos",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 6500.0,
+   "valores": 181500.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 23505.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000315/000315_000_e_0001017_20191129.pdf",
+   "fecha": "20191129"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 5000.0,
+   "valores": 90500.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 94000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000199/000199_000_e_0000855_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "huesca/begona-nasarre-oliva": {
+  "nombre": "Begoña Nasarre Oliva",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 71500.0,
+   "valores": 1000.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000297/000297_000_e_0000961_20191128.pdf",
+   "fecha": "20191128"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 105272.1,
+   "valores": 2000.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000168/000168_000_e_0000712_20230808.pdf",
+   "fecha": "20230808"
+  }
+ },
+ "jaen/francisco-jose-alcaraz-martos": {
+  "nombre": "Francisco José Alcaraz Martos",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 1883.7,
+   "valores": 0.0,
+   "otros": 89250.0,
+   "vehiculos": 2,
+   "deudas": 106968.13,
+   "url": "https://www.congreso.es/docbienes/leg14/000241/000241_000_e_0000781_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 0.0,
+   "valores": 0.0,
+   "otros": 68928.02,
+   "vehiculos": 1,
+   "deudas": 84317.8,
+   "url": "https://www.congreso.es/docbienes/leg15/000003/000003_000_e_0000012_20230801.pdf",
+   "fecha": "20230801"
+  }
+ },
+ "la-rioja/maria-concepcion-gamarra-ruiz-clavijo": {
+  "nombre": "María Concepción Gamarra Ruiz Clavijo",
+  "siglas": "PP",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 89010.46,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 217836.71,
+   "url": "https://www.congreso.es/docbienes/leg14/000248/000248_000_e_0000804_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 192311.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 191920.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000301/000301_000_e_0001257_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "las-palmas/andres-alberto-rodriguez-almeida": {
+  "nombre": "Andrés Alberto Rodríguez Almeida",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "Parte de los inmuebles son de sociedades en las que participa. No se suman los avales que presta a esas sociedades.",
+  "xiv": {
+   "inmuebles": 7,
+   "cuentas": 1317.26,
+   "valores": 3506963.03,
+   "otros": 44545.71,
+   "vehiculos": 2,
+   "deudas": 413723.64,
+   "url": "https://www.congreso.es/docbienes/leg14/000245/000245_000_e_0001087_20191202.pdf",
+   "fecha": "20191202"
+  },
+  "xv": {
+   "inmuebles": 6,
+   "cuentas": 12876.02,
+   "valores": 3125572.44,
+   "otros": 50242.39,
+   "vehiculos": 2,
+   "deudas": 312869.61,
+   "url": "https://www.congreso.es/docbienes/leg15/000246/000246_000_e_0001029_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "leon/javier-alfonso-cendon": {
+  "nombre": "Javier Alfonso Cendón",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 78030.77,
+   "valores": 0.0,
+   "otros": 108000.0,
+   "vehiculos": 1,
+   "deudas": 118116.52,
+   "url": "https://www.congreso.es/docbienes/leg14/000089/000089_000_e_0000302_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 64869.9,
+   "valores": 0.0,
+   "otros": 117066.48,
+   "vehiculos": 1,
+   "deudas": 96502.84,
+   "url": "https://www.congreso.es/docbienes/leg15/000236/000236_000_e_0000999_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "lleida/ines-granollers-i-cunillera": {
+  "nombre": "Inés Granollers i Cunillera",
+  "siglas": "ERC",
+  "n": 1,
+  "nota": "En 2019 indica que todas sus deudas son compartidas al 50 % con su cónyuge.",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 4753.79,
+   "valores": 56552.16,
+   "otros": 5733.48,
+   "vehiculos": 0,
+   "deudas": 125165.94,
+   "url": "https://www.congreso.es/docbienes/leg14/000180/000180_000_e_0000596_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 9300.0,
+   "valores": 35103.55,
+   "otros": 25963.34,
+   "vehiculos": 1,
+   "deudas": 79646.38,
+   "url": "https://www.congreso.es/docbienes/leg15/000214/000214_000_e_0000909_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "madrid/pedro-sanchez-perez-castejon": {
+  "nombre": "Pedro Sánchez Pérez-Castejón",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "En 2023 incluye en «otros bienes» 4.418,40 € de «donativos a PSOE y otros».",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 43956.98,
+   "valores": 5792.0,
+   "otros": 106091.73,
+   "vehiculos": 0,
+   "deudas": 86242.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000262/000262_000_e_0000846_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 19208.79,
+   "valores": 86553.2,
+   "otros": 109796.5,
+   "vehiculos": 0,
+   "deudas": 61786.31,
+   "url": "https://www.congreso.es/docbienes/leg15/000177/000177_000_e_0000756_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "madrid/santiago-abascal-conde": {
+  "nombre": "Santiago Abascal Conde",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "La hipoteca de 2023 es, según la declaración, el 50 % de un préstamo de 736.000 €.",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 44143.55,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 11998.12,
+   "url": "https://www.congreso.es/docbienes/leg14/000039/000039_000_e_0000133_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 29017.94,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 341300.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000316/000316_000_e_0001326_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "murcia/joaquin-robles-lopez": {
+  "nombre": "Joaquín Robles López",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 2331.91,
+   "valores": 0.0,
+   "otros": 67.2,
+   "vehiculos": 1,
+   "deudas": 109973.73,
+   "url": "https://www.congreso.es/docbienes/leg14/000233/000233_000_e_0000759_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 42576.0,
+   "valores": 59.96,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 83827.41,
+   "url": "https://www.congreso.es/docbienes/leg15/000305/000305_000_e_0001271_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "ourense/ana-belen-vazquez-blanco": {
+  "nombre": "Ana Belén Vázquez Blanco",
+  "siglas": "PP",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 51024.31,
+   "valores": 1854.76,
+   "otros": 20973.13,
+   "vehiculos": 3,
+   "deudas": 145106.95,
+   "url": "https://www.congreso.es/docbienes/leg14/000108/000108_000_e_0000353_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 41071.06,
+   "valores": 1925.78,
+   "otros": 24717.68,
+   "vehiculos": 1,
+   "deudas": 70908.58,
+   "url": "https://www.congreso.es/docbienes/leg15/000184/000184_000_e_0000788_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "palencia/maria-luz-martinez-seijo": {
+  "nombre": "María Luz Martínez Seijo",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 363879.14,
+   "valores": 22372.24,
+   "otros": 71539.38,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000240/000240_000_e_0000777_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 7,
+   "cuentas": 57615.21,
+   "valores": 335580.63,
+   "otros": 88772.2,
+   "vehiculos": 3,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000056/000056_000_e_0000241_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "palencia/milagros-marcos-ortega": {
+  "nombre": "Milagros Marcos Ortega",
+  "siglas": "PP",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 69750.0,
+   "valores": 0.0,
+   "otros": 92000.0,
+   "vehiculos": 1,
+   "deudas": 103000.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000084/000084_000_e_0001766_20191212.pdf",
+   "fecha": "20191212"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 28475.21,
+   "valores": 33623.0,
+   "otros": 113481.0,
+   "vehiculos": 1,
+   "deudas": 72726.22,
+   "url": "https://www.congreso.es/docbienes/leg15/000310/000310_000_e_0001296_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "salamanca/david-serrada-pariente": {
+  "nombre": "David Serrada Pariente",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "No se suman los seguros de vida que declara (82.000 y 55.000 € en 2019; 41.900 y 36.400 € en 2023).",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 29017.0,
+   "valores": 0.0,
+   "otros": 5729.89,
+   "vehiculos": 1,
+   "deudas": 88746.76,
+   "url": "https://www.congreso.es/docbienes/leg14/000032/000032_000_e_0000109_20191119.pdf",
+   "fecha": "20191119"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 38450.0,
+   "valores": 0.0,
+   "otros": 6548.0,
+   "vehiculos": 1,
+   "deudas": 132550.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000019/000019_000_e_0000084_20230802.pdf",
+   "fecha": "20230802"
+  }
+ },
+ "segovia/jose-luis-aceves-galindo": {
+  "nombre": "José Luis Aceves Galindo",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 4719.17,
+   "valores": 45583.91,
+   "otros": 516.81,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000050/000050_000_e_0000165_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 32390.01,
+   "valores": 28467.71,
+   "otros": 1196.29,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000057/000057_000_e_0000248_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "sevilla/alfonso-rodriguez-gomez-de-celis": {
+  "nombre": "Alfonso Rodríguez Gómez de Celis",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 69280.0,
+   "valores": 2000.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 63640.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000159/000159_000_e_0000521_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 91784.8,
+   "valores": 2000.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 197676.63,
+   "url": "https://www.congreso.es/docbienes/leg15/000126/000126_000_e_0000544_20230807.pdf",
+   "fecha": "20230807"
+  }
+ },
+ "sevilla/maria-de-los-reyes-romero-vilches": {
+  "nombre": "María de los Reyes Romero Vilches",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "En 2019 declaró en cuentas «9000 euros aproximadamente». En 2023 añade la octava parte de dos casas heredadas.",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 9000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000165/000165_000_e_0000543_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 60000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000295/000295_000_e_0001238_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "soria/tomas-cabezon-casas": {
+  "nombre": "Tomás Cabezón Casas",
+  "siglas": "PP",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 68833.0,
+   "valores": 0.0,
+   "otros": 27048.4,
+   "vehiculos": 1,
+   "deudas": 104900.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000022/000022_000_e_0000079_20191119.pdf",
+   "fecha": "20191119"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 121638.0,
+   "valores": 62000.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 70847.6,
+   "url": "https://www.congreso.es/docbienes/leg15/000001/000001_000_e_0000005_20230731.pdf",
+   "fecha": "20230731"
+  }
+ },
+ "teruel/herminio-rufino-sancho-iniguez": {
+  "nombre": "Herminio Rufino Sancho Íniguez",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "En 2023 no declara ninguna deuda. Parte de los inmuebles pertenecen a una sociedad en la que participa.",
+  "xiv": {
+   "inmuebles": 5,
+   "cuentas": 4163.09,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 250724.87,
+   "url": "https://www.congreso.es/docbienes/leg14/000014/000014_000_e_0000044_20191119.pdf",
+   "fecha": "20191119"
+  },
+  "xv": {
+   "inmuebles": 5,
+   "cuentas": 62589.06,
+   "valores": 0.0,
+   "otros": 42205.22,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000122/000122_000_e_0000521_20230807.pdf",
+   "fecha": "20230807"
+  }
+ },
+ "teruel/jose-alberto-herrero-bono": {
+  "nombre": "José Alberto Herrero Bono",
+  "siglas": "PP",
+  "n": 1,
+  "nota": "Dos parcelas rústicas más figuran en observaciones.",
+  "xiv": {
+   "inmuebles": 6,
+   "cuentas": 18734.17,
+   "valores": 60.1,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 47300.19,
+   "url": "https://www.congreso.es/docbienes/leg14/000228/000228_000_e_0000740_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 6,
+   "cuentas": 28577.59,
+   "valores": 60.1,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 25175.89,
+   "url": "https://www.congreso.es/docbienes/leg15/000269/000269_000_e_0001126_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "toledo/manuel-mariscal-zabala": {
+  "nombre": "Manuel Mariscal Zabala",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "La hipoteca de 2023 figura como «préstamo hipotecario 50%».",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 18550.4,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000143/000143_000_e_0000472_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 15500.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 338296.86,
+   "url": "https://www.congreso.es/docbienes/leg15/000251/000251_000_e_0001054_20230811.pdf",
+   "fecha": "20230811"
+  }
+ },
+ "valencia/ignacio-gil-lazaro": {
+  "nombre": "Ignacio Gil Lázaro",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "La vivienda familiar figura en observaciones, por la mitad que le corresponde en gananciales.",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 264365.59,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000281/000281_000_e_0000908_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 313044.25,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000110/000110_000_e_0000467_20230804.pdf",
+   "fecha": "20230804"
+  }
+ },
+ "valladolid/pablo-saez-alonso-munumer": {
+  "nombre": "Pablo Sáez Alonso-Muñumer",
+  "siglas": "VOX",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 11645.96,
+   "valores": 108794.06,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 115480.16,
+   "url": "https://www.congreso.es/docbienes/leg14/000271/000271_000_e_0000874_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 5,
+   "cuentas": 13762.07,
+   "valores": 109951.14,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 44926.91,
+   "url": "https://www.congreso.es/docbienes/leg15/000050/000050_000_e_0000224_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "zamora/antidio-fagundez-campo": {
+  "nombre": "Antidio Fagúndez Campo",
+  "siglas": "PSOE",
+  "n": 1,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 25500.0,
+   "valores": 119754.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 301926.61,
+   "url": "https://www.congreso.es/docbienes/leg14/000004/000004_000_e_0000011_20191118.pdf",
+   "fecha": "20191118"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 91599.8,
+   "valores": 169754.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 259536.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000024/000024_000_e_0000108_20230802.pdf",
+   "fecha": "20230802"
+  }
+ },
+ "a-coruna/tristana-maria-moraleja-gomez": {
+  "nombre": "Tristana María Moraleja Gómez",
+  "siglas": "PP",
+  "n": 6,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 103028.64,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000057/000057_000_e_0000198_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 121584.08,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000188/000188_000_e_0000802_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "albacete/maria-carmen-navarro-lacoba": {
+  "nombre": "María Carmen Navarro Lacoba",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 75000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 220000.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000076/000076_000_e_0000247_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 45000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 360000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000205/000205_000_e_0000869_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "alicante/cesar-sanchez-perez": {
+  "nombre": "César Sánchez Pérez",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 4000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 151000.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000237/000237_000_e_0000769_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 20000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 93450.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000204/000204_000_e_0000866_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "alicante/jose-maria-sanchez-garcia": {
+  "nombre": "José María Sánchez García",
+  "siglas": "VOX",
+  "n": 3,
+  "nota": "En 2023 declara una participación de 78.384,44 € en su sociedad de abogados y una deuda con esa misma sociedad por igual cantidad; se cuentan las dos.",
+  "xiv": {
+   "inmuebles": 13,
+   "cuentas": 440223.09,
+   "valores": 275350.15,
+   "otros": 0.0,
+   "vehiculos": 4,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000342/000342_000_e_0001439_20191205.pdf",
+   "fecha": "20191205"
+  },
+  "xv": {
+   "inmuebles": 14,
+   "cuentas": 694413.48,
+   "valores": 78384.44,
+   "otros": 0.0,
+   "vehiculos": 4,
+   "deudas": 197524.38,
+   "url": "https://www.congreso.es/docbienes/leg15/000094/000094_000_e_0000393_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "asturias/roberto-garcia-moris": {
+  "nombre": "Roberto García Morís",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 6,
+   "cuentas": 3822.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 25741.29,
+   "url": "https://www.congreso.es/docbienes/leg14/000221/000221_000_e_0000722_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 6,
+   "cuentas": 17215.83,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 55165.6,
+   "url": "https://www.congreso.es/docbienes/leg15/000182/000182_000_e_0000776_20230809.pdf",
+   "fecha": "20230809"
+  }
+ },
+ "barcelona/arnau-ramirez-carner": {
+  "nombre": "Arnau Ramírez Carner",
+  "siglas": "PSC",
+  "n": 9,
+  "nota": "En 2023 declara una hipoteca pero ningún inmueble.",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 9500.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000195/000195_000_e_0000650_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 0,
+   "cuentas": 12666.55,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 147000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000088/000088_000_e_0000379_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "barcelona/francisco-aranda-vargas": {
+  "nombre": "Francisco Aranda Vargas",
+  "siglas": "PSC",
+  "n": 5,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 6201.96,
+   "valores": 15591.76,
+   "otros": 1443.55,
+   "vehiculos": 1,
+   "deudas": 115755.04,
+   "url": "https://www.congreso.es/docbienes/leg14/000191/000191_000_e_0000631_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 15594.35,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 237731.62,
+   "url": "https://www.congreso.es/docbienes/leg15/000020/000020_000_e_0000087_20230802.pdf",
+   "fecha": "20230802"
+  }
+ },
+ "barcelona/gerardo-pisarello-prados": {
+  "nombre": "Gerardo Pisarello Prados",
+  "siglas": "COMUNS-FRONT AMPLI",
+  "n": 28,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 78030.55,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000348/000348_000_e_0003164_20191220.pdf",
+   "fecha": "20191220"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 68130.77,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 161437.47,
+   "url": "https://www.congreso.es/docbienes/leg15/000318/000318_000_e_0001338_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "barcelona/jose-zaragoza-alonso": {
+  "nombre": "José Zaragoza Alonso",
+  "siglas": "PSC",
+  "n": 3,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 193715.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000181/000181_000_e_0000602_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 123562.0,
+   "valores": 5000.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000027/000027_000_e_0000128_20230802.pdf",
+   "fecha": "20230802"
+  }
+ },
+ "barcelona/josep-pages-i-masso": {
+  "nombre": "Josep Pagès i Massó",
+  "siglas": "JxCat",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 5611.94,
+   "valores": 971.95,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 327163.51,
+   "url": "https://www.congreso.es/docbienes/leg14/000379/000379_000_e_0102837_20210323.pdf",
+   "fecha": "20210323"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 63690.41,
+   "valores": 1191.03,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 259386.04,
+   "url": "https://www.congreso.es/docbienes/leg15/000392/000392_000_e_0051602_20241212.pdf",
+   "fecha": "20241212"
+  }
+ },
+ "barcelona/pilar-calvo-i-gomez": {
+  "nombre": "Pilar Calvo i Gómez",
+  "siglas": "JxCat",
+  "n": 3,
+  "nota": "Uno de los inmuebles es un piso de una sociedad patrimonial.",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 3035.42,
+   "valores": 293876.92,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 80000.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000383/000383_000_e_0111759_20210415.pdf",
+   "fecha": "20210415"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 7445.16,
+   "valores": 287717.93,
+   "otros": 7866.3,
+   "vehiculos": 1,
+   "deudas": 68057.97,
+   "url": "https://www.congreso.es/docbienes/leg15/000231/000231_000_e_0000989_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "bizkaia/maria-guijarro-ceballos": {
+  "nombre": "Maria Guijarro Ceballos",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 23418.5,
+   "valores": 500.0,
+   "otros": 7855.0,
+   "vehiculos": 0,
+   "deudas": 136521.93,
+   "url": "https://www.congreso.es/docbienes/leg14/000128/000128_000_e_0000419_20191122.pdf",
+   "fecha": "20191122"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 35515.0,
+   "valores": 0.0,
+   "otros": 9110.0,
+   "vehiculos": 0,
+   "deudas": 284575.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000104/000104_000_e_0000446_20230804.pdf",
+   "fecha": "20230804"
+  }
+ },
+ "castellon/oscar-clavell-lopez": {
+  "nombre": "Óscar Clavell López",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 97453.69,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 68244.73,
+   "url": "https://www.congreso.es/docbienes/leg14/000095/000095_000_e_0000320_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 215687.27,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 30573.66,
+   "url": "https://www.congreso.es/docbienes/leg15/000103/000103_000_e_0000436_20230804.pdf",
+   "fecha": "20230804"
+  }
+ },
+ "ciudad-real/cristina-lopez-zamora": {
+  "nombre": "Cristina López Zamora",
+  "siglas": "PSOE",
+  "n": 3,
+  "nota": "No se suma el seguro de vida que declara (71.000 €). En 2023 incluye en «otros bienes» un préstamo entre familiares con 20.000 € pendientes, que se suma tal como lo declaró.",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 7601.55,
+   "valores": 0.0,
+   "otros": 201.69,
+   "vehiculos": 0,
+   "deudas": 65307.29,
+   "url": "https://www.congreso.es/docbienes/leg14/000213/000213_000_e_0000696_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 74181.59,
+   "valores": 0.0,
+   "otros": 20000.0,
+   "vehiculos": 1,
+   "deudas": 50471.65,
+   "url": "https://www.congreso.es/docbienes/leg15/000364/000364_000_e_0006663_20231220.pdf",
+   "fecha": "20231220"
+  }
+ },
+ "gipuzkoa/joseba-andoni-agirretxea-urresti": {
+  "nombre": "Joseba Andoni Agirretxea Urresti",
+  "siglas": "EAJ-PNV",
+  "n": 6,
+  "nota": "En 2019 declaró una hipoteca pero ningún inmueble; en 2023 declara un apartamento en Hendaya comprado en 2007.",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 25815.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 113935.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000100/000100_000_e_0000328_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 33722.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 76385.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000296/000296_000_e_0001239_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "granada/jose-antonio-rodriguez-salas": {
+  "nombre": "José Antonio Rodríguez Salas",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 17389.0,
+   "valores": 8913.42,
+   "otros": 10554.15,
+   "vehiculos": 1,
+   "deudas": 60981.92,
+   "url": "https://www.congreso.es/docbienes/leg14/000005/000005_000_e_0000015_20191118.pdf",
+   "fecha": "20191118"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 7455.0,
+   "valores": 8577.0,
+   "otros": 37297.0,
+   "vehiculos": 2,
+   "deudas": 25974.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000120/000120_000_e_0000518_20230807.pdf",
+   "fecha": "20230807"
+  }
+ },
+ "huelva/maria-luisa-faneca-lopez": {
+  "nombre": "María Luisa Faneca López",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 6568.0,
+   "valores": 1000.0,
+   "otros": 18429.12,
+   "vehiculos": 1,
+   "deudas": 106622.59,
+   "url": "https://www.congreso.es/docbienes/leg14/000244/000244_000_e_0000790_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 14100.0,
+   "valores": 1000.0,
+   "otros": 22450.0,
+   "vehiculos": 1,
+   "deudas": 70764.4,
+   "url": "https://www.congreso.es/docbienes/leg15/000155/000155_000_e_0000668_20230808.pdf",
+   "fecha": "20230808"
+  }
+ },
+ "jaen/juan-francisco-serrano-martinez": {
+  "nombre": "Juan Francisco Serrano Martínez",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 10443.25,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 243651.86,
+   "url": "https://www.congreso.es/docbienes/leg14/000148/000148_000_e_0000487_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 29350.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 204606.25,
+   "url": "https://www.congreso.es/docbienes/leg15/000237/000237_000_e_0001001_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "las-palmas/guillermo-carlos-mariscal-anaya": {
+  "nombre": "Guillermo Carlos Mariscal Anaya",
+  "siglas": "PP",
+  "n": 3,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 4427.38,
+   "valores": 14824.15,
+   "otros": 13630.0,
+   "vehiculos": 1,
+   "deudas": 235437.5,
+   "url": "https://www.congreso.es/docbienes/leg14/000324/000324_000_e_0001044_20191129.pdf",
+   "fecha": "20191129"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 3954.33,
+   "valores": 15361.15,
+   "otros": 28955.73,
+   "vehiculos": 1,
+   "deudas": 174956.02,
+   "url": "https://www.congreso.es/docbienes/leg15/000244/000244_000_e_0001023_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "las-palmas/luc-andre-diouf-dioh": {
+  "nombre": "Luc Andre Diouf Dioh",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 1149.0,
+   "valores": 0.0,
+   "otros": 4200.0,
+   "vehiculos": 0,
+   "deudas": 33000.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000209/000209_000_e_0000685_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 23000.0,
+   "valores": 0.0,
+   "otros": 6000.0,
+   "vehiculos": 0,
+   "deudas": 15000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000348/000348_000_e_0001661_20230911.pdf",
+   "fecha": "20230911"
+  }
+ },
+ "lugo/jaime-de-olano-vela": {
+  "nombre": "Jaime de Olano Vela",
+  "siglas": "PP",
+  "n": 3,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 50147.81,
+   "valores": 0.0,
+   "otros": 328.28,
+   "vehiculos": 1,
+   "deudas": 87716.03,
+   "url": "https://www.congreso.es/docbienes/leg14/000158/000158_000_e_0000516_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 4215.06,
+   "valores": 0.0,
+   "otros": 328.28,
+   "vehiculos": 0,
+   "deudas": 75000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000147/000147_000_e_0000640_20230808.pdf",
+   "fecha": "20230808"
+  }
+ },
+ "madrid/cayetana-alvarez-de-toledo-peralta-ramos": {
+  "nombre": "Cayetana Álvarez de Toledo Peralta Ramos",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "En 2023 incluye en la casilla de depósitos un fondo de inversión de 1.221.158 €.",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 397244.0,
+   "valores": 400.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000296/000296_000_e_0000956_20191128.pdf",
+   "fecha": "20191128"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 22776.0,
+   "valores": 1221158.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 688595.36,
+   "url": "https://www.congreso.es/docbienes/leg15/000311/000311_000_e_0001306_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "madrid/edurne-uriarte-bengoechea": {
+  "nombre": "Edurne Uriarte Bengoechea",
+  "siglas": "PP",
+  "n": 22,
+  "nota": "En 2024 incluye su plan de pensiones en la casilla de depósitos.",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 3000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 83300.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000029/000029_000_e_0000096_20191119.pdf",
+   "fecha": "20191119"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 23200.0,
+   "valores": 0.0,
+   "otros": 6966.31,
+   "vehiculos": 1,
+   "deudas": 11313.16,
+   "url": "https://www.congreso.es/docbienes/leg15/000375/000375_000_e_0010821_20240207.pdf",
+   "fecha": "20240207"
+  }
+ },
+ "madrid/fernando-grande-marlaska-gomez": {
+  "nombre": "Fernando Grande-Marlaska Gómez",
+  "siglas": "PSOE",
+  "n": 5,
+  "nota": "En 2019 indicó que el saldo en cuenta incluía la venta de su vivienda habitual en 2018, pendiente de reinvertir. En 2023 declara un piso en Madrid comprado en 2020 con hipoteca.",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 404000.0,
+   "valores": 10000.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000173/000173_000_e_0000570_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 10000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 91000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000271/000271_000_e_0001139_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "madrid/maria-de-la-cabeza-ruiz-solas": {
+  "nombre": "María de la Cabeza Ruiz Solás",
+  "siglas": "VOX",
+  "n": 6,
+  "nota": "Dos de los inmuebles son de sociedades en las que participa.",
+  "xiv": {
+   "inmuebles": 5,
+   "cuentas": 6754.15,
+   "valores": 1001.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 286801.22,
+   "url": "https://www.congreso.es/docbienes/leg14/000287/000287_000_e_0000929_20191128.pdf",
+   "fecha": "20191128"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 35405.28,
+   "valores": 1001.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 340873.92,
+   "url": "https://www.congreso.es/docbienes/leg15/000274/000274_000_e_0001162_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "madrid/maria-margarita-robles-fernandez": {
+  "nombre": "María Margarita Robles Fernández",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 411854.0,
+   "valores": 0.0,
+   "otros": 93793.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000037/000037_000_e_0000126_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 407632.0,
+   "valores": 0.0,
+   "otros": 94024.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000218/000218_000_e_0000925_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "madrid/rafael-simancas-simancas": {
+  "nombre": "Rafael Simancas Simancas",
+  "siglas": "PSOE",
+  "n": 7,
+  "nota": "Indica que inmuebles y cuentas son gananciales, compartidos con su cónyuge.",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 50460.0,
+   "valores": 30.0,
+   "otros": 23049.58,
+   "vehiculos": 3,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000274/000274_000_e_0000888_20191127.pdf",
+   "fecha": "20191127"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 92549.5,
+   "valores": 30.0,
+   "otros": 21049.58,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000215/000215_000_e_0000911_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "malaga/patricia-rueda-perello": {
+  "nombre": "Patricia Rueda Perelló",
+  "siglas": "VOX",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 89648.05,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 369756.41,
+   "url": "https://www.congreso.es/docbienes/leg14/000068/000068_000_e_0000224_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 79121.04,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 318138.34,
+   "url": "https://www.congreso.es/docbienes/leg15/000277/000277_000_e_0001169_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "murcia/juan-luis-pedreno-molina": {
+  "nombre": "Juan Luis Pedreño Molina",
+  "siglas": "PP",
+  "n": 4,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 16643.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 131606.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000124/000124_000_e_0000408_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 27000.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 35875.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000328/000328_000_e_0001376_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "navarra/maria-isabel-bel-pozueta-fernandez-eh-bildu": {
+  "nombre": "María Isabel (Bel) Pozueta Fernández (EH BILDU)",
+  "siglas": "EH BILDU-ERC",
+  "n": 5,
+  "nota": "En 2023 declara también una plaza de garaje y terrenos que no figuraban en 2019, y da en una sola cifra cuentas, fondos y plan de pensiones.",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 91735.06,
+   "valores": 0.0,
+   "otros": 7754.01,
+   "vehiculos": 1,
+   "deudas": 26354.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000117/000117_000_e_0000390_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 6,
+   "cuentas": 75292.35,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 2,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000283/000283_000_e_0001188_20230814.pdf",
+   "fecha": "20230814"
+  }
+ },
+ "navarra/sergio-sayas-lopez-pp": {
+  "nombre": "Sergio Sayas López (PP)",
+  "siglas": "UPN-PP",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 112448.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 142368.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000066/000066_000_e_0000217_20191120.pdf",
+   "fecha": "20191120"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 152625.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 99800.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000138/000138_000_e_0000593_20230808.pdf",
+   "fecha": "20230808"
+  }
+ },
+ "ourense/celso-luis-delgado-arce": {
+  "nombre": "Celso Luis Delgado Arce",
+  "siglas": "PP",
+  "n": 4,
+  "nota": "Sus participaciones en un despacho de abogados figuran por su valor teórico contable. Declara en una sola cifra «planes de pensiones-seguros», sin desglosar, y se suma entera.",
+  "xiv": {
+   "inmuebles": 4,
+   "cuentas": 591718.88,
+   "valores": 409723.97,
+   "otros": 186634.86,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000107/000107_000_e_0000352_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 4,
+   "cuentas": 620061.45,
+   "valores": 453080.99,
+   "otros": 197507.3,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000031/000031_000_e_0000148_20230802.pdf",
+   "fecha": "20230802"
+  }
+ },
+ "salamanca/jose-antonio-bermudez-de-castro-fernandez": {
+  "nombre": "José Antonio Bermúdez de Castro Fernández",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "En 2019 declaró el total de unas cuentas gananciales pendientes de reparto; según la declaración de 2023, esa sociedad de gananciales se liquidó en julio de 2023. En 2023 no da el valor de su plan de pensiones.",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 347608.0,
+   "valores": 11553.0,
+   "otros": 6000.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000171/000171_000_e_0000566_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 1,
+   "cuentas": 263178.0,
+   "valores": 95837.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000109/000109_000_e_0000464_20230804.pdf",
+   "fecha": "20230804"
+  }
+ },
+ "sevilla/maria-soledad-cruz-guzman-garcia": {
+  "nombre": "María Soledad Cruz-Guzmán García",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "No se suma su participación del 25 % en una sociedad profesional, que declara sin valor propio (solo los fondos propios de la sociedad). En 2023 su vehículo es de esa sociedad.",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 9672.17,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 149079.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000149/000149_000_e_0000491_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 3,
+   "cuentas": 47300.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000306/000306_000_e_0001289_20230816.pdf",
+   "fecha": "20230816"
+  }
+ },
+ "sevilla/ricardo-tarno-blanco": {
+  "nombre": "Ricardo Tarno Blanco",
+  "siglas": "PP",
+  "n": 3,
+  "nota": "En 2023 da 1.600 € como valor nominal de sus acciones del Betis; en 2022 no les puso valor.",
+  "xiv": {
+   "inmuebles": 5,
+   "cuentas": 45507.14,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 25835.17,
+   "url": "https://www.congreso.es/docbienes/leg14/000388/000388_000_e_0187140_20220202.pdf",
+   "fecha": "20220202"
+  },
+  "xv": {
+   "inmuebles": 5,
+   "cuentas": 48027.51,
+   "valores": 1600.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 18000.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000071/000071_000_e_0000320_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "tarragona/jordi-salvador-duch": {
+  "nombre": "Jordi Salvador Duch",
+  "siglas": "ERC",
+  "n": 6,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 2,
+   "cuentas": 16552.52,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 46992.55,
+   "url": "https://www.congreso.es/docbienes/leg14/000179/000179_000_e_0000592_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 73187.14,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 8886.67,
+   "url": "https://www.congreso.es/docbienes/leg15/000073/000073_000_e_0000324_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "toledo/sergio-gutierrez-prieto": {
+  "nombre": "Sergio Gutiérrez Prieto",
+  "siglas": "PSOE",
+  "n": 2,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 1,
+   "cuentas": 211275.09,
+   "valores": 0.0,
+   "otros": 83406.44,
+   "vehiculos": 0,
+   "deudas": 70171.09,
+   "url": "https://www.congreso.es/docbienes/leg14/000172/000172_000_e_0000567_20191125.pdf",
+   "fecha": "20191125"
+  },
+  "xv": {
+   "inmuebles": 2,
+   "cuentas": 138358.64,
+   "valores": 600.0,
+   "otros": 89540.49,
+   "vehiculos": 0,
+   "deudas": 155004.6,
+   "url": "https://www.congreso.es/docbienes/leg15/000222/000222_000_e_0000938_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "valencia/belen-hoyo-julia": {
+  "nombre": "Belén Hoyo Juliá",
+  "siglas": "PP",
+  "n": 3,
+  "nota": "",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 19400.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000337/000337_000_e_0001085_20191202.pdf",
+   "fecha": "20191202"
+  },
+  "xv": {
+   "inmuebles": 0,
+   "cuentas": 20500.0,
+   "valores": 0.0,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000059/000059_000_e_0000263_20230803.pdf",
+   "fecha": "20230803"
+  }
+ },
+ "valencia/vicent-sarria-morell": {
+  "nombre": "Vicent Sarrià Morell",
+  "siglas": "PSOE",
+  "n": 6,
+  "nota": "Según la declaración de 2023, en 2022 heredó cuatro inmuebles y una participación en otro.",
+  "xiv": {
+   "inmuebles": 3,
+   "cuentas": 12945.69,
+   "valores": 103466.02,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 241889.73,
+   "url": "https://www.congreso.es/docbienes/leg14/000083/000083_000_e_0000275_20191121.pdf",
+   "fecha": "20191121"
+  },
+  "xv": {
+   "inmuebles": 7,
+   "cuentas": 27017.78,
+   "valores": 161621.46,
+   "otros": 0.0,
+   "vehiculos": 1,
+   "deudas": 206430.73,
+   "url": "https://www.congreso.es/docbienes/leg15/000209/000209_000_e_0000880_20230810.pdf",
+   "fecha": "20230810"
+  }
+ },
+ "valladolid/eduardo-carazo-hermoso": {
+  "nombre": "Eduardo Carazo Hermoso",
+  "siglas": "PP",
+  "n": 2,
+  "nota": "Según la declaración de 2023, parte de sus fondos proceden de una herencia.",
+  "xiv": {
+   "inmuebles": 0,
+   "cuentas": 15666.83,
+   "valores": 61.03,
+   "otros": 0.0,
+   "vehiculos": 0,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg14/000234/000234_000_e_0000760_20191126.pdf",
+   "fecha": "20191126"
+  },
+  "xv": {
+   "inmuebles": 0,
+   "cuentas": 102854.74,
+   "valores": 61.38,
+   "otros": 57302.1,
+   "vehiculos": 1,
+   "deudas": 0.0,
+   "url": "https://www.congreso.es/docbienes/leg15/000273/000273_000_e_0001155_20230814.pdf",
+   "fecha": "20230814"
+  }
+ }
+}

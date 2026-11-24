@@ -45,34 +45,14 @@
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "población al 24,5 %. Vox, de 65 a diez. Para el 29N,",
+   "texto": "población al 24,5 %. Vox, de 65 a diez.",
    "cifra": "65",
    "calculo": "D['GANA']['2019_11']['VOX']"
   },
   {
-   "texto": "población al 24,5 %. Vox, de 65 a diez. Para el 29N, la media",
+   "texto": "población al 24,5 %. Vox, de 65 a diez.",
    "cifra": "diez",
    "calculo": "D['GANA']['2023_07']['VOX']"
-  },
-  {
-   "texto": "media de encuestas da al PP 8 de los 21 diputados,",
-   "cifra": "8",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas da al PP 8 de los 21 diputados, al PSOE 7",
-   "cifra": "21",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "los 21 diputados, al PSOE 7 y a Vox 6.",
-   "cifra": "7",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "diputados, al PSOE 7 y a Vox 6.",
-   "cifra": "6",
-   "calculo": "D['E29']['VOX']"
   },
   {
    "texto": "elige el 29 de noviembre 21 diputados: 6 en Toledo,",
@@ -440,36 +420,6 @@
    "calculo": "D['AJG'][0][4]"
   },
   {
-   "texto": "el reparto central de los 21 escaños da al PP 8,",
-   "cifra": "21",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "de los 21 escaños da al PP 8, dos menos que en 2023;",
-   "cifra": "8",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "menos que en 2023; al PSOE, 7, uno menos, y a Vox,",
-   "cifra": "7",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "PSOE, 7, uno menos, y a Vox, 6, el doble que los tres",
-   "cifra": "6",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "Vox, 6, el doble que los tres de 2023. El PP es el",
-   "cifra": "tres",
-   "calculo": "D['E23']['VOX']"
-  },
-  {
-   "texto": "de las simulaciones en las cinco provincias.",
-   "cifra": "cinco",
-   "calculo": "len(D['CAP'])"
-  },
-  {
    "texto": "Vox: de 65 municipios a diez",
    "cifra": "65",
    "calculo": "D['GANA']['2019_11']['VOX']"
@@ -570,26 +520,6 @@
    "calculo": "D['GANA']['2023_07']['EMPATE']"
   },
   {
-   "texto": "encuestas, Vox pasaría de tres a seis diputados en",
-   "cifra": "tres",
-   "calculo": "D['E23']['VOX']"
-  },
-  {
-   "texto": "encuestas, Vox pasaría de tres a seis diputados en Castilla-La",
-   "cifra": "seis",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "perdería dos y el PSOE, unoLos 21 diputados de las cinco",
-   "cifra": "21",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "unoLos 21 diputados de las cinco provincias: un cuadrado",
-   "cifra": "cinco",
-   "calculo": "len(D['CAP'])"
-  },
-  {
    "texto": "(17 para el PP, 17 para el PSOE, dos para Sumar y uno para Vox)",
    "cifra": "17",
    "calculo": "D['UNVG']['PP']"
@@ -620,10 +550,6 @@
   {
    "texto": "PSOE. Entre los de más de 5.000 habitantes con ganador,",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "Cinco provincias",

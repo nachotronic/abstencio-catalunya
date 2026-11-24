@@ -1,0 +1,122 @@
+{
+ "pieza": "veda-encuestas-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "fue el de más encuestas: 12 empresas publicaron",
+   "cifra": "12",
+   "calculo": "D['ULT_DIA']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "fue el lunes 17. Ese día, 12 empresas publicaron",
+   "cifra": "12",
+   "calculo": "D['ULT_DIA']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "anteriores a la veda publicaron 21 empresas distintas.",
+   "cifra": "21",
+   "calculo": "D['DOS_SEM']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue el de más encuestas: 12 empresas publicaron",
+   "cifra": "12",
+   "calculo": "D['ULT_DIA']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "martes 24 al sábado 28, los cinco días anteriores a la",
+   "cifra": "cinco",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asesentaynueve"
+  },
+  {
+   "texto": "tiene castigo: una multa de 3.000 a 30.000 euros (artículo",
+   "cifra": "3.000",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientocincuentaytres"
+  },
+  {
+   "texto": "castigo: una multa de 3.000 a 30.000 euros (artículo 153),",
+   "cifra": "30.000",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientocincuentaytres"
+  },
+  {
+   "texto": "como delito, con prisión de tres meses a un año, multa",
+   "cifra": "tres",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#acientocuarentaycinco"
+  },
+  {
+   "texto": "sábado 28 de noviembre, los cinco días anteriores a la",
+   "cifra": "cinco",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asesentaynueve"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "lunes 23 de noviembre; del 24 al 28, la ley lo prohíbe.",
+   "cifra": "24",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "23 de noviembre; del 24 al 28, la ley lo prohíbe.",
+   "cifra": "28",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "de noviembre. Del martes 24 al sábado 28, los cinco",
+   "cifra": "24",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "noviembre. Del martes 24 al sábado 28, los cinco días anteriores",
+   "cifra": "28",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "de comunicación» (artículo 69.7 de la LOREG). Hasta",
+   "cifra": "69",
+   "motivo": "número de artículo"
+  },
+  {
+   "texto": "a 30.000 euros (artículo 153), y el artículo 145",
+   "cifra": "153",
+   "motivo": "número de artículo"
+  },
+  {
+   "texto": "(artículo 153), y el artículo 145 castiga como delito,",
+   "cifra": "145",
+   "motivo": "número de artículo"
+  },
+  {
+   "texto": "para publicar fue el lunes 17. Ese día, 12 empresas",
+   "cifra": "17",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "hasta el lunes 23Del martes 24 al sábado 28 de noviembre,",
+   "cifra": "24",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "22 de julio de 2023. Del 18 al 22, la veda; las",
+   "cifra": "18",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "julio de 2023. Del 18 al 22, la veda; las elecciones",
+   "cifra": "22",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  },
+  {
+   "texto": "las elecciones fueron el 23",
+   "cifra": "23",
+   "motivo": "fecha del calendario electoral (días del mes)"
+  }
+ ],
+ "permitir_espana": []
+}

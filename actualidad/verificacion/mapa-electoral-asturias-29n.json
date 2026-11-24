@@ -35,34 +35,14 @@
    "calculo": "D['GANA']['2023_07']['PSOE']"
   },
   {
-   "texto": "las cuencas mineras ganó en nueve de diez. Para el 29N,",
+   "texto": "las cuencas mineras ganó en nueve de diez.",
    "cifra": "nueve",
    "calculo": "D['NCU_PSOE']"
   },
   {
-   "texto": "mineras ganó en nueve de diez. Para el 29N, la media",
+   "texto": "mineras ganó en nueve de diez.",
    "cifra": "diez",
    "calculo": "D['NCU']"
-  },
-  {
-   "texto": "media de encuestas da al PP tres de los 7 diputados,",
-   "cifra": "tres",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas da al PP tres de los 7 diputados, al PSOE tres",
-   "cifra": "7",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "los 7 diputados, al PSOE tres y a Vox uno.",
-   "cifra": "tres",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "elige el 29 de noviembre 7 diputados entre once",
-   "cifra": "7",
-   "calculo": "sum(D['E29'].values())"
   },
   {
    "texto": "votado en noviembre de 2019 en 70 de los 78 concejos asturianos,",
@@ -350,21 +330,6 @@
    "calculo": "D['AJ'][3][4]"
   },
   {
-   "texto": "el reparto central de los 7 escaños da al PP tres,",
-   "cifra": "7",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "de los 7 escaños da al PP tres, los mismos que en 2023;",
-   "cifra": "tres",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "mismos que en 2023; al PSOE, tres, uno más, y a Vox, uno.",
-   "cifra": "tres",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
    "texto": "El PSOE pasó de ganar en 70 concejos a ganar en",
    "cifra": "70",
    "calculo": "D['GANA']['2019_11']['PSOE']"
@@ -463,11 +428,6 @@
    "texto": "segundo en julio de 2023 en los ocho concejos más ajustados,",
    "cifra": "ocho",
    "calculo": "len(D['AJ'])"
-  },
-  {
-   "texto": "se quedaría sin escañoLos 7 diputados de Asturias:",
-   "cifra": "7",
-   "calculo": "sum(D['E29'].values())"
   }
  ],
  "externas": [],
@@ -491,10 +451,6 @@
   {
    "texto": "pequeños. En los 31 de 1.000 a 5.000 habitantes, el PSOE",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "siete concejos de más de 20.000 habitantes, en %. Barra",

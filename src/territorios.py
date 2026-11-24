@@ -800,10 +800,7 @@ def pagina_ciudad(cod):
             + f'En 2023, {g23} y votó el {pct(r["part"])} del censo.')
     if q_censo and len(desc) + len(num(censo_29n(cod)[2])) + 12 <= 160:
         desc += f' {num(censo_29n(cod)[2])} electores.'
-    if NOCHE_29N:   # noche electoral: el mismo arranque, para que el cambio de título sea mínimo
-        titulo = f'Resultados elecciones generales 2026 en {en_x}: escrutinio del 29N en directo'
-        desc = (f'Resultados de las elecciones generales del 29 de noviembre de 2026 en {nombre}, según avanza el escrutinio de Interior, '
-                f'frente a 2023: entonces {gano_txt(r, ccaa)[0].lower()}{gano_txt(r, ccaa)[1:]} y votó el {pct(r["part"])} del censo.')
+    # NOCHE_29N no toca title, description, H1 ni canonical: Nacho, 18-11-2026, «no cambiaremos urls ni títulos».
     about = lugar(nombre, lugar(nprov, ESPANA))
     about['@type'] = 'City'
     faq_html, faq_ld = faq(([q_censo] if q_censo else []) + q_mesas)
@@ -2729,11 +2726,9 @@ def tema_resultados(resumen):
     ruta = 'elecciones/resultados-elecciones-generales-2026/'
     # Hasta que se encienda NOCHE_29N no se promete directo: depende del acceso a los datos de Interior (editor, 10-11-2026).
     # «Resultados elecciones generales 2026» delante, que es la búsqueda (Search Console, 16-11-2026); «en directo» solo con datos.
-    titulo = ('Resultados elecciones generales 2026 (29N): escrutinio en directo, votos y escaños' if NOCHE_29N else
-              'Resultados elecciones generales 2026 (29N): votos y escaños, y los de 2023 por provincia')
-    desc = ('Resultados de las elecciones generales del 29 de noviembre de 2026: el escrutinio en directo en el mapa, provincia a provincia y barrio a barrio, '
-            'y el resultado de 2023, el punto de partida de cada partido.' if NOCHE_29N else
-            'Resultados de las elecciones generales del 29 de noviembre de 2026: aquí publicaremos los resultados del 29N en cuanto se conozcan. '
+    # Title y description fijos también con NOCHE_29N (Nacho, 18-11-2026: «no cambiaremos urls ni títulos»).
+    titulo = 'Resultados elecciones generales 2026 (29N): votos y escaños, y los de 2023 por provincia'
+    desc = ('Resultados de las elecciones generales del 29 de noviembre de 2026: aquí publicaremos los resultados del 29N en cuanto se conozcan. '
             'Hasta entonces, el resultado de 2023 por provincia, el punto de partida de cada partido.')
     pt = SIS['partidos']
     e = T.ESPANA
@@ -2785,7 +2780,10 @@ def tema_resultados(resumen):
              f'y el PSOE el segundo, con el {pc(pt[1]["pct"])} y {num(pt[1]["escanos"])}. La mayoría absoluta es de 176 escaños.</p>')
     # Escrutinio de toda España: lo pinta generales-2026/directo-resultados.js con el JSON del directo (sin URL en meta.json, solo el aviso)
     h.append(f'<style>{DIRECTO_CSS}.d-tabla{{width:100%;border-collapse:collapse;font:14px var(--sans);margin:.8em 0}}.d-tabla th,.d-tabla td{{text-align:right;padding:.25em .4em;border-bottom:1px solid var(--line,#ddd)}}'
-             '.d-tabla th:first-child,.d-tabla td:first-child{text-align:left}.d-pt{display:inline-block;width:.7em;height:.7em;border-radius:2px;margin-right:.4em;vertical-align:baseline}</style>'
+             '.d-tabla th:first-child,.d-tabla td:first-child{text-align:left}.d-pt{display:inline-block;width:.7em;height:.7em;border-radius:2px;margin-right:.4em;vertical-align:baseline}'
+             '.d-vivo{font:700 13px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:#c8102e;margin:.2em 0}.d-punto{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#c8102e;margin-right:.45em;animation:dlat 1.6s infinite}'
+             '@keyframes dlat{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.d-punto{animation:none}}'
+             '.d-h3{font:700 15px var(--sans);margin:1.2em 0 .4em}.d-hitos{list-style:none;padding:0;margin:0;font:14px/1.45 var(--sans)}.d-hitos li{border-left:2px solid var(--line,#ddd);padding:.1em 0 .6em .8em}.d-hitos time{font-weight:700;margin-right:.3em}</style>'
              f'<section class="directo29n" id="directo-esp" data-raiz="{raiz or "./"}" aria-labelledby="escrutinio-29n">'
              '<h2 id="escrutinio-29n">Escrutinio del 29N en España</h2>'
              '<div class="d-aviso">' + p_('Dato', 'El domingo 29 de noviembre el Ministerio del Interior publica dos avances de participación, a las 14.00 y a las 18.00. '

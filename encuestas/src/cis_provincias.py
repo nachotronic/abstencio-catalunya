@@ -92,7 +92,9 @@ def bloque(cod, nombre, rc, total, c, nom_lista):
              f'con una muestra así, el error teórico es de ±{f1(err)} puntos. Es una indicación, no una medida fiable de la ciudad.</p>' if pequena else '')
     s23 = e23.get('Sumar', 0)
     leyenda = ('CIS: tramo del percentil 5 al 95 de escaños; ▲, el CIS da más que la media de encuestas (reparto central del modelo); ▼, menos. '
-               + (f'2023: en julio de 2023, Podemos se presentó dentro de Sumar, que sacó {s23} escaño{"" if s23 == 1 else "s"} en {html.escape(nombre)}; por eso no se comparan por separado. '
+               + (f'2023: en julio de 2023, Podemos se presentó dentro de Sumar, que sacó {s23} escaño{"" if s23 == 1 else "s"} en {html.escape(nombre)}'
+                  + (f', y Nueva Canarias fue sola ({e23.get("Nueva Canarias", 0)} escaños)' if cod in ('35', '38') else '')
+                  + '; por eso no se comparan por separado. '
                   if any(f[1] in ('Sumar', 'Podemos') for f in filas) else ''))
     navarra = '; en Navarra, el PP del CIS se compara con UPN-PP del modelo y, en 2023, con UPN + PP' if cod == '31' else ''
     cambio = (f' En 2023, {html.escape(nombre)} elegía {k23} diputado{"s" if k23 > 1 else ""}; el 29N, {total}.' if k23 != total else '')

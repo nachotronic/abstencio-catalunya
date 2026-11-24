@@ -1,0 +1,225 @@
+{
+ "pieza": "voto-blanco-nulo-elecciones-generales-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "el reparto. En 2023 hubo 260.784 nulos y 199.103 blancos,",
+   "cifra": "260.784",
+   "calculo": "D['T23']['nulos']"
+  },
+  {
+   "texto": "2023 hubo 260.784 nulos y 199.103 blancos, y ningún escaño",
+   "cifra": "199.103",
+   "calculo": "D['T23']['blancos']"
+  },
+  {
+   "texto": "2023, como poco, en torno al 5,6 % de los válidos, en",
+   "cifra": "5,6",
+   "calculo": "D['OTRA_PCT']"
+  },
+  {
+   "texto": "En 2023, los 28.960 votos en blanco de Madrid",
+   "cifra": "28.960",
+   "calculo": "D['MAD_BL']"
+  },
+  {
+   "texto": "Madrid subieron el listón 869 votos, y los 21.059",
+   "cifra": "869",
+   "calculo": "D['MAD_SUBE']"
+  },
+  {
+   "texto": "el listón 869 votos, y los 21.059 de Barcelona, 632. De",
+   "cifra": "21.059",
+   "calculo": "D['BCN_BL']"
+  },
+  {
+   "texto": "los 21.059 de Barcelona, 632. De las listas que se",
+   "cifra": "632",
+   "calculo": "D['BCN_SUBE']"
+  },
+  {
+   "texto": "fue la CUP en Barcelona: 67.266 votos, el 2,52 % de",
+   "cifra": "67.266",
+   "calculo": "D['CUP']"
+  },
+  {
+   "texto": "Barcelona: 67.266 votos, el 2,52 % de los válidos, cuando",
+   "cifra": "2,52",
+   "calculo": "100*D['CUP']/D['BCN_VAL']"
+  },
+  {
+   "texto": "válidos, cuando el 3 % eran 80.024. Sin los blancos, habría",
+   "cifra": "80.024",
+   "calculo": "D['BCN_UMB']"
+  },
+  {
+   "texto": "debajo, y le faltaban unos 6.000 votos para el último",
+   "cifra": "6.000",
+   "calculo": "D['BCN_ULT']-D['CUP']"
+  },
+  {
+   "texto": "válidos. En 2023, el PP sacó el 33,1 % de los votos válidos;",
+   "cifra": "33,1",
+   "calculo": "D['PP_VAL']"
+  },
+  {
+   "texto": "votos válidos; sin contar los 200.682 votos en blanco, habría",
+   "cifra": "200.682",
+   "calculo": "D['BL23']"
+  },
+  {
+   "texto": "en blanco, habría sido el 33,3 %. A todos los partidos",
+   "cifra": "33,3",
+   "calculo": "D['PP_CAND']"
+  },
+  {
+   "texto": "se presenta al Congreso en 12 provincias; en 2023",
+   "cifra": "12",
+   "calculo": "len(D['EB29'])"
+  },
+  {
+   "texto": "provincias; en 2023 se presentó en 11 y sacó 8.448 votos,",
+   "cifra": "11",
+   "calculo": "len(D['EB23'])"
+  },
+  {
+   "texto": "se presentó en 11 y sacó 8.448 votos, frente a 200.682",
+   "cifra": "8.448",
+   "calculo": "sum(D['EB23'].values())"
+  },
+  {
+   "texto": "sacó 8.448 votos, frente a 200.682 votos en blanco, con",
+   "cifra": "200.682",
+   "calculo": "D['BL23']"
+  },
+  {
+   "texto": "las generales de 2023 hubo 260.784 votos nulos y 199.103",
+   "cifra": "260.784",
+   "calculo": "D['T23']['nulos']"
+  },
+  {
+   "texto": "hubo 260.784 votos nulos y 199.103 en blanco, sin contar",
+   "cifra": "199.103",
+   "calculo": "D['T23']['blancos']"
+  },
+  {
+   "texto": "nulos que blancos en las 52 circunscripciones, aunque",
+   "cifra": "52",
+   "calculo": "D['NULO_GANA']"
+  },
+  {
+   "texto": "Zaragoza la diferencia fue de 2 votos. En noviembre",
+   "cifra": "2",
+   "calculo": "[x for x in D['PROV'] if x['nombre']=='Zaragoza'][0]['nulos']-[x for x in D['PROV'] if x['nombre']=='Zaragoza'][0]['blancos']"
+  },
+  {
+   "texto": "noviembre de 2019 fueron 248.543 nulos y 216.249 blancos,",
+   "cifra": "248.543",
+   "calculo": "D['T19']['nulos']"
+  },
+  {
+   "texto": "2019 fueron 248.543 nulos y 216.249 blancos, y los nulos",
+   "cifra": "216.249",
+   "calculo": "D['T19']['blancos']"
+  },
+  {
+   "texto": "blancos, y los nulos ganaron en 38 circunscripciones. Cómo",
+   "cifra": "38",
+   "calculo": "D['NULO19']"
+  },
+  {
+   "texto": "alto en Lleida y Cádiz, el 1,12 % de los válidos, y",
+   "cifra": "1,12",
+   "calculo": "[x for x in D['PROV'] if x['nombre']=='Lleida'][0]['pbv']"
+  },
+  {
+   "texto": "válidos, y más bajo en Álava, el 0,43 %. El nulo pesó más",
+   "cifra": "0,43",
+   "calculo": "[x for x in D['PROV'] if x['nombre']=='Álava'][0]['pbv']"
+  },
+  {
+   "texto": "nulo pesó más en Badajoz, el 1,68 % de los votantes, y",
+   "cifra": "1,68",
+   "calculo": "[x for x in D['PROV'] if x['nombre']=='Badajoz'][0]['pn']"
+  },
+  {
+   "texto": "votantes, y menos en Gipuzkoa, el 0,62 %. Los datos no dicen",
+   "cifra": "0,62",
+   "calculo": "[x for x in D['PROV'] if x['nombre']=='Gipuzkoa'][0]['pn']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "válido y sube el listón del 3 %; el nulo no cuenta",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "blanco entra en la cuenta del 3 % que necesita una lista",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "los candidatos» (artículo 96 de la LOREG). Es nulo",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "precisó en su Instrucción 1/2012 que es nula la",
+   "motivo": "Número de la Instrucción 1/2012 de la Junta Electoral Central."
+  },
+  {
+   "texto": "Fuente: artículo 96 de la LOREG e Instrucción",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "de la LOREG e Instrucción 1/2012 de la Junta Electoral",
+   "motivo": "Número de la Instrucción 1/2012 de la Junta Electoral Central."
+  },
+  {
+   "texto": "escrutinio general (artículo 108).",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "listas que tienen al menos «el 3 por 100 de los votos",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "tienen al menos «el 3 por 100 de los votos válidos",
+   "motivo": "Texto de la ley («3 por 100») y regla de cálculo: 3 votos por cada 100 blancos."
+  },
+  {
+   "texto": "circunscripción» (artículo 163). Como el blanco es",
+   "motivo": "Número de artículo de la LOREG."
+  },
+  {
+   "texto": "el blanco es válido, cada 100 votos en blanco suben",
+   "motivo": "Texto de la ley («3 por 100») y regla de cálculo: 3 votos por cada 100 blancos."
+  },
+  {
+   "texto": "blanco suben ese listón en 3 votos. En la práctica,",
+   "motivo": "Regla de cálculo: el 3 % de 100 votos en blanco son 3 votos."
+  },
+  {
+   "texto": "votos. En la práctica, el 3 % solo pesa en Madrid",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "Valencia. Así que allí el 3 % no llega a decidir",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "que más cerca estuvo del 3 % fue la CUP en Barcelona:",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "de los válidos, cuando el 3 % eran 80.024. Sin los",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  },
+  {
+   "texto": "se quedara sin él por el 3 %, ni ninguna a la que",
+   "motivo": "Umbral legal del 3 % (artículo 163 de la LOREG)."
+  }
+ ],
+ "permitir_espana": []
+}

@@ -119,7 +119,11 @@ REGLAS_PROPIAS = [
 ]
 # Y las siglas de Coalición Canaria (CCa), que familia() reconoce con el nombre (_AMBIGUAS) y el directo, que solo tiene
 # las siglas, mandaba a «Otros»: van delante de NC, por NC-CCa (2019).
-REGLAS_DIRECTO = [['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA']] + REGLAS_PROPIAS
+# 29N: Interior escribe Coalición Canaria también «1.ºCAN-CCa» (Las Palmas) y «1ºCAN-CCa» (Senado, Gran Canaria), y la lista
+# del PSOE al Senado en Ceuta es «SENADO DE PROGRESO», sin las siglas del PSOE (datos de prueba de Interior del 23-11).
+# 29N: Podemos va solo (familia propia, PODEMOS); las listas conjuntas de Canarias (NC-BC, Podemos, IU y Sumar) y de la
+# Comunitat Valenciana (Compromís, EUPV y Podem) van con el Frente Amplio (familia SUMAR, que el 29N se llama «Frente Amplio»)
+REGLAS_DIRECTO = [['PODEMOS', '^PODEMOS$'], ['SALF', '^SALF$|SE ACAB[OÓ] LA FIESTA'], ['SUMAR', 'PODEMOS, IU, SUMAR|^COMPROM'], ['CC', '^CCA$|^CCA-|^CC-(?!UCD|AP)|^NC-CCA|^1\\.?ºCAN'], ['PSOE', '^SENADO DE PROGRESO$']] + REGLAS_PROPIAS
 # Nombre de la familia en las elecciones anteriores a un año (la pieza lo usa en leyenda y fichas)
 ALIAS = {'TE': [['2020', '¡Teruel Existe!']], 'PP': [['1989', 'AP']], 'SUMAR': [['1977', 'PCE y otros obreros'], ['1986', 'PCE / PSUC']], 'BILDU': [['2011', 'HB / EH']]}
 
@@ -131,7 +135,7 @@ _REGLAS = [
     ('VOX', r"^VOX$"),
     ('CS', r"^(C'S|C´S|CS)$|-CS$"),
     ('UPYD', r"^UPYD$"),
-    ('SUMAR', r"^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^UNIDAS\b|^IU\b|^IULV|^IU-|^EUPV-UPEC|^PCE$|^PCE-|^PCA-PCE|^PSUC|^IC-EV$|^IC-?V\b|^ICV\b|^EUIA$|^EU-PV$|^EUPV$"),
+    ('SUMAR', r"FRENTE AMPLIO|FRONT AMPLI|FRONTE AMPLA|FRONTE ZABALA|^FA$|^COMUNS|^ARAM[EÉ]S|^PODEMOS|^EN COMÚ|^ECP|SUMAR|UPEC|^UNIDAD POPULAR|^UNIDAS\b|^IU\b|^IULV|^IU-|^EUPV-UPEC|^PCE$|^PCE-|^PCA-PCE|^PSUC|^IC-EV$|^IC-?V\b|^ICV\b|^EUIA$|^EU-PV$|^EUPV$"),
     ('ERC', r"^ERC|^ESQUERRA$"),
     ('JUNTS', r"^JXCAT|^JUNTS|[- ]JUNTS$"),
     ('PNV', r"EAJ-PNV|^E\.A\.J\.-P\.N\.V\.|^PNV"),

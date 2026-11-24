@@ -1,28 +1,30 @@
 {
- "descargado": "2026-11-18T06:41Z",
+ "descargado": "2026-11-23T22:43Z",
  "fuente": "https://www.electografica.com",
- "encuestas_espana": 1106,
- "encuestas_infraestatales": 144,
+ "encuestas_espana": 1158,
+ "encuestas_infraestatales": 160,
  "desde": "2018-08-10",
  "ultima": {
-  "publicado": "2026-11-18",
-  "encuestadora": "40dB.",
-  "cliente": ""
+  "publicado": "2026-11-23",
+  "encuestadora": "Winston",
+  "cliente": "Artículo14"
  },
  "siglas_sin_equivalencia": {
-  "UPN-PP": 25,
-  "D21": 4,
-  "SY": 3,
+  "UPN-PP": 46,
+  "SY": 9,
+  "D21": 8,
+  "DVC": 3,
   "Autonómicas - CUP": 2,
   "JxSí": 1,
   "CSQP": 1,
   "CeC": 1,
   "MÉS ESQUERRA": 1,
-  "PSOE (115/117) · VOX": 1
+  "PSOE (115/117) · VOX": 1,
+  "CHA-IU-MS-FA": 1
  },
  "wikipedia": {
-  "encuestas": 411,
-  "ultima_fin_campo": "2026-11-16",
-  "faltan_en_electografica_120_dias": 25
+  "encuestas": 471,
+  "ultima_fin_campo": "2026-11-23",
+  "faltan_en_electografica_120_dias": 31
  }
 }

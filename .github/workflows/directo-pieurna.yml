@@ -1,0 +1,74 @@
+# Titular del sondeo a pie de urna, la noche del 29N (Nacho, 23-11: «desde que cierren mesas hasta primeros datos hay que
+# tener titular de sondeo a pie de urna… cogerlos de cualquier medio»; hora elegida: las 20:00, como las teles).
+# Se lanza a mano: Actions → «Directo 29N: sondeo a pie de urna» → Run workflow. Guarda el titular en el KV del Worker
+# (clave «pieurna»); el Worker lo sirve en /pieurna.json, pero nunca antes de PIEURNA_DESDE (por defecto, el 29-11 a las
+# 20:00 en Madrid), y la portada lo enseña encima del mapa hasta que el escrutinio pasa del 30 %. No toca la web ni el repo.
+# Siempre con el medio que lo publica y su enlace. Para quitarlo: borrar = si.
+name: "Directo 29N: sondeo a pie de urna"
+on:
+  workflow_dispatch:
+    inputs:
+      titular:
+        description: "Titular (una frase, con el nombre del medio dentro o no), p. ej. «El PP ganaría las elecciones generales, según el sondeo de GAD3 para RTVE»"
+        required: false
+        default: ""
+      medio:
+        description: "Quién lo publica, p. ej. «GAD3 para RTVE»"
+        required: false
+        default: ""
+      enlace:
+        description: "Enlace https a la noticia del medio"
+        required: false
+        default: ""
+      hora:
+        description: "Hora de publicación, p. ej. «20:00»"
+        required: false
+        default: "20:00"
+      filas:
+        description: "Escaños por partido, separados por punto y coma: «PP 130-135; PSOE 100-105; Vox 45-50» (opcional)"
+        required: false
+        default: ""
+      borrar:
+        description: "Quitar el titular: si / no"
+        required: false
+        default: "no"
+permissions:
+  contents: read
+jobs:
+  pieurna:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKERS_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: dee996483598974c337d0777f5ef047c
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Guardar o quitar el titular
+        env:
+          TITULAR: ${{ github.event.inputs.titular }}
+          MEDIO: ${{ github.event.inputs.medio }}
+          ENLACE: ${{ github.event.inputs.enlace }}
+          HORA: ${{ github.event.inputs.hora }}
+          FILAS: ${{ github.event.inputs.filas }}
+          BORRAR: ${{ github.event.inputs.borrar }}
+        run: |
+          set -euo pipefail
+          npx -y wrangler@3.114.0 kv namespace list > kv.json
+          ID=$(node -e "const l=require('./kv.json');const k=l.find(x=>/RESULTADOS$/.test(x.title));if(!k)process.exit(1);console.log(k.id)")
+          if [ "$BORRAR" = "si" ]; then
+            npx -y wrangler@3.114.0 kv key delete pieurna --namespace-id "$ID"
+            echo "Titular quitado"; exit 0
+          fi
+          node -e "
+            const e = process.env, t = (e.TITULAR || '').trim(), m = (e.MEDIO || '').trim(), u = (e.ENLACE || '').trim();
+            if (!t || t.length > 220) throw new Error('Falta el titular o pasa de 220 caracteres');
+            if (!m) throw new Error('Falta el medio: el sondeo se publica siempre citando quién lo hace');
+            if (u && !/^https:\/\/[^\s\"<>]+$/.test(u)) throw new Error('El enlace tiene que empezar por https://');
+            const filas = (e.FILAS || '').split(';').map(x => x.trim()).filter(Boolean).map(x => {
+              const r = x.match(/^(.+?)\s+(\d+(?:\s*[-–]\s*\d+)?)$/); if (!r) throw new Error('Fila sin escaños: ' + x);
+              return [r[1].trim(), r[2].replace(/\s+/g, '').replace('-', '–')]; });
+            const v = { titular: t, medio: m, enlace: u, hora: (e.HORA || '').trim(), filas, t: new Date().toISOString() };
+            require('fs').writeFileSync('pieurna.json', JSON.stringify(v)); console.log(JSON.stringify(v, null, 1));"
+          npx -y wrangler@3.114.0 kv key put pieurna --path pieurna.json --namespace-id "$ID"
+          echo "Guardado. Se ve en https://generales-directo.nachotronic.workers.dev/pieurna.json desde la hora PIEURNA_DESDE"

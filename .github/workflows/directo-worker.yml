@@ -18,6 +18,22 @@ on:
         description: "MODO: provincias (web pública), municipios (plan B) o medios (API de descargas con usuario y clave)"
         required: false
         default: "provincias"
+      dia:
+        description: "DIA (AAMMDD): solo datos de ese día; 261129 la noche electoral, vacío en las pruebas"
+        required: false
+        default: ""
+      publica:
+        description: "PUBLICA (hora ISO): antes no se guarda ningún voto; la noche, 2026-11-29T20:00:00Z (21:00 en Madrid). Vacío en las pruebas"
+        required: false
+        default: ""
+      pieurna_desde:
+        description: "PIEURNA_DESDE (hora ISO): antes no se sirve el titular del sondeo a pie de urna; vacío = 2026-11-29T19:00:00Z (20:00 en Madrid). Solo para probarlo antes"
+        required: false
+        default: ""
+      limpiar:
+        description: "Borrar lo guardado (último resultado, provincias, secciones y estado de las mesas) antes de la prueba de medios y antes de la noche: si / no"
+        required: false
+        default: "no"
 permissions:
   contents: read
 jobs:
@@ -45,11 +61,40 @@ jobs:
             ID=$(node -e "const l=require('./kv.json');console.log(l.find(x=>/RESULTADOS$/.test(x.title)).id)")
           fi
           sed -i "s/PON_AQUI_EL_ID_DEL_KV/$ID/" wrangler.toml
+      - name: Cubo R2 del archivo de descargas (lo crea la primera vez; sin permiso de R2, el Worker sigue sin archivo)
+        run: |
+          set +e
+          npx -y wrangler@3.114.0 r2 bucket list > r2.txt 2>&1
+          grep -q "generales-29n-descargas" r2.txt || npx -y wrangler@3.114.0 r2 bucket create generales-29n-descargas >> r2.txt 2>&1
+          npx -y wrangler@3.114.0 r2 bucket list > r2.txt 2>&1
+          if grep -q "generales-29n-descargas" r2.txt; then
+            printf '\n[[r2_buckets]]\nbinding = "ARCHIVO"\nbucket_name = "generales-29n-descargas"\n' >> wrangler.toml
+            echo "Archivo de descargas: activado (cubo privado generales-29n-descargas)"
+          else
+            echo "::warning::Sin cubo R2 (¿R2 sin activar o el token sin permiso de R2?): el Worker funciona, pero sin archivo de descargas"
+            tail -5 r2.txt
+          fi
+      - name: Borrar lo guardado (no los datos de 2023)
+        if: github.event.inputs.limpiar == 'si'
+        run: |
+          set -euo pipefail
+          ID=$(node -e "const l=require('./kv.json');console.log(l.find(x=>/RESULTADOS$/.test(x.title)).id)")
+          npx -y wrangler@3.114.0 kv key list --namespace-id "$ID" > claves.json
+          node -e "const l=require('./claves.json').map(x=>x.name).filter(n=>!/^ant23/.test(n));require('fs').writeFileSync('borrar.json',JSON.stringify(l));console.log(l.length+' claves')"
+          npx -y wrangler@3.114.0 kv bulk delete --namespace-id "$ID" borrar.json --force
       - name: Desplegar
         env:
           FUENTE: ${{ github.event.inputs.fuente }}
           MODO: ${{ github.event.inputs.modo }}
-        run: npx -y wrangler@3.114.0 deploy --var "FUENTE:$FUENTE" --var "MODO:$MODO"
+          DIA: ${{ github.event.inputs.dia }}
+          PUBLICA: ${{ github.event.inputs.publica }}
+          PIEURNA_DESDE: ${{ github.event.inputs.pieurna_desde }}
+        run: |
+          V=(--var "FUENTE:$FUENTE" --var "MODO:$MODO")
+          if [ -n "$DIA" ]; then V+=(--var "DIA:$DIA"); fi
+          if [ -n "$PUBLICA" ]; then V+=(--var "PUBLICA:$PUBLICA"); fi
+          if [ -n "$PIEURNA_DESDE" ]; then V+=(--var "PIEURNA_DESDE:$PIEURNA_DESDE"); fi
+          npx -y wrangler@3.114.0 deploy "${V[@]}"
       - name: Clave para forzar una lectura a mano (CLAVE)
         env:
           CLAVE: ${{ secrets.DIRECTO_CLAVE }}

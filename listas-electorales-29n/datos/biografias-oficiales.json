@@ -1,0 +1,6472 @@
+{
+ "fuentes": {
+  "congreso": "https://www.congreso.es/es/busqueda-de-diputados",
+  "senado_2023": "https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/"
+ },
+ "personas": {
+  "albacete/amparo-torres-valencoso": {
+   "nombre": "Amparo Torres Valencoso",
+   "prov": "02",
+   "siglas": "PSOE",
+   "n": 1,
+   "senado_2023": {
+    "prov": "02",
+    "distrito": "9",
+    "siglas": "PSOE"
+   },
+   "genero": "f"
+  },
+  "albacete/maria-carmen-navarro-lacoba": {
+   "nombre": "María Carmen Navarro Lacoba",
+   "prov": "02",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1978-06-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=215&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Albacete",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "11/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Albacete",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "10/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Albacete",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Albacete",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Albacete",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "alicante/maria-araceli-poblador-pacheco": {
+   "nombre": "María Araceli Poblador Pacheco",
+   "prov": "03",
+   "siglas": "PSOE",
+   "n": 4,
+   "genero": "f",
+   "nacimiento": "1962-08-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=39&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Alicante/Alacant",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "alicante/maria-teresa-perez-diaz": {
+   "nombre": "María Teresa Pérez Díaz",
+   "prov": "03",
+   "siglas": "COMPROMIS-EUPV-PODEM-ERPV",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1993-07-29",
+   "lugar": "Petrer (Alicante)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=229&idLegislatura=XIII&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Alicante/Alacant",
+     "formacion": "UP",
+     "leg": 13
+    }
+   ]
+  },
+  "alicante/david-garcia-gomis": {
+   "nombre": "David García Gomis",
+   "prov": "03",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1980-10-15",
+   "lugar": "Alicante",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=104&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Alicante/Alacant",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "alicante/jose-maria-sanchez-garcia": {
+   "nombre": "José María Sánchez García",
+   "prov": "03",
+   "siglas": "VOX",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1963-03-11",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=53&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "28/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Alicante/Alacant",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Alicante/Alacant",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "alicante/macarena-montesinos-de-miguel": {
+   "nombre": "Macarena Montesinos De Miguel",
+   "prov": "03",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1961-09-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=216&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "01/04/2004",
+     "baja": "15/01/2008",
+     "circ": "Alicante",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "31/03/2008",
+     "baja": "27/09/2011",
+     "circ": "Alicante",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "12/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Alicante",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "16/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "02/12/2019",
+     "baja": "17/08/2023",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "alicante/cesar-sanchez-perez": {
+   "nombre": "César Sánchez Pérez",
+   "prov": "03",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1978-08-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=217&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "alicante/joaquin-melgarejo-moreno": {
+   "nombre": "Joaquín Melgarejo Moreno",
+   "prov": "03",
+   "siglas": "PP",
+   "n": 4,
+   "genero": "m",
+   "nacimiento": "1960-12-05",
+   "lugar": "Ojos (Murcia)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=211&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Alicante/Alacant",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "almeria/juan-antonio-lorenzo-cazorla": {
+   "nombre": "Juan Antonio Lorenzo Cazorla",
+   "prov": "04",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1966-07-31",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=354&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "28/11/2023",
+     "baja": "06/10/2026",
+     "circ": "Almería",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "almeria/ines-maria-plaza-garcia": {
+   "nombre": "Inés María Plaza García",
+   "prov": "04",
+   "siglas": "PSOE",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1978-10-27",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=81&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Almería",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "almeria/rocio-de-meer-mendez": {
+   "nombre": "Rocío de Meer Méndez",
+   "prov": "04",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1989-12-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=284&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Almería",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "29/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Almería",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "",
+     "circ": "Almería",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "almeria/rafael-antonio-hernando-fraile": {
+   "nombre": "Rafael Antonio Hernando Fraile",
+   "prov": "04",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1961-11-13",
+   "lugar": "Guadalajara",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=202&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "15/06/1993",
+     "baja": "09/01/1996",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 5
+    },
+    {
+     "alta": "13/03/1996",
+     "baja": "05/04/2000",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 6
+    },
+    {
+     "alta": "30/03/2000",
+     "baja": "02/04/2004",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "25/03/2004",
+     "baja": "01/04/2008",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "24/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "29/11/2011",
+     "baja": "13/01/2016",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "02/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "06/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "almeria/maria-isabel-sanchez-torregrosa": {
+   "nombre": "María Isabel Sánchez Torregrosa",
+   "prov": "04",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1979-08-05",
+   "lugar": "Vélez-Rubio (Almería)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=177&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Almería",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "alava/mikel-otero-gabirondo": {
+   "nombre": "Mikel Otero Gabirondo",
+   "prov": "01",
+   "siglas": "EH BILDU",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1972-08-17",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=398&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "18/02/2025",
+     "baja": "06/10/2026",
+     "circ": "Araba/Álava",
+     "formacion": "EH Bildu",
+     "leg": 15
+    }
+   ]
+  },
+  "asturias/adriana-lastra-fernandez": {
+   "nombre": "Adriana Lastra Fernández",
+   "prov": "33",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1979-03-30",
+   "lugar": "Oviedo (Asturias)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=153&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "11/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "14/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "08/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "08/08/2023",
+     "baja": "16/07/2024",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "asturias/roberto-garcia-moris": {
+   "nombre": "Roberto García Morís",
+   "prov": "33",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1982-02-05",
+   "lugar": "La Peral-Noreña (Asturias)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=195&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "17/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Asturias",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "asturias/jose-maria-figaredo-alvarez-sala": {
+   "nombre": "José María Figaredo Álvarez-Sala",
+   "prov": "33",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1988-09-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=193&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Asturias",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "28/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Asturias",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Asturias",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "asturias/maria-mercedes-fernandez-gonzalez": {
+   "nombre": "María Mercedes Fernández González",
+   "prov": "33",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1960-08-04",
+   "lugar": "Gijón, Asturias",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=82&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "19/06/1993",
+     "baja": "09/01/1996",
+     "circ": "Asturias",
+     "formacion": "PP",
+     "leg": 5
+    },
+    {
+     "alta": "16/03/1996",
+     "baja": "05/04/2000",
+     "circ": "Asturias",
+     "formacion": "PP",
+     "leg": 6
+    },
+    {
+     "alta": "28/03/2000",
+     "baja": "22/05/2000",
+     "circ": "Asturias",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "09/12/2011",
+     "baja": "26/04/2012",
+     "circ": "Asturias",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Asturias",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "avila/manuel-arribas-maroto": {
+   "nombre": "Manuel Arribas Maroto",
+   "prov": "05",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1986-12-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=96&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "24/02/2020",
+     "baja": "30/05/2023",
+     "circ": "Ávila",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Ávila",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "avila/hector-palencia-rubio": {
+   "nombre": "Héctor Palencia Rubio",
+   "prov": "05",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1977-08-24",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=1&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "31/07/2023",
+     "baja": "06/10/2026",
+     "circ": "Ávila",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "avila/piedad-sanchez-garcia": {
+   "nombre": "Piedad Sánchez García",
+   "prov": "05",
+   "siglas": "PP",
+   "n": 2,
+   "senado_2023": {
+    "prov": "05",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "badajoz/ignacio-hoces-iniguez": {
+   "nombre": "Ignacio Hoces Íñiguez",
+   "prov": "06",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1983-12-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=194&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Badajoz",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "badajoz/antonio-cavacasillas-rodriguez": {
+   "nombre": "Antonio Cavacasillas Rodríguez",
+   "prov": "06",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1977-02-13",
+   "lugar": "Badajoz",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=299&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Badajoz",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "badajoz/alfonso-carlos-macias-gata": {
+   "nombre": "Alfonso Carlos Macias Gata",
+   "prov": "06",
+   "siglas": "PP",
+   "n": 4,
+   "genero": "m",
+   "nacimiento": "1967-04-18",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=298&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Badajoz",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "illes-balears/francesca-lluch-armengol-socias": {
+   "nombre": "Francesca Lluch Armengol Socias",
+   "prov": "07",
+   "siglas": "PSIB-PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1971-08-11",
+   "lugar": "Inca, Mallorca (Illes Balears)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=185&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Balears (Illes)",
+     "formacion": "PSIB-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "illes-balears/milena-herrera-garcia": {
+   "nombre": "Milena Herrera Garcia",
+   "prov": "07",
+   "siglas": "PSIB-PSOE",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1975-06-14",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=186&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Balears (Illes)",
+     "formacion": "PSIB-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "illes-balears/antonio-salva-verd": {
+   "nombre": "Antonio Salvá Verd",
+   "prov": "07",
+   "siglas": "VOX",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1952-04-24",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=162&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Balears (Illes)",
+     "formacion": "Vox",
+     "leg": 14
+    }
+   ]
+  },
+  "illes-balears/jose-vicente-mari-boso": {
+   "nombre": "José Vicente Marí Bosó",
+   "prov": "07",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1970-07-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=188&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Balears (Illes)",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "07/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Balears (Illes)",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Balears (Illes)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "illes-balears/joan-mesquida-mayans": {
+   "nombre": "Joan Mesquida Mayans",
+   "prov": "07",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1978-01-26",
+   "lugar": "Palma de Mallorca",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=132&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Balears (Illes)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/jose-zaragoza-alonso": {
+   "nombre": "José Zaragoza Alonso",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1961-09-12",
+   "lugar": "Molins de Rei",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=35&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/12/2011",
+     "baja": "27/10/2015",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "07/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "13/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/francisco-aranda-vargas": {
+   "nombre": "Francisco Aranda Vargas",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 5,
+   "genero": "m",
+   "nacimiento": "1977-06-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=21&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/arnau-ramirez-carner": {
+   "nombre": "Arnau Ramírez Carner",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 9,
+   "genero": "m",
+   "nacimiento": "1989-02-15",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=94&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/andrea-canelo-matito": {
+   "nombre": "Andrea Canelo Matito",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 10,
+   "genero": "f",
+   "nacimiento": "1978-07-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=388&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/09/2024",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/ferran-verdejo-vicente": {
+   "nombre": "Ferran Verdejo Vicente",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 11,
+   "genero": "m",
+   "nacimiento": "1997-01-24",
+   "lugar": "Barcelona",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=23&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/juan-carlos-jerez-antequera": {
+   "nombre": "Juan Carlos Jerez Antequera",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 13,
+   "genero": "m",
+   "nacimiento": "1962-04-07",
+   "lugar": "Núremberg",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=18&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/ignasi-conesa-coma": {
+   "nombre": "Ignasi Conesa Coma",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 15,
+   "genero": "m",
+   "nacimiento": "1963-05-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=352&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "19/09/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/josep-pare-aregall": {
+   "nombre": "Josep Paré Aregall",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 17,
+   "genero": "m",
+   "nacimiento": "1983-07-03",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=369&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/01/2024",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/oriol-almiron-ruiz": {
+   "nombre": "Oriol Almirón Ruiz",
+   "prov": "08",
+   "siglas": "PSC",
+   "n": 19,
+   "genero": "m",
+   "nacimiento": "2000-05-19",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=387&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/09/2024",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/miriam-nogueras-i-camero": {
+   "nombre": "Míriam Nogueras i Camero",
+   "prov": "08",
+   "siglas": "JxCat",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1980-05-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=241&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Barcelona",
+     "formacion": "DL",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Barcelona",
+     "formacion": "CDC",
+     "leg": 12
+    },
+    {
+     "alta": "17/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Barcelona",
+     "formacion": "JxCat-JUNTS",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Barcelona",
+     "formacion": "JxCat-JUNTS (Junts)",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/josep-pages-i-masso": {
+   "nombre": "Josep Pagès i Massó",
+   "prov": "08",
+   "siglas": "JxCat",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1972-06-28",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=389&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/03/2021",
+     "baja": "30/05/2023",
+     "circ": "Barcelona",
+     "formacion": "JxCat-JUNTS (Junts)",
+     "leg": 14
+    },
+    {
+     "alta": "10/09/2024",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/pilar-calvo-i-gomez": {
+   "nombre": "Pilar Calvo i Gómez",
+   "prov": "08",
+   "siglas": "JxCat",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1963-05-03",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=243&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/03/2021",
+     "baja": "30/05/2023",
+     "circ": "Barcelona",
+     "formacion": "JxCat-JUNTS (Junts)",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/gabriel-rufian-romero": {
+   "nombre": "Gabriel Rufián Romero",
+   "prov": "08",
+   "siglas": "ERC",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1982-02-08",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=312&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "12/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Barcelona",
+     "formacion": "ERC-CATSÍ",
+     "leg": 11
+    },
+    {
+     "alta": "18/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Barcelona",
+     "formacion": "ERC-CATSÍ",
+     "leg": 12
+    },
+    {
+     "alta": "16/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Barcelona",
+     "formacion": "ERC-S",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Barcelona",
+     "formacion": "ERC-S",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "ERC",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/juan-jose-aizcorbe-torra": {
+   "nombre": "Juan José Aizcorbe Torra",
+   "prov": "08",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1959-07-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=52&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Barcelona",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/carina-mejias-sanchez": {
+   "nombre": "Carina Mejías Sánchez",
+   "prov": "08",
+   "siglas": "VOX",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1964-06-19",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=331&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "15/07/2019",
+     "baja": "24/09/2019",
+     "circ": "Barcelona",
+     "formacion": "Cs",
+     "leg": 13
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/viviane-ogou-corbi": {
+   "nombre": "Viviane Ogou Corbi",
+   "prov": "08",
+   "siglas": "COMUNS-FRONT AMPLI",
+   "n": 7,
+   "genero": "f",
+   "nacimiento": "1997-12-03",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=397&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "11/02/2025",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/gerardo-pisarello-prados": {
+   "nombre": "Gerardo Pisarello Prados",
+   "prov": "08",
+   "siglas": "COMUNS-FRONT AMPLI",
+   "n": 28,
+   "genero": "m",
+   "nacimiento": "1970-08-10",
+   "lugar": "Tucumán (Argentina)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=328&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Barcelona",
+     "formacion": "ECP",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Barcelona",
+     "formacion": "ECP-GUANYEM EL CANVI",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Barcelona",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/ignacio-de-loyola-nacho-martin-blanco": {
+   "nombre": "Ignacio de Loyola (Nacho) Martín Blanco",
+   "prov": "08",
+   "siglas": "PP",
+   "n": 5,
+   "genero": "m",
+   "nacimiento": "1982-08-02",
+   "lugar": "Barcelona",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=173&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "barcelona/cristina-aguera-gago": {
+   "nombre": "Cristina Agüera Gago",
+   "prov": "08",
+   "siglas": "PP",
+   "n": 6,
+   "genero": "f",
+   "nacimiento": "1990-11-05",
+   "lugar": "Badalona",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=136&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Barcelona",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/idoia-sagastizabal-unzetabarrenetxea": {
+   "nombre": "Idoia Sagastizabal Unzetabarrenetxea",
+   "prov": "48",
+   "siglas": "EAJ-PNV",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1972-09-22",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=309&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/12/2016",
+     "baja": "05/03/2019",
+     "circ": "Bizkaia",
+     "formacion": "EAJ-PNV",
+     "leg": 12
+    },
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Bizkaia",
+     "formacion": "EAJ-PNV",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Bizkaia",
+     "formacion": "EAJ-PNV",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Bizkaia",
+     "formacion": "EAJ-PNV",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/igotz-lopez-torre": {
+   "nombre": "Igotz López Torre",
+   "prov": "48",
+   "siglas": "EAJ-PNV",
+   "n": 2,
+   "senado_2023": {
+    "prov": "48",
+    "distrito": "9",
+    "siglas": "EAJ-PNV"
+   },
+   "genero": "m"
+  },
+  "bizkaia/nerea-renteria-lasanta": {
+   "nombre": "Nerea Renteria Lasanta",
+   "prov": "48",
+   "siglas": "EAJ-PNV",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1969-02-21",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=399&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/04/2025",
+     "baja": "06/10/2026",
+     "circ": "Bizkaia",
+     "formacion": "EAJ-PNV",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/patxi-lopez-alvarez": {
+   "nombre": "Patxi López Alvarez",
+   "prov": "48",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1959-10-04",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=120&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "26/10/1987",
+     "baja": "02/09/1989",
+     "circ": "Vizcaya",
+     "formacion": "PSOE",
+     "leg": 3
+    },
+    {
+     "alta": "11/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Bizkaia",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "07/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE-PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE-PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE-PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE (PSOE)",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/maria-guijarro-ceballos": {
+   "nombre": "Maria Guijarro Ceballos",
+   "prov": "48",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1971-11-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=114&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE-PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "22/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE-PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "04/08/2023",
+     "baja": "04/06/2025",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE (PSOE)",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/gabriel-blanco-arrue": {
+   "nombre": "Gabriel Blanco Arrue",
+   "prov": "48",
+   "siglas": "PSOE",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1999-01-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=400&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/06/2025",
+     "baja": "06/10/2026",
+     "circ": "Bizkaia",
+     "formacion": "PSE-EE (PSOE)",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/oskar-matute-garcia-de-jalon": {
+   "nombre": "Oskar Matute Garcia de Jalón",
+   "prov": "48",
+   "siglas": "EH Bildu",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1972-10-05",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=287&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "18/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Bizkaia",
+     "formacion": "EH Bildu",
+     "leg": 12
+    },
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Bizkaia",
+     "formacion": "EH Bildu",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Bizkaia",
+     "formacion": "EH Bildu",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "",
+     "circ": "Bizkaia",
+     "formacion": "EH Bildu",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/marije-fullaondo-la-cruz": {
+   "nombre": "Marije Fullaondo La Cruz",
+   "prov": "48",
+   "siglas": "EH Bildu",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1964-12-02",
+   "lugar": "Getxo",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=291&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Bizkaia",
+     "formacion": "EH Bildu",
+     "leg": 15
+    }
+   ]
+  },
+  "bizkaia/lander-martinez-hierro": {
+   "nombre": "Lander Martínez Hierro",
+   "prov": "48",
+   "siglas": "FA",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1989-11-06",
+   "lugar": "Vitoria-Gasteiz",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=87&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Bizkaia",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "burgos/esther-pena-camarero": {
+   "nombre": "Esther Peña Camarero",
+   "prov": "09",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1980-07-12",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=95&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Burgos",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "14/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Burgos",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Burgos",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Burgos",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Burgos",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "burgos/alvaro-morales-alvarez": {
+   "nombre": "Álvaro Morales Álvarez",
+   "prov": "09",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1980-05-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=93&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Burgos",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "burgos/angel-mariano-ibanez-hernando": {
+   "nombre": "Ángel Mariano Ibáñez Hernando",
+   "prov": "09",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1974-12-01",
+   "lugar": "Burgos",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=180&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Burgos",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "caceres/cristina-elena-teniente-sanchez": {
+   "nombre": "Cristina Elena Teniente Sánchez",
+   "prov": "10",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1967-05-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=47&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Cáceres",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "caceres/carlos-javier-floriano-corrales": {
+   "nombre": "Carlos Javier Floriano Corrales",
+   "prov": "10",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1967-02-12",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=55&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "24/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Cáceres",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "05/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Cáceres",
+     "formacion": "PP-EU",
+     "leg": 10
+    },
+    {
+     "alta": "04/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Cáceres",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "06/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Cáceres",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Cáceres",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/jose-manuel-albares-bueno": {
+   "nombre": "José Manuel Albares Bueno",
+   "prov": "11",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1972-03-22",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=275&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "06/12/2023",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/maria-del-carmen-sanchez-diaz": {
+   "nombre": "María del Carmen Sánchez Díaz",
+   "prov": "11",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1968-10-10",
+   "lugar": "Jerez",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=72&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "28/03/2000",
+     "baja": "20/01/2004",
+     "circ": "Cádiz",
+     "formacion": "PSOE-progresistas",
+     "leg": 7
+    },
+    {
+     "alta": "30/03/2004",
+     "baja": "01/04/2008",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 8
+    },
+    {
+     "alta": "26/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 9
+    },
+    {
+     "alta": "30/11/2011",
+     "baja": "27/10/2015",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/alfonso-carlos-moscoso-gonzalez": {
+   "nombre": "Alfonso Carlos Moscoso González",
+   "prov": "11",
+   "siglas": "PSOE",
+   "n": 3,
+   "senado_2023": {
+    "prov": "11",
+    "distrito": "9",
+    "siglas": "PSOE"
+   },
+   "genero": "m"
+  },
+  "cadiz/blanca-armario-gonzalez": {
+   "nombre": "Blanca Armario González",
+   "prov": "11",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1980-03-01",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=249&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Cádiz",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/esther-francisca-gil-de-reboleno-lastortres": {
+   "nombre": "Esther Francisca Gil de Reboleño Lastortres",
+   "prov": "11",
+   "siglas": "FA",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1973-02-28",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=86&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Cádiz",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/maria-jose-garcia-pelayo-jurado": {
+   "nombre": "María José García-Pelayo Jurado",
+   "prov": "11",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1968-01-06",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=17&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "08/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "27/07/2022",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 14
+    }
+   ],
+   "senado_2023": {
+    "prov": "11",
+    "distrito": "9",
+    "siglas": "PP"
+   }
+  },
+  "cadiz/miguel-angel-sastre-uya": {
+   "nombre": "Miguel Ángel Sastre Uya",
+   "prov": "11",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1996-04-05",
+   "lugar": "Cadiz",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=206&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/macarena-lorente-anaya": {
+   "nombre": "Macarena Lorente Anaya",
+   "prov": "11",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1968-03-31",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=48&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "cadiz/inmaculada-marin-aparicio": {
+   "nombre": "Inmaculada Marín Aparicio",
+   "prov": "11",
+   "siglas": "PP",
+   "n": 5,
+   "genero": "f",
+   "nacimiento": "1974-05-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=409&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/06/2026",
+     "baja": "06/10/2026",
+     "circ": "Cádiz",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "cantabria/emilio-jesus-del-valle-rodriguez": {
+   "nombre": "Emilio Jesús Del Valle Rodríguez",
+   "prov": "39",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1960-12-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=124&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Cantabria",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "07/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Cantabria",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "cantabria/felix-de-las-cuevas-cortes": {
+   "nombre": "Félix de las Cuevas Cortés",
+   "prov": "39",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1966-11-05",
+   "lugar": "Santander",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=107&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Cantabria",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "castellon/alberto-teofilo-asarta-cuevas": {
+   "nombre": "Alberto Teófilo Asarta Cuevas",
+   "prov": "12",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1951-11-14",
+   "lugar": "Zaragoza",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=316&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Castellón/Castelló",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Castellón/Castelló",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "castellon/oscar-clavell-lopez": {
+   "nombre": "Óscar Clavell López",
+   "prov": "12",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1978-09-07",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=109&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Castellón/Castelló",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "08/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Castellón/Castelló",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "13/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Castellón/Castelló",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Castellón/Castelló",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Castellón/Castelló",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "ciudad-real/isabel-rodriguez-garcia": {
+   "nombre": "Isabel Rodríguez García",
+   "prov": "13",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1981-06-05",
+   "lugar": "Abénojar (Ciudad Real)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=97&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "05/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "07/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/12/2023",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "ciudad-real/julian-nieva-delgado": {
+   "nombre": "Julián Nieva Delgado",
+   "prov": "13",
+   "siglas": "PSOE",
+   "n": 2,
+   "senado_2023": {
+    "prov": "13",
+    "distrito": "9",
+    "siglas": "PSOE"
+   },
+   "genero": "m"
+  },
+  "ciudad-real/cristina-lopez-zamora": {
+   "nombre": "Cristina López Zamora",
+   "prov": "13",
+   "siglas": "PSOE",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1989-03-25",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=365&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "15/07/2019",
+     "baja": "24/09/2019",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "12/12/2023",
+     "baja": "06/10/2026",
+     "circ": "Ciudad Real",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "ciudad-real/ricardo-chamorro-delmo": {
+   "nombre": "Ricardo Chamorro Delmo",
+   "prov": "13",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1977-01-01",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=294&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "17/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Ciudad Real",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Ciudad Real",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "",
+     "circ": "Ciudad Real",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "ciudad-real/maria-del-carmen-funez-de-gregorio": {
+   "nombre": "María Del Carmen Fúnez de Gregorio",
+   "prov": "13",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1975-10-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=65&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Ciudad Real",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "ciudad-real/enrique-belda-perez-pedrero": {
+   "nombre": "Enrique Belda Pérez Pedrero",
+   "prov": "13",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1969-06-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=208&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "27/03/2000",
+     "baja": "20/01/2004",
+     "circ": "Ciudad Real",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Ciudad Real",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "cordoba/alberto-mayoral-de-lamo": {
+   "nombre": "Alberto Mayoral de Lamo",
+   "prov": "14",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1984-12-19",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=363&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "12/12/2023",
+     "baja": "06/10/2026",
+     "circ": "Córdoba",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "cordoba/jose-ramirez-del-rio": {
+   "nombre": "José Ramírez del Río",
+   "prov": "14",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1973-02-10",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=70&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "17/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Córdoba",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Córdoba",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Córdoba",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "cordoba/lorena-guerra-sanchez": {
+   "nombre": "Lorena Guerra Sánchez",
+   "prov": "14",
+   "siglas": "PP",
+   "n": 1,
+   "senado_2023": {
+    "prov": "14",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "cordoba/fernando-priego-chacon": {
+   "nombre": "Fernando Priego Chacón",
+   "prov": "14",
+   "siglas": "PP",
+   "n": 2,
+   "senado_2023": {
+    "prov": "14",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "m"
+  },
+  "cordoba/cristina-casanueva-jimenez": {
+   "nombre": "Cristina Casanueva Jiménez",
+   "prov": "14",
+   "siglas": "PP",
+   "n": 3,
+   "senado_2023": {
+    "prov": "14",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "a-coruna/obdulia-taboadela-alvarez": {
+   "nombre": "Obdulia Taboadela Álvarez",
+   "prov": "15",
+   "siglas": "PSdeG-PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1964-11-22",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=257&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "11/08/2023",
+     "baja": "11/09/2026",
+     "circ": "Coruña (A)",
+     "formacion": "PsdeG-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "a-coruna/miguel-angel-tellado-filgueira": {
+   "nombre": "Miguel Ángel Tellado Filgueira",
+   "prov": "15",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1974-02-21",
+   "lugar": "Ferrol",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=26&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Coruña (A)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "a-coruna/alvaro-perez-lopez": {
+   "nombre": "Álvaro Pérez López",
+   "prov": "15",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1973-02-13",
+   "lugar": "La Coruña",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=27&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Coruña (A)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "a-coruna/manuel-santos-ruiz-rivas": {
+   "nombre": "Manuel Santos Ruiz Rivas",
+   "prov": "15",
+   "siglas": "PP",
+   "n": 5,
+   "senado_2023": {
+    "prov": "15",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "m"
+  },
+  "a-coruna/tristana-maria-moraleja-gomez": {
+   "nombre": "Tristana María Moraleja Gómez",
+   "prov": "15",
+   "siglas": "PP",
+   "n": 6,
+   "genero": "f",
+   "nacimiento": "1971-08-17",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=198&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "05/12/2011",
+     "baja": "27/10/2015",
+     "circ": "A Coruña",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "14/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Coruña (A)",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "08/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Coruña (A)",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Coruña (A)",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Coruña (A)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "a-coruna/nestor-rego-candamil": {
+   "nombre": "Néstor Rego Candamil",
+   "prov": "15",
+   "siglas": "B.N.G.",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1962-04-02",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=238&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "19/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Coruña (A)",
+     "formacion": "BNG",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Coruña (A)",
+     "formacion": "BNG",
+     "leg": 15
+    }
+   ]
+  },
+  "a-coruna/rosana-perez-fernandez": {
+   "nombre": "Rosana Pérez Fernández",
+   "prov": "15",
+   "siglas": "B.N.G.",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1964-12-21",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=375&idLegislatura=X&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/10/2012",
+     "baja": "13/01/2016",
+     "circ": "A Coruña",
+     "formacion": "BNG",
+     "leg": 10
+    }
+   ]
+  },
+  "cuenca/luis-carlos-sahuquillo-garcia": {
+   "nombre": "Luis Carlos Sahuquillo García",
+   "prov": "16",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1966-01-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=10&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "18/03/2008",
+     "baja": "27/09/2011",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 9
+    },
+    {
+     "alta": "30/11/2011",
+     "baja": "27/10/2015",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "29/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "04/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "06/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "18/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "01/08/2023",
+     "baja": "",
+     "circ": "Cuenca",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "cuenca/benjamin-prieto-valencia": {
+   "nombre": "Benjamín Prieto Valencia",
+   "prov": "16",
+   "siglas": "PP",
+   "n": 2,
+   "senado_2023": {
+    "prov": "16",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "m"
+  },
+  "gipuzkoa/gorka-elejabarrieta-diaz": {
+   "nombre": "Gorka Elejabarrieta Diaz",
+   "prov": "20",
+   "siglas": "EH BILDU",
+   "n": 2,
+   "senado_2023": {
+    "prov": "20",
+    "distrito": "9",
+    "siglas": "EH BILDU-INDEPENDENTZIA EZKERRETIK"
+   },
+   "genero": "m"
+  },
+  "gipuzkoa/rafaela-romero-pozo": {
+   "nombre": "Rafaela Romero Pozo",
+   "prov": "20",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1972-02-01",
+   "lugar": "Quintana de la Serena (Badajoz)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=112&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Gipuzkoa",
+     "formacion": "PSE-EE (PSOE)",
+     "leg": 15
+    }
+   ]
+  },
+  "gipuzkoa/maribel-vaquero-montero": {
+   "nombre": "Maribel Vaquero Montero",
+   "prov": "20",
+   "siglas": "EAJ-PNV",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1970-05-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=303&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 15
+    }
+   ]
+  },
+  "gipuzkoa/joseba-andoni-agirretxea-urresti": {
+   "nombre": "Joseba Andoni Agirretxea Urresti",
+   "prov": "20",
+   "siglas": "EAJ-PNV",
+   "n": 6,
+   "genero": "m",
+   "nacimiento": "1966-08-06",
+   "lugar": "Ondarroa",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=305&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/03/2008",
+     "baja": "27/09/2011",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 9
+    },
+    {
+     "alta": "19/12/2012",
+     "baja": "27/10/2015",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 10
+    },
+    {
+     "alta": "04/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 12
+    },
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Gipuzkoa",
+     "formacion": "EAJ-PNV",
+     "leg": 15
+    }
+   ]
+  },
+  "girona/marc-lamua-estanol": {
+   "nombre": "Marc Lamuà Estañol",
+   "prov": "17",
+   "siglas": "PSC",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1980-05-19",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=110&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Girona",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "13/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Girona",
+     "formacion": "PSC-PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Girona",
+     "formacion": "PSC-PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Girona",
+     "formacion": "PSC-PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Girona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "girona/maria-blanca-cercas-mena": {
+   "nombre": "Maria Blanca Cercas Mena",
+   "prov": "17",
+   "siglas": "PSC",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1957-06-19",
+   "lugar": "Ibahernando (Cáceres)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=111&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Girona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "girona/marta-madrenas-i-mir": {
+   "nombre": "Marta Madrenas i Mir",
+   "prov": "17",
+   "siglas": "JxCat",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1967-11-01",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=245&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Girona",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "girona/josep-maria-cervera-i-pinart": {
+   "nombre": "Josep Maria Cervera i Pinart",
+   "prov": "17",
+   "siglas": "JxCat",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1968-10-22",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=242&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Girona",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "girona/julia-boada-danes": {
+   "nombre": "Júlia Boada Danés",
+   "prov": "17",
+   "siglas": "COMUNS-FRONT AMPLI",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1989-03-04",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=332&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Girona",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "granada/jose-antonio-rodriguez-salas": {
+   "nombre": "José Antonio Rodríguez Salas",
+   "prov": "18",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1965-10-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=128&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Granada",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "18/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Granada",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "07/08/2023",
+     "baja": "",
+     "circ": "Granada",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "granada/jacobo-gonzalez-robatto-perote": {
+   "nombre": "Jacobo González-Robatto Perote",
+   "prov": "18",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1987-10-14",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=121&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Granada",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "granada/maria-lourdes-ramirez-martin": {
+   "nombre": "María Lourdes Ramírez Martín",
+   "prov": "18",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1979-08-12",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=60&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Granada",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "granada/francisco-joaquin-camacho-borrego": {
+   "nombre": "Francisco Joaquín Camacho Borrego",
+   "prov": "18",
+   "siglas": "PP",
+   "n": 3,
+   "senado_2023": {
+    "prov": "18",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "m"
+  },
+  "guadalajara/angel-lopez-maraver": {
+   "nombre": "Ángel López Maraver",
+   "prov": "19",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1984-07-18",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=73&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "28/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Guadalajara",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Guadalajara",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "huelva/gabriel-cruz-santana": {
+   "nombre": "Gabriel Cruz Santana",
+   "prov": "21",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1964-01-05",
+   "lugar": "Minas de Riotinto",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=168&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Huelva",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "huelva/maria-luisa-faneca-lopez": {
+   "nombre": "María Luisa Faneca López",
+   "prov": "21",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1957-09-13",
+   "lugar": "Isla Cristina (Huelva)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=167&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Huelva",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Huelva",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Huelva",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "huelva/tomas-fernandez-rios": {
+   "nombre": "Tomás Fernández Ríos",
+   "prov": "21",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1969-02-27",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=214&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "29/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Huelva",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Huelva",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "huelva/manuel-garcia-felix": {
+   "nombre": "Manuel García Félix",
+   "prov": "21",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1969-10-14",
+   "lugar": "La Palma del Condado (Huelva)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=25&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Huelva",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "huesca/begona-nasarre-oliva": {
+   "nombre": "Begoña Nasarre Oliva",
+   "prov": "22",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1978-07-19",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=178&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Huesca",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "28/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Huesca",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Huesca",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "huesca/ana-isabel-alos-lopez": {
+   "nombre": "Ana Isabel Alós López",
+   "prov": "22",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1969-05-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=334&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Huesca",
+     "formacion": "PP-PAR",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Huesca",
+     "formacion": "PP-PAR",
+     "leg": 12
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Huesca",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "jaen/juan-francisco-serrano-martinez": {
+   "nombre": "Juan Francisco Serrano Martínez",
+   "prov": "23",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1988-03-19",
+   "lugar": "Bedmar (Jaén)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=40&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Jaén",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Jaén",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Jaén",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "jaen/francisco-jose-alcaraz-martos": {
+   "nombre": "Francisco José Alcaraz Martos",
+   "prov": "23",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1968-11-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=4&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "27/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Jaén",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "01/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Jaén",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "jaen/mariola-aranda-garcia": {
+   "nombre": "Mariola Aranda García",
+   "prov": "23",
+   "siglas": "PP",
+   "n": 2,
+   "senado_2023": {
+    "prov": "23",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "leon/javier-alfonso-cendon": {
+   "nombre": "Javier Alfonso Cendón",
+   "prov": "24",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1983-10-21",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=252&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/05/2019",
+     "baja": "24/09/2019",
+     "circ": "León",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "León",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "León",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "leon/pablo-juan-calvo-liste": {
+   "nombre": "Pablo Juan Calvo Liste",
+   "prov": "24",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1965-02-17",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=213&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "León",
+     "formacion": "Vox",
+     "leg": 14
+    }
+   ]
+  },
+  "leon/ester-munoz-de-la-iglesia": {
+   "nombre": "Ester Muñoz de la Iglesia",
+   "prov": "24",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1985-06-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=28&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "León",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "lleida/amador-marques-ates": {
+   "nombre": "Amador Marqués Atés",
+   "prov": "25",
+   "siglas": "PSC",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1984-09-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=79&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Lleida",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "lleida/isidre-gavin-i-valls": {
+   "nombre": "Isidre Gavín i Valls",
+   "prov": "25",
+   "siglas": "JxCat",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1963-02-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=239&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Lleida",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "lleida/ines-granollers-i-cunillera": {
+   "nombre": "Inés Granollers i Cunillera",
+   "prov": "25",
+   "siglas": "ERC",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1970-09-17",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=221&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Lleida",
+     "formacion": "ERC-S",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Lleida",
+     "formacion": "ERC-S",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Lleida",
+     "formacion": "ERC",
+     "leg": 15
+    }
+   ]
+  },
+  "lugo/patricia-otero-rodriguez": {
+   "nombre": "Patricia Otero Rodríguez",
+   "prov": "27",
+   "siglas": "PSdeG-PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1979-04-15",
+   "lugar": "Monforte de Lemos",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=377&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "12/03/2024",
+     "baja": "",
+     "circ": "Lugo",
+     "formacion": "PsdeG-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "lugo/francisco-jose-conde-lopez": {
+   "nombre": "Francisco José Conde López",
+   "prov": "27",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1968-02-15",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=349&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "lugo/maria-cristina-abades-martinez": {
+   "nombre": "María Cristina Abades Martínez",
+   "prov": "27",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1971-05-02",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=160&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "lugo/jaime-de-olano-vela": {
+   "nombre": "Jaime de Olano Vela",
+   "prov": "27",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1970-07-06",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=161&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "05/12/2011",
+     "baja": "27/10/2015",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "04/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "08/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Lugo",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/pedro-sanchez-perez-castejon": {
+   "nombre": "Pedro Sánchez Pérez-Castejón",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1972-02-29",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=189&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "15/09/2009",
+     "baja": "27/09/2011",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 9
+    },
+    {
+     "alta": "15/01/2013",
+     "baja": "13/01/2016",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "12/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "18/07/2016",
+     "baja": "29/10/2016",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "17/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/maria-margarita-robles-fernandez": {
+   "nombre": "María Margarita Robles Fernández",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1956-11-10",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=233&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "06/07/2016",
+     "baja": "15/06/2018",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Ávila",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "21/02/2020",
+     "circ": "Ávila",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "01/12/2023",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/felix-bolanos-garcia": {
+   "nombre": "Félix Bolaños García",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1975-12-17",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=253&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/fernando-grande-marlaska-gomez": {
+   "nombre": "Fernando Grande-Marlaska Gómez",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 5,
+   "genero": "m",
+   "nacimiento": "1962-07-26",
+   "lugar": "Bilbao",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=286&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "21/02/2020",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "06/12/2023",
+     "circ": "Cádiz",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/rafael-simancas-simancas": {
+   "nombre": "Rafael Simancas Simancas",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 7,
+   "genero": "m",
+   "nacimiento": "1966-07-01",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=229&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 9
+    },
+    {
+     "alta": "30/11/2011",
+     "baja": "13/01/2016",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "05/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "06/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "08/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/vicente-montavez-aguillaume": {
+   "nombre": "Vicente Montávez Aguillaume",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 11,
+   "genero": "m",
+   "nacimiento": "1980-03-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=390&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "17/09/2024",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/victor-gutierrez-santiago": {
+   "nombre": "Víctor Gutiérrez Santiago",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 13,
+   "genero": "m",
+   "nacimiento": "1991-03-06",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=357&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "05/12/2023",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/josefa-maria-sainz-martin": {
+   "nombre": "Josefa María Sainz Martín",
+   "prov": "28",
+   "siglas": "PSOE",
+   "n": 20,
+   "genero": "f",
+   "nacimiento": "1953-06-06",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=384&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/06/2024",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/santiago-abascal-conde": {
+   "nombre": "Santiago Abascal Conde",
+   "prov": "28",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1976-04-14",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=317&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Madrid",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Madrid",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/maria-jose-rodriguez-de-millan-parro": {
+   "nombre": "María José Rodríguez de Millán Parro",
+   "prov": "28",
+   "siglas": "VOX",
+   "n": 4,
+   "genero": "f",
+   "nacimiento": "1995-03-21",
+   "lugar": "Cabra (Córdoba)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=344&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/maria-de-la-cabeza-ruiz-solas": {
+   "nombre": "María de la Cabeza Ruiz Solás",
+   "prov": "28",
+   "siglas": "VOX",
+   "n": 6,
+   "genero": "f",
+   "nacimiento": "1970-09-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=283&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Madrid",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "28/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Madrid",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/rocio-aguirre-gil-de-biedma": {
+   "nombre": "Rocío Aguirre Gil de Biedma",
+   "prov": "28",
+   "siglas": "VOX",
+   "n": 8,
+   "genero": "f",
+   "nacimiento": "1964-05-28",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=371&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/01/2024",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/alberto-nunez-feijoo": {
+   "nombre": "Alberto Núñez Feijóo",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1961-09-10",
+   "lugar": "Ourense",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=346&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/cayetana-alvarez-de-toledo-peralta-ramos": {
+   "nombre": "Cayetana Álvarez de Toledo Peralta Ramos",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1974-10-15",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=315&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "07/12/2011",
+     "baja": "27/10/2015",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "17/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Barcelona",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "28/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Barcelona",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/borja-semper-pascual": {
+   "nombre": "Borja Sémper Pascual",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1976-01-10",
+   "lugar": "Irún",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=258&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "11/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/jaime-miguel-de-los-santos-gonzalez": {
+   "nombre": "Jaime Miguel de los Santos González",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 5,
+   "genero": "m",
+   "nacimiento": "1978-08-06",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=270&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/marta-varela-pazos": {
+   "nombre": "Marta Varela Pazos",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 6,
+   "genero": "f",
+   "nacimiento": "1983-08-24",
+   "lugar": "Santiso (A Coruña)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=347&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/maria-del-mar-sanchez-sierra": {
+   "nombre": "María del Mar Sánchez Sierra",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 8,
+   "genero": "f",
+   "nacimiento": "1969-03-25",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=281&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/paloma-martin-martin": {
+   "nombre": "Paloma Martín Martín",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 10,
+   "senado_2023": {
+    "prov": "28",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "madrid/jose-enrique-nunez-guijarro": {
+   "nombre": "José Enrique Núñez Guijarro",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 13,
+   "genero": "m",
+   "nacimiento": "1974-03-16",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=373&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/01/2024",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/manuel-cobo-vega": {
+   "nombre": "Manuel Cobo Vega",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 15,
+   "genero": "m",
+   "nacimiento": "1956-06-18",
+   "lugar": "Ponferrada",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=324&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/pedro-munoz-abrines": {
+   "nombre": "Pedro Muñoz Abrines",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 17,
+   "genero": "m",
+   "nacimiento": "1967-08-09",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=236&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/aurora-nacarino-brabo-jimenez": {
+   "nombre": "Aurora Nacarino-Brabo Jiménez",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 20,
+   "genero": "f",
+   "nacimiento": "1987-05-16",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=348&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Burgos",
+     "formacion": "Cs",
+     "leg": 13
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/edurne-uriarte-bengoechea": {
+   "nombre": "Edurne Uriarte Bengoechea",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 22,
+   "genero": "f",
+   "nacimiento": "1960-10-27",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=374&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "30/01/2024",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/maria-eugenia-carballedo-berlanga": {
+   "nombre": "María Eugenia Carballedo Berlanga",
+   "prov": "28",
+   "siglas": "PP",
+   "n": 24,
+   "genero": "f",
+   "nacimiento": "1971-09-04",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=341&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/05/2008",
+     "baja": "06/06/2011",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Madrid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/teslem-andala-ubbi": {
+   "nombre": "Teslem Andala Ubbi",
+   "prov": "28",
+   "siglas": "FA",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1994-05-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=338&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Madrid",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/juan-antonio-valero-morales": {
+   "nombre": "Juan Antonio Valero Morales",
+   "prov": "28",
+   "siglas": "FA",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1981-03-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=78&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Málaga",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "madrid/irene-montero-gil": {
+   "nombre": "Irene Montero Gil",
+   "prov": "28",
+   "siglas": "PODEMOS",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1988-02-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=329&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "05/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Madrid",
+     "formacion": "PODEMOS",
+     "leg": 11
+    },
+    {
+     "alta": "08/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Madrid",
+     "formacion": "UP",
+     "leg": 12
+    },
+    {
+     "alta": "14/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Madrid",
+     "formacion": "UP",
+     "leg": 13
+    },
+    {
+     "alta": "29/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Madrid",
+     "formacion": "UP",
+     "leg": 14
+    }
+   ]
+  },
+  "malaga/maria-nieves-ramirez-moreno": {
+   "nombre": "María Nieves Ramírez Moreno",
+   "prov": "29",
+   "siglas": "PSOE",
+   "n": 4,
+   "genero": "f",
+   "nacimiento": "1984-07-28",
+   "lugar": "Málaga",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=5&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "01/08/2023",
+     "baja": "",
+     "circ": "Málaga",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "malaga/carlos-hernandez-quero": {
+   "nombre": "Carlos Hernández Quero",
+   "prov": "29",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1990-12-28",
+   "lugar": "Madrid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=345&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Málaga",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "malaga/patricia-rueda-perello": {
+   "nombre": "Patricia Rueda Perelló",
+   "prov": "29",
+   "siglas": "VOX",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1976-10-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=293&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "17/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Málaga",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Málaga",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Málaga",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "malaga/elias-bendodo-benasayag": {
+   "nombre": "Elías Bendodo Benasayag",
+   "prov": "29",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1974-08-18",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=209&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Málaga",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "malaga/angel-luis-gonzalez-munoz": {
+   "nombre": "Ángel Luis González Muñoz",
+   "prov": "29",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1979-03-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=391&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "25/03/2008",
+     "baja": "27/09/2011",
+     "circ": "Málaga",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "02/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Málaga",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "04/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Málaga",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Málaga",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "26/04/2022",
+     "baja": "17/08/2023",
+     "circ": "Málaga",
+     "formacion": "PP",
+     "leg": 14
+    }
+   ],
+   "senado_2023": {
+    "prov": "29",
+    "distrito": "9",
+    "siglas": "PP"
+   }
+  },
+  "murcia/maria-gonzalez-veracruz": {
+   "nombre": "María González Veracruz",
+   "prov": "30",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1979-07-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=166&idLegislatura=XII&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/11/2011",
+     "baja": "13/01/2016",
+     "circ": "Murcia",
+     "formacion": "PSOE",
+     "leg": 10
+    },
+    {
+     "alta": "11/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Murcia",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "08/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Murcia",
+     "formacion": "PSOE",
+     "leg": 12
+    }
+   ]
+  },
+  "murcia/caridad-rives-arcayna": {
+   "nombre": "Caridad Rives Arcayna",
+   "prov": "30",
+   "siglas": "PSOE",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1972-06-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=231&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Murcia",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "murcia/joaquin-robles-lopez": {
+   "nombre": "Joaquín Robles López",
+   "prov": "30",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1964-06-08",
+   "lugar": "Moratalla (Murcia)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=318&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Murcia",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Murcia",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Murcia",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "murcia/luis-gestoso-de-miguel": {
+   "nombre": "Luis Gestoso de Miguel",
+   "prov": "30",
+   "siglas": "VOX",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1962-12-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=131&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Murcia",
+     "formacion": "Vox",
+     "leg": 14
+    }
+   ]
+  },
+  "murcia/mirian-guardiola-salmeron": {
+   "nombre": "Mirian Guardiola Salmerón",
+   "prov": "30",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1983-05-27",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=351&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "18/09/2023",
+     "baja": "",
+     "circ": "Murcia",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "murcia/juan-luis-pedreno-molina": {
+   "nombre": "Juan Luis Pedreño Molina",
+   "prov": "30",
+   "siglas": "PP",
+   "n": 4,
+   "genero": "m",
+   "nacimiento": "1969-01-24",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=339&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Murcia",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Murcia",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "navarra/maria-isabel-bel-pozueta-fernandez-eh-bildu": {
+   "nombre": "María Isabel (Bel) Pozueta Fernández (EH BILDU)",
+   "prov": "31",
+   "siglas": "EH BILDU-ERC",
+   "n": 5,
+   "genero": "f",
+   "nacimiento": "1965-09-21",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=288&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "20/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Navarra",
+     "formacion": "EH Bildu",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Navarra",
+     "formacion": "EH Bildu",
+     "leg": 15
+    }
+   ]
+  },
+  "navarra/nuria-medina-santos": {
+   "nombre": "Nuria Medina Santos",
+   "prov": "31",
+   "siglas": "PSN-PSOE",
+   "n": 3,
+   "senado_2023": {
+    "prov": "31",
+    "distrito": "9",
+    "siglas": "PSN-PSOE"
+   },
+   "genero": "f"
+  },
+  "navarra/sergio-sayas-lopez-pp": {
+   "nombre": "Sergio Sayas López (PP)",
+   "prov": "31",
+   "siglas": "UPN-PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1979-07-06",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=148&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Navarra",
+     "formacion": "NA+",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Navarra",
+     "formacion": "NA+",
+     "leg": 14
+    },
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Navarra",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "ourense/ana-belen-vazquez-blanco": {
+   "nombre": "Ana Belén Vázquez Blanco",
+   "prov": "32",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1975-01-27",
+   "lugar": "Bande (Ourense)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=196&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/03/2000",
+     "baja": "20/01/2004",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "23/03/2004",
+     "baja": "15/01/2008",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "21/04/2009",
+     "baja": "27/09/2011",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "01/12/2011",
+     "baja": "27/10/2015",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "05/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "08/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "ourense/rosa-maria-quintana-carballo": {
+   "nombre": "Rosa María Quintana Carballo",
+   "prov": "32",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1959-05-29",
+   "lugar": "Venezuela",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=197&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "ourense/celso-luis-delgado-arce": {
+   "nombre": "Celso Luis Delgado Arce",
+   "prov": "32",
+   "siglas": "PP",
+   "n": 4,
+   "genero": "m",
+   "nacimiento": "1958-02-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=32&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/03/2000",
+     "baja": "20/01/2004",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "23/03/2004",
+     "baja": "15/01/2008",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "26/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "05/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "30/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "05/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "08/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Ourense",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "palencia/maria-luz-martinez-seijo": {
+   "nombre": "María Luz Martínez Seijo",
+   "prov": "34",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1968-11-10",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=63&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Palencia",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "14/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Palencia",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Palencia",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Palencia",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Palencia",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "palencia/milagros-marcos-ortega": {
+   "nombre": "Milagros Marcos Ortega",
+   "prov": "34",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1965-06-14",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=320&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Palencia",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Palencia",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Palencia",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "las-palmas/maria-dolores-corujo-berriel": {
+   "nombre": "María Dolores Corujo Berriel",
+   "prov": "35",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1977-04-08",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=187&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Palmas (Las)",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "las-palmas/luc-andre-diouf-dioh": {
+   "nombre": "Luc Andre Diouf Dioh",
+   "prov": "35",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1965-01-18",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=142&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Palmas (Las)",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Palmas (Las)",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "07/08/2023",
+     "baja": "",
+     "circ": "Palmas (Las)",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "las-palmas/ada-santana-aguilera": {
+   "nombre": "Ada Santana Aguilera",
+   "prov": "35",
+   "siglas": "PSOE",
+   "n": 5,
+   "genero": "f",
+   "nacimiento": "1998-04-29",
+   "lugar": "Las Palmas de Gran Canaria",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=133&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Palmas (Las)",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "las-palmas/sergio-ramos-acosta": {
+   "nombre": "Sergio Ramos Acosta",
+   "prov": "35",
+   "siglas": "PP",
+   "n": 1,
+   "senado_2023": {
+    "prov": "35",
+    "distrito": "1",
+    "siglas": "PP"
+   },
+   "genero": "m"
+  },
+  "las-palmas/guillermo-carlos-mariscal-anaya": {
+   "nombre": "Guillermo Carlos Mariscal Anaya",
+   "prov": "35",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1974-05-09",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=255&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/03/2005",
+     "baja": "15/01/2008",
+     "circ": "Las Palmas",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "26/03/2008",
+     "baja": "27/09/2011",
+     "circ": "Las Palmas",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "01/12/2011",
+     "baja": "27/10/2015",
+     "circ": "Las Palmas",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "12/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Palmas (Las)",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "15/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Palmas (Las)",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Palmas (Las)",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "29/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Palmas (Las)",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Palmas (Las)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "las-palmas/andres-alberto-rodriguez-almeida": {
+   "nombre": "Andrés Alberto Rodríguez Almeida",
+   "prov": "35",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1978-02-22",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=256&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "27/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Palmas (Las)",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Palmas (Las)",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "pontevedra/maria-margarita-peregrina-marica-adrio-taracido": {
+   "nombre": "María Margarita Peregrina «Marica» Adrio Taracido",
+   "prov": "36",
+   "siglas": "PSdeG-PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1956-12-12",
+   "lugar": "La Coruña",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=139&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Pontevedra",
+     "formacion": "PsdeG-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "pontevedra/maria-jose-pardo-pumar-pepa": {
+   "nombre": "María José Pardo Pumar «Pepa»",
+   "prov": "36",
+   "siglas": "PP",
+   "n": 2,
+   "senado_2023": {
+    "prov": "36",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "pontevedra/pedro-puy-fraga": {
+   "nombre": "Pedro Puy Fraga",
+   "prov": "36",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1962-10-17",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=199&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "",
+     "circ": "Pontevedra",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "pontevedra/irene-garrido-valenzuela": {
+   "nombre": "Irene Garrido Valenzuela",
+   "prov": "36",
+   "siglas": "PP",
+   "n": 4,
+   "genero": "f",
+   "nacimiento": "1960-03-29",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=42&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/11/2011",
+     "baja": "01/09/2014",
+     "circ": "Pontevedra",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "29/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Pontevedra",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "05/07/2016",
+     "baja": "18/11/2016",
+     "circ": "Pontevedra",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Pontevedra",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "pontevedra/juan-andres-bayon-rolo": {
+   "nombre": "Juan Andrés Bayón Rolo",
+   "prov": "36",
+   "siglas": "PP",
+   "n": 5,
+   "genero": "m",
+   "nacimiento": "1998-01-12",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=382&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "11/06/2024",
+     "baja": "06/10/2026",
+     "circ": "Pontevedra",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "la-rioja/elisa-garrido-jimenez": {
+   "nombre": "Elisa Garrido Jiménez",
+   "prov": "26",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1976-04-24",
+   "lugar": "Calahorra (La Rioja)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=116&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Rioja (La)",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "la-rioja/raul-diaz-marin": {
+   "nombre": "Raúl Díaz Marín",
+   "prov": "26",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1988-02-08",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=50&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Rioja (La)",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "la-rioja/maria-concepcion-gamarra-ruiz-clavijo": {
+   "nombre": "María Concepción Gamarra Ruiz Clavijo",
+   "prov": "26",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1974-12-23",
+   "lugar": "Logroño (La Rioja)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=314&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Rioja (La)",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Rioja (La)",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Rioja (La)",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "salamanca/david-serrada-pariente": {
+   "nombre": "David Serrada Pariente",
+   "prov": "37",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1977-12-03",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=24&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "29/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Salamanca",
+     "formacion": "PSOE",
+     "leg": 11
+    },
+    {
+     "alta": "08/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Salamanca",
+     "formacion": "PSOE",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Salamanca",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Salamanca",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Salamanca",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "salamanca/jose-antonio-bermudez-de-castro-fernandez": {
+   "nombre": "José Antonio Bermúdez de Castro Fernández",
+   "prov": "37",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1959-09-05",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=118&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "22/03/1996",
+     "baja": "05/04/2000",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 6
+    },
+    {
+     "alta": "29/03/2000",
+     "baja": "02/04/2004",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "25/03/2004",
+     "baja": "15/01/2008",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "25/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "07/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "08/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "14/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "16/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Salamanca",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "santa-cruz-de-tenerife/marta-arocha-correa": {
+   "nombre": "Marta Arocha Correa",
+   "prov": "38",
+   "siglas": "PSOE",
+   "n": 2,
+   "senado_2023": {
+    "prov": "38",
+    "distrito": "4",
+    "siglas": "PSOE"
+   },
+   "genero": "f"
+  },
+  "santa-cruz-de-tenerife/sergio-matos-castro": {
+   "nombre": "Sergio Matos Castro",
+   "prov": "38",
+   "siglas": "PSOE",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1976-02-15",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=123&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/08/2023",
+     "baja": "05/12/2024",
+     "circ": "S/C Tenerife",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "santa-cruz-de-tenerife/cristina-valido-garcia": {
+   "nombre": "Cristina Valido García",
+   "prov": "38",
+   "siglas": "CCa-1.ºCAN",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1969-08-28",
+   "lugar": "Las Palmas de Gran Canaria",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=38&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "06/10/2026",
+     "circ": "S/C Tenerife",
+     "formacion": "CCa",
+     "leg": 15
+    }
+   ]
+  },
+  "segovia/jose-luis-aceves-galindo": {
+   "nombre": "José Luis Aceves Galindo",
+   "prov": "40",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1970-05-21",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=64&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Segovia",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "20/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Segovia",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Segovia",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "segovia/pablo-perez-coronado": {
+   "nombre": "Pablo Pérez Coronado",
+   "prov": "40",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1984-12-26",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=45&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Segovia",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/alfonso-rodriguez-gomez-de-celis": {
+   "nombre": "Alfonso Rodríguez Gómez de Celis",
+   "prov": "41",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1970-07-29",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=140&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Sevilla",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Sevilla",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "07/08/2023",
+     "baja": "",
+     "circ": "Sevilla",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/maria-carmen-castilla-alvarez": {
+   "nombre": "María Carmen Castilla Álvarez",
+   "prov": "41",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1968-12-04",
+   "lugar": "Écija",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=15&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Sevilla",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/trinidad-carmen-argota-castro": {
+   "nombre": "Trinidad Carmen Argota Castro",
+   "prov": "41",
+   "siglas": "PSOE",
+   "n": 4,
+   "genero": "f",
+   "nacimiento": "1965-06-25",
+   "lugar": "la Rinconada (Sevilla)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=103&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Sevilla",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/maria-de-los-reyes-romero-vilches": {
+   "nombre": "María de los Reyes Romero Vilches",
+   "prov": "41",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1967-12-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=307&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "17/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Sevilla",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Sevilla",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Sevilla",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/engracia-rivera-arias": {
+   "nombre": "Engracia Rivera Arias",
+   "prov": "41",
+   "siglas": "FA",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1971-06-29",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=157&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Sevilla",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/juan-bravo-baena": {
+   "nombre": "Juan Bravo Baena",
+   "prov": "41",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1974-03-24",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=9&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "30/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Ceuta",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "07/07/2016",
+     "baja": "11/02/2019",
+     "circ": "Ceuta",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "01/08/2023",
+     "baja": "",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/maria-soledad-cruz-guzman-garcia": {
+   "nombre": "María Soledad Cruz-Guzmán García",
+   "prov": "41",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1975-08-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=319&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "16/08/2023",
+     "baja": "",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/ricardo-tarno-blanco": {
+   "nombre": "Ricardo Tarno Blanco",
+   "prov": "41",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1966-05-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=89&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "26/03/2008",
+     "baja": "27/09/2011",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "05/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "04/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "01/12/2021",
+     "baja": "30/05/2023",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "sevilla/rafael-benigno-belmonte-gomez": {
+   "nombre": "Rafael Benigno Belmonte Gómez",
+   "prov": "41",
+   "siglas": "PP",
+   "n": 7,
+   "genero": "m",
+   "nacimiento": "1977-06-08",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=175&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Sevilla",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "soria/luis-alfonso-rey-de-las-heras": {
+   "nombre": "Luis Alfonso Rey de las Heras",
+   "prov": "42",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1967-03-05",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=11&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "01/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Soria",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "soria/tomas-cabezon-casas": {
+   "nombre": "Tomás Cabezón Casas",
+   "prov": "42",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1981-12-07",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=2&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Soria",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Soria",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "31/07/2023",
+     "baja": "",
+     "circ": "Soria",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "tarragona/andreu-martin-martinez": {
+   "nombre": "Andreu Martín Martinez",
+   "prov": "43",
+   "siglas": "PSC",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1965-06-28",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=62&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Tarragona",
+     "formacion": "PSC-PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "tarragona/jordi-salvador-duch": {
+   "nombre": "Jordi Salvador Duch",
+   "prov": "43",
+   "siglas": "ERC",
+   "n": 6,
+   "genero": "m",
+   "nacimiento": "1964-07-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=77&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "12/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Tarragona",
+     "formacion": "ERC-CATSÍ",
+     "leg": 11
+    },
+    {
+     "alta": "18/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Tarragona",
+     "formacion": "ERC-CATSÍ",
+     "leg": 12
+    },
+    {
+     "alta": "20/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Tarragona",
+     "formacion": "ERC-S",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Tarragona",
+     "formacion": "ERC-S",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Tarragona",
+     "formacion": "ERC",
+     "leg": 15
+    }
+   ]
+  },
+  "tarragona/josep-maria-cruset-i-domenech": {
+   "nombre": "Josep Maria Cruset i Domènech",
+   "prov": "43",
+   "siglas": "JxCat",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1975-03-09",
+   "lugar": "Riudoms (Tarragona)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=244&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Tarragona",
+     "formacion": "JxCAT-JUNTS",
+     "leg": 15
+    }
+   ]
+  },
+  "tarragona/elisa-vedrina-conesa": {
+   "nombre": "Elisa Vedrina Conesa",
+   "prov": "43",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1970-05-04",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=383&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "11/06/2024",
+     "baja": "06/10/2026",
+     "circ": "Tarragona",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "teruel/herminio-rufino-sancho-iniguez": {
+   "nombre": "Herminio Rufino Sancho Íniguez",
+   "prov": "44",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1966-04-07",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=130&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Teruel",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "19/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Teruel",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "07/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Teruel",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "teruel/jose-alberto-herrero-bono": {
+   "nombre": "José Alberto Herrero Bono",
+   "prov": "44",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1978-07-02",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=277&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/09/2014",
+     "baja": "27/10/2015",
+     "circ": "Teruel",
+     "formacion": "PP-PAR",
+     "leg": 10
+    },
+    {
+     "alta": "30/12/2015",
+     "baja": "03/05/2016",
+     "circ": "Teruel",
+     "formacion": "PP-PAR",
+     "leg": 11
+    },
+    {
+     "alta": "11/07/2016",
+     "baja": "05/03/2019",
+     "circ": "Teruel",
+     "formacion": "PP-PAR",
+     "leg": 12
+    },
+    {
+     "alta": "09/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Teruel",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "26/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Teruel",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Teruel",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "teruel/raquel-clemente-munoz": {
+   "nombre": "Raquel Clemente Muñoz",
+   "prov": "44",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1982-04-30",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=276&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Teruel",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "toledo/milagros-tolon-jaime": {
+   "nombre": "Milagros Tolón Jaime",
+   "prov": "45",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1968-03-25",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=158&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "13/12/2023",
+     "circ": "Toledo",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "toledo/sergio-gutierrez-prieto": {
+   "nombre": "Sergio Gutiérrez Prieto",
+   "prov": "45",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1982-07-11",
+   "lugar": "Escalona (Toledo)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=232&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "13/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Toledo",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Toledo",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Toledo",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "toledo/manuel-mariscal-zabala": {
+   "nombre": "Manuel Mariscal Zabala",
+   "prov": "45",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1992-01-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=263&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Toledo",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "25/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Toledo",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "11/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Toledo",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "toledo/jose-manuel-velasco-retamosa": {
+   "nombre": "José Manuel Velasco Retamosa",
+   "prov": "45",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1970-12-10",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=184&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "09/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Toledo",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/carmen-martinez-ramirez": {
+   "nombre": "Carmen Martínez Ramírez",
+   "prov": "46",
+   "siglas": "PSOE",
+   "n": 5,
+   "genero": "f",
+   "nacimiento": "1962-12-09",
+   "lugar": "Valencia",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=218&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Valencia/València",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/vicent-sarria-morell": {
+   "nombre": "Vicent Sarrià Morell",
+   "prov": "46",
+   "siglas": "PSOE",
+   "n": 6,
+   "genero": "m",
+   "nacimiento": "1967-10-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=219&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Valencia/València",
+     "formacion": "PSOE",
+     "leg": 13
+    },
+    {
+     "alta": "21/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Valencia/València",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Valencia/València",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/ana-maria-gonzalez-herdaro": {
+   "nombre": "Ana María González Herdaro",
+   "prov": "46",
+   "siglas": "PSOE",
+   "n": 7,
+   "genero": "f",
+   "nacimiento": "1977-07-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=407&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "05/02/2026",
+     "baja": "06/10/2026",
+     "circ": "Valencia/València",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/ignacio-gil-lazaro": {
+   "nombre": "Ignacio Gil Lázaro",
+   "prov": "46",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1957-09-23",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=117&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "07/06/1983",
+     "baja": "23/04/1986",
+     "circ": "Valencia",
+     "formacion": "CD",
+     "leg": 2
+    },
+    {
+     "alta": "14/07/1986",
+     "baja": "02/09/1989",
+     "circ": "Valencia",
+     "formacion": "CP",
+     "leg": 3
+    },
+    {
+     "alta": "21/06/1993",
+     "baja": "09/01/1996",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 5
+    },
+    {
+     "alta": "21/03/1996",
+     "baja": "05/04/2000",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 6
+    },
+    {
+     "alta": "28/03/2000",
+     "baja": "02/04/2004",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 7
+    },
+    {
+     "alta": "25/03/2004",
+     "baja": "01/04/2008",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 8
+    },
+    {
+     "alta": "24/03/2008",
+     "baja": "13/12/2011",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 9
+    },
+    {
+     "alta": "07/12/2011",
+     "baja": "13/01/2016",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "17/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Valencia/València",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Valencia/València",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "04/08/2023",
+     "baja": "",
+     "circ": "Valencia/València",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/carlos-flores-juberias": {
+   "nombre": "Carlos Flores Juberías",
+   "prov": "46",
+   "siglas": "VOX",
+   "n": 3,
+   "genero": "m",
+   "nacimiento": "1964-09-19",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=159&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Valencia/València",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/agueda-mico-mico": {
+   "nombre": "Àgueda Micó Micó",
+   "prov": "46",
+   "siglas": "COMPROMIS-EUPV-PODEM-ERPV",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1978-10-11",
+   "lugar": "L'Ollena, la Vall d'Albaida",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=164&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Valencia/València",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/alberto-ibanez-mezquita": {
+   "nombre": "Alberto Ibáñez Mezquita",
+   "prov": "46",
+   "siglas": "COMPROMIS-EUPV-PODEM-ERPV",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1991-11-11",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=165&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "08/08/2023",
+     "baja": "",
+     "circ": "Valencia/València",
+     "formacion": "SUMAR",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/maria-jose-catala-verdet": {
+   "nombre": "María José Catalá Verdet",
+   "prov": "46",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1981-03-03",
+   "lugar": "Valencia",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=329&idLegislatura=IX&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "31/03/2008",
+     "baja": "06/10/2008",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 9
+    }
+   ]
+  },
+  "valencia/belen-hoyo-julia": {
+   "nombre": "Belén Hoyo Juliá",
+   "prov": "46",
+   "siglas": "PP",
+   "n": 3,
+   "genero": "f",
+   "nacimiento": "1984-05-05",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=67&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "02/12/2011",
+     "baja": "27/10/2015",
+     "circ": "Valencia",
+     "formacion": "PP",
+     "leg": 10
+    },
+    {
+     "alta": "08/01/2016",
+     "baja": "03/05/2016",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "12/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 12
+    },
+    {
+     "alta": "16/05/2019",
+     "baja": "03/12/2019",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "22/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/fernando-de-rosa-torner": {
+   "nombre": "Fernando De Rosa Torner",
+   "prov": "46",
+   "siglas": "PP",
+   "n": 4,
+   "genero": "m",
+   "nacimiento": "1959-12-16",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=248&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/esperanza-reynal-reillo": {
+   "nombre": "Esperanza Reynal Reillo",
+   "prov": "46",
+   "siglas": "PP",
+   "n": 5,
+   "genero": "f",
+   "nacimiento": "1963-04-29",
+   "lugar": "Alcasser (Valencia)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=246&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "10/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "valencia/luis-javier-santamaria-ruiz": {
+   "nombre": "Luís Javier Santamaría Ruíz",
+   "prov": "46",
+   "siglas": "PP",
+   "n": 6,
+   "genero": "m",
+   "nacimiento": "1969-04-24",
+   "lugar": "Albuixech (Valencia)",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=269&idLegislatura=XIV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "14/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 14
+    }
+   ],
+   "senado_2023": {
+    "prov": "46",
+    "distrito": "9",
+    "siglas": "PP"
+   }
+  },
+  "valencia/evarist-aznar-teruel": {
+   "nombre": "Evarist Aznar Teruel",
+   "prov": "46",
+   "siglas": "PP",
+   "n": 8,
+   "genero": "m",
+   "nacimiento": "1966-05-25",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=406&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "15/01/2026",
+     "baja": "06/10/2026",
+     "circ": "Valencia/València",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "valladolid/oscar-puente-santiago": {
+   "nombre": "Óscar Puente Santiago",
+   "prov": "47",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1968-11-15",
+   "lugar": "Valladolid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=90&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Valladolid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "valladolid/maria-luisa-sanz-martinez": {
+   "nombre": "María Luisa Sanz Martínez",
+   "prov": "47",
+   "siglas": "PSOE",
+   "n": 4,
+   "genero": "f",
+   "nacimiento": "1970-09-20",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=91&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Valladolid",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "valladolid/pablo-saez-alonso-munumer": {
+   "nombre": "Pablo Sáez Alonso-Muñumer",
+   "prov": "47",
+   "siglas": "VOX",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1964-06-11",
+   "lugar": "Valladolid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=61&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/05/2019",
+     "baja": "24/09/2019",
+     "circ": "Valladolid",
+     "formacion": "Vox",
+     "leg": 13
+    },
+    {
+     "alta": "27/11/2019",
+     "baja": "30/05/2023",
+     "circ": "Valladolid",
+     "formacion": "Vox",
+     "leg": 14
+    },
+    {
+     "alta": "03/08/2023",
+     "baja": "06/10/2026",
+     "circ": "Valladolid",
+     "formacion": "VOX",
+     "leg": 15
+    }
+   ]
+  },
+  "valladolid/eduardo-carazo-hermoso": {
+   "nombre": "Eduardo Carazo Hermoso",
+   "prov": "47",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1990-01-06",
+   "lugar": "Valladolid",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=282&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "26/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Valladolid",
+     "formacion": "PP",
+     "leg": 14
+    },
+    {
+     "alta": "14/08/2023",
+     "baja": "",
+     "circ": "Valladolid",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  },
+  "zamora/antidio-fagundez-campo": {
+   "nombre": "Antidio Fagúndez Campo",
+   "prov": "49",
+   "siglas": "PSOE",
+   "n": 1,
+   "genero": "m",
+   "nacimiento": "1976-02-13",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=29&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "18/11/2019",
+     "baja": "17/08/2023",
+     "circ": "Zamora",
+     "formacion": "PSOE",
+     "leg": 14
+    },
+    {
+     "alta": "02/08/2023",
+     "baja": "",
+     "circ": "Zamora",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "zamora/fernando-martinez-maillo-toribio": {
+   "nombre": "Fernando Martínez-Maillo Toribio",
+   "prov": "49",
+   "siglas": "PP",
+   "n": 2,
+   "genero": "m",
+   "nacimiento": "1969-09-28",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=32&idLegislatura=XII&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "04/01/2016",
+     "baja": "19/07/2016",
+     "circ": "Zamora",
+     "formacion": "PP",
+     "leg": 11
+    },
+    {
+     "alta": "05/07/2016",
+     "baja": "21/05/2019",
+     "circ": "Zamora",
+     "formacion": "PP",
+     "leg": 12
+    }
+   ],
+   "senado_2023": {
+    "prov": "49",
+    "distrito": "9",
+    "siglas": "PP"
+   }
+  },
+  "zaragoza/marta-gracia-blanco": {
+   "nombre": "Marta Gracia Blanco",
+   "prov": "50",
+   "siglas": "PSOE",
+   "n": 2,
+   "genero": "f",
+   "nacimiento": "1972-08-05",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=370&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "16/01/2024",
+     "baja": "06/10/2026",
+     "circ": "Zaragoza",
+     "formacion": "PSOE",
+     "leg": 15
+    }
+   ]
+  },
+  "zaragoza/maria-del-rocio-divar-conde": {
+   "nombre": "María del Rocío Dívar Conde",
+   "prov": "50",
+   "siglas": "PP",
+   "n": 1,
+   "senado_2023": {
+    "prov": "50",
+    "distrito": "9",
+    "siglas": "PP"
+   },
+   "genero": "f"
+  },
+  "melilla/sofia-acedo-reyes": {
+   "nombre": "Sofía Acedo Reyes",
+   "prov": "52",
+   "siglas": "PP",
+   "n": 1,
+   "genero": "f",
+   "nacimiento": "1985-09-24",
+   "ficha_congreso": "https://www.congreso.es/es/busqueda-de-diputados?p_p_id=diputadomodule&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_diputadomodule_mostrarFicha=true&codParlamentario=69&idLegislatura=XV&mostrarAgenda=false",
+   "congreso": [
+    {
+     "alta": "03/08/2023",
+     "baja": "",
+     "circ": "Melilla",
+     "formacion": "PP",
+     "leg": 15
+    }
+   ]
+  }
+ },
+ "dudosos": [
+  {
+   "clave": "madrid/julio-utrilla-cano",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 14,
+   "circ": "Valencia/València",
+   "formacion": "Vox",
+   "alta": "29/11/2019",
+   "baja": "30/05/2023",
+   "nombre_congreso": "Utrilla Cano, Julio"
+  },
+  {
+   "clave": "madrid/maria-martin-revuelta",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 10,
+   "circ": "Valencia",
+   "formacion": "PP",
+   "alta": "10/12/2014",
+   "baja": "27/10/2015",
+   "nombre_congreso": "Martín Revuelta, María"
+  },
+  {
+   "clave": "madrid/veronica-martinez-barbero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Pontevedra",
+   "formacion": "SUMAR",
+   "alta": "16/08/2023",
+   "baja": "",
+   "nombre_congreso": "Martínez Barbero, Verónica"
+  },
+  {
+   "clave": "sevilla/enrique-fernando-santiago-romero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 13,
+   "circ": "Madrid",
+   "formacion": "UP",
+   "alta": "07/05/2019",
+   "baja": "24/09/2019",
+   "nombre_congreso": "Santiago Romero, Enrique Fernando"
+  },
+  {
+   "clave": "sevilla/enrique-fernando-santiago-romero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 14,
+   "circ": "Madrid",
+   "formacion": "UP",
+   "alta": "20/11/2019",
+   "baja": "17/08/2023",
+   "nombre_congreso": "Santiago Romero, Enrique Fernando"
+  },
+  {
+   "clave": "sevilla/enrique-fernando-santiago-romero",
+   "motivo": "congreso: otra provincia y sin fecha de nacimiento con la que comparar",
+   "leg": 15,
+   "circ": "Córdoba",
+   "formacion": "SUMAR",
+   "alta": "07/08/2023",
+   "baja": "",
+   "nombre_congreso": "Santiago Romero, Enrique Fernando"
+  },
+  {
+   "clave": "zaragoza/javier-campoy-monreal",
+   "motivo": "senado 2023: otra provincia o partido",
+   "prov": "22",
+   "siglas": "PP"
+  }
+ ]
+}

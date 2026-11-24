@@ -192,7 +192,7 @@ def prepara(datos, avance):
     repiten de 2023."""
     dips, _ = diputados()
     pu = json.loads((DATOS / 'puestos-29n.json').read_text())
-    prev = {}
+    prev, fam23 = {}, {}
     if not avance and (DATOS / '2023-proclamadas.json').exists():   # quién ya fue candidato el 23J
         cuenta = Counter()
         for c in json.loads((DATOS / '2023-proclamadas.json').read_text())['candidaturas']:
@@ -200,7 +200,11 @@ def prepara(datos, avance):
                 k = clave_nombre(p['nombre'])
                 cuenta[k] += 1
                 prev.setdefault(k, (c['prov'], c['camara'], c['siglas'], p['n']))
+                fam23.setdefault(k, familia(c['siglas'], c['denominacion'])[0])
         prev = {k: v for k, v in prev.items() if cuenta[k] == 1}   # un nombre repetido en 2023 no se sabe a quién corresponde
+        # ni uno repetido en 2026
+        cuenta26 = Counter(clave_nombre(p['nombre']) for c in datos['candidaturas'] if not c.get('no_proclamada') for p in c['titulares'])
+        prev = {k: v for k, v in prev.items() if cuenta26[k] <= 1}
     cands = []
     for c in datos['candidaturas']:
         if c.get('no_proclamada') or not c['titulares']:
@@ -231,7 +235,10 @@ def prepara(datos, avance):
                 p['dip'] = d['formacion'] + (' (de baja)' if d['baja'] and not d['baja'].startswith('06/10/2026') else '')
             if prev:
                 k = clave_nombre(p['nombre'])
-                if k in prev and (prev[k][0] == c['prov'] or len(k.split()) >= 3):
+                # Solo con la misma provincia o el mismo partido: con nombre y dos apellidos también hay homónimos
+                # (21-11-2026, aviso de un lector: María Gómez García, n.º 3 del PP por Alicante y alcaldesa de Almoradí,
+                # salía como la n.º 6 de Recortes Cero por Madrid en 2023, que es otra persona)
+                if k in prev and (prev[k][0] == c['prov'] or fam23[k] == f[0]):
                     p['en23'] = prev[k]
         cands.append(c)
     return cands
@@ -527,6 +534,16 @@ def tarjeta(destino, titular, sub, barras):
     im.save(destino, quality=88)
 
 
+
+def tarjeta_simulador(pre):
+    """Card del simulador de pactos en la franja de la portada. En la veda de encuestas (src/veda.py) sale comentada
+    (<!--veda:…-->), como la deja src/quitar_encuestas_portada.py, para que --restaurar la devuelva al acabar."""
+    from veda import en_veda
+    card = (f'<a class="atlas" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
+            '<span>Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura, a partir de la media de encuestas.</span>'
+            '<span class="atlas-go">Simulador de pactos del 29N →</span></a>')
+    return f'<!--veda:{card}-->' if en_veda() else card
+
 def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_boe):
     """Franja «Listas del 29N» de la portada, justo debajo del mapa: titular, cifras y buscador."""
     e = html.escape
@@ -542,9 +559,7 @@ def franja_portada(pre, titular, n_cong, n_listas, n_sen, n_dip, avance, fecha_b
             # elegir provincia lleva a su página de listas (sin JavaScript, el botón abre la página general)
             f'<form class="li-bus" action="{pre}listas-electorales-29n/" method="get" onsubmit="var v=this.p.value;if(v){{location.href=this.action+v;return false}}">'
             f'<select name="p" aria-label="Provincia"><option value="">Elige tu provincia</option>{opts}</select><button>Ver las listas</button></form></div>'
-            f'<a class="atlas" href="{pre}encuestas/simulador-pactos/"><span class="atlas-k">Simulador de pactos</span><b>¿Quién suma 176 escaños el 29N?</b>'
-            '<span>Elige qué partidos votan sí, se abstienen o votan no y mira si sale la investidura, a partir de la media de encuestas.</span>'
-            '<span class="atlas-go">Simulador de pactos del 29N →</span></a></div>'
+            + tarjeta_simulador(pre) + '</div>'
             '<style>.del-listas .li-act{font:13px var(--sans);color:var(--muted)}.del-listas .li-tit{display:block;font:600 21px/1.25 var(--serif);color:var(--ink);text-decoration:none;margin:0 0 6px}'
             '.del-listas .li-tit:hover{text-decoration:underline}.del-listas .li-cif{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:2px 14px;font:13.5px var(--sans);color:var(--muted)}'
             '.del-listas .li-cif b{color:var(--ink);font-size:15px}.del-listas .li-bus{display:flex;flex-wrap:wrap;gap:8px;font:15px var(--sans)}'
@@ -1182,6 +1197,13 @@ def main():
     import esquema
     for f in [CARPETA / 'index.html', MI_DIPUTADO / 'index.html', SENADO / 'index.html'] + [CARPETA / s / 'index.html' for s in PROV_SLUG.values()] + [f for f, _ in fichas]:
         esquema.procesa(f)
+    if not avance:   # biografías breves de las fichas y «Quién es quién» de cada provincia (biografias.py)
+        import biografias
+        biografias.main()
+        import sin_probabilidades   # veda 29N: fuera la probabilidad de salir elegido (Nacho, 24-11-2026)
+        sin_probabilidades.main(descripcion=True)
+        import bienes   # bienes declarados al Congreso en 2019 y 2023 (Nacho, 24-11-2026)
+        bienes.main()
     print(f'listas: {"avance con 2023" if avance else datos["fase"] + " 29N"}; {len(cong)} candidaturas al Congreso, {n_cong} titulares, {n_dip} diputados, {len(fichas)} fichas, Senado {n_senadores} escaños en {n_circ} circunscripciones; {titular}')
 
 

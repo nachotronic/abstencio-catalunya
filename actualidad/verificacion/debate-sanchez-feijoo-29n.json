@@ -1,0 +1,124 @@
+{
+ "pieza": "debate-sanchez-feijoo-29n",
+ "cifras": [
+  {
+   "texto": "el menos visto desde 1993: 5,9 millones.",
+   "cifra": "5,9 millones",
+   "calculo": "round(D['M23'],1)*1e6"
+  },
+  {
+   "texto": "informó FormulaTV. Quedaban diez días para votar.",
+   "condicion": "29 - 19 == 10  # del jueves 19 al domingo 29 de noviembre"
+  },
+  {
+   "texto": "2023, lo vieron de media 5,9 millones de personas: el menos",
+   "cifra": "5,9 millones",
+   "calculo": "round(D['M23'],1)*1e6"
+  },
+  {
+   "texto": "el menos visto de los siete celebrados entre 1993 y 2023.",
+   "cifra": "siete",
+   "calculo": "len(D['CARAS'])"
+  },
+  {
+   "texto": "25 de febrero de 2008, con 13,0 millones, más del doble que el",
+   "cifra": "13,0 millones",
+   "calculo": "round(D['MMAX'],1)*1e6"
+  },
+  {
+   "texto": "NC Report y La Razón, el 57 % de los encuestados",
+   "cifra": "57",
+   "calculo": "D['NC_F']"
+  },
+  {
+   "texto": "le vio ganador, frente al 39 % que eligió a Sánchez;",
+   "cifra": "39",
+   "calculo": "D['NC_S']"
+  },
+  {
+   "texto": "Sigma Dos para El Mundo, el 54,2 % creía que Feijóo se",
+   "cifra": "54,2",
+   "calculo": "D['SIGMA_F']"
+  },
+  {
+   "texto": "elecciones generales da al PP 31,4 % y al PSOE 27,0 %:",
+   "cifra": "31,4",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "da al PP 31,4 % y al PSOE 27,0 %: 4,4 puntos de diferencia.",
+   "cifra": "27,0",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "31,4 % y al PSOE 27,0 %: 4,4 puntos de diferencia.",
+   "cifra": "4,4",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "El cara a cara de 2026 lo vieron 10,2 millones de espectadores",
+   "cifra": "10,2 millones",
+   "calculo": "round(D['M26'],1)*1e6"
+  },
+  {
+   "texto": "lo vieron de media 10.152.000 personas",
+   "cifra": "10.152.000",
+   "calculo": "D['C26'][2]*1000"
+  },
+  {
+   "texto": "con un 70,8 % de cuota de pantalla, según el informe",
+   "cifra": "70,8",
+   "calculo": "D['C26'][3]"
+  },
+  {
+   "texto": "Son un 72 % más que en 2023",
+   "cifra": "72",
+   "calculo": "round((D['C26'][2]/min(c[2] for c in D['CARAS'])-1)*100)"
+  },
+  {
+   "texto": "es el cara a cara más visto desde el de Rubalcaba y Rajoy de 2011.",
+   "condicion": "max((c for c in D['CARAS'] if c[2]>D['C26'][2]), key=lambda c:int(c[1][-4:]))[1]=='7-11-2011'"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "dos pausas publicitarias de tres minutos, según El Plural.",
+   "fuente": "https://www.elplural.com/politica/espana/todo-sabemos-cara-cara-entre-sanchez-feijoo-temas-tiempos-perspectivas_804551102"
+  },
+  {
+   "texto": "El debate tenía cinco bloques, en este orden.",
+   "fuente": "https://www.elplural.com/politica/espana/todo-sabemos-cara-cara-entre-sanchez-feijoo-temas-tiempos-perspectivas_804551102"
+  },
+  {
+   "texto": "las urnas se la dejaron en 1,4 puntos.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/"
+  },
+  {
+   "texto": "Lo emitieron 20 cadenas a la vez.",
+   "fuente": "https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html"
+  },
+  {
+   "texto": "lo vieron de media 10.152.000 personas, con un 70,8 % de cuota de pantalla",
+   "fuente": "https://www.libertaddigital.com/chic/entretenimiento/2026-11-20/mas-de-10-millones-de-espectadores-vieron-el-cara-a-cara-entre-alberto-nunez-feijoo-y-pedro-sanchez-7495065/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "jueves a las 22.00, en La 1, Antena 3, Telecinco,",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "las 22.00, en La 1, Antena 3, Telecinco, Cuatro,",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima.",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "de Madrid Content City, en Tres Cantos (Madrid).",
+   "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  }
+ ],
+ "permitir_espana": []
+}

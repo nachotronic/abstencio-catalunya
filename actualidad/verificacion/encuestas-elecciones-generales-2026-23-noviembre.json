@@ -1,0 +1,387 @@
+{
+ "pieza": "encuestas-elecciones-generales-2026-23-noviembre",
+ "cifras": [
+  {
+   "texto": "suman mayoría absoluta en las siete",
+   "condicion": "len(D['F']) == 7"
+  },
+  {
+   "texto": "publicar. El PP va primero en seis; Cluster17 da más voto",
+   "condicion": "sum(f['dif'] > 0 for f in D['F']) == 6"
+  },
+  {
+   "texto": "40dB. deja la distancia en 0,9 puntos.",
+   "cifra": "0,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['dif']"
+  },
+  {
+   "texto": "suman mayoría absoluta en las siete encuestas de las elecciones",
+   "condicion": "len(D['F']) == 7"
+  },
+  {
+   "texto": "permite publicarlas: entre 178 y 201 escaños, por encima",
+   "cifra": "178",
+   "calculo": "D['PVMIN']"
+  },
+  {
+   "texto": "publicarlas: entre 178 y 201 escaños, por encima",
+   "cifra": "201",
+   "calculo": "D['PVMAX']"
+  },
+  {
+   "texto": "escaños, por encima de los 176. El PP va primero en",
+   "cifra": "176",
+   "calculo": "350 // 2 + 1"
+  },
+  {
+   "texto": "176. El PP va primero en seis. La que le da más ventaja",
+   "condicion": "sum(f['dif'] > 0 for f in D['F']) == 6"
+  },
+  {
+   "texto": "NC Report para La Razón, 4,7 puntos sobre el PSOE",
+   "cifra": "4,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
+  },
+  {
+   "texto": "puntos sobre el PSOE (PP 31,9 %, PSOE 27,2 %). Le",
+   "cifra": "31,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['PP']"
+  },
+  {
+   "texto": "el PSOE (PP 31,9 %, PSOE 27,2 %). Le siguen Data10",
+   "cifra": "27,2",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['PSOE']"
+  },
+  {
+   "texto": "Data10 para OKDiario, con 4,4; IMOP Insights para",
+   "cifra": "4,4",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['dif']"
+  },
+  {
+   "texto": "para El Confidencial, con 4,3; GESOP para Prensa Ibérica,",
+   "cifra": "4,3",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['dif']"
+  },
+  {
+   "texto": "para Prensa Ibérica, con 3,9, y Target Point para",
+   "cifra": "3,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['dif']"
+  },
+  {
+   "texto": "Point para El Debate, con 2,7.",
+   "cifra": "2,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['dif']"
+  },
+  {
+   "texto": "para El País y la SER, con 7.500 entrevistas del 10 al",
+   "cifra": "7.500",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['n']"
+  },
+  {
+   "texto": "noviembre, deja la distancia en 0,9 puntos: PP 31,8 %, PSOE",
+   "cifra": "0,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['dif']"
+  },
+  {
+   "texto": "distancia en 0,9 puntos: PP 31,8 %, PSOE 30,9 %, Vox",
+   "cifra": "31,8",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['PP']"
+  },
+  {
+   "texto": "0,9 puntos: PP 31,8 %, PSOE 30,9 %, Vox 17,3 %. Cluster17",
+   "cifra": "30,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['PSOE']"
+  },
+  {
+   "texto": "31,8 %, PSOE 30,9 %, Vox 17,3 %. Cluster17 para Agenda",
+   "cifra": "17,3",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['VOX']"
+  },
+  {
+   "texto": "que da más voto al PSOE: 32,6 % frente al 30,2 % del",
+   "cifra": "32,6",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Cluster17'][0]['PSOE']"
+  },
+  {
+   "texto": "al PSOE: 32,6 % frente al 30,2 % del PP, y 133 escaños",
+   "cifra": "30,2",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Cluster17'][0]['PP']"
+  },
+  {
+   "texto": "frente al 30,2 % del PP, y 133 escaños frente a 123.",
+   "cifra": "133",
+   "calculo": "int([f for f in D['F'] if f['casa'] == 'Cluster17'][0]['esc']['PSOE'])"
+  },
+  {
+   "texto": "PP, y 133 escaños frente a 123. Aun así, PP y Vox suman",
+   "cifra": "123",
+   "calculo": "int([f for f in D['F'] if f['casa'] == 'Cluster17'][0]['esc']['PP'])"
+  },
+  {
+   "texto": "123. Aun así, PP y Vox suman 180 en su reparto.",
+   "cifra": "180",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Cluster17'][0]['pv'][0]"
+  },
+  {
+   "texto": "distancia entre PP y PSOE baja en cinco de las siete: en NC",
+   "condicion": "sum(f['dif'] < f['dif_ant'] for f in D['F']) == 5"
+  },
+  {
+   "texto": "PSOE baja en cinco de las siete: en NC Report, de 6,0",
+   "condicion": "len(D['F']) == 7"
+  },
+  {
+   "texto": "las siete: en NC Report, de 6,0 a 4,7 puntos; en Data10,",
+   "cifra": "6,0",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif_ant']"
+  },
+  {
+   "texto": "siete: en NC Report, de 6,0 a 4,7 puntos; en Data10, de",
+   "cifra": "4,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
+  },
+  {
+   "texto": "4,7 puntos; en Data10, de 5,1 a 4,4; en IMOP Insights,",
+   "cifra": "5,1",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['dif_ant']"
+  },
+  {
+   "texto": "puntos; en Data10, de 5,1 a 4,4; en IMOP Insights, de",
+   "cifra": "4,4",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['dif']"
+  },
+  {
+   "texto": "4,4; en IMOP Insights, de 4,6 a 4,3; en Target Point,",
+   "cifra": "4,6",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['dif_ant']"
+  },
+  {
+   "texto": "en IMOP Insights, de 4,6 a 4,3; en Target Point, de",
+   "cifra": "4,3",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['dif']"
+  },
+  {
+   "texto": "4,3; en Target Point, de 3,6 a 2,7, y en Cluster17,",
+   "cifra": "3,6",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['dif_ant']"
+  },
+  {
+   "texto": "en Target Point, de 3,6 a 2,7, y en Cluster17, que",
+   "cifra": "2,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['dif']"
+  },
+  {
+   "texto": "finales de agosto, daba al PP 2,0 puntos de ventaja. Sube",
+   "cifra": "2,0",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Cluster17'][0]['dif_ant']"
+  },
+  {
+   "texto": "ventaja. Sube en GESOP, de 2,6 a 3,9, y en 40dB., de",
+   "cifra": "2,6",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['dif_ant']"
+  },
+  {
+   "texto": "ventaja. Sube en GESOP, de 2,6 a 3,9, y en 40dB., de 0,3",
+   "cifra": "3,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['dif']"
+  },
+  {
+   "texto": "2,6 a 3,9, y en 40dB., de 0,3 en su último tracking",
+   "cifra": "0,3",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['dif_ant']"
+  },
+  {
+   "texto": "0,3 en su último tracking a 0,9. En escaños, PP y Vox",
+   "cifra": "0,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['dif']"
+  },
+  {
+   "texto": "escaños, PP y Vox suman entre 196 y 201 en NC Report,",
+   "cifra": "196",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['pv'][0]"
+  },
+  {
+   "texto": "PP y Vox suman entre 196 y 201 en NC Report, 194 en",
+   "cifra": "201",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['pv'][1]"
+  },
+  {
+   "texto": "entre 196 y 201 en NC Report, 194 en Data10, 195 en IMOP",
+   "cifra": "194",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['pv'][0]"
+  },
+  {
+   "texto": "NC Report, 194 en Data10, 195 en IMOP Insights, entre",
+   "cifra": "195",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['pv'][0]"
+  },
+  {
+   "texto": "195 en IMOP Insights, entre 187 y 199 en GESOP, entre",
+   "cifra": "187",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['pv'][0]"
+  },
+  {
+   "texto": "IMOP Insights, entre 187 y 199 en GESOP, entre 186",
+   "cifra": "199",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['pv'][1]"
+  },
+  {
+   "texto": "187 y 199 en GESOP, entre 186 y 194 en Target Point",
+   "cifra": "186",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['pv'][0]"
+  },
+  {
+   "texto": "199 en GESOP, entre 186 y 194 en Target Point y entre",
+   "cifra": "194",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['pv'][1]"
+  },
+  {
+   "texto": "194 en Target Point y entre 178 y 197 en 40dB., sumando",
+   "cifra": "178",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['pv'][0]"
+  },
+  {
+   "texto": "Target Point y entre 178 y 197 en 40dB., sumando sus",
+   "cifra": "197",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['pv'][1]"
+  },
+  {
+   "texto": "encuesta de cada una de las 22 encuestadoras de las",
+   "cifra": "22",
+   "calculo": "D['NCASAS']"
+  },
+  {
+   "texto": "generales 2026, da al PP el 31,5 %, al PSOE el 28,2 %",
+   "cifra": "31,5",
+   "calculo": "D['MED']['PP']"
+  },
+  {
+   "texto": "PP el 31,5 %, al PSOE el 28,2 % y a Vox el 18,2 %:",
+   "cifra": "28,2",
+   "calculo": "D['MED']['PSOE']"
+  },
+  {
+   "texto": "PSOE el 28,2 % y a Vox el 18,2 %: 3,3 puntos entre",
+   "cifra": "18,2",
+   "calculo": "D['MED']['VOX']"
+  },
+  {
+   "texto": "28,2 % y a Vox el 18,2 %: 3,3 puntos entre PP y PSOE.",
+   "cifra": "3,3",
+   "calculo": "D['MED_DIF']"
+  },
+  {
+   "texto": "Con 7.500 entrevistas, los 0,9",
+   "cifra": "7.500",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['n']"
+  },
+  {
+   "texto": "Con 7.500 entrevistas, los 0,9 puntos de 40dB. quedan",
+   "cifra": "0,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['dif']"
+  },
+  {
+   "texto": "de esa distancia, de unos ±1,8 puntos: es un empate",
+   "cifra": "1,8",
+   "calculo": "[f for f in D['F'] if f['casa'] == '40dB.'][0]['marg']"
+  },
+  {
+   "texto": "técnico. Lo mismo pasa con los 2,4 puntos del PSOE en Cluster17",
+   "cifra": "2,4",
+   "calculo": "-[f for f in D['F'] if f['casa'] == 'Cluster17'][0]['dif']"
+  },
+  {
+   "texto": "puntos del PSOE en Cluster17 (±4,3), con los 2,7 de Target",
+   "cifra": "4,3",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Cluster17'][0]['marg']"
+  },
+  {
+   "texto": "Cluster17 (±4,3), con los 2,7 de Target Point (±4,5),",
+   "cifra": "2,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['dif']"
+  },
+  {
+   "texto": "los 2,7 de Target Point (±4,5), con los 3,9 de GESOP",
+   "cifra": "4,5",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Target Point'][0]['marg']"
+  },
+  {
+   "texto": "Target Point (±4,5), con los 3,9 de GESOP (±5,2) y con",
+   "cifra": "3,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['dif']"
+  },
+  {
+   "texto": "(±4,5), con los 3,9 de GESOP (±5,2) y con los 4,3 de IMOP",
+   "cifra": "5,2",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'GESOP'][0]['marg']"
+  },
+  {
+   "texto": "de GESOP (±5,2) y con los 4,3 de IMOP Insights (±4,4).",
+   "cifra": "4,3",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['dif']"
+  },
+  {
+   "texto": "los 4,3 de IMOP Insights (±4,4). Lo mismo, por poco,",
+   "cifra": "4,4",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'IMOP Insights'][0]['marg']"
+  },
+  {
+   "texto": "mismo, por poco, con los 4,7 de NC Report (±4,9).",
+   "cifra": "4,7",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['dif']"
+  },
+  {
+   "texto": "con los 4,7 de NC Report (±4,9). Solo la ventaja de",
+   "cifra": "4,9",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'NC Report'][0]['marg']"
+  },
+  {
+   "texto": "ventaja de Data10 lo supera: 4,4 puntos, con un margen",
+   "cifra": "4,4",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['dif']"
+  },
+  {
+   "texto": "puntos, con un margen de ±2,8 por sus 3.000 entrevistas.",
+   "cifra": "2,8",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['marg']"
+  },
+  {
+   "texto": "un margen de ±2,8 por sus 3.000 entrevistas.",
+   "cifra": "3.000",
+   "calculo": "[f for f in D['F'] if f['casa'] == 'Data10'][0]['n']"
+  },
+  {
+   "texto": "El PP, por delante en seis de las siete; Cluster17",
+   "condicion": "sum(f['dif'] > 0 for f in D['F']) == 6"
+  },
+  {
+   "texto": "por delante en seis de las siete; Cluster17 pone primero",
+   "condicion": "len(D['F']) == 7"
+  },
+  {
+   "texto": "hoy y en la mediana de las 22 encuestadoras de las",
+   "cifra": "22",
+   "calculo": "D['NCASAS']"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "las 22 encuestadoras de las tres últimas semanas, la",
+   "motivo": "Ventana de la mediana de /encuestas/: 21 días (VENTANA_MEDIANA)."
+  },
+  {
+   "texto": "lunes. Desde mañana, martes 24, y hasta el cierre de",
+   "motivo": "Fechas de la veda (LOREG, art. 69.7)."
+  },
+  {
+   "texto": "de los colegios el domingo 29, la ley prohíbe publicar",
+   "motivo": "Fechas de la veda (LOREG, art. 69.7)."
+  },
+  {
+   "texto": "las 22 encuestadoras de las tres últimas semanas",
+   "motivo": "Ventana de la mediana de /encuestas/: 21 días (VENTANA_MEDIANA)."
+  }
+ ],
+ "permitir_espana": []
+}

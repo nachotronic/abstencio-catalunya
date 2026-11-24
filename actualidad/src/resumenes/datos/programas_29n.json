@@ -1,0 +1,117 @@
+{
+ "fuentes": {
+  "PP": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "PSOE": "https://www.elindependiente.com/wp-content/uploads/2026/11/PROGRAMAPSOE29N26.pdf",
+  "VOX": "https://www.elindependiente.com/wp-content/uploads/2026/11/programa-elecct-vox.pdf",
+  "FA": "https://www.democrata.es/uploads/s1/35/42/91/4/programafrenteamplio.pdf"
+ },
+ "temas": {
+  "Vivienda": "\\bvivienda",
+  "Impuestos": "\\bimpuest|\\bfiscal|\\birpf\\b|\\biva\\b",
+  "Inmigración": "\\b(in)?migra(cion|ntes?|torio|toria)",
+  "Pensiones": "\\bpension",
+  "Sanidad": "\\bsanidad|\\bsanitari",
+  "Igualdad y violencia machista": "\\bigualdad|violencia de genero|violencia machista|feminis",
+  "Clima y energía": "\\bclima|\\bnuclear|\\brenovabl|\\benergia"
+ },
+ "palabras": {
+  "PP": 21367,
+  "PSOE": 32511,
+  "VOX": 6199,
+  "FA": 44726
+ },
+ "paginas": {
+  "PP": 64,
+  "PSOE": 114,
+  "VOX": 55,
+  "FA": 151
+ },
+ "veces": {
+  "Vivienda": {
+   "PP": 53,
+   "PSOE": 145,
+   "VOX": 21,
+   "FA": 133
+  },
+  "Impuestos": {
+   "PP": 80,
+   "PSOE": 75,
+   "VOX": 33,
+   "FA": 195
+  },
+  "Inmigración": {
+   "PP": 14,
+   "PSOE": 13,
+   "VOX": 15,
+   "FA": 15
+  },
+  "Pensiones": {
+   "PP": 7,
+   "PSOE": 28,
+   "VOX": 2,
+   "FA": 20
+  },
+  "Sanidad": {
+   "PP": 27,
+   "PSOE": 35,
+   "VOX": 16,
+   "FA": 42
+  },
+  "Igualdad y violencia machista": {
+   "PP": 22,
+   "PSOE": 101,
+   "VOX": 3,
+   "FA": 44
+  },
+  "Clima y energía": {
+   "PP": 18,
+   "PSOE": 123,
+   "VOX": 11,
+   "FA": 142
+  }
+ },
+ "tasa": {
+  "Vivienda": {
+   "PP": 24.8,
+   "PSOE": 44.6,
+   "VOX": 33.9,
+   "FA": 29.7
+  },
+  "Impuestos": {
+   "PP": 37.4,
+   "PSOE": 23.1,
+   "VOX": 53.2,
+   "FA": 43.6
+  },
+  "Inmigración": {
+   "PP": 6.6,
+   "PSOE": 4.0,
+   "VOX": 24.2,
+   "FA": 3.4
+  },
+  "Pensiones": {
+   "PP": 3.3,
+   "PSOE": 8.6,
+   "VOX": 3.2,
+   "FA": 4.5
+  },
+  "Sanidad": {
+   "PP": 12.6,
+   "PSOE": 10.8,
+   "VOX": 25.8,
+   "FA": 9.4
+  },
+  "Igualdad y violencia machista": {
+   "PP": 10.3,
+   "PSOE": 31.1,
+   "VOX": 4.8,
+   "FA": 9.8
+  },
+  "Clima y energía": {
+   "PP": 8.4,
+   "PSOE": 37.8,
+   "VOX": 17.7,
+   "FA": 31.7
+  }
+ }
+}

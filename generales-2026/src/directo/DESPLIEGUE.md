@@ -33,8 +33,9 @@ Actions → **«Directo 29N: desplegar el Worker»** → Run workflow:
 - **Ahora (ensayo):** FUENTE = `https://mapaelectoral.es/generales-2026/data/simulacro.json` (simulacro con el 23J; las
   fichas dicen «Simulacro con datos del 23J»).
 - **Cuando Interior abra su web:** FUENTE = la raíz de su API, acabada en `/backend-difu` (ver punto 4).
-- **Con acceso de medios (simulacro del 18-11 desde las 15:00 y la noche del 29N):** FUENTE = dominio del correo de
-  Interior + `/descargas/csv`, MODO = `medios`.
+- **Con acceso de medios (simulacro del 18-11 de 15:00 a 20:00 y la noche del 29N):**
+  FUENTE = `https://prensa.29neleccionesgenerales.es/descargas/csv`, MODO = `medios`. Autenticación básica HTTP
+  (comprobado el 18-11 a las 00:40 con las credenciales de prueba: UTF-8, `getEnvio/2` devuelve solo el número).
 
 El resumen de la ejecución da la URL del Worker (`https://generales-directo.<subdominio>.workers.dev/resultados.json`).
 Desplegar no cambia la web.
@@ -45,8 +46,9 @@ Desplegar no cambia la web.
    `https://mapaelectoral.es/municipio/madrid/madrid/?directo=<URL del Worker>`.
 2. PR con `generales-2026/data/meta.json` → `"directo": {"url": "<URL del Worker>", …}`. Con eso el mapa y las fichas
    empiezan a leer el Worker cada minuto.
-3. El mismo día de la noche: `NOCHE_29N = True` en `src/territorios.py` y reconstruir (construir.py → territorios.py →
-   seo.py) para cambiar títulos y textos de las fichas a modo resultados.
+3. `NOCHE_29N` en `src/territorios.py` se queda en `False`. Comprobado el 23-11: con `True` no cambia ningún title,
+   description, H1, canonical ni og de las 7.324 páginas, pero solo cambia una frase de las fichas y obliga a reconstruir
+   todo (construir.py → territorios.py → seo.py; territorios.py solo deja las páginas sin favicons). No compensa.
 4. Mientras FUENTE sea el simulacro, **no** se pone la URL en meta.json: la web enseñaría datos del 23J como del 29N.
 
 ## 4. Lo que tiene que mirar Nacho en su navegador
@@ -92,3 +94,67 @@ como autenticación básica HTTP; si es otra cosa, se cambia en `pideTexto`), el
 - Si el Worker falla del todo: actualizar a mano provincias y CCAA cada 10-15 minutos desde la web pública.
 - Fuente que se cita: «Ministerio del Interior, escrutinio provisional». Es información pública reutilizable
   (Ley 37/2007); una lectura por minuto no carga su web.
+
+## 7. Secciones (ficheros por mesa, manual final del 23-11)
+
+`/mesas/getAvances/2/<pp>.csv` (al acabar cada avance) y `/mesas/getEscrutinio/2/<pp>.csv` (al acabar el recuento
+provisional). El Worker los suma por sección (código INE de 10 cifras) y los sirve en `/secciones/<pp>.json`; el mapa pinta
+las secciones del 29N con ellos. Mientras no estén, el mapa sigue por municipio: no hay que hacer nada. La raíz de `/mesas`
+no la da el manual: el Worker prueba varias y apunta en `/estado` («mesas.prueba») qué respondió cada una. Si ninguna
+vale, se fija con la variable `MESAS`.
+
+## 8. Noche del 29N, paso a paso
+
+1. Clave: se queda la actual de `MEDIOS_CLAVE` (Nacho, 24-11: no se puede pedir otra); se comprueba en la prueba del 25.
+2. Sábado 28 por la noche (antes de las 9:30 del domingo, la constitución de mesas): Actions → «Directo 29N: desplegar el Worker» con FUENTE `…/descargas/csv`, MODO `medios`,
+   DIA `261129`, PUBLICA `2026-11-29T20:00:00Z` y limpiar `si`. PUBLICA: antes de las 21:00 (cierre de Canarias) no se guarda
+   ningún voto ni escaño aunque la API los diera; la participación sí. DIA descarta cualquier registro que no sea del 29 (si Interior aún sirve la prueba del 25,
+   no entra) y limpiar borra lo guardado de la prueba.
+3. Mirar `/estado`: «ok … municipios» con datos del día, o «ninguna provincia trajo municipios» si aún no hay nada del 29.
+4. Con el «Fusiona» de Nacho, también el sábado por la noche: PR con la URL del Worker en `generales-2026/data/meta.json` → `directo.url`.
+   Sin datos del día el Worker no sirve nada y la portada no cambia; a las 9:30 sale sola la constitución de mesas, a las
+   14:00 y 18:00 los avances (mapa de participación), a las 20:00 el sondeo a pie de urna y a las 21:00 los resultados. GitHub Pages y
+   el navegador guardan meta.json y app.js hasta 10 minutos: contar con ese margen.
+5. Apagar si algo va mal: PR que vacía `directo.url` (vuelve todo a como estaba, en 10 minutos como mucho).
+
+## 9. Sondeo a pie de urna (la noche del 29N, de las 20:00 a los primeros datos)
+
+Nacho, 23-11: titular del sondeo a pie de urna desde el cierre de los colegios hasta los primeros datos, de cualquier medio y
+citándolo; hora elegida, las 20:00 (como las teles).
+
+1. A las 20:00, en cuanto un medio publique su sondeo: Actions → «Directo 29N: sondeo a pie de urna» → titular, medio,
+   enlace https, hora y, si los da, los escaños por partido («PP 130-135; PSOE 100-105»).
+2. El Worker no lo sirve antes del 29-11 a las 20:00 en Madrid (PIEURNA_DESDE; para probarlo antes, la entrada
+   pieurna_desde del despliegue). La portada lo pone encima del recuadro del directo y lo quita sola cuando el escrutinio
+   pasa del 30 %. Para quitarlo antes: el mismo workflow con borrar = si.
+   Con escaños, pinta el hemiciclo (punto medio de cada horquilla, el resto hasta 350 en gris) y el de 2023 debajo; los
+   nombres de partido como los escribe el medio (PP, PSOE, Vox, Sumar o Frente Amplio, ERC, Junts, EH Bildu, PNV, BNG, CC, UPN).
+   Mientras está el sondeo y no hay escrutinio, el mapa y sus selectores esperan ocultos; vuelven con los primeros datos.
+3. Desplegar con limpiar = si borra también el titular: se pone después del despliegue de la noche.
+
+## 10. Archivo de descargas y precauciones de Interior
+
+- Archivo (Nacho, 23-11: «guardar las descargas para luego ver cómo y dónde avanza el resultado»): con el cubo R2 privado
+  `generales-29n-descargas` (binding ARCHIVO, lo crea el despliegue), cada fichero descargado se guarda tal cual en
+  `descargas/<AAAA-MM-DD>/<HHMMSS>Z_<ruta>` (hora UTC) y cada lectura deja su registro en `registro/<AAAA-MM-DD>/<HHMMSS>Z.json`
+  (hora, URL sin credenciales, código HTTP, bytes, ms). No va al repositorio (es público). `limpiar = si` no lo toca.
+- Recomendaciones del manual (pág. 23): solo rutas documentadas (los ficheros de mesa, solo en `<dominio>/mesas/…`);
+  User-Agent «mapaelectoral.es (prensa)»; ante un 401 o 403, el Worker no pide nada más durante 10 minutos (KV `parado`,
+  se ve en /estado) con hora, URL y código, que es lo que pide soporte (900 601 462, prensa@infoelecciones.es).
+- Primeros datos: la web pide el JSON cada 30 s, y en la primera media hora tras PUBLICA el Worker lee también a los 30 s
+  de cada minuto (si no hay envío nuevo, solo las dos peticiones de getEnvio).
+
+## 11. Mapas por provincia y por comunidad
+
+Con el escrutinio, el recuadro del directo ofrece «Ver por: Municipios · Provincias · Comunidades» (app.js, agregados()).
+Provincias y comunidades se pintan con las cifras de Interior de ese nivel (ámbitos PR y CM): color del partido más votado,
+y al tocar, votos y escaños. Es una capa aparte encima del mapa de municipios, que no cambia. El selector solo sale si
+Interior da las 52 provincias y las 19 comunidades y cuadran (provincias = su comunidad, con un margen del 0,1 %; municipios
+= su provincia, 0,5 %); si no, `window.__agregados` dice por qué (para la prueba del 25). Apagarlo: `"agregados": false` en
+`data/meta.json` → `directo`.
+
+Desde el 24-11 el mismo nivel se elige también con «Ver por» junto a «Elección» (Municipios y secciones · Provincias ·
+Comunidades), y vale para las generales de 1982 a 2023: `data/agregados.json`, de `src/agregados_historicos.py` (votos mesa
+a mesa de Interior vía pollspaindata, con el voto CERA; 2023 cuadra con Interior en 70 de 71 ámbitos, Toledo +175 votos por
+ser el escrutinio definitivo). Se descarga solo cuando alguien elige provincias o comunidades. La noche del 29N el mapa abre
+por provincias hasta el 10 % escrutado (#703); en otra fecha, solo si el lector lo elige.

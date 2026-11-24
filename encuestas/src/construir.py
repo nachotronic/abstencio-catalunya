@@ -70,9 +70,26 @@ DEL_MODELO = {'PP': 'PP', 'PSOE': 'PSOE', 'Vox': 'VOX', 'Sumar': 'SUMAR', 'Podem
 VENTANA_MEDIANA = 21
 
 
+# La misma casa con dos nombres según la fuente: Electográfica pone «PF Global» a la encuesta de Public First para
+# Politico (15-17 de noviembre de 2026) que Wikipedia llama «Public First»; sin el alias entraba dos veces.
+# Y «Mediaflows Uv Odec» (Electográfica) es la encuesta de ODEC para Mediaflows–UV del 9-7-2026 (Wikipedia):
+# sin el alias salía dos veces, una sin escaños.
+ALIAS_CASA = {'pfglobal': 'publicfirst', 'mediaflowsuvodec': 'odec', 'imopinsights': 'imop'}
+
+
 def clave(nombre):
     s = unicodedata.normalize('NFKD', str(nombre)).encode('ascii', 'ignore').decode().lower()
-    return re.sub(r'[^a-z0-9]', '', s)
+    s = re.sub(r'[^a-z0-9]', '', s)
+    return ALIAS_CASA.get(s, s)
+
+
+# Filas de las fuentes que no son encuestas, por la URL que citan. Fuera de la tabla, del gráfico y de la mediana.
+# (cotejar_wikipedia.py ya las quita al leer Wikipedia; esto cubre también Electográfica y los CSV anteriores)
+NO_SON_ENCUESTAS = {
+    # «Metroscopia 19-11, PP 30 / PSOE 30 / Vox 19» en Wikipedia: es el ejemplo hipotético de Ignacio Urquizu en Al Rojo
+    # Vivo («que no hay ninguna encuesta ahora mismo que lo diga»), no una estimación publicada
+    'https://www.lasexta.com/programas/al-rojo-vivo/ignacio-urquizu-experto-demoscopia-cara-elecciones-29n-bloque-derecha-esta-muy-consolidado-esta-torno-49_202611196afef28f21e74551e81f5586.html',
+}
 
 
 def num(v):
@@ -83,7 +100,7 @@ def num(v):
 
 
 # Medio de las encuestadoras que Electográfica publica sin cliente (40dB trabaja para El País y la Cadena SER)
-CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER'}
+CLIENTE_HABITUAL = {'40db': 'El País / Cadena SER', 'data10': 'OKDiario'}
 # Fecha de publicación de encuestas que solo trae Wikipedia (sin fecha de publicación), por (casa, fin del campo).
 # Sin ella, la página usaría el fin del campo como si fuera la publicación.
 PUBLICADO_WP = {('cis', '2026-10-30'): '2026-11-12'}   # CIS 3584, preelectoral: avance de cis.es del 12-11-2026
@@ -109,10 +126,24 @@ ESC_MANUAL = {
 }
 
 
+# Encuestas que solo publican escaños, sin estimación de voto: van en la tabla de las últimas encuestas con «–» en el voto,
+# y fuera de la mediana, los gráficos, los recuentos del titular, el promedio de escaños y las páginas de encuestadora.
+SOLO_ESCANOS = [
+    # Infortécnica para La Región, 22-11-2026: 1.910 entrevistas en toda España, campo del 26 de octubre al 16 de noviembre.
+    # Solo da horquillas de escaños (Frente Amplio, en la columna de Sumar) e intención directa, no estimación de voto.
+    {'reest': False, 'casa': 'Infortécnica', 'medio': 'La Región · solo escaños', 'inicio': '2026-10-26', 'fin': '2026-11-16', 'fin_aprox': False,
+     'publicado': '2026-11-22', 'muestra': '1910', 'voto': {},
+     'esc': {'PP': '134-140', 'PSOE': '110-116', 'VOX': '56-60', 'SUMAR': '9-11'},
+     'url': 'https://www.laregion.es/espana/encuesta-29n-pp-psoe-vox-bng_1_20261122-4503029.html'},
+]
+
+
 def carga():
     """Encuestas nacionales: las de Electográfica más las que solo están en Wikipedia; escaños de Wikipedia."""
     wp = list(csv.DictReader(open(DATOS / 'wikipedia_generales_espana.csv'))) if (DATOS / 'wikipedia_generales_espana.csv').exists() else []
     eg = [r for r in csv.DictReader(open(DATOS / 'encuestas_limpias.csv')) if r['ambito'] == 'ESPAÑA']
+    wp = [w for w in wp if w['fuente_original'].strip() not in NO_SON_ENCUESTAS]
+    eg = [r for r in eg if r['fuente_original'].strip() not in NO_SON_ENCUESTAS]
     usadas, out = set(), []
 
     # Wikipedia repite a veces la misma fila (SocioMétrica, 7-12-2025): fuera las copias exactas
@@ -124,6 +155,15 @@ def carga():
             unicas.append(w)
     wp = unicas
 
+    def otra_encuesta(w, r):
+        # distinta muestra y distinta noticia: es otra entrega (Data10 del 20-11, n=750, se llevaba la del 23-11)
+        # Con las mismas cifras sí es la misma, aunque la cite otra noticia con otra muestra (Public First, 19-11: el
+        # artículo de POLITICO y su newsletter en español)
+        return (r is not None and r['muestra'] and w['muestra'] and r['muestra'] != w['muestra']
+                and r['fuente_original'].strip() and w['fuente_original'].strip()
+                and r['fuente_original'].strip() != w['fuente_original'].strip()
+                and any(num(r[k]) != num(w[k]) for k in ('PP', 'PSOE', 'VOX')))
+
     def pareja(casa, fin, muestra='', r=None):
         # la más parecida: misma muestra y, después, el fin de campo más cercano (en un tracking diario la primera a <=4 días
         # podía ser la entrega del día siguiente, que se quedaba sin pareja propia y salía repetida)
@@ -131,7 +171,8 @@ def carga():
         for i, w in enumerate(wp):
             c = clave(w['encuestadora'])
             dias = abs((date.fromisoformat(w['campo_fin']) - fin).days)
-            if i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and dias <= 4:
+            if (i not in usadas and not w.get('reestimacion') and (c.startswith(casa) or casa.startswith(c)) and dias <= 4
+                    and not otra_encuesta(w, r)):
                 cand.append((not (muestra and w['muestra'] == muestra), dias, i))
         if cand or r is None or r['campo_fin']:
             return min(cand)[2] if cand else None
@@ -147,9 +188,23 @@ def carga():
                 cand.append((dias, i))
         return min(cand)[1] if cand else None
 
-    for r in eg:
+    # Primero las parejas seguras: misma noticia y misma muestra. En un tracking diario (Data10, 17 a 22-11) una entrega
+    # sin pareja propia se llevaba la fila de Wikipedia de la siguiente y los escaños salían corridos un día.
+    fijas = {}
+    for j, r in enumerate(eg):
+        url = r['fuente_original'].strip()
+        if not url or not r['muestra']:
+            continue
+        for i, w in enumerate(wp):
+            if (i not in usadas and not w.get('reestimacion') and w['fuente_original'].strip() == url
+                    and w['muestra'] == r['muestra']):
+                fijas[j] = i
+                usadas.add(i)
+                break
+
+    for j, r in enumerate(eg):
         fin = date.fromisoformat(r['campo_fin']) if r['campo_fin'] else date.fromisoformat(r['publicado']) - timedelta(days=3)
-        i = pareja(clave(r['encuestadora']), fin, r['muestra'], r)
+        i = fijas[j] if j in fijas else pareja(clave(r['encuestadora']), fin, r['muestra'], r)
         w = wp[i] if i is not None else {}
         if i is not None:
             usadas.add(i)
@@ -295,7 +350,7 @@ def estimacion():
 <div class="prob">{''.join(f'<div><b style="color:{c}">{prob(b["p_mayoria"])}</b><span>de las simulaciones: {n} llegan a 176 escaños</span></div>'
                           for b, n, c in ((pv, 'PP y Vox', '#1d84ce'), (izq, 'los socios de investidura de 2023 y Adelante Andalucía', '#e30613')) if b)}{f'<div><b style="color:#1d84ce">{prob(p_desde(pv, 210))}</b><span>de las simulaciones: PP y Vox llegan a 210, los tres quintos</span></div>' if p_desde(pv, 210) is not None else ''}</div>
 <p>{frase}</p>
-<p class="src">En Navarra, UPN y el PP van juntos el 29N en una sola lista, <a href="navarra/">UPN-PP</a> (BOE del 3-11-2026): el modelo la reparte como una candidatura y sus escaños cuentan en la fila del PP y en el bloque PP + Vox.</p>
+<p class="src">En Navarra, UPN y el PP van juntos el 29N en una sola lista, <a href="navarra/">UPN-PP</a> (BOE del 3-11-2026): el modelo la reparte como una candidatura y sus escaños cuentan en la fila del PP y en el bloque PP + Vox. En Canarias, Nueva Canarias, Podemos, IU y Sumar van juntos en <a href="las-palmas/">Unidad del Pueblo Canario</a>: el modelo la reparte como una sola lista y sus escaños cuentan en la fila de Sumar, como hacen las encuestadoras.</p>
 <p><a href="calculadora-escanos/">Prueba tus propios porcentajes en la calculadora de escaños</a>: reparte los 350 diputados provincia a provincia con la ley D'Hondt. Y en el <a href="simulador-pactos/">simulador de pactos</a>, decide qué vota cada partido y mira quién sale investido.</p>
 <figure><figcaption><span class="t">Cuántos escaños suma cada bloque</span><span class="s">Cada columna es un número de escaños y su altura, el porcentaje de las {meta['simulaciones']:,} simulaciones en que sale. Las líneas marcan la mayoría absoluta (176) y los tres quintos (210); en color intenso, la horquilla del 80 %.</span></figcaption>
 <div class="chart" id="dist-bloques"></div></figure>
@@ -785,6 +840,13 @@ def post_x(titular, med, hoy):
     return texto, URL, etiquetas
 
 
+def despues_de_la_veda():
+    """Desde el comienzo de la veda (src/veda.py, 23-11-2026 a las 23:30) la portada se queda sin el bloque de encuestas."""
+    sys.path.insert(0, str(RAIZ / 'src'))
+    from veda import DESDE, MADRID
+    return datetime.now(MADRID) >= DESDE
+
+
 def portada(titular, med, actual, hoy='', **datos):
     for f, pre in ((RAIZ / 'index.html', ''), (RAIZ / 'generales-2026/src/plantilla.html', '../')):
         if not f.exists():
@@ -792,6 +854,10 @@ def portada(titular, med, actual, hoy='', **datos):
         t = f.read_text(encoding='utf-8')
         # el bloque va justo encima del mapa (antes, debajo, tras «Votar el 29N» y las listas): se quita de donde esté y se pone ahí
         t = re.sub(r'<!--encuestas:portada-->.*?<!--/encuestas:portada-->\n?', '', t, flags=re.S)
+        if despues_de_la_veda():
+            # Nacho, 23-11-2026: desde la veda del 29N las encuestas no vuelven a la portada (ni después del 29)
+            f.write_text(t, encoding='utf-8')
+            continue
         bloque = '<!--encuestas:portada-->' + franja_portada(titular, med, actual, pre, **datos) + '<!--/encuestas:portada-->\n'
         m = re.search(r'<section class="wide" id="mapa"', t)
         if not m:
@@ -1018,7 +1084,9 @@ def provincias():
             v = prov[c]
             rc = reparto_provincia(v)
             con = [l for l in sorted(v['listas'], key=lambda l: (-rc[l['lista']], -l['voto'][1])) if l['escanos'][2] > 0 or rc[l['lista']] > 0]
-            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nombre_lista(l["lista"]).replace(" / Frente Amplio", ""))} <b>{rc[l["lista"]]}</b>'
+            # en Canarias, Sumar va dentro de Unidad del Pueblo Canario (provincias_paginas.UPC)
+            nom_c = lambda l: provincias_paginas.NOMBRE_UPC if c in provincias_paginas.UPC and l == 'Sumar' else nombre_lista(l).replace(' / Frente Amplio', '')
+            chips = ''.join(f'<span class="chip"><i style="background:{color_lista(l["lista"])}"></i>{html.escape(nom_c(l["lista"]))} <b>{rc[l["lista"]]}</b>'
                             + (f'<small>{l["escanos"][0]}-{l["escanos"][2]}</small>' if l['escanos'][0] != l['escanos'][2] else '') + '</span>' for l in con)
             # un cuadrado por escaño con el reparto central, que suma los escaños de la provincia
             cuad = ''.join(f'<i style="background:{color_lista(l["lista"])}"></i>' * rc[l['lista']] for l in con)
@@ -1092,6 +1160,16 @@ def main():
     encs = carga()
     resumen = json.load(open(DATOS / 'resumen.json'))
     hoy = date.fromisoformat(resumen['descargado'][:10])
+    # 18-11-2026: fecha Y hora de la actualización (Madrid) en dateModified, article:modified_time y la firma visible.
+    # Los que nos superan en «encuestas elecciones generales 2026» salen con «hace 15 horas»; con solo la fecha, Google no puede.
+    try:
+        from zoneinfo import ZoneInfo
+        _m = datetime.fromisoformat(resumen['descargado'].replace('Z', '+00:00')).astimezone(ZoneInfo('Europe/Madrid'))
+        momento, hora = _m.replace(second=0, microsecond=0).isoformat(), f'{_m.hour}:{_m.minute:02d}'
+        if _m.date() != hoy:
+            momento, hora = hoy.isoformat(), ''
+    except (ValueError, KeyError, ImportError):
+        momento, hora = hoy.isoformat(), ''
     ultima = date.fromisoformat(encs[0]['fin'])
     serie = medianas(encs, max(ultima, hoy))
     titular, entradilla, p1, p2, ultimas, con_esc, mayoria = textos(encs, hoy)
@@ -1107,7 +1185,8 @@ def main():
     datos = {'modelo': MODELO_JS, 'pv': pv_casas, 'partidos': PRINCIPALES, 'serie': serie, 'hemi': asientos(hemi), 'hemi_modelo': asientos(hemi_m),
              'encuestas': [{'f': e['fin'], 'v': e['voto']} for e in encs if e['fin'] >= desde_g and not e['reest']]}
     desde23 = sorted((e for e in encs if e['fin'] >= '2023-07-24'), key=lambda e: e.get('publicado') or e['fin'], reverse=True)
-    recientes, anteriores = desde23[:VISIBLES], desde23[VISIBLES:]   # las últimas a la vista; el resto, plegado
+    en_tabla = sorted(desde23 + SOLO_ESCANOS, key=lambda e: e.get('publicado') or e['fin'], reverse=True)   # solo la tabla
+    recientes, anteriores = en_tabla[:VISIBLES], en_tabla[VISIBLES:]   # las últimas a la vista; el resto, plegado
     cab_partidos = ''.join(f'<th class="n"><i class="pt" style="background:{c}"></i>{"Sumar" if k == "SUMAR" else n}</th>' for k, n, c, _ in PRINCIPALES)
     tabla = (f'<div class="tbl"><table><thead><tr><th>Encuestadora y medio</th><th class="n">Publicada</th><th class="n">Muestra</th>{cab_partidos}</tr></thead>'
              f'<tbody>{"".join(fila_tabla(e) for e in recientes)}</tbody></table></div>')
@@ -1142,6 +1221,20 @@ def main():
     cis = next((e for e in encs if e['casa'] == 'CIS' and not e['reest']), None)
     med = serie[-1]
     n_desde23 = sum(1 for e in desde23 if not e['reest'])
+    # 18-11-2026: la entradilla visible empieza por la última encuesta, con su día y sus cifras (lo que enseñan en el
+    # snippet los que nos superan en Google). Solo el párrafo visible: title, H1, meta description y URL no cambian.
+    ultima_dek = ''
+    # 18-11-2026 (Nacho, «Al final. Entonces la b)»): solo en el párrafo visible; JSON-LD y og:description siguen igual
+    FRASE_FUENTES = 'Todas las encuestas publicadas, con su fuente, actualizadas cada día.'
+    INDEPENDIENTE = 'Mapa Electoral es independiente: no encarga encuestas ni trabaja para ningún partido ni medio.'
+    _u = next((e for e in desde23 if not e['reest']), None)
+    if _u:
+        _d = date.fromisoformat(_u.get('publicado') or _u['fin'])
+        _cuando = f'{DIAS_SEMANA[_d.weekday()]} {_d.day} de {fecha_larga(_d.isoformat()).split(" de ")[1]}'
+        _cifras = ', '.join(f'{"Sumar" if k == "SUMAR" else n} {pc(_u["voto"][k])}' for k, n, *_ in PRINCIPALES[:3] if k in _u['voto'])
+        _cifras = ' y '.join(_cifras.rsplit(', ', 1))
+        ultima_dek = (f'La última encuesta, de {_u["casa"]}' + (f' para {_u["medio"]}' if _u['medio'] else '')
+                      + (f', publicada el {_cuando}' if _u.get('publicado') else f', con trabajo de campo hasta el {_cuando}') + f', da {_cifras}. ')
     faq = [('¿Quién gana las elecciones generales según las encuestas?', p1.strip()),
            ('¿Cuál es la última encuesta de las generales?',
             f'La última publicada es la de {ult["casa"]}{" para " + ult["medio"] if ult["medio"] else ""}'
@@ -1213,7 +1306,7 @@ def main():
     insertable(h1, med, hemi, n_hemi, actual, hoy)
     jsonld = [{'@context': 'https://schema.org', '@type': 'AnalysisNewsArticle', '@id': URL + '#articulo', 'headline': h1,
                'description': descripcion, 'url': URL, 'mainEntityOfPage': URL, 'inLanguage': 'es',
-               'datePublished': '2026-10-22', 'dateModified': hoy.isoformat(), 'image': [imagen],
+               'datePublished': '2026-10-22', 'dateModified': momento, 'image': [imagen],
                'about': {'@type': 'Thing', 'name': 'Elecciones generales de España de 2026'},   # no Event: Search Console lo marca (PR #52)
                'author': {'@type': 'Person', 'name': AUTOR, 'url': BASE + '/sobre-mi.html'}, 'publisher': MEDIO,
                'isAccessibleForFree': True},
@@ -1224,7 +1317,7 @@ def main():
                                f'({n_desde23} encuestas a {actual}), con encuestadora, medio, fechas de trabajo de campo, tamaño de la muestra y '
                                'enlace a la publicación original. Se actualiza cada día con Electográfica y la tabla de Wikipedia.'),
                'url': URL, 'license': 'https://creativecommons.org/licenses/by-sa/4.0/', 'isAccessibleForFree': True,
-               'inLanguage': 'es', 'datePublished': '2026-10-22', 'dateModified': hoy.isoformat(),
+               'inLanguage': 'es', 'datePublished': '2026-10-22', 'dateModified': momento,
                'temporalCoverage': f'2023-07-24/{hoy.isoformat()}', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
                'keywords': ['encuestas', 'sondeos', 'elecciones generales', 'España', '29N', 'estimación de voto', 'escaños', 'Congreso'],
                'measurementTechnique': 'Encuestas de opinión publicadas por cada encuestadora (teléfono, internet o panel), recogidas tal como se publicaron',
@@ -1241,8 +1334,8 @@ def main():
     main_html = f"""<main>
 <p class="kicker">Elecciones generales 2026 · 29 de noviembre</p>
 <h1 data-miga="Encuestas">{html.escape(h1)}</h1>
-<p class="dek">{html.escape(entradilla)}</p>
-<p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{hoy.isoformat()}">{actual}</time></p>
+<p class="dek">{html.escape(ultima_dek + (entradilla.replace(FRASE_FUENTES, INDEPENDIENTE) if FRASE_FUENTES in entradilla else entradilla + ' ' + INDEPENDIENTE))}</p>
+<p class="firma">Por <a href="../sobre-mi.html">{AUTOR}</a> · Actualizado el <time datetime="{momento}">{actual}{', a las ' + hora if hora else ''}</time></p>
 <figure>
 <figcaption><span class="t">Voto estimado en cada encuesta, último año</span><span class="s">Cada punto es una encuesta; la línea es la mediana de la última encuesta de cada encuestadora en los {VENTANA_MEDIANA} días anteriores (con tres o más). Porcentaje sobre voto válido. Sumar incluye el Frente Amplio y sus socios.</span></figcaption>
 <div class="chart" id="graf"></div>
@@ -1289,7 +1382,10 @@ def main():
 <h2>Sigue leyendo</h2><ul class="sigue">{'<li><a href="provincias.html"><span class="kicker">Por provincias</span><b>Los escaños de cada provincia según la media de encuestas</b></a></li>' if hay_provincias else ''}{'<li><a href="calculadora-escanos/"><span class="kicker">Calculadora</span><b>Reparte tú los 350 escaños con tus porcentajes</b></a></li>' if hay_calculadora else ''}{'<li><a href="simulador-pactos/"><span class="kicker">Simulador</span><b>¿Quién suma 176? Haz tú los pactos del 29N</b></a></li>' if hay_pactos else ''}<li><a href="../"><span class="kicker">Mapa</span><b>El mapa de las generales, sección a sección</b></a></li><li><a href="../actualidad/cis-tezanos-estimacion-29n/"><span class="kicker">Encuestas</span><b>El CIS y sus estimaciones frente a los resultados</b></a></li><li><a href="../actualidad/ultimo-escano-29n/"><span class="kicker">Escaños</span><b>El último escaño de cada provincia</b></a></li></ul>
 <footer>Mapa Electoral · Datos con licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/nachotronic/abstencio-catalunya">Código y datos</a> · <a href="../atlas/politica-editorial/">Política editorial</a></footer>
 </main>"""
+    # 19-11-2026 (Nacho): <title> y meta description como el 15-11, cuando la página estaba en el puesto 7 (deshace #609 aquí)
+    desc_seo = descripcion
     pagina = (cabecera(titulo, descripcion, URL, imagen, jsonld, desc_seo=desc_seo)
+              .replace('<title>' + html.escape(titulo) + '</title>', '<title>' + html.escape(titulo + ' · Mapa Electoral') + '</title>', 1)
               .replace('<meta property="og:title" content="' + html.escape(titulo) + '">', '<meta property="og:title" content="' + html.escape(titular) + '">')
               + ESTILOS + encuestadoras.css_partidos(PRINCIPALES) + CSS_SITIO + '\n</head>\n<body>\n' + nav('../', 'Encuestas') + '\n' + main_html + '\n'
               + SCRIPT.replace('__DATOS__', json.dumps(datos, ensure_ascii=False, separators=(',', ':'))) + '\n</body>\n</html>\n')
@@ -1300,7 +1396,7 @@ def main():
     bsky = f'https://bsky.app/intent/compose?text={quote(texto + " " + enlace + chr(10) + chr(10) + etiquetas)}'
     pagina = pagina.replace('<!--compartir-->', f'<p class="descargas">Compartir el resumen de hoy: <a href="{html.escape(intento)}" target="_blank" rel="noopener">en X</a> · '
                             f'<a href="{html.escape(bsky)}" target="_blank" rel="noopener">en Bluesky</a></p>', 1)
-    pagina = fechas_meta(pagina, '2026-10-22', hoy.isoformat())
+    pagina = fechas_meta(pagina, '2026-10-22', momento)
     (SALIDA / 'index.html').write_text(pagina, encoding='utf-8')
     (SALIDA / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                         f'  <url><loc>{URL}</loc><lastmod>{hoy.isoformat()}</lastmod></url>\n  <url><loc>{URL}metodo-modelo.html</loc></url>\n'

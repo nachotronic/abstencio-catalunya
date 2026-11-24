@@ -19,7 +19,7 @@ L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
 SLUG = 'encuestas-tras-el-debate-2023-29n'
 # Pieza de servicio del debate (pendiente de publicar). Cuando exista, poner aquí su slug para enlazarla con el ancla
 # «debate Sánchez Feijóo», como pidió el hilo de SEO: esta pieza no debe competir por esa búsqueda.
-SERVICIO = None
+SERVICIO = 'debate-sanchez-feijoo-29n'
 ELDIARIO = 'https://www.eldiario.es/vertele/noticias/debate-cara-a-cara-sanchez-feijoo-sera-jueves-19-noviembre-academia-tv_1_13662406.html'
 INFOBAE = 'https://www.infobae.com/espana/2026/11/16/rtve-atresmedia-y-la-septima-emitiran-el-cara-a-cara-de-sanchez-y-feijoo-en-directo-donde-y-cuando-ver-el-debate-electoral/'
 AUD23 = 'https://www.eldebate.com/cine-tv-series/20230711/el-debate-entre-feijoo-y-pedro-sanchez-lidera-la-audiencia-pero-es-el-menos-visto-de-la-historia_127320.html'
@@ -64,7 +64,8 @@ for x in SIM['elecciones']['2023_07'].values():
 GAP23 = (tot['PP'] - tot['PSOE']) / val * 100
 assert round(GAP23, 1) == 1.4
 
-HJ = sorted((RAIZ / 'previsiones/datos/publico/historico').glob('*.json'))[-1]
+# Fijo en la versión con la que se publicó (17-11 16.59), para que regenerar la pieza no cambie la cifra publicada
+HJ = RAIZ / 'previsiones/datos/publico/historico/2026-11-17-1659.json'
 MED = json.load(open(HJ))['meta']['media_encuestas']
 HOY = MED['PP'] - MED['PSOE']
 _a, _m, _d, _hm = HJ.stem.split('-')
@@ -89,7 +90,7 @@ g_media = figura(f'La media de esas {N} empresas pasó de {p(MA)} a {p(MD)} punt
                  None,
                  (['Momento', 'PP menos PSOE (puntos)'], [[t, p(v)] for t, v in ESC]))
 
-SERV = f'<p data-tipo="contexto">La hora, dónde verlo y qué pasó en el {L(SERVICIO, "debate Sánchez Feijóo")} de este jueves, en nuestra pieza de servicio.</p>' if SERVICIO else ''
+SERV = f'<p data-tipo="contexto">La hora, dónde verlo y de qué se hablará en el {L(SERVICIO, "debate Sánchez Feijóo")} de este jueves, en nuestra pieza de servicio.</p>' if SERVICIO else ''
 cuerpo = f'''
 <p data-tipo="contexto">Pedro Sánchez y Alberto Núñez Feijóo se verán en el cara a cara de las elecciones generales del 29N el jueves 19 de noviembre a las 22.00, en un debate organizado por la Academia de Televisión y moderado por su presidenta, María Casado, según <a href="{ELDIARIO}">elDiario.es</a>. RTVE, Atresmedia, Mediaset y La Séptima lo emitirán, según la información de EFE que recoge <a href="{INFOBAE}">Infobae</a>. Quedarán diez días para votar.</p>
 <p data-tipo="contexto">El último cara a cara entre los dos fue el 10 de julio de 2023, trece días antes de las elecciones. Lo vieron 5,9 millones de personas, según los datos de Barlovento Comunicación que publicaron <a href="{AUD23}">El Debate y Europa Press</a>: el cara a cara menos visto de los celebrados desde 1993.</p>

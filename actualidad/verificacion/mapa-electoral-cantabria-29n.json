@@ -35,16 +35,6 @@
    "calculo": "D['PRC_PSOE']"
   },
   {
-   "texto": "encuestas da al PP dos de los 5 diputados, al PSOE dos",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "elige el 29 de noviembre 5 diputados entre siete",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
    "texto": "noviembre de 2019, el PRC sacó el 21,2 % de los votos a candidaturas",
    "cifra": "21,2",
    "calculo": "D['A19']['pct']['PRC']"
@@ -280,16 +270,6 @@
    "calculo": "sum(1 for x in D['AJ'] if x[5] == 'PRC')"
   },
   {
-   "texto": "el reparto central de los 5 escaños da al PP dos,",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "horquilla del PP llega a tres y la del PSOE baja a",
-   "cifra": "tres",
-   "calculo": "D['RC']['PP'][2]"
-  },
-  {
    "texto": "El PP pasó de ganar en 55 municipios a ganar en",
    "cifra": "55",
    "calculo": "D['GANA']['2019_11']['PP']"
@@ -383,11 +363,6 @@
    "texto": "segundo en julio de 2023 en los ocho municipios más ajustados,",
    "cifra": "ocho",
    "calculo": "len(D['AJ'])"
-  },
-  {
-   "texto": "el PSOE y uno para VoxLos 5 diputados de Cantabria:",
-   "cifra": "5",
-   "calculo": "sum(D['E29'].values())"
   }
  ],
  "externas": [],
@@ -403,10 +378,6 @@
   {
    "texto": "diez municipios de más de 10.000 habitantes, el PSOE",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "PSOE retuvo Torrelavega por 1.590Voto al PP, al PSOE",

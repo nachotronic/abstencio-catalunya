@@ -59,14 +59,14 @@ ACTUALIDAD_LUGAR = {
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'frente-amplio-podemos-madrid-escanos-29n': ['28'], 'calle-que-parte-madrid': ['28'], 'cinturon-rojo-madrid-29n': ['28'], 'participacion-renta-municipios-madrid-29n': ['28'], 'participacion-navarra-municipios-29n': ['31'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
-    'sevilla-barrio-a-barrio-29n': ['41'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-andalucia-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-cataluna-29n': ['08', '17', '25', '43'], 'zaragoza-barrio-a-barrio-29n': ['50'],
+    'sevilla-barrio-a-barrio-29n': ['41'], 'derbi-sevillano-nervion-heliopolis-29n': ['41'], 'getafe-atletico-sur-madrid-29n': ['28'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-andalucia-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-cataluna-29n': ['08', '17', '25', '43'], 'zaragoza-barrio-a-barrio-29n': ['50'],
 }
 # Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
 ACTUALIDAD_MUNICIPIO = {
     'acampada-sol-distrito-centro': ('28079', 'Madrid'), 'acampada-sol-alquiler-madrid-distritos-29n': ('28079', 'Madrid'), 'almeida-feijoo-madrid': ('28079', 'Madrid'),
     'barcelona-barrio-a-barrio-29n': ('08019', 'Barcelona'), 'madrid-barrio-a-barrio-29n': ('28079', 'Madrid'),
     'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
-    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'),
+    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'), 'derbi-sevillano-nervion-heliopolis-29n': ('41091', 'Sevilla'), 'getafe-atletico-sur-madrid-29n': ('28065', 'Getafe'),
     'valencia-barrio-a-barrio-29n': ('46250', 'València'), 'zaragoza-barrio-a-barrio-29n': ('50297', 'Zaragoza'),
     'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'), 'calle-que-parte-barcelona': ('08019', 'Barcelona'),
     'girona-barri-a-barri-29n': ('17079', 'Girona'),
@@ -107,7 +107,7 @@ TEMAS = {
         titulo='Renta y voto: cómo votan los barrios ricos y los pobres de España',
         intro='Las piezas que cruzan el voto de cada sección censal con la renta de sus hogares, el paro, las pensiones, '
               'los salarios o el oficio de sus vecinos. Para comparar una sola sección con el resto, el mapa de la portada.',
-        piezas=TEMA_RENTA + ['seleccion-convocados-pueblos-29n', 'atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
+        piezas=TEMA_RENTA + ['derbi-sevillano-nervion-heliopolis-29n', 'seleccion-convocados-pueblos-29n', 'atletico-barca-metropolitano-camp-nou-29n', 'valencia-madrid-mestalla-barrios-29n', 'derbi-vasco-bilbao-donostia-29n', 'quien-vota-que-barrios-29n', 'barrios-rentistas-pp-psoe-29n', 'barrios-pobres-derecha-ricos-izquierda', 'salarios-pensiones-ayudas-espana',
                              'salaris-pensions-ajudes-girona', 'oficios-y-voto-municipios-29n', 'voto-autonomos-secciones-29n',
                              'voto-jubilados-secciones-29n', 'pensiones-revalorizacion-29n', 'funcionarios-pagas-extra-29n', 'blocs-i-cases-girona', 'vox-barrios-obreros-clase-29n', 'salario-minimo-provincias-feijoo-29n', 'quien-vota-barrios-renta-edad-inmigracion', 'barrios-caseros-inquilinos-voto-29n'],
         datos=[('elecciones/voto-y-renta-por-barrios/', 'Voto y renta por barrios en toda España'),
@@ -309,7 +309,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Lerma', 'Ibarra', 'Rueda', 'Valdés', 'Cifuentes', 'Simancas', 'Noblejas', 'Arcos', 'San Isidro', 'Almenara', 'Águilas', 'Los Silos',
                 'Valmojado', 'Palmera', 'La Alberca', 'Guadalupe', 'Los Barrios', 'Quinto', 'Selva', 'Santa Eugènia', 'Sant Jordi', 'San Jorge',
                 'Borja', 'Montilla', 'Pantoja', 'Marín', 'Padrón', 'Onda', 'Ceutí', 'Torreblanca', 'Almagro', 'Cañaveral', 'Moraleja', 'Comillas',
-                'Humilladero', 'Nalda', 'Los Corrales'}
+                'Humilladero', 'Nalda', 'Los Corrales', 'Barlovento'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019'),
                  'seleccion-convocados-pueblos-29n': ('01063', '08019', '08191', '41081', '06044', '17020', '08279', '28079', '08003', '46250', '20069', '38046', '41069', '31201', '21018', '04079', '08305', '20030', '08077', '46126', '14056', '35016'),   # los 22 municipios de nacimiento de los convocados
@@ -318,7 +318,9 @@ INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019')
                  'mapa-electoral-madrid-29n': ('28079', '28074', '28065', '28058', '28106'),
                  'mapa-electoral-comunitat-valenciana-29n': ('46250', '03014', '03065', '12040'),
                  'mapa-electoral-castilla-y-leon-29n': ('47186', '09059', '37274', '24089', '34120', '42173', '49275', '05019', '40194')}   # las capitales, que cada pieza compara (y Vic en Cataluña)   # editor, 8-11-2026: Madrid y Barcelona, las ciudades de la pieza
-EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
+EXCLUIR_PIEZA = {'psoe-valencia-abalos-municipios-29n': {'07003'},
+                 'encuestas-elecciones-generales-2026-23-noviembre': {'44025'},   # Andorra (Teruel) sale de «las encuestas de Andorra» (el país)   # Alcúdia (Illes Balears) sale de «L'Alcúdia» en el mapa
+                 'encuestas-andorra-29n': {'44025'},   # Andorra (Teruel) sale de «las encuestas de Andorra» (el país)
                  'atletico-barca-metropolitano-camp-nou-29n': {'13053', '43014', '10901'},   # Manzanares (Ciudad Real), Amposta (Tarragona) y Rosalejo (Cáceres) salen del río y de los barrios madrileños de Amposta y Rosas
                  'pp-andalucia-autonomicas-generales-29n': {'04001', '06903', '10901', '11020', '13077', '18089', '20069', '23044', '28049', '35018', '41038', '41041', '41060', '46006', '46161', '48020'},   # nombres del mapa (títulos de los municipios), no del texto; solo cuenta Sevilla
                  'cinturon-rojo-madrid-29n': {'31062', '11028'},   # Cabanillas y Puerto Real salen de «Cabanillas de la Sierra» y «Rozas de Puerto Real» en el mapa
