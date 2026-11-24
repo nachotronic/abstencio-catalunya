@@ -36,7 +36,10 @@ def una(src, y):
     # 2015: el voto CERA trae la candidatura como 9xxxxx en vez de 0xxxxx (comprobado: cae siempre en una lista de la misma provincia)
     fuera = ~v.id_candidacies.isin(set(c.id_candidacies))
     v.loc[fuera, 'id_candidacies'] = v.loc[fuera, 'id_candidacies'].str.replace(r'^9', '0', regex=True)
-    v = v.merge(c[['id_candidacies', 'abbrev_candidacies', 'name_candidacies']], on='id_candidacies', how='left')
+    # la misma candidatura en varias provincias de una comunidad (Interior la agrupa en id_candidacies_ccaa): en la comunidad
+    # va en una sola fila aunque cada provincia escriba sus siglas a su manera (EAJ-PNV / E.A.J.-P.N.V. en 2011, PP / P.P.)
+    c['grp'] = [str(int(float(x))) if pd.notna(x) else 'id' + i for x, i in zip(c.id_candidacies_ccaa, c.id_candidacies)]
+    v = v.merge(c[['id_candidacies', 'abbrev_candidacies', 'name_candidacies', 'grp']], on='id_candidacies', how='left')
     assert v.abbrev_candidacies.notna().all(), y
     v['fam'] = [familia(a, n) for a, n in zip(v.abbrev_candidacies, v.name_candidacies)]
     # listas propias del 10N y el 23J (Existe, UPN, CUP...), con su color, como en el mapa por municipios
@@ -44,10 +47,22 @@ def una(src, y):
     v['fam'] = [prop.get(a.strip().upper(), f) for a, f in zip(v.abbrev_candidacies, v.fam)]
     v['cm'] = v.cod_INE_prov.map(PR2CM); m['cm'] = m.cod_INE_prov.map(PR2CM)
     assert v.cm.notna().all() and m.cm.notna().all(), y
+    # una candidatura, una familia en toda la comunidad: la de su provincia más votada (UC-CDS en 2000 o UPD/UPYD en 2008
+    # caían en «Otros» en alguna provincia por cómo venía escrito el nombre)
+    fv = v.groupby(['cm', 'grp', 'fam']).ballots.sum().reset_index().sort_values('ballots', ascending=False).drop_duplicates(['cm', 'grp'])
+    v = v.drop(columns='fam').merge(fv[['cm', 'grp', 'fam']], on=['cm', 'grp'], how='left')
     out = {}
     for niv, col in (('PR', 'cod_INE_prov'), ('CM', 'cm')):
         bl = m.groupby(col).blank_ballots.sum()
-        g = v.groupby([col, 'abbrev_candidacies', 'fam']).ballots.sum().reset_index()
+        if niv == 'PR':
+            g = v.groupby([col, 'abbrev_candidacies', 'fam']).ballots.sum().reset_index()
+        else:   # por candidatura de Interior; siglas y familia, las de su provincia más votada
+            pv = v.groupby([col, 'grp', 'cod_INE_prov', 'abbrev_candidacies', 'fam']).ballots.sum().reset_index()
+            mix = pv[pv.ballots > 0].groupby([col, 'grp']).fam.nunique()
+            for (t, gr) in mix[mix > 1].index:
+                print('  aviso', y, t, gr, pv[(pv[col] == t) & (pv.grp == gr)][['abbrev_candidacies', 'fam', 'ballots']].values.tolist())
+            top = pv.sort_values('ballots', ascending=False).drop_duplicates([col, 'grp'])[[col, 'grp', 'abbrev_candidacies', 'fam']]
+            g = pv.groupby([col, 'grp']).ballots.sum().reset_index().merge(top, on=[col, 'grp'])
         d = {}
         for t, s in g.groupby(col):
             s = s.sort_values('ballots', ascending=False)
