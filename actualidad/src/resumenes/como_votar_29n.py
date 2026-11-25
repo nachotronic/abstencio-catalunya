@@ -100,7 +100,7 @@ cuerpo = f'''
 <h2>Los que votan desde fuera</h2>
 <p data-tipo="dato">Uno de cada {UNO_DE} electores de las generales vive en el extranjero, y no vota en un colegio en España: según el <a href="{INE_CAL}">calendario del INE</a>, envía el voto por correo al consulado hasta el 24 de noviembre o lo deposita en la urna del consulado del 21 al 26. Su peso cambia mucho de una provincia a otra. En Ourense es el {p(OUR)} % del censo, y en Lugo, el {p(LUG)} %; las cuatro primeras son las provincias gallegas. Madrid es la que más tiene en número, {n(MAD[2])}, pero son el {p(SH["28"])} % de sus electores. El porcentaje más bajo es el de {nom(MENOS)}, con el {p(SH[MENOS])} %.</p>
 {g_cera}
-<p data-tipo="contexto">Los permisos si trabajas ese domingo, el voto por correo paso a paso y qué hacer si te toca mesa están en <a href="{GUIA}">la guía de dónde y cómo votar el 29N</a> y en {L("me-ha-tocado-mesa-electoral-29n", "esta pieza sobre las mesas electorales")}. Desde las 20.00, el mapa irá mostrando el recuento.</p>
+<p data-tipo="contexto">Los permisos si trabajas ese domingo, el voto por correo paso a paso y qué hacer si te toca mesa están en <a href="{GUIA}">la guía de dónde y cómo votar el 29N</a> y en {L("me-ha-tocado-mesa-electoral-29n", "esta pieza sobre las mesas electorales")}. Desde las 21.00, <a href="{BASE}">el mapa de las elecciones generales</a> irá mostrando el recuento.</p>
 '''
 
 preguntas = [
