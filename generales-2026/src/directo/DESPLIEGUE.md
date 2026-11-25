@@ -158,3 +158,8 @@ Comunidades), y vale para las generales de 1982 a 2023: `data/agregados.json`, d
 a mesa de Interior vía pollspaindata, con el voto CERA; 2023 cuadra con Interior en 70 de 71 ámbitos, Toledo +175 votos por
 ser el escrutinio definitivo). Se descarga solo cuando alguien elige provincias o comunidades. La noche del 29N el mapa abre
 por provincias hasta el 10 % escrutado (#703); en otra fecha, solo si el lector lo elige.
+
+Mapa de cada comunidad y provincia (24-11): las 62 páginas de comunidad y provincia llevan el mapa insertado con `insertar/?t=<provincia>` o
+`?t=c<comunidad, código de Interior>`. Solo dibuja ese territorio (sin callejero ni recuadro de Canarias), su leyenda solo
+lleva los partidos que ganan allí, y la noche del 29N su recuadro enseña las cifras de Interior de ese territorio (ámbito PR o CM).
+En una provincia nunca sale «Ver por» (sería un solo color). Se apaga quitando el bloque `mapa-territorio` de las páginas.

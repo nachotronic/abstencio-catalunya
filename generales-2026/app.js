@@ -47,9 +47,20 @@
   const canT = q => { const t = mY(q[1] - CDY) + CANT[1] / T10; q[0] = q[0] - CDX + CANT[0] * 360 / T10; q[1] = mLat(t); return q; };
   const aCan = rings => rings.forEach(o => { o.polygon.forEach(canT); });
   MUN.c.forEach((q, i) => { if (q && esCan(MUN.cod[i])) MUN.c[i] = canT([q[0], q[1]]); });
-  const MUNP = decode(MUN);
+  const CMPR = { '01': ['04', '11', '14', '18', '21', '23', '29', '41'], '02': ['22', '44', '50'], '03': ['33'], '04': ['07'], '05': ['35', '38'],
+    '06': ['39'], '07': ['02', '13', '16', '19', '45'], '08': ['05', '09', '24', '34', '37', '40', '42', '47', '49'], '09': ['08', '17', '25', '43'],
+    '10': ['06', '10'], '11': ['15', '27', '32', '36'], '12': ['28'], '13': ['31'], '14': ['01', '20', '48'], '15': ['30'], '16': ['26'],
+    '17': ['03', '12', '46'], '18': ['51'], '19': ['52'] };   // comunidades con el código de Interior -> provincias (INE)
+  const PR2CM = {}; Object.entries(CMPR).forEach(([c, L]) => L.forEach(p => { PR2CM[p] = c; }));
+  // ?t=<provincia INE> o ?t=c<comunidad, código de Interior>: el mapa solo de ese territorio, sin nada alrededor (páginas de
+  // cada comunidad y provincia, Nacho 24-11): solo sus municipios, sus secciones y sus provincias; sin callejero ni recuadro.
+  const TQ = new URLSearchParams(location.search).get('t') || '';
+  const TPROVS = /^\d{2}$/.test(TQ) && PR2CM[TQ] ? [TQ] : /^c\d{2}$/.test(TQ) && CMPR[TQ.slice(1)] ? CMPR[TQ.slice(1)] : null;
+  const enT = c => !TPROVS || TPROVS.includes(String(c).padStart(5, '0').slice(0, 2));
+  const enTP = c => !TPROVS || TPROVS.includes(String(c));
+  const MUNP = decode(MUN).filter(o => enT(MUN.cod[o.i]));
   aCan(MUNP.filter(o => esCan(MUN.cod[o.i])));
-  const PROVP = decode(PROV);
+  const PROVP = decode(PROV).filter(o => enTP(PROV.cod[o.i]));
   aCan(PROVP.filter(o => esCan(PROV.cod[o.i])));
   const PROVBOX = {};
   PROVP.forEach(p => {
@@ -143,7 +154,11 @@
     const mer = la => Math.log(Math.tan(Math.PI / 4 + la * Math.PI / 360)) * 180 / Math.PI;
     const ym = (mer(b[1]) + mer(b[3])) / 2;
     return [b[2] - b[0], mer(b[3]) - mer(b[1]), (b[0] + b[2]) / 2, Math.atan(Math.sinh(ym * Math.PI / 180)) * 180 / Math.PI];
-  })();
+  })() || (TPROVS ? (() => {
+    const b = [180, 90, -180, -90]; Object.values(PROVBOX).forEach(q => { b[0] = Math.min(b[0], q[0]); b[1] = Math.min(b[1], q[1]); b[2] = Math.max(b[2], q[2]); b[3] = Math.max(b[3], q[3]); });
+    const mer = la => Math.log(Math.tan(Math.PI / 4 + la * Math.PI / 360)) * 180 / Math.PI, ym = (mer(b[1]) + mer(b[3])) / 2;
+    return [b[2] - b[0], mer(b[3]) - mer(b[1]), (b[0] + b[2]) / 2, Math.atan(Math.sinh(ym * Math.PI / 180)) * 180 / Math.PI];
+  })() : null);
   const HOME = () => {
     const el = $('#map'), W = el.clientWidth || 800, H = el.clientHeight || 600;
     const [ancho, alto, longitude, latitude] = CAJA || (ESTRECHO ? [13.7, 13.6, -2.49, 38.7] : [15, 11.1, -1.87, 39.68]);
@@ -164,7 +179,7 @@
   const CALLE_Z = 12;
   let calles = true;
   try { calles = localStorage.getItem('mapa-calles') !== 'no'; } catch (e) { /* sin almacenamiento: activado */ }
-  const conCalles = () => calles && view.zoom >= CALLE_Z;
+  const conCalles = () => !TPROVS && calles && view.zoom >= CALLE_Z;
   // plantilla de las teselas: la da el TileJSON de OpenFreeMap, que cambia de versión cada semana. Si falla, sin calles.
   let OFM;
   const pideOFM = () => {
@@ -259,7 +274,7 @@
   }
 
   // Nombres de municipio (desde la vista de España): de más a menos habitantes, con un mínimo que baja con el zoom, sin que se pisen
-  const ORDM = MUN.nombre.map((n, i) => i).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
+  const ORDM = MUN.nombre.map((n, i) => i).filter(i => enT(MUN.cod[i])).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
   const MINPOB = z => z < 6 ? 150000 : z < 7 ? 50000 : z < 8 ? 15000 : z < 9 ? 5000 : z < 10 ? 1500 : z < 11 ? 300 : 0;
   // Nombres más legibles al acercarse (Nacho, 24-11: «cuando acercas el zoom los nombres se ven regular»): crecen hasta 3 px
   // desde el zoom 8, el atlas de letras se dibuja a más resolución y el halo es más ancho y opaco, para que se lean sobre
@@ -320,7 +335,7 @@
       L.push(new deck.PathLayer({ id: 'munline', data: MUNP, getPath: o => o.ring, getColor: [...line, 150], widthUnits: 'pixels', getWidth: view.zoom >= 8.5 ? .9 : .4 }));
     }
     L.push(new deck.PathLayer({ id: 'prov', data: PROVP, getPath: o => o.ring, getColor: [...line, 255], widthUnits: 'pixels', getWidth: 1.2, widthMinPixels: 1 }));
-    L.push(new deck.PathLayer({ id: 'canframe', data: CANFRAME, getPath: o => o.path, getColor: hex(css('--muted') || '#888'), widthUnits: 'pixels', getWidth: 1 }));
+    if (!TPROVS) L.push(new deck.PathLayer({ id: 'canframe', data: CANFRAME, getPath: o => o.path, getColor: hex(css('--muted') || '#888'), widthUnits: 'pixels', getWidth: 1 }));
     const conRot = conCalles() && typeof pideOFM() === 'string';
     if (conRot) L.push(...callejero(OFM));
     if (hover) {
@@ -354,7 +369,7 @@
   function redraw() {
     attr.hidden = !conCalles() && !marca;
     attr.querySelector('.cc').hidden = !marca;
-    if (bCal) bCal.hidden = view.zoom < CALLE_Z - .5;
+    if (bCal) bCal.hidden = !!TPROVS || view.zoom < CALLE_Z - .5;
     dk.setProps({ layers: layers() });
   }
 
@@ -533,7 +548,10 @@
   function legend() {
     const el = $('#legend');
     if (st.v === 'gana') {
-      const y = st.y, ag = agActivo(), used = new Set(ag ? Object.values(agDatos()[AGREG]).map(o => o.gana) : MUN[y + '_gana']);
+      const y = st.y, ag = agActivo();
+      // en el mapa de una comunidad o provincia (?t=), solo los partidos que ganan algo dentro de ella
+      const used = new Set(ag ? Object.entries(agDatos()[AGREG]).filter(([k]) => enTP(k)).map(([, o]) => o.gana)
+        : (MUN[y + '_gana'] || []).filter((g, i) => enT(MUN.cod[i])));
       const dir = META.directo && y === META.directo.eleccion;   // el 29N: en gris, lo que aún no tiene mesas escrutadas
       el.innerHTML = `<div class="lg-t">Partido más votado · ${ag ? `${(ELEC.find(e => e.cod === y) || {}).nombre || y} · por ${AGREG === 'PR' ? 'provincia' : 'comunidad'} (${agDatos() === AGD ? 'datos de Interior' : 'votos de Interior, con el extranjero'})` : nomE(y)}</div><div class="lg-sw">` +
         FAM.filter((f, k) => used.has(k)).map(f => `<span><b style="background:${f.color}"></b>${nomF(f, y)}</span>`).join('') +
@@ -604,7 +622,7 @@
 
   // búsqueda de municipio
   const dl = $('#munlist');
-  const ORD = MUN.nombre.map((n, i) => i).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
+  const ORD = MUN.nombre.map((n, i) => i).filter(i => enT(MUN.cod[i])).sort((a, b) => (MUN.poblacion[b] || 0) - (MUN.poblacion[a] || 0));
   dl.innerHTML = ORD.map(i => `<option value="${MUN.nombre[i]} (${MUN.provs[MUN.prov[i]] || ''})">`).join('');
   const opMun = dl.innerHTML;
   $('#q').addEventListener('change', e => {
@@ -691,6 +709,10 @@
     const all = MUNP.filter(p => p.i === i); hover = { key: 'mun' + i, polys: all }; redraw();
   }
   $('#home').onclick = () => fly(HOME());
+  if (TPROVS) {   // mapa de una comunidad o provincia: el botón vuelve a su encuadre
+    $('#home').textContent = /^5[12]$/.test(TPROVS[0]) ? 'Ver toda la ciudad' : TQ[0] === 'c' ? 'Ver toda la comunidad' : 'Ver toda la provincia';
+    $('#map').setAttribute('aria-label', 'Mapa por municipios y secciones censales con el resultado de las elecciones generales');
+  }
   bCal = document.createElement('button');
   bCal.type = 'button'; bCal.id = 'calles'; bCal.textContent = 'Calles';
   bCal.title = 'Muestra las calles y los nombres de los barrios al acercarte';
@@ -1109,7 +1131,7 @@
       $('#directo').hidden = false; jornada(); soloElectorales();
       $('#d-nombre').textContent = META.directo.nombre || y;
       $('#d-esc').textContent = pct(0);
-      $('#d-estado').textContent = av.length ? `participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`
+      $('#d-estado').textContent = av.length ? `${TPROVS ? 'en toda España, ' : ''}participación en el ${av.length > 1 ? '2.º' : '1.er'} avance de Interior: ${pct(Math.round(av[av.length - 1] * 10) / 1000)}`
         : `mesas constituidas: ${me.constituidas.toLocaleString('es-ES')} de ${me.total.toLocaleString('es-ES')}`;
       $('#d-seats').innerHTML = ''; $('#d-seats').style.display = 'none'; $('#d-leg').innerHTML = '';
       // con los avances municipio a municipio, el mapa pinta la participación: un botón por avance (y la final, con el escrutinio)
@@ -1181,18 +1203,32 @@
       (tot >= 350 ? '<i></i><em>176, mayoría absoluta</em>' : '');
     agregados(F, y);
     $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${nomF(FAM[k], y)} <span class="n">${seats[k]}</span> <span class="mut">${pct(nat.val ? nat.f[k] / nat.val : 0)}</span></span>`).join('');
+    if (TPROVS) cajaTerritorio(F, y);
     sync();
+  }
+  // en el mapa de una comunidad o una provincia (?t=), el recuadro del directo con las cifras de Interior de ese territorio
+  // (ámbito PR o CM: escrutado, votos y escaños), no las de España
+  function cajaTerritorio(F, y) {
+    const A = F.ambitos || {}, o = TPROVS.length > 1 ? (A.CM || {})[TQ.slice(1)] : (A.PR || {})[TQ];
+    if (!o || !o.c || !o.c.length) {
+      $('#d-esc').textContent = '–'; $('#d-seats').innerHTML = ''; $('#d-seats').style.display = 'none';
+      $('#d-leg').innerHTML = '<span class="mut">Las cifras de este territorio llegan con el escrutinio de Interior.</span>'; return;
+    }
+    const val = o.c.reduce((t, x) => t + (x[1] || 0), 0) + (o.bl || 0), f = new Array(FCOD.length).fill(0), e = new Array(FCOD.length).fill(0);
+    o.c.forEach(([s, v, es]) => { const k = FCOD.indexOf(famDe(s)); if (k >= 0) { f[k] += v || 0; e[k] += es || 0; } });
+    const ord = FCOD.map((c, k) => k).filter(k => e[k] > 0 || (val && f[k] / val > .01)).sort((a, b) => (e[b] - e[a]) || (f[b] - f[a]));
+    $('#d-nombre').textContent = (F.simulacro ? 'Simulacro con datos del 23J · ' : '') + (META.directo.nombre || y) + ' en ' + (o.n || '');
+    $('#d-esc').textContent = pct((o.esc || 0) / 100);
+    $('#d-seats').style.display = ord.some(k => e[k]) ? '' : 'none';
+    $('#d-seats').innerHTML = ord.filter(k => e[k]).map(k => `<span title="${nomF(FAM[k], y)}: ${e[k]}" style="flex:${e[k]};background:${FAM[k].color}"></span>`).join('');
+    const conE = ord.some(k => e[k]);   // sin escaños aún (Interior los da al avanzar el recuento), solo el porcentaje
+    $('#d-leg').innerHTML = ord.map(k => `<span><b style="background:${FAM[k].color}"></b>${nomF(FAM[k], y)}${conE ? ` <span class="n">${e[k]}</span>` : ''} <span class="mut">${pct(val ? f[k] / val : 0)}</span></span>`).join('');
   }
 
   // ---------- mapas por provincia y por comunidad (Nacho, 24-11), con las cifras de Interior de cada nivel (ámbitos PR y CM).
   // Para que no se rompa nada: es una capa aparte encima del mapa de municipios, que no cambia; el selector solo sale si
   // Interior da todas las provincias y comunidades y cuadran (las provincias suman su comunidad y los municipios su
   // provincia); cualquier error o descuadre lo quita y deja municipios. Se apaga del todo con meta.json directo.agregados=false.
-  const CMPR = { '01': ['04', '11', '14', '18', '21', '23', '29', '41'], '02': ['22', '44', '50'], '03': ['33'], '04': ['07'], '05': ['35', '38'],
-    '06': ['39'], '07': ['02', '13', '16', '19', '45'], '08': ['05', '09', '24', '34', '37', '40', '42', '47', '49'], '09': ['08', '17', '25', '43'],
-    '10': ['06', '10'], '11': ['15', '27', '32', '36'], '12': ['28'], '13': ['31'], '14': ['01', '20', '48'], '15': ['30'], '16': ['26'],
-    '17': ['03', '12', '46'], '18': ['51'], '19': ['52'] };   // comunidades con el código de Interior -> provincias (INE)
-  const PR2CM = {}; Object.entries(CMPR).forEach(([c, L]) => L.forEach(p => { PR2CM[p] = c; }));
   function agDatos() {   // el 29N, las cifras de Interior (AGD); otras generales, las históricas de data/agregados.json
     if (META.directo && st.y === META.directo.eleccion) return AGD;
     if (!HAG || !HAG[st.y]) return null;
@@ -1254,7 +1290,7 @@
     if (!w) {
       const ctl = selE.closest('label'); if (!ctl) return;
       w = document.createElement('label'); w.id = 'ver-por';
-      w.innerHTML = 'Ver por <select id="sel-nivel"><option value="">Municipios y secciones</option><option value="PR">Provincias</option><option value="CM">Comunidades</option></select>';
+      w.innerHTML = 'Ver por <select id="sel-nivel"><option value="">Municipios y secciones</option><option value="PR">Provincias</option>' + (TPROVS ? '' : '<option value="CM">Comunidades</option>') + '</select>';
       ctl.after(w);
       w.querySelector('select').onchange = async e => {
         const v = e.target.value; AGMANO = true;
@@ -1266,7 +1302,7 @@
       };
     }
     const dir = META.directo && st.y === META.directo.eleccion;
-    const hay = st.v === 'gana' && (dir ? !!AGD : /^\d{4}_\d{2}$/.test(st.y) && st.y >= '1982' && st.y <= '2023_12');
+    const hay = st.v === 'gana' && !(TPROVS && TPROVS.length < 2) && (dir ? !!AGD : /^\d{4}_\d{2}$/.test(st.y) && st.y >= '1982' && st.y <= '2023_12');
     w.hidden = !hay; w.querySelector('select').value = agNivelVisto();
     if (hay && !dir && AGREG && !HAG) cargaHAG().then(() => { legend(); redraw(); }, () => {});
   }
@@ -1281,6 +1317,7 @@
     // los primeros minutos del escrutinio, el mapa abre por provincias (Nacho, 24-11), que se ven enteras desde la primera
     // mesa; al pasar del 10 % escrutado vuelve solo a municipios. Si el lector ya ha tocado un botón, se respeta lo suyo
     if (AGD && !AGMANO) AGREG = ESCNAT < AGUMBRAL ? 'PR' : '';
+    if (TPROVS && (AGREG === 'CM' || TPROVS.length < 2)) AGREG = '';   // en una provincia (o comunidad de una), nunca un solo color
     if (!AGD && AGREG) AGREG = '';
     let b = document.getElementById('d-ver');
     if (!AGD) { if (b) b.hidden = true; legend(); verPor(); redraw(); return; }
