@@ -541,7 +541,12 @@ async function porMedios(base, env) {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
     catch (e) { fallos.push(p); }
   });
-  if (!filas.length) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
+  if (!filas.length) {
+    // constitución de mesas (9:30 el 29N; en la prueba de medios, las 15:00): Interior da los envíos sin ningún municipio, pero
+    // getAvancesTotales ya trae las mesas constituidas. Se guardan igual (sin votos) para que la web las enseñe; sin eso, error.
+    let av = null; try { av = avancesMedios(await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env)); } catch (e) { /* sigue */ }
+    if (!(av && av.mesas && av.mesas.total)) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
+  }
   let escanos = null, avances = null;
   let ambitos = null, senado = null;
   try { const t = await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env); escanos = escanosMedios(t); ambitos = ambitosMedios(t); } catch (e) { /* sin escaños esta vez */ }
