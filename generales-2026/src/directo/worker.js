@@ -111,13 +111,15 @@ export async function actualiza(env0) {
 async function actualiza1(env) {
   try {
     const out = await leeFuente(env);
-    if (!out || !out.mun || !Object.keys(out.mun).length) return 'sin datos';
+    // sin municipios solo vale la constitución de mesas (avances.mesas): la web enseña las mesas constituidas antes del 1.er avance
+    if (!out || !out.mun || (!Object.keys(out.mun).length && !(out.avances && out.avances.mesas && out.avances.mesas.total))) return 'sin datos';
     out.actualizado = out.actualizado || new Date().toISOString();
     const previo = await env.RESULTADOS.get('ultimo', 'json');
     out.hitos = hitos(out, (previo && previo.hitos) || []);
     await env.RESULTADOS.put('ultimo', JSON.stringify(out));
     await Promise.all(Object.entries(porProvincia(out)).map(([p, o]) => env.RESULTADOS.put('prov:' + p, JSON.stringify(o))));
     const esc = Object.values(out.mun).filter(a => a[1] > 0).length;
+    if (!Object.keys(out.mun).length) return `ok constitución: ${out.avances.mesas.constituidas} de ${out.avances.mesas.total} mesas`;
     return `ok ${Object.keys(out.mun).length} municipios, ${esc} con mesas escrutadas`;
   } catch (e) {
     return 'error: ' + e.message;     // se conserva el último resultado bueno
