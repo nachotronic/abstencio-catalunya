@@ -649,7 +649,7 @@
       const k = ++nq;
       try {
         const r = await fetch(CC + 'candidates?limit=8&no_process=municipio,poblacion,provincia,comunidad autonoma,toponimo,expendeduria,ngbe,codpost,refcatastral&q=' + encodeURIComponent(v));
-        const cs = (await r.json()).filter(c => (c.type === 'portal' || c.type === 'callejero') && c.muniCode);
+        const cs = (await r.json()).filter(c => (c.type === 'portal' || c.type === 'callejero') && c.muniCode && enT(c.muniCode));   // en un mapa de comunidad o provincia, solo sus calles
         if (k !== nq) return;
         DIRS.clear();
         const ops = cs.map(c => { const t = etiDir(c); DIRS.set(t.toLowerCase(), c); return `<option value="${escH(t)}">`; });
