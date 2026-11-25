@@ -232,6 +232,7 @@ body{margin:0;font-size:16px}
 </div>
 <script src="https://unpkg.com/deck.gl@9.4.0/dist.min.js"></script>
 <script src="../generales-2026/app.js"></script>
-<script>document.getElementById('firma').href = 'https://mapaelectoral.es/' + location.search;</script>
+<script>(function () { const q = new URLSearchParams(location.search); q.delete('t'); const t = q.toString();   // ?t= (una comunidad o provincia) solo vale aquí: la firma abre el mapa entero
+  document.getElementById('firma').href = 'https://mapaelectoral.es/' + (t ? '?' + t : ''); })();</script>
 </body>
 </html>

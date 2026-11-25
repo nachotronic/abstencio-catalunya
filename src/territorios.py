@@ -580,6 +580,29 @@ def bloque_29n_territorio(nombre, en):
               f'<a href="{raiz}elecciones/participacion-29n-hora-a-hora/">participación del 29N hora a hora</a></p>')
 
 
+# comunidades con el código de Interior -> provincias (INE), como CMPR de generales-2026/app.js: el mapa de ?t=c<código>
+CMPR_INTERIOR = {'01': ['04', '11', '14', '18', '21', '23', '29', '41'], '02': ['22', '44', '50'], '03': ['33'], '04': ['07'], '05': ['35', '38'],
+                 '06': ['39'], '07': ['02', '13', '16', '19', '45'], '08': ['05', '09', '24', '34', '37', '40', '42', '47', '49'],
+                 '09': ['08', '17', '25', '43'], '10': ['06', '10'], '11': ['15', '27', '32', '36'], '12': ['28'], '13': ['31'],
+                 '14': ['01', '20', '48'], '15': ['30'], '16': ['26'], '17': ['03', '12', '46'], '18': ['51'], '19': ['52']}
+
+
+def bloque_mapa(nombre, provs, raiz, comunidad):
+    """Mapa solo de esta comunidad o provincia, sin nada alrededor, con sus municipios y secciones (insertar/?t=, Nacho 24-11).
+    Se carga al bajar hasta él (loading=lazy): la página no pesa más al abrirse."""
+    if comunidad:
+        t = 'c' + next(c for c, L in CMPR_INTERIOR.items() if sorted(L) == sorted(provs))
+    else:
+        t = provs[0]
+    return ('<h2 id="mapa-territorio">Mapa por municipios y secciones</h2>'
+            f'<p>El partido más votado en cada municipio de {escape(nombre)} y, al acercarte, en cada sección censal. '
+            'Pulsa en un municipio para ver su resultado y cambia de elección en el desplegable.</p>'
+            '<div class="chart"><div style="position:relative;min-height:720px;background:color-mix(in srgb, var(--muted) 10%, var(--bg));border-radius:6px">'
+            f'<a href="{raiz}" style="position:absolute;top:50%;left:0;right:0;text-align:center;transform:translateY(-50%)">Abrir el mapa electoral</a>'
+            f'<iframe src="{raiz}insertar/?t={t}" width="100%" height="720" style="position:relative;border:0;max-width:100%;display:block" loading="lazy" '
+            f'title="Mapa electoral de {escape(nombre)} por municipio y sección censal"></iframe></div></div>')
+
+
 def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(), tipo_txt='Comunidad', contenido=None, ccaa=None):
     df = T.MUN[T.MUN.prov.isin(provs)]
     sec = T.SEC[T.SEC.prov.isin(provs)]
@@ -615,6 +638,7 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
                                                 [hijo for hijo in hijos]))
     h.append(bloque_29n_territorio(nombre, en))
     h.append(bloque_resultado(nombre, r))
+    h.append(bloque_mapa(nombre, provs, raiz, tipo_txt == 'Comunidad'))
     h.append(b_censo)
     h.append(bloque_serie(nombre, serie, provs))
     if len(provs) == 1 and provs[0] in MAPA_EVOLUCION:
