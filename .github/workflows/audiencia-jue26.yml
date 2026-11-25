@@ -1,0 +1,22 @@
+# Temporal, solo lectura: cierre 25-11. No se fusiona a main.
+name: Audiencia cierre 25-11
+on:
+  push:
+    branches: [claude/project-thread-2iqyjt]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-jue26.yml']
+permissions:
+  contents: read
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: .github}
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/jue26.py
+      - run: pip install -q google-auth requests
+      - env:
+          GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
+        continue-on-error: true
+        run: python3 .github/audiencia/gsc26.py

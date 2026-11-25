@@ -1,4 +1,4 @@
-# Temporal, solo lectura: audiencia 25-11 tarde (18:38). No se fusiona a main.
+# Temporal, solo lectura: cierre 25-11. No se fusiona a main.
 import json,collections,urllib.request,os,datetime
 raw=os.environ.get('CF','')
 tok=next((p.strip().strip('"\'') for p in raw.split() if p.strip().strip('"\'').startswith('cfut_')), raw.strip().strip('"\''))
@@ -43,7 +43,5 @@ def informe(lab,a,b):
     paths=collections.Counter()
     for r in grp(['requestPath'],5000,Z(a),Z(b)): paths[r['dimensions']['requestPath']]+=r['sum']['visits']
     print('TOP',lab,paths.most_common(15))
-for lab,k in [('HOY25',0),('MAR24',1),('LUN23',2)]:
-    a=HOY-D(days=k); informe('MISMAHORA_'+lab,a,a+corte)
-for lab,k in [('MAR24',1),('LUN23',2)]:
+for lab,k in [('MIE25',0),('MAR24',1),('LUN23',2)]:
     a=HOY-D(days=k); informe('DIA_'+lab,a,a+D(days=1))
