@@ -5232,7 +5232,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-25 12:30',
+        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-25 19:00',
         titulo='Cómo votar en las elecciones generales del 29N: horario, qué llevar y cómo saber tu colegio', serie='29n', figura=0,
         descripcion='Los colegios abren el domingo 29 de noviembre de 9.00 a 20.00. Hace falta el DNI, el pasaporte o el carné de conducir, aunque estén caducados; la tarjeta censal, no. Están llamados a votar 38.728.356 electores, 1.615.127 por primera vez en unas generales.',
         compara='El horario, los documentos, las papeletas y el cierre de la votación según la ley electoral y la Junta Electoral Central, y el censo de las elecciones generales del 29N por circunscripción, con los residentes en el extranjero.',
@@ -5285,7 +5285,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-25 08:45',
+        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-25 19:00',
         titulo='Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley', serie='29n', figura=0,
         descripcion='Son encuestas publicadas fuera de España durante la veda, que va del martes 24 hasta que cierren los colegios el domingo 29. En 2023, «encuestas andorra» solo se buscó la semana de la veda, con el máximo en la jornada de reflexión.',
         compara='Lo que dice la ley electoral sobre la publicación de encuestas en los cinco días antes de votar, los casos de encuestas publicadas fuera de España durante la veda desde 2008, la resolución de la Junta Electoral Central sobre encuestas encubiertas y las búsquedas en Google de «encuestas andorra» y «encuestas prohibidas» en la semana de las generales de 2023.',
