@@ -5230,7 +5230,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20',
+        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-25 09:50',
         titulo='Cómo votar en las elecciones generales del 29N: horario, qué llevar y cómo saber tu colegio', serie='29n', figura=0,
         descripcion='Los colegios abren el domingo 29 de noviembre de 9.00 a 20.00. Hace falta el DNI, el pasaporte o el carné de conducir, aunque estén caducados; la tarjeta censal, no. Están llamados a votar 38.728.356 electores, 1.615.127 por primera vez en unas generales.',
         compara='El horario, los documentos, las papeletas y el cierre de la votación según la ley electoral y la Junta Electoral Central, y el censo de las elecciones generales del 29N por circunscripción, con los residentes en el extranjero.',
@@ -5246,7 +5246,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='a-que-hora-resultados-elecciones-generales-29n', actualizado='2026-11-24 13:00', fecha='2026-11-20',
+        slug='a-que-hora-resultados-elecciones-generales-29n', actualizado='2026-11-25 09:50', fecha='2026-11-20',
         titulo='A qué hora se sabrán los resultados de las elecciones generales del 29N', serie='29n', figura=0,
         descripcion='Los colegios cierran a las 20.00, pero en 2023 los primeros resultados llegaron a las 21.00, al cerrar Canarias. Antes, dos avances de participación, a las 14.00 y a las 18.00. El voto de fuera se cuenta el viernes 4 de diciembre.',
         compara='El horario de la jornada electoral según la ley y según la nota del Ministerio del Interior para las generales de 2023, y los avances de participación de las 14.00 y las 18.00 y la participación final en julio de 2023 y noviembre de 2019.',
