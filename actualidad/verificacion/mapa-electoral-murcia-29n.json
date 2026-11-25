@@ -25,24 +25,9 @@
    "calculo": "D['GANA']['2023_07']['PP']"
   },
   {
-   "texto": "41; el PSOE se quedó con cuatro. Para el 29N, la media",
+   "texto": "41; el PSOE se quedó con cuatro.",
    "cifra": "cuatro",
    "calculo": "D['GANA']['2023_07']['PSOE']"
-  },
-  {
-   "texto": "media de encuestas da a Vox cuatro de los 10 diputados,",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "encuestas da a Vox cuatro de los 10 diputados, tantos como",
-   "cifra": "10",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "elige el 29 de noviembre 10 diputados, los mismos",
-   "cifra": "10",
-   "calculo": "sum(D['E29'].values())"
   },
   {
    "texto": "partido más votado, con el 28,2 %. Ganó en 16 de sus",
@@ -310,51 +295,6 @@
    "calculo": "D['LAL_V']"
   },
   {
-   "texto": "el reparto central de los 10 escaños da al PP cuatro,",
-   "cifra": "10",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "de los 10 escaños da al PP cuatro, los mismos que en 2023;",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "mismos que en 2023; a Vox, cuatro, frente a dos, y al",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "ninguno. Las horquillas van de 4 a 5 escaños para el",
-   "cifra": "4",
-   "calculo": "D['RC']['PP'][1]"
-  },
-  {
-   "texto": "Las horquillas van de 4 a 5 escaños para el PP,",
-   "cifra": "5",
-   "calculo": "D['RC']['PP'][2]"
-  },
-  {
-   "texto": "5 escaños para el PP, de 3 a 4 para Vox y de 2",
-   "cifra": "3",
-   "calculo": "D['RC']['VOX'][1]"
-  },
-  {
-   "texto": "escaños para el PP, de 3 a 4 para Vox y de 2 a 3",
-   "cifra": "4",
-   "calculo": "D['RC']['PP'][1]"
-  },
-  {
-   "texto": "PP, de 3 a 4 para Vox y de 2 a 3 para el PSOE.",
-   "cifra": "2",
-   "calculo": "D['RC']['PSOE'][1]"
-  },
-  {
-   "texto": "de 3 a 4 para Vox y de 2 a 3 para el PSOE.",
-   "cifra": "3",
-   "calculo": "D['RC']['PSOE'][2]"
-  },
-  {
    "texto": "Vox ganó en 16 municipios en 2019 y",
    "cifra": "16",
    "calculo": "D['GANA']['2019_11']['VOX']"
@@ -433,16 +373,6 @@
    "texto": "segundo en julio de 2023 en los ocho municipios más ajustados,",
    "cifra": "ocho",
    "calculo": "len(D['AJ'])"
-  },
-  {
-   "texto": "encuestas, Vox pasaría de dos a cuatro diputados en la Región",
-   "cifra": "cuatro",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "y empataría con el PPLos 10 diputados de la Región",
-   "cifra": "10",
-   "calculo": "sum(D['E29'].values())"
   }
  ],
  "externas": [],
@@ -494,10 +424,6 @@
   {
    "texto": "104. Entre los de más de 10.000 habitantes, el más ajustado",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "En los 15 municipios de 20.000 a 50.000 habitantes,",

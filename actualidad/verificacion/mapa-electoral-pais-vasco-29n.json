@@ -40,29 +40,9 @@
    "calculo": "D['PNV_BILDU']"
   },
   {
-   "texto": "votado en 2023, ganó en las tres capitales. Para el 29N,",
+   "texto": "votado en 2023, ganó en las tres capitales.",
    "cifra": "tres",
    "calculo": "len(D['CAP'])"
-  },
-  {
-   "texto": "media de encuestas da al PSOE 7 de los 18 diputados,",
-   "cifra": "7",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "encuestas da al PSOE 7 de los 18 diputados, a EH Bildu",
-   "cifra": "18",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "18 diputados, a EH Bildu 6 y al PNV 3.",
-   "cifra": "6",
-   "calculo": "D['E29']['BILDU']"
-  },
-  {
-   "texto": "diputados, a EH Bildu 6 y al PNV 3.",
-   "cifra": "3",
-   "calculo": "D['E29']['PNV']"
   },
   {
    "texto": "elige el 29 de noviembre 18 diputados: 8 en Bizkaia,",
@@ -430,31 +410,6 @@
    "calculo": "D['UNVOTO']"
   },
   {
-   "texto": "el reparto central de los 18 escaños da al PSOE 7,",
-   "cifra": "18",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "los 18 escaños da al PSOE 7, dos más que en 2023;",
-   "cifra": "7",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "que en 2023; a EH Bildu, 6, uno más; al PNV, 3,",
-   "cifra": "6",
-   "calculo": "D['E29']['BILDU']"
-  },
-  {
-   "texto": "Bildu, 6, uno más; al PNV, 3, dos menos, y al PP,",
-   "cifra": "3",
-   "calculo": "D['E29']['PNV']"
-  },
-  {
-   "texto": "PNV, 3, dos menos, y al PP, 2, los mismos. Sumar,",
-   "cifra": "2",
-   "calculo": "D['E29']['PP']"
-  },
-  {
    "texto": "El PNV pasó de ganar en 152 municipios a ganar en",
    "cifra": "152",
    "calculo": "D['GANA']['2019_11']['PNV']"
@@ -548,31 +503,6 @@
    "texto": "por tres votos; Bilbao, por 0,83 puntosVentaja del partido",
    "cifra": "0,83",
    "calculo": "D['CAP']['Bilbao']['marg23']"
-  },
-  {
-   "texto": "encuestas, el PSOE pasaría de cinco a siete diputados en",
-   "cifra": "cinco",
-   "calculo": "D['E23']['PSOE']"
-  },
-  {
-   "texto": "el PSOE pasaría de cinco a siete diputados en el País",
-   "cifra": "siete",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "País Vasco, y el PNV, de cinco a tresLos 18 diputados",
-   "cifra": "cinco",
-   "calculo": "D['E23']['PNV']"
-  },
-  {
-   "texto": "el PNV, de cinco a tresLos 18 diputados de los tres",
-   "cifra": "18",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "tresLos 18 diputados de los tres territorios: un cuadrado",
-   "cifra": "tres",
-   "calculo": "len(D['PR'])"
   }
  ],
  "externas": [],
@@ -592,10 +522,6 @@
   {
    "texto": "retuvo el PNV por menos de tres puntos, y Zarautz y",
    "motivo": "umbral redondo, comprobado en el script (assert < 3)"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "Tres territorios",

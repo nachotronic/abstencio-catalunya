@@ -35,24 +35,6 @@
    "_donde": "entradilla"
   },
   {
-   "texto": "media de encuestas da al PP 16 de los 38 diputados,",
-   "cifra": "16",
-   "calculo": "D['E29']['PP']",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "encuestas da al PP 16 de los 38 diputados, y a Vox,",
-   "cifra": "38",
-   "calculo": "D['ESC26']",
-   "_donde": "entradilla"
-  },
-  {
-   "texto": "los 38 diputados, y a Vox, 8.",
-   "cifra": "8",
-   "calculo": "D['E29']['VOX']",
-   "_donde": "entradilla"
-  },
-  {
    "texto": "elige el 29 de noviembre 38 diputados, uno más que",
    "cifra": "38",
    "calculo": "D['ESC26']",
@@ -413,60 +395,6 @@
    "_donde": "dato"
   },
   {
-   "texto": "el reparto central de los 38 escaños da al PP 16,",
-   "cifra": "38",
-   "calculo": "D['ESC26']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "de los 38 escaños da al PP 16, los mismos que en 2023;",
-   "cifra": "16",
-   "calculo": "D['E29']['PP']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "mismos que en 2023; al PSOE, 10, también los mismos;",
-   "cifra": "10",
-   "calculo": "D['E29']['PSOE']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "también los mismos; a Vox, 8, tres más; a Frente",
-   "cifra": "8",
-   "calculo": "D['E29']['VOX']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "también los mismos; a Vox, 8, tres más; a Frente Amplio,",
-   "cifra": "tres",
-   "calculo": "D['E29']['VOX']-D['E23']['VOX']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "tres más; a Frente Amplio, 3, y a Podemos, 1. En",
-   "cifra": "3",
-   "calculo": "D['E29']['FA']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "Frente Amplio, 3, y a Podemos, 1. En 2023, Sumar había",
-   "cifra": "1",
-   "calculo": "D['E29']['PODEMOS']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "2023, Sumar había sacado 6 con las dos candidaturas",
-   "cifra": "6",
-   "calculo": "D['E23']['SUMAR']",
-   "_donde": "dato"
-  },
-  {
-   "texto": "PP es el más votado en el 98 % de las simulaciones.",
-   "cifra": "98",
-   "calculo": "D['P1']*100",
-   "_donde": "dato"
-  },
-  {
    "texto": "Vox ganó en 61 municipios madrileños",
    "cifra": "61",
    "calculo": "D['GANA']['2019_11']['VOX']",
@@ -530,24 +458,6 @@
    "texto": "Diez municipios de más de",
    "cifra": "Diez",
    "calculo": "len(D['AJG'])",
-   "_donde": "pie"
-  },
-  {
-   "texto": "escaños y Vox pasaría de 5 a 8Los diputados de",
-   "cifra": "5",
-   "calculo": "D['E23']['VOX']",
-   "_donde": "pie"
-  },
-  {
-   "texto": "escaño. En 2019 y 2023 eligió 37; el 29N elige 38",
-   "cifra": "37",
-   "calculo": "sum(D['E23'].values())",
-   "_donde": "pie"
-  },
-  {
-   "texto": "2023 eligió 37; el 29N elige 38",
-   "cifra": "38",
-   "calculo": "D['ESC26']",
    "_donde": "pie"
   }
  ],

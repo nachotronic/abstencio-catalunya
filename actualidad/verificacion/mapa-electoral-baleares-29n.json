@@ -40,26 +40,6 @@
    "calculo": "D['POB']['2023_07']['PSOE']"
   },
   {
-   "texto": "media de encuestas da al PP tres de los 8 diputados,",
-   "cifra": "tres",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas da al PP tres de los 8 diputados, al PSOE tres",
-   "cifra": "8",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "los 8 diputados, al PSOE tres y a Vox dos.",
-   "cifra": "tres",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "eligen el 29 de noviembre 8 diputados. El PP presenta",
-   "cifra": "8",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
    "texto": "y julio de 2023: pasó del 25,7 % al 30,4 % de los votos",
    "cifra": "25,7",
    "calculo": "D['A19']['pct']['PSOE']"
@@ -325,21 +305,6 @@
    "calculo": "D['AJ'][1][4]"
   },
   {
-   "texto": "el reparto central de los 8 escaños da al PP tres",
-   "cifra": "8",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
-   "texto": "de los 8 escaños da al PP tres y al PSOE tres, los",
-   "cifra": "tres",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "escaños da al PP tres y al PSOE tres, los mismos que en 2023,",
-   "cifra": "tres",
-   "calculo": "D['E29']['PP']"
-  },
-  {
    "texto": "Los tres municipios de Sumar",
    "cifra": "tres",
    "calculo": "D['GANA']['2023_07']['SUMAR']"
@@ -410,11 +375,6 @@
    "calculo": "len(D['AJ'])"
   },
   {
-   "texto": "se quedaría sin escañoLos 8 diputados de las Illes",
-   "cifra": "8",
-   "calculo": "sum(D['E29'].values())"
-  },
-  {
    "texto": "que se queda justo por debajo, con 29.902 habitantes",
    "cifra": "29.902",
    "calculo": "D['MAO']['pob']"
@@ -433,10 +393,6 @@
   {
    "texto": "ciudades. De las nueve de más de 30.000 habitantes, el PSOE",
    "motivo": "umbral de población"
-  },
-  {
-   "texto": "tienen un margen amplio a 17 días de la votación.",
-   "motivo": "días hasta la votación (12 al 29 de noviembre)"
   },
   {
    "texto": "las nueve ciudades de más de 30.000 habitantes, el PSOE",

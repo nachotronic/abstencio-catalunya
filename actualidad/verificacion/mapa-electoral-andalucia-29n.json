@@ -15,24 +15,9 @@
    "calculo": "sum(D['GANA']['2023_07'].values())"
   },
   {
-   "texto": "307 y ganó en siete de las ocho capitales. Para el 29N,",
+   "texto": "307 y ganó en siete de las ocho capitales.",
    "cifra": "ocho",
    "calculo": "len(D['CAP'])"
-  },
-  {
-   "texto": "media de encuestas le da 25 de los 60 diputados,",
-   "cifra": "25",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "encuestas le da 25 de los 60 diputados, y a Vox,",
-   "cifra": "60",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "los 60 diputados, y a Vox, 15.",
-   "cifra": "15",
-   "calculo": "D['E29']['VOX']"
   },
   {
    "texto": "elige el 29 de noviembre 60 de los 350 diputados",
@@ -270,56 +255,6 @@
    "calculo": "D['PUENTE'][1]"
   },
   {
-   "texto": "reparto central da al PP 25 de los 60 diputados",
-   "cifra": "25",
-   "calculo": "D['E29']['PP']"
-  },
-  {
-   "texto": "central da al PP 25 de los 60 diputados andaluces,",
-   "cifra": "60",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "mismos que en 2023; al PSOE, 19, dos menos; a Vox, 15,",
-   "cifra": "19",
-   "calculo": "D['E29']['PSOE']"
-  },
-  {
-   "texto": "PSOE, 19, dos menos; a Vox, 15, seis más, y a Sumar,",
-   "cifra": "15",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "19, dos menos; a Vox, 15, seis más, y a Sumar, 1. En",
-   "cifra": "seis",
-   "calculo": "D['E29']['VOX']-D['E23']['VOX']"
-  },
-  {
-   "texto": "15, seis más, y a Sumar, 1. En Sevilla, el modelo",
-   "cifra": "1",
-   "calculo": "D['E29']['SUMAR']"
-  },
-  {
-   "texto": "votado: el PP lo es en el 51 % de las simulaciones",
-   "cifra": "51",
-   "calculo": "D['SEV_P1']['PP']*100"
-  },
-  {
-   "texto": "simulaciones y el PSOE, en el 49 %. Cádiz elige ocho",
-   "cifra": "49",
-   "calculo": "D['SEV_P1']['PSOE']*100"
-  },
-  {
-   "texto": "PSOE, en el 49 %. Cádiz elige ocho diputados en lugar de",
-   "cifra": "ocho",
-   "calculo": "D['ESC26']['11']"
-  },
-  {
-   "texto": "ocho diputados en lugar de nueve, y con los votos de",
-   "cifra": "nueve",
-   "calculo": "sum(D['ESC23']['11'].values())"
-  },
-  {
    "texto": "Ocho provincias: el PP gana",
    "cifra": "Ocho",
    "calculo": "len(D['PR'])"
@@ -373,41 +308,6 @@
    "texto": "Seis municipios de más de",
    "cifra": "Seis",
    "calculo": "len(D['AJG'])"
-  },
-  {
-   "texto": "encuestas, Vox pasaría de 9 a 15 diputados andaluces",
-   "cifra": "9",
-   "calculo": "D['E23']['VOX']"
-  },
-  {
-   "texto": "encuestas, Vox pasaría de 9 a 15 diputados andaluces",
-   "cifra": "15",
-   "calculo": "D['E29']['VOX']"
-  },
-  {
-   "texto": "diputados andaluces y Sumar, de 6 a 1Los diputados de",
-   "cifra": "6",
-   "calculo": "D['E23']['SUMAR']"
-  },
-  {
-   "texto": "6 a 1Los diputados de las ocho provincias andaluzas:",
-   "cifra": "ocho",
-   "calculo": "len(D['PR'])"
-  },
-  {
-   "texto": "En 2026, Andalucía elige 60, uno menos: Cádiz pasa",
-   "cifra": "60",
-   "calculo": "sum(D['ESC26'].values())"
-  },
-  {
-   "texto": "uno menos: Cádiz pasa de 9 a 8",
-   "cifra": "9",
-   "calculo": "sum(D['ESC23']['11'].values())"
-  },
-  {
-   "texto": "menos: Cádiz pasa de 9 a 8",
-   "cifra": "8",
-   "calculo": "D['ESC26']['11']"
   },
   {
    "texto": "El bloque creció menos de tres puntos",
@@ -507,23 +407,9 @@
    "texto": "El PSOE ganó en 347 de los 529 municipios",
    "cifra": "347",
    "calculo": "D['PEQ']"
-  },
-  {
-   "texto": "le da 3 de los 60 diputados andaluces",
-   "cifra": "3",
-   "calculo": "sum(provincia_modelo('2026-11-11', c, 'Adelante Andalucía', hora='11:30')['escanos'][1] for c in ('04','11','14','18','21','23','29','41'))"
-  },
-  {
-   "texto": "le da 3 de los 60 diputados andaluces",
-   "cifra": "60",
-   "calculo": "sum(modelo('2026-11-11', hora='11:30')['escenario']['provincias'][c]['escanos_total'] for c in ('04','11','14','18','21','23','29','41'))"
   }
  ],
  "externas": [
-  {
-   "texto": "Andalucía, que en mayo sacó ocho diputados autonómicos,",
-   "fuente": "https://www.infobae.com/espana/agencias/2026/11/10/el-pp-busca-su-segunda-victoria-en-andalucia-donde-adelante-podria-tener-representacion/"
-  },
   {
    "texto": "los oficiales que cita EFE (36,41 % para el PP y 33,5",
    "fuente": "https://www.infobae.com/espana/agencias/2026/11/10/el-pp-busca-su-segunda-victoria-en-andalucia-donde-adelante-podria-tener-representacion/"
@@ -575,14 +461,6 @@
    "motivo": "umbral de población"
   },
   {
-   "texto": "lo contamos en Uno de cada tres votantes de Adelante",
-   "motivo": "título de otra pieza"
-  },
-  {
-   "texto": "tienen un margen amplio a 19 días de la votación.",
-   "motivo": "días hasta la votación"
-  },
-  {
    "texto": "529 municipios de menos de 5.000 habitantes; el PP, en",
    "motivo": "umbral de población"
   },
@@ -597,10 +475,6 @@
   {
    "texto": "el del modelo del 10 de noviembre, que todavía",
    "motivo": "fecha de la versión del modelo que usa la pieza"
-  },
-  {
-   "texto": "Desde el 11 de noviembre la incluye",
-   "motivo": "fecha de la versión del modelo que incluye a Adelante Andalucía"
   }
  ],
  "permitir_espana": []
