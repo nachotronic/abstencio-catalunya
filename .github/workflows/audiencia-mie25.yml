@@ -15,4 +15,3 @@ jobs:
       - env:
           CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python3 .github/audiencia/mie25.py
-      - env:
