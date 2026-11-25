@@ -5041,7 +5041,8 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='voto-correo-plazo-jueves-29n', fecha='2026-11-17',
+        slug='voto-correo-plazo-jueves-29n', fecha='2026-11-17', actualizado='2026-11-25 12:30',
+        correcciones='25-11-2026: el voto se puede depositar en Correos hasta el jueves 26 de noviembre, como máximo a las 14.00, no hasta el miércoles 25, como decía la pieza: la Junta Electoral Central amplió el plazo el 20 de noviembre. Se corrige la entradilla y la pregunta frecuente, y se añade una actualización arriba.',
         titulo='Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas', serie='29n', figura=0,
         descripcion='El voto se puede depositar hasta el 25 de noviembre. En 2023, en 51 de las 52 circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. En Girona, el último diputado se decidió por 285 votos; 16.323 electores habían pedido votar por correo.',
         compara='Las solicitudes de voto por correo aceptadas en 2023, por fecha de recepción y por provincia, frente a los votos que le faltaron a la lista que se quedó más cerca del último escaño en cada circunscripción.',
@@ -5051,7 +5052,8 @@ PIEZAS += [
                  ('https://www.ine.es/jaxi/Tabla.htm?tpx=59759', 'INE, Oficina del Censo Electoral, solicitudes de voto por correo aceptadas por provincia (2023)'),
                  ('https://www.ine.es/jaxi/Tabla.htm?tpx=59763', 'INE, Oficina del Censo Electoral, voto por correo por fechas de recepción (2023)'),
                  ('https://www.correos.com/en/sala-prensa/el-proximo-jueves-19-de-noviembre-finaliza-el-plazo-para-solicitar-el-voto-por-correo/', 'Correos, el jueves 19 de noviembre finaliza el plazo para solicitar el voto por correo (16-11-2026)'),
-                 ('https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/voto-por-correo-elecciones-generales-29n.aspx', 'La Moncloa, cómo solicitar el voto por correo en las elecciones generales del 29N (20-10-2026)')],
+                 ('https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/voto-por-correo-elecciones-generales-29n.aspx', 'La Moncloa, cómo solicitar el voto por correo en las elecciones generales del 29N (20-10-2026)'),
+                 ('https://www.correos.com/sala-prensa/la-junta-electoral-central-amplia-el-plazo-para-depositar-el-voto-por-correo-hasta-el-jueves-26-de-noviembre-como-maximo-hasta-las-1400-horas/', 'Correos, la Junta Electoral Central amplía el plazo para depositar el voto por correo hasta el jueves 26 de noviembre (20-11-2026)')],
         enlaces=[],
         lugar='España',
     ),
@@ -5230,7 +5232,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-25 09:50',
+        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-25 12:30',
         titulo='Cómo votar en las elecciones generales del 29N: horario, qué llevar y cómo saber tu colegio', serie='29n', figura=0,
         descripcion='Los colegios abren el domingo 29 de noviembre de 9.00 a 20.00. Hace falta el DNI, el pasaporte o el carné de conducir, aunque estén caducados; la tarjeta censal, no. Están llamados a votar 38.728.356 electores, 1.615.127 por primera vez en unas generales.',
         compara='El horario, los documentos, las papeletas y el cierre de la votación según la ley electoral y la Junta Electoral Central, y el censo de las elecciones generales del 29N por circunscripción, con los residentes en el extranjero.',
@@ -5452,6 +5454,12 @@ PIEZAS += [
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # 23-11-2026: la de las encuestas de Andorra, delante durante la veda, detrás solo de la pieza nueva de cada día (Nacho: «Sí, primera»)
     'encuestas-andorra-29n': '2026-11-29',
+    # Nacho, 25-11-2026 («pasa los cambios»): piezas de servicio fijas los últimos días; (primer día, último día), los dos incluidos
+    'voto-correo-plazo-jueves-29n': ('2026-11-25', '2026-11-26'),   # el voto se deposita hasta el jueves 26 a las 14.00
+    'programa-electoral-29n': ('2026-11-26', '2026-11-28'),
+    'voto-blanco-nulo-elecciones-generales-29n': ('2026-11-28', '2026-11-28'),
+    'como-votar-elecciones-generales-29n': ('2026-11-28', '2026-11-29'),
+    'a-que-hora-resultados-elecciones-generales-29n': ('2026-11-28', '2026-11-29'),
     # Nacho, 4-11-2026: Puente, tras su dimisión, la primera
     'puente-valladolid-segundo-escano-29n': '2026-11-06',
     # Nacho, 3-11-2026: las listas del BOE la primera, la guía de la noche de EE. UU. la segunda (aunque sea internacional) y Báñez después
@@ -5490,7 +5498,8 @@ def franja_portada(todas, pre=''):
     # La pieza nueva del día, siempre la primera, delante de las fijas, sin que haya que pedirlo (Nacho, 5-11-2026)
     # La serie «El mapa electoral de…» tampoco va en el de Actualidad: tiene su propio carrusel debajo (Nacho, 12-11-2026)
     del_dia = [q['slug'] for q in recientes if q['fecha'] == hoy and q['serie'] not in ('historia', 'internacional') and not es_mapa_ccaa(q)]
-    fijas = del_dia + [s for s, hasta in PORTADA_FIJAS.items() if hoy <= hasta and s not in del_dia]
+    fijas = del_dia + [s for s, dias in PORTADA_FIJAS.items()
+                       if (dias[0] <= hoy <= dias[1] if isinstance(dias, tuple) else hoy <= dias) and s not in del_dia]
     recientes = sorted(recientes, key=lambda q: fijas.index(q['slug']) if q['slug'] in fijas else len(fijas))
     # veda de encuestas (art. 69.7 LOREG, src/veda.py): sin piezas de encuestas en el carrusel (Nacho, 18-11-2026)
     from veda import en_veda, es_pieza_de_encuestas
