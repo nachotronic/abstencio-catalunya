@@ -17,6 +17,7 @@ A = BASE + 'actualidad/'
 L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
 SLUG = 'voto-correo-plazo-jueves-29n'
 DAT = RAIZ / 'actualidad/src/resumenes/datos'
+CORREOS26 = 'https://www.correos.com/sala-prensa/la-junta-electoral-central-amplia-el-plazo-para-depositar-el-voto-por-correo-hasta-el-jueves-26-de-noviembre-como-maximo-hasta-las-1400-horas/'
 CORREOS = 'https://www.correos.com/en/sala-prensa/el-proximo-jueves-19-de-noviembre-finaliza-el-plazo-para-solicitar-el-voto-por-correo/'
 MONCLOA = 'https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/interior/paginas/voto-por-correo-elecciones-generales-29n.aspx'
 INE = 'https://www.ine.es/jaxi/Tabla.htm?tpx=59759'
@@ -85,7 +86,8 @@ g_escano = figura(f'En Girona, el último escaño de 2023 se decidió por {n(GIR
 
 # --- Texto ---
 cuerpo = f'''
-<p data-tipo="contexto">El voto por correo para las elecciones generales del 29N se puede pedir hasta el jueves 19 de noviembre, incluido, en cualquier oficina de Correos o en su web con certificado digital o DNI electrónico, según <a href="{CORREOS}">Correos</a>. La documentación llega a casa desde el 9 de noviembre y el voto se puede depositar hasta el 25 de noviembre. Quien lo pide y se lo aceptan ya no puede votar en su mesa el 29 de noviembre, recuerda el <a href="{MONCLOA}">Ministerio del Interior</a>. Ni Correos ni el Censo Electoral han publicado todavía cuántas solicitudes llevan.</p>
+<p data-tipo="dato">Actualización del 25 de noviembre, a las 12.30. El plazo para pedir el voto por correo acabó el jueves 19. Quien lo pidió puede depositarlo en cualquier oficina de Correos hasta el jueves 26 de noviembre, en su horario habitual y como máximo hasta las 14.00: la Junta Electoral Central amplió un día el plazo, que acababa el miércoles 25, según <a href="{CORREOS26}">Correos</a>.</p>
+<p data-tipo="contexto">El voto por correo para las elecciones generales del 29N se puede pedir hasta el jueves 19 de noviembre, incluido, en cualquier oficina de Correos o en su web con certificado digital o DNI electrónico, según <a href="{CORREOS}">Correos</a>. La documentación llega a casa desde el 9 de noviembre y el voto se puede depositar hasta el jueves 26 de noviembre, como máximo a las 14.00. Quien lo pide y se lo aceptan ya no puede votar en su mesa el 29 de noviembre, recuerda el <a href="{MONCLOA}">Ministerio del Interior</a>. Ni Correos ni el Censo Electoral han publicado todavía cuántas solicitudes llevan.</p>
 <p data-tipo="dato">En las generales de julio de 2023 se aceptaron {n(TOTAL)} solicitudes de electores residentes en España, según el <a href="{INE}">INE</a>, y buena parte llegó al final: {n(ULT2)}, el {p(ULT2 / TOTAL * 100)} %, se recibieron en las dos últimas semanas del plazo, del 30 de junio al 13 de julio. Otras {n(POST)} constan como recibidas después.</p>
 {g_tramos}
 <p data-tipo="dato">Hay escaños que se deciden por poco. En 2023, en {len(MAS)} de las {NPROV} circunscripciones hubo más solicitudes de voto por correo que votos le faltaron a la lista que se quedó más cerca del último escaño. En Girona, al PP le faltaron {n(GIR["falta"])} votos para quitarle el último diputado a Junts, y {n(GIR["sol"])} electores de la provincia habían pedido votar por correo. En Cantabria, al PP le faltaron {n(CANT["falta"])} para quitárselo a Vox; las solicitudes fueron {n(CANT["sol"])}. La única excepción fue la ciudad autónoma de Melilla, donde la diferencia fue mayor que las solicitudes. En Teruel, a Teruel Existe le faltaron {n(F["Teruel"]["falta"])} votos para conservar el diputado que tenía desde 2019; hubo {n(F["Teruel"]["sol"])} solicitudes de voto por correo.</p>
@@ -95,7 +97,7 @@ cuerpo = f'''
 
 preguntas = [
     ('¿Hasta cuándo se puede pedir el voto por correo para las elecciones generales del 29N?',
-     f'Hasta el jueves 19 de noviembre de 2026, incluido, en una oficina de Correos o en su web. El voto se puede depositar en Correos hasta el 25 de noviembre, según <a href="{CORREOS}">Correos</a>.'),
+     f'Hasta el jueves 19 de noviembre de 2026, incluido, en una oficina de Correos o en su web. El voto se puede depositar en Correos hasta el jueves 26 de noviembre, como máximo a las 14.00, según <a href="{CORREOS}">Correos</a>.'),
     ('Si pido el voto por correo, ¿puedo votar en la mesa el 29N?',
      f'No. Si la solicitud se acepta, ya no se puede votar en persona, según el <a href="{MONCLOA}">Ministerio del Interior</a>.'),
     ('¿Cuánta gente pidió el voto por correo en 2023?',
@@ -111,7 +113,7 @@ datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators
 
 pieza(SLUG, 'Voto por correo',
       'Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas',
-      f'El voto se puede depositar hasta el 25 de noviembre. En 2023, en {len(MAS)} de las {NPROV} circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. '
+      f'El voto se puede depositar hasta el jueves 26 de noviembre, como máximo a las 14.00. En 2023, en {len(MAS)} de las {NPROV} circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. '
       f'En Girona, el último diputado se decidió por {n(GIR["falta"])} votos; {n(GIR["sol"])} electores habían pedido votar por correo.',
       '17 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('TOTAL', TOTAL, 'ULT2', ULT2, round(ULT2 / TOTAL * 100, 1), 'POST', POST, 'MAS', len(MAS), NPROV, MENOS, [(f['nom'], f['falta'], f['sol']) for f in MIL])

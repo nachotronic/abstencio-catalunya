@@ -111,13 +111,15 @@ export async function actualiza(env0) {
 async function actualiza1(env) {
   try {
     const out = await leeFuente(env);
-    if (!out || !out.mun || !Object.keys(out.mun).length) return 'sin datos';
+    // sin municipios solo vale la constitución de mesas (avances.mesas): la web enseña las mesas constituidas antes del 1.er avance
+    if (!out || !out.mun || (!Object.keys(out.mun).length && !(out.avances && out.avances.mesas && out.avances.mesas.total))) return 'sin datos';
     out.actualizado = out.actualizado || new Date().toISOString();
     const previo = await env.RESULTADOS.get('ultimo', 'json');
     out.hitos = hitos(out, (previo && previo.hitos) || []);
     await env.RESULTADOS.put('ultimo', JSON.stringify(out));
     await Promise.all(Object.entries(porProvincia(out)).map(([p, o]) => env.RESULTADOS.put('prov:' + p, JSON.stringify(o))));
     const esc = Object.values(out.mun).filter(a => a[1] > 0).length;
+    if (!Object.keys(out.mun).length) return `ok constitución: ${out.avances.mesas.constituidas} de ${out.avances.mesas.total} mesas`;
     return `ok ${Object.keys(out.mun).length} municipios, ${esc} con mesas escrutadas`;
   } catch (e) {
     return 'error: ' + e.message;     // se conserva el último resultado bueno
@@ -541,7 +543,16 @@ async function porMedios(base, env) {
     try { for (const l of lineas(await pideTexto(`${base}/data/getEscrutinioMunicipios/2/${p}/${envio}`, env))) { const f = filaMedios(l); if (f) filas.push(f); } }
     catch (e) { fallos.push(p); }
   });
-  if (!filas.length) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
+  if (!filas.length) {
+    // constitución de mesas (9:30 el 29N; en la prueba de medios, las 15:00): Interior da los envíos sin ningún municipio, pero
+    // getAvancesTotales ya trae las mesas constituidas. Se guardan igual (sin votos) para que la web las enseñe. Solo si las 52
+    // provincias respondieron (vacías) y aún no hay escrutinio guardado: una caída a media noche sigue dando error y se
+    // conserva el último resultado bueno, con sus escaños y ámbitos.
+    const yaHayVotos = !!(previo && previo.mun && Object.values(previo.mun).some(a => a[1] > 0));
+    let av = null;
+    if (!fallos.length && !yaHayVotos) try { av = avancesMedios(await pideTexto(`${base}/data/getAvancesTotales/2/${envio}`, env)); } catch (e) { /* sigue */ }
+    if (!(av && av.mesas && av.mesas.total)) throw new Error(`ninguna provincia trajo municipios en el envío ${envio} (${fallos.length} fallos)`);
+  }
   let escanos = null, avances = null;
   let ambitos = null, senado = null;
   try { const t = await pideTexto(`${base}/data/getEscrutinioTotales/2/${envio}`, env); escanos = escanosMedios(t); ambitos = ambitosMedios(t); } catch (e) { /* sin escaños esta vez */ }

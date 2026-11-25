@@ -116,7 +116,8 @@ preguntas = [
      f'{n(TOTAL)}: {n(CER)} residentes en España y {n(CERA)} en el extranjero, según el <a href="{INE_NOTA}">INE</a>.'),
 ]
 enlaces = (f'<a href="{GUIA}">Dónde y cómo votar el 29N</a> · <a href="{TARJETA}">Tarjeta censal del 29N</a> · '
-           f'{L("voto-correo-29n", "El voto por correo")} · <a href="{LISTAS}">Listas electorales del 29N</a>')
+           f'{L("voto-correo-29n", "El voto por correo")} · <a href="{LISTAS}">Listas electorales del 29N</a> · '
+           f'{L("programa-electoral-29n", "El programa electoral de cada partido")}')
 foot = ('Datos: INE, Oficina del Censo Electoral, censo electoral de las generales del 29 de noviembre de 2026 por circunscripción (nota de prensa del 9 de octubre); '
         'Ley Orgánica del Régimen Electoral General; Junta Electoral Central, acuerdo de 13 de mayo de 1999; Real Decreto 605/1999. '
         'Cálculo: actualidad/src/resumenes/como_votar_29n.py.')
