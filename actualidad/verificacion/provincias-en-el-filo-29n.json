@@ -1,0 +1,115 @@
+{
+ "pieza": "provincias-en-el-filo-29n",
+ "cifras": [
+  {
+   "texto": "el último escaño de seis provincias habría cambiado",
+   "cifra": "seis",
+   "calculo": "sum(x['c'] < 1000 for x in json('actualidad/src/resumenes/filo-29n.json').values())"
+  },
+  {
+   "texto": "Cantabria (101)",
+   "cifra": "101",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['39']['c']"
+  },
+  {
+   "texto": "Girona (190)",
+   "cifra": "190",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['17']['c']"
+  },
+  {
+   "texto": "Tarragona (312)",
+   "cifra": "312",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['43']['c']"
+  },
+  {
+   "texto": "Ceuta (794)",
+   "cifra": "794",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['51']['c']"
+  },
+  {
+   "texto": "Salamanca (897)",
+   "cifra": "897",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['37']['c']"
+  },
+  {
+   "texto": "Albacete (941)",
+   "cifra": "941",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['02']['c']"
+  },
+  {
+   "texto": "Con menos de 2.000 son 14",
+   "cifra": "14",
+   "calculo": "sum(x['c'] < 2000 for x in json('actualidad/src/resumenes/filo-29n.json').values())"
+  },
+  {
+   "texto": "Con menos de 5.000, 32",
+   "cifra": "32",
+   "calculo": "len([x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "bastarían 73.463 personas",
+   "cifra": "73.463",
+   "calculo": "sum(x['c'] for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "en los seis escaños que se decidieron",
+   "cifra": "seis",
+   "calculo": "sum(x['c'] < 1000 for x in json('actualidad/src/resumenes/filo-29n.json').values())"
+  },
+  {
+   "texto": "De esos 32 escaños",
+   "cifra": "32",
+   "calculo": "len([x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "defiende 13.",
+   "cifra": "13",
+   "calculo": "sum(x['u'] == 'PP' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "El PSOE defiende 6",
+   "cifra": "6",
+   "calculo": "sum(x['u'] == 'PSOE' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "y aspira a 16.",
+   "cifra": "16",
+   "calculo": "sum(x['a'] == 'PSOE' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "Vox defiende seis",
+   "cifra": "seis",
+   "calculo": "sum(x['u'] == 'Vox' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "y aspiraba a cuatro",
+   "cifra": "cuatro",
+   "calculo": "sum(x['a'] == 'Sumar' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "Teruel Existe, a 1.297 votantes del segundo escaño del PP",
+   "cifra": "1.297",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['44']['c']"
+  },
+  {
+   "texto": "Soria ¡Ya!, a 2.635 del único del PSOE",
+   "cifra": "2.635",
+   "calculo": "json('actualidad/src/resumenes/filo-29n.json')['42']['c']"
+  },
+  {
+   "texto": "la cuenta de partida queda así: 32 escaños a menos de 5.000 votantes",
+   "cifra": "32",
+   "calculo": "len([x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "13 de ellos defendidos por el PP",
+   "cifra": "13",
+   "calculo": "sum(x['u'] == 'PP' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "16 al alcance del PSOE",
+   "cifra": "16",
+   "calculo": "sum(x['a'] == 'PSOE' for x in [x for x in json('actualidad/src/resumenes/filo-29n.json').values() if x['c'] < 5000])"
+  }
+ ]
+}

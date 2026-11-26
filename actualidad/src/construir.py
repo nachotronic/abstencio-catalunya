@@ -1311,10 +1311,12 @@ PIEZAS = [
     ),
     dict(
         slug='escanos-en-el-filo-29n', fecha='2026-10-22',
+        actualizado='2026-11-26 12:30',
+        correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9).',
         titulo='Seis escaños que se decidieron por menos de mil votantes', serie='29n',
         descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de Cantabria, Girona, Tarragona, Ceuta, Salamanca y Albacete habría cambiado de partido si menos de mil personas hubieran cambiado su voto. En Cantabria bastaban 101. Con menos de 5.000, hay 32 escaños en el filo.',
         compara='Para cada una de las 52 circunscripciones, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de las generales de julio de 2023 (voto exterior incluido) y los escaños por provincia de 2026; y cuántos votantes tendrían que pasar de una a otra, cuántos votos nuevos necesitaría la aspirante y cuántos podría perder la ganadora para que el escaño cambiara de partido.',
-        limites='Es aritmética sobre el resultado de 2023, no una previsión del 29 de noviembre. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. Reparto D\'Hondt con barrera del 3% y desempate por más votos; las candidaturas agrupadas como «otros» no compiten.',
+        limites='Es aritmética sobre el resultado de 2023, no una previsión del 29 de noviembre. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. Reparto D\'Hondt con barrera del 3% y desempate por más votos; compiten todas las candidaturas, también las provinciales.',
         fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados definitivos de las generales de julio de 2023 por provincia'),
                  ('https://www.articulo14.es/politica/el-boe-lo-hace-oficial-asi-es-el-decreto-que-convoca-las-elecciones-generales-del-29n-20261006.html', 'Artículo 14, El BOE lo hace oficial: así es el decreto que convoca las generales del 29N (6-10-2026)'),
                  ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985, del Régimen Electoral General, artículo 163'),
@@ -1725,11 +1727,13 @@ PIEZAS = [
     ),
     dict(
         slug='provincias-en-el-filo-29n', fecha='2026-10-24',
+        actualizado='2026-11-26 12:30',
+        correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9).',
         titulo='Las provincias que deciden el 29N: 32 escaños se movían en 2023 con menos de 5.000 votantes, y el PP defiende 13', serie='29n',
         descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de 32 circunscripciones habría cambiado de partido con menos de 5.000 votantes; en Cantabria bastaban 101. El PP defiende 13 y el PSOE aspira a 17. Por qué casi todos están en provincias pequeñas y qué puede moverlos antes de votar.',
         compara='Para cada circunscripción, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de 2023 (voto exterior incluido) y los escaños de 2026; cuántos votantes tendrían que pasar de una a otra; qué partido defiende y cuál aspira a cada uno; el precio del escaño y los votos sin escaño por provincia; y el modelo de encuestas por provincia del 23 de octubre.',
         limites='Es aritmética sobre el resultado de 2023, no una previsión. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. El modelo de encuestas es una estimación con un error típico de unos cinco puntos para un partido del 30 % a cinco semanas, y cambia cada día.',
-        calculo='Reparto D\'Hondt con barrera del 3 % y desempate por más votos, con los votos definitivos de 2023 y los escaños del Real Decreto 806/2026; las candidaturas agrupadas como «otros» no compiten. Script: actualidad/src/resumenes/filo.py, con los datos de la pieza «Seis escaños que se decidieron por menos de mil votantes».',
+        calculo='Reparto D\'Hondt con barrera del 3 % y desempate por más votos, con los votos definitivos de 2023 y los escaños del Real Decreto 806/2026; compiten todas las candidaturas, también las provinciales. Script: actualidad/src/resumenes/filo.py, con los datos de la pieza «Seis escaños que se decidieron por menos de mil votantes».',
         fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de julio de 2023 por mesa, con voto exterior (CERA), vía pollspaindata'),
                  ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742', 'BOE, Real Decreto 806/2026 de convocatoria de las elecciones generales'),
                  ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985, del Régimen Electoral General, artículo 163'),
@@ -4946,7 +4950,8 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-15 18:00',
+        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-26 12:30',
+        correcciones='26-11-2026: el gráfico de los votos que faltaban para el último escaño dejaba fuera a Teruel Existe y a Soria ¡Ya!, agrupadas como «otros». En Teruel, a Teruel Existe le faltaban 1.946 votos para el segundo escaño del PP, y Teruel entra en el gráfico. El texto no cambia.',
         titulo_seo='Generación 2008: Vox, primero en el CIS entre los de 18 a 24 años', descripcion_seo='1.615.127 electores votan por primera vez en unas generales el 29N. Mira qué votan los de 18 a 24 años según el CIS: Vox reúne el 23,2 % de voto más simpatía.',   # Google (Nacho, 16-11-2026)
         titulo='Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales', serie='29n', figura=0,
         descripcion='En 2008 nacieron en España 519.779 niños, más que en ningún año desde 1981. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales. En el CIS, Vox reúne el 23,2 % del voto más simpatía de 18 a 24 años.',
