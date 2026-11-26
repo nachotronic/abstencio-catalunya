@@ -5528,10 +5528,10 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     # 23-11-2026: la de las encuestas de Andorra, delante durante la veda, detrás solo de la pieza nueva de cada día (Nacho: «Sí, primera»)
     'encuestas-andorra-29n': '2026-11-29',
     # Nacho, 25-11-2026 («pasa los cambios»): piezas de servicio fijas los últimos días; (primer día, último día), los dos incluidos
-    'voto-correo-plazo-jueves-29n': ('2026-11-25', '2026-11-26'),   # el voto se deposita hasta el jueves 26 a las 14.00
+    'voto-correo-plazo-jueves-29n': ('2026-11-25', '2026-11-25'),   # 26-11 14:05: el plazo de depósito ya cerró, fuera de la portada   # el voto se deposita hasta el jueves 26 a las 14.00
     'programa-electoral-29n': ('2026-11-26', '2026-11-28'),
     'voto-blanco-nulo-elecciones-generales-29n': ('2026-11-28', '2026-11-28'),
-    'como-votar-elecciones-generales-29n': ('2026-11-28', '2026-11-29'),
+    'como-votar-elecciones-generales-29n': ('2026-11-27', '2026-11-29'),   # Nacho, 26-11 13:24: «adelanta», desde el viernes 27
     'a-que-hora-resultados-elecciones-generales-29n': ('2026-11-28', '2026-11-29'),
     # Nacho, 4-11-2026: Puente, tras su dimisión, la primera
     'puente-valladolid-segundo-escano-29n': '2026-11-06',
