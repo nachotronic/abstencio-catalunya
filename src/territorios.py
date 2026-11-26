@@ -3401,7 +3401,8 @@ def main():
         a_['n'] = PROV_NOMBRE[p_]
     T_ = dict(cabeza=cabeza, migas_html=migas_html, faq=faq, ld_pagina=ld_pagina, PIE=PIE, ruta_provincia=ruta_provincia, PROV_NOMBRE=PROV_NOMBRE,
               PROV_CCAA=PROV_CCAA, CCAA=CCAA, COLOR=T.COLOR, nombre_t=lambda p_: con_alias(PROV_NOMBRE[p_], ALIAS_PROV.get(p_)), fecha=fecha,
-              esquema=esquema, LASTMOD=LASTMOD, BASE=BASE, clave=slug)
+              esquema=esquema, LASTMOD=LASTMOD, BASE=BASE, clave=slug,
+              historia=VU.historia, MUN=T.MUN, CIUDADES=CIUDADES)
     pags += [VUP.pagina(p_, a_, T_) for p_, a_ in A.items()] + [VUP.indice(A, T_)]
     for ruta, html in pags + redirecciones():
         f = ROOT / ruta / 'index.html'
