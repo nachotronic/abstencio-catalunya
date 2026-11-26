@@ -37,7 +37,7 @@ def cuerpo(F, presidentes):
 <p>En las generales, Aragón vota casi como la media. El PSOE sacó allí el 49,7% en 1982, frente al 48,2% en el conjunto de España; el PP, el 36,7% en 2023, frente al 33,5%. La diferencia con el resto del país está en los partidos aragoneses, que en el gráfico van en «Otras listas»: el PAR llegó al 19,2% en las generales de 1993; Chunta Aragonesista, al 10,6% en 2000, y en noviembre de 2019 apareció Teruel Existe.</p>
 {F.gen('UCD, PSOE, PP y los demás en Aragón', 'Porcentaje de voto en las 16 elecciones generales, sobre votos a candidaturas.')}
 {F.esp('PSOE y PP en Aragón, casi calcados a España', 'PSOE y AP/PP en Aragón y en el conjunto de España, en las generales.')}
-<p>El acierto de Huesca y Zaragoza se ve en la rejilla de provincias: cada vez que España cambia de color, cambian ellas. Esa coincidencia baja también a los pueblos. En otra pieza de esta sección contamos que <a href="../plasencia-acierta-siempre/">solo 27 municipios de toda España han votado al ganador en las 16 generales</a>; catorce de ellos son aragoneses.</p>
+<p>El acierto de Huesca y Zaragoza se ve en la rejilla de provincias: cada vez que España cambia de color, cambian ellas. Esa coincidencia baja también a los pueblos. En otra pieza de esta sección contamos que <a href="../plasencia-acierta-siempre/">solo 24 municipios de toda España han votado al ganador en las 16 generales</a>; doce de ellos son aragoneses.</p>
 {F.prov('Quién ganó en cada provincia aragonesa', 'Lista más votada en las generales de 1977 a 2023.')}
 <p>La excepción es Teruel en noviembre de 2019. Allí la lista más votada fue <a href="{TERUEL}">Teruel Existe</a>, una plataforma ciudadana nacida para reclamar servicios e inversiones para la provincia, que logró un escaño en el Congreso. En 2023 volvió a ganar el PP.</p>
 {F.ciu('Las diez mayores ciudades, elección a elección', 'Lista más votada en las generales en los diez municipios aragoneses con más electores.')}
@@ -59,6 +59,8 @@ PIEZA = dict(
     dek='Aragón es el espejo electoral de España en las generales. En las autonómicas, el PAR fue durante 30 años la llave de casi todos los gobiernos, '
         'con la derecha y con la izquierda, y en 2026 se quedó fuera. El PP de Azcón gobierna con Vox por segunda vez.',
     cuerpo=cuerpo, pie=PIE,
+    actualizado='2026-11-26 15:00',
+    correcciones='26-11-2026: decíamos que 27 municipios han votado al ganador en las 16 generales y que catorce son aragoneses. Son 24 y doce: tres de los 27 habían empatado en una elección, y un empate no es acertar, como se corrigió ese día en la pieza de Plasencia.',
     descripcion='Huesca y Zaragoza han acertado las 16 generales. En las Cortes de Aragón nadie ha tenido nunca mayoría absoluta; Azcón gobierna con Vox.',
     compara='Las 12 elecciones a las Cortes de Aragón (1983-2026) y las 16 generales (1977-2023) en Aragón, por provincia y por municipio.',
     limites=LIMITES,

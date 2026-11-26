@@ -657,7 +657,9 @@ def pagina_territorio(nombre, en, provs, ruta, nivel, pasos, hijos=(), extra=(),
                  + ' · '.join(f'<a href="{raiz}{CIUDADES[c]}">elecciones en {escape(T.MUN.loc[T.MUN.mun_code == c, "municipio"].iloc[0])}</a>' for c in cs) + '.</p>')
     h.append(faq_html)
     h.append(bloque_relacionadas(provs, nivel, extra))
-    h.append(f'<h2>Más datos</h2><ul><li><a href="{raiz}elecciones/elecciones-29n-2026/">Elecciones generales del 29N de 2026: diputados por provincia</a></li>'
+    vu = (f'<li><a href="{raiz}{ruta_provincia(provs[0])}voto-util-29n/">Voto útil en {escape(nombre)}: a cuántos votos quedó cada escaño en 2023</a></li>' if len(provs) == 1
+          else f'<li><a href="{raiz}elecciones/voto-util-29n/">Voto útil el 29N: qué escaños estaban en juego en cada provincia</a></li>')
+    h.append(f'<h2>Más datos</h2><ul>{vu}<li><a href="{raiz}elecciones/elecciones-29n-2026/">Elecciones generales del 29N de 2026: diputados por provincia</a></li>'
              f'<li><a href="{raiz}elecciones/censo-electoral-2026/">Censo electoral de 2026 en toda España</a></li>'
              f'<li><a href="{raiz}elecciones/">Elecciones por comunidad autónoma y provincia</a></li>'
              f'<li><a href="{raiz}elecciones/participacion-electoral-por-barrio/">Participación electoral por barrio</a></li>'
@@ -3391,6 +3393,17 @@ def main():
     pags += [indice(resumen), tema_renta(resumen), tema_seccion(resumen), tema_29n(resumen), tema_participacion(resumen), tema_municipios(resumen), tema_censo(resumen), tema_como_se_vota(), tema_votar(), tema_tarjeta(), tema_mesa(), tema_correo(), tema_calle(), tema_resultados(resumen), tema_participacion_horas()]
     pags += [municipios_indice(), barrios_indice()] + [municipios_provincia(p) for p in sorted({c[:2] for c in CIUDADES})]
     pags += [temas_indice()] + [tema_hub(t, d) for t, d in TEMAS.items()]
+    # 26-11-2026: voto útil por circunscripción (votos de 2023, escaños de 2026), src/voto_util.py y voto_util_paginas.py
+    import voto_util as VU
+    import voto_util_paginas as VUP
+    A = VU.todas()
+    for p_, a_ in A.items():
+        a_['n'] = PROV_NOMBRE[p_]
+    T_ = dict(cabeza=cabeza, migas_html=migas_html, faq=faq, ld_pagina=ld_pagina, PIE=PIE, ruta_provincia=ruta_provincia, PROV_NOMBRE=PROV_NOMBRE,
+              PROV_CCAA=PROV_CCAA, CCAA=CCAA, COLOR=T.COLOR, nombre_t=lambda p_: con_alias(PROV_NOMBRE[p_], ALIAS_PROV.get(p_)), fecha=fecha,
+              esquema=esquema, LASTMOD=LASTMOD, BASE=BASE, clave=slug,
+              historia=VU.historia, MUN=T.MUN, CIUDADES=CIUDADES)
+    pags += [VUP.pagina(p_, a_, T_) for p_, a_ in A.items()] + [VUP.indice(A, T_)]
     for ruta, html in pags + redirecciones():
         f = ROOT / ruta / 'index.html'
         f.parent.mkdir(parents=True, exist_ok=True)

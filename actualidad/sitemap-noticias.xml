@@ -1,59 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://mapaelectoral.es/actualidad/participacion-elecciones-generales-29n-prevision/</loc>
+    <loc>https://mapaelectoral.es/actualidad/debate-a-cuatro-sanchez-feijoo-abascal-colau-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Participación en las elecciones generales del 29N: las encuestas prevén un 73,1 %, 2,7 puntos más que en 2023</news:title>
+      <news:publication_date>2026-11-26</news:publication_date>
+      <news:title>Debate a cuatro: hora, dónde verlo y en qué orden hablan Sánchez, Feijóo, Abascal y Colau</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/encuestas-andorra-29n/</loc>
+    <loc>https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley</news:title>
+      <news:publication_date>2026-11-26</news:publication_date>
+      <news:title>Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/despues-elecciones-generales-29n-investidura/</loc>
+    <loc>https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Después de las elecciones generales del 29N: cuándo se constituyen las Cortes y los plazos de la investidura</news:title>
+      <news:publication_date>2026-11-26</news:publication_date>
+      <news:title>Las encuestas fallaron por más de 3 puntos en 15 de 30 elecciones analizadas desde 2015: Andalucía 2022 y 2018, los mayores sustos</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/</loc>
+    <loc>https://mapaelectoral.es/actualidad/voto-exterior-cera-loreg-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Elecciones generales del 29N en cifras: electores, escaños, candidaturas y mesas de cada provincia</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/escrutinio-elecciones-generales-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Escrutinio de las elecciones generales del 29N: cómo seguirlo en directo y cuándo es definitivo</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/voto-blanco-nulo-elecciones-generales-29n/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Voto en blanco y voto nulo en las elecciones generales del 29N: qué cuenta y a quién afecta</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-23-noviembre/</loc>
-    <news:news>
-      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
-      <news:publication_date>2026-11-23</news:publication_date>
-      <news:title>Encuestas elecciones generales 2026, hoy 23 de noviembre: PP y Vox suman mayoría absoluta en las siete</news:title>
+      <news:publication_date>2026-11-26</news:publication_date>
+      <news:title>Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra el jueves 26 y esos votos no se cuentan hasta el viernes 4 de diciembre</news:title>
     </news:news>
   </url>
 </urlset>

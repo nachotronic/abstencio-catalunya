@@ -18,9 +18,10 @@ HASTA = datetime.datetime(2026, 11, 29, 21, 0, tzinfo=MADRID)
 # Piezas de Actualidad con cifras de encuestas: fuera del carrusel de la portada durante la veda (siguen publicadas en
 # su URL y en /actualidad/). Por el slug; si alguna con encuestas no lo lleva, se añade a mano en PIEZAS_ENCUESTAS.
 PATRON_ENCUESTAS = re.compile(r'encuesta|sondeo|^cis-')
-PIEZAS_ENCUESTAS = set()
+PIEZAS_ENCUESTAS = {'generacion-2008-primer-voto-29n'}   # Nacho, 26-11-2026 13:24: fuera del carrusel durante la veda, sin tocar el título
 # Piezas que hablan de encuestas pero no dan cifras de ninguna: siguen en el carrusel durante la veda (Nacho, 23-11-2026: «Sí, primera»)
-NO_SON_ENCUESTAS = {'encuestas-andorra-29n'}
+# y piezas históricas sin ninguna cifra de encuestas del 29N (Nacho, 26-11-2026: «ok a todo», excepción del carrusel para la de los fallos)
+NO_SON_ENCUESTAS = {'encuestas-andorra-29n', 'encuestas-fallos-elecciones-espana-29n'}
 
 
 def en_veda(ahora=None):

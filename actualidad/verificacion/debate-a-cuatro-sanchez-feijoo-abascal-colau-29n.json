@@ -1,0 +1,154 @@
+{
+ "pieza": "debate-a-cuatro-sanchez-feijoo-abascal-colau-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "el menos visto desde 2015: 4,2 millones.",
+   "cifra": "4,2 millones",
+   "calculo": "round(D['VARIOS'][-1][2]/1000,1)*1e6"
+  },
+  {
+   "texto": "cuatro candidatos sacaron 322 de los 350 diputados",
+   "cifra": "322",
+   "calculo": "D['SUMA']"
+  },
+  {
+   "texto": "elecciones generales de 2023, y 22.084.945 votos, el 89,5 % de",
+   "cifra": "22.084.945",
+   "calculo": "sum(D['VOT'].values())"
+  },
+  {
+   "texto": "2023, y 22.084.945 votos, el 89,5 % de los válidos. El",
+   "cifra": "89,5",
+   "calculo": "round(D['VPCT'],1)"
+  },
+  {
+   "texto": "válidos. El PP y Vox sumaron 170; el PSOE y Sumar, 152.",
+   "cifra": "170",
+   "calculo": "D['DER']"
+  },
+  {
+   "texto": "sumaron 170; el PSOE y Sumar, 152. Ninguno de los dos",
+   "cifra": "152",
+   "calculo": "D['IZQ']"
+  },
+  {
+   "texto": "la mayoría absoluta: los 28 escaños restantes eran",
+   "cifra": "28",
+   "calculo": "350-D['SUMA']"
+  },
+  {
+   "texto": "2023, lo vieron de media 4,2 millones de personas, con un",
+   "cifra": "4,2 millones",
+   "calculo": "round(D['VARIOS'][-1][2]/1000,1)*1e6"
+  },
+  {
+   "texto": "millones de personas, con un 34,6 % de cuota: el menos",
+   "cifra": "34,6",
+   "calculo": "D['VARIOS'][-1][3]"
+  },
+  {
+   "texto": "cuota: el menos visto de los seis desde 2015 y un 60 %",
+   "condicion": "len(D['VARIOS']) == 6  # debates con tres o más candidatos desde 2015"
+  },
+  {
+   "texto": "los seis desde 2015 y un 60 % menos que el de 2016,",
+   "cifra": "60",
+   "calculo": "D['CAIDA']"
+  },
+  {
+   "texto": "partidos de los atriles sumaron 322 de los 350 escaños en",
+   "cifra": "322",
+   "calculo": "D['SUMA']"
+  },
+  {
+   "texto": "varios, el de 2023, lo vieron 4,2 millones: el menos vistoAudiencia",
+   "cifra": "4,2 millones",
+   "calculo": "round(D['VARIOS'][-1][2]/1000,1)*1e6"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "El debate tiene cinco bloques de 20 minutos,",
+   "cifra": "cinco",
+   "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
+  },
+  {
+   "texto": "debate tiene cinco bloques de 20 minutos, con cinco minutos",
+   "cifra": "20",
+   "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
+  },
+  {
+   "texto": "bloques de 20 minutos, con cinco minutos para cada candidato",
+   "cifra": "cinco",
+   "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
+  },
+  {
+   "texto": "dos pausas publicitarias de tres minutos, después del",
+   "cifra": "tres",
+   "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
+  },
+  {
+   "texto": "del jueves pasado lo vieron 10,2 millones, según el informe de",
+   "cifra": "10,2 millones",
+   "fuente": "https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "Debate a cuatro: hora, dónde verlo y",
+   "motivo": "nombre del debate o número de candidatos (Sánchez, Feijóo, Abascal y Colau)"
+  },
+  {
+   "texto": "jueves a las 22.00, en La 1, Antena 3, laSexta,",
+   "motivo": "nombre de cadena (La 1, Antena 3, Cuatro)"
+  },
+  {
+   "texto": "las 22.00, en La 1, Antena 3, laSexta, Telecinco,",
+   "motivo": "nombre de cadena (La 1, Antena 3, Cuatro)"
+  },
+  {
+   "texto": "Antena 3, laSexta, Telecinco, Cuatro y La Séptima. El último",
+   "motivo": "nombre de cadena (La 1, Antena 3, Cuatro)"
+  },
+  {
+   "texto": "El debate a cuatro de las elecciones generales",
+   "motivo": "nombre del debate o número de candidatos (Sánchez, Feijóo, Abascal y Colau)"
+  },
+  {
+   "texto": "campaña acaba el viernes 27 a medianoche, el sábado",
+   "motivo": "calendario electoral: la campaña acaba a las 0.00 del sábado 28; el viernes es el 27"
+  },
+  {
+   "texto": "Los partidos de los cuatro candidatos sacaron 322",
+   "motivo": "nombre del debate o número de candidatos (Sánchez, Feijóo, Abascal y Colau)"
+  },
+  {
+   "texto": "candidatos sacaron 322 de los 350 diputados en las elecciones",
+   "motivo": "escaños del Congreso de los Diputados (artículo 162 de la LOREG)"
+  },
+  {
+   "texto": "los dos pares llegó a los 176 de la mayoría absoluta:",
+   "motivo": "mayoría absoluta del Congreso: 176 de 350"
+  },
+  {
+   "texto": "A qué hora es el debate a cuatro",
+   "motivo": "nombre del debate o número de candidatos (Sánchez, Feijóo, Abascal y Colau)"
+  },
+  {
+   "texto": "Los cuatro partidos de los atriles",
+   "motivo": "nombre del debate o número de candidatos (Sánchez, Feijóo, Abascal y Colau)"
+  },
+  {
+   "texto": "atriles sumaron 322 de los 350 escaños en 2023Diputados",
+   "motivo": "escaños del Congreso de los Diputados (artículo 162 de la LOREG)"
+  },
+  {
+   "texto": "elecciones generales con tres o más candidatos a la",
+   "motivo": "definición del gráfico (debates con tres o más candidatos)"
+  }
+ ],
+ "permitir_espana": []
+}

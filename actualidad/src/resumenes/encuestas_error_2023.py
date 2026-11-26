@@ -14,6 +14,12 @@ import pandas as pd
 
 from comun import BASE, RAIZ, esc, figura, n, barras, pieza
 from mapa_ccaa import COL, grupos, p
+import sys
+sys.path.insert(0, str(RAIZ / 'src'))
+from veda import en_veda
+# Veda del 29N (art. 69.7 LOREG): sin la media de encuestas de 2026 hasta el 29-11 a las 21:00 (Nacho, 26-11-2026: «ok a todo»).
+# Al reconstruir después de la veda, la sección «Qué pasaría hoy» vuelve sola.
+VEDA = en_veda()
 
 A = BASE + 'actualidad/'
 L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
@@ -134,6 +140,11 @@ g_hoy = figura('Si las encuestas fallaran como en 2023, el PSOE iría por delant
                (['Escenario', 'PP menos PSOE (puntos)'], [[t, ('+' if v > 0 else '−') + p(abs(v))] for t, v in ESC]))
 
 # --- Texto ---
+HOY_HTML = f'''<h2>Qué pasaría hoy con el mismo error</h2>
+<p data-tipo="dato">Con los datos {VERSION}, la media de encuestas de <a href="{BASE}encuestas/">nuestro modelo</a> da al PP el {p(MED["PP"])} % y al PSOE el {p(MED["PSOE"])} %: {p(HOY)} puntos de ventaja para el PP. En 2023, las encuestas exageraron esa ventaja en {p(SOBRE23)} puntos. En 2019, cuando ganó el PSOE, sobrevaloraron al PP frente al PSOE en {p(SOBRE19)} puntos.</p>
+{g_hoy}
+<p data-tipo="hipotesis">Si las encuestas de hoy fallaran igual que en 2023, el PSOE iría {p(abs(CON23))} puntos por delante del PP. Si fallaran como en 2019, el PP seguiría primero, con {p(CON19)} puntos de ventaja. Es una cuenta, no una previsión: nada dice que el error de esta vez vaya a parecerse al de las anteriores, y las empresas cambian sus métodos después de cada elección.</p>
+'''
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
 <p data-tipo="contexto">Desde el martes 24 de noviembre no se podrá publicar ninguna encuesta de las elecciones generales del 29N: la <a href="{LOREG}">ley electoral</a> lo prohíbe en los cinco días anteriores a la votación. Antes de esa veda, conviene mirar hacia atrás. Las encuestas dicen dónde estaba cada partido cuando se hicieron; lo que no dicen es cuánto se equivocaron la última vez.</p>
 <p data-tipo="dato">En julio de 2023, la media de la última encuesta de cada una de las {len(U23)} empresas que publicaron en las dos semanas previas a la veda daba al PP el {p(M23["PP"])} % y al PSOE el {p(M23["PSOE"])} %: una ventaja de <strong>{p(MGAP23)} puntos</strong>. El 23 de julio, el PP sacó el {p(RES23["PP"])} % y el PSOE el {p(RES23["PSOE"])} %. La ventaja real fue de {p(GAP23)} puntos, calculada con los votos y no con los porcentajes redondeados. Las encuestas se quedaron {p(abs(ERR23["PSOE"]))} puntos cortas con el PSOE y dieron al PP {p(ERR23["PP"])} de más.</p>
@@ -142,11 +153,8 @@ cuerpo = f'''<div style="margin-top:1.4rem"></div>
 {g_psoe}
 <h2>En 2019, el que faltó fue Vox</h2>
 <p data-tipo="dato">El error no siempre va en la misma dirección. En noviembre de 2019, la media de las últimas encuestas de {len(U19)} empresas acertó casi con el PSOE ({p(M19["PSOE"])} %, frente al {p(RES19["PSOE"])} % que sacó) y con el PP ({p(M19["PP"])} %, frente al {p(RES19["PP"])} %). El que se escapó fue Vox: las encuestas le daban de media el {p(M19["VOX"])} % y sacó el <strong>{p(RES19["VOX"])} %</strong>, {p(abs(ERR19["VOX"]))} puntos más. Ninguna empresa llegó a ese dato: la que más le daba, un {p(VOX19_MAX)} %.</p>
-<h2>Qué pasaría hoy con el mismo error</h2>
-<p data-tipo="dato">Con los datos {VERSION}, la media de encuestas de <a href="{BASE}encuestas/">nuestro modelo</a> da al PP el {p(MED["PP"])} % y al PSOE el {p(MED["PSOE"])} %: {p(HOY)} puntos de ventaja para el PP. En 2023, las encuestas exageraron esa ventaja en {p(SOBRE23)} puntos. En 2019, cuando ganó el PSOE, sobrevaloraron al PP frente al PSOE en {p(SOBRE19)} puntos.</p>
-{g_hoy}
-<p data-tipo="hipotesis">Si las encuestas de hoy fallaran igual que en 2023, el PSOE iría {p(abs(CON23))} puntos por delante del PP. Si fallaran como en 2019, el PP seguiría primero, con {p(CON19)} puntos de ventaja. Es una cuenta, no una previsión: nada dice que el error de esta vez vaya a parecerse al de las anteriores, y las empresas cambian sus métodos después de cada elección.</p>
-'''
+{'' if VEDA else HOY_HTML}'''
+
 
 preguntas = [
     ('¿Acertaron las encuestas en las elecciones generales de 2023?',
@@ -164,12 +172,13 @@ DATOS = {'M23': M23, 'M19': M19, 'RES23': RES23, 'RES19': RES19, 'ERR23': ERR23,
          'MGAP23': MGAP23, 'MGAP19': MGAP19, 'SOBRE23': SOBRE23, 'SOBRE19': SOBRE19, 'N23': len(U23), 'N19': len(U19),
          'PSOE_POR_DEBAJO': PSOE_POR_DEBAJO, 'GAP_MAYOR': GAP_MAYOR, 'PSOE_MIN': PSOE_MIN, 'PSOE_MAX_SIN_CIS': float(U23[U23.nom != 'CIS'].PSOE.max()),
          'CIS_PSOE': float(CIS23.PSOE), 'CIS_PP': float(CIS23.PP), 'ATLAS_GAP': float(ATLAS.gap), 'VOX19_MAX': VOX19_MAX,
-         'MED': {k: MED[k] for k in ('PP', 'PSOE')}, 'HOY': HOY, 'CON23': CON23, 'CON19': CON19,
          'U23': [{'nom': r.nom, 'PP': float(r.PP), 'PSOE': float(r.PSOE)} for r in U23.itertuples()]}
+if not VEDA:
+    DATOS.update({'MED': {k: MED[k] for k in ('PP', 'PSOE')}, 'HOY': HOY, 'CON23': CON23, 'CON19': CON19})
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Lo que las encuestas no dicen',
-      f'En 2023, las últimas encuestas daban al PP {p(MGAP23)} puntos de ventaja sobre el PSOE y ganó por {p(GAP23)}: si hoy fallaran igual, el PSOE iría primero',
+      f'En 2023, las últimas encuestas daban al PP {p(MGAP23)} puntos de ventaja sobre el PSOE y ganó por {p(GAP23)}'   # Nacho, 26-11-2026 13:24 («cambia»): sin la parte que salía de la media de 2026,
       f'Lo que las encuestas de las elecciones generales del 29N no dicen: cuánto se equivocaron la última vez. En 2023 se quedaron {p(abs(ERR23["PSOE"]))} puntos cortas con el PSOE; '
       f'en 2019, {p(abs(ERR19["VOX"]))} con Vox.',
       '17 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

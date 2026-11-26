@@ -1,0 +1,30 @@
+mun_code,municipio,provincia,censo,votantes,PP,PSOE,VOX,SUMAR,votos_candidaturas,grupo,empate_en
+10148,Plasencia,Cáceres,32589,22658,8654,8013,3135,1872,22141,siempre,
+24222,Villaquilambre,León,14780,10778,3422,3246,1705,833,10630,siempre,
+41047,Gines,Sevilla,10602,8080,3109,2506,1056,1055,7839,siempre,
+22130,Jaca,Huesca,10404,7200,2419,2355,1005,1076,7060,siempre,
+41096,Valencina de la Concepción,Sevilla,6469,4933,1975,1498,551,741,4829,siempre,
+50298,Zuera,Zaragoza,5570,4298,1569,1282,777,447,4205,siempre,
+50115,Fuentes de Ebro,Zaragoza,3323,2335,891,718,436,176,2278,siempre,
+28145,Talamanca de Jarama,Madrid,2963,2187,742,596,409,358,2138,siempre,
+24061,Cuadros,León,1785,1381,458,384,244,75,1365,siempre,
+45112,Los Navalmorales,Toledo,1758,1170,442,430,189,67,1132,siempre,
+26061,Ezcaray,La Rioja,1606,1252,557,483,63,101,1223,siempre,
+24105,Onzonilla,León,1522,1177,411,335,208,65,1166,siempre,
+49261,Villaralbo,Zamora,1487,1099,440,359,156,89,1073,siempre,
+22059,Biescas,Huesca,1252,905,282,271,112,162,874,siempre,
+26099,Murillo de Río Leza,La Rioja,1220,979,437,385,86,38,951,siempre,
+22119,Gurrea de Gállego,Huesca,1215,911,372,324,88,86,896,siempre,
+22039,Ayerbe,Huesca,870,686,239,237,61,119,671,siempre,
+50119,Gelsa,Zaragoza,823,630,232,191,143,23,617,siempre,
+22903,San Miguel del Cinca,Huesca,612,510,208,172,60,49,502,siempre,
+22197,Robres,Huesca,427,345,166,107,36,22,336,siempre,
+50130,Jarque de Moncayo,Zaragoza,333,235,87,80,46,13,232,siempre,
+50060,Bulbuente,Zaragoza,179,140,44,36,32,17,135,siempre,
+47109,Palazuelo de Vedija,Valladolid,150,125,49,42,24,6,122,siempre,
+44061,La Cañada de Verich,Teruel,78,63,22,19,13,3,62,siempre,
+42158,Rioseco de Soria,Soria,98,75,32,26,2,4,75,empate,2000_03
+44038,Belmonte de San José,Teruel,103,89,29,29,10,7,88,empate,2023_07
+49010,Arcenillas,Zamora,352,275,100,99,29,23,268,empate,2016_06
+50245,Sigüés,Zaragoza,66,50,21,16,4,5,50,empate,2011_11
+00000,España (sin voto exterior),,0,0,8093469,7762316,3034117,3014755,24284335,espana,

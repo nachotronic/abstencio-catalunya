@@ -20,10 +20,14 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (135)
+## Pendientes (139)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-26 | [`debate-a-cuatro-sanchez-feijoo-abascal-colau-29n`](https://mapaelectoral.es/actualidad/debate-a-cuatro-sanchez-feijoo-abascal-colau-29n/) | Debate a cuatro: hora, dónde verlo y en qué orden hablan Sánchez, Feijóo, Abascal y Colau | primer gráfico de la pieza |
+| 2026-11-26 | [`pueblos-que-siempre-aciertan-29n`](https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/) | Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2 | primer gráfico de la pieza |
+| 2026-11-26 | [`encuestas-fallos-elecciones-espana-29n`](https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/) | Las encuestas fallaron por más de 3 puntos en 15 de 30 elecciones analizadas desde 2015: Andalucía 2022 y 2018, los mayores sustos | primer gráfico de la pieza |
+| 2026-11-26 | [`voto-exterior-cera-loreg-29n`](https://mapaelectoral.es/actualidad/voto-exterior-cera-loreg-29n/) | Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra el jueves 26 y esos votos no se cuentan hasta el viernes 4 de diciembre | primer gráfico de la pieza |
 | 2026-11-23 | [`participacion-elecciones-generales-29n-prevision`](https://mapaelectoral.es/actualidad/participacion-elecciones-generales-29n-prevision/) | Participación en las elecciones generales del 29N: las encuestas prevén un 73,1 %, 2,7 puntos más que en 2023 | primer gráfico de la pieza |
 | 2026-11-23 | [`encuestas-andorra-29n`](https://mapaelectoral.es/actualidad/encuestas-andorra-29n/) | Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley | primer gráfico de la pieza |
 | 2026-11-23 | [`despues-elecciones-generales-29n-investidura`](https://mapaelectoral.es/actualidad/despues-elecciones-generales-29n-investidura/) | Después de las elecciones generales del 29N: cuándo se constituyen las Cortes y los plazos de la investidura | primer gráfico de la pieza |
@@ -49,7 +53,7 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 | 2026-11-18 | [`encuestas-elecciones-generales-2026-18-noviembre`](https://mapaelectoral.es/actualidad/encuestas-elecciones-generales-2026-18-noviembre/) | Encuestas elecciones generales 2026, hoy 18 de noviembre: el PSOE, a dos puntos o menos del PP | primer gráfico de la pieza |
 | 2026-11-17 | [`ley-electoral-segunda-republica`](https://mapaelectoral.es/actualidad/ley-electoral-segunda-republica/) | Ganar por 1,6 puntos valía 10 de 13 diputados: así era la ley electoral de la Segunda República | primer gráfico de la pieza |
 | 2026-11-17 | [`feijoo-gipuzkoa-hernani-pp-29n`](https://mapaelectoral.es/actualidad/feijoo-gipuzkoa-hernani-pp-29n/) | Al PP le faltaron 9.793 votos en 2023 para recuperar un diputado en Gipuzkoa; Feijóo arropa hoy a su candidato, atacado en Hernani | primer gráfico de la pieza |
-| 2026-11-17 | [`encuestas-error-2023-2019-29n`](https://mapaelectoral.es/actualidad/encuestas-error-2023-2019-29n/) | En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4: si hoy fallaran igual, el PSOE iría primero | primer gráfico de la pieza |
+| 2026-11-17 | [`encuestas-error-2023-2019-29n`](https://mapaelectoral.es/actualidad/encuestas-error-2023-2019-29n/) | En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4 | primer gráfico de la pieza |
 | 2026-11-17 | [`abstencion-mapa-ganador-29n`](https://mapaelectoral.es/actualidad/abstencion-mapa-ganador-29n/) | Si la abstención fuera un partido, en 2023 habría quedado por delante del ganador en más de la mitad de las grandes ciudades y en la mitad de las secciones de España | primer gráfico de la pieza |
 | 2026-11-17 | [`voto-correo-plazo-jueves-29n`](https://mapaelectoral.es/actualidad/voto-correo-plazo-jueves-29n/) | Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas | primer gráfico de la pieza |
 | 2026-11-17 | [`encuestas-tras-el-debate-2023-29n`](https://mapaelectoral.es/actualidad/encuestas-tras-el-debate-2023-29n/) | Encuestas y debate: tras el cara a cara de 2023, 10 de 14 encuestadoras ampliaron la ventaja del PP; trece días después ganó por 1,4 puntos | primer gráfico de la pieza |

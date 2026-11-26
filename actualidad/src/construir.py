@@ -1311,10 +1311,12 @@ PIEZAS = [
     ),
     dict(
         slug='escanos-en-el-filo-29n', fecha='2026-10-22',
+        actualizado='2026-11-26 12:30',
+        correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9).',
         titulo='Seis escaños que se decidieron por menos de mil votantes', serie='29n',
         descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de Cantabria, Girona, Tarragona, Ceuta, Salamanca y Albacete habría cambiado de partido si menos de mil personas hubieran cambiado su voto. En Cantabria bastaban 101. Con menos de 5.000, hay 32 escaños en el filo.',
         compara='Para cada una de las 52 circunscripciones, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de las generales de julio de 2023 (voto exterior incluido) y los escaños por provincia de 2026; y cuántos votantes tendrían que pasar de una a otra, cuántos votos nuevos necesitaría la aspirante y cuántos podría perder la ganadora para que el escaño cambiara de partido.',
-        limites='Es aritmética sobre el resultado de 2023, no una previsión del 29 de noviembre. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. Reparto D\'Hondt con barrera del 3% y desempate por más votos; las candidaturas agrupadas como «otros» no compiten.',
+        limites='Es aritmética sobre el resultado de 2023, no una previsión del 29 de noviembre. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. Reparto D\'Hondt con barrera del 3% y desempate por más votos; compiten todas las candidaturas, también las provinciales.',
         fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados definitivos de las generales de julio de 2023 por provincia'),
                  ('https://www.articulo14.es/politica/el-boe-lo-hace-oficial-asi-es-el-decreto-que-convoca-las-elecciones-generales-del-29n-20261006.html', 'Artículo 14, El BOE lo hace oficial: así es el decreto que convoca las generales del 29N (6-10-2026)'),
                  ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985, del Régimen Electoral General, artículo 163'),
@@ -1725,11 +1727,13 @@ PIEZAS = [
     ),
     dict(
         slug='provincias-en-el-filo-29n', fecha='2026-10-24',
+        actualizado='2026-11-26 15:00',
+        correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9). Por la veda de encuestas (artículo 69.7 de la LOREG), la sección «Lo que dicen hoy las encuestas», con la estimación del modelo de encuestas, se retira hasta el 29 de noviembre a las 21.00.',
         titulo='Las provincias que deciden el 29N: 32 escaños se movían en 2023 con menos de 5.000 votantes, y el PP defiende 13', serie='29n',
-        descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de 32 circunscripciones habría cambiado de partido con menos de 5.000 votantes; en Cantabria bastaban 101. El PP defiende 13 y el PSOE aspira a 17. Por qué casi todos están en provincias pequeñas y qué puede moverlos antes de votar.',
+        descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de 32 circunscripciones habría cambiado de partido con menos de 5.000 votantes; en Cantabria bastaban 101. El PP defiende 13 y el PSOE aspira a 16. Por qué casi todos están en provincias pequeñas y qué puede moverlos antes de votar.',
         compara='Para cada circunscripción, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de 2023 (voto exterior incluido) y los escaños de 2026; cuántos votantes tendrían que pasar de una a otra; qué partido defiende y cuál aspira a cada uno; el precio del escaño y los votos sin escaño por provincia; y el modelo de encuestas por provincia del 23 de octubre.',
         limites='Es aritmética sobre el resultado de 2023, no una previsión. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. El modelo de encuestas es una estimación con un error típico de unos cinco puntos para un partido del 30 % a cinco semanas, y cambia cada día.',
-        calculo='Reparto D\'Hondt con barrera del 3 % y desempate por más votos, con los votos definitivos de 2023 y los escaños del Real Decreto 806/2026; las candidaturas agrupadas como «otros» no compiten. Script: actualidad/src/resumenes/filo.py, con los datos de la pieza «Seis escaños que se decidieron por menos de mil votantes».',
+        calculo='Reparto D\'Hondt con barrera del 3 % y desempate por más votos, con los votos definitivos de 2023 y los escaños del Real Decreto 806/2026; compiten todas las candidaturas, también las provinciales. Script: actualidad/src/resumenes/filo.py, con los datos de la pieza «Seis escaños que se decidieron por menos de mil votantes».',
         fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las generales de julio de 2023 por mesa, con voto exterior (CERA), vía pollspaindata'),
                  ('https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742', 'BOE, Real Decreto 806/2026 de convocatoria de las elecciones generales'),
                  ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672', 'Ley Orgánica 5/1985, del Régimen Electoral General, artículo 163'),
@@ -2073,6 +2077,8 @@ for h in PIEZAS_HISTORIA:
     q.update(fecha=h.get('fecha', '2026-10-08'), serie='historia', enlaces=[])
     if h.get('actualizado'):
         q['actualizado'] = h['actualizado']
+    if h.get('correcciones'):
+        q['correcciones'] = h['correcciones']
     if h.get('foto'):
         q['foto'] = {k: v for k, v in h['foto'].items() if k != 'origen'}
     HISTORIA.append(q)
@@ -2091,6 +2097,8 @@ for h in piezas_comunidades():
     q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
     if h.get('actualizado'):
         q['actualizado'] = h['actualizado']
+    if h.get('correcciones'):
+        q['correcciones'] = h['correcciones']
     # <title> con lo que se busca («qué partido gobierna…», «desde cuándo gobierna…»); el titular sigue en h1 y og:title
     corto = re.sub(r'^(La|El) ', '', h['corto'].replace(' en las urnas', ''))
     q['titulo_seo'] = f'¿Quién gobierna {corto}? Historia electoral y resultados desde 1977'
@@ -3409,6 +3417,8 @@ ANTETITULOS = {
     'encuestas-elecciones-generales-2026-23-noviembre': 'Encuestas de hoy',
     'veda-encuestas-29n': 'Veda de encuestas',
     'como-votar-elecciones-generales-29n': 'Cómo votar',
+    'debate-a-cuatro-sanchez-feijoo-abascal-colau-29n': 'El debate a cuatro',
+    'pueblos-que-siempre-aciertan-29n': 'Los pueblos que siempre aciertan',
     'a-que-hora-resultados-elecciones-generales-29n': 'A qué hora los resultados',
     'participacion-elecciones-generales-29n-prevision': 'Participación',
     'debate-sanchez-feijoo-29n': 'El debate',
@@ -4942,7 +4952,8 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-15 18:00',
+        slug='generacion-2008-primer-voto-29n', fecha='2026-11-15', actualizado='2026-11-26 12:30',
+        correcciones='26-11-2026: el gráfico de los votos que faltaban para el último escaño dejaba fuera a Teruel Existe y a Soria ¡Ya!, agrupadas como «otros». En Teruel, a Teruel Existe le faltaban 1.946 votos para el segundo escaño del PP, y Teruel entra en el gráfico. El texto no cambia.',
         titulo_seo='Generación 2008: Vox, primero en el CIS entre los de 18 a 24 años', descripcion_seo='1.615.127 electores votan por primera vez en unas generales el 29N. Mira qué votan los de 18 a 24 años según el CIS: Vox reúne el 23,2 % de voto más simpatía.',   # Google (Nacho, 16-11-2026)
         titulo='Vox, primero en el CIS entre los de 18 a 24 años: la generación de 2008 estrena voto en unas generales', serie='29n', figura=0,
         descripcion='En 2008 nacieron en España 519.779 niños, más que en ningún año desde 1981. Son los más jóvenes de los 1.615.127 electores que votan por primera vez en unas generales. En el CIS, Vox reúne el 23,2 % del voto más simpatía de 18 a 24 años.',
@@ -5016,7 +5027,9 @@ PIEZAS += [
     ),
     dict(
         slug='encuestas-error-2023-2019-29n', fecha='2026-11-17',
-        titulo='En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4: si hoy fallaran igual, el PSOE iría primero', serie='29n', figura=0,
+        actualizado='2026-11-26 14:35',
+        correcciones='26-11-2026: durante la veda de encuestas del 29N (artículo 69.7 de la LOREG) se retira la sección «Qué pasaría hoy con el mismo error», que usaba la media de las encuestas de 2026. Volverá después del cierre de los colegios, el domingo 29 a las 21:00. El titular deja de decir «si hoy fallaran igual, el PSOE iría primero», que salía de esa media.',
+        titulo='En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4', serie='29n', figura=0,
         descripcion='Lo que las encuestas de las elecciones generales del 29N no dicen: cuánto se equivocaron la última vez. En 2023 se quedaron 3,3 puntos cortas con el PSOE; en 2019, 3,1 con Vox.',
         compara='La media de la última encuesta de cada empresa publicada antes de la veda en julio de 2023 (21 empresas) y en noviembre de 2019 (15), frente al resultado con voto exterior; y la media de encuestas de hoy corregida con esos errores.',
         limites='Es una cuenta, no una previsión: el error de una elección no tiene por qué repetirse, y las empresas cambian sus métodos. La media de 2019 y 2023 es simple, una encuesta por empresa; la de hoy es la del modelo de mapaelectoral.es/encuestas. Solo se cuentan las encuestas de ámbito nacional recopiladas por Electográfica.',
@@ -5041,10 +5054,10 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='voto-correo-plazo-jueves-29n', fecha='2026-11-17', actualizado='2026-11-25 12:30',
+        slug='voto-correo-plazo-jueves-29n', fecha='2026-11-17', actualizado='2026-11-26 08:45',
         correcciones='25-11-2026: el voto se puede depositar en Correos hasta el jueves 26 de noviembre, como máximo a las 14.00, no hasta el miércoles 25, como decía la pieza: la Junta Electoral Central amplió el plazo el 20 de noviembre. Se corrige la entradilla y la pregunta frecuente, y se añade una actualización arriba.',
         titulo='Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas', serie='29n', figura=0,
-        descripcion='El voto se puede depositar hasta el 25 de noviembre. En 2023, en 51 de las 52 circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. En Girona, el último diputado se decidió por 285 votos; 16.323 electores habían pedido votar por correo.',
+        descripcion='El voto se puede depositar hasta el jueves 26 de noviembre, como máximo a las 14.00. En 2023, en 51 de las 52 circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. En Girona, el último diputado se decidió por 285 votos; 16.323 electores habían pedido votar por correo.',
         compara='Las solicitudes de voto por correo aceptadas en 2023, por fecha de recepción y por provincia, frente a los votos que le faltaron a la lista que se quedó más cerca del último escaño en cada circunscripción.',
         limites='Son solicitudes, no votos, y de electores residentes en España. No se sabe a quién se votó por correo, así que la cuenta no dice que cambiara ningún escaño. Los votos que faltaban suponen que no se le quitan a nadie. La tabla del INE fecha las solicitudes por su recepción: 122.790 constan como recibidas después del cierre del plazo, el 13 de julio.',
         calculo='Solicitudes: INE, tablas 59759 y 59763. Último escaño: D\'Hondt con barrera del 3 % de los votos válidos, con los resultados definitivos con voto exterior y todas las candidaturas (actualidad/src/sistema/cifras.json); votos que faltaban: cociente del último escaño por los escaños de la otra lista más uno, menos sus votos, más uno, y el menor de todas las listas. Script: actualidad/src/resumenes/voto_correo_plazo.py.',
@@ -5285,7 +5298,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-25 19:00',
+        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-26 08:50',
         titulo='Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley', serie='29n', figura=0,
         descripcion='Son encuestas publicadas fuera de España durante la veda, que va del martes 24 hasta que cierren los colegios el domingo 29. En 2023, «encuestas andorra» solo se buscó la semana de la veda, con el máximo en la jornada de reflexión.',
         compara='Lo que dice la ley electoral sobre la publicación de encuestas en los cinco días antes de votar, los casos de encuestas publicadas fuera de España durante la veda desde 2008, la resolución de la Junta Electoral Central sobre encuestas encubiertas y las búsquedas en Google de «encuestas andorra» y «encuestas prohibidas» en la semana de las generales de 2023.',
@@ -5449,16 +5462,79 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='debate-a-cuatro-sanchez-feijoo-abascal-colau-29n', fecha='2026-11-26', actualizado='2026-11-26 09:30',
+        titulo='Debate a cuatro: hora, dónde verlo y en qué orden hablan Sánchez, Feijóo, Abascal y Colau', serie='29n', figura=1,
+        descripcion='Es este jueves a las 22.00, en La 1, Antena 3, laSexta, Telecinco, Cuatro y La Séptima. El último debate a varios, en 2023, fue el menos visto desde 2015: 4,2 millones.',
+        compara='Los seis debates de las elecciones generales con tres o más candidatos a la presidencia desde 2015, por audiencia media, y los escaños y votos que sacaron en 2023 los partidos de los cuatro candidatos de 2026.',
+        limites='Las audiencias son solo de televisión, sin internet, con datos de Kantar. Hora, cadenas, turnos y bloques, según la información publicada por los medios antes del debate. Colau encabeza el Frente Amplio, que no existía en 2023: se compara con Sumar, que entonces incluía a Podemos, hoy fuera del Frente Amplio. Sin encuestas: el 29N está en la veda (artículo 69.7 de la LOREG).',
+        calculo='Audiencias: tabla de Barlovento Comunicación con datos de Kantar, los debates con tres o más candidatos. Escaños y votos de 2023: resultados del Ministerio del Interior, con el voto exterior. Script: actualidad/src/resumenes/debate_cuatro.py.',
+        fuentes=[('https://www.eldebate.com/cine-tv-series/20261125/debate-4-abascal-izquierda-colau-derecha-sanchez-abrira-minuto-oro-feijoo-cerrara_485161.html', 'El Debate, posiciones, turnos y bloques del debate a cuatro (25-11-2026)'),
+                 ('https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html', 'Mundiario, horarios, turnos, bloques y cadenas del debate a cuatro (26-11-2026)'),
+                 ('https://www.infobae.com/espana/2026/11/26/el-debate-a-cuatro-definitivo-en-directo-ultima-hora-de-las-elecciones-generales-29-n-y-la-campana-electoral/', 'Infobae, el debate a cuatro, en directo (26-11-2026)'),
+                 ('https://barloventocomunicacion.es/wp-content/uploads/2023/07/Analisis-Audiencia-23J-EL-DEBATE-FINAL_19-julio-2023.pdf', 'Barlovento Comunicación, audiencia de los debates electorales (datos de Kantar, 19-7-2023)'),
+                 ('https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html', 'El Español (Europa Press), audiencia del cara a cara de 2026 (20-11-2026)'),
+                 ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones generales de 2023')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='pueblos-que-siempre-aciertan-29n', fecha='2026-11-26', actualizado='2026-11-26 15:00',
+        titulo='Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2', serie='29n', figura=0,
+        descripcion='Solo 24 municipios han votado al ganador en las 16 elecciones generales. En seis, el PP ganó en 2023 por menos de tres puntos; en Plasencia, el mayor, por 641 votos.',
+        compara='Los 24 municipios que han votado como primera fuerza al partido ganador en España en las 16 elecciones generales de 1977 a 2023, con la ventaja del PP sobre el PSOE en 2023 en cada uno, su perfil (edad, renta, estudios, paro, población extranjera) frente al de España y cuántos siguieron acertando en cada elección.',
+        limites='Acertar siempre es en buena parte casualidad acumulada y no sirve para predecir. Un empate de los dos primeros no cuenta como acierto. El perfil es correlacional: que los 24 se parezcan a España en edad o renta no explica que acierten. España, sin el voto exterior. Sin encuestas: el 29N está en la veda (artículo 69.7 de la LOREG).',
+        correcciones='26-11-2026: en la fila de España de 2023, el PP sumaba también los 51.778 votos de UPN, que fue por separado en Navarra. Con el PP solo, sacó el 33,3 % (no el 33,5 %) y su ventaja sobre el PSOE en el conjunto de España, sin voto exterior, fue de 1,4 puntos (no 1,6). Los 24 municipios no cambian.',
+        calculo='Partido más votado de cada municipio frente al de España, como en la pieza de Plasencia (actualidad/src/historia/datos.py). Porcentajes sobre los votos a candidaturas. Perfil: medias ponderadas por población. Script: actualidad/src/resumenes/pueblos_aciertan.py.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones generales de 1977 a 2023 por municipio'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (2023)'),
+                 ('https://www.infobae.com/espana/2026/11/26/el-debate-a-cuatro-definitivo-en-directo-ultima-hora-de-las-elecciones-generales-29-n-y-la-campana-electoral/', 'Infobae, actos del último día de campaña (26-11-2026)'),
+                 ('https://www.laportadadeextremadura.com/extremadura/pedro-sanchez-participara-este-viernes-en-un-acto-en-plasencia_9984_102.html', 'La Portada de Extremadura, acto de Pedro Sánchez en Plasencia (26-11-2026)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='encuestas-fallos-elecciones-espana-29n', fecha='2026-11-26',
+        titulo='Las encuestas fallaron por más de 3 puntos en 15 de 30 elecciones analizadas desde 2015: Andalucía 2022 y 2018, los mayores sustos', serie='29n', figura=0,
+        descripcion='Lo que las encuestas no dicen: cuánto se equivocan. En 15 de las 30 elecciones analizadas desde 2015 fallaron por más de tres puntos con algún partido; en Andalucía 2022, el PP sacó 6,9 más de lo previsto.',
+        compara='La media de la última encuesta de cada empresa publicada en las dos semanas anteriores a la veda, frente al resultado de PP, PSOE, Vox y Cs, en las generales de noviembre de 2019 y de 2023 y en 28 elecciones autonómicas desde 2015.',
+        limites='No incluye ninguna encuesta de las generales del 29N, que están en veda (artículo 69.7 de la LOREG). Solo PP, PSOE, Vox y Cs, los partidos que se pueden emparejar sin ambigüedad entre encuesta y resultado, y solo cuando sacaron al menos el 3 %; en Navarra, sin el PP. No entran las generales de 2015, 2016 y abril de 2019, las autonómicas de marzo y mayo de 2015 y de abril y mayo de 2019 (sin encuestas de esas fechas en la recopilación de Electográfica), las catalanas de 2017 (todas las fichas llevan la fecha del día de la votación) ni las riojanas de 2023 (sin el resultado en los mismos datos). Cinco elecciones tienen tres encuestas o menos. Algunas fichas antiguas de Electográfica solo guardaban uno o dos partidos: la estimación completa se ha leído de la página de cada encuesta. Que las encuestas fallaran en un sentido no dice hacia dónde fallarán la próxima vez.',
+        calculo='Para cada elección, la última encuesta de cada empresa publicada entre 20 y 6 días antes de la votación (en las generales, las mismas ventanas que la pieza de los errores de 2019 y 2023) y su media simple. Error: media menos resultado, en puntos de los votos válidos. Resultados de las generales: Ministerio del Interior, con voto exterior; de las autonómicas, la ficha de cada elección en Wikipedia. Script: actualidad/src/resumenes/encuestas_fallos.py, con los datos que prepara encuestas_fallos_preparar.py.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.electografica.com/', 'Electográfica, encuestas de las elecciones generales y autonómicas desde 2015'),
+                 (WIKI_ANDALUZAS_2022, 'Wikipedia, resultados de las elecciones autonómicas (una ficha por elección; el enlace es la de Andalucía 2022)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a69', 'BOE, Ley Orgánica del Régimen Electoral General, art. 69.7 (veda de encuestas)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='voto-exterior-cera-loreg-29n', fecha='2026-11-26',
+        titulo='Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra el jueves 26 y esos votos no se cuentan hasta el viernes 4 de diciembre', serie='29n',
+        descripcion='Son 2.769.645 electores. Desde 2022 no tienen que pedir el voto, pero en 2023 solo votó el 9,0 %. El Supremo deja fuera a los nacionalizados por la ley de nietos que no acrediten el exilio, también si viven en España.',
+        compara='Lo que dice la LOREG sobre el voto de los residentes en el extranjero (artículos 31, 32, 75, 103 y 107), la participación del CERA en las generales de 2000 a 2023 y, en 2023, el voto exterior válido de cada provincia frente a los votos que le faltaban al siguiente partido para quitar el último escaño.',
+        limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. La participación es votantes (votos a candidaturas, en blanco y nulos) sobre el censo de esos ficheros, y puede diferir unas centésimas de la del preámbulo de la Ley Orgánica 12/2022. Los votos que le faltaban al siguiente partido se calculan con el resto de votos igual; el voto de fuera se reparte entre todos los partidos, así que superar esa distancia no significa que pudiera cambiar el escaño. La providencia del Supremo del 20 de noviembre y su auto del 24 se citan por lo que publican El Independiente (con Europa Press) y The Objective; no he podido leer el texto de las resoluciones.',
+        calculo='Script: actualidad/src/resumenes/voto_exterior_loreg.py, con los datos que prepara voto_exterior_preparar.py a partir de los resultados por mesa de Interior. Reparto D\'Hondt con barrera del 3 % de los votos válidos.',
+        fuentes=[('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asetentaycinco', 'BOE, Ley Orgánica del Régimen Electoral General, texto consolidado (artículos 31, 32, 75, 103 y 107)'),
+                 ('https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16018', 'BOE, Ley Orgánica 12/2022, de 30 de septiembre, que suprime el voto rogado'),
+                 ('https://www.boe.es/buscar/doc.php?id=BOE-A-2023-8463', 'BOE, Junta Electoral Central, Instrucción 1/2023, sobre el voto de los electores del CERA'),
+                 ('https://www.ine.es/dyngs/Prensa/EG2026.htm', 'INE, Elecciones a Cortes Generales de 29 de noviembre de 2026, nota de prensa (9-10-2026)'),
+                 INTERIOR_CERA,
+                 ('https://www.elindependiente.com/espana/2026/11/20/el-ts-exige-a-la-jec-garantizar-que-163-355-nacionalizados-por-la-ley-de-nietos-no-voten-el-29-n/', 'El Independiente (Europa Press), El TS exige a la Junta Electoral garantizar que 163.355 nacionalizados por la ley de nietos no voten el 29-N (20-11-2026)'),
+                 ('https://theobjective.com/espana/tribunales/2026-11-24/supremo-tumba-recurso-urnas-carton-nietos/', 'The Objective, El Supremo se desentiende de las urnas de cartón de los nietos y deja la decisión a la JEC (24-11-2026)'),
+                 ('https://doi.org/10.5944/rdp.120.2024.41766', 'Álvarez Vélez y Corres-Illera, La relevancia del voto CERA, Revista de Derecho Político 120 (2024)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
     # 23-11-2026: la de las encuestas de Andorra, delante durante la veda, detrás solo de la pieza nueva de cada día (Nacho: «Sí, primera»)
     'encuestas-andorra-29n': '2026-11-29',
     # Nacho, 25-11-2026 («pasa los cambios»): piezas de servicio fijas los últimos días; (primer día, último día), los dos incluidos
-    'voto-correo-plazo-jueves-29n': ('2026-11-25', '2026-11-26'),   # el voto se deposita hasta el jueves 26 a las 14.00
+    'voto-correo-plazo-jueves-29n': ('2026-11-25', '2026-11-25'),   # 26-11 14:05: el plazo de depósito ya cerró, fuera de la portada   # el voto se deposita hasta el jueves 26 a las 14.00
     'programa-electoral-29n': ('2026-11-26', '2026-11-28'),
     'voto-blanco-nulo-elecciones-generales-29n': ('2026-11-28', '2026-11-28'),
-    'como-votar-elecciones-generales-29n': ('2026-11-28', '2026-11-29'),
+    'como-votar-elecciones-generales-29n': ('2026-11-27', '2026-11-29'),   # Nacho, 26-11 13:24: «adelanta», desde el viernes 27
     'a-que-hora-resultados-elecciones-generales-29n': ('2026-11-28', '2026-11-29'),
     # Nacho, 4-11-2026: Puente, tras su dimisión, la primera
     'puente-valladolid-segundo-escano-29n': '2026-11-06',
@@ -5478,6 +5554,15 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'israel-pactos-escanos-knesset': '2026-10-29',
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
+
+# Tarjetas de páginas que no son piezas de Actualidad, delante de todo el carrusel de la portada mientras estén en fecha
+# (primer día y último día incluidos). Nacho, 26-11-2026 11.43, del voto útil: «Ponlos en el carrusel»
+PORTADA_EXTERNAS = [
+    dict(url='elecciones/voto-util-29n/', antetitulo='Voto útil · 52 circunscripciones',
+         titulo='Voto útil el 29N: qué escaños estaban en juego en cada provincia',
+         imagen='img/portada/voto-util-29n.jpg', alt='Un cuadrado por escaño en cada provincia, con los seguros, los probables y los que estaban en juego',
+         dias=('2026-11-26', '2026-11-29')),
+]
 
 # Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
 # Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
@@ -5509,6 +5594,9 @@ def franja_portada(todas, pre=''):
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
+            ''.join(f'<li><a href="{pre}{x["url"]}"><img src="{pre}{x["imagen"]}" alt="{html.escape(x["alt"])}" loading="lazy" width="300" height="200">'
+                    f'<span class="atlas-k">{html.escape(x["antetitulo"])}</span><b>{html.escape(x["titulo"])}</b></a></li>'
+                    for x in PORTADA_EXTERNAS if x['dias'][0] <= hoy <= x['dias'][1]) +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(titulo_carrusel(q["titulo"]))}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="{pre}actualidad/"><b>Todas las piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES and k != 'internacional')}</span></a></li></ul>'

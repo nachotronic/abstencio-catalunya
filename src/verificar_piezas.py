@@ -41,6 +41,7 @@ Uso, desde la raíz:
     --sin-red  no comprueba los enlaces externos (para trabajar sin conexión)
     --sin-navegador  no abre las piezas en el navegador
 """
+import types
 import argparse, concurrent.futures, html, importlib.util, json, os, re, subprocess, sys, unicodedata
 import urllib.error, urllib.parse, urllib.request
 sys.dont_write_bytecode = True
@@ -59,8 +60,9 @@ BASE_URL = 'https://mapaelectoral.es'
 
 # ---------------------------------------------------------------- piezas
 
-def cargar_construir(codigo=None):
-    """PIEZAS de actualidad/src/construir.py (el de la rama o, con codigo, el de main)."""
+def cargar_construir(codigo=None, ref=None):
+    """PIEZAS de actualidad/src/construir.py (el de la rama o, con codigo, el de main).
+    Con ref, las piezas de historia salen del historia/textos.py de esa rama, no del de la rama actual."""
     ruta = os.path.join(ACT, 'src', 'construir.py')
     sys.path.insert(0, os.path.join(ACT, 'src'))
     if codigo is None:
@@ -69,11 +71,25 @@ def cargar_construir(codigo=None):
         spec.loader.exec_module(mod)
         return {p['slug']: p for p in mod.PIEZAS}
     ns = {'__file__': ruta, '__name__': 'construir_base'}
+    previo = sys.modules.get('textos')
+    textos_ref = git('show', f'{ref}:actualidad/src/historia/textos.py') if ref else None
     try:
+        if textos_ref:
+            ruta_t = os.path.join(ACT, 'src', 'historia', 'textos.py')
+            mod_t = types.ModuleType('textos')
+            mod_t.__file__ = ruta_t
+            exec(compile(textos_ref, ruta_t, 'exec'), mod_t.__dict__)
+            sys.modules['textos'] = mod_t
         exec(compile(codigo, ruta, 'exec'), ns)
     except Exception as e:   # main antiguo roto o distinto: se compara sin él
         print('Aviso: no se pudo cargar construir.py de la base:', e)
         return {}
+    finally:
+        if textos_ref:
+            if previo is None:
+                sys.modules.pop('textos', None)
+            else:
+                sys.modules['textos'] = previo
     return {p['slug']: p for p in ns.get('PIEZAS', [])}
 
 
@@ -635,7 +651,7 @@ def principal():
         print('Ningún PR de piezas: nada que comprobar.')
         return 0
     codigo_base = git('show', f'{a.base}:actualidad/src/construir.py')
-    base = cargar_construir(codigo_base) if codigo_base else {}
+    base = cargar_construir(codigo_base, a.base) if codigo_base else {}
     informes, externos, rutas = {}, set(), {}
     for slug in slugs:
         inf = informes[slug] = Informe(slug)
