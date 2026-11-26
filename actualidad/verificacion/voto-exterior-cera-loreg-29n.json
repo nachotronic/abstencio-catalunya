@@ -1,0 +1,240 @@
+{
+ "pieza": "voto-exterior-cera-loreg-29n",
+ "cifras": [
+  {
+   "texto": "Son 2.769.645 electores. Desde 2022",
+   "cifra": "2.769.645",
+   "calculo": "D['CERA26']"
+  },
+  {
+   "texto": "pero en 2023 solo votó el 9,0 %. El Supremo deja fuera",
+   "cifra": "9,0",
+   "calculo": "round(D['PART'][-1]['pct'],1)"
+  },
+  {
+   "texto": "generales del 29 de noviembre hay 2.769.645 electores que viven",
+   "cifra": "2.769.645",
+   "calculo": "D['CERA26']"
+  },
+  {
+   "texto": "viven en el extranjero, el 7,2 % del censo, según el",
+   "cifra": "7,2",
+   "calculo": "round(D['PCERA'],1)"
+  },
+  {
+   "texto": "consulados se cierran el jueves 26, se levanta un acta",
+   "cifra": "26",
+   "calculo": "int(D['FECHAS']['urna_fin'][8:])"
+  },
+  {
+   "texto": "de Madrid: el PP pasó de 15 a 16 y el PSOE, de 11",
+   "cifra": "15",
+   "calculo": "D['MAD']['PP'][0]"
+  },
+  {
+   "texto": "Madrid: el PP pasó de 15 a 16 y el PSOE, de 11 a 10.",
+   "cifra": "16",
+   "calculo": "D['MAD']['PP'][1]"
+  },
+  {
+   "texto": "de 15 a 16 y el PSOE, de 11 a 10. Lo contamos en",
+   "cifra": "11",
+   "calculo": "D['MAD']['PSOE'][0]"
+  },
+  {
+   "texto": "15 a 16 y el PSOE, de 11 a 10. Lo contamos en la pieza",
+   "cifra": "10",
+   "calculo": "D['MAD']['PSOE'][1]"
+  },
+  {
+   "texto": "2004 y 2008 votó entre el 23,0 % y el 31,7 % de los",
+   "cifra": "23,0",
+   "calculo": "round(D['PART'][0]['pct'],1)"
+  },
+  {
+   "texto": "votó entre el 23,0 % y el 31,7 % de los electores de",
+   "cifra": "31,7",
+   "calculo": "round(D['PART'][2]['pct'],1)"
+  },
+  {
+   "texto": "2011 a 2019, nunca pasó del 6,8 %. En 2023, las primeras",
+   "cifra": "6,8",
+   "calculo": "round(D['MAX_ROGADO'],1)"
+  },
+  {
+   "texto": "sin voto rogado, votó el 9,0 %: 208.431 de 2.328.260.",
+   "cifra": "9,0",
+   "calculo": "round(D['PART'][-1]['pct'],1)"
+  },
+  {
+   "texto": "voto rogado, votó el 9,0 %: 208.431 de 2.328.260. Son datos",
+   "cifra": "208.431",
+   "calculo": "D['PART'][-1]['votantes']"
+  },
+  {
+   "texto": "votó el 9,0 %: 208.431 de 2.328.260. Son datos de Interior",
+   "cifra": "2.328.260",
+   "calculo": "D['PART'][-1]['censo']"
+  },
+  {
+   "texto": "de Madrid. Pero en otras ocho provincias el último",
+   "cifra": "ocho",
+   "calculo": "D['N9']-1"
+  },
+  {
+   "texto": "Girona, al PP le faltaban 285 votos para quitarle",
+   "cifra": "285",
+   "calculo": "D['P9'][0]['faltaban']"
+  },
+  {
+   "texto": "diputado; de fuera llegaron 2.283 votos válidos. Esos",
+   "cifra": "2.283",
+   "calculo": "D['P9'][0]['validos_cera']"
+  },
+  {
+   "texto": "Las mismas nueve provincias aparecen",
+   "cifra": "nueve",
+   "calculo": "D['N9']"
+  },
+  {
+   "texto": "Gobierno entregó una lista de 163.355 personas, de las que",
+   "cifra": "163.355",
+   "calculo": "D['NIETOS']"
+  },
+  {
+   "texto": "163.355 personas, de las que 901 tenían el exilio acreditado",
+   "cifra": "901",
+   "calculo": "D['EXILIO']"
+  },
+  {
+   "texto": "Censo que ninguna de esas 163.355 personas pueda figurar",
+   "cifra": "163.355",
+   "calculo": "D['NIETOS']"
+  },
+  {
+   "texto": "fuera de la prohibición «las 901 personas que presentaron",
+   "cifra": "901",
+   "calculo": "D['EXILIO']"
+  },
+  {
+   "texto": "Estado rebajó la cifra a 113.326 «como resultado de las",
+   "cifra": "113.326",
+   "calculo": "D['TRAS_COMPROBAR']"
+  },
+  {
+   "texto": "por pocos votos el viernes 4 podrá reclamar, como",
+   "cifra": "4",
+   "calculo": "int(D['FECHAS']['escrutinio'][8:])"
+  },
+  {
+   "texto": "consulado después del viernes 27 no vale.",
+   "cifra": "27",
+   "calculo": "int(D['FECHAS']['correo_llega'][8:])"
+  },
+  {
+   "texto": "el último escaño se decidió por menos votos de los que llegaron de fuera",
+   "condicion": "all(r['faltaban']<r['validos_cera'] for r in D['P9'])"
+  },
+  {
+   "texto": "Las mismas nueve provincias aparecen",
+   "condicion": "sorted(r['prov'] for r in D['P9'])==sorted(['Girona','Cantabria','Tarragona','Madrid','Salamanca','Santa Cruz de Tenerife','Málaga','Gipuzkoa','Asturias'])"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "2015, 2016 y 2019, «menos del 10 por ciento de los electores",
+   "fuente": "https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16018"
+  },
+  {
+   "texto": "(art. 103.1). Ese día, «a las ocho horas de la mañana»,",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asetentaycinco"
+  },
+  {
+   "texto": "cifras muy parecidas, del 22,99 % en 2000 y el 31,88",
+   "fuente": "https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16018"
+  },
+  {
+   "texto": "del 22,99 % en 2000 y el 31,88 % en 2008.",
+   "fuente": "https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16018"
+  },
+  {
+   "texto": "reparto de un último escaño en nueve provincias, donde los",
+   "fuente": "https://doi.org/10.5944/rdp.120.2024.41766"
+  },
+  {
+   "texto": "Gobierno entregó una lista de 163.355 personas, de las que",
+   "fuente": "https://www.europapress.es/nacional/noticia-gobierno-entrega-ts-listado-mas-160000-afectados-suspension-voto-ley-nietos-20261028160130.html"
+  },
+  {
+   "texto": "Estado rebajó la cifra a 113.326 «como resultado de las",
+   "fuente": "https://www.elindependiente.com/espana/2026/11/20/el-ts-exige-a-la-jec-garantizar-que-163-355-nacionalizados-por-la-ley-de-nietos-no-voten-el-29-n/"
+  },
+  {
+   "texto": "fuera de la prohibición «las 901 personas que presentaron",
+   "fuente": "https://www.elindependiente.com/espana/2026/11/20/el-ts-exige-a-la-jec-garantizar-que-163-355-nacionalizados-por-la-ley-de-nietos-no-voten-el-29-n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "propio, escrito en el artículo 75 de la Ley Orgánica del",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "censos», dice el artículo 31.2. El segundo es el",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "su demarcación» (artículo 32.3). Cada elector de",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "preámbulo de la Ley Orgánica 12/2022, que lo suprimió.",
+   "motivo": "Número de la norma (Ley Orgánica 12/2022, Instrucción 1/2023)."
+  },
+  {
+   "texto": "CERA la documentación (art. 75.1): los sobres, dos",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "el secreto del voto» (art. 75.2 y 3).",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "secreto del voto» (art. 75.2 y 3).",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "de los certificados (art. 75.4 y 5). O por correo",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "certificados (art. 75.4 y 5). O por correo al consulado,",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "pasaporte o del DNI (art. 75.7). En los dos casos,",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "consulado en el sobre (art. 75.9). El envío es gratuito",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "tiran: según la Instrucción 1/2023 de la Junta Electoral",
+   "motivo": "Número de la norma (Ley Orgánica 12/2022, Instrucción 1/2023)."
+  },
+  {
+   "texto": "juntas electorales (art. 75.8). Para que lleguen,",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "al de la votación» (art. 103.1). Ese día, «a las",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  },
+  {
+   "texto": "escrutinio general» (art. 75.10 y 11).",
+   "motivo": "Número de artículo o apartado de la LOREG."
+  }
+ ],
+ "permitir_espana": []
+}
