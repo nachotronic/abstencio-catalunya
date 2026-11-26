@@ -86,7 +86,7 @@ cuerpo = f'''
 <p data-tipo="contexto">También lo emitirá la cadena portuguesa CNN Portugal.</p>
 <h2>En qué orden hablan</h2>
 <p data-tipo="contexto">El sorteo decidió los atriles y los turnos. De izquierda a derecha, en pantalla, estarán Abascal, Sánchez, Feijóo y Colau. Abre Colau, con una valoración de la legislatura de un minuto y medio, y le siguen Sánchez, Feijóo y Abascal. En el minuto de oro final el orden cambia: empieza Sánchez, siguen Abascal y Colau, y cierra Feijóo, según <a href="{ELDEBATE}">El Debate</a> y <a href="{MUNDIARIO}">Mundiario</a>.</p>
-<p data-tipo="contexto">El debate tiene cinco bloques de 20 minutos, con cinco minutos para cada candidato en cada uno, en este orden:</p>
+<p data-tipo="contexto">El debate tiene cinco bloques de 20 minutos, con cinco minutos para cada candidato en cada uno. Son estos, en este orden, según <a href="{ELDEBATE}">El Debate</a>:</p>
 {lis(BLOQUES)}
 <p data-tipo="contexto">Habrá dos pausas publicitarias de tres minutos, después del segundo y del cuarto bloque. Los candidatos no pueden llevar dispositivos electrónicos, y los tiempos los controlan árbitros de la Federación Española de Baloncesto, según las dos mismas fuentes.</p>
 <h2>Cuánto pesaba cada atril en 2023</h2>
@@ -96,7 +96,7 @@ cuerpo = f'''
 <h2>Cuánta gente ve un debate a varios</h2>
 <p data-tipo="dato">El último debate con más de dos candidatos a la presidencia, el de Sánchez, Abascal y Yolanda Díaz del 19 de julio de 2023, lo vieron de media <strong>{p(ULT[2] / 1000)} millones de personas</strong>, con un {p(ULT[3])} % de cuota: el menos visto de los seis desde 2015 y un {CAIDA} % menos que el de 2016, el que más audiencia tuvo, según los datos de Kantar que recopila <a href="{BARLOVENTO}">Barlovento Comunicación</a>.</p>
 {g_aud}
-<p data-tipo="contexto">El cara a cara entre Sánchez y Feijóo del jueves pasado lo vieron {p(CARA26 / 1000)} millones, según el informe de Barlovento que recoge <a href="{ESP26}">Europa Press</a>.</p>
+<p data-tipo="contexto">El cara a cara entre Sánchez y Feijóo del jueves pasado lo vieron {p(CARA26 / 1000)} millones, según el informe de Barlovento que recoge <a href="{ESP26}">El Español (Europa Press)</a>.</p>
 '''
 
 preguntas = [
