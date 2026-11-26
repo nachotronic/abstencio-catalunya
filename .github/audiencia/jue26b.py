@@ -53,9 +53,9 @@ def piezas(lab,a,b):
                 c[k]+=v; h[k][hora(r)]+=v
                 if 'google' in (r['dimensions']['refererHost'] or ''): g[k]+=v
     for k in PZ: print('PIEZA',lab,k,c[k],'google',g[k],sorted(h[k].items()))
-for lab,k in [('JUE26',0),('MIE25',1),('LUN23',3)]:
-    a=HOY-D(days=k); informe('MISMAHORA_'+lab,a,a+corte)
-piezas('HOY',HOY,now)
-paths=collections.Counter()
-for r in grp(['requestPath'],5000,Z(HOY),Z(now)): paths[r['dimensions']['requestPath']]+=r['sum']['visits']
-print('VU_PROV',sum(v for p,v in paths.items() if p.startswith(PZ['voto_util']) and p!=PZ['voto_util']))
+pv=collections.Counter(); vi=collections.Counter()
+for r in grp(['requestPath'],5000,Z(HOY),Z(now)):
+    for k,pre in PZ.items():
+        if r['dimensions']['requestPath'].startswith(pre): pv[k]+=r['count']; vi[k]+=r['sum']['visits']
+for k in PZ: print('PIEZA_VISTAS',k,'vistas',pv[k],'visitas',vi[k])
+tv=sum(r['count'] for r in grp(['date'],5,Z(HOY),Z(now))); print('VISTAS_TOTALES_HOY',tv)
