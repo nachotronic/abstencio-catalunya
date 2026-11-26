@@ -5025,8 +5025,8 @@ PIEZAS += [
     ),
     dict(
         slug='encuestas-error-2023-2019-29n', fecha='2026-11-17',
-        actualizado='2026-11-26 13:30',
-        correcciones='26-11-2026: durante la veda de encuestas del 29N (artículo 69.7 de la LOREG) se retira la sección «Qué pasaría hoy con el mismo error», que usaba la media de las encuestas de 2026. Volverá después del cierre de los colegios, el domingo 29 a las 21:00.',
+        actualizado='2026-11-26 14:35',
+        correcciones='26-11-2026: durante la veda de encuestas del 29N (artículo 69.7 de la LOREG) se retira la sección «Qué pasaría hoy con el mismo error», que usaba la media de las encuestas de 2026. Volverá después del cierre de los colegios, el domingo 29 a las 21:00. El titular deja de decir «si hoy fallaran igual, el PSOE iría primero», que salía de esa media.',
         titulo='En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4', serie='29n', figura=0,
         descripcion='Lo que las encuestas de las elecciones generales del 29N no dicen: cuánto se equivocaron la última vez. En 2023 se quedaron 3,3 puntos cortas con el PSOE; en 2019, 3,1 con Vox.',
         compara='La media de la última encuesta de cada empresa publicada antes de la veda en julio de 2023 (21 empresas) y en noviembre de 2019 (15), frente al resultado con voto exterior; y la media de encuestas de hoy corregida con esos errores.',
