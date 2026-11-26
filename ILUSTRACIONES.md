@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (135)
+## Pendientes (136)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-26 | [`pueblos-que-siempre-aciertan-29n`](https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/) | Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2 | primer gráfico de la pieza |
 | 2026-11-23 | [`participacion-elecciones-generales-29n-prevision`](https://mapaelectoral.es/actualidad/participacion-elecciones-generales-29n-prevision/) | Participación en las elecciones generales del 29N: las encuestas prevén un 73,1 %, 2,7 puntos más que en 2023 | primer gráfico de la pieza |
 | 2026-11-23 | [`encuestas-andorra-29n`](https://mapaelectoral.es/actualidad/encuestas-andorra-29n/) | Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley | primer gráfico de la pieza |
 | 2026-11-23 | [`despues-elecciones-generales-29n-investidura`](https://mapaelectoral.es/actualidad/despues-elecciones-generales-29n-investidura/) | Después de las elecciones generales del 29N: cuándo se constituyen las Cortes y los plazos de la investidura | primer gráfico de la pieza |

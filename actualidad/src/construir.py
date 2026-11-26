@@ -2073,6 +2073,8 @@ for h in PIEZAS_HISTORIA:
     q.update(fecha=h.get('fecha', '2026-10-08'), serie='historia', enlaces=[])
     if h.get('actualizado'):
         q['actualizado'] = h['actualizado']
+    if h.get('correcciones'):
+        q['correcciones'] = h['correcciones']
     if h.get('foto'):
         q['foto'] = {k: v for k, v in h['foto'].items() if k != 'origen'}
     HISTORIA.append(q)
@@ -3409,6 +3411,7 @@ ANTETITULOS = {
     'encuestas-elecciones-generales-2026-23-noviembre': 'Encuestas de hoy',
     'veda-encuestas-29n': 'Veda de encuestas',
     'como-votar-elecciones-generales-29n': 'Cómo votar',
+    'pueblos-que-siempre-aciertan-29n': 'Los pueblos que siempre aciertan',
     'a-que-hora-resultados-elecciones-generales-29n': 'A qué hora los resultados',
     'participacion-elecciones-generales-29n-prevision': 'Participación',
     'debate-sanchez-feijoo-29n': 'El debate',
@@ -5446,6 +5449,19 @@ PIEZAS += [
                  ('https://x.com/rtvenoticias/status/2123546350360961071', 'RTVE Noticias, el minuto final de Feijóo en el debate (19-11-2026)'),
                  ('https://www.infobae.com/espana/2026/11/19/los-8-momentos-del-debate-cara-a-cara-entre-sanchez-y-feijoo-del-que-pongan-los-dos-rombos-al-no-me-deja-hablar/', 'Infobae, los minutos finales del debate (19-11-2026)'),
                  ('https://theobjective.com/espana/politica/2026-11-20/debate-sanchez-feijoo-directo/directo/', 'The Objective, directo del debate (20-11-2026)')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='pueblos-que-siempre-aciertan-29n', fecha='2026-11-26', actualizado='2026-11-26 10:15',
+        titulo='Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2', serie='29n', figura=0,
+        descripcion='Solo 24 municipios han votado al ganador en las 16 elecciones generales. En seis, el PP ganó en 2023 por menos de tres puntos; en Plasencia, el mayor, por 641 votos.',
+        compara='Los 24 municipios que han votado como primera fuerza al partido ganador en España en las 16 elecciones generales de 1977 a 2023, con la ventaja del PP sobre el PSOE en 2023 en cada uno, su perfil (edad, renta, estudios, paro, población extranjera) frente al de España y cuántos siguieron acertando en cada elección.',
+        limites='Acertar siempre es en buena parte casualidad acumulada y no sirve para predecir. Un empate de los dos primeros no cuenta como acierto. El perfil es correlacional: que los 24 se parezcan a España en edad o renta no explica que acierten. España, sin el voto exterior. Sin encuestas: el 29N está en la veda (artículo 69.7 de la LOREG).',
+        calculo='Partido más votado de cada municipio frente al de España, como en la pieza de Plasencia (actualidad/src/historia/datos.py). Porcentajes sobre los votos a candidaturas. Perfil: medias ponderadas por población. Script: actualidad/src/resumenes/pueblos_aciertan.py.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones generales de 1977 a 2023 por municipio'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (2023)'),
+                 ('https://www.infobae.com/espana/2026/11/26/el-debate-a-cuatro-definitivo-en-directo-ultima-hora-de-las-elecciones-generales-29-n-y-la-campana-electoral/', 'Infobae, actos del último día de campaña (26-11-2026)')],
         enlaces=[],
         lugar='España',
     ),

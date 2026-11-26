@@ -1,0 +1,378 @@
+{
+ "pieza": "pueblos-que-siempre-aciertan-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Ayerbe, el PP ganó en 2023 por 2",
+   "cifra": "2",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Ayerbe'][0]"
+  },
+  {
+   "texto": "Solo 24 municipios han votado",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "elecciones generales. En seis, el PP ganó en 2023",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  },
+  {
+   "texto": "ganó en 2023 por menos de tres puntos; en Plasencia,",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  },
+  {
+   "texto": "Plasencia, el mayor, por 641 votos.",
+   "cifra": "641",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Plasencia'][0]"
+  },
+  {
+   "texto": "generales desde 1977, solo 24 han votado siempre como",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "ganó en Ayerbe (Huesca) por 2 votos, en Biescas (Huesca)",
+   "cifra": "2",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Ayerbe'][0]"
+  },
+  {
+   "texto": "votos, en Biescas (Huesca) por 11, en Los Navalmorales",
+   "cifra": "11",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Biescas'][0]"
+  },
+  {
+   "texto": "Navalmorales (Toledo) por 12 y en Jaca (Huesca) por",
+   "cifra": "12",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Los Navalmorales'][0]"
+  },
+  {
+   "texto": "12 y en Jaca (Huesca) por 64.",
+   "cifra": "64",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Jaca'][0]"
+  },
+  {
+   "texto": "En seis de los 24, la ventaja",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  },
+  {
+   "texto": "En seis de los 24, la ventaja del PP sobre",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "PSOE en 2023 fue de menos de tres puntos: Ayerbe (0,3),",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  },
+  {
+   "texto": "menos de tres puntos: Ayerbe (0,3), Jaca (0,9), Los Navalmorales",
+   "cifra": "0,3",
+   "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Ayerbe'][0],1)"
+  },
+  {
+   "texto": "puntos: Ayerbe (0,3), Jaca (0,9), Los Navalmorales (1,1),",
+   "cifra": "0,9",
+   "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Jaca'][0],1)"
+  },
+  {
+   "texto": "(0,9), Los Navalmorales (1,1), Biescas (1,3), Villaquilambre,",
+   "cifra": "1,1",
+   "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Los Navalmorales'][0],1)"
+  },
+  {
+   "texto": "Navalmorales (1,1), Biescas (1,3), Villaquilambre, en",
+   "cifra": "1,3",
+   "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Biescas'][0],1)"
+  },
+  {
+   "texto": "Villaquilambre, en León (1,7), y Plasencia, en Cáceres",
+   "cifra": "1,7",
+   "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Villaquilambre'][0],1)"
+  },
+  {
+   "texto": "y Plasencia, en Cáceres (2,9). En el conjunto de",
+   "cifra": "2,9",
+   "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Plasencia'][0],1)"
+  },
+  {
+   "texto": "el voto exterior, fue de 1,6 puntos.",
+   "cifra": "1,6",
+   "calculo": "round(100*(D['ESP'][0]-D['ESP'][1])/D['ESP'][4],1)"
+  },
+  {
+   "texto": "Plasencia es el mayor de los 24, con 32.589 electores.",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "es el mayor de los 24, con 32.589 electores. En 2023 el",
+   "cifra": "32.589",
+   "calculo": "[f[2] for f in D['S'] if f[0]=='Plasencia'][0]"
+  },
+  {
+   "texto": "electores. En 2023 el PP sacó 8.654 votos y el PSOE, 8.013:",
+   "cifra": "8.654",
+   "calculo": "[f[3] for f in D['S'] if f[0]=='Plasencia'][0]"
+  },
+  {
+   "texto": "sacó 8.654 votos y el PSOE, 8.013: 641 de diferencia.",
+   "cifra": "8.013",
+   "calculo": "[f[4] for f in D['S'] if f[0]=='Plasencia'][0]"
+  },
+  {
+   "texto": "8.654 votos y el PSOE, 8.013: 641 de diferencia. Según",
+   "cifra": "641",
+   "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Plasencia'][0]"
+  },
+  {
+   "texto": "cosas. En 2023 dio al PP el 34,3 %, al PSOE el 33,4 %,",
+   "cifra": "34,3",
+   "calculo": "round([100*f[3]/f[7] for f in D['S'] if f[0]=='Jaca'][0],1)"
+  },
+  {
+   "texto": "PP el 34,3 %, al PSOE el 33,4 %, a Vox el 14,2 % y",
+   "cifra": "33,4",
+   "calculo": "round([100*f[4]/f[7] for f in D['S'] if f[0]=='Jaca'][0],1)"
+  },
+  {
+   "texto": "PSOE el 33,4 %, a Vox el 14,2 % y a Sumar el 15,2",
+   "cifra": "14,2",
+   "calculo": "round([100*f[5]/f[7] for f in D['S'] if f[0]=='Jaca'][0],1)"
+  },
+  {
+   "texto": "Vox el 14,2 % y a Sumar el 15,2 %. En el conjunto de",
+   "cifra": "15,2",
+   "calculo": "round([100*f[6]/f[7] for f in D['S'] if f[0]=='Jaca'][0],1)"
+  },
+  {
+   "texto": "conjunto de España fueron el 33,5, el 32,0, el 12,5 y",
+   "cifra": "33,5",
+   "calculo": "round(100*D['ESP'][0]/D['ESP'][4],1)"
+  },
+  {
+   "texto": "España fueron el 33,5, el 32,0, el 12,5 y el 12,4 %.",
+   "cifra": "32,0",
+   "calculo": "round(100*D['ESP'][1]/D['ESP'][4],1)"
+  },
+  {
+   "texto": "fueron el 33,5, el 32,0, el 12,5 y el 12,4 %.",
+   "cifra": "12,5",
+   "calculo": "round(100*D['ESP'][2]/D['ESP'][4],1)"
+  },
+  {
+   "texto": "33,5, el 32,0, el 12,5 y el 12,4 %.",
+   "cifra": "12,4",
+   "calculo": "round(100*D['ESP'][3]/D['ESP'][4],1)"
+  },
+  {
+   "texto": "Otros cuatro municipios votaron al",
+   "cifra": "cuatro",
+   "calculo": "len(D['EMP'])"
+  },
+  {
+   "texto": "José, el PP y el PSOE sacaron 29 votos cada uno en 2023.",
+   "cifra": "29",
+   "calculo": "[e[3] for e in D['EMP'] if e[0]=='Belmonte de San José'][0]"
+  },
+  {
+   "texto": "ponderados por población, los 24 tienen una edad media",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "tienen una edad media de 44,0 años (España, 43,9),",
+   "cifra": "44,0",
+   "calculo": "round(D['PERFIL']['edad_media'][0],1)"
+  },
+  {
+   "texto": "media de 44,0 años (España, 43,9), un 19,8 % de mayores",
+   "cifra": "43,9",
+   "calculo": "round(D['PERFIL']['edad_media'][1],1)"
+  },
+  {
+   "texto": "44,0 años (España, 43,9), un 19,8 % de mayores de 65 (España,",
+   "cifra": "19,8",
+   "calculo": "round(100*D['PERFIL']['mayores65'][0],1)"
+  },
+  {
+   "texto": "de mayores de 65 (España, 20,4 %), un 32,9 % de población",
+   "cifra": "20,4",
+   "calculo": "round(100*D['PERFIL']['mayores65'][1],1)"
+  },
+  {
+   "texto": "de 65 (España, 20,4 %), un 32,9 % de población con estudios",
+   "cifra": "32,9",
+   "calculo": "round(100*D['PERFIL']['estudios_sup_2021'][0],1)"
+  },
+  {
+   "texto": "con estudios superiores (31,9 %) y un 16,6 % de paro",
+   "cifra": "31,9",
+   "calculo": "round(100*D['PERFIL']['estudios_sup_2021'][1],1)"
+  },
+  {
+   "texto": "superiores (31,9 %) y un 16,6 % de paro en 2021 (17,2",
+   "cifra": "16,6",
+   "calculo": "round(100*D['PERFIL']['paro_2021'][0],1)"
+  },
+  {
+   "texto": "un 16,6 % de paro en 2021 (17,2 %). Su renta por unidad",
+   "cifra": "17,2",
+   "calculo": "round(100*D['PERFIL']['paro_2021'][1],1)"
+  },
+  {
+   "texto": "por unidad de consumo es de 21.268 euros, frente a 22.325.",
+   "cifra": "21.268",
+   "calculo": "round(D['PERFIL']['renta_uc'][0])"
+  },
+  {
+   "texto": "de 21.268 euros, frente a 22.325. Donde más se separan",
+   "cifra": "22.325",
+   "calculo": "round(D['PERFIL']['renta_uc'][1])"
+  },
+  {
+   "texto": "población extranjera: un 7,0 %, frente al 12,9 %",
+   "cifra": "7,0",
+   "calculo": "round(100*D['PERFIL']['extranjeros'][0],1)"
+  },
+  {
+   "texto": "extranjera: un 7,0 %, frente al 12,9 % del conjunto del país.",
+   "cifra": "12,9",
+   "calculo": "round(100*D['PERFIL']['extranjeros'][1],1)"
+  },
+  {
+   "texto": "una gran ciudad (entre los 24 suman 129.920 habitantes)",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "ciudad (entre los 24 suman 129.920 habitantes) y ninguno",
+   "cifra": "129.920",
+   "calculo": "D['POB24']"
+  },
+  {
+   "texto": "cada vez ha perdido al menos 1. Cuando el partido ganador",
+   "cifra": "1",
+   "calculo": "min(D['SUP'][i-1]-D['SUP'][i] for i in range(1,16))"
+  },
+  {
+   "texto": "siguió acertando entre el 73,1 % y el 98,2 % de los",
+   "cifra": "73,1",
+   "calculo": "round(min(100*D['SUP'][i]/D['SUP'][i-1] for i in range(1,16) if i not in (2,6,8,10,13,15)),1)"
+  },
+  {
+   "texto": "acertando entre el 73,1 % y el 98,2 % de los que llevaban",
+   "cifra": "98,2",
+   "calculo": "round(max(100*D['SUP'][i]/D['SUP'][i-1] for i in range(1,16) if i not in (2,6,8,10,13,15)),1)"
+  },
+  {
+   "texto": "pleno. Cuando cambió, entre el 26,3 % y el 94,6 %: en 1996,",
+   "cifra": "26,3",
+   "calculo": "round(min(100*D['SUP'][i]/D['SUP'][i-1] for i in (2,6,8,10,13,15)),1)"
+  },
+  {
+   "texto": "cambió, entre el 26,3 % y el 94,6 %: en 1996, cuando ganó",
+   "cifra": "94,6",
+   "calculo": "round(max(100*D['SUP'][i]/D['SUP'][i-1] for i in (2,6,8,10,13,15)),1)"
+  },
+  {
+   "texto": "vez, solo siguió uno de cada cuatro; en 2023, algo más de",
+   "condicion": "0.24 < D['SUP'][6]/D['SUP'][5] < 0.28  # 1996: 327 de 1.244, uno de cada cuatro"
+  },
+  {
+   "texto": "2023, algo más de la mitad, 24 de 44.",
+   "cifra": "24",
+   "calculo": "D['SUP'][-1]"
+  },
+  {
+   "texto": "algo más de la mitad, 24 de 44.",
+   "cifra": "44",
+   "calculo": "D['SUP'][-2]"
+  },
+  {
+   "texto": "pequeño. La mitad de los 24, 12, están en Aragón,",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "pequeño. La mitad de los 24, 12, están en Aragón, y",
+   "condicion": "sum(1 for f in D['S'] if f[1] in ('Huesca','Zaragoza','Teruel')) == 12"
+  },
+  {
+   "texto": "están en Aragón, y suman 102.017 electores entre todos.",
+   "cifra": "102.017",
+   "calculo": "sum(f[2] for f in D['S'])"
+  },
+  {
+   "texto": "municipio a municipio, si los 24 siguen acertando. Esta",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "Los seis que están en el filo",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  },
+  {
+   "texto": "Cuatro que empataron",
+   "cifra": "Cuatro",
+   "calculo": "len(D['EMP'])"
+  },
+  {
+   "texto": "En seis de los 24, el PP ganó",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  },
+  {
+   "texto": "En seis de los 24, el PP ganó en 2023",
+   "cifra": "24",
+   "calculo": "len(D['S'])"
+  },
+  {
+   "texto": "ganó en 2023 por menos de tres puntosVentaja del PP",
+   "condicion": "sum(1 for f in D['S'] if 100*(f[3]-f[4])/f[7] < 3) == 6"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "votado al ganador en las 16 elecciones generales.",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  },
+  {
+   "texto": "De los 7.870 municipios con resultados",
+   "motivo": "municipios comparables con datos en las 16 generales: actualidad/src/historia/datos.json, ohio.comparables = 7.870"
+  },
+  {
+   "texto": "municipios con resultados en las 16 elecciones generales",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  },
+  {
+   "texto": "de Plasencia. El domingo 29 votan por decimoséptima",
+   "motivo": "fecha de las elecciones: domingo 29 de noviembre"
+  },
+  {
+   "texto": "43,9), un 19,8 % de mayores de 65 (España, 20,4 %), un",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  },
+  {
+   "texto": "pista. En ninguna de las 15 elecciones desde 1979",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  },
+  {
+   "texto": "Que un pueblo haya acertado 16 veces no dice quién",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  },
+  {
+   "texto": "ganará el domingo. Con casi 8.000 municipios y 16 elecciones,",
+   "motivo": "redondeo de 7.870 municipios comparables («casi 8.000»)"
+  },
+  {
+   "texto": "Con casi 8.000 municipios y 16 elecciones, es esperable",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  },
+  {
+   "texto": "votado al ganador en las 16 elecciones generales,",
+   "motivo": "número de elecciones generales (16 desde 1977; 15 desde 1979) o umbral de edad (65 años)"
+  }
+ ],
+ "permitir_espana": []
+}

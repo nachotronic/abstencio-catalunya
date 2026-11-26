@@ -1,0 +1,160 @@
+{
+ "pieza": "plasencia-acierta-siempre",
+ "_datos_disponibles": {
+  "D": "dict",
+  "EL": "lista de 16: \"1977\""
+ },
+ "cifras": [
+  {
+   "texto": "Solo 24 de 7.870 municipios",
+   "cifra": "24",
+   "calculo": "D['ohio']['n']"
+  },
+  {
+   "texto": "Solo 24 de 7.870 municipios con datos",
+   "cifra": "7.870",
+   "calculo": "D['ohio']['comparables']"
+  },
+  {
+   "texto": "1977. El mayor es Plasencia (32.589 electores); 12 están",
+   "cifra": "32.589",
+   "calculo": "D['ohio']['filas'][0][2]"
+  },
+  {
+   "texto": "Plasencia (32.589 electores); 12 están en Aragón. Antes",
+   "condicion": "sum(1 for f in D['ohio']['filas'] if f[1] in ('Huesca','Zaragoza','Teruel')) == 12"
+  },
+  {
+   "texto": "Aragón. Antes del 23J eran 44.",
+   "cifra": "44",
+   "calculo": "D['ohio']['n_pre23']"
+  },
+  {
+   "texto": "pero son muy pocos. De los 7.870 municipios con datos",
+   "cifra": "7.870",
+   "calculo": "D['ohio']['comparables']"
+  },
+  {
+   "texto": "elecciones generales, solo 24 han votado siempre como",
+   "cifra": "24",
+   "calculo": "D['ohio']['n']"
+  },
+  {
+   "texto": "Plasencia (Cáceres), con 32.589 electores en 2023. Le",
+   "cifra": "32.589",
+   "calculo": "D['ohio']['filas'][0][2]"
+  },
+  {
+   "texto": "de Verich (Teruel), tiene 78 electores.",
+   "cifra": "78",
+   "calculo": "D['ohio']['filas'][-1][2]"
+  },
+  {
+   "texto": "una vez es fácil: en 1977, 5.777 municipios votaron como",
+   "cifra": "5.777",
+   "calculo": "D['ohio']['supervivientes'][0]"
+  },
+  {
+   "texto": "primera vez, ya solo quedaban 2.332 municipios con el pleno.",
+   "cifra": "2.332",
+   "calculo": "D['ohio']['supervivientes'][2]"
+  },
+  {
+   "texto": "1996 al PP dejó la lista en 327. El de 2004, en 104.",
+   "cifra": "327",
+   "calculo": "D['ohio']['supervivientes'][6]"
+  },
+  {
+   "texto": "lista en 327. El de 2004, en 104.",
+   "cifra": "104",
+   "calculo": "D['ohio']['supervivientes'][8]"
+  },
+  {
+   "texto": "Antes del 23J quedaban 44. En julio de 2023 el",
+   "cifra": "44",
+   "calculo": "D['ohio']['n_pre23']"
+  },
+  {
+   "texto": "votado en España, pero en 19 de ellos ganó el PSOE",
+   "cifra": "19",
+   "calculo": "D['ohio']['fallan23']['PSOE']"
+  },
+  {
+   "texto": "Los 24 no se reparten al azar.",
+   "cifra": "24",
+   "calculo": "D['ohio']['n']"
+  },
+  {
+   "texto": "24 no se reparten al azar. Doce están en Aragón: seis",
+   "condicion": "sum(1 for f in D['ohio']['filas'] if f[1] in ('Huesca','Zaragoza','Teruel')) == 12"
+  },
+  {
+   "texto": "azar. Doce están en Aragón: seis en Huesca (entre ellos",
+   "condicion": "sum(1 for f in D['ohio']['filas'] if f[1]=='Huesca') == 6"
+  },
+  {
+   "texto": "Jaca, Biescas y Ayerbe), cinco en Zaragoza (Zuera,",
+   "condicion": "sum(1 for f in D['ohio']['filas'] if f[1]=='Zaragoza') == 5"
+  },
+  {
+   "texto": "Gelsa…) y uno en Teruel. Tres están en León, dos en",
+   "condicion": "sum(1 for f in D['ohio']['filas'] if f[1]=='León') == 3"
+  },
+  {
+   "texto": "quién ganará el 29N. Con 7.870 municipios y 16 elecciones,",
+   "cifra": "7.870",
+   "calculo": "D['ohio']['comparables']"
+  },
+  {
+   "texto": "si Plasencia y los otros 23 siguen en la lista.",
+   "cifra": "23",
+   "calculo": "D['ohio']['n']-1"
+  },
+  {
+   "texto": "municipios más grandes de los 24 que nunca han fallado",
+   "cifra": "24",
+   "calculo": "D['ohio']['n']"
+  },
+  {
+   "texto": "De 5.777 municipios a 24Municipios",
+   "cifra": "5.777",
+   "calculo": "D['ohio']['supervivientes'][0]"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "16 de 16: Plasencia ha",
+   "motivo": "número de elecciones generales desde 1977 (16) o fecha/convención"
+  },
+  {
+   "texto": "16 de 16: Plasencia ha votado",
+   "motivo": "número de elecciones generales desde 1977 (16) o fecha/convención"
+  },
+  {
+   "texto": "ganador de España en las 16 generales desde 1977.",
+   "motivo": "número de elecciones generales desde 1977 (16) o fecha/convención"
+  },
+  {
+   "texto": "municipios con datos en las 16 elecciones generales,",
+   "motivo": "número de elecciones generales desde 1977 (16) o fecha/convención"
+  },
+  {
+   "texto": "2019 y el PP en 2023. Otros cuatro lo hicieron en todas",
+   "motivo": "cuatro municipios con un empate en una elección (Rioseco de Soria 2000, Sigüés 2011, Arcenillas 2016, Belmonte de San José 2023): actualidad/src/resumenes/datos/pueblos_aciertan_2023.csv, grupo «empate»"
+  },
+  {
+   "texto": "Que Plasencia haya acertado 16 veces no permite saber",
+   "motivo": "número de elecciones generales desde 1977 (16) o fecha/convención"
+  },
+  {
+   "texto": "29N. Con 7.870 municipios y 16 elecciones, es normal",
+   "motivo": "número de elecciones generales desde 1977 (16) o fecha/convención"
+  },
+  {
+   "texto": "el ganador en España. Los 12 municipios más grandes",
+   "motivo": "el gráfico muestra los 12 municipios más grandes (rejilla de la pieza)"
+  }
+ ],
+ "permitir_espana": []
+}
