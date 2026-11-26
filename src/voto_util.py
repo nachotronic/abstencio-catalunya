@@ -9,12 +9,14 @@ Lo usan las 52 páginas elecciones/…/voto-util-29n/ (territorios.py) y la piez
 Uso suelto, desde la raíz: python3 src/voto_util.py  (imprime el resumen y comprueba contra escanos-en-el-filo-29n)
 """
 import functools
+import csv
 import json
 import pathlib
 import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 AGREGADOS = ROOT / 'generales-2026' / 'data' / 'agregados.json'
+OTRAS_2023 = ROOT / 'generales-2026' / 'data' / 'voto_util_otras_2023.csv'   # lo escribe src/voto_util_otras.py
 
 ESC_2023 = {'01': 4, '02': 4, '03': 12, '04': 6, '05': 3, '06': 5, '07': 8, '08': 32, '09': 4, '10': 4, '11': 9, '12': 5,
             '13': 5, '14': 6, '15': 8, '16': 3, '17': 6, '18': 7, '19': 3, '20': 6, '21': 5, '22': 3, '23': 5, '24': 4,
@@ -134,9 +136,17 @@ def comprobar_historia():
 def cargar():
     """{prov: {'n': nombre, 'e': escaños 2026, 'val': válidos, 'bl': blancos, 'c': [(nombre, votos, familia, siglas)]}}"""
     d = json.loads(AGREGADOS.read_text(encoding='utf-8'))['2023_07']['PR']
+    resto = {}   # la fila «Otras» de agregados.json (listas fuera de las 10 primeras), desglosada en sus candidaturas
+    with open(OTRAS_2023, encoding='utf-8') as f_:
+        for r in csv.DictReader(f_):
+            resto.setdefault(r['prov'], []).append([r['siglas'], int(r['votos']), 0, 'OTROS'])
     out = {}
     for p, x in d.items():
-        c = [(nombre(s, f), int(v), f, s) for s, v, _, f in x['c'] if v > 0]
+        filas = [r for r in x['c'] if r[0] != 'Otras']
+        if len(filas) < len(x['c']):
+            assert sum(r[1] for r in resto[p]) == sum(r[1] for r in x['c'] if r[0] == 'Otras'), p
+            filas += resto[p]
+        c = [(nombre(s, f), int(v), f, s) for s, v, _, f in filas if v > 0]
         c.sort(key=lambda t: -t[1])
         out[p] = {'n': x['n'], 'e': ESC_2026[p], 'bl': int(x['bl']), 'val': sum(t[1] for t in c) + int(x['bl']), 'c': c}
     return out

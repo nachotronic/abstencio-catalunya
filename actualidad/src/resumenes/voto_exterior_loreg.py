@@ -99,7 +99,7 @@ tabla9 = ('<div class="tbl"><table><thead><tr><th>Provincia</th><th>Último esca
                     for r in J.itertuples())
           + '</tbody></table></div>'
           '<p class="src">Fuente: Ministerio del Interior, resultados por mesa de las generales de 2023. Le faltaban: los votos que habría necesitado '
-          'el siguiente partido, con el resto igual, para quitar el último escaño en el reparto D\'Hondt con el voto exterior incluido. Cálculo propio.</p>')
+          'el siguiente partido, con el resto igual, para superar (no empatar) al último escaño en el reparto D\'Hondt con el voto exterior incluido. Cálculo propio.</p>')
 
 # ---------- Ley de nietos ----------
 NIETOS, EXILIO, TRAS_COMPROBAR = 163355, 901, 113326
@@ -180,7 +180,7 @@ DATOS = {'CER26': CER26, 'CERA26': CERA26, 'PCERA': round(PCERA, 3),
                                                        escrutinio=ESCR, fin=FIN).items()}}
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
-TITULO = 'Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra este jueves y esos votos no se cuentan hasta el viernes 4 de diciembre'
+TITULO = 'Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra el jueves 26 y esos votos no se cuentan hasta el viernes 4 de diciembre'
 DEK = (f'Son {n(CERA26)} electores. Desde 2022 no tienen que pedir el voto, pero en 2023 solo votó el {p(PART["2023"])} %. '
        'El Supremo deja fuera a los nacionalizados por la ley de nietos que no acrediten el exilio, también si viven en España.')
 pieza(SLUG, 'Voto exterior y LOREG', TITULO, DEK, '26 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)

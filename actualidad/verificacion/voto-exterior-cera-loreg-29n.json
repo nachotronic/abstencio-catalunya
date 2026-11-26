@@ -2,6 +2,11 @@
  "pieza": "voto-exterior-cera-loreg-29n",
  "cifras": [
   {
+   "texto": "la urna de los consulados cierra el jueves 26 y esos votos",
+   "cifra": "26",
+   "calculo": "int(D['FECHAS']['urna_fin'][8:])"
+  },
+  {
    "texto": "Son 2.769.645 electores. Desde 2022",
    "cifra": "2.769.645",
    "calculo": "D['CERA26']"

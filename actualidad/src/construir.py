@@ -5506,7 +5506,7 @@ PIEZAS += [
     ),
     dict(
         slug='voto-exterior-cera-loreg-29n', fecha='2026-11-26',
-        titulo='Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra este jueves y esos votos no se cuentan hasta el viernes 4 de diciembre', serie='29n',
+        titulo='Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra el jueves 26 y esos votos no se cuentan hasta el viernes 4 de diciembre', serie='29n',
         descripcion='Son 2.769.645 electores. Desde 2022 no tienen que pedir el voto, pero en 2023 solo votó el 9,0 %. El Supremo deja fuera a los nacionalizados por la ley de nietos que no acrediten el exilio, también si viven en España.',
         compara='Lo que dice la LOREG sobre el voto de los residentes en el extranjero (artículos 31, 32, 75, 103 y 107), la participación del CERA en las generales de 2000 a 2023 y, en 2023, el voto exterior válido de cada provincia frente a los votos que le faltaban al siguiente partido para quitar el último escaño.',
         limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. La participación es votantes (votos a candidaturas, en blanco y nulos) sobre el censo de esos ficheros, y puede diferir unas centésimas de la del preámbulo de la Ley Orgánica 12/2022. Los votos que le faltaban al siguiente partido se calculan con el resto de votos igual; el voto de fuera se reparte entre todos los partidos, así que superar esa distancia no significa que pudiera cambiar el escaño. La providencia del Supremo del 20 de noviembre y su auto del 24 se citan por lo que publican El Independiente (con Europa Press) y The Objective; no he podido leer el texto de las resoluciones.',

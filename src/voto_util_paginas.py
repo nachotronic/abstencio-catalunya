@@ -4,10 +4,16 @@ Las llama territorios.py (main) con sus propias piezas de página (cabeza, migas
 """
 from html import escape
 
+import pathlib
 import voto_util as VU
 
 PUBLICADA = '2026-11-26'
 ACTUALIZADA = '2026-11-26'
+# 26-11-2026: provincias cuya fila «Otras» de agregados.json se desglosa ahora en sus candidaturas (src/voto_util_otras.py), con cuántas son
+CORREGIDAS = {}
+with open(pathlib.Path(__file__).resolve().parents[1] / 'generales-2026' / 'data' / 'voto_util_otras_2023.csv', encoding='utf-8') as _f:
+    for _r in list(_f)[1:]:
+        CORREGIDAS[_r[:2]] = CORREGIDAS.get(_r[:2], 0) + 1
 COLOR_EXTRA = {'OTROS': '#9a9a9a'}
 ORD = {1: 'primero', 2: 'segundo', 3: 'tercero', 4: 'cuarto', 5: 'quinto', 6: 'sexto', 7: 'séptimo', 8: 'octavo', 9: 'noveno', 10: 'décimo'}
 CSS = ('.vu-fila{display:flex;flex-wrap:wrap;gap:3px;align-items:center;margin:.4rem 0}'
@@ -275,8 +281,15 @@ def pagina(p, a, T_):
              'sumados mesa a mesa desde los microdatos del Ministerio del Interior. Escaños de 2026: Real Decreto 806/2026 (Madrid, 38; Cádiz, 8; el resto, como en 2023).</dd>'
              '<dt>Cómo se calcula</dt><dd>Regla D\'Hondt con la barrera del 3 % de los votos válidos (candidaturas más blancos), artículo 163 de la LOREG; '
              'si dos cocientes empatan, el escaño va a la candidatura con más votos. Los votantes que cambian de papeleta, los votos nuevos y los que puede perder cada candidatura '
-             'se calculan repartiendo de nuevo los escaños, no con fórmulas aproximadas. Código: src/voto_util.py.</dd>'
-             f'<dt>Autoría</dt><dd><a href="{raiz}sobre-mi.html">{T_["esquema"].FIRMA}</a>. Publicado el {T_["fecha"](PUBLICADA)}. '
+             'se calculan repartiendo de nuevo los escaños, no con fórmulas aproximadas. Los votos nuevos y los votantes que cambian son los necesarios para superar '
+             'a la otra candidatura, no para empatar con ella. Código: src/voto_util.py.</dd>'
+             + ('<dt>Correcciones</dt><dd>26-11-2026: '
+                + ('la tabla de candidaturas mostraba una fila «Otras» que sumaba varias candidaturas pequeñas como si fueran una sola lista, '
+                   'con una cifra de votos nuevos que no tenía sentido. Ahora cada candidatura va por separado, con su nombre, también en los votos que no eligieron a nadie. '
+                   if CORREGIDAS[p] > 1 else
+                   'la tabla de candidaturas mostraba como «Otras» una candidatura pequeña. Ahora lleva su nombre. ')
+                + 'No cambia ningún escaño ni ninguna otra cifra.</dd>' if p in CORREGIDAS else '')
+             + f'<dt>Autoría</dt><dd><a href="{raiz}sobre-mi.html">{T_["esquema"].FIRMA}</a>. Publicado el {T_["fecha"](PUBLICADA)}. '
              f'<a href="{raiz}atlas/politica-editorial/">Política editorial</a> · <a href="{raiz}atlas/correcciones/">Correcciones</a></dd></dl>')
     h.append(T_['PIE'])
     return r, ''.join(h)
