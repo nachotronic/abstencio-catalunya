@@ -100,6 +100,10 @@
   {
    "texto": "lo vieron de media 10.152.000 personas, con un 70,8 % de cuota de pantalla",
    "fuente": "https://www.libertaddigital.com/chic/entretenimiento/2026-11-20/mas-de-10-millones-de-espectadores-vieron-el-cara-a-cara-entre-alberto-nunez-feijoo-y-pedro-sanchez-7495065/"
+  },
+  {
+   "texto": "es este jueves 26 a las 22.00",
+   "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
   }
  ],
  "ignorar": [
@@ -118,6 +122,18 @@
   {
    "texto": "de Madrid Content City, en Tres Cantos (Madrid).",
    "motivo": "nombre de cadena o de lugar (La 1, Antena 3, Cuatro, Tres Cantos)"
+  },
+  {
+   "texto": "El debate a cuatro entre Sánchez",
+   "motivo": "nombre del debate, no es cifra"
+  },
+  {
+   "texto": "en La 1, Antena 3, laSexta, Telecinco, Cuatro y La Séptima, según Mundiario",
+   "motivo": "nombre de cadena (La 1, Antena 3, Cuatro)"
+  },
+  {
+   "texto": "en la pieza del debate a cuatro.",
+   "motivo": "nombre del debate, no es cifra"
   }
  ],
  "permitir_espana": []

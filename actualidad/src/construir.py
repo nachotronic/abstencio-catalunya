@@ -5174,6 +5174,7 @@ PIEZAS += [
                  ('https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html', 'El Español (Europa Press), audiencia del cara a cara de 2026 (20-11-2026)'),
                  ('https://www.libertaddigital.com/chic/entretenimiento/2026-11-20/mas-de-10-millones-de-espectadores-vieron-el-cara-a-cara-entre-alberto-nunez-feijoo-y-pedro-sanchez-7495065/', 'Libertad Digital, audiencia del cara a cara de 2026 según Barlovento (20-11-2026)'),
                  ('https://www.vozpopuli.com/espana/elecciones-generales-2023/cara-a-cara-sanchez-catapulta-feijoo-sondeos.html', 'Vozpópuli (EFE), las encuestas tras el cara a cara de 2023 (12-7-2023)'),
+                 ('https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html', 'Mundiario, horarios, turnos, bloques y cadenas del debate a cuatro (26-11-2026)'),
                  ('https://mapaelectoral.es/encuestas/', 'Mapa Electoral, encuestas de las elecciones generales 2026')],
         enlaces=[],
         lugar='España',
