@@ -1,0 +1,256 @@
+{
+ "pieza": "encuestas-fallos-elecciones-espana-29n",
+ "cifras": [
+  {
+   "texto": "fallaron por más de 3 puntos en 14 de 30 elecciones desde",
+   "cifra": "14",
+   "calculo": "D['N_3']"
+  },
+  {
+   "texto": "más de 3 puntos en 14 de 30 elecciones desde 2015:",
+   "cifra": "30",
+   "calculo": "D['N_EL']"
+  },
+  {
+   "texto": "Desde 2015, en 14 de 30 elecciones fallaron",
+   "cifra": "14",
+   "calculo": "D['N_3']"
+  },
+  {
+   "texto": "en Andalucía 2022, el PP sacó 6,9 más de lo previsto",
+   "cifra": "6,9",
+   "calculo": "-[t for t in D['TOP'] if t[0]=='Andalucía 2022'][0][4]"
+  },
+  {
+   "texto": "Aquí está la cuenta de las 30 elecciones con datos",
+   "cifra": "30",
+   "calculo": "D['N_EL']"
+  },
+  {
+   "texto": "generales de 2019 y 2023 y 28 autonómicas",
+   "cifra": "28",
+   "calculo": "D['N_EL'] - 2"
+  },
+  {
+   "texto": "En 14 de las 30, la media se equivocó",
+   "cifra": "14",
+   "calculo": "D['N_3']"
+  },
+  {
+   "texto": "En 17, en más de dos",
+   "cifra": "17",
+   "calculo": "D['N_2']"
+  },
+  {
+   "texto": "Solo en seis acertó con todos",
+   "cifra": "seis",
+   "calculo": "D['N_1']"
+  },
+  {
+   "texto": "en Andalucía en 2022: las 11 encuestas",
+   "cifra": "11",
+   "calculo": "[e for e in D['E'] if e[0]=='Andalucía 2022'][0][2]"
+  },
+  {
+   "texto": "al PP el 36,2 % y sacó",
+   "cifra": "36,2",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Andalucía 2022'][0][2]"
+  },
+  {
+   "texto": "y sacó el 43,1 %, 6,9 puntos más",
+   "cifra": "43,1",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Andalucía 2022'][0][3]"
+  },
+  {
+   "texto": "43,1 %, 6,9 puntos más, con",
+   "cifra": "6,9",
+   "calculo": "-[t for t in D['TOP'] if t[0]=='Andalucía 2022'][0][4]"
+  },
+  {
+   "texto": "le daban el 4,4 % y sacó el 11,0 %",
+   "cifra": "4,4",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Andalucía 2018'][0][2]"
+  },
+  {
+   "texto": "y sacó el 11,0 %, 6,6 puntos",
+   "cifra": "11,0",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Andalucía 2018'][0][3]"
+  },
+  {
+   "texto": "11,0 %, 6,6 puntos más",
+   "cifra": "6,6",
+   "calculo": "-[t for t in D['TOP'] if t[0]=='Andalucía 2018'][0][4]"
+  },
+  {
+   "texto": "(PP: 29,8 % en las encuestas",
+   "cifra": "29,8",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Illes Balears 2023'][0][2]"
+  },
+  {
+   "texto": "y 35,8 % en las urnas) y Madrid",
+   "cifra": "35,8",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Illes Balears 2023'][0][3]"
+  },
+  {
+   "texto": "(PSOE: 21,9 % en las encuestas",
+   "cifra": "21,9",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Madrid 2021'][0][2]"
+  },
+  {
+   "texto": "y 16,8 % en las urnas).",
+   "cifra": "16,8",
+   "calculo": "[t for t in D['TOP'] if t[0]=='Madrid 2021'][0][3]"
+  },
+  {
+   "texto": "las 21 empresas le daban",
+   "cifra": "21",
+   "calculo": "[e for e in D['E'] if e[0]=='Generales 2023'][0][2]"
+  },
+  {
+   "texto": "le daban de media el 28,4 % y sacó",
+   "cifra": "28,4",
+   "calculo": "D['G']['M23']['PSOE']"
+  },
+  {
+   "texto": "y sacó el 31,7 %. En 2019",
+   "cifra": "31,7",
+   "calculo": "D['G']['RES23']['PSOE']"
+  },
+  {
+   "texto": "con Vox: le daban el 12,0 %",
+   "cifra": "12,0",
+   "calculo": "D['G']['M19']['VOX']"
+  },
+  {
+   "texto": "y sacó el 15,1 %. Lo contamos",
+   "cifra": "15,1",
+   "calculo": "D['G']['RES19']['VOX']"
+  },
+  {
+   "texto": "En las 23 elecciones en que Vox",
+   "cifra": "23",
+   "calculo": "D['DIR']['VOX'][2]"
+  },
+  {
+   "texto": "menos de lo que sacó en 14 y más",
+   "cifra": "14",
+   "calculo": "D['DIR']['VOX'][0]"
+  },
+  {
+   "texto": "y más en nueve.",
+   "cifra": "nueve",
+   "calculo": "D['DIR']['VOX'][1]"
+  },
+  {
+   "texto": "Con el PP, menos en 15 de 27",
+   "cifra": "15",
+   "calculo": "D['DIR']['PP'][0]"
+  },
+  {
+   "texto": "menos en 15 de 27.",
+   "cifra": "27",
+   "calculo": "D['DIR']['PP'][2]"
+  },
+  {
+   "texto": "Con el PSOE, menos en 15 de 30",
+   "cifra": "15",
+   "calculo": "D['DIR']['PSOE'][0]"
+  },
+  {
+   "texto": "PSOE, menos en 15 de 30.",
+   "cifra": "30",
+   "calculo": "D['DIR']['PSOE'][2]"
+  },
+  {
+   "texto": "En las 22 elecciones en que PP",
+   "cifra": "22",
+   "calculo": "D['B_N']"
+  },
+  {
+   "texto": "lo que sacaron juntos en 18.",
+   "cifra": "18",
+   "calculo": "D['B_CORTA']"
+  },
+  {
+   "texto": "Las cuatro excepciones",
+   "cifra": "cuatro",
+   "calculo": "len(D['B_NO'])"
+  },
+  {
+   "texto": "cada partido fue de 1,7 puntos",
+   "cifra": "1,7",
+   "calculo": "D['MEDIO']"
+  },
+  {
+   "texto": "cinco elecciones tienen tres o menos",
+   "cifra": "cinco",
+   "calculo": "len(D['POCAS'])"
+  },
+  {
+   "texto": "En 14 de 30 elecciones, las",
+   "cifra": "14",
+   "calculo": "D['N_3']"
+  },
+  {
+   "texto": "de las 30 desde 2015",
+   "cifra": "30",
+   "calculo": "sum(1 for e in D['E'] if 'PSOE' in e[3])"
+  },
+  {
+   "texto": "Las cuatro excepciones son de 2023 en adelante",
+   "condicion": "all(e[1] >= '2023' for e in D['E'] if e[0] in D['B_NO'])"
+  },
+  {
+   "texto": "elecciones tienen tres o menos",
+   "condicion": "all(e[2] <= 3 for e in D['E'] if e[0] in D['POCAS'])"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "encuestas fallaron por más de 3 puntos en 14",
+   "motivo": "umbral elegido para la cuenta, no un dato"
+  },
+  {
+   "texto": "fallaron por más de tres puntos con algún partido;",
+   "motivo": "umbral elegido para la cuenta"
+  },
+  {
+   "texto": "Desde el martes 24 no se puede publicar",
+   "motivo": "fecha del inicio de la veda"
+  },
+  {
+   "texto": "lo prohíbe en los cinco días anteriores",
+   "motivo": "plazo legal de la veda (LOREG, art. 69.7)"
+  },
+  {
+   "texto": "se equivocó en más de tres puntos con al menos",
+   "motivo": "umbral elegido para la cuenta"
+  },
+  {
+   "texto": "en que Vox pasó del 3 %",
+   "motivo": "barrera elegida para contar un partido"
+  },
+  {
+   "texto": "pasaron los dos del 3 %",
+   "motivo": "barrera elegida para contar un partido"
+  },
+  {
+   "texto": "tienen tres o menos",
+   "motivo": "umbral de pocas encuestas, comprobado en la condición"
+  },
+  {
+   "texto": "Un error de tres puntos con un partido",
+   "motivo": "umbral de la cuenta, en la conclusión"
+  },
+  {
+   "texto": "fallaron por más de 3 puntos con algún partido",
+   "motivo": "umbral elegido para la cuenta"
+  }
+ ],
+ "ignorar_calidad": [
+  {
+   "texto": "Cataluña 2015",
+   "motivo": "tabla de elecciones: las filas con nombre de comunidad («Andalucía 2018») son elecciones, no totales"
+  }
+ ]
+}

@@ -5488,6 +5488,20 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='encuestas-fallos-elecciones-espana-29n', fecha='2026-11-26',
+        titulo='Las encuestas fallaron por más de 3 puntos en 14 de 30 elecciones desde 2015: Andalucía 2022 y 2018, los mayores sustos', serie='29n', figura=0,
+        descripcion='Lo que las encuestas no dicen: cuánto se equivocan. Desde 2015, en 14 de 30 elecciones fallaron por más de tres puntos con algún partido; en Andalucía 2022, el PP sacó 6,9 más de lo previsto.',
+        compara='La media de la última encuesta de cada empresa publicada en las dos semanas anteriores a la veda, frente al resultado de PP, PSOE, Vox y Cs, en las generales de 2019 y 2023 y en las 28 elecciones autonómicas desde 2015 con encuestas en esas dos semanas.',
+        limites='No incluye ninguna encuesta de las generales del 29N, que están en veda (artículo 69.7 de la LOREG). Solo PP, PSOE, Vox y Cs, los partidos que se pueden emparejar sin ambigüedad entre encuesta y resultado, y solo cuando sacaron al menos el 3 %; en Navarra, sin el PP. Las autonómicas de 2015 a 2019 sin encuestas recopiladas por Electográfica en esas dos semanas no entran, y cinco elecciones tienen tres encuestas o menos. Que las encuestas fallaran en un sentido no dice hacia dónde fallarán la próxima vez.',
+        calculo='Para cada elección, la última encuesta de cada empresa publicada entre 20 y 6 días antes de la votación (en las generales, las mismas ventanas que la pieza de los errores de 2019 y 2023) y su media simple. Error: media menos resultado, en puntos de los votos válidos. Resultados de las generales: Ministerio del Interior, con voto exterior; de las autonómicas, la ficha de cada elección en Wikipedia. Script: actualidad/src/resumenes/encuestas_fallos.py, con los datos que prepara encuestas_fallos_preparar.py.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.electografica.com/', 'Electográfica, encuestas de las elecciones generales y autonómicas desde 2015'),
+                 ('https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Andalucía_de_2022', 'Wikipedia, resultados de las elecciones autonómicas (una ficha por elección; el enlace es la de Andalucía 2022)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a69', 'BOE, Ley Orgánica del Régimen Electoral General, art. 69.7 (veda de encuestas)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada

@@ -16,4 +16,12 @@
       <news:title>Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-26</news:publication_date>
+      <news:title>Las encuestas fallaron por más de 3 puntos en 14 de 30 elecciones desde 2015: Andalucía 2022 y 2018, los mayores sustos</news:title>
+    </news:news>
+  </url>
 </urlset>
