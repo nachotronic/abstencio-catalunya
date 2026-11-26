@@ -80,8 +80,8 @@
    "condicion": "True  # Correos, nota del 16-11-2026, enlazada"
   },
   {
-   "texto": "hasta el 25 de noviembre",
-   "condicion": "True  # Correos, nota del 16-11-2026, enlazada"
+   "texto": "hasta el jueves 26 de noviembre, como máximo a las 14.00",
+   "condicion": "True  # Correos, nota del 20-11-2026 (la JEC amplía el plazo), enlazada"
   },
   {
    "texto": "desde el 9 de noviembre",
