@@ -2073,6 +2073,8 @@ for h in PIEZAS_HISTORIA:
     q.update(fecha=h.get('fecha', '2026-10-08'), serie='historia', enlaces=[])
     if h.get('actualizado'):
         q['actualizado'] = h['actualizado']
+    if h.get('correcciones'):
+        q['correcciones'] = h['correcciones']
     if h.get('foto'):
         q['foto'] = {k: v for k, v in h['foto'].items() if k != 'origen'}
     HISTORIA.append(q)
@@ -3410,6 +3412,7 @@ ANTETITULOS = {
     'veda-encuestas-29n': 'Veda de encuestas',
     'como-votar-elecciones-generales-29n': 'Cómo votar',
     'debate-a-cuatro-sanchez-feijoo-abascal-colau-29n': 'El debate a cuatro',
+    'pueblos-que-siempre-aciertan-29n': 'Los pueblos que siempre aciertan',
     'a-que-hora-resultados-elecciones-generales-29n': 'A qué hora los resultados',
     'participacion-elecciones-generales-29n-prevision': 'Participación',
     'debate-sanchez-feijoo-29n': 'El debate',
@@ -5463,6 +5466,20 @@ PIEZAS += [
                  ('https://barloventocomunicacion.es/wp-content/uploads/2023/07/Analisis-Audiencia-23J-EL-DEBATE-FINAL_19-julio-2023.pdf', 'Barlovento Comunicación, audiencia de los debates electorales (datos de Kantar, 19-7-2023)'),
                  ('https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html', 'El Español (Europa Press), audiencia del cara a cara de 2026 (20-11-2026)'),
                  ('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones generales de 2023')],
+        enlaces=[],
+        lugar='España',
+    ),
+    dict(
+        slug='pueblos-que-siempre-aciertan-29n', fecha='2026-11-26', actualizado='2026-11-26 10:15',
+        titulo='Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2', serie='29n', figura=0,
+        descripcion='Solo 24 municipios han votado al ganador en las 16 elecciones generales. En seis, el PP ganó en 2023 por menos de tres puntos; en Plasencia, el mayor, por 641 votos.',
+        compara='Los 24 municipios que han votado como primera fuerza al partido ganador en España en las 16 elecciones generales de 1977 a 2023, con la ventaja del PP sobre el PSOE en 2023 en cada uno, su perfil (edad, renta, estudios, paro, población extranjera) frente al de España y cuántos siguieron acertando en cada elección.',
+        limites='Acertar siempre es en buena parte casualidad acumulada y no sirve para predecir. Un empate de los dos primeros no cuenta como acierto. El perfil es correlacional: que los 24 se parezcan a España en edad o renta no explica que acierten. España, sin el voto exterior. Sin encuestas: el 29N está en la veda (artículo 69.7 de la LOREG).',
+        calculo='Partido más votado de cada municipio frente al de España, como en la pieza de Plasencia (actualidad/src/historia/datos.py). Porcentajes sobre los votos a candidaturas. Perfil: medias ponderadas por población. Script: actualidad/src/resumenes/pueblos_aciertan.py.',
+        fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones generales de 1977 a 2023 por municipio'),
+                 ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (2023)'),
+                 ('https://www.infobae.com/espana/2026/11/26/el-debate-a-cuatro-definitivo-en-directo-ultima-hora-de-las-elecciones-generales-29-n-y-la-campana-electoral/', 'Infobae, actos del último día de campaña (26-11-2026)'),
+                 ('https://www.laportadadeextremadura.com/extremadura/pedro-sanchez-participara-este-viernes-en-un-acto-en-plasencia_9984_102.html', 'La Portada de Extremadura, acto de Pedro Sánchez en Plasencia (26-11-2026)')],
         enlaces=[],
         lugar='España',
     ),

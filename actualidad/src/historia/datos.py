@@ -11,27 +11,35 @@ EL=sorted(G.eleccion.unique()); YR={e:e[:4] if e!='2019_04' and e!='2019_11' els
 names=G.drop_duplicates('mun_code',keep='last').set_index('mun_code')[['municipio','provincia']]
 cg=c[c.eleccion.str.match(r'^\d')]
 top=cg.sort_values('votos').groupby(['eleccion','mun_code']).tail(1).set_index(['eleccion','mun_code'])
+# Empate: las dos primeras listas con los mismos votos (antes de 2004, por candidatura; desde 2004, por familia).
+# Un empate no es acertar ni fallar: el municipio sale de la lista de los que siempre aciertan (corrección del 26-11-2026).
+emp_pre=cg.sort_values('votos',ascending=False).groupby(['eleccion','mun_code']).votos.apply(lambda v: len(v)>1 and v.iloc[0]==v.iloc[1])
 G=G.set_index(['eleccion','mun_code']); G['win']=G.gana
 pre=G.index.get_level_values(0)<'2004'; G.loc[pre,'win']=top.familia.reindex(G.index[pre]).values
+_s=np.sort(G[fams].fillna(0).values,axis=1); G['emp']=_s[:,-1]==_s[:,-2]
+G.loc[pre,'emp']=emp_pre.reindex(G.index[pre]).fillna(False).astype(bool).values
 G=G.reset_index()
 W=G.pivot(index='mun_code',columns='eleccion',values='win')
+EMP=G.pivot(index='mun_code',columns='eleccion',values='emp').fillna(False).astype(bool)
 nat=G.groupby('eleccion')[fam].sum(); natp=nat.div(nat.sum(axis=1),axis=0); natwin=nat[fams].idxmax(axis=1)
 cen23=G[G.eleccion=='2023_07'].set_index('mun_code').censo
 full=W.dropna()
 D={'elecciones':[YR[e] for e in EL]}
 r2=lambda x: None if pd.isna(x) else round(float(x)*100,1)
 # 1 Ohios
-hit=full.eq(natwin,axis=1).all(axis=1)
+acierta=lambda w: w.eq(natwin[w.columns],axis=1)&~EMP.reindex(w.index)[w.columns]
+hit=acierta(full).all(axis=1)
 oh=full[hit].join(names).join(cen23).sort_values('censo',ascending=False)
-D['ohio']={'n':int(hit.sum()),'n_pre23':int(W.drop(columns='2023_07').dropna().eq(natwin.drop('2023_07'),axis=1).all(axis=1).sum()),
+D['ohio']={'n':int(hit.sum()),'n_pre23':int(acierta(W.drop(columns='2023_07').dropna()).all(axis=1).sum()),
  'nacional':natwin.tolist(),
  'filas':[[r.municipio,r.provincia,int(r.censo),[r[e] for e in EL]] for _,r in oh.iterrows()]}
 # fails in 2023 among pre-23 ohios
-p23=W.drop(columns='2023_07').dropna(); h23=p23.eq(natwin.drop('2023_07'),axis=1).all(axis=1)
+p23=W.drop(columns='2023_07').dropna(); h23=acierta(p23).all(axis=1)
 fallan=W.loc[h23[h23].index,'2023_07'].value_counts().to_dict(); D['ohio']['fallan23']=fallan
+D['ohio']['empatan23']=int(EMP.loc[h23[h23].index,'2023_07'].sum())
 acc=[]
 for k in range(len(EL)):
-    sub=W[EL[:k+1]].dropna(); acc.append(int(sub.eq(natwin[EL[:k+1]],axis=1).all(axis=1).sum()))
+    sub=W[EL[:k+1]].dropna(); acc.append(int(acierta(sub).all(axis=1).sum()))
 D['ohio']['supervivientes']=acc; D['ohio']['comparables']=int(len(full))
 # 2 fieles
 same=full[full.nunique(axis=1)==1]; s=same.iloc[:,0]
