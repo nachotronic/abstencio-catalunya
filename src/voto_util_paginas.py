@@ -23,7 +23,7 @@ CSS = ('.vu-fila{display:flex;flex-wrap:wrap;gap:3px;align-items:center;margin:.
        '.vu-ley .sq{width:14px;height:14px}')
 
 
-CON_ART = {'PP', 'PSOE', 'PNV', 'BNG', 'PRC', 'PAR', 'PACMA', 'PCTE', 'PUM+J', 'Frente Obrero'}
+CON_ART = {'PP', 'PSOE', 'PNV', 'BNG', 'PRC', 'PAR', 'PACMA', 'PCTE', 'PUM+J', 'Frente Obrero', 'PP-PAR', 'PP-Foro', 'UPN-PP'}
 
 
 def el(l):
@@ -36,6 +36,10 @@ def del_(l):
 
 def al(l):
     return f'al {l}' if l in CON_ART else f'a {l}'
+
+
+def para_(l):
+    return 'para ' + el(l)
 
 
 def n(x):
@@ -87,11 +91,19 @@ def pagina(p, a, T_):
             f'{n(a["sin_escano"])} votos ({pc(a["sin_escano_pct"])}) no eligieron a nadie.') if e > 1 else (
             f'Con los votos de 2023, el único escaño de {nom} fue para {el(u["l"])}; {al(s["l"])} le habrían bastado {n(a["cambian"])} votantes. '
             f'{n(a["sin_escano"])} votos ({pc(a["sin_escano_pct"])}) no eligieron a nadie.')
+    H = T_['historia'](p)
     qs = [(f'¿Cuántos diputados elige {nom} el 29N?',
            f'{e}. Se reparten con la regla D\'Hondt entre las candidaturas que pasan del 3 % de los votos válidos de la circunscripción.'),
           (f'¿Cuántos votos hace falta para sacar un escaño en {nom}?',
            f'La ley pide al menos el 3 % de los votos válidos: con la participación de 2023, unos {n(a["barrera"])}. Pero el listón real es el último cociente: '
            f'en 2023, el último escaño de {nom} se repartió con {n(u["q"])} votos por escaño.'),
+          (f'¿Cómo se reparten los escaños en {nom}?',
+           (f'Con la regla D\'Hondt: los votos de cada candidatura que pasa del 3 % se dividen entre 1, 2, 3… hasta {e}, y los {e} cocientes más altos se llevan un escaño cada uno. '
+            f'Con los votos de 2023, el último cociente que entraba fue el {ord_(u["k"])} {del_(u["l"])}, con {n(u["q"])} votos por escaño.') if e > 1 else
+           (f'Con un solo diputado, el escaño es para la candidatura más votada. En 2023 fue {el(u["l"])}.')),
+          (f'¿Hubo voto útil en {nom} en 2023?',
+           f'Los resultados no dicen por qué vota cada persona, pero sí cuántos votos fueron a candidaturas que no sacaron escaño: el {pc(H[-1]["sin_pct"])} de los válidos en 2023, '
+           f'frente al {pc(H[-2]["sin_pct"])} en noviembre de 2019 y al {pc(H[0]["sin_pct"])} en 2015, con los escaños de cada elección.'),
           ('¿Qué es el voto útil?',
            'Votar a una candidatura con opciones de sacar escaño en tu provincia en vez de a la preferida, para que el voto cuente en el reparto. '
            'Esta página no recomienda ningún voto: muestra, con los votos de 2023, qué escaños estuvieron más ajustados y qué votos no eligieron a nadie.')]
@@ -179,6 +191,55 @@ def pagina(p, a, T_):
              f'<p><span class="tipo t-dato">Dato</span>{escape(frase_ult)}, con {n(u["q"])} votos por escaño. Los siguientes cocientes eran {escape(p_list)}. '
              f'Para quitarle el escaño {escape(al(u["l"]))}, {escape(al(s["l"]))} le habrían bastado {n(a["cambian"])} votantes que cambiaran de papeleta, el {pc(100 * a["cambian"] / a["val"], 2)} de los votos válidos, '
              f'o {n(a["nuevos_sig"])} votos nuevos de gente que no votó.</p>')
+
+    # El último escaño en cada generales desde 2015, con los escaños de entonces
+    filas_h = ''.join(
+        f'<tr><td>{h_["et"][0].upper() + h_["et"][1:]}</td><td class="n">{h_["e"]}</td><td>{escape(h_["u"])} ({h_["uk"]}.º)</td><td>{escape(h_["a"])} ({h_["ak"]}.º)</td>'
+        f'<td class="n">{n(h_["c"]) if h_["c"] is not None else "—"}</td><td class="n">{pc(h_["sin_pct"])}</td></tr>' for h_ in H)
+    ok_h = [h_ for h_ in H if h_['c'] is not None]
+    min_h = min(ok_h, key=lambda h_: h_['c'])
+    cuenta = {}
+    for h_ in H:
+        cuenta[h_['u']] = cuenta.get(h_['u'], 0) + 1
+    rep = sorted(cuenta.items(), key=lambda t: -t[1])
+    PAL = {1: 'una', 2: 'dos', 3: 'tres', 4: 'cuatro', 5: 'cinco'}
+    if len(rep) == 1:
+        txt_rep = f'En las cinco generales desde 2015, el {"único" if e == 1 else "último"} escaño de {nom} fue siempre {para_(rep[0][0])}.'
+    else:
+        txt_rep = (f'En las cinco generales desde 2015, el {"único" if e == 1 else "último"} escaño de {nom} fue '
+                   + ', '.join(f'{PAL[k]} {"vez" if k == 1 else "veces"} {para_(l)}' for l, k in rep[:-1]) + f' y {PAL[rep[-1][1]]} {"vez" if rep[-1][1] == 1 else "veces"} {para_(rep[-1][0])}.')
+    nota_esc = ''
+    if any(h_['e'] != H[0]['e'] for h_ in H) or H[-1]['e'] != e:
+        nota_esc = f' El número de escaños de {nom} ha cambiado: cada fila usa los de esa elección; el 29N son {e}.'
+    h.append(f'<h2>El último escaño, elección a elección</h2>'
+             f'<p><span class="tipo t-dato">Dato</span>{escape(txt_rep)} El más ajustado fue en {min_h["et"]}: {escape(al(min_h["a"]))} le habrían bastado {n(min_h["c"])} votantes '
+             f'que se pasaran {escape(del_(min_h["u"]))} para llevárselo.{escape(nota_esc)}</p>'
+             f'<figure><div style="overflow-x:auto"><table><caption>El {"único" if e == 1 else "último"} escaño de {escape(nom)} en las generales desde 2015, con los votos y los escaños de cada elección</caption>'
+             '<thead><tr><th>Elección</th><th>Escaños</th><th>Último escaño</th><th>A las puertas</th><th>Votantes que cambian</th><th>Votos sin escaño</th></tr></thead>'
+             f'<tbody>{filas_h}</tbody></table></div><figcaption>Votantes que cambian: el mínimo de votantes que, pasando de la candidatura del último escaño a la que se quedó a las puertas, '
+             'le habrían dado el escaño. Votos sin escaño: los votos a candidaturas que no sacaron ninguno, en % de los válidos. Fuente: Ministerio del Interior, resultados definitivos '
+             'con el voto exterior (CERA). Cálculo propio con la regla D\'Hondt y la barrera del 3 %.</figcaption></figure>')
+
+    # Dónde están los votos de cada candidatura con escaño (2023, por municipio)
+    M = T_['MUN']
+    mp = M[M.mun_code.str[:2] == p]
+    if len(mp) > 1:
+        lis = []
+        for x in con:
+            col_v = f'2023_07_v{x["f"]}'
+            if col_v not in mp.columns or not mp[col_v].sum():
+                continue
+            top = mp.nlargest(5, col_v)
+            tot = mp[col_v].sum()
+            enl = lambda m: (f'<a href="{raiz}{T_["CIUDADES"][m.mun_code]}">{escape(m.municipio)}</a>' if m.mun_code in T_['CIUDADES']
+                             else f'<a href="{raiz}?m={m.mun_code}">{escape(m.municipio)}</a>')
+            cinco = ', '.join(f'{enl(m)} ({n(m[col_v])})' for _, m in top.iterrows())
+            lis.append(f'<li><strong style="color:{col[x["l"]]}">{escape(x["l"])}</strong>: {cinco}. Entre los cinco, el {pc(100 * top[col_v].sum() / tot)} de sus votos en la provincia.</li>')
+        if lis:
+            h.append('<h2>Dónde están los votos de cada candidatura</h2>'
+                     f'<p><span class="tipo t-dato">Dato</span>Los cinco municipios de {escape(nom)} donde más votos sacó en 2023 cada candidatura con escaño, con sus votos. '
+                     'Son los votos emitidos en el municipio: no incluyen el voto exterior, que no se asigna a ningún municipio.</p>'
+                     f'<ul>{"".join(lis)}</ul>')
 
     # Votos que no eligieron a nadie
     if sin:

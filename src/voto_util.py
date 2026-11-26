@@ -8,6 +8,7 @@ Barrera: 3 % de los votos válidos de la circunscripción (LOREG, art. 163.1.a).
 Lo usan las 52 páginas elecciones/…/voto-util-29n/ (territorios.py) y la pieza resumen de Actualidad.
 Uso suelto, desde la raíz: python3 src/voto_util.py  (imprime el resumen y comprueba contra escanos-en-el-filo-29n)
 """
+import functools
 import json
 import pathlib
 import re
@@ -21,6 +22,23 @@ ESC_2023 = {'01': 4, '02': 4, '03': 12, '04': 6, '05': 3, '06': 5, '07': 8, '08'
             '37': 4, '38': 7, '39': 5, '40': 3, '41': 12, '42': 2, '43': 6, '44': 3, '45': 6, '46': 16, '47': 5, '48': 8,
             '49': 3, '50': 7, '51': 1, '52': 1}
 ESC_2026 = {**ESC_2023, '28': 38, '11': 8}
+# Escaños de cada circunscripción en las generales anteriores (cuadros de diputados por circunscripción de Wikipedia, 26-11-2026),
+# comprobados: con ellos y los votos de agregados.json, el reparto da los diputados oficiales de cada partido (OFICIALES, abajo)
+ESC_HIST = {'2015_12': {**ESC_2023, '28': 36, '08': 31, '46': 15, '33': 8, '06': 6, '24': 5},
+            '2016_06': {**ESC_2023, '28': 36, '08': 31, '33': 8, '06': 6},
+            '2019_04': {**ESC_2023, '46': 15, '06': 6},
+            '2019_11': {**ESC_2023, '46': 15, '06': 6},
+            '2023_07': dict(ESC_2023)}
+HIST = list(ESC_HIST)
+ETIQ = {'2015_12': '2015', '2016_06': '2016', '2019_04': 'abril de 2019', '2019_11': 'noviembre de 2019', '2023_07': '2023'}
+# Diputados por familia (las de agregados.json) que da el reparto, iguales a los oficiales de Interior: Podemos y sus confluencias,
+# IU, Compromís y Más País van juntos en SUMAR; UPN-PP y Navarra Suma, en PP; NC con CC; el PRC en OTROS en abril de 2019
+OFICIALES = {'2015_12': {'PP': 123, 'PSOE': 90, 'SUMAR': 71, 'CS': 40, 'ERC': 9, 'JUNTS': 8, 'PNV': 6, 'BILDU': 2, 'CC': 1},
+             '2016_06': {'PP': 137, 'PSOE': 85, 'SUMAR': 71, 'CS': 32, 'ERC': 9, 'JUNTS': 8, 'PNV': 5, 'BILDU': 2, 'CC': 1},
+             '2019_04': {'PSOE': 123, 'PP': 68, 'CS': 57, 'SUMAR': 43, 'VOX': 24, 'ERC': 15, 'JUNTS': 7, 'PNV': 6, 'BILDU': 4, 'CC': 2, 'OTROS': 1},
+             '2019_11': {'PSOE': 120, 'PP': 91, 'VOX': 52, 'SUMAR': 38, 'ERC': 13, 'CS': 10, 'JUNTS': 8, 'PNV': 6, 'BILDU': 5, 'CUP': 2, 'CC': 2,
+                         'BNG': 1, 'PRC': 1, 'TE': 1},
+             '2023_07': {'PP': 137, 'PSOE': 121, 'VOX': 33, 'SUMAR': 31, 'ERC': 7, 'JUNTS': 7, 'BILDU': 6, 'PNV': 5, 'BNG': 1, 'UPN': 1, 'CC': 1}}
 
 # Nombre corto de cada lista de 2023 en el texto, por familia (las que no están aquí, con sus siglas de Interior)
 NOMBRE = {'PP': 'PP', 'PSOE': 'PSOE', 'VOX': 'Vox', 'SUMAR': 'Sumar', 'ERC': 'ERC', 'JUNTS': 'Junts', 'BILDU': 'EH Bildu', 'PNV': 'PNV',
@@ -35,6 +53,82 @@ def nombre(siglas, fam):
     if siglas == 'ESCAÑOS EN BLANCO':
         return 'Escaños en Blanco'
     return NOMBRE.get(fam, siglas)
+
+
+_CAT, _VAL, _GAL = {'08', '17', '25', '43'}, {'03', '12', '46'}, {'15', '27', '32', '36'}
+_SUMAR = {'2015_12': ('Podemos', 'En Comú Podem', 'Compromís-Podemos', 'En Marea'),
+          '2016_06': ('Unidos Podemos', 'En Comú Podem', 'A la valenciana', 'En Marea'),
+          '2019_04': ('Unidas Podemos', 'En Comú Podem', 'Unides Podem', 'En Común-Unidas Podemos'),
+          '2019_11': ('Unidas Podemos', 'En Comú Podem', 'Unides Podem', 'En Común-Unidas Podemos')}
+_SUMAR_2 = {'2015_12': 'IU-Unidad Popular', '2019_04': 'Compromís', '2019_11': 'Más País'}
+_OTRAS = {'JUNTS': {'2015_12': 'Democràcia i Llibertat', '2016_06': 'CDC', '2019_04': 'JxCat', '2019_11': 'JxCat'},
+          'CS': 'Ciudadanos', 'BILDU': 'EH Bildu', 'CC': 'CC', 'TE': '¡Teruel Existe!', 'CPM': 'Coalición por Melilla'}
+_PP = {'UPN-PP': 'UPN-PP', 'NA+': 'Navarra Suma', 'PP-PAR': 'PP-PAR', 'PP-FORO': 'PP-Foro'}
+
+
+def nombre_hist(y, p, siglas, fam, mayor_sumar):
+    """Nombre corto de una lista de 2015 a 2019 (las de 2023, con nombre()). mayor_sumar: la lista de la familia SUMAR más votada
+    en esa circunscripción; la otra (IU en 2015, Compromís y Más País en 2019) lleva su nombre."""
+    if y == '2023_07':
+        return nombre(siglas, fam)
+    if fam == 'SUMAR':
+        if siglas != mayor_sumar:
+            return 'EUPV-Unitat Popular' if (y == '2015_12' and p in _VAL) else ('Més Compromís' if (y == '2019_11' and p in _VAL) else _SUMAR_2.get(y, siglas))
+        g, c, v, gl = _SUMAR[y]
+        return c if p in _CAT else v if p in _VAL else gl if p in _GAL else g
+    if fam == 'PP':
+        return _PP.get(siglas, 'PP')
+    o = _OTRAS.get(fam)
+    if isinstance(o, dict):
+        return o.get(y, siglas)
+    return o or NOMBRE.get(fam, siglas)
+
+
+@functools.lru_cache(maxsize=None)
+def historia(p):
+    """El último escaño de p en cada generales desde 2015, con los votos y los escaños de entonces: quién se lo llevó, quién se quedó
+    a las puertas, cuántos votantes que cambiaran de papeleta o votos nuevos le habrían bastado, y los votos que no eligieron a nadie."""
+    d = json.loads(AGREGADOS.read_text(encoding='utf-8'))
+    out = []
+    for y in HIST:
+        x = d[y]['PR'][p]
+        votos, fam = {}, {}
+        for s, v, _, f in x['c']:
+            if v > 0:
+                votos[s] = votos.get(s, 0) + v
+                fam[s] = f
+        val, e = sum(votos.values()) + int(x['bl']), ESC_HIST[y][p]
+        esc, q = reparto(votos, val, e)
+        u = q[e - 1]
+        sg = next(t for t in q[e:] if t[2] != u[2])
+        su = [l for l in votos if fam[l] == 'SUMAR']
+        ms = max(su, key=lambda l: votos[l]) if su else None
+        nm = lambda l: nombre_hist(y, p, l, fam[l], ms)
+        sin = sum(v for l, v in votos.items() if not esc.get(l))
+        out.append({'y': y, 'et': ETIQ[y], 'e': e, 'u': nm(u[2]), 'uf': fam[u[2]], 'uk': u[3], 'uq': u[0],
+                    'a': nm(sg[2]), 'af': fam[sg[2]], 'ak': sg[3], 'c': votantes_que_cambian(votos, val, e, u[2], sg[2]),
+                    'nv': votos_nuevos(votos, val, e, sg[2]), 'val': val, 'sin': sin, 'sin_pct': 100 * sin / val})
+    return out
+
+
+def comprobar_historia():
+    """Los escaños de ESC_HIST y los votos de agregados.json dan los diputados oficiales de cada partido en cada elección."""
+    d = json.loads(AGREGADOS.read_text(encoding='utf-8'))
+    mal = {}
+    for y, E in ESC_HIST.items():
+        assert sum(E.values()) == 350, y
+        tot = {}
+        for p, x in d[y]['PR'].items():
+            votos, fam = {}, {}
+            for s, v, _, f in x['c']:
+                if v > 0:
+                    votos[s] = votos.get(s, 0) + v
+                    fam[s] = f
+            for l, k in reparto(votos, sum(votos.values()) + int(x['bl']), E[p])[0].items():
+                tot[fam[l]] = tot.get(fam[l], 0) + k
+        if tot != OFICIALES[y]:
+            mal[y] = tot
+    return mal
 
 
 def cargar():
@@ -188,6 +282,8 @@ if __name__ == '__main__':
     for p, a in A.items():
         print(p, a['n'], a['e'], a['ultimo']['l'], a['ultimo']['k'], '→', a['siguiente']['l'], a['siguiente']['k'], a['cambian'], a['nuevos_sig'],
               f"sin escaño {a['sin_escano']} ({a['sin_escano_pct']:.1f} %)")
+    assert not comprobar_historia(), comprobar_historia()
+    print('historia: escaños oficiales de 2015 a 2023, bien')
     mal = comprobar(A)
     print('distintos de escanos-en-el-filo:', len(mal))
     for m in mal:
