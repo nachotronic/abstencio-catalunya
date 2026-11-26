@@ -1,0 +1,110 @@
+{
+ "pieza": "escanos-en-el-filo-29n",
+ "cifras": [
+  {
+   "texto": "a 2.000 votantes, los escaños en el filo son 14",
+   "cifra": "14",
+   "calculo": "sum(x['c'] < 2000 for x in F.values())"
+  },
+  {
+   "texto": "Con menos de 5.000, son 32",
+   "cifra": "32",
+   "calculo": "len([x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "bastaría con 73.463 personas",
+   "cifra": "73.463",
+   "calculo": "sum(x['c'] for x in [x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "Por debajo de 10.000 hay 44 escaños",
+   "cifra": "44",
+   "calculo": "sum(x['c'] < 10000 for x in F.values())"
+  },
+  {
+   "texto": "uno de cada ocho del Congreso",
+   "cifra": "ocho",
+   "calculo": "350 / sum(x['c'] < 10000 for x in F.values())"
+  },
+  {
+   "texto": "el único escaño de Vox estaba a 1.020 votantes",
+   "cifra": "1.020",
+   "calculo": "F['19']['c']"
+  },
+  {
+   "texto": "el tercero del PSOE estaba a 1.174 del primero de Sumar",
+   "cifra": "1.174",
+   "calculo": "F['38']['c']"
+  },
+  {
+   "texto": "Teruel, donde el segundo del PP estaba a 1.297 del primero de Teruel Existe",
+   "cifra": "1.297",
+   "calculo": "F['44']['c']"
+  },
+  {
+   "texto": "el quinto del PP estaba a 1.349 del cuarto del PSOE",
+   "cifra": "1.349",
+   "calculo": "F['29']['c']"
+  },
+  {
+   "texto": "y Cuenca, a 1.364",
+   "cifra": "1.364",
+   "calculo": "F['16']['c']"
+  },
+  {
+   "texto": "De los 32 escaños que se movían con menos de 5.000 votantes",
+   "cifra": "32",
+   "calculo": "len([x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "defiende 13.",
+   "cifra": "13",
+   "calculo": "sum(x['u'] == 'PP' for x in [x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "El PSOE defiende 6",
+   "cifra": "6",
+   "calculo": "sum(x['u'] == 'PSOE' for x in [x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "y aspira a 16.",
+   "cifra": "16",
+   "calculo": "sum(x['a'] == 'PSOE' for x in [x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "Vox defiende seis escaños ajustados",
+   "cifra": "seis",
+   "calculo": "sum(x['u'] == 'Vox' for x in [x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "donde el segundo del PP estaba a 4.078 votantes",
+   "cifra": "4.078",
+   "calculo": "F['05']['c']"
+  },
+  {
+   "texto": "y aspira a cuatro",
+   "cifra": "cuatro",
+   "calculo": "sum(x['a'] == 'Sumar' for x in [x for x in F.values() if x['c'] < 5000])"
+  },
+  {
+   "texto": "Teruel Existe, a 1.297 votantes del segundo escaño del PP",
+   "cifra": "1.297",
+   "calculo": "F['44']['c']"
+  },
+  {
+   "texto": "Soria ¡Ya!, a 2.635 del único del PSOE",
+   "cifra": "2.635",
+   "calculo": "F['42']['c']"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "que se cuenta cinco días después de la elección",
+   "motivo": "plazo legal del escrutinio general, no un dato calculado"
+  },
+  {
+   "texto": "Compiten todas las candidaturas que pasaron del 3 %",
+   "motivo": "barrera legal del 3 % (LOREG, art. 163.1.a)"
+  }
+ ]
+}
