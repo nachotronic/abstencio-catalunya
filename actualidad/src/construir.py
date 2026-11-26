@@ -5497,7 +5497,7 @@ PIEZAS += [
         calculo='Para cada elección, la última encuesta de cada empresa publicada entre 20 y 6 días antes de la votación (en las generales, las mismas ventanas que la pieza de los errores de 2019 y 2023) y su media simple. Error: media menos resultado, en puntos de los votos válidos. Resultados de las generales: Ministerio del Interior, con voto exterior; de las autonómicas, la ficha de cada elección en Wikipedia. Script: actualidad/src/resumenes/encuestas_fallos.py, con los datos que prepara encuestas_fallos_preparar.py.',
         fuentes=[INTERIOR_CERA,
                  ('https://www.electografica.com/', 'Electográfica, encuestas de las elecciones generales y autonómicas desde 2015'),
-                 ('https://es.wikipedia.org/wiki/Elecciones_al_Parlamento_de_Andalucía_de_2022', 'Wikipedia, resultados de las elecciones autonómicas (una ficha por elección; el enlace es la de Andalucía 2022)'),
+                 (WIKI_ANDALUZAS_2022, 'Wikipedia, resultados de las elecciones autonómicas (una ficha por elección; el enlace es la de Andalucía 2022)'),
                  ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a69', 'BOE, Ley Orgánica del Régimen Electoral General, art. 69.7 (veda de encuestas)')],
         enlaces=[],
         lugar='España',
