@@ -5488,6 +5488,20 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='encuestas-fallos-elecciones-espana-29n', fecha='2026-11-26',
+        titulo='Las encuestas fallaron por más de 3 puntos en 15 de 30 elecciones analizadas desde 2015: Andalucía 2022 y 2018, los mayores sustos', serie='29n', figura=0,
+        descripcion='Lo que las encuestas no dicen: cuánto se equivocan. En 15 de las 30 elecciones analizadas desde 2015 fallaron por más de tres puntos con algún partido; en Andalucía 2022, el PP sacó 6,9 más de lo previsto.',
+        compara='La media de la última encuesta de cada empresa publicada en las dos semanas anteriores a la veda, frente al resultado de PP, PSOE, Vox y Cs, en las generales de noviembre de 2019 y de 2023 y en 28 elecciones autonómicas desde 2015.',
+        limites='No incluye ninguna encuesta de las generales del 29N, que están en veda (artículo 69.7 de la LOREG). Solo PP, PSOE, Vox y Cs, los partidos que se pueden emparejar sin ambigüedad entre encuesta y resultado, y solo cuando sacaron al menos el 3 %; en Navarra, sin el PP. No entran las generales de 2015, 2016 y abril de 2019, las autonómicas de marzo y mayo de 2015 y de abril y mayo de 2019 (sin encuestas de esas fechas en la recopilación de Electográfica), las catalanas de 2017 (todas las fichas llevan la fecha del día de la votación) ni las riojanas de 2023 (sin el resultado en los mismos datos). Cinco elecciones tienen tres encuestas o menos. Algunas fichas antiguas de Electográfica solo guardaban uno o dos partidos: la estimación completa se ha leído de la página de cada encuesta. Que las encuestas fallaran en un sentido no dice hacia dónde fallarán la próxima vez.',
+        calculo='Para cada elección, la última encuesta de cada empresa publicada entre 20 y 6 días antes de la votación (en las generales, las mismas ventanas que la pieza de los errores de 2019 y 2023) y su media simple. Error: media menos resultado, en puntos de los votos válidos. Resultados de las generales: Ministerio del Interior, con voto exterior; de las autonómicas, la ficha de cada elección en Wikipedia. Script: actualidad/src/resumenes/encuestas_fallos.py, con los datos que prepara encuestas_fallos_preparar.py.',
+        fuentes=[INTERIOR_CERA,
+                 ('https://www.electografica.com/', 'Electográfica, encuestas de las elecciones generales y autonómicas desde 2015'),
+                 (WIKI_ANDALUZAS_2022, 'Wikipedia, resultados de las elecciones autonómicas (una ficha por elección; el enlace es la de Andalucía 2022)'),
+                 ('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a69', 'BOE, Ley Orgánica del Régimen Electoral General, art. 69.7 (veda de encuestas)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
