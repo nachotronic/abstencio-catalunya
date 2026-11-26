@@ -32,6 +32,8 @@ BARRERA = 0.03
 def nombre(siglas, fam):
     if siglas == 'PACMA':
         return 'PACMA'
+    if siglas == 'ESCAÑOS EN BLANCO':
+        return 'Escaños en Blanco'
     return NOMBRE.get(fam, siglas)
 
 

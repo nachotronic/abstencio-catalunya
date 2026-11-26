@@ -5518,6 +5518,15 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
     'barrios-caseros-inquilinos-voto-29n': '2026-10-30',   # Nacho, 28-10-2026: «la ponemos en el carrusel de portada»
 }
 
+# Tarjetas de páginas que no son piezas de Actualidad, delante de todo el carrusel de la portada mientras estén en fecha
+# (primer día y último día incluidos). Nacho, 26-11-2026 11.43, del voto útil: «Ponlos en el carrusel»
+PORTADA_EXTERNAS = [
+    dict(url='elecciones/voto-util-29n/', antetitulo='Voto útil · 52 circunscripciones',
+         titulo='Voto útil el 29N: qué escaños estaban en juego en cada provincia',
+         imagen='img/portada/voto-util-29n.jpg', alt='Un cuadrado por escaño en cada provincia, con los seguros, los probables y los que estaban en juego',
+         dias=('2026-11-26', '2026-11-29')),
+]
+
 # Nacho, 4-11-2026 21.58: «No podemos perder el 3d y todas las cosas chulas que hemos hecho de usa. Mantengámoslas en internacional»
 # Las de EE. UU. van delante en el carrusel Internacional de la portada y en /internacional/, con un bloque propio.
 INTER_DESTACADAS = ['cabo-verde-presidenciales-neves-rosa-mapa', 'paraguay-pena-destituido-mapa-departamentos', 'nueva-zelanda-resultados-mapa', 'eeuu-elecciones-medio-mandato-mapa', 'eeuu-resultados-medio-mandato-2026']
@@ -5548,6 +5557,9 @@ def franja_portada(todas, pre=''):
     return (f'<section class="wide del-atlas del-actualidad" aria-labelledby="h-del-actualidad"><div class="da-cab"><h2 id="h-del-actualidad"><a href="{pre}actualidad/">Actualidad</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Piezas anteriores">←</button><button type="button" class="da-next" aria-label="Más piezas">→</button></span></div>'
             '<ul class="carrusel">' +
+            ''.join(f'<li><a href="{pre}{x["url"]}"><img src="{pre}{x["imagen"]}" alt="{html.escape(x["alt"])}" loading="lazy" width="300" height="200">'
+                    f'<span class="atlas-k">{html.escape(x["antetitulo"])}</span><b>{html.escape(x["titulo"])}</b></a></li>'
+                    for x in PORTADA_EXTERNAS if x['dias'][0] <= hoy <= x['dias'][1]) +
             ''.join(f'<li><a href="{pre}actualidad/{q["slug"]}/">{imagen_carrusel(q, pre)}'
                     f'<span class="atlas-k">{antetitulo(q)}</span><b>{html.escape(titulo_carrusel(q["titulo"]))}</b></a></li>' for q in ult) +
             f'<li class="todas"><a href="{pre}actualidad/"><b>Todas las piezas de actualidad →</b><span>{" · ".join(SERIES[k] for k in SERIES if k not in NOMES_ENLLACADES and k != 'internacional')}</span></a></li></ul>'

@@ -170,8 +170,7 @@ def pagina(p, a, T_):
              '<figcaption>Seguro: el escaño aguanta aunque la candidatura pierda el 25 % de sus votos de 2023. Probable: lo perdería con una caída de entre el 10 % y el 25 %. '
              'En juego: lo perdería con menos de un 10 % menos de votos. Al alcance: un escaño más que ganaría con menos de un 10 % más de votos. '
              'Cada cálculo mueve solo los votos de esa candidatura y deja igual los del resto. Fuente: Ministerio del Interior (2023, con CERA); escaños de 2026. Cálculo propio.</figcaption></figure>'
-             '<p>Por qué un 10 %: a pocos días de votar, el error típico de las encuestas para un partido grande ronda los tres puntos, una décima parte de su voto. '
-             'Es un umbral orientativo, no una probabilidad.</p>')
+             '<p>El umbral del 10 % es orientativo, no una probabilidad.</p>')
 
     # El último escaño
     p_l = [f'el {ord_(o["k"])} {del_(o["l"])} ({n(o["q"])})' for o in a['puertas']]
