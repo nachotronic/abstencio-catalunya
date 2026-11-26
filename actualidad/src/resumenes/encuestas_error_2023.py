@@ -178,7 +178,7 @@ if not VEDA:
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Lo que las encuestas no dicen',
-      f'En 2023, las últimas encuestas daban al PP {p(MGAP23)} puntos de ventaja sobre el PSOE y ganó por {p(GAP23)}: si hoy fallaran igual, el PSOE iría primero',
+      f'En 2023, las últimas encuestas daban al PP {p(MGAP23)} puntos de ventaja sobre el PSOE y ganó por {p(GAP23)}'   # Nacho, 26-11-2026 13:24 («cambia»): sin la parte que salía de la media de 2026,
       f'Lo que las encuestas de las elecciones generales del 29N no dicen: cuánto se equivocaron la última vez. En 2023 se quedaron {p(abs(ERR23["PSOE"]))} puntos cortas con el PSOE; '
       f'en 2019, {p(abs(ERR19["VOX"]))} con Vox.',
       '17 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
