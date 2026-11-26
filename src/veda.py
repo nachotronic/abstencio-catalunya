@@ -20,7 +20,8 @@ HASTA = datetime.datetime(2026, 11, 29, 21, 0, tzinfo=MADRID)
 PATRON_ENCUESTAS = re.compile(r'encuesta|sondeo|^cis-')
 PIEZAS_ENCUESTAS = set()
 # Piezas que hablan de encuestas pero no dan cifras de ninguna: siguen en el carrusel durante la veda (Nacho, 23-11-2026: «Sí, primera»)
-NO_SON_ENCUESTAS = {'encuestas-andorra-29n'}
+# y piezas históricas sin ninguna cifra de encuestas del 29N (Nacho, 26-11-2026: «ok a todo», excepción del carrusel para la de los fallos)
+NO_SON_ENCUESTAS = {'encuestas-andorra-29n', 'encuestas-fallos-elecciones-espana-29n'}
 
 
 def en_veda(ahora=None):

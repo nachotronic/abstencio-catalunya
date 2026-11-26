@@ -127,41 +127,6 @@
    "calculo": "D['VOX19_MAX']"
   },
   {
-   "texto": "da al PP el 30,9 %",
-   "cifra": "30,9",
-   "calculo": "D['MED']['PP']"
-  },
-  {
-   "texto": "y al PSOE el 27,8 %",
-   "cifra": "27,8",
-   "calculo": "D['MED']['PSOE']"
-  },
-  {
-   "texto": "3,0 puntos de ventaja para el PP",
-   "cifra": "3,0",
-   "calculo": "D['HOY']"
-  },
-  {
-   "texto": "exageraron esa ventaja en 4,3 puntos",
-   "cifra": "4,3",
-   "calculo": "D['SOBRE23']"
-  },
-  {
-   "texto": "frente al PSOE en 0,9 puntos",
-   "cifra": "0,9",
-   "calculo": "D['SOBRE19']"
-  },
-  {
-   "texto": "el PSOE iría 1,3 puntos por delante",
-   "cifra": "1,3",
-   "calculo": "-D['CON23']"
-  },
-  {
-   "texto": "con 2,1 puntos de ventaja",
-   "cifra": "2,1",
-   "calculo": "D['CON19']"
-  },
-  {
    "texto": "Desde el martes 24 de noviembre",
    "condicion": "True  # 29-11-2026 domingo; veda art. 69.7 LOREG: cinco días anteriores = 24 a 28"
   },
@@ -216,5 +181,45 @@
   }
  ],
  "ignorar": [],
- "permitir_espana": []
+ "permitir_espana": [],
+ "tras_veda": {
+  "nota": "Sección «Qué pasaría hoy», retirada durante la veda del 29N (26-11-2026). Volver a pasar estas cifras a «cifras» al reconstruir después del 29-11 a las 21:00.",
+  "cifras": [
+   {
+    "texto": "da al PP el 30,9 %",
+    "cifra": "30,9",
+    "calculo": "D['MED']['PP']"
+   },
+   {
+    "texto": "y al PSOE el 27,8 %",
+    "cifra": "27,8",
+    "calculo": "D['MED']['PSOE']"
+   },
+   {
+    "texto": "3,0 puntos de ventaja para el PP",
+    "cifra": "3,0",
+    "calculo": "D['HOY']"
+   },
+   {
+    "texto": "exageraron esa ventaja en 4,3 puntos",
+    "cifra": "4,3",
+    "calculo": "D['SOBRE23']"
+   },
+   {
+    "texto": "frente al PSOE en 0,9 puntos",
+    "cifra": "0,9",
+    "calculo": "D['SOBRE19']"
+   },
+   {
+    "texto": "el PSOE iría 1,3 puntos por delante",
+    "cifra": "1,3",
+    "calculo": "-D['CON23']"
+   },
+   {
+    "texto": "con 2,1 puntos de ventaja",
+    "cifra": "2,1",
+    "calculo": "D['CON19']"
+   }
+  ]
+ }
 }

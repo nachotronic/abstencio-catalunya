@@ -1727,10 +1727,10 @@ PIEZAS = [
     ),
     dict(
         slug='provincias-en-el-filo-29n', fecha='2026-10-24',
-        actualizado='2026-11-26 12:30',
+        actualizado='2026-11-26 13:30',
         correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9).',
         titulo='Las provincias que deciden el 29N: 32 escaños se movían en 2023 con menos de 5.000 votantes, y el PP defiende 13', serie='29n',
-        descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de 32 circunscripciones habría cambiado de partido con menos de 5.000 votantes; en Cantabria bastaban 101. El PP defiende 13 y el PSOE aspira a 17. Por qué casi todos están en provincias pequeñas y qué puede moverlos antes de votar.',
+        descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de 32 circunscripciones habría cambiado de partido con menos de 5.000 votantes; en Cantabria bastaban 101. El PP defiende 13 y el PSOE aspira a 16. Por qué casi todos están en provincias pequeñas y qué puede moverlos antes de votar.',
         compara='Para cada circunscripción, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de 2023 (voto exterior incluido) y los escaños de 2026; cuántos votantes tendrían que pasar de una a otra; qué partido defiende y cuál aspira a cada uno; el precio del escaño y los votos sin escaño por provincia; y el modelo de encuestas por provincia del 23 de octubre.',
         limites='Es aritmética sobre el resultado de 2023, no una previsión. El número de votantes que cambian de papeleta es el mínimo en el mejor caso para la aspirante; los votantes no se mueven en bloque. Solo se mira el último escaño y la primera aspirante de cada provincia. El modelo de encuestas es una estimación con un error típico de unos cinco puntos para un partido del 30 % a cinco semanas, y cambia cada día.',
         calculo='Reparto D\'Hondt con barrera del 3 % y desempate por más votos, con los votos definitivos de 2023 y los escaños del Real Decreto 806/2026; compiten todas las candidaturas, también las provinciales. Script: actualidad/src/resumenes/filo.py, con los datos de la pieza «Seis escaños que se decidieron por menos de mil votantes».',
@@ -5025,6 +5025,8 @@ PIEZAS += [
     ),
     dict(
         slug='encuestas-error-2023-2019-29n', fecha='2026-11-17',
+        actualizado='2026-11-26 13:30',
+        correcciones='26-11-2026: durante la veda de encuestas del 29N (artículo 69.7 de la LOREG) se retira la sección «Qué pasaría hoy con el mismo error», que usaba la media de las encuestas de 2026. Volverá después del cierre de los colegios, el domingo 29 a las 21:00.',
         titulo='En 2023, las últimas encuestas daban al PP 5,7 puntos de ventaja sobre el PSOE y ganó por 1,4: si hoy fallaran igual, el PSOE iría primero', serie='29n', figura=0,
         descripcion='Lo que las encuestas de las elecciones generales del 29N no dicen: cuánto se equivocaron la última vez. En 2023 se quedaron 3,3 puntos cortas con el PSOE; en 2019, 3,1 con Vox.',
         compara='La media de la última encuesta de cada empresa publicada antes de la veda en julio de 2023 (21 empresas) y en noviembre de 2019 (15), frente al resultado con voto exterior; y la media de encuestas de hoy corregida con esos errores.',
