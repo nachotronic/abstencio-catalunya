@@ -34,7 +34,8 @@ VIDEOS = [
     dict(nombre='eeuu-camara', t=9.5, k='Estados Unidos', titulo='Los 435 distritos que deciden la Cámara de EE. UU.', tuit=''),
     dict(nombre='eeuu-mapas', t=9, k='Estados Unidos', titulo='Nueve estados redibujaron sus distritos: lo que gana cada partido', tuit=''),
     dict(nombre='precio-escano', t=8, k='Ley electoral', titulo='Un diputado cuesta 97.532 votos en Madrid y 25.304 en Teruel', tuit=''),
-    dict(nombre='plasencia', t=8, k='Historia electoral', titulo='16 de 16: los 27 municipios que siempre votan al ganador', tuit=''),
+    dict(nombre='plasencia', t=8, k='Historia electoral', titulo='16 de 16: los 27 municipios que siempre votan al ganador', tuit='',
+         fuera=True),   # Nacho, 26-11-2026 13:24: fuera de la portada hasta regenerarlo con 24 (la pieza se corrigió de 27 a 24)
     dict(nombre='ucd-cs', t=8, k='Historia electoral', titulo='De 5.990 municipios a 762: los hundimientos de UCD y Ciudadanos', tuit=''),
     dict(nombre='nunca-gano', t=8, k='Historia electoral', titulo='1.932 municipios donde el PSOE nunca ha ganado, y 864 sin la derecha', tuit=''),
     dict(nombre='dana', t=8, k='DANA', titulo='Los 74 pueblos de la DANA llegan al 29N partidos: 38 del PSOE y 36 del PP', tuit=''),
@@ -76,7 +77,7 @@ def franja(pre=''):
         f'<li><a href="{html.escape(v["tuit"] or PERFIL + "/media")}" target="_blank" rel="noopener">'
         f'<span class="dv-img"><img src="{pre}img/videos/{v["nombre"]}.jpg" alt="Fotograma del vídeo «{html.escape(v["titulo"])}»" loading="lazy" width="360" height="480"><i aria-hidden="true"></i></span>'
         f'<span class="atlas-k">{html.escape(v["k"])}</span><b>{html.escape(v["titulo"])}</b></a></li>'
-        for v in VIDEOS if fotograma(v) and not (en_veda() and v['k'] == 'Encuestas'))   # veda de encuestas (src/veda.py)
+        for v in VIDEOS if not v.get('fuera') and fotograma(v) and not (en_veda() and v['k'] == 'Encuestas'))   # veda de encuestas (src/veda.py)
     return ('<section class="wide del-atlas del-videos" aria-labelledby="h-del-videos"><div class="da-cab"><h2 id="h-del-videos">'
             f'<a href="{PERFIL}" target="_blank" rel="noopener">Vídeos en X</a></h2>'
             '<span class="da-nav"><button type="button" class="da-prev" aria-label="Vídeos anteriores">←</button><button type="button" class="da-next" aria-label="Más vídeos">→</button></span></div>'
