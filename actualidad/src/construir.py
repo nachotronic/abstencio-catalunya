@@ -5521,7 +5521,7 @@ PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio 
 # Tarjetas de páginas que no son piezas de Actualidad, delante de todo el carrusel de la portada mientras estén en fecha
 # (primer día y último día incluidos). Nacho, 26-11-2026 11.43, del voto útil: «Ponlos en el carrusel»
 PORTADA_EXTERNAS = [
-    dict(url='elecciones/voto-util-29n/', antetitulo='Voto útil · 52 provincias',
+    dict(url='elecciones/voto-util-29n/', antetitulo='Voto útil · 52 circunscripciones',
          titulo='Voto útil el 29N: qué escaños estaban en juego en cada provincia',
          imagen='img/portada/voto-util-29n.jpg', alt='Un cuadrado por escaño en cada provincia, con los seguros, los probables y los que estaban en juego',
          dias=('2026-11-26', '2026-11-29')),
