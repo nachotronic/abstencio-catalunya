@@ -10,8 +10,9 @@ para PP, PSOE, Vox y Cs (las familias que se emparejan sin ambigüedad), y solo 
 - Autonómicas: resumenes/datos/encuestas_autonomicas_2015_2026.csv (encuestas_fallos_preparar.py): encuestas autonómicas de
   Electográfica publicadas entre 20 y 6 días antes de la votación (la última de cada empresa) y resultado sobre votos válidos de la
   ficha de Wikipedia de cada elección. En Navarra no se cuenta el PP, que en 2015-2019 fue con UPN.
-Error: media de las encuestas menos resultado, en puntos. Las elecciones autonómicas de 2015 a 2019 sin encuestas en esa ventana
-en Electográfica no entran.
+Error: media de las encuestas menos resultado, en puntos. No entran (y la pieza lo dice): generales de 2015, 2016 y abril de 2019 y
+autonómicas de marzo y mayo de 2015 y de abril y mayo de 2019 (sin encuestas de esas fechas en la recopilación de Electográfica);
+Cataluña 2017 (todas las fichas fechadas el día de la votación); La Rioja (sin ficha de resultados descargada).
 Uso, desde la raíz: python3 actualidad/src/resumenes/encuestas_fallos.py
 """
 import json
@@ -43,7 +44,7 @@ G19 = {**{k: (G.M19[k], G.RES19[k]) for k in ('PP', 'PSOE', 'VOX')}}
 _cs19 = G.R19['Cs']
 if _cs19 >= UMBRAL:
     G19['CS'] = (float(G.U19['CS'].mean()), _cs19)
-E.append(('Generales 2019', '2019-11-10', len(G.U19), G19))
+E.append(('Generales noviembre 2019', '2019-11-10', len(G.U19), G19))
 E.append(('Generales 2023', '2023-07-23', len(G.U23), {k: (G.M23[k], G.RES23[k]) for k in ('PP', 'PSOE', 'VOX')}))
 
 # --- Autonómicas ---
@@ -57,15 +58,17 @@ for el, g in d.groupby('eleccion', sort=False):
     for k in FAM:
         if pd.notna(res[k]) and res[k] >= UMBRAL and enc[k].notna().any():
             fam[k] = (float(enc[k].mean()), float(res[k]))
-    E.append((el, res.fecha, len(enc), fam))
+    # solo las encuestas que dan algún dato de estos partidos
+    E.append((el, res.fecha, int(enc[FAM].notna().any(axis=1).sum()), fam))
     FUENTE_RES[el] = res.fuente
 E.sort(key=lambda t: t[1])
 assert len(E) == 30, len(E)
+assert all(e[2] for e in E), [e[0] for e in E if not e[2]]
 
 FILAS = []   # una por elección y partido
 for el, f, ne, fam in E:
     for k, (m, r) in fam.items():
-        FILAS.append({'el': el, 'f': f, 'k': k, 'media': m, 'res': r, 'err': m - r, 'n': ne})
+        FILAS.append({'el': el, 'f': f, 'k': k, 'media': m, 'res': r, 'err': m - r})
 F = pd.DataFrame(FILAS)
 MAYOR = F.loc[F.err.abs().groupby(F.el).idxmax()].set_index('el')   # el mayor fallo de cada elección
 MAYOR = MAYOR.loc[[e[0] for e in E]]
@@ -89,7 +92,7 @@ B = F[F.k.isin(['PP', 'VOX'])].groupby('el').filter(lambda g: len(g) == 2).group
 B_CORTA, B_N = int((B < 0).sum()), int(len(B))
 B_NO = [e[0] for e in E if e[0] in B.index and B[e[0]] >= 0]
 assert all(e[1] >= '2023' for e in E if e[0] in B_NO)
-NOMB = lambda el: 'las generales de ' + el[-4:] if el.startswith('Generales') else el
+NOMB = lambda el: 'las generales de ' + el[10:].replace(' ', ' de ') if el.startswith('Generales') and ' ' in el[10:] else ('las generales de ' + el[-4:] if el.startswith('Generales') else el)
 assert 'Generales 2023' in B_NO
 POCAS = [e[0] for e in E if e[2] <= 3]
 PAL = {4: 'cuatro', 5: 'cinco', 6: 'seis', 9: 'nueve'}
@@ -100,7 +103,7 @@ COLS = {'PP': COL['PP'], 'PSOE': COL['PSOE'], 'VOX': COL['VOX'], 'CS': COL['CS']
 s1 = lambda v: ('+' if v > 0 else '−') + p(abs(v))
 g_mayor = figura(f'En {N_3} de {N_EL} elecciones, las encuestas fallaron por más de {p(UMBRAL)[:-2]} puntos con algún partido',
                  'El mayor error de la media de encuestas en cada elección, en puntos: media de la última encuesta de cada empresa antes de la veda menos el resultado. '
-                 'El color es el del partido con el que más se equivocaron; «+» si le dieron de más, «−» si de menos',
+                 'Partido con el que más se equivocaron: «+» si le dieron de más, «−» si de menos',
                  barras([(el.replace('Comunitat Valenciana', 'C. Valenciana'), abs(r.err), COLS[r.k], f'{NOMBRE[r.k]} {s1(r.err)}') for el, r in TOP.iterrows()], 8,
                         'Mayor error de las encuestas en cada elección desde 2015', W=400, ml=150, alto=22, linea=(UMBRAL, '3 puntos'), separar=True),
                  f'Fuente: encuestas recopiladas por <a href="{ELECTO}">Electográfica</a>; resultados de Ministerio del Interior (generales, con voto exterior) '
@@ -122,12 +125,13 @@ g_dir = figura('No fallan siempre hacia el mismo lado',
 # --- Texto ---
 fr = lambda r: f'{NOMBRE[r.k]}: {p(r.media)} % en las encuestas y {p(r.res)} % en las urnas'
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
-<p data-tipo="contexto">Desde el martes 24 no se puede publicar ninguna encuesta de las elecciones generales del 29N: la <a href="{LOREG}">ley electoral</a> lo prohíbe en los cinco días anteriores a la votación. Las últimas que se publicaron dicen dónde estaba cada partido cuando se hicieron. Lo que no dicen es cuánto se equivocan las encuestas en España. Aquí está la cuenta de las {N_EL} elecciones con datos desde 2015: las generales de 2019 y 2023 y {N_EL - 2} autonómicas.</p>
+<p data-tipo="contexto">Desde el martes 24 no se puede publicar ninguna encuesta de las elecciones generales del 29N: la <a href="{LOREG}">ley electoral</a> lo prohíbe en los cinco días anteriores a la votación. Las últimas que se publicaron dicen dónde estaba cada partido cuando se hicieron. Lo que no dicen es cuánto se equivocan las encuestas en España. Aquí está la cuenta de las {N_EL} elecciones desde 2015 de las que tengo encuestas y resultado: las generales de noviembre de 2019 y de 2023 y {N_EL - 2} autonómicas.</p>
+<p data-tipo="contexto">No son todas. Faltan las generales de 2015, 2016 y abril de 2019, las andaluzas de marzo de 2015, las valencianas de abril de 2019 y las autonómicas de mayo de 2015 y de mayo de 2019, porque la recopilación de encuestas de Electográfica que uso no tiene encuestas de esas fechas. Faltan también las catalanas de 2017, porque todas sus fichas llevan la fecha del día de la votación y no se puede saber cuál fue la última de cada empresa, y las riojanas de 2023, de las que no tengo el resultado en los mismos datos.</p>
 <p data-tipo="dato">Para cada elección, tomo la última encuesta de cada empresa publicada en las dos semanas anteriores a la veda, hago la media y la comparo con el resultado de PP, PSOE, Vox y Cs. En <strong>{N_3} de las {N_EL}</strong>, la media se equivocó en más de tres puntos con al menos uno de ellos. En {N_2}, en más de dos. Solo en {w(N_1)} acertó con todos por un punto o menos.</p>
 {g_mayor}
 <h2>Los mayores sustos</h2>
 <p data-tipo="dato">El mayor fallo fue en <strong>Andalucía en 2022</strong>: las {NE[T1.name]} encuestas daban de media al PP el {p(T1.media)} % y sacó el {p(T1.res)} %, {p(abs(T1.err))} puntos más, con mayoría absoluta. Le sigue <strong>Andalucía en 2018</strong>, cuando Vox entró en un parlamento por primera vez: le daban el {p(T2.media)} % y sacó el {p(T2.res)} %, {p(abs(T2.err))} puntos más. Detrás vienen {T3.name} ({fr(T3)}) y {T4.name} ({fr(T4)}).</p>
-<p data-tipo="dato">En las generales, el mayor error de 2023 fue con el PSOE: las {NE["Generales 2023"]} empresas le daban de media el {p(G.M23["PSOE"])} % y sacó el {p(G.RES23["PSOE"])} %. En 2019, con Vox: le daban el {p(G.M19["VOX"])} % y sacó el {p(G.RES19["VOX"])} %.</p>
+<p data-tipo="dato">En las generales, el mayor error de 2023 fue con el PSOE: las {NE["Generales 2023"]} empresas le daban de media el {p(G.M23["PSOE"])} % y sacó el {p(G.RES23["PSOE"])} %. En noviembre de 2019, con Vox: le daban el {p(G.M19["VOX"])} % y sacó el {p(G.RES19["VOX"])} %.</p>
 <h2>Hacia qué lado fallan</h2>
 <p data-tipo="dato">Partido a partido, no hay un lado fijo. En las {DIR["VOX"][2]} elecciones en que Vox pasó del 3 %, las encuestas le dieron menos de lo que sacó en {DIR["VOX"][0]} y más en {w(DIR["VOX"][1])}. Con el PP, menos en {DIR["PP"][0]} de {DIR["PP"][2]}. Con el PSOE, menos en {DIR["PSOE"][0]} de {DIR["PSOE"][2]}.</p>
 <p data-tipo="dato">Sumados, el patrón es más claro. En las {B_N} elecciones en que PP y Vox pasaron los dos del 3 %, la media de encuestas se quedó corta con lo que sacaron juntos en <strong>{B_CORTA}</strong>. Las {w(len(B_NO))} excepciones son de 2023 en adelante: {", ".join(NOMB(x) for x in B_NO[:-1])} y {NOMB(B_NO[-1])}. Que haya pasado tantas veces no quiere decir que vaya a repetirse, y en las generales de 2023 las encuestas les dieron más de lo que sacaron.</p>
@@ -148,7 +152,7 @@ preguntas = [
 ]
 enlaces = (f'{L("veda-encuestas-29n", "Veda de encuestas")} · '
            f'<a href="{BASE}elecciones/resultados-elecciones-generales-2026/">Resultados de las elecciones generales 2026</a>')
-foot = ('Datos: encuestas recopiladas por Electográfica, con la fuente original de cada una; Ministerio del Interior, resultados de las generales de 2019 y 2023 con voto exterior; '
+foot = ('Datos: encuestas recopiladas por Electográfica, con la fuente original de cada una; Ministerio del Interior, resultados de las generales de noviembre de 2019 y de 2023 con voto exterior; '
         'resultados de las autonómicas de la ficha de cada elección en Wikipedia. Cálculo: actualidad/src/resumenes/encuestas_fallos.py.')
 
 DATOS = {'E': [[el, f, ne, {k: [round(m, 3), round(r, 3)] for k, (m, r) in fam.items()}] for el, f, ne, fam in E],
@@ -159,8 +163,8 @@ DATOS = {'E': [[el, f, ne, {k: [round(m, 3), round(r, 3)] for k, (m, r) in fam.i
 datos_js = '<script>const D=' + json.dumps(DATOS, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 pieza(SLUG, 'Lo que las encuestas no dicen',
-      f'Las encuestas fallaron por más de 3 puntos en {N_3} de {N_EL} elecciones desde 2015: Andalucía 2022 y 2018, los mayores sustos',
-      f'Lo que las encuestas no dicen: cuánto se equivocan. Desde 2015, en {N_3} de {N_EL} elecciones fallaron por más de tres puntos con algún partido; '
+      f'Las encuestas fallaron por más de 3 puntos en {N_3} de {N_EL} elecciones analizadas desde 2015: Andalucía 2022 y 2018, los mayores sustos',
+      f'Lo que las encuestas no dicen: cuánto se equivocan. En {N_3} de las {N_EL} elecciones analizadas desde 2015 fallaron por más de tres puntos con algún partido; '
       f'en Andalucía 2022, el PP sacó {p(abs(T1.err))} más de lo previsto.',
       '26 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print('N', N_EL, 'N3', N_3, 'N2', N_2, 'N1', N_1, 'MEDIO', round(MEDIO, 2), 'DIR', DIR, 'B', B_CORTA, B_N, 'POCAS', POCAS)

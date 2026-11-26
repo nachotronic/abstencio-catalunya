@@ -2,18 +2,18 @@
  "pieza": "encuestas-fallos-elecciones-espana-29n",
  "cifras": [
   {
-   "texto": "fallaron por más de 3 puntos en 14 de 30 elecciones desde",
-   "cifra": "14",
+   "texto": "fallaron por más de 3 puntos en 15 de 30 elecciones analizadas",
+   "cifra": "15",
    "calculo": "D['N_3']"
   },
   {
-   "texto": "más de 3 puntos en 14 de 30 elecciones desde 2015:",
+   "texto": "más de 3 puntos en 15 de 30 elecciones analizadas desde 2015:",
    "cifra": "30",
    "calculo": "D['N_EL']"
   },
   {
-   "texto": "Desde 2015, en 14 de 30 elecciones fallaron",
-   "cifra": "14",
+   "texto": "En 15 de las 30 elecciones analizadas desde 2015 fallaron",
+   "cifra": "15",
    "calculo": "D['N_3']"
   },
   {
@@ -22,28 +22,28 @@
    "calculo": "-[t for t in D['TOP'] if t[0]=='Andalucía 2022'][0][4]"
   },
   {
-   "texto": "Aquí está la cuenta de las 30 elecciones con datos",
+   "texto": "Aquí está la cuenta de las 30 elecciones desde 2015",
    "cifra": "30",
    "calculo": "D['N_EL']"
   },
   {
-   "texto": "generales de 2019 y 2023 y 28 autonómicas",
+   "texto": "de noviembre de 2019 y de 2023 y 28 autonómicas",
    "cifra": "28",
    "calculo": "D['N_EL'] - 2"
   },
   {
-   "texto": "En 14 de las 30, la media se equivocó",
-   "cifra": "14",
+   "texto": "En 15 de las 30, la media se equivocó",
+   "cifra": "15",
    "calculo": "D['N_3']"
   },
   {
-   "texto": "En 17, en más de dos",
-   "cifra": "17",
+   "texto": "En 18, en más de dos",
+   "cifra": "18",
    "calculo": "D['N_2']"
   },
   {
-   "texto": "Solo en seis acertó con todos",
-   "cifra": "seis",
+   "texto": "Solo en cuatro acertó con todos",
+   "cifra": "cuatro",
    "calculo": "D['N_1']"
   },
   {
@@ -112,7 +112,7 @@
    "calculo": "D['G']['M23']['PSOE']"
   },
   {
-   "texto": "y sacó el 31,7 %. En 2019",
+   "texto": "y sacó el 31,7 %. En noviembre de 2019",
    "cifra": "31,7",
    "calculo": "D['G']['RES23']['PSOE']"
   },
@@ -142,13 +142,13 @@
    "calculo": "D['DIR']['VOX'][1]"
   },
   {
-   "texto": "Con el PP, menos en 15 de 27",
-   "cifra": "15",
+   "texto": "Con el PP, menos en 17 de 29",
+   "cifra": "17",
    "calculo": "D['DIR']['PP'][0]"
   },
   {
-   "texto": "menos en 15 de 27.",
-   "cifra": "27",
+   "texto": "menos en 17 de 29.",
+   "cifra": "29",
    "calculo": "D['DIR']['PP'][2]"
   },
   {
@@ -187,8 +187,8 @@
    "calculo": "len(D['POCAS'])"
   },
   {
-   "texto": "En 14 de 30 elecciones, las",
-   "cifra": "14",
+   "texto": "En 15 de 30 elecciones, las",
+   "cifra": "15",
    "calculo": "D['N_3']"
   },
   {
@@ -207,7 +207,7 @@
  ],
  "ignorar": [
   {
-   "texto": "encuestas fallaron por más de 3 puntos en 14",
+   "texto": "encuestas fallaron por más de 3 puntos en 15",
    "motivo": "umbral elegido para la cuenta, no un dato"
   },
   {
