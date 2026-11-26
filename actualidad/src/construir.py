@@ -5041,10 +5041,10 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='voto-correo-plazo-jueves-29n', fecha='2026-11-17', actualizado='2026-11-25 12:30',
+        slug='voto-correo-plazo-jueves-29n', fecha='2026-11-17', actualizado='2026-11-26 08:45',
         correcciones='25-11-2026: el voto se puede depositar en Correos hasta el jueves 26 de noviembre, como máximo a las 14.00, no hasta el miércoles 25, como decía la pieza: la Junta Electoral Central amplió el plazo el 20 de noviembre. Se corrige la entradilla y la pregunta frecuente, y se añade una actualización arriba.',
         titulo='Voto por correo para las elecciones generales del 29N: el plazo para pedirlo acaba el jueves 19; en 2023, una de cada tres solicitudes llegó en las dos últimas semanas', serie='29n', figura=0,
-        descripcion='El voto se puede depositar hasta el 25 de noviembre. En 2023, en 51 de las 52 circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. En Girona, el último diputado se decidió por 285 votos; 16.323 electores habían pedido votar por correo.',
+        descripcion='El voto se puede depositar hasta el jueves 26 de noviembre, como máximo a las 14.00. En 2023, en 51 de las 52 circunscripciones hubo más solicitudes que votos le faltaron a la lista más cercana al último escaño. En Girona, el último diputado se decidió por 285 votos; 16.323 electores habían pedido votar por correo.',
         compara='Las solicitudes de voto por correo aceptadas en 2023, por fecha de recepción y por provincia, frente a los votos que le faltaron a la lista que se quedó más cerca del último escaño en cada circunscripción.',
         limites='Son solicitudes, no votos, y de electores residentes en España. No se sabe a quién se votó por correo, así que la cuenta no dice que cambiara ningún escaño. Los votos que faltaban suponen que no se le quitan a nadie. La tabla del INE fecha las solicitudes por su recepción: 122.790 constan como recibidas después del cierre del plazo, el 13 de julio.',
         calculo='Solicitudes: INE, tablas 59759 y 59763. Último escaño: D\'Hondt con barrera del 3 % de los votos válidos, con los resultados definitivos con voto exterior y todas las candidaturas (actualidad/src/sistema/cifras.json); votos que faltaban: cociente del último escaño por los escaños de la otra lista más uno, menos sus votos, más uno, y el menor de todas las listas. Script: actualidad/src/resumenes/voto_correo_plazo.py.',
