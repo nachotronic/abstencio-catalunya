@@ -5160,7 +5160,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='debate-sanchez-feijoo-29n', fecha='2026-11-19', actualizado='2026-11-20 10:45',
+        slug='debate-sanchez-feijoo-29n', fecha='2026-11-19', actualizado='2026-11-26 14:50',
         titulo='Debate Sánchez Feijóo: hora, dónde verlo y quién gana el cara a cara', serie='29n', figura=0,
         descripcion='El cara a cara de las elecciones generales del 29N es este jueves a las 22.00, en La 1, Antena 3, Telecinco, Cuatro, laSexta y La Séptima. El último, en 2023, fue el menos visto desde 1993: 5,9 millones.',
         compara='La audiencia media de los ocho cara a cara entre los candidatos del PSOE y del PP en las elecciones generales desde 1993, con el de 2026, las encuestas de 2023 sobre quién ganó el debate y la mediana de las encuestas de hoy.',
