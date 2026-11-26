@@ -10,6 +10,13 @@ import json
 import re
 
 from comun import BASE, COLOR as COLOR_, SRC, barras, esc, figura, mapa_provincias, n, pieza
+import sys
+from comun import RAIZ
+sys.path.insert(0, str(RAIZ / 'src'))
+from veda import en_veda
+# Veda del 29N (art. 69.7 LOREG): sin la estimación del modelo de encuestas de 2026 hasta el 29-11 a las 21:00 (repaso del 26-11-2026,
+# como en #699 y #733). Al reconstruir después de la veda, la sección «Lo que dicen hoy las encuestas» vuelve sola.
+VEDA = en_veda()
 
 A = BASE + 'actualidad/'
 # 26-11-2026: Teruel Existe y Soria ¡Ya! compiten en el cálculo (antes iban dentro de «otros»)
@@ -79,6 +86,10 @@ fig_mapa = figura('El mapa del filo',
                   leyenda=[('PSOE', COLOR['PSOE']), ('PP', COLOR['PP']), ('Sumar', COLOR['Sumar']), ('Vox', COLOR['Vox']), ('Teruel Existe', COLOR['Teruel Existe']), ('Soria ¡Ya!', COLOR['Soria ¡Ya!']), ('Más de 5.000', COLOR['Otros'])])
 
 c = lambda p: n(F[p]['c'])
+ENCUESTAS_HTML = f'''<h2>Lo que dicen hoy las encuestas</h2>
+<p data-tipo="hipotesis">Las encuestas mueven a todos los partidos varios puntos respecto a 2023, y cuando se mueven los votos, el filo cambia de sitio. El modelo de Mapa Electoral, que reparte la media de encuestas por provincia, señalaba el 23 de octubre como las provincias con el primer puesto menos claro a Bizkaia, Ceuta, Sevilla, Lleida, Las Palmas, Girona, Santa Cruz de Tenerife y Guadalajara, donde Vox aparece como segundo. En el conjunto, daba a PP y Vox 195 escaños en el escenario central, entre 174 y 218 en el 80 % de las simulaciones. Es una estimación, no un resultado: está, actualizada, en {f'<a href="{BASE}encuestas/provincias.html">la encuesta por provincias</a>'}.</p>
+'''
+
 cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <li>Con los votos de 2023 y los escaños de 2026, 32 últimos escaños habrían cambiado de partido con menos de 5.000 votantes cambiando de papeleta; seis, con menos de mil.</li>
 <li>El más ajustado, Cantabria: bastaban 101 votantes de Vox que votaran al PP. Después, Girona (190) y Tarragona (312).</li>
@@ -108,9 +119,7 @@ cuerpo = f'''<div class="resumen"><b>En corto</b><ul>
 <p data-tipo="dato">Hay un cambio que ya está hecho. El <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742">Real Decreto 806/2026</a> da a Madrid un diputado más, 38, y deja a Cádiz con 8. Con los votos de 2023, el escaño nuevo de Madrid sería para el PSOE, el undécimo de su lista, y el que pierde Cádiz sería el cuarto del PP: 136 diputados para el PP y 122 para el PSOE, en lugar de 137 y 121.</p>
 <p data-tipo="dato">Y está el voto que llega de fuera. En 2023, el voto exterior le dio al PP el último escaño de Madrid, que la noche electoral era del PSOE. Para el 29N, el Supremo ha dejado sin voto a 163.020 nacionalizados por la ley de nietos, y el censo de residentes en el extranjero ha crecido un 19 %, como contamos en {L("ley-nietos-voto-exterior-29n", "la pieza sobre el voto exterior")}.</p>
 <p data-tipo="contexto">Las divisiones también mueven el filo. En ocho provincias, Sumar ganó o perdió en 2023 un escaño por menos de 5.000 votos, y en seis de ellas el Frente Amplio y Podemos irán ahora por separado, como contamos en {L("coaliciones-quien-va-con-quien-29n", "quién va con quién el 29N")}. Y en el Senado, la lista conjunta de PSOE y Frente Amplio y la negociación entre PP y Vox se juegan sobre todo en 19 provincias.</p>
-<h2>Lo que dicen hoy las encuestas</h2>
-<p data-tipo="hipotesis">Las encuestas mueven a todos los partidos varios puntos respecto a 2023, y cuando se mueven los votos, el filo cambia de sitio. El modelo de Mapa Electoral, que reparte la media de encuestas por provincia, señalaba el 23 de octubre como las provincias con el primer puesto menos claro a Bizkaia, Ceuta, Sevilla, Lleida, Las Palmas, Girona, Santa Cruz de Tenerife y Guadalajara, donde Vox aparece como segundo. En el conjunto, daba a PP y Vox 195 escaños en el escenario central, entre 174 y 218 en el 80 % de las simulaciones. Es una estimación, no un resultado: está, actualizada, en {f'<a href="{BASE}encuestas/provincias.html">la encuesta por provincias</a>'}.</p>
-<p data-tipo="hipotesis">Lo que la foto de 2023 sí dice es dónde mirar. La noche del 29 de noviembre, el recuento dará un reparto provisional, y si se parece en algo al de entonces, el último escaño de Cantabria, de Girona o de Tarragona podría quedar pendiente, otra vez, del voto que llega del extranjero cinco días después.</p>
+{'' if VEDA else ENCUESTAS_HTML}<p data-tipo="hipotesis">Lo que la foto de 2023 sí dice es dónde mirar. La noche del 29 de noviembre, el recuento dará un reparto provisional, y si se parece en algo al de entonces, el último escaño de Cantabria, de Girona o de Tarragona podría quedar pendiente, otra vez, del voto que llega del extranjero cinco días después.</p>
 <p data-tipo="dato">Para el 29N, la cuenta de partida queda así: 32 escaños a menos de 5.000 votantes, 13 de ellos defendidos por el PP y 16 al alcance del PSOE. Ciento un votantes en Cantabria. Menos de los que caben en un vagón de tren.</p>
 '''
 

@@ -6,6 +6,7 @@ Datos: actualidad/src/resumenes/datos/pueblos_aciertan_2023.csv, sacado de gener
 municipios_largo y candidaturas_municipio) con el mismo criterio que actualidad/src/historia/datos.py (D['ohio']):
 partido más votado de cada municipio frente al de España; un empate de los dos primeros no cuenta como acierto.
 Porcentajes sobre los votos a candidaturas; España, sin voto exterior (suma de los municipios).
+Fila de España: el PP es solo el PP (8.093.469); hasta el 26-11-2026 sumaba también a UPN (51.778), que en 2023 fue por separado en Navarra.
 Veda (LOREG 69.7): sin encuestas.
 Uso, desde la raíz: python3 actualidad/src/resumenes/pueblos_aciertan.py
 """
