@@ -94,13 +94,17 @@ const PIEURNA_DESDE = '2026-11-29T19:00:00Z';
 export async function actualiza(env0) {
   // estado de esta lectura (pausa y registro): va dentro de env, que llega a todas las funciones, y no en variables del módulo,
   // para que dos lecturas que coincidan en el mismo isolate no se pisen
-  const env = { ...env0, LECTURA: { parado: null, registro: [] } };
+  const env = { ...env0, LECTURA: { parado: null, registro: [], huellas: null, nuevas: false } };
+  // huella (SHA-256) del último fichero archivado de cada ruta, para no guardar en R2 otra copia idéntica (Nacho, 26-11: la
+  // prueba del 25 dejó 70 GB porque Interior sacó un envío por minuto con los mismos datos). «limpiar» la borra con lo demás.
+  if (env.ARCHIVO) env.LECTURA.huellas = (await env.RESULTADOS.get('archivo-huellas', 'json').catch(() => null)) || {};
   const pausa = await env.RESULTADOS.get('parado', 'json');
   if (pausa && Date.now() < Date.parse(pausa.hasta)) return `en pausa por el ${pausa.codigo} de Interior hasta ${pausa.hasta} (${pausa.url}); avisar a soporte: 900 601 462, prensa@infoelecciones.es`;
   try {
     return await actualiza1(env);
   } finally {
     const PARADO = env.LECTURA.parado, REGISTRO = env.LECTURA.registro;
+    if (env.LECTURA.nuevas) try { await env.RESULTADOS.put('archivo-huellas', JSON.stringify(env.LECTURA.huellas)); } catch (e) { /* sigue */ }
     if (PARADO) await env.RESULTADOS.put('parado', JSON.stringify({ ...PARADO, hasta: new Date(Date.now() + 10 * 60e3).toISOString() }));
     if (env.ARCHIVO && REGISTRO.length) {   // registro de cada descarga de esta lectura (hora, URL sin credenciales, código, bytes, ms)
       const t = new Date().toISOString();
@@ -395,9 +399,15 @@ async function pideTexto(url, env) {
   REGISTRO.push({ t: new Date(t0).toISOString(), url: sinCred(url), codigo: r.status, bytes: b.length, ms: Date.now() - t0 });
   // archivo de descargas (Nacho, 23-11: «guardar las descargas para luego ver cómo y dónde avanza el resultado»): cada
   // fichero tal cual llega, en el R2 privado ARCHIVO, con la hora UTC de la descarga. getEnvio solo queda en el registro.
-  if (env.ARCHIVO && !/getEnvio/.test(url)) {
+  // Solo si el fichero cambia respecto al último guardado de esa ruta (la ruta sin el número de envío del final): si es igual,
+  // queda en el registro con «igual» y no se vuelve a guardar.
+  if (env.ARCHIVO && !/getEnvio/.test(url)) archiva: {
+    const H = L.huellas, ruta = new URL(url).pathname.replace(/\/\d+$/, '');
+    let h = null;
+    if (H) try { h = [...new Uint8Array(await crypto.subtle.digest('SHA-256', b))].map(x => x.toString(16).padStart(2, '0')).join(''); } catch (e) { /* sin huella: se guarda */ }
+    if (h && H[ruta] === h) { REGISTRO[REGISTRO.length - 1].igual = true; break archiva; }
     const k = `descargas/${new Date(t0).toISOString().slice(0, 10)}/${new Date(t0).toISOString().slice(11, 19).replace(/:/g, '')}Z_${new URL(url).pathname.replace(/^\/+/, '').replace(/[^\w.-]+/g, '_')}`;
-    try { await env.ARCHIVO.put(k, b); } catch (e) { /* el archivo nunca para la lectura */ }
+    try { await env.ARCHIVO.put(k, b); if (h) { H[ruta] = h; L.nuevas = true; } } catch (e) { /* el archivo nunca para la lectura */ }
   }
   let t;
   if (/latin|8859|1252/i.test(env.MEDIOS_CODIFICACION || '')) { t = ''; for (const x of b) t += String.fromCharCode(x); } else t = new TextDecoder().decode(b);
