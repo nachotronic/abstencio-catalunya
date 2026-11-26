@@ -19,6 +19,7 @@ L = lambda s, t: f'<a href="{A}{s}/">{t}</a>'
 p = lambda v: n(v, 1)
 SLUG = 'pueblos-que-siempre-aciertan-29n'
 INTERIOR = 'https://infoelectoral.interior.gob.es/'
+PORTADA = 'https://www.laportadadeextremadura.com/extremadura/pedro-sanchez-participara-este-viernes-en-un-acto-en-plasencia_9984_102.html'
 INFOBAE = 'https://www.infobae.com/espana/2026/11/26/el-debate-a-cuatro-definitivo-en-directo-ultima-hora-de-las-elecciones-generales-29-n-y-la-campana-electoral/'
 
 F = list(csv.DictReader(open(RAIZ / 'actualidad/src/resumenes/datos/pueblos_aciertan_2023.csv', encoding='utf-8')))
@@ -97,7 +98,7 @@ cuerpo = f'''
 {g_margen}
 <h2>Los seis que están en el filo</h2>
 <p data-tipo="dato">En seis de los 24, la ventaja del PP sobre el PSOE en 2023 fue de menos de tres puntos: Ayerbe ({p(dpt(M["Ayerbe"]))}), Jaca ({p(dpt(JA))}), Los Navalmorales ({p(dpt(M["Los Navalmorales"]))}), Biescas ({p(dpt(M["Biescas"]))}), Villaquilambre, en León ({p(dpt(M["Villaquilambre"]))}), y Plasencia, en Cáceres ({p(dpt(PLA))}). En el conjunto de España, sin el voto exterior, fue de {p(dpt(ESP))} puntos.</p>
-<p data-tipo="dato"><strong>Plasencia</strong> es el mayor de los 24, con {n(PLA["censo"])} electores. En 2023 el PP sacó {n(PLA["PP"])} votos y el PSOE, {n(PLA["PSOE"])}: {n(dif(PLA))} de diferencia. Según <a href="{INFOBAE}">Infobae</a>, Pedro Sánchez tiene previsto un acto allí el viernes, último día de campaña.</p>
+<p data-tipo="dato"><strong>Plasencia</strong> es el mayor de los 24, con {n(PLA["censo"])} electores. En 2023 el PP sacó {n(PLA["PP"])} votos y el PSOE, {n(PLA["PSOE"])}: {n(dif(PLA))} de diferencia. Pedro Sánchez tiene previsto un acto allí el viernes a las 12.00, último día de campaña, según <a href="{INFOBAE}">Infobae</a> y <a href="{PORTADA}">La Portada de Extremadura</a>, que cita al PSOE extremeño.</p>
 <h2>Jaca, el que más se parece a España</h2>
 <p data-tipo="dato">Acertar el ganador no es votar como la media del país, pero Jaca hace las dos cosas. En 2023 dio al PP el {p(pct(JA, "PP"))} %, al PSOE el {p(pct(JA, "PSOE"))} %, a Vox el {p(pct(JA, "VOX"))} % y a Sumar el {p(pct(JA, "SUMAR"))} %. En el conjunto de España fueron el {p(pct(ESP, "PP"))}, el {p(pct(ESP, "PSOE"))}, el {p(pct(ESP, "VOX"))} y el {p(pct(ESP, "SUMAR"))} %.</p>
 {g_jaca}
@@ -108,7 +109,7 @@ cuerpo = f'''
 <p data-tipo="contexto">También comparten lo que no tienen: ninguno es una gran ciudad (entre los 24 suman {n(POB24)} habitantes) y ninguno está en Cataluña, el País Vasco, Galicia o Canarias, donde los partidos nacionalistas y regionales ganan a menudo en los municipios. Estos parecidos acompañan a los aciertos, pero no los explican: los datos no permiten decir que sean la causa.</p>
 <p data-tipo="dato">Sobre si seguirán, la historia de la lista da una pista. En ninguna de las 15 elecciones desde 1979 se ha quedado igual: cada vez ha perdido al menos {PIERDE_MIN}. Cuando el partido ganador en España repitió, siguió acertando entre el {p(min(T_IGUAL))} % y el {p(max(T_IGUAL))} % de los que llevaban pleno. Cuando cambió, entre el {p(min(T_CAMBIO))} % y el {p(max(T_CAMBIO))} %: en 1996, cuando ganó el PP por primera vez, solo siguió uno de cada cuatro; en 2023, algo más de la mitad, {SUP[-1]} de {SUP[-2]}.</p>
 <h2>Qué no dicen estos datos</h2>
-<p data-tipo="contexto">Que un pueblo haya acertado 16 veces no dice quién ganará el domingo. Con casi 8.000 municipios y 16 elecciones, es esperable que unos pocos coincidan siempre por acumulación de casualidades. Y que el PP ganara por poco en 2023 tampoco anticipa que vaya a perder: solo indica qué municipios pueden salir de la lista con un cambio pequeño. La mitad de los 24, {ARAGON}, están en Aragón, y suman {n(ELECT)} electores entre todos.</p>
+<p data-tipo="contexto">Que un pueblo haya acertado 16 veces no dice quién ganará el domingo. Con casi 8.000 municipios y 16 elecciones, es esperable que unos pocos coincidan siempre por acumulación de casualidades. Y que el PP ganara por poco en 2023 tampoco anticipa que vaya a perder: solo indica qué municipios pueden salir de la lista con un cambio pequeño. La mitad, {ARAGON}, están en Aragón. Entre los 24 suman {n(ELECT)} electores.</p>
 <p data-tipo="contexto">La noche del 29N, en la página de <a href="{BASE}elecciones/resultados-elecciones-generales-2026/">resultados de las elecciones generales 2026</a> se podrá ver, municipio a municipio, si los 24 siguen acertando. Esta pieza se actualizará con el resultado.</p>
 '''
 

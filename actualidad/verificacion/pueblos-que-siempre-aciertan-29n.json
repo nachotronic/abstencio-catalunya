@@ -121,7 +121,7 @@
    "calculo": "[f[4] for f in D['S'] if f[0]=='Plasencia'][0]"
   },
   {
-   "texto": "8.654 votos y el PSOE, 8.013: 641 de diferencia. Según",
+   "texto": "8.654 votos y el PSOE, 8.013: 641 de diferencia.",
    "cifra": "641",
    "calculo": "[f[3]-f[4] for f in D['S'] if f[0]=='Plasencia'][0]"
   },
@@ -290,16 +290,16 @@
    "calculo": "D['SUP'][-2]"
   },
   {
-   "texto": "pequeño. La mitad de los 24, 12, están en Aragón,",
+   "texto": "pequeño. La mitad, 12, están en Aragón.",
+   "condicion": "sum(1 for f in D['S'] if f[1] in ('Huesca','Zaragoza','Teruel')) == 12"
+  },
+  {
+   "texto": "Entre los 24 suman 102.017 electores.",
    "cifra": "24",
    "calculo": "len(D['S'])"
   },
   {
-   "texto": "pequeño. La mitad de los 24, 12, están en Aragón, y",
-   "condicion": "sum(1 for f in D['S'] if f[1] in ('Huesca','Zaragoza','Teruel')) == 12"
-  },
-  {
-   "texto": "están en Aragón, y suman 102.017 electores entre todos.",
+   "texto": "Entre los 24 suman 102.017 electores.",
    "cifra": "102.017",
    "calculo": "sum(f[2] for f in D['S'])"
   },
