@@ -1727,8 +1727,8 @@ PIEZAS = [
     ),
     dict(
         slug='provincias-en-el-filo-29n', fecha='2026-10-24',
-        actualizado='2026-11-26 13:30',
-        correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9).',
+        actualizado='2026-11-26 15:00',
+        correcciones='26-11-2026: en Soria y Teruel, los cálculos dejaban fuera a Soria ¡Ya! y a Teruel Existe, agrupadas como «otros». Con ellas, quien se quedó a las puertas en Soria fue Soria ¡Ya!, a 2.635 votantes del escaño del PSOE (no el PP, a 3.680), y en Teruel, Teruel Existe, a 1.297 del segundo del PP (no el PSOE, a 2.181). Cambian con ello los escaños por debajo de 2.000 votantes (14, no 13), la suma de los 32 (73.463 votantes, no 75.392) y los escaños a los que aspiran el PSOE (16, no 17) y el PP (8, no 9). Por la veda de encuestas (artículo 69.7 de la LOREG), la sección «Lo que dicen hoy las encuestas», con la estimación del modelo de encuestas, se retira hasta el 29 de noviembre a las 21.00.',
         titulo='Las provincias que deciden el 29N: 32 escaños se movían en 2023 con menos de 5.000 votantes, y el PP defiende 13', serie='29n',
         descripcion='Con los votos de 2023 y los escaños de 2026, el último escaño de 32 circunscripciones habría cambiado de partido con menos de 5.000 votantes; en Cantabria bastaban 101. El PP defiende 13 y el PSOE aspira a 16. Por qué casi todos están en provincias pequeñas y qué puede moverlos antes de votar.',
         compara='Para cada circunscripción, el último escaño que se reparte y la candidatura que se queda a las puertas, con los votos definitivos de 2023 (voto exterior incluido) y los escaños de 2026; cuántos votantes tendrían que pasar de una a otra; qué partido defiende y cuál aspira a cada uno; el precio del escaño y los votos sin escaño por provincia; y el modelo de encuestas por provincia del 23 de octubre.',
@@ -2097,6 +2097,8 @@ for h in piezas_comunidades():
     q.update(fecha=h.get('fecha', '2026-10-09'), serie='comunidades', enlaces=[])
     if h.get('actualizado'):
         q['actualizado'] = h['actualizado']
+    if h.get('correcciones'):
+        q['correcciones'] = h['correcciones']
     # <title> con lo que se busca («qué partido gobierna…», «desde cuándo gobierna…»); el titular sigue en h1 y og:title
     corto = re.sub(r'^(La|El) ', '', h['corto'].replace(' en las urnas', ''))
     q['titulo_seo'] = f'¿Quién gobierna {corto}? Historia electoral y resultados desde 1977'
@@ -5477,11 +5479,12 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='pueblos-que-siempre-aciertan-29n', fecha='2026-11-26', actualizado='2026-11-26 10:15',
+        slug='pueblos-que-siempre-aciertan-29n', fecha='2026-11-26', actualizado='2026-11-26 15:00',
         titulo='Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2', serie='29n', figura=0,
         descripcion='Solo 24 municipios han votado al ganador en las 16 elecciones generales. En seis, el PP ganó en 2023 por menos de tres puntos; en Plasencia, el mayor, por 641 votos.',
         compara='Los 24 municipios que han votado como primera fuerza al partido ganador en España en las 16 elecciones generales de 1977 a 2023, con la ventaja del PP sobre el PSOE en 2023 en cada uno, su perfil (edad, renta, estudios, paro, población extranjera) frente al de España y cuántos siguieron acertando en cada elección.',
         limites='Acertar siempre es en buena parte casualidad acumulada y no sirve para predecir. Un empate de los dos primeros no cuenta como acierto. El perfil es correlacional: que los 24 se parezcan a España en edad o renta no explica que acierten. España, sin el voto exterior. Sin encuestas: el 29N está en la veda (artículo 69.7 de la LOREG).',
+        correcciones='26-11-2026: en la fila de España de 2023, el PP sumaba también los 51.778 votos de UPN, que fue por separado en Navarra. Con el PP solo, sacó el 33,3 % (no el 33,5 %) y su ventaja sobre el PSOE en el conjunto de España, sin voto exterior, fue de 1,4 puntos (no 1,6). Los 24 municipios no cambian.',
         calculo='Partido más votado de cada municipio frente al de España, como en la pieza de Plasencia (actualidad/src/historia/datos.py). Porcentajes sobre los votos a candidaturas. Perfil: medias ponderadas por población. Script: actualidad/src/resumenes/pueblos_aciertan.py.',
         fuentes=[('https://infoelectoral.interior.gob.es/', 'Ministerio del Interior, resultados de las elecciones generales de 1977 a 2023 por municipio'),
                  ('https://www.ine.es/experimental/atlas/experimental_atlas.htm', 'INE, Atlas de Distribución de Renta de los Hogares (2023)'),

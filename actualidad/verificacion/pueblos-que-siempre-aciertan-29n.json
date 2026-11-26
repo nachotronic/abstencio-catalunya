@@ -96,8 +96,8 @@
    "calculo": "round([100*(f[3]-f[4])/f[7] for f in D['S'] if f[0]=='Plasencia'][0],1)"
   },
   {
-   "texto": "el voto exterior, fue de 1,6 puntos.",
-   "cifra": "1,6",
+   "texto": "el voto exterior, fue de 1,4 puntos.",
+   "cifra": "1,4",
    "calculo": "round(100*(D['ESP'][0]-D['ESP'][1])/D['ESP'][4],1)"
   },
   {
@@ -146,22 +146,22 @@
    "calculo": "round([100*f[6]/f[7] for f in D['S'] if f[0]=='Jaca'][0],1)"
   },
   {
-   "texto": "conjunto de España fueron el 33,5, el 32,0, el 12,5 y",
-   "cifra": "33,5",
+   "texto": "conjunto de España fueron el 33,3, el 32,0, el 12,5 y",
+   "cifra": "33,3",
    "calculo": "round(100*D['ESP'][0]/D['ESP'][4],1)"
   },
   {
-   "texto": "España fueron el 33,5, el 32,0, el 12,5 y el 12,4 %.",
+   "texto": "España fueron el 33,3, el 32,0, el 12,5 y el 12,4 %.",
    "cifra": "32,0",
    "calculo": "round(100*D['ESP'][1]/D['ESP'][4],1)"
   },
   {
-   "texto": "fueron el 33,5, el 32,0, el 12,5 y el 12,4 %.",
+   "texto": "fueron el 33,3, el 32,0, el 12,5 y el 12,4 %.",
    "cifra": "12,5",
    "calculo": "round(100*D['ESP'][2]/D['ESP'][4],1)"
   },
   {
-   "texto": "33,5, el 32,0, el 12,5 y el 12,4 %.",
+   "texto": "33,3, el 32,0, el 12,5 y el 12,4 %.",
    "cifra": "12,4",
    "calculo": "round(100*D['ESP'][3]/D['ESP'][4],1)"
   },
