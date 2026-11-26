@@ -5504,6 +5504,24 @@ PIEZAS += [
         enlaces=[],
         lugar='España',
     ),
+    dict(
+        slug='voto-exterior-cera-loreg-29n', fecha='2026-11-26',
+        titulo='Votar desde el extranjero el 29N, ley en mano: la urna de los consulados cierra el jueves 26 y esos votos no se cuentan hasta el viernes 4 de diciembre', serie='29n',
+        descripcion='Son 2.769.645 electores. Desde 2022 no tienen que pedir el voto, pero en 2023 solo votó el 9,0 %. El Supremo deja fuera a los nacionalizados por la ley de nietos que no acrediten el exilio, también si viven en España.',
+        compara='Lo que dice la LOREG sobre el voto de los residentes en el extranjero (artículos 31, 32, 75, 103 y 107), la participación del CERA en las generales de 2000 a 2023 y, en 2023, el voto exterior válido de cada provincia frente a los votos que le faltaban al siguiente partido para quitar el último escaño.',
+        limites='Interior asigna el voto exterior a cada provincia como municipio 999; se usa así. La participación es votantes (votos a candidaturas, en blanco y nulos) sobre el censo de esos ficheros, y puede diferir unas centésimas de la del preámbulo de la Ley Orgánica 12/2022. Los votos que le faltaban al siguiente partido se calculan con el resto de votos igual; el voto de fuera se reparte entre todos los partidos, así que superar esa distancia no significa que pudiera cambiar el escaño. La providencia del Supremo del 20 de noviembre y su auto del 24 se citan por lo que publican El Independiente (con Europa Press) y The Objective; no he podido leer el texto de las resoluciones.',
+        calculo='Script: actualidad/src/resumenes/voto_exterior_loreg.py, con los datos que prepara voto_exterior_preparar.py a partir de los resultados por mesa de Interior. Reparto D\'Hondt con barrera del 3 % de los votos válidos.',
+        fuentes=[('https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#asetentaycinco', 'BOE, Ley Orgánica del Régimen Electoral General, texto consolidado (artículos 31, 32, 75, 103 y 107)'),
+                 ('https://www.boe.es/buscar/doc.php?id=BOE-A-2022-16018', 'BOE, Ley Orgánica 12/2022, de 30 de septiembre, que suprime el voto rogado'),
+                 ('https://www.boe.es/buscar/doc.php?id=BOE-A-2023-8463', 'BOE, Junta Electoral Central, Instrucción 1/2023, sobre el voto de los electores del CERA'),
+                 ('https://www.ine.es/dyngs/Prensa/EG2026.htm', 'INE, Elecciones a Cortes Generales de 29 de noviembre de 2026, nota de prensa (9-10-2026)'),
+                 INTERIOR_CERA,
+                 ('https://www.elindependiente.com/espana/2026/11/20/el-ts-exige-a-la-jec-garantizar-que-163-355-nacionalizados-por-la-ley-de-nietos-no-voten-el-29-n/', 'El Independiente (Europa Press), El TS exige a la Junta Electoral garantizar que 163.355 nacionalizados por la ley de nietos no voten el 29-N (20-11-2026)'),
+                 ('https://theobjective.com/espana/tribunales/2026-11-24/supremo-tumba-recurso-urnas-carton-nietos/', 'The Objective, El Supremo se desentiende de las urnas de cartón de los nietos y deja la decisión a la JEC (24-11-2026)'),
+                 ('https://doi.org/10.5944/rdp.120.2024.41766', 'Álvarez Vélez y Corres-Illera, La relevancia del voto CERA, Revista de Derecho Político 120 (2024)')],
+        enlaces=[],
+        lugar='España',
+    ),
 ]
 
 PORTADA_FIJAS = {   # slug: último día (incluido) en que va fija al principio del carrusel de la portada
