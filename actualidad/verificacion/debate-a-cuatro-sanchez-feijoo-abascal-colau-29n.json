@@ -71,12 +71,12 @@
  ],
  "externas": [
   {
-   "texto": "El debate tiene cinco bloques de 20 minutos,",
+   "texto": "El debate tenía cinco bloques de 20 minutos,",
    "cifra": "cinco",
    "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
   },
   {
-   "texto": "debate tiene cinco bloques de 20 minutos, con cinco minutos",
+   "texto": "debate tenía cinco bloques de 20 minutos, con cinco minutos",
    "cifra": "20",
    "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
   },
@@ -91,8 +91,16 @@
    "fuente": "https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html"
   },
   {
-   "texto": "del jueves pasado lo vieron 10,2 millones, según el informe de",
+   "texto": "del jueves 19 lo vieron 10,2 millones, según el informe de",
    "cifra": "10,2 millones",
+   "fuente": "https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html"
+  },
+  {
+   "texto": "El debate se celebró el jueves 26 por la noche con los cuatro candidatos, según COPE",
+   "fuente": "https://www.cope.es/programas/la-linterna/al-minuto/contamos-debate-cuatro-sanchez-feijoo-abascal-colau-elecciones-generales-29n-20261126_3483264.html"
+  },
+  {
+   "texto": "Sánchez y Feijóo del jueves 19 lo vieron",
    "fuente": "https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html"
   }
  ],
