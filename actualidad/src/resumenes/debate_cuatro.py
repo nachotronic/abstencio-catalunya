@@ -79,6 +79,7 @@ g_aud = figura(f'El último debate a varios, el de 2023, lo vieron {p(ULT[2] / 1
 lis = lambda xs: '<ul>' + ''.join(f'<li>{esc(x)}</li>' for x in xs) + '</ul>'
 cuerpo = f'''
 <p data-tipo="contexto"><strong>Actualización del 27 de noviembre.</strong> El debate se celebró el jueves 26 por la noche con los cuatro candidatos, según <a href="{COPE}">COPE</a>, que lo contó en directo. Lo que sigue es lo que se había publicado antes del debate sobre la hora, las cadenas y el orden.</p>
+<p data-tipo="contexto"><strong>Actualización del 27 de noviembre, a las 12.01.</strong> Hemos comprobado con datos oficiales cinco frases de los candidatos: {L("verificacion-debate-a-cuatro-datos-29n", "el debate a cuatro, comprobado con datos")}.</p>
 <h2>A qué hora es el debate a cuatro</h2>
 <p data-tipo="contexto">El debate a cuatro de las elecciones generales del 29N fue el jueves 26 de noviembre, a las <strong>22.00</strong>, y estaba previsto que durara casi dos horas, hasta las 0.00 aproximadamente, según <a href="{ELDEBATE}">El Debate</a>. Participaron Pedro Sánchez (PSOE), Alberto Núñez Feijóo (PP), Santiago Abascal (Vox) y Ada Colau (Frente Amplio). Lo organizó la Academia de Televisión y lo moderó su presidenta, María Casado, según <a href="{MUNDIARIO}">Mundiario</a>.</p>
 <p data-tipo="contexto">Fue el último debate de la campaña, según <a href="{INFOBAE}">Infobae</a>. La campaña acaba el viernes 27 a medianoche, el sábado es la jornada de reflexión y el domingo se vota.</p>

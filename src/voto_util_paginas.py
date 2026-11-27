@@ -9,6 +9,8 @@ import voto_util as VU
 
 PUBLICADA = '2026-11-26'
 ACTUALIZADA = '2026-11-26'
+ACTUALIZADA_INDICE = '2026-11-27'   # preguntas frecuentes del índice (Nacho, 27-11-2026: «fusiona»)
+LOREG = 'https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672'
 # 26-11-2026: provincias cuya fila «Otras» de agregados.json se desglosa ahora en sus candidaturas (src/voto_util_otras.py), con cuántas son
 CORREGIDAS = {}
 with open(pathlib.Path(__file__).resolve().parents[1] / 'generales-2026' / 'data' / 'voto_util_otras_2023.csv', encoding='utf-8') as _f:
@@ -347,6 +349,14 @@ def cartograma(A, COLOR, ruta_provincia, raiz):
             f'style="width:100%;height:auto;font-family:var(--sans)"><defs>{"".join(defs)}</defs>{"".join(out)}</svg>')
 
 
+QS_INDICE = [
+    ('¿Qué es el voto útil?',
+     'Votar a una candidatura con opciones de sacar escaño en tu provincia en lugar de a otra que no las tiene. Pesa porque los diputados se reparten provincia a provincia, con la regla D\'Hondt, entre las candidaturas que pasan del 3 % de los votos válidos de la circunscripción (<a href="' + LOREG + '#acientosesentaytres">artículo 163 de la LOREG</a>): los votos de las que no sacan ninguno no eligen a nadie. En esta página se ve, con los votos de 2023, <a href="#provincias">qué escaños estaban en juego en cada provincia</a>. No recomienda ningún voto.'),
+    ('¿Funciona el voto útil en el Senado?',
+     'El Senado se elige de otra forma, con voto limitado: en cada provincia peninsular se eligen cuatro senadores y cada elector marca hasta tres (<a href="' + LOREG + '#acientosesentayseis">artículo 166 de la LOREG</a>). En Mallorca, Gran Canaria y Tenerife se eligen tres y se marcan hasta dos; en Ceuta y Melilla, dos y se marca uno, y en el resto de islas, uno. Por eso lo habitual es que el partido más votado se lleve tres senadores de la provincia y el segundo, uno.'),
+]
+
+
 def indice(A, T_):
     COLOR = T_['COLOR']
     r = 'elecciones/voto-util-29n/'
@@ -360,13 +370,14 @@ def indice(A, T_):
                          [{'@type': 'WebPage', 'name': f'Voto útil en {a["n"]}', 'url': T_['BASE'] + ruta(p, T_['ruta_provincia'])} for p, a in A.items()])
     ld['@type'] = 'CollectionPage'
     ld['datePublished'] = PUBLICADA
-    ld['dateModified'] = T_['LASTMOD'][r] = ACTUALIZADA
-    h = [T_['cabeza'](titulo, desc, r, ld, 2, 'Voto útil')]
+    ld['dateModified'] = T_['LASTMOD'][r] = ACTUALIZADA_INDICE
+    faq_html, faq_ld = T_['faq'](QS_INDICE)
+    h = [T_['cabeza'](titulo, desc, r, [ld, faq_ld], 2, 'Voto útil')]
     h.append(f'<style>{CSS}.vu-sel{{font:inherit;font-family:var(--sans);font-size:1rem;padding:.4rem .6rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--fg);max-width:100%}}</style>')
     h.append(T_['migas_html']([(raiz, 'Inicio'), ('../', 'Elecciones')]))
     h.append(f'<p class="kicker">Elecciones generales · 29 de noviembre de 2026</p><h1 data-miga="Voto útil">Voto útil el 29N: qué escaños estaban en juego en cada provincia</h1>')
     h.append('<p class="subtitulo">Un cuadrado por escaño, con los votos de 2023 y los escaños de 2026: cuáles estaban seguros, cuáles en juego y quién se quedó a las puertas</p>')
-    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{T_["esquema"].FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADA}">{T_["fecha"](ACTUALIZADA)}</time></p>')
+    h.append(f'<p class="firma">Por <a href="{raiz}sobre-mi.html">{T_["esquema"].FIRMA}</a> · Actualizado el <time datetime="{ACTUALIZADA_INDICE}">{T_["fecha"](ACTUALIZADA_INDICE)}</time></p>')
     opts = ''.join(f'<option value="{raiz}{ruta(p, T_["ruta_provincia"])}">{escape(a["n"])} ({a["e"]} esc.)</option>' for p, a in sorted(A.items(), key=lambda t: T_['clave'](t[1]['n'])))
     h.append('<p><label for="vu-prov" style="font-family:var(--sans)">Elige tu provincia</label><br>'
              f'<select id="vu-prov" class="vu-sel" onchange="if(this.value)location.href=this.value"><option value="">Provincia…</option>{opts}</select></p>')
@@ -389,12 +400,13 @@ def indice(A, T_):
         f'<td>{escape(a["ultimo"]["l"])} ({a["ultimo"]["k"]}.º)</td><td>{escape(a["siguiente"]["l"])} ({a["siguiente"]["k"]}.º)</td>'
         f'<td class="n">{n(a["cambian"])}</td><td class="n">{pc(a["sin_escano_pct"])}</td></tr>'
         for p, a in sorted(A.items(), key=lambda t: t[1]['cambian']))
-    h.append('<h2>Las 52 circunscripciones</h2><figure><div style="overflow-x:auto"><table><caption>Último escaño, quién se quedó a las puertas y votos sin escaño, con los votos de 2023 y los escaños de 2026</caption>'
+    h.append('<h2 id="provincias">Las 52 circunscripciones</h2><figure><div style="overflow-x:auto"><table><caption>Último escaño, quién se quedó a las puertas y votos sin escaño, con los votos de 2023 y los escaños de 2026</caption>'
              '<thead><tr><th>Provincia</th><th>Escaños</th><th>Último escaño</th><th>A las puertas</th><th>Votantes que bastaban</th><th>Votos sin escaño</th></tr></thead>'
              f'<tbody>{filas}</tbody></table></div><figcaption>Votantes que bastaban: los que tendrían que pasar de la candidatura del último escaño a la que se quedó a las puertas. '
              'Votos sin escaño: los de candidaturas que no sacaron ninguno, sobre los válidos. Fuente: Ministerio del Interior (2023, con CERA). Cálculo propio.</figcaption></figure>')
     h.append('<h2>Qué no dicen estos datos</h2><p>No es una previsión del 29N: es el reparto de 2023 con los escaños de 2026. Las candidaturas han cambiado y los votantes no se mueven en bloque. '
              'Desde el 24 de noviembre la ley prohíbe publicar encuestas, así que aquí no hay ninguna. Más contexto en '
              f'<a href="{raiz}actualidad/provincias-en-el-filo-29n/">las provincias que deciden el 29N</a> y en <a href="{raiz}actualidad/votos-sin-escano-29n/">los votos que no eligieron a nadie</a>.</p>')
+    h.append(faq_html)
     h.append(T_['PIE'])
     return r, ''.join(h)

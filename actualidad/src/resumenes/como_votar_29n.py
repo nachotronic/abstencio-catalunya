@@ -106,6 +106,10 @@ cuerpo = f'''
 preguntas = [
     ('¿A qué hora abren y cierran los colegios electorales el 29N?',
      f'La votación empieza a las 9.00 y sigue sin interrupción hasta las 20.00 (<a href="{L84}">artículo 84 de la LOREG</a>). Quien esté en el local o en el acceso a las 20.00 y no haya votado todavía puede votar.'),
+    ('¿Hasta qué hora se puede votar el domingo?',
+     f'Hasta las 20.00: la votación va de 9.00 a 20.00 sin interrupción (<a href="{L84}">artículo 84 de la LOREG</a>). A las 20.00 el presidente de la mesa anuncia el cierre y solo votan los electores que estén en el local o en el acceso y aún no lo hayan hecho (<a href="{L88}">artículo 88</a>). En Canarias el horario es el mismo en hora local, así que allí se vota hasta las 21.00 peninsulares.'),
+    ('¿Cuántas papeletas y sobres hay?',
+     f'Dos papeletas, dos sobres y dos urnas: una para el Congreso y otra para el Senado. La papeleta del Congreso es blanca y la del Senado, sepia, y cada sobre es del mismo color que su papeleta (<a href="{RD605}">Real Decreto 605/1999</a>).'),
     ('¿Qué documento hay que llevar para votar en las elecciones generales?',
      f'El DNI, el pasaporte o el permiso de conducir, con fotografía y en original. Según la <a href="{JEC}">Junta Electoral Central</a>, se admite aunque esté caducado. La tarjeta censal no es obligatoria.'),
     ('¿Cómo sé dónde me toca votar?',
