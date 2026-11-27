@@ -1,0 +1,15 @@
+# Temporal, solo lectura. No se fusiona a main.
+name: Jornada reflexion 2023
+on:
+  push:
+    branches: [claude/project-thread-s6i9m7]
+    paths: ['.github/audiencia/trends27c.py']
+permissions:
+  contents: read
+jobs:
+  trends:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q pytrends
+      - run: python3 .github/audiencia/trends27c.py
