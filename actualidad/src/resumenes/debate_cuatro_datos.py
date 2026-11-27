@@ -86,7 +86,7 @@ VER = [('Sánchez', 'jamás ha habido tantos trabajadores', 'Exacta'),
        ('Feijóo', 'comprar es un 76% más caro', 'Exagera'),
        ('Sánchez', 'es la que más crece de toda Europa', 'Falsa'),
        ('Abascal', 'seis millones de personas', 'Engañosa'),
-       ('Colau', 'condenado por organización criminal', 'Falsa')]
+       ('Colau', 'por organización criminal', 'Falsa')]
 NEXACTAS = sum(v == 'Exacta' for *_, v in VER)
 assert (len(VER), NEXACTAS) == (5, 1)
 
@@ -120,7 +120,7 @@ cuerpo = f'''
 {tabla}
 <h2>Sánchez y el empleo: exacta</h2>
 <p data-tipo="dato">Pedro Sánchez dijo: «Récord histórico, jamás ha habido tantos trabajadores en nuestro país», según <a href="{ELDIARIO_DIR}">elDiario.es</a>. Es cierto. En el tercer trimestre de 2026 había <strong>{n(OCUP)} ocupados</strong>, según la <a href="{INE_EPA}">Encuesta de Población Activa del INE</a>: el máximo de la serie, que empieza en 2002. Son {n(MAS18)} más que en el segundo trimestre de 2018, cuando llegó al Gobierno, y {n(MAS07)} más que en el tercero de 2007, el máximo antes de la crisis.</p>
-<p data-tipo="contexto">Que haya más ocupados que nunca no dice por sí solo cómo es ese empleo ni cuánto se cobra: es lo que mide la frase y lo que se comprueba aquí. España también tiene hoy más habitantes que en 2007.</p>
+<p data-tipo="contexto">Que haya más ocupados que nunca no dice por sí solo cómo es ese empleo ni cuánto se cobra: es lo que mide la frase y lo que se comprueba aquí.</p>
 <h2>Feijóo y el precio de la vivienda: exagera</h2>
 <p data-tipo="dato">Alberto Núñez Feijóo dijo: «Desde que empezó la legislatura de Sánchez comprar es un 76% más caro y alquilar un 45% más caro», según <a href="{VERIFICAT}">Verificat</a>. El índice oficial del precio de compra, el <a href="{INE_IPV}">Índice de Precios de Vivienda del INE</a>, que mide compraventas reales, subió un <strong>{p(SUBE)} %</strong> del segundo trimestre de 2018 al segundo de 2026, el último publicado. La subida es grande, pero menor que la que dio Feijóo. Su cifra coincide con la de los precios que piden los anuncios de Idealista, según Verificat, que no es lo mismo que lo que se acaba pagando.</p>
 <h2>Sánchez y el crecimiento: falsa</h2>
