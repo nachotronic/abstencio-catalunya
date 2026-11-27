@@ -1,0 +1,187 @@
+{
+ "pieza": "verificacion-debate-a-cuatro-datos-29n",
+ "cifras": [
+  {
+   "texto": "comprobado con datos: de cinco frases de Sánchez, Feijóo,",
+   "cifra": "cinco",
+   "calculo": "D['NFRASES']"
+  },
+  {
+   "texto": "saldo de 2021 a 2024 fue de 2,2 millones. España crece un 2,7",
+   "cifra": "2,2 millones",
+   "calculo": "round(D['SALDO']/1e6,1)*1e6"
+  },
+  {
+   "texto": "millones. España crece un 2,7 %, la 7.ª de la UE,",
+   "cifra": "2,7",
+   "calculo": "D['VAL']['ES']"
+  },
+  {
+   "texto": "primera. La vivienda subió un 69,5 %, no un 76 %.",
+   "cifra": "69,5",
+   "calculo": "round(D['SUBE'],1)"
+  },
+  {
+   "texto": "de cifras. Hemos escogido cinco frases, al menos una",
+   "cifra": "cinco",
+   "calculo": "D['NFRASES']"
+  },
+  {
+   "texto": "elDiario.es y Verificat. De las cinco, 1 es exacta.",
+   "cifra": "cinco",
+   "calculo": "D['NFRASES']"
+  },
+  {
+   "texto": "tercer trimestre de 2026 había 22.852.600 ocupados, según la Encuesta",
+   "cifra": "22.852.600",
+   "calculo": "D['OCUP']"
+  },
+  {
+   "texto": "que empieza en 2002. Son 3.508.500 más que en el segundo",
+   "cifra": "3.508.500",
+   "calculo": "D['MAS18']"
+  },
+  {
+   "texto": "cuando llegó al Gobierno, y 2.099.200 más que en el tercero",
+   "cifra": "2.099.200",
+   "calculo": "round(D['MAS07'])"
+  },
+  {
+   "texto": "compraventas reales, subió un 69,5 % del segundo trimestre",
+   "cifra": "69,5",
+   "calculo": "round(D['SUBE'],1)"
+  },
+  {
+   "texto": "el PIB de España creció un 2,7 % frente al mismo trimestre",
+   "cifra": "2,7",
+   "calculo": "D['VAL']['ES']"
+  },
+  {
+   "texto": "Eurostat. Es el 7.º puesto de los 22 países de la UE que",
+   "cifra": "22",
+   "calculo": "D['NPAISES']"
+  },
+  {
+   "texto": "La media de la UE fue del 1,5 %.",
+   "cifra": "1,5",
+   "calculo": "D['UE27']"
+  },
+  {
+   "texto": "economías del euro: Alemania, un 1,1 %; Italia, un 0,8 %,",
+   "cifra": "1,1",
+   "calculo": "D['VAL']['DE']"
+  },
+  {
+   "texto": "Alemania, un 1,1 %; Italia, un 0,8 %, y Francia, que cae",
+   "cifra": "0,8",
+   "calculo": "D['VAL']['IT']"
+  },
+  {
+   "texto": "%, y Francia, que cae un 0,1 %.",
+   "cifra": "0,1",
+   "calculo": "-D['VAL']['FR']"
+  },
+  {
+   "texto": "empieza en 2021. En esos cuatro años, la Estadística",
+   "cifra": "cuatro",
+   "calculo": "len(D['IN'])"
+  },
+  {
+   "texto": "Migraciones del INE registró 4.686.407 llegadas desde el extranjero,",
+   "cifra": "4.686.407",
+   "calculo": "D['ENTRAN']"
+  },
+  {
+   "texto": "llegadas desde el extranjero, 4.115.038 de ellas de personas",
+   "cifra": "4.115.038",
+   "calculo": "D['EXTR']"
+  },
+  {
+   "texto": "extranjera. Pero en los mismos cuatro años hubo 2.499.744",
+   "cifra": "cuatro",
+   "calculo": "len(D['IN'])"
+  },
+  {
+   "texto": "los mismos cuatro años hubo 2.499.744 salidas hacia el extranjero,",
+   "cifra": "2.499.744",
+   "calculo": "D['SALEN']"
+  },
+  {
+   "texto": "salidas hacia el extranjero, el 53,3 % de las llegadas. El",
+   "cifra": "53,3",
+   "calculo": "round(D['PSAL'],1)"
+  },
+  {
+   "texto": "por la migración, fue de 2.186.663.",
+   "cifra": "2.186.663",
+   "calculo": "D['SALDO']"
+  },
+  {
+   "texto": "España creció un 2,7 %: la 7.ª de los 22",
+   "cifra": "2,7",
+   "calculo": "D['VAL']['ES']"
+  },
+  {
+   "texto": "creció un 2,7 %: la 7.ª de los 22 países de la UE con",
+   "cifra": "22",
+   "calculo": "D['NPAISES']"
+  },
+  {
+   "texto": "De 4,69 millones de llegadas, 2,50 millones",
+   "cifra": "4,69 millones",
+   "calculo": "round(D['ENTRAN']/1e6,2)*1e6"
+  },
+  {
+   "texto": "4,69 millones de llegadas, 2,50 millones de salidasMigraciones",
+   "cifra": "2,50 millones",
+   "calculo": "round(D['SALEN']/1e6,2)*1e6"
+  }
+ ],
+ "externas": [],
+ "ignorar": [
+  {
+   "texto": "El debate a cuatro, comprobado con datos:",
+   "motivo": "nombre del debate (debate a cuatro)"
+  },
+  {
+   "texto": "Abascal habló de seis millones de entradas:",
+   "motivo": "cita literal de Abascal («seis años», «seis millones»), que es la frase que se comprueba"
+  },
+  {
+   "texto": "vivienda subió un 69,5 %, no un 76 %.",
+   "motivo": "cita literal de Feijóo, que es la frase que se comprueba (Verificat)"
+  },
+  {
+   "texto": "El debate a cuatro del jueves 26 dejó decenas",
+   "motivo": "nombre del debate (debate a cuatro)"
+  },
+  {
+   "texto": "debate a cuatro del jueves 26 dejó decenas de cifras.",
+   "motivo": "fecha del debate (jueves 26 de noviembre)"
+  },
+  {
+   "texto": "de Sánchez comprar es un 76% más caro y alquilar",
+   "motivo": "cita literal de Feijóo, que es la frase que se comprueba (Verificat)"
+  },
+  {
+   "texto": "76% más caro y alquilar un 45% más caro», según Verificat.",
+   "motivo": "cita literal de Feijóo, que es la frase que se comprueba (Verificat)"
+  },
+  {
+   "texto": "Abascal dijo: «En los últimos seis años han entrado en",
+   "motivo": "cita literal de Abascal («seis años», «seis millones»), que es la frase que se comprueba"
+  },
+  {
+   "texto": "años han entrado en España seis millones de personas",
+   "motivo": "cita literal de Abascal («seis años», «seis millones»), que es la frase que se comprueba"
+  },
+  {
+   "texto": "en la pieza del debate a cuatro.",
+   "motivo": "nombre del debate (debate a cuatro)"
+  },
+  {
+   "texto": "Abascal y los «seis millones»: engañosa",
+   "motivo": "cita literal de Abascal («seis años», «seis millones»), que es la frase que se comprueba"
+  }
+ ]
+}

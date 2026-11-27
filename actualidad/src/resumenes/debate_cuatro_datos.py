@@ -116,7 +116,7 @@ tabla = ('<div class="tbl"><table><thead><tr><th>Candidato</th><th>Frase</th><th
          + ''.join(f'<tr><td>{c}</td><td>«{esc(f)}»</td><td>{v}</td></tr>' for c, f, v in VER) + '</tbody></table></div>')
 
 cuerpo = f'''
-<p data-tipo="contexto">El debate a cuatro del jueves 26 dejó decenas de cifras. Hemos escogido cinco frases, al menos una de cada candidato, que se pueden comprobar con una fuente oficial, y las hemos contrastado con el último dato publicado. Las frases son literales, tal como las recogen <a href="{ELDIARIO}">elDiario.es</a> y <a href="{VERIFICAT}">Verificat</a>. De las cinco, <strong>{NEXACTAS} es exacta</strong>.</p>
+<p data-tipo="contexto">El debate a cuatro del jueves 26 dejó decenas de cifras. Hemos escogido cinco frases, al menos una de cada candidato, que se pueden comprobar con una fuente oficial, y las hemos contrastado con el último dato publicado. Las frases son literales, tal como las recogen <a href="{ELDIARIO}">elDiario.es</a> y <a href="{VERIFICAT}">Verificat</a>. De las cinco, <strong>solo una es exacta</strong>.</p>
 {tabla}
 <h2>Sánchez y el empleo: exacta</h2>
 <p data-tipo="dato">Pedro Sánchez dijo: «Récord histórico, jamás ha habido tantos trabajadores en nuestro país», según <a href="{ELDIARIO_DIR}">elDiario.es</a>. Es cierto. En el tercer trimestre de 2026 había <strong>{n(OCUP)} ocupados</strong>, según la <a href="{INE_EPA}">Encuesta de Población Activa del INE</a>: el máximo de la serie, que empieza en 2002. Son {n(MAS18)} más que en el segundo trimestre de 2018, cuando llegó al Gobierno, y {n(MAS07)} más que en el tercero de 2007, el máximo antes de la crisis.</p>
@@ -157,7 +157,7 @@ foot = ('Datos: INE (Estadística de Migraciones y Cambios de Residencia, EPA e 
         'y Tribunal Supremo. Frases: elDiario.es y Verificat. Cálculo: actualidad/src/resumenes/debate_cuatro_datos.py.')
 D = {'ENTRAN': ENTRAN, 'SALEN': SALEN, 'SALDO': SALDO, 'EXTR': EXTR, 'PSAL': PSAL, 'OCUP': OCUP, 'MAS18': MAS18, 'MAS07': MAS07,
      'VAL': VAL, 'UE27': UE27, 'PUESTO': PUESTO, 'NPAISES': NPAISES, 'SUBE': SUBE, 'NEXACTAS': NEXACTAS,
-     'IN': IN, 'OUT': OUT}
+     'IN': IN, 'OUT': OUT, 'NFRASES': len(VER)}
 datos_js = '<script>const D=' + json.dumps(D, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 TITULO = 'El debate a cuatro, comprobado con datos: de cinco frases de Sánchez, Feijóo, Abascal y Colau, solo una es exacta'
