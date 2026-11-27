@@ -30,6 +30,7 @@ VERIFICAT = 'https://www.verificat.cat/es/debate-29n-verificaciones/'
 INE_EMCR = 'https://www.ine.es/jaxiT3/Tabla.htm?t=69688'
 INE_EMCR_E = 'https://www.ine.es/jaxiT3/Tabla.htm?t=69703'
 INE_EPA = 'https://www.ine.es/jaxiT3/Tabla.htm?t=65109'
+INE_ECP = 'https://www.ine.es/jaxiT3/Tabla.htm?t=59588'
 INE_IPV = 'https://www.ine.es/jaxiT3/Tabla.htm?t=80270'
 EUROSTAT = 'https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table'
 SUPREMO = 'https://www.poderjudicial.es/cgpj/en/Judiciary/Supreme-Court/Pressroom/Press-Archive/El-Tribunal-Supremo-confirma-penas-de-hasta-51-anos-de-prision-para-los-procesados-en-el--caso-Gurtel-'
@@ -48,6 +49,13 @@ SALDO = ENTRAN - SALEN
 EXTR = ENTRAN - sum(IN_ES.values())
 assert (ENTRAN, SALEN, SALDO, EXTR) == (4686407, 2499744, 2186663, 4115038), (ENTRAN, SALEN, SALDO, EXTR)
 PSAL = 100 * SALEN / ENTRAN
+RITMO = min(IN[a] for a in (2022, 2023, 2024))   # llegadas al año de 2022 a 2024, como mínimo
+assert RITMO == 1250991
+# Seis años de población nacida en el extranjero (ECP, tabla 59588): del 1-7-2020 al 1-7-2026
+ECP = {r['fecha']: r for r in leer('debate_cuatro_ecp_lugar_nacimiento.csv')}
+NAC0, NAC1 = int(ECP['2020-07-01']['nacidos_extranjero']), int(ECP['2026-07-01']['nacidos_extranjero'])
+NACIDOS = NAC1 - NAC0
+assert (NAC0, NAC1, NACIDOS) == (7144033, 10304413, 3160380)
 
 # 2. Sánchez: «jamás ha habido tantos trabajadores»
 EPA = [(int(r['anyo']), int(r['trimestre']), float(r['ocupados_miles'])) for r in leer('debate_cuatro_epa_ocupados.csv')]
@@ -85,7 +93,7 @@ assert round(SUBE, 1) == 69.5
 VER = [('Sánchez', 'jamás ha habido tantos trabajadores', 'Exacta'),
        ('Feijóo', 'comprar es un 76% más caro', 'Exagera'),
        ('Sánchez', 'es la que más crece de toda Europa', 'Falsa'),
-       ('Abascal', 'seis millones de personas', 'Engañosa'),
+       ('Abascal', 'seis millones de personas', 'Engañosa: son entradas'),
        ('Colau', 'por organización criminal', 'Falsa')]
 NEXACTAS = sum(v == 'Exacta' for *_, v in VER)
 assert (len(VER), NEXACTAS) == (5, 1)
@@ -127,10 +135,11 @@ cuerpo = f'''
 <p data-tipo="dato">Sánchez dijo que la economía española «es la que más crece de toda Europa», según <a href="{ELDIARIO}">elDiario.es</a>. No lo es. En el tercer trimestre de 2026, el PIB de España creció un <strong>{p(VAL["ES"])} %</strong> frente al mismo trimestre del año anterior, según <a href="{EUROSTAT}">Eurostat</a>. Es el {PUESTO}.º puesto de los {NPAISES} países de la UE que ya han dado el dato: por delante quedan {", ".join(DELANTE[:-1])} y {DELANTE[-1]}. La media de la UE fue del {p(UE27)} %.</p>
 {g_pib}
 <p data-tipo="contexto">Lo que sí es cierto es que España crece más que las otras grandes economías del euro: Alemania, un {p(VAL["DE"])} %; Italia, un {p(VAL["IT"])} %, y Francia, que cae un {p(-VAL["FR"])} %.</p>
-<h2>Abascal y los «seis millones»: engañosa</h2>
-<p data-tipo="dato">Santiago Abascal dijo: «En los últimos seis años han entrado en España seis millones de personas según el INE», según <a href="{ELDIARIO}">elDiario.es</a>. Los datos definitivos del INE llegan hasta 2024 y la serie actual empieza en 2021. En esos cuatro años, la <a href="{INE_EMCR}">Estadística de Migraciones del INE</a> registró <strong>{n(ENTRAN)} llegadas</strong> desde el extranjero, {n(EXTR)} de ellas de personas con nacionalidad extranjera. Pero en los mismos cuatro años hubo <strong>{n(SALEN)} salidas</strong> hacia el extranjero, el {p(PSAL)} % de las llegadas. El saldo, lo que de verdad sumó la población por la migración, fue de <strong>{n(SALDO)}</strong>.</p>
+<h2>Abascal y los «seis millones»: son entradas, y no se queda toda esa gente</h2>
+<p data-tipo="dato">Santiago Abascal dijo: «En los últimos seis años han entrado en España seis millones de personas según el INE», según <a href="{ELDIARIO}">elDiario.es</a>. La cifra de entradas es verosímil. Los datos definitivos del INE llegan hasta 2024 y la serie actual empieza en 2021: en esos cuatro años, la <a href="{INE_EMCR}">Estadística de Migraciones del INE</a> registró <strong>{n(ENTRAN)} llegadas</strong> desde el extranjero, {n(EXTR)} de ellas de personas con nacionalidad extranjera. De 2025 y 2026 el INE solo ha publicado una primera estimación por trimestres, sin el total de llegadas. Pero de 2022 a 2024 entraron más de {n(RITMO / 1e6, 2)} millones cada año, y a ese ritmo los seis años pasarían de los seis millones. Es una estimación nuestra, no un dato publicado.</p>
+<p data-tipo="dato">Lo engañoso es que las entradas no son la gente que se queda. En los mismos cuatro años de 2021 a 2024 hubo <strong>{n(SALEN)} salidas</strong> hacia el extranjero, el {p(PSAL)} % de las llegadas, y el saldo fue de <strong>{n(SALDO)}</strong>. En los seis años que van de julio de 2020 a julio de 2026, la población residente nacida en el extranjero creció en <strong>{n(NACIDOS)}</strong> personas, según la <a href="{INE_ECP}">Estadística Continua de Población del INE</a> (datos provisionales): de {n(NAC0)} a {n(NAC1)}.</p>
 {g_mig}
-<p data-tipo="contexto">Hablar solo de entradas da una cifra mucho mayor que la gente que se queda. Además, el INE cuenta migraciones, no personas: quien entra, sale y vuelve a entrar cuenta dos veces. En las mismas llegadas están los españoles que vuelven del extranjero.</p>
+<p data-tipo="contexto">Las entradas son mucho más que la gente que se queda por tres razones: muchos de los que llegan se vuelven a ir; el INE cuenta migraciones, no personas, y quien entra, sale y vuelve a entrar cuenta dos veces, y en las mismas llegadas están los españoles que vuelven del extranjero. Abascal unió la cifra a la falta de vivienda, y para eso lo que cuenta es la gente que se queda.</p>
 <h2>Colau y la condena del PP: falsa</h2>
 <p data-tipo="dato">Ada Colau le dijo a Feijóo: «O sea, le han condenado [al PP] por organización criminal, señor Feijóo», según <a href="{VERIFICAT}">Verificat</a>. No es así. En la sentencia firme del caso Gürtel, la nota del <a href="{SUPREMO}">Tribunal Supremo</a> del 14 de octubre de 2020 dice que el tribunal «confirma lo establecido por la Audiencia Nacional en cuanto a las responsabilidades civiles y a la responsabilidad como partícipes a título lucrativo del Partido Popular». Es una responsabilidad civil: el PP tuvo que devolver el dinero de unos actos electorales que pagaron las empresas de la trama. No es una condena penal ni por organización criminal.</p>
 <p data-tipo="contexto">La misma nota del Supremo dice que entre el «Grupo CORREA» y «personas del Partido Popular se tejió una estructura de colaboración estable», y confirma la condena «por asociación ilícita para varios de los acusados». Son condenas a personas, no al partido.</p>
@@ -143,7 +152,7 @@ preguntas = [
     ('¿Qué frases del debate a cuatro eran ciertas?',
      f'De las cinco que hemos comprobado, solo es exacta la de Sánchez sobre el empleo: en el tercer trimestre de 2026 había {n(OCUP)} ocupados, el máximo de la EPA.'),
     ('¿Es verdad que han entrado seis millones de inmigrantes en seis años?',
-     f'Cuenta solo las llegadas. De 2021 a 2024, el INE registró {n(ENTRAN)} llegadas y {n(SALEN)} salidas: el saldo fue de {n(SALDO)}.'),
+     f'Las entradas, probablemente sí: de 2021 a 2024 el INE registró {n(ENTRAN)} llegadas, y 2025 y 2026 aún no tienen total publicado. Pero muchos se van: en esos cuatro años hubo {n(SALEN)} salidas, y la población nacida en el extranjero creció en {n(NACIDOS)} de julio de 2020 a julio de 2026.'),
     ('¿Es España la economía que más crece de Europa?',
      f'No. En el tercer trimestre de 2026 creció un {p(VAL["ES"])} %, el {PUESTO}.º puesto de los {NPAISES} países de la UE con dato, según Eurostat. Sí crece más que Alemania, Francia e Italia.'),
     ('¿Cuánto ha subido la vivienda desde 2018?',
@@ -157,11 +166,11 @@ foot = ('Datos: INE (Estadística de Migraciones y Cambios de Residencia, EPA e 
         'y Tribunal Supremo. Frases: elDiario.es y Verificat. Cálculo: actualidad/src/resumenes/debate_cuatro_datos.py.')
 D = {'ENTRAN': ENTRAN, 'SALEN': SALEN, 'SALDO': SALDO, 'EXTR': EXTR, 'PSAL': PSAL, 'OCUP': OCUP, 'MAS18': MAS18, 'MAS07': MAS07,
      'VAL': VAL, 'UE27': UE27, 'PUESTO': PUESTO, 'NPAISES': NPAISES, 'SUBE': SUBE, 'NEXACTAS': NEXACTAS,
-     'IN': IN, 'OUT': OUT, 'NFRASES': len(VER)}
+     'IN': IN, 'OUT': OUT, 'RITMO': RITMO, 'NACIDOS': NACIDOS, 'NAC0': NAC0, 'NAC1': NAC1, 'NFRASES': len(VER)}
 datos_js = '<script>const D=' + json.dumps(D, ensure_ascii=False, separators=(',', ':')) + ';</script>\n'
 
 TITULO = 'El debate a cuatro, comprobado con datos: de cinco frases de Sánchez, Feijóo, Abascal y Colau, solo una es exacta'
-DEK = (f'Abascal habló de seis millones de entradas: con las salidas, el saldo de 2021 a 2024 fue de {n(SALDO / 1e6, 1)} millones. '
+DEK = (f'Las entradas que citó Abascal son verosímiles, pero la población nacida fuera creció {n(NACIDOS / 1e6, 1)} millones en seis años. '
        f'España crece un {p(VAL["ES"])} %, la {PUESTO}.ª de la UE, no la primera. La vivienda subió un {p(SUBE)} %, no un 76 %.')
 pieza(SLUG, 'El debate, con datos', TITULO, DEK, '27 de noviembre de 2026', cuerpo, preguntas, enlaces, foot, scripts=datos_js)
 print(ENTRAN, SALEN, SALDO, EXTR, round(PSAL, 1), OCUP, MAS18, MAS07, PUESTO, NPAISES, round(SUBE, 1), UE27)
