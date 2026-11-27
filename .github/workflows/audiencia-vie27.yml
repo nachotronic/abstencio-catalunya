@@ -1,0 +1,17 @@
+# Temporal, solo lectura: audiencia 27-11. No se fusiona a main.
+name: Audiencia 27-11
+on:
+  push:
+    branches: [claude/project-thread-v984qa]
+    paths: ['.github/audiencia/**','.github/workflows/audiencia-vie27.yml']
+permissions:
+  contents: read
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {sparse-checkout: .github}
+      - env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 .github/audiencia/vie27.py
