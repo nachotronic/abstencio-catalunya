@@ -119,6 +119,7 @@ def genera(d, meta, c, ruta_provincia, slug_provincia):
 <p class="dek">{"El escaño" if total == 1 else f"Los {total} escaños"} de {html.escape(nombre)} con la media de las encuestas de las generales del 29N: reparto central, horquilla y probabilidad de quedar primero.{html.escape(cis_dek)}</p>
 <p class="firma">Por <a href="../../sobre-mi.html">{c.AUTOR}</a> · Actualizado el <time datetime="{meta['generado']}">{actual}</time></p>
 <p class="propio"><b>Modelo propio, no es una encuesta de {html.escape(nombre)}.</b> Las encuestadoras no publican sus datos por provincia. Estas cifras salen del modelo de Mapa Electoral, que reparte por provincia la media de las <a href="../">encuestas publicadas</a> y simula el resultado {sims} veces. <a href="../metodo-modelo.html">Cómo se calcula</a>.</p>
+<p class="enlace-voto-util">Con los votos de 2023, a cuántos votos estuvo cada escaño: <a href="../../{ruta_provincia(cod)}voto-util-29n/">voto útil en {html.escape(nombre)} el 29N</a>.</p>
 <p data-tipo="dato">{html.escape(p1)}</p>
 <figure><figcaption><span class="t">{"El escaño" if total == 1 else f"Los {total} escaños"} de {html.escape(nombre)} en el reparto central</span><span class="s">Un cuadrado por escaño, con el color del partido que lo saca en el reparto central.</span></figcaption>
 <div class="esc grande" aria-hidden="true">{cuad}</div>

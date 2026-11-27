@@ -19,6 +19,7 @@ SLUG = 'debate-a-cuatro-sanchez-feijoo-abascal-colau-29n'
 
 MUNDIARIO = 'https://www.mundiario.com/politica/debate-cuatro-29-n-horarios-turnos-bloques-duelo-entre-sanchez-feijoo-abascal-colau/20261126081720455042.html'
 ELDEBATE = 'https://www.eldebate.com/cine-tv-series/20261125/debate-4-abascal-izquierda-colau-derecha-sanchez-abrira-minuto-oro-feijoo-cerrara_485161.html'
+COPE = 'https://www.cope.es/programas/la-linterna/al-minuto/contamos-debate-cuatro-sanchez-feijoo-abascal-colau-elecciones-generales-29n-20261126_3483264.html'
 INFOBAE = 'https://www.infobae.com/espana/2026/11/26/el-debate-a-cuatro-definitivo-en-directo-ultima-hora-de-las-elecciones-generales-29-n-y-la-campana-electoral/'
 BARLOVENTO = 'https://barloventocomunicacion.es/wp-content/uploads/2023/07/Analisis-Audiencia-23J-EL-DEBATE-FINAL_19-julio-2023.pdf'
 ESP26 = 'https://www.elespanol.com/espana/politica/20261120/cara-sanchez-feijoo-arrasa-parrilla-audiencia-media-espectadores/1003744465708_0.html'
@@ -77,18 +78,19 @@ g_aud = figura(f'El último debate a varios, el de 2023, lo vieron {p(ULT[2] / 1
 
 lis = lambda xs: '<ul>' + ''.join(f'<li>{esc(x)}</li>' for x in xs) + '</ul>'
 cuerpo = f'''
+<p data-tipo="contexto"><strong>Actualización del 27 de noviembre.</strong> El debate se celebró el jueves 26 por la noche con los cuatro candidatos, según <a href="{COPE}">COPE</a>, que lo contó en directo. Lo que sigue es lo que se había publicado antes del debate sobre la hora, las cadenas y el orden.</p>
 <h2>A qué hora es el debate a cuatro</h2>
-<p data-tipo="contexto">El debate a cuatro de las elecciones generales del 29N es este jueves 26 de noviembre, a las <strong>22.00</strong>, y durará casi dos horas, hasta las 0.00 aproximadamente, según <a href="{ELDEBATE}">El Debate</a>. Participan Pedro Sánchez (PSOE), Alberto Núñez Feijóo (PP), Santiago Abascal (Vox) y Ada Colau (Frente Amplio). Lo organiza la Academia de Televisión y lo modera su presidenta, María Casado, según <a href="{MUNDIARIO}">Mundiario</a>.</p>
-<p data-tipo="contexto">Es el último debate de la campaña, según <a href="{INFOBAE}">Infobae</a>. La campaña acaba el viernes 27 a medianoche, el sábado es la jornada de reflexión y el domingo se vota.</p>
+<p data-tipo="contexto">El debate a cuatro de las elecciones generales del 29N fue el jueves 26 de noviembre, a las <strong>22.00</strong>, y estaba previsto que durara casi dos horas, hasta las 0.00 aproximadamente, según <a href="{ELDEBATE}">El Debate</a>. Participaron Pedro Sánchez (PSOE), Alberto Núñez Feijóo (PP), Santiago Abascal (Vox) y Ada Colau (Frente Amplio). Lo organizó la Academia de Televisión y lo moderó su presidenta, María Casado, según <a href="{MUNDIARIO}">Mundiario</a>.</p>
+<p data-tipo="contexto">Fue el último debate de la campaña, según <a href="{INFOBAE}">Infobae</a>. La campaña acaba el viernes 27 a medianoche, el sábado es la jornada de reflexión y el domingo se vota.</p>
 <h2>Dónde ver el debate</h2>
-<p data-tipo="contexto">La Academia da la señal a las cadenas que quieran emitirlo. Lo darán en directo, según <a href="{MUNDIARIO}">Mundiario</a>:</p>
+<p data-tipo="contexto">La Academia dio la señal a las cadenas que quisieran emitirlo. Estaba previsto darlo en directo en estas, según <a href="{MUNDIARIO}">Mundiario</a>:</p>
 {lis(CADENAS)}
-<p data-tipo="contexto">También lo emitirá la cadena portuguesa CNN Portugal.</p>
+<p data-tipo="contexto">También estaba previsto que lo emitiera la cadena portuguesa CNN Portugal.</p>
 <h2>En qué orden hablan</h2>
-<p data-tipo="contexto">El sorteo decidió los atriles y los turnos. De izquierda a derecha, en pantalla, estarán Abascal, Sánchez, Feijóo y Colau. Abre Colau, con una valoración de la legislatura de un minuto y medio, y le siguen Sánchez, Feijóo y Abascal. En el minuto de oro final el orden cambia: empieza Sánchez, siguen Abascal y Colau, y cierra Feijóo, según <a href="{ELDEBATE}">El Debate</a> y <a href="{MUNDIARIO}">Mundiario</a>.</p>
-<p data-tipo="contexto">El debate tiene cinco bloques de 20 minutos, con cinco minutos para cada candidato en cada uno. Son estos, en este orden, según <a href="{ELDEBATE}">El Debate</a>:</p>
+<p data-tipo="contexto">El sorteo decidió los atriles y los turnos. De izquierda a derecha, en pantalla, estaban Abascal, Sánchez, Feijóo y Colau. Abría Colau, con una valoración de la legislatura de un minuto y medio, y le seguían Sánchez, Feijóo y Abascal. En el minuto de oro final el orden cambiaba: empezaba Sánchez, seguían Abascal y Colau, y cerraba Feijóo, según <a href="{ELDEBATE}">El Debate</a> y <a href="{MUNDIARIO}">Mundiario</a>.</p>
+<p data-tipo="contexto">El debate tenía cinco bloques de 20 minutos, con cinco minutos para cada candidato en cada uno. Eran estos, en este orden, según <a href="{ELDEBATE}">El Debate</a>:</p>
 {lis(BLOQUES)}
-<p data-tipo="contexto">Habrá dos pausas publicitarias de tres minutos, después del segundo y del cuarto bloque. Los candidatos no pueden llevar dispositivos electrónicos, y los tiempos los controlan árbitros de la Federación Española de Baloncesto, según las dos mismas fuentes.</p>
+<p data-tipo="contexto">Estaban previstas dos pausas publicitarias de tres minutos, después del segundo y del cuarto bloque. Los candidatos no podían llevar dispositivos electrónicos, y los tiempos los controlaban árbitros de la Federación Española de Baloncesto, según las dos mismas fuentes.</p>
 <h2>Cuánto pesaba cada atril en 2023</h2>
 <p data-tipo="dato">Los partidos de los cuatro candidatos sacaron <strong>{SUMA} de los 350 diputados</strong> en las elecciones generales de 2023, y {n(VSUMA)} votos, el {p(VPCT)} % de los válidos. El PP y Vox sumaron {DER}; el PSOE y Sumar, {IZQ}. Ninguno de los dos pares llegó a los 176 de la mayoría absoluta: los {RESTO} escaños restantes eran de ERC, Junts, EH Bildu, el PNV, el BNG, Coalición Canaria y UPN.</p>
 {g_esc}
@@ -96,18 +98,18 @@ cuerpo = f'''
 <h2>Cuánta gente ve un debate a varios</h2>
 <p data-tipo="dato">El último debate con más de dos candidatos a la presidencia, el de Sánchez, Abascal y Yolanda Díaz del 19 de julio de 2023, lo vieron de media <strong>{p(ULT[2] / 1000)} millones de personas</strong>, con un {p(ULT[3])} % de cuota: el menos visto de los seis desde 2015 y un {CAIDA} % menos que el de 2016, el que más audiencia tuvo, según los datos de Kantar que recopila <a href="{BARLOVENTO}">Barlovento Comunicación</a>.</p>
 {g_aud}
-<p data-tipo="contexto">El cara a cara entre Sánchez y Feijóo del jueves pasado lo vieron {p(CARA26 / 1000)} millones, según el informe de Barlovento que recoge <a href="{ESP26}">El Español (Europa Press)</a>.</p>
+<p data-tipo="contexto">El cara a cara entre Sánchez y Feijóo del jueves 19 lo vieron {p(CARA26 / 1000)} millones, según el informe de Barlovento que recoge <a href="{ESP26}">El Español (Europa Press)</a>.</p>
 '''
 
 preguntas = [
     ('¿A qué hora es el debate a cuatro?',
-     'El jueves 26 de noviembre de 2026, a las 22.00. Está previsto que acabe hacia las 0.00.'),
+     'Fue el jueves 26 de noviembre de 2026, a las 22.00. Estaba previsto que acabara hacia las 0.00.'),
     ('¿Dónde se puede ver el debate a cuatro?',
-     'En La 1, el Canal 24 Horas, Antena 3, laSexta, Telecinco, Cuatro y La Séptima, en varias televisiones autonómicas y en RTVE Play.'),
+     'Se emitió en La 1, el Canal 24 Horas, Antena 3, laSexta, Telecinco, Cuatro y La Séptima, en varias televisiones autonómicas y en RTVE Play.'),
     ('¿Quién participa en el debate a cuatro?',
-     'Pedro Sánchez (PSOE), Alberto Núñez Feijóo (PP), Santiago Abascal (Vox) y Ada Colau (Frente Amplio). Modera María Casado.'),
+     'Pedro Sánchez (PSOE), Alberto Núñez Feijóo (PP), Santiago Abascal (Vox) y Ada Colau (Frente Amplio). Moderó María Casado.'),
     ('¿Quién abre y quién cierra el debate?',
-     'Abre Colau. En el minuto de oro final empieza Sánchez y cierra Feijóo.'),
+     'Abría Colau. En el minuto de oro final, según el orden sorteado, empezaba Sánchez y cerraba Feijóo.'),
     ('¿Cuántos escaños sacaron en 2023 los partidos del debate?',
      f'{SUMA} de 350: PP {ESC["PP"]}, PSOE {ESC["PSOE"]}, Vox {ESC["Vox"]} y Sumar {ESC["Sumar"]}, que entonces incluía a Podemos.'),
 ]
