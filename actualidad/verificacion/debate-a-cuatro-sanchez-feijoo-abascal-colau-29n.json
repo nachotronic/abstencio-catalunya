@@ -156,6 +156,14 @@
   {
    "texto": "elecciones generales con tres o más candidatos a la",
    "motivo": "definición del gráfico (debates con tres o más candidatos)"
+  },
+  {
+   "texto": "Hemos comprobado con datos oficiales cinco frases de los candidatos:",
+   "motivo": "número de frases de la pieza enlazada (verificacion-debate-a-cuatro-datos-29n), donde se declara"
+  },
+  {
+   "texto": "candidatos: el debate a cuatro, comprobado con datos.",
+   "motivo": "nombre del debate (debate a cuatro)"
   }
  ],
  "permitir_espana": []

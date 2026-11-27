@@ -20,10 +20,11 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (139)
+## Pendientes (140)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-27 | [`verificacion-debate-a-cuatro-datos-29n`](https://mapaelectoral.es/actualidad/verificacion-debate-a-cuatro-datos-29n/) | El debate a cuatro, comprobado con datos: de cinco frases de Sánchez, Feijóo, Abascal y Colau, solo una es exacta | primer gráfico de la pieza |
 | 2026-11-26 | [`debate-a-cuatro-sanchez-feijoo-abascal-colau-29n`](https://mapaelectoral.es/actualidad/debate-a-cuatro-sanchez-feijoo-abascal-colau-29n/) | Debate a cuatro: hora, dónde verlo y en qué orden hablan Sánchez, Feijóo, Abascal y Colau | primer gráfico de la pieza |
 | 2026-11-26 | [`pueblos-que-siempre-aciertan-29n`](https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/) | Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2 | primer gráfico de la pieza |
 | 2026-11-26 | [`encuestas-fallos-elecciones-espana-29n`](https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/) | Las encuestas fallaron por más de 3 puntos en 15 de 30 elecciones analizadas desde 2015: Andalucía 2022 y 2018, los mayores sustos | primer gráfico de la pieza |
