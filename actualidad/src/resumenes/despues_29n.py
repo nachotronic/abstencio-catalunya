@@ -96,6 +96,7 @@ cuerpo = f'''
 <h2>Mientras tanto, un Gobierno en funciones</h2>
 <p data-tipo="dato">«El Gobierno cesa tras la celebración de elecciones generales» y «continuará en funciones hasta la toma de posesión del nuevo Gobierno» (<a href="{C101}">artículo 101</a>). Mientras no haya investidura, el Gobierno sigue, pero en funciones. Si hubiera que repetir las elecciones, el decreto de disolución lo refrenda el presidente del Congreso y no el del Gobierno (<a href="{LOREG}">artículo 167 de la LOREG</a>).</p>
 <p data-tipo="contexto">Los diputados que salgan elegidos en cada provincia y los escaños de cada partido estarán en el mapa la noche del 29N. Cuántos votos hacen falta para un escaño en cada provincia, en {L("precio-del-escano-29n", "el precio del escaño")}.</p>
+<p data-tipo="contexto">Actualización del 27 de noviembre. Antes de votar, a cuántos votos estuvo cada escaño en 2023, provincia a provincia: el <a href="{BASE}elecciones/voto-util-29n/">voto útil en cada provincia el 29N</a>.</p>
 '''
 
 preguntas = [
