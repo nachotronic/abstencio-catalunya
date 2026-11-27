@@ -34,3 +34,15 @@ for p,v in h.most_common(40): print('TOP',p,v,a[p],v-a[p])
 dif=collections.Counter({p:h[p]-a[p] for p in set(h)|set(a)})
 for p,v in dif.most_common(25): print('SUBE',p,h[p],a[p],v)
 for p,v in sorted(dif.items(),key=lambda x:x[1])[:10]: print('BAJA',p,h[p],a[p],v)
+def refs(t1,t2):
+    f='{AND:[{siteTag:"%s"},{datetime_geq:"%s"},{datetime_lt:"%s"}]}'%(SITE,t1,t2)
+    q='{viewer{accounts(filter:{accountTag:"%s"}){g:rumPageloadEventsAdaptiveGroups(limit:5000,filter:%s,orderBy:[sum_visits_DESC]){sum{visits} dimensions{refererHost requestPath}}}}}'%(ACC,f)
+    r=urllib.request.Request('https://api.cloudflare.com/client/v4/graphql',json.dumps({'query':q}).encode(),{'Authorization':'Bearer '+tok,'Content-Type':'application/json'})
+    d=json.load(urllib.request.urlopen(r)); c=collections.Counter(); p=collections.defaultdict(collections.Counter)
+    for x in d['data']['viewer']['accounts'][0]['g']:
+        hh=x['dimensions']['refererHost'] or ''
+        if not hh or 'mapaelectoral' in hh: continue
+        c[hh]+=x['sum']['visits']; p[hh][x['dimensions']['requestPath']]+=x['sum']['visits']
+    return c,p
+rh,rp=refs(Z(HOY),Z(now)); rs,_=refs(Z(HOY-D(days=7)),Z(HOY))
+for k,v in rh.most_common(40): print('REFHOY',k,v,'7dias_previos',rs[k],rp[k].most_common(3))
