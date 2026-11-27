@@ -27,7 +27,7 @@
    "calculo": "D['NFRASES']"
   },
   {
-   "texto": "elDiario.es y Verificat. De las cinco, 1 es exacta.",
+   "texto": "elDiario.es y Verificat. De las cinco, solo una es exacta.",
    "cifra": "cinco",
    "calculo": "D['NFRASES']"
   },

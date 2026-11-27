@@ -99,7 +99,7 @@ g_pib = figura(f'España creció un {p(VAL["ES"])} %: la {PUESTO}.ª de los {NPA
                f'Fuente: <a href="{EUROSTAT}">Eurostat</a>, PIB en volumen corregido de estacionalidad y calendario, datos del 25 de noviembre de 2026. '
                'Sin dato aún: Croacia, Grecia, Letonia, Luxemburgo y Malta. Francia cae un 0,1 %.',
                None,
-               (['País', 'Crecimiento interanual (%)'], [[NOM[g], p(v)] for v, g in UE]))
+               (['Puesto y país', 'Crecimiento interanual (%)'], [[f'{i}. {NOM[g]}', p(v)] for i, (v, g) in enumerate(UE, 1)]))
 
 g_mig = figura(f'De {n(ENTRAN / 1e6, 2)} millones de llegadas, {n(SALEN / 1e6, 2)} millones de salidas',
                'Migraciones con el extranjero registradas por el INE cada año, en miles',
