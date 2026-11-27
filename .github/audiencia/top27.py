@@ -46,3 +46,5 @@ def refs(t1,t2):
     return c,p
 rh,rp=refs(Z(HOY),Z(now)); rs,_=refs(Z(HOY-D(days=7)),Z(HOY))
 for k,v in rh.most_common(40): print('REFHOY',k,v,'7dias_previos',rs[k],rp[k].most_common(3))
+vu=lambda c:sum(v for p,v in c.items() if 'voto-util-29n' in p)
+print('VU_TOTAL hoy',vu(h),'jue',vu(a),'resumen',h['/elecciones/voto-util-29n/'],'npag',len([p for p in h if 'voto-util-29n' in p]))

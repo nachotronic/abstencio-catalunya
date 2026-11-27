@@ -16,3 +16,7 @@ for pg in ['https://mapaelectoral.es/encuestas/','https://mapaelectoral.es/encue
     flt=[{'filters':[{'dimension':'page','operator':'equals','expression':pg}]}]
     for d in ['2026-11-26','2026-11-27']:
         for r in q({'startDate':d,'endDate':d,'dimensions':['query'],'dimensionFilterGroups':flt,'rowLimit':6,'dataState':'all'}): print('PAGQ',d,pg,f(r))
+for d in ['2026-11-26','2026-11-27']:
+    flt=[{'filters':[{'dimension':'page','operator':'contains','expression':'voto-util-29n'}]}]
+    for r in q({'startDate':d,'endDate':d,'dimensions':['query'],'dimensionFilterGroups':flt,'rowLimit':12,'dataState':'all'}): print('VUQ',d,f(r))
+    tot=q({'startDate':d,'endDate':d,'dimensionFilterGroups':flt,'dataState':'all'}); print('VUTOT',d,[f(r) for r in tot])
