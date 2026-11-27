@@ -5262,7 +5262,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='a-que-hora-resultados-elecciones-generales-29n', actualizado='2026-11-25 09:50', fecha='2026-11-20',
+        slug='a-que-hora-resultados-elecciones-generales-29n', actualizado='2026-11-27 09:50', fecha='2026-11-20',
         titulo='A qué hora se sabrán los resultados de las elecciones generales del 29N', serie='29n', figura=0,
         descripcion='Los colegios cierran a las 20.00, pero en 2023 los primeros resultados llegaron a las 21.00, al cerrar Canarias. Antes, dos avances de participación, a las 14.00 y a las 18.00. El voto de fuera se cuenta el viernes 4 de diciembre.',
         compara='El horario de la jornada electoral según la ley y según la nota del Ministerio del Interior para las generales de 2023, y los avances de participación de las 14.00 y las 18.00 y la participación final en julio de 2023 y noviembre de 2019.',
@@ -5299,7 +5299,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-27 08:40',
+        slug='encuestas-andorra-29n', fecha='2026-11-23', actualizado='2026-11-27 09:50',
         titulo='Encuestas Andorra 29N: qué son las encuestas prohibidas y qué dice la ley', serie='29n', figura=0,
         descripcion='Son encuestas publicadas fuera de España durante la veda, que va del martes 24 hasta que cierren los colegios el domingo 29. En 2023, «encuestas andorra» solo se buscó la semana de la veda, con el máximo en la jornada de reflexión.',
         compara='Lo que dice la ley electoral sobre la publicación de encuestas en los cinco días antes de votar, los casos de encuestas publicadas fuera de España durante la veda desde 2008, la resolución de la Junta Electoral Central sobre encuestas encubiertas y las búsquedas en Google de «encuestas andorra» y «encuestas prohibidas» en la semana de las generales de 2023.',
