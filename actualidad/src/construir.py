@@ -5320,7 +5320,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='despues-elecciones-generales-29n-investidura', fecha='2026-11-23',
+        slug='despues-elecciones-generales-29n-investidura', fecha='2026-11-23', actualizado='2026-11-27 10:25',
         titulo='Después de las elecciones generales del 29N: cuándo se constituyen las Cortes y los plazos de la investidura', serie='29n', figura=0,
         descripcion='Las Cortes se constituyen el 23 de diciembre. Para la investidura no hay fecha, pero sí un plazo: dos meses desde la primera votación. Desde 2015, ningún presidente ha sido investido antes de 58 días.',
         compara='El calendario tras las elecciones generales del 29N según la Constitución y la guía de Interior, y los días que pasaron entre las elecciones, la constitución de las Cortes y la investidura del presidente en cada legislatura desde 1982.',

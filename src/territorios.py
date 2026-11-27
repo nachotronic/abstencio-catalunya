@@ -1610,7 +1610,8 @@ def tema_votar():
                   'de las 52 circunscripciones, tal como las publica el BOE, con un buscador por nombre y una página por provincia.'))
     h.append('<h2 id="documentos">Qué llevar</h2>'
              + p_('Dato', f'El DNI, el pasaporte o el permiso de conducir, con tu fotografía y en original (<a href="{LOREG}">artículo 85 de la LOREG</a>). '
-                  'La tarjeta censal no es obligatoria: sirve para saber tu mesa, no para votar.'))
+                  'La tarjeta censal no es obligatoria: sirve para saber tu mesa, no para votar.')
+             + f'<p>Las dos papeletas y lo que pasa en la mesa, paso a paso: <a href="{raiz}actualidad/como-votar-elecciones-generales-29n/">cómo votar en las elecciones generales del 29N</a>.</p>')
 
     filas = [['Residentes en España', 'del 6 de octubre al 19 de noviembre', 'del 9 al 22 de noviembre', 'del 9 al 25 de noviembre'],
              ['Residentes temporalmente en el extranjero', 'del 6 al 31 de octubre', 'del 3 al 17 de noviembre', 'del 3 al 25 de noviembre'],
@@ -2383,7 +2384,8 @@ def tema_29n(resumen):
              + p_('Dato', 'Las 52 circunscripciones eligen, de mayor a menor: ' + diputados_por_provincia())
              + p_('Dato', 'En la tabla, diputados que elige cada circunscripción el 29N y en 2023, cómo se repartieron en 2023, electores residentes por diputado y participación del censo residente. '
                   'Cada provincia enlaza a su página, con el voto por municipio y por barrio desde 1977.')
-             + tabla('Escaños por circunscripción en las generales de 2026 y de 2023', ['Provincia', '2026', '2023', 'Cambio', 'Reparto en 2023', 'Electores por diputado', 'Participación 2023'], filas))
+             + tabla('Escaños por circunscripción en las generales de 2026 y de 2023', ['Provincia', '2026', '2023', 'Cambio', 'Reparto en 2023', 'Electores por diputado', 'Participación 2023'], filas)
+             + '<p>Con los votos de 2023, a cuántos votos estuvo cada escaño de cada provincia: el <a href="../voto-util-29n/">voto útil en cada provincia el 29N</a>.</p>')
     h.append('<h2 id="partidos">Cuántos escaños tiene cada partido en el Congreso</h2>'
              + '<ul>' + ''.join(f'<li><b>{escape(x["partido"])}</b>: {num(x["escanos"])} diputado{"s" if x["escanos"] > 1 else ""} ({x["pct_escanos"]:.1f} % de la cámara, con el {x["pct"]:.1f} % del voto)</li>'.replace('.', ',')
                                 for x in pt if x['escanos']) + '</ul>'
