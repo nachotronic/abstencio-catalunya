@@ -5246,7 +5246,8 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-25 19:00',
+        slug='como-votar-elecciones-generales-29n', fecha='2026-11-20', actualizado='2026-11-27 10:55',
+        correcciones='27-11-2026: se añaden dos preguntas frecuentes, hasta qué hora se vota y cuántas papeletas y sobres hay. No cambia ningún dato.',
         titulo='Cómo votar en las elecciones generales del 29N: horario, qué llevar y cómo saber tu colegio', serie='29n', figura=0,
         descripcion='Los colegios abren el domingo 29 de noviembre de 9.00 a 20.00. Hace falta el DNI, el pasaporte o el carné de conducir, aunque estén caducados; la tarjeta censal, no. Están llamados a votar 38.728.356 electores, 1.615.127 por primera vez en unas generales.',
         compara='El horario, los documentos, las papeletas y el cierre de la votación según la ley electoral y la Junta Electoral Central, y el censo de las elecciones generales del 29N por circunscripción, con los residentes en el extranjero.',
