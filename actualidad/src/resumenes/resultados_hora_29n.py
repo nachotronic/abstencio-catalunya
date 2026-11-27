@@ -78,11 +78,14 @@ cuerpo = f'''
 <h2>Por qué el resultado de la noche no es el definitivo</h2>
 <p data-tipo="contexto">Lo que se publica el domingo es el escrutinio provisional: el recuento de cada mesa, sin el voto de los residentes en el extranjero. Esos votos llegan a las juntas electorales y se cuentan el día del escrutinio general, el quinto día después de la votación, que este año cae en viernes 4 de diciembre (<a href="{L103}">artículo 103</a> y <a href="{L75}">artículo 75</a>). No es un trámite: en 2023, el voto de fuera cambió el último diputado de Madrid, del PSOE al PP ({L("ley-nietos-voto-exterior-29n", "el voto de fuera que le dio un escaño al PP")}).</p>
 <p data-tipo="contexto">Desde las 21.00, <a href="{BASE}">el mapa de las elecciones generales</a> de esta web irá mostrando el recuento de cada municipio, y la página de <a href="{RES}">resultados de las elecciones generales 2026</a>, el reparto de escaños. Cómo votar y qué llevar, en {L("como-votar-elecciones-generales-29n", "la guía para votar el 29N")}.</p>
+<p data-tipo="contexto">Actualización del 27 de noviembre, a las 9.50. Antes de votar, a cuántos votos estuvo cada escaño en 2023, provincia a provincia: el <a href="{BASE}elecciones/voto-util-29n/">voto útil en cada provincia el 29N</a>.</p>
 '''
 
 preguntas = [
     ('¿A qué hora se sabrán los resultados de las elecciones generales del 29N?',
      f'Los colegios cierran a las 20.00. En 2023, Interior empezó a publicar los resultados provisionales a las 21.00, tras el cierre en Canarias, según su <a href="{MONCLOA23}">nota de prensa</a>.'),
+    ('¿Cuándo salen los resultados de las elecciones?',
+     f'Los primeros resultados provisionales, el domingo 29 de noviembre desde las 21.00, si Interior repite el horario de 2023, cuando empezó a publicarlos tras el cierre en Canarias, según su <a href="{MONCLOA23}">nota de prensa</a>. El resultado definitivo llega con el escrutinio general, el viernes 4 de diciembre, cuando se cuenta el voto de los residentes en el extranjero.'),
     ('¿A qué hora se dan los datos de participación?',
      'Interior da dos avances, con los votantes hasta las 14.00 y hasta las 18.00. En 2023 los anunció a las 14.30 y a las 18.30.'),
     ('¿Cuándo es definitivo el resultado?',

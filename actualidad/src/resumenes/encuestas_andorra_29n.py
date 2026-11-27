@@ -69,6 +69,7 @@ cuerpo = f'''
 <h2>Las encuestas encubiertas</h2>
 <p data-tipo="dato">La Junta Electoral Central también ha actuado contra encuestas disfrazadas. En las autonómicas de Castilla y León de 2022, abrió expediente por los «Emojipanel» de Electomanía, publicados en la recta final con productos gastronómicos en lugar de partidos. La Junta escribió que «con estas prácticas se intenta eludir la prohibición» del artículo 69.7, según <a href="{DEBATE}">El Debate</a>. Para la Junta, que no apareciera el nombre de los partidos no cambiaba nada, porque «quién viese esos paneles de manera sencilla podría asociar su resultado con la intención de voto de cada formación política».</p>
 <p data-tipo="contexto">Las encuestas publicadas hasta el lunes 23 siguen en <a href="{BASE}encuestas/">la página de encuestas de las elecciones generales 2026</a>, que no añade ninguna durante la veda. Desde las 21.00 del domingo, cuando cierren los últimos colegios, en Canarias, <a href="{BASE}">el mapa de las elecciones generales</a> irá mostrando el recuento: {L("a-que-hora-resultados-elecciones-generales-29n", "a qué hora llegan los resultados")}.</p>
+<p data-tipo="contexto">Actualización del 27 de noviembre, a las 9.50. Sin encuestas nuevas, lo que sí se puede mirar es a cuántos votos estuvo cada escaño en 2023, provincia a provincia: el <a href="{BASE}elecciones/voto-util-29n/">voto útil en cada provincia el 29N</a>.</p>
 '''
 
 preguntas = [
