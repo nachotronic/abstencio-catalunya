@@ -84,6 +84,8 @@ cuerpo = f'''
 preguntas = [
     ('¿A qué hora se sabrán los resultados de las elecciones generales del 29N?',
      f'Los colegios cierran a las 20.00. En 2023, Interior empezó a publicar los resultados provisionales a las 21.00, tras el cierre en Canarias, según su <a href="{MONCLOA23}">nota de prensa</a>.'),
+    ('¿Cuándo salen los resultados de las elecciones?',
+     f'Los primeros resultados provisionales, el domingo 29 de noviembre desde las 21.00, si Interior repite el horario de 2023, cuando empezó a publicarlos tras el cierre en Canarias, según su <a href="{MONCLOA23}">nota de prensa</a>. El resultado definitivo llega con el escrutinio general, el viernes 4 de diciembre, cuando se cuenta el voto de los residentes en el extranjero.'),
     ('¿A qué hora se dan los datos de participación?',
      'Interior da dos avances, con los votantes hasta las 14.00 y hasta las 18.00. En 2023 los anunció a las 14.30 y a las 18.30.'),
     ('¿Cuándo es definitivo el resultado?',

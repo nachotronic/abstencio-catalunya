@@ -5262,7 +5262,7 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='a-que-hora-resultados-elecciones-generales-29n', actualizado='2026-11-27 09:50', fecha='2026-11-20',
+        slug='a-que-hora-resultados-elecciones-generales-29n', actualizado='2026-11-27 09:55', fecha='2026-11-20',
         titulo='A qué hora se sabrán los resultados de las elecciones generales del 29N', serie='29n', figura=0,
         descripcion='Los colegios cierran a las 20.00, pero en 2023 los primeros resultados llegaron a las 21.00, al cerrar Canarias. Antes, dos avances de participación, a las 14.00 y a las 18.00. El voto de fuera se cuenta el viernes 4 de diciembre.',
         compara='El horario de la jornada electoral según la ley y según la nota del Ministerio del Interior para las generales de 2023, y los avances de participación de las 14.00 y las 18.00 y la participación final en julio de 2023 y noviembre de 2019.',
