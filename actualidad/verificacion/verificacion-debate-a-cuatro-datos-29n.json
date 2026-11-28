@@ -12,7 +12,7 @@
    "calculo": "round(D['NACIDOS']/1e6,1)*1e6"
   },
   {
-   "texto": "seis años. España crece un 2,7 %, la 7.ª de la UE,",
+   "texto": "seis años. España crece un 2,7 %, la 8.ª de la UE,",
    "cifra": "2,7",
    "calculo": "D['VAL']['ES']"
   },
@@ -57,7 +57,7 @@
    "calculo": "D['VAL']['ES']"
   },
   {
-   "texto": "Eurostat. Es el 7.º puesto de los 22 países de la UE que",
+   "texto": "Eurostat. Es el 7.º puesto de los 23 países de la UE que",
    "cifra": "22",
    "calculo": "D['NPAISES']"
   },
@@ -142,7 +142,7 @@
    "calculo": "D['VAL']['ES']"
   },
   {
-   "texto": "creció un 2,7 %: la 7.ª de los 22 países de la UE con",
+   "texto": "creció un 2,7 %: la 7.ª de los 23 países de la UE con",
    "cifra": "22",
    "calculo": "D['NPAISES']"
   },
