@@ -20,10 +20,12 @@ El buzón (`img/actualidad/buzon/`) existe para no pisar nunca un gráfico: algu
 - Nada de violencia ni de imitar una fotografía: en la web sale con el pie «Ilustración generada con IA para Mapa Electoral».
 - Una ilustración por pieza, sin repetir otra ya publicada.
 
-## Pendientes (140)
+## Pendientes (142)
 
 | Fecha | Pieza (slug = nombre del fichero) | Titular | Cabecera ahora |
 |---|---|---|---|
+| 2026-11-28 | [`real-madrid-alaves-chamartin-vitoria-29n`](https://mapaelectoral.es/actualidad/real-madrid-alaves-chamartin-vitoria-29n/) | Real Madrid-Alavés: en Vitoria, el PSOE ganó en 128 de las 166 secciones, pero en Mendizorrotza, el barrio del estadio del Alavés, el PP sacó el 46,5 % | primer gráfico de la pieza |
+| 2026-11-28 | [`vispera-29n-la-semana-en-el-mapa`](https://mapaelectoral.es/actualidad/vispera-29n-la-semana-en-el-mapa/) | La víspera del 29N: pueden votar 38.728.356 personas y 37 de los 350 escaños de 2023 cambiaban de manos con menos de un 10 % de votos | primer gráfico de la pieza |
 | 2026-11-27 | [`verificacion-debate-a-cuatro-datos-29n`](https://mapaelectoral.es/actualidad/verificacion-debate-a-cuatro-datos-29n/) | El debate a cuatro, comprobado con datos: de cinco frases de Sánchez, Feijóo, Abascal y Colau, solo una es exacta | primer gráfico de la pieza |
 | 2026-11-26 | [`debate-a-cuatro-sanchez-feijoo-abascal-colau-29n`](https://mapaelectoral.es/actualidad/debate-a-cuatro-sanchez-feijoo-abascal-colau-29n/) | Debate a cuatro: hora, dónde verlo y en qué orden hablan Sánchez, Feijóo, Abascal y Colau | primer gráfico de la pieza |
 | 2026-11-26 | [`pueblos-que-siempre-aciertan-29n`](https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/) | Los pueblos que siempre aciertan se juegan la racha por un puñado de votos: en Ayerbe, el PP ganó en 2023 por 2 | primer gráfico de la pieza |

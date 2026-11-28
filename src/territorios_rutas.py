@@ -59,14 +59,14 @@ ACTUALIDAD_LUGAR = {
     'almeida-feijoo-madrid': ['28'], 'barcelona-barrio-a-barrio-29n': ['08'], 'barcelona-madrid-clasico-del-voto-29n': ['08', '28'], 'ceuta-melilla-participacion-29n': ['51', '52'],
     'ciudadanos-democracia21-29n': ['08', '28'], 'madrid-barrio-a-barrio-29n': ['28'], 'frente-amplio-podemos-madrid-escanos-29n': ['28'], 'calle-que-parte-madrid': ['28'], 'cinturon-rojo-madrid-29n': ['28'], 'participacion-renta-municipios-madrid-29n': ['28'], 'participacion-navarra-municipios-29n': ['31'], 'malaga-barrio-a-barrio-29n': ['29'],
     'minguez-lleida-29n': ['25'], 'murcia-barrio-a-barrio-29n': ['30'], 'palma-barrio-a-barrio-29n': ['07'],
-    'sevilla-barrio-a-barrio-29n': ['41'], 'derbi-sevillano-nervion-heliopolis-29n': ['41'], 'getafe-atletico-sur-madrid-29n': ['28'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-andalucia-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-cataluna-29n': ['08', '17', '25', '43'], 'zaragoza-barrio-a-barrio-29n': ['50'],
+    'sevilla-barrio-a-barrio-29n': ['41'], 'derbi-sevillano-nervion-heliopolis-29n': ['41'], 'getafe-atletico-sur-madrid-29n': ['28'], 'real-madrid-alaves-chamartin-vitoria-29n': ['01', '28'], 'valencia-barrio-a-barrio-29n': ['46'], 'comunitat-valenciana-escanos-29n': ['03', '12', '46'], 'psoe-valencia-abalos-municipios-29n': ['46'], 'valencia-madrid-mestalla-barrios-29n': ['46', '28'], 'atletico-barca-metropolitano-camp-nou-29n': ['28', '08'], 'pp-andalucia-autonomicas-generales-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-andalucia-29n': ['04', '11', '14', '18', '21', '23', '29', '41'], 'mapa-electoral-cataluna-29n': ['08', '17', '25', '43'], 'zaragoza-barrio-a-barrio-29n': ['50'],
 }
 # Piezas centradas en un municipio: código INE y nombre, para enlazar su página y el mapa centrado en él (?m=)
 ACTUALIDAD_MUNICIPIO = {
     'acampada-sol-distrito-centro': ('28079', 'Madrid'), 'acampada-sol-alquiler-madrid-distritos-29n': ('28079', 'Madrid'), 'almeida-feijoo-madrid': ('28079', 'Madrid'),
     'barcelona-barrio-a-barrio-29n': ('08019', 'Barcelona'), 'madrid-barrio-a-barrio-29n': ('28079', 'Madrid'),
     'malaga-barrio-a-barrio-29n': ('29067', 'Málaga'), 'murcia-barrio-a-barrio-29n': ('30030', 'Murcia'),
-    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'), 'derbi-sevillano-nervion-heliopolis-29n': ('41091', 'Sevilla'), 'getafe-atletico-sur-madrid-29n': ('28065', 'Getafe'),
+    'palma-barrio-a-barrio-29n': ('07040', 'Palma'), 'sevilla-barrio-a-barrio-29n': ('41091', 'Sevilla'), 'derbi-sevillano-nervion-heliopolis-29n': ('41091', 'Sevilla'), 'getafe-atletico-sur-madrid-29n': ('28065', 'Getafe'), 'real-madrid-alaves-chamartin-vitoria-29n': ('01059', 'Vitoria-Gasteiz'),
     'valencia-barrio-a-barrio-29n': ('46250', 'València'), 'zaragoza-barrio-a-barrio-29n': ('50297', 'Zaragoza'),
     'calle-que-parte-el-voto': ('46250', 'València'), 'calle-que-parte-madrid': ('28079', 'Madrid'), 'calle-que-parte-barcelona': ('08019', 'Barcelona'),
     'girona-barri-a-barri-29n': ('17079', 'Girona'),
@@ -312,6 +312,7 @@ NO_MUNICIPIO = {'Mayor', 'Sumar', 'Valle', 'Real', 'Casas', 'Moral', 'Mora', 'To
                 'Humilladero', 'Nalda', 'Los Corrales', 'Barlovento'}
 # Municipios mal detectados en una pieza concreta (código INE): «Álvaro Bilbao» o «Bilbao Ubillos» no son la ciudad
 INCLUIR_PIEZA = {'atletico-barca-metropolitano-camp-nou-29n': ('28079', '08019'),
+                 'real-madrid-alaves-chamartin-vitoria-29n': ('01059', '28079'),
                  'seleccion-convocados-pueblos-29n': ('01063', '08019', '08191', '41081', '06044', '17020', '08279', '28079', '08003', '46250', '20069', '38046', '41069', '31201', '21018', '04079', '08305', '20030', '08077', '46126', '14056', '35016'),   # los 22 municipios de nacimiento de los convocados
                  'mapa-electoral-andalucia-29n': ('41091', '29067', '14021', '18087', '11012', '04013', '21041', '23050'),
                  'mapa-electoral-cataluna-29n': ('08019', '17079', '25120', '43148', '08298'),
