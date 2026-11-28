@@ -57,11 +57,6 @@
    "calculo": "D['VAL']['ES']"
   },
   {
-   "texto": "Eurostat. Es el 7.º puesto de los 23 países de la UE que",
-   "cifra": "22",
-   "calculo": "D['NPAISES']"
-  },
-  {
    "texto": "La media de la UE fue del 1,5 %.",
    "cifra": "1,5",
    "calculo": "D['UE27']"
@@ -137,16 +132,6 @@
    "calculo": "D['NAC1']"
   },
   {
-   "texto": "España creció un 2,7 %: la 7.ª de los 22",
-   "cifra": "2,7",
-   "calculo": "D['VAL']['ES']"
-  },
-  {
-   "texto": "creció un 2,7 %: la 7.ª de los 23 países de la UE con",
-   "cifra": "22",
-   "calculo": "D['NPAISES']"
-  },
-  {
    "texto": "De 4,69 millones de llegadas, 2,50 millones",
    "cifra": "4,69 millones",
    "calculo": "round(D['ENTRAN']/1e6,2)*1e6"
@@ -155,6 +140,31 @@
    "texto": "4,69 millones de llegadas, 2,50 millones de salidasMigraciones",
    "cifra": "2,50 millones",
    "calculo": "round(D['SALEN']/1e6,2)*1e6"
+  },
+  {
+   "texto": "Eurostat. Es el 8.º puesto de los 23 países de la UE que",
+   "cifra": "23",
+   "calculo": "D['NPAISES']"
+  },
+  {
+   "texto": "España creció un 2,7 %: la 8.ª de los 23",
+   "cifra": "2,7",
+   "calculo": "D['VAL']['ES']"
+  },
+  {
+   "texto": "creció un 2,7 %: la 8.ª de los 23 países de la UE con",
+   "cifra": "23",
+   "calculo": "D['NPAISES']"
+  },
+  {
+   "texto": "el dato de Croacia, que creció un 2,9 %. Con él,",
+   "cifra": "2,9",
+   "calculo": "D['VAL']['HR']"
+  },
+  {
+   "texto": "al 8.º puesto, ahora de 23 países. El resto",
+   "cifra": "23",
+   "calculo": "D['NPAISES']"
   }
  ],
  "externas": [],
@@ -218,6 +228,10 @@
   {
    "texto": "Abascal y los «seis millones»: son entradas,",
    "motivo": "el periodo de seis años y los seis millones de la frase de Abascal (del 1-7-2020 al 1-7-2026 en la ECP)"
+  },
+  {
+   "texto": "Eurostat añadió el viernes 27 por la noche el dato",
+   "motivo": "fecha de la publicación de Eurostat (27-11-2026, 23.00)"
   }
  ]
 }
