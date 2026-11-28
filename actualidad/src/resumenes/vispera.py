@@ -67,9 +67,9 @@ g_pq = figura('Seis de los pueblos que siempre aciertan dieron al PP menos de tr
               barras([(x, v, COLOR['PP'], f'+{p(v)}') for x, v in PUEB] + [('España', ESP_DIF, 'color-mix(in srgb, var(--pp) 45%, var(--bg))', f'+{p(ESP_DIF)}')],
                      3.5, 'Ventaja del PP en los pueblos que siempre aciertan', W=420, ml=140),
               f'Fuente: {L("pueblos-que-siempre-aciertan-29n", "Los pueblos que siempre aciertan")}, de Mapa Electoral, con los resultados del Ministerio del Interior. '
-              'Son 6 de los 24 municipios que votaron al ganador en las 16 generales desde 1977.',
+              f'Son 6 de los 24 municipios que votaron al ganador en las 16 generales desde 1977. En toda España, sin el voto exterior, la ventaja del PP fue de {p(ESP_DIF)} puntos.',
               [('PP', COLOR['PP'])],
-              (['Municipio', 'Ventaja del PP en 2023 (puntos)'], [[x, p(v)] for x, v in PUEB] + [['España (sin voto exterior)', p(ESP_DIF)]]))
+              (['Municipio', 'Ventaja del PP en 2023 (puntos)'], [[x, p(v)] for x, v in PUEB]))
 
 VU_URL = f'{BASE}elecciones/voto-util-29n/'
 cuerpo = f'''<div style="margin-top:1.4rem"></div>
