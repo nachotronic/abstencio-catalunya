@@ -1,0 +1,469 @@
+{
+ "pieza": "real-madrid-alaves-chamartin-vitoria-29n",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "Vitoria, el PSOE ganó en 128 de las 166 secciones,",
+   "cifra": "128",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "el PSOE ganó en 128 de las 166 secciones, pero en Mendizorrotza,",
+   "cifra": "166",
+   "calculo": "D['NSEC']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "del Alavés, el PP sacó el 46,5 %",
+   "cifra": "46,5",
+   "calculo": "D['BARR']['Mendizorrotza']['PP']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "generales. El PNV, primero en 41 secciones en 2019, no",
+   "cifra": "41",
+   "calculo": "D['G19']['PNV']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "barrio donde el PP ganó las 21.",
+   "cifra": "21",
+   "calculo": "D['HISP']['gana']['PP']",
+   "_donde": "entradilla"
+  },
+  {
+   "texto": "Vitoria-Gasteiz, una ciudad de 255.886 habitantes según el",
+   "cifra": "255.886",
+   "calculo": "D['POBV']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "votado en Vitoria, con el 29,8 %. Detrás quedaron el",
+   "cifra": "29,8",
+   "calculo": "D['HV']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Detrás quedaron el PP, con el 19,9 %, EH Bildu, con el",
+   "cifra": "19,9",
+   "calculo": "D['HV']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "19,9 %, EH Bildu, con el 16,7 %, y el PNV, con el",
+   "cifra": "16,7",
+   "calculo": "D['HV']['2023_07']['BILDU']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "16,7 %, y el PNV, con el 14,3 %. En Madrid, el PP",
+   "cifra": "14,3",
+   "calculo": "D['HV']['2023_07']['PNV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En Madrid, el PP sacó el 41,8 % y el PSOE, el 27,3",
+   "cifra": "41,8",
+   "calculo": "D['HM']['2023_07']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 41,8 % y el PSOE, el 27,3 %.",
+   "cifra": "27,3",
+   "calculo": "D['HM']['2023_07']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "2008, el PP en 2011, con el 29,4 %, y Podemos en 2015",
+   "cifra": "29,4",
+   "calculo": "D['HV']['2011_11']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Podemos en 2015 y 2016, con el 31,7 % la primera vez. Desde",
+   "cifra": "31,7",
+   "calculo": "D['HV']['2015_12']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE fue el más votado en 82 de las 166 secciones",
+   "cifra": "82",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el más votado en 82 de las 166 secciones de Vitoria,",
+   "cifra": "166",
+   "calculo": "D['NSEC']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "secciones de Vitoria, el PNV en 41, el PP y Unidas Podemos",
+   "cifra": "41",
+   "calculo": "D['G19']['PNV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PP y Unidas Podemos en 18 cada uno y EH Bildu",
+   "cifra": "18",
+   "calculo": "D['G19']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "18 cada uno y EH Bildu en 6. En 2023, el PSOE ganó",
+   "cifra": "6",
+   "calculo": "D['G19']['BILDU']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En 2023, el PSOE ganó en 128, el PP en 26 y EH Bildu",
+   "cifra": "128",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "PSOE ganó en 128, el PP en 26 y EH Bildu en 12. El",
+   "cifra": "26",
+   "calculo": "D['G23']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PP en 26 y EH Bildu en 12. El PNV no fue primero",
+   "cifra": "12",
+   "calculo": "D['G23']['BILDU']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ninguna: en la ciudad bajó del 21,2 % al 14,3 %.",
+   "cifra": "21,2",
+   "calculo": "D['HV']['2019_11']['PNV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ciudad bajó del 21,2 % al 14,3 %.",
+   "cifra": "14,3",
+   "calculo": "D['HV']['2023_07']['PNV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "2019 ganaban Unidas Podemos (8 secciones) y el PNV",
+   "cifra": "8",
+   "calculo": "D['BARR']['Zabalgana']['gana0']['SUMAR']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Podemos (8 secciones) y el PNV (5); en 2023, el PSOE ganó",
+   "cifra": "5",
+   "calculo": "D['BARR']['Zabalgana']['gana0']['PNV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en 2023, el PSOE ganó en 12 de las 13. En Salburua,",
+   "cifra": "12",
+   "calculo": "D['BARR']['Zabalgana']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE ganó en 12 de las 13. En Salburua, el PSOE",
+   "cifra": "13",
+   "calculo": "D['BARR']['Zabalgana']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 1 sección a ganar en 8",
+   "cifra": "1",
+   "calculo": "D['BARR']['Salburua']['gana0']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganar en 1 sección a ganar en 8 de 9. En el Casco Viejo,",
+   "cifra": "8",
+   "calculo": "D['BARR']['Salburua']['gana']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "1 sección a ganar en 8 de 9. En el Casco Viejo,",
+   "cifra": "9",
+   "calculo": "D['BARR']['Salburua']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Viejo, EH Bildu ganó las 6 secciones, con el 31,1",
+   "cifra": "6",
+   "calculo": "D['BARR']['Casco Viejo']['gana']['BILDU']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "ganó las 6 secciones, con el 31,1 %, y en Zaramaga el",
+   "cifra": "31,1",
+   "calculo": "D['BARR']['Casco Viejo']['BILDU']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Zaramaga el PSOE sacó el 40,1 %, con una participación",
+   "cifra": "40,1",
+   "calculo": "D['BARR']['Zaramaga']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con una participación del 61,9 %.",
+   "cifra": "61,9",
+   "calculo": "D['BARR']['Zaramaga']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "al PP de Vitoria. En sus 3 secciones, el PP fue",
+   "cifra": "3",
+   "calculo": "D['BARR']['Mendizorrotza']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue el más votado en las tres, en 2019 y en 2023,",
+   "cifra": "tres",
+   "calculo": "D['BARR']['Mendizorrotza']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en 2023, y en 2023 sacó el 46,5 %, frente al 21,2 %",
+   "cifra": "46,5",
+   "calculo": "D['BARR']['Mendizorrotza']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "sacó el 46,5 %, frente al 21,2 % del PNV y el 13,9",
+   "cifra": "21,2",
+   "calculo": "D['BARR']['Mendizorrotza']['PNV']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "frente al 21,2 % del PNV y el 13,9 % del PSOE. Es el único",
+   "cifra": "13,9",
+   "calculo": "D['BARR']['Mendizorrotza']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "siguiente es el Ensanche, con el 35,3 %. Votó el 73,2 %, frente",
+   "cifra": "35,3",
+   "calculo": "D['BARR']['Ensanche']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Ensanche, con el 35,3 %. Votó el 73,2 %, frente al 66,5 %",
+   "cifra": "73,2",
+   "calculo": "D['BARR']['Mendizorrotza']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Votó el 73,2 %, frente al 66,5 % de toda la ciudad.",
+   "cifra": "66,5",
+   "calculo": "D['CIU']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Las tres secciones de Mendizorrotza",
+   "cifra": "tres",
+   "calculo": "D['BARR']['Mendizorrotza']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Mendizorrotza son también las tres de más renta de Vitoria,",
+   "cifra": "tres",
+   "calculo": "D['BARR']['Mendizorrotza']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "parte más pobre, el PSOE gana 30 de 34 secciones, con",
+   "cifra": "30",
+   "calculo": "D['Q']['0']['gana']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "pobre, el PSOE gana 30 de 34 secciones, con el 35,3",
+   "cifra": "34",
+   "calculo": "D['Q']['0']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "30 de 34 secciones, con el 35,3 %, y el PP saca el 16,2",
+   "cifra": "35,3",
+   "calculo": "D['Q']['0']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "el 35,3 %, y el PP saca el 16,2 %. En la más rica, el",
+   "cifra": "16,2",
+   "calculo": "D['Q']['0']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "En la más rica, el PP gana 22 de 33, con el 29,4 %,",
+   "cifra": "22",
+   "calculo": "D['Q']['4']['gana']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "más rica, el PP gana 22 de 33, con el 29,4 %, frente",
+   "cifra": "33",
+   "calculo": "D['Q']['4']['n']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "PP gana 22 de 33, con el 29,4 %, frente al 22,2 %",
+   "cifra": "29,4",
+   "calculo": "D['Q']['4']['PP']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "con el 29,4 %, frente al 22,2 % del PSOE.",
+   "cifra": "22,2",
+   "calculo": "D['Q']['4']['PSOE']",
+   "_donde": "patron"
+  },
+  {
+   "texto": "distrito de Chamartín. En sus 21 secciones, el PP fue",
+   "cifra": "21",
+   "calculo": "D['HISP']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "fue el más votado en las 21 en 2023, con el 62,1",
+   "cifra": "21",
+   "calculo": "D['HISP']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "en las 21 en 2023, con el 62,1 %, por delante de Vox",
+   "cifra": "62,1",
+   "calculo": "D['HISP']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "62,1 %, por delante de Vox (16,7 %) y del PSOE (12,8",
+   "cifra": "16,7",
+   "calculo": "D['HISP']['VOX']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Vox (16,7 %) y del PSOE (12,8 %). En todo Chamartín",
+   "cifra": "12,8",
+   "calculo": "D['HISP']['PSOE']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "En todo Chamartín ganó en 100 de las 101 secciones,",
+   "cifra": "100",
+   "calculo": "D['CHAM']['gana']['PP']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "Chamartín ganó en 100 de las 101 secciones, con una participación",
+   "cifra": "101",
+   "calculo": "D['CHAM']['n']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "con una participación del 81,0 %, como contamos en",
+   "cifra": "81,0",
+   "calculo": "D['CHAM']['part']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "tope que alcanzan dos de las tres secciones de Mendizorrotza,",
+   "cifra": "tres",
+   "calculo": "D['BARR']['Mendizorrotza']['n']",
+   "_donde": "contexto"
+  },
+  {
+   "texto": "en Vitoria el PSOE ganó en 128 de las 166 secciones.",
+   "cifra": "128",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "el PSOE ganó en 128 de las 166 secciones. Las calles",
+   "cifra": "166",
+   "calculo": "D['NSEC']",
+   "_donde": "hipotesis"
+  },
+  {
+   "texto": "De 82 secciones a 128",
+   "cifra": "82",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "De 82 secciones a 128",
+   "cifra": "128",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "intertítulo"
+  },
+  {
+   "texto": "El PSOE pasó de 82 a 128 secciones; el",
+   "cifra": "82",
+   "calculo": "D['G19']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "El PSOE pasó de 82 a 128 secciones; el PNV, de",
+   "cifra": "128",
+   "calculo": "D['G23']['PSOE']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "128 secciones; el PNV, de 41 a ningunaSecciones censales",
+   "cifra": "41",
+   "calculo": "D['G19']['PNV']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "2019 y en julio de 2023 (de 166)",
+   "cifra": "166",
+   "calculo": "D['NSEC']",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "muy distintas. Álava elige 4 diputados y, con los",
+   "fuente": "https://mapaelectoral.es/elecciones/pais-vasco/alava/voto-util-29n/"
+  },
+  {
+   "texto": "al PSOE le habrían bastado 3.126 votantes, como contamos",
+   "fuente": "https://mapaelectoral.es/elecciones/pais-vasco/alava/voto-util-29n/"
+  },
+  {
+   "texto": "útil en Álava. Madrid elige 38, y su último escaño",
+   "fuente": "https://mapaelectoral.es/elecciones/madrid/voto-util-29n/"
+  },
+  {
+   "texto": "para el PSOE, con el PP a 35.114 votantes, según el voto",
+   "fuente": "https://mapaelectoral.es/elecciones/madrid/voto-util-29n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "el Bernabéu, en la jornada 14 de LaLiga, según el",
+   "motivo": "jornada de LaLiga (calendario oficial)"
+  },
+  {
+   "texto": "ciudad donde el PP pasa del 40 %; el siguiente es el",
+   "motivo": "umbral redondo del texto (40 %)"
+  },
+  {
+   "texto": "por renta y se parten en cinco grupos iguales, el PP",
+   "motivo": "quintiles: cinco grupos"
+  },
+  {
+   "texto": "votado en ninguna de las tres quintas partes más pobres.",
+   "motivo": "tres de los cinco quintiles"
+  },
+  {
+   "texto": "Vitoria donde el PP pasa del 40 %Voto al PP, en %, en",
+   "motivo": "umbral redondo del texto (40 %)"
+  }
+ ],
+ "permitir_espana": []
+}

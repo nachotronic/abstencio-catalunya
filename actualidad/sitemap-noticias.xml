@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://mapaelectoral.es/actualidad/real-madrid-alaves-chamartin-vitoria-29n/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-28</news:publication_date>
+      <news:title>Real Madrid-Alavés: en Vitoria, el PSOE ganó en 128 de las 166 secciones, pero en Mendizorrotza, el barrio del estadio del Alavés, el PP sacó el 46,5 %</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://mapaelectoral.es/actualidad/vispera-29n-la-semana-en-el-mapa/</loc>
+    <news:news>
+      <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>
+      <news:publication_date>2026-11-28</news:publication_date>
+      <news:title>La víspera del 29N: pueden votar 38.728.356 personas y 37 de los 350 escaños de 2023 cambiaban de manos con menos de un 10 % de votos</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://mapaelectoral.es/actualidad/debate-a-cuatro-sanchez-feijoo-abascal-colau-29n/</loc>
     <news:news>
       <news:publication><news:name>Mapa Electoral</news:name><news:language>es</news:language></news:publication>

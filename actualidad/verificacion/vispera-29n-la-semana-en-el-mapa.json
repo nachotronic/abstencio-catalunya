@@ -1,0 +1,229 @@
+{
+ "pieza": "vispera-29n-la-semana-en-el-mapa",
+ "_datos_disponibles": {
+  "D": "dict"
+ },
+ "cifras": [
+  {
+   "texto": "votar 38.728.356 personas y 37 de los 350 escaños de",
+   "cifra": "37",
+   "calculo": "D['N_JUEGO']",
+   "_donde": "titular"
+  },
+  {
+   "texto": "de 2026. Con esos votos, 37 de los 350 escaños se",
+   "cifra": "37",
+   "calculo": "D['N_JUEGO']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "que se habría ido con un 0,3 % menos; después, el",
+   "cifra": "0,3",
+   "calculo": "D['AJ'][0]['pct']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "segundo de Junts en Girona (0,9 %) y el quinto del PP",
+   "cifra": "0,9",
+   "calculo": "D['AJ'][1]['pct']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "quinto del PP en Málaga (1,0 %).",
+   "cifra": "1,0",
+   "calculo": "D['AJ'][2]['pct']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "(Huesca) por 2 votos. En seis de los 24, la ventaja",
+   "cifra": "seis",
+   "calculo": "len([x for x in D['PUEB'] if x['dif']<3])",
+   "_donde": "dato"
+  },
+  {
+   "texto": "el voto exterior, fue de 1,4.",
+   "cifra": "1,4",
+   "calculo": "D['ESP_DIF']",
+   "_donde": "dato"
+  },
+  {
+   "texto": "37 escaños de 2023 cambiaban",
+   "cifra": "37",
+   "calculo": "D['N_JUEGO']",
+   "_donde": "pie"
+  },
+  {
+   "texto": "% de votos; estos son los ocho más ajustadosPorcentaje",
+   "cifra": "ocho",
+   "calculo": "len(D['AJ'])",
+   "_donde": "pie"
+  },
+  {
+   "texto": "Seis de los pueblos que siempre",
+   "cifra": "Seis",
+   "calculo": "len([x for x in D['PUEB'] if x['dif']<3])",
+   "_donde": "pie"
+  }
+ ],
+ "externas": [
+  {
+   "texto": "víspera del 29N: pueden votar 38.728.356 personas y 37 de los",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "Mañana pueden votar 38.728.356 personas, 1.261.924",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "votar 38.728.356 personas, 1.261.924 más que en julio de",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "las que viven en España, 1.615.127 votan por primera vez",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "unas generales. Se presentan 534 candidaturas al Congreso",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "diputado más que en 2023, 38, y Cádiz uno menos,",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "2023, 38, y Cádiz uno menos, 8. Otros 2.769.645 electores",
+   "fuente": "https://mapaelectoral.es/actualidad/elecciones-generales-29n-cifras/"
+  },
+  {
+   "texto": "Cádiz uno menos, 8. Otros 2.769.645 electores viven fuera:",
+   "fuente": "https://mapaelectoral.es/actualidad/voto-exterior-cera-loreg-29n/"
+  },
+  {
+   "texto": "ejemplo, el último de sus 4 escaños fue para el",
+   "fuente": "https://mapaelectoral.es/elecciones/pais-vasco/alava/voto-util-29n/"
+  },
+  {
+   "texto": "al PSOE le habrían bastado 3.126 votantes, según el voto",
+   "fuente": "https://mapaelectoral.es/elecciones/pais-vasco/alava/voto-util-29n/"
+  },
+  {
+   "texto": "para el PSOE, con el PP a 35.114, según el de Madrid.",
+   "fuente": "https://mapaelectoral.es/elecciones/madrid/voto-util-29n/"
+  },
+  {
+   "texto": "día siguiente comprobamos cinco de sus frases con datos",
+   "fuente": "https://mapaelectoral.es/actualidad/verificacion-debate-a-cuatro-datos-29n/"
+  },
+  {
+   "texto": "tercer trimestre de 2026 había 22.852.600 ocupados, el máximo",
+   "fuente": "https://mapaelectoral.es/actualidad/verificacion-debate-a-cuatro-datos-29n/"
+  },
+  {
+   "texto": "municipios con resultados en las 16 generales desde 1977,",
+   "fuente": "https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/"
+  },
+  {
+   "texto": "generales desde 1977, solo 24 han votado siempre al",
+   "fuente": "https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/"
+  },
+  {
+   "texto": "ganó en Ayerbe (Huesca) por 2 votos. En seis de los",
+   "fuente": "https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/"
+  },
+  {
+   "texto": "por 2 votos. En seis de los 24, la ventaja del PP fue",
+   "fuente": "https://mapaelectoral.es/actualidad/pueblos-que-siempre-aciertan-29n/"
+  },
+  {
+   "texto": "las encuestas no dicen: en 15 de las 30 elecciones",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/"
+  },
+  {
+   "texto": "encuestas no dicen: en 15 de las 30 elecciones analizadas",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/"
+  },
+  {
+   "texto": "2015 fallaron por más de tres puntos con algún partido.",
+   "fuente": "https://mapaelectoral.es/actualidad/encuestas-fallos-elecciones-espana-29n/"
+  },
+  {
+   "texto": "el PSOE pasó de ganar en 112 de las 122 secciones",
+   "fuente": "https://mapaelectoral.es/actualidad/getafe-atletico-sur-madrid-29n/"
+  },
+  {
+   "texto": "pasó de ganar en 112 de las 122 secciones a ganar en",
+   "fuente": "https://mapaelectoral.es/actualidad/getafe-atletico-sur-madrid-29n/"
+  },
+  {
+   "texto": "122 secciones a ganar en 74. Esta noche juegan el",
+   "fuente": "https://mapaelectoral.es/actualidad/getafe-atletico-sur-madrid-29n/"
+  },
+  {
+   "texto": "en Vitoria el PSOE ganó en 128 de las 166 secciones,",
+   "fuente": "https://mapaelectoral.es/actualidad/real-madrid-alaves-chamartin-vitoria-29n/"
+  },
+  {
+   "texto": "el PSOE ganó en 128 de las 166 secciones, pero en Mendizorrotza,",
+   "fuente": "https://mapaelectoral.es/actualidad/real-madrid-alaves-chamartin-vitoria-29n/"
+  },
+  {
+   "texto": "del Alavés, el PP sacó el 46,5 %.",
+   "fuente": "https://mapaelectoral.es/actualidad/real-madrid-alaves-chamartin-vitoria-29n/"
+  }
+ ],
+ "ignorar": [
+  {
+   "texto": "38.728.356 personas y 37 de los 350 escaños de 2023 cambiaban",
+   "motivo": "diputados del Congreso"
+  },
+  {
+   "texto": "de manos con menos de un 10 % de votos",
+   "motivo": "umbral del cálculo del voto útil (10 %)"
+  },
+  {
+   "texto": "La semana del debate a cuatro y del voto útil, contada",
+   "motivo": "nombre del debate (cuatro candidatos)"
+  },
+  {
+   "texto": "pieza de la veda. Del domingo 22 a hoy publicamos en",
+   "motivo": "fecha del calendario"
+  },
+  {
+   "texto": "páginas de voto útil de las 52 provincias. Esta es",
+   "motivo": "número de circunscripciones"
+  },
+  {
+   "texto": "candidaturas al Congreso en las 52 circunscripciones, y",
+   "motivo": "número de circunscripciones"
+  },
+  {
+   "texto": "consulados cerró el jueves 26 y sus votos no se cuentan",
+   "motivo": "fecha del calendario (urna de los consulados)"
+  },
+  {
+   "texto": "Con esos votos, 37 de los 350 escaños se habrían perdido",
+   "motivo": "diputados del Congreso"
+  },
+  {
+   "texto": "hubiera perdido menos del 10 % de sus votos. El más",
+   "motivo": "umbral del cálculo del voto útil (10 %)"
+  },
+  {
+   "texto": "ventaja del PP fue de menos de tres puntos, cuando en toda",
+   "motivo": "umbral del texto de la pieza enlazada (tres puntos)"
+  },
+  {
+   "texto": "El debate a cuatro, con datos",
+   "motivo": "nombre del debate (cuatro candidatos)"
+  },
+  {
+   "texto": "de manos con menos de un 10 % de votos; estos son",
+   "motivo": "umbral del cálculo del voto útil (10 %)"
+  },
+  {
+   "texto": "aciertan dieron al PP menos de tres puntos de ventaja en",
+   "motivo": "umbral del texto de la pieza enlazada (tres puntos)"
+  }
+ ],
+ "permitir_espana": []
+}
