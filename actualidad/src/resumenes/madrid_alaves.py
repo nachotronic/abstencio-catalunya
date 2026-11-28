@@ -115,20 +115,14 @@ claro = lambda c: f'color-mix(in srgb, {c} 45%, var(--bg))'
 COL_IZQ = COLOR['Sumar']
 
 
-def fila_h(e, t):
-    h = HV[e]
-    ks = [('PSOE', COLOR['PSOE'], 'PSOE'), ('PP', COLOR['PP'], 'PP'), ('PNV', COLOR['PNV'], 'PNV'), ('SUMAR', COL_IZQ, ETQ_IZQ[e])]
-    if h.get('BILDU', 0) > 0:
-        ks.append(('BILDU', COLOR['EH Bildu'], 'EH Bildu'))
-    return [(f'{t} · {lab}', h[k], col if h['gana'] == k else claro(col), f'{p(h[k])} %') for k, col, lab in ks]
-
-
+_nom_g = lambda e: ETQ_IZQ[e] if HV[e]['gana'] == 'SUMAR' else ETQ[HV[e]['gana']]
+_col_g = lambda e: {'PSOE': COLOR['PSOE'], 'PP': COLOR['PP'], 'SUMAR': COL_IZQ}[HV[e]['gana']]
 g_hist = figura('En Vitoria ganaron el PSOE, el PP y Podemos; desde 2019 gana el PSOE',
-                '% de voto de los principales partidos en Vitoria-Gasteiz en cada elección general desde 2004. En color fuerte, el más votado',
-                barras([f for e, t in ELEC for f in fila_h(e, t)], 45, 'Voto por partido en Vitoria, 2004-2023', W=420, ml=140),
+                '% de voto del partido más votado en Vitoria-Gasteiz en cada elección general desde 2004. El resto de partidos, en la tabla',
+                barras([(f'{t} · {_nom_g(e)}', HV[e][HV[e]["gana"]], _col_g(e), f'{p(HV[e][HV[e]["gana"]])} %') for e, t in ELEC], 45, 'Más votado en Vitoria en cada elección, 2004-2023', W=420, ml=150),
                 'Fuente: Ministerio del Interior, resultados por municipio. Izquierda Unida (Ezker Batua) hasta 2011; Podemos con sus aliados en 2015, 2016 y 2019; Sumar en 2023. '
                 'EH Bildu se presenta desde 2011 (en 2011, como Amaiur).',
-                [('PSOE', COLOR['PSOE']), ('PP', COLOR['PP']), ('PNV', COLOR['PNV']), ('IU / Podemos / Sumar', COL_IZQ), ('EH Bildu', COLOR['EH Bildu'])],
+                [('PSOE', COLOR['PSOE']), ('PP', COLOR['PP']), ('Podemos', COL_IZQ)],
                 (['Elección', 'Más votado', 'PSOE (%)', 'PP (%)', 'PNV (%)', 'IU / Podemos / Sumar (%)', 'EH Bildu (%)', 'Participación (%)'],
                  [[t, {'SUMAR': ETQ_IZQ[e]}.get(HV[e]['gana'], ETQ.get(HV[e]['gana'], HV[e]['gana'])), p(HV[e]['PSOE']), p(HV[e]['PP']), p(HV[e]['PNV']),
                    p(HV[e]['SUMAR']), p(HV[e].get('BILDU', 0)), p(HV[e]['part'])] for e, t in ELEC]))
@@ -140,7 +134,7 @@ g_sec = figura(f'El PSOE pasó de {G19["PSOE"]} a {G23["PSOE"]} secciones; el PN
                f'Secciones censales de Vitoria según el partido más votado, en noviembre de 2019 y en julio de 2023 (de {len(v)})',
                barras([(f'{_lab[k]} · {a}', G.get(k, 0), c(_col[k]), str(G.get(k, 0)))
                        for k in _ord19 for a, G, c in (('2019', G19, claro), ('2023', G23, lambda x: x))],
-                      166, 'Secciones ganadas por cada partido en Vitoria', W=420, ml=150),
+                      166, 'Secciones ganadas por cada partido en Vitoria', W=420, ml=175),
                f'Fuente: Ministerio del Interior, más votado de cada sección lista a lista. En 2019, Unidas Podemos; en 2023, Sumar. En 2019 hubo además un empate a votos.',
                [('2019', claro(COLOR['PSOE'])), ('2023', COLOR['PSOE'])],
                (['Partido', 'Secciones en 2019', 'Secciones en 2023'], [[_lab[k], str(G19.get(k, 0)), str(G23.get(k, 0))] for k in _ord19]))
@@ -148,7 +142,7 @@ g_sec = figura(f'El PSOE pasó de {G19["PSOE"]} a {G23["PSOE"]} secciones; el PN
 g_bar = figura('Mendizorrotza, el barrio del estadio, es el único de Vitoria donde el PP pasa del 40 %',
                'Voto al PP, en %, en cada barrio de Vitoria en las elecciones generales de 2023. El barrio de Mendizorrotza, en color fuerte',
                barras([(k, B[k]['PP'], COLOR['PP'] if k == 'Mendizorrotza' else claro(COLOR['PP']), f'{p(B[k]["PP"])} %') for k in SEG],
-                      50, 'Voto al PP por barrio de Vitoria', W=420, ml=150),
+                      50, 'Voto al PP por barrio de Vitoria', W=420, ml=170),
                FUENTE_S + ' Los barrios con una o dos secciones tienen pocos votantes.',
                [('PP', COLOR['PP'])],
                (['Barrio', 'PP', 'PSOE', 'EH Bildu', 'PNV', 'Sumar', 'Vox', 'Participación', 'Secciones', 'Ganadas por el PP', 'Ganadas por el PSOE'],

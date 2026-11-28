@@ -56,8 +56,8 @@ assert 'solo 24 han votado siempre' in PQ and 'el PP ganó en Ayerbe (Huesca) po
 
 g_aj = figura(f'{N_JUEGO} escaños de 2023 cambiaban de manos con menos de un 10 % de votos; estos son los ocho más ajustados',
               'Porcentaje de sus votos que habría tenido que perder cada partido para quedarse sin ese escaño, con los votos de 2023 y el reparto de 2026',
-              barras([(f'{prov} · {o} de {par}', v, COLP.get(par, COLOR['Otros']), f'{p(v)} %') for o, par, prov, v in AJ],
-                     4, 'Los escaños más ajustados de 2023', W=420, ml=190),
+              barras([(f'{prov} · {o} {"del" if par in ("PP", "PSOE") else "de"} {par}', v, COLP.get(par, COLOR['Otros']), f'{p(v)} %') for o, par, prov, v in AJ],
+                     4, 'Los escaños más ajustados de 2023', W=440, ml=240),
               f'Fuente: <a href="{BASE}elecciones/voto-util-29n/">Voto útil el 29N en cada provincia</a>, de Mapa Electoral, con los resultados de las generales de 2023 (Ministerio del Interior) y los escaños de cada provincia en 2026.',
               None,
               (['Provincia', 'Escaño', 'Partido', 'Votos que bastaba perder (%)'], [[prov, o, par, p(v)] for o, par, prov, v in AJ]))
