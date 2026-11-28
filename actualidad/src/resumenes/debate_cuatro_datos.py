@@ -75,12 +75,12 @@ UE27 = [float(r['pib_variacion_interanual']) for r in PIB if r['trimestre'] == P
 NOM = {'PL': 'Polonia', 'IE': 'Irlanda', 'SI': 'Eslovenia', 'DK': 'Dinamarca', 'CY': 'Chipre', 'SE': 'Suecia', 'ES': 'España',
        'BG': 'Bulgaria', 'PT': 'Portugal', 'LT': 'Lituania', 'EE': 'Estonia', 'NL': 'Países Bajos', 'FI': 'Finlandia',
        'CZ': 'Chequia', 'HU': 'Hungría', 'DE': 'Alemania', 'IT': 'Italia', 'BE': 'Bélgica', 'AT': 'Austria', 'SK': 'Eslovaquia',
-       'RO': 'Rumanía', 'FR': 'Francia'}
+       'RO': 'Rumanía', 'FR': 'Francia', 'HR': 'Croacia', 'EL': 'Grecia', 'LV': 'Letonia', 'LU': 'Luxemburgo', 'MT': 'Malta'}
 PUESTO = [g for _, g in UE].index('ES') + 1
 NPAISES = len(UE)
 DELANTE = [NOM[g] for _, g in UE[:PUESTO - 1]]
 VAL = {g: v for v, g in UE}
-assert (PUESTO, NPAISES, VAL['ES']) == (7, 22, 2.7) and VAL['ES'] > max(VAL['DE'], VAL['IT'], VAL['FR'])
+assert (PUESTO, NPAISES, VAL['ES']) == (8, 23, 2.7) and VAL['HR'] == 2.9 and VAL['ES'] > max(VAL['DE'], VAL['IT'], VAL['FR'])
 
 # 4. Feijóo: «comprar es un 76% más caro»
 IPV = {(int(r['anyo']), int(r['trimestre'])): float(r['indice']) for r in leer('debate_cuatro_ipv.csv')}
@@ -104,8 +104,8 @@ g_pib = figura(f'España creció un {p(VAL["ES"])} %: la {PUESTO}.ª de los {NPA
                barras([(NOM[g], v, COL_ES if g == 'ES' else COL_OT, p(v)) for v, g in UE], max(VAL.values()) * 1.1,
                       'Crecimiento interanual del PIB en el tercer trimestre de 2026 en los países de la UE', W=400, ml=110,
                       fmt=p, linea=None),
-               f'Fuente: <a href="{EUROSTAT}">Eurostat</a>, PIB en volumen corregido de estacionalidad y calendario, datos del 25 de noviembre de 2026. '
-               'Sin dato aún: Croacia, Grecia, Letonia, Luxemburgo y Malta. Francia cae un 0,1 %.',
+               f'Fuente: <a href="{EUROSTAT}">Eurostat</a>, PIB en volumen corregido de estacionalidad y calendario, datos del 27 de noviembre de 2026. '
+               'Sin dato aún: Grecia, Letonia, Luxemburgo y Malta. Francia cae un 0,1 %.',
                None,
                (['Puesto y país', 'Crecimiento interanual (%)'], [[f'{i}. {NOM[g]}', p(v)] for i, (v, g) in enumerate(UE, 1)]))
 
@@ -132,6 +132,7 @@ cuerpo = f'''
 <h2>Feijóo y el precio de la vivienda: exagera</h2>
 <p data-tipo="dato">Alberto Núñez Feijóo dijo: «Desde que empezó la legislatura de Sánchez comprar es un 76% más caro y alquilar un 45% más caro», según <a href="{VERIFICAT}">Verificat</a>. El índice oficial del precio de compra, el <a href="{INE_IPV}">Índice de Precios de Vivienda del INE</a>, que mide compraventas reales, subió un <strong>{p(SUBE)} %</strong> del segundo trimestre de 2018 al segundo de 2026, el último publicado. La subida es grande, pero menor que la que dio Feijóo. Su cifra coincide con la de los precios que piden los anuncios de Idealista, según Verificat, que no es lo mismo que lo que se acaba pagando.</p>
 <h2>Sánchez y el crecimiento: falsa</h2>
+<p data-tipo="contexto"><strong>Actualización del 28 de noviembre.</strong> Eurostat añadió el viernes 27 por la noche el dato de Croacia, que creció un {p(VAL['HR'])} %. Con él, España pasa del 7.º al {PUESTO}.º puesto, ahora de {NPAISES} países. El resto de cifras no cambia.</p>
 <p data-tipo="dato">Sánchez dijo que la economía española «es la que más crece de toda Europa», según <a href="{ELDIARIO}">elDiario.es</a>. No lo es. En el tercer trimestre de 2026, el PIB de España creció un <strong>{p(VAL["ES"])} %</strong> frente al mismo trimestre del año anterior, según <a href="{EUROSTAT}">Eurostat</a>. Es el {PUESTO}.º puesto de los {NPAISES} países de la UE que ya han dado el dato: por delante quedan {", ".join(DELANTE[:-1])} y {DELANTE[-1]}. La media de la UE fue del {p(UE27)} %.</p>
 {g_pib}
 <p data-tipo="contexto">Lo que sí es cierto es que España crece más que las otras grandes economías del euro: Alemania, un {p(VAL["DE"])} %; Italia, un {p(VAL["IT"])} %, y Francia, que cae un {p(-VAL["FR"])} %.</p>
