@@ -3331,7 +3331,8 @@ PIEZAS += [
                   pie='Partido más votado en cada localidad de Israel, con el recuento provisional del 29 de octubre. El tamaño de cada círculo depende de los votos contados.', fuente='Comité Central Electoral de Israel, vía Kaplan Open Source (recuento provisional)'),
     ),
     dict(
-        slug='me-ha-tocado-mesa-electoral-29n', fecha='2026-11-02',
+        slug='me-ha-tocado-mesa-electoral-29n', fecha='2026-11-02', actualizado='2026-11-28 07:40',
+        correcciones='28-11-2026: se añaden dos preguntas frecuentes, a qué hora hay que estar en la mesa y qué pasa si no vas. No cambia ningún dato.',
         titulo='En los pueblos de menos de 100 electores, la mesa necesita a uno de cada seis vecinos; en las ciudades, a uno de cada setenta', serie='29n',
         descripcion='Los ayuntamientos sortean hasta el 4 de noviembre a las 549.297 personas que formarán las mesas del 29N. Quien recibe la carta tiene siete días para librarse con una excusa que acepte la Junta Electoral de Zona. Si no la tiene, le toca: 75 euros de dieta, cinco horas libres el lunes y, si no se presenta, un delito.',
         compara='Las mesas electorales de las generales de julio de 2023 y sus electores, por tamaño del municipio y por provincia, con las normas del sorteo, las excusas y las obligaciones de los miembros de mesa para el 29N.',
@@ -4401,7 +4402,8 @@ PIEZAS += [
         lugar='España',
     ),
     dict(
-        slug='a-quien-beneficia-abstencion-29n', fecha='2026-11-08',
+        slug='a-quien-beneficia-abstencion-29n', fecha='2026-11-08', actualizado='2026-11-28 07:40',
+        correcciones='28-11-2026: se añaden dos preguntas frecuentes, si es obligatorio votar y qué pasa con el voto si no votas. No cambia ningún dato.',
         titulo='Si los barrios que menos votan fueran a las urnas como la media, cinco escaños de 2023 habrían cambiado de manos: cuatro, hacia el PSOE', serie='29n', figura=0,
         descripcion='En la quinta parte del censo de cada provincia que menos votó en 2023, el PSOE sacó el 37,3 % y el PP el 27,4 %; en la que más votó, al revés. Una simulación con los resultados por mesa dice cuánto pesa eso en escaños. El voto en blanco, en cambio, no movió ninguno.',
         compara='Las generales de julio de 2023 por sección censal: participación y voto por partido en cinco grupos de secciones de cada provincia, ordenadas de la que menos vota a la que más, y el reparto de escaños por D\'Hondt si las secciones por debajo de la media hubieran votado como la media de España.',
